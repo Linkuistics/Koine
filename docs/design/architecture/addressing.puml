@@ -1,0 +1,74 @@
+@startuml addressing
+' accTitle: Opaque references through the public TypeScript boundary, with the agreed Machine calls
+' accDescr: Configuration asks the first-party plugin for the windows of the application recorded at the leader. The first-party plugin converts the interaction context to a reference with a root query, queries the windows relation through the resident bridge, and the engine routes to the desktop provider, which resolves the relation and returns a snapshot whose items carry references and fields. Configuration derives rows; the chosen row's reference travels unchanged in its effect; the command executes focus on that reference, and the provider re-resolves the key, reporting unavailable if the window has gone.
+
+skinparam backgroundColor #F8FAFC
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 18
+skinparam defaultFontColor #25364B
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam BoxPadding 12
+skinparam SequenceMessageAlign center
+skinparam sequence {
+  ArrowColor #526B86
+  ArrowThickness 1.2
+  LifeLineBorderColor #B8C7D7
+  LifeLineBackgroundColor #EEF4FA
+  ParticipantBackgroundColor #E8F0F8
+  ParticipantBorderColor #98ADC3
+  ParticipantFontColor #25364B
+  ParticipantFontSize 18
+  ActorBorderColor #526B86
+  ActorBackgroundColor #E8F0F8
+  ActorFontColor #25364B
+  MessageAlign center
+  MessageFontSize 18
+}
+skinparam NoteBackgroundColor #F1F5F9
+skinparam NoteBorderColor #B8C7D7
+skinparam NoteFontColor #33475E
+hide footbox
+
+title Opaque references through the public TypeScript boundary (Machine calls AGREED)
+
+actor User
+participant "Configuration\n(window definition)" as Caller
+participant "First-party plugin\nmachine facade" as API
+participant "Machine engine\n(via the resident bridge)" as Machine
+participant "Desktop provider\n(app module)" as Provider
+
+Caller -> API: build(inputs, context)\nneeds the app's windows
+API -> Machine: query("machine://desktop/", "application", {pid})
+Machine -> Provider: query(root, "application", {pid})
+Provider --> Machine: { items: [ { ref: "machine://desktop/app/4172", fields: {name, bundleId} } ] }
+Machine --> API: snapshot
+API -> Machine: query(app, "windows")
+Machine -> Provider: route by the URI's authority;\nquery(app, "windows", {})
+Provider -> Provider: re-resolve "app/4172";\nenumerate windows
+Provider --> Machine: { items: [ { ref: "machine://desktop/win/4172/9031?title=Untitled", fields: {title, bounds} }, … ] }
+Machine --> API: snapshot (JSON)
+API --> Caller: snapshot
+Caller -> Caller: derive rows; each row's effect\ncarries its window ref
+Caller --> User: present (after the belay)
+User -> Caller: choose a row
+Caller -> API: command: execute(window, "focus")
+API -> Machine: execute("machine://desktop/win/4172/9031?title=Untitled", "focus", {})
+Machine -> Provider: execute(ref, "focus", {})
+Provider -> Provider: re-resolve the remainder;\nfocus, or unavailable
+Provider --> Machine: result, or MachineError.unavailable(ref, detail)
+Machine --> API: result / rejection
+API --> Caller: result / rejection
+
+note over Caller,Provider
+AGREED: a reference is a URI string, machine://<provider>/<remainder>; the engine routes by the authority and
+never interprets the remainder, which the provider re-resolves on every use holding no queried state for callers;
+the desktop remainder carries pid, window number and title because Modaliser's re-find needs the title as a
+fallback. A root is a reference with an empty remainder. Nothing is cached by the engine, refreshed, retried or
+made atomic across calls.
+end note
+
+' Agreed: references are opaque and provider-owned; configuration never bypasses the public TS API.
+' AGREED (plugin-packages-k6): the URI encoding, the two calls, the error set and the desktop provider's remainder scheme.
+' Open: cross-provider identity, an atomic instant across calls, command atomicity.
+@enduml

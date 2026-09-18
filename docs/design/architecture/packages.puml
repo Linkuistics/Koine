@@ -1,0 +1,98 @@
+@startuml packages
+' accTitle: Package boundaries and application composition
+' accDescr: ModalAnyware composes narrow UI, native key and plugin-management modules. It embeds the plugin framework, its own project, and is a client of the Machine server, another project that embeds the same framework for its provider plugins and holds the Machine package as its core. Configuration depends only on public TypeScript APIs. The first-party plugin is a bundled plugin package that reaches resident app facilities through the resident bridge, handed to it as its private resource. Independently installed plugins provide a TypeScript library and optionally a private native executable. No provider lives in ModalAnyware. Project locations are agreed in plugin-packages-k6.
+' Build: plantuml -tsvg packages.puml
+
+skinparam backgroundColor #F8FAFC
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 18
+skinparam defaultFontColor #25364B
+skinparam titleFontSize 22
+skinparam captionFontSize 16
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam ArrowColor #526B86
+skinparam ArrowThickness 1.2
+skinparam nodesep 35
+skinparam ranksep 45
+skinparam componentStyle rectangle
+skinparam component {
+  BackgroundColor #E8F0F8
+  BorderColor #98ADC3
+  FontColor #25364B
+}
+skinparam package {
+  BackgroundColor #EEF4FA
+  BorderColor #98ADC3
+  FontColor #25364B
+  FontStyle bold
+}
+skinparam NoteBackgroundColor #F1F5F9
+skinparam NoteBorderColor #B8C7D7
+skinparam NoteFontColor #33475E
+skinparam legend {
+  BackgroundColor #F1F5F9
+  BorderColor #B8C7D7
+  FontColor #33475E
+  FontSize 16
+}
+top to bottom direction
+
+title Package boundaries and application composition
+
+component "User configuration\nComplete HTML / CSS / TS UI" as Config
+component "ModalAnyware app\nSwift · a client of the Machine server" as App
+
+component "UI facilities\nWindow host + shipped UI runtime and building blocks" as UI
+component "Native key handling\nTap thread + delivery machine + interaction registry" as Keys
+component "Plugin management\nFramework embedding + evaluator + resident bridge\n+ Machine client (server transport, capability) + tsconfig fragment" as Management
+
+package "Plugin framework · PluginHost\nIts own project (AGREED)\n\nSwift side: catalog · resolver · supervisor · transport · evaluator protocol\nScript side: lowering · loader · plugin-host · connections" as Framework
+package "Machine server\nIts own project and application (AGREED)\n\nMachine package: engine · Provider contract · Reference · Snapshot · MachineError\nTransport + capability model (its design) · LLM skill set\nProviders as its plugins: desktop provider first" as Machine
+
+package "First-party plugin · modalanyware\nBundled plugin package (AGREED)" as FirstParty {
+  component "Public TS API\nDefinitions · commands · machine facade · template helpers" as Facade
+}
+
+package "Independently installed plugin" as Plugin {
+  component "Public TS library\nexports = API" as Library
+  component "Optional private executable\nSwift / Rust / other" as Native
+}
+
+Config ..> Facade : imports
+Config ..> Library : imports by id
+Facade ..> Management : resident bridge\n(its private resource)
+App *-- UI
+App *-- Keys
+App *-- Management
+Management ..> Machine : client over the\nserver's transport
+Management ..> Framework : embeds; implements\nthe evaluator
+Machine ..> Framework : embeds for its\nprovider plugins
+Framework ..> Facade : loads first
+Framework ..> Library : loads on import;\ninjects connection
+Library ..> Native : private JSON-RPC\nvia the connection
+
+legend bottom
+  <b>Notation</b>
+  ◆—  Composition: app-owned responsibilities, each with narrow modules
+  Dashed arrow →  Dependency: uses an interface or contract
+  Folder  Package boundary; no process/deployment boundary implied
+endlegend
+
+caption AGREED (plugin-packages-k6): three projects; the framework depends on nothing here, the server embeds the framework, ModalAnyware embeds the framework and is a client of the server from its first increment.\nNo provider lives in ModalAnyware. A pure TypeScript plugin omits the native executable; no native host SDK is required.
+
+' This is a static package/composition/dependency view, not a runtime sequence.
+' The three app responsibilities do not mandate three monolithic implementation modules.
+' Configuration defines the entire UI and accesses app facilities through the first-party plugin.
+' Physical capture and immediate pass/suppress remain local native main-app behavior.
+' The first-party plugin's private interface is the in-process resident bridge (configuration-ui-k5), attached as its resource.
+' Machine contains machinery and Swift provider contracts, never concrete providers.
+' Providers are the Machine server's plugins; ModalAnyware's Machine client carries the bridge's query and execute to the server.
+' The framework depends on nothing here; the server depends on the framework; nothing depends on ModalAnyware.
+' The framework's script side is engine-neutral JavaScript the host installs through the evaluator.
+' Each host embeds its own framework instance; no shared system service is implied.
+' Native companion operations/schemas belong privately to that plugin's TS/native pair.
+' JSON-RPC 2.0 / UTF-8 NDJSON private pipes remain the agreed companion transport.
+' No direct configuration-to-native-services or configuration-to-executable path exists.
+' Package names are working names; the partition is what is agreed.
+@enduml

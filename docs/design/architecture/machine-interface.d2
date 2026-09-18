@@ -1,0 +1,88 @@
+# AGREED (plugin-packages-k6): Machine's initial interface, URI references, routing and the chooser's calls.
+# General labelled graph; containers are packages and modules, not deployment units.
+# Build: d2 --layout=tala --theme=0 --dark-theme=200 --pad=36 --scale=1 --timeout=30 --tala-seeds=1,2,3 machine-interface.d2 machine-interface.svg
+direction: down
+
+classes: {
+  start: {
+    style: {
+      fill: "#25364B"
+      font-color: "#FFFFFF"
+      bold: true
+      stroke-width: 3
+    }
+  }
+  module: {
+    style: {
+      border-radius: 10
+      stroke-width: 2
+      font-size: 18
+    }
+  }
+  flow: {
+    style: {
+      stroke-width: 2
+      border-radius: 8
+      font-size: 16
+    }
+  }
+  later: {
+    style: {
+      stroke-width: 2
+      stroke-dash: 4
+      border-radius: 8
+      font-size: 16
+    }
+  }
+}
+
+Facade: "▶ Start here · First-party plugin · machine facade (TypeScript)\nquery(target, relation, args?) → Snapshot\nexecute(target, command, args?) → result\ntarget: a Reference; a provider's root is one too" {class: [module; start]}
+Bridge: "Resident bridge → App's Machine client\nJSON in, promise out; to the server over its transport\nwith ModalAnyware's capability" {class: module}
+
+Machine: "AGREED · Machine package (Swift) · the Machine server's core · no app, macOS or provider dependency" {
+  direction: down
+  style: {
+    border-radius: 12
+    stroke-width: 2
+    font-size: 20
+  }
+  Types: "Reference: a URI string  machine://<provider>/<opaque remainder>  · root = empty remainder · branded in TypeScript\nSnapshot { items: [ { ref, fields } ] }  · one provider resolution per query\nMachineError (JSON across the bridge): unknownProvider · unknownRelation · unknownCommand\nunavailable(ref, detail) · permission(detail) · failed(detail)" {class: module}
+  Engine: "Engine\nregister(provider) · routes by the URI's authority · reads nothing else\nno cache · no refresh · no retry" {class: module}
+  Contract: "Provider (Swift protocol)\nname · query(target, relation, args) · execute(target, command, args)" {class: module}
+  Engine -> Contract: "calls" {class: flow}
+}
+
+Desktop: "Desktop provider · the server's first plugin (Swift)\nremainders: its own; a window reference carries pid, window number and title (Modaliser's fallback)\nrelations: application · windows · … · commands: focus · openUrl · …" {class: module}
+PluginProvider: "Other providers · the server's plugins\nthrough the shared plugin framework;\nthe server project's design" {class: module}
+
+Facade -> Bridge: "machine.query / machine.execute\nreferences as JSON" {class: flow}
+Bridge -> Machine.Engine: "query / execute\n(the server's transport)" {class: flow}
+Machine.Engine -> Desktop: "conforms to Provider" {class: flow}
+Machine.Engine -> PluginProvider: "conforms to Provider" {class: later}
+
+Example: "The chooser example, in order" {
+  direction: down
+  style: {
+    border-radius: 12
+    stroke-width: 2
+    font-size: 20
+  }
+  One: "1  query(\"machine://desktop/\", \"application\", { pid })\n→ one item: the leader's application, from the interaction context" {class: module}
+  Two: "2  query(app, \"windows\")\n→ items: each window's ref and fields (title, bounds …)" {class: module}
+  Three: "3  execute(window, \"focus\")\n→ result, or unavailable if the window has gone" {class: module}
+  One -> Two: "app ref travels in the entry's inputs" {class: flow}
+  Two -> Three: "window ref travels in the row's effect" {class: flow}
+}
+
+# AGREED: a reference is a URI string, machine://<provider>/<remainder>; the engine routes by the authority and the
+# provider alone interprets the remainder, re-resolving it on every use. One string value everywhere (k5's handoff).
+# AGREED: a provider's root is a reference with an empty remainder, so every target is a reference.
+# AGREED: two uniform calls; a single-valued relation returns zero or one item; nested state is another query.
+# AGREED: the error set is closed and crosses the bridge as JSON; a key that no longer resolves is unavailable;
+# a missing platform permission is its own kind so the app can prompt; nothing is retried; args defaults to {}.
+# AGREED: retaining nothing is about references and snapshots; a provider may keep observation state its platform
+# needs (Modaliser remembers windows seen on other spaces because Accessibility enumerates only the current one).
+# Modaliser precedent: focus-window re-finds a window by owner pid and window number, with the title as fallback.
+# Rejected: the compound { provider, key } object; an engine handle table of opaque tokens; a structured JSON key.
+# The scheme name machine is a placeholder that follows the Machine project's eventual name.
+# Open: cross-provider identity, an atomic instant across calls, command atomicity, field selection.
