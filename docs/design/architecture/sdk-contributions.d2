@@ -1,62 +1,30 @@
-# AGREED (plugin-packages-k6): ModalAnyware's contributions are actions and events, ordinary uses of the first-party API and of TypeScript; providers are the Machine server's plugins.
-# General labelled module graph. Grouping carries only the source's stated ownership/lifetime/placement.
-# Build: d2 --layout=tala --theme=0 --dark-theme=200 --pad=36 --scale=1 --timeout=30 --tala-seeds=1,2,3 sdk-contributions.d2 sdk-contributions.svg
+# Interface dependency view. Shared resilient Swift framework is agreed.
 direction: down
-
-classes: {
-  start: {
-    style: {
-      fill: "#25364B"
-      font-color: "#FFFFFF"
-      bold: true
-      stroke-width: 3
-    }
-  }
-  module: {
-    style: {
-      border-radius: 10
-      stroke-width: 2
-      font-size: 18
-    }
-  }
-  runtime: {
-    style: {
-      stroke-width: 2
-      border-radius: 8
-      font-size: 16
-    }
-  }
-  contract: {
-    style: {
-      stroke-width: 2
-      stroke-dash: 4
-      border-radius: 8
-      font-size: 16
-      italic: true
-    }
-  }
+classes: {start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}}
+Author: "Start here · Swift provider author" {class: start}
+Bundle: "Separate provider binary" {
+  style.font-size: 22
+  Manifest: "Signed manifest\nFramework major / minimum minor · required features"
+  Schema: "Introspectable schema\nOwned fields · explicit authority metadata"
+  Factory: "Named principal class\nConforms to ProviderFactory"
+  Provider: "Swift Provider implementation\nOwned values · async resolution"
+  Factory -> Provider: creates
 }
-
-Config: "▶ Start here · User configuration" {class: [module; start]}
-Plugin: "A plugin's public TS API (exports)" {class: module}
-FirstParty: "First-party plugin · modalanyware\ndefineWindow · registerCommand · machine (query · execute)" {class: module}
-Action: "Action\nany exported function; async when it may reach native code" {class: module}
-Event: "Event source\nany exported onSomething(handler) → unsubscribe" {class: module}
-Client: "App's Machine client (Swift)\ncarries the bridge's query / execute to the server\nwith ModalAnyware's capability" {class: module}
-Server: "Machine server · separate project\nengine + Provider contract; providers as its plugins\n(desktop provider first) through the shared framework" {class: module}
-
-Config <-> Plugin: "imports; calls actions; subscribes to events" {class: runtime}
-Config <-> FirstParty: "imports \"modalanyware\"" {class: runtime}
-Plugin -> Action: "may present" {class: runtime}
-Plugin -> Event: "may present" {class: runtime}
-FirstParty -> Client: "via the resident bridge" {class: contract}
-Client -> Server: "the server's transport;\nthe agreed JSON contract as payload" {class: contract}
-
-# AGREED: providers are not a ModalAnyware contribution; they are the Machine server's plugins.
-# AGREED: the framework knows no contribution category; an action is an exported function; an event source is an exported
-# subscription; both are plain TypeScript.
-# AGREED: an event handler runs on the script thread, may call any API, and cannot change the interaction (only an effect does).
-# AGREED: a native-backed event source keeps its process only while the plugin keeps its connection open.
-# The server's transport and capability model are the Machine server project's; the agreed contract is their payload.
-# Events do not refresh the Machine graph or retain queried state; configuration queries again when it needs a snapshot.
-# App-originated events toward the facade remain outside this increment (configuration-ui-k5).
+Framework: "AGREED · shared Swift framework\nProvider protocols · resilient value types\nOne host-supplied binary image"
+Host: "Koine host" {
+  style.font-size: 22
+  Loader: "Before loading\nVerify trust, dependencies and framework compatibility"
+  Registry: "Before activation\nValidate schema and complete policy metadata"
+  Executor: "For each call\nAuthorize · invoke · complete GraphQL output"
+  Loader -> Registry
+  Registry -> Executor
+}
+Author -> Bundle.Provider
+Author -> Bundle.Schema
+Author -> Bundle.Manifest
+Bundle.Manifest -> Host.Loader
+Bundle.Schema -> Host.Registry
+Bundle.Provider -> Framework: dynamically links
+Host.Executor -> Framework: dynamically links
+Framework -> Bundle.Provider: Swift protocol dispatch
+Note: "Native providers share Koine's trust and failure domain.\nSwift framework evolution preserves supported compiled consumers.\nUpdates activate at restart; no live unload."

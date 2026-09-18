@@ -6,10 +6,11 @@ A Machine reference is a URI string, `koine://<provider>/<provider-owned
 remainder>`. The engine reads only the authority to route; the provider alone
 produces and interprets the remainder, re-resolving it on every use and
 retaining no queried state for callers. A provider's root is a reference with
-an empty remainder, so every target of a query or command is a reference.
+an empty remainder. Resource lookups and actions can use references; initial
+discovery can take an external identity and return a reference.
 Opacity is a contract, not a property of the shape; callers pass the value
-unchanged. Its GraphQL representation and client bindings remain design
-work. The scheme follows the project's name, Koine.
+unchanged. The desktop contract uses a GraphQL `Reference` scalar with an
+opaque string client binding. The scheme follows the project's name, Koine.
 
 ## Trade-off
 

@@ -1,0 +1,26 @@
+query DesktopChoices($process: DesktopProcessIdentity!) {
+  desktopApplication(process: $process) {
+    ref
+    name
+    windows { ref title observation }
+  }
+}
+
+mutation FocusDesktopWindow($ref: Reference!) {
+  desktopFocusWindow(ref: $ref) { ref }
+}
+
+mutation RequestDesktopGrant($input: KoineRequestGrantInput!) {
+  koineRequestGrant(input: $input) { requestId comparisonCode }
+}
+
+query PollOwnGrantRequest {
+  koineGrantRequest {
+    state
+    grant { grantId capabilities state }
+  }
+}
+
+query InspectOwnConnection {
+  koine { contractVersion instanceId schemaDigest ownGrant { capabilities state } }
+}

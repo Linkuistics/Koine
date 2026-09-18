@@ -1,44 +1,53 @@
 # Architecture views
 
-Serve this directory over HTTP and open `index.html`; the viewer is Grove's
-bundled static viewer and `diagrams.json` is its manifest. For example:
+These editable views accompany the agreed [desktop contract](../../specs/machine.md),
+including the shared resilient Swift framework, one resident application
+and bearer credentials with live revocation.
+The [current discussion](index.html#discussion) presents the approved contract
+and its implementation acceptance boundaries. The viewer is currently served at
+<http://127.0.0.1:8772/#discussion> by this design session.
+
+Serve this directory alone, then open its index:
 
 ```sh
-python3 -m http.server PORT --bind 127.0.0.1 --directory docs/design/architecture
+python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architecture
 ```
 
-The four views here were carried from ModalAnyware's architecture discussion
-(commit d666016, plugin-packages-k6) when this project was created. Their
-captions are written from ModalAnyware's point of view, say "Machine server"
-where this project says Koine, and record what was agreed there. This
-project's design sessions revise them; ModalAnyware keeps its own copies.
-The query/execute and shared-framework views need reconciliation with
-Koine's agreed GraphQL and native extension requirements; the
-[current server boundary](../../adr/koine-server-and-native-providers.md)
-records the requirements that take precedence.
+Stable views:
 
-Reading convention: every graph view marks its reading entry with a dark, bold
-node whose label begins with "Start here" (the `start` class in each source)
-and numbers its edges where the order matters; a sequence reads top to bottom
-from its first message and a state diagram from the filled initial dot. Keep
-the marker when adding or restructuring a view.
+- [Resident application](index.html#diagram-packages) — shows runtime ownership.
+- [Source packages](index.html#diagram-source-packages) — shows package dependencies separately.
+- [Desktop interaction](index.html#diagram-addressing) — queries before choices and re-resolves before focus.
+- [Authorization](index.html#diagram-machine-interface) — checks all actions before execution and authority again at admission.
+- [Grant lifecycle](index.html#diagram-grants) — shows both grant workflows and revocation.
+- [ABI decision](index.html#diagram-plugin-abi-options) — marks the shared Swift framework agreed and the C-compatible alternative not selected.
+- [Native contributions](index.html#diagram-sdk-contributions) — explains shared Swift types, protocols and pre-load compatibility checks.
+
+A graph starts at its marked "Start here" node. A sequence reads top to bottom;
+a state diagram begins at a filled initial dot. Package views identify source
+boundaries; the runtime view identifies the one resident application process.
+Captions state limits, and no diagram constitutes formal verification.
 
 ## Sources and exports
 
-Every source has a corresponding `.svg` export, kept together in version
-control. Edit the source, regenerate its export, then inspect the served view.
-The toolchain the exports were made with is D2 0.9.0 (TALA layout), PlantUML
-1.2026.8 and Graphviz 16.1.0; install with `brew install d2 plantuml`.
+Each source has a version-controlled SVG export. Edit sources, regenerate and
+inspect exports. The renderer positions nodes; do not hand-edit generated SVG.
+The installed toolchain is D2 0.9.0, PlantUML 1.2026.8 and Graphviz 16.1.0.
+From this directory:
 
 ```sh
-for diagram_source in machine-interface.d2 sdk-contributions.d2; do
-  d2 --layout=tala --theme=0 --dark-theme=200 --pad=36 --scale=1 \
-    --timeout=30 --tala-seeds=1,2,3 "$diagram_source" "${diagram_source%.d2}.svg"
+for diagram_source in desktop-composition.d2 machine-interface.d2 sdk-contributions.d2; do
+  d2 --layout=tala --theme=0 --dark-theme=200 --pad=36 --timeout=30 \
+    --tala-seeds=1,2,3 "$diagram_source" "${diagram_source%.d2}.svg"
 done
-
-plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
+d2 --layout=elk --theme=0 --dark-theme=200 --pad=36 \
+  plugin-abi-options.d2 plugin-abi-options.svg
+plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml grants.puml
 ```
 
-The viewer fetches sources and exports on reload but does not compile source
-or detect stale exports. Diagram anchors are `#diagram-<id>` and stay stable
-across title and renderer changes.
+The viewer fetches sources and exports on reload; it does not compile them.
+`diagrams.json` owns the topic outline and current-discussion change links.
+No browser is connected to the authoring session, so browser layout, fresh-page
+anchor behavior and responsive/dark appearance remain unverified. SVG exports
+can still be inspected independently, and this limitation does not mean the
+server behavior has been implemented or tested.

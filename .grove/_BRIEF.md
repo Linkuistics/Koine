@@ -15,10 +15,11 @@ Everything below marked **inherited** was agreed or stated by the human in
 conflict. The agreed sections record the human's confirmed requirements
 from `plan-k1`.
 
-The agreed decisions below now supersede the inherited query/execute wire
-payload and reopen the PluginAnyware hosting requirement. The carried spec
-and architecture views must be reconciled with those decisions before
-implementation; the ADR set now records the current boundary.
+The agreed decisions below supersede the inherited query/execute wire payload
+and PluginAnyware hosting requirement. In `desktop-contract-k2`, the human
+approved the complete design in `docs/specs/machine.md`, its GraphQL schema and
+architecture views. That contract and the ADR set are the implementation
+baseline; the inherited notes below explain their starting constraints.
 
 **Inherited contract**, in full in `docs/specs/machine.md`:
 
@@ -29,8 +30,9 @@ implementation; the ADR set now records the current boundary.
   name follows this project's name, as the inherited placeholder rule requires.
 - The inherited domain error vocabulary is `unknown-provider`,
   `unknown-relation`, `unknown-command`, `unavailable`, `permission`,
-  `failed`. Its mapping to GraphQL errors and validation remains to be
-  designed; a capability refusal must remain distinguishable as `permission`.
+  `failed`. The agreed spec maps relation/command mistakes to GraphQL
+  validation and preserves the other kinds as execution classifications;
+  capability refusal remains distinguishable as `permission`.
 - The engine caches nothing, refreshes nothing and retries nothing;
   consistency is per call. A provider may keep observation state its platform
   requires.
@@ -75,9 +77,12 @@ requires a TypeScript or JavaScript entry module.
 The human requires "a stable binary interface so that we can upgrade plugins
 and the server independently". Compatible plugin/server binaries must not
 require rebuilding each other. Compiled-in modules alone cannot satisfy this
-extension requirement. Swift dylibs with a fixed extension point are the
-proposed mechanism; the ABI representation and supported-version policy
-remain open. Open-source distribution is also still under discussion.
+extension requirement. In `desktop-contract-k2`, the human chose a shared
+resilient Swift framework as the binary interface for native Swift dylibs.
+Its public types and protocols carry the compatibility promise, with library
+evolution and module stability from the first release. The concrete loading and
+version policy is specified by that design. Open-source distribution is still
+under discussion.
 
 Plugin authoring is Swift-only initially. Plugins will make significant use
 of OS-specific APIs; keep this work separate from APIAnyware. Cross-language
@@ -94,9 +99,11 @@ contributing their types and operations to the public schema.
 Full introspection is required to enable client code generation and
 type-aware tooling. Provider-contributed types and operations must be
 described in that schema. The old query/execute payload is not a second
-required public API. The concrete GraphQL representation of resource
-references, domain errors and capability checks remains to be designed, and
-ModalAnyware's client handoff must target the new public contract.
+required public API. The agreed `koine-desktop/1` contract specifies the
+`Reference` scalar, meaningful nullability, domain errors and capability
+checks. ModalAnyware's client handoff targets this contract using standard
+GraphQL tooling and a client-owned adapter; no Koine-owned Swift client helper
+is required for the first deliverable.
 
 ## Connection scope (agreed)
 
@@ -104,17 +111,18 @@ Local access is sufficient, and the human expects that likely to remain true.
 Serve clients on the same machine; remote access is outside the current
 plan. The transport is GraphQL over HTTP, bound only to loopback, with client
 authentication and capability checks. A Unix-domain socket is not required
-for the first version. Endpoint discovery and the concrete access-control
-model remain open; remote support is not a future requirement.
+for the first version. The agreed spec defines the per-user endpoint descriptor,
+literal IPv4 loopback connection and bearer-grant access control; remote support
+is not a future requirement.
 
 ## Server availability (agreed)
 
-Koine remains resident or is started by the OS when its local endpoint is
-accessed. Clients do not own its launch or lifetime. A resident per-user
-service and OS socket activation are both acceptable; select the concrete
-launch arrangement in the design, preserving desktop-provider observation
-needs and responsiveness during keyboard interactions. Automatic idle
-retirement is not a requirement.
+In `desktop-contract-k2`, the human selected one resident, per-user Koine
+application containing the native management UI, server and providers. It owns
+the OS permissions and keeps management authority in process. Clients do not
+own its launch or lifetime; closing the management window leaves the service
+and provider observation running. The design supplies the concrete OS login
+launch arrangement. Automatic idle retirement is not a requirement.
 
 ## OS permissions and client capabilities (agreed)
 
@@ -124,11 +132,15 @@ own functions; it accesses Koine's functionality through capabilities
 granted by Koine. Those capabilities are Koine's client security mechanism.
 
 The first version grants clients read and control capabilities per provider.
-The intended model is a set of Koine-granted capabilities presented by the
-client over the GraphQL connection; Koine uses that set to authorize the
-requested operation. The concrete representation and transport attachment,
-credential storage and revocation behavior remain design questions; the grant
-workflows and lifetime are agreed below.
+In `desktop-contract-k2`, the human selected transferable bearer credentials
+with live revocation. Each client stores its grant token in Keychain, or a
+protected file for scripts, and presents it over the GraphQL connection. Koine
+looks up the live grant on every request and uses its capability set to authorize
+the operation. Possession of the token confers access; client-key binding and
+request signing are not selected. The decision is recorded in
+`docs/adr/bearer-grants-and-live-revocation.md`. The agreed contract serializes
+revocation and action admission: revocation blocks subsequent actions, while
+an action already admitted may finish.
 
 The design must distinguish a client lacking a Koine capability from Koine
 lacking an OS permission. Read queries should return partial results where
@@ -160,9 +172,10 @@ approve or deny in Koine's UI; or the user creates a grant in the UI and
 supplies it to a client manually. The corresponding management functions
 also belong to the GraphQL management surface, subject to management
 authority. Grants are permanent until explicitly revoked, survive client and
-Koine restarts, and do not expire automatically. Credential storage,
-revocation handling for existing connections and bootstrap of management
-authority remain design questions.
+Koine restarts, and do not expire automatically. Existing connections must
+observe live revocation. The selected resident application's native UI keeps
+its management authority in process; the design specifies bootstrap and the
+boundary for work already in flight.
 
 ## Test seams (agreed)
 
@@ -198,29 +211,23 @@ target.
 
 ## Decomposition
 
-The human confirmed this requirements baseline and the next step in
-`plan-k1`: `desktop-contract-k2`, one design task for the first deliverable.
+`plan-k1` established the requirements and `desktop-contract-k2` produced the
+complete design, now approved by the human. `desktop-delivery-k3` plans its
+implementation as small, independently useful working increments. The design
+is the baseline for that decomposition, including the three agreed test seams
+and the ModalAnyware client handoff.
 
-That task should synthesize these decisions into a coherent current design
-and reconcile the carried spec, ADRs, glossary and architecture views. It
-must settle the native extension ABI, loading and compatibility policy;
-GraphQL schema composition and the desktop client contract; authorization,
-credential storage, revocation and management bootstrap; and local endpoint
-discovery, service lifetime and OS permission ownership. Include the agreed
-test seams and identify the contract ModalAnyware consumes. The design must
-address the inherited PluginAnyware dependency without assuming a TypeScript
-wrapper, and state whether the client handoff needs a Koine-owned Swift
-helper in addition to standard GraphQL tooling.
-
-Implementation planning follows the agreed design. No research, prototype
-or review stage is added automatically. Open-source licensing/distribution
-remains undecided and is not a condition of the first deliverable.
+No research, prototype or review stage is added automatically. Open-source
+licensing/distribution remains undecided and is not a condition of the first
+deliverable.
 
 ## Pointers
 
 - Contract: `docs/specs/machine.md`. ADRs:
   `docs/adr/machine-references-as-uris.md`,
-  `docs/adr/koine-server-and-native-providers.md`.
+  `docs/adr/koine-server-and-native-providers.md`,
+  `docs/adr/resilient-provider-framework.md`,
+  `docs/adr/bearer-grants-and-live-revocation.md`.
 - Glossary: `CONTEXT.md`.
 - Views: `docs/design/architecture/` (its README has the build commands).
 - The inherited hosting candidate: `../PluginAnyware`, contract in
@@ -245,10 +252,10 @@ applications, mediated by LLMs and scripts. The human has an earlier project,
 an LLM-coordination blackboard and tool integration platform, of which this
 server could be an important part.
 
-Open contracts the inherited spec names and leaves open: identity across
-providers, an atomic instant across calls or providers, command atomicity and
-retry. GraphQL now supplies client field selection; its execution and error
-semantics need to be reflected in the revised contract.
+Cross-provider identity, atomic snapshots, transactional command rollback and
+automatic retry remain outside the agreed first desktop contract. GraphQL
+supplies client field selection; the current spec defines its execution and
+error semantics.
 
 ## Notes
 

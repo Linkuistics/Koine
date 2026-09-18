@@ -1,59 +1,122 @@
 {
-  "title": "Koine architecture",
-  "intro": "Views carried from ModalAnyware's architecture discussion (commit d666016, plugin-packages-k6) when this project was created on 2026-09-18. They show what was agreed there, from ModalAnyware's point of view; this project's own design sessions revise them. Reading convention: every graph view marks where to start with a dark, bold node labelled Start here, and numbers its steps where the order matters; a sequence reads top to bottom from its first message; a state diagram starts at the filled dot.",
+  "title": "Koine desktop contract",
+  "intro": "The complete desktop contract is approved: one resident Koine application, a shared resilient Swift provider framework and bearer credentials with live revocation. These views explain the agreed boundaries and ordering; implementation and platform acceptance remain ahead.",
   "groups": [
     {
       "id": "overview",
       "title": "Overview",
-      "description": "Application composition, independent packages and their interface dependencies."
+      "description": "Runtime ownership and source-package dependencies are separate views."
     },
     {
       "id": "machine",
-      "title": "Machine abstraction",
-      "description": "Lazy queries, resource references, and commands over applications and the desktop."
+      "title": "Desktop GraphQL contract",
+      "description": "Query, derive choices, choose, then authorize and act."
+    },
+    {
+      "id": "authority",
+      "title": "Grants and authorization",
+      "description": "Client authority is distinct from native plugin trust and OS consent."
     },
     {
       "id": "plugin-contracts",
-      "title": "Plugin APIs and authoring",
-      "description": "Public TypeScript APIs, private native contracts, and optional authoring tools."
+      "title": "Native provider interface",
+      "description": "Independent binary upgrades without a script host."
     }
   ],
+  "discussion": {
+    "title": "Approved desktop contract",
+    "status": "Design agreed — ready for implementation planning",
+    "summary": "The approved path resolves a running process incarnation, lists windows and focuses an opaque reference. Read/control authority is independent; all mutation actions are authorized before any starts. Live revocation blocks later admissions, while an already admitted action may finish. One resident application owns the UI, server, providers and OS permissions; compatible Swift binaries share a resilient framework. Standard GraphQL tooling uses a small client-owned adapter. Native behavior still requires implementation acceptance evidence. Browser layout remains unverified because no browser is connected.",
+    "diagramIds": [
+      "addressing",
+      "machine-interface",
+      "grants",
+      "packages",
+      "source-packages",
+      "sdk-contributions"
+    ],
+    "updatedDiagrams": [
+      {
+        "id": "addressing",
+        "summary": "Marked the complete query, choose and focus sequence agreed, including process incarnation and stale-target behavior."
+      },
+      {
+        "id": "grants",
+        "summary": "Marked the complete grant lifecycle agreed, including persistence, approval and the boundary for actions already admitted."
+      },
+      {
+        "id": "machine-interface",
+        "summary": "Updated the caption to record agreement on all-action preflight and revocation checks at each dispatch."
+      },
+      {
+        "id": "source-packages",
+        "summary": "Updated the caption to record agreement on the client-owned GraphQL adapter alongside the shared framework."
+      }
+    ]
+  },
   "diagrams": [
     {
       "id": "packages",
-      "title": "Package boundaries and application composition",
       "group": "overview",
+      "title": "Resident application and client boundary",
+      "renderer": "svg",
+      "source": "desktop-composition.d2",
+      "rendered": "desktop-composition.svg",
+      "caption": "Agreed runtime responsibility view: one resident Koine application contains the native UI, server and providers. Closing its management window leaves the listener and observation running. The native UI keeps management authority in process; HTTP clients present bearer credentials backed by live grants. Providers share that process and its OS permissions. The shared resilient Swift framework is agreed."
+    },
+    {
+      "id": "source-packages",
+      "group": "overview",
+      "title": "Source packages and interface dependencies",
       "renderer": "svg",
       "source": "packages.puml",
       "rendered": "packages.svg",
-      "caption": "This overview consolidates agreed responsibilities and interface dependencies across three projects, AGREED in plugin-packages-k6 as the human directed. Composition diamonds show the app-owned UI, native key handling and plugin-management modules; each should retain narrow internal modules. Folder symbols identify the plugin framework (its own project), the Machine server (its own project and application), the first-party plugin and a separately installed plugin. They do not prescribe deployment processes.\n\nThe plugin framework depends on nothing here and is consumed twice: ModalAnyware embeds it and implements its evaluator over the configuration environment; the Machine server embeds it to host providers as plugins, the desktop provider first. The Machine server holds the Machine package as its core (engine, Provider contract, Reference, Snapshot, MachineError) and owns its transport and capability model, whose payload is the agreed contract; ModalAnyware's plugin management carries the resident bridge's query and execute to it as a client with ModalAnyware's capability, from the first increment, with no in-process interim. No provider lives in ModalAnyware, and nothing depends on ModalAnyware.\n\nThe first-party plugin is an ordinary plugin package with id modalanyware, bundled in the app and loaded first with the resident bridge attached as its resource; configuration imports it like any other plugin. A separately installed plugin provides a public TS library and may include its own native executable; a pure TS plugin needs none. Package names are working names; the partition is what is agreed."
-    },
-    {
-      "id": "machine-interface",
-      "title": "AGREED: Machine's initial interface and the chooser's calls",
-      "group": "machine",
-      "renderer": "svg",
-      "source": "machine-interface.d2",
-      "rendered": "machine-interface.svg",
-      "caption": "AGREED (plugin-packages-k6): the smallest Machine interface the agreed chooser example needs. A reference is a URI string, machine://<provider>/<provider-owned remainder>: the engine reads only the authority to route and the provider alone produces and interprets the remainder, re-resolving it on every use, so a reference is one plain value wherever it travels (inputs, effects, page attributes, logs, and later a server's addresses), the constraint configuration-ui-k5 handed over, and it survives a provider restart when the remainder's scheme is stable. A provider's root is a reference with an empty remainder, so every target is a reference. Opacity is a contract backed by a branded TypeScript string; a provider emits one canonical string per resource. Two uniform calls from the first-party facade through the resident bridge and, as the human directed, the app's Machine client to the Machine server over its transport with ModalAnyware's capability: query(target, relation, args?) returns a snapshot of items, each with its reference and provider-defined fields, one provider resolution per call, a single-valued relation returning zero or one item, nested state being another query; execute(target, command, args?) returns the provider's result; args defaults to {}. The error set is closed and crosses the bridge as JSON: unknown-provider, unknown-relation, unknown-command, unavailable(ref, detail), permission(detail) so the app can prompt for Accessibility and where a capability refusal would surface later, and failed(detail); the engine caches nothing, refreshes nothing and retries nothing, and consistency is per call. Retaining nothing is a rule about references and snapshots; a provider may keep observation state its platform requires, as Modaliser remembers windows seen on other spaces. In Swift the package, the server's core, holds Reference (wrapping the string, exposing the provider), Item, Snapshot, MachineError, its own JSON value type, the Provider protocol and the engine.\n\nThe chooser: a root query converts the leader's application identity, query(app, \"windows\") lists, execute(window, \"focus\") acts or reports unavailable; the desktop provider's window remainder carries pid, window number and title, because Modaliser re-finds a window by the first two and falls back to the title. Providers are the Machine server's plugins through the shared plugin framework; the desktop provider is the first, and none lives in ModalAnyware. Rejected: the compound { provider, key } object, an engine handle table of opaque tokens, a structured JSON key. The scheme name machine follows the Machine project's eventual name. Open: cross-provider identity, an atomic instant across calls, command atomicity, field selection."
+      "caption": "Agreed application/framework composition, shown as package dependencies rather than deployment containers. Koine supplies one shared provider framework image, Machine invokes its contracts, and separately built providers conform to them. Published Swift types and protocols carry the compatibility promise; GraphQL-library types remain private. The client owns its GraphQL adapter; no Koine-owned client helper is required for this deliverable."
     },
     {
       "id": "addressing",
-      "title": "Opaque references through the public TS API, with the agreed Machine calls",
-      "source": "addressing.puml",
-      "caption": "Agreed: references are opaque and provider-owned, and configuration passes them unchanged through the public TypeScript API into later queries and commands. AGREED (plugin-packages-k6): the calls themselves, with references as URI strings. The first-party plugin converts the interaction context to a reference with a root query on the desktop provider, queries the windows relation, and receives a snapshot whose items each carry a reference and the provider's fields. The engine routes by the URI's authority and never interprets its remainder; the desktop provider re-resolves a remainder on every use; its window reference carries pid, window number and title, as Modaliser re-finds a window to focus it, and it holds no queried state on a caller's behalf. The chosen row's reference travels unchanged in its effect, and execute(window, \"focus\") either acts or reports unavailable.\n\nNothing is cached, refreshed, retried or made atomic across calls. Open: cross-provider identity, an atomic instant across calls, command atomicity.",
       "group": "machine",
+      "title": "Discover windows, derive choices, focus one",
       "renderer": "svg",
-      "rendered": "addressing.svg"
+      "source": "addressing.puml",
+      "rendered": "addressing.svg",
+      "caption": "Agreed end-to-end sequence. The client captures the process incarnation at interaction start, queries before deriving choices, then submits the selected opaque reference. The provider re-resolves it before native focus and reports unavailable for a closed, stale or ambiguous target. Remembered observations can outlive current visibility; they are not an atomic snapshot. Capability denial and missing Koine OS consent have separate machine-readable classifications."
+    },
+    {
+      "id": "machine-interface",
+      "group": "authority",
+      "title": "Authorize every action before executing any",
+      "renderer": "svg",
+      "source": "machine-interface.d2",
+      "rendered": "machine-interface.svg",
+      "caption": "Agreed execution flow for an authenticated client operation. The core expands the selected GraphQL operation and checks original schema coordinates, so aliases and fragments do not rename authority. Any denied mutation action prevents all actions from beginning. Revocation is checked again at each dispatch admission. Earlier authorized effects are not rolled back if a later action fails. Enrollment and the in-process console have separately defined admission cases in the spec."
+    },
+    {
+      "id": "grants",
+      "group": "authority",
+      "title": "Grant issuance, approval and revocation",
+      "renderer": "svg",
+      "source": "grants.puml",
+      "rendered": "grants.svg",
+      "caption": "Agreed bearer-credential lifecycle and revocation ordering. Anonymous enrollment creates only a pending request. Existing managers or the in-process console approve requests or create manual grants. Approved grants survive restart without automatic expiry; pending-request expiry does not expire them. Secret possession permits own-request status before and after its decision; revoked grants fail authentication. Digest uniqueness prevents retries from creating multiple grants. Already admitted actions may finish. This diagram is not a model-checking result."
+    },
+    {
+      "id": "plugin-abi-options",
+      "group": "plugin-contracts",
+      "title": "Agreed Swift framework and the alternative",
+      "renderer": "svg",
+      "source": "plugin-abi-options.d2",
+      "rendered": "plugin-abi-options.svg",
+      "caption": "The human selected the shared resilient Swift framework. Swift types and protocols are part of its stable published contract, with library evolution and module stability enabled from release one. The C-compatible alternative is not selected. Compatible provider binaries dynamically link the host-supplied framework; newer required symbols need a newer host and are checked before loading."
     },
     {
       "id": "sdk-contributions",
-      "title": "AGREED: Contributions are actions and events; providers are the server's plugins",
-      "source": "sdk-contributions.d2",
-      "caption": "AGREED (plugin-packages-k6), as the human directed. ModalAnyware's contribution categories are two, both ordinary uses of the first-party plugin's API and of TypeScript, and the framework knows neither: an action is any exported function, asynchronous when it may reach native code, called from a command; an event source is any exported subscription, onSomething(handler) returning an unsubscribe, whose handler runs on the script thread, may call any API, and cannot change the interaction, which only an effect delivered through the delivery machine does. A native-backed event source keeps its process only while its plugin keeps the connection open.\n\nProviders are not a ModalAnyware contribution. They are the Machine server's plugins, written against its Swift Provider contract and hosted by the server through the shared plugin framework, the desktop provider first; how the server loads and authorises them is the server project's design. The first-party plugin's machine facade reaches the server through the resident bridge and the app's Machine client, which carries query and execute over the server's transport with ModalAnyware's capability; the agreed JSON contract is the payload. Events do not refresh the Machine graph or retain queried state. App-originated events toward the facade remain outside this increment (configuration-ui-k5).",
       "group": "plugin-contracts",
+      "title": "Native schema and resolver contributions",
       "renderer": "svg",
-      "rendered": "sdk-contributions.svg"
+      "source": "sdk-contributions.d2",
+      "rendered": "sdk-contributions.svg",
+      "caption": "Shared Swift framework direction agreed; the concrete loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Compatible old/new binaries must be verified through the native plugin seam; native trust is distinct from client capabilities."
     }
   ]
 }

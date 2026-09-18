@@ -1,0 +1,27 @@
+# General dependency graph. Alternative library interfaces, not deployment containers.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Question: "Start here · independently upgrade Swift plugins and Koine" {class: start}
+C: "Not selected\nC-compatible boundary" {
+  style.font-size: 22
+  Author: "Swift provider author\nSchema + typed resolver functions"
+  SDK: "Swift authoring SDK\nCompiled privately into the plugin"
+  ABI: "Versioned function table\nByte buffers · explicit ownership"
+  Host: "Koine host\nGraphQL library stays private"
+  Author -> SDK
+  SDK -> ABI
+  ABI -> Host
+}
+Swift: "AGREED\nResilient Swift framework" {
+  style.font-size: 22
+  Author: "Swift provider author\nShared Provider protocol"
+  Framework: "Shared binary framework\nLibrary evolution from release one"
+  Host: "Koine host\nUses the same framework identity"
+  Author -> Framework
+  Framework -> Host
+}
+Question -> C
+Question -> Swift
+Note: "AGREED · Shared resilient Swift framework.\nIts public Swift contract is the compatibility promise.\nCompatible plugins use one host-supplied framework image."

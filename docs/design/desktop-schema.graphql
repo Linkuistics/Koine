@@ -1,0 +1,144 @@
+"""
+Agreed koine-desktop/1 schema. Runtime composition adds provider-owned fields.
+Descriptions expose authority requirements; discovery never grants authority.
+"""
+schema { query: Query mutation: Mutation }
+
+"Opaque koine:// URI string. Pass it unchanged; only its provider interprets the remainder."
+scalar Reference
+
+"UTC instant with exactly six fractional second digits, captured from the process start time."
+scalar DesktopProcessStart
+
+input DesktopProcessIdentity {
+  pid: Int!
+  startedAt: DesktopProcessStart!
+}
+
+type Query {
+  "Authenticated caller metadata. No provider capability required."
+  koine: Koine!
+  "desktop:read. An absent process is ordinary null."
+  desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopApplicationByReference(ref: Reference!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopWindow(ref: Reference!): DesktopWindow
+  "Proof of the submitted secret, or its resulting active grant; own request only."
+  koineGrantRequest: KoineGrantRequest
+  "koine:manage. Never returns bearer credentials."
+  koineManagement: KoineManagement
+}
+
+type Mutation {
+  "desktop:control. All selected mutation actions are authorized before any begins."
+  desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
+  "Anonymous enrollment only; cannot be mixed with other root actions."
+  koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
+  "koine:manage. Approves only a subset of the immutable requested capabilities."
+  koineApproveGrantRequest(requestId: ID!, capabilities: [String!]!): KoineGrant
+  "koine:manage. Denies a pending request."
+  koineDenyGrantRequest(requestId: ID!): KoineGrantRequest
+  "koine:manage. Credential is returned once after durable creation."
+  koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
+  "koine:manage. Idempotent for an already revoked grant; never grants authority."
+  koineRevokeGrant(grantId: ID!): KoineGrant
+}
+
+"All fields require desktop:read."
+type DesktopApplication {
+  ref: Reference!
+  name: String!
+  bundleIdentifier: String
+  windows: [DesktopWindow!]!
+}
+
+"All fields require desktop:read."
+type DesktopWindow {
+  ref: Reference!
+  title: String!
+  observation: DesktopObservation!
+}
+
+enum DesktopObservation { CURRENT REMEMBERED }
+
+"Control-authorized output; it does not expose read-protected window state."
+type DesktopFocusReceipt { ref: Reference! }
+
+type Koine {
+  contractVersion: String!
+  instanceId: String!
+  schemaDigest: String!
+  "Caller only; null only for the non-exportable in-process console principal."
+  ownGrant: KoineGrant
+  "Names available to request. Listing them supplies no authority."
+  availableCapabilities: [String!]!
+}
+
+input KoineRequestGrantInput {
+  clientLabel: String!
+  "Canonical lower-case SHA-256 hex digest of a 32-byte random bearer secret."
+  credentialDigest: String!
+  capabilities: [String!]!
+}
+
+input KoineCreateGrantInput {
+  clientLabel: String!
+  capabilities: [String!]!
+}
+
+type KoineGrantRequestReceipt {
+  requestId: ID!
+  comparisonCode: String!
+}
+
+type KoineGrantRequest {
+  requestId: ID!
+  clientLabel: String!
+  comparisonCode: String!
+  requestedCapabilities: [String!]!
+  state: KoineGrantRequestState!
+  "Present only after approval; scoped to this request."
+  grant: KoineGrant
+}
+
+enum KoineGrantRequestState { PENDING APPROVED DENIED EXPIRED }
+
+type KoineGrant {
+  grantId: ID!
+  clientLabel: String!
+  capabilities: [String!]!
+  state: KoineGrantState!
+}
+
+enum KoineGrantState { ACTIVE REVOKED }
+
+type KoineCreatedGrant {
+  grant: KoineGrant!
+  "One-time 32-byte random bearer secret encoded as unpadded base64url."
+  credential: String!
+}
+
+"All fields require koine:manage."
+type KoineManagement {
+  requests: [KoineGrantRequest!]!
+  grants: [KoineGrant!]!
+  providers: [KoineProviderStatus!]!
+  osPermissions: [KoineOSPermission!]!
+}
+
+type KoineProviderStatus {
+  provider: String!
+  version: String!
+  schemaVersion: String!
+  state: KoineProviderState!
+  diagnostic: String
+}
+
+enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
+
+type KoineOSPermission {
+  permission: String!
+  owner: String!
+  granted: Boolean!
+}

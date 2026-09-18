@@ -18,14 +18,15 @@ and served by the **Machine server**.
 **Machine package**: The independent Swift package containing the generic
 mechanism and provider contracts behind the **Machine abstraction**. It is
 the core of the **Machine server** and has no dependency on macOS, on a
-concrete application or on any client. Its inherited concrete types and
-provider protocol need reconciliation with the GraphQL and stable-ABI
-requirements; the term does not fix those interfaces in their old form.
+concrete application or on any client. It uses the **provider framework** for
+the native provider contract; the term does not prescribe the inherited
+query/execute payload.
 
-**Machine server**: The separate application that exposes the **Machine
+**Machine server**: The separate resident application that exposes the **Machine
 abstraction** through a fully introspectable GraphQL API with a capability
 model, hosts native **providers**, holds the OS permissions for their
-operations. An LLM skill set is planned after the first deliverable unblocks
+operations. Its native management UI and **providers** run in the same process.
+An LLM skill set is planned after the first deliverable unblocks
 ModalAnyware. No project includes the server; ModalAnyware is one of its
 **clients**.
 
@@ -42,18 +43,28 @@ operations.
 Koine **capabilities**. A grant remains valid across restarts until explicitly
 revoked.
 
+**Bearer credential**: An opaque secret whose possession lets a **client**
+exercise one **grant**. The client stores it in Keychain or a protected file;
+Koine checks the live grant on every request. Copying the secret transfers its
+authority, and explicit revocation ends that authority.
+
 **Provider**: A native Swift **Machine server** plugin contributing an
 application's or the desktop's GraphQL schema and the implementation of its
 state and commands; the desktop provider is the first. Providers and the
-server can be upgraded independently through a stable binary interface.
+server can be upgraded independently through the **provider framework**.
+
+**Provider framework**: The shared resilient Swift binary framework defining
+the types and protocols used by native **providers** and the **Machine server**.
+Its public Swift contract is the binary compatibility promise for independent
+provider/server upgrades.
 
 **Resource reference**: A URI string, `koine://<provider>/<remainder>`,
 returned with provider state and passed unchanged into a later query or
 mutation. The engine routes by the authority; the **provider** re-resolves the
 remainder on every use and reports if the resource is unavailable, retaining
 no queried state. A provider's root is a reference with an empty remainder.
-Opaque by contract; its exact GraphQL and client-binding representation
-remains design work. The scheme follows the project's name, replacing the
+Opaque by contract; represented by the GraphQL `Reference` scalar and an opaque
+string wrapper in client bindings. The scheme follows the project's name, replacing the
 inherited `machine` placeholder according to the existing naming rule.
 _Avoid_: handle, id, key
 
