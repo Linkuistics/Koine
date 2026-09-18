@@ -69,7 +69,14 @@ It contains `descriptorVersion`, `instanceId`, `pid`, `port`, `path` equal to
 `/graphql`, and `contractVersion` equal to `koine-desktop/1`. It contains no
 credential. Clients construct the literal loopback URL; they do not follow an
 arbitrary host or scheme from a file. Shutdown removes only its own descriptor.
-A process lock prevents a second Koine instance from becoming a second writer.
+A process lock prevents a second Koine instance from becoming a second writer:
+an instance holds an exclusive BSD `flock` on `instance.lock` in the same
+directory from before it opens the grant store until it has withdrawn its
+descriptor, and a second instance fails to start. The OS releases the lock when
+its holder exits for any reason, so there is no stale lock to detect. The lock
+holder deletes any descriptor it finds before it starts: under the lock such a
+descriptor was left by a dead instance, and its `pid` and `port` are not
+evidence of anything.
 
 A client reads the descriptor on connection and again after connection failure.
 It may reconnect for a subsequent request; it never automatically replays a
@@ -90,8 +97,19 @@ use cookies, query-string credentials, redirects or wildcard CORS. These rules
 keep websites from driving a local native-control endpoint; they do not isolate
 local native programs from each other.
 
-Set `Cache-Control: no-store`. Unsupported media types/methods and malformed
-HTTP are transport errors. GraphQL syntax, validation and variable-coercion
+Set `Cache-Control: no-store` on every response. Unsupported media
+types/methods and malformed HTTP are transport errors. They carry no GraphQL
+body and are decided in this order, before the credential is examined: any
+`Origin` header, 403; a `Host` other than the literal bound `127.0.0.1:<port>`,
+or none, 421; a request target other than exactly `/graphql` (a query string
+makes it another target), 404; a method other than POST, 405 with
+`Allow: POST`; a `Content-Type` other than `application/json` (parameters
+allowed), 415. A body over the size limit is 413 and closes the connection.
+After authentication, a body that is not one JSON request object, which includes
+a batch array, is 400. The response is `application/graphql-response+json` when
+`Accept` lists it and `application/json` otherwise. Authentication is evaluated
+for every request; a connection carries no authority from one request to the
+next. GraphQL syntax, validation and variable-coercion
 failures return HTTP 400 with `errors` and no `data`. Invalid or revoked bearer
 credentials return HTTP 401 before execution. An authenticated mutation rejected
 by capability preflight returns HTTP 403 with `errors` and no `data`. Each denied
@@ -107,6 +125,20 @@ expanded field selections, and 10 root mutation actions per request. Expand
 fragments with cycle detection before counting. Reject over-limit requests
 before provider callbacks; cap response materialization at 8 MiB and execution
 at 5 seconds. A timeout after an action begins does not prove that it failed.
+
+Depth counts field levels and selections count fields, in every operation of
+the document, each fragment counted at every spread and `@skip`/`@include`
+ignored. Query text whose brackets nest deeper than 64, or whose fragment
+spreads and inline fragments chain deeper than 64, is also over-limit: that
+bound is checked before parsing and protects the parser itself. An over-limit
+request is a request error: HTTP 400 with `errors` and no `data`, decided before
+validation and before capability preflight. A response over its cap and an
+execution past its deadline are executed operations: HTTP 200 with `data: null`
+and one error with `extensions.kind: failed`. Neither says whether a requested
+action ran. At the deadline Koine answers the caller, cancels execution
+cooperatively and starts no further resolver; it does not interrupt a resolver
+already running. The values are one named, versioned policy in the Machine core
+(`RequestPolicy.version1`).
 Provider-native work must use bounded OS calls and cooperative cancellation.
 These limits are versioned policy, not a promise to interrupt arbitrary native
 code or to undo actions.

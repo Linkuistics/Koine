@@ -295,6 +295,14 @@ The human chose a root `Taskfile.yml` as the workflow tool in
 `first-authenticated-query-k5`. It wraps `swift build` and `swift test`; later
 stages add their build and verification commands to it.
 
+`authenticated-endpoint-k4` is complete. What later stages build on: the
+embeddable `KoineServer(dataDirectory:policy:)` is one run per object and holds
+the data directory's instance lock from `init` to `stop()`, so the resident
+application must `stop()` it to hand over; every request/response limit is a
+value of `RequestPolicy` in `KoineCore`, and a stage that adds schema keeps
+introspection inside it. "Serve only what is implemented" and "keep the GraphQL
+library private to the engine" (that node's notes) continue to bind.
+
 The seed records ModalAnyware paused at `first-increment-k7`, waiting for
 Koine and, separately, PluginAnyware. That does not make PluginAnyware a
 dependency of Koine. One of that leaf's hand-offs is ModalAnyware's Machine

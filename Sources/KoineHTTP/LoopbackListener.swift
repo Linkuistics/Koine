@@ -8,6 +8,9 @@ public struct HTTPRequest: Sendable {
     /// Header names are lower-cased; the first value wins.
     public let headers: [String: String]
     public let body: [UInt8]
+    /// The literal `address:port` this listener is bound to, which is what a
+    /// legitimate client's `Host` header carries.
+    public let boundAuthority: String
 }
 
 public struct HTTPResponse: Sendable {
@@ -29,14 +32,14 @@ public final class LoopbackListener: Sendable {
     typealias Connection = NIOAsyncChannel<HTTPServerRequestPart, HTTPPart<HTTPResponseHead, ByteBuffer>>
 
     public static let host = "127.0.0.1"
-    static let maximumBodyBytes = 1 << 20
-
     public let port: Int
     private let serverChannel: NIOAsyncChannel<Connection, Never>
     private let acceptLoop: Task<Void, Never>
 
-    /// Binds and starts accepting. The listener is ready when this returns.
-    public init(handler: @escaping Handler) async throws {
+    /// Binds and starts accepting. The listener is ready when this returns. A
+    /// request whose body exceeds `maximumBodyBytes` is answered 413 and its
+    /// connection closed; it never reaches `handler`.
+    public init(maximumBodyBytes: Int, handler: @escaping Handler) async throws {
         // Async bootstrap as in swift-nio's Sources/NIOWebSocketServer/Server.swift:
         // https://github.com/apple/swift-nio/blob/2.103.0/Sources/NIOWebSocketServer/Server.swift
         let channel = try await ServerBootstrap(group: MultiThreadedEventLoopGroup.singleton)
@@ -55,7 +58,12 @@ public final class LoopbackListener: Sendable {
         acceptLoop = Task {
             try? await channel.executeThenClose { connections in
                 for try await connection in connections {
-                    Task { try? await Self.serve(connection, handler: handler) }
+                    Task {
+                        try? await Self.serve(
+                            connection, authority: "\(Self.host):\(port)",
+                            maximumBodyBytes: maximumBodyBytes, handler: handler
+                        )
+                    }
                 }
             }
         }
@@ -67,7 +75,10 @@ public final class LoopbackListener: Sendable {
         await acceptLoop.value
     }
 
-    private static func serve(_ connection: Connection, handler: @escaping Handler) async throws {
+    private static func serve(
+        _ connection: Connection, authority: String, maximumBodyBytes: Int,
+        handler: @escaping Handler
+    ) async throws {
         try await connection.executeThenClose { inbound, outbound in
             var head: HTTPRequestHead?
             var body: [UInt8] = []
@@ -76,6 +87,13 @@ public final class LoopbackListener: Sendable {
                 case .head(let requestHead):
                     head = requestHead
                     body = []
+                    let declared = requestHead.headers.first(name: "Content-Length").flatMap(Int.init)
+                    if let declared, declared > maximumBodyBytes {
+                        try await write(
+                            HTTPResponse(status: 413), keepAlive: false, to: outbound
+                        )
+                        return
+                    }
                 case .body(var buffer):
                     body += buffer.readBytes(length: buffer.readableBytes) ?? []
                     if body.count > maximumBodyBytes {
@@ -94,7 +112,7 @@ public final class LoopbackListener: Sendable {
                     let response = await handler(
                         HTTPRequest(
                             method: requestHead.method.rawValue, path: requestHead.uri,
-                            headers: headers, body: body
+                            headers: headers, body: body, boundAuthority: authority
                         )
                     )
                     try await write(response, keepAlive: requestHead.isKeepAlive, to: outbound)
@@ -110,6 +128,8 @@ public final class LoopbackListener: Sendable {
     ) async throws {
         var headers = HTTPHeaders(response.headers.map { ($0.key, $0.value) })
         headers.replaceOrAdd(name: "Content-Length", value: String(response.body.count))
+        // No response of a local native-control endpoint is cacheable.
+        headers.replaceOrAdd(name: "Cache-Control", value: "no-store")
         headers.replaceOrAdd(name: "Connection", value: keepAlive ? "keep-alive" : "close")
         let head = HTTPResponseHead(
             version: .http1_1, status: .init(statusCode: response.status), headers: headers

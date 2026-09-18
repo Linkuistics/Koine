@@ -1,4 +1,5 @@
 import Foundation
+import KoineCore
 import KoineServer
 
 /// A running server over a throwaway data directory, plus the client's view of
@@ -7,18 +8,27 @@ final class Harness {
     let directory: URL
     private(set) var server: KoineServer
 
-    init() async throws {
+    private var policy: RequestPolicy
+
+    /// `seed` runs on the data directory before the server first opens it.
+    init(policy: RequestPolicy = .version1, seed: ((URL) throws -> Void)? = nil) async throws {
         directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("koine-tests-\(UUID().uuidString)", isDirectory: true)
-        server = try KoineServer(dataDirectory: directory)
+        self.policy = policy
+        if let seed {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            try seed(directory)
+        }
+        server = try KoineServer(dataDirectory: directory, policy: policy)
         try await server.start()
     }
 
     deinit { try? FileManager.default.removeItem(at: directory) }
 
-    func restart() async throws {
+    func restart(policy: RequestPolicy? = nil) async throws {
+        if let policy { self.policy = policy }
         await server.stop()
-        server = try KoineServer(dataDirectory: directory)
+        server = try KoineServer(dataDirectory: directory, policy: self.policy)
         try await server.start()
     }
 
@@ -120,4 +130,142 @@ final class Harness {
             kind name ofType { kind name ofType { kind name ofType { kind name } } } } } } }
         }
         """
+}
+
+// MARK: Raw HTTP
+
+/// One HTTP response as it came off the socket. Header names are lower-cased.
+struct RawResponse: Sendable {
+    let status: Int
+    let headers: [String: String]
+    let body: Data
+
+    var json: [String: Any] {
+        (try? JSONSerialization.jsonObject(with: body)) as? [String: Any] ?? [:]
+    }
+    var errors: [[String: Any]] { json["errors"] as? [[String: Any]] ?? [] }
+    var hasData: Bool { json.keys.contains("data") }
+}
+
+/// A plain TCP connection to the loopback endpoint. The transport rules are
+/// about exact request bytes — Host, Origin, method, framing, connection reuse —
+/// which URLSession rewrites or forbids, so these tests write them by hand.
+final class RawConnection: @unchecked Sendable {
+    private let socket: Int32
+    private var buffer = Data()
+
+    init(port: Int) throws {
+        socket = Darwin.socket(AF_INET, SOCK_STREAM, 0)
+        var timeout = timeval(tv_sec: 20, tv_usec: 0)
+        setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &timeout, socklen_t(MemoryLayout<timeval>.size))
+        var noSigPipe: Int32 = 1
+        setsockopt(socket, SOL_SOCKET, SO_NOSIGPIPE, &noSigPipe, socklen_t(MemoryLayout<Int32>.size))
+        var address = sockaddr_in()
+        address.sin_family = sa_family_t(AF_INET)
+        address.sin_port = in_port_t(port).bigEndian
+        address.sin_addr.s_addr = inet_addr("127.0.0.1")
+        let connected = withUnsafePointer(to: &address) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                connect(socket, $0, socklen_t(MemoryLayout<sockaddr_in>.size))
+            }
+        }
+        guard connected == 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
+    }
+
+    deinit { close(socket) }
+
+    /// Writes as much as the peer will take; a server that has already answered
+    /// and closed is not an error here.
+    func send(_ data: Data) {
+        data.withUnsafeBytes { bytes in
+            var offset = 0
+            while offset < bytes.count {
+                let written = Darwin.send(socket, bytes.baseAddress! + offset, bytes.count - offset, 0)
+                guard written > 0 else { return }
+                offset += written
+            }
+        }
+    }
+
+    func readResponse() throws -> RawResponse {
+        let separator = Data("\r\n\r\n".utf8)
+        while buffer.range(of: separator) == nil { try fill() }
+        let headerEnd = buffer.range(of: separator)!
+        let lines = String(decoding: buffer[..<headerEnd.lowerBound], as: UTF8.self)
+            .components(separatedBy: "\r\n")
+        var headers: [String: String] = [:]
+        for line in lines.dropFirst() {
+            guard let colon = line.firstIndex(of: ":") else { continue }
+            headers[line[..<colon].lowercased()] =
+                line[line.index(after: colon)...].trimmingCharacters(in: .whitespaces)
+        }
+        let length = Int(headers["content-length"] ?? "") ?? 0
+        buffer.removeSubrange(..<headerEnd.upperBound)
+        while buffer.count < length { try fill() }
+        let body = Data(buffer.prefix(length))
+        buffer.removeSubrange(..<(buffer.startIndex + length))
+        return RawResponse(
+            status: Int(lines[0].split(separator: " ")[1]) ?? 0, headers: headers, body: body
+        )
+    }
+
+    private func fill() throws {
+        var chunk = [UInt8](repeating: 0, count: 65_536)
+        let count = recv(socket, &chunk, chunk.count, 0)
+        guard count > 0 else { throw POSIXError(count == 0 ? .ECONNRESET : .ETIMEDOUT) }
+        buffer.append(contentsOf: chunk[..<count])
+    }
+}
+
+extension Harness {
+    var port: Int { (try? descriptor()["port"] as? Int) ?? 0 }
+
+    /// The bytes of one request. `headers` overrides the well-formed defaults;
+    /// a nil value removes that header.
+    func requestBytes(
+        method: String = "POST", target: String = "/graphql", version: String = "HTTP/1.1",
+        headers overrides: [String: String?] = [:], body: Data
+    ) -> Data {
+        var headers: [String: String] = [
+            "Host": "127.0.0.1:\(port)",
+            "Content-Type": "application/json",
+            "Content-Length": String(body.count),
+        ]
+        for (name, value) in overrides { headers[name] = value }
+        var head = "\(method) \(target) \(version)\r\n"
+        for (name, value) in headers.sorted(by: { $0.key < $1.key }) {
+            head += "\(name): \(value)\r\n"
+        }
+        return Data((head + "\r\n").utf8) + body
+    }
+
+    /// One request on its own connection.
+    func raw(
+        _ query: String = Harness.koine, variables: [String: Any] = [:], bearer: String?,
+        method: String = "POST", target: String = "/graphql", version: String = "HTTP/1.1",
+        headers: [String: String?] = [:], body: Data? = nil
+    ) async throws -> RawResponse {
+        var headers = headers
+        if let bearer, headers["Authorization"] == nil {
+            headers["Authorization"] = "Bearer \(bearer)"
+        }
+        let port = port
+        let request = requestBytes(
+            method: method, target: target, version: version, headers: headers,
+            body: try body ?? Self.requestBody(query, variables: variables)
+        )
+        return try await offPool {
+            let connection = try RawConnection(port: port)
+            connection.send(request)
+            return try connection.readResponse()
+        }
+    }
+}
+
+/// Runs blocking socket I/O on a dispatch thread. The server under test shares
+/// this process's cooperative pool; blocking that pool would starve it.
+func offPool<T: Sendable>(_ work: @escaping @Sendable () throws -> T) async throws -> T {
+    try await withCheckedThrowingContinuation { continuation in
+        DispatchQueue.global().async { continuation.resume(with: Result(catching: work)) }
+    }
 }

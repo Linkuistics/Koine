@@ -3,6 +3,14 @@ import KoineCore
 import KoineHTTP
 import KoineSQLiteStore
 
+public enum KoineServerError: Error, Equatable {
+    /// Another Koine instance holds this data directory's instance lock.
+    case alreadyRunning
+    /// `start()` was called on a server that has started or stopped. A server
+    /// object is one run; a new run is a new object with a new `instanceId`.
+    case alreadyStarted
+}
+
 /// The embeddable Koine server. The resident application and the tests embed it
 /// the same way: construct it over a data directory, start it, and use
 /// `console` for in-process management.
@@ -18,13 +26,17 @@ public final class KoineServer: Sendable {
 
     private let dataDirectory: URL
     private let engine: Engine
-    private let listener = ListenerBox()
+    private let policy: RequestPolicy
+    private let instanceLock: InstanceLock
+    private let run = Run()
 
-    /// Opens the grant store in `dataDirectory`, creating the directory
-    /// user-only (0700). A store that cannot be opened throws; the server does
-    /// not start over a replacement.
-    public init(dataDirectory: URL) throws {
+    /// Takes the data directory's instance lock, then opens the grant store in
+    /// it, creating the directory user-only (0700). Throws `alreadyRunning`
+    /// when another instance holds the lock. A store that cannot be opened
+    /// throws; the server does not start over a replacement.
+    public init(dataDirectory: URL, policy: RequestPolicy = .version1) throws {
         self.dataDirectory = dataDirectory
+        self.policy = policy
         try FileManager.default.createDirectory(
             at: dataDirectory, withIntermediateDirectories: true,
             attributes: [.posixPermissions: 0o700]
@@ -32,10 +44,14 @@ public final class KoineServer: Sendable {
         try FileManager.default.setAttributes(
             [.posixPermissions: 0o700], ofItemAtPath: dataDirectory.path
         )
+        instanceLock = try InstanceLock(in: dataDirectory)
+        // Under the lock, a descriptor already here was left by a dead
+        // instance. It is replaced, never consulted.
+        EndpointDescriptor.removeStale(in: dataDirectory)
         let store = try SQLiteGrantStore(
             path: dataDirectory.appendingPathComponent("grants.sqlite").path
         )
-        engine = try Engine(store: store, instanceId: instanceId)
+        engine = try Engine(store: store, instanceId: instanceId, policy: policy)
         console = LocalConsole(engine: engine)
     }
 
@@ -44,10 +60,11 @@ public final class KoineServer: Sendable {
     @discardableResult
     public func start() async throws -> Int {
         let engine = engine
-        let bound = try await LoopbackListener { request in
-            await Self.respond(to: request, engine: engine)
+        try await run.begin()
+        let bound = try await LoopbackListener(maximumBodyBytes: policy.maximumBodyBytes) {
+            request in await Self.respond(to: request, engine: engine)
         }
-        await listener.set(bound)
+        await run.set(bound)
         try EndpointDescriptor(
             instanceId: instanceId, pid: ProcessInfo.processInfo.processIdentifier,
             port: bound.port, contractVersion: koineContractVersion
@@ -55,18 +72,36 @@ public final class KoineServer: Sendable {
         return bound.port
     }
 
+    /// Withdraws this instance's own descriptor, stops listening and releases
+    /// the instance lock. A descriptor some other instance published is left.
     public func stop() async {
-        await listener.take()?.stop()
+        EndpointDescriptor.remove(publishedBy: instanceId, in: dataDirectory)
+        await run.take()?.stop()
+        instanceLock.release()
     }
 
     // MARK: HTTP
 
     /// Authenticates, then executes. The only principals this path can produce
     /// come from a presented bearer credential; nothing here names the console.
+    ///
+    /// The transport rules run first and in this order, so a request a website
+    /// could cause is refused before its credential is even looked at.
     private static func respond(to request: HTTPRequest, engine: Engine) async -> HTTPResponse {
+        // Browsers attach Origin to every cross-origin request and to every
+        // POST; native clients have no reason to. `Origin: null` is a value.
+        guard request.headers["origin"] == nil else { return HTTPResponse(status: 403) }
+        // A rebinding website reaches this socket under its own host name.
+        guard request.headers["host"] == request.boundAuthority else {
+            return HTTPResponse(status: 421)
+        }
+        // The whole target: a query string is not part of the endpoint.
         guard request.path == "/graphql" else { return HTTPResponse(status: 404) }
         guard request.method == "POST" else {
             return HTTPResponse(status: 405, headers: ["Allow": "POST"])
+        }
+        guard mediaType(request.headers["content-type"]) == "application/json" else {
+            return HTTPResponse(status: 415)
         }
         let bearerPrefix = "Bearer "
         guard let authorization = request.headers["authorization"],
@@ -77,6 +112,7 @@ public final class KoineServer: Sendable {
         else {
             return HTTPResponse(status: 401, headers: ["WWW-Authenticate": "Bearer"])
         }
+        // One JSON object per POST; a batch array does not decode.
         guard let graphQLRequest = try? EngineRequest(jsonBody: Data(request.body)) else {
             return HTTPResponse(status: 400)
         }
@@ -90,15 +126,18 @@ public final class KoineServer: Sendable {
         case .forbidden: status = 403
         }
         let modern = "application/graphql-response+json"
-        let accepted = request.headers["accept"] ?? ""
+        let accepted = (request.headers["accept"] ?? "").split(separator: ",")
+            .map { mediaType(String($0)) }
         return HTTPResponse(
             status: status,
-            headers: [
-                "Content-Type": accepted.contains(modern) ? modern : "application/json",
-                "Cache-Control": "no-store",
-            ],
+            headers: ["Content-Type": accepted.contains(modern) ? modern : "application/json"],
             body: [UInt8](response.body)
         )
+    }
+
+    /// The `type/subtype` of a media-type header value, without parameters.
+    private static func mediaType(_ value: String?) -> String? {
+        value?.split(separator: ";").first?.trimmingCharacters(in: .whitespaces).lowercased()
     }
 }
 
@@ -115,10 +154,19 @@ public struct LocalConsole: Sendable {
     }
 }
 
-private actor ListenerBox {
+private actor Run {
+    private var begun = false
     private var listener: LoopbackListener?
+
+    func begin() throws {
+        guard !begun else { throw KoineServerError.alreadyStarted }
+        begun = true
+    }
+
     func set(_ new: LoopbackListener) { listener = new }
+
     func take() -> LoopbackListener? {
+        begun = true
         defer { listener = nil }
         return listener
     }

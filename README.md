@@ -59,10 +59,10 @@ The tests embed the server over a temporary data directory; they never touch
 
 | Target | Role |
 |---|---|
-| `KoineCore` | The Machine core: principals, credentials, the `GrantStore` contract and GraphQL execution with per-field authorization. No macOS, client or provider dependency; the GraphQL library is private to it. |
+| `KoineCore` | The Machine core: principals, credentials, the `GrantStore` contract and GraphQL execution with per-field authorization, bounded by the versioned `RequestPolicy` limits. No macOS, client or provider dependency; the GraphQL library is private to it. |
 | `KoineSQLiteStore` | The durable `GrantStore`: one SQLite file, fully synchronised commits, fails closed. |
 | `KoineHTTP` | An HTTP/1.1 listener bound to `127.0.0.1` on an OS-assigned port. Knows nothing of GraphQL. |
-| `KoineServer` | The embeddable composition: data directory, descriptor, bearer authentication, and the in-process `LocalConsole`. |
+| `KoineServer` | The embeddable composition: data directory, single-instance lock, descriptor lifecycle, the HTTP transport rules, bearer authentication, and the in-process `LocalConsole`. |
 
 An application embeds it as the tests do: `KoineServer(dataDirectory:)`, then
 `start()`. `server.console` is the local-console principal; it has no wire form.

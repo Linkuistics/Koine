@@ -25,7 +25,8 @@ public struct EngineResponse: Sendable {
     public enum Outcome: Sendable {
         /// Executed. The body, not this case, says whether fields succeeded.
         case executed
-        /// Syntax, validation or operation-selection failure; nothing executed.
+        /// Syntax, validation, variable-coercion, operation-selection or
+        /// request-limit failure; no resolver ran.
         case invalidRequest
         /// The principal is not admitted; nothing executed.
         case unauthenticated
@@ -46,9 +47,15 @@ public final class Engine: Sendable {
     private let schema: GraphQLSchema
     private let authority: Authority
     private let fieldAuthorities: [String: FieldAuthority]
+    private let policy: RequestPolicy
+    private let limits: RequestLimits
 
-    public init(store: any GrantStore, instanceId: String) throws {
+    public init(
+        store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1
+    ) throws {
         self.instanceId = instanceId
+        self.policy = policy
+        limits = RequestLimits(policy: policy)
         authority = Authority(store: store)
 
         let schema = try buildSchema(source: coreSchemaSDL)
@@ -74,8 +81,19 @@ public final class Engine: Sendable {
             return respond(.unauthenticated, errors: [GraphQLError(message: "Not authenticated.")])
         }
 
+        // The policy's limits come first: the parser and the validator both
+        // recurse over whatever they are given.
         let document: Document
-        do { document = try parse(source: request.query) } catch {
+        let actions: [Field]
+        do {
+            try limits.checkSyntaxNesting(of: request.query)
+            document = try parse(source: request.query)
+            try limits.check(document)
+            actions = rootMutationActions(in: document, request: request)
+            try limits.checkRootMutationActions(actions.count)
+        } catch let exceeded as RequestLimits.Exceeded {
+            return respond(.invalidRequest, errors: [GraphQLError(message: exceeded.message)])
+        } catch {
             return respond(.invalidRequest, errors: [error as? GraphQLError ?? GraphQLError(error)])
         }
         let validationErrors = validate(schema: schema, ast: document)
@@ -83,31 +101,113 @@ public final class Engine: Sendable {
             return respond(.invalidRequest, errors: validationErrors)
         }
 
-        let denied = preflightDenials(in: document, request: request, principal: principal)
+        let denied = preflightDenials(of: actions, principal: principal)
         guard denied.isEmpty else { return respond(.forbidden, errors: denied) }
 
-        do {
-            let result = try await GraphQL.execute(
-                schema: schema,
-                documentAST: document,
-                rootValue: (),
-                context: principal,
-                variableValues: request.variables,
-                operationName: request.operationName
+        let scope = ExecutionScope(
+            principal: principal, deadline: .now.advanced(by: policy.executionDeadline)
+        )
+        guard var result = await executeWithinDeadline(document, request: request, scope: scope)
+        else {
+            return respond(
+                .executed, data: .null,
+                errors: [
+                    GraphQLError(
+                        message: "Execution exceeded its time limit. "
+                            + "An action that had already begun may still have completed.",
+                        extensions: ["kind": .string(DomainError.Kind.failed.rawValue)]
+                    )
+                ]
             )
-            return EngineResponse(outcome: .executed, body: try encode(result))
-        } catch {
-            return respond(.executed, errors: [error as? GraphQLError ?? GraphQLError(error)])
         }
+        // The library reports operation-selection and variable-coercion failures
+        // as an ordinary result. They are the results with no data for which no
+        // resolver began.
+        if result.data == nil, !scope.resolverBegan {
+            return respond(.invalidRequest, errors: result.errors)
+        }
+        // A non-null error that reached the root: `data` is null, not absent.
+        if result.data == nil { result.data = .null }
+        guard let body = try? encode(result) else {
+            return respond(.executed, data: .null, errors: [GraphQLError(message: "Internal error.")])
+        }
+        guard body.count <= policy.maximumResponseBytes else {
+            return respond(
+                .executed, data: .null,
+                errors: [
+                    GraphQLError(
+                        message: "The response exceeds \(policy.maximumResponseBytes) bytes. "
+                            + "Select fewer fields; any requested action has already run.",
+                        extensions: ["kind": .string(DomainError.Kind.failed.rawValue)]
+                    )
+                ]
+            )
+        }
+        return EngineResponse(outcome: .executed, body: body)
+    }
+
+    /// Runs the operation and answers by `scope.deadline` whatever it is doing.
+    /// Returns nil on expiry, having cancelled the execution task. Cancellation
+    /// is cooperative: the host resolver starts no new field after it, but a
+    /// resolver already inside native code runs on, so expiry says nothing about
+    /// whether an action that had begun completed. The library materializes a
+    /// response whole, so the size cap applies to the finished body.
+    private func executeWithinDeadline(
+        _ document: Document, request: EngineRequest, scope: ExecutionScope
+    ) async -> GraphQLResult? {
+        let (outcomes, outcome) = AsyncStream<GraphQLResult?>.makeStream()
+        let schema = schema
+        let work = Task {
+            do {
+                outcome.yield(
+                    try await GraphQL.execute(
+                        schema: schema,
+                        documentAST: document,
+                        rootValue: (),
+                        context: scope,
+                        variableValues: request.variables,
+                        operationName: request.operationName
+                    )
+                )
+            } catch {
+                outcome.yield(GraphQLResult(errors: [error as? GraphQLError ?? GraphQLError(error)]))
+            }
+        }
+        let timer = Task {
+            try? await Task.sleep(until: scope.deadline, clock: .continuous)
+            outcome.yield(nil)
+        }
+        defer {
+            work.cancel()
+            timer.cancel()
+        }
+        for await first in outcomes { return first }
+        return nil
     }
 
     // MARK: Mutation preflight
 
     /// Checks every selected root mutation action against the principal's
     /// current authority before any action begins. No resolver runs here.
-    private func preflightDenials(
-        in document: Document, request: EngineRequest, principal: Principal
-    ) -> [GraphQLError] {
+    private func preflightDenials(of actions: [Field], principal: Principal) -> [GraphQLError] {
+        actions.compactMap { action in
+            guard let requirement = fieldAuthorities["Mutation.\(action.name.value)"] else {
+                return nil  // introspection meta-fields such as __typename
+            }
+            do {
+                try authority.check(requirement, for: principal)
+                return nil
+            } catch {
+                let alias = action.alias?.value ?? action.name.value
+                return Engine.graphQLError(
+                    error, nodes: [action], path: [alias], phase: "authorization"
+                )
+            }
+        }
+    }
+
+    /// The root fields of the selected operation when it is a mutation.
+    private func rootMutationActions(in document: Document, request: EngineRequest) -> [Field] {
         let operations = document.definitions.compactMap { $0 as? OperationDefinition }
         guard
             let operation = operations.first(where: {
@@ -133,21 +233,7 @@ public final class Engine: Sendable {
             operation.selectionSet, fragments: fragments, variables: variables,
             visited: &visited, into: &actions
         )
-
-        return actions.compactMap { action in
-            guard let requirement = fieldAuthorities["Mutation.\(action.name.value)"] else {
-                return nil  // introspection meta-fields such as __typename
-            }
-            do {
-                try authority.check(requirement, for: principal)
-                return nil
-            } catch {
-                let alias = action.alias?.value ?? action.name.value
-                return Engine.graphQLError(
-                    error, nodes: [action], path: [alias], phase: "authorization"
-                )
-            }
-        }
+        return actions
     }
 
     private func collectRootFields(
@@ -238,9 +324,11 @@ public final class Engine: Sendable {
                 unused.remove(coordinate)
                 field.resolve = { source, arguments, context, info in
                     do {
-                        guard let principal = context as? Principal else {
+                        guard let scope = context as? ExecutionScope else {
                             throw DomainError.failed("No principal.")
                         }
+                        try scope.admitResolver()
+                        let principal = scope.principal
                         try authority.check(registration.authority, for: principal)
                         return try await registration.resolve(
                             ResolverInput(parent: source, arguments: arguments, principal: principal)
@@ -278,15 +366,42 @@ public final class Engine: Sendable {
         )
     }
 
-    private func respond(_ outcome: EngineResponse.Outcome, errors: [GraphQLError]) -> EngineResponse
-    {
-        let body = (try? encode(GraphQLResult(errors: errors)))
+    private func respond(
+        _ outcome: EngineResponse.Outcome, data: Map? = nil, errors: [GraphQLError]
+    ) -> EngineResponse {
+        let body = (try? encode(GraphQLResult(data: data, errors: errors)))
             ?? Data(#"{"errors":[{"message":"Internal error."}]}"#.utf8)
         return EngineResponse(outcome: outcome, body: body)
     }
 
     private func encode(_ result: GraphQLResult) throws -> Data {
         try GraphQLJSONEncoder().encode(result)
+    }
+}
+
+/// One operation's execution state, passed to every resolver as the library's
+/// context value.
+private final class ExecutionScope: @unchecked Sendable {
+    let principal: Principal
+    let deadline: ContinuousClock.Instant
+
+    private let lock = NSLock()
+    private var began = false
+
+    init(principal: Principal, deadline: ContinuousClock.Instant) {
+        self.principal = principal
+        self.deadline = deadline
+    }
+
+    var resolverBegan: Bool { lock.withLock { began } }
+
+    /// Called before each resolver. After cancellation or the deadline no
+    /// further resolver starts.
+    func admitResolver() throws {
+        lock.withLock { began = true }
+        guard !Task.isCancelled, ContinuousClock.now < deadline else {
+            throw DomainError.failed("Execution exceeded its time limit.")
+        }
     }
 }
 

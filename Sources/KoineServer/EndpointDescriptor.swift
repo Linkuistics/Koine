@@ -28,4 +28,22 @@ public struct EndpointDescriptor: Codable, Sendable, Equatable {
             throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO)
         }
     }
+
+    /// Removes whatever descriptor `directory` holds. Only the holder of the
+    /// instance lock may call this: under the lock, a descriptor that exists was
+    /// left by an instance that is gone, whatever pid and port it names.
+    static func removeStale(in directory: URL) {
+        try? FileManager.default.removeItem(at: directory.appendingPathComponent(fileName))
+    }
+
+    /// Removes the descriptor in `directory` only while it is still the one
+    /// `instanceId` published.
+    static func remove(publishedBy instanceId: String, in directory: URL) {
+        let file = directory.appendingPathComponent(fileName)
+        guard let data = try? Data(contentsOf: file),
+            let published = try? JSONDecoder().decode(EndpointDescriptor.self, from: data),
+            published.instanceId == instanceId
+        else { return }
+        try? FileManager.default.removeItem(at: file)
+    }
 }
