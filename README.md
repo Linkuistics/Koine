@@ -24,8 +24,10 @@ skill set are deferred until after ModalAnyware is unblocked.
 The first increment is built: an embeddable server that binds loopback,
 publishes its endpoint descriptor, authenticates bearer credentials against a
 durable grant store and answers `Query.koine`, `Mutation.koineCreateGrant` and
-full introspection. The resident application, providers and the desktop path
-are later increments. The agreed design:
+full introspection. The second increment has begun: a signed resident
+`Koine.app` embeds that server and creates grants from its window. Grant listing
+and revocation, login launch, providers and the desktop path are later
+increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -50,6 +52,8 @@ Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build
 task test      # swift test: the public-seam suite over real loopback HTTP
+task app       # assemble and sign .build/app/Koine.app
+task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 ```
 
 The tests embed the server over a temporary data directory; they never touch
@@ -64,8 +68,68 @@ The tests embed the server over a temporary data directory; they never touch
 | `KoineHTTP` | An HTTP/1.1 listener bound to `127.0.0.1` on an OS-assigned port. Knows nothing of GraphQL. |
 | `KoineServer` | The embeddable composition: data directory, single-instance lock, descriptor lifecycle, the HTTP transport rules, bearer authentication, and the in-process `LocalConsole`. |
 
+| `KoineManagementClient` | What the native UI knows of the server: the management operations as GraphQL through the `LocalConsole`, with GraphQL errors surfaced as `ManagementError`. Foundation only, so it is tested against an embedded server. |
+| `KoineApp` | The resident application's executable: AppKit lifecycle, SwiftUI views. The only target that imports platform UI frameworks. |
+
 An application embeds it as the tests do: `KoineServer(dataDirectory:)`, then
 `start()`. `server.console` is the local-console principal; it has no wire form.
+
+## Resident application
+
+`Koine.app` is a scripted bundle around the package, not an Xcode project:
+`scripts/build-app.sh` builds the `KoineApp` product in release, assembles the
+bundle from `App/Info.plist` (bundle identifier `dev.antony.Koine`) and signs it
+with the hardened runtime and `App/Koine.entitlements` (deliberately empty).
+`Contents/Frameworks` arrives with the provider framework and will be signed
+inside-out before the bundle.
+
+Every bundle, from development to release, is signed with
+`Developer ID Application: Antony Blakey (TA43A4RUP3)`, so its designated
+requirement — and with it TCC and login-item state — never changes across
+rebuilds. `KOINE_SIGNING_IDENTITY` names another identity; `KOINE_APP_BUNDLE`
+another output path. A missing identity is an error listing the valid ones:
+there is no ad-hoc fallback. `scripts/verify-app.sh` checks the signature
+strictly, the hardened-runtime flag, that the signing team is the identity's,
+and that the bundle satisfies `identifier "dev.antony.Koine" and anchor apple
+generic and certificate leaf[subject.OU] = "<team>"`. Notarization is a release
+concern and is not done here.
+
+**UI framework: AppKit lifecycle, SwiftUI content.** An `NSApplicationDelegate`
+owns the process and one `NSWindow` hosting SwiftUI views. It is a regular Dock
+application (the [default activation policy](https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/regular)
+for a bundled app), not an accessory. The lifecycle the contract needs is
+documented delegate behaviour rather than SwiftUI scene behaviour, which on the
+macOS 13 floor offers no dependable way to re-show a single closed window:
+
+- [`applicationShouldTerminateAfterLastWindowClosed`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldterminateafterlastwindowclosed(_:))
+  returns `false`: "control returns to the main event loop and the application
+  is not terminated", so the listener keeps answering with no window.
+- [`applicationShouldHandleReopen`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldhandlereopen(_:hasvisiblewindows:))
+  is sent "whenever the Finder reactivates an already running application
+  because someone double-clicked it again or used the dock to activate it"; it
+  re-shows the window.
+- `applicationShouldTerminate` answers `.terminateLater`, awaits
+  `KoineServer.stop()` (descriptor withdrawn, listener closed, lock released) and
+  then replies, so Quit never leaves a descriptor to be found stale.
+
+A second instance over the same data directory meets
+`KoineServerError.alreadyRunning`, says so in an alert and exits without
+listening. The window executes `koineCreateGrant` through
+`KoineManagementClient`; its capability choices are whatever
+`Query.koine.availableCapabilities` serves. The credential lives only in the
+sheet that shows it and is dropped when the sheet is dismissed.
+
+A client needs nothing but the descriptor and a credential:
+
+```sh
+D="$HOME/Library/Application Support/Koine"
+curl -s "http://127.0.0.1:$(jq -r .port "$D/endpoint.json")/graphql" \
+  -H 'Content-Type: application/json' -H "Authorization: Bearer $CREDENTIAL" \
+  -d '{"query":"{ koine { contractVersion ownGrant { clientLabel capabilities state } } }"}'
+```
+
+Run the application in a TestAnyware VM, not on a machine in use: it takes
+focus and owns the account's real data directory.
 
 ## Dependencies
 

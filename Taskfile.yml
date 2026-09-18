@@ -16,3 +16,13 @@ tasks:
     desc: Run the public-seam suite over real loopback HTTP
     cmds:
       - swift test
+
+  app:
+    desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)
+    cmds:
+      - scripts/build-app.sh
+
+  app:verify:
+    desc: Verify the bundle's signature, hardened runtime and designated requirement
+    cmds:
+      - scripts/verify-app.sh

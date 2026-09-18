@@ -41,6 +41,18 @@ let package = Package(
             name: "KoineServer",
             dependencies: ["KoineCore", "KoineSQLiteStore", "KoineHTTP"]
         ),
+        // What the native UI knows of the server: GraphQL through the console.
+        .target(name: "KoineManagementClient", dependencies: ["KoineServer"]),
+        // The resident application. Platform UI frameworks live only here.
+        // scripts/build-app.sh assembles and signs Koine.app around it.
+        .executableTarget(
+            name: "KoineApp",
+            dependencies: ["KoineServer", "KoineManagementClient"]
+        ),
+        .testTarget(
+            name: "KoineManagementClientTests",
+            dependencies: ["KoineManagementClient", "KoineServer"]
+        ),
         .testTarget(
             name: "KoineServerTests",
             dependencies: ["KoineServer", "KoineCore", "KoineSQLiteStore"]

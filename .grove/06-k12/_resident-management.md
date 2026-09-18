@@ -85,6 +85,18 @@ Ordered by dependency, then by risk. Each leaf is verifiable on its own.
   framework will probably need `xcodebuild` on the package scheme or explicit
   flags rather than plain `swift build`.
 
+**Decided by the human in `resident-app-skeleton-k13`:** anything that would
+interfere with using the host machine — launching `Koine.app`, driving its UI,
+taking focus, the clipboard, the account's real data directory, login-item
+registration — runs in a TestAnyware VM, never on the host. Builds, signing and
+`swift test` over temporary directories stay on the host.
+
+**What k13 built.** `KoineManagementClient` (Foundation-only UI↔console logic;
+extend it for list and revoke) and the `KoineApp` executable (AppKit lifecycle,
+SwiftUI content; rationale in the README's "Resident application").
+`task app` / `task app:verify` build and check the signed bundle; the bundle
+identity is stated once in `scripts/signing-env.sh`.
+
 **Keep the UI a thin client of the management operations.** The UI executes
 GraphQL through `KoineServer.console`; it does not reach the store or the engine
 directly. Behaviour tests live at the GraphQL seam; the VM seam only proves the
