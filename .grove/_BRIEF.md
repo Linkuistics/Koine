@@ -223,8 +223,9 @@ than before:
 
 1. `authenticated-endpoint-k4` — a client with a grant finds the loopback
    endpoint and introspects it. Cut into impl leaves.
-2. `resident-app-manual-grants-k7` — the signed resident application; a user
-   creates, lists and revokes grants; live revocation.
+2. `resident-management-k12` — the signed resident application; a user
+   creates, lists and revokes grants; live revocation. Planned by
+   `resident-app-manual-grants-k7` and cut into impl leaves.
 3. `native-provider-contribution-k8` — independently built native providers
    contribute schema under enforced capabilities; binary compatibility evidence.
 4. `desktop-path-k9` — resolve, list and focus through the real desktop
@@ -233,7 +234,7 @@ than before:
 6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
    VM acceptance, supported matrix and the ModalAnyware handoff.
 
-Only the first is cut into impl leaves. Each later stage is a `planning` leaf
+The first two are cut into impl leaves. Each later stage is a `planning` leaf
 carrying its charter, acceptance cases and open questions; it is cut when
 reached, with what the stages before it actually built. Stage 5 depends only on
 stage 2 and can move earlier at no cost. Each stage serves only the schema
@@ -302,6 +303,18 @@ application must `stop()` it to hand over; every request/response limit is a
 value of `RequestPolicy` in `KoineCore`, and a stage that adds schema keeps
 introspection inside it. "Serve only what is implemented" and "keep the GraphQL
 library private to the engine" (that node's notes) continue to bind.
+
+In `resident-app-manual-grants-k7` the human chose the signing identity and the
+application build tooling. Every Koine bundle is signed with `Developer ID
+Application: Antony Blakey (TA43A4RUP3)`, from development through VM
+verification and release, so the designated requirement never changes; the
+identity is overridable by an environment variable and there is no ad-hoc
+fallback. The application is a scripted bundle around the Swift package, run
+from the Taskfile, not an Xcode project. The accepted trade-off falls on
+`native-provider-contribution-k8`: its library-evolution framework will
+probably need `xcodebuild` on the package scheme or explicit flags, and plugins
+signed by the same Team ID pass library validation without the
+disable-library-validation entitlement.
 
 The seed records ModalAnyware paused at `first-increment-k7`, waiting for
 Koine and, separately, PluginAnyware. That does not make PluginAnyware a
