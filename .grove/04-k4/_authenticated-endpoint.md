@@ -59,9 +59,7 @@ AppKit, login items) live outside it. Keep the GraphQL library's types private
 to the engine from the start: the later provider framework must not expose them.
 
 **Tooling.** No build tooling exists yet. Choose libraries and build tooling
-from verified primary sources, record the commands in the README. A root
-`Taskfile.yml` was suggested in earlier sessions and the human has not
-confirmed a workflow tool; once real commands exist, put that one question to
-the human with a recommendation instead of adopting a tool silently.
+from verified primary sources, record the commands in the README. The human chose
+a root `Taskfile.yml`; add new commands to it and to the README.
 The local toolchain observed during planning was Swift 6.4 / Xcode 27 on
 macOS 26; the spec's deployment floor is macOS 13.

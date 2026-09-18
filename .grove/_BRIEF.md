@@ -291,9 +291,9 @@ application behaviour through TestAnyware in isolated VMs; application mocks
 are not a prerequisite. Prefer small, composable modules with narrow
 interfaces that can be tested and documented in isolation.
 
-There is no project Taskfile yet. Adding a root `Taskfile.yml` when concrete
-build and verification commands exist has been suggested; no workflow tool
-choice has been confirmed by the human.
+The human chose a root `Taskfile.yml` as the workflow tool in
+`first-authenticated-query-k5`. It wraps `swift build` and `swift test`; later
+stages add their build and verification commands to it.
 
 The seed records ModalAnyware paused at `first-increment-k7`, waiting for
 Koine and, separately, PluginAnyware. That does not make PluginAnyware a

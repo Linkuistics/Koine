@@ -167,6 +167,25 @@ When the user chooses, it submits the returned window reference unchanged to
 `desktopFocusWindow`. A new reconstruction makes a new query. Introspection
 and the provider's read capability do not create a subscription or cache.
 
+### Schema digest
+
+`Koine.schemaDigest` is the SHA-256 digest, as 64 lower-case hexadecimal
+characters, of the UTF-8 bytes of a canonical SDL text of the complete executable
+schema after composition. The text is every custom directive definition sorted
+by name, then every named type sorted by name, each printed in the graphql-js
+`printSchema` format with its description, and joined by one blank line. Sorting
+is by Unicode code point. Introspection types, built-in scalars, built-in
+directives and the `schema` definition are omitted; fields, arguments and enum
+values keep their declared order.
+
+The digest is an equality token. It is identical across restarts of one Koine
+build with one set of active provider contributions, whatever order they were composed
+in, and differs when any served type, field, argument, nullability, default,
+deprecation or description differs. Clients compare it with the digest they generated against to learn that they
+should introspect again; they do not recompute it. A Koine upgrade may change
+the digest of an unchanged schema if its printer changes; that costs a client one
+unnecessary introspection and never hides a change.
+
 ### Composition and operation placement
 
 A provider registers one immutable identifier and one unique GraphQL prefix.
@@ -243,8 +262,8 @@ The desktop receipt avoids that ambiguity for the common control-only call.
 Execution errors carry `message`, standard response `path` (including aliases
 and list positions), and `extensions.kind`. Permission errors add
 `extensions.permissionClass`, either `capability` or `os-permission`.
-Capability errors identify the required capability without revealing protected
-resource existence. OS errors identify `accessibility` and Koine as the
+Capability errors identify the required capability in
+`extensions.requiredCapability`, without revealing protected resource existence. OS errors identify `accessibility` and Koine as the
 permission owner. An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
