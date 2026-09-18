@@ -2,13 +2,14 @@
 
 ## Decision
 
-A Machine reference is a URI string, `machine://<provider>/<provider-owned
+A Machine reference is a URI string, `koine://<provider>/<provider-owned
 remainder>`. The engine reads only the authority to route; the provider alone
 produces and interprets the remainder, re-resolving it on every use and
 retaining no queried state for callers. A provider's root is a reference with
 an empty remainder, so every target of a query or command is a reference.
-Opacity is a contract backed by a branded TypeScript string, not a property
-of the shape. The scheme name follows the Machine project's eventual name.
+Opacity is a contract, not a property of the shape; callers pass the value
+unchanged. Its GraphQL representation and client bindings remain design
+work. The scheme follows the project's name, Koine.
 
 ## Trade-off
 
@@ -29,7 +30,5 @@ which no process restart survives.
 
 **A structured JSON key.** Invites callers to read it.
 
-Recorded by plugin-packages-k6; the behavioural contract around it is in
-`docs/specs/machine.md`.
-
-Carried from ModalAnyware (`docs/adr/machine-references-as-uris.md` at commit d666016, plugin-packages-k6) when this project was created on 2026-09-18. The text is unchanged apart from links, which now point back into `../ModalAnyware` wherever the target was not carried.
+The reference contract applies to the native provider and GraphQL design;
+it does not require the inherited generic query/execute wire payload.

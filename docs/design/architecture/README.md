@@ -12,6 +12,10 @@ The four views here were carried from ModalAnyware's architecture discussion
 captions are written from ModalAnyware's point of view, say "Machine server"
 where this project says Koine, and record what was agreed there. This
 project's design sessions revise them; ModalAnyware keeps its own copies.
+The query/execute and shared-framework views need reconciliation with
+Koine's agreed GraphQL and native extension requirements; the
+[current server boundary](../../adr/koine-server-and-native-providers.md)
+records the requirements that take precedence.
 
 Reading convention: every graph view marks its reading entry with a dark, bold
 node whose label begins with "Start here" (the `start` class in each source)

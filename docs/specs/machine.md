@@ -1,6 +1,13 @@
 # Machine abstraction
 
-> Carried from ModalAnyware (`docs/specs/machine.md` at commit d666016, plugin-packages-k6) when this project was created on 2026-09-18. The text is unchanged apart from links, which now point back into `../ModalAnyware` wherever the target was not carried.
+> Inherited design from ModalAnyware (`docs/specs/machine.md` at commit
+> d666016, plugin-packages-k6). Koine's confirmed requirements now call for
+> native Swift extensions with a stable binary interface and a fully
+> introspectable GraphQL API; see [the current server boundary](../adr/koine-server-and-native-providers.md).
+> The interface examples, hosting assumptions and test details below still
+> need design reconciliation. They do not require a second query/execute
+> public API, TypeScript provider wrappers or OS permissions in ModalAnyware.
+> The URI scheme follows the project's name and is now `koine://`.
 
 ## Purpose and boundary
 

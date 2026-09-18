@@ -1,25 +1,34 @@
 # Koine
 
 A koine is the common language that forms where many dialects meet. Koine is
-the Machine server: a standalone application that gives scripts, LLM agents
-and other applications one uniform way to discover, query and command the
-machine and each application on it, running or not, while every provider keeps
-its own vocabulary. Access is guarded by a capability model, and the project
-ships an LLM skill set for using it.
+the Machine server: a standalone application for discovering, querying and
+commanding the desktop and applications through a fully introspectable
+GraphQL API. Local clients connect over loopback HTTP using capabilities
+granted by Koine.
 
-No project includes Koine; they are its clients.
-[ModalAnyware](../ModalAnyware) is the first. Providers are Koine's plugins,
-hosted through [PluginAnyware](../PluginAnyware); the desktop provider is the
-first.
+[ModalAnyware](../ModalAnyware) is the first client. The first deliverable
+lets it resolve a running application, list its windows and focus one.
+Koine holds the OS permissions for those operations, stays resident or is
+started by the OS on endpoint access, and provides a native macOS management
+UI alongside management through GraphQL. Grants last until explicitly revoked.
 
-Nothing is built yet. The contract this project starts from was agreed in
-ModalAnyware's architecture design, under the working name "Machine server",
-and is carried here:
+Providers are native Swift extensions that contribute to the GraphQL schema.
+A stable binary interface must allow compatible providers and the server to
+be upgraded independently. The concrete ABI and loading design are still to
+be settled; a TypeScript hosting layer is not required.
 
-- [Machine contract](docs/specs/machine.md): URI references, two uniform
-  calls, a closed error set
+Broader discovery, including applications that are not running, and an LLM
+skill set are deferred until after ModalAnyware is unblocked.
+
+Nothing is built yet. Requirements are agreed; the next step is design.
+The inherited detailed interface and diagrams below still need reconciliation
+with GraphQL and native extensions:
+
+- [Inherited Machine contract](docs/specs/machine.md): provider-owned URI
+  references and desktop behavior; its generic query/execute wire examples
+  are inputs to the design, not the required public API
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
-  [the server and the shared plugin framework](docs/adr/machine-server-and-shared-plugin-framework.md)
+  [the server and native providers](docs/adr/koine-server-and-native-providers.md)
 - Shared terms: [CONTEXT.md](CONTEXT.md)
 - Diagrams: [docs/design/architecture](docs/design/architecture/README.md)
 
