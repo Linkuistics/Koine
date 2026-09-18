@@ -217,6 +217,28 @@ implementation as small, independently useful working increments. The design
 is the baseline for that decomposition, including the three agreed test seams
 and the ModalAnyware client handoff.
 
+`desktop-delivery-k3` found six working increments, ordered by dependency and
+then by risk. Each leaves Koine working with more useful, verifiable behaviour
+than before:
+
+1. `authenticated-endpoint-k4` — a client with a grant finds the loopback
+   endpoint and introspects it. Cut into impl leaves.
+2. `resident-app-manual-grants-k7` — the signed resident application; a user
+   creates, lists and revokes grants; live revocation.
+3. `native-provider-contribution-k8` — independently built native providers
+   contribute schema under enforced capabilities; binary compatibility evidence.
+4. `desktop-path-k9` — resolve, list and focus through the real desktop
+   provider, starting with the native window-identity evidence.
+5. `grant-enrollment-k10` — the client-requested grant workflow and its UI.
+6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
+   VM acceptance, supported matrix and the ModalAnyware handoff.
+
+Only the first is cut into impl leaves. Each later stage is a `planning` leaf
+carrying its charter, acceptance cases and open questions; it is cut when
+reached, with what the stages before it actually built. Stage 5 depends only on
+stage 2 and can move earlier at no cost. Each stage serves only the schema
+fields it makes real; stage 6 checks the composed schema against the design SDL.
+
 No research, prototype or review stage is added automatically. Open-source
 licensing/distribution remains undecided and is not a condition of the first
 deliverable.
