@@ -108,6 +108,16 @@ ID is `unavailable`; after self-revocation the action's own output fields are
 refused (select `__typename`, or expect the permission error) — the UI's revoke
 runs as the console, so it is unaffected. Tests: `GrantManagementTests`.
 
+**What k15 built.** Reads are now checked again before publication; a mutation
+action is not, because an admitted action finishes and is reported. `Engine`
+has an internal `reached: OrderingHook`, called at each `OrderingPoint`
+(`preflightPassed`, `admitted`, `resolved`); `RevocationOrderingTests` drives it
+with `@testable` over a scripted `GrantStore`, which a later stage can reuse to
+order provider actions. A store read failure answers 401 at request admission,
+403 with kind `failed` at preflight, and a `failed` field error at dispatch. The
+application already reported an unopenable store ("Koine could not open its
+data.") from k13; nothing was added there.
+
 **Keep the UI a thin client of the management operations.** The UI executes
 GraphQL through `KoineServer.console`; it does not reach the store or the engine
 directly. Behaviour tests live at the GraphQL seam; the VM seam only proves the

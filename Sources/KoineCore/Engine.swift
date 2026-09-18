@@ -49,11 +49,22 @@ public final class Engine: Sendable {
     private let fieldAuthorities: [String: FieldAuthority]
     private let policy: RequestPolicy
     private let limits: RequestLimits
+    private let reached: OrderingHook
 
-    public init(
+    public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1
     ) throws {
+        try self.init(store: store, instanceId: instanceId, policy: policy, reached: { _ in })
+    }
+
+    /// `reached` is called at each `OrderingPoint`. It is internal: tests reach
+    /// it with `@testable` to force an ordering; nothing public carries it.
+    init(
+        store: any GrantStore, instanceId: String, policy: RequestPolicy,
+        reached: @escaping OrderingHook
+    ) throws {
         self.instanceId = instanceId
+        self.reached = reached
         self.policy = policy
         limits = RequestLimits(policy: policy)
         authority = Authority(store: store)
@@ -66,7 +77,7 @@ public final class Engine: Sendable {
             store: store, authority: authority, instanceId: instanceId,
             schemaDigest: schemaDigest
         ).registrations
-        try Engine.install(fields, on: schema, authority: authority)
+        try Engine.install(fields, on: schema, authority: authority, reached: reached)
         self.schema = schema
         fieldAuthorities = fields.mapValues(\.authority)
     }
@@ -104,6 +115,7 @@ public final class Engine: Sendable {
 
         let denied = preflightDenials(of: actions, principal: principal)
         guard denied.isEmpty else { return respond(.forbidden, errors: denied) }
+        await reached(.preflightPassed)
 
         let scope = ExecutionScope(
             principal: principal, deadline: .now.advanced(by: policy.executionDeadline)
@@ -311,9 +323,10 @@ public final class Engine: Sendable {
     /// error: nothing is served unclassified.
     private static func install(
         _ registrations: [String: FieldRegistration], on schema: GraphQLSchema,
-        authority: Authority
+        authority: Authority, reached: @escaping OrderingHook
     ) throws {
         var unused = Set(registrations.keys)
+        let mutationTypeName = schema.mutationType?.name
         for (typeName, type) in schema.typeMap where !typeName.hasPrefix("__") {
             guard let object = type as? GraphQLObjectType else { continue }
             let fields = try object.fields()
@@ -331,9 +344,18 @@ public final class Engine: Sendable {
                         try scope.admitResolver()
                         let principal = scope.principal
                         try authority.check(registration.authority, for: principal)
-                        return try await registration.resolve(
+                        await reached(.admitted(coordinate))
+                        let result = try await registration.resolve(
                             ResolverInput(parent: source, arguments: arguments, principal: principal)
                         )
+                        // An admitted action finishes and is reported. A read is
+                        // checked again: a grant revoked while it resolved does
+                        // not publish the result.
+                        if typeName != mutationTypeName {
+                            await reached(.resolved(coordinate))
+                            try authority.check(registration.authority, for: principal)
+                        }
+                        return result
                     } catch {
                         throw graphQLError(
                             error, nodes: info.fieldASTs, path: info.path, phase: "execution"
@@ -405,6 +427,19 @@ private final class ExecutionScope: @unchecked Sendable {
         }
     }
 }
+
+/// The points between the engine's admission checks. Each lies outside the
+/// authority boundary, so a revocation can be committed there.
+enum OrderingPoint: Sendable, Equatable {
+    /// Mutation preflight admitted the operation; no action has been dispatched.
+    case preflightPassed
+    /// The field at this coordinate passed its check; its resolver runs next.
+    case admitted(String)
+    /// The read at this coordinate resolved; its publication check runs next.
+    case resolved(String)
+}
+
+typealias OrderingHook = @Sendable (OrderingPoint) async -> Void
 
 public enum SchemaError: Error {
     case unclassifiedField(String)

@@ -63,6 +63,12 @@ task app:verify  # codesign --verify --strict, hardened runtime, designated requ
 The tests embed the server over a temporary data directory; they never touch
 `~/Library/Application Support/Koine`.
 
+Revocation ordering and store failure are tested on an `Engine` over a scripted
+`GrantStore` (`RevocationOrderingTests`). The engine calls an internal hook at
+the points between its authority checks; a test runs the real revocation there,
+so each order is forced rather than raced. The hook is reached with
+`@testable` and is not part of any public interface.
+
 ## Package layout
 
 | Target | Role |
