@@ -29,9 +29,9 @@ full introspection. The second increment is under way: a signed resident
 `koine:manage` grant lists grants with `Query.koineManagement { grants }` and
 revokes one with `Mutation.koineRevokeGrant`. Revocation is a durable commit
 made inside the same serialized authority boundary that admits every action, so
-a revoked credential gets 401 on its next request, keep-alive or not. Listing
-and revocation in the UI, login launch, providers and the desktop path are
-later increments. The agreed design:
+a revoked credential gets 401 on its next request, keep-alive or not. The
+window also lists and revokes grants and enables login launch. Providers and
+the desktop path are later increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -124,10 +124,30 @@ macOS 13 floor offers no dependable way to re-show a single closed window:
 
 A second instance over the same data directory meets
 `KoineServerError.alreadyRunning`, says so in an alert and exits without
-listening. The window executes `koineCreateGrant` through
-`KoineManagementClient`; its capability choices are whatever
-`Query.koine.availableCapabilities` serves. The credential lives only in the
-sheet that shows it and is dropped when the sheet is dismissed.
+listening. The window executes `koineManagement.grants`, `koineCreateGrant` and
+`koineRevokeGrant` through `KoineManagementClient`; its capability choices are
+whatever `Query.koine.availableCapabilities` serves. The list is re-read after
+every create and revoke and whenever Koine becomes active, so a row shows only
+a state the server reported. Revoking asks for confirmation naming the grant; a
+failure is shown beside the list. The credential lives only in the sheet that
+shows it and is dropped when the sheet is dismissed; nothing re-reads one, and
+the window says that a lost credential is handled by revoking and creating
+again.
+
+**Login launch.** The window's Setup section registers and unregisters
+[`SMAppService.mainApp`](https://developer.apple.com/documentation/servicemanagement/smappservice/mainapp).
+Apple documents that [`register()`](https://developer.apple.com/documentation/servicemanagement/smappservice/register())
+makes the main application launch "on subsequent logins" and throws when the
+user has not approved it, that [`unregister()`](https://developer.apple.com/documentation/servicemanagement/smappservice/unregister())
+leaves the running application alone, and that [`requiresApproval`](https://developer.apple.com/documentation/servicemanagement/smappservice/status-swift.enum/requiresapproval)
+means registered but waiting on the user in System Settings, including after
+consent is withdrawn. So the model keeps no enabled flag of its own: after every
+call, and whenever Koine becomes active, it reads `status` back and shows that,
+with a button to Login Items Settings when approval is required. Observed in a
+macOS 26.5 VM: a signed bundle that has never registered reads `notFound`, not
+`notRegistered`, and registration from there succeeds, so the window words
+`notFound` as "not registered" and leaves real failures to the error
+`register()` throws.
 
 A client needs nothing but the descriptor and a credential:
 

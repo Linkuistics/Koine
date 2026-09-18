@@ -54,6 +54,42 @@ import Testing
         }
     }
 
+    @Test func theListShowsCreatedGrantsAndNeverACredential() async throws {
+        try await withServer { _, client in
+            #expect(try await client.grants().isEmpty)
+            let created = try await client.createGrant(label: "script", capabilities: ["koine:manage"])
+            #expect(try await client.grants() == [created.grant])
+        }
+    }
+
+    @Test func revokingEndsTheCredentialAndTheListSaysSo() async throws {
+        try await withServer { port, client in
+            let created = try await client.createGrant(label: "script", capabilities: ["koine:manage"])
+            let revoked = try await client.revokeGrant(id: created.grant.grantId)
+            #expect(revoked.grantId == created.grant.grantId)
+            #expect(revoked.state == "REVOKED")
+            #expect(try await client.grants().map(\.state) == ["REVOKED"])
+
+            let status = try await Self.status(
+                "{ koine { contractVersion } }", port: port, bearer: created.credential
+            )
+            #expect(status == 401)
+            // Idempotent: a second revoke of the same grant still succeeds.
+            #expect(try await client.revokeGrant(id: created.grant.grantId).state == "REVOKED")
+        }
+    }
+
+    @Test func revokingAnUnknownGrantIsAFailureNotASilentSuccess() async throws {
+        try await withServer { _, client in
+            do {
+                _ = try await client.revokeGrant(id: "no-such-grant")
+                Issue.record("revoking an unknown grant reported success")
+            } catch ManagementError.rejected(_, let kind) {
+                #expect(kind == "unavailable")
+            }
+        }
+    }
+
     @Test func aResponseThatIsNotGraphQLIsMalformed() async throws {
         let client = ManagementClient { _ in Data("not json".utf8) }
         await #expect(throws: ManagementError.malformedResponse) {
@@ -69,12 +105,20 @@ import Testing
     }
 
     private static func post(_ query: String, port: Int, bearer: String) async throws -> [String: Any] {
+        try JSONSerialization.jsonObject(with: try await send(query, port: port, bearer: bearer).0)
+            as? [String: Any] ?? [:]
+    }
+
+    private static func status(_ query: String, port: Int, bearer: String) async throws -> Int {
+        (try await send(query, port: port, bearer: bearer).1 as? HTTPURLResponse)?.statusCode ?? 0
+    }
+
+    private static func send(_ query: String, port: Int, bearer: String) async throws -> (Data, URLResponse) {
         var request = URLRequest(url: URL(string: "http://127.0.0.1:\(port)/graphql")!)
         request.httpMethod = "POST"
         request.httpBody = try JSONSerialization.data(withJSONObject: ["query": query])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
-        let (data, _) = try await URLSession(configuration: .ephemeral).data(for: request)
-        return try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]
+        return try await URLSession(configuration: .ephemeral).data(for: request)
     }
 }

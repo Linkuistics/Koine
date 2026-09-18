@@ -7,6 +7,7 @@ import SwiftUI
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var server: KoineServer?
     private var window: NSWindow?
+    private var port: Int?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.mainMenu = MainMenu.make()
@@ -15,7 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self.server = server
             Task {
                 do {
-                    try await server.start()
+                    port = try await server.start()
                     showManagementWindow()
                 } catch {
                     fail("Koine could not start its service.", detail: error.localizedDescription)
@@ -56,12 +57,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showManagementWindow() {
-        guard let server else { return }
+        guard let server, let port else { return }
         if window == nil {
-            let model = CreateGrantModel(client: ManagementClient(console: server.console))
-            let window = NSWindow(
-                contentViewController: NSHostingController(rootView: CreateGrantView(model: model))
-            )
+            let view = ManagementView(client: ManagementClient(console: server.console), port: port)
+            let window = NSWindow(contentViewController: NSHostingController(rootView: view))
             window.title = "Koine"
             window.styleMask = [.titled, .closable, .miniaturizable]
             // The delegate keeps the window; closing only orders it out.

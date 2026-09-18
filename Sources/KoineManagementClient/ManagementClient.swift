@@ -75,6 +75,37 @@ public struct ManagementClient: Sendable {
         return created
     }
 
+    /// Every grant, revoked ones included. No operation here re-reads a
+    /// credential: lost delivery is handled by revoking and creating again.
+    public func grants() async throws -> [ManagedGrant] {
+        struct Reply: Decodable {
+            struct Management: Decodable { let grants: [ManagedGrant] }
+            let koineManagement: Management?
+        }
+        let reply: Reply = try await run(
+            "{ koineManagement { grants { grantId clientLabel capabilities state } } }",
+            variables: [:]
+        )
+        guard let management = reply.koineManagement else { throw ManagementError.malformedResponse }
+        return management.grants
+    }
+
+    /// Revokes durably and returns the grant as committed. An unknown grant is
+    /// `rejected` with kind `unavailable`; revoking twice succeeds.
+    public func revokeGrant(id: String) async throws -> ManagedGrant {
+        struct Reply: Decodable { let koineRevokeGrant: ManagedGrant? }
+        let reply: Reply = try await run(
+            """
+            mutation Revoke($id: ID!) {
+              koineRevokeGrant(grantId: $id) { grantId clientLabel capabilities state }
+            }
+            """,
+            variables: ["id": id]
+        )
+        guard let revoked = reply.koineRevokeGrant else { throw ManagementError.malformedResponse }
+        return revoked
+    }
+
     /// Any GraphQL error fails the whole operation: the UI's operations have no
     /// use for partial data.
     private func run<Reply: Decodable>(_ query: String, variables: [String: Any]) async throws -> Reply {

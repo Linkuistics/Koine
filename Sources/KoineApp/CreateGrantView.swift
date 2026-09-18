@@ -13,8 +13,12 @@ final class CreateGrantModel: ObservableObject {
     @Published var created: CreatedGrant?
 
     private let client: ManagementClient
+    private let onCreated: @MainActor () async -> Void
 
-    init(client: ManagementClient) { self.client = client }
+    init(client: ManagementClient, onCreated: @escaping @MainActor () async -> Void) {
+        self.client = client
+        self.onCreated = onCreated
+    }
 
     var canCreate: Bool {
         !isWorking && !label.trimmingCharacters(in: .whitespaces).isEmpty
@@ -40,6 +44,7 @@ final class CreateGrantModel: ObservableObject {
             problem = nil
             label = ""
             selected = []
+            await onCreated()
         } catch {
             problem = error.localizedDescription
         }
@@ -64,8 +69,15 @@ struct CreateGrantView: View {
                 Toggle(capability, isOn: binding(for: capability))
             }
             if model.selected.contains("koine:manage") {
-                Text("koine:manage lets its holder issue and revoke other grants.")
-                    .font(.caption).foregroundColor(.orange)
+                Label(
+                    "koine:manage lets the holder of this credential create and revoke "
+                        + "other grants, including more koine:manage grants.",
+                    systemImage: "exclamationmark.triangle.fill"
+                )
+                .font(.callout.weight(.semibold))
+                .foregroundColor(.orange)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityIdentifier("manage-warning")
             }
             if let problem = model.problem {
                 Text(problem).font(.caption).foregroundColor(.red)
@@ -78,8 +90,6 @@ struct CreateGrantView: View {
                     .disabled(!model.canCreate)
             }
         }
-        .padding(20)
-        .frame(width: 420)
         .task { await model.loadCapabilities() }
         .sheet(
             isPresented: Binding(
