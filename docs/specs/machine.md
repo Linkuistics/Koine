@@ -428,6 +428,14 @@ master token in the endpoint descriptor.
 | `Mutation.koineCreateGrant` | `koine:manage`; durable grant plus one-time credential |
 | `Mutation.koineRevokeGrant` | `koine:manage`; durable, idempotent revocation |
 
+`koineRevokeGrant` returns the grant as committed, with state `REVOKED`;
+repeating it returns the same result. A grant ID that names no grant raises
+`unavailable` at the action's path with a null result, rather than ordinary
+null: the caller asked to end an authority, and must not mistake a mistyped ID
+for a completed revocation. A grant may revoke itself. The revoked principal is
+no longer admitted, so output fields of that action selected under it are
+refused like any other read; the revocation still stands.
+
 Core management types use the `Koine` prefix. Management errors use the same
 permission vocabulary and propagation as provider errors. Record missing,
 already-decided and invalid-subset request outcomes explicitly; approval cannot

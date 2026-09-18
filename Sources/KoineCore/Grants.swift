@@ -39,6 +39,10 @@ public protocol GrantStore: Sendable {
     func insert(_ grant: GrantRecord) throws
     func grants() throws -> [GrantRecord]
     func grant(id: String) throws -> GrantRecord?
+    /// Marks the grant revoked and returns it as committed, or nil when no
+    /// grant has this ID. Revoking a revoked grant changes nothing and succeeds.
+    /// It returns only after the revocation is durable.
+    func revoke(id: String) throws -> GrantRecord?
 }
 
 /// Who is executing an operation. The three admission cases are distinct:

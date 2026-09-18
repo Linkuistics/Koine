@@ -204,14 +204,14 @@ import Testing
         let types = try #require(schema["types"] as? [[String: Any]])
         let byName = Dictionary(uniqueKeysWithValues: types.map { ($0["name"] as! String, $0) })
         for name in ["Query", "Mutation", "Koine", "KoineGrant", "KoineGrantState",
-                     "KoineCreatedGrant", "KoineCreateGrantInput"] {
+                     "KoineCreatedGrant", "KoineCreateGrantInput", "KoineManagement"] {
             #expect(byName[name] != nil, "\(name) is introspectable")
         }
         let queryFields = try #require(byName["Query"]?["fields"] as? [[String: Any]])
-        #expect(queryFields.map { $0["name"] as? String } == ["koine"])
+        #expect(queryFields.map { $0["name"] as? String } == ["koine", "koineManagement"])
         #expect((queryFields[0]["description"] as? String)?.contains("Authenticated") == true)
         // Only what is implemented is served.
-        #expect(byName["KoineManagement"] == nil)
+        #expect(byName["KoineGrantRequest"] == nil)
         #expect(byName["DesktopWindow"] == nil)
         await harness.stop()
     }

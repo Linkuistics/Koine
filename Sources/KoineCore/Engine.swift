@@ -63,7 +63,8 @@ public final class Engine: Sendable {
         schemaDigest = Engine.digest(of: schema)
 
         let fields = CoreFields(
-            store: store, instanceId: instanceId, schemaDigest: schemaDigest
+            store: store, authority: authority, instanceId: instanceId,
+            schemaDigest: schemaDigest
         ).registrations
         try Engine.install(fields, on: schema, authority: authority)
         self.schema = schema

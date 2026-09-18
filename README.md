@@ -24,10 +24,14 @@ skill set are deferred until after ModalAnyware is unblocked.
 The first increment is built: an embeddable server that binds loopback,
 publishes its endpoint descriptor, authenticates bearer credentials against a
 durable grant store and answers `Query.koine`, `Mutation.koineCreateGrant` and
-full introspection. The second increment has begun: a signed resident
-`Koine.app` embeds that server and creates grants from its window. Grant listing
-and revocation, login launch, providers and the desktop path are later
-increments. The agreed design:
+full introspection. The second increment is under way: a signed resident
+`Koine.app` embeds that server and creates grants from its window, and a
+`koine:manage` grant lists grants with `Query.koineManagement { grants }` and
+revokes one with `Mutation.koineRevokeGrant`. Revocation is a durable commit
+made inside the same serialized authority boundary that admits every action, so
+a revoked credential gets 401 on its next request, keep-alive or not. Listing
+and revocation in the UI, login launch, providers and the desktop path are
+later increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff

@@ -73,6 +73,18 @@ public final class SQLiteGrantStore: GrantStore {
         }
     }
 
+    public func revoke(id: String) throws -> GrantRecord? {
+        // One transaction: the state written is the state returned.
+        try queue.write { db in
+            try db.execute(
+                sql: "UPDATE grants SET state = ? WHERE id = ?",
+                arguments: [GrantState.revoked.rawValue, id]
+            )
+            return try Row.fetchOne(db, sql: "SELECT * FROM grants WHERE id = ?", arguments: [id])
+                .map(Self.record)
+        }
+    }
+
     private struct CorruptRecord: Error {}
 
     private static func record(_ row: Row) throws -> GrantRecord {

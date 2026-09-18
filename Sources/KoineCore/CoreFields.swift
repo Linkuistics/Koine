@@ -5,6 +5,7 @@ import GraphQL
 /// schema coordinate. Object values travel as dictionaries keyed by field name.
 struct CoreFields: Sendable {
     let store: any GrantStore
+    let authority: Authority
     let instanceId: String
     let schemaDigest: String
 
@@ -20,6 +21,16 @@ struct CoreFields: Sendable {
             ) { input in
                 try createGrant(input.arguments["input"])
             },
+            "Query.koineManagement": FieldRegistration(
+                authority: .capability(CoreCapability.manage)
+            ) { _ in
+                ["grants": try readStore { try store.grants() }.map(object)] as Object
+            },
+            "Mutation.koineRevokeGrant": FieldRegistration(
+                authority: .capability(CoreCapability.manage)
+            ) { input in
+                try revokeGrant(id: input.arguments["grantId"].string ?? "")
+            },
         ]
         // Output fields read their parent object. Their authority is that of
         // the field that produced the parent, rechecked per field.
@@ -28,6 +39,7 @@ struct CoreFields: Sendable {
                        "availableCapabilities"], .admitted),
             ("KoineGrant", ["grantId", "clientLabel", "capabilities", "state"], .admitted),
             ("KoineCreatedGrant", ["grant", "credential"], .capability(CoreCapability.manage)),
+            ("KoineManagement", ["grants"], .capability(CoreCapability.manage)),
         ]
         for (type, names, authority) in outputs {
             for name in names {
@@ -81,6 +93,17 @@ struct CoreFields: Sendable {
             return ["grant": object(grant), "credential": credential.encoded]
         }
         throw DomainError.failed("The grant could not be stored.")
+    }
+
+    /// Revocation goes through the authority boundary, never straight to the
+    /// store, so it is ordered against every action admission.
+    private func revokeGrant(id: String) throws -> Object {
+        let revoked: GrantRecord?
+        do { revoked = try authority.revoke(grantId: id) } catch {
+            throw DomainError.failed("The revocation could not be stored.")
+        }
+        guard let revoked else { throw DomainError.unavailable("No grant has this ID.") }
+        return object(revoked)
     }
 
     private func readStore<T>(_ body: () throws -> T) throws -> T {

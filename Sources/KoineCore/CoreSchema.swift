@@ -9,11 +9,15 @@ schema { query: Query mutation: Mutation }
 type Query {
   "Authenticated caller metadata. No provider capability required."
   koine: Koine!
+  "koine:manage. Never returns bearer credentials."
+  koineManagement: KoineManagement
 }
 
 type Mutation {
   "koine:manage. Credential is returned once after durable creation."
   koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
+  "koine:manage. Idempotent for an already revoked grant; never grants authority."
+  koineRevokeGrant(grantId: ID!): KoineGrant
 }
 
 type Koine {
@@ -45,5 +49,10 @@ type KoineCreatedGrant {
   grant: KoineGrant!
   "One-time 32-byte random bearer secret encoded as unpadded base64url."
   credential: String!
+}
+
+"All fields require koine:manage."
+type KoineManagement {
+  grants: [KoineGrant!]!
 }
 """#

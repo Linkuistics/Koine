@@ -1,3 +1,5 @@
+import Foundation
+
 /// What a field requires of the principal, by schema coordinate.
 enum FieldAuthority: Sendable {
     /// Any admitted principal: an active grant or the local console.
@@ -22,19 +24,42 @@ struct DomainError: Error {
         )
     }
 
+    static func unavailable(_ message: String) -> DomainError {
+        DomainError(kind: .unavailable, message: message)
+    }
+
     static func failed(_ message: String) -> DomainError {
         DomainError(kind: .failed, message: message)
     }
 }
 
-/// The single place a principal's current authority is read. Grants are looked
-/// up live on every check, so nothing authenticated earlier is remembered.
-struct Authority: Sendable {
-    let store: any GrantStore
+/// The single place a principal's current authority is read, and the single
+/// place it is withdrawn. Grants are looked up live on every check, so nothing
+/// authenticated earlier is remembered.
+///
+/// This is the serialized authority boundary of docs/specs/machine.md,
+/// "Mutation preflight and revocation": admission checks and the revocation
+/// commit take one lock, so they are totally ordered. A check that precedes a
+/// revocation admits an action that may finish; one that follows it refuses.
+final class Authority: Sendable {
+    private let store: any GrantStore
+    private let boundary = NSLock()
+
+    init(store: any GrantStore) { self.store = store }
+
+    /// Commits the revocation durably, inside the boundary, before returning.
+    /// Nil when no grant has this ID. A store failure throws and revokes nothing.
+    func revoke(grantId: String) throws -> GrantRecord? {
+        try boundary.withLock { try store.revoke(id: grantId) }
+    }
 
     /// The capabilities the principal holds now, or nil when it is not admitted.
     /// A store failure throws: the caller refuses, it never assumes authority.
     func capabilities(of principal: Principal) throws -> Set<String>? {
+        try boundary.withLock { try currentCapabilities(of: principal) }
+    }
+
+    private func currentCapabilities(of principal: Principal) throws -> Set<String>? {
         switch principal {
         case .grant(let id):
             guard let grant = try store.grant(id: id), grant.state == .active else { return nil }
@@ -64,7 +89,7 @@ struct Authority: Sendable {
     func authenticate(bearer: String) throws -> Principal? {
         guard let digest = Credential.digest(ofPresented: bearer) else { return nil }
         var match: GrantRecord?
-        for grant in try store.grants()
+        for grant in try boundary.withLock({ try store.grants() })
         where Credential.constantTimeEqual(grant.credentialDigest, digest) {
             match = grant
         }

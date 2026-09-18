@@ -97,6 +97,17 @@ SwiftUI content; rationale in the README's "Resident application").
 `task app` / `task app:verify` build and check the signed bundle; the bundle
 identity is stated once in `scripts/signing-env.sh`.
 
+**What k14 built.** `koineManagement.grants` and `koineRevokeGrant` are served.
+`Authority` is now a class and is the serialized boundary: `revoke(grantId:)`
+and every admission check take its one lock, and the revoke resolver goes
+through it, never to the store. `GrantStore.revoke(id:)` returns the committed
+record or nil. The seam k15 can order is the public `GrantStore` handed to
+`Engine.init`: a store that blocks or throws in `revoke` orders and fails the
+boundary with no testing interface. Settled and in the spec: an unknown grant
+ID is `unavailable`; after self-revocation the action's own output fields are
+refused (select `__typename`, or expect the permission error) — the UI's revoke
+runs as the console, so it is unaffected. Tests: `GrantManagementTests`.
+
 **Keep the UI a thin client of the management operations.** The UI executes
 GraphQL through `KoineServer.console`; it does not reach the store or the engine
 directly. Behaviour tests live at the GraphQL seam; the VM seam only proves the
