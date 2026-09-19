@@ -229,13 +229,14 @@ than before:
 3. `native-providers-k18` — independently built native providers contribute
    schema under enforced capabilities; binary compatibility evidence. Planned by
    `native-provider-contribution-k8` and cut into impl leaves.
-4. `desktop-path-k9` — resolve, list and focus through the real desktop
-   provider, starting with the native window-identity evidence.
+4. `desktop-provider-k27` — resolve, list and focus through the real desktop
+   provider, starting with the native window-identity evidence. Planned by
+   `desktop-path-k9` and cut into impl leaves.
 5. `grant-enrollment-k10` — the client-requested grant workflow and its UI.
 6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
    VM acceptance, supported matrix and the ModalAnyware handoff.
 
-The first three are cut into impl leaves. Each later stage is a `planning` leaf
+The first four are cut into impl leaves. Each later stage is a `planning` leaf
 carrying its charter, acceptance cases and open questions; it is cut when
 reached, with what the stages before it actually built. Stage 5 depends only on
 stage 2 and can move earlier at no cost. Each stage serves only the schema
