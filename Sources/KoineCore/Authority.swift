@@ -5,6 +5,12 @@ enum FieldAuthority: Sendable {
     /// Any admitted principal: an active grant or the local console.
     case admitted
     case capability(String)
+    /// An admitted principal, or the status-only principal of a request that
+    /// is still pending. Only `koineGrantRequest` and what it returns use it.
+    case requestStatus
+    /// The anonymous principal and no other. The engine has already held its
+    /// operation to the single `koineRequestGrant` action.
+    case anonymousEnrollment
 }
 
 /// A refusal or failure with the contract's machine-readable classification.
@@ -29,6 +35,12 @@ struct DomainError: Error {
             requiredCapability: capability
         )
     }
+
+    static let enrollmentIsAnonymous = DomainError(
+        kind: .permission,
+        message: "koineRequestGrant is anonymous enrollment: send it without credentials, "
+            + "as the only root action of its operation."
+    )
 
     static func osPermissionMissing(_ permission: String, message: String) -> DomainError {
         DomainError(kind: .permission, message: message, osPermission: permission)
@@ -75,6 +87,57 @@ final class Authority: Sendable {
         try boundary.withLock { try store.revoke(id: grantId) }
     }
 
+    /// Approval is an authority change, so it is ordered against every
+    /// admission like revocation. The request and the grant change in one
+    /// durable commit; every refusal leaves both untouched.
+    func approve(requestId: String, capabilities: [String]) throws -> GrantRecord {
+        try boundary.withLock {
+            let request: GrantRequestRecord?
+            do { request = try store.request(id: requestId) } catch {
+                throw DomainError.failed("The grant store is unavailable.")
+            }
+            guard let request else { throw DomainError.unavailable("No request has this ID.") }
+            guard request.state == .pending else {
+                throw DomainError.failed("This request has already been decided.")
+            }
+            let outside = capabilities.filter { !request.requestedCapabilities.contains($0) }
+            guard outside.isEmpty else {
+                throw DomainError.failed(
+                    "Not among the requested capabilities: \(outside.joined(separator: ", "))."
+                )
+            }
+            let grant = GrantRecord(
+                id: UUID().uuidString.lowercased(), clientLabel: request.clientLabel,
+                capabilities: Array(Set(capabilities)).sorted(),
+                credentialDigest: request.credentialDigest, state: .active
+            )
+            do {
+                guard try store.approve(requestId: requestId, as: grant) else {
+                    throw DomainError.failed("This request has already been decided.")
+                }
+            } catch GrantStoreError.duplicateDigest {
+                throw DomainError.failed("This request's credential already belongs to a grant.")
+            } catch let refusal as DomainError {
+                throw refusal
+            } catch {
+                throw DomainError.failed("The approval could not be stored.")
+            }
+            return grant
+        }
+    }
+
+    /// Whether the engine executes anything for this principal. An anonymous
+    /// principal is admitted here and held to its one operation by the engine.
+    func admits(_ principal: Principal) throws -> Bool {
+        try boundary.withLock {
+            switch principal {
+            case .anonymous: return true
+            case .requester(let id): return try store.request(id: id)?.state == .pending
+            case .grant, .localConsole: return try currentCapabilities(of: principal) != nil
+            }
+        }
+    }
+
     /// The capabilities the principal holds now, or nil when it is not admitted.
     /// A store failure throws: the caller refuses, it never assumes authority.
     func capabilities(of principal: Principal) throws -> Set<String>? {
@@ -88,7 +151,8 @@ final class Authority: Sendable {
             return Set(grant.capabilities)
         case .localConsole:
             return [CoreCapability.manage]
-        case .anonymous:
+        case .requester, .anonymous:
+            // Not an empty set: `.admitted` must refuse them too.
             return nil
         }
     }
@@ -99,6 +163,18 @@ final class Authority: Sendable {
             throw DomainError.failed("The grant store is unavailable.")
         }
         switch requirement {
+        case .anonymousEnrollment:
+            guard case .anonymous = principal else { throw DomainError.enrollmentIsAnonymous }
+        case .requestStatus:
+            if case .requester = principal {
+                let pending: Bool
+                do { pending = try admits(principal) } catch {
+                    throw DomainError.failed("The grant store is unavailable.")
+                }
+                guard pending else { throw DomainError.capabilityDenied(nil) }
+            } else {
+                guard held != nil else { throw DomainError.capabilityDenied(nil) }
+            }
         case .admitted:
             guard held != nil else { throw DomainError.capabilityDenied(nil) }
         case .capability(let name):
@@ -106,16 +182,26 @@ final class Authority: Sendable {
         }
     }
 
-    /// Resolves a presented bearer credential to its active grant. Every stored
-    /// digest is compared, in constant time and without an early exit.
+    /// Resolves a presented bearer credential to its active grant, or to the
+    /// status-only principal of the pending request it was submitted with.
+    /// Every stored digest is compared, in constant time and without an early
+    /// exit. A grant with this digest decides alone, whatever its state: a
+    /// revoked grant's secret is nothing, never a requester again.
     func authenticate(bearer: String) throws -> Principal? {
         guard let digest = Credential.digest(ofPresented: bearer) else { return nil }
-        var match: GrantRecord?
-        for grant in try boundary.withLock({ try store.grants() })
-        where Credential.constantTimeEqual(grant.credentialDigest, digest) {
-            match = grant
+        let (grants, requests) = try boundary.withLock { (try store.grants(), try store.requests()) }
+        var grant: GrantRecord?
+        for candidate in grants
+        where Credential.constantTimeEqual(candidate.credentialDigest, digest) {
+            grant = candidate
         }
-        guard let match, match.state == .active else { return nil }
-        return .grant(id: match.id)
+        var request: GrantRequestRecord?
+        for candidate in requests
+        where Credential.constantTimeEqual(candidate.credentialDigest, digest) {
+            request = candidate
+        }
+        if let grant { return grant.state == .active ? .grant(id: grant.id) : nil }
+        guard let request, request.state == .pending else { return nil }
+        return .requester(requestId: request.id)
     }
 }

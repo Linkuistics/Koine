@@ -151,9 +151,12 @@ public final class Engine: Sendable {
     }
 
     public func execute(_ request: EngineRequest, as principal: Principal) async -> EngineResponse {
-        guard (try? authority.capabilities(of: principal)) ?? nil != nil else {
-            return respond(.unauthenticated, errors: [GraphQLError(message: "Not authenticated.")])
-        }
+        let unauthenticated = respond(
+            .unauthenticated, errors: [GraphQLError(message: "Not authenticated.")]
+        )
+        guard (try? authority.admits(principal)) == true else { return unauthenticated }
+        var isAnonymous = false
+        if case .anonymous = principal { isAnonymous = true }
 
         // The policy's limits come first: the parser and the validator both
         // recurse over whatever they are given.
@@ -164,14 +167,45 @@ public final class Engine: Sendable {
             document = try parse(source: request.query)
             try limits.check(document)
             actions = rootMutationActions(in: document, request: request)
+            // Anonymous enrollment is one shape of operation and no other: the
+            // selected operation's only root action is `koineRequestGrant`.
+            // Anything else without a credential is unauthenticated, whatever
+            // else is wrong with it, and nothing of it is validated or run.
+            if isAnonymous, actions.map(\.name.value) != ["koineRequestGrant"] {
+                return unauthenticated
+            }
+            // The library resolves `__schema` and `__type` itself, outside
+            // every authority check, so a status-only principal is refused
+            // them here: it reads its own request and nothing else.
+            if case .requester = principal,
+                let operation = selectedOperation(in: document, request: request)
+            {
+                let meta = rootFields(of: operation, in: document, request: request)
+                    .filter { $0.name.value.hasPrefix("__") }
+                guard meta.isEmpty else {
+                    return respond(
+                        .forbidden,
+                        errors: meta.map {
+                            Engine.graphQLError(
+                                DomainError.capabilityDenied(nil), nodes: [$0],
+                                path: [$0.alias?.value ?? $0.name.value], phase: "authorization"
+                            )
+                        }
+                    )
+                }
+            }
             try limits.checkRootMutationActions(actions.count)
         } catch let exceeded as RequestLimits.Exceeded {
+            if isAnonymous { return unauthenticated }
             return respond(.invalidRequest, errors: [GraphQLError(message: exceeded.message)])
         } catch {
+            if isAnonymous { return unauthenticated }
             return respond(.invalidRequest, errors: [error as? GraphQLError ?? GraphQLError(error)])
         }
         let validationErrors = validate(schema: schema, ast: document)
         guard validationErrors.isEmpty else {
+            // The validator's messages suggest real type and field names.
+            if isAnonymous { return unauthenticated }
             return respond(.invalidRequest, errors: validationErrors)
         }
 
@@ -300,12 +334,28 @@ public final class Engine: Sendable {
     /// The root fields of the selected operation when it is a mutation.
     private func rootMutationActions(in document: Document, request: EngineRequest) -> [Field] {
         let operations = document.definitions.compactMap { $0 as? OperationDefinition }
-        guard
-            let operation = operations.first(where: {
-                request.operationName == nil || $0.name?.value == request.operationName
-            }),
+        guard let operation = selectedOperation(in: document, request: request),
             operation.operation == .mutation
         else { return [] }
+        return rootFields(of: operation, in: document, request: request)
+    }
+
+    /// The operation execution will select, or nil where it will select none:
+    /// several operations and no name is a request the library refuses.
+    private func selectedOperation(
+        in document: Document, request: EngineRequest
+    ) -> OperationDefinition? {
+        let operations = document.definitions.compactMap { $0 as? OperationDefinition }
+        guard let name = request.operationName else {
+            return operations.count == 1 ? operations[0] : nil
+        }
+        return operations.first { $0.name?.value == name }
+    }
+
+    /// The selected root fields of an operation, of any kind.
+    private func rootFields(
+        of operation: OperationDefinition, in document: Document, request: EngineRequest
+    ) -> [Field] {
 
         var fragments: [String: FragmentDefinition] = [:]
         for case let fragment as FragmentDefinition in document.definitions {
@@ -314,8 +364,14 @@ public final class Engine: Sendable {
         var variables: [String: Bool] = [:]
         for definition in operation.variableDefinitions {
             let name = definition.variable.name.value
-            variables[name] = request.variables[name]?.bool
-                ?? (definition.defaultValue as? BooleanValue)?.value
+            // Only a JSON boolean decides here. The library coerces other
+            // values, a number among them, so anything else given is left
+            // undecided, which `isIncluded` counts as included.
+            if let given = request.variables[name], given != .undefined {
+                variables[name] = given.bool
+            } else {
+                variables[name] = (definition.defaultValue as? BooleanValue)?.value
+            }
         }
 
         var actions: [Field] = []

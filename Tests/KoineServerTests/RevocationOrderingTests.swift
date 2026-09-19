@@ -12,6 +12,7 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
 
     private let lock = NSLock()
     private var records: [GrantRecord] = []
+    private var requestRecords: [GrantRequestRecord] = []
     private var failing: Set<Operation> = []
     private var calls: [Operation: Int] = [:]
     private var grantReadsAllowed: Int?
@@ -66,6 +67,34 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
                 credentialDigest: old.credentialDigest, state: .revoked
             )
             return records[index]
+        }
+    }
+
+    func insertRequest(_ request: GrantRequestRecord) throws {
+        lock.withLock { requestRecords.append(request) }
+    }
+
+    func requests() throws -> [GrantRequestRecord] { lock.withLock { requestRecords } }
+
+    func request(id: String) throws -> GrantRequestRecord? {
+        lock.withLock { requestRecords.first { $0.id == id } }
+    }
+
+    func approve(requestId: String, as grant: GrantRecord) throws -> Bool {
+        try lock.withLock {
+            try enter(.insert)
+            guard let index = requestRecords.firstIndex(where: { $0.id == requestId }),
+                requestRecords[index].state == .pending
+            else { return false }
+            let old = requestRecords[index]
+            requestRecords[index] = GrantRequestRecord(
+                id: old.id, clientLabel: old.clientLabel,
+                requestedCapabilities: old.requestedCapabilities,
+                credentialDigest: old.credentialDigest, comparisonCode: old.comparisonCode,
+                state: .approved, grantId: grant.id
+            )
+            records.append(grant)
+            return true
         }
     }
 }

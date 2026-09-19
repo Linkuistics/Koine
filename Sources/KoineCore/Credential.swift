@@ -32,6 +32,11 @@ public struct Credential: Sendable {
         return hexDigest(of: bytes)
     }
 
+    /// Whether `text` is the canonical form of a digest: 64 lower-case hex digits.
+    public static func isCanonicalDigest(_ text: String) -> Bool {
+        text.utf8.count == 64 && text.utf8.allSatisfy { "0123456789abcdef".utf8.contains($0) }
+    }
+
     /// Compares two digests without an early exit on the first differing byte.
     public static func constantTimeEqual(_ lhs: String, _ rhs: String) -> Bool {
         let a = Array(lhs.utf8)

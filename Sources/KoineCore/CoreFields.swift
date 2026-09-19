@@ -25,10 +25,29 @@ struct CoreFields: Sendable {
             ) { input in
                 try createGrant(input.arguments["input"])
             },
+            "Mutation.koineRequestGrant": FieldRegistration(authority: .anonymousEnrollment) {
+                input in try requestGrant(input.arguments["input"])
+            },
+            "Query.koineGrantRequest": FieldRegistration(authority: .requestStatus) { input in
+                try ownRequest(of: input.principal)
+            },
+            "Mutation.koineApproveGrantRequest": FieldRegistration(
+                authority: .capability(CoreCapability.manage)
+            ) { input in
+                // Through the authority boundary, like revocation.
+                object(
+                    try authority.approve(
+                        requestId: input.arguments["requestId"].string ?? "",
+                        capabilities: (input.arguments["capabilities"].array ?? [])
+                            .compactMap(\.string)
+                    )
+                )
+            },
             "Query.koineManagement": FieldRegistration(
                 authority: .capability(CoreCapability.manage)
             ) { _ in
                 [
+                    "requests": try readStore { try store.requests().map(object) },
                     "grants": try readStore { try store.grants() }.map(object),
                     "providers": await providerStatuses().map(object),
                     "osPermissions": osPermissions().map(object),
@@ -47,7 +66,10 @@ struct CoreFields: Sendable {
                        "availableCapabilities"], .admitted),
             ("KoineGrant", ["grantId", "clientLabel", "capabilities", "state"], .admitted),
             ("KoineCreatedGrant", ["grant", "credential"], .capability(CoreCapability.manage)),
-            ("KoineManagement", ["grants", "providers", "osPermissions"],
+            ("KoineGrantRequestReceipt", ["requestId", "comparisonCode"], .anonymousEnrollment),
+            ("KoineGrantRequest", ["requestId", "clientLabel", "comparisonCode",
+                                   "requestedCapabilities", "state", "grant"], .requestStatus),
+            ("KoineManagement", ["requests", "grants", "providers", "osPermissions"],
              .capability(CoreCapability.manage)),
             ("KoineProviderStatus", ["provider", "version", "schemaVersion", "state", "diagnostic"],
              .capability(CoreCapability.manage)),
@@ -108,6 +130,50 @@ struct CoreFields: Sendable {
         throw DomainError.failed("The grant could not be stored.")
     }
 
+    /// Stores the request as submitted. It confers nothing: the digest names a
+    /// status-only principal until a manager approves it.
+    private func requestGrant(_ input: Map) throws -> Object {
+        let digest = input["credentialDigest"].string ?? ""
+        guard Credential.isCanonicalDigest(digest) else {
+            throw DomainError.failed("credentialDigest must be 64 lower-case hexadecimal digits.")
+        }
+        let requested = (input["capabilities"].array ?? []).compactMap(\.string)
+        let unknown = requested.filter { !availableCapabilities.contains($0) }
+        guard unknown.isEmpty else {
+            throw DomainError.failed("Unknown capabilities: \(unknown.joined(separator: ", ")).")
+        }
+        let request = GrantRequestRecord(
+            id: UUID().uuidString.lowercased(), clientLabel: input["clientLabel"].string ?? "",
+            requestedCapabilities: requested, credentialDigest: digest,
+            comparisonCode: Self.comparisonCode(), state: .pending, grantId: nil
+        )
+        do { try store.insertRequest(request) } catch {
+            throw DomainError.failed("The request could not be stored.")
+        }
+        return ["requestId": request.id, "comparisonCode": request.comparisonCode]
+    }
+
+    /// Random, so it discloses nothing of the digest; short and free of
+    /// look-alike characters, so two people can compare it by eye.
+    private static func comparisonCode() -> String {
+        let alphabet = Array("ABCDEFGHJKMNPQRSTVWXYZ23456789")
+        var generator = SystemRandomNumberGenerator()
+        let half = { String((0..<4).map { _ in alphabet.randomElement(using: &generator)! }) }
+        return "\(half())-\(half())"
+    }
+
+    /// The caller's own request: the one its secret was submitted with, or the
+    /// one its grant came from. Null for a grant no request produced.
+    private func ownRequest(of principal: Principal) throws -> Object? {
+        try readStore {
+            switch principal {
+            case .requester(let id): return try store.request(id: id).map(object)
+            case .grant(let id): return try store.requests().first { $0.grantId == id }.map(object)
+            case .localConsole, .anonymous: return nil
+            }
+        }
+    }
+
     /// Revocation goes through the authority boundary, never straight to the
     /// store, so it is ordered against every action admission.
     private func revokeGrant(id: String) throws -> Object {
@@ -137,6 +203,17 @@ struct CoreFields: Sendable {
 
     private func object(_ status: OSPermissionStatus) -> Object {
         ["permission": status.permission, "owner": status.owner, "granted": status.granted]
+    }
+
+    private func object(_ request: GrantRequestRecord) throws -> Object {
+        [
+            "requestId": request.id,
+            "clientLabel": request.clientLabel,
+            "comparisonCode": request.comparisonCode,
+            "requestedCapabilities": request.requestedCapabilities,
+            "state": request.state.rawValue,
+            "grant": try request.grantId.flatMap { try store.grant(id: $0) }.map(object),
+        ]
     }
 
     private func object(_ grant: GrantRecord) -> Object {

@@ -106,6 +106,17 @@ fields it makes real. The design SDL is the target, not something to stub.
 Koine, driving its UI or touching the clipboard happens in a TestAnyware VM,
 never on the host.
 
+**What `request-approve-and-poll-k34` left.** The admission cases are
+`FieldAuthority.anonymousEnrollment` and `.requestStatus`; `Principal.requester`
+is admitted only while its request is `PENDING`, so k35 widens
+`Authority.admits` and `authenticate` for denied requests. Every refusal k35
+makes precise is `failed` today (a missing request ID is `unavailable`), and a
+duplicate request digest is a bare `failed`. The served
+`KoineGrantRequestState` is `PENDING APPROVED` only. For k36: anonymous
+requests are unbounded, and `Authority.authenticate` reads every request row on
+every authenticated call, so the cap bounds that scan too. `GrantEnrollmentTests`
+has the helpers, and reads the design operations from the file unchanged.
+
 No research, prototype or review leaf is added, and no question for the human
 arose: the protocol is fully specified by the approved design. Notarization,
 Gatekeeper and the supported matrix stay with `release-acceptance-handoff-k11`.

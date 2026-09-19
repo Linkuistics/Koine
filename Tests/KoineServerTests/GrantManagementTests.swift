@@ -249,8 +249,8 @@ import Testing
 
     // MARK: Schema
 
-    /// Serve only what is implemented: management is grants, provider status
-    /// and OS permissions, and nothing else of the design SDL yet.
+    /// Serve only what is implemented: management is requests, grants, provider
+    /// status and OS permissions; denial is not served yet.
     @Test func theServedManagementSchemaIsOnlyWhatIsImplemented() async throws {
         let (harness, manager, _) = try await managed()
         let reply = try await harness.post(
@@ -264,8 +264,13 @@ import Testing
             let fields = (reply.data?[key] as? [String: Any])?["fields"] as? [[String: Any]] ?? []
             return fields.compactMap { $0["name"] as? String }.sorted()
         }
-        #expect(names("management") == ["grants", "osPermissions", "providers"])
-        #expect(names("mutation") == ["koineCreateGrant", "koineRevokeGrant"])
+        #expect(names("management") == ["grants", "osPermissions", "providers", "requests"])
+        #expect(
+            names("mutation") == [
+                "koineApproveGrantRequest", "koineCreateGrant", "koineRequestGrant",
+                "koineRevokeGrant",
+            ]
+        )
         await harness.stop()
     }
 }

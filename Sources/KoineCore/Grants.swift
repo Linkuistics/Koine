@@ -29,6 +29,41 @@ public struct GrantRecord: Sendable, Equatable {
     }
 }
 
+/// Only the states this stage can produce are served; denial and expiry join
+/// them with the leaves that make them real.
+public enum GrantRequestState: String, Sendable {
+    case pending = "PENDING"
+    case approved = "APPROVED"
+}
+
+/// The persisted form of a client's request for a grant. It holds the digest
+/// of the secret the client generated, never the secret. The label and the
+/// requested capabilities are as submitted and never change.
+public struct GrantRequestRecord: Sendable, Equatable {
+    public let id: String
+    public let clientLabel: String
+    public let requestedCapabilities: [String]
+    public let credentialDigest: String
+    public let comparisonCode: String
+    public let state: GrantRequestState
+    /// The grant approval created; nil until then.
+    public let grantId: String?
+
+    public init(
+        id: String, clientLabel: String, requestedCapabilities: [String],
+        credentialDigest: String, comparisonCode: String, state: GrantRequestState,
+        grantId: String?
+    ) {
+        self.id = id
+        self.clientLabel = clientLabel
+        self.requestedCapabilities = requestedCapabilities
+        self.credentialDigest = credentialDigest
+        self.comparisonCode = comparisonCode
+        self.state = state
+        self.grantId = grantId
+    }
+}
+
 public enum GrantStoreError: Error {
     /// Credential digests are globally unique; the caller retries with a new secret.
     case duplicateDigest
@@ -44,16 +79,31 @@ public protocol GrantStore: Sendable {
     /// grant has this ID. Revoking a revoked grant changes nothing and succeeds.
     /// It returns only after the revocation is durable.
     func revoke(id: String) throws -> GrantRecord?
+
+    /// Throws `duplicateDigest` when another request already has this digest.
+    func insertRequest(_ request: GrantRequestRecord) throws
+    func requests() throws -> [GrantRequestRecord]
+    func request(id: String) throws -> GrantRequestRecord?
+    /// In one durable commit, marks the pending request approved and inserts
+    /// `grant`, bound to it. False, with nothing written, when the request is
+    /// missing or no longer pending. Throws `duplicateDigest`, with nothing
+    /// written, when the digest already belongs to a grant.
+    func approve(requestId: String, as grant: GrantRecord) throws -> Bool
 }
 
-/// Who is executing an operation. The three admission cases are distinct:
-/// console authority is never a fallback for a failed HTTP authentication.
+/// Who is executing an operation. The admission cases are distinct: none is a
+/// fallback reached by failing another, and console authority least of all.
 public enum Principal: Sendable {
     /// A client presenting the bearer credential of this grant.
     case grant(id: String)
     /// The embedding application's in-process management console. It holds
     /// `koine:manage` without a grant and has no serialized form.
     case localConsole
-    /// No credential. Admits nothing until enrollment exists.
+    /// A client presenting the secret whose digest it submitted with this
+    /// request, not yet approved. Status-only: it holds no capabilities and is
+    /// not an admitted principal; it reads its own request and nothing else.
+    case requester(requestId: String)
+    /// No credential at all. Admits one thing: an operation whose only selected
+    /// root action is `koineRequestGrant`.
     case anonymous
 }

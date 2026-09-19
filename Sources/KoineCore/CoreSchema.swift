@@ -9,11 +9,17 @@ schema { query: Query mutation: Mutation }
 type Query {
   "Authenticated caller metadata. No provider capability required."
   koine: Koine!
+  "Proof of the submitted secret, or its resulting active grant; own request only."
+  koineGrantRequest: KoineGrantRequest
   "koine:manage. Never returns bearer credentials."
   koineManagement: KoineManagement
 }
 
 type Mutation {
+  "Anonymous enrollment only; cannot be mixed with other root actions."
+  koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
+  "koine:manage. Approves only a subset of the immutable requested capabilities."
+  koineApproveGrantRequest(requestId: ID!, capabilities: [String!]!): KoineGrant
   "koine:manage. Credential is returned once after durable creation."
   koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
   "koine:manage. Idempotent for an already revoked grant; never grants authority."
@@ -30,6 +36,30 @@ type Koine {
   "Names available to request. Listing them supplies no authority."
   availableCapabilities: [String!]!
 }
+
+input KoineRequestGrantInput {
+  clientLabel: String!
+  "Canonical lower-case SHA-256 hex digest of a 32-byte random bearer secret."
+  credentialDigest: String!
+  capabilities: [String!]!
+}
+
+type KoineGrantRequestReceipt {
+  requestId: ID!
+  comparisonCode: String!
+}
+
+type KoineGrantRequest {
+  requestId: ID!
+  clientLabel: String!
+  comparisonCode: String!
+  requestedCapabilities: [String!]!
+  state: KoineGrantRequestState!
+  "Present only after approval; scoped to this request."
+  grant: KoineGrant
+}
+
+enum KoineGrantRequestState { PENDING APPROVED }
 
 input KoineCreateGrantInput {
   clientLabel: String!
@@ -53,6 +83,7 @@ type KoineCreatedGrant {
 
 "All fields require koine:manage."
 type KoineManagement {
+  requests: [KoineGrantRequest!]!
   grants: [KoineGrant!]!
   providers: [KoineProviderStatus!]!
   "Read on each request. Reading never asks the user for consent."

@@ -392,7 +392,9 @@ for them.
 The client creates and securely stores its future random bearer secret, then
 calls the public `koineRequestGrant` mutation with its digest, a display label
 and the requested capabilities. Koine returns a request ID and a short,
-non-secret comparison code. Request capabilities must be known and are fixed
+non-secret comparison code. The code is random, not derived from the digest,
+and is displayed and compared as an opaque string; its alphabet and length are
+not contract. Request capabilities must be known and are fixed
 once submitted. A pending request conveys no provider or management authority.
 
 Credential digests are globally unique across requests, active grants and

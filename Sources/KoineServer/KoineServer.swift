@@ -165,7 +165,8 @@ public final class KoineServer: Sendable {
     // MARK: HTTP
 
     /// Authenticates, then executes. The only principals this path can produce
-    /// come from a presented bearer credential; nothing here names the console.
+    /// come from a presented bearer credential, or from presenting none;
+    /// nothing here names the console.
     ///
     /// The transport rules run first and in this order, so a request a website
     /// could cause is refused before its credential is even looked at.
@@ -185,17 +186,25 @@ public final class KoineServer: Sendable {
         guard mediaType(request.headers["content-type"]) == "application/json" else {
             return HTTPResponse(status: 415)
         }
+        // No Authorization header at all is the anonymous principal, which the
+        // engine admits for enrollment alone. A header that does not name a
+        // live credential is refused here: it is never retried as anonymous.
+        let unauthorized = HTTPResponse(status: 401, headers: ["WWW-Authenticate": "Bearer"])
         let bearerPrefix = "Bearer "
-        guard let authorization = request.headers["authorization"],
-            authorization.hasPrefix(bearerPrefix),
-            let principal = engine.authenticate(
-                bearer: String(authorization.dropFirst(bearerPrefix.count))
-            )
-        else {
-            return HTTPResponse(status: 401, headers: ["WWW-Authenticate": "Bearer"])
+        let principal: Principal
+        if let authorization = request.headers["authorization"] {
+            guard authorization.hasPrefix(bearerPrefix),
+                let presented = engine.authenticate(
+                    bearer: String(authorization.dropFirst(bearerPrefix.count))
+                )
+            else { return unauthorized }
+            principal = presented
+        } else {
+            principal = .anonymous
         }
         // One JSON object per POST; a batch array does not decode.
         guard let graphQLRequest = try? EngineRequest(jsonBody: Data(request.body)) else {
+            if case .anonymous = principal { return unauthorized }
             return HTTPResponse(status: 400)
         }
 
@@ -204,7 +213,7 @@ public final class KoineServer: Sendable {
         switch response.outcome {
         case .executed: status = 200
         case .invalidRequest: status = 400
-        case .unauthenticated: status = 401
+        case .unauthenticated: return unauthorized
         case .forbidden: status = 403
         }
         let modern = "application/graphql-response+json"

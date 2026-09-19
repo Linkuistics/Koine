@@ -36,27 +36,97 @@ public final class SQLiteGrantStore: GrantStore {
                 ) STRICT
                 """)
         }
+        migrator.registerMigration("grant-requests-1") { db in
+            try db.execute(sql: """
+                CREATE TABLE grant_requests (
+                    id TEXT PRIMARY KEY NOT NULL,
+                    client_label TEXT NOT NULL,
+                    capabilities TEXT NOT NULL,
+                    credential_digest TEXT NOT NULL UNIQUE,
+                    comparison_code TEXT NOT NULL,
+                    state TEXT NOT NULL,
+                    grant_id TEXT REFERENCES grants(id)
+                ) STRICT
+                """)
+        }
         try migrator.migrate(queue)
     }
 
     public func insert(_ grant: GrantRecord) throws {
-        let capabilities = String(
-            decoding: try JSONEncoder().encode(grant.capabilities), as: UTF8.self
+        try uniquely { try queue.write { db in try Self.insert(grant, into: db) } }
+    }
+
+    private static func insert(_ grant: GrantRecord, into db: Database) throws {
+        try db.execute(
+            sql: "INSERT INTO grants VALUES (?, ?, ?, ?, ?)",
+            arguments: [
+                grant.id, grant.clientLabel, try json(grant.capabilities),
+                grant.credentialDigest, grant.state.rawValue,
+            ]
         )
-        do {
-            try queue.write { db in
-                try db.execute(
-                    sql: "INSERT INTO grants VALUES (?, ?, ?, ?, ?)",
-                    arguments: [
-                        grant.id, grant.clientLabel, capabilities,
-                        grant.credentialDigest, grant.state.rawValue,
-                    ]
-                )
-            }
-        } catch let error as DatabaseError
+    }
+
+    private static func json(_ capabilities: [String]) throws -> String {
+        String(decoding: try JSONEncoder().encode(capabilities), as: UTF8.self)
+    }
+
+    private func uniquely<T>(_ write: () throws -> T) throws -> T {
+        do { return try write() } catch let error as DatabaseError
             where error.extendedResultCode == .SQLITE_CONSTRAINT_UNIQUE
         {
             throw GrantStoreError.duplicateDigest
+        }
+    }
+
+    public func insertRequest(_ request: GrantRequestRecord) throws {
+        try uniquely {
+            try queue.write { db in
+                try db.execute(
+                    sql: "INSERT INTO grant_requests VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    arguments: [
+                        request.id, request.clientLabel, try Self.json(request.requestedCapabilities),
+                        request.credentialDigest, request.comparisonCode, request.state.rawValue,
+                        request.grantId,
+                    ]
+                )
+            }
+        }
+    }
+
+    public func requests() throws -> [GrantRequestRecord] {
+        try queue.read { db in
+            try Row.fetchAll(db, sql: "SELECT * FROM grant_requests ORDER BY rowid")
+                .map(Self.request)
+        }
+    }
+
+    public func request(id: String) throws -> GrantRequestRecord? {
+        try queue.read { db in
+            try Row.fetchOne(db, sql: "SELECT * FROM grant_requests WHERE id = ?", arguments: [id])
+                .map(Self.request)
+        }
+    }
+
+    public func approve(requestId: String, as grant: GrantRecord) throws -> Bool {
+        // One transaction: a throw, such as the grants table refusing a digest
+        // it already holds, rolls the request's state back with it.
+        try uniquely {
+            try queue.write { db in
+                try db.execute(
+                    sql: "UPDATE grant_requests SET state = ? WHERE id = ? AND state = ?",
+                    arguments: [
+                        GrantRequestState.approved.rawValue, requestId,
+                        GrantRequestState.pending.rawValue,
+                    ]
+                )
+                guard db.changesCount == 1 else { return false }
+                try Self.insert(grant, into: db)
+                try db.execute(
+                    sql: "UPDATE grant_requests SET grant_id = ? WHERE id = ?",
+                    arguments: [grant.id, requestId]
+                )
+                return true
+            }
         }
     }
 
@@ -86,6 +156,22 @@ public final class SQLiteGrantStore: GrantStore {
     }
 
     private struct CorruptRecord: Error {}
+
+    private static func request(_ row: Row) throws -> GrantRequestRecord {
+        let capabilities: String = row["capabilities"]
+        guard let state = GrantRequestState(rawValue: row["state"]) else { throw CorruptRecord() }
+        return GrantRequestRecord(
+            id: row["id"],
+            clientLabel: row["client_label"],
+            requestedCapabilities: try JSONDecoder().decode(
+                [String].self, from: Data(capabilities.utf8)
+            ),
+            credentialDigest: row["credential_digest"],
+            comparisonCode: row["comparison_code"],
+            state: state,
+            grantId: row["grant_id"]
+        )
+    }
 
     private static func record(_ row: Row) throws -> GrantRecord {
         let capabilities: String = row["capabilities"]

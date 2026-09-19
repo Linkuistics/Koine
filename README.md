@@ -35,7 +35,8 @@ installed workflow is verified in a clean VM. Native providers load through one
 loader, and the desktop path has begun: the bundled desktop provider resolves a
 running application from its process identity, lists its windows, those it has
 seen on other Spaces included, looks an application or window reference up again
-and focuses exactly the window chosen ("Desktop provider" below). The agreed design:
+and focuses exactly the window chosen ("Desktop provider" below). A client can
+also enrol itself ("Client-requested grants" below). The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -51,6 +52,43 @@ and focuses exactly the window chosen ("Desktop provider" below). The agreed des
 The [visual overview](http://127.0.0.1:8772/#discussion) explains the agreed
 contract and its implementation acceptance boundaries.
 That local URL requires the diagram server described in the views' README.
+
+## Client-requested grants
+
+A client with no credential enrols itself over the public API, and a
+`koine:manage` client decides. Deny, retry, expiry and limits are not served
+yet, and the review UI is not built; the local console and any manager over
+GraphQL already approve.
+
+1. The client generates its own 32-byte secret, keeps it, and sends
+   `Mutation.koineRequestGrant` with the secret's digest (64 lower-case hex), a
+   label and the capabilities it wants, each one `availableCapabilities` lists.
+   It sends no `Authorization` header. Without one, Koine admits exactly this:
+   an operation whose only selected root action is `koineRequestGrant`. A second
+   action, an alias repeating it, `__typename` beside it or any query is HTTP
+   401, as every other request without a credential still is, and nothing is
+   stored; so is an enrollment that fails validation, whose messages would name
+   the schema. A `@skip` or `@include` condition that is not a JSON boolean
+   counts as included, here and in mutation preflight. A header that names no live credential is 401 too; it is never
+   retried as anonymous. The receipt is a request ID and a comparison code: eight
+   random characters as `XXXX-XXXX`, independent of the digest, for the user to
+   compare by eye with what the client shows.
+2. The client polls `Query.koineGrantRequest` with its secret as the bearer.
+   While the request is pending that secret is a status-only principal: it reads
+   its own request and nothing else. `koine`, `koineManagement`, provider fields
+   `__schema`, `__type` and every mutation refuse it with the ordinary
+   `permission` error, alone or beside `koineGrantRequest`, so it cannot approve itself or see another
+   request.
+3. A manager reads `koineManagement.requests` and calls
+   `Mutation.koineApproveGrantRequest(requestId:capabilities:)` with a subset of
+   what was requested. Approval goes through the same serialized authority
+   boundary as revocation, and one durable commit marks the request `APPROVED`
+   and inserts the grant bound to the submitted digest; a digest that already
+   belongs to a grant fails that commit whole.
+4. The unchanged secret now authenticates as that grant. `koineGrantRequest`
+   shows `APPROVED` with the grant's metadata, and is null under a grant no
+   request produced. No response carries a secret or a digest. Requests,
+   approvals and the grants they produce survive a restart.
 
 ## Building and testing
 
