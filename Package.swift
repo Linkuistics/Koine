@@ -10,6 +10,9 @@ let package = Package(
         .library(name: "KoineServer", targets: ["KoineServer"]),
     ],
     dependencies: [
+        // The resilient provider framework; its own package so it is one
+        // dynamic image, never linked statically into a host target.
+        .package(path: "ProviderAPI"),
         .package(url: "https://github.com/GraphQLSwift/GraphQL.git", from: "4.2.0"),
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.103.0"),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "5.0.0"),
@@ -21,9 +24,16 @@ let package = Package(
         .target(
             name: "KoineCore",
             dependencies: [
+                .product(name: "KoineProviderAPI", package: "ProviderAPI"),
                 .product(name: "GraphQL", package: "GraphQL"),
                 .product(name: "Crypto", package: "swift-crypto"),
             ]
+        ),
+        // The native loader: dlopen and Objective-C class lookup live here,
+        // outside the core.
+        .target(
+            name: "KoineProviderLoader",
+            dependencies: [.product(name: "KoineProviderAPI", package: "ProviderAPI")]
         ),
         .target(
             name: "KoineSQLiteStore",
@@ -39,7 +49,7 @@ let package = Package(
         ),
         .target(
             name: "KoineServer",
-            dependencies: ["KoineCore", "KoineSQLiteStore", "KoineHTTP"]
+            dependencies: ["KoineCore", "KoineSQLiteStore", "KoineHTTP", "KoineProviderLoader"]
         ),
         // What the native UI knows of the server: GraphQL through the console.
         .target(name: "KoineManagementClient", dependencies: ["KoineServer"]),

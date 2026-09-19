@@ -1,4 +1,5 @@
-/// Capability names owned by the core. Providers add their own in later stages.
+/// Capability names owned by the core. Each active provider adds its own
+/// `<providerId>:read` and `<providerId>:control`.
 public enum CoreCapability {
     public static let manage = "koine:manage"
 }

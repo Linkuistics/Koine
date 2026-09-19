@@ -8,6 +8,8 @@ struct CoreFields: Sendable {
     let authority: Authority
     let instanceId: String
     let schemaDigest: String
+    /// The read and control capabilities of every active provider.
+    var providerCapabilities: [String] = []
 
     typealias Object = [String: any Sendable]
 
@@ -51,7 +53,7 @@ struct CoreFields: Sendable {
         return all
     }
 
-    private var availableCapabilities: [String] { [CoreCapability.manage] }
+    private var availableCapabilities: [String] { [CoreCapability.manage] + providerCapabilities }
 
     private func koine(for principal: Principal) throws -> Object {
         var ownGrant: Object?

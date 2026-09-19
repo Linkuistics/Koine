@@ -501,8 +501,10 @@ the framework, or substitute its own framework under the same module identity.
 
 Build the framework with `BUILD_LIBRARY_FOR_DISTRIBUTION=YES` (library evolution
 and textual module interfaces) from its first release, in all distributed build
-configurations. Give the major-1 framework one stable module and install name;
-the application supplies its trusted run path. Plugin bundles contain a Swift
+configurations. Give the major-1 framework one stable module and install name:
+module `KoineProviderAPI`, install name
+`@rpath/KoineProviderAPI.framework/Versions/A/KoineProviderAPI`. The application
+supplies its trusted run path. Plugin bundles contain a Swift
 dylib, declarative manifest and schema. Their manifests declare provider ID,
 GraphQL prefix, plugin/schema versions, CPU architecture, minimum OS/runtime,
 required framework major and minimum minor, required host features, and a unique

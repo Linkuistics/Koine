@@ -11,11 +11,21 @@ tasks:
     desc: Build all targets
     cmds:
       - swift build
+      - scripts/stage-provider-framework.sh debug
 
   test:
-    desc: Run the public-seam suite over real loopback HTTP
+    desc: Run the public-seam and native-seam suites over real loopback HTTP
     cmds:
-      - swift test
+      - swift build --build-tests
+      - task: fixture
+      - swift test --skip-build
+
+  fixture:
+    desc: Stage KoineProviderAPI.framework and build the fixture provider against it, outside the package
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/FixtureProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../FixtureProviders"
 
   app:
     desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)

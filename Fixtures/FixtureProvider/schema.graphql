@@ -1,0 +1,9 @@
+extend type Query {
+  "fixture:read."
+  fixtureInfo: FixtureInfo
+}
+
+"All fields require fixture:read."
+type FixtureInfo {
+  greeting: String!
+}

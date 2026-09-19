@@ -55,12 +55,18 @@ Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
 
 ```sh
 task           # build, then test (needs https://taskfile.dev)
-task build     # swift build
-task test      # swift test: the public-seam suite over real loopback HTTP
+task build     # swift build, then stage KoineProviderAPI.framework
+task test      # build, stage, build the fixture provider, then the suites over real loopback HTTP
+task fixture   # stage the framework and build the fixture provider outside the package
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 ```
+
+Use `task test`, not a bare `swift test`: every host image links the provider
+framework by its framework install name, which resolves only once the framework
+is staged ("Provider framework" below), and `NativeProviderTests` needs the
+fixture bundle.
 
 The tests embed the server over a temporary data directory; they never touch
 `~/Library/Application Support/Koine`.
@@ -80,11 +86,61 @@ so each order is forced rather than raced. The hook is reached with
 | `KoineHTTP` | An HTTP/1.1 listener bound to `127.0.0.1` on an OS-assigned port. Knows nothing of GraphQL. |
 | `KoineServer` | The embeddable composition: data directory, single-instance lock, descriptor lifecycle, the HTTP transport rules, bearer authentication, and the in-process `LocalConsole`. |
 
+| `KoineProviderLoader` | The native loader: finds `*.koineprovider` bundles in a configured root, `dlopen`s each, finds the manifest's principal class with `NSClassFromString` and requires `ProviderFactory`. The only place `dlopen` and Objective-C class lookup appear. |
+| `KoineProviderAPI` (package `ProviderAPI/`) | The provider binary interface: `ProviderFactory`, `ProviderDescriptor`, `Provider`, `ResolutionRequest`, `ResolutionResult`, `ProviderValue`, `ProviderFailure`. One dynamic image built with library evolution; no third-party type in its interface. |
 | `KoineManagementClient` | What the native UI knows of the server: the management operations as GraphQL through the `LocalConsole`, with GraphQL errors surfaced as `ManagementError`. Foundation only, so it is tested against an embedded server. |
 | `KoineApp` | The resident application's executable: AppKit lifecycle, SwiftUI views. The only target that imports platform UI frameworks. |
 
 An application embeds it as the tests do: `KoineServer(dataDirectory:)`, then
 `start()`. `server.console` is the local-console principal; it has no wire form.
+
+## Provider framework
+
+`KoineProviderAPI` is the one image the host and every native provider link
+(`docs/adr/resilient-provider-framework.md`). Its module name is
+`KoineProviderAPI` and its install name is
+`@rpath/KoineProviderAPI.framework/Versions/A/KoineProviderAPI`; both are part
+of the major-1 compatibility promise and do not change.
+
+**Build tooling: `swift build` with explicit flags**, not `xcodebuild` on the
+package scheme. `ProviderAPI/Package.swift` passes `-enable-library-evolution`
+and `-emit-module-interface` to the compiler and the install name to the linker,
+in debug and release alike. `xcodebuild BUILD_LIBRARY_FOR_DISTRIBUTION=YES`
+would apply library evolution to every dependency in the graph and move the
+application build off `Package.swift`; the explicit flags touch the one module
+that carries the promise. Three things follow from SwiftPM's rules:
+
+- The framework is a local sub-package, not a target of the root package. A
+  target is linked statically into each host image; only a `.dynamic` library
+  *product* of another package is one shared image. SwiftPM accepts
+  `unsafeFlags` in a local path dependency.
+- SwiftPM emits a bare `libKoineProviderAPI.dylib`. `scripts/stage-provider-framework.sh`
+  assembles the real `KoineProviderAPI.framework` (image, textual
+  `.swiftinterface`, `Info.plist`) into the build's `PackageFrameworks`
+  directory, which is already on the run path of everything SwiftPM links.
+  That staged framework is both what host images load in development and the
+  `-F` directory providers are built against.
+- The script refuses to stage unless the emitted interface records
+  `-enable-library-evolution`, the image has the install name above, and the
+  image exports no direct field offsets. Verified with Swift 6.4: a control
+  module built without library evolution exports `field offset for` symbols,
+  and the same module built with it exports none, only accessors and dispatch
+  thunks.
+
+**Provider bundles** are directories named `<Name>.koineprovider` holding a
+Swift dylib, `manifest.json` (`providerId`, `graphQLPrefix`, `principalClass`,
+`library`) and `schema.graphql`. `KoineServer(dataDirectory:policy:providerRoots:)`
+loads every bundle directly inside each given root at construction and composes
+its SDL and field registrations into the schema; nothing else is searched. A
+provider's fields require `<providerId>:read` or `<providerId>:control`, which
+also appear in `koine.availableCapabilities`. Verification before `dlopen`,
+trust, and provider status are later stages; today a bundle that fails to load
+fails server construction.
+
+`Fixtures/FixtureProvider/` is test material: a provider built by its own
+`build.sh` with `swiftc` against the staged framework's `.swiftinterface` and
+image only. It shares no sources with the package, embeds no copy of the
+framework, and is not shipped.
 
 ## Resident application
 
@@ -92,8 +148,12 @@ An application embeds it as the tests do: `KoineServer(dataDirectory:)`, then
 `scripts/build-app.sh` builds the `KoineApp` product in release, assembles the
 bundle from `App/Info.plist` (bundle identifier `dev.antony.Koine`) and signs it
 with the hardened runtime and `App/Koine.entitlements` (deliberately empty).
-`Contents/Frameworks` arrives with the provider framework and will be signed
-inside-out before the bundle.
+`KoineProviderAPI.framework` is embedded in `Contents/Frameworks` without its
+module interface and signed first, inside-out. The executable's build-tree run
+paths are reduced to exactly `/usr/lib/swift` (the OS Swift runtime, which
+supplies the `@rpath` back-deployment libraries such as
+`libswiftCompatibilitySpan`) and `@executable_path/../Frameworks`. The application
+ships no provider yet.
 
 Every bundle, from development to release, is signed with
 `Developer ID Application: Antony Blakey (TA43A4RUP3)`, so its designated
@@ -102,8 +162,10 @@ rebuilds. `KOINE_SIGNING_IDENTITY` names another identity; `KOINE_APP_BUNDLE`
 another output path. A missing identity is an error listing the valid ones:
 there is no ad-hoc fallback. `scripts/verify-app.sh` checks the signature
 strictly, the hardened-runtime flag, that the signing team is the identity's,
-and that the bundle satisfies `identifier "dev.antony.Koine" and anchor apple
-generic and certificate leaf[subject.OU] = "<team>"`. Notarization is a release
+that the executable links the embedded framework by its install name through
+those run paths and the framework carries the same team, and that the bundle
+satisfies `identifier "dev.antony.Koine" and anchor apple generic and
+certificate leaf[subject.OU] = "<team>"`. Notarization is a release
 concern and is not done here.
 
 **UI framework: AppKit lifecycle, SwiftUI content.** An `NSApplicationDelegate`

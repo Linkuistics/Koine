@@ -24,13 +24,28 @@ fi
 echo "Building KoineApp (release)..."
 swift build -c release --product KoineApp
 BIN_DIR="$(swift build -c release --show-bin-path)"
+PROVIDER_FRAMEWORK="$(scripts/stage-provider-framework.sh release)"
 
 # Wipe first: the bundle is a pure function of the source tree.
 rm -rf "${APP_BUNDLE}"
-mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources"
-# Contents/Frameworks arrives with the provider framework; nested code is then
-# signed here, inside-out, before the bundle.
+mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources" \
+    "${APP_BUNDLE}/Contents/Frameworks"
 cp "${BIN_DIR}/KoineApp" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
+# The one framework image the host and every provider link. Its module
+# interface is for building providers, not for the shipped application.
+cp -R "${PROVIDER_FRAMEWORK}" "${APP_BUNDLE}/Contents/Frameworks/"
+rm -rf "${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework/Modules" \
+    "${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework/Versions/A/Modules"
+
+# The application supplies the trusted run paths: the OS Swift runtime, which
+# holds the back-deployment libraries the executable links by @rpath
+# (libswiftCompatibilitySpan), and its own Frameworks directory. The build's
+# other run paths name the build tree and the toolchain and are removed.
+EXECUTABLE="${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
+otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }' | while IFS= read -r rpath; do
+    [ "${rpath}" = "/usr/lib/swift" ] || install_name_tool -delete_rpath "${rpath}" "${EXECUTABLE}"
+done
+install_name_tool -add_rpath "@executable_path/../Frameworks" "${EXECUTABLE}"
 cp App/Info.plist "${APP_BUNDLE}/Contents/Info.plist"
 
 if [ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "${APP_BUNDLE}/Contents/Info.plist")" != "${BUNDLE_ID}" ]; then
@@ -41,6 +56,9 @@ fi
 xattr -cr "${APP_BUNDLE}"
 
 echo "Signing as \"${SIGNING_IDENTITY}\"..."
+# Inside-out: nested code first, then the bundle that seals it.
+codesign --force --options runtime --sign "${SIGNING_IDENTITY}" \
+    "${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework"
 codesign --force --options runtime --entitlements App/Koine.entitlements \
     --sign "${SIGNING_IDENTITY}" "${APP_BUNDLE}"
 

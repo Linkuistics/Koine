@@ -1,0 +1,6 @@
+{
+  "providerId": "fixture",
+  "graphQLPrefix": "Fixture",
+  "principalClass": "KoineFixtureProviderFactory",
+  "library": "libFixtureProvider.dylib"
+}

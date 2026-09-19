@@ -31,6 +31,31 @@ if [[ "${SIGNING_IDENTITY}" != *"(${TEAM_ID})"* ]]; then
     exit 1
 fi
 
+# The provider framework: embedded once, signed by the same team, and found
+# only through the application's own run path.
+EXECUTABLE="${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
+FRAMEWORK="${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework"
+INSTALL_NAME="@rpath/${PROVIDER_FRAMEWORK_NAME}.framework/Versions/A/${PROVIDER_FRAMEWORK_NAME}"
+if [ "$(otool -D "${FRAMEWORK}/Versions/A/${PROVIDER_FRAMEWORK_NAME}" | tail -1)" != "${INSTALL_NAME}" ]; then
+    echo "Error: the embedded framework does not have the install name ${INSTALL_NAME}." >&2
+    exit 1
+fi
+if ! otool -L "${EXECUTABLE}" | grep -qF "${INSTALL_NAME} "; then
+    echo "Error: the executable does not link ${INSTALL_NAME}; the framework was linked statically?" >&2
+    exit 1
+fi
+RPATHS="$(otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }')"
+if [ "${RPATHS}" != $'/usr/lib/swift\n@executable_path/../Frameworks' ]; then
+    echo "Error: the executable's run paths are not exactly /usr/lib/swift and @executable_path/../Frameworks:" >&2
+    echo "${RPATHS}" >&2
+    exit 1
+fi
+FRAMEWORK_TEAM="$(codesign --display --verbose=2 "${FRAMEWORK}" 2>&1 | sed -n 's/^TeamIdentifier=//p')"
+if [ "${FRAMEWORK_TEAM}" != "${TEAM_ID}" ]; then
+    echo "Error: the framework is signed by team ${FRAMEWORK_TEAM:-none}, not ${TEAM_ID}." >&2
+    exit 1
+fi
+
 echo "Designated requirement:"
 codesign --display --requirements - "${APP_BUNDLE}" 2>/dev/null | sed -n 's/^designated => /  /p'
 
@@ -39,4 +64,4 @@ codesign --verify --strict \
     -R="identifier \"${BUNDLE_ID}\" and anchor apple generic and certificate leaf[subject.OU] = \"${TEAM_ID}\"" \
     "${APP_BUNDLE}"
 
-echo "Verified ${APP_BUNDLE}: ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime."
+echo "Verified ${APP_BUNDLE}: ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime, ${PROVIDER_FRAMEWORK_NAME}.framework embedded."

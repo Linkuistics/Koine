@@ -9,9 +9,14 @@ final class Harness {
     private(set) var server: KoineServer
 
     private var policy: RequestPolicy
+    private let providerRoots: [URL]
 
     /// `seed` runs on the data directory before the server first opens it.
-    init(policy: RequestPolicy = .version1, seed: ((URL) throws -> Void)? = nil) async throws {
+    init(
+        policy: RequestPolicy = .version1, providerRoots: [URL] = [],
+        seed: ((URL) throws -> Void)? = nil
+    ) async throws {
+        self.providerRoots = providerRoots
         directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("koine-tests-\(UUID().uuidString)", isDirectory: true)
         self.policy = policy
@@ -19,7 +24,9 @@ final class Harness {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try seed(directory)
         }
-        server = try KoineServer(dataDirectory: directory, policy: policy)
+        server = try KoineServer(
+            dataDirectory: directory, policy: policy, providerRoots: providerRoots
+        )
         try await server.start()
     }
 
@@ -28,7 +35,9 @@ final class Harness {
     func restart(policy: RequestPolicy? = nil) async throws {
         if let policy { self.policy = policy }
         await server.stop()
-        server = try KoineServer(dataDirectory: directory, policy: self.policy)
+        server = try KoineServer(
+            dataDirectory: directory, policy: self.policy, providerRoots: providerRoots
+        )
         try await server.start()
     }
 

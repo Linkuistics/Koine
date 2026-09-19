@@ -52,16 +52,20 @@ public final class Engine: Sendable {
     private let reached: OrderingHook
 
     public convenience init(
-        store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1
+        store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
+        providers: [ActiveProvider] = []
     ) throws {
-        try self.init(store: store, instanceId: instanceId, policy: policy, reached: { _ in })
+        try self.init(
+            store: store, instanceId: instanceId, policy: policy, providers: providers,
+            reached: { _ in }
+        )
     }
 
     /// `reached` is called at each `OrderingPoint`. It is internal: tests reach
     /// it with `@testable` to force an ordering; nothing public carries it.
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
-        reached: @escaping OrderingHook
+        providers: [ActiveProvider] = [], reached: @escaping OrderingHook
     ) throws {
         self.instanceId = instanceId
         self.reached = reached
@@ -69,14 +73,24 @@ public final class Engine: Sendable {
         limits = RequestLimits(policy: policy)
         authority = Authority(store: store)
 
-        let schema = try buildSchema(source: coreSchemaSDL)
+        var schema = try buildSchema(source: coreSchemaSDL)
+        let contributions = providers.map(ProviderContribution.init)
+        for contribution in contributions {
+            schema = try extendSchema(
+                schema: schema, documentAST: parse(source: contribution.active.descriptor.schemaSDL)
+            )
+        }
         // Defined in docs/specs/machine.md, "Schema digest".
         schemaDigest = Engine.digest(of: schema)
 
-        let fields = CoreFields(
+        var fields = CoreFields(
             store: store, authority: authority, instanceId: instanceId,
-            schemaDigest: schemaDigest
+            schemaDigest: schemaDigest,
+            providerCapabilities: contributions.flatMap { [$0.readCapability, $0.controlCapability] }
         ).registrations
+        for contribution in contributions {
+            fields.merge(contribution.registrations) { core, _ in core }
+        }
         try Engine.install(fields, on: schema, authority: authority, reached: reached)
         self.schema = schema
         fieldAuthorities = fields.mapValues(\.authority)

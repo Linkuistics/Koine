@@ -1,6 +1,7 @@
 import Foundation
 import KoineCore
 import KoineHTTP
+import KoineProviderLoader
 import KoineSQLiteStore
 
 public enum KoineServerError: Error, Equatable {
@@ -26,6 +27,7 @@ public final class KoineServer: Sendable {
 
     private let dataDirectory: URL
     private let engine: Engine
+    private let providers: [ActiveProvider]
     private let policy: RequestPolicy
     private let instanceLock: InstanceLock
     private let run = Run()
@@ -34,7 +36,12 @@ public final class KoineServer: Sendable {
     /// it, creating the directory user-only (0700). Throws `alreadyRunning`
     /// when another instance holds the lock. A store that cannot be opened
     /// throws; the server does not start over a replacement.
-    public init(dataDirectory: URL, policy: RequestPolicy = .version1) throws {
+    ///
+    /// Providers are loaded from `providerRoots` and composed into the schema
+    /// here, once; nothing else is searched. A bundle that does not load throws.
+    public init(
+        dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [URL] = []
+    ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
         try FileManager.default.createDirectory(
@@ -51,7 +58,12 @@ public final class KoineServer: Sendable {
         let store = try SQLiteGrantStore(
             path: dataDirectory.appendingPathComponent("grants.sqlite").path
         )
-        engine = try Engine(store: store, instanceId: instanceId, policy: policy)
+        providers = try providerRoots.flatMap(ProviderLoader.loadProviders).map {
+            ActiveProvider(descriptor: $0.descriptor, provider: $0.provider)
+        }
+        engine = try Engine(
+            store: store, instanceId: instanceId, policy: policy, providers: providers
+        )
         console = LocalConsole(engine: engine)
     }
 
@@ -61,6 +73,8 @@ public final class KoineServer: Sendable {
     public func start() async throws -> Int {
         let engine = engine
         try await run.begin()
+        for active in providers { try await active.provider.start() }
+        await run.providersDidStart()
         let bound = try await LoopbackListener(maximumBodyBytes: policy.maximumBodyBytes) {
             request in await Self.respond(to: request, engine: engine)
         }
@@ -77,6 +91,9 @@ public final class KoineServer: Sendable {
     public func stop() async {
         EndpointDescriptor.remove(publishedBy: instanceId, in: dataDirectory)
         await run.take()?.stop()
+        if await run.takeProvidersStarted() {
+            for active in providers { await active.provider.stop() }
+        }
         instanceLock.release()
     }
 
@@ -157,6 +174,14 @@ public struct LocalConsole: Sendable {
 private actor Run {
     private var begun = false
     private var listener: LoopbackListener?
+    private var providersStarted = false
+
+    func providersDidStart() { providersStarted = true }
+
+    func takeProvidersStarted() -> Bool {
+        defer { providersStarted = false }
+        return providersStarted
+    }
 
     func begin() throws {
         guard !begun else { throw KoineServerError.alreadyStarted }
