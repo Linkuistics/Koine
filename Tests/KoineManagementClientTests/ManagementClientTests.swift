@@ -1,3 +1,4 @@
+import CryptoKit
 import Foundation
 import KoineCore
 import KoineManagementClient
@@ -6,11 +7,14 @@ import Testing
 
 /// The UI's operations against an embedded server, through the console only.
 @Suite struct ManagementClientTests {
-    private func withServer<T>(_ body: (Int, ManagementClient) async throws -> T) async throws -> T {
+    private func withServer<T>(
+        now: @escaping TimeSource = { Date() },
+        _ body: (Int, ManagementClient) async throws -> T
+    ) async throws -> T {
         let directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("koine-client-tests-\(UUID().uuidString)", isDirectory: true)
         defer { try? FileManager.default.removeItem(at: directory) }
-        let server = try KoineServer(dataDirectory: directory)
+        let server = try KoineServer(dataDirectory: directory, now: now)
         let port = try await server.start()
         do {
             let result = try await body(port, ManagementClient(console: server.console))
@@ -113,8 +117,111 @@ import Testing
             do {
                 _ = try await client.revokeGrant(id: "no-such-grant")
                 Issue.record("revoking an unknown grant reported success")
-            } catch ManagementError.rejected(_, let kind) {
+            } catch ManagementError.rejected(_, let kind, _, _) {
                 #expect(kind == "unavailable")
+            }
+        }
+    }
+
+    @Test func aClientsRequestArrivesWithTheStatusExactlyAsItAsked() async throws {
+        try await withServer { port, client in
+            #expect(try await client.status().requests.isEmpty)
+            let enrolled = try await Self.enrol("editor", ["koine:manage"], port: port)
+            let requests = try await client.status().requests
+            #expect(requests == [ManagedGrantRequest(
+                requestId: enrolled.requestId, clientLabel: "editor",
+                comparisonCode: enrolled.comparisonCode,
+                requestedCapabilities: ["koine:manage"], state: "PENDING"
+            )])
+        }
+    }
+
+    @Test func approvingASubsetMakesTheClientsOwnSecretAGrantForIt() async throws {
+        try await withServer { port, client in
+            let enrolled = try await Self.enrol("editor", ["koine:manage"], port: port)
+            let grant = try await client.approveGrantRequest(id: enrolled.requestId, capabilities: [])
+            #expect(grant.clientLabel == "editor")
+            #expect(grant.capabilities.isEmpty)
+            #expect(grant.state == "ACTIVE")
+            #expect(try await client.status().requests.map(\.state) == ["APPROVED"])
+            #expect(try await client.grants() == [grant])
+
+            let reply = try await Self.post(
+                "{ koine { ownGrant { grantId } } }", port: port, bearer: enrolled.secret
+            )
+            let koine = (reply["data"] as? [String: Any])?["koine"] as? [String: Any]
+            #expect((koine?["ownGrant"] as? [String: Any])?["grantId"] as? String == grant.grantId)
+        }
+    }
+
+    @Test func denyingReturnsTheRequestAsDenied() async throws {
+        try await withServer { port, client in
+            let enrolled = try await Self.enrol("editor", ["koine:manage"], port: port)
+            let denied = try await client.denyGrantRequest(id: enrolled.requestId)
+            #expect(denied.requestId == enrolled.requestId)
+            #expect(denied.state == "DENIED")
+            #expect(try await client.status().requests == [denied])
+            #expect(try await client.grants().isEmpty)
+        }
+    }
+
+    @Test func decidingADecidedRequestSaysWhichStateItIsIn() async throws {
+        try await withServer { port, client in
+            let enrolled = try await Self.enrol("editor", ["koine:manage"], port: port)
+            _ = try await client.denyGrantRequest(id: enrolled.requestId)
+            let refusal = ManagementError.rejected(
+                messages: ["This request has already been decided."], kind: "failed",
+                reason: "already-decided", requestState: "DENIED"
+            )
+            await #expect(throws: refusal) {
+                try await client.approveGrantRequest(id: enrolled.requestId, capabilities: [])
+            }
+            await #expect(throws: refusal) { try await client.denyGrantRequest(id: enrolled.requestId) }
+        }
+    }
+
+    @Test func decidingAnExpiredRequestSaysItExpired() async throws {
+        let clock = Clock()
+        try await withServer(now: { clock.now }) { port, client in
+            let enrolled = try await Self.enrol("editor", ["koine:manage"], port: port)
+            clock.advance(by: 25 * 60 * 60)
+            #expect(try await client.status().requests.map(\.state) == ["EXPIRED"])
+            do {
+                _ = try await client.approveGrantRequest(
+                    id: enrolled.requestId, capabilities: ["koine:manage"]
+                )
+                Issue.record("approving an expired request reported success")
+            } catch ManagementError.rejected(_, _, let reason, let state) {
+                #expect(reason == "already-decided")
+                #expect(state == "EXPIRED")
+            }
+        }
+    }
+
+    @Test func approvingWhatWasNotAskedForIsAnInvalidSubset() async throws {
+        try await withServer { port, client in
+            let enrolled = try await Self.enrol("editor", [], port: port)
+            do {
+                _ = try await client.approveGrantRequest(
+                    id: enrolled.requestId, capabilities: ["koine:manage"]
+                )
+                Issue.record("approving an unrequested capability reported success")
+            } catch ManagementError.rejected(_, let kind, let reason, _) {
+                #expect(kind == "failed")
+                #expect(reason == "invalid-subset")
+            }
+            #expect(try await client.status().requests.map(\.state) == ["PENDING"])
+        }
+    }
+
+    @Test func decidingAnUnknownRequestIsUnavailable() async throws {
+        try await withServer { _, client in
+            do {
+                _ = try await client.denyGrantRequest(id: "no-such-request")
+                Issue.record("denying an unknown request reported success")
+            } catch ManagementError.rejected(_, let kind, let reason, _) {
+                #expect(kind == "unavailable")
+                #expect(reason == nil)
             }
         }
     }
@@ -131,6 +238,37 @@ import Testing
         await #expect(throws: ManagementError.malformedResponse) {
             try await client.createGrant(label: "x", capabilities: [])
         }
+    }
+
+    /// Enrols as a client does: anonymously over HTTP, with a secret of its own.
+    private static func enrol(
+        _ label: String, _ capabilities: [String], port: Int
+    ) async throws -> (secret: String, requestId: String, comparisonCode: String) {
+        let bytes = (0..<32).map { _ in UInt8.random(in: .min ... .max) }
+        let secret = Data(bytes).base64EncodedString()
+            .replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
+            .replacingOccurrences(of: "=", with: "")
+        let digest = SHA256.hash(data: Data(bytes)).map { String(format: "%02x", $0) }.joined()
+        var request = URLRequest(url: URL(string: "http://127.0.0.1:\(port)/graphql")!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONSerialization.data(withJSONObject: [
+            "query": """
+                mutation Enrol($input: KoineRequestGrantInput!) {
+                  koineRequestGrant(input: $input) { requestId comparisonCode }
+                }
+                """,
+            "variables": ["input": [
+                "clientLabel": label, "credentialDigest": digest, "capabilities": capabilities,
+            ]],
+        ])
+        let (data, _) = try await URLSession(configuration: .ephemeral).data(for: request)
+        let reply = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+        let receipt = (reply?["data"] as? [String: Any])?["koineRequestGrant"] as? [String: Any]
+        return (
+            secret, try #require(receipt?["requestId"] as? String),
+            try #require(receipt?["comparisonCode"] as? String)
+        )
     }
 
     private static func post(_ query: String, port: Int, bearer: String) async throws -> [String: Any] {
@@ -150,6 +288,13 @@ import Testing
         request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
         return try await URLSession(configuration: .ephemeral).data(for: request)
     }
+}
+
+private final class Clock: @unchecked Sendable {
+    private let lock = NSLock()
+    private var instant = Date(timeIntervalSince1970: 1_800_000_000)
+    var now: Date { lock.withLock { instant } }
+    func advance(by interval: TimeInterval) { lock.withLock { instant += interval } }
 }
 
 private final class Flag: @unchecked Sendable {

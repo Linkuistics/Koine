@@ -85,6 +85,11 @@ tasks:
     cmds:
       - scripts/vm-verify-accessibility.sh
 
+  app:vm-verify-enrollment:
+    desc: Verify in a clean TestAnyware macOS VM that a guest client with a secret of its own requests koine:manage and the desktop capabilities, that the signed bundle's window shows its label, code, exact capability set and the koine:manage warning, that a subset approved there deliberately makes the unchanged secret the first manager's, which approves a second client over GraphQL, that a third is denied in the window, and that grants and decisions survive a restart, with no credential typed, pasted or shown
+    cmds:
+      - scripts/vm-verify-enrollment.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:

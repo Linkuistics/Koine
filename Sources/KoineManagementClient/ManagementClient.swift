@@ -32,25 +32,52 @@ public struct ManagedOSPermission: Sendable, Equatable, Decodable {
     public let granted: Bool
 }
 
-/// What the status section of the window shows, from one request: all of it
-/// describes the same moment.
+/// A client's enrollment request as `koineManagement.requests` reports it. The
+/// requested capabilities are the request's own and never change.
+public struct ManagedGrantRequest: Sendable, Equatable, Decodable {
+    public let requestId: String
+    public let clientLabel: String
+    public let comparisonCode: String
+    public let requestedCapabilities: [String]
+    public let state: String
+
+    public init(
+        requestId: String, clientLabel: String, comparisonCode: String,
+        requestedCapabilities: [String], state: String
+    ) {
+        self.requestId = requestId
+        self.clientLabel = clientLabel
+        self.comparisonCode = comparisonCode
+        self.requestedCapabilities = requestedCapabilities
+        self.state = state
+    }
+}
+
+/// What the window polls, from one request: all of it describes the same
+/// moment.
 public struct ManagementStatus: Sendable, Equatable {
     public let contractVersion: String
     public let instanceId: String
+    /// Every request the server still serves, decided ones included.
+    public let requests: [ManagedGrantRequest]
     public let providers: [ManagedProvider]
     public let osPermissions: [ManagedOSPermission]
 }
 
 public enum ManagementError: Error, Equatable, LocalizedError {
     /// The operation answered with GraphQL errors. `kind` is the first error's
-    /// `extensions.kind`, when it has one.
-    case rejected(messages: [String], kind: String?)
+    /// `extensions.kind`, when it has one. `reason` and `requestState` are its
+    /// `extensions.reason` and `extensions.requestState`, which tell the request
+    /// outcomes that share a kind apart.
+    case rejected(
+        messages: [String], kind: String?, reason: String? = nil, requestState: String? = nil
+    )
     /// The response was not the GraphQL JSON the operation promises.
     case malformedResponse
 
     public var errorDescription: String? {
         switch self {
-        case .rejected(let messages, _): messages.joined(separator: "\n")
+        case .rejected(let messages, _, _, _): messages.joined(separator: "\n")
         case .malformedResponse: "Koine returned a response that could not be read."
         }
     }
@@ -120,6 +147,7 @@ public struct ManagementClient: Sendable {
         struct Reply: Decodable {
             struct Koine: Decodable { let contractVersion, instanceId: String }
             struct Management: Decodable {
+                let requests: [ManagedGrantRequest]
                 let providers: [ManagedProvider]
                 let osPermissions: [ManagedOSPermission]
             }
@@ -130,6 +158,7 @@ public struct ManagementClient: Sendable {
             """
             { koine { contractVersion instanceId }
               koineManagement {
+                requests { requestId clientLabel comparisonCode requestedCapabilities state }
                 providers { provider version state diagnostic }
                 osPermissions { permission owner granted }
               } }
@@ -139,7 +168,7 @@ public struct ManagementClient: Sendable {
         guard let management = reply.koineManagement else { throw ManagementError.malformedResponse }
         return ManagementStatus(
             contractVersion: reply.koine.contractVersion, instanceId: reply.koine.instanceId,
-            providers: management.providers, osPermissions: management.osPermissions
+            requests: management.requests, providers: management.providers, osPermissions: management.osPermissions
         )
     }
 
@@ -159,6 +188,44 @@ public struct ManagementClient: Sendable {
         return revoked
     }
 
+    /// Approves `capabilities`, a subset of what the request asked for, into one
+    /// grant for the requester's own secret. A request already decided or
+    /// expired is `rejected` with reason `already-decided` and its state; a
+    /// capability it did not ask for is `invalid-subset`.
+    public func approveGrantRequest(id: String, capabilities: [String]) async throws -> ManagedGrant {
+        struct Reply: Decodable { let koineApproveGrantRequest: ManagedGrant? }
+        let reply: Reply = try await run(
+            """
+            mutation Approve($id: ID!, $capabilities: [String!]!) {
+              koineApproveGrantRequest(requestId: $id, capabilities: $capabilities) {
+                grantId clientLabel capabilities state
+              }
+            }
+            """,
+            variables: ["id": id, "capabilities": capabilities]
+        )
+        guard let grant = reply.koineApproveGrantRequest else { throw ManagementError.malformedResponse }
+        return grant
+    }
+
+    /// Denies a pending request and returns it as committed. Refusals are those
+    /// of `approveGrantRequest`.
+    public func denyGrantRequest(id: String) async throws -> ManagedGrantRequest {
+        struct Reply: Decodable { let koineDenyGrantRequest: ManagedGrantRequest? }
+        let reply: Reply = try await run(
+            """
+            mutation Deny($id: ID!) {
+              koineDenyGrantRequest(requestId: $id) {
+                requestId clientLabel comparisonCode requestedCapabilities state
+              }
+            }
+            """,
+            variables: ["id": id]
+        )
+        guard let denied = reply.koineDenyGrantRequest else { throw ManagementError.malformedResponse }
+        return denied
+    }
+
     /// Any GraphQL error fails the whole operation: the UI's operations have no
     /// use for partial data.
     private func run<Reply: Decodable>(_ query: String, variables: [String: Any]) async throws -> Reply {
@@ -171,7 +238,9 @@ public struct ManagementClient: Sendable {
         }
         if let errors = envelope.errors, !errors.isEmpty {
             throw ManagementError.rejected(
-                messages: errors.map(\.message), kind: errors[0].extensions?.kind
+                messages: errors.map(\.message), kind: errors[0].extensions?.kind,
+                reason: errors[0].extensions?.reason,
+                requestState: errors[0].extensions?.requestState
             )
         }
         guard let data = envelope.data else { throw ManagementError.malformedResponse }
@@ -181,7 +250,7 @@ public struct ManagementClient: Sendable {
 
 private struct Envelope<Reply: Decodable>: Decodable {
     struct Failure: Decodable {
-        struct Extensions: Decodable { let kind: String? }
+        struct Extensions: Decodable { let kind, reason, requestState: String? }
         let message: String
         let extensions: Extensions?
     }

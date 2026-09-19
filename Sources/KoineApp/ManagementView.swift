@@ -1,12 +1,13 @@
 import KoineManagementClient
 import SwiftUI
 
-/// The management window: status, grants, the create flow and setup, all
+/// The management window: status, requests, grants, the create flow and setup, all
 /// through the console's GraphQL operations.
 struct ManagementView: View {
     @StateObject private var grants: GrantListModel
     @StateObject private var create: CreateGrantModel
     @StateObject private var status: StatusModel
+    @StateObject private var review: RequestReviewModel
     @StateObject private var loginLaunch = LoginLaunchModel()
     private let port: Int
 
@@ -16,7 +17,15 @@ struct ManagementView: View {
         _create = StateObject(
             wrappedValue: CreateGrantModel(client: client) { await grants.refresh() }
         )
-        _status = StateObject(wrappedValue: StatusModel(client: client))
+        let status = StatusModel(client: client)
+        _status = StateObject(wrappedValue: status)
+        // An approval makes a grant, so both lists are re-read after a decision.
+        _review = StateObject(
+            wrappedValue: RequestReviewModel(client: client) {
+                await status.refresh()
+                await grants.refresh()
+            }
+        )
         self.port = port
     }
 
@@ -24,6 +33,8 @@ struct ManagementView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 AccessibilityStatusView(model: status)
+                Divider()
+                RequestReviewView(status: status, model: review)
                 Divider()
                 GrantListView(model: grants)
                 Divider()

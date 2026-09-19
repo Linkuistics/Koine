@@ -237,7 +237,7 @@ than before:
 6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
    VM acceptance, supported matrix and the ModalAnyware handoff.
 
-The first five are cut into impl leaves. The last stage is a `planning` leaf
+The first five are cut into impl leaves and complete. The last stage is a `planning` leaf
 carrying its charter, acceptance cases and open questions; it is cut when
 reached, with what the stages before it actually built. Each stage serves only
 the schema fields it makes real; stage 6 checks the composed schema against the design SDL.
@@ -365,6 +365,25 @@ operation (`ManagementClient.status()`), and its `requests` field joins a
 `KoineManagement` whose served field list `GrantManagementTests` pins. One
 `task test` run in the last leaf failed in `KoineServerTests` and was not
 reproduced in four further runs; its detail was not captured.
+
+`client-enrollment-k33` is complete: both agreed grant workflows work, and the
+first management client is bootstrapped by enrollment with no credential typed,
+pasted or shown. What the last stage builds on: the enrollment protocol and its
+bounds (README, "Client-requested grants"; the spec's reason table in
+"Management authority and surface"), held at the public seam by
+`GrantEnrollmentTests`, `GrantDecisionTests` and `GrantRequestLifetimeTests`
+with `Harness(clock:)`; the window's Requests section (README, "Request
+review"), whose requests arrive with the one polled `ManagementClient.status()`;
+and `task app:vm-verify-enrollment` with
+`docs/verification/grant-enrollment-vm.md`, whose "does not show" section is
+`release-acceptance-handoff-k11`'s input: a refusal (`already-decided`) shown in
+the window, several requests pending together, and revoking an enrolled grant in
+the window were not driven in a VM. `scripts/vm-verify-enrollment-client.py` is
+a complete enrolling client and the pattern for a guest mutation that survives
+the agent's repeated execs. Two platform facts from its runs: a SwiftUI
+confirmation whose action has the destructive role has no default button on
+macOS 26.5, so Return decides nothing; and a grant's capabilities are served as
+a sorted set, so scripts compare them sorted.
 
 In `resident-app-manual-grants-k7` the human chose the signing identity and the
 application build tooling. Every Koine bundle is signed with `Developer ID

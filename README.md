@@ -55,9 +55,11 @@ That local URL requires the diagram server described in the views' README.
 
 ## Client-requested grants
 
-A client with no credential enrols itself over the public API, and a
-`koine:manage` client decides. The review UI is not built; the local console
-and any manager over GraphQL already approve and deny.
+A client with no credential enrols itself over the public API, and the user
+decides in Koine's window ("Request review" under "Resident application"
+below), or a `koine:manage` client decides over GraphQL. This is how the first
+management client comes to exist without a credential being typed, pasted or
+shown.
 
 1. The client generates its own 32-byte secret, keeps it, and sends
    `Mutation.koineRequestGrant` with the secret's digest (64 lower-case hex), a
@@ -160,6 +162,7 @@ task app:vm-verify-desktop  # the bundled desktop provider resolves a real appli
 task app:vm-verify-desktop-remembered  # a window left on another Space is REMEMBERED, revalidated on selection, and dropped when it or its application ends, in a VM
 task app:vm-verify-accessibility  # the window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
+task app:vm-verify-enrollment  # a guest client enrols itself, the window shows and decides its request, and the first manager it makes approves another over GraphQL, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
@@ -594,6 +597,24 @@ failure is shown beside the list. The credential lives only in the sheet that
 shows it and is dropped when the sheet is dismissed; nothing re-reads one, and
 the window says that a lost credential is handled by revoking and creating
 again.
+
+**Request review.** The window's Requests section lists the pending enrollment
+requests, which arrive with the status the window already polls every two
+seconds (`ManagementClient.status()`, one operation), so a request appears in an
+open window without the user doing anything. Each shows the client's label, its
+comparison code, to be compared by eye with what the client shows, and a tick
+for each capability it asked for. The ticks are the request's own
+`requestedCapabilities`, all set, and never `availableCapabilities`: the user can
+only narrow. Approve sends the ticked subset to `koineApproveGrantRequest`; Deny
+sends `koineDenyGrantRequest`. A request that asks for `koine:manage` carries a
+warning that it permits issuing and revoking other grants, and approving it with
+that capability still ticked asks for confirmation in a dialog that has no
+default button, so Return decides nothing and the approving button must be
+chosen. What may be approved is the server's to say. A refusal is
+shown beside the list, `already-decided` as the state the request is already in
+(another manager decided it, or it expired), and the requests and grants are
+re-read after every decision, whatever its outcome. The client's secret never
+reaches Koine, so there is nothing here to show or copy.
 
 **Login launch.** The window's Setup section registers and unregisters
 [`SMAppService.mainApp`](https://developer.apple.com/documentation/servicemanagement/smappservice/mainapp).
