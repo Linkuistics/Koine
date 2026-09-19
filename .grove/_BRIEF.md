@@ -333,6 +333,19 @@ human's rule from `resident-app-skeleton-k13` binds every later stage: anything
 that launches Koine, drives its UI, touches the clipboard, the account's real
 data directory or login items runs in a TestAnyware VM, never on the host.
 
+`native-providers-k18` is complete. What later stages build on: one native
+loader for every provider, bundled (`Contents/PlugIns`) or per-user, with
+approval records and signature checks before `dlopen` (README, "Lifecycle" and
+the sections around it); the fixture provider and its variants (`task fixture`,
+`task fixture:variants`) as independently built test material; `task compat`
+and `docs/verification/binary-compatibility.md`, whose "Left for
+`release-acceptance-handoff-k11`" list is that stage's input;
+`task app:vm-verify-providers` for the signed build; and a `KoineServer.stop()`
+that cancels provider work and answers every request already received before it
+returns, so a host may exit straight after it. The human's decisions in that
+node's notes (one loader, approval record without install UI, no
+library-validation entitlement yet) continue to bind.
+
 In `resident-app-manual-grants-k7` the human chose the signing identity and the
 application build tooling. Every Koine bundle is signed with `Developer ID
 Application: Antony Blakey (TA43A4RUP3)`, from development through VM

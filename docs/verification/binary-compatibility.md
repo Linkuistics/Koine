@@ -140,6 +140,3 @@ manifest lies.
 - **Distribution of older framework minors.** Since a provider for an older Koine
   is compiled against that Koine's minor, every released minor's framework and
   interface must stay available to provider authors.
-- **A response in flight at stop.** Whether the held caller is answered when the
-  host stops is recorded, not required: the listener does not wait for it, and
-  some runs drop it. `listener-waits-for-responses-in-flight-k26`.

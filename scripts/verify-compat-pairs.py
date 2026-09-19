@@ -252,17 +252,17 @@ def working_pair(name, plugin_root, plugin, host_revision, greeting, version):
 
         # Stop: cancellation requested, outstanding work awaited. This resolver
         # returns only on cancellation and stop waits for it, so a stop that
-        # returns has cancelled the plugin's task. Whether the held caller is
-        # still answered is recorded, not required: the listener does not wait
-        # for a response in flight before the host exits.
+        # returns has cancelled the plugin's task. The held caller is answered
+        # before the host exits.
         thread, held = in_background(lambda: host.post("{ fixtureAwaitCancellation }"))
         arrived = wait_for(lambda: host.calls().get("awaitCancellation", 0) == 2)
         stopped, code = host.stop()
         thread.join(timeout=10)
         host = None
         case.check(
-            "stop: cancels the resolve outstanding in the plugin, waits for it and exits cleanly",
-            arrived and code == 0 and stopped.get("stopped") and stopped.get("stopMilliseconds", 1e9) < 3000,
+            "stop: cancels the resolve outstanding in the plugin, waits for it, answers its caller and exits cleanly",
+            arrived and code == 0 and stopped.get("stopped") and stopped.get("stopMilliseconds", 1e9) < 3000
+            and held.get("value", (None,))[0] == 200 and held["value"][1].get("errors"),
             {"arrived": arrived, "exit": code, "host": stopped, "caller": held.get("value")},
         )
     finally:

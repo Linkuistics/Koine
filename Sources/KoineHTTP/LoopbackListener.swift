@@ -1,3 +1,4 @@
+import NIOConcurrencyHelpers
 import NIOCore
 import NIOHTTP1
 import NIOPosix
@@ -35,6 +36,7 @@ public final class LoopbackListener: Sendable {
     public let port: Int
     private let serverChannel: NIOAsyncChannel<Connection, Never>
     private let acceptLoop: Task<Void, Never>
+    private let connections = Connections()
 
     /// Binds and starts accepting. The listener is ready when this returns. A
     /// request whose body exceeds `maximumBodyBytes` is answered 413 and its
@@ -55,12 +57,12 @@ public final class LoopbackListener: Sendable {
         }
         self.port = port
         serverChannel = channel
-        acceptLoop = Task {
-            try? await channel.executeThenClose { connections in
-                for try await connection in connections {
-                    Task {
+        acceptLoop = Task { [connections] in
+            try? await channel.executeThenClose { accepted in
+                for try await connection in accepted {
+                    connections.serve(connection.channel) { id in
                         try? await Self.serve(
-                            connection, authority: "\(Self.host):\(port)",
+                            connection, id: id, in: connections, authority: "\(Self.host):\(port)",
                             maximumBodyBytes: maximumBodyBytes, handler: handler
                         )
                     }
@@ -69,15 +71,18 @@ public final class LoopbackListener: Sendable {
         }
     }
 
-    /// Stops accepting and closes the listening socket.
+    /// Stops accepting and closes the listening socket. A request already
+    /// received is answered first, on a connection that then closes; a
+    /// connection between requests is closed at once.
     public func stop() async {
         try? await serverChannel.channel.close()
         await acceptLoop.value
+        await connections.drain()
     }
 
     private static func serve(
-        _ connection: Connection, authority: String, maximumBodyBytes: Int,
-        handler: @escaping Handler
+        _ connection: Connection, id: Int, in connections: Connections, authority: String,
+        maximumBodyBytes: Int, handler: @escaping Handler
     ) async throws {
         try await connection.executeThenClose { inbound, outbound in
             var head: HTTPRequestHead?
@@ -103,7 +108,7 @@ public final class LoopbackListener: Sendable {
                         return
                     }
                 case .end:
-                    guard let requestHead = head else { return }
+                    guard let requestHead = head, connections.beginRequest(id) else { return }
                     head = nil
                     var headers: [String: String] = [:]
                     for (name, value) in requestHead.headers where headers[name.lowercased()] == nil {
@@ -115,8 +120,9 @@ public final class LoopbackListener: Sendable {
                             headers: headers, body: body, boundAuthority: authority
                         )
                     )
-                    try await write(response, keepAlive: requestHead.isKeepAlive, to: outbound)
-                    if !requestHead.isKeepAlive { return }
+                    let keepAlive = connections.endRequest(id) && requestHead.isKeepAlive
+                    try await write(response, keepAlive: keepAlive, to: outbound)
+                    if !keepAlive { return }
                 }
             }
         }
@@ -137,6 +143,65 @@ public final class LoopbackListener: Sendable {
         try await outbound.write(contentsOf: [
             .head(head), .body(ByteBuffer(bytes: response.body)), .end(nil),
         ])
+    }
+}
+
+/// The connections being served, so that `stop()` has something to wait for.
+/// Each is an unstructured task: a task group would keep every finished
+/// connection's result for the listener's life (a discarding group needs macOS 14).
+private final class Connections: Sendable {
+    private struct State {
+        var stopping = false
+        var nextId = 0
+        var open: [Int: (channel: any Channel, task: Task<Void, Never>, busy: Bool)] = [:]
+    }
+
+    private let state = NIOLockedValueBox(State())
+
+    /// Runs `work` for a new connection, or closes it if stop has begun.
+    func serve(_ channel: any Channel, _ work: @escaping @Sendable (Int) async -> Void) {
+        let accepted = state.withLockedValue { state -> Bool in
+            guard !state.stopping else { return false }
+            let id = state.nextId
+            state.nextId += 1
+            // Registered under the lock the task's own removal takes, so the
+            // removal cannot come first.
+            let task = Task {
+                await work(id)
+                self.state.withLockedValue { $0.open[id] = nil }
+            }
+            state.open[id] = (channel, task, false)
+            return true
+        }
+        if !accepted { channel.close(promise: nil) }
+    }
+
+    /// False once stop has begun: the request is not handled.
+    func beginRequest(_ id: Int) -> Bool {
+        state.withLockedValue { state in
+            guard !state.stopping else { return false }
+            state.open[id]?.busy = true
+            return true
+        }
+    }
+
+    /// False once stop has begun: the response is the connection's last.
+    func endRequest(_ id: Int) -> Bool {
+        state.withLockedValue { state in
+            state.open[id]?.busy = false
+            return !state.stopping
+        }
+    }
+
+    /// Closes every connection with no request in hand and waits for the rest
+    /// to write their responses.
+    func drain() async {
+        let open = state.withLockedValue { state in
+            state.stopping = true
+            return Array(state.open.values)
+        }
+        for connection in open where !connection.busy { connection.channel.close(promise: nil) }
+        for connection in open { await connection.task.value }
     }
 }
 

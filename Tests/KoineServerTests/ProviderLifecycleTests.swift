@@ -147,6 +147,48 @@ private final class RecordingProvider: Provider, @unchecked Sendable {
         #expect(provider.events == ["start", "held", "cancelled", "stop"])
     }
 
+    /// The public HTTP seam: a caller whose resolver `stop()` cancels still
+    /// reads its answer, and a connection with no request does not hold stop.
+    @Test func stopAnswersARequestInFlightAndClosesAnIdleConnection() async throws {
+        let provider = RecordingProvider()
+        let harness = try await Harness(providers: [provider.active()])
+        let credential = try await harness.consoleGrant(label: "r", capabilities: ["rec:read"])
+        let port = harness.port
+
+        let idle = try RawConnection(port: port)
+        let served = harness.requestBytes(
+            headers: ["Authorization": "Bearer \(credential)"],
+            body: try Harness.requestBody("{ recValue }", variables: [:])
+        )
+        let first = try await offPool { () -> RawResponse in
+            idle.send(served)
+            return try idle.readResponse()
+        }
+        #expect(first.headers["connection"] == "keep-alive")
+
+        let holding = harness.requestBytes(
+            headers: ["Authorization": "Bearer \(credential)"],
+            body: try Harness.requestBody("{ recHeld }", variables: [:])
+        )
+        let caller = try RawConnection(port: port)
+        let held = Task {
+            try await offPool { () -> RawResponse in
+                caller.send(holding)
+                return try caller.readResponse()
+            }
+        }
+        while !provider.events.contains("held") { try await Task.sleep(nanoseconds: 5_000_000) }
+        await harness.stop()
+
+        let reply = try await held.value
+        #expect(reply.status == 200)
+        #expect((reply.errors.first?["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+        // Both connections were closed by stop, not left to their clients. The
+        // answer may say keep-alive: it can be written before the listener stops.
+        await #expect(throws: POSIXError(.ECONNRESET)) { try await offPool { try caller.readResponse() } }
+        await #expect(throws: POSIXError(.ECONNRESET)) { try await offPool { try idle.readResponse() } }
+    }
+
     @Test func startAndStopForOneInstanceAreSerialized() async throws {
         let provider = RecordingProvider()
         let (engine, _) = try await Self.engine(provider)
