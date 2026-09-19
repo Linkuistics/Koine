@@ -66,6 +66,11 @@ let package = Package(
             name: "KoineCompatibilityHost", dependencies: ["KoineServer"],
             path: "Fixtures/CompatibilityHost"
         ),
+        // The desktop provider's pure files, named here only so `swift test`
+        // reaches them. The provider itself is built by its own build definition
+        // (Providers/DesktopProvider/build.sh) and is no product of this package.
+        .target(name: "DesktopProviderLogic", path: "Providers/DesktopProvider/Logic"),
+        .testTarget(name: "DesktopProviderLogicTests", dependencies: ["DesktopProviderLogic"]),
         .testTarget(
             name: "KoineManagementClientTests",
             dependencies: ["KoineManagementClient", "KoineServer"]

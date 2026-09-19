@@ -459,6 +459,9 @@ public final class Engine: Sendable {
     private static func graphQLError(
         _ error: any Error, nodes: [Field], path: GraphQL.IndexPath, phase: String
     ) -> GraphQLError {
+        if let input = error as? InputCoercionError {
+            return GraphQLError(message: input.message, nodes: nodes, path: path)
+        }
         let domain = error as? DomainError
             ?? DomainError.failed("The operation failed.")  // never leak native detail
         var extensions: [String: Map] = ["kind": .string(domain.kind.rawValue)]

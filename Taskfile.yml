@@ -18,6 +18,7 @@ tasks:
     cmds:
       - swift build --build-tests
       - task: fixture:variants
+      - task: desktop-provider
       - swift test --skip-build
 
   fixture:
@@ -34,6 +35,14 @@ tasks:
       - |
         PRODUCTS="$(swift build --show-bin-path)"
         Fixtures/FixtureProvider/build-variants.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/FixtureVariants"
+
+  desktop-provider:
+    desc: Build the desktop provider by its own build definition against the staged framework, then sign and approve it as an installed provider for the loader tests
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        BUNDLE="$(Providers/DesktopProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../DesktopProviders")"
+        Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
 
   app:
     desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)
@@ -55,6 +64,11 @@ tasks:
     deps: [fixture:variants]
     cmds:
       - scripts/vm-verify-providers.sh
+
+  app:vm-verify-desktop:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider is ACTIVE, resolves a real application by pid and startedAt, lists same-titled windows under distinct references, and refuses a grant without desktop:read
+    cmds:
+      - scripts/vm-verify-desktop.sh
 
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)

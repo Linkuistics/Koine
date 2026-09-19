@@ -1,0 +1,292 @@
+{
+  "answeredAt" : "2026-09-19T12:59:03Z",
+  "held" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : false,
+      "minimized" : false,
+      "pid" : 354,
+      "privateError" : 0,
+      "privateWindowId" : 36,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 1
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 354,
+      "privateError" : 0,
+      "privateWindowId" : 37,
+      "rect" : [
+        558,
+        222,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 2
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 354,
+      "privateError" : 0,
+      "privateWindowId" : 36,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 3
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 354,
+      "privateError" : 0,
+      "privateWindowId" : 35,
+      "rect" : [
+        500,
+        164,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 4
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 354,
+      "privateError" : -25201,
+      "privateWindowId" : null,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "role" : "AXScrollArea",
+      "subrole" : null,
+      "title" : null,
+      "token" : 5
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:34",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 691,
+      "privateError" : 0,
+      "privateWindowId" : 45,
+      "rect" : [
+        213,
+        77,
+        603,
+        505
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 6
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 697,
+      "privateError" : 0,
+      "privateWindowId" : 38,
+      "rect" : [
+        820,
+        156,
+        280,
+        470
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "",
+      "token" : 7
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 695,
+      "privateError" : 0,
+      "privateWindowId" : 52,
+      "rect" : [
+        69,
+        333,
+        352,
+        260
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Make a note of it!…",
+      "token" : 8
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 695,
+      "privateError" : 0,
+      "privateWindowId" : 50,
+      "rect" : [
+        48,
+        311,
+        355,
+        268
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "It’s easy to customize your notes.…",
+      "token" : 9
+    },
+    {
+      "axError" : -25202,
+      "axIdentifier" : null,
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : null,
+      "minimized" : null,
+      "pid" : 695,
+      "privateError" : -25201,
+      "privateWindowId" : null,
+      "rect" : [
+        0,
+        0,
+        0,
+        0
+      ],
+      "role" : null,
+      "subrole" : null,
+      "title" : null,
+      "token" : 10
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 695,
+      "privateError" : 0,
+      "privateWindowId" : 244,
+      "rect" : [
+        69,
+        44,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 11
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 695,
+      "privateError" : 0,
+      "privateWindowId" : 242,
+      "rect" : [
+        69,
+        793,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 12
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "pid" : 695,
+      "privateError" : 0,
+      "privateWindowId" : 240,
+      "rect" : [
+        69,
+        593,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 13
+    }
+  ],
+  "trusted" : true
+}

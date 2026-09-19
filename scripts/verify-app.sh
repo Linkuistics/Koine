@@ -56,10 +56,28 @@ if [ "${FRAMEWORK_TEAM}" != "${TEAM_ID}" ]; then
     exit 1
 fi
 
-# The in-application provider root: present, and holding no provider yet.
+# The in-application provider root holds exactly the desktop provider: signed by
+# the same team with the hardened runtime, linking the framework by its install
+# name, and embedding no copy of it.
 PLUGINS="${APP_BUNDLE}/Contents/PlugIns"
-if [ ! -d "${PLUGINS}" ] || [ -n "$(ls -A "${PLUGINS}")" ]; then
-    echo "Error: ${PLUGINS} is not an empty directory; this Koine ships no provider." >&2
+DESKTOP="${PLUGINS}/Desktop.koineprovider"
+if [ "$(ls -A "${PLUGINS}" 2>/dev/null)" != "Desktop.koineprovider" ]; then
+    echo "Error: ${PLUGINS} does not hold exactly Desktop.koineprovider." >&2
+    exit 1
+fi
+codesign --verify --strict --verbose=2 "${DESKTOP}"
+DESKTOP_DETAILS="$(codesign --display --verbose=2 "${DESKTOP}" 2>&1)"
+if [ "$(sed -n 's/^TeamIdentifier=//p' <<<"${DESKTOP_DETAILS}")" != "${TEAM_ID}" ] ||
+    ! grep -q '^CodeDirectory.*flags=.*runtime' <<<"${DESKTOP_DETAILS}"; then
+    echo "Error: the desktop provider is not signed by team ${TEAM_ID} with the hardened runtime." >&2
+    exit 1
+fi
+if ! otool -L "${DESKTOP}/libDesktopProvider.dylib" | grep -qF "${INSTALL_NAME} "; then
+    echo "Error: the desktop provider does not link ${INSTALL_NAME}." >&2
+    exit 1
+fi
+if [ -n "$(find "${DESKTOP}" -name '*.framework')" ]; then
+    echo "Error: the desktop provider embeds a framework." >&2
     exit 1
 fi
 
@@ -71,4 +89,4 @@ codesign --verify --strict \
     -R="identifier \"${BUNDLE_ID}\" and anchor apple generic and certificate leaf[subject.OU] = \"${TEAM_ID}\"" \
     "${APP_BUNDLE}"
 
-echo "Verified ${APP_BUNDLE}: ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime, ${PROVIDER_FRAMEWORK_NAME}.framework embedded."
+echo "Verified ${APP_BUNDLE}: ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime, ${PROVIDER_FRAMEWORK_NAME}.framework embedded, desktop provider sealed in PlugIns."

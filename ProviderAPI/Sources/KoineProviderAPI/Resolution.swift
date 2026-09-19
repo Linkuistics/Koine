@@ -60,6 +60,11 @@ public struct ProviderFailure: Sendable, Error {
         /// The provider has no resolver for the request's `resolverId`: the
         /// descriptor and the provider disagree.
         case unknownResolver
+        /// An argument is well formed GraphQL but not a value of its provider-owned
+        /// type, such as a provider-private scalar in a form the provider does
+        /// not accept. The host reports input coercion, not a domain
+        /// classification, and the provider has performed no action.
+        case invalidInput
     }
 
     public var kind: Kind

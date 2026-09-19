@@ -82,4 +82,4 @@ import Testing
     }
 }
 
-private final class TestBundleAnchor {}
+final class TestBundleAnchor {}

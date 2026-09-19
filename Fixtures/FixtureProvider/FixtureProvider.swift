@@ -164,6 +164,10 @@ final class FixtureProvider: Provider, @unchecked Sendable {
                 return .failure(
                     .osPermission("accessibility", message: "Koine needs Accessibility access.")
                 )
+            case .string("INVALID_INPUT"):
+                return .failure(
+                    ProviderFailure(kind: .invalidInput, message: "The probe refused its input.")
+                )
             default:
                 return .failure(ProviderFailure(kind: .failed, message: "The probe failed."))
             }

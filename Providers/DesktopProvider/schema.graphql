@@ -1,0 +1,29 @@
+"UTC instant with exactly six fractional second digits, captured from the process start time."
+scalar DesktopProcessStart
+
+input DesktopProcessIdentity {
+  pid: Int!
+  startedAt: DesktopProcessStart!
+}
+
+extend type Query {
+  "desktop:read. An absent process is ordinary null."
+  desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
+}
+
+"All fields require desktop:read."
+type DesktopApplication {
+  ref: Reference!
+  name: String!
+  bundleIdentifier: String
+  windows: [DesktopWindow!]!
+}
+
+"All fields require desktop:read."
+type DesktopWindow {
+  ref: Reference!
+  title: String!
+  observation: DesktopObservation!
+}
+
+enum DesktopObservation { CURRENT }

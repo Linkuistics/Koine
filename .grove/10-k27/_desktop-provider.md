@@ -78,7 +78,8 @@ existing suites and VM verifications green, and is verifiable on its own.
   `docs/design/desktop-operations.graphql`.
 - ADRs: `docs/adr/machine-references-as-uris.md`,
   `docs/adr/koine-server-and-native-providers.md`,
-  `docs/adr/resilient-provider-framework.md`.
+  `docs/adr/resilient-provider-framework.md`,
+  `docs/adr/desktop-window-identity-is-a-held-element.md`.
 - Glossary terms in play: provider, provider framework, resource reference,
   snapshot, capability.
 - Existing behaviour to learn from, not copy, in
@@ -122,6 +123,19 @@ Provider OS observation is private state; the engine still caches nothing.
 Native waits are bounded and cancellation is cooperative. The host rule binds:
 anything that launches Koine, drives a UI or needs Accessibility runs in a
 TestAnyware VM, never on the host.
+
+`application-identity-and-window-listing-k28` is complete. What the later leaves
+build on: the identity mechanism and its limits, with a section addressed to the
+leaves that re-resolve and focus, in `docs/verification/desktop-window-identity.md`;
+the consent route through System Settings, scripted as `grant_accessibility` in
+`scripts/vm-verify-desktop.sh` and described in
+`docs/verification/desktop-application-and-windows-vm.md`;
+`scripts/vm-verify-desktop-client.py` as the guest client that captures a process
+identity; `Fixtures/WindowIdentityProbe` for native evidence; typed attribute
+reads (`read(_:_:as:)`) that never turn an error into data; and
+`ProviderFailure.Kind.invalidInput` for input errors. `DesktopObservation` serves
+`CURRENT` alone until leaf 4 makes `REMEMBERED` real. That leaf, which observes
+destruction, is also where a token can be retired the moment its window ends.
 
 Until `grant-enrollment-k10` lands, clients obtain grants through the manual
 workflow. That is sufficient for ModalAnyware to begin work against this path.

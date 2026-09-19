@@ -31,8 +31,11 @@ revokes one with `Mutation.koineRevokeGrant`. Revocation is a durable commit
 made inside the same serialized authority boundary that admits every action, so
 a revoked credential gets 401 on its next request, keep-alive or not. The
 window also lists and revokes grants and enables login launch, and the
-installed workflow is verified in a clean VM. Providers and
-the desktop path are later increments. The agreed design:
+installed workflow is verified in a clean VM. Native providers load through one
+loader, and the desktop path has begun: the bundled desktop provider resolves a
+running application from its process identity and lists its current windows
+("Desktop provider" below). Looking a reference up again, focusing a window and
+windows on other Spaces are later increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -56,20 +59,23 @@ Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
 ```sh
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build, then stage KoineProviderAPI.framework
-task test      # build, stage, build the fixture provider and its variants, then the suites over real loopback HTTP
+task test      # build, stage, build the fixture provider, its variants and the desktop provider, then the suites over real loopback HTTP
 task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
+task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
+task app:vm-verify-desktop  # the bundled desktop provider resolves a real application and lists its windows, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
 framework by its framework install name, which resolves only once the framework
 is staged ("Provider framework" below), `NativeProviderTests` needs the fixture
-bundle and `ProviderLoaderTests` needs its variants. The fixtures are signed
+bundle, `ProviderLoaderTests` needs its variants and `DesktopProviderTests` needs
+the desktop provider's bundle. The fixtures are signed
 with the identity `task app` uses (`KOINE_SIGNING_IDENTITY` overrides it), since
 the loader admits only signed, approved bundles; there is no ad-hoc fallback.
 
@@ -204,8 +210,9 @@ stopped the directory can be deleted (its contents are read-only, so
 
 `Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose
 approvals are built in (the shipped provider IDs with the Team ID of the
-application's own signature) and which is empty until the desktop provider
-exists, and the per-user root.
+application's own signature) and which holds the desktop provider, and the
+per-user root. A provider's origin is its root's: the `desktop` identifier and
+prefix are reserved to the in-application root.
 
 **Lifecycle** (`KoineCore/ProviderLifecycle.swift`): providers start after
 composition; every resolve goes through the provider's lifecycle, which
@@ -274,6 +281,70 @@ not only written without newer declarations: a conformance compiled against a
 newer minor records the defaults of the requirements that minor added, and an
 older host's dynamic loader refuses it.
 
+## Desktop provider
+
+`Providers/DesktopProvider` is the first real provider. It is no target of this
+package: `build.sh` compiles it against the staged `KoineProviderAPI.framework`
+alone, exactly as the fixture is built, and `task app` seals it in
+`Contents/PlugIns`, where the one native loader admits it under the
+application's built-in approval. Its pure files (`Logic/`) are also named by the
+package target `DesktopProviderLogic`, only so that `swift test` reaches them.
+It registers `desktop:read` and `desktop:control`, and serves what is
+implemented so far:
+
+```graphql
+desktopApplication(process: { pid: 412, startedAt: "2026-09-19T01:02:03.000456Z" }) {
+  ref name bundleIdentifier
+  windows { ref title observation }
+}
+```
+
+**Process identity.** Both halves are compared. `startedAt` is the kernel's
+start instant for the process, which the provider reads with
+`proc_pidinfo(PROC_PIDTBSDINFO)` as `pbi_start_tvsec` and `pbi_start_tvusec`:
+whole microseconds, written as UTC with exactly six fractional digits. A client
+must capture that same value: from `proc_pidinfo`, or from `sysctl` with
+`KERN_PROC_PID` as `kp_proc.p_starttime`, which is the same record
+(`DesktopProviderTests` captures it that way). `NSRunningApplication.launchDate`
+is a different, later instant and never matches.
+`scripts/vm-verify-desktop-client.py` is a complete example. An absent process, a
+live PID started at another instant, and a process that is no application are
+ordinary null. A `pid` that is not positive, or a `startedAt` in any other form
+(whole seconds, another offset, fewer digits), is an input error with a response
+path and no `extensions.kind`; it never falls back to the PID alone.
+
+**Windows** are the application's real windows on the current Space, read through
+the Accessibility API: role `AXWindow`, subrole standard, dialog or none,
+minimised windows included, untitled windows with an empty title, and no row for
+anything else an application puts in its window list (Finder lists its desktop).
+Koine needs Accessibility consent for this; a read never asks for it, and without
+it `windows` is a `permission` / `os-permission` error. `windows` is non-null, so
+that error discards the enclosing `desktopApplication`; a query that does not
+select `windows` still resolves the application. `observation` is always `CURRENT` for now.
+
+**References** are opaque to clients. `koine://desktop/application/<pid>/<start µs>`
+is a process incarnation; a window adds `/<session>/<token>`, naming the
+accessibility element the provider holds for that window during this run of
+Koine. Two windows with the same title have different references, a window keeps
+its reference across listings, and a window reference from an earlier run of
+Koine is `unavailable`. Why that mechanism, the evidence for it with real
+applications, and what it cannot distinguish:
+[docs/verification/desktop-window-identity.md](docs/verification/desktop-window-identity.md).
+
+`task app:vm-verify-desktop` (`scripts/vm-verify-desktop.sh`), after `task app`,
+proves this on the signed bundle in a clean VM over loopback GraphQL with grants
+created in Koine's window: the provider is `ACTIVE`, Finder resolves by `pid` and
+`startedAt`, its same-titled windows carry distinct and stable references, a
+mismatched `startedAt` and an absent process are null, a malformed one is an
+input error, and a grant without `desktop:read` is refused. It gives Koine
+Accessibility consent as a user does, in System Settings
+(`KOINE_VM_PASSWORD` is the VM account's password, `admin` by default). Evidence:
+[docs/verification/desktop-application-and-windows-vm.md](docs/verification/desktop-application-and-windows-vm.md).
+
+The provider contract gained one outcome for this: `ProviderFailure.Kind.invalidInput`,
+for an argument that is well-formed GraphQL but no value of a provider-owned
+type. The host reports it as input coercion.
+
 ## Resident application
 
 `Koine.app` is a scripted bundle around the package, not an Xcode project:
@@ -285,8 +356,12 @@ module interface and signed first, inside-out. The executable's build-tree run
 paths are reduced to exactly `/usr/lib/swift` (the OS Swift runtime, which
 supplies the `@rpath` back-deployment libraries such as
 `libswiftCompatibilitySpan`) and `@executable_path/../Frameworks`. The application
-ships no provider yet: `Contents/PlugIns`, its in-application provider root, is
-present and empty, which `scripts/verify-app.sh` checks.
+ships one provider: `scripts/build-app.sh` builds `Desktop.koineprovider` with
+the provider's own build definition against the staged framework's interface,
+places it in `Contents/PlugIns`, the in-application provider root, and signs it
+with the hardened runtime before the application that seals it.
+`scripts/verify-app.sh` checks that the root holds exactly that bundle, signed by
+the same team, linking the framework by its install name and embedding no copy.
 
 Every bundle, from development to release, is signed with
 `Developer ID Application: Antony Blakey (TA43A4RUP3)`, so its designated

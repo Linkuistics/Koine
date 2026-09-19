@@ -91,10 +91,13 @@ public final class KoineServer: Sendable {
         let staging =
             providerStaging
             ?? dataDirectory.appendingPathComponent("ProviderStaging", isDirectory: true)
-        let reports = try providerRoots.flatMap {
-            try ProviderLoader.loadProviders(in: $0, staging: staging, host: host)
+        // A provider's origin is its root's: only the in-application root may
+        // supply the identifiers reserved to Koine's own providers.
+        let reports = try providerRoots.flatMap { root in
+            try ProviderLoader.loadProviders(in: root, staging: staging, host: host)
+                .map { (report: $0, origin: root.isBundled ? ActiveProvider.Origin.bundled : .external) }
         }
-        for report in reports {
+        for (report, origin) in reports {
             let state: ProviderStatus.State
             let diagnostic: String
             switch report.outcome {
@@ -102,7 +105,7 @@ public final class KoineServer: Sendable {
                 loaded.append(
                     ActiveProvider(
                         descriptor: provider.descriptor, provider: provider.provider,
-                        version: report.version, schemaVersion: report.schemaVersion
+                        origin: origin, version: report.version, schemaVersion: report.schemaVersion
                     )
                 )
                 continue

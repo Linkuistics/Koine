@@ -99,7 +99,12 @@ guest "! pgrep -f ${INSTALLED}" >/dev/null || fail "Koine still runs after Quit"
 guest "ls \"${DATA}\""
 guest "[ ! -e \"${DATA}/endpoint.json\" ]" || fail "the descriptor survived Quit"
 client
-REFUSED="$(guest "curl -s -m 3 -o /dev/null http://127.0.0.1:${PORT}/graphql; echo \$?" || true)"
+# An exec that returns nothing says nothing about the port: ask again.
+REFUSED=""
+for _ in 1 2 3 4; do
+    REFUSED="$(guest "curl -s -m 3 -o /dev/null http://127.0.0.1:${PORT}/graphql; echo \$?" || true)"
+    [ -z "${REFUSED}" ] || break
+done
 echo "curl to the old port ${PORT}: exit ${REFUSED}"
 [ "${REFUSED}" = 7 ] || fail "something still answers on port ${PORT}"
 

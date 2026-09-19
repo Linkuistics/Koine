@@ -1,0 +1,100 @@
+{
+  "application" : "Finder",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : -25201,
+      "privateWindowId" : null,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "role" : "AXScrollArea",
+      "subrole" : null,
+      "title" : null,
+      "token" : 4
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        64,
+        64
+      ],
+      "windowNumber" : 16
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 14
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 13
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 12
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 11
+    },
+    {
+      "layer" : -2147483603,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "windowNumber" : 9
+    }
+  ],
+  "pid" : 356,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

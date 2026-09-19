@@ -39,8 +39,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     /// The providers Koine ships, by identifier. Each is approved for Koine's
     /// own Team ID: this list and that identity are sealed by the application
-    /// signature. Empty until desktop-path-k9 ships the desktop provider.
-    private static let bundledProviderIds: [String] = []
+    /// signature.
+    private static let bundledProviderIds = ["desktop"]
 
     /// `Contents/PlugIns`, the root sealed inside the application bundle. An
     /// unsigned development run has no Team ID, and so approves nothing in it.

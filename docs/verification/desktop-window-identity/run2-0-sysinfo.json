@@ -1,0 +1,53 @@
+{
+  "answeredAt" : "2026-09-19T12:30:53Z",
+  "application" : "System Information",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 74,
+      "rect" : [
+        820,
+        156,
+        280,
+        470
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "",
+      "token" : 9
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        660,
+        115,
+        600,
+        632
+      ],
+      "windowNumber" : 75
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        820,
+        156,
+        280,
+        470
+      ],
+      "windowNumber" : 74
+    }
+  ],
+  "pid" : 1008,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

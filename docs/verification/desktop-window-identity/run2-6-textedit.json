@@ -1,0 +1,125 @@
+{
+  "answeredAt" : "2026-09-19T12:37:32Z",
+  "application" : "TextEdit",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:34",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 84,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled 2",
+      "token" : 13
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        0,
+        0,
+        1920,
+        68
+      ],
+      "windowNumber" : 87
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "windowNumber" : 84
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        213,
+        77,
+        586,
+        488
+      ],
+      "windowNumber" : 45
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        500,
+        500
+      ],
+      "windowNumber" : 44
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 39
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 38
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 37
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 36
+    }
+  ],
+  "pid" : 795,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

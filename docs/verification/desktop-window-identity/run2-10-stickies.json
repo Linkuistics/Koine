@@ -1,0 +1,191 @@
+{
+  "answeredAt" : "2026-09-19T12:41:19Z",
+  "application" : "Stickies",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 120,
+      "rect" : [
+        69,
+        333,
+        352,
+        260
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Make a note of it!…",
+      "token" : 15
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 119,
+      "rect" : [
+        69,
+        793,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 16
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 118,
+      "rect" : [
+        48,
+        311,
+        355,
+        268
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "It’s easy to customize your notes.…",
+      "token" : 17
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 116,
+      "rect" : [
+        69,
+        593,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 18
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        69,
+        333,
+        352,
+        260
+      ],
+      "windowNumber" : 120
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 115
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 113
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        69,
+        793,
+        300,
+        200
+      ],
+      "windowNumber" : 119
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        48,
+        311,
+        355,
+        268
+      ],
+      "windowNumber" : 118
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        500,
+        500
+      ],
+      "windowNumber" : 117
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        69,
+        593,
+        300,
+        200
+      ],
+      "windowNumber" : 116
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 114
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 112
+    }
+  ],
+  "pid" : 1870,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

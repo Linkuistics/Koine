@@ -48,6 +48,13 @@ struct DomainError: Error {
     }
 }
 
+/// A provider refused an argument as no value of its own type. It is input
+/// coercion the host could not perform itself, so the error carries a path and
+/// no domain classification (docs/specs/machine.md, "Errors and partial data").
+struct InputCoercionError: Error {
+    let message: String
+}
+
 /// The single place a principal's current authority is read, and the single
 /// place it is withdrawn. Grants are looked up live on every check, so nothing
 /// authenticated earlier is remembered.

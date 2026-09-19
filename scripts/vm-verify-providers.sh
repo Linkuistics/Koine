@@ -45,21 +45,6 @@ install_root() {
     guest "cat \"${DATA}/Providers/fixture.approval.json\"; echo"
     guest "codesign -dvv \"${DATA}/Providers/Fixture.koineprovider\" 2>&1 | grep -E '^(Identifier|Signature|TeamIdentifier|Authority=Developer)'"
 }
-launch() {
-    guest "open ${INSTALLED}"
-    place_window
-    for _ in $(seq 1 12); do
-        if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then return; fi
-        sleep 2
-    done
-    fail "no endpoint descriptor after launch"
-}
-# ask <query>: prints the response and leaves it in RESPONSE; HTTP 200 expected.
-ask() {
-    RESPONSE="$(client "$1")"
-    echo "${RESPONSE}"
-    grep -qx "HTTP 200" <<<"${RESPONSE}" || fail "expected HTTP 200 for: $1"
-}
 # provider_state: the fixture's state in the last RESPONSE.
 provider_state() {
     sed -n 1p <<<"${RESPONSE}" | jq -r '.data.koineManagement.providers[] | select(.provider == "fixture") | .state'

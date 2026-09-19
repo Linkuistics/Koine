@@ -355,6 +355,7 @@ import Testing
               gone: fixtureProbe(outcome: UNAVAILABLE)
               broken: fixtureProbe(outcome: FAILED)
               consent: fixtureProbe(outcome: OS_PERMISSION)
+              refused: fixtureProbe(outcome: INVALID_INPUT)
               fine: fixtureProbe(outcome: OK)
             }
             """, as: reader
@@ -363,7 +364,9 @@ import Testing
         let byPath = Dictionary(
             uniqueKeysWithValues: reply.errors.map { (Self.path($0), Self.extensions($0)) }
         )
-        #expect(byPath.keys.sorted() == ["broken", "consent", "gone"])
+        #expect(byPath.keys.sorted() == ["broken", "consent", "gone", "refused"])
+        // Input coercion the provider performed: a path, and no domain kind.
+        #expect(byPath["refused"]?["kind"] == nil)
         #expect(byPath["gone"]?["kind"] as? String == "unavailable")
         #expect(byPath["broken"]?["kind"] as? String == "failed")
         #expect(byPath["consent"]?["kind"] as? String == "permission")

@@ -68,7 +68,8 @@ trap cleanup EXIT
 # The accessibility tree of Koine's windows, deep enough to reach a grant row's
 # children. SwiftUI controls here refuse `agent press` (HTTP 400), so elements
 # are found semantically and clicked over VNC at their centre, re-read each time.
-snapshot() { testanyware agent snapshot --mode full --window "${APP_NAME}" --depth 12 --json; }
+# SNAPSHOT_WINDOW names another application's window for the helpers below.
+snapshot() { testanyware agent snapshot --mode full --window "${SNAPSHOT_WINDOW:-${APP_NAME}}" --depth 14 --json; }
 element() {
     snapshot | jq -c "[.. | objects | select(has(\"platformRole\")) | select($1)][0]"
 }
@@ -101,6 +102,22 @@ expect_status() {
     out="$(client)"
     echo "${out}"
     grep -qx "HTTP $1" <<<"${out}" || fail "the client script expected HTTP $1"
+}
+
+launch() {
+    guest "open ${INSTALLED}"
+    place_window
+    for _ in $(seq 1 12); do
+        if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then return; fi
+        sleep 2
+    done
+    fail "no endpoint descriptor after launch"
+}
+# ask <query>: prints the response and leaves it in RESPONSE; HTTP 200 expected.
+ask() {
+    RESPONSE="$(client "$1")"
+    echo "${RESPONSE}"
+    grep -qx "HTTP 200" <<<"${RESPONSE}" || fail "expected HTTP 200 for: $1"
 }
 
 quit_koine() {

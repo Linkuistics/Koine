@@ -1,0 +1,102 @@
+{
+  "answeredAt" : "2026-09-19T12:58:29Z",
+  "application" : "TextEdit",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:34",
+      "heldElementsEqualToThis" : 1,
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 45,
+      "rect" : [
+        213,
+        77,
+        603,
+        505
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 6
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 48
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 47
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 46
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        213,
+        77,
+        603,
+        505
+      ],
+      "windowNumber" : 45
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        500,
+        500
+      ],
+      "windowNumber" : 44
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 49
+    }
+  ],
+  "pid" : 691,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

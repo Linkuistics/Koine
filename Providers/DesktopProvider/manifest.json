@@ -1,0 +1,13 @@
+{
+  "providerId": "desktop",
+  "graphQLPrefix": "Desktop",
+  "version": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "architectures": ["@ARCH@"],
+  "minimumOS": "13.0",
+  "minimumSwiftRuntime": "5.7",
+  "framework": { "major": 1, "minimumMinor": 0 },
+  "requiredFeatures": [],
+  "principalClass": "KoineDesktopProviderFactory",
+  "library": "libDesktopProvider.dylib"
+}

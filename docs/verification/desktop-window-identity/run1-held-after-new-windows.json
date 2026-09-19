@@ -1,0 +1,299 @@
+{
+  "held" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 793,
+      "privateError" : 0,
+      "privateWindowId" : 49,
+      "rect" : [
+        69,
+        333,
+        352,
+        260
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Make a note of it!…",
+      "token" : 1
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 793,
+      "privateError" : 0,
+      "privateWindowId" : 46,
+      "rect" : [
+        48,
+        311,
+        355,
+        268
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "It’s easy to customize your notes.…",
+      "token" : 2
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:34",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 795,
+      "privateError" : 0,
+      "privateWindowId" : 45,
+      "rect" : [
+        213,
+        77,
+        603,
+        505
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 3
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 356,
+      "privateError" : 0,
+      "privateWindowId" : 59,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 4
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 793,
+      "privateError" : 0,
+      "privateWindowId" : 55,
+      "rect" : [
+        69,
+        793,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 5
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:87",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 793,
+      "privateError" : 0,
+      "privateWindowId" : 53,
+      "rect" : [
+        69,
+        593,
+        300,
+        200
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Untitled",
+      "token" : 6
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 356,
+      "privateError" : 0,
+      "privateWindowId" : 60,
+      "rect" : [
+        558,
+        222,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 7
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 356,
+      "privateError" : 0,
+      "privateWindowId" : 59,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 8
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 356,
+      "privateError" : 0,
+      "privateWindowId" : 58,
+      "rect" : [
+        500,
+        164,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 9
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 356,
+      "privateError" : -25201,
+      "privateWindowId" : null,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "role" : "AXScrollArea",
+      "subrole" : null,
+      "title" : null,
+      "token" : 10
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 899,
+      "privateError" : 0,
+      "privateWindowId" : 72,
+      "rect" : [
+        98,
+        108,
+        877,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh",
+      "token" : 11
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 899,
+      "privateError" : 0,
+      "privateWindowId" : 69,
+      "rect" : [
+        69,
+        79,
+        877,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh — 120×30",
+      "token" : 12
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 899,
+      "privateError" : 0,
+      "privateWindowId" : 65,
+      "rect" : [
+        40,
+        50,
+        863,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh — 118×30",
+      "token" : 13
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "equalHeldTokens" : [
+
+      ],
+      "minimized" : false,
+      "pid" : 1008,
+      "privateError" : 0,
+      "privateWindowId" : 74,
+      "rect" : [
+        820,
+        156,
+        280,
+        470
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "",
+      "token" : 14
+    }
+  ],
+  "trusted" : true
+}

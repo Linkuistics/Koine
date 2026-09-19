@@ -27,6 +27,7 @@ enum FixtureOutcome {
   UNAVAILABLE
   FAILED
   OS_PERMISSION
+  INVALID_INPUT
 }
 
 "All fields require fixture:read."

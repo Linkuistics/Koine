@@ -1,0 +1,160 @@
+{
+  "application" : "Terminal",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 72,
+      "rect" : [
+        98,
+        108,
+        877,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh",
+      "token" : 11
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 69,
+      "rect" : [
+        69,
+        79,
+        877,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh — 120×30",
+      "token" : 12
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "_NS:136",
+      "heldElementsEqualToThis" : 1,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 65,
+      "rect" : [
+        40,
+        50,
+        863,
+        499
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "admin — -zsh — 118×30",
+      "token" : 13
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        98,
+        108,
+        877,
+        499
+      ],
+      "windowNumber" : 72
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        69,
+        79,
+        877,
+        499
+      ],
+      "windowNumber" : 69
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        500,
+        500
+      ],
+      "windowNumber" : 66
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        40,
+        50,
+        863,
+        499
+      ],
+      "windowNumber" : 65
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 64
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 63
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 62
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 61
+    }
+  ],
+  "pid" : 899,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

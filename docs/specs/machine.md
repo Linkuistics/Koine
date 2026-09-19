@@ -511,9 +511,14 @@ report OS failures rather than swallowing them, and acknowledge that later
 steps can fail after activation. A successful focus receipt means the native
 focus/raise operation completed against the resolved window; applications may
 subsequently change focus. A stale target produces `unavailable`, never silent
-success. Exactly which public/native identity APIs support this guarantee is
-an implementation acceptance obligation; Modaliser's private window-number
-lookup and title fallback cannot be copied as proof of identity.
+success. The native identity that supports this guarantee is the window's
+accessibility element, held by the provider and named in the reference by the
+provider run and a token, as recorded in
+[desktop window identity is a held element](../adr/desktop-window-identity-is-a-held-element.md)
+with its [evidence](../verification/desktop-window-identity.md). A window
+reference therefore does not survive a restart of Koine, and title fallback is
+never used. Modaliser's private window-number lookup and title fallback are not
+proof of identity and are not used.
 
 The engine caches no graph results, refreshes nothing and retries nothing.
 Provider OS observations are private state, not retained snapshots for callers.
@@ -573,8 +578,10 @@ a list or an object keyed by field name. The host checks each returned value
 against the field's GraphQL type and its depth bound before publishing it; a
 value that does not fit is malformed provider output. A nested resolver receives
 the object its provider returned, unchanged. `ProviderFailure` is `unavailable`,
-`failed`, `osPermission` with the missing consent's name, or `unknownResolver`,
-the provider's report of a registration mismatch.
+`failed`, `osPermission` with the missing consent's name, `unknownResolver`,
+the provider's report of a registration mismatch, or `invalidInput`, for an
+argument that is no value of a provider-owned type; the host reports that one as
+input coercion, with a response path and no domain classification.
 
 Resolvers use Swift async functions and framework-owned result values.
 Arguments and results are ordinary owned Swift values under ARC, not borrowed

@@ -61,6 +61,11 @@ public struct ProviderRoot: Sendable {
         ProviderRoot(location: location, approvals: .recordsInRoot)
     }
 
+    /// Whether this is the in-application root, whose providers are Koine's own.
+    public var isBundled: Bool {
+        if case .builtIn = approvals { true } else { false }
+    }
+
     public static func approvalRecordName(for providerId: String) -> String {
         "\(providerId).approval.json"
     }

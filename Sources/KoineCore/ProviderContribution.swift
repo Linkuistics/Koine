@@ -129,6 +129,7 @@ struct ProviderContribution: Sendable {
                         throw DomainError.osPermissionMissing(
                             failure.permission ?? "", message: failure.message
                         )
+                    case .invalidInput: throw InputCoercionError(message: failure.message)
                     case .unknownResolver:
                         report(
                             ProviderDiagnostic(

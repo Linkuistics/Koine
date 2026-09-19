@@ -1,0 +1,195 @@
+{
+  "answeredAt" : "2026-09-19T12:58:07Z",
+  "application" : "Finder",
+  "axWindows" : [
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "heldElementsEqualToThis" : 1,
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 37,
+      "rect" : [
+        558,
+        222,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 2
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "heldElementsEqualToThis" : 1,
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 36,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 3
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : "FinderWindow",
+      "heldElementsEqualToThis" : 1,
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "privateError" : 0,
+      "privateWindowId" : 35,
+      "rect" : [
+        500,
+        164,
+        920,
+        436
+      ],
+      "role" : "AXWindow",
+      "subrole" : "AXStandardWindow",
+      "title" : "Recents",
+      "token" : 4
+    },
+    {
+      "axError" : 0,
+      "axIdentifier" : null,
+      "heldElementsEqualToThis" : 1,
+      "isItsOwnWindow" : true,
+      "minimized" : false,
+      "privateError" : -25201,
+      "privateWindowId" : null,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "role" : "AXScrollArea",
+      "subrole" : null,
+      "title" : null,
+      "token" : 5
+    }
+  ],
+  "cgWindows" : [
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        558,
+        222,
+        920,
+        436
+      ],
+      "windowNumber" : 37
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        529,
+        193,
+        920,
+        436
+      ],
+      "windowNumber" : 36
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        500,
+        164,
+        920,
+        436
+      ],
+      "windowNumber" : 35
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        580,
+        64,
+        64
+      ],
+      "windowNumber" : 16
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 15
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 14
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 13
+    },
+    {
+      "layer" : 0,
+      "name" : null,
+      "onScreen" : false,
+      "rect" : [
+        0,
+        0,
+        1920,
+        30
+      ],
+      "windowNumber" : 12
+    },
+    {
+      "layer" : -2147483603,
+      "name" : null,
+      "onScreen" : true,
+      "rect" : [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "windowNumber" : 9
+    }
+  ],
+  "pid" : 354,
+  "trusted" : true,
+  "windowsAXError" : 0
+}

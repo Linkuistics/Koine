@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Runs inside the VM: a desktop client that knows only the endpoint descriptor,
+a protected credential file and an application's name. It captures the process
+identity as any client must: the PID, and the kernel's start instant for it
+(proc_pidinfo PROC_PIDTBSDINFO, whole microseconds) in the contract's canonical
+UTC form. Prints one JSON object per line: {"case", "pid", "startedAt", "response"}.
+
+usage: vm-verify-desktop-client.py <credential file> <application name> [exact|later|malformed|absent]
+"""
+import ctypes, datetime, json, os, subprocess, sys, urllib.request
+
+QUERY = """query($process: DesktopProcessIdentity!) {
+  desktopApplication(process: $process) { ref name bundleIdentifier windows { ref title observation } }
+}"""
+
+
+def start_microseconds(pid):
+    # struct proc_bsdinfo (<sys/proc_info.h>): pbi_start_tvsec and pbi_start_tvusec
+    # are the two 64-bit fields at offsets 120 and 128 of its 136 bytes.
+    buffer = ctypes.create_string_buffer(136)
+    libproc = ctypes.CDLL("/usr/lib/libproc.dylib", use_errno=True)
+    if libproc.proc_pidinfo(pid, 3, ctypes.c_uint64(0), buffer, 136) != 136:  # PROC_PIDTBSDINFO
+        raise OSError(ctypes.get_errno(), "proc_pidinfo")
+    seconds = int.from_bytes(buffer.raw[120:128], "little")
+    return seconds * 1_000_000 + int.from_bytes(buffer.raw[128:136], "little")
+
+
+def canonical(microseconds):
+    instant = datetime.datetime.fromtimestamp(microseconds // 1_000_000, datetime.timezone.utc)
+    return instant.strftime("%Y-%m-%dT%H:%M:%S") + ".%06dZ" % (microseconds % 1_000_000)
+
+
+def ask(credential, process):
+    data = os.path.expanduser("~/Library/Application Support/Koine")
+    with open(os.path.join(data, "endpoint.json")) as file:
+        endpoint = json.load(file)
+    request = urllib.request.Request(
+        "http://127.0.0.1:%d%s" % (endpoint["port"], endpoint["path"]),
+        data=json.dumps({"query": QUERY, "variables": {"process": process}}).encode(),
+        headers={"Content-Type": "application/json", "Authorization": "Bearer " + credential},
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.load(response)
+
+
+def main():
+    credential = open(sys.argv[1]).read().strip()
+    name, case = sys.argv[2], (sys.argv[3] if len(sys.argv) > 3 else "exact")
+    pid = int(subprocess.check_output(["pgrep", "-x", name]).split()[0])
+    micros = start_microseconds(pid)
+    process = {
+        "exact": {"pid": pid, "startedAt": canonical(micros)},
+        # The same live PID, claimed one microsecond later: a different process.
+        "later": {"pid": pid, "startedAt": canonical(micros + 1)},
+        "malformed": {"pid": pid, "startedAt": canonical(micros)[:-8] + "Z"},  # whole seconds
+        "absent": {"pid": 1_000_000, "startedAt": canonical(micros)},
+    }[case]
+    print(json.dumps({"case": case, **process, "response": ask(credential, process)}))
+
+
+main()
