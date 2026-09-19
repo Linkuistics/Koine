@@ -49,3 +49,19 @@ tasks:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
     cmds:
       - scripts/vm-verify.sh
+
+  compat:
+    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
+    cmds:
+      - task: compat:build
+      - task: compat:verify
+
+  compat:build:
+    desc: Build the baseline and newer-minor revisions in separate trees under .build/compat, and the later fixtures (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:verify:
+    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP
+    cmds:
+      - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}

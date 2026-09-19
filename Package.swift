@@ -59,6 +59,12 @@ let package = Package(
             name: "KoineApp",
             dependencies: ["KoineServer", "KoineManagementClient", "KoineProviderLoader"]
         ),
+        // Test material: the headless host of the binary compatibility pairs
+        // (scripts/build-compat-pairs.sh). scripts/build-app.sh does not ship it.
+        .executableTarget(
+            name: "KoineCompatibilityHost", dependencies: ["KoineServer"],
+            path: "Fixtures/CompatibilityHost"
+        ),
         .testTarget(
             name: "KoineManagementClientTests",
             dependencies: ["KoineManagementClient", "KoineServer"]

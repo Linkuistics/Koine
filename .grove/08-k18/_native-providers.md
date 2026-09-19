@@ -70,6 +70,9 @@ existing suites green, and is verifiable on its own.
    loader whose refusals are complete (leaves 4 and 5).
 7. `signed-app-provider-vm-verification` — the TestAnyware seam over the signed
    build. Needs everything before it.
+8. `listener-waits-for-responses-in-flight` — found by leaf 6: `stop()` does not
+   wait for a response in flight, though `KoineServer.stop()` says it does.
+   Independent of the others.
 
 ## Pointers
 

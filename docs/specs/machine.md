@@ -608,7 +608,11 @@ an explicit required feature/minimum version and is refused by older hosts.
 Existing compiled plugins continue to use newer compatible major-1 frameworks
 without rebuilding. An upgraded plugin can still run on an older host only if
 its binary uses symbols/runtime facilities available in that host's supported
-baseline and declares no newer requirement. Test that direction with the old
+baseline and declares no newer requirement. Compile such a plugin against the
+oldest framework minor it declares, not only without newer declarations in its
+source: a conformance compiled against a newer minor records the defaults of the
+protocol requirements that minor added, and an older host's dynamic loader
+refuses the binary. Test that direction with the old
 host; building with a newer compiler alone does not prove it. A plugin using
 newer framework declarations declares the corresponding minimum minor and
 cannot run on earlier frameworks. Future incompatible framework majors need a
@@ -619,8 +623,9 @@ Swift documents the distinction between
 [module stability and library evolution](https://www.swift.org/blog/library-evolution/).
 Apple documents [class-name lookup](https://developer.apple.com/documentation/foundation/nsclassfromstring(_:))
 and [run-path dependent libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html).
-The specific loader and independently built version pairs above remain to be
-verified through the agreed native binary test seam.
+The loader and the independently built version pairs are verified through the
+native binary test seam; `docs/verification/binary-compatibility.md` holds the
+evidence, the supported binary baseline and what remains for release acceptance.
 
 Plugin and server release versions are not ABI versions. ABI compatibility also
 does not guarantee GraphQL schema compatibility: a provider must preserve its

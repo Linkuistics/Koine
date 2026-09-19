@@ -3,7 +3,7 @@
 # interface that `swift build` emitted. SwiftPM builds a dynamic library product
 # as a bare dylib; its install name is the framework's, so every host image
 # needs the framework on its run path. PackageFrameworks already is on the run
-# path of everything SwiftPM links, and it is the -F directory providers build
+# path of everything SwiftPM links in debug, and it is the -F directory providers build
 # against: they see the .swiftinterface and the binary, never the sources.
 #
 # usage: stage-provider-framework.sh [debug|release]   (prints the framework path)
@@ -23,9 +23,11 @@ fi
 # The interface is an intermediate of the build; its directory carries the
 # configuration's name as the build system spells it (Debug, Release).
 CONFIG_DIR="$(basename "${BIN_DIR}")"
+# .build/compat holds whole trees of other revisions (scripts/build-compat-pairs.sh).
 INTERFACES=()
 while IFS= read -r found; do INTERFACES+=("${found}"); done < <(
-    find .build -path "*/${MODULE}.build/${CONFIG_DIR}/*" -name "${MODULE}.swiftinterface"
+    find .build -path .build/compat -prune -o \
+        -path "*/${MODULE}.build/${CONFIG_DIR}/*" -name "${MODULE}.swiftinterface" -print
 )
 if [ "${#INTERFACES[@]}" -ne 1 ]; then
     echo "Error: expected one emitted ${MODULE}.swiftinterface for ${CONFIG_DIR}, found ${#INTERFACES[@]}." >&2

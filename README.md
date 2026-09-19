@@ -59,6 +59,7 @@ task build     # swift build, then stage KoineProviderAPI.framework
 task test      # build, stage, build the fixture provider and its variants, then the suites over real loopback HTTP
 task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
+task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
@@ -244,6 +245,33 @@ steps above do by hand. An ad-hoc signed variant stands for a different
 identity, so no second certificate is needed. The tests construct servers off
 the Swift concurrency pool and share one staging directory, so dyld maps each
 fixture once per process.
+
+### Binary compatibility pairs
+
+`task compat` is the repeatable recipe behind
+`docs/verification/binary-compatibility.md`. `scripts/build-compat-pairs.sh`
+copies the sources into two trees under `.build/compat/<configuration>/`, each
+with its own build directory: `baseline`, as the sources are, and `newer`, the
+same sources with an evidence-only framework minor 1 applied
+(`Fixtures/CompatibilityPairs/Minor1.swift`, a defaulted `Provider` requirement,
+and a host that supplies 1.1). That minor is never part of the shipped
+framework. Each tree builds its framework, its fixture and variants, and
+`KoineCompatibilityHost` (`Fixtures/CompatibilityHost`), a headless host that
+serves one data directory's per-user provider root until its standard input
+ends. It is test material: `scripts/build-app.sh` does not ship it and it adds
+no API. `later/` holds later revisions of the fixture, each compiled against a
+named revision's framework. `CONFIGURATION=release task compat` does the same in
+release.
+
+`scripts/verify-compat-pairs.py` makes each pair at run time, by installing one
+tree's bundle and approval record under the other tree's host, one host process
+per case, and drives it over loopback HTTP with a grant. It digests every binary
+before and after, and writes `results.json` beside the trees.
+
+A provider for an older Koine is compiled against that Koine's framework minor,
+not only written without newer declarations: a conformance compiled against a
+newer minor records the defaults of the requirements that minor added, and an
+older host's dynamic loader refuses it.
 
 ## Resident application
 

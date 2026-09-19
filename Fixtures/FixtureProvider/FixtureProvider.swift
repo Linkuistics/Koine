@@ -12,6 +12,7 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
         let read = [
             "Query.fixtureInfo": "info", "Query.fixtureItems": "items", "Query.fixtureItem": "item",
             "Query.fixtureProbe": "probe", "Query.fixtureCalls": "calls",
+            "Query.fixtureAwaitCancellation": "awaitCancellation",
             "FixtureCall.resolver": "call.resolver", "FixtureCall.count": "call.count",
         ]
         // A nested field's resolver identifier is the key it reads from its parent.
@@ -92,6 +93,24 @@ final class FixtureProvider: Provider, @unchecked Sendable {
             koineProviderFrameworkFutureAddition()
         #endif
     }
+
+    // scripts/build-compat-pairs.sh builds the later revisions of this provider
+    // for the binary compatibility pairs: FIXTURE_REVISION_2 is newer source
+    // that uses only the baseline framework, and FIXTURE_USES_MINOR_1 also
+    // uses the declarations its evidence-only framework minor 1 adds.
+    private static var greeting: String {
+        #if FIXTURE_USES_MINOR_1
+            koineProviderMinor1Greeting(revision: 2)
+        #elseif FIXTURE_REVISION_2
+            "hello from the fixture provider, revision 2"
+        #else
+            "hello from the fixture provider"
+        #endif
+    }
+
+    #if FIXTURE_USES_MINOR_1
+        func describeInstance() -> String { "the fixture provider, revision 2" }
+    #endif
     func stop() async {}
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {
@@ -99,7 +118,16 @@ final class FixtureProvider: Provider, @unchecked Sendable {
         if !["calls", "closeGate", "openGate"].contains(id), !id.hasPrefix("call.") {
             await enter(id)
         }
+        if id == "awaitCancellation" { return await awaitCancellation() }
         return answer(request)
+    }
+
+    /// Waits, as an OS wait would, until the host requests cancellation, and
+    /// counts having seen it: the count outlives the request that was cancelled.
+    private func awaitCancellation() async -> ResolutionResult {
+        while !Task.isCancelled { try? await Task.sleep(nanoseconds: 5_000_000) }
+        lock.withLock { calls["awaitCancellation.cancelled", default: 0] += 1 }
+        return .failure(ProviderFailure(kind: .failed, message: "The fixture saw cancellation."))
     }
 
     /// Counts the call, then waits while the resolver's gate is closed.
@@ -125,7 +153,7 @@ final class FixtureProvider: Provider, @unchecked Sendable {
         }
         switch request.resolverId {
         case "info":
-            return .success(.object(["greeting": .string("hello from the fixture provider")]))
+            return .success(.object(["greeting": .string(Self.greeting)]))
         case "items":
             return .success(.list(lock.withLock { names.keys.sorted().compactMap(item) }))
         case "probe":

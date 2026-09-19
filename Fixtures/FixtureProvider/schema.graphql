@@ -9,6 +9,8 @@ extend type Query {
   fixtureProbe(outcome: FixtureOutcome!): String
   "fixture:read. How often each resolver has been called; reading this is not counted."
   fixtureCalls: [FixtureCall!]!
+  "fixture:read. Waits until the host requests cancellation, then fails; fixtureCalls counts it as awaitCancellation.cancelled."
+  fixtureAwaitCancellation: String
 }
 
 extend type Mutation {
