@@ -226,15 +226,16 @@ than before:
 2. `resident-management-k12` — the signed resident application; a user
    creates, lists and revokes grants; live revocation. Planned by
    `resident-app-manual-grants-k7` and cut into impl leaves. Complete.
-3. `native-provider-contribution-k8` — independently built native providers
-   contribute schema under enforced capabilities; binary compatibility evidence.
+3. `native-providers-k18` — independently built native providers contribute
+   schema under enforced capabilities; binary compatibility evidence. Planned by
+   `native-provider-contribution-k8` and cut into impl leaves.
 4. `desktop-path-k9` — resolve, list and focus through the real desktop
    provider, starting with the native window-identity evidence.
 5. `grant-enrollment-k10` — the client-requested grant workflow and its UI.
 6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
    VM acceptance, supported matrix and the ModalAnyware handoff.
 
-The first two are cut into impl leaves. Each later stage is a `planning` leaf
+The first three are cut into impl leaves. Each later stage is a `planning` leaf
 carrying its charter, acceptance cases and open questions; it is cut when
 reached, with what the stages before it actually built. Stage 5 depends only on
 stage 2 and can move earlier at no cost. Each stage serves only the schema
@@ -274,6 +275,12 @@ and not as work for this grove: a virtual IDE composed from individual
 applications, mediated by LLMs and scripts. The human has an earlier project,
 an LLM-coordination blackboard and tool integration platform, of which this
 server could be an important part.
+
+A native UI to install a provider bundle, show its signing identity, approve it
+and renew trust, together with the library-validation entitlement that lets an
+independently signed third-party provider load. `native-provider-contribution-k8`
+deferred both with the human; until then approval records for the per-user root
+are a file the user places, and only Koine-signed providers load.
 
 Cross-provider identity, atomic snapshots, transactional command rollback and
 automatic retry remain outside the agreed first desktop contract. GraphQL
