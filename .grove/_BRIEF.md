@@ -232,15 +232,15 @@ than before:
 4. `desktop-provider-k27` — resolve, list and focus through the real desktop
    provider, starting with the native window-identity evidence. Planned by
    `desktop-path-k9` and cut into impl leaves.
-5. `grant-enrollment-k10` — the client-requested grant workflow and its UI.
+5. `client-enrollment-k33` — the client-requested grant workflow and its
+   review UI. Planned by `grant-enrollment-k10` and cut into impl leaves.
 6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
    VM acceptance, supported matrix and the ModalAnyware handoff.
 
-The first four are cut into impl leaves. Each later stage is a `planning` leaf
+The first five are cut into impl leaves. The last stage is a `planning` leaf
 carrying its charter, acceptance cases and open questions; it is cut when
-reached, with what the stages before it actually built. Stage 5 depends only on
-stage 2 and can move earlier at no cost. Each stage serves only the schema
-fields it makes real; stage 6 checks the composed schema against the design SDL.
+reached, with what the stages before it actually built. Each stage serves only
+the schema fields it makes real; stage 6 checks the composed schema against the design SDL.
 
 No research, prototype or review stage is added automatically. Open-source
 licensing/distribution remains undecided and is not a condition of the first
@@ -359,7 +359,7 @@ Accessibility pane URL on another macOS release, and prompt attribution on the
 notarized release build. `scripts/vm-verify-desktop-lib.sh` holds consent given
 and revoked as a user does it, and `guest_json` and
 `scripts/vm-verify-accessibility.sh`'s `ask` are the pattern for a guest read
-that survives the agent's false timeouts. `grant-enrollment-k10` adds its review
+that survives the agent's false timeouts. `client-enrollment-k33` adds its review
 UI to a window that already reads its status from one polled management
 operation (`ManagementClient.status()`), and its `requests` field joins a
 `KoineManagement` whose served field list `GrantManagementTests` pins. One
