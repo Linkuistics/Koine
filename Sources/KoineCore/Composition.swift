@@ -33,6 +33,9 @@ public struct ProviderDiagnostic: Sendable, Equatable {
     }
 }
 
+/// Host features a provider may require. Version 1 defines none.
+public let koineHostFeatures: Set<String> = []
+
 /// Composes provider contributions onto the core schema
 /// (docs/specs/machine.md, "Composition and operation placement"). A provider is
 /// published whole or refused whole, and the outcome does not depend on the
@@ -42,8 +45,6 @@ struct Composition {
     let accepted: [ProviderContribution]
     let diagnostics: [ProviderDiagnostic]
 
-    /// Host features a descriptor may require. Version 1 defines none.
-    static let hostFeatures: Set<String> = []
 
     /// `admits` answers whether a candidate schema may be served; a provider
     /// whose addition it rejects is refused.
@@ -195,7 +196,7 @@ private struct Candidate {
             refusal.reservedIdentity = true
             throw refusal
         }
-        let missing = Set(descriptor.requiredFeatures).subtracting(Composition.hostFeatures)
+        let missing = Set(descriptor.requiredFeatures).subtracting(koineHostFeatures)
         guard missing.isEmpty else {
             throw Refusal(
                 .unsupportedFeature,

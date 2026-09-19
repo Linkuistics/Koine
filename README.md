@@ -56,8 +56,9 @@ Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
 ```sh
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build, then stage KoineProviderAPI.framework
-task test      # build, stage, build the fixture provider, then the suites over real loopback HTTP
+task test      # build, stage, build the fixture provider and its variants, then the suites over real loopback HTTP
 task fixture   # stage the framework and build the fixture provider outside the package
+task fixture:variants  # build the bundles the native loader must refuse, and the few good ones
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
@@ -65,8 +66,8 @@ task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 
 Use `task test`, not a bare `swift test`: every host image links the provider
 framework by its framework install name, which resolves only once the framework
-is staged ("Provider framework" below), and `NativeProviderTests` needs the
-fixture bundle.
+is staged ("Provider framework" below), `NativeProviderTests` needs the fixture
+bundle and `ProviderLoaderTests` needs its variants.
 
 The tests embed the server over a temporary data directory; they never touch
 `~/Library/Application Support/Koine`.
@@ -128,20 +129,56 @@ that carries the promise. Three things follow from SwiftPM's rules:
   thunks.
 
 **Provider bundles** are directories named `<Name>.koineprovider` holding a
-Swift dylib, `manifest.json` (`providerId`, `graphQLPrefix`, `principalClass`,
-`library`) and `schema.graphql`. `KoineServer(dataDirectory:policy:providerRoots:)`
-loads every bundle directly inside each given root at construction and composes
-its SDL and field registrations into the schema; nothing else is searched. A
+Swift dylib, `manifest.json` and `schema.graphql`.
+`KoineServer(dataDirectory:policy:providerRoots:)` considers every bundle
+directly inside each given root at construction and composes the SDL and field
+registrations of those it loads into the schema; nothing else is searched. A
 provider's fields require `<providerId>:read` or `<providerId>:control`, which
-also appear in `koine.availableCapabilities`. Verification before `dlopen`,
-trust, and provider status are later stages; today a bundle that fails to load
-fails server construction.
+also appear in `koine.availableCapabilities`.
+
+Every manifest field is required (`Fixtures/FixtureProvider/manifest.json` is an
+example): `providerId`, `graphQLPrefix`, `version`, `schemaVersion`,
+`architectures`, `minimumOS`, `minimumSwiftRuntime`, `framework` (`major`,
+`minimumMinor`), `requiredFeatures`, `principalClass` and `library`. The host
+states what it supplies: framework 1.0 (`HostCompatibility`, held equal to
+`ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`,
+empty in version 1).
+
+**The native loader** (`KoineProviderLoader`) refuses a bundle before any of its
+code runs wherever it can, since dylib initializers run inside `dlopen`. It reads
+the binary's bytes itself (`MachOImage.swift`) and checks, in order: the
+manifest; the declared framework major, minimum minor and features, the CPU
+architecture, the minimum OS and the Swift runtime that OS supplies; that the
+library lies inside the bundle and holds exactly the declared architectures and
+a minimum OS no newer than declared; that the bundle contains no copy of the
+framework and its image defines none of the framework's own symbols; that every
+dependency and run path is the framework's install name, under `/usr/lib/` or
+`/System/Library/`, or a recursively validated `@loader_path` file inside the
+bundle; and that no other image has registered the principal class name. Trust
+(location, signature, approval record) will precede all of these. After
+`dlopen` the principal class must originate in that image, conform to
+`ProviderFactory`, and produce a descriptor that agrees with the manifest.
+
+An honest bundle this host cannot run is `INCOMPATIBLE`; a malformed or
+contradictory one, a `dlopen` failure or a failure after loading is `REJECTED`
+(after loading, the image stays mapped and contributes nothing). Neither fails
+server construction. `koineManagement.providers`, under `koine:manage`, serves
+one status for every bundle found: these, composition's refusals, `FAILED` for a
+provider whose start threw, and `ACTIVE`.
+
+**Lifecycle** (`KoineCore/ProviderLifecycle.swift`): providers start after
+composition; every resolve goes through the provider's lifecycle, which
+serializes start and stop, lets resolves overlap, and on stop admits nothing
+new, cancels outstanding resolves and waits for them. A provider that is not
+running answers `unavailable`; its schema stays published, so `schemaDigest`
+does not depend on a start outcome. `KoineServer.stop()` stops providers before
+the listener, which waits for requests in flight.
 
 **Composition** (`KoineCore/Composition.swift`) publishes a loaded provider's
 contribution whole or refuses it whole, by the rules in the contract's
 "Composition and operation placement". A refused provider is never started, the
-rest of the schema is served intact, and the refusal is a `ProviderDiagnostic`
-on `Engine.providerDiagnostics`, which management will serve as provider status.
+rest of the schema is served intact, and the refusal is a `ProviderDiagnostic`,
+served as that provider's `REJECTED` status.
 Providers are composed in a canonical order, so `schemaDigest` does not depend
 on load order. The shared `Reference` scalar (`KoineCore/Reference.swift`)
 validates the `koine://<provider>/<remainder>` envelope at input coercion; the
@@ -155,6 +192,15 @@ what a test needs as fields of its own: `fixtureCalls` counts resolver calls,
 `fixtureCloseGate`/`fixtureOpenGate` hold and release a named resolver's calls,
 and `fixtureProbe` ends as each failure kind. `ProviderAuthorizationTests` uses
 them for the contract's "Public GraphQL authorization" cases.
+
+`Fixtures/FixtureProvider/build-variants.sh` builds one provider root per loader
+case under `FixtureVariants/`, since each refusal needs a real binary or
+manifest: the plain bundle under an altered manifest for what is refused before
+`dlopen`, and the fixture recompiled under a tag (its own class names and
+provider identifier) for what loads. The fixture's `initializer.c` appends its
+image path to the file `KOINE_FIXTURE_INITIALIZER_LOG` names; that is how
+`ProviderLoaderTests` shows a refused bundle ran no code, with a loaded variant
+as the control.
 
 ## Resident application
 

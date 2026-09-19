@@ -44,14 +44,19 @@ public final class Engine: Sendable {
     public let instanceId: String
     public let schemaDigest: String
 
-    /// The providers whose contributions are published. A refused provider is
-    /// not here, and the host does not start it.
-    public let activeProviders: [ActiveProvider]
-
     /// Why each refused provider was refused, and mismatches found since.
     public var providerDiagnostics: [ProviderDiagnostic] { diagnostics.all }
 
+    /// What `koineManagement.providers` serves.
+    public var providerStatuses: [ProviderStatus] {
+        get async { await statusReport.all() }
+    }
+
     private let diagnostics: ProviderDiagnostics
+    private let statusReport: ProviderStatusReport
+    /// The providers whose contributions are published. A refused provider is
+    /// not here, and is never started.
+    private let lifecycles: [ProviderLifecycle]
     private let schema: GraphQLSchema
     private let authority: Authority
     private let registrations: [String: FieldRegistration]
@@ -61,11 +66,11 @@ public final class Engine: Sendable {
 
     public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
-        providers: [ActiveProvider] = []
+        providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = []
     ) throws {
         try self.init(
             store: store, instanceId: instanceId, policy: policy, providers: providers,
-            reached: { _ in }
+            unloadedProviders: unloadedProviders, reached: { _ in }
         )
     }
 
@@ -73,7 +78,8 @@ public final class Engine: Sendable {
     /// it with `@testable` to force an ordering; nothing public carries it.
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
-        providers: [ActiveProvider] = [], reached: @escaping OrderingHook
+        providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        reached: @escaping OrderingHook
     ) throws {
         self.instanceId = instanceId
         self.reached = reached
@@ -95,16 +101,21 @@ public final class Engine: Sendable {
         }
         let schema = composition.schema
         let contributions = composition.accepted
-        activeProviders = contributions.map(\.active)
+        lifecycles = contributions.map(\.lifecycle)
         let activeProviderIds = Set(contributions.map(\.providerId))
         let diagnostics = ProviderDiagnostics(composition.diagnostics)
         self.diagnostics = diagnostics
+        let statusReport = ProviderStatusReport(
+            unloaded: unloadedProviders, offered: providers, accepted: contributions,
+            diagnostics: diagnostics
+        )
+        self.statusReport = statusReport
         // Defined in docs/specs/machine.md, "Schema digest".
         schemaDigest = Engine.digest(of: schema)
 
         var fields = CoreFields(
             store: store, authority: authority, instanceId: instanceId,
-            schemaDigest: schemaDigest,
+            schemaDigest: schemaDigest, providerStatuses: statusReport.all,
             providerCapabilities: contributions.flatMap { [$0.readCapability, $0.controlCapability] }
         ).registrations
         for contribution in contributions {
@@ -117,6 +128,18 @@ public final class Engine: Sendable {
         try Engine.install(fields, on: schema, authority: authority, reached: reached)
         self.schema = schema
         registrations = fields
+    }
+
+    /// Starts every published provider, after descriptor and schema validation.
+    /// A start that fails is that provider's `FAILED` status, not the host's
+    /// failure: management stays available.
+    public func startProviders() async {
+        for lifecycle in lifecycles { await lifecycle.start() }
+    }
+
+    /// Returns once every provider has finished its outstanding work and stopped.
+    public func stopProviders() async {
+        for lifecycle in lifecycles { await lifecycle.stop() }
     }
 
     /// The principal for a presented bearer credential, or nil. A store failure

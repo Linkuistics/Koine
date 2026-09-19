@@ -59,6 +59,14 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
     func makeProvider() -> any Provider { FixtureProvider() }
 }
 
+/// A principal class that is no `ProviderFactory`, for a manifest to name.
+@objc(KoineFixtureNotAFactory)
+final class FixtureNotAFactory: NSObject {}
+
+struct FixtureStartFailure: Error, CustomStringConvertible {
+    var description: String { "built to fail its start" }
+}
+
 /// Two items, `koine://fixture/item/1` and `koine://fixture/item/2`. A reference
 /// is re-resolved on every use; nothing is remembered for a caller.
 ///
@@ -74,7 +82,16 @@ final class FixtureProvider: Provider, @unchecked Sendable {
     private var gated: Set<String> = []
     private var held: [CheckedContinuation<Void, Never>] = []
 
-    func start() async throws {}
+    func start() async throws {
+        #if FIXTURE_FAILS_START
+            throw FixtureStartFailure()
+        #endif
+        #if FIXTURE_NEEDS_NEWER_FRAMEWORK
+            // A declaration this host's framework does not have: the manifest
+            // claims minor 0, and the dynamic loader finds the lie.
+            koineProviderFrameworkFutureAddition()
+        #endif
+    }
     func stop() async {}
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {

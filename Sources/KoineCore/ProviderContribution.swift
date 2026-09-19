@@ -15,18 +15,35 @@ public struct ActiveProvider: Sendable {
     public let descriptor: ProviderDescriptor
     public let provider: any Provider
     public let origin: Origin
+    /// The plugin and schema versions its manifest declares, for status.
+    public let version: String
+    public let schemaVersion: String
 
-    public init(descriptor: ProviderDescriptor, provider: any Provider, origin: Origin = .external) {
+    public init(
+        descriptor: ProviderDescriptor, provider: any Provider, origin: Origin = .external,
+        version: String = "0.0.0", schemaVersion: String = "0.0.0"
+    ) {
         self.descriptor = descriptor
         self.provider = provider
         self.origin = origin
+        self.version = version
+        self.schemaVersion = schemaVersion
     }
 }
 
 /// Turns an accepted provider's descriptor into the engine's own registrations,
 /// so its fields take the same authorized path as the core's.
-struct ProviderContribution {
+struct ProviderContribution: Sendable {
     let active: ActiveProvider
+    /// Every call into the provider instance goes through its lifecycle.
+    let lifecycle: ProviderLifecycle
+
+    init(active: ActiveProvider) {
+        self.active = active
+        lifecycle = ProviderLifecycle(
+            providerId: active.descriptor.providerId, provider: active.provider
+        )
+    }
 
     var providerId: String { active.descriptor.providerId }
     var readCapability: String { "\(providerId):read" }
@@ -39,7 +56,7 @@ struct ProviderContribution {
         report: @escaping @Sendable (ProviderDiagnostic) -> Void
     ) throws -> [String: FieldRegistration] {
         var all: [String: FieldRegistration] = [:]
-        let provider = active.provider
+        let lifecycle = lifecycle
         let providerId = providerId
         for field in active.descriptor.fields {
             let capability: String
@@ -98,7 +115,7 @@ struct ProviderContribution {
                     requestId: input.requestId, resolverId: resolverId, arguments: arguments,
                     parent: (input.parent as? ProviderObject)?.value
                 )
-                switch await provider.resolve(request) {
+                switch await lifecycle.resolve(request) {
                 case .success(let value):
                     guard let result = native(value, as: returnType, depth: 0) else {
                         throw DomainError.failed("The provider returned a malformed value.")

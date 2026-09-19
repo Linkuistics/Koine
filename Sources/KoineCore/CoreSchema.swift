@@ -54,5 +54,16 @@ type KoineCreatedGrant {
 "All fields require koine:manage."
 type KoineManagement {
   grants: [KoineGrant!]!
+  providers: [KoineProviderStatus!]!
 }
+
+type KoineProviderStatus {
+  provider: String!
+  version: String!
+  schemaVersion: String!
+  state: KoineProviderState!
+  diagnostic: String
+}
+
+enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
 """#

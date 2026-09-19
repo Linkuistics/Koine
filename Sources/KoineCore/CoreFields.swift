@@ -8,6 +8,7 @@ struct CoreFields: Sendable {
     let authority: Authority
     let instanceId: String
     let schemaDigest: String
+    let providerStatuses: @Sendable () async -> [ProviderStatus]
     /// The read and control capabilities of every active provider.
     var providerCapabilities: [String] = []
 
@@ -26,7 +27,10 @@ struct CoreFields: Sendable {
             "Query.koineManagement": FieldRegistration(
                 authority: .capability(CoreCapability.manage)
             ) { _ in
-                ["grants": try readStore { try store.grants() }.map(object)] as Object
+                [
+                    "grants": try readStore { try store.grants() }.map(object),
+                    "providers": await providerStatuses().map(object),
+                ] as Object
             },
             "Mutation.koineRevokeGrant": FieldRegistration(
                 authority: .capability(CoreCapability.manage)
@@ -41,7 +45,9 @@ struct CoreFields: Sendable {
                        "availableCapabilities"], .admitted),
             ("KoineGrant", ["grantId", "clientLabel", "capabilities", "state"], .admitted),
             ("KoineCreatedGrant", ["grant", "credential"], .capability(CoreCapability.manage)),
-            ("KoineManagement", ["grants"], .capability(CoreCapability.manage)),
+            ("KoineManagement", ["grants", "providers"], .capability(CoreCapability.manage)),
+            ("KoineProviderStatus", ["provider", "version", "schemaVersion", "state", "diagnostic"],
+             .capability(CoreCapability.manage)),
         ]
         for (type, names, authority) in outputs {
             for name in names {
@@ -112,6 +118,16 @@ struct CoreFields: Sendable {
         do { return try body() } catch {
             throw DomainError.failed("The grant store is unavailable.")
         }
+    }
+
+    private func object(_ status: ProviderStatus) -> Object {
+        [
+            "provider": status.provider,
+            "version": status.version,
+            "schemaVersion": status.schemaVersion,
+            "state": status.state.rawValue,
+            "diagnostic": status.diagnostic,
+        ]
     }
 
     private func object(_ grant: GrantRecord) -> Object {

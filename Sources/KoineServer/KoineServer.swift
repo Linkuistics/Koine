@@ -30,7 +30,6 @@ public final class KoineServer: Sendable {
 
     private let dataDirectory: URL
     private let engine: Engine
-    private let providers: [ActiveProvider]
     private let policy: RequestPolicy
     private let instanceLock: InstanceLock
     private let run = Run()
@@ -41,7 +40,9 @@ public final class KoineServer: Sendable {
     /// throws; the server does not start over a replacement.
     ///
     /// Providers are loaded from `providerRoots` and composed into the schema
-    /// here, once; nothing else is searched. A bundle that does not load throws.
+    /// here, once; nothing else is searched. A bundle that is refused is
+    /// reported as provider status and contributes nothing; a root that cannot
+    /// be read throws.
     public convenience init(
         dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [URL] = []
     ) throws {
@@ -74,16 +75,36 @@ public final class KoineServer: Sendable {
         let store = try SQLiteGrantStore(
             path: dataDirectory.appendingPathComponent("grants.sqlite").path
         )
-        let loaded = try providerRoots.flatMap(ProviderLoader.loadProviders).map {
-            ActiveProvider(descriptor: $0.descriptor, provider: $0.provider)
+        var loaded: [ActiveProvider] = []
+        var unloaded: [ProviderStatus] = []
+        let host = HostCompatibility(features: koineHostFeatures)
+        for report in try providerRoots.flatMap({ try ProviderLoader.loadProviders(in: $0, host: host) }) {
+            let state: ProviderStatus.State
+            let diagnostic: String
+            switch report.outcome {
+            case .loaded(let provider):
+                loaded.append(
+                    ActiveProvider(
+                        descriptor: provider.descriptor, provider: provider.provider,
+                        version: report.version, schemaVersion: report.schemaVersion
+                    )
+                )
+                continue
+            case .incompatible(let reason): (state, diagnostic) = (.incompatible, reason)
+            case .rejected(let reason): (state, diagnostic) = (.rejected, reason)
+            }
+            unloaded.append(
+                ProviderStatus(
+                    provider: report.provider, version: report.version,
+                    schemaVersion: report.schemaVersion, state: state, diagnostic: diagnostic
+                )
+            )
         }
         let engine = try Engine(
             store: store, instanceId: instanceId, policy: policy,
-            providers: loaded + additionalProviders
+            providers: loaded + additionalProviders, unloadedProviders: unloaded
         )
         self.engine = engine
-        // A refused provider is never started.
-        providers = engine.activeProviders
         console = LocalConsole(engine: engine)
     }
 
@@ -93,8 +114,7 @@ public final class KoineServer: Sendable {
     public func start() async throws -> Int {
         let engine = engine
         try await run.begin()
-        for active in providers { try await active.provider.start() }
-        await run.providersDidStart()
+        await engine.startProviders()
         let bound = try await LoopbackListener(maximumBodyBytes: policy.maximumBodyBytes) {
             request in await Self.respond(to: request, engine: engine)
         }
@@ -110,10 +130,11 @@ public final class KoineServer: Sendable {
     /// the instance lock. A descriptor some other instance published is left.
     public func stop() async {
         EndpointDescriptor.remove(publishedBy: instanceId, in: dataDirectory)
+        // Providers first: the listener waits for requests in flight, and a
+        // request in flight may be waiting on a provider that finishes only
+        // when stop requests its cancellation.
+        await engine.stopProviders()
         await run.take()?.stop()
-        if await run.takeProvidersStarted() {
-            for active in providers { await active.provider.stop() }
-        }
         instanceLock.release()
     }
 
@@ -194,14 +215,6 @@ public struct LocalConsole: Sendable {
 private actor Run {
     private var begun = false
     private var listener: LoopbackListener?
-    private var providersStarted = false
-
-    func providersDidStart() { providersStarted = true }
-
-    func takeProvidersStarted() -> Bool {
-        defer { providersStarted = false }
-        return providersStarted
-    }
 
     func begin() throws {
         guard !begun else { throw KoineServerError.alreadyStarted }
