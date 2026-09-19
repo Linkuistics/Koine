@@ -24,13 +24,14 @@ skill set are deferred until after ModalAnyware is unblocked.
 The first increment is built: an embeddable server that binds loopback,
 publishes its endpoint descriptor, authenticates bearer credentials against a
 durable grant store and answers `Query.koine`, `Mutation.koineCreateGrant` and
-full introspection. The second increment is under way: a signed resident
+full introspection. The second increment is built too: a signed resident
 `Koine.app` embeds that server and creates grants from its window, and a
 `koine:manage` grant lists grants with `Query.koineManagement { grants }` and
 revokes one with `Mutation.koineRevokeGrant`. Revocation is a durable commit
 made inside the same serialized authority boundary that admits every action, so
 a revoked credential gets 401 on its next request, keep-alive or not. The
-window also lists and revokes grants and enables login launch. Providers and
+window also lists and revokes grants and enables login launch, and the
+installed workflow is verified in a clean VM. Providers and
 the desktop path are later increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
@@ -58,6 +59,7 @@ task build     # swift build
 task test      # swift test: the public-seam suite over real loopback HTTP
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
+task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 ```
 
 The tests embed the server over a temporary data directory; they never touch
@@ -160,6 +162,15 @@ curl -s "http://127.0.0.1:$(jq -r .port "$D/endpoint.json")/graphql" \
 
 Run the application in a TestAnyware VM, not on a machine in use: it takes
 focus and owns the account's real data directory.
+
+**VM verification.** `task app:vm-verify` (`scripts/vm-verify.sh`) clones the
+TestAnyware macOS golden, installs the signed bundle, and drives the real UI:
+login launch across a restart with no client, a grant created and its
+credential handed to a script, the window closed, the grant revoked (401), and
+Quit (descriptor gone). It needs `testanyware` and `jq`, and leaves its
+transcript in `.build/vm-verify/`. The procedure, what the route does and does
+not show about Gatekeeper, and the recorded evidence are in
+[docs/verification/resident-app-vm.md](docs/verification/resident-app-vm.md).
 
 ## Dependencies
 

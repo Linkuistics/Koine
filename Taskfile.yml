@@ -26,3 +26,8 @@ tasks:
     desc: Verify the bundle's signature, hardened runtime and designated requirement
     cmds:
       - scripts/verify-app.sh
+
+  app:vm-verify:
+    desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
+    cmds:
+      - scripts/vm-verify.sh

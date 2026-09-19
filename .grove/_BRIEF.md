@@ -225,7 +225,7 @@ than before:
    endpoint and introspects it. Cut into impl leaves.
 2. `resident-management-k12` — the signed resident application; a user
    creates, lists and revokes grants; live revocation. Planned by
-   `resident-app-manual-grants-k7` and cut into impl leaves.
+   `resident-app-manual-grants-k7` and cut into impl leaves. Complete.
 3. `native-provider-contribution-k8` — independently built native providers
    contribute schema under enforced capabilities; binary compatibility evidence.
 4. `desktop-path-k9` — resolve, list and focus through the real desktop
@@ -303,6 +303,21 @@ application must `stop()` it to hand over; every request/response limit is a
 value of `RequestPolicy` in `KoineCore`, and a stage that adds schema keeps
 introspection inside it. "Serve only what is implemented" and "keep the GraphQL
 library private to the engine" (that node's notes) continue to bind.
+
+`resident-management-k12` is complete. What later stages build on: the signed
+resident `Koine.app` (`task app`, `task app:verify`), whose window is a thin
+client of the management GraphQL operations through `KoineManagementClient`;
+`Authority` as the one serialized boundary for admission and revocation, with
+the engine's internal `OrderingHook` for forcing orders in tests; and
+`task app:vm-verify` (`scripts/vm-verify.sh`), the scripted TestAnyware run
+that later VM acceptance extends. `docs/verification/resident-app-vm.md` holds
+its evidence, the TestAnyware tooling workarounds, and what it leaves to
+`release-acceptance-handoff-k11`: the golden image has Gatekeeper assessments
+disabled and the upload route sets no quarantine, so a quarantined first launch
+of a notarized build on a Gatekeeper-enabled image is still unproven. The
+human's rule from `resident-app-skeleton-k13` binds every later stage: anything
+that launches Koine, drives its UI, touches the clipboard, the account's real
+data directory or login items runs in a TestAnyware VM, never on the host.
 
 In `resident-app-manual-grants-k7` the human chose the signing identity and the
 application build tooling. Every Koine bundle is signed with `Developer ID
