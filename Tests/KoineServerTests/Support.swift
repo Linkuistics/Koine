@@ -1,6 +1,6 @@
 import Foundation
 import KoineCore
-import KoineServer
+@testable import KoineServer
 
 /// A running server over a throwaway data directory, plus the client's view of
 /// it: everything a client knows comes from the published descriptor.
@@ -10,13 +10,16 @@ final class Harness {
 
     private var policy: RequestPolicy
     private let providerRoots: [URL]
+    private let providers: [ActiveProvider]
 
     /// `seed` runs on the data directory before the server first opens it.
+    /// `providers` are in-test contributions, composed with the loaded ones.
     init(
         policy: RequestPolicy = .version1, providerRoots: [URL] = [],
-        seed: ((URL) throws -> Void)? = nil
+        providers: [ActiveProvider] = [], seed: ((URL) throws -> Void)? = nil
     ) async throws {
         self.providerRoots = providerRoots
+        self.providers = providers
         directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("koine-tests-\(UUID().uuidString)", isDirectory: true)
         self.policy = policy
@@ -25,7 +28,8 @@ final class Harness {
             try seed(directory)
         }
         server = try KoineServer(
-            dataDirectory: directory, policy: policy, providerRoots: providerRoots
+            dataDirectory: directory, policy: policy, providerRoots: providerRoots,
+            additionalProviders: providers
         )
         try await server.start()
     }
@@ -36,7 +40,8 @@ final class Harness {
         if let policy { self.policy = policy }
         await server.stop()
         server = try KoineServer(
-            dataDirectory: directory, policy: self.policy, providerRoots: providerRoots
+            dataDirectory: directory, policy: self.policy, providerRoots: providerRoots,
+            additionalProviders: providers
         )
         try await server.start()
     }

@@ -25,6 +25,9 @@ public final class KoineServer: Sendable {
     public let instanceId = UUID().uuidString.lowercased()
     public let console: LocalConsole
 
+    /// Refusals and provider defects, until management serves provider status.
+    var providerDiagnostics: [ProviderDiagnostic] { engine.providerDiagnostics }
+
     private let dataDirectory: URL
     private let engine: Engine
     private let providers: [ActiveProvider]
@@ -39,8 +42,21 @@ public final class KoineServer: Sendable {
     ///
     /// Providers are loaded from `providerRoots` and composed into the schema
     /// here, once; nothing else is searched. A bundle that does not load throws.
-    public init(
+    public convenience init(
         dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [URL] = []
+    ) throws {
+        try self.init(
+            dataDirectory: dataDirectory, policy: policy, providerRoots: providerRoots,
+            additionalProviders: []
+        )
+    }
+
+    /// `additionalProviders` are composed with the loaded ones. It is internal:
+    /// tests reach it with `@testable` to contribute a descriptor without a
+    /// bundle; nothing public carries it.
+    init(
+        dataDirectory: URL, policy: RequestPolicy, providerRoots: [URL],
+        additionalProviders: [ActiveProvider]
     ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
@@ -58,12 +74,16 @@ public final class KoineServer: Sendable {
         let store = try SQLiteGrantStore(
             path: dataDirectory.appendingPathComponent("grants.sqlite").path
         )
-        providers = try providerRoots.flatMap(ProviderLoader.loadProviders).map {
+        let loaded = try providerRoots.flatMap(ProviderLoader.loadProviders).map {
             ActiveProvider(descriptor: $0.descriptor, provider: $0.provider)
         }
-        engine = try Engine(
-            store: store, instanceId: instanceId, policy: policy, providers: providers
+        let engine = try Engine(
+            store: store, instanceId: instanceId, policy: policy,
+            providers: loaded + additionalProviders
         )
+        self.engine = engine
+        // A refused provider is never started.
+        providers = engine.activeProviders
         console = LocalConsole(engine: engine)
     }
 

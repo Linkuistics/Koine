@@ -8,15 +8,29 @@ public struct ProviderDescriptor: Sendable {
     public var graphQLPrefix: String
     public var schemaSDL: String
     public var fields: [ProviderFieldRegistration]
+    /// Host features the provider cannot work without. A host lacking one
+    /// refuses the whole contribution.
+    public var requiredFeatures: [String]
 
     public init(
         providerId: String, graphQLPrefix: String, schemaSDL: String,
         fields: [ProviderFieldRegistration]
     ) {
+        self.init(
+            providerId: providerId, graphQLPrefix: graphQLPrefix, schemaSDL: schemaSDL,
+            fields: fields, requiredFeatures: []
+        )
+    }
+
+    public init(
+        providerId: String, graphQLPrefix: String, schemaSDL: String,
+        fields: [ProviderFieldRegistration], requiredFeatures: [String]
+    ) {
         self.providerId = providerId
         self.graphQLPrefix = graphQLPrefix
         self.schemaSDL = schemaSDL
         self.fields = fields
+        self.requiredFeatures = requiredFeatures
     }
 }
 
@@ -35,7 +49,8 @@ public struct ProviderFieldRegistration: Sendable {
 }
 
 /// A provider can require only its own capabilities; it cannot mark a field
-/// public or require management authority.
+/// public or require management authority. Root `Mutation` actions require
+/// `control`; a field a query can reach requires `read`.
 public enum ProviderFieldAuthority: Sendable {
     case read
     case control

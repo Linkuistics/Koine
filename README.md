@@ -137,6 +137,16 @@ also appear in `koine.availableCapabilities`. Verification before `dlopen`,
 trust, and provider status are later stages; today a bundle that fails to load
 fails server construction.
 
+**Composition** (`KoineCore/Composition.swift`) publishes a loaded provider's
+contribution whole or refuses it whole, by the rules in the contract's
+"Composition and operation placement". A refused provider is never started, the
+rest of the schema is served intact, and the refusal is a `ProviderDiagnostic`
+on `Engine.providerDiagnostics`, which management will serve as provider status.
+Providers are composed in a canonical order, so `schemaDigest` does not depend
+on load order. The shared `Reference` scalar (`KoineCore/Reference.swift`)
+validates the `koine://<provider>/<remainder>` envelope at input coercion; the
+engine reads only the provider.
+
 `Fixtures/FixtureProvider/` is test material: a provider built by its own
 `build.sh` with `swiftc` against the staged framework's `.swiftinterface` and
 image only. It shares no sources with the package, embeds no copy of the

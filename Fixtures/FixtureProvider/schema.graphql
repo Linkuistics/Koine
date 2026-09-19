@@ -1,9 +1,38 @@
 extend type Query {
   "fixture:read."
   fixtureInfo: FixtureInfo
+  "fixture:read. Every item, on demand."
+  fixtureItems: [FixtureItem!]!
+  "fixture:read. A reference to an item that is gone is an execution error."
+  fixtureItem(ref: Reference!): FixtureItem
+}
+
+extend type Mutation {
+  "fixture:control. Renames exactly this item or reports failure."
+  fixtureRenameItem(ref: Reference!, name: String!): FixtureRenameReceipt
 }
 
 "All fields require fixture:read."
 type FixtureInfo {
   greeting: String!
+}
+
+"All fields require fixture:read."
+type FixtureItem {
+  ref: Reference!
+  name: String!
+  "Ordinary null for an item without a note."
+  note: String
+  tags: [String!]!
+  detail: FixtureItemDetail!
+}
+
+"All fields require fixture:read."
+type FixtureItemDetail {
+  size: Int!
+}
+
+"All fields require fixture:control."
+type FixtureRenameReceipt {
+  ref: Reference!
 }

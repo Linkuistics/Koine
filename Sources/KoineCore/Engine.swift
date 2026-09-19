@@ -44,6 +44,14 @@ public final class Engine: Sendable {
     public let instanceId: String
     public let schemaDigest: String
 
+    /// The providers whose contributions are published. A refused provider is
+    /// not here, and the host does not start it.
+    public let activeProviders: [ActiveProvider]
+
+    /// Why each refused provider was refused, and mismatches found since.
+    public var providerDiagnostics: [ProviderDiagnostic] { diagnostics.all }
+
+    private let diagnostics: ProviderDiagnostics
     private let schema: GraphQLSchema
     private let authority: Authority
     private let fieldAuthorities: [String: FieldAuthority]
@@ -73,13 +81,24 @@ public final class Engine: Sendable {
         limits = RequestLimits(policy: policy)
         authority = Authority(store: store)
 
-        var schema = try buildSchema(source: coreSchemaSDL)
-        let contributions = providers.map(ProviderContribution.init)
-        for contribution in contributions {
-            schema = try extendSchema(
-                schema: schema, documentAST: parse(source: contribution.active.descriptor.schemaSDL)
-            )
+        // The Reference scalar's coercion is code, so the core's SDL extends a
+        // schema that already holds it.
+        let coreDocument = try parse(source: coreSchemaSDL)
+        let core = try extendSchema(
+            schema: GraphQLSchema(types: [makeReferenceScalar()]), documentAST: coreDocument
+        )
+        let schemaDescription = coreDocument.definitions
+            .compactMap { ($0 as? SchemaDefinition)?.description?.value }.first
+        let composition = Composition(core: core, providers: providers, policy: policy) {
+            IntrospectionSize.bytes(of: $0, schemaDescription: schemaDescription)
+                <= policy.maximumResponseBytes
         }
+        let schema = composition.schema
+        let contributions = composition.accepted
+        activeProviders = contributions.map(\.active)
+        let activeProviderIds = Set(contributions.map(\.providerId))
+        let diagnostics = ProviderDiagnostics(composition.diagnostics)
+        self.diagnostics = diagnostics
         // Defined in docs/specs/machine.md, "Schema digest".
         schemaDigest = Engine.digest(of: schema)
 
@@ -89,7 +108,11 @@ public final class Engine: Sendable {
             providerCapabilities: contributions.flatMap { [$0.readCapability, $0.controlCapability] }
         ).registrations
         for contribution in contributions {
-            fields.merge(contribution.registrations) { core, _ in core }
+            fields.merge(
+                try contribution.registrations(
+                    in: schema, registered: activeProviderIds, report: diagnostics.record
+                )
+            ) { core, _ in core }
         }
         try Engine.install(fields, on: schema, authority: authority, reached: reached)
         self.schema = schema
@@ -360,7 +383,10 @@ public final class Engine: Sendable {
                         try authority.check(registration.authority, for: principal)
                         await reached(.admitted(coordinate))
                         let result = try await registration.resolve(
-                            ResolverInput(parent: source, arguments: arguments, principal: principal)
+                            ResolverInput(
+                                parent: source, arguments: arguments, principal: principal,
+                                requestId: scope.requestId
+                            )
                         )
                         // An admitted action finishes and is reported. A read is
                         // checked again: a grant revoked while it resolved does
@@ -391,7 +417,11 @@ public final class Engine: Sendable {
         let domain = error as? DomainError
             ?? DomainError.failed("The operation failed.")  // never leak native detail
         var extensions: [String: Map] = ["kind": .string(domain.kind.rawValue)]
-        if domain.kind == .permission {
+        if domain.kind == .permission, let osPermission = domain.osPermission {
+            extensions["permissionClass"] = "os-permission"
+            extensions["osPermission"] = .string(osPermission)
+            extensions["permissionOwner"] = "koine"
+        } else if domain.kind == .permission {
             extensions["permissionClass"] = "capability"
             extensions["phase"] = .string(phase)
             if let capability = domain.requiredCapability {
@@ -421,6 +451,7 @@ public final class Engine: Sendable {
 private final class ExecutionScope: @unchecked Sendable {
     let principal: Principal
     let deadline: ContinuousClock.Instant
+    let requestId = UUID().uuidString.lowercased()
 
     private let lock = NSLock()
     private var began = false
@@ -464,6 +495,22 @@ struct ResolverInput: Sendable {
     let parent: any Sendable
     let arguments: Map
     let principal: Principal
+    let requestId: String
+}
+
+/// Composition's refusals, plus what active providers get wrong later.
+final class ProviderDiagnostics: @unchecked Sendable {
+    private let lock = NSLock()
+    private var diagnostics: [ProviderDiagnostic]
+
+    init(_ diagnostics: [ProviderDiagnostic]) { self.diagnostics = diagnostics }
+
+    var all: [ProviderDiagnostic] { lock.withLock { diagnostics } }
+
+    /// A repeated mismatch is one diagnostic.
+    func record(_ diagnostic: ProviderDiagnostic) {
+        lock.withLock { if !diagnostics.contains(diagnostic) { diagnostics.append(diagnostic) } }
+    }
 }
 
 struct FieldRegistration: Sendable {

@@ -9,11 +9,17 @@ enum FieldAuthority: Sendable {
 
 /// A refusal or failure with the contract's machine-readable classification.
 struct DomainError: Error {
-    enum Kind: String { case permission, failed, unavailable }
+    enum Kind: String {
+        case permission, failed, unavailable
+        case unknownProvider = "unknown-provider"
+    }
 
     let kind: Kind
     let message: String
     var requiredCapability: String?
+    /// The platform consent Koine lacks; makes a permission error an
+    /// `os-permission` one.
+    var osPermission: String?
 
     static func capabilityDenied(_ capability: String?) -> DomainError {
         DomainError(
@@ -22,6 +28,15 @@ struct DomainError: Error {
                 ?? "This operation requires an active grant.",
             requiredCapability: capability
         )
+    }
+
+    static func osPermissionMissing(_ permission: String, message: String) -> DomainError {
+        DomainError(kind: .permission, message: message, osPermission: permission)
+    }
+
+    /// Echoes the reference the caller supplied, which discloses nothing.
+    static func unknownProvider(_ reference: String) -> DomainError {
+        DomainError(kind: .unknownProvider, message: "No provider is registered for \(reference).")
     }
 
     static func unavailable(_ message: String) -> DomainError {

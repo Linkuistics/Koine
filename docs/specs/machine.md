@@ -231,6 +231,22 @@ SDL and unclassified fields before publishing any contribution from that
 plugin. Reject both competing external providers for a duplicate identifier;
 never select an arbitrary winner. An external plugin cannot replace `desktop`.
 
+A provider identifier is a lower-case letter followed by lower-case letters and
+digits; it is also the reference authority and the prefix of the provider's
+capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two prefixes
+may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
+Each contribution is validated against the core schema alone, so it cannot use
+another provider's types, and its refusal never depends on which other providers
+loaded. Accepted contributions are composed in a canonical order, the bundled
+provider first and then by identifier. A refused provider is not started.
+
+Version 1 narrows what a contribution may hold. It uses only its own types, the
+built-in scalars and `Reference`; an extension of `Query` or `Mutation` adds
+fields and nothing else. Interfaces, unions, input-object default values and
+output lists with nullable elements are refused, because the engine cannot yet
+serve them faithfully. Provider SDL is held to the request policy's nesting
+limit, and the composed schema must pass GraphQL schema validation.
+
 Version 1 permits adding owned root fields and owned types, not extending
 another provider's types or replacing core fields. References may cross through
 the shared `Reference` scalar; using one never grants access. Provider-private
@@ -239,7 +255,11 @@ or cross-provider field extension requires an explicit composition contract.
 This bounds the current composition problem without hiding provider schemas.
 
 Only root Mutation fields may perform domain actions. Query and nested-output
-resolvers must be side-effect-free apart from private OS observation. A nested
+resolvers must be side-effect-free apart from private OS observation.
+Composition enforces the part it can see: a root Mutation field must require the
+provider's control capability, and no field on `Query`, or on a type a query can
+reach, may require it. A type reached only from a mutation result may, as the
+desktop receipt does. A nested
 `desktop { focusWindow }` mutation namespace is invalid for this contract:
 it would move actions outside GraphQL's serial root-mutation semantics.
 
@@ -296,7 +316,8 @@ and list positions), and `extensions.kind`. Permission errors add
 `extensions.permissionClass`, either `capability` or `os-permission`.
 Capability errors identify the required capability in
 `extensions.requiredCapability`, without revealing protected resource existence. OS errors identify `accessibility` and Koine as the
-permission owner. An unavailable error may echo a reference the caller supplied,
+permission owner, in `extensions.osPermission` and `extensions.permissionOwner`
+(`koine`). An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
 
@@ -447,8 +468,13 @@ not an extra meaning of a client's `desktop:control` grant.
 ## Resource references and desktop behavior
 
 The `Reference` scalar accepts canonical `koine://<provider>/<remainder>` URI
-strings, with no userinfo, port or fragment. The engine validates the envelope
-and routes by authority only. Providers own percent encoding, resource kind
+strings, with no userinfo, port or fragment. The scheme is lower-case, the
+authority is exactly a provider identifier, and the remainder is URI path and
+query text with well-formed percent escapes. The engine validates the envelope
+and routes by authority only. After the capability check it reads the provider
+of every reference among a field's arguments; a reference naming another
+registered provider still reaches the field's own provider, which reports
+`unavailable`. Providers own percent encoding, resource kind
 and remainder interpretation. A provider root has an empty remainder. The
 scalar maps to an opaque string wrapper in client bindings; clients cannot
 construct desktop resource references from PIDs or window titles.
@@ -536,6 +562,14 @@ macOS loader's class discovery; the provider interface itself is Swift.
 | `ResolutionRequest` | Resilient Sendable value: request/resolver identity, coerced argument values and parent value |
 | `ResolutionResult` | Success with a framework-owned value or structured provider failure; no complete GraphQL response or host error path |
 | `ProviderValue` / `ProviderFailure` | Resilient Sendable domain values with public constructors/accessors; version-1 cases and meanings are fixed |
+
+`ProviderValue` is null, a boolean, an integer, a double, a string, a reference,
+a list or an object keyed by field name. The host checks each returned value
+against the field's GraphQL type and its depth bound before publishing it; a
+value that does not fit is malformed provider output. A nested resolver receives
+the object its provider returned, unchanged. `ProviderFailure` is `unavailable`,
+`failed`, `osPermission` with the missing consent's name, or `unknownResolver`,
+the provider's report of a registration mismatch.
 
 Resolvers use Swift async functions and framework-owned result values.
 Arguments and results are ordinary owned Swift values under ARC, not borrowed
