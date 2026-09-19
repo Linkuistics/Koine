@@ -16,12 +16,18 @@ import Foundation
 // usage: WindowIdentityProbe serve <directory>
 //        WindowIdentityProbe focused
 //        WindowIdentityProbe windows <pid>
+//        WindowIdentityProbe observe <pid> <seconds>
 // A command is a file <name>.cmd holding `list <pid>` or `held`; the answer is
 // written to <name>.json. `stop.cmd` ends the process. `focused` holds nothing: it
 // prints which window has focus now, as the system says and not as Koine does,
 // for docs/verification/desktop-focus-vm.md. `windows` holds nothing either: the
 // windows an application lists now, so that one in the background can be seen to
 // be minimised, or absent from the current Space, before Koine is asked to focus it.
+// `observe` asks to be told of the destruction of every window the application
+// lists now, waits until it is told of one or the seconds pass, and prints what it
+// was told, for
+// docs/verification/desktop-remembered-windows-vm.md: whether the notification the
+// desktop provider relies on arrives, and for which window.
 
 @_silgen_name("_AXUIElementGetWindow")
 func _AXUIElementGetWindow(_ element: AXUIElement, _ id: UnsafeMutablePointer<CGWindowID>) -> AXError
@@ -151,6 +157,9 @@ func focusedNow() -> [String: Any] {
     return answer
 }
 
+nonisolated(unsafe) var watched: [(element: AXUIElement, described: [String: Any])] = []
+nonisolated(unsafe) var destroyed: [[String: Any]] = []
+
 let arguments = CommandLine.arguments
 if arguments.count == 2, arguments[1] == "focused" {
     print(String(decoding: try JSONSerialization.data(withJSONObject: focusedNow(), options: [.sortedKeys]), as: UTF8.self))
@@ -167,8 +176,40 @@ if arguments.count == 3, arguments[1] == "windows", let pid = pid_t(arguments[2]
     print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
     exit(0)
 }
+if arguments.count == 4, arguments[1] == "observe", let pid = pid_t(arguments[2]), let seconds = Double(arguments[3]) {
+    let application = AXUIElementCreateApplication(pid)
+    AXUIElementSetMessagingTimeout(application, 2)
+    let windows = copy(application, kAXWindowsAttribute).1 as? [AXUIElement] ?? []
+    // A destroyed element answers nothing, so what it was is read beforehand.
+    watched = windows.map { ($0, describe($0)) }
+    var observer: AXObserver?
+    let created = AXObserverCreate(pid, { _, element, _, _ in
+        let known = watched.first { CFEqual($0.element, element) }?.described
+        destroyed.append(known ?? ["unknown": true])
+    }, &observer)
+    var registrations: [Int32] = []
+    if let observer {
+        CFRunLoopAddSource(CFRunLoopGetMain(), AXObserverGetRunLoopSource(observer), .commonModes)
+        registrations = windows.map {
+            AXObserverAddNotification(observer, $0, kAXUIElementDestroyedNotification as CFString, nil).rawValue
+        }
+    }
+    // Ends at the first destruction it is told of, or after `seconds`.
+    let began = Date()
+    while destroyed.isEmpty, Date().timeIntervalSince(began) < seconds {
+        CFRunLoopRunInMode(.defaultMode, 0.25, false)
+    }
+    let stamp = ISO8601DateFormatter()
+    let answer: [String: Any] = [
+        "began": stamp.string(from: began), "ended": stamp.string(from: Date()),
+        "pid": Int(pid), "trusted": AXIsProcessTrusted(), "observerAXError": created.rawValue,
+        "registrationAXErrors": registrations, "watched": watched.map(\.described), "destroyed": destroyed,
+    ]
+    print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
+    exit(0)
+}
 guard arguments.count == 3, arguments[1] == "serve" else {
-    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid>\n".utf8))
+    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid> | observe <pid> <seconds>\n".utf8))
     exit(2)
 }
 let directory = URL(fileURLWithPath: arguments[2], isDirectory: true)

@@ -6,13 +6,13 @@ import ApplicationServices
 /// table keeps the element. `CFEqual` says whether a newly listed element is one
 /// already held, so a window keeps its token, and so its reference, for as long
 /// as this provider runs. docs/verification/desktop-window-identity.md holds the
-/// evidence for that, and what it cannot do. Private observation state: nothing
-/// a caller queried is kept. Used from the provider's one queue.
+/// evidence for that, and what it cannot do. Private observation state: the
+/// bookkeeping is `HeldWindows`, and nothing a caller queried is kept. Used from
+/// the provider's one queue.
 final class WindowTable {
     /// Names this provider run in every window reference it produces.
     let session: String
-    private var next: UInt64 = 1
-    private var held: [ProcessIncarnation: [(token: UInt64, element: AXUIElement)]] = [:]
+    private var held = HeldWindows<AXUIElement>(same: { CFEqual($0, $1) })
 
     init() {
         var generator = SystemRandomNumberGenerator()
@@ -20,46 +20,37 @@ final class WindowTable {
         session = String(repeating: "0", count: 16 - text.count) + text
     }
 
-    /// The tokens of `elements`, in order. An element held for `process` but not
-    /// listed now is kept unless it has definitely ended: a window on another
-    /// Space is not listed, and an application too busy to answer has closed
-    /// nothing.
-    func tokens(for elements: [AXUIElement], of process: ProcessIncarnation) -> [UInt64] {
-        var entries = held[process] ?? []
-        let tokens = elements.map { element in
-            if let known = entries.first(where: { CFEqual($0.element, element) }) {
-                return known.token
-            }
-            defer { next += 1 }
-            entries.append((next, element))
-            return next
-        }
-        let listed = Set(tokens)
-        held[process] = entries.filter { listed.contains($0.token) || !hasEnded($0.element) }
-        return tokens
+    /// The rows of `process` now that it enumerated `listed`, and after them the
+    /// windows held from before that it omitted, as a window on another Space is.
+    /// `ask` is put to each of those: only an element that answers that it no
+    /// longer exists is dropped, since an application too busy to answer has
+    /// closed nothing.
+    func rows(
+        listing listed: [(element: AXUIElement, title: String)], of process: ProcessIncarnation,
+        ask: (AXUIElement) -> Unlisted
+    ) -> [WindowRow] {
+        held.rows(listing: listed, of: process, ask: ask)
     }
 
     /// The held element `token` names, if this run holds one for `process`.
     func element(_ token: UInt64, of process: ProcessIncarnation) -> AXUIElement? {
-        held[process]?.first { $0.token == token }?.element
+        held.element(token, of: process)
     }
 
     /// Drops a token whose element has answered that its window ended.
     func retire(_ token: UInt64, of process: ProcessIncarnation) {
-        held[process]?.removeAll { $0.token == token }
+        held.retire(token, of: process)
     }
 
-    /// Forgets every process that is no longer running as the same incarnation.
-    func forget(where isGone: (ProcessIncarnation) -> Bool) {
-        for process in held.keys where isGone(process) { held[process] = nil }
+    /// Drops the element the system reported destroyed.
+    func retire(element: AXUIElement, of process: ProcessIncarnation) {
+        held.retire(element: element, of: process)
     }
 
-    private func hasEnded(_ element: AXUIElement) -> Bool {
-        switch read(element, kAXRoleAttribute, as: String.self) {
-        case .value(let role): role != kAXWindowRole
-        case .gone: true
-        case .absent, .failed: false
-        }
+    /// Forgets every process `isGone` names, and returns them.
+    @discardableResult
+    func forget(where isGone: (ProcessIncarnation) -> Bool) -> [ProcessIncarnation] {
+        held.forget(where: isGone)
     }
 }
 

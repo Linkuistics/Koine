@@ -28,59 +28,6 @@ source scripts/vm-verify-lib.sh
 # shellcheck source=scripts/vm-verify-desktop-lib.sh
 source scripts/vm-verify-desktop-lib.sh
 
-# shellcheck disable=SC2016  # guest-side $HOME
-CONTROLLER_FILE='$HOME/koine-credential-controller'
-OPERATIONS="\$HOME/desktop-operations.graphql"
-
-# choices <application>: DesktopChoices under the reading grant.
-choices() {
-    ANSWER="$(guest_json "python3 \$HOME/vm-verify-desktop-client.py \"${CREDENTIAL_FILE}\" --operations \"${OPERATIONS}\" choices \"$1\"")"
-    echo "${ANSWER}"
-    jq -e '(.response.errors // []) | length == 0' >/dev/null <<<"${ANSWER}" || fail "DesktopChoices reported errors for $1"
-}
-# focus <reference>: FocusDesktopWindow under the controlling grant.
-focus() {
-    ANSWER="$(guest_json "python3 \$HOME/vm-verify-desktop-client.py \"${CONTROLLER_FILE}\" --operations \"${OPERATIONS}\" focus '$1'")"
-    echo "${ANSWER}"
-    jq -e . >/dev/null <<<"${ANSWER}" || fail "the desktop client printed no JSON for focus $1"
-}
-# The receipt is the submitted reference and nothing else.
-expect_receipt() {
-    expect "((.response.errors // []) | length == 0) and (.response.data.desktopFocusWindow == {ref: \"$1\"})" \
-        "focusing $1 did not return its receipt"
-}
-# What has focus, as the system says: left in WITNESS, and summarised in FOCUSED
-# as the focused application's PID and the focused window's window-server id.
-witness() {
-    sleep 1
-    WITNESS="$(guest_json "\$HOME/WindowIdentityProbe focused")"
-    echo "${WITNESS}"
-    jq -e '.trusted == true' >/dev/null <<<"${WITNESS}" || fail "the witness cannot read the focused window"
-    FOCUSED="$(jq -c '[.application.pid, .window.privateWindowId]' <<<"${WITNESS}")"
-}
-# expect_focused <application name> <jq condition on the witness>
-expect_focused() {
-    witness
-    # The window server's front window is a second witness of the application.
-    jq -e ".application.name == \"$1\" and (.frontCGWindow.pid == .application.pid) and ($2)" >/dev/null <<<"${WITNESS}" ||
-        fail "the system does not show $1 focused with: $2"
-}
-# listed <pid> <jq condition on the windows that application lists now>
-listed() {
-    LISTED="$(guest_json "\$HOME/WindowIdentityProbe windows $1")"
-    echo "${LISTED}"
-    jq -e ".trusted == true and .windowsAXError == 0 and ($2)" >/dev/null <<<"${LISTED}" || fail "the application's windows are not as expected: $2"
-}
-# refused <reference> <what>: unavailable, and focus where it was.
-refused() {
-    witness
-    local before="${FOCUSED}"
-    focus "$1"
-    expect_unavailable desktopFocusWindow "$2"
-    witness
-    [ "${FOCUSED}" = "${before}" ] || fail "focus moved from ${before} to ${FOCUSED} although $2 was unavailable"
-}
-
 PROBE="$(Fixtures/WindowIdentityProbe/build.sh .build/probe)"
 
 start_vm

@@ -38,4 +38,4 @@ type DesktopWindow {
 "The submitted target, under the action's desktop:control."
 type DesktopFocusReceipt { ref: Reference! }
 
-enum DesktopObservation { CURRENT }
+enum DesktopObservation { CURRENT REMEMBERED }

@@ -57,15 +57,47 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
 
 /// Every reference is re-resolved against the OS on each use. The one thing kept
 /// between calls is the window table: the platform's window identity is an
-/// element that has to be held to be compared.
+/// element that has to be held to be compared. From `start()` to `stop()` the
+/// table is also what is remembered of windows an application no longer
+/// enumerates, as it does not those on another Space, and the system's word that a
+/// window or an application ended empties it at once.
 final class DesktopProvider: Provider, @unchecked Sendable {
     /// Accessibility calls are synchronous IPC to the target application. They
     /// run here, one at a time, off Swift's cooperative threads.
     private let queue = DispatchQueue(label: "dev.antony.Koine.provider.desktop")
     private let table = WindowTable()
+    private var observation: WindowObservation?
 
-    func start() async throws {}
-    func stop() async {}
+    func start() async throws {
+        let observation = WindowObservation(
+            queue: queue,
+            windowEnded: { [weak self] element, process in self?.table.retire(element: element, of: process) },
+            // The notice can arrive after its PID names a successor: ask the kernel.
+            applicationEnded: { [weak self] pid in
+                guard let self else { return }
+                self.forget { $0.pid == pid && !self.isRunning($0) }
+            }
+        )
+        await onQueue {
+            observation.start()
+            self.observation = observation
+        }
+    }
+
+    /// Nothing here waits on another process, so the lifecycle's wait is not used.
+    func stop() async {
+        await onQueue {
+            self.observation?.stop()
+            self.observation = nil
+            self.forget { _ in true }
+        }
+    }
+
+    private func forget(where isGone: (ProcessIncarnation) -> Bool) {
+        // Not one expression: an optional chain on no observation skips its argument.
+        let gone = table.forget(where: isGone)
+        observation?.forget(gone)
+    }
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {
         let prefix = "parent."
@@ -172,7 +204,10 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .application(let process)? = DesktopReference(uri: uri)
         else { return .failure(ProviderFailure(kind: .failed, message: "No parent application.")) }
         // The parent was resolved a moment ago, by another call: look again.
-        guard isRunning(process) else { return gone }
+        guard isRunning(process) else {
+            forget { $0 == process }
+            return gone
+        }
         guard AXIsProcessTrusted() else { return untrusted }
         let application = AXUIElementCreateApplication(process.pid)
         let listed: [AXUIElement]
@@ -193,19 +228,38 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .failed(let error): return unanswered(error)
             }
         }
-        table.forget { $0 != process && !isRunning($0) }
-        let tokens = table.tokens(for: real.map(\.element), of: process)
+        forget { $0 != process && !isRunning($0) }
+        // A window held from before that is not enumerated now is asked directly:
+        // an element answers from another Space, where `AXWindows` omits it.
+        let rows = table.rows(listing: real, of: process) { element in
+            switch window(element, of: process.pid) {
+            case .value(let title): .window(title: title)
+            case .absent: .notShown
+            case .gone: .ended
+            case .failed: .unanswered
+            }
+        }
+        for window in real { observation?.watch(window.element, of: process) }
         return .success(
             .list(
-                zip(real, tokens).map { window, token in row(process, token: token, title: window.title) }
+                rows.map { row(process, token: $0.token, title: $0.title, remembered: $0.remembered) }
             )
         )
     }
 
     private func window(referencedBy ref: ProviderValue?) -> ResolutionResult {
         switch held(referencedBy: ref) {
-        case .window(let process, let token, _, let title): .success(row(process, token: token, title: title))
-        case .not(let result): result
+        case .window(let process, let token, let element, let title):
+            // Whether the application enumerates it now, as a listing would say.
+            switch read(AXUIElementCreateApplication(process.pid), kAXWindowsAttribute, as: [AXUIElement].self) {
+            case .value(let listed):
+                let remembered = !listed.contains { CFEqual($0, element) }
+                return .success(row(process, token: token, title: title, remembered: remembered))
+            case .absent: return .success(row(process, token: token, title: title, remembered: true))
+            case .gone: return gone
+            case .failed(let error): return unanswered(error)
+            }
+        case .not(let result): return result
         }
     }
 
@@ -223,7 +277,10 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .window(let process, let session, let token)? = DesktopReference(uri: uri)
         else { return .not(notAWindow) }
         // Table membership proves nothing about the process: ask the kernel.
-        guard isRunning(process) else { return .not(closed) }
+        guard isRunning(process) else {
+            forget { $0 == process }
+            return .not(closed)
+        }
         guard session == table.session, let element = table.element(token, of: process) else {
             return .not(closed)
         }
@@ -243,13 +300,16 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
     }
 
-    /// Every route to a window ends here, so they report the same fields. The
-    /// element answered just now, which is a current observation.
-    private func row(_ process: ProcessIncarnation, token: UInt64, title: String) -> ProviderValue {
+    /// Every route to a window ends here, so they report the same fields. A
+    /// remembered window is one its application does not enumerate now; its title
+    /// is the last one read, which is no proof that it still exists.
+    private func row(
+        _ process: ProcessIncarnation, token: UInt64, title: String, remembered: Bool
+    ) -> ProviderValue {
         .object([
             "ref": .reference(DesktopReference.window(process, session: table.session, token: token).uri),
             "title": .string(title),
-            "observation": .string("CURRENT"),
+            "observation": .string(remembered ? "REMEMBERED" : "CURRENT"),
         ])
     }
 

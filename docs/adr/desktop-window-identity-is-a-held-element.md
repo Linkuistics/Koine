@@ -9,7 +9,10 @@ process incarnation, the provider run that holds the element, and the element's
 number in that run. A listed element is recognised as one already held with
 `CFEqual`, so a window keeps its reference for the life of the provider. Only an
 element that its own content names as its window is ever held. Title, bounds and
-order are never part of the identity and are never matched.
+order are never part of the identity and are never matched. A held element that
+its application does not enumerate now, as on another Space, is what the provider
+lists as `REMEMBERED`, under the same reference; there is no second record of
+windows.
 
 ## Trade-off
 

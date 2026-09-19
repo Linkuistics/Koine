@@ -162,10 +162,11 @@ title, bounds or order is part of the identity, so none of them is ever matched.
 - **A window that is one of several tabs inside one window** (Finder, Safari)
   has no reference of its own: the reference names the window, whose title
   follows its selected tab.
-- **Windows on another Space are not listed yet.** `AXWindows` reports the
-  current Space alone. Their held elements stay valid, which is what
-  `remembered-windows-across-spaces` builds `REMEMBERED` rows from; until then a
-  listing is of the current Space.
+- **Windows on another Space are listed only once seen.** `AXWindows` reports the
+  current Space alone. Held elements stay valid there, and
+  `remembered-windows-across-spaces` lists them as `REMEMBERED`
+  ([evidence](desktop-remembered-windows-vm.md)); a window on a Space no listing
+  was ever made from is not known.
 - **A busy application closes nothing.** A held element is dropped only when it
   answers that it no longer exists or is no longer a window, never on a timeout.
   A listing that an application stops answering part-way is reported `failed`,

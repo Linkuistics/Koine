@@ -33,9 +33,9 @@ a revoked credential gets 401 on its next request, keep-alive or not. The
 window also lists and revokes grants and enables login launch, and the
 installed workflow is verified in a clean VM. Native providers load through one
 loader, and the desktop path has begun: the bundled desktop provider resolves a
-running application from its process identity, lists its current windows and
-looks an application or window reference up again ("Desktop provider" below).
-Focusing a window and windows on other Spaces are later increments. The agreed design:
+running application from its process identity, lists its windows, those it has
+seen on other Spaces included, looks an application or window reference up again
+and focuses exactly the window chosen ("Desktop provider" below). The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -69,6 +69,7 @@ task app:verify  # codesign --verify --strict, hardened runtime, designated requ
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
+task app:vm-verify-desktop-remembered  # a window left on another Space is REMEMBERED, revalidated on selection, and dropped when it or its application ends, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
 ```
 
@@ -325,7 +326,31 @@ anything else an application puts in its window list (Finder lists its desktop).
 Koine needs Accessibility consent for this; a read never asks for it, and without
 it `windows` is a `permission` / `os-permission` error. `windows` is non-null, so
 that error discards the enclosing `desktopApplication`; a query that does not
-select `windows` still resolves the application. `observation` is always `CURRENT` for now.
+select `windows` still resolves the application.
+
+**Remembered windows.** An application enumerates the windows of the current
+Space alone. The rows it enumerates are `CURRENT`. After them come the windows
+Koine saw in an earlier listing that the enumeration omits now, as `REMEMBERED`:
+each window once, under the reference it had while current, because a remembered
+window is the same held element. Its element is asked again as it is listed, which
+works from another Space, so its title is normally fresh; when the application
+does not answer, the title is the last one read. `desktopWindow` reports the same
+observation a listing would. What is remembered is incomplete by nature: Koine
+holds only what a client's listing has seen, so a window on a Space never listed
+from is not known, and a window whose application stops answering stays listed
+until its end can be seen. Nothing is ever selected from memory: `desktopWindow`
+and `desktopFocusWindow` re-resolve a remembered window like any other, and
+focusing one switches to its Space.
+
+From `start()` to `stop()` the provider also observes endings, so that a held
+element is dropped when the system says its window ended and not only when it is
+next asked (`Sources/WindowObservation.swift`): `kAXUIElementDestroyedNotification`
+for every window it has listed, through one `AXObserver` per application on the
+main run loop, and `NSWorkspace.didTerminateApplicationNotification`, which needs
+no consent. Both only ever remove. This is private provider state, reachable
+through the provider's resolution alone; the engine still caches nothing. Closing
+the management window changes none of it, and `stop()` removes the observers
+without waiting on any other process.
 
 **Accessibility consent.** `DesktopApplication.ref`, `name` and
 `bundleIdentifier` need none, by either application lookup. `windows` and
@@ -378,8 +403,17 @@ may change focus afterwards, and a lost response does not mean the action failed
 The wait ends on cancellation and runs off the provider's queue, so reads are not
 held behind it.
 
+`task app:vm-verify-desktop-remembered`
+(`scripts/vm-verify-desktop-remembered.sh`), after `task app`, proves the
+remembered windows on the signed bundle with TextEdit, whose full-screen window is
+a Space of its own: seen, left there, selected, returned, closed, its application
+terminated and restarted, and a window opened and moved after the management
+window closed. `Fixtures/WindowIdentityProbe observe` is the native witness that
+the destruction notification arrives. Evidence:
+[docs/verification/desktop-remembered-windows-vm.md](docs/verification/desktop-remembered-windows-vm.md).
+
 `task app:vm-verify-desktop-focus` (`scripts/vm-verify-desktop-focus.sh`), after
-`task app`, proves it on the signed bundle with Finder, TextEdit and Stickies. A
+`task app`, proves focus on the signed bundle with Finder, TextEdit and Stickies. A
 reading grant lists the choices and a separate grant with `desktop:control` alone
 focuses, using `DesktopChoices` and `FocusDesktopWindow` exactly as
 `docs/design/desktop-operations.graphql` has them. What has focus is read from

@@ -167,5 +167,18 @@ the step cannot fail. `Harness.makeServer` constructs on a serial queue: paralle
 signature checks starve the global dispatch pool and hang `swift test`. Evidence:
 `docs/verification/desktop-focus-vm.md`.
 
+`remembered-windows-across-spaces-k31` is complete. What the last leaf builds on:
+`REMEMBERED` is a view over the window table (`Logic/HeldWindows.swift`, host
+tested), not a second cache, and `Sources/WindowObservation.swift` is the
+provider's observation from `start()` to `stop()`, delivered on the main run loop
+and handed to the provider's queue; it only ever removes. Koine holds only what a
+client's listing saw. For VM work: choosing, focusing and the native witness are
+in `scripts/vm-verify-desktop-lib.sh`; `WindowIdentityProbe observe` witnesses
+destruction notices; a guest background job must be fully detached or its exec
+waits for it; ⌃⌘F toggles, so know the Space first, and `open -F` keeps a killed
+application from restoring a full-screen one; Koine's window cannot be closed by
+the agent from another Space. Evidence:
+`docs/verification/desktop-remembered-windows-vm.md`.
+
 Until `grant-enrollment-k10` lands, clients obtain grants through the manual
 workflow. That is sufficient for ModalAnyware to begin work against this path.

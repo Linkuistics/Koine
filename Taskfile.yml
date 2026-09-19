@@ -75,6 +75,11 @@ tasks:
     cmds:
       - scripts/vm-verify-desktop-focus.sh
 
+  app:vm-verify-desktop-remembered:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider lists a window left on another Space as REMEMBERED under the reference it had while CURRENT, revalidates and focuses it on selection, drops a closed window and a terminated application, as an independent native witness sees the destruction reported, and keeps observing with the management window closed
+    cmds:
+      - scripts/vm-verify-desktop-remembered.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:
