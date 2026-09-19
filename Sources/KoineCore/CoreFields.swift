@@ -52,7 +52,9 @@ struct CoreFields: Sendable {
                 authority: .capability(CoreCapability.manage)
             ) { _ in
                 [
-                    "requests": try readStore { try store.requests().map(object) },
+                    "requests": try readStore {
+                        try store.requests().compactMap(authority.standing).map(object)
+                    },
                     "grants": try readStore { try store.grants() }.map(object),
                     "providers": await providerStatuses().map(object),
                     "osPermissions": osPermissions().map(object),
@@ -147,42 +149,12 @@ struct CoreFields: Sendable {
         guard unknown.isEmpty else {
             throw DomainError.failed("Unknown capabilities: \(unknown.joined(separator: ", ")).")
         }
-        let request = GrantRequestRecord(
-            id: UUID().uuidString.lowercased(), clientLabel: input["clientLabel"].string ?? "",
-            requestedCapabilities: requested, credentialDigest: digest,
-            comparisonCode: Self.comparisonCode(), state: .pending, grantId: nil
+        // Through the authority boundary, which holds the pending cap.
+        let request = try authority.enrol(
+            clientLabel: input["clientLabel"].string ?? "", requestedCapabilities: requested,
+            credentialDigest: digest, comparisonCode: Self.comparisonCode()
         )
-        do { try store.insertRequest(request) } catch GrantStoreError.duplicateDigest {
-            return try receipt(repeating: request)
-        } catch {
-            throw DomainError.failed("The request could not be stored.")
-        }
         return ["requestId": request.id, "comparisonCode": request.comparisonCode]
-    }
-
-    /// The digest already names something, and what it names never changes. The
-    /// request it was first submitted with answers an identical retry with its
-    /// own receipt, whatever has been decided since, so a lost response cannot
-    /// split the identity. Anything else needs a fresh secret.
-    private func receipt(repeating retry: GrantRequestRecord) throws -> Object {
-        let original = try readStore { try store.requests() }
-            .first { Credential.constantTimeEqual($0.credentialDigest, retry.credentialDigest) }
-        guard let original else {
-            throw DomainError(
-                kind: .failed, message: "This credential already belongs to a grant.",
-                reason: .credentialInUse
-            )
-        }
-        guard original.clientLabel == retry.clientLabel,
-            Set(original.requestedCapabilities) == Set(retry.requestedCapabilities)
-        else {
-            throw DomainError(
-                kind: .failed,
-                message: "This credential was submitted with a different label or capabilities.",
-                reason: .enrollmentConflict
-            )
-        }
-        return ["requestId": original.id, "comparisonCode": original.comparisonCode]
     }
 
     /// Random, so it discloses nothing of the digest; short and free of
@@ -195,15 +167,21 @@ struct CoreFields: Sendable {
     }
 
     /// The caller's own request: the one its secret was submitted with, or the
-    /// one its grant came from. Null for a grant no request produced.
+    /// one its grant came from. Null for a grant no request produced. A request
+    /// past retention is `unavailable` to both: it existed, and null would deny that.
     private func ownRequest(of principal: Principal) throws -> Object? {
-        try readStore {
+        let stored: GrantRequestRecord? = try readStore {
             switch principal {
-            case .requester(let id): return try store.request(id: id).map(object)
-            case .grant(let id): return try store.requests().first { $0.grantId == id }.map(object)
+            case .requester(let id): return try store.request(id: id)
+            case .grant(let id): return try store.requests().first { $0.grantId == id }
             case .localConsole, .anonymous: return nil
             }
         }
+        guard let stored else { return nil }
+        guard let request = authority.standing(stored) else {
+            throw DomainError.unavailable("This request's status is no longer kept.")
+        }
+        return try readStore { try object(request) }
     }
 
     /// Revocation goes through the authority boundary, never straight to the

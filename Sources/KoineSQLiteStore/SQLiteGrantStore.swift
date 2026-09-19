@@ -49,6 +49,20 @@ public final class SQLiteGrantStore: GrantStore {
                 ) STRICT
                 """)
         }
+        migrator.registerMigration("grant-requests-2") { db in
+            // Wall-clock instants, as seconds since 1970, so that expiry and
+            // retention hold across a restart. Rows from before this migration
+            // count from it.
+            let migrated = Date().timeIntervalSince1970
+            try db.execute(
+                sql: "ALTER TABLE grant_requests ADD COLUMN submitted_at REAL NOT NULL DEFAULT 0")
+            try db.execute(sql: "ALTER TABLE grant_requests ADD COLUMN decided_at REAL")
+            try db.execute(sql: "UPDATE grant_requests SET submitted_at = ?", arguments: [migrated])
+            try db.execute(
+                sql: "UPDATE grant_requests SET decided_at = ? WHERE state != ?",
+                arguments: [migrated, GrantRequestState.pending.rawValue]
+            )
+        }
         try migrator.migrate(queue)
     }
 
@@ -99,11 +113,12 @@ public final class SQLiteGrantStore: GrantStore {
             try queue.write { db in
                 try Self.requireUnused(request.credentialDigest, in: "grants", db)
                 try db.execute(
-                    sql: "INSERT INTO grant_requests VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    sql: "INSERT INTO grant_requests VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     arguments: [
                         request.id, request.clientLabel, try Self.json(request.requestedCapabilities),
                         request.credentialDigest, request.comparisonCode, request.state.rawValue,
-                        request.grantId,
+                        request.grantId, request.submittedAt.timeIntervalSince1970,
+                        request.decidedAt?.timeIntervalSince1970,
                     ]
                 )
             }
@@ -124,15 +139,15 @@ public final class SQLiteGrantStore: GrantStore {
         }
     }
 
-    public func approve(requestId: String, as grant: GrantRecord) throws -> Bool {
+    public func approve(requestId: String, as grant: GrantRecord, at instant: Date) throws -> Bool {
         // One transaction: a throw, such as the grants table refusing a digest
         // it already holds, rolls the request's state back with it.
         try uniquely {
             try queue.write { db in
                 try db.execute(
-                    sql: "UPDATE grant_requests SET state = ? WHERE id = ? AND state = ?",
+                    sql: "UPDATE grant_requests SET state = ?, decided_at = ? WHERE id = ? AND state = ?",
                     arguments: [
-                        GrantRequestState.approved.rawValue, requestId,
+                        GrantRequestState.approved.rawValue, instant.timeIntervalSince1970, requestId,
                         GrantRequestState.pending.rawValue,
                     ]
                 )
@@ -147,12 +162,12 @@ public final class SQLiteGrantStore: GrantStore {
         }
     }
 
-    public func deny(requestId: String) throws -> Bool {
+    public func deny(requestId: String, at instant: Date) throws -> Bool {
         try queue.write { db in
             try db.execute(
-                sql: "UPDATE grant_requests SET state = ? WHERE id = ? AND state = ?",
+                sql: "UPDATE grant_requests SET state = ?, decided_at = ? WHERE id = ? AND state = ?",
                 arguments: [
-                    GrantRequestState.denied.rawValue, requestId,
+                    GrantRequestState.denied.rawValue, instant.timeIntervalSince1970, requestId,
                     GrantRequestState.pending.rawValue,
                 ]
             )
@@ -199,7 +214,9 @@ public final class SQLiteGrantStore: GrantStore {
             credentialDigest: row["credential_digest"],
             comparisonCode: row["comparison_code"],
             state: state,
-            grantId: row["grant_id"]
+            grantId: row["grant_id"],
+            submittedAt: Date(timeIntervalSince1970: row["submitted_at"]),
+            decidedAt: (row["decided_at"] as Double?).map(Date.init(timeIntervalSince1970:))
         )
     }
 

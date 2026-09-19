@@ -100,7 +100,7 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
         lock.withLock { requestRecords.first { $0.id == id } }
     }
 
-    func approve(requestId: String, as grant: GrantRecord) throws -> Bool {
+    func approve(requestId: String, as grant: GrantRecord, at instant: Date) throws -> Bool {
         try lock.withLock {
             try enter(.approve)
             guard let index = requestRecords.firstIndex(where: { $0.id == requestId }),
@@ -111,14 +111,14 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
                 id: old.id, clientLabel: old.clientLabel,
                 requestedCapabilities: old.requestedCapabilities,
                 credentialDigest: old.credentialDigest, comparisonCode: old.comparisonCode,
-                state: .approved, grantId: grant.id
+                state: .approved, grantId: grant.id, submittedAt: old.submittedAt, decidedAt: instant
             )
             records.append(grant)
             return true
         }
     }
 
-    func deny(requestId: String) throws -> Bool {
+    func deny(requestId: String, at instant: Date) throws -> Bool {
         try lock.withLock {
             try enter(.deny)
             guard let index = requestRecords.firstIndex(where: { $0.id == requestId }),
@@ -129,7 +129,7 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
                 id: old.id, clientLabel: old.clientLabel,
                 requestedCapabilities: old.requestedCapabilities,
                 credentialDigest: old.credentialDigest, comparisonCode: old.comparisonCode,
-                state: .denied, grantId: nil
+                state: .denied, grantId: nil, submittedAt: old.submittedAt, decidedAt: instant
             )
             return true
         }

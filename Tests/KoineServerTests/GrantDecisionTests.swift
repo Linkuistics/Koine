@@ -334,7 +334,7 @@ import Testing
         let digest = Credential.generate().digest
         let request = GrantRequestRecord(
             id: "r", clientLabel: "x", requestedCapabilities: [], credentialDigest: digest,
-            comparisonCode: "c", state: .pending, grantId: nil
+            comparisonCode: "c", state: .pending, grantId: nil, submittedAt: Date()
         )
         try store.insertRequest(request)
         let twin = GrantRecord(
@@ -344,12 +344,12 @@ import Testing
         #expect(try store.grants().isEmpty)
 
         // Approval binds the request's own digest, and only approval may.
-        #expect(try store.approve(requestId: "r", as: twin))
+        #expect(try store.approve(requestId: "r", as: twin, at: Date()))
         #expect(throws: GrantStoreError.duplicateDigest) {
             try store.insertRequest(
                 GrantRequestRecord(
                     id: "r2", clientLabel: "x", requestedCapabilities: [], credentialDigest: digest,
-                    comparisonCode: "c", state: .pending, grantId: nil
+                    comparisonCode: "c", state: .pending, grantId: nil, submittedAt: Date()
                 )
             )
         }
@@ -373,7 +373,7 @@ import Testing
         var db: OpaquePointer?
         #expect(sqlite3_open(path, &db) == SQLITE_OK)
         #expect(sqlite3_exec(
-            db, "INSERT INTO grant_requests VALUES ('r', 'x', '[]', '\(digest)', 'c', 'PENDING', NULL)",
+            db, "INSERT INTO grant_requests VALUES ('r', 'x', '[]', '\(digest)', 'c', 'PENDING', NULL, 0, NULL)",
             nil, nil, nil
         ) == SQLITE_OK)
         sqlite3_close(db)
@@ -381,7 +381,8 @@ import Testing
         #expect(throws: GrantStoreError.duplicateDigest) {
             try store.approve(
                 requestId: "r",
-                as: GrantRecord(id: "twin", clientLabel: "x", capabilities: [], credentialDigest: digest, state: .active)
+                as: GrantRecord(id: "twin", clientLabel: "x", capabilities: [], credentialDigest: digest, state: .active),
+                at: Date()
             )
         }
         #expect(try store.request(id: "r")?.state == .pending)

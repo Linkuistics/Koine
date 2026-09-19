@@ -32,6 +32,8 @@ public struct EngineResponse: Sendable {
         case unauthenticated
         /// Mutation preflight denied the whole operation; no action began.
         case forbidden
+        /// Anonymous enrollment over its budget; nothing was validated or run.
+        case enrollmentRateLimited(retryAfterSeconds: Int)
     }
 
     public let outcome: Outcome
@@ -63,15 +65,19 @@ public final class Engine: Sendable {
     private let policy: RequestPolicy
     private let limits: RequestLimits
     private let reached: OrderingHook
+    private let now: TimeSource
+    private let enrollmentBudget: EnrollmentBudget
 
     public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
-        osPermissions: @escaping OSPermissionSource = { [] }
+        osPermissions: @escaping OSPermissionSource = { [] },
+        now: @escaping TimeSource = { Date() }
     ) throws {
         try self.init(
             store: store, instanceId: instanceId, policy: policy, providers: providers,
-            unloadedProviders: unloadedProviders, osPermissions: osPermissions, reached: { _ in }
+            unloadedProviders: unloadedProviders, osPermissions: osPermissions, now: now,
+            reached: { _ in }
         )
     }
 
@@ -80,13 +86,16 @@ public final class Engine: Sendable {
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
-        osPermissions: @escaping OSPermissionSource = { [] }, reached: @escaping OrderingHook
+        osPermissions: @escaping OSPermissionSource = { [] },
+        now: @escaping TimeSource = { Date() }, reached: @escaping OrderingHook
     ) throws {
         self.instanceId = instanceId
         self.reached = reached
         self.policy = policy
+        self.now = now
         limits = RequestLimits(policy: policy)
-        authority = Authority(store: store)
+        authority = Authority(store: store, policy: policy, now: now)
+        enrollmentBudget = EnrollmentBudget(policy: policy)
 
         // The Reference scalar's coercion is code, so the core's SDL extends a
         // schema that already holds it.
@@ -173,6 +182,15 @@ public final class Engine: Sendable {
             // else is wrong with it, and nothing of it is validated or run.
             if isAnonymous, actions.map(\.name.value) != ["koineRequestGrant"] {
                 return unauthenticated
+            }
+            // Enrollment spends its own budget, here and nowhere else: what is
+            // refused costs a parse and no more, and no other principal, nor
+            // an anonymous request that is not enrollment, ever reaches this.
+            if isAnonymous, let wait = enrollmentBudget.spend(at: now()) {
+                return respond(
+                    .enrollmentRateLimited(retryAfterSeconds: wait),
+                    errors: [GraphQLError(message: "Too many enrollment requests. Try again later.")]
+                )
             }
             // The library resolves `__schema` and `__type` itself, outside
             // every authority check, so a status-only principal is refused

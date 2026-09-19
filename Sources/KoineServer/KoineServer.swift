@@ -49,13 +49,20 @@ public final class KoineServer: Sendable {
     ///
     /// `osPermissions` is the host's read of the OS permissions it owns, served
     /// as `koineManagement.osPermissions`. The server has no platform of its own.
+    ///
+    /// `now` is where the server reads the time for request expiry, retention
+    /// and the enrollment rate limit. A host has no reason to pass it: it is a
+    /// construction parameter so that tests can move time, and nothing a client
+    /// or the environment supplies reaches it.
     public convenience init(
         dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [ProviderRoot] = [],
-        providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] }
+        providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] },
+        now: @escaping TimeSource = { Date() }
     ) throws {
         try self.init(
             dataDirectory: dataDirectory, policy: policy, providerRoots: providerRoots,
-            providerStaging: providerStaging, osPermissions: osPermissions, additionalProviders: []
+            providerStaging: providerStaging, osPermissions: osPermissions, now: now,
+            additionalProviders: []
         )
     }
 
@@ -71,7 +78,7 @@ public final class KoineServer: Sendable {
     init(
         dataDirectory: URL, policy: RequestPolicy, providerRoots: [ProviderRoot],
         providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] },
-        additionalProviders: [ActiveProvider]
+        now: @escaping TimeSource = { Date() }, additionalProviders: [ActiveProvider]
     ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
@@ -126,7 +133,7 @@ public final class KoineServer: Sendable {
         let engine = try Engine(
             store: store, instanceId: instanceId, policy: policy,
             providers: loaded + additionalProviders, unloadedProviders: unloaded,
-            osPermissions: osPermissions
+            osPermissions: osPermissions, now: now
         )
         self.engine = engine
         console = LocalConsole(engine: engine)
@@ -210,8 +217,13 @@ public final class KoineServer: Sendable {
 
         let response = await engine.execute(graphQLRequest, as: principal)
         let status: Int
+        var headers: [String: String] = [:]
         switch response.outcome {
         case .executed: status = 200
+        // https://www.rfc-editor.org/rfc/rfc6585#section-4
+        case .enrollmentRateLimited(let retryAfterSeconds):
+            status = 429
+            headers["Retry-After"] = String(retryAfterSeconds)
         case .invalidRequest: status = 400
         case .unauthenticated: return unauthorized
         case .forbidden: status = 403
@@ -221,7 +233,9 @@ public final class KoineServer: Sendable {
             .map { mediaType(String($0)) }
         return HTTPResponse(
             status: status,
-            headers: ["Content-Type": accepted.contains(modern) ? modern : "application/json"],
+            headers: headers.merging(
+                ["Content-Type": accepted.contains(modern) ? modern : "application/json"]
+            ) { _, new in new },
             body: [UInt8](response.body)
         )
     }

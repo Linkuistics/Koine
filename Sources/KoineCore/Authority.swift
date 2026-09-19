@@ -37,6 +37,7 @@ struct DomainError: Error {
         case invalidSubset = "invalid-subset"
         case enrollmentConflict = "enrollment-conflict"
         case credentialInUse = "credential-in-use"
+        case pendingRequestLimit = "pending-request-limit"
     }
 
     /// Every terminal state alike: the manager learns which, and nothing moves.
@@ -97,9 +98,81 @@ struct InputCoercionError: Error {
 /// revocation admits an action that may finish; one that follows it refuses.
 final class Authority: Sendable {
     private let store: any GrantStore
+    private let policy: RequestPolicy
+    private let now: TimeSource
     private let boundary = NSLock()
 
-    init(store: any GrantStore) { self.store = store }
+    init(store: any GrantStore, policy: RequestPolicy, now: @escaping TimeSource) {
+        self.store = store
+        self.policy = policy
+        self.now = now
+    }
+
+    /// The stored request as it stands now: expired when its lifetime has
+    /// passed, nil when its status is past retention. Every read of a request
+    /// that is served or decided on goes through here.
+    func standing(_ request: GrantRequestRecord) -> GrantRequestRecord? {
+        request.standing(at: now(), under: policy)
+    }
+
+    /// Stores a new pending request, or answers an identical retry with the
+    /// request the digest was first submitted with, whatever has been decided
+    /// since, so a lost response cannot split the identity. The count and the
+    /// insert are inside the boundary, so the cap cannot be raced past; a retry
+    /// stores nothing and is answered at the cap too.
+    func enrol(
+        clientLabel: String, requestedCapabilities: [String], credentialDigest: String,
+        comparisonCode: String
+    ) throws -> GrantRequestRecord {
+        try boundary.withLock {
+            let credentialInUse = DomainError(
+                kind: .failed, message: "This credential has already been used.",
+                reason: .credentialInUse
+            )
+            let stored: [GrantRequestRecord]
+            do { stored = try store.requests() } catch {
+                throw DomainError.failed("The grant store is unavailable.")
+            }
+            let original = stored.first {
+                Credential.constantTimeEqual($0.credentialDigest, credentialDigest)
+            }
+            if let original {
+                // Past retention there is no receipt left to repeat, and the
+                // digest is still taken.
+                guard let original = standing(original) else { throw credentialInUse }
+                guard original.clientLabel == clientLabel,
+                    Set(original.requestedCapabilities) == Set(requestedCapabilities)
+                else {
+                    throw DomainError(
+                        kind: .failed,
+                        message: "This credential was submitted with a different label or capabilities.",
+                        reason: .enrollmentConflict
+                    )
+                }
+                return original
+            }
+            let pending = stored.filter { standing($0)?.state == .pending }.count
+            guard pending < policy.maximumPendingRequests else {
+                throw DomainError(
+                    kind: .failed,
+                    message: "Too many grant requests are waiting for a decision.",
+                    reason: .pendingRequestLimit
+                )
+            }
+            let request = GrantRequestRecord(
+                id: UUID().uuidString.lowercased(), clientLabel: clientLabel,
+                requestedCapabilities: requestedCapabilities, credentialDigest: credentialDigest,
+                comparisonCode: comparisonCode, state: .pending, grantId: nil, submittedAt: now()
+            )
+            do { try store.insertRequest(request) } catch GrantStoreError.duplicateDigest {
+                // No request has it, so a grant no request produced does.
+                throw credentialInUse
+            } catch {
+                throw DomainError.failed("The request could not be stored.")
+            }
+            return request
+        }
+    }
 
     /// Commits the revocation durably, inside the boundary, before returning.
     /// Nil when no grant has this ID. A store failure throws and revokes nothing.
@@ -127,7 +200,7 @@ final class Authority: Sendable {
                 credentialDigest: request.credentialDigest, state: .active
             )
             do {
-                guard try store.approve(requestId: requestId, as: grant) else {
+                guard try store.approve(requestId: requestId, as: grant, at: now()) else {
                     // The store saw another state than the one read above.
                     _ = try pendingRequest(id: requestId)
                     throw DomainError.failed("The approval could not be stored.")
@@ -153,17 +226,13 @@ final class Authority: Sendable {
         try boundary.withLock {
             let request = try pendingRequest(id: requestId)
             do {
-                guard try store.deny(requestId: requestId) else {
+                let instant = now()
+                guard try store.deny(requestId: requestId, at: instant) else {
                     // The store saw another state than the one read above.
                     _ = try pendingRequest(id: requestId)
                     throw DomainError.failed("The denial could not be stored.")
                 }
-                return GrantRequestRecord(
-                    id: request.id, clientLabel: request.clientLabel,
-                    requestedCapabilities: request.requestedCapabilities,
-                    credentialDigest: request.credentialDigest,
-                    comparisonCode: request.comparisonCode, state: .denied, grantId: nil
-                )
+                return request.with(state: .denied, decidedAt: instant)
             } catch let refusal as DomainError {
                 throw refusal
             } catch {
@@ -172,14 +241,17 @@ final class Authority: Sendable {
         }
     }
 
-    /// The request a decision is about. Called inside the boundary, where no
-    /// other decision can intervene before the commit.
+    /// The request a decision is about, as it stands now: an expired request is
+    /// already decided, and one past retention names nothing. Called inside the
+    /// boundary, where no other decision can intervene before the commit.
     private func pendingRequest(id: String) throws -> GrantRequestRecord {
         let request: GrantRequestRecord?
         do { request = try store.request(id: id) } catch {
             throw DomainError.failed("The grant store is unavailable.")
         }
-        guard let request else { throw DomainError.unavailable("No request has this ID.") }
+        guard let request = request.flatMap(standing) else {
+            throw DomainError.unavailable("No request has this ID.")
+        }
         guard request.state == .pending else { throw DomainError.alreadyDecided(request.state) }
         return request
     }
@@ -190,6 +262,8 @@ final class Authority: Sendable {
         try boundary.withLock {
             switch principal {
             case .anonymous: return true
+            // The stored state: expiry and retention change what the requester
+            // reads, never whether its secret is status-only.
             case .requester(let id): return try store.request(id: id)?.state.isStatusOnly == true
             case .grant, .localConsole: return try currentCapabilities(of: principal) != nil
             }

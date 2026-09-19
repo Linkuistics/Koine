@@ -130,6 +130,15 @@ which k36's retention has to decide about once the row is gone.
 `GrantDecisionTests` holds the decision cases; `ScriptedStore` fails `approve`
 and `deny` on demand.
 
+**What `request-expiry-retention-and-limits-k36` left.** `EXPIRED` is served
+and is never stored: every request that is served or decided on passes through
+`Authority.standing`, so k37's UI sees it in `requests` like any state, and a
+request past retention simply is not listed. Enrollment goes through
+`Authority.enrol`. The UI's polling is the console's and spends none of the
+enrollment budget; a VM script that enrols more than 10 times in a minute meets
+HTTP 429, and one that leaves 16 requests pending meets `pending-request-limit`.
+`Harness(clock:)` with `TestClock` moves the server's time.
+
 No research, prototype or review leaf is added, and no question for the human
 arose: the protocol is fully specified by the approved design. Notarization,
 Gatekeeper and the supported matrix stay with `release-acceptance-handoff-k11`.

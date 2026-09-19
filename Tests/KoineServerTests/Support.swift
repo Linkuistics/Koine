@@ -13,6 +13,7 @@ final class Harness {
     private let providerRoots: [ProviderRoot]
     private let providers: [ActiveProvider]
     private let osPermissions: OSPermissionSource
+    private let clock: TestClock?
 
     /// One staging directory for the process. Every server here stages the same
     /// fixture to the same path, so dyld maps it once; per-server staging would
@@ -24,12 +25,15 @@ final class Harness {
     /// `bundledRoots` are read before them.
     /// `seed` runs on the data directory before the server first opens it.
     /// `providers` are in-test contributions, composed with the loaded ones.
+    /// `clock` is the server's time source; without one it reads the wall clock.
     init(
         policy: RequestPolicy = .version1, providerRoots: [URL] = [],
         bundledRoots: [ProviderRoot] = [], providers: [ActiveProvider] = [],
-        seed: ((URL) throws -> Void)? = nil, osPermissions: @escaping OSPermissionSource = { [] }
+        seed: ((URL) throws -> Void)? = nil, osPermissions: @escaping OSPermissionSource = { [] },
+        clock: TestClock? = nil
     ) async throws {
         self.osPermissions = osPermissions
+        self.clock = clock
         self.providerRoots = bundledRoots + providerRoots.map(ProviderRoot.installed)
         self.providers = providers
         directory = FileManager.default.temporaryDirectory
@@ -39,7 +43,7 @@ final class Harness {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try seed(directory)
         }
-        server = try await Self.makeServer(directory, policy, self.providerRoots, providers, osPermissions)
+        server = try await Self.makeServer(directory, policy, self.providerRoots, providers, osPermissions, clock)
         try await server.start()
     }
 
@@ -53,9 +57,11 @@ final class Harness {
 
     private static func makeServer(
         _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider],
-        _ osPermissions: @escaping OSPermissionSource
+        _ osPermissions: @escaping OSPermissionSource, _ clock: TestClock?
     ) async throws -> KoineServer {
-        try await withCheckedThrowingContinuation { continuation in
+        let now: TimeSource
+        if let clock { now = clock.source } else { now = { Date() } }
+        return try await withCheckedThrowingContinuation { continuation in
             constructing.async {
                 continuation.resume(
                     with: Result {
@@ -63,7 +69,7 @@ final class Harness {
                             dataDirectory: directory, policy: policy,
                             providerRoots: roots,
                             providerStaging: providerStaging, osPermissions: osPermissions,
-                            additionalProviders: providers
+                            now: now, additionalProviders: providers
                         )
                     }
                 )
@@ -76,7 +82,7 @@ final class Harness {
     func restart(policy: RequestPolicy? = nil) async throws {
         if let policy { self.policy = policy }
         await server.stop()
-        server = try await Self.makeServer(directory, self.policy, providerRoots, providers, osPermissions)
+        server = try await Self.makeServer(directory, self.policy, providerRoots, providers, osPermissions, clock)
         try await server.start()
     }
 
@@ -178,6 +184,20 @@ final class Harness {
             kind name ofType { kind name ofType { kind name ofType { kind name } } } } } } }
         }
         """
+}
+
+/// The time a test gives the server. It moves only when the test moves it.
+final class TestClock: @unchecked Sendable {
+    private let lock = NSLock()
+    private var instant = Date(timeIntervalSince1970: 1_800_000_000)
+
+    var now: Date { lock.withLock { instant } }
+    var source: TimeSource {
+        let read: TimeSource = { self.now }
+        return read
+    }
+
+    func advance(by interval: TimeInterval) { lock.withLock { instant += interval } }
 }
 
 // MARK: Raw HTTP

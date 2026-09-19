@@ -61,7 +61,7 @@ type KoineGrantRequest {
   grant: KoineGrant
 }
 
-enum KoineGrantRequestState { PENDING APPROVED DENIED }
+enum KoineGrantRequestState { PENDING APPROVED DENIED EXPIRED }
 
 input KoineCreateGrantInput {
   clientLabel: String!

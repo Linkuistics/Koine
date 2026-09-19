@@ -27,6 +27,20 @@ public struct RequestPolicy: Sendable, Equatable {
     /// that does not observe cancellation keeps running, and an action that
     /// already began may still complete.
     public var executionDeadline: Duration
+    /// How long a grant request may stay pending before it is `EXPIRED`.
+    public var pendingRequestLifetime: Duration
+    /// How long a terminal request's status is kept. After it, lookup is
+    /// `unavailable`; the digest stays taken for ever.
+    public var requestStatusRetention: Duration
+    /// Most grant requests pending at once. A legitimate client enrols once, so
+    /// a user has a handful to review at most; this also bounds what anonymous
+    /// callers can add to the review list in a day.
+    public var maximumPendingRequests: Int
+    /// Most anonymous enrollments admitted within `enrollmentWindow`, retries
+    /// included. Every local process shares the loopback address, so the budget
+    /// is one for the whole server, and it is spent by nothing else.
+    public var maximumEnrollmentsPerWindow: Int
+    public var enrollmentWindow: Duration
 
     public static let version1 = RequestPolicy(
         version: 1,
@@ -36,6 +50,11 @@ public struct RequestPolicy: Sendable, Equatable {
         maximumFieldSelections: 1_000,
         maximumRootMutationActions: 10,
         maximumResponseBytes: 8 << 20,
-        executionDeadline: .seconds(5)
+        executionDeadline: .seconds(5),
+        pendingRequestLifetime: .seconds(24 * 60 * 60),
+        requestStatusRetention: .seconds(7 * 24 * 60 * 60),
+        maximumPendingRequests: 16,
+        maximumEnrollmentsPerWindow: 10,
+        enrollmentWindow: .seconds(60)
     )
 }

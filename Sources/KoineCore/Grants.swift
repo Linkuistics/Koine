@@ -1,3 +1,10 @@
+import Foundation
+
+/// Where the server reads the time. The embedding host may supply one; nothing
+/// a client sends can. Instants that must survive a restart are stored as the
+/// wall-clock values it returns.
+public typealias TimeSource = @Sendable () -> Date
+
 /// Capability names owned by the core. Each active provider adds its own
 /// `<providerId>:read` and `<providerId>:control`.
 public enum CoreCapability {
@@ -29,12 +36,14 @@ public struct GrantRecord: Sendable, Equatable {
     }
 }
 
-/// Only the states this stage can produce are served; expiry joins them with
-/// the leaf that makes it real. Every state but `pending` is terminal.
+/// Every state but `pending` is terminal. `expired` is never stored: it is what
+/// a stored `pending` request is once its lifetime has passed
+/// (`GrantRequestRecord.standing`).
 public enum GrantRequestState: String, Sendable {
     case pending = "PENDING"
     case approved = "APPROVED"
     case denied = "DENIED"
+    case expired = "EXPIRED"
 
     /// Whether proof of the submitted secret reads this request's status. Once
     /// approved the grant decides instead, so a revoked grant's secret is nothing.
@@ -53,11 +62,14 @@ public struct GrantRequestRecord: Sendable, Equatable {
     public let state: GrantRequestState
     /// The grant approval created; nil until then.
     public let grantId: String?
+    public let submittedAt: Date
+    /// When it was approved or denied; nil while the stored state is `pending`.
+    public let decidedAt: Date?
 
     public init(
         id: String, clientLabel: String, requestedCapabilities: [String],
         credentialDigest: String, comparisonCode: String, state: GrantRequestState,
-        grantId: String?
+        grantId: String?, submittedAt: Date, decidedAt: Date? = nil
     ) {
         self.id = id
         self.clientLabel = clientLabel
@@ -66,6 +78,43 @@ public struct GrantRequestRecord: Sendable, Equatable {
         self.comparisonCode = comparisonCode
         self.state = state
         self.grantId = grantId
+        self.submittedAt = submittedAt
+        self.decidedAt = decidedAt
+    }
+
+    func with(state: GrantRequestState, decidedAt: Date?) -> GrantRequestRecord {
+        GrantRequestRecord(
+            id: id, clientLabel: clientLabel, requestedCapabilities: requestedCapabilities,
+            credentialDigest: credentialDigest, comparisonCode: comparisonCode, state: state,
+            grantId: grantId, submittedAt: submittedAt, decidedAt: decidedAt
+        )
+    }
+
+    /// The request as it stands at `now`: a stored `pending` request past its
+    /// lifetime is `expired`, as of the end of that lifetime. Nil once a
+    /// terminal request's status is past retention. The stored row stays either
+    /// way, so its digest is never free again.
+    func standing(at now: Date, under policy: RequestPolicy) -> GrantRequestRecord? {
+        var state = state
+        var terminalAt = decidedAt
+        let expiry = submittedAt + policy.pendingRequestLifetime.timeInterval
+        if state == .pending, now >= expiry {
+            state = .expired
+            terminalAt = expiry
+        }
+        // A terminal row always carries its instant; one that does not is kept.
+        if state != .pending, let terminalAt,
+            now >= terminalAt + policy.requestStatusRetention.timeInterval
+        {
+            return nil
+        }
+        return with(state: state, decidedAt: decidedAt)
+    }
+}
+
+extension Duration {
+    var timeInterval: TimeInterval {
+        TimeInterval(components.seconds) + TimeInterval(components.attoseconds) * 1e-18
     }
 }
 
@@ -95,10 +144,13 @@ public protocol GrantStore: Sendable {
     /// `grant`, bound to it. False, with nothing written, when the request is
     /// missing or no longer pending. Throws `duplicateDigest`, with nothing
     /// written, when the digest already belongs to a grant.
-    func approve(requestId: String, as grant: GrantRecord) throws -> Bool
+    /// `at` is stored as the decision's instant. The store knows no clock and
+    /// no lifetime: whether a stored `pending` request has expired is the
+    /// caller's to decide before it asks.
+    func approve(requestId: String, as grant: GrantRecord, at instant: Date) throws -> Bool
     /// In one durable commit, marks the pending request denied. False, with
     /// nothing written, when the request is missing or no longer pending.
-    func deny(requestId: String) throws -> Bool
+    func deny(requestId: String, at instant: Date) throws -> Bool
 }
 
 /// Who is executing an operation. The admission cases are distinct: none is a

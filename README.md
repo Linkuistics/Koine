@@ -56,9 +56,8 @@ That local URL requires the diagram server described in the views' README.
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and a
-`koine:manage` client decides. Expiry and limits are not served yet, and the
-review UI is not built; the local console and any manager over GraphQL already
-approve and deny.
+`koine:manage` client decides. The review UI is not built; the local console
+and any manager over GraphQL already approve and deny.
 
 1. The client generates its own 32-byte secret, keeps it, and sends
    `Mutation.koineRequestGrant` with the secret's digest (64 lower-case hex), a
@@ -109,6 +108,37 @@ approve and deny.
    the grant is revoked the secret is HTTP 401 for everything, this query
    included. No response carries a secret or a digest. Requests, decisions and
    the grants they produce survive a restart.
+
+Enrollment is bounded in time and volume. The values are `RequestPolicy`'s,
+beside the transport limits:
+
+| Value | Default | What it bounds |
+|---|---|---|
+| `pendingRequestLifetime` | 24 hours | A request still pending is `EXPIRED`, to the requester, to `requests` and to a decision (`already-decided`). An approved grant never expires. |
+| `requestStatusRetention` | 7 days | From the decision or the expiry. After it the request leaves `requests`, a decision on it is `unavailable`, and `koineGrantRequest` raises `unavailable`, under the secret and under the grant it produced alike. |
+| `maximumPendingRequests` | 16 | A new request beyond it is `failed` with `pending-request-limit` and stores nothing. An identical retry is still answered; a decision or expiry frees a slot. |
+| `maximumEnrollmentsPerWindow` in `enrollmentWindow` | 10 in 60 seconds | Anonymous enrollment operations, retries included. Over it: HTTP 429 with `Retry-After`. |
+
+The spec fixes the two periods. The cap and the rate are Koine's choice for a
+single-user loopback service: a legitimate client enrols once and retries a lost
+response a few times, so a user installing several clients together stays well
+inside both, while a misbehaving local process can put at most 16 entries in
+front of the user and cannot make the store or the per-request credential scan
+grow faster than 10 rows a minute. Every local process shares `127.0.0.1`, so
+the rate is one budget for the server, not one per peer. It is spent only by
+operations admitted as anonymous enrollment, so a client with a grant, a
+status-only poll and the management window are served while it is exhausted;
+it is held in memory and a restart refills it.
+
+Expiry is not written: `EXPIRED` is what a stored pending request is once
+`submitted_at` plus the lifetime has passed, so no read or decision can see an
+over-age request as pending, with or without a restart in between. Retention
+never deletes the row either. The status stops being served, and the row stays
+as the digest's tombstone, in the user-only store file: a denied or expired
+secret can never start a request or become a manual grant, and it polls
+`unavailable`, not 401. `KoineServer(dataDirectory:policy:…now:)` takes the
+time source; it defaults to the wall clock, the application does not set it,
+and nothing a client sends or the environment holds reaches it.
 
 ## Building and testing
 

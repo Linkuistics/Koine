@@ -117,7 +117,8 @@ a batch array, is 400. The response is `application/graphql-response+json` when
 for every request; a connection carries no authority from one request to the
 next. GraphQL syntax, validation and variable-coercion
 failures return HTTP 400 with `errors` and no `data`. Invalid or revoked bearer
-credentials return HTTP 401 before execution. An authenticated mutation rejected
+credentials return HTTP 401 before execution. Anonymous enrollment over its
+rate limit returns HTTP 429 ("Client-requested grant"). An authenticated mutation rejected
 by capability preflight returns HTTP 403 with `errors` and no `data`. Each denied
 root action has its response alias in `path` and carries `extensions.kind:
 permission`, `permissionClass: capability`, and `phase: authorization`.
@@ -426,6 +427,32 @@ enrollment independently of authenticated execution. Anonymous access is
 limited to creating a request. Status-only credentials cannot be mixed with
 ordinary operations to acquire extra authority.
 
+A request pending 24 hours after submission is `EXPIRED` to every reader and to
+both decisions, which answer `already-decided`; expiry is terminal and starts
+its own retention. Retention runs seven days from the decision, or from the
+moment of expiry. After it the request leaves `koineManagement.requests`, a
+decision on its ID is `unavailable` like an ID that names nothing, and
+`koineGrantRequest` raises `unavailable` with a null result, both to the
+status-only secret and under the active grant an approved request produced:
+null there means no request produced the grant, which would be false. The grant
+itself is unaffected, and a secret stays status-only for ever. Submission and
+decision instants are stored as wall-clock time, so both periods hold across a
+restart. The embedding host may give the server its time source at
+construction; no GraphQL field, HTTP header or environment variable reaches it.
+
+At most 16 requests are pending at once. A further `koineRequestGrant` is
+refused with `pending-request-limit` and stores nothing; an identical retry of
+a stored request is still answered, and a decision or expiry frees a slot.
+Anonymous enrollment has its own budget, 10 operations in any 60 seconds for
+the whole server, since every local process shares the loopback address. It is
+spent by each operation admitted as anonymous enrollment, retries included,
+after parsing and before validation. Over budget the answer is HTTP 429 with
+`Retry-After` in seconds, `errors` and no `data`: no action began, so there is
+no action path to carry a GraphQL execution error. Nothing else spends or is
+refused by that budget: authenticated clients, status-only polls, the local
+console, and requests without a credential that are not enrollment, which stay
+401. These four values and the two periods belong to `RequestPolicy.version1`.
+
 ### User-created grant
 
 From the native UI, the user chooses a label and capability set and creates a
@@ -486,7 +513,8 @@ every other error:
 | Approve or deny a request that is approved, denied or expired, including one whose grant was since revoked | `failed` | `already-decided`, with the request's state in `extensions.requestState` |
 | Approve a capability that was not requested | `failed` | `invalid-subset` |
 | `koineRequestGrant` with a known digest and a different label or capability set | `failed` | `enrollment-conflict` |
-| `koineRequestGrant` with the digest of a grant no request produced, active or revoked; or approval of a request whose digest a grant already holds | `failed` | `credential-in-use` |
+| `koineRequestGrant` with the digest of a grant no request produced, active or revoked, or of a request whose status is past retention; or approval of a request whose digest a grant already holds | `failed` | `credential-in-use` |
+| `koineRequestGrant` with a new digest while the most pending requests allowed are waiting | `failed` | `pending-request-limit` |
 | Store or commit failure | `failed` | none; the request is still pending |
 
 An empty approved subset is valid: it creates a grant that authenticates and

@@ -214,6 +214,11 @@ import Testing
         #expect(policy.maximumRootMutationActions == 10)
         #expect(policy.maximumResponseBytes == 8_388_608)
         #expect(policy.executionDeadline == .seconds(5))
+        #expect(policy.pendingRequestLifetime == .seconds(86_400))
+        #expect(policy.requestStatusRetention == .seconds(604_800))
+        #expect(policy.maximumPendingRequests == 16)
+        #expect(policy.maximumEnrollmentsPerWindow == 10)
+        #expect(policy.enrollmentWindow == .seconds(60))
     }
 
     @Test func bodiesOverOneMebibyteNeverReachExecution() async throws {
