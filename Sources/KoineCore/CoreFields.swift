@@ -9,6 +9,7 @@ struct CoreFields: Sendable {
     let instanceId: String
     let schemaDigest: String
     let providerStatuses: @Sendable () async -> [ProviderStatus]
+    let osPermissions: OSPermissionSource
     /// The read and control capabilities of every active provider.
     var providerCapabilities: [String] = []
 
@@ -30,6 +31,7 @@ struct CoreFields: Sendable {
                 [
                     "grants": try readStore { try store.grants() }.map(object),
                     "providers": await providerStatuses().map(object),
+                    "osPermissions": osPermissions().map(object),
                 ] as Object
             },
             "Mutation.koineRevokeGrant": FieldRegistration(
@@ -45,8 +47,11 @@ struct CoreFields: Sendable {
                        "availableCapabilities"], .admitted),
             ("KoineGrant", ["grantId", "clientLabel", "capabilities", "state"], .admitted),
             ("KoineCreatedGrant", ["grant", "credential"], .capability(CoreCapability.manage)),
-            ("KoineManagement", ["grants", "providers"], .capability(CoreCapability.manage)),
+            ("KoineManagement", ["grants", "providers", "osPermissions"],
+             .capability(CoreCapability.manage)),
             ("KoineProviderStatus", ["provider", "version", "schemaVersion", "state", "diagnostic"],
+             .capability(CoreCapability.manage)),
+            ("KoineOSPermission", ["permission", "owner", "granted"],
              .capability(CoreCapability.manage)),
         ]
         for (type, names, authority) in outputs {
@@ -128,6 +133,10 @@ struct CoreFields: Sendable {
             "state": status.state.rawValue,
             "diagnostic": status.diagnostic,
         ]
+    }
+
+    private func object(_ status: OSPermissionStatus) -> Object {
+        ["permission": status.permission, "owner": status.owner, "granted": status.granted]
     }
 
     private func object(_ grant: GrantRecord) -> Object {

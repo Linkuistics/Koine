@@ -180,5 +180,11 @@ application from restoring a full-screen one; Koine's window cannot be closed by
 the agent from another Space. Evidence:
 `docs/verification/desktop-remembered-windows-vm.md`.
 
+`accessibility-status-and-consent-ui-k32` is complete, and with it this node.
+The host supplies the OS permission read (`KoineServer.init(osPermissions:)`);
+the window's status is one operation, `ManagementClient.status()`, polled; only
+the window's request control asks macOS for consent. Evidence:
+`docs/verification/accessibility-status-and-consent-vm.md`.
+
 Until `grant-enrollment-k10` lands, clients obtain grants through the manual
 workflow. That is sufficient for ModalAnyware to begin work against this path.

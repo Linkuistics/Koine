@@ -55,6 +55,8 @@ type KoineCreatedGrant {
 type KoineManagement {
   grants: [KoineGrant!]!
   providers: [KoineProviderStatus!]!
+  "Read on each request. Reading never asks the user for consent."
+  osPermissions: [KoineOSPermission!]!
 }
 
 type KoineProviderStatus {
@@ -66,4 +68,10 @@ type KoineProviderStatus {
 }
 
 enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
+
+type KoineOSPermission {
+  permission: String!
+  owner: String!
+  granted: Boolean!
+}
 """#

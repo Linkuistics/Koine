@@ -16,7 +16,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             let data = KoineServer.userDataDirectory
             let server = try KoineServer(
                 dataDirectory: data,
-                providerRoots: Self.bundledProviderRoot + [KoineServer.installedProviderRoot(in: data)]
+                providerRoots: Self.bundledProviderRoot + [KoineServer.installedProviderRoot(in: data)],
+                osPermissions: AccessibilityPermission.source
             )
             self.server = server
             Task {

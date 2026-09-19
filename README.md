@@ -70,6 +70,7 @@ task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
 task app:vm-verify-desktop-remembered  # a window left on another Space is REMEMBERED, revalidated on selection, and dropped when it or its application ends, in a VM
+task app:vm-verify-accessibility  # the window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
 ```
 
@@ -520,6 +521,33 @@ macOS 26.5 VM: a signed bundle that has never registered reads `notFound`, not
 `notRegistered`, and registration from there succeeds, so the window words
 `notFound` as "not registered" and leaves real failures to the error
 `register()` throws.
+
+**Accessibility, provider and service status.** Koine owns its one OS
+permission visibly. `koineManagement.osPermissions` reports `accessibility`,
+owner `koine` (the value `extensions.permissionOwner` carries) and whether it is
+granted, to `koine:manage` alone. `KoineCore` has no platform: the host passes
+`KoineServer.init(osPermissions:)` an `OSPermissionSource`, which the
+`koineManagement` resolver calls on each request, after the capability check. The
+application's source is [`AXIsProcessTrusted`](https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted),
+which takes no options and so cannot prompt; a host that supplies none serves an
+empty list.
+
+The window's status comes from one operation, `ManagementClient.status()`
+(contract version, instance, providers, OS permissions), re-read every two
+seconds while the window's view lives, because nothing announces a consent
+change. So the window and a managing client cannot disagree, and the status
+follows System Settings without a restart. The port is the one fact taken from
+the host; the schema has no field for it. Without consent the first section
+names Koine as the application that needs it and offers two controls, the only
+code that asks for anything: "Request Accessibility Access…" calls
+[`AXIsProcessTrustedWithOptions`](https://developer.apple.com/documentation/applicationservices/1459186-axisprocesstrustedwithoptions)
+with the prompt option from Koine's own process, and macOS shows its dialog
+naming Koine with its own button to System Settings; "Open Accessibility
+Settings…" opens the pane directly. The pane's URL has no official source and is
+checked by the VM run. `task app:vm-verify-accessibility`
+(`scripts/vm-verify-accessibility.sh`), after `task app`, proves the workflow on
+the signed build. Evidence:
+[docs/verification/accessibility-status-and-consent-vm.md](docs/verification/accessibility-status-and-consent-vm.md).
 
 A client needs nothing but the descriptor and a credential:
 

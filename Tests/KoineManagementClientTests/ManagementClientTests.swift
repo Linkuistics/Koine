@@ -1,4 +1,5 @@
 import Foundation
+import KoineCore
 import KoineManagementClient
 import KoineServer
 import Testing
@@ -19,6 +20,34 @@ import Testing
             await server.stop()
             throw error
         }
+    }
+
+    @Test func statusReportsTheServiceAndThePermissionsAsTheyAreNow() async throws {
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("koine-client-tests-\(UUID().uuidString)", isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let granted = Flag()
+        let server = try KoineServer(
+            dataDirectory: directory,
+            osPermissions: {
+                [OSPermissionStatus(permission: "accessibility", owner: "koine", granted: granted.value)]
+            }
+        )
+        try await server.start()
+        let client = ManagementClient(console: server.console)
+
+        var status = try await client.status()
+        #expect(status.contractVersion == "koine-desktop/1")
+        #expect(status.instanceId == server.instanceId)
+        #expect(status.providers.isEmpty)
+        #expect(status.osPermissions.map(\.permission) == ["accessibility"])
+        #expect(status.osPermissions.map(\.owner) == ["koine"])
+        #expect(status.osPermissions.map(\.granted) == [false])
+
+        granted.value = true
+        status = try await client.status()
+        #expect(status.osPermissions.map(\.granted) == [true])
+        await server.stop()
     }
 
     @Test func capabilitiesAreTheServedOnes() async throws {
@@ -120,5 +149,14 @@ import Testing
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
         return try await URLSession(configuration: .ephemeral).data(for: request)
+    }
+}
+
+private final class Flag: @unchecked Sendable {
+    private let lock = NSLock()
+    private var stored = false
+    var value: Bool {
+        get { lock.withLock { stored } }
+        set { lock.withLock { stored = newValue } }
     }
 }

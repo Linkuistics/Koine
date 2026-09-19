@@ -347,6 +347,25 @@ returns, so a host may exit straight after it. The human's decisions in that
 node's notes (one loader, approval record without install UI, no
 library-validation entitlement yet) continue to bind.
 
+`desktop-provider-k27` is complete: ModalAnyware's path works end to end under a
+manually created grant. What later stages build on: the desktop provider is a
+sealed bundle in `Contents/PlugIns` written against `KoineProviderAPI` alone
+(README, "Desktop provider"); each of its five leaves has a VM task
+(`task app:vm-verify-desktop`, `-desktop-focus`, `-desktop-remembered`,
+`-accessibility`) and an evidence document under `docs/verification/`, whose
+"does not show" sections are `release-acceptance-handoff-k11`'s input, as are
+the things each leaves to it: a second consent request, the undocumented
+Accessibility pane URL on another macOS release, and prompt attribution on the
+notarized release build. `scripts/vm-verify-desktop-lib.sh` holds consent given
+and revoked as a user does it, and `guest_json` and
+`scripts/vm-verify-accessibility.sh`'s `ask` are the pattern for a guest read
+that survives the agent's false timeouts. `grant-enrollment-k10` adds its review
+UI to a window that already reads its status from one polled management
+operation (`ManagementClient.status()`), and its `requests` field joins a
+`KoineManagement` whose served field list `GrantManagementTests` pins. One
+`task test` run in the last leaf failed in `KoineServerTests` and was not
+reproduced in four further runs; its detail was not captured.
+
 In `resident-app-manual-grants-k7` the human chose the signing identity and the
 application build tooling. Every Koine bundle is signed with `Developer ID
 Application: Antony Blakey (TA43A4RUP3)`, from development through VM

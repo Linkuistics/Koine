@@ -66,11 +66,12 @@ public final class Engine: Sendable {
 
     public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
-        providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = []
+        providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        osPermissions: @escaping OSPermissionSource = { [] }
     ) throws {
         try self.init(
             store: store, instanceId: instanceId, policy: policy, providers: providers,
-            unloadedProviders: unloadedProviders, reached: { _ in }
+            unloadedProviders: unloadedProviders, osPermissions: osPermissions, reached: { _ in }
         )
     }
 
@@ -79,7 +80,7 @@ public final class Engine: Sendable {
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
-        reached: @escaping OrderingHook
+        osPermissions: @escaping OSPermissionSource = { [] }, reached: @escaping OrderingHook
     ) throws {
         self.instanceId = instanceId
         self.reached = reached
@@ -116,6 +117,7 @@ public final class Engine: Sendable {
         var fields = CoreFields(
             store: store, authority: authority, instanceId: instanceId,
             schemaDigest: schemaDigest, providerStatuses: statusReport.all,
+            osPermissions: osPermissions,
             providerCapabilities: contributions.flatMap { [$0.readCapability, $0.controlCapability] }
         ).registrations
         for contribution in contributions {

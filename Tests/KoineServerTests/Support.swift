@@ -12,6 +12,7 @@ final class Harness {
     private var policy: RequestPolicy
     private let providerRoots: [ProviderRoot]
     private let providers: [ActiveProvider]
+    private let osPermissions: OSPermissionSource
 
     /// One staging directory for the process. Every server here stages the same
     /// fixture to the same path, so dyld maps it once; per-server staging would
@@ -25,8 +26,10 @@ final class Harness {
     /// `providers` are in-test contributions, composed with the loaded ones.
     init(
         policy: RequestPolicy = .version1, providerRoots: [URL] = [],
-        bundledRoots: [ProviderRoot] = [], providers: [ActiveProvider] = [], seed: ((URL) throws -> Void)? = nil
+        bundledRoots: [ProviderRoot] = [], providers: [ActiveProvider] = [],
+        seed: ((URL) throws -> Void)? = nil, osPermissions: @escaping OSPermissionSource = { [] }
     ) async throws {
+        self.osPermissions = osPermissions
         self.providerRoots = bundledRoots + providerRoots.map(ProviderRoot.installed)
         self.providers = providers
         directory = FileManager.default.temporaryDirectory
@@ -36,7 +39,7 @@ final class Harness {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try seed(directory)
         }
-        server = try await Self.makeServer(directory, policy, self.providerRoots, providers)
+        server = try await Self.makeServer(directory, policy, self.providerRoots, providers, osPermissions)
         try await server.start()
     }
 
@@ -49,7 +52,8 @@ final class Harness {
     private static let constructing = DispatchQueue(label: "dev.antony.Koine.tests.constructing")
 
     private static func makeServer(
-        _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider]
+        _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider],
+        _ osPermissions: @escaping OSPermissionSource
     ) async throws -> KoineServer {
         try await withCheckedThrowingContinuation { continuation in
             constructing.async {
@@ -58,7 +62,8 @@ final class Harness {
                         try KoineServer(
                             dataDirectory: directory, policy: policy,
                             providerRoots: roots,
-                            providerStaging: providerStaging, additionalProviders: providers
+                            providerStaging: providerStaging, osPermissions: osPermissions,
+                            additionalProviders: providers
                         )
                     }
                 )
@@ -71,7 +76,7 @@ final class Harness {
     func restart(policy: RequestPolicy? = nil) async throws {
         if let policy { self.policy = policy }
         await server.stop()
-        server = try await Self.makeServer(directory, self.policy, providerRoots, providers)
+        server = try await Self.makeServer(directory, self.policy, providerRoots, providers, osPermissions)
         try await server.start()
     }
 

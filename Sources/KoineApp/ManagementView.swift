@@ -1,11 +1,12 @@
 import KoineManagementClient
 import SwiftUI
 
-/// The management window: grants, the create flow and setup, all through the
-/// console's GraphQL operations.
+/// The management window: status, grants, the create flow and setup, all
+/// through the console's GraphQL operations.
 struct ManagementView: View {
     @StateObject private var grants: GrantListModel
     @StateObject private var create: CreateGrantModel
+    @StateObject private var status: StatusModel
     @StateObject private var loginLaunch = LoginLaunchModel()
     private let port: Int
 
@@ -15,25 +16,26 @@ struct ManagementView: View {
         _create = StateObject(
             wrappedValue: CreateGrantModel(client: client) { await grants.refresh() }
         )
+        _status = StateObject(wrappedValue: StatusModel(client: client))
         self.port = port
     }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                AccessibilityStatusView(model: status)
+                Divider()
                 GrantListView(model: grants)
                 Divider()
                 CreateGrantView(model: create)
                 Divider()
                 LoginLaunchView(model: loginLaunch)
                 Divider()
-                // This window exists only while the embedded server runs.
-                Text("Listening on loopback, port \(String(port)). Closing this window leaves it running.")
-                    .font(.caption).foregroundColor(.secondary)
-                    .accessibilityIdentifier("service-status")
+                ServiceStatusView(model: status, port: port)
             }
             .padding(20)
+            .task { await status.follow() }
         }
-        .frame(width: 480, height: 620)
+        .frame(width: 480, height: 680)
     }
 }

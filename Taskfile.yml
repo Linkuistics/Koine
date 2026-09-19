@@ -80,6 +80,11 @@ tasks:
     cmds:
       - scripts/vm-verify-desktop-remembered.sh
 
+  app:vm-verify-accessibility:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window shows Accessibility guidance, provider and service status, that koineManagement.osPermissions reports the same consent to koine:manage alone without prompting, that the window's request makes macOS name Koine in its dialog and in System Settings, and that both follow consent given and removed without a restart
+    cmds:
+      - scripts/vm-verify-accessibility.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:

@@ -17,6 +17,30 @@ public struct CreatedGrant: Sendable, Equatable, Decodable {
     public let credential: String
 }
 
+/// One provider bundle as `koineManagement.providers` reports it.
+public struct ManagedProvider: Sendable, Equatable, Decodable {
+    public let provider: String
+    public let version: String
+    public let state: String
+    public let diagnostic: String?
+}
+
+/// One OS permission as `koineManagement.osPermissions` reports it.
+public struct ManagedOSPermission: Sendable, Equatable, Decodable {
+    public let permission: String
+    public let owner: String
+    public let granted: Bool
+}
+
+/// What the status section of the window shows, from one request: all of it
+/// describes the same moment.
+public struct ManagementStatus: Sendable, Equatable {
+    public let contractVersion: String
+    public let instanceId: String
+    public let providers: [ManagedProvider]
+    public let osPermissions: [ManagedOSPermission]
+}
+
 public enum ManagementError: Error, Equatable, LocalizedError {
     /// The operation answered with GraphQL errors. `kind` is the first error's
     /// `extensions.kind`, when it has one.
@@ -88,6 +112,35 @@ public struct ManagementClient: Sendable {
         )
         guard let management = reply.koineManagement else { throw ManagementError.malformedResponse }
         return management.grants
+    }
+
+    /// The served contract, provider states and OS permissions as they are now.
+    /// The permissions are read by the server on this request, without a prompt.
+    public func status() async throws -> ManagementStatus {
+        struct Reply: Decodable {
+            struct Koine: Decodable { let contractVersion, instanceId: String }
+            struct Management: Decodable {
+                let providers: [ManagedProvider]
+                let osPermissions: [ManagedOSPermission]
+            }
+            let koine: Koine
+            let koineManagement: Management?
+        }
+        let reply: Reply = try await run(
+            """
+            { koine { contractVersion instanceId }
+              koineManagement {
+                providers { provider version state diagnostic }
+                osPermissions { permission owner granted }
+              } }
+            """,
+            variables: [:]
+        )
+        guard let management = reply.koineManagement else { throw ManagementError.malformedResponse }
+        return ManagementStatus(
+            contractVersion: reply.koine.contractVersion, instanceId: reply.koine.instanceId,
+            providers: management.providers, osPermissions: management.osPermissions
+        )
     }
 
     /// Revokes durably and returns the grant as committed. An unknown grant is

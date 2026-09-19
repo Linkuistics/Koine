@@ -46,13 +46,16 @@ public final class KoineServer: Sendable {
     /// framework dispatches: construct on the main thread or a thread of your
     /// own, not on many Swift concurrency threads at once. Each bundle is staged under `providerStaging`, by
     /// default `ProviderStaging` in the data directory, and loaded from there.
+    ///
+    /// `osPermissions` is the host's read of the OS permissions it owns, served
+    /// as `koineManagement.osPermissions`. The server has no platform of its own.
     public convenience init(
         dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [ProviderRoot] = [],
-        providerStaging: URL? = nil
+        providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] }
     ) throws {
         try self.init(
             dataDirectory: dataDirectory, policy: policy, providerRoots: providerRoots,
-            providerStaging: providerStaging, additionalProviders: []
+            providerStaging: providerStaging, osPermissions: osPermissions, additionalProviders: []
         )
     }
 
@@ -67,7 +70,8 @@ public final class KoineServer: Sendable {
     /// bundle; nothing public carries it.
     init(
         dataDirectory: URL, policy: RequestPolicy, providerRoots: [ProviderRoot],
-        providerStaging: URL? = nil, additionalProviders: [ActiveProvider]
+        providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] },
+        additionalProviders: [ActiveProvider]
     ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
@@ -121,7 +125,8 @@ public final class KoineServer: Sendable {
         }
         let engine = try Engine(
             store: store, instanceId: instanceId, policy: policy,
-            providers: loaded + additionalProviders, unloadedProviders: unloaded
+            providers: loaded + additionalProviders, unloadedProviders: unloaded,
+            osPermissions: osPermissions
         )
         self.engine = engine
         console = LocalConsole(engine: engine)
