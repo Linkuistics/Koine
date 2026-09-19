@@ -43,6 +43,11 @@ struct CoreFields: Sendable {
                     )
                 )
             },
+            "Mutation.koineDenyGrantRequest": FieldRegistration(
+                authority: .capability(CoreCapability.manage)
+            ) { input in
+                try object(try authority.deny(requestId: input.arguments["requestId"].string ?? ""))
+            },
             "Query.koineManagement": FieldRegistration(
                 authority: .capability(CoreCapability.manage)
             ) { _ in
@@ -147,10 +152,37 @@ struct CoreFields: Sendable {
             requestedCapabilities: requested, credentialDigest: digest,
             comparisonCode: Self.comparisonCode(), state: .pending, grantId: nil
         )
-        do { try store.insertRequest(request) } catch {
+        do { try store.insertRequest(request) } catch GrantStoreError.duplicateDigest {
+            return try receipt(repeating: request)
+        } catch {
             throw DomainError.failed("The request could not be stored.")
         }
         return ["requestId": request.id, "comparisonCode": request.comparisonCode]
+    }
+
+    /// The digest already names something, and what it names never changes. The
+    /// request it was first submitted with answers an identical retry with its
+    /// own receipt, whatever has been decided since, so a lost response cannot
+    /// split the identity. Anything else needs a fresh secret.
+    private func receipt(repeating retry: GrantRequestRecord) throws -> Object {
+        let original = try readStore { try store.requests() }
+            .first { Credential.constantTimeEqual($0.credentialDigest, retry.credentialDigest) }
+        guard let original else {
+            throw DomainError(
+                kind: .failed, message: "This credential already belongs to a grant.",
+                reason: .credentialInUse
+            )
+        }
+        guard original.clientLabel == retry.clientLabel,
+            Set(original.requestedCapabilities) == Set(retry.requestedCapabilities)
+        else {
+            throw DomainError(
+                kind: .failed,
+                message: "This credential was submitted with a different label or capabilities.",
+                reason: .enrollmentConflict
+            )
+        }
+        return ["requestId": original.id, "comparisonCode": original.comparisonCode]
     }
 
     /// Random, so it discloses nothing of the digest; short and free of

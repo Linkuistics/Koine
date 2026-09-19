@@ -6,7 +6,7 @@ enum FieldAuthority: Sendable {
     case admitted
     case capability(String)
     /// An admitted principal, or the status-only principal of a request that
-    /// is still pending. Only `koineGrantRequest` and what it returns use it.
+    /// was not approved. Only `koineGrantRequest` and what it returns use it.
     case requestStatus
     /// The anonymous principal and no other. The engine has already held its
     /// operation to the single `koineRequestGrant` action.
@@ -26,6 +26,26 @@ struct DomainError: Error {
     /// The platform consent Koine lacks; makes a permission error an
     /// `os-permission` one.
     var osPermission: String?
+    /// Tells apart the grant-request outcomes that share a `kind`
+    /// (docs/specs/machine.md, "Management authority and surface").
+    var reason: Reason?
+    /// With `alreadyDecided`: the state the request is in.
+    var requestState: GrantRequestState?
+
+    enum Reason: String {
+        case alreadyDecided = "already-decided"
+        case invalidSubset = "invalid-subset"
+        case enrollmentConflict = "enrollment-conflict"
+        case credentialInUse = "credential-in-use"
+    }
+
+    /// Every terminal state alike: the manager learns which, and nothing moves.
+    static func alreadyDecided(_ state: GrantRequestState) -> DomainError {
+        DomainError(
+            kind: .failed, message: "This request has already been decided.",
+            reason: .alreadyDecided, requestState: state
+        )
+    }
 
     static func capabilityDenied(_ capability: String?) -> DomainError {
         DomainError(
@@ -92,18 +112,13 @@ final class Authority: Sendable {
     /// durable commit; every refusal leaves both untouched.
     func approve(requestId: String, capabilities: [String]) throws -> GrantRecord {
         try boundary.withLock {
-            let request: GrantRequestRecord?
-            do { request = try store.request(id: requestId) } catch {
-                throw DomainError.failed("The grant store is unavailable.")
-            }
-            guard let request else { throw DomainError.unavailable("No request has this ID.") }
-            guard request.state == .pending else {
-                throw DomainError.failed("This request has already been decided.")
-            }
+            let request = try pendingRequest(id: requestId)
             let outside = capabilities.filter { !request.requestedCapabilities.contains($0) }
             guard outside.isEmpty else {
-                throw DomainError.failed(
-                    "Not among the requested capabilities: \(outside.joined(separator: ", "))."
+                throw DomainError(
+                    kind: .failed,
+                    message: "Not among the requested capabilities: \(outside.joined(separator: ", ")).",
+                    reason: .invalidSubset
                 )
             }
             let grant = GrantRecord(
@@ -113,10 +128,15 @@ final class Authority: Sendable {
             )
             do {
                 guard try store.approve(requestId: requestId, as: grant) else {
-                    throw DomainError.failed("This request has already been decided.")
+                    // The store saw another state than the one read above.
+                    _ = try pendingRequest(id: requestId)
+                    throw DomainError.failed("The approval could not be stored.")
                 }
             } catch GrantStoreError.duplicateDigest {
-                throw DomainError.failed("This request's credential already belongs to a grant.")
+                throw DomainError(
+                    kind: .failed, message: "This request's credential already belongs to a grant.",
+                    reason: .credentialInUse
+                )
             } catch let refusal as DomainError {
                 throw refusal
             } catch {
@@ -126,13 +146,51 @@ final class Authority: Sendable {
         }
     }
 
+    /// Denial ends a requester's prospects, so it is ordered like approval.
+    /// Returns the request as denied: nothing of it but its state ever changes.
+    /// Every refusal leaves it untouched.
+    func deny(requestId: String) throws -> GrantRequestRecord {
+        try boundary.withLock {
+            let request = try pendingRequest(id: requestId)
+            do {
+                guard try store.deny(requestId: requestId) else {
+                    // The store saw another state than the one read above.
+                    _ = try pendingRequest(id: requestId)
+                    throw DomainError.failed("The denial could not be stored.")
+                }
+                return GrantRequestRecord(
+                    id: request.id, clientLabel: request.clientLabel,
+                    requestedCapabilities: request.requestedCapabilities,
+                    credentialDigest: request.credentialDigest,
+                    comparisonCode: request.comparisonCode, state: .denied, grantId: nil
+                )
+            } catch let refusal as DomainError {
+                throw refusal
+            } catch {
+                throw DomainError.failed("The denial could not be stored.")
+            }
+        }
+    }
+
+    /// The request a decision is about. Called inside the boundary, where no
+    /// other decision can intervene before the commit.
+    private func pendingRequest(id: String) throws -> GrantRequestRecord {
+        let request: GrantRequestRecord?
+        do { request = try store.request(id: id) } catch {
+            throw DomainError.failed("The grant store is unavailable.")
+        }
+        guard let request else { throw DomainError.unavailable("No request has this ID.") }
+        guard request.state == .pending else { throw DomainError.alreadyDecided(request.state) }
+        return request
+    }
+
     /// Whether the engine executes anything for this principal. An anonymous
     /// principal is admitted here and held to its one operation by the engine.
     func admits(_ principal: Principal) throws -> Bool {
         try boundary.withLock {
             switch principal {
             case .anonymous: return true
-            case .requester(let id): return try store.request(id: id)?.state == .pending
+            case .requester(let id): return try store.request(id: id)?.state.isStatusOnly == true
             case .grant, .localConsole: return try currentCapabilities(of: principal) != nil
             }
         }
@@ -167,11 +225,11 @@ final class Authority: Sendable {
             guard case .anonymous = principal else { throw DomainError.enrollmentIsAnonymous }
         case .requestStatus:
             if case .requester = principal {
-                let pending: Bool
-                do { pending = try admits(principal) } catch {
+                let statusOnly: Bool
+                do { statusOnly = try admits(principal) } catch {
                     throw DomainError.failed("The grant store is unavailable.")
                 }
-                guard pending else { throw DomainError.capabilityDenied(nil) }
+                guard statusOnly else { throw DomainError.capabilityDenied(nil) }
             } else {
                 guard held != nil else { throw DomainError.capabilityDenied(nil) }
             }
@@ -183,7 +241,7 @@ final class Authority: Sendable {
     }
 
     /// Resolves a presented bearer credential to its active grant, or to the
-    /// status-only principal of the pending request it was submitted with.
+    /// status-only principal of the unapproved request it was submitted with.
     /// Every stored digest is compared, in constant time and without an early
     /// exit. A grant with this digest decides alone, whatever its state: a
     /// revoked grant's secret is nothing, never a requester again.
@@ -201,7 +259,7 @@ final class Authority: Sendable {
             request = candidate
         }
         if let grant { return grant.state == .active ? .grant(id: grant.id) : nil }
-        guard let request, request.state == .pending else { return nil }
+        guard let request, request.state.isStatusOnly else { return nil }
         return .requester(requestId: request.id)
     }
 }

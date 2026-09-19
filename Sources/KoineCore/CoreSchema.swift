@@ -20,6 +20,8 @@ type Mutation {
   koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
   "koine:manage. Approves only a subset of the immutable requested capabilities."
   koineApproveGrantRequest(requestId: ID!, capabilities: [String!]!): KoineGrant
+  "koine:manage. Denies a pending request."
+  koineDenyGrantRequest(requestId: ID!): KoineGrantRequest
   "koine:manage. Credential is returned once after durable creation."
   koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
   "koine:manage. Idempotent for an already revoked grant; never grants authority."
@@ -59,7 +61,7 @@ type KoineGrantRequest {
   grant: KoineGrant
 }
 
-enum KoineGrantRequestState { PENDING APPROVED }
+enum KoineGrantRequestState { PENDING APPROVED DENIED }
 
 input KoineCreateGrantInput {
   clientLabel: String!

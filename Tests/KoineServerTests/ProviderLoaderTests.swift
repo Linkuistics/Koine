@@ -89,7 +89,7 @@ import Testing
 
     static let coreRootFields: Set<String> = [
         "koine", "koineGrantRequest", "koineManagement", "koineRequestGrant",
-        "koineApproveGrantRequest", "koineCreateGrant", "koineRevokeGrant",
+        "koineApproveGrantRequest", "koineDenyGrantRequest", "koineCreateGrant", "koineRevokeGrant",
     ]
 
     // MARK: Refused before dlopen

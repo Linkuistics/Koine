@@ -473,7 +473,30 @@ refused like any other read; the revocation still stands.
 Core management types use the `Koine` prefix. Management errors use the same
 permission vocabulary and propagation as provider errors. Record missing,
 already-decided and invalid-subset request outcomes explicitly; approval cannot
-resurrect a denied, expired or revoked request. Native UI affordances cover
+resurrect a denied, expired or revoked request.
+
+Request outcomes raise an execution error at the action's path with a null
+result and change nothing. Those that share a `kind` are told apart by
+`extensions.reason`, which is additive to the error shape above and absent from
+every other error:
+
+| Outcome | `kind` | `extensions.reason` |
+|---|---|---|
+| Approve or deny a request ID that names nothing | `unavailable` | none |
+| Approve or deny a request that is approved, denied or expired, including one whose grant was since revoked | `failed` | `already-decided`, with the request's state in `extensions.requestState` |
+| Approve a capability that was not requested | `failed` | `invalid-subset` |
+| `koineRequestGrant` with a known digest and a different label or capability set | `failed` | `enrollment-conflict` |
+| `koineRequestGrant` with the digest of a grant no request produced, active or revoked; or approval of a request whose digest a grant already holds | `failed` | `credential-in-use` |
+| Store or commit failure | `failed` | none; the request is still pending |
+
+An empty approved subset is valid: it creates a grant that authenticates and
+holds no capability, as `koineCreateGrant` does for an empty set; denial is how a
+manager refuses. An identical enrollment retry returns the original receipt in
+every state of its request, denied included, and never starts a second request.
+It is answered on the digest, label and set alone, so the receipt, like the
+comparison code in it, is not secret; capability sets compare
+without order or duplicates. A conflict discloses nothing of the request it
+met. Native UI affordances cover
 request review, manual creation, grant listing/revocation, service status and
 OS-permission guidance. Plugin installation/trust is a local user operation,
 not an extra meaning of a client's `desktop:control` grant.

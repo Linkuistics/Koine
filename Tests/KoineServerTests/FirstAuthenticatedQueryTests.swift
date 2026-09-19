@@ -210,9 +210,7 @@ import Testing
         let queryFields = try #require(byName["Query"]?["fields"] as? [[String: Any]])
         #expect(queryFields.map { $0["name"] as? String } == ["koine", "koineGrantRequest", "koineManagement"])
         #expect((queryFields[0]["description"] as? String)?.contains("Authenticated") == true)
-        // Only what is implemented is served.
-        let mutations = try #require(byName["Mutation"]?["fields"] as? [[String: Any]])
-        #expect(!mutations.contains { $0["name"] as? String == "koineDenyGrantRequest" })
+        // Only what is implemented is served; `GrantManagementTests` pins the mutations.
         #expect(byName["DesktopWindow"] == nil)
         await harness.stop()
     }

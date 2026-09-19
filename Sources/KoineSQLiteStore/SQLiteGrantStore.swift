@@ -53,7 +53,23 @@ public final class SQLiteGrantStore: GrantStore {
     }
 
     public func insert(_ grant: GrantRecord) throws {
-        try uniquely { try queue.write { db in try Self.insert(grant, into: db) } }
+        try uniquely {
+            try queue.write { db in
+                try Self.requireUnused(grant.credentialDigest, in: "grant_requests", db)
+                try Self.insert(grant, into: db)
+            }
+        }
+    }
+
+    /// Each table's own digests are unique by constraint. Uniqueness across the
+    /// two is checked here, inside the inserting transaction. Approval alone
+    /// skips it: its grant takes the digest of the request it comes from.
+    private static func requireUnused(_ digest: String, in table: String, _ db: Database) throws {
+        let taken = try Bool.fetchOne(
+            db, sql: "SELECT EXISTS (SELECT 1 FROM \(table) WHERE credential_digest = ?)",
+            arguments: [digest]
+        )
+        if taken != false { throw GrantStoreError.duplicateDigest }
     }
 
     private static func insert(_ grant: GrantRecord, into db: Database) throws {
@@ -81,6 +97,7 @@ public final class SQLiteGrantStore: GrantStore {
     public func insertRequest(_ request: GrantRequestRecord) throws {
         try uniquely {
             try queue.write { db in
+                try Self.requireUnused(request.credentialDigest, in: "grants", db)
                 try db.execute(
                     sql: "INSERT INTO grant_requests VALUES (?, ?, ?, ?, ?, ?, ?)",
                     arguments: [
@@ -127,6 +144,19 @@ public final class SQLiteGrantStore: GrantStore {
                 )
                 return true
             }
+        }
+    }
+
+    public func deny(requestId: String) throws -> Bool {
+        try queue.write { db in
+            try db.execute(
+                sql: "UPDATE grant_requests SET state = ? WHERE id = ? AND state = ?",
+                arguments: [
+                    GrantRequestState.denied.rawValue, requestId,
+                    GrantRequestState.pending.rawValue,
+                ]
+            )
+            return db.changesCount == 1
         }
     }
 

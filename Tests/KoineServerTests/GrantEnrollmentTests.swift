@@ -35,12 +35,12 @@ import Testing
         }
         """
 
-    private func managed() async throws -> (Harness, manager: String) {
+    func managed() async throws -> (Harness, manager: String) {
         let harness = try await Harness()
         return (harness, try await harness.consoleGrant(label: "manager", capabilities: ["koine:manage"]))
     }
 
-    private func input(
+    func input(
         _ credential: Credential, label: String = "enrollee",
         capabilities: [String] = ["koine:manage"]
     ) -> [String: Any] {
@@ -51,7 +51,7 @@ import Testing
     }
 
     /// Enrols anonymously with the design's own operation.
-    private func enrol(
+    func enrol(
         _ harness: Harness, _ credential: Credential, label: String = "enrollee",
         capabilities: [String] = ["koine:manage"]
     ) async throws -> (id: String, code: String) {
@@ -67,13 +67,13 @@ import Testing
         return (try #require(receipt["requestId"]), try #require(receipt["comparisonCode"]))
     }
 
-    private func listed(_ harness: Harness, as bearer: String) async throws -> [[String: Any]] {
+    func listed(_ harness: Harness, as bearer: String) async throws -> [[String: Any]] {
         let reply = try await harness.post(Self.requests, authorization: "Bearer \(bearer)")
         let management = try #require(reply.data?["koineManagement"] as? [String: Any])
         return try #require(management["requests"] as? [[String: Any]])
     }
 
-    private static func expectPermission(_ error: [String: Any], path: [String]) throws {
+    static func expectPermission(_ error: [String: Any], path: [String]) throws {
         #expect(error["path"] as? [String] == path)
         let extensions = try #require(error["extensions"] as? [String: Any])
         #expect(extensions["kind"] as? String == "permission")
@@ -456,64 +456,6 @@ import Testing
         let request = try #require(own.data?["koineGrantRequest"] as? [String: Any])
         #expect(request["requestedCapabilities"] as? [String] == ["koine:manage"])
         #expect((request["grant"] as? [String: Any])?["capabilities"] as? [String] == [])
-        await harness.stop()
-    }
-
-    /// Made precise by a later leaf; here each must refuse and change nothing.
-    @Test func approvalRefusesAMissingRequestACapabilityNotRequestedAndASecondDecision() async throws {
-        let (harness, manager) = try await managed()
-        let receipt = try await enrol(harness, .generate(), capabilities: [])
-        func approve(_ id: String, _ capabilities: [String]) async throws -> Harness.Reply {
-            try await harness.post(
-                Self.approve, variables: ["id": id, "capabilities": capabilities],
-                authorization: "Bearer \(manager)"
-            )
-        }
-        for refused in [try await approve("no-such-request", []), try await approve(receipt.id, ["koine:manage"])] {
-            #expect(refused.data?["koineApproveGrantRequest"] is NSNull)
-            #expect(refused.errors.count == 1)
-        }
-        #expect(try await listed(harness, as: manager)[0]["state"] as? String == "PENDING")
-
-        #expect(try await approve(receipt.id, []).errors.isEmpty)
-        let second = try await approve(receipt.id, [])
-        #expect(second.data?["koineApproveGrantRequest"] is NSNull)
-        #expect(second.errors.count == 1)
-        // One grant from the one approval, plus the manager.
-        let reply = try await harness.post(GrantManagementTests.grants, authorization: "Bearer \(manager)")
-        let listedGrants = (reply.data?["koineManagement"] as? [String: Any])?["grants"] as? [[String: Any]]
-        #expect(listedGrants?.count == 2)
-        await harness.stop()
-    }
-
-    /// A request whose digest already belongs to a grant never becomes a second
-    /// identity: the secret stays that grant's, and approval fails whole.
-    @Test func approvingADigestThatIsAlreadyAGrantCreatesNothing() async throws {
-        let (harness, manager) = try await managed()
-        let existing = try await harness.consoleGrant(label: "existing", capabilities: [])
-        let digest = try #require(Credential.digest(ofPresented: existing))
-        let reply = try await harness.post(
-            try Self.designOperation("RequestDesktopGrant"),
-            variables: ["input": ["clientLabel": "twin", "credentialDigest": digest, "capabilities": ["koine:manage"]]],
-            authorization: nil
-        )
-        guard let receipt = reply.data?["koineRequestGrant"] as? [String: String],
-            let id = receipt["requestId"]
-        else { await harness.stop(); return }  // refusing the request outright is as safe
-
-        // The secret is still the existing grant, not a requester.
-        let koine = try await harness.post(Harness.koine, authorization: "Bearer \(existing)")
-        #expect(((koine.data?["koine"] as? [String: Any])?["ownGrant"] as? [String: Any])?["clientLabel"] as? String == "existing")
-
-        let approval = try await harness.post(
-            Self.approve, variables: ["id": id, "capabilities": ["koine:manage"]],
-            authorization: "Bearer \(manager)"
-        )
-        #expect(approval.data?["koineApproveGrantRequest"] is NSNull)
-        #expect(approval.errors.count == 1)
-        #expect(try await listed(harness, as: manager)[0]["state"] as? String == "PENDING")
-        let denied = try await harness.post(Self.requests, authorization: "Bearer \(existing)")
-        #expect(denied.data?["koineManagement"] is NSNull)
         await harness.stop()
     }
 }

@@ -7,7 +7,7 @@ import Testing
 /// A `GrantStore` a test scripts: it counts calls, fails the operations it is
 /// told to, and otherwise behaves as a store. Nothing in the engine knows it.
 final class ScriptedStore: GrantStore, @unchecked Sendable {
-    enum Operation: Hashable { case insert, grants, grant, revoke }
+    enum Operation: Hashable { case insert, grants, grant, revoke, approve, deny }
     struct Failure: Error {}
 
     private let lock = NSLock()
@@ -16,6 +16,10 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
     private var failing: Set<Operation> = []
     private var calls: [Operation: Int] = [:]
     private var grantReadsAllowed: Int?
+    private var collisions = 0
+
+    /// The next `count` grant inserts meet a digest that is already taken.
+    func collide(inserts count: Int) { lock.withLock { collisions = count } }
 
     func fail(_ operations: Operation...) { lock.withLock { failing = Set(operations) } }
 
@@ -26,6 +30,7 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
 
     /// The records as stored, read without counting or failing.
     var stored: [GrantRecord] { lock.withLock { records } }
+    var storedRequests: [GrantRequestRecord] { lock.withLock { requestRecords } }
 
     private func enter(_ operation: Operation) throws {
         calls[operation, default: 0] += 1
@@ -39,8 +44,20 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
     func insert(_ grant: GrantRecord) throws {
         try lock.withLock {
             try enter(.insert)
+            if collisions > 0 {
+                collisions -= 1
+                throw GrantStoreError.duplicateDigest
+            }
+            try unique(grant.credentialDigest)
             records.append(grant)
         }
+    }
+
+    /// A digest names one thing across requests and grants, as in the real store.
+    private func unique(_ digest: String) throws {
+        guard !records.contains(where: { $0.credentialDigest == digest }),
+            !requestRecords.contains(where: { $0.credentialDigest == digest })
+        else { throw GrantStoreError.duplicateDigest }
     }
 
     func grants() throws -> [GrantRecord] {
@@ -71,7 +88,10 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
     }
 
     func insertRequest(_ request: GrantRequestRecord) throws {
-        lock.withLock { requestRecords.append(request) }
+        try lock.withLock {
+            try unique(request.credentialDigest)
+            requestRecords.append(request)
+        }
     }
 
     func requests() throws -> [GrantRequestRecord] { lock.withLock { requestRecords } }
@@ -82,7 +102,7 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
 
     func approve(requestId: String, as grant: GrantRecord) throws -> Bool {
         try lock.withLock {
-            try enter(.insert)
+            try enter(.approve)
             guard let index = requestRecords.firstIndex(where: { $0.id == requestId }),
                 requestRecords[index].state == .pending
             else { return false }
@@ -94,6 +114,23 @@ final class ScriptedStore: GrantStore, @unchecked Sendable {
                 state: .approved, grantId: grant.id
             )
             records.append(grant)
+            return true
+        }
+    }
+
+    func deny(requestId: String) throws -> Bool {
+        try lock.withLock {
+            try enter(.deny)
+            guard let index = requestRecords.firstIndex(where: { $0.id == requestId }),
+                requestRecords[index].state == .pending
+            else { return false }
+            let old = requestRecords[index]
+            requestRecords[index] = GrantRequestRecord(
+                id: old.id, clientLabel: old.clientLabel,
+                requestedCapabilities: old.requestedCapabilities,
+                credentialDigest: old.credentialDigest, comparisonCode: old.comparisonCode,
+                state: .denied, grantId: nil
+            )
             return true
         }
     }
@@ -309,6 +346,61 @@ private func isOutcome(_ outcome: EngineResponse.Outcome, _ expected: EngineResp
         #expect(!reply.body.contains("credential\":"))
         #expect(bench.store.count(.insert) == 2)  // the manager's, then this one
         #expect(bench.store.stored.map(\.clientLabel) == ["manager"])
+    }
+
+    /// A decision that does not commit reports `failed` and no success, and
+    /// leaves the request pending with no grant.
+    @Test(arguments: [ScriptedStore.Operation.approve, .deny])
+    func aFailedDecisionCommitReportsFailedAndDecidesNothing(operation: ScriptedStore.Operation) async throws {
+        let bench = try Bench()
+        let manager = try await bench.grant("manager")
+        let enrolment = try await bench.run(
+            "mutation($input: KoineRequestGrantInput!) { koineRequestGrant(input: $input) { requestId } }",
+            variables: ["input": [
+                "clientLabel": "enrollee", "credentialDigest": Credential.generate().digest,
+                "capabilities": ["koine:manage"],
+            ]],
+            as: .anonymous
+        )
+        let id = try #require((enrolment.data?["koineRequestGrant"] as? [String: Any])?["requestId"] as? String)
+        bench.store.fail(operation)
+
+        let field = operation == .approve ? "koineApproveGrantRequest" : "koineDenyGrantRequest"
+        let reply = try await bench.run(
+            operation == .approve
+                ? "mutation($id: ID!) { koineApproveGrantRequest(requestId: $id, capabilities: [\"koine:manage\"]) { grantId state } }"
+                : "mutation($id: ID!) { koineDenyGrantRequest(requestId: $id) { requestId state } }",
+            variables: ["id": id], as: manager.principal
+        )
+
+        #expect(reply.data?[field] is NSNull)
+        #expect(reply.errors.count == 1)
+        #expect(reply.kind(at: [field]) == "failed")
+        #expect(!reply.body.contains("ACTIVE") && !reply.body.contains("DENIED"))
+        #expect(bench.store.count(operation) == 1)
+        #expect(bench.store.storedRequests.map(\.state) == [.pending])
+        #expect(bench.store.storedRequests[0].grantId == nil)
+        #expect(bench.store.stored.map(\.clientLabel) == ["manager"])
+    }
+
+    /// Manual creation retries a digest the store says is taken, by a grant or
+    /// by a request alike, with a fresh secret, and commits once.
+    @Test func aManualGrantRetriesADigestCollisionBeforeCommitting() async throws {
+        let bench = try Bench()
+        let manager = try await bench.grant("manager")
+        bench.store.collide(inserts: 2)
+
+        let reply = try await bench.run(
+            Harness.createGrant, variables: ["label": "third time", "capabilities": []],
+            as: manager.principal
+        )
+
+        #expect(reply.errors.isEmpty)
+        let created = try #require(reply.data?["koineCreateGrant"] as? [String: Any])
+        let credential = try #require(created["credential"] as? String)
+        #expect(bench.store.count(.insert) == 4)  // the manager's, two collisions, the commit
+        #expect(bench.store.stored.map(\.clientLabel) == ["manager", "third time"])
+        #expect(bench.store.stored[1].credentialDigest == Credential.digest(ofPresented: credential))
     }
 
     @Test func aStoreReadFailureDuringAuthenticationRefuses() async throws {

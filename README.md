@@ -56,9 +56,9 @@ That local URL requires the diagram server described in the views' README.
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and a
-`koine:manage` client decides. Deny, retry, expiry and limits are not served
-yet, and the review UI is not built; the local console and any manager over
-GraphQL already approve.
+`koine:manage` client decides. Expiry and limits are not served yet, and the
+review UI is not built; the local console and any manager over GraphQL already
+approve and deny.
 
 1. The client generates its own 32-byte secret, keeps it, and sends
    `Mutation.koineRequestGrant` with the secret's digest (64 lower-case hex), a
@@ -73,8 +73,18 @@ GraphQL already approve.
    retried as anonymous. The receipt is a request ID and a comparison code: eight
    random characters as `XXXX-XXXX`, independent of the digest, for the user to
    compare by eye with what the client shows.
+
+   A client whose response was lost sends the same request again. The same
+   digest with the same label and the same capability set, order and duplicates
+   ignored, returns the original request ID and code and stores nothing,
+   whatever has been decided since. The same digest with a different label or
+   set is refused as `failed` with `extensions.reason` `enrollment-conflict`. A
+   digest names one thing for ever: one that belongs to a grant, active or
+   revoked, is refused with `credential-in-use`, and after a denial the client
+   needs a fresh secret to ask again.
 2. The client polls `Query.koineGrantRequest` with its secret as the bearer.
-   While the request is pending that secret is a status-only principal: it reads
+   While the request is pending, and after it is denied, that secret is a
+   status-only principal: it reads
    its own request and nothing else. `koine`, `koineManagement`, provider fields
    `__schema`, `__type` and every mutation refuse it with the ordinary
    `permission` error, alone or beside `koineGrantRequest`, so it cannot approve itself or see another
@@ -83,12 +93,22 @@ GraphQL already approve.
    `Mutation.koineApproveGrantRequest(requestId:capabilities:)` with a subset of
    what was requested. Approval goes through the same serialized authority
    boundary as revocation, and one durable commit marks the request `APPROVED`
-   and inserts the grant bound to the submitted digest; a digest that already
-   belongs to a grant fails that commit whole.
+   and inserts the grant bound to the submitted digest. An empty subset is
+   valid, as it is for `koineCreateGrant`: the grant authenticates and holds
+   nothing. `Mutation.koineDenyGrantRequest(requestId:)` commits `DENIED` the
+   same way and returns the request. Neither changes anything when it refuses:
+   a request ID that names nothing is `unavailable`; a request already decided
+   is `failed` with `extensions.reason` `already-decided` and its state in
+   `extensions.requestState`; a capability that was not requested is `failed`
+   with `invalid-subset`. A decided request is never decided again, so a denied
+   request, or one whose grant was revoked, is not resurrected. A commit that
+   fails is `failed`, and the request is still pending.
 4. The unchanged secret now authenticates as that grant. `koineGrantRequest`
    shows `APPROVED` with the grant's metadata, and is null under a grant no
-   request produced. No response carries a secret or a digest. Requests,
-   approvals and the grants they produce survive a restart.
+   request produced. After a denial it shows `DENIED` with a null grant. Once
+   the grant is revoked the secret is HTTP 401 for everything, this query
+   included. No response carries a secret or a digest. Requests, decisions and
+   the grants they produce survive a restart.
 
 ## Building and testing
 

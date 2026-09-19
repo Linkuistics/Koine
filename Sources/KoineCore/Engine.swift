@@ -534,6 +534,8 @@ public final class Engine: Sendable {
                 extensions["requiredCapability"] = .string(capability)
             }
         }
+        if let reason = domain.reason { extensions["reason"] = .string(reason.rawValue) }
+        if let state = domain.requestState { extensions["requestState"] = .string(state.rawValue) }
         return GraphQLError(
             message: domain.message, nodes: nodes, path: path, extensions: extensions
         )

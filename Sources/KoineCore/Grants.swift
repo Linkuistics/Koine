@@ -29,11 +29,16 @@ public struct GrantRecord: Sendable, Equatable {
     }
 }
 
-/// Only the states this stage can produce are served; denial and expiry join
-/// them with the leaves that make them real.
+/// Only the states this stage can produce are served; expiry joins them with
+/// the leaf that makes it real. Every state but `pending` is terminal.
 public enum GrantRequestState: String, Sendable {
     case pending = "PENDING"
     case approved = "APPROVED"
+    case denied = "DENIED"
+
+    /// Whether proof of the submitted secret reads this request's status. Once
+    /// approved the grant decides instead, so a revoked grant's secret is nothing.
+    var isStatusOnly: Bool { self != .approved }
 }
 
 /// The persisted form of a client's request for a grant. It holds the digest
@@ -65,13 +70,15 @@ public struct GrantRequestRecord: Sendable, Equatable {
 }
 
 public enum GrantStoreError: Error {
-    /// Credential digests are globally unique; the caller retries with a new secret.
+    /// Credential digests are globally unique across requests and grants,
+    /// whatever their state; the caller needs a new secret.
     case duplicateDigest
 }
 
 /// The durable grant database. Every write is an atomic, durable commit, and a
 /// store that cannot be read throws: callers fail closed, never open.
 public protocol GrantStore: Sendable {
+    /// Throws `duplicateDigest` when a grant or a request already has this digest.
     func insert(_ grant: GrantRecord) throws
     func grants() throws -> [GrantRecord]
     func grant(id: String) throws -> GrantRecord?
@@ -80,7 +87,7 @@ public protocol GrantStore: Sendable {
     /// It returns only after the revocation is durable.
     func revoke(id: String) throws -> GrantRecord?
 
-    /// Throws `duplicateDigest` when another request already has this digest.
+    /// Throws `duplicateDigest` when a request or a grant already has this digest.
     func insertRequest(_ request: GrantRequestRecord) throws
     func requests() throws -> [GrantRequestRecord]
     func request(id: String) throws -> GrantRequestRecord?
@@ -89,6 +96,9 @@ public protocol GrantStore: Sendable {
     /// missing or no longer pending. Throws `duplicateDigest`, with nothing
     /// written, when the digest already belongs to a grant.
     func approve(requestId: String, as grant: GrantRecord) throws -> Bool
+    /// In one durable commit, marks the pending request denied. False, with
+    /// nothing written, when the request is missing or no longer pending.
+    func deny(requestId: String) throws -> Bool
 }
 
 /// Who is executing an operation. The admission cases are distinct: none is a

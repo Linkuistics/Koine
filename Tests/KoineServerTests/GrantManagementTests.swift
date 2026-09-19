@@ -267,8 +267,8 @@ import Testing
         #expect(names("management") == ["grants", "osPermissions", "providers", "requests"])
         #expect(
             names("mutation") == [
-                "koineApproveGrantRequest", "koineCreateGrant", "koineRequestGrant",
-                "koineRevokeGrant",
+                "koineApproveGrantRequest", "koineCreateGrant", "koineDenyGrantRequest",
+                "koineRequestGrant", "koineRevokeGrant",
             ]
         )
         await harness.stop()

@@ -117,6 +117,19 @@ requests are unbounded, and `Authority.authenticate` reads every request row on
 every authenticated call, so the cap bounds that scan too. `GrantEnrollmentTests`
 has the helpers, and reads the design operations from the file unchanged.
 
+**What `deny-retry-and-decision-outcomes-k35` left.** Already-decided is
+`state != .pending` and status-only is `GrantRequestState.isStatusOnly`
+(`!= .approved`), so k36 adds `EXPIRED` as a case and both rules take it in.
+Request outcomes that share `failed` carry `extensions.reason` (the table in the
+spec's "Management authority and surface"); k36's cap and rate limit need their
+own reasons there, and k37's UI reads `already-decided` with
+`extensions.requestState` when two managers decide at once. The store owns digest
+uniqueness across both tables, so tombstones k36 keeps must stay rows those
+checks see. An identical retry answers from the stored request in every state,
+which k36's retention has to decide about once the row is gone.
+`GrantDecisionTests` holds the decision cases; `ScriptedStore` fails `approve`
+and `deny` on demand.
+
 No research, prototype or review leaf is added, and no question for the human
 arose: the protocol is fully specified by the approved design. Notarization,
 Gatekeeper and the supported matrix stay with `release-acceptance-handoff-k11`.
