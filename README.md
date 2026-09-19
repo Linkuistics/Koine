@@ -150,7 +150,11 @@ engine reads only the provider.
 `Fixtures/FixtureProvider/` is test material: a provider built by its own
 `build.sh` with `swiftc` against the staged framework's `.swiftinterface` and
 image only. It shares no sources with the package, embeds no copy of the
-framework, and is not shipped.
+framework, and is not shipped. A test cannot reach into its image, so it serves
+what a test needs as fields of its own: `fixtureCalls` counts resolver calls,
+`fixtureCloseGate`/`fixtureOpenGate` hold and release a named resolver's calls,
+and `fixtureProbe` ends as each failure kind. `ProviderAuthorizationTests` uses
+them for the contract's "Public GraphQL authorization" cases.
 
 ## Resident application
 

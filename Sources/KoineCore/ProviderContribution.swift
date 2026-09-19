@@ -43,9 +43,10 @@ struct ProviderContribution {
         let providerId = providerId
         for field in active.descriptor.fields {
             let capability: String
+            let authorityClass: String
             switch field.authority {
-            case .read: capability = readCapability
-            case .control: capability = controlCapability
+            case .read: (capability, authorityClass) = (readCapability, "read")
+            case .control: (capability, authorityClass) = (controlCapability, "control")
             @unknown default: continue  // composition has refused this already
             }
             let parts = field.coordinate.split(separator: ".").map(String.init)
@@ -59,7 +60,24 @@ struct ProviderContribution {
                 uniqueKeysWithValues: definition.args.map { ($0.key, $0.value.type as any GraphQLType) }
             )
             let returnType: any GraphQLType = definition.type
-            all[coordinate] = FieldRegistration(authority: .capability(capability)) { input in
+            // A reference to another provider's resource needs that owner's
+            // capability of the field's class; using one never grants access.
+            // An unregistered owner has none, and is `unknown-provider` later.
+            let owners: @Sendable (Map) -> [FieldAuthority] = { arguments in
+                var owners: Set<String> = []
+                for (name, value) in arguments.dictionary ?? [:] {
+                    providerValue(value, as: argumentTypes[name])?.forEachReference { reference in
+                        guard let owner = ReferenceEnvelope(reference)?.provider,
+                            owner != providerId, registered.contains(owner)
+                        else { return }
+                        owners.insert(owner)
+                    }
+                }
+                return owners.sorted().map { .capability("\($0):\(authorityClass)") }
+            }
+            all[coordinate] = FieldRegistration(
+                authority: .capability(capability), argumentAuthorities: owners
+            ) { input in
                 var arguments: [String: ProviderValue] = [:]
                 for (name, value) in input.arguments.dictionary ?? [:] {
                     guard let argument = providerValue(value, as: argumentTypes[name]) else {

@@ -54,7 +54,7 @@ public final class Engine: Sendable {
     private let diagnostics: ProviderDiagnostics
     private let schema: GraphQLSchema
     private let authority: Authority
-    private let fieldAuthorities: [String: FieldAuthority]
+    private let registrations: [String: FieldRegistration]
     private let policy: RequestPolicy
     private let limits: RequestLimits
     private let reached: OrderingHook
@@ -116,7 +116,7 @@ public final class Engine: Sendable {
         }
         try Engine.install(fields, on: schema, authority: authority, reached: reached)
         self.schema = schema
-        fieldAuthorities = fields.mapValues(\.authority)
+        registrations = fields
     }
 
     /// The principal for a presented bearer credential, or nil. A store failure
@@ -150,7 +150,7 @@ public final class Engine: Sendable {
             return respond(.invalidRequest, errors: validationErrors)
         }
 
-        let denied = preflightDenials(of: actions, principal: principal)
+        let denied = preflightDenials(of: actions, request: request, principal: principal)
         guard denied.isEmpty else { return respond(.forbidden, errors: denied) }
         await reached(.preflightPassed)
 
@@ -239,13 +239,29 @@ public final class Engine: Sendable {
 
     /// Checks every selected root mutation action against the principal's
     /// current authority before any action begins. No resolver runs here.
-    private func preflightDenials(of actions: [Field], principal: Principal) -> [GraphQLError] {
+    private func preflightDenials(
+        of actions: [Field], request: EngineRequest, principal: Principal
+    ) -> [GraphQLError] {
         actions.compactMap { action in
-            guard let requirement = fieldAuthorities["Mutation.\(action.name.value)"] else {
+            guard let registration = registrations["Mutation.\(action.name.value)"] else {
                 return nil  // introspection meta-fields such as __typename
             }
+            // Untyped is enough: a reference is a string wherever it arrives
+            // from. A value execution will refuse to coerce names no owner, and
+            // execution refuses it before any action.
+            var arguments: Map = [:]
+            let definitions = (try? schema.mutationType?.fields()[action.name.value]?.args) ?? [:]
+            for (name, definition) in definitions {
+                let given = action.arguments.first { $0.name.value == name }
+                arguments[name] =
+                    given.flatMap {
+                        try? valueFromASTUntyped(valueAST: $0.value, variables: request.variables)
+                    } ?? definition.defaultValue ?? .undefined
+            }
             do {
-                try authority.check(requirement, for: principal)
+                let required =
+                    [registration.authority] + registration.argumentAuthorities(arguments)
+                for requirement in required { try authority.check(requirement, for: principal) }
                 return nil
             } catch {
                 let alias = action.alias?.value ?? action.name.value
@@ -380,7 +396,11 @@ public final class Engine: Sendable {
                         }
                         try scope.admitResolver()
                         let principal = scope.principal
-                        try authority.check(registration.authority, for: principal)
+                        let required =
+                            [registration.authority] + registration.argumentAuthorities(arguments)
+                        for requirement in required {
+                            try authority.check(requirement, for: principal)
+                        }
                         await reached(.admitted(coordinate))
                         let result = try await registration.resolve(
                             ResolverInput(
@@ -393,7 +413,9 @@ public final class Engine: Sendable {
                         // not publish the result.
                         if typeName != mutationTypeName {
                             await reached(.resolved(coordinate))
-                            try authority.check(registration.authority, for: principal)
+                            for requirement in required {
+                                try authority.check(requirement, for: principal)
+                            }
                         }
                         return result
                     } catch {
@@ -515,5 +537,9 @@ final class ProviderDiagnostics: @unchecked Sendable {
 
 struct FieldRegistration: Sendable {
     let authority: FieldAuthority
+    /// What the field's arguments require besides: the owner of each reference
+    /// among them. It reads the arguments and schema metadata, nothing else, so
+    /// preflight can ask it before any resolver runs.
+    var argumentAuthorities: @Sendable (Map) -> [FieldAuthority] = { _ in [] }
     let resolve: @Sendable (ResolverInput) async throws -> (any Sendable)?
 }

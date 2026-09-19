@@ -207,7 +207,10 @@ import Testing
             }
         )
         let harness = try await Harness(providers: [stub.active, Stub.good("good").active])
-        let credential = try await harness.consoleGrant(label: "c", capabilities: ["odd:read"])
+        // A reference to `good`'s resource needs `good:read` as well.
+        let credential = try await harness.consoleGrant(
+            label: "c", capabilities: ["odd:read", "good:read"]
+        )
         let reply = try await harness.post(
             "{ oddEcho(ref: \"koine://odd/a\", input: { refs: [\"koine://good/b\"], flag: true }) }",
             authorization: "Bearer \(credential)"

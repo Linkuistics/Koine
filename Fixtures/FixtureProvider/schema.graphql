@@ -5,11 +5,32 @@ extend type Query {
   fixtureItems: [FixtureItem!]!
   "fixture:read. A reference to an item that is gone is an execution error."
   fixtureItem(ref: Reference!): FixtureItem
+  "fixture:read. Ends as the named outcome, so a test can ask for each failure."
+  fixtureProbe(outcome: FixtureOutcome!): String
+  "fixture:read. How often each resolver has been called; reading this is not counted."
+  fixtureCalls: [FixtureCall!]!
 }
 
 extend type Mutation {
   "fixture:control. Renames exactly this item or reports failure."
   fixtureRenameItem(ref: Reference!, name: String!): FixtureRenameReceipt
+  "fixture:control. Holds every later call of this resolver, after counting it, until the gate opens."
+  fixtureCloseGate(resolver: String!): Boolean!
+  "fixture:control. Releases every held call."
+  fixtureOpenGate: Boolean!
+}
+
+enum FixtureOutcome {
+  OK
+  UNAVAILABLE
+  FAILED
+  OS_PERMISSION
+}
+
+"All fields require fixture:read."
+type FixtureCall {
+  resolver: String!
+  count: Int!
 }
 
 "All fields require fixture:read."
@@ -32,7 +53,9 @@ type FixtureItemDetail {
   size: Int!
 }
 
-"All fields require fixture:control."
+"Reached only from an action."
 type FixtureRenameReceipt {
   ref: Reference!
+  "The list requires fixture:control; each item's fields still require fixture:read."
+  affected: [FixtureItem!]!
 }

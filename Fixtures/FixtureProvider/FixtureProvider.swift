@@ -11,6 +11,8 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
     var descriptor: ProviderDescriptor {
         let read = [
             "Query.fixtureInfo": "info", "Query.fixtureItems": "items", "Query.fixtureItem": "item",
+            "Query.fixtureProbe": "probe", "Query.fixtureCalls": "calls",
+            "FixtureCall.resolver": "call.resolver", "FixtureCall.count": "call.count",
         ]
         // A nested field's resolver identifier is the key it reads from its parent.
         let outputs = [
@@ -34,7 +36,17 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
                 authority: .control
             ),
             ProviderFieldRegistration(
+                coordinate: "Mutation.fixtureCloseGate", resolverId: "closeGate", authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "Mutation.fixtureOpenGate", resolverId: "openGate", authority: .control
+            ),
+            ProviderFieldRegistration(
                 coordinate: "FixtureRenameReceipt.ref", resolverId: "parent.ref",
+                authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "FixtureRenameReceipt.affected", resolverId: "parent.affected",
                 authority: .control
             ),
         ]
@@ -49,16 +61,46 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
 
 /// Two items, `koine://fixture/item/1` and `koine://fixture/item/2`. A reference
 /// is re-resolved on every use; nothing is remembered for a caller.
+///
+/// A test cannot reach into this image, so what it observes and controls is
+/// served as fields: `fixtureCalls` counts every call by resolver identifier,
+/// and a closed gate holds the named resolver's calls, already counted, until
+/// `fixtureOpenGate`. The counters, the gate and their own fields are neither
+/// counted nor held.
 final class FixtureProvider: Provider, @unchecked Sendable {
     private let lock = NSLock()
     private var names = [1: "first", 2: "second"]
+    private var calls: [String: Int] = [:]
+    private var gated: Set<String> = []
+    private var held: [CheckedContinuation<Void, Never>] = []
 
     func start() async throws {}
     func stop() async {}
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {
-        if request.resolverId.hasPrefix("parent.") {
-            let key = String(request.resolverId.dropFirst("parent.".count))
+        let id = request.resolverId
+        if !["calls", "closeGate", "openGate"].contains(id), !id.hasPrefix("call.") {
+            await enter(id)
+        }
+        return answer(request)
+    }
+
+    /// Counts the call, then waits while the resolver's gate is closed.
+    private func enter(_ resolverId: String) async {
+        await withCheckedContinuation { continuation in
+            let isHeld = lock.withLock {
+                calls[resolverId, default: 0] += 1
+                guard gated.contains(resolverId) else { return false }
+                held.append(continuation)
+                return true
+            }
+            if !isHeld { continuation.resume() }
+        }
+    }
+
+    private func answer(_ request: ResolutionRequest) -> ResolutionResult {
+        for prefix in ["parent.", "call."] where request.resolverId.hasPrefix(prefix) {
+            let key = String(request.resolverId.dropFirst(prefix.count))
             guard case .object(let parent)? = request.parent, let value = parent[key] else {
                 return .failure(ProviderFailure(kind: .failed, message: "No parent value."))
             }
@@ -69,6 +111,40 @@ final class FixtureProvider: Provider, @unchecked Sendable {
             return .success(.object(["greeting": .string("hello from the fixture provider")]))
         case "items":
             return .success(.list(lock.withLock { names.keys.sorted().compactMap(item) }))
+        case "probe":
+            switch request.arguments["outcome"] {
+            case .string("OK"): return .success(.string("ok"))
+            case .string("UNAVAILABLE"): return gone
+            case .string("OS_PERMISSION"):
+                return .failure(
+                    .osPermission("accessibility", message: "Koine needs Accessibility access.")
+                )
+            default:
+                return .failure(ProviderFailure(kind: .failed, message: "The probe failed."))
+            }
+        case "calls":
+            let counted = lock.withLock { calls }
+            return .success(
+                .list(
+                    counted.sorted { $0.key < $1.key }.map {
+                        .object(["resolver": .string($0.key), "count": .int($0.value)])
+                    }
+                )
+            )
+        case "closeGate":
+            guard case .string(let resolver)? = request.arguments["resolver"] else {
+                return .failure(ProviderFailure(kind: .failed, message: "No resolver."))
+            }
+            lock.withLock { _ = gated.insert(resolver) }
+            return .success(.bool(true))
+        case "openGate":
+            let released = lock.withLock {
+                gated = []
+                defer { held = [] }
+                return held
+            }
+            for continuation in released { continuation.resume() }
+            return .success(.bool(true))
         case "item":
             return number(of: request.arguments["ref"]).flatMap { number in
                 lock.withLock { item(number) }.map(ResolutionResult.success) ?? gone
@@ -81,7 +157,12 @@ final class FixtureProvider: Provider, @unchecked Sendable {
                 lock.withLock {
                     guard names[number] != nil else { return gone }
                     names[number] = name
-                    return .success(.object(["ref": .reference(Self.reference(number))]))
+                    return .success(
+                        .object([
+                            "ref": .reference(Self.reference(number)),
+                            "affected": .list([item(number)].compactMap { $0 }),
+                        ])
+                    )
                 }
             }
         default:

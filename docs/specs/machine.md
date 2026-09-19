@@ -267,6 +267,11 @@ Store authorization by original schema coordinate and resource-owner authority,
 not response alias. Expand fragments, merge fields by GraphQL rules and evaluate
 `@skip` / `@include` with coerced variables. Check each read field before calling
 its resolver, including scalar defaults and alternate reference lookups. A
+field whose arguments hold a reference owned by another registered provider also
+requires that owner's capability of the field's own class, read or control; the
+owner is read from the reference's authority, never from its remainder. A
+reference whose authority is unregistered has no owner to check and is
+`unknown-provider` at execution. A
 provider cannot mark its fields public or mint management authority. Provider
 metadata can require its own read/control capabilities; only core registrations
 can designate public enrollment or management authority.
