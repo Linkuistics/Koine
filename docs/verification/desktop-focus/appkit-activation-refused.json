@@ -1,0 +1,2 @@
+{"case": "focus", "ref": "koine://desktop/window/357/1789835010169988/b6e1141dbe95e493/1", "response": {"data": {"desktopFocusWindow": null}, "errors": [{"message": "The window was raised, but its application refused the request to activate.", "locations": [{"line": 2, "column": 3}], "path": ["desktopFocusWindow"], "extensions": {"kind": "failed"}}]}}
+{"application":{"name":"TextEdit","pid":731},"id":59,"title":"focus-target.txt","frontCGWindow":{"pid":731,"windowNumber":59}}

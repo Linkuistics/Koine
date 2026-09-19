@@ -5,9 +5,15 @@ identity as any client must: the PID, and the kernel's start instant for it
 (proc_pidinfo PROC_PIDTBSDINFO, whole microseconds) in the contract's canonical
 UTC form. Prints one JSON object per line: {"case", "pid", "startedAt", "response"}.
 A reference it was given is passed back unchanged: {"case", "ref", "response"}.
+With --operations, DesktopChoices and FocusDesktopWindow are sent as that file
+has them, text unchanged (docs/design/desktop-operations.graphql); the file's
+other operations name fields a later stage serves, so each is sent alone.
 
 usage: vm-verify-desktop-client.py <credential file> <application name> [exact|plain|later|malformed|absent]
        vm-verify-desktop-client.py <credential file> --ref application|application-plain|window <reference>
+       vm-verify-desktop-client.py <credential file> --operations <file> choices <application name>
+       vm-verify-desktop-client.py <credential file> --operations <file> focus <reference>
+       vm-verify-desktop-client.py <credential file> --type <GraphQL type name>
 """
 import ctypes, datetime, json, os, subprocess, sys, urllib.request
 
@@ -26,6 +32,14 @@ BY_REFERENCE = {
     "application-plain": "query($ref: Reference!) { desktopApplicationByReference(ref: $ref) { ref name bundleIdentifier } }",
     "window": "query($ref: Reference!) { desktopWindow(ref: $ref) { ref title observation } }",
 }
+
+
+def operation(path, name):
+    """One named operation of a GraphQL document whose operations are separated by blank lines."""
+    for block in open(path).read().split("\n\n"):
+        if block.split("(")[0].split()[1:2] == [name]:
+            return block.strip() + "\n"
+    raise SystemExit("no operation %s in %s" % (name, path))
 
 
 def start_microseconds(pid):
@@ -63,9 +77,24 @@ def main():
         kind, ref = sys.argv[3], sys.argv[4]
         print(json.dumps({"case": kind, "ref": ref, "response": ask(credential, BY_REFERENCE[kind], {"ref": ref})}))
         return
-    name, case = sys.argv[2], (sys.argv[3] if len(sys.argv) > 3 else "exact")
+    if sys.argv[2] == "--type":
+        query = "query($name: String!) { __type(name: $name) { fields { name } } }"
+        print(json.dumps({"case": "type", "response": ask(credential, query, {"name": sys.argv[3]})}))
+        return
+    if sys.argv[2] == "--operations" and sys.argv[4] == "focus":
+        ref = sys.argv[5]
+        response = ask(credential, operation(sys.argv[3], "FocusDesktopWindow"), {"ref": ref})
+        print(json.dumps({"case": "focus", "ref": ref, "response": response}))
+        return
+    designed = sys.argv[2] == "--operations"
+    name, case = (sys.argv[5], "choices") if designed else (sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "exact")
     pid = int(subprocess.check_output(["pgrep", "-x", name]).split()[0])
     micros = start_microseconds(pid)
+    if designed:
+        process = {"pid": pid, "startedAt": canonical(micros)}
+        response = ask(credential, operation(sys.argv[3], "DesktopChoices"), {"process": process})
+        print(json.dumps({"case": case, **process, "response": response}))
+        return
     process = {
         "exact": {"pid": pid, "startedAt": canonical(micros)},
         "plain": {"pid": pid, "startedAt": canonical(micros)},

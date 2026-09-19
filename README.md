@@ -69,6 +69,7 @@ task app:verify  # codesign --verify --strict, hardened runtime, designated requ
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
+task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
@@ -299,6 +300,8 @@ desktopApplication(process: { pid: 412, startedAt: "2026-09-19T01:02:03.000456Z"
 }
 desktopApplicationByReference(ref: "koine://desktop/application/…") { … }  # the same fields
 desktopWindow(ref: "koine://desktop/window/…") { ref title observation }
+
+mutation { desktopFocusWindow(ref: "koine://desktop/window/…") { ref } }   # desktop:control
 ```
 
 **Process identity.** Both halves are compared. `startedAt` is the kernel's
@@ -357,8 +360,38 @@ process incarnation is all it encodes, and every window reference is
 applications, and what it cannot distinguish:
 [docs/verification/desktop-window-identity.md](docs/verification/desktop-window-identity.md).
 
+**Focus.** `desktopFocusWindow(ref:)` needs `desktop:control` and nothing else:
+its receipt, `DesktopFocusReceipt { ref }`, is the submitted reference, read under
+the same authority, and has no window field. The provider re-resolves the
+reference exactly as `desktopWindow` does, then checks consent, then asks the held
+element once more that it is still its own window, and only then acts; a target
+that cannot be re-established is `unavailable` and missing consent is
+`os-permission`, and neither activates anything or moves focus. The action
+restores a minimised window, makes the window main, raises it and brings its
+application to the front through the Accessibility API (`AXFrontmost`): AppKit's
+activation is closed to a background service, and answered no in the VM. macOS
+treats coming forward as a request it may not honour, so a receipt is returned only once the application reports itself frontmost with
+that element as its focused window, within three seconds. Every step that fails
+is a `failed` error naming the step, including one after the window was raised
+or the application activated; a window that closes mid-action is `unavailable`. Applications
+may change focus afterwards, and a lost response does not mean the action failed.
+The wait ends on cancellation and runs off the provider's queue, so reads are not
+held behind it.
+
+`task app:vm-verify-desktop-focus` (`scripts/vm-verify-desktop-focus.sh`), after
+`task app`, proves it on the signed bundle with Finder, TextEdit and Stickies. A
+reading grant lists the choices and a separate grant with `desktop:control` alone
+focuses, using `DesktopChoices` and `FocusDesktopWindow` exactly as
+`docs/design/desktop-operations.graphql` has them. What has focus is read from
+the system by `Fixtures/WindowIdentityProbe`, never from Koine: each of two
+same-titled windows in both orders, a window of a background application, a
+minimised window and a window on another Space; and a closed window, a quit and
+a restarted application, a reference that cannot be re-established and revoked
+consent, none of which moves focus. Evidence:
+[docs/verification/desktop-focus-vm.md](docs/verification/desktop-focus-vm.md).
+
 `task app:vm-verify-desktop` (`scripts/vm-verify-desktop.sh`), after `task app`,
-proves this on the signed bundle in a clean VM over loopback GraphQL with grants
+proves the reads on the signed bundle in a clean VM over loopback GraphQL with grants
 created in Koine's window: the provider is `ACTIVE`, Finder resolves by `pid` and
 `startedAt`, its same-titled windows carry distinct and stable references, a
 mismatched `startedAt` and an absent process are null, a malformed one is an

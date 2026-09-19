@@ -19,7 +19,9 @@ token by `CFEqual` against the elements already held) and `held` (every element
 ever listed, asked again now). For every element it also reports the
 `CGWindowID` from the private `_AXUIElementGetWindow`. That call appears in the
 probe alone, as an independent witness of *which window an element is*, so that
-the public mechanism is checked against something other than itself.
+the public mechanism is checked against something other than itself. Its one-shot
+`focused` and `windows <pid>` modes came later, as the native witness of
+[desktop-focus-vm.md](desktop-focus-vm.md).
 
 ```sh
 Fixtures/WindowIdentityProbe/build.sh .build/probe   # build and sign, on the host

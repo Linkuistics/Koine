@@ -15,6 +15,11 @@ extend type Query {
   desktopWindow(ref: Reference!): DesktopWindow
 }
 
+extend type Mutation {
+  "desktop:control. Focuses exactly this window or reports why it did not; never a substitute."
+  desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
+}
+
 "All fields require desktop:read."
 type DesktopApplication {
   ref: Reference!
@@ -29,5 +34,8 @@ type DesktopWindow {
   title: String!
   observation: DesktopObservation!
 }
+
+"The submitted target, under the action's desktop:control."
+type DesktopFocusReceipt { ref: Reference! }
 
 enum DesktopObservation { CURRENT }

@@ -180,11 +180,7 @@ import Testing
         let harness = try await Harness(bundledRoots: try Self.bundled())
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let pid = try Self.running().processIdentifier
-        var info = kinfo_proc()
-        var size = MemoryLayout<kinfo_proc>.size
-        var name = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
-        try #require(sysctl(&name, 4, &info, &size, nil, 0) == 0 && size > 0)
-        let start = Int(info.kp_proc.p_starttime.tv_sec) * 1_000_000 + Int(info.kp_proc.p_starttime.tv_usec)
+        let start = try Self.startMicroseconds(pid)
         let ref =
             switch reference {
             case "LIVE-APPLICATION": "koine://desktop/application/\(pid)/\(start)"
@@ -214,6 +210,68 @@ import Testing
             try Self.expectUnavailable(reply, at: field)
         }
         await harness.stop()
+    }
+
+    // MARK: Focus
+
+    /// Decided before any Accessibility call and before anything is activated, so
+    /// these hold on the host and move no focus there. The grant has no
+    /// `desktop:read`: the action and its receipt need control alone. Focusing a
+    /// real window is the VM verification (docs/verification/desktop-focus-vm.md).
+    @Test(arguments: [
+        "koine://desktop/window/1000000/5/00ab34cd56ef7890/1",
+        "LIVE-WINDOW-OTHER-SESSION",
+        "LIVE-APPLICATION",
+        "koine://desktop/window/412/5/SHORT/7",
+        ProviderAuthorizationTests.first,
+    ])
+    func focusingAReferenceThatNamesNoHeldWindowIsUnavailable(reference: String) async throws {
+        let harness = try await Harness(
+            providerRoots: [try NativeProviderTests.fixtureRoot()], bundledRoots: try Self.bundled()
+        )
+        // Preflight also requires control of the provider a reference names, so the
+        // fixture's reference reaches this provider only with `fixture:control`.
+        let controller = try await harness.consoleGrant(
+            label: "controller", capabilities: ["desktop:control", "fixture:control"]
+        )
+        let pid = try Self.running().processIdentifier
+        let start = try Self.startMicroseconds(pid)
+        let ref =
+            switch reference {
+            case "LIVE-APPLICATION": "koine://desktop/application/\(pid)/\(start)"
+            case "LIVE-WINDOW-OTHER-SESSION": "koine://desktop/window/\(pid)/\(start)/00ab34cd56ef7890/1"
+            default: reference
+            }
+        let reply = try await harness.post(
+            Self.focus, variables: ["ref": ref], authorization: "Bearer \(controller)"
+        )
+        try Self.expectUnavailable(reply, at: "desktopFocusWindow")
+        await harness.stop()
+    }
+
+    @Test func focusingWithoutDesktopControlIsRefusedBeforeTheProviderIsAsked() async throws {
+        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let reply = try await harness.post(
+            Self.focus, variables: ["ref": "koine://desktop/window/1000000/5/00ab34cd56ef7890/1"],
+            authorization: "Bearer \(reader)"
+        )
+        let extensions = try #require(reply.errors.first?["extensions"] as? [String: Any])
+        #expect(extensions["kind"] as? String == "permission")
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(extensions["requiredCapability"] as? String == "desktop:control")
+        await harness.stop()
+    }
+
+    /// `FocusDesktopWindow`, as docs/design/desktop-operations.graphql has it.
+    static let focus = "mutation FocusDesktopWindow($ref: Reference!) { desktopFocusWindow(ref: $ref) { ref } }"
+
+    static func startMicroseconds(_ pid: pid_t) throws -> Int {
+        var info = kinfo_proc()
+        var size = MemoryLayout<kinfo_proc>.size
+        var name = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
+        try #require(sysctl(&name, 4, &info, &size, nil, 0) == 0 && size > 0)
+        return Int(info.kp_proc.p_starttime.tv_sec) * 1_000_000 + Int(info.kp_proc.p_starttime.tv_usec)
     }
 
     /// An error at the field, never null without one and never a substitute.

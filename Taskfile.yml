@@ -70,6 +70,11 @@ tasks:
     cmds:
       - scripts/vm-verify-desktop.sh
 
+  app:vm-verify-desktop-focus:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktopFocusWindow, under desktop:control alone, focuses exactly the chosen one of two same-titled windows, a background application's, a minimised and an other-Space window, as an independent native witness sees it, and that a closed, quit, restarted or unresolvable target and revoked consent are errors that move no focus
+    cmds:
+      - scripts/vm-verify-desktop-focus.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:

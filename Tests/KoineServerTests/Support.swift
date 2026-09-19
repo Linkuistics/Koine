@@ -40,18 +40,29 @@ final class Harness {
         try await server.start()
     }
 
-    /// Off the cooperative pool: verifying a signature blocks on work the
-    /// Security framework dispatches, and a pool whose every thread is a test
-    /// blocked there starves it. The application constructs on the main thread.
+    /// Off the cooperative pool, and one at a time: verifying a signature blocks
+    /// on work the Security framework dispatches to the global queues, and a pool
+    /// whose every thread is a test blocked there starves it. That holds for the
+    /// global dispatch pool too, whose threads are bounded: enough suites
+    /// constructing at once hung the run there. The application constructs once,
+    /// on the main thread.
+    private static let constructing = DispatchQueue(label: "dev.antony.Koine.tests.constructing")
+
     private static func makeServer(
         _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider]
     ) async throws -> KoineServer {
-        try await offPool {
-            try KoineServer(
-                dataDirectory: directory, policy: policy,
-                providerRoots: roots,
-                providerStaging: providerStaging, additionalProviders: providers
-            )
+        try await withCheckedThrowingContinuation { continuation in
+            constructing.async {
+                continuation.resume(
+                    with: Result {
+                        try KoineServer(
+                            dataDirectory: directory, policy: policy,
+                            providerRoots: roots,
+                            providerStaging: providerStaging, additionalProviders: providers
+                        )
+                    }
+                )
+            }
         }
     }
 

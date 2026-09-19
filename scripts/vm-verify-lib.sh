@@ -113,7 +113,9 @@ expect_status() {
 }
 
 launch() {
-    guest "open ${INSTALLED}"
+    # The agent's false timeout comes in bursts that can outlast guest's retries.
+    # What follows proves the launch: the window, then the endpoint descriptor.
+    guest "open ${INSTALLED}" || true
     place_window
     for _ in $(seq 1 12); do
         if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then return; fi

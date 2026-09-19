@@ -151,5 +151,21 @@ retries TestAnyware's exit 7 as well; a run is about sixty guest execs and
 twenty-five minutes. Evidence:
 `docs/verification/desktop-references-and-permission-vm.md`.
 
+`focus-exact-window-k30` is complete. What the later leaves build on:
+`held(referencedBy:)` in `DesktopProvider.swift` is the one re-resolution, for
+reads and for focus, and focus confirms identity and acts in one turn on the
+provider's queue, then waits off it until the application reports the held element
+focused. AppKit activation answers no to a background service, so the application
+is brought forward by setting `AXFrontmost`; a window on another Space focuses
+through its held element and macOS switches Spaces, which is what selecting a
+`REMEMBERED` row will rely on. For VM work: `scripts/vm-verify-desktop-lib.sh`
+holds the shared desktop helpers and `guest_json`, which survives the agent's
+bursts of false timeouts for any command answering one JSON line;
+`WindowIdentityProbe focused` and `windows <pid>` are the native witness (its
+system-wide query does not work in the VM); read a state before acting on it, or
+the step cannot fail. `Harness.makeServer` constructs on a serial queue: parallel
+signature checks starve the global dispatch pool and hang `swift test`. Evidence:
+`docs/verification/desktop-focus-vm.md`.
+
 Until `grant-enrollment-k10` lands, clients obtain grants through the manual
 workflow. That is sufficient for ModalAnyware to begin work against this path.

@@ -37,6 +37,15 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
                 )
             }
         }
+        // The receipt is read under the action's own authority, not desktop:read.
+        fields += [
+            ProviderFieldRegistration(
+                coordinate: "Mutation.desktopFocusWindow", resolverId: "focusWindow", authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "DesktopFocusReceipt.ref", resolverId: "parent.ref", authority: .control
+            ),
+        ]
         return ProviderDescriptor(
             providerId: "desktop", graphQLPrefix: "Desktop", schemaSDL: desktopSchemaSDL,
             fields: fields, requiredFeatures: []
@@ -67,8 +76,13 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             }
             return .success(value)
         }
-        return await withCheckedContinuation { continuation in
-            queue.async { continuation.resume(returning: self.answer(request)) }
+        if request.resolverId == "focusWindow" { return await focus(request.arguments["ref"]) }
+        return await onQueue { self.answer(request) }
+    }
+
+    private func onQueue<Value: Sendable>(_ work: @escaping @Sendable () -> Value) async -> Value {
+        await withCheckedContinuation { continuation in
+            queue.async { continuation.resume(returning: work()) }
         }
     }
 
@@ -188,31 +202,44 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         )
     }
 
-    /// Re-resolves one window reference. What needs no Accessibility call is
-    /// decided first, so a reference that names nothing is `unavailable` with or
-    /// without consent; asking the held element needs consent.
     private func window(referencedBy ref: ProviderValue?) -> ResolutionResult {
+        switch held(referencedBy: ref) {
+        case .window(let process, let token, _, let title): .success(row(process, token: token, title: title))
+        case .not(let result): result
+        }
+    }
+
+    private enum Held {
+        case window(ProcessIncarnation, token: UInt64, AXUIElement, title: String)
+        case not(ResolutionResult)
+    }
+
+    /// Re-resolves one window reference to the element it names. What needs no
+    /// Accessibility call is decided first, so a reference that names nothing is
+    /// `unavailable` with or without consent; asking the held element needs
+    /// consent. Reading and focusing both start here.
+    private func held(referencedBy ref: ProviderValue?) -> Held {
         guard case .reference(let uri)? = ref,
             case .window(let process, let session, let token)? = DesktopReference(uri: uri)
-        else { return notAWindow }
+        else { return .not(notAWindow) }
         // Table membership proves nothing about the process: ask the kernel.
-        guard isRunning(process) else { return closed }
+        guard isRunning(process) else { return .not(closed) }
         guard session == table.session, let element = table.element(token, of: process) else {
-            return closed
+            return .not(closed)
         }
-        guard AXIsProcessTrusted() else { return untrusted }
+        guard AXIsProcessTrusted() else { return .not(untrusted) }
         // Still a real window, and still its own: the held element is asked
         // again on every use (docs/verification/desktop-window-identity.md).
         switch window(element, of: process.pid) {
-        case .value(let title): return .success(row(process, token: token, title: title))
+        case .value(let title): return .window(process, token: token, element, title: title)
         // No longer a window, or no longer provably its own: not this target.
-        case .absent: return closed
+        case .absent: return .not(closed)
         case .gone:
             table.retire(token, of: process)
-            return closed
+            return .not(closed)
         case .failed(let error):
             // The elements of a process that ended answer kAXErrorCannotComplete.
-            return isRunning(process) ? unanswered(error) : closed
+            return .not(isRunning(process) ? unanswered(error) : closed)
         }
     }
 
@@ -288,6 +315,131 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
     }
 
+    // MARK: Focus
+
+    /// The element is used only on the provider's queue.
+    private struct Target: @unchecked Sendable {
+        var pid: Int32
+        var element: AXUIElement
+    }
+
+    private enum Step: Sendable {
+        case target(Target)
+        case done
+        case pending
+        case ended(ResolutionResult)
+    }
+
+    /// How long the application has to show the window focused after every
+    /// native step succeeded, and how often it is asked.
+    private static let focusWait: UInt64 = 3_000_000_000
+    private static let focusPoll: UInt64 = 50_000_000
+
+    /// Focuses exactly the window `ref` names. Re-resolution, consent and
+    /// identity come first and end the action with nothing activated. Bringing an
+    /// application forward is a request the system may not honour, so success is
+    /// what the application then reports:
+    /// it is frontmost and its focused window is the held element. The wait for
+    /// that is bounded, runs off the queue, and ends on cancellation.
+    private func focus(_ ref: ProviderValue?) async -> ResolutionResult {
+        guard !Task.isCancelled else { return failed("Cancelled before the window was focused.") }
+        // One turn on the queue: nothing comes between confirming identity and acting.
+        let target: Target
+        switch await onQueue({ self.resolveAndAct(ref) }) {
+        case .target(let acted): target = acted
+        case .ended(let result): return result
+        case .done, .pending: return failed("The window could not be resolved.")
+        }
+        let deadline = DispatchTime.now().uptimeNanoseconds + Self.focusWait
+        while true {
+            switch await onQueue({ self.hasFocus(target) }) {
+            case .done: return .success(.object(["ref": ref ?? .null]))
+            case .ended(let result): return result
+            case .pending, .target: break
+            }
+            guard DispatchTime.now().uptimeNanoseconds < deadline else {
+                return failed(
+                    "The application was asked to activate and the window to raise, but the window "
+                        + "did not take focus within 3 seconds."
+                )
+            }
+            guard (try? await Task.sleep(nanoseconds: Self.focusPoll)) != nil else {
+                return failed("Cancelled while waiting for the window to take focus.")
+            }
+        }
+    }
+
+    private func resolveAndAct(_ ref: ProviderValue?) -> Step {
+        switch held(referencedBy: ref) {
+        case .window(let process, _, let element, _):
+            let target = Target(pid: process.pid, element: element)
+            if case .ended(let result) = act(on: target) { return .ended(result) }
+            return .target(target)
+        case .not(let result): return .ended(result)
+        }
+    }
+
+    /// The native steps, in order; the first that fails ends the action and is
+    /// reported. The window is made main and raised before its application is
+    /// activated, so the application comes forward with this window in front.
+    private func act(on target: Target) -> Step {
+        let window = target.element
+        switch read(window, kAXMinimizedAttribute, as: Bool.self) {
+        case .value(true):
+            let error = set(window, kAXMinimizedAttribute, to: false)
+            guard error == .success else { return stopped("could not be restored from the Dock", error) }
+        case .value(false), .absent: break
+        case .gone: return .ended(closed)
+        case .failed(let error): return stopped("did not answer whether it is minimised", error)
+        }
+        var error = set(window, kAXMainAttribute, to: true)
+        guard error == .success else { return stopped("could not be made the main window", error) }
+        error = perform(window, kAXRaiseAction)
+        guard error == .success else { return stopped("could not be raised", error) }
+        // The application is brought forward through Accessibility, under the consent
+        // this action already needs. AppKit's route is closed to a background
+        // service: NSRunningApplication.h deprecates activateIgnoringOtherApps as
+        // having no effect from macOS 14, -activateFromApplication: needs the active
+        // application to yield, and -activateWithOptions: answered NO for Finder in
+        // the VM (docs/verification/desktop-focus-vm.md). AXAttributeConstants.h
+        // lists AXFrontmost as an application attribute and does not say it can be
+        // set; no official source found for that, so the wait below is the proof.
+        let application = AXUIElementCreateApplication(target.pid)
+        error = set(application, kAXFrontmostAttribute, to: true)
+        guard error == .success else {
+            return stopped("was raised, but its application could not be brought to the front", error)
+        }
+        return .pending
+    }
+
+    private func hasFocus(_ target: Target) -> Step {
+        let application = AXUIElementCreateApplication(target.pid)
+        switch read(application, kAXFrontmostAttribute, as: Bool.self) {
+        case .value(true): break
+        case .value(false), .absent: return .pending
+        case .gone: return .ended(failed("The application ended after it was asked to activate."))
+        case .failed(let error): return stopped("was raised, but its application did not answer", error)
+        }
+        switch read(application, kAXFocusedWindowAttribute, as: AXUIElement.self) {
+        case .value(let focused): return CFEqual(focused, target.element) ? .done : .pending
+        case .absent: return .pending
+        case .gone: return .ended(failed("The application ended after it was asked to activate."))
+        case .failed(let error): return stopped("was raised, but its application did not answer", error)
+        }
+    }
+
+    private func stopped(_ what: String, _ error: AXError) -> Step {
+        // Consent can end while Koine runs, and between the trust check and the call.
+        if error == .apiDisabled { return .ended(untrusted) }
+        // The window closed between the identity check and this step.
+        if error == .invalidUIElement { return .ended(closed) }
+        return .ended(failed("The window \(what) (AXError \(error.rawValue))."))
+    }
+
+    private func failed(_ message: String) -> ResolutionResult {
+        .failure(ProviderFailure(kind: .failed, message: message))
+    }
+
     private var gone: ResolutionResult { unavailable("The application is no longer running.") }
     private var closed: ResolutionResult { unavailable("The window is no longer open.") }
     private var notAnApplication: ResolutionResult {
@@ -304,7 +456,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted
     private var untrusted: ResolutionResult {
         .failure(
-            .osPermission("accessibility", message: "Koine needs Accessibility access to read windows.")
+            .osPermission("accessibility", message: "Koine needs Accessibility access to read and focus windows.")
         )
     }
 

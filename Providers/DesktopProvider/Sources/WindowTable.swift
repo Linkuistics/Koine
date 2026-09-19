@@ -88,3 +88,13 @@ func read<Value>(_ element: AXUIElement, _ name: String, as type: Value.Type) ->
     case let error: return .failed(error)
     }
 }
+
+func set(_ element: AXUIElement, _ name: String, to value: Bool) -> AXError {
+    AXUIElementSetMessagingTimeout(element, messagingTimeout)
+    return AXUIElementSetAttributeValue(element, name as CFString, value ? kCFBooleanTrue : kCFBooleanFalse)
+}
+
+func perform(_ element: AXUIElement, _ action: String) -> AXError {
+    AXUIElementSetMessagingTimeout(element, messagingTimeout)
+    return AXUIElementPerformAction(element, action as CFString)
+}
