@@ -50,6 +50,12 @@ tasks:
     cmds:
       - scripts/vm-verify.sh
 
+  app:vm-verify-providers:
+    desc: Verify in a clean TestAnyware macOS VM that the signed, hardened bundle loads an approved same-team fixture provider and refuses an ad-hoc signed or incompatible one
+    deps: [fixture:variants]
+    cmds:
+      - scripts/vm-verify-providers.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:

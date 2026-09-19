@@ -63,6 +63,7 @@ task compat    # build and run the binary compatibility pairs; compat:build and 
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
+task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
@@ -365,6 +366,17 @@ Quit (descriptor gone). It needs `testanyware` and `jq`, and leaves its
 transcript in `.build/vm-verify/`. The procedure, what the route does and does
 not show about Gatekeeper, and the recorded evidence are in
 [docs/verification/resident-app-vm.md](docs/verification/resident-app-vm.md).
+
+`task app:vm-verify-providers` (`scripts/vm-verify-providers.sh`) is its sibling
+for native providers. After `task app`, it installs the signed bundle and, in
+turn, three fixture bundles in the per-user provider root with their approval
+record: the approved same-team fixture is `ACTIVE` and serves its field to a
+client holding `fixture:read`; an ad-hoc signed one is `REJECTED` and one
+demanding framework minor 99 is `INCOMPATIBLE`, each with a diagnostic, no
+fixture field in introspection, no image mapped, and management still
+answering. It records the bundle's empty entitlements, the framework's signature
+inside the bundle and the images the process mapped. Evidence:
+[docs/verification/signed-app-provider-vm.md](docs/verification/signed-app-provider-vm.md).
 
 ## Dependencies
 

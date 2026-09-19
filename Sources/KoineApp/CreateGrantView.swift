@@ -67,6 +67,7 @@ struct CreateGrantView: View {
             }
             ForEach(model.available, id: \.self) { capability in
                 Toggle(capability, isOn: binding(for: capability))
+                    .accessibilityIdentifier("capability-\(capability)")
             }
             if model.selected.contains("koine:manage") {
                 Label(
