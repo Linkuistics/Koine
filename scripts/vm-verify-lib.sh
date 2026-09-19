@@ -40,18 +40,26 @@ fail() {
 # of all execs, `true` included, run to completion and are then reported as
 # "Process timed out after 30s" with status 255. Every command here is safe to
 # repeat, so that one answer is retried; anything else is the command's own.
+# Six tries were exhausted about once in a run of sixty execs, on commands that
+# never reach Koine as well as ones that do, so the bound is twelve.
 guest() {
     local out status
-    for _ in 1 2 3 4 5 6; do
+    for _ in 1 2 3 4 5 6 7 8 9 10 11 12; do
         status=0
         out="$(testanyware file exec "$1" 2>&1)" || status=$?
         if [ "${status}" = 255 ] && grep -q 'Process timed out after 30s' <<<"${out}"; then
+            continue
+        fi
+        # 7 is testanyware's CONNECTION_TIMEOUT: the agent was not reached at all.
+        if [ "${status}" = 7 ]; then
+            sleep 5
             continue
         fi
         [ -z "${out}" ] || echo "${out}"
         return "${status}"
     done
     echo "guest exec kept timing out: $1" >&2
+    [ -z "${out}" ] || echo "${out}" >&2
     return 255
 }
 

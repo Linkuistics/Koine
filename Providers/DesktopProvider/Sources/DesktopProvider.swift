@@ -20,6 +20,13 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
                 coordinate: "Query.desktopApplication", resolverId: "application", authority: .read
             ),
             ProviderFieldRegistration(
+                coordinate: "Query.desktopApplicationByReference", resolverId: "applicationByReference",
+                authority: .read
+            ),
+            ProviderFieldRegistration(
+                coordinate: "Query.desktopWindow", resolverId: "window", authority: .read
+            ),
+            ProviderFieldRegistration(
                 coordinate: "DesktopApplication.windows", resolverId: "windows", authority: .read
             ),
         ]
@@ -68,6 +75,8 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     private func answer(_ request: ResolutionRequest) -> ResolutionResult {
         switch request.resolverId {
         case "application": application(request.arguments["process"])
+        case "applicationByReference": application(referencedBy: request.arguments["ref"])
+        case "window": window(referencedBy: request.arguments["ref"])
         case "windows": windows(of: request.parent)
         default: .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
@@ -90,20 +99,45 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
         // Both halves are compared: a live PID started at another instant is
         // another process, and absent.
+        switch running(pid: pid, startMicroseconds: claimed.microsecondsSinceEpoch) {
+        case .value(let application): return .success(application)
+        case .absent, .gone: return .success(.null)
+        case .failed(let reason): return .failure(ProviderFailure(kind: .failed, message: reason))
+        }
+    }
+
+    /// A reference that no longer names a running application is `unavailable`,
+    /// where an absent process identity is ordinary null: the caller was given
+    /// this reference, so its target existed.
+    private func application(referencedBy ref: ProviderValue?) -> ResolutionResult {
+        guard case .reference(let uri)? = ref, case .application(let process)? = DesktopReference(uri: uri)
+        else { return notAnApplication }
+        switch running(pid: process.pid, startMicroseconds: process.startMicroseconds) {
+        case .value(let application): return .success(application)
+        case .absent, .gone: return gone
+        case .failed(let reason): return .failure(ProviderFailure(kind: .failed, message: reason))
+        }
+    }
+
+    private enum Running {
+        case value(ProviderValue)
+        case absent
+        case gone
+        case failed(String)
+    }
+
+    /// The application fields that need no Accessibility consent, read now. Every
+    /// route to an application ends here, so they report the same fields.
+    private func running(pid: Int32, startMicroseconds: Int64) -> Running {
         switch processStart(of: pid) {
-        case .absent: return .success(.null)
-        case .unreadable(let reason):
-            return .failure(
-                ProviderFailure(kind: .failed, message: "The process could not be read: \(reason).")
-            )
+        case .absent: return .absent
+        case .unreadable(let reason): return .failed("The process could not be read: \(reason).")
         case .running(let actual):
-            guard actual == claimed,
+            guard actual.microsecondsSinceEpoch == startMicroseconds,
                 let running = NSRunningApplication(processIdentifier: pid), !running.isTerminated
-            else { return .success(.null) }
-            let process = ProcessIncarnation(
-                pid: pid, startMicroseconds: actual.microsecondsSinceEpoch
-            )
-            return .success(
+            else { return .gone }
+            let process = ProcessIncarnation(pid: pid, startMicroseconds: startMicroseconds)
+            return .value(
                 .object([
                     "ref": .reference(DesktopReference.application(process).uri),
                     "name": .string(running.localizedName ?? ""),
@@ -124,19 +158,8 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .application(let process)? = DesktopReference(uri: uri)
         else { return .failure(ProviderFailure(kind: .failed, message: "No parent application.")) }
         // The parent was resolved a moment ago, by another call: look again.
-        guard case .running(let start) = processStart(of: process.pid),
-            start.microsecondsSinceEpoch == process.startMicroseconds
-        else {
-            return gone
-        }
-        // Asks; never prompts. https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted
-        guard AXIsProcessTrusted() else {
-            return .failure(
-                .osPermission(
-                    "accessibility", message: "Koine needs Accessibility access to list windows."
-                )
-            )
-        }
+        guard isRunning(process) else { return gone }
+        guard AXIsProcessTrusted() else { return untrusted }
         let application = AXUIElementCreateApplication(process.pid)
         let listed: [AXUIElement]
         switch read(application, kAXWindowsAttribute, as: [AXUIElement].self) {
@@ -156,25 +179,56 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .failed(let error): return unanswered(error)
             }
         }
-        table.forget { held in
-            guard held != process else { return false }
-            guard case .running(let start) = processStart(of: held.pid) else { return true }
-            return start.microsecondsSinceEpoch != held.startMicroseconds
-        }
+        table.forget { $0 != process && !isRunning($0) }
         let tokens = table.tokens(for: real.map(\.element), of: process)
         return .success(
             .list(
-                zip(real, tokens).map { window, token in
-                    .object([
-                        "ref": .reference(
-                            DesktopReference.window(process, session: table.session, token: token).uri
-                        ),
-                        "title": .string(window.title),
-                        "observation": .string("CURRENT"),
-                    ])
-                }
+                zip(real, tokens).map { window, token in row(process, token: token, title: window.title) }
             )
         )
+    }
+
+    /// Re-resolves one window reference. What needs no Accessibility call is
+    /// decided first, so a reference that names nothing is `unavailable` with or
+    /// without consent; asking the held element needs consent.
+    private func window(referencedBy ref: ProviderValue?) -> ResolutionResult {
+        guard case .reference(let uri)? = ref,
+            case .window(let process, let session, let token)? = DesktopReference(uri: uri)
+        else { return notAWindow }
+        // Table membership proves nothing about the process: ask the kernel.
+        guard isRunning(process) else { return closed }
+        guard session == table.session, let element = table.element(token, of: process) else {
+            return closed
+        }
+        guard AXIsProcessTrusted() else { return untrusted }
+        // Still a real window, and still its own: the held element is asked
+        // again on every use (docs/verification/desktop-window-identity.md).
+        switch window(element, of: process.pid) {
+        case .value(let title): return .success(row(process, token: token, title: title))
+        // No longer a window, or no longer provably its own: not this target.
+        case .absent: return closed
+        case .gone:
+            table.retire(token, of: process)
+            return closed
+        case .failed(let error):
+            // The elements of a process that ended answer kAXErrorCannotComplete.
+            return isRunning(process) ? unanswered(error) : closed
+        }
+    }
+
+    /// Every route to a window ends here, so they report the same fields. The
+    /// element answered just now, which is a current observation.
+    private func row(_ process: ProcessIncarnation, token: UInt64, title: String) -> ProviderValue {
+        .object([
+            "ref": .reference(DesktopReference.window(process, session: table.session, token: token).uri),
+            "title": .string(title),
+            "observation": .string("CURRENT"),
+        ])
+    }
+
+    private func isRunning(_ process: ProcessIncarnation) -> Bool {
+        guard case .running(let start) = processStart(of: process.pid) else { return false }
+        return start.microsecondsSinceEpoch == process.startMicroseconds
     }
 
     /// The title of `element` if it is a real window of `pid`, and `absent` if it
@@ -234,12 +288,30 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
     }
 
-    private var gone: ResolutionResult {
-        .failure(ProviderFailure(kind: .unavailable, message: "The application is no longer running."))
+    private var gone: ResolutionResult { unavailable("The application is no longer running.") }
+    private var closed: ResolutionResult { unavailable("The window is no longer open.") }
+    private var notAnApplication: ResolutionResult {
+        unavailable("The reference does not name a desktop application.")
+    }
+    private var notAWindow: ResolutionResult { unavailable("The reference does not name a desktop window.") }
+
+    private func unavailable(_ message: String) -> ResolutionResult {
+        .failure(ProviderFailure(kind: .unavailable, message: message))
+    }
+
+    /// Consent is asked about, never asked for: only Koine's own UI requests it.
+    /// `AXIsProcessTrusted` takes no options, so it cannot carry the prompt one.
+    /// https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted
+    private var untrusted: ResolutionResult {
+        .failure(
+            .osPermission("accessibility", message: "Koine needs Accessibility access to read windows.")
+        )
     }
 
     private func unanswered(_ error: AXError) -> ResolutionResult {
-        .failure(
+        // Consent can end while Koine runs, and between the trust check and the call.
+        if error == .apiDisabled { return untrusted }
+        return .failure(
             ProviderFailure(
                 kind: .failed,
                 message: "The application did not answer for its windows (AXError \(error.rawValue))."

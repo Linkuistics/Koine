@@ -33,9 +33,9 @@ a revoked credential gets 401 on its next request, keep-alive or not. The
 window also lists and revokes grants and enables login launch, and the
 installed workflow is verified in a clean VM. Native providers load through one
 loader, and the desktop path has begun: the bundled desktop provider resolves a
-running application from its process identity and lists its current windows
-("Desktop provider" below). Looking a reference up again, focusing a window and
-windows on other Spaces are later increments. The agreed design:
+running application from its process identity, lists its current windows and
+looks an application or window reference up again ("Desktop provider" below).
+Focusing a window and windows on other Spaces are later increments. The agreed design:
 
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability and the ModalAnyware handoff
@@ -68,7 +68,7 @@ task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
-task app:vm-verify-desktop  # the bundled desktop provider resolves a real application and lists its windows, in a VM
+task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
@@ -297,6 +297,8 @@ desktopApplication(process: { pid: 412, startedAt: "2026-09-19T01:02:03.000456Z"
   ref name bundleIdentifier
   windows { ref title observation }
 }
+desktopApplicationByReference(ref: "koine://desktop/application/…") { … }  # the same fields
+desktopWindow(ref: "koine://desktop/window/…") { ref title observation }
 ```
 
 **Process identity.** Both halves are compared. `startedAt` is the kernel's
@@ -322,12 +324,36 @@ it `windows` is a `permission` / `os-permission` error. `windows` is non-null, s
 that error discards the enclosing `desktopApplication`; a query that does not
 select `windows` still resolves the application. `observation` is always `CURRENT` for now.
 
+**Accessibility consent.** `DesktopApplication.ref`, `name` and
+`bundleIdentifier` need none, by either application lookup. `windows` and
+`desktopWindow` need it. Without it they fail with `extensions.kind`
+`permission`, `permissionClass` `os-permission`, `osPermission` `accessibility`
+and `permissionOwner` `koine`, at the field's own response path; a grant without
+`desktop:read` gets `permissionClass` `capability` instead, consent or no
+consent, because the capability is checked first. The provider asks
+`AXIsProcessTrusted`, which has no prompt option, so no read shows the consent
+dialog. An Accessibility call that answers `kAXErrorAPIDisabled` is the same
+error, for consent that ends while Koine runs.
+
 **References** are opaque to clients. `koine://desktop/application/<pid>/<start µs>`
 is a process incarnation; a window adds `/<session>/<token>`, naming the
 accessibility element the provider holds for that window during this run of
 Koine. Two windows with the same title have different references, a window keeps
 its reference across listings, and a window reference from an earlier run of
-Koine is `unavailable`. Why that mechanism, the evidence for it with real
+Koine is `unavailable`.
+
+Every use re-resolves, and the three lookups end in the same reads, so an
+application or window reports the same fields however it was reached. A reference
+that no longer names its target is an `unavailable` error at the field, never
+null without an error and never another target: the process incarnation ended
+(by reference that is an error, where an absent process *identity* is null); the
+window closed; the held element is no longer a window or no longer provably its
+own; the reference names the other resource kind or another provider; or its
+remainder is not one this provider produces. What needs no Accessibility call is
+decided first, so such a reference is `unavailable` with or without consent.
+Across a restart of Koine an application reference resolves again, because the
+process incarnation is all it encodes, and every window reference is
+`unavailable`; the client lists again. Why that mechanism, the evidence for it with real
 applications, and what it cannot distinguish:
 [docs/verification/desktop-window-identity.md](docs/verification/desktop-window-identity.md).
 
@@ -338,8 +364,15 @@ created in Koine's window: the provider is `ACTIVE`, Finder resolves by `pid` an
 mismatched `startedAt` and an absent process are null, a malformed one is an
 input error, and a grant without `desktop:read` is refused. It gives Koine
 Accessibility consent as a user does, in System Settings
-(`KOINE_VM_PASSWORD` is the VM account's password, `admin` by default). Evidence:
-[docs/verification/desktop-application-and-windows-vm.md](docs/verification/desktop-application-and-windows-vm.md).
+(`KOINE_VM_PASSWORD` is the VM account's password, `admin` by default). The same
+run covers the references and consent: the lookups agree; wrong-kind and
+malformed references, a closed window, an ended process and a window reference
+from before a Koine restart are `unavailable`; with consent absent, and revoked
+while Koine runs, reads are `os-permission` errors and no dialog appears, which
+`Fixtures/ConsentPromptControl` (test material that does ask with the prompt
+option) is then seen to show. Evidence:
+[docs/verification/desktop-application-and-windows-vm.md](docs/verification/desktop-application-and-windows-vm.md)
+and [docs/verification/desktop-references-and-permission-vm.md](docs/verification/desktop-references-and-permission-vm.md).
 
 The provider contract gained one outcome for this: `ProviderFailure.Kind.invalidInput`,
 for an argument that is well-formed GraphQL but no value of a provider-owned

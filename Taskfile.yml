@@ -66,7 +66,7 @@ tasks:
       - scripts/vm-verify-providers.sh
 
   app:vm-verify-desktop:
-    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider is ACTIVE, resolves a real application by pid and startedAt, lists same-titled windows under distinct references, and refuses a grant without desktop:read
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider is ACTIVE, resolves a real application by pid and startedAt, lists same-titled windows under distinct references, refuses a grant without desktop:read, reports stale, wrong-kind and malformed references as unavailable, and reports absent or revoked Accessibility consent as an os-permission error without a consent dialog
     cmds:
       - scripts/vm-verify-desktop.sh
 

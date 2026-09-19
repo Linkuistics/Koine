@@ -32,7 +32,7 @@ the identity as a variable.
 | Grants | two grants created in Koine's window: `koine:manage` + `desktop:read`, and `desktop:control` alone; each credential by Copy and `pbpaste` | both credential files exist |
 | Provider status | `{ koineManagement { providers { … } } koine { availableCapabilities } }` | `desktop` is `ACTIVE`; `desktop:read` and `desktop:control` are available |
 | Real windows | `open -a Finder`, ⌘N twice | — |
-| Before consent | the query for Finder | recorded, and an error is required: `permission` / `os-permission` naming `accessibility`, at the path `desktopApplication.windows`. `windows` is non-null, so the error discards the enclosing application and `desktopApplication` is null. Its classification is `reference-lookups-and-accessibility-permission`'s to verify. |
+| Before consent | the query for Finder | recorded, and an error is required: `permission` / `os-permission` naming `accessibility`, at the path `desktopApplication.windows`. `windows` is non-null, so the error discards the enclosing application and `desktopApplication` is null. Its classification is asserted since `reference-lookups-and-accessibility-permission-k29`: [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md). |
 | Consent | see below | Koine is in System Settings' Accessibility list |
 | Resolve and list | the query for Finder, with its true `pid` and `startedAt` | no errors; name `Finder`, bundle identifier `com.apple.finder`, an application reference; at least two windows, every one titled, all with one title, all references distinct window references, all `CURRENT`. Finder's desktop, which is in its window list, has no row. |
 | Stable references | the same query again | the same set of window references |
@@ -85,9 +85,9 @@ PID reuse cannot be forced on demand. What is observable is a live PID claimed
 at another start instant, here, and a relaunched application with another
 `startedAt`, in the identity evidence. Untitled windows, closure, restart and
 Spaces are exercised natively in the identity evidence, not through GraphQL:
-looking a window reference up again is
-`reference-lookups-and-accessibility-permission`'s, and focusing is
-`focus-exact-window`'s.
+looking a window reference up again is verified in
+[desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md),
+and focusing is `focus-exact-window`'s.
 
 ## Evidence
 

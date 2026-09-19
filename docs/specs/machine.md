@@ -53,6 +53,12 @@ capability, but cannot trigger an OS consent dialog through a read. ModalAnyware
 receives `permission` with the OS-permission classification and directs the
 user to Koine; it does not request Koine's permissions for itself.
 
+Of the desktop fields, `DesktopApplication.windows` and `desktopWindow` need
+Accessibility consent. An application's `ref`, `name` and `bundleIdentifier`
+resolve without it, as does every `unavailable` that the reference, the process
+incarnation or the provider run already decides. The provider's trust check has
+no prompt option.
+
 Apple documents [main-app login launch](https://developer.apple.com/documentation/servicemanagement/smappservice/mainapp)
 and [the current-process Accessibility trust check](https://developer.apple.com/documentation/applicationservices/1459186-axisprocesstrustedwithoptions).
 The attribution of the signed, packaged application is checked in real VMs
@@ -517,7 +523,8 @@ provider run and a token, as recorded in
 [desktop window identity is a held element](../adr/desktop-window-identity-is-a-held-element.md)
 with its [evidence](../verification/desktop-window-identity.md). A window
 reference therefore does not survive a restart of Koine, and title fallback is
-never used. Modaliser's private window-number lookup and title fallback are not
+never used. An application reference encodes the process incarnation alone, so it
+resolves again after a restart of Koine for as long as that incarnation runs. Modaliser's private window-number lookup and title fallback are not
 proof of identity and are not used.
 
 The engine caches no graph results, refreshes nothing and retries nothing.

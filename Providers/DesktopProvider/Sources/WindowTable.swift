@@ -39,6 +39,16 @@ final class WindowTable {
         return tokens
     }
 
+    /// The held element `token` names, if this run holds one for `process`.
+    func element(_ token: UInt64, of process: ProcessIncarnation) -> AXUIElement? {
+        held[process]?.first { $0.token == token }?.element
+    }
+
+    /// Drops a token whose element has answered that its window ended.
+    func retire(_ token: UInt64, of process: ProcessIncarnation) {
+        held[process]?.removeAll { $0.token == token }
+    }
+
     /// Forgets every process that is no longer running as the same incarnation.
     func forget(where isGone: (ProcessIncarnation) -> Bool) {
         for process in held.keys where isGone(process) { held[process] = nil }

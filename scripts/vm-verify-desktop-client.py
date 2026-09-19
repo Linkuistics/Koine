@@ -4,14 +4,28 @@ a protected credential file and an application's name. It captures the process
 identity as any client must: the PID, and the kernel's start instant for it
 (proc_pidinfo PROC_PIDTBSDINFO, whole microseconds) in the contract's canonical
 UTC form. Prints one JSON object per line: {"case", "pid", "startedAt", "response"}.
+A reference it was given is passed back unchanged: {"case", "ref", "response"}.
 
-usage: vm-verify-desktop-client.py <credential file> <application name> [exact|later|malformed|absent]
+usage: vm-verify-desktop-client.py <credential file> <application name> [exact|plain|later|malformed|absent]
+       vm-verify-desktop-client.py <credential file> --ref application|application-plain|window <reference>
 """
 import ctypes, datetime, json, os, subprocess, sys, urllib.request
 
 QUERY = """query($process: DesktopProcessIdentity!) {
   desktopApplication(process: $process) { ref name bundleIdentifier windows { ref title observation } }
 }"""
+
+# The application fields that need no Accessibility consent.
+PLAIN = """query($process: DesktopProcessIdentity!) {
+  desktopApplication(process: $process) { ref name bundleIdentifier }
+}"""
+BY_REFERENCE = {
+    "application": """query($ref: Reference!) {
+  desktopApplicationByReference(ref: $ref) { ref name bundleIdentifier windows { ref title observation } }
+}""",
+    "application-plain": "query($ref: Reference!) { desktopApplicationByReference(ref: $ref) { ref name bundleIdentifier } }",
+    "window": "query($ref: Reference!) { desktopWindow(ref: $ref) { ref title observation } }",
+}
 
 
 def start_microseconds(pid):
@@ -30,13 +44,13 @@ def canonical(microseconds):
     return instant.strftime("%Y-%m-%dT%H:%M:%S") + ".%06dZ" % (microseconds % 1_000_000)
 
 
-def ask(credential, process):
+def ask(credential, query, variables):
     data = os.path.expanduser("~/Library/Application Support/Koine")
     with open(os.path.join(data, "endpoint.json")) as file:
         endpoint = json.load(file)
     request = urllib.request.Request(
         "http://127.0.0.1:%d%s" % (endpoint["port"], endpoint["path"]),
-        data=json.dumps({"query": QUERY, "variables": {"process": process}}).encode(),
+        data=json.dumps({"query": query, "variables": variables}).encode(),
         headers={"Content-Type": "application/json", "Authorization": "Bearer " + credential},
     )
     with urllib.request.urlopen(request, timeout=20) as response:
@@ -45,17 +59,22 @@ def ask(credential, process):
 
 def main():
     credential = open(sys.argv[1]).read().strip()
+    if sys.argv[2] == "--ref":
+        kind, ref = sys.argv[3], sys.argv[4]
+        print(json.dumps({"case": kind, "ref": ref, "response": ask(credential, BY_REFERENCE[kind], {"ref": ref})}))
+        return
     name, case = sys.argv[2], (sys.argv[3] if len(sys.argv) > 3 else "exact")
     pid = int(subprocess.check_output(["pgrep", "-x", name]).split()[0])
     micros = start_microseconds(pid)
     process = {
         "exact": {"pid": pid, "startedAt": canonical(micros)},
+        "plain": {"pid": pid, "startedAt": canonical(micros)},
         # The same live PID, claimed one microsecond later: a different process.
         "later": {"pid": pid, "startedAt": canonical(micros + 1)},
         "malformed": {"pid": pid, "startedAt": canonical(micros)[:-8] + "Z"},  # whole seconds
         "absent": {"pid": 1_000_000, "startedAt": canonical(micros)},
     }[case]
-    print(json.dumps({"case": case, **process, "response": ask(credential, process)}))
+    print(json.dumps({"case": case, **process, "response": ask(credential, PLAIN if case == "plain" else QUERY, {"process": process})}))
 
 
 main()

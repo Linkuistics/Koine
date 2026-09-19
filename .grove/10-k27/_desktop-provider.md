@@ -137,5 +137,19 @@ reads (`read(_:_:as:)`) that never turn an error into data; and
 `CURRENT` alone until leaf 4 makes `REMEMBERED` real. That leaf, which observes
 destruction, is also where a token can be retired the moment its window ends.
 
+`reference-lookups-and-accessibility-permission-k29` is complete. What the later
+leaves build on: every route to an application or a window ends in one read
+(`running` and `row` in `DesktopProvider.swift`), and a window lookup decides
+what needs no Accessibility call before the trust check, then asks the held
+element again; `focus-exact-window` re-resolves the same way before it acts. In
+`scripts/vm-verify-desktop.sh`: `revoke_accessibility` (Koine's switch and the
+password; only Koine's next read proves it, the switch reads off early),
+`no_consent_dialog` (the dialog's text read from the screen; the process that
+shows it is no detector) and `Fixtures/ConsentPromptControl` as its positive
+control. `tccutil reset` does not revoke a running Koine in effect. `guest` now
+retries TestAnyware's exit 7 as well; a run is about sixty guest execs and
+twenty-five minutes. Evidence:
+`docs/verification/desktop-references-and-permission-vm.md`.
+
 Until `grant-enrollment-k10` lands, clients obtain grants through the manual
 workflow. That is sufficient for ModalAnyware to begin work against this path.

@@ -127,4 +127,101 @@ import Testing
         #expect(extensions["requiredCapability"] as? String == "desktop:read")
         await harness.stop()
     }
+
+    // MARK: References
+
+    static func running() throws -> NSRunningApplication {
+        try #require(
+            NSWorkspace.shared.runningApplications.first { $0.activationPolicy == .regular },
+            "No application is running in this session."
+        )
+    }
+
+    @Test func anApplicationReachedByItsReferenceReportsTheSameFields() async throws {
+        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let pid = try Self.running().processIdentifier
+        let found = try await harness.post(
+            Self.query(pid: Int(pid), startedAt: try Self.startedAt(pid)), authorization: "Bearer \(reader)"
+        )
+        let byIdentity = try #require(found.data?["desktopApplication"] as? [String: Any])
+        let ref = try #require(byIdentity["ref"] as? String)
+
+        let again = try await harness.post(
+            "{ desktopApplicationByReference(ref: \"\(ref)\") { ref name bundleIdentifier } }",
+            authorization: "Bearer \(reader)"
+        )
+        #expect(again.errors.isEmpty)
+        let byReference = try #require(again.data?["desktopApplicationByReference"] as? [String: Any])
+        #expect(NSDictionary(dictionary: byReference).isEqual(to: byIdentity))
+        await harness.stop()
+    }
+
+    /// Decided without an Accessibility call, so these hold on the host. A closed
+    /// window and revoked consent need real windows: the VM verification.
+    @Test(arguments: [
+        // The process incarnation has ended, or never was.
+        ("desktopApplicationByReference", "koine://desktop/application/1000000/5"),
+        ("desktopApplicationByReference", "LIVE-PID-OTHER-START"),
+        ("desktopWindow", "koine://desktop/window/1000000/5/00ab34cd56ef7890/1"),
+        // A live process, and a window reference from another provider run.
+        ("desktopWindow", "LIVE-WINDOW-OTHER-SESSION"),
+        // The other resource kind.
+        ("desktopApplicationByReference", "LIVE-WINDOW-OTHER-SESSION"),
+        ("desktopWindow", "LIVE-APPLICATION"),
+        // A remainder this provider does not produce.
+        ("desktopApplicationByReference", "koine://desktop/"),
+        ("desktopApplicationByReference", "koine://desktop/application/412"),
+        ("desktopApplicationByReference", "koine://desktop/application/0412/5"),
+        ("desktopWindow", "koine://desktop/thing/412/5"),
+        ("desktopWindow", "koine://desktop/window/412/5/SHORT/7"),
+    ])
+    func aReferenceThatNoLongerNamesItsTargetIsUnavailable(field: String, reference: String) async throws {
+        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let pid = try Self.running().processIdentifier
+        var info = kinfo_proc()
+        var size = MemoryLayout<kinfo_proc>.size
+        var name = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
+        try #require(sysctl(&name, 4, &info, &size, nil, 0) == 0 && size > 0)
+        let start = Int(info.kp_proc.p_starttime.tv_sec) * 1_000_000 + Int(info.kp_proc.p_starttime.tv_usec)
+        let ref =
+            switch reference {
+            case "LIVE-APPLICATION": "koine://desktop/application/\(pid)/\(start)"
+            case "LIVE-PID-OTHER-START": "koine://desktop/application/\(pid)/\(start + 1)"
+            case "LIVE-WINDOW-OTHER-SESSION": "koine://desktop/window/\(pid)/\(start)/00ab34cd56ef7890/1"
+            default: reference
+            }
+        let reply = try await harness.post(
+            "{ \(field)(ref: \"\(ref)\") { ref } }", authorization: "Bearer \(reader)"
+        )
+        try Self.expectUnavailable(reply, at: field)
+        await harness.stop()
+    }
+
+    @Test func aReferenceNamingAnotherProviderReachesThisOneAndIsUnavailable() async throws {
+        let harness = try await Harness(
+            providerRoots: [try NativeProviderTests.fixtureRoot()], bundledRoots: try Self.bundled()
+        )
+        let reader = try await harness.consoleGrant(
+            label: "reader", capabilities: ["desktop:read", "fixture:read"]
+        )
+        for field in ["desktopApplicationByReference", "desktopWindow"] {
+            let reply = try await harness.post(
+                "{ \(field)(ref: \"\(ProviderAuthorizationTests.first)\") { ref } }",
+                authorization: "Bearer \(reader)"
+            )
+            try Self.expectUnavailable(reply, at: field)
+        }
+        await harness.stop()
+    }
+
+    /// An error at the field, never null without one and never a substitute.
+    static func expectUnavailable(_ reply: Harness.Reply, at field: String) throws {
+        #expect(reply.errors.count == 1)
+        let error = try #require(reply.errors.first)
+        #expect(error["path"] as? [String] == [field])
+        #expect((error["extensions"] as? [String: Any])?["kind"] as? String == "unavailable")
+        #expect(reply.data?[field] is NSNull)
+    }
 }

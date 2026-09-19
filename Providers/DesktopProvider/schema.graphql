@@ -9,6 +9,10 @@ input DesktopProcessIdentity {
 extend type Query {
   "desktop:read. An absent process is ordinary null."
   desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopApplicationByReference(ref: Reference!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopWindow(ref: Reference!): DesktopWindow
 }
 
 "All fields require desktop:read."
