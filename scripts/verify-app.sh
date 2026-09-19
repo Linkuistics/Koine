@@ -56,6 +56,13 @@ if [ "${FRAMEWORK_TEAM}" != "${TEAM_ID}" ]; then
     exit 1
 fi
 
+# The in-application provider root: present, and holding no provider yet.
+PLUGINS="${APP_BUNDLE}/Contents/PlugIns"
+if [ ! -d "${PLUGINS}" ] || [ -n "$(ls -A "${PLUGINS}")" ]; then
+    echo "Error: ${PLUGINS} is not an empty directory; this Koine ships no provider." >&2
+    exit 1
+fi
+
 echo "Designated requirement:"
 codesign --display --requirements - "${APP_BUNDLE}" 2>/dev/null | sed -n 's/^designated => /  /p'
 

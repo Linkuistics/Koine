@@ -29,7 +29,10 @@ PROVIDER_FRAMEWORK="$(scripts/stage-provider-framework.sh release)"
 # Wipe first: the bundle is a pure function of the source tree.
 rm -rf "${APP_BUNDLE}"
 mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources" \
-    "${APP_BUNDLE}/Contents/Frameworks"
+    "${APP_BUNDLE}/Contents/Frameworks" "${APP_BUNDLE}/Contents/PlugIns"
+# Contents/PlugIns is the in-application provider root. It ships empty until the
+# desktop provider exists; a provider placed here is signed before the bundle,
+# with the framework below.
 cp "${BIN_DIR}/KoineApp" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
 # The one framework image the host and every provider link. Its module
 # interface is for building providers, not for the shipped application.

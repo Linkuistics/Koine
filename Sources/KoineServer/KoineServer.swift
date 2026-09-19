@@ -42,22 +42,32 @@ public final class KoineServer: Sendable {
     /// Providers are loaded from `providerRoots` and composed into the schema
     /// here, once; nothing else is searched. A bundle that is refused is
     /// reported as provider status and contributes nothing; a root that cannot
-    /// be read throws.
+    /// be read throws. Verifying a signature blocks on work the Security
+    /// framework dispatches: construct on the main thread or a thread of your
+    /// own, not on many Swift concurrency threads at once. Each bundle is staged under `providerStaging`, by
+    /// default `ProviderStaging` in the data directory, and loaded from there.
     public convenience init(
-        dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [URL] = []
+        dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [ProviderRoot] = [],
+        providerStaging: URL? = nil
     ) throws {
         try self.init(
             dataDirectory: dataDirectory, policy: policy, providerRoots: providerRoots,
-            additionalProviders: []
+            providerStaging: providerStaging, additionalProviders: []
         )
+    }
+
+    /// The per-user installed root, `Providers` in the data directory. Its
+    /// approval records are files the user places there; see README.md.
+    public static func installedProviderRoot(in dataDirectory: URL) -> ProviderRoot {
+        .installed(dataDirectory.appendingPathComponent("Providers", isDirectory: true))
     }
 
     /// `additionalProviders` are composed with the loaded ones. It is internal:
     /// tests reach it with `@testable` to contribute a descriptor without a
     /// bundle; nothing public carries it.
     init(
-        dataDirectory: URL, policy: RequestPolicy, providerRoots: [URL],
-        additionalProviders: [ActiveProvider]
+        dataDirectory: URL, policy: RequestPolicy, providerRoots: [ProviderRoot],
+        providerStaging: URL? = nil, additionalProviders: [ActiveProvider]
     ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
@@ -78,7 +88,13 @@ public final class KoineServer: Sendable {
         var loaded: [ActiveProvider] = []
         var unloaded: [ProviderStatus] = []
         let host = HostCompatibility(features: koineHostFeatures)
-        for report in try providerRoots.flatMap({ try ProviderLoader.loadProviders(in: $0, host: host) }) {
+        let staging =
+            providerStaging
+            ?? dataDirectory.appendingPathComponent("ProviderStaging", isDirectory: true)
+        let reports = try providerRoots.flatMap {
+            try ProviderLoader.loadProviders(in: $0, staging: staging, host: host)
+        }
+        for report in reports {
             let state: ProviderStatus.State
             let diagnostic: String
             switch report.outcome {

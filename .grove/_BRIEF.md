@@ -281,6 +281,13 @@ and renew trust, together with the library-validation entitlement that lets an
 independently signed third-party provider load. `native-provider-contribution-k8`
 deferred both with the human; until then approval records for the per-user root
 are a file the user places, and only Koine-signed providers load.
+`provider-trust-and-install-roots-k23` fixed what that UI has to produce: the
+bundle copied into `~/Library/Application Support/Koine/Providers`, and beside
+it `<providerId>.approval.json` holding `providerId` and the signer's
+`teamIdentifier`, which the loader already enforces; renewing trust is rewriting
+that record. The signer it shows is what `CodeSignature` in
+`KoineProviderLoader` already reads. The loader needs no change for it; the
+entitlement needs its own signed-build VM verification.
 
 Cross-provider identity, atomic snapshots, transactional command rollback and
 automatic retry remain outside the agreed first desktop contract. GraphQL

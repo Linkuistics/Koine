@@ -12,7 +12,12 @@
 #   FIXTURE_SWIFTC    extra swiftc arguments, space separated
 #   FIXTURE_FRAMEWORK swiftc arguments that supply the KoineProviderAPI module and
 #                     link it, in place of the staged framework's
-# Both are split on spaces: this is test material built under .build.
+#   FIXTURE_UNSEALED  leaves the bundle unsigned and unapproved; build-variants.sh
+#                     seals every variant itself, once its content is final
+# Both argument lists are split on spaces: this is test material built under .build.
+#
+# The bundle is a shallow code-signing bundle: Info.plist at its root names the
+# dylib as its executable, so one signature seals the dylib, manifest and schema.
 set -euo pipefail
 
 FRAMEWORKS="$(cd "$1" && pwd)"
@@ -54,5 +59,15 @@ swiftc -emit-library -module-name "Fixture${TAG}Provider" -swift-version 6 \
     "${WORK}/FixtureProvider.swift" "${WORK}/SchemaSDL.swift" "${WORK}/initializer.o"
 tagged manifest.json | sed "s/@ARCH@/$(uname -m)/" >"${BUNDLE}/manifest.json"
 cp "${WORK}/schema.graphql" "${BUNDLE}/"
+cat >"${BUNDLE}/Info.plist" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>dev.antony.Koine.provider.fixture${LOWER_TAG}</string>
+<key>CFBundleExecutable</key><string>libFixture${TAG}Provider.dylib</string>
+<key>CFBundlePackageType</key><string>BNDL</string>
+</dict></plist>
+PLIST
+[ -n "${FIXTURE_UNSEALED:-}" ] || ./seal.sh "${BUNDLE}" >/dev/null
 
 echo "${BUNDLE}"

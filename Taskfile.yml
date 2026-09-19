@@ -21,14 +21,14 @@ tasks:
       - swift test --skip-build
 
   fixture:
-    desc: Stage KoineProviderAPI.framework and build the fixture provider against it, outside the package
+    desc: Stage KoineProviderAPI.framework, build the fixture provider against it outside the package, sign and approve it
     cmds:
       - |
         FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
         Fixtures/FixtureProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../FixtureProviders"
 
   fixture:variants:
-    desc: Build the deliberately bad (and the few good) fixture bundles the native loader tests refuse or load
+    desc: Build, sign and approve the deliberately bad (and the few good) fixture bundles the native loader tests refuse or load
     deps: [fixture]
     cmds:
       - |

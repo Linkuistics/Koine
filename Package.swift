@@ -57,7 +57,7 @@ let package = Package(
         // scripts/build-app.sh assembles and signs Koine.app around it.
         .executableTarget(
             name: "KoineApp",
-            dependencies: ["KoineServer", "KoineManagementClient"]
+            dependencies: ["KoineServer", "KoineManagementClient", "KoineProviderLoader"]
         ),
         .testTarget(
             name: "KoineManagementClientTests",

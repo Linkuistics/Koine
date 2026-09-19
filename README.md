@@ -57,8 +57,8 @@ Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build, then stage KoineProviderAPI.framework
 task test      # build, stage, build the fixture provider and its variants, then the suites over real loopback HTTP
-task fixture   # stage the framework and build the fixture provider outside the package
-task fixture:variants  # build the bundles the native loader must refuse, and the few good ones
+task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
+task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
@@ -67,7 +67,9 @@ task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 Use `task test`, not a bare `swift test`: every host image links the provider
 framework by its framework install name, which resolves only once the framework
 is staged ("Provider framework" below), `NativeProviderTests` needs the fixture
-bundle and `ProviderLoaderTests` needs its variants.
+bundle and `ProviderLoaderTests` needs its variants. The fixtures are signed
+with the identity `task app` uses (`KOINE_SIGNING_IDENTITY` overrides it), since
+the loader admits only signed, approved bundles; there is no ad-hoc fallback.
 
 The tests embed the server over a temporary data directory; they never touch
 `~/Library/Application Support/Koine`.
@@ -86,8 +88,7 @@ so each order is forced rather than raced. The hook is reached with
 | `KoineSQLiteStore` | The durable `GrantStore`: one SQLite file, fully synchronised commits, fails closed. |
 | `KoineHTTP` | An HTTP/1.1 listener bound to `127.0.0.1` on an OS-assigned port. Knows nothing of GraphQL. |
 | `KoineServer` | The embeddable composition: data directory, single-instance lock, descriptor lifecycle, the HTTP transport rules, bearer authentication, and the in-process `LocalConsole`. |
-
-| `KoineProviderLoader` | The native loader: finds `*.koineprovider` bundles in a configured root, `dlopen`s each, finds the manifest's principal class with `NSClassFromString` and requires `ProviderFactory`. The only place `dlopen` and Objective-C class lookup appear. |
+| `KoineProviderLoader` | The native loader: finds `*.koineprovider` bundles in the roots the host supplies, stages each, verifies its approval record and signature (the only place the Security framework appears), `dlopen`s it, finds the manifest's principal class with `NSClassFromString` and requires `ProviderFactory`. The only place `dlopen` and Objective-C class lookup appear. |
 | `KoineProviderAPI` (package `ProviderAPI/`) | The provider binary interface: `ProviderFactory`, `ProviderDescriptor`, `Provider`, `ResolutionRequest`, `ResolutionResult`, `ProviderValue`, `ProviderFailure`. One dynamic image built with library evolution; no third-party type in its interface. |
 | `KoineManagementClient` | What the native UI knows of the server: the management operations as GraphQL through the `LocalConsole`, with GraphQL errors surfaced as `ManagementError`. Foundation only, so it is tested against an embedded server. |
 | `KoineApp` | The resident application's executable: AppKit lifecycle, SwiftUI views. The only target that imports platform UI frameworks. |
@@ -129,9 +130,11 @@ that carries the promise. Three things follow from SwiftPM's rules:
   thunks.
 
 **Provider bundles** are directories named `<Name>.koineprovider` holding a
-Swift dylib, `manifest.json` and `schema.graphql`.
-`KoineServer(dataDirectory:policy:providerRoots:)` considers every bundle
-directly inside each given root at construction and composes the SDL and field
+Swift dylib, `manifest.json`, `schema.graphql` and an `Info.plist` whose
+`CFBundleExecutable` names the dylib. That makes the directory a shallow
+code-signing bundle, so `codesign` seals all of it with one signature.
+`KoineServer(dataDirectory:policy:providerRoots:providerStaging:)` considers
+every bundle directly inside each given `ProviderRoot` at construction and composes the SDL and field
 registrations of those it loads into the schema; nothing else is searched. A
 provider's fields require `<providerId>:read` or `<providerId>:control`, which
 also appear in `koine.availableCapabilities`.
@@ -145,26 +148,62 @@ states what it supplies: framework 1.0 (`HostCompatibility`, held equal to
 empty in version 1).
 
 **The native loader** (`KoineProviderLoader`) refuses a bundle before any of its
-code runs wherever it can, since dylib initializers run inside `dlopen`. It reads
-the binary's bytes itself (`MachOImage.swift`) and checks, in order: the
-manifest; the declared framework major, minimum minor and features, the CPU
+code runs wherever it can, since dylib initializers run inside `dlopen`. Trust
+comes first: the bundle's canonical location must lie inside its root; the
+bundle is copied to a read-only directory named by its content under
+`ProviderStaging` in the data directory, and everything after is checked of,
+and loaded from, that copy (`ProviderStaging.swift`); the manifest's provider
+must have an approval record; and the copy must carry a valid signature by the
+approved Team ID (`ProviderTrust.swift`, the Security framework's static
+validation, strict, with the requirement `anchor apple generic and certificate
+leaf[subject.OU] = "<team>"`). Koine never strips quarantine or relaxes a
+signing check. The loader then reads the binary's bytes itself
+(`MachOImage.swift`) and checks, in order: the declared framework major, minimum minor and features, the CPU
 architecture, the minimum OS and the Swift runtime that OS supplies; that the
 library lies inside the bundle and holds exactly the declared architectures and
 a minimum OS no newer than declared; that the bundle contains no copy of the
 framework and its image defines none of the framework's own symbols; that every
 dependency and run path is the framework's install name, under `/usr/lib/` or
 `/System/Library/`, or a recursively validated `@loader_path` file inside the
-bundle; and that no other image has registered the principal class name. Trust
-(location, signature, approval record) will precede all of these. After
+bundle, each such image signed by the approved identity itself; and that no
+other image has registered the principal class name. After
 `dlopen` the principal class must originate in that image, conform to
 `ProviderFactory`, and produce a descriptor that agrees with the manifest.
 
-An honest bundle this host cannot run is `INCOMPATIBLE`; a malformed or
-contradictory one, a `dlopen` failure or a failure after loading is `REJECTED`
+An honest bundle this host cannot run is `INCOMPATIBLE`; an unapproved,
+unsigned, ad-hoc or differently signed one, one changed after sealing, a
+malformed or contradictory one, a `dlopen` failure or a failure after loading is `REJECTED`
 (after loading, the image stays mapped and contributes nothing). Neither fails
 server construction. `koineManagement.providers`, under `koine:manage`, serves
 one status for every bundle found: these, composition's refusals, `FAILED` for a
 provider whose start threw, and `ACTIVE`.
+
+**Installing or upgrading a first-party provider.** There is no install UI in
+this version. The per-user root is
+`~/Library/Application Support/Koine/Providers`; create it if it is absent.
+
+1. Sign the bundle with Koine's identity, inside-out: any private dylib first,
+   then `codesign --force --sign "Developer ID Application: …" <Name>.koineprovider`.
+2. Copy `<Name>.koineprovider` into the root.
+3. Approve it once, by placing `<providerId>.approval.json` beside it:
+   `{ "providerId": "<providerId>", "teamIdentifier": "TA43A4RUP3" }`. Koine
+   never writes this file, and has no GraphQL operation for it.
+4. Restart Koine. `koineManagement.providers` reports the provider `ACTIVE`, or
+   `REJECTED`/`INCOMPATIBLE` with the reason.
+
+To upgrade, replace the bundle and restart; the record stands as long as the
+new bundle is signed by the same Team ID, and a bundle signed by anyone else is
+refused until the user replaces the record. Only providers signed by Koine's own
+Team ID can load: the application has no library-validation exception, so an
+independently signed third-party provider is not loadable in this version.
+Superseded staged copies under `ProviderStaging` are not pruned; with Koine
+stopped the directory can be deleted (its contents are read-only, so
+`chmod -R u+w` first).
+
+`Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose
+approvals are built in (the shipped provider IDs with the Team ID of the
+application's own signature) and which is empty until the desktop provider
+exists, and the per-user root.
 
 **Lifecycle** (`KoineCore/ProviderLifecycle.swift`): providers start after
 composition; every resolve goes through the provider's lifecycle, which
@@ -195,12 +234,16 @@ them for the contract's "Public GraphQL authorization" cases.
 
 `Fixtures/FixtureProvider/build-variants.sh` builds one provider root per loader
 case under `FixtureVariants/`, since each refusal needs a real binary or
-manifest: the plain bundle under an altered manifest for what is refused before
-`dlopen`, and the fixture recompiled under a tag (its own class names and
+manifest: the plain bundle under an altered manifest, signature or approval
+record for what is refused before `dlopen`, and the fixture recompiled under a tag (its own class names and
 provider identifier) for what loads. The fixture's `initializer.c` appends its
 image path to the file `KOINE_FIXTURE_INITIALIZER_LOG` names; that is how
 `ProviderLoaderTests` shows a refused bundle ran no code, with a loaded variant
-as the control.
+as the control. `seal.sh` signs a fixture and writes its approval record, as the
+steps above do by hand. An ad-hoc signed variant stands for a different
+identity, so no second certificate is needed. The tests construct servers off
+the Swift concurrency pool and share one staging directory, so dyld maps each
+fixture once per process.
 
 ## Resident application
 
@@ -213,7 +256,8 @@ module interface and signed first, inside-out. The executable's build-tree run
 paths are reduced to exactly `/usr/lib/swift` (the OS Swift runtime, which
 supplies the `@rpath` back-deployment libraries such as
 `libswiftCompatibilitySpan`) and `@executable_path/../Frameworks`. The application
-ships no provider yet.
+ships no provider yet: `Contents/PlugIns`, its in-application provider root, is
+present and empty, which `scripts/verify-app.sh` checks.
 
 Every bundle, from development to release, is signed with
 `Developer ID Application: Antony Blakey (TA43A4RUP3)`, so its designated

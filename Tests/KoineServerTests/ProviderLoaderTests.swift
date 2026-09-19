@@ -1,5 +1,5 @@
 import Foundation
-import KoineProviderLoader
+@testable import KoineProviderLoader
 import KoineServer
 import Testing
 
@@ -31,10 +31,19 @@ import Testing
         return root
     }
 
-    /// Whether any image under `root` ran its initializers in this process.
-    static func initializersRan(under root: URL) -> Bool {
+    /// Whether any image of a bundle in `root` ran its initializers in this
+    /// process. A bundle loads from its staged copy, which is named by its
+    /// content; build-variants.sh makes every variant's content its own.
+    static func initializersRan(under root: URL) throws -> Bool {
         let log = (try? String(contentsOf: initializerLog, encoding: .utf8)) ?? ""
-        return log.split(separator: "\n").contains { $0.contains("/FixtureVariants/\(root.lastPathComponent)/") }
+        let bundles = try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)
+            .filter { $0.pathExtension == ProviderLoader.bundleExtension }
+        try #require(!bundles.isEmpty)
+        return try bundles.contains { bundle in
+            let installed = bundle.resolvingSymlinksInPath()
+            let staged = try ProviderStaging.stagedName(of: installed, from: installed.path)
+            return log.split(separator: "\n").contains { $0.contains("/\(staged)/") }
+        }
     }
 
     struct Status: Equatable {
@@ -118,6 +127,23 @@ import Testing
             variant: "foreign-dependency", state: "REJECTED",
             diagnostic: "/opt/koine-fixture/libElsewhere.dylib", provider: "fixturefd"
         ),
+        // Trust (docs/specs/machine.md, "Loading and trust"): each of these is
+        // the plain fixture, refused for where it is, who signed it or who
+        // approved it.
+        Refusal(
+            variant: "escapes-root", state: "REJECTED", diagnostic: "outside its provider root",
+            provider: "Fixture", version: "unknown"
+        ),
+        Refusal(variant: "unapproved", state: "REJECTED", diagnostic: "no fixture.approval.json"),
+        Refusal(variant: "unsigned", state: "REJECTED", diagnostic: "it is not signed"),
+        Refusal(variant: "adhoc-signed", state: "REJECTED", diagnostic: "it is ad-hoc signed, not by the approved identity"),
+        Refusal(variant: "identity-mismatch", state: "REJECTED", diagnostic: "not by the approved identity, Team ID ZZZZZZZZZZ"),
+        Refusal(variant: "malformed-approval", state: "REJECTED", diagnostic: "does not name a Team ID"),
+        Refusal(variant: "tampered", state: "REJECTED", diagnostic: "its signature is not valid"),
+        Refusal(
+            variant: "unapproved-dependency", state: "REJECTED", diagnostic: "libFixturePrivate.dylib",
+            provider: "fixtureud"
+        ),
         // The manifest lies about the framework it needs; the checks pass and
         // the dynamic loader refuses, before any initializer.
         Refusal(
@@ -141,7 +167,7 @@ import Testing
             status.diagnostic?.contains(refusal.diagnostic) == true,
             "diagnostic was: \(status.diagnostic ?? "nil")"
         )
-        #expect(!Self.initializersRan(under: root))
+        #expect(try !Self.initializersRan(under: root))
         #expect(try await Self.rootFields(harness) == Self.coreRootFields)
         await harness.stop()
     }
@@ -162,7 +188,7 @@ import Testing
                 )
             ]
         )
-        #expect(Self.initializersRan(under: root))
+        #expect(try Self.initializersRan(under: root))
         let credential = try await harness.consoleGrant(label: "r", capabilities: ["fixturepd:read"])
         let reply = try await harness.post(
             "{ fixturePdInfo { greeting } }", authorization: "Bearer \(credential)"
@@ -194,7 +220,7 @@ import Testing
             status.diagnostic?.contains(failure.diagnostic) == true,
             "diagnostic was: \(status.diagnostic ?? "nil")"
         )
-        #expect(Self.initializersRan(under: root))
+        #expect(try Self.initializersRan(under: root))
         #expect(try await Self.rootFields(harness) == Self.coreRootFields)
         let koine = try await harness.post(
             Harness.koine,
@@ -228,6 +254,69 @@ import Testing
         let error = try #require(reply.errors.first)
         #expect(error["path"] as? [String] == ["fixtureFsInfo"])
         #expect((error["extensions"] as? [String: Any])?["kind"] as? String == "unavailable")
+        await harness.stop()
+    }
+
+    // MARK: Roots and staging
+
+    /// The approved identity of the fixtures: what seal.sh wrote for the plain one.
+    static func fixtureApproval() throws -> ProviderApproval {
+        let record = try NativeProviderTests.fixtureRoot()
+            .appendingPathComponent(ProviderRoot.approvalRecordName(for: "fixture"))
+        return try JSONDecoder().decode(ProviderApproval.self, from: Data(contentsOf: record))
+    }
+
+    @Test func theBundledRootTakesItsApprovalsFromTheHostNotFromAFile() async throws {
+        // The root holds a good bundle and a record approving it, as a file.
+        let root = try Self.variantRoot("bundled-unapproved")
+        let unapproved = try await Harness(bundledRoots: [.bundled(root, approvals: [])])
+        let status = try #require(try await Self.statuses(unapproved).first)
+        #expect(status.state == "REJECTED")
+        #expect(status.diagnostic?.contains("no built-in approval") == true)
+        #expect(try !Self.initializersRan(under: root))
+        await unapproved.stop()
+
+        let approved = try await Harness(bundledRoots: [
+            .bundled(try Self.variantRoot("private-dependency"), approvals: [
+                ProviderApproval(
+                    providerId: "fixturepd", teamIdentifier: try Self.fixtureApproval().teamIdentifier
+                )
+            ])
+        ])
+        #expect(try await Self.statuses(approved).map(\.state) == ["ACTIVE"])
+        await approved.stop()
+    }
+
+    @Test func aRootThatDoesNotExistHoldsNoBundles() async throws {
+        let absent = FileManager.default.temporaryDirectory
+            .appendingPathComponent("koine-absent-\(UUID().uuidString)", isDirectory: true)
+        let harness = try await Harness(providerRoots: [absent])
+        #expect(try await Self.statuses(harness).isEmpty)
+        await harness.stop()
+    }
+
+    /// What loads is the staged copy, named by its content, and nothing in it
+    /// can be written.
+    @Test func aBundleIsLoadedFromAnImmutableCopyNamedByItsContent() async throws {
+        let root = try Self.variantRoot("private-dependency")
+        let installed = root.appendingPathComponent("FixturePd.koineprovider")
+        let harness = try await Harness(providerRoots: [root])
+        let staged = Harness.providerStaging.appendingPathComponent(
+            try ProviderStaging.stagedName(of: installed, from: installed.path)
+        )
+
+        let log = try String(contentsOf: Self.initializerLog, encoding: .utf8)
+        #expect(log.contains(staged.resolvingSymlinksInPath().path + "/libFixturePdProvider.dylib"))
+        #expect(!log.contains(installed.path))
+        let entries = try FileManager.default.subpathsOfDirectory(atPath: staged.path)
+        #expect(entries.contains("manifest.json"))
+        for entry in [""] + entries {
+            let path = staged.appendingPathComponent(entry).path
+            let mode = try #require(
+                try FileManager.default.attributesOfItem(atPath: path)[.posixPermissions] as? NSNumber
+            )
+            #expect(mode.intValue & 0o222 == 0, "\(entry) is writable")
+        }
         await harness.stop()
     }
 

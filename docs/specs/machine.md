@@ -640,18 +640,46 @@ initializers run during load, before any entry-point negotiation. Signature
 verification after loading is too late. Never strip quarantine or disable OS
 code-signing checks to make a rejected plugin load.
 
-Record approved provider ID plus signing identity; an update must satisfy the
-same approved identity and version policy, or need explicit renewed trust.
-Validate private dependencies too, and stage an immutable versioned bundle
-before verification/loading to prevent an accidental update race. A malicious
+There are two installation roots, both supplied to the loader by the resident
+application: `Contents/PlugIns` sealed inside `Koine.app`, and the per-user
+installed root `~/Library/Application Support/Koine/Providers`. A bundle whose
+canonical location is outside its root is refused. There is one loader: a
+provider Koine ships, the desktop provider included, is a real plugin bundle in
+the in-application root and loads by the same path as an installed one, so the
+product itself exercises the native seam. It is never a target linked into the
+host.
+
+A provider bundle is a shallow code-signing bundle: an `Info.plist` at its root
+names the dylib as its executable, so one signature seals the dylib, the
+manifest and the schema. Record approved provider ID plus signing identity, the
+signer's Apple Team ID; an update must satisfy the same approved identity and
+version policy, or need explicit renewed trust. The in-application root's
+records are built into the application, its shipped provider IDs with Koine's
+own Team ID, sealed by the application signature. The per-user root's record is
+a file the user places, `<providerId>.approval.json` beside the bundle, holding
+`providerId` and `teamIdentifier`. Version 1 has no install or approval UI and
+no GraphQL operation for it, and Koine writes no approval record itself. An
+unapproved, unsigned, ad-hoc signed or differently signed bundle, and one
+changed after it was sealed, is `REJECTED` with a diagnostic before any of its
+code loads.
+Validate private dependencies too, each against the approved identity, and
+stage an immutable versioned bundle before verification/loading to prevent an
+accidental update race: the loader copies the bundle to a read-only,
+content-named directory under `ProviderStaging` in the data directory, and
+verifies and loads that copy. A malicious
 same-user actor able to rewrite Koine or its approved code is outside this
 in-process trust model. Bad descriptors/schema are diagnosed without publishing
 partial contributions; a plugin that has already run initializers stays mapped
 until process exit even if activation fails.
 
-For independently signed third-party providers, the host needs the narrowly
-scoped disable-library-validation entitlement; Koine then performs its own
-approval and signature validation. Apple documents this
+Version 1 keeps the hardened runtime with no exceptions, so library validation
+admits only providers signed by Koine's own Team ID, bundled or per-user;
+first-party providers upgrade independently of the host. Independently signed
+third-party providers are not loadable in this version: Koine's approval check
+refuses one before `dlopen`, and the OS would refuse it after. A later increment
+adds the narrowly scoped disable-library-validation entitlement, with its own
+signed-build verification, and an install and approval UI; Koine then relies on
+its own approval and signature validation. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
 The provider shares Koine's address space, OS permissions and failure domain.
 Capabilities limit clients, not provider code. Only trusted native code belongs

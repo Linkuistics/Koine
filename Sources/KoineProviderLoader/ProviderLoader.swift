@@ -54,7 +54,8 @@ public struct ProviderBundleReport: Sendable {
 
 /// The native loader. It considers every `*.koineprovider` bundle directly
 /// inside a root the host was configured with; it searches nowhere else. Every
-/// check that can be made without running the bundle's code precedes `dlopen`.
+/// check that can be made without running the bundle's code precedes `dlopen`,
+/// and every one after the first is made of the staged copy that is loaded.
 public enum ProviderLoader {
     public static let bundleExtension = "koineprovider"
 
@@ -68,13 +69,18 @@ public enum ProviderLoader {
         "_$s16KoineProviderAPI0B0Mp", "_$s16KoineProviderAPI0B7FactoryMp",
     ]
 
+    /// A root that does not exist holds no bundles; one that exists and cannot
+    /// be read throws. Bundles are staged under `staging` before they are
+    /// verified or loaded.
     public static func loadProviders(
-        in root: URL, host: HostCompatibility
+        in root: ProviderRoot, staging: URL, host: HostCompatibility
     ) throws -> [ProviderBundleReport] {
-        try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)
+        guard FileManager.default.fileExists(atPath: root.location.path) else { return [] }
+        return try FileManager.default
+            .contentsOfDirectory(at: root.location, includingPropertiesForKeys: nil)
             .filter { $0.pathExtension == bundleExtension }
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
-            .map { report(bundle: $0, host: host) }
+            .map { report(bundle: $0, in: root, staging: staging, host: host) }
     }
 
     private struct Refusal: Error {
@@ -84,24 +90,42 @@ public enum ProviderLoader {
         static func rejected(_ reason: String) -> Refusal { Refusal(outcome: .rejected(reason)) }
     }
 
-    private static func report(bundle: URL, host: HostCompatibility) -> ProviderBundleReport {
-        let manifest: ProviderManifest
-        do { manifest = try ProviderManifest(bundle: bundle) } catch {
-            return ProviderBundleReport(
+    private static func report(
+        bundle: URL, in root: ProviderRoot, staging: URL, host: HostCompatibility
+    ) -> ProviderBundleReport {
+        func unidentified(_ reason: String) -> ProviderBundleReport {
+            ProviderBundleReport(
                 provider: bundle.deletingPathExtension().lastPathComponent, version: "unknown",
-                schemaVersion: "unknown",
-                outcome: .rejected(
-                    (error as? ProviderManifest.Invalid)?.reason ?? "manifest.json is malformed."
-                )
+                schemaVersion: "unknown", outcome: .rejected(reason)
+            )
+        }
+        // A link out of the root is a bundle from somewhere Koine does not own.
+        guard let rootPath = canonicalPath(root.location.path),
+            let installed = canonicalPath(bundle.path), installed.hasPrefix(rootPath + "/")
+        else { return unidentified("The bundle's location resolves outside its provider root.") }
+        guard let staged = try? ProviderStaging.stage(bundleAt: installed, under: staging) else {
+            return unidentified("The bundle could not be staged for verification.")
+        }
+        let manifest: ProviderManifest
+        do { manifest = try ProviderManifest(bundle: staged) } catch {
+            return unidentified(
+                (error as? ProviderManifest.Invalid)?.reason ?? "manifest.json is malformed."
             )
         }
         let outcome: ProviderBundleReport.Outcome
         do {
-            // Trust comes here, before anything else is believed: the bundle's
-            // canonical location in a Koine-owned root, its signature and its
-            // approval record (provider-trust-and-install-roots-k23).
+            // Trust before anything else the bundle says is believed.
+            let approval = try approval(for: manifest, in: root)
+            try checkSignature(of: staged.path, named: "The bundle", approvedBy: approval)
             try checkCompatibility(of: manifest, with: host)
-            let library = try verifiedLibrary(of: manifest, in: bundle)
+            let (library, images) = try verifiedLibrary(of: manifest, in: staged)
+            // The seal names a nested image by hash, which says who sealed it,
+            // not who signed it: each image answers for itself.
+            for image in images.sorted() {
+                try checkSignature(
+                    of: image, named: (image as NSString).lastPathComponent, approvedBy: approval
+                )
+            }
             try checkPrincipalNameIsFree(manifest.principalClass, for: library)
             outcome = .loaded(try load(library, manifest: manifest))
         } catch let refusal as Refusal {
@@ -116,6 +140,24 @@ public enum ProviderLoader {
     }
 
     // MARK: Before dlopen
+
+    private static func approval(
+        for manifest: ProviderManifest, in root: ProviderRoot
+    ) throws -> ProviderApproval {
+        do { return try root.approval(for: manifest.providerId) } catch {
+            throw Refusal.rejected(
+                (error as? ProviderRoot.Unapproved)?.reason ?? "The provider is not approved."
+            )
+        }
+    }
+
+    private static func checkSignature(
+        of path: String, named name: String, approvedBy approval: ProviderApproval
+    ) throws {
+        if let reason = CodeSignature.refusal(of: path, approvedBy: approval) {
+            throw Refusal.rejected("\(name) is refused: \(reason)")
+        }
+    }
 
     /// What the manifest asks of the host. A negotiation after loading cannot
     /// rescue a binary already linked against symbols the host lacks.
@@ -158,13 +200,16 @@ public enum ProviderLoader {
         }
     }
 
-    /// The canonical path of the bundle's library, once the binary has been
-    /// shown to match the manifest and to depend only on what it may.
-    private static func verifiedLibrary(of manifest: ProviderManifest, in bundle: URL) throws -> String {
+    /// The canonical path of the bundle's library, and of every image in its
+    /// dependency closure inside the bundle, once the binary has been shown to
+    /// match the manifest and to depend only on what it may.
+    private static func verifiedLibrary(
+        of manifest: ProviderManifest, in bundle: URL
+    ) throws -> (library: String, images: Set<String>) {
         guard let bundlePath = canonicalPath(bundle.path) else {
             throw Refusal.rejected("The bundle's location cannot be resolved.")
         }
-        if let copy = frameworkCopy(in: bundlePath) {
+        if let copy = try frameworkCopy(in: bundlePath) {
             throw Refusal.rejected(
                 "The bundle contains its own copy of the provider framework (\(copy)); a provider links the one Koine supplies."
             )
@@ -193,7 +238,7 @@ public enum ProviderLoader {
             of: slice, at: library, named: manifest.library, inside: bundlePath,
             validated: &validated
         )
-        return library
+        return (library, validated)
     }
 
     /// Every dependency is the host's framework image, a system library or a
@@ -267,22 +312,27 @@ public enum ProviderLoader {
     }
 
     private static func hostSlice(of image: MachOImage, named name: String) throws -> MachOImage.Slice {
-        guard let slice = image.slices.first(where: { $0.architecture == HostPlatform.architecture })
-        else {
+        let slices = image.slices.filter { $0.architecture == HostPlatform.architecture }
+        guard let slice = slices.first else {
             throw Refusal.rejected("\(name) holds no \(HostPlatform.architecture) image.")
+        }
+        // Which of two the dynamic loader maps is its choice; what was checked
+        // must be what is mapped.
+        guard slices.count == 1 else {
+            throw Refusal.rejected("\(name) holds more than one \(HostPlatform.architecture) image.")
         }
         return slice
     }
 
     /// Anything in the bundle named as the framework is named: a plugin must
     /// not embed another copy, whatever its run paths say.
-    private static func frameworkCopy(in bundlePath: String) -> String? {
-        guard let entries = FileManager.default.enumerator(atPath: bundlePath) else { return nil }
-        for case let entry as String in entries {
-            let name = (entry as NSString).lastPathComponent
-            if name == frameworkName || name == "\(frameworkName).framework" { return entry }
+    /// Names are compared without case, as the file system compares them.
+    private static func frameworkCopy(in bundlePath: String) throws -> String? {
+        guard let entries = try? FileManager.default.subpathsOfDirectory(atPath: bundlePath) else {
+            throw Refusal.rejected("The bundle's contents cannot be listed.")
         }
-        return nil
+        let names = [frameworkName.lowercased(), "\(frameworkName).framework".lowercased()]
+        return entries.first { names.contains(($0 as NSString).lastPathComponent.lowercased()) }
     }
 
     /// realpath(3): `URL.resolvingSymlinksInPath` rewrites `/private` away, so

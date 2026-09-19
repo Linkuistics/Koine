@@ -1,5 +1,6 @@
 import AppKit
 import KoineManagementClient
+import KoineProviderLoader
 import KoineServer
 import SwiftUI
 
@@ -12,7 +13,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.mainMenu = MainMenu.make()
         do {
-            let server = try KoineServer(dataDirectory: KoineServer.userDataDirectory)
+            let data = KoineServer.userDataDirectory
+            let server = try KoineServer(
+                dataDirectory: data,
+                providerRoots: Self.bundledProviderRoot + [KoineServer.installedProviderRoot(in: data)]
+            )
             self.server = server
             Task {
                 do {
@@ -30,6 +35,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         } catch {
             fail("Koine could not open its data.", detail: error.localizedDescription)
         }
+    }
+
+    /// The providers Koine ships, by identifier. Each is approved for Koine's
+    /// own Team ID: this list and that identity are sealed by the application
+    /// signature. Empty until desktop-path-k9 ships the desktop provider.
+    private static let bundledProviderIds: [String] = []
+
+    /// `Contents/PlugIns`, the root sealed inside the application bundle. An
+    /// unsigned development run has no Team ID, and so approves nothing in it.
+    private static var bundledProviderRoot: [ProviderRoot] {
+        guard let plugIns = Bundle.main.builtInPlugInsURL else { return [] }
+        let team = ProviderApproval.hostTeamIdentifier
+        let approvals = bundledProviderIds.compactMap { id in
+            team.map { ProviderApproval(providerId: id, teamIdentifier: $0) }
+        }
+        return [.bundled(plugIns, approvals: approvals)]
     }
 
     // Returning false keeps the run loop, and so the listener, alive with no

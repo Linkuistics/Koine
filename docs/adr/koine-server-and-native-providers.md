@@ -16,6 +16,11 @@ published Swift contract is evolved compatibly across supported versions.
 There is no required TypeScript wrapper or assumed PluginAnyware dependency.
 OS-specific provider work stays separate from APIAnyware.
 
+There is one native loader. A provider Koine ships, the desktop provider
+included, is a plugin bundle in a provider root sealed inside the application
+and loads exactly as a per-user installed provider does; it is not a target
+linked into the host.
+
 Koine holds the OS permissions needed by its providers. Clients receive
 Koine capabilities and need OS permissions only for their own functions.
 One resident, per-user Koine application contains the native macOS management
@@ -41,7 +46,16 @@ owner without a privileged UI-to-service bootstrap connection. It also makes
 native UI and providers share the server's failure domain; independently
 restarting the management UI requires a different process design.
 
+One loader means the product itself exercises the native seam on every launch,
+and a first-party provider can be upgraded without the host. The cost is that
+the desktop path depends on the loader, run path and signing being right in the
+signed build.
+
 ## Rejected alternatives
+
+**Linking the bundled desktop provider into the host.** Simpler to build and
+sign, but it leaves the plugin path exercised only by tests and third parties,
+and makes the first provider's upgrade a host rebuild.
 
 **A separate service and management application.** Independent UI lifetime
 does not justify the authenticated IPC and permission-attribution work for the

@@ -1,5 +1,6 @@
 import Foundation
 import KoineCore
+import KoineProviderLoader
 @testable import KoineServer
 
 /// A running server over a throwaway data directory, plus the client's view of
@@ -9,16 +10,24 @@ final class Harness {
     private(set) var server: KoineServer
 
     private var policy: RequestPolicy
-    private let providerRoots: [URL]
+    private let providerRoots: [ProviderRoot]
     private let providers: [ActiveProvider]
 
+    /// One staging directory for the process. Every server here stages the same
+    /// fixture to the same path, so dyld maps it once; per-server staging would
+    /// load a second copy of its classes.
+    static let providerStaging = FileManager.default.temporaryDirectory
+        .appendingPathComponent("koine-test-staging-\(UUID().uuidString)", isDirectory: true)
+
+    /// `providerRoots` are per-user installed roots, approval records included;
+    /// `bundledRoots` are read before them.
     /// `seed` runs on the data directory before the server first opens it.
     /// `providers` are in-test contributions, composed with the loaded ones.
     init(
         policy: RequestPolicy = .version1, providerRoots: [URL] = [],
-        providers: [ActiveProvider] = [], seed: ((URL) throws -> Void)? = nil
+        bundledRoots: [ProviderRoot] = [], providers: [ActiveProvider] = [], seed: ((URL) throws -> Void)? = nil
     ) async throws {
-        self.providerRoots = providerRoots
+        self.providerRoots = bundledRoots + providerRoots.map(ProviderRoot.installed)
         self.providers = providers
         directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("koine-tests-\(UUID().uuidString)", isDirectory: true)
@@ -27,11 +36,23 @@ final class Harness {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try seed(directory)
         }
-        server = try KoineServer(
-            dataDirectory: directory, policy: policy, providerRoots: providerRoots,
-            additionalProviders: providers
-        )
+        server = try await Self.makeServer(directory, policy, self.providerRoots, providers)
         try await server.start()
+    }
+
+    /// Off the cooperative pool: verifying a signature blocks on work the
+    /// Security framework dispatches, and a pool whose every thread is a test
+    /// blocked there starves it. The application constructs on the main thread.
+    private static func makeServer(
+        _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider]
+    ) async throws -> KoineServer {
+        try await offPool {
+            try KoineServer(
+                dataDirectory: directory, policy: policy,
+                providerRoots: roots,
+                providerStaging: providerStaging, additionalProviders: providers
+            )
+        }
     }
 
     deinit { try? FileManager.default.removeItem(at: directory) }
@@ -39,10 +60,7 @@ final class Harness {
     func restart(policy: RequestPolicy? = nil) async throws {
         if let policy { self.policy = policy }
         await server.stop()
-        server = try KoineServer(
-            dataDirectory: directory, policy: self.policy, providerRoots: providerRoots,
-            additionalProviders: providers
-        )
+        server = try await Self.makeServer(directory, self.policy, providerRoots, providers)
         try await server.start()
     }
 
