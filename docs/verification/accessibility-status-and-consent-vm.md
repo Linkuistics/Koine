@@ -75,9 +75,12 @@ about seven minutes.
   and the window's polling has done that before the request. The entry shows the
   identity macOS attributes Koine's process to; the dialog is what shows the
   request.
-- **A second request** in the same or a later run of Koine was not made. Whether
-  macOS shows the dialog again is unverified; "Open Accessibility Settings…" is
-  the route that does not depend on it.
+- **A second request** in the same or a later run of Koine was not made here.
+  **Closed**: [release-acceptance-vm.md](release-acceptance-vm.md) makes three
+  requests on the notarized build — the first of a run, a second in the same run
+  of Koine, and the first of a later run after consent was given and taken away —
+  and macOS showed its dialog, naming Koine, every time. "Open Accessibility
+  Settings…" remains the route that does not depend on it.
 - "Within 0s" below means the first `osPermissions` read after System Settings
   was quit already reported the change; that read comes several seconds after the
   password. It is not a latency measurement.

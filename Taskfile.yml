@@ -72,6 +72,11 @@ tasks:
     cmds:
       - scripts/vm-verify-notarized.sh
 
+  app:vm-verify-release:
+    desc: Release acceptance, platform half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - the hardened runtime with the empty entitlements file read in the guest, Accessibility consent absent, requested twice in one run of Koine and again in a later one, given and revoked with the prompt and the System Settings entry naming Koine, the os-permission error at the original response path told apart from a missing capability with no dialog raised by a read, same-titled windows under distinct stable references, a live PID claimed at another start instant, window closure and what a Koine restart does to each kind of reference, the management window closed with the listener and the provider still serving, and login launch across a VM restart with no client installed
+    cmds:
+      - scripts/vm-verify-release.sh
+
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
     cmds:
