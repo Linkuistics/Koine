@@ -167,6 +167,22 @@ request/response limits. If adding a provider would exceed those limits,
 reject the contribution with a management diagnostic instead of exposing a
 schema that authenticated code-generation clients cannot fully inspect.
 
+Three limits of the seam are the GraphQL library's rather than this contract's,
+measured against a running server in `SchemaConformanceTests` so that a library
+that lifts one is noticed here. Koine's own schema exercises none of them, and
+the introspection query a standard code generator sends is unaffected.
+
+- `__Type.fields` and `__Type.inputFields` come back **sorted by name**, not in
+  declared order. Declared order is therefore not recoverable from introspection,
+  which is consistent with clients comparing the schema digest rather than
+  recomputing it.
+- `__InputValue.isDeprecated` is served as null against a non-null declaration,
+  so a query that selects it — what `getIntrospectionQuery` sends under its
+  `inputValueDeprecation` option — fails at that position instead of answering.
+  No argument or input field in this contract is deprecated.
+- An **input-object field's default** is not reported, while an argument's is. No
+  input-object field in this contract has a default.
+
 The following signatures define the desktop surface. `Reference` is a
 custom scalar serialized as a URI string; `ID` names management records only.
 `DesktopProcessIdentity` contains a positive `pid: Int!` and
@@ -192,9 +208,21 @@ start instant is an input error, not permission to silently target by PID alone.
 | `Mutation.desktopFocusWindow` | `(ref: Reference!): DesktopFocusReceipt` | `desktop:control`; focus exactly this target or report failure |
 | `DesktopFocusReceipt.ref` | `Reference!` | The submitted target, under the mutation's control authority |
 
+The schema file states these coordinates in **composition order** — the core's
+own root fields, then the bundled provider's — because the digest is taken over a
+canonical text that keeps declared order, and composition is what fixes it. Two
+descriptions in that file were reconciled to the implementation against this
+section when the whole schema was first checked (`schema-conformance-k40`):
+`Koine.schemaDigest` and `KoineManagement.osPermissions` gained the descriptions
+the server serves, and `Mutation.desktopFocusWindow` took the row above over the
+mutation-preflight sentence it previously carried — preflight is a property of
+every mutation, stated under "Mutation preflight and revocation", not of this
+one field.
+
 All provider-owned read fields, including references and nested properties,
 require `desktop:read`. The receipt is a distinct output type authorized by
-`desktop:control`; it does not expose a window's read fields. Read and control
+`desktop:control`; it does not expose a window's read fields. That sentence is
+the type's description and the row above is `ref`'s; both belong in the schema. Read and control
 are separate capabilities; neither implies the other. ModalAnyware normally
 requests both. Root lookups and the mutation result are naturally nullable:
 absence and failure remain distinguishable by the presence of an error.
@@ -216,6 +244,12 @@ by name, then every named type sorted by name, each printed in the graphql-js
 is by Unicode code point. Introspection types, built-in scalars, built-in
 directives and the `schema` definition are omitted; fields, arguments and enum
 values keep their declared order.
+
+One implementation computes this text and this digest, and both callers use it:
+the server, for the value `Koine.schemaDigest` reports, and `task conformance`,
+which prints the schema file above through the same rules and compares the two.
+A second printer would make its own disagreements look like schema drift.
+Evidence: [schema-conformance-vm.md](../verification/schema-conformance-vm.md).
 
 The digest is an equality token. It is identical across restarts of one Koine
 build with one set of active provider contributions, whatever order they were composed

@@ -154,6 +154,7 @@ task fixture   # stage the framework, build the fixture provider outside the pac
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
 task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
+task conformance  # the schema the notarized bundle serves, in a VM, against docs/design/desktop-schema.graphql
 task app       # assemble and sign .build/app/Koine.app
 task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
@@ -176,6 +177,40 @@ the loader admits only signed, approved bundles; there is no ad-hoc fallback.
 The tests embed the server over a temporary data directory; they never touch
 `~/Library/Application Support/Koine`.
 
+### Schema conformance
+
+`task conformance` is the whole-contract check: it launches the **notarized**
+bundle in a clean TestAnyware clone, captures the introspection response a
+standard code generator would ask for, and compares the schema that describes
+with [`docs/design/desktop-schema.graphql`](docs/design/desktop-schema.graphql)
+by type, field, argument, nullability, default, deprecation and description. The
+comparison itself is host-side (`Tools/Conformance`), so nothing is launched
+here. Evidence:
+[`docs/verification/schema-conformance-vm.md`](docs/verification/schema-conformance-vm.md).
+
+A green run is two claims, and neither alone would do:
+
+- the canonically printed design file has the **digest Koine served**. The
+  canonical text and the digest come from one implementation,
+  `KoineCore/CanonicalSDL.swift`, which is also what `Koine.schemaDigest` is
+  computed with, so this covers declared order and needs nothing from
+  introspection.
+- the **difference report** against the introspected schema is empty, which says
+  the same thing from the public seam and says *where* when it is not.
+
+Before believing either, the run mutates four copies of the contract — a
+description, a nullability marker, an argument default, two transposed root
+fields — and requires the check to go red on each, naming which half caught it.
+The transposed pair is caught by the digest alone: declared order is exactly
+what the introspected text cannot carry (see the spec's "Public GraphQL
+contract" for the three limits of that seam).
+
+`DesignContractConformanceTests` makes the same comparison in process, against a
+composition that contributes `Providers/DesktopProvider/schema.graphql` as the
+bundled provider does, so drift fails `task test` in seconds rather than a VM
+run later. It is the fast guard, not the authority: it cannot see a shipped
+bundle whose SDL differs from the file in the tree.
+
 Revocation ordering and store failure are tested on an `Engine` over a scripted
 `GrantStore` (`RevocationOrderingTests`). The engine calls an internal hook at
 the points between its authority checks; a test runs the real revocation there,
@@ -194,6 +229,7 @@ so each order is forced rather than raced. The hook is reached with
 | `KoineProviderAPI` (package `ProviderAPI/`) | The provider binary interface: `ProviderFactory`, `ProviderDescriptor`, `Provider`, `ResolutionRequest`, `ResolutionResult`, `ProviderValue`, `ProviderFailure`. One dynamic image built with library evolution; no third-party type in its interface. |
 | `KoineManagementClient` | What the native UI knows of the server: the management operations as GraphQL through the `LocalConsole`, with GraphQL errors surfaced as `ManagementError`. Foundation only, so it is tested against an embedded server. |
 | `KoineApp` | The resident application's executable: AppKit lifecycle, SwiftUI views. The only target that imports platform UI frameworks. |
+| `KoineConformanceCheck` | The conformance check's two halves: an introspection response turned back into SDL, and a difference report between two canonical texts. Used by the `KoineConformance` tool (`Tools/Conformance`, `task conformance`) and by the tests. Not shipped in the bundle. |
 
 An application embeds it as the tests do: `KoineServer(dataDirectory:)`, then
 `start()`. `server.console` is the local-console principal; it has no wire form.

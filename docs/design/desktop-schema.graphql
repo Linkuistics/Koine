@@ -1,6 +1,10 @@
 """
-Agreed koine-desktop/1 schema. Runtime composition adds provider-owned fields.
-Descriptions expose authority requirements; discovery never grants authority.
+Agreed koine-desktop/1 schema: the core and the bundled desktop provider as
+composed, which is what a running Koine serves and what `task conformance`
+checks it against. Descriptions expose authority requirements; discovery never
+grants authority. Root fields are declared in composition order — the core's own,
+then the bundled provider's — because the schema digest is taken over a canonical
+text that keeps declared order.
 """
 schema { query: Query mutation: Mutation }
 
@@ -18,21 +22,19 @@ input DesktopProcessIdentity {
 type Query {
   "Authenticated caller metadata. No provider capability required."
   koine: Koine!
+  "Proof of the submitted secret, or its resulting active grant; own request only."
+  koineGrantRequest: KoineGrantRequest
+  "koine:manage. Never returns bearer credentials."
+  koineManagement: KoineManagement
   "desktop:read. An absent process is ordinary null."
   desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
   "desktop:read. A stale or wrong-kind reference raises unavailable."
   desktopApplicationByReference(ref: Reference!): DesktopApplication
   "desktop:read. A stale or wrong-kind reference raises unavailable."
   desktopWindow(ref: Reference!): DesktopWindow
-  "Proof of the submitted secret, or its resulting active grant; own request only."
-  koineGrantRequest: KoineGrantRequest
-  "koine:manage. Never returns bearer credentials."
-  koineManagement: KoineManagement
 }
 
 type Mutation {
-  "desktop:control. All selected mutation actions are authorized before any begins."
-  desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
   "Anonymous enrollment only; cannot be mixed with other root actions."
   koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
   "koine:manage. Approves only a subset of the immutable requested capabilities."
@@ -43,6 +45,8 @@ type Mutation {
   koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
   "koine:manage. Idempotent for an already revoked grant; never grants authority."
   koineRevokeGrant(grantId: ID!): KoineGrant
+  "desktop:control. Focuses exactly this window or reports why it did not; never a substitute."
+  desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
 }
 
 "All fields require desktop:read."
@@ -63,11 +67,15 @@ type DesktopWindow {
 enum DesktopObservation { CURRENT REMEMBERED }
 
 "Control-authorized output; it does not expose read-protected window state."
-type DesktopFocusReceipt { ref: Reference! }
+type DesktopFocusReceipt {
+  "The submitted target, under the mutation's control authority."
+  ref: Reference!
+}
 
 type Koine {
   contractVersion: String!
   instanceId: String!
+  "Equality token for the served schema; compare, do not interpret."
   schemaDigest: String!
   "Caller only; null only for the non-exportable in-process console principal."
   ownGrant: KoineGrant
@@ -124,6 +132,7 @@ type KoineManagement {
   requests: [KoineGrantRequest!]!
   grants: [KoineGrant!]!
   providers: [KoineProviderStatus!]!
+  "Read on each request. Reading never asks the user for consent."
   osPermissions: [KoineOSPermission!]!
 }
 

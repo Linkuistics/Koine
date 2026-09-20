@@ -120,8 +120,10 @@ public final class Engine: Sendable {
             diagnostics: diagnostics
         )
         self.statusReport = statusReport
-        // Defined in docs/specs/machine.md, "Schema digest".
-        schemaDigest = Engine.digest(of: schema)
+        // Defined in docs/specs/machine.md, "Schema digest", and computed by
+        // CanonicalSDL so that task conformance prints the served schema
+        // through this code rather than through a printer of its own.
+        schemaDigest = CanonicalSDL.digest(of: schema)
 
         var fields = CoreFields(
             store: store, authority: authority, instanceId: instanceId,
@@ -447,25 +449,6 @@ public final class Engine: Sendable {
             if name == "include", !condition { return false }
         }
         return true
-    }
-
-    // MARK: Schema digest
-
-    /// Order-independent by construction: definitions are sorted by name, so the
-    /// digest does not depend on the order contributions were composed in.
-    private static func digest(of schema: GraphQLSchema) -> String {
-        let builtInScalars: Set = ["String", "Int", "Float", "Boolean", "ID"]
-        let builtInDirectives: Set = ["skip", "include", "deprecated", "specifiedBy", "oneOf"]
-        let directives = schema.directives
-            .filter { !builtInDirectives.contains($0.name) }
-            .sorted { $0.name < $1.name }
-            .map { printDirective(directive: $0) }
-        let types = schema.typeMap.values
-            .filter { !$0.name.hasPrefix("__") && !builtInScalars.contains($0.name) }
-            .sorted { $0.name < $1.name }
-            .map { printType(type: $0) }
-        let canonical = (directives + types).joined(separator: "\n\n")
-        return hex(SHA256.hash(data: Data(canonical.utf8)))
     }
 
     // MARK: Schema installation

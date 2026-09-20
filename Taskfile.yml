@@ -108,6 +108,11 @@ tasks:
     cmds:
       - scripts/vm-verify-enrollment.sh
 
+  conformance:
+    desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against docs/design/desktop-schema.graphql by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served; the run first proves the check red against four mutated copies of the contract
+    cmds:
+      - scripts/vm-verify-conformance.sh
+
   compat:
     desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
     cmds:

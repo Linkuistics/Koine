@@ -60,6 +60,23 @@ let package = Package(
             name: "KoineApp",
             dependencies: ["KoineCore", "KoineServer", "KoineManagementClient", "KoineProviderLoader"]
         ),
+        // The conformance check (task conformance, scripts/vm-verify-conformance.sh):
+        // the schema a running Koine serves, against docs/design/desktop-schema.graphql.
+        // It prints the served schema through KoineCore's own canonical printer;
+        // GraphQL is a dependency here for the structural comparison alone. The
+        // library is where the tests reach it; scripts/build-app.sh ships neither.
+        .target(
+            name: "KoineConformanceCheck",
+            dependencies: ["KoineCore", .product(name: "GraphQL", package: "GraphQL")]
+        ),
+        .executableTarget(
+            name: "KoineConformance",
+            dependencies: [
+                "KoineConformanceCheck", "KoineCore",
+                .product(name: "GraphQL", package: "GraphQL"),
+            ],
+            path: "Tools/Conformance"
+        ),
         // Test material: the headless host of the binary compatibility pairs
         // (scripts/build-compat-pairs.sh). scripts/build-app.sh does not ship it.
         .executableTarget(
@@ -79,6 +96,7 @@ let package = Package(
             name: "KoineServerTests",
             dependencies: [
                 "KoineServer", "KoineCore", "KoineSQLiteStore", "KoineProviderLoader",
+                "KoineConformanceCheck",
                 // For in-test descriptors; the fixture bundle is built elsewhere.
                 .product(name: "KoineProviderAPI", package: "ProviderAPI"),
             ]

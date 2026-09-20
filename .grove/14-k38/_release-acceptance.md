@@ -46,8 +46,10 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-Nine impl leaves, ordered by dependency and then by risk; the ninth,
-`provider-quarantine-rule-k47`, was cut during the first leaf's run. The
+Ten impl leaves, ordered by dependency and then by risk; two of them were cut
+during the stage rather than when it was planned — `provider-quarantine-rule-k47`
+during the first leaf's run, and `desktop-receipt-descriptions-k48` during the
+second's, as the one finding the conformance check could not reconcile. The
 notarized build comes first because every later leaf runs on it and it carries
 the stage's two unknowns: whether a Gatekeeper-enabled clone can be produced at
 all, and the notary credential. Conformance comes next so that any contract
@@ -60,19 +62,24 @@ schema.
    evidence documents defer to this stage.
 2. `schema-conformance-k40` — the introspected schema against the design SDL as
    a repeatable check, and the reconciliation of every difference into the spec.
-3. `contract-only-client-k41` — a client built from the documented contract and
+3. `desktop-receipt-descriptions-k48` — the one difference `schema-conformance-k40`
+   found that the served schema owned: `DesktopFocusReceipt` states the field's
+   fact on the type and the type's own fact nowhere. Cut during k40 with the
+   human's decision recorded in it, and placed **before** the client and the
+   evidence leaves because it moves the schema digest they all cite.
+4. `contract-only-client-k41` — a client built from the documented contract and
    generated types alone, running the whole path in a VM.
-4. `platform-acceptance-k42` — the composed platform run on the notarized build:
+5. `platform-acceptance-k42` — the composed platform run on the notarized build:
    entitlements, attribution, login launch with no client, absent and revoked
    consent, closure, duplicate titles, PID reuse and restart.
-5. `grant-workflow-acceptance-k43` — both grant workflows end to end on the
+6. `grant-workflow-acceptance-k43` — both grant workflows end to end on the
    notarized build, plus the three things `grant-enrollment-vm.md` did not
    drive: a refusal shown in the window, several requests pending together, and
    revoking an enrolled grant through the window.
-6. `support-matrix-and-latency-k44` — the latency report in a real keyboard
+7. `support-matrix-and-latency-k44` — the latency report in a real keyboard
    workflow, and the supported OS/CPU matrix stated from what ran, with the
    declared deployment target narrowed to match.
-7. `provider-quarantine-rule-k47` — the rule `notarized-release-build-k39`
+8. `provider-quarantine-rule-k47` — the rule `notarized-release-build-k39`
    established on the first Gatekeeper-enforcing clone, written into README, the
    spec and the provider-install UI's horizon note: a quarantined, un-notarized
    provider in the per-user root is refused at `dlopen` by the platform, after
@@ -81,10 +88,10 @@ schema.
    covered by the application's ticket and is unaffected. Cut during k39 and
    placed **before** the documentation sweep so that sweep finds the docs already
    consistent.
-8. `documentation-and-handoff-k45` — README, spec status lines and architecture
+9. `documentation-and-handoff-k45` — README, spec status lines and architecture
    views made current; every acceptance obligation marked established or open;
    the contract-version statement and the ModalAnyware handoff note.
-9. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
+10. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
    release carrying the notarized artifact, the cask, and `brew install`
    verified in a clean VM. Last, because it publishes what the eight leaves
    before it proved and documented.
