@@ -82,7 +82,11 @@ across Koine restarts, and it stays `ACTIVE` while no provider offers its
   [notarized-release-vm.md](notarized-release-vm.md): `desktop` is `ACTIVE` on a
   quarantined notarized bundle, staged and loaded like any other provider, its
   image mapped from a `Desktop-<digest>` staging copy.
-- The supported OS and CPU matrix: this is one OS build on arm64.
+- ~~The supported OS and CPU matrix: this is one OS build on arm64.~~
+  **Decided** in [latency-and-support-matrix.md](latency-and-support-matrix.md):
+  the supported matrix is macOS 26 on Apple Silicon, and the deployment target
+  was narrowed to it, so one OS major on arm64 is the whole claim rather than a
+  sample of a wider one.
 
 ## Tooling note
 

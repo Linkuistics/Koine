@@ -151,5 +151,5 @@ script, libraries, guest client and the provider's dylib unchanged across the ru
 
 `REMEMBERED` rows and selecting one (`remembered-windows-across-spaces`): here the
 other-Space window was listed while it was on the current Space and focused by
-that reference. The latency of a focus is `release-acceptance-handoff-k11`'s, with
-the supported matrix; this run is macOS 26.5 on arm64 alone.
+that reference. The latency of a focus, and the supported matrix, are in
+[latency-and-support-matrix.md](latency-and-support-matrix.md); this run is macOS 26.5 on arm64 alone.

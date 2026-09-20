@@ -111,9 +111,9 @@ printed. The enrollment workflow touches no clipboard at all.
 
 ## What this does not show
 
-- **It is one OS build on one architecture.** macOS 26.5 (25F71) on arm64; the
-  supported matrix is `support-matrix-and-latency-k44`'s, and no latency is
-  measured here.
+- **It is one OS build on one architecture.** macOS 26.5 (25F71) on arm64, which is
+  the supported matrix; latency is measured in [latency-and-support-matrix.md](latency-and-support-matrix.md),
+  not here.
 - **A store or commit failure** is not induced. That a failure never reports a
   successful durable approval or revocation is a public-seam property held by
   `RevocationOrderingTests`' scripted `GrantStore`; a VM cannot make the store

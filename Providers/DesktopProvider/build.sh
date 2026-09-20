@@ -13,6 +13,14 @@
 # dylib, manifest and schema.
 set -euo pipefail
 
+# MINIMUM_OS: the deployment floor, stated once in App/Info.plist. The
+# compiler target and the manifest's minimumOS are the same value by
+# construction here, because the loader refuses a provider whose binary is
+# built for a newer OS than its manifest declares
+# (Sources/KoineProviderLoader/ProviderLoader.swift).
+# shellcheck source=../../scripts/signing-env.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/scripts/signing-env.sh"
+
 FRAMEWORKS="$(cd "$1" && pwd)"
 mkdir -p "$2"
 BUNDLE="$(cd "$2" && pwd)/Desktop.koineprovider"
@@ -29,12 +37,12 @@ trap 'rm -rf "${WORK}"' EXIT
 rm -rf "${BUNDLE}"
 mkdir -p "${BUNDLE}"
 swiftc -emit-library -module-name DesktopProvider -swift-version 6 -O \
-    -target "$(uname -m)-apple-macos13.0" \
+    -target "$(uname -m)-apple-macos${MINIMUM_OS}" \
     -F "${FRAMEWORKS}" -framework KoineProviderAPI \
     -Xlinker -install_name -Xlinker "@rpath/libDesktopProvider.dylib" \
     -o "${BUNDLE}/libDesktopProvider.dylib" \
     Logic/*.swift Sources/*.swift "${WORK}/SchemaSDL.swift"
-sed "s/@ARCH@/$(uname -m)/" manifest.json >"${BUNDLE}/manifest.json"
+sed -e "s/@ARCH@/$(uname -m)/" -e "s/@MINIMUM_OS@/${MINIMUM_OS}/" manifest.json >"${BUNDLE}/manifest.json"
 cp schema.graphql "${BUNDLE}/"
 cat >"${BUNDLE}/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>

@@ -4,7 +4,7 @@ import PackageDescription
 // Library choices and their verification are recorded in README.md ("Dependencies").
 let package = Package(
     name: "Koine",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v26)],
     products: [
         .library(name: "KoineCore", targets: ["KoineCore"]),
         .library(name: "KoineServer", targets: ["KoineServer"]),

@@ -158,8 +158,8 @@ across them. `task compat` was not run: `KoineProviderAPI` is untouched.
 - **Whether Koine's own observer fired** is not visible from outside; the probe's
   is the evidence that the platform delivers it, and re-asking makes it
   unnecessary for correctness.
-- This run is macOS 26.5 on arm64 alone; the supported matrix is
-  `release-acceptance-handoff-k11`'s.
+- This run is macOS 26.5 on arm64 alone, which is the supported matrix:
+  [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 ## Tooling notes for the leaves that follow
 

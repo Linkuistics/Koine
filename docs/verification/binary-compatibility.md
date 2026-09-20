@@ -46,6 +46,10 @@ one moved, and writes every observation to `results.json` beside the trees.
 
 ## Observed
 
+Run again on 2026-09-21 after the floor was narrowed to macOS 26.0, debug: 19
+cases, no failed check, every host and framework image at `minos 26.0` and the
+fixture providers at `minos 13.0`. The results below are unchanged by it.
+
 Run on 2026-09-19: macOS 26.6.2 (25G83), arm64; Apple Swift 6.4
 (swiftlang-6.4.0.34.1), Xcode 27.0 (27A266a); Task 3.53.1; bundles signed by
 Developer ID Application, Team ID TA43A4RUP3. Debug and release, 19 cases each,
@@ -114,29 +118,74 @@ manifest lies.
 
 | | Baseline | How established |
 |---|---|---|
-| CPU architecture | arm64 | `lipo -archs` on every host, framework and provider binary; every pair ran on arm64. The loader's refusal of a foreign or mismatched architecture is in `ProviderLoaderTests`. |
-| Minimum OS | macOS 13.0 declared | `LC_BUILD_VERSION minos 13.0` in every binary, from `platforms: [.macOS(.v13)]` and the fixture's `-target`. Declared, not run: see below. |
-| Swift runtime | The OS's own, at `/usr/lib/swift` | `otool -L`: framework and providers link `libswiftCore` and `libswift_Concurrency` from `/usr/lib/swift` and embed no runtime. macOS 13 ships the Swift 5.7 runtime, the manifest's `minimumSwiftRuntime`. |
+| CPU architecture | arm64, the only one supported | `lipo -archs` on every host, framework and provider binary; every pair ran on arm64. The loader's refusal of a foreign or mismatched architecture is in `ProviderLoaderTests`. |
+| Minimum OS | macOS 26.0 | `LC_BUILD_VERSION minos 26.0` in both revisions' hosts and framework images, from `platforms: [.macOS(.v26)]` in both packages; the fixture providers are still built for 13.0, as test material (below). The supported matrix is macOS 26 on arm64: [latency-and-support-matrix.md](latency-and-support-matrix.md). |
+| Swift runtime | The OS's own, at `/usr/lib/swift` | `otool -L`: framework and providers link `libswiftCore` and `libswift_Concurrency` from `/usr/lib/swift` and embed no runtime. Every macOS 26 runtime is newer than the manifests' `minimumSwiftRuntime`, 5.7. |
 | Compiler | Swift 6.4, language mode 6 | The `swift-compiler-version` line of the emitted `.swiftinterface`; both revisions and every provider were built by it. |
 | Framework | major 1, minor 0, no host features | `HostCompatibility` and `koineHostFeatures`. |
 
-## Left for `release-acceptance-handoff-k11`
+## Decided at release acceptance
 
-- **x86_64 and universal binaries.** Nothing here was built or run for Intel.
-- **macOS 13 to 25.** The deployment target is declared; no pair ran on an OS
-  older than 26.6. The host links `@rpath/libswiftCompatibilitySpan.dylib`, a
-  toolchain back-deployment library, which a signed build for an older OS must
-  carry or do without.
+This section replaces a list headed "Left for `release-acceptance-handoff-k11`".
+That stage did not do the work the list described; it decided which of it Koine
+promises at all. The supported matrix is **macOS 26 on Apple Silicon**, chosen
+by the human when the stage was planned, because the only golden image is
+`testanyware-golden-macos-tahoe` on arm64 and Intel cannot be virtualized on
+Apple Silicon at all — an x86_64 claim would be unfalsifiable here, not merely
+untested. The deployment target was narrowed to match
+([latency-and-support-matrix.md](latency-and-support-matrix.md)), and four of
+the six items below stopped being obligations as a result. They are recorded as
+out of scope, not as pending, so that this document does not go on implying work
+nobody intends to do.
+
+**Out of scope, by the matrix decision:**
+
+- **x86_64 and universal binaries.** Koine is arm64 only, and says so. Nothing
+  was built or run for Intel, and nothing will be under this matrix.
+- **macOS 13 to 25.** The floor is macOS 26.0 in every Koine image — the host, the
+  framework and the bundled desktop provider — and in both packages' platform
+  declarations, `App/Info.plist` and `ProviderAPI/Info.plist`;
+  `task check:minimum-os` keeps them together. That is also what made
+  `libswiftCompatibilitySpan` a non-question, and it is observed rather than
+  argued. It is a toolchain back-deployment library for `Span`, and a host built
+  for the old floor links it by `@rpath`: both `KoineCompatibilityHost` builds of
+  2026-09-19, at `minos 13.0`, carry `@rpath/libswiftCompatibilitySpan.dylib` in
+  `otool -L`, resolved through the run path `/usr/lib/swift`. Rebuilt at
+  `minos 26.0`, `Koine.app`'s executable does not link it at all — the compiler
+  has nothing to back-deploy to an OS whose own runtime has `Span` — and on macOS
+  26 `/usr/lib/swift/libswiftCompatibilitySpan.dylib` is itself only a symlink to
+  `libswiftCore.dylib`. The question of whether a signed build for an older OS must
+  carry it has no OS left to be asked about.
 - **A different compiler on each side.** Both revisions were built by Swift 6.4.
-  A provider built by an older or newer toolchain than its host is the spec's
-  "building with a newer compiler alone does not prove it" case and is unproven.
-- **A second real signing identity.** The mismatched identities are an approval
-  record naming another Team ID, an ad-hoc signature and no signature. A bundle
-  signed by a different Developer ID team needs a second certificate, and with
-  the hardened runtime belongs to the signed-build VM verification.
+  A provider built by another toolchain than its host is still the spec's
+  "building with a newer compiler alone does not prove it" case, and it is still
+  unproven — it is declared out of scope for this release, not established. The
+  resilient framework (`docs/adr/resilient-provider-framework.md`) is the
+  mechanism that is meant to make it work, and a release that promises it would
+  need a pair built by two toolchains.
+- **Distribution of older framework minors.** 0.1.0 ships framework 1.0, the only
+  minor there has ever been, so there is no older minor to distribute. The rule
+  in "A plugin is compiled against the oldest minor it declares" stands, and it is
+  what makes this the first obligation of the release that raises the minor
+  rather than of this one.
+
+**Shown elsewhere:**
+
 - **The signed application.** These hosts are unsigned SwiftPM executables
-  without the hardened runtime, so library validation played no part;
-  `signed-app-provider-vm-verification-k25` covers the signed build.
-- **Distribution of older framework minors.** Since a provider for an older Koine
-  is compiled against that Koine's minor, every released minor's framework and
-  interface must stay available to provider authors.
+  without the hardened runtime, so library validation plays no part here. The
+  Developer ID signed, hardened `Koine.app` loading an approved same-team provider
+  is [signed-app-provider-vm.md](signed-app-provider-vm.md); the notarized build
+  loading its bundled desktop provider and a quarantined same-team provider on a
+  Gatekeeper-enforcing clone is [notarized-release-vm.md](notarized-release-vm.md).
+
+**Still open, and not dissolved by anything:**
+
+- **A second real signing identity.** The mismatched identities here are an
+  approval record naming another Team ID, an ad-hoc signature and no signature.
+  No run in this repository has used a bundle signed by a different Developer ID
+  team: it needs a second certificate, and
+  [signed-app-provider-vm.md](signed-app-provider-vm.md) records that what the
+  kernel does with a foreign-team image "is not exercised, by design, and belongs
+  to the later increment that adds the library-validation entitlement". Koine's
+  own approval check refuses such a bundle before `dlopen`, which is what the
+  cases above show; the kernel's refusal behind it is unobserved.

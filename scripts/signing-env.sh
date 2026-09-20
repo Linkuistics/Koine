@@ -46,5 +46,19 @@ if [ "${BUILD_VERSION}" != "${MARKETING_VERSION}" ]; then
     exit 1
 fi
 
+# The minimum OS is one value in the same way. App/Info.plist's
+# LSMinimumSystemVersion is the source, and the desktop provider's compiler
+# target and its manifest's minimumOS are derived from it here rather than
+# restating it. Package.swift's platform declaration and the prose in
+# docs/specs/machine.md and README.md cannot be derived — a manifest the compiler
+# reads and two documents a person reads — so scripts/check-minimum-os.sh
+# compares every site against this value and `task check:minimum-os` runs it.
+MINIMUM_OS="$(plist_string LSMinimumSystemVersion "${INFO_PLIST}")"
+if [[ ! "${MINIMUM_OS}" =~ ^[0-9]+\.[0-9]+$ ]]; then
+    echo "Error: ${INFO_PLIST} LSMinimumSystemVersion is \"${MINIMUM_OS}\", not MAJOR.MINOR." >&2
+    exit 1
+fi
+MINIMUM_OS_MAJOR="${MINIMUM_OS%%.*}"
+
 RELEASE_TAG="v${MARKETING_VERSION}"
 RELEASE_ARTIFACT="${APP_NAME}-${MARKETING_VERSION}.zip"

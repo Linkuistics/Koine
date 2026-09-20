@@ -10,7 +10,7 @@ let installName = "@rpath/KoineProviderAPI.framework/Versions/A/KoineProviderAPI
 
 let package = Package(
     name: "KoineProviderAPI",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v26)],
     products: [
         .library(name: "KoineProviderAPI", type: .dynamic, targets: ["KoineProviderAPI"])
     ],

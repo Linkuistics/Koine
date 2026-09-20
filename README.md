@@ -144,7 +144,9 @@ and nothing a client sends or the environment holds reaches it.
 
 ## Building and testing
 
-Requires Swift 6.2 or later on macOS 13 or later (developed with Swift 6.4).
+Requires Swift 6.2 or later on macOS 26 or later, Apple Silicon (developed
+with Swift 6.4). That floor is the supported matrix, not a lower bound Koine was
+never run at: docs/verification/latency-and-support-matrix.md.
 
 ```sh
 task           # build, then test (needs https://taskfile.dev)
@@ -608,8 +610,10 @@ concern and is not done here.
 owns the process and one `NSWindow` hosting SwiftUI views. It is a regular Dock
 application (the [default activation policy](https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/regular)
 for a bundled app), not an accessory. The lifecycle the contract needs is
-documented delegate behaviour rather than SwiftUI scene behaviour, which on the
-macOS 13 floor offers no dependable way to re-show a single closed window:
+documented delegate behaviour rather than SwiftUI scene behaviour, which offered
+no dependable way to re-show a single closed window on the macOS 13 floor this
+was chosen against. The floor is now macOS 26; the choice is not revisited, and
+nothing here claims SwiftUI still lacks that route:
 
 - [`applicationShouldTerminateAfterLastWindowClosed`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldterminateafterlastwindowclosed(_:))
   returns `false`: "control returns to the main event loop and the application

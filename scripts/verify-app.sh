@@ -25,6 +25,10 @@ if [ "${BUNDLE_MARKETING}" != "${MARKETING_VERSION}" ] || [ "${BUNDLE_BUILD}" !=
     exit 1
 fi
 
+# The deployment floor is one value, and the sites that state it cannot all be
+# derived. A bundle whose floor disagrees with the source is a stale bundle.
+scripts/check-minimum-os.sh
+
 codesign --verify --strict --deep --verbose=2 "${APP_BUNDLE}"
 
 DETAILS="$(codesign --display --verbose=2 "${APP_BUNDLE}" 2>&1)"

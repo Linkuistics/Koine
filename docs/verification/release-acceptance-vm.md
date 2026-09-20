@@ -101,8 +101,8 @@ not interchangeable, and a run that revokes should grant by Add.
 
 ## What this does not show
 
-- **It is one OS build on one architecture.** macOS 26.5 on arm64; the supported
-  matrix is `support-matrix-and-latency-k44`'s, and no latency is measured here.
+- **It is one OS build on one architecture.** macOS 26.5 on arm64, which is the
+  supported matrix; latency is measured in [latency-and-support-matrix.md](latency-and-support-matrix.md), not here.
 - **PID reuse cannot be forced.** What is observable is the other half of the
   identity — a live PID claimed at a start instant that is not its own — and that
   is what is checked. A genuinely reused PID was not produced, here or anywhere
@@ -223,7 +223,7 @@ took to report `granted: false` is elapsed time through the TestAnyware agent's
 retries — a guest exec that runs to completion and is then reported as
 "Process timed out after 30s" costs a real thirty seconds, and the same
 revocation was visible to a desktop read at 0 s. Latency is
-`support-matrix-and-latency-k44`'s and is measured with an instrument built for it.
+measured with an instrument built for it, in [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 No behaviour of the release build differed from the spec in this run.
 

@@ -102,8 +102,8 @@ host. Two things are specific to this run:
 - **This does not show** the library-validation entitlement, a third-party-team
   provider, or `brew install`; the first two remain out of scope as
   `native-provider-contribution-k8` left them, and the last is
-  `homebrew-distribution-k46`'s. It is one OS build on one architecture; the
-  supported matrix is `support-matrix-and-latency-k44`'s.
+  `homebrew-distribution-k46`'s. It is one OS build on one architecture, which is
+  the whole of the supported matrix: [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 ## Evidence
 

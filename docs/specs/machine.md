@@ -35,9 +35,11 @@ Use the signed Koine application as a login item through
 setup; the OS starts it on subsequent logins. If the user disables login
 launch, logs out, quits Koine or Koine crashes, clients report service
 unavailability. This first arrangement does not promise automatic crash
-relaunch. It requires macOS 13 or later. The actual supported OS/CPU release
-matrix is a release acceptance item, not a claim that every macOS version has
-been verified.
+relaunch. It requires macOS 26 or later on Apple Silicon. That is the supported
+OS/CPU release matrix, narrowed at release acceptance to what was actually run
+rather than to what a deployment target could be set to: Koine is verified on
+macOS 26 on arm64 and claims nothing about any other OS or architecture.
+Evidence: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md).
 
 A single process gives Accessibility a clear owner and supplies a native local
 management console without a separately bootstrapped management application.
@@ -840,8 +842,11 @@ interface and does not require mocks of desktop applications.
 Measure warm query-to-choices and selection-to-focus latency in the real keyboard
 workflow, reporting machine, OS, application and observed distribution. Residence
 is not evidence of meeting a numeric latency target. A cold login/crash is a
-separate availability case. Verify the signed release build's entitlement and
-permission behavior rather than extrapolating from an unsigned development run.
+separate availability case. The measurement is a report and sets no target.
+Evidence: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md).
+
+Verify the signed release build's entitlement and permission behavior rather than
+extrapolating from an unsigned development run.
 
 The native identity guarantee and signed binary compatibility must be proven by
 these seams before release; neither is established by diagrams or the current

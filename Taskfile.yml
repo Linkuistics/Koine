@@ -59,6 +59,11 @@ tasks:
     cmds:
       - scripts/verify-app.sh
 
+  check:minimum-os:
+    desc: Check that every place stating Koine's macOS floor - Package.swift, the desktop provider's manifest, the spec, the README and the assembled bundle's Info.plist and Mach-O minos - agrees with App/Info.plist's LSMinimumSystemVersion
+    cmds:
+      - scripts/check-minimum-os.sh
+
   version:
     desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
     cmds:
@@ -107,6 +112,11 @@ tasks:
     desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider lists a window left on another Space as REMEMBERED under the reference it had while CURRENT, revalidates and focuses it on selection, drops a closed window and a terminated application, as an independent native witness sees the destruction reported, and keeps observing with the management window closed
     cmds:
       - scripts/vm-verify-desktop-remembered.sh
+
+  app:vm-verify-latency:
+    desc: Measure, in a clean TestAnyware macOS VM on the signed bundle, warm query-to-choices and selection-to-focus latency in the keyboard workflow - a rotation of switches between two same-titled Finder windows and a TextEdit document, each starting from an asserted window and following real keystrokes in it - and print the observed distribution as a report, never a target
+    cmds:
+      - scripts/vm-verify-latency.sh
 
   app:vm-verify-accessibility:
     desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window shows Accessibility guidance, provider and service status, that koineManagement.osPermissions reports the same consent to koine:manage alone without prompting, that the window's request makes macOS name Koine in its dialog and in System Settings, and that both follow consent given and removed without a restart
