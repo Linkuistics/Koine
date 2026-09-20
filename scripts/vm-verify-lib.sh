@@ -90,6 +90,20 @@ click() {
     testanyware input click $(jq -r '"\(.positionX + .sizeWidth / 2 | floor) \(.positionY + .sizeHeight / 2 | floor)"' <<<"${e}") >/dev/null
     sleep 2
 }
+# await_element <jq condition> <present|absent>: the window polls on its own;
+# nothing is clicked or focused to make it look.
+await_element() {
+    for _ in $(seq 1 10); do
+        if [ "$(element "$1")" != null ]; then
+            [ "$2" = absent ] || return 0
+        else
+            [ "$2" = present ] || return 0
+        fi
+        sleep 2
+    done
+    fail "window element $1 was not $2"
+}
+text_of() { element "$1" | jq -r '[.. | strings] | join(" ")'; }
 # Notification banners ("Login Item Added") cover the top-right of the screen
 # and swallow clicks; keep the window at the top-left.
 place_window() {

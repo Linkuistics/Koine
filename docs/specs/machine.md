@@ -806,7 +806,12 @@ schema for generated clients. No Koine-owned Swift client library is required
 in the first deliverable: standard GraphQL tooling plus a small client-owned
 adapter covers endpoint discovery, Keychain storage, authorization headers and
 error classification. A future shared helper is justified by repeated real
-consumers, not by the existence of a transport.
+consumers, not by the existence of a transport. That claim has been exercised
+rather than asserted: a TypeScript client written from these documents alone,
+with no access to Koine's source, runs the whole obtain-grant, discover, list and
+focus path against the notarized build, and the places where these documents left
+it guessing are recorded as findings.
+Evidence: [contract-only-client.md](../verification/contract-only-client.md).
 
 ModalAnyware must revise its inherited Machine spec, architecture/provider
 ownership statements and resident-bridge handoff to target `koine-desktop/1`.

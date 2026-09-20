@@ -1,3 +1,5 @@
 .grove.kdl
 .playwright-mcp/
 .build/
+clients/contract-only/node_modules/
+clients/contract-only/dist/

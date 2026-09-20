@@ -58,20 +58,6 @@ expect_no_management() {
     expect '.response.data.koineManagement == null and .response.errors[0].extensions.kind == "permission"' \
         "$2 reached koineManagement"
 }
-# await_element <jq condition> <present|absent>: the window polls every two
-# seconds; nothing is clicked or focused to make it look.
-await_element() {
-    for _ in $(seq 1 10); do
-        if [ "$(element "$1")" != null ]; then
-            [ "$2" = absent ] || return 0
-        else
-            [ "$2" = present ] || return 0
-        fi
-        sleep 2
-    done
-    fail "window element $1 was not $2"
-}
-text_of() { element "$1" | jq -r '[.. | strings] | join(" ")'; }
 # shown_capabilities <request id>: the capabilities the window offers to tick.
 shown_capabilities() {
     snapshot | jq -c --arg p "request-capability-$1-" \

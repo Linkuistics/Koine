@@ -1,0 +1,5 @@
+{
+  "note": "Metadata read over the same connection, in the same session, as introspection.json.",
+  "contractVersion": "koine-desktop/1",
+  "schemaDigest": "ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf"
+}

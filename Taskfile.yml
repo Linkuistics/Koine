@@ -108,6 +108,18 @@ tasks:
     cmds:
       - scripts/vm-verify-enrollment.sh
 
+  client:
+    desc: Generate the contract-only client's TypeScript from the introspection response it was captured against, validating the five operations of docs/design/desktop-operations.graphql against that schema, then typecheck, bundle to one dependency-free file and run its adapter checks
+    dir: clients/contract-only
+    cmds:
+      - npm ci
+      - npm run build
+
+  app:vm-verify-contract-client:
+    desc: Verify in a clean TestAnyware macOS VM that a client written from the documented contract alone obtains a grant through the window, introspects the schema it was generated against, resolves a running application, lists its windows and focuses a chosen one with the reference returned unchanged, telling a capability denial, an OS-permission refusal, an absent process, a gone window and a stopped service apart
+    cmds:
+      - scripts/vm-verify-contract-client.sh
+
   conformance:
     desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against docs/design/desktop-schema.graphql by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served; the run first proves the check red against four mutated copies of the contract
     cmds:
