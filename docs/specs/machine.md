@@ -816,8 +816,10 @@ protocol as model-checked.
 Deferred: non-running applications, broad installation/configuration discovery,
 LLM skills, remote networking, cross-language plugin authoring, live plugin
 replacement, subscriptions, automatic retry and rollback, and cross-provider
-identity or atomic snapshots. Open-source licensing and distribution business
-policy remain undecided and do not gate this desktop design.
+identity or atomic snapshots. Open-source licensing and distribution are settled
+and do not change this desktop design: Koine is published under Apache-2.0 and
+installed from a Homebrew cask carrying the notarized bundle
+([open-source release and distribution](../adr/open-source-release-and-distribution.md)).
 
 The whole contract is agreed: a shared resilient Swift framework, one resident
 application with in-process native management, transferable bearer credentials

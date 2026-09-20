@@ -81,8 +81,9 @@ extension requirement. In `desktop-contract-k2`, the human chose a shared
 resilient Swift framework as the binary interface for native Swift dylibs.
 Its public types and protocols carry the compatibility promise, with library
 evolution and module stability from the first release. The concrete loading and
-version policy is specified by that design. Open-source distribution is still
-under discussion.
+version policy is specified by that design. Open-source distribution was settled
+when `release-acceptance-k38` was planned: Apache-2.0, published, and installable
+with Homebrew (`docs/adr/open-source-release-and-distribution.md`).
 
 Plugin authoring is Swift-only initially. Plugins will make significant use
 of OS-specific APIs; keep this work separate from APIAnyware. Cross-language
@@ -234,17 +235,27 @@ than before:
    `desktop-path-k9` and cut into impl leaves.
 5. `client-enrollment-k33` — the client-requested grant workflow and its
    review UI. Planned by `grant-enrollment-k10` and cut into impl leaves.
-6. `release-acceptance-handoff-k11` — whole-contract conformance, signed-build
-   VM acceptance, supported matrix and the ModalAnyware handoff.
+6. `release-acceptance-k38` — whole-contract conformance, notarized-build VM
+   acceptance, the supported matrix, the ModalAnyware handoff and Homebrew
+   distribution. Planned by `release-acceptance-handoff-k11` and cut into eight
+   impl leaves.
 
-The first five are cut into impl leaves and complete. The last stage is a `planning` leaf
-carrying its charter, acceptance cases and open questions; it is cut when
-reached, with what the stages before it actually built. Each stage serves only
-the schema fields it makes real; stage 6 checks the composed schema against the design SDL.
+All six stages are cut into impl leaves; the first five are complete. Each stage
+serves only the schema fields it makes real; stage 6 checks the composed schema
+against the design SDL. The notes below hand work forward to
+`release-acceptance-handoff-k11` by name because they were written before stage 6
+was cut; that work is now `release-acceptance-k38`'s, whose brief enumerates
+every one of those deferrals as its input.
 
 No research, prototype or review stage is added automatically. Open-source
-licensing/distribution remains undecided and is not a condition of the first
-deliverable.
+licensing and distribution are **no longer undecided**: when stage 6 was
+planned, the human chose to notarize the release and ship it through Homebrew,
+which requires a publicly reachable artifact. Koine is published as
+`Linkuistics/Koine` under Apache-2.0, with the notarized bundle on a tagged
+release and a cask in `Linkuistics/homebrew-taps`
+(`docs/adr/open-source-release-and-distribution.md`). The supported matrix is
+macOS 26 on Apple Silicon, stated from what is verifiable here, and the declared
+deployment target narrows from macOS 13 to match.
 
 ## Pointers
 
@@ -252,7 +263,8 @@ deliverable.
   `docs/adr/machine-references-as-uris.md`,
   `docs/adr/koine-server-and-native-providers.md`,
   `docs/adr/resilient-provider-framework.md`,
-  `docs/adr/bearer-grants-and-live-revocation.md`.
+  `docs/adr/bearer-grants-and-live-revocation.md`,
+  `docs/adr/open-source-release-and-distribution.md`.
 - Glossary: `CONTEXT.md`.
 - Views: `docs/design/architecture/` (its README has the build commands).
 - The inherited hosting candidate: `../PluginAnyware`, contract in
