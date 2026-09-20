@@ -3,3 +3,4 @@
 .build/
 clients/contract-only/node_modules/
 clients/contract-only/dist/
+__pycache__/

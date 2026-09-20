@@ -75,17 +75,30 @@ that again. A run is about eight minutes.
   the client surfacing `already-decided` with `DENIED` and with `EXPIRED`,
   `invalid-subset` and an unknown request; the sentence the window composes from
   them, and its re-read of the lists afterwards, were not seen in a VM.
+  **Closed** by
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), which
+  forces that order through the window's own confirmation rather than racing
+  the poll.
 - **Expiry, retention, the pending cap and the enrollment rate limit** are not
   exercised here; they need a clock or a volume the VM run does not have, and
   are covered by `GrantRequestLifetimeTests`. The run makes three enrollments
-  and leaves at most one pending, well inside both limits.
+  and leaves at most one pending, well inside both limits. The cap and the rate
+  limit are **closed** by
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), which
+  crosses both; expiry and retention remain open, and remain that suite's.
 - **That the user compares the code.** The run shows the window's code equals
   the client's receipt. A client that displays it, and a person who looks, are
   outside it.
 - **Several requests pending together.** At most one was pending at a time, so
   the window's layout with many, and scrolling to reach one, were not driven.
+  **Closed** by
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), with
+  sixteen pending at once and one of them decided only after scrolling to reach
+  it.
 - **Revocation of an enrolled grant** through the window, and the secret's 401
-  after it, are `GrantEnrollmentTests`' and were not repeated here.
+  after it, are `GrantEnrollmentTests`' and were not repeated here. **Closed** by
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), on the
+  connection that had just been served and again after a restart.
 - **The clipboard** is never touched by this workflow, so nothing about it is
   shown; the search in step 4 covers what the window exposes to accessibility,
   not pixels.
@@ -93,7 +106,9 @@ that again. A run is about eight minutes.
   quarantine attribute, as in every run here. **Closed** for the build itself by
   [notarized-release-vm.md](notarized-release-vm.md), which runs the notarized,
   quarantined bundle on a Gatekeeper-enforcing clone; the enrollment cases
-  themselves are `grant-workflow-acceptance-k43`'s.
+  themselves are **closed** by
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), which runs
+  them on that same quarantined, notarized bundle.
 
 ## Evidence
 

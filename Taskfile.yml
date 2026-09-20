@@ -77,6 +77,11 @@ tasks:
     cmds:
       - scripts/vm-verify-release.sh
 
+  app:vm-verify-grant-workflows:
+    desc: Release acceptance, grant-workflow half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - a grant created in the window and handed to a script, a client enrolled and approved in the window with nothing typed, pasted or shown, a pending requester that reads its own request and neither approves itself nor enumerates nor reaches a provider operation, an already-decided refusal composed into the window's own sentence with both lists re-read, sixteen requests pending together with the window scrolled to reach and deny one, HTTP 429 with Retry-After past the enrollment rate limit and pending-request-limit past the pending cap, and an enrolled grant revoked in the window whose credential is then refused 401 on the very connection it was served on and again after a restart
+    cmds:
+      - scripts/vm-verify-grant-workflows.sh
+
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
     cmds:
