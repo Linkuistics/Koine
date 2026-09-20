@@ -90,8 +90,10 @@ that again. A run is about eight minutes.
   shown; the search in step 4 covers what the window exposes to accessibility,
   not pixels.
 - Gatekeeper assessments are disabled in the golden image and the route sets no
-  quarantine attribute, as in every run here; that remains
-  `release-acceptance-handoff-k11`'s.
+  quarantine attribute, as in every run here. **Closed** for the build itself by
+  [notarized-release-vm.md](notarized-release-vm.md), which runs the notarized,
+  quarantined bundle on a Gatekeeper-enforcing clone; the enrollment cases
+  themselves are `grant-workflow-acceptance-k43`'s.
 
 ## Evidence
 

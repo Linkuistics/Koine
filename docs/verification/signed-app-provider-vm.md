@@ -66,12 +66,22 @@ across Koine restarts, and it stays `ACTIVE` while no provider offers its
 
 ## Left for `release-acceptance-handoff-k11`
 
-- The same cases against a **notarized** build on a Gatekeeper-enabled image,
+- ~~The same cases against a **notarized** build on a Gatekeeper-enabled image,
   with the provider bundle arriving **quarantined**: whether a quarantined,
-  un-notarized same-team plugin still passes `dlopen` is not shown here.
-- The bundled desktop provider loading from `Contents/PlugIns` (the
+  un-notarized same-team plugin still passes `dlopen` is not shown here.~~
+  **Answered** in [notarized-release-vm.md](notarized-release-vm.md): it does
+  **not**. macOS refuses the image with "library load disallowed by system
+  policy", downstream of Koine's approval record and team comparison, and the
+  refusal blocks Koine's startup until its dialog is dismissed. Clearing the
+  attribute on the installed copy does not help, because Koine reuses its
+  content-addressed staged copy, which keeps it. `provider-quarantine-rule-k47`
+  carries the rule into README and the spec.
+- ~~The bundled desktop provider loading from `Contents/PlugIns` (the
   in-application root is empty until `desktop-path-k9`); this run exercises only
-  the per-user root.
+  the per-user root.~~ **Shown** in
+  [notarized-release-vm.md](notarized-release-vm.md): `desktop` is `ACTIVE` on a
+  quarantined notarized bundle, staged and loaded like any other provider, its
+  image mapped from a `Desktop-<digest>` staging copy.
 - The supported OS and CPU matrix: this is one OS build on arm64.
 
 ## Tooling note

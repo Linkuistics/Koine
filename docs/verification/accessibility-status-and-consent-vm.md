@@ -82,8 +82,10 @@ about seven minutes.
   was quit already reported the change; that read comes several seconds after the
   password. It is not a latency measurement.
 - Gatekeeper assessments are disabled in the golden image and the route sets no
-  quarantine attribute, as in every run here; that remains
-  `release-acceptance-handoff-k11`'s.
+  quarantine attribute, as in every run here. **Closed**:
+  [notarized-release-vm.md](notarized-release-vm.md) shows this dialog naming
+  Koine on the notarized build, on a Gatekeeper-enforcing clone with the bundle
+  quarantined.
 
 ## Evidence
 

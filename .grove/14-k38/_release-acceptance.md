@@ -46,11 +46,13 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-Eight impl leaves, ordered by dependency and then by risk. The notarized build
-comes first because every later leaf runs on it and it carries the stage's two
-unknowns: whether a Gatekeeper-enabled clone can be produced at all, and the
-notary credential. Conformance comes next so that any contract drift is found
-before five leaves of evidence are written against the wrong schema.
+Nine impl leaves, ordered by dependency and then by risk; the ninth,
+`provider-quarantine-rule-k47`, was cut during the first leaf's run. The
+notarized build comes first because every later leaf runs on it and it carries
+the stage's two unknowns: whether a Gatekeeper-enabled clone can be produced at
+all, and the notary credential. Conformance comes next so that any contract
+drift is found before five leaves of evidence are written against the wrong
+schema.
 
 1. `notarized-release-build-k39` — bundle versioning, `task app:notarize`,
    stapling, and a Gatekeeper-enabled VM clone: quarantined first launch, prompt
@@ -70,12 +72,21 @@ before five leaves of evidence are written against the wrong schema.
 6. `support-matrix-and-latency-k44` — the latency report in a real keyboard
    workflow, and the supported OS/CPU matrix stated from what ran, with the
    declared deployment target narrowed to match.
-7. `documentation-and-handoff-k45` — README, spec status lines and architecture
+7. `provider-quarantine-rule-k47` — the rule `notarized-release-build-k39`
+   established on the first Gatekeeper-enforcing clone, written into README, the
+   spec and the provider-install UI's horizon note: a quarantined, un-notarized
+   provider in the per-user root is refused at `dlopen` by the platform, after
+   Koine's approval and team checks have passed, so its author must notarize it
+   or approving it must clear the attribute. Koine's own bundled provider is
+   covered by the application's ticket and is unaffected. Cut during k39 and
+   placed **before** the documentation sweep so that sweep finds the docs already
+   consistent.
+8. `documentation-and-handoff-k45` — README, spec status lines and architecture
    views made current; every acceptance obligation marked established or open;
    the contract-version statement and the ModalAnyware handoff note.
-8. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
+9. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
    release carrying the notarized artifact, the cask, and `brew install`
-   verified in a clean VM. Last, because it publishes what the seven leaves
+   verified in a clean VM. Last, because it publishes what the eight leaves
    before it proved and documented.
 
 ## Pointers

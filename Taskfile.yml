@@ -49,10 +49,28 @@ tasks:
     cmds:
       - scripts/build-app.sh
 
+  app:notarize:
+    desc: Submit the built bundle to Apple's notary service, wait, staple the ticket and zip the release artifact (KOINE_NOTARY_PROFILE names the stored credential; default koine-notary)
+    cmds:
+      - scripts/notarize-app.sh
+
   app:verify:
-    desc: Verify the bundle's signature, hardened runtime and designated requirement
+    desc: Verify the bundle's version, signature, hardened runtime, designated requirement and stapled notarization ticket, and that Gatekeeper accepts it as a notarized Developer ID build
     cmds:
       - scripts/verify-app.sh
+
+  version:
+    desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
+    cmds:
+      - |
+        source scripts/signing-env.sh
+        printf 'version %s\ntag     %s\nartifact %s\n' "${MARKETING_VERSION}" "${RELEASE_TAG}" "${RELEASE_ARTIFACT}"
+
+  app:vm-verify-notarized:
+    desc: Verify on a Gatekeeper-ENFORCING TestAnyware macOS clone that a quarantined copy of the notarized, stapled bundle launches at first run with no right-click-Open, is assessed as source=Notarized Developer ID, names Koine in the Accessibility consent dialog, and loads both its bundled desktop provider and a quarantined same-team provider from the per-user root
+    deps: [fixture:variants]
+    cmds:
+      - scripts/vm-verify-notarized.sh
 
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)

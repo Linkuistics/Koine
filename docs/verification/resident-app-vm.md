@@ -42,9 +42,10 @@ sheet's Copy button through the VM's clipboard to the protected file.
   Developer ID signature verifies strictly there with no certificate installed
   and that the bundle satisfies its designated requirement. It is **not**
   evidence of what Gatekeeper does on a stock machine with a downloaded,
-  un-notarized bundle; nothing was stripped or disabled to get here. A
-  quarantined first launch on a Gatekeeper-enabled image is
-  `release-acceptance-handoff-k11`'s, with notarization.
+  un-notarized bundle; nothing was stripped or disabled to get here.
+  **Closed**: a quarantined first launch of the notarized build on a clone whose
+  assessments are enabled is shown in
+  [notarized-release-vm.md](notarized-release-vm.md).
 - **Restart, not log out.** The login item is exercised by a restart and the
   golden's automatic login. Koine is quit before the restart so that macOS's
   reopening of applications that were running cannot be what starts it.

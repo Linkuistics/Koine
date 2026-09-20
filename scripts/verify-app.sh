@@ -12,6 +12,19 @@ if [ ! -d "${APP_BUNDLE}" ]; then
     exit 1
 fi
 
+# The version is one value: the bundle carries the version the source names, so
+# a stale bundle is never verified, notarized or released as the current one.
+BUNDLE_MARKETING="$(plist_string CFBundleShortVersionString "${APP_BUNDLE}/Contents/Info.plist")"
+BUNDLE_BUILD="$(plist_string CFBundleVersion "${APP_BUNDLE}/Contents/Info.plist")"
+if [ "${BUNDLE_MARKETING}" != "${MARKETING_VERSION}" ] || [ "${BUNDLE_BUILD}" != "${MARKETING_VERSION}" ]; then
+    {
+        echo "Error: ${APP_BUNDLE} is version ${BUNDLE_MARKETING} (build ${BUNDLE_BUILD}), not ${MARKETING_VERSION}."
+        echo "  ${INFO_PLIST} is the one source of the version the tag, the artifact and the cask take."
+        echo "  Rebuild it: task app"
+    } >&2
+    exit 1
+fi
+
 codesign --verify --strict --deep --verbose=2 "${APP_BUNDLE}"
 
 DETAILS="$(codesign --display --verbose=2 "${APP_BUNDLE}" 2>&1)"
@@ -89,4 +102,42 @@ codesign --verify --strict \
     -R="identifier \"${BUNDLE_ID}\" and anchor apple generic and certificate leaf[subject.OU] = \"${TEAM_ID}\"" \
     "${APP_BUNDLE}"
 
-echo "Verified ${APP_BUNDLE}: ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime, ${PROVIDER_FRAMEWORK_NAME}.framework embedded, desktop provider sealed in PlugIns."
+# The notarization ticket, stapled into the bundle. `stapler validate` reads the
+# ticket from the bundle itself, so this passes with the network down, which is
+# the whole point of stapling: a downloaded copy launches without asking Apple.
+if ! STAPLE="$(xcrun stapler validate "${APP_BUNDLE}" 2>&1)"; then
+    {
+        echo "${STAPLE}"
+        echo "Error: ${APP_BUNDLE} carries no stapled notarization ticket."
+        echo "  Koine is released notarized. Run: task app:notarize"
+    } >&2
+    exit 1
+fi
+
+# Gatekeeper's own verdict on the bundle. Two things are asserted, and the second
+# is the one that is easy to lose: `accepted` alone is worth nothing on a machine
+# whose assessments are disabled, because spctl accepts everything there and says
+# so in an override= line. The source must be the notarized rule.
+ASSESSMENT="$(spctl --assess --type execute -vv "${APP_BUNDLE}" 2>&1)" || {
+    echo "${ASSESSMENT}" >&2
+    echo "Error: Gatekeeper rejects ${APP_BUNDLE}." >&2
+    exit 1
+}
+echo "${ASSESSMENT}" | sed 's/^/  /'
+if grep -q 'override=' <<<"${ASSESSMENT}"; then
+    {
+        echo "Error: Gatekeeper accepted the bundle only because assessments are off here:"
+        grep 'override=' <<<"${ASSESSMENT}" | sed 's/^/    /'
+        echo "  That says nothing about the bundle. Re-run where \`spctl --status\` is enabled."
+    } >&2
+    exit 1
+fi
+if ! grep -q 'source=Notarized Developer ID' <<<"${ASSESSMENT}"; then
+    {
+        echo "Error: Gatekeeper accepted the bundle under a rule other than the notarized one."
+        echo "  Expected source=Notarized Developer ID."
+    } >&2
+    exit 1
+fi
+
+echo "Verified ${APP_BUNDLE}: ${MARKETING_VERSION}, notarized and stapled, ${BUNDLE_ID}, team ${TEAM_ID}, hardened runtime, ${PROVIDER_FRAMEWORK_NAME}.framework embedded, desktop provider sealed in PlugIns."

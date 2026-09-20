@@ -140,7 +140,11 @@ quit_koine() {
 
 start_vm() {
     step "Start a clean VM (${VM_ID})"
-    testanyware vm start --platform macos --id "${VM_ID}" >/dev/null
+    # KOINE_VM_DISPLAY overrides the guest's resolution. Only the notarized run
+    # needs it, to put a control far below the fold of a System Settings pane on
+    # screen at all; every other run takes testanyware's default.
+    testanyware vm start --platform macos --id "${VM_ID}" \
+        ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
     guest 'sw_vers; uname -m'
     echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"
 }

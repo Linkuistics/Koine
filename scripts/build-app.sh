@@ -52,8 +52,16 @@ done
 install_name_tool -add_rpath "@executable_path/../Frameworks" "${EXECUTABLE}"
 cp App/Info.plist "${APP_BUNDLE}/Contents/Info.plist"
 
-if [ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "${APP_BUNDLE}/Contents/Info.plist")" != "${BUNDLE_ID}" ]; then
+if [ "$(plist_string CFBundleIdentifier "${APP_BUNDLE}/Contents/Info.plist")" != "${BUNDLE_ID}" ]; then
     echo "Error: App/Info.plist CFBundleIdentifier is not ${BUNDLE_ID} (scripts/signing-env.sh)." >&2
+    exit 1
+fi
+# The two version keys agreeing is signing-env.sh's to establish; this is the
+# same check against the copy that actually ships, so a hand-edited bundle plist
+# cannot carry a version the source never named.
+if [ "$(plist_string CFBundleShortVersionString "${APP_BUNDLE}/Contents/Info.plist")" != "${MARKETING_VERSION}" ] ||
+    [ "$(plist_string CFBundleVersion "${APP_BUNDLE}/Contents/Info.plist")" != "${MARKETING_VERSION}" ]; then
+    echo "Error: the bundle's version keys are not both ${MARKETING_VERSION} (scripts/signing-env.sh)." >&2
     exit 1
 fi
 
