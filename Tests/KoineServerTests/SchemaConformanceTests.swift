@@ -336,13 +336,13 @@ import Testing
         return (canonical, digest)
     }
 
-    /// The one difference the first whole-contract run found and could not
-    /// reconcile: the provider states `DesktopFocusReceipt.ref`'s fact on the
-    /// type and the type's own fact nowhere. The repair is
-    /// `desktop-receipt-descriptions-k48`, and the contract already carries the
-    /// shape it has to serve — so this is a known issue rather than a suppressed
-    /// one, and Swift Testing fails a known issue that stops happening, which is
-    /// what will say the wrapper can go.
+    /// Two claims at once, because either alone can be satisfied by a schema
+    /// that is wrong in the way the other catches: the difference report is
+    /// empty, which says the served types, fields, arguments, nullability,
+    /// defaults, deprecations and descriptions are the design file's and says
+    /// where when they are not; and the digest of the canonically printed design
+    /// file is the one Koine served, which additionally covers declared order —
+    /// invisible to the report — and needs nothing from introspection.
     @Test func theServedSchemaIsTheDesignContract() async throws {
         let design = try Self.repositoryFile("docs/design/desktop-schema.graphql")
         let (canonical, digest) = try await composed()
@@ -350,19 +350,8 @@ import Testing
             served: try parse(source: canonical),
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: design))
         ).differences()
-        let designDigest = try CanonicalSchemaText.digest(ofSDL: design)
-        withKnownIssue("desktop-receipt-descriptions-k48: DesktopFocusReceipt's descriptions") {
-            #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
-            // Declared order too, which the report above cannot see.
-            #expect(designDigest == digest)
-        }
-        // What the wrapper must not be allowed to hide: everything else agrees,
-        // so the known issue is the receipt's two descriptions and not a schema
-        // that drifted. Both are the repair's — the type's own statement, and
-        // the one the provider currently has on the type instead of on `ref`.
-        #expect(
-            found.map { "\($0.coordinate) \($0.aspect.rawValue)" }
-                == ["DesktopFocusReceipt description", "DesktopFocusReceipt.ref description"],
-            Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        // Declared order too, which the report above cannot see.
+        #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 }

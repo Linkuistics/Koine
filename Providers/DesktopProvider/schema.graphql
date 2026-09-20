@@ -35,7 +35,10 @@ type DesktopWindow {
   observation: DesktopObservation!
 }
 
-"The submitted target, under the action's desktop:control."
-type DesktopFocusReceipt { ref: Reference! }
+"Control-authorized output; it does not expose read-protected window state."
+type DesktopFocusReceipt {
+  "The submitted target, under the mutation's control authority."
+  ref: Reference!
+}
 
 enum DesktopObservation { CURRENT REMEMBERED }

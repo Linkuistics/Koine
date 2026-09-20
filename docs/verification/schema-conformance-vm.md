@@ -1,12 +1,12 @@
 # Whole-contract schema conformance on the notarized build
 
-The "Public GraphQL API" seam of `docs/specs/machine.md`, checked as a whole for
-the first time: the schema the **notarized** `Koine.app` actually serves —
-composed with the desktop provider it `dlopen`s out of `Contents/PlugIns` —
-against `docs/design/desktop-schema.graphql`, by type, field, argument,
-nullability, default, deprecation and description. Every stage before this one
-served the fields it made real and left the rest of the design SDL as a target;
-this is where the target comes due.
+The "Public GraphQL API" seam of `docs/specs/machine.md`, checked as a whole: the
+schema the **notarized** `Koine.app` actually serves — composed with the desktop
+provider it `dlopen`s out of `Contents/PlugIns` — against
+`docs/design/desktop-schema.graphql`, by type, field, argument, nullability,
+default, deprecation and description. Every stage before this one served the
+fields it made real and left the rest of the design SDL as a target; this is
+where the target came due, and the schema Koine serves is now that file exactly.
 
 ## Procedure
 
@@ -58,16 +58,25 @@ an **input-object field's default** is not reported, while an argument's is.
 Koine's contract exercises none of the three, and the introspection query a
 standard code generator sends is unaffected.
 
-## What this run found
+## What the first run found, and how each difference was settled
 
-One thing, and it is the served schema's rather than the contract's.
-`Providers/DesktopProvider/schema.graphql` puts the description the spec gives
+The check's first whole-contract run (`schema-conformance-k40`, 2026-09-20) found
+four differences. None of them survives; they are recorded here because three of
+them are why `docs/design/desktop-schema.graphql` reads as it does, and the fourth
+is why the bundle this document reports on is not the one that run measured.
+
+**One was the served schema's, and was repaired.**
+`Providers/DesktopProvider/schema.graphql` put the description the spec gives
 `DesktopFocusReceipt.ref` — "The submitted target, under the mutation's control
-authority" — on the **type**, and states the type's own fact — "it does not
-expose a window's read fields" — nowhere. A client's generated types carry the
-first and not the second.
+authority" — on the **type**, and stated the type's own fact nowhere, so a
+client's generated types carried the first and not the second. That is a finding
+against the provider rather than against the contract, so it was cut as
+`desktop-receipt-descriptions-k48` with the human's decision recorded in it, and
+repaired there: both sentences now stand where the spec puts them, the provider is
+otherwise untouched, and the run reported under **Evidence** below is the
+re-notarized bundle's.
 
-Three other differences were reconciled rather than repaired, because a reader of
+**Three were reconciled rather than repaired**, because a reader of
 `docs/specs/machine.md` would have predicted each served shape:
 
 | Coordinate | Reconciled how |
@@ -76,23 +85,15 @@ Three other differences were reconciled rather than repaired, because a reader o
 | `KoineManagement.osPermissions` | the design SDL gains the served description; the spec already states that a read cannot trigger an OS consent dialog |
 | `Mutation.desktopFocusWindow` | the design SDL takes the served text, which is the spec's own row for that coordinate ("focus exactly this target or report failure", "never focus a substitute"); the mutation-preflight sentence it carried is a property of every mutation, stated under "Mutation preflight and revocation", not of this one field |
 
-The design SDL also now declares its root fields in **composition order** — the
+The design SDL also declares its root fields in **composition order** — the
 core's own, then the bundled provider's — because the digest is taken over a text
 that keeps declared order and composition is what fixes it.
-
-The remaining difference is `desktop-receipt-descriptions-k48`'s, cut with the
-human's decision recorded in it: both sentences return, each where the spec puts
-them. Until it lands, `task conformance` reports two differences (the type's
-description and `ref`'s), and
-`DesignContractConformanceTests.theServedSchemaIsTheDesignContract` carries them
-as a `withKnownIssue` naming that leaf — Swift Testing fails a known issue that
-stops happening, so the suite says when the wrapper can go.
 
 ## What this does and does not show
 
 - **The fast guard and the real bundle agree exactly.** `DesignContractConformanceTests`
   composes `Providers/DesktopProvider/schema.graphql` in process as the bundled
-  provider and gets the digest **`19615f51…`** — the same value the notarized
+  provider and gets the digest **`ee17dfd1…`** — the same value the notarized
   application, having `dlopen`ed its own sealed provider bundle in a VM, served.
   That is what makes the in-package check usable as a first line: the shipped
   bundle's SDL is the file in the tree.
@@ -112,24 +113,27 @@ stops happening, so the suite says when the wrapper can go.
   `desktop` provider is loaded, which is what the shipped contract is. A schema
   composed with a third-party provider is that provider's to check, through the
   same `task conformance` against its own SDL.
-- **The digest recorded below belongs to the pre-repair bundle.**
-  `desktop-receipt-descriptions-k48` changes two descriptions and therefore the
-  digest; it re-notarizes and re-runs this check, and updates this document so
-  the handoff and every leaf after it cite exactly one value.
+- **There is one digest, and it is the one below.** The first run's
+  `19615f51…` was the pre-repair bundle's and is superseded, not a second
+  reading: `desktop-receipt-descriptions-k48` changed the two descriptions, moved
+  the digest, re-notarized, and re-ran this check, so the handoff and every leaf
+  after it cite `ee17dfd1…` alone. Any later change to the served schema moves it
+  again, and the leaf that makes the change owns re-running this document —
+  citing a digest an earlier bundle served is the failure this rule exists for.
 
 ## Evidence
 
-Run of 2026-09-20, transcript `conformance-20260920T213041.log`, against
+Run of 2026-09-20, transcript `conformance-20260920T214349.log`, against
 `.build/app/Koine.app` version **0.1.0**, signed `Developer ID Application:
 Antony Blakey (TA43A4RUP3)`, notarized and stapled (submission
-`f50a0c8d-eaf4-4094-90fd-a7cd02b70fc6`). VM: clone of
+`ed3ef82e-f0dc-479d-9e99-65125e6f2b3e`). VM: clone of
 `testanyware-golden-macos-tahoe`, macOS 26.5 (25F71), arm64. Contract version
-`koine-desktop/1`. Introspection response 38601 bytes; the canonical served SDL
-it prints is 189 lines (`.build/conformance/served.graphql`).
+`koine-desktop/1`. Introspection response 38677 bytes; the canonical served SDL
+it prints is 192 lines (`.build/conformance/served.graphql`).
 
 **`Koine.schemaDigest` served by this build:
-`19615f511f244fcc0ae9f9de5f9db3af8fc595ee6816575f0bf265d083186f7f`** — superseded
-by `desktop-receipt-descriptions-k48`.
+`ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf`** — the one
+value the handoff and the leaves after this one cite.
 
 ```
 == The bundled desktop provider is ACTIVE, so the composed schema is the one being checked
@@ -137,31 +141,33 @@ by `desktop-receipt-descriptions-k48`.
   "schemaVersion":"1.0.0","state":"ACTIVE","diagnostic":null}]}}}
 
 == Capture the introspection response, as a code generator would ask for it
-{"status": 200, "bytes": 38601, "path": "/Users/admin/introspection.json", "errors": [],
+{"status": 200, "bytes": 38677, "path": "/Users/admin/introspection.json", "errors": [],
  "contractVersion": "koine-desktop/1",
- "schemaDigest": "19615f511f244fcc0ae9f9de5f9db3af8fc595ee6816575f0bf265d083186f7f"}
+ "schemaDigest": "ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf"}
 
 == The positive control: a mutated contract must turn this check red
-  (the unmutated contract reports 2 difference(s); each control is judged against that)
-  a description removed: red, caught by the report (3 against 2) and the digest
-  a nullability marker removed: red, caught by the report (3 against 2) and the digest
-  an argument default introduced: red, caught by the report (3 against 2) and the digest
+  (the unmutated contract reports 0 difference(s); each control is judged against that)
+  a description removed: red, caught by the report (1 against 0) and the digest
+  a nullability marker removed: red, caught by the report (1 against 0) and the digest
+  an argument default introduced: red, caught by the report (1 against 0) and the digest
   two root fields transposed: red, caught by the digest
 
 == The contract as it stands
-digest of docs/design/desktop-schema.graphql, canonically printed: ee17dfd1…
-digest Koine served (Koine.schemaDigest):                          19615f51…
-  they differ: the design file is not the schema Koine hashed.
+digest of docs/design/desktop-schema.graphql, canonically printed: ee17dfd16a7d…
+digest Koine served (Koine.schemaDigest):                          ee17dfd16a7d…
+  they agree: the design file is exactly the schema Koine hashed.
 
-2 difference(s) between the served schema and docs/design/desktop-schema.graphql:
+The served schema matches docs/design/desktop-schema.graphql exactly.
 
-DesktopFocusReceipt — description
-    served: "The submitted target, under the action's desktop:control."
-    design: "Control-authorized output; it does not expose read-protected window state."
-DesktopFocusReceipt.ref — description
-    served: none
-    design: "The submitted target, under the mutation's control authority."
+CONFORMANT: the schema Koine serves is docs/design/desktop-schema.graphql.
 ```
+
+The controls are stronger in this run than in the first one, and not because
+anything in the check changed: the baseline they are judged against is read from
+the unmutated contract rather than assumed, so a conformant contract makes every
+control prove itself against **0** differences instead of against 2. The
+transposed pair is still caught by the digest alone — the standing demonstration
+that declared order is not in the introspected text.
 
 ## Tooling note
 
