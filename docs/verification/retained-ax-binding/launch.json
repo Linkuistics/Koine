@@ -1,0 +1,9 @@
+{
+  "command": "/tmp/K54Binding.app/Contents/MacOS/K54Binding --run >/tmp/k54-binding-held.jsonl 2>/tmp/k54-binding-held.stderr; printf \"%s\\n\" \"$?\" >/tmp/k54-binding-held.exit",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

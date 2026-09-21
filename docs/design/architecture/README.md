@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Native action binding](index.html#diagram-process-binding) — adds the observed PID-reuse counterexample in which a held AX window minimizes a replacement process.
 - [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
 - [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
 - [Resident application](index.html#diagram-packages) — shows runtime ownership.
@@ -52,8 +53,8 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 ```
 
 From the repository root, `task design:render-process-identity` renders the
-process-capture and process-serial views to their SVG exports and to PNGs under
-`.build/design-identity`.
+process-capture, process-serial and process-binding views to their SVG exports
+and to PNGs under `.build/design-identity`.
 
 The viewer fetches sources and exports on reload; it does not compile them.
 `diagrams.json` owns the topic outline, the captions and the introduction. The
@@ -63,3 +64,8 @@ The serial-number view's deep link, rendering and topic/changed markers were
 checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
 also inspected. This does not establish the other views' rendering, or mobile
 and dark appearance.
+
+The native action-binding view was likewise rendered and inspected as PNG and
+at its fresh-page deep link in Safari in `koine-k54-binding`. Its topic outline
+and Current/Updated markers identified the intended view. Mobile and dark
+appearance were not checked for this update.

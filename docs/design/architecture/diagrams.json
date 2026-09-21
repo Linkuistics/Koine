@@ -24,26 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Client capture and strict process lifetime are agreed",
-    "status": "Serial candidate ruled out; native contract next",
-    "summary": "The human requires client-event capture that expires with the original OS process. A macOS 26.5 automatic-termination experiment found the same public PSN and boot identity naming PID 893, then PID 910 after restoration. The serial candidate therefore fails the agreed contract. Retained native identity is the next design direction; capture attribution, authenticated transfer, restart behavior and Accessibility action binding remain open. No replacement schema is approved.",
+    "title": "Retained AX objects do not preserve process incarnation",
+    "status": "Server-private API investigation authorized; strict lifetime preserved",
+    "summary": "On macOS 26.5, an old retained AX window minimized a replacement process at recycled PID 781. The holder kept its original task-name right and AX parent and performed no fresh AX acquisition. A separate observer confirmed the effect. The human chose to investigate private APIs inside Koine while keeping client APIs public and preserving strict process lifetime. This authorizes investigation, not a particular mechanism, restart policy or replacement schema.",
     "diagramIds": [
+      "process-binding",
       "process-serial",
       "process-capture",
       "addressing"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-serial",
-        "summary": "Replaced the proposal with the observed automatic-termination counterexample and the agreed strict lifetime boundary."
-      },
-      {
-        "id": "process-capture",
-        "summary": "Distinguished the required client capture boundary from the still-unapproved native transfer and action protocol."
+        "id": "process-binding",
+        "summary": "Added the actual PID-reuse counterexample: a held AX window acts on a replacement process while the original task right is dead."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-binding",
+      "group": "machine",
+      "title": "Why retained AX objects do not bind native effects",
+      "renderer": "svg",
+      "source": "process-binding.puml",
+      "rendered": "process-binding.svg",
+      "caption": "Actual PID reuse in a disposable macOS 26.5 TestAnyware VM, with a controlled Cocoa app. The holder never reacquired AX objects after the original process ended. It intentionally used the retained window after death to test endpoint lifetime; this is not an observed Koine mistarget. Separate observers saw the replacement before and after minimization. Source, frozen-input hashes, output and limitations are in docs/verification/retained-ax-binding.md. Server-private investigation is authorized; a particular private dependency, native protocol or weaker action guarantee is not approved."
+    },
     {
       "id": "process-serial",
       "group": "machine",

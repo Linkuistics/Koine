@@ -19,18 +19,24 @@ which must change before first release. The
 [capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
 client-local capture and strict OS-process lifetime; its replacement encoding
 is not yet agreed. Held-window evidence below does not establish cross-process
-binding for a native action endpoint.
+binding for a native action endpoint. A subsequent
+[actual PID-recycling experiment](../verification/retained-ax-binding.md)
+shows that a retained AX window can address a replacement process, even with
+the original task-name right and AX parent still held. The current scheme
+therefore does not establish the required cross-incarnation no-substitution
+guarantee; its native binding must be resolved before release.
 
 ## Trade-off
 
-Only public API is used, and "focus exactly this target or report `unavailable`"
-held against real applications in every case tried: same titles, retitling,
+Only public API is used. The earlier within-process and ordinary-restart tests
+observed exact targeting: same titles, retitling,
 minimising, another Space, closure with a look-alike replacement, and restart
 ([evidence](../verification/desktop-window-identity.md)). The price is that no
 window reference survives a restart of Koine; clients list again. The guarantee
 also rests on an assumption public API cannot prove for every application: the
 identity an application gives a window's element is bound to that window for the
-life of its process and is not issued again.
+life of its process and is not issued again. Those observations do not cover
+the cross-incarnation counterexample above.
 
 ## Rejected alternatives
 

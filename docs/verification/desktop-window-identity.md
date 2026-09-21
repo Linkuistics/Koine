@@ -1,5 +1,11 @@
 # Desktop window identity: which native mechanism upholds the contract
 
+**Scope correction:** the observations below cover their original within-process
+and ordinary-restart scenarios. They do not establish binding across process
+incarnations. A later [actual PID-recycling diagnostic](retained-ax-binding.md)
+showed a held AX window acting on a replacement process. The captured results
+below remain historical evidence; the native no-substitution obligation is open.
+
 `docs/specs/machine.md`, "Resource references and desktop behavior", requires
 that a window reference is re-resolved on every use and that Koine focuses
 *exactly this target or reports `unavailable`*; it leaves "exactly which

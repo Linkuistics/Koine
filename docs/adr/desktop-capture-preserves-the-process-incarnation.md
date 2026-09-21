@@ -30,3 +30,15 @@ effect must bind to the captured incarnation. Checking identity and then acting
 through a fresh PID lookup does not meet that obligation. Client capture and
 strict process lifetime are settled constraints; the remaining protocol must
 establish them before the public schema changes.
+
+Retaining an AX window and its AX application parent also does not supply that
+binding. A [macOS 26.5 PID-recycling experiment](../verification/retained-ax-binding.md)
+kept both objects and a task-name right while the original process ended. The
+task right became dead, but the held window later addressed and minimized a
+replacement process at the same PID, without a fresh AX acquisition in the
+holder. A task check cannot exclude death between the check and that effect.
+This candidate needs an independently established native endpoint binding;
+retention plus another pre-check is not a replacement mechanism. Investigation
+of private APIs inside Koine is authorized, while clients keep public APIs and
+strict process lifetime remains required. No particular private-API solution
+or relaxation of the no-substitution guarantee is agreed.

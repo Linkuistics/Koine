@@ -197,7 +197,12 @@ OS process lifetime. A public process serial number plus boot identity cannot
 replace the timestamp: automatic termination can restore the application under
 that same pair but a new process. See the
 [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md).
-The native replacement protocol is still being designed.
+
+The retained-native candidate also has an unresolved action boundary:
+[a VM experiment](verification/retained-ax-binding.md) showed a held AX window
+acting on a replacement process after actual PID reuse. Treat the native
+replacement as unfinished; a task right plus retained AX objects is not an
+approved client protocol.
 
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That

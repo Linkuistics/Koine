@@ -244,6 +244,13 @@ records these agreed boundaries; native transfer, reference lifetime across
 Koine restart and action binding remain to be designed. The SDL below still
 describes the currently served timestamp input, not an approved replacement.
 
+Retained AX objects are insufficient for that native binding:
+[an actual PID-recycling experiment](../verification/retained-ax-binding.md)
+made an old held window minimize a replacement process. The original task-name
+right had become dead, while the AX object and its held application parent
+answered again. The strict no-substitution requirement remains; a retained
+task check followed by an AX action does not yet implement it.
+
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
 | `Query.koine` | `Koine!` | Server version and caller's grant; authenticated |
@@ -996,11 +1003,11 @@ Gatekeeper-enforcing clone; each document says which.
 | Absent and revoked consent | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md). |
 | Application resolution; current and remembered windows across Spaces; focus | **Established.** [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md), the mechanism in [desktop-window-identity.md](../verification/desktop-window-identity.md). |
 | Closure, duplicate titles and restart behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). |
-| PID reuse | **Established** for the half that can be produced: a live PID claimed at a start instant not its own resolves to nothing, [release-acceptance-vm.md](../verification/release-acceptance-vm.md). **Open**: a genuinely reused PID has never been produced. The identity this rests on is being replaced (below). |
+| PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). **Open** for action safety: an [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. The replacement design must close that native binding gap. |
 | Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
 | Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the signed build of the macOS 26 floor, whose image digests the notarized bundle is to be checked against. |
 | The signed release build's entitlements and permission behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [notarized-release-vm.md](../verification/notarized-release-vm.md). |
-| The native identity guarantee | **Established** for windows: [desktop-window-identity.md](../verification/desktop-window-identity.md) and [its decision record](../adr/desktop-window-identity-is-a-held-element.md). |
+| The native identity guarantee | **Established** only for the within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). **Open** across process incarnations: the held AX endpoint can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. |
 
 **Open, and not a case above:**
 

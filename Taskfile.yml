@@ -1,12 +1,20 @@
 version: '3'
 
 tasks:
+  fixture:retained-ax:
+    desc: Build the retained-AX PID-recycling diagnostic without launching it (run only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/retained-ax/K54Binding.app/Contents/MacOS
+      - cp docs/verification/retained-ax-binding/Info.plist .build/retained-ax/K54Binding.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/probe.m -framework Cocoa -framework ApplicationServices -o .build/retained-ax/K54Binding.app/Contents/MacOS/K54Binding
+      - /usr/bin/ditto -c -k .build/retained-ax .build/retained-ax.zip
+
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml
+      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml
 
   fixture:process-serial:
     desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)

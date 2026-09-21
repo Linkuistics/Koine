@@ -1,0 +1,9 @@
+{
+  "command": "ditto -x -k /tmp/retained-ax.zip /tmp && shasum -a 256 /tmp/K54Binding.app/Contents/MacOS/K54Binding /tmp/K54Binding.app/Contents/Info.plist",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "42c8da9a38cf25bf59195995253c993b3c7791f9a15a9cf7a4ff3d3b67f76d48  /tmp/K54Binding.app/Contents/MacOS/K54Binding\n6dd580201a849163811b57036ec44ec6146f1fe410ab567317125f6a508e5e52  /tmp/K54Binding.app/Contents/Info.plist",
+  "timed_out": false
+}
