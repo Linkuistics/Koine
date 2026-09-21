@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — adds resolved default allocation/cleanup, completed same-PID exec, inconclusive restoration and the actual/presenter PID distinction.
 - [Audited AX read and death ordering](index.html#diagram-process-admission) — adds the real read-only admission exchange, wrong-task control, death-before/between-effect schedules and actual PID reuse.
 - [Direct AX effects](index.html#diagram-process-effects) — adds the executed read/effect/confirmation sequence, independent witness and post-death refusal.
 - [Direct AX endpoint](index.html#diagram-process-endpoint) — retains the earlier retention/responder results and points to the newer admission and effect evidence; receiver ownership and policy remain open.
@@ -56,8 +57,8 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 ```
 
 From the repository root, `task design:render-process-identity` renders the
-process-capture, process-serial, process-binding, process-endpoint and
-process-effects and process-admission views to their SVG exports and to PNGs under
+process-capture, process-serial, process-binding, process-endpoint,
+process-effects, process-admission and process-receiver views to their SVG exports and to PNGs under
 `.build/design-identity`.
 
 The viewer fetches sources and exports on reload; it does not compile them.
@@ -102,3 +103,10 @@ appearance were not checked for this update. The endpoint and effects views
 retain their original measurements and now point to the newer admission/death
 evidence. The host viewer serves the same source and manifest at
 `http://127.0.0.1:8772/#diagram-process-admission`.
+
+The receiver view's PNG export and fresh-page deep link were checked in Safari
+in disposable clone `koine-k65-receiver`. The desktop light layout, topic outline
+and Current/Updated markers identify the intended revision. Mobile and dark
+appearance were not checked for this update. The host viewer serves the same
+source and manifest at
+`http://127.0.0.1:8772/#diagram-process-receiver`.

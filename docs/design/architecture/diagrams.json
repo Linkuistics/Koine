@@ -24,32 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Audited AX read followed by effects and scheduled death",
-    "status": "Admission and death schedules demonstrated; receiver and policy work remains",
-    "summary": "A real AXRole read supplies a fresh audited reply before the retained-task check. Four signed/hardened Cocoa runs cover live effects, death before effects, death between effects and actual PID reuse. Old-endpoint primitives refuse and the successor stays unchanged. Receiver ownership/routing, exec/restoration and separate Koine consent still prevent adoption.",
+    "title": "AX receiver allocation, exec, and the uncompleted restoration schedule",
+    "status": "Default receiver and exec established on 25F71; restoration and routing remain open",
+    "summary": "Loaded code resolves local receive allocation, bootstrap send registration and source cleanup. An admitted same-PID exec kills the old task and endpoint; every old-endpoint primitive refuses and the successor remains unchanged. The restoration holder exits 25 without a successor. Presenter/actual PID and registered callback dispatch keep top-level routing unproved.",
     "diagramIds": [
+      "process-receiver",
       "process-admission",
-      "process-effects",
       "process-endpoint",
-      "process-binding",
       "process-capture"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-admission",
-        "summary": "Added the real read-only admission exchange and the four completed native schedules."
-      },
-      {
-        "id": "process-effects",
-        "summary": "Points to the newer audited admission and death-between-effects evidence; retains the original effect run."
-      },
-      {
-        "id": "process-endpoint",
-        "summary": "Points to the real audited read and scheduled death evidence; narrows the remaining lifetime questions."
+        "id": "process-receiver",
+        "summary": "Adds resolved ownership, completed exec, inconclusive restoration and the presenter/receiver routing distinction."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-receiver",
+      "group": "machine",
+      "title": "AX receiver ownership and process transitions",
+      "renderer": "svg",
+      "source": "process-receiver.puml",
+      "rendered": "process-receiver.svg",
+      "caption": "Inspected and executed in TestAnyware clone koine-k65-receiver on macOS 26.5 (25F71). Default MSH allocation creates a local receive right and bootstrap gets a send right. Source release drops both local references. A signed/hardened holder admits PID 867 before exec; both old rights become dead names and every old-endpoint primitive refuses, with an unchanged successor witness. Restoration at PID 905 remains inconclusive (holder exit 25); the separate no-AX control restores 937 to 972 with the same PSN, but the runs do not isolate why they differ. Public AX PID may be a presenter; callback semantics and arbitrary receive transfer remain outside these results. No product adoption or schema change. See docs/verification/direct-ax-endpoint.md#receiver-allocation-and-transitions."
+    },
     {
       "id": "process-admission",
       "group": "machine",

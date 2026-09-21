@@ -63,9 +63,15 @@ feasibility, not a supported shipping ABI. An
 matched a real `AXRole` reply to the retained live task, rejected wrong/dead-task
 controls, then exercised same-endpoint effects. Death before/between effects and
 actual PID reuse refused every later primitive on the tested Cocoa target.
-Client-event attribution, receiver ownership across exec/restoration and
-top-level routing, and consent/version policy remain unresolved. Continue
-evaluating those obligations
+The [receiver investigation](../verification/direct-ax-endpoint.md#receiver-allocation-and-transitions)
+resolves local receive-right allocation, bootstrap send-right registration and
+cleanup on the inspected build. A same-PID exec makes both retained rights dead;
+all old-endpoint effects refuse and the successor remains unchanged. These are
+bounded observations, not immovability or every handler's behavior. The admitted
+automatic-restoration attempt did not reach a successor, and public AX PID
+reporting can prefer a presenter PID over the actual receiver. Client-event
+attribution, actual restoration, top-level descriptor/handler binding and
+consent/version policy remain unresolved. Continue evaluating those obligations
 without treating finite audit fields as permanent identity or a successful
 effect sequence as the full action guarantee. No complete replacement mechanism
 is approved.
