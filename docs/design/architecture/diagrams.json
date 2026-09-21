@@ -24,28 +24,38 @@
     }
   ],
   "discussion": {
-    "title": "AX contact conflicts with the automatic-restoration experiment",
-    "status": "Matched lifecycle conflict on 25F71; no admitted-restoration pass or product adoption",
-    "summary": "The identical target terminates without AX before and after the AX arms. One successful public AXRole read leaves it hidden and TAL-ineligible after reader exit. Direct-only admission and retiring the owned client port do not recover eligibility in the measured interval. No admitted successor or old-endpoint refusal was reached; strict lifetime stays required.",
+    "title": "Top-level descriptors reach local callbacks, then downstream services",
+    "status": "Bounded receiver contract on 25F71; adoption conflict remains",
+    "summary": "Unmodified TextEdit supplies a local document and local Open top-level descriptor with remote children. Its Open panel fails the current child-to-window acceptance test. The document visibly minimizes and restores; successful panel replies do not imply a state change. Loaded AppKit callbacks resolve local IDs, while activation reaches WindowServer or Launch Services. Downstream death binding, arbitrary custom handlers and actual admitted restoration remain unestablished; strict lifetime stays required.",
     "diagramIds": [
-      "process-restoration",
+      "process-routing",
       "process-receiver",
+      "process-restoration",
       "process-admission",
       "process-endpoint",
       "process-capture"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-restoration",
-        "summary": "Adds matched no-AX, one-read and direct-only client-retirement controls, and distinguishes the lifecycle conflict from a passing restoration test."
+        "id": "process-routing",
+        "summary": "Adds document/Open/Save observations, concrete descriptor decoding and callbacks, and the downstream activation lifetime boundary."
       },
       {
         "id": "process-receiver",
-        "summary": "Replaces the fixture-ambiguity note with the matched AX-contact result while preserving the receiver and exec evidence."
+        "summary": "Replaces the unspecified top-level routing gap with the concrete AppKit result and remaining downstream/restoration obligations."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-routing",
+      "group": "machine",
+      "title": "Top-level AX descriptors and downstream effects",
+      "renderer": "svg",
+      "source": "process-routing.puml",
+      "rendered": "process-routing.svg",
+      "caption": "Observed and inspected in TestAnyware clone koine-k68-routing on macOS 26.5 (25F71). TextEdit PID 772 owns both document and Open top-level descriptors; Open/Save content includes actual PID 781 with presenter 772. The Open panel fails the current provider's first-child AXWindow test. Direct document effects visibly minimize and restore; Open accepts the requests without observed minimization. AppKit's own registered callbacks resolve local data and dispatch to object methods; application activation reaches WindowServer or Launch Services. This establishes a conditional receiver contract, not arbitrary callback behavior, downstream death binding, admitted automatic restoration, or product adoption. Report, exact handler bounds, controls, frozen inputs and recommendation: docs/verification/ax-top-level-routing.md. The restoration view is unchanged context."
+    },
     {
       "id": "process-restoration",
       "group": "machine",
@@ -62,7 +72,7 @@
       "renderer": "svg",
       "source": "process-receiver.puml",
       "rendered": "process-receiver.svg",
-      "caption": "Inspected and executed in TestAnyware clone koine-k65-receiver on macOS 26.5 (25F71). Default MSH allocation creates a local receive right and bootstrap gets a send right. Source release drops both local references. A signed/hardened holder admits PID 867 before exec; both old rights become dead names and every old-endpoint primitive refuses, with an unchanged successor witness. The later matched restoration view isolates AX-contact inhibition using one target build; it supplies a bounded lifecycle conflict, not an admitted-restoration pass. Public AX PID may be a presenter; callback semantics and arbitrary receive transfer remain outside these results. No product adoption or schema change. See docs/verification/direct-ax-endpoint.md#receiver-allocation-and-transitions."
+      "caption": "Inspected and executed in TestAnyware clone koine-k65-receiver on macOS 26.5 (25F71). Default MSH allocation creates a local receive right and bootstrap gets a send right. Source release drops both local references. A signed/hardened holder admits PID 867 before exec; both old rights become dead names and every old-endpoint primitive refuses, with an unchanged successor witness. The later restoration view isolates AX-contact inhibition; the top-level routing view traces ordinary AppKit descriptors/callbacks and TextEdit panels. Downstream effect lifetime, custom handlers, arbitrary receive transfer and actual admitted restoration remain outside the bounded guarantee. No product adoption or schema change. See docs/verification/direct-ax-endpoint.md#receiver-allocation-and-transitions."
     },
     {
       "id": "process-admission",

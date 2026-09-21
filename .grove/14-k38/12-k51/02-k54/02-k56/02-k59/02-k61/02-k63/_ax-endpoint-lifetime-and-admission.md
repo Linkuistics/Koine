@@ -88,3 +88,28 @@ capture/transfer/reference/restart/prepublication framing.
 
 Each child is independently verifiable. These are distinct experiments, not a
 declared repetition series. No additional review or implementation stage is cut.
+
+## Receiver-lifetime handoff
+
+The `ax-receiver-lifetime-k65` subtree delivers its bounded-contract/evidenced-
+conflict branch. Its original criteria were checked together: k67 establishes
+the default receiver allocation, registration, cleanup and completed admitted
+exec schedule; k69's matched controls establish AX-contact restoration inhibition
+without a passing admitted successor schedule; k68 establishes the ordinary
+AppKit descriptor/callback path and its remaining assumptions. The report, capture
+ADR and visual discussion agree. This closes the investigation node without
+claiming its unexecuted schedules passed or approving a product mechanism.
+
+For k66, read `docs/verification/ax-top-level-routing.md` and
+`docs/verification/ax-automatic-restoration.md` alongside the direct-endpoint
+report. TextEdit's document/Open top-level descriptors are local; panel content
+is remote, and the current child-to-window filter refuses Open. Concrete default
+handlers act on local objects, while activation reaches WindowServer/Launch
+Services. Arbitrary overrides/receive transfer, descriptor non-reassignment,
+downstream binding through process death, and actual admitted restoration remain
+unestablished. The recommendation is to carry this precise conflict into policy
+and adoption synthesis with strict lifetime unchanged. The reports state costs,
+alternatives and reversal evidence. No arbitrary-target support restriction,
+PID fallback or target cooperation is authorized; k57 still owns human agreement.
+Policy denial, Koine consent attribution and private-ABI maintenance remain k66's
+work, so this parent stays live.

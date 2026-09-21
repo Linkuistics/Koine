@@ -76,8 +76,17 @@ not recover eligibility in the measured interval. Target nontermination must
 not stand in for a passing admitted-restoration test; changing client-port
 ownership is not yet a demonstrated remedy or approved product policy. Public
 AX PID reporting can also prefer a presenter PID over the actual receiver.
-Client-event attribution, actual admitted restoration, top-level descriptor/handler
-binding and consent/version policy remain unresolved. Continue evaluating those
-obligations without treating finite audit fields as permanent identity or a successful
-effect sequence as the full action guarantee. No complete replacement mechanism
-is approved.
+The [top-level routing investigation](../verification/ax-top-level-routing.md)
+traces ordinary AppKit descriptors through local registration and concrete
+callbacks. Unmodified TextEdit's Open panel has a local top-level descriptor and
+remote children; the current provider's child-to-window test refuses that panel.
+Receiver-local data therefore has a bounded usable route, with an availability
+cost, not an arbitrary-target guarantee. Application activation reaches
+WindowServer/Launch Services after the AX callback; binding that downstream work
+through process death is still unestablished. Custom handlers, descriptor lifetime
+and arbitrary receiver transfer also remain assumptions. Carry this concrete
+conflict and the restoration result into adoption review; do not replace them
+with PID reconstruction, another task check, or an implicit support restriction.
+Reconsider adoption with evidence covering those lifetimes and explicit agreement
+on any support trade-off. Client-event attribution and consent/version policy
+remain open. No complete replacement mechanism is approved.

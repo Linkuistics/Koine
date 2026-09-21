@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
 - [Automatic restoration and AX client lifetime](index.html#diagram-process-restoration) — adds matched no-AX, single-read and direct-only client-retirement controls, with the bounded lifecycle conflict and unexecuted successor branches explicit.
 - [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — replaces the fixture-ambiguity note with the matched AX-contact result while retaining allocation, exec and routing evidence.
 - [Audited AX read and death ordering](index.html#diagram-process-admission) — adds the real read-only admission exchange, wrong-task control, death-before/between-effect schedules and actual PID reuse.
@@ -59,7 +60,7 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 
 From the repository root, `task design:render-process-identity` renders the
 process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission, process-receiver and process-restoration views
+process-effects, process-admission, process-receiver, process-restoration and process-routing views
 to their SVG exports and to PNGs under
 `.build/design-identity`.
 
@@ -125,3 +126,15 @@ retain their light canvases inside the dark viewer. Narrow fit mode reduces
 diagram text substantially; the full-size export and native-size option remain
 available. No mobile device was tested. The host serves the same manifest at
 `http://127.0.0.1:8772/#diagram-process-restoration`.
+
+The [top-level routing view](index.html#diagram-process-routing) adds the local
+descriptor/callback path and downstream effect boundary; the
+[receiver view](index.html#diagram-process-receiver) now names those findings
+and their remaining assumptions. Both PNG exports and fresh-page deep links
+were checked in Safari in disposable clone `koine-k68-routing`. The discussion
+panel, topic outline and Current/Updated markers match this revision. Desktop
+light and dark appearance and a 650-pixel window were inspected; no mobile
+device was tested. The SVGs retain a light canvas. Narrow fit mode substantially
+reduces diagram text; native-size and full-size export remain available.
+The host serves the same manifest at
+`http://127.0.0.1:8772/#diagram-process-routing`.
