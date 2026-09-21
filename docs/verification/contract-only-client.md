@@ -125,6 +125,53 @@ other half: the enrolment retry rule, the anonymous-budget scoping sentence, the
 states" sentence, the transport-refusal ordering, reference opacity, and the
 introspection-sorting paragraph that stopped it trying to recompute the digest.
 
+## How each finding was settled
+
+Every entry in [contract-only-client-gaps.md](contract-only-client-gaps.md),
+by its section number there, settled in `documentation-and-handoff-k45`. A
+**repair** is a statement now in [the spec](../specs/machine.md) or the
+[client guide](../client-guide.md) that answers it. A **decline** leaves the
+contract as it is for `koine-desktop/1`, with the reason. The human chose to
+repair in prose and decline every change to the served schema or its
+behaviour, since each would move the schema digest, or change what the release
+evidence observed, after that evidence was taken.
+
+| § | Finding | Settled |
+|---|---|---|
+| 1.1 | The start instant has no documented source | **Open, by the human's decision.** The spec now names the source, `proc_pidinfo(PROC_PIDTBSDINFO)`, and states the comparison is exact, because that is what Koine serves. The human rejected time as a process identity altogether, since it cannot guarantee non-collision, and a mechanism that does not depend on time replaces it before the first public release (`process-identity-without-time-k51`). The compiled C helper goes with it. |
+| 1.2 | `DesktopProcessStart` has no grammar | **Repaired**: `YYYY-MM-DDTHH:MM:SS.ffffffZ`, exactly, in the spec and the guide. An example or `@specifiedBy` in the schema is **declined** (digest). |
+| 1.3 | Nothing says how to turn a name into a pid | **Repaired**: locating the process is the client's; Koine has no lookup by name or bundle identifier. |
+| 1.4 | `DesktopChoices` reads nothing without consent | **Repaired** in the guide, which says which fields resolve without consent and that a client may write its own operation. A second published operation is **declined**: the published operations are the handoff's path, not a catalogue. |
+| 2.1 | Whether enrollment carries a credential | **Repaired**: it carries none, and one presented with any credential is refused (401 for a credential naming nothing, `permission` for a live one). |
+| 2.2 | "Invalid credentials return 401" contradicts the status-only poll | **Repaired**: the transport section now names the status-only principal. |
+| 2.3 | Capability names only readable under a grant | **Repaired**: the version-1 set is stated, and an unknown name is refused at submission rather than put to the user. Anonymous `availableCapabilities` is **declined** (behaviour change). |
+| 2.4 | Keychain or file | **Repaired**: the handoff says credential storage, and the guide says both. |
+| 3.1 | No enumerated `kind` vocabulary | **Repaired**: the four values, stated closed for version 1, plus the input error that carries none. A schema enum is **declined**: extensions are not part of a GraphQL schema. |
+| 3.2 | No precedence among errors | **Repaired**: the contract sets none, and says so. |
+| 3.3 | "Null root with no error is absence" never said | **Repaired**, in one sentence in "Errors and partial data". |
+| 3.4 | Caller-fixable enrollment outcomes are `failed` | **Declined** (behaviour change): `extensions.reason` tells them apart. |
+| 3.5 | A deadline cannot be told from an OS failure | **Repaired** from what is already served: a deadline or response-cap error has an empty `path`, which is sufficient but not necessary — a deadline can also be met at an action's path — so the guide tells clients to treat every `failed` mutation as unconfirmed, which is what this client already did. A dedicated marker is **declined**. |
+| 3.6 | 403 has two meanings | **Repaired**: a 403 with no body is the `Origin` refusal. |
+| 3.7 | Does a 429 body carry a `kind` | **Repaired**: it does not. |
+| 4.1 | Descriptor re-reading has no policy | **Repaired** in the guide: re-read once, and reconnect only if the port changed. |
+| 4.2 | Descriptor types and version mismatch | **Repaired**: JSON types stated; an unknown `descriptorVersion` or a different `contractVersion` is an incompatible service, not an unavailable one. |
+| 4.3 | `instanceId` and reference lifetime never joined | **Repaired**: a changed `instanceId` means every window reference is `unavailable`. |
+| 4.4 | Origin and Host only right by the library's luck | **Repaired**: use a non-browser HTTP client. |
+| 4.5 | Descriptor `pid` is unusable | **Repaired**: clients ignore it. |
+| 5.2 | Scalars have no machine-readable mapping | **Repaired** in the guide: both are strings. `@specifiedBy` is **declined** (digest). |
+| 5.3 | No standard way to record the generated-against digest | **Repaired**: read `koine { schemaDigest }` beside introspection and store it with the generated code. |
+| 5.4 | Safe introspection options implied | **Repaired**: every `getIntrospectionQuery` option but `inputValueDeprecation`, which is what `task conformance` sends. |
+| 5.6 | The coordinate table is only the desktop half | **Repaired**: the spec's desktop table now points at the management surface's own, and the spec and the guide say the published operations are not a catalogue. |
+| 5.7 | Every spec link points outside the handout | **Declined**: the handout was the exercise's; the repository the links resolve in is published with the release. |
+| 6.1 | No warning against URL-normalising a reference | **Repaired** in the guide. |
+| 6.2 | Is re-submitting a focus a recovery | **Repaired**: no automatic replay; re-submitting is a new request, the caller's to choose. |
+| 6.3 | Three kinds of "not running" answer the same | **Declined**, deliberately: each is "that application is not running", and the spec now says so. |
+| 6.4 | No published management operations | **Repaired**: stated, with why a client cannot approve itself. |
+
+§2.5, §3.8, §4.6, §5.1 and §5.5 record what worked and need
+nothing. §7 lists what the client added on its own, which binds no one. §8 ranks
+the guesses above; each is settled in its own row.
+
 ## What this does and does not show
 
 - **It does not show that the documents are sufficient** — it shows they are
@@ -133,8 +180,8 @@ introspection-sorting paragraph that stopped it trying to recompute the digest.
   silently sees no applications.
 - **The compiled C helper is a finding, not a solution.** A published client
   should not invoke `/usr/bin/cc` at runtime. It is in the tree because removing
-  it would hide the gap that produced it; it goes when the contract states the
-  instant's source, or states that the comparison is tolerant.
+  it would hide the gap that produced it; it goes when the time-based identity
+  it serves is replaced (§1.1 above).
 - **This is not a Gatekeeper run.** The clone is the ordinary golden, whose
   assessments are disabled, and the bundle is installed unquarantined. The bundle
   is the notarized, stapled one; the enforcing posture is

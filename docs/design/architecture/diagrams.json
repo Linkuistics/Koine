@@ -1,6 +1,6 @@
 {
   "title": "Koine desktop contract",
-  "intro": "The complete desktop contract is approved: one resident Koine application, a shared resilient Swift provider framework and bearer credentials with live revocation. These views explain the agreed boundaries and ordering; implementation and platform acceptance remain ahead.",
+  "intro": "Koine's desktop contract as built: one resident Koine application, a shared resilient Swift provider framework and bearer credentials with live revocation. These views explain its boundaries and ordering. \"Agreed\" in a diagram marks the contract the human approved, which the implementation follows; what has been verified, and what is still open, is the spec's \"Test seams and acceptance\".",
   "groups": [
     {
       "id": "overview",
@@ -23,37 +23,6 @@
       "description": "Independent binary upgrades without a script host."
     }
   ],
-  "discussion": {
-    "title": "Approved desktop contract",
-    "status": "Design agreed — ready for implementation planning",
-    "summary": "The approved path resolves a running process incarnation, lists windows and focuses an opaque reference. Read/control authority is independent; all mutation actions are authorized before any starts. Live revocation blocks later admissions, while an already admitted action may finish. One resident application owns the UI, server, providers and OS permissions; compatible Swift binaries share a resilient framework. Standard GraphQL tooling uses a small client-owned adapter. Native behavior still requires implementation acceptance evidence. Browser layout remains unverified because no browser is connected.",
-    "diagramIds": [
-      "addressing",
-      "machine-interface",
-      "grants",
-      "packages",
-      "source-packages",
-      "sdk-contributions"
-    ],
-    "updatedDiagrams": [
-      {
-        "id": "addressing",
-        "summary": "Marked the complete query, choose and focus sequence agreed, including process incarnation and stale-target behavior."
-      },
-      {
-        "id": "grants",
-        "summary": "Marked the complete grant lifecycle agreed, including persistence, approval and the boundary for actions already admitted."
-      },
-      {
-        "id": "machine-interface",
-        "summary": "Updated the caption to record agreement on all-action preflight and revocation checks at each dispatch."
-      },
-      {
-        "id": "source-packages",
-        "summary": "Updated the caption to record agreement on the client-owned GraphQL adapter alongside the shared framework."
-      }
-    ]
-  },
   "diagrams": [
     {
       "id": "packages",
@@ -116,7 +85,7 @@
       "renderer": "svg",
       "source": "sdk-contributions.d2",
       "rendered": "sdk-contributions.svg",
-      "caption": "Shared Swift framework direction agreed; the concrete loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Compatible old/new binaries must be verified through the native plugin seam; native trust is distinct from client capabilities."
+      "caption": "The shared Swift framework as the loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Independently built old/new binaries are verified through the native plugin seam (docs/verification/binary-compatibility.md); native trust is distinct from client capabilities."
     }
   ]
 }

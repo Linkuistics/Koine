@@ -1,10 +1,15 @@
 # Koine desktop contract
 
-**Agreed desktop contract.** The human approved this complete design, including
-the shared resilient Swift framework, one resident Koine application and bearer
-credentials with live revocation. It is the baseline for implementation planning;
-it does not claim that Koine is implemented or its platform behavior has been
-verified.
+**The desktop contract Koine implements.** The human approved this design,
+including the shared resilient Swift framework, one resident Koine application
+and bearer credentials with live revocation, and Koine 0.1.0 implements it. The
+served schema matches [the design schema](../design/desktop-schema.graphql)
+under a repeatable check, and the platform behavior is verified on the notarized
+build in Gatekeeper-enforcing VMs. "Test seams and acceptance" says, case by
+case, what is established and by which evidence, and what is still open. One
+part of the contract is being replaced before the first public release: the
+process start instant in "Public GraphQL contract". Client authors start at the
+[client guide](../client-guide.md).
 
 ## Purpose and ownership
 
@@ -18,8 +23,8 @@ The [server boundary](../adr/koine-server-and-native-providers.md),
 [provider framework](../adr/resilient-provider-framework.md),
 [opaque references](../adr/machine-references-as-uris.md) and
 [bearer grants](../adr/bearer-grants-and-live-revocation.md) record the accepted
-decisions. The [visual overview](../design/architecture/index.html#discussion)
-explains the agreed contract. The Machine core remains a Swift
+decisions. The [architecture views](../design/architecture/README.md) explain the
+contract. The Machine core remains a Swift
 package without macOS, client or concrete-provider dependencies.
 
 ## Application composition and availability
@@ -63,8 +68,10 @@ no prompt option.
 
 Apple documents [main-app login launch](https://developer.apple.com/documentation/servicemanagement/smappservice/mainapp)
 and [the current-process Accessibility trust check](https://developer.apple.com/documentation/applicationservices/1459186-axisprocesstrustedwithoptions).
-The attribution of the signed, packaged application is checked in real VMs
-before this arrangement is treated as shipped behavior.
+Login launch with no client installed and the Accessibility attribution of the
+notarized application are verified in Gatekeeper-enforcing VMs:
+[release-acceptance-vm.md](../verification/release-acceptance-vm.md) and
+[notarized-release-vm.md](../verification/notarized-release-vm.md).
 
 ## Local transport and discovery
 
@@ -73,9 +80,13 @@ OS. After loading the schema and becoming ready, Koine atomically publishes a
 version-1 endpoint descriptor at
 `~/Library/Application Support/Koine/endpoint.json`. Its containing directory
 is user-only (0700), and the descriptor is user-readable/writable only (0600).
-It contains `descriptorVersion`, `instanceId`, `pid`, `port`, `path` equal to
-`/graphql`, and `contractVersion` equal to `koine-desktop/1`. It contains no
-credential. Clients construct the literal loopback URL; they do not follow an
+It is a JSON object of `descriptorVersion` (the number `1`), `instanceId` (a
+string), `pid` and `port` (numbers), `path` equal to `/graphql`, and
+`contractVersion` equal to `koine-desktop/1`. It contains no credential. A client
+that does not know the `descriptorVersion` must not use the file, and one that
+does not target the `contractVersion` must not proceed: that is an incompatible
+service, not an unavailable one. `pid` is Koine's own diagnostic, and clients
+ignore it. Clients construct the literal loopback URL; they do not follow an
 arbitrary host or scheme from a file. Shutdown removes only its own descriptor.
 A process lock prevents a second Koine instance from becoming a second writer:
 an instance holds an exclusive BSD `flock` on `instance.lock` in the same
@@ -90,7 +101,10 @@ A client reads the descriptor on connection and again after connection failure.
 It may reconnect for a subsequent request; it never automatically replays a
 mutation whose result was lost. An absent/stale descriptor is service
 unavailability, not a cue to launch Koine. `instanceId` distinguishes server
-runs; it is neither authentication nor a reference lifetime guarantee. The
+runs; it is neither authentication nor a reference lifetime guarantee, but a
+changed `instanceId` does mean every window reference a client holds is
+`unavailable` ("Resource references and desktop behavior"). These rules assume
+a non-browser HTTP client: one that adds an `Origin` header cannot be used. The
 file and plain loopback HTTP trust the logged-in user's machine and account;
 they do not protect against malicious code running as that user. HTTP cannot
 prove the executable identity represented by a client-supplied label.
@@ -118,12 +132,19 @@ a batch array, is 400. The response is `application/graphql-response+json` when
 `Accept` lists it and `application/json` otherwise. Authentication is evaluated
 for every request; a connection carries no authority from one request to the
 next. GraphQL syntax, validation and variable-coercion
-failures return HTTP 400 with `errors` and no `data`. Invalid or revoked bearer
-credentials return HTTP 401 before execution. Anonymous enrollment over its
-rate limit returns HTTP 429 ("Client-requested grant"). An authenticated mutation rejected
-by capability preflight returns HTTP 403 with `errors` and no `data`. Each denied
-root action has its response alias in `path` and carries `extensions.kind:
-permission`, `permissionClass: capability`, and `phase: authorization`.
+failures return HTTP 400 with `errors` and no `data`. A credential that names no active grant and no
+request whose status it may read, including a revoked one, returns HTTP 401 with
+no body before execution. A pending, denied or expired request's credential is a
+status-only principal ("Client-requested grant"): it authenticates, and every
+operation but its own status is refused as `permission`. A request without a
+credential is anonymous and is 401 unless it is enrollment; enrollment carries no
+`Authorization` header, and one presented with any credential is refused.
+Anonymous enrollment over its rate limit returns HTTP 429 ("Client-requested
+grant"), whose errors carry no `extensions.kind`. An authenticated mutation
+rejected by capability preflight returns HTTP 403 with `errors` and no `data`;
+a 403 with no body is the `Origin` refusal above. Each denied root action has its
+response alias in `path` and carries `extensions.kind: permission`,
+`permissionClass: capability`, and `phase: authorization`.
 Executed operations return HTTP 200 with
 GraphQL `data` and any execution errors, including non-null propagation to
 `data: null`. The body, not HTTP success alone, determines the operation result.
@@ -143,8 +164,8 @@ bound is checked before parsing and protects the parser itself. An over-limit
 request is a request error: HTTP 400 with `errors` and no `data`, decided before
 validation and before capability preflight. A response over its cap and an
 execution past its deadline are executed operations: HTTP 200 with `data: null`
-and one error with `extensions.kind: failed`. Neither says whether a requested
-action ran. At the deadline Koine answers the caller, cancels execution
+and one error with `extensions.kind: failed` and an empty `path`. Neither says whether
+a requested action ran. At the deadline Koine answers the caller, cancels execution
 cooperatively and starts no further resolver; it does not interrupt a resolver
 already running. The values are one named, versioned policy in the Machine core
 (`RequestPolicy.version1`).
@@ -157,8 +178,13 @@ code or to undo actions.
 `koine-desktop/1` names the first public contract, separately from plugin ABI
 versions. The [schema](../design/desktop-schema.graphql) states exact
 types and nullability; the [client operations](../design/desktop-operations.graphql)
-show the handoff's requests. These are design artifacts, not an implemented
-server. The complete executable schema includes core management types and
+show the handoff's requests. The schema Koine serves matches the schema file,
+checked by `task conformance` against the notarized build
+([schema-conformance-vm.md](../verification/schema-conformance-vm.md)), and the
+five operations run unmodified from a client generated only from the documented
+contract ([contract-only-client.md](../verification/contract-only-client.md)).
+The operations are the handoff's path, not a complete catalogue: a client may
+write its own, and none is published for management. The complete executable schema includes core management types and
 all active provider contributions. Every active authenticated grant, including
 one with no provider capabilities, can introspect that whole schema; discovery
 is not execution authority. Schema descriptions include resource-reference
@@ -185,7 +211,8 @@ the introspection query a standard code generator sends is unaffected.
 - An **input-object field's default** is not reported, while an argument's is. No
   input-object field in this contract has a default.
 
-The following signatures define the desktop surface. `Reference` is a
+The following signatures define the desktop surface; the management surface's
+are in "Management authority and surface", and introspection serves both. `Reference` is a
 custom scalar serialized as a URI string; `ID` names management records only.
 `DesktopProcessIdentity` contains a positive `pid: Int!` and
 `startedAt: DesktopProcessStart!`, the
@@ -193,6 +220,19 @@ process start instant in canonical UTC with six fractional second digits. A
 client captures both at interaction start. The provider compares both before
 resolving; a recycled PID must not select a new application. A missing reliable
 start instant is an input error, not permission to silently target by PID alone.
+The instant is the kernel's record of the process's start, as
+`proc_pidinfo(PROC_PIDTBSDINFO)` reports it in `pbi_start_tvsec` and
+`pbi_start_tvusec` (`sysctl` `KERN_PROC_PID` reports the same record as
+`kp_proc.p_starttime`), written exactly as `YYYY-MM-DDTHH:MM:SS.ffffffZ` and
+compared exactly; any other form is an input error. Locating the process is the
+client's: Koine offers no lookup by name or bundle identifier.
+
+**Still open: this identity is to be replaced before the first public release.**
+The human rejected time as a process identity, since it cannot guarantee that
+two processes never collide, and `process-identity-without-time` designs a
+mechanism that does not depend on time. Until it lands, the paragraph above is
+what Koine serves, and the input type, the application-reference encoding and the
+schema digest are expected to change.
 
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
@@ -365,9 +405,19 @@ and list positions), and `extensions.kind`. Permission errors add
 Capability errors identify the required capability in
 `extensions.requiredCapability`, without revealing protected resource existence. OS errors identify `accessibility` and Koine as the
 permission owner, in `extensions.osPermission` and `extensions.permissionOwner`
-(`koine`). An unavailable error may echo a reference the caller supplied,
+(`koine`). Capability errors also carry `extensions.phase`: `authorization`
+when preflight refused the operation before any action, `execution` when a field
+was refused as it ran — a read, or a mutation action whose grant was revoked
+after preflight. An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
+
+`extensions.kind` takes exactly four values in `koine-desktop/1`: `permission`,
+`unavailable`, `unknown-provider` and `failed`. The set is closed for this
+contract version; it is stated here rather than as a schema enum because
+extensions are not part of a GraphQL schema. An execution error with a non-empty
+`path` and no `kind` is an argument a provider found invalid, reported as input coercion;
+nothing was attempted.
 
 | Condition | Classification |
 |---|---|
@@ -386,18 +436,28 @@ registration mismatches are host/plugin defects and become `failed`, with a
 separate management diagnostic. Transport unavailability and an unknown mutation
 outcome are client transport states, not invented successful GraphQL results.
 
+A root lookup that is null with no error is absence; one that is null with an
+error is that error, whatever deeper path the error carries.
 A read denial produces an execution error, not an empty list or ordinary null.
 Apply standard non-null propagation: a denied non-null field can discard its
 nearest nullable parent, and can make all `data` null. Other branches survive
 where their types permit. Successful mutation preflight guarantees authorization
-before actions, not a transaction. These rules use the
+before actions, not a transaction. One response can carry several errors, and
+the contract sets no precedence among them. A `failed` mutation is not evidence
+that nothing happened: a deadline or response-cap error (an empty `path`) says
+nothing about the actions, a deadline can also be met at an action's own path,
+and a provider may fail a step after an earlier one took effect, as focus can
+fail after activating the application. These rules use the
 [GraphQL execution model](https://spec.graphql.org/September2025/#sec-Execution).
 
 ## Grants and management
 
 Use opaque bearer credentials. One credential identifies one persistent
-grant containing a set of capabilities, such as `desktop:read`,
-`desktop:control`, and the separate core capability `koine:manage`. A client
+grant containing a set of capabilities. Version 1's capabilities are the core's
+`koine:manage` and, for each active provider, `<providerId>:read` and
+`<providerId>:control` — `desktop:read` and `desktop:control` for the bundled
+provider. `Koine.availableCapabilities` lists them to any active grant, and a
+name it does not list is refused wherever a capability set is submitted. A client
 presents it in `Authorization: Bearer <credential>`. Koine reads the granted set
 from its store; an unsigned capability list from the caller supplies no
 authority. Version 1 does not combine several grants into one request.
@@ -431,8 +491,8 @@ calls the public `koineRequestGrant` mutation with its digest, a display label
 and the requested capabilities. Koine returns a request ID and a short,
 non-secret comparison code. The code is random, not derived from the digest,
 and is displayed and compared as an opaque string; its alphabet and length are
-not contract. Request capabilities must be known and are fixed
-once submitted. A pending request conveys no provider or management authority.
+not contract. Request capabilities must be known — an unknown one is `failed` when
+submitted, and nothing is stored — and are fixed once submitted. A pending request conveys no provider or management authority.
 
 Credential digests are globally unique across requests, active grants and
 revoked-grant tombstones. An enrollment retry with the same digest, label and
@@ -728,7 +788,8 @@ Apple documents [class-name lookup](https://developer.apple.com/documentation/fo
 and [run-path dependent libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html).
 The loader and the independently built version pairs are verified through the
 native binary test seam; `docs/verification/binary-compatibility.md` holds the
-evidence, the supported binary baseline and what remains for release acceptance.
+evidence, the supported binary baseline, and what release acceptance put out of
+scope and left open.
 
 Plugin and server release versions are not ABI versions. ABI compatibility also
 does not guarantee GraphQL schema compatibility: a provider must preserve its
@@ -840,13 +901,16 @@ Koine's versioned GraphQL contract, reference/error semantics, endpoint descript
 and grant protocol are authoritative. Runtime introspection supplies the full
 schema for generated clients. No Koine-owned Swift client library is required
 in the first deliverable: standard GraphQL tooling plus a small client-owned
-adapter covers endpoint discovery, Keychain storage, authorization headers and
-error classification. A future shared helper is justified by repeated real
+adapter covers endpoint discovery, credential storage, authorization headers and
+error classification. The [client guide](../client-guide.md) is that adapter's
+reading path: the contract version and how a client verifies it, and what each
+part of this contract means for a client. A future shared helper is justified by repeated real
 consumers, not by the existence of a transport. That claim has been exercised
 rather than asserted: a TypeScript client written from these documents alone,
 with no access to Koine's source, runs the whole obtain-grant, discover, list and
 focus path against the notarized build, and the places where these documents left
-it guessing are recorded as findings.
+it guessing are recorded as findings. Each finding is repaired in this document
+or declined for version 1 with its reason, as that evidence document records.
 Evidence: [contract-only-client.md](../verification/contract-only-client.md).
 
 ModalAnyware must revise its inherited Machine spec, architecture/provider
@@ -857,8 +921,9 @@ capability denial separately from Koine OS-consent guidance. It must distinguish
 a missing process from a stale selected window and an unknown mutation outcome.
 Its public TypeScript facade can retain convenience operations, but they are
 client adapters rather than a second Koine wire contract. Its plugin/framework
-choices belong to that repository. This session does not rewrite sibling
-contracts; their concurrent design may change the exact adapter shape.
+choices belong to that repository, and Koine does not edit it; ModalAnyware's
+own design may change the exact adapter shape. It reads the
+[client guide](../client-guide.md) as any client does.
 
 ## Test seams and acceptance
 
@@ -882,12 +947,66 @@ Evidence: [latency-and-support-matrix.md](../verification/latency-and-support-ma
 Verify the signed release build's entitlement and permission behavior rather than
 extrapolating from an unsigned development run.
 
-The native identity guarantee and signed binary compatibility must be proven by
-these seams before release; neither is established by diagrams or the current
-source inspection. Authorization invariants have explicit admission points and
-can be exercised with controlled ordering at the public boundary. A formal model
-is not an additional deliverable for this first design; do not describe this
-protocol as model-checked.
+The native identity guarantee and signed binary compatibility rest on these
+seams, not on diagrams or source inspection, to the extent "Acceptance status"
+records. Authorization invariants have
+explicit admission points and are exercised with controlled ordering at the
+public boundary. A formal model is not a deliverable of this design; this
+protocol is not model-checked.
+
+### Acceptance status
+
+Every obligation above, each marked **established**, with the evidence that
+establishes it, or **open**. Test suites named here are in
+`Tests/KoineServerTests` and run under `task test`; documents are under
+`docs/verification/`. The desktop-path VM runs used the Developer ID signed
+bundle; those from release acceptance on used the notarized 0.1.0 bundle on a
+Gatekeeper-enforcing clone; each document says which.
+
+| Obligation | Status and evidence |
+|---|---|
+| Introspection exposes core and provider types | **Established.** `SchemaConformanceTests`, `CompositionTests`; the notarized build's whole schema against the design file, [schema-conformance-vm.md](../verification/schema-conformance-vm.md). |
+| Generated desktop operations validate and run with only the documented contract | **Established**, with the findings it recorded settled in [contract-only-client.md](../verification/contract-only-client.md). Resolving an application needed the process start instant, which the contract has since stated; the identity itself is **open** below. |
+| Absent process is ordinary null; a stale reference is `unavailable` | **Established.** `DesktopProviderTests`; [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md), [release-acceptance-vm.md](../verification/release-acceptance-vm.md). |
+| Non-null permission errors propagate with original alias and list paths | **Established.** `ProviderAuthorizationTests`. |
+| Read authority on every path: both lookups, nested fields, aliases, fragments | **Established.** `ProviderAuthorizationTests`. |
+| Mixed permitted/denied mutations make zero action calls; a skipped denied action does not block | **Established.** `ProviderAuthorizationTests`. |
+| Revocation between preflight and dispatch, and between actions | **Established**, each order forced rather than raced: `RevocationOrderingTests`. |
+| Both grant workflows persist across restart | **Established.** `GrantManagementTests`, `GrantEnrollmentTests`, `GrantDecisionTests`; in the window on the Gatekeeper-enforcing release build, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
+| A pending requester cannot approve itself, enumerate others or use provider operations | **Established.** `GrantEnrollmentTests`; [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
+| Revoked credentials fail on an existing keep-alive connection and after restart | **Established.** `GrantManagementTests`, `GrantDecisionTests`; on the very connection a credential was served on, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
+| Store/commit failure never reports a durable approval or revocation | **Established** at the public seam over a scripted store: `RevocationOrderingTests`, `GrantDecisionTests`. Not induced in a VM, which cannot make the store fail on demand. |
+| Lost manual-secret delivery requires revoke and recreate | **Established.** `GrantManagementTests` finds no credential or digest in any management response; the window's accessibility tree likewise, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
+| An old provider on an upgraded host and framework; an old host with an upgraded provider built for its baseline; framework identity, factory casts, ARC, async resolution, cancellation, observation startup | **Established** for independently built pairs on unsigned hosts, [binary-compatibility.md](../verification/binary-compatibility.md), with `NativeProviderTests` and `ProviderLifecycleTests`. The signed, hardened application loads independently built same-team providers, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md), and its bundled provider from a quarantined notarized bundle, [notarized-release-vm.md](../verification/notarized-release-vm.md). A pair across two framework minors under the signed application was not run. |
+| Unsupported majors, minors and features, and bundled duplicate frameworks, refused before loading; schema and ownership collisions refused before activation | **Established.** `ProviderLoaderTests`, `CompositionTests`; [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). |
+| Mismatched signing identities refused before code is loaded | **Established** for another Team ID in the approval record, an ad-hoc signature and none: `ProviderLoaderTests`, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). **Open**: a bundle signed by a second real Developer ID team, which needs a second certificate, and what the kernel does with one behind Koine's check. |
+| Signed installation and login launch without a client | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [resident-app-vm.md](../verification/resident-app-vm.md); a quarantined first launch, [notarized-release-vm.md](../verification/notarized-release-vm.md). **Open**: login-item approval waiting on the user (`requiresApproval`) has never been observed; registration went straight to enabled in every run. |
+| Both native-UI grant workflows; first management bootstrap and revocation | **Established.** [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md), [grant-enrollment-vm.md](../verification/grant-enrollment-vm.md). **Open**: that a user actually compares the comparison code; the run shows the window's code equals the client's. |
+| Accessibility attributed to Koine | **Established** on the notarized build: [notarized-release-vm.md](../verification/notarized-release-vm.md), [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [accessibility-status-and-consent-vm.md](../verification/accessibility-status-and-consent-vm.md). |
+| Absent and revoked consent | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md). |
+| Application resolution; current and remembered windows across Spaces; focus | **Established.** [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md), the mechanism in [desktop-window-identity.md](../verification/desktop-window-identity.md). |
+| Closure, duplicate titles and restart behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). |
+| PID reuse | **Established** for the half that can be produced: a live PID claimed at a start instant not its own resolves to nothing, [release-acceptance-vm.md](../verification/release-acceptance-vm.md). **Open**: a genuinely reused PID has never been produced. The identity this rests on is being replaced (below). |
+| Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
+| Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the signed build of the macOS 26 floor, whose image digests the notarized bundle is to be checked against. |
+| The signed release build's entitlements and permission behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [notarized-release-vm.md](../verification/notarized-release-vm.md). |
+| The native identity guarantee | **Established** for windows: [desktop-window-identity.md](../verification/desktop-window-identity.md) and [its decision record](../adr/desktop-window-identity-is-a-held-element.md). |
+
+**Open, and not a case above:**
+
+- **The process identity is to be replaced before the first public release**,
+  because time cannot guarantee non-collision ("Public GraphQL contract").
+- **Provider install and trust renewal.** There is no UI to install a provider,
+  show its signer, approve it or renew trust, and no library-validation
+  entitlement, so independently signed third-party providers do not load.
+  Deferred with the human; approval is a file the user places.
+- **Only macOS 26.5 on arm64 has run.** The floor is declared at macOS 26; nothing
+  ran on 26.0 to 26.4. Intel, earlier macOS releases, a provider built by a
+  different compiler than its host, and older framework minors are out of scope
+  for this release, as [binary-compatibility.md](../verification/binary-compatibility.md)
+  records.
+- **Expiry and retention of grant requests** are shown with a test clock
+  (`GrantRequestLifetimeTests`), not in a VM.
 
 ## Scope and agreement
 
@@ -899,9 +1018,11 @@ and do not change this desktop design: Koine is published under Apache-2.0 and
 installed from a Homebrew cask carrying the notarized bundle
 ([open-source release and distribution](../adr/open-source-release-and-distribution.md)).
 
-The whole contract is agreed: a shared resilient Swift framework, one resident
-application with in-process native management, transferable bearer credentials
-with live revocation, the precise revocation/admission boundary, GraphQL
-desktop/process identity, the client-owned adapter and the operational policies
-described here. Implementation planning follows this baseline. Platform behavior
-and native binary compatibility remain release acceptance obligations.
+The whole contract is agreed and implemented: a shared resilient Swift
+framework, one resident application with in-process native management,
+transferable bearer credentials with live revocation, the precise
+revocation/admission boundary, GraphQL desktop identity, the client-owned adapter
+and the operational policies described here. Platform behavior and native binary
+compatibility are established by the evidence in "Acceptance status", which also
+lists what is still open; the process identity is agreed to be replaced before
+the first public release.

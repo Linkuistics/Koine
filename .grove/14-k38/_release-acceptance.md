@@ -46,13 +46,15 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-Twelve impl leaves, ordered by dependency and then by risk; four of them were
-cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
+Fourteen leaves, all impl but one design, ordered by dependency and then by
+risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
 during the first leaf's run, `desktop-receipt-descriptions-k48` during the
 second's, as the one finding the conformance check could not reconcile,
 `quarantined-provider-precheck-k49` during k47's, as the human's answer to the
 design question k47 put to them, and `app-verify-run-paths-k50` during k49's, for
-a defect k44's floor narrowing left in `task app:verify`. The
+a defect k44's floor narrowing left in `task app:verify`, and
+`process-identity-without-time-k51` with its impl `-k52` during k45, as the
+human's answer to the contract-only client's first finding. The
 notarized build comes first because every later leaf runs on it and it carries
 the stage's two unknowns: whether a Gatekeeper-enabled clone can be produced at
 all, and the notary credential. Conformance comes next so that any contract
@@ -107,7 +109,16 @@ schema.
 11. `documentation-and-handoff-k45` — README, spec status lines and architecture
    views made current; every acceptance obligation marked established or open;
    the contract-version statement and the ModalAnyware handoff note.
-12. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
+12. `process-identity-without-time-k51` (design) — replace the time-based
+   process incarnation (`DesktopProcessIdentity.startedAt` and the start instant
+   references encode) with a mechanism that does not depend on time. The human
+   rejected time as an identity in k45 ("You cannot guarantee non-collision") and
+   placed the change before the release, so the first public `koine-desktop/1`
+   carries it.
+13. `process-identity-without-time-k52` — implement k51: provider, schema,
+   references, tests, the published operations and the evidence citing the moved
+   digest.
+14. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
    release carrying the notarized artifact, the cask, and `brew install`
    verified in a clean VM. Last, because it publishes what the leaves
    before it proved and documented.

@@ -48,6 +48,18 @@ exercise one **grant**. The client stores it in Keychain or a protected file;
 Koine checks the live grant on every request. Copying the secret transfers its
 authority, and explicit revocation ends that authority.
 
+**Contract version**: The name of the public GraphQL contract a Koine serves
+and a **client** targets, `koine-desktop/1`, separate from Koine's release
+version and from provider framework versions. It changes only for an
+incompatible contract change.
+
+**Schema digest**: `Koine.schemaDigest`, an equality token over the complete
+schema one Koine serves. A **client** records the digest it was generated
+against and compares it, to learn when to introspect again; it moves for changes
+that do not change the **contract version**, such as a description or an
+installed provider.
+_Avoid_: schema version
+
 **Provider**: A native Swift **Machine server** plugin contributing an
 application's or the desktop's GraphQL schema and the implementation of its
 state and commands; the desktop provider is the first. Providers and the

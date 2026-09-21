@@ -1,17 +1,21 @@
 # Architecture views
 
-These editable views accompany the agreed [desktop contract](../../specs/machine.md),
-including the shared resilient Swift framework, one resident application
-and bearer credentials with live revocation.
-The [current discussion](index.html#discussion) presents the approved contract
-and its implementation acceptance boundaries. The viewer is currently served at
-<http://127.0.0.1:8772/#discussion> by this design session.
+These editable views accompany the [desktop contract](../../specs/machine.md):
+one resident application, the shared resilient Swift framework and bearer
+credentials with live revocation. Koine implements that contract, and the spec's
+"Test seams and acceptance" says what has been verified and what is still open.
+"Agreed" in a diagram marks the contract the human approved; it does not mean
+the part it labels is unbuilt.
 
-Serve this directory alone, then open its index:
+[`index.html`](index.html) is a viewer that fetches the sources and exports
+below, so it needs an HTTP server; nothing serves it by default. To read the
+views with their captions, serve this directory and open the address it prints:
 
 ```sh
 python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architecture
 ```
+
+The SVG exports beside each source also open on their own.
 
 Stable views:
 
@@ -46,8 +50,6 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 ```
 
 The viewer fetches sources and exports on reload; it does not compile them.
-`diagrams.json` owns the topic outline and current-discussion change links.
-No browser is connected to the authoring session, so browser layout, fresh-page
-anchor behavior and responsive/dark appearance remain unverified. SVG exports
-can still be inspected independently, and this limitation does not mean the
-server behavior has been implemented or tested.
+`diagrams.json` owns the topic outline, the captions and the introduction. The
+viewer's layout in a browser, its anchors and its dark appearance have not been
+checked; the SVG exports can be inspected on their own.

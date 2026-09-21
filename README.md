@@ -6,52 +6,47 @@ commanding the desktop and applications through a fully introspectable
 GraphQL API. Local clients connect over loopback HTTP using capabilities
 granted by Koine.
 
-[ModalAnyware](../ModalAnyware) is the first client. The first deliverable
-lets it resolve a running application, list its windows and focus one.
-One resident Koine application holds the OS permissions and contains the server,
-providers and native macOS management UI. It also exposes management through
-GraphQL. Clients present bearer credentials backed by live grants, which last
-until explicitly revoked.
+Koine is one resident, per-user macOS application. It holds the OS
+permissions, and contains the server, its providers and a native management
+window. A local client finds it through an endpoint descriptor, presents a bearer
+credential backed by a live grant, and uses the GraphQL API to resolve a running
+application, list its windows (those it has seen on other Spaces included) and
+focus exactly the one chosen. Grants last until explicitly revoked, and a
+revoked credential is refused on its next request, keep-alive or not. A client
+gets one of two ways: the user creates it in Koine's window, or the client
+requests one and the user approves it there, with no credential typed, pasted or
+shown. Management — grants, requests, provider and permission status — is served
+through the same GraphQL API, under the `koine:manage` capability.
 
 Providers are native Swift extensions that contribute to the GraphQL schema.
 A shared resilient Swift framework lets compatible providers and the server
 be upgraded independently. Its published Swift contract is the stable binary
-interface; a TypeScript hosting layer is not required.
+interface; a TypeScript hosting layer is not required. The desktop provider is
+the first, and is bundled.
 
-Broader discovery, including applications that are not running, and an LLM
-skill set are deferred until after ModalAnyware is unblocked.
+Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
+on Apple Silicon, the one supported platform. The spec's "Acceptance status"
+lists what is established, with its evidence, and what is still open. The most
+significant open item: the process identity a client submits, a start instant,
+is being replaced by a mechanism that does not depend on time before the first
+public release. Discovering applications that are not running, and an LLM skill
+set, are outside this version.
 
-The first increment is built: an embeddable server that binds loopback,
-publishes its endpoint descriptor, authenticates bearer credentials against a
-durable grant store and answers `Query.koine`, `Mutation.koineCreateGrant` and
-full introspection. The second increment is built too: a signed resident
-`Koine.app` embeds that server and creates grants from its window, and a
-`koine:manage` grant lists grants with `Query.koineManagement { grants }` and
-revokes one with `Mutation.koineRevokeGrant`. Revocation is a durable commit
-made inside the same serialized authority boundary that admits every action, so
-a revoked credential gets 401 on its next request, keep-alive or not. The
-window also lists and revokes grants and enables login launch, and the
-installed workflow is verified in a clean VM. Native providers load through one
-loader, and the desktop path has begun: the bundled desktop provider resolves a
-running application from its process identity, lists its windows, those it has
-seen on other Spaces included, looks an application or window reference up again
-and focuses exactly the window chosen ("Desktop provider" below). A client can
-also enrol itself ("Client-requested grants" below). The agreed design:
-
+- [Writing a client](docs/client-guide.md): the contract version, how a client
+  checks it, and what a client needs from each part of the contract
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
-  grants, service availability and the ModalAnyware handoff
+  grants, service availability, acceptance status
 - [GraphQL schema](docs/design/desktop-schema.graphql) and
   [client operations](docs/design/desktop-operations.graphql)
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
   [the server and native providers](docs/adr/koine-server-and-native-providers.md),
   [the resilient provider framework](docs/adr/resilient-provider-framework.md),
-  [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md)
+  [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md),
+  [window identity](docs/adr/desktop-window-identity-is-a-held-element.md),
+  [open-source release and distribution](docs/adr/open-source-release-and-distribution.md)
+- Evidence: [docs/verification](docs/verification/)
 - Shared terms: [CONTEXT.md](CONTEXT.md)
 - Diagrams: [docs/design/architecture](docs/design/architecture/README.md)
-
-The [visual overview](http://127.0.0.1:8772/#discussion) explains the agreed
-contract and its implementation acceptance boundaries.
-That local URL requires the diagram server described in the views' README.
 
 ## Client-requested grants
 
@@ -158,7 +153,11 @@ task desktop-provider  # build the desktop provider by its own build definition,
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task conformance  # the schema the notarized bundle serves, in a VM, against docs/design/desktop-schema.graphql
 task app       # assemble and sign .build/app/Koine.app
-task app:verify  # codesign --verify --strict, hardened runtime, designated requirement
+task app:notarize  # notarize, staple and zip it (KOINE_NOTARY_PROFILE, default koine-notary)
+task app:verify  # version, signature, hardened runtime, designated requirement, stapled ticket, Gatekeeper
+task check:minimum-os  # every place stating the macOS floor agrees with App/Info.plist
+task version   # the one version the bundle, tag, artifact and cask take
+task client    # generate, typecheck and bundle the contract-only client from the published contract
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
@@ -166,6 +165,12 @@ task app:vm-verify-desktop-remembered  # a window left on another Space is REMEM
 task app:vm-verify-accessibility  # the window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
 task app:vm-verify-enrollment  # a guest client enrols itself, the window shows and decides its request, and the first manager it makes approves another over GraphQL, in a VM
+task fixture:notarized  # a notarized copy of the fixture provider, for the Gatekeeper check to accept
+task app:vm-verify-notarized  # quarantined first launch, attribution and quarantined providers, on a Gatekeeper-enforcing clone
+task app:vm-verify-release  # release acceptance, platform half, on the notarized bundle in a Gatekeeper-enforcing clone
+task app:vm-verify-grant-workflows  # release acceptance, both grant workflows, on the notarized bundle in a Gatekeeper-enforcing clone
+task app:vm-verify-latency  # warm query-to-choices and selection-to-focus latency in the keyboard workflow, as a report
+task app:vm-verify-contract-client  # the contract-only client's whole path against the notarized bundle, in a VM
 ```
 
 Use `task test`, not a bare `swift test`: every host image links the provider
@@ -458,8 +463,7 @@ alone, exactly as the fixture is built, and `task app` seals it in
 `Contents/PlugIns`, where the one native loader admits it under the
 application's built-in approval. Its pure files (`Logic/`) are also named by the
 package target `DesktopProviderLogic`, only so that `swift test` reaches them.
-It registers `desktop:read` and `desktop:control`, and serves what is
-implemented so far:
+It registers `desktop:read` and `desktop:control`, and serves:
 
 ```graphql
 desktopApplication(process: { pid: 412, startedAt: "2026-09-19T01:02:03.000456Z" }) {
@@ -484,7 +488,9 @@ is a different, later instant and never matches.
 live PID started at another instant, and a process that is no application are
 ordinary null. A `pid` that is not positive, or a `startedAt` in any other form
 (whole seconds, another offset, fewer digits), is an input error with a response
-path and no `extensions.kind`; it never falls back to the PID alone.
+path and no `extensions.kind`; it never falls back to the PID alone. This
+identity is to be replaced by one that does not depend on time before the first
+public release (the spec's "Public GraphQL contract").
 
 **Windows** are the application's real windows on the current Space, read through
 the Accessibility API: role `AXWindow`, subrole standard, dialog or none,
@@ -641,8 +647,11 @@ strictly, the hardened-runtime flag, that the signing team is the identity's,
 that the executable links the embedded framework by its install name through
 those run paths and the framework carries the same team, and that the bundle
 satisfies `identifier "dev.antony.Koine" and anchor apple generic and
-certificate leaf[subject.OU] = "<team>"`. Notarization is a release
-concern and is not done here.
+certificate leaf[subject.OU] = "<team>"`; it also checks the bundle's version,
+a stapled notarization ticket and Gatekeeper's acceptance, so a bundle not yet
+notarized fails it. `task app:notarize` submits
+the built bundle with the stored notary credential, staples the ticket and zips
+the release artifact; it fails rather than produce an unnotarized one.
 
 **UI framework: AppKit lifecycle, SwiftUI content.** An `NSApplicationDelegate`
 owns the process and one `NSWindow` hosting SwiftUI views. It is a regular Dock

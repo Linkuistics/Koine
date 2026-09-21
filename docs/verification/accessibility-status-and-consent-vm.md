@@ -7,7 +7,9 @@ requests Accessibility consent and shows provider and service status, and
 ID signed `Koine.app` with Finder; there are no application mocks. This is where
 the spec's claim that the prompt is attributed to the signed, packaged
 application is checked for the development-signed build;
-`release-acceptance-handoff-k11` repeats it on the release build. The consent
+[notarized-release-vm.md](notarized-release-vm.md) and
+[release-acceptance-vm.md](release-acceptance-vm.md) repeat it on the notarized
+release build. The consent
 route the earlier leaves used is in
 [desktop-application-and-windows-vm.md](desktop-application-and-windows-vm.md),
 and revocation in

@@ -64,7 +64,7 @@ across Koine restarts, and it stays `ACTIVE` while no provider offers its
 - **Gatekeeper and quarantine** are as in [resident-app-vm.md](resident-app-vm.md):
   off in the golden, not set by the upload. Nothing was disabled to get here.
 
-## Left for `release-acceptance-handoff-k11`
+## Left for release acceptance, and since answered
 
 - ~~The same cases against a **notarized** build on a Gatekeeper-enabled image,
   with the provider bundle arriving **quarantined**: whether a quarantined,
