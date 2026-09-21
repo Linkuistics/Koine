@@ -620,9 +620,10 @@ bundle from `App/Info.plist` (bundle identifier `dev.antony.Koine`) and signs it
 with the hardened runtime and `App/Koine.entitlements` (deliberately empty).
 `KoineProviderAPI.framework` is embedded in `Contents/Frameworks` without its
 module interface and signed first, inside-out. The executable's build-tree run
-paths are reduced to exactly `/usr/lib/swift` (the OS Swift runtime, which
-supplies the `@rpath` back-deployment libraries such as
-`libswiftCompatibilitySpan`) and `@executable_path/../Frameworks`. The application
+paths are reduced to exactly `@executable_path/../Frameworks`: at the macOS 26
+floor every Swift library is linked from `/usr/lib/swift` by absolute path, so
+the compiler emits no `/usr/lib/swift` run path, and `scripts/verify-app.sh`
+asks the compiler which run paths the floor needs rather than restating them. The application
 ships one provider: `scripts/build-app.sh` builds `Desktop.koineprovider` with
 the provider's own build definition against the staged framework's interface,
 places it in `Contents/PlugIns`, the in-application provider root, and signs it

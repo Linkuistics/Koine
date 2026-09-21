@@ -61,10 +61,33 @@ if ! otool -L "${EXECUTABLE}" | grep -qF "${INSTALL_NAME} "; then
     echo "Error: the executable does not link ${INSTALL_NAME}; the framework was linked statically?" >&2
     exit 1
 fi
+# The run paths are the application's own Frameworks directory, preceded by
+# /usr/lib/swift only when the floor predates some Swift library the OS supplies.
+# swift-driver emits that run path exactly when the frontend reports
+# librariesRequireRPath for the target, so @rpath back-deployment libraries
+# resolve (StdlibRpathRule,
+# https://github.com/swiftlang/swift-driver/blob/main/Sources/SwiftDriver/Jobs/Toolchain+LinkerSupport.swift);
+# at the macOS 26 floor it reports false and every Swift library is linked by
+# absolute path. The compiler is asked for this floor rather than the answer
+# restated, so the check moves with App/Info.plist; build-app.sh keeps that one
+# of the build's run paths and removes the rest.
+REQUIRES_OS_RPATH="$(swiftc -print-target-info -target "arm64-apple-macosx${MINIMUM_OS}" |
+    plutil -extract target.librariesRequireRPath raw - 2>&1)" || true
+case "${REQUIRES_OS_RPATH}" in
+true) EXPECTED_RPATHS=$'/usr/lib/swift\n@executable_path/../Frameworks' ;;
+false) EXPECTED_RPATHS='@executable_path/../Frameworks' ;;
+*)
+    echo "Error: swiftc -print-target-info gave no librariesRequireRPath for macOS ${MINIMUM_OS}: ${REQUIRES_OS_RPATH}" >&2
+    exit 1
+    ;;
+esac
 RPATHS="$(otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }')"
-if [ "${RPATHS}" != $'/usr/lib/swift\n@executable_path/../Frameworks' ]; then
-    echo "Error: the executable's run paths are not exactly /usr/lib/swift and @executable_path/../Frameworks:" >&2
-    echo "${RPATHS}" >&2
+if [ "${RPATHS}" != "${EXPECTED_RPATHS}" ]; then
+    {
+        echo "Error: the executable's run paths are not exactly those of a macOS ${MINIMUM_OS} build:"
+        echo "${EXPECTED_RPATHS}" | sed 's/^/  expected /'
+        echo "${RPATHS}" | sed 's/^/  found    /'
+    } >&2
     exit 1
 fi
 FRAMEWORK_TEAM="$(codesign --display --verbose=2 "${FRAMEWORK}" 2>&1 | sed -n 's/^TeamIdentifier=//p')"

@@ -41,10 +41,11 @@ cp -R "${PROVIDER_FRAMEWORK}" "${APP_BUNDLE}/Contents/Frameworks/"
 rm -rf "${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework/Modules" \
     "${APP_BUNDLE}/Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework/Versions/A/Modules"
 
-# The application supplies the trusted run paths: the OS Swift runtime, which
-# holds the back-deployment libraries the executable links by @rpath
-# (libswiftCompatibilitySpan), and its own Frameworks directory. The build's
-# other run paths name the build tree and the toolchain and are removed.
+# The application supplies the trusted run paths: its own Frameworks directory,
+# and /usr/lib/swift only if the compiler emitted it, which it does for a floor
+# that predates some OS-supplied Swift library and not at macOS 26 (the reason,
+# and the check, are in scripts/verify-app.sh). The build's other run paths name
+# the build tree and the toolchain and are removed.
 EXECUTABLE="${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
 otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }' | while IFS= read -r rpath; do
     [ "${rpath}" = "/usr/lib/swift" ] || install_name_tool -delete_rpath "${rpath}" "${EXECUTABLE}"
