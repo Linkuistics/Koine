@@ -340,6 +340,35 @@ Superseded staged copies under `ProviderStaging` are not pruned; with Koine
 stopped the directory can be deleted (its contents are read-only, so
 `chmod -R u+w` first).
 
+**A downloaded provider must be notarized by its author, or have its quarantine
+cleared when the user approves it.** A bundle downloaded by a browser or another
+quarantine-aware application carries `com.apple.quarantine`, and a copy extracted
+from a quarantined archive inherits it. On a Mac enforcing Gatekeeper, which is
+the default, macOS judges a quarantined provider image on its own when Koine
+calls `dlopen`: unless the image is notarized, the load is refused ("library load
+disallowed by system policy") and macOS shows a “<library>” Not Opened dialog.
+That happens after every check of Koine's has passed — the approval record
+matched and the signature is the approved Team ID — so Koine cannot foresee it;
+it reports the provider `REJECTED` with that diagnostic. Because providers load
+while the service comes up and the dialog is modal, Koine does not begin
+listening, and writes no `endpoint.json`, until someone clicks **Done**. There
+are two ways out:
+
+- the provider's author notarizes it (`seal.sh` does not: the fixture is
+  deliberately un-notarized test material); or
+- the user clears the attribute as part of approving it, with
+  `xattr -dr com.apple.quarantine <Name>.koineprovider` before the restart in
+  step 4.
+
+Clearing it after a refusal is not enough on its own. The staged copy is named by
+content, which an extended attribute does not change, so Koine reuses the copy
+it already made and that copy keeps the attribute; with Koine stopped, delete
+that bundle's `<Name>-<digest>` directory under `ProviderStaging` as well. Koine
+itself never clears the attribute. The bundled desktop provider is unaffected:
+the application's notarization ticket covers `Contents/PlugIns`, so it loads from
+a quarantined, downloaded `Koine.app`. Evidence:
+[`docs/verification/notarized-release-vm.md`](docs/verification/notarized-release-vm.md).
+
 `Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose
 approvals are built in (the shipped provider IDs with the Team ID of the
 application's own signature) and which holds the desktop provider, and the

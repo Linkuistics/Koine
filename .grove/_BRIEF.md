@@ -298,8 +298,13 @@ are a file the user places, and only Koine-signed providers load.
 bundle copied into `~/Library/Application Support/Koine/Providers`, and beside
 it `<providerId>.approval.json` holding `providerId` and the signer's
 `teamIdentifier`, which the loader already enforces; renewing trust is rewriting
-that record. The signer it shows is what `CodeSignature` in
-`KoineProviderLoader` already reads. The loader needs no change for it; the
+that record. Approving must also clear `com.apple.quarantine` from the bundle
+before Koine first stages it, unless its author notarized it: on a
+Gatekeeper-enforcing Mac a quarantined un-notarized provider passes every Koine
+check and is then refused at `dlopen`, behind a modal dialog that holds the
+service's startup (`provider-quarantine-rule-k47`,
+`docs/verification/notarized-release-vm.md`). The signer the UI shows is what
+`CodeSignature` in `KoineProviderLoader` already reads. The loader needs no change for it; the
 entitlement needs its own signed-build VM verification.
 
 Cross-provider identity, atomic snapshots, transactional command rollback and

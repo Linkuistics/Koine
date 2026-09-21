@@ -46,10 +46,12 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-Ten impl leaves, ordered by dependency and then by risk; two of them were cut
-during the stage rather than when it was planned — `provider-quarantine-rule-k47`
-during the first leaf's run, and `desktop-receipt-descriptions-k48` during the
-second's, as the one finding the conformance check could not reconcile. The
+Eleven impl leaves, ordered by dependency and then by risk; three of them were
+cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
+during the first leaf's run, `desktop-receipt-descriptions-k48` during the
+second's, as the one finding the conformance check could not reconcile, and
+`quarantined-provider-precheck-k49` during k47's, as the human's answer to the
+design question k47 put to them. The
 notarized build comes first because every later leaf runs on it and it carries
 the stage's two unknowns: whether a Gatekeeper-enabled clone can be produced at
 all, and the notary credential. Conformance comes next so that any contract
@@ -88,12 +90,17 @@ schema.
    covered by the application's ticket and is unaffected. Cut during k39 and
    placed **before** the documentation sweep so that sweep finds the docs already
    consistent.
-9. `documentation-and-handoff-k45` — README, spec status lines and architecture
+9. `quarantined-provider-precheck-k49` — the human's answer to k47's question:
+   the loader refuses a quarantined, un-notarized per-user provider before
+   `dlopen`, as `REJECTED` with a diagnostic naming both ways out, so macOS's
+   modal dialog can no longer hold the service's startup. Before the
+   documentation sweep because it revises what k47 wrote in README and the spec.
+10. `documentation-and-handoff-k45` — README, spec status lines and architecture
    views made current; every acceptance obligation marked established or open;
    the contract-version statement and the ModalAnyware handoff note.
-10. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
+11. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
    release carrying the notarized artifact, the cask, and `brew install`
-   verified in a clean VM. Last, because it publishes what the eight leaves
+   verified in a clean VM. Last, because it publishes what the leaves
    before it proved and documented.
 
 ## Pointers

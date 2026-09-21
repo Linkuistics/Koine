@@ -70,9 +70,10 @@ host. Two things are specific to this run:
   someone clicks Done. The run asserts this directly — Koine's process running
   and **no** `endpoint.json` — rather than inferring it from the dialog. A user
   who downloads a third-party provider can therefore stop Koine starting at all,
-  with no clue but a system dialog naming a `.dylib`. Whether provider loading
-  belongs on the startup path is a design question, open, and
-  `provider-quarantine-rule-k47`'s to put to the human.
+  with no clue but a system dialog naming a `.dylib`. The human's answer, put by
+  `provider-quarantine-rule-k47`, is that it must not: the loader is to refuse a
+  quarantined, un-notarized provider before `dlopen`
+  (`quarantined-provider-precheck-k49`).
 - **Clearing quarantine at install time is not a remedy.** Koine stages each
   provider under a digest of its **content**; removing an extended attribute does
   not change content, so the digest is unchanged, the already-staged copy is

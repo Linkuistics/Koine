@@ -745,8 +745,9 @@ Koine-owned installation roots, not the current directory or a client's search
 path. Verify manifest, canonical bundle location, signature, dependency closure,
 architecture and declared compatibility before calling `dlopen`; dylib
 initializers run during load, before any entry-point negotiation. Signature
-verification after loading is too late. Never strip quarantine or disable OS
-code-signing checks to make a rejected plugin load.
+verification after loading is too late. The loader never strips quarantine or
+disables OS code-signing checks to make a rejected plugin load; clearing
+quarantine is the user's act of approval, below.
 
 There are two installation roots, both supplied to the loader by the resident
 application: `Contents/PlugIns` sealed inside `Koine.app`, and the per-user
@@ -789,6 +790,25 @@ adds the narrowly scoped disable-library-validation entitlement, with its own
 signed-build verification, and an install and approval UI; Koine then relies on
 its own approval and signature validation. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
+That UI's approval also clears `com.apple.quarantine` from the bundle before
+Koine first stages it, for the reason the next paragraph gives.
+
+The per-user root carries a platform constraint Koine does not enforce and
+cannot predict. A bundle that arrives quarantined, as a download does, is judged
+by Gatekeeper on its own when Koine calls `dlopen`. On a Gatekeeper-enforcing
+Mac, the default, an un-notarized quarantined image is refused there, after
+Koine's approval record and Team ID checks have passed: Koine admits the
+provider, the platform refuses the image, and the result is the ordinary
+`REJECTED` for a dynamic-loader failure, carrying the loader's message. There is
+no separate admission outcome, because nothing Koine checks before `dlopen`
+distinguishes this case. The refusal also raises a modal system dialog, and
+since providers load at startup the service does not listen until it is
+dismissed. The provider's author notarizing it, or the user clearing the
+attribute when approving it, before Koine first stages it, avoids the refusal;
+clearing it afterwards does not, because the content-named staged copy is reused
+and keeps the attribute. The in-application root is unaffected: the
+application's notarization ticket covers `Contents/PlugIns`. Evidence:
+[notarized-release-vm.md](../verification/notarized-release-vm.md).
 The provider shares Koine's address space, OS permissions and failure domain.
 Capabilities limit clients, not provider code. Only trusted native code belongs
 here; untrusted extensions would require a different process-isolation design.
