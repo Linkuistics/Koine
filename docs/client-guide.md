@@ -204,6 +204,12 @@ acting on a replacement process after actual PID reuse. Treat the native
 replacement as unfinished; a task right plus retained AX objects is not an
 approved client protocol.
 
+Koine also declines the investigated direct AX endpoint as the replacement
+binding. Strict process lifetime remains required; narrower application support
+and weaker targeting semantics are not selected. The replacement and first
+public release remain unresolved pending a specific new native-binding lead.
+The capture decision records the evidence and conditions for reconsideration.
+
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That
 is the same answer a client gets for a process that is not an application, and

@@ -50,11 +50,13 @@ reporting the element's "actual PID" does not distinguish that successor.
 These routes add private dependency risk without satisfying strict lifetime.
 Reconsider them only with an independently established native binding, not
 another encoding or check. Direct acquisition of a retained AX service endpoint
-remains an investigation. A [signed/hardened direct-port probe](../verification/direct-ax-endpoint.md)
+has bounded diagnostic evidence but is not adopted. A
+[signed/hardened direct-port probe](../verification/direct-ax-endpoint.md)
 found that the retained port stayed dead across actual PID reuse, and a fresh
 error reply with a kernel audit trailer matched the retained live task while
-rejecting a wrong-task control. This makes direct endpoint admission a concrete
-candidate. A [direct-effect diagnostic](../verification/direct-ax-endpoint.md#direct-effect-path)
+rejecting a wrong-task control. This supports contemporaneous responder
+authentication, not the complete lifetime guarantee. A
+[direct-effect diagnostic](../verification/direct-ax-endpoint.md#direct-effect-path)
 also exercised read, restore, main selection, raise, activation and focus
 confirmation through one retained endpoint, with an independent witness and
 post-death refusal. Its build-specific internal stubs establish transport
@@ -84,23 +86,28 @@ Receiver-local data therefore has a bounded usable route, with an availability
 cost, not an arbitrary-target guarantee. Application activation reaches
 WindowServer/Launch Services after the AX callback; binding that downstream work
 through process death is still unestablished. Custom handlers, descriptor lifetime
-and arbitrary receiver transfer also remain assumptions. Carry this concrete
-conflict and the restoration result into adoption review; do not replace them
-with PID reconstruction, another task check, or an implicit support restriction.
-The [adoption synthesis](../verification/ax-endpoint-adoption.md) therefore does
-not recommend this candidate as the complete binding. This is a feasibility
-conflict, not universal impossibility or a demonstrated direct-port successor
-effect. Preserve the settled constraints and resolve the conflict with the human
-before implementing a replacement. Separate Koine consent/denial and notarized
-private-path launch are untested; another consent success alone cannot resolve
-the lifetime gaps. Existing public-AX release acceptance does not transfer to the
-private protocol.
+and arbitrary receiver transfer also remain assumptions. PID reconstruction,
+another task check or an implicit support restriction does not close those gaps.
 
-Reconsider adoption only with evidence for receiver/descriptor and downstream
-lifetimes, actual admitted restoration and its lifecycle policy, then separate
-consent and maintainable protocol support. A narrower target contract requires
-explicit agreement. Any future private adapter must own cleanup, bounded work,
-cancellation uncertainty and exact-version refusal inside the desktop provider;
+Koine declines the investigated direct AX endpoint as its process binding and
+preserves strict process lifetime. The
+[adoption synthesis](../verification/ax-endpoint-adoption.md) establishes the
+reason: the complete lifetime guarantee remains unestablished. This is a
+feasibility conflict, not universal impossibility or a demonstrated direct-port
+successor effect. Narrower application support and weaker targeting semantics
+are not selected. The cost is that the non-time replacement and first public
+release remain unresolved; the timestamp mechanism is not approved for release.
+Separate Koine consent/denial and notarized private-path launch are untested;
+another consent success alone cannot resolve the lifetime gaps. Existing
+public-AX release acceptance does not transfer to the private protocol.
+
+Reopen native investigation only for a specific lead addressing
+receiver/descriptor and downstream lifetimes, actual admitted restoration and
+its lifecycle policy. No such lead is selected. Adoption would then also require
+evidence for separate consent and maintainable protocol support. A narrower
+target contract requires explicit agreement. Any future private adapter must
+own cleanup, bounded work, cancellation uncertainty and exact-version refusal
+inside the desktop provider;
 internal binary entry points and an owned wire encoder both incur recurring OS
 verification costs. The approved private-adapter support set is empty; 25F71 is
 diagnostic evidence only. Client capture/transfer, reference/restart semantics

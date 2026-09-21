@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Direct AX transport is demonstrated; the required binding is incomplete",
-    "status": "Recommendation for the human: preserve strict lifetime; do not adopt yet",
-    "summary": "The adoption synthesis reconciles admission, effects, death, actual PID reuse, exec, receiver routing and the measured restoration conflict. Downstream lifetime and arbitrary receiver/descriptor assumptions remain unestablished; no admitted restoration reaches a successor. Separate Koine consent, denial/revocation and notarized private-path launch remain untested. The report specifies conditional resource and OS-maintenance costs. No private adapter, support restriction or replacement contract is approved.",
+    "title": "Strict lifetime preserved; the direct AX candidate is declined",
+    "status": "Agreed: decline this candidate; replacement and first release remain unresolved",
+    "summary": "The human chose to preserve strict process lifetime and decline the investigated direct AX endpoint. Native investigation reopens only for a specific lead addressing receiver/descriptor and downstream lifetime plus admitted restoration/lifecycle policy; no new lead is selected. Narrower application support and weaker targeting semantics are not selected. Capture/transfer, references/restarts and the prepublication contract remain unfinished. The existing timestamp mechanism is not approved for the first public release.",
     "diagramIds": [
       "process-adoption",
       "process-routing",
@@ -39,7 +39,7 @@
     "updatedDiagrams": [
       {
         "id": "process-adoption",
-        "summary": "Separates measured transport from missing lifetime guarantees, recommends no adoption yet, and shows the policy and maintenance conditions for reopening."
+        "summary": "Records the agreed rejection, preserves strict lifetime and makes the unresolved replacement and release consequence explicit."
       }
     ]
   },
@@ -51,7 +51,7 @@
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "Design synthesis, not a new native measurement. Signed/hardened diagnostics establish a usable direct transport on 25F71. Receiver/descriptor and downstream lifetime assumptions plus the measured AX-contact restoration conflict prevent recommending the complete arbitrary-target binding. Preserve strict lifetime and resolve the conflict with the human before replacement implementation. Separate Koine consent/denial and notarized private-path launch remain untested; existing public-AX acceptance does not transfer. The approved private-adapter support set is empty. Report, full criteria, conditional resource/cancellation rules, wire-versus-ABI costs, alternatives and reversal evidence: docs/verification/ax-endpoint-adoption.md. Routing, restoration and receiver views are unchanged context."
+      "caption": "Agreed contract decision, not a new native measurement. Koine declines the investigated direct AX endpoint and preserves strict process lifetime. Bounded transport successes do not establish receiver/descriptor and downstream lifetime or actual admitted restoration. The replacement and first release remain unresolved until a specific native-binding lead establishes a viable route; no new lead is selected. This is not a universal impossibility claim or a demonstrated direct-port successor effect. Separate Koine consent/denial and notarized private-path launch remain untested; the approved private-adapter support set is empty. Report, full criteria, conditional resource/cancellation rules, wire-versus-ABI costs, alternatives and reversal evidence: docs/verification/ax-endpoint-adoption.md. Routing, restoration and receiver views are unchanged context."
     },
     {
       "id": "process-routing",

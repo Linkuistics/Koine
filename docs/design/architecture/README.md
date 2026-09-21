@@ -19,7 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — separates the measured transport from the remaining native guarantee, recommends preserving strict lifetime without adoption, and names conditional policy/maintenance requirements.
+- [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — records the agreed rejection, preserves strict lifetime, and makes the unresolved replacement and first-release consequence explicit.
 - [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
 - [Automatic restoration and AX client lifetime](index.html#diagram-process-restoration) — adds matched no-AX, single-read and direct-only client-retirement controls, with the bounded lifecycle conflict and unexecuted successor branches explicit.
 - [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — replaces the fixture-ambiguity note with the matched AX-contact result while retaining allocation, exec and routing evidence.
@@ -140,14 +140,14 @@ reduces diagram text; native-size and full-size export remain available.
 The host serves the same manifest at
 `http://127.0.0.1:8772/#diagram-process-routing`.
 
-The [adoption view](index.html#diagram-process-adoption) adds the complete
-feasibility disposition, the human contract decision and conditional policy/
-maintenance obligations. `task design:render-process-identity` completed and its
-PNG was inspected. Safari in disposable TestAnyware clone `koine-k66-design`
-rendered the fresh-page deep link, discussion panel, outline and Current/Updated
-markers. Desktop light appearance and a 650-pixel dark window were inspected;
-the SVG retains its light canvas and narrow fit mode reduces text size. No mobile
-device was tested. Guest hashes of the viewer, manifest, adoption source and SVG
-match the host files; the host manifest matches the served copy at
+The [adoption view](index.html#diagram-process-adoption) now records the human's
+decision to preserve strict lifetime and decline this candidate, with the
+replacement and first release unresolved. `task design:render-process-identity`
+completed and its PNG was inspected. Safari in disposable TestAnyware clone
+`koine-k57-design` rendered the fresh-page deep link, discussion panel, outline
+and Current/Updated markers. Desktop light and dark appearance were inspected;
+the SVG retains its light canvas. No mobile or narrow-window check was run for
+this update. Guest hashes of the viewer, manifest, adoption source and SVG match
+the host files; the host manifest and SVG match HTTP delivery at
 `http://127.0.0.1:8772/#diagram-process-adoption`. These are presentation checks,
 not a new native lifetime or consent experiment.

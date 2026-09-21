@@ -98,9 +98,11 @@ The original completion criteria above continue to bind this node:
    and its limitations, or surface an evidenced feasibility conflict. Its first
    child disproves private token/data reconstruction; its remaining direct AX
    service-endpoint design must settle feasibility before the contract proceeds.
-3. `process-identity-contract-k57` — consume a feasible binding, agree the
-   complete client/transfer/reference/restart contract, reconcile durable docs
-   and finish the existing k52 implementation/evidence handoff.
+3. `process-identity-contract-k57` — resolve the adoption conflict, seek a
+   concrete new native-binding lead, then agree the complete client/transfer/
+   reference/restart contract, reconcile durable docs and finish the existing
+   k52 implementation/evidence handoff. Its children separate the settled
+   candidate decision, source survey and remaining protocol design.
 
 ## Code and API evidence
 
@@ -151,9 +153,12 @@ the matched fixture. Separate Koine policy attribution/denial is untested and
 does not resolve those native gaps. No complete binding or private-adapter OS
 support set is approved.
 
-Recommend preserving strict lifetime without adopting the candidate. k57 owns
-the human decision on this concrete conflict before capture/transfer/reference/
-restart and prepublication agreement work proceeds. The synthesis names costs,
-alternatives and reversal evidence; neither this close nor a successful policy
-probe authorizes narrowing the settled contract or starting k52. This node stays
-live for that original agreement/documentation deliverable.
+In k57, the human chose **preserve strict lifetime; decline this candidate**.
+The non-time replacement and first public release remain unresolved. Reopen
+native investigation only on a specific lead addressing the missing lifetime
+premises; no such lead is selected. Neither narrower application support nor
+weaker targeting semantics is agreed. The synthesis names costs, alternatives
+and reversal evidence; a successful policy probe alone cannot authorize adoption
+or starting k52. k57 stays live for the original capture/transfer/reference/
+restart, prepublication agreement and documentation deliverable; this decision
+does not satisfy those criteria or close this node.
