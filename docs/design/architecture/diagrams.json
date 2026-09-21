@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "AX receiver allocation, exec, and the uncompleted restoration schedule",
-    "status": "Default receiver and exec established on 25F71; restoration and routing remain open",
-    "summary": "Loaded code resolves local receive allocation, bootstrap send registration and source cleanup. An admitted same-PID exec kills the old task and endpoint; every old-endpoint primitive refuses and the successor remains unchanged. The restoration holder exits 25 without a successor. Presenter/actual PID and registered callback dispatch keep top-level routing unproved.",
+    "title": "AX contact conflicts with the automatic-restoration experiment",
+    "status": "Matched lifecycle conflict on 25F71; no admitted-restoration pass or product adoption",
+    "summary": "The identical target terminates without AX before and after the AX arms. One successful public AXRole read leaves it hidden and TAL-ineligible after reader exit. Direct-only admission and retiring the owned client port do not recover eligibility in the measured interval. No admitted successor or old-endpoint refusal was reached; strict lifetime stays required.",
     "diagramIds": [
+      "process-restoration",
       "process-receiver",
       "process-admission",
       "process-endpoint",
@@ -35,12 +36,25 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "process-restoration",
+        "summary": "Adds matched no-AX, one-read and direct-only client-retirement controls, and distinguishes the lifecycle conflict from a passing restoration test."
+      },
+      {
         "id": "process-receiver",
-        "summary": "Adds resolved ownership, completed exec, inconclusive restoration and the presenter/receiver routing distinction."
+        "summary": "Replaces the fixture-ambiguity note with the matched AX-contact result while preserving the receiver and exec evidence."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-restoration",
+      "group": "machine",
+      "title": "Automatic restoration and AX client lifetime",
+      "renderer": "svg",
+      "source": "process-restoration.puml",
+      "rendered": "process-restoration.svg",
+      "caption": "Matched controls in TestAnyware clone koine-k69-restoration on macOS 26.5 (25F71). The identical minimizable target automatically terminates without AX contact before and after the AX arms; PID 1096 restores as 1119 with the same PSN. A single public AXRole reader exits 0 yet its target stays hidden and TAL-ineligible. Direct-only admission and positive minimize/readback/restore also leave the target live. Destroying only its owned client receive right does not recover eligibility; target task and endpoint remain live. The owned-client holders were stopped with status 143; no successor-effect or valid replacement-client branch ran. This is a bounded lifecycle conflict, not permanent inhibition, a universal impossibility result, or a completed action guarantee. Source, hashes, exact exits, controls and trade-offs: docs/verification/ax-automatic-restoration.md."
+    },
     {
       "id": "process-receiver",
       "group": "machine",
@@ -48,7 +62,7 @@
       "renderer": "svg",
       "source": "process-receiver.puml",
       "rendered": "process-receiver.svg",
-      "caption": "Inspected and executed in TestAnyware clone koine-k65-receiver on macOS 26.5 (25F71). Default MSH allocation creates a local receive right and bootstrap gets a send right. Source release drops both local references. A signed/hardened holder admits PID 867 before exec; both old rights become dead names and every old-endpoint primitive refuses, with an unchanged successor witness. Restoration at PID 905 remains inconclusive (holder exit 25); the separate no-AX control restores 937 to 972 with the same PSN, but the runs do not isolate why they differ. Public AX PID may be a presenter; callback semantics and arbitrary receive transfer remain outside these results. No product adoption or schema change. See docs/verification/direct-ax-endpoint.md#receiver-allocation-and-transitions."
+      "caption": "Inspected and executed in TestAnyware clone koine-k65-receiver on macOS 26.5 (25F71). Default MSH allocation creates a local receive right and bootstrap gets a send right. Source release drops both local references. A signed/hardened holder admits PID 867 before exec; both old rights become dead names and every old-endpoint primitive refuses, with an unchanged successor witness. The later matched restoration view isolates AX-contact inhibition using one target build; it supplies a bounded lifecycle conflict, not an admitted-restoration pass. Public AX PID may be a presenter; callback semantics and arbitrary receive transfer remain outside these results. No product adoption or schema change. See docs/verification/direct-ax-endpoint.md#receiver-allocation-and-transitions."
     },
     {
       "id": "process-admission",

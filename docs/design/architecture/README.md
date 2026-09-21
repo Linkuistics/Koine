@@ -19,7 +19,8 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — adds resolved default allocation/cleanup, completed same-PID exec, inconclusive restoration and the actual/presenter PID distinction.
+- [Automatic restoration and AX client lifetime](index.html#diagram-process-restoration) — adds matched no-AX, single-read and direct-only client-retirement controls, with the bounded lifecycle conflict and unexecuted successor branches explicit.
+- [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — replaces the fixture-ambiguity note with the matched AX-contact result while retaining allocation, exec and routing evidence.
 - [Audited AX read and death ordering](index.html#diagram-process-admission) — adds the real read-only admission exchange, wrong-task control, death-before/between-effect schedules and actual PID reuse.
 - [Direct AX effects](index.html#diagram-process-effects) — adds the executed read/effect/confirmation sequence, independent witness and post-death refusal.
 - [Direct AX endpoint](index.html#diagram-process-endpoint) — retains the earlier retention/responder results and points to the newer admission and effect evidence; receiver ownership and policy remain open.
@@ -58,7 +59,8 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 
 From the repository root, `task design:render-process-identity` renders the
 process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission and process-receiver views to their SVG exports and to PNGs under
+process-effects, process-admission, process-receiver and process-restoration views
+to their SVG exports and to PNGs under
 `.build/design-identity`.
 
 The viewer fetches sources and exports on reload; it does not compile them.
@@ -110,3 +112,16 @@ and Current/Updated markers identify the intended revision. Mobile and dark
 appearance were not checked for this update. The host viewer serves the same
 source and manifest at
 `http://127.0.0.1:8772/#diagram-process-receiver`.
+
+The [automatic-restoration view](index.html#diagram-process-restoration) adds the
+matched controls and bounded AX-contact conflict; the
+[receiver view](index.html#diagram-process-receiver) replaces its unresolved
+fixture comparison with that result. Both PNG exports and fresh-page deep links
+were inspected in Safari in disposable clone `koine-k69-restoration`. The topic
+outline, discussion panel and Current/Updated markers match this revision.
+The restoration view was checked in wide light and dark layouts and a 650-pixel
+desktop window; the receiver update was checked in a wide dark layout. The SVGs
+retain their light canvases inside the dark viewer. Narrow fit mode reduces
+diagram text substantially; the full-size export and native-size option remain
+available. No mobile device was tested. The host serves the same manifest at
+`http://127.0.0.1:8772/#diagram-process-restoration`.

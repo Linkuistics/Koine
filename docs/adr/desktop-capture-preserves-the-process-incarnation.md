@@ -67,11 +67,17 @@ The [receiver investigation](../verification/direct-ax-endpoint.md#receiver-allo
 resolves local receive-right allocation, bootstrap send-right registration and
 cleanup on the inspected build. A same-PID exec makes both retained rights dead;
 all old-endpoint effects refuse and the successor remains unchanged. These are
-bounded observations, not immovability or every handler's behavior. The admitted
-automatic-restoration attempt did not reach a successor, and public AX PID
-reporting can prefer a presenter PID over the actual receiver. Client-event
-attribution, actual restoration, top-level descriptor/handler binding and
-consent/version policy remain unresolved. Continue evaluating those obligations
-without treating finite audit fields as permanent identity or a successful
+bounded observations, not immovability or every handler's behavior. Matched
+[automatic-restoration controls](../verification/ax-automatic-restoration.md)
+expose a lifecycle conflict on the tested Cocoa target: no-AX controls terminate
+and restore, while one successful role read leaves the target ineligible after
+reader exit. Direct admission and retirement of only the local client port do
+not recover eligibility in the measured interval. Target nontermination must
+not stand in for a passing admitted-restoration test; changing client-port
+ownership is not yet a demonstrated remedy or approved product policy. Public
+AX PID reporting can also prefer a presenter PID over the actual receiver.
+Client-event attribution, actual admitted restoration, top-level descriptor/handler
+binding and consent/version policy remain unresolved. Continue evaluating those
+obligations without treating finite audit fields as permanent identity or a successful
 effect sequence as the full action guarantee. No complete replacement mechanism
 is approved.

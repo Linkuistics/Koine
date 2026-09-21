@@ -1,6 +1,26 @@
 version: '3'
 
 tasks:
+  fixture:ax-role-read:
+    desc: Build and sign the one-read AX contact control (execute only in TestAnyware)
+    cmds:
+      - mkdir -p .build/ax-restoration-role
+      - xcrun clang -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/ax-automatic-restoration/role-read.c -framework ApplicationServices -o .build/ax-restoration-role/role-read
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/ax-restoration-role/role-read
+      - codesign --verify --strict --verbose=2 .build/ax-restoration-role/role-read
+
+  fixture:ax-restoration:
+    desc: Build and sign the AX client-lifetime restoration diagnostic (execute only in TestAnyware)
+    cmds:
+      - mkdir -p .build/ax-restoration-holder/K69Restoration.app/Contents/MacOS
+      - sed 's/K54Binding/K69Restoration/g; s/k54-binding/k69-restoration/g' docs/verification/retained-ax-binding/Info.plist > .build/ax-restoration-holder/K69Restoration.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/ax-automatic-restoration/restoration-probe.m -framework Cocoa -framework ApplicationServices -lbsm -o .build/ax-restoration-holder/K69Restoration.app/Contents/MacOS/K69Restoration
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/ax-restoration-holder/K69Restoration.app
+      - codesign --verify --strict --verbose=2 .build/ax-restoration-holder/K69Restoration.app
+      - /usr/bin/ditto -c -k .build/ax-restoration-holder .build/ax-restoration-holder.zip
+
   fixture:ax-restoration-target:
     desc: Build the automatic-termination fixture with a minimizable window (execute only in TestAnyware)
     cmds:
@@ -100,8 +120,8 @@ tasks:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml
+      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml
 
   fixture:process-serial:
     desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)

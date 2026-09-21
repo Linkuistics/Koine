@@ -77,3 +77,16 @@ remote root refuses mutations; it is not a demonstrated wrong-effect route.
 These are separate native questions, not a declared repetition series. The
 parent remains open until its original criteria are met; no implementation leaf
 is added and k57 still owns agreement with the human.
+
+## Automatic-restoration handoff
+
+`ax-automatic-restoration-k69` delivers the evidenced-conflict branch of its
+contract. Read `docs/verification/ax-automatic-restoration.md`: identical-build
+no-AX controls terminate before and after the AX arms; one public AXRole read
+is sufficient to leave the target ineligible after reader exit. Direct-only
+admission and retiring only the owned client receive right do not recover
+eligibility in the measured interval. Target rights stay live; no admitted
+successor test passes. The source of the private policy and other applications'
+behavior remain unproved. Carry this to k66's adoption recommendation with the
+report's alternatives and reversal evidence; target nontermination is not a
+substitute for the strict-lifetime obligation. k68 still owns descriptor/routing.
