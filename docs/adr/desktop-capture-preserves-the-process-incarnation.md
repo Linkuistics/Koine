@@ -87,6 +87,22 @@ through process death is still unestablished. Custom handlers, descriptor lifeti
 and arbitrary receiver transfer also remain assumptions. Carry this concrete
 conflict and the restoration result into adoption review; do not replace them
 with PID reconstruction, another task check, or an implicit support restriction.
-Reconsider adoption with evidence covering those lifetimes and explicit agreement
-on any support trade-off. Client-event attribution and consent/version policy
-remain open. No complete replacement mechanism is approved.
+The [adoption synthesis](../verification/ax-endpoint-adoption.md) therefore does
+not recommend this candidate as the complete binding. This is a feasibility
+conflict, not universal impossibility or a demonstrated direct-port successor
+effect. Preserve the settled constraints and resolve the conflict with the human
+before implementing a replacement. Separate Koine consent/denial and notarized
+private-path launch are untested; another consent success alone cannot resolve
+the lifetime gaps. Existing public-AX release acceptance does not transfer to the
+private protocol.
+
+Reconsider adoption only with evidence for receiver/descriptor and downstream
+lifetimes, actual admitted restoration and its lifecycle policy, then separate
+consent and maintainable protocol support. A narrower target contract requires
+explicit agreement. Any future private adapter must own cleanup, bounded work,
+cancellation uncertainty and exact-version refusal inside the desktop provider;
+internal binary entry points and an owned wire encoder both incur recurring OS
+verification costs. The approved private-adapter support set is empty; 25F71 is
+diagnostic evidence only. Client capture/transfer, reference/restart semantics
+and the prepublication version agreement remain unresolved. No complete
+replacement mechanism is approved.

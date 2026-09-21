@@ -111,5 +111,25 @@ unestablished. The recommendation is to carry this precise conflict into policy
 and adoption synthesis with strict lifetime unchanged. The reports state costs,
 alternatives and reversal evidence. No arbitrary-target support restriction,
 PID fallback or target cooperation is authorized; k57 still owns human agreement.
-Policy denial, Koine consent attribution and private-ABI maintenance remain k66's
-work, so this parent stays live.
+The k66 synthesis below supplies the remaining disposition of policy and adoption.
+
+## Full feasibility handoff
+
+`ax-endpoint-policy-and-adoption-k66` delivers
+`docs/verification/ax-endpoint-adoption.md` and reconciles the capture ADR and
+visual discussion. Checked against this node's original criteria: k64 supplies
+the audited read, ordered retained-task match and death/actual-reuse schedules;
+k65 supplies the default receiver, exec, bounded routing and measured restoration
+conflict; k66 evaluates policy and maintenance against that incomplete binding.
+Separate Koine denial/consent and notarized private-path launch remain untested.
+A new consent success cannot repair the native lifetime gaps, so the viable-route
+policy condition is not credited as passed. Conditional cleanup/local bounds,
+cancellation uncertainty, wire-versus-ABI costs and exact-version refusal are
+specified for any reopening; the approved private support set is empty.
+
+The original conflict branch is delivered, rather than all native schedules
+being claimed successful. Recommend preserving strict lifetime without adopting
+this candidate, with alternatives and precise reversal evidence for k57's human
+decision. No PID fallback, implicit support restriction or implementation begins.
+This closes the investigation node when k66 retires and carries the full result
+to k61/k59/k56, whose original criteria receive the same explicit reconciliation.

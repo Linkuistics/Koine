@@ -100,3 +100,32 @@ endpoint ownership, attribution and wire-protocol evidence.
   Decompose here: finish the remote-token evidence as the first child and leave
   direct AX endpoint feasibility to a fresh design leaf before k57. The original
   all-effects, public-client and strict-lifetime criteria continue to bind.
+
+## Full feasibility handoff to k57
+
+The original criteria are reconciled in `docs/verification/ax-endpoint-adoption.md`:
+k58 disproves private token/data reconstruction; the direct-endpoint subtree
+establishes server admission, all direct primitives and bounded death/reuse/exec
+refusal, default receiver ownership and ordinary AppKit routing. It also supplies
+the AX-contact restoration conflict and the still-unestablished downstream,
+receiver/descriptor and admitted-restoration lifetimes. Public client capture
+attribution is not supplied by these diagnostics. No complete arbitrary-target
+binding is established; this is the original evidenced-conflict deliverable,
+not universal impossibility or a direct-port successor-effect counterexample.
+
+For the viable-route policy condition, signed/hardened availability is observed
+only in the diagnostic context. Separate Koine consent/denial and notarized
+private-path launch remain explicitly untested: a positive policy test cannot
+repair the native gaps. The synthesis gives the reopening experiment, conditional
+ownership/local bounds, cancellation uncertainty, wire-versus-ABI costs and an
+empty approved private-adapter support set with exact-version refusal. The
+capture ADR and visual adoption view carry the durable result.
+
+Recommend preserving strict lifetime without adopting this candidate. k57 must
+resolve the concrete trade-off with the human before treating a transfer/reference
+protocol as implementable. Its alternatives are a specific new native-binding
+lead, an explicitly agreed enforceable support boundary, or an explicit semantics
+change; none is selected here. No injection, helper, target cooperation, new
+client consent, private client API or PID fallback is authorized. With this
+handoff, the investigation node closes as its final descendant retires. k54/k51
+remain live for k57's agreement and documentation work; k52 must not start.

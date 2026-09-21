@@ -139,3 +139,21 @@ be relied on. These are investigation findings, not an approved replacement.
   and public client APIs. This authorizes investigation inside Koine; it does
   not approve a particular private mechanism, transport, restart policy,
   reference grammar, or weakening of the action guarantee.
+
+## Private-binding feasibility result
+
+k56 closes on its original evidenced-conflict branch. Read
+`docs/verification/ax-endpoint-adoption.md`, the capture ADR and the adoption
+view before k57's contract discussion. Direct AX transport has bounded native
+successes, but receiver/descriptor and downstream lifetimes plus actual admitted
+restoration remain unestablished. AX contact inhibits automatic termination in
+the matched fixture. Separate Koine policy attribution/denial is untested and
+does not resolve those native gaps. No complete binding or private-adapter OS
+support set is approved.
+
+Recommend preserving strict lifetime without adopting the candidate. k57 owns
+the human decision on this concrete conflict before capture/transfer/reference/
+restart and prepublication agreement work proceeds. The synthesis names costs,
+alternatives and reversal evidence; neither this close nor a successful policy
+probe authorizes narrowing the settled contract or starting k52. This node stays
+live for that original agreement/documentation deliverable.

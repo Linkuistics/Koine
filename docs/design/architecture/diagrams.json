@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Top-level descriptors reach local callbacks, then downstream services",
-    "status": "Bounded receiver contract on 25F71; adoption conflict remains",
-    "summary": "Unmodified TextEdit supplies a local document and local Open top-level descriptor with remote children. Its Open panel fails the current child-to-window acceptance test. The document visibly minimizes and restores; successful panel replies do not imply a state change. Loaded AppKit callbacks resolve local IDs, while activation reaches WindowServer or Launch Services. Downstream death binding, arbitrary custom handlers and actual admitted restoration remain unestablished; strict lifetime stays required.",
+    "title": "Direct AX transport is demonstrated; the required binding is incomplete",
+    "status": "Recommendation for the human: preserve strict lifetime; do not adopt yet",
+    "summary": "The adoption synthesis reconciles admission, effects, death, actual PID reuse, exec, receiver routing and the measured restoration conflict. Downstream lifetime and arbitrary receiver/descriptor assumptions remain unestablished; no admitted restoration reaches a successor. Separate Koine consent, denial/revocation and notarized private-path launch remain untested. The report specifies conditional resource and OS-maintenance costs. No private adapter, support restriction or replacement contract is approved.",
     "diagramIds": [
+      "process-adoption",
       "process-routing",
       "process-receiver",
       "process-restoration",
@@ -37,16 +38,21 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "process-routing",
-        "summary": "Adds document/Open/Save observations, concrete descriptor decoding and callbacks, and the downstream activation lifetime boundary."
-      },
-      {
-        "id": "process-receiver",
-        "summary": "Replaces the unspecified top-level routing gap with the concrete AppKit result and remaining downstream/restoration obligations."
+        "id": "process-adoption",
+        "summary": "Separates measured transport from missing lifetime guarantees, recommends no adoption yet, and shows the policy and maintenance conditions for reopening."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-adoption",
+      "group": "machine",
+      "title": "Direct AX adoption and the contract decision",
+      "renderer": "svg",
+      "source": "process-adoption.puml",
+      "rendered": "process-adoption.svg",
+      "caption": "Design synthesis, not a new native measurement. Signed/hardened diagnostics establish a usable direct transport on 25F71. Receiver/descriptor and downstream lifetime assumptions plus the measured AX-contact restoration conflict prevent recommending the complete arbitrary-target binding. Preserve strict lifetime and resolve the conflict with the human before replacement implementation. Separate Koine consent/denial and notarized private-path launch remain untested; existing public-AX acceptance does not transfer. The approved private-adapter support set is empty. Report, full criteria, conditional resource/cancellation rules, wire-versus-ABI costs, alternatives and reversal evidence: docs/verification/ax-endpoint-adoption.md. Routing, restoration and receiver views are unchanged context."
+    },
     {
       "id": "process-routing",
       "group": "machine",

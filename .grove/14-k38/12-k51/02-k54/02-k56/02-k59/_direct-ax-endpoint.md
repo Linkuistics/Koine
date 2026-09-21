@@ -96,8 +96,28 @@ contract; they are not satisfied by a successful lookup or audited reply.
 
 The effects child has decomposed into `ax-direct-effect-transport-k62` (the
 executed path) and `ax-endpoint-lifetime-and-admission-k63` (remaining native
-guarantee and policy evidence). This node is not complete.
+guarantee and policy evidence). The final reconciliation is below.
 
 Read the fresh reviewer reconciliation in `docs/verification/direct-ax-endpoint.md`
 as evidence to evaluate, not a verdict. `act` and `hasFocus` remain the current
 effect inventory; the diagnostics modify no production provider behavior.
+
+## Full feasibility handoff
+
+The original acquisition, ownership, every-effect and transition criteria have
+been checked together in `docs/verification/ax-endpoint-adoption.md`.
+The subtree establishes contemporaneous responder matching, direct effects and
+bounded ordinary death/reuse/exec behavior; it does not establish arbitrary
+receiver/descriptor/downstream binding or admitted automatic restoration.
+The matched AX-contact lifecycle result is a concrete conflict. Client-event
+attribution remains k57's work, distinct from server admission.
+
+This delivers the expressly allowed evidenced-conflict branch to k56. The
+recommendation is to preserve strict lifetime and not adopt this candidate;
+the report, capture ADR and adoption view carry alternatives and reversal
+evidence. Separate consent/denial and notarized private-path launch are untested
+conditions for a viable route; conditional local resource/cancellation and
+exact-version maintenance costs are stated without approving a shipping ABI.
+No support restriction, PID fallback or k52 implementation is inferred. The
+investigation node closes with its final descendant, not with a claimed complete
+native guarantee.

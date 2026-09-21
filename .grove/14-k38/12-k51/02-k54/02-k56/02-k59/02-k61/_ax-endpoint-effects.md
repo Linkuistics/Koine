@@ -80,7 +80,7 @@ boundary: `ax-audited-admission-and-death-k64` preserves the actual read-only
 exchange and scheduled death/PID-reuse results; `ax-receiver-lifetime-k65` owns
 receiver lifecycle/routing plus exec/restoration; `ax-endpoint-policy-and-adoption-k66`
 owns consent/denial, maintenance and the complete feasibility synthesis. This
-node's original completion criteria remain open.
+node's original completion criteria are reconciled in the final handoff below.
 
 ## Decisions (running log)
 
@@ -103,3 +103,23 @@ node's original completion criteria remain open.
   a harmless audited admission exchange, policy attribution and adoption costs
   as live work; neither this positive result nor the review supplies the full
   arbitrary-target lifetime guarantee. No product or schema change is made.
+
+## Full feasibility handoff
+
+The subtree delivers the original evidenced-conflict branch. k62 demonstrates
+all required direct primitives and confirmation; k64 adds actual read admission,
+fresh-reply/live-task ordering and refusal after scheduled death and actual PID
+reuse; k67/k69/k68 establish the inspected receiver, exec, bounded top-level
+routing and AX-contact restoration conflict. None supplies arbitrary receiver,
+descriptor or downstream lifetime, or a passing admitted-restoration schedule.
+The read requests no write/action but is not lifecycle-neutral on the fixture.
+
+k66's `docs/verification/ax-endpoint-adoption.md` checks those original criteria
+together, specifies conditional ownership/local bounds, cancellation and OS
+maintenance, and explicitly leaves separate Koine denial/consent and notarized
+private-path launch untested. Those remain reopening conditions for a viable
+route, not passes inferred from signed diagnostics. The capture ADR and visual
+discussion agree: preserve strict lifetime, do not adopt this candidate, take the
+concrete conflict/alternatives/reversal evidence to k57. No schema or k52 change.
+This closes the investigation node when its final leaf retires; its parent k59
+receives the complete negative feasibility result, not an approved mechanism.
