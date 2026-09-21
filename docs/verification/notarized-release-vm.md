@@ -10,6 +10,13 @@ are **enabled**. Four evidence documents deferred that gap to this stage
 and [grant-enrollment-vm.md](grant-enrollment-vm.md)); this run closes it, and
 answers the open question the second of them left about quarantined plugins.
 
+What this run records about the per-user provider — refused at `dlopen` behind a
+modal dialog that held the service's startup — is the platform's behaviour
+**without** the loader's Gatekeeper check, which `quarantined-provider-precheck-k49`
+added in answer to it. `scripts/vm-verify-notarized.sh` now asserts the inverse,
+and [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md)
+records that run; everything else here stands.
+
 ## Procedure
 
 ```sh
@@ -73,7 +80,8 @@ host. Two things are specific to this run:
   with no clue but a system dialog naming a `.dylib`. The human's answer, put by
   `provider-quarantine-rule-k47`, is that it must not: the loader is to refuse a
   quarantined, un-notarized provider before `dlopen`
-  (`quarantined-provider-precheck-k49`).
+  (`quarantined-provider-precheck-k49`,
+  [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md)).
 - **Clearing quarantine at install time is not a remedy.** Koine stages each
   provider under a digest of its **content**; removing an extended attribute does
   not change content, so the digest is unchanged, the already-staged copy is

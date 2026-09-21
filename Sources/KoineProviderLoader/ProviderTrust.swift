@@ -164,3 +164,65 @@ enum CodeSignature {
         return "signed by an identity with no Team ID"
     }
 }
+
+/// Gatekeeper's verdict on a quarantined image, asked before it is loaded.
+/// Asked at `dlopen` instead, a refusal is a modal system dialog that holds the
+/// caller until someone dismisses it, and providers load while the service
+/// starts (docs/specs/machine.md, "Loading and trust").
+///
+/// Not the `notarized` code requirement: that is an offline lookup of the local
+/// ticket store — `isNotarized` in Apple's Security source,
+/// https://github.com/apple-oss-distributions/Security/blob/main/OSX/libsecurity_codesigning/lib/notarization.cpp
+/// with the flag SecAssessment.h documents as "offline check" — and a provider
+/// bundle has no `Contents/CodeResources` for `stapler` to put a ticket in. So
+/// a notarized provider fails it until this Mac has looked its ticket up
+/// online, which Gatekeeper does and that requirement does not. `spctl` is
+/// Gatekeeper's own assessment, online lookup included, and shows no dialog.
+enum Gatekeeper {
+    static let quarantineAttribute = "com.apple.quarantine"
+    /// A bound on the online lookup, which holds the service's startup.
+    static let timeout: TimeInterval = 30
+
+    /// Whether `path` itself carries the attribute. A staged copy inherits it
+    /// from the bundle it was copied from.
+    static func isQuarantined(_ path: String) -> Bool {
+        getxattr(path, quarantineAttribute, nil, 0, 0, XATTR_NOFOLLOW) >= 0
+    }
+
+    /// Why Gatekeeper would not let the image at `path` be opened, or nil when
+    /// it accepts it. The assessment is of the image's own signature, as the
+    /// dynamic loader's is.
+    static func refusal(of path: String) -> String? {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/sbin/spctl")
+        process.arguments = [
+            "--assess", "--type", "open", "--context", "context:primary-signature", "-v", path,
+        ]
+        let output = Pipe()
+        process.standardOutput = output
+        process.standardError = output
+        process.standardInput = FileHandle.nullDevice
+        let finished = DispatchSemaphore(value: 0)
+        process.terminationHandler = { _ in finished.signal() }
+        do { try process.run() } catch {
+            return "Gatekeeper could not be asked about it: \(error.localizedDescription)"
+        }
+        // The verdict is a few short lines, far inside a pipe's buffer, so it is
+        // read after the process ends rather than while it runs.
+        guard finished.wait(timeout: .now() + timeout) == .success else {
+            process.terminate()
+            return "Gatekeeper gave no verdict on it within \(Int(timeout)) seconds."
+        }
+        let text = String(decoding: output.fileHandleForReading.readDataToEndOfFile(), as: UTF8.self)
+        // spctl(8): 0 when the assessment accepts, 3 when it rejects.
+        switch process.terminationStatus {
+        case 0: return nil
+        case 3:
+            let source = text.split(separator: "\n").first { $0.hasPrefix("source=") }
+            return "Gatekeeper refuses it (\(source.map { String($0.dropFirst("source=".count)) } ?? "rejected"))."
+        default:
+            let said = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            return "Gatekeeper could not assess it: \(said.isEmpty ? "spctl exited \(process.terminationStatus)" : said)"
+        }
+    }
+}

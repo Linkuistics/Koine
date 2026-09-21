@@ -305,14 +305,15 @@ a minimum OS no newer than declared; that the bundle contains no copy of the
 framework and its image defines none of the framework's own symbols; that every
 dependency and run path is the framework's install name, under `/usr/lib/` or
 `/System/Library/`, or a recursively validated `@loader_path` file inside the
-bundle, each such image signed by the approved identity itself; and that no
-other image has registered the principal class name. After
+bundle, each such image signed by the approved identity itself; for a per-user
+provider, that Gatekeeper accepts every such image that is quarantined (below);
+and that no other image has registered the principal class name. After
 `dlopen` the principal class must originate in that image, conform to
 `ProviderFactory`, and produce a descriptor that agrees with the manifest.
 
 An honest bundle this host cannot run is `INCOMPATIBLE`; an unapproved,
 unsigned, ad-hoc or differently signed one, one changed after sealing, a
-malformed or contradictory one, a `dlopen` failure or a failure after loading is `REJECTED`
+quarantined one Gatekeeper refuses, a malformed or contradictory one, a `dlopen` failure or a failure after loading is `REJECTED`
 (after loading, the image stays mapped and contributes nothing). Neither fails
 server construction. `koineManagement.providers`, under `koine:manage`, serves
 one status for every bundle found: these, composition's refusals, `FAILED` for a
@@ -344,18 +345,22 @@ stopped the directory can be deleted (its contents are read-only, so
 cleared when the user approves it.** A bundle downloaded by a browser or another
 quarantine-aware application carries `com.apple.quarantine`, and a copy extracted
 from a quarantined archive inherits it. On a Mac enforcing Gatekeeper, which is
-the default, macOS judges a quarantined provider image on its own when Koine
-calls `dlopen`: unless the image is notarized, the load is refused ("library load
-disallowed by system policy") and macOS shows a “<library>” Not Opened dialog.
-That happens after every check of Koine's has passed — the approval record
-matched and the signature is the approved Team ID — so Koine cannot foresee it;
-it reports the provider `REJECTED` with that diagnostic. Because providers load
-while the service comes up and the dialog is modal, Koine does not begin
-listening, and writes no `endpoint.json`, until someone clicks **Done**. There
-are two ways out:
+the default, macOS judges a quarantined provider image on its own when it is
+loaded, and unless the image is notarized it refuses it behind a modal
+“<library>” Not Opened dialog — which, because providers load while the service
+comes up, would hold Koine from listening until someone clicked **Done**. So
+Koine asks first: when an image of a per-user provider's staged copy is
+quarantined, the loader has Gatekeeper assess it (`spctl --assess --type open
+--context context:primary-signature`, which looks the notarization ticket up
+online if this Mac has none cached, and shows nothing), for at most 30 seconds.
+A provider Gatekeeper refuses, or does not judge in time, is `REJECTED` before
+any of its code runs, the service starts as usual, and the diagnostic names the
+two ways out:
 
 - the provider's author notarizes it (`seal.sh` does not: the fixture is
-  deliberately un-notarized test material); or
+  deliberately un-notarized test material; `task fixture:notarized` makes a
+  notarized copy). A provider bundle cannot carry a stapled ticket, so a Mac
+  meeting one for the first time has to reach Apple to accept it; or
 - the user clears the attribute as part of approving it, with
   `xattr -dr com.apple.quarantine <Name>.koineprovider` before the restart in
   step 4.
@@ -363,10 +368,13 @@ are two ways out:
 Clearing it after a refusal is not enough on its own. The staged copy is named by
 content, which an extended attribute does not change, so Koine reuses the copy
 it already made and that copy keeps the attribute; with Koine stopped, delete
-that bundle's `<Name>-<digest>` directory under `ProviderStaging` as well. Koine
-itself never clears the attribute. The bundled desktop provider is unaffected:
-the application's notarization ticket covers `Contents/PlugIns`, so it loads from
-a quarantined, downloaded `Koine.app`. Evidence:
+that bundle's `<Name>-<digest>` directory under `ProviderStaging` as well — the
+diagnostic gives the exact command. Koine itself never clears the attribute. The
+bundled desktop provider is not assessed and is unaffected: the application's
+notarization ticket covers `Contents/PlugIns`, so it loads from a quarantined,
+downloaded `Koine.app`. Evidence:
+[`docs/verification/provider-quarantine-precheck-vm.md`](docs/verification/provider-quarantine-precheck-vm.md),
+and for the platform's own refusal without this check,
 [`docs/verification/notarized-release-vm.md`](docs/verification/notarized-release-vm.md).
 
 `Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose

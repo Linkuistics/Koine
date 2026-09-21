@@ -129,7 +129,11 @@ install_app_quarantined() {
 # await_service: waits for the endpoint descriptor, dismissing any Gatekeeper
 # plugin refusal that stands in the way, then waits for the management window.
 #
-# The refused plugin does not merely fail to load: it BLOCKS KOINE'S STARTUP.
+# Since quarantined-provider-precheck-k49 the loader asks Gatekeeper before
+# dlopen and refuses such a plugin itself, so no dialog is expected; the
+# dismissal stays so that a regression is recorded, in REFUSAL_TEXT, rather than
+# deadlocking the run. What it was written against, before that:
+# the refused plugin does not merely fail to load: it BLOCKS KOINE'S STARTUP.
 # Measured directly — Koine's process running, its dialog on screen, and no
 # endpoint.json in its data directory minutes later. Providers are dlopen'ed
 # while the service comes up and macOS's refusal is a modal dialog a person must
@@ -159,9 +163,12 @@ await_service() {
         TREE="$(testanyware agent snapshot --mode full --depth 20 --json 2>/dev/null |
             jq -r '[.windows[] | .elements[]? | .. | objects
                    | select(.platformRole == "AXStaticText") | .value // empty] | join("\n")' 2>/dev/null || true)"
-        if grep -qi 'libFixtureProvider' <<<"${TREE}"; then
+        # The dialog's wording, never the library's name: Koine's own window
+        # shows the loader's diagnostic, which names the library too, and a run
+        # matched it here as a refusal the platform never raised.
+        if grep -qE 'Not Opened|could not verify' <<<"${TREE}"; then
             if [ -z "${REFUSAL_TEXT}" ]; then
-                REFUSAL_TEXT="$(grep -i 'libFixtureProvider' <<<"${TREE}")"
+                REFUSAL_TEXT="$(grep -E 'Not Opened|could not verify' <<<"${TREE}")"
                 step "macOS refuses the quarantined plugin, and Koine cannot finish starting until it is dismissed"
                 # Recorded at the moment it is true: the process is up, the dialog is
                 # on screen, and there is no endpoint descriptor.
@@ -212,6 +219,25 @@ await_service() {
         sleep 2
     done
     place_window
+}
+
+# assert_no_system_refusal <what>: no plugin refusal dialog on screen, read the
+# way await_service reads one and the way notarized-release-vm.md's run first
+# found it — every window's static text, where it arrived whole as
+# "“libFixtureProvider.dylib” Not Opened" / "Apple could not verify …". Koine's
+# own window shows the loader's diagnostic, which names the library too, so the
+# match is on the dialog's wording, never on the library's name.
+assert_no_system_refusal() {
+    local tree
+    tree="$(testanyware agent snapshot --mode full --depth 20 --json |
+        jq -r '[.windows[] | .elements[]? | .. | objects
+               | select(.platformRole == "AXStaticText") | .value // empty] | join("\n")')"
+    testanyware screen capture -o "${LOG%.log}-no-refusal-$1.png" >/dev/null
+    if grep -qE 'Not Opened|could not verify' <<<"${tree}"; then
+        grep -E 'Not Opened|could not verify' <<<"${tree}" | sed 's/^/  /'
+        fail "a system refusal dialog is on screen ($1 provider)"
+    fi
+    echo "No system refusal dialog on screen ($1 provider)."
 }
 
 # first_launch_quarantined: the first launch of the quarantined copy, by plain

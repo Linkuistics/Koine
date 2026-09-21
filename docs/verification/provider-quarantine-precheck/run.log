@@ -1,0 +1,107 @@
+
+== Start a clean VM (koine-verify-47985)
+Setting guest display resolution to 1920x2160 px...
+  set-display-mode: switched main display to 1920x2160 pt @ 1x (1920x2160 px, modeID 11)
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+arm64
+Gatekeeper: assessments disabled
+
+== Put the clone into a Gatekeeper-enforcing state
+Before: assessments disabled;
+After:  assessments enabled;developer id disabled;
+The clone is App Store-only; setting the default posture in System Settings.
+After System Settings: assessments enabled;developer id enabled;
+
+== Install the notarized bundle and quarantine it, as a download arrives
+Quarantine on the bundle: 0181;6ab0e22e;Safari;7153BB45-FB69-462D-B935-9318CCC7BEE3
+Quarantined files inside it: 29
+Processing: /Applications/Koine.app
+The validate action worked!
+
+== Gatekeeper's verdict on the quarantined bundle, on its own merits
+/Applications/Koine.app: accepted
+source=Notarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+
+== A quarantined same-team fixture provider in the per-user root
+Quarantine on the provider: 0181;6ab0e22f;Safari;7E6CED81-57D5-49D8-B072-02B0419D0940
+{
+  "providerId": "fixture",
+  "teamIdentifier": "TA43A4RUP3"
+}
+
+== First launch of the quarantined copy: plain open, no right-click-Open
+  “Koine” is an app downloaded from the Internet. Are you sure you want to open it?
+  Safari downloaded this file today at 7:52 AM. Apple checked it for malicious software and none was detected.
+  Photos will appear here when they are finished processing
+Koine pid: 794
+Koine pid: 794
+
+== Nothing was stripped: the attribute is still on the launched bundle
+Quarantine before launch: 0181;6ab0e22e;Safari;7153BB45-FB69-462D-B935-9318CCC7BEE3
+Quarantine after launch:  01c1;6ab0e22e;Safari;7153BB45-FB69-462D-B935-9318CCC7BEE3
+
+== A grant through the window, for management and the desktop
+-rw-------  1 admin  staff  43 Sep 21 07:57 /Users/admin/koine-credential
+
+== The bundled desktop provider loads from Contents/PlugIns under quarantine
+{"data":{"koineManagement":{"providers":[{"provider":"desktop","version":"1.0.0","state":"ACTIVE","diagnostic":null},{"provider":"fixture","version":"1.0.0","state":"REJECTED","diagnostic":"libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID). macOS would refuse to load it. Its author can notarize it; or clear the attribute with `xattr -dr com.apple.quarantine '\/Users\/admin\/Library\/Application Support\/Koine\/Providers\/Fixture.koineprovider'` and, with Koine stopped, delete its staged copy with `chmod -R u+w '\/Users\/admin\/Library\/Application Support\/Koine\/ProviderStaging\/Fixture-534841e53414e8bfcc54e9818c72572c' && rm -rf '\/Users\/admin\/Library\/Application Support\/Koine\/ProviderStaging\/Fixture-534841e53414e8bfcc54e9818c72572c'`."}]}}}
+HTTP 200
+[{"provider":"desktop","state":"ACTIVE","diagnostic":null},{"provider":"fixture","state":"REJECTED","diagnostic":"libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID). macOS would refuse to load it. Its author can notarize it; or clear the attribute with `xattr -dr com.apple.quarantine '/Users/admin/Library/Application Support/Koine/Providers/Fixture.koineprovider'` and, with Koine stopped, delete its staged copy with `chmod -R u+w '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c' && rm -rf '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c'`."}]
+Koine   794 admin  txt      REG               1,16    241824              225870 /Users/admin/Library/Application Support/Koine/ProviderStaging/Desktop-5c04a485c8d009776bcdb4728283fe32/libDesktopProvider.dylib
+
+== A quarantined, UN-NOTARIZED same-team provider is refused before dlopen, with no system dialog
+No system refusal dialog on screen (un-notarized provider).
+/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c/libFixtureProvider.dylib: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+
+== Clearing the installed copy alone is not enough, and Koine still refuses it itself
+Quarantine on the installed provider now: xattr: /Users/admin/Library/Application Support/Koine/Providers/Fixture.koineprovider: No such xattr: com.apple.quarantine
+Koine pid: 923
+{"data":{"koineManagement":{"providers":[{"provider":"desktop","version":"1.0.0","state":"ACTIVE","diagnostic":null},{"provider":"fixture","version":"1.0.0","state":"REJECTED","diagnostic":"libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID). macOS would refuse to load it. Its author can notarize it; or clear the attribute with `xattr -dr com.apple.quarantine '\/Users\/admin\/Library\/Application Support\/Koine\/Providers\/Fixture.koineprovider'` and, with Koine stopped, delete its staged copy with `chmod -R u+w '\/Users\/admin\/Library\/Application Support\/Koine\/ProviderStaging\/Fixture-534841e53414e8bfcc54e9818c72572c' && rm -rf '\/Users\/admin\/Library\/Application Support\/Koine\/ProviderStaging\/Fixture-534841e53414e8bfcc54e9818c72572c'`."}]}}}
+HTTP 200
+[{"provider":"desktop","state":"ACTIVE","diagnostic":null},{"provider":"fixture","state":"REJECTED","diagnostic":"libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID). macOS would refuse to load it. Its author can notarize it; or clear the attribute with `xattr -dr com.apple.quarantine '/Users/admin/Library/Application Support/Koine/Providers/Fixture.koineprovider'` and, with Koine stopped, delete its staged copy with `chmod -R u+w '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c' && rm -rf '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c'`."}]
+
+== Doing what the diagnostic says: its own command deletes the staged copy, and the provider loads
+Remedy from the diagnostic: chmod -R u+w '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c' && rm -rf '/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c'
+Fixture staging copies left: 0
+Koine pid: 975
+{"data":{"koineManagement":{"providers":[{"provider":"desktop","version":"1.0.0","state":"ACTIVE","diagnostic":null},{"provider":"fixture","version":"1.0.0","state":"ACTIVE","diagnostic":null}]}}}
+HTTP 200
+[{"provider":"desktop","state":"ACTIVE","diagnostic":null},{"provider":"fixture","state":"ACTIVE","diagnostic":null}]
+-rw-------  1 admin  staff  43 Sep 21 08:04 /Users/admin/koine-credential
+{"data":{"fixtureInfo":{"greeting":"hello from the fixture provider"}}}
+HTTP 200
+Koine   975 admin  txt      REG               1,16    158896              228848 /Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-534841e53414e8bfcc54e9818c72572c/libFixtureProvider.dylib
+Koine   975 admin  txt      REG               1,16    241824              225870 /Users/admin/Library/Application Support/Koine/ProviderStaging/Desktop-5c04a485c8d009776bcdb4728283fe32/libDesktopProvider.dylib
+
+== A quarantined NOTARIZED provider is not refused: Gatekeeper looks its ticket up
+Quarantine on the notarized provider: 0181;6ab0e508;Safari;21CF4633-618B-430F-A021-AD72D43F5257
+CDHash=048e32b13cd5ad4f8baac0bb4c1498c157cd4292
+Timestamp=Sep 21, 2026 at 7:40:20 AM
+The offline `notarized` requirement before Koine starts: not satisfied
+Koine pid: 1051
+{"data":{"koineManagement":{"providers":[{"provider":"desktop","version":"1.0.0","state":"ACTIVE","diagnostic":null},{"provider":"fixture","version":"1.0.0","state":"ACTIVE","diagnostic":null}]}}}
+HTTP 200
+[{"provider":"desktop","state":"ACTIVE","diagnostic":null},{"provider":"fixture","state":"ACTIVE","diagnostic":null}]
+No system refusal dialog on screen (notarized provider).
+Koine   1051 admin  txt      REG               1,16    241824              225870 /Users/admin/Library/Application Support/Koine/ProviderStaging/Desktop-5c04a485c8d009776bcdb4728283fe32/libDesktopProvider.dylib
+Koine   1051 admin  txt      REG               1,16    158896              229069 /Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-61e44e3fccb1dbb2616730b59bda91c1/libFixtureProvider.dylib
+Quarantine on the image that was loaded: 0181;6ab0e508;Safari;21CF4633-618B-430F-A021-AD72D43F5257
+/Users/admin/Library/Application Support/Koine/ProviderStaging/Fixture-61e44e3fccb1dbb2616730b59bda91c1/libFixtureProvider.dylib: accepted
+source=Notarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+The offline `notarized` requirement after: satisfied
+{"data":{"fixtureInfo":{"greeting":"hello from the fixture provider"}}}
+HTTP 200
+
+== The Accessibility consent dialog names Koine on the notarized build
+[{"confidence":1.0,"height":19.25581264495861,"text":"\"Koine\" would like to control this computer using","width":316.86273193359375,"x":831.3725608828761,"y":549.0000004498106}]
+Shown by: 804 universalAccess
+
+== Quit Koine
+
+== PASSED — transcript in .build/vm-verify/notarized-20260921T175128.log

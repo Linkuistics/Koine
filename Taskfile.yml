@@ -71,9 +71,17 @@ tasks:
         source scripts/signing-env.sh
         printf 'version %s\ntag     %s\nartifact %s\n' "${MARKETING_VERSION}" "${RELEASE_TAG}" "${RELEASE_ARTIFACT}"
 
+  fixture:notarized:
+    desc: Make a notarized copy of the fixture provider (secure timestamp, hardened runtime, submitted and Accepted; not stapleable, as no provider bundle is), approved in a root of its own, for the Gatekeeper check to accept
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/notarize.sh "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/NotarizedFixtureProviders"
+
   app:vm-verify-notarized:
-    desc: Verify on a Gatekeeper-ENFORCING TestAnyware macOS clone that a quarantined copy of the notarized, stapled bundle launches at first run with no right-click-Open, is assessed as source=Notarized Developer ID, names Koine in the Accessibility consent dialog, and loads both its bundled desktop provider and a quarantined same-team provider from the per-user root
-    deps: [fixture:variants]
+    desc: Verify on a Gatekeeper-ENFORCING TestAnyware macOS clone that a quarantined copy of the notarized, stapled bundle launches at first run with no right-click-Open, is assessed as source=Notarized Developer ID, names Koine in the Accessibility consent dialog, loads its bundled desktop provider, refuses a quarantined un-notarized per-user provider before dlopen with no system dialog, and loads a quarantined notarized one
+    deps: [fixture:variants, fixture:notarized]
     cmds:
       - scripts/vm-verify-notarized.sh
 

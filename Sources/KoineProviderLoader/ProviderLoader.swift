@@ -126,6 +126,11 @@ public enum ProviderLoader {
                     of: image, named: (image as NSString).lastPathComponent, approvedBy: approval
                 )
             }
+            // The bundled root's quarantine is the application's, judged when
+            // it was first opened.
+            if !root.isBundled {
+                try checkGatekeeper(images, installed: installed, staged: staged.path)
+            }
             try checkPrincipalNameIsFree(manifest.principalClass, for: library)
             outcome = .loaded(try load(library, manifest: manifest))
         } catch let refusal as Refusal {
@@ -157,6 +162,25 @@ public enum ProviderLoader {
         if let reason = CodeSignature.refusal(of: path, approvedBy: approval) {
             throw Refusal.rejected("\(name) is refused: \(reason)")
         }
+    }
+
+    /// A quarantined image Gatekeeper would refuse is refused here, before
+    /// `dlopen` raises the platform's modal dialog for it. The loader never
+    /// clears the attribute; the diagnostic says who can.
+    private static func checkGatekeeper(
+        _ images: Set<String>, installed: String, staged: String
+    ) throws {
+        for image in images.sorted() where Gatekeeper.isQuarantined(image) {
+            guard let reason = Gatekeeper.refusal(of: image) else { continue }
+            throw Refusal.rejected(
+                "\((image as NSString).lastPathComponent) is quarantined and \(reason) macOS would refuse to load it. Its author can notarize it; or clear the attribute with `xattr -dr \(Gatekeeper.quarantineAttribute) \(quoted(installed))` and, with Koine stopped, delete its staged copy with `chmod -R u+w \(quoted(staged)) && rm -rf \(quoted(staged))`."
+            )
+        }
+    }
+
+    /// A path as one shell word: the per-user root is under "Application Support".
+    private static func quoted(_ path: String) -> String {
+        "'" + path.replacingOccurrences(of: "'", with: "'\\''") + "'"
     }
 
     /// What the manifest asks of the host. A negotiation after loading cannot

@@ -198,4 +198,15 @@ cp "${WORK}/private/libFixturePrivate.dylib" "${BUNDLE}/"
 codesign --force --sign - "${BUNDLE}/libFixturePrivate.dylib" 2>/dev/null
 codesign --force --timestamp=none --sign "${SIGNING_IDENTITY}" "${BUNDLE}" 2>/dev/null
 
+# --- Refused by Gatekeeper, before dlopen ----------------------------------
+
+# Sealed, approved and quarantined as a download arrives, and not notarized, so
+# Gatekeeper would refuse it. Its binary is the plain fixture's: once that has
+# loaded, this one's principal class collides with it, which is what lets its
+# test see the Gatekeeper check removed without the host dlopen'ing it.
+from_plain quarantined 'pass'
+"${HERE}/seal.sh" "${VARIANTS}/quarantined/Fixture.koineprovider"
+xattr -w -r com.apple.quarantine "0181;$(printf %x "$(date +%s)");Safari;$(uuidgen)" \
+    "${VARIANTS}/quarantined/Fixture.koineprovider"
+
 echo "${VARIANTS}"

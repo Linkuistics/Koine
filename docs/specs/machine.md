@@ -791,23 +791,37 @@ signed-build verification, and an install and approval UI; Koine then relies on
 its own approval and signature validation. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
 That UI's approval also clears `com.apple.quarantine` from the bundle before
-Koine first stages it, for the reason the next paragraph gives.
+Koine first stages it, unless its author notarized it, for the reason the next
+paragraph gives.
 
-The per-user root carries a platform constraint Koine does not enforce and
-cannot predict. A bundle that arrives quarantined, as a download does, is judged
-by Gatekeeper on its own when Koine calls `dlopen`. On a Gatekeeper-enforcing
-Mac, the default, an un-notarized quarantined image is refused there, after
-Koine's approval record and Team ID checks have passed: Koine admits the
-provider, the platform refuses the image, and the result is the ordinary
-`REJECTED` for a dynamic-loader failure, carrying the loader's message. There is
-no separate admission outcome, because nothing Koine checks before `dlopen`
-distinguishes this case. The refusal also raises a modal system dialog, and
-since providers load at startup the service does not listen until it is
-dismissed. The provider's author notarizing it, or the user clearing the
-attribute when approving it, before Koine first stages it, avoids the refusal;
-clearing it afterwards does not, because the content-named staged copy is reused
-and keeps the attribute. The in-application root is unaffected: the
-application's notarization ticket covers `Contents/PlugIns`. Evidence:
+The per-user root carries a platform constraint, and the loader checks it
+before `dlopen` rather than meeting it there. A bundle that arrives
+quarantined, as a download does, is judged by Gatekeeper on its own when it is
+loaded, and on a Gatekeeper-enforcing Mac, the default, a quarantined image
+that is not notarized is refused — after Koine's approval record and Team ID
+checks have passed, and behind a modal system dialog that would hold the service
+from listening, since providers load at startup, until someone dismissed it. So
+when an image of a per-user provider's staged copy carries
+`com.apple.quarantine`, the loader asks Gatekeeper for its verdict first
+(`spctl --assess --type open`, which looks the notarization ticket up online
+when this Mac has none cached, and shows nothing), bounded at 30 seconds. A
+provider Gatekeeper would refuse, or would not judge in time, is `REJECTED`
+before any of its code runs, with a diagnostic naming both ways out: its author
+notarizes it, or the user clears the attribute and, with Koine stopped, deletes
+the staged copy, whose command the diagnostic gives. The staged copy is what is
+checked because it is what is loaded, and it inherits the attribute; clearing
+the installed bundle after a refusal is not enough on its own, because the
+content-named staged copy is reused and keeps it. The `notarized` code
+requirement is not the check: it consults only the local ticket store, and a
+provider bundle has nowhere to staple a ticket, so it would refuse a notarized
+provider this Mac had not yet looked up. There is no separate admission outcome;
+a dynamic-loader failure the check does not foresee is still the ordinary
+`REJECTED` carrying the loader's message. The in-application root is not
+assessed: its quarantine is the application's, judged when the application was
+first opened, and the application's notarization ticket covers
+`Contents/PlugIns`. Evidence:
+[provider-quarantine-precheck-vm.md](../verification/provider-quarantine-precheck-vm.md),
+and for the platform's refusal at `dlopen` without the check,
 [notarized-release-vm.md](../verification/notarized-release-vm.md).
 The provider shares Koine's address space, OS permissions and failure domain.
 Capabilities limit clients, not provider code. Only trusted native code belongs

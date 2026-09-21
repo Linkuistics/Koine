@@ -5,10 +5,13 @@
 # gap four evidence documents defer to this stage. It shows a quarantined first
 # launch with no right-click-Open and nothing stripped, an assessment that comes
 # from the notarized rule rather than from assessments being off, the
-# Accessibility consent dialog naming Koine on a notarized build, and both a
-# quarantined same-team provider in the per-user root and the bundled desktop
-# provider loading. Nothing here runs the application on the host. The procedure
-# and its recorded evidence: docs/verification/notarized-release-vm.md
+# Accessibility consent dialog naming Koine on a notarized build, and the
+# bundled desktop provider loading. In the per-user root, a quarantined
+# un-notarized provider is refused by Koine before dlopen, with no system dialog
+# and startup not held, and a quarantined notarized one loads. Nothing here runs
+# the application on the host. The procedure and its recorded evidence:
+# docs/verification/notarized-release-vm.md, and for the per-user providers
+# docs/verification/provider-quarantine-precheck-vm.md
 #
 # KOINE_VM_KEEP=1 leaves the VM running afterwards, for inspection.
 # KOINE_VM_PASSWORD is the VM account's password (the golden image's default: admin).
@@ -33,6 +36,11 @@ PRODUCTS="$(swift build --show-bin-path)"
 APPROVED_ROOT="${PRODUCTS}/FixtureProviders"
 if [ ! -d "${APPROVED_ROOT}/Fixture.koineprovider" ]; then
     echo "Error: ${APPROVED_ROOT}/Fixture.koineprovider does not exist. Run: task fixture:variants" >&2
+    exit 1
+fi
+NOTARIZED_ROOT="${PRODUCTS}/NotarizedFixtureProviders"
+if [ ! -d "${NOTARIZED_ROOT}/Fixture.koineprovider" ]; then
+    echo "Error: ${NOTARIZED_ROOT}/Fixture.koineprovider does not exist. Run: task fixture:notarized" >&2
     exit 1
 fi
 
@@ -95,8 +103,8 @@ echo "Koine pid: ${KOINE_PID}"
 [ -n "${KOINE_PID}" ] || fail "Koine is not running after the first launch"
 
 # Only now, with any Gatekeeper dialog cleared off the screen — and with more
-# patience than place_window's own 30s. On this path the window comes up well
-# after the endpoint descriptor does: the service had been held at the refused
+# patience than place_window's own 30s. On this path the window came up well
+# after the endpoint descriptor did, when the service was held at a refused
 # dlopen, and a run was failed with "the management window did not appear" whose
 # failure screenshot showed the window present and fully rendered.
 for _ in $(seq 1 45); do
@@ -140,76 +148,66 @@ grep 'DesktopProvider' <<<"${IMAGES}" | grep -qF "/ProviderStaging/Desktop-" ||
 guest "ls ${INSTALLED}/Contents/PlugIns" | grep -qx 'Desktop.koineprovider' ||
     fail "the in-application provider root does not hold exactly Desktop.koineprovider"
 
-step "A quarantined, UN-NOTARIZED same-team provider is refused at dlopen"
-# This is the answer to the question signed-app-provider-vm.md deferred in these
-# words: "whether a quarantined, un-notarized same-team plugin still passes
-# dlopen is not shown here". It does not. The fixture is signed by the same team
-# and carries Koine's approval record, but seal.sh signs it with no secure
-# timestamp and nothing notarizes it, so Gatekeeper judges it on its own —
-# downstream of Koine's approval check and team comparison, both of which passed.
-[ -n "${REFUSAL_TEXT}" ] || fail "macOS raised no Gatekeeper refusal for the quarantined plugin"
-# The consequence, not just the refusal: the service had not begun listening
-# while that dialog stood, which the wait above had to clear to get this far.
-[ -n "${BLOCKED_STARTUP}" ] ||
-    fail "the refusal did not block startup, so this run has not shown what it reports"
-grep -q 'libFixtureProvider' <<<"${REFUSAL_TEXT}" ||
-    fail "the refusal does not name the plugin"
-grep -q 'could not verify' <<<"${REFUSAL_TEXT}" ||
-    fail "the refusal is not Gatekeeper's could-not-verify one"
-jq -e '.[] | select(.provider == "fixture") | .state != "ACTIVE"' >/dev/null <<<"${STATES}" ||
-    fail "the fixture provider is ACTIVE although macOS refused to open its image"
+step "A quarantined, UN-NOTARIZED same-team provider is refused before dlopen, with no system dialog"
+# notarized-release-vm.md recorded the platform refusing this image at dlopen,
+# behind a modal dialog that held the service until someone clicked Done. The
+# loader now asks Gatekeeper first (spctl, which shows nothing) and refuses the
+# provider itself, so none of that may be seen: no refusal in await_service's
+# wait, no startup held, no dialog on screen, and Koine's own diagnostic instead.
+[ -z "${REFUSAL_TEXT}" ] || fail "macOS raised its refusal dialog: the image reached dlopen"
+[ -z "${BLOCKED_STARTUP}" ] || fail "the service's startup was held"
+assert_no_system_refusal "un-notarized"
+FIXTURE_DIAGNOSTIC="$(jq -r '.[] | select(.provider == "fixture") | .diagnostic // ""' <<<"${STATES}")"
+jq -e '.[] | select(.provider == "fixture") | .state == "REJECTED"' >/dev/null <<<"${STATES}" ||
+    fail "the fixture provider is not REJECTED"
+grep -qF 'libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID)' <<<"${FIXTURE_DIAGNOSTIC}" ||
+    fail "the refusal is not the loader's Gatekeeper refusal: ${FIXTURE_DIAGNOSTIC}"
 ! grep -q 'libFixtureProvider' <<<"${IMAGES}" ||
     fail "the refused plugin's image is mapped"
+# Gatekeeper's verdict on the staged copy, asked the same way, as a user could.
+guest "spctl --assess --type open --context context:primary-signature -vv \"${DATA}/ProviderStaging\"/Fixture-*/libFixtureProvider.dylib 2>&1" || true
 
-step "With the quarantine cleared, as approving an install would, the same provider loads"
-# The complement, and the reason the refusal above is about quarantine rather
-# than about the bundle, the team or the approval record: nothing else changes.
+step "Clearing the installed copy alone is not enough, and Koine still refuses it itself"
+# The staged copy is named by content, which an extended attribute does not
+# change, so Koine reuses the copy it made above and that copy keeps the
+# attribute (README). What changes is that this is now Koine's refusal, not
+# macOS's dialog.
 quit_koine
 guest "xattr -d -r com.apple.quarantine \"${PROVIDER_ROOT}/Fixture.koineprovider\"" || true
 echo "Quarantine on the installed provider now: $(guest "xattr -p com.apple.quarantine \"${PROVIDER_ROOT}/Fixture.koineprovider\" 2>&1 || true")"
-REFUSAL_TEXT=""
 launch_and_read_state() {
     guest "open ${INSTALLED}" || true
     await_service
     ask "${Q_PROVIDERS}"
-    STATES="$(sed -n 1p <<<"${RESPONSE}" | jq -c '[.data.koineManagement.providers[] | {provider, state}]')"
+    STATES="$(sed -n 1p <<<"${RESPONSE}" | jq -c '[.data.koineManagement.providers[] | {provider, state, diagnostic}]')"
     echo "${STATES}"
+    IMAGES="$(guest "lsof -p ${KOINE_PID} 2>/dev/null | grep -E 'Fixture|DesktopProvider'" || true)"
 }
 launch_and_read_state
+[ -z "${REFUSAL_TEXT}" ] || fail "macOS raised its refusal dialog for the reused staged copy"
+jq -e '.[] | select(.provider == "fixture") | .state == "REJECTED"' >/dev/null <<<"${STATES}" ||
+    fail "the fixture loaded from a staged copy that is still quarantined"
+FIXTURE_DIAGNOSTIC="$(jq -r '.[] | select(.provider == "fixture") | .diagnostic // ""' <<<"${STATES}")"
+grep -qF 'Gatekeeper refuses it' <<<"${FIXTURE_DIAGNOSTIC}" || fail "not the Gatekeeper refusal: ${FIXTURE_DIAGNOSTIC}"
 
-# Clearing the installed copy alone is expected NOT to be enough, and the run
-# records that rather than working around it silently.
-if ! jq -e '.[] | select(.provider == "fixture") | .state == "ACTIVE"' >/dev/null <<<"${STATES}"; then
-    step "Clearing the installed copy is not enough: Koine reuses its staged copy, which keeps the attribute"
-    # Koine stages each provider under a digest of its CONTENT, and removing an
-    # extended attribute does not change content — so the digest is unchanged,
-    # the directory staged during the first launch is reused, and it is still the
-    # quarantined copy that gets dlopen'ed. The proof is the value itself: the
-    # staged copy carries the identical timestamp and UUID this run wrote onto
-    # the installed bundle, so it was inherited at staging time and not applied
-    # afresh. The staged tree is also read-only, so a user cannot clear it there.
-    STAGED_QUARANTINE="$(guest "xattr -p com.apple.quarantine \"${DATA}/ProviderStaging\"/Fixture-*/libFixtureProvider.dylib 2>/dev/null" || true)"
-    echo "Quarantine on the staged copy:  ${STAGED_QUARANTINE:-(none)}"
-    echo "Quarantine this run installed:  ${PROVIDER_QUARANTINE}"
-    grep -qF "${PROVIDER_QUARANTINE#*;}" <<<"${STAGED_QUARANTINE}" ||
-        echo "(the staged value differs from the installed one; it was not inherited at staging)"
-    guest "ls -ld \"${DATA}/ProviderStaging\"/Fixture-*" || true
-
-    step "Invalidating the staged copy is what actually works"
-    # The remedy the finding implies: the staged copy has to go, or be stripped.
-    # With it gone, Koine re-stages from the cleared source and nothing else in
-    # this run has changed — which is what makes the refusal attributable to the
-    # quarantine attribute rather than to the bundle, the team or the approval.
-    quit_koine
-    guest "chmod -R u+w \"${DATA}/ProviderStaging\" && rm -rf \"${DATA}/ProviderStaging\"/Fixture-*" || true
-    REFUSAL_TEXT=""
-    launch_and_read_state
-    STAGED_AFTER="$(guest "xattr -p com.apple.quarantine \"${DATA}/ProviderStaging\"/Fixture-*/libFixtureProvider.dylib 2>&1" || true)"
-    echo "Quarantine on the re-staged copy: ${STAGED_AFTER}"
-fi
-
+step "Doing what the diagnostic says: its own command deletes the staged copy, and the provider loads"
+# The command is taken from the diagnostic verbatim, so what is shown here is
+# that a user who follows it gets a loading provider — quoting included, since
+# the staging directory is under "Application Support".
+# shellcheck disable=SC2016  # the backquotes are the diagnostic's own
+REMEDY="$(sed -n 's/.*delete its staged copy with `\(.*\)`\.$/\1/p' <<<"${FIXTURE_DIAGNOSTIC}")"
+echo "Remedy from the diagnostic: ${REMEDY}"
+[ -n "${REMEDY}" ] || fail "the diagnostic names no command to delete the staged copy"
+quit_koine
+# Judged by what it leaves, not by its exit status: the agent can repeat an exec
+# it falsely reports as timed out, and a repeat of this finds nothing to delete.
+guest "${REMEDY}" || true
+LEFT="$(guest "ls -d \"${DATA}/ProviderStaging\"/Fixture-* 2>/dev/null | wc -l" | tr -d ' ')"
+echo "Fixture staging copies left: ${LEFT}"
+[ "${LEFT}" = 0 ] || fail "the diagnostic's own command left the staged copy in place"
+launch_and_read_state
 jq -e '.[] | select(.provider == "fixture") | .state == "ACTIVE"' >/dev/null <<<"${STATES}" ||
-    fail "the fixture provider is still not ACTIVE with quarantine cleared"
+    fail "the fixture provider is still not ACTIVE with quarantine cleared and its staged copy deleted"
 jq -e '.[] | select(.provider == "desktop") | .state == "ACTIVE"' >/dev/null <<<"${STATES}" ||
     fail "the bundled desktop provider is no longer ACTIVE"
 
@@ -223,6 +221,40 @@ IMAGES="$(guest "lsof -p ${KOINE_PID} 2>/dev/null | grep -E 'Fixture|DesktopProv
 echo "${IMAGES}"
 grep 'libFixtureProvider' <<<"${IMAGES}" | grep -qF "/ProviderStaging/Fixture-" ||
     fail "the provider's image was not mapped from a Fixture- staging copy"
+
+step "A quarantined NOTARIZED provider is not refused: Gatekeeper looks its ticket up"
+# The good bundle the check must not refuse. It cannot carry a stapled ticket
+# (Fixtures/FixtureProvider/notarize.sh), and this clone has never seen it, so
+# the `notarized` code requirement — an offline lookup — is expected to fail on
+# it here, which is why the loader does not use that requirement. Recorded, not
+# asserted: it is the reason for the design, not the behaviour under test.
+quit_koine
+ditto -c -k "${NOTARIZED_ROOT}" "${WORK}/notarized-root.zip"
+testanyware file upload "${WORK}/notarized-root.zip" /Users/admin/koine-notarized-root.zip >/dev/null
+guest "rm -rf \"${PROVIDER_ROOT}\" && mkdir -p \"${PROVIDER_ROOT}\" && ditto -x -k \$HOME/koine-notarized-root.zip \"${PROVIDER_ROOT}\""
+guest "xattr -w -r com.apple.quarantine \"${QUARANTINE}\" \"${PROVIDER_ROOT}/Fixture.koineprovider\""
+echo "Quarantine on the notarized provider: $(guest "xattr -p com.apple.quarantine \"${PROVIDER_ROOT}/Fixture.koineprovider\"")"
+guest "codesign -dvvv \"${PROVIDER_ROOT}/Fixture.koineprovider\" 2>&1 | grep -E '^(CDHash|Timestamp)='" || true
+echo "The offline \`notarized\` requirement before Koine starts: $(guest "codesign -v -R=notarized \"${PROVIDER_ROOT}/Fixture.koineprovider\" 2>&1 && echo satisfied || echo not satisfied" | tail -1)"
+launch_and_read_state
+[ -z "${REFUSAL_TEXT}" ] || fail "macOS raised a refusal dialog for the notarized provider"
+assert_no_system_refusal "notarized"
+jq -e '.[] | select(.provider == "fixture") | .state == "ACTIVE"' >/dev/null <<<"${STATES}" ||
+    fail "the quarantined, notarized provider was refused: $(jq -c '.[] | select(.provider == "fixture")' <<<"${STATES}")"
+echo "${IMAGES}"
+NOTARIZED_STAGED="$(grep 'libFixtureProvider' <<<"${IMAGES}" | grep -oE '/.*/ProviderStaging/Fixture-[0-9a-f]+' | head -1)"
+[ -n "${NOTARIZED_STAGED}" ] || fail "the notarized provider's image is not mapped from a staging copy"
+STAGED_QUARANTINE="$(guest "xattr -p com.apple.quarantine \"${NOTARIZED_STAGED}/libFixtureProvider.dylib\" 2>&1" || true)"
+echo "Quarantine on the image that was loaded: ${STAGED_QUARANTINE}"
+grep -q '^01[0-9a-f]1;' <<<"${STAGED_QUARANTINE}" ||
+    fail "the loaded copy is not quarantined, so Gatekeeper's check was never asked of it"
+guest "spctl --assess --type open --context context:primary-signature -vv \"${NOTARIZED_STAGED}/libFixtureProvider.dylib\" 2>&1" || true
+echo "The offline \`notarized\` requirement after: $(guest "codesign -v -R=notarized \"${PROVIDER_ROOT}/Fixture.koineprovider\" 2>&1 && echo satisfied || echo not satisfied" | tail -1)"
+ask "${Q_FIXTURE}"
+grep -q '"greeting":"' <<<"${RESPONSE}" || fail "the notarized provider served no field"
+jq -e '.[] | select(.provider == "desktop") | .state == "ACTIVE"' >/dev/null <<<"${STATES}" ||
+    fail "the bundled desktop provider is no longer ACTIVE"
+testanyware screen capture -o "${LOG%.log}-notarized-provider.png" >/dev/null
 
 step "The Accessibility consent dialog names Koine on the notarized build"
 place_window

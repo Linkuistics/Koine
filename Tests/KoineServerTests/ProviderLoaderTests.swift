@@ -173,6 +173,41 @@ import Testing
         await harness.stop()
     }
 
+    /// Refused before `dlopen`, where macOS would otherwise refuse it behind a
+    /// modal dialog that holds the service's startup. The plain fixture is the
+    /// control: the same binary, sealed and approved alike, and not quarantined.
+    /// It loads first, so that were the Gatekeeper check gone the quarantined
+    /// copy would be refused for its colliding principal name instead — this
+    /// test would fail, and the host would still never have loaded it.
+    @Test func aQuarantinedUnnotarizedProviderIsRefusedBeforeLoading() async throws {
+        _ = Self.initializerLog
+        let plain = try NativeProviderTests.fixtureRoot()
+        let control = try await Harness(providerRoots: [plain])
+        #expect(try await Self.statuses(control).map(\.state) == ["ACTIVE"])
+        #expect(try Self.initializersRan(under: plain))
+        await control.stop()
+
+        let root = try Self.variantRoot("quarantined")
+        let installed = root.appendingPathComponent("Fixture.koineprovider")
+        try #require(Gatekeeper.isQuarantined(installed.appendingPathComponent("libFixtureProvider.dylib").path))
+        let harness = try await Harness(providerRoots: [root])
+
+        let status = try #require(try await Self.statuses(harness).first)
+        #expect(status.provider == "fixture" && status.state == "REJECTED")
+        let diagnostic = status.diagnostic ?? ""
+        for fragment in [
+            "libFixtureProvider.dylib is quarantined and Gatekeeper refuses it (Unnotarized Developer ID)",
+            "Its author can notarize it",
+            "xattr -dr com.apple.quarantine '\(installed.resolvingSymlinksInPath().path)'",
+            "with Koine stopped, delete its staged copy with `chmod -R u+w '", "/Fixture-", "' && rm -rf '",
+        ] {
+            #expect(diagnostic.contains(fragment), "diagnostic was: \(diagnostic)")
+        }
+        #expect(try !Self.initializersRan(under: root))
+        #expect(try await Self.rootFields(harness) == Self.coreRootFields)
+        await harness.stop()
+    }
+
     // MARK: Loaded
 
     /// The control for `initializersRan`: a bundle that loads is seen to run its
