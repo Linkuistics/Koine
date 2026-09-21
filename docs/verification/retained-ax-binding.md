@@ -9,7 +9,8 @@ A subsequent [signed/hardened private-API experiment](#private-token-and-data-re
 also found successor effects through token-created and data-plus-PID-created
 AX objects. A subsequent [direct-port experiment](direct-ax-endpoint.md) supplies
 bounded positive evidence for port lifetime and live-responder matching; its
-complete native effect transport remains unestablished.
+later effect diagnostic executes the full native sequence on one Cocoa target.
+Complete receiver-lifetime and admission guarantees remain unestablished.
 
 This is a diagnostic experiment, not a run of Koine or evidence that a normal
 Koine operation has already mistargeted a window. It tests the platform premise
@@ -280,7 +281,8 @@ can request a target PID's `com.apple.axserver` send right using
 WebKit's [sandbox registration](https://github.com/WebKit/WebKit/blob/38cc1fbc76b839ab6cb0d3d58f1ffa3d1de1e3bf/Source/WebKit/WebProcess/com.apple.WebProcess.sb.in)
 names that service as per-PID. The launchd implementation is historical primary
 source; the [direct experiment](direct-ax-endpoint.md) now establishes lookup
-availability on its guest build, but not a complete effect protocol.
+availability and an executed effect path on its guest build, but not the
+complete receiver-lifetime and admission guarantee.
 This lead keeps public client capture and private code inside
 Koine, but replaces AX wrapper convenience with a private transport whose
 ownership, lifetime and version maintenance must be understood.
@@ -305,8 +307,8 @@ The next feasibility decision must establish three connected properties:
    without reconstructing a PID-addressed AX object. Death after admission
    or between native steps must fail closed; an after-check cannot undo effects.
 
-The direct experiment advances acquisition and ordinary death behavior without
-establishing all three properties. Until those hold there is
+The direct experiments advance acquisition, ordinary death behavior and the
+full effect sequence without establishing all three properties. Until those hold there is
 **no feasible complete binding established**, but
 also no evidence for universal private-API impossibility. The public schema,
 client consent and strict lifetime contract remain unchanged by this result.
@@ -340,8 +342,9 @@ native test ran. Its findings were checked against their actual scope:
   exec. [XNU exec](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/kern_exec.c)
   supports task replacement; AX endpoint teardown remains unproved.
 
-No second reviewer was used. The unresolved direct transport is separate design
-work, not a patched wrapper requiring another review. Code verification used
+No second reviewer was used in the reconstruction investigation. The direct
+transport investigation is separate design work, documented in its own report.
+Code verification used
 Tier 2 graph generation `2026-09-21T11:51:36Z` and exact provider effect snippets;
 the private diagnostic was also read directly because its index coverage
 reported a parse gap across lines 1–108. These are bounded source findings.

@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "A retained AX port dies; a fresh reply identifies its live responder",
-    "status": "Bounded native evidence; complete effect transport remains open",
-    "summary": "Signed, hardened macOS 26.5 probes found that the original AX port stayed dead across actual PID 773 reuse. A separate fresh MIG error reply carried an audit trailer matching retained live task 843; wrong-task and dead-task controls rejected. These establish endpoint lifetime and responder matching in the tested cases, not native effect delivery or the full client contract.",
+    "title": "Direct effects and focus confirmation through one retained AX port",
+    "status": "Effect path demonstrated; lifetime and admission remain open",
+    "summary": "A signed, hardened macOS 26.5 diagnostic restored, selected, raised and activated a Cocoa window through one retained endpoint, then confirmed focus through that endpoint. A separate observer agreed; a write after death failed. The internal ABI is build-specific. Receiver transitions, remote elements, harmless audited admission and consent policy still prevent adopting a complete contract.",
     "diagramIds": [
+      "process-effects",
       "process-endpoint",
       "process-binding",
       "process-capture",
@@ -35,12 +36,25 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "process-effects",
+        "summary": "Added the executed direct read/effect/confirmation sequence, separate observer and post-death refusal."
+      },
+      {
         "id": "process-endpoint",
-        "summary": "Added the direct-port death/PID-reuse result and fresh audited-reply experiment, with the remaining effect and transition obligations."
+        "summary": "Replaced the open effect-transport note with a pointer to the newly exercised path; lifetime and admission remain unresolved."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-effects",
+      "group": "machine",
+      "title": "Direct AX effects through one retained endpoint",
+      "renderer": "svg",
+      "source": "process-effects.puml",
+      "rendered": "process-effects.svg",
+      "caption": "Executed in TestAnyware clone koine-k61-effects on macOS 26.5 (25F71): internal MIG read/set/action stubs used retained endpoint 12035 for PID 788. A separate public-AX/NSWorkspace observer saw minimize, restore and final focus. All live requests succeeded and the subsequent post-death write failed. No PID-based target-port refresh occurs during dispatch. This one-window Cocoa experiment does not establish receiver ownership, death between effects, exec/restoration, remote-element safety, audited admission or Koine consent attribution. The diagnostic is signed and hardened, inherits usable VM consent, and is not notarized. Exact source, ABI sites, input hashes, completed exit-0 record and limits are in docs/verification/direct-ax-endpoint.md."
+    },
     {
       "id": "process-endpoint",
       "group": "machine",

@@ -19,7 +19,8 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [Direct AX endpoint](index.html#diagram-process-endpoint) — adds native port-death/PID-reuse evidence and a fresh audited-reply match, with the remaining transport obligations.
+- [Direct AX effects](index.html#diagram-process-effects) — adds the executed read/effect/confirmation sequence, independent witness and post-death refusal.
+- [Direct AX endpoint](index.html#diagram-process-endpoint) — scopes the earlier retention and responder results and points to the separate effect sequence; lifetime and admission remain open.
 - [Native action binding](index.html#diagram-process-binding) — adds the signed/hardened private-token and data reconstruction counterexample, including a restore effect on a successor process.
 - [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
 - [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
@@ -54,8 +55,9 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 ```
 
 From the repository root, `task design:render-process-identity` renders the
-process-capture, process-serial, process-binding and process-endpoint views to their SVG exports
-and to PNGs under `.build/design-identity`.
+process-capture, process-serial, process-binding, process-endpoint and
+process-effects views to their SVG exports and to PNGs under
+`.build/design-identity`.
 
 The viewer fetches sources and exports on reload; it does not compile them.
 `diagrams.json` owns the topic outline, the captions and the introduction. The
@@ -74,11 +76,19 @@ Updated markers and a wide desktop layout. Mobile and dark appearance were not
 checked for this update. The host viewer serves the same source and manifest
 at `http://127.0.0.1:8772/#diagram-process-binding`.
 
-The direct AX endpoint view records the port-lifetime and responder-matching
-experiments; the complete effect route remains an investigation. Its PNG,
-fresh-page deep link, discussion panel, outline and Current/Updated markers
+The original direct AX endpoint view recorded the port-lifetime and
+responder-matching experiments. Its PNG, fresh-page deep link, discussion
+panel, outline and Current/Updated markers
 were checked in Safari in disposable clone `koine-k59-endpoint`. Wide light and
 dark layouts and a narrow desktop window were inspected; no mobile device was
 tested. The SVG retains its light canvas inside the dark viewer. The host
 viewer serves the same SVG at
 `http://127.0.0.1:8772/#diagram-process-endpoint`.
+
+The later direct-effects view and revised endpoint note were rendered and
+inspected in disposable clone `koine-k61-effects`. The new view's PNG and
+fresh-page deep link, the discussion panel, outline and Current/Updated markers
+were checked in Safari, including a wide light desktop window. The current
+update was not checked on mobile or in dark appearance. The host viewer serves
+the same sources and manifest at
+`http://127.0.0.1:8772/#diagram-process-effects`.

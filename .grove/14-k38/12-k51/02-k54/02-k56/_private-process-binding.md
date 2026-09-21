@@ -25,7 +25,9 @@ for the human if no viable route is established.
   token bytes are not proof of lifetime; investigate whether they merely encode
   PID plus reusable element data. The reconstruction candidates have now been
   tested and failed. Direct AX port retention and audited responder matching
-  now have bounded positive evidence; complete effect transport remains open.
+  now have bounded positive evidence. A later direct-stub diagnostic exercised
+  the complete effect sequence on one Cocoa target; lifetime/admission and
+  product-policy evidence remain open.
 - Initial code evidence was Tier 2, project `Users-antony-Development-Koine`,
   generation `2026-09-21T11:22:48Z`; provider identity/observation/effect files had
   matching metadata and no recorded gaps. Refresh before using. Exact source

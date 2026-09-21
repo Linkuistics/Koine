@@ -15,7 +15,9 @@ evidenced feasibility conflict for the human. Finish k56's original criteria.
   `com.apple.axserver` with the target PID and `BOOTSTRAP_PER_PID_SERVICE`.
   Pinned Apple launchd and WebKit source links are in the evidence report.
   Direct lookup and an unknown-ID MIG exchange have now been executed; see
-  `docs/verification/direct-ax-endpoint.md`. No direct AX effect has been sent.
+  `docs/verification/direct-ax-endpoint.md`. Its later direct-stub diagnostic
+  exercised every required effect and focus confirmation through one port;
+  receiver lifetime/admission and product policy remain unresolved.
 - Do not repeat the failed wrapper premise. `_AXUIElementRemoteTokenCreate`,
   `_AXUIElementCreateWithRemoteToken` and `_AXUIElementCreateWithDataAndPid`
   were available in a signed/hardened macOS 26.5 diagnostic and reconstructed
@@ -92,6 +94,10 @@ contract; they are not satisfied by a successful lookup or audited reply.
    native ownership/transition evidence, or deliver the precise feasibility
    conflict and recommendation required by this node. This runs before k57.
 
+The effects child has decomposed into `ax-direct-effect-transport-k62` (the
+executed path) and `ax-endpoint-lifetime-and-admission-k63` (remaining native
+guarantee and policy evidence). This node is not complete.
+
 Read the fresh reviewer reconciliation in `docs/verification/direct-ax-endpoint.md`
 as evidence to evaluate, not a verdict. `act` and `hasFocus` remain the current
-effect inventory; the new diagnostics modify no production provider behavior.
+effect inventory; the diagnostics modify no production provider behavior.

@@ -54,8 +54,13 @@ remains an investigation. A [signed/hardened direct-port probe](../verification/
 found that the retained port stayed dead across actual PID reuse, and a fresh
 error reply with a kernel audit trailer matched the retained live task while
 rejecting a wrong-task control. This makes direct endpoint admission a concrete
-candidate; it does not establish client-event attribution, receive-right
-ownership across all native transitions, or the complete effect transport.
-Continue evaluating that route without treating finite audit fields as permanent
-identity or the successful admission test as an action guarantee. No complete
-replacement mechanism is approved.
+candidate. A [direct-effect diagnostic](../verification/direct-ax-endpoint.md#direct-effect-path)
+also exercised read, restore, main selection, raise, activation and focus
+confirmation through one retained endpoint, with an independent witness and
+post-death refusal. Its build-specific internal stubs establish transport
+feasibility, not a supported shipping ABI. Client-event attribution, a harmless
+audited admission exchange, receiver ownership across native transitions and
+consent/version policy remain unresolved. Continue evaluating those obligations
+without treating finite audit fields as permanent identity or a successful
+effect sequence as the full action guarantee. No complete replacement mechanism
+is approved.
