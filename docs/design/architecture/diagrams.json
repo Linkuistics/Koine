@@ -24,28 +24,41 @@
     }
   ],
   "discussion": {
-    "title": "Direct effects and focus confirmation through one retained AX port",
-    "status": "Effect path demonstrated; lifetime and admission remain open",
-    "summary": "A signed, hardened macOS 26.5 diagnostic restored, selected, raised and activated a Cocoa window through one retained endpoint, then confirmed focus through that endpoint. A separate observer agreed; a write after death failed. The internal ABI is build-specific. Receiver transitions, remote elements, harmless audited admission and consent policy still prevent adopting a complete contract.",
+    "title": "Audited AX read followed by effects and scheduled death",
+    "status": "Admission and death schedules demonstrated; receiver and policy work remains",
+    "summary": "A real AXRole read supplies a fresh audited reply before the retained-task check. Four signed/hardened Cocoa runs cover live effects, death before effects, death between effects and actual PID reuse. Old-endpoint primitives refuse and the successor stays unchanged. Receiver ownership/routing, exec/restoration and separate Koine consent still prevent adoption.",
     "diagramIds": [
+      "process-admission",
       "process-effects",
       "process-endpoint",
       "process-binding",
-      "process-capture",
-      "addressing"
+      "process-capture"
     ],
     "updatedDiagrams": [
       {
+        "id": "process-admission",
+        "summary": "Added the real read-only admission exchange and the four completed native schedules."
+      },
+      {
         "id": "process-effects",
-        "summary": "Added the executed direct read/effect/confirmation sequence, separate observer and post-death refusal."
+        "summary": "Points to the newer audited admission and death-between-effects evidence; retains the original effect run."
       },
       {
         "id": "process-endpoint",
-        "summary": "Replaced the open effect-transport note with a pointer to the newly exercised path; lifetime and admission remain unresolved."
+        "summary": "Points to the real audited read and scheduled death evidence; narrows the remaining lifetime questions."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-admission",
+      "group": "machine",
+      "title": "Audited AX read and death ordering",
+      "renderer": "svg",
+      "source": "process-admission.puml",
+      "rendered": "process-admission.svg",
+      "caption": "Observed in disposable TestAnyware clone koine-k63-admission on macOS 26.5 (25F71). The actual AXRole request admits matching live tasks and refuses wrong-task controls. Live effects/focus succeed at PID 804; death before effects (813), between effects (816), and actual reuse (820 after 99,408 allocations) refuse every later direct primitive. A separate observer sees the successor unchanged. Each run has exit 0 and matching frozen-input hashes. Read-only means no write/action is requested; arbitrary getter internals are not constrained. This is a signed/hardened diagnostic inheriting VM-agent consent, not Koine consent or a shipping ABI. Receiver ownership/routing, exec/restoration, policy and client capture remain open. Full protocol, raw outputs and limits: docs/verification/direct-ax-endpoint.md."
+    },
     {
       "id": "process-effects",
       "group": "machine",

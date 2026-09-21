@@ -75,6 +75,13 @@ the original criteria above remain this node's completion contract.
    admission, policy and maintenance evidence, then provide the full feasibility
    result for k57 or the evidenced conflict for the human.
 
+The lifetime/admission child has split at its verified native admission/death
+boundary: `ax-audited-admission-and-death-k64` preserves the actual read-only
+exchange and scheduled death/PID-reuse results; `ax-receiver-lifetime-k65` owns
+receiver lifecycle/routing plus exec/restoration; `ax-endpoint-policy-and-adoption-k66`
+owns consent/denial, maintenance and the complete feasibility synthesis. This
+node's original completion criteria remain open.
+
 ## Decisions (running log)
 
 - Test the read/set/action MIG boundary directly with one retained server port.

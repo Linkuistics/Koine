@@ -1,6 +1,17 @@
 version: '3'
 
 tasks:
+  fixture:ax-admission:
+    desc: Build and sign the audited read and direct-effect diagnostic (execute only in TestAnyware)
+    cmds:
+      - mkdir -p .build/ax-admission/K63Admission.app/Contents/MacOS
+      - sed 's/K54Binding/K63Admission/g; s/k54-binding/k63-admission/g' docs/verification/retained-ax-binding/Info.plist > .build/ax-admission/K63Admission.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/admission-probe.m -framework Cocoa -framework ApplicationServices -lbsm -o .build/ax-admission/K63Admission.app/Contents/MacOS/K63Admission
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/ax-admission/K63Admission.app
+      - codesign --verify --strict --verbose=2 .build/ax-admission/K63Admission.app
+      - /usr/bin/ditto -c -k .build/ax-admission .build/ax-admission.zip
+
   fixture:ax-effects:
     desc: Build and sign the build-specific direct AX effect diagnostic (execute only in TestAnyware)
     cmds:
@@ -63,8 +74,8 @@ tasks:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml
+      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml
 
   fixture:process-serial:
     desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)

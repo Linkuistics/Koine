@@ -58,9 +58,14 @@ candidate. A [direct-effect diagnostic](../verification/direct-ax-endpoint.md#di
 also exercised read, restore, main selection, raise, activation and focus
 confirmation through one retained endpoint, with an independent witness and
 post-death refusal. Its build-specific internal stubs establish transport
-feasibility, not a supported shipping ABI. Client-event attribution, a harmless
-audited admission exchange, receiver ownership across native transitions and
-consent/version policy remain unresolved. Continue evaluating those obligations
+feasibility, not a supported shipping ABI. An
+[audited read and scheduled-death diagnostic](../verification/direct-ax-endpoint.md#audited-read-admission-and-scheduled-death)
+matched a real `AXRole` reply to the retained live task, rejected wrong/dead-task
+controls, then exercised same-endpoint effects. Death before/between effects and
+actual PID reuse refused every later primitive on the tested Cocoa target.
+Client-event attribution, receiver ownership across exec/restoration and
+top-level routing, and consent/version policy remain unresolved. Continue
+evaluating those obligations
 without treating finite audit fields as permanent identity or a successful
 effect sequence as the full action guarantee. No complete replacement mechanism
 is approved.
