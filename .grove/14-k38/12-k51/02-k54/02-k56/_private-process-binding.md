@@ -24,7 +24,8 @@ for the human if no viable route is established.
   transfer are primary-source leads linked in the report. Exports and opaque
   token bytes are not proof of lifetime; investigate whether they merely encode
   PID plus reusable element data. The reconstruction candidates have now been
-  tested and failed; the direct AX service lead remains untested.
+  tested and failed. Direct AX port retention and audited responder matching
+  now have bounded positive evidence; complete effect transport remains open.
 - Initial code evidence was Tier 2, project `Users-antony-Development-Koine`,
   generation `2026-09-21T11:22:48Z`; provider identity/observation/effect files had
   matching metadata and no recorded gaps. Refresh before using. Exact source
@@ -72,6 +73,9 @@ endpoint ownership, attribution and wire-protocol evidence.
    PID-reuse counterexample, updates the ADR/discussion and records limitations.
 2. `direct-ax-endpoint-k59` evaluates the direct `com.apple.axserver` endpoint
    and closes the original feasibility criteria above before k57's contract work.
+   It decomposed at the boundary between endpoint admission/lifetime evidence
+   and reconstructing the private effect protocol; its remaining child owns
+   complete effect binding and the still-open native transition obligations.
 
 ## Decisions (running log)
 

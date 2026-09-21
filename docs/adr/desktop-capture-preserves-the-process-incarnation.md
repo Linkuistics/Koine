@@ -50,6 +50,12 @@ reporting the element's "actual PID" does not distinguish that successor.
 These routes add private dependency risk without satisfying strict lifetime.
 Reconsider them only with an independently established native binding, not
 another encoding or check. Direct acquisition of a retained AX service endpoint
-remains an investigation: its task attribution, receive-right lifetime and
-all-effects transport have not been established. No complete replacement
-mechanism is approved.
+remains an investigation. A [signed/hardened direct-port probe](../verification/direct-ax-endpoint.md)
+found that the retained port stayed dead across actual PID reuse, and a fresh
+error reply with a kernel audit trailer matched the retained live task while
+rejecting a wrong-task control. This makes direct endpoint admission a concrete
+candidate; it does not establish client-event attribution, receive-right
+ownership across all native transitions, or the complete effect transport.
+Continue evaluating that route without treating finite audit fields as permanent
+identity or the successful admission test as an action guarantee. No complete
+replacement mechanism is approved.

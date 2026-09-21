@@ -7,7 +7,9 @@ The task-name right and the AX object have different lifetime behavior.
 
 A subsequent [signed/hardened private-API experiment](#private-token-and-data-reconstruction-also-cross-incarnations)
 also found successor effects through token-created and data-plus-PID-created
-AX objects. Direct AX service-port binding remains a separate, untested route.
+AX objects. A subsequent [direct-port experiment](direct-ax-endpoint.md) supplies
+bounded positive evidence for port lifetime and live-responder matching; its
+complete native effect transport remains unestablished.
 
 This is a diagnostic experiment, not a run of Koine or evidence that a normal
 Koine operation has already mistargeted a window. It tests the platform premise
@@ -277,8 +279,9 @@ can request a target PID's `com.apple.axserver` send right using
 [`BOOTSTRAP_PER_PID_SERVICE`](https://github.com/apple-oss-distributions/launchd/blob/d448a1c8f70a61202f8705f94337f686b87c30c4/liblaunch/bootstrap_priv.h).
 WebKit's [sandbox registration](https://github.com/WebKit/WebKit/blob/38cc1fbc76b839ab6cb0d3d58f1ffa3d1de1e3bf/Source/WebKit/WebProcess/com.apple.WebProcess.sb.in)
 names that service as per-PID. The launchd implementation is historical primary
-source; neither its present runtime availability nor a complete effect protocol
-was tested here. This lead keeps public client capture and private code inside
+source; the [direct experiment](direct-ax-endpoint.md) now establishes lookup
+availability on its guest build, but not a complete effect protocol.
+This lead keeps public client capture and private code inside
 Koine, but replaces AX wrapper convenience with a private transport whose
 ownership, lifetime and version maintenance must be understood.
 
@@ -288,7 +291,9 @@ The next feasibility decision must establish three connected properties:
    captured task. A PID lookup may race with replacement. A harmless request
    with a kernel audit trailer is a possible matching instrument, not a settled
    identity scheme. The bootstrap reply's audit token authenticates launchd,
-   not the target; finite pidversion equality alone remains insufficient.
+   not the target; indefinitely cached pidversion equality remains insufficient.
+   The ordered live-task comparison in the direct experiment is a different
+   candidate, with bounded native evidence.
 2. **Lifetime:** this particular receive right ends with the captured task
    and cannot be transferred or recovered for a successor. A retained send
    right identifies a port object, not necessarily one receiver incarnation.
@@ -300,7 +305,9 @@ The next feasibility decision must establish three connected properties:
    without reconstructing a PID-addressed AX object. Death after admission
    or between native steps must fail closed; an after-check cannot undo effects.
 
-Until those hold there is **no feasible complete binding established**, but
+The direct experiment advances acquisition and ordinary death behavior without
+establishing all three properties. Until those hold there is
+**no feasible complete binding established**, but
 also no evidence for universal private-API impossibility. The public schema,
 client consent and strict lifetime contract remain unchanged by this result.
 

@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Direct AX endpoint](index.html#diagram-process-endpoint) — adds native port-death/PID-reuse evidence and a fresh audited-reply match, with the remaining transport obligations.
 - [Native action binding](index.html#diagram-process-binding) — adds the signed/hardened private-token and data reconstruction counterexample, including a restore effect on a successor process.
 - [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
 - [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
@@ -53,7 +54,7 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 ```
 
 From the repository root, `task design:render-process-identity` renders the
-process-capture, process-serial and process-binding views to their SVG exports
+process-capture, process-serial, process-binding and process-endpoint views to their SVG exports
 and to PNGs under `.build/design-identity`.
 
 The viewer fetches sources and exports on reload; it does not compile them.
@@ -67,9 +68,17 @@ and dark appearance.
 
 The native action-binding view now shows the private reconstruction experiment;
 the evidence report also retains the preceding public-held-object experiment.
-The direct AX endpoint remains an investigation, not an approved product route.
 Its PNG export and fresh-page deep link were checked in Safari in disposable
 TestAnyware clone `koine-k56-binding`, including the topic outline, Current and
 Updated markers and a wide desktop layout. Mobile and dark appearance were not
 checked for this update. The host viewer serves the same source and manifest
 at `http://127.0.0.1:8772/#diagram-process-binding`.
+
+The direct AX endpoint view records the port-lifetime and responder-matching
+experiments; the complete effect route remains an investigation. Its PNG,
+fresh-page deep link, discussion panel, outline and Current/Updated markers
+were checked in Safari in disposable clone `koine-k59-endpoint`. Wide light and
+dark layouts and a narrow desktop window were inspected; no mobile device was
+tested. The SVG retains its light canvas inside the dark viewer. The host
+viewer serves the same SVG at
+`http://127.0.0.1:8772/#diagram-process-endpoint`.

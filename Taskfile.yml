@@ -1,6 +1,34 @@
 version: '3'
 
 tasks:
+  fixture:ax-inspector:
+    desc: Build the loaded-code AX inspector (execute only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/inspect-endpoint.m -framework Cocoa -framework ApplicationServices -o .build/inspect-endpoint
+
+  fixture:ax-challenge:
+    desc: Build and sign the AX audit-reply diagnostic (execute only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/ax-challenge/K59Challenge.app/Contents/MacOS
+      - sed 's/K54Binding/K59Challenge/g; s/k54-binding/k59-challenge/g' docs/verification/retained-ax-binding/Info.plist > .build/ax-challenge/K59Challenge.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/endpoint-challenge.m -framework Cocoa -framework ApplicationServices -lbsm -o .build/ax-challenge/K59Challenge.app/Contents/MacOS/K59Challenge
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/ax-challenge/K59Challenge.app
+      - codesign --verify --strict --verbose=2 .build/ax-challenge/K59Challenge.app
+      - /usr/bin/ditto -c -k .build/ax-challenge .build/ax-challenge.zip
+
+  fixture:ax-endpoint:
+    desc: Build and sign the direct AX endpoint diagnostic (execute only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/ax-endpoint/K59Endpoint.app/Contents/MacOS
+      - sed 's/K54Binding/K59Endpoint/g; s/k54-binding/k59-endpoint/g' docs/verification/retained-ax-binding/Info.plist > .build/ax-endpoint/K59Endpoint.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/endpoint-probe.m -framework Cocoa -framework ApplicationServices -o .build/ax-endpoint/K59Endpoint.app/Contents/MacOS/K59Endpoint
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/ax-endpoint/K59Endpoint.app
+      - codesign --verify --strict --verbose=2 .build/ax-endpoint/K59Endpoint.app
+      - /usr/bin/ditto -c -k .build/ax-endpoint .build/ax-endpoint.zip
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:
@@ -24,8 +52,8 @@ tasks:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml
+      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml
 
   fixture:process-serial:
     desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)

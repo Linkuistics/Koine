@@ -24,23 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Private AX reconstruction also crosses process incarnations",
-    "status": "Reconstruction rejected by native evidence; direct endpoint remains open",
-    "summary": "A signed, hardened macOS 26.5 diagnostic retained token-created and data-plus-PID-created AX windows across process death. At recycled PID 787 the old token object minimized the successor, and the old data object restored it. The original task was dead; actual-PID reporting still returned 787. Direct AX service acquisition is a distinct untested lead. Public client capture and strict process lifetime remain required; no replacement protocol is approved.",
+    "title": "A retained AX port dies; a fresh reply identifies its live responder",
+    "status": "Bounded native evidence; complete effect transport remains open",
+    "summary": "Signed, hardened macOS 26.5 probes found that the original AX port stayed dead across actual PID 773 reuse. A separate fresh MIG error reply carried an audit trailer matching retained live task 843; wrong-task and dead-task controls rejected. These establish endpoint lifetime and responder matching in the tested cases, not native effect delivery or the full client contract.",
     "diagramIds": [
+      "process-endpoint",
       "process-binding",
-      "process-serial",
       "process-capture",
       "addressing"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-binding",
-        "summary": "Added the signed/hardened private-token and data reconstruction counterexample, including a wrong restore effect; identified direct AX transport as the remaining feasibility question."
+        "id": "process-endpoint",
+        "summary": "Added the direct-port death/PID-reuse result and fresh audited-reply experiment, with the remaining effect and transition obligations."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-endpoint",
+      "group": "machine",
+      "title": "Direct AX endpoint: retention and responder matching",
+      "renderer": "svg",
+      "source": "process-endpoint.puml",
+      "rendered": "process-endpoint.svg",
+      "caption": "Observed in TestAnyware clone koine-k59-endpoint on macOS 26.5. The held port became a dead name and stayed dead after actual PID recycling. A separate header-only unknown-ID exchange received MIG_BAD_ID with a kernel audit trailer; a live retained-task read after the reply matched, and a wrong-task control rejected. Both diagnostics were Developer ID-signed and hardened, inherited usable AX consent, and were not notarized. No direct AX effect, exec, automatic restoration, client-event capture or client-to-Koine transfer was exercised. Sources, controls, hashes and limits are in docs/verification/direct-ax-endpoint.md."
+    },
     {
       "id": "process-binding",
       "group": "machine",
