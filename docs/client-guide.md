@@ -192,6 +192,13 @@ replacement is designed in `process-identity-without-time` and will be stated in
 the spec; a client should expect this section, the input type and the digest to
 change, and should not build more on `startedAt` than it has to.
 
+The agreed replacement must preserve client-event capture and the original
+OS process lifetime. A public process serial number plus boot identity cannot
+replace the timestamp: automatic termination can restore the application under
+that same pair but a new process. See the
+[capture decision](adr/desktop-capture-preserves-the-process-incarnation.md).
+The native replacement protocol is still being designed.
+
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That
 is the same answer a client gets for a process that is not an application, and

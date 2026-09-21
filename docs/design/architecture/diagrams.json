@@ -23,7 +23,45 @@
       "description": "Independent binary upgrades without a script host."
     }
   ],
+  "discussion": {
+    "title": "Client capture and strict process lifetime are agreed",
+    "status": "Serial candidate ruled out; native contract next",
+    "summary": "The human requires client-event capture that expires with the original OS process. A macOS 26.5 automatic-termination experiment found the same public PSN and boot identity naming PID 893, then PID 910 after restoration. The serial candidate therefore fails the agreed contract. Retained native identity is the next design direction; capture attribution, authenticated transfer, restart behavior and Accessibility action binding remain open. No replacement schema is approved.",
+    "diagramIds": [
+      "process-serial",
+      "process-capture",
+      "addressing"
+    ],
+    "updatedDiagrams": [
+      {
+        "id": "process-serial",
+        "summary": "Replaced the proposal with the observed automatic-termination counterexample and the agreed strict lifetime boundary."
+      },
+      {
+        "id": "process-capture",
+        "summary": "Distinguished the required client capture boundary from the still-unapproved native transfer and action protocol."
+      }
+    ]
+  },
   "diagrams": [
+    {
+      "id": "process-serial",
+      "group": "machine",
+      "title": "Why a public serial cannot identify the process",
+      "renderer": "svg",
+      "source": "process-serial.puml",
+      "rendered": "process-serial.svg",
+      "caption": "Observed in a macOS 26.5 TestAnyware clone with a diagnostic app. The same serial and boot identity resolved to PID 893, continued to report that PID after the process ended, then resolved to live PID 910 after automatic restoration. Captured sources, hashes and native output are in docs/verification/process-serial-lifetime.md. The human requires expiry with the original process, so PSN plus boot identity is ruled out. This does not establish unrelated-application serial reuse, actual PID reuse, or native Accessibility action safety."
+    },
+    {
+      "id": "process-capture",
+      "group": "machine",
+      "title": "Capture at the server or at the client event",
+      "renderer": "svg",
+      "source": "process-capture.puml",
+      "rendered": "process-capture.svg",
+      "caption": "Client-event capture and strict OS-process lifetime are agreed. Server-side capture can select another application after an intervening app switch and is rejected. Transferring a retained task right is the next candidate, not a completed protocol: port numbers are local names, rights do not reserve PIDs, and capture attribution, native endpoint binding, authentication, reference non-reuse and restart policy must be specified. The existing Desktop interaction view remains context for the served contract."
+    },
     {
       "id": "packages",
       "group": "overview",

@@ -19,6 +19,8 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
+- [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
 - [Resident application](index.html#diagram-packages) — shows runtime ownership.
 - [Source packages](index.html#diagram-source-packages) — shows package dependencies separately.
 - [Desktop interaction](index.html#diagram-addressing) — queries before choices and re-resolves before focus.
@@ -49,7 +51,15 @@ d2 --layout=elk --theme=0 --dark-theme=200 --pad=36 \
 plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml grants.puml
 ```
 
+From the repository root, `task design:render-process-identity` renders the
+process-capture and process-serial views to their SVG exports and to PNGs under
+`.build/design-identity`.
+
 The viewer fetches sources and exports on reload; it does not compile them.
 `diagrams.json` owns the topic outline, the captions and the introduction. The
-viewer's layout in a browser, its anchors and its dark appearance have not been
-checked; the SVG exports can be inspected on their own.
+process-identity views distinguish agreed constraints, rejected candidates and
+open protocol work; they do not replace the current wire contract.
+The serial-number view's deep link, rendering and topic/changed markers were
+checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
+also inspected. This does not establish the other views' rendering, or mobile
+and dark appearance.

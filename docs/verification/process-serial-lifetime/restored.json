@@ -1,0 +1,9 @@
+{
+  "command": "cat /tmp/k51-restored.log\n/tmp/koine-k51-psn-probe psn 000000000003f03f\nlsappinfo info -only asn,pid K51AutoTerm\nps -p 893 -o pid=,stat=,comm=\nprintf \"old_ps_status=%d\\n\" \"$?\"\nshasum -a 256 /tmp/koine-k51-psn-probe /tmp/K51AutoTerm.app/Contents/MacOS/K51AutoTerm /tmp/K51AutoTerm.app/Contents/Info.plist",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "start pid=910 psn=000000000003f03f status=0 boot=25214686-C4E0-4D45-BDF4-2D0B08EF8DB9 root=62211\n{\"capture\":0,\"resolve\":0,\"pid\":910,\"psn\":\"000000000003f03f\",\"reverse\":0,\"reversePSN\":\"000000000003f03f\",\"bootStatus\":0,\"boot\":\"25214686-C4E0-4D45-BDF4-2D0B08EF8DB9\",\"taskStatus\":0,\"secondTaskStatus\":0,\"samePort\":true,\"auditStatus\":0,\"pidversion\":2398}\n\"LSASN\"=ASN:0x0-0x3f03f:\n\"pid\"=910\nold_ps_status=1\n4fb4c1bf58d34ae3ab8f2e3e60cbc43199f93da67e87aa267ccf020280ca05ab  /tmp/koine-k51-psn-probe\n203ad9991f37986881a9fd56cc659e70033e43911d2bf2e0f4bf7d5f080cde8e  /tmp/K51AutoTerm.app/Contents/MacOS/K51AutoTerm\na8f2349fe1df066a965fdb6eff24986444f6ab43c019e51f432abe65e75b69aa  /tmp/K51AutoTerm.app/Contents/Info.plist",
+  "timed_out": false
+}

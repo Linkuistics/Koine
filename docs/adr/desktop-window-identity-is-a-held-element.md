@@ -14,6 +14,13 @@ its application does not enumerate now, as on another Space, is what the provide
 lists as `REMEMBERED`, under the same reference; there is no second record of
 windows.
 
+The process component shown above is the currently served timestamp form,
+which must change before first release. The
+[capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
+client-local capture and strict OS-process lifetime; its replacement encoding
+is not yet agreed. Held-window evidence below does not establish cross-process
+binding for a native action endpoint.
+
 ## Trade-off
 
 Only public API is used, and "focus exactly this target or report `unavailable`"

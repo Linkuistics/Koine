@@ -84,6 +84,12 @@ _Avoid_: handle, id, key
 automatically cached or refreshed. The inherited `items/ref/fields` payload
 does not prescribe the GraphQL wire shape.
 
+**Process incarnation**: The particular OS process captured by the client's
+native event handler at interaction start. Its lifetime ends when that process
+ends; a restored logical application with a new process is a different
+incarnation. A PID, application name, bundle identifier or Process Manager
+serial number alone does not establish this identity.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

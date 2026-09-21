@@ -1,0 +1,9 @@
+{
+  "command": "/System/Library/CoreServices/talagent -memory_pressure\ncat /tmp/k51-frozen.log\n/tmp/koine-k51-psn-probe psn 000000000003f03f\nps -p 893 -o pid=,stat=,comm=\nprintf \"ps_status=%d\\n\" \"$?\"\nlsappinfo info -only asn,pid,LSApplicationWouldBeTerminatedByTALKey K51AutoTerm",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "Simulating memory pressure...done!\nstart pid=893 psn=000000000003f03f status=0 boot=25214686-C4E0-4D45-BDF4-2D0B08EF8DB9 root=47363\nidle pid=893\n{\"capture\":0,\"resolve\":0,\"pid\":893,\"psn\":\"000000000003f03f\",\"reverse\":0,\"reversePSN\":\"000000000003f03f\",\"bootStatus\":0,\"boot\":\"25214686-C4E0-4D45-BDF4-2D0B08EF8DB9\",\"taskStatus\":5,\"secondTaskStatus\":5,\"samePort\":true,\"auditStatus\":268435459,\"pidversion\":0}\nps_status=1\n\"LSASN\"=ASN:0x0-0x3f03f:\n\"pid\"=893\n\"LSApplicationWouldBeTerminatedByTALKey\"=false",
+  "timed_out": false
+}

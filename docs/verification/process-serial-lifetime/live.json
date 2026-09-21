@@ -1,0 +1,9 @@
+{
+  "command": "cat /tmp/k51-frozen.log\n/tmp/koine-k51-psn-probe psn 000000000003f03f\nps -p 893 -o pid=,stat=,comm=",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "start pid=893 psn=000000000003f03f status=0 boot=25214686-C4E0-4D45-BDF4-2D0B08EF8DB9 root=47363\n{\"capture\":0,\"resolve\":0,\"pid\":893,\"psn\":\"000000000003f03f\",\"reverse\":0,\"reversePSN\":\"000000000003f03f\",\"bootStatus\":0,\"boot\":\"25214686-C4E0-4D45-BDF4-2D0B08EF8DB9\",\"taskStatus\":0,\"secondTaskStatus\":0,\"samePort\":true,\"auditStatus\":0,\"pidversion\":2360}\n  893 S    /private/tmp/K51AutoTerm.app/Contents/MacOS/K51AutoTerm",
+  "timed_out": false
+}

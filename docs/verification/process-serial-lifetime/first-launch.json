@@ -1,0 +1,9 @@
+{
+  "command": "cat /tmp/k51-frozen.log\n/tmp/koine-k51-psn-probe\nlsappinfo info -only asn,pid K51AutoTerm\nsw_vers\nshasum -a 256 /tmp/koine-k51-psn-probe /tmp/K51AutoTerm.app/Contents/MacOS/K51AutoTerm /tmp/K51AutoTerm.app/Contents/Info.plist",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\"capture\":0,\"resolve\":0,\"pid\":360,\"psn\":\"000000000000d00d\",\"reverse\":0,\"reversePSN\":\"000000000000d00d\",\"bootStatus\":0,\"boot\":\"25214686-C4E0-4D45-BDF4-2D0B08EF8DB9\",\"taskStatus\":0,\"secondTaskStatus\":0,\"samePort\":true,\"auditStatus\":0,\"pidversion\":858}\n\"LSASN\"=ASN:0x0-0x3f03f:\n\"pid\"=893\nProductName:\t\tmacOS\nProductVersion:\t\t26.5\nBuildVersion:\t\t25F71\n4fb4c1bf58d34ae3ab8f2e3e60cbc43199f93da67e87aa267ccf020280ca05ab  /tmp/koine-k51-psn-probe\n203ad9991f37986881a9fd56cc659e70033e43911d2bf2e0f4bf7d5f080cde8e  /tmp/K51AutoTerm.app/Contents/MacOS/K51AutoTerm\na8f2349fe1df066a965fdb6eff24986444f6ab43c019e51f432abe65e75b69aa  /tmp/K51AutoTerm.app/Contents/Info.plist",
+  "timed_out": false
+}

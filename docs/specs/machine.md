@@ -234,6 +234,16 @@ mechanism that does not depend on time. Until it lands, the paragraph above is
 what Koine serves, and the input type, the application-reference encoding and the
 schema digest are expected to change.
 
+The replacement preserves capture in the client's native event handler and
+expires with the captured OS process, including automatic termination. It must
+not follow a restored logical application into a new process. Public Process
+Manager serial numbers plus boot identity fail that requirement in the
+[native lifetime experiment](../verification/process-serial-lifetime.md).
+[The capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
+records these agreed boundaries; native transfer, reference lifetime across
+Koine restart and action binding remain to be designed. The SDL below still
+describes the currently served timestamp input, not an approved replacement.
+
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
 | `Query.koine` | `Koine!` | Server version and caller's grant; authenticated |
