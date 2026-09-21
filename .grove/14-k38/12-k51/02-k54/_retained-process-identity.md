@@ -95,7 +95,9 @@ The original completion criteria above continue to bind this node:
 1. `retained-ax-lifetime-k55` — preserve the public AX counterexample, correct
    acceptance claims and record the human's next direction.
 2. `private-process-binding-k56` — establish a concrete private-server binding
-   and its limitations, or surface an evidenced feasibility conflict.
+   and its limitations, or surface an evidenced feasibility conflict. Its first
+   child disproves private token/data reconstruction; its remaining direct AX
+   service-endpoint design must settle feasibility before the contract proceeds.
 3. `process-identity-contract-k57` — consume a feasible binding, agree the
    complete client/transfer/reference/restart contract, reconcile durable docs
    and finish the existing k52 implementation/evidence handoff.

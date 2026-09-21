@@ -1,0 +1,9 @@
+{
+  "command": "ditto -x -k /tmp/private-ax.zip /tmp; shasum -a 256 /tmp/K56PrivateBinding.app/Contents/Info.plist /tmp/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding; /tmp/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding --trust",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "dfc047d0ea71a420841cf3f0e9d509a860611356525da74db5d0efe5da5879a0  /tmp/K56PrivateBinding.app/Contents/Info.plist\n13f52251e4cb05a38aa683dcaa3316262d78de395649a36c6867901476924ebd  /tmp/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding\n{\"phase\":\"trust\",\"trusted\":1,\"os\":\"Version 26.5 (Build 25F71)\"}",
+  "timed_out": false
+}

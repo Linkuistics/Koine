@@ -1,6 +1,17 @@
 version: '3'
 
 tasks:
+  fixture:private-ax:
+    desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/private-ax/K56PrivateBinding.app/Contents/MacOS
+      - sed 's/K54Binding/K56PrivateBinding/g; s/k54-binding/k56-private-binding/g' docs/verification/retained-ax-binding/Info.plist > .build/private-ax/K56PrivateBinding.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/private-probe.m -framework Cocoa -framework ApplicationServices -o .build/private-ax/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/private-ax/K56PrivateBinding.app
+      - codesign --verify --strict --verbose=2 .build/private-ax/K56PrivateBinding.app
+      - /usr/bin/ditto -c -k .build/private-ax .build/private-ax.zip
+
   fixture:retained-ax:
     desc: Build the retained-AX PID-recycling diagnostic without launching it (run only in a TestAnyware VM)
     cmds:

@@ -19,7 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [Native action binding](index.html#diagram-process-binding) — adds the observed PID-reuse counterexample in which a held AX window minimizes a replacement process.
+- [Native action binding](index.html#diagram-process-binding) — adds the signed/hardened private-token and data reconstruction counterexample, including a restore effect on a successor process.
 - [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
 - [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
 - [Resident application](index.html#diagram-packages) — shows runtime ownership.
@@ -65,7 +65,11 @@ checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
 also inspected. This does not establish the other views' rendering, or mobile
 and dark appearance.
 
-The native action-binding view was likewise rendered and inspected as PNG and
-at its fresh-page deep link in Safari in `koine-k54-binding`. Its topic outline
-and Current/Updated markers identified the intended view. Mobile and dark
-appearance were not checked for this update.
+The native action-binding view now shows the private reconstruction experiment;
+the evidence report also retains the preceding public-held-object experiment.
+The direct AX endpoint remains an investigation, not an approved product route.
+Its PNG export and fresh-page deep link were checked in Safari in disposable
+TestAnyware clone `koine-k56-binding`, including the topic outline, Current and
+Updated markers and a wide desktop layout. Mobile and dark appearance were not
+checked for this update. The host viewer serves the same source and manifest
+at `http://127.0.0.1:8772/#diagram-process-binding`.

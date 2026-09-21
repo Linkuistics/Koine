@@ -1,0 +1,124 @@
+Capstone 5.0.7; ARM64. Offsets relative to each named entry point.
+Unknown branch labels are unresolved symbol stubs, not identified callees.
+
+_AXUIElementRemoteTokenCreate
+000: pacibsp  
+004: stp x22, x21, [sp, #-0x30]! 
+008: stp x20, x19, [sp, #0x10] 
+00c: stp x29, x30, [sp, #0x20] 
+010: add x29, sp, #0x20 
+014: cbz x0, #0x18be2a8d8 
+018: mov x20, x0 
+01c: mov x0, #0 
+020: mov x1, #0 
+024: bl #0x18be8258c unknown
+028: mov x19, x0 
+02c: add x1, x20, #0x10 
+030: mov w2, #4 
+034: bl #0x18be8255c unknown
+038: add x1, x20, #0x14 
+03c: mov x0, x19 
+040: mov w2, #4 
+044: bl #0x18be8255c unknown
+048: add x1, x20, #0x18 
+04c: mov x0, x19 
+050: mov w2, #4 
+054: bl #0x18be8255c unknown
+058: ldr x0, [x20, #0x20] 
+05c: cbz x0, #0x18be2a8dc 
+060: bl #0x18be825cc unknown
+064: mov x21, x0 
+068: ldr x0, [x20, #0x20] 
+06c: bl #0x18be825ec unknown
+070: mov x2, x0 
+074: mov x0, x19 
+078: mov x1, x21 
+07c: bl #0x18be8255c unknown
+080: b #0x18be2a8dc _AXUIElementRemoteTokenCreate
+084: mov x19, #0 
+088: mov x0, x19 
+08c: ldp x29, x30, [sp, #0x20] 
+090: ldp x20, x19, [sp, #0x10] 
+094: ldp x22, x21, [sp], #0x30 
+098: retab  
+
+_AXUIElementCreateWithRemoteToken
+000: pacibsp  
+004: stp x22, x21, [sp, #-0x30]! 
+008: stp x20, x19, [sp, #0x10] 
+00c: stp x29, x30, [sp, #0x20] 
+010: add x29, sp, #0x20 
+014: mov x19, x0 
+018: cbz x0, #0x18be2bfe0 
+01c: mov x0, x19 
+020: bl #0x18be825ec unknown
+024: subs x20, x0, #0xc 
+028: b.hs #0x18be2bf90 
+02c: mov x19, #0 
+030: b #0x18be2bfe0 _AXUIElementCreateWithRemoteToken
+034: mov x0, x19 
+038: bl #0x18be825cc unknown
+03c: ldp w21, w19, [x0] 
+040: ldr w22, [x0, #8] 
+044: cmp x20, #0 
+048: b.le #0x18be2bff4 
+04c: add x1, x0, #0xc 
+050: mov x0, #0 
+054: mov x2, x20 
+058: bl #0x18be8256c unknown
+05c: mov x20, x0 
+060: mov x0, x21 
+064: mov x1, x22 
+068: mov x2, x20 
+06c: mov x3, x19 
+070: bl #0x18be2a6f8 _AXUIElementCreateInternal
+074: mov x19, x0 
+078: cbz x20, #0x18be2bfe0 
+07c: mov x0, x20 
+080: bl #0x18be82bbc unknown
+084: mov x0, x19 
+088: ldp x29, x30, [sp, #0x20] 
+08c: ldp x20, x19, [sp, #0x10] 
+090: ldp x22, x21, [sp], #0x30 
+094: retab  
+
+_AXUIElementCreateWithDataAndPid
+000: mov x8, x0 
+004: mov x0, x2 
+008: mov x2, x8 
+00c: b #0x18be2a6f8 _AXUIElementCreateInternal
+
+_AXUIElementGetActualPid
+000: mov w2, #0 
+004: b #0x18be30474 _AXUIElementGetPid
+
+_AXUIElementGetData
+000: pacibsp  
+004: stp x22, x21, [sp, #-0x30]! 
+008: stp x20, x19, [sp, #0x10] 
+00c: stp x29, x30, [sp, #0x20] 
+010: add x29, sp, #0x20 
+014: mov x20, x0 
+018: mov w0, #-0x6271 
+01c: cbz x20, #0x18be49280 
+020: mov x21, x1 
+024: cbz x1, #0x18be49280 
+028: mov x19, x2 
+02c: cbz x2, #0x18be49280 
+030: mov x0, x20 
+034: bl #0x18be8278c unknown
+038: mov x22, x0 
+03c: bl #0x18be3651c AXUIElementGetTypeID
+040: cmp x22, x0 
+044: b.ne #0x18be4927c 
+048: mov w0, #0 
+04c: ldr x8, [x20, #0x20] 
+050: str x8, [x21] 
+054: ldr w8, [x20, #0x18] 
+058: str w8, [x19] 
+05c: b #0x18be49280 _AXUIElementGetData
+060: mov w0, #-0x6271 
+064: ldp x29, x30, [sp, #0x20] 
+068: ldp x20, x19, [sp, #0x10] 
+06c: ldp x22, x21, [sp], #0x30 
+070: retab  

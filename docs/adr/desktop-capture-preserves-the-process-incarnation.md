@@ -42,3 +42,14 @@ retention plus another pre-check is not a replacement mechanism. Investigation
 of private APIs inside Koine is authorized, while clients keep public APIs and
 strict process lifetime remains required. No particular private-API solution
 or relaxation of the no-substitution guarantee is agreed.
+
+Private AX token or data reconstruction is not the missing binding either.
+The [signed/hardened private probe](../verification/retained-ax-binding.md#private-token-and-data-reconstruction-also-cross-incarnations)
+shows both reconstructed objects affecting a successor at a recycled PID;
+reporting the element's "actual PID" does not distinguish that successor.
+These routes add private dependency risk without satisfying strict lifetime.
+Reconsider them only with an independently established native binding, not
+another encoding or check. Direct acquisition of a retained AX service endpoint
+remains an investigation: its task attribution, receive-right lifetime and
+all-effects transport have not been established. No complete replacement
+mechanism is approved.

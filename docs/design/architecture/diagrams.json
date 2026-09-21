@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Retained AX objects do not preserve process incarnation",
-    "status": "Server-private API investigation authorized; strict lifetime preserved",
-    "summary": "On macOS 26.5, an old retained AX window minimized a replacement process at recycled PID 781. The holder kept its original task-name right and AX parent and performed no fresh AX acquisition. A separate observer confirmed the effect. The human chose to investigate private APIs inside Koine while keeping client APIs public and preserving strict process lifetime. This authorizes investigation, not a particular mechanism, restart policy or replacement schema.",
+    "title": "Private AX reconstruction also crosses process incarnations",
+    "status": "Reconstruction rejected by native evidence; direct endpoint remains open",
+    "summary": "A signed, hardened macOS 26.5 diagnostic retained token-created and data-plus-PID-created AX windows across process death. At recycled PID 787 the old token object minimized the successor, and the old data object restored it. The original task was dead; actual-PID reporting still returned 787. Direct AX service acquisition is a distinct untested lead. Public client capture and strict process lifetime remain required; no replacement protocol is approved.",
     "diagramIds": [
       "process-binding",
       "process-serial",
@@ -36,7 +36,7 @@
     "updatedDiagrams": [
       {
         "id": "process-binding",
-        "summary": "Added the actual PID-reuse counterexample: a held AX window acts on a replacement process while the original task right is dead."
+        "summary": "Added the signed/hardened private-token and data reconstruction counterexample, including a wrong restore effect; identified direct AX transport as the remaining feasibility question."
       }
     ]
   },
@@ -44,11 +44,11 @@
     {
       "id": "process-binding",
       "group": "machine",
-      "title": "Why retained AX objects do not bind native effects",
+      "title": "Why AX reconstruction does not bind native effects",
       "renderer": "svg",
       "source": "process-binding.puml",
       "rendered": "process-binding.svg",
-      "caption": "Actual PID reuse in a disposable macOS 26.5 TestAnyware VM, with a controlled Cocoa app. The holder never reacquired AX objects after the original process ended. It intentionally used the retained window after death to test endpoint lifetime; this is not an observed Koine mistarget. Separate observers saw the replacement before and after minimization. Source, frozen-input hashes, output and limitations are in docs/verification/retained-ax-binding.md. Server-private investigation is authorized; a particular private dependency, native protocol or weaker action guarantee is not approved."
+      "caption": "Observed in TestAnyware clone koine-k56-binding on macOS 26.5: both privately reconstructed AX objects affected the successor at recycled PID 787. The holder created them before the original died and acquired no fresh AX objects afterward; separate processes witnessed both effects. The diagnostic was Developer ID-signed and hardened, but not notarized, and inherited usable AX access from the VM agent. This is platform evidence, not a Koine mistarget or product policy acceptance. The earlier public-held-object counterexample and full inputs, hashes, outputs, limitations and direct-endpoint lead are in docs/verification/retained-ax-binding.md."
     },
     {
       "id": "process-serial",

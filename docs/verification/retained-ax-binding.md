@@ -5,6 +5,10 @@ window can address a different OS process after actual PID recycling. Retaining
 the AX object is therefore not, by itself, a process-incarnation guarantee.
 The task-name right and the AX object have different lifetime behavior.
 
+A subsequent [signed/hardened private-API experiment](#private-token-and-data-reconstruction-also-cross-incarnations)
+also found successor effects through token-created and data-plus-PID-created
+AX objects. Direct AX service-port binding remains a separate, untested route.
+
 This is a diagnostic experiment, not a run of Koine or evidence that a normal
 Koine operation has already mistargeted a window. It tests the platform premise
 needed to close the interval between an identity check and a native effect.
@@ -151,15 +155,189 @@ client APIs and strict process lifetime. The SDK's HIServices export list has
 include `NSAccessibilityRemoteUIElement` with token construction and
 initialization; [its WebPage implementation](https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebKit/WebProcess/WebPage/mac/WebPageMac.mm)
 transfers tokens produced for local UI elements between cooperating processes.
-Those are concrete leads, not lifetime guarantees or an acquisition path for
-arbitrary unmodified applications. A token may simply serialize the same unsafe
-identity. Investigate its representation, endpoint ownership, process matching,
-death and exec behavior before proposing it as the binding.
+Those leads motivated the private reconstruction experiment below. WebKit's
+cooperating-process transfer does not itself establish endpoint lifetime or
+arbitrary-target capture; the observed native result is what rejects the tested
+reconstruction route.
 
 The investigation must also account for signed/hardened availability and every
 native effect, including application activation and focus confirmation. The
 choice authorizes investigating a private server mechanism; it approves neither
 a specific dependency nor an altered reference/restart contract.
+
+## Private token and data reconstruction also cross incarnations
+
+The server-private reconstruction candidates are now **disproved on macOS 26.5
+(25F71)**. In clone `koine-k56-binding`, a Developer ID-signed diagnostic with
+hardened runtime obtained the original window through ordinary Accessibility,
+then created two private equivalents while that process was alive:
+
+- `_AXUIElementRemoteTokenCreate` followed by
+  `_AXUIElementCreateWithRemoteToken`;
+- `_AXUIElementGetData` followed by `_AXUIElementCreateWithDataAndPid`.
+
+Both compared equal to the original and read its original title. After killing
+and reaping the original, the diagnostic retained those objects, their original
+inputs and the original task-name right. It created no new AX objects after
+death; fresh acquisitions occurred only in separate witnesses. Neither target
+incarnation supplied tokens or changed its Accessibility implementation for the
+test: both ran the same ordinary Cocoa-window fixture.
+
+| Observation | Private token object | Private data-plus-PID object |
+|---|---|---|
+| Original PID **787** alive | Reads `ORIGINAL PROCESS`; equal to original window | Same |
+| Original killed and reaped | Reads fail with `cannotComplete` | Same |
+| PID 787 recycled after **99,412** child allocations | Reads `REPLACEMENT PROCESS` | Same |
+| Original task right | Dead name (`1048576`) | Same held task |
+| Old object used for effect | Minimize returns success; witness sees `true` | Restore returns success; witness sees `false` |
+
+The witness initially saw the replacement unminimized. Thus the second effect
+is the exact **restore-from-Dock attribute operation** used by the provider,
+against the successor rather than the captured process. The token object's
+`_AXUIElementGetActualPid` still returned 787 with success. It reports a PID,
+not an incarnation discriminator. This test deliberately operates after death
+to expose what can happen if death falls after a provider's last check.
+
+The [complete result](retained-ax-binding/private-result.json) records all native
+phases, empty diagnostic stderr, `probe_exit=0` and final guest hashes. The
+[before](retained-ax-binding/private-before.sha256) and
+[after](retained-ax-binding/private-after.sha256) hashes match for the baseline
+probe, private wrapper, source plist, Taskfile, generated plist and signed
+binary. The [guest-before record](retained-ax-binding/private-guest-before.json)
+and final guest hashes match the same generated plist and binary. The
+[launch record](retained-ax-binding/private-launch.json) is separate from the
+completion evidence. The measured files were unchanged throughout this run.
+
+### What the token contains in this run
+
+The token was 20 bytes: `13030000 00000000 6f636f63 2a00000000000000`.
+The observed fields are PID 787, zero, kind `0x636f636f`, and element data 42.
+The data getter returned kind `0x636f636f` and the final eight bytes. This is
+an observation about this Cocoa element and OS build, not a portable encoding
+contract or a claim about all token variants.
+
+Before assigning diagnostic signatures, a small
+[inspection program](retained-ax-binding/inspect-private.m) read code from its
+**own loaded HIServices image in the VM**. Its
+[raw instructions and branch symbols](retained-ax-binding/private-symbols.json),
+decoded with Capstone 5.0.7 in the [disassembly](retained-ax-binding/private-disassembly.txt),
+show the token creator copying three four-byte fields and element data. The
+token decoder passes its decoded fields to `_AXUIElementCreateInternal`;
+the data-plus-PID entry point branches to that same constructor.
+`_AXUIElementGetActualPid` branches to a PID getter. These observations guided
+the diagnostic's inferred signatures; the decisive lifetime evidence is the
+native effect, not a claim that disassembly proves every closed implementation
+path. The inspection did not attach to, inject into or modify a target process.
+
+### Availability, refusal and remaining limits
+
+`task fixture:private-ax` builds and signs the
+[private probe](retained-ax-binding/private-probe.m), reusing the public fixture.
+It never launches an app. The
+[signature record](retained-ax-binding/private-signing.txt) shows Team ID
+`TA43A4RUP3`, Developer ID signing and the runtime flag. Compilation used Xcode
+27.0 / macOS SDK 27.0 with deployment target 26.0. All five private symbols
+resolved in the guest, Accessibility trust was available, and live acquisition
+and both effects succeeded. This establishes diagnostic availability under those
+conditions only. The diagnostic was not notarized or quarantine-launched, and
+inherited usable Accessibility access when launched by the VM agent; it does
+not establish Koine's separate consent attribution or all policy configurations.
+
+The diagnostic refuses missing symbols, missing trust and unsuccessful initial
+construction; those refusal branches were not separately exercised. No viable
+product mechanism is being recommended, so this is not a signed-product policy
+acceptance claim. Native main-window selection, raise and application activation
+were not individually retested: the observed wrong restore already violates the
+required all-effects guarantee. Neither exec replacement nor automatic
+restoration was exercised in this private run. The separate serial experiment
+still establishes why restored logical-app identity cannot substitute for strict
+process lifetime. No wrappers tested here should be adopted on the assumption
+that another pre-check repairs their endpoint lifetime.
+
+For reproduction, upload `.build/private-ax.zip` to a disposable clone, unpack
+under `/tmp`, and execute
+`/tmp/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding --run-private`.
+Capture stdout, stderr and the exit code independently of a detached launcher.
+The bound is 300,000 child allocations, one child at a time; reaching it or
+failing a witness is inconclusive. Only the fixture's own children are killed.
+The target behavior is inherited from the public probe; the wrapper selects
+the private investigation only for `--run-private`.
+
+### Recommendation and the remaining endpoint question
+
+Reject **AX reconstruction as the process binding**. It keeps a shallow
+interface but hides the same reusable PID/element addressing. Private dependency
+maintenance cost buys no required lifetime guarantee in the tested paths.
+Reconsider only with a distinct native binding mechanism and evidence that its
+effects cannot reach a successor; a different opaque encoding is insufficient.
+
+A concrete alternate acquisition lead remains:
+[`bootstrap_look_up2`](https://github.com/apple-oss-distributions/launchd/blob/d448a1c8f70a61202f8705f94337f686b87c30c4/liblaunch/libbootstrap.c#L188-L234)
+can request a target PID's `com.apple.axserver` send right using
+[`BOOTSTRAP_PER_PID_SERVICE`](https://github.com/apple-oss-distributions/launchd/blob/d448a1c8f70a61202f8705f94337f686b87c30c4/liblaunch/bootstrap_priv.h).
+WebKit's [sandbox registration](https://github.com/WebKit/WebKit/blob/38cc1fbc76b839ab6cb0d3d58f1ffa3d1de1e3bf/Source/WebKit/WebProcess/com.apple.WebProcess.sb.in)
+names that service as per-PID. The launchd implementation is historical primary
+source; neither its present runtime availability nor a complete effect protocol
+was tested here. This lead keeps public client capture and private code inside
+Koine, but replaces AX wrapper convenience with a private transport whose
+ownership, lifetime and version maintenance must be understood.
+
+The next feasibility decision must establish three connected properties:
+
+1. **Acquisition and attribution:** the endpoint actually belongs to the
+   captured task. A PID lookup may race with replacement. A harmless request
+   with a kernel audit trailer is a possible matching instrument, not a settled
+   identity scheme. The bootstrap reply's audit token authenticates launchd,
+   not the target; finite pidversion equality alone remains insufficient.
+2. **Lifetime:** this particular receive right ends with the captured task
+   and cannot be transferred or recovered for a successor. A retained send
+   right identifies a port object, not necessarily one receiver incarnation.
+   XNU [port destruction](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_port.c#L1116-L1126)
+   allows a backup receiver. The AX service's actual registration and teardown
+   need evidence under death, exec and automatic restoration.
+3. **Complete effects:** every read, restore, main-window selection, raise,
+   activation and focus confirmation consumes that endpoint continuously,
+   without reconstructing a PID-addressed AX object. Death after admission
+   or between native steps must fail closed; an after-check cannot undo effects.
+
+Until those hold there is **no feasible complete binding established**, but
+also no evidence for universal private-API impossibility. The public schema,
+client consent and strict lifetime contract remain unchanged by this result.
+
+### Bounded review reconciliation
+
+One fresh-context reviewer inspected alternate primary-source routes while the
+native test ran. Its findings were checked against their actual scope:
+
+- **Remote wrappers lack a documented guarantee:** actionable when received;
+  the completed native experiment supplies the stronger counterexample above.
+- **Per-PID AX service lookup lacks captured-task attribution:** actionable
+  design gap, preserved as the next endpoint question. The reviewer's proposed
+  audit-trailer matching is a lead; it does not overcome finite pidversion or
+  establish receiver ownership by itself.
+- **Send rights can outlive a receiver:** actionable limitation on the generic
+  lifetime claim, supported by the XNU source above and launchd's distinction
+  between registered sends and recoverable receives in
+  [service creation](https://github.com/apple-oss-distributions/launchd/blob/d448a1c8f70a61202f8705f94337f686b87c30c4/src/core.c#L6316-L6352)
+  and [notifications](https://github.com/apple-oss-distributions/launchd/blob/d448a1c8f70a61202f8705f94337f686b87c30c4/src/core.c#L7296-L7309).
+- **SkyLight connection evidence reaches WindowServer:** actionable correction
+  to treating it as a target AX endpoint. Yabai's
+  [concrete use](https://github.com/asmvik/yabai/blob/dd845723416f5fe92af49fad5ebab00369e07edd/src/window.c#L930-L960)
+  uses its own connection and a window number. That does not reject all
+  SkyLight mechanisms; it rejects the offered evidence for this binding.
+- **AppleEvent addressing lacks an all-effects arbitrary-target path:** an
+  already recorded limitation, not a new impossibility result. Port addressing
+  alone supplies neither AX handlers nor equivalent consent behavior.
+- **Modern exec creates a replacement task:** relevant evidence against
+  rejecting the raw-port candidate on an assumption that every port survives
+  exec. [XNU exec](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/kern_exec.c)
+  supports task replacement; AX endpoint teardown remains unproved.
+
+No second reviewer was used. The unresolved direct transport is separate design
+work, not a patched wrapper requiring another review. Code verification used
+Tier 2 graph generation `2026-09-21T11:51:36Z` and exact provider effect snippets;
+the private diagnostic was also read directly because its index coverage
+reported a parse gap across lines 1–108. These are bounded source findings.
 
 ## Reproduction and measurement boundary
 

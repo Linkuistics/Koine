@@ -1,0 +1,9 @@
+{
+  "command": "/bin/sh -c '/tmp/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding --run-private > /tmp/k56-private.out 2> /tmp/k56-private.err; result=$?; printf \"%s\\n\" \"$result\" > /tmp/k56-private.exit'",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

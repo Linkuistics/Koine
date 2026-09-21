@@ -1,0 +1,6 @@
+4bc1c9cfd552f24ac4f668d39ac10d11d082f6e7c004e8adc592678eab470ac8  docs/verification/retained-ax-binding/probe.m
+9af19374663e0d1df87b9899c103fc0ffae6af69f86d176dd6c46ae9ba661b67  docs/verification/retained-ax-binding/private-probe.m
+6dd580201a849163811b57036ec44ec6146f1fe410ab567317125f6a508e5e52  docs/verification/retained-ax-binding/Info.plist
+8bce7f9ac0f67dc89a3a5ec2dda4390bec15c65881f020145dcdddb1ae289019  Taskfile.yml
+dfc047d0ea71a420841cf3f0e9d509a860611356525da74db5d0efe5da5879a0  .build/private-ax/K56PrivateBinding.app/Contents/Info.plist
+13f52251e4cb05a38aa683dcaa3316262d78de395649a36c6867901476924ebd  .build/private-ax/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding

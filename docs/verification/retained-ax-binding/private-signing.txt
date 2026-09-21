@@ -1,0 +1,21 @@
+Executable=/Users/antony/Development/Koine/.build/private-ax/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding
+Identifier=com.linkuistics.koine.k56-private-binding-probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=411 flags=0x10000(runtime) hashes=5+3 location=embedded
+Hash type=sha256 size=32
+CandidateCDHash sha256=139aedfa4a00316f32a1db0790c2506c797ce688
+CandidateCDHashFull sha256=139aedfa4a00316f32a1db0790c2506c797ce68895d5c9280c62fc56dd2e1d22
+Hash choices=sha256
+CMSDigest=139aedfa4a00316f32a1db0790c2506c797ce68895d5c9280c62fc56dd2e1d22
+CMSDigestType=2
+CDHash=139aedfa4a00316f32a1db0790c2506c797ce688
+Signature size=8977
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=21 Sep 2026 at 21:57:36
+Info.plist entries=6
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=208
