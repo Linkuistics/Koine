@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Complete recorder protocol and observation window",
-    "status": "V3 proposal — fresh review before native use",
-    "summary": "Target-owned active/key-window replies precede B/C posts. A frozen notification map and generic ordinal receipts expose environmental deviations; the controller aborts immediately and preserves in-flight input. Synthetic success is not native reachability. Private-loop coverage still gates the full matrix; one measured attempt per cell.",
+    "status": "V3 gaps reproduced — k135 redesign before native use",
+    "summary": "V3 aborts bypass controller-prefix and candidate checks; its timeout vocabulary and sampler loop are incomplete. k134 preserves frozen outcomes and assigns producer-state-machine redesign and fresh review to k135 before k126. Native coverage, one-attempt limits and all original evidence obligations remain.",
     "diagramIds": [
       "process-recorder-protocol",
       "process-recorder-return",
@@ -38,15 +38,15 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-protocol",
-        "summary": "Adds active/key barriers, frozen notification mapping and honest ordinal aborts."
+        "summary": "Reviewed v3: abort-prefix, timeout, FIFO and canonical-producer gaps require k135 redesign."
       },
       {
         "id": "process-recorder-return",
-        "summary": "Requires C active/key reply before its post and states main-thread exemplar provenance."
+        "summary": "Reviewed v3: loop baseline/cancellation and candidate evidence after abort require k135 redesign."
       },
       {
         "id": "process-recorder-containment",
-        "summary": "Adds bounded environmental abort cleanup and retains audit/containment precedence."
+        "summary": "Safety caps and the outer deadline do not promise completion; native coverage and containment remain prerequisites."
       }
     ]
   },
@@ -58,7 +58,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V3 proposal for fresh review: B/C must observe their own app active and window key before the corresponding post. Every key-down has an ordinal receipt; first deviation aborts without inventing the remaining success path. Four causal notification names and four audit-only names are frozen before measurement. Neither barriers nor quiet synthetic traces prove stable foreground or native reachability."
+      "caption": "Reviewed v3: abort-prefix, timeout, FIFO and canonical-producer gaps require k135 redesign. These diagrams describe the reviewed v3 proposal, not an implementable replacement. k135 must commission fresh tree review before k126. Complete trusted audit, established loop coverage and confirmed containment are all required for native credit; none is supplied by synthetic success. All original k124/k121 native obligations remain live."
     },
     {
       "id": "process-recorder-return",
@@ -67,7 +67,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "Enclosing return proves unwind only. Framework-private loop coverage gates full recorder/matrix construction; no mechanism is currently specified. k126 must surface the conflict and a bounded same-source-path/custom-mode discriminator first. Missing coverage withholds native credit; a serviced negative control alone does not establish completeness. V3 adds target-observed C active/key readiness before posting; native audit must measure the main-thread and loop fields shown by the canonical exemplar."
+      "caption": "Reviewed v3: loop baseline/cancellation and candidate evidence after abort require k135 redesign. These diagrams describe the reviewed v3 proposal, not an implementable replacement. k135 must commission fresh tree review before k126. Complete trusted audit, established loop coverage and confirmed containment are all required for native credit; none is supplied by synthetic success. All original k124/k121 native obligations remain live."
     },
     {
       "id": "process-recorder-containment",
@@ -76,7 +76,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "After protocol review and coverage gates: one measured attempt per matrix cell per frozen suite, all raw/combined outcomes and not-run cells reported. No unchanged retry or best-of-N credit. Preserve earlier suites when a new discriminator is frozen. Existing clone reservation/recovery, host stop, actual app/helper outcomes and audit precedence remain required; no native result yet. Honest activation/input deviations are raw exit 2; bounded abort cleanup still needs actual exits, complete audit and confirmed containment. Missing evidence has higher precedence."
+      "caption": "Safety caps and the outer deadline do not promise completion; native coverage and containment remain prerequisites. These diagrams describe the reviewed v3 proposal, not an implementable replacement. k135 must commission fresh tree review before k126. Complete trusted audit, established loop coverage and confirmed containment are all required for native credit; none is supplied by synthetic success. All original k124/k121 native obligations remain live."
     },
     {
       "id": "process-exits",

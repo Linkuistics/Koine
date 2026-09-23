@@ -128,3 +128,20 @@ full recorder/matrix construction, with no mechanism presently specified. k126
 owns every actual route, producer, audit, exit, preparation and containment
 result; one attempt per frozen cell and all earlier ownership/limit obligations
 remain. No ancestor closes on this synthetic design repair.
+
+## k134 integration handoff
+
+k133/k134 found further v3 protocol gaps, reproduced in the assessment. The
+current contract/views explicitly mark v3 unready for native use. Live
+`callback-recorder-state-machine-k135` precedes k126 and owns the coordinated
+state-machine/schema/canonical-producer repair, with mandatory fresh tree review
+before native use. Old v1/v2/v3 analyzer meanings and evidence are not relabelled.
+The k132 statement of complete honest exemplars above was its claim, not a
+native fact; k134's reproduction and dispositions qualify it.
+
+k126 retains every original criterion and adds row-budget/overflow and late-gate
+exhaustion controls. It must consume the reviewed notification object lifecycle,
+stray-marker encoding, loop/cancellation policy, all timeout/failure paths,
+controller-prefix/FIFO checks and separate candidate evidence produced by k135.
+Current 512-row/30-second limits bound safety without guaranteeing reachability;
+no private-loop coverage mechanism is supplied. No parent criterion closes here.

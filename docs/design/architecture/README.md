@@ -16,20 +16,25 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-now specifies version-3 traces: target-observed active/key-window barriers precede
-B/C posts; a frozen notification mapping and generic ordinal receipts expose
-deviations. The controller aborts immediately and preserves in-flight receipts.
-Eight synthetic matrix cells are consistent; native reachability remains open.
-Fresh tree review/reconciliation precedes k126. Both-schedule loop coverage, combined
-outcomes, per-clone permission setup, candidate PID provenance and host recovery
-remain native obligations. k124/k121 stay live, k122 retains gates and k115 freshness.
+is not ready for native use. k134 reproduced controller-prefix, timeout,
+candidate-result and FIFO gaps in v3 and found incomplete canonical producers.
+`callback-recorder-state-machine-k135` owns the replacement and a fresh tree
+review before k126. Frozen v1/v2/v3 traces and outcomes keep their meanings.
+Complete trusted audit, established loop coverage and confirmed containment
+are all prerequisites for native credit. Row caps and the outer deadline are
+safety limits; they do not guarantee an honest run will complete.
 
 Changed in this discussion:
 
-- [Complete recorder protocol and finite observation](index.html#diagram-process-recorder-protocol) — Adds active/key replies, frozen notification mapping and ordinal aborts.
-- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Requires C's active/key reply before posting and states main-thread exemplar provenance.
-- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Adds bounded environmental abort cleanup while retaining audit/containment precedence.
-- [Recorder protocol v3](../../verification/callback-capture-transfer.md#recorder-protocol-v3) — Separates the renewed synthetic corpus from preserved v1/v2 evidence and open native obligations.
+- [Recorder protocol](index.html#diagram-process-recorder-protocol) — Labels v3's abort-prefix, timeout, FIFO and producer gaps.
+- [Callback return](index.html#diagram-process-recorder-return) — Marks loop/cancellation underspecification and the unsupported conceptual fault exchange.
+- [App exits and containment](index.html#diagram-process-recorder-containment) — Separates frozen exit-2 behavior from honest-protocol proof; discloses budget limits.
+- [Review integration](../../verification/callback-capture-transfer.md#recorder-v3-review-integration) — Exact reproductions, qualified dispositions and k135/k126 ownership.
+
+All original k124/k121 criteria remain live with k126. Coverage precedes full
+recorder/matrix construction; one attempt per frozen cell, preparation, PID
+provenance, actual exits and host recovery remain required. k122 retains gates,
+k115 freshness, k112 lifetime/policy and k108/k109 transfer.
 
 Unchanged context: [external exit observer](index.html#diagram-process-exits),
 [post-return retention](index.html#diagram-process-retention),
@@ -199,8 +204,8 @@ file/heading controls. No fresh browser, narrow/mobile or dark-mode check was
 performed for this update.
 
 The historical k131 recorder views marked v2 activation, activity and
-receipt-deviation gaps for k132. The current v3 views carry the repair for fresh
-review. Private-loop coverage
+receipt-deviation gaps for k132. The current views mark the further k133/k134
+gaps and k135 redesign/review before k126. Private-loop coverage
 is a prerequisite before the full recorder/matrix; no mechanism is specified.
 One measured attempt per matrix cell is allowed, with every outcome and not-run
 cell reported. Targets start before collectors/UI; supervisor frames remain
@@ -227,4 +232,14 @@ records the bounded link, served-byte and SVG checks, including rejected missing
 file/heading controls. Mobile and dark appearance were not checked.
 A VM-only Safari automation prompt was declined; the VM agent resized its window.
 The clone was stopped and its backend removal confirmed. These checks establish
-presentation only; native capture remains with k126 after fresh review k133.
+presentation only; k133/k134 subsequently required k135 redesign/review before
+k126 can consume the protocol.
+
+For k134, the three recorder sources/exports and captions explicitly mark v3's
+remaining gaps and k135 redesign/review. The [render record](../../verification/callback-native-capture/evidence/k134/render.json)
+binds the unchanged source/Taskfile/manifest/runtime inputs to matching local
+and guest SVGs. Rendering ran only in disposable clone `koine-k134-view`.
+Safari's discussion and each diagram's initial desktop viewport were checked;
+full-size/full-scroll, mobile and dark appearance were not rechecked. Screenshots
+are under the same evidence directory. The clone was stopped and its removal
+confirmed. No native recorder, permission setup or capture ran.

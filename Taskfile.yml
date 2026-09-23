@@ -96,6 +96,20 @@ tasks:
     cmds:
       - python3 -I -S docs/verification/callback-native-capture/reproduce_review.py '{{.OUT}}'
 
+  design:reproduce-recorder-v3-review:
+    desc: Reproduce k133 against unchanged v3 semantics; synthetic only (OUT must be new)
+    requires:
+      vars: [OUT]
+    cmds:
+      - python3 -I -S docs/verification/callback-native-capture/reproduce_v3_review.py '{{.OUT}}'
+
+  design:check-recorder-v3-review:
+    desc: Check the synthetic v3 review reproduction instrument
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-native-capture/reproduce_v3_review.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-native-capture/reproduce_v3_review.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-native-capture/pyrightconfig.json
+
   fixture:foreground-inspector:
     desc: Build the own-image foreground entry inspector (execute only in TestAnyware)
     cmds:
