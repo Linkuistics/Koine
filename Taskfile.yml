@@ -75,7 +75,7 @@ tasks:
       - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture
       - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture
       - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
-      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py docs/verification/callback-causal-fixture/test_sampler_loop.py docs/verification/callback-causal-fixture/test_native_ownership.py docs/verification/callback-causal-fixture/test_source_calls.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py docs/verification/callback-causal-fixture/test_sampler_loop.py docs/verification/callback-causal-fixture/test_native_ownership.py docs/verification/callback-causal-fixture/test_source_calls.py docs/verification/callback-causal-fixture/test_sampler_startup.py
 
   design:generate-callback-controls:
     desc: Regenerate synthetic causal fixtures before freezing a new run
@@ -337,6 +337,13 @@ tasks:
     cmds:
       - plantuml --svg --check-before-run --no-error-image process-recorder-markers.puml
       - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-markers.puml
+
+  design:render-callback-startup:
+    desc: Render before-ready sampler failure exchange (run only in a disposable VM)
+    dir: docs/design/architecture
+    cmds:
+      - plantuml --svg --check-before-run --no-error-image process-recorder-startup.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-startup.puml
 
   design:render-receive-budget:
     desc: Render the native receive acquisition experiment view as SVG and PNG

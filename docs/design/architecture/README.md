@@ -16,16 +16,15 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V10 joins raw foreground/mapping calls and hint
-summaries, preserving exact results and the AppKit binding through mapping.
-K148 now separates k149's source-call projection from k150's complete sampler
-failure and late-abort composition. K143 owns targets; k144 complete waits,
-composition, partial evidence and fresh review under the original charters.
+remains unready for native use. V11 composes before-ready preheld failure,
+synchronous cleanup and paired controller abort. K150 now separates k151's
+startup exchange from k152's in-flight sampler composition. K143 owns targets;
+k144 complete waits, partial evidence and fresh review under the original charters.
 
 Changed in this discussion:
 
-- [Source calls and returned-object lifetime](index.html#diagram-process-recorder-source) — Adds raw results, exact mapping arguments, object release and blocked-call limits.
-- [Source-call contract](../../verification/callback-causal-fixture/contract.md#version-10-source-calls-and-result-lifetime) — Defines API-specific fields, source/hint joins and independent diagnostics.
+- [Before-ready sampler failure and cleanup](index.html#diagram-process-recorder-startup) — Adds cause-linked failure notification, synchronous release attempts and distinct clean/unresolved replies.
+- [Startup exchange contract](../../verification/callback-causal-fixture/contract.md#version-11-before-ready-failure-exchange) — Defines exact startup messages, prefix diagnostics and remaining waits.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -75,6 +74,7 @@ task design:render-callback-history
 task design:render-callback-markers
 task design:render-callback-loop
 task design:render-callback-source
+task design:render-callback-startup
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -326,3 +326,19 @@ light/dark views. Narrow prose wraps and diagram labels shrink in fit view;
 desktop remains the verified reading surface. Mobile devices and earlier
 diagrams were not rechecked. The clone was stopped and removed. K150 and k144
 retain composition and fresh review before native use.
+
+For k151, [Before-ready sampler failure and cleanup](index.html#diagram-process-recorder-startup)
+shows v11's raw failure notice, synchronous release attempts and distinct clean
+or unresolved cancellation response. The [current discussion](index.html#discussion)
+names k152's remaining sampler composition; only the startup view is marked
+updated. The [render record](../../verification/callback-native-capture/evidence/k151/render.json)
+binds six named rendering inputs to unchanged hashes, and compares the guest
+project and exported SVG with host and served assets after rendering. It does
+not freeze every guest dependency. Rendering ran only in disposable clone
+`koine-k151-view`. The [presentation record](../../verification/callback-native-capture/evidence/k151/presentation.json)
+retains fresh discussion/startup links, wide sections and narrow light/dark
+views. Narrow prose wraps and contrast is readable; sequence labels shrink in
+fit view, so desktop remains the verified reading surface. Mobile devices,
+every scroll position and earlier diagrams were not rechecked. The clone was
+stopped and removed. No native recorder ran; k152 and k144 retain composition
+and fresh review before native use.

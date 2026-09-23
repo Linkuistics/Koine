@@ -24,22 +24,38 @@
     }
   ],
   "discussion": {
-    "title": "Preserve source results through mapping before composing failures",
-    "status": "V10 source-call projection \u2014 complete sampler failures remain k150",
-    "summary": "K149 joins API-specific raw returns to source and hint summaries, preserving object lifetime and incomplete calls. K150 composes failures and late aborts; k144 owns the full protocol and fresh review. No native credit.",
+    "title": "Report startup failure without erasing cleanup obligations",
+    "status": "V11 startup exchange \u2014 in-flight composition remains k152",
+    "summary": "K151 joins raw preheld failures to synchronous cleanup and paired clean or unresolved abort responses. K152 completes in-flight sampler paths; k143 targets and k144 full waits, partial evidence and fresh review remain live. No native credit.",
     "diagramIds": [
+      "process-recorder-startup",
       "process-recorder-source",
       "process-recorder-ownership",
       "process-recorder-loop"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-source",
-        "summary": "Adds nullable AppKit and status-bearing Process Manager calls, exact mapping arguments and explicit object release."
+        "id": "process-recorder-startup",
+        "summary": "Adds the raw failure notice, concurrent abort send, synchronous cleanup, and separate clean/unresolved responses."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-startup",
+      "group": "machine",
+      "title": "Before-ready sampler failure and cleanup",
+      "renderer": "svg",
+      "source": "process-recorder-startup.puml",
+      "rendered": "process-recorder-startup.svg",
+      "caption": "V11 synthetic startup failure exchange. The first message is preheld acquisition/type work. Controller abort may be in flight while sampler cleanup runs; receipt waits for all known release attempts. A failed release or uncertain output requires a negative unresolved-cleanup report, never a clean acknowledgment. B/C startup is projected pending k143. K152 owns the remaining sampler; k144 full waits and fresh review; k126 native truth, coverage, exits and containment.",
+      "links": [
+        {
+          "label": "V11 startup contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-11-before-ready-failure-exchange"
+        }
+      ]
+    },
     {
       "id": "process-recorder-source",
       "group": "machine",
