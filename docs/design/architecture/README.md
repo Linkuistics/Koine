@@ -15,20 +15,22 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [external exit observer](../../verification/callback-capture-transfer.md#external-exit-observer)
-checks actual app termination independently of LaunchServices success and app
-intent. Registration precedes gate release; native controls exercise nonzero and
-signal exits, missing status, and a watchdog over a known two-process group.
-A synthetic enumeration error and stale-build control test evidence rejection.
-This is a recorder prerequisite. k124 retains four-process capture, callback
-return and integrated cleanup/provenance; k122 retains gates and k115 freshness.
+The [native recorder contract](../../verification/callback-native-capture/contract.md)
+is a diagnostic proposal awaiting review. It defines a return witness after the
+enclosing native call, paired barriers before B/C activation changes, complete
+native field auditing, and host-confirmed clone stop separately from actual app
+statuses. Observer coverage outside known modes remains a concrete native
+premise. k125 defines this contract; k126 retains integration and native evidence
+under k124, k122 full gates and k115 freshness. No capture ran for this update.
 
 Changed in this discussion:
 
-- [External exits for independently launched apps](index.html#diagram-process-exits) — Adds gated kernel registration, separate actual statuses and bounded known-group cleanup.
-- [External exit observer](../../verification/callback-capture-transfer.md#external-exit-observer) — Records the native controls, review corrections, frozen evidence and remaining recorder obligations.
+- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Adds the return producer, target barriers and explicit observer-coverage limitation.
+- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Separates exact app outcomes from mandatory host-confirmed VM stop.
+- [Integrated native recorder proposal](../../verification/callback-capture-transfer.md#integrated-native-recorder-proposal) — Maps every original recorder criterion to the contract and still-required native evidence.
 
-Unchanged context: [post-return retention](index.html#diagram-process-retention),
+Unchanged context: [external exit observer](index.html#diagram-process-exits),
+[post-return retention](index.html#diagram-process-retention),
 [ordinary input route](index.html#diagram-process-input-route),
 [sampling witnesses](index.html#diagram-process-sampling),
 [capture and transfer](index.html#diagram-process-capture),
@@ -73,6 +75,17 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For the native-recorder proposal, both new PlantUML sequences rendered and their
+PNG exports were inspected. Fresh return, containment and discussion deep links
+were checked in Safari in disposable clone `koine-k125-view`, including readable
+wide-desktop diagrams, topic outline and matching Current/Updated markers. The
+[presentation record](../../verification/callback-native-capture/evidence/presentation.json)
+retains matched local/served/guest hashes and unchanged inspection inputs; the
+[render record](../../verification/callback-native-capture/evidence/render.json)
+covers all six source diagrams read by the task. The clone was stopped and its
+removal confirmed through the backend. Mobile and dark appearance were not
+checked. No native capture or exit diagnostic ran for this presentation.
 
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks

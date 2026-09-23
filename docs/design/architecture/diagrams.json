@@ -24,23 +24,46 @@
     }
   ],
   "discussion": {
-    "title": "External app exits before recorder integration",
-    "status": "Native exit controls verified; capture recorder remains open",
-    "summary": "The observer registers kernel exit-status notifications before releasing independently launched apps. Controls distinguish launcher success and self-reported intent from actual failure, and test a watchdog with one known descendant. k124 retains four-process capture, the returned boundary, integrated cleanup and full provenance; k122 retains gates. Source freshness remains unresolved.",
+    "title": "Native recorder return and containment boundaries",
+    "status": "Diagnostic proposal awaiting review; native capture remains unmeasured",
+    "summary": "The proposed recorder emits returned only after its enclosing run-loop call returns, checks native audit alongside causal records, and requires actual app statuses separately from host-confirmed clone stop. k125 defines the contract; k126 retains the integrated native controls and capture matrix under k124. k122 retains full gates, and source freshness remains unresolved.",
     "diagramIds": [
+      "process-recorder-return",
+      "process-recorder-containment",
       "process-exits",
       "process-retention",
-      "process-input-route",
       "packages"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-exits",
-        "summary": "Adds registration-before-release, kernel status, watchdog cleanup and the controlled-group limits."
+        "id": "process-recorder-return",
+        "summary": "Defines the enclosing return producer, barriers ordering B/C activity, and unresolved observer-mode coverage before native acceptance."
+      },
+      {
+        "id": "process-recorder-containment",
+        "summary": "Separates four actual app outcomes from host-confirmed clone containment on every case outcome."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-return",
+      "group": "machine",
+      "title": "Callback return at the enclosing native call",
+      "renderer": "svg",
+      "source": "process-recorder-return.puml",
+      "rendered": "process-recorder-return.svg",
+      "caption": "Proposed native recorder awaiting review, not measured capture. The statement after the matching outer run-loop call emits returned. Paired barriers to both targets order later activation activity. Native audit checks thread, invocation, nesting and ownership; observer coverage in other modes is an explicit unresolved premise, never inferred from balanced counters. Both source pairs and constructions remain to be run. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
+    },
+    {
+      "id": "process-recorder-containment",
+      "group": "machine",
+      "title": "Actual app exits and whole-clone containment",
+      "renderer": "svg",
+      "source": "process-recorder-containment.puml",
+      "rendered": "process-recorder-containment.svg",
+      "caption": "Proposed containment, not native evidence. Four independently launched apps register before useful work; exact app statuses remain distinct from launcher and supervisor status. Every case ends with host-confirmed VM stop, covering the VM boundary when startup or group tracking is incomplete. Missing app status still prevents capture success. Native controls and full provenance remain k126 under k124. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment."
+    },
     {
       "id": "process-exits",
       "group": "machine",
