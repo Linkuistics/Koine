@@ -16,7 +16,8 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-is not ready for native use. k136 adds v4 controller-prefix, FIFO and active-reply
+is not ready for native use. k137 adds v5 independent sample scope/diagnostics
+with terminal outcomes and all native credit withheld. k136 adds v4 controller-prefix, FIFO and active-reply
 producer checks. k137 retains independent sampled evidence; k138 completes the
 producer lifecycle, all waits and fresh tree review before k126. Their parent
 `callback-recorder-state-machine-k135` retains every original criterion. V4 is a
@@ -262,3 +263,18 @@ small in the narrow fit view, so wide desktop remains the verified reading
 surface. Mobile-device usability and the unchanged return/containment views
 were not checked. Both clones were stopped and removed. This is presentation
 evidence for a partial diagnostic, not native recorder acceptance.
+
+For k137, all three recorder views and captions describe v5's independent
+sample scope and preserved contradictions beside terminal aborts. The protocol
+names the sample premises; return distinguishes callback sampling from retention;
+containment explicitly withholds native credit. The
+[render record](../../verification/callback-native-capture/evidence/k137/render.json)
+binds unchanged named inputs to matching guest/local SVGs in disposable clone
+`koine-k137-view`. The
+[presentation record](../../verification/callback-native-capture/evidence/k137/presentation.json)
+retains fresh discussion and diagram deep-link checks, wide protocol/containment
+sections and the return entry/caption. Narrow dark discussion wrapping is
+readable, but sequence labels in the narrow fit view are small. Mobile devices,
+every scroll position and dark return/containment views were not checked. The
+clone was stopped and removed. Complete native producers and fresh review remain
+with k138; this update establishes no native recorder acceptance.

@@ -152,3 +152,21 @@ with final fresh review (k138). V4 is only the controller slice, with explicit
 native_protocol_ready=false. k138 retains every original k135 criterion and the
 fresh review obligation; k126 waits for that reviewed successor. No original
 k124/k121 native criterion, private-loop coverage or parent completion follows.
+
+## k137 sampled-evidence handoff
+
+V5 now preserves terminal controller outcomes separately from callback-sample
+and post-return-retention scope, with multiple candidate diagnostics and their
+justification. Consume the causal contract's Version 5 section and k137 frozen
+controls, including stale-F/stale-M and ownership contradictions followed by
+trigger/C/finish aborts, ambiguous activity and false retained-label controls.
+No v5 outcome earns native credit. These are sample/controller projections based
+on inherited v3 histories, not honest complete producer executions.
+
+K138 must integrate this with complete producers and reconcile the combined
+native policy before its required fresh tree review. Preserve all v1–v5 bytes
+and reports; version further changes. Fault/truncated/unmatched streams still
+stop the structural reader before evidence extraction. K138 owns that explicit
+limit and every remaining k135 criterion. Native k126 retains actual audit,
+private-loop coverage, exits, preparation, containment and every original k124/
+k121 obligation. No parent closes and no permission or product decision changes.

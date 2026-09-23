@@ -24,21 +24,27 @@
     }
   ],
   "discussion": {
-    "title": "Controller prefixes before terminal grading",
-    "status": "V4 diagnostic slice — full state machine and review still required",
-    "summary": "k136 checks controller prefixes, allowed posts, active producers and same-peer FIFO before success/abort grading. k137 retains sampled evidence and k138 completes all producer/wait/lifecycle semantics, then commissions fresh review before native k126. V4 is not native-ready; all original native obligations remain.",
+    "title": "Sample evidence survives a later abort",
+    "status": "V5 diagnostic slice \u2014 complete producer review remains required",
+    "summary": "k137 separates controller termination, independently justified callback/retention scope and candidate contradictions. A retained label alone earns no scope. k138 completes all producers and waits and commissions fresh tree review before native k126. V1\u2013V4 evidence is frozen; v5 earns no native credit.",
     "diagramIds": [
       "process-recorder-protocol",
       "process-recorder-return",
       "process-recorder-containment",
-      "process-exits",
-      "process-retention",
       "packages"
     ],
     "updatedDiagrams": [
       {
         "id": "process-recorder-protocol",
-        "summary": "Adds the v4 prefix/FIFO/active-producer checks and marks the remaining sampler and sample-evidence work."
+        "summary": "Adds independent sample premises and preserves candidate diagnostics beside terminal aborts."
+      },
+      {
+        "id": "process-recorder-return",
+        "summary": "Distinguishes callback-sample scope from the stronger post-return-retention scope."
+      },
+      {
+        "id": "process-recorder-containment",
+        "summary": "Keeps raw contradictions visible while explicitly withholding native credit for v5."
       }
     ]
   },
@@ -50,7 +56,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V4 controller projection: illegal posts/prefixes, active-reply producers and FIFO violations are malformed before terminal grading. It checks structurally complete paired traces, not native timer truth or truncated/fault-bearing prefixes. Inherited sampler histories are not complete honest producers. k137 preserves independent sample evidence; k138 completes producers and commissions fresh review. V4 native_protocol_ready=false; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -59,7 +65,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "Unchanged v3 return proposal: sampler host callout, baseline nesting, modes and armed cancellation remain k138; independent sample evidence remains k137. V4 only checks controller prefixes. Framework-private coverage has no mechanism and still gates native k126. Full producer design and fresh review must precede native use."
+      "caption": "V5 preserves callback-sample evidence when return or later C reach is missing. Post-return-retention needs the enclosing return and optional C causal witness. The native host callout, baseline nesting, modes and cancellation remain k138. Private-loop coverage has no mechanism and still gates k126."
     },
     {
       "id": "process-recorder-containment",
@@ -68,7 +74,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "Unchanged containment boundary and safety limits. V4 controller checks do not establish all waits, cleanup reserve, complete audit or native exits. k138 settles those producer/deadline policies; k126 establishes actual coverage, row budgets, cleanup and host containment. All original k124/k121 criteria remain live."
+      "caption": "V5 terminal exit 2 can coexist with a justified sample contradiction. Raw diagnostics survive, but native_credit remains withheld for this intermediate slice. k138 owns final combined policy and producer review; k126 owns actual audit, coverage, exits and clone containment. All original native obligations remain."
     },
     {
       "id": "process-exits",
@@ -86,7 +92,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
