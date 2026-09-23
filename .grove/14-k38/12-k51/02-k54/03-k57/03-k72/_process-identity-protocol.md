@@ -107,6 +107,7 @@ be agreed. This node retains every original Done when above:
   client-visible weaker effects and remaining evidence; it cuts k79's review.
 - `native-target-contract-k79` reviews k78's enforceable boundary, retained
   lifetime guarantees and client-visible relaxations before native execution.
+- `native-target-contract-k80` triages and integrates k79's findings before k75.
 - `window-qualified-activation-k74` is explicitly abandoned: its separate
   destination is outside the agreed same-endpoint operation path.
 - `process-capture-contract-k75` consumes k78 and its review, owns the remaining
