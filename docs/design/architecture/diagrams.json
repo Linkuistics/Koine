@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Complete recorder protocol and observation window",
-    "status": "Proposed \u2014 synthetic checks; tree review before native use",
-    "summary": "Version 2 records the trigger as normal target input and joins its delivered marker to the selected callback. Both targets settle before B input and close their finite observation windows through finish exchanges before any app exits. Canonical traces cover all eight cells; native producer truth, loop coverage and containment remain unestablished.",
+    "status": "Protocol gaps \u2014 k132 repair and fresh review before native use",
+    "summary": "k130/k131 reproduce missing activation enforcement and receipt-deviation failures. k132 owns protocol repair and a fresh review. Private-loop coverage gates the full native recorder/matrix; no mechanism is specified. One measured attempt per cell, all outcomes reported. Synthetic acceptance establishes no native reachability.",
     "diagramIds": [
       "process-recorder-protocol",
       "process-recorder-return",
@@ -38,15 +38,15 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-protocol",
-        "summary": "Adds the complete readiness, settle, arm, trigger, retention and finish exchange."
+        "summary": "Marks unresolved activation/activity/receipt gaps and start/auxiliary-frame clarifications."
       },
       {
         "id": "process-recorder-return",
-        "summary": "Ties callback selection to the actual trigger and the proposed version-2 protocol."
+        "summary": "Moves private-loop coverage ahead of full recorder and matrix construction."
       },
       {
         "id": "process-recorder-containment",
-        "summary": "Requires all finish acknowledgments before any exit release."
+        "summary": "Limits each frozen matrix cell to one measured attempt; no best-of-N credit."
       }
     ]
   },
@@ -58,7 +58,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "Proposed diagnostic protocol v2; synthetic consistency is not native reachability. Every target key-down remains input, including the trigger. Settle orders dispatched notifications only. Every finish acknowledgment precedes every exit release; pending and post-close notifications are outside the explicitly finite observation interval. See docs/verification/callback-native-capture/contract.md#ownership-and-causal-messages."
+      "caption": "V2 proposal with unresolved activation, notification mapping and receipt-deviation gaps. k132 and fresh review precede native use. Targets start before collectors/UI; supervisor activation and admitted-PID relays are audit-only, joined at both endpoints. The diagram retains the historical v2 exchange, not a repaired native acceptance instrument."
     },
     {
       "id": "process-recorder-return",
@@ -67,7 +67,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "Proposed version-2 recorder; tree review precedes native use. Enclosing return proves unwind; selected enter.marker must be the actual distinct trigger. Both schedules withhold positive credit for missing loop coverage; owned-handler reentry is distinct from framework-private nesting. The custom-mode control must service a real source. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
+      "caption": "Enclosing return proves unwind only. Framework-private loop coverage gates full recorder/matrix construction; no mechanism is currently specified. k126 must surface the conflict and a bounded same-source-path/custom-mode discriminator first. Missing coverage withholds native credit; a serviced negative control alone does not establish completeness."
     },
     {
       "id": "process-recorder-containment",
@@ -76,7 +76,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "Design only. Reserve each clone before creation and recover unresolved host-crash reservations before starting another. Script the frozen diagnostic permissions outside measurement. Retain actual app and helper outcomes separately from host-confirmed stop; combine audit and causal results by the contract precedence table. Missing status or coverage prevents positive credit. Preheld PIDs come from admitted kernel peers; native k126 must falsify provenance and tap-selection controls. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment. All roles acknowledge finish before exit releases; target observation closes before teardown-caused notifications."
+      "caption": "After protocol review and coverage gates: one measured attempt per matrix cell per frozen suite, all raw/combined outcomes and not-run cells reported. No unchanged retry or best-of-N credit. Preserve earlier suites when a new discriminator is frozen. Existing clone reservation/recovery, host stop, actual app/helper outcomes and audit precedence remain required; no native result yet."
     },
     {
       "id": "process-exits",

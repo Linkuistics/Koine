@@ -89,6 +89,13 @@ tasks:
     cmds:
       - python3 -I -S docs/verification/callback-causal-fixture/run_controls.py '{{.OUT}}'
 
+  design:reproduce-recorder-review:
+    desc: Reproduce k130 with every-key-down receipts; synthetic only (OUT must be new)
+    requires:
+      vars: [OUT]
+    cmds:
+      - python3 -I -S docs/verification/callback-native-capture/reproduce_review.py '{{.OUT}}'
+
   fixture:foreground-inspector:
     desc: Build the own-image foreground entry inspector (execute only in TestAnyware)
     cmds:

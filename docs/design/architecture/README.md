@@ -78,7 +78,7 @@ retain their existing renderer settings when changing them.
 
 ## Verification scope
 
-For k129, `task design:render-callback-recorder` rendered the protocol, return
+For the historical k129 render, `task design:render-callback-recorder` rendered the protocol, return
 and containment views in disposable clone `koine-k129-view`, using PlantUML
 1.2026.8. Source/task and named renderer inputs matched before/after; local,
 host-served, guest and guest-served source/export/viewer bytes matched. Fresh
@@ -196,3 +196,20 @@ source/export paths, discussion/update references and SVG XML parsed successfull
 relative Markdown links and headings were checked with deliberately missing
 file/heading controls. No fresh browser, narrow/mobile or dark-mode check was
 performed for this update.
+
+The current recorder views carry k131's integration: v2 activation, activity and
+receipt-deviation gaps remain for k132 and its fresh review. Private-loop coverage
+is a prerequisite before the full recorder/matrix; no mechanism is specified.
+One measured attempt per matrix cell is allowed, with every outcome and not-run
+cell reported. Targets start before collectors/UI; supervisor frames remain
+audit-only. These corrections establish no native result or parent completion.
+
+For k131, `task design:render-callback-recorder` ran only in disposable clone
+`koine-k131-view`. The first render failed because the copied Java runtime lacked
+a font-library dependency; the retained failed record shows no output. After
+copying the exact transitive library dependencies, all three views rendered,
+with unchanged before/after inputs and matching host/guest source/output hashes.
+The [render record](../../verification/callback-native-capture/evidence/k131/render.json)
+includes commands and tool/dependency digests. SVG XML was validated; no browser
+or visual reinspection was performed in this integration. The earlier k129
+screenshots describe its older view bytes, not this render.

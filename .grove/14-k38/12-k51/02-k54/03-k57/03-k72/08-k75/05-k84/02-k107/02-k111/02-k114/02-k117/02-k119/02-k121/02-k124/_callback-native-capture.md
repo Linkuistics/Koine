@@ -77,3 +77,37 @@ return before retention. Its fresh tree design review precedes k126; native
 producer truth, loop coverage, actual exits, preparation and containment remain
 unestablished. k126's charter carries all original criteria and the detailed
 protocol/audit handoff. This design completion closes no parent criterion.
+
+## k131 integration handoff
+
+`callback-recorder-protocol-k132` precedes k126 and owns the protocol redesign
+identified by k130: target-observed B/C activation, closed notification mapping,
+controller abort/deviation policy and honest ordinal receipts, versioned outcome
+semantics, canonical main-thread exemplars and full corpus renewal. Its fresh
+tree design review and any integration must finish before native use. Background
+launch requires its own route evidence; k118's foreground/self-activation result
+cannot be carried over as that evidence.
+
+k126 first resolves the framework-private loop-coverage gate, **before building
+the complete recorder or allocating positive-matrix clones**. No coverage
+mechanism is currently specified. Surface the concrete conflict and recommended
+bounded same-source-path/custom-mode discriminator; absent a concrete mechanism,
+externalise the work before the matrix rather than running predictably incomplete
+cells. Do not weaken the owned/private coverage distinction or parent criteria.
+
+k126 implements one measured attempt per matrix cell per frozen suite; report
+all eight cells, count 0/1, not-run reasons, raw/combined outcomes and preserved
+failed attempts. No unchanged-instrument retry or best-of-N credit. Further
+suites need a recorded discriminator and fresh freeze, keeping earlier evidence.
+Fault controls have separate frozen IDs and one attempt each.
+
+Targets emit start, then install collectors, then create/show UI. Activation
+requests/helper outcomes and admitted-PID relays are audit-only auxiliary frames;
+the audit verifier must falsify missing, swapped and surplus endpoint/broker
+joins without adding supervisor to the causal vocabulary. k126 must implement
+and falsify the new activation/mapping/receipt obligations k132 settles, including
+activation timeout and honest surplus/misroute controls.
+
+Every original k124/k121 criterion retains k126 as native owner. No protocol
+repair, synthetic consistency or missing-coverage escalation closes a parent.
+Full gates remain k122; freshness k115; lifetime/policy k112; transfer k108/k109.
