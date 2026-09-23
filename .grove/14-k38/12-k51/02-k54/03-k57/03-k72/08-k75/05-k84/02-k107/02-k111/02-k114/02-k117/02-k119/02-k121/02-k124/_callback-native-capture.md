@@ -111,3 +111,20 @@ activation timeout and honest surplus/misroute controls.
 Every original k124/k121 criterion retains k126 as native owner. No protocol
 repair, synthetic consistency or missing-coverage escalation closes a parent.
 Full gates remain k122; freshness k115; lifetime/policy k112; transfer k108/k109.
+
+## k132 v3 protocol handoff
+
+The current experiment contract now specifies paired B/C active/key-window
+observations, a frozen eight-name notification mapping, generic ordinal receipts
+and immediate bounded controller aborts. Complete synthetic success/deviation
+executions cover every source/construction/schedule combination; archived v1/v2
+bytes and meanings remain preserved. k132's fresh design review and any findings
+integration precede k126. The native charter carries all new producer/audit and
+honest deviation controls, including background-route evidence, empty Unicode,
+partial-finish abort and both activation timeouts.
+
+This closes no original k124/k121 criterion. Private-loop coverage still gates
+full recorder/matrix construction, with no mechanism presently specified. k126
+owns every actual route, producer, audit, exit, preparation and containment
+result; one attempt per frozen cell and all earlier ownership/limit obligations
+remain. No ancestor closes on this synthetic design repair.

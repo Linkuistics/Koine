@@ -16,19 +16,20 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-now specifies complete version-2 traces: unfiltered target key-downs include the
-trigger, whose delivered marker selects the callback; readiness, settle and finish
-exchanges order both targets' activity. Eight synthetic matrix cells are accepted.
-Fresh tree review still precedes k126. Both-schedule loop coverage, combined
+now specifies version-3 traces: target-observed active/key-window barriers precede
+B/C posts; a frozen notification mapping and generic ordinal receipts expose
+deviations. The controller aborts immediately and preserves in-flight receipts.
+Eight synthetic matrix cells are consistent; native reachability remains open.
+Fresh tree review/reconciliation precedes k126. Both-schedule loop coverage, combined
 outcomes, per-clone permission setup, candidate PID provenance and host recovery
 remain native obligations. k124/k121 stay live, k122 retains gates and k115 freshness.
 
 Changed in this discussion:
 
-- [Complete recorder protocol and finite observation](index.html#diagram-process-recorder-protocol) — Adds readiness, settle, arm, trigger, retention and finish exchanges, with every acknowledgment before exit.
-- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Ties selection to the delivered trigger and retains both-schedule coverage requirements.
-- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Places closed observation and all finish acknowledgments before app exit.
-- [Integrated native recorder proposal](../../verification/callback-capture-transfer.md#integrated-native-recorder-proposal) — Records the version-2 synthetic evidence separately from open native obligations.
+- [Complete recorder protocol and finite observation](index.html#diagram-process-recorder-protocol) — Adds active/key replies, frozen notification mapping and ordinal aborts.
+- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Requires C's active/key reply before posting and states main-thread exemplar provenance.
+- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Adds bounded environmental abort cleanup while retaining audit/containment precedence.
+- [Recorder protocol v3](../../verification/callback-capture-transfer.md#recorder-protocol-v3) — Separates the renewed synthetic corpus from preserved v1/v2 evidence and open native obligations.
 
 Unchanged context: [external exit observer](index.html#diagram-process-exits),
 [post-return retention](index.html#diagram-process-retention),
@@ -197,8 +198,9 @@ relative Markdown links and headings were checked with deliberately missing
 file/heading controls. No fresh browser, narrow/mobile or dark-mode check was
 performed for this update.
 
-The current recorder views carry k131's integration: v2 activation, activity and
-receipt-deviation gaps remain for k132 and its fresh review. Private-loop coverage
+The historical k131 recorder views marked v2 activation, activity and
+receipt-deviation gaps for k132. The current v3 views carry the repair for fresh
+review. Private-loop coverage
 is a prerequisite before the full recorder/matrix; no mechanism is specified.
 One measured attempt per matrix cell is allowed, with every outcome and not-run
 cell reported. Targets start before collectors/UI; supervisor frames remain
@@ -213,3 +215,16 @@ The [render record](../../verification/callback-native-capture/evidence/k131/ren
 includes commands and tool/dependency digests. SVG XML was validated; no browser
 or visual reinspection was performed in this integration. The earlier k129
 screenshots describe its older view bytes, not this render.
+
+For k132, `task design:render-callback-recorder` rendered all three v3 sequences
+only in disposable clone `koine-k132-view`. Named sources, viewer, manifest,
+Taskfile and the copied renderer/runtime inputs matched before and after; the
+host and guest source/export hashes also matched. Safari's fresh discussion and
+diagram deep links showed the current/updated markers and readable full diagrams
+at desktop width. The [presentation record](../../verification/callback-native-capture/evidence/k132/presentation.json)
+and screenshots retain this check. The [delivery check](../../verification/callback-native-capture/evidence/k132/delivery-check.json)
+records the bounded link, served-byte and SVG checks, including rejected missing
+file/heading controls. Mobile and dark appearance were not checked.
+A VM-only Safari automation prompt was declined; the VM agent resized its window.
+The clone was stopped and its backend removal confirmed. These checks establish
+presentation only; native capture remains with k126 after fresh review k133.
