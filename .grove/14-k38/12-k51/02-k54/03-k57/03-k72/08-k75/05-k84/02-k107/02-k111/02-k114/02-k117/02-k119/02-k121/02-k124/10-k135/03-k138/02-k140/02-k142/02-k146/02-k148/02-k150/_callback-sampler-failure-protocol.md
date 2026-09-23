@@ -80,3 +80,11 @@ startup transport/pending calls, early cancellation and complete all-cell paths.
 K144 has the exact startup waits but still requires the completed sampler and
 targets, deadline/cleanup policy, partial evidence composition and fresh review.
 No ancestor closes on this startup delivery; the existing ADR set remains current.
+
+
+K153 adds v12 before-ready cancellation alongside k151's failure-initiated v11
+exchange. Safe startup polls and truthful failed-release responses are specified
+and falsified, with frozen prior reports preserved. K154 under k152 retains the
+full remaining active sampler, transport, all-cell and ancestor-reconciliation
+charter. Exact waits are in the native v12 handoff; k144 still owns deadlines,
+full controller composition and fresh review. No ancestor closes here.

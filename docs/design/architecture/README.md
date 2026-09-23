@@ -16,15 +16,15 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V11 composes before-ready preheld failure,
-synchronous cleanup and paired controller abort. K150 now separates k151's
-startup exchange from k152's in-flight sampler composition. K143 owns targets;
-k144 complete waits, partial evidence and fresh review under the original charters.
+remains unready for native use. V12 composes cancellation before readiness,
+including partial healthy preheld preparation and truthful failed release replies.
+K153 supplies that bounded exchange; k154 retains active sampler composition.
+K143 owns targets; k144 full waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Before-ready sampler failure and cleanup](index.html#diagram-process-recorder-startup) — Adds cause-linked failure notification, synchronous release attempts and distinct clean/unresolved replies.
-- [Startup exchange contract](../../verification/callback-causal-fixture/contract.md#version-11-before-ready-failure-exchange) — Defines exact startup messages, prefix diagnostics and remaining waits.
+- [Cancellation before sampler readiness](index.html#diagram-process-recorder-cancel) — Adds safe-point abort receipt, completed preparation units and clean/unresolved cleanup replies.
+- [Before-ready cancellation contract](../../verification/callback-causal-fixture/contract.md#version-12-cancellation-before-readiness) — Defines poll sites, exact messages, pending waits and independent diagnostics.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -75,6 +75,7 @@ task design:render-callback-markers
 task design:render-callback-loop
 task design:render-callback-source
 task design:render-callback-startup
+task design:render-callback-cancel
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -342,3 +343,17 @@ fit view, so desktop remains the verified reading surface. Mobile devices,
 every scroll position and earlier diagrams were not rechecked. The clone was
 stopped and removed. No native recorder ran; k152 and k144 retain composition
 and fresh review before native use.
+
+
+For k153, [Cancellation before sampler readiness](index.html#diagram-process-recorder-cancel)
+adds safe startup polls, completion of started preparation units and truthful
+per-reference cleanup replies. The [current discussion](index.html#discussion)
+names v12 and k154's remaining composition; only cancellation is marked updated.
+The [render record](../../verification/callback-native-capture/evidence/k153/render.json)
+binds unchanged named inputs to matching guest/local/host-served assets.
+Rendering ran only in disposable clone `koine-k153-view`. The
+[presentation record](../../verification/callback-native-capture/evidence/k153/presentation.json)
+records fresh discussion/diagram links, readable wide sections and narrow
+light/dark wrapping. Narrow fit labels are small; desktop remains the verified
+reading surface. Earlier diagrams, every scroll position and mobile devices
+were not rechecked. No native recorder or product permission setup ran.

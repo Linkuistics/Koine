@@ -24,19 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Report startup failure without erasing cleanup obligations",
-    "status": "V11 startup exchange \u2014 in-flight composition remains k152",
-    "summary": "K151 joins raw preheld failures to synchronous cleanup and paired clean or unresolved abort responses. K152 completes in-flight sampler paths; k143 targets and k144 full waits, partial evidence and fresh review remain live. No native credit.",
+    "title": "Cancel before readiness without inventing native returns",
+    "status": "V12 early cancellation — active sampler composition remains k154",
+    "summary": "K153 adds safe startup polls, controller ready-timeout abort and truthful release responses. K154 retains active failures and late abort; k143 targets and k144 complete composition and fresh review remain live. Synthetic evidence only.",
     "diagramIds": [
+      "process-recorder-cancel",
       "process-recorder-startup",
-      "process-recorder-source",
-      "process-recorder-ownership",
-      "process-recorder-loop"
+      "process-recorder-ownership"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-startup",
-        "summary": "Adds the raw failure notice, concurrent abort send, synchronous cleanup, and separate clean/unresolved responses."
+        "id": "process-recorder-cancel",
+        "summary": "Adds safe-point cancellation, completion of started preparation units, per-reference cleanup and clean/unresolved responses."
       }
     ]
   },
@@ -108,7 +107,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -117,7 +116,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -126,7 +125,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -162,7 +161,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
@@ -379,6 +378,21 @@
       "source": "sdk-contributions.d2",
       "rendered": "sdk-contributions.svg",
       "caption": "The shared Swift framework as the loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Independently built old/new binaries are verified through the native plugin seam (docs/verification/binary-compatibility.md); native trust is distinct from client capabilities."
+    },
+    {
+      "id": "process-recorder-cancel",
+      "group": "machine",
+      "title": "Cancellation before sampler readiness",
+      "renderer": "svg",
+      "source": "process-recorder-cancel.puml",
+      "rendered": "process-recorder-cancel.svg",
+      "caption": "V12 synthetic before-ready cancellation. Sequence reads from the readiness timeout; concurrent preparation must finish its raw calls and joins before the sampler receives abort. Cleanup is per reference. No callback, source or host invocation is reached. A blocked call or missing response remains incomplete. B/C are startup projections. K154 retains active sampler failures; k144 deadlines and fresh review; k126 actual native servicing, exits and containment.",
+      "links": [
+        {
+          "label": "V12 cancellation contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-12-cancellation-before-readiness"
+        }
+      ]
     }
   ]
 }
