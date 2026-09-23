@@ -217,8 +217,8 @@ tasks:
     desc: Render the callback sampling witness design without running native diagnostics
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-sampling.puml process-input-route.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-sampling.puml process-input-route.puml
+      - plantuml --svg --check-before-run --no-error-image process-sampling.puml process-input-route.puml process-retention.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-sampling.puml process-input-route.puml process-retention.puml
 
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG

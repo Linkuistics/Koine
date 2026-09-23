@@ -15,22 +15,24 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [native input-route discriminator](../../verification/callback-capture-transfer.md#native-input-route-discriminator)
-reaches B's independent normal-input receipt followed by a distinct passive
-sampler callback in two ordinary cases. The missing-receipt control withholds
-that trigger. Sampler Input Monitoring is allowed; sampler AX/post permission
-is absent. This diagnostic permission configuration is not a product agreement.
-Complete causal capture, gates and actual source freshness remain open in
-k119/k115. Neither a source nor capture construction is adopted.
+The [retained-switch analyzer extension](../../verification/callback-capture-transfer.md#retained-switch-analyzer-extension)
+checks captured B after later C input. Its `after-callback` schedule requires a
+post-return observation before C injection, then independent C receipt before
+the same held B token's live read. This differs from `after-sample`, where C
+input precedes in-callback validation. The controls are synthetic. Native return
+observation, complete capture and gate reachability remain k121/k122; source
+freshness remains k115. The earlier ordinary input-route result remains useful
+context, and neither source nor capture construction is adopted.
 
 Changed in this discussion:
 
-- [Native input receipt before passive callback trigger](index.html#diagram-process-input-route) — Adds the measured receipt-to-trigger route, separate permissions and withheld-receipt branch.
-- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Separates the reached ordinary route from the unmeasured delayed-entry capture schedule.
-- [Native input-route discriminator](../../verification/callback-capture-transfer.md#native-input-route-discriminator) — Records final and failed native runs, frozen inputs, permission observations and the remaining k119 obligations.
-- [Route field contract](../../verification/callback-input-route/contract.md) — Defines actual field producers, bounds and the limits of intended application outcomes.
+- [Retained B across input to C after callback return](index.html#diagram-process-retention) — Adds the post-return message chain and independent C receipt before retained-B validation, with native producer limits.
+- [Retained-switch analyzer extension](../../verification/callback-capture-transfer.md#retained-switch-analyzer-extension) — Records the renewed synthetic controls and the remaining native recorder/gate ownership.
+- [Retained B after callback return](../../verification/callback-causal-fixture/contract.md#retained-b-after-callback-return) — Defines the outside-callback `returned` observation and exact required causal edges.
 
-Unchanged context: [capture and transfer](index.html#diagram-process-capture),
+Unchanged context: [ordinary input route](index.html#diagram-process-input-route),
+[sampling witnesses](index.html#diagram-process-sampling),
+[capture and transfer](index.html#diagram-process-capture),
 [resident composition](index.html#diagram-packages),
 [targeting boundary](index.html#diagram-process-target-contract),
 [scope and remaining work](index.html#diagram-process-adoption) and
@@ -76,6 +78,15 @@ retain their existing renderer settings when changing them.
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
+
+For the retained-switch update, `task design:render-callback-sampling` rendered
+the new PlantUML sequence. The PNG and fresh retention/discussion deep links
+were inspected in Safari in disposable clone `koine-k120-view`, including
+the topic outline and Current/Updated markers. The
+[presentation record](../../verification/callback-causal-fixture/evidence/retained-switch/presentation.json)
+retains input digests and served-byte checks. This is a light desktop delivery
+check; mobile and dark appearance were not checked. No capture fixture ran in
+this presentation clone.
 
 For the native input-route update, `task design:render-callback-sampling`
 rendered both affected sources. The named source/manifest/viewer/Taskfile digests
