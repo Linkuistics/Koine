@@ -16,18 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V9 joins raw native-right calls to exact summaries
-and keeps one cleanup obligation per acquired reference, including coalesced
-names and failed releases. Its local report is separate from loop, controller
-and sample evidence. K146 is now a node: k147 supplies this ownership projection;
-k148 retains source/hint calls, failure messages and complete cancellation/late
-abort paths. K143 owns target lifecycle, and k144 complete waits, composition and
-fresh review, under the full k142/k140/k138/k135 charters.
+remains unready for native use. V10 joins raw foreground/mapping calls and hint
+summaries, preserving exact results and the AppKit binding through mapping.
+K148 now separates k149's source-call projection from k150's complete sampler
+failure and late-abort composition. K143 owns targets; k144 complete waits,
+composition, partial evidence and fresh review under the original charters.
 
 Changed in this discussion:
 
-- [Native calls and per-reference cleanup](index.html#diagram-process-recorder-ownership) — Shows acquisition, distinct obligations for a shared name, failed deallocation and pending-call limits.
-- [Native-right ownership contract](../../verification/callback-causal-fixture/contract.md#version-9-native-right-ownership) — Defines raw fields, exact summary joins, retained failure obligations and independent diagnostics.
+- [Source calls and returned-object lifetime](index.html#diagram-process-recorder-source) — Adds raw results, exact mapping arguments, object release and blocked-call limits.
+- [Source-call contract](../../verification/callback-causal-fixture/contract.md#version-10-source-calls-and-result-lifetime) — Defines API-specific fields, source/hint joins and independent diagnostics.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -76,6 +74,7 @@ task design:render-callback-recorder
 task design:render-callback-history
 task design:render-callback-markers
 task design:render-callback-loop
+task design:render-callback-source
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -314,3 +313,16 @@ screenshots. Discussion and caption wrap at 650-pixel window width; sequence
 labels remain small in the narrow fit view. Wide desktop is the verified reading
 surface. Mobile devices, every scroll position and the earlier three views were
 not rechecked. The clone was stopped and removed. Native credit is withheld.
+
+For k149, [Source calls and returned-object lifetime](index.html#diagram-process-recorder-source)
+adds API-specific returns, mapping on the returned coordinate and explicit object
+release. The [current discussion](index.html#discussion) names v10 and k150's
+remaining composition; only the source view is marked updated. The [render record](../../verification/callback-native-capture/evidence/k149/render.json)
+binds unchanged named project/runtime inputs to matching guest/local SVG and
+host-served bytes. Rendering ran only in disposable clone `koine-k149-view`.
+The [presentation record](../../verification/callback-native-capture/evidence/k149/presentation.json)
+retains fresh discussion/diagram links, wide top and bottom sections, and narrow
+light/dark views. Narrow prose wraps and diagram labels shrink in fit view;
+desktop remains the verified reading surface. Mobile devices and earlier
+diagrams were not rechecked. The clone was stopped and removed. K150 and k144
+retain composition and fresh review before native use.

@@ -24,22 +24,37 @@
     }
   ],
   "discussion": {
-    "title": "Keep every acquired reference until release actually succeeds",
-    "status": "V9 native-right projection \u2014 sampler composition remains k148",
-    "summary": "k147 joins native call returns to ownership summaries and preserves failed or uncertain cleanup. K146 remains live for source/hint failures and late-abort composition; k144 owns the complete protocol and fresh review. No native credit.",
+    "title": "Preserve source results through mapping before composing failures",
+    "status": "V10 source-call projection \u2014 complete sampler failures remain k150",
+    "summary": "K149 joins API-specific raw returns to source and hint summaries, preserving object lifetime and incomplete calls. K150 composes failures and late aborts; k144 owns the full protocol and fresh review. No native credit.",
     "diagramIds": [
+      "process-recorder-source",
       "process-recorder-ownership",
-      "process-recorder-loop",
-      "process-recorder-history"
+      "process-recorder-loop"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-ownership",
-        "summary": "Shows distinct references sharing a name, raw release failure and the prohibition on claiming empty cleanup."
+        "id": "process-recorder-source",
+        "summary": "Adds nullable AppKit and status-bearing Process Manager calls, exact mapping arguments and explicit object release."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-source",
+      "group": "machine",
+      "title": "Source calls and returned-object lifetime",
+      "renderer": "svg",
+      "source": "process-recorder-source.puml",
+      "rendered": "process-recorder-source.svg",
+      "caption": "V10 local source projection. Sequence begins with the optional hint; preheld starts at definitive F after earlier acquisition. Strong object binding survives through mapping, while PSN is only a copied value. Raw failures and blocked calls do not become successful summaries. The source column does not prove right cleanup, attribution or full sampler completion. K150 owns failure composition; k144 the complete protocol and fresh review; k126 native audit and coverage.",
+      "links": [
+        {
+          "label": "V10 source contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-10-source-calls-and-result-lifetime"
+        }
+      ]
+    },
     {
       "id": "process-recorder-ownership",
       "group": "machine",
