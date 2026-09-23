@@ -60,3 +60,12 @@ in the proposal; the tree review must assess the coherent revised artifact.
 All original Done when items above remain live. The contract alone closes none
 of them; any necessary review precedes native execution. k122 still owns full
 gate closure and outer-node reconciliation. k52 remains the implementation owner.
+
+k128 integration reproduced k127's trigger-cardinality and activity-order gaps.
+`callback-recorder-protocol-k129` now precedes native k126 and must produce the
+complete corrected protocol/canonical synthetic traces, then insert its fresh
+tree design review before native use. The current proposal cannot authorize
+native acceptance. k128's smaller repairs specify coverage/combined outcomes,
+per-clone preparation, PID provenance, callback selection and host recovery;
+k126's charter explicitly retains each native control and escalation. No
+criterion above or in k121 is closed. No parent closes in this integration.

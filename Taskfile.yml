@@ -62,6 +62,13 @@ tasks:
         done
       - /usr/bin/ditto -c -k .build/callback-input-route .build/callback-input-route.zip
 
+  design:analyze-callback-trace:
+    desc: Analyze one immutable causal case and trace (exit 0-3 retains analyzer meaning)
+    requires:
+      vars: [CASE, TRACE]
+    cmds:
+      - python3 -I -S docs/verification/callback-causal-fixture/analyze.py '{{.CASE}}' '{{.TRACE}}'
+
   design:check-callback-analyzer:
     desc: Check the causal analyzer and frozen synthetic controls without native execution
     cmds:

@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Native recorder return and containment boundaries",
-    "status": "Diagnostic proposal awaiting review; native capture remains unmeasured",
-    "summary": "The proposed recorder emits returned only after its enclosing run-loop call returns, checks native audit alongside causal records, and requires actual app statuses separately from host-confirmed clone stop. k125 defines the contract; k126 retains the integrated native controls and capture matrix under k124. k122 retains full gates, and source freshness remains unresolved.",
+    "status": "Protocol revision required before native acceptance; no capture measured",
+    "summary": "k128 reproduces trigger-cardinality and activity-ordering failures. k129 must revise the complete protocol and obtain tree review before k126 builds it. Repaired obligations cover both-schedule loop coverage, combined verifier outcomes, scripted per-clone permission setup, admitted candidate PIDs, tap selection and host recovery. Native evidence remains k126; k122 keeps full gates and k115 freshness.",
     "diagramIds": [
       "process-recorder-return",
       "process-recorder-containment",
@@ -37,11 +37,11 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-return",
-        "summary": "Defines the enclosing return producer, barriers ordering B/C activity, and unresolved observer-mode coverage before native acceptance."
+        "summary": "Marks the incomplete protocol and requires both-schedule loop coverage with a serviced-source control."
       },
       {
         "id": "process-recorder-containment",
-        "summary": "Separates four actual app outcomes from host-confirmed clone containment on every case outcome."
+        "summary": "Adds durable host recovery, per-clone preparation and combined outcome precedence; no missing status is supplied by containment."
       }
     ]
   },
@@ -53,7 +53,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "Proposed native recorder awaiting review, not measured capture. The statement after the matching outer run-loop call emits returned. Paired barriers to both targets order later activation activity. Native audit checks thread, invocation, nesting and ownership; observer coverage in other modes is an explicit unresolved premise, never inferred from balanced counters. Both source pairs and constructions remain to be run. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
+      "caption": "Diagnostic proposal requiring k129 protocol revision and tree review before native acceptance. Enclosing return still proves unwind, but trigger receipt and startup/finish ordering remain unresolved. Both schedules withhold positive credit for missing loop coverage; owned-handler reentry is distinct from framework-private nesting. The custom-mode control must service a real source. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
     },
     {
       "id": "process-recorder-containment",
@@ -62,7 +62,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "Proposed containment, not native evidence. Four independently launched apps register before useful work; exact app statuses remain distinct from launcher and supervisor status. Every case ends with host-confirmed VM stop, covering the VM boundary when startup or group tracking is incomplete. Missing app status still prevents capture success. Native controls and full provenance remain k126 under k124. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment."
+      "caption": "Design only. Reserve each clone before creation and recover unresolved host-crash reservations before starting another. Script the frozen diagnostic permissions outside measurement. Retain actual app and helper outcomes separately from host-confirmed stop; combine audit and causal results by the contract precedence table. Missing status or coverage prevents positive credit. Preheld PIDs come from admitted kernel peers; native k126 must falsify provenance and tap-selection controls. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment."
     },
     {
       "id": "process-exits",
