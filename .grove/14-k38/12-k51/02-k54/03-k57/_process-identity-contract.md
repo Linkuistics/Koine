@@ -124,8 +124,11 @@ result before proceeding and preserves all original documentation, human
 agreement and k52 handoff obligations. No node close follows solely from the
 candidate decision or completion of a survey.
 
-The k72 triage selects window-qualified activation as a bounded native
-downstream investigation. It corrects the survey's stale-request, read-provenance,
+The k72 triage proposes window-qualified activation as a partial native
+downstream investigation. k77 brings the unsupported whole-path premise to the
+human before native execution. The human chose a narrower support/targeting
+contract discussion first, now k78, and confirmed callback-time foreground
+capture. No restriction or weaker guarantee is adopted yet. It corrects the survey's stale-request, read-provenance,
 inhibition-lifetime and capture-control claims before they drive experiments.
 k72 now separates that triage, its earned review, the native question and the
 remaining full contract. Arbitrary receiver/descriptor lifetime still lacks a

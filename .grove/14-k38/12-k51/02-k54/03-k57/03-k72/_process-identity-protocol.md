@@ -57,11 +57,14 @@ its original contract is delivered or the human explicitly decides otherwise.
 ## Decisions (running log)
 
 - The survey supplies partial, testable premises, not a complete binding.
-  Investigate window-qualified activation first: it tests downstream targeting
-  without AX contact, so automatic termination can remain a discriminating
-  schedule. This is a diagnostic selection under the existing instruction to
-  proceed, not human adoption of a mechanism. Preserve the declined AX decision
-  and the unresolved arbitrary receiver/descriptor obligation.
+  Window-qualified activation is a proposed partial diagnostic. k77's review
+  integration brings the unsupported receiver/descriptor premise to the human
+  before k74 executes. The human chose discussion of a narrower support or
+  targeting contract before further native work, now k78. No particular
+  restriction or weaker guarantee is agreed. The earlier selection did not establish
+  that reopening predicate. AX-contact inhibition also conditions the product
+  relevance of AX-free restoration. Preserve the declined AX decision and all
+  original constraints until an explicit agreement changes them.
 - Separate survey triage, the bounded native activation question and the
   remaining contract decision into focused sessions. A positive activation
   result cannot authorize implementation: receiver/descriptor lifetime,
@@ -79,6 +82,11 @@ be agreed. This node retains every original Done when above:
 - `native-binding-triage-k76` reviews that corrected triage before native
   execution because the in-session review exposed substantive errors in the
   experiment conclusions.
+- `native-binding-triage-k77` reconciles that review, repairs the instruments
+  and records the human's direction: discuss support/targeting before further
+  native work, and capture foreground when the native callback executes.
+- `native-target-contract-k78` obtains the concrete support/targeting agreement
+  and cuts its review before k74; no particular restriction is already adopted.
 - `window-qualified-activation-k74` measures the selected downstream route,
   with stale-input and in-flight lifetime explicitly separate.
 - `process-capture-contract-k75` consumes the result, confronts the remaining

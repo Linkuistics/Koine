@@ -234,7 +234,8 @@ mechanism that does not depend on time. Until it lands, the paragraph above is
 what Koine serves, and the input type, the application-reference encoding and the
 schema digest are expected to change.
 
-The replacement preserves capture in the client's native event handler and
+The replacement preserves callback-time foreground capture as defined by the
+[capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md) and
 expires with the captured OS process, including automatic termination. It must
 not follow a restored logical application into a new process. Public Process
 Manager serial numbers plus boot identity fail that requirement in the
@@ -247,8 +248,9 @@ describes the currently served timestamp input, not an approved replacement.
 The investigated direct AX endpoint is declined as the replacement binding;
 strict process lifetime remains required. Native investigation reopens only on
 a specific lead addressing the remaining lifetime premises. Window-qualified
-activation is selected for bounded investigation; it does not supply a complete
-binding, and arbitrary receiver/descriptor lifetime remains unresolved. No
+activation is only a partial diagnostic; the human has chosen to discuss a
+narrower support or targeting contract before further native work. Arbitrary
+receiver/descriptor lifetime remains unresolved. No
 complete replacement is selected, so the first public release remains waiting
 on that work. This does not approve narrower application support or weaker
 targeting semantics; the capture decision records the trade-off.

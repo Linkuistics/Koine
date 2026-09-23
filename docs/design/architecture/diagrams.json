@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Next investigation: window-qualified activation",
-    "status": "Investigation selected; no complete replacement approved",
-    "summary": "Strict process lifetime and the rejection of the direct AX candidate remain binding. The survey triage selects an AX-free window-qualified activation investigation with live, stale and foreign-window controls. Post-death refusal cannot establish in-flight binding. Arbitrary receiver/descriptor lifetime still has no supported closure. Capture/transfer, references/restarts and human mechanism/version agreement remain unfinished; the timestamp mechanism is not approved for first release.",
+    "title": "Next: agree the native target contract",
+    "status": "Contract discussion before further native work",
+    "summary": "The human chose to discuss a narrower support or targeting contract before further native work. No particular restriction or weaker guarantee is agreed; strict process lifetime and rejection of the direct AX candidate remain binding. Capture means the frontmost application when the native callback executes. The activation diagnostic remains partial: matched controls, AX-inhibition relevance and the full downstream chain still need evidence. The complete replacement and first release remain unresolved.",
     "diagramIds": [
       "process-adoption",
       "process-routing",
@@ -39,7 +39,7 @@
     "updatedDiagrams": [
       {
         "id": "process-adoption",
-        "summary": "Names the bounded activation investigation and distinguishes stale-request refusal from in-flight binding, while preserving the receiver/descriptor gap and agreed rejection."
+        "summary": "Records the contract discussion before native work and the agreed callback-time foreground capture boundary."
       }
     ]
   },
@@ -51,7 +51,7 @@
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "Agreed rejection plus a selected investigation, not a new native measurement or product adoption. The AX-free window-qualified activation experiment can falsify a route or supply bounded stale-request observations. A passing result does not establish in-flight downstream binding, window non-reuse or arbitrary receiver/descriptor lifetime. The complete replacement, capture/transfer/restart agreement and first release remain unresolved. Separate Koine consent/denial and notarized private-path launch remain untested; the private-adapter support set is empty. Survey triage and corrected evidence requirements: docs/verification/ax-endpoint-adoption.md#survey-triage-and-next-investigation. Routing, restoration and receiver views are unchanged context."
+      "caption": "The next design discussion must obtain explicit agreement on any narrower support or targeting contract, then undergo review before native work. No particular restriction or weaker guarantee is already selected. Capture means foreground at native callback execution, not the original key event target. The partial activation experiment still needs matched sensitivity and no-request controls, AX-inhibition relevance and evidence through the whole activation/relaunch chain. It cannot close arbitrary receiver/descriptor lifetime. Separate Koine consent/denial and notarized private-path launch remain untested; the private-adapter support set is empty. Evidence and obligations: docs/verification/ax-endpoint-adoption.md#survey-triage-and-next-investigation."
     },
     {
       "id": "process-routing",

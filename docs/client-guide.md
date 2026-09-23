@@ -192,7 +192,8 @@ replacement is designed in `process-identity-without-time` and will be stated in
 the spec; a client should expect this section, the input type and the digest to
 change, and should not build more on `startedAt` than it has to.
 
-The agreed replacement must preserve client-event capture and the original
+The agreed replacement captures the frontmost application when the client's
+native callback executes, preserving the original
 OS process lifetime. A public process serial number plus boot identity cannot
 replace the timestamp: automatic termination can restore the application under
 that same pair but a new process. See the
@@ -207,7 +208,9 @@ approved client protocol.
 Koine also declines the investigated direct AX endpoint as the replacement
 binding. Strict process lifetime remains required; narrower application support
 and weaker targeting semantics are not selected. The replacement and first
-public release remain unresolved pending a specific new native-binding lead.
+public release remain unresolved. The human has chosen to discuss a narrower
+support or targeting contract before further native work; no particular change
+has yet been agreed.
 The capture decision records the evidence and conditions for reconsideration.
 
 An identity that names no running application — the process ended, or the pid

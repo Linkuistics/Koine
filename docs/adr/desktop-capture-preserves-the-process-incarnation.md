@@ -1,10 +1,18 @@
 # Desktop capture preserves the process incarnation
 
-The desktop target is captured by the client's native event handler when the
-interaction begins. It denotes that OS process incarnation and expires when
+The desktop target is the frontmost application captured by the client's native
+event handler when the callback executes. It denotes that OS process incarnation and expires when
 the process ends. Restoring the same logical application under a new process
 does not keep the capture alive. Koine must not substitute whichever application
 is frontmost when its query arrives, or another process that reuses a PID.
+
+The original key event's target is not the capture source. If a queued callback
+runs after an application switch, it captures the foreground application at
+that callback; if focus changes after capture, the capture stays with its
+original process. This preserves the client's AppKit foreground-capture model.
+The native mechanism must still establish the foreground sample's freshness,
+its linearization point within the callback, and its attribution to the held
+identity; cached AppKit state is not automatically a fresh sample.
 
 This boundary preserves ModalAnyware's interaction: a user invokes an operation
 in one application and can choose a window after focus has moved elsewhere.
@@ -104,9 +112,12 @@ public-AX release acceptance does not transfer to the private protocol.
 Reopen native investigation only for a specific lead addressing
 receiver/descriptor and downstream lifetimes, actual admitted restoration and
 its lifecycle policy. The [survey triage](../verification/ax-endpoint-adoption.md#survey-triage-and-next-investigation)
-selects window-qualified activation as a bounded downstream investigation,
-not a complete binding or adoption of the declined endpoint. Arbitrary
-receiver/descriptor lifetime remains without a supported closure; no support
+proposes window-qualified activation as a partial downstream diagnostic.
+The human requires discussion of a narrower support or targeting contract before
+further native work. No particular restriction or weaker guarantee is selected.
+Restore/main/raise still need target handlers, and no new
+complete route to them has been established. The diagnostic is not adoption of
+the declined endpoint. Arbitrary receiver/descriptor lifetime remains without a supported closure; no support
 restriction or weaker guarantee is inferred. Adoption would also require
 evidence for separate consent and maintainable protocol support. A narrower
 target contract requires explicit agreement. Any future private adapter must
