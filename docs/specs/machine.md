@@ -1402,6 +1402,11 @@ endpoint deliver a closure attributable to the captured window lifetime, and
 can that delivery be isolated across registration retirement and reuse, with
 loss detection and ordering sufficient for attributed publication?**
 Inspect actual registration and delivery layouts before choosing an encoder.
+The [pinned wire inspection](../verification/native-observation.md) identifies
+separate registration and notification paths, supplied cookie context and a
+zero-timeout post. It establishes neither a native window generation nor a
+publication barrier or observer loss detector; the required runtime evidence
+remains outstanding.
 Then use a signed diagnostic in an isolated VM, with an independent window and
 process witness, to distinguish live closure from Space absence, queued old
 delivery, registration failure and death/exec/reuse. Exercise closure during

@@ -24,22 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Observation admission and permanent reference retirement",
-    "status": "Proposed construction — native provenance and full agreement outstanding",
-    "summary": "Observed-closure retirement is agreed for effects; read lifetime attribution remains required. The repaired proposal separates proven prepublication closure from listing failure, names loss detection and cross-channel ordering premises for both registration orders, and requires bounded ingress validation and nonblocking send initiation. Unauthenticated input is discarded; authentic current-registration failure withdraws dependent records. Same-live-capture recovery needs new evidence and references. Reasons become generic after bounded reclamation; the provider-run allocator never wraps. Native feasibility, read consequences and refusal/support costs await the full agreement. Capture/transfer, lifecycle, consent and restart/version work remain live.",
+    "title": "Native observation: inspected wire path and missing lifetime evidence",
+    "status": "Static native inspection — runtime provenance and adoption outstanding",
+    "summary": "Pinned 25F71 instructions expose cached process routing for registration, a cookie storing supplied port/context, and a separate zero-timeout notification send. These are concrete encoder boundaries, not an authenticated closure, loss detector or publication barrier. Both registration orders and delayed old delivery past later reads remain frozen runtime discriminators. The repaired retirement proposal is unchanged context. Full read/support agreement, capture/transfer, lifecycle, consent and restart/version work remain live.",
     "diagramIds": [
+      "process-observation-wire",
       "process-observation",
       "process-target-contract",
       "process-adoption"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-observation",
-        "summary": "Repairs preparation exits, detected-loss withdrawal, read attribution, publication ordering, send outcomes, refusal/recovery and bounded reason retention."
+        "id": "process-observation-wire",
+        "summary": "Adds the inspected registration and separate notification paths, with cookie, zero-timeout send and missing lifetime/order/loss premises distinguished."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-observation-wire",
+      "group": "machine",
+      "title": "Native observation wire path and evidence gaps",
+      "renderer": "svg",
+      "source": "process-observation-wire.puml",
+      "rendered": "process-observation-wire.svg",
+      "caption": "Static inspection in disposable TestAnyware clone koine-k83-observation on macOS 26.5 (25F71); no notification exchange or closure/loss schedule executed. Public registration uses cached process routing; the candidate needs an owned request to the admitted endpoint. Cookie construction stores supplied values, not a window generation. The ordinary remote post path sends a separate message with timeout zero; failure returns to the posting caller, without an established observer loss detector. Receive context is local ownership, not sender identity or event age. Exact byte ranges and frozen controls: docs/verification/native-observation.md. Publication, read lifetime, source authentication and bounded cleanup remain unproved; k83 remains live and no native adapter is adopted. The observation-retirement view is unchanged proposal context."
+    },
     {
       "id": "process-observation",
       "group": "machine",

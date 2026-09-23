@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — adds pinned registration and notification paths, separating static cookie/send facts from unproved native lifetime, order and loss detection.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
@@ -63,7 +64,7 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 
 From the repository root, `task design:render-process-identity` renders the
 process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption, process-target-contract and process-observation views
+process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption, process-target-contract, process-observation and process-observation-wire views
 to their SVG exports and to PNGs under
 `.build/design-identity`.
 
@@ -73,6 +74,10 @@ process-identity views distinguish agreed constraints, rejected candidates and
 open protocol work; they do not replace the current wire contract.
 
 The current proposal is [Observation and retirement protocol](../../specs/machine.md#observation-and-retirement-protocol-proposal).
+The [native wire inspection](../../verification/native-observation.md) now maps
+the registration/notification transport and freezes its runtime discriminator.
+Static instruction evidence supplies no closure, loss detector or publication
+barrier; the proposal below remains unchanged and unadopted.
 It distinguishes proven closure from preparation failure and detected loss,
 requires evidence across both registration orders and separate reply/delivery
 channels, and preserves read lifetime attribution despite the effect relaxation.
@@ -190,3 +195,15 @@ Current/Updated markers were inspected in desktop light appearance. No mobile
 or dark-mode check is claimed. Viewer, manifest, source and SVG hashes matched
 host/guest; HTTP manifest/SVG bytes matched the guest files. The clone was
 stopped. These checks establish presentation only, not native feasibility.
+
+The [native observation wire view](index.html#diagram-process-observation-wire)
+adds the pinned static registration/delivery map and its unresolved native
+premises. `task design:render-process-identity` completed with PlantUML 1.2026.8
+in disposable clone `koine-k83-observation`, with unchanged renderer inputs.
+The PNG, fresh-page Safari deep links, discussion panel, outline and
+Current/Updated markers were inspected. Desktop light, wide dark and 650-pixel
+dark layouts were checked; no mobile device was tested. The SVG retains its
+light canvas, and narrow fit mode reduces text size; native-size and full-size
+export remain available. Host/guest viewer, manifest, source and SVG hashes
+matched, as did host HTTP delivery. The clone was stopped. The host serves the
+checked view at `http://127.0.0.1:8772/#diagram-process-observation-wire`.
