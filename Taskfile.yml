@@ -75,7 +75,7 @@ tasks:
       - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture
       - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture
       - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
-      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py docs/verification/callback-causal-fixture/test_sampler_loop.py
 
   design:generate-callback-controls:
     desc: Regenerate synthetic causal fixtures before freezing a new run
@@ -309,6 +309,13 @@ tasks:
     cmds:
       - plantuml --svg --check-before-run --no-error-image process-recorder-history.puml
       - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-history.puml
+
+  design:render-callback-loop:
+    desc: Render sampler loop projection (run only in a disposable VM)
+    dir: docs/design/architecture
+    cmds:
+      - plantuml --svg --check-before-run --no-error-image process-recorder-loop.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-loop.puml
 
   design:render-callback-markers:
     desc: Render delivered-marker diagnostic design (run only in a disposable VM)

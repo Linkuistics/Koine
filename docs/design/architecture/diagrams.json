@@ -24,24 +24,38 @@
     }
   ],
   "discussion": {
-    "title": "Preserve every native marker value and every delivery",
-    "status": "V7 diagnostic slice \u2014 complete producers and review remain open",
-    "summary": "k141 defines exact signed-64-bit decimal strings, including zero and repeated strays. Receipt ordinals identify deliveries. k142/k143 own sampler/target lifecycles; k144 retains all waits, complete composition and fresh review before k126. No native credit.",
+    "title": "Observe the matching sampler invocation before publishing return",
+    "status": "V8 local loop projection \u2014 remaining sampler work in k146",
+    "summary": "k145 defines the host socket callout, measured baseline, dedicated-mode sources, cancellation and unconditional post-return continuation. k146 retains native-call/ownership failures; k143 targets; k144 complete composition and fresh review. No native credit.",
     "diagramIds": [
-      "process-recorder-markers",
-      "process-recorder-history",
-      "process-recorder-protocol",
+      "process-recorder-loop",
       "process-recorder-return",
-      "process-recorder-containment"
+      "process-recorder-history",
+      "process-recorder-markers"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-markers",
-        "summary": "Adds lossless native value encoding, repeated-zero receipts and the distinction between markers and delivery identity."
+        "id": "process-recorder-loop",
+        "summary": "Adds the explicit callout/invocation boundary, cancellation and timeout branches, and mandatory post-return work."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-loop",
+      "group": "machine",
+      "title": "Sampler callout, invocation and cancellation",
+      "renderer": "svg",
+      "source": "process-recorder-loop.puml",
+      "rendered": "process-recorder-loop.svg",
+      "caption": "Local diagnostic projection. Sequence starts at sample-release; native source servicing and framework-private coverage remain unestablished. Timeout is a returned invocation result; it cannot interrupt a blocked synchronous call. Earlier target histories remain projections, not complete native executions.",
+      "links": [
+        {
+          "label": "V8 loop contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-8-sampler-loop-projection"
+        }
+      ]
+    },
     {
       "id": "process-recorder-markers",
       "group": "machine",

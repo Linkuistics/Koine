@@ -16,18 +16,19 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V7 defines lossless signed-64-bit decimal-string
-markers. Repeated zero and stray input keep distinct ordinal receipts. V6's
-partial-history diagnostics and complete-history sample columns remain intact.
-K142 owns sampler lifecycle, k143 target lifecycle, and k144 complete waits,
-composition and fresh review, under the full k140/k138/k135 charters.
+remains unready for native use. V8 defines the sampler host callout, one owned
+invocation, cancellation and matching return. Its local result stays separate
+from controller and sample evidence. K142 is now a node: k145 supplies this loop
+projection; k146 retains native-operation/ownership failures and complete late
+abort paths. K143 owns target lifecycle, and k144 complete waits, composition and
+fresh review, under the full k140/k138/k135 charters.
 
 Changed in this discussion:
 
-- [Native markers and ordinal deliveries](index.html#diagram-process-recorder-markers) — Adds exact numeric encoding and repeated-zero receipts without inventing marker identities.
-- [Delivered-marker contract](../../verification/callback-causal-fixture/contract.md#version-7-lossless-delivered-markers) — Defines canonical encoding, native audit obligations and explicit limits.
+- [Sampler callout, invocation and cancellation](index.html#diagram-process-recorder-loop) — Adds the explicit callout/invocation boundary, cancellation and timeout branches, and mandatory post-return work.
+- [Sampler loop contract](../../verification/callback-causal-fixture/contract.md#version-8-sampler-loop-projection) — Defines observed context, local diagnostics and the remaining producer obligations.
 
-The four earlier recorder diagrams are unchanged context.
+The earlier recorder diagrams are unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -73,6 +74,7 @@ task design:render-callback-sampling
 task design:render-callback-recorder
 task design:render-callback-history
 task design:render-callback-markers
+task design:render-callback-loop
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -83,6 +85,17 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k145, [sampler callout, invocation and cancellation](index.html#diagram-process-recorder-loop)
+was rendered with the root loop task only in disposable clone `koine-k145-view`.
+The [render record](../../verification/callback-native-capture/evidence/k145/render.json)
+checks unchanged named inputs and matching served bytes. The
+[presentation record](../../verification/callback-native-capture/evidence/k145/presentation.json)
+covers fresh Safari discussion/deep links and wide diagram readability.
+At 650-pixel width, prose wraps but diagram labels are small. Light appearance
+was established; dark/mobile and earlier diagrams were not verified. The clone
+was stopped and removed. This is loop-design evidence, not native capture or
+permission-setup validation. Earlier records describe their own revisions.
 
 For k141, [native markers and ordinal deliveries](index.html#diagram-process-recorder-markers)
 was rendered with the root marker task only in disposable clone `koine-k141-view`.
