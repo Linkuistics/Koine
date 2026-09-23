@@ -24,22 +24,35 @@
     }
   ],
   "discussion": {
-    "title": "Late readiness cannot reverse a ready-timeout abort",
-    "status": "V13 ready cancellation \u2014 complete sampler remains k156",
-    "summary": "K155 distinguishes readiness publication from receipt. Timeout commits to abort; late readiness is drained, and failed release stays unresolved. Synthetic exchange only. K143 targets and k144 full composition and fresh review remain live.",
+    "title": "Armed timeout requires actual invocation unwind",
+    "status": "V14 armed cancellation \u2014 selected paths and full composition remain live",
+    "summary": "K157 joins late armed draining, dedicated-mode abort receipt, actual unwind and truthful cleanup. Synthetic exchange only; k158/k159 complete sampler work, k143 targets and k144 full composition/review remain live.",
     "diagramIds": [
+      "process-recorder-armed",
       "process-recorder-ready",
-      "process-recorder-cancel",
-      "process-recorder-startup"
+      "process-recorder-loop"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-ready",
-        "summary": "Adds readiness in flight or consumed before another peer, immediate abort, late-frame draining and truthful cleanup."
+        "id": "process-recorder-armed",
+        "summary": "Adds armed-timeout cancellation, FIFO command receipt, actual invocation unwind and clean versus unresolved cleanup."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-armed",
+      "group": "machine",
+      "title": "Armed cancellation and actual loop unwind",
+      "source": "process-recorder-armed.mmd",
+      "caption": "V14 synthetic armed-timeout exchange. Read from the first message. Armed publication and controller timeout can race; the controller has not consumed armed. No trigger is posted. Unselected queued deliveries may occur before socket receipt. Each known reference is released once only after actual run_end. A negative response settles the response wait, not resources. End does not prove process exit. Target lifecycle, selected failures, late abort and final deadlines remain live; native readiness is withheld.",
+      "links": [
+        {
+          "label": "V14 armed cancellation contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-14-armed-cancellation-before-trigger"
+        }
+      ]
+    },
     {
       "id": "process-recorder-ready",
       "group": "machine",

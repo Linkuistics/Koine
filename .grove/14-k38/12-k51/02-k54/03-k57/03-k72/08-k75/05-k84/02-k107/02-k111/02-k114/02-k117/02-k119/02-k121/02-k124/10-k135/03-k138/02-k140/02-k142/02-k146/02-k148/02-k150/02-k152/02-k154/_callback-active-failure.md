@@ -72,3 +72,12 @@ active failure/unwind, armed/late cancellation, blocked/transport paths, all-cel
 composition, partial evidence policy and final ancestor reconciliation. The
 partial k144 wait handoff does not promote a complete sampler. No ancestor
 closes, and no capture/public-Accessibility ADR changes are needed for this seam.
+
+## Active sampler progress
+
+K156 now decomposes into k157 armed cancellation, k158 selected failures and
+k159 final sampler composition. K157 supplies only v14 armed-timeout before
+trigger, with actual invocation unwind and truthful per-reference cleanup. Its
+assessment maps all original obligations to k158/k159 and the existing target/
+controller/native owners. Every unsatisfied criterion above remains live; no
+complete sampler promotion or ancestor close follows from k157.

@@ -16,16 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V13 distinguishes sampler readiness publication
-from the controller's consumed readiness. Timeout while any peer is missing
-commits to abort, even if a ready frame arrives afterward. K155 supplies this
-bounded exchange; k156 under k154 retains active sampler composition. K143 owns
-targets; k144 full waits, partial evidence and fresh review.
+remains unready for native use. V14 joins armed-timeout cancellation to actual
+invocation unwind and truthful cleanup. Armed publication is separate from receipt;
+a late frame never restarts sampling. K157 supplies this bounded exchange; k158
+selected failures and k159 complete sampler composition remain under k156. K143
+owns targets; k144 full waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Readiness publication racing cancellation](index.html#diagram-process-recorder-ready) — Adds published versus consumed readiness, irreversible ready-timeout abort, late-frame draining and truthful cleanup.
-- [Ready cancellation contract](../../verification/callback-causal-fixture/contract.md#version-13-cancellation-after-readiness-publication) — Defines preparation, controller receipt rules, exact waits and remaining limits.
+- [Armed cancellation and actual loop unwind](index.html#diagram-process-recorder-armed) — Adds FIFO sample-release/abort, dedicated-mode receipt, actual unwind and truthful cleanup.
+- [Armed cancellation contract](../../verification/callback-causal-fixture/contract.md#version-14-armed-cancellation-before-trigger) — Defines the closed pre-trigger branch and exact remaining waits.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -61,9 +61,11 @@ formal verification or release acceptance.
 ## Sources and exports
 
 `diagrams.json` owns introductions, captions, outline groups and discussion/update
-markers. Each source has a version-controlled SVG. Regenerate exports from the
-source, then inspect them; do not hand-edit SVG. The viewer fetches source and
-exports on reload and does not compile them.
+markers. PlantUML/D2 sources have version-controlled SVG exports. Regenerate and inspect
+them; do not hand-edit SVG. Mermaid sources render in the viewer with its pinned
+Mermaid 12.0.0 module from jsDelivr, requiring network access. Their editable
+source is the artifact; browser rendering and inspection run only in a disposable
+clone. The viewer fetches sources and exports on reload.
 
 From the repository root:
 
@@ -373,3 +375,17 @@ retains fresh discussion/diagram links, readable wide sections and narrow
 light/dark wrapping. Narrow fit labels are small; desktop remains the verified
 reading surface. Earlier diagrams, mobile devices and every scroll position
 were not rechecked. No native recorder or product permission setup ran.
+
+For k157, [Armed cancellation and actual loop unwind](index.html#diagram-process-recorder-armed)
+adds unconsumed armed, explicit reply FIFO, actual stopped return and truthful
+cleanup. The [current discussion](index.html#discussion) names v14 and k158/k159's
+remaining sampler work; only the armed view is marked updated. The existing
+viewer renders its Mermaid source with the pinned 12.0.0 import. The
+[render record](../../verification/callback-native-capture/evidence/k157/render.json)
+matches final source/viewer/manifest bytes across the worktree and guest/host
+serving; it does not freeze all CDN, browser or OS dependencies. The
+[presentation record](../../verification/callback-native-capture/evidence/k157/presentation.json)
+retains wide light/dark sections, narrow prose and the initial corrected parse
+failure. All browser rendering ran in disposable clone `koine-k157-view`.
+Narrow fit labels are small; wide desktop remains the verified reading surface.
+No native recorder or product permission setup ran.
