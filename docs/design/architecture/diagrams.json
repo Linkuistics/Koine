@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Independent witnesses for callback sampling",
-    "status": "Experiment design — native freshness and lifetime results remain open",
-    "summary": "Separate foreground selection F from logical-application-to-process mapping M, then require evidence for both inside continuous right ownership. Independent target input and causal acknowledgments establish reached schedules, not uninterrupted foreground or cache freshness. The design defines delayed-entry, run-loop, lifetime and failure controls; native execution remains outstanding. No source, transport or protocol is adopted.",
+    "title": "Foreground entry paths and remaining freshness evidence",
+    "status": "Guest code inspected; callback schedules pending",
+    "summary": "macOS 26.5 AppKit paths use a KVO helper and run-loop property preservation; Process Manager reaches LaunchServices shared memory and a reply fallback. Producer age and coherent foreground/PID mapping remain unresolved. No callback schedule or source adoption follows.",
     "diagramIds": [
       "process-sampling",
       "process-capture",
@@ -37,7 +37,7 @@
     "updatedDiagrams": [
       {
         "id": "process-sampling",
-        "summary": "Adds independent input receipt, causal callback gating and separate foreground/mapping observations; labels what the witness cannot establish."
+        "summary": "Adds the inspected AppKit and LaunchServices paths and marks producer freshness and process mapping unresolved."
       }
     ]
   },
@@ -49,7 +49,7 @@
       "renderer": "svg",
       "source": "process-sampling.puml",
       "rendered": "process-sampling.svg",
-      "caption": "Proposed experiment, not executed evidence. The shown delayed-entry schedule requires independently witnessed input receipt before callback release. A, F, M and V denote acquisition, actual foreground selection, actual logical-app/process mapping and live-right validation; method call order alone establishes neither freshness nor coherent mapping. Markers establish particular input events, not continuous foreground ownership. Missing causal evidence, disabled input delivery and native timeouts are inconclusive. Separate schedules compare acquire/resample, stale F/M, later switching and real lifetime changes. See docs/verification/callback-capture-transfer.md#callback-witness-protocol. Transfer and full protocol adoption remain separate."
+      "caption": "Proposed callback witness with loaded-code evidence on macOS 26.5 (25F71). AppKit helper/property preservation and Process Manager shared-memory/reply paths are identified, but their producer age and coherent F/M mapping remain unresolved. No native callback schedule ran. The delayed-entry schedule requires independent input receipt before callback release; markers do not prove uninterrupted foreground or freshness. Lifetime, transfer and protocol adoption remain separate. See docs/verification/callback-capture-transfer.md#guest-foreground-entry-inspection."
     },
     {
       "id": "process-receive-admission",

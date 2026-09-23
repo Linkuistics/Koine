@@ -1,6 +1,17 @@
 version: '3'
 
 tasks:
+  fixture:foreground-inspector:
+    desc: Build the own-image foreground entry inspector (execute only in TestAnyware)
+    cmds:
+      - mkdir -p .build/callback-source-freshness
+      - xcrun clang -fobjc-arc -Wall -Wextra -Werror -mmacosx-version-min=26.0 docs/verification/callback-source-freshness/inspect.m -framework Cocoa -framework ApplicationServices -o .build/callback-source-freshness/inspect
+
+  design:decode-foreground:
+    desc: Decode frozen guest foreground scans without native execution
+    cmds:
+      - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/callback-source-freshness/entries.json docs/verification/callback-source-freshness/followup.json docs/verification/callback-source-freshness/boundary.json
+
   fixture:ax-routing-detail:
     desc: Build AppKit callback and top-level attestation inspectors (execute only in TestAnyware)
     cmds:

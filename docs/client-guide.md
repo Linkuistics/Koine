@@ -218,6 +218,13 @@ supported context, independently of replacing identity fields or adding IPC.
 Those native freshness results are still outstanding; the experiment design
 does not mandate a replacement API today.
 
+The [guest entry inspection](verification/callback-capture-transfer.md#guest-foreground-entry-inspection)
+now locates AppKit's helper/property preservation paths and Process Manager's
+LaunchServices shared-memory/reply paths on macOS 26.5. It dates neither the
+foreground producer nor a coherent logical-app/PID mapping. Preserve a separate
+source/context migration item: no specific API replacement is justified yet,
+even if identity ownership and IPC are implemented later.
+
 The agreed first deliverable keeps that non-time capture but uses **public
 macOS Accessibility** for listing, focus attempts and notifications. A capture
 never changes process identity; known-dead captures are refused. Public AX

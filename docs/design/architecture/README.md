@@ -15,19 +15,20 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The current [witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol)
-separates actual foreground selection from logical-application-to-process mapping.
-It specifies independent input observations, causal callback gates and controls
-that distinguish a reached schedule from a candidate result. Exact runtime
-freshness/mapping evidence and native execution remain outstanding; no source or
-capture construction is adopted. The broader capture/transfer assessment remains
-context for the separate admission and resident protocol work.
+The [guest entry inspection](../../verification/callback-capture-transfer.md#guest-foreground-entry-inspection)
+identifies AppKit's KVO helper/property preservation and Process Manager's
+LaunchServices shared-memory/reply paths on macOS 26.5. Local field loads do not
+date the data producer or establish coherent foreground/PID mapping. The
+[witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol)
+still needs its causal fixture and native callback schedules; neither public
+source nor a capture construction is adopted. Transfer admission and resident
+protocol work remain separate.
 
 Changed in this discussion:
 
-- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds independent input receipt, causal callback gating and separate foreground/mapping observations, with explicit witness limits.
-- [Callback witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol) — Defines bounded schedules, frozen inputs and falsification controls; keeps native freshness and lifetime results outstanding.
-- [Client capture migration](../../client-guide.md#process-identity) — Separates source/context migration from identity ownership and IPC changes.
+- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds inspected paths and marks producer freshness and coherent mapping unresolved.
+- [Guest entry inspection](../../verification/callback-capture-transfer.md#guest-foreground-entry-inspection) — Records exact code ranges, image identities, raw scans and remaining boundaries.
+- [Client capture migration](../../client-guide.md#process-identity) — Explains why the inspected paths do not yet justify choosing a replacement source.
 
 Unchanged context: [capture and transfer](index.html#diagram-process-capture),
 [resident composition](index.html#diagram-packages),
@@ -76,7 +77,16 @@ Earlier native reports and their reproduction sections carry the frozen platform
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
 
-For the callback witness design, `task design:render-callback-sampling` completed
+For the guest foreground entry update, `task design:render-callback-sampling`
+completed and source/Taskfile/manifest/viewer digests matched before and after.
+The PNG was inspected, SVG XML parsed, and served manifest bytes matched disk.
+Safari in disposable clone `koine-k111-source` opened the diagram deep link and
+the discussion panel in fresh pages; the rendered revision, outline and
+Current/Updated labels were visible. No mobile or dark-theme check was performed.
+This browser check verifies presentation, not callback sampling. Native scan
+provenance and its limits are in the capture assessment.
+
+For the preceding callback witness design, `task design:render-callback-sampling` completed
 with matching before/after digests for its source, Taskfile, manifest and viewer.
 The PNG was inspected, manifest/source/export links and SVG XML validated, and
 served manifest/source/SVG bytes matched the files. The five SDK headers still

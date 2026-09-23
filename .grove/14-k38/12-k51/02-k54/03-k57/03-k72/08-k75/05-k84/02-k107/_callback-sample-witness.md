@@ -76,3 +76,9 @@ reason to call this node complete or quietly drop its later obligations.
 Every original Done when above remains binding. k84 keeps transfer/admission
 and resident protocol work in k108/k109; k87 owns final adoption and k52 the
 existing implementation. No new public seam or production implementation leaf.
+
+The source-freshness work in k111 now separates loaded-entry inspection (k113),
+the causal fixture and failure controls (k114), and native schedules (k115).
+k113 identifies concrete AppKit/LaunchServices paths and unresolved producer/
+mapping boundaries; it does not establish a usable fresh source. k112 retains
+every lifetime, actual reuse/restoration, acquisition and policy obligation.
