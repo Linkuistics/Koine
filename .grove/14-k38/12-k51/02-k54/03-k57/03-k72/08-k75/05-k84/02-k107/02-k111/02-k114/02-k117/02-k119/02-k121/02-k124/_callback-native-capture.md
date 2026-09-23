@@ -185,3 +185,15 @@ v1–v6 inputs/reports; k140 must complete every original k138/k135 producer/wai
 lifecycle/honest-trace obligation and commission fresh review before native k126.
 No native criterion, private-loop coverage gate, preparation/audit/exit/
 containment obligation or one-attempt rule closes on this diagnostic increment.
+
+## k141 delivered-marker handoff
+
+K140 is now a node: k141 fixes signed-64-bit decimal-string representation,
+including zero and repeated stray input with independent receipt ordinals.
+V7 remains a diagnostic projection; consume the causal contract's Version 7.
+K142 owns sampler lifecycle, k143 target notification lifecycle and k144 the
+complete composition, pending waits/deadlines, partial-evidence policy, honest
+eight-cell executions and required fresh review before native k126. Every
+original k140/k138/k135 criterion stays binding. Preserve all earlier bytes/
+reports. No k124/k121 criterion, coverage/audit/exit/preparation/containment
+obligation, one-attempt rule or product/permission decision closes here.

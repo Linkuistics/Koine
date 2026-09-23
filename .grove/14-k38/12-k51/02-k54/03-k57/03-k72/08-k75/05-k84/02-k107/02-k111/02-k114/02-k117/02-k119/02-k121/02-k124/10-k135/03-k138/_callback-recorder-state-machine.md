@@ -82,3 +82,15 @@ k121 obligation. No parent closes and no permission or product decision changes.
 
 Every original Done when above remains binding. K139 supplies no partial-sample
 attribution or complete producer. K140 retains those obligations; no node closes.
+
+## k141 delivered-marker handoff
+
+K140 is now a node: k141 fixes signed-64-bit decimal-string representation,
+including zero and repeated stray input with independent receipt ordinals.
+V7 remains a diagnostic projection; consume the causal contract's Version 7.
+K142 owns sampler lifecycle, k143 target notification lifecycle and k144 the
+complete composition, pending waits/deadlines, partial-evidence policy, honest
+eight-cell executions and required fresh review before native k126. Every
+original k140/k138/k135 criterion stays binding. Preserve all earlier bytes/
+reports. No k124/k121 criterion, coverage/audit/exit/preparation/containment
+obligation, one-attempt rule or product/permission decision closes here.

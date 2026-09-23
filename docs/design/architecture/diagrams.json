@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Keep violations visible when a recorder history is incomplete",
-    "status": "V6 diagnostic slice \u2014 full producer and review remain open",
-    "summary": "k139 checks intact local prefixes without repairing missing records. A malformed prefix and structural loss remain separate. k140 retains full producers, waits, partial candidate evidence and fresh review before k126; no native credit.",
+    "title": "Preserve every native marker value and every delivery",
+    "status": "V7 diagnostic slice \u2014 complete producers and review remain open",
+    "summary": "k141 defines exact signed-64-bit decimal strings, including zero and repeated strays. Receipt ordinals identify deliveries. k142/k143 own sampler/target lifecycles; k144 retains all waits, complete composition and fresh review before k126. No native credit.",
     "diagramIds": [
+      "process-recorder-markers",
       "process-recorder-history",
       "process-recorder-protocol",
       "process-recorder-return",
@@ -35,12 +36,21 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-history",
-        "summary": "Adds the intact-prefix boundary, partial FIFO check and separate structural/malformation results."
+        "id": "process-recorder-markers",
+        "summary": "Adds lossless native value encoding, repeated-zero receipts and the distinction between markers and delivery identity."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-markers",
+      "group": "machine",
+      "title": "Preserve native markers and ordinal deliveries",
+      "renderer": "svg",
+      "source": "process-recorder-markers.puml",
+      "rendered": "process-recorder-markers.svg",
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
+    },
     {
       "id": "process-recorder-history",
       "group": "machine",

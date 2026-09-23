@@ -16,18 +16,18 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V6 checks positive malformation in intact local
-prefixes while preserving strict structural loss. V5's independent sample
-columns continue on complete histories; partial sample recovery remains open.
-K140 retains complete producers, waits and fresh review under k138/k135.
+remains unready for native use. V7 defines lossless signed-64-bit decimal-string
+markers. Repeated zero and stray input keep distinct ordinal receipts. V6's
+partial-history diagnostics and complete-history sample columns remain intact.
+K142 owns sampler lifecycle, k143 target lifecycle, and k144 complete waits,
+composition and fresh review, under the full k140/k138/k135 charters.
 
 Changed in this discussion:
 
-- [Partial recorder histories](index.html#diagram-process-recorder-history) — Adds prefix boundaries, partial FIFO and separate structural/malformation results.
-- [Partial-history contract](../../verification/callback-causal-fixture/contract.md#version-6-partial-history-diagnostics) — Specifies unavailable checks, excluded suffixes and withheld sample/native credit.
+- [Native markers and ordinal deliveries](index.html#diagram-process-recorder-markers) — Adds exact numeric encoding and repeated-zero receipts without inventing marker identities.
+- [Delivered-marker contract](../../verification/callback-causal-fixture/contract.md#version-7-lossless-delivered-markers) — Defines canonical encoding, native audit obligations and explicit limits.
 
-The v5 protocol, return and containment sources/exports are unchanged context;
-their captions now name k140 as the remaining producer under k138.
+The four earlier recorder diagrams are unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -72,6 +72,7 @@ task design:render-process-identity
 task design:render-callback-sampling
 task design:render-callback-recorder
 task design:render-callback-history
+task design:render-callback-markers
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -82,6 +83,17 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k141, [native markers and ordinal deliveries](index.html#diagram-process-recorder-markers)
+was rendered with the root marker task only in disposable clone `koine-k141-view`.
+The [render record](../../verification/callback-native-capture/evidence/k141/render.json)
+checks unchanged named inputs and matching served bytes. The
+[presentation record](../../verification/callback-native-capture/evidence/k141/presentation.json)
+covers fresh Safari discussion/deep links and wide diagram/caption readability.
+At 650-pixel width, prose wraps but diagram labels are small. Light appearance
+was established; dark/mobile and earlier diagrams were not verified. The clone
+was stopped and removed. This is representation-design evidence, not native
+capture or permission-setup validation.
 
 For the historical k129 render, `task design:render-callback-recorder` rendered the protocol, return
 and containment views in disposable clone `koine-k129-view`, using PlantUML
