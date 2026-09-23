@@ -246,7 +246,9 @@ describes the currently served timestamp input, not an approved replacement.
 
 The investigated direct AX endpoint is declined as the replacement binding;
 strict process lifetime remains required. Native investigation reopens only on
-a specific lead addressing the remaining lifetime premises. No such lead or
+a specific lead addressing the remaining lifetime premises. Window-qualified
+activation is selected for bounded investigation; it does not supply a complete
+binding, and arbitrary receiver/descriptor lifetime remains unresolved. No
 complete replacement is selected, so the first public release remains waiting
 on that work. This does not approve narrower application support or weaker
 targeting semantics; the capture decision records the trade-off.

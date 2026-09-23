@@ -103,7 +103,11 @@ public-AX release acceptance does not transfer to the private protocol.
 
 Reopen native investigation only for a specific lead addressing
 receiver/descriptor and downstream lifetimes, actual admitted restoration and
-its lifecycle policy. No such lead is selected. Adoption would then also require
+its lifecycle policy. The [survey triage](../verification/ax-endpoint-adoption.md#survey-triage-and-next-investigation)
+selects window-qualified activation as a bounded downstream investigation,
+not a complete binding or adoption of the declined endpoint. Arbitrary
+receiver/descriptor lifetime remains without a supported closure; no support
+restriction or weaker guarantee is inferred. Adoption would also require
 evidence for separate consent and maintainable protocol support. A narrower
 target contract requires explicit agreement. Any future private adapter must
 own cleanup, bounded work, cancellation uncertainty and exact-version refusal

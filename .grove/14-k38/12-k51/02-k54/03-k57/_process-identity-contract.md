@@ -123,3 +123,11 @@ or a proof of universal impossibility. The final design child triages that
 result before proceeding and preserves all original documentation, human
 agreement and k52 handoff obligations. No node close follows solely from the
 candidate decision or completion of a survey.
+
+The k72 triage selects window-qualified activation as a bounded native
+downstream investigation. It corrects the survey's stale-request, read-provenance,
+inhibition-lifetime and capture-control claims before they drive experiments.
+k72 now separates that triage, its earned review, the native question and the
+remaining full contract. Arbitrary receiver/descriptor lifetime still lacks a
+supported closure; no complete binding, support restriction or weakened
+semantics is adopted. k52 retains its position and original evidence obligations.

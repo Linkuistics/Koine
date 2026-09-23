@@ -156,7 +156,9 @@ support set is approved.
 In k57, the human chose **preserve strict lifetime; decline this candidate**.
 The non-time replacement and first public release remain unresolved. Reopen
 native investigation only on a specific lead addressing the missing lifetime
-premises; no such lead is selected. Neither narrower application support nor
+premises. The k72 survey triage selects window-qualified activation for a bounded
+downstream investigation; it leaves receiver/descriptor lifetime unresolved and
+adopts no complete binding. Neither narrower application support nor
 weaker targeting semantics is agreed. The synthesis names costs, alternatives
 and reversal evidence; a successful policy probe alone cannot authorize adoption
 or starting k52. k57 stays live for the original capture/transfer/reference/

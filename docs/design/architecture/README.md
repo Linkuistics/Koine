@@ -140,14 +140,16 @@ reduces diagram text; native-size and full-size export remain available.
 The host serves the same manifest at
 `http://127.0.0.1:8772/#diagram-process-routing`.
 
-The [adoption view](index.html#diagram-process-adoption) now records the human's
-decision to preserve strict lifetime and decline this candidate, with the
-replacement and first release unresolved. `task design:render-process-identity`
-completed and its PNG was inspected. Safari in disposable TestAnyware clone
-`koine-k57-design` rendered the fresh-page deep link, discussion panel, outline
-and Current/Updated markers. Desktop light and dark appearance were inspected;
-the SVG retains its light canvas. No mobile or narrow-window check was run for
-this update. Guest hashes of the viewer, manifest, adoption source and SVG match
-the host files; the host manifest and SVG match HTTP delivery at
+The [adoption view](index.html#diagram-process-adoption) now names the bounded
+window-qualified activation investigation, distinguishes stale-request refusal
+from in-flight binding, and preserves the receiver/descriptor gap and agreed
+rejection. The replacement and first release remain unresolved.
+`task design:render-process-identity` completed with PlantUML 1.2026.8 and its
+PNG was inspected. Safari in disposable TestAnyware clone `koine-k72-design`
+rendered fresh-page deep links, the discussion panel, outline and Current/Updated
+markers. Wide desktop light and 650-pixel desktop dark layouts were inspected;
+the SVG retains its light canvas and the narrow view reduces text size. No mobile
+device was tested. Guest hashes of the viewer, manifest, adoption source and SVG
+match the host files; the host manifest and SVG match HTTP delivery at
 `http://127.0.0.1:8772/#diagram-process-adoption`. These are presentation checks,
 not a new native lifetime or consent experiment.
