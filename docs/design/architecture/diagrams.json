@@ -24,22 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: receive ownership",
-    "status": "Static receive contract \u2014 native exchange still open",
-    "summary": "Pinned receive helpers adopt vouchers and grow buffers; HIServices injects local observer context and splits success/error cleanup. The proposed owned receiver keeps one envelope owner. Actual audit evidence, bounded OOL acquisition, execution context and cleanup controls remain preflight, with no witnessed closure or publication premise.",
+    "title": "Native observation: acquisition before rejection",
+    "status": "Local native counterexample — AX exchange still open",
+    "summary": "A 44-byte local message acquired a 128 KiB OOL mapping despite a 4096-byte inline capacity and a later 64 KiB payload cap. Normal disposal removed the measured span; omitted disposal was detected. This disproves the cap-only acquisition policy. An enforceable budget, actual AX context and the witnessed exchange remain open.",
     "diagramIds": [
+      "process-receive-budget",
       "process-observation-wire",
       "process-observation",
       "process-target-contract"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-observation-wire",
-        "summary": "Adds native voucher adoption, injected observer context and OOL cleanup; separates the proposed envelope owner from unresolved runtime acquisition and authentication."
+        "id": "process-receive-budget",
+        "summary": "Adds the measured mapping-before-policy counterexample, inline-too-large control and detected omitted destruction; preserves the remaining AX preflight."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-receive-budget",
+      "group": "machine",
+      "title": "Receive acquisition before payload rejection",
+      "renderer": "svg",
+      "source": "process-receive-budget.puml",
+      "rendered": "process-receive-budget.svg",
+      "caption": "Measured local IPC in a disposable macOS 26.5 (25F71) VM. A self-sent 44-byte message acquired a distinct 128 KiB virtual-copy OOL mapping before the 64 KiB payload policy rejected it. The 32-byte inline control stayed queued; skipped destruction retained the mapping and exited 1 before final cleanup. Self audit agreement, whole-span mapping observations and local send-reference balance are bounded evidence, not AX authentication, physical-memory growth, arbitrary descriptor cleanup or universal impossibility. A usable acquisition policy and the original AX exchange remain live. See docs/verification/native-observation-receive.md#acquisition-budget-experiment."
+    },
     {
       "id": "process-observation-wire",
       "group": "machine",

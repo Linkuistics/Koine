@@ -1,0 +1,5 @@
+76c28f5dc6d6d9c19f67a443971c1789cf2fa23e3d5955609867b7fb4108a6b2  docs/verification/native-observation/receive-budget.c
+c6f2d6105f36a42de5b86987a8874a8bf7b1960a039cd5f893a378107bee2fad  .build/native-observation/receive-budget
+55786760773a322f21dcd6d397fee2009219d5610a6ee3daae37299e5f398d3b  Taskfile.yml
+0296a79ad2c9df761e5574adf2f9a413921f8766a8a1c3f727d8ea5f517ac5c3  docs/verification/native-observation/receive-budget-discriminator.md
+86e9e87ba2a736236613f2c0a8563dbacaeec1a761654b12812eaf8599b55e67  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/message.h

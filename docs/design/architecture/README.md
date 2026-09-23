@@ -17,8 +17,22 @@ python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architectur
 
 The SVG exports beside each source also open on their own.
 
-- [Native observation receive ownership](index.html#diagram-process-observation-wire) — Adds voucher adoption, injected observer context and split OOL cleanup, with the proposed envelope owner and runtime preflight explicit.
-- [Receive-envelope evidence](../../verification/native-observation-receive.md) — Records pinned receive helpers and the distinction between a payload size check and bounded memory acquisition.
+- [Receive acquisition before payload rejection](index.html#diagram-process-receive-budget) — Adds the measured 128 KiB mapping, later 64 KiB rejection and falsified omitted-destruction control.
+- [Acquisition-budget evidence](../../verification/native-observation-receive.md#acquisition-budget-experiment) — Records the local IPC counterexample and carries the enforceable budget and AX exchange forward explicitly.
+
+The k102 budget view was rendered with PlantUML 1.2026.8 using
+`task design:render-receive-budget`; its
+[inputs](../../verification/native-observation/receive-budget-render-before.sha256)
+matched [after rendering](../../verification/native-observation/receive-budget-render-after.sha256).
+The full PNG and fresh Safari deep link, discussion panel, outline and
+Current/Updated markers were inspected in disposable clone `koine-k102-budget`.
+Desktop light layouts at 1500 and 650 pixels were inspected. Narrow fit makes
+the text small; native-size and full-size SVG remain available. Dark appearance
+was attempted through the guest preference but did not activate, so dark and
+mobile-device checks are not claimed. Viewer, manifest, source and SVG
+[guest digests](../../verification/native-observation/receive-budget-viewer-guest.json)
+matched the host; host HTTP manifest/SVG bytes matched disk. These presentation
+checks are separate from the native IPC evidence. The clone was stopped.
 
 The k100 receive update was rendered with PlantUML 1.2026.8 using
 `task design:render-process-identity`; its
@@ -60,6 +74,7 @@ exchange or a mobile-device check. Native byte inspection is documented in the
 
 Stable views:
 
+- [Receive acquisition before payload rejection](index.html#diagram-process-receive-budget) — distinguishes the measured local mapping from later policy rejection and the remaining AX preflight.
 - [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — traces request, connection and receive ownership; actual authentication, voucher context, OOL acquisition bounds and cleanup remain open.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
@@ -108,6 +123,11 @@ process-capture, process-serial, process-binding, process-endpoint,
 process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption, process-target-contract, process-observation and process-observation-wire views
 to their SVG exports and to PNGs under
 `.build/design-identity`.
+
+`task design:render-receive-budget` separately renders the receive acquisition
+experiment view with the same PlantUML toolchain to SVG and PNG. It does not run
+the native diagnostic. `task fixture:receive-budget` builds that diagnostic;
+its frozen discriminator and launch records are in the linked receive report.
 
 The viewer fetches sources and exports on reload; it does not compile them.
 `diagrams.json` owns the topic outline, the captions and the introduction. The

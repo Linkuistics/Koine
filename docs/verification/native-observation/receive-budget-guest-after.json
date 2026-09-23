@@ -1,0 +1,9 @@
+{
+  "command": "shasum -a 256 /tmp/koine-receive-budget",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "c6f2d6105f36a42de5b86987a8874a8bf7b1960a039cd5f893a378107bee2fad  /tmp/koine-receive-budget",
+  "timed_out": false
+}

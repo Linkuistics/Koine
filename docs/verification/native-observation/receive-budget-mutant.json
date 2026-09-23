@@ -1,0 +1,9 @@
+{
+  "command": "/tmp/koine-receive-budget --skip-destroy",
+  "exit_code": 1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\"payload\":131072,\"tiny\":false,\"skipDestroy\":true,\"sent\":\"130000802c000000030b0000000000000000000066000000010000000040fe02010000000001000100000200\",\"options\":50332934,\"capacity\":4096,\"receiveResult\":0,\"received\":\"001100802c00000000000000030b000000000000660000000100000000400003010000000101000100000200000000003400000000000000f501000014000000f5010000f501000014000000f50100001400000016030000a286010043080000\",\"receivedCopy\":1,\"receivedDeallocate\":1,\"mappedBeforePolicy\":true,\"policyAccepted\":false,\"mappedAfterDisposal\":true,\"sendRefsBefore\":1,\"sendRefsAfter\":1,\"portRemoved\":true,\"sourceSurvived\":true,\"leakDetected\":true}",
+  "timed_out": false
+}

@@ -85,3 +85,10 @@ decoder. It does not bound kernel OOL acquisition or establish runtime cleanup.
 k101 retains actual execution/voucher context, all exposed descriptor/error
 ownership controls, the witnessed exchange and full k99/k94 reconciliation.
 This node and k95/k96's dependent native premises remain live.
+
+k102's isolated local IPC experiment now demonstrates why inline capacity plus
+a post-receive OOL cap cannot supply the candidate acquisition budget. It is
+not native registration evidence. k103, under k101, retains the enforceable
+resource bound, all remaining receive/context controls and the complete AX
+exchange; k99/k101 and this node remain live. See the receive report's
+acquisition-budget section and obligation table before relying on the mechanism.

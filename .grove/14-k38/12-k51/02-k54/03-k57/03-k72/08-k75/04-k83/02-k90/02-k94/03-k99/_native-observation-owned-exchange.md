@@ -77,3 +77,12 @@ vouchers and grow inline buffers; HIServices injects local observer context and
 splits success/error OOL cleanup. k101 must establish actual receive ownership
 and a bounded acquired-memory policy before sends, including foreign forms;
 a post-receive length cap is not that bound. No live AX exchange ran in k100.
+
+k101 split its receive-budget discriminator from the remaining AX exchange.
+k102 measured a self-sent 44-byte message acquiring a 128 KiB OOL mapping
+before a 64 KiB policy rejected it; an omitted-destruction control failed as
+intended. This is a concrete failure of cap-only admission, not an AX result
+or general impossibility. The receive report preserves raw evidence and limits.
+k103 retains an enforceable acquisition policy, actual execution/voucher context,
+all descriptor/error ownership controls and the full witnessed exchange. This
+node and k101 remain live; every original criterion above remains binding.

@@ -1,0 +1,9 @@
+{
+  "command": "xcrun dyld_info -uuid /usr/lib/system/libsystem_c.dylib; codesign -dvv /tmp/koine-receive-budget",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Executable=/private/tmp/koine-receive-budget\nIdentifier=receive-budget\nFormat=Mach-O thin (arm64)\nCodeDirectory v=20400 size=391 flags=0x20002(adhoc,linker-signed) hashes=9+0 location=embedded\nSignature=adhoc\nInfo.plist=not bound\nTeamIdentifier=not set\nSealed Resources=none\nInternal requirements=none",
+  "stdout": "/usr/lib/system/libsystem_c.dylib [arm64e]:\n    -uuid:\n        694B7881-1BF3-3D0F-8F19-B50AE4E8EF8A",
+  "timed_out": false
+}

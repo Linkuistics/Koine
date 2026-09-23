@@ -7,8 +7,11 @@ slot. Successful post handling releases its OOL mapping itself, while the MIG
 dispatcher destroys rejected complex requests. An adapter that mixed those
 paths with unconditional envelope destruction could release the mapping twice.
 
-This is static evidence and a conditional receive contract. No AX request,
-notification delivery, resource-accounting control or closure experiment ran.
+The native-path inspection below is static evidence and a conditional receive
+contract. The subsequent [acquisition-budget experiment](#acquisition-budget-experiment)
+adds a bounded local IPC counterexample: a parser cap did not prevent acquiring
+an oversized OOL mapping. No owned AX request, notification delivery or closure
+experiment ran.
 The [wire view](../design/architecture/index.html#diagram-process-observation-wire)
 shows the new boundary. The [observation proposal](../specs/machine.md#observation-and-retirement-protocol-proposal)
 remains unadopted; source identity alone cannot establish window lifetime.
@@ -184,6 +187,10 @@ preflight obligation, not a demonstrated impossibility of bounded reception.
 
 ## Next experiment and retained obligations
 
+The [local budget result](#acquisition-budget-experiment) now falsifies using
+fixed inline capacity plus payload rejection as the acquisition policy. It
+does not resolve actual AX voucher context or the remaining ownership cases.
+
 The existing owned path remains the recommendation: it exposes the retained
 destination, fresh replies and one envelope owner. Reusing the native source
 would add automatic buffer growth, voucher adoption, injected pointer context
@@ -209,12 +216,127 @@ nonempty info formats and the runtime source/intermediary chain remain
 unvalidated. No application was exercised or observed refused in this slice.
 
 k100 completes only the static receive-envelope design. k101 retains all these
-runtime prerequisites and every original k99/k94 criterion. k99 and k94 remain
+runtime prerequisites and every original k99/k94 criterion. Its k102 child
+supplies the local budget result; k103 retains a usable resource-admission
+policy and the actual exchange. k101, k99 and k94 remain
 live; k95/k96 cannot infer an exchange or publication/read/loss premise from
 these tables. k91 retains its broader send/cleanup matrix; k86 maintained
 consent/resource policy and k87 human agreement remain separate. No shipping
 adapter, schema change, support restriction, k52 implementation or release
 approval follows.
+
+## Acquisition-budget experiment
+
+**A 4096-byte inline capacity and a 65536-byte payload cap did not prevent a
+131072-byte OOL mapping from entering the receiving address space.** This is
+the concrete conflict for that candidate admission policy. It is not a proof
+that all native receive strategies are impossible, or a measurement of added
+physical memory. The [budget view](../design/architecture/index.html#diagram-process-receive-budget)
+separates acquisition from later validation and disposal.
+
+The [frozen discriminator](native-observation/receive-budget-discriminator.md)
+and [instrument](native-observation/receive-budget.c) use one self-sent ordinary
+virtual-copy OOL descriptor, no exported rights, and no AX endpoint. The largest
+payload is 128 KiB, with one message outstanding. Those fixed test inputs bound
+the experiment, not a receiver exposed to arbitrary senders.
+
+`task fixture:receive-budget` builds the diagnostic with Apple clang 21.0.0,
+`-Wall -Wextra -Werror`, SDK 27.0 and deployment floor 26.0; it never runs it.
+Execution was only in disposable TestAnyware clone `koine-k102-budget`.
+The [platform record](native-observation/receive-budget-platform.json) reports
+macOS 26.5 (25F71), arm64, Darwin 25.5.0 / xnu-12377.121.6~2 and 16384-byte
+pages. That record and the [image inventory](native-observation/receive-budget-images.json)
+preserve system-library slice UUIDs. These are image inventory, not a byte match
+of the running kernel to the explanatory open-source revision. The executable
+is linker ad-hoc signed; this is not Koine signing, consent or release acceptance.
+
+| Case | Actual receive | Mapping before payload policy | Disposal observation |
+|---|---|---|---|
+| 0-byte OOL, capacity 4096 | Success, inline size 44 | No nonempty mapping | No nonempty mapping afterward |
+| 32768-byte OOL, capacity 4096 | Success, inline size 44 | Present; policy accepts | Whole span absent afterward |
+| 131072-byte OOL, capacity 4096 | Success, inline size 44 | Present; policy rejects | Whole span absent afterward |
+| 131072-byte OOL, capacity 32 | `MACH_RCV_TOO_LARGE`, required inline size 44 | No received envelope credited | One message remains queued; owned port is torn down |
+| 131072-byte OOL, destruction deliberately skipped | Success, inline size 44 | Present; policy rejects | Span remains present; leak witness fails, then cleanup runs |
+
+The [normal launch](native-observation/receive-budget-normal.json) completed
+with exit 0 and four complete per-case records. The
+[mutant launch](native-observation/receive-budget-mutant.json) completed with
+the required exit 1, not a timeout or transport failure. Both preserve exact
+commands, raw sent/received envelopes, options and local accounting. Every
+successful receive supplied a 52-byte format-0 audit trailer, matching a fresh
+read of the current task's entire audit token. This proves self-sender agreement
+only; it does not discharge AX responder or held-other-task authentication.
+
+Nonempty returned descriptors carried copy=1 and deallocate=1 despite outbound
+deallocate=false. Their mapping addresses differed from the still-held source;
+the complete bytes compared equal. The instrument queried that span before
+the policy decision and after destruction. Local send references remained 1,
+the receive/send name disappeared at teardown, and the source mapping survived
+until its own release. `mach_msg_destroy` supplies no status: the evidence is
+its inspected once-only invocation plus the mapping observations. The mapping
+query tests full-span containment in one region; it is not an exhaustive leak
+detector for partial unmaps, fragmented mappings or total kernel resources.
+
+The [before](native-observation/receive-budget-before.sha256) and
+[after](native-observation/receive-budget-after.sha256) subjects match exactly:
+source, binary, Taskfile, discriminator and consumed SDK message header.
+[Guest before](native-observation/receive-budget-guest-before.json) and
+[guest after](native-observation/receive-budget-guest-after.json) match the
+host executable digest. The Taskfile later gained the diagram render entry,
+after this measurement ended. No instrument or input was edited during a run.
+
+### Admission design consequence
+
+Keep one envelope owner and a borrowing decoder, but require an independently
+enforced acquisition policy before exposing AX reply/delivery rights. Three
+alternatives have different evidence:
+
+| Approach | Evidence and consequence |
+|---|---|
+| Inline limit plus post-receive payload cap | Rejected as sufficient admission control by the measured ordinary-OOL case. Useful parser validation and prompt disposal do not undo acquisition. |
+| Legacy scatter/overwrite receive as a presumed fixed OOL buffer | Not a substantiated replacement: the installed SDK defines `MACH_RCV_OVERWRITE` as zero; the inspected user wrapper marks `rcv_scatter_size` unused. A historical comment is insufficient. |
+| A separately established native acquisition envelope | Still required before AX sends: name enforceable bounds on mappings and rights, queued resources and every exposed descriptor/error form. A mathematical maximum alone must be reconciled with a usable maintained budget. No such mechanism is established by this experiment. |
+
+The explanatory [kernel receive path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/mach_msg.c#L309-L382)
+handles inline-too-large before successful copyout; body-error paths can return
+partially copied resources. The [OOL copyout path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_kmsg.c#L3803-L3925)
+maps the payload and derives returned deallocate from copy mode.
+The [user wrapper and destructor](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/libsyscall/mach/mach_msg.c)
+separate receive-buffer selection from descriptor disposal. These sources
+explain the obligation; the native result above is the 25F71 observation.
+[Downloaded-source digests](native-observation/receive-budget-primary.sha256)
+identify the inspected texts. No abstract model would establish those OS facts.
+
+No foreign sender, physical/volatile OOL, OOL ports, guarded descriptors,
+copyout failure, interruption or voucher-policy case ran. No target application
+or workflow was exercised or observed refused. Zero/nonempty ordinary OOL and
+inline-too-large are the only native forms measured here. A helper process,
+target cooperation or application restriction is not authorized as a workaround.
+The reversal condition is a concrete primitive or complete resource argument
+with native controls enforcing a usable bound before excessive acquisition.
+
+One independent reviewer checked the frozen instrument and discriminator
+against SDK and primary sources before execution, finding no actionable issue
+within this scope. Its stated limits are included above. Graph Tier 2 lookup
+and exact source reads covered the probe; final reviewer coverage generation
+`2026-09-23T11:22:34Z` matched both probe and discriminator, with no recorded
+gaps. The graph is not evidence for native kernel behavior.
+
+### Obligation handoff
+
+| Original exchange obligation | Current evidence / remaining owner |
+|---|---|
+| Bounded acquisition and exactly-once cleanup | k102 disproves the cap-only policy and tests ordinary local OOL disposal; k103 retains an enforceable bound and every exposed foreign/error form |
+| Voucher, requester and launch responsibility | Static paths only; k103 must establish actual execution context before sends |
+| Owned connection/delivery/reply allocation and policy | Local probe port creation/limit calls succeeded; this is not AX connection acceptance or first-add bookkeeping cleanup; k103 retains both |
+| Actual request, fresh reply, audit and live held-task attribution | Self audit only here; k103 must authenticate every AX read/reference/confirmation and delivery chain |
+| Add, closure/delivery and remove with independent witness | Not run; k103 retains the unmodified-application case and complete raw/resource ledger |
+| Refusal, unexpected reply, wrong source and old registration | Not run; k103 retains real controls and their falsification, without relabelling local IPC as native registration evidence |
+| Unsupported forms, refused workflows and parent reconciliation | Explicit limits above; k103 reconciles all k101/k99/k94 criteria. All three nodes stay live |
+
+k91 still owns the broader send/cancellation/drain matrix, k95/k96 publication,
+read lifetime and loss/recovery, and k86/k87 maintained bounds, consent and human
+agreement. No AX exchange, shipping feasibility or parent completion follows.
 
 ## Reproduction
 
