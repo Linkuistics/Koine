@@ -24,23 +24,37 @@
     }
   ],
   "discussion": {
-    "title": "Observe the matching sampler invocation before publishing return",
-    "status": "V8 local loop projection \u2014 remaining sampler work in k146",
-    "summary": "k145 defines the host socket callout, measured baseline, dedicated-mode sources, cancellation and unconditional post-return continuation. k146 retains native-call/ownership failures; k143 targets; k144 complete composition and fresh review. No native credit.",
+    "title": "Keep every acquired reference until release actually succeeds",
+    "status": "V9 native-right projection \u2014 sampler composition remains k148",
+    "summary": "k147 joins native call returns to ownership summaries and preserves failed or uncertain cleanup. K146 remains live for source/hint failures and late-abort composition; k144 owns the complete protocol and fresh review. No native credit.",
     "diagramIds": [
+      "process-recorder-ownership",
       "process-recorder-loop",
-      "process-recorder-return",
-      "process-recorder-history",
-      "process-recorder-markers"
+      "process-recorder-history"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-loop",
-        "summary": "Adds the explicit callout/invocation boundary, cancellation and timeout branches, and mandatory post-return work."
+        "id": "process-recorder-ownership",
+        "summary": "Shows distinct references sharing a name, raw release failure and the prohibition on claiming empty cleanup."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-ownership",
+      "group": "machine",
+      "title": "Native calls and per-reference cleanup",
+      "renderer": "svg",
+      "source": "process-recorder-ownership.puml",
+      "rendered": "process-recorder-ownership.svg",
+      "caption": "V9 local ownership projection. Sequence begins at the acquisition call. Type/live refusal does not release a reference; a failed release remains owed, and an unfinished call remains pending. Coalesced names are a synthetic bookkeeping discriminator, not a claim about distinct live targets. Source/hint and failure-message composition remain k148; native truth and private-loop coverage remain k126 gates.",
+      "links": [
+        {
+          "label": "V9 ownership contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-9-native-right-ownership"
+        }
+      ]
+    },
     {
       "id": "process-recorder-loop",
       "group": "machine",

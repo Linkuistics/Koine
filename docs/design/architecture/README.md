@@ -16,17 +16,18 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V8 defines the sampler host callout, one owned
-invocation, cancellation and matching return. Its local result stays separate
-from controller and sample evidence. K142 is now a node: k145 supplies this loop
-projection; k146 retains native-operation/ownership failures and complete late
+remains unready for native use. V9 joins raw native-right calls to exact summaries
+and keeps one cleanup obligation per acquired reference, including coalesced
+names and failed releases. Its local report is separate from loop, controller
+and sample evidence. K146 is now a node: k147 supplies this ownership projection;
+k148 retains source/hint calls, failure messages and complete cancellation/late
 abort paths. K143 owns target lifecycle, and k144 complete waits, composition and
-fresh review, under the full k140/k138/k135 charters.
+fresh review, under the full k142/k140/k138/k135 charters.
 
 Changed in this discussion:
 
-- [Sampler callout, invocation and cancellation](index.html#diagram-process-recorder-loop) — Adds the explicit callout/invocation boundary, cancellation and timeout branches, and mandatory post-return work.
-- [Sampler loop contract](../../verification/callback-causal-fixture/contract.md#version-8-sampler-loop-projection) — Defines observed context, local diagnostics and the remaining producer obligations.
+- [Native calls and per-reference cleanup](index.html#diagram-process-recorder-ownership) — Shows acquisition, distinct obligations for a shared name, failed deallocation and pending-call limits.
+- [Native-right ownership contract](../../verification/callback-causal-fixture/contract.md#version-9-native-right-ownership) — Defines raw fields, exact summary joins, retained failure obligations and independent diagnostics.
 
 The earlier recorder diagrams are unchanged context.
 
