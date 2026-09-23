@@ -15,19 +15,20 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [causal analyzer](../../verification/callback-capture-transfer.md#causal-analyzer-and-controls)
-checks synthetic transcripts through explicit message/input causality and a
-continuous-ownership ledger. Broken witnesses and accepted stale values fail;
-arrival permutation preserves the result. Native fixture reachability and full
-callback schedules remain pending. The guest entry inspection still leaves
-actual foreground/PID producer freshness unresolved. Neither public source nor
-a capture construction is adopted; transfer and resident protocol remain separate.
+The [native input-route discriminator](../../verification/callback-capture-transfer.md#native-input-route-discriminator)
+reaches B's independent normal-input receipt followed by a distinct passive
+sampler callback in two ordinary cases. The missing-receipt control withholds
+that trigger. Sampler Input Monitoring is allowed; sampler AX/post permission
+is absent. This diagnostic permission configuration is not a product agreement.
+Complete causal capture, gates and actual source freshness remain open in
+k119/k115. Neither a source nor capture construction is adopted.
 
 Changed in this discussion:
 
-- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds the executable analyzer and synthetic controls while keeping native reachability pending.
-- [Causal analyzer and controls](../../verification/callback-capture-transfer.md#causal-analyzer-and-controls) — Records the trace contract, exact result categories and reproducible frozen control run.
-- [Causal transcript contract](../../verification/callback-causal-fixture/contract.md) — Defines process ownership, causal edges and the acceptance checker's explicit limits.
+- [Native input receipt before passive callback trigger](index.html#diagram-process-input-route) — Adds the measured receipt-to-trigger route, separate permissions and withheld-receipt branch.
+- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Separates the reached ordinary route from the unmeasured delayed-entry capture schedule.
+- [Native input-route discriminator](../../verification/callback-capture-transfer.md#native-input-route-discriminator) — Records final and failed native runs, frozen inputs, permission observations and the remaining k119 obligations.
+- [Route field contract](../../verification/callback-input-route/contract.md) — Defines actual field producers, bounds and the limits of intended application outcomes.
 
 Unchanged context: [capture and transfer](index.html#diagram-process-capture),
 [resident composition](index.html#diagram-packages),
@@ -75,6 +76,18 @@ retain their existing renderer settings when changing them.
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
+
+For the native input-route update, `task design:render-callback-sampling`
+rendered both affected sources. The named source/manifest/viewer/Taskfile digests
+matched before/after; SVG XML, discussion references and served bytes checked.
+The PNGs and Safari's fresh route, sampling and discussion deep links were
+inspected in disposable clone `koine-k118-route`. The light desktop view shows
+readable diagrams, the topic outline and matching Current/Updated markers.
+Mobile and dark appearance were not checked. The
+[presentation record](../../verification/callback-input-route/evidence/presentation.json)
+and screenshots retain this check. It verifies delivery of the discussion;
+the separate [native results](../../verification/callback-capture-transfer.md#native-input-route-discriminator)
+state the route's evidentiary limits.
 
 For the causal analyzer update, `task design:render-callback-sampling` completed
 with source/Taskfile/manifest/viewer inputs unchanged item by item. The PNG was

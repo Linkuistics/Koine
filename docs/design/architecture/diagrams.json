@@ -24,24 +24,37 @@
     }
   ],
   "discussion": {
-    "title": "Causal analyzer and remaining native witness",
-    "status": "Synthetic controls checked; native fixture pending",
-    "summary": "The executable analyzer checks message causality, independent input receipt and continuous ownership, with falsification controls. A consistent synthetic trace proves neither native gate reachability nor actual foreground/PID freshness. k117 builds the native fixture; k115 measures its schedules.",
+    "title": "Native input route before causal capture",
+    "status": "Ordinary route observed; complete capture fixture remains open",
+    "summary": "A passive session-tail tap receives a distinct trigger after independent B input receipt, with sampler Input Monitoring and no AX consent. The missing-receipt control withholds that trigger. This route-only evidence does not establish delayed entry, source freshness or retained process identity. k119 integrates the causal recorder; k115 measures full schedules.",
     "diagramIds": [
+      "process-input-route",
       "process-sampling",
       "process-capture",
       "packages",
-      "process-target-contract",
-      "process-receive-admission"
+      "process-target-contract"
     ],
     "updatedDiagrams": [
       {
+        "id": "process-input-route",
+        "summary": "Adds the measured receipt-to-trigger route, separately attributed permissions and missing-receipt control."
+      },
+      {
         "id": "process-sampling",
-        "summary": "Adds the executable analyzer and its synthetic failure controls, while keeping native reachability and F/M freshness unresolved."
+        "summary": "Distinguishes the reached ordinary input route from the still-unmeasured delayed-entry capture schedule."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-input-route",
+      "group": "machine",
+      "title": "Native input receipt before passive callback trigger",
+      "renderer": "svg",
+      "source": "process-input-route.puml",
+      "rendered": "process-input-route.svg",
+      "caption": "macOS 26.5 (25F71), disposable clone. Two ordinary cases preserve both marker fields through B input, controller receipt observation and the distinct sampler trigger; the withheld-receipt control emits no trigger. Each marker uses a fresh event source and event pair. Independent LaunchServices sampler reports AX false, listen true, post false. File receipt is a bounded bridge, not the complete message protocol. No foreground getter, acquired right, delayed-entry gate or freshness conclusion is present. See docs/verification/callback-capture-transfer.md#native-input-route-discriminator."
+    },
     {
       "id": "process-sampling",
       "group": "machine",
@@ -49,7 +62,7 @@
       "renderer": "svg",
       "source": "process-sampling.puml",
       "rendered": "process-sampling.svg",
-      "caption": "Delayed-entry witness remains a native proposal. The acceptance-path analyzer now joins local sequences, message acknowledgments and independent marker receipt, and rejects synthetic attribution/ownership faults. Arrival permutation preserves the result. Native fixture reachability and full schedules have not run. macOS 26.5 loaded-code inspection still leaves AppKit and LaunchServices producer age/coherent F/M mapping unresolved; getter call order is not freshness proof. See docs/verification/callback-capture-transfer.md#causal-analyzer-and-controls."
+      "caption": "Delayed-entry capture remains a native proposal. k118 reaches only the ordinary receipt-to-trigger prerequisite through a passive tap, without sampler AX consent. The analyzer checks synthetic message/input and ownership contradictions; k119 still owes native capture records, both source/construction modes and gates. Full schedules remain k115. Actual AppKit/LaunchServices producer age and coherent F/M mapping remain unresolved. See docs/verification/callback-capture-transfer.md#native-input-route-discriminator."
     },
     {
       "id": "process-receive-admission",
