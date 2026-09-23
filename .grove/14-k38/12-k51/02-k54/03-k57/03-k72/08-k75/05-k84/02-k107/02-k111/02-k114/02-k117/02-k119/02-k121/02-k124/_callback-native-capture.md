@@ -69,3 +69,11 @@ native acceptance. k128's smaller repairs specify coverage/combined outcomes,
 per-clone preparation, PID provenance, callback selection and host recovery;
 k126's charter explicitly retains each native control and escalation. No
 criterion above or in k121 is closed. No parent closes in this integration.
+
+k129 supplies the complete v2 protocol and synthetic matrix, with unfiltered
+trigger input, delivered-marker callback selection, settle/finish messages and
+an explicit finite observation window. Both v2 schedules record enclosing
+return before retention. Its fresh tree design review precedes k126; native
+producer truth, loop coverage, actual exits, preparation and containment remain
+unestablished. k126's charter carries all original criteria and the detailed
+protocol/audit handoff. This design completion closes no parent criterion.

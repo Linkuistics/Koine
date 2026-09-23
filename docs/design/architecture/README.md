@@ -16,19 +16,19 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-requires a protocol revision before native acceptance. k128 reproduced trigger
-receipt/cardinality and startup/late-activity ordering failures; k129 owns complete
-protocol traces and a fresh tree review before k126. The integration repairs
-both-schedule loop coverage, combined verifier outcomes, per-clone scripted
-permission setup, candidate PID provenance, tap-selection controls and host
-recovery. These are obligations, not measured native results. k124/k121 remain
-live, k122 retains full gates and k115 freshness.
+now specifies complete version-2 traces: unfiltered target key-downs include the
+trigger, whose delivered marker selects the callback; readiness, settle and finish
+exchanges order both targets' activity. Eight synthetic matrix cells are accepted.
+Fresh tree review still precedes k126. Both-schedule loop coverage, combined
+outcomes, per-clone permission setup, candidate PID provenance and host recovery
+remain native obligations. k124/k121 stay live, k122 retains gates and k115 freshness.
 
 Changed in this discussion:
 
-- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Marks the unresolved full protocol and both-schedule coverage requirement.
-- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Adds preparation, crash recovery and combined outcomes to the separate status/containment boundary.
-- [Integrated native recorder proposal](../../verification/callback-capture-transfer.md#integrated-native-recorder-proposal) — Maps every original recorder criterion to the contract and still-required native evidence.
+- [Complete recorder protocol and finite observation](index.html#diagram-process-recorder-protocol) — Adds readiness, settle, arm, trigger, retention and finish exchanges, with every acknowledgment before exit.
+- [Callback return at the enclosing native call](index.html#diagram-process-recorder-return) — Ties selection to the delivered trigger and retains both-schedule coverage requirements.
+- [Actual app exits and whole-clone containment](index.html#diagram-process-recorder-containment) — Places closed observation and all finish acknowledgments before app exit.
+- [Integrated native recorder proposal](../../verification/callback-capture-transfer.md#integrated-native-recorder-proposal) — Records the version-2 synthetic evidence separately from open native obligations.
 
 Unchanged context: [external exit observer](index.html#diagram-process-exits),
 [post-return retention](index.html#diagram-process-retention),
@@ -66,6 +66,7 @@ From the repository root:
 ```sh
 task design:render-process-identity
 task design:render-callback-sampling
+task design:render-callback-recorder
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -76,6 +77,20 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k129, `task design:render-callback-recorder` rendered the protocol, return
+and containment views in disposable clone `koine-k129-view`, using PlantUML
+1.2026.8. Source/task and named renderer inputs matched before/after; local,
+host-served, guest and guest-served source/export/viewer bytes matched. Fresh
+Safari deep links and the discussion panel were inspected at a wide light
+desktop, including captions, outline and Current/Updated markers. The
+[presentation record](../../verification/callback-native-capture/evidence/k129/presentation.json)
+links the render results, input maps and screenshots. The renderer reported no
+Graphviz executable; all three sequence diagrams rendered successfully. The
+named-tool hashes do not freeze every runtime dependency. Mobile and dark
+appearance were not checked. No native recorder or permission-setup diagnostic
+ran. The clone was stopped and backend removal confirmed. Earlier records below
+apply to their own revisions.
 
 For k128, the root render task ran in disposable clone `koine-k128-view` using
 PlantUML 1.2026.8. The updated return/containment views and fresh discussion link

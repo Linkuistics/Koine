@@ -77,6 +77,11 @@ tasks:
       - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
       - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py
 
+  design:generate-callback-controls:
+    desc: Regenerate synthetic causal fixtures before freezing a new run
+    cmds:
+      - python3 docs/verification/callback-causal-fixture/make_controls.py
+
   design:verify-callback-controls:
     desc: Archive exact analyzer control outcomes and before/after inputs (OUT must be new)
     requires:
@@ -269,6 +274,13 @@ tasks:
     cmds:
       - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml process-target-contract.puml process-observation.puml process-observation-wire.puml
       - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml process-target-contract.puml process-observation.puml process-observation-wire.puml
+
+  design:render-callback-recorder:
+    desc: Render recorder protocol, return and containment (run only in a disposable VM)
+    dir: docs/design/architecture
+    cmds:
+      - plantuml --svg --check-before-run --no-error-image process-recorder-protocol.puml process-recorder-return.puml process-recorder-containment.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-protocol.puml process-recorder-return.puml process-recorder-containment.puml
 
   design:render-receive-budget:
     desc: Render the native receive acquisition experiment view as SVG and PNG

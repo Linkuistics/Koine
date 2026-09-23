@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Native recorder return and containment boundaries",
-    "status": "Protocol revision required before native acceptance; no capture measured",
-    "summary": "k128 reproduces trigger-cardinality and activity-ordering failures. k129 must revise the complete protocol and obtain tree review before k126 builds it. Repaired obligations cover both-schedule loop coverage, combined verifier outcomes, scripted per-clone permission setup, admitted candidate PIDs, tap selection and host recovery. Native evidence remains k126; k122 keeps full gates and k115 freshness.",
+    "title": "Complete recorder protocol and observation window",
+    "status": "Proposed \u2014 synthetic checks; tree review before native use",
+    "summary": "Version 2 records the trigger as normal target input and joins its delivered marker to the selected callback. Both targets settle before B input and close their finite observation windows through finish exchanges before any app exits. Canonical traces cover all eight cells; native producer truth, loop coverage and containment remain unestablished.",
     "diagramIds": [
+      "process-recorder-protocol",
       "process-recorder-return",
       "process-recorder-containment",
       "process-exits",
@@ -36,16 +37,29 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "process-recorder-protocol",
+        "summary": "Adds the complete readiness, settle, arm, trigger, retention and finish exchange."
+      },
+      {
         "id": "process-recorder-return",
-        "summary": "Marks the incomplete protocol and requires both-schedule loop coverage with a serviced-source control."
+        "summary": "Ties callback selection to the actual trigger and the proposed version-2 protocol."
       },
       {
         "id": "process-recorder-containment",
-        "summary": "Adds durable host recovery, per-clone preparation and combined outcome precedence; no missing status is supplied by containment."
+        "summary": "Requires all finish acknowledgments before any exit release."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-protocol",
+      "group": "machine",
+      "title": "Complete recorder protocol and finite observation",
+      "renderer": "svg",
+      "source": "process-recorder-protocol.puml",
+      "rendered": "process-recorder-protocol.svg",
+      "caption": "Proposed diagnostic protocol v2; synthetic consistency is not native reachability. Every target key-down remains input, including the trigger. Settle orders dispatched notifications only. Every finish acknowledgment precedes every exit release; pending and post-close notifications are outside the explicitly finite observation interval. See docs/verification/callback-native-capture/contract.md#ownership-and-causal-messages."
+    },
     {
       "id": "process-recorder-return",
       "group": "machine",
@@ -53,7 +67,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "Diagnostic proposal requiring k129 protocol revision and tree review before native acceptance. Enclosing return still proves unwind, but trigger receipt and startup/finish ordering remain unresolved. Both schedules withhold positive credit for missing loop coverage; owned-handler reentry is distinct from framework-private nesting. The custom-mode control must service a real source. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
+      "caption": "Proposed version-2 recorder; tree review precedes native use. Enclosing return proves unwind; selected enter.marker must be the actual distinct trigger. Both schedules withhold positive credit for missing loop coverage; owned-handler reentry is distinct from framework-private nesting. The custom-mode control must service a real source. See docs/verification/callback-native-capture/contract.md#callback-return-boundary."
     },
     {
       "id": "process-recorder-containment",
@@ -62,7 +76,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "Design only. Reserve each clone before creation and recover unresolved host-crash reservations before starting another. Script the frozen diagnostic permissions outside measurement. Retain actual app and helper outcomes separately from host-confirmed stop; combine audit and causal results by the contract precedence table. Missing status or coverage prevents positive credit. Preheld PIDs come from admitted kernel peers; native k126 must falsify provenance and tap-selection controls. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment."
+      "caption": "Design only. Reserve each clone before creation and recover unresolved host-crash reservations before starting another. Script the frozen diagnostic permissions outside measurement. Retain actual app and helper outcomes separately from host-confirmed stop; combine audit and causal results by the contract precedence table. Missing status or coverage prevents positive credit. Preheld PIDs come from admitted kernel peers; native k126 must falsify provenance and tap-selection controls. See docs/verification/callback-native-capture/contract.md#exits-failure-and-containment. All roles acknowledge finish before exit releases; target observation closes before teardown-caused notifications."
     },
     {
       "id": "process-exits",
@@ -80,7 +94,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
