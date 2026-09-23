@@ -24,23 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Retained B across C input after callback return",
-    "status": "Synthetic causal contract checked; native recorder remains open",
-    "summary": "The after-callback schedule requires an observation outside the callback before C injection, then independent C receipt before a live read through the same continuously held B token. This is distinct from after-sample, where C input precedes in-callback validation. k120 checks the analyzer; k121 supplies ordinary native capture and exits; k122 verifies gates. Source freshness remains unresolved.",
+    "title": "External app exits before recorder integration",
+    "status": "Native exit controls verified; capture recorder remains open",
+    "summary": "The observer registers kernel exit-status notifications before releasing independently launched apps. Controls distinguish launcher success and self-reported intent from actual failure, and test a watchdog with one known descendant. k124 retains four-process capture, the returned boundary, integrated cleanup and full provenance; k122 retains gates. Source freshness remains unresolved.",
     "diagramIds": [
+      "process-exits",
       "process-retention",
-      "process-sampling",
       "process-input-route",
       "packages"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-retention",
-        "summary": "Adds the post-return message chain, independent C input and retained-B check, with explicit native producer limits."
+        "id": "process-exits",
+        "summary": "Adds registration-before-release, kernel status, watchdog cleanup and the controlled-group limits."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-exits",
+      "group": "machine",
+      "title": "External exits for independently launched apps",
+      "renderer": "svg",
+      "source": "process-exits.puml",
+      "rendered": "process-exits.svg",
+      "caption": "Diagnostic exit-observer mechanism. Kernel registration precedes the socket release; actual app status is separate from launcher status and success intent. Missing status and enumeration errors fail, and local/guest digests bind the measured binary. The watchdog covers a fixed group with one known descendant. Unidentified startup failure, escaping descendants and complete four-role recorder cleanup remain k124. No callback-return, capture, or freshness result follows. See docs/verification/callback-capture-transfer.md#external-exit-observer."
+    },
     {
       "id": "process-retention",
       "group": "machine",
@@ -48,7 +57,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",

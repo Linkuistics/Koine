@@ -15,22 +15,21 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [retained-switch analyzer extension](../../verification/callback-capture-transfer.md#retained-switch-analyzer-extension)
-checks captured B after later C input. Its `after-callback` schedule requires a
-post-return observation before C injection, then independent C receipt before
-the same held B token's live read. This differs from `after-sample`, where C
-input precedes in-callback validation. The controls are synthetic. Native return
-observation, complete capture and gate reachability remain k121/k122; source
-freshness remains k115. The earlier ordinary input-route result remains useful
-context, and neither source nor capture construction is adopted.
+The [external exit observer](../../verification/callback-capture-transfer.md#external-exit-observer)
+checks actual app termination independently of LaunchServices success and app
+intent. Registration precedes gate release; native controls exercise nonzero and
+signal exits, missing status, and a watchdog over a known two-process group.
+A synthetic enumeration error and stale-build control test evidence rejection.
+This is a recorder prerequisite. k124 retains four-process capture, callback
+return and integrated cleanup/provenance; k122 retains gates and k115 freshness.
 
 Changed in this discussion:
 
-- [Retained B across input to C after callback return](index.html#diagram-process-retention) — Adds the post-return message chain and independent C receipt before retained-B validation, with native producer limits.
-- [Retained-switch analyzer extension](../../verification/callback-capture-transfer.md#retained-switch-analyzer-extension) — Records the renewed synthetic controls and the remaining native recorder/gate ownership.
-- [Retained B after callback return](../../verification/callback-causal-fixture/contract.md#retained-b-after-callback-return) — Defines the outside-callback `returned` observation and exact required causal edges.
+- [External exits for independently launched apps](index.html#diagram-process-exits) — Adds gated kernel registration, separate actual statuses and bounded known-group cleanup.
+- [External exit observer](../../verification/callback-capture-transfer.md#external-exit-observer) — Records the native controls, review corrections, frozen evidence and remaining recorder obligations.
 
-Unchanged context: [ordinary input route](index.html#diagram-process-input-route),
+Unchanged context: [post-return retention](index.html#diagram-process-retention),
+[ordinary input route](index.html#diagram-process-input-route),
 [sampling witnesses](index.html#diagram-process-sampling),
 [capture and transfer](index.html#diagram-process-capture),
 [resident composition](index.html#diagram-packages),
@@ -78,6 +77,15 @@ retain their existing renderer settings when changing them.
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
+
+For the external-exit update, `task design:render-callback-sampling` rendered
+the new sequence. Its PNG and fresh exit/discussion deep links were inspected
+in Safari in disposable clone `koine-k123-exits`, including the topic outline
+and Current/Updated markers. The
+[presentation record](../../verification/callback-exit-observer/evidence/presentation.json)
+retains input digests and served-byte checks. This covers light desktop delivery;
+mobile and dark appearance were not checked. The separate native exit diagnostic
+ran in this clone; no callback capture ran.
 
 For the retained-switch update, `task design:render-callback-sampling` rendered
 the new PlantUML sequence. The PNG and fresh retention/discussion deep links
