@@ -141,6 +141,11 @@ tasks:
     cmds:
       - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/inspection.json docs/verification/native-observation/followup.json
 
+  design:decode-native-observation-requests:
+    desc: Decode the frozen add/remove server request scans without native execution
+    cmds:
+      - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/request-decoders.json
+
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture

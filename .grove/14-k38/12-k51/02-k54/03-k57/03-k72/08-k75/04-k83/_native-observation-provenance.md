@@ -116,3 +116,8 @@ Its first child, k93, derives a partial layout dossier from the frozen scans;
 k94–k96 retain exchange validation, publication/read lifetime and loss/recovery.
 The new byte tables establish no closure, completeness or publication barrier.
 The original k83 charter above and k91/k92's responsibilities remain unchanged.
+
+k94's request-decoder preflight is now separately evidenced by k97. Its live
+children k98/k99 retain connection semantics, authenticated receive cleanup and
+the actual add/delivery/remove exchange. No native observation or publication
+premise follows from the decoded request path.

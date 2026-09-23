@@ -85,3 +85,9 @@ full send-result/ingress-cut/cancellation/drain matrix or k86's maintained
 limits. Every child authenticates its own read/reference/confirmation replies.
 No parent closes on static tables, synthetic controls or a successful fixture.
 No model is used to assume the native lifetime/order facts these leaves test.
+
+k94 decomposed its preflight before sends. k97 supplies pinned request constants
+and server-decoder evidence; k98 retains the legitimate client connection and
+scalar/policy semantics, and k99 retains receive/cleanup and the witnessed
+exchange. k95/k96 must consume that exchange or its concrete conflict, not
+infer feasibility from the static request tables. All criteria above remain.

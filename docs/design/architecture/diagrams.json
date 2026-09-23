@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: layout evidence before an owned exchange",
-    "status": "Partial wire specification — native exchange and lifetime evidence outstanding",
-    "summary": "Saved 25F71 bytes now yield add/remove/post offsets, inline length bounds and reply checks. Request-header literals, server decoders, client-connection semantics and runtime ownership still need a bounded preflight. Notification OOL bytes need a separate bound; a receive context is not sender audit identity. No new native exchange ran. Both registration orders, delayed older closure, loss detection and read lifetime remain unresolved, with the repaired retirement proposal unchanged.",
+    "title": "Native observation: request decoding matched",
+    "status": "Static request path established — connection and owned exchange remain open",
+    "summary": "Pinned 25F71 reads now match actual add/remove IDs and NDR bytes to server dispatch and decoder checks. The target decoder passes audit bytes, but its visible trailer guard does not cover the full field; surrounding receive bounds remain unproved. Connection/scalar policy and authenticated receive ownership still precede a live exchange. No request, closure, loss or publication schedule ran.",
     "diagramIds": [
       "process-observation-wire",
       "process-observation",
@@ -36,7 +36,7 @@
     "updatedDiagrams": [
       {
         "id": "process-observation-wire",
-        "summary": "Adds decoded add/remove offsets, missing header/connection prerequisites and explicit OOL/trailer validation obligations."
+        "summary": "Replaces missing header/decoder prerequisites with matched request IDs and decoder checks; exposes the remaining connection and full-trailer/cleanup obligations."
       }
     ]
   },
@@ -48,7 +48,7 @@
       "renderer": "svg",
       "source": "process-observation-wire.puml",
       "rendered": "process-observation-wire.svg",
-      "caption": "The original bytes were inspected in disposable clone koine-k83-observation on macOS 26.5 (25F71). The layout dossier re-decodes them without a new native exchange: add/remove/post offsets and reply checks are known, but header literals, server decoders, connection ownership and receive cleanup remain prerequisites. The post's inline bound does not bound its OOL payload; the owned receiver needs full kernel audit-trailer validation. Supplied cookie context is not a window generation. Neither publication order, read lifetime nor loss detection follows. Evidence and next preflight: docs/verification/native-observation-layout.md. Both registration orders and the complete k83 charter remain live; no adapter or public-contract change is adopted. The observation-retirement view is unchanged proposal context."
+      "caption": "Pinned loaded-byte inspection on macOS 26.5 (25F71) now matches add/remove IDs and NDR bytes to their server dispatch and decoders. Received port types, inline bounds and audit-field handoff are evidenced statically. The visible target trailer guard does not cover every byte read; owned receive bounds, authentication, OOL cleanup, connection/scalar policy and the live exchange remain prerequisites. Cookie context supplies no window generation. No closure, read lifetime, publication barrier or complete stream is established. Evidence: docs/verification/native-observation-requests.md. The observation-retirement view remains unchanged proposal context."
     },
     {
       "id": "process-observation",

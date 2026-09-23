@@ -17,18 +17,22 @@ python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architectur
 
 The SVG exports beside each source also open on their own.
 
-The k93 layout update to the wire view was rendered with PlantUML 1.2026.8 and
-its Smetana layout in disposable clone `koine-k93-layout`, using
-`task design:render-process-identity`. Renderer/source hashes matched before
-and after. The full PNG and a fresh Safari deep link, discussion, outline and
-updated marker were inspected; desktop light/dark appearance and a 650-pixel
-light window were checked. Viewer, manifest, source and SVG hashes matched
-between guest and host; host HTTP delivery matched. This was a presentation
-check only, with no native observation experiment or mobile-device check.
+The k97 request-decoder update to the wire view was rendered with PlantUML
+1.2026.8 in headless mode using `task design:render-process-identity`.
+[Renderer/source hashes](../../verification/native-observation/request-render-before.sha256)
+matched [after rendering](../../verification/native-observation/request-render-after.sha256).
+The full PNG and a fresh Safari deep link, discussion, outline and updated
+marker were inspected in disposable clone `koine-k94-preflight`. Wide light and
+650-pixel light/dark desktop layouts were checked; the SVG retains its light
+canvas, and narrow fit reduces text size with native-size/full-size alternatives
+available. Viewer, manifest, changed source and SVG hashes matched guest/host;
+host HTTP delivery matched. These are presentation checks, not an observation
+exchange or a mobile-device check. Native byte inspection is documented in the
+[request-decoder report](../../verification/native-observation-requests.md).
 
 Stable views:
 
-- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — adds decoded add/remove offsets, missing header/connection prerequisites and separate OOL/trailer validation obligations.
+- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — replaces missing request constants and decoder evidence with matched IDs, received-port checks and audit-field handoff; connection and complete receive validation remain open.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
