@@ -205,13 +205,24 @@ acting on a replacement process after actual PID reuse. Treat the native
 replacement as unfinished; a task right plus retained AX objects is not an
 approved client protocol.
 
-Koine also declines the investigated direct AX endpoint as the replacement
-binding. Strict process lifetime remains required; narrower application support
-and weaker targeting semantics are not selected. The replacement and first
-public release remain unresolved. The human has chosen to discuss a narrower
-support or targeting contract before further native work; no particular change
-has yet been agreed.
-The capture decision records the evidence and conditions for reconsideration.
+The agreed future effect contract is **endpoint addressing only**. Koine keeps
+using the endpoint admitted for the captured process; it does not guarantee
+permanent receiver ownership or safe handler/downstream behavior. Receiver
+movement, descriptor reuse, forwarding or queued activation may affect another
+process, including a restored successor. Capture/reference expiry still follows
+the original process. The future operation will expose a focus attempt and
+separate request acceptance from an observation; a lost/failed response does not
+prove that nothing happened. Do not retry automatically.
+
+No shipping mechanism, lifecycle policy, restart policy or version agreement is
+supplied by this choice. The direct adapter and first public release remain
+unresolved. The capture decision records the evidence and remaining obligations.
+
+The [native targeting discussion](specs/machine.md#native-targeting-discussion)
+states the agreed future contract and its limits. The timestamp schema and focus
+receipt documented elsewhere in this guide still describe the served behavior;
+they are not the new operation or permission to assume the old exact-target
+promise from the future API.
 
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That

@@ -29,7 +29,10 @@ on Apple Silicon, the one supported platform. The spec's "Acceptance status"
 lists what is established, with its evidence, and what is still open. The most
 significant open item: the process identity a client submits, a start instant,
 is being replaced by a mechanism that does not depend on time before the first
-public release. Discovering applications that are not running, and an LLM skill
+public release. The agreed future effect promise is
+[endpoint addressing only](docs/specs/machine.md#native-targeting-discussion),
+with indirect wrong-process effects explicitly outside its guarantee; the served
+API has not yet migrated. Discovering applications that are not running, and an LLM skill
 set, are outside this version.
 
 - [Writing a client](docs/client-guide.md): the contract version, how a client

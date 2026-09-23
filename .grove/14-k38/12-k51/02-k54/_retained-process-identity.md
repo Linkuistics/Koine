@@ -9,6 +9,21 @@ provider contract with the human before k52 implements it.
 
 
 
+## Current targeting agreement
+
+In `native-target-contract-k78`, the human selected **endpoint addressing only**.
+Capture/reference lifetime remains tied to the original process; Koine never
+rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
+and downstream effects on another process, including a restored successor, are
+explicitly outside the effect guarantee. Read the current capture ADR and
+`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
+This qualifies inherited strict-effect criteria below; historical investigation
+and decision logs retain the requirements against which they were written.
+Public clients, callback-time capture, non-time identity, Koine consent and no
+helper/injection/cooperation remain required. No shipping mechanism, lifecycle
+policy, restart policy or first release is approved. k79 reviews this agreement;
+k75 retains the full protocol and k52 handoff. The parents remain live.
+
 ## Context
 
 - Read the parent brief's human decisions and pinned task-right review. Client
@@ -48,11 +63,11 @@ provider contract with the human before k52 implements it.
   boot restart semantics. The existing application reference survives Koine
   restart; continuously held rights do not obviously preserve that property.
   Seek agreement on any necessary change with the concrete trade-off shown.
-- Account for every native effect and focus confirmation. State what binds the
-  endpoint to the captured process, how it is acquired, and what happens if the
-  process ends between checks and use. Another pre-check or a post-check does
-  not close an effectful PID reuse race. If public APIs cannot support the
-  guarantee, report that evidenced conflict rather than assuming it away.
+- Account for every native effect and confirmation under k78's endpoint-addressing
+  boundary: authenticated admission, continuous retention, no destination
+  reacquisition, and honest refusal/uncertainty when death races use. Do not
+  claim atomic no-substitution for receivers, descriptors or downstream work;
+  those guarantees are explicitly excluded. Keep capture/reference expiry strict.
 - Update the machine spec, design SDL, published design operations, capture ADR
   (in place), other affected current ADRs, client guide and architecture views
   to the agreed contract. Confirm the prepublication `koine-desktop/1` framing
@@ -153,16 +168,12 @@ the matched fixture. Separate Koine policy attribution/denial is untested and
 does not resolve those native gaps. No complete binding or private-adapter OS
 support set is approved.
 
-In k57, the human chose **preserve strict lifetime; decline this candidate**.
-The non-time replacement and first public release remain unresolved. Reopen
-native investigation only on a specific lead addressing the missing lifetime
-premises. The k72 survey triage proposes window-qualified activation as a partial
-downstream investigation; the human chose a narrower support/targeting contract
-discussion before further native work, now k78. Callback-time foreground capture
-is confirmed; no support restriction is yet selected. It leaves receiver/descriptor lifetime unresolved and
-adopts no complete binding. Neither narrower application support nor
-weaker targeting semantics is agreed. The synthesis names costs, alternatives
-and reversal evidence; a successful policy probe alone cannot authorize adoption
-or starting k52. k57 stays live for the original capture/transfer/reference/
-restart, prepublication agreement and documentation deliverable; this decision
-does not satisfy those criteria or close this node.
+The initial adoption decision declined the candidate against the strict effect
+requirement. k78 now records the human's explicit choice of endpoint addressing
+only. That makes receiver/descriptor and downstream no-substitution excluded
+guarantees, without changing the old evidence or adopting a shipping mechanism.
+The direct endpoint can be evaluated against the revised boundary after k79's
+review. k74's separate activation route is outside that boundary and was explicitly
+abandoned by the human. k75 retains capture/transfer, lifecycle and consent evidence,
+reference/restart semantics, prepublication agreement and the k52 handoff. Those
+original deliverables remain live under the revised effect guarantee.

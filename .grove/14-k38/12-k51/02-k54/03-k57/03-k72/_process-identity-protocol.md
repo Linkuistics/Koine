@@ -6,14 +6,31 @@
 Consume the native-binding survey, establish and agree a feasible mechanism,
 then deliver the full capture/transfer/reference/restart contract and k52
 implementation handoff required by `process-identity-contract-k57`. Every
-original Done when in the parent still applies.
+original parent criterion remains except for k78's expressly revised effect
+guarantee.
+
+## Current targeting agreement
+
+In `native-target-contract-k78`, the human selected **endpoint addressing only**.
+Capture/reference lifetime remains tied to the original process; Koine never
+rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
+and downstream effects on another process, including a restored successor, are
+explicitly outside the effect guarantee. Read the current capture ADR and
+`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
+This qualifies inherited strict-effect criteria below; historical investigation
+and decision logs retain the requirements against which they were written.
+Public clients, callback-time capture, non-time identity, Koine consent and no
+helper/injection/cooperation remain required. No shipping mechanism, lifecycle
+policy, restart policy or first release is approved. k79 reviews this agreement;
+k75 retains the full protocol and k52 handoff. The parents remain live.
 
 ## Context
 
 - Read `docs/research/native-process-bound-effects-a.md`, produced by
   `native-process-bound-effects-k71`, and the capture ADR. The human's rejection
-  of the investigated direct AX candidate is settled; do not re-ask that choice.
-  The survey is evidence for selecting a next investigation, not product approval.
+  of the investigated direct AX candidate against strict effects remains an
+  evidence conclusion. k78 authorizes evaluation against endpoint addressing
+  after review, not adoption of that diagnostic or product approval.
 - The existing implementation is `process-identity-without-time-k52`, with its
   full evidence-renewal table. Preserve its position and obligations. This
   design session creates no implementation leaves.
@@ -26,8 +43,9 @@ original Done when in the parent still applies.
 - Triage the survey against all settled constraints. For a credible lead, name
   and obtain the missing native evidence before treating it as implementable.
   If that investigation exceeds one focused session, decompose or insert the
-  concrete design work before continuing the contract. Do not reopen the
-  declined route without a specific new premise that addresses its gaps.
+  concrete design work before continuing the contract. Evaluate the direct
+  endpoint only against k78's revised addressing boundary after its review;
+  do not adopt it from the old diagnostic evidence alone.
 - Agree capture linearization/attribution and refusal, actual right transfer
   and continuous ownership, endpoint discovery/authentication, live bearer-grant
   admission/revocation, cleanup/disconnect/cancellation and resource limits.
@@ -85,15 +103,18 @@ be agreed. This node retains every original Done when above:
 - `native-binding-triage-k77` reconciles that review, repairs the instruments
   and records the human's direction: discuss support/targeting before further
   native work, and capture foreground when the native callback executes.
-- `native-target-contract-k78` obtains the concrete support/targeting agreement
-  and cuts its review before k74; no particular restriction is already adopted.
-- `window-qualified-activation-k74` measures the selected downstream route,
-  with stale-input and in-flight lifetime explicitly separate.
-- `process-capture-contract-k75` consumes the result, confronts the remaining
-  whole-path gap with the human when necessary, and owns the full original
-  contract, documentation and k52 handoff obligations.
+- `native-target-contract-k78` records the agreed endpoint-addressing boundary,
+  client-visible weaker effects and remaining evidence; it cuts k79's review.
+- `native-target-contract-k79` reviews k78's enforceable boundary, retained
+  lifetime guarantees and client-visible relaxations before native execution.
+- `window-qualified-activation-k74` is explicitly abandoned: its separate
+  destination is outside the agreed same-endpoint operation path.
+- `process-capture-contract-k75` consumes k78 and its review, owns the remaining
+  protocol/lifecycle/consent evidence and agreements, and completes documentation
+  and k52's implementation handoff under the revised effect boundary.
 
-The receiver/descriptor gap has no new supported closure. Neither a passing
-activation experiment nor completion of this triage closes the node. No model
-can establish the unproved OS premise by assuming it. Other survey leads are
-alternatives to reassess, not an automatically scheduled experiment sequence.
+The receiver/descriptor and downstream gaps have no new native proof; they are
+excluded guarantees under the agreed effect contract. A scope decision does not
+close the node: capture, transfer, references/restarts, lifecycle and policy remain.
+No model may assume native premises that the retained guarantee still needs.
+Survey leads are alternatives to reassess, not an automatic experiment sequence.

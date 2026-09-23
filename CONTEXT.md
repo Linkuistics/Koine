@@ -91,6 +91,11 @@ ends; a restored logical application with a new process is a different
 incarnation. A PID, application name, bundle identifier or Process Manager
 serial number alone does not establish this identity.
 
+**Endpoint addressing**: The desktop effect contract in which Koine keeps using
+the endpoint admitted for a captured **process incarnation**, without rebinding
+it. It does not guarantee permanent receiver ownership or exclude effects on
+other processes through handlers or downstream services.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

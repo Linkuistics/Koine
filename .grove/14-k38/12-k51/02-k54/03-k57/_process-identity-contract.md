@@ -6,13 +6,28 @@
 Settle the complete non-time desktop capture and transfer contract with the
 human and finish the original k54/k51 documentation and k52 handoff obligations.
 The expected feasible binding was not established by k56, so first resolve its
-adoption conflict and find a concrete native-binding lead under the unchanged
-requirements. A complete contract still requires native feasibility evidence.
+adoption conflict under the explicitly revised effect boundary in k78. A complete
+contract still requires native feasibility evidence.
+
+## Current targeting agreement
+
+In `native-target-contract-k78`, the human selected **endpoint addressing only**.
+Capture/reference lifetime remains tied to the original process; Koine never
+rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
+and downstream effects on another process, including a restored successor, are
+explicitly outside the effect guarantee. Read the current capture ADR and
+`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
+This qualifies inherited strict-effect criteria below; historical investigation
+and decision logs retain the requirements against which they were written.
+Public clients, callback-time capture, non-time identity, Koine consent and no
+helper/injection/cooperation remain required. No shipping mechanism, lifecycle
+policy, restart policy or first release is approved. k79 reviews this agreement;
+k75 retains the full protocol and k52 handoff. The parents remain live.
 
 ## Context
 
-The full criteria remain in the parent brief and are not narrowed by this
-decomposition. Read the capture ADR and k56's feasibility result. Public client
+The parent criteria remain, qualified only by k78's explicit change to the effect
+guarantee. Read the capture ADR and k56's feasibility result. Public client
 APIs, client-event capture, strict original-process lifetime, client-owned
 adapters and Koine's Accessibility consent remain required. Private-server
 investigation does not itself approve the eventual mechanism.
@@ -58,21 +73,15 @@ controls establish AX-contact inhibition on the fixture, not a passing successor
 schedule or universal impossibility. Separate Koine consent/denial and notarized
 private-path launch remain untested; they cannot repair the native gap.
 
-The human has chosen **keep strict lifetime and decline adoption of the
-candidate**, reopening native investigation only for a specific lead that
-addresses those missing premises. Alternatives require explicit human
-agreement to an enforceable support restriction or changed semantics. Even a
-narrow ordinary-AppKit scope still needs downstream/restoration evidence. No
-alternative is selected by k66 and none is an implicit PID fallback.
-
-The candidate decision is settled, but no feasible binding is selected. This
-subtree still owes its original capture, actual right transfer/authentication,
-reference/non-reuse, restart and prepublication contract. The report's local
-quotas and OS refusal profile are conditional evaluation design, not product
-agreement; the approved private
-adapter support set is empty. Preserve k52's existing place and original evidence
-renewal obligations. Do not treat this investigation close as implementation
-authorization or publish the current timestamp identity as the first release.
+The strict-effect candidate decision is preserved as an evidence conclusion:
+no complete end-to-end lifetime binding was established. k78 changes the product
+promise to endpoint addressing only, so permanent receiver/descriptor and downstream
+no-substitution are excluded guarantees. This does not adopt the diagnostic as a
+shipping mechanism. Capture/reference expiry, lifecycle policy, consent and the
+complete client/protocol contract remain required. No alternative support profile
+is selected, and the private-adapter support set stays empty. k52 remains in its
+existing position with its evidence obligations, interpreted against the new
+explicit effect boundary. The timestamp mechanism is not approved for publication.
 
 ## Decisions (running log)
 
@@ -124,13 +133,11 @@ result before proceeding and preserves all original documentation, human
 agreement and k52 handoff obligations. No node close follows solely from the
 candidate decision or completion of a survey.
 
-The k72 triage proposes window-qualified activation as a partial native
-downstream investigation. k77 brings the unsupported whole-path premise to the
-human before native execution. The human chose a narrower support/targeting
-contract discussion first, now k78, and confirmed callback-time foreground
-capture. No restriction or weaker guarantee is adopted yet. It corrects the survey's stale-request, read-provenance,
-inhibition-lifetime and capture-control claims before they drive experiments.
-k72 now separates that triage, its earned review, the native question and the
-remaining full contract. Arbitrary receiver/descriptor lifetime still lacks a
-supported closure; no complete binding, support restriction or weakened
-semantics is adopted. k52 retains its position and original evidence obligations.
+The k72 triage's partial activation diagnostic was followed by explicit
+support/targeting discussion. In k78 the human selected endpoint addressing only;
+the separate activation route is outside that contract and was explicitly
+abandoned by the human. k79 supplies the required design review, after which k75
+owns the complete
+protocol/evidence agreement and k52 handoff. No parent closes on the scope decision
+alone. Historical triage corrections remain instrument evidence, not a mandate
+to run every survey lead.

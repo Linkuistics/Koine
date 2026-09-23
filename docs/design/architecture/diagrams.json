@@ -24,26 +24,42 @@
     }
   ],
   "discussion": {
-    "title": "Next: agree the native target contract",
-    "status": "Contract discussion before further native work",
-    "summary": "The human chose to discuss a narrower support or targeting contract before further native work. No particular restriction or weaker guarantee is agreed; strict process lifetime and rejection of the direct AX candidate remain binding. Capture means the frontmost application when the native callback executes. The activation diagnostic remains partial: matched controls, AX-inhibition relevance and the full downstream chain still need evidence. The complete replacement and first release remain unresolved.",
+    "title": "Agreed: endpoint addressing only",
+    "status": "Agreed boundary — mechanism and full protocol unresolved",
+    "summary": "The human selected B. Koine retains the endpoint admitted for the captured process and never rebinds it. Receiver movement, descriptor reuse, forwarding and queued activation may affect another process, including a restored successor. Capture/reference expiry remains strict. The separate window-qualified activation diagnostic was explicitly abandoned. Contract review is next; capture/transfer, lifecycle policy, consent, wire/restart/version agreements and a maintained adapter remain required before implementation or release.",
     "diagramIds": [
+      "process-target-contract",
       "process-adoption",
+      "addressing",
       "process-routing",
-      "process-receiver",
       "process-restoration",
-      "process-admission",
-      "process-endpoint",
       "process-capture"
     ],
     "updatedDiagrams": [
       {
+        "id": "process-target-contract",
+        "summary": "Records the agreed addressing boundary, permitted wrong-process effects and client-visible focus-attempt meaning."
+      },
+      {
         "id": "process-adoption",
-        "summary": "Records the contract discussion before native work and the agreed callback-time foreground capture boundary."
+        "summary": "Separates the relaxed contract from unadopted transport and the remaining lifecycle, consent and protocol evidence."
+      },
+      {
+        "id": "addressing",
+        "summary": "Clarifies in the caption that this sequence describes the served API, whose exact-target receipt meaning is being replaced."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-target-contract",
+      "group": "machine",
+      "title": "Native targeting guarantee boundaries",
+      "renderer": "svg",
+      "source": "process-target-contract.puml",
+      "rendered": "process-target-contract.svg",
+      "caption": "Agreed future effect boundary: endpoint addressing only. Authenticated admission and continuous right retention do not guarantee permanent receiver ownership, descriptor behavior or downstream safety. Effects may reach another process or a restored successor; clients must see an attempt with separate observations and uncertainty. Capture/reference expiry remains tied to the original process. Restricted target profiles were not selected, and the separate activation diagnostic was explicitly abandoned. Full contract: docs/specs/machine.md#native-targeting-discussion. No new native measurement, shipping mechanism, lifecycle policy or private-adapter OS support is approved."
+    },
     {
       "id": "process-adoption",
       "group": "machine",
@@ -51,7 +67,7 @@
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "The next design discussion must obtain explicit agreement on any narrower support or targeting contract, then undergo review before native work. No particular restriction or weaker guarantee is already selected. Capture means foreground at native callback execution, not the original key event target. The partial activation experiment still needs matched sensitivity and no-request controls, AX-inhibition relevance and evidence through the whole activation/relaunch chain. It cannot close arbitrary receiver/descriptor lifetime. Separate Koine consent/denial and notarized private-path launch remain untested; the private-adapter support set is empty. Evidence and obligations: docs/verification/ax-endpoint-adoption.md#survey-triage-and-next-investigation."
+      "caption": "The original strict effect promise remains unestablished. The human explicitly selected endpoint addressing only, excluding receiver/descriptor/downstream no-substitution while preserving capture/reference lifetime. The direct endpoint is still unadopted as a shipping mechanism and may be evaluated against the revised boundary after contract review. AX-contact lifecycle policy, separate Koine consent, capture/transfer and a maintained private protocol remain required. No window-qualified activation fallback is selected; that diagnostic was explicitly abandoned. Evidence and remaining obligations: docs/verification/ax-endpoint-adoption.md."
     },
     {
       "id": "process-routing",
@@ -159,7 +175,7 @@
       "renderer": "svg",
       "source": "addressing.puml",
       "rendered": "addressing.svg",
-      "caption": "Agreed end-to-end sequence. The client captures the process incarnation at interaction start, queries before deriving choices, then submits the selected opaque reference. The provider re-resolves it before native focus and reports unavailable for a closed, stale or ambiguous target. Remembered observations can outlive current visibility; they are not an atomic snapshot. Capability denial and missing Koine OS consent have separate machine-readable classifications."
+      "caption": "Served desktop sequence: the current timestamp API queries before choices and resolves the selected opaque reference before acting. Its exact-target receipt meaning is being replaced by the agreed future endpoint-addressing focus attempt; this diagram does not specify that new wire operation. See the native targeting view and docs/specs/machine.md#native-targeting-discussion. Capability denial and missing Koine OS consent retain separate classifications; no automatic replay follows a lost mutation response."
     },
     {
       "id": "machine-interface",

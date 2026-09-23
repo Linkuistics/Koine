@@ -8,6 +8,21 @@ application and window references encode — with a mechanism that does not
 depend on time, and record it as the contract, before the first public release
 publishes the current one.
 
+## Current targeting agreement
+
+In `native-target-contract-k78`, the human selected **endpoint addressing only**.
+Capture/reference lifetime remains tied to the original process; Koine never
+rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
+and downstream effects on another process, including a restored successor, are
+explicitly outside the effect guarantee. Read the current capture ADR and
+`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
+This qualifies inherited strict-effect criteria below; historical investigation
+and decision logs retain the requirements against which they were written.
+Public clients, callback-time capture, non-time identity, Koine consent and no
+helper/injection/cooperation remain required. No shipping mechanism, lifecycle
+policy, restart policy or first release is approved. k79 reviews this agreement;
+k75 retains the full protocol and k52 handoff. The parents remain live.
+
 ## Context
 
 - **The human's decision, in `documentation-and-handoff-k45`**, answering the

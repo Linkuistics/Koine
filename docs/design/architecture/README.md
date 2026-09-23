@@ -19,7 +19,8 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — records the agreed rejection, preserves strict lifetime, and makes the unresolved replacement and first-release consequence explicit.
+- [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
+- [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
 - [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
 - [Automatic restoration and AX client lifetime](index.html#diagram-process-restoration) — adds matched no-AX, single-read and direct-only client-retirement controls, with the bounded lifecycle conflict and unexecuted successor branches explicit.
 - [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — replaces the fixture-ambiguity note with the matched AX-contact result while retaining allocation, exec and routing evidence.
@@ -61,7 +62,7 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 
 From the repository root, `task design:render-process-identity` renders the
 process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission, process-receiver, process-restoration, process-routing and process-adoption views
+process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption and process-target-contract views
 to their SVG exports and to PNGs under
 `.build/design-identity`.
 
@@ -140,7 +141,7 @@ reduces diagram text; native-size and full-size export remain available.
 The host serves the same manifest at
 `http://127.0.0.1:8772/#diagram-process-routing`.
 
-The [adoption view](index.html#diagram-process-adoption) now names the bounded
+The k72 revision of the [adoption view](index.html#diagram-process-adoption) named the bounded
 window-qualified activation investigation, distinguishes stale-request refusal
 from in-flight binding, and preserves the receiver/descriptor gap and agreed
 rejection. The replacement and first release remain unresolved.
@@ -153,3 +154,18 @@ device was tested. Guest hashes of the viewer, manifest, adoption source and SVG
 match the host files; the host manifest and SVG match HTTP delivery at
 `http://127.0.0.1:8772/#diagram-process-adoption`. These are presentation checks,
 not a new native lifetime or consent experiment.
+
+The [targeting contract view](index.html#diagram-process-target-contract) now
+states the agreed endpoint-addressing boundary and its permitted wrong-process
+effects. The [adoption view](index.html#diagram-process-adoption) now separates
+that agreement from the unadopted mechanism and remaining protocol evidence.
+The [addressing caption](index.html#diagram-addressing) identifies its sequence
+as the served API whose receipt meaning still needs replacement. Final PNGs,
+fresh-page deep links, discussion, outline and Current/Updated markers were
+checked in Safari in disposable clone `koine-k78-final`. Desktop light views
+and the targeting view in a 650-pixel dark window were inspected. SVG canvases
+stay light; narrow fit mode reduces text size and retains native-size/full-size
+alternatives. No mobile device was tested. Host and guest hashes matched for
+the viewer, manifest, changed sources and SVGs; manifest and SVG HTTP hashes
+matched too. The clone was stopped. These are presentation checks, with no
+new native-binding evidence.

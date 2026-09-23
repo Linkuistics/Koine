@@ -7,8 +7,9 @@ served schema matches [the design schema](../design/desktop-schema.graphql)
 under a repeatable check, and the platform behavior is verified on the notarized
 build in Gatekeeper-enforcing VMs. "Test seams and acceptance" says, case by
 case, what is established and by which evidence, and what is still open. One
-part of the contract is being replaced before the first public release: the
-process start instant in "Public GraphQL contract". Client authors start at the
+part of the contract is being replaced before the first public release: process
+identity and the native effect promise, detailed in "Public GraphQL contract"
+and "Native targeting discussion". Client authors start at the
 [client guide](../client-guide.md).
 
 ## Purpose and ownership
@@ -245,22 +246,25 @@ records these agreed boundaries; native transfer, reference lifetime across
 Koine restart and action binding remain to be designed. The SDL below still
 describes the currently served timestamp input, not an approved replacement.
 
-The investigated direct AX endpoint is declined as the replacement binding;
-strict process lifetime remains required. Native investigation reopens only on
-a specific lead addressing the remaining lifetime premises. Window-qualified
-activation is only a partial diagnostic; the human has chosen to discuss a
-narrower support or targeting contract before further native work. Arbitrary
-receiver/descriptor lifetime remains unresolved. No
-complete replacement is selected, so the first public release remains waiting
-on that work. This does not approve narrower application support or weaker
-targeting semantics; the capture decision records the trade-off.
+The future effect contract is **endpoint addressing only**, as recorded in the
+capture decision. Capture/reference expiry remains tied to the original process,
+but receiver movement, descriptor reuse, forwarding and queued downstream work
+may affect another process, including a restored successor. No restricted app
+support set is selected. The direct AX endpoint remains unadopted as a shipping
+mechanism; it can be evaluated against this revised boundary after design review.
+Lifecycle, consent, the complete protocol and first release remain unresolved.
+
+The [native targeting discussion](#native-targeting-discussion) presents the
+agreed future boundary and its evidence obligations. The served schema has not
+yet changed to implement that agreement.
 
 Retained AX objects are insufficient for that native binding:
 [an actual PID-recycling experiment](../verification/retained-ax-binding.md)
 made an old held window minimize a replacement process. The original task-name
 right had become dead, while the AX object and its held application parent
-answered again. The strict no-substitution requirement remains; a retained
-task check followed by an AX action does not yet implement it.
+answered again. That wrapper retention does not establish the unchanged native
+destination now required; a task check followed by a fresh PID-addressed action
+is still excluded.
 
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
@@ -667,6 +671,13 @@ and remainder interpretation. A provider root has an empty remainder. The
 scalar maps to an opaque string wrapper in client bindings; clients cannot
 construct desktop resource references from PIDs or window titles.
 
+The following reference/focus behavior describes the served timestamp design.
+Its exact-target guarantee is not established across native PID reuse, and the
+agreed [future endpoint-addressing contract](#native-targeting-discussion)
+replaces that effect promise before release. Its wire shape and restart rules
+are still pending; the existing focus receipt must not silently acquire the
+weaker meaning.
+
 The desktop provider encodes a process incarnation in application and window
 references. A window reference additionally carries its native window identity
 and provider-owned discrimination information. Each use re-resolves the target;
@@ -694,7 +705,7 @@ report OS failures rather than swallowing them, and acknowledge that later
 steps can fail after activation. A successful focus receipt means the native
 focus/raise operation completed against the resolved window; applications may
 subsequently change focus. A stale target produces `unavailable`, never silent
-success. The native identity that supports this guarantee is the window's
+success. The served design uses the window's
 accessibility element, held by the provider and named in the reference by the
 provider run and a token, as recorded in
 [desktop window identity is a held element](../adr/desktop-window-identity-is-a-held-element.md)
@@ -1014,11 +1025,11 @@ Gatekeeper-enforcing clone; each document says which.
 | Absent and revoked consent | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md). |
 | Application resolution; current and remembered windows across Spaces; focus | **Established.** [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md), the mechanism in [desktop-window-identity.md](../verification/desktop-window-identity.md). |
 | Closure, duplicate titles and restart behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). |
-| PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). **Open** for action safety: an [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. The replacement design must close that native binding gap. |
+| PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). An [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. **Open** for the replacement: establish unchanged native destination and capture/reference expiry under the agreed endpoint-addressing contract; receiver/descriptor/downstream no-substitution is explicitly excluded. |
 | Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
 | Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the signed build of the macOS 26 floor, whose image digests the notarized bundle is to be checked against. |
 | The signed release build's entitlements and permission behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [notarized-release-vm.md](../verification/notarized-release-vm.md). |
-| The native identity guarantee | **Established** only for the within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). **Open** across process incarnations: the held AX endpoint can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. |
+| The native identity guarantee | **Established** only for the served design's within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). Held AX objects can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. **Open** for the agreed future endpoint-addressing and focus-attempt contract; its explicit exclusions are not stronger guarantees awaiting proof. |
 
 **Open, and not a case above:**
 
@@ -1054,3 +1065,94 @@ and the operational policies described here. Platform behavior and native binary
 compatibility are established by the evidence in "Acceptance status", which also
 lists what is still open; the process identity is agreed to be replaced before
 the first public release.
+
+## Native targeting discussion
+
+**Agreed future contract: endpoint addressing only.** The timestamp input
+and current SDL above remain the served behavior. This agreement sets the effect
+boundary; it adopts no shipping mechanism and authorizes no release. The
+[guarantee-boundary view](../design/architecture/index.html#diagram-process-target-contract)
+shows where each promise ends.
+
+The [capture ADR](../adr/desktop-capture-preserves-the-process-incarnation.md)
+records the trade-off. The future contract preserves non-time process identity,
+fresh foreground capture in the client's native callback, public client APIs and client-owned adapters, Koine-owned Accessibility
+consent, and no injection, helper or target modification/cooperation. A restored
+application is a new incarnation; an old reference is never rebound to it.
+
+The capture ADR records why restricted target profiles and the original strict
+effect promise were not selected, and what would reopen them. The
+[adoption synthesis](../verification/ax-endpoint-adoption.md#original-feasibility-criteria-reconciled)
+separates existing bounded observations from the evidence still needed for this
+contract. Agreement to its effect boundary does not establish that the current
+direct adapter can ship.
+
+### The exact addressing boundary
+
+Admission must attribute the continuously retained process identity to the fresh
+callback-time sample and authenticate the endpoint's responder against that
+identity. After admission, Koine holds the actual rights and copied descriptor
+values; numeric port names alone are not identity. All target AX reads, requested
+effects and confirmation requests use that retained endpoint. There is no fresh
+PID, PSN or logical-application destination lookup under an old capture, and no
+automatic mutation retry. The adapter owns this protocol and its cleanup;
+clients supply opaque references, not native addresses.
+
+Death or exec retires the old capture and references. Before each native
+primitive, Koine validates the held identity and refuses admission or subsequent
+sends when it is dead, invalid or ambiguous. An identity check does not atomically enclose a send: a request that races death,
+or was already accepted, may still execute. This option explicitly accepts that
+limit rather than claiming the check prevents every post-death effect.
+
+Calling this **delivery to the captured receiver** would promise too much. The
+admission exchange authenticates a responder at that time; it does not make a
+receive right immovable. Koine preserves the addressed port object, not permanent
+ownership of its receive right. It excludes Koine selecting a new
+destination, while no longer excluding these wrong-target effects:
+
+- A moved receive right lets another process receive a later request.
+- A reused descriptor or custom handler selects another window or forwards work
+  to another process, even while the originally captured process remains alive.
+- A service executes queued logical-application activation after the original
+  process ends and brings a restored successor forward.
+
+Reply authentication can detect some mismatches after a request; it cannot undo
+an effect. A timeout, cancellation, disconnect or detected death stops later
+primitives and reports uncertainty where work may have been sent. Failure never
+means that nothing happened. A later observation does not prove that no other
+effect happened, nor that focus persists after the observation.
+
+The future public operation and its introspection descriptions must expose
+**focus attempt**, separating request acceptance from an observed result. It must
+not claim the existing exact-target success guarantee. A claimed observation
+needs established freshness/provenance; otherwise report that confirmation is
+unavailable, not success. Exact wire fields belong to the remaining protocol
+design, before implementation. The weaker meaning cannot be hidden behind an
+unchanged description or a client opt-in default. Contract-version framing is
+still a separate explicit agreement before publication.
+
+### Remaining evidence and protocol work
+
+Use the existing GraphQL and isolated native-VM seams. Capture/transfer evidence
+must cover a delayed callback after an app switch, a switch after capture,
+death/PID reuse around sampling, null/dead rights and policy denial. Native
+evidence must separate the lifetime of the addressed object, its receiver, the
+descriptor and downstream work; a passed test at one boundary does not prove
+the others. Deliberately moved receivers or forwarding handlers are
+negative controls for an excluded guarantee, not passing exact-target behavior.
+
+AX-contact inhibition is a separate lifecycle policy question. The effect
+guarantee does not permit keeping targets alive indefinitely by implication.
+Establish inhibition/release behavior and decide its product acceptability;
+do not count target nontermination as a passed restoration schedule. Separate
+Koine consent, denied/revoked consent, bounded resources, late replies,
+cancellation uncertainty, maintained private-protocol support and notarized
+launch remain required. No private-adapter OS build is approved by this choice.
+
+The window-qualified activation proposal addresses a separate service through
+logical application/window identifiers and is outside the agreed same-endpoint
+path. It is not a fallback or a necessary proof of an excluded end-to-end promise;
+that diagnostic has been explicitly abandoned. No native execution is implied
+by the agreement.
+The full capture, transfer, authorization, reference and restart contract remains
+to be designed and reviewed before implementation.

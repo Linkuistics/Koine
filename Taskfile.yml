@@ -140,8 +140,8 @@ tasks:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture
     cmds:
-      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml
-      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml
+      - plantuml --svg --check-before-run --no-error-image process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml process-target-contract.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-capture.puml process-serial.puml process-binding.puml process-endpoint.puml process-effects.puml process-admission.puml process-receiver.puml process-restoration.puml process-routing.puml process-adoption.puml process-target-contract.puml
 
   fixture:process-serial:
     desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)

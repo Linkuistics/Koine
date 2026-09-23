@@ -24,7 +24,11 @@ binding for a native action endpoint. A subsequent
 shows that a retained AX window can address a replacement process, even with
 the original task-name right and AX parent still held. The current scheme
 therefore does not establish the required cross-incarnation no-substitution
-guarantee; its native binding must be resolved before release.
+guarantee. The agreed future contract is endpoint addressing only, as defined
+by the capture decision: receiver/descriptor behavior and downstream effects on
+other windows or processes are explicitly outside that promise. The held-element
+scheme above remains the served design; its wrapper retention does not establish
+an unchanged native destination and its replacement must be resolved before release.
 
 ## Trade-off
 
