@@ -68,3 +68,12 @@ The original Goal and Done when above remain unchanged:
 
 Each is a design evidence slice, not a shipping implementation leaf. No parent
 closes on a decoder table; k95/k96 and k91 retain their separate full matrices.
+
+k98 traces a local receive/send connection, distinct from destination discovery,
+with target audit-policy caching and death cleanup. Its conditional ownership
+contract and scalar/flag/requester evidence are in
+`docs/verification/native-observation-connection.md`. No native add/remove or
+policy acceptance ran. k99 retains actual voucher context, authenticated receive,
+resource accounting and the witnessed exchange, including first-add failure
+after bookkeeping and remove without full delivery teardown. This is not a
+completed k94 exchange or an approved native mechanism.

@@ -24,19 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: request decoding matched",
-    "status": "Static request path established — connection and owned exchange remain open",
-    "summary": "Pinned 25F71 reads now match actual add/remove IDs and NDR bytes to server dispatch and decoder checks. The target decoder passes audit bytes, but its visible trailer guard does not cover the full field; surrounding receive bounds remain unproved. Connection/scalar policy and authenticated receive ownership still precede a live exchange. No request, closure, loss or publication schedule ran.",
+    "title": "Native observation: connection ownership and policy",
+    "status": "Static contract traced \u2014 owned exchange remains unvalidated",
+    "summary": "The connection is a local liveness/policy port, separate from the retained destination and delivery lifetime. Pinned code traces audit-based access, element types, requester classes and first-add death tracking. Voucher handling, authenticated receive cleanup and an actual exchange remain prerequisites; no consent or lifetime guarantee is established.",
     "diagramIds": [
       "process-observation-wire",
       "process-observation",
-      "process-target-contract",
-      "process-adoption"
+      "process-target-contract"
     ],
     "updatedDiagrams": [
       {
         "id": "process-observation-wire",
-        "summary": "Replaces missing header/decoder prerequisites with matched request IDs and decoder checks; exposes the remaining connection and full-trailer/cleanup obligations."
+        "summary": "Separates local connection ownership, audit policy and delivery death tracking from PID destination routing; names the remaining owned-exchange prerequisites."
       }
     ]
   },
@@ -48,7 +47,7 @@
       "renderer": "svg",
       "source": "process-observation-wire.puml",
       "rendered": "process-observation-wire.svg",
-      "caption": "Pinned loaded-byte inspection on macOS 26.5 (25F71) now matches add/remove IDs and NDR bytes to their server dispatch and decoders. Received port types, inline bounds and audit-field handoff are evidenced statically. The visible target trailer guard does not cover every byte read; owned receive bounds, authentication, OOL cleanup, connection/scalar policy and the live exchange remain prerequisites. Cookie context supplies no window generation. No closure, read lifetime, publication barrier or complete stream is established. Evidence: docs/verification/native-observation-requests.md. The observation-retirement view remains unchanged proposal context."
+      "caption": "Static loaded-byte evidence on macOS 26.5 (25F71). Add/remove layouts and decoders are matched. Connection creation is local; target policy uses connection plus audit data. Element type, requester classification and first-add delivery death tracking are traced. No owned exchange, Koine consent, balanced runtime rights, closure or publication barrier is established. Voucher context, fresh authenticated receives and cleanup remain preconditions. See docs/verification/native-observation-connection.md and native-observation-requests.md."
     },
     {
       "id": "process-observation",
