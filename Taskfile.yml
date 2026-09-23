@@ -1,6 +1,21 @@
 version: '3'
 
 tasks:
+  design:check-callback-analyzer:
+    desc: Check the causal analyzer and frozen synthetic controls without native execution
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture
+      - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py
+
+  design:verify-callback-controls:
+    desc: Archive exact analyzer control outcomes and before/after inputs (OUT must be new)
+    requires:
+      vars: [OUT]
+    cmds:
+      - python3 -I -S docs/verification/callback-causal-fixture/run_controls.py '{{.OUT}}'
+
   fixture:foreground-inspector:
     desc: Build the own-image foreground entry inspector (execute only in TestAnyware)
     cmds:

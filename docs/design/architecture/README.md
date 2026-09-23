@@ -15,20 +15,19 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [guest entry inspection](../../verification/callback-capture-transfer.md#guest-foreground-entry-inspection)
-identifies AppKit's KVO helper/property preservation and Process Manager's
-LaunchServices shared-memory/reply paths on macOS 26.5. Local field loads do not
-date the data producer or establish coherent foreground/PID mapping. The
-[witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol)
-still needs its causal fixture and native callback schedules; neither public
-source nor a capture construction is adopted. Transfer admission and resident
-protocol work remain separate.
+The [causal analyzer](../../verification/callback-capture-transfer.md#causal-analyzer-and-controls)
+checks synthetic transcripts through explicit message/input causality and a
+continuous-ownership ledger. Broken witnesses and accepted stale values fail;
+arrival permutation preserves the result. Native fixture reachability and full
+callback schedules remain pending. The guest entry inspection still leaves
+actual foreground/PID producer freshness unresolved. Neither public source nor
+a capture construction is adopted; transfer and resident protocol remain separate.
 
 Changed in this discussion:
 
-- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds inspected paths and marks producer freshness and coherent mapping unresolved.
-- [Guest entry inspection](../../verification/callback-capture-transfer.md#guest-foreground-entry-inspection) — Records exact code ranges, image identities, raw scans and remaining boundaries.
-- [Client capture migration](../../client-guide.md#process-identity) — Explains why the inspected paths do not yet justify choosing a replacement source.
+- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds the executable analyzer and synthetic controls while keeping native reachability pending.
+- [Causal analyzer and controls](../../verification/callback-capture-transfer.md#causal-analyzer-and-controls) — Records the trace contract, exact result categories and reproducible frozen control run.
+- [Causal transcript contract](../../verification/callback-causal-fixture/contract.md) — Defines process ownership, causal edges and the acceptance checker's explicit limits.
 
 Unchanged context: [capture and transfer](index.html#diagram-process-capture),
 [resident composition](index.html#diagram-packages),
@@ -76,6 +75,17 @@ retain their existing renderer settings when changing them.
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
+
+For the causal analyzer update, `task design:render-callback-sampling` completed
+with source/Taskfile/manifest/viewer inputs unchanged item by item. The PNG was
+inspected; SVG XML, discussion references and served source/export bytes checked.
+Safari in disposable clone `koine-k116-view` opened fresh diagram and discussion
+deep links, showing the revised content, outline and Current/Updated markers.
+This verifies presentation only. Mobile and dark appearance were not checked.
+The clone was stopped after inspection. The
+[presentation record](../../verification/callback-causal-fixture/evidence/presentation.json)
+holds the input digests; the capture assessment holds the analyzer's frozen raw
+controls and explicitly outstanding native fixture work.
 
 For the guest foreground entry update, `task design:render-callback-sampling`
 completed and source/Taskfile/manifest/viewer digests matched before and after.

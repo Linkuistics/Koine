@@ -70,3 +70,8 @@ schedules. A blocked/disabled tap or absent input acknowledgment is unreached.
 All are diagnostic design evidence under the existing isolated VM seam. No
 production implementation, API adoption or new permission agreement follows.
 Lifetime cases stay in k112, admission in k108 and resident composition in k109.
+
+k114 separates the executable causal analysis/control corpus (k116) from the
+native recorder/gates and disposable-clone reachability (k117). The synthetic
+analyzer's accepted traces do not establish native reachability or freshness;
+k115 consumes the completed native instrument, not the control corpus alone.

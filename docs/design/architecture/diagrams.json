@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Foreground entry paths and remaining freshness evidence",
-    "status": "Guest code inspected; callback schedules pending",
-    "summary": "macOS 26.5 AppKit paths use a KVO helper and run-loop property preservation; Process Manager reaches LaunchServices shared memory and a reply fallback. Producer age and coherent foreground/PID mapping remain unresolved. No callback schedule or source adoption follows.",
+    "title": "Causal analyzer and remaining native witness",
+    "status": "Synthetic controls checked; native fixture pending",
+    "summary": "The executable analyzer checks message causality, independent input receipt and continuous ownership, with falsification controls. A consistent synthetic trace proves neither native gate reachability nor actual foreground/PID freshness. k117 builds the native fixture; k115 measures its schedules.",
     "diagramIds": [
       "process-sampling",
       "process-capture",
@@ -37,7 +37,7 @@
     "updatedDiagrams": [
       {
         "id": "process-sampling",
-        "summary": "Adds the inspected AppKit and LaunchServices paths and marks producer freshness and process mapping unresolved."
+        "summary": "Adds the executable analyzer and its synthetic failure controls, while keeping native reachability and F/M freshness unresolved."
       }
     ]
   },
@@ -49,7 +49,7 @@
       "renderer": "svg",
       "source": "process-sampling.puml",
       "rendered": "process-sampling.svg",
-      "caption": "Proposed callback witness with loaded-code evidence on macOS 26.5 (25F71). AppKit helper/property preservation and Process Manager shared-memory/reply paths are identified, but their producer age and coherent F/M mapping remain unresolved. No native callback schedule ran. The delayed-entry schedule requires independent input receipt before callback release; markers do not prove uninterrupted foreground or freshness. Lifetime, transfer and protocol adoption remain separate. See docs/verification/callback-capture-transfer.md#guest-foreground-entry-inspection."
+      "caption": "Delayed-entry witness remains a native proposal. The acceptance-path analyzer now joins local sequences, message acknowledgments and independent marker receipt, and rejects synthetic attribution/ownership faults. Arrival permutation preserves the result. Native fixture reachability and full schedules have not run. macOS 26.5 loaded-code inspection still leaves AppKit and LaunchServices producer age/coherent F/M mapping unresolved; getter call order is not freshness proof. See docs/verification/callback-capture-transfer.md#causal-analyzer-and-controls."
     },
     {
       "id": "process-receive-admission",
