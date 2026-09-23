@@ -1175,6 +1175,169 @@ design, before implementation. The weaker meaning cannot be hidden behind an
 unchanged description or a client opt-in default. Contract-version framing is
 still a separate explicit agreement before publication.
 
+### Observation and retirement protocol proposal
+
+**Proposed construction, not an adopted native mechanism.** This section
+implements the agreed observed-closure rule at the design level. It does not
+establish that AX exposes the required registration or delivery semantics.
+The [reference-lifetime view](../design/architecture/index.html#diagram-process-observation)
+shows this proposal. The current SDL remains the served contract; the complete
+protocol agreement must settle this proposal's availability cost before adoption.
+
+#### Ownership and evidence boundary
+
+The desktop provider's native adapter owns the retained task and endpoint,
+registration resources, request reply rights, descriptor copies and reference
+lifetime. One serialized owner decides publication, withdrawal, retirement and
+each native send's initiation. It does not wait for a native reply while holding
+the owner: waits retain their own resource pins and return candidate results.
+The engine continues to own grant/dispatch admission. An admitted action may
+finish after revocation under that existing rule; native identity or observation
+failure still stops its remaining primitives.
+
+The adapter accepts a notification as evidence only after establishing all of:
+
+| Evidence | What must be established |
+|---|---|
+| Source | The native delivery path authenticates the sender or an evidenced intermediary chain back to the captured process. A body PID or local callback context alone is insufficient. |
+| Registration | This delivery belongs to the continuously owned registration for this capture, with a known start and end. Reusing a numeric receive-port name or a callback pointer is not continuity. |
+| Window | The event belongs to the particular registered descriptor lifetime. A raw descriptor equal to one used by a later window is insufficient. |
+| Freshness | The native generation/delivery ordering relates the event to that registration and window lifetime. Receipt time and a locally assigned sequence number cannot date the target's event. |
+| Capture | The retained identity still attributes this data to the original incarnation. A synchronous request/reply liveness bracket cannot simply be applied to queued asynchronous delivery. |
+
+These are native proof obligations, not fields that Koine can add to a message
+and trust. The endpoint-addressing effect relaxation does not waive them. An
+authenticated target can still supply false data; the protocol must describe its
+native attribution and ordering guarantees without promising arbitrary handler
+truthfulness.
+
+Synchronous candidate reads separately require a fresh reply right, an actual
+request, the kernel trailer and a subsequent live comparison against the held
+task. They also need request correlation, freshness and descriptor attribution.
+Passing sender authentication alone cannot turn an old reply into a current
+listing, nor establish a notification's generation time.
+
+#### Publication and permanent non-revival
+
+Each local window record has one of the following states. These names describe
+private ownership, not new GraphQL enum values:
+
+| State | Permitted behavior | Exit |
+|---|---|---|
+| Preparing | Hold a candidate descriptor and registration resources; expose no reference and perform no focus effect. | Publish as usable only after authenticated data and the registration/publication boundary below succeed; otherwise discard without publishing. |
+| Usable | Resolve the opaque reference; perform qualified reads and attempts through the retained endpoint. | Authenticated closure retires it; capture death/exec ends it; loss of required observation withdraws it. |
+| Retired | Every later use is unavailable. The known closure is permanent. | None. Late data and descriptor reappearance cannot revive this reference. |
+| Withdrawn | Every later use is unavailable, with the actual reason (observation lost or capture ended), without inventing a closure observation. | None. Recovery requires a new admissible capture/listing and newly allocated references. |
+
+`CURRENT` and `REMEMBERED` are presentation facts about usable records, not
+lifetime states. Missing from a listing alone changes neither lifetime nor
+closure knowledge. A remembered row requires a previously attributed window,
+an intact observation registration and a freshly authenticated read that
+supports the window's continued existence and attribution. An unanswered read
+does not justify a remembered row under this proposal. If the affected listing
+cannot establish the required facts, it fails as unavailable with an explanation;
+it does not silently drop uncertain windows or present the remainder as complete.
+This costs availability compared with the served unanswered-read behavior and
+requires agreement with the complete protocol.
+
+Before publication, install local delivery ownership, register through the
+already admitted endpoint and establish the native boundary between registration,
+enumeration and queued closure. Buffer candidate notifications under bounded
+ownership while this happens; validate and apply them before publishing. If
+closure is established first, publish nothing. Registration success followed by
+an arbitrary re-read is not proof that the gap is covered: a descriptor can be
+reused between them. The native investigation must establish a registration
+barrier, lifetime identifier or equivalent ordering that discriminates that
+schedule. Without it the operation is unavailable; do not invent such a token.
+
+After retirement, seeing equal descriptor bytes cannot revive the reference.
+Issuing a different reference for those bytes requires evidence of a distinct
+window/registration lifetime and isolation from old deliveries. If the protocol
+cannot distinguish them, refuse that affected listing, including any claimed
+complete result. This is an observation restriction, not a new promise that
+undetected descriptor reuse cannot produce a wrong-window effect.
+
+No reference identifier is allocated twice. Record reclamation must preserve
+non-reuse and rejection of old identifiers without requiring an unbounded
+tombstone set. A finite local allocator must refuse before exhaustion, never
+wrap. The full capture/reference design still owes a non-time namespace across
+provider, Koine and boot restarts; a random run value alone is not a proof of
+non-collision. This proposal does not choose that grammar or revoke the served
+application-reference restart guarantee by implication.
+
+#### Ordering with sends and late completion
+
+The local ordering point is the serialized owner's final state check and actual
+native send initiation, not a prior queue insertion or a permission token handed
+to another worker. No owner operation may intervene between that check and
+initiation. A worker used for sending must provide the same ordering; an unchecked
+later send is invalid. Native send/wait resources remain bounded by the eventual
+adapter profile. The ordering does not enclose native execution or downstream
+work, and it does not make observed closure instantaneous with physical closure.
+
+| Interleaving | Required result |
+|---|---|
+| Closure is authenticated and committed before the next send initiation | Retire first; that send and later primitives do not begin. A queued action must check again. |
+| Send initiates before retirement | It may act, even after retirement. Stop later primitives; preserve uncertainty about this send and any earlier accepted work. |
+| Reply is received, then closure commits before publication | Do not publish a new reference, usable row or focus confirmation from that reply. Retirement wins over the candidate result. |
+| A result was published before closure was observed | It remains a per-call observation, never a promise that focus or window existence persists. Subsequent use refuses after retirement. |
+| A cancelled request's reply arrives after another request starts | Its distinct reply ownership cannot complete the new request. Destroy/release it according to the native ownership ledger. |
+| An old registration delivers after a new registration exists | Match retained registration identity before interpreting the body; it cannot update or retire the newer record. Ambiguous attribution is insufficient evidence. |
+
+Do not disable lifecycle observation merely because a focus request was
+cancelled: per-request reply waits and capture-lifetime registrations have
+different owners. Cancellation stops later request primitives and candidate
+result publication; it cannot retract a possible send. Resource teardown first
+closes local admission, then detaches the delivery path, and releases callback
+contexts/rights only after the native delivery and local queued-work ownership
+have drained. If no bounded drain can be established, the adapter's cleanup
+design is incomplete, not permission to leak or free a live callback context.
+
+Foreign or demonstrably obsolete events are discarded with their owned resources;
+they cannot retire a window named by untrusted payload. A malformed or
+unattributable event on a current owned registration stops operations depending
+on that observation and withdraws the affected records. A subsequent good event
+does not restore them. A PID-only process notification may prompt validation of
+the retained task; it cannot by itself retire a capture. Confirmed held-task
+death/exec ends that capture independently of notification delivery.
+
+#### Alternatives and discriminator
+
+The recommended construction keeps observation and retirement inside the same
+adapter that owns dispatch. Leaving the current PID observer beside a retained
+endpoint would force callers to reconcile two identity systems and would not
+supply the required provenance. Polling alone cannot distinguish closure from
+absence on another Space or undetected descriptor reuse. Polling can supplement
+an evidenced registration protocol; it is not an assumed replacement for one.
+
+The next native question is narrow: **can registration through the retained
+endpoint deliver a closure attributable to the captured window lifetime, and
+can that delivery be isolated across registration retirement and reuse?**
+Inspect actual registration and delivery layouts before choosing an encoder.
+Then use a signed diagnostic in an isolated VM, with an independent window and
+process witness, to distinguish live closure from Space absence, queued old
+delivery, registration failure and death/exec/reuse. Exercise closure during
+publication and both sides of the local send boundary. Validate a deliberate
+wrong-source or old-registration event is rejected and a genuine closure is
+accepted. Synthetic faults establish local rejection only; they do not establish
+native source authentication or actual descriptor/PID reuse.
+
+If an authenticated native lifetime cannot be established, report the specific
+missing premise before adopting this protocol. Refusing every window is not a
+successful desktop path. No broader application-support restriction is approved
+by these refusal rules. Separately retain ordinary live effects, per-reply
+authentication, callback capture/transfer, consent and lifecycle evidence as
+requirements of the complete design.
+
+Use the existing public GraphQL seam for visible refusal and non-revival, the
+native plugin seam for ownership/lifetime integration and the isolated VM seam
+for native attribution. An internal controlled adapter can schedule local
+ordering and cleanup faults at its composition point; it adds no public API.
+No formal model is claimed here: serialization makes the proposed local order
+explicit, while the unresolved native barrier and attribution cannot be proved
+by assuming them in a model. Revisit modelling if the evidenced adapter requires
+multiple owners or a transferable send permit.
+
 ### Remaining evidence and protocol work
 
 A private-adapter **OS/protocol compatibility profile** identifies exact platform

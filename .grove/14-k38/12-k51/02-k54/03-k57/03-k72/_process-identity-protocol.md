@@ -122,6 +122,12 @@ be agreed. This node retains every original Done when above:
   protocol/lifecycle/consent evidence and agreements, and completes documentation
   and k52's implementation handoff under the revised effect boundary.
 
+k75 is now a design node. Its first child proposes observation retirement;
+review and native observation, callback capture/transfer, lifecycle, consent
+and full protocol agreement remain live. Its brief maps every retained obligation
+to a child and keeps the original Done when intact. A proposal closes none of
+this node's criteria by itself.
+
 The receiver/descriptor and downstream gaps have no new native proof; they are
 excluded guarantees under the agreed effect contract. A scope decision does not
 close the node: capture, transfer, references/restarts, lifecycle and policy remain.

@@ -19,6 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
+- [Observation admission and reference lifetime](index.html#diagram-process-observation) — adds proposed publication, permanent retirement and observation-loss states, with the native registration barrier explicitly unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
 - [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
@@ -62,7 +63,7 @@ plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml
 
 From the repository root, `task design:render-process-identity` renders the
 process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption and process-target-contract views
+process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption, process-target-contract and process-observation views
 to their SVG exports and to PNGs under
 `.build/design-identity`.
 
@@ -70,6 +71,11 @@ The viewer fetches sources and exports on reload; it does not compile them.
 `diagrams.json` owns the topic outline, the captions and the introduction. The
 process-identity views distinguish agreed constraints, rejected candidates and
 open protocol work; they do not replace the current wire contract.
+
+The current proposal is [Observation and retirement protocol](../../specs/machine.md#observation-and-retirement-protocol-proposal).
+It adds the registration/publication boundary, distinguishes observation loss
+from closure, and orders sends and late completion without claiming native
+feasibility. Its availability cost and the complete protocol await agreement.
 The serial-number view's deep link, rendering and topic/changed markers were
 checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
 also inspected. This does not establish the other views' rendering, or mobile

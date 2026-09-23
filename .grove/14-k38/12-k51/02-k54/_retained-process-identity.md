@@ -185,3 +185,9 @@ review. k74's separate activation route is outside that boundary and was explici
 abandoned by the human. k75 retains capture/transfer, lifecycle and consent evidence,
 reference/restart semantics, prepublication agreement and the k52 handoff. Those
 original deliverables remain live under the revised effect guarantee.
+
+k75's design subtree now separates an observation-retirement proposal and its
+review from native observation, callback capture/transfer, lifecycle, consent
+and final protocol agreement. Those live children preserve this node's complete
+contract and k52 handoff obligations; no native observation mechanism has been
+adopted by the proposal.

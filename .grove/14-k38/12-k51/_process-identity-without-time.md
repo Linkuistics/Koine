@@ -241,3 +241,12 @@ candidate into a claimed guarantee by assumption.
   boot-plus-PSN candidate is therefore ruled out as the process identity.
   Continue the retained-native-identity design; this does not yet approve a
   transport, a change to restart behavior, or the final contract.
+
+## Remaining complete-contract work
+
+k75 is now a design node at the concrete observation/provenance boundary.
+Its first child supplies a labelled retirement proposal; review, native evidence,
+capture/transfer, lifecycle, consent and the final contract agreement remain live.
+This node still requires the human's complete mechanism and prepublication
+agreement, reconciled SDL/spec/ADRs and every k52 handoff/evidence-renewal
+instruction. No application-reference restart change follows from that proposal.

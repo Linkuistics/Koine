@@ -24,33 +24,31 @@
     }
   ],
   "discussion": {
-    "title": "Agreed: endpoint addressing only",
-    "status": "Agreed boundary — mechanism and full protocol unresolved",
-    "summary": "The human selected B. Koine retains the endpoint admitted for the captured process and never rebinds it. Receiver movement, descriptor reuse, forwarding and queued activation may affect another window in the same live process or another process, including a restored successor. Capture/reference expiry remains tied to the original process; read and notification provenance remain required. The separate window-qualified activation diagnostic was explicitly abandoned. Authenticated observed closure permanently retires a window reference; undetected closure/reuse may affect another window. Capture/transfer, lifecycle policy, consent, wire/restart/version agreements and a maintained adapter remain required before implementation or release.",
+    "title": "Observation admission and permanent reference retirement",
+    "status": "Proposed construction — native provenance and full agreement outstanding",
+    "summary": "The observed-closure rule is agreed. The new proposal makes publication conditional on authenticated data and an evidenced registration barrier, distinguishes known closure from lost observation, and orders retirement with actual send initiation. Late replies and old registrations cannot revive a reference. These are protocol requirements, not native results. Refusing uncertain remembered rows costs availability and awaits full protocol agreement. Endpoint addressing and its permitted wrong-window/wrong-process effects remain unchanged; capture/transfer, lifecycle, consent and restart/version work remain live.",
     "diagramIds": [
+      "process-observation",
       "process-target-contract",
-      "process-adoption",
-      "addressing",
-      "process-routing",
-      "process-restoration",
-      "process-capture"
+      "process-adoption"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-target-contract",
-        "summary": "Records the agreed addressing boundary, permitted same-process wrong-window and wrong-process effects and client-visible focus-attempt meaning."
-      },
-      {
-        "id": "process-adoption",
-        "summary": "Separates the relaxed contract from unadopted transport and the remaining lifecycle, consent and protocol evidence."
-      },
-      {
-        "id": "addressing",
-        "summary": "Clarifies in the caption that this sequence describes the served API, whose exact-target receipt meaning is being replaced."
+        "id": "process-observation",
+        "summary": "Adds proposed publication, usable, retired and withdrawn states; separates authenticated closure from observation loss and exposes the unproved native barrier."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-observation",
+      "group": "machine",
+      "title": "Observation admission and reference lifetime",
+      "renderer": "svg",
+      "source": "process-observation.puml",
+      "rendered": "process-observation.svg",
+      "caption": "Proposed construction under the agreed observed-closure rule. No reference is published before qualified data and an evidenced registration boundary. Closure retires permanently; loss of required observation withdraws without claiming closure. One owner orders sends, retirement and publication, while earlier native work may still act. Native source, capture/window attribution, freshness, registration barriers and bounded cleanup are unproved. This state diagram is not model checking or product acceptance. The stricter remembered-row refusal and the full protocol await agreement. See docs/specs/machine.md#observation-and-retirement-protocol-proposal."
+    },
     {
       "id": "process-target-contract",
       "group": "machine",

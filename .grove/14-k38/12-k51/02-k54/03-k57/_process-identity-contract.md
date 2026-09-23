@@ -149,3 +149,9 @@ owns the complete
 protocol/evidence agreement and k52 handoff. No parent closes on the scope decision
 alone. Historical triage corrections remain instrument evidence, not a mandate
 to run every survey lead.
+
+k75 has decomposed at the unestablished asynchronous-observation boundary.
+Its observation proposal and review precede native evidence; separate live
+children retain capture/transfer, lifecycle, consent and full agreement/k52
+handoff. The original Done when here remains unmet until that complete design
+is delivered. No parent closes on the proposed retirement construction.
