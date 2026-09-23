@@ -145,3 +145,10 @@ stray-marker encoding, loop/cancellation policy, all timeout/failure paths,
 controller-prefix/FIFO checks and separate candidate evidence produced by k135.
 Current 512-row/30-second limits bound safety without guaranteeing reachability;
 no private-loop coverage mechanism is supplied. No parent criterion closes here.
+
+k135 now separates executable controller prefixes/FIFO (k136), independently
+preserved sampled evidence (k137), and complete producer lifecycle/waits/traces
+with final fresh review (k138). V4 is only the controller slice, with explicit
+native_protocol_ready=false. k138 retains every original k135 criterion and the
+fresh review obligation; k126 waits for that reviewed successor. No original
+k124/k121 native criterion, private-loop coverage or parent completion follows.

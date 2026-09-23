@@ -16,20 +16,23 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-is not ready for native use. k134 reproduced controller-prefix, timeout,
-candidate-result and FIFO gaps in v3 and found incomplete canonical producers.
-`callback-recorder-state-machine-k135` owns the replacement and a fresh tree
-review before k126. Frozen v1/v2/v3 traces and outcomes keep their meanings.
+is not ready for native use. k136 adds v4 controller-prefix, FIFO and active-reply
+producer checks. k137 retains independent sampled evidence; k138 completes the
+producer lifecycle, all waits and fresh tree review before k126. Their parent
+`callback-recorder-state-machine-k135` retains every original criterion. V4 is a
+diagnostic slice using inherited sampler histories, not honest full producer
+executions. Frozen earlier traces and outcomes keep their meanings.
 Complete trusted audit, established loop coverage and confirmed containment
 are all prerequisites for native credit. Row caps and the outer deadline are
 safety limits; they do not guarantee an honest run will complete.
 
 Changed in this discussion:
 
-- [Recorder protocol](index.html#diagram-process-recorder-protocol) — Labels v3's abort-prefix, timeout, FIFO and producer gaps.
-- [Callback return](index.html#diagram-process-recorder-return) — Marks loop/cancellation underspecification and the unsupported conceptual fault exchange.
-- [App exits and containment](index.html#diagram-process-recorder-containment) — Separates frozen exit-2 behavior from honest-protocol proof; discloses budget limits.
-- [Review integration](../../verification/callback-capture-transfer.md#recorder-v3-review-integration) — Exact reproductions, qualified dispositions and k135/k126 ownership.
+- [Recorder protocol](index.html#diagram-process-recorder-protocol) — Adds prefix/FIFO/active-producer checks and names the remaining sample and lifecycle work.
+- [Controller contract](../../verification/callback-causal-fixture/contract.md#version-4-controller-prefix-slice) — Defines v4's executed-prefix rules, malformed outcomes and explicit partial scope.
+
+The unchanged return and containment diagrams remain relevant context; their
+captions now distinguish v4's controller checks from k137/k138's remaining work.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -243,3 +246,19 @@ Safari's discussion and each diagram's initial desktop viewport were checked;
 full-size/full-scroll, mobile and dark appearance were not rechecked. Screenshots
 are under the same evidence directory. The clone was stopped and its removal
 confirmed. No native recorder, permission setup or capture ran.
+
+For k136, the protocol view adds v4 controller-prefix/FIFO/active-producer checks
+and marks k137/k138's remaining work. Return and containment source/export bytes
+are unchanged; their captions now state the partial v4 scope. The
+[render record](../../verification/callback-native-capture/evidence/k136/render.json)
+binds unchanged named inputs to matching guest/local SVGs. Rendering ran only in
+disposable clone `koine-k136-view`. Safari's fresh discussion and protocol links
+were inspected at desktop width, including the protocol's top, body and bottom.
+The [presentation record](../../verification/callback-native-capture/evidence/k136/presentation.json)
+links screenshots and VM teardown. A second clone, `koine-k136-responsive`,
+checked dark appearance and narrow-window wrapping using the same archived
+assets. Dark contrast and discussion wrapping are readable; sequence labels are
+small in the narrow fit view, so wide desktop remains the verified reading
+surface. Mobile-device usability and the unchanged return/containment views
+were not checked. Both clones were stopped and removed. This is presentation
+evidence for a partial diagnostic, not native recorder acceptance.
