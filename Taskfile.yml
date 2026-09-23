@@ -303,6 +303,13 @@ tasks:
       - plantuml --svg --check-before-run --no-error-image process-recorder-protocol.puml process-recorder-return.puml process-recorder-containment.puml
       - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-protocol.puml process-recorder-return.puml process-recorder-containment.puml
 
+  design:render-callback-history:
+    desc: Render partial-history diagnostic design (run only in a disposable VM)
+    dir: docs/design/architecture
+    cmds:
+      - plantuml --svg --check-before-run --no-error-image process-recorder-history.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-recorder-history.puml
+
   design:render-receive-budget:
     desc: Render the native receive acquisition experiment view as SVG and PNG
     dir: docs/design/architecture

@@ -81,3 +81,8 @@ Every original Done when above remains binding. Each child delivers an
 independently executable, falsified slice. k138 commissions the fresh review only
 after the complete artifact exists; its integration precedes native use. No
 native result, coverage mechanism or permission expansion follows from this split.
+
+K138 is now a node. Its first child k139 preserves positive malformation on
+schema-readable partial histories; k140 retains complete producers, waits,
+lifecycle, partial sample policy, final reconciliation and the mandatory fresh
+review. No original criterion is waived and neither k138 nor this node closes.

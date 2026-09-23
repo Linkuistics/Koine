@@ -24,31 +24,32 @@
     }
   ],
   "discussion": {
-    "title": "Sample evidence survives a later abort",
-    "status": "V5 diagnostic slice \u2014 complete producer review remains required",
-    "summary": "k137 separates controller termination, independently justified callback/retention scope and candidate contradictions. A retained label alone earns no scope. k138 completes all producers and waits and commissions fresh tree review before native k126. V1\u2013V4 evidence is frozen; v5 earns no native credit.",
+    "title": "Keep violations visible when a recorder history is incomplete",
+    "status": "V6 diagnostic slice \u2014 full producer and review remain open",
+    "summary": "k139 checks intact local prefixes without repairing missing records. A malformed prefix and structural loss remain separate. k140 retains full producers, waits, partial candidate evidence and fresh review before k126; no native credit.",
     "diagramIds": [
+      "process-recorder-history",
       "process-recorder-protocol",
       "process-recorder-return",
-      "process-recorder-containment",
-      "packages"
+      "process-recorder-containment"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-protocol",
-        "summary": "Adds independent sample premises and preserves candidate diagnostics beside terminal aborts."
-      },
-      {
-        "id": "process-recorder-return",
-        "summary": "Distinguishes callback-sample scope from the stronger post-return-retention scope."
-      },
-      {
-        "id": "process-recorder-containment",
-        "summary": "Keeps raw contradictions visible while explicitly withholding native credit for v5."
+        "id": "process-recorder-history",
+        "summary": "Adds the intact-prefix boundary, partial FIFO check and separate structural/malformation results."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-history",
+      "group": "machine",
+      "title": "Preserve violations in incomplete recorder histories",
+      "renderer": "svg",
+      "source": "process-recorder-history.puml",
+      "rendered": "process-recorder-history.svg",
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+    },
     {
       "id": "process-recorder-protocol",
       "group": "machine",
@@ -56,7 +57,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -65,7 +66,7 @@
       "renderer": "svg",
       "source": "process-recorder-return.puml",
       "rendered": "process-recorder-return.svg",
-      "caption": "V5 preserves callback-sample evidence when return or later C reach is missing. Post-return-retention needs the enclosing return and optional C causal witness. The native host callout, baseline nesting, modes and cancellation remain k138. Private-loop coverage has no mechanism and still gates k126."
+      "caption": "V5 preserves callback-sample evidence when return or later C reach is missing. Post-return-retention needs the enclosing return and optional C causal witness. The native host callout, baseline nesting, modes and cancellation remain k140 under k138. Private-loop coverage has no mechanism and still gates k126."
     },
     {
       "id": "process-recorder-containment",
@@ -74,7 +75,7 @@
       "renderer": "svg",
       "source": "process-recorder-containment.puml",
       "rendered": "process-recorder-containment.svg",
-      "caption": "V5 terminal exit 2 can coexist with a justified sample contradiction. Raw diagnostics survive, but native_credit remains withheld for this intermediate slice. k138 owns final combined policy and producer review; k126 owns actual audit, coverage, exits and clone containment. All original native obligations remain."
+      "caption": "V5 terminal exit 2 can coexist with a justified sample contradiction. Raw diagnostics survive, but native_credit remains withheld for this intermediate slice. k140 under k138 owns final combined policy and producer review; k126 owns actual audit, coverage, exits and clone containment. All original native obligations remain."
     },
     {
       "id": "process-exits",

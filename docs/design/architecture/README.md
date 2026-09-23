@@ -16,24 +16,18 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-is not ready for native use. k137 adds v5 independent sample scope/diagnostics
-with terminal outcomes and all native credit withheld. k136 adds v4 controller-prefix, FIFO and active-reply
-producer checks. k137 retains independent sampled evidence; k138 completes the
-producer lifecycle, all waits and fresh tree review before k126. Their parent
-`callback-recorder-state-machine-k135` retains every original criterion. V4 is a
-diagnostic slice using inherited sampler histories, not honest full producer
-executions. Frozen earlier traces and outcomes keep their meanings.
-Complete trusted audit, established loop coverage and confirmed containment
-are all prerequisites for native credit. Row caps and the outer deadline are
-safety limits; they do not guarantee an honest run will complete.
+remains unready for native use. V6 checks positive malformation in intact local
+prefixes while preserving strict structural loss. V5's independent sample
+columns continue on complete histories; partial sample recovery remains open.
+K140 retains complete producers, waits and fresh review under k138/k135.
 
 Changed in this discussion:
 
-- [Recorder protocol](index.html#diagram-process-recorder-protocol) — Adds prefix/FIFO/active-producer checks and names the remaining sample and lifecycle work.
-- [Controller contract](../../verification/callback-causal-fixture/contract.md#version-4-controller-prefix-slice) — Defines v4's executed-prefix rules, malformed outcomes and explicit partial scope.
+- [Partial recorder histories](index.html#diagram-process-recorder-history) — Adds prefix boundaries, partial FIFO and separate structural/malformation results.
+- [Partial-history contract](../../verification/callback-causal-fixture/contract.md#version-6-partial-history-diagnostics) — Specifies unavailable checks, excluded suffixes and withheld sample/native credit.
 
-The unchanged return and containment diagrams remain relevant context; their
-captions now distinguish v4's controller checks from k137/k138's remaining work.
+The v5 protocol, return and containment sources/exports are unchanged context;
+their captions now name k140 as the remaining producer under k138.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -77,6 +71,7 @@ From the repository root:
 task design:render-process-identity
 task design:render-callback-sampling
 task design:render-callback-recorder
+task design:render-callback-history
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -278,3 +273,18 @@ readable, but sequence labels in the narrow fit view are small. Mobile devices,
 every scroll position and dark return/containment views were not checked. The
 clone was stopped and removed. Complete native producers and fresh review remain
 with k138; this update establishes no native recorder acceptance.
+
+For k139, the new [partial-history view](index.html#diagram-process-recorder-history)
+shows the intact-prefix boundary and separate structural/malformation results.
+The [current discussion](index.html#discussion) identifies k140's remaining
+producer and review work. Only the new history view is marked updated; the
+earlier three recorder sources and exports are unchanged. The
+[render record](../../verification/callback-native-capture/evidence/k139/render.json)
+binds unchanged named inputs to matching guest/local SVGs in disposable clone
+`koine-k139-view`, with matching host-served assets. The
+[presentation record](../../verification/callback-native-capture/evidence/k139/presentation.json)
+retains wide discussion/history checks and narrow dark discussion/history
+screenshots. Discussion and caption wrap at 650-pixel window width; sequence
+labels remain small in the narrow fit view. Wide desktop is the verified reading
+surface. Mobile devices, every scroll position and the earlier three views were
+not rechecked. The clone was stopped and removed. Native credit is withheld.

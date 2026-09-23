@@ -170,3 +170,18 @@ stop the structural reader before evidence extraction. K138 owns that explicit
 limit and every remaining k135 criterion. Native k126 retains actual audit,
 private-loop coverage, exits, preparation, containment and every original k124/
 k121 obligation. No parent closes and no permission or product decision changes.
+
+## k139 partial-history handoff
+
+K138 now contains completed partial-history diagnostic k139 and live complete
+producer k140. V6 preserves the strict structural result beside positive
+malformation in schema-readable intact local prefixes; it never fills missing
+ends/replies or bridges sequence gaps. Complete histories retain v5's independent
+sample columns. Incomplete/fault-bearing sample scope and parsing recovery remain
+unsupported, explicitly retained in k140's charter.
+
+Consume the causal contract's Version 6 and k139's frozen controls. Preserve all
+v1–v6 inputs/reports; k140 must complete every original k138/k135 producer/wait/
+lifecycle/honest-trace obligation and commission fresh review before native k126.
+No native criterion, private-loop coverage gate, preparation/audit/exit/
+containment obligation or one-attempt rule closes on this diagnostic increment.
