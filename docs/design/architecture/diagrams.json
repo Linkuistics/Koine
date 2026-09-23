@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: acquisition before rejection",
-    "status": "Local native counterexample — AX exchange still open",
-    "summary": "A 44-byte local message acquired a 128 KiB OOL mapping despite a 4096-byte inline capacity and a later 64 KiB payload cap. Normal disposal removed the measured span; omitted disposal was detected. This disproves the cap-only acquisition policy. An enforceable budget, actual AX context and the witnessed exchange remain open.",
+    "title": "Native observation: resource admission remains unresolved",
+    "status": "Evidenced preflight conflict — resource decision open",
+    "summary": "The earlier local OOL counterexample rules out cap-only admission. The inspected audit-peek, queue-limit and legacy overwrite interfaces do not establish a usable memory/right envelope. A concrete enforcement lead or an explicitly agreed constraint change is required before AX receive rights are exposed. No new AX experiment or product decision follows.",
     "diagramIds": [
+      "process-receive-admission",
       "process-receive-budget",
       "process-observation-wire",
       "process-observation",
@@ -35,12 +36,21 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "process-receive-budget",
-        "summary": "Adds the measured mapping-before-policy counterexample, inline-too-large control and detected omitted destruction; preserves the remaining AX preflight."
+        "id": "process-receive-admission",
+        "summary": "Adds the bounded source assessment of audit peek, queue count and overwrite, and the concrete condition for reopening the AX exchange."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-receive-admission",
+      "group": "machine",
+      "title": "Resource admission and the exchange conflict",
+      "renderer": "svg",
+      "source": "process-receive-admission.puml",
+      "rendered": "process-receive-admission.svg",
+      "caption": "k103 source assessment of pinned explanatory XNU, not a byte match to the running 25F71 kernel. Audit peek returns metadata without descriptor resource demand; queue limits count messages; the legacy scatter-size argument is unused. Together with the prior local OOL counterexample, these leave no usable acquisition envelope established for this owned notification channel. Other enforcement mechanisms are not proved absent. The complete memory/right/queue/partial-copyout argument and native controls remain required, as do actual AX context, authentication and witnessed add/closure/remove. No application was exercised or observed refused here. No helper, support restriction, unbounded policy or shipping adapter is adopted. See docs/verification/native-observation-receive.md#pre-copyout-admission-assessment."
+    },
     {
       "id": "process-receive-budget",
       "group": "machine",

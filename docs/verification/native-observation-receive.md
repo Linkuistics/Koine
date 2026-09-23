@@ -12,6 +12,12 @@ contract. The subsequent [acquisition-budget experiment](#acquisition-budget-exp
 adds a bounded local IPC counterexample: a parser cap did not prevent acquiring
 an oversized OOL mapping. No owned AX request, notification delivery or closure
 experiment ran.
+The subsequent [pre-copyout admission assessment](#pre-copyout-admission-assessment)
+finds no usable acquisition envelope established by the inspected mechanisms.
+That is the current exchange conflict, with the unmet runtime work retained;
+it is not a proof that every possible native mechanism fails.
+The [admission view](../design/architecture/index.html#diagram-process-receive-admission)
+shows the decision boundary and reopening condition.
 The [wire view](../design/architecture/index.html#diagram-process-observation-wire)
 shows the new boundary. The [observation proposal](../specs/machine.md#observation-and-retirement-protocol-proposal)
 remains unadopted; source identity alone cannot establish window lifetime.
@@ -337,6 +343,132 @@ gaps. The graph is not evidence for native kernel behavior.
 k91 still owns the broader send/cancellation/drain matrix, k95/k96 publication,
 read lifetime and loss/recovery, and k86/k87 maintained bounds, consent and human
 agreement. No AX exchange, shipping feasibility or parent completion follows.
+
+## Pre-copyout admission assessment
+
+**Do not expose the owned AX reply/delivery rights on the evidence available.**
+The required admission boundary must constrain receiver mappings, imported
+rights and queued resources before protocol parsing, including partially
+successful copyout. Fixed inline storage plus later rejection fails that
+boundary in k102. The alternatives inspected here do not establish a replacement.
+No new AX request, local IPC experiment or target application ran in k103.
+
+This is a source-based design assessment of XNU commit
+`f6217f891ac0bb64f3d375211650a4c1ff8ca1ea`, using the same explanatory revision
+as the earlier receive report. It is **not** a byte match to the running
+25F71 kernel. The installed SDK is macOS 27.0. The
+[source manifest](native-observation/admission-sources.md) pins URLs, inspected
+symbols/ranges and [digests](native-observation/admission-primary.sha256).
+The existing 25F71 measurement remains the native counterexample.
+
+### Admission alternatives
+
+| Mechanism | What the inspected interface supplies | Why it does not yet satisfy this exchange |
+|---|---|---|
+| Fixed inline capacity, timeout and parser allowlist | Bounds inline storage and waiting; recognizes accepted payloads after receive | The measured 44-byte message already maps 128 KiB before the payload cap. The notification layout itself contains an OOL descriptor; refusing all messages large enough to contain OOL also refuses ordinary native delivery. |
+| Port queue limit | Counts queued messages, not their OOL bytes or enclosed rights | One accepted message can exceed the candidate payload budget. Queue count is also not universally equal to the configured limit: the inspected send-once path can pass it subject to the kernel queue ceiling. |
+| Audit peek before receive | Returns sequence, message size, ID and requested trailer through audit | Does not expose descriptor count, OOL lengths, port-array count or body. Even a correctly authenticated target may send a kernel-valid oversized body. Trusting it to obey the expected layout would replace resource enforcement with a target-behavior assumption. |
+| Legacy overwrite/scatter receive | Selects a separate inline receive buffer in the inspected user wrapper | `MACH_RCV_OVERWRITE` is zero in the SDK; the wrapper ignores `rcv_scatter_size`. This is not evidence for a caller-supplied bounded OOL destination. |
+| Kernel type/size ceilings alone | Finite representation limits and platform-wide checks exist | No complete memory/right/queue/partial-copyout total, reconciled to a usable resident-process budget, has been established. Integer finiteness alone does not select a maintained budget. The prior 64 KiB cap was an experiment parameter, not an approved product limit. |
+
+These are bounded candidate findings. Other kernel policy/filter mechanisms,
+task-wide quotas and alternate receive architectures are not proved absent.
+They would need a concrete callable interface and an accounting argument before
+being credited. A helper process, application restriction, target cooperation
+or changed resource promise would change an existing constraint and is not
+selected here. Process isolation alone would not establish a system resource
+budget or cleanup guarantee either.
+
+### Source evidence and ownership consequence
+
+The inspected [queue limit type and send path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_mqueue.c#L431-L475)
+operate on message counts, with a separate send-once exception to the configured
+limit. This does not establish a byte or right quota. No general claim about
+all kernel allocations or every queue policy follows.
+
+[`mach_port_peek`](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/mach_port.c#L966-L1030)
+copies metadata and an audit-capable trailer; it does not transfer the queued
+message's body to the caller. Its kernel helper reads header/trailer fields.
+This can be an authentication lead, but cannot measure a message's OOL resource
+demand. Nor does this assessment establish an atomic peek/receive protocol;
+exclusive receive ownership and same-message correlation would still need proof.
+
+The [copyout implementation](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_kmsg.c#L3803-L4144)
+maps ordinary and volatile OOL through the same descriptor path. Port arrays
+allocate receiver memory and import their individual rights. The descriptor loop
+accumulates errors while continuing. Therefore a body-copyout failure cannot be
+treated as “nothing acquired.” The
+[receive result path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/mach_msg.c#L309-L382)
+returns the partially processed body for body errors. A complete design still
+needs a result-specific ownership ledger, including header rights and vouchers;
+the ordinary-OOL destructor control covers only its measured case.
+
+The [user overwrite wrapper](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/libsyscall/mach/mach_msg.c#L190-L235)
+marks the scatter-size argument unused. Its separate inline buffer and optional
+auxiliary vector do not establish scatter placement of message OOL. An old
+comment about scatter information is not a supported admission mechanism.
+
+Keep the conditional deep interface: one transport owner controls retained
+rights and result-specific envelope disposal; the decoder borrows immutable
+bytes and returns bounded values. The decoder's small interface is useful, but
+cannot hide an unenforced resource guarantee. Callers must receive refusal
+before a dependent AX send while that guarantee is unresolved. Unknown resource
+forms must not be accepted, silently omitted, or delegated to a destructor whose
+ownership preconditions have not been established.
+
+### Exchange conflict and reopening condition
+
+The precise conflict is **lack of an evidenced, usable pre-copyout resource
+envelope for the owned native notification channel under the current
+constraints**. The ordinary native notification requires the same class of
+OOL-capable receive that the cap-only policy fails to constrain. Audit identity
+does not supply a resource bound. This is sufficient to prevent this exchange's
+preflight, not sufficient to reject the entire endpoint-addressing design.
+
+Reopen execution only with a named mechanism and its actual interface, or an
+explicitly agreed change to the constraint. The mechanism must specify finite
+totals for inline/trailer storage, mapped/page-rounded OOL, imported rights,
+outstanding envelopes, queued resources and partial failure, and explain why
+those totals are usable in the resident Koine process. Native controls on the
+pinned platform must attempt to exceed each claimed bound, cover foreign valid
+forms and exercise the ownership failures before AX rights are exposed.
+No stress-to-exhaustion experiment is authorized by this assessment.
+
+The recommended next decision is to preserve the existing bounds and
+no-helper/no-restriction constraints and require a concrete enforcement lead
+before more native exchange work. Its cost is that the exchange and first
+release remain unresolved. Changing process composition or resource guarantees
+requires explicit human agreement with those consequences visible; neither is
+silently adopted to get a successful transport trace.
+
+### Original criteria reconciliation
+
+| Inherited k103 / k101 / k99 / k94 obligation | Evidence at this boundary | Work still required |
+|---|---|---|
+| Request constants, server decoders, connection/scalar/flag semantics | k93/k97/k98 static dossiers | Actual policy acceptance and exercised ownership remain open |
+| Finite usable acquisition; all foreign descriptors and partial copyout | k102 cap-only counterexample; k103 bounded source assessment above | Concrete enforcement lead or explicit constraint decision, then native bound/cleanup controls |
+| Actual voucher, requester and launch responsibility | Static paths only | Freeze actual execution context, avoid adopted client authority, check generic requester |
+| Owned allocation, first-add failure after bookkeeping, remove versus teardown | Conditional connection contract only | Account distinct endpoint/task/connection/delivery/reply owners on every exercised outcome |
+| Exact requests, fresh replies, full kernel trailers and live held-task comparison | Earlier direct-read diagnostics and local self-audit have narrower scopes | Authenticate every read/reference/confirmation and notification of this actual exchange; record correlation/freshness separately |
+| Add, independently witnessed closure/delivery and remove, including unmodified app | Not run | Complete frozen isolated-VM exchange and raw byte/right/OOL ledger |
+| Wrong-source, old-registration, refusal and unexpected-reply controls | Not run for the owned observation exchange | Execute real controls and broken-control checks; distinguish synthetic cases from actual reuse |
+| Unsupported forms and actual refused workflows | No application exercised or observed refused here | Preserve the existing unsupported-form inventory; enumerate actual outcomes when execution becomes possible |
+| Platform/input freeze | Source/SDK provenance for this assessment; prior native runs retain their own hashes | Freeze the actual future executable, controls and platform/images before its run |
+
+No runtime criterion is marked satisfied by a source table. k101/k99/k94 stay
+live with the resource decision and the full original exchange outstanding.
+k104 carries the actionable resource-boundary decision; k105 retains the full
+runtime preflight, witnessed exchange and reconciliation. k103 closes only its
+evidenced-conflict branch.
+k91 retains send-result/ingress/cancellation/drain schedules; k95/k96 retain
+publication, read lifetime and loss/recovery; k86/k87 retain maintained bounds,
+consent, lifecycle/support consequences and final agreement. No schema, ADR
+decision, shipping adapter, k52 permission or parent completion changes here.
+
+One independent adversarial reviewer inspected the bounded assessment, source
+manifest and digests and reported no actionable finding. It ran no native tests
+and supplied no missing resource or runtime guarantee. No new ADR is created:
+the existing constraints stand, and the product trade-off remains undecided.
 
 ## Reproduction
 

@@ -86,3 +86,9 @@ or general impossibility. The receive report preserves raw evidence and limits.
 k103 retains an enforceable acquisition policy, actual execution/voucher context,
 all descriptor/error ownership controls and the full witnessed exchange. This
 node and k101 remain live; every original criterion above remains binding.
+
+k103 supplies a bounded source-based acquisition conflict, not an AX exchange.
+k101 remains live through k104's explicit resource-boundary decision and k105's
+complete runtime exchange. No helper, application restriction or resource-policy
+relaxation has been adopted; the receive report's reconciliation table retains
+every original k99/k94 obligation.

@@ -55,3 +55,20 @@ investigation, externalize its exact discriminator before unsafe execution.
 - native-observation-bounded-exchange-k103 owns a usable acquisition policy,
   all remaining runtime preflight, the real witnessed exchange and complete
   reconciliation with this node, k99 and k94. None closes on local IPC alone.
+
+k103 completed the evidenced-conflict branch: fixed inline storage, queue count,
+audit peek and the inspected legacy overwrite interface establish no usable
+pre-copyout memory/right envelope. Its source assessment does not prove universal
+impossibility, and no AX exchange ran. The receive report reconciles every
+original criterion; all runtime work remains. The node-close check therefore
+fails, and this node stays live through:
+
+- `native-observation-resource-boundary-k104` — obtain an actionable human
+  decision about the precise resource conflict, with current constraints the
+  recommended default; no automatic helper or support restriction.
+- `native-observation-complete-exchange-k105` — consume that decision and retain
+  the enforceable acquisition policy, all runtime preflight, witnessed exchange,
+  controls and full k101/k99/k94 reconciliation.
+
+The original Goal and Done when above remain unchanged. No broader send,
+publication, read-lifetime, loss, consent or final-agreement obligation moves.

@@ -1418,9 +1418,15 @@ traces native voucher adoption, injected observer context and separate success/
 error cleanup. Actual execution context, authenticated receive, bounded OOL
 acquisition and cleanup controls remain prerequisites. No owned exchange is
 established.
-Then use a signed diagnostic in an isolated VM, with an independent window and
-process witness, to distinguish live closure from Space absence, queued old
-delivery, registration failure and death/exec/reuse. Exercise closure during
+The [admission assessment](../verification/native-observation-receive.md#pre-copyout-admission-assessment)
+records the present preflight conflict: the local OOL counterexample defeats
+cap-only admission, and the inspected peek, queue-limit and overwrite mechanisms
+do not establish a usable resource envelope. A concrete enforcement mechanism
+or an explicitly agreed constraint change is required before the owned exchange;
+this is not a universal native-impossibility conclusion.
+Once that prerequisite is met, use a signed diagnostic in an isolated VM, with
+an independent window and process witness, to distinguish live closure from
+Space absence, queued old delivery, registration failure and death/exec/reuse. Exercise closure during
 publication and both sides of the local send boundary. Validate a deliberate
 wrong-source or old-registration event is rejected and a genuine closure is
 accepted. Synthetic faults establish local rejection only; they do not establish

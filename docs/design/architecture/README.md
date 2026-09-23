@@ -17,8 +17,22 @@ python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architectur
 
 The SVG exports beside each source also open on their own.
 
-- [Receive acquisition before payload rejection](index.html#diagram-process-receive-budget) — Adds the measured 128 KiB mapping, later 64 KiB rejection and falsified omitted-destruction control.
-- [Acquisition-budget evidence](../../verification/native-observation-receive.md#acquisition-budget-experiment) — Records the local IPC counterexample and carries the enforceable budget and AX exchange forward explicitly.
+- [Resource admission and the exchange conflict](index.html#diagram-process-receive-admission) — Adds the bounded source assessment and the condition for reopening the owned AX exchange.
+- [Pre-copyout admission assessment](../../verification/native-observation-receive.md#pre-copyout-admission-assessment) — Separates queue count, sender metadata and inline storage from the outstanding acquisition guarantee, and reconciles every inherited exchange criterion.
+
+The admission view is rendered with PlantUML 1.2026.8 by
+`task design:render-receive-admission`, producing SVG and PNG. The existing
+budget view remains unchanged context with its own native evidence.
+The source and Taskfile [digests before](../../verification/native-observation/admission-render-before.sha256)
+and [after](../../verification/native-observation/admission-render-after.sha256)
+rendering match. The full PNG and a fresh Safari deep link, outline,
+discussion panel and Current/Updated markers were checked in disposable clone
+`koine-k103-design`. Desktop light layouts at 1500 and 650 pixels were inspected;
+narrow fit reduces text size and retains native-size/full-size alternatives.
+No mobile-device or dark-appearance check is claimed. Viewer, manifest, source
+and SVG [guest digests](../../verification/native-observation/admission-viewer-guest.json)
+match the host, and host HTTP manifest/SVG bytes match disk. These are
+presentation checks only. The clone was stopped after inspection.
 
 The k102 budget view was rendered with PlantUML 1.2026.8 using
 `task design:render-receive-budget`; its
@@ -74,6 +88,7 @@ exchange or a mobile-device check. Native byte inspection is documented in the
 
 Stable views:
 
+- [Resource admission and the exchange conflict](index.html#diagram-process-receive-admission) — distinguishes the bounded source assessment from the unresolved resource decision and complete native exchange.
 - [Receive acquisition before payload rejection](index.html#diagram-process-receive-budget) — distinguishes the measured local mapping from later policy rejection and the remaining AX preflight.
 - [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — traces request, connection and receive ownership; actual authentication, voucher context, OOL acquisition bounds and cleanup remain open.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.

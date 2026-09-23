@@ -92,3 +92,9 @@ not native registration evidence. k103, under k101, retains the enforceable
 resource bound, all remaining receive/context controls and the complete AX
 exchange; k99/k101 and this node remain live. See the receive report's
 acquisition-budget section and obligation table before relying on the mechanism.
+
+k103 now reports the bounded acquisition conflict after inspecting peek,
+queue-limit and overwrite interfaces. The owned AX exchange has not run.
+k104 resolves the resource boundary with the human before k105 retains all
+runtime preflight/exchange criteria under k101. This node stays live; source
+assessment does not discharge k95/k96's native premises or k91's broader matrix.
