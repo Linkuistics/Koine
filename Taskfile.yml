@@ -136,6 +136,11 @@ tasks:
       - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/probe.m -framework Cocoa -framework ApplicationServices -o .build/retained-ax/K54Binding.app/Contents/MacOS/K54Binding
       - /usr/bin/ditto -c -k .build/retained-ax .build/retained-ax.zip
 
+  design:decode-native-observation:
+    desc: Decode the frozen native observation scans without executing native code
+    cmds:
+      - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/inspection.json docs/verification/native-observation/followup.json
+
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture

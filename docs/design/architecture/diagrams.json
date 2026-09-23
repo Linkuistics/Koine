@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: inspected wire path and missing lifetime evidence",
-    "status": "Static native inspection — runtime provenance and adoption outstanding",
-    "summary": "Pinned 25F71 instructions expose cached process routing for registration, a cookie storing supplied port/context, and a separate zero-timeout notification send. These are concrete encoder boundaries, not an authenticated closure, loss detector or publication barrier. Both registration orders and delayed old delivery past later reads remain frozen runtime discriminators. The repaired retirement proposal is unchanged context. Full read/support agreement, capture/transfer, lifecycle, consent and restart/version work remain live.",
+    "title": "Native observation: layout evidence before an owned exchange",
+    "status": "Partial wire specification — native exchange and lifetime evidence outstanding",
+    "summary": "Saved 25F71 bytes now yield add/remove/post offsets, inline length bounds and reply checks. Request-header literals, server decoders, client-connection semantics and runtime ownership still need a bounded preflight. Notification OOL bytes need a separate bound; a receive context is not sender audit identity. No new native exchange ran. Both registration orders, delayed older closure, loss detection and read lifetime remain unresolved, with the repaired retirement proposal unchanged.",
     "diagramIds": [
       "process-observation-wire",
       "process-observation",
@@ -36,7 +36,7 @@
     "updatedDiagrams": [
       {
         "id": "process-observation-wire",
-        "summary": "Adds the inspected registration and separate notification paths, with cookie, zero-timeout send and missing lifetime/order/loss premises distinguished."
+        "summary": "Adds decoded add/remove offsets, missing header/connection prerequisites and explicit OOL/trailer validation obligations."
       }
     ]
   },
@@ -48,7 +48,7 @@
       "renderer": "svg",
       "source": "process-observation-wire.puml",
       "rendered": "process-observation-wire.svg",
-      "caption": "Static inspection in disposable TestAnyware clone koine-k83-observation on macOS 26.5 (25F71); no notification exchange or closure/loss schedule executed. Public registration uses cached process routing; the candidate needs an owned request to the admitted endpoint. Cookie construction stores supplied values, not a window generation. The ordinary remote post path sends a separate message with timeout zero; failure returns to the posting caller, without an established observer loss detector. Receive context is local ownership, not sender identity or event age. Exact byte ranges and frozen controls: docs/verification/native-observation.md. Publication, read lifetime, source authentication and bounded cleanup remain unproved; k83 remains live and no native adapter is adopted. The observation-retirement view is unchanged proposal context."
+      "caption": "The original bytes were inspected in disposable clone koine-k83-observation on macOS 26.5 (25F71). The layout dossier re-decodes them without a new native exchange: add/remove/post offsets and reply checks are known, but header literals, server decoders, connection ownership and receive cleanup remain prerequisites. The post's inline bound does not bound its OOL payload; the owned receiver needs full kernel audit-trailer validation. Supplied cookie context is not a window generation. Neither publication order, read lifetime nor loss detection follows. Evidence and next preflight: docs/verification/native-observation-layout.md. Both registration orders and the complete k83 charter remain live; no adapter or public-contract change is adopted. The observation-retirement view is unchanged proposal context."
     },
     {
       "id": "process-observation",

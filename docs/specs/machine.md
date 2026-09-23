@@ -1407,6 +1407,9 @@ separate registration and notification paths, supplied cookie context and a
 zero-timeout post. It establishes neither a native window generation nor a
 publication barrier or observer loss detector; the required runtime evidence
 remains outstanding.
+The [layout dossier](../verification/native-observation-layout.md) supplies
+byte-offset and reply-check evidence while leaving concrete header, server
+decoder and ownership prerequisites open. No owned exchange is established.
 Then use a signed diagnostic in an isolated VM, with an independent window and
 process witness, to distinguish live closure from Space absence, queued old
 delivery, registration failure and death/exec/reuse. Exercise closure during

@@ -110,3 +110,9 @@ investigations, not implementation leaves or an automatic survey sequence:
 The first inspection may expose an encoder prerequisite requiring its own
 focused child before runtime tests. No schema, behavioral support restriction,
 native adoption or k52 permission follows from this decomposition.
+
+k90 decomposed before native sends because k89 left owned-wire prerequisites.
+Its first child, k93, derives a partial layout dossier from the frozen scans;
+k94–k96 retain exchange validation, publication/read lifetime and loss/recovery.
+The new byte tables establish no closure, completeness or publication barrier.
+The original k83 charter above and k91/k92's responsibilities remain unchanged.

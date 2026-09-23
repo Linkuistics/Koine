@@ -17,9 +17,18 @@ python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architectur
 
 The SVG exports beside each source also open on their own.
 
+The k93 layout update to the wire view was rendered with PlantUML 1.2026.8 and
+its Smetana layout in disposable clone `koine-k93-layout`, using
+`task design:render-process-identity`. Renderer/source hashes matched before
+and after. The full PNG and a fresh Safari deep link, discussion, outline and
+updated marker were inspected; desktop light/dark appearance and a 650-pixel
+light window were checked. Viewer, manifest, source and SVG hashes matched
+between guest and host; host HTTP delivery matched. This was a presentation
+check only, with no native observation experiment or mobile-device check.
+
 Stable views:
 
-- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — adds pinned registration and notification paths, separating static cookie/send facts from unproved native lifetime, order and loss detection.
+- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — adds decoded add/remove offsets, missing header/connection prerequisites and separate OOL/trailer validation obligations.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
@@ -78,7 +87,11 @@ The [native wire inspection](../../verification/native-observation.md) now maps
 the registration/notification transport and freezes its runtime discriminator.
 Static instruction evidence supplies no closure, loss detector or publication
 barrier; the proposal below remains unchanged and unadopted.
-It distinguishes proven closure from preparation failure and detected loss,
+The [layout dossier](../../verification/native-observation-layout.md) now derives
+byte offsets and reply checks, with a bounded preflight for the uninspected
+literals, server decoders and ownership links. `task design:decode-native-observation`
+reproduces the saved-byte disassembly without executing native instructions.
+The proposal distinguishes proven closure from preparation failure and detected loss,
 requires evidence across both registration orders and separate reply/delivery
 channels, and preserves read lifetime attribution despite the effect relaxation.
 Bounded ingress validation precedes nonblocking send initiation; proven no-enqueue,
