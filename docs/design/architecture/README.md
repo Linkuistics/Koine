@@ -17,8 +17,21 @@ python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architectur
 
 The SVG exports beside each source also open on their own.
 
-- [Native observation connection](index.html#diagram-process-observation-wire) — Separates local connection ownership, target audit policy and delivery-port death tracking from cached destination routing; adds removal and first-add failure limits.
-- [Connection evidence](../../verification/native-observation-connection.md) — Records pinned scalar, requester and ownership paths and the conditional contract for the owned exchange.
+- [Native observation receive ownership](index.html#diagram-process-observation-wire) — Adds voucher adoption, injected observer context and split OOL cleanup, with the proposed envelope owner and runtime preflight explicit.
+- [Receive-envelope evidence](../../verification/native-observation-receive.md) — Records pinned receive helpers and the distinction between a payload size check and bounded memory acquisition.
+
+The k100 receive update was rendered with PlantUML 1.2026.8 using
+`task design:render-process-identity`; its
+[inputs](../../verification/native-observation/receive-render-before.sha256)
+matched [after rendering](../../verification/native-observation/receive-render-after.sha256).
+The full PNG, fresh Safari deep link, discussion, outline and Current/Updated
+markers were inspected in disposable clone `koine-k100-receive`. Desktop light
+and 650-pixel light/dark views were checked; the SVG retains a light canvas and
+narrow fit reduces text size, with native-size/full-size alternatives. No mobile
+device was checked. Viewer, manifest, changed source and SVG matched host/guest,
+and the host HTTP manifest/SVG matched disk. These are presentation checks,
+not native observation acceptance.
+The clone was stopped after inspection.
 
 The k98 connection update was rendered with PlantUML 1.2026.8 using
 `task design:render-process-identity`. The final
@@ -47,7 +60,7 @@ exchange or a mobile-device check. Native byte inspection is documented in the
 
 Stable views:
 
-- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — traces connection ownership, audit policy and delivery death tracking alongside matched request decoding; voucher context and complete receive validation remain open.
+- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — traces request, connection and receive ownership; actual authentication, voucher context, OOL acquisition bounds and cleanup remain open.
 - [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.

@@ -151,6 +151,11 @@ tasks:
     cmds:
       - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/connection-inspection.json docs/verification/native-observation/connection-followup.json docs/verification/native-observation/connection-ownership.json
 
+  design:decode-native-observation-receive:
+    desc: Decode the frozen observation receive-source scans without native execution
+    cmds:
+      - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/receive-inspection.json docs/verification/native-observation/receive-cf-inspection.json
+
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture

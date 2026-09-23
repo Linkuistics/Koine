@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: connection ownership and policy",
-    "status": "Static contract traced \u2014 owned exchange remains unvalidated",
-    "summary": "The connection is a local liveness/policy port, separate from the retained destination and delivery lifetime. Pinned code traces audit-based access, element types, requester classes and first-add death tracking. Voucher handling, authenticated receive cleanup and an actual exchange remain prerequisites; no consent or lifetime guarantee is established.",
+    "title": "Native observation: receive ownership",
+    "status": "Static receive contract \u2014 native exchange still open",
+    "summary": "Pinned receive helpers adopt vouchers and grow buffers; HIServices injects local observer context and splits success/error cleanup. The proposed owned receiver keeps one envelope owner. Actual audit evidence, bounded OOL acquisition, execution context and cleanup controls remain preflight, with no witnessed closure or publication premise.",
     "diagramIds": [
       "process-observation-wire",
       "process-observation",
@@ -35,7 +35,7 @@
     "updatedDiagrams": [
       {
         "id": "process-observation-wire",
-        "summary": "Separates local connection ownership, audit policy and delivery death tracking from PID destination routing; names the remaining owned-exchange prerequisites."
+        "summary": "Adds native voucher adoption, injected observer context and OOL cleanup; separates the proposed envelope owner from unresolved runtime acquisition and authentication."
       }
     ]
   },
@@ -47,7 +47,7 @@
       "renderer": "svg",
       "source": "process-observation-wire.puml",
       "rendered": "process-observation-wire.svg",
-      "caption": "Static loaded-byte evidence on macOS 26.5 (25F71). Add/remove layouts and decoders are matched. Connection creation is local; target policy uses connection plus audit data. Element type, requester classification and first-add delivery death tracking are traced. No owned exchange, Koine consent, balanced runtime rights, closure or publication barrier is established. Voucher context, fresh authenticated receives and cleanup remain preconditions. See docs/verification/native-observation-connection.md and native-observation-requests.md."
+      "caption": "Static loaded-byte evidence on macOS 26.5 (25F71). Request layouts, connection policy and native receive helpers are traced. CoreFoundation adopts the message voucher; HIServices injects the observer pointer into the context slot. Native success unmaps OOL info while rejected complex requests use message destruction. The proposed owned decoder borrows from one envelope owner. Actual audit evidence, execution context, bounded OOL acquisition and cleanup remain unvalidated; no owned exchange, closure, lifetime or publication barrier is established. See docs/verification/native-observation-receive.md."
     },
     {
       "id": "process-observation",

@@ -1413,8 +1413,11 @@ byte-offset and reply-check evidence. The subsequent
 matches header constants and server decoding; the
 [connection inspection](../verification/native-observation-connection.md)
 traces local connection ownership, audit policy and scalar/flag semantics.
-Voucher context, authenticated receive and cleanup remain prerequisites.
-No owned exchange is established.
+The [receive-envelope inspection](../verification/native-observation-receive.md)
+traces native voucher adoption, injected observer context and separate success/
+error cleanup. Actual execution context, authenticated receive, bounded OOL
+acquisition and cleanup controls remain prerequisites. No owned exchange is
+established.
 Then use a signed diagnostic in an isolated VM, with an independent window and
 process witness, to distinguish live closure from Space absence, queued old
 delivery, registration failure and death/exec/reuse. Exercise closure during

@@ -77,3 +77,11 @@ policy acceptance ran. k99 retains actual voucher context, authenticated receive
 resource accounting and the witnessed exchange, including first-add failure
 after bookkeeping and remove without full delivery teardown. This is not a
 completed k94 exchange or an approved native mechanism.
+
+k99 decomposed the receive preflight from its native exchange. k100's static
+receive-envelope report traces AV/voucher receive helpers, injected observer
+context and split OOL cleanup, and proposes one owned envelope with a borrowing
+decoder. It does not bound kernel OOL acquisition or establish runtime cleanup.
+k101 retains actual execution/voucher context, all exposed descriptor/error
+ownership controls, the witnessed exchange and full k99/k94 reconciliation.
+This node and k95/k96's dependent native premises remain live.
