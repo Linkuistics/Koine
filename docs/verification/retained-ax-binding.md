@@ -15,9 +15,13 @@ Complete receiver-lifetime and admission guarantees remain unestablished.
 This is a diagnostic experiment, not a run of Koine or evidence that a normal
 Koine operation has already mistargeted a window. It tests the platform premise
 needed to close the interval between an identity check and a native effect.
-The [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
-requires the effect to stay with the captured process, including when it ends
-after the last check.
+The experiment evaluated the original strict effect requirement, including
+death after the last check. The current
+[capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
+retains process expiry; the separately agreed
+[effect boundary](../adr/desktop-effects-use-the-admitted-endpoint.md) now excludes
+receiver/descriptor/downstream no-substitution. These observations are unchanged
+and still rule out wrapper retention as proof of an unchanged destination.
 
 ## Observed PID reuse and effect
 

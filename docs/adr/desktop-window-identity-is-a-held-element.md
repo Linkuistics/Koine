@@ -25,10 +25,14 @@ shows that a retained AX window can address a replacement process, even with
 the original task-name right and AX parent still held. The current scheme
 therefore does not establish the required cross-incarnation no-substitution
 guarantee. The agreed future contract is endpoint addressing only, as defined
-by the capture decision: receiver/descriptor behavior and downstream effects on
+by the [effect-boundary decision](desktop-effects-use-the-admitted-endpoint.md): receiver/descriptor behavior and downstream effects on
 other windows or processes are explicitly outside that promise. The held-element
 scheme above remains the served design; its wrapper retention does not establish
 an unchanged native destination and its replacement must be resolved before release.
+The future contract retires references permanently on authenticated observed
+closure, while permitting wrong-window effects after undetected closure or
+descriptor reuse. The ordinary closure evidence below belongs to the served
+scheme and does not establish that replacement observation protocol.
 
 ## Trade-off
 

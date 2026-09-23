@@ -46,6 +46,16 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
+For the native replacement, k78's endpoint-addressing agreement permits effects
+on another window in the same live process or another process. k80 integrates
+its review; the human qualified inherited closed-window refusal to permanent
+retirement on authenticated observed closure. Undetected closure/descriptor reuse
+may affect another window; retired references never revive or get reused. Existing closure tests
+establish served behavior only. k75 must supply the replacement's observation,
+reference and refusal contract and k52's renewal instructions; k52 runs them on
+rebuilt signed/notarized bytes. Read/notification provenance remains required.
+See `docs/adr/desktop-effects-use-the-admitted-endpoint.md`.
+
 Fourteen leaves, all impl but one design, ordered by dependency and then by
 risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
 during the first leaf's run, `desktop-receipt-descriptions-k48` during the

@@ -94,7 +94,22 @@ serial number alone does not establish this identity.
 **Endpoint addressing**: The desktop effect contract in which Koine keeps using
 the endpoint admitted for a captured **process incarnation**, without rebinding
 it. It does not guarantee permanent receiver ownership or exclude effects on
-other processes through handlers or downstream services.
+another window in the same live process or another process through handlers or
+downstream services. Read and notification provenance remain required.
+
+**Observed-closure retirement**: Permanently invalidating a window reference
+after authenticated observation of closure. Undetected closure or descriptor
+reuse may still target another window; the term does not promise unconditional
+closed-window refusal. Retired references never revive or get reused.
+
+**Endpoint admission**: Attributing a native endpoint's authenticated responder
+to a captured **process incarnation**, with continuous ownership of the actual
+rights. Distinct from **grant/dispatch admission**, which authorizes work under
+Koine's serialized live-grant and revocation boundary; both are required.
+
+**OS/protocol compatibility profile**: The private adapter's exact platform
+identities and accepted protocol/descriptor forms. It is not a behavioral
+application-support profile or a guarantee about arbitrary target handlers.
 
 ## Example dialogue
 

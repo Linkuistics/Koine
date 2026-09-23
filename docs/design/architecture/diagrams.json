@@ -26,7 +26,7 @@
   "discussion": {
     "title": "Agreed: endpoint addressing only",
     "status": "Agreed boundary — mechanism and full protocol unresolved",
-    "summary": "The human selected B. Koine retains the endpoint admitted for the captured process and never rebinds it. Receiver movement, descriptor reuse, forwarding and queued activation may affect another process, including a restored successor. Capture/reference expiry remains strict. The separate window-qualified activation diagnostic was explicitly abandoned. Contract review is next; capture/transfer, lifecycle policy, consent, wire/restart/version agreements and a maintained adapter remain required before implementation or release.",
+    "summary": "The human selected B. Koine retains the endpoint admitted for the captured process and never rebinds it. Receiver movement, descriptor reuse, forwarding and queued activation may affect another window in the same live process or another process, including a restored successor. Capture/reference expiry remains tied to the original process; read and notification provenance remain required. The separate window-qualified activation diagnostic was explicitly abandoned. Authenticated observed closure permanently retires a window reference; undetected closure/reuse may affect another window. Capture/transfer, lifecycle policy, consent, wire/restart/version agreements and a maintained adapter remain required before implementation or release.",
     "diagramIds": [
       "process-target-contract",
       "process-adoption",
@@ -38,7 +38,7 @@
     "updatedDiagrams": [
       {
         "id": "process-target-contract",
-        "summary": "Records the agreed addressing boundary, permitted wrong-process effects and client-visible focus-attempt meaning."
+        "summary": "Records the agreed addressing boundary, permitted same-process wrong-window and wrong-process effects and client-visible focus-attempt meaning."
       },
       {
         "id": "process-adoption",
@@ -58,7 +58,7 @@
       "renderer": "svg",
       "source": "process-target-contract.puml",
       "rendered": "process-target-contract.svg",
-      "caption": "Agreed future effect boundary: endpoint addressing only. Authenticated admission and continuous right retention do not guarantee permanent receiver ownership, descriptor behavior or downstream safety. Effects may reach another process or a restored successor; clients must see an attempt with separate observations and uncertainty. Capture/reference expiry remains tied to the original process. Restricted target profiles were not selected, and the separate activation diagnostic was explicitly abandoned. Full contract: docs/specs/machine.md#native-targeting-discussion. No new native measurement, shipping mechanism, lifecycle policy or private-adapter OS support is approved."
+      "caption": "Agreed future effect boundary: endpoint addressing only. Authenticated admission and continuous right retention do not guarantee permanent receiver ownership, descriptor behavior or downstream safety. Effects may reach another window in the same live process, another process or a restored successor; clients must see an attempt with separate observations and uncertainty. Capture/reference expiry remains tied to the original process; authenticated observed closure permanently retires a window reference. Undetected closure/reuse may still target another window. Refusal before send means this operation sent nothing; possible sends leave uncertainty. Reads and notifications need authenticated provenance. Restricted target profiles were not selected, and the separate activation diagnostic was explicitly abandoned. Full contract: docs/specs/machine.md#native-targeting-discussion. No new native measurement, shipping mechanism, lifecycle policy or private-adapter OS support is approved."
     },
     {
       "id": "process-adoption",
@@ -67,7 +67,7 @@
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "The original strict effect promise remains unestablished. The human explicitly selected endpoint addressing only, excluding receiver/descriptor/downstream no-substitution while preserving capture/reference lifetime. The direct endpoint is still unadopted as a shipping mechanism and may be evaluated against the revised boundary after contract review. AX-contact lifecycle policy, separate Koine consent, capture/transfer and a maintained private protocol remain required. No window-qualified activation fallback is selected; that diagnostic was explicitly abandoned. Evidence and remaining obligations: docs/verification/ax-endpoint-adoption.md."
+      "caption": "The original strict effect promise remains unestablished. The human explicitly selected endpoint addressing only, excluding receiver/descriptor/downstream no-substitution while preserving capture/reference lifetime. The direct endpoint is still unadopted as a shipping mechanism and may be evaluated against the reviewed boundary; observation and retirement evidence remain required. AX-contact lifecycle policy, separate Koine consent, capture/transfer and a maintained private protocol remain required. No window-qualified activation fallback is selected; that diagnostic was explicitly abandoned. Evidence and remaining obligations: docs/verification/ax-endpoint-adoption.md."
     },
     {
       "id": "process-routing",

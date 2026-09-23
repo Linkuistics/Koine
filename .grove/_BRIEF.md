@@ -259,6 +259,16 @@ deployment target narrows from macOS 13 to match.
 
 ## Pointers
 
+The future targeting agreement in `native-target-contract-k78` permits effects
+on another window in the same live process or another process. See
+`docs/adr/desktop-effects-use-the-admitted-endpoint.md` and the machine spec's
+native targeting section. Read/notification provenance remains required.
+In k80 the human qualified the inherited closed-window refusal: authenticated
+observed closure permanently retires the reference, but undetected closure or
+descriptor reuse may affect another window. Retired references never revive or
+get reused. The observation mechanism still needs evidence. k75 owns the complete protocol
+and k52 handoff; no release or parent completion follows from this scope choice.
+
 - Contract: `docs/specs/machine.md`. ADRs:
   `docs/adr/machine-references-as-uris.md`,
   `docs/adr/koine-server-and-native-providers.md`,

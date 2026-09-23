@@ -63,7 +63,8 @@ before native execution. No new native probe belongs to the initial discussion.
 - The human selected **B — Endpoint addressing only** from the concrete
   alternatives. Koine keeps the endpoint admitted for the captured process;
   the promise explicitly permits receiver movement, descriptor reuse,
-  forwarding and queued activation to affect another process, including a
+  forwarding and queued activation to affect another window in the same live
+  process or another process, including a
   restored successor. This changes the effect guarantee, not callback-time
   capture, non-time incarnation identity, public clients, Koine consent or the
   no-helper/injection/cooperation boundary. It does not approve a shipping
@@ -75,6 +76,11 @@ before native execution. No new native probe belongs to the initial discussion.
   review remains next, followed by k75's complete protocol/evidence design.
 
 ## Contract artifact
+
+k80 corrects the agreement paraphrase above against the selected option B in
+revision `17ef8626`; that option explicitly included another window as well as
+another process. The capture and effect decisions now have separate ADRs.
+The remaining artifact and verification notes below describe k78's own revision.
 
 The agreed B boundary is in `docs/specs/machine.md#native-targeting-discussion`,
 with the visual contract at

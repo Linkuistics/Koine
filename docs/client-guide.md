@@ -209,14 +209,36 @@ The agreed future effect contract is **endpoint addressing only**. Koine keeps
 using the endpoint admitted for the captured process; it does not guarantee
 permanent receiver ownership or safe handler/downstream behavior. Receiver
 movement, descriptor reuse, forwarding or queued activation may affect another
-process, including a restored successor. Capture/reference expiry still follows
+window in the same live application or another process, including a restored
+successor. Capture/reference expiry still follows
 the original process. The future operation will expose a focus attempt and
-separate request acceptance from an observation; a lost/failed response does not
-prove that nothing happened. Do not retry automatically.
+separate request acceptance from an observation. Refusal before any native send
+means this operation sent nothing, although earlier work may still act. After a
+possible send, a failure or lost response does not prove that nothing happened.
+Do not retry automatically.
+
+Listings, reference creation and confirmation require authenticated, fresh data
+attributable to the capture. Unknown or mismatched provenance supplies no accepted
+result and stops later primitives; authenticating the sender does not certify
+arbitrary handler data or undo effects. Notifications need their own evidenced
+source and lifetime attribution before changing remembered windows or references.
+Unsupported protocol/descriptor forms fail the affected operation as unavailable,
+with an explanation, rather than silently omitting windows or asking for consent.
+An OS/protocol compatibility profile is distinct from a behavioral application
+support restriction; no such application restriction was selected.
+
+Authenticated observed window closure permanently retires its reference:
+subsequent use is unavailable and the reference is never revived or reused.
+This is weaker than unconditional closed-window refusal: undetected closure
+or descriptor reuse may let an attempt affect a different window in the same
+live application. Absence from a listing alone is not closure evidence. The
+replacement's observation mechanism and late-notification handling still need
+design and evidence.
 
 No shipping mechanism, lifecycle policy, restart policy or version agreement is
 supplied by this choice. The direct adapter and first public release remain
-unresolved. The capture decision records the evidence and remaining obligations.
+unresolved. The [effect-boundary decision](adr/desktop-effects-use-the-admitted-endpoint.md)
+records the trade-off; the spec records the remaining obligations.
 
 The [native targeting discussion](specs/machine.md#native-targeting-discussion)
 states the agreed future contract and its limits. The timestamp schema and focus

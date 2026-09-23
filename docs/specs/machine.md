@@ -247,10 +247,14 @@ Koine restart and action binding remain to be designed. The SDL below still
 describes the currently served timestamp input, not an approved replacement.
 
 The future effect contract is **endpoint addressing only**, as recorded in the
-capture decision. Capture/reference expiry remains tied to the original process,
+[effect-boundary decision](../adr/desktop-effects-use-the-admitted-endpoint.md).
+Capture/reference expiry remains tied to the original process,
 but receiver movement, descriptor reuse, forwarding and queued downstream work
-may affect another process, including a restored successor. No restricted app
-support set is selected. The direct AX endpoint remains unadopted as a shipping
+may affect another window in the same live process or another process, including
+a restored successor. Read/notification provenance remains required. No behavioral
+application-support profile is selected. Authenticated observed closure permanently
+retires a window reference; undetected closure/descriptor reuse may still affect
+another window. The direct AX endpoint remains unadopted as a shipping
 mechanism; it can be evaluated against this revised boundary after design review.
 Lifecycle, consent, the complete protocol and first release remain unresolved.
 
@@ -1024,7 +1028,7 @@ Gatekeeper-enforcing clone; each document says which.
 | Accessibility attributed to Koine | **Established** on the notarized build: [notarized-release-vm.md](../verification/notarized-release-vm.md), [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [accessibility-status-and-consent-vm.md](../verification/accessibility-status-and-consent-vm.md). |
 | Absent and revoked consent | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md). |
 | Application resolution; current and remembered windows across Spaces; focus | **Established.** [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md), the mechanism in [desktop-window-identity.md](../verification/desktop-window-identity.md). |
-| Closure, duplicate titles and restart behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). |
+| Closure, duplicate titles and restart behavior | **Established for served behavior.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). **Open for the replacement:** authenticated observed closure permanently retires a reference; undetected closure/descriptor reuse may affect another window. Observation, non-reuse and all agreed restart behavior need renewed evidence under the [future boundary](#native-targeting-discussion). |
 | PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). An [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. **Open** for the replacement: establish unchanged native destination and capture/reference expiry under the agreed endpoint-addressing contract; receiver/descriptor/downstream no-substitution is explicitly excluded. |
 | Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
 | Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the signed build of the macOS 26 floor, whose image digests the notarized bundle is to be checked against. |
@@ -1075,12 +1079,14 @@ boundary; it adopts no shipping mechanism and authorizes no release. The
 shows where each promise ends.
 
 The [capture ADR](../adr/desktop-capture-preserves-the-process-incarnation.md)
-records the trade-off. The future contract preserves non-time process identity,
+records capture and process lifetime; the
+[effect-boundary ADR](../adr/desktop-effects-use-the-admitted-endpoint.md)
+records the targeting trade-off. The future contract preserves non-time process identity,
 fresh foreground capture in the client's native callback, public client APIs and client-owned adapters, Koine-owned Accessibility
 consent, and no injection, helper or target modification/cooperation. A restored
 application is a new incarnation; an old reference is never rebound to it.
 
-The capture ADR records why restricted target profiles and the original strict
+The effect-boundary ADR records why restricted target profiles and the original strict
 effect promise were not selected, and what would reopen them. The
 [adoption synthesis](../verification/ax-endpoint-adoption.md#original-feasibility-criteria-reconciled)
 separates existing bounded observations from the evidence still needed for this
@@ -1089,20 +1095,36 @@ direct adapter can ship.
 
 ### The exact addressing boundary
 
-Admission must attribute the continuously retained process identity to the fresh
+Endpoint admission must attribute the continuously retained process identity to the fresh
 callback-time sample and authenticate the endpoint's responder against that
-identity. After admission, Koine holds the actual rights and copied descriptor
+identity. This is distinct from grant/dispatch admission at the serialized
+authority boundary: neither check substitutes for the other. After endpoint
+admission, Koine holds the actual rights and copied descriptor
 values; numeric port names alone are not identity. All target AX reads, requested
-effects and confirmation requests use that retained endpoint. There is no fresh
+effects, confirmation requests and target observation registrations use that
+retained endpoint. There is no fresh
 PID, PSN or logical-application destination lookup under an old capture, and no
 automatic mutation retry. The adapter owns this protocol and its cleanup;
 clients supply opaque references, not native addresses.
 
 Death or exec retires the old capture and references. Before each native
-primitive, Koine validates the held identity and refuses admission or subsequent
+primitive, Koine validates the held identity and refuses endpoint admission or subsequent
 sends when it is dead, invalid or ambiguous. An identity check does not atomically enclose a send: a request that races death,
 or was already accepted, may still execute. This option explicitly accepts that
 limit rather than claiming the check prevents every post-death effect.
+
+For windows, authenticated observed closure permanently retires the reference
+and subsequent use returns `unavailable`. The retired reference is never reused
+or revived, even if the descriptor later reappears. This does not guarantee
+detecting every closure before descriptor reuse: an undetected closure/reuse
+may cause an old reference's attempt to affect another window in the same live
+process. That is the agreed qualification of the inherited unconditional
+closed-window refusal. Missing from an enumeration alone is not proof of closure
+(a window may be on another Space); uncertain observation cannot be promoted
+into a current, confirmed or remembered window. The full protocol must establish
+authenticated closure attribution, ordering with sends and late notifications,
+permanent retirement/non-reuse and the handling of insufficient observation.
+No notification or endpoint protocol satisfying this obligation is yet adopted.
 
 Calling this **delivery to the captured receiver** would promise too much. The
 admission exchange authenticates a responder at that time; it does not make a
@@ -1116,10 +1138,32 @@ destination, while no longer excluding these wrong-target effects:
 - A service executes queued logical-application activation after the original
   process ends and brings a restored successor forward.
 
-Reply authentication can detect some mismatches after a request; it cannot undo
-an effect. A timeout, cancellation, disconnect or detected death stops later
-primitives and reports uncertainty where work may have been sent. Failure never
-means that nothing happened. A later observation does not prove that no other
+Every reply used for endpoint admission, window enumeration, reference creation
+or confirmation must be authenticated against the retained process identity.
+For the audited-Mach candidate the required order is a fresh reply right, the
+actual request and kernel-authenticated reply trailer, then a live comparison
+with the continuously retained task. Cached PID/pidversion values alone do not
+satisfy this rule. The [admission evidence](../verification/ax-endpoint-adoption.md#original-feasibility-criteria-reconciled)
+and [liveness argument](../research/native-process-bound-effects-a.md#1-binding-an-effect-acquisition-attribution-dispatch-downstream)
+bound that ordering; they do not establish a complete production protocol.
+
+Notification delivery must independently establish its source, capture and
+window attribution, freshness and registration lifetime before changing reference
+or remembered-window state. A PID-only termination event or an old queued
+notification is not such proof. Authenticate asynchronous delivery using an
+evidenced registration/delivery protocol; a synchronous reply bracket cannot
+simply be assumed to apply. The full protocol must establish this observation
+path or refuse operations that depend on it.
+
+Missing, ambiguous or mismatched provenance supplies no accepted listing,
+reference or confirmation and stops later primitives. Authenticating a sender
+does not prove the truth of arbitrary handler data or permanent descriptor
+ownership; read freshness and attribution need their own evidence. Reply
+authentication cannot undo an effect. A timeout, cancellation, disconnect or
+detected death stops later primitives and reports uncertainty where work may
+have been sent. A refusal before any native send establishes that this operation
+sent nothing; earlier accepted work may still act. After a possible send, a
+failure or lost response does not establish no effect. A later observation does not prove that no other
 effect happened, nor that focus persists after the observation.
 
 The future public operation and its introspection descriptions must expose
@@ -1132,6 +1176,23 @@ unchanged description or a client opt-in default. Contract-version framing is
 still a separate explicit agreement before publication.
 
 ### Remaining evidence and protocol work
+
+A private-adapter **OS/protocol compatibility profile** identifies exact platform
+bytes and accepted protocol/descriptor forms; it is not a behavioral
+application-support profile. The latter was not selected. Unsupported forms,
+unknown forms or exceeded representation bounds fail the affected operation as
+`unavailable`, with an unsupported-adapter/protocol explanation, rather than
+silently omitting windows, returning a complete-looking partial listing or
+asking for consent. Exact wire detail and any explicit partial-result contract
+belong to the full protocol agreement. The diagnostic inline-only subset and
+its quotas are evaluation limits, not approved product coverage.
+
+No shipping mechanism or private-adapter OS/protocol compatibility profile is
+approved. Native capture, actual right transfer, discovery/authentication,
+reference grammar/non-reuse, restart policy and prepublication version framing
+remain to be agreed. Internal entry points and an owned wire encoder both
+require recurring OS verification; the currently served timestamp mechanism
+is not approved for the first public release.
 
 Use the existing GraphQL and isolated native-VM seams. Capture/transfer evidence
 must cover a delayed callback after an app switch, a switch after capture,

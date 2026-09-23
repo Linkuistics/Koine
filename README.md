@@ -31,8 +31,11 @@ significant open item: the process identity a client submits, a start instant,
 is being replaced by a mechanism that does not depend on time before the first
 public release. The agreed future effect promise is
 [endpoint addressing only](docs/specs/machine.md#native-targeting-discussion),
-with indirect wrong-process effects explicitly outside its guarantee; the served
-API has not yet migrated. Discovering applications that are not running, and an LLM skill
+with effects on another window in the same live application or another process
+explicitly outside its guarantee. Read/observation provenance remains required;
+authenticated observed closure permanently retires a reference, while undetected
+closure or descriptor reuse may affect another window. The served API
+has not yet migrated. Discovering applications that are not running, and an LLM skill
 set, are outside this version.
 
 - [Writing a client](docs/client-guide.md): the contract version, how a client
