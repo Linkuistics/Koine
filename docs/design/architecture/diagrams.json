@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Fresh callback sampling and actual right transfer",
-    "status": "Conditional design — native premises and protocol remain open",
-    "summary": "Separate candidate identity acquisition, the actual fresh foreground sample, continuous right ownership, peer authentication and live grant/resource adoption. Public XPC supplies a transfer primitive, not an established pre-acquisition budget. Native sampling and admission discriminators precede the resident protocol. No new native run, transport, packaging, reference or restart policy is adopted; the public AX scope agreement is unchanged.",
+    "title": "Independent witnesses for callback sampling",
+    "status": "Experiment design — native freshness and lifetime results remain open",
+    "summary": "Separate foreground selection F from logical-application-to-process mapping M, then require evidence for both inside continuous right ownership. Independent target input and causal acknowledgments establish reached schedules, not uninterrupted foreground or cache freshness. The design defines delayed-entry, run-loop, lifetime and failure controls; native execution remains outstanding. No source, transport or protocol is adopted.",
     "diagramIds": [
+      "process-sampling",
       "process-capture",
       "packages",
       "process-target-contract",
@@ -35,12 +36,21 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "process-capture",
-        "summary": "Shows the conditional acquisition–sample–validation bracket, actual transfer ownership, adoption acknowledgment and unknown outcome after a possible send."
+        "id": "process-sampling",
+        "summary": "Adds independent input receipt, causal callback gating and separate foreground/mapping observations; labels what the witness cannot establish."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-sampling",
+      "group": "machine",
+      "title": "Independent witnesses for fresh callback sampling",
+      "renderer": "svg",
+      "source": "process-sampling.puml",
+      "rendered": "process-sampling.svg",
+      "caption": "Proposed experiment, not executed evidence. The shown delayed-entry schedule requires independently witnessed input receipt before callback release. A, F, M and V denote acquisition, actual foreground selection, actual logical-app/process mapping and live-right validation; method call order alone establishes neither freshness nor coherent mapping. Markers establish particular input events, not continuous foreground ownership. Missing causal evidence, disabled input delivery and native timeouts are inconclusive. Separate schedules compare acquire/resample, stale F/M, later switching and real lifetime changes. See docs/verification/callback-capture-transfer.md#callback-witness-protocol. Transfer and full protocol adoption remain separate."
+    },
     {
       "id": "process-receive-admission",
       "group": "machine",

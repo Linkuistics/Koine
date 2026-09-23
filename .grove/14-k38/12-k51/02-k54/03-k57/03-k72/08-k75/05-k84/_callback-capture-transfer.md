@@ -75,3 +75,10 @@ test seam is adopted. k109 must leave any concrete unmet obligation live rather
 than close this node on partial evidence. k87 retains final reference/restart/
 version agreement and whole-protocol review; k52 retains implementation and
 renewal against rebuilt signed/notarized product bytes.
+
+`callback-sample-witness-k107` now separates the exact causal witness protocol
+from native source-freshness and lifetime-attribution experiments. Its first
+child supplies no native result. The sampling and lifetime children retain every
+original k107 criterion, including actual PID reuse/restoration, policy denial
+and the separate client-source migration. k109 must consume those results and
+limits, not treat the existence of a witness design as established feasibility.

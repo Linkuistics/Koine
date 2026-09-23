@@ -162,6 +162,13 @@ tasks:
     cmds:
       - uv run --with capstone==5.0.7 python docs/verification/native-observation/decode.py docs/verification/native-observation/receive-inspection.json docs/verification/native-observation/receive-cf-inspection.json
 
+  design:render-callback-sampling:
+    desc: Render the callback sampling witness design without running native diagnostics
+    dir: docs/design/architecture
+    cmds:
+      - plantuml --svg --check-before-run --no-error-image process-sampling.puml
+      - plantuml --png --check-before-run --no-error-image -o ../../../.build/design-identity process-sampling.puml
+
   design:render-process-identity:
     desc: Render the editable process-identity discussion as SVG and PNG
     dir: docs/design/architecture

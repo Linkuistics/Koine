@@ -15,18 +15,22 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The current [capture assessment](../../verification/callback-capture-transfer.md)
-separates public API declarations from missing native premises. It compares
-pre-held candidates with acquire-then-resample and XPC with a minimal native
-transfer lead. Neither mechanism is adopted. Native sampling and admission
-discriminators precede the complete resident transfer protocol.
+The current [witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol)
+separates actual foreground selection from logical-application-to-process mapping.
+It specifies independent input observations, causal callback gates and controls
+that distinguish a reached schedule from a candidate result. Exact runtime
+freshness/mapping evidence and native execution remain outstanding; no source or
+capture construction is adopted. The broader capture/transfer assessment remains
+context for the separate admission and resident protocol work.
 
 Changed in this discussion:
 
-- [Fresh callback sample and continuous transfer ownership](index.html#diagram-process-capture) — Shows the conditional acquisition–sample–validation bracket, actual transfer, adoption acknowledgment and unknown outcome after possible send.
-- [Capture assessment](../../verification/callback-capture-transfer.md) — Records source evidence, alternatives, owner obligations and native witness controls separately from agreement.
+- [Independent witnesses for fresh callback sampling](index.html#diagram-process-sampling) — Adds independent input receipt, causal callback gating and separate foreground/mapping observations, with explicit witness limits.
+- [Callback witness protocol](../../verification/callback-capture-transfer.md#callback-witness-protocol) — Defines bounded schedules, frozen inputs and falsification controls; keeps native freshness and lifetime results outstanding.
+- [Client capture migration](../../client-guide.md#process-identity) — Separates source/context migration from identity ownership and IPC changes.
 
-Unchanged context: [resident composition](index.html#diagram-packages),
+Unchanged context: [capture and transfer](index.html#diagram-process-capture),
+[resident composition](index.html#diagram-packages),
 [targeting boundary](index.html#diagram-process-target-contract),
 [scope and remaining work](index.html#diagram-process-adoption) and
 [private admission conflict](index.html#diagram-process-receive-admission).
@@ -56,6 +60,7 @@ From the repository root:
 
 ```sh
 task design:render-process-identity
+task design:render-callback-sampling
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -71,7 +76,17 @@ Earlier native reports and their reproduction sections carry the frozen platform
 input, output and rendering records for those revisions. Earlier Safari checks
 apply to their recorded bytes, not automatically to later updates.
 
-For the current capture assessment, `task design:render-process-identity`
+For the callback witness design, `task design:render-callback-sampling` completed
+with matching before/after digests for its source, Taskfile, manifest and viewer.
+The PNG was inspected, manifest/source/export links and SVG XML validated, and
+served manifest/source/SVG bytes matched the files. The five SDK headers still
+match the recorded digest set. Safari in disposable TestAnyware clone
+`koine-k110-view` opened the new diagram deep link in a fresh page; its rendered
+diagram, topic outline and Current/Updated labels were visible. This verifies
+presentation only, not callback sampling. Mobile and dark-theme checks were not
+performed. The clone is stopped after inspection.
+
+For the preceding capture-premises assessment, `task design:render-process-identity`
 completed successfully. Its process-view sources, Taskfile, viewer and manifest
 matched their pre-run digests item by item. The revised capture PNG was inspected
 for layout and legibility; manifest references, SVG XML, edited-document local

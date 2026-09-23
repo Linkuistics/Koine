@@ -209,6 +209,15 @@ compares sampling and transfer constructions; no replacement source or transport
 is adopted yet. These are Koine-side handoff instructions, not changes to
 ModalAnyware.
 
+The [witness protocol](verification/callback-capture-transfer.md#callback-witness-protocol)
+also separates foreground selection from the returned application's PID mapping.
+The owner must preserve the proven callback thread/run-loop context for both;
+moving either observation to a worker after callback return changes the capture
+boundary. A future source substitution must name the exact public API pair and
+supported context, independently of replacing identity fields or adding IPC.
+Those native freshness results are still outstanding; the experiment design
+does not mandate a replacement API today.
+
 The agreed first deliverable keeps that non-time capture but uses **public
 macOS Accessibility** for listing, focus attempts and notifications. A capture
 never changes process identity; known-dead captures are refused. Public AX
