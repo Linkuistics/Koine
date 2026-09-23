@@ -24,22 +24,37 @@
     }
   ],
   "discussion": {
-    "title": "Cancel before readiness without inventing native returns",
-    "status": "V12 early cancellation — active sampler composition remains k154",
-    "summary": "K153 adds safe startup polls, controller ready-timeout abort and truthful release responses. K154 retains active failures and late abort; k143 targets and k144 complete composition and fresh review remain live. Synthetic evidence only.",
+    "title": "Late readiness cannot reverse a ready-timeout abort",
+    "status": "V13 ready cancellation \u2014 complete sampler remains k156",
+    "summary": "K155 distinguishes readiness publication from receipt. Timeout commits to abort; late readiness is drained, and failed release stays unresolved. Synthetic exchange only. K143 targets and k144 full composition and fresh review remain live.",
     "diagramIds": [
+      "process-recorder-ready",
       "process-recorder-cancel",
-      "process-recorder-startup",
-      "process-recorder-ownership"
+      "process-recorder-startup"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-cancel",
-        "summary": "Adds safe-point cancellation, completion of started preparation units, per-reference cleanup and clean/unresolved responses."
+        "id": "process-recorder-ready",
+        "summary": "Adds readiness in flight or consumed before another peer, immediate abort, late-frame draining and truthful cleanup."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-ready",
+      "group": "machine",
+      "title": "Readiness publication racing cancellation",
+      "renderer": "svg",
+      "source": "process-recorder-ready.puml",
+      "rendered": "process-recorder-ready.svg",
+      "caption": "V13 synthetic ready-cancel exchange. Read from the first parallel branch: publication and the controller ready deadline may race. A consumed sampler ready frame still leaves the ready wait pending if B or C is missing. Timeout immediately selects abort; queued readiness never restarts sampling. Each peer ready is consumed before its terminal reply. No source, host invocation or callback is reached. Missing or blocked work stays incomplete. Target lifecycle remains projected; no native readiness, exit or containment is established.",
+      "links": [
+        {
+          "label": "V13 ready cancellation contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-13-cancellation-after-readiness-publication"
+        }
+      ]
+    },
     {
       "id": "process-recorder-startup",
       "group": "machine",
@@ -107,7 +122,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -116,7 +131,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -125,7 +140,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -161,7 +176,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",

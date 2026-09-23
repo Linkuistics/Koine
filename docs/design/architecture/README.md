@@ -16,15 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V12 composes cancellation before readiness,
-including partial healthy preheld preparation and truthful failed release replies.
-K153 supplies that bounded exchange; k154 retains active sampler composition.
-K143 owns targets; k144 full waits, partial evidence and fresh review.
+remains unready for native use. V13 distinguishes sampler readiness publication
+from the controller's consumed readiness. Timeout while any peer is missing
+commits to abort, even if a ready frame arrives afterward. K155 supplies this
+bounded exchange; k156 under k154 retains active sampler composition. K143 owns
+targets; k144 full waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Cancellation before sampler readiness](index.html#diagram-process-recorder-cancel) — Adds safe-point abort receipt, completed preparation units and clean/unresolved cleanup replies.
-- [Before-ready cancellation contract](../../verification/callback-causal-fixture/contract.md#version-12-cancellation-before-readiness) — Defines poll sites, exact messages, pending waits and independent diagnostics.
+- [Readiness publication racing cancellation](index.html#diagram-process-recorder-ready) — Adds published versus consumed readiness, irreversible ready-timeout abort, late-frame draining and truthful cleanup.
+- [Ready cancellation contract](../../verification/callback-causal-fixture/contract.md#version-13-cancellation-after-readiness-publication) — Defines preparation, controller receipt rules, exact waits and remaining limits.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -76,6 +77,7 @@ task design:render-callback-loop
 task design:render-callback-source
 task design:render-callback-startup
 task design:render-callback-cancel
+task design:render-callback-ready
 task design:render-receive-admission
 task design:render-receive-budget
 ```
@@ -356,4 +358,18 @@ Rendering ran only in disposable clone `koine-k153-view`. The
 records fresh discussion/diagram links, readable wide sections and narrow
 light/dark wrapping. Narrow fit labels are small; desktop remains the verified
 reading surface. Earlier diagrams, every scroll position and mobile devices
+were not rechecked. No native recorder or product permission setup ran.
+
+
+For k155, [Readiness publication racing cancellation](index.html#diagram-process-recorder-ready)
+adds separate publication/receipt boundaries, immediate ready-timeout abort,
+late readiness draining and truthful cleanup. The [current discussion](index.html#discussion)
+names v13 and k156's remaining active sampler; only the new readiness view is
+marked updated. The [render record](../../verification/callback-native-capture/evidence/k155/render.json)
+binds unchanged named inputs to matching guest/local/host-served assets.
+Rendering ran only in disposable clone `koine-k155-view`. The
+[presentation record](../../verification/callback-native-capture/evidence/k155/presentation.json)
+retains fresh discussion/diagram links, readable wide sections and narrow
+light/dark wrapping. Narrow fit labels are small; desktop remains the verified
+reading surface. Earlier diagrams, mobile devices and every scroll position
 were not rechecked. No native recorder or product permission setup ran.
