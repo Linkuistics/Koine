@@ -26,7 +26,7 @@
   "discussion": {
     "title": "Observation admission and permanent reference retirement",
     "status": "Proposed construction — native provenance and full agreement outstanding",
-    "summary": "The observed-closure rule is agreed. The new proposal makes publication conditional on authenticated data and an evidenced registration barrier, distinguishes known closure from lost observation, and orders retirement with actual send initiation. Late replies and old registrations cannot revive a reference. These are protocol requirements, not native results. Refusing uncertain remembered rows costs availability and awaits full protocol agreement. Endpoint addressing and its permitted wrong-window/wrong-process effects remain unchanged; capture/transfer, lifecycle, consent and restart/version work remain live.",
+    "summary": "Observed-closure retirement is agreed for effects; read lifetime attribution remains required. The repaired proposal separates proven prepublication closure from listing failure, names loss detection and cross-channel ordering premises for both registration orders, and requires bounded ingress validation and nonblocking send initiation. Unauthenticated input is discarded; authentic current-registration failure withdraws dependent records. Same-live-capture recovery needs new evidence and references. Reasons become generic after bounded reclamation; the provider-run allocator never wraps. Native feasibility, read consequences and refusal/support costs await the full agreement. Capture/transfer, lifecycle, consent and restart/version work remain live.",
     "diagramIds": [
       "process-observation",
       "process-target-contract",
@@ -35,7 +35,7 @@
     "updatedDiagrams": [
       {
         "id": "process-observation",
-        "summary": "Adds proposed publication, usable, retired and withdrawn states; separates authenticated closure from observation loss and exposes the unproved native barrier."
+        "summary": "Repairs preparation exits, detected-loss withdrawal, read attribution, publication ordering, send outcomes, refusal/recovery and bounded reason retention."
       }
     ]
   },
@@ -47,7 +47,7 @@
       "renderer": "svg",
       "source": "process-observation.puml",
       "rendered": "process-observation.svg",
-      "caption": "Proposed construction under the agreed observed-closure rule. No reference is published before qualified data and an evidenced registration boundary. Closure retires permanently; loss of required observation withdraws without claiming closure. One owner orders sends, retirement and publication, while earlier native work may still act. Native source, capture/window attribution, freshness, registration barriers and bounded cleanup are unproved. This state diagram is not model checking or product acceptance. The stricter remembered-row refusal and the full protocol await agreement. See docs/specs/machine.md#observation-and-retirement-protocol-proposal."
+      "caption": "Proposed construction, not native evidence or product acceptance. Only proven closure permits omission during preparation; failure makes the affected listing unavailable. Registration-before-enumeration and per-element-registration-after-enumeration need distinct gap evidence, plus cross-channel order for subsequent reads. Silent loss cannot trigger withdrawal; dependent reads need complete observation or independent lifetime evidence. The effect relaxation grants no replacement-window read semantics. A bounded ingress cut precedes nonblocking initiation: proven no-enqueue, enqueued and ambiguous outcomes differ; later arrivals may race. Unauthenticated input is discarded; authentic current-registration failure withdraws dependent records. Recovery under the same live capture needs new evidence and references. Reasons become generic after bounded reclamation; one provider-run allocator never wraps. Native premises, refusal/support consequences and full agreement remain open. See docs/specs/machine.md#observation-and-retirement-protocol-proposal."
     },
     {
       "id": "process-target-contract",

@@ -120,6 +120,7 @@ own next discriminator before a native investigation grows beyond one session.
 |---|---|
 | `observation-retirement-contract-k81` | Proposed observation/publication/retirement construction and a discriminating evidence question. No native claim or final agreement. |
 | `observation-retirement-contract-k82` | Adversarial review before the native investigation consumes that proposal. Integration, if needed, runs before k83. |
+| `observation-retirement-contract-k88` | Integrates k82: explicit loss/read/order premises and refusal/send/reclamation rules. k83 owns their native discriminator, k86 the maintained bounds, and k87 the read/support/scheduling agreements. No native adoption or parent completion. |
 | `native-observation-provenance-k83` | Same-endpoint registration, asynchronous attribution/freshness, closure versus Space absence, permanent retirement, send ordering, and bounded native request/reply/cleanup evidence. Report remaining full-operation gaps explicitly. |
 | `callback-capture-transfer-k84` | Fresh public callback sampling, actual transfer/continuous ownership, discovery/peer authentication, grant boundary and transfer cleanup; separate ModalAnyware capture-source migration. |
 | `ax-contact-lifecycle-k85` | Inhibition duration/release, discriminating restoration schedules and explicit lifecycle agreement. |

@@ -99,8 +99,13 @@ downstream services. Read and notification provenance remain required.
 
 **Observed-closure retirement**: Permanently invalidating a window reference
 after authenticated observation of closure. Undetected closure or descriptor
-reuse may still target another window; the term does not promise unconditional
-closed-window refusal. Retired references never revive or get reused.
+reuse may still affect another window; this effect relaxation does not authorize
+reading a replacement window's data under the old reference. Read lifetime
+attribution remains required; any relaxation needs separate agreement.
+The term does not promise unconditional closed-window refusal. Retired references
+never revive or get reused. Reserve retirement for authenticated window closure;
+capture death/exec ends the capture and withdraws its references without claiming
+observed closure. Detailed reasons need not survive bounded record reclamation.
 
 **Endpoint admission**: Attributing a native endpoint's authenticated responder
 to a captured **process incarnation**, with continuous ownership of the actual

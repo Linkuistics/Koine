@@ -19,7 +19,7 @@ The SVG exports beside each source also open on their own.
 
 Stable views:
 
-- [Observation admission and reference lifetime](index.html#diagram-process-observation) — adds proposed publication, permanent retirement and observation-loss states, with the native registration barrier explicitly unproved.
+- [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
 - [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
 - [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
 - [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
@@ -73,9 +73,16 @@ process-identity views distinguish agreed constraints, rejected candidates and
 open protocol work; they do not replace the current wire contract.
 
 The current proposal is [Observation and retirement protocol](../../specs/machine.md#observation-and-retirement-protocol-proposal).
-It adds the registration/publication boundary, distinguishes observation loss
-from closure, and orders sends and late completion without claiming native
-feasibility. Its availability cost and the complete protocol await agreement.
+It distinguishes proven closure from preparation failure and detected loss,
+requires evidence across both registration orders and separate reply/delivery
+channels, and preserves read lifetime attribution despite the effect relaxation.
+Bounded ingress validation precedes nonblocking send initiation; proven no-enqueue,
+enqueued and ambiguous outcomes remain distinct. Unauthenticated input is
+discarded; authenticated current-registration failure withdraws its dependent
+records and fails affected listings. Recovery may use the same live capture with
+new evidence and references. Reasons become generic after bounded reclamation;
+the proposed provider-run allocator never wraps. Native feasibility, read
+consequences, refusal/support costs and the complete protocol await agreement.
 The serial-number view's deep link, rendering and topic/changed markers were
 checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
 also inspected. This does not establish the other views' rendering, or mobile
@@ -175,3 +182,11 @@ alternatives. No mobile device was tested. Host and guest hashes matched for
 the viewer, manifest, changed sources and SVGs; manifest and SVG HTTP hashes
 matched too. The clone was stopped. These are presentation checks, with no
 new native-binding evidence.
+
+The observation view's k88 repairs were rendered with
+`task design:render-process-identity` in disposable clone `koine-k88-design`.
+The full PNG, Safari observation deep link, discussion summary, outline and
+Current/Updated markers were inspected in desktop light appearance. No mobile
+or dark-mode check is claimed. Viewer, manifest, source and SVG hashes matched
+host/guest; HTTP manifest/SVG bytes matched the guest files. The clone was
+stopped. These checks establish presentation only, not native feasibility.

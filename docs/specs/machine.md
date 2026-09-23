@@ -1107,7 +1107,7 @@ PID, PSN or logical-application destination lookup under an old capture, and no
 automatic mutation retry. The adapter owns this protocol and its cleanup;
 clients supply opaque references, not native addresses.
 
-Death or exec retires the old capture and references. Before each native
+Death or exec ends the old capture and withdraws its references. Before each native
 primitive, Koine validates the held identity and refuses endpoint admission or subsequent
 sends when it is dead, invalid or ambiguous. An identity check does not atomically enclose a send: a request that races death,
 or was already accepted, may still execute. This option explicitly accepts that
@@ -1195,7 +1195,10 @@ The engine continues to own grant/dispatch admission. An admitted action may
 finish after revocation under that existing rule; native identity or observation
 failure still stops its remaining primitives.
 
-The adapter accepts a notification as evidence only after establishing all of:
+The adapter authenticates individual notifications using the first five
+obligations below. Completeness/loss detection and publication order qualify
+the stream and dependent reads; an individually attributed closure may retire
+a reference even if the stream's completeness is unknown.
 
 | Evidence | What must be established |
 |---|---|
@@ -1204,6 +1207,8 @@ The adapter accepts a notification as evidence only after establishing all of:
 | Window | The event belongs to the particular registered descriptor lifetime. A raw descriptor equal to one used by a later window is insufficient. |
 | Freshness | The native generation/delivery ordering relates the event to that registration and window lifetime. Receipt time and a locally assigned sequence number cannot date the target's event. |
 | Capture | The retained identity still attributes this data to the original incarnation. A synchronous request/reply liveness bracket cannot simply be applied to queued asynchronous delivery. |
+| Completeness or loss detection | Establish which missing deliveries the native path detects, including suppressed emission, queue saturation and send failure. Local sequence numbers and registration success cannot prove completeness. |
+| Publication order | Establish how closure evidence preceding a read is accounted for before publication across separate notification and reply channels. Local receive order supplies no native ordering. |
 
 These are native proof obligations, not fields that Koine can add to a message
 and trust. The endpoint-addressing effect relaxation does not waive them. An
@@ -1217,6 +1222,24 @@ task. They also need request correlation, freshness and descriptor attribution.
 Passing sender authentication alone cannot turn an old reply into a current
 listing, nor establish a notification's generation time.
 
+Equal descriptor bytes do not attribute a new read to an existing record's
+window lifetime. CURRENT, REMEMBERED and focus confirmation require an evidenced
+lifetime discriminator or equivalent complete, ordered observation. Otherwise
+the dependent read is unavailable even if the sender is authentic. The agreed
+effect relaxation does not authorize reporting a replacement window's data under
+the old reference. If native evidence cannot support this distinction, the
+complete protocol agreement must explicitly decide that read consequence;
+it remains unagreed here.
+
+Withdrawal on observation loss means **detected** loss. A closure never emitted
+or silently dropped cannot itself trigger a local transition. The native
+investigation must identify detectable and residual silent losses, not infer
+completeness from silence. Where lifetime attribution depends on complete
+observation and completeness cannot be established, refuse dependent publication,
+listing or confirmation rather than call the registration intact. Independent
+lifetime evidence may support reads despite incomplete observation; it must be
+demonstrated. Undetected closure may still permit the agreed wrong-window effect.
+
 #### Publication and permanent non-revival
 
 Each local window record has one of the following states. These names describe
@@ -1224,15 +1247,17 @@ private ownership, not new GraphQL enum values:
 
 | State | Permitted behavior | Exit |
 |---|---|---|
-| Preparing | Hold a candidate descriptor and registration resources; expose no reference and perform no focus effect. | Publish as usable only after authenticated data and the registration/publication boundary below succeed; otherwise discard without publishing. |
-| Usable | Resolve the opaque reference; perform qualified reads and attempts through the retained endpoint. | Authenticated closure retires it; capture death/exec ends it; loss of required observation withdraws it. |
-| Retired | Every later use is unavailable. The known closure is permanent. | None. Late data and descriptor reappearance cannot revive this reference. |
-| Withdrawn | Every later use is unavailable, with the actual reason (observation lost or capture ended), without inventing a closure observation. | None. Recovery requires a new admissible capture/listing and newly allocated references. |
+| Preparing | Hold a candidate descriptor and registration resources; expose no reference and perform no focus effect. | Publish as usable only after all evidence and publication premises succeed. Attributed closure becomes ClosedBeforePublication; missing provenance, failed registration or capture death/exec becomes Failed. |
+| ClosedBeforePublication | No reference was published. Authenticated, lifetime-attributed closure permits omission of this closed candidate. | Terminal; release through bounded cleanup. |
+| Failed | No reference was published. Fail the affected listing as unavailable with an explanation; do not silently omit this candidate. | Terminal; release through bounded cleanup. |
+| Usable | Resolve the opaque reference; perform qualified reads and attempts through the retained endpoint. | Authenticated closure retires it; detected loss of required observation or capture death/exec withdraws it. |
+| Retired | Every later use is unavailable. Known closure never reverses; reason detail is bounded as below. | None. Late data and descriptor reappearance cannot revive this reference. |
+| Withdrawn | Every later use is unavailable without inventing closure. Report the actual reason while retained; after reclamation report generic unavailable. | None. Recovery creates new records and references as below, never revives this one. |
 
 `CURRENT` and `REMEMBERED` are presentation facts about usable records, not
 lifetime states. Missing from a listing alone changes neither lifetime nor
 closure knowledge. A remembered row requires a previously attributed window,
-an intact observation registration and a freshly authenticated read that
+an observation registration satisfying the evidenced loss/order requirements and a freshly authenticated read that
 supports the window's continued existence and attribution. An unanswered read
 does not justify a remembered row under this proposal. If the affected listing
 cannot establish the required facts, it fails as unavailable with an explanation;
@@ -1250,6 +1275,18 @@ reused between them. The native investigation must establish a registration
 barrier, lifetime identifier or equivalent ordering that discriminates that
 schedule. Without it the operation is unavailable; do not invent such a token.
 
+There are two candidate orders, neither adopted. Application-scope registration
+before enumeration must bridge asynchronous closure delivery and a later
+per-request reply. Per-element registration after enumeration additionally
+needs evidence that the enumerated lifetime survived until registration; equal
+descriptor bytes and an acknowledgment cannot bridge reuse in that interval.
+For both, buffered arrivals are insufficient if an older closure remains in
+transit on another channel. Evidence must establish a native barrier, lifetime
+discriminator or equivalent protocol that accounts for that schedule before
+publication. The same premise applies to re-enumeration and confirmation of
+already usable records. In its absence refuse the dependent result; a local
+drain, arbitrary re-read or receipt timestamp cannot manufacture native order.
+
 After retirement, seeing equal descriptor bytes cannot revive the reference.
 Issuing a different reference for those bytes requires evidence of a distinct
 window/registration lifetime and isolation from old deliveries. If the protocol
@@ -1257,10 +1294,17 @@ cannot distinguish them, refuse that affected listing, including any claimed
 complete result. This is an observation restriction, not a new promise that
 undetected descriptor reuse cannot produce a wrong-window effect.
 
-No reference identifier is allocated twice. Record reclamation must preserve
+No reference identifier is allocated twice. The proposed finite allocator is
+shared by all captures in one provider run, never reset by withdrawal, relisting
+or capture replacement. Record reclamation must preserve
 non-reuse and rejection of old identifiers without requiring an unbounded
 tombstone set. A finite local allocator must refuse before exhaustion, never
-wrap. The full capture/reference design still owes a non-time namespace across
+wrap. Specific terminal reasons survive only within the bounded record budget.
+After reclamation old identifiers remain unavailable, without a promised
+closure-versus-withdrawal reason. Non-revival needs no unbounded reason history.
+The maintained resource policy must bound registration/relisting churn and
+allocation rate, state exhaustion refusal and recovery, and prevent restart
+from bypassing non-reuse. The full capture/reference design still owes a non-time namespace across
 provider, Koine and boot restarts; a random run value alone is not a proof of
 non-collision. This proposal does not choose that grammar or revoke the served
 application-reference restart guarantee by implication.
@@ -1270,10 +1314,32 @@ application-reference restart guarantee by implication.
 The local ordering point is the serialized owner's final state check and actual
 native send initiation, not a prior queue insertion or a permission token handed
 to another worker. No owner operation may intervene between that check and
-initiation. A worker used for sending must provide the same ordering; an unchecked
-later send is invalid. Native send/wait resources remain bounded by the eventual
-adapter profile. The ordering does not enclose native execution or downstream
+initiation. Initiation is a nonblocking enqueue attempt with a native bound;
+the owner never waits for queue space or a reply. No worker handoff is selected:
+a transport requiring one needs a separately evidenced ordering construction
+before adoption. Send/wait resources and the initiation bound remain obligations
+of the maintained adapter profile. The ordering does not enclose native execution or downstream
 work, and it does not make observed closure instantaneous with physical closure.
+
+Before the final check, take a cut of deliveries already admitted to the local
+ingress queue and validate/commit that finite prefix within the adapter's budget.
+If it cannot be processed within the budget, refuse this dispatch; do not skip
+evidence to send. Established loss withdraws dependent records. A closure still
+in native transit or arriving after the cut may race initiation. A received
+message is not yet authenticated observation; observation commits in the owner.
+This scheduling boundary needs explicit agreement with the full protocol and
+does not satisfy the cross-channel publication premise above.
+
+| Native initiation outcome | Meaning for this operation |
+|---|---|
+| Local refusal before initiation | This primitive sent nothing. Claim the operation sent nothing only if every preceding primitive also has proven no-send status. |
+| Native result proven not enqueued | This primitive sent nothing; preserve uncertainty from earlier possible sends. Record the native result and ownership evidence supporting this classification. |
+| Enqueued | Submission only, not execution or observed focus. Cancellation cannot retract it; later failures retain uncertainty. |
+| Ambiguous result, timeout or interruption without proof of non-enqueue | Possibly sent. Stop later primitives and retain uncertainty; never automatically replay. |
+
+The native investigation must map actual send results, including full queues,
+invalid/dead destinations and interruption, to these classes and their cleanup
+obligations. Do not infer no-send from an error name or a missing reply.
 
 | Interleaving | Required result |
 |---|---|
@@ -1293,12 +1359,33 @@ contexts/rights only after the native delivery and local queued-work ownership
 have drained. If no bounded drain can be established, the adapter's cleanup
 design is incomplete, not permission to leak or free a live callback context.
 
-Foreign or demonstrably obsolete events are discarded with their owned resources;
-they cannot retire a window named by untrusted payload. A malformed or
-unattributable event on a current owned registration stops operations depending
-on that observation and withdraws the affected records. A subsequent good event
-does not restore them. A PID-only process notification may prompt validation of
-the retained task; it cannot by itself retire a capture. Confirmed held-task
+Unauthenticated, foreign or demonstrably obsolete events are discarded with
+their owned resources; arrival on a delivery port alone authorizes no state
+change. Only after source authentication and current-registration attribution
+does malformed or window-unattributable input withdraw records dependent on
+that registration. If no window can be identified, that means all its records;
+a lifetime-attributed window failure is confined to that window. Failure of
+shared capture observation affects all dependent registrations. Capture end
+withdraws all its published records and fails all preparation. Independently
+detected delivery loss follows the same dependency scope, even if malicious
+traffic caused overflow; an untrusted body itself cannot trigger withdrawal.
+Any listing requiring an uncertain record fails as a whole; confirmation fails
+for that record and later dependent primitives stop. No partial remainder is
+presented as a complete listing.
+
+A subsequent good event does not restore withdrawn references. Recovery may
+register/list anew under the same still-live authenticated capture if new
+lifetime evidence and isolation from old delivery are established. Otherwise
+refuse; require a new capture only when the capture itself ended or cannot
+satisfy admission. Neither recapture nor relisting repairs a missing native
+premise. Refusal-triggering behaviors include failed registration, authentic
+malformed events, delivery loss, unreadable windows on other Spaces, ambiguous
+descriptor reuse and missing cross-channel order. The full agreement must name
+which observed applications/workflows these exclude and obtain agreement to
+that availability/support consequence; this proposal approves no restriction.
+
+A PID-only process notification may prompt validation of
+the retained task; it cannot by itself end a capture. Confirmed held-task
 death/exec ends that capture independently of notification delivery.
 
 #### Alternatives and discriminator
@@ -1312,7 +1399,8 @@ an evidenced registration protocol; it is not an assumed replacement for one.
 
 The next native question is narrow: **can registration through the retained
 endpoint deliver a closure attributable to the captured window lifetime, and
-can that delivery be isolated across registration retirement and reuse?**
+can that delivery be isolated across registration retirement and reuse, with
+loss detection and ordering sufficient for attributed publication?**
 Inspect actual registration and delivery layouts before choosing an encoder.
 Then use a signed diagnostic in an isolated VM, with an independent window and
 process witness, to distinguish live closure from Space absence, queued old
@@ -1321,6 +1409,17 @@ publication and both sides of the local send boundary. Validate a deliberate
 wrong-source or old-registration event is rejected and a genuine closure is
 accepted. Synthetic faults establish local rejection only; they do not establish
 native source authentication or actual descriptor/PID reuse.
+
+Freeze controls for suppressed emission, saturated queues and failed delivery;
+show whether a missing closure is detected, with an independent closure witness
+and deliberate failure of the detector. Identify residual silent loss. Delay
+an older notification past a later enumeration/confirmation reply, and test
+both registration orders' gaps, including reuse before per-element registration.
+Evidence read-lifetime attribution despite undetected reuse, or report its
+absence. Exercise bounded initiation with full queues and each native send-result
+class; distinguish proven non-enqueue from ambiguous sends. Controls test native
+premises separately from synthetic local fault handling; a successful fixture
+schedule does not prove arbitrary-handler completeness.
 
 If an authenticated native lifetime cannot be established, report the specific
 missing premise before adopting this protocol. Refusing every window is not a
