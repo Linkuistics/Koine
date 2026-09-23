@@ -15,15 +15,21 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-- [Targeting boundary](index.html#diagram-process-target-contract): separates
-  retained capture/local guarantees from public AX's accepted limits.
-- [Scope and remaining work](index.html#diagram-process-adoption): the private
-  route is rejected for this deliverable; capture/transfer, lifecycle, public AX
-  consent/ownership and full protocol agreement remain before implementation.
-- [Capture location](index.html#diagram-process-capture): the client callback
-  remains the capture boundary; actual right transfer is still a candidate.
-- [Private admission conflict](index.html#diagram-process-receive-admission):
-  keeps the bounded evidence and records the human's explicit scope decision.
+The current [capture assessment](../../verification/callback-capture-transfer.md)
+separates public API declarations from missing native premises. It compares
+pre-held candidates with acquire-then-resample and XPC with a minimal native
+transfer lead. Neither mechanism is adopted. Native sampling and admission
+discriminators precede the complete resident transfer protocol.
+
+Changed in this discussion:
+
+- [Fresh callback sample and continuous transfer ownership](index.html#diagram-process-capture) — Shows the conditional acquisition–sample–validation bracket, actual transfer, adoption acknowledgment and unknown outcome after possible send.
+- [Capture assessment](../../verification/callback-capture-transfer.md) — Records source evidence, alternatives, owner obligations and native witness controls separately from agreement.
+
+Unchanged context: [resident composition](index.html#diagram-packages),
+[targeting boundary](index.html#diagram-process-target-contract),
+[scope and remaining work](index.html#diagram-process-adoption) and
+[private admission conflict](index.html#diagram-process-receive-admission).
 
 The observation, wire, acquisition-budget and direct-endpoint views preserve
 historical investigations. Their findings do not establish a complete native
@@ -63,11 +69,21 @@ retain their existing renderer settings when changing them.
 
 Earlier native reports and their reproduction sections carry the frozen platform,
 input, output and rendering records for those revisions. Earlier Safari checks
-apply to their recorded bytes, not automatically to this update. k104 changes
-requirements and presentation only; no new AX operation, consent test, capture
-transfer or product acceptance run is claimed.
+apply to their recorded bytes, not automatically to later updates.
 
-For k104, all three rendering tasks above completed successfully with unchanged
+For the current capture assessment, `task design:render-process-identity`
+completed successfully. Its process-view sources, Taskfile, viewer and manifest
+matched their pre-run digests item by item. The revised capture PNG was inspected
+for layout and legibility; manifest references, SVG XML, edited-document local
+links and served manifest/SVG bytes were checked. Missing-file and missing-heading
+controls were observed failing. The five inspected SDK headers matched the
+[recorded digests](../../verification/callback-capture-transfer/sdk.sha256).
+No browser was available to the session, so fresh browser deep-link, mobile and
+dark-mode checks remain unperformed. This was source and presentation work;
+no new native capture/transfer, AX operation, consent or product acceptance run
+is claimed.
+
+For the prior k104 scope update, all three rendering tasks above completed successfully with unchanged
 source/manifest/Taskfile/renderer-launcher inputs checked item by item. The seven
 changed PNG exports were inspected for legibility and layout. Manifest IDs,
 source/export paths, discussion/update references and SVG XML parsed successfully;

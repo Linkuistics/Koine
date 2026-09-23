@@ -24,43 +24,19 @@
     }
   ],
   "discussion": {
-    "title": "Smaller first deliverable: non-time capture with public Accessibility",
-    "status": "Scope agreed — capture and complete protocol still need design",
-    "summary": "Retain callback-time process capture and expiry; use public AX for listing, focus attempts and notifications. Wrong-target data/effects during reuse, stale reports, mistaken withdrawal and framework reception without a Koine hard acquisition bound are explicitly accepted. Grants, Koine consent, known-dead refusal and own state/work bounds remain; capture/right-transfer keeps its separate resource obligation. The private AX exchange path is rejected for this deliverable, not completed.",
+    "title": "Fresh callback sampling and actual right transfer",
+    "status": "Conditional design — native premises and protocol remain open",
+    "summary": "Separate candidate identity acquisition, the actual fresh foreground sample, continuous right ownership, peer authentication and live grant/resource adoption. Public XPC supplies a transfer primitive, not an established pre-acquisition budget. Native sampling and admission discriminators precede the resident protocol. No new native run, transport, packaging, reference or restart policy is adopted; the public AX scope agreement is unchanged.",
     "diagramIds": [
-      "process-target-contract",
-      "process-adoption",
       "process-capture",
+      "packages",
+      "process-target-contract",
       "process-receive-admission"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-target-contract",
-        "summary": "Records the accepted public AX boundary and the strict capture, authorization and local ownership requirements that remain."
-      },
-      {
-        "id": "process-adoption",
-        "summary": "Separates the rejected private route from the remaining capture, lifecycle, consent and complete-protocol work."
-      },
-      {
         "id": "process-capture",
-        "summary": "Separates capture identity from accepted public AX routing races."
-      },
-      {
-        "id": "process-receive-admission",
-        "summary": "Preserves the unresolved private admission evidence and records the explicit public-AX scope choice."
-      },
-      {
-        "id": "process-observation",
-        "summary": "Labels the authenticated private observation construction as historical, not a release requirement."
-      },
-      {
-        "id": "process-observation-wire",
-        "summary": "Labels the static private wire investigation as historical."
-      },
-      {
-        "id": "process-receive-budget",
-        "summary": "Retains the measured counterexample and removes the abandoned exchange as the next step."
+        "summary": "Shows the conditional acquisition–sample–validation bracket, actual transfer ownership, adoption acknowledgment and unknown outcome after a possible send."
       }
     ]
   },
@@ -194,11 +170,11 @@
     {
       "id": "process-capture",
       "group": "machine",
-      "title": "Capture at the server or at the client event",
+      "title": "Fresh callback sample and continuous transfer ownership",
       "renderer": "svg",
       "source": "process-capture.puml",
       "rendered": "process-capture.svg",
-      "caption": "Client callback capture and strict process lifetime remain agreed. Later server capture is rejected because an app switch can change the target. Transferring a retained task right is still a candidate; port numbers are local names. Fresh sample attribution, actual transfer, peer/resource admission, reference non-reuse and restarts need design/evidence. k104 separately accepts public AX routing races; process identity is not a guarantee of unchanged AX destination."
+      "caption": "Conditional source-grounded design, not a native result or adopted mechanism. The actual foreground observation must occur after acquiring the continuously held identity and before successful validation; invoking a getter does not establish freshness. Compare pre-held candidates with acquire-then-resample. Sender success releases only after matching owned-adoption acknowledgment; possible-send uncertainty and cleanup need the selected protocol. Sampling, hard transfer admission and authenticated resident packaging remain native design work. Peer attribution does not remotely attest callback provenance. See docs/verification/callback-capture-transfer.md. The public AX guarantee boundary is unchanged."
     },
     {
       "id": "packages",

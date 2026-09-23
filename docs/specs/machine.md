@@ -1099,6 +1099,16 @@ behavioral application-support restriction are not adopted. The native transfer
 channel must authenticate its peers separately from bearer-grant authorization;
 a bootstrap name alone does not authenticate the resident Koine process.
 
+The [capture/transfer assessment](../verification/callback-capture-transfer.md)
+separates the candidate primitives from their missing premises. A definitive
+fresh foreground observation must fall inside continuously held identity and
+its successful post-sample validation; candidate discovery alone is not that
+observation. Public send-right APIs establish an available transfer primitive,
+not a bounded or authenticated resident protocol. Native sampling, acquisition
+admission and resident-protocol evidence remain separate work. Capture-source
+migration, native identity ownership and IPC migration are distinct client
+changes; none is adopted by the assessment.
+
 ### Public Accessibility is best effort
 
 Use public macOS Accessibility APIs for listing, held window elements, focus

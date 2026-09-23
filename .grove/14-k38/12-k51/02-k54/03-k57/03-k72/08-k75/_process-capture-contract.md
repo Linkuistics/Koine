@@ -84,6 +84,13 @@ No timestamp first release or complete-protocol approval follows from k104.
 | `native-adapter-consent-k86` | Public AX consent/denial/revocation, local operation/callback ownership and budgets, supported platform behavior and final signed/notarized acceptance instructions. |
 | `process-protocol-agreement-k87` | Complete public semantics, references/restarts/version agreement, document reconciliation and every k52 instruction/renewal row. |
 
+`callback-capture-transfer-k84` now separates its conditional premise design
+from native callback sampling, capture-channel admission and the integrated
+resident protocol. Its original completion criteria remain intact. The
+[candidate assessment](../../../../../../../docs/verification/callback-capture-transfer.md)
+does not establish native feasibility or adopt transport, packaging or restart
+behavior. k84 remains live until that complete evidence/handoff is delivered.
+
 ## Private-observation branch disposition
 
 k81/k82/k88 produced and reviewed a conditional authenticated-observation

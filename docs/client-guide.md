@@ -199,6 +199,16 @@ replace the timestamp: automatic termination can restore the application under
 that same pair but a new process. See the
 [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md).
 
+For ModalAnyware's owner and other native-client authors, the migration has
+three distinct parts: establish a fresh foreground source in the callback,
+replace timestamp identity with continuously held native identity, and transfer
+the actual right over an authenticated channel. Calling a cached getter in the
+callback does not date its data; changing identity fields alone cannot repair
+that. The [candidate assessment](verification/callback-capture-transfer.md)
+compares sampling and transfer constructions; no replacement source or transport
+is adopted yet. These are Koine-side handoff instructions, not changes to
+ModalAnyware.
+
 The agreed first deliverable keeps that non-time capture but uses **public
 macOS Accessibility** for listing, focus attempts and notifications. A capture
 never changes process identity; known-dead captures are refused. Public AX
