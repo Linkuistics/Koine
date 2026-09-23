@@ -259,15 +259,19 @@ deployment target narrows from macOS 13 to match.
 
 ## Pointers
 
-The future targeting agreement in `native-target-contract-k78` permits effects
-on another window in the same live process or another process. See
-`docs/adr/desktop-effects-use-the-admitted-endpoint.md` and the machine spec's
-native targeting section. Read/notification provenance remains required.
-In k80 the human qualified the inherited closed-window refusal: authenticated
-observed closure permanently retires the reference, but undetected closure or
-descriptor reuse may affect another window. Retired references never revive or
-get reused. The observation mechanism still needs evidence. k75 owns the complete protocol
-and k52 handoff; no release or parent completion follows from this scope choice.
+The future targeting agreement in `native-observation-resource-boundary-k104`
+retains non-time callback capture/expiry and selects public macOS Accessibility.
+It accepts wrong-target data/effects during reuse, stale notifications, mistaken
+reference withdrawal and framework AX reception without Koine's hard acquisition
+bound, including resource pressure or failure. Grants, Koine-owned consent,
+known-dead refusal, permanent local withdrawal/non-reuse and bounded Koine-owned
+state/work remain. Capture/right-transfer keeps its separate admission obligation.
+See `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
+spec's native targeting section. The private AX path is rejected for the first
+deliverable; k84–k87 retain capture/transfer, lifecycle, public AX consent/ownership
+and full protocol agreement. k75 owns the complete k52 handoff, and k52 renews
+acceptance on rebuilt signed/notarized bytes. No release or parent completion
+follows from this scope choice.
 
 - Contract: `docs/specs/machine.md`. ADRs:
   `docs/adr/machine-references-as-uris.md`,

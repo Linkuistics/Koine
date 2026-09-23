@@ -1,7 +1,33 @@
 # native-observation-exchange-witness-k101 — brief
 
+## Resolution in native-observation-resource-boundary-k104
 
-## Goal
+The human explicitly selected the smaller public-AX contract for the first
+deliverable, rejecting continued ownership of the private AX wire path. This
+node closes by that scope decision, not by satisfying its original native
+exchange/observation criteria. The subtree supplied pinned static evidence,
+a local acquisition counterexample and a bounded enforcement conflict; no owned
+AX add/closure/remove exchange, publication barrier or complete/loss-detectable
+observation path was established. Its remaining private investigations are
+abandoned, while DONE evidence remains unchanged.
+
+The current contract and reopening condition live in
+`docs/adr/desktop-automation-uses-public-accessibility.md` and the machine spec's
+native targeting section. k75 carries the remaining capture/right-transfer,
+lifecycle, public AX consent/ownership and protocol agreement into k84–k87.
+Capture-transfer acquisition bounds are not waived. Local callback ownership
+and permanent reference withdrawal/non-reuse survive; private reply/notification
+authentication and hard framework AX acquisition bounds do not. No implementation
+or release acceptance is implied.
+
+## Historical investigation charter
+
+All criteria, decompositions and live-work references below describe the private
+route before the explicit k104 decision. They preserve what was attempted and
+what was not established; they no longer commission native experiments.
+
+
+### Original goal
 Finish k99's owned add/delivery/remove exchange or surface its concrete conflict,
 consuming the receive-envelope contract without crediting it as runtime evidence.
 
@@ -12,7 +38,7 @@ Read docs/verification/native-observation-receive.md, the request/connection/
 layout reports and k99's unchanged original charter. k100 supplies static
 receive-source evidence only; k91 owns the broader send/cleanup matrix.
 
-## Done when
+### Original done when
 - Before sends, close the exact runtime preflight in the receive report:
   actual voucher/execution and generic requester/launch-responsibility context;
   owned rights and checked allocation/limits; success/error receive ownership,

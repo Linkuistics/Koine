@@ -199,52 +199,40 @@ replace the timestamp: automatic termination can restore the application under
 that same pair but a new process. See the
 [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md).
 
-The retained-native candidate also has an unresolved action boundary:
-[a VM experiment](verification/retained-ax-binding.md) showed a held AX window
-acting on a replacement process after actual PID reuse. Treat the native
-replacement as unfinished; a task right plus retained AX objects is not an
-approved client protocol.
+The agreed first deliverable keeps that non-time capture but uses **public
+macOS Accessibility** for listing, focus attempts and notifications. A capture
+never changes process identity; known-dead captures are refused. Public AX
+routing may nevertheless return another process/window's data or affect it
+during reuse, and notifications may be stale or misattributed. Independent reply
+authentication, window-lifetime attribution and read freshness are not promised.
+The [held-AX experiment](verification/retained-ax-binding.md) illustrates that
+boundary; it does not measure normal race frequency.
 
-The agreed future effect contract is **endpoint addressing only**. Koine keeps
-using the endpoint admitted for the captured process; it does not guarantee
-permanent receiver ownership or safe handler/downstream behavior. Receiver
-movement, descriptor reuse, forwarding or queued activation may affect another
-window in the same live application or another process, including a restored
-successor. Capture/reference expiry still follows
-the original process. The future operation will expose a focus attempt and
-separate request acceptance from an observation. Refusal before any native send
-means this operation sent nothing, although earlier work may still act. After a
-possible send, a failure or lost response does not prove that nothing happened.
-Do not retry automatically.
+A platform closure/failure report can mistakenly withdraw a live reference or
+remove a remembered window. Once withdrawn, that reference stays unavailable
+and is never reused or revived. Absence from a listing alone is not proof of
+closure. Local callback ownership, failure/recovery and remembered-row semantics
+still need the complete protocol design.
 
-Listings, reference creation and confirmation require authenticated, fresh data
-attributable to the capture. Unknown or mismatched provenance supplies no accepted
-result and stops later primitives; authenticating the sender does not certify
-arbitrary handler data or undo effects. Notifications need their own evidenced
-source and lifetime attribution before changing remembered windows or references.
-Unsupported protocol/descriptor forms fail the affected operation as unavailable,
-with an explanation, rather than silently omitting windows or asking for consent.
-An OS/protocol compatibility profile is distinct from a behavioral application
-support restriction; no such application restriction was selected.
+The future operation will expose a focus attempt, distinguishing attempted work,
+framework-reported acceptance/observation and uncertainty. A focus report is not
+independently verified proof of the captured window or lasting focus. After a
+call may have run, failure or a lost response does not establish that nothing
+happened. Do not retry mutations automatically.
 
-Authenticated observed window closure permanently retires its reference:
-subsequent use is unavailable and the reference is never revived or reused.
-This is weaker than unconditional closed-window refusal: undetected closure
-or descriptor reuse may let an attempt affect a different window in the same
-live application. Absence from a listing alone is not closure evidence. The
-replacement's observation mechanism and late-notification handling still need
-design and evidence.
+Framework-managed AX reception has no Koine hard memory/Mach-right bound before
+acquisition; target traffic may pressure or fail the resident Koine process.
+Koine still enforces grants, owns Accessibility consent and bounds its own
+records/work. The separate capture/right-transfer channel retains its resource
+and peer-authentication requirements.
 
-No shipping mechanism, lifecycle policy, restart policy or version agreement is
-supplied by this choice. The direct adapter and first public release remain
-unresolved. The [effect-boundary decision](adr/desktop-effects-use-the-admitted-endpoint.md)
-records the trade-off; the spec records the remaining obligations.
-
-The [native targeting discussion](specs/machine.md#native-targeting-discussion)
-states the agreed future contract and its limits. The timestamp schema and focus
-receipt documented elsewhere in this guide still describe the served behavior;
-they are not the new operation or permission to assume the old exact-target
-promise from the future API.
+Capture/transfer feasibility, AX-contact lifecycle policy, reference/restart
+rules, public result fields and version agreement remain open. The
+[public Accessibility decision](adr/desktop-automation-uses-public-accessibility.md)
+and [native targeting discussion](specs/machine.md#native-targeting-discussion)
+record the accepted scope and remaining work. The timestamp schema and focus
+receipt elsewhere in this guide still describe served behavior; the replacement
+must be agreed and implemented before first release.
 
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That

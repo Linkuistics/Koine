@@ -5,37 +5,38 @@
 
 Settle the complete non-time desktop capture and transfer contract with the
 human and finish the original k54/k51 documentation and k52 handoff obligations.
-The expected feasible binding was not established by k56, so first resolve its
-adoption conflict under the explicitly revised effect boundary in k78. A complete
-contract still requires native feasibility evidence.
+k104 selects public AX under explicitly weaker read/effect/observation and
+framework-receive guarantees. Capture/transfer still requires native feasibility
+evidence; the private AX investigation is no longer a prerequisite.
 
 ## Current targeting agreement
 
-In `native-target-contract-k78`, the human selected **endpoint addressing only**.
-Capture/reference lifetime remains tied to the original process; Koine never
-rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
-and downstream effects on another window in the same live process or another
-process, including a restored successor, are explicitly outside the effect
-guarantee. Read the current capture and
-`desktop-effects-use-the-admitted-endpoint` ADRs and
-`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
-This qualifies inherited strict-effect criteria below; historical investigation
-and decision logs retain the requirements against which they were written.
-Public clients, callback-time capture, non-time identity, Koine consent and no
-helper/injection/cooperation remain required. No shipping mechanism, lifecycle
-policy, restart policy or first release is approved. k79 reviews this agreement;
-k75 retains the full protocol and k52 handoff. Read replies and notifications
-require authentication, freshness and attribution; unsupported protocol forms
-refuse the affected operation without silent omission. Endpoint admission is
-distinct from grant/dispatch admission. In k80 the human agreed that authenticated
-observed closure permanently retires a window reference; undetected closure or
-descriptor reuse may still target another window. Retired references never revive
-or get reused. k75 must establish observation and retirement evidence. The parents remain live.
+In `native-observation-resource-boundary-k104`, the human selected the **smaller
+public-AX contract**: retain non-time callback capture and expiry; use public
+Accessibility for listing, focus attempts and notifications. This replaces k78's
+retained-endpoint guarantee and k80/k88's authenticated observation requirements.
+Wrong-target data/effects during process or window reuse, stale/misattributed
+notifications, mistaken reference withdrawal and framework AX reception without
+Koine's hard pre-acquisition memory/right bound are explicitly accepted, including
+resource pressure or Koine failure. The capture identity is never rebound;
+known-dead capture refusal, irreversible local reference withdrawal/non-reuse,
+live grants, Koine consent and bounds on Koine-owned records/work remain.
+
+Read `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
+spec's native targeting section. Public clients, client-owned adapters and no
+helper/injection/target cooperation/application restriction remain required.
+The separate capture/right-transfer channel keeps its acquisition, peer-
+authentication and ownership obligations. Its feasibility, AX-contact lifecycle
+policy, reference/restart/result semantics and version framing still need design
+and agreement; k84–k87 own that work and k52 the later implementation/acceptance.
+The private AX exchange/publication/loss path is rejected for this deliverable,
+not successfully completed. Earlier investigation and decision logs below are
+historical; their stronger obligations no longer commission private AX work.
+No timestamp first release or complete-protocol approval follows from k104.
 
 ## Context
 
-The parent criteria remain, qualified only by k78's explicit change to the effect
-guarantee. Read the capture ADR and k56's feasibility result. Public client
+The parent criteria remain as revised by k104's explicit public-AX agreement. Read the capture ADR and k56's feasibility result. Public client
 APIs, client-event capture, strict original-process lifetime, client-owned
 adapters and Koine's Accessibility consent remain required. Private-server
 investigation does not itself approve the eventual mechanism.
@@ -43,8 +44,8 @@ investigation does not itself approve the eventual mechanism.
 ## Done when
 
 - Specify capture linearization/attribution, ambiguity and null/dead/policy
-  refusal; actual right transfer and continuously retained ownership; native
-  endpoint discovery and authentication; live bearer-grant admission/revocation;
+  refusal; actual right transfer and continuously retained ownership; capture-channel
+  discovery and peer authentication; live bearer-grant admission/revocation;
   cleanup, disconnects and resource bounds. No numeric port-as-JSON substitution,
   runtime client compilation or private client dependency.
 - Specify opaque reference grammar and non-reuse, input/absence/staleness
@@ -60,16 +61,17 @@ investigation does not itself approve the eventual mechanism.
   contract. Until agreement, label proposals and leave the currently served
   schema explicitly awaiting replacement.
 - Complete `process-identity-without-time-k52` with provider/schema/reference/
-  client changes, regression cases, native-binding acceptance and every evidence
+  client changes, regression cases, public AX acceptance and every evidence
   renewal the parent requires. Keep real PID recycling and simulated identity
   mismatch distinct. No implementation leaves are cut from this design session.
 
 ## Notes
 
-If k56 supplies an evidenced conflict rather than a feasible binding, resolve
-that conflict with the human before presenting a protocol as implementable.
+k104 resolves the private AX scope conflict, not capture/transfer feasibility.
+Surface any concrete remaining conflict before presenting the full public
+protocol as implementable.
 
-## Delivered feasibility result
+## Historical private-AX feasibility result
 
 k56 supplies the evidenced-conflict branch. Start with
 `docs/verification/ax-endpoint-adoption.md` and
@@ -151,7 +153,7 @@ alone. Historical triage corrections remain instrument evidence, not a mandate
 to run every survey lead.
 
 k75 has decomposed at the unestablished asynchronous-observation boundary.
-Its observation proposal and review precede native evidence; separate live
-children retain capture/transfer, lifecycle, consent and full agreement/k52
-handoff. The original Done when here remains unmet until that complete design
+Its observation proposal and private evidence path were later rejected for the
+first deliverable in k104; live children retain capture/transfer, lifecycle,
+public AX consent/ownership and full agreement/k52 handoff. The original Done when here remains unmet until that complete design
 is delivered. No parent closes on the proposed retirement construction.

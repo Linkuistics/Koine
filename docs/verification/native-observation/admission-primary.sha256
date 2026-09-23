@@ -6,3 +6,5 @@ e2b1225ace8537ac799876bf9bc32e7abad0eef17fa0782cb854a469703d9da2  osfmk/ipc/ipc_
 85a96ee426f6a2efb5eb12b5747e77315091d22ea330a26a88abf67883569609  osfmk/ipc/mach_msg.c
 d2b9f677f8ed2e3338c23ace865a889208a5d2a0147f05d6e0b82115703b5cfa  libsyscall/mach/mach_msg.c
 86e9e87ba2a736236613f2c0a8563dbacaeec1a761654b12812eaf8599b55e67  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/message.h
+b54e333b667390dc4641471aee099ba4863412eb5880c42f60e4e53d00dc4529  osfmk/kern/mach_filter.h
+161a01701b634adc21607969d417d2a54f5e15c6f6f57eea4b2521a0e09e2309  osfmk/ipc/ipc_policy.c

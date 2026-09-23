@@ -10,26 +10,28 @@ publishes the current one.
 
 ## Current targeting agreement
 
-In `native-target-contract-k78`, the human selected **endpoint addressing only**.
-Capture/reference lifetime remains tied to the original process; Koine never
-rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
-and downstream effects on another window in the same live process or another
-process, including a restored successor, are explicitly outside the effect
-guarantee. Read the current capture and
-`desktop-effects-use-the-admitted-endpoint` ADRs and
-`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
-This qualifies inherited strict-effect criteria below; historical investigation
-and decision logs retain the requirements against which they were written.
-Public clients, callback-time capture, non-time identity, Koine consent and no
-helper/injection/cooperation remain required. No shipping mechanism, lifecycle
-policy, restart policy or first release is approved. k79 reviews this agreement;
-k75 retains the full protocol and k52 handoff. Read replies and notifications
-require authentication, freshness and attribution; unsupported protocol forms
-refuse the affected operation without silent omission. Endpoint admission is
-distinct from grant/dispatch admission. In k80 the human agreed that authenticated
-observed closure permanently retires a window reference; undetected closure or
-descriptor reuse may still target another window. Retired references never revive
-or get reused. k75 must establish observation and retirement evidence. The parents remain live.
+In `native-observation-resource-boundary-k104`, the human selected the **smaller
+public-AX contract**: retain non-time callback capture and expiry; use public
+Accessibility for listing, focus attempts and notifications. This replaces k78's
+retained-endpoint guarantee and k80/k88's authenticated observation requirements.
+Wrong-target data/effects during process or window reuse, stale/misattributed
+notifications, mistaken reference withdrawal and framework AX reception without
+Koine's hard pre-acquisition memory/right bound are explicitly accepted, including
+resource pressure or Koine failure. The capture identity is never rebound;
+known-dead capture refusal, irreversible local reference withdrawal/non-reuse,
+live grants, Koine consent and bounds on Koine-owned records/work remain.
+
+Read `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
+spec's native targeting section. Public clients, client-owned adapters and no
+helper/injection/target cooperation/application restriction remain required.
+The separate capture/right-transfer channel keeps its acquisition, peer-
+authentication and ownership obligations. Its feasibility, AX-contact lifecycle
+policy, reference/restart/result semantics and version framing still need design
+and agreement; k84–k87 own that work and k52 the later implementation/acceptance.
+The private AX exchange/publication/loss path is rejected for this deliverable,
+not successfully completed. Earlier investigation and decision logs below are
+historical; their stronger obligations no longer commission private AX work.
+No timestamp first release or complete-protocol approval follows from k104.
 
 ## Context
 
@@ -62,9 +64,9 @@ or get reused. k75 must establish observation and retirement evidence. The paren
   from Koine's own launch observation — for example a lookup such as "the
   frontmost application" that answers with a reference, so the client never
   handles a pid at all; audit-token `pidversion`; the private `uniqueid`. There
-  may be better ones. Whatever is chosen must still keep the existing
-  guarantee: a recycled PID never selects a new application, and a missing
-  reliable identity is an input error, not permission to target by PID alone.
+  may be better ones. The chosen capture identity must never be rebound to a
+  replacement process by recycled PID; missing reliable capture identity is an
+  input error. k104 separately accepts wrong-target AX data/effects in races.
 - **The interaction the contract serves**: ModalAnyware captures the
   application at interaction start, then lists and focuses its windows. A
   mechanism that is correct but cannot be captured at that moment by a
@@ -91,7 +93,7 @@ The contract is still `koine-desktop/1`: nothing has been published, so this is
 a change to the agreed contract before its first release, not a version bump —
 confirm that framing with the human along with the mechanism.
 
-## Investigation
+## Historical investigation
 
 The macOS SDK in Xcode on this host declares `task_name_for_pid`,
 `TASK_AUDIT_TOKEN`, and `audit_token_to_pidversion`. The earlier claim that an

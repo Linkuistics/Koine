@@ -19,8 +19,9 @@ The experiment evaluated the original strict effect requirement, including
 death after the last check. The current
 [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
 retains process expiry; the separately agreed
-[effect boundary](../adr/desktop-effects-use-the-admitted-endpoint.md) now excludes
-receiver/descriptor/downstream no-substitution. These observations are unchanged
+[public Accessibility boundary](../adr/desktop-automation-uses-public-accessibility.md)
+accepts wrong-target data/effects during reuse, stale notifications and mistaken
+withdrawal, without changing the capture identity. These observations are unchanged
 and still rule out wrapper retention as proof of an unchanged destination.
 
 ## Observed PID reuse and effect

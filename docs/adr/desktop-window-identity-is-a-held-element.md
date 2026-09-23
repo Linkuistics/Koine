@@ -23,16 +23,16 @@ binding for a native action endpoint. A subsequent
 [actual PID-recycling experiment](../verification/retained-ax-binding.md)
 shows that a retained AX window can address a replacement process, even with
 the original task-name right and AX parent still held. The current scheme
-therefore does not establish the required cross-incarnation no-substitution
-guarantee. The agreed future contract is endpoint addressing only, as defined
-by the [effect-boundary decision](desktop-effects-use-the-admitted-endpoint.md): receiver/descriptor behavior and downstream effects on
-other windows or processes are explicitly outside that promise. The held-element
-scheme above remains the served design; its wrapper retention does not establish
-an unchanged native destination and its replacement must be resolved before release.
-The future contract retires references permanently on authenticated observed
-closure, while permitting wrong-window effects after undetected closure or
-descriptor reuse. The ordinary closure evidence below belongs to the served
-scheme and does not establish that replacement observation protocol.
+therefore does not establish cross-incarnation no-substitution. The agreed
+future [public Accessibility contract](desktop-automation-uses-public-accessibility.md)
+accepts wrong-target reads and effects during process or window reuse, stale
+notifications and mistaken withdrawal of live references. Held wrappers remain
+private observation state, not proof of an unchanged native destination.
+Local withdrawal is permanent and identifiers are never reused; a platform
+closure report is not authenticated proof of closure. The replacement process
+identity, reference grammar and restart rules still need agreement before
+release. The ordinary closure evidence below describes the served scheme and
+does not prove the replacement's capture/transfer or lifetime handling.
 
 ## Trade-off
 

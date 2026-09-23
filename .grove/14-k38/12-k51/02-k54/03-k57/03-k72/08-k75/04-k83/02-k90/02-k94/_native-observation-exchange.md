@@ -1,7 +1,33 @@
 # native-observation-exchange-k94 — brief
 
+## Resolution in native-observation-resource-boundary-k104
 
-## Goal
+The human explicitly selected the smaller public-AX contract for the first
+deliverable, rejecting continued ownership of the private AX wire path. This
+node closes by that scope decision, not by satisfying its original native
+exchange/observation criteria. The subtree supplied pinned static evidence,
+a local acquisition counterexample and a bounded enforcement conflict; no owned
+AX add/closure/remove exchange, publication barrier or complete/loss-detectable
+observation path was established. Its remaining private investigations are
+abandoned, while DONE evidence remains unchanged.
+
+The current contract and reopening condition live in
+`docs/adr/desktop-automation-uses-public-accessibility.md` and the machine spec's
+native targeting section. k75 carries the remaining capture/right-transfer,
+lifecycle, public AX consent/ownership and protocol agreement into k84–k87.
+Capture-transfer acquisition bounds are not waived. Local callback ownership
+and permanent reference withdrawal/non-reuse survive; private reply/notification
+authentication and hard framework AX acquisition bounds do not. No implementation
+or release acceptance is implied.
+
+## Historical investigation charter
+
+All criteria, decompositions and live-work references below describe the private
+route before the explicit k104 decision. They preserve what was attempted and
+what was not established; they no longer commission native experiments.
+
+
+### Original goal
 
 Establish a safe owned add/delivery/remove exchange through the retained AX
 endpoint, or report the concrete wire/authentication conflict before any
@@ -15,7 +41,7 @@ Read k93's layout dossier in `docs/verification/native-observation-layout.md`
 and k89's original report/discriminator. The dossier contains explicit missing
 links; it is not an encoder-ready ABI or permission to use guessed constants.
 
-## Done when
+### Original done when
 
 - Close the dossier's bounded preflight: request-header literal bytes, server
   request decoders, scalar/flag/requester semantics, client-port ownership and

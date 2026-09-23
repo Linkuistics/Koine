@@ -21,7 +21,10 @@ Process identity does not alone bind an AX destination. The
 [PID-recycling experiments](../verification/retained-ax-binding.md) exclude public
 held AX wrappers and private token/data reconstruction as proof of an unchanged
 endpoint. The independently chosen
-[endpoint effect boundary](desktop-effects-use-the-admitted-endpoint.md) defines
-what sends promise. Capture/transfer feasibility, reference/restart details and
-adoption obligations live in the
+[public Accessibility boundary](desktop-automation-uses-public-accessibility.md)
+accepts wrong-target data and effects in races, stale notifications and mistaken
+reference withdrawal. This never permits rebinding the capture's process
+identity; it limits what operations under that capture can promise.
+Capture/transfer feasibility, reference/restart details and adoption obligations
+live in the
 [machine spec](../specs/machine.md#native-targeting-discussion).

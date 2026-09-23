@@ -11,26 +11,28 @@ provider contract with the human before k52 implements it.
 
 ## Current targeting agreement
 
-In `native-target-contract-k78`, the human selected **endpoint addressing only**.
-Capture/reference lifetime remains tied to the original process; Koine never
-rebinds its admitted endpoint. Receiver movement, descriptor reuse, forwarding
-and downstream effects on another window in the same live process or another
-process, including a restored successor, are explicitly outside the effect
-guarantee. Read the current capture and
-`desktop-effects-use-the-admitted-endpoint` ADRs and
-`docs/specs/machine.md#native-targeting-discussion` for the precise boundary.
-This qualifies inherited strict-effect criteria below; historical investigation
-and decision logs retain the requirements against which they were written.
-Public clients, callback-time capture, non-time identity, Koine consent and no
-helper/injection/cooperation remain required. No shipping mechanism, lifecycle
-policy, restart policy or first release is approved. k79 reviews this agreement;
-k75 retains the full protocol and k52 handoff. Read replies and notifications
-require authentication, freshness and attribution; unsupported protocol forms
-refuse the affected operation without silent omission. Endpoint admission is
-distinct from grant/dispatch admission. In k80 the human agreed that authenticated
-observed closure permanently retires a window reference; undetected closure or
-descriptor reuse may still target another window. Retired references never revive
-or get reused. k75 must establish observation and retirement evidence. The parents remain live.
+In `native-observation-resource-boundary-k104`, the human selected the **smaller
+public-AX contract**: retain non-time callback capture and expiry; use public
+Accessibility for listing, focus attempts and notifications. This replaces k78's
+retained-endpoint guarantee and k80/k88's authenticated observation requirements.
+Wrong-target data/effects during process or window reuse, stale/misattributed
+notifications, mistaken reference withdrawal and framework AX reception without
+Koine's hard pre-acquisition memory/right bound are explicitly accepted, including
+resource pressure or Koine failure. The capture identity is never rebound;
+known-dead capture refusal, irreversible local reference withdrawal/non-reuse,
+live grants, Koine consent and bounds on Koine-owned records/work remain.
+
+Read `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
+spec's native targeting section. Public clients, client-owned adapters and no
+helper/injection/target cooperation/application restriction remain required.
+The separate capture/right-transfer channel keeps its acquisition, peer-
+authentication and ownership obligations. Its feasibility, AX-contact lifecycle
+policy, reference/restart/result semantics and version framing still need design
+and agreement; k84–k87 own that work and k52 the later implementation/acceptance.
+The private AX exchange/publication/loss path is rejected for this deliverable,
+not successfully completed. Earlier investigation and decision logs below are
+historical; their stronger obligations no longer commission private AX work.
+No timestamp first release or complete-protocol approval follows from k104.
 
 ## Context
 
@@ -71,18 +73,18 @@ or get reused. k75 must establish observation and retirement evidence. The paren
   boot restart semantics. The existing application reference survives Koine
   restart; continuously held rights do not obviously preserve that property.
   Seek agreement on any necessary change with the concrete trade-off shown.
-- Account for every native effect and confirmation under k78's endpoint-addressing
-  boundary: authenticated admission, continuous retention, no destination
-  reacquisition, and honest refusal/uncertainty when death races use. Do not
-  claim atomic no-substitution for receivers, descriptors or downstream work;
-  those guarantees are explicitly excluded. Keep capture/reference expiry strict.
+- Account for public AX calls and best-effort observations under k104's
+  boundary. Preserve capture expiry and known-dead refusal, honest attempts,
+  uncertainty and local callback/record ownership. Do not require a retained
+  AX endpoint or independently authenticated replies/notifications; wrong-target
+  data/effects and mistaken withdrawal are explicitly accepted.
 - Update the machine spec, design SDL, published design operations, capture ADR
   (in place), other affected current ADRs, client guide and architecture views
   to the agreed contract. Confirm the prepublication `koine-desktop/1` framing
   with the human alongside the mechanism; it is still unconfirmed.
 - Complete k52's provider/schema/reference/tests/capture instructions and
   acceptance evidence renewal, including the automatic-restoration regression,
-  delayed client capture across an app switch, native binding and all agreed
+  delayed client capture across an app switch, public AX behavior and all agreed
   restart boundaries. Keep simulated identity mismatch distinct from actual
   PID recycling.
 
@@ -101,7 +103,7 @@ be launched on the host. `task design:render-process-identity` regenerates the
 discussion views. The viewer's stable URL is
 `http://127.0.0.1:8772/#discussion` when served from its directory.
 
-## Investigation
+## Historical investigation
 
 The retained-AX candidate is now disproved by native evidence, rather than just
 unproved in public documentation. See `docs/verification/retained-ax-binding.md`:
@@ -113,7 +115,8 @@ the task right was dead and no fresh AX acquisition occurred in the holder.
 Native effect binding proved to be a separate platform feasibility question
 before a transfer protocol could be chosen. The human authorized investigating
 private APIs inside Koine while keeping clients public and strict lifetime.
-The original completion criteria above continue to bind this node:
+This historical decomposition explains the private investigation. The current
+completion criteria above use k104's public-AX scope:
 
 1. `retained-ax-lifetime-k55` — preserve the public AX counterexample, correct
    acceptance claims and record the human's next direction.

@@ -46,15 +46,19 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-For the native replacement, k78's endpoint-addressing agreement permits effects
-on another window in the same live process or another process. k80 integrates
-its review; the human qualified inherited closed-window refusal to permanent
-retirement on authenticated observed closure. Undetected closure/descriptor reuse
-may affect another window; retired references never revive or get reused. Existing closure tests
-establish served behavior only. k75 must supply the replacement's observation,
-reference and refusal contract and k52's renewal instructions; k52 runs them on
-rebuilt signed/notarized bytes. Read/notification provenance remains required.
-See `docs/adr/desktop-effects-use-the-admitted-endpoint.md`.
+The future targeting agreement in `native-observation-resource-boundary-k104`
+retains non-time callback capture/expiry and selects public macOS Accessibility.
+It accepts wrong-target data/effects during reuse, stale notifications, mistaken
+reference withdrawal and framework AX reception without Koine's hard acquisition
+bound, including resource pressure or failure. Grants, Koine-owned consent,
+known-dead refusal, permanent local withdrawal/non-reuse and bounded Koine-owned
+state/work remain. Capture/right-transfer keeps its separate admission obligation.
+See `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
+spec's native targeting section. The private AX path is rejected for the first
+deliverable; k84–k87 retain capture/transfer, lifecycle, public AX consent/ownership
+and full protocol agreement. k75 owns the complete k52 handoff, and k52 renews
+acceptance on rebuilt signed/notarized bytes. No release or parent completion
+follows from this scope choice.
 
 Fourteen leaves, all impl but one design, ordered by dependency and then by
 risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`

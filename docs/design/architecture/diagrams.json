@@ -1,6 +1,6 @@
 {
   "title": "Koine desktop contract",
-  "intro": "Koine's desktop contract as built: one resident Koine application, a shared resilient Swift provider framework and bearer credentials with live revocation. These views explain its boundaries and ordering. \"Agreed\" in a diagram marks the contract the human approved, which the implementation follows; what has been verified, and what is still open, is the spec's \"Test seams and acceptance\".",
+  "intro": "Koine is a resident application with a shared resilient Swift provider framework and live bearer grants. Served-contract views describe the existing timestamp API. The future desktop contract now selects non-time capture with public Accessibility; its complete protocol and implementation remain open. Historical native investigations are labelled separately. The spec records acceptance and limitations.",
   "groups": [
     {
       "id": "overview",
@@ -24,20 +24,43 @@
     }
   ],
   "discussion": {
-    "title": "Native observation: resource admission remains unresolved",
-    "status": "Evidenced preflight conflict — resource decision open",
-    "summary": "The earlier local OOL counterexample rules out cap-only admission. The inspected audit-peek, queue-limit and legacy overwrite interfaces do not establish a usable memory/right envelope. A concrete enforcement lead or an explicitly agreed constraint change is required before AX receive rights are exposed. No new AX experiment or product decision follows.",
+    "title": "Smaller first deliverable: non-time capture with public Accessibility",
+    "status": "Scope agreed — capture and complete protocol still need design",
+    "summary": "Retain callback-time process capture and expiry; use public AX for listing, focus attempts and notifications. Wrong-target data/effects during reuse, stale reports, mistaken withdrawal and framework reception without a Koine hard acquisition bound are explicitly accepted. Grants, Koine consent, known-dead refusal and own state/work bounds remain; capture/right-transfer keeps its separate resource obligation. The private AX exchange path is rejected for this deliverable, not completed.",
     "diagramIds": [
-      "process-receive-admission",
-      "process-receive-budget",
-      "process-observation-wire",
-      "process-observation",
-      "process-target-contract"
+      "process-target-contract",
+      "process-adoption",
+      "process-capture",
+      "process-receive-admission"
     ],
     "updatedDiagrams": [
       {
+        "id": "process-target-contract",
+        "summary": "Records the accepted public AX boundary and the strict capture, authorization and local ownership requirements that remain."
+      },
+      {
+        "id": "process-adoption",
+        "summary": "Separates the rejected private route from the remaining capture, lifecycle, consent and complete-protocol work."
+      },
+      {
+        "id": "process-capture",
+        "summary": "Separates capture identity from accepted public AX routing races."
+      },
+      {
         "id": "process-receive-admission",
-        "summary": "Adds the bounded source assessment of audit peek, queue count and overwrite, and the concrete condition for reopening the AX exchange."
+        "summary": "Preserves the unresolved private admission evidence and records the explicit public-AX scope choice."
+      },
+      {
+        "id": "process-observation",
+        "summary": "Labels the authenticated private observation construction as historical, not a release requirement."
+      },
+      {
+        "id": "process-observation-wire",
+        "summary": "Labels the static private wire investigation as historical."
+      },
+      {
+        "id": "process-receive-budget",
+        "summary": "Retains the measured counterexample and removes the abandoned exchange as the next step."
       }
     ]
   },
@@ -49,7 +72,7 @@
       "renderer": "svg",
       "source": "process-receive-admission.puml",
       "rendered": "process-receive-admission.svg",
-      "caption": "k103 source assessment of pinned explanatory XNU, not a byte match to the running 25F71 kernel. Audit peek returns metadata without descriptor resource demand; queue limits count messages; the legacy scatter-size argument is unused. Together with the prior local OOL counterexample, these leave no usable acquisition envelope established for this owned notification channel. Other enforcement mechanisms are not proved absent. The complete memory/right/queue/partial-copyout argument and native controls remain required, as do actual AX context, authentication and witnessed add/closure/remove. No application was exercised or observed refused here. No helper, support restriction, unbounded policy or shipping adapter is adopted. See docs/verification/native-observation-receive.md#pre-copyout-admission-assessment."
+      "caption": "Historical private-receive conflict, followed by the k104 scope decision. The local OOL counterexample and pinned explanatory XNU assessment of peek, queue count and overwrite establish no usable acquisition envelope; other mechanisms are not proved absent. No owned AX exchange ran. The human now accepts framework-managed AX reception without Koine hard acquisition limits, including resource pressure/failure, while retaining own state/work and capture-transfer bounds. Private exchange work is rejected for the first deliverable. See docs/verification/native-observation-receive.md#pre-copyout-admission-assessment."
     },
     {
       "id": "process-receive-budget",
@@ -58,25 +81,25 @@
       "renderer": "svg",
       "source": "process-receive-budget.puml",
       "rendered": "process-receive-budget.svg",
-      "caption": "Measured local IPC in a disposable macOS 26.5 (25F71) VM. A self-sent 44-byte message acquired a distinct 128 KiB virtual-copy OOL mapping before the 64 KiB payload policy rejected it. The 32-byte inline control stayed queued; skipped destruction retained the mapping and exited 1 before final cleanup. Self audit agreement, whole-span mapping observations and local send-reference balance are bounded evidence, not AX authentication, physical-memory growth, arbitrary descriptor cleanup or universal impossibility. A usable acquisition policy and the original AX exchange remain live. See docs/verification/native-observation-receive.md#acquisition-budget-experiment."
+      "caption": "Measured local IPC in a disposable macOS 26.5 (25F71) VM. A self-sent 44-byte message acquired a distinct 128 KiB virtual-copy OOL mapping before the 64 KiB payload policy rejected it. The 32-byte inline control stayed queued; skipped destruction retained the mapping and exited 1 before final cleanup. Self audit agreement, whole-span mapping observations and local send-reference balance are bounded evidence, not AX authentication, physical-memory growth, arbitrary descriptor cleanup or universal impossibility. The private acquisition conflict remains unsolved; the human selected public AX and rejected the owned exchange for this deliverable in k104. See docs/verification/native-observation-receive.md#acquisition-budget-experiment."
     },
     {
       "id": "process-observation-wire",
       "group": "machine",
-      "title": "Native observation wire path and evidence gaps",
+      "title": "Historical private observation wire inspection",
       "renderer": "svg",
       "source": "process-observation-wire.puml",
       "rendered": "process-observation-wire.svg",
-      "caption": "Static loaded-byte evidence on macOS 26.5 (25F71). Request layouts, connection policy and native receive helpers are traced. CoreFoundation adopts the message voucher; HIServices injects the observer pointer into the context slot. Native success unmaps OOL info while rejected complex requests use message destruction. The proposed owned decoder borrows from one envelope owner. Actual audit evidence, execution context, bounded OOL acquisition and cleanup remain unvalidated; no owned exchange, closure, lifetime or publication barrier is established. See docs/verification/native-observation-receive.md."
+      "caption": "Historical investigation, rejected as a first-deliverable path in k104. Static loaded-byte evidence on macOS 26.5 (25F71). Request layouts, connection policy and native receive helpers are traced. CoreFoundation adopts the message voucher; HIServices injects the observer pointer into the context slot. Native success unmaps OOL info while rejected complex requests use message destruction. The proposed owned decoder borrows from one envelope owner. Actual audit evidence, execution context, bounded OOL acquisition and cleanup remain unvalidated; no owned exchange, closure, lifetime or publication barrier is established. See docs/verification/native-observation-receive.md."
     },
     {
       "id": "process-observation",
       "group": "machine",
-      "title": "Observation admission and reference lifetime",
+      "title": "Historical private observation proposal",
       "renderer": "svg",
       "source": "process-observation.puml",
       "rendered": "process-observation.svg",
-      "caption": "Proposed construction, not native evidence or product acceptance. Only proven closure permits omission during preparation; failure makes the affected listing unavailable. Registration-before-enumeration and per-element-registration-after-enumeration need distinct gap evidence, plus cross-channel order for subsequent reads. Silent loss cannot trigger withdrawal; dependent reads need complete observation or independent lifetime evidence. The effect relaxation grants no replacement-window read semantics. A bounded ingress cut precedes nonblocking initiation: proven no-enqueue, enqueued and ambiguous outcomes differ; later arrivals may race. Unauthenticated input is discarded; authentic current-registration failure withdraws dependent records. Recovery under the same live capture needs new evidence and references. Reasons become generic after bounded reclamation; one provider-run allocator never wraps. Native premises, refusal/support consequences and full agreement remain open. See docs/specs/machine.md#observation-and-retirement-protocol-proposal."
+      "caption": "Historical conditional private-AX proposal, rejected for the first deliverable in k104. Its authenticated closure, lifetime-attributed reads, publication barrier, loss detection and native ingress/send premises were not established and are not current release gates. Local ownership, permanent reference withdrawal/non-reuse and bounded state/work remain in the public AX design, which explicitly accepts stale/misattributed reports and mistaken withdrawal. See docs/specs/machine.md#observation-and-retirement-protocol-proposal."
     },
     {
       "id": "process-target-contract",
@@ -85,16 +108,16 @@
       "renderer": "svg",
       "source": "process-target-contract.puml",
       "rendered": "process-target-contract.svg",
-      "caption": "Agreed future effect boundary: endpoint addressing only. Authenticated admission and continuous right retention do not guarantee permanent receiver ownership, descriptor behavior or downstream safety. Effects may reach another window in the same live process, another process or a restored successor; clients must see an attempt with separate observations and uncertainty. Capture/reference expiry remains tied to the original process; authenticated observed closure permanently retires a window reference. Undetected closure/reuse may still target another window. Refusal before send means this operation sent nothing; possible sends leave uncertainty. Reads and notifications need authenticated provenance. Restricted target profiles were not selected, and the separate activation diagnostic was explicitly abandoned. Full contract: docs/specs/machine.md#native-targeting-discussion. No new native measurement, shipping mechanism, lifecycle policy or private-adapter OS support is approved."
+      "caption": "Agreed future contract, not yet implemented: non-time callback capture and expiry with public macOS Accessibility. Wrong-target data/effects, stale or misattributed reports, mistaken withdrawal and framework AX acquisition without Koine hard memory/right limits are accepted, including resource pressure or Koine failure. Grants, Koine consent, known-dead refusal, permanent local withdrawal/non-reuse and own state/work bounds remain. Capture-transfer has separate acquisition and peer-authentication obligations. The complete protocol, lifecycle, references/restarts, public outcomes and acceptance remain open. See docs/specs/machine.md#native-targeting-discussion."
     },
     {
       "id": "process-adoption",
       "group": "machine",
-      "title": "Direct AX adoption and the contract decision",
+      "title": "Public AX scope and remaining adoption work",
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "The original strict effect promise remains unestablished. The human explicitly selected endpoint addressing only, excluding receiver/descriptor/downstream no-substitution while preserving capture/reference lifetime. The direct endpoint is still unadopted as a shipping mechanism and may be evaluated against the reviewed boundary; observation and retirement evidence remain required. AX-contact lifecycle policy, separate Koine consent, capture/transfer and a maintained private protocol remain required. No window-qualified activation fallback is selected; that diagnostic was explicitly abandoned. Evidence and remaining obligations: docs/verification/ax-endpoint-adoption.md."
+      "caption": "k104 explicitly selected public AX and rejected continued private endpoint/wire ownership for the first deliverable. Earlier diagnostics and static inspections remain bounded evidence; no owned observation exchange was completed. Capture/transfer, lifecycle consequence, public AX consent/local ownership and the complete client contract still need design, followed by implementation and signed/notarized acceptance. Reopening private AX needs an explicit product requirement and a concrete enforcement lead. See docs/verification/ax-endpoint-adoption.md."
     },
     {
       "id": "process-routing",
@@ -175,7 +198,7 @@
       "renderer": "svg",
       "source": "process-capture.puml",
       "rendered": "process-capture.svg",
-      "caption": "Client-event capture and strict OS-process lifetime are agreed. Server-side capture can select another application after an intervening app switch and is rejected. Transferring a retained task right is the next candidate, not a completed protocol: port numbers are local names, rights do not reserve PIDs, and capture attribution, native endpoint binding, authentication, reference non-reuse and restart policy must be specified. The existing Desktop interaction view remains context for the served contract."
+      "caption": "Client callback capture and strict process lifetime remain agreed. Later server capture is rejected because an app switch can change the target. Transferring a retained task right is still a candidate; port numbers are local names. Fresh sample attribution, actual transfer, peer/resource admission, reference non-reuse and restarts need design/evidence. k104 separately accepts public AX routing races; process identity is not a guarantee of unchanged AX destination."
     },
     {
       "id": "packages",
@@ -202,7 +225,7 @@
       "renderer": "svg",
       "source": "addressing.puml",
       "rendered": "addressing.svg",
-      "caption": "Served desktop sequence: the current timestamp API queries before choices and resolves the selected opaque reference before acting. Its exact-target receipt meaning is being replaced by the agreed future endpoint-addressing focus attempt; this diagram does not specify that new wire operation. See the native targeting view and docs/specs/machine.md#native-targeting-discussion. Capability denial and missing Koine OS consent retain separate classifications; no automatic replay follows a lost mutation response."
+      "caption": "Served timestamp API: query before choices and resolve an opaque reference before acting. Its exact-target receipt meaning must change to the agreed public-AX focus attempt and framework observations; this diagram does not specify the replacement wire fields. See docs/specs/machine.md#native-targeting-discussion. Capability denial and missing Koine consent stay distinct; no automatic mutation replay."
     },
     {
       "id": "machine-interface",

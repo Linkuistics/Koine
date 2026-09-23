@@ -1,289 +1,76 @@
-# Architecture views
+# Koine architecture views
 
-These editable views accompany the [desktop contract](../../specs/machine.md):
-one resident application, the shared resilient Swift framework and bearer
-credentials with live revocation. Koine implements that contract, and the spec's
-"Test seams and acceptance" says what has been verified and what is still open.
-"Agreed" in a diagram marks the contract the human approved; it does not mean
-the part it labels is unbuilt.
+Open [the viewer](index.html#discussion) for the current discussion, outline and
+SVG/source exports. The agreed future desktop contract now combines non-time
+callback capture/expiry with public macOS Accessibility. The complete protocol
+and implementation remain open; served-contract diagrams still describe the
+existing timestamp API. The [spec](../../specs/machine.md#native-targeting-discussion)
+and [ADR](../../adr/desktop-automation-uses-public-accessibility.md) are authoritative.
 
-[`index.html`](index.html) is a viewer that fetches the sources and exports
-below, so it needs an HTTP server; nothing serves it by default. To read the
-views with their captions, serve this directory and open the address it prints:
+The scope change accepts wrong-target data/effects during reuse, stale reports,
+mistaken reference withdrawal and framework AX reception without Koine's hard
+acquisition bound, including resource pressure or failure. Capture-transfer has
+separate acquisition obligations. Grants, Koine-owned consent, known-dead capture
+refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
-```sh
-python3 -m http.server 8772 --bind 127.0.0.1 --directory docs/design/architecture
-```
+## Current discussion
 
-The SVG exports beside each source also open on their own.
+- [Targeting boundary](index.html#diagram-process-target-contract): separates
+  retained capture/local guarantees from public AX's accepted limits.
+- [Scope and remaining work](index.html#diagram-process-adoption): the private
+  route is rejected for this deliverable; capture/transfer, lifecycle, public AX
+  consent/ownership and full protocol agreement remain before implementation.
+- [Capture location](index.html#diagram-process-capture): the client callback
+  remains the capture boundary; actual right transfer is still a candidate.
+- [Private admission conflict](index.html#diagram-process-receive-admission):
+  keeps the bounded evidence and records the human's explicit scope decision.
 
-- [Resource admission and the exchange conflict](index.html#diagram-process-receive-admission) — Adds the bounded source assessment and the condition for reopening the owned AX exchange.
-- [Pre-copyout admission assessment](../../verification/native-observation-receive.md#pre-copyout-admission-assessment) — Separates queue count, sender metadata and inline storage from the outstanding acquisition guarantee, and reconciles every inherited exchange criterion.
+The observation, wire, acquisition-budget and direct-endpoint views preserve
+historical investigations. Their findings do not establish a complete native
+observation exchange, and their unproved private guarantees are no longer release
+gates. The [adoption synthesis](../../verification/ax-endpoint-adoption.md) and
+[receive report](../../verification/native-observation-receive.md) retain the
+measurements, limits and original criteria. The restoration view still informs
+the unresolved AX-contact lifecycle decision; the serial view still explains
+why PSN plus boot identity cannot provide strict process lifetime.
 
-The admission view is rendered with PlantUML 1.2026.8 by
-`task design:render-receive-admission`, producing SVG and PNG. The existing
-budget view remains unchanged context with its own native evidence.
-The source and Taskfile [digests before](../../verification/native-observation/admission-render-before.sha256)
-and [after](../../verification/native-observation/admission-render-after.sha256)
-rendering match. The full PNG and a fresh Safari deep link, outline,
-discussion panel and Current/Updated markers were checked in disposable clone
-`koine-k103-design`. Desktop light layouts at 1500 and 650 pixels were inspected;
-narrow fit reduces text size and retains native-size/full-size alternatives.
-No mobile-device or dark-appearance check is claimed. Viewer, manifest, source
-and SVG [guest digests](../../verification/native-observation/admission-viewer-guest.json)
-match the host, and host HTTP manifest/SVG bytes match disk. These are
-presentation checks only. The clone was stopped after inspection.
-
-The k102 budget view was rendered with PlantUML 1.2026.8 using
-`task design:render-receive-budget`; its
-[inputs](../../verification/native-observation/receive-budget-render-before.sha256)
-matched [after rendering](../../verification/native-observation/receive-budget-render-after.sha256).
-The full PNG and fresh Safari deep link, discussion panel, outline and
-Current/Updated markers were inspected in disposable clone `koine-k102-budget`.
-Desktop light layouts at 1500 and 650 pixels were inspected. Narrow fit makes
-the text small; native-size and full-size SVG remain available. Dark appearance
-was attempted through the guest preference but did not activate, so dark and
-mobile-device checks are not claimed. Viewer, manifest, source and SVG
-[guest digests](../../verification/native-observation/receive-budget-viewer-guest.json)
-matched the host; host HTTP manifest/SVG bytes matched disk. These presentation
-checks are separate from the native IPC evidence. The clone was stopped.
-
-The k100 receive update was rendered with PlantUML 1.2026.8 using
-`task design:render-process-identity`; its
-[inputs](../../verification/native-observation/receive-render-before.sha256)
-matched [after rendering](../../verification/native-observation/receive-render-after.sha256).
-The full PNG, fresh Safari deep link, discussion, outline and Current/Updated
-markers were inspected in disposable clone `koine-k100-receive`. Desktop light
-and 650-pixel light/dark views were checked; the SVG retains a light canvas and
-narrow fit reduces text size, with native-size/full-size alternatives. No mobile
-device was checked. Viewer, manifest, changed source and SVG matched host/guest,
-and the host HTTP manifest/SVG matched disk. These are presentation checks,
-not native observation acceptance.
-The clone was stopped after inspection.
-
-The k98 connection update was rendered with PlantUML 1.2026.8 using
-`task design:render-process-identity`. The final
-[render inputs](../../verification/native-observation/connection-final-render-before.sha256)
-matched [after rendering](../../verification/native-observation/connection-final-render-after.sha256).
-Its full PNG, fresh Safari deep link, discussion, outline and Current/Updated
-markers were inspected in disposable clone `koine-k98-connection`. Wide and
-650-pixel desktop light layouts were checked; narrow fit reduces text size,
-with native-size and full-size alternatives available. Dark appearance and
-mobile devices were not checked for this update. Viewer, manifest, changed
-source and SVG hashes matched guest/host and host HTTP delivery. The clone was
-stopped. These are presentation checks, not native observation acceptance.
-
-The k97 request-decoder update to the wire view was rendered with PlantUML
-1.2026.8 in headless mode using `task design:render-process-identity`.
-[Renderer/source hashes](../../verification/native-observation/request-render-before.sha256)
-matched [after rendering](../../verification/native-observation/request-render-after.sha256).
-The full PNG and a fresh Safari deep link, discussion, outline and updated
-marker were inspected in disposable clone `koine-k94-preflight`. Wide light and
-650-pixel light/dark desktop layouts were checked; the SVG retains its light
-canvas, and narrow fit reduces text size with native-size/full-size alternatives
-available. Viewer, manifest, changed source and SVG hashes matched guest/host;
-host HTTP delivery matched. These are presentation checks, not an observation
-exchange or a mobile-device check. Native byte inspection is documented in the
-[request-decoder report](../../verification/native-observation-requests.md).
-
-Stable views:
-
-- [Resource admission and the exchange conflict](index.html#diagram-process-receive-admission) — distinguishes the bounded source assessment from the unresolved resource decision and complete native exchange.
-- [Receive acquisition before payload rejection](index.html#diagram-process-receive-budget) — distinguishes the measured local mapping from later policy rejection and the remaining AX preflight.
-- [Native observation wire path and evidence gaps](index.html#diagram-process-observation-wire) — traces request, connection and receive ownership; actual authentication, voucher context, OOL acquisition bounds and cleanup remain open.
-- [Observation admission and reference lifetime](index.html#diagram-process-observation) — proposed publication, split preparation outcomes, closure retirement and detected-loss withdrawal; native loss detection, read lifetime and cross-channel ordering remain unproved.
-- [Native targeting guarantee boundaries](index.html#diagram-process-target-contract) — records agreed endpoint addressing, strict capture/reference expiry and explicitly permitted wrong-process effects.
-- [Direct AX adoption and the contract decision](index.html#diagram-process-adoption) — distinguishes the revised contract from the unadopted adapter and remaining lifecycle, consent and protocol obligations.
-- [Top-level AX descriptors and downstream effects](index.html#diagram-process-routing) — adds TextEdit's document/Open/Save observations, concrete AppKit callbacks and the downstream activation lifetime boundary.
-- [Automatic restoration and AX client lifetime](index.html#diagram-process-restoration) — adds matched no-AX, single-read and direct-only client-retirement controls, with the bounded lifecycle conflict and unexecuted successor branches explicit.
-- [AX receiver ownership and process transitions](index.html#diagram-process-receiver) — replaces the fixture-ambiguity note with the matched AX-contact result while retaining allocation, exec and routing evidence.
-- [Audited AX read and death ordering](index.html#diagram-process-admission) — adds the real read-only admission exchange, wrong-task control, death-before/between-effect schedules and actual PID reuse.
-- [Direct AX effects](index.html#diagram-process-effects) — adds the executed read/effect/confirmation sequence, independent witness and post-death refusal.
-- [Direct AX endpoint](index.html#diagram-process-endpoint) — retains the earlier retention/responder results and points to the newer admission and effect evidence; receiver ownership and policy remain open.
-- [Native action binding](index.html#diagram-process-binding) — adds the signed/hardened private-token and data reconstruction counterexample, including a restore effect on a successor process.
-- [Capture location](index.html#diagram-process-capture) — records the human's choice to preserve client-event capture; native transfer remains a candidate.
-- [Public serial-number counterexample](index.html#diagram-process-serial) — shows the same serial naming a new process after automatic restoration, contrary to the agreed strict lifetime.
-- [Resident application](index.html#diagram-packages) — shows runtime ownership.
-- [Source packages](index.html#diagram-source-packages) — shows package dependencies separately.
-- [Desktop interaction](index.html#diagram-addressing) — queries before choices and re-resolves before focus.
-- [Authorization](index.html#diagram-machine-interface) — checks all actions before execution and authority again at admission.
-- [Grant lifecycle](index.html#diagram-grants) — shows both grant workflows and revocation.
-- [ABI decision](index.html#diagram-plugin-abi-options) — marks the shared Swift framework agreed and the C-compatible alternative not selected.
-- [Native contributions](index.html#diagram-sdk-contributions) — explains shared Swift types, protocols and pre-load compatibility checks.
-
-A graph starts at its marked "Start here" node. A sequence reads top to bottom;
-a state diagram begins at a filled initial dot. Package views identify source
-boundaries; the runtime view identifies the one resident application process.
-Captions state limits, and no diagram constitutes formal verification.
+Other views cover the resident application, source packages, served desktop
+interaction, grants and provider ABI. Graphs begin at their marked start node;
+sequences read top to bottom. Captions state evidence limits. No diagram is
+formal verification or release acceptance.
 
 ## Sources and exports
 
-Each source has a version-controlled SVG export. Edit sources, regenerate and
-inspect exports. The renderer positions nodes; do not hand-edit generated SVG.
-The installed toolchain is D2 0.9.0, PlantUML 1.2026.8 and Graphviz 16.1.0.
-From this directory:
+`diagrams.json` owns introductions, captions, outline groups and discussion/update
+markers. Each source has a version-controlled SVG. Regenerate exports from the
+source, then inspect them; do not hand-edit SVG. The viewer fetches source and
+exports on reload and does not compile them.
+
+From the repository root:
 
 ```sh
-for diagram_source in desktop-composition.d2 machine-interface.d2 sdk-contributions.d2; do
-  d2 --layout=tala --theme=0 --dark-theme=200 --pad=36 --timeout=30 \
-    --tala-seeds=1,2,3 "$diagram_source" "${diagram_source%.d2}.svg"
-done
-d2 --layout=elk --theme=0 --dark-theme=200 --pad=36 \
-  plugin-abi-options.d2 plugin-abi-options.svg
-plantuml --svg --check-before-run --no-error-image packages.puml addressing.puml grants.puml
+task design:render-process-identity
+task design:render-receive-admission
+task design:render-receive-budget
 ```
 
-From the repository root, `task design:render-process-identity` renders the
-process-capture, process-serial, process-binding, process-endpoint,
-process-effects, process-admission, process-receiver, process-restoration, process-routing, process-adoption, process-target-contract, process-observation and process-observation-wire views
-to their SVG exports and to PNGs under
-`.build/design-identity`.
+These headless PlantUML tasks render SVG beside each source and PNG under
+`.build/design-identity`; they do not run native diagnostics. The installed
+renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.0;
+retain their existing renderer settings when changing them.
 
-`task design:render-receive-budget` separately renders the receive acquisition
-experiment view with the same PlantUML toolchain to SVG and PNG. It does not run
-the native diagnostic. `task fixture:receive-budget` builds that diagnostic;
-its frozen discriminator and launch records are in the linked receive report.
+## Verification scope
 
-The viewer fetches sources and exports on reload; it does not compile them.
-`diagrams.json` owns the topic outline, the captions and the introduction. The
-process-identity views distinguish agreed constraints, rejected candidates and
-open protocol work; they do not replace the current wire contract.
+Earlier native reports and their reproduction sections carry the frozen platform,
+input, output and rendering records for those revisions. Earlier Safari checks
+apply to their recorded bytes, not automatically to this update. k104 changes
+requirements and presentation only; no new AX operation, consent test, capture
+transfer or product acceptance run is claimed.
 
-The current proposal is [Observation and retirement protocol](../../specs/machine.md#observation-and-retirement-protocol-proposal).
-The [native wire inspection](../../verification/native-observation.md) now maps
-the registration/notification transport and freezes its runtime discriminator.
-Static instruction evidence supplies no closure, loss detector or publication
-barrier; the proposal below remains unchanged and unadopted.
-The [layout dossier](../../verification/native-observation-layout.md) now derives
-byte offsets and reply checks, with a bounded preflight for the uninspected
-literals, server decoders and ownership links. `task design:decode-native-observation`
-reproduces the saved-byte disassembly without executing native instructions.
-The proposal distinguishes proven closure from preparation failure and detected loss,
-requires evidence across both registration orders and separate reply/delivery
-channels, and preserves read lifetime attribution despite the effect relaxation.
-Bounded ingress validation precedes nonblocking send initiation; proven no-enqueue,
-enqueued and ambiguous outcomes remain distinct. Unauthenticated input is
-discarded; authenticated current-registration failure withdraws its dependent
-records and fails affected listings. Recovery may use the same live capture with
-new evidence and references. Reasons become generic after bounded reclamation;
-the proposed provider-run allocator never wraps. Native feasibility, read
-consequences, refusal/support costs and the complete protocol await agreement.
-The serial-number view's deep link, rendering and topic/changed markers were
-checked in Safari in a macOS 26.5 TestAnyware clone. Its native PNG export was
-also inspected. This does not establish the other views' rendering, or mobile
-and dark appearance.
-
-The native action-binding view now shows the private reconstruction experiment;
-the evidence report also retains the preceding public-held-object experiment.
-Its PNG export and fresh-page deep link were checked in Safari in disposable
-TestAnyware clone `koine-k56-binding`, including the topic outline, Current and
-Updated markers and a wide desktop layout. Mobile and dark appearance were not
-checked for this update. The host viewer serves the same source and manifest
-at `http://127.0.0.1:8772/#diagram-process-binding`.
-
-The original direct AX endpoint view recorded the port-lifetime and
-responder-matching experiments. Its PNG, fresh-page deep link, discussion
-panel, outline and Current/Updated markers
-were checked in Safari in disposable clone `koine-k59-endpoint`. Wide light and
-dark layouts and a narrow desktop window were inspected; no mobile device was
-tested. The SVG retains its light canvas inside the dark viewer. The host
-viewer serves the same SVG at
-`http://127.0.0.1:8772/#diagram-process-endpoint`.
-
-The later direct-effects view and revised endpoint note were rendered and
-inspected in disposable clone `koine-k61-effects`. The new view's PNG and
-fresh-page deep link, the discussion panel, outline and Current/Updated markers
-were checked in Safari, including a wide light desktop window. The current
-update was not checked on mobile or in dark appearance. The host viewer serves
-the same sources and manifest at
-`http://127.0.0.1:8772/#diagram-process-effects`.
-
-The audited-read/death-ordering view's PNG and fresh-page deep link were checked
-in Safari in disposable clone `koine-k63-admission`. The topic outline and
-Current/Updated markers identify the intended revision; its wide light desktop
-layout was inspected. Mobile and dark
-appearance were not checked for this update. The endpoint and effects views
-retain their original measurements and now point to the newer admission/death
-evidence. The host viewer serves the same source and manifest at
-`http://127.0.0.1:8772/#diagram-process-admission`.
-
-The receiver view's PNG export and fresh-page deep link were checked in Safari
-in disposable clone `koine-k65-receiver`. The desktop light layout, topic outline
-and Current/Updated markers identify the intended revision. Mobile and dark
-appearance were not checked for this update. The host viewer serves the same
-source and manifest at
-`http://127.0.0.1:8772/#diagram-process-receiver`.
-
-The [automatic-restoration view](index.html#diagram-process-restoration) adds the
-matched controls and bounded AX-contact conflict; the
-[receiver view](index.html#diagram-process-receiver) replaces its unresolved
-fixture comparison with that result. Both PNG exports and fresh-page deep links
-were inspected in Safari in disposable clone `koine-k69-restoration`. The topic
-outline, discussion panel and Current/Updated markers match this revision.
-The restoration view was checked in wide light and dark layouts and a 650-pixel
-desktop window; the receiver update was checked in a wide dark layout. The SVGs
-retain their light canvases inside the dark viewer. Narrow fit mode reduces
-diagram text substantially; the full-size export and native-size option remain
-available. No mobile device was tested. The host serves the same manifest at
-`http://127.0.0.1:8772/#diagram-process-restoration`.
-
-The [top-level routing view](index.html#diagram-process-routing) adds the local
-descriptor/callback path and downstream effect boundary; the
-[receiver view](index.html#diagram-process-receiver) now names those findings
-and their remaining assumptions. Both PNG exports and fresh-page deep links
-were checked in Safari in disposable clone `koine-k68-routing`. The discussion
-panel, topic outline and Current/Updated markers match this revision. Desktop
-light and dark appearance and a 650-pixel window were inspected; no mobile
-device was tested. The SVGs retain a light canvas. Narrow fit mode substantially
-reduces diagram text; native-size and full-size export remain available.
-The host serves the same manifest at
-`http://127.0.0.1:8772/#diagram-process-routing`.
-
-The k72 revision of the [adoption view](index.html#diagram-process-adoption) named the bounded
-window-qualified activation investigation, distinguishes stale-request refusal
-from in-flight binding, and preserves the receiver/descriptor gap and agreed
-rejection. The replacement and first release remain unresolved.
-`task design:render-process-identity` completed with PlantUML 1.2026.8 and its
-PNG was inspected. Safari in disposable TestAnyware clone `koine-k72-design`
-rendered fresh-page deep links, the discussion panel, outline and Current/Updated
-markers. Wide desktop light and 650-pixel desktop dark layouts were inspected;
-the SVG retains its light canvas and the narrow view reduces text size. No mobile
-device was tested. Guest hashes of the viewer, manifest, adoption source and SVG
-match the host files; the host manifest and SVG match HTTP delivery at
-`http://127.0.0.1:8772/#diagram-process-adoption`. These are presentation checks,
-not a new native lifetime or consent experiment.
-
-The [targeting contract view](index.html#diagram-process-target-contract) now
-states the agreed endpoint-addressing boundary and its permitted wrong-process
-effects. The [adoption view](index.html#diagram-process-adoption) now separates
-that agreement from the unadopted mechanism and remaining protocol evidence.
-The [addressing caption](index.html#diagram-addressing) identifies its sequence
-as the served API whose receipt meaning still needs replacement. Final PNGs,
-fresh-page deep links, discussion, outline and Current/Updated markers were
-checked in Safari in disposable clone `koine-k78-final`. Desktop light views
-and the targeting view in a 650-pixel dark window were inspected. SVG canvases
-stay light; narrow fit mode reduces text size and retains native-size/full-size
-alternatives. No mobile device was tested. Host and guest hashes matched for
-the viewer, manifest, changed sources and SVGs; manifest and SVG HTTP hashes
-matched too. The clone was stopped. These are presentation checks, with no
-new native-binding evidence.
-
-The observation view's k88 repairs were rendered with
-`task design:render-process-identity` in disposable clone `koine-k88-design`.
-The full PNG, Safari observation deep link, discussion summary, outline and
-Current/Updated markers were inspected in desktop light appearance. No mobile
-or dark-mode check is claimed. Viewer, manifest, source and SVG hashes matched
-host/guest; HTTP manifest/SVG bytes matched the guest files. The clone was
-stopped. These checks establish presentation only, not native feasibility.
-
-The [native observation wire view](index.html#diagram-process-observation-wire)
-adds the pinned static registration/delivery map and its unresolved native
-premises. `task design:render-process-identity` completed with PlantUML 1.2026.8
-in disposable clone `koine-k83-observation`, with unchanged renderer inputs.
-The PNG, fresh-page Safari deep links, discussion panel, outline and
-Current/Updated markers were inspected. Desktop light, wide dark and 650-pixel
-dark layouts were checked; no mobile device was tested. The SVG retains its
-light canvas, and narrow fit mode reduces text size; native-size and full-size
-export remain available. Host/guest viewer, manifest, source and SVG hashes
-matched, as did host HTTP delivery. The clone was stopped. The host serves the
-checked view at `http://127.0.0.1:8772/#diagram-process-observation-wire`.
+For k104, all three rendering tasks above completed successfully with unchanged
+source/manifest/Taskfile/renderer-launcher inputs checked item by item. The seven
+changed PNG exports were inspected for legibility and layout. Manifest IDs,
+source/export paths, discussion/update references and SVG XML parsed successfully;
+relative Markdown links and headings were checked with deliberately missing
+file/heading controls. No fresh browser, narrow/mobile or dark-mode check was
+performed for this update.

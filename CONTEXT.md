@@ -91,30 +91,27 @@ ends; a restored logical application with a new process is a different
 incarnation. A PID, application name, bundle identifier or Process Manager
 serial number alone does not establish this identity.
 
-**Endpoint addressing**: The desktop effect contract in which Koine keeps using
-the endpoint admitted for a captured **process incarnation**, without rebinding
-it. It does not guarantee permanent receiver ownership or exclude effects on
-another window in the same live process or another process through handlers or
-downstream services. Read and notification provenance remain required.
+**Public Accessibility boundary**: The agreed desktop transport uses macOS AX
+APIs for listing, focus attempts and notifications while retaining a separate
+non-time **process incarnation**. AX data and effects may reach another process
+or window during reuse; notifications may be stale or misattributed. Framework
+AX reception has no Koine hard bound before memory or Mach rights are acquired.
+Koine still bounds its own state/work and enforces grants, consent and capture
+expiry. The capture/right-transfer channel has separate resource obligations.
 
-**Observed-closure retirement**: Permanently invalidating a window reference
-after authenticated observation of closure. Undetected closure or descriptor
-reuse may still affect another window; this effect relaxation does not authorize
-reading a replacement window's data under the old reference. Read lifetime
-attribution remains required; any relaxation needs separate agreement.
-The term does not promise unconditional closed-window refusal. Retired references
-never revive or get reused. Reserve retirement for authenticated window closure;
-capture death/exec ends the capture and withdraws its references without claiming
-observed closure. Detailed reasons need not survive bounded record reclamation.
+**Reference withdrawal**: Permanently making a reference unavailable after
+capture end, a platform closure report or another locally established failure.
+A platform report can be mistaken; withdrawal does not certify physical closure.
+References never revive or get reused, even after bounded reason records are
+reclaimed. Recovery issues new references under the agreed lifetime rules.
 
-**Endpoint admission**: Attributing a native endpoint's authenticated responder
-to a captured **process incarnation**, with continuous ownership of the actual
-rights. Distinct from **grant/dispatch admission**, which authorizes work under
-Koine's serialized live-grant and revocation boundary; both are required.
-
-**OS/protocol compatibility profile**: The private adapter's exact platform
-identities and accepted protocol/descriptor forms. It is not a behavioral
-application-support profile or a guarantee about arbitrary target handlers.
+**Endpoint addressing**, **endpoint admission**, **observed-closure retirement**
+and **OS/protocol compatibility profile** occur in historical private-AX
+investigations. They respectively meant retained destination ownership,
+responder authentication, retirement on authenticated lifetime-attributed closure,
+and exact private transport compatibility checks. They are not promises of the
+current public Accessibility contract. **Grant/dispatch admission** remains
+Koine's serialized live-grant and revocation boundary.
 
 ## Example dialogue
 

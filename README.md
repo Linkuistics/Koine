@@ -29,13 +29,14 @@ on Apple Silicon, the one supported platform. The spec's "Acceptance status"
 lists what is established, with its evidence, and what is still open. The most
 significant open item: the process identity a client submits, a start instant,
 is being replaced by a mechanism that does not depend on time before the first
-public release. The agreed future effect promise is
-[endpoint addressing only](docs/specs/machine.md#native-targeting-discussion),
-with effects on another window in the same live application or another process
-explicitly outside its guarantee. Read/observation provenance remains required;
-authenticated observed closure permanently retires a reference, while undetected
-closure or descriptor reuse may affect another window. The served API
-has not yet migrated. Discovering applications that are not running, and an LLM skill
+public release. The agreed smaller deliverable combines non-time capture with
+[public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion).
+It accepts wrong-target data/effects during reuse, stale notifications, mistaken
+reference withdrawal and framework AX reception without Koine's hard acquisition
+bound. Grants, Koine-owned consent, known-dead capture refusal and bounds on
+Koine's own records/work remain. Capture/transfer and the full replacement
+protocol still need design and evidence; the served API has not yet migrated.
+Discovering applications that are not running, and an LLM skill
 set, are outside this version.
 
 - [Writing a client](docs/client-guide.md): the contract version, how a client

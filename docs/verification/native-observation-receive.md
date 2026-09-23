@@ -1,5 +1,14 @@
 # Native observation receive envelope
 
+**Scope after k104:** this report preserves the private-AX investigation and
+its conditional requirements, not the current release path. The human selected
+[public Accessibility](../adr/desktop-automation-uses-public-accessibility.md)
+with weaker data/effect/notification and framework receive guarantees. Private
+exchange, attribution, publication and loss experiments described below are no
+longer commissioned. Capture/right-transfer, local ownership, lifecycle and
+public AX consent remain design work in the [current spec](../specs/machine.md#native-targeting-discussion).
+No native measurement or missing premise was supplied by that scope choice.
+
 **The native callback is not the owned authenticated receiver.** On the pinned
 25F71 image, CoreFoundation requests an extended trailer and adopts the received
 voucher; HIServices then writes the observer pointer into the trailer context
@@ -14,7 +23,8 @@ an oversized OOL mapping. No owned AX request, notification delivery or closure
 experiment ran.
 The subsequent [pre-copyout admission assessment](#pre-copyout-admission-assessment)
 finds no usable acquisition envelope established by the inspected mechanisms.
-That is the current exchange conflict, with the unmet runtime work retained;
+That remains the unresolved private exchange conflict; the route is now rejected
+for the first deliverable, with unmet runtime criteria preserved as evidence;
 it is not a proof that every possible native mechanism fails.
 The [admission view](../design/architecture/index.html#diagram-process-receive-admission)
 shows the decision boundary and reopening condition.
@@ -370,13 +380,15 @@ The existing 25F71 measurement remains the native counterexample.
 | Audit peek before receive | Returns sequence, message size, ID and requested trailer through audit | Does not expose descriptor count, OOL lengths, port-array count or body. Even a correctly authenticated target may send a kernel-valid oversized body. Trusting it to obey the expected layout would replace resource enforcement with a target-behavior assumption. |
 | Legacy overwrite/scatter receive | Selects a separate inline receive buffer in the inspected user wrapper | `MACH_RCV_OVERWRITE` is zero in the SDK; the wrapper ignores `rcv_scatter_size`. This is not evidence for a caller-supplied bounded OOL destination. |
 | Kernel type/size ceilings alone | Finite representation limits and platform-wide checks exist | No complete memory/right/queue/partial-copyout total, reconciled to a usable resident-process budget, has been established. Integer finiteness alone does not select a maintained budget. The prior 64 KiB cap was an experiment parameter, not an approved product limit. |
+| `MPO_FILTER_MSG` and its inspected sandbox policy callback | Policy selection from the sending task, port label and message ID | The callback receives no body, OOL lengths or right counts. The inspected invocation is conditional on sender filtering policy and a filtered destination; enabling the port option does not establish a receiver-selected resource quota. |
 
 These are bounded candidate findings. Other kernel policy/filter mechanisms,
 task-wide quotas and alternate receive architectures are not proved absent.
 They would need a concrete callable interface and an accounting argument before
-being credited. A helper process, application restriction, target cooperation
-or changed resource promise would change an existing constraint and is not
-selected here. Process isolation alone would not establish a system resource
+being credited. At the original assessment, a helper, application restriction, target cooperation
+or changed resource promise had not been selected. k104 later explicitly
+changed the framework AX resource promise as recorded below; it selected no
+helper or application restriction. Process isolation alone would not establish a system resource
 budget or cleanup guarantee either.
 
 ### Source evidence and ownership consequence
@@ -408,6 +420,19 @@ marks the scatter-size argument unused. Its separate inline buffer and optional
 auxiliary vector do not establish scatter placement of message OOL. An old
 comment about scatter information is not a supported admission mechanism.
 
+A subsequent bounded check of `MPO_FILTER_MSG` follows the same pinned XNU
+revision. The [port-construction path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/mach_port.c#L2582-L2588)
+passes the flag when deriving a connection-port sandbox label. The
+[kernel-private callback interface](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/kern/mach_filter.h#L39-L70)
+takes task, label and message ID, without message-body resource demand.
+The [filter path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_policy.c#L737-L803)
+passes that ID to the policy lookup; its
+[invocation](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/ipc/ipc_policy.c#L969-L978)
+also depends on sender policy. This particular interface therefore supplies no
+evidenced receiver-configurable byte/right bound. This is a source check, not
+a filter experiment or a conclusion about every kernel policy mechanism.
+The source manifest and digests include the additional inspected files.
+
 Keep the conditional deep interface: one transport owner controls retained
 rights and result-specific envelope disposal; the decoder borrows immutable
 bytes and returns bounded values. The decoder's small interface is useful, but
@@ -434,16 +459,19 @@ pinned platform must attempt to exceed each claimed bound, cover foreign valid
 forms and exercise the ownership failures before AX rights are exposed.
 No stress-to-exhaustion experiment is authorized by this assessment.
 
-The recommended next decision is to preserve the existing bounds and
-no-helper/no-restriction constraints and require a concrete enforcement lead
-before more native exchange work. Its cost is that the exchange and first
-release remain unresolved. Changing process composition or resource guarantees
-requires explicit human agreement with those consequences visible; neither is
-silently adopted to get a successful transport trace.
+The human initially retained hard admission, then explicitly selected the
+smaller public-AX contract after reviewing its observable consequences. The
+[decision](../adr/desktop-automation-uses-public-accessibility.md) accepts framework
+AX reception without Koine's pre-acquisition memory/right bound, including
+resource pressure or failure from target traffic. It retains bounded Koine-owned
+state/work and the separate capture/right-transfer acquisition obligation.
+No numerical product budget or enforcement mechanism was selected, and no owned
+AX exchange is resumed. This is an explicit scope change, not a solution to the
+private receive conflict or proof of a complete replacement protocol.
 
 ### Original criteria reconciliation
 
-| Inherited k103 / k101 / k99 / k94 obligation | Evidence at this boundary | Work still required |
+| Inherited k103 / k101 / k99 / k94 obligation | Evidence at this boundary | Missing for the rejected private route |
 |---|---|---|
 | Request constants, server decoders, connection/scalar/flag semantics | k93/k97/k98 static dossiers | Actual policy acceptance and exercised ownership remain open |
 | Finite usable acquisition; all foreign descriptors and partial copyout | k102 cap-only counterexample; k103 bounded source assessment above | Concrete enforcement lead or explicit constraint decision, then native bound/cleanup controls |
@@ -455,20 +483,19 @@ silently adopted to get a successful transport trace.
 | Unsupported forms and actual refused workflows | No application exercised or observed refused here | Preserve the existing unsupported-form inventory; enumerate actual outcomes when execution becomes possible |
 | Platform/input freeze | Source/SDK provenance for this assessment; prior native runs retain their own hashes | Freeze the actual future executable, controls and platform/images before its run |
 
-No runtime criterion is marked satisfied by a source table. k101/k99/k94 stay
-live with the resource decision and the full original exchange outstanding.
-k104 carries the actionable resource-boundary decision; k105 retains the full
-runtime preflight, witnessed exchange and reconciliation. k103 closes only its
-evidenced-conflict branch.
-k91 retains send-result/ingress/cancellation/drain schedules; k95/k96 retain
-publication, read lifetime and loss/recovery; k86/k87 retain maintained bounds,
-consent, lifecycle/support consequences and final agreement. No schema, ADR
-decision, shipping adapter, k52 permission or parent completion changes here.
+No runtime criterion is marked satisfied by a source table. k104's explicit
+scope decision closes the private branch by rejection: k105's exchange, k91's
+send/cleanup matrix and k95/k96's publication/loss work are abandoned. The
+k101/k99/k94/k90/k83 nodes retain their original unresolved criteria as historical
+context. k75 promotes the remaining capture-transfer, lifecycle, public AX
+consent/ownership and full protocol agreement into k84–k87; k52 still waits for
+that complete design. No implementation or release acceptance follows.
 
-One independent adversarial reviewer inspected the bounded assessment, source
+The earlier independent reviewer inspected the bounded source assessment,
 manifest and digests and reported no actionable finding. It ran no native tests
-and supplied no missing resource or runtime guarantee. No new ADR is created:
-the existing constraints stand, and the product trade-off remains undecided.
+and supplied no missing guarantee. k104's separate scope reviewer identified
+freshness and mistaken-withdrawal consequences; those were made explicit before
+the human accepted the smaller contract. Neither review supplies native evidence.
 
 ## Reproduction
 

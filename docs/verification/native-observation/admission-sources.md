@@ -23,6 +23,21 @@ on line coordinates. The SDK entry uses its absolute installed path.
 | `libsyscall/mach/mach_msg.c` | 175–270 overwrite wrapper, unused scatter size and inline/auxiliary vectors |
 | Installed SDK `usr/include/mach/message.h` | 710–790 receive options/trailer definitions; overwrite value zero |
 
+The requirements session subsequently checked one named enforcement candidate,
+`MPO_FILTER_MSG`, against the same revision:
+
+| Source | Inspected range / subject |
+|---|---|
+| `osfmk/mach/port.h` | 468–550 construction flags and options; no byte/right quota in this options structure |
+| `osfmk/ipc/mach_port.c` | 2520–2640 construction and connection-label derivation with `MPO_FILTER_MSG` |
+| `osfmk/kern/mach_filter.h` | Complete header; kernel-private callback interface and its arguments |
+| `osfmk/ipc/ipc_policy.c` | 737–803 message-ID filter; 969–978 conditional invocation |
+
+The reused port header and construction-source hashes match the original
+manifest. The two new source hashes are included below those original entries
+in `admission-primary.sha256`. This check ran no native code and neither
+establishes a resource-enforcement mechanism nor surveys every policy path.
+
 The earlier k102 primary digests match the three reused receive/copyout/wrapper
 files item by item. Additional files were downloaded from the same pinned
 revision. This is source inspection only; no kernel resource ceiling, API
