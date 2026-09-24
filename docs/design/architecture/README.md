@@ -16,17 +16,17 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V18 joins unique candidate validation to capture,
-ordinary/after-callback retention and truthful cleanup through native failures.
-K165 supplies this continuation; k166 retains reached loop faults and selected
-reconciliation, and k159 whole-sampler composition. K143 owns targets; k144 full
-waits, partial evidence and fresh review.
+remains unready for native use. V20 supplies failure before callback selection:
+actual invocation results, first-cause failure, truthful cleanup and any in-flight
+trigger receipt. K168 retains independent cancellation races; k169 loss/blocked
+calls, selected non-stopped returns and complete sampler reconciliation. K143
+owns targets; k144 full waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Capture adoption and post-return continuations](index.html#diagram-process-recorder-continuation) — Adds exact adoption, both schedules and first-cause failure/cleanup.
-- [Candidate refusal and per-reference cleanup](index.html#diagram-process-recorder-candidate-refusal) — Updates the caption's successor handoff; the sequence is unchanged.
-- [Continuation contract](../../verification/callback-causal-fixture/contract.md#version-18-capture-and-post-return-continuations) — Defines failure origins, distinct waits and independent diagnostics.
+- [Preselection failure and actual invocation return](index.html#diagram-process-recorder-preselection) — Adds the complete bounded preselection failure exchange.
+- [Reached loop fault and pending native return](index.html#diagram-process-recorder-reached-fault) — Updates the caption with v20 and the remaining composition owners.
+- [Preselection contract](../../verification/callback-causal-fixture/contract.md#version-20-failure-before-callback-selection) — Defines actual return, first cause, cleanup, input joins and exact waits.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -414,3 +414,20 @@ prose wraps; labels shrink in fit view, so wide desktop remains the reading
 surface. Mobile devices, wide dark, every scroll position and earlier diagrams
 were not rechecked. Browser/CDN/OS are not a frozen renderer toolchain. No native
 recorder or product permission setup ran.
+
+
+For k167, [Preselection failure and actual invocation return](index.html#diagram-process-recorder-preselection)
+adds v20 timeout/unexpected-return and observed-guard failure before selection,
+truthful cleanup and optional in-flight input. The
+[reached-fault caption](index.html#diagram-process-recorder-reached-fault) names
+this successor and k168/k169's remaining composition. The
+[current discussion](index.html#discussion) shows both changed views and their
+exact limits. The [render record](../../verification/callback-native-capture/evidence/k167/render.json)
+binds four viewer/manifest/source files across local, guest and HTTP bytes.
+The [presentation record](../../verification/callback-native-capture/evidence/k167/presentation.json)
+records wide light sequence sections, narrow dark prose/captions and correction
+of an initial Mermaid parse error. Rendering ran in disposable macOS clone
+`koine-k167-design`, stopped and absent from the final inventory. Narrow fit
+labels are small; wide desktop remains the reading surface. Wide dark, mobile
+devices, earlier diagrams and every scroll position were not rechecked.
+Browser/CDN/OS are not frozen. No native recorder or host GUI ran.
