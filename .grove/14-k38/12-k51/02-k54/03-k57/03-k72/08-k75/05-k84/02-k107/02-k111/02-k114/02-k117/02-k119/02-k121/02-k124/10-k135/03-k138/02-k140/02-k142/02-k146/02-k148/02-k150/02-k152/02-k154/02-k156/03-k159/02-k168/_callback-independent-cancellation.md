@@ -117,3 +117,61 @@ Final k174 verification: Ruff/strict Pyright and 7,323 tests pass; 6,336 frozen
 controls match with 2,178 identical arrival reports. All 5,406 prior reports and
 expectations plus 10,812 fixture files are unchanged; 12,729 final subjects bind
 to the run. Both presentation clones stopped and are absent from inventory.
+
+
+## Completed independent-cancellation interface (k172)
+
+V21 startup failure/abort races, V22 running cancellation, V23 selected work and
+V24 continuation cancellation complete k168. Read both contracts' versioned
+sections and the numbered k172/k168 mapping at
+`docs/verification/callback-capture-transfer.md#continuation-cancellation-and-independent-cancellation-union-k172`.
+Evidence/k172 renews the full corpus with itemwise preservation of V1–V23 fixture
+bytes, expectations and complete reports. This closes the independent-cancellation
+scope only; k159 and every higher sampler ancestor stay live through k169.
+
+Actual receipt remains distinct from an earlier send. Ordinary reached capture
+retains once and completes cleanup/publication/host return before receipt.
+After-callback publishes returned and ends host; abort at the retention wait
+skips retention, while an earlier FIFO release commits the full continuation
+before cancellation. Preserve all committed source/native joins, source object
+drops, unique-reference adoption, first local cause and controller decision.
+Attempt every known release once; failed/uncertain obligations preclude a clean
+reply and missing returns stay pending. Reached publications drain before sampler
+terminal response; replies/input for actual issued B/C work and every terminal
+response drain before exit commands. No C work is invented and no useful request
+follows the decision. Independent candidate contradictions and reached sample
+scope survive cancellation and unrelated loss.
+
+K144's exact handoff keeps preparation/readiness, B activation/settle/input,
+release/armed/trigger, selected unwind/returned, each raw return and join/object
+drop/adoption, return/failure/completion writes and receipts, host return, issued
+switch/activation/input, retention-release write/receipt, retention/release calls,
+abort writes and feasible receipts, in-flight input, terminal replies, exit
+commands, actual exits and containment distinct. Numeric deadlines, precedence
+and cleanup reserve remain k144. Same-thread timers cannot finish blocked calls.
+Byte/schema recovery and partial candidate recovery remain unsupported.
+
+K169 must complete selected non-stopped results, externally bounded blocked native
+calls/writes and transport loss at every phase, with honest pending raw/object/
+right/publication state; then reconcile every original k159/k156/k154/k152/k150/
+k148/k146/k142 criterion before promoting a complete sampler to k140/k144. K143
+owns real targets. K144 owns whole-controller/partial-evidence composition and
+mandatory fresh review/integration. K126 retains native field/source/PID audit,
+private-loop/source servicing, preparation, actual exits, containment/recovery and
+one attempt per frozen cell, including every original k124/k121 criterion.
+No complete sampler, native readiness, freshness, product or permission decision
+follows. The ADR set and glossary remain current.
+
+Final verification: pinned Ruff/formatting and strict Pyright pass; 8,578 tests
+pass. The final 7,162-control archive matches every expected outcome and all
+2,591 full-report arrival comparisons. All 6,336 prior reports/expectations and
+12,672 fixture files are unchanged; 14,384 final subjects match the frozen run.
+Final visual inputs match the inspected local/guest/served bytes. The disposable
+clone is stopped and absent. Evidence/k172 contains exact checks and limits.
+
+All five k172 criteria and all five original k168 criteria are supplied by the
+assessment's explicit map. Retire k172 and close callback-independent-cancellation-k168;
+k159 still has live k169, so the cascade stops there. No broader ancestor closes.
+The union and pending waits are promoted to k159/k169. ADR/glossary reconciliation
+requires no change; native/product adoption and original k124/k121 criteria remain
+live with their named owners.

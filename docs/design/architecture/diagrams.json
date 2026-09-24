@@ -24,22 +24,35 @@
     }
   ],
   "discussion": {
-    "title": "Selected work before cancellation receipt",
-    "status": "V23 diagnostic design — native readiness withheld",
-    "summary": "A queued abort does not interrupt selected native work. Preserve raw groups, actual return, mandatory publication and truthful cleanup at the first feasible receipt. V22 plus V23 supply the active union; k172 continuation/retention and k169 whole sampler remain live.",
+    "title": "Cancellation at the continuation boundary",
+    "status": "V24 diagnostic design — native readiness withheld",
+    "summary": "A received retention release commits the continuation. An earlier abort at the waiting boundary skips retention. Both retain reached publications, first causes and truthful cleanup. V21–V24 supply the cancellation union; k169 retains the full sampler.",
     "diagramIds": [
+      "process-recorder-continuation-cancel",
       "process-recorder-selected-cancel",
-      "process-recorder-running-cancel",
       "process-recorder-continuation"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-selected-cancel",
-        "summary": "Adds selected groups, deferred receipt sites, reached publications and honest cleanup under independent cancellation."
+        "id": "process-recorder-continuation-cancel",
+        "summary": "Adds ordinary continuation and both FIFO retention/cancellation outcomes, with late drains and independent evidence."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-continuation-cancel",
+      "group": "machine",
+      "title": "Cancellation at the continuation boundary",
+      "source": "process-recorder-continuation-cancel.mmd",
+      "caption": "V24 synthetic exchange. Read from the first message. Separate-process sends may overlap synchronous work; their placement supplies no global clock or new causal edge. Target abort sends may precede those shown. First local failure remains distinct from the controller decision. Ordinary reached capture retains once. A FIFO release received first cannot be overtaken by abort; abort before a release is issued cancels the waiting continuation. Failed cleanup stays unresolved; missing input or return stays pending. K169 full sampler, non-stopped/blocked/transport; k143 targets; k144 whole-controller/deadlines/reserve/partial evidence and fresh review; k126 native gates remain live. No native readiness, freshness or product change.",
+      "links": [
+        {
+          "label": "Continuation cancellation contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-24-continuation-and-retention-cancellation"
+        }
+      ]
+    },
     {
       "id": "process-recorder-running-cancel",
       "group": "machine",

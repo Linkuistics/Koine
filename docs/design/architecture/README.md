@@ -16,16 +16,17 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V23 completes the active cancellation union
-with V22: selected synchronous work preserves every group and reached publication
-before feasible receipt. K172 retains post-return/retention and the k168 union;
-k169 non-stopped returns, blocked/transport and complete sampler. K143 owns targets;
-k144 complete waits, partial evidence and mandatory fresh review.
+remains unready for native use. V24 completes the k168 independent-cancellation
+union with V21–V23. Ordinary continuation finishes before actual abort receipt;
+at the after-callback wait, FIFO determines whether retention was committed.
+K169 retains non-stopped results, blocked/transport and complete sampler
+reconciliation. K143 owns targets; k144 complete waits, partial evidence and
+mandatory fresh review.
 
 Changed in this discussion:
 
-- [Selected work before cancellation receipt](index.html#diagram-process-recorder-selected-cancel) — Adds committed groups, actual return, deferred receipt and late-publication drains.
-- [Selected cancellation contract](../../verification/callback-causal-fixture/contract.md#version-23-cancellation-queued-during-selected-work) — Defines ordinary and initial-retention continuations and preserves first-cause ownership.
+- [Cancellation at the continuation boundary](index.html#diagram-process-recorder-continuation-cancel) — Adds ordinary continuation and both FIFO retention/cancellation outcomes, preserving late drains and independent evidence.
+- [Continuation cancellation contract](../../verification/callback-causal-fixture/contract.md#version-24-continuation-and-retention-cancellation) — Specifies issued-work obligations, pending waits, first causes and truthful cleanup across post-return cancellation.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -90,6 +91,17 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k172, Safari in disposable clone `koine-k172-design` displayed the fresh
+continuation-cancellation deep link, the full wide light sequence and caption,
+current discussion, and narrow dark diagram/discussion. The
+[render record](../../verification/callback-native-capture/evidence/k172/render.json)
+binds viewer, manifest and new source across local, guest and both served copies;
+the [presentation record](../../verification/callback-native-capture/evidence/k172/presentation.json)
+records final inspection and clone teardown. Earlier context assets initially
+returned 404 because the transfer was incomplete; the complete directory was
+then transferred and the final views checked. Fine labels require wide desktop;
+narrow desktop is not mobile-device testing. This is presentation evidence only.
 
 For k165, Safari in disposable clone `koine-k165-design` rendered and displayed
 the continuation deep link, wide sequence from adoption through termination,
