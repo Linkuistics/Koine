@@ -68,3 +68,33 @@ unsupported; native readiness stays withheld. K165 consumes this refused branch
 alongside v15/v16; it must still supply capture/adoption, successful continuations
 and retention/release. K166 still owns reached loop faults and every original
 selected-work reconciliation. This node and every ancestor stay open.
+
+
+## Capture continuation from k165
+
+V18 supplies unique-reference validation/adoption, successful ordinary and
+after-callback continuations, raw retention type/live/release failures and
+first-cause failure-initiated abort with truthful per-reference cleanup. Read
+the version-18 section in docs/verification/callback-causal-fixture/contract.md,
+the native contract's Capture continuation successor (v18), and the k165
+assessment in docs/verification/callback-capture-transfer.md. Evidence/k165
+preserves every earlier full report/fixture and falsifies all eight cells.
+
+Ordinary retention/cleanup/publication is synchronous after actual stopped
+return. After-callback publishes callback-returned, ends its host and awaits
+retention-release following C activation/input. First raw failure publishes
+sampler-failed; every remaining release attempt and host return precede later
+abort receipt. A failed release remains owned. A negative reply settles only
+the reply wait. Distinct waits include all raw returns/joins, object drop,
+adoption, exit/stop/run_end/returned, return write/receipt, C switch/input,
+retention-release write/receipt, retention/release calls, failure/completion
+writes, abort writes/receipt, late input, terminal replies, exit commands,
+actual process exits and containment. K144 assigns numeric bounds/reserve.
+
+K166 retains reached nested/reentered/repeated/disabled observations, including
+pending synchronous calls, and every original k163/k161/k158 reconciliation.
+K159 retains independent early/late cancellation, retention-wait abort, startup
+races, blocked/transport paths and whole-sampler promotion. K143 owns actual
+targets; k144 complete waits/partial evidence and mandatory fresh review; k126
+all native gates and original k124/k121 obligations. Byte/schema and partial
+candidate recovery remain unsupported. No ancestor closes on this delivery.

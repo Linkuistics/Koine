@@ -16,17 +16,17 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V17 joins missing/ambiguous owned candidates to a
-healthy definitive mapping, actual selected callback return and truthful cleanup.
-K164 supplies this branch under k163; k165 retains capture/retention continuations,
-k166 reached loop faults and selected-work reconciliation, and k159 complete
-sampler composition. K143 owns targets; k144 full waits, partial evidence and
-fresh review.
+remains unready for native use. V18 joins unique candidate validation to capture,
+ordinary/after-callback retention and truthful cleanup through native failures.
+K165 supplies this continuation; k166 retains reached loop faults and selected
+reconciliation, and k159 whole-sampler composition. K143 owns targets; k144 full
+waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Candidate refusal and per-reference cleanup](index.html#diagram-process-recorder-candidate-refusal) — Adds exact mapping/cardinality joins, actual unwind and failed-release obligations.
-- [Candidate-refusal contract](../../verification/callback-causal-fixture/contract.md#version-17-selected-candidate-refusal) — Defines refusal origin, cleanup responses and remaining waits.
+- [Capture adoption and post-return continuations](index.html#diagram-process-recorder-continuation) — Adds exact adoption, both schedules and first-cause failure/cleanup.
+- [Candidate refusal and per-reference cleanup](index.html#diagram-process-recorder-candidate-refusal) — Updates the caption's successor handoff; the sequence is unchanged.
+- [Continuation contract](../../verification/callback-causal-fixture/contract.md#version-18-capture-and-post-return-continuations) — Defines failure origins, distinct waits and independent diagnostics.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -91,6 +91,15 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k165, Safari in disposable clone `koine-k165-design` rendered and displayed
+the continuation deep link, wide sequence from adoption through termination,
+narrow dark layout, current discussion and revised refusal caption. The
+[render record](../../verification/callback-native-capture/evidence/k165/render.json)
+binds four presentation inputs across local, guest and served bytes; the
+[presentation record](../../verification/callback-native-capture/evidence/k165/presentation.json)
+records inspection and teardown. Wide desktop is the readable sequence surface.
+This is presentation evidence only.
 
 For k145, [sampler callout, invocation and cancellation](index.html#diagram-process-recorder-loop)
 was rendered with the root loop task only in disposable clone `koine-k145-view`.
