@@ -431,3 +431,10 @@ of an initial Mermaid parse error. Rendering ran in disposable macOS clone
 labels are small; wide desktop remains the reading surface. Wide dark, mobile
 devices, earlier diagrams and every scroll position were not rechecked.
 Browser/CDN/OS are not frozen. No native recorder or host GUI ran.
+
+For k170, [Startup failure racing independent cancellation](index.html#diagram-process-recorder-startup-race)
+adds v21's distinct controller first observation and sampler first cause, queued
+abort versus actual receipt, mandatory publication and truthful cleanup.
+[Current discussion](index.html#discussion) names the remaining k171/k172/k169
+owners; only the new sequence is marked changed. Sequences read from their first
+message. Editable Mermaid uses the existing viewer's pinned Mermaid 12.0.0 import.

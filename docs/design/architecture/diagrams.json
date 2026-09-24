@@ -24,22 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Failure before callback selection preserves the actual return",
-    "status": "V20 diagnostic design — native readiness withheld",
-    "summary": "A sampler-side guard or native invocation return starts failure cleanup without inventing cancellation or callback evidence. K168 retains independent abort races; k169 loss/blocked calls and complete sampler reconciliation.",
+    "title": "Independent abort preserves a racing startup failure",
+    "status": "V21 diagnostic design \u2014 native readiness withheld",
+    "summary": "Controller first observation fixes its abort reason. The sampler preserves its first preparation failure, mandatory publication and cleanup before actual receipt. K171 active cancellation, k172 continuation and k169 final composition remain live.",
     "diagramIds": [
-      "process-recorder-preselection",
-      "process-recorder-reached-fault",
-      "process-recorder-armed"
+      "process-recorder-startup-race",
+      "process-recorder-startup",
+      "process-recorder-cancel"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-preselection",
-        "summary": "Adds preselection failure, actual invocation results, in-flight input and truthful cleanup."
-      },
-      {
-        "id": "process-recorder-reached-fault",
-        "summary": "Updates the caption with the delivered preselection boundary and remaining composition owners."
+        "id": "process-recorder-startup-race",
+        "summary": "Adds independent ready-timeout racing preparation failure, late notice draining and truthful cleanup."
       }
     ]
   },
@@ -217,7 +213,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -226,7 +222,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -235,7 +231,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -271,7 +267,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
@@ -503,6 +499,13 @@
           "href": "../../verification/callback-causal-fixture/contract.md#version-12-cancellation-before-readiness"
         }
       ]
+    },
+    {
+      "id": "process-recorder-startup-race",
+      "group": "machine",
+      "title": "Startup failure racing independent cancellation",
+      "source": "process-recorder-startup-race.mmd",
+      "caption": "V21 before-ready diagnostic proposal. Sequence order starts at the first message. The parallel branches impose no clock or collector order. Failure-first controller receipt is also supported. Healthy cancellation uses v12 safe polls and has no preparation failure notice. Acquire-resample performs no startup acquisition. A negative reply proves no cleanup or exit. K171 active and k172 continuation cancellation remain live; k169 owns blocked/transport and full sampler reconciliation. No native readiness or source freshness is established."
     }
   ]
 }
