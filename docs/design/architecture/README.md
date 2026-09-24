@@ -16,17 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V24 completes the k168 independent-cancellation
-union with V21–V23. Ordinary continuation finishes before actual abort receipt;
-at the after-callback wait, FIFO determines whether retention was committed.
-K169 retains non-stopped results, blocked/transport and complete sampler
-reconciliation. K143 owns targets; k144 complete waits, partial evidence and
-mandatory fresh review.
+remains unready for native use. V25 supplies selected non-stopped invocation
+returns with truthful first-cause failure and reached continuations. K176 retains
+blocked-call/write and transport loss; k177 retains full sampler reconciliation,
+including cancellation combined with non-stopped selected return. K143 owns
+targets; k144 complete waits, partial evidence and mandatory fresh review.
 
 Changed in this discussion:
 
-- [Cancellation at the continuation boundary](index.html#diagram-process-recorder-continuation-cancel) — Adds ordinary continuation and both FIFO retention/cancellation outcomes, preserving late drains and independent evidence.
-- [Continuation cancellation contract](../../verification/callback-causal-fixture/contract.md#version-24-continuation-and-retention-cancellation) — Specifies issued-work obligations, pending waits, first causes and truthful cleanup across post-return cancellation.
+- [Selected work with an unexpected invocation return](index.html#diagram-process-recorder-selected-return) — Adds actual non-stopped return, first-cause failure and mandatory continuation through truthful cleanup.
+- [Selected return contract](../../verification/callback-causal-fixture/contract.md#version-25-selected-non-stopped-invocation-return) — Specifies the raw result, exact waits, reached publications and preserved limitations.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -91,6 +90,16 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k175, Firefox in disposable Linux clone `koine-k175-review` displays the
+selected-return deep link and current discussion in wide and 650×850 responsive
+views, with light/dark inspection. Fine sequence labels need wide desktop. The
+[render record](../../verification/callback-native-capture/evidence/k175/render.json)
+binds local viewer/manifest/source to host HTTP bytes. The
+[presentation record](../../verification/callback-native-capture/evidence/k175/presentation.json)
+states the inspected views, corrections and teardown. The guest agent did not
+start, so inspection used VNC and does not include independent guest-file hashes.
+Browser/CDN/OS are not frozen. This is presentation evidence only.
 
 For k172, Safari in disposable clone `koine-k172-design` displayed the fresh
 continuation-cancellation deep link, the full wide light sequence and caption,
