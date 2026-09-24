@@ -16,17 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V20 supplies failure before callback selection:
-actual invocation results, first-cause failure, truthful cleanup and any in-flight
-trigger receipt. K168 retains independent cancellation races; k169 loss/blocked
-calls, selected non-stopped returns and complete sampler reconciliation. K143
-owns targets; k144 full waits, partial evidence and fresh review.
+remains unready for native use. V22 supplies cancellation after armed consumption,
+with an optional trigger in flight and a racing preselection failure. K174 retains
+selected synchronous work; k172 continuation/retention and k168 reconciliation;
+k169 blocked/transport and full sampler. K143 owns targets; k144 complete waits,
+partial evidence and mandatory fresh review.
 
 Changed in this discussion:
 
-- [Preselection failure and actual invocation return](index.html#diagram-process-recorder-preselection) — Adds the complete bounded preselection failure exchange.
-- [Reached loop fault and pending native return](index.html#diagram-process-recorder-reached-fault) — Updates the caption with v20 and the remaining composition owners.
-- [Preselection contract](../../verification/callback-causal-fixture/contract.md#version-20-failure-before-callback-selection) — Defines actual return, first cause, cleanup, input joins and exact waits.
+- [Running cancellation and actual receipt](index.html#diagram-process-recorder-running-cancel) — Adds independent cancellation, actual receipt/unwind, racing failure and late drains.
+- [Running cancellation contract](../../verification/callback-causal-fixture/contract.md#version-22-running-cancellation) — Defines controller reasons, receipt boundaries, truthful cleanup and exact waits.
 
 The earlier recorder diagrams are unchanged context.
 
