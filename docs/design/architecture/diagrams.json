@@ -24,22 +24,35 @@
     }
   ],
   "discussion": {
-    "title": "Armed timeout requires actual invocation unwind",
-    "status": "V14 armed cancellation \u2014 selected paths and full composition remain live",
-    "summary": "K157 joins late armed draining, dedicated-mode abort receipt, actual unwind and truthful cleanup. Synthetic exchange only; k158/k159 complete sampler work, k143 targets and k144 full composition/review remain live.",
+    "title": "Source failure still owes a real callback return",
+    "status": "V15 selected source failure \u2014 diagnostic design, native readiness withheld",
+    "summary": "K160 composes raw source refusal, selected unwind, return publication and truthful cleanup. K161 retains selected operation and loop failures; k159 whole sampler, k143 targets and k144 final composition/review remain live.",
     "diagramIds": [
-      "process-recorder-armed",
-      "process-recorder-ready",
+      "process-recorder-selected-source",
+      "process-recorder-source",
       "process-recorder-loop"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-armed",
-        "summary": "Adds armed-timeout cancellation, FIFO command receipt, actual invocation unwind and clean versus unresolved cleanup."
+        "id": "process-recorder-selected-source",
+        "summary": "Adds selected source failure through real unwind, queued abort and clean versus unresolved cleanup."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-selected-source",
+      "group": "machine",
+      "title": "Selected source failure and truthful cleanup",
+      "source": "process-recorder-selected-source.mmd",
+      "caption": "V15 synthetic source-failure exchange. Read from the first message. Both source pairs and constructions use this continuation after a raw hint/foreground/mapping failure. Source joins and object drops precede callback exit; stop is not return. After-callback publishes return before failure. Abort sends may precede cleanup, but receipt waits for host_end. A negative reply settles only the response wait. Target lifecycle, other selected failures, arbitrary early aborts and native audit remain open. No capture, source freshness, process exit or containment is established.",
+      "links": [
+        {
+          "label": "V15 selected source failure contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-15-selected-source-failure"
+        }
+      ]
+    },
     {
       "id": "process-recorder-armed",
       "group": "machine",

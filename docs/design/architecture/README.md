@@ -16,16 +16,15 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V14 joins armed-timeout cancellation to actual
-invocation unwind and truthful cleanup. Armed publication is separate from receipt;
-a late frame never restarts sampling. K157 supplies this bounded exchange; k158
-selected failures and k159 complete sampler composition remain under k156. K143
-owns targets; k144 full waits, partial evidence and fresh review.
+remains unready for native use. V15 joins raw source failure to actual selected
+callback return and truthful cleanup. K160 supplies this branch under k158;
+k161 selected operation/loop failures and k159 complete sampler composition
+remain live. K143 owns targets; k144 full waits, partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Armed cancellation and actual loop unwind](index.html#diagram-process-recorder-armed) — Adds FIFO sample-release/abort, dedicated-mode receipt, actual unwind and truthful cleanup.
-- [Armed cancellation contract](../../verification/callback-causal-fixture/contract.md#version-14-armed-cancellation-before-trigger) — Defines the closed pre-trigger branch and exact remaining waits.
+- [Selected source failure and truthful cleanup](index.html#diagram-process-recorder-selected-source) — Adds source failure, actual unwind, queued abort and clean versus unresolved cleanup.
+- [Selected source-failure contract](../../verification/callback-causal-fixture/contract.md#version-15-selected-source-failure) — Defines the failure-initiated selected branch and exact remaining waits.
 
 The earlier recorder diagrams are unchanged context.
 

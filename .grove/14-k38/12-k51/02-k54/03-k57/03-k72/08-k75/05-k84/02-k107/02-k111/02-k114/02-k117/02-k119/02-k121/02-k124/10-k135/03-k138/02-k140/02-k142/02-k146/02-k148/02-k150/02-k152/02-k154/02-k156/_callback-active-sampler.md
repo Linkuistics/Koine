@@ -72,3 +72,31 @@ K158 and k159 remain live with every original Done when above. The partial k144
 armed wait handoff is not complete sampler promotion; k159 must reconcile all
 ancestors before that promotion. No ancestor closes and the capture/public-
 Accessibility ADR set remains current.
+
+
+## Selected source interface from k160
+
+V15 (`sampler_path=selected-source-failure`) supplies one failure-initiated
+exchange: healthy prefix through selected callback; raw hint/sample source failure
+and its summary/object-drop joins; actual exit/stop/run_end/returned; after-callback
+return publication before sampler-failed; synchronous once-per-reference cleanup;
+host_end; later abort receipt and truthful clean/negative response. Both sources,
+constructions and schedule labels are exercised. No capture/retention is inferred.
+
+Consume the v15 sections of `docs/verification/callback-causal-fixture/contract.md`
+and `docs/verification/callback-native-capture/contract.md`, and the k160 section
+of `docs/verification/callback-capture-transfer.md`. Exact pending waits include
+source/native return, real callback unwind, return/failure writes, abort writes,
+all cleanup attempts, host return and later abort receipt, late input/terminal
+response collection, exit commands, actual exits and containment. They are distinct;
+a negative terminal response does not prove cleanup. K144 assigns numeric bounds
+and cleanup reserve externally; same-thread native calls cannot be interrupted.
+
+K158 remains live through k161: selected acquisition/type/live/candidate/capture/
+retention failures, reached loop faults and all original selected criteria. K159
+still owes full sampler composition and ancestor reconciliation; k143 owns real
+target lifecycle; k144 owns full protocol/partial evidence and fresh review.
+V15 stops each local projection at loss, checks intact input tuples/notification
+mapping despite unrelated loss, and preserves independent columns if witness edge
+construction finds a cycle. Schema recovery and partial candidate recovery remain
+unsupported. Every v1-v14 input/report is preserved itemwise by the k160 evidence.
