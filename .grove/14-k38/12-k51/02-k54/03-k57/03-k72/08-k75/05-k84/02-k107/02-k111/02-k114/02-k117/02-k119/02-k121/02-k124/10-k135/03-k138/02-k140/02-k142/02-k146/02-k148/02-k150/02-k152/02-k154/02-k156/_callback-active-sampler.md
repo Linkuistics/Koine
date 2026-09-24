@@ -100,3 +100,49 @@ V15 stops each local projection at loss, checks intact input tuples/notification
 mapping despite unrelated loss, and preserves independent columns if witness edge
 construction finds a cycle. Schema recovery and partial candidate recovery remain
 unsupported. Every v1-v14 input/report is preserved itemwise by the k160 evidence.
+
+
+## Completed selected interface from k166
+
+K166 completes v19 reached nested/reentered/repeated/disabled guards together
+with v15 source failures, v16 right failures, v17 refusal and v18 adoption and
+retention continuations. The exact selected-interface union and numbered
+k163/k161/k158 plus inherited criterion map are in
+`docs/verification/callback-capture-transfer.md#reached-loop-faults-and-selected-interface-k166`.
+Consume both contracts' v19 sections and evidence/k166. K163/k161/k158 close on
+this reconciliation; k156 stays open with k159. Earlier handoff paragraphs above
+are historical inputs, superseded for selected scope by this completed union.
+
+A guard records loop_failure immediately and dispatches no work. Drain the
+already committed source pair/object drop, acquisition/initial-type or
+validation/live/adoption group through real returns and all joins. Start no next
+optional group; preserve first source/right/refusal/loop cause and later raw
+failures. Capture adds no owned reference. Preserve exit/stop/matching stopped
+run_end/returned. After-callback publishes callback-returned then failure, without
+C switch or retention-release. Ordinary reached capture still retains after
+failure publication or queued abort sends. Attempt every known release once;
+failed/uncertain obligations remain. host_end precedes abort receipt and truthful
+aborted-sampler or sampler-cleanup-incomplete. Negative reply proves no cleanup.
+
+Distinct waits remain every guard/failure append, raw return and mandatory
+follow-on call, summary/object drop/adoption, exit/stop/run_end/returned, return,
+failure or completion write/receipt, retention call, each release return/join,
+host return, each abort write/deferred receipt, actual in-flight trigger and
+terminal replies, exit commands, actual exits and containment. V18 success also
+requires C activation/input and retention-release for after-callback. K144 assigns
+numeric bounds, precedence and reserve; a same-thread timer cannot end a blocked
+native call. Partial raw returns stay pending, and controller loss cannot erase
+an intact local repeated-tap unwind or award trigger proof. Complete successful
+wrong-PID output remains an attribution contradiction even with live=false.
+
+K159 still owns full sampler composition, preselection faults and non-stopped/
+unexpected invocation results, all independent early/late abort receipts
+(including selected work and retention wait), startup failure-abort races,
+blocked native/write calls, transport and every complete ancestor criterion.
+Never rewrite a non-stopped return as v19's complete stopped exchange. K143 owns
+actual targets. K144 owns complete controller/deadline/partial-evidence composition
+and mandatory fresh review/integration. Byte/schema and partial candidate
+recovery remain unsupported. K126 owns native field/PID audit, private-loop/source
+servicing, preparation, actual exits, containment/recovery and one attempt per
+frozen cell; every k124/k121 criterion remains live. This promotion establishes
+neither a complete sampler nor native readiness, freshness or product adoption.

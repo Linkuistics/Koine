@@ -24,32 +24,53 @@
     }
   ],
   "discussion": {
-    "title": "Captured identity survives the continuation; cleanup remains truthful",
-    "status": "V18 capture continuations — diagnostic design, native readiness withheld",
-    "summary": "K165 joins validation to adoption and ordinary/after-callback retention, including raw failures. K166 retains reached loop faults and selected reconciliation; k159 whole sampler; k144 full composition and review.",
+    "title": "A loop fault preserves the pending native return",
+    "status": "V19 selected interface \u2014 diagnostic design, native readiness withheld",
+    "summary": "Reached guards latch the first cause and drain the committed operation group. Ordinary captured work still retains and cleans up. K159 owns remaining whole-sampler composition; k143 targets; k144 complete waits and review.",
     "diagramIds": [
+      "process-recorder-reached-fault",
       "process-recorder-continuation",
-      "process-recorder-candidate-refusal",
-      "process-recorder-selected-right"
+      "process-recorder-candidate-refusal"
     ],
     "updatedDiagrams": [
       {
+        "id": "process-recorder-reached-fault",
+        "summary": "Adds pending-call guard, bounded group drain, actual return and truthful failure cleanup."
+      },
+      {
         "id": "process-recorder-continuation",
-        "summary": "Adds adoption, both post-return paths, first-cause failure and mandatory per-reference cleanup."
+        "summary": "Updates its caption with the delivered v19 selected loop-fault successor."
       },
       {
         "id": "process-recorder-candidate-refusal",
-        "summary": "Updates the caption to point to delivered v18 continuations; its refusal sequence is unchanged."
+        "summary": "Updates its caption with the completed selected interface and remaining k159 scope."
+      },
+      {
+        "id": "process-recorder-selected-right",
+        "summary": "Updates its caption with v19 loop composition and the remaining target/whole-sampler work."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "process-recorder-reached-fault",
+      "group": "machine",
+      "title": "Reached loop fault and pending native return",
+      "source": "process-recorder-reached-fault.mmd",
+      "caption": "V19 synthetic failure exchange. Read from the first message. Source pairs, acquisition/type and validation/live are bounded committed groups; a fault blocks the next optional group. Raw failures and object/right obligations remain. Adoption invokes no new native call. Ordinary capture still requires retention; after-callback publishes actual return before failure and cleanup, without beginning C retention. A negative reply settles only the reply wait. K159 retains whole-sampler cancellation, startup, blocked and transport paths; k143 real targets; k144 full deadlines, partial evidence and fresh review; k126 native audit, private-loop coverage, source servicing, actual exits and containment. No native readiness or freshness is established.",
+      "links": [
+        {
+          "label": "V19 reached loop-fault contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-19-reached-loop-faults"
+        }
+      ]
+    },
+    {
       "id": "process-recorder-continuation",
       "group": "machine",
       "title": "Capture adoption and post-return continuations",
       "source": "process-recorder-continuation.mmd",
-      "caption": "V18 local protocol and target wire projections across all eight cells. Read from the first message. Capture adopts exactly the validated owned reference with no new native call. Ordinary retention is synchronous; after-callback publishes return and ends its host before waiting for C input and retention-release. First raw failure is retained; all known release attempts finish before queued abort receipt. A negative reply settles only the reply wait. Protocol completion, candidate scope and resource cleanup remain separate. Independent cancellation and transport belong to k159; reached loop faults to k166; targets to k143; full deadlines/partial evidence and review to k144. No native freshness, readiness, actual exit or containment is established.",
+      "caption": "V18 local protocol and target wire projections across all eight cells. Read from the first message. Capture adopts exactly the validated owned reference with no new native call. Ordinary retention is synchronous; after-callback publishes return and ends its host before waiting for C input and retention-release. First raw failure is retained; all known release attempts finish before queued abort receipt. A negative reply settles only the reply wait. Protocol completion, candidate scope and resource cleanup remain separate. Independent cancellation and transport belong to k159; reached loop faults are supplied by v19; targets to k143; full deadlines/partial evidence and review to k144. No native freshness, readiness, actual exit or containment is established.",
       "links": [
         {
           "label": "V18 continuation contract",
@@ -62,7 +83,7 @@
       "group": "machine",
       "title": "Candidate refusal and per-reference cleanup",
       "source": "process-recorder-candidate-refusal.mmd",
-      "caption": "V17 synthetic failure exchange. Read from the first message. Missing candidates are covered in all eight intended-case cells; ambiguity is reachable only for two preheld references, even with coalesced Mach names. Exactly one matching reference cannot refuse. Raw source joins and object drop precede refusal; stop is not return. After-callback publishes return before failure. Abort receipt waits until synchronous cleanup and host_end. A negative reply settles only the response wait. No capture, retention, freshness, native readiness, actual exit or containment is established. V18 supplies capture/retention continuations; k166 retains reached loop faults and selected reconciliation.",
+      "caption": "V17 synthetic failure exchange. Read from the first message. Missing candidates are covered in all eight intended-case cells; ambiguity is reachable only for two preheld references, even with coalesced Mach names. Exactly one matching reference cannot refuse. Raw source joins and object drop precede refusal; stop is not return. After-callback publishes return before failure. Abort receipt waits until synchronous cleanup and host_end. A negative reply settles only the response wait. No capture, retention, freshness, native readiness, actual exit or containment is established. V18 supplies capture/retention continuations; v19 supplies reached loop faults and the selected reconciliation. Whole-sampler composition remains k159.",
       "links": [
         {
           "label": "V17 candidate-refusal contract",
@@ -75,7 +96,7 @@
       "group": "machine",
       "title": "Selected right failure and retained cleanup obligations",
       "source": "process-recorder-selected-right.mmd",
-      "caption": "V16 synthetic failure exchange. Read from the first message. Acquisition failure follows a healthy hint; validation failure follows a healthy definitive pair and one matching owned candidate. Every raw return and join precedes callback exit. Stop is not return. After-callback publishes return before failure; receipt of queued abort waits until host_end. Uncertain acquisition outputs are never speculatively released. A negative reply settles only the response wait. No capture, retention, freshness, actual exit, containment or native readiness is established. Reached loop faults and complete target lifecycle remain open.",
+      "caption": "V16 synthetic failure exchange. Read from the first message. Acquisition failure follows a healthy hint; validation failure follows a healthy definitive pair and one matching owned candidate. Every raw return and join precedes callback exit. Stop is not return. After-callback publishes return before failure; receipt of queued abort waits until host_end. Uncertain acquisition outputs are never speculatively released. A negative reply settles only the response wait. No capture, retention, freshness, actual exit, containment or native readiness is established. V19 supplies reached loop faults. Whole-sampler composition remains k159 and actual target lifecycle k143.",
       "links": [
         {
           "label": "V16 selected right-failure contract",
@@ -191,7 +212,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -200,7 +221,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -209,7 +230,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -245,7 +266,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
