@@ -80,3 +80,40 @@ non-stopped results plus every original ancestor criterion. K143 targets, k144
 all numeric waits/reserve/whole controller/partial evidence and mandatory fresh
 review/integration, and k126/k124/k121 native audit/coverage/containment obligations
 remain live. No ancestor closes and no complete sampler is promoted.
+
+## Delivered active handoff (k171 through k173/k174)
+
+V22 plus V23 completes k171's original active scope. Consume the running and
+selected cancellation sections in both diagnostic contracts and the complete
+k171 mapping in `docs/verification/callback-capture-transfer.md` under “Selected
+work before cancellation receipt (k174)”. Evidence/k174 renews the entire corpus
+and preserves every earlier full report, expectation and fixture itemwise.
+
+The controller can abort after consumed armed with a trigger in flight. Actual
+dedicated-mode receipt or a preselection failure is V22. Selected synchronous
+groups in V23 cannot dispatch abort: every raw return/join/object drop and first
+cause survives until actual exit/stop/stopped run_end/returned. Ordinary reached
+capture retains once, releases, publishes completion or first failure and ends
+host before actual receipt. After-callback failure publishes returned then failure,
+cleans up and ends host before receipt. Healthy after-callback work publishes
+returned and ends host, receives queued abort at the initial retention wait and
+releases without retention. Failed/uncertain obligations prohibit clean replies.
+Reached publications drain before sampler terminal reply; actual trigger input
+and all terminal replies drain before exit commands. No native reachability or
+actual target lifecycle is supplied.
+
+K171's five original criteria are reconciled, so its scope closes. This node
+retains k172: decisions initiated during ordinary post-return work, retention wait
+and released continuation, their races and full original k168 reconciliation.
+K172 must preserve V1–V23 inputs/full reports and independent evidence columns,
+renew the composed union and hand all concrete residue to k169. K169 retains
+selected non-stopped results, blocked calls/writes, transport and full sampler /
+ancestor reconciliation. K143 targets, k144 numeric deadlines/reserve/partial
+evidence/whole-controller composition and mandatory fresh review/integration,
+and every k126/k124/k121 native audit/servicing/preparation/exit/containment gate
+remain live. No complete sampler or ancestor above k171 closes here.
+
+Final k174 verification: Ruff/strict Pyright and 7,323 tests pass; 6,336 frozen
+controls match with 2,178 identical arrival reports. All 5,406 prior reports and
+expectations plus 10,812 fixture files are unchanged; 12,729 final subjects bind
+to the run. Both presentation clones stopped and are absent from inventory.

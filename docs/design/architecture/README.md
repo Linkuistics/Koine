@@ -16,16 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V22 supplies cancellation after armed consumption,
-with an optional trigger in flight and a racing preselection failure. K174 retains
-selected synchronous work; k172 continuation/retention and k168 reconciliation;
-k169 blocked/transport and full sampler. K143 owns targets; k144 complete waits,
-partial evidence and mandatory fresh review.
+remains unready for native use. V23 completes the active cancellation union
+with V22: selected synchronous work preserves every group and reached publication
+before feasible receipt. K172 retains post-return/retention and the k168 union;
+k169 non-stopped returns, blocked/transport and complete sampler. K143 owns targets;
+k144 complete waits, partial evidence and mandatory fresh review.
 
 Changed in this discussion:
 
-- [Running cancellation and actual receipt](index.html#diagram-process-recorder-running-cancel) — Adds independent cancellation, actual receipt/unwind, racing failure and late drains.
-- [Running cancellation contract](../../verification/callback-causal-fixture/contract.md#version-22-running-cancellation) — Defines controller reasons, receipt boundaries, truthful cleanup and exact waits.
+- [Selected work before cancellation receipt](index.html#diagram-process-recorder-selected-cancel) — Adds committed groups, actual return, deferred receipt and late-publication drains.
+- [Selected cancellation contract](../../verification/callback-causal-fixture/contract.md#version-23-cancellation-queued-during-selected-work) — Defines ordinary and initial-retention continuations and preserves first-cause ownership.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -437,3 +437,13 @@ abort versus actual receipt, mandatory publication and truthful cleanup.
 [Current discussion](index.html#discussion) names the remaining k171/k172/k169
 owners; only the new sequence is marked changed. Sequences read from their first
 message. Editable Mermaid uses the existing viewer's pinned Mermaid 12.0.0 import.
+
+For k174, [Selected work before cancellation receipt](index.html#diagram-process-recorder-selected-cancel)
+adds V23's preserved selected groups, actual unwind, ordinary and after-callback
+receipt boundaries, reached publications and truthful cleanup. The
+[render record](../../verification/callback-native-capture/evidence/k174/render.json)
+binds viewer/manifest/source across local and both HTTP/guest copies; the
+[presentation record](../../verification/callback-native-capture/evidence/k174/presentation.json)
+records final wide light/narrow dark checks, the corrected label parse error and
+teardown of both disposable clones. The active V22/V23 union closes k171 only;
+k172 continuation/retention and k169 whole-sampler work remain. No native evidence.

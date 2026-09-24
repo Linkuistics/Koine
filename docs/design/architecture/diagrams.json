@@ -24,18 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Cancellation after armed consumption",
-    "status": "V22 diagnostic design — native readiness withheld",
-    "summary": "The controller decision and actual sampler receipt are separate. A preselection loop failure preserves its first cause, unwind and failure notice. K174 selected work, k172 continuation and k169 whole-sampler composition remain live.",
+    "title": "Selected work before cancellation receipt",
+    "status": "V23 diagnostic design — native readiness withheld",
+    "summary": "A queued abort does not interrupt selected native work. Preserve raw groups, actual return, mandatory publication and truthful cleanup at the first feasible receipt. V22 plus V23 supply the active union; k172 continuation/retention and k169 whole sampler remain live.",
     "diagramIds": [
+      "process-recorder-selected-cancel",
       "process-recorder-running-cancel",
-      "process-recorder-preselection",
-      "process-recorder-startup-race"
+      "process-recorder-continuation"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-running-cancel",
-        "summary": "Adds armed-consumed and trigger-in-flight cancellation, competing local failure and late-frame drains."
+        "id": "process-recorder-selected-cancel",
+        "summary": "Adds selected groups, deferred receipt sites, reached publications and honest cleanup under independent cancellation."
       }
     ]
   },
@@ -52,6 +52,13 @@
           "href": "../../verification/callback-causal-fixture/contract.md#version-22-running-cancellation"
         }
       ]
+    },
+    {
+      "id": "process-recorder-selected-cancel",
+      "group": "machine",
+      "title": "Selected work before cancellation receipt",
+      "source": "process-recorder-selected-cancel.mmd",
+      "caption": "V23 diagnostic proposal. Read from the first message. Parallel controller/sampler branches impose no clock or collector order. Every selected source/right/adoption group keeps its returns and joins. Ordinary reached work remains unconditional; a healthy after-callback path receives cancellation only after return publication and host return. Failed selected work preserves its first cause and cleanup. Missing returns or input stay pending, negative replies prove no exit, and targets are wire projections. K172 owns later continuation/retention races and k168 union; k169 blocked/transport/non-stopped/full sampler; k144 whole-producer review and k126 native proof remain live."
     },
     {
       "id": "process-recorder-preselection",

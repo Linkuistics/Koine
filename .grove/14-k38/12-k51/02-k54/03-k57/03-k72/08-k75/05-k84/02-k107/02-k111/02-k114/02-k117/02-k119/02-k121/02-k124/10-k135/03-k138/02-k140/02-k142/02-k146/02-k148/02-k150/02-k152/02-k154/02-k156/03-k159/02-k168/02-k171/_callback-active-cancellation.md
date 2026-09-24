@@ -62,3 +62,29 @@ selected non-stopped results, blocked/write/transport paths and full sampler uni
   obligation plus the original k171 reconciliation. K172 retains continuation/
   retention and k168 union; k169 retains blocked/write/transport, selected
   non-stopped results and whole-sampler/ancestor reconciliation. No ancestor closes.
+
+## Delivered active interface (k174)
+
+V22 running cancellation plus V23 selected cancellation supplies all five original
+criteria above. The durable criterion-by-criterion mapping is “Selected work
+before cancellation receipt (k174)” in
+`docs/verification/callback-capture-transfer.md`; both diagnostic contracts carry
+the same boundary and evidence/k174 holds the renewed full-corpus records.
+
+1. Consumed armed/trigger-in-flight preselection and selected synchronous work
+   preserve earlier send versus actual feasible receipt.
+2. Every begun group, raw return/join, source object/right, first local cause,
+   selected exit and actual stopped invocation return remains; missing work stays
+   pending and failed/uncertain cleanup cannot claim clean.
+3. All eight labelled exchanges, exact paired publications, late trigger drains
+   and pending waits are supplied. Targets remain wire projections.
+4. V22/V23 use the existing Trace/Ledger seam with versioned falsification,
+   renewed corpus, prior itemwise preservation, both contracts and rendered views.
+5. K172 owns continuation/retention decisions and full k168 reconciliation;
+   k169 owns selected non-stopped, blocked native/write/transport paths and the
+   whole sampler/ancestor union. No additional active-slice residue was found.
+
+The selected-depth review counterexample was repaired with two arrival-order
+regressions; no re-review ran. K144's mandatory fresh whole-producer review and
+all k143/k126/k124/k121 work remain live. K171 alone closes on k174 retirement;
+k168 retains live k172. No complete sampler or native readiness is promoted.
