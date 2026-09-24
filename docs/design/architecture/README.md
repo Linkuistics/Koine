@@ -16,16 +16,17 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V16 joins failed acquisition or validation before
-capture to actual selected callback return and truthful cleanup. K162 supplies
-this branch under k161; k163 retains candidate/capture/retention/loop continuations
-and k159 complete sampler composition. K143 owns targets; k144 full waits,
-partial evidence and fresh review.
+remains unready for native use. V17 joins missing/ambiguous owned candidates to a
+healthy definitive mapping, actual selected callback return and truthful cleanup.
+K164 supplies this branch under k163; k165 retains capture/retention continuations,
+k166 reached loop faults and selected-work reconciliation, and k159 complete
+sampler composition. K143 owns targets; k144 full waits, partial evidence and
+fresh review.
 
 Changed in this discussion:
 
-- [Selected right failure and retained cleanup obligations](index.html#diagram-process-recorder-selected-right) — Adds failed acquisition/validation, actual unwind and known versus uncertain cleanup obligations.
-- [Selected right-failure contract](../../verification/callback-causal-fixture/contract.md#version-16-selected-right-failure-before-capture) — Defines exact failure origin, candidate validation and remaining waits.
+- [Candidate refusal and per-reference cleanup](index.html#diagram-process-recorder-candidate-refusal) — Adds exact mapping/cardinality joins, actual unwind and failed-release obligations.
+- [Candidate-refusal contract](../../verification/callback-causal-fixture/contract.md#version-17-selected-candidate-refusal) — Defines refusal origin, cleanup responses and remaining waits.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -389,3 +390,18 @@ retains wide light/dark sections, narrow prose and the initial corrected parse
 failure. All browser rendering ran in disposable clone `koine-k157-view`.
 Narrow fit labels are small; wide desktop remains the verified reading surface.
 No native recorder or product permission setup ran.
+
+For k164, [Candidate refusal and per-reference cleanup](index.html#diagram-process-recorder-candidate-refusal)
+adds healthy mapping/cardinality joins, actual unwind and clean versus unresolved
+cleanup. The [current discussion](index.html#discussion) names v17 and the
+k165/k166/k159 residue; only candidate refusal is marked updated. The
+[render record](../../verification/callback-native-capture/evidence/k164/render.json)
+matches the viewer, manifest and editable Mermaid source across local, guest and
+served bytes. The [presentation record](../../verification/callback-native-capture/evidence/k164/presentation.json)
+retains fresh deep links, wide light sections, current discussion and narrow dark
+diagram/caption checks. Rendering ran only in disposable macOS clones; the final
+clone's stop is recorded and both were absent from the final inventory. Narrow
+prose wraps; labels shrink in fit view, so wide desktop remains the reading
+surface. Mobile devices, wide dark, every scroll position and earlier diagrams
+were not rechecked. Browser/CDN/OS are not a frozen renderer toolchain. No native
+recorder or product permission setup ran.

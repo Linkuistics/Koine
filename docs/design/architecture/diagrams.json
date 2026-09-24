@@ -24,22 +24,35 @@
     }
   ],
   "discussion": {
-    "title": "A failed right call still owes unwind and truthful cleanup",
-    "status": "V16 selected right failure \u2014 diagnostic design, native readiness withheld",
-    "summary": "K162 composes failed acquisition or validation before capture. K163 retains candidate, capture, retention and reached loop-fault continuations; k159 whole sampler, k143 targets and k144 composition/review remain live.",
+    "title": "Candidate refusal still owes return and cleanup",
+    "status": "V17 candidate refusal \u2014 diagnostic design, native readiness withheld",
+    "summary": "K164 joins missing or ambiguous candidates to actual unwind and truthful cleanup. K165 retains capture/retention continuations; k166 reached loop faults and selected reconciliation; k159 whole sampler.",
     "diagramIds": [
+      "process-recorder-candidate-refusal",
       "process-recorder-selected-right",
-      "process-recorder-selected-source",
-      "process-recorder-ownership"
+      "process-recorder-source"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-selected-right",
-        "summary": "Adds failed acquisition/validation through actual return, exact failure origin and clean versus uncertain cleanup."
+        "id": "process-recorder-candidate-refusal",
+        "summary": "Adds exact mapping/cardinality refusal, actual return and once-per-reference cleanup with clean or unresolved response."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-candidate-refusal",
+      "group": "machine",
+      "title": "Candidate refusal and per-reference cleanup",
+      "source": "process-recorder-candidate-refusal.mmd",
+      "caption": "V17 synthetic failure exchange. Read from the first message. Missing candidates are covered in all eight intended-case cells; ambiguity is reachable only for two preheld references, even with coalesced Mach names. Exactly one matching reference cannot refuse. Raw source joins and object drop precede refusal; stop is not return. After-callback publishes return before failure. Abort receipt waits until synchronous cleanup and host_end. A negative reply settles only the response wait. No capture, retention, freshness, native readiness, actual exit or containment is established. K165/k166 retain successful continuations and reached loop faults.",
+      "links": [
+        {
+          "label": "V17 candidate-refusal contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-17-selected-candidate-refusal"
+        }
+      ]
+    },
     {
       "id": "process-recorder-selected-right",
       "group": "machine",

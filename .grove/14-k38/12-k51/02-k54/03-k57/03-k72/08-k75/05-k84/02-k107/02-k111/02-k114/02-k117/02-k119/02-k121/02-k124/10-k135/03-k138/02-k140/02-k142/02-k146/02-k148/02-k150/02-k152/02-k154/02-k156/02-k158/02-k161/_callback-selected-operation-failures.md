@@ -69,3 +69,8 @@ record/manifest entry and 4,886 fixture files. The local cycle/suffix repairs an
 their limits are recorded in evidence/k162/review.md. No native readiness follows.
 K163 consumes this bounded interface, keeps its complete original charter, and
 owes k161/k158 reconciliation before promotion to k159.
+
+- K163 decomposed into k164 candidate refusal, k165 capture/retention continuation
+  and k166 reached loop faults plus complete selected reconciliation. K164's v17
+  branch is supplied; k165/k166 remain live with this node's full original charter.
+  No completed selected interface or full sampler is promoted by refusal alone.
