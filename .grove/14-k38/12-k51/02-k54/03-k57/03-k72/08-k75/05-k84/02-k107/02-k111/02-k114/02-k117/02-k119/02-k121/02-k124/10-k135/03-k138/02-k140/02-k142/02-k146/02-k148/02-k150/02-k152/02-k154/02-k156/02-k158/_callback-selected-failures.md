@@ -35,6 +35,12 @@ one attempt per frozen cell. Every k124/k121 criterion remains. VM-only viewing.
 
 ## Decisions (running log)
 
+- K161 decomposes into k162 pre-capture right failure and k163 selected
+  continuations/reached loop faults. V16 supplies the first branch alongside
+  k160's v15 source failure; k163 retains the full k161/k158 acceptance criteria.
+  Consume the "Recorder v16 selected right failure" assessment and both contract
+  handoffs. No full selected sampler or ancestor closes at this boundary.
+
 - Source failure exposes a distinct composition seam: v10 preserves a failed
   getter and its object lease, but v9 permits cleanup only after a right/loop
   failure or cancellation and v8 still demands successful retention. Complete

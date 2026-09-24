@@ -16,15 +16,16 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V15 joins raw source failure to actual selected
-callback return and truthful cleanup. K160 supplies this branch under k158;
-k161 selected operation/loop failures and k159 complete sampler composition
-remain live. K143 owns targets; k144 full waits, partial evidence and fresh review.
+remains unready for native use. V16 joins failed acquisition or validation before
+capture to actual selected callback return and truthful cleanup. K162 supplies
+this branch under k161; k163 retains candidate/capture/retention/loop continuations
+and k159 complete sampler composition. K143 owns targets; k144 full waits,
+partial evidence and fresh review.
 
 Changed in this discussion:
 
-- [Selected source failure and truthful cleanup](index.html#diagram-process-recorder-selected-source) — Adds source failure, actual unwind, queued abort and clean versus unresolved cleanup.
-- [Selected source-failure contract](../../verification/callback-causal-fixture/contract.md#version-15-selected-source-failure) — Defines the failure-initiated selected branch and exact remaining waits.
+- [Selected right failure and retained cleanup obligations](index.html#diagram-process-recorder-selected-right) — Adds failed acquisition/validation, actual unwind and known versus uncertain cleanup obligations.
+- [Selected right-failure contract](../../verification/callback-causal-fixture/contract.md#version-16-selected-right-failure-before-capture) — Defines exact failure origin, candidate validation and remaining waits.
 
 The earlier recorder diagrams are unchanged context.
 

@@ -24,22 +24,35 @@
     }
   ],
   "discussion": {
-    "title": "Source failure still owes a real callback return",
-    "status": "V15 selected source failure \u2014 diagnostic design, native readiness withheld",
-    "summary": "K160 composes raw source refusal, selected unwind, return publication and truthful cleanup. K161 retains selected operation and loop failures; k159 whole sampler, k143 targets and k144 final composition/review remain live.",
+    "title": "A failed right call still owes unwind and truthful cleanup",
+    "status": "V16 selected right failure \u2014 diagnostic design, native readiness withheld",
+    "summary": "K162 composes failed acquisition or validation before capture. K163 retains candidate, capture, retention and reached loop-fault continuations; k159 whole sampler, k143 targets and k144 composition/review remain live.",
     "diagramIds": [
+      "process-recorder-selected-right",
       "process-recorder-selected-source",
-      "process-recorder-source",
-      "process-recorder-loop"
+      "process-recorder-ownership"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-selected-source",
-        "summary": "Adds selected source failure through real unwind, queued abort and clean versus unresolved cleanup."
+        "id": "process-recorder-selected-right",
+        "summary": "Adds failed acquisition/validation through actual return, exact failure origin and clean versus uncertain cleanup."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-selected-right",
+      "group": "machine",
+      "title": "Selected right failure and retained cleanup obligations",
+      "source": "process-recorder-selected-right.mmd",
+      "caption": "V16 synthetic failure exchange. Read from the first message. Acquisition failure follows a healthy hint; validation failure follows a healthy definitive pair and one matching owned candidate. Every raw return and join precedes callback exit. Stop is not return. After-callback publishes return before failure; receipt of queued abort waits until host_end. Uncertain acquisition outputs are never speculatively released. A negative reply settles only the response wait. No capture, retention, freshness, actual exit, containment or native readiness is established. Reached loop faults and complete target lifecycle remain open.",
+      "links": [
+        {
+          "label": "V16 selected right-failure contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#version-16-selected-right-failure-before-capture"
+        }
+      ]
+    },
     {
       "id": "process-recorder-selected-source",
       "group": "machine",
