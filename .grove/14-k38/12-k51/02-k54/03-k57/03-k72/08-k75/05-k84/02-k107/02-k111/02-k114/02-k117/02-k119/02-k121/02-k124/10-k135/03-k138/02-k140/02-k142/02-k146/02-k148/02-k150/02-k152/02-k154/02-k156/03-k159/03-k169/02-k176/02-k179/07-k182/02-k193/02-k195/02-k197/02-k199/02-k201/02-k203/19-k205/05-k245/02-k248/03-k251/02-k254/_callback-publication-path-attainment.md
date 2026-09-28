@@ -148,3 +148,19 @@ before paths is one the neighbour must not overflow first.
 - Not yet charged at candidate scale: claims, diagnostics, support and query
   work by k249's method. If k267 settles "infeasible", its checked worst
   constructions are these candidates.
+
+## Promoted from k274 (legal records)
+
+- Every inserted record is now a V18 producer row, and every added app frame
+  commits a producer send (`ADDED_FRAME`, unrelayed). Graphs, pairs and model
+  totals are unchanged. See the k274 log for the rules.
+- A frame costs a producer seq, and the loader caps each app at 256. A
+  target's activities and its interior frames therefore share one budget of
+  256 minus its base rows (B 238, C 247). The same holds for the sampler's
+  acquisitions or funnel rows and its frames, and for the controller's
+  neutral rows and its frames. No padded k266 candidate, and neither SCALE
+  run, can be written legally (census `LOADER_SEQ_OVER`). The per-target
+  conjecture's envelope figure (7,657,312) assumes n = 240/247 activities
+  *and* 2,679 interior rows. A legal file cannot have both, so that bound is
+  loose. k267's attained file, or its worst constructions, must pass
+  `loader_seq_over`.
