@@ -108,3 +108,14 @@ criterion/discriminator set and final views, then commission the required fresh
 exact-stem review before k182. K182 owns the real successor loader/Trace tests,
 versioning and complete itemwise corpus renewal. No complete transport contract,
 native readiness or ancestor close follows from k187.
+
+## Publication lifecycle handoff (k188)
+
+The lifecycle contract alongside transport-lanes.md and transport-evidence.md
+now supplies M01–M33 producer milestones, L01–L34 discriminating histories,
+permanent seals with late full/short/error results, immutable pending buffers,
+queued/new mandatory commits and safe stopped-reader snapshots. K189 must
+consume its exact row/attempt/storage handoff and reconcile every original
+criterion here, then commission the required exact-stem fresh review before
+k182. No executable version, corpus renewal, native readiness or ancestor
+closure follows from k188. K180/k177/k144/k126 retain their existing obligations.

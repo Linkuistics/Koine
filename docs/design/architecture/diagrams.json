@@ -24,42 +24,78 @@
     }
   ],
   "discussion": {
-    "title": "Close byte evidence locally; preserve supported causal fragments",
-    "status": "Evidence proposal — k187 slice; lifecycle and budgets still open",
-    "summary": "End and direction loss seal new begins without cancelling pending calls. Origin, relay, egress and destination are graded independently; impossible dominates unverified. Trace keeps individually supported edges and independent cycles even when the full route fails. K188 lifecycle and k189 budgets/review remain before k182 executable validation. V1–V26 are unchanged.",
+    "title": "Publication milestones and ownership after loss",
+    "status": "Lifecycle proposal — k188; capacity and complete review remain",
+    "summary": "Commit records issuance; synchronous sender progress requires local completion; controller gates and drains require actual receipt. Abandoned calls retain immutable buffers; a trusted full late result can complete a frame without reopening its direction. Safe reader stops preserve buffered bytes without inventing receipts or EOF. K189 budgets and fresh review precede k182 executable validation; V1–V26 remain unchanged.",
     "diagramIds": [
-      "process-recorder-evidence",
+      "process-recorder-write-state",
+      "process-recorder-milestones",
+      "process-recorder-reader-stop",
       "process-recorder-transport",
-      "process-recorder-reply-order",
+      "process-recorder-evidence",
       "process-recorder-publication",
-      "process-recorder-write-state"
+      "process-recorder-reply-order"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-evidence",
-        "summary": "Adds local closure, component grades and the fixed supported-edge graph."
+        "id": "process-recorder-write-state",
+        "summary": "Separates pending buffer ownership, trusted late results and permanent direction loss."
+      },
+      {
+        "id": "process-recorder-milestones",
+        "summary": "Maps original send sites to commit, local completion and receiver drains."
+      },
+      {
+        "id": "process-recorder-reader-stop",
+        "summary": "Distinguishes safe deadline stop, buffered data, EOF and pending reads."
       },
       {
         "id": "process-recorder-transport",
-        "summary": "Marks topology and evidence specified; lifecycle and budgets remain open."
+        "summary": "Marks lifecycle specified while capacity and final review remain."
       },
       {
-        "id": "process-recorder-reply-order",
-        "summary": "Links the caption to loss and causal-cycle variants E20–E24."
+        "id": "process-recorder-evidence",
+        "summary": "Links the completed lifecycle without changing evidence or edge rules."
       },
       {
         "id": "process-recorder-publication",
-        "summary": "Names independent hop grades and retention of supported fragments on impossible routes."
+        "summary": "Links explicit producer milestones and post-loss ownership."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "process-recorder-milestones",
+      "group": "machine",
+      "title": "Commit, local completion and receiver milestones",
+      "source": "process-recorder-milestones.mmd",
+      "caption": "Proposed after-callback fragment, read from its first message. Original semantic send is K; sender local completion is L; receiver observation is R. Receiver observation may precede sender result recording. Normal host_end waits for L; controller barriers and drains wait for actual R, with composed attribution checked separately. Explicit loss cleanup leaves unmet publication milestones, while a pending synchronous call forbids caller progress. M01–M33 enumerate startup, normal work, cancellation and terminal obligations; L01–L34 are future executable controls. No cleanup or actual exit is inferred.",
+      "links": [
+        {
+          "label": "Producer milestone inventory",
+          "href": "../../verification/callback-native-capture/publication-lifecycle.md#complete-producer-obligation-inventory"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-reader-stop",
+      "group": "machine",
+      "title": "Stopped readers preserve bytes without inventing receipts",
+      "source": "process-recorder-reader-stop.mmd",
+      "caption": "Proposed k188 reader lifecycle, read from its initial state. A safe read_stop occurs between reads under exclusive reassembly ownership, preserving exact buffered bytes and next ordinal. Even complete buffered frames are not receipt observations. Stop forbids later dispatch but proves no EOF, sender seal or process exit. An outstanding read at an external deadline retains its wait and storage until actual return or observed termination; a stop request is not a safe boundary. No resume or reconnect is allowed in the case.",
+      "links": [
+        {
+          "label": "Stopped readers and buffered suffixes",
+          "href": "../../verification/callback-native-capture/publication-lifecycle.md#stopped-readers-and-buffered-suffixes"
+        }
+      ]
+    },
+    {
       "id": "process-recorder-evidence",
       "group": "machine",
       "title": "Closure, attribution and supported causal edges",
       "source": "process-recorder-evidence.mmd",
-      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 still owns lifecycle/milestones, k189 budgets and final fresh review, and k182 executable E01–E24 controls and V1–V26 preservation.",
+      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 retains budgets and final fresh review, and k182 executable E01–E24/L01–L34 controls and V1–V26 preservation.",
       "links": [
         {
           "label": "Publication evidence and E01–E24 histories",
@@ -72,7 +108,7 @@
       "group": "machine",
       "title": "Transport owners, shared frames and observation lanes",
       "source": "process-recorder-transport.mmd",
-      "caption": "Topology proposal. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 specifies composed evidence and supported edges; k188 publication milestones/lifecycle and k189 budgets plus whole-contract review remain before k182. No executable version or native evidence.",
+      "caption": "Topology proposal. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 specifies composed evidence and supported edges; k188 supplies publication milestones/lifecycle; k189 budgets plus whole-contract review remain before k182. No executable version or native evidence.",
       "links": [
         {
           "label": "Transport lanes and original coordinates",
@@ -102,7 +138,7 @@
       "group": "machine",
       "title": "Publication attempts and feasible receipt",
       "source": "process-recorder-publication.mmd",
-      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 specifies shared auxiliary frames and app/supervisor lanes; k187 specifies component grades and supported edges, including fragments on impossible or unverified routes. K188 publication milestones/loss lifecycle and k189 budgets/review remain before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
+      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 specifies shared auxiliary frames and app/supervisor lanes; k187 specifies component grades and supported edges, including fragments on impossible or unverified routes. K188 maps every producer milestone and specifies post-loss ownership; k189 budgets/review remain before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
       "links": [
         {
           "label": "Publication observation contract",
@@ -113,13 +149,13 @@
     {
       "id": "process-recorder-write-state",
       "group": "machine",
-      "title": "Partial writes and unavailable results",
+      "title": "Write buffers, late results and permanent loss",
       "source": "process-recorder-write-state.mmd",
-      "caption": "Partial illustration of one serialized directed writer; read from the initial pseudo-state. Complete means local byte acceptance only. Unknown is an evidence boundary, not an observed OS state or permission to clean up a pending call. Zero/error terminates this direction; other directions remain independent. This diagram does not specify abandonment with an outstanding call, late positive returns, queued/new commits after loss, or deadline-stopped read buffers. K185 must complete that lifecycle and its view before fresh review and k182 implementation. Keep an outstanding call’s immutable buffer until actual return or externally established termination. External denotes remaining recovery work, including the host runner for blocked broker work; it proves no containment. No model-checking or fresh k184 browser-inspection claim.",
+      "caption": "Read from the initial state. Proposed k188 lifecycle, not an executed model. A direction seal forbids every new begin while an outstanding call keeps its immutable buffer until actual return or observed termination. A trusted full late result permits local completion on a permanently sealed direction; a short or error return leaves an unsent suffix. Prior queued frames and bounded newly reached mandatory commits remain terminal-unattempted. Missing or excluded results preserve pending obligations; end permits no later row. Peer receipt, native cleanup and actual exit remain independent.",
       "links": [
         {
-          "label": "Native publication handoff",
-          "href": "../../verification/callback-native-capture/contract.md#proposed-publication-observation-handoff-k181"
+          "label": "Writer seals, buffers and late results",
+          "href": "../../verification/callback-native-capture/publication-lifecycle.md#writer-seals-buffers-and-late-results"
         }
       ]
     },

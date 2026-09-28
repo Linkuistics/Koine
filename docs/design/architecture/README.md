@@ -20,21 +20,23 @@ remains unready for native use. K181 proposes distinct frame commit, raw write
 attempt/result and receiver observations over both broker hops. K184 clarifies
 prefix trust and local decision independence. K186 fixes shared auxiliary traffic
 and lanes; k187 defines local decisive closure, mixed-hop attribution and supported
-Trace edges. K188 publication milestones/post-loss lifecycle and k189 budgets
-and fresh review remain before k182 versions/falsifies the contract and
-renews the complete corpus. V1–V26 retain their current meanings. K180 composes loss; k177 retains full sampler reconciliation
-including non-stopped cancellation. K143 owns targets; k144 complete waits,
-partial evidence and mandatory fresh review.
+Trace edges. K188 maps every producer milestone and specifies post-loss buffers,
+late results, queued/new mandatory commits and stopped readers. K189 capacity
+and fresh review remain before k182 versions/falsifies the contract and renews
+the complete corpus. V1–V26 retain their meanings. K180 composes loss; k177 retains
+full sampler reconciliation. K143 owns targets; k144 complete waits and review.
 
 Changed in this discussion:
 
-- [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) — Adds local seals, component grading and the independent graph check.
-- [Transport owners, shared frames and observation lanes](index.html#diagram-process-recorder-transport) — Marks evidence specified while lifecycle and budgets remain open.
-- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Names independent hop grades and retention of supported edges on contradictory routes.
-- [Reply ingress before the egress result record](index.html#diagram-process-recorder-reply-order) — Links the caption to concrete missing-hop and cyclic variants E20–E24.
-- [Publication evidence across transport hops](../../verification/callback-native-capture/transport-evidence.md) — Specifies closure, every status combination, provenance, edge inclusion and E01–E24 histories.
+- [Write buffers, late results and permanent loss](index.html#diagram-process-recorder-write-state) — Replaces the partial state illustration with pending leases and late results on a permanently sealed direction.
+- [Commit, local completion and receiver milestones](index.html#diagram-process-recorder-milestones) — Adds explicit producer and controller milestone boundaries.
+- [Stopped readers preserve bytes without inventing receipts](index.html#diagram-process-recorder-reader-stop) — Adds safe reader stops, buffered data and pending reads.
+- [Transport owners, shared frames and observation lanes](index.html#diagram-process-recorder-transport) — Marks lifecycle specified, with capacity/review still open.
+- [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) — Links the completed lifecycle while preserving evidence rules.
+- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Links the milestone and post-loss ownership contract.
+- [Publication lifecycle contract](../../verification/callback-native-capture/publication-lifecycle.md) — Adds M01–M33, L01–L34 and exact row/attempt/buffer obligations for k189.
 
-The partial-write state illustration and earlier recorder diagrams are unchanged context.
+The reply-before-result sequence remains unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -555,3 +557,20 @@ This is responsive desktop inspection, not mobile-device or native recorder
 testing. The clone stopped and was absent from the final inventory. K188 retains
 lifecycle/milestones, k189 budgets and final fresh review, and k182 executable
 validation/corpus renewal. The preceding k186 paragraph records its earlier scope.
+
+For k188, the [asset record](../../verification/callback-native-capture/evidence/k188/render.json)
+matches the eight final local and served viewer/manifest/changed-source assets.
+The [presentation record](../../verification/callback-native-capture/evidence/k188/presentation.json)
+records Safari inspection in disposable clone `koine-k188-view` at 1024×768,
+light appearance. The write and reader states were simplified after initial
+labels were too small; final state labels and milestone sequence render legibly.
+The changed transport node, evidence/publication captions, current discussion
+and six delta markers were inspected. No rendering error was observed. VNC was
+used because the guest agent was unavailable. The clone stop returned success.
+The final writer zero/error and later-seal paths, plus the pending-reader
+EOF/error return path, were then rendered and inspected in a fresh
+`koine-k188-final` clone. It also stopped successfully; both clones were absent
+from the complete final inventory. The asset record matches these final sources.
+No independent guest-file hashes, frozen browser dependencies, dark/narrow/mobile
+inspection, transport conformance or corpus renewal is claimed. K189 retains
+capacity, whole-contract reconciliation and its fresh review before k182.
