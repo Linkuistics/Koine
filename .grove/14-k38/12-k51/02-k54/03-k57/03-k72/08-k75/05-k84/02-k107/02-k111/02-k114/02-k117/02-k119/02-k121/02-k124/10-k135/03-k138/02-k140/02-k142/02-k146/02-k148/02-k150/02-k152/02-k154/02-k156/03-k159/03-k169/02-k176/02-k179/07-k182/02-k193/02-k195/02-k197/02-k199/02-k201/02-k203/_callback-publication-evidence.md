@@ -79,6 +79,23 @@ staged predicate migration, causal-status composition, legacy CLI projection
 and producer-invariant ownership; callback-publication-replay-k209 reviews that
 bounded redesign before k205. K208 now supplies those policies in
 publication-replay.md, including R01–R21 controls, exact CLI projection and
-separate physical/map/stateful/raw domains. This is a proposed design awaiting
-k209, with no successor execution claim. K205 still plans complete executable
+separate physical/map/stateful/raw domains. K209 reviewed this proposal; k210's handoff below records its remaining gaps.
+There is no successor execution claim. K205 still plans complete executable
 delivery under every original criterion above; no ancestor closes and no V1–V26 meaning or evidence changes.
+
+## K210 review integration handoff
+
+K209's committed review exposed incomplete sample-state precedence, witness/
+envelope counting domains, mandatory receipt-support inheritance, domain closure
+and report-storage bounds. K210 records all dispositions in the assessment and
+repairs startup dispatch and coordinate-admission wording, with explicit raw-F
+mandatory masking and R22/R23 controls. These clarify existing rules, not a new
+successor classifier. No legacy execution or expectation changes.
+
+Callback-publication-replay-k211 owns the coordinated consumer-policy repair;
+callback-publication-replay-k212 reviews it before k205. They are flat siblings
+here, ahead of complete executable-delivery planning. K211 must reconcile both
+contracts, the causal state table, capacity/evidence, ownership and affected
+views, with determinate R controls, honest neighbors and mutants. K205 retains
+every original criterion and full executable k180 handoff. The six original
+Done when items above are unchanged; no ancestor or native duty closes.
