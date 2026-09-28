@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K196 supplies the [closed auxiliary frame boundary](../../verification/callback-native-capture/publication-auxiliary.md): exact routes, nested payloads and bounded references through immutable bytes. Shape acceptance is separate from actual observation joins. K197 retains the full successor and every original k195/k193/k182/k179 criterion. V1–V26 are unchanged.
+K198 supplies the [closed protocol frame grammar](../../verification/callback-native-capture/publication-protocol.md): exact logical routes and payloads through immutable bytes. Input, active and failure values retain original producer-coordinate claims; actual joins and the complete successor remain k199. V1–V26 are unchanged.
 
 Changed view:
 
-- [Closed auxiliary bytes before provenance](index.html#diagram-process-recorder-auxiliary) — Adds auxiliary validation and the remaining history joins before provenance or publication credit.
+- [Closed protocol bytes before observation joins](index.html#diagram-process-recorder-protocol-bytes) — Adds protocol grammar, original-observation claims and the separate history checks needed for credit.
 
-[Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) and [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context. The complete history reader remains k197's responsibility.
+[Closed auxiliary bytes before provenance](index.html#diagram-process-recorder-auxiliary), [Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) and [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context. The complete history reader remains k199's responsibility.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -84,6 +84,20 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k198, Safari in disposable macOS clone `koine-k198-view` displayed the
+[protocol-byte view](index.html#diagram-process-recorder-protocol-bytes), its
+complete caption and current discussion in light and narrow dark appearance,
+plus a fresh new-tab deep link. The
+[presentation record](../../verification/callback-native-capture/evidence/k198/presentation.json)
+records readable labels/wrapping at a 1024×768 framebuffer and 650-pixel narrow
+window. The [asset record](../../verification/callback-native-capture/evidence/k198/render.json)
+binds unchanged local viewer/manifest/source bytes to both serving URLs.
+The task clone and temporary guest-facing server stopped; other Tart VMs were
+preserved. This is responsive desktop presentation, not mobile-device testing
+or native/transport evidence. Wide dark, narrow light, independent guest-file
+hashes and frozen browser/CDN/OS dependencies are not claimed. K199 retains the
+complete successor and every original ancestor criterion.
 
 For k196, Safari in disposable macOS clone `koine-k196-view` displayed the
 [auxiliary view](index.html#diagram-process-recorder-auxiliary), its complete

@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+  design:check-publication-protocol:
+    desc: Check closed protocol bytes and original-observation claims (no history credit)
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture/publication_protocol.py docs/verification/callback-causal-fixture/test_publication_protocol.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture/publication_protocol.py docs/verification/callback-causal-fixture/test_publication_protocol.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json docs/verification/callback-causal-fixture/publication_protocol.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_publication_protocol.py
+
   design:check-publication-auxiliary:
     desc: Check closed auxiliary frames (no receipt, provenance or transport credit)
     cmds:
@@ -109,6 +117,7 @@ tasks:
   design:check-callback-analyzer:
     desc: Check the causal analyzer and frozen synthetic controls without native execution
     cmds:
+      - task: design:check-publication-protocol
       - task: design:check-publication-auxiliary
       - task: design:check-publication-codec
       - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture

@@ -24,22 +24,36 @@
     }
   ],
   "discussion": {
-    "title": "Closed auxiliary bytes before provenance",
-    "status": "Auxiliary schema implemented; complete history integration remains",
-    "summary": "K196 checks four auxiliary routes and closed payloads while retaining exact bytes. Shape-valid references do not establish actual admissions, receipt or provenance. K197 retains the complete versioned successor; V1–V26 are unchanged.",
+    "title": "Closed protocol bytes before observation joins",
+    "status": "Protocol grammar implemented; complete history integration remains",
+    "summary": "K198 validates all logical protocol routes and closed payloads through exact bytes. False activity and stray input remain readable claims. Actual original-observation joins and the complete versioned successor remain k199; V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-protocol-bytes",
       "process-recorder-auxiliary",
       "process-recorder-codec",
       "process-recorder-evidence"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-auxiliary",
-        "summary": "Adds the exact auxiliary schema boundary and explicit history joins before provenance or publication credit."
+        "id": "process-recorder-protocol-bytes",
+        "summary": "Adds the protocol grammar boundary, explicit original-observation claims and separate history credit."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-protocol-bytes",
+      "group": "machine",
+      "title": "Closed protocol bytes before observation joins",
+      "source": "process-recorder-protocol-bytes.mmd",
+      "caption": "Offline diagnostic byte grammar, not a new analyzer version. Start at the dark node. Commands and simple acknowledgments carry empty objects; input, active and failure frames preserve observed values and original producer sequence claims. False activity flags and stray input are readable for independent diagnostics. Shape acceptance supplies no original observation, receipt, cleanup or native truth. K199 must join the exact sender observation and both physical hops, while preserving controller-local decisions even when upstream attribution is U/I. Invalid bytes remain available for a snapshot and never imply a receipt. V1–V26 and all higher native obligations remain unchanged.",
+      "links": [
+        {
+          "label": "Complete protocol grammar and remaining joins",
+          "href": "../../verification/callback-native-capture/publication-protocol.md"
+        }
+      ]
+    },
     {
       "id": "process-recorder-capacity",
       "group": "machine",
