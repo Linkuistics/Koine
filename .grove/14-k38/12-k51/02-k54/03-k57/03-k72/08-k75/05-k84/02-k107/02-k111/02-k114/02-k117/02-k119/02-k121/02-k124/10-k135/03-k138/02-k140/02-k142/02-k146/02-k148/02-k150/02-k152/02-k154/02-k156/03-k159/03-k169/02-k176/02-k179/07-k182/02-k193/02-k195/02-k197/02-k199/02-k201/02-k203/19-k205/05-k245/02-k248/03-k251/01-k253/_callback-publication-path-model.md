@@ -91,3 +91,20 @@ structural bad receipts (`bad_receipts(graph)`) already equal the archive's in
 all six files. So k257's archive join can attribute any usable-order
 disagreement to the selector rather than to the input. No archive error was
 found.
+
+## Promoted from k256 (path selector closed)
+
+The entry point is `publication_paths.select_orders(vertices, edges, bundles,
+justifications, queries)`. Pass `Graph.canonical` (which equals the flattened
+lanes), `Graph.edges`, `Graph.bundles`, `Graph.justifications` and each query's
+`physical` pair. It returns a `Selection`. `orders` maps each distinct ordered
+pair to `(Raw, Usable)`. `sccs` holds the Trace SCCs, and `dependencies` holds
+the D-SCCs, the bad receipts with their first-discovery reasons and the clean
+bits. `accounting` holds `total` (each query's raw and usable witness charged
+separately, plus the Trace-SCC edges and D-SCC arcs) and `shared_total`, where
+identical (edge, justification) sequences are interned once. Compare the archived
+728 and 1,033 against the witness-reference part, `witness_refs`, because the
+archive's figures sum only the raw and usable path lengths. A usable U over raw
+T or F has an empty usable witness. Its `retained` flag points at the raw one.
+This matches the archive's empty `usable_path` for cyclic-only U. The selector
+runs 3,000 queries at V = 4,138 in about 3.4 s.

@@ -89,3 +89,10 @@ Every child's record goes in the census under evidence/k253.
   unusable but a longer usable path exists is added, so the mutation fails on a
   path shape as well as on a rule choice.
 - **Children are `impl`.** Each writes census code and evidence, not more tree.
+- **Interning is storage, not admission (settled in k262).** The admission
+  row's "interned by edge plus chosen justification sequence" means identical
+  (edge, justification) sequences share one stored entry. `max_path_edge_refs`
+  is still charged with every query's raw and usable witness separately, as the
+  archived 728 and 1,033 were summed. The selector reports `total` (charged) and
+  `shared_total` (interned) side by side, so k257 can check both against the
+  archive.
