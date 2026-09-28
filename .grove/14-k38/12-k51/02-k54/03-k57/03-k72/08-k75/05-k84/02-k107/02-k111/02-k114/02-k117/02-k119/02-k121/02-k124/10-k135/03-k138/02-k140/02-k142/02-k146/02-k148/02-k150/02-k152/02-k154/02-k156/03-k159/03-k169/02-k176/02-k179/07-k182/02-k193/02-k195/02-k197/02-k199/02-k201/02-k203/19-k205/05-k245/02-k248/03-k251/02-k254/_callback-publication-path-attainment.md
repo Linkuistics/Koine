@@ -75,6 +75,10 @@ documents. Each child leaves the census green and records under evidence/k254.
   stated bound below 2^23, checked on the worst constructions). If a constant
   changes, it publishes the next profile version and reruns the census and the
   k250 table. Any document table the census compares changes here too.
+- callback-publication-generator-legal-k273 (inserted by k272): makes the
+  scaled insertions loader-legal and writes real observations files that the
+  unchanged loader and `build` read. It sits before k267, whose attained file
+  must be a legal history.
 - callback-publication-path-coverage-k268: carries the result into the prose.
   That covers the coverage row and its drift mutant, the k240 path bullet,
   k225/k229 if affected, and the k205 plan table. Retiring this leaf closes
@@ -94,3 +98,23 @@ target-lane cyclic local edges and bad bundles that push usable witnesses
 through a long lane. Whatever makes Q large also charges claims, diagnostics,
 support and query work. Any of these that the replay's stage order charges
 before paths is one the neighbour must not overflow first.
+
+## Promoted from k265 (closed by k272)
+
+- The instrument is `generate(BASE, RECIPES, vector, envelope)` in
+  publication_generator.py. Its `Vector` holds the cycle parameters (`splits`,
+  `upstream`) and the scaling parameters (`rows`, `activities`, `members`,
+  `commits`, `begins`, `acquisitions`). It reproduces all six k220 files.
+  Every history it generates is checked against `envelope_violations`.
+- At production scale (`SCALE`: V = 4,138 and 2,413 queries), the model's
+  total is 583,486 acyclic and 805,366 with multi-cycle's cycle. The
+  per-query lane bound is 10.3M and 13.5M, and `path_bound` gives 25.4M and
+  72.7M. Selection takes about 2.3 s. The V18 lift reaches under a tenth of
+  2^23, so k266 must force much longer witnesses than a lift's recipes give.
+- Queries per source and lane class equal the charge for comparisons,
+  membership and per-acquisition. The rest are stated differences (profile
+  `SCALE_DIFFERENCES`): the milestones (k249's double charge, none issued), the
+  fixed-6 and fixed-17 families (5 and 8 issued), and the legacy per-row
+  polynomial.
+- Legality is envelope-only so far. The scaled producer records are not V18
+  rows, and added app frames have no producer send. See k273.
