@@ -15,28 +15,21 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. K181 proposes distinct frame commit, raw write
-attempt/result and receiver observations over both broker hops. K184 clarifies
-prefix trust and local decision independence. K186 fixes shared auxiliary traffic
-and lanes; k187 defines local decisive closure, mixed-hop attribution and supported
-Trace edges. K188 maps every producer milestone and specifies post-loss buffers,
-late results, queued/new mandatory commits and stopped readers. K189 capacity
-and fresh review remain before k182 versions/falsifies the contract and renews
-the complete corpus. V1–V26 retain their meanings. K180 composes loss; k177 retains
-full sampler reconciliation. K143 owns targets; k144 complete waits and review.
+K191 integrates k190's publication transport review. The detailed contract and
+[dispositions](../../verification/callback-capture-transfer.md#publication-transport-review-integration-k191)
+separate cycle participation from byte impossibility, fix writer-class examples,
+require V11–V25 bases, explain legacy-order differences and count bounded
+post-budget ingress separately from native audit. K182 retains implementation,
+all falsification and complete legacy corpus renewal; k180 retains phase loss.
 
-Changed in this discussion:
+Changed views:
 
-- [Write buffers, late results and permanent loss](index.html#diagram-process-recorder-write-state) — Replaces the partial state illustration with pending leases and late results on a permanently sealed direction.
-- [Commit, local completion and receiver milestones](index.html#diagram-process-recorder-milestones) — Adds explicit producer and controller milestone boundaries.
-- [Stopped readers preserve bytes without inventing receipts](index.html#diagram-process-recorder-reader-stop) — Adds safe reader stops, buffered data and pending reads.
-- [Transport owners, shared frames and observation lanes](index.html#diagram-process-recorder-transport) — Marks lifecycle specified, with capacity/review still open.
-- [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) — Links the completed lifecycle while preserving evidence rules.
-- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Links the milestone and post-loss ownership contract.
-- [Publication lifecycle contract](../../verification/callback-native-capture/publication-lifecycle.md) — Adds M01–M33, L01–L34 and exact row/attempt/buffer obligations for k189.
+- [Evidence](index.html#diagram-process-recorder-evidence): one Trace SCC pass, separate cycle status and byte grades.
+- [Writer lifecycle](index.html#diagram-process-recorder-write-state): mandatory post-seal commit and attempt-limit paths, with supervisor pending-seal ownership.
+- [Reader lifecycle](index.html#diagram-process-recorder-reader-stop): empty-buffer EOF/error and bounded reader-stop semantics.
 
-The reply-before-result sequence remains unchanged context.
+The other five transport views remain context. No executable or native readiness
+is established; V1–V26 retain their original meanings.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID

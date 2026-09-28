@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Complete publication transport contract",
-    "status": "Design complete for fresh review — no executable or native claim",
-    "summary": "Shared auxiliary framing, original coordinates, independent evidence, K/L/R milestones and loss lifecycle now have measured encoding and capacity budgets. Fresh review precedes k182 implementation and corpus renewal; k180 retains every-phase loss composition. V1–V26 remain unchanged.",
+    "title": "Publication transport review repairs",
+    "status": "Review integrated — executable and native work remain",
+    "summary": "Cycle participation is separate from byte-source impossibility. Writer-class boundaries, supported bases, legacy comparison and bounded post-budget reads are explicit. Corrected lifecycle paths remain design expectations for k182; V1–V26 are unchanged.",
     "diagramIds": [
       "process-recorder-capacity",
       "process-recorder-transport",
@@ -39,20 +39,16 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-capacity",
-        "summary": "Adds distinct frame/row limits, bounded attempts and reserved failure observations."
-      },
-      {
-        "id": "process-recorder-transport",
-        "summary": "Marks all four contract parts complete for fresh review."
-      },
-      {
         "id": "process-recorder-evidence",
-        "summary": "Replaces the open capacity handoff with the completed design and review boundary."
+        "summary": "Separate cycle-contradicted from F/U/I using one Trace SCC pass."
       },
       {
-        "id": "process-recorder-publication",
-        "summary": "Links the complete capacity and discriminator contract in its caption."
+        "id": "process-recorder-write-state",
+        "summary": "Show mandatory commits on sealed writers and eighth-short-result sealing."
+      },
+      {
+        "id": "process-recorder-reader-stop",
+        "summary": "Show empty-buffer EOF/error as a read closure."
       }
     ]
   },
@@ -88,7 +84,7 @@
       "group": "machine",
       "title": "Stopped readers preserve bytes without inventing receipts",
       "source": "process-recorder-reader-stop.mmd",
-      "caption": "Proposed k188 reader lifecycle, read from its initial state. A safe read_stop occurs between reads under exclusive reassembly ownership, preserving exact buffered bytes and next ordinal. Even complete buffered frames are not receipt observations. Stop forbids later dispatch but proves no EOF, sender seal or process exit. An outstanding read at an external deadline retains its wait and storage until actual return or observed termination; a stop request is not a safe boundary. No resume or reconnect is allowed in the case.",
+      "caption": "Proposed k188 reader lifecycle, read from its initial state. A safe read_stop occurs between reads under exclusive reassembly ownership, preserving exact buffered bytes and next ordinal. Even complete buffered frames are not receipt observations. Stop forbids later dispatch but proves no EOF, sender seal or process exit. An outstanding read at an external deadline retains its wait and storage until actual return or observed termination; a stop request is not a safe boundary. No resume or reconnect is allowed in the case. Empty-buffer EOF/error closes the read direction too. Budget-stopped supervisor collection may continue within its ingress reserve until an actual reader boundary; next ordinal 81 is legal only after receipt 80.",
       "links": [
         {
           "label": "Stopped readers and buffered suffixes",
@@ -101,7 +97,7 @@
       "group": "machine",
       "title": "Closure, attribution and supported causal edges",
       "source": "process-recorder-evidence.mmd",
-      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 completes capacity and reconciliation for fresh review. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation.",
+      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 supplies capacity and reconciliation, reviewed by k190 and repaired by k191. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation. K191 separates F/U/I attribution from cycle-contradicted; all participating claims retain their byte grades, without culprit inference. K182 adds the non-raising SCC/witness pass to the same Trace adjacency.",
       "links": [
         {
           "label": "Publication evidence and E01–E24 histories",
@@ -161,7 +157,7 @@
       "group": "machine",
       "title": "Write buffers, late results and permanent loss",
       "source": "process-recorder-write-state.mmd",
-      "caption": "Read from the initial state. Proposed k188 lifecycle, not an executed model. A direction seal forbids every new begin while an outstanding call keeps its immutable buffer until actual return or observed termination. A trusted full late result permits local completion on a permanently sealed direction; a short or error return leaves an unsent suffix. Prior queued frames and bounded newly reached mandatory commits remain terminal-unattempted. Missing or excluded results preserve pending obligations; end permits no later row. Peer receipt, native cleanup and actual exit remain independent.",
+      "caption": "Read from the initial state. Proposed k188 lifecycle, not an executed model. A direction seal forbids every new begin while an outstanding call keeps its immutable buffer until actual return or observed termination. A trusted full late result permits local completion on a permanently sealed direction; a short or error return leaves an unsent suffix. Prior queued frames and bounded newly reached mandatory commits remain terminal-unattempted. Missing or excluded results preserve pending obligations; end permits no later row. Peer receipt, native cleanup and actual exit remain independent. K191 draws direct mandatory commit on a sealed direction and eighth-short-result sealing. A seal while a call is pending belongs to a supervisor writer; an external request cannot fabricate a blocked app seal.",
       "links": [
         {
           "label": "Writer seals, buffers and late results",

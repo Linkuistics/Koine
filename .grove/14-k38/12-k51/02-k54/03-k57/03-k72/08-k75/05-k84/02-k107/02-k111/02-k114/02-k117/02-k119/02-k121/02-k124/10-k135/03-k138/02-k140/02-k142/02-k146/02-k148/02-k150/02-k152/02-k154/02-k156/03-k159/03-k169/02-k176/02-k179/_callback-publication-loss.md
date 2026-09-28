@@ -93,3 +93,14 @@ loss composition, k177 the full sampler and non-stopped cancellation, k143 targe
 k144 whole-controller deadlines/time reserve/partial evidence/review and k126
 native audits/private-loop/source servicing/actual exits/containment plus all
 original k124/k121 criteria. No higher ancestor or native criterion closes.
+
+## Reviewed transport repairs (k191)
+
+K190's ten findings are integrated in the four transport documents and both
+proposed-publication sections; dispositions are in callback-capture-transfer.md.
+K182 consumes separate F/U/I and cycle-contradicted grades, the specified Trace
+SCC/witness extension, V11–V25 bases, exact legacy-order comparison policy,
+owner-specific pending/seal examples, post-budget ingress reserve, native-audit
+boundary, supported illegal-call edges and corrected reader ordinal boundary.
+Its own leaf names the exact added controls. All original executable/corpus and
+higher phase/native duties remain live. K191 closes no ancestor.
