@@ -15,7 +15,7 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K204 proposes [publication replay integration](../../verification/callback-native-capture/publication-replay.md): independent local facts and explicit edge support feed one frozen Trace, with a read-only original-coordinate producer view. The design awaits focused review; k205 plans the complete executable successor under k203. No analyzer version, native evidence or V1–V26 semantics change.
+K204 proposes [publication replay integration](../../verification/callback-native-capture/publication-replay.md): independent local facts and explicit edge support feed one frozen Trace, with a read-only original-coordinate producer view. K206 found consumer-policy gaps; k208 resolves the bounded redesign and k209 reviews it before k205 plans the complete executable successor under unchanged k203. K207 records the dispositions and repairs the criteria/control inventory. No analyzer version, native evidence or V1–V26 semantics change.
 
 Changed view:
 
@@ -702,3 +702,19 @@ permissions served only Safari window bounds and appearance. The clone and
 temporary port 8774 server stopped; the existing port 8772 viewer and unrelated
 VMs remain. No host GUI or native recorder ran. This is a design awaiting review,
 with complete executable successor planning retained by k205 under k203.
+
+## K207 presentation
+
+Safari in disposable TestAnyware macOS clone `koine-k207-view` rendered the
+unchanged replay diagram with the revised caption and current discussion.
+The deep link reached the intended view; all diagram labels/connections and
+the complete caption were inspected in light desktop appearance at 1024×768.
+The caption and discussion visibly state the incomplete consumer policy and
+k208 → k209 → k205 handoff. The
+[presentation record](../../verification/callback-native-capture/evidence/k207/presentation.json)
+binds the four captures and unchanged before/after viewer, manifest and source
+hashes. The served manifest matched local bytes. The guest agent was unavailable,
+so VNC was used. No narrow/dark/mobile, independently hashed guest assets or
+frozen browser/CDN/OS claim follows. The clone and temporary port 8774 server
+stopped; the existing port 8772 viewer was untouched. No host GUI or native
+recorder ran, and presentation supplies no executable replay evidence.
