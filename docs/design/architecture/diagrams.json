@@ -24,19 +24,19 @@
     }
   ],
   "discussion": {
-    "title": "Closed protocol bytes before observation joins",
-    "status": "Protocol grammar implemented; complete history integration remains",
-    "summary": "K198 validates all logical protocol routes and closed payloads through exact bytes. False activity and stray input remain readable claims. Actual original-observation joins and the complete versioned successor remain k199; V1–V26 are unchanged.",
+    "title": "Physical prefixes before producer projection",
+    "status": "Coordinate selector implemented; actual loader remains k201",
+    "summary": "K200 cuts five observation lanes before mapping unchanged producer coordinates. Supplied metadata controls establish no schema, receipt or transport credit. The complete successor and every original obligation remain k201. V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-prefixes",
       "process-recorder-protocol-bytes",
-      "process-recorder-auxiliary",
-      "process-recorder-codec",
+      "process-recorder-transport",
       "process-recorder-evidence"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-protocol-bytes",
-        "summary": "Adds the protocol grammar boundary, explicit original-observation claims and separate history credit."
+        "id": "process-recorder-prefixes",
+        "summary": "Adds physical cuts, separate producer projection and explicit remaining loader obligations."
       }
     ]
   },
@@ -707,6 +707,19 @@
         {
           "label": "Closed payloads and remaining observation joins",
           "href": "../../verification/callback-native-capture/publication-auxiliary.md"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-prefixes",
+      "group": "machine",
+      "title": "Physical prefixes before producer projection",
+      "source": "process-recorder-prefixes.mmd",
+      "caption": "K200 selects unique physical prefixes on supplied metadata, then maps original producer numbers without sorting or renumbering. A physical gap excludes later semantic rows; a producer defect leaves physical observations available. Raw coordinates and reasons survive. Canonical owner order is not causality. The actual loader must validate complete rows and metadata extraction before any history joins or credit. These controls do not discharge B16 or E20–E24; k201 retains the complete successor and all original criteria. No native result or analyzer version follows.",
+      "links": [
+        {
+          "label": "Selector interface and extraction obligations",
+          "href": "../../verification/callback-native-capture/publication-prefixes.md"
         }
       ]
     }

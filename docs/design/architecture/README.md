@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K198 supplies the [closed protocol frame grammar](../../verification/callback-native-capture/publication-protocol.md): exact logical routes and payloads through immutable bytes. Input, active and failure values retain original producer-coordinate claims; actual joins and the complete successor remain k199. V1–V26 are unchanged.
+K200 supplies the [physical prefix selector](../../verification/callback-native-capture/publication-prefixes.md). It cuts five lanes before mapping original producer coordinates, preserving raw indices and independent physical evidence. Actual schema loading and complete transport integration remain k201; V1–V26 are unchanged.
 
 Changed view:
 
-- [Closed protocol bytes before observation joins](index.html#diagram-process-recorder-protocol-bytes) — Adds protocol grammar, original-observation claims and the separate history checks needed for credit.
+- [Physical prefixes before producer projection](index.html#diagram-process-recorder-prefixes) — Adds the physical-first selection rule, separate semantic defects and remaining loader obligations.
 
-[Closed auxiliary bytes before provenance](index.html#diagram-process-recorder-auxiliary), [Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) and [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context. The complete history reader remains k199's responsibility.
+[Closed protocol bytes](index.html#diagram-process-recorder-protocol-bytes), [transport lanes](index.html#diagram-process-recorder-transport) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -633,3 +633,32 @@ browser/CDN/OS dependencies were not checked. The clone stopped and was absent
 from the final inventory; the temporary guest-facing server stopped. No native
 recorder ran. K195 retains the versioned transport reader, grades and all
 transport discriminators; codec and legacy tests do not close those duties.
+
+## K200 presentation
+
+[Physical prefixes before producer projection](index.html#diagram-process-recorder-prefixes)
+adds physical cuts, a separate original producer map and the remaining loader
+obligations. The [selection contract](../../verification/callback-native-capture/publication-prefixes.md)
+defines the caller's metadata extraction responsibility and raw-index boundary.
+Graphs start at the dark Start here node and follow numbered edges. The source
+stays editable in the existing pinned Mermaid viewer at
+http://127.0.0.1:8772/#diagram-process-recorder-prefixes.
+
+The [asset record](../../verification/callback-native-capture/evidence/k200/render.json)
+matches final viewer, manifest and source bytes to both serving URLs. The
+[presentation record](../../verification/callback-native-capture/evidence/k200/presentation.json)
+records the complete diagram/caption, current discussion and a fresh new-tab
+deep link in disposable Safari clone `koine-k200-view`. Labels were shortened
+after the first inspection; the final branches and wrapped captions were legible
+in wide light and narrow dark appearance. The framebuffer was 1024×768 and the
+narrow window 650 pixels wide. No render error was observed in the inspected view.
+
+The guest agent was unavailable; VNC supplied inspection. No independent
+guest-file hashes, frozen browser/CDN/OS dependencies or mobile-device tests
+are claimed. Wide dark and narrow light were not separately checked. Guest
+automation permissions served appearance/window settings only. The clone
+stopped and disappeared from both final inventories; other Tart VM names and
+running states were preserved. The temporary port 8774 server stopped, while
+the existing port 8772 viewer remains. No native recorder or host GUI ran.
+K201 retains all actual-loader, history, lifecycle, budget and full successor
+renewal duties; the metadata controls close none of those complete criteria.

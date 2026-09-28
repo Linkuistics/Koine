@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+  design:check-publication-prefixes:
+    desc: Check bounded observation prefixes and original coordinates (supplied metadata only)
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture/publication_prefixes.py docs/verification/callback-causal-fixture/test_publication_prefixes.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture/publication_prefixes.py docs/verification/callback-causal-fixture/test_publication_prefixes.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json docs/verification/callback-causal-fixture/publication_prefixes.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_publication_prefixes.py
+
   design:check-publication-protocol:
     desc: Check closed protocol bytes and original-observation claims (no history credit)
     cmds:
@@ -117,6 +125,7 @@ tasks:
   design:check-callback-analyzer:
     desc: Check the causal analyzer and frozen synthetic controls without native execution
     cmds:
+      - task: design:check-publication-prefixes
       - task: design:check-publication-protocol
       - task: design:check-publication-auxiliary
       - task: design:check-publication-codec
