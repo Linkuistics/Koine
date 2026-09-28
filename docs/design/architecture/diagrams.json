@@ -24,10 +24,11 @@
     }
   ],
   "discussion": {
-    "title": "Account for every byte and keep original coordinates",
-    "status": "Topology proposal — k186 slice; composed contract still open",
-    "summary": "All auxiliary traffic shares framed sockets and ordinals. Each app has one combined observation lane; the supervisor has one global append order with I/O outside its lock. K187 evidence, k188 lifecycle and k189 budgets/reconciliation plus review remain before k182. V1–V26 are unchanged.",
+    "title": "Close byte evidence locally; preserve supported causal fragments",
+    "status": "Evidence proposal — k187 slice; lifecycle and budgets still open",
+    "summary": "End and direction loss seal new begins without cancelling pending calls. Origin, relay, egress and destination are graded independently; impossible dominates unverified. Trace keeps individually supported edges and independent cycles even when the full route fails. K188 lifecycle and k189 budgets/review remain before k182 executable validation. V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-evidence",
       "process-recorder-transport",
       "process-recorder-reply-order",
       "process-recorder-publication",
@@ -35,26 +36,43 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "process-recorder-evidence",
+        "summary": "Adds local closure, component grades and the fixed supported-edge graph."
+      },
+      {
         "id": "process-recorder-transport",
-        "summary": "Adds shared auxiliary framing, transport owners and exact relay/production joins."
+        "summary": "Marks topology and evidence specified; lifecycle and budgets remain open."
       },
       {
         "id": "process-recorder-reply-order",
-        "summary": "Adds the observed broker reply/result order with two contributing write begins."
+        "summary": "Links the caption to loss and causal-cycle variants E20–E24."
       },
       {
         "id": "process-recorder-publication",
-        "summary": "Updates the final note and caption: k186 fixes lanes, while evidence and lifecycle remain open."
+        "summary": "Names independent hop grades and retention of supported fragments on impossible routes."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "process-recorder-evidence",
+      "group": "machine",
+      "title": "Closure, attribution and supported causal edges",
+      "source": "process-recorder-evidence.mmd",
+      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 still owns lifecycle/milestones, k189 budgets and final fresh review, and k182 executable E01–E24 controls and V1–V26 preservation.",
+      "links": [
+        {
+          "label": "Publication evidence and E01–E24 histories",
+          "href": "../../verification/callback-native-capture/transport-evidence.md"
+        }
+      ]
+    },
+    {
       "id": "process-recorder-transport",
       "group": "machine",
       "title": "Transport owners, shared frames and observation lanes",
       "source": "process-recorder-transport.mmd",
-      "caption": "Topology proposal only. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 still defines composed feasibility/edges, k188 publication milestones/lifecycle and k189 budgets plus whole-contract review before k182. No executable version or native evidence.",
+      "caption": "Topology proposal. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 specifies composed evidence and supported edges; k188 publication milestones/lifecycle and k189 budgets plus whole-contract review remain before k182. No executable version or native evidence.",
       "links": [
         {
           "label": "Transport lanes and original coordinates",
@@ -67,11 +85,15 @@
       "group": "machine",
       "title": "Reply ingress before the egress result record",
       "source": "process-recorder-reply-order.mmd",
-      "caption": "Read from the first message. This proposed two-lane fragment uses actual local observation order: G44 precedes G45 in the supervisor global lane. Both G41 and G43 contribute to S20; the reply creates S20 → S22 → G44 → G45. An incorrect G45 → S20 edge would cycle without an invented schedule edge. Vertical placement across lanes does not add an order; S23 can occur before or after G45. This is an illustrative contract fragment, not a measured syscall schedule or an executable control. K187 extends loss/status cases; k182 must exercise the real reader, multiple begins and FIFO.",
+      "caption": "Read from the first message. This proposed two-lane fragment uses actual local observation order: G44 precedes G45 in the supervisor global lane. Both G41 and G43 contribute to S20; the reply creates S20 → S22 → G44 → G45. An incorrect G45 → S20 edge would cycle without an invented schedule edge. Vertical placement across lanes does not add an order; S23 can occur before or after G45. K187 E20–E24 retain this fragment with impossible origin evidence, remove only excluded vertices on lost tails, and move G43 after G44 for a genuine contributing-begin cycle. These are contract examples, not measured schedules or executable controls. K182 must exercise the real reader, multiple begins and FIFO.",
       "links": [
         {
           "label": "Exact G40–G46 and S20–S24 history",
           "href": "../../verification/callback-native-capture/transport-lanes.md#observable-reply-before-egress-result"
+        },
+        {
+          "label": "E20–E24 loss and cycle variants",
+          "href": "../../verification/callback-native-capture/transport-evidence.md#observable-replyresult-cycle-and-loss-variants"
         }
       ]
     },
@@ -80,7 +102,7 @@
       "group": "machine",
       "title": "Publication attempts and feasible receipt",
       "source": "process-recorder-publication.mmd",
-      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 now specifies shared auxiliary frames and app/supervisor lanes in the transport view. K187 still owes composed statuses/edges, k188 publication milestones/loss lifecycle and k189 budgets/reconciliation plus review before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
+      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 specifies shared auxiliary frames and app/supervisor lanes; k187 specifies component grades and supported edges, including fragments on impossible or unverified routes. K188 publication milestones/loss lifecycle and k189 budgets/review remain before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
       "links": [
         {
           "label": "Publication observation contract",

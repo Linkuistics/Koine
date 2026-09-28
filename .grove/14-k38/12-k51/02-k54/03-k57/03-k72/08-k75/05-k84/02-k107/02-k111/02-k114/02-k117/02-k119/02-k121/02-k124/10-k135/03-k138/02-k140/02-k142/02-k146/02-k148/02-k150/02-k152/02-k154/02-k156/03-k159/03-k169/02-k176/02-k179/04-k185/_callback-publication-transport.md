@@ -90,3 +90,21 @@ All original Done when criteria remain binding. Only the first child is done
 in this session. K189 must commission the required review before k182; no
 complete transport interface, executable version or ancestor closure follows
 from the first child.
+
+## Cross-hop evidence handoff (k187)
+
+Consume `docs/verification/callback-native-capture/transport-evidence.md` with
+transport-lanes.md and both proposed-publication sections. Local end/direction
+seals exclude new begins but retain outstanding possible bytes; missing ingress
+does not mask a decisive origin contradiction. The F/U/I combination table and
+exact supported-edge rules keep local decisions and independent cycles visible.
+E01–E24 extend the topology histories; these are design expectations, not new
+executable controls. V1–V26 and original-coordinate meanings are unchanged.
+
+K188 must enumerate every producer milestone and supply loss/abandonment,
+trusted late-result, queued/new-frame and stopped-reader lifecycle without
+weakening those evidence rules. K189 must reconcile encoding/capacity, the whole
+criterion/discriminator set and final views, then commission the required fresh
+exact-stem review before k182. K182 owns the real successor loader/Trace tests,
+versioning and complete itemwise corpus renewal. No complete transport contract,
+native readiness or ancestor close follows from k187.
