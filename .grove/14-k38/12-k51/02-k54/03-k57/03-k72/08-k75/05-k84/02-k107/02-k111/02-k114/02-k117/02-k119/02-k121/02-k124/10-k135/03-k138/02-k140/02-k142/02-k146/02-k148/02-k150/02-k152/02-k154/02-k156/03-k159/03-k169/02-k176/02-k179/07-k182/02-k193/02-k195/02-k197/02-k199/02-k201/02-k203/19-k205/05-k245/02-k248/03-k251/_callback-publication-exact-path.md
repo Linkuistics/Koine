@@ -35,7 +35,8 @@ its dependency masks, so the instrument comes first.
   the capacity doc's stored-reference accounting. It is checked per item
   against the k220 derivation archive. The census stays green and no document
   changes. On its own it turns the archived "derived" counts into computed
-  ones, including the multi-cycle 1,033 that R30/R31 cite.
+  ones, including the multi-cycle 1,033 witness edges behind the R30/R31
+  stress file's 1,040 charged references.
 - callback-publication-path-attainment-k254: uses the model to settle the
   boundary, as either a generated construction at exactly 2^23 with a +1
   neighbour, or an infeasibility proof and a primitive. It then carries the
@@ -53,3 +54,21 @@ census"). Each activity also carries four outside/overlap comparisons toward
 S:29, which are about 50 edges even in those small files. The coverage row's
 own premise, 256 activity rows per target with long lane paths, is this
 mechanism at scale. Neither lead is a result.
+
+## Promoted from k253 (path model closed)
+
+The model is `publication_paths.select_orders(vertices, edges, bundles,
+justifications, queries)`, which returns a `Selection`. For a real file,
+`publication_archive.selection(case)` builds `publication_edges.build(case)` and
+selects over its query pairs. `Selection.accounting["total"]` is what admission
+charges: each query's raw and usable witness separately, plus Trace-SCC edges and
+dependency-SCC arcs. `shared_total` interns identical witnesses and is reported
+only. The selector matches the k220 archive item by item in all six files. The
+archive is now only that join's oracle: `control_bound` in publication_profile.py
+takes its witnesses from the selection. The computed per-file figures
+(witness_refs / total / k250 per-case bound = lane bound + V + H + D) are: clean
+728 / 728 / 6,073, upstream-cycle 728 / 730 / 6,073, multi-clean and
+multi-clean-turn0 728 / 728 / 6,107, and both multi-cycle files 1,033 / 1,040 /
+9,987. The R30/R31 multi-cycle stress figure for max_path_edge_refs is 1,040. The
+selector runs 3,000 queries at V = 4,138 in about 3.4 s. It is independent of
+`path_bound`, so each checks the other.
