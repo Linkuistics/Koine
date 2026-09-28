@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Distinguish publication observations",
-    "status": "Proposed observation contract — executable successor pending k182",
-    "summary": "Frame commit, byte attempts, syscall results and receipt are separate. Both broker hops need feasible bytes. K181 specifies the contract; k182 must version/falsify it and renew the corpus before k180 composes loss. V1–V26 remain unchanged.",
+    "status": "Incomplete proposal — transport redesign and review before k182",
+    "summary": "K184 separates trusted prefixes from uncollected tails and local decisions from cross-role attribution. K185 must settle auxiliary traffic, lanes, hop status/edges, publication milestones, loss lifecycle and budgets, then commission fresh review before k182 implements and renews the corpus. V1–V26 remain unchanged.",
     "diagramIds": [
       "process-recorder-publication",
       "process-recorder-write-state",
@@ -35,11 +35,11 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-publication",
-        "summary": "Separates both broker hops and permits receipt before a recorded write result."
+        "summary": "Clarifies prefix-relative byte feasibility and the unresolved composed transport contract."
       },
       {
         "id": "process-recorder-write-state",
-        "summary": "Distinguishes partial progress, terminal write loss and unavailable results."
+        "summary": "Labels the write-state illustration partial; abandonment, late returns and post-loss queues/read buffers remain k185."
       }
     ]
   },
@@ -49,7 +49,7 @@
       "group": "machine",
       "title": "Publication attempts and feasible receipt",
       "source": "process-recorder-publication.mmd",
-      "caption": "Proposed k181 observation contract, not an executable version or native evidence. Read from the first message. This is one possible ordering: results may also be recorded before receipts. Each hop needs the exact bytes and all contributing attempts; a later short/error result can make a claimed receipt impossible. Loss hiding a necessary attempt or join leaves receipt unverified; an intact covering attempt may remain feasible with its result unavailable. Broker transport observations use the existing Trace, not a fifth protocol participant. K182 owns executable falsification and corpus renewal; k180 phase composition; k144 deadlines/reserve; k126 native audit and containment.",
+      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. This is one possible ordering: results may also precede receipts. Only in-prefix results constrain possible bytes. A covering begin can remain prefix-relative feasible with its result unavailable; an excluded late error is preserved but not replayed. Missing source on an uncollected tail is unverified; impossibility needs decisive exclusion. Local receipt/decision grading stays separate from cross-role attribution. K185 must settle auxiliary traffic, lanes, hop statuses/edges, publication milestones and budgets, then commission review before k182 implements/falsifies the contract and renews the corpus. K180 retains phase composition. The host runner bounds blocked broker work; k144 owns deadlines/reserve and k126 actual exits/containment. K184 source edits have not been freshly browser-inspected.",
       "links": [
         {
           "label": "Publication observation contract",
@@ -62,7 +62,7 @@
       "group": "machine",
       "title": "Partial writes and unavailable results",
       "source": "process-recorder-write-state.mmd",
-      "caption": "Proposed state view of one serialized directed writer, read from its initial pseudo-state. Complete means local byte acceptance only; a peer may have received the frame before a result was recorded. Unknown is an evidence boundary, not an observed OS state, and does not authorize in-process cleanup after a pending synchronous call. Zero/error ends that direction for the case; no reconnect/replay or later frame can repair it. The opposite direction is independent. External means recovery work remains, not that containment ran. Row/byte/attempt caps remain safety bounds. This is not model checking.",
+      "caption": "Partial illustration of one serialized directed writer; read from the initial pseudo-state. Complete means local byte acceptance only. Unknown is an evidence boundary, not an observed OS state or permission to clean up a pending call. Zero/error terminates this direction; other directions remain independent. This diagram does not specify abandonment with an outstanding call, late positive returns, queued/new commits after loss, or deadline-stopped read buffers. K185 must complete that lifecycle and its view before fresh review and k182 implementation. Keep an outstanding call’s immutable buffer until actual return or externally established termination. External denotes remaining recovery work, including the host runner for blocked broker work; it proves no containment. No model-checking or fresh k184 browser-inspection claim.",
       "links": [
         {
           "label": "Native publication handoff",

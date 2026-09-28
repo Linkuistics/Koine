@@ -50,3 +50,14 @@ permission change. Rendering/viewing only in a disposable TestAnyware clone.
 
 K179 stays live through k182. K180 still composes loss across every sampler phase;
 k177 retains full sampler reconciliation. No ancestor closes on the first child.
+
+## Review integration handoff (k184)
+
+K184 repairs prefix/decisive-evidence wording, excluded-tail trust, local decision
+independence, missing negative examples, demonstration scope and host bounding.
+The proposal remains incomplete: callback-publication-transport-k185 must settle
+auxiliary traffic, coordinates, cross-hop statuses/edges, publication milestones,
+post-loss lifecycle and encoding budgets, then commission fresh review before
+k182. Its integration, if needed, also precedes k182. K182 retains every original
+executable/version/corpus criterion above; k180 still composes every phase and
+k177 the whole sampler. No original criterion or ancestor closes here.

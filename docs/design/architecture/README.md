@@ -17,16 +17,18 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
 remains unready for native use. K181 proposes distinct frame commit, raw write
-attempt/result and receiver observations over both broker hops. K182 must
-version/falsify this contract and renew the complete corpus; V1–V26 retain their
-current meanings. K180 composes loss; k177 retains full sampler reconciliation
+attempt/result and receiver observations over both broker hops. K184 clarifies
+prefix trust and local decision independence. K185 must settle auxiliary traffic,
+lanes, hop statuses/edges, publication milestones, post-loss lifecycle and budgets,
+then commission fresh review before k182 versions/falsifies the contract and
+renews the complete corpus. V1–V26 retain their current meanings. K180 composes loss; k177 retains full sampler reconciliation
 including non-stopped cancellation. K143 owns targets; k144 complete waits,
 partial evidence and mandatory fresh review.
 
 Changed in this discussion:
 
-- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Separates the two broker hops and permits receipt before a recorded write result.
-- [Partial writes and unavailable results](index.html#diagram-process-recorder-write-state) — Distinguishes partial progress, terminal loss and missing results without granting cleanup.
+- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Separates the two broker hops and distinguishes trusted-prefix feasibility from uncollected tails; composed transport semantics remain k185.
+- [Partial writes and unavailable results](index.html#diagram-process-recorder-write-state) — Labels the state illustration partial; abandonment, late returns and post-loss queues/read buffers remain k185.
 - [Publication observation contract](../../verification/callback-causal-fixture/contract.md#proposed-publication-observations-k181) — Defines byte ownership, causal feasibility, counterexamples and the remaining executable handoff.
 
 The earlier recorder diagrams are unchanged context.
@@ -92,6 +94,12 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+K184 updates publication/view wording and labels unresolved transport design.
+These edited Mermaid sources and captions have not been freshly rendered or
+browser-inspected. The k181 visual records below apply to the historical k181
+bytes. K185 owns inspection of the completed transport views in a disposable
+clone before review; no native or executable conformance follows from this edit.
 
 For k181, Safari in disposable macOS clone `koine-k181-design` displayed both
 new deep links, their complete narrow dark captions, and the current discussion.
