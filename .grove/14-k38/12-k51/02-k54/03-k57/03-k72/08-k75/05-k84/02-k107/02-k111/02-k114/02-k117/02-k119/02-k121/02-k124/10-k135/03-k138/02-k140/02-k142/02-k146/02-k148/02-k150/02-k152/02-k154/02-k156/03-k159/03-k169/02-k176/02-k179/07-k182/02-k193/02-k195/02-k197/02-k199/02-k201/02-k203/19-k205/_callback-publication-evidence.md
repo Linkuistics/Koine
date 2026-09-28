@@ -192,5 +192,8 @@ The complete executable delivery and numeric profile freeze above are unchanged.
   per-dimension coverage table in publication-capacity.md. It stays inside
   k205, and pick reaches it before any impl leaf, as the Done when requires.
 
+- callback-publication-report-profile-k243: fresh review-planning of the
+  frozen profile, its coverage table and the k225–k242 plan, cut by k224.
+
 This node closes when k224 (and any review it cuts) retires. Its closing does
 not satisfy any k203 criterion: k225–k242 deliver them.
