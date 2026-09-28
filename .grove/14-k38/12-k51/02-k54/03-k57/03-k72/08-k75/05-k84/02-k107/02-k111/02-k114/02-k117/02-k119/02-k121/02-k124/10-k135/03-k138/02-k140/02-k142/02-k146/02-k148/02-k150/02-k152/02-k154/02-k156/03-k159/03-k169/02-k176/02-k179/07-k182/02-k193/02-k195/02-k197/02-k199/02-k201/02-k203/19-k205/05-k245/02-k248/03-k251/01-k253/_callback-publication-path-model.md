@@ -78,3 +78,16 @@ check. As k251's Notes asked, the edge census comes first.
 
 Every child's census record goes under evidence/k253, as this brief's Done when
 requires.
+
+## Promoted from k255 (edge census closed)
+
+The input shape is `publication_edges.build(case)`. It gives `edges`, rule
+instances with stable IDs `<class>@<anchor row>`. It gives `justifications`,
+keyed by edge ID, each with a rule, receipt dependencies and observations. It
+gives `bundles`, keyed by receipt vertex, each with direct edge IDs and upstream
+arcs. It also gives the 41 `queries`. The archive's `edges` counts distinct
+ordered pairs, and the Trace adjacency is that set. D has no SCC. The
+structural bad receipts (`bad_receipts(graph)`) already equal the archive's in
+all six files. So k257's archive join can attribute any usable-order
+disagreement to the selector rather than to the input. No archive error was
+found.
