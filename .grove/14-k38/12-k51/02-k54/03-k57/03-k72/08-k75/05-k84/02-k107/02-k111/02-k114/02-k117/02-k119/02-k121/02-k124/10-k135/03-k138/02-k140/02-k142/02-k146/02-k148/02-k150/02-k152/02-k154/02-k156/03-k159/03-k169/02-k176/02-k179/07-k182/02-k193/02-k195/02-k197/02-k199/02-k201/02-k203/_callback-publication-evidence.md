@@ -99,3 +99,20 @@ contracts, the causal state table, capacity/evidence, ownership and affected
 views, with determinate R controls, honest neighbors and mutants. K205 retains
 every original criterion and full executable k180 handoff. The six original
 Done when items above are unchanged; no ancestor or native duty closes.
+
+## K211 consumer-policy handoff
+
+K211 supplies the complete proposed consumer policy in publication-replay.md:
+raw counting versus endpoint eligibility; candidate collection closure versus
+semantic window endpoints; exhaustive state/scope precedence; selected-path
+receipt dependency inheritance and raw-F masking; R01–R32 honest/mutant controls;
+and the exact named report profile k205 must derive and numerically freeze before
+implementation. Both contracts, the causal state vocabulary, transport evidence,
+capacity and replay/claim/state views share that policy. K212 and any findings
+integration still precede k205. No successor control has been executed here.
+
+All six original Done when items above and every ancestor criterion remain
+binding. K205 still plans complete executable delivery and final k180 handoff;
+its numeric report profile cannot be left to an implementer. No publication,
+sampler or native ancestor closes on the design. K180/k177/k143/k144/k126 and
+all k124/k121 obligations retain their existing owners.

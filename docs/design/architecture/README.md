@@ -15,12 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K208 revises [publication replay integration](../../verification/callback-native-capture/publication-replay.md) with explicit delivery/suitability rules, qualified armed witnesses, three-valued claims, deterministic support and separate physical/replay/raw domains. The complete detached legacy CLI preserves old staging. K209 reviews this artifact before k205 plans the complete executable successor under unchanged k203. No analyzer version, native evidence or V1–V26 semantics change.
+K211 completes [publication replay policy](../../verification/callback-native-capture/publication-replay.md) with explicit counting/closure, receipt-support inheritance, T/F/U state precedence and report admission. K212 reviews it before k205 plans delivery and freezes numeric report budgets. The complete detached legacy CLI and V1–V26 remain unchanged. No executable successor or native result follows.
 
 Changed views:
 
-- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Separates replay/raw domains, pre-freeze witness rules, read-only claims and the complete legacy CLI.
-- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Adds clean/cyclic/reverse path selection, unknown negation and mandatory contributing support.
+- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Adds counting/closure, sample classification and report admission.
+- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Carries receipt contributors into atomic truth before composition and masking.
+- [Sample state and retention scope](index.html#diagram-process-recorder-sample-state) — Adds every state branch, earlier-U precedence and separate retention scope.
 
 [Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) remain context.
 
@@ -738,3 +739,27 @@ mobile-device, successor-execution or native evidence. Full dark captions,
 independent guest-file hashes and frozen CDN/browser/OS dependencies are not
 claimed. The task clone and temporary port-8774 server stopped; other VMs and
 the existing viewer service were preserved.
+
+## K211 presentation
+
+Safari in disposable macOS clone `koine-k211-view` rendered the revised
+[replay stages](index.html#diagram-process-recorder-replay),
+[order and support](index.html#diagram-process-recorder-claims) and new
+[sample classifier](index.html#diagram-process-recorder-sample-state).
+Every final diagram and full caption was inspected in wide light. A 720-pixel
+dark window covered replay/claim entry and body labels, the complete classifier
+and its caption, and the current discussion. The full changed list was checked
+in wide light, and a fresh-page classifier link reached the intended view.
+The initial classifier overflow was corrected with a compact vertical flow.
+The [presentation record](../../verification/callback-native-capture/evidence/k211/presentation.json)
+binds final assets and 19 screenshots. Restoring the manifest's JSON escape
+style preserved its decoded contents; its final fresh discussion render was
+also inspected.
+
+The guest agent was unavailable, so VNC supplied these responsive desktop
+checks. Mobile devices, full narrow-dark replay/claim captions, wide dark,
+narrow light, independently hashed guest assets and frozen CDN/browser/OS
+dependencies are not claimed. The clone and temporary port-8774 server stopped;
+the existing port-8772 viewer and unrelated running VM remain. No host GUI,
+successor execution or native recorder ran. K212 reviews the design before
+k205 freezes the numeric report profile and plans complete executable delivery.

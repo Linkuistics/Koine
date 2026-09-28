@@ -24,23 +24,27 @@
     }
   ],
   "discussion": {
-    "title": "Publication replay: fixed graph and explicit claims",
-    "status": "Revised consumer policy; k209 review before executable planning",
-    "summary": "K208 selects delivery versus suitability, locally qualified armed witnesses, three-valued claims, deterministic path support and separate physical/replay/raw domains. The detached legacy CLI preserves staged behavior. K209 reviews this design before k205 plans complete delivery under unchanged k203; no successor control or native result is claimed.",
+    "title": "Publication replay: counts, closure and usable evidence",
+    "status": "K211 design; k212 review before executable planning",
+    "summary": "Raw counting differs from endpoint eligibility. Complete collections close candidate domains; semantic closed alone does not. Receipt dependencies follow selected paths before truth composition. Earlier unknowns yield partial. K205 freezes the named report budgets before implementation. V1\u2013V26 and native obligations stay unchanged.",
     "diagramIds": [
       "process-recorder-replay",
       "process-recorder-claims",
-      "process-recorder-files",
+      "process-recorder-sample-state",
       "process-recorder-evidence"
     ],
     "updatedDiagrams": [
       {
         "id": "process-recorder-replay",
-        "summary": "Separates replay/raw domains, pre-freeze witness rules, read-only claims and the complete detached legacy CLI."
+        "summary": "Adds counting/closure, explicit sample classification and report admission with incomplete-resource output."
       },
       {
         "id": "process-recorder-claims",
-        "summary": "Adds deterministic clean/cyclic/reverse order selection, unknown negation and mandatory contributor support."
+        "summary": "Inherits receipt contributors before atomic masking, then composes usable truth and applies own support."
+      },
+      {
+        "id": "process-recorder-sample-state",
+        "summary": "Adds exhaustive state precedence, including earlier unknowns and separate retention scope."
       }
     ]
   },
@@ -50,7 +54,7 @@
       "group": "machine",
       "title": "One frozen graph for publication replay",
       "source": "process-recorder-replay.mmd",
-      "caption": "Proposed k208 diagnostic consumer policy, awaiting k209 review. Start at the dark node; numbers are evaluation stages, not causal edges. Physical retention, producer mapping, stateful replay and independent raw assertions have distinct domains. Exact delivery witnesses and locally qualified armed trigger witnesses enter one Trace before its single cycle pass. Read-only claims separate suitability, order, origin attribution and guarded obligations. The dashed branch runs the complete unchanged legacy CLI on every physically retained embedding, preserving old staging and labelling successor differences. No new analyzer, passing successor controls, native readiness or V1\u2013V26 change is claimed. K205 retains complete executable delivery under k203.",
+      "caption": "K211 proposed consumer policy for k212 review. Numbers show evaluation stages, not causal edges. Raw retained assertions count against uniqueness; only eligible endpoints supply witnesses. Candidate closure requires eligible producer completion and a valid physical lane end. One Trace freezes before claims. Admission checks apply throughout allocation and encoding, not merely at final output: k205 freezes the exact profile before implementation. Exhaustion yields incomplete-resource, no sample scope, and only whole admitted diagnostic sections. The dashed branch preserves the full detached legacy CLI. No successor execution, native result or V1\u2013V26 change is claimed.",
       "links": [
         {
           "label": "Integration, migration and falsification contract",
@@ -63,11 +67,24 @@
       "group": "machine",
       "title": "Order evidence and independent support",
       "source": "process-recorder-claims.mmd",
-      "caption": "Proposed k208 claim policy. Start at the dark node; arrows describe evaluation, not event order. For distinct vertices choose a shortest clean forward path, otherwise a shortest cyclic-only forward path, otherwise a clean reverse witness or unknown gap; break ties by canonical vertex order. Same-vertex strict order is refuted by identity before this diagram. Same-role order has no sequence shortcut. AND/OR use the explicit three-valued tables; NOT cannot turn unknown into evidence. Selected alternative support is not mandatory across all paths. Independently mandatory joins and every contributing begin on both hops can still withhold usable credit. A cyclic vertex alone does not invalidate a clean edge. Unknown guards preserve conditional obligations. This is a design diagram, not model checking or executable proof.",
+      "caption": "K211 proposed claim evaluation, not event order or model checking. Same-vertex strict order is refuted by identity before path selection. For distinct vertices choose a canonical clean path, else a canonical cyclic-only path, else a clean reverse refuter or U. Every traversed or prerequisite receipt contributes its complete finite bundle, including upstream joins and all nonempty begins. Do not retry another path after masking. R11 has raw order T, usable order U, frame U and conjunction U. R13 remains T for a merely cyclic vertex with no cyclic inherited edge. Mask raw F as well as T before NOT/AND; independent explicit alternatives can still decide a composite unless its own mandatory support cycles. Local receipt decisions retain their separate support.",
       "links": [
         {
           "label": "Order, support and claim algebra",
           "href": "../../verification/callback-native-capture/publication-replay.md#orders-cycles-and-independent-support"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-sample-state",
+      "group": "machine",
+      "title": "Sample state and retention scope",
+      "source": "process-recorder-sample-state.mmd",
+      "caption": "K211 proposed successor classifier. Named outcomes inside each box stop classification; only the labelled continuation edge reaches the next check. Every non-reached outcome has scope none. T means supported, F refuted, U unproved. Every earlier U yields partial while later facts remain visible; core T with ambiguity U is partial. Closed absence alone permits unreached. Ambiguity needs duplicate milestones, supported overlap or a closed fully resolved but unordered recorded graph; a broker gap never becomes concurrency or reverse-order evidence. Only reached can receive callback-sample or post-return-retention scope; neither proves valid values, freshness or native readiness. Legacy V1\u2013V26 outputs are unchanged.",
+      "links": [
+        {
+          "label": "Complete classifier and closure contract",
+          "href": "../../verification/callback-native-capture/publication-replay.md#sample-state-and-scope"
         }
       ]
     },
