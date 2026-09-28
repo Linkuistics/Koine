@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K202 supplies [bounded real-file loading](../../verification/callback-native-capture/publication-files.md). Closed schemas and unchanged producer validation now feed physical-first selection. Both-hop attribution and complete replay remain k203; V1–V26 retain their original semantics.
+K204 proposes [publication replay integration](../../verification/callback-native-capture/publication-replay.md): independent local facts and explicit edge support feed one frozen Trace, with a read-only original-coordinate producer view. The design awaits focused review; k205 plans the complete executable successor under k203. No analyzer version, native evidence or V1–V26 semantics change.
 
 Changed view:
 
-- [Bounded files before publication history](index.html#diagram-process-recorder-files) — Adds the real-file path, distinct outer-schema and inner-frame failures, and retained history obligations.
+- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Shows evaluation ownership, witness construction before cycle analysis, and the detached legacy comparison.
 
-[Physical prefixes](index.html#diagram-process-recorder-prefixes), [transport lanes](index.html#diagram-process-recorder-transport) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
+[Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -681,3 +681,24 @@ This is responsive desktop presentation, not mobile-device or native evidence.
 Wide dark, narrow light, a separate wide-caption check, independent guest-file
 hashes and frozen browser/CDN/OS dependencies are not claimed. K203 retains
 complete publication replay and all original ancestor criteria.
+
+## K204 presentation
+
+Safari in disposable macOS clone `koine-k204-view` rendered the
+[replay integration view](index.html#diagram-process-recorder-replay).
+The complete diagram and caption were inspected in wide light and a 650-pixel
+narrow dark window. Both current-discussion layouts showed the sole changed
+view and unchanged context; a fresh new-tab deep link reached the intended view.
+An initial Mermaid reserved-word node ID was corrected and labels shortened
+before the final captures. The [presentation record](../../verification/callback-native-capture/evidence/k204/presentation.json)
+binds those captures. The [asset record](../../verification/callback-native-capture/evidence/k204/render.json)
+confirms final local source/manifest/viewer bytes equalled both serving URLs.
+
+The guest agent was unavailable, so checks used VNC. Its observed framebuffer
+was 1024×768 despite requesting a larger display. Narrow desktop presentation
+is not a mobile-device test. Wide dark, narrow light, independent guest-file
+hashes and frozen browser/CDN/OS dependencies are not claimed. Guest automation
+permissions served only Safari window bounds and appearance. The clone and
+temporary port 8774 server stopped; the existing port 8772 viewer and unrelated
+VMs remain. No host GUI or native recorder ran. This is a design awaiting review,
+with complete executable successor planning retained by k205 under k203.
