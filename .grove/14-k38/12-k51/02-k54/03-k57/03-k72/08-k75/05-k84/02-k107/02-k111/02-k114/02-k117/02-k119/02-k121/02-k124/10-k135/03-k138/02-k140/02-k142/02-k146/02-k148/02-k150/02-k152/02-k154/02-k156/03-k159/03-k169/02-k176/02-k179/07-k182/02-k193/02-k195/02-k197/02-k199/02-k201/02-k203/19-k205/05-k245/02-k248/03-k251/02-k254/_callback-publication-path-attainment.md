@@ -118,3 +118,33 @@ before paths is one the neighbour must not overflow first.
   polynomial.
 - Legality is envelope-only so far. The scaled producer records are not V18
   rows, and added app frames have no producer send. See k273.
+
+## Promoted from k266
+
+- Outcome: 2^23 is not reached on any candidate tried. The best is
+  `CANDIDATES["combined"]` in publication_generator.py, at 5,906,808 stored
+  refs (70.4 %, V = 3,585, Q = 2,466). It combines target frames 54/55 at 9
+  begins after each finish-X receipt, multi-cycle's split, 202 sampler neutral
+  rows after m_end in place of the acquisitions, and 228 controller neutral rows
+  plus 46 supervisor local rows after the controller's finished-sampler receipt.
+  Comparisons carry about 97 % of every total.
+- Mechanism for k267's proof: per-target charge. A target interior row (its
+  lane after the finish-X receipt) is charged only by its own target's
+  activities (8 each). A witness crosses at most 2 rows of the other interior,
+  the first pad frame's commit and begin, and then exits by the contributor
+  edge. Connector rows count only when exit-free (neutral or local rows),
+  because frames leak through their exits. The supervisor lane bypasses every
+  other hop, and wider cycles empty the usable witnesses. At the envelope's
+  maxima the conjectured bound is 7,657,312, below 2^23 by about 0.73M. Reading
+  the two interiors as one shared funnel gives 12.8M. So the proof must show
+  that no witness charges both targets' interiors: the only route between them
+  exits early through a frame's contributor edge into the supervisor lane.
+- The census (`path_candidates`) checks the premise on every witness and the
+  bound on every candidate. It uses two candidate-only caps beyond
+  `envelope_violations`: producer seq ≤ 256 per app and case local rows ≤
+  LOCAL_ROWS. The envelope check itself caps local rows only at 2,048 per lane,
+  and k272's SCALE uses 829 supervisor local rows. k273 and k267 should decide
+  whether local rows beyond 64 are legal. The candidates hold them to 64.
+- Not yet charged at candidate scale: claims, diagnostics, support and query
+  work by k249's method. If k267 settles "infeasible", its checked worst
+  constructions are these candidates.
