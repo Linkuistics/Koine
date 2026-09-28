@@ -15,7 +15,7 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K211 completes [publication replay policy](../../verification/callback-native-capture/publication-replay.md) with explicit counting/closure, receipt-support inheritance, T/F/U state precedence and report admission. K212 reviews it before k205 plans delivery and freezes numeric report budgets. The complete detached legacy CLI and V1–V26 remain unchanged. No executable successor or native result follows.
+K211 proposes [publication replay policy](../../verification/callback-native-capture/publication-replay.md) with explicit counting/closure, receipt-support inheritance, T/F/U state precedence and report admission. K213 integrates k212 and identifies remaining receipt/path, interpretation and acquisition-domain conflicts. K214 repairs them with k215 review before k205 plans delivery and freezes numeric report budgets. The current diagrams remain a proposal pending that repair. The complete detached legacy CLI and V1–V26 remain unchanged. No executable successor or native result follows.
 
 Changed views:
 

@@ -116,3 +116,16 @@ binding. K205 still plans complete executable delivery and final k180 handoff;
 its numeric report profile cannot be left to an implementer. No publication,
 sampler or native ancestor closes on the design. K180/k177/k143/k144/k126 and
 all k124/k121 obligations retain their existing owners.
+
+## K213 review integration handoff
+
+K213 records all seven k212 dispositions in the assessment. It clarifies the
+successor vocabulary, raw assertion counting and composite-owned masking, and
+specifies the internal test-profile isolation/actual-frozen-value coverage duties.
+R33–R35 add coordinate-duplicate, armed-tail and profile-isolation discriminators.
+The receipt/path monotonicity conflict, interpretation ownership, acquisition
+sub-predicate domains and R34's dependent full-report result are concrete open
+repairs owned by callback-publication-replay-k214, with fresh k215 review before
+k205. No unresolved k211 rule becomes an implementation default. K205 retains
+complete executable delivery and the numeric profile freeze under all six
+original criteria. No ancestor or native duty closes; no V1–V26 evidence changes.
