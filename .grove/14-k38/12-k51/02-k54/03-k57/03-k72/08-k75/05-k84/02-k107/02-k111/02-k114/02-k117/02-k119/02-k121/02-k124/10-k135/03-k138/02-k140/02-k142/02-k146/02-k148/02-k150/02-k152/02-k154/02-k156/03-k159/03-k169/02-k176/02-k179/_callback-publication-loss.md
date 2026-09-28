@@ -61,3 +61,14 @@ post-loss lifecycle and encoding budgets, then commission fresh review before
 k182. Its integration, if needed, also precedes k182. K182 retains every original
 executable/version/corpus criterion above; k180 still composes every phase and
 k177 the whole sampler. No original criterion or ancestor closes here.
+
+## Transport topology handoff (k186)
+
+K185 is now a node. K186 specifies shared auxiliary framing, one combined lane
+per app, one global supervisor lane, origin/egress and PID-provenance joins,
+original-coordinate projection after physical cuts, and the observable reply
+before result fragment. Read transport-lanes.md with both current contracts.
+K187 still owns composed evidence/edges, k188 milestones/lifecycle and k189
+encoding budgets plus every original k185 criterion and its final exact-stem
+fresh review before k182. K186 does not supply an executable version or a
+complete loss interface; k182/k180 and all original criteria remain live.

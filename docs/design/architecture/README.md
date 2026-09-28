@@ -509,3 +509,30 @@ Mermaid parse error from the reserved identifier `call` was corrected to
 inspection used VNC and no independent guest-file digests were obtained.
 Browser/CDN/OS are not frozen, and mobile devices, earlier diagrams and every
 scroll position were not exhaustively checked. No native recorder or host GUI ran.
+
+For k186, [Transport owners, shared frames and observation lanes](index.html#diagram-process-recorder-transport) — Adds shared auxiliary framing, five observation owners and exact relay/production joins.
+[Reply ingress before the egress result record](index.html#diagram-process-recorder-reply-order) — Adds an observable two-begin reply/result history using the supervisor global lane.
+[Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Updates the final note and caption to distinguish k186 topology from open composed semantics.
+
+The [lane contract](../../verification/callback-native-capture/transport-lanes.md)
+states original coordinates, physical cuts and legacy comparison. Graphs start
+at the dark Start here node; sequences start at their first message. Serve this
+directory at `http://127.0.0.1:8772/`; Mermaid renders in the existing viewer
+using its pinned 12.0.0 import. No generated SVG or new build task is introduced.
+
+The [render record](../../verification/callback-native-capture/evidence/k186/render.json)
+binds final local viewer/manifest/source bytes to both serving URLs. The
+[presentation record](../../verification/callback-native-capture/evidence/k186/presentation.json)
+records Safari inspection only in disposable macOS clone `koine-k186-view`.
+Final topology was checked in wide light and narrow dark; final reply sequence
+in narrow dark; the existing publication note/caption in wide light. Fresh deep
+links reached all three titles, and the narrow dark discussion identified exactly
+the three changed views. A sequence-label semicolon parse error was corrected
+before final inspection. Captions wrap and branches remain readable.
+
+The guest agent was unavailable; VNC supplied inspection, without independent
+guest-file hashes or frozen browser/CDN/OS dependencies. Responsive desktop is
+not mobile-device testing. Earlier diagrams and every scroll position were not
+exhaustively checked. No native recorder or host GUI ran; the clone stop returned
+success. K187–k189 still complete evidence/lifecycle/budgets and final review
+before executable k182; no complete transport or native readiness is claimed.

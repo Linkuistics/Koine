@@ -24,32 +24,63 @@
     }
   ],
   "discussion": {
-    "title": "Distinguish publication observations",
-    "status": "Incomplete proposal — transport redesign and review before k182",
-    "summary": "K184 separates trusted prefixes from uncollected tails and local decisions from cross-role attribution. K185 must settle auxiliary traffic, lanes, hop status/edges, publication milestones, loss lifecycle and budgets, then commission fresh review before k182 implements and renews the corpus. V1–V26 remain unchanged.",
+    "title": "Account for every byte and keep original coordinates",
+    "status": "Topology proposal — k186 slice; composed contract still open",
+    "summary": "All auxiliary traffic shares framed sockets and ordinals. Each app has one combined observation lane; the supervisor has one global append order with I/O outside its lock. K187 evidence, k188 lifecycle and k189 budgets/reconciliation plus review remain before k182. V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-transport",
+      "process-recorder-reply-order",
       "process-recorder-publication",
-      "process-recorder-write-state",
-      "process-recorder-pending-native"
+      "process-recorder-write-state"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-publication",
-        "summary": "Clarifies prefix-relative byte feasibility and the unresolved composed transport contract."
+        "id": "process-recorder-transport",
+        "summary": "Adds shared auxiliary framing, transport owners and exact relay/production joins."
       },
       {
-        "id": "process-recorder-write-state",
-        "summary": "Labels the write-state illustration partial; abandonment, late returns and post-loss queues/read buffers remain k185."
+        "id": "process-recorder-reply-order",
+        "summary": "Adds the observed broker reply/result order with two contributing write begins."
+      },
+      {
+        "id": "process-recorder-publication",
+        "summary": "Updates the final note and caption: k186 fixes lanes, while evidence and lifecycle remain open."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "process-recorder-transport",
+      "group": "machine",
+      "title": "Transport owners, shared frames and observation lanes",
+      "source": "process-recorder-transport.mmd",
+      "caption": "Topology proposal only. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 still defines composed feasibility/edges, k188 publication milestones/lifecycle and k189 budgets plus whole-contract review before k182. No executable version or native evidence.",
+      "links": [
+        {
+          "label": "Transport lanes and original coordinates",
+          "href": "../../verification/callback-native-capture/transport-lanes.md"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-reply-order",
+      "group": "machine",
+      "title": "Reply ingress before the egress result record",
+      "source": "process-recorder-reply-order.mmd",
+      "caption": "Read from the first message. This proposed two-lane fragment uses actual local observation order: G44 precedes G45 in the supervisor global lane. Both G41 and G43 contribute to S20; the reply creates S20 → S22 → G44 → G45. An incorrect G45 → S20 edge would cycle without an invented schedule edge. Vertical placement across lanes does not add an order; S23 can occur before or after G45. This is an illustrative contract fragment, not a measured syscall schedule or an executable control. K187 extends loss/status cases; k182 must exercise the real reader, multiple begins and FIFO.",
+      "links": [
+        {
+          "label": "Exact G40–G46 and S20–S24 history",
+          "href": "../../verification/callback-native-capture/transport-lanes.md#observable-reply-before-egress-result"
+        }
+      ]
+    },
+    {
       "id": "process-recorder-publication",
       "group": "machine",
       "title": "Publication attempts and feasible receipt",
       "source": "process-recorder-publication.mmd",
-      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. This is one possible ordering: results may also precede receipts. Only in-prefix results constrain possible bytes. A covering begin can remain prefix-relative feasible with its result unavailable; an excluded late error is preserved but not replayed. Missing source on an uncollected tail is unverified; impossibility needs decisive exclusion. Local receipt/decision grading stays separate from cross-role attribution. K185 must settle auxiliary traffic, lanes, hop statuses/edges, publication milestones and budgets, then commission review before k182 implements/falsifies the contract and renews the corpus. K180 retains phase composition. The host runner bounds blocked broker work; k144 owns deadlines/reserve and k126 actual exits/containment. K184 source edits have not been freshly browser-inspected.",
+      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 now specifies shared auxiliary frames and app/supervisor lanes in the transport view. K187 still owes composed statuses/edges, k188 publication milestones/loss lifecycle and k189 budgets/reconciliation plus review before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
       "links": [
         {
           "label": "Publication observation contract",
@@ -283,7 +314,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -292,7 +323,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -301,7 +332,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -337,7 +368,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
