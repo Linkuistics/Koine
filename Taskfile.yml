@@ -1,6 +1,11 @@
 version: '3'
 
 tasks:
+  design:check-trace-cycles:
+    desc: Check non-raising Trace components and witnesses (graph-only diagnostic)
+    cmds:
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_trace_cycles.py
+
   design:measure-publication-budget:
     desc: Census frozen publication inputs and compute capacity (not transport conformance)
     cmds:
@@ -91,7 +96,7 @@ tasks:
       - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture
       - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture
       - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
-      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py docs/verification/callback-causal-fixture/test_sampler_loop.py docs/verification/callback-causal-fixture/test_native_ownership.py docs/verification/callback-causal-fixture/test_source_calls.py docs/verification/callback-causal-fixture/test_sampler_startup.py docs/verification/callback-causal-fixture/test_early_cancellation.py docs/verification/callback-causal-fixture/test_ready_cancellation.py docs/verification/callback-causal-fixture/test_armed_cancellation.py docs/verification/callback-causal-fixture/test_selected_source_failure.py docs/verification/callback-causal-fixture/test_selected_right_failure.py docs/verification/callback-causal-fixture/test_candidate_refusal.py docs/verification/callback-causal-fixture/test_capture_continuation.py docs/verification/callback-causal-fixture/test_reached_loop_faults.py docs/verification/callback-causal-fixture/test_preselection_failure.py docs/verification/callback-causal-fixture/test_startup_cancellation_race.py docs/verification/callback-causal-fixture/test_running_cancellation.py docs/verification/callback-causal-fixture/test_selected_cancellation.py docs/verification/callback-causal-fixture/test_continuation_cancellation.py docs/verification/callback-causal-fixture/test_selected_return.py docs/verification/callback-causal-fixture/test_pending_native.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_analyze.py docs/verification/callback-causal-fixture/test_sampler_loop.py docs/verification/callback-causal-fixture/test_native_ownership.py docs/verification/callback-causal-fixture/test_source_calls.py docs/verification/callback-causal-fixture/test_sampler_startup.py docs/verification/callback-causal-fixture/test_early_cancellation.py docs/verification/callback-causal-fixture/test_ready_cancellation.py docs/verification/callback-causal-fixture/test_armed_cancellation.py docs/verification/callback-causal-fixture/test_selected_source_failure.py docs/verification/callback-causal-fixture/test_selected_right_failure.py docs/verification/callback-causal-fixture/test_candidate_refusal.py docs/verification/callback-causal-fixture/test_capture_continuation.py docs/verification/callback-causal-fixture/test_reached_loop_faults.py docs/verification/callback-causal-fixture/test_preselection_failure.py docs/verification/callback-causal-fixture/test_startup_cancellation_race.py docs/verification/callback-causal-fixture/test_running_cancellation.py docs/verification/callback-causal-fixture/test_selected_cancellation.py docs/verification/callback-causal-fixture/test_continuation_cancellation.py docs/verification/callback-causal-fixture/test_selected_return.py docs/verification/callback-causal-fixture/test_pending_native.py docs/verification/callback-causal-fixture/test_trace_cycles.py
 
   design:generate-callback-controls:
     desc: Regenerate synthetic causal fixtures before freezing a new run

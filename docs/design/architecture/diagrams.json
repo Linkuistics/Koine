@@ -24,31 +24,17 @@
     }
   ],
   "discussion": {
-    "title": "Publication transport review repairs",
-    "status": "Review integrated — executable and native work remain",
-    "summary": "Cycle participation is separate from byte-source impossibility. Writer-class boundaries, supported bases, legacy comparison and bounded post-budget reads are explicit. Corrected lifecycle paths remain design expectations for k182; V1–V26 are unchanged.",
+    "title": "Non-raising cycle evidence on Trace",
+    "status": "Graph interface implemented — publication integration remains",
+    "summary": "K192 supplies canonical SCC membership, participating edges and one supported witness per cyclic component. Legacy APIs and V1–V26 meanings remain unchanged. K193 still owns actual publication parsing, edge selection, independent grades and all transport controls; graph-only examples are not loader or native evidence.",
     "diagramIds": [
-      "process-recorder-capacity",
-      "process-recorder-transport",
       "process-recorder-evidence",
-      "process-recorder-publication",
-      "process-recorder-reply-order",
-      "process-recorder-write-state",
-      "process-recorder-reader-stop",
-      "process-recorder-milestones"
+      "process-recorder-reply-order"
     ],
     "updatedDiagrams": [
       {
         "id": "process-recorder-evidence",
-        "summary": "Separate cycle-contradicted from F/U/I using one Trace SCC pass."
-      },
-      {
-        "id": "process-recorder-write-state",
-        "summary": "Show mandatory commits on sealed writers and eighth-short-result sealing."
-      },
-      {
-        "id": "process-recorder-reader-stop",
-        "summary": "Show empty-buffer EOF/error as a read closure."
+        "summary": "Marks the graph-only SCC interface executable and the publication reader/report integration still owned by k193."
       }
     ]
   },
@@ -97,11 +83,15 @@
       "group": "machine",
       "title": "Closure, attribution and supported causal edges",
       "source": "process-recorder-evidence.mmd",
-      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 supplies capacity and reconciliation, reviewed by k190 and repaired by k191. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation. K191 separates F/U/I attribution from cycle-contradicted; all participating claims retain their byte grades, without culprit inference. K182 adds the non-raising SCC/witness pass to the same Trace adjacency.",
+      "caption": "Publication evidence rules remain proposed; the graph-only SCC interface is executable, with no loader or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 supplies capacity and reconciliation, reviewed by k190 and repaired by k191. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation. K191 separates F/U/I attribution from cycle-contradicted; all participating claims retain their byte grades, without culprit inference. K192 supplies Trace.cycle_components with an explicit canonical coordinate order, original-index component membership, participating edges and one supported witness per cyclic component. K193 owns actual supported-edge selection and independent publication reports. A witness need not traverse every participating edge. Supplied-edge tests do not close E20/E21/E24.",
       "links": [
         {
           "label": "Publication evidence and E01–E24 histories",
           "href": "../../verification/callback-native-capture/transport-evidence.md"
+        },
+        {
+          "label": "Executable graph interface and limits",
+          "href": "../../verification/callback-native-capture/transport-evidence.md#executable-graph-interface-k192"
         }
       ]
     },

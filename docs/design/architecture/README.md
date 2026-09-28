@@ -15,21 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K191 integrates k190's publication transport review. The detailed contract and
-[dispositions](../../verification/callback-capture-transfer.md#publication-transport-review-integration-k191)
-separate cycle participation from byte impossibility, fix writer-class examples,
-require V11–V25 bases, explain legacy-order differences and count bounded
-post-budget ingress separately from native audit. K182 retains implementation,
-all falsification and complete legacy corpus renewal; k180 retains phase loss.
+K192 supplies the [non-raising Trace graph interface](../../verification/callback-native-capture/transport-evidence.md#executable-graph-interface-k192): canonical SCC membership, participating edges and one supported cycle witness per cyclic component. The publication reader still owns physical cuts, supported-edge selection, independent F/U/I grades and all transport discriminators in k193. Legacy APIs and V1–V26 semantics remain unchanged; supplied graph tests establish no native or loader result.
 
-Changed views:
+Changed view:
 
-- [Evidence](index.html#diagram-process-recorder-evidence): one Trace SCC pass, separate cycle status and byte grades.
-- [Writer lifecycle](index.html#diagram-process-recorder-write-state): mandatory post-seal commit and attempt-limit paths, with supervisor pending-seal ownership.
-- [Reader lifecycle](index.html#diagram-process-recorder-reader-stop): empty-buffer EOF/error and bounded reader-stop semantics.
+- [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) — Marks the graph-only SCC pass executable and the publication reader/report integration still open.
 
-The other five transport views remain context. No executable or native readiness
-is established; V1–V26 retain their original meanings.
+[Reply ingress before the egress result record](index.html#diagram-process-recorder-reply-order) is unchanged context: k193 must still falsify its edge selection through the real loader.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
