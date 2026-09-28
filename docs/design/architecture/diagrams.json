@@ -24,22 +24,28 @@
     }
   ],
   "discussion": {
-    "title": "Preserve the actual selected invocation result",
-    "status": "V25 diagnostic design \u2014 native readiness withheld",
-    "summary": "An unexpected invocation return keeps the first failure cause and every reached continuation. Blocked calls, transport loss and complete sampler reconciliation remain k176/k177.",
+    "title": "Preserve pending native obligations",
+    "status": "V26 diagnostic design \u2014 native readiness withheld",
+    "summary": "A raw begin without its return preserves pending calls, leases and rights. It does not prove OS blocking or process exit. Publication loss and full composition remain k179/k180; k177 retains sampler reconciliation.",
     "diagramIds": [
-      "process-recorder-selected-return",
-      "process-recorder-continuation",
-      "process-recorder-preselection"
+      "process-recorder-pending-native",
+      "process-recorder-selected-return"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-selected-return",
-        "summary": "Adds actual non-stopped return, first-cause failure and mandatory continuation through truthful cleanup."
+        "id": "process-recorder-pending-native",
+        "summary": "Adds intact-prefix obligations, unknown acquisition output and the external bounding handoff."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-pending-native",
+      "group": "machine",
+      "title": "Pending native obligations and external bounding",
+      "source": "process-recorder-pending-native.mmd",
+      "caption": "V26 adds a diagnostic view over a named earlier producer. The dark Start here node marks the reading entry; numbered edges show handoff order. Missing returns preserve obligations but cannot establish native entry, OS blocking, cleanup or exit. The external supervisor and native exit/containment evidence remain k126; k144 owns deadline values and reserve. k179/k180 complete publication and loss composition, and k177 retains whole-sampler promotion. This is a protocol illustration, not model checking or native evidence."
+    },
     {
       "id": "process-recorder-continuation-cancel",
       "group": "machine",

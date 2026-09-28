@@ -468,3 +468,22 @@ binds viewer/manifest/source across local and both HTTP/guest copies; the
 records final wide light/narrow dark checks, the corrected label parse error and
 teardown of both disposable clones. The active V22/V23 union closes k171 only;
 k172 continuation/retention and k169 whole-sampler work remain. No native evidence.
+
+
+For k178, [Pending native obligations and external bounding](index.html#diagram-process-recorder-pending-native)
+adds intact-prefix native/invocation waits, retained leases/rights, unknown
+acquisition output and externally observed recovery. The
+[current discussion](index.html#discussion) names V26 and the k179/k180/k177
+remainder; only the new flowchart is marked updated. Its dark Start here node
+and numbered edges identify the reading path.
+
+The [render record](../../verification/callback-native-capture/evidence/k178/render.json)
+binds final viewer/manifest/source bytes to matching host HTTP assets. The
+[presentation record](../../verification/callback-native-capture/evidence/k178/presentation.json)
+records disposable Linux clone inspection, readable diagram sections and a
+650×850 responsive desktop viewport in light/dark appearance. An initial
+Mermaid parse error from the reserved identifier `call` was corrected to
+`nativeCall`; the final source rendered. The guest agent was unavailable, so
+inspection used VNC and no independent guest-file digests were obtained.
+Browser/CDN/OS are not frozen, and mobile devices, earlier diagrams and every
+scroll position were not exhaustively checked. No native recorder or host GUI ran.
