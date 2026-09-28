@@ -152,3 +152,35 @@ test queries, concrete composite operands, R11/R29 variants and complete query
 census. Fresh k221 review precedes k205. The verified finite topology is not a
 production report interface; unassigned controls are not implementation defaults.
 Every original criterion and native owner above remains; no ancestor closes.
+
+## Decomposition (k205 plan)
+
+K205 plans delivery and freezes the report profile (its node, k223/k224).
+Executable delivery is eighteen flat, ordered impl leaves, each adding admitted
+report sections computed from real serialized files and keeping every legacy
+and earlier publication check green:
+
+- k225 serializer: real five-lane fixture files, B09/B10/B20, measured sizes.
+- k226 report entry: two-path entry, frozen profile, admission, emergency
+  header/sidecar, guard, test hook, R35, domains and producer invariants.
+- k227 legacy comparison: detached CLI projection and full capture, R19.
+- k228 write evidence: calls, intervals, feasible receipt, E01–E07/E16/E18/E19.
+- k229 writer lifecycle: seals, buffers, late results, reserve, B12–B14/B18/B19.
+- k230 hop joins: payload/auxiliary/PID joins, F/U/I, topology, E08–E15/E17.
+- k231 trace freeze: supported edges, one Trace/SCC pass, E20–E24, R20.
+- k232 order support: bundles, dependency SCC, raw/usable order, P probes.
+- k233 source rules and k234 controller rules: shared local rules with
+  itemwise legacy equality, guarded obligations.
+- k235 milestones: M01–M33, L20–L31, L33.
+- k236 sample facts, k237 candidate claims, k238 sample state: witnesses,
+  counts, window, interpretation, owned support, core, classifier, retention,
+  Q01–Q41 and every repair vector.
+- k239 labelled legacy differences; k240 profile coverage; k241 corpus and
+  V1–V26 renewal; k242 reconciliation and k180 handoff.
+
+The complete criterion/ID ownership table is the assessment's
+publication-delivery-plan-k205 section. Shared conventions: successor modules
+sit beside publication_files.py; `design:check-publication-report` is the one
+growing pinned task; every control has an honest neighbour, an isolating
+mutant and both fixed-coordinate collector permutations. An impl leaf that
+proves too big decomposes itself; a review-impl is cut lazily by its producer.
