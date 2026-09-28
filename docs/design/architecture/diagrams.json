@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Publication replay: counts, closure and usable evidence",
-    "status": "K211 design; k212 review before executable planning",
-    "summary": "Raw counting differs from endpoint eligibility. Complete collections close candidate domains; semantic closed alone does not. Receipt dependencies follow selected paths before truth composition. Earlier unknowns yield partial. K205 freezes the named report budgets before implementation. V1\u2013V26 and native obligations stay unchanged.",
+    "title": "Publication replay: receipt dependencies and determinate reports",
+    "status": "K214 design for k215 review",
+    "summary": "Local lane crossing does not consume receipt attribution. Search usable paths before tie-breaking; keep raw paths and every required frame contributor. Controller integrity differs from phase/tuple correctness. Acquisition counts, hint absence and ALL need closure, so open-tail core is U. K205 retains numeric budgets and complete delivery; no successor execution or native claim.",
     "diagramIds": [
       "process-recorder-replay",
       "process-recorder-claims",
@@ -36,15 +36,15 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-replay",
-        "summary": "Adds counting/closure, explicit sample classification and report admission with incomplete-resource output."
+        "summary": "Separates integrity, acquisition domains and independent report columns."
       },
       {
         "id": "process-recorder-claims",
-        "summary": "Inherits receipt contributors before atomic masking, then composes usable truth and applies own support."
+        "summary": "Selects dependency-clean paths and separates local receipt crossing from attribution."
       },
       {
         "id": "process-recorder-sample-state",
-        "summary": "Adds exhaustive state precedence, including earlier unknowns and separate retention scope."
+        "summary": "Names controller integrity and closure-aware acquisition without changing earlier-U precedence."
       }
     ]
   },
@@ -54,7 +54,7 @@
       "group": "machine",
       "title": "One frozen graph for publication replay",
       "source": "process-recorder-replay.mmd",
-      "caption": "K211 proposed consumer policy for k212 review. Numbers show evaluation stages, not causal edges. Raw retained assertions count against uniqueness; only eligible endpoints supply witnesses. Candidate closure requires eligible producer completion and a valid physical lane end. One Trace freezes before claims. Admission checks apply throughout allocation and encoding, not merely at final output: k205 freezes the exact profile before implementation. Exhaustion yields incomplete-resource, no sample scope, and only whole admitted diagnostic sections. The dashed branch preserves the full detached legacy CLI. No successor execution, native result or V1\u2013V26 change is claimed.",
+      "caption": "K214 repair for k215 review. Numbers show evaluation stages, not event order. Integrity, raw assertion counts, eligible endpoints and closure are separate. Interpretation does not absorb post phase/tuple failures. Acquisition count/absence/ALL require sampler collection closure; named milestones remain prefix-relative. One Trace freezes before raw and usable claims. All independent columns survive summary F/U. Admission applies throughout allocation/encoding; k205 freezes the revised path/dependency profile before implementation. Exhaustion is incomplete-resource with no scope, not input refutation. Dashed branch retains the complete unchanged legacy CLI. No successor execution or native evidence.",
       "links": [
         {
           "label": "Integration, migration and falsification contract",
@@ -67,7 +67,7 @@
       "group": "machine",
       "title": "Order evidence and independent support",
       "source": "process-recorder-claims.mmd",
-      "caption": "K211 proposed claim evaluation, not event order or model checking. Same-vertex strict order is refuted by identity before path selection. For distinct vertices choose a canonical clean path, else a canonical cyclic-only path, else a clean reverse refuter or U. Every traversed or prerequisite receipt contributes its complete finite bundle, including upstream joins and all nonempty begins. Do not retry another path after masking. R11 has raw order T, usable order U, frame U and conjunction U. R13 remains T for a merely cyclic vertex with no cyclic inherited edge. Mask raw F as well as T before NOT/AND; independent explicit alternatives can still decide a composite unless its own mandatory support cycles. Local receipt decisions retain their separate support.",
+      "caption": "K214 claim algorithm, not a model-checking result. Same-vertex strict order is F by identity; missing endpoints give U. Raw topology chooses noncyclic forward, else cyclic forward, else noncyclic reverse or disconnected. Justification dependencies retain every required contributor but local receipt crossing consumes none. Precompute dependency masks once; search the frozen Trace for the shortest usable forward or reverse path with canonical tie-breaking. A shorter unusable shortcut cannot displace an old usable proof. Raw T/F becomes usable U only when no dependency-clean proof survives; report both paths when different. Frame/composite own support is always retained: local order can be T while frame and order-plus-frame are U. New cycles or invalidated dependencies can remove old proof. NOT/AND/OR use masked operands, then add and mask composite-owned support.",
       "links": [
         {
           "label": "Order, support and claim algebra",
@@ -80,7 +80,7 @@
       "group": "machine",
       "title": "Sample state and retention scope",
       "source": "process-recorder-sample-state.mmd",
-      "caption": "K211 proposed successor classifier. Named outcomes inside each box stop classification; only the labelled continuation edge reaches the next check. Every non-reached outcome has scope none. T means supported, F refuted, U unproved. Every earlier U yields partial while later facts remain visible; core T with ambiguity U is partial. Closed absence alone permits unreached. Ambiguity needs duplicate milestones, supported overlap or a closed fully resolved but unordered recorded graph; a broker gap never becomes concurrency or reverse-order evidence. Only reached can receive callback-sample or post-return-retention scope; neither proves valid values, freshness or native readiness. Legacy V1\u2013V26 outputs are unchanged.",
+      "caption": "K214 successor classifier. Outcomes inside each box stop classification; only labelled continuation edges proceed. Non-reached scope is none. Interpretation tests boundary/identity/local-receipt integrity: a well-formed controller fault-tail makes U; a malformed local receipt gives F. Post phase/tuple errors stay claim-local. Open-tail acquisition counts/hint absence/ALL make acquisition and core U, with all constituents still reported. Earlier U always yields partial. Closed resolved unordered activity is ambiguous; a broker gap is unknown, not concurrency proof. An ordinary C post or after-callback C tuple mismatch can leave reached/callback-sample with retention F. Retention T alone never establishes reached. Successor partial includes unknown sample presence; resource failure is outside this evidence classifier. Legacy meanings/results and native obligations remain unchanged.",
       "links": [
         {
           "label": "Complete classifier and closure contract",

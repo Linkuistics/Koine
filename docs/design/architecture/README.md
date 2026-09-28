@@ -15,13 +15,19 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K211 proposes [publication replay policy](../../verification/callback-native-capture/publication-replay.md) with explicit counting/closure, receipt-support inheritance, T/F/U state precedence and report admission. K213 integrates k212 and identifies remaining receipt/path, interpretation and acquisition-domain conflicts. K214 repairs them with k215 review before k205 plans delivery and freezes numeric report budgets. The current diagrams remain a proposal pending that repair. The complete detached legacy CLI and V1–V26 remain unchanged. No executable successor or native result follows.
+K214 supplies the [publication replay repair](../../verification/callback-native-capture/publication-replay.md)
+for k215 fresh review before k205 plans delivery and freezes numeric report
+budgets. Local receipt crossing and attribution have distinct support; raw and
+usable paths are reported separately. Controller integrity is distinct from
+phase/tuple correctness. Acquisition counts/absence/ALL require closure. The
+complete detached legacy CLI and V1–V26 remain unchanged. These diagrams state
+a proposal; they establish no executable successor or native result.
 
 Changed views:
 
-- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Adds counting/closure, sample classification and report admission.
-- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Carries receipt contributors into atomic truth before composition and masking.
-- [Sample state and retention scope](index.html#diagram-process-recorder-sample-state) — Adds every state branch, earlier-U precedence and separate retention scope.
+- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Separates integrity, acquisition domains and independent columns.
+- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Selects dependency-clean paths and distinguishes local crossing from attribution.
+- [Sample state and retention scope](index.html#diagram-process-recorder-sample-state) — Names integrity and closure-aware acquisition while preserving earlier-U precedence.
 
 [Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) remain context.
 
@@ -763,3 +769,21 @@ dependencies are not claimed. The clone and temporary port-8774 server stopped;
 the existing port-8772 viewer and unrelated running VM remain. No host GUI,
 successor execution or native recorder ran. K212 reviews the design before
 k205 freezes the numeric report profile and plans complete executable delivery.
+
+## K214 presentation
+
+Safari in disposable macOS clone `koine-k214-view` rendered the changed
+[replay stages](index.html#diagram-process-recorder-replay),
+[claim rules](index.html#diagram-process-recorder-claims) and
+[sample state](index.html#diagram-process-recorder-sample-state).
+All three complete diagrams and captions were inspected at 1024-pixel light and
+720-pixel dark window widths. The discussion/update links agree with these edits;
+a fresh-tab claims deep link reached the intended rendered view. Initial long
+claim labels were shortened and the final sources rechecked. The
+[presentation record](../../verification/callback-native-capture/evidence/k214/presentation.json)
+binds assets and screenshots; the [document checks](../../verification/callback-native-capture/evidence/k214/verification.json)
+include served-source equality. Guest control used VNC because the agent was
+unavailable. These are responsive desktop checks, not mobile-device coverage;
+wide dark/narrow light, independently hashed guest assets and frozen browser/CDN
+versions are not claimed. Only changed views were inspected. No native diagnostic
+or successor analyzer ran, and no host GUI was used.
