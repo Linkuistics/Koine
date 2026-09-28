@@ -15,19 +15,12 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K217 supplies [complete proposed publication path controls](../../verification/callback-native-capture/publication-path-controls.md)
-with k218 topology review and k219 observation-contract qualifications. K220/k221\nmust bind unassigned endpoint/composite controls before k205. Exact input rows place a reversed join off the queried
-noncyclic raw shortcut: two raw edges, six usable edges. Separate split-write
-files test all-contributor ownership and honestly retain selected/window U,
-partial state and no scope. K205 still plans complete delivery and freezes
-numeric report budgets. The legacy CLI and frozen V1–V26 remain unchanged.
-These diagrams and derived vectors establish no executed successor or native result.
+K220 specifies [publication control observers](../../verification/callback-native-capture/publication-path-controls.md#control-observers): 41 rule-issued production queries and nine fixed internal probes, concrete composite operands/support, distinct test-result identity and production consumer guards. R11 restores local-ending T/frame U/conjunction U; R29 restores the same-file clean reverse alternative. Window members at B8/B9/B20 have raw/usable paths of 44/88, 43/87 and 32/76 edges, while W remains U through the trigger member. K221 reviews before k205 plans complete delivery and freezes the integer profile. These are design derivations, not executed successor or native results. V1–V26 and k217 inputs are unchanged.
 
 Changed views:
 
-- [A tainted shortcut and a clean longer proof](index.html#diagram-process-recorder-path-controls) — Derives the distinct local, shorter-path, attribution and SCC-vertex controls.
-- [Ending at a cyclic receipt differs from crossing it](index.html#diagram-process-recorder-path-contributors) — Separates contributor omission from crossing and preserves partial scope.
-
+- [Production claims and isolated path probes](index.html#diagram-process-recorder-path-controls) — Separates the production census from fixed internal queries and their consumers.
+- [Concrete operands for required and owned support](index.html#diagram-process-recorder-path-contributors) — Binds L/A/Z/N and the exact armed bundle to observable expression results.
 
 [Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) remain context.
 
@@ -823,5 +816,16 @@ analyzer or native recorder ran. K218 supplies the fresh semantic review.
 The path panels are independent mathematical controls, not a derivation chain
 or a claim that every query is issued by the two-file report. P-reverse has
 raw F/usable U/NOT U in the upstream-cycle input. Edge counts are node text.
-K220/k221 must settle report versus isolated-seam observation and composite
-operands before k205; see the [review boundary](../../verification/callback-native-capture/publication-path-controls.md#k219-review-boundary).
+K220 now assigns report versus isolated-seam observers and concrete composite
+operands; k221 reviews before k205. See the [review boundary](../../verification/callback-native-capture/publication-path-controls.md#k219-review-boundary).
+
+
+### K220 observer presentation
+
+The two changed views distinguish production rule queries from fixed internal
+probes and bind composite operands to the actual frame/count/support records.
+The [presentation record](../../verification/callback-native-capture/evidence/k220/presentation.json)
+records disposable Safari render inspection, including narrow/dark layout and
+a fresh-tab deep link. The [verification record](../../verification/callback-native-capture/evidence/k220/verification.json)
+binds final served sources and preservation checks. This is browser/design
+evidence only; fresh k221 review and complete k205 executable delivery remain.

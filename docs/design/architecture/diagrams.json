@@ -24,9 +24,9 @@
     }
   ],
   "discussion": {
-    "title": "Publication path controls: exact rows and distinct claims",
-    "status": "K219 integration; k220/k221 observability design and review next",
-    "summary": "Complete proposed files replace the invalid shared path fixture. An upstream join SCC exposes a two-edge tainted raw shortcut and six-edge usable proof while local crossing remains T. A separate split write gives distinct contributor results, with selected/window U and no scope. K218 verified topology; k220/k221 must bind endpoint and composite controls to report claims or an isolated test seam before k205. Representation checks are not successor execution. K205 retains numeric report budgets and complete delivery.",
+    "title": "Make every control observable",
+    "status": "Proposed — k220 design; k221 review next",
+    "summary": "Bind each control to a production claim or a fixed isolated test recipe. Derive the complete query census and retain exact operands and support even when summaries do not change. No successor execution or native credit.",
     "diagramIds": [
       "process-recorder-path-controls",
       "process-recorder-path-contributors",
@@ -36,11 +36,11 @@
     "updatedDiagrams": [
       {
         "id": "process-recorder-path-controls",
-        "summary": "Derives local crossing, shorter path, sole attribution and SCC-vertex queries from actual rows."
+        "summary": "Separates 41 production queries from nine internal probes and shows the longer real window witnesses."
       },
       {
         "id": "process-recorder-path-contributors",
-        "summary": "Separates ending at a cyclic receipt from crossing it and preserves partial sample scope."
+        "summary": "Binds local-ending and bare/owned composites to A, Z, N, L and the exact armed bundle."
       }
     ]
   },
@@ -48,9 +48,9 @@
     {
       "id": "process-recorder-path-controls",
       "group": "machine",
-      "title": "A tainted shortcut and a clean longer proof",
+      "title": "Production claims and isolated path probes",
       "source": "process-recorder-path-controls.mmd",
-      "caption": "K217 proposed inputs, with k219 observation-contract limits; not executed successor controls. Solid branches select independent control panels, not a derivation chain; row arrows inside labels are Trace edges. Dashed lines identify mandatory dependencies, not causal edges. Ready-C has exactly supervisor SCC {G28,G29}; G30 and controller T3/T4/T5 are outside. P-short raw BFS selects two noncyclic edges, but T4 attribution owns the reversed join. Usable BFS selects six clean edges. P-local consumes only local support; P-vertex touches G29 through clean origin-hop ingress support and an external local successor. P-only has no clean alternative. P-reverse is raw F/usable U/NOT U. Edge counts appear in node text. These endpoint examples await k220/k221 report or isolated-seam bindings. Clean repair puts ingress before relay. Later sample facts all remain T with retention scope, while composed readiness is U and protocol_complete is false. See complete files, edge census, vectors and the K219 review boundary; unassigned query columns are not report assertions.",
+      "caption": "Proposed k220 observers. Branches choose independent observer families; diagram arrows are not Trace edges. The production two-file entry issues the 41 queries derived from real rule instances. In multi-cycle, Q34/Q35/Q36 window members need 44/88, 43/87 and 32/76 raw/usable edges; W stays U because Q37 crosses a cyclic edge. Nine fixed internal queries exercise remaining path cases on the same frozen snapshot. P-short and the same-file reverse alternative select six-edge usable proofs. A distinct test result is refused by production emission and consumption. Counts are graph edges, not time; no successor control has executed. K221 reviews before k205 freezes the complete report profile.",
       "links": [
         {
           "label": "Rows, edge census and upstream controls",
@@ -61,9 +61,9 @@
     {
       "id": "process-recorder-path-contributors",
       "group": "machine",
-      "title": "Ending at a cyclic receipt differs from crossing it",
+      "title": "Concrete operands for required and owned support",
       "source": "process-recorder-path-contributors.mmd",
-      "caption": "K217 separate R11 split-write control; its endpoint-query observer remains k220/k221 work; boxes guide evaluation, not event order. Armed N=103 has contributors +102 at G87 and +1 at G90. Only SCC: T34,T35,B25,B26,B27,G89,G90. G87 is outside. The selected G87\u2192T34 edge is noncyclic, but every armed contributor is mandatory, so raw T becomes usable U despite all-F byte/join grades. Dropping G90\u2192T34 from the bundle falsely changes the order/frame to T; it cannot repair cyclic crossing T34\u2192T35 or B25\u2192B.closed. Selected_callback and observation_window are U, all other core facts T, interpretation T, ambiguity F, continuation T: partial/core-unproved/none. The honest split neighbor restores all-T core and retention scope. Turn0 variants separately isolate composite-owned masking. No sample-summary mutant kill or successor execution is claimed.",
+      "caption": "Proposed R11/R29 algebra observers, not a new product claim. Branches choose independent tests; the lower arrow compares the same expressions with own D. These arrows are not Trace edges. A is the actual armed frame attribution at T34; its D bundle includes both G87→T34 and cyclic G90→T34. Test L is local T33→T34, so L=T while A=U and the required conjunction is U. Z is the real ordinary C-post-zero operand, T; N=NOT Z is F. Bare A AND N selects N and stays F; bare A OR Z selects Z and stays T. Giving either expression its own D masks it to U. Fixed test IDs observe these outputs and direct support references. Production selected/window/state/scope vectors remain separately required. The explicit omission mutant drops G90→T34 only from D, retaining G87→T34 and every Trace edge. K221 still owns fresh review.",
       "links": [
         {
           "label": "Split rows, full vectors and mutant limits",
