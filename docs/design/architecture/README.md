@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K194 supplies the [publication byte codec](../../verification/callback-native-capture/publication-codec.md): exact envelope images, strict JSON/base64 and bounded nondestructive assembly. Decoding and buffering provide no receipt, schema or native credit. K195 retains the complete transport reader and every original k193/k182/k179 criterion. V1–V26 remain unchanged.
+K196 supplies the [closed auxiliary frame boundary](../../verification/callback-native-capture/publication-auxiliary.md): exact routes, nested payloads and bounded references through immutable bytes. Shape acceptance is separate from actual observation joins. K197 retains the full successor and every original k195/k193/k182/k179 criterion. V1–V26 are unchanged.
 
 Changed view:
 
-- [Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) — Adds the codec boundary and caller-owned validation/receipt append before consuming bytes.
+- [Closed auxiliary bytes before provenance](index.html#diagram-process-recorder-auxiliary) — Adds auxiliary validation and the remaining history joins before provenance or publication credit.
 
-[Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) and [Encoding budgets and reserved failure observations](index.html#diagram-process-recorder-capacity) are unchanged context. Their complete loader and capacity outcomes remain k195; k192's graph utility and k194's codec cannot supply them alone.
+[Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) and [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context. The complete history reader remains k197's responsibility.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -84,6 +84,16 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k196, Safari in disposable macOS clone `koine-k196-view` displayed the
+[auxiliary view](index.html#diagram-process-recorder-auxiliary), its complete
+caption, a fresh-tab deep link and current discussion at 1024×768 in light
+appearance. The [presentation record](../../verification/callback-native-capture/evidence/k196/presentation.json)
+and [asset equality record](../../verification/callback-native-capture/evidence/k196/render.json)
+bind that inspection to the local/served viewer, manifest and editable source.
+The clone and temporary guest-facing server stopped. No dark/narrow/mobile,
+independent guest-file or frozen browser/CDN/OS claim follows. This is visual
+inspection of the auxiliary boundary, not complete transport or native evidence.
 
 K184 updates publication/view wording and labels unresolved transport design.
 These edited Mermaid sources and captions have not been freshly rendered or

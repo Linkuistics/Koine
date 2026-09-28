@@ -24,18 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Exact bytes before receipt evidence",
-    "status": "Byte codec implemented — transport integration remains",
-    "summary": "K194 supplies exact envelope encoding/decoding and bounded nondestructive assembly. Decoded or buffered bytes are not a receipt. K195 retains closed schemas, observation lanes, both hops, supported Trace edges, F/U/I and K/L/R, budgets and every transport discriminator. V1–V26 are unchanged.",
+    "title": "Closed auxiliary bytes before provenance",
+    "status": "Auxiliary schema implemented; complete history integration remains",
+    "summary": "K196 checks four auxiliary routes and closed payloads while retaining exact bytes. Shape-valid references do not establish actual admissions, receipt or provenance. K197 retains the complete versioned successor; V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-auxiliary",
       "process-recorder-codec",
-      "process-recorder-evidence",
-      "process-recorder-capacity"
+      "process-recorder-evidence"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-codec",
-        "summary": "Adds the executable byte boundary and explicit caller validation/receipt append before consuming buffered bytes."
+        "id": "process-recorder-auxiliary",
+        "summary": "Adds the exact auxiliary schema boundary and explicit history joins before provenance or publication credit."
       }
     ]
   },
@@ -680,6 +680,19 @@
         {
           "label": "Executable codec API and limitations",
           "href": "../../verification/callback-native-capture/publication-codec.md"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-auxiliary",
+      "group": "machine",
+      "title": "Closed auxiliary bytes before provenance",
+      "source": "process-recorder-auxiliary.mmd",
+      "caption": "K196 checks admission release, candidate table, activation request and helper result through the real byte codec. Immutable shape facts retain the received spelling. They do not prove a referenced observation exists or supply a receipt, K/L/R milestone, graph edge or native outcome. K197 must retain raw failures beside independent diagnostics and perform the actual trusted-history joins. No analyzer version or native credit is assigned.",
+      "links": [
+        {
+          "label": "Closed payloads and remaining observation joins",
+          "href": "../../verification/callback-native-capture/publication-auxiliary.md"
         }
       ]
     }
