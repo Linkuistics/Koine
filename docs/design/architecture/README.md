@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K192 supplies the [non-raising Trace graph interface](../../verification/callback-native-capture/transport-evidence.md#executable-graph-interface-k192): canonical SCC membership, participating edges and one supported cycle witness per cyclic component. The publication reader still owns physical cuts, supported-edge selection, independent F/U/I grades and all transport discriminators in k193. Legacy APIs and V1–V26 semantics remain unchanged; supplied graph tests establish no native or loader result.
+K194 supplies the [publication byte codec](../../verification/callback-native-capture/publication-codec.md): exact envelope images, strict JSON/base64 and bounded nondestructive assembly. Decoding and buffering provide no receipt, schema or native credit. K195 retains the complete transport reader and every original k193/k182/k179 criterion. V1–V26 remain unchanged.
 
 Changed view:
 
-- [Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) — Marks the graph-only SCC pass executable and the publication reader/report integration still open.
+- [Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec) — Adds the codec boundary and caller-owned validation/receipt append before consuming bytes.
 
-[Reply ingress before the egress result record](index.html#diagram-process-recorder-reply-order) is unchanged context: k193 must still falsify its edge selection through the real loader.
+[Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence) and [Encoding budgets and reserved failure observations](index.html#diagram-process-recorder-capacity) are unchanged context. Their complete loader and capacity outcomes remain k195; k192's graph utility and k194's codec cannot supply them alone.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -587,3 +587,25 @@ independent guest-file hashes or frozen browser/CDN/OS dependencies. The clone
 stopped successfully and was absent from the final inventory. No native recorder,
 transport conformance or corpus renewal ran. Fresh whole-contract review and any
 integration precede k182; the preceding k186–k188 paragraphs record earlier scope.
+
+For k194, [Exact bytes before receipt evidence](index.html#diagram-process-recorder-codec)
+adds bounded byte assembly, exact envelope parsing and caller-owned receipt
+append before consumption. The [discussion](index.html#discussion) identifies
+this one changed view; the evidence and capacity views provide context.
+The [codec contract](../../verification/callback-native-capture/publication-codec.md)
+defines the API, alternatives and remaining integration. Graphs start at the
+dark Start here node and follow numbered edges. The source stays editable in
+the existing pinned Mermaid viewer at `http://127.0.0.1:8772/`.
+
+The [asset record](../../verification/callback-native-capture/evidence/k194/render.json)
+matches the three local and served viewer/manifest/source files. The
+[presentation record](../../verification/callback-native-capture/evidence/k194/presentation.json)
+records the complete diagram and caption, one changed discussion marker and a
+fresh new-tab deep link in Safari in disposable macOS clone `koine-k194-view`.
+All inspected labels were legible at 1024×768 in light appearance. No render
+error was observed. The guest agent was unavailable; VNC supplied inspection.
+Dark/narrow/mobile appearance, independent guest-file hashes and frozen
+browser/CDN/OS dependencies were not checked. The clone stopped and was absent
+from the final inventory; the temporary guest-facing server stopped. No native
+recorder ran. K195 retains the versioned transport reader, grades and all
+transport discriminators; codec and legacy tests do not close those duties.

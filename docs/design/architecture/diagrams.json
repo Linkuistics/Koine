@@ -24,17 +24,18 @@
     }
   ],
   "discussion": {
-    "title": "Non-raising cycle evidence on Trace",
-    "status": "Graph interface implemented — publication integration remains",
-    "summary": "K192 supplies canonical SCC membership, participating edges and one supported witness per cyclic component. Legacy APIs and V1–V26 meanings remain unchanged. K193 still owns actual publication parsing, edge selection, independent grades and all transport controls; graph-only examples are not loader or native evidence.",
+    "title": "Exact bytes before receipt evidence",
+    "status": "Byte codec implemented — transport integration remains",
+    "summary": "K194 supplies exact envelope encoding/decoding and bounded nondestructive assembly. Decoded or buffered bytes are not a receipt. K195 retains closed schemas, observation lanes, both hops, supported Trace edges, F/U/I and K/L/R, budgets and every transport discriminator. V1–V26 are unchanged.",
     "diagramIds": [
+      "process-recorder-codec",
       "process-recorder-evidence",
-      "process-recorder-reply-order"
+      "process-recorder-capacity"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-evidence",
-        "summary": "Marks the graph-only SCC interface executable and the publication reader/report integration still owned by k193."
+        "id": "process-recorder-codec",
+        "summary": "Adds the executable byte boundary and explicit caller validation/receipt append before consuming buffered bytes."
       }
     ]
   },
@@ -668,6 +669,19 @@
       "title": "Selected work with an unexpected invocation return",
       "source": "process-recorder-selected-return.mmd",
       "caption": "V25 diagnostic proposal. Read from the first message. A stop request never rewrites an actual timed-out, finished or handled-source result. Earlier source/right/refusal/loop causes remain first. Ordinary capture retains once; after-callback publishes return but starts no C work. Every known release is attempted; failed or uncertain cleanup requires a negative reply. No native readiness or freshness. K176 loss/blocked and k177 whole sampler remain live; k143 targets, k144 complete controller and fresh review, k126 native gates."
+    },
+    {
+      "id": "process-recorder-codec",
+      "group": "machine",
+      "title": "Exact bytes before receipt evidence",
+      "source": "process-recorder-codec.mmd",
+      "caption": "K194 byte codec, no analyzer version or native credit. Start at the dark node and follow numbered edges. A fixed 8,192-byte buffer retains complete unconsumed frames and any partial suffix. Peek and JSON decoding preserve the exact image; only a caller-validated, appended receipt earns R. The later reader owns closed payloads, routes, lanes, ordinals, receipt recording and Trace evidence. Snapshotting does not prove a safe native stop. Python JSON depth remains an explicit implementation limit until k195 checks all closed schemas. K126 audits native buffer and append/dispatch ownership.",
+      "links": [
+        {
+          "label": "Executable codec API and limitations",
+          "href": "../../verification/callback-native-capture/publication-codec.md"
+        }
+      ]
     }
   ]
 }

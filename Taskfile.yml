@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+  design:check-publication-codec:
+    desc: Check exact publication bytes and bounded assembly (no receipt or transport credit)
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture/publication_codec.py docs/verification/callback-causal-fixture/test_publication_codec.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture/publication_codec.py docs/verification/callback-causal-fixture/test_publication_codec.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json docs/verification/callback-causal-fixture/publication_codec.py
+      - uv run --with pytest==8.4.2 pytest -q docs/verification/callback-causal-fixture/test_publication_codec.py
+
   design:check-trace-cycles:
     desc: Check non-raising Trace components and witnesses (graph-only diagnostic)
     cmds:
@@ -93,6 +101,7 @@ tasks:
   design:check-callback-analyzer:
     desc: Check the causal analyzer and frozen synthetic controls without native execution
     cmds:
+      - task: design:check-publication-codec
       - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-causal-fixture
       - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-causal-fixture
       - uvx pyright==1.1.414 --project docs/verification/callback-causal-fixture/pyrightconfig.json
