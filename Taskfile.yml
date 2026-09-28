@@ -57,9 +57,9 @@ tasks:
   design:check-publication-profile:
     desc: Recompute the frozen report profile from source, families and envelope (not a report run)
     cmds:
-      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-native-capture/publication_profile.py
-      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-native-capture/publication_profile.py
-      - uvx pyright==1.1.414 --project docs/verification/callback-native-capture/pyrightconfig.json docs/verification/callback-native-capture/publication_profile.py
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-native-capture/publication_profile.py docs/verification/callback-native-capture/publication_edges.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-native-capture/publication_profile.py docs/verification/callback-native-capture/publication_edges.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-native-capture/pyrightconfig.json docs/verification/callback-native-capture/publication_profile.py docs/verification/callback-native-capture/publication_edges.py
       - python3 -I -S docs/verification/callback-native-capture/publication_profile.py
 
   design:check-publication-order:
