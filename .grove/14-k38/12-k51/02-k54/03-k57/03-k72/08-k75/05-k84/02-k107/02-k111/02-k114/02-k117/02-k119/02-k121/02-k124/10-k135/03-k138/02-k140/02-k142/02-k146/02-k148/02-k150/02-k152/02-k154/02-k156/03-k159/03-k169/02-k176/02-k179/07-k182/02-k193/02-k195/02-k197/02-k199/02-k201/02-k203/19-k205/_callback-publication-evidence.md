@@ -200,7 +200,8 @@ The complete executable delivery and numeric profile freeze above are unchanged.
   cut k245/k246 for findings 2–4.
 - callback-publication-report-profile-k245: repaired profile — sidecar
   closed over support, parsed-comparison resident bound, fit of every
-  required stress construction; k246 reviews it.
+  required stress construction; k246 reviews it. Now a node: k247 publishes
+  profile /2 (sidecar closure, parse allowance), and k248 owns path fit.
 
 This node closes when k245 and its review chain retire. Its closing does
 not satisfy any k203 criterion: k225–k242 deliver them.
