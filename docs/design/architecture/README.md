@@ -15,7 +15,7 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K220 specifies [publication control observers](../../verification/callback-native-capture/publication-path-controls.md#control-observers): 41 rule-issued production queries and nine fixed internal probes, concrete composite operands/support, distinct test-result identity and production consumer guards. R11 restores local-ending T/frame U/conjunction U; R29 restores the same-file clean reverse alternative. Window members at B8/B9/B20 have raw/usable paths of 44/88, 43/87 and 32/76 edges, while W remains U through the trigger member. K221 reviews before k205 plans complete delivery and freezes the integer profile. These are design derivations, not executed successor or native results. V1–V26 and k217 inputs are unchanged.
+K220 specifies [publication control observers](../../verification/callback-native-capture/publication-path-controls.md#control-observers): 41 rule-issued production queries and nine fixed internal probes, concrete composite operands/support, distinct test-result identity and production consumer guards. R11 restores local-ending T/frame U/conjunction U; R29 restores the same-file clean reverse alternative. Window members at B8/B9/B20 have raw/usable paths of 44/88, 43/87 and 32/76 edges, while W remains U through the trigger member. K222 integrates k221’s review before k205 plans complete delivery and freezes the integer profile. The captions identify Q02’s delivery mutant, Q14/Q16’s endpoint mutants, window-only Q34/Q35 ownership, closed catalogue admission and invocation-local support selection; diagram topology is unchanged. These are design derivations, not executed successor or native results. V1–V26 and k217 inputs are unchanged.
 
 Changed views:
 
@@ -817,7 +817,7 @@ The path panels are independent mathematical controls, not a derivation chain
 or a claim that every query is issued by the two-file report. P-reverse has
 raw F/usable U/NOT U in the upstream-cycle input. Edge counts are node text.
 K220 now assigns report versus isolated-seam observers and concrete composite
-operands; k221 reviews before k205. See the [review boundary](../../verification/callback-native-capture/publication-path-controls.md#k219-review-boundary).
+operands; k221 reviewed and k222 integrated before k205. See the [review boundary](../../verification/callback-native-capture/publication-path-controls.md#k219-review-boundary).
 
 
 ### K220 observer presentation
@@ -828,4 +828,4 @@ The [presentation record](../../verification/callback-native-capture/evidence/k2
 records disposable Safari render inspection, including narrow/dark layout and
 a fresh-tab deep link. The [verification record](../../verification/callback-native-capture/evidence/k220/verification.json)
 binds final served sources and preservation checks. This is browser/design
-evidence only; fresh k221 review and complete k205 executable delivery remain.
+evidence only. K222 integrates k221’s review; complete k205 executable delivery remains.

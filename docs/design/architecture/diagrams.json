@@ -25,7 +25,7 @@
   ],
   "discussion": {
     "title": "Make every control observable",
-    "status": "Proposed — k220 design; k221 review next",
+    "status": "Proposed — k221 reviewed; k222 integrated",
     "summary": "Bind each control to a production claim or a fixed isolated test recipe. Derive the complete query census and retain exact operands and support even when summaries do not change. No successor execution or native credit.",
     "diagramIds": [
       "process-recorder-path-controls",
@@ -50,7 +50,7 @@
       "group": "machine",
       "title": "Production claims and isolated path probes",
       "source": "process-recorder-path-controls.mmd",
-      "caption": "Proposed k220 observers. Branches choose independent observer families; diagram arrows are not Trace edges. The production two-file entry issues the 41 queries derived from real rule instances. In multi-cycle, Q34/Q35/Q36 window members need 44/88, 43/87 and 32/76 raw/usable edges; W stays U because Q37 crosses a cyclic edge. Nine fixed internal queries exercise remaining path cases on the same frozen snapshot. P-short and the same-file reverse alternative select six-edge usable proofs. A distinct test result is refused by production emission and consumption. Counts are graph edges, not time; no successor control has executed. K221 reviews before k205 freezes the complete report profile.",
+      "caption": "Proposed k220 observers. Branches choose independent observer families; diagram arrows are not Trace edges. The production two-file entry issues the 41 queries derived from real rule instances. In multi-cycle, Q34/Q35/Q36 window members need 44/88, 43/87 and 32/76 raw/usable edges; W stays U because Q37 crosses a cyclic edge. Nine fixed internal queries exercise remaining path cases on the same frozen snapshot. P-short and the same-file reverse alternative select six-edge usable proofs. A distinct test result is refused by production emission and consumption. Counts are graph edges, not time; no successor control has executed. K222 integrates k221: Q02 isolates delivery edge-presence; Q13/Q15/Q37 isolate local-sequence inference. Q14 observes endpoint inheritance; Q14/Q16 observe endpoint SCC rejection. Q34/Q35 belong only to window membership. K205 still freezes the complete report profile.",
       "links": [
         {
           "label": "Rows, edge census and upstream controls",
@@ -63,7 +63,7 @@
       "group": "machine",
       "title": "Concrete operands for required and owned support",
       "source": "process-recorder-path-contributors.mmd",
-      "caption": "Proposed R11/R29 algebra observers, not a new product claim. Branches choose independent tests; the lower arrow compares the same expressions with own D. These arrows are not Trace edges. A is the actual armed frame attribution at T34; its D bundle includes both G87→T34 and cyclic G90→T34. Test L is local T33→T34, so L=T while A=U and the required conjunction is U. Z is the real ordinary C-post-zero operand, T; N=NOT Z is F. Bare A AND N selects N and stays F; bare A OR Z selects Z and stays T. Giving either expression its own D masks it to U. Fixed test IDs observe these outputs and direct support references. Production selected/window/state/scope vectors remain separately required. The explicit omission mutant drops G90→T34 only from D, retaining G87→T34 and every Trace edge. K221 still owns fresh review.",
+      "caption": "Proposed R11/R29 algebra observers, not a new product claim. Branches choose independent tests; the lower arrow compares the same expressions with own D. These arrows are not Trace edges. A is the actual armed frame attribution at T34; its D bundle includes both G87→T34 and cyclic G90→T34. Test L is local T33→T34, so L=T while A=U and the required conjunction is U. Z is the real ordinary C-post-zero operand, T; N=NOT Z is F. Bare A AND N selects N and stays F; bare A OR Z selects Z and stays T. Giving either expression its own D masks it to U. Fixed test IDs observe these outputs and direct support references. Production selected/window/state/scope vectors remain separately required. The explicit omission mutant drops G90→T34 only from D, retaining G87→T34 and every Trace edge. K222 integrates k221: fixed admission maps bind each catalogue to its fixtures; split turn0 order results are unchanged and results stay invocation-local. Stable operand IDs count.Z < frame.A < not.N select A for raw upstream AND ties, N for usable AND. No successor execution is claimed.",
       "links": [
         {
           "label": "Split rows, full vectors and mutant limits",
