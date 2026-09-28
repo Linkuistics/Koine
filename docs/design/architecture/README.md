@@ -16,7 +16,7 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 K217 supplies [complete proposed publication path controls](../../verification/callback-native-capture/publication-path-controls.md)
-for fresh k218 review. Exact input rows place a reversed join off the queried
+with k218 topology review and k219 observation-contract qualifications. K220/k221\nmust bind unassigned endpoint/composite controls before k205. Exact input rows place a reversed join off the queried
 noncyclic raw shortcut: two raw edges, six usable edges. Separate split-write
 files test all-contributor ownership and honestly retain selected/window U,
 partial state and no scope. K205 still plans complete delivery and freezes
@@ -817,3 +817,11 @@ VNC controlled the guest because its agent was unavailable. These are responsive
 desktop checks; no mobile device, wide-dark/narrow-light run, independent guest
 asset hash or frozen browser/CDN dependency is claimed. No host GUI, successor
 analyzer or native recorder ran. K218 supplies the fresh semantic review.
+
+### K219 path-control review boundary
+
+The path panels are independent mathematical controls, not a derivation chain
+or a claim that every query is issued by the two-file report. P-reverse has
+raw F/usable U/NOT U in the upstream-cycle input. Edge counts are node text.
+K220/k221 must settle report versus isolated-seam observation and composite
+operands before k205; see the [review boundary](../../verification/callback-native-capture/publication-path-controls.md#k219-review-boundary).

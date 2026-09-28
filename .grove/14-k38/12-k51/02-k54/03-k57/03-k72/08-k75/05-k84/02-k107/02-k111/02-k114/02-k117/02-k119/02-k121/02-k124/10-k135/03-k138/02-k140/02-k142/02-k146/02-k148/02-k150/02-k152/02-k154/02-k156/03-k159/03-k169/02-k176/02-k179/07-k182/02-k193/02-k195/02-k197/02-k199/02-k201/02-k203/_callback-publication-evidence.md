@@ -142,3 +142,13 @@ before k205. No unresolved construction becomes an implementation default.
 K205 retains complete executable delivery and the numeric report-profile freeze.
 Every original criterion above remains unchanged; no ancestor closes and all
 k180/k177/k143/k144/k126 plus k124/k121 ownership remains. V1–V26 stay frozen.
+
+## K219 review integration handoff
+
+All five k218 dispositions are in the assessment. K219 clarifies the explicit
+G90→T34 bundle-omission mutant and independent path-view panels. K220 now owns
+the substantive observation-contract repair: real rule instances versus isolated
+test queries, concrete composite operands, R11/R29 variants and complete query
+census. Fresh k221 review precedes k205. The verified finite topology is not a
+production report interface; unassigned controls are not implementation defaults.
+Every original criterion and native owner above remains; no ancestor closes.
