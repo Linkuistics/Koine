@@ -574,3 +574,31 @@ from the complete final inventory. The asset record matches these final sources.
 No independent guest-file hashes, frozen browser dependencies, dark/narrow/mobile
 inspection, transport conformance or corpus renewal is claimed. K189 retains
 capacity, whole-contract reconciliation and its fresh review before k182.
+
+For k189, [Encoding budgets and reserved failure observations](index.html#diagram-process-recorder-capacity)
+adds measured encoding, bounded attempts and explicit failure reserves.
+[Transport owners, shared frames and observation lanes](index.html#diagram-process-recorder-transport)
+marks all four contract parts complete for fresh review.
+[Closure, attribution and supported causal edges](index.html#diagram-process-recorder-evidence)
+replaces the open capacity handoff with the completed contract.
+[Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication)
+links that contract in its caption. The [discussion](index.html#discussion)
+identifies exactly these four changes and all eight relevant views.
+
+The [asset record](../../verification/callback-native-capture/evidence/k189/render.json)
+matches ten final local and served assets. The
+[presentation record](../../verification/callback-native-capture/evidence/k189/presentation.json)
+records all eight diagrams and captions in Safari in disposable macOS clone
+`koine-k189-view`, plus dark discussion and writer-state views. Graphs start at
+the dark Start here node, state diagrams at the initial state and sequences at
+their first message. The source remains editable; serve this directory at
+`http://127.0.0.1:8772/` using the existing pinned Mermaid viewer.
+
+Fit-view writer/sequence labels are small. Some navigation stalled; fresh
+windows supplied the final dark checks. A narrow-window load did not finish,
+so no successful narrow/mobile or larger-scale writer check is claimed.
+No render error was observed in the eight inspected views. VNC was used without
+independent guest-file hashes or frozen browser/CDN/OS dependencies. The clone
+stopped successfully and was absent from the final inventory. No native recorder,
+transport conformance or corpus renewal ran. Fresh whole-contract review and any
+integration precede k182; the preceding k186–k188 paragraphs record earlier scope.

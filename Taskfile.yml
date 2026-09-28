@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+  design:measure-publication-budget:
+    desc: Census frozen publication inputs and compute capacity (not transport conformance)
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-native-capture/publication_budget.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-native-capture/publication_budget.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-native-capture/pyrightconfig.json docs/verification/callback-native-capture/publication_budget.py
+      - python3 -I -S docs/verification/callback-native-capture/publication_budget.py
+
   design:check-publication-order:
     desc: Check proposed publication order examples through Trace (not transport conformance)
     cmds:

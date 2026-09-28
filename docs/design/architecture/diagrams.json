@@ -24,46 +24,52 @@
     }
   ],
   "discussion": {
-    "title": "Publication milestones and ownership after loss",
-    "status": "Lifecycle proposal — k188; capacity and complete review remain",
-    "summary": "Commit records issuance; synchronous sender progress requires local completion; controller gates and drains require actual receipt. Abandoned calls retain immutable buffers; a trusted full late result can complete a frame without reopening its direction. Safe reader stops preserve buffered bytes without inventing receipts or EOF. K189 budgets and fresh review precede k182 executable validation; V1–V26 remain unchanged.",
+    "title": "Complete publication transport contract",
+    "status": "Design complete for fresh review — no executable or native claim",
+    "summary": "Shared auxiliary framing, original coordinates, independent evidence, K/L/R milestones and loss lifecycle now have measured encoding and capacity budgets. Fresh review precedes k182 implementation and corpus renewal; k180 retains every-phase loss composition. V1–V26 remain unchanged.",
     "diagramIds": [
-      "process-recorder-write-state",
-      "process-recorder-milestones",
-      "process-recorder-reader-stop",
+      "process-recorder-capacity",
       "process-recorder-transport",
       "process-recorder-evidence",
       "process-recorder-publication",
-      "process-recorder-reply-order"
+      "process-recorder-reply-order",
+      "process-recorder-write-state",
+      "process-recorder-reader-stop",
+      "process-recorder-milestones"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-write-state",
-        "summary": "Separates pending buffer ownership, trusted late results and permanent direction loss."
-      },
-      {
-        "id": "process-recorder-milestones",
-        "summary": "Maps original send sites to commit, local completion and receiver drains."
-      },
-      {
-        "id": "process-recorder-reader-stop",
-        "summary": "Distinguishes safe deadline stop, buffered data, EOF and pending reads."
+        "id": "process-recorder-capacity",
+        "summary": "Adds distinct frame/row limits, bounded attempts and reserved failure observations."
       },
       {
         "id": "process-recorder-transport",
-        "summary": "Marks lifecycle specified while capacity and final review remain."
+        "summary": "Marks all four contract parts complete for fresh review."
       },
       {
         "id": "process-recorder-evidence",
-        "summary": "Links the completed lifecycle without changing evidence or edge rules."
+        "summary": "Replaces the open capacity handoff with the completed design and review boundary."
       },
       {
         "id": "process-recorder-publication",
-        "summary": "Links explicit producer milestones and post-loss ownership."
+        "summary": "Links the complete capacity and discriminator contract in its caption."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-capacity",
+      "group": "machine",
+      "title": "Encoding budgets and reserved failure observations",
+      "source": "process-recorder-capacity.mmd",
+      "caption": "Diagnostic capacity design, not implemented transport conformance. Start at the dark node. The census includes all 8,120 frozen cases, nine auxiliary origins and eight attempts per frame. Five lanes each allow 2,048 rows; each reserves 512 rows and 4 MiB for reached mandatory work, late results and exact reader snapshots. Case observations total at most 48 MiB. A returned positive short result may continue only while open and below eight attempts; a pending call retains its buffer and prevents caller progress. A blocked app cannot fabricate its own seal. Failure reserve is storage, not a guarantee of native return or a cleanup deadline. K182 must falsify B01–B20 and actual encoding; no V1–V26 semantics change.",
+      "links": [
+        {
+          "label": "Encoding, capacity and complete criterion map",
+          "href": "../../verification/callback-native-capture/publication-capacity.md"
+        }
+      ]
+    },
     {
       "id": "process-recorder-milestones",
       "group": "machine",
@@ -95,7 +101,7 @@
       "group": "machine",
       "title": "Closure, attribution and supported causal edges",
       "source": "process-recorder-evidence.mmd",
-      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 retains budgets and final fresh review, and k182 executable E01–E24/L01–L34 controls and V1–V26 preservation.",
+      "caption": "Proposed evidence rules, not executable or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 completes capacity and reconciliation for fresh review. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation.",
       "links": [
         {
           "label": "Publication evidence and E01–E24 histories",
@@ -108,7 +114,7 @@
       "group": "machine",
       "title": "Transport owners, shared frames and observation lanes",
       "source": "process-recorder-transport.mmd",
-      "caption": "Topology proposal. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 specifies composed evidence and supported edges; k188 supplies publication milestones/lifecycle; k189 budgets plus whole-contract review remain before k182. No executable version or native evidence.",
+      "caption": "Topology proposal. Start at the dark node and follow numbered edges; the supervisor is a transport owner, not a fifth protocol role. Every auxiliary admission, activation/helper and candidate-PID frame occupies the same queue and directed ordinals as protocol traffic. Each app uses one combined lane; the supervisor records one global append order, with blocking I/O outside the append lock. Relays join exact ingress bytes; supervisor-origin frames join local production. Physical loss cuts precede semantic projection. K187 specifies composed evidence and supported edges; k188 supplies publication milestones/lifecycle; k189 completes measured budgets. Fresh whole-contract review and any integration precede k182. No executable version or native evidence.",
       "links": [
         {
           "label": "Transport lanes and original coordinates",
@@ -138,11 +144,15 @@
       "group": "machine",
       "title": "Publication attempts and feasible receipt",
       "source": "process-recorder-publication.mmd",
-      "caption": "Incomplete publication proposal, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 specifies shared auxiliary frames and app/supervisor lanes; k187 specifies component grades and supported edges, including fragments on impossible or unverified routes. K188 maps every producer milestone and specifies post-loss ownership; k189 budgets/review remain before k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
+      "caption": "Complete diagnostic design for fresh review, not an executable version or native evidence. Read from the first message. Results may also precede receipts. Only in-prefix results constrain possible bytes; a covering begin can remain feasible with its result unavailable, while an excluded late error is preserved but not replayed. Local receipt/decision grading stays separate from cross-role attribution. K186 specifies shared auxiliary frames and app/supervisor lanes; k187 specifies component grades and supported edges, including fragments on impossible or unverified routes. K188 maps every producer milestone and specifies post-loss ownership; k189 freezes capacity and the whole-contract discriminator map. Fresh review precedes k182 implementation and corpus renewal. K180 retains phase composition; the host runner bounds blocked broker work, k144 assigns deadlines/reserve and k126 establishes actual exits/containment.",
       "links": [
         {
           "label": "Publication observation contract",
           "href": "../../verification/callback-causal-fixture/contract.md#proposed-publication-observations-k181"
+        },
+        {
+          "label": "Complete capacity and discriminator contract",
+          "href": "../../verification/callback-native-capture/publication-capacity.md"
         }
       ]
     },

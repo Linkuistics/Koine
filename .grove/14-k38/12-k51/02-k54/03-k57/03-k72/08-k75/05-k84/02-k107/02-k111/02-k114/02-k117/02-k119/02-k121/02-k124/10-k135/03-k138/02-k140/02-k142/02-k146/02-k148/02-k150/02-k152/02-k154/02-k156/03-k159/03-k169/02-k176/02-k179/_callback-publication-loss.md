@@ -72,3 +72,24 @@ K187 still owns composed evidence/edges, k188 milestones/lifecycle and k189
 encoding budgets plus every original k185 criterion and its final exact-stem
 fresh review before k182. K186 does not supply an executable version or a
 complete loss interface; k182/k180 and all original criteria remain live.
+
+## Completed transport contract handoff (k189)
+
+Callback-publication-transport-k185 closes as a design node. Its four children
+supply transport-lanes.md, transport-evidence.md, publication-lifecycle.md and
+publication-capacity.md under docs/verification/callback-native-capture/.
+The last document maps all nine original k185 criteria and twelve k183 findings.
+Exact shared bytes, five observation lanes/four protocol roles, physical cuts
+with original coordinates, independently supported Trace edges and local grades,
+K/L/R milestones, permanent loss/pending buffers and concrete budgets now form
+one contract. The full census covers 8,120 cases; it is not corpus renewal.
+
+Fresh callback-publication-transport-k190 review now sits immediately before
+callback-publication-evidence-k182. Any findings integration also precedes k182.
+K182 retains every schema/version/loader/Trace/report/falsification/permutation
+and full V1–V26 preservation/renewal obligation, including actual encoding versus
+these arithmetic bounds. K179 therefore remains live. K180 still owns every-phase
+loss composition, k177 the full sampler and non-stopped cancellation, k143 targets,
+k144 whole-controller deadlines/time reserve/partial evidence/review and k126
+native audits/private-loop/source servicing/actual exits/containment plus all
+original k124/k121 criteria. No higher ancestor or native criterion closes.

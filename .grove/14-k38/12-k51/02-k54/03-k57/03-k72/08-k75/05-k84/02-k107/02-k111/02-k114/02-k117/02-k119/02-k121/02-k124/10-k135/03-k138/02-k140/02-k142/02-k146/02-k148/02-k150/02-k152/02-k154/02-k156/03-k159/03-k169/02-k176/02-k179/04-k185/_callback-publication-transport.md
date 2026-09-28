@@ -119,3 +119,16 @@ consume its exact row/attempt/storage handoff and reconcile every original
 criterion here, then commission the required exact-stem fresh review before
 k182. No executable version, corpus renewal, native readiness or ancestor
 closure follows from k188. K180/k177/k144/k126 retain their existing obligations.
+
+## Completion reconciliation (k189)
+
+All four children now supply the composed contract. Publication-capacity.md maps
+each original Done when above to the lane/evidence/lifecycle/budget artifacts,
+all discriminator ledgers and retained execution owners; none is dropped.
+All eight current views were rendered and inspected in disposable koine-k189-view;
+its final presentation/asset/preservation records are under evidence/k189.
+The clone stopped and was absent from the final inventory. Fresh exact-stem
+callback-publication-transport-k190 review was inserted after the completed
+artifact existed and immediately before k182; any integration precedes k182.
+The complete handoff is promoted to k179. This node closes only its design
+charter; k179 and all higher executable/native obligations stay live.
