@@ -24,31 +24,53 @@
     }
   ],
   "discussion": {
-    "title": "Publication replay: receipt dependencies and determinate reports",
-    "status": "K214 design for k215 review",
-    "summary": "Local lane crossing does not consume receipt attribution. Search usable paths before tie-breaking; keep raw paths and every required frame contributor. Controller integrity differs from phase/tuple correctness. Acquisition counts, hint absence and ALL need closure, so open-tail core is U. K205 retains numeric budgets and complete delivery; no successor execution or native claim.",
+    "title": "Publication path controls: exact rows and distinct claims",
+    "status": "K217 design for fresh k218 review",
+    "summary": "Complete proposed files replace the invalid shared path fixture. An upstream join SCC exposes a two-edge tainted raw shortcut and six-edge usable proof while local crossing remains T. A separate split write isolates mandatory contributor omission, with selected/window U and no scope. Representation checks are not successor execution. K205 retains numeric report budgets and complete delivery.",
     "diagramIds": [
-      "process-recorder-replay",
+      "process-recorder-path-controls",
+      "process-recorder-path-contributors",
       "process-recorder-claims",
-      "process-recorder-sample-state",
-      "process-recorder-evidence"
+      "process-recorder-sample-state"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-replay",
-        "summary": "Separates integrity, acquisition domains and independent report columns."
+        "id": "process-recorder-path-controls",
+        "summary": "Derives local crossing, shorter path, sole attribution and SCC-vertex queries from actual rows."
       },
       {
-        "id": "process-recorder-claims",
-        "summary": "Selects dependency-clean paths and separates local receipt crossing from attribution."
-      },
-      {
-        "id": "process-recorder-sample-state",
-        "summary": "Names controller integrity and closure-aware acquisition without changing earlier-U precedence."
+        "id": "process-recorder-path-contributors",
+        "summary": "Separates ending at a cyclic receipt from crossing it and preserves partial sample scope."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-path-controls",
+      "group": "machine",
+      "title": "A tainted shortcut and a clean longer proof",
+      "source": "process-recorder-path-controls.mmd",
+      "caption": "K217 proposed inputs for k218 review, not executed successor controls. Solid arrows between boxes guide reading; row arrows inside labels are Trace edges. Dashed lines identify mandatory dependencies, not causal edges. Ready-C has exactly supervisor SCC {G28,G29}; G30 and controller T3/T4/T5 are outside. P-short raw BFS selects two noncyclic edges, but T4 attribution owns the reversed join. Usable BFS selects six clean edges. P-local consumes only local support; P-vertex touches G29 through clean origin-hop ingress support and an external local successor. P-only has no clean alternative. Clean repair puts ingress before relay. Later sample facts all remain T with retention scope, while composed readiness is U and protocol_complete is false. See complete files, edge census, vectors and exact mutant columns.",
+      "links": [
+        {
+          "label": "Rows, edge census and upstream controls",
+          "href": "../../verification/callback-native-capture/publication-path-controls.md#upstream-join-controls"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-path-contributors",
+      "group": "machine",
+      "title": "Ending at a cyclic receipt differs from crossing it",
+      "source": "process-recorder-path-contributors.mmd",
+      "caption": "K217 separate R11 split-write control; boxes guide evaluation, not event order. Armed N=103 has contributors +102 at G87 and +1 at G90. Only SCC: T34,T35,B25,B26,B27,G89,G90. G87 is outside. The selected G87\u2192T34 edge is noncyclic, but every armed contributor is mandatory, so raw T becomes usable U despite all-F byte/join grades. Dropping G90\u2192T34 from the bundle falsely changes the order/frame to T; it cannot repair cyclic crossing T34\u2192T35 or B25\u2192B.closed. Selected_callback and observation_window are U, all other core facts T, interpretation T, ambiguity F, continuation T: partial/core-unproved/none. The honest split neighbor restores all-T core and retention scope. Turn0 variants separately isolate composite-owned masking. No sample-summary mutant kill or successor execution is claimed.",
+      "links": [
+        {
+          "label": "Split rows, full vectors and mutant limits",
+          "href": "../../verification/callback-native-capture/publication-path-controls.md#split-contributor-control"
+        }
+      ]
+    },
     {
       "id": "process-recorder-replay",
       "group": "machine",

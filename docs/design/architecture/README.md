@@ -15,20 +15,19 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K214 supplies the [publication replay repair](../../verification/callback-native-capture/publication-replay.md)
-with k216 review dispositions. K217/k218 must replace and review its invalid
-shared path controls before k205 plans delivery and freezes numeric report
-budgets. Local receipt crossing and attribution have distinct support; raw and
-usable paths are reported separately. Controller integrity is distinct from
-phase/tuple correctness. Acquisition counts/absence/ALL require closure. The
-complete detached legacy CLI and V1–V26 remain unchanged. These diagrams state
-a proposal; they establish no executable successor or native result.
+K217 supplies [complete proposed publication path controls](../../verification/callback-native-capture/publication-path-controls.md)
+for fresh k218 review. Exact input rows place a reversed join off the queried
+noncyclic raw shortcut: two raw edges, six usable edges. Separate split-write
+files test all-contributor ownership and honestly retain selected/window U,
+partial state and no scope. K205 still plans complete delivery and freezes
+numeric report budgets. The legacy CLI and frozen V1–V26 remain unchanged.
+These diagrams and derived vectors establish no executed successor or native result.
 
 Changed views:
 
-- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Separates integrity, acquisition domains and independent columns.
-- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Selects dependency-clean paths and distinguishes local crossing from attribution.
-- [Sample state and retention scope](index.html#diagram-process-recorder-sample-state) — Names integrity and closure-aware acquisition while preserving earlier-U precedence.
+- [A tainted shortcut and a clean longer proof](index.html#diagram-process-recorder-path-controls) — Derives the distinct local, shorter-path, attribution and SCC-vertex controls.
+- [Ending at a cyclic receipt differs from crossing it](index.html#diagram-process-recorder-path-contributors) — Separates contributor omission from crossing and preserves partial scope.
+
 
 [Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) remain context.
 
@@ -800,3 +799,21 @@ receipt independence does not waive that rule. The diagrams express that propose
 algorithm and classifier, not the validity or execution of a particular fixture.
 R25/R34/R06 report tables and R35 guard controls are clarified in the linked replay
 contract. No diagram, rendered asset or new presentation run is claimed here.
+
+## K217 presentation
+
+The new [upstream path controls](index.html#diagram-process-recorder-path-controls)
+and [split contributor control](index.html#diagram-process-recorder-path-contributors)
+replace the withdrawn shared fixture with exact row/query expectations.
+Safari in disposable macOS clone `koine-k217-view` rendered both diagrams and
+captions at 1024-pixel light and 720-pixel dark window widths. Labels were
+shortened after the first inspection; final sources were rendered again.
+The current discussion, changed markers and outline agree with those two edits;
+a fresh-tab path-control deep link reached the intended rendered view.
+The [presentation record](../../verification/callback-native-capture/evidence/k217/presentation.json)
+binds final sources and screenshots. [Verification](../../verification/callback-native-capture/evidence/k217/verification.json)
+checks served-source equality and the design/preservation boundary.
+VNC controlled the guest because its agent was unavailable. These are responsive
+desktop checks; no mobile device, wide-dark/narrow-light run, independent guest
+asset hash or frozen browser/CDN dependency is claimed. No host GUI, successor
+analyzer or native recorder ran. K218 supplies the fresh semantic review.
