@@ -15,13 +15,13 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K200 supplies the [physical prefix selector](../../verification/callback-native-capture/publication-prefixes.md). It cuts five lanes before mapping original producer coordinates, preserving raw indices and independent physical evidence. Actual schema loading and complete transport integration remain k201; V1–V26 are unchanged.
+K202 supplies [bounded real-file loading](../../verification/callback-native-capture/publication-files.md). Closed schemas and unchanged producer validation now feed physical-first selection. Both-hop attribution and complete replay remain k203; V1–V26 retain their original semantics.
 
 Changed view:
 
-- [Physical prefixes before producer projection](index.html#diagram-process-recorder-prefixes) — Adds the physical-first selection rule, separate semantic defects and remaining loader obligations.
+- [Bounded files before publication history](index.html#diagram-process-recorder-files) — Adds the real-file path, distinct outer-schema and inner-frame failures, and retained history obligations.
 
-[Closed protocol bytes](index.html#diagram-process-recorder-protocol-bytes), [transport lanes](index.html#diagram-process-recorder-transport) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
+[Physical prefixes](index.html#diagram-process-recorder-prefixes), [transport lanes](index.html#diagram-process-recorder-transport) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -662,3 +662,22 @@ running states were preserved. The temporary port 8774 server stopped, while
 the existing port 8772 viewer remains. No native recorder or host GUI ran.
 K201 retains all actual-loader, history, lifecycle, budget and full successor
 renewal duties; the metadata controls close none of those complete criteria.
+
+## K202 presentation
+
+Safari in disposable macOS clone `koine-k202-view` rendered the
+[bounded file view](index.html#diagram-process-recorder-files). Shortened labels
+were inspected in wide light and a 650-pixel narrow dark window; the complete
+caption was checked in narrow dark. Both current-discussion layouts showed the
+sole changed view and unchanged context. A fresh new-tab deep link reached the
+intended diagram. The [presentation record](../../verification/callback-native-capture/evidence/k202/presentation.json)
+binds the screenshots and precise limits; the
+[asset record](../../verification/callback-native-capture/evidence/k202/render.json)
+compares final local viewer/manifest/source bytes with both serving URLs.
+
+The guest agent was unavailable, so checks used VNC. The clone stopped and its
+temporary server closed; the pre-existing host viewer and unrelated VMs remain.
+This is responsive desktop presentation, not mobile-device or native evidence.
+Wide dark, narrow light, a separate wide-caption check, independent guest-file
+hashes and frozen browser/CDN/OS dependencies are not claimed. K203 retains
+complete publication replay and all original ancestor criteria.

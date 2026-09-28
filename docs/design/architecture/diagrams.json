@@ -24,29 +24,42 @@
     }
   ],
   "discussion": {
-    "title": "Physical prefixes before producer projection",
-    "status": "Coordinate selector implemented; actual loader remains k201",
-    "summary": "K200 cuts five observation lanes before mapping unchanged producer coordinates. Supplied metadata controls establish no schema, receipt or transport credit. The complete successor and every original obligation remain k201. V1–V26 are unchanged.",
+    "title": "Bounded files before publication history",
+    "status": "File loader implemented; full transport replay remains k203",
+    "summary": "K202 validates actual files and unchanged embedded producers, then applies physical cuts before projection. Readable inner-frame errors remain independent; outer byte/schema recovery is unsupported. V1\u2013V26 semantics are unchanged.",
     "diagramIds": [
+      "process-recorder-files",
       "process-recorder-prefixes",
-      "process-recorder-protocol-bytes",
       "process-recorder-transport",
       "process-recorder-evidence"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-prefixes",
-        "summary": "Adds physical cuts, separate producer projection and explicit remaining loader obligations."
+        "id": "process-recorder-files",
+        "summary": "Adds the real file boundary, separate schema/frame failure paths and remaining history replay."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "process-recorder-files",
+      "group": "machine",
+      "title": "Bounded files before publication history",
+      "source": "process-recorder-files.mmd",
+      "caption": "Diagnostic file loading only. Start at the dark node. Bounded reads validate closed V11\u2013V25 manifests, physical row shapes and unchanged embedded producers. Exact raw bytes and original coordinates survive. Inner frame errors remain readable independent evidence; outer byte/schema failures still support no partial recovery. Five physical cuts precede semantic projection; findings exclude untrusted suffixes. Buffered frames create no receipts. K203 retains admissions, both-hop joins, producer replay, supported Trace edges, F/U/I, K/L/R, lifecycle and all complete budget/discriminator results. V1\u2013V26 meanings, native gates and product decisions remain unchanged.",
+      "links": [
+        {
+          "label": "File representation and exact limits",
+          "href": "../../verification/callback-native-capture/publication-files.md"
+        }
+      ]
+    },
+    {
       "id": "process-recorder-protocol-bytes",
       "group": "machine",
       "title": "Closed protocol bytes before observation joins",
       "source": "process-recorder-protocol-bytes.mmd",
-      "caption": "Offline diagnostic byte grammar, not a new analyzer version. Start at the dark node. Commands and simple acknowledgments carry empty objects; input, active and failure frames preserve observed values and original producer sequence claims. False activity flags and stray input are readable for independent diagnostics. Shape acceptance supplies no original observation, receipt, cleanup or native truth. K199 must join the exact sender observation and both physical hops, while preserving controller-local decisions even when upstream attribution is U/I. Invalid bytes remain available for a snapshot and never imply a receipt. V1–V26 and all higher native obligations remain unchanged.",
+      "caption": "Offline diagnostic byte grammar, not a new analyzer version. Start at the dark node. Commands and simple acknowledgments carry empty objects; input, active and failure frames preserve observed values and original producer sequence claims. False activity flags and stray input are readable for independent diagnostics. Shape acceptance supplies no original observation, receipt, cleanup or native truth. K199 must join the exact sender observation and both physical hops, while preserving controller-local decisions even when upstream attribution is U/I. Invalid bytes remain available for a snapshot and never imply a receipt. V1\u2013V26 and all higher native obligations remain unchanged.",
       "links": [
         {
           "label": "Complete protocol grammar and remaining joins",
@@ -59,7 +72,7 @@
       "group": "machine",
       "title": "Encoding budgets and reserved failure observations",
       "source": "process-recorder-capacity.mmd",
-      "caption": "Diagnostic capacity design, not implemented transport conformance. Start at the dark node. The census includes all 8,120 frozen cases, nine auxiliary origins and eight attempts per frame. Five lanes each allow 2,048 rows; each reserves 512 rows and 4 MiB for reached mandatory work, late results and exact reader snapshots. Case observations total at most 48 MiB. A returned positive short result may continue only while open and below eight attempts; a pending call retains its buffer and prevents caller progress. A blocked app cannot fabricate its own seal. Failure reserve is storage, not a guarantee of native return or a cleanup deadline. K182 must falsify B01–B20 and actual encoding; no V1–V26 semantics change.",
+      "caption": "Diagnostic capacity design, not implemented transport conformance. Start at the dark node. The census includes all 8,120 frozen cases, nine auxiliary origins and eight attempts per frame. Five lanes each allow 2,048 rows; each reserves 512 rows and 4 MiB for reached mandatory work, late results and exact reader snapshots. Case observations total at most 48 MiB. A returned positive short result may continue only while open and below eight attempts; a pending call retains its buffer and prevents caller progress. A blocked app cannot fabricate its own seal. Failure reserve is storage, not a guarantee of native return or a cleanup deadline. K182 must falsify B01\u2013B20 and actual encoding; no V1\u2013V26 semantics change.",
       "links": [
         {
           "label": "Encoding, capacity and complete criterion map",
@@ -72,7 +85,7 @@
       "group": "machine",
       "title": "Commit, local completion and receiver milestones",
       "source": "process-recorder-milestones.mmd",
-      "caption": "Proposed after-callback fragment, read from its first message. Original semantic send is K; sender local completion is L; receiver observation is R. Receiver observation may precede sender result recording. Normal host_end waits for L; controller barriers and drains wait for actual R, with composed attribution checked separately. Explicit loss cleanup leaves unmet publication milestones, while a pending synchronous call forbids caller progress. M01–M33 enumerate startup, normal work, cancellation and terminal obligations; L01–L34 are future executable controls. No cleanup or actual exit is inferred.",
+      "caption": "Proposed after-callback fragment, read from its first message. Original semantic send is K; sender local completion is L; receiver observation is R. Receiver observation may precede sender result recording. Normal host_end waits for L; controller barriers and drains wait for actual R, with composed attribution checked separately. Explicit loss cleanup leaves unmet publication milestones, while a pending synchronous call forbids caller progress. M01\u2013M33 enumerate startup, normal work, cancellation and terminal obligations; L01\u2013L34 are future executable controls. No cleanup or actual exit is inferred.",
       "links": [
         {
           "label": "Producer milestone inventory",
@@ -98,10 +111,10 @@
       "group": "machine",
       "title": "Closure, attribution and supported causal edges",
       "source": "process-recorder-evidence.mmd",
-      "caption": "Publication evidence rules remain proposed; the graph-only SCC interface is executable, with no loader or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01–L34; k189 supplies capacity and reconciliation, reviewed by k190 and repaired by k191. K182 retains executable E01–E24/L01–L34/B01–B20 controls and V1–V26 preservation. K191 separates F/U/I attribution from cycle-contradicted; all participating claims retain their byte grades, without culprit inference. K192 supplies Trace.cycle_components with an explicit canonical coordinate order, original-index component membership, participating edges and one supported witness per cyclic component. K193 owns actual supported-edge selection and independent publication reports. A witness need not traverse every participating edge. Supplied-edge tests do not close E20/E21/E24.",
+      "caption": "Publication evidence rules remain proposed; the graph-only SCC interface is executable, with no loader or native proof. Start at the dark node and follow numbered edges. Closure comes only from trusted local writer replay; end seals new begins but does not cancel a pending call's possible bytes. Grade necessary origin, ingress/relay, egress and destination requirements independently, with impossible dominating unverified. Supervisor-origin traffic substitutes local production for ingress. Build Trace from all individually supported local, exact-join and contributing-begin edges before aggregate grades can veto them; cycles remain contradictions, including when byte supply is feasible. No result-to-receipt or schedule edge is added. A missing hop cannot be invented. Controller decisions use their own trusted local receipts. K188 supplies lifecycle/milestones and L01\u2013L34; k189 supplies capacity and reconciliation, reviewed by k190 and repaired by k191. K182 retains executable E01\u2013E24/L01\u2013L34/B01\u2013B20 controls and V1\u2013V26 preservation. K191 separates F/U/I attribution from cycle-contradicted; all participating claims retain their byte grades, without culprit inference. K192 supplies Trace.cycle_components with an explicit canonical coordinate order, original-index component membership, participating edges and one supported witness per cyclic component. K193 owns actual supported-edge selection and independent publication reports. A witness need not traverse every participating edge. Supplied-edge tests do not close E20/E21/E24.",
       "links": [
         {
-          "label": "Publication evidence and E01–E24 histories",
+          "label": "Publication evidence and E01\u2013E24 histories",
           "href": "../../verification/callback-native-capture/transport-evidence.md"
         },
         {
@@ -128,14 +141,14 @@
       "group": "machine",
       "title": "Reply ingress before the egress result record",
       "source": "process-recorder-reply-order.mmd",
-      "caption": "Read from the first message. This proposed two-lane fragment uses actual local observation order: G44 precedes G45 in the supervisor global lane. Both G41 and G43 contribute to S20; the reply creates S20 → S22 → G44 → G45. An incorrect G45 → S20 edge would cycle without an invented schedule edge. Vertical placement across lanes does not add an order; S23 can occur before or after G45. K187 E20–E24 retain this fragment with impossible origin evidence, remove only excluded vertices on lost tails, and move G43 after G44 for a genuine contributing-begin cycle. These are contract examples, not measured schedules or executable controls. K182 must exercise the real reader, multiple begins and FIFO.",
+      "caption": "Read from the first message. This proposed two-lane fragment uses actual local observation order: G44 precedes G45 in the supervisor global lane. Both G41 and G43 contribute to S20; the reply creates S20 \u2192 S22 \u2192 G44 \u2192 G45. An incorrect G45 \u2192 S20 edge would cycle without an invented schedule edge. Vertical placement across lanes does not add an order; S23 can occur before or after G45. K187 E20\u2013E24 retain this fragment with impossible origin evidence, remove only excluded vertices on lost tails, and move G43 after G44 for a genuine contributing-begin cycle. These are contract examples, not measured schedules or executable controls. K182 must exercise the real reader, multiple begins and FIFO.",
       "links": [
         {
-          "label": "Exact G40–G46 and S20–S24 history",
+          "label": "Exact G40\u2013G46 and S20\u2013S24 history",
           "href": "../../verification/callback-native-capture/transport-lanes.md#observable-reply-before-egress-result"
         },
         {
-          "label": "E20–E24 loss and cycle variants",
+          "label": "E20\u2013E24 loss and cycle variants",
           "href": "../../verification/callback-native-capture/transport-evidence.md#observable-replyresult-cycle-and-loss-variants"
         }
       ]
@@ -383,7 +396,7 @@
       "renderer": "svg",
       "source": "process-recorder-markers.puml",
       "rendered": "process-recorder-markers.svg",
-      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142–k144 under k140/k138/k135. Native credit is withheld."
+      "caption": "V7 representation projection: every native signed Int64 value has one canonical decimal string, and repeated zero or stray values retain separate receipt ordinals. Marker equality is not event identity or provenance. Existing v6 structural/prefix and sample diagnostics remain; byte/schema recovery and partial samples are unsupported. Complete producers, waits and fresh review remain k142\u2013k144 under k140/k138/k135. Native credit is withheld."
     },
     {
       "id": "process-recorder-history",
@@ -392,7 +405,7 @@
       "renderer": "svg",
       "source": "process-recorder-history.puml",
       "rendered": "process-recorder-history.svg",
-      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1–V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
+      "caption": "V6 inspects schema-readable contiguous local prefixes, preserves the original strict structural result and reports positive malformation without filling gaps. No partial sample recovery or complete producer is supplied. V1\u2013V5 remain frozen. K140 retains all remaining k138/k135 criteria and commissions fresh review before k126; native credit remains withheld."
     },
     {
       "id": "process-recorder-protocol",
@@ -401,7 +414,7 @@
       "renderer": "svg",
       "source": "process-recorder-protocol.puml",
       "rendered": "process-recorder-protocol.svg",
-      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1–V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
+      "caption": "V5 sample/controller projection: terminal aborts, sample scope and multiple candidate diagnostics are independent columns. B witness, selected callback enclosure, definitive F/M, acquisition/validation and activity order justify callback-sample scope; retained alone does not. V1\u2013V4 meanings remain frozen. Complete producers and fresh review remain k140 under k138; no native credit or parent closure."
     },
     {
       "id": "process-recorder-return",
@@ -437,7 +450,7 @@
       "renderer": "svg",
       "source": "process-retention.puml",
       "rendered": "process-retention.svg",
-      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit → returned → C injection → C receipt → retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
+      "caption": "Synthetic instrument contract, not a native observation. The analyzer requires exit \u2192 returned \u2192 C injection \u2192 C receipt \u2192 retained B, preserving the same owned token and balanced release. Missing edges are unreached; a changed token or failed live read contradicts the capture. Native production of returned must occur outside the callback at an audited enclosing loop boundary; a pre-return exit log or queued worker is insufficient. Both source pairs and constructions have controls. k121/k122 retain native capture, gates, permissions, external exits and complete provenance. See docs/verification/callback-capture-transfer.md#retained-switch-analyzer-extension."
     },
     {
       "id": "process-input-route",
@@ -715,7 +728,7 @@
       "group": "machine",
       "title": "Physical prefixes before producer projection",
       "source": "process-recorder-prefixes.mmd",
-      "caption": "K200 selects unique physical prefixes on supplied metadata, then maps original producer numbers without sorting or renumbering. A physical gap excludes later semantic rows; a producer defect leaves physical observations available. Raw coordinates and reasons survive. Canonical owner order is not causality. The actual loader must validate complete rows and metadata extraction before any history joins or credit. These controls do not discharge B16 or E20–E24; k201 retains the complete successor and all original criteria. No native result or analyzer version follows.",
+      "caption": "K200 selects unique physical prefixes on supplied metadata, then maps original producer numbers without sorting or renumbering. A physical gap excludes later semantic rows; a producer defect leaves physical observations available. Raw coordinates and reasons survive. Canonical owner order is not causality. The actual loader must validate complete rows and metadata extraction before any history joins or credit. These controls do not discharge B16 or E20\u2013E24; k201 retains the complete successor and all original criteria. No native result or analyzer version follows.",
       "links": [
         {
           "label": "Selector interface and extraction obligations",
