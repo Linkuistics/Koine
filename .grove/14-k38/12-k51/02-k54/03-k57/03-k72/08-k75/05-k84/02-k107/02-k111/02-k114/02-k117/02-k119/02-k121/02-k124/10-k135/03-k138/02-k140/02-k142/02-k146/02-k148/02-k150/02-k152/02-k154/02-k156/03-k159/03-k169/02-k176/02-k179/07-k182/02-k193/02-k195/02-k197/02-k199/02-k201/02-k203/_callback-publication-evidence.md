@@ -129,3 +129,16 @@ repairs owned by callback-publication-replay-k214, with fresh k215 review before
 k205. No unresolved k211 rule becomes an implementation default. K205 retains
 complete executable delivery and the numeric profile freeze under all six
 original criteria. No ancestor or native duty closes; no V1–V26 evidence changes.
+
+## K216 review integration handoff
+
+K216 records all six k215 dispositions in the assessment and repairs R25/R34
+vectors, semantic-fault placement, R06 receipt/outer-schema distinctions,
+direct-reference support reporting and R35 file/report guard controls. K215's
+controller-SCC counterexample invalidates k214's shared path controls, not the
+qualified monotonicity proof. Callback-publication-path-controls-k217 supplies
+real-file replacements; callback-publication-path-controls-k218 reviews them
+before k205. No unresolved construction becomes an implementation default.
+K205 retains complete executable delivery and the numeric report-profile freeze.
+Every original criterion above remains unchanged; no ancestor closes and all
+k180/k177/k143/k144/k126 plus k124/k121 ownership remains. V1–V26 stay frozen.

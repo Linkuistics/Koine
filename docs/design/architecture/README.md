@@ -16,7 +16,8 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 K214 supplies the [publication replay repair](../../verification/callback-native-capture/publication-replay.md)
-for k215 fresh review before k205 plans delivery and freezes numeric report
+with k216 review dispositions. K217/k218 must replace and review its invalid
+shared path controls before k205 plans delivery and freezes numeric report
 budgets. Local receipt crossing and attribution have distinct support; raw and
 usable paths are reported separately. Controller integrity is distinct from
 phase/tuple correctness. Acquisition counts/absence/ALL require closure. The
@@ -787,3 +788,15 @@ unavailable. These are responsive desktop checks, not mobile-device coverage;
 wide dark/narrow light, independently hashed guest assets and frozen browser/CDN
 versions are not claimed. Only changed views were inspected. No native diagnostic
 or successor analyzer ran, and no host GUI was used.
+
+## K216 review qualification
+
+K215 found that k214's shared path-control fixture crosses a controller receipt
+inside an SCC, so its raw-T and reached expectations are withdrawn. K216's
+[dispositions](../../verification/callback-capture-transfer.md#publication-replay-review-integration-k216)
+assign the real-file control redesign to k217 with fresh k218 review before k205.
+The claim diagram's algorithm still requires noncyclic selected edges; local
+receipt independence does not waive that rule. The diagrams express that proposed
+algorithm and classifier, not the validity or execution of a particular fixture.
+R25/R34/R06 report tables and R35 guard controls are clarified in the linked replay
+contract. No diagram, rendered asset or new presentation run is claimed here.
