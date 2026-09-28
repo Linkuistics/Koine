@@ -194,6 +194,13 @@ The complete executable delivery and numeric profile freeze above are unchanged.
 
 - callback-publication-report-profile-k243: fresh review-planning of the
   frozen profile, its coverage table and the k225–k242 plan, cut by k224.
+  Five findings; k244 integrates them.
+- callback-publication-report-profile-k244: moved W-input/W-enter admission
+  into k231 (finding 1) and fixed k226's permutation comparison (finding 5);
+  cut k245/k246 for findings 2–4.
+- callback-publication-report-profile-k245: repaired profile — sidecar
+  closed over support, parsed-comparison resident bound, fit of every
+  required stress construction; k246 reviews it.
 
-This node closes when k224 (and any review it cuts) retires. Its closing does
+This node closes when k245 and its review chain retire. Its closing does
 not satisfy any k203 criterion: k225–k242 deliver them.
