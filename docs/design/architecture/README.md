@@ -15,13 +15,14 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 
 ## Current discussion
 
-K204 proposes [publication replay integration](../../verification/callback-native-capture/publication-replay.md): independent local facts and explicit edge support feed one frozen Trace, with a read-only original-coordinate producer view. K206 found consumer-policy gaps; k208 resolves the bounded redesign and k209 reviews it before k205 plans the complete executable successor under unchanged k203. K207 records the dispositions and repairs the criteria/control inventory. No analyzer version, native evidence or V1–V26 semantics change.
+K208 revises [publication replay integration](../../verification/callback-native-capture/publication-replay.md) with explicit delivery/suitability rules, qualified armed witnesses, three-valued claims, deterministic support and separate physical/replay/raw domains. The complete detached legacy CLI preserves old staging. K209 reviews this artifact before k205 plans the complete executable successor under unchanged k203. No analyzer version, native evidence or V1–V26 semantics change.
 
-Changed view:
+Changed views:
 
-- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Shows evaluation ownership, witness construction before cycle analysis, and the detached legacy comparison.
+- [One frozen graph for publication replay](index.html#diagram-process-recorder-replay) — Separates replay/raw domains, pre-freeze witness rules, read-only claims and the complete legacy CLI.
+- [Order evidence and independent support](index.html#diagram-process-recorder-claims) — Adds clean/cyclic/reverse path selection, unknown negation and mandatory contributing support.
 
-[Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) are unchanged context.
+[Bounded files](index.html#diagram-process-recorder-files), [physical prefixes](index.html#diagram-process-recorder-prefixes) and [supported causal edges](index.html#diagram-process-recorder-evidence) remain context.
 
 All original k124/k121 criteria remain live with k126. Coverage precedes full
 recorder/matrix construction; one attempt per frozen cell, preparation, PID
@@ -718,3 +719,22 @@ so VNC was used. No narrow/dark/mobile, independently hashed guest assets or
 frozen browser/CDN/OS claim follows. The clone and temporary port 8774 server
 stopped; the existing port 8772 viewer was untouched. No host GUI or native
 recorder ran, and presentation supplies no executable replay evidence.
+
+
+### K208 presentation
+
+Safari in disposable clone `koine-k208-view` displayed the revised
+[replay stages](index.html#diagram-process-recorder-replay) and new
+[order/support rules](index.html#diagram-process-recorder-claims), their complete
+captions and the current discussion. Light desktop captures cover every node
+and branch; the narrower dark window covers entry/body labels and the discussion.
+The initial claim diagram overflow was corrected by combining reverse/gap
+outcomes, then rendered and inspected again. A fresh-page claim deep link reached
+the intended view after rendering. The
+[presentation record](../../verification/callback-native-capture/evidence/k208/presentation.json)
+binds final assets and screenshots and records the 1024×768 framebuffer and
+approximately 705-pixel narrow window. These are responsive desktop checks, not
+mobile-device, successor-execution or native evidence. Full dark captions,
+independent guest-file hashes and frozen CDN/browser/OS dependencies are not
+claimed. The task clone and temporary port-8774 server stopped; other VMs and
+the existing viewer service were preserved.

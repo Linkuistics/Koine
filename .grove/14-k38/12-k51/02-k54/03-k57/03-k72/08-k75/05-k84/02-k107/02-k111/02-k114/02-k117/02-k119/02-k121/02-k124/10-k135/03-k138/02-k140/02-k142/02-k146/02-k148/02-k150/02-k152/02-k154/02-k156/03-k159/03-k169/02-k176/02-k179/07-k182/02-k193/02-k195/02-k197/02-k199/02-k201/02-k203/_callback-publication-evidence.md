@@ -77,6 +77,8 @@ repairs the explicit receipt/exclusion criterion inventory and adds four support
 controls. Callback-publication-replay-k208 now resolves witness selection,
 staged predicate migration, causal-status composition, legacy CLI projection
 and producer-invariant ownership; callback-publication-replay-k209 reviews that
-bounded redesign before k205. The current proposal is incomplete at those
-boundaries. K205 still plans complete executable delivery under every original
-criterion above; no ancestor closes and no V1–V26 meaning or evidence changes.
+bounded redesign before k205. K208 now supplies those policies in
+publication-replay.md, including R01–R21 controls, exact CLI projection and
+separate physical/map/stateful/raw domains. This is a proposed design awaiting
+k209, with no successor execution claim. K205 still plans complete executable
+delivery under every original criterion above; no ancestor closes and no V1–V26 meaning or evidence changes.
