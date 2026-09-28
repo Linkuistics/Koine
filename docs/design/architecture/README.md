@@ -16,16 +16,18 @@ refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
 ## Current discussion
 
 The [native recorder contract](../../verification/callback-native-capture/contract.md)
-remains unready for native use. V25 supplies selected non-stopped invocation
-returns with truthful first-cause failure and reached continuations. K176 retains
-blocked-call/write and transport loss; k177 retains full sampler reconciliation,
-including cancellation combined with non-stopped selected return. K143 owns
-targets; k144 complete waits, partial evidence and mandatory fresh review.
+remains unready for native use. K181 proposes distinct frame commit, raw write
+attempt/result and receiver observations over both broker hops. K182 must
+version/falsify this contract and renew the complete corpus; V1–V26 retain their
+current meanings. K180 composes loss; k177 retains full sampler reconciliation
+including non-stopped cancellation. K143 owns targets; k144 complete waits,
+partial evidence and mandatory fresh review.
 
 Changed in this discussion:
 
-- [Selected work with an unexpected invocation return](index.html#diagram-process-recorder-selected-return) — Adds actual non-stopped return, first-cause failure and mandatory continuation through truthful cleanup.
-- [Selected return contract](../../verification/callback-causal-fixture/contract.md#version-25-selected-non-stopped-invocation-return) — Specifies the raw result, exact waits, reached publications and preserved limitations.
+- [Publication attempts and feasible receipt](index.html#diagram-process-recorder-publication) — Separates the two broker hops and permits receipt before a recorded write result.
+- [Partial writes and unavailable results](index.html#diagram-process-recorder-write-state) — Distinguishes partial progress, terminal loss and missing results without granting cleanup.
+- [Publication observation contract](../../verification/callback-causal-fixture/contract.md#proposed-publication-observations-k181) — Defines byte ownership, causal feasibility, counterexamples and the remaining executable handoff.
 
 The earlier recorder diagrams are unchanged context.
 
@@ -90,6 +92,18 @@ renderer is PlantUML 1.2026.8. The other sources use D2 0.9.0 and Graphviz 16.1.
 retain their existing renderer settings when changing them.
 
 ## Verification scope
+
+For k181, Safari in disposable macOS clone `koine-k181-design` displayed both
+new deep links, their complete narrow dark captions, and the current discussion.
+Wide light inspection covers the publication sequence top and discussion; the
+state view was inspected in narrow dark. The
+[render record](../../verification/callback-native-capture/evidence/k181/render.json)
+matches local assets to host HTTP bytes; the
+[presentation record](../../verification/callback-native-capture/evidence/k181/presentation.json)
+records screenshots, checks, limits and successful clone stop. Fine labels are
+small at narrow fit scale. There are no independent guest-file hashes or frozen
+browser/CDN/OS dependencies. This is responsive desktop presentation evidence,
+not mobile-device testing, native transport evidence or model checking.
 
 For k175, Firefox in disposable Linux clone `koine-k175-review` displays the
 selected-return deep link and current discussion in wide and 650×850 responsive

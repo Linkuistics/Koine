@@ -24,21 +24,52 @@
     }
   ],
   "discussion": {
-    "title": "Preserve pending native obligations",
-    "status": "V26 diagnostic design \u2014 native readiness withheld",
-    "summary": "A raw begin without its return preserves pending calls, leases and rights. It does not prove OS blocking or process exit. Publication loss and full composition remain k179/k180; k177 retains sampler reconciliation.",
+    "title": "Distinguish publication observations",
+    "status": "Proposed observation contract — executable successor pending k182",
+    "summary": "Frame commit, byte attempts, syscall results and receipt are separate. Both broker hops need feasible bytes. K181 specifies the contract; k182 must version/falsify it and renew the corpus before k180 composes loss. V1–V26 remain unchanged.",
     "diagramIds": [
-      "process-recorder-pending-native",
-      "process-recorder-selected-return"
+      "process-recorder-publication",
+      "process-recorder-write-state",
+      "process-recorder-pending-native"
     ],
     "updatedDiagrams": [
       {
-        "id": "process-recorder-pending-native",
-        "summary": "Adds intact-prefix obligations, unknown acquisition output and the external bounding handoff."
+        "id": "process-recorder-publication",
+        "summary": "Separates both broker hops and permits receipt before a recorded write result."
+      },
+      {
+        "id": "process-recorder-write-state",
+        "summary": "Distinguishes partial progress, terminal write loss and unavailable results."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "process-recorder-publication",
+      "group": "machine",
+      "title": "Publication attempts and feasible receipt",
+      "source": "process-recorder-publication.mmd",
+      "caption": "Proposed k181 observation contract, not an executable version or native evidence. Read from the first message. This is one possible ordering: results may also be recorded before receipts. Each hop needs the exact bytes and all contributing attempts; a later short/error result can make a claimed receipt impossible. Loss hiding a necessary attempt or join leaves receipt unverified; an intact covering attempt may remain feasible with its result unavailable. Broker transport observations use the existing Trace, not a fifth protocol participant. K182 owns executable falsification and corpus renewal; k180 phase composition; k144 deadlines/reserve; k126 native audit and containment.",
+      "links": [
+        {
+          "label": "Publication observation contract",
+          "href": "../../verification/callback-causal-fixture/contract.md#proposed-publication-observations-k181"
+        }
+      ]
+    },
+    {
+      "id": "process-recorder-write-state",
+      "group": "machine",
+      "title": "Partial writes and unavailable results",
+      "source": "process-recorder-write-state.mmd",
+      "caption": "Proposed state view of one serialized directed writer, read from its initial pseudo-state. Complete means local byte acceptance only; a peer may have received the frame before a result was recorded. Unknown is an evidence boundary, not an observed OS state, and does not authorize in-process cleanup after a pending synchronous call. Zero/error ends that direction for the case; no reconnect/replay or later frame can repair it. The opposite direction is independent. External means recovery work remains, not that containment ran. Row/byte/attempt caps remain safety bounds. This is not model checking.",
+      "links": [
+        {
+          "label": "Native publication handoff",
+          "href": "../../verification/callback-native-capture/contract.md#proposed-publication-observation-handoff-k181"
+        }
+      ]
+    },
     {
       "id": "process-recorder-pending-native",
       "group": "machine",

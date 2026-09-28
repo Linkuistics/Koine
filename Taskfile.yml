@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+  design:check-publication-order:
+    desc: Check proposed publication order examples through Trace (not transport conformance)
+    cmds:
+      - uvx ruff==0.16.8 check --select E,F,I --line-length 100 docs/verification/callback-native-capture/publication_order.py
+      - uvx ruff==0.16.8 format --check --line-length 100 docs/verification/callback-native-capture/publication_order.py
+      - uvx pyright==1.1.414 --project docs/verification/callback-native-capture/pyrightconfig.json docs/verification/callback-native-capture/publication_order.py
+      - python3 -I -S docs/verification/callback-native-capture/publication_order.py
+
   fixture:callback-exit-observer:
     desc: Build the gated exit-status discriminator (execute only in TestAnyware)
     cmds:
