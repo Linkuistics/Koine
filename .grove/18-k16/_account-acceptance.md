@@ -15,8 +15,10 @@ Check the annotated Signal and Messages chords against their intended results.
   application versions.
 - A shortcut found to produce the wrong result is corrected through new work,
   not frozen into the contract.
-- An account or data set that is unavailable leaves its cases pending. A
-  documented untested limitation does not pass them.
+- An account or data set that is unavailable leaves its cases pending, each
+  recorded with the account or data it needs. A documented untested limitation
+  does not pass them. This node may close with cases pending.
+  `baseline-acceptance` keeps them as live work, and none counts as passed.
 
 ## Decomposition
 

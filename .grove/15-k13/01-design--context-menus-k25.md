@@ -22,4 +22,5 @@ The spec, and an ADR where a decision clears the bar, state:
 - the explicit opening operation and its authority;
 - the opened menu as an instance of the interaction lifecycle, covering finish,
   cancel and every cleanup trigger;
-- results, errors and the VM acceptance cases.
+- results, errors and the VM acceptance cases, including the app-shortcut rows
+  `menu-bar-k36` named for explicit opening.

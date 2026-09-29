@@ -29,6 +29,10 @@ never substituted.
   - Duplicate titles are not identity.
   - Disabled or removed items are refused.
   - Consent and authority losses keep their permission classifications.
+- Each app-shortcut row that `app-input` assigned to menu invocation reaches
+  its intended outcome in VMs through validated invocation. A row whose item
+  needs explicit opening passes to `context-menus`. An account-dependent row's
+  outcome is recorded as pending for `account-acceptance`.
 - Menu-invocation authority can be granted without input, and read-only,
   focus-only, denied and revoked grants cannot invoke. The unknown-outcome and
   no-replay rules hold. Trace rows are added.

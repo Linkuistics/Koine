@@ -8,6 +8,7 @@ Design menu-bar discovery and validated invocation.
 
 - `menu-evidence-k23`'s findings.
 - `provider-architecture-k5`'s authority and classification decisions.
+- `app-input-k34`'s table of app-shortcut rows achieved by menu invocation.
 - The requirements' "Application-menu requirements", including the accepted
   conservative-invalidation trade-off.
 
@@ -23,7 +24,9 @@ The spec, and an ADR where a decision clears the bar, state:
 - the read-purity rule for passive inspection;
 - the invocation result and errors;
 - authority;
-- the VM acceptance cases for each configured application's menu kind.
+- the VM acceptance cases for each configured application's menu kind, and
+  for each app-shortcut row `app-input-k34` assigned to menu invocation. A row
+  whose item needs explicit opening is named for `context-menus`.
 
 ## Notes
 

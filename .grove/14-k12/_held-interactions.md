@@ -51,4 +51,6 @@ Abrupt crash recovery is defined and documented.
 
 The rules to preserve are grant/dispatch admission and live revocation.
 Cleanup ends effects of an already admitted interaction. It admits nothing new,
-bypasses no consent and reclaims no focus.
+bypasses no consent and reclaims no focus. The walk's keystrokes use
+`app-input`'s delivery, so its stated check-to-delivery limit applies here
+too. A limit that would weaken the no-Escape rule is Antony's decision.

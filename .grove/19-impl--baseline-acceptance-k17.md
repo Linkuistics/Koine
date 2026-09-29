@@ -4,8 +4,9 @@
 
 Close the agreed baseline. Every inventory row and acceptance case in
 `docs/requirements/modaliser-workflows.md` is traced to its public operations
-or explicit client responsibility, and demonstrated through the three seams,
-or listed as pending with its reason.
+or explicit client responsibility, and demonstrated through the three seams.
+A pending case is never a passing outcome, so the baseline closes only when
+none remains.
 
 ## Context
 
@@ -16,8 +17,9 @@ or listed as pending with its reason.
 ## Done when
 
 - A contract-driven standalone client, built from the documented and
-  introspected contract, demonstrates every row in VMs. The client may be the
-  existing contract-only client extended, or another.
+  introspected contract, demonstrates every row in VMs. The only permitted gap
+  is an account-dependent case that `account-acceptance` left pending. The
+  client may be the existing contract-only client extended, or another.
 - The trace is complete, including the authority of every effect.
 - Denied, revoked, empty, unavailable and missing-integration cases are shown
   distinguishable.
@@ -27,8 +29,12 @@ or listed as pending with its reason.
 - The requirements document's status no longer says the work awaits design
   and implementation.
 - The spec's acceptance status, and the client guide where it changed, are
-  current.
-- Pending cases are listed with the account or data each still needs.
+  current. They name any pending case as pending, never as passed.
+- If a case is still pending, the baseline stays open. Each pending case
+  remains identifiable live work: a leaf cut after this one, naming the
+  account or data it needs and the cases it unblocks. Dropping a pending case
+  from the baseline is a scope change only Antony can make. Raise it with a
+  recommendation rather than closing around it.
 
 ## Notes
 

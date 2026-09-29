@@ -38,7 +38,8 @@ grants for input, menu invocation and window focus; bounded cleanup on
 revocation, inactivity and orderly shutdown; foreground-loss cleanup with the
 owned-modifier-release exception; and explicit abrupt-crash recovery limits.
 Account-dependent acceptance uses dedicated test accounts/data in isolated VMs;
-unavailable accounts leave affected cases pending.
+unavailable accounts leave affected cases pending. A pending case stays live
+work, never a passing outcome, and the baseline does not close around it.
 
 `providers-k3` split the work into dependency-ordered increments. Each is a
 node that leaves Koine working and delivers behavior a standalone client can
@@ -78,9 +79,9 @@ row's client part is recorded in that increment's trace.
 | Web search | `launch-and-open` (URL opening) | query UI, suggestions, typed-query fallback |
 | Media, pointer | `pointer-and-media` | highlight ring |
 | Client settings | `launch-and-open` (open in Zed) | reload and relaunch |
-| Safari, Finder, Zed, Obsidian, Zotero | `app-input` | — |
-| Dia | `app-input`; the recent-tab walk in `held-interactions` | walk keys |
-| Mail, Slack, Signal, Messages, Telegram | `app-input`; acceptance in `account-acceptance` | — |
+| Safari, Finder, Zed, Obsidian, Zotero | `app-input`; menu-invoked rows in `menu-bar`, or `context-menus` where opening is needed | — |
+| Dia | `app-input`, menu-invoked rows as above; the recent-tab walk in `held-interactions` | walk keys |
+| Mail, Slack, Signal, Messages, Telegram | `app-input`, menu-invoked rows as above; acceptance in `account-acceptance` | — |
 | iTerm and its setup | `iterm` | invoking setup explicitly |
 | Terminal context, herdr rows | `herdr` | chain navigation, removal confirmation, status ordering |
 | List and label state | `window-layout`, `iterm`, `herdr` | label assignment, placement, rendering, ordering |

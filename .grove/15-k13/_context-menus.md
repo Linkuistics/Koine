@@ -24,6 +24,10 @@ menus through `held-interactions`' lifecycle.
   - inactivity expiry;
   - orderly shutdown;
   - abrupt termination with its documented recovery.
+- Each app-shortcut row that `menu-bar` passed here reaches its intended
+  outcome in VMs through explicit opening and validated invocation. An
+  account-dependent row's outcome is recorded as pending for
+  `account-acceptance`.
 - Opening carries documented authority. Trace rows are added.
 
 ## Decomposition
