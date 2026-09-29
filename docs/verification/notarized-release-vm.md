@@ -108,10 +108,12 @@ host. Two things are specific to this run:
   Store & Known Developers" is what a stock Mac ships with. Nothing was disabled
   to get here, and the App Store-only state the clone passes through on the way
   is stricter rather than weaker.
-- **This does not show** the library-validation entitlement, a third-party-team
-  provider, or `brew install`; the first two are out of scope for version 1
-  ([loading and trust](../specs/machine.md#loading-and-trust)). It is one OS build on one architecture, which is
-  the whole of the supported matrix: [latency-and-support-matrix.md](latency-and-support-matrix.md).
+- **This does not show** the library-validation entitlement or a
+  third-party-team provider, both out of scope for version 1
+  ([loading and trust](../specs/machine.md#loading-and-trust)). The same
+  posture reached through `brew install --cask` is
+  [homebrew-install-vm.md](homebrew-install-vm.md). It is one OS build on one
+  architecture, which is the whole of the supported matrix: [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 ## Evidence
 
