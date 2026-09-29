@@ -32,16 +32,28 @@ Reference arguments and thus no additional reference-owner requirements here.
 `WorkspaceApplicationInput` contains a nonblank `bundleIdentifier: String!`
 and optional `applicationPath: String`. The identifier names an installed app,
 not a display name or process incarnation. Without a path constraint, Launch
-Services chooses the installed copy at action time. With a path, only a registered
-application bundle at that canonical location with the matching identifier is
+Services chooses the installed copy at action time and may reuse a running copy
+elsewhere. With a path, only a registered
+application bundle at that file identity with the matching identifier is
 eligible. Missing registration/bundle is `APPLICATION_NOT_INSTALLED`; an extant
 bundle with a different identifier is `APPLICATION_IDENTITY_MISMATCH`. Neither
 substitutes another copy. A future search result can pass its identifier/path
 without requiring a reference conversion. Registration is native discovery,
-not Koine provider approval or an additional application allowlist.
+not Koine provider approval or an additional application allowlist. Installed
+means registered and present as an application bundle when inspected. Check the
+resolved bundle before submission, including unconstrained selection; unreadable
+metadata is `failed`, not absence. A present registered bundle in the Trash
+remains eligible: moving it there is not an uninstall in this contract. Do not
+claim a missing registered copy is present merely because its registration remains.
+The named-app selector requires a bundle identifier; bundle-less programs have
+no selector route. This does not prevent a default handler without an identifier
+from receiving a document. Search must expose this distinction when it is designed.
 
-A running copy at the resolved location is reopened/activated. Koine requests
-neither a fresh instance nor substitution by a running copy elsewhere. The app
+A running copy is reopened/activation is requested. Koine never requests a fresh
+instance. Without `applicationPath`, running-copy substitution is enabled for
+launch and named-app opening; with it, substitution is disabled. Application
+search uses the constrained form when the user selected a particular installation,
+even if another copy is running. The app
 owns its reopen behavior: Koine does not promise a new window, restore every
 minimized window, select one of several running instances, or keep the app
 frontmost against other activity. Clients needing a specific window use desktop
@@ -50,30 +62,54 @@ discovery/focus afterward. Do not report `wasAlreadyRunning` from a racy prechec
 Paths are literal absolute paths on Koine's machine, not file URLs, globs,
 tilde expansion or environment substitutions. Reject empty, relative and
 NUL-containing paths as input errors; spaces and shell punctuation remain
-literal. Resolve symlinks for application-copy comparison. Document paths are
+literal. Resolve symlinks for application-copy comparison and compare native
+volume/file resource identity, not spelling, Unicode normalization or a path
+prefix. Failure to establish identity is `failed`. Document paths are
 location-based requests with normal symlink semantics, not pinned file identities.
 An absent path/dangling link found before submission is `PATH_NOT_FOUND`.
 Replacement or handler changes racing submission may fail or open a new
 occupant. Search must not imply stronger identity than this contract.
 
-Path opening sends a document/directory to an installed handler; it never
-executes the path as a program. Reject application bundles and native executable
-files as direct launch payloads, including through symlinks. In the default-handler
-form also reject OS-classified executable scripts; the explicit named-app form
-may send a script as a document (for example, editing it in Zed). It does not
-select an interpreter executable or supply program arguments. The named app owns
-its document behavior, which may itself run code. Document packages remain
-eligible unless classified as applications. Reveal may select applications or
-executables without running them. No operation accepts executable selection,
-argv, environment, custom Apple events or shell commands. An application's own
-response to a document, directory, page or reopen request is not sandboxed.
+Path opening submits a document/directory to an installed handler. Its refusal
+policy is a metadata check, not proof that the contents cannot execute. After
+resolving filesystem symlinks, refuse a target identified as an application
+bundle by its native resource metadata, or with a content type conforming to
+`com.apple.application-bundle`, `public.unix-executable` or
+`com.microsoft.windows-executable`. Do not use the broad `public.executable` or
+`public.script` ancestors, or executable permission bits, to reject ordinary
+source documents. Unknown type alone does not prove executable content; failed
+metadata inspection is `failed`. No content sniffing opens protected bytes.
+Refuse native alias files (`com.apple.alias-file`) before handler resolution in
+both forms; this API does not resolve Finder aliases or let them bypass the
+application-payload check. Reveal can select the alias itself.
 
-URL opening accepts only `http`/`https`, with a host, valid syntax and no
-credentials or control characters. Other schemes, including `file`,
+Source/script documents may be sent to their default handler or a named app,
+including Zed. The chosen app owns the reaction: Terminal may execute a
+`.command`/`.sh` or `.terminal` document; Jar Launcher may run a `.jar`.
+Location documents (`.webloc`, `.inetloc`, `.url`, `.fileloc`) are ordinary
+documents here, and their handler may follow a non-HTTP URL or a local target.
+The HTTP(S) restriction applies to `workspaceOpenURL` input, not to links or
+commands inside documents or pages. No content or handler sandbox is promised,
+and a racing replacement can change the inspected payload before dispatch.
+Document packages remain eligible unless classified as applications. Reveal
+may select applications or executables without opening them. No operation
+accepts an executable selector, argv, environment, custom Apple event or shell
+command. Workspace control disclosure must state both this API boundary and
+the application's unrestricted response to an authorized open/reopen request.
+
+URL opening uses the ASCII `URI` grammar of
+[RFC 3986 section 3](https://www.rfc-editor.org/rfc/rfc3986#section-3), including
+its optional query and fragment, with an `http`/`https` scheme, nonempty host,
+valid percent escapes, and no credentials, whitespace,
+backslashes or control characters. Unicode paths/query text must arrive UTF-8
+percent-encoded; internationalized hostnames must arrive as ASCII IDNA labels.
+Do not trim, repair, normalize or silently percent-encode invalid input. Other
+schemes, including `file`,
 `javascript` and custom application schemes, are input errors. Preserve valid
-path/query/fragment data. Resolve the default handler for the URL's scheme and
+path/query/fragment bytes. Resolve the default handler by the scheme alone,
+never by passing the submitted URL to universal-link-aware handler discovery, and
 submit explicitly to that app, avoiding universal-link dispatch to a native app.
-The receipt identifies the handler used even if the default subsequently changes.
+Default changes after resolution do not retarget or replay this action.
 Query entry, suggestions and typed-query fallback remain client-owned; Koine
 does not construct searches or contact Google.
 
@@ -86,20 +122,33 @@ uses the config directory and installed Zed; reload/relaunch remain client-owned
 
 ## Results and failure boundary
 
-The result's `status` is `AVAILABLE` or `DEPENDENCY_UNAVAILABLE`. Exactly one
-of `value` and `dependency` is non-null, selected by status. The dependency
+The result's `status` is `AVAILABLE` or `DEPENDENCY_UNAVAILABLE`. Absent an error
+at or below the result, exactly one of `value` and `dependency` is non-null,
+selected by status. A published status remains authoritative if an error
+suppresses its branch during publication; a null branch with an error is not a
+different operation outcome. Non-null propagation can also remove status or
+the entire result. Clients inspect both data and error paths. The dependency
 object carries a closed reason enum and human guidance; it is not an execution
 error. Validate this invariant at public GraphQL: nullable object members alone
-cannot express it. Available means native acceptance, not that a document
+cannot express it. Available means native acknowledgment, not that a document
 finished rendering, a page loaded, or Finder selection was independently seen.
 A null root always has an execution/input error for these four fields.
 
-`WorkspaceOpenReceipt` contains the chosen `applicationPath`, its optional
-bundle identifier, and optional `WorkspaceProcessIdentity` (`pid`, `startedAt`).
-These are observations of this action under control authority, not general
-application discovery. `startedAt` has the exact desktop input semantics: the
+`WorkspaceOpenReceipt` contains only optional `WorkspaceProcessIdentity`
+(`pid`, `startedAt`), the bounded action handoff allowed by the Machine contract.
+Installed paths, bundle identifiers and default-handler metadata remain read
+data and are not returned in this control-only receipt.
+`startedAt` has the exact desktop input semantics: the
 kernel process start instant in UTC with six fractional second digits. Use it
-only if the native result's application and PID/start observation can be matched.
+only for the application returned by this action's completion callback. Retain
+that native application object, require a positive stable PID and non-terminated
+state, read the kernel start instant, compare the live process executable's file
+identity with that object's executable, then read the start instant again.
+The two kernel observations must match; a fresh native application lookup for
+the PID must compare equal to the retained object, whose PID and non-terminated
+state are checked again. Every unavailable value or mismatch yields null.
+This is an observation rule, not atomic binding of the launch/open effect to a
+process: replacement between observations and later exit remain possible.
 Exit, ambiguity or unreadable start time produces `process: null`, never PID-only
 identity or the current foreground process. The native application's launch date
 is not a substitute for the exact kernel value. Later exit is always possible.
@@ -113,7 +162,7 @@ later reference withdrawal retain the desktop contract's null/error distinction.
 native selection operation with a boolean acknowledgment: false means `failed`.
 It does not infer success from a void send or add AX, keystroke or menu checks.
 A directory is selected in its parent; the filesystem root is shown as a root
-view because it has no parent. Native acceptance is not selection verification.
+view because it has no parent. Native acknowledgment is not selection verification.
 
 | Condition after grant admission | Observable outcome |
 | --- | --- |
@@ -121,9 +170,8 @@ view because it has no parent. Native acceptance is not selection verification.
 | Constrained bundle has another identifier | Dependency `APPLICATION_IDENTITY_MISMATCH`; no substitution/action. |
 | Path missing or dangling link | Dependency `PATH_NOT_FOUND`; no action. |
 | Existing path or valid web URL has no default opener | Dependency `NO_DEFAULT_HANDLER`; no chooser/action. |
-| Invalid input or direct-execution payload | Existing input error at original response path, no `kind`; this field does not act. |
+| Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. |
 | Missing/revoked client authority | `permission` / `capability`, before resource inspection. |
-| Established OS-consent denial | `permission` / `os-permission`, never dependency absence. |
 | Filesystem access denied without established consent cause | `failed`; do not infer absence or invent a consent. |
 | Native error/false acknowledgment, timeout, or prerequisite lost after submission | `failed`; effects may have begun; no replay or alternate handler. |
 
@@ -141,16 +189,48 @@ transport outcome can be unknown even when the app opens successfully.
 Workspace owns selection, path classification and submission behind a private
 native adapter. The Machine core owns grants, preflight, live dispatch, deadlines
 and publication. Helpers share no desktop reference registry. The existing
-provider composition point enables controlled outcome tests; real independent
-binaries and real apps supply native/VM evidence, without a new public test API.
+provider composition point enables core authorization/order and client result
+handling tests. To test workspace's own mapping, construct the real workspace
+provider with a substituted private native adapter in provider-local tests.
+That enabling point controls lookup, acknowledgment, clock and observation
+results; it is not a new public seam or evidence from a native binary/real app.
+Real independent binaries and real apps supply the separate N/V evidence.
 
 The native design uses NSWorkspace launch/open with activation enabled,
-new-instance creation and running-copy substitution disabled, printing/hiding
+new-instance creation disabled, running-copy substitution enabled except for
+an explicit application-path constraint, printing/hiding
 disabled, no supplied arguments/environment/custom Apple event, and ordinary
 error/authentication prompting disabled. Retain normal recent-item behavior.
 Reveal uses `selectFile(_:inFileViewerRootedAtPath:)` and its acknowledgment.
 No AX, Automation script, input synthesis, shell or menu fallback is part of
 these paths. Both grants remain necessary even when activation is not observed.
+
+Observe cold launch and reactivation of an already running app while another
+app is frontmost and Koine is inactive. An acknowledgment alone does not pass
+the launcher activation case. The existing client recovery route, when a receipt
+has a process, is a separate `desktopApplication(process:)` read followed by an
+explicit `desktopFocusWindow` on a returned window. It needs `desktop:read`,
+desktop control and Accessibility consent under the existing desktop contract;
+none is an implicit workspace prerequisite or an automatic server fallback.
+If controls-only workspace launch does not meet activation acceptance, keep that
+case pending and raise the measured limit with Antony. Do not silently require
+client-side yield or weaken the launch-or-activate requirement.
+
+Each native submission has a three-second acknowledgment wait bound. Provider
+cancellation or that bound ends the resolver once, with `failed` at the action's
+response path when the core can still publish it. Use an asynchronous one-shot
+completion/timeout boundary, including Finder's boolean return: a late native
+result is ignored and retains no resolver
+or credential; never wait for a callback inside cancellation cleanup. Gatekeeper
+or slow launch may continue after the caller receives `failed`, which means
+effects may have begun. Do not retry. Three seconds is below the core's
+five-second request ceiling but cannot replace it: earlier root actions,
+preparation or scheduling may consume the request budget first. In that case
+the existing whole-response deadline result still applies. Bound concurrent
+native submissions and retained callback tokens; a timed-out native call still
+counts while outstanding. Exhausted capacity refuses before submission with
+`failed`. Do not promise to cancel the OS request or to
+bound OS-owned UI/resources by ending the provider wait.
 
 Apple documents [launch acknowledgment](https://developer.apple.com/documentation/appkit/nsworkspace/openapplication(at:configuration:completionhandler:)),
 [running-instance reuse](https://developer.apple.com/documentation/appkit/nsworkspace/openconfiguration/createsnewapplicationinstance),
@@ -158,7 +238,12 @@ Apple documents [launch acknowledgment](https://developer.apple.com/documentatio
 and [Finder selection](https://developer.apple.com/documentation/appkit/nsworkspace/selectfile(_:infileviewerrootedatpath:)).
 Its [prompt option](https://developer.apple.com/documentation/appkit/nsworkspace/openconfiguration/promptsuserifneeded)
 does not suppress Gatekeeper. App onboarding, page UI or Gatekeeper may appear
-after an explicit action. These references and SDK declarations support the
+after an explicit action and can delay its completion callback beyond the
+provider wait. Normal launcher acceptance uses apps whose Gatekeeper approval
+and first-run preparation were completed in the VM; a separate quarantined-app
+case leaves the dialog pending past the bound, checks `failed`, then checks
+that a late callback cannot publish again. Record completion latency for each
+launcher. These references and SDK declarations support the
 proposed call paths; they are not signed-VM acceptance.
 
 No new entitlement, consent-acquisition route or certificate class is authorized.
@@ -213,20 +298,25 @@ route that can return one.
 
 Use **G** public GraphQL and a contract-only client, **N** real independently
 built native provider/host binaries, **V** signed isolated TestAnyware macOS VMs.
+**L** below is a supporting provider-local test: instantiate the real workspace
+provider with its private native adapter substituted. It proves workspace's
+classification, not an OS outcome or the independently built binary seam.
+Composition-point fakes can separately prove core/client result handling at G.
 Every row remains pending; add evidence links when accepted. Native predictions
 here are bounded questions for those seams, not a claim that implementation exists.
 
 | Case | Seams | Required observation and preparation |
 | --- | --- | --- |
-| Twelve launchers, stopped and running | G, N, V | Install Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. Record actual IDs, versions and paths; launch/activate each, observe activation and any returned identity. No account-dependent app workflow is needed for this row. |
-| Multiple copies | G, N, V | Registered fixture app at two locations: OS choice, exact constraint, another copy running, missing copy and identifier mismatch. No silent substitution. |
-| Browser URL | G, N, V | Safari and alternate default Dia; encoded query/fragment and universal-link candidate; client suggestion failure still opens typed-query URL. No Koine Google request. Controlled N/G missing-handler outcome if safely absent handler cannot be prepared in V. |
+| Twelve launchers, stopped and running | G, N, V | Install Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. Complete first-run/Gatekeeper preparation separately; record actual IDs, versions, paths and callback latency. Cold-launch each and reactivate it with another app frontmost and Koine inactive; observe activation and any returned identity. Acknowledgment without activation does not pass. Exercise the optional desktop handoff separately; a controls-only activation failure stays pending for escalation. No account-dependent workflow is needed. |
+| Multiple copies and installation | G, N, V; L for inspection failures | Registered fixture at two locations: unconstrained launch/named-app open reuses a running copy elsewhere; a path constraint addresses exactly the chosen copy. Check missing/unregistered copy, stale registration after deletion, identifier mismatch and a still-registered present copy in Trash (eligible). Check symlink/Unicode path spellings by native file identity and metadata denial as failed. Bundle-less programs have no named-selector route; default handler use remains distinct. |
+| Browser URL | G, N, V; L for absent handler | Safari and alternate default Dia; encoded query/fragment, IDNA host and universal-link candidate; inspect scheme-only handler discovery. Invalid escapes/raw Unicode/whitespace/backslashes are refused without repair. Client suggestion failure still opens typed-query URL. No Koine Google request. A controlled absent-handler adapter result proves workspace mapping at L; G fakes prove client handling only. |
 | Documents/directories/settings | G, N, V | Temporary text file, directory and document package; default open and named Zed; config directory; missing file/parent/link/app/handler; inspection denial; literal spaces/punctuation and symlinks. No handler-setting changes. |
-| Finder reveal | G, N, V | File, folder, app bundle and filesystem root; observe actual selection/root view in V. Missing path/Finder and false acknowledgment through controlled outcomes where necessary. Receipt alone does not establish selection. |
-| Input boundary | G, N; V for native classification | Blank/malformed selector, relative/NUL paths, non-web schemes, credentials/control characters and prohibited direct-execution payloads including symlinks fail before submission. A script opens as a document in explicitly named Zed but cannot run through the default-script route. No executable/argv/environment/shell API; required app launch still works. |
-| Receipt/failure boundary | G, N, V | Exclusive result branches; nullable process after successful acceptance; exact kernel instant accepted by desktop; process exit/reuse; error/deadline/disconnect after submission. No false no-effect claim or replay. Record limits instead of claiming atomic native targeting. |
-| Authority/revocation | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus. |
-| Consent and prompts | G, N, V | Accessibility absent/revoked, first protected-path inspection, app onboarding, quarantined app. Inspect actual call paths and prompt behavior. No implicit new consent/signing posture; known consent denial differs from filesystem failure and absence. |
+| Finder reveal | G, N, V; L for unavailable Finder/false acknowledgment | File, folder, app bundle, alias and filesystem root; observe actual selection/root view in V. L runs real workspace mapping for missing Finder and false acknowledgment; G fakes cover client handling only. Receipt alone does not establish selection. |
+| Input boundary | G, N, V; L for type/race cases | Blank selector, relative/NUL paths, non-web schemes, credentials/control characters and recognized app/native-executable payloads including symlinks fail before submission. A source script opens in its default editor and explicitly named Zed, irrespective of executable bits; do not reject JavaScript merely for public.executable conformance. Finder aliases to documents/apps are refused before dispatch. In disposable V fixtures, observe Terminal/script and location-document reactions as disclosed, without claiming a sandbox. L varies metadata and replacement outcomes. No executable/argv/environment/shell API; required app launch still works. |
+| Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. |
+| Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. |
+| Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus. Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
+| Consent and prompts | G, N, V | Accessibility absent/revoked; first protected-path metadata inspection before path/search consumers; app onboarding and the separate Gatekeeper timeout case. Inspect actual calls and prompts. No new consent/signing posture is implied. Without an agreed consent identifier, inspection denial remains failed, not absence or an invented os-permission. A metadata prompt keeps the path case pending for escalation. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,

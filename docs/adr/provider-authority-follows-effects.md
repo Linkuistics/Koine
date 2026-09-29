@@ -88,8 +88,11 @@ home-directory search and file-opening authority. Desktop's pointer, media and
 geometry additions do extend its provider-wide control grant. This is an
 explicit granularity trade-off: the requirements separate input, menus and
 window focus, not every desktop effect. Grant descriptions must disclose the
-expanded desktop authority before the extension ships, and the broad reach of
-input and menu grants: input to a terminal can execute commands and menus expose
-application-defined actions. The absence of a shell-execution API is not an
-application sandbox. The loader and build carry five additional provider
+expanded desktop authority before its additions ship, workspace's broad
+launch/document authority before workspace ships, and the reach of input and
+menu grants. A document handler can execute a script or follow a location
+document; input to a terminal can execute commands; menus expose
+application-defined actions. Workspace's payload checks do not sandbox
+document contents or handler reactions. The absence of a shell-execution API
+is not an application sandbox. The loader and build carry five additional provider
 bundles, while OS permissions, trust and the process failure domain remain shared.

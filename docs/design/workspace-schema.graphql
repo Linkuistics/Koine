@@ -2,15 +2,15 @@
 # All output fields are mutation-only, with workspace:control AND desktop:control.
 # Exact composition/digest includes core and every admitted provider contribution.
 
-"""An installed application. No executable, argv, environment or shell input."""
+"""A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {
   """Nonblank native bundle identifier, not a display name or process identity."""
   bundleIdentifier: String!
-  """Optional absolute path constraining selection to a registered bundle with this identifier. Never substitute another copy."""
+  """Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed."""
   applicationPath: String
 }
 
-"""AVAILABLE is native acceptance; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request."""
+"""AVAILABLE is native acknowledgment; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request. Neither status overrides publication errors."""
 enum WorkspaceOperationStatus {
   AVAILABLE
   DEPENDENCY_UNAVAILABLE
@@ -40,13 +40,9 @@ type WorkspaceProcessIdentity {
   startedAt: String!
 }
 
-"""Native launch/open acceptance under workspace:control AND desktop:control, not proof of rendered content or continued foreground state."""
+"""Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed."""
 type WorkspaceOpenReceipt {
-  """Requires workspace:control AND desktop:control. Absolute location of the installed application chosen for this action."""
-  applicationPath: String!
-  """Requires workspace:control AND desktop:control. Chosen application's bundle identifier, or null if the native handler has none."""
-  bundleIdentifier: String
-  """Requires workspace:control AND desktop:control. Reliable process incarnation observed for the native result, otherwise null; never a PID-only or foreground fallback."""
+  """Requires workspace:control AND desktop:control. Optional observation of the completion callback's application: stable positive PID, matching kernel start reads and executable file identity, equal native application object, non-terminated at the checks. Any unavailable value or mismatch yields null. Not atomic effect binding; never a PID-only, launch-date or foreground fallback."""
   process: WorkspaceProcessIdentity
 }
 
@@ -56,33 +52,33 @@ type WorkspaceRevealReceipt {
   path: String!
 }
 
-"""Requires workspace:control AND desktop:control throughout. AVAILABLE has value only; DEPENDENCY_UNAVAILABLE has dependency only."""
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
 type WorkspaceOpenResult {
-  """Requires workspace:control AND desktop:control. Selects the sole non-null branch."""
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
   status: WorkspaceOperationStatus!
-  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE."""
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
   value: WorkspaceOpenReceipt
-  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE; this action submitted no domain request."""
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
   dependency: WorkspaceDependencyUnavailable
 }
 
-"""Requires workspace:control AND desktop:control throughout. AVAILABLE has value only; DEPENDENCY_UNAVAILABLE has dependency only."""
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
 type WorkspaceRevealResult {
-  """Requires workspace:control AND desktop:control. Selects the sole non-null branch."""
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
   status: WorkspaceOperationStatus!
-  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE."""
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
   value: WorkspaceRevealReceipt
-  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE; this action submitted no domain request."""
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
   dependency: WorkspaceDependencyUnavailable
 }
 
 extend type Mutation {
-  """Requires workspace:control AND desktop:control. Launch or reopen/activate the selected installed app; do not force a new instance or substitute a running copy elsewhere. Native acceptance is not a window-focus guarantee. Missing app is typed dependency absence; ambiguous failure is failed, never automatic replay."""
+  """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first."""
   workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
-  """Requires workspace:control AND desktop:control. Open an absolute HTTP(S) URL, with host and without credentials/control characters, explicitly in its resolved default browser. No universal-link app dispatch, suggestions proxy or alternate-handler fallback. Missing handler is typed dependency absence; ambiguous failure is failed, never automatic replay."""
+  """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
   workspaceOpenURL(url: String!): WorkspaceOpenResult
-  """Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. No shell expansion or direct executable/application launch payload; executable scripts require an explicit named app receiving them as documents. Missing path/app/default handler is typed dependency absence; ambiguous failure is failed, never automatic replay."""
+  """Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. Refuse native application-bundle, Unix/Windows executable and Finder-alias metadata after symlink resolution; no content sandbox or race-free classification. Script/source documents can use default editors. A handler can execute scripts or follow location documents to other schemes/targets. No executable selector, argv, environment or shell expansion. Missing path/app/default handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
   workspaceOpenPath(path: String!, application: WorkspaceApplicationInput): WorkspaceOpenResult
-  """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay."""
+  """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first."""
   workspaceRevealPath(path: String!): WorkspaceRevealResult
 }

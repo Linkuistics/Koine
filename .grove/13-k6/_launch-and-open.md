@@ -94,13 +94,41 @@ The whole Machine selection-acceptance table remains assigned to this increment;
 the new spec's acceptance rows supplement it rather than narrowing it.
 
 Launch/open uses bundle identity with an optional registered installation path;
-result fields need both control grants and neither read. A receipt's reliable
-optional process identity can feed a separate desktop read. No strong native
+result fields need both control grants and neither read. The receipt contains
+only optional process identity under the documented observation rule; installed
+paths, bundle identifiers and handler metadata remain workspace read data.
+It can feed a separate desktop read. No strong native
 window/file identity, rendering completion or rollback follows from the receipt.
 The source/SDK support is design evidence; actual launch, Finder acknowledgment,
 protected-path prompting, payload classification and kernel-identity observation
 are bounded native/VM acceptance questions. New consent or signing posture still
 returns to Antony before implementation relies on it.
+
+`launch-and-open-k54` integrates the review. Unconstrained launch/named-app open
+allows running-copy reuse; a selected installation disables substitution.
+Registration alone does not establish bundle presence; compare constrained
+copies by file identity. A present registered copy in Trash remains eligible;
+bundle-less programs have no named-selector route. Acknowledgment is distinct
+from observed activation. Check cold and warm launch while another app is
+frontmost and Koine inactive; a control-only activation failure remains pending,
+even when a separately authorized desktop read/focus can recover.
+
+Native acknowledgment waits end after three seconds or earlier cancellation,
+without awaiting late callbacks or replaying. The core's request deadline can
+still win first. Prepare apps' first-run/Gatekeeper approval for the working
+launcher cases, record per-app latency, and test an outstanding Gatekeeper
+dialog/late callback separately. Private-adapter provider-local tests exercise
+workspace's own error/receipt mapping; composition fakes only cover core/client
+handling, and neither replaces the N/V matrix. Error-free result branches are
+exclusive; publication errors may suppress an acknowledged action's branch.
+
+Path opening uses the spec's narrow metadata refusal set and ordinary document
+handlers, including source files in their default editor. Handler execution and
+location-document redirects are disclosed reach, not prevented effects; native
+Finder aliases are refused for opening but can be revealed. This increment
+owns workspace disclosure in create/approve and existing-grant views and field
+descriptions before workspace ships. Schedule the protected-path metadata probe
+before path-opening implementation or search consumes that contract.
 
 Expected packaged workspace release/schema is `1.0.0`/`1.0.0`, release signing
 identifier `dev.antony.Koine.provider.workspace`. Existing desktop is

@@ -130,7 +130,9 @@ Launch-and-open implements the
 selection acceptance table with its assigned seams, fresh host processes,
 purpose-built signed catalogue fixtures and marker controls, alongside composition,
 complete capability diagnostics
-and exact-provider conformance. Window layout
+and exact-provider conformance. Launch and open
+owns workspace grant disclosure, including any registered installed app and
+document execution/redirects by handlers. Window layout
 owns desktop grant disclosure, pointer/media extends it, and app-input/menu-bar
 own their broad input/menu disclosures. Baseline acceptance checks those rows too.
 

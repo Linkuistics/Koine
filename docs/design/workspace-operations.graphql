@@ -1,12 +1,13 @@
 # Examples consume only the documented schema. Query/chooser/clipboard policy
 # stays in the client. Mutations need workspace:control AND desktop:control.
 # Supply literal variables, never a command string. Do not replay failed opens.
+# Inspect errors at/below each result: they may suppress a branch without changing
+# a published status. No installed path or default-handler metadata is in a receipt.
+# Encode Unicode URL data and IDNA host labels before supplying an HTTP(S) URI.
 
 fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
   status
   value {
-    applicationPath
-    bundleIdentifier
     process { pid startedAt }
   }
   dependency { reason guidance }
@@ -38,6 +39,8 @@ mutation RevealPath($path: String!) {
 
 # A separate request, only when the preceding receipt has a process and the
 # caller has desktop:read. Copy the two values; do not convert reference URIs.
+# Any explicit focus uses returned window references in desktopFocusWindow under
+# desktop:control and the desktop consent contract; no automatic open replay.
 query CaptureOpenedApplication($process: DesktopProcessIdentity!) {
   desktopApplication(process: $process) {
     ref

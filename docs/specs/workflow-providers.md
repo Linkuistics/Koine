@@ -197,7 +197,7 @@ use their owner's read authority, with any additional read requirements.
 | System media play/pause, including system-defined media-key events | `desktop:control` | A media event addressed to the system-media route is distinct from an application key chord. Any chord alternative requires input authority and does not satisfy the required system route. |
 | Installed-application search, paths and bundle identifiers | `workspace:read` | Client owns query entry, chooser, secondary-action menu and MRU. |
 | File search under configured roots, currently home | `workspace:read` | Query scope is documented in each operation; do not omit inaccessible roots as healthy empty results. |
-| Launch/activate; file/folder/default-app/named-app opening; URL opening; reveal in Finder | `workspace:control` AND `desktop:control` | Activation is included. No search, grant or prerequisite check implicitly launches or opens. |
+| Launch/activate; file/folder/default-app/named-app opening; URL opening; reveal in Finder | `workspace:control` AND `desktop:control` | Activation is requested. Optional action process identity is a control receipt; installed paths/identifiers/default-handler metadata remain read data. Handler reactions can execute documents or follow redirects. No search, grant or prerequisite check implicitly launches or opens. |
 | Clipboard writes: path or bundle identifier | Client-owned | Read the value under workspace read; client performs its own pasteboard write. No Koine clipboard mutation is required. |
 | Application keystrokes | `input:control` | Target capture/discovery uses input read; no implicit focus or menu invocation. |
 | Held-modifier start/step/confirm/cancel | `input:control` | Koine owns the admitted hold and cleanup; client owns walk navigation. |
@@ -219,6 +219,11 @@ authority. The native grant UI and GraphQL descriptions must state this
 provider-wide granularity. No capability implies another and requests cannot
 combine several credentials.
 
+Launch and open owns workspace control disclosure before workspace ships: any
+registered installed application can be launched, and a default or named
+document handler can execute scripts or follow location documents to other
+schemes/targets. Refusing executable selectors and some payload metadata is not
+a content sandbox. Both workspace and desktop control remain required.
 Window layout owns disclosure of desktop's expanded provider-wide authority in
 the native grant UI and GraphQL descriptions before its first new operation
 ships; pointer and media extends that disclosure before its additions ship.
@@ -243,9 +248,9 @@ the phrase “plus effects” is not a completed trace.
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |
 | Displays | Desktop read/control for list, proportional transfer and display focus; client display labels | Window layout. Pending. |
-| Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
+| Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code. Unconstrained launch allows running-copy reuse; an installation constraint does not. | [Launch/open acceptance](workspace-launch-and-open.md#acceptance), including activation with another app frontmost and bounded acknowledgment. Designed; G/N/V pending. |
 | Application search | Workspace read discovery remains to be designed; reuse `workspaceLaunchApplication` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard and MRU | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Pending. |
-| File search | Workspace read discovery remains to be designed; reuse `workspaceOpenPath` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Pending. |
+| File search | Workspace read discovery remains to be designed; reuse `workspaceOpenPath` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard. Source documents retain default handlers; Finder aliases cannot be opened by this contract but can be revealed. | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Protected-path metadata evidence precedes reliance on path opening. Pending. |
 | Web search | Client query/suggestions/typed-query fallback; `Mutation.workspaceOpenURL(url:)`, `workspace:control` AND `desktop:control` | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
 | Media | Desktop control, system route | Pointer and media. Pending. |
 | Pointer | Desktop read/control; client ring | Pointer and media. Pending. |
@@ -272,7 +277,7 @@ the phrase “plus effects” is not a completed trace.
 | Context menus (additional requirement) | Menus read/control; both point and focused-element capture; same lifecycle | Context menus. Pending. |
 | List and label state (cross-cutting requirement) | Desktop, iTerm and herdr reads as applicable; client labeling/rendering/ordering | Window layout; iTerm; herdr. Pending. |
 | Interruption and cleanup (cross-cutting requirement) | Koine input/menu owners; bounded cleanup and explicit crash recovery | Held interactions; context menus. Pending. |
-| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Window layout, extended by pointer and media; app input; menu bar. Pending before each surface ships. |
+| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Launch and open for workspace; window layout, extended by pointer and media; app input; menu bar. Pending before each surface ships. |
 
 The standalone acceptance client demonstrates Koine's part and identifies every
 client step. Account-dependent results require dedicated VM accounts and data;
@@ -379,6 +384,11 @@ Reuse the three agreed seams. The GraphQL engine's native-provider composition
 point selects controlled test providers for authorization/order tests; the real
 provider binaries and real applications establish native behavior. These are
 existing enabling points, not a new public testing API or mocks of desktop apps.
+Workspace also substitutes its private native adapter inside provider-local
+tests to exercise its real classification and completion logic. These supporting
+checks do not replace the three product seams: a composition fake cannot prove
+workspace's native-result mapping, and a substituted adapter cannot prove an OS
+outcome or independently built native compatibility.
 
 | Seam | Required evidence for this architecture |
 | --- | --- |
@@ -387,7 +397,7 @@ existing enabling points, not a new public testing API or mocks of desktop apps.
 | Public GraphQL and isolated VMs | Input/menu grants cannot drive Koine's approval, creation, revocation or Quit controls, including previously obtained targets and session-directed paths. Recognized consent/security targets are refused. Space switching needs both input and desktop control; disabled/remapped bindings exercise refusal and the stated race limit. A display-focus or menu-only grant never acquires a pointer-button fallback. |
 | Native binary interface | Old compiled registrations retain old behavior on the new framework; a provider requiring additional-capabilities-v1 is refused before loading on an old host. New-host checks enforce its actual extra requirements. Compare independently built binaries and signed supported pairs; test unavailable capability owners and registration/manifest disagreement. |
 | Native call-path inspection and isolated TestAnyware macOS VMs | Enumerate each primitive, parameter, preparation, fallback and cleanup path against the authority trace. Use targets whose invoked operation does not itself change focus to distinguish Koine's extra activation calls from app reactions, and record both observations and inspected calls. A VM focus change alone proves neither the presence nor absence of a hidden call. Workspace activation requires both grants; real menu-only and application-input-only paths preserve independent grants. Record permissions, app/tool versions, limits and pending account cases. |
-| Isolated TestAnyware macOS VMs | Every read remains prompt-free, including first access to protected roots and Automation readiness. Revocation/inactivity cleanup uses only mechanisms admitted at start. Grant UI/descriptions disclose expanded desktop control and broad input/menu reach before each surface ships. |
+| Isolated TestAnyware macOS VMs | Every read remains prompt-free, including first access to protected roots and Automation readiness. Revocation/inactivity cleanup uses only mechanisms admitted at start. Grant UI/descriptions disclose workspace app/document reach, expanded desktop control and broad input/menu reach before each surface ships. |
 
 The module boundary keeps caller obligations to target capture, capability
 selection and one operation/result contract. It separates discovery from

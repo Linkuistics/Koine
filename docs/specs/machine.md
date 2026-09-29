@@ -387,7 +387,13 @@ or let a provider make a field public. Root mutation fields still require their
 own control; query-reachable fields still require their own read. Additional
 requirements on query-reachable fields may only be reads. A control-authorized
 mutation receipt may carry the action's additional control requirements without
-exposing read-protected resource data.
+exposing read-protected resource data. The workspace launch/open receipt's one
+observation allowance is an optional PID plus exact kernel start instant for
+the application returned by that action's native acknowledgment, following the
+workspace matching rule. It permits a later independently authorized desktop
+lookup, not application discovery: installed paths, bundle identifiers and
+default-handler metadata remain workspace read data. This does not authorize
+other resource state in control receipts.
 
 Every additional capability names a provider identifier and `read` or `control`.
 Core enrollment/management authority is forbidden. The set is unconditional:
@@ -1523,7 +1529,10 @@ iTerm/herdr host association is permitted under the workflow spec's constraints;
 it supplies neither shared references nor a universal identity service.
 The API exclusion is not a limit on what an authorized application can do:
 input to a terminal can execute commands as the user, and menu authority can
-invoke destructive application actions. Grant disclosure must state that reach.
+invoke destructive application actions. Workspace can launch any registered
+installed app; document handlers can execute scripts or follow location files
+to other schemes and targets. Its metadata checks are not a content sandbox.
+Grant disclosure must state that reach before each surface ships.
 Open-source licensing and distribution do not
 change this desktop design: Koine is published under Apache-2.0 and
 installed from a Homebrew cask carrying the notarized bundle

@@ -3,19 +3,19 @@
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
     "title": "Launch and open with explicit native outcomes",
-    "status": "Design · review and implementation pending",
-    "summary": "Four workspace mutations require workspace and desktop control, including receipt fields. Select an installed app by bundle identifier and optional registered path; distinguish native acceptance from a missing prerequisite or an ambiguous failure. Process identity is optional and desktop capture is a separate read. Packaging consumes the settled first-party selection contract.",
+    "status": "Design · implementation and acceptance pending",
+    "summary": "Four workspace mutations require workspace and desktop control, including receipt fields. Unconstrained app selection can reuse a running copy; a registered path constrains the installation. Native acknowledgment has a bounded wait and does not prove activation. A receipt contains only optional process identity; desktop capture is a separate read. Packaging consumes the settled first-party selection contract.",
     "diagramIds": ["workspace-open", "workspace-outcomes", "provider-selection", "provider-publication", "workflow-providers"],
     "updatedDiagrams": [
-      {"id": "workspace-open", "summary": "Added the launch/open request and optional process-to-desktop handoff, with both grants checked before native resolution."},
-      {"id": "workspace-outcomes", "summary": "Added the boundary between pre-submission dependency absence, native acceptance and ambiguous post-submission failure."}
+      {"id": "workspace-open", "summary": "Launch/open request with conditional running-copy reuse, bounded acknowledgment and optional process-only desktop handoff."},
+      {"id": "workspace-outcomes", "summary": "Pre-submission absence, acknowledgment and ambiguous failure remain distinct; publication can suppress result fields."}
     ]
   },
   "groups": [
     {
       "id": "workspace",
       "title": "Launch and open · designed, not yet served",
-      "description": "Installed application selection, web/document opening and Finder reveal. Native acceptance does not certify rendered contents or persistent foreground state."
+      "description": "Installed application selection, web/document opening and Finder reveal. Native acknowledgment does not certify rendered contents or foreground state; document handlers can execute content or follow redirects."
     },
     {
       "id": "provider-selection",
@@ -56,7 +56,7 @@
       "renderer": "svg",
       "source": "workspace-open.puml",
       "rendered": "workspace-open.svg",
-      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. A bundle identifier and optional registered path select an installed application, not a held process. A reliable PID/start receipt can feed a separate desktop read. Reveal returns its own Finder acknowledgment without a process receipt. Native submission, app reactions and process/file races are acceptance limits, not guarantees established by this diagram."
+      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits."
     },
     {
       "id": "workspace-outcomes",
@@ -65,7 +65,7 @@
       "renderer": "svg",
       "source": "workspace-outcomes.d2",
       "rendered": "workspace-outcomes.svg",
-      "caption": "Designed outcomes after whole-mutation preflight and live admission. Validation/consent errors stay separate; dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal. AVAILABLE carries a receipt; DEPENDENCY_UNAVAILABLE carries a reason and guidance, never both. Native acceptance does not prove browser content, app window state or Finder selection."
+      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection."
     },
     {
       "id": "provider-selection",

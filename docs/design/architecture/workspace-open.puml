@@ -16,11 +16,11 @@ Workspace -> Native: resolve installed app / path / handler\nno launch or consen
 alt missing prerequisite before submission
   Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
 else ready
-  Workspace -> Native: submit launch/open with activation\nno new instance or copy substitution
-  alt native acknowledgment
+  Workspace -> Native: submit launch/open; request activation\nreuse running copy unless path-constrained
+  alt native acknowledgment within wait bound
     Native --> Workspace: accepted application
-    Workspace --> Client: AVAILABLE + receipt\noptional reliable PID / kernel start
-  else native error or timeout
+    Workspace --> Client: AVAILABLE + receipt\noptional observed PID / kernel start only
+  else native error, 3 s wait expiry or cancellation
     Workspace --> Client: failed; effect may have begun\nno replay or alternate handler
   end
 end
@@ -31,6 +31,9 @@ end
 note over Client,Native
 Installed identity is not a held process or file identity.
 Window behavior belongs to the app; later exit remains possible.
+Acknowledgment alone does not pass activation acceptance.
+Core request deadline may answer first; late results are ignored.
+Publication errors can suppress the selected result branch.
 Reveal is a separate operation with Finder acknowledgment.
 Neither control grant implies read or OS consent.
 end note
