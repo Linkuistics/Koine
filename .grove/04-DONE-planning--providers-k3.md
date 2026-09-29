@@ -89,3 +89,55 @@ implement or restart Modaliser or ModalAnyware. Tests must use isolated VMs for
 real native effects; missing integration prerequisites must not be passed off
 as successful empty results. Record any later proposed scope change explicitly
 rather than silently reducing the agreed baseline.
+
+## Decisions (running log)
+
+**Stages are increment nodes in this grove.** The planning procedure asks for a
+separate grove per working stage. Grove offers one tree per working tree, and
+the root brief charters this grove to deliver all of the agreed support. Each
+increment is therefore a separate node here. A node leaves the product working,
+has its own charter and delivers behavior verified through the three seams.
+
+**Cross-cutting architecture comes first, at the root.** Every new mutation's
+authority depends on how input, menu invocation and window focus become
+separately grantable. Today a capability is a provider's own `read` or
+`control`, and a field taking another provider's reference also needs that
+owner's capability of the same class. Error classification, scope
+reconciliation and clipboard allocation cut across increments too.
+`provider-architecture` settles these once, before any increment designs its
+API. The interaction lifecycle (cleanup ownership, inactivity bound, crash
+recovery) serves only Dia and explicitly opened menus. It is scoped to the
+`held-interactions` increment and reused by `context-menus`.
+
+**Evidence leaves are `design` leaves with one bounded question.** `prototype`
+is HITL, and its deliverable is a human's reaction. Native feasibility is
+evidence for a decision. The earlier Koine grove produced its native evidence
+as `design` leaves, and it nested more than thirty levels deep when evidence was
+allowed to chase guarantees public API cannot give. Each evidence leaf here
+names the decision it feeds, and states that an unavailable guarantee becomes
+an explicit accepted limit or an escalation, not a deeper evidence chain.
+
+**Increment order.** `launch-and-open` is the pathfinder. Its native risk is the
+lowest, and it exercises adding provider work end to end: build, in-app
+approval, schema conformance, the authority trace, a contract-driven client
+and VM acceptance. Next come search, window layout, then pointer and media,
+the other low-risk desktop capabilities. App-targeted input follows,
+then menu-bar discovery and invocation. Held interactions come after them,
+designed with both Dia and opened menus in view. Context menus reuse that
+lifecycle. iTerm precedes herdr, which is addressed through the host. Account
+provisioning is HITL and depends on human-supplied accounts, so its acceptance
+is consolidated late and does not stall AFK work. Its shortcuts are implemented
+in `app-input` with account-dependent acceptance recorded as pending. A final
+leaf completes the baseline trace.
+
+**Each later increment gets evidence/design leaves now and a trailing
+`planning` leaf.** The planning notes already state its evidence and design
+questions precisely, so they are leaves rather than horizon notes.
+Implementation leaves depend on the settled API, so a `planning` leaf in each
+node cuts them after design. A design session does not cut implementation.
+
+**This decomposition gets a `review-planning` leaf, run next.** Several months
+of increments build on it. The review is inserted ahead of
+`provider-architecture` so that its integration can reshape the tree before
+design starts. With review scheduled, this session spends no in-session
+reviewer.
