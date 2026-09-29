@@ -5,7 +5,8 @@
 # accepts the notarized bundle with nothing stripped, Koine launches through the
 # first-run dialog, and `brew uninstall --cask` quits and removes it. Everything
 # Koine leaves under ~/Library is enumerated after a run, after a plain
-# uninstall and after `--zap`, as is its Background Task Management entry, so the
+# uninstall and after `--zap`, as are its defaults domain, the saved window state
+# macOS keeps for it and its Background Task Management entry, so the
 # cask's `zap` list and the README's uninstall sentences are measured rather
 # than assumed. Nothing here runs the application on the host, and nothing here
 # uses the locally built bundle: what is installed is what a user downloads. The
@@ -37,12 +38,15 @@ BREW="/opt/homebrew/bin/brew"
 # guest_long <name> <local script>: runs a script that outlasts the agent's 30s
 # exec window — a Homebrew install, a cask download — detached in the guest, and
 # polls for its exit status. Its transcript is echoed into this run's log, and
-# its status is returned. guest() retries a timed-out exec, which is safe only
-# for commands that can be repeated; these can not, so they are started once.
+# its status is returned. guest() silently retries an exec that falsely times
+# out, and these scripts can not be repeated: one run's reinstall was launched
+# twice, and the second `brew install` truncated the log to "Not upgrading
+# koine". So the launch takes a guard directory, and a retried launch that finds
+# it already taken starts nothing.
 guest_long() {
     local name="$1" script="$2" status
     testanyware file upload "${script}" "/Users/admin/${name}.sh" >/dev/null
-    guest "rm -f \$HOME/${name}.exit; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
+    guest "mkdir \$HOME/${name}.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
     for _ in $(seq 1 180); do
         if guest "[ -e \$HOME/${name}.exit ]" >/dev/null 2>&1; then break; fi
         sleep 5
@@ -60,6 +64,15 @@ footprint() {
     step "What Koine leaves in ~/Library: $1"
     FOOTPRINT="$(guest "find \$HOME/Library -maxdepth 3 \\( -iname '*koine*' -o -iname 'dev.antony.Koine*' \\) 2>/dev/null | sort" || true)"
     echo "${FOOTPRINT:-  (nothing)}"
+    # cfprefsd can hold a domain it has not yet written to disk, so the domain
+    # list is asked as well as the file tree.
+    DEFAULTS_DOMAIN="$(guest "defaults domains | tr ',' '\\n' | grep -i koine" || true)"
+    echo "Defaults domain: ${DEFAULTS_DOMAIN:-(none)}"
+    # Saved window state is outside the name search: see the helper. It is
+    # reported, not asserted, because its UUID is the machine's own and no cask
+    # `zap trash:` path can name it.
+    SAVED_STATE="$(guest "bash \$HOME/vm-verify-saved-state.sh" || true)"
+    echo "Saved window state: ${SAVED_STATE:-(none)}"
 }
 
 # login_item <when>: Koine's Background Task Management entry, which is what
@@ -72,6 +85,7 @@ login_item() {
 
 start_vm
 enforce_gatekeeper
+testanyware file upload scripts/vm-verify-saved-state.sh /Users/admin/vm-verify-saved-state.sh >/dev/null
 
 step "Homebrew in the guest"
 if ! guest "[ -x ${BREW} ]" >/dev/null 2>&1; then
@@ -117,6 +131,12 @@ grep -q 'source=Notarized Developer ID' <<<"${ASSESSMENT}" ||
     fail "accepted only because assessments are off, which is what this run exists to avoid"
 guest "xcrun stapler validate ${INSTALLED} 2>&1" || fail "the installed bundle carries no stapled ticket"
 
+# macOS's default "close windows when quitting" makes AppKit save no window
+# state, so a footprint measured under it would never show
+# ~/Library/Saved Application State. Window restoration is turned on for the
+# account, so the footprint is the most any user's posture produces.
+guest "defaults write -g NSQuitAlwaysKeepsWindows -bool true"
+
 first_launch_quarantined
 grep -q 'none was detected' <<<"${DIALOG_TREE}" ||
     fail "the first-run dialog does not report that Apple checked the app; this is not the notarized path"
@@ -146,6 +166,7 @@ login_item "after a plain uninstall"
 
 step "Reinstall, then brew uninstall --zap --cask koine"
 guest_long cask-reinstall "${WORK}/cask-install.sh" || fail "the second brew install --cask failed"
+guest "[ -d ${INSTALLED} ]" || fail "the reinstall put no ${INSTALLED} back, so --zap below would uninstall nothing"
 cat >"${WORK}/cask-zap.sh" <<EOF
 export HOMEBREW_NO_AUTO_UPDATE=1
 ${BREW} uninstall --zap --cask koine
@@ -154,6 +175,7 @@ guest_long cask-zap "${WORK}/cask-zap.sh" || fail "brew uninstall --zap --cask f
 guest "[ ! -e ${INSTALLED} ]" || fail "${INSTALLED} is still there after --zap"
 footprint "after --zap"
 [ -z "${FOOTPRINT}" ] || fail "--zap left paths naming Koine under ~/Library"
+[ -z "${DEFAULTS_DOMAIN}" ] || fail "--zap left Koine's defaults domain"
 login_item "after --zap"
 
 step "Result"
