@@ -38,6 +38,8 @@ skill set.
   checks it, and what a client needs from each part of the contract
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability, acceptance status
+- [Configured workflow requirements](docs/requirements/modaliser-workflows.md):
+  agreed requirements for planned provider extensions and application-menu access
 - [GraphQL schema](docs/design/desktop-schema.graphql) and
   [client operations](docs/design/desktop-operations.graphql)
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
