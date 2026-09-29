@@ -23,3 +23,9 @@ layer. Any review judgment is recorded.
 If the design adds a bundled provider, the first leaf carries the packaging,
 approval and conformance changes together with the first working operation.
 Neither half is a working increment alone.
+
+That same first slice carries the framework minor and required feature
+`additional-capabilities-v1`, the full preflight/dispatch requirement set, and
+old/new native binary acceptance from `provider-architecture-k5`. Preserve the
+baseline desktop conformance profile and add the exact workspace profile;
+missing required providers must fail that profile rather than weaken it.

@@ -103,6 +103,18 @@ reclaimed. Recovery issues new references under the reference lifetime rules.
 **Grant/dispatch admission**: Koine's serialized live-grant and revocation
 boundary.
 
+**Additional capability requirement**: A provider field's immutable requirement
+for a provider read/control **capability**, checked together with its own
+authority; it adds no authority to the caller's **grant**.
+
+**Dependency availability**: Whether an operation's required application,
+handler or integration is usable, distinct from whether a selected **resource
+reference** is still valid or a successful query has any results.
+
+**Host association**: A provider's bounded, revalidated relationship between a
+tool instance and its containing terminal session, not a shared **resource
+reference** or an atomic snapshot across **providers**.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

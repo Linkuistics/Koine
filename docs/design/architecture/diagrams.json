@@ -1,7 +1,23 @@
 {
-  "title": "Koine desktop contract",
-  "intro": "Koine is a resident application with a shared resilient Swift provider framework and live bearer grants. The served desktop contract identifies a process by PID and kernel start instant and uses public Accessibility, accepting the reuse races the spec lists.",
+  "title": "Koine provider architecture",
+  "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the dark Start here node; sequences read from their first message.",
+  "discussion": {
+    "title": "Separate input, menus and focus; authorize every mixed effect",
+    "status": "Designed · pending adversarial review and implementation",
+    "summary": "Six provider identities retain read/control grants. Input and menus capture their own targets. Mixed effects require a host-enforced static conjunction; missing dependencies use typed results. The existing desktop views below remain baseline context.",
+    "diagramIds": ["workflow-providers", "workflow-targets", "workflow-authority", "sdk-contributions"],
+    "updatedDiagrams": [
+      {"id": "workflow-providers", "summary": "Added the six provider responsibilities and their shared process boundary."},
+      {"id": "workflow-targets", "summary": "Added independent input/menu capture and actions without desktop control."},
+      {"id": "workflow-authority", "summary": "Added complete effect requirements, live admission and distinct dependency results."}
+    ]
+  },
   "groups": [
+    {
+      "id": "workflow-extension",
+      "title": "Workflow extension · designed, not yet served",
+      "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
+    },
     {
       "id": "overview",
       "title": "Overview",
@@ -24,6 +40,33 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "workflow-providers",
+      "group": "workflow-extension",
+      "title": "Six providers and their authority boundaries",
+      "renderer": "svg",
+      "source": "workflow-providers.d2",
+      "rendered": "workflow-providers.svg",
+      "caption": "Proposed component composition, not separate deployment containers. Existing desktop grants expand to geometry, pointer and system media; workspace discovery/open, input and menus need distinct grants. All five new bundles use the existing loader and trust policy. Tool operations add any focus/input/menu authority their native effects require. The host association and interaction cleanup algorithms remain downstream design work."
+    },
+    {
+      "id": "workflow-targets",
+      "group": "workflow-extension",
+      "title": "Capture input or menu targets without desktop control",
+      "renderer": "svg",
+      "source": "workflow-targets.puml",
+      "rendered": "workflow-targets.svg",
+      "caption": "Designed sequence for independently grantable input or menu actions. Fresh discovery needs that provider's read grant; a previously obtained target can be used with its control grant and a control-authorized receipt. References remain provider-local. No claim of stronger native identity or menu validation is established by this view."
+    },
+    {
+      "id": "workflow-authority",
+      "group": "workflow-extension",
+      "title": "Check every effect before dispatching any action",
+      "renderer": "svg",
+      "source": "workflow-authority.d2",
+      "rendered": "workflow-authority.svg",
+      "caption": "Designed host behavior under the additional-capabilities-v1 feature. An unavailable dependency result certifies no effects by that action, not by earlier root actions. Stale targets, permission refusal and ambiguous native failures retain their existing errors. The feature needs a compatible framework minor and old/new binary acceptance before it can be served."
+    },
     {
       "id": "packages",
       "group": "overview",

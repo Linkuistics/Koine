@@ -18,7 +18,14 @@ One plain value serves inputs, effects, page attributes, logs and a server's
 addresses, with nothing for code to build or compare, and a provider restart
 is survived by any stable remainder scheme. The price is that a URI is easy
 to parse, so opacity rests on the type and the rule; providers must
-percent-encode; and identity across providers stays open.
+percent-encode. References remain provider-local. Input and menus independently
+resolve a captured process incarnation into their own references, preserving
+opacity and the existing foreign-reference authorization rule
+([effect authority](provider-authority-follows-effects.md)). General shared
+identity across providers is excluded. The herdr design may define a bounded
+host association with iTerm, but must specify its authority, lifetime and
+revalidation without decoding another provider's remainder or treating two
+references as interchangeable. Such an association provides no atomic snapshot.
 
 ## Rejected alternatives
 

@@ -13,6 +13,13 @@ This first working increment is the pathfinder for adding provider work under
 `provider-architecture`'s settled layout. It has the least native risk, so it
 flushes out build, approval, conformance and acceptance plumbing early.
 
+The layout now names `workspace`. Its launch/open/reveal fields require
+`workspace:control` AND `desktop:control`, since activation is an allowed
+effect. This increment implements the additive framework feature
+`additional-capabilities-v1` alongside its first real operation, following
+`docs/specs/machine.md#additional-capability-requirements`. It also starts the
+concrete operation rows in `docs/specs/workflow-providers.md`.
+
 ## Done when
 
 - The named launchers for Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump

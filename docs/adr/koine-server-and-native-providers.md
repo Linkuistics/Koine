@@ -37,8 +37,17 @@ depends on a working server. Independent native upgrades also require an
 explicit compatibility and loading policy; they give up the simplicity of
 rebuilding all extensions together.
 
-Koine provides the desktop path ModalAnyware needs. Broader discovery and an
-LLM skill set are out of scope.
+Koine provides the desktop path and the agreed native workflow support
+ModalAnyware needs. Installed-application search, file search, launch/activate,
+file and URL opening, reveal, and bounded prerequisite discovery/explicit setup
+are in scope, as specified in [workflow providers](../specs/workflow-providers.md).
+These reusable operations do not move client key maps, choosers, labels,
+confirmation, MRU ordering or settings lifecycle into the server. Broader
+installation/configuration discovery, arbitrary shell execution and an LLM
+skill set remain out of scope. The
+[provider authority decision](provider-authority-follows-effects.md) keeps
+application input, menu invocation and desktop-window focus independently
+grantable while assigning mixed effects their complete authority.
 
 One resident process preserves desktop observation and a single OS-permission
 owner without a privileged UI-to-service bootstrap connection. It also makes

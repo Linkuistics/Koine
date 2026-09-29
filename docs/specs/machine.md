@@ -1,6 +1,6 @@
 # Koine desktop contract
 
-**The desktop contract Koine implements.** Koine 0.1.0 implements this design:
+**The shared Machine and desktop contract.** Koine 0.1.0 implements the baseline:
 the shared resilient Swift framework, one resident Koine application and bearer
 credentials with live revocation. The
 served schema matches [the design schema](../design/desktop-schema.graphql)
@@ -10,6 +10,13 @@ case, what is established and by which evidence, and what is open. Process
 identity is a PID plus its kernel start instant; the races public Accessibility
 leaves open are accepted and listed in "Native targeting discussion". Client authors start at the
 [client guide](../client-guide.md).
+
+The [workflow-provider extension](workflow-providers.md) adds the agreed launch,
+search, input, menu and tool workflows. Its architecture is designed and pending
+implementation. Sections explicitly marked **extension** below are obligations
+for that work, not claims about 0.1.0 or its existing acceptance evidence. The
+two specs form the current design set; provider-specific workflow details grow
+in the workflow spec, while shared policy and desktop behavior grow here.
 
 ## Purpose and ownership
 
@@ -316,9 +323,10 @@ digits; it is also the reference authority and the prefix of the provider's
 capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two prefixes
 may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
 Each contribution is validated against the core schema alone, so it cannot use
-another provider's types, and its refusal never depends on which other providers
-loaded. Accepted contributions are composed in a canonical order, the bundled
-provider first and then by identifier. A refused provider is not started.
+another provider's types, and its SDL validity does not depend on which other
+providers loaded. The extension below adds explicit capability dependencies
+after that validation. Accepted contributions are composed in a canonical
+order, desktop first and then by identifier. A refused provider is not started.
 
 Version 1 narrows what a contribution may hold. It uses only its own types, the
 built-in scalars and `Reference`; an extension of `Query` or `Mutation` adds
@@ -356,6 +364,62 @@ reference whose authority is unregistered has no owner to check and is
 provider cannot mark its fields public or mint management authority. Provider
 metadata can require its own read/control capabilities; only core registrations
 can designate public enrollment or management authority.
+
+#### Additional capability requirements
+
+**Extension — pending implementation.** A field may add an immutable set of
+provider read/control capabilities to its existing own-class requirement.
+The [effect-authority decision](../adr/provider-authority-follows-effects.md)
+explains why this is necessary. It does not replace the foreign-reference rule
+or let a provider make a field public. Root mutation fields still require their
+own control; query-reachable fields still require their own read. Additional
+requirements on query-reachable fields may only be reads. A control-authorized
+mutation receipt may carry the action's additional control requirements without
+exposing read-protected resource data.
+
+Every additional capability names a provider identifier and `read` or `control`.
+Core enrollment/management authority is forbidden. The set is unconditional:
+all native paths and fallback mechanisms of one field must fit it. Conditional
+effects use the conservative union or separate public fields, never an
+authorization decision made after native resolution. Field descriptions state
+the complete declared set, and documentation also states the unchanged dynamic
+reference-owner rule. Passing a reference as an ordinary string to escape that
+rule is not a valid provider contract.
+
+Old registrations mean an empty additional set. The host computes the union of
+the ordinary field requirement, additional requirements and argument-reference
+owner requirements. It uses that same union in whole-mutation preflight, live
+dispatch admission, and read authorization/publication. The serialized
+grant/dispatch admission checks the complete set before provider code starts;
+providers never receive a credential or perform these grant checks themselves.
+Aliases, fragments, argument defaults, nested reference inputs and skip/include
+semantics remain those of the existing contract. No new client action follows
+revocation; cleanup of an already admitted interaction follows the separate
+workflow lifecycle contract.
+
+Provider SDL is still validated against core alone. Additional capability
+dependencies introduce one explicit composition dependency after independent
+validation: every named owner must be an admitted provider in the final schema.
+After ordinary loader/schema rejection, remove contributions with missing
+capability owners and repeat until the admitted set stops changing, in canonical
+order. Report the missing owner in management diagnostics; do not weaken a field
+or publish a partially protected contribution. Cycles of otherwise valid
+capability dependencies are allowed; they are authority names, not initialization
+calls. Providers must not use them to require an order for calling one another's
+start methods. A provider failing startup is unavailable under the existing
+lifecycle policy; no dependent action may treat that failure as successful
+readiness. The native seam must cover rejected owners and startup failures.
+
+This adds field metadata semantics through a compatible major-1 framework
+minor and required feature `additional-capabilities-v1`. Both manifest and
+descriptor declare the feature; the manifest declares the implementing minimum
+minor. That minor is assigned with the implementation release; it is not advertised by
+0.1.0. Add new resilient declarations/initializers with empty defaults for old
+registrations; retain old symbols and behavior. An old host must refuse the
+new provider before loading. A new host must reject a descriptor that uses
+additional requirements without the feature declaration. Silently ignoring the
+set is never a compatibility fallback. Independent old/new binary pairs must
+verify these semantics before release.
 
 ### Mutation preflight and revocation
 
@@ -433,6 +497,19 @@ kinds classified, and such a request is never mapped to `unavailable`. ABI resol
 registration mismatches are host/plugin defects and become `failed`, with a
 separate management diagnostic. Transport unavailability and an unknown mutation
 outcome are client transport states, not invented successful GraphQL results.
+
+**Extension — dependency availability.** New workflow fields distinguish absent
+applications/handlers/integrations through provider-prefixed schema result
+objects, as specified in
+[dependency results](workflow-providers.md#dependency-results-and-failure-classification).
+They do not add a fifth error kind or overload `unavailable`. An available empty
+list is success; a dependency-unavailable branch has no successful value and,
+for a mutation, certifies only that this action attempted no domain effect.
+Stale issued targets retain `unavailable`; grant and native-consent refusals
+retain `permission`; a timeout or ambiguous partially attempted action remains
+`failed`. Readiness never replaces checking the dependency on the action path.
+These schema-level objects require no new ProviderFailure case or ABI feature.
+Existing desktop fields keep their null/error behavior.
 
 A root lookup that is null with no error is absence; one that is null with an
 error is that error, whatever deeper path the error carries.
@@ -1003,21 +1080,32 @@ which.
 
 ## Scope
 
-Out of scope: non-running applications, broad installation/configuration discovery,
-LLM skills, remote networking, cross-language plugin authoring, live plugin
-replacement, subscriptions, automatic retry and rollback, and cross-provider
-identity or atomic snapshots. Open-source licensing and distribution do not
+The designed [workflow extension](workflow-providers.md) admits non-running
+applications for launch and installed-application search, file search under
+configured roots, file/URL opening, reveal, and bounded integration-prerequisite
+discovery and explicit setup. The existing desktop process lookup still resolves
+only the captured running incarnation; it does not become a name/bundle lookup.
+Other broad installation/configuration discovery remains out of scope, as do
+arbitrary shell execution, LLM skills, remote networking, cross-language plugin
+authoring, live plugin replacement, subscriptions, automatic retry and rollback,
+general cross-provider identity and atomic snapshots. A scoped, revalidated
+iTerm/herdr host association is permitted under the workflow spec's constraints;
+it supplies neither shared references nor a universal identity service.
+Open-source licensing and distribution do not
 change this desktop design: Koine is published under Apache-2.0 and
 installed from a Homebrew cask carrying the notarized bundle
 ([open-source release and distribution](../adr/open-source-release-and-distribution.md)).
 
-The served contract is implemented: a shared resilient Swift
+The baseline served contract is implemented: a shared resilient Swift
 framework, one resident application with in-process native management,
 transferable bearer credentials with live revocation, the precise
 revocation/admission boundary, GraphQL desktop identity, the client-owned adapter
 and the operational policies described here. Platform behavior and native binary
 compatibility are established by the evidence in "Acceptance status", which also
 lists what is open.
+The workflow extension and additional-capability feature are design obligations
+until their own conformance, binary and VM evidence is recorded; the baseline's
+established rows do not establish these additions.
 
 ## Native targeting discussion
 

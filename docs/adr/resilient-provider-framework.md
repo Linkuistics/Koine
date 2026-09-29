@@ -16,6 +16,13 @@ Swift's [library-evolution rules](https://www.swift.org/blog/library-evolution/)
 support this direction; compatibility is demonstrated with independently built
 old/new binary pairs through the native plugin seam.
 
+The workflow extension uses this policy for
+[additional capability requirements](../specs/machine.md#additional-capability-requirements):
+a compatible minor adds metadata while old registrations keep empty additional
+sets. A required feature prevents an older host from silently dropping the new
+authority. This remains a design obligation until the extension's binary pairs
+have been exercised; baseline compatibility evidence does not establish it.
+
 Koine does not use a C-compatible function table with byte buffers, because
 idiomatic Swift authoring matters more: its smaller shared type surface does not
 justify the adapter and manual ownership contract for Swift-only providers.

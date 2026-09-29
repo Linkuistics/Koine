@@ -32,6 +32,11 @@ classification:
 
 Also settled:
 
+- The concrete workspace schema uses typed dependency-unavailable results and
+  an unconditional workspace-control plus desktop-control requirement. The
+  shared additional-capability contract is the architecture's input, not an
+  invitation to redesign grants in this increment.
+
 - The packaging consequences, if the operations live in a new bundled
   provider: the in-app approval record, the schema design file,
   `task conformance` and the schema digest.

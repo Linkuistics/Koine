@@ -1,0 +1,23 @@
+# Component/authority view, not deployment containers. All providers run in Koine.
+direction: right
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Client: "Start here · Client\nPresentation · clipboard" {class: start}
+Host: "Koine · one resident process" {
+  direction: right
+  Core: "Machine + framework\nCompose · authorize · dispatch"
+  Desktop: "desktop\nWindows · displays\nPointer · media"
+  Workspace: "workspace\nSearch · launch · open · reveal"
+  Input: "input\nKeystrokes · owned modifier holds"
+  Menus: "menus\nInspect · open · invoke · clean up"
+  Iterm: "iterm\nTabs/panes · setup"
+  Herdr: "herdr\nScoped tools · worktrees · agents"
+  Core -> Desktop: "read / control"
+  Core -> Workspace: "read / control"
+  Core -> Input: "read / control"
+  Core -> Menus: "read / control"
+  Core -> Iterm: "read / control"
+  Core -> Herdr: "read / control"
+}
+Client -> Host.Core: "GraphQL\none grant"

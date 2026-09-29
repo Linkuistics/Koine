@@ -91,6 +91,16 @@ row's client part is recorded in that increment's trace.
 | Interruption and cleanup | `held-interactions`, `context-menus` | — |
 | Operation-to-capability trace | every increment; closed by `baseline-acceptance` | — |
 
+`provider-architecture-k5`'s design is in
+`docs/specs/workflow-providers.md` and
+`docs/adr/provider-authority-follows-effects.md`. The shared additions are in
+`machine.md` under "Additional capability requirements" and the dependency
+error note. All increments extend the workflow spec's cumulative trace with
+concrete coordinates, complete grants and acceptance evidence. The pathfinder
+implements the additional-capability framework feature together with workspace
+launch/open, including old/new binary refusal and conformance profiles. New
+operations remain designed/pending until their own acceptance is recorded.
+
 ## Pointers
 
 - Existing application: `/Users/antony/Development/Modaliser`.

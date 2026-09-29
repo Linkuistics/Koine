@@ -11,6 +11,11 @@ written from the contract alone had to guess
 Nothing here is specific to one client. A client that follows it needs no
 knowledge of Koine's source.
 
+This guide's examples and digest describe the served 0.1.0 baseline. The
+[workflow-provider design](specs/workflow-providers.md) is pending implementation;
+discover its operations from an upgraded server's introspection when available,
+not from their presence in a design document.
+
 ## Contract version
 
 | | |

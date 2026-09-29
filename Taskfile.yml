@@ -103,6 +103,18 @@ tasks:
     cmds:
       - scripts/check-doc-links.py {{.CLI_ARGS}}
 
+  design:workflow-render:
+    desc: Render the workflow provider architecture views (D2 0.9.0 and PlantUML 1.2026.8)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-providers.d2 docs/design/architecture/workflow-providers.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-authority.d2 docs/design/architecture/workflow-authority.svg
+      - plantuml -tsvg docs/design/architecture/workflow-targets.puml
+
+  design:serve:
+    desc: Serve only the architecture presentation at http://127.0.0.1:8765
+    cmds:
+      - python3 -m http.server 8765 --bind 127.0.0.1 --directory docs/design/architecture
+
   version:
     desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
     cmds:
