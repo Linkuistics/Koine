@@ -809,8 +809,6 @@ memory. All support macOS 10.15 or later and Linux.
 `KoineCore` is not built or tested on Linux; its imports are Foundation, GraphQL
 and Crypto only.
 
-Work is driven as a grove task tree under `.grove/`.
-
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE).
