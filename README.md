@@ -50,6 +50,24 @@ set, are outside this version.
 - Shared terms: [CONTEXT.md](CONTEXT.md)
 - Diagrams: [docs/design/architecture](docs/design/architecture/README.md)
 
+## Installing
+
+Koine requires macOS 26 or later on Apple Silicon. It is a Homebrew cask in
+[Linkuistics/homebrew-taps](https://github.com/Linkuistics/homebrew-taps):
+
+```sh
+brew install --cask linkuistics/taps/koine
+```
+
+The cask installs the notarized, stapled bundle from the
+[tagged release](https://github.com/Linkuistics/Koine/releases) into
+`/Applications`; Gatekeeper accepts it as downloaded, with nothing stripped.
+`brew uninstall --cask koine` quits and removes the application and leaves its
+grants and login-item registration; `--zap` also removes
+`~/Library/Application Support/Koine` and Koine's preferences. The login item is
+registered through `SMAppService.mainApp`, so macOS forgets it once the bundle is
+gone. Evidence: [docs/verification/homebrew-install-vm.md](docs/verification/homebrew-install-vm.md).
+
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and the user
@@ -793,3 +811,7 @@ Each was chosen from its repository and manifest at the pinned release
 and Crypto only.
 
 Work is driven as a grove task tree under `.grove/`.
+
+## License
+
+Apache License 2.0 — see [LICENSE](LICENSE).

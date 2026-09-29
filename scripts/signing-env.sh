@@ -61,4 +61,6 @@ fi
 MINIMUM_OS_MAJOR="${MINIMUM_OS%%.*}"
 
 RELEASE_TAG="v${MARKETING_VERSION}"
-RELEASE_ARTIFACT="${APP_NAME}-${MARKETING_VERSION}.zip"
+# The release zip names its one target, as the cask's `arch: :arm64` and the
+# supported matrix do: "macOS 26 on Apple Silicon" is aarch64-apple-darwin.
+RELEASE_ARTIFACT="${APP_NAME}-${MARKETING_VERSION}-aarch64-apple-darwin.zip"
