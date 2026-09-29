@@ -8,16 +8,17 @@ describe functionality already delivered by Koine 0.1.0. The implemented
 ## Purpose
 
 Provide one or more native Koine providers supplying the state and operations
-needed by all active Modaliser bindings. Those workflows will become
-ModalAnyware requirements when that project restarts. In addition, provide
-access to an application's menu bar and context menus so clients can discover
-their contents and invoke their actions.
+needed by the agreed subset of active Modaliser bindings below. Those workflows
+will become ModalAnyware requirements when that project restarts. In addition,
+provide access to an application's menu bar and context menus so clients can
+discover their contents and invoke their actions.
 
 The baseline is the user's configuration, including actions supplied by its
 bound constructors and integrations. It is not the full set of operations
-defined in Modaliser's libraries, and it is not a seed configuration. Provider
-count, boundaries, implementation mechanisms and exact GraphQL fields follow
-these requirements.
+defined in Modaliser's libraries, and it is not a seed configuration. Antony
+removed Zellij and Neovim support and deferred the VS Code screen workflows;
+the Visual Studio Code launcher remains required. Provider count, boundaries,
+implementation mechanisms and exact GraphQL fields follow these requirements.
 
 ## Ownership and existing constraints
 
@@ -27,6 +28,16 @@ GraphQL contract and native provider framework. The [server boundary](../adr/koi
 [resource references](../adr/machine-references-as-uris.md) and
 [grants](../adr/bearer-grants-and-live-revocation.md) remain constraints on the
 extension. The [glossary](../../CONTEXT.md) supplies the project's vocabulary.
+
+This extension deliberately lifts the desktop contract's exclusions of
+non-running applications and broad discovery only for the agreed launch,
+installed-application search, file search and required integration-prerequisite
+discovery/setup workflows. The server-boundary ADR's broader-discovery exclusion
+does not prohibit those workflows. Design must reconcile the spec's Scope and
+that ADR with the extension before implementation. The terminal/herdr context
+requirement does not itself mandate shared identity across providers; whether
+it needs to reopen that exclusion is a design question. Other existing scope
+exclusions remain in force.
 
 Clients own key maps, leader handling, labels, panels, overlays, choosers,
 confirmation dialogs, walk navigation, query-entry presentation and MRU
@@ -40,8 +51,8 @@ network proxy in Koine.
 This work does not edit or restart Modaliser or ModalAnyware. A standalone
 client must be able to demonstrate Koine's contribution. A required app-side
 integration may be part of the Koine solution; reusing or replacing the current
-VS Code companion and iTerm setup are design choices. Where prerequisites are
-still needed, their availability and explicit setup path must be discoverable.
+iTerm setup is a design choice. Where prerequisites are still needed, their
+availability and explicit setup path must be discoverable.
 
 The intended result of a configured action is the requirement. Its current
 shortcut or script is evidence of the mechanism, not a requirement to retain
@@ -57,6 +68,21 @@ guarantees into protection against every platform race. Reads remain free of
 domain actions; explicit operations perform effects under the appropriate
 authority. Permission denial, an absent dependency, a stale selection and an
 empty successful result must not become indistinguishable to the client.
+
+### Requirement: separately grant input, menu invocation and window focus
+
+Keystroke delivery, menu invocation and window focus SHALL each be grantable
+independently of the other two. Permission to list or inspect state, or to focus
+a window, does not grant input delivery or menu invocation. These boundaries
+apply to the effects regardless of which public operation exposes them.
+
+The current framework assigns read/control capabilities per provider. Design
+must choose provider boundaries or an explicit contract change that preserves
+the agreed separation; this requirement does not choose either mechanism.
+File search, file/URL opening, explicit menu opening and prerequisite setup must
+also have documented authority in the operation-to-capability acceptance trace.
+Client confirmation UI does not replace Koine's grant checks. Existing live
+revocation and native-consent rules continue to apply.
 
 ## Workflow inventory
 
@@ -87,18 +113,17 @@ provider layout.
 | Obsidian | Quick switcher, command palette, new note, search all files, find in file and graph view. |
 | Zotero | Quick search and advanced search. |
 | iTerm | List/select panes and tabs; directional pane focus, move and split; pane zoom and copy mode; create, rename and close tabs; previous/next tab focus and reordering; explicit configuration when integration prerequisites require it. |
-| Terminal context | Identify the focused terminal and its nested herdr, Zellij or Neovim context sufficiently to select and address the intended running instance. Clients own navigation into and out of that chain. |
+| Terminal context | Identify the focused terminal host and its nested herdr context sufficiently to select and address the intended running instance. iTerm is the required host baseline. Clients own navigation into and out of that chain. |
 | herdr panes | List/select, cycle, directionally focus/split/move, zoom and close panes. Copy mode selects within the live herdr pane; scrollback opens that pane's buffer in an editor. These are distinct from the host terminal's own copy mode. |
 | herdr tabs and Spaces | List/select, cycle, create, rename, close and reorder tabs and Spaces, preserving the applicable containing scope. |
 | herdr worktrees | List worktrees; create and remove them; focus the live Space when already open, otherwise open the dormant worktree. Removal is non-forcing; the client retains confirmation. |
 | herdr agents and lifetime | List/select and cycle agents; jump to the next blocked agent; distinguish detaching the client, which leaves the server and panes running, from stopping the server. |
-| Zellij | Directional pane focus, split and move; pane zoom; the configured pane digit-jump facility. |
-| Neovim | Directional focus between Neovim windows in the intended running instance. |
-| VS Code projects | List open projects/windows, including those on other Spaces, and focus the selected window. |
-| VS Code window parts | List all terminals, including hidden ones, and editor tabs across all groups. Expose names, active state, editor dirty state and selectability. Focus a selected supported part; keep unsupported editor kinds visible without pretending they are selectable. |
-| VS Code commands | Strict Explorer focus; VisualJJ focus; file finder, command palette and project search. Focus the active editor group before previous/next editor cycling, crossing groups and wrapping within the window. |
-| VS Code and Grove | Reveal the live Grove leaf for the initiating window's worktree and leave Explorer focused. Independently clean up only that workspace's clean Grove task tabs whose files are definitely missing, even when no live leaf remains. Existing files, dirty tabs and uncertain checks stay open. Cleanup does not gate reveal. |
-| Integration setup | Support explicit prerequisite setup where needed, including the configured iTerm setup and VS Code companion install/update workflows or an equivalent solution that removes those prerequisites. |
+| Integration setup | Support explicit prerequisite setup where needed, including the configured iTerm setup workflow or an equivalent solution that removes that prerequisite. |
+
+VS Code's screen workflows are deferred: project/window and terminal/editor
+selection, focus and editor commands, Grove leaf reveal and task-tab cleanup,
+and companion install/update. They receive no design or acceptance work in this
+increment. Its named launcher remains in the baseline above.
 
 The current installation probe supports the geometry-layout screen. Paneru's
 alternative strip listing, west/east focus and swap, grow/shrink and strip
@@ -107,6 +132,27 @@ remain in the configuration. The unbound Dia AppleScript tab-list/focus helpers
 and the separately registered, unreachable iTerm focus-walk entry likewise add
 no extra scope.
 
+### State for configured lists and on-screen labels
+
+Koine must expose the native state needed to place the configured client-drawn
+labels over desktop windows, iTerm panes and herdr jump targets. This includes
+screen-space geometry tied to the selected resource, the window stacking and
+visibility information needed to account for occlusion, and enough host/tool
+geometry to locate herdr's pane, tab, Space and agent targets on screen. A target
+without an available on-screen location must be distinguishable from one with
+a known location; do not fabricate coordinates. Clients own label assignment,
+placement policy and rendering. Display labels may use client-readable display
+geometry; acceptance must identify that client responsibility explicitly.
+
+List state must preserve what the configured screens display: iTerm tab titles
+and the current tab; iTerm pane titles with process and working-directory
+information for the untitled-pane fallback; herdr row titles/details, focused
+or current state, agent status sufficient for status-priority ordering, and
+worktree current and switchable state. The resource reference and containing
+scope must keep that state associated with the right target even when labels
+are equal. Presentation and ordering remain client responsibilities; unknown
+state must be distinguishable from a known false value.
+
 ## Application-menu requirements
 
 ### Requirement: discover the application's menu system
@@ -114,6 +160,8 @@ no extra scope.
 Koine SHALL provide access to the selected application's menu bar and context
 menus, including nested and dynamically populated submenus. This is a general
 menu facility, not a catalogue of the currently configured shortcut actions.
+Application-owned status-item menus in the macOS menu bar and Dock menus are
+deferred and receive no design or acceptance work in this increment.
 
 #### Scenario: menu hierarchy and state
 
@@ -145,15 +193,16 @@ An inaccessible or unsupported menu is reported as such rather than silently
 presented as complete. This reporting rule is not permission to omit required
 working menu access from acceptance.
 
-#### Scenario: the user switches applications
+#### Scenario: the target loses foreground
 
-If the user switches to another application during a context-menu interaction,
-the interaction stops and its menus are dismissed. Koine does not bring the
-original application back or continue acting in the new one. The client's own
-expected presentation is not a user request to switch targets. Cleanup must
-respect the current native boundary and must not blindly send keystrokes to the
-new foreground application. A failed cleanup is reported as unconfirmed,
-not as successful cancellation.
+If the target process stops being the active application, an interaction with
+an explicitly opened context menu or menu-bar submenu stops and cleans up under
+the interruption policy below. This observable trigger does not depend on who
+caused the activation change. Explicitly declared client presentation is the
+exception; design must define its declaration and recognition without treating
+a client display label as an authenticated executable identity. It must not
+silently choose a new target. Koine does not bring the original application
+back or continue the interaction in the newly active one.
 
 ### Requirement: validate the selected item before invoking it
 
@@ -167,7 +216,10 @@ requires a fresh list and a new selection.
 If a different document replaces an Open Recent entry after listing, invocation
 of the old selection is rejected. The replacement is not opened on its behalf.
 An unrelated sibling change need not invalidate an unchanged selection that
-can still be validated. Duplicate titles are not sufficient identity.
+can still be validated. Conservative invalidation is also permitted: it must
+report the selection unavailable and require a fresh list and selection. This
+accepts the extra interaction rather than requiring stable selection across
+every menu refresh. Duplicate titles are not sufficient identity.
 
 #### Scenario: disabled, removed or inaccessible selection
 
@@ -180,7 +232,7 @@ mutation-outcome and no-automatic-replay rules continue to apply.
 
 ### Requirement: preserve the intended target and cancellation behavior
 
-Application, window, workspace, pane and editor operations SHALL preserve the
+Application, window, workspace and pane operations SHALL preserve the
 target selected for the interaction. Discovery must provide enough identity and
 state for clients to distinguish equal labels and select the intended resource.
 The native limits of the existing contract still apply; providers must not
@@ -192,16 +244,38 @@ Opening the recent-tab walk holds Control and advances once. Forward/backward
 steps operate the same interaction. Confirm releases Control to accept the
 highlighted tab; cancel dismisses the chooser before release so it does not
 commit the preview. A user switch to another application stops the interaction
-and cleans up its held modifiers rather than reclaiming focus. Normal finish,
-cancel and interrupted-interaction paths must not leave an owned modifier held.
-Cleanup failures must be reported honestly rather than represented as rollback.
+and cleans up its held modifiers rather than reclaiming focus. The same rule
+applies whenever the target loses foreground, with the explicit exception for
+declared client presentation above. No Escape or cancel keystroke is sent to the
+new foreground application. Releasing only Koine-owned modifiers is permitted
+even if that application observes key-up. Normal finish, cancel and interruption
+follow the cleanup requirements below.
 
-#### Scenario: VS Code's initiating workspace
+### Requirement: bound abandoned interactions and clean up owned effects
 
-Changing which window is frontmost must not cause Grove cleanup or leaf reveal
-to act in a different workspace. A missing live leaf is a result the client can
-explain; it does not prevent conditional cleanup of definitely missing clean
-task tabs in the original workspace.
+Dia walks and explicitly opened menus SHALL have Koine-owned cleanup that does
+not depend on another successful client request. Revoking the owning grant,
+abandonment after a bounded period of inactivity, and orderly Koine shutdown
+stop the interaction and release its owned modifiers/dismiss its opened menus.
+Client crash or disconnect must not leave an interaction alive indefinitely
+between requests; the inactivity bound covers loss that Koine cannot otherwise
+observe. Design chooses and documents the bound and how activity renews it.
+
+Cleanup is limited to ending effects of the already admitted interaction. It
+must not admit a new client action under a revoked grant, bypass native consent,
+reclaim target focus or send Escape/cancel to a newly active application. Only
+the release of Koine-owned modifiers is exempt from the prohibition on cleanup
+keystrokes reaching that application. It is not permission to release unrelated
+modifier holds. Design must reconcile cleanup ownership with the existing
+grant/dispatch admission boundary and demonstrate the native behavior.
+
+Normal finish, cancellation and these interruptions must not silently leave
+owned effects behind. Failed cleanup is reported as unconfirmed, not successful
+cancellation or rollback. An abrupt Koine crash is an accepted residual case:
+held modifiers or open menus may remain. The design must provide explicit
+recovery guidance and define the recovery mechanism; it must not claim cleanup
+succeeded while Koine could not perform or confirm it. Restarting must not
+automatically replay the interrupted application action.
 
 ## Test seams and acceptance
 
@@ -222,23 +296,41 @@ inventory row to its public operations or client responsibility:
   media routing.
 - The intended outcomes of configured app shortcuts, with the annotated Signal
   and Messages bindings checked rather than assumed correct.
-- Multiple terminal/tool instances, nested context and equal display labels;
+- A client with only read or window-focus authority cannot deliver keystrokes
+  or invoke menu items. Input and menu invocation can each be granted without
+  the other. Test these boundaries through their public operations, including
+  denied and revoked grants, and record the authority for every other effect.
+- Multiple iTerm/herdr instances, nested context and equal display labels;
   herdr's copy-mode/scrollback and detach/stop distinctions; non-forcing worktree
   removal.
-- VS Code projects across Spaces, hidden terminals, multiple editor groups,
-  unsupported editor kinds, strict focus and editor cycling. Grove cleanup
-  covers clean/missing, dirty/missing, existing and uncertain files, including
-  the no-live-leaf case.
+- Window occlusion and stacking, visible and unavailable target geometry, iTerm
+  pane labels and herdr jump labels over their corresponding native targets.
+  Demonstrate current/focused rows, untitled iTerm pane fallbacks, herdr agent
+  status ordering and current/switchable worktrees through the public state.
 - Menu bar and both context-target modes; nested/lazy menus; required metadata;
   disabled and duplicate-title items; passive inspection versus explicit
-  opening; cancellation and user-driven application switches.
-- A menu selection replaced between listing and invocation, and a still-valid
-  selection whose unrelated sibling changed.
-- Dia confirm, cancel and focus-loss cleanup, including interruption while a
-  modifier is held.
+  opening; cancellation and target foreground loss, including activation
+  changes not caused by the user and declared client presentation.
+- A replaced menu selection must be rejected. After an unrelated sibling
+  change, either invoke the validated original item or report it unavailable
+  and require a fresh selection; invoking any replacement fails acceptance.
+- Dia confirm/cancel and cleanup for Dia, context menus and opened menu-bar
+  submenus on foreground loss, grant revocation, client loss/inactivity expiry
+  and orderly shutdown. Verify the documented inactivity bound, no new client action
+  after revocation, and no Escape/cancel in the newly active app; only owned
+  modifier releases may reach it. Exercise abrupt termination and the documented
+  recovery path, retaining unconfirmed outcomes where cleanup cannot be proved.
 - Missing integrations, unavailable targets, denied/revoked grants and absent
   native consent. An unavailable integration must not masquerade as a healthy
   empty list or count as a demonstrated working workflow.
+
+Account-dependent workflows use dedicated test accounts and data inside the
+isolated VMs. This applies to Signal, Slack, Telegram, Messages and Mail,
+including conversations and messages needed to exercise their actions. Record
+the actual workflow outcomes. If an account or required test data is unavailable,
+the affected acceptance cases remain pending; a documented untested limitation
+does not pass them. This agreement does not authorize using Antony's live
+desktop or substituting mocks.
 
 Acceptance records the actual application/tool versions and supported cases.
 The existing supported OS/CPU matrix is the starting point. Any platform or
@@ -255,7 +347,8 @@ load that configuration after the files' modification times; its launch log
 reported `config: loaded` on 2026-09-29. The included screens cover Safari,
 iTerm, herdr, Zellij, Neovim, Dia, Finder, Mail, Slack, Zed, VS Code, Signal,
 Messages, Telegram, Obsidian and Zotero. The executable bindings govern the
-inventory where comments describe older bindings.
+inventory where comments describe older bindings. This source inventory records
+what was loaded; the scope reductions above determine what is required now.
 
 Bound launcher constructors contribute secondary actions, and the bound Google
 constructor contributes suggestions. Their installed Scheme definitions were
@@ -267,9 +360,10 @@ engine's cached load-time branch. These are bounded configuration observations,
 not a claim that every function in the Modaliser repository was audited.
 
 Detailed design must settle provider boundaries, schema composition and
-capabilities, target and menu-reference lifetime, interrupted interaction
-ownership/cleanup, dependency discovery and integration setup. Native menu
-population and validation need runtime evidence: Apple's
+capabilities under the agreed separation, target and menu-reference lifetime,
+interrupted interaction ownership/cleanup, the inactivity bound and crash
+recovery, declared client presentation, dependency discovery and integration
+setup. Native menu population and validation need runtime evidence: Apple's
 [menu-update contract](https://developer.apple.com/documentation/appkit/nsmenudelegate/menuneedsupdate(_:))
 allows contents to change when a menu opens, and its
 [show-menu action](https://developer.apple.com/documentation/applicationservices/kaxshowmenuaction)
