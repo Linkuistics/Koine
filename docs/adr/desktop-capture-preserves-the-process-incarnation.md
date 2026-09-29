@@ -1,30 +1,29 @@
 # Desktop capture preserves the process incarnation
 
-The desktop target is the frontmost application sampled in the client's native
-callback. Its continuously held, non-time identity denotes that OS process
-incarnation; death or exec invalidating the identity ends the capture and its
-references. A delayed callback after an app switch captures the new foreground
-application; a switch after capture leaves the capture unchanged. Koine never
-substitutes a later foreground application or restored process under an old
-capture. Public client APIs, client-owned adapters, Koine-owned Accessibility
-consent and no helper, injection or target cooperation remain required.
+A client captures the target process as `{ pid, startedAt }` at interaction
+start: the PID and the kernel's microsecond start instant
+(`proc_pidinfo(PROC_PIDTBSDINFO)`). Koine resolves only when both halves match
+the live process. An absent process, or a live PID with another start instant,
+is null. Koine never substitutes a later foreground application or a restored
+process under an old capture, and never falls back to the PID alone.
 
-Capturing later at the server was rejected because it can select a different
-application from the client's callback. PSN plus boot identity was rejected:
-the [restoration counterexample](../verification/process-serial-lifetime.md)
-preserves that pair while the OS process changes. Time and cached finite
-PID/version fields do not provide the required non-colliding identity. The cost
-of preserving the incarnation is actual native ownership and transfer, explicit
-sample attribution and expiry, rather than a convenient portable process number.
+This is the `koine-desktop/1` contract. Time cannot strictly guarantee that two
+incarnations never collide, but a collision needs the kernel to reissue the
+same PID within the same microsecond of start time, and that residual risk is
+accepted for the first release.
+
+The rejected alternative was a continuously held, non-time native identity,
+sampled in the client's callback and transferred to Koine as a Mach right over
+an authenticated channel. It needed a new capture/transfer protocol, sample
+attribution and expiry, and a body of native evidence far out of proportion to
+the release, so it was set aside. Its partial investigation remains in the
+[capture/transfer assessment](../verification/callback-capture-transfer.md).
+PID alone was rejected because PIDs are reused. Process Manager serial number
+plus boot identity was rejected because the
+[restoration counterexample](../verification/process-serial-lifetime.md) keeps
+that pair while the OS process changes.
 
 Process identity does not alone bind an AX destination. The
-[PID-recycling experiments](../verification/retained-ax-binding.md) exclude public
-held AX wrappers and private token/data reconstruction as proof of an unchanged
-endpoint. The independently chosen
-[public Accessibility boundary](desktop-automation-uses-public-accessibility.md)
-accepts wrong-target data and effects in races, stale notifications and mistaken
-reference withdrawal. This never permits rebinding the capture's process
-identity; it limits what operations under that capture can promise.
-Capture/transfer feasibility, reference/restart details and adoption obligations
-live in the
-[machine spec](../specs/machine.md#native-targeting-discussion).
+[public Accessibility decision](desktop-automation-uses-public-accessibility.md)
+and the [machine spec](../specs/machine.md#native-targeting-discussion) state
+the reuse races Koine accepts.

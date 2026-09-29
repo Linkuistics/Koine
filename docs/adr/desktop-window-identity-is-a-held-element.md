@@ -14,25 +14,15 @@ its application does not enumerate now, as on another Space, is what the provide
 lists as `REMEMBERED`, under the same reference; there is no second record of
 windows.
 
-The process component shown above is the currently served timestamp form,
-which must change before first release. The
-[capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
-client-local capture and strict OS-process lifetime; its replacement encoding
-is not yet agreed. Held-window evidence below does not establish cross-process
-binding for a native action endpoint. A subsequent
-[actual PID-recycling experiment](../verification/retained-ax-binding.md)
+The process component is the served `{ pid, startedAt }` identity fixed by the
+[capture decision](desktop-capture-preserves-the-process-incarnation.md).
+An [actual PID-recycling experiment](../verification/retained-ax-binding.md)
 shows that a retained AX window can address a replacement process, even with
-the original task-name right and AX parent still held. The current scheme
-therefore does not establish cross-incarnation no-substitution. The agreed
-future [public Accessibility contract](desktop-automation-uses-public-accessibility.md)
-accepts wrong-target reads and effects during process or window reuse, stale
-notifications and mistaken withdrawal of live references. Held wrappers remain
-private observation state, not proof of an unchanged native destination.
-Local withdrawal is permanent and identifiers are never reused; a platform
-closure report is not authenticated proof of closure. The replacement process
-identity, reference grammar and restart rules still need agreement before
-release. The ordinary closure evidence below describes the served scheme and
-does not prove the replacement's capture/transfer or lifetime handling.
+the original task-name right and AX parent still held, so this scheme does not
+establish cross-incarnation no-substitution. The
+[public Accessibility decision](desktop-automation-uses-public-accessibility.md)
+accepts that race. Local withdrawal is permanent and identifiers are never
+reused; a platform closure report is not authenticated proof of closure.
 
 ## Trade-off
 

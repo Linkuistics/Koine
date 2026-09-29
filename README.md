@@ -26,16 +26,11 @@ the first, and is bundled.
 
 Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
-lists what is established, with its evidence, and what is still open. The most
-significant open item: the process identity a client submits, a start instant,
-is being replaced by a mechanism that does not depend on time before the first
-public release. The agreed smaller deliverable combines non-time capture with
-[public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion).
-It accepts wrong-target data/effects during reuse, stale notifications, mistaken
-reference withdrawal and framework AX reception without Koine's hard acquisition
-bound. Grants, Koine-owned consent, known-dead capture refusal and bounds on
-Koine's own records/work remain. Capture/transfer and the full replacement
-protocol still need design and evidence; the served API has not yet migrated.
+lists what is established, with its evidence, and what is still open. A client
+names a process by PID and kernel start instant. Koine uses
+[public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion),
+and accepts wrong-target data or effects during process or window reuse, stale
+notifications and mistaken reference withdrawal.
 Discovering applications that are not running, and an LLM skill
 set, are outside this version.
 
@@ -495,9 +490,7 @@ is a different, later instant and never matches.
 live PID started at another instant, and a process that is no application are
 ordinary null. A `pid` that is not positive, or a `startedAt` in any other form
 (whole seconds, another offset, fewer digits), is an input error with a response
-path and no `extensions.kind`; it never falls back to the PID alone. This
-identity is to be replaced by one that does not depend on time before the first
-public release (the spec's "Public GraphQL contract").
+path and no `extensions.kind`; it never falls back to the PID alone.
 
 **Windows** are the application's real windows on the current Space, read through
 the Accessibility API: role `AXWindow`, subrole standard, dialog or none,

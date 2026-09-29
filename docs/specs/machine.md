@@ -6,10 +6,9 @@ and bearer credentials with live revocation, and Koine 0.1.0 implements it. The
 served schema matches [the design schema](../design/desktop-schema.graphql)
 under a repeatable check, and the platform behavior is verified on the notarized
 build in Gatekeeper-enforcing VMs. "Test seams and acceptance" says, case by
-case, what is established and by which evidence, and what is still open. One
-part of the contract is being replaced before the first public release: process
-identity and the native effect promise, detailed in "Public GraphQL contract"
-and "Native targeting discussion". Client authors start at the
+case, what is established and by which evidence, and what is still open. Process
+identity is a PID plus its kernel start instant; the races public Accessibility
+leaves open are accepted and listed in "Native targeting discussion". Client authors start at the
 [client guide](../client-guide.md).
 
 ## Purpose and ownership
@@ -228,38 +227,13 @@ The instant is the kernel's record of the process's start, as
 compared exactly; any other form is an input error. Locating the process is the
 client's: Koine offers no lookup by name or bundle identifier.
 
-**Still open: this identity is to be replaced before the first public release.**
-The human rejected time as a process identity, since it cannot guarantee that
-two processes never collide, and `process-identity-without-time` designs a
-mechanism that does not depend on time. Until it lands, the paragraph above is
-what Koine serves, and the input type, the application-reference encoding and the
-schema digest are expected to change.
+This identity is the `koine-desktop/1` contract. The
+[capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
+records why a non-time identity was not adopted for the first release.
 
-The replacement preserves callback-time foreground capture as defined by the
-[capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md) and
-expires with the captured OS process, including automatic termination. It must
-not follow a restored logical application into a new process. Public Process
-Manager serial numbers plus boot identity fail that requirement in the
-[native lifetime experiment](../verification/process-serial-lifetime.md).
-[The capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
-records these agreed boundaries; native transfer, reference lifetime across
-Koine restart and action binding remain to be designed. The SDL below still
-describes the currently served timestamp input, not an approved replacement.
-
-The agreed first-deliverable transport uses **public macOS Accessibility** for
-listing, focus attempts and notifications. It retains non-time capture and expiry,
-but accepts wrong-target data/effects during reuse, stale notifications and
-mistaken reference withdrawal. Framework-managed AX reception has no Koine hard
-memory/Mach-right bound before acquisition; resource pressure or Koine failure is
-an accepted risk. Grants, Koine-owned consent, known-dead capture refusal and
-bounds on Koine's own records/work remain required. The
-[public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)
-and [native targeting discussion](#native-targeting-discussion) define this
-boundary and the remaining design work. No private AX exchange is a release
-prerequisite under this agreement.
-
-The coordinates and schema below describe the currently served timestamp API.
-Its replacement requires new public descriptions and a complete agreed protocol.
+Koine uses public macOS Accessibility for listing, focus and notifications, and
+accepts the wrong-target races and unauthenticated reports that entails; the
+[native targeting discussion](#native-targeting-discussion) states the limits.
 
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
@@ -666,12 +640,9 @@ and remainder interpretation. A provider root has an empty remainder. The
 scalar maps to an opaque string wrapper in client bindings; clients cannot
 construct desktop resource references from PIDs or window titles.
 
-The following reference/focus behavior describes the served timestamp design.
-Its exact-target guarantee is not established across native PID reuse, and the
-agreed [future public Accessibility contract](#native-targeting-discussion)
-replaces the read, effect and observation promises before release. Its wire shape
-and restart rules are still pending; the existing focus receipt must not silently acquire the
-weaker meaning.
+The exact-target behavior below is not established across actual native PID
+reuse; the [native targeting discussion](#native-targeting-discussion) lists the
+accepted limits.
 
 The desktop provider encodes a process incarnation in application and window
 references. A window reference additionally carries its native window identity
@@ -1019,17 +990,15 @@ Gatekeeper-enforcing clone; each document says which.
 | Accessibility attributed to Koine | **Established** on the notarized build: [notarized-release-vm.md](../verification/notarized-release-vm.md), [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [accessibility-status-and-consent-vm.md](../verification/accessibility-status-and-consent-vm.md). |
 | Absent and revoked consent | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-references-and-permission-vm.md](../verification/desktop-references-and-permission-vm.md). |
 | Application resolution; current and remembered windows across Spaces; focus | **Established.** [desktop-application-and-windows-vm.md](../verification/desktop-application-and-windows-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md), the mechanism in [desktop-window-identity.md](../verification/desktop-window-identity.md). |
-| Closure, duplicate titles and restart behavior | **Established for served behavior.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). **Open for the replacement:** platform-reported withdrawal is permanent but may be mistaken; wrong-target data/effects and stale notifications are accepted. Local callback ownership, non-reuse and all agreed restart behavior need renewed evidence under the [future boundary](#native-targeting-discussion). |
-| PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). An [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. **Open** for the replacement: establish capture/reference expiry and known-dead refusal under the public Accessibility contract. Wrong-target data/effects in check-to-use and native routing races are accepted; unchanged AX destination is not promised. |
+| Closure, duplicate titles and restart behavior | **Established for served behavior.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). Platform-reported withdrawal is permanent but may be mistaken ([accepted limits](#native-targeting-discussion)). |
+| PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). An [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. Wrong-target data and effects in that race are an [accepted limit](#native-targeting-discussion). |
 | Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
 | Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the signed build of the macOS 26 floor, whose image digests the notarized bundle is to be checked against. |
 | The signed release build's entitlements and permission behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [notarized-release-vm.md](../verification/notarized-release-vm.md). |
-| The native identity guarantee | **Established** only for the served design's within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). Held AX objects can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. **Open** for the agreed non-time capture and public Accessibility focus-attempt contract; its explicit exclusions are not stronger guarantees awaiting proof. |
+| The native identity guarantee | **Established** only for the served design's within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). Held AX objects can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. Across PID reuse this is an [accepted limit](#native-targeting-discussion), not an open obligation. |
 
 **Open, and not a case above:**
 
-- **The process identity is to be replaced before the first public release**,
-  because time cannot guarantee non-collision ("Public GraphQL contract").
 - **Provider install and trust renewal.** There is no UI to install a provider,
   show its signer, approve it or renew trust, and no library-validation
   entitlement, so independently signed third-party providers do not load.
@@ -1058,186 +1027,37 @@ transferable bearer credentials with live revocation, the precise
 revocation/admission boundary, GraphQL desktop identity, the client-owned adapter
 and the operational policies described here. Platform behavior and native binary
 compatibility are established by the evidence in "Acceptance status", which also
-lists what is still open; the process identity is agreed to be replaced before
-the first public release.
+lists what is still open.
 
 ## Native targeting discussion
 
-**Agreed future contract: non-time capture with public Accessibility.** The
-human selected this smaller first deliverable in
-`native-observation-resource-boundary-k104`. It replaces the private endpoint,
-authenticated observation and hard AX acquisition requirements. The timestamp
-input and SDL above remain served behavior; this is a requirements agreement,
-not a complete replacement protocol or release authorization. The
-[guarantee-boundary view](../design/architecture/index.html#diagram-process-target-contract),
-[capture ADR](../adr/desktop-capture-preserves-the-process-incarnation.md) and
-[public Accessibility ADR](../adr/desktop-automation-uses-public-accessibility.md)
-state the same boundary.
+**The served identity is the `koine-desktop/1` contract.** A client captures a
+process as `{ pid, startedAt }` at interaction start. Koine resolves only when both
+halves match the live process, and otherwise answers null, never another process.
+The [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
+records why this was kept for the first release. A collision needs the kernel to
+reissue the same PID within the same microsecond of start time. A continuously held
+native identity, transferred from the client's callback over an authenticated
+channel, was designed in part but not adopted, because its cost was out of
+proportion to the release. The investigation remains in
+[callback-capture-transfer.md](../verification/callback-capture-transfer.md) and the
+verification documents it links. None of it is a release obligation.
 
-### Capture and authorization remain strict
+### Public Accessibility and its accepted limits
 
-Capture the frontmost application when the client's native callback executes,
-using public client APIs and a client-owned adapter. Preserve a continuously held,
-non-time identity for that OS process incarnation. A callback delayed across an
-app switch captures the new foreground application; a switch after capture leaves
-it unchanged. Initial sample attribution and actual right transfer still need
-a feasible design and native evidence. A numeric Mach port name in JSON is not
-a transfer, and a fresh lookup by PID cannot replace an ended capture.
-
-Death or exec invalidating the held identity ends the capture and withdraws its
-references. Koine validates that identity before public AX work and refuses
-known-dead, invalid or ambiguous captures. A PID-only lifecycle notification may
-prompt validation but does not prove capture death. Koine does not deliberately
-substitute a later foreground application or restored process identity under an
-old capture. These are local capture and admission rules; they do not atomically
-enclose framework calls or their downstream effects.
-
-Live bearer-grant checks and the existing serialized grant/dispatch admission
-boundary remain required. Koine owns Accessibility consent. Client private APIs,
-runtime compilation, helpers, injection, target modification/cooperation and a
-behavioral application-support restriction are not adopted. The native transfer
-channel must authenticate its peers separately from bearer-grant authorization;
-a bootstrap name alone does not authenticate the resident Koine process.
-
-The [capture/transfer assessment](../verification/callback-capture-transfer.md)
-separates the candidate primitives from their missing premises. A definitive
-fresh foreground observation must fall inside continuously held identity and
-its successful post-sample validation; candidate discovery alone is not that
-observation. Public send-right APIs establish an available transfer primitive,
-not a bounded or authenticated resident protocol. Native sampling, acquisition
-admission and resident-protocol evidence remain separate work. Capture-source
-migration, native identity ownership and IPC migration are distinct client
-changes; none is adopted by the assessment.
-
-### Public Accessibility is best effort
-
-Use public macOS Accessibility APIs for listing, held window elements, focus
-operations and notification registration/delivery. Koine need not own the private
-AX endpoint, encoder, receive loop or per-reply audit protocol. Public AX may
-resolve or refresh destinations from process identifiers inside the framework.
-Holding a process identity or AX wrapper does not prove an unchanged AX destination.
-
-The agreed limits are observable product behavior, not just implementation details:
+The desktop provider uses only public macOS Accessibility for listing, held window
+elements, focus and notifications
+([public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)).
+It checks the process identity before AX work. That check narrows, but cannot
+close, the race with process or window reuse:
 
 | Area | Accepted limit |
 |---|---|
-| Data and effects | Process/window reuse, routing and work already accepted by native services may return another target's data or affect another window/process, including a restored successor. A liveness pre-check cannot exclude the race. |
-| Reads and confirmation | No independent kernel authentication of each reply, window-lifetime attribution or freshness proof. A returned title, presence or focus report may be stale or misattributed. |
-| Notifications | Framework callbacks may be stale, missing or misattributed. Koine has no event-age, complete-delivery or cross-channel publication guarantee. |
-| Reference withdrawal | A platform closure/failure report may wrongly withdraw a live reference or remove a remembered window. Local withdrawal remains irreversible. |
-| Framework AX reception | No Koine hard memory/Mach-right bound before framework-managed acquisition. Target traffic may cause resource pressure or resident Koine failure, including traffic from the intended target. |
+| Data and effects | After actual PID reuse, a held AX element can address the replacement process, as the [PID-recycling diagnostic](../verification/retained-ax-binding.md) shows. A check-then-use race can return another target's data or act on it. |
+| Reads and notifications | Replies and framework callbacks are not independently authenticated. A title, presence, focus report or notification may be stale or misattributed. |
+| Reference withdrawal | A platform closure report may withdraw a live reference. Withdrawal is still permanent, and identifiers are never reused. |
+| Framework AX reception | No Koine-enforced memory or Mach-right bound applies before framework-managed acquisition. Koine bounds its own records and work. |
 
-The [held-AX experiment](../verification/retained-ax-binding.md) establishes
-retargeting after actual PID reuse when a diagnostic deliberately continues using
-an old element. It does not measure the probability of a race in the ordinary
-check-then-use provider. Existing successful application tests remain bounded
-observations, not a proof excluding these accepted outcomes.
-
-### Reference withdrawal and public AX observation
-
-Koine owns the local association between captures, held elements, registrations
-and references. A callback for a locally ended registration must not access freed
-state, complete an unrelated request or revive an old reference. Establish local
-cancellation, draining and release rules without claiming that a surviving
-callback's target-side source, window lifetime or age has been authenticated.
-A stale or misattributed platform report associated with a current registration
-can still cause the accepted mistaken withdrawal.
-
-Withdraw a reference permanently on capture end or the agreed platform-reported
-closure/failure policy. Subsequent use is unavailable; equal descriptor bytes or
-a later successful read cannot revive that identifier. Do not describe a platform
-report as authenticated observed closure. Absence from enumeration alone is not
-proof of closure, since a window may be on another Space.
-
-`CURRENT` and `REMEMBERED` will describe best-effort platform observations of
-locally held records. A remembered row is not a proved continuation of the same
-physical window. The complete protocol must specify treatment of unanswered
-reads, failed registration, local overflow, partial listings, refresh and recovery.
-No blanket refusal for missing private authentication or publication barriers is
-required. Do not silently change served row/error meanings before that design.
-
-Bound retained records, callback contexts, registrations, accepted data, queued
-work, outstanding calls, waits and cleanup owned by Koine. Bound churn and
-allocation rate; refuse before identifier exhaustion and never wrap or reuse an
-identifier. Bounded reason records may become generic unavailable after
-reclamation, while rejection of old identifiers persists. Cross-run namespace,
-restart survival and recovery still need explicit agreement; a random run value
-alone does not establish non-collision.
-
-### Resource boundary
-
-The framework-managed AX receive exception is specific. It does not remove the
-hard acquisition/ownership obligation from a new Koine-owned capture/right-
-transfer channel, nor allow unbounded records or work after AX values reach
-Koine. Design global and per-capture limits for Koine-owned resources from the
-chosen mechanism and measured ordinary workloads, and state exhaustion behavior
-before adoption. No numerical product ceilings were agreed in this session.
-
-The 64 KiB payload cap in the
-[local receive experiment](../verification/native-observation-receive.md#pre-copyout-admission-assessment)
-was an experimental value; 128 KiB of virtual OOL mapping appeared before that
-cap rejected it. Neither a parser limit, sender authentication, timeout nor
-rapid cleanup is a pre-acquisition AX memory/right bound. Public framework use
-accepts that residual risk; it does not solve the private receive conflict.
-
-### Focus attempts and uncertainty
-
-The future operation and introspection descriptions must expose a **focus
-attempt**, separating attempted calls, framework-reported acceptance/observation
-and uncertainty. A framework focus report is not independently authenticated
-proof of the captured window or lasting focus. Do not retain the served
-exact-target success description with a silently weakened meaning.
-
-Refusal before this operation invokes any native work establishes that it made
-no such call; earlier accepted work may still act. After a call may have run,
-an error, timeout, cancellation, disconnect or missing response does not prove
-no effect. Stop later primitives on cancellation, capture expiry or relevant
-failure, preserve partial-progress uncertainty, and never automatically replay
-mutations. Exact public fields and error/partial-result semantics belong to the
-complete protocol agreement. No native no-enqueue classification may be invented
-from a public AX error code without evidence.
-
-### Observation and retirement protocol proposal
-
-The earlier authenticated private-AX proposal is no longer the first-deliverable
-contract. Its native attribution, complete/loss-detectable stream and publication-
-barrier requirements are not release gates. The
-[historical proposal view](../design/architecture/index.html#diagram-process-observation)
-and [native inspection reports](../verification/native-observation.md) retain
-what was investigated. The owned exchange was not completed; the
-[admission assessment](../verification/native-observation-receive.md#pre-copyout-admission-assessment)
-remains a bounded unresolved result, not a universal impossibility claim.
-Reopening private AX ownership needs an explicit product requirement and a
-concrete enforcement lead. The separate window-qualified activation diagnostic
-also remains abandoned; neither path is an implicit fallback.
-
-### Remaining evidence and protocol work
-
-Before implementation, establish and agree:
-
-- Fresh callback sampling, sample attribution, actual right transfer, continuous
-  ownership, peer authentication, grant admission, transfer acquisition bounds,
-  failure cleanup and disconnection behavior using public client APIs.
-- AX-contact inhibition's duration/release and its product consequence. Selecting
-  public AX does not imply permission to keep targets alive indefinitely; do not
-  count nontermination as a passed automatic-restoration schedule.
-- Koine-owned public AX consent, denial/revocation/regrant and operational limits,
-  with supported public-API/platform behavior and local callback cleanup. Private
-  wire/ABI compatibility profiles are no longer required.
-- Opaque reference grammar/non-reuse, malformed/absent/stale distinctions,
-  death/exec and client/provider/Koine/boot restarts, including any loss of served
-  application-reference restart survival and prepublication version framing.
-- Complete read/notification/refusal and focus-attempt semantics, schema and
-  client documentation, followed by implementation and renewed acceptance on
-  rebuilt signed/notarized/quarantined product bytes. Capture-source migration
-  for ModalAnyware is a Koine-side handoff, not an edit to that repository.
-
-The existing agreed seams remain public GraphQL, the native provider/plugin
-boundary and isolated native VM evidence. Use controlled local adapters for
-ordering and cleanup tests, and independent native witnesses for ordinary live
-capture/list/focus, app switches, death/exec and actual PID reuse. Distinguish
-actual recycling from injected mismatch, local reference expiry from AX routing,
-and a successful fixture from arbitrary-application guarantees. Renew closure,
-remembered-window, consent, restart and focus-receipt evidence against the new
-semantics; excluded guarantees are not acceptance tests awaiting proof. No new
-public test seam or formal model is selected by this requirements decision.
+Reopening any of these needs an explicit product requirement. The private AX
+endpoint and the window-qualified activation diagnostic were investigated and
+remain abandoned; neither is an implicit fallback.

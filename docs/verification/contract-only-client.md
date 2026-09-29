@@ -138,7 +138,7 @@ evidence observed, after that evidence was taken.
 
 | § | Finding | Settled |
 |---|---|---|
-| 1.1 | The start instant has no documented source | **Open, by the human's decision.** The spec now names the source, `proc_pidinfo(PROC_PIDTBSDINFO)`, and states the comparison is exact, because that is what Koine serves. The human rejected time as a process identity altogether, since it cannot guarantee non-collision, and a mechanism that does not depend on time replaces it before the first public release (`process-identity-without-time-k51`). The compiled C helper goes with it. |
+| 1.1 | The start instant has no documented source | **Repaired.** The spec now names the source, `proc_pidinfo(PROC_PIDTBSDINFO)`, and states the comparison is exact. The human first rejected time as a process identity, then kept it for `koine-desktop/1` when the non-time replacement proved out of proportion to the release ([capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)). |
 | 1.2 | `DesktopProcessStart` has no grammar | **Repaired**: `YYYY-MM-DDTHH:MM:SS.ffffffZ`, exactly, in the spec and the guide. An example or `@specifiedBy` in the schema is **declined** (digest). |
 | 1.3 | Nothing says how to turn a name into a pid | **Repaired**: locating the process is the client's; Koine has no lookup by name or bundle identifier. |
 | 1.4 | `DesktopChoices` reads nothing without consent | **Repaired** in the guide, which says which fields resolve without consent and that a client may write its own operation. A second published operation is **declined**: the published operations are the handoff's path, not a catalogue. |

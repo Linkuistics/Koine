@@ -46,19 +46,13 @@ its Machine client from, and installation by `brew install`. Planned by
 
 ## Decomposition
 
-The future targeting agreement in `native-observation-resource-boundary-k104`
-retains non-time callback capture/expiry and selects public macOS Accessibility.
-It accepts wrong-target data/effects during reuse, stale notifications, mistaken
-reference withdrawal and framework AX reception without Koine's hard acquisition
-bound, including resource pressure or failure. Grants, Koine-owned consent,
-known-dead refusal, permanent local withdrawal/non-reuse and bounded Koine-owned
-state/work remain. Capture/right-transfer keeps its separate admission obligation.
-See `docs/adr/desktop-automation-uses-public-accessibility.md` and the machine
-spec's native targeting section. The private AX path is rejected for the first
-deliverable; k84–k87 retain capture/transfer, lifecycle, public AX consent/ownership
-and full protocol agreement. k75 owns the complete k52 handoff, and k52 renews
-acceptance on rebuilt signed/notarized bytes. No release or parent completion
-follows from this scope choice.
+**Process identity stays `{ pid, startedAt }` for `koine-desktop/1`.** On
+2026-09-29 the human judged the no-time identity work (k51 and its impl k52) of
+marginal relevance to the release and pruned it, reversing k45's rejection of time
+as an identity. The capture ADR, the public Accessibility ADR, the spec's native
+targeting discussion, README and the client guide state the kept contract and the
+reuse races it accepts. The investigation's verification documents remain as
+records. The desktop schema and its digest do not change.
 
 Fourteen leaves, all impl but one design, ordered by dependency and then by
 risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
@@ -123,15 +117,12 @@ schema.
 11. `documentation-and-handoff-k45` — README, spec status lines and architecture
    views made current; every acceptance obligation marked established or open;
    the contract-version statement and the ModalAnyware handoff note.
-12. `process-identity-without-time-k51` (design) — replace the time-based
-   process incarnation (`DesktopProcessIdentity.startedAt` and the start instant
-   references encode) with a mechanism that does not depend on time. The human
-   rejected time as an identity in k45 ("You cannot guarantee non-collision") and
-   placed the change before the release, so the first public `koine-desktop/1`
-   carries it.
-13. `process-identity-without-time-k52` — implement k51: provider, schema,
-   references, tests, the published operations and the evidence citing the moved
-   digest.
+12. `process-identity-without-time-k51` (design) — **abandoned.** It was meant to
+   replace the time-based process incarnation with one that does not depend on
+   time, after the human rejected time in k45 ("You cannot guarantee
+   non-collision"). The human pruned it on 2026-09-29 as out of proportion to the
+   release; see the note above.
+13. `process-identity-without-time-k52` — **abandoned** with k51.
 14. `homebrew-distribution-k46` — Apache-2.0, the public repository, the tagged
    release carrying the notarized artifact, the cask, and `brew install`
    verified in a clean VM. Last, because it publishes what the leaves

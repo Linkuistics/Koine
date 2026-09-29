@@ -1,6 +1,6 @@
 {
   "title": "Koine desktop contract",
-  "intro": "Koine is a resident application with a shared resilient Swift provider framework and live bearer grants. Served-contract views describe the existing timestamp API. The future desktop contract now selects non-time capture with public Accessibility; its complete protocol and implementation remain open. Historical native investigations are labelled separately. The spec records acceptance and limitations.",
+  "intro": "Koine is a resident application with a shared resilient Swift provider framework and live bearer grants. The served desktop contract identifies a process by PID and kernel start instant and uses public Accessibility, accepting the reuse races the spec lists. The process-recorder, capture and native-endpoint views record an investigation into a non-time process identity that was set aside for the first release; they are historical, not planned work.",
   "groups": [
     {
       "id": "overview",
@@ -25,7 +25,7 @@
   ],
   "discussion": {
     "title": "Make every control observable",
-    "status": "Proposed — k221 reviewed; k222 integrated",
+    "status": "Historical — the non-time identity work was set aside for the first release",
     "summary": "Bind each control to a production claim or a fixed isolated test recipe. Derive the complete query census and retain exact operands and support even when summaries do not change. No successor execution or native credit.",
     "diagramIds": [
       "process-recorder-path-controls",
@@ -582,7 +582,7 @@
       "renderer": "svg",
       "source": "process-target-contract.puml",
       "rendered": "process-target-contract.svg",
-      "caption": "Agreed future contract, not yet implemented: non-time callback capture and expiry with public macOS Accessibility. Wrong-target data/effects, stale or misattributed reports, mistaken withdrawal and framework AX acquisition without Koine hard memory/right limits are accepted, including resource pressure or Koine failure. Grants, Koine consent, known-dead refusal, permanent local withdrawal/non-reuse and own state/work bounds remain. Capture-transfer has separate acquisition and peer-authentication obligations. The complete protocol, lifecycle, references/restarts, public outcomes and acceptance remain open. See docs/specs/machine.md#native-targeting-discussion."
+      "caption": "Historical: the non-time capture contract that was agreed and then set aside for the first release. koine-desktop/1 keeps the { pid, startedAt } identity with public macOS Accessibility; the accepted limits are in docs/specs/machine.md#native-targeting-discussion."
     },
     {
       "id": "process-adoption",
@@ -591,7 +591,7 @@
       "renderer": "svg",
       "source": "process-adoption.puml",
       "rendered": "process-adoption.svg",
-      "caption": "k104 explicitly selected public AX and rejected continued private endpoint/wire ownership for the first deliverable. Earlier diagnostics and static inspections remain bounded evidence; no owned observation exchange was completed. Capture/transfer, lifecycle consequence, public AX consent/local ownership and the complete client contract still need design, followed by implementation and signed/notarized acceptance. Reopening private AX needs an explicit product requirement and a concrete enforcement lead. See docs/verification/ax-endpoint-adoption.md."
+      "caption": "Historical: k104 selected public AX and rejected private endpoint/wire ownership. The later capture/transfer design was set aside for the first release, so the adoption work shown here is not planned. See docs/verification/ax-endpoint-adoption.md."
     },
     {
       "id": "process-routing",
@@ -672,7 +672,7 @@
       "renderer": "svg",
       "source": "process-capture.puml",
       "rendered": "process-capture.svg",
-      "caption": "Conditional source-grounded design, not a native result or adopted mechanism. The actual foreground observation must occur after acquiring the continuously held identity and before successful validation; invoking a getter does not establish freshness. Compare pre-held candidates with acquire-then-resample. Sender success releases only after matching owned-adoption acknowledgment; possible-send uncertainty and cleanup need the selected protocol. Sampling, hard transfer admission and authenticated resident packaging remain native design work. Peer attribution does not remotely attest callback provenance. See docs/verification/callback-capture-transfer.md. The public AX guarantee boundary is unchanged."
+      "caption": "Historical design, not adopted: a fresh callback sample and continuously held identity transferred to Koine. Set aside for the first release in favour of the { pid, startedAt } identity. See docs/verification/callback-capture-transfer.md."
     },
     {
       "id": "packages",
@@ -699,7 +699,7 @@
       "renderer": "svg",
       "source": "addressing.puml",
       "rendered": "addressing.svg",
-      "caption": "Served timestamp API: query before choices and resolve an opaque reference before acting. Its exact-target receipt meaning must change to the agreed public-AX focus attempt and framework observations; this diagram does not specify the replacement wire fields. See docs/specs/machine.md#native-targeting-discussion. Capability denial and missing Koine consent stay distinct; no automatic mutation replay."
+      "caption": "Served API: query before choices and resolve an opaque reference before acting. Exact targeting is not established across actual PID reuse; see docs/specs/machine.md#native-targeting-discussion. Capability denial and missing Koine consent stay distinct; no automatic mutation replay."
     },
     {
       "id": "machine-interface",

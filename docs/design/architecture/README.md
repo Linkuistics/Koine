@@ -1,17 +1,12 @@
 # Koine architecture views
 
 Open [the viewer](index.html#discussion) for the current discussion, outline and
-SVG/source exports. The agreed future desktop contract now combines non-time
-callback capture/expiry with public macOS Accessibility. The complete protocol
-and implementation remain open; served-contract diagrams still describe the
-existing timestamp API. The [spec](../../specs/machine.md#native-targeting-discussion)
-and [ADR](../../adr/desktop-automation-uses-public-accessibility.md) are authoritative.
-
-The scope change accepts wrong-target data/effects during reuse, stale reports,
-mistaken reference withdrawal and framework AX reception without Koine's hard
-acquisition bound, including resource pressure or failure. Capture-transfer has
-separate acquisition obligations. Grants, Koine-owned consent, known-dead capture
-refusal, permanent local withdrawal/non-reuse and bounded own state/work remain.
+SVG/source exports. The served desktop contract identifies a process by PID and
+kernel start instant and uses public macOS Accessibility; the
+[spec](../../specs/machine.md#native-targeting-discussion) lists the reuse races it
+accepts. The investigation into a non-time process identity (the process-recorder,
+capture, endpoint and publication views) was set aside for the first release. Its
+views and the discussion below are historical records, not planned work.
 
 ## Current discussion
 

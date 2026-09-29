@@ -20,12 +20,8 @@ knowledge of Koine's source.
 | Served by | Koine 0.1.0 with its bundled `desktop` provider and no per-user provider |
 | Evidence | [schema-conformance-vm.md](verification/schema-conformance-vm.md) |
 
-**Before the first public release this digest will change.** The process
-identity a client submits, `DesktopProcessIdentity.startedAt`, is being replaced
-by a mechanism that does not depend on time (see "Process identity" below), and
-that changes the schema. A client should read the digest it generates against
-from the Koine it generates against, as described next, rather than copy it from
-this table.
+A client should read the digest it generates against from the Koine it generates
+against, as described next, rather than copy it from this table.
 
 ### How a client knows it is talking to a compatible Koine
 
@@ -178,7 +174,7 @@ start**, as a process identity, and resolves it with `desktopApplication`.
 Finding the process is the client's job: Koine has no lookup by name or bundle
 identifier.
 
-In `koine-desktop/1` as served today the identity is `{ pid, startedAt }`, where
+In `koine-desktop/1` the identity is `{ pid, startedAt }`, where
 `startedAt` is the kernel's start instant for that process as
 `proc_pidinfo(PROC_PIDTBSDINFO)` reports it (`pbi_start_tvsec` and
 `pbi_start_tvusec`; `sysctl` `KERN_PROC_PID` reports the same record as
@@ -186,79 +182,18 @@ In `koine-desktop/1` as served today the identity is `{ pid, startedAt }`, where
 that precision, and `NSRunningApplication.launchDate` is a later instant that
 never matches.
 
-**This is being replaced before Koine's first public release**, because an
-identity made of time cannot guarantee that two processes never collide. The
-replacement is designed in `process-identity-without-time` and will be stated in
-the spec; a client should expect this section, the input type and the digest to
-change, and should not build more on `startedAt` than it has to.
+This identity is the `koine-desktop/1` contract. Capture it when the
+interaction starts and pass it unchanged; Koine never falls back to the PID
+alone. The [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md)
+records why a non-time identity was not adopted for the first release.
 
-The agreed replacement captures the frontmost application when the client's
-native callback executes, preserving the original
-OS process lifetime. A public process serial number plus boot identity cannot
-replace the timestamp: automatic termination can restore the application under
-that same pair but a new process. See the
-[capture decision](adr/desktop-capture-preserves-the-process-incarnation.md).
-
-For ModalAnyware's owner and other native-client authors, the migration has
-three distinct parts: establish a fresh foreground source in the callback,
-replace timestamp identity with continuously held native identity, and transfer
-the actual right over an authenticated channel. Calling a cached getter in the
-callback does not date its data; changing identity fields alone cannot repair
-that. The [candidate assessment](verification/callback-capture-transfer.md)
-compares sampling and transfer constructions; no replacement source or transport
-is adopted yet. These are Koine-side handoff instructions, not changes to
-ModalAnyware.
-
-The [witness protocol](verification/callback-capture-transfer.md#callback-witness-protocol)
-also separates foreground selection from the returned application's PID mapping.
-The owner must preserve the proven callback thread/run-loop context for both;
-moving either observation to a worker after callback return changes the capture
-boundary. A future source substitution must name the exact public API pair and
-supported context, independently of replacing identity fields or adding IPC.
-Those native freshness results are still outstanding; the experiment design
-does not mandate a replacement API today.
-
-The [guest entry inspection](verification/callback-capture-transfer.md#guest-foreground-entry-inspection)
-now locates AppKit's helper/property preservation paths and Process Manager's
-LaunchServices shared-memory/reply paths on macOS 26.5. It dates neither the
-foreground producer nor a coherent logical-app/PID mapping. Preserve a separate
-source/context migration item: no specific API replacement is justified yet,
-even if identity ownership and IPC are implemented later.
-
-The agreed first deliverable keeps that non-time capture but uses **public
-macOS Accessibility** for listing, focus attempts and notifications. A capture
-never changes process identity; known-dead captures are refused. Public AX
-routing may nevertheless return another process/window's data or affect it
-during reuse, and notifications may be stale or misattributed. Independent reply
-authentication, window-lifetime attribution and read freshness are not promised.
-The [held-AX experiment](verification/retained-ax-binding.md) illustrates that
-boundary; it does not measure normal race frequency.
-
-A platform closure/failure report can mistakenly withdraw a live reference or
-remove a remembered window. Once withdrawn, that reference stays unavailable
-and is never reused or revived. Absence from a listing alone is not proof of
-closure. Local callback ownership, failure/recovery and remembered-row semantics
-still need the complete protocol design.
-
-The future operation will expose a focus attempt, distinguishing attempted work,
-framework-reported acceptance/observation and uncertainty. A focus report is not
-independently verified proof of the captured window or lasting focus. After a
-call may have run, failure or a lost response does not establish that nothing
-happened. Do not retry mutations automatically.
-
-Framework-managed AX reception has no Koine hard memory/Mach-right bound before
-acquisition; target traffic may pressure or fail the resident Koine process.
-Koine still enforces grants, owns Accessibility consent and bounds its own
-records/work. The separate capture/right-transfer channel retains its resource
-and peer-authentication requirements.
-
-Capture/transfer feasibility, AX-contact lifecycle policy, reference/restart
-rules, public result fields and version agreement remain open. The
-[public Accessibility decision](adr/desktop-automation-uses-public-accessibility.md)
-and [native targeting discussion](specs/machine.md#native-targeting-discussion)
-record the accepted scope and remaining work. The timestamp schema and focus
-receipt elsewhere in this guide still describe served behavior; the replacement
-must be agreed and implemented before first release.
+Koine uses public macOS Accessibility. During process or window reuse it may
+return another target's data or act on it, and a notification or closure report
+may be stale or misattributed. A withdrawn reference stays unavailable and is
+never reused. After a call may have run, failure or a lost response does not
+prove nothing happened, so do not retry mutations automatically. The
+[native targeting discussion](specs/machine.md#native-targeting-discussion)
+lists these accepted limits.
 
 An identity that names no running application — the process ended, or the pid
 now belongs to another process — resolves to ordinary `null` with no error. That
