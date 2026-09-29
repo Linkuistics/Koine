@@ -25,8 +25,10 @@ acceptance.
 
 The workflow views are reviewed design obligations, pending implementation and
 acceptance. First-party bundle selection now has its
-[Machine contract](../../specs/machine.md#first-party-provider-selection), pending
-adversarial review and implementation.
+[Machine contract](../../specs/machine.md#first-party-provider-selection) and
+[selection decision](../../adr/first-party-provider-selection.md). Its review
+integration clarifies visible tie fallback, candidate-specific staging and
+old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel links the new selection views and unchanged provider
 and ABI context.

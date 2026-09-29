@@ -20,7 +20,8 @@ through the same GraphQL API, under the `koine:manage` capability.
 
 Providers are native Swift extensions that contribute to the GraphQL schema.
 A shared resilient Swift framework lets compatible providers and the server
-be upgraded independently. Its published Swift contract is the stable binary
+be upgraded independently where the host's loading policy admits the identity.
+Its published Swift contract is the stable binary
 interface; a TypeScript hosting layer is not required. The desktop provider is
 bundled.
 
@@ -49,6 +50,7 @@ skill set.
   [client operations](docs/design/desktop-operations.graphql)
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
   [the server and native providers](docs/adr/koine-server-and-native-providers.md),
+  [first-party update selection](docs/adr/first-party-provider-selection.md),
   [the resilient provider framework](docs/adr/resilient-provider-framework.md),
   [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md),
   [window identity](docs/adr/desktop-window-identity-is-a-held-element.md),

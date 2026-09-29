@@ -113,12 +113,23 @@ is included at admission. All reads remain consent-prompt-free.
 
 `first-party-provider-selection-k50` defines reserved shipped identities and
 independent per-user updates in the Machine spec's "First-party provider
-selection" section and the server ADR. The sealed catalogue survives missing
+selection" section and `docs/adr/first-party-provider-selection.md`. The sealed
+catalogue survives missing
 bundles; approved compatible newer copies keep shipped composition positions;
 candidate diagnostics show refusals and selection never retries after a late
-failure. `first-party-provider-selection-k51` reviews it before launch-and-open;
-any resulting integration must settle there too. Launch-and-open implements the
-selection acceptance table alongside composition, complete capability diagnostics
+failure. Review `first-party-provider-selection-k51` and integration
+`first-party-provider-selection-k52` settle the consuming contract before
+launch-and-open: visible pre-load tie fallback, candidate-specific staging,
+`first-party-selection-v1` old-host refusal, complete candidate diagnostics and
+disjoint native module/class publication. Antony approved adding a stable release
+signing identifier per shipped slot to the existing ID/Team-ID approval;
+fixtures use distinct identifiers admitted only by test catalogues. Shipped
+principal conflicts still
+refuse both owners; verdict variability and startup cost are stated limits.
+Launch-and-open implements the
+selection acceptance table with its assigned seams, fresh host processes,
+purpose-built signed catalogue fixtures and marker controls, alongside composition,
+complete capability diagnostics
 and exact-provider conformance. Window layout
 owns desktop grant disclosure, pointer/media extends it, and app-input/menu-bar
 own their broad input/menu disclosures. Baseline acceptance checks those rows too.

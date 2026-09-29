@@ -47,6 +47,17 @@ Also settled:
   including signed desktop/workspace updates and exact-candidate profiles, along
   with the missing-owner cascade and complete capability-denial set. Record the
   workspace catalogue baseline with its packaged version/schema version.
+  Integration `first-party-provider-selection-k52` assigns each case to native,
+  public and/or VM evidence. Carry fresh host processes and marker controls,
+  purpose-built sealed catalogue fixtures, visible tie fallback, candidate-specific
+  staging/quarantine, renamed-principal old-host refusal under
+  `first-party-selection-v1`, complete diagnostics and disjoint native module/class
+  publication into planning. The selection trade-offs are in
+  `docs/adr/first-party-provider-selection.md`; platform predictions remain to be
+  confirmed here through the bounded assigned seams.
+  Antony approved the additional stable release signing-identifier check in k52.
+  Record each enabled catalogue value with the packaged provider's actual signing
+  identifier; use separate fixture identifiers and purpose-built test catalogues.
 - The VM acceptance cases, and which applications each needs installed.
 - Clients cannot supply an arbitrary executable or shell command through
   these operations.

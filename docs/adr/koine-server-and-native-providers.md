@@ -9,8 +9,10 @@ types and operations to that schema. ModalAnyware is a client; no Koine
 provider lives in ModalAnyware.
 
 Providers are authored in Swift and have a stable binary interface
-so compatible plugin and server releases can be upgraded independently,
-without rebuilding the other side. Native Swift dylibs use a
+so compatible plugin and server releases can be upgraded independently where
+the host's loading policy supports that identity. Replacing a shipped identity
+requires the extension's [first-party selection policy](first-party-provider-selection.md);
+the served baseline still refuses external desktop replacement. Native Swift dylibs use a
 [shared resilient provider framework](resilient-provider-framework.md), whose
 published Swift contract is evolved compatibly across supported versions.
 There is no required TypeScript wrapper or assumed PluginAnyware dependency.
@@ -55,53 +57,11 @@ native UI and providers share the server's failure domain; independently
 restarting the management UI requires a different process design.
 
 One loader means the product itself exercises the native seam on every launch,
-and a first-party provider can be upgraded without the host. The cost is that
+and selection-aware hosts can admit independent first-party updates. The cost is that
 the desktop path depends on the loader, run path and signing being right in the
 signed build.
 
-The workflow extension uses a sealed host catalogue to reserve shipped identities
-even when their bundles are missing or rejected. One pre-load calculation selects
-the unique highest verified, compatible, explicitly approved per-user release
-newer than the host's bundled baseline; otherwise it uses the eligible bundle.
-An ambiguous highest update leaves that slot unavailable. A selected update keeps
-the shipped identity's composition position. The
-[Machine selection contract](../specs/machine.md#first-party-provider-selection)
-defines version floors, candidate diagnostics and refusal boundaries. This is
-designed extension behavior; the served baseline still refuses external desktop
-replacement. The framework's independent-binary promise alone does not supply
-this host selection feature.
-
-Pre-load refusals remain visible even when an eligible lower release is selected.
-After selection, a failure never triggers a retry of an older candidate. This
-makes a failed update diagnosable and avoids loading two versions with conflicting
-native class identities. It costs availability until the user repairs the installed
-set and restarts. No highest-seen-version store is maintained: the host's sealed
-baseline is the floor, not rollback protection across host releases. Existing
-ID/Team-ID approval authorizes compatible releases of the identity; requiring a
-new hash approval on every update would change that trust contract.
-
-The catalogue and immutable candidate reports keep installation policy in the
-loader. The core sees the chosen identity, its physical origin and composition
-position separately; it retains schema validation and lifecycle ownership. This
-adds one catalogue and explicit selection diagnostics, while callers still supply
-roots once and consume provider status. No public caller chooses files, compares
-versions or assembles a loading protocol.
-
 ## Rejected alternatives
-
-**Always prefer the bundle, or reject every duplicate.** Both are deterministic
-but make the first-party independent-update promise ineffective for shipped
-identities. Reopen only if that product requirement is withdrawn.
-
-**Load candidates and fall back until one starts.** This hides broken updates,
-runs initializers from discarded versions and risks native-class collisions.
-Reopen only with a separate isolation/restart design and an explicit rollback
-contract; in-process descriptor rejection cannot undo load-time code.
-
-**A pinned candidate/version manager.** A pin could resolve equal-version copies
-and enforce persistent rollback policy, but adds mutable installation state and
-approval/repair operations to a task whose existing approval is identity-based.
-Revisit if users need intentional version pinning or cross-restart anti-rollback.
 
 **Linking the bundled desktop provider into the host.** Simpler to build and
 sign, but it leaves the plugin path exercised only by tests and third parties,

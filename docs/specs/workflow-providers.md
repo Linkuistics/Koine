@@ -27,7 +27,8 @@ These are design views, not runtime acceptance evidence.
 
 All six use the same native loader and host-supplied framework. The five new
 first-party providers ship as separately loadable bundles in Koine's sealed
-provider root, under its existing signing and approval policy. No provider is
+provider root, with the existing hardened runtime and explicit approval plus
+the catalogue's release signing-identifier check. No provider is
 linked directly into the host. SDL types remain provider-owned; no provider
 imports another provider's GraphQL types. A read/control pair appears in the
 capability catalogue while its contribution is admitted, including a startup-failed
@@ -36,18 +37,28 @@ grant a client those capabilities.
 
 The Machine contract's
 [first-party selection policy](machine.md#first-party-provider-selection) reserves
-all six identity/prefix pairs before discovery. Enabled shipped slots can select
+all six identity/prefix pairs before discovery; the
+[selection ADR](../adr/first-party-provider-selection.md) records the trade-offs.
+Enabled shipped slots can select
 an explicitly approved newer compatible per-user copy, retaining their canonical
 position. A reserved-only identity cannot be enabled by installing a bundle.
-Missing/rejected owners stay reserved, and late rejection never retries another
-version. The [selection view](../design/architecture/index.html#diagram-provider-selection)
+Missing/rejected owners stay reserved. Tied highest release groups are visibly
+refused before considering lower copies; late rejection never retries another
+version. Candidate-specific staging keeps root/quarantine provenance intact, and
+new first-party updates require `first-party-selection-v1` for old-host pre-load
+refusal. Production catalogues exclude selection fixtures by signing identifier;
+test catalogues admit their distinct fixture identifiers. The
+[selection view](../design/architecture/index.html#diagram-provider-selection)
 shows precedence; its linked failure view distinguishes rejection from startup
 failure. Selection support is designed and pending acceptance, not a Koine 0.1.0
 capability.
 
 The Machine core owns composition, grant checks and error paths. Providers own
 native observation, resource validity and the truth of their declared effects.
-Private native helpers may share mechanics; they confer no authority and must
+Private native helpers may share source mechanics, with provider-unique Swift
+module and Objective-C runtime class names, or use one host-owned shared framework
+image under its compatibility contract. Independently updated identities cannot
+each embed a version of the same module. Helpers confer no authority and must
 not create a second loader, service, permission owner or public test seam.
 Lifecycle algorithms, inactivity bounds, presentation declarations and crash
 recovery are settled by the held-interactions design for both input and menus.
@@ -355,9 +366,12 @@ such support also needs an explicit minor and required feature before use.
 Launch-and-open also implements the Machine contract's
 [selection acceptance cases](machine.md#selection-acceptance), including independent
 signed desktop/workspace updates, old-host refusal, approval, reserved collisions,
-multiple candidates, no late fallback, missing-owner cascades, startup failure and
-exact-candidate conformance. Every case is pending until evidence is recorded at
-the existing seams; earlier single-bundle compatibility evidence does not close it.
+multiple candidates, visible tie fallback, candidate-specific staging, no late
+fallback, missing-owner cascades, startup failure, native-name publication and
+exact-candidate conformance. That table assigns each case N/G/V seams, requires
+fresh native host processes and marker controls, and explains purpose-built
+sealed-host fixtures. Every case is pending until its assigned evidence is
+recorded; earlier single-bundle compatibility evidence does not close it.
 
 ## Test seams
 
@@ -378,7 +392,8 @@ existing enabling points, not a new public testing API or mocks of desktop apps.
 The module boundary keeps caller obligations to target capture, capability
 selection and one operation/result contract. It separates discovery from
 effects and client presentation from provider state. Its costs are independent
-target lookups, six bundles and one additive framework feature. A native
+target lookups, six bundles, the additional-capability framework feature and the
+host selection feature. A native
 operation whose effect set cannot be fixed before dispatch, or a requirement to
 transfer a held target across providers, would disprove the sufficiency of this
 design and must return to design before implementation. The accepted platform

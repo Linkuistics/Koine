@@ -31,5 +31,10 @@ that trade-off. Compiling providers into the host alone still
 fails the independent-upgrade requirement. Updating plugins may require a Koine
 restart; independent upgrades do not promise live replacement or unload.
 Replacing a shipped identity additionally requires the host's
-[first-party selection policy](../specs/machine.md#first-party-provider-selection).
+[first-party selection policy](first-party-provider-selection.md).
 A compatible binary alone does not make a pre-extension host support replacement.
+New first-party updates declare `first-party-selection-v1` so old hosts refuse
+them before load; this host feature adds no factory witness. Different provider
+identities must not privately embed conflicting versions of the same native
+module: helpers have provider-unique module/runtime names or one host-owned
+framework image whose compatibility is maintained here.

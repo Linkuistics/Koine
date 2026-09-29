@@ -8,7 +8,8 @@ participant "Selected provider" as Provider
 participant "Machine core" as Core
 participant "Management" as Management
 Host -> Loader: Both roots + sealed catalogue
-Loader -> Loader: Verify candidates; freeze choices\nRefuse principal conflicts; never reselect
+Loader -> Loader: Stage separately; verify features and trust\nResolve ties before freezing; retain refusals
+Loader -> Loader: Freeze choices; refuse principal conflicts\nShipped conflicts refuse both; never reselect
 Loader -> Provider: dlopen chosen image; inspect factory / descriptor
 note over Loader, Provider
 Initializers may run. Loaded images stay mapped until exit.
@@ -19,7 +20,7 @@ Core -> Core: Validate SDL and authority\nProtect reserved owners; remove missin
 alt Rejected before publication
   Core -> Management: REJECTED / INCOMPATIBLE\nNo contribution; affected dependents absent
 else Admitted
-  Core -> Core: Publish exact schema + digest\nShipped identities first, regardless of root
+  Core -> Core: Publish exact schema + digest\nCore, shipped IDs sorted, then other IDs sorted
   Core -> Provider: start
   alt Startup succeeds
     Core -> Management: ACTIVE + selected candidate identity
