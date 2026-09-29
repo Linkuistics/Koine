@@ -131,3 +131,58 @@ same caveat here rather than implying the cask was proven on a stock machine.
   of the cask and of `docs/verification/homebrew-install-vm.md`. Its uninstall
   and `zap` sentences (login item forgotten, preferences removed) are
   provisional until the VM run measures them. Correct them from that run.
+- On 2026-09-29 the human settled `.grove/`: it stays committed and tracked,
+  because grove's `finish` deletes it; untracking is off the table. What the
+  public history carries of the ~600 MB of past evidence blobs is still to settle.
+- The human chose to rewrite the local history with `git-filter-repo`, keeping
+  only the paths the tip has (28 MB of blobs across all commits, against the
+  580 MB in removed paths), `.grove/` included. A bundle of the pre-rewrite
+  repository is kept outside the tree. Local and public then share one
+  history, so later publishes are an ordinary push.
+- History rewritten: `git-filter-repo --paths-from-file` (tip paths) ran in a
+  scratch bare repository, and the result came back as the `main` bookmark with `@`
+  rebased onto it. Filtering in place would have rewritten jj's `refs/jj/keep`
+  under its op log and `.jj/grove`'s driver state. The tip tree is identical (`088c9ef0`),
+  176 commits are kept, and the pack is 3.65 MiB. The old commits were abandoned, the op log truncated,
+  reflogs expired and gc'd. The pre-rewrite repository is
+  `~/Development/Koine-pre-filter-2026-09-29.bundle` (136 MB, verified).
+- The human's rule: `main` never carries `.grove/` at its tip. Grove works on a
+  branch, and `main` moves only once `.grove/` is gone. The rewrite's `main` bookmark is
+  renamed `grove`. For this leaf the human chose a publish commit: `main` is a
+  commit on top of the grove tip that deletes `.grove/`, and it is pushed and
+  tagged `v0.1.0`. At finish, the grove branch merges into `main`, as
+  AgentAnyware's did. Earlier public commits still contain `.grove/`, as
+  UIAnyware's do.
+- Published on 2026-09-29 with the human's go-ahead: `Linkuistics/Koine` created
+  public, `main` pushed at the publish commit `ee471613`, annotated tag `v0.1.0`
+  on it, release `v0.1.0` carrying `Koine-0.1.0-aarch64-apple-darwin.zip`, built
+  from the `grove` tip `fd4cc56b` (same source tree), SHA-256
+  `26b091d54af3095d4360c95efddb87eb8fdec2c43bd76af7f3cb78d4651603fb`. The
+  downloaded asset hashes the same.
+- `Casks/koine.rb` is committed to the tap and pushed (`7dd12d88`, "koine 0.1.0").
+  It has `depends_on arch: :arm64` and `macos: :tahoe` (a bare symbol means `>=`,
+  read in `cask/dsl/depends_on.rb`), no `postflight`, `uninstall quit:`, and a `zap`
+  of Application Support, the preferences plist and saved state, provisional
+  until the VM measures what Koine writes. `brew style` is clean and
+  `brew audit --cask --online --strict` passes. `--new` fails only on
+  homebrew/cask's notability rule, which does not apply to a personal tap.
+- `task app:vm-verify-homebrew` (`scripts/vm-verify-homebrew.sh`) is the
+  install proof. It runs on a Gatekeeper-enforcing clone and installs Homebrew
+  unattended through `SUDO_ASKPASS` if the golden lacks it. It checks
+  `brew install --cask` of the published cask, Homebrew's quarantine intact, the
+  notarized assessment and the first-run dialog. It then turns on login launch,
+  runs a plain uninstall with Koine running, reinstalls and runs `--zap`,
+  enumerating `~/Library` and `sfltool dumpbtm` after each step. Long guest steps
+  run detached and are polled, because a retried exec must never repeat an install.
+- **Blocked on the host's TestAnyware.** testanyware 2.1.0 (the Rust CLI)
+  starts the macOS clone, but its agent client gets "connection refused" from
+  `192.168.64.3:8648` while `curl` from the same shell gets
+  `{"accessible":true}`, so `vm start` records no agent. Every agent command
+  fails, which blocks every macOS VM run. Diagnosing that on the host needs the
+  human.
+- The human chose to split the VM proof into `homebrew-install-vm-k278` and
+  retire k46. The README's "Installing" paragraph linked the not-yet-written
+  evidence document (`task check:docs` failed on it) and made unmeasured
+  login-item claims. It now states only what the cask declares, and k278 adds the
+  measured sentences and the link. The published `main` still carries the old
+  paragraph until the next publish commit.

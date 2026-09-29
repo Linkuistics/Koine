@@ -63,10 +63,8 @@ The cask installs the notarized, stapled bundle from the
 [tagged release](https://github.com/Linkuistics/Koine/releases) into
 `/Applications`; Gatekeeper accepts it as downloaded, with nothing stripped.
 `brew uninstall --cask koine` quits and removes the application and leaves its
-grants and login-item registration; `--zap` also removes
-`~/Library/Application Support/Koine` and Koine's preferences. The login item is
-registered through `SMAppService.mainApp`, so macOS forgets it once the bundle is
-gone. Evidence: [docs/verification/homebrew-install-vm.md](docs/verification/homebrew-install-vm.md).
+data; `--zap` also removes `~/Library/Application Support/Koine`, Koine's
+preferences and its saved window state.
 
 ## Client-requested grants
 

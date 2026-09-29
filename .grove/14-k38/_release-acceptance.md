@@ -62,9 +62,12 @@ architecture views and, with the human, removed it and every other k51 record th
 contract does not cite: the tip is 6.4 MB. The human also ruled that the docs carry
 no history or future plans, except non-obvious rejected alternatives framed as
 such; `current-state-docs-k277` sweeps the rest before k46 publishes. A filtered
-history would pack to ~3.5 MiB against 110.7 MiB unfiltered (k276's log). The human
-also asked that `.grove/` stop being published; how to do that without breaking
-grove's tracked tree is still open in k46's log.
+history would pack to ~3.5 MiB against 110.7 MiB unfiltered (k276's log). k46 rewrote
+the local history to the tip's paths (3.65 MiB) and published it. The human's
+rule is that `main` never carries `.grove/` at its tip: grove works on the
+`grove` bookmark, and `main` is a publish commit deleting `.grove/` on top of it.
+`homebrew-install-vm-k278` was cut from k46 for the clean-VM install proof when
+the host's TestAnyware could not drive a macOS guest.
 
 Fourteen leaves, all impl but one design, ordered by dependency and then by
 risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`
