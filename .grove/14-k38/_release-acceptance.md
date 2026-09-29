@@ -54,12 +54,17 @@ targeting discussion, README and the client guide state the kept contract and th
 reuse races it accepts. The investigation's verification documents remain as
 records. The desktop schema and its digest do not change.
 
-**Publication waits on compact evidence.** On 2026-09-29, when
+**Publication waits on compact evidence and current-state docs.** On 2026-09-29, when
 `homebrew-distribution-k46` asked how to publish, the human refused to put the
-~579 MB of callback verification evidence on GitHub and asked for it to be
-analysed and compacted first. `compact-verification-evidence-k276` is cut ahead
-of k46 for that. The human also asked that `.grove/` stop being published; how
-to do that without breaking grove's tracked tree is still open in k46's log.
+~579 MB of callback verification evidence on GitHub. `compact-verification-evidence-k276`
+found the callback research line (the pruned k51 subtree) cited only by the
+architecture views and, with the human, removed it and every other k51 record the
+contract does not cite: the tip is 6.4 MB. The human also ruled that the docs carry
+no history or future plans, except non-obvious rejected alternatives framed as
+such; `current-state-docs-k277` sweeps the rest before k46 publishes. A filtered
+history would pack to ~3.5 MiB against 110.7 MiB unfiltered (k276's log). The human
+also asked that `.grove/` stop being published; how to do that without breaking
+grove's tracked tree is still open in k46's log.
 
 Fourteen leaves, all impl but one design, ordered by dependency and then by
 risk; six of them were cut during the stage rather than when it was planned — `provider-quarantine-rule-k47`

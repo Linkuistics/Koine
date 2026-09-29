@@ -1038,10 +1038,8 @@ The [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.
 records why this was kept for the first release. A collision needs the kernel to
 reissue the same PID within the same microsecond of start time. A continuously held
 native identity, transferred from the client's callback over an authenticated
-channel, was designed in part but not adopted, because its cost was out of
-proportion to the release. The investigation remains in
-[callback-capture-transfer.md](../verification/callback-capture-transfer.md) and the
-verification documents it links. None of it is a release obligation.
+channel, is not used, because its capture/transfer protocol, sample attribution and
+native evidence cost far more than the residual collision risk.
 
 ### Public Accessibility and its accepted limits
 
@@ -1058,6 +1056,5 @@ close, the race with process or window reuse:
 | Reference withdrawal | A platform closure report may withdraw a live reference. Withdrawal is still permanent, and identifiers are never reused. |
 | Framework AX reception | No Koine-enforced memory or Mach-right bound applies before framework-managed acquisition. Koine bounds its own records and work. |
 
-Reopening any of these needs an explicit product requirement. The private AX
-endpoint and the window-qualified activation diagnostic were investigated and
-remain abandoned; neither is an implicit fallback.
+Koine does not fall back to a private AX endpoint or to window-qualified
+activation to narrow these limits.

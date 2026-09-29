@@ -31,11 +31,9 @@ proving physical closure; a later report cannot revive that reference. A failed
 call may have acted; mutations are never automatically replayed. The
 [spec](../specs/machine.md#native-targeting-discussion) lists the accepted limits.
 
-Owning the private AX endpoint and wire protocol was considered and rejected
-for the first deliverable: the inspected mechanisms did not establish its
-required pre-acquisition budget or complete authenticated observation path, and
-that investigation exceeded the capture/list/focus need. Its bounded evidence
-remains useful, but no further private exchange, publication-barrier or loss-
-recovery experiment is required by this contract. Reopening that path needs an
-explicit product requirement and a concrete enforcement lead. No helper,
-injection, target cooperation or behavioral application restriction is adopted.
+Koine does not own the private AX endpoint and wire protocol: no inspected
+mechanism bounds what that channel acquires before parsing, and rebuilding AX
+objects from private tokens crosses process incarnations just as held public
+elements do, as the [held-AX counterexample](../verification/retained-ax-binding.md#private-ax-reconstruction-does-not-bind-a-process-either)
+shows. No helper, injection, target cooperation or behavioral application
+restriction is used.
