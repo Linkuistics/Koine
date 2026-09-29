@@ -40,6 +40,11 @@ Also settled:
 - The packaging consequences, if the operations live in a new bundled
   provider: the in-app approval record, the schema design file,
   `task conformance` and the schema digest.
+- Consume the preceding first-party provider-selection design's reserved
+  identities, per-user update selection and diagnostics. Do not invent a
+  duplicate winner inside this increment. Carry its implementation and binary
+  acceptance into planning along with the missing-owner cascade and complete
+  capability-denial set.
 - The VM acceptance cases, and which applications each needs installed.
 - Clients cannot supply an arbitrary executable or shell command through
   these operations.

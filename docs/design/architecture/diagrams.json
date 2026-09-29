@@ -1,15 +1,15 @@
 {
   "title": "Koine provider architecture",
-  "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the dark Start here node; sequences read from their first message.",
+  "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
     "title": "Separate input, menus and focus; authorize every mixed effect",
-    "status": "Designed · pending adversarial review and implementation",
-    "summary": "Six provider identities retain read/control grants. Input and menus capture their own targets. Mixed effects require a host-enforced static conjunction; missing dependencies use typed results. The existing desktop views below remain baseline context.",
+    "status": "Review integrated · implementation and first-party selection design pending",
+    "summary": "Six provider identities retain read/control grants. Input and menus capture their own targets and refuse protected UI. Selected effects, including cleanup, require a static conjunction; application reactions remain an accepted limit. First-party bundle selection needs a bounded design/review before packaging. The desktop views below remain baseline context.",
     "diagramIds": ["workflow-providers", "workflow-targets", "workflow-authority", "sdk-contributions"],
     "updatedDiagrams": [
-      {"id": "workflow-providers", "summary": "Added the six provider responsibilities and their shared process boundary."},
-      {"id": "workflow-targets", "summary": "Added independent input/menu capture and actions without desktop control."},
-      {"id": "workflow-authority", "summary": "Added complete effect requirements, live admission and distinct dependency results."}
+      {"id": "workflow-providers", "summary": "Distinguished application input from bounded system Space switching."},
+      {"id": "workflow-targets", "summary": "Added protected-target refusal and cleanup admission obligations."},
+      {"id": "workflow-authority", "summary": "Included cleanup in the static set and protected UI in target checks; removed the detached example panel."}
     ]
   },
   "groups": [
@@ -56,7 +56,7 @@
       "renderer": "svg",
       "source": "workflow-targets.puml",
       "rendered": "workflow-targets.svg",
-      "caption": "Designed sequence for independently grantable input or menu actions. Fresh discovery needs that provider's read grant; a previously obtained target can be used with its control grant and a control-authorized receipt. References remain provider-local. No claim of stronger native identity or menu validation is established by this view."
+      "caption": "Designed sequence for independently grantable application input or menu actions. Fresh discovery needs that provider's read grant; a previously obtained target can be used with control and a control-authorized receipt. Protected targets are refused again before effects. Bounded system Space switching is a separate operation requiring input and desktop control. References remain provider-local; this view proves no stronger native identity or menu validation."
     },
     {
       "id": "workflow-authority",
@@ -65,7 +65,7 @@
       "renderer": "svg",
       "source": "workflow-authority.d2",
       "rendered": "workflow-authority.svg",
-      "caption": "Designed host behavior under the additional-capabilities-v1 feature. An unavailable dependency result certifies no effects by that action, not by earlier root actions. Stale targets, permission refusal and ambiguous native failures retain their existing errors. The feature needs a compatible framework minor and old/new binary acceptance before it can be served."
+      "caption": "Designed host behavior under additional-capabilities-v1. For example, workspace launch/open/reveal requires workspace:control AND desktop:control. Cleanup authority is fixed when an interaction is admitted. An unavailable dependency result certifies no effects by that action, not earlier actions. Protected/stale targets, permission refusal and ambiguous failures remain distinct. The feature needs a compatible framework minor and old/new binary acceptance."
     },
     {
       "id": "packages",

@@ -240,7 +240,19 @@ wrong. A `kind` outside these four is not served by this contract; a client that
 meets one, or an error with an empty `path` and no `kind`, classifies it as `failed`, which
 asserts nothing about the resource.
 
-Three rules make these usable:
+**Designed workflow extension, not served by 0.1.0:** new operations can report
+other consent identifiers in `osPermission`, still with `permissionOwner: koine`,
+and an optional `permissionTarget` naming the application or resource scope.
+Treat unfamiliar identifiers as OS-permission refusals and show Koine's guidance;
+do not label them Accessibility. Existing desktop operations keep the values in
+the table. Reads never request consent. App-side API enablement is instead an
+integration prerequisite, and file search reports partial/unknown coverage
+separately from a complete empty result. New additional-capability fields also
+return `requiredCapabilities` with their complete set alongside the first unmet
+`requiredCapability`; this does not make field authority introspectable. See the
+[extension error contract](specs/machine.md#errors-and-partial-data).
+
+For the served desktop operations, three rules make these usable:
 
 - **A root lookup that is null with no error is absence**; a root lookup that is
   null with an error is that error, whatever path the error carries — a denied

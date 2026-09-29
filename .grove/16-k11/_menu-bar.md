@@ -22,6 +22,11 @@ never substituted.
 - Passive inspection does not open menus or change the desktop. The
   read-purity question is decided and recorded: whether passive population
   counts as changing the desktop.
+- Refuse Koine's own process and recognized consent/security UI before capture
+  and effects. Public-seam and VM cases show menu authority cannot approve,
+  create, revoke or quit through Koine's UI. Disclose broad application menu
+  actions and their reactions in native grant views and GraphQL descriptions
+  before shipping; verify create/approve and existing-grant views.
 - Validation passes the acceptance cases:
   - A replaced Open Recent entry is rejected.
   - After an unrelated sibling change, the validated original item is invoked

@@ -14,6 +14,12 @@ rather than to the foreground application.
 - A reveal-nudge operation exists and returns the pointer to where it was, if
   the design requires that.
 - Drawing the highlight ring is recorded as a client responsibility.
+- Pointer movement without held buttons is desktop control; a nudge must refuse
+  held buttons rather than silently drag. System-defined media events remain
+  desktop control when addressed to the system-media route. Button synthesis is
+  input authority and this increment does not add a general click API.
+- Extend window-layout's native grant UI and GraphQL disclosure for pointer/media
+  before shipping; include existing desktop grants in upgrade acceptance.
 - Play/pause reaches the system's current media target, whichever application
   is foreground, and the operation says what it can and cannot confirm.
 - Allocated authority, trace rows, and VM acceptance with a real media player

@@ -29,6 +29,10 @@ menus through `held-interactions`' lifecycle.
   account-dependent row's outcome is recorded as pending for
   `account-acceptance`.
 - Opening carries documented authority. Trace rows are added.
+- A pointer-button fallback additionally requires input control and cannot
+  replace menu-only access. Cleanup authority is fixed at opening admission;
+  no Escape fallback is introduced after revocation. Apply protected-UI refusal
+  to point and focused-element targets and to every fallback.
 
 ## Decomposition
 

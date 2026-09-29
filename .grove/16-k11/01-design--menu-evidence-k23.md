@@ -34,6 +34,13 @@ configured set: Safari, Finder, Mail, Zed, Obsidian, Slack and Dia.
 - What do pressing an item, showing a context menu at a screen point or on the
   keyboard-focused element, and cancelling or dismissing an opened menu do?
   What is observable when the target loses foreground while a menu is open?
+- Separate native menu actions from pointer-button or Escape fallbacks: those
+  require input authority at admission and cannot replace menu-only paths.
+  Identify a native menu cleanup route for those paths. Apply the shared
+  selected-effect rule to activation using call-path inspection and native
+  outcomes; app reactions alone do not prove a hidden activation call.
+- Demonstrate direct refusal of Koine's UI and recognized consent/security
+  targets before capture and effects, and document recognition limits.
 
 It ends with recommendations for `menu-bar-k36`, and inputs for
 `interaction-lifecycle-k38` and `context-menus-k25`.

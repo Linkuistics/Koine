@@ -326,7 +326,18 @@ Each contribution is validated against the core schema alone, so it cannot use
 another provider's types, and its SDL validity does not depend on which other
 providers loaded. The extension below adds explicit capability dependencies
 after that validation. Accepted contributions are composed in a canonical
-order, desktop first and then by identifier. A refused provider is not started.
+order: bundled providers first, then per-user providers, each group sorted by
+identifier. This preserves the served implementation's ordering; desktop happens
+to be the only bundled contribution in the baseline. A refused provider is not started.
+
+**Extension — selection pending design.** The workflow adds multiple shipped
+identities/prefixes. Their reservation and the precedence of an independently
+updated, approved per-user copy must be settled together before packaging them.
+The baseline's duplicate-claim rule does not implement such an upgrade: merely
+adding a second copy can refuse both. No extension bundle may rely on an
+unspecified winner or failure fallback, or bypass approval. The first-party selection
+design must specify pre-load selection, reserved-identity protection, canonical
+composition position and diagnostics without changing existing desktop fields.
 
 Version 1 narrows what a contribution may hold. It uses only its own types, the
 built-in scalars and `Reference`; an extension of `Query` or `Mutation` adds
@@ -386,6 +397,19 @@ the complete declared set, and documentation also states the unchanged dynamic
 reference-owner rule. Passing a reference as an ordinary string to escape that
 rule is not a valid provider contract.
 
+For extension fields using this feature, order requirements with the field's own
+capability first, additional capabilities in lexical Unicode-code-point order,
+then argument-owner capabilities in that order, omitting duplicates. `requiredCapability` names
+the first unmet member in that order. Add `extensions.requiredCapabilities` as
+the complete ordered set for the failing field and its coerced arguments, so a
+client can request one adequate grant instead of discovering members one denial
+at a time. Preflight errors retain each denied action's original response path;
+the list describes that action, not successful earlier effects or unrelated
+actions. This additive diagnostic does not change baseline registrations' error
+order or promise a machine-readable authorization catalogue in introspection.
+Descriptions supply the static field set; reference-owner additions still depend
+on arguments. Revocation and publication use the same set as preflight.
+
 Old registrations mean an empty additional set. The host computes the union of
 the ordinary field requirement, additional requirements and argument-reference
 owner requirements. It uses that same union in whole-mutation preflight, live
@@ -406,9 +430,11 @@ order. Report the missing owner in management diagnostics; do not weaken a field
 or publish a partially protected contribution. Cycles of otherwise valid
 capability dependencies are allowed; they are authority names, not initialization
 calls. Providers must not use them to require an order for calling one another's
-start methods. A provider failing startup is unavailable under the existing
-lifecycle policy; no dependent action may treat that failure as successful
-readiness. The native seam must cover rejected owners and startup failures.
+start methods. A provider failing startup keeps its published schema and
+capability names under the existing lifecycle policy, while its own resolvers
+report `unavailable`. Naming its authority does not call it or establish a readiness
+dependency. Rejection removes its contribution and triggers the missing-owner
+cascade; startup failure alone does not. The native seam must cover both cases.
 
 This adds field metadata semantics through a compatible major-1 framework
 minor and required feature `additional-capabilities-v1`. Both manifest and
@@ -473,6 +499,26 @@ was refused as it ran — a read, or a mutation action whose grant was revoked
 after preflight. An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
+
+**Workflow extension — pending implementation.** Baseline desktop operations
+retain `osPermission: accessibility` and `permissionOwner: koine`. New provider
+operations may report other documented consent identifiers in `osPermission`,
+still owned by `koine`, with optional `permissionTarget` naming the consent's
+application or resource scope. These diagnostic strings are extensible on the
+new operations, not new `kind` or `permissionClass` values. A client of them must
+retain an unfamiliar consent as `os-permission`, show its guidance and direct
+the user to Koine; it must not relabel every consent as Accessibility. Owners
+must document exact identifiers and target meaning before adding a consent.
+This does not add enum values to existing management permission types or alter
+what existing desktop clients receive. Any incompatible change to those types,
+or a new consent/entitlement, still requires Antony's decision.
+
+All extension reads are prompt-free, including prerequisite and protected-folder
+checks. A probe that would prompt is not a permitted read mechanism; report
+unknown/blocked readiness or coverage instead. App-side API enablement is a
+dependency prerequisite, distinct from OS consent. Extension capability errors
+also carry the complete set described under additional capability requirements;
+protected UI targets use `unavailable` with `reason: protected-target`.
 
 `extensions.kind` takes exactly four values in `koine-desktop/1`: `permission`,
 `unavailable`, `unknown-provider` and `failed`. The set is closed for this
@@ -643,6 +689,14 @@ with the installed Koine UI supplies the initial trust; an incoming request
 cannot impersonate a button click. A single native app means no privileged
 helper credential has to be exported for bootstrap. Recovery from lost manager
 credentials uses this UI, not an unauthenticated reset endpoint.
+
+The workflow extension preserves that direct boundary by refusing Koine's own
+process as a target of input, menu and other UI-driving operations, including
+preparation and session-directed paths. It also refuses recognized consent and
+security UI. These are provider obligations checked before effects, not a claim
+that arbitrary application control is a sandbox against same-user software or
+that public native APIs eliminate every targeting race. The workflow spec owns
+the refusal classification and acceptance cases.
 
 Ordinary loopback HTTP management still requires an explicitly approved
 `koine:manage` grant. Approval of that capability is shown prominently because
@@ -929,6 +983,12 @@ the narrowly scoped disable-library-validation entitlement and an install and
 approval UI, and Koine has neither. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
 
+The independent-upgrade promise does not establish replacement precedence for
+an identity also shipped inside the application. The extension must resolve that
+selection policy before its first additional bundled provider ships; the
+baseline rejects external desktop replacement and contests other duplicates as
+described under composition. Same-team signing alone is not a selection rule.
+
 The per-user root carries a platform constraint, and the loader checks it
 before `dlopen` rather than meeting it there. A bundle that arrives
 quarantined, as a download does, is judged by Gatekeeper on its own when it is
@@ -968,6 +1028,12 @@ reports incompatible providers; their schema contributions are absent. Failure
 of the required desktop provider leaves management available but the desktop
 path unavailable, clearly reported in provider status. No PluginAnyware hosting
 or APIAnyware integration is part of this design.
+
+With the extension, a provider rejected before schema publication also removes
+every contribution whose additional-capability owners become unavailable, to a
+fixed point. A rejected desktop provider can therefore remove workspace and
+other dependent contributions while management remains available. This differs
+from a provider that fails startup after publication, as described above.
 
 ## Client handoff
 
@@ -1086,11 +1152,15 @@ configured roots, file/URL opening, reveal, and bounded integration-prerequisite
 discovery and explicit setup. The existing desktop process lookup still resolves
 only the captured running incarnation; it does not become a name/bundle lookup.
 Other broad installation/configuration discovery remains out of scope, as do
-arbitrary shell execution, LLM skills, remote networking, cross-language plugin
-authoring, live plugin replacement, subscriptions, automatic retry and rollback,
+a public arbitrary-shell-execution operation, LLM skills, remote networking,
+cross-language plugin authoring, live plugin replacement, subscriptions,
+automatic retry and rollback,
 general cross-provider identity and atomic snapshots. A scoped, revalidated
 iTerm/herdr host association is permitted under the workflow spec's constraints;
 it supplies neither shared references nor a universal identity service.
+The API exclusion is not a limit on what an authorized application can do:
+input to a terminal can execute commands as the user, and menu authority can
+invoke destructive application actions. Grant disclosure must state that reach.
 Open-source licensing and distribution do not
 change this desktop design: Koine is published under Apache-2.0 and
 installed from a Homebrew cask carrying the notarized bundle

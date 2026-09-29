@@ -43,8 +43,8 @@ file and URL opening, reveal, and bounded prerequisite discovery/explicit setup
 are in scope, as specified in [workflow providers](../specs/workflow-providers.md).
 These reusable operations do not move client key maps, choosers, labels,
 confirmation, MRU ordering or settings lifecycle into the server. Broader
-installation/configuration discovery, arbitrary shell execution and an LLM
-skill set remain out of scope. The
+installation/configuration discovery, a public arbitrary-shell-execution operation
+and an LLM skill set remain out of scope. The
 [provider authority decision](provider-authority-follows-effects.md) keeps
 application input, menu invocation and desktop-window focus independently
 grantable while assigning mixed effects their complete authority.
@@ -58,6 +58,13 @@ One loader means the product itself exercises the native seam on every launch,
 and a first-party provider can be upgraded without the host. The cost is that
 the desktop path depends on the loader, run path and signing being right in the
 signed build.
+
+The workflow extension must settle reserved identities and deterministic
+selection between bundled and approved per-user first-party copies before its
+first new bundled provider ships. One loader and compatible binaries alone do
+not implement replacement precedence; the baseline refuses external desktop
+replacement and contests other duplicate claims. The same signing and approval
+boundary remains binding on any independently installed update.
 
 ## Rejected alternatives
 

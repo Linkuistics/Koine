@@ -23,8 +23,17 @@ A `docs/verification/` document answers:
 - What happens when the foreground changes between the check and delivery?
   What part of that race is an accepted limit, stated as the existing
   Accessibility limits are?
-- Do synthesized Control-digit events switch Spaces, and what shows the switch
-  happened?
+- Do bounded Control-digit events switch Spaces, and what shows the switch
+  happened? How is a disabled/remapped binding refused without changing settings,
+  and what can fall through to the foreground app during a race? This is a
+  system-directed operation with input plus desktop authority, not delivery to
+  the captured application.
+  Check that an input-only delivery path cannot dispatch the same system
+  shortcut as an alternate route; refuse it if the mechanism cannot separate it.
+- Can the mechanism enforce refusal of Koine's own UI at capture and delivery,
+  including session-directed paths? How are consent/security targets recognized,
+  and what is refused when safe delivery cannot be established? Exercise the
+  actual management UI in the isolated VM; do not assert a general OS sandbox.
 - How are shortcuts represented so that keyboard layout does not change their
   meaning?
 

@@ -101,6 +101,23 @@ implements the additional-capability framework feature together with workspace
 launch/open, including old/new binary refusal and conformance profiles. New
 operations remain designed/pending until their own acceptance is recorded.
 
+`provider-architecture-k49` integrates that review. Every evidence/design leaf
+uses the workflow spec's single selected-effect rule, including native primitive
+semantics, parameters, preparation, fallback and cleanup. Antony accepted the
+application-reaction limit; VM focus changes alone do not classify authority.
+Pair native outcomes with inspection of the actual call paths. Application input
+and menu operations refuse Koine's UI and recognized consent/security targets.
+Space switching is separately system-directed and needs input plus desktop
+control; pointer-button synthesis needs input wherever exposed. Cleanup authority
+is included at admission. All reads remain consent-prompt-free.
+
+The first-party provider-selection design runs before launch-and-open to settle
+reserved shipped identities and independent per-user updates under the existing
+trust policy. Launch-and-open implements that contract alongside composition,
+complete capability diagnostics and exact-provider conformance. Window layout
+owns desktop grant disclosure, pointer/media extends it, and app-input/menu-bar
+own their broad input/menu disclosures. Baseline acceptance checks those rows too.
+
 ## Pointers
 
 - Existing application: `/Users/antony/Development/Modaliser`.

@@ -23,6 +23,11 @@ needs. iTerm is the required terminal-host baseline.
 - Prerequisite availability is discoverable. An explicit setup operation
   exists, or a mechanism that removes the prerequisite. A missing prerequisite
   is never a healthy empty list or a demonstrated workflow.
+- Readiness never raises a consent prompt. Distinguish application-side API
+  enablement from OS consent; document any new consent identifier, target and
+  explicit acquisition path only after Antony approves a changed signing
+  posture. Classify native effects by the shared selected-effect rule, supported
+  by inspected call paths and VM outcomes, not activation observations alone.
 - Allocated authority, trace rows, recorded iTerm versions, and VM acceptance
   with several windows, tabs and split panes.
 

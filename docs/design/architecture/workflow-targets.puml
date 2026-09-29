@@ -12,7 +12,7 @@ participant "Input OR menus\nprovider" as Provider
 Client -> Client: capture process PID + kernel start instant
 Client -> Host: query own-provider target/state
 Host -> Host: check own-provider read
-Host -> Provider: resolve captured incarnation
+Host -> Provider: resolve captured incarnation\nrefuse Koine / recognized security UI
 Provider --> Host: own opaque references + state / explicit failure
 Host --> Client: publish after live read check
 Client -> Client: derive choices from returned state
@@ -21,7 +21,7 @@ User -> Client: choose
 Client -> Host: mutation with unchanged own-provider reference
 Host -> Host: preflight all selected actions\nthen live dispatch admission
 Host -> Provider: admitted own-provider control operation
-alt known stale target or lost consent
+alt protected / stale target or lost consent
 Provider --> Host: unavailable / permission
 else valid under accepted native limits
 Provider -> Provider: act without reclaiming desktop focus
@@ -33,5 +33,7 @@ Designed, not yet served. Read and control are independent.
 No desktop reference is decoded or converted.
 No automatic retry; native race limits still apply.
 Menu items remain bound to their validated context target.
+Cleanup authority is included at interaction admission.
+System Space switching is separate and also needs desktop control.
 end note
 @enduml

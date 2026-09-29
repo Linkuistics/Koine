@@ -29,6 +29,11 @@ A client can:
   full-screen windows, are reported rather than silently ignored.
 - Geometry and display focus carry the allocated authority. A read-only or
   focus-only grant cannot deliver input or invoke menus.
+- Display focus has no implicit pointer-click fallback. Classify any proposed
+  button synthesis as input and preserve a focus-only path. Before shipping,
+  update the native create/approve and existing-grant UI plus GraphQL descriptions
+  to disclose desktop's expanded provider-wide geometry authority; verify it
+  with an existing grant after upgrade. Pointer/media extends that disclosure.
 - VM acceptance covers occlusion and stacking, visible and unavailable
   targets, restore and display transfer, with trace rows added.
 

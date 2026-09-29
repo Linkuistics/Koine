@@ -21,6 +21,11 @@ none remains.
   is an account-dependent case that `account-acceptance` left pending. The
   client may be the existing contract-only client extended, or another.
 - The trace is complete, including the authority of every effect.
+- It includes protected-UI refusal, bounded Space switching, pointer-button
+  authority, cleanup authority fixed at admission, partial search coverage and
+  prompt-free reads. Grant disclosure is accepted for new and existing grants
+  before their added effects ship. Native evidence distinguishes selected calls
+  from application reactions under Antony's accepted boundary.
 - Denied, revoked, empty, unavailable and missing-integration cases are shown
   distinguishable.
 - Application and tool versions, supported cases, observed interactive

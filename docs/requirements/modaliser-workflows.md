@@ -76,6 +76,14 @@ independently of the other two. Permission to list or inspect state, or to focus
 a window, does not grant input delivery or menu invocation. These boundaries
 apply to the effects regardless of which public operation exposes them.
 
+The boundary covers effects Koine selects through a native API or its parameters,
+including the primitive's documented semantics and every preparation or fallback
+call. It applies equally to input, menus and tool operations. General keystroke
+delivery and menu invocation do not sandbox the receiving application's own
+reaction: a menu item may open or focus a window without Koine requesting a
+separate focus operation. Antony accepted this limit during design review
+integration. It does not permit Koine to conceal an activation call as a reaction.
+
 The current framework assigns read/control capabilities per provider. Design
 must choose provider boundaries or an explicit contract change that preserves
 the agreed separation; this requirement does not choose either mechanism.
@@ -338,6 +346,11 @@ application limitation discovered during design or testing must be explicit;
 it does not silently reduce the agreed baseline. As in the existing desktop
 contract, report observed interactive latency rather than inventing an
 unagreed numerical target.
+
+The accepted native limits also include the application-reaction boundary
+under separate grants above. Native evidence must distinguish Koine's selected
+effects from the receiving application's response; observing a focus change
+alone does not establish which caused it.
 
 ## Evidence and design handoff
 

@@ -21,14 +21,22 @@ accepts. Graphs begin at their marked start node; sequences read top to bottom.
 Captions state evidence limits. No diagram is formal verification or release
 acceptance.
 
-The workflow views are designed obligations, pending review, implementation and
-acceptance. They accompany [workflow providers](../../specs/workflow-providers.md).
+The workflow views are reviewed design obligations, pending implementation and
+acceptance; first-party bundle selection still needs its bounded design/review.
+They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel links the changed views and unchanged ABI context.
 
 Serve locally with `task design:serve` and open
 <http://127.0.0.1:8765/#diagram-workflow-providers>. The task serves only this
-presentation directory. Graphs start at the dark “Start here” node; sequences
+presentation directory. Graphs start at the node labelled “Start here”; sequences
 start at their first message.
+Use `task design:serve PORT=8767` if the default port is already occupied.
+
+On narrow screens the whole-graph fit view is an overview, not a reading scale.
+Use native size and pan to the labelled start, or open the SVG export to zoom.
+Native size can initially expose padding; text labels, not a dark fill that the
+theme may replace, identify the start. The linked spec supplies the same contract
+as reflowable text. This presentation trade-off does not change acceptance.
 
 ## Sources and exports
 

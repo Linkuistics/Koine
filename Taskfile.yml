@@ -111,9 +111,9 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workflow-targets.puml
 
   design:serve:
-    desc: Serve only the architecture presentation at http://127.0.0.1:8765
+    desc: Serve only the architecture presentation on loopback (PORT overrides 8765)
     cmds:
-      - python3 -m http.server 8765 --bind 127.0.0.1 --directory docs/design/architecture
+      - python3 -m http.server {{.PORT | default "8765"}} --bind 127.0.0.1 --directory docs/design/architecture
 
   version:
     desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist

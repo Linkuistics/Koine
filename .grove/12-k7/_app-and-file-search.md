@@ -15,6 +15,12 @@ default application, reveal, copy path and open in Zed.
 - An unavailable search mechanism, such as a disabled or missing index, is
   distinguishable from an empty result. Search reaches protected folders only
   as far as Koine's documented permissions allow, and says so.
+- Every requested root has explicit complete/partial/unknown coverage, searched
+  and skipped scopes and reasons. Partial empty is not complete empty;
+  permission-blocked scope retains OS-permission classification, while a missing
+  index is a dependency. First access to protected scope must not prompt through
+  a read. Define the new consent diagnostics without changing desktop fields;
+  raise any new consent/entitlement with Antony before relying on it.
 - Selections act through `launch-and-open`'s operations. Clipboard writes
   follow `provider-architecture`'s allocation.
 - Authority, trace rows and VM acceptance as in `launch-and-open`.

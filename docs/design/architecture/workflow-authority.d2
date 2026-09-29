@@ -4,14 +4,14 @@ classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
 Request: "Start here · Selected mutation\nCoerced arguments + live principal" {class: start}
-Union: "Collect each action's complete set\nOwn control + static additions + reference owners"
+Union: "Collect each action's complete set\nOwn control + static additions + reference owners\nInclude cleanup at interaction admission"
 Check: "All selected actions authorized?" {shape: diamond}
 Deny: "Preflight permission refusal\nNo selected action begins"
 Revoke: "Dispatch permission refusal\nThis action does not begin; earlier effects remain"
 Admission: "Serial root dispatch\nRecheck full set at live admission"
-Ready: "Provider checks target, consent and dependencies\nOnly declared effects; no privileged fallback"
+Ready: "Provider checks target, consent and dependencies\nRefuse protected UI; no privileged fallback"
 Unavailable: "No effects attempted\nTyped dependency-unavailable result"
-Stale: "Stale / permission / failed\nKeep distinct classifications"
+Stale: "Unavailable / permission / failed\nKeep distinct classifications"
 Effect: "Native effect + receipt\nA failed or lost outcome is not rollback"
 Request -> Union: "1"
 Union -> Check: "2"
@@ -22,4 +22,3 @@ Admission -> Ready: "4 · admitted"
 Ready -> Unavailable: "5 · missing prerequisite"
 Ready -> Stale: "5 · target, consent or native failure"
 Ready -> Effect: "5 · ready"
-Example: "Designed extension: workspace launch/open/reveal\nworkspace:control AND desktop:control\nField metadata requires additional-capabilities-v1."

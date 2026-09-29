@@ -4,8 +4,9 @@ Koine partitions the workflow extension into `desktop`, `workspace`, `input`,
 `menus`, `iterm` and `herdr` providers. Each retains the framework's independent
 read/control pair. Desktop owns windows, displays, pointer and system media;
 workspace owns application/file discovery and launch/open/reveal; input owns
-keystroke delivery; menus owns application-menu inspection, opening and
-invocation; iTerm and herdr own their addressed tool operations. The
+application input and bounded system Space switching; menus owns application-menu
+inspection, opening and invocation; iTerm and herdr own their addressed tool
+operations. The
 [workflow spec](../specs/workflow-providers.md#authority-allocation) defines the
 effect allocation. These are client authority boundaries, not isolation from
 trusted native plugins.
@@ -19,7 +20,10 @@ registrations retain exactly their existing meaning. No new capability class
 or `koine-desktop/1` error kind is introduced.
 
 Input and menus independently resolve a captured process incarnation and issue
-their own references. They never decode desktop reference remainders or focus
+their own references for application-targeted operations. They refuse Koine's
+own process and recognized consent/security UI before issuance and effects;
+native UI control must not become a second route to the local-console principal.
+They never decode desktop reference remainders or focus
 a window to prepare an ordinary input/menu action. Supplying another provider's
 reference retains the existing same-class owner check. There is no exemption
 that makes a desktop control reference merely an input target. Window-bound
@@ -29,18 +33,27 @@ identify the selected target is refusal, not title-based retargeting.
 The separation permits menu authority without input authority and either
 without desktop control. Meanwhile, workspace launch/open/reveal additionally
 requires desktop control because activation is an allowed effect. An iTerm or
-herdr action that also activates or focuses a desktop window declares the same
-additional requirement. Native command submission is not itself keystroke
+herdr primitive whose semantics or parameters select activation or desktop-window
+focus declares the same additional requirement. Native command submission is
+not itself keystroke
 delivery, but a keystroke fallback needs input authority, however the public
 operation is named. Required menu-only and input-only paths cannot be replaced
 by fallbacks that need the other authority.
 
 These requirements cover every native action Koine requests, including hidden
-preparation and fallback calls. They do not sandbox an application's reaction
-to an authorized keystroke or menu invocation: an item may itself open a window.
+preparation, fallback and cleanup calls and the primitive's documented semantics.
+Apply that test equally to all providers, including OS-performed activation.
+They do not sandbox an application's reaction to an authorized keystroke or menu
+invocation: an item may itself open or focus a window.
 Koine may not add its own focus call under menu/input authority. Classifying
 arbitrary application reactions as separate Koine primitives would make general
 menu invocation's authority runtime-dependent and defeat independent grants.
+The requirements record Antony's acceptance of that reaction limit. Bounded
+system Space switching deliberately selects a desktop effect and requires both
+input and desktop control. Pointer-button synthesis is input wherever exposed;
+pointer movement without held buttons and system-media events remain desktop
+effects. An interaction's admitting field includes all cleanup mechanisms in
+its static set, so revocation cleanup cannot invent a new authority exemption.
 
 ## Trade-offs and alternatives
 
@@ -75,6 +88,8 @@ home-directory search and file-opening authority. Desktop's pointer, media and
 geometry additions do extend its provider-wide control grant. This is an
 explicit granularity trade-off: the requirements separate input, menus and
 window focus, not every desktop effect. Grant descriptions must disclose the
-expanded desktop authority before the extension ships. The loader and build
-now carry five additional provider bundles, while OS permissions, trust and
-the process failure domain remain shared.
+expanded desktop authority before the extension ships, and the broad reach of
+input and menu grants: input to a terminal can execute commands and menus expose
+application-defined actions. The absence of a shell-execution API is not an
+application sandbox. The loader and build carry five additional provider
+bundles, while OS permissions, trust and the process failure domain remain shared.

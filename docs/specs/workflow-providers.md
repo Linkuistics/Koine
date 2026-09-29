@@ -20,7 +20,7 @@ These are design views, not runtime acceptance evidence.
 | --- | --- | --- |
 | `desktop` / `Desktop` | Process/window references and observation; window/display geometry; pointer position; system-media access | List and manipulate desktop resources under desktop authority. Retain existing reference withdrawal and public Accessibility limits. |
 | `workspace` / `Workspace` | Installed application and file discovery; native open/launch/reveal adapters | Search without launching; explicitly open/launch/reveal under workspace and focus authority. Do not turn search into installation, shell execution or automatic setup. |
-| `input` / `Input` | Captured application targets; delivered keystrokes; owned modifier holds | Deliver to the captured target without deliberately choosing a new foreground app or reclaiming focus. Own input-interaction state and its cleanup. |
+| `input` / `Input` | Captured application targets; synthesized application input; owned modifier holds; bounded Space-switch requests | Address application input to the captured target without reclaiming focus. Space switching is a separate system operation requiring desktop control too. Own input-interaction state and its cleanup. |
 | `menus` / `Menus` | Captured application/context targets; menu snapshots and selections; opened-menu interactions | Inspect without opening; open explicitly; validate selections without substituting titles, positions or paths. Own menu cleanup. |
 | `iterm` / `Iterm` | iTerm instances, windows/tabs/panes, integration readiness and setup | Address the selected native resource, expose list/label state and provide explicit bounded setup. |
 | `herdr` / `Herdr` | herdr instance and containing scopes, worktrees, agents and host association | Address the intended instance through its iTerm context; preserve containing scope, detach/stop and copy-mode/scrollback distinctions. |
@@ -30,7 +30,8 @@ first-party providers ship as separately loadable bundles in Koine's sealed
 provider root, under its existing signing and approval policy. No provider is
 linked directly into the host. SDL types remain provider-owned; no provider
 imports another provider's GraphQL types. A read/control pair appears in the
-capability catalogue only while its provider is active. Installation does not
+capability catalogue while its contribution is admitted, including a startup-failed
+provider whose schema remains published. Installation does not
 grant a client those capabilities.
 
 The Machine core owns composition, grant checks and error paths. Providers own
@@ -44,15 +45,33 @@ their mechanism.
 
 ## Targets and authority
 
-Authority classifies the native actions Koine requests, including preparation
-and fallback steps hidden behind a public operation. It does not sandbox what
-the receiving application does in response. For example, an invoked menu item
-may open an application window, and delivered Control-digit input may switch
-Spaces. Menu/input authority authorizes that application reaction; it does not
-authorize Koine to issue a separate focus/activation call. A native open/launch
-request itself permits activation, so workspace declares desktop control. This
-distinction keeps general menu invocation independently grantable without
-pretending Koine can predict every menu item's application-defined consequences.
+Apply one decision procedure to every provider. An effect is Koine-selected when
+Koine requests it through a native primitive's documented semantics, a parameter,
+or a preparation, fallback or cleanup call. Include it in the field's static
+authority set even when the OS performs the effect or a particular invocation
+does not exhibit it. Otherwise an application's own response is a reaction,
+which Koine does not sandbox. An arbitrary menu item may open or focus a window;
+a delivered application shortcut may do the same. Neither permits Koine to add
+a focus/activation call. A native open/launch request includes activation, so
+workspace declares desktop control. The same test applies to an iTerm or herdr
+primitive; observation that an app activated does not alone classify the cause.
+The [requirements](../requirements/modaliser-workflows.md#requirement-separately-grant-input-menu-invocation-and-window-focus)
+record the accepted reaction limit.
+
+Space switching is an intentionally system-directed effect, not a reaction of
+a captured application. Its bounded input operation requires `input:control`
+AND `desktop:control` and accepts only the configured Space destinations/chords,
+not arbitrary session-level input. The native evidence must establish how the
+configured shortcut is checked without changing settings, how an unavailable or
+remapped binding is refused before posting, and what a check-to-delivery race can
+deliver to the foreground app. If this cannot be bounded, return to design and
+raise any new native limit with Antony before shipping; do not silently turn it
+into generic untargeted delivery. Application-target capture below is a separate
+contract and does not pretend to address a Space-switch event.
+An input-only field must not route the same chords through system-shortcut
+dispatch as an alternate path. If its native delivery mechanism cannot preserve
+that separation, refuse that path or use the declared two-capability operation;
+do not replace independently grantable application input with it.
 
 An input or menu caller captures the process incarnation at interaction start.
 The receiving provider accepts that external identity in its own input type,
@@ -60,6 +79,22 @@ using the existing exact PID/start-instant semantics, resolves it under its own
 read authority, and returns its own opaque reference. It does not require
 desktop read or control. Independent provider-local references are not equal
 identities across providers and are not convertible URI strings.
+
+**Protected UI targets.** Input, menus and any UI-driving preparation/fallback
+must refuse Koine's own process before target issuance and again before an
+effect. Possession of `koine:manage` does not enable this route. The same rule
+refuses positively identified system consent or security UI; evidence must state
+how such targets are recognized and where it cannot establish safe delivery.
+Session-directed input also checks the foreground destination against this rule.
+Return `unavailable` with `reason: protected-target` on these new operations,
+without performing UI work or presenting an OS consent prompt. This denies the
+direct route to Koine's approval, grant creation/revocation and Quit controls.
+It does not turn native application control into isolation from malicious
+same-user software, prevent every platform retargeting race, or constrain an
+application's own privileged actions. A mechanism unable to enforce the direct
+self-target refusal is not an acceptable input/menu implementation.
+This does not cancel the already admitted exception for releasing Koine-owned
+modifiers after foreground loss; refusing a new UI action must not strand a hold.
 
 A subsequent input mutation takes an input reference and requires
 `input:control`; a menu mutation takes a menus reference and requires
@@ -94,13 +129,24 @@ may be offered only with the declared conjunction; it cannot replace the
 independently grantable paths.
 
 For tool actions, selecting a tab, pane or herdr Space through the tool's native
-protocol is tool control. If its native mechanism can also activate an app or
-focus a desktop window, the field additionally requires desktop control. If it
+protocol is tool control. If that primitive's documented semantics or Koine's
+parameters/calls select activation or desktop-window focus, the field additionally
+requires desktop control. Application-defined reactions use the same rule as
+input and menus above. If the mechanism
 delivers keystrokes or invokes an application menu, it additionally requires
 input or menus control. The downstream native evidence fixes that effect set
 before registration; a provider cannot choose a more privileged fallback after
 dispatch. The conservative set covers every supported execution path of that
 field. Neither a confirmation dialog nor possession of a target replaces it.
+
+The operation that admits an interaction also declares the authority of every
+possible cleanup mechanism. An Escape fallback needs input control at admission;
+a native menu dismissal needs menu control. Cleanup after revocation is permitted
+only to terminate that admitted interaction's owned effects, within its captured
+target and consent limits. It cannot select a new fallback requiring authority
+not admitted initially. Only the already agreed release of Koine-owned modifiers
+may reach a newly active app. Menu-only paths therefore need native menu cleanup;
+a combined input/menu alternative cannot replace them.
 
 The herdr design may establish a bounded association from an iTerm session to a
 herdr instance. It must define discovery authority, evidence, lifetime,
@@ -122,10 +168,11 @@ use their owner's read authority, with any additional read requirements.
 | Effect or observation | Owner and required capabilities | Boundary / client responsibility |
 | --- | --- | --- |
 | Windows, stacking/visibility, display and window geometry | `desktop:read` | Client derives choices, labels and occlusion policy; unknown geometry is explicit. |
-| Window focus; window geometry and restore; move between displays; display focus | `desktop:control` | No application keystroke or menu fallback under this grant. Label policy is client-owned. |
-| Control-digit Space switching | `input:control` | It is explicit keystroke delivery; desktop focus permission alone is insufficient. |
-| Pointer location / nudge | `desktop:read` / `desktop:control` | Client draws the reveal ring; desktop does not synthesize application keystrokes. |
-| System media play/pause | `desktop:control` | Use the system-media route, not a foreground-application chord. Any chord alternative requires input authority and does not satisfy the required system route. |
+| Window focus; window geometry and restore; move between displays; display focus | `desktop:control` | No application keystroke, pointer-button or menu fallback under this grant. Display focus must not click a control or blank desktop as an implicit fallback; a combined operation would need a separately declared input requirement and cannot replace focus-only access. Label policy is client-owned. |
+| Control-digit Space switching | `input:control` AND `desktop:control` | Bounded system-directed operation; verify the configured binding, refuse known fall-through before posting, and establish the residual race as above. It is not application-targeted delivery. |
+| Pointer location / nudge and movement with no held buttons | `desktop:read` / `desktop:control` | Client draws the reveal ring. Refuse a nudge while buttons are held rather than turning movement into an undeclared drag. |
+| Synthesized pointer-button down/up/click/drag, including a context-menu fallback | `input:control`, plus the exposing provider's control and any other selected effects | Application input whatever the public field's name. Capture and revalidate the intended process/context; apply protected-target refusal. Menu-only paths cannot be replaced by right-click synthesis. This allocation does not add a general pointer-button API to the baseline. |
+| System media play/pause, including system-defined media-key events | `desktop:control` | A media event addressed to the system-media route is distinct from an application key chord. Any chord alternative requires input authority and does not satisfy the required system route. |
 | Installed-application search, paths and bundle identifiers | `workspace:read` | Client owns query entry, chooser, secondary-action menu and MRU. |
 | File search under configured roots, currently home | `workspace:read` | Query scope is documented in each operation; do not omit inaccessible roots as healthy empty results. |
 | Launch/activate; file/folder/default-app/named-app opening; URL opening; reveal in Finder | `workspace:control` AND `desktop:control` | Activation is included. No search, grant or prerequisite check implicitly launches or opens. |
@@ -134,7 +181,7 @@ use their owner's read authority, with any additional read requirements.
 | Held-modifier start/step/confirm/cancel | `input:control` | Koine owns the admitted hold and cleanup; client owns walk navigation. |
 | Menu hierarchy/state/shortcuts; captured context target state | `menus:read` | Passive inspection cannot open a menu or report unpopulated contents as an empty complete list. |
 | Explicit context-menu/submenu opening, menu invocation, explicit finish/cancel | `menus:control` | Menu-only operation paths use native menu operations without application keystroke delivery or focus reclamation. |
-| Cleanup on revocation, inactivity, foreground loss and orderly shutdown | Owner of the already admitted input/menu interaction | This is termination of owned effects, not a new grant or client action. Only Koine-owned modifier releases may reach the new foreground app; no focus reclaim or Escape/cancel there. Unconfirmed cleanup remains unconfirmed. |
+| Cleanup on revocation, inactivity, foreground loss and orderly shutdown | Owner of the already admitted input/menu interaction; every cleanup mechanism's capability included at its admission | This is termination of owned effects, not a new grant or client action. No new privileged fallback; only Koine-owned modifier releases may reach the new foreground app; no focus reclaim or Escape/cancel there. Unconfirmed cleanup remains unconfirmed. |
 | iTerm state/labels and prerequisite discovery | `iterm:read` | Readiness does not install or configure. Client owns label placement and presentation. |
 | iTerm panes/tabs, selection, movement, split, zoom, copy mode, rename/close/reorder | `iterm:control`, plus effect-dependent static additions described above | Native tool selection is distinct from desktop-window focus. Effect additions are fixed per field, not per call. |
 | iTerm prerequisite setup | `iterm:control`, plus static additions for focus/input/menu effects if any | Explicit, bounded integration configuration, never arbitrary shell execution. Re-check prerequisites on action. |
@@ -150,6 +197,16 @@ authority. The native grant UI and GraphQL descriptions must state this
 provider-wide granularity. No capability implies another and requests cannot
 combine several credentials.
 
+Window layout owns disclosure of desktop's expanded provider-wide authority in
+the native grant UI and GraphQL descriptions before its first new operation
+ships; pointer and media extends that disclosure before its additions ship.
+App input must disclose that controlling a terminal can type and execute commands
+with the user's authority. Menu bar must disclose access to arbitrary exposed
+application menu actions, including destructive ones and application reactions.
+These grants are not restricted to the configured shortcut catalogue. Acceptance
+checks the create/approve UI, existing-grant display after upgrade, and field
+descriptions, without silently revoking or reauthorizing existing grants.
+
 ## Operation-to-capability trace
 
 Each row below is an allocated requirement, **not an implemented operation**.
@@ -162,7 +219,7 @@ the phrase “plus effects” is not a completed trace.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |
-| Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input control for Control-digit Space switching | Window layout; app input. Pending. |
+| Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |
 | Displays | Desktop read/control for list, proportional transfer and display focus; client display labels | Window layout. Pending. |
 | Named application launchers | Workspace and desktop control for all twelve named applications, including VS Code | Launch and open. Pending. |
 | Application search | Workspace read; reuse workspace + desktop control for launch/reveal; client clipboard and MRU | App and file search. Pending. |
@@ -193,6 +250,7 @@ the phrase “plus effects” is not a completed trace.
 | Context menus (additional requirement) | Menus read/control; both point and focused-element capture; same lifecycle | Context menus. Pending. |
 | List and label state (cross-cutting requirement) | Desktop, iTerm and herdr reads as applicable; client labeling/rendering/ordering | Window layout; iTerm; herdr. Pending. |
 | Interruption and cleanup (cross-cutting requirement) | Koine input/menu owners; bounded cleanup and explicit crash recovery | Held interactions; context menus. Pending. |
+| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Window layout, extended by pointer and media; app input; menu bar. Pending before each surface ships. |
 
 The standalone acceptance client demonstrates Koine's part and identifies every
 client step. Account-dependent results require dedicated VM accounts and data;
@@ -215,6 +273,16 @@ no list; it must not be encoded as the same empty list. If submenus need opening
 their explicit population state is neither dependency absence nor an empty
 complete list. Unknown state/geometry is similarly represented explicitly.
 
+Search additionally reports coverage for each requested root: searched scope,
+skipped scope and reason, and whether coverage is complete, partial or unknown.
+Successful matches may coexist with explicit partial coverage; an empty partial
+result is not a complete successful search. Consent-blocked roots carry the
+`permission` / `os-permission` classification and owner/consent diagnostics in
+their coverage outcome. If consent blocks every requested scope, search fails with that
+permission error rather than returning a healthy empty list. Missing indexes or
+application-side API enablement are dependency prerequisites, not OS consent.
+Exact coverage types and reasons belong to app-and-file-search's SDL.
+
 | Situation | Observable contract |
 | --- | --- |
 | Application not installed, no suitable opener, prerequisite missing or unsupported integration version | Typed dependency-unavailable result with a documented reason, no successful value and no action attempted. |
@@ -234,6 +302,15 @@ If target withdrawal and dependency absence overlap, locally established
 withdrawal is reported as stale; otherwise a missing prerequisite can be
 reported without claiming the old target remains valid. Permission checks still
 precede disclosure. Existing desktop error behavior does not change.
+
+All readiness/search/inspection reads must avoid OS consent prompts, not just
+Accessibility reads. Where checking or traversing a scope would itself prompt,
+do not attempt it: report consent status or coverage as unknown/blocked and
+direct the user to Koine's explicit setup guidance. New operations follow the
+Machine contract's extension-only consent diagnostics. Their concrete consent
+inventory, target application/scope and consent-acquisition path must be settled
+by their evidence/design owner. This policy approves no new entitlement or
+consent; any signing-posture change is still raised with Antony first.
 
 ## Compatibility and delivery
 
@@ -270,9 +347,11 @@ existing enabling points, not a new public testing API or mocks of desktop apps.
 | Seam | Required evidence for this architecture |
 | --- | --- |
 | Public GraphQL | Read-only/focus-only cannot send keys or invoke menus. Input-only and menu-only control paths work without desktop control, using their own references and receipts. Workspace-only control cannot launch/open/reveal. Missing any declared additional capability denies the entire selected mutation before all actions; aliases, fragments, input objects, defaults and skipped fields preserve the rule. Revocation before dispatch refuses the next action; read publication rechecks all read requirements. |
-| Public GraphQL | Dependency unavailable, stale target, successful empty result and both permission classes remain distinguishable, including a prerequisite that vanishes between readiness and action. Existing desktop classifications are unchanged. Protected readiness does not leak through a denied grant. |
+| Public GraphQL | Dependency unavailable, stale target, complete empty result, partial/unknown search coverage and both permission classes remain distinguishable, including a prerequisite that vanishes between readiness and action. Existing desktop classifications are unchanged. Protected readiness does not leak through a denied grant. |
+| Public GraphQL and isolated VMs | Input/menu grants cannot drive Koine's approval, creation, revocation or Quit controls, including previously obtained targets and session-directed paths. Recognized consent/security targets are refused. Space switching needs both input and desktop control; disabled/remapped bindings exercise refusal and the stated race limit. A display-focus or menu-only grant never acquires a pointer-button fallback. |
 | Native binary interface | Old compiled registrations retain old behavior on the new framework; a provider requiring additional-capabilities-v1 is refused before loading on an old host. New-host checks enforce its actual extra requirements. Compare independently built binaries and signed supported pairs; test unavailable capability owners and registration/manifest disagreement. |
-| Isolated TestAnyware macOS VMs | Verify each declared native effect and no hidden focus/keystroke/menu fallback; workspace activation requires both grants. Real menu-only and input-only paths preserve the agreed separation. Record permissions, app/tool versions, limits and pending account cases. |
+| Native call-path inspection and isolated TestAnyware macOS VMs | Enumerate each primitive, parameter, preparation, fallback and cleanup path against the authority trace. Use targets whose invoked operation does not itself change focus to distinguish Koine's extra activation calls from app reactions, and record both observations and inspected calls. A VM focus change alone proves neither the presence nor absence of a hidden call. Workspace activation requires both grants; real menu-only and application-input-only paths preserve independent grants. Record permissions, app/tool versions, limits and pending account cases. |
+| Isolated TestAnyware macOS VMs | Every read remains prompt-free, including first access to protected roots and Automation readiness. Revocation/inactivity cleanup uses only mechanisms admitted at start. Grant UI/descriptions disclose expanded desktop control and broad input/menu reach before each surface ships. |
 
 The module boundary keeps caller obligations to target capture, capability
 selection and one operation/result contract. It separates discovery from

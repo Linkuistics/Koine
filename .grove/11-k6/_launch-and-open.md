@@ -20,6 +20,13 @@ effect. This increment implements the additive framework feature
 `docs/specs/machine.md#additional-capability-requirements`. It also starts the
 concrete operation rows in `docs/specs/workflow-providers.md`.
 
+Consume the preceding first-party provider-selection design before packaging
+workspace. Own its reservation/selection diagnostics and bundled-first canonical
+composition, missing-capability-owner cascade and exact-provider conformance
+profiles. Additional-capability denial reports the deterministic first unmet
+member and complete set. Baseline desktop coordinates and diagnostics remain
+unchanged; independent old/new binaries exercise the feature and refusal paths.
+
 ## Done when
 
 - The named launchers for Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump

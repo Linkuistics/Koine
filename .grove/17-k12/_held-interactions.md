@@ -35,6 +35,10 @@ Abrupt crash recovery is defined and documented.
   label as an authenticated identity, and its acceptance includes activation
   changes the user did not cause.
 - The lifecycle is designed so `context-menus` reuses it for opened menus.
+- The admitting operation's static authority covers every supported cleanup
+  mechanism, including input for Escape. Autonomous cleanup cannot select a new
+  privileged fallback after revocation. Menu-only paths require native menu
+  cleanup; preserve the owned-modifier-release exception and consent checks.
 - Any framework or core change is a framework minor with a required feature,
   checked through the native binary seam with the compatibility pairs. An
   example is telling providers an interaction's owning grant and its
