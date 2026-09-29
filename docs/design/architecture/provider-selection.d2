@@ -1,0 +1,25 @@
+# One startup calculation. Refused candidates never vote in a shipped slot.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Catalogue: "Start here · Sealed host catalogue\nReserve all six identity / prefix pairs" {class: start}
+Verify: "Loader · Discover both roots and stage\nVerify approval, signature, compatibility\nExclude reserved claimants; retain every diagnostic"
+Eligible: "Enabled slot · Eligible updates\nRelease > bundled floor; compatible schema"
+Choice: "Greatest eligible release?" {shape: diamond}
+Update: "Unique greatest · select update"
+Bundle: "No eligible update · select verified bundle\nMissing / refused bundle → no choice"
+Tie: "Highest tie · no choice\nNo bundled or lower-version fallback"
+Frozen: "Freeze selection before any dlopen\nCheck selected principal names\nKeep shipped composition position"
+Reports: "Management shows every candidate\nLower selection retains newer refusal diagnostics"
+Catalogue -> Verify: "1"
+Verify -> Eligible: "2 · exact pair, enabled"
+Eligible -> Choice: "3"
+Choice -> Update: "4 · unique"
+Choice -> Bundle: "4 · none"
+Choice -> Tie: "4 · tied"
+Update -> Frozen: "5"
+Bundle -> Frozen: "5 · if available"
+Bundle -> Reports: "5 · if unavailable"
+Tie -> Reports: "5"
+Frozen -> Reports: "6"

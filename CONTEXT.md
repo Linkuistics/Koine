@@ -62,6 +62,14 @@ application's or the desktop's GraphQL schema and the implementation of its
 state and commands; the desktop provider is bundled with Koine. Providers and the
 server can be upgraded independently through the **provider framework**.
 
+**Provider candidate**: One discovered native bundle offered for a **provider**
+identity, with its physical installation origin and verification outcome. Several
+candidates can name the same provider; selection admits at most one.
+
+**Shipped provider slot**: A **provider** identity and GraphQL namespace reserved
+by Koine's sealed catalogue, with a canonical composition position. An enabled
+slot can be filled by its bundled or approved per-user **provider candidate**.
+
 **Provider framework**: The shared resilient Swift binary framework defining
 the types and protocols used by native **providers** and the **Machine server**.
 Its public Swift contract is the binary compatibility promise for independent

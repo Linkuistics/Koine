@@ -30,3 +30,6 @@ Cross-language plugin authoring is not a requirement; requiring it would reopen
 that trade-off. Compiling providers into the host alone still
 fails the independent-upgrade requirement. Updating plugins may require a Koine
 restart; independent upgrades do not promise live replacement or unload.
+Replacing a shipped identity additionally requires the host's
+[first-party selection policy](../specs/machine.md#first-party-provider-selection).
+A compatible binary alone does not make a pre-extension host support replacement.

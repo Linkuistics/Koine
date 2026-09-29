@@ -24,6 +24,11 @@ be upgraded independently. Its published Swift contract is the stable binary
 interface; a TypeScript hosting layer is not required. The desktop provider is
 bundled.
 
+The designed workflow extension adds
+[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection).
+That policy is pending implementation and acceptance; Koine 0.1.0's binary
+compatibility does not imply support for replacing its bundled desktop provider.
+
 Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
 lists what is established, with its evidence, and what is still open. A client

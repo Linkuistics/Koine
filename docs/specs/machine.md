@@ -298,8 +298,8 @@ A second printer would make its own disagreements look like schema drift.
 Evidence: [schema-conformance-vm.md](../verification/schema-conformance-vm.md).
 
 The digest is an equality token. It is identical across restarts of one Koine
-build with one set of active provider contributions, whatever order they were composed
-in, and differs when any served type, field, argument, nullability, default,
+build with one set of active provider contributions in the canonical composition
+order, and differs when any served type, field, argument, nullability, default,
 deprecation or description differs. Clients compare it with the digest they generated against to learn that they
 should introspect again; they do not recompute it. A Koine upgrade may change
 the digest of an unchanged schema if its printer changes; that costs a client one
@@ -315,29 +315,27 @@ field. Each custom type, input, enum and directive has its provider prefix.
 Root query and mutation names start with the lower-case prefix. Reject
 collisions, reserved names, duplicate ownership, missing resolvers, invalid
 SDL and unclassified fields before publishing any contribution from that
-plugin. Reject both competing external providers for a duplicate identifier;
-never select an arbitrary winner. An external plugin cannot replace `desktop`.
+plugin. In the served baseline, reject both competing external providers for a
+duplicate identifier; an external plugin cannot replace `desktop`. The designed
+extension replaces that rule for reserved first-party identities with
+[first-party provider selection](#first-party-provider-selection). Other duplicate
+claims still refuse both; directory order never selects a winner.
 
 A provider identifier is a lower-case letter followed by lower-case letters and
 digits; it is also the reference authority and the prefix of the provider's
-capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two prefixes
-may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
+capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two non-reserved
+prefixes may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
 Each contribution is validated against the core schema alone, so it cannot use
 another provider's types, and its SDL validity does not depend on which other
 providers loaded. The extension below adds explicit capability dependencies
 after that validation. Accepted contributions are composed in a canonical
 order: bundled providers first, then per-user providers, each group sorted by
-identifier. This preserves the served implementation's ordering; desktop happens
-to be the only bundled contribution in the baseline. A refused provider is not started.
-
-**Extension — selection pending design.** The workflow adds multiple shipped
-identities/prefixes. Their reservation and the precedence of an independently
-updated, approved per-user copy must be settled together before packaging them.
-The baseline's duplicate-claim rule does not implement such an upgrade: merely
-adding a second copy can refuse both. No extension bundle may rely on an
-unspecified winner or failure fallback, or bypass approval. The first-party selection
-design must specify pre-load selection, reserved-identity protection, canonical
-composition position and diagnostics without changing existing desktop fields.
+identifier. In the extension this first group is the selected shipped identities,
+including approved replacements physically installed in the per-user root.
+Other accepted per-user providers follow, sorted by identifier. Sorting uses
+Unicode code points. Desktop is the only bundled contribution in the baseline.
+A refused provider is not started. Physical origin remains visible in diagnostics;
+selection never pretends a per-user bundle was sealed inside the application.
 
 Version 1 narrows what a contribution may hold. It uses only its own types, the
 built-in scalars and `Reference`; an extension of `Query` or `Mutation` adds
@@ -983,11 +981,11 @@ the narrowly scoped disable-library-validation entitlement and an install and
 approval UI, and Koine has neither. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
 
-The independent-upgrade promise does not establish replacement precedence for
-an identity also shipped inside the application. The extension must resolve that
-selection policy before its first additional bundled provider ships; the
-baseline rejects external desktop replacement and contests other duplicates as
-described under composition. Same-team signing alone is not a selection rule.
+The designed extension's [selection policy](#first-party-provider-selection)
+implements independent upgrades for identities also shipped inside the application.
+It does not relax any trust check above. Koine 0.1.0 retains the baseline duplicate
+and desktop-replacement refusals; selection support must ship before the second
+bundled provider. Same-team signing alone never authorizes a per-user copy.
 
 The per-user root carries a platform constraint, and the loader checks it
 before `dlopen` rather than meeting it there. A bundle that arrives
@@ -1034,6 +1032,241 @@ every contribution whose additional-capability owners become unavailable, to a
 fixed point. A rejected desktop provider can therefore remove workspace and
 other dependent contributions while management remains available. This differs
 from a provider that fails startup after publication, as described above.
+
+### First-party provider selection
+
+**Extension — designed, pending implementation and acceptance.** The
+[server decision](../adr/koine-server-and-native-providers.md) owns the trade-off.
+The [selection flow](../design/architecture/index.html#diagram-provider-selection)
+and [failure boundary](../design/architecture/index.html#diagram-provider-publication)
+show this contract. Selection is a startup calculation over one discovered set;
+there is no live installation, approval UI, new install root or second loader.
+
+#### Reserved identities
+
+The application seals a host-owned catalogue containing `desktop` / `Desktop`,
+`workspace` / `Workspace`, `input` / `Input`, `menus` / `Menus`, `iterm` / `Iterm`
+and `herdr` / `Herdr`. Core ownership of `koine` / `Koine` is unchanged.
+Reservation never depends on a discovered manifest, successful load, published
+schema or successful start. Each catalogue entry is either reserved-only or
+enabled. An enabled entry names its one designated bundled bundle, exact bundled
+release and schema versions, and Koine's Team ID. A reserved-only entry cannot
+load from either root; it is enabled by a host release when that provider ships.
+The first extension host enables desktop and workspace and reserves the rest.
+
+Only the exact identifier/prefix pair can claim a shipped slot. A different
+identifier claiming its prefix, a shipped identifier claiming another prefix,
+or a non-shipped prefix overlapping a reserved prefix in either direction is
+refused alone. Root-field prefix checks use the corresponding lower-case form.
+For example, `Desk` and `DesktopTools` are not alternate claims on `Desktop`.
+Apply this namespace exclusion to declarative SDL names as well as manifest
+prefixes; a rejected claimant cannot enter the collision set and evict the
+reserved owner. It holds when the owner is absent, rejected or reserved-only.
+An exact-pair per-user candidate is considered only under that slot's update
+rules, never as an ordinary competing external provider.
+
+The designated bundled candidate must match its catalogue entry, including
+release/schema versions. Unexpected bundles inside the sealed root are refused;
+they cannot replace the designated bundle. A missing or refused bundle leaves
+the catalogue's baseline intact. An eligible per-user update can still fill that
+enabled slot. If neither can, the slot is unavailable and remains reserved.
+A malformed or internally conflicting host catalogue is a packaging failure:
+publish core management alone with a catalogue diagnostic and admit no provider,
+rather than inventing reservations from discovered bundles.
+
+#### Eligibility and precedence
+
+Per-user approval is still the existing provider-ID/Team-ID record. It authorizes
+compatible updates of that identity, not a particular path or binary hash.
+Built-in approval never substitutes for it. Verify the staged signature and every
+private image against that record and the host's Team ID. Location, staging,
+dependency closure, architecture, OS/runtime, framework, feature and quarantine
+checks remain mandatory. Claimed metadata on an untrusted bundle cannot affect
+another candidate's eligibility or precedence.
+
+For reserved identities, release and schema versions are three decimal components
+`major.minor.patch`, each in `0...2147483647`, with no leading zero except `0`,
+no sign, suffix or build metadata. Compare numerically, component by component;
+`1.10.0` exceeds `1.9.0`. This is a first-party publication rule, not a new parser
+restriction on existing non-reserved providers. A per-user update must have a
+release strictly greater than the sealed bundled baseline, the same schema major,
+and a schema version at least that baseline. Release majors do not imply schema
+or framework majors. Schema compatibility and every declared runtime/framework
+requirement must independently hold. Malformed versions are `REJECTED`; honest
+unsupported schema/framework/runtime requirements are `INCOMPATIBLE`.
+
+For each enabled slot, form the eligible per-user set using those checks:
+
+| Eligible candidates | Selected candidate |
+| --- | --- |
+| No eligible newer per-user copy | The designated bundled copy if it passes verification; otherwise none. |
+| One greatest per-user release | That update, even if the bundled copy is absent or refused. |
+| Several copies at the greatest eligible per-user release | None for this slot: diagnose `ambiguous-update` on the tied copies and withhold the bundled and lower copies too. Identical bytes in two installed directories are still an ambiguous installation. |
+
+Do not break a tie by path, discovery order, modification time, schema version
+or content hash. Directory aliases resolving to the same canonical bundle are
+one discovered candidate; distinct canonical directories remain distinct.
+Equal-to-baseline and older copies never override the bundle, even when it is
+missing or broken. Multiple lower copies cannot contest a unique higher copy.
+Non-reserved providers retain the ordinary duplicate-identifier/prefix/name
+refusals; this is not a general multiple-version package resolver.
+
+A pre-load refusal excludes only that candidate. The initial calculation may
+therefore select a lower eligible release or the bundled baseline when a newer
+copy is incompatible, unapproved, malformed or otherwise refused. This must be
+visible both on the refused candidate and in the selected candidate's diagnostic,
+with the known refused version and reason; unverifiable version claims are labelled
+as claims. It is not a successful update. A malformed unidentified bundle stays
+visible as a bundle-level refusal without being assigned authority over a slot.
+
+Once the choice is frozen, **never retry a different version in that process**,
+including on load, descriptor, schema, dependency-cascade or startup failure.
+Recovery is an operator changing the installed set or fixing approval and
+restarting; ambiguity requires removing the extra copy. There is no persistent
+highest-seen-version store: removing an update or changing the host may lower the
+next startup's selected release, and management reports the newly selected version.
+The sealed host baseline is the floor, not an anti-rollback guarantee across host
+releases. Client grants remain tied to the provider identity and are not reissued
+or widened by selecting a different binary.
+
+#### Selection before execution
+
+The resident composition supplies both roots and the sealed catalogue in one
+invocation. The loader owns discovery, immutable staging, verification and
+selection; it returns candidate reports and only the selected native providers.
+The Machine core owns independent descriptor/SDL/authority validation, collision
+handling, the missing-owner fixed point, schema publication and lifecycle. Callers
+do not reconstruct selection by loading each root separately or by changing a
+candidate's physical origin flag. Keep this calculation separate from loading
+effects so the existing native seam can substitute candidate sets and observe
+initializer/factory/start markers without exposing a public test API.
+
+Before **any** provider `dlopen`, finish discovery and all declarative checks
+needed for selection across both roots. Check reserved namespaces and ordinary
+manifest identifier/prefix collisions, then freeze the choices. Non-selected
+copies never reach principal-class lookup, factory construction or start. Check
+the selected manifests' principal names as a batch: names must be mutually unique
+and free in the already loaded host. A conflicting non-reserved candidate is
+refused alone when it contests a shipped candidate; conflicts among shipped
+selections, among non-reserved selections, or with an existing host class refuse
+the affected selections, with no candidate retry. Unselected alternatives do not
+contest principal names. A private image or dependency must not pull an unselected
+provider image into the process; bundles may depend on the host framework and
+their verified private dependencies, not other provider bundles. Native classes
+undeclared in manifests remain part of the existing trusted-code limitation.
+
+Load frozen selections in canonical composition order. Runtime factory class
+origin, shared-framework conformance and descriptor agreement are checked after
+loading, then SDL and registration/authority validity before publication. A
+descriptor may not change the selected identity or prefix. Where a contribution
+attempts another identity's reserved names after loading, reject only that
+claimant, then perform ordinary collision checks among the remaining non-reserved
+contributions. Other
+genuine collisions retain the both-refused rule. Missing additional-capability
+owners then remove dependents to a fixed point. Neither a late claimant nor a
+missing owner reopens selection.
+
+A selected image can run initializers before descriptor/schema refusal; that
+image and loaded dependencies remain mapped until exit, though they contribute
+no schema and are never started. A dynamic-loader failure may also have mapped
+dependencies: do not claim rejection implies no native code ran once `dlopen` was
+attempted. Successful publication precedes start. A start failure retains the
+published schema/capabilities and reports `FAILED`; its own resolutions are
+`unavailable`, and authority dependents are not removed merely because it failed
+to start. A pre-publication rejection removes the provider and its dependent
+contributions. Core management remains available in either case. Root-enumeration
+or core startup failures still fail server startup; there is no partial discovery
+presented as a complete candidate set.
+
+#### Candidate diagnostics and schema identity
+
+Extend `KoineManagement.providers` in place, keeping every existing field and
+`KoineProviderState` value. It reports each discovered canonical candidate,
+including all refused and non-selected copies, plus one synthetic row for an
+enabled slot with no selected candidate. Reserved-only entries need no status row
+unless a bundle claims them. A catalogue failure has one synthetic
+`provider: unknown` row with unknown versions, `REJECTED`, `selection: unavailable` and
+`reason: catalogue-invalid`; it names no provider authority. Existing `provider`,
+`version` and `schemaVersion` describe that row's manifest claims (`unknown` if
+unavailable); only a selected,
+published candidate can become `ACTIVE` or `FAILED`.
+
+Add nullable fields on `KoineProviderStatus`; these are additive metadata and
+introduce no new provider-framework requirement or error kind:
+
+| Field / GraphQL type | Meaning |
+| --- | --- |
+| `candidateId: String` | Opaque identity of origin plus canonical installed bundle location, unique within this startup; null only for a synthetic row. Not a resource reference. |
+| `origin: String` | `bundled` or `per-user`; null for a synthetic row. Never inferred from composition position. |
+| `selection: String` | `selected`, `not-selected` or `unavailable`. Selected remains selected even if later rejected or startup-failed. Synthetic rows are unavailable. |
+| `selectedCandidateId: String` | The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even on later failure. |
+| `reason: String` | Stable diagnostic code for a refusal or selection explanation; null for a healthy selected row with no competing refusal. |
+
+Version/prefix claims never determine `candidateId`. Keep one report per candidate
+through all phases; do not merge reports by provider ID or attach one candidate's
+failure to another copy. Reports sort by provider, origin and candidate ID in
+Unicode order, with synthetic rows last for that provider. These fields are filled
+on extension-host reports wherever their meaning is known; nullable types preserve
+older callers and represent unidentified/synthetic cases. Management authority
+continues to protect the entire surface, including locations in human diagnostics.
+
+Non-selected valid copies use `REJECTED` with a precise reason: `older-than-bundled`,
+`equal-to-bundled` or `superseded-candidate`; it means their contribution was refused,
+not that their signature failed. Other required reasons include `reserved-identity`,
+`reserved-only`, `ambiguous-update`, `invalid-version`, `schema-incompatible`,
+`missing-bundled`, `catalogue-invalid`, `principal-collision`, `missing-capability-owner`
+and `selected-with-refusals`. Existing trust/compatibility failures retain their
+classification and gain a stable reason at implementation. `diagnostic` supplies
+the concrete failure, compared versions, affected owner and recovery action.
+The native UI groups copies by identity, identifies physical origin and selection,
+and shows ignored/refused updates alongside the running version. No success banner
+may conceal a refused update. A missing slot is `REJECTED`; an incompatible actual
+candidate retains `INCOMPATIBLE`. Multiple causes remain in the human diagnostic.
+
+Publish only the admitted selected contributions, in shipped-slot order followed
+by other per-user identities. Missing slots leave no placeholder fields.
+Candidate paths, release numbers and status values do not enter canonical SDL;
+an identical contribution selected from another root has the same digest on the
+same host/printer. Changed SDL, including these additive management fields, changes
+the digest. Conformance profiles identify the exact expected candidate versions
+and contributions separately from SDL equality: an identical digest cannot prove
+which binary ran. Preserve the original core + desktop profile for old hosts and
+add extension-host profiles with the expanded management schema. An omitted required
+provider fails the profile instead of shrinking its expected schema.
+
+#### Selection acceptance
+
+Launch-and-open owns implementation and acceptance of this entire contract before
+shipping workspace. These cases remain **pending**. Binary marker observations,
+public management/introspection and signed isolated TestAnyware macOS VMs complement
+one another; an in-process descriptor substitute alone cannot establish pre-load
+refusal or signing. Use desktop and workspace pairs so order and dependencies are
+exercised, not only a lone plugin.
+
+| Case | Required observation through the existing seams |
+| --- | --- |
+| Old host + old bundled desktop; new host + independently compiled old baseline provider | Existing desktop operations/errors/grants work; preserve old and extension-host core + desktop profiles. The extension catalogue matches the packaged baseline; selection adds no required factory witness. |
+| Selection-aware host + newer compatible desktop/workspace per-user copy | With a separate correct approval record, exactly one chosen image/factory/start marker per slot; bundled copy never loads; management names the update. Signed VM runs existing desktop and new workspace operations without rebuilding the host. |
+| Pre-extension host + otherwise compatible update claiming desktop/workspace | It still refuses external desktop replacement. Workspace follows that host's ordinary collision/compatibility rules and can load if those rules permit; it has no reserved update slot there. A new required framework feature is refused before load. Do not advertise replacement selection on old hosts. |
+| Missing approval, wrong Team ID, unsigned/ad-hoc/tampered seal, escaping location, incompatible framework/feature/OS/architecture, failed quarantine assessment | Each refused candidate has no initializer marker; the eligible bundle or lower update can run only with visible refusal diagnostics. Real second-team signing remains pending if no certificate is available; mocks cannot close that VM case. Existing staging/quarantine recovery rules still apply. |
+| Releases 1.9.0 and 1.10.0; malformed triple; equal/older than baseline; schema-major mismatch or schema below baseline | Numeric winner, exact refusal classes, no older/equal takeover, and explicit lower-version selection diagnostics when a newer copy is ineligible. Reverse discovery order and get the same selection. |
+| Two greatest eligible copies; duplicate lower copies; alias to one canonical directory | Highest tie loads none for that slot, even with a healthy bundle; lower duplicates do not contest a unique highest; one canonical location is counted once. Rename paths without changing the logical set and preserve outcomes. |
+| Unrelated ID claiming Desktop/Workspace, overlapping prefix or reserved SDL name; owner absent/rejected; reserved-only input/menus/iterm/herdr | Refuse the claimant alone, keep reservation, and do not evict a valid owner. Exact pair with correct approval cannot enable a reserved-only slot. Also exercise post-load descriptor/name mismatch. |
+| Missing/refused designated bundle plus a valid newer approved update; unexpected in-app claimant | Catalogue floor and namespace still hold; the valid update can fill the enabled slot, while an equal/older copy cannot. Unexpected bundle cannot replace the designated candidate. |
+| Highest selected update fails dlopen, descriptor, schema or principal check while healthy alternatives exist | No alternative is loaded or started; selected candidate remains identifiable. Post-load refusal may leave images mapped. Fix/remove the bad copy and restart to recover. |
+| Desktop selected but rejected before publication; workspace requires desktop; third provider requires workspace | All affected contributions disappear to a fixed point; exact absent/rejected profile, capability catalogue and diagnostics agree; management remains usable. A valid dependency cycle survives. |
+| Desktop selected and published but start fails | Desktop schema and authority remain, its fields are unavailable, workspace is not removed solely for this failure, and no bundled retry occurs. |
+| Same SDL in bundled/update copies; changed SDL in a newer copy; extra ordinary per-user provider | Same-content replacement preserves the same-host digest and shipped position; changed SDL changes it; exact-candidate diagnostics distinguish binaries. Management fields are denied without koine:manage. |
+| Restart after removing an update or changing the host baseline; unreadable root | Recompute and report the new choice without granting new authority; no anti-rollback claim. Root enumeration failure fails startup instead of loading a partial set. |
+| Malformed/conflicting sealed catalogue | No provider initializer or start runs; core-only management reports catalogue-invalid. No discovered manifest supplies a replacement catalogue. |
+
+Compatibility of a first-party schema is a publisher obligation, not something a
+version comparison proves. Old generated desktop operations and native binary
+pairs guard that promise; signing attests origin, not behavior. No formal model
+is claimed here: this bounded startup decision table and the scheduled adversarial
+design review cover the policy, while actual loading/trust is tested at the native
+and VM seams. Revisit a model if persistent rollback history or live replacement
+introduces transitions this one-startup contract deliberately avoids.
 
 ## Client handoff
 

@@ -1,0 +1,34 @@
+@startuml
+title Frozen selection: refusal and startup failure
+skinparam backgroundColor transparent
+skinparam sequenceMessageAlign center
+actor "Startup" as Host
+participant "One native loader" as Loader
+participant "Selected provider" as Provider
+participant "Machine core" as Core
+participant "Management" as Management
+Host -> Loader: Both roots + sealed catalogue
+Loader -> Loader: Verify candidates; freeze choices\nRefuse principal conflicts; never reselect
+Loader -> Provider: dlopen chosen image; inspect factory / descriptor
+note over Loader, Provider
+Initializers may run. Loaded images stay mapped until exit.
+No unselected alternative is loaded or retried.
+end note
+Loader -> Core: Selected contributions + every candidate report
+Core -> Core: Validate SDL and authority\nProtect reserved owners; remove missing-owner dependents
+alt Rejected before publication
+  Core -> Management: REJECTED / INCOMPATIBLE\nNo contribution; affected dependents absent
+else Admitted
+  Core -> Core: Publish exact schema + digest\nShipped identities first, regardless of root
+  Core -> Provider: start
+  alt Startup succeeds
+    Core -> Management: ACTIVE + selected candidate identity
+  else Startup fails
+    Core -> Management: FAILED; retain schema and capabilities\nOwn resolutions unavailable; no retry or cascade
+  end
+end
+note over Core, Management
+Core management remains available for provider failures.
+Selection is not reopened by any branch.
+end note
+@enduml

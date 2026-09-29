@@ -20,12 +20,19 @@ effect. This increment implements the additive framework feature
 `docs/specs/machine.md#additional-capability-requirements`. It also starts the
 concrete operation rows in `docs/specs/workflow-providers.md`.
 
-Consume the preceding first-party provider-selection design before packaging
-workspace. Own its reservation/selection diagnostics and bundled-first canonical
-composition, missing-capability-owner cascade and exact-provider conformance
-profiles. Additional-capability denial reports the deterministic first unmet
-member and complete set. Baseline desktop coordinates and diagnostics remain
-unchanged; independent old/new binaries exercise the feature and refusal paths.
+Consume `first-party-provider-selection-k50` and its settled review chain before
+packaging workspace. `docs/specs/machine.md#first-party-provider-selection` owns
+the sealed catalogue, approval/version precedence, pre-load selection, candidate
+diagnostics and no late retry. Implement its complete selection-acceptance table
+through the existing three seams. Replacements retain shipped composition
+positions. Own the missing-capability-owner cascade and exact-candidate conformance
+profiles, including old-host and extension-host core + desktop, selected updates
+and explicit absent/rejected sets. Catalogue baselines must match packaged desktop
+and workspace; reserve the four later identities without enabling them early.
+Additional-capability denial reports the deterministic first unmet member and
+complete set. Baseline desktop operations and error diagnostics remain unchanged;
+management candidate metadata is additive. Independent old/new binaries exercise
+the feature and refusal paths; no signing-posture change is authorized.
 
 ## Done when
 

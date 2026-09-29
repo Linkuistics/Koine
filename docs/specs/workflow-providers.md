@@ -34,6 +34,17 @@ capability catalogue while its contribution is admitted, including a startup-fai
 provider whose schema remains published. Installation does not
 grant a client those capabilities.
 
+The Machine contract's
+[first-party selection policy](machine.md#first-party-provider-selection) reserves
+all six identity/prefix pairs before discovery. Enabled shipped slots can select
+an explicitly approved newer compatible per-user copy, retaining their canonical
+position. A reserved-only identity cannot be enabled by installing a bundle.
+Missing/rejected owners stay reserved, and late rejection never retries another
+version. The [selection view](../design/architecture/index.html#diagram-provider-selection)
+shows precedence; its linked failure view distinguishes rejection from startup
+failure. Selection support is designed and pending acceptance, not a Koine 0.1.0
+capability.
+
 The Machine core owns composition, grant checks and error paths. Providers own
 native observation, resource validity and the truth of their declared effects.
 Private native helpers may share mechanics; they confer no authority and must
@@ -329,6 +340,10 @@ desktop conformance profile for old binaries and explicit absent/rejected
 provider profiles. A disabled provider's omission must not silently shrink an
 acceptance profile that requires it. Clients use introspection and schemaDigest
 to discover additions; they do not infer availability from a release version.
+Profiles pin expected candidate versions as well as the active identity set:
+identical SDL/digests do not prove which binary was selected. Per-user replacements
+occupy shipped positions; other per-user providers follow. Keep old-host profiles
+separate from extension-host profiles with additive candidate diagnostics.
 
 The launch-and-open increment owns the first implementation of additional
 capability requirements, exercised by workspace open/launch and through the
@@ -336,6 +351,13 @@ existing native seam. Its planning must include that vertical dependency. This
 design adds no implementation leaves. The held-interactions design separately
 owns any framework support for grant-bound lifetimes and autonomous cleanup;
 such support also needs an explicit minor and required feature before use.
+
+Launch-and-open also implements the Machine contract's
+[selection acceptance cases](machine.md#selection-acceptance), including independent
+signed desktop/workspace updates, old-host refusal, approval, reserved collisions,
+multiple candidates, no late fallback, missing-owner cascades, startup failure and
+exact-candidate conformance. Every case is pending until evidence is recorded at
+the existing seams; earlier single-bundle compatibility evidence does not close it.
 
 ## Test seams
 

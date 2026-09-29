@@ -3,6 +3,8 @@
 Open [the viewer](index.html) for the views, their outline and SVG/source
 exports:
 
+- [first-party candidate selection](index.html#diagram-provider-selection) and
+  [publication and failure](index.html#diagram-provider-publication);
 - the designed extension's [provider boundaries](index.html#diagram-workflow-providers),
   [independent target capture](index.html#diagram-workflow-targets) and
   [complete effect authority](index.html#diagram-workflow-authority);
@@ -22,9 +24,12 @@ Captions state evidence limits. No diagram is formal verification or release
 acceptance.
 
 The workflow views are reviewed design obligations, pending implementation and
-acceptance; first-party bundle selection still needs its bounded design/review.
+acceptance. First-party bundle selection now has its
+[Machine contract](../../specs/machine.md#first-party-provider-selection), pending
+adversarial review and implementation.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel links the changed views and unchanged ABI context.
+The current-discussion panel links the new selection views and unchanged provider
+and ABI context.
 
 Serve locally with `task design:serve` and open
 <http://127.0.0.1:8765/#diagram-workflow-providers>. The task serves only this
@@ -50,3 +55,7 @@ when changing it.
 Run `task design:workflow-render` to regenerate the three workflow exports with
 D2 0.9.0 (Dagre, light theme 0/dark theme 200) and PlantUML 1.2026.8. Inspect the
 served result after source edits; HTTP success is not a rendering check.
+
+Run `task design:selection-render` to regenerate the two selection exports with
+the same pinned renderer versions. Start with
+<http://127.0.0.1:8765/#diagram-provider-selection>.

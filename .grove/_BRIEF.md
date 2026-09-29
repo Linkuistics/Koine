@@ -111,10 +111,15 @@ Space switching is separately system-directed and needs input plus desktop
 control; pointer-button synthesis needs input wherever exposed. Cleanup authority
 is included at admission. All reads remain consent-prompt-free.
 
-The first-party provider-selection design runs before launch-and-open to settle
-reserved shipped identities and independent per-user updates under the existing
-trust policy. Launch-and-open implements that contract alongside composition,
-complete capability diagnostics and exact-provider conformance. Window layout
+`first-party-provider-selection-k50` defines reserved shipped identities and
+independent per-user updates in the Machine spec's "First-party provider
+selection" section and the server ADR. The sealed catalogue survives missing
+bundles; approved compatible newer copies keep shipped composition positions;
+candidate diagnostics show refusals and selection never retries after a late
+failure. `first-party-provider-selection-k51` reviews it before launch-and-open;
+any resulting integration must settle there too. Launch-and-open implements the
+selection acceptance table alongside composition, complete capability diagnostics
+and exact-provider conformance. Window layout
 owns desktop grant disclosure, pointer/media extends it, and app-input/menu-bar
 own their broad input/menu disclosures. Baseline acceptance checks those rows too.
 

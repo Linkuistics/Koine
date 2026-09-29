@@ -2,17 +2,21 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Separate input, menus and focus; authorize every mixed effect",
-    "status": "Review integrated · implementation and first-party selection design pending",
-    "summary": "Six provider identities retain read/control grants. Input and menus capture their own targets and refuse protected UI. Selected effects, including cleanup, require a static conjunction; application reactions remain an accepted limit. First-party bundle selection needs a bounded design/review before packaging. The desktop views below remain baseline context.",
-    "diagramIds": ["workflow-providers", "workflow-targets", "workflow-authority", "sdk-contributions"],
+    "title": "Select first-party updates before loading code",
+    "status": "Design · adversarial review and implementation pending",
+    "summary": "A sealed catalogue reserves six identities. Select the unique highest approved compatible update above the bundled floor; show every refusal. A highest-version tie leaves the slot unavailable. Frozen choices keep shipped composition positions and never retry after failure. Existing trust, grants and native limits remain binding.",
+    "diagramIds": ["provider-selection", "provider-publication", "workflow-providers", "sdk-contributions"],
     "updatedDiagrams": [
-      {"id": "workflow-providers", "summary": "Distinguished application input from bounded system Space switching."},
-      {"id": "workflow-targets", "summary": "Added protected-target refusal and cleanup admission obligations."},
-      {"id": "workflow-authority", "summary": "Included cleanup in the static set and protected UI in target checks; removed the detached example panel."}
+      {"id": "provider-selection", "summary": "Added reservation, verification, version precedence and explicit highest-tie refusal before loading."},
+      {"id": "provider-publication", "summary": "Added the frozen selection boundary and distinct rejection/cascade versus startup-failure outcomes."}
     ]
   },
   "groups": [
+    {
+      "id": "provider-selection",
+      "title": "First-party selection · designed, not yet served",
+      "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
+    },
     {
       "id": "workflow-extension",
       "title": "Workflow extension · designed, not yet served",
@@ -40,6 +44,24 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "provider-selection",
+      "group": "provider-selection",
+      "title": "Reserve identities and choose before loading",
+      "renderer": "svg",
+      "source": "provider-selection.d2",
+      "rendered": "provider-selection.svg",
+      "caption": "Designed startup calculation for each enabled shipped slot. Reserved-only slots cannot load; unrelated claimants cannot evict an owner even when absent. Pre-load refusals can leave a lower eligible choice, but remain visible. A highest eligible tie selects nothing. Ordinary non-reserved collisions, malformed catalogue and root-enumeration failure are detailed in the spec. This view is not formal or native verification."
+    },
+    {
+      "id": "provider-publication",
+      "group": "provider-selection",
+      "title": "Keep selection frozen through publication and start",
+      "renderer": "svg",
+      "source": "provider-publication.puml",
+      "rendered": "provider-publication.svg",
+      "caption": "Designed lifecycle after pre-load selection. Descriptor or schema rejection can leave native images mapped, but publishes no contribution and can remove authority dependents. Startup failure retains schema and capabilities. Neither path retries another candidate. Core management survives provider failure; root enumeration and core startup failures can still prevent listening. Acceptance remains pending through binary, public and signed VM seams."
+    },
     {
       "id": "workflow-providers",
       "group": "workflow-extension",

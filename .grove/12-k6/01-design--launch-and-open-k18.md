@@ -40,11 +40,13 @@ Also settled:
 - The packaging consequences, if the operations live in a new bundled
   provider: the in-app approval record, the schema design file,
   `task conformance` and the schema digest.
-- Consume the preceding first-party provider-selection design's reserved
-  identities, per-user update selection and diagnostics. Do not invent a
-  duplicate winner inside this increment. Carry its implementation and binary
-  acceptance into planning along with the missing-owner cascade and complete
-  capability-denial set.
+- Consume `first-party-provider-selection-k50` and its settled review chain:
+  `docs/specs/machine.md#first-party-provider-selection` defines reserved
+  identities, version/approval selection, additive candidate diagnostics and the
+  no-retry boundary. Carry the complete selection acceptance table into planning,
+  including signed desktop/workspace updates and exact-candidate profiles, along
+  with the missing-owner cascade and complete capability-denial set. Record the
+  workspace catalogue baseline with its packaged version/schema version.
 - The VM acceptance cases, and which applications each needs installed.
 - Clients cannot supply an arbitrary executable or shell command through
   these operations.
