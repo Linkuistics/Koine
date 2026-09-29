@@ -83,3 +83,37 @@ path and copy bundle identifier. That increment reuses these operations.
 Installing the twelve applications in a VM is preparation that later increments
 repeat. If it proves costly, a reusable preparation task in the Taskfile earns
 its place here.
+
+## Design handoff
+
+`launch-and-open-k18` delivers `docs/specs/workspace-launch-and-open.md`, the
+workspace SDL/client examples in `docs/design/`, and two views in the existing
+architecture viewer. The shared workflow trace now names the four mutation
+coordinates. Review the design before `launch-and-open-k29` cuts implementation.
+The whole Machine selection-acceptance table remains assigned to this increment;
+the new spec's acceptance rows supplement it rather than narrowing it.
+
+Launch/open uses bundle identity with an optional registered installation path;
+result fields need both control grants and neither read. A receipt's reliable
+optional process identity can feed a separate desktop read. No strong native
+window/file identity, rendering completion or rollback follows from the receipt.
+The source/SDK support is design evidence; actual launch, Finder acknowledgment,
+protected-path prompting, payload classification and kernel-identity observation
+are bounded native/VM acceptance questions. New consent or signing posture still
+returns to Antony before implementation relies on it.
+
+Expected packaged workspace release/schema is `1.0.0`/`1.0.0`, release signing
+identifier `dev.antony.Koine.provider.workspace`. Existing desktop is
+`1.0.0`/`1.0.0`, `dev.antony.Koine.provider.desktop`; catalogue values must be
+checked against actual signed packaged outputs. Local inspection of the installed
+baseline's signature confirmed that desktop identifier (Team ID TA43A4RUP3).
+Workspace does not exist as a built artifact yet; its value is a publication
+decision, not a measured signature. Test catalogues alone admit fixture identities.
+
+Keep the first implementation slice a real launch path with both framework
+authority and selection support, packaging, exact-candidate conformance and
+public/native/VM acceptance. The first slice can use one required real app;
+later working increments cover all apps and the full assigned selection matrix
+before workspace ships. Do not replace pending acceptance by a mock-only or
+reduced profile. `task design:workspace-check` validates only design SDL/examples;
+`task conformance` must still be extended and run against the actual served schema.

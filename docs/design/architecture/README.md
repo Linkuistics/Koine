@@ -3,6 +3,8 @@
 Open [the viewer](index.html) for the views, their outline and SVG/source
 exports:
 
+- [workspace launch/open and desktop handoff](index.html#diagram-workspace-open)
+  and [native outcome boundary](index.html#diagram-workspace-outcomes);
 - [first-party candidate selection](index.html#diagram-provider-selection) and
   [publication and failure](index.html#diagram-provider-publication);
 - the designed extension's [provider boundaries](index.html#diagram-workflow-providers),
@@ -30,8 +32,9 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel links the new selection views and unchanged provider
-and ABI context.
+The current-discussion panel links the new workspace views and unchanged selection
+and provider context. The [workspace spec](../../specs/workspace-launch-and-open.md)
+and its SDL are designed; review, implementation and native acceptance remain pending.
 
 Serve locally with `task design:serve` and open
 <http://127.0.0.1:8765/#diagram-workflow-providers>. The task serves only this
@@ -61,3 +64,7 @@ served result after source edits; HTTP success is not a rendering check.
 Run `task design:selection-render` to regenerate the two selection exports with
 the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-provider-selection>.
+
+Run `task design:workspace-render` to regenerate the workspace sequence and
+outcome flow with the same pinned renderer versions. Start with
+<http://127.0.0.1:8765/#diagram-workspace-open>.

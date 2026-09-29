@@ -243,13 +243,13 @@ the phrase “plus effects” is not a completed trace.
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |
 | Displays | Desktop read/control for list, proportional transfer and display focus; client display labels | Window layout. Pending. |
-| Named application launchers | Workspace and desktop control for all twelve named applications, including VS Code | Launch and open. Pending. |
-| Application search | Workspace read; reuse workspace + desktop control for launch/reveal; client clipboard and MRU | App and file search. Pending. |
-| File search | Workspace read; reuse workspace + desktop control for default/Zed open and reveal; client clipboard | App and file search. Pending. |
-| Web search | Client query/suggestions/fallback; workspace + desktop control for URL | Launch and open. Pending. |
+| Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
+| Application search | Workspace read discovery remains to be designed; reuse `workspaceLaunchApplication` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard and MRU | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Pending. |
+| File search | Workspace read discovery remains to be designed; reuse `workspaceOpenPath` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Pending. |
+| Web search | Client query/suggestions/typed-query fallback; `Mutation.workspaceOpenURL(url:)`, `workspace:control` AND `desktop:control` | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
 | Media | Desktop control, system route | Pointer and media. Pending. |
 | Pointer | Desktop read/control; client ring | Pointer and media. Pending. |
-| Client settings | Workspace + desktop control to open directory in Zed; client reload/relaunch | Launch and open. Pending. |
+| Client settings | `Mutation.workspaceOpenPath(path:, application:)` selects installed Zed; `workspace:control` AND `desktop:control`; client reload/relaunch | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
 | Safari | Input control for verified keystrokes, or menus control for verified menu invocation | App input → menu bar → context menus if opening required. Pending. |
 | Dia | Same routing for ordinary commands; input control for the owned recent-tab walk | App input; held interactions; menu routing as above. Pending. |
 | Finder | Input control or menus control by verified mechanism | App input → menu bar → context menus if needed. Pending. |

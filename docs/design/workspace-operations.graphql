@@ -1,0 +1,47 @@
+# Examples consume only the documented schema. Query/chooser/clipboard policy
+# stays in the client. Mutations need workspace:control AND desktop:control.
+# Supply literal variables, never a command string. Do not replay failed opens.
+
+fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    applicationPath
+    bundleIdentifier
+    process { pid startedAt }
+  }
+  dependency { reason guidance }
+}
+
+mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
+  workspaceLaunchApplication(application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+
+mutation OpenSearchURL($url: String!) {
+  workspaceOpenURL(url: $url) { ...WorkspaceOpenOutcome }
+}
+
+mutation OpenDocumentOrDirectory($path: String!, $application: WorkspaceApplicationInput) {
+  workspaceOpenPath(path: $path, application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+
+mutation RevealPath($path: String!) {
+  workspaceRevealPath(path: $path) {
+    status
+    value { path }
+    dependency { reason guidance }
+  }
+}
+
+# A separate request, only when the preceding receipt has a process and the
+# caller has desktop:read. Copy the two values; do not convert reference URIs.
+query CaptureOpenedApplication($process: DesktopProcessIdentity!) {
+  desktopApplication(process: $process) {
+    ref
+    name
+    windows { ref title observation }
+  }
+}

@@ -2,16 +2,21 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Select first-party updates before loading code",
-    "status": "Design · reviewed; implementation pending",
-    "summary": "A sealed catalogue reserves six identities and their release signing identifiers. Refuse tied highest release groups, then select a unique eligible update or the verified bundle; show every refusal and missing bundle. Stage candidates separately. Frozen choices keep identifier-sorted shipped positions and never retry after failure. New first-party updates require a selection-aware host.",
-    "diagramIds": ["provider-selection", "provider-publication", "workflow-providers", "sdk-contributions"],
+    "title": "Launch and open with explicit native outcomes",
+    "status": "Design · review and implementation pending",
+    "summary": "Four workspace mutations require workspace and desktop control, including receipt fields. Select an installed app by bundle identifier and optional registered path; distinguish native acceptance from a missing prerequisite or an ambiguous failure. Process identity is optional and desktop capture is a separate read. Packaging consumes the settled first-party selection contract.",
+    "diagramIds": ["workspace-open", "workspace-outcomes", "provider-selection", "provider-publication", "workflow-providers"],
     "updatedDiagrams": [
-      {"id": "provider-selection", "summary": "Candidate-specific staging, visible tie fallback before freezing, and explicit identifier order."},
-      {"id": "provider-publication", "summary": "Principal conflict refusal after freezing; rejection/cascade and startup-failure outcomes remain distinct."}
+      {"id": "workspace-open", "summary": "Added the launch/open request and optional process-to-desktop handoff, with both grants checked before native resolution."},
+      {"id": "workspace-outcomes", "summary": "Added the boundary between pre-submission dependency absence, native acceptance and ambiguous post-submission failure."}
     ]
   },
   "groups": [
+    {
+      "id": "workspace",
+      "title": "Launch and open · designed, not yet served",
+      "description": "Installed application selection, web/document opening and Finder reveal. Native acceptance does not certify rendered contents or persistent foreground state."
+    },
     {
       "id": "provider-selection",
       "title": "First-party selection · designed, not yet served",
@@ -44,6 +49,24 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "workspace-open",
+      "group": "workspace",
+      "title": "Launch or open, then capture desktop state",
+      "renderer": "svg",
+      "source": "workspace-open.puml",
+      "rendered": "workspace-open.svg",
+      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. A bundle identifier and optional registered path select an installed application, not a held process. A reliable PID/start receipt can feed a separate desktop read. Reveal returns its own Finder acknowledgment without a process receipt. Native submission, app reactions and process/file races are acceptance limits, not guarantees established by this diagram."
+    },
+    {
+      "id": "workspace-outcomes",
+      "group": "workspace",
+      "title": "Keep dependency absence before the submission boundary",
+      "renderer": "svg",
+      "source": "workspace-outcomes.d2",
+      "rendered": "workspace-outcomes.svg",
+      "caption": "Designed outcomes after whole-mutation preflight and live admission. Validation/consent errors stay separate; dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal. AVAILABLE carries a receipt; DEPENDENCY_UNAVAILABLE carries a reason and guidance, never both. Native acceptance does not prove browser content, app window state or Finder selection."
+    },
     {
       "id": "provider-selection",
       "group": "provider-selection",

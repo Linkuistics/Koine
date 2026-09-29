@@ -1,0 +1,37 @@
+@startuml workspace-open
+skinparam backgroundColor #F8FAFC
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 17
+skinparam shadowing false
+hide footbox
+title Workspace launch/open — designed, acceptance pending
+participant Client
+participant "Machine core" as Core
+participant Workspace
+participant "macOS / app" as Native
+Client -> Core: launch app / open web URL / open path
+Core -> Core: preflight every root action\nlive admission: both control grants
+Core -> Workspace: admitted action
+Workspace -> Native: resolve installed app / path / handler\nno launch or consent request
+alt missing prerequisite before submission
+  Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
+else ready
+  Workspace -> Native: submit launch/open with activation\nno new instance or copy substitution
+  alt native acknowledgment
+    Native --> Workspace: accepted application
+    Workspace --> Client: AVAILABLE + receipt\noptional reliable PID / kernel start
+  else native error or timeout
+    Workspace --> Client: failed; effect may have begun\nno replay or alternate handler
+  end
+end
+opt receipt includes process and client has desktop:read
+  Client -> Core: desktopApplication(process: PID + start)
+  Core --> Client: desktop state / absent / classified error
+end
+note over Client,Native
+Installed identity is not a held process or file identity.
+Window behavior belongs to the app; later exit remains possible.
+Reveal is a separate operation with Finder acknowledgment.
+Neither control grant implies read or OS consent.
+end note
+@enduml

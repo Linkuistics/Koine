@@ -232,7 +232,10 @@ The instant is the kernel's record of the process's start, as
 `pbi_start_tvusec` (`sysctl` `KERN_PROC_PID` reports the same record as
 `kp_proc.p_starttime`), written exactly as `YYYY-MM-DDTHH:MM:SS.ffffffZ` and
 compared exactly; any other form is an input error. Locating the process is the
-client's: Koine offers no lookup by name or bundle identifier.
+client's in the served baseline: desktop offers no lookup by name or bundle
+identifier. The designed [workspace launch/open extension](workspace-launch-and-open.md)
+can return an observed process incarnation after an explicit action; it does
+not change desktop's lookup input or reference contract.
 
 This identity is the `koine-desktop/1` contract. The
 [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
