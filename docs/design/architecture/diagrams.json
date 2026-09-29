@@ -31,7 +31,7 @@
       "renderer": "svg",
       "source": "desktop-composition.d2",
       "rendered": "desktop-composition.svg",
-      "caption": "Agreed runtime responsibility view: one resident Koine application contains the native UI, server and providers. Closing its management window leaves the listener and observation running. The native UI keeps management authority in process; HTTP clients present bearer credentials backed by live grants. Providers share that process and its OS permissions. The shared resilient Swift framework is agreed."
+      "caption": "Runtime responsibility view: one resident Koine application contains the native UI, server and providers. Closing its management window leaves the listener and observation running. The native UI keeps management authority in process; HTTP clients present bearer credentials backed by live grants. Providers share that process and its OS permissions."
     },
     {
       "id": "source-packages",
@@ -40,7 +40,7 @@
       "renderer": "svg",
       "source": "packages.puml",
       "rendered": "packages.svg",
-      "caption": "Agreed application/framework composition, shown as package dependencies rather than deployment containers. Koine supplies one shared provider framework image, Machine invokes its contracts, and separately built providers conform to them. Published Swift types and protocols carry the compatibility promise; GraphQL-library types remain private. The client owns its GraphQL adapter; no Koine-owned client helper is required for this deliverable."
+      "caption": "Application/framework composition, shown as package dependencies rather than deployment containers. Koine supplies one shared provider framework image, Machine invokes its contracts, and separately built providers conform to them. Published Swift types and protocols carry the compatibility promise; GraphQL-library types remain private. The client owns its GraphQL adapter; no Koine-owned client helper is required."
     },
     {
       "id": "addressing",
@@ -58,7 +58,7 @@
       "renderer": "svg",
       "source": "machine-interface.d2",
       "rendered": "machine-interface.svg",
-      "caption": "Agreed execution flow for an authenticated client operation. The core expands the selected GraphQL operation and checks original schema coordinates, so aliases and fragments do not rename authority. Any denied mutation action prevents all actions from beginning. Revocation is checked again at each dispatch admission. Earlier authorized effects are not rolled back if a later action fails. Enrollment and the in-process console have separately defined admission cases in the spec."
+      "caption": "Execution flow for an authenticated client operation. The core expands the selected GraphQL operation and checks original schema coordinates, so aliases and fragments do not rename authority. Any denied mutation action prevents all actions from beginning. Revocation is checked again at each dispatch admission. Earlier authorized effects are not rolled back if a later action fails. Enrollment and the in-process console have separately defined admission cases in the spec."
     },
     {
       "id": "grants",
@@ -67,16 +67,16 @@
       "renderer": "svg",
       "source": "grants.puml",
       "rendered": "grants.svg",
-      "caption": "Agreed bearer-credential lifecycle and revocation ordering. Anonymous enrollment creates only a pending request. Existing managers or the in-process console approve requests or create manual grants. Approved grants survive restart without automatic expiry; pending-request expiry does not expire them. Secret possession permits own-request status before and after its decision; revoked grants fail authentication. Digest uniqueness prevents retries from creating multiple grants. Already admitted actions may finish. This diagram is not a model-checking result."
+      "caption": "Bearer-credential lifecycle and revocation ordering. Anonymous enrollment creates only a pending request. Existing managers or the in-process console approve requests or create manual grants. Approved grants survive restart without automatic expiry; pending-request expiry does not expire them. Secret possession permits own-request status before and after its decision; revoked grants fail authentication. Digest uniqueness prevents retries from creating multiple grants. Already admitted actions may finish. This diagram is not a model-checking result."
     },
     {
       "id": "plugin-abi-options",
       "group": "plugin-contracts",
-      "title": "Agreed Swift framework and the alternative",
+      "title": "Swift framework and the rejected alternative",
       "renderer": "svg",
       "source": "plugin-abi-options.d2",
       "rendered": "plugin-abi-options.svg",
-      "caption": "The human selected the shared resilient Swift framework. Swift types and protocols are part of its stable published contract, with library evolution and module stability enabled from release one. The C-compatible alternative is not selected. Compatible provider binaries dynamically link the host-supplied framework; newer required symbols need a newer host and are checked before loading."
+      "caption": "Koine uses the shared resilient Swift framework. Swift types and protocols are part of its stable published contract, with library evolution and module stability enabled. Koine does not use the C-compatible alternative. Compatible provider binaries dynamically link the host-supplied framework; newer required symbols need a newer host and are checked before loading."
     },
     {
       "id": "sdk-contributions",

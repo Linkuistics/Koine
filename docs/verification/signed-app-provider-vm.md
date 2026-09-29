@@ -1,7 +1,7 @@
 # Signed application and native providers: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, limited to
-what a signed, hardened process changes for `native-providers-k18`. Loader,
+what a signed, hardened process changes for native providers. Loader,
 trust and compatibility behaviour is proven at the native binary seam
 (`NativeProviderTests`, [binary-compatibility.md](binary-compatibility.md)) in
 unsigned test hosts, where library validation is not in force. Here the host is
@@ -47,8 +47,7 @@ across Koine restarts, and it stays `ACTIVE` while no provider offers its
 - **Library validation is not what refuses the ad-hoc bundle.** Koine's approval
   check refuses it before `dlopen`, as the spec requires, so the kernel is never
   asked. That the image is absent from `lsof` shows no code of it loaded; what
-  the kernel would do with a foreign-team image is not exercised, by design, and
-  belongs to the later increment that adds the library-validation entitlement.
+  the kernel would do with a foreign-team image is not exercised, by design.
 - **The host's framework image, by `lsof`.** The hardened process cannot be
   inspected with `vmmap` (no `get-task-allow`); `lsof` lists its mapped files.
   One `KoineProviderAPI` path, inside `Koine.app/Contents/Frameworks`, together
@@ -64,37 +63,35 @@ across Koine restarts, and it stays `ACTIVE` while no provider offers its
 - **Gatekeeper and quarantine** are as in [resident-app-vm.md](resident-app-vm.md):
   off in the golden, not set by the upload. Nothing was disabled to get here.
 
-## Left for release acceptance, and since answered
+## Shown elsewhere
 
-- ~~The same cases against a **notarized** build on a Gatekeeper-enabled image,
-  with the provider bundle arriving **quarantined**: whether a quarantined,
-  un-notarized same-team plugin still passes `dlopen` is not shown here.~~
-  **Answered** in [notarized-release-vm.md](notarized-release-vm.md): it does
-  **not**. macOS refuses the image with "library load disallowed by system
+- **A notarized build on a Gatekeeper-enabled image, with the provider bundle
+  arriving quarantined**, is not run here. [notarized-release-vm.md](notarized-release-vm.md)
+  shows that a quarantined, un-notarized same-team plugin does **not** pass
+  `dlopen`: macOS refuses the image with "library load disallowed by system
   policy", downstream of Koine's approval record and team comparison, and the
   refusal blocks Koine's startup until its dialog is dismissed. Clearing the
   attribute on the installed copy does not help, because Koine reuses its
-  content-addressed staged copy, which keeps it. `provider-quarantine-rule-k47`
-  carries the rule into README and the spec.
-- ~~The bundled desktop provider loading from `Contents/PlugIns` (the
-  in-application root is empty until `desktop-path-k9`); this run exercises only
-  the per-user root.~~ **Shown** in
-  [notarized-release-vm.md](notarized-release-vm.md): `desktop` is `ACTIVE` on a
-  quarantined notarized bundle, staged and loaded like any other provider, its
-  image mapped from a `Desktop-<digest>` staging copy.
-- ~~The supported OS and CPU matrix: this is one OS build on arm64.~~
-  **Decided** in [latency-and-support-matrix.md](latency-and-support-matrix.md):
-  the supported matrix is macOS 26 on Apple Silicon, and the deployment target
-  was narrowed to it, so one OS major on arm64 is the whole claim rather than a
-  sample of a wider one.
+  content-addressed staged copy, which keeps it. `docs/specs/machine.md`,
+  "Loading and trust", states the rule.
+- **The bundled desktop provider loading from `Contents/PlugIns`**: this run
+  exercises only the per-user root. [notarized-release-vm.md](notarized-release-vm.md)
+  shows `desktop` `ACTIVE` on a quarantined notarized bundle, staged and loaded
+  like any other provider, its image mapped from a `Desktop-<digest>` staging
+  copy.
+- **The supported OS and CPU matrix**: this is one OS build on arm64. The
+  supported matrix is macOS 26 on Apple Silicon
+  ([latency-and-support-matrix.md](latency-and-support-matrix.md)), so one OS
+  major on arm64 is the whole claim rather than a sample of a wider one.
 
 ## Tooling note
 
-The first complete attempt failed in its last case with six consecutive
-`Process timed out after 30s` answers from `file exec` for one client call,
-after both earlier cases had passed; `curl -m 5` cannot itself take 30 s, and
-the next run, unchanged, passed with no retry exhausted. It is the intermittent
-TestAnyware fault already recorded, not Koine.
+One complete attempt before the recorded run failed in its last case with six
+consecutive `Process timed out after 30s` answers from `file exec` for one client
+call, after the other two cases had passed; `curl -m 5` cannot itself take 30 s,
+and an unchanged rerun passed with no retry exhausted. It is the intermittent
+TestAnyware fault of [resident-app-vm.md](resident-app-vm.md#tooling-notes-testanyware-210),
+not Koine.
 
 ## Evidence
 

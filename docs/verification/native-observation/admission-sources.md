@@ -4,7 +4,7 @@ This assessment uses Apple XNU commit
 `f6217f891ac0bb64f3d375211650a4c1ff8ca1ea` and the installed macOS 27.0 SDK.
 It does not identify that source revision with the running 25F71 kernel.
 The [report](../native-observation-receive.md#pre-copyout-admission-assessment)
-states the bounded conclusions and remaining native controls.
+states the bounded conclusions and the native controls not assessed.
 
 Download each source from
 `https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/`
@@ -23,8 +23,8 @@ on line coordinates. The SDK entry uses its absolute installed path.
 | `libsyscall/mach/mach_msg.c` | 175–270 overwrite wrapper, unused scatter size and inline/auxiliary vectors |
 | Installed SDK `usr/include/mach/message.h` | 710–790 receive options/trailer definitions; overwrite value zero |
 
-The requirements session subsequently checked one named enforcement candidate,
-`MPO_FILTER_MSG`, against the same revision:
+A second inspection checked one named enforcement candidate, `MPO_FILTER_MSG`,
+against the same revision:
 
 | Source | Inspected range / subject |
 |---|---|
@@ -33,18 +33,21 @@ The requirements session subsequently checked one named enforcement candidate,
 | `osfmk/kern/mach_filter.h` | Complete header; kernel-private callback interface and its arguments |
 | `osfmk/ipc/ipc_policy.c` | 737–803 message-ID filter; 969–978 conditional invocation |
 
-The reused port header and construction-source hashes match the original
-manifest. The two new source hashes are included below those original entries
-in `admission-primary.sha256`. This check ran no native code and neither
-establishes a resource-enforcement mechanism nor surveys every policy path.
+`osfmk/mach/port.h` and `osfmk/ipc/mach_port.c` appear in both tables under one
+hash each. The hashes of `mach_filter.h` and `ipc_policy.c` follow the first
+table's entries in `admission-primary.sha256`. This check ran no native code and
+neither establishes a resource-enforcement mechanism nor surveys every policy
+path.
 
-The earlier k102 primary digests match the three reused receive/copyout/wrapper
-files item by item. Additional files were downloaded from the same pinned
-revision. This is source inspection only; no kernel resource ceiling, API
-availability or production policy is inferred from absence in a search result.
+The three receive, copyout and wrapper files the second inspection reuses match
+their `admission-primary.sha256` digests item by item; its additional files come
+from the same pinned revision. This is source inspection only; no kernel
+resource ceiling, API availability or production policy is inferred from absence
+in a search result.
 
 Repository graph verification used Tier 2 at generation
-`2026-09-23T11:33:44Z`: the k102 probe's `run_case` was read exactly, its inbound
+`2026-09-23T11:33:44Z`: the receive-budget probe's `run_case`
+([receive-budget.c](receive-budget.c)) was read exactly, its inbound
 `main` and four graph callees were returned without pagination. Coverage for
 the probe and consumed reports had matching metadata and no recorded gap.
 The diagram source was marked not-tracked by the graph and was read directly.

@@ -3,7 +3,7 @@ skinparam backgroundColor #F8FAFC
 skinparam defaultFontName Helvetica
 skinparam defaultFontSize 17
 skinparam shadowing false
-title Agreed bearer grant lifecycle — approval, persistence and revocation
+title Bearer grant lifecycle — approval, persistence and revocation
 [*] --> Pending : client submits credential digest + request
 Pending --> Active : local console or existing manager\napproves capability subset; durable commit
 Pending --> Denied : authorized denial
@@ -19,7 +19,7 @@ Possessing a pending credential grants
 no provider or management authority.
 end note
 note left of Active
-Agreed: transferable bearer credential.
+Transferable bearer credential.
 Check the live grant on every request.
 Restart preserves it; no automatic expiry.
 Client stores the secret in Keychain

@@ -1,6 +1,6 @@
 # Desktop automation uses public Accessibility
 
-Koine's first deliverable uses public macOS Accessibility APIs for window
+Koine uses public macOS Accessibility APIs for window
 listing, focus and notifications. The
 [capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
 the process identity a client submits; Koine checks it before AX work and never

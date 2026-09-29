@@ -185,7 +185,7 @@ never matches.
 This identity is the `koine-desktop/1` contract. Capture it when the
 interaction starts and pass it unchanged; Koine never falls back to the PID
 alone. The [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md)
-records why a non-time identity was not adopted for the first release.
+records why Koine does not use a non-time identity.
 
 Koine uses public macOS Accessibility. During process or window reuse it may
 return another target's data or act on it, and a notification or closure report
@@ -196,7 +196,7 @@ prove nothing happened, so do not retry mutations automatically. The
 lists these accepted limits.
 
 An identity that names no running application — the process ended, or the pid
-now belongs to another process — resolves to ordinary `null` with no error. That
+belongs to another process — resolves to ordinary `null` with no error. That
 is the same answer a client gets for a process that is not an application, and
 the contract deliberately does not tell them apart: each is "that application is
 not running".
@@ -283,10 +283,8 @@ nothing".
 
 ## What version 1 does not do
 
-These were asked for by a client written from the contract alone and are
-declined for `koine-desktop/1`, because each changes the served schema or its
-behaviour after the release evidence was taken. They are candidates for a later
-contract version, not promises:
+A client written from the contract alone asked for each of these;
+`koine-desktop/1` does not provide them:
 
 - an example value or `@specifiedBy` on `DesktopProcessStart` and `Reference`
   (the grammar and the mapping are stated above instead);

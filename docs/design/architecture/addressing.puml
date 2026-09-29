@@ -4,7 +4,7 @@ skinparam defaultFontName Helvetica
 skinparam defaultFontSize 17
 skinparam shadowing false
 hide footbox
-title Agreed desktop interaction — query, choose, re-resolve, act
+title Desktop interaction — query, choose, re-resolve, act
 actor User
 participant "ModalAnyware\nMachine client" as Client
 participant "Koine\nGraphQL + authorization" as Koine

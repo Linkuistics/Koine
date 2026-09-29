@@ -20,18 +20,16 @@ did not happen. That Koine is resident is not offered as evidence of any number.
 | Every TestAnyware VM verification, this latency run included | macOS 26.5 (25F71), a clone of `testanyware-golden-macos-tahoe` | arm64, `Apple M4 Max (Virtual)` |
 | The host-side suites: `task test`, `task compat` | macOS 26.6.2 (25G83) | arm64, Mac16,5, Apple M4 Max |
 
-The matrix was chosen by the human when release acceptance was planned. The only
-golden image is macOS 26 on arm64, and Intel cannot be virtualized on Apple
-Silicon at all, so an x86_64 claim would be unfalsifiable here rather than merely
-untested. Offered a second, older golden image or a matrix distinguishing
-"verified" from "declared", the human chose to narrow the claim to what can be
-run.
+The matrix is what can be run. The only golden image is macOS 26 on arm64, and
+Intel cannot be virtualized on Apple Silicon at all, so an x86_64 claim would be
+unfalsifiable here rather than merely untested. Koine does not declare a wider
+matrix split into "verified" and "declared" tiers, because a declared tier would
+be a claim nothing here could falsify.
 
-**The declared deployment target was narrowed to match**, from macOS 13.0 to
-26.0, and the change is a change to a published claim, so it is in the spec's
-prose rather than only in a plist:
+**The declared deployment target matches it: macOS 26.0.** It is a published
+claim, so it is in the spec's prose as well as in the build's metadata:
 
-| Site | Now | How it is kept |
+| Site | Value | How it is kept |
 |---|---|---|
 | `App/Info.plist` `LSMinimumSystemVersion` | `26.0` | **The source.** `scripts/signing-env.sh` reads it as `MINIMUM_OS`. |
 | `Providers/DesktopProvider/build.sh` compiler target | `-target arm64-apple-macos26.0` | Derived from `MINIMUM_OS`. |
@@ -50,21 +48,21 @@ derived is compared against the source by `scripts/check-minimum-os.sh` —
 `task check:minimum-os`, and on the release path `task app:verify` — which finds
 every `Package.swift` in the tree rather than naming two. **It has been seen to
 fail:** each of the six source sites was mutated in turn and produced its own
-named error and exit 1, and the unmutated tree is clean. Before the bundle was
-rebuilt it also failed on all five of the bundle's sites, which is the check
-catching a stale bundle rather than a stale source.
+named error and exit 1, and the unmutated tree is clean. Against a bundle built
+at the macOS 13.0 floor it fails on all five of the bundle's sites, which is the
+check catching a stale bundle rather than a stale source.
 
 The test fixtures — `Fixtures/FixtureProvider`, `Fixtures/WindowIdentityProbe`,
-`Fixtures/ConsentPromptControl` — still compile for macOS 13.0, deliberately.
+`Fixtures/ConsentPromptControl` — compile for macOS 13.0, deliberately.
 Their declared minimums are the *subject* of the loader's checks (the variants
 span 12.0, 13.0 and 99.0), not a statement of what Koine supports, and
 `ProviderLoaderTests` expects "was built for macOS 13.0" of one of them.
 
-What the narrowing dissolved — x86_64 and universal binaries, macOS 13 to 25,
-`libswiftCompatibilitySpan`, a different compiler on each side, older framework
-minors — is recorded as out of scope, with the reason for each, in
+What the matrix puts out of scope — x86_64 and universal binaries, macOS 13 to
+25, `libswiftCompatibilitySpan`, a different compiler on each side, older
+framework minors — is recorded, with the reason for each, in
 [binary-compatibility.md](binary-compatibility.md), together with the one item it
-did not dissolve.
+does not dissolve.
 
 ## Procedure
 
@@ -248,21 +246,20 @@ d0b58d69f43ba1cd07bc68dc4aac295d837aea551ed006abe9ed319f4d72f42e  …/Desktop.ko
   and parsing of JSON.
 - **Other applications, or many windows.** Finder and TextEdit, three choices at
   most. An application with many windows lists more and was not measured.
-- **The notarized bundle.** The bundle was rebuilt when the floor was narrowed,
-  which discards its stapled ticket, and on the day of the run the notary
-  credential `koine-notary` was absent from this machine's keychain, so it could
-  not be notarized again. The human chose to measure the signed build rather than
-  wait. Notarization staples a ticket and cannot alter a code-signed image, so it
-  changes no warm request; the three image digests above are what the notarized
-  0.1.0 bundle must still carry, and comparing them is how to check that it does.
-  Restoring the credential is the human's step, and `homebrew-distribution-k46`
-  needs it to publish the release artifact at all.
-- **The evidence recorded earlier on the old floor's bundle.** The notarized
-  0.1.0 bundle the release acceptance documents before this one cite was built at
-  `minos 13.0`. Narrowing the floor changed its images' `minos` and nothing in
-  their code, but it is not byte-for-byte the bundle those documents ran.
-- **Every macOS 26 minor.** The floor is declared at the major, as the human chose
-  the matrix. What ran is 26.5 in every VM and 26.6.2 on the host; nothing ran on
+- **The notarized bundle.** The measured bundle is Developer ID signed and not
+  notarized. Notarization staples a ticket and cannot alter a code-signed image,
+  so it changes no warm request; the three image digests above are what a
+  notarized 0.1.0 bundle at the macOS 26.0 floor must carry, and comparing them
+  is how to check that it does.
+- **The bundle the other release-acceptance runs used.** The notarized 0.1.0
+  bundle that [notarized-release-vm.md](notarized-release-vm.md),
+  [release-acceptance-vm.md](release-acceptance-vm.md),
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md) and
+  [contract-only-client.md](contract-only-client.md) ran was built at
+  `minos 13.0`. The 26.0 floor changes its images' `minos` and nothing in their
+  code, but the bundle measured here is not byte-for-byte the one those
+  documents ran.
+- **Every macOS 26 minor.** The floor is declared at the major. What ran is 26.5 in every VM and 26.6.2 on the host; nothing ran on
   26.0 to 26.4. Declaring 26.5 would refuse users there on the strength of an
   absence of evidence rather than a failure.
 - **Another architecture, another OS, another machine.** One Mac, one arm64 VM

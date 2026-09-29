@@ -1,8 +1,7 @@
 # Client-requested grants and request review: VM verification
 
-The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`request-review-ui-and-vm-bootstrap-k37`: the second agreed grant workflow
-through Koine's real window, performed as the bootstrap of the first management
+The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`: the
+client-requested grant workflow through Koine's real window, performed as the bootstrap of the first management
 client. It runs on the Developer ID signed `Koine.app`; there are no application
 mocks, and the client is a script that knows only the endpoint descriptor. The
 protocol itself is covered at the public GraphQL seam (`GrantEnrollmentTests`,
@@ -85,7 +84,7 @@ that again. A run is about eight minutes.
   and leaves at most one pending, well inside both limits. The cap and the rate
   limit are **closed** by
   [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md), which
-  crosses both; expiry and retention remain open, and remain that suite's.
+  crosses both; expiry and retention are shown only by `GrantRequestLifetimeTests`.
 - **That the user compares the code.** The run shows the window's code equals
   the client's receipt. A client that displays it, and a person who looks, are
   outside it.
@@ -113,18 +112,17 @@ that again. A run is about eight minutes.
 ## Evidence
 
 Run of 2026-09-20, transcript `enrollment-20260920T085102.log`, against the
-bundle built from the working copy on `90faa04` that this leaf commits, signed
+bundle built from the working copy on `90faa04`, signed
 `Developer ID Application: Antony Blakey (TA43A4RUP3)`, un-notarized. The
 executable and the six scripts the run reads were digested before and after and
 did not change. VM: clone of `testanyware-golden-macos-tahoe`, macOS 26.5
 (25F71), arm64. Result: **passed**, every expectation above.
 
-Two runs before it stopped on the script's expectations, not on Koine. The first
-expected Return to cancel the confirmation; the dialog has no default button, so
-Return does nothing, which is the stricter behaviour and what step 5 now checks.
-The second compared the grant's capabilities in the order they were ticked;
-Koine stores a grant's capabilities as a sorted set, and the grant was the
-approved subset. In both, Koine's answers in the transcript were correct.
+Two details of the script matter for reading it. Return does not cancel the
+confirmation: the dialog has no default button, so Return does nothing, which is
+the stricter behaviour and what step 5 checks. And a grant's capabilities are
+compared as a set, not in the order they were ticked: Koine stores them as a
+sorted set, and the grant is the approved subset.
 
 Lines over 300 characters are cut at `[…]`.
 

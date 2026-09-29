@@ -1,11 +1,16 @@
 # Resident application: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, limited to
-what `resident-management-k12` built: signed installation, login launch with no
-client, the manual grant workflow and revocation through the real UI, the
-management window closed with the service still answering, and Quit.
-Accessibility attribution, the request/approval workflow, desktop behaviour,
-notarization and the supported OS/CPU matrix belong to later stages.
+signed installation, login launch with no client, the manual grant workflow and
+revocation through the real UI, the management window closed with the service
+still answering, and Quit. Accessibility attribution
+([accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md)),
+the request/approval workflow
+([grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md)), desktop
+behaviour, notarization ([notarized-release-vm.md](notarized-release-vm.md)) and
+the supported OS/CPU matrix
+([latency-and-support-matrix.md](latency-and-support-matrix.md)) are outside
+this run.
 
 ## Procedure
 
@@ -42,16 +47,15 @@ sheet's Copy button through the VM's clipboard to the protected file.
   Developer ID signature verifies strictly there with no certificate installed
   and that the bundle satisfies its designated requirement. It is **not**
   evidence of what Gatekeeper does on a stock machine with a downloaded,
-  un-notarized bundle; nothing was stripped or disabled to get here.
-  **Closed**: a quarantined first launch of the notarized build on a clone whose
+  un-notarized bundle; nothing was stripped or disabled to get here. A
+  quarantined first launch of the notarized build on a clone whose
   assessments are enabled is shown in
   [notarized-release-vm.md](notarized-release-vm.md).
 - **Restart, not log out.** The login item is exercised by a restart and the
   golden's automatic login. Koine is quit before the restart so that macOS's
   reopening of applications that were running cannot be what starts it.
 - **Login-item approval.** Registration went straight to `enabled` with no
-  approval step, as `grant-management-ui-and-login-launch-k16` also saw;
-  `requiresApproval` has not been observed.
+  approval step; `requiresApproval` is not observed in this or any other run.
 
 ## Tooling notes (TestAnyware 2.1.0)
 
@@ -77,8 +81,9 @@ Run of 2026-09-19 against the bundle built from `9991ac9` plus this
 procedure, signed `Developer ID Application: Antony Blakey (TA43A4RUP3)`,
 un-notarized. VM: clone of `testanyware-golden-macos-tahoe`, macOS 26.5
 (25F71), arm64, on an Apple-silicon host. Result: **passed**, every expectation
-above, about two minutes. One earlier complete run the same day also passed;
-the failures before them were the tooling matters noted above, not Koine.
+above, about two minutes. Another complete run the same day also passed;
+the runs that failed that day failed on the tooling matters noted above, not
+Koine.
 
 ```
 == Install the signed bundle (ditto zip, testanyware file upload, ditto -x)

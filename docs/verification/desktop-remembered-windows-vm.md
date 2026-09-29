@@ -1,8 +1,8 @@
 # Desktop remembered windows: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`remembered-windows-across-spaces-k31`: windows Koine has seen that an
-application no longer enumerates are listed as `REMEMBERED`, are dropped when
+remembered windows: windows Koine has seen that an application no longer
+enumerates are listed as `REMEMBERED`, are dropped when
 their end is observed, and are revalidated on every selection. It runs on the
 Developer ID signed `Koine.app` with TextEdit and Finder; there are no application
 mocks. The identity mechanism it rests on is in
@@ -50,7 +50,8 @@ Two grants are created in Koine's window: a reader (`koine:manage`,
 `desktop:read`) and a controller with `desktop:control` alone. Listings are
 `DesktopChoices` and focuses `FocusDesktopWindow`, as
 `docs/design/desktop-operations.graphql` has them. `Fixtures/WindowIdentityProbe`
-is the native witness: `focused` and `windows <pid>` as before, and
+is the native witness: `focused` and `windows <pid>` as in
+[desktop-focus-vm.md](desktop-focus-vm.md), and
 `observe <pid> <seconds>`, which registers for the destruction of every window the
 application lists, waits until it is told of one or the seconds pass, and prints
 what it was told, with its times.
@@ -111,46 +112,49 @@ references are written `<token>` within session `51f495eb080e8bcc`.
   receipt and the probe read 143 focused.
 - Quit: Koine's window shown again, ⌘Q, and no Koine process three seconds later.
 
-Four earlier runs are not the evidence. The first ran a build in which `stop()`
-forgot nothing (found by reading, below) and ended at the closure step, where the
-probe reported no destruction: the exec that started the probe in the background
-had waited for it, so the window closed after the probe's time was up. The probe
-now ends at the first destruction it is told of and stamps its times, and the
-script sees it running, and the window natively gone, before concluding anything.
-The second and fourth ended in the script's scenario, not in Koine: a killed
-TextEdit restores its windows, full screen included, so the rest of the run
-happened inside that Space (`open -F` opens it fresh). The third ended on
-TestAnyware's false timeout at a `lookup` whose answer was complete; `lookup` now
-uses `guest_json`. Every step those runs reached read as it does above.
+Four other runs are not the evidence. One ran a build with the `stop()` fault
+below and ended at the closure step, where the probe reported no destruction:
+the exec that started the probe in the background had waited for it, so the
+window closed after the probe's time was up. Two ended in the script's scenario,
+not in Koine: a killed TextEdit restores its windows, full screen included, so
+the rest of the run happened inside that Space. One ended on TestAnyware's false
+timeout at a `lookup` whose answer was complete. Every step those runs reached
+read as it does above. In the recorded run the probe ends at the first
+destruction it is told of and stamps its times, the script sees it running, and
+the window natively gone, before concluding anything, TextEdit is reopened with
+`open -F`, which opens it fresh, and `lookup` uses `guest_json`.
 
 `WindowObservation` was put to one adversarial read in a fresh context, given the
-sources and their contract. Found and fixed before the run above: forgetting was
-written as `observation?.forget(table.forget(…))`, and an optional chain on no
-observation skips its argument, so `stop()` and a provider without observation
-forgot nothing; a termination notice delivered late could forget a successor that
-had reused the PID, so the kernel is asked first; an observation released without
-`stop()` left its sources in the run loop; and an ended incarnation met only by
-reference was never forgotten. Stated, not fixed: where no main run loop runs, a
-retired watch is never released. That is a host without Accessibility consent,
-where none is ever made.
+sources and their contract; the build of the run above answers its findings.
+Forgetting does not hang off an optional observation: written as
+`observation?.forget(table.forget(…))`, an optional chain on no observation skips
+its argument, so `stop()` and a provider without observation would forget
+nothing. A termination notice asks the kernel first, since one delivered late
+could otherwise forget a successor that had reused the PID. An observation
+released without `stop()` removes its sources from the run loop, and an ended
+incarnation met only by reference is forgotten. One finding is a stated limit,
+not a fix: where no main run loop runs, a retired watch is never released. That
+is a host without Accessibility consent, where none is ever made.
 
-The two earlier desktop verifications were run again afterwards, on the same
-signed build, because this leaf moved the choosing, focusing and witness helpers
-into `scripts/vm-verify-desktop-lib.sh` and changed `lookup`:
+The other two desktop verifications, which share the choosing, focusing and
+witness helpers of `scripts/vm-verify-desktop-lib.sh` and `lookup` with this one,
+were run on the same signed build the same day:
 `task app:vm-verify-desktop-focus`, transcript
 `.build/vm-verify/desktop-focus-20260920T060056.log`, and
 `task app:vm-verify-desktop`, transcript
 `.build/vm-verify/desktop-20260920T063428.log`. Both **PASSED**, exit 0, with no
 guest exec exhausted and the scripts, guest client and provider dylib unchanged
-across them. `task compat` was not run: `KoineProviderAPI` is untouched.
+across them. `task compat` was not run on this build, which changes nothing in
+`KoineProviderAPI`.
 
-## What is incomplete, and stays so
+## What is incomplete
 
 - **A Space no listing was ever made from.** Koine holds only what a client's
   listing has seen. It does not watch applications no client has asked about, so
   a window that was never enumerated while a client listed its application is
-  unknown until it is. Run four showed it: a document opened inside a full-screen
-  Space was not in the listing made from the desktop Space.
+  unknown until it is. One of the runs that are not the evidence showed it: a
+  document opened inside a full-screen Space was not in the listing made from
+  the desktop Space.
 - **A disappearance that is not observable.** A remembered window whose
   application does not answer stays listed with the title last read, until the
   element answers that it is gone, the destruction notice arrives or the process
@@ -161,7 +165,7 @@ across them. `task compat` was not run: `KoineProviderAPI` is untouched.
 - This run is macOS 26.5 on arm64 alone, which is the supported matrix:
   [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
-## Tooling notes for the leaves that follow
+## Tooling notes
 
 - A guest exec that starts a background job waits for it unless the job is fully
   detached: `nohup … </dev/null >file 2>&1 &`.

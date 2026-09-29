@@ -5,7 +5,7 @@ skinparam defaultFontSize 17
 skinparam shadowing false
 skinparam componentStyle rectangle
 top to bottom direction
-title Source packages — shared Swift interface and resident application agreed
+title Source packages — shared Swift interface and resident application
 package "Koine application" {
   component "<color:white><b>Start here · macOS composition</b></color>\n<color:white>UI · HTTP · native loader · storage adapters</color>" as App #25364B
 }

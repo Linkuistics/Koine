@@ -1,5 +1,5 @@
 """
-Agreed koine-desktop/1 schema: the core and the bundled desktop provider as
+The koine-desktop/1 schema: the core and the bundled desktop provider as
 composed, which is what a running Koine serves and what `task conformance`
 checks it against. Descriptions expose authority requirements; discovery never
 grants authority. Root fields are declared in composition order — the core's own,

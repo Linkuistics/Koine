@@ -1,17 +1,18 @@
 # Desktop window identity: which native mechanism upholds the contract
 
-**Scope correction:** the observations below cover their original within-process
-and ordinary-restart scenarios. They do not establish binding across process
-incarnations. A later [actual PID-recycling diagnostic](retained-ax-binding.md)
-showed a held AX window acting on a replacement process. The captured results
-below remain historical evidence; the native no-substitution obligation is open.
+**Scope:** the observations below cover within-process and ordinary-restart
+scenarios. They do not establish binding across process incarnations: an
+[actual PID-recycling diagnostic](retained-ax-binding.md) shows a held AX window
+acting on a replacement process. Across PID reuse, substitution is a limit the
+[public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)
+accepts, not a guarantee this mechanism gives.
 
 `docs/specs/machine.md`, "Resource references and desktop behavior", requires
 that a window reference is re-resolved on every use and that Koine focuses
 *exactly this target or reports `unavailable`*; it leaves "exactly which
 public/native identity APIs support this guarantee" as an implementation
-acceptance obligation. This document discharges it for
-`application-identity-and-window-listing-k28`: the candidates, what each did
+acceptance obligation. This document answers it for the scope
+above: the candidates, what each did
 with real applications in a VM, the mechanism chosen, and what that mechanism
 cannot do.
 
@@ -26,7 +27,7 @@ ever listed, asked again now). For every element it also reports the
 `CGWindowID` from the private `_AXUIElementGetWindow`. That call appears in the
 probe alone, as an independent witness of *which window an element is*, so that
 the public mechanism is checked against something other than itself. Its one-shot
-`focused` and `windows <pid>` modes came later, as the native witness of
+`focused` and `windows <pid>` modes are the native witness of
 [desktop-focus-vm.md](desktop-focus-vm.md).
 
 ```sh
@@ -81,7 +82,8 @@ A window reordered by raising it kept its token; Finder's `AXWindows` order did
 not change when its rearmost window was clicked, so that case shows only that
 relisting is stable, not that order changed.
 
-PID reuse cannot be forced on demand. The observable case is the restart above:
+These runs do not recycle a PID; [retained-ax-binding.md](retained-ax-binding.md)
+does. The case observed here is the restart above:
 a relaunched application has another `startedAt`, and its references carry it.
 
 ### An element that is not a window can be positional
@@ -162,15 +164,16 @@ title, bounds or order is part of the identity, so none of them is ever matched.
   and is not issued again. It held for every window here, AppKit and Finder,
   across 60 further windows in one process. Public API offers no way to prove it
   for every application. Two defences narrow it: every use of a held element
-  checks again that it is still its own window, and
-  `remembered-windows-across-spaces`, which observes destruction, can retire a
-  token the moment its window ends instead of on the next listing.
+  checks again that it is still its own window, and the remembered-window
+  tracking, which observes destruction, retires a token the moment its window
+  ends instead of on the next listing
+  ([evidence](desktop-remembered-windows-vm.md)).
 - **A window that is one of several tabs inside one window** (Finder, Safari)
   has no reference of its own: the reference names the window, whose title
   follows its selected tab.
 - **Windows on another Space are listed only once seen.** `AXWindows` reports the
   current Space alone. Held elements stay valid there, and
-  `remembered-windows-across-spaces` lists them as `REMEMBERED`
+  Koine lists them as `REMEMBERED`
   ([evidence](desktop-remembered-windows-vm.md)); a window on a Space no listing
   was ever made from is not known.
 - **A busy application closes nothing.** A held element is dropped only when it
@@ -178,13 +181,13 @@ title, bounds or order is part of the identity, so none of them is ever matched.
   A listing that an application stops answering part-way is reported `failed`,
   not returned short, and a failed read never becomes an empty title.
 
-### For the leaves that re-resolve and focus
+### What re-resolution and focus rest on
 
-Compare the process incarnation against the kernel immediately before acting;
-table membership proves nothing about the process. Look the token up only under
-the provider's queue. Repeat the own-window check on the held element before
-acting on it. Any further witness belongs in the table entry, which is private,
-not in the reference.
+A use of a reference compares the process incarnation against the kernel
+immediately before acting; table membership proves nothing about the process.
+The token is looked up only under the provider's queue, and the own-window check
+is repeated on the held element before acting on it. Any further witness belongs
+in the table entry, which is private, not in the reference.
 
 ## Evidence
 
@@ -195,9 +198,10 @@ the probe's per-element waits; run 2 repeats it from the state run 1 left; run 3
 in a fresh clone, adds the own-window check and the reuse churn.
 
 The mechanism was also put to one adversarial read in a fresh context, given the
-source, the contract and these observations. What it found and this leaf acted
-on: the own-window check, the check that a listed element belongs to the process
-asked, a wait bound that had applied to the application element alone
-(`AXUIElement.h`: a timeout set on an element holds for that object only), read
-errors that had become empty titles, and pruning on a timeout. What it found and
-is stated above instead: identity reuse, tabs, and windows on other Spaces.
+source, the contract and these observations. The mechanism answers what it
+found with the own-window check, the check that a listed element belongs to the
+process asked, a wait bound set on every element rather than the application
+element alone (`AXUIElement.h`: a timeout set on an element holds for that object
+only), read errors reported as failures rather than empty titles, and no pruning
+on a timeout. What it found and is stated above as a limit instead: identity
+reuse, tabs, and windows on other Spaces.

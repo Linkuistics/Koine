@@ -1,7 +1,7 @@
 # Desktop application and windows: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`application-identity-and-window-listing-k28`: the first desktop path, on the
+resolving an application and listing its windows, on the
 Developer ID signed `Koine.app` with real applications and no application mock.
 Which native mechanism identifies a window, and the evidence for it, is
 [desktop-window-identity.md](desktop-window-identity.md); this run verifies what
@@ -32,7 +32,7 @@ the identity as a variable.
 | Grants | two grants created in Koine's window: `koine:manage` + `desktop:read`, and `desktop:control` alone; each credential by Copy and `pbpaste` | both credential files exist |
 | Provider status | `{ koineManagement { providers { … } } koine { availableCapabilities } }` | `desktop` is `ACTIVE`; `desktop:read` and `desktop:control` are available |
 | Real windows | `open -a Finder`, ⌘N twice | — |
-| Before consent | the query for Finder | recorded, and an error is required: `permission` / `os-permission` naming `accessibility`, at the path `desktopApplication.windows`. `windows` is non-null, so the error discards the enclosing application and `desktopApplication` is null. Its classification is asserted since `reference-lookups-and-accessibility-permission-k29`: [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md). |
+| Before consent | the query for Finder | recorded, and an error is required: `permission` / `os-permission` naming `accessibility`, at the path `desktopApplication.windows`. `windows` is non-null, so the error discards the enclosing application and `desktopApplication` is null. Its classification is asserted in [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md). |
 | Consent | see below | Koine is in System Settings' Accessibility list |
 | Resolve and list | the query for Finder, with its true `pid` and `startedAt` | no errors; name `Finder`, bundle identifier `com.apple.finder`, an application reference; at least two windows, every one titled, all with one title, all references distinct window references, all `CURRENT`. Finder's desktop, which is in its window list, has no row. |
 | Stable references | the same query again | the same set of window references |
@@ -43,13 +43,15 @@ the identity as a variable.
 
 ## Accessibility consent in a VM
 
-Later leaves reuse this route until `accessibility-status-and-consent-ui` gives
-Koine its own request. Consent is System Settings' to record, and the script
+The desktop VM runs give consent by this route; the request Koine's own window
+makes is verified in
+[accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md).
+Consent is System Settings' to record, and the script
 gives it as a user does (`grant_accessibility` in `scripts/vm-verify-desktop.sh`):
 
 1. `open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"`
    opens the pane directly.
-2. Koine never requests consent. Once a read has asked `AXIsProcessTrusted`,
+2. Koine's reads never request consent. Once a read has asked `AXIsProcessTrusted`,
    macOS lists Koine in the pane, switched off, without showing any dialog;
    before that it is not listed. **Add** serves both cases: the button is found
    in the accessibility tree (role `button`, label `Add`), waited for while the
@@ -65,8 +67,7 @@ every Koine build, so it survives reinstalling a rebuilt bundle in one VM; a
 clean clone starts without it.
 
 The image's TCC database is not used. It is readable in the clone, but editing it
-bypasses the consent the OS records and was refused by the session's permission
-policy; nothing here depends on it.
+bypasses the consent the OS records; nothing here depends on it.
 
 The identity probe needed no consent of its own: a command-line tool started by
 `testanyware file exec` is Accessibility-trusted through its responsible
@@ -81,13 +82,15 @@ against a real application, the input error, the capability refusal, and
 distinct, stable references for same-titled real windows, all through loopback
 GraphQL with manually created grants.
 
-PID reuse cannot be forced on demand. What is observable is a live PID claimed
+This run does not force PID reuse;
+[retained-ax-binding.md](retained-ax-binding.md) does. What is observed here is a
+live PID claimed
 at another start instant, here, and a relaunched application with another
 `startedAt`, in the identity evidence. Untitled windows, closure, restart and
 Spaces are exercised natively in the identity evidence, not through GraphQL:
 looking a window reference up again is verified in
 [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md),
-and focusing is `focus-exact-window`'s.
+and focusing in [desktop-focus-vm.md](desktop-focus-vm.md).
 
 ## Evidence
 
@@ -121,15 +124,15 @@ disabled in the golden image, bundle signed
 - The `desktop:control` grant: `kind` `permission`, `permissionClass`
   `capability`, `requiredCapability` `desktop:read`.
 
-The same day, with this leaf's changes in place: `task app:vm-verify` PASSED
+The same day, on the same build: `task app:vm-verify` PASSED
 (`.build/vm-verify/20260919T232144.log`), `task app:vm-verify-providers` PASSED
 (`.build/vm-verify/providers-20260919T230439.log`), and `task compat` passed its
 19 cases.
 
-Two earlier runs of this task ended on the TestAnyware guest-exec fault that
+Two other runs of this task ended on the TestAnyware guest-exec fault that
 [resident-app-vm.md](resident-app-vm.md) describes, not on Koine: a snapshot taken
 while the Accessibility pane was still loading had no **Add** button, and
-`open -a Finder` was reported timed out six times running. The script now waits
+`open -a Finder` was reported timed out six times running. The script waits
 for the button and does not end on a setup command that the following assertions
 verify anyway. `scripts/vm-verify.sh` likewise repeats its last port check when
 the guest returns nothing.

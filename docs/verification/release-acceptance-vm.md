@@ -3,9 +3,9 @@
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, and its
 closing instruction to *"verify the signed release build's entitlement and
 permission behavior rather than extrapolating from an unsigned development
-run"*. Every case here has passed before, on a **development-signed** bundle, in
-a clean VM of its own. What this run adds is that they hold on the **notarized,
-stapled, quarantined** artifact, in **one** session, composed rather than
+run"*. Every case here also passes on a **development-signed** bundle, in a clean
+VM of its own. This run shows that they hold on the **notarized, stapled,
+quarantined** artifact, in **one** session, composed rather than
 sliced — so the failure it exists to catch is *the release path changed
 something*: a different quarantine state, a stapled ticket, a provider loaded
 from a quarantined bundle, a permission attributed to a different identity.
@@ -29,8 +29,7 @@ The clean clone, the transcript (`.build/vm-verify/release-<timestamp>.log`),
 [resident-app-vm.md](resident-app-vm.md). Nothing runs the application on the
 host. The Gatekeeper-enforcing clone, the explicit quarantine attribute and the
 first-run dialog are [notarized-release-vm.md](notarized-release-vm.md)'s
-procedure, now in `scripts/vm-verify-gatekeeper-lib.sh` so that the two routes
-share one copy of it; the guest is started at `1920x2160` for the same reason.
+procedure, in `scripts/vm-verify-gatekeeper-lib.sh`, which the two routes share; the guest is started at `1920x2160` for the same reason.
 
 **The order of this run is forced, and that is why it is one script.** Consent
 absent must be read before consent is given. The second request *in a later run
@@ -38,13 +37,13 @@ of Koine* needs consent absent again, so it follows revocation and a restart of
 Koine. And the VM restart that proves login launch destroys the desktop state
 every other case needs, so it is last.
 
-| Step | How | Expectation checked | Earlier document |
+| Step | How | Expectation checked | Other document |
 |---|---|---|---|
-| Entitlements and hardened runtime | `codesign -d --entitlements - --xml` and `codesign -dvv`, **in the guest, on the installed copy** | the entitlement dictionary is empty, and the flags word is exactly `flags=0x10000(runtime)` — for the application *and* its bundled provider | new: no earlier run read these from a release build |
+| Entitlements and hardened runtime | `codesign -d --entitlements - --xml` and `codesign -dvv`, **in the guest, on the installed copy** | the entitlement dictionary is empty, and the flags word is exactly `flags=0x10000(runtime)` — for the application *and* its bundled provider | only here: no other run reads these from a release build |
 | First launch | plain `open` of the quarantined copy, and the dialog's **Open** | a first-run dialog appeared and is not a refusal; the attribute survives the launch | **repeats** [notarized-release-vm.md](notarized-release-vm.md), which owns the discrimination between the notarized dialog and the two refusals |
 | Consent absent | `desktopApplication` with `desktop:read`; the same with a grant that has only `desktop:control`; `koineManagement.osPermissions` | an `os-permission` error at `["desktopApplication","windows"]`, the application's consent-free fields still resolving, a **capability** refusal naming `desktop:read` for the other grant, `granted: false`, and no dialog on screen | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) and [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md) on the release build |
 | Prompt attribution | the window's Request Accessibility Access, read from the screen | macOS's dialog names **Koine** | **repeats** [notarized-release-vm.md](notarized-release-vm.md) |
-| A **second** request, same run of Koine | the same control again | whatever macOS does is **recorded**, not asserted | **closes** the item [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md) left open |
+| A **second** request, same run of Koine | the same control again | whatever macOS does is **recorded**, not asserted | **closes** the item [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md) does not show |
 | Settings attribution | the dialog's route to System Settings; the entry read; consent then given by the list's **Add** control | Koine is listed, switched **off**, and consent is given there with no restart of Koine | **supersedes** [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md) on the release build |
 | Duplicate titles | two Finder windows, listed twice | same title, distinct references, and the second listing returns the same references | **supersedes** [desktop-application-and-windows-vm.md](desktop-application-and-windows-vm.md) on the release build |
 | PID reuse, as far as it is observable | the live PID at another `startedAt`; an absent PID; a malformed instant | ordinary `null` with **no error** for the first two, an input error for the third | **supersedes** [desktop-application-and-windows-vm.md](desktop-application-and-windows-vm.md) |
@@ -52,17 +51,17 @@ every other case needs, so it is last.
 | Management window closed | `agent window-close`, then a window opened with no management window | the listener answers `200`, the system's count returns to the baseline, and Koine serves the new window under a reference it had not issued before | **supersedes** [resident-app-vm.md](resident-app-vm.md) and the observation half of [desktop-remembered-windows-vm.md](desktop-remembered-windows-vm.md) |
 | Koine restart | quit and relaunch | the **application** reference resolves to the same application, field for field; the **window** reference is `unavailable`; the open windows are listed under the new run's own references | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) |
 | Consent revoked | Koine's switch in System Settings, while Koine runs — driven until the switch itself reports the change | an `os-permission` error at `["desktopApplication","windows"]` and at `["desktopWindow"]`; the consent-free fields still resolving; a missing capability still reported as the capability class; no dialog | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) |
-| A request in a **later** run of Koine | quit, relaunch, request again | recorded, not asserted | **closes** the second half of the same open item |
+| A request in a **later** run of Koine | quit, relaunch, request again | recorded, not asserted | **closes** the second half of the same item |
 | Login launch | the window's toggle, Koine **quit**, then a VM restart | Koine is running after login with nothing having launched it and no client installed; the stapled ticket and the quarantine attribute survive; the grant made before the restart is still reported; an unauthenticated request is `401` | **supersedes** [resident-app-vm.md](resident-app-vm.md) on the release build |
 
 ## How a green run is kept from being empty
 
-Three things in this run exist only because a passing run without them would
-have proved nothing, and each was learned from a run that did exactly that.
+Four things in this run exist only because a passing run without them would
+prove nothing.
 
 - **The witness reads the system before the action, never only after.** A step
-  that reads a state only after acting cannot fail; an earlier run passed a
-  minimised step without ever seeing the window minimised
+  that reads a state only after acting cannot fail; a minimised step can pass
+  without the window ever being minimised
   ([desktop-focus-vm.md](desktop-focus-vm.md)). Here `WindowIdentityProbe` —
   not Koine — establishes that Finder has two same-titled windows **before**
   Koine is asked anything, so the OS-permission refusal that follows is a
@@ -72,23 +71,22 @@ have proved nothing, and each was learned from a run that did exactly that.
   window list and the probe's need not match row for row, so nothing here equates
   them. Each side's **baseline** is recorded and every later claim is a change
   against it: one window closes, and each side loses exactly one.
-- **The repeat consent request is recorded, not asserted.** The open item is
-  *"whether macOS shows the dialog again is unverified"*. An assertion either way
+- **The repeat consent request is recorded, not asserted.** The question is
+  *whether macOS shows the dialog again*. An assertion either way
   would assert the question. What **is** asserted for every request is that Koine
   offers the control and that any dialog that appears names Koine.
 - **A switch is driven until the switch says it moved.** The shared library types
   the administrator password a fixed two seconds after clicking Koine's switch
-  and reads nothing back. Three runs of this script died downstream of a
-  revocation that never happened, reporting *"windows were still listed 60s after
-  consent was revoked"* — a sentence that reads like a finding against Koine and
-  was not one. This run tries each way of pressing the control, prints which one
-  worked, answers whatever macOS put in front of the change, and asserts the
-  control's own value afterwards.
+  and reads nothing back, so a revocation can silently not happen, and the run
+  then fails downstream with *"windows were still listed 60s after consent was
+  revoked"* — a sentence that reads like a finding against Koine and is not one.
+  This run tries each way of pressing the control, prints which one worked,
+  answers whatever macOS puts in front of the change, and asserts the control's
+  own value afterwards.
 
 ### The switch's direction depends on how consent was given
 
-Worth carrying to the leaves that follow, because it cost three runs. With
-consent given **by the switch** in the Accessibility pane, the same switch could
+With consent given **by the switch** in the Accessibility pane, the same switch could
 not afterwards be turned **off**: at identical coordinates on the identical
 36×16 `AXCheckBox`, neither `testanyware agent press` (HTTP 400, as it answers
 for every SwiftUI control here) nor a VNC click at its centre moved it, and
@@ -116,14 +114,15 @@ not interchangeable, and a run that revokes should grant by Add.
   provider still serving.
 - **The grant workflows are not exercised here.** Grants are made in the window
   because the desktop cases need credentials; both workflows end to end on the
-  release build are `grant-workflow-acceptance-k43`'s.
-- **No per-user provider is installed.** The quarantined-plugin rule is
-  [notarized-release-vm.md](notarized-release-vm.md)'s and
-  `provider-quarantine-rule-k47`'s; this run loads only the provider sealed in
+  release build are [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md)'s.
+- **No per-user provider is installed.** The quarantined-plugin rule is the spec's
+  ([loading and trust](../specs/machine.md#loading-and-trust)), verified in
+  [notarized-release-vm.md](notarized-release-vm.md) and
+  [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md); this run loads only the provider sealed in
   the bundle, which the application's own ticket covers.
-- **Login-item approval was not observed**, as in
+- **Login-item approval is not observed**, as in
   [resident-app-vm.md](resident-app-vm.md): registration goes straight to
-  `enabled`, and `requiresApproval` has still not been seen.
+  `enabled`, and `requiresApproval` has not been seen in any run.
 
 ## Evidence
 
@@ -203,11 +202,11 @@ HTTP 200
 Listener without a credential: HTTP 401
 ```
 
-**The open item is closed, and the answer is yes.** macOS showed its consent
-dialog, naming Koine, on all three requests: the first of a run, a second in the
-same run of Koine, and the first of a later run made after consent had been given
-and taken away. `accessibility-status-and-consent-vm.md` recorded that as
-unverified; it is verified here, on the release build.
+**macOS shows its consent dialog again.** It showed it, naming Koine, on all
+three requests: the first of a run, a second in the same run of Koine, and the
+first of a later run made after consent had been given and taken away.
+`accessibility-status-and-consent-vm.md` does not show that; it is verified here,
+on the release build.
 
 **References, before and after the Koine restart.** The application reference
 `koine://desktop/application/362/1789914152397176` resolved to the same
@@ -231,10 +230,9 @@ No behaviour of the release build differed from the spec in this run.
 
 The Gatekeeper-enforcing clone, the explicit quarantine attribute, the first-run
 dialog read as accessibility text and the wait that dismisses a provider refusal
-now live in `scripts/vm-verify-gatekeeper-lib.sh`, extracted unchanged from
-`scripts/vm-verify-notarized.sh` so the two release-artifact routes share one
-copy. `scripts/vm-verify-release.sh` keeps three things of its own rather than
-pushing them into the shared libraries, so that the four passing routes that use
-those libraries are not changed by this leaf: a retry-tolerant `ask`, the
-switch-driving helpers described above, and the `AXWindow` filter that keeps
+live in `scripts/vm-verify-gatekeeper-lib.sh`, which the two release-artifact
+routes, `scripts/vm-verify-notarized.sh` and `scripts/vm-verify-release.sh`,
+share. `scripts/vm-verify-release.sh` keeps three things of its own rather than
+in the shared libraries, which four other routes use: a retry-tolerant `ask`,
+the switch-driving helpers described above, and the `AXWindow` filter that keeps
 Finder's desktop out of the probe's window count.

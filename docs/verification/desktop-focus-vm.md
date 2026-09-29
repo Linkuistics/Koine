@@ -1,7 +1,7 @@
 # Desktop focus: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`focus-exact-window-k30`: `desktopFocusWindow` focuses exactly the window a
+focus: `desktopFocusWindow` focuses exactly the window a
 reference names, or reports why it did not and moves nothing. It runs on the
 Developer ID signed `Koine.app` with Finder, TextEdit and Stickies; there are no
 application mocks. The identity mechanism it rests on is in
@@ -18,8 +18,8 @@ task app:vm-verify-desktop-focus  # scripts/vm-verify-desktop-focus.sh
 Two grants are created in Koine's window: a reader (`koine:manage`,
 `desktop:read`) that lists, and a controller with `desktop:control` **alone** that
 focuses. The guest client sends `DesktopChoices` and `FocusDesktopWindow` with the
-text `docs/design/desktop-operations.graphql` has for them, unchanged; that file's
-other operations name fields a later stage serves, so each is sent alone.
+text `docs/design/desktop-operations.graphql` has for them, unchanged, each sent
+alone.
 
 **Which window has focus is never asked of Koine.** `Fixtures/WindowIdentityProbe`
 (test material, signed, never shipped) reads it from the system after every
@@ -62,9 +62,8 @@ queue and for at most three seconds, until the application reports itself
 frontmost with that element as its focused window. Only then is the receipt
 returned; any step's failure is `failed` and names the step.
 
-**AppKit activation is closed to a background service.** The first build asked
-`NSRunningApplication.activate(options: [])`. In the VM it answered `false` for
-Finder; Koine reported `failed`, "The window was raised, but its application
+**AppKit activation is closed to a background service.** A build that asked
+`NSRunningApplication.activate(options: [])` got `false` for Finder in the VM; Koine reported `failed`, "The window was raised, but its application
 refused the request to activate.", and the witness still read TextEdit's document
 ([desktop-focus/appkit-activation-refused.json](desktop-focus/appkit-activation-refused.json)):
 the failure path of the contract, observed. `NSRunningApplication.h` deprecates
@@ -114,18 +113,18 @@ under the controller grant; every reading below is the probe's.
   `["desktopFocusWindow"]`, data null; System Settings 168 in front before and
   after; no dialog text on screen, `universalAccessAuthWarn` not running.
 
-An earlier run on the same provider binary passed every step as well and is not
+Another run on the same provider binary passed every step as well and is not
 the evidence: its minimised step never saw the window minimised, so it could not
 have failed. The two runs' readings otherwise agree step for step, with that
 VM's own window numbers.
 
-The earlier desktop verification was run again afterwards, because this leaf moved
-its helpers into `scripts/vm-verify-desktop-lib.sh` and put the read path beneath
-it through the same re-resolution focus uses: `task app:vm-verify-desktop`,
+The desktop verification, which shares `scripts/vm-verify-desktop-lib.sh` with
+this one and whose read path goes through the same re-resolution focus uses, was
+run on the same build: `task app:vm-verify-desktop`,
 transcript `.build/vm-verify/desktop-20260920T042411.log`, **PASSED**, exit 0, its
 script, libraries, guest client and the provider's dylib unchanged across the run.
 
-## Tooling notes for the leaves that follow
+## Tooling notes
 
 - The probe's first witness asked the system-wide element for
   `AXFocusedApplication`. From a command-line tool in this VM it answers
@@ -140,16 +139,17 @@ script, libraries, guest client and the provider's dylib unchanged across the ru
   tries running, on a focus whose output held Koine's receipt. `guest_json`
   (`scripts/vm-verify-desktop-lib.sh`) accepts a complete one-line JSON answer
   whatever status the agent reports; a truncated one does not parse and fails.
-- `launch` (`scripts/vm-verify-lib.sh`) no longer ends the run on the status of
-  its `open`: a burst exhausted it once, at a relaunch, with no assertion failed.
-  The window and the endpoint descriptor it then waits for are the proof.
-- A step that reads a state only *after* acting cannot fail. An earlier run passed
+- `launch` (`scripts/vm-verify-lib.sh`) does not end the run on the status of
+  its `open`: a burst can exhaust it at a relaunch with no assertion failed. The
+  window and the endpoint descriptor it then waits for are the proof.
+- A step that reads a state only *after* acting cannot fail. One run passed
   the minimised step without ever seeing the window minimised; the probe's
   `windows <pid>` exists so that the state is seen before the focus.
 
-## Left for later stages
+## What this does not show
 
-`REMEMBERED` rows and selecting one (`remembered-windows-across-spaces`): here the
+`REMEMBERED` rows and selecting one are in
+[desktop-remembered-windows-vm.md](desktop-remembered-windows-vm.md): here the
 other-Space window was listed while it was on the current Space and focused by
 that reference. The latency of a focus, and the supported matrix, are in
 [latency-and-support-matrix.md](latency-and-support-matrix.md); this run is macOS 26.5 on arm64 alone.

@@ -5,7 +5,7 @@ Process Manager serial number (PSN), even paired with the platform boot identity
 can name successive OS processes for one automatically terminated application.
 That pair cannot implement Koine's strict process-incarnation contract.
 
-The test ran on 2026-09-21 in disposable clone `koine-k51-serial`. Koine was not
+The test ran on 2026-09-21 in a disposable TestAnyware clone. Koine was not
 launched. The diagnostic app used public APIs and was compiled with the host
 Xcode SDK, without Developer ID signing or notarization. This is a native API
 counterexample, not product acceptance evidence.
@@ -31,9 +31,9 @@ Boot identity throughout: `25214686-C4E0-4D45-BDF4-2D0B08EF8DB9`.
 Both forward and reverse PSN/PID lookups returned success in all three rows,
 including the row with no live process. The platform's
 [lifecycle log](process-serial-lifetime/lifecycle.json) identifies TAL termination
-and later restoration. An earlier exploratory run observed the same pattern
-with PID 848 → 863 and PSN `0000000000039039`; the table is a separate repeat
-using frozen inputs and captured output.
+and later restoration. A separate exploratory run observed the same pattern
+with PID 848 → 863 and PSN `0000000000039039`; the table is a repeat using
+frozen inputs and captured output.
 
 The app reads `kIOPMBootSessionUUIDKey` through public
 `IORegistryEntryFromPath(kIOMainPortDefault,
@@ -101,9 +101,9 @@ preserving the user's application continuity. The installed
 automatic termination. This experiment establishes that public PSN lookup can
 also preserve that application identity across different kernel processes.
 
-An ordinary quit/relaunch test is insufficient: the earlier TextEdit probe
-returned `procNotFound` for the old PSN and assigned a new serial after relaunch,
-but automatic termination took a different path. Adding a live-process check
+An ordinary quit/relaunch test is insufficient: in an exploratory TextEdit probe
+the old PSN returned `procNotFound` and relaunch assigned a new serial, but
+automatic termination takes a different path. Adding a live-process check
 would detect the middle row only; a delayed request after restoration would
 still find a live process under the original PSN and boot identity.
 

@@ -4,7 +4,7 @@ classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
 Client: "Start here · ModalAnyware or another local client\nGraphQL tooling + its own credential" {class: start}
-Koine: "AGREED · one resident Koine process" {
+Koine: "One resident Koine process" {
   style.font-size: 22
   UI: "Native management UI\nLocal-console authority"
   HTTP: "Loopback GraphQL\nAuthenticate each request"
@@ -20,4 +20,4 @@ OS: "macOS\nLogin launch · Accessibility · Keychain"
 Client -> Koine.HTTP: "GraphQL over loopback HTTP"
 Koine.UI -> OS: "setup and permission guidance"
 Koine.Desktop -> OS: "Accessibility in Koine's process"
-Caption: "AGREED · UI, server and providers share one process.\nClosing the management window leaves Koine resident.\nNative plugins share Koine's trust and permissions."
+Caption: "UI, server and providers share one process.\nClosing the management window leaves Koine resident.\nNative plugins share Koine's trust and permissions."

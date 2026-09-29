@@ -1,10 +1,10 @@
 # A client written from the documented contract alone
 
 The spec's "Client handoff" claims that "standard GraphQL tooling plus a small
-client-owned adapter" is enough, and that "no Koine-owned Swift client library is
-required in the first deliverable". That is a claim about what a **stranger** can
-do, and until this run nothing had tested it. `clients/contract-only` is that
-stranger's client, and this document is the run in which it obtains a grant,
+client-owned adapter" is enough, and that no Koine-owned Swift client library is
+required. That is a claim about what a **stranger** can do, and this run tests
+it. `clients/contract-only` is that stranger's client, and this document is the
+run in which it obtains a grant,
 discovers the endpoint, resolves a running application, lists its windows and
 focuses a chosen one against the notarized bundle.
 
@@ -98,13 +98,12 @@ the presence of an error.
 ## What the stranger fell into
 
 The author's own unedited record is
-[contract-only-client-gaps.md](contract-only-client-gaps.md) — it is the leaf's
-real deliverable and the input to `documentation-and-handoff-k45`. The findings
-that cost the most, ranked by the damage a wrong guess does:
+[contract-only-client-gaps.md](contract-only-client-gaps.md). The findings that
+cost the most, ranked by the damage a wrong guess does:
 
 | # | Finding | Why it matters |
 |---|---|---|
-| 1 | **The process start instant has no documented source.** The contract demands six fractional second digits and never says where a client gets them on macOS. No documented CLI has that precision: `ps -o lstart=` is whole seconds. The only microsecond source is `proc_pidinfo(PROC_PIDTBSDINFO)`, which Node cannot call — so the client compiles a fifteen-line C helper with `/usr/bin/cc` at first use and shells out to it. | A wrong instant makes `desktopApplication` return null for an application that is running, and that null is indistinguishable from "not running". ModalAnyware is TypeScript-fronted and will meet this first. |
+| 1 | **The process start instant has no documented source.** The contract demands six fractional second digits and never says where a client gets them on macOS. No documented CLI has that precision: `ps -o lstart=` is whole seconds. The only microsecond source is `proc_pidinfo(PROC_PIDTBSDINFO)`, which Node cannot call — so the client compiles a fifteen-line C helper with `/usr/bin/cc` at first use and shells out to it. | A wrong instant makes `desktopApplication` return null for an application that is running, and that null is indistinguishable from "not running". A TypeScript client such as ModalAnyware's meets this first. |
 | 2 | **Whether enrolment carries an `Authorization` header is never stated.** The author inferred "no" by combining three sentences hundreds of lines apart. | Getting it wrong 401s, and a wrong header and a wrong digest answer identically. |
 | 3 | **`DesktopProcessStart` has no grammar.** `Reference` gets a precise one; this scalar gets prose and no `@specifiedBy`. `T`, `Z` and the separator were guessed. | Correct, as this run shows — but guessed. |
 | 4 | **The transport rule "invalid credentials return 401" contradicts the status-only poll**, which is specified 300 lines away. | A client implementing the transport section literally cannot poll its own request. |
@@ -116,8 +115,8 @@ that cost the most, ranked by the damage a wrong guess does:
 Three of these are the contract saying less than it knows (1, 3, 7); two are the
 contract contradicting itself across distance (2, 4); the rest are shape. **None
 of them is a defect in the served schema** — the schema conformance check
-([schema-conformance-vm.md](schema-conformance-vm.md)) already covers that, and
-this run found nothing it had missed.
+([schema-conformance-vm.md](schema-conformance-vm.md)) covers that, and this run
+found nothing it misses.
 
 The author also recorded what the contract got **right**, which is the honest
 other half: the enrolment retry rule, the anonymous-budget scoping sentence, the
@@ -125,25 +124,24 @@ other half: the enrolment retry rule, the anonymous-budget scoping sentence, the
 states" sentence, the transport-refusal ordering, reference opacity, and the
 introspection-sorting paragraph that stopped it trying to recompute the digest.
 
-## How each finding was settled
+## Disposition of each finding
 
-Every entry in [contract-only-client-gaps.md](contract-only-client-gaps.md),
-by its section number there, settled in `documentation-and-handoff-k45`. A
-**repair** is a statement now in [the spec](../specs/machine.md) or the
-[client guide](../client-guide.md) that answers it. A **decline** leaves the
-contract as it is for `koine-desktop/1`, with the reason. The human chose to
-repair in prose and decline every change to the served schema or its
-behaviour, since each would move the schema digest, or change what the release
-evidence observed, after that evidence was taken.
+Every entry in [contract-only-client-gaps.md](contract-only-client-gaps.md), by
+its section number there. A **repair** is a statement in
+[the spec](../specs/machine.md) or the [client guide](../client-guide.md) that
+answers it. A **decline** leaves the contract as it is for `koine-desktop/1`,
+with the reason. Every finding is repaired in prose where it can be; every change
+to the served schema or its behaviour is declined, because each would move the
+schema digest or change what the release evidence observed.
 
 | § | Finding | Settled |
 |---|---|---|
-| 1.1 | The start instant has no documented source | **Repaired.** The spec now names the source, `proc_pidinfo(PROC_PIDTBSDINFO)`, and states the comparison is exact. The human first rejected time as a process identity, then kept it for `koine-desktop/1` when the non-time replacement proved out of proportion to the release ([capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)). |
+| 1.1 | The start instant has no documented source | **Repaired.** The spec names the source, `proc_pidinfo(PROC_PIDTBSDINFO)`, and states the comparison is exact. `koine-desktop/1` keeps the start instant as part of process identity ([capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)). |
 | 1.2 | `DesktopProcessStart` has no grammar | **Repaired**: `YYYY-MM-DDTHH:MM:SS.ffffffZ`, exactly, in the spec and the guide. An example or `@specifiedBy` in the schema is **declined** (digest). |
 | 1.3 | Nothing says how to turn a name into a pid | **Repaired**: locating the process is the client's; Koine has no lookup by name or bundle identifier. |
 | 1.4 | `DesktopChoices` reads nothing without consent | **Repaired** in the guide, which says which fields resolve without consent and that a client may write its own operation. A second published operation is **declined**: the published operations are the handoff's path, not a catalogue. |
 | 2.1 | Whether enrollment carries a credential | **Repaired**: it carries none, and one presented with any credential is refused (401 for a credential naming nothing, `permission` for a live one). |
-| 2.2 | "Invalid credentials return 401" contradicts the status-only poll | **Repaired**: the transport section now names the status-only principal. |
+| 2.2 | "Invalid credentials return 401" contradicts the status-only poll | **Repaired**: the transport section names the status-only principal. |
 | 2.3 | Capability names only readable under a grant | **Repaired**: the version-1 set is stated, and an unknown name is refused at submission rather than put to the user. Anonymous `availableCapabilities` is **declined** (behaviour change). |
 | 2.4 | Keychain or file | **Repaired**: the handoff says credential storage, and the guide says both. |
 | 3.1 | No enumerated `kind` vocabulary | **Repaired**: the four values, stated closed for version 1, plus the input error that carries none. A schema enum is **declined**: extensions are not part of a GraphQL schema. |
@@ -161,11 +159,11 @@ evidence observed, after that evidence was taken.
 | 5.2 | Scalars have no machine-readable mapping | **Repaired** in the guide: both are strings. `@specifiedBy` is **declined** (digest). |
 | 5.3 | No standard way to record the generated-against digest | **Repaired**: read `koine { schemaDigest }` beside introspection and store it with the generated code. |
 | 5.4 | Safe introspection options implied | **Repaired**: every `getIntrospectionQuery` option but `inputValueDeprecation`, which is what `task conformance` sends. |
-| 5.6 | The coordinate table is only the desktop half | **Repaired**: the spec's desktop table now points at the management surface's own, and the spec and the guide say the published operations are not a catalogue. |
+| 5.6 | The coordinate table is only the desktop half | **Repaired**: the spec's desktop table points at the management surface's own, and the spec and the guide say the published operations are not a catalogue. |
 | 5.7 | Every spec link points outside the handout | **Declined**: the handout was the exercise's; the repository the links resolve in is published with the release. |
 | 6.1 | No warning against URL-normalising a reference | **Repaired** in the guide. |
 | 6.2 | Is re-submitting a focus a recovery | **Repaired**: no automatic replay; re-submitting is a new request, the caller's to choose. |
-| 6.3 | Three kinds of "not running" answer the same | **Declined**, deliberately: each is "that application is not running", and the spec now says so. |
+| 6.3 | Three kinds of "not running" answer the same | **Declined**, deliberately: each is "that application is not running", and the spec says so. |
 | 6.4 | No published management operations | **Repaired**: stated, with why a client cannot approve itself. |
 
 §2.5, §3.8, §4.6, §5.1 and §5.5 record what worked and need
@@ -174,14 +172,13 @@ the guesses above; each is settled in its own row.
 
 ## What this does and does not show
 
-- **It does not show that the documents are sufficient** — it shows they are
-  sufficient *with* the eight guesses above, ten of which the author ranked. A
-  second stranger guessing differently on finding 1 would have a client that
+- **It does not show that the documents are sufficient** — it shows they were
+  sufficient *with* the guesses the author ranked in §8 of the record. A second
+  stranger guessing differently on finding 1 would have a client that
   silently sees no applications.
 - **The compiled C helper is a finding, not a solution.** A published client
   should not invoke `/usr/bin/cc` at runtime. It is in the tree because removing
-  it would hide the gap that produced it; it goes when the time-based identity
-  it serves is replaced (§1.1 above).
+  it would hide the gap that produced it (§1.1 above).
 - **This is not a Gatekeeper run.** The clone is the ordinary golden, whose
   assessments are disabled, and the bundle is installed unquarantined. The bundle
   is the notarized, stapled one; the enforcing posture is
@@ -190,7 +187,7 @@ the guesses above; each is settled in its own row.
   one, because that is the one a stranger's client drives itself; the published
   operations contain nothing for management, so this client *cannot* approve
   itself, which is correct and deliberate. Both workflows end to end are
-  `grant-workflow-acceptance-k43`'s.
+  [grant-workflow-acceptance-vm.md](grant-workflow-acceptance-vm.md)'s.
 - **The client is not a Koine deliverable.** It is evidence. Nothing ships it,
   and no ModalAnyware decision is bound by its shape.
 
@@ -285,9 +282,8 @@ agent's exec channel: it is about 40 kB, far more than the channel carries
 reliably, and a truncated line would not parse at all. The body itself is written
 to a file in the guest by the client and downloaded whole, so nothing is lost.
 
-One harness failure is worth recording because it will recur. On the first
-attempt the second approval clicked into TextEdit: `testanyware agent snapshot`
-reads a window's accessibility tree **through** whatever covers it, so the
-label and comparison code verified correctly while the click at those screen
-coordinates went to the window on top. Any click driven from a snapshot must
-raise its window first, and `approve_in_window` now does.
+Any click driven from a snapshot must raise its window first.
+`testanyware agent snapshot` reads a window's accessibility tree **through**
+whatever covers it, so a label and comparison code can verify correctly while a
+click at those screen coordinates goes to the window on top — here, an approval
+clicked into TextEdit. `approve_in_window` raises the window before it clicks.

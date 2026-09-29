@@ -22,7 +22,7 @@ Providers are native Swift extensions that contribute to the GraphQL schema.
 A shared resilient Swift framework lets compatible providers and the server
 be upgraded independently. Its published Swift contract is the stable binary
 interface; a TypeScript hosting layer is not required. The desktop provider is
-the first, and is bundled.
+bundled.
 
 Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
@@ -31,8 +31,8 @@ names a process by PID and kernel start instant. Koine uses
 [public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion),
 and accepts wrong-target data or effects during process or window reuse, stale
 notifications and mistaken reference withdrawal.
-Discovering applications that are not running, and an LLM skill
-set, are outside this version.
+Koine does not discover applications that are not running, and provides no LLM
+skill set.
 
 - [Writing a client](docs/client-guide.md): the contract version, how a client
   checks it, and what a client needs from each part of the contract
@@ -82,7 +82,7 @@ shown.
    It sends no `Authorization` header. Without one, Koine admits exactly this:
    an operation whose only selected root action is `koineRequestGrant`. A second
    action, an alias repeating it, `__typename` beside it or any query is HTTP
-   401, as every other request without a credential still is, and nothing is
+   401, as every other request without a credential is, and nothing is
    stored; so is an enrollment that fails validation, whose messages would name
    the schema. A `@skip` or `@include` condition that is not a JSON boolean
    counts as included, here and in mutation preflight. A header that names no live credential is 401 too; it is never
@@ -344,8 +344,7 @@ server construction. `koineManagement.providers`, under `koine:manage`, serves
 one status for every bundle found: these, composition's refusals, `FAILED` for a
 provider whose start threw, and `ACTIVE`.
 
-**Installing or upgrading a first-party provider.** There is no install UI in
-this version. The per-user root is
+**Installing or upgrading a first-party provider.** Koine has no install UI. The per-user root is
 `~/Library/Application Support/Koine/Providers`; create it if it is absent.
 
 1. Sign the bundle with Koine's identity, inside-out: any private dylib first,
@@ -361,7 +360,7 @@ To upgrade, replace the bundle and restart; the record stands as long as the
 new bundle is signed by the same Team ID, and a bundle signed by anyone else is
 refused until the user replaces the record. Only providers signed by Koine's own
 Team ID can load: the application has no library-validation exception, so an
-independently signed third-party provider is not loadable in this version.
+independently signed third-party provider cannot load.
 Superseded staged copies under `ProviderStaging` are not pruned; with Koine
 stopped the directory can be deleted (its contents are read-only, so
 `chmod -R u+w` first).
@@ -477,7 +476,7 @@ older host's dynamic loader refuses it.
 
 ## Desktop provider
 
-`Providers/DesktopProvider` is the first real provider. It is no target of this
+`Providers/DesktopProvider` is the bundled provider. It is no target of this
 package: `build.sh` compiles it against the staged `KoineProviderAPI.framework`
 alone, exactly as the fixture is built, and `task app` seals it in
 `Contents/PlugIns`, where the one native loader admits it under the
@@ -632,9 +631,9 @@ option) is then seen to show. Evidence:
 [docs/verification/desktop-application-and-windows-vm.md](docs/verification/desktop-application-and-windows-vm.md)
 and [docs/verification/desktop-references-and-permission-vm.md](docs/verification/desktop-references-and-permission-vm.md).
 
-The provider contract gained one outcome for this: `ProviderFailure.Kind.invalidInput`,
-for an argument that is well-formed GraphQL but no value of a provider-owned
-type. The host reports it as input coercion.
+`ProviderFailure.Kind.invalidInput` is the provider outcome for an argument that
+is well-formed GraphQL but no value of a provider-owned type. The host reports it
+as input coercion.
 
 ## Resident application
 
@@ -674,11 +673,8 @@ the release artifact; it fails rather than produce an unnotarized one.
 **UI framework: AppKit lifecycle, SwiftUI content.** An `NSApplicationDelegate`
 owns the process and one `NSWindow` hosting SwiftUI views. It is a regular Dock
 application (the [default activation policy](https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/regular)
-for a bundled app), not an accessory. The lifecycle the contract needs is
-documented delegate behaviour rather than SwiftUI scene behaviour, which offered
-no dependable way to re-show a single closed window on the macOS 13 floor this
-was chosen against. The floor is now macOS 26; the choice is not revisited, and
-nothing here claims SwiftUI still lacks that route:
+for a bundled app), not an accessory. The lifecycle the contract needs rests on
+documented delegate behaviour rather than SwiftUI scene behaviour:
 
 - [`applicationShouldTerminateAfterLastWindowClosed`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldterminateafterlastwindowclosed(_:))
   returns `false`: "control returns to the main event loop and the application
@@ -797,17 +793,17 @@ inside the bundle and the images the process mapped. Evidence:
 
 ## Dependencies
 
-Each was chosen from its repository and manifest at the pinned release
-(2026-09-18), not from memory. All support macOS 10.15 or later and Linux.
+Each is chosen from its repository and manifest at the pinned release, not from
+memory. All support macOS 10.15 or later and Linux.
 
 | Library | Use | Why |
 |---|---|---|
 | [GraphQLSwift/GraphQL](https://github.com/GraphQLSwift/GraphQL) 4.2 | Execution engine | Separate `parse`/`validate`/`execute`, full introspection, custom scalars, schemas from SDL with settable per-field resolvers, async `Sendable` resolvers. |
-| [swift-nio](https://github.com/apple/swift-nio) 2.103 | HTTP listener | Direct control of the HTTP/1.1 rules the contract fixes. Hummingbird 2 was the alternative; it adds a router and a dozen packages this one endpoint does not use. |
+| [swift-nio](https://github.com/apple/swift-nio) 2.103 | HTTP listener | Direct control of the HTTP/1.1 rules the contract fixes. Koine does not use Hummingbird 2, because it adds a router and a dozen packages this one endpoint does not use. |
 | [GRDB.swift](https://github.com/groue/GRDB.swift) 7.11 | Grant store | SQLite transactions and migrations with a maintained Swift 6 API. |
 | [swift-crypto](https://github.com/apple/swift-crypto) 5.0 | SHA-256 | CryptoKit's API without binding the core to Apple platforms. |
 
-`KoineCore` has not yet been built on Linux; its imports are Foundation, GraphQL
+`KoineCore` is not built or tested on Linux; its imports are Foundation, GraphQL
 and Crypto only.
 
 Work is driven as a grove task tree under `.grove/`.

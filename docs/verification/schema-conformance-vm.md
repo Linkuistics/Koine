@@ -4,9 +4,8 @@ The "Public GraphQL API" seam of `docs/specs/machine.md`, checked as a whole: th
 schema the **notarized** `Koine.app` actually serves — composed with the desktop
 provider it `dlopen`s out of `Contents/PlugIns` — against
 `docs/design/desktop-schema.graphql`, by type, field, argument, nullability,
-default, deprecation and description. Every stage before this one served the
-fields it made real and left the rest of the design SDL as a target; this is
-where the target came due, and the schema Koine serves is now that file exactly.
+default, deprecation and description. The schema Koine serves is that file
+exactly.
 
 ## Procedure
 
@@ -58,32 +57,23 @@ an **input-object field's default** is not reported, while an argument's is.
 Koine's contract exercises none of the three, and the introspection query a
 standard code generator sends is unaffected.
 
-## What the first run found, and how each difference was settled
+## Where the design SDL follows the served schema
 
-The check's first whole-contract run (`schema-conformance-k40`, 2026-09-20) found
-four differences. None of them survives; they are recorded here because three of
-them are why `docs/design/desktop-schema.graphql` reads as it does, and the fourth
-is why the bundle this document reports on is not the one that run measured.
+**`DesktopFocusReceipt` states each fact where the spec puts it.** The type
+carries its own ("Control-authorized output; it does not expose read-protected
+window state.") and `DesktopFocusReceipt.ref` the one the spec gives the field
+("The submitted target, under the mutation's control authority."), so a
+client's generated types carry both. `Providers/DesktopProvider/schema.graphql`
+and the design SDL agree on both.
 
-**One was the served schema's, and was repaired.**
-`Providers/DesktopProvider/schema.graphql` put the description the spec gives
-`DesktopFocusReceipt.ref` — "The submitted target, under the mutation's control
-authority" — on the **type**, and stated the type's own fact nowhere, so a
-client's generated types carried the first and not the second. That is a finding
-against the provider rather than against the contract, so it was cut as
-`desktop-receipt-descriptions-k48` with the human's decision recorded in it, and
-repaired there: both sentences now stand where the spec puts them, the provider is
-otherwise untouched, and the run reported under **Evidence** below is the
-re-notarized bundle's.
+**Three coordinates carry the served text**, because a reader of
+`docs/specs/machine.md` would predict each served shape:
 
-**Three were reconciled rather than repaired**, because a reader of
-`docs/specs/machine.md` would have predicted each served shape:
-
-| Coordinate | Reconciled how |
+| Coordinate | Why the design SDL reads as it does |
 |---|---|
-| `Koine.schemaDigest` | the design SDL gains the served description; the spec's "Schema digest" already calls it an equality token clients compare and do not recompute |
-| `KoineManagement.osPermissions` | the design SDL gains the served description; the spec already states that a read cannot trigger an OS consent dialog |
-| `Mutation.desktopFocusWindow` | the design SDL takes the served text, which is the spec's own row for that coordinate ("focus exactly this target or report failure", "never focus a substitute"); the mutation-preflight sentence it carried is a property of every mutation, stated under "Mutation preflight and revocation", not of this one field |
+| `Koine.schemaDigest` | the design SDL carries the served description; the spec's "Schema digest" calls it an equality token clients compare and do not recompute |
+| `KoineManagement.osPermissions` | the design SDL carries the served description; the spec states that a read cannot trigger an OS consent dialog |
+| `Mutation.desktopFocusWindow` | the design SDL takes the served text, which is the spec's own row for that coordinate ("focus exactly this target or report failure", "never focus a substitute"); mutation preflight is a property of every mutation, stated under "Mutation preflight and revocation", not of this one field |
 
 The design SDL also declares its root fields in **composition order** — the
 core's own, then the bundled provider's — because the digest is taken over a text
@@ -113,13 +103,9 @@ that keeps declared order and composition is what fixes it.
   `desktop` provider is loaded, which is what the shipped contract is. A schema
   composed with a third-party provider is that provider's to check, through the
   same `task conformance` against its own SDL.
-- **There is one digest, and it is the one below.** The first run's
-  `19615f51…` was the pre-repair bundle's and is superseded, not a second
-  reading: `desktop-receipt-descriptions-k48` changed the two descriptions, moved
-  the digest, re-notarized, and re-ran this check, so the handoff and every leaf
-  after it cite `ee17dfd1…` alone. Any later change to the served schema moves it
-  again, and the leaf that makes the change owns re-running this document —
-  citing a digest an earlier bundle served is the failure this rule exists for.
+- **There is one digest, and it is the one below.** Any change to the served
+  schema moves it, and this check is then re-run against the new bundle; citing
+  a digest an earlier bundle served is the failure this rule exists for.
 
 ## Evidence
 
@@ -133,7 +119,7 @@ it prints is 192 lines (`.build/conformance/served.graphql`).
 
 **`Koine.schemaDigest` served by this build:
 `ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf`** — the one
-value the handoff and the leaves after this one cite.
+value other documents cite.
 
 ```
 == The bundled desktop provider is ACTIVE, so the composed schema is the one being checked
@@ -162,12 +148,11 @@ The served schema matches docs/design/desktop-schema.graphql exactly.
 CONFORMANT: the schema Koine serves is docs/design/desktop-schema.graphql.
 ```
 
-The controls are stronger in this run than in the first one, and not because
-anything in the check changed: the baseline they are judged against is read from
-the unmutated contract rather than assumed, so a conformant contract makes every
-control prove itself against **0** differences instead of against 2. The
-transposed pair is still caught by the digest alone — the standing demonstration
-that declared order is not in the introspected text.
+The baseline the controls are judged against is read from the unmutated
+contract rather than assumed, so a conformant contract makes every control prove
+itself against **0** differences. The transposed pair is caught by the digest
+alone — the standing demonstration that declared order is not in the
+introspected text.
 
 ## Tooling note
 

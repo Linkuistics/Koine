@@ -98,6 +98,11 @@ tasks:
     cmds:
       - scripts/check-minimum-os.sh
 
+  check:docs:
+    desc: Check every relative link and #anchor in the documentation outside .grove/ resolves (--unlinked lists evidence documents nothing living cites)
+    cmds:
+      - scripts/check-doc-links.py {{.CLI_ARGS}}
+
   version:
     desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
     cmds:

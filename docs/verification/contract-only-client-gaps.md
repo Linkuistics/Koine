@@ -1,13 +1,20 @@
 <!--
-The unedited record of the session that wrote clients/contract-only from the
-published contract alone, kept as it was written. It is the primary evidence for
-docs/verification/contract-only-client.md, which ranks these findings and states
-what was done about them. A later session editing this file for tone would be
-editing a stranger's account of reading Koine's documents, which is the one
-thing here that cannot be reproduced.
+The unedited record of the author who wrote clients/contract-only from the
+published contract alone. It is the primary evidence for
+docs/verification/contract-only-client.md, which ranks these findings and gives
+each one's disposition. Below the note under the title it is kept as written: it
+is a stranger's account of reading Koine's documents, which is the one thing here
+that cannot be reproduced, and editing it for tone or to match the current
+contract would destroy that.
 -->
 
 # GAPS
+
+> Each finding's disposition — answered by the [spec](../specs/machine.md) or the
+> [client guide](../client-guide.md), or declined for `koine-desktop/1` with its
+> reason — is in
+> [contract-only-client.md](contract-only-client.md#disposition-of-each-finding).
+> The record below quotes the contract as its author read it.
 
 What the published Koine contract did and did not tell a stranger writing a
 client against it. Written from `machine-spec.md`, `desktop-operations.graphql`,

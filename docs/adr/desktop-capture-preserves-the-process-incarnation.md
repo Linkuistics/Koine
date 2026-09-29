@@ -9,15 +9,15 @@ process under an old capture, and never falls back to the PID alone.
 
 This is the `koine-desktop/1` contract. Time cannot strictly guarantee that two
 incarnations never collide, but a collision needs the kernel to reissue the
-same PID within the same microsecond of start time, and that residual risk is
-accepted for the first release.
+same PID within the same microsecond of start time, and Koine accepts that
+residual risk.
 
-The rejected alternative was a continuously held, non-time native identity,
-sampled in the client's callback and transferred to Koine as a Mach right over
-an authenticated channel. It needed a new capture/transfer protocol, sample
+Koine does not use a continuously held, non-time native identity, sampled in
+the client's callback and transferred to Koine as a Mach right over an
+authenticated channel, because it needs a new capture/transfer protocol, sample
 attribution and expiry, and a body of native evidence far out of proportion to
-the release. PID alone was rejected because PIDs are reused. Process Manager serial number
-plus boot identity was rejected because the
+the residual risk it removes. Koine does not use the PID alone, because PIDs are
+reused, nor a Process Manager serial number plus boot identity, because the
 [restoration counterexample](../verification/process-serial-lifetime.md) keeps
 that pair while the OS process changes.
 

@@ -1,14 +1,14 @@
 # Quarantined per-user providers, judged before `dlopen`: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`quarantined-provider-precheck-k49`. [notarized-release-vm.md](notarized-release-vm.md)
-found that a quarantined, un-notarized provider in the per-user root passes
-every Koine check and is then refused by macOS at `dlopen`, behind a modal
-“libFixtureProvider.dylib” Not Opened dialog that held the service from
-listening, with no `endpoint.json`, until someone clicked Done. The loader now
-asks Gatekeeper before `dlopen` (spec, "Loading and trust"). This run is the
-inverse of that observation, on the same route, and adds the case the check
-must not get wrong: a quarantined provider that **is** notarized.
+quarantined per-user providers. Koine does not leave that judgment to `dlopen`:
+[notarized-release-vm.md](notarized-release-vm.md) shows that a quarantined,
+un-notarized provider that passes every Koine check is refused by macOS at
+`dlopen`, behind a modal “libFixtureProvider.dylib” Not Opened dialog that holds
+the service from listening, with no `endpoint.json`, until someone clicks Done.
+The loader asks Gatekeeper before `dlopen` instead (spec, "Loading and trust").
+This run is the inverse of that observation, on the same route, and adds the
+case the check must not get wrong: a quarantined provider that **is** notarized.
 
 ## Procedure
 
@@ -55,17 +55,16 @@ notarized fixture is submission 96ef5189-8421-4c37-a653-5344a6cd34f8, CDHash
   its image is not mapped, and the bundled desktop provider is `ACTIVE`, mapped
   from its `Desktop-` staging copy. The screen at that point:
   [no-dialog-un-notarized.png](provider-quarantine-precheck/no-dialog-un-notarized.png).
-- **No system dialog, read by the instrument that found one before.** Every
+- **No system dialog, read by the instrument that captures one.** Every
   window's static text is searched for the dialog's wording ("Not Opened", "could
   not verify") — the same accessibility read that captured the dialog whole in
   notarized-release-vm.md's run. It matches on the wording rather than the
-  library's name because Koine's own window now shows the diagnostic, which
-  names the library: the first run of this procedure matched it there and
+  library's name because Koine's own window shows the diagnostic, which names
+  the library: a run of this procedure that matched the name found it there and
   reported a refusal macOS never raised, while its own startup-held witness read
-  "no". That was the script, fixed in `scripts/vm-verify-gatekeeper-lib.sh`, not
-  Koine.
-- **Clearing the installed copy alone still does not help, and is now Koine's
-  refusal.** With the attribute removed from the installed bundle, the relaunch
+  "no". That was the script (`scripts/vm-verify-gatekeeper-lib.sh`), not Koine.
+- **Clearing the installed copy alone does not help, and the refusal is
+  Koine's.** With the attribute removed from the installed bundle, the relaunch
   reuses the content-named staged copy, which keeps it, and the provider is
   again `REJECTED` with the same diagnostic — no dialog.
 - **The diagnostic's own command works.** The script takes it out of the
@@ -93,7 +92,7 @@ notarized fixture is submission 96ef5189-8421-4c37-a653-5344a6cd34f8, CDHash
   observed either.
 - **The 30-second bound.** No run made `spctl` slow; the timeout's refusal is
   read from the code, not seen.
-- **A provider signed by another team.** Only Koine-signed providers load in this
-  version (README), so the check has only ever judged same-team images.
+- **A provider signed by another team.** Only Koine-signed providers load
+  (README), so the check judges only same-team images.
 - **Quarantine on a private dependency.** Every image in the bundle's closure is
   judged, but the fixture used here has none.

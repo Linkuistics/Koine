@@ -1,21 +1,23 @@
 # Notarized release on a Gatekeeper-enforcing VM
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for the one
-combination every earlier run here lacked: a **notarized, stapled** `Koine.app`,
-**quarantined** as a download arrives, on a clone whose Gatekeeper assessments
-are **enabled**. Four evidence documents deferred that gap to this stage
-([resident-app-vm.md](resident-app-vm.md),
+combination the development-signed runs here lack: a **notarized, stapled**
+`Koine.app`, **quarantined** as a download arrives, on a clone whose Gatekeeper
+assessments are **enabled**. It closes that gap for
+[resident-app-vm.md](resident-app-vm.md),
 [signed-app-provider-vm.md](signed-app-provider-vm.md),
 [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md)
-and [grant-enrollment-vm.md](grant-enrollment-vm.md)); this run closes it, and
-answers the open question the second of them left about quarantined plugins.
+and [grant-enrollment-vm.md](grant-enrollment-vm.md), and answers the question about quarantined plugins that
+`signed-app-provider-vm.md` does not.
 
 What this run records about the per-user provider — refused at `dlopen` behind a
 modal dialog that held the service's startup — is the platform's behaviour
-**without** the loader's Gatekeeper check, which `quarantined-provider-precheck-k49`
-added in answer to it. `scripts/vm-verify-notarized.sh` now asserts the inverse,
-and [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md)
-records that run; everything else here stands.
+**without** the loader's Gatekeeper check. Koine's loader asks Gatekeeper before
+`dlopen` and refuses such a provider itself
+([loading and trust](../specs/machine.md#loading-and-trust));
+`scripts/vm-verify-notarized.sh` asserts that, and
+[provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md) records
+that run. Everything else here stands as the current build's behaviour.
 
 ## Procedure
 
@@ -66,21 +68,20 @@ host. Two things are specific to this run:
 - **The first-run dialog is the result, not an obstacle.** A quarantined app gets
   one even when notarized. The notarized dialog says the app was downloaded and
   that "Apple checked it for malicious software and none was detected", and
-  offers **Open**. The two refusals seen on this same golden while the procedure
-  was established — "Apple could not verify…" for an unnotarized build, and "not
-  downloaded from the App Store" for the App Store-only posture — offer no Open
-  button at all. That is what makes the check discriminating rather than one that
+  offers **Open**. The two refusals this same golden shows — "Apple could not
+  verify…" for an unnotarized build, and "not downloaded from the App Store" for
+  the App Store-only posture — offer no Open button at all. That is what makes the check discriminating rather than one that
   accepts whatever dialog appears.
-- **A refused provider stops the service, it does not merely fail to load.**
+- **Without the loader's check, a refused provider stops the service; it does
+  not merely fail to load.**
   Providers are `dlopen`ed while the service comes up, and macOS's refusal is a
   modal dialog a person must dismiss, so the server never begins listening until
   someone clicks Done. The run asserts this directly — Koine's process running
   and **no** `endpoint.json` — rather than inferring it from the dialog. A user
   who downloads a third-party provider can therefore stop Koine starting at all,
-  with no clue but a system dialog naming a `.dylib`. The human's answer, put by
-  `provider-quarantine-rule-k47`, is that it must not: the loader is to refuse a
-  quarantined, un-notarized provider before `dlopen`
-  (`quarantined-provider-precheck-k49`,
+  with no clue but a system dialog naming a `.dylib`. Koine does not allow that:
+  its loader refuses a quarantined, un-notarized provider before `dlopen`
+  ([loading and trust](../specs/machine.md#loading-and-trust),
   [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md)).
 - **Clearing quarantine at install time is not a remedy.** Koine stages each
   provider under a digest of its **content**; removing an extended attribute does
@@ -97,9 +98,8 @@ host. Two things are specific to this run:
   `--timestamp=none`) and is notarized by nothing, so Gatekeeper judges it on its
   own — downstream of Koine's approval record and team comparison, both of which
   passed. This answers the question
-  [signed-app-provider-vm.md](signed-app-provider-vm.md) left open in exactly
-  these words: *"whether a quarantined, un-notarized same-team plugin still
-  passes `dlopen` is not shown here"*. It does not.
+  [signed-app-provider-vm.md](signed-app-provider-vm.md) does not: whether a
+  quarantined, un-notarized same-team plugin still passes `dlopen`. It does not.
 - **Koine reports the refusal properly.** The provider is `REJECTED` with the
   loader's full diagnostic ending "library load disallowed by system policy", so
   the failure is visible through the management surface and not only as a system
@@ -109,9 +109,8 @@ host. Two things are specific to this run:
   to get here, and the App Store-only state the clone passes through on the way
   is stricter rather than weaker.
 - **This does not show** the library-validation entitlement, a third-party-team
-  provider, or `brew install`; the first two remain out of scope as
-  `native-provider-contribution-k8` left them, and the last is
-  `homebrew-distribution-k46`'s. It is one OS build on one architecture, which is
+  provider, or `brew install`; the first two are out of scope for version 1
+  ([loading and trust](../specs/machine.md#loading-and-trust)). It is one OS build on one architecture, which is
   the whole of the supported matrix: [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 ## Evidence
@@ -189,15 +188,15 @@ dialog), `-plugin-refused.png` (the loader refusal) and `-consent-dialog.png`
 
 ## Tooling note
 
-Six runs were spent before this one passed, and four of the failures were the
-procedure's rather than Koine's — recorded because each symptom pointed
-somewhere other than its cause. The startup wait was ordered before the dialog
-dismissal, which deadlocks. The dismissal was then attempted once and latched, so
-a click that lands early leaves the dialog standing for the whole bound.
-`enable_developer_id` `unset` `SNAPSHOT_DEPTH` instead of restoring it, and under
-`set -u` the resulting abort inside `element`'s subshell surfaced from a retry
-loop as "the management window did not appear" — while the failure screenshot
-showed the window present and fully rendered. And `testanyware vm list` reported
-`Running clones: (none)` for a clone `tart list` reported as `running` and whose
-agent answered every call, so a liveness guard built on it failed a good run;
-`tart`'s state column is the instrument, as the TestAnyware guidance says.
+Four faults of procedure produce symptoms that point somewhere other than their
+cause, and the scripts guard each. Waiting for startup before dismissing a
+refusal dialog deadlocks, because the dialog holds startup, so the dismissal
+happens inside the wait. A dismissal attempted once and latched leaves the dialog
+standing for the whole bound when the click lands early, so it is attempted on
+every iteration while the dialog stands. Unsetting `SNAPSHOT_DEPTH` instead of
+restoring it aborts under `set -u` inside `element`'s subshell, which surfaces
+from a retry loop as "the management window did not appear" while a screenshot
+shows the window present and fully rendered. And `testanyware vm list` can report
+`Running clones: (none)` for a clone `tart list` reports as `running` and whose
+agent answers every call, so a liveness guard uses `tart`'s state column, as the
+TestAnyware guidance says.

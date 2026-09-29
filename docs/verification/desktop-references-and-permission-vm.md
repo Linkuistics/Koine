@@ -1,8 +1,7 @@
 # Desktop references and Accessibility permission: VM verification
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`reference-lookups-and-accessibility-permission-k29`: the two by-reference
-lookups, what makes a reference `unavailable`, and what a read does when Koine
+the two by-reference lookups, what makes a reference `unavailable`, and what a read does when Koine
 lacks Accessibility consent. It is the second half of one scripted run, on the
 Developer ID signed `Koine.app` with real applications; the first half, the
 procedure's requirements and the consent route are in
@@ -53,8 +52,8 @@ prints how long the first one took.
 **macOS reports a revocation made this way to the running Koine promptly**:
 `AXIsProcessTrusted` answers false on the next read, with no restart.
 
-**`tccutil reset Accessibility dev.antony.Koine` does not.** An earlier run of
-this script revoked that way. The command reported `Successfully reset
+**`tccutil reset Accessibility dev.antony.Koine` does not.** One run of this
+script revoked that way. The command reported `Successfully reset
 Accessibility approval status for dev.antony.Koine`, and for the 60 s the run
 allowed, every read by the running Koine still listed Finder's windows
 (`.build/vm-verify/desktop-20260920T000543.log`). That is recorded as found, not
@@ -75,16 +74,17 @@ screenshot shows the dialog. A command-line tool would not do: started by
 `testanyware file exec` it is trusted through the agent and is never asked.
 
 **The process that shows the dialog is not a detector.** The dialog belongs to
-`universalAccessAuthWarn`, and this script first looked for that process. Its
-first two runs failed there: after Koine's plain `AXIsProcessTrusted()` came back
-false the process was running, with nothing on screen (the failure screenshots,
-and an accessibility snapshot of the kept VM, show no dialog). In a clone where
-nothing had asked about trust it was not running. So it started here for an
-untrusted application that asked without the prompt option, and showed nothing;
-presumably it is what lists Koine, switched off, in the Accessibility pane, which
-is inferred, not observed. With the control it also runs, which is why the control alone
-did not expose the mistake: it was the reading of Koine that was dirty. Each
-no-dialog check now records whether the process runs, and asserts nothing of it.
+`universalAccessAuthWarn`, but that process runs with nothing on screen. Two runs
+that looked for the process failed there: after Koine's plain
+`AXIsProcessTrusted()` came back false the process was running, with nothing on
+screen (the failure screenshots, and an accessibility snapshot of the kept VM,
+show no dialog). In a clone where nothing had asked about trust it was not
+running. So it starts for an untrusted application that asks without the prompt
+option, and shows nothing; presumably it is what lists Koine, switched off, in the
+Accessibility pane, which is inferred, not observed. With the control it also
+runs, so the control alone cannot expose a detector that watches the process: it
+is the reading of Koine that such a detector gets wrong. Each no-dialog check
+records whether the process runs, and asserts nothing of it.
 
 ## What this does and does not show
 
@@ -95,12 +95,14 @@ substitute, same-titled windows included; what a Koine restart does to each kind
 of reference; and that absent and revoked consent are OS-permission errors at
 the original path, distinguishable from a missing capability, with no dialog.
 
-It does not show PID reuse, which cannot be forced (a live PID at another start
-instant stands for it, in `DesktopProviderTests`), nor an ambiguous native
+It does not show PID reuse, which this run does not force (a live PID at another
+start instant stands for it, in `DesktopProviderTests`, and
+[retained-ax-binding.md](retained-ax-binding.md) shows what a held element does
+after actual reuse), nor an ambiguous native
 identity, which no real application could be made to produce on demand: the
 own-window check that decides it is exercised on every lookup, and its evidence
-is [desktop-window-identity.md](desktop-window-identity.md). Focusing is
-`focus-exact-window`'s.
+is [desktop-window-identity.md](desktop-window-identity.md). Focusing is in
+[desktop-focus-vm.md](desktop-focus-vm.md).
 
 ## Evidence
 
@@ -148,21 +150,20 @@ provider's dylib had the same SHA-1 digests after the run as before it.
 - Control: the screen read found `"ConsentPromptControl" would like to control
   this` at confidence 1.0.
 
-`task test` passed beforehand with this leaf's provider: 107 tests in the server
+`task test` passed beforehand with the run's provider: 107 tests in the server
 suites, among them the eleven `unavailable` cases that need no window and the
 reference naming another provider.
 
-Eight earlier runs of this task did not pass, and none of them on Koine's
-behaviour. Two were the process detector above. One was a function this leaf's
-own edit had deleted from the script. One revoked with `tccutil`, above. Four
-ended on TestAnyware transients: a guest exec reported timed out six times
-running (twice), and `CONNECTION_TIMEOUT`, exit 7, from a key press and from a
-guest exec. `guest` in `scripts/vm-verify-lib.sh` now tries twelve times and also
-retries exit 7, since every command it is given is safe to repeat; a key press is
+Eight other runs of this task did not pass, and none of them on Koine's
+behaviour. Two used the process detector above. One ran a script missing a
+function it called. One revoked with `tccutil`, above. Four ended on TestAnyware
+transients: a guest exec reported timed out six times running (twice), and
+`CONNECTION_TIMEOUT`, exit 7, from a key press and from a guest exec. `guest` in
+`scripts/vm-verify-lib.sh` tries twelve times and also retries exit 7, since every command it is given is safe to repeat; a key press is
 not, and is not retried.
 
-With this leaf's changes in place, the shared helper included: `task
-app:vm-verify` PASSED (`.build/vm-verify/20260920T013307.log`) and `task
-app:vm-verify-providers` PASSED (`.build/vm-verify/providers-20260920T013517.log`).
-`task compat` was not run again: nothing in the package's `Sources/` changed, the provider
-contract included.
+On the same build, the shared helper included: `task app:vm-verify` PASSED
+(`.build/vm-verify/20260920T013307.log`) and `task app:vm-verify-providers`
+PASSED (`.build/vm-verify/providers-20260920T013517.log`). `task compat` was not
+run on this build, which changes nothing in the package's `Sources/`, the
+provider contract included.

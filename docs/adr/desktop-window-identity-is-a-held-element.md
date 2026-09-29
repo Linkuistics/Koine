@@ -10,7 +10,7 @@ number in that run. A listed element is recognised as one already held with
 `CFEqual`, so a window keeps its reference for the life of the provider. Only an
 element that its own content names as its window is ever held. Title, bounds and
 order are never part of the identity and are never matched. A held element that
-its application does not enumerate now, as on another Space, is what the provider
+its application does not currently enumerate, as on another Space, is what the provider
 lists as `REMEMBERED`, under the same reference; there is no second record of
 windows.
 
@@ -26,8 +26,8 @@ reused; a platform closure report is not authenticated proof of closure.
 
 ## Trade-off
 
-Only public API is used. The earlier within-process and ordinary-restart tests
-observed exact targeting: same titles, retitling,
+Only public API is used. Within-process and ordinary-restart tests observed
+exact targeting: same titles, retitling,
 minimising, another Space, closure with a look-alike replacement, and restart
 ([evidence](../verification/desktop-window-identity.md)). The price is that no
 window reference survives a restart of Koine; clients list again. The guarantee

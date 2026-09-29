@@ -32,4 +32,4 @@ which no process restart survives.
 **A structured JSON key.** Invites callers to read it.
 
 The reference contract applies to the native provider and GraphQL design;
-it does not require the inherited generic query/execute wire payload.
+it does not require a generic query/execute wire payload.

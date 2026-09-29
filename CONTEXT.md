@@ -1,15 +1,13 @@
 # Koine language
 
-Terms carried from ModalAnyware's glossary (commit d666016) when this project
-was created. The carried documents say "Machine server" where this project
-says Koine. A term a session here resolves differently is corrected here, and
-ModalAnyware's glossary follows.
+Terms shared with ModalAnyware's glossary. ModalAnyware's documents say
+"Machine server" where this project says Koine. Where the two glossaries
+differ, this one governs and ModalAnyware's follows.
 
 ## Language
 
-**Koine**: This project: the **Machine server**. The name was chosen by the
-human on 2026-09-18 in place of the working name.
-_Avoid_: MachineWare (the earlier working name)
+**Koine**: This project: the **Machine server**.
+_Avoid_: MachineWare
 
 **Machine abstraction**: The view of applications and the desktop as a lazy
 graph of queryable state and executable commands, supplied by **providers**
@@ -26,8 +24,7 @@ query/execute payload.
 abstraction** through a fully introspectable GraphQL API with a capability
 model, hosts native **providers**, holds the OS permissions for their
 operations. Its native management UI and **providers** run in the same process.
-An LLM skill set is planned after the first deliverable unblocks
-ModalAnyware. No project includes the server; ModalAnyware is one of its
+No project includes the server; ModalAnyware is one of its
 **clients**.
 
 **Client**: A program that reaches the **Machine server** over its transport
@@ -62,7 +59,7 @@ _Avoid_: schema version
 
 **Provider**: A native Swift **Machine server** plugin contributing an
 application's or the desktop's GraphQL schema and the implementation of its
-state and commands; the desktop provider is the first. Providers and the
+state and commands; the desktop provider is bundled with Koine. Providers and the
 server can be upgraded independently through the **provider framework**.
 
 **Provider framework**: The shared resilient Swift binary framework defining
@@ -76,42 +73,35 @@ mutation. The engine routes by the authority; the **provider** re-resolves the
 remainder on every use and reports if the resource is unavailable, retaining
 no queried state. A provider's root is a reference with an empty remainder.
 Opaque by contract; represented by the GraphQL `Reference` scalar and an opaque
-string wrapper in client bindings. The scheme follows the project's name, replacing the
-inherited `machine` placeholder according to the existing naming rule.
+string wrapper in client bindings. The scheme follows the project's name.
 _Avoid_: handle, id, key
 
 **Snapshot**: State returned by one on-demand provider resolution, not
 automatically cached or refreshed. The inherited `items/ref/fields` payload
 does not prescribe the GraphQL wire shape.
 
-**Process incarnation**: The particular OS process captured by the client's
-native event handler from the frontmost application when the callback executes.
-Its lifetime ends when that process
-ends; a restored logical application with a new process is a different
+**Process incarnation**: The particular OS process a **client** captures at
+interaction start, named as `{ pid, startedAt }`: the PID and the kernel's start
+instant. Its lifetime ends when that process ends; a restored logical application with a new process is a different
 incarnation. A PID, application name, bundle identifier or Process Manager
 serial number alone does not establish this identity.
 
-**Public Accessibility boundary**: The agreed desktop transport uses macOS AX
-APIs for listing, focus attempts and notifications while retaining a separate
-non-time **process incarnation**. AX data and effects may reach another process
-or window during reuse; notifications may be stale or misattributed. Framework
-AX reception has no Koine hard bound before memory or Mach rights are acquired.
-Koine still bounds its own state/work and enforces grants, consent and capture
-expiry. The capture/right-transfer channel has separate resource obligations.
+**Public Accessibility boundary**: The desktop transport uses macOS AX APIs for
+listing, focus attempts and notifications. Koine checks the **process
+incarnation** before AX work, but that check does not bind the AX destination:
+AX data and effects may reach another process or window during reuse, and
+notifications may be stale or misattributed. Framework AX reception has no Koine
+hard bound before memory or Mach rights are acquired. Koine still bounds its own
+state and work and enforces grants and consent.
 
 **Reference withdrawal**: Permanently making a reference unavailable after
-capture end, a platform closure report or another locally established failure.
+its process incarnation ends, a platform closure report or another locally established failure.
 A platform report can be mistaken; withdrawal does not certify physical closure.
 References never revive or get reused, even after bounded reason records are
-reclaimed. Recovery issues new references under the agreed lifetime rules.
+reclaimed. Recovery issues new references under the reference lifetime rules.
 
-**Endpoint addressing**, **endpoint admission**, **observed-closure retirement**
-and **OS/protocol compatibility profile** occur in historical private-AX
-investigations. They respectively meant retained destination ownership,
-responder authentication, retirement on authenticated lifetime-attributed closure,
-and exact private transport compatibility checks. They are not promises of the
-current public Accessibility contract. **Grant/dispatch admission** remains
-Koine's serialized live-grant and revocation boundary.
+**Grant/dispatch admission**: Koine's serialized live-grant and revocation
+boundary.
 
 ## Example dialogue
 

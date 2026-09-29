@@ -1,14 +1,13 @@
 # Both grant workflows on the release build: VM verification
 
-The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, for
-`grant-workflow-acceptance-k43`: the grant half of release acceptance, run
-against the **notarized, stapled, quarantined** `Koine.app` on a
-**Gatekeeper-enforcing** clone, in one session. Both agreed workflows have each
-been driven before on a development-signed bundle
+The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`: the grant
+half of release acceptance, run against the **notarized, stapled, quarantined**
+`Koine.app` on a **Gatekeeper-enforcing** clone, in one session. Both grant
+workflows are also driven on a development-signed bundle
 ([resident-app-vm.md](resident-app-vm.md),
-[grant-enrollment-vm.md](grant-enrollment-vm.md)); what this run adds is that
-they hold on the release artifact, together, and that it drives the four things
-`grant-enrollment-vm.md` said it did not: a refusal shown in the window, several
+[grant-enrollment-vm.md](grant-enrollment-vm.md)); this run shows they hold on
+the release artifact, together, and drives the four things
+`grant-enrollment-vm.md` does not: a refusal shown in the window, several
 requests pending at once, the pending cap and the enrollment rate limit, and
 revocation of an enrolled grant through the window.
 
@@ -60,15 +59,14 @@ printed. The enrollment workflow touches no clipboard at all.
 | **An enrolled grant revoked in the window** | Revoke, then its destructive confirmation | the row reads `Revoked`; the credential is refused **401** with `WWW-Authenticate: Bearer` **on the connection that had just served it** (local port 49245 before and after), and again on a new connection after a restart |
 | After the restart | the manager's lists | nineteen requests (17 `DENIED`, 2 `APPROVED`) and three grants (`vm-script` and `first-manager` `ACTIVE`, `keepalive-client` `REVOKED`), and no request pending |
 
-## What this run establishes that the earlier one could not
+## What this run establishes beyond grant-enrollment-vm.md
 
 - **The refusal is not raced.** `RequestReviewView` captures the request **by
   value** into `pendingManageApproval` when the `koine:manage` confirmation
   opens, and sends the server nothing until the second click, so the decision
   made over GraphQL while the dialog stands lands squarely between the window's
-  read and the click that reaches Koine. `grant-enrollment-vm.md` called forcing
-  that order "a race the script does not run"; it is not a race, and no clock is
-  beaten. `OrderingHook` is internal to `KoineCore` and reaches no notarized
+  read and the click that reaches Koine. Forcing that order is not a race, and no
+  clock is beaten. `OrderingHook` is internal to `KoineCore` and reaches no notarized
   bundle.
 - **The two refusals are told apart.** Past the rate limit the transport answers
   429 with `Retry-After` and no GraphQL error extensions; past the pending cap
@@ -85,29 +83,27 @@ printed. The enrollment workflow touches no clipboard at all.
   was served on the connection that had just been served 200; without it the run
   would show only that a revoked credential fails on *some* connection.
 
-## What `grant-enrollment-vm.md`'s "does not show" list looks like now
+## `grant-enrollment-vm.md`'s "does not show" list, against this run
 
 - **A refusal shown in the window** — **closed**. The sentence the window
   composes and its re-read of both lists were driven here.
 - **The pending cap and the enrollment rate limit** — **closed**, both crossed.
-  **Expiry and retention remain open** here and are not this run's: they need a
-  clock a VM does not have, and `GrantRequestLifetimeTests` covers them with
-  `Harness(clock:)`.
+  **Expiry and retention are not shown in a VM**: they need a clock a VM does
+  not have, and `GrantRequestLifetimeTests` covers them with `Harness(clock:)`.
 - **Several requests pending together** — **closed**. Sixteen at once, with the
   layout and the scrolling driven.
 - **Revocation of an enrolled grant** through the window, and the secret's 401
   afterwards — **closed**, on a live connection and after a restart.
-- **That the user compares the code** — **still open, and deliberately outside
-  this leaf.** The run shows the window's code equals the client's receipt
+- **That the user compares the code** — **open.** The run shows the window's code equals the client's receipt
   (`G69V-VQJJ`). A client that displays it, and a person who looks, are not
   shown here either.
-- **The clipboard** — the enrollment workflow still touches none. The manual
+- **The clipboard** — the enrollment workflow touches none. The manual
   workflow touches the **guest's**, which is the window's only credential
   delivery; the host's is never touched. An accessibility search covers what the
   window exposes, not pixels.
 - **Gatekeeper assessments disabled, no quarantine** — **closed**. This run is
   on a Gatekeeper-enforcing clone with the quarantined notarized bundle, so the
-  enrollment cases themselves now stand on the release artifact.
+  enrollment cases themselves stand on the release artifact.
 
 ## What this does not show
 
@@ -139,7 +135,7 @@ printed. The enrollment workflow touches no clipboard at all.
 - **No desktop operation succeeds here.** `desktopApplicationByReference` appears
   once, as a probe that a pending requester cannot reach a provider operation;
   the desktop path is [release-acceptance-vm.md](release-acceptance-vm.md)'s and
-  the leaves it cites.
+  the documents it cites.
 - **Login launch, consent and entitlements** are not re-driven;
   [release-acceptance-vm.md](release-acceptance-vm.md) owns them on this same
   bundle.
@@ -149,8 +145,8 @@ printed. The enrollment workflow touches no clipboard at all.
 Run of 2026-09-21, transcript `grant-workflows-20260921T013850.log`, against the
 **notarized, stapled 0.1.0** bundle that
 [release-acceptance-vm.md](release-acceptance-vm.md) ran against, signed
-`Developer ID Application: Antony Blakey (TA43A4RUP3)`; this leaf changes no
-application source and did not rebuild it. The nine files the run reads — the
+`Developer ID Application: Antony Blakey (TA43A4RUP3)`, not rebuilt for this
+run. The nine files the run reads — the
 script, the three libraries it sources, `signing-env.sh`, the two guest Python
 clients, the guest shell client and Koine's own executable — were digested
 before and after and did not change. VM: clone of
@@ -158,31 +154,24 @@ before and after and did not change. VM: clone of
 1920×2160, Gatekeeper `assessments enabled; developer id enabled`. Result:
 **passed**, every expectation in the table above.
 
-Three earlier runs stopped on this script's own expectations, not on Koine, and
-each is worth recording because the first two read as findings against Koine and
-were not:
+Three properties of the script matter for reading its failures, because each
+guards a failure that reads as a finding against Koine and is not:
 
-1. `deny-pending` reported the set it had denied rather than the state
-   afterwards. The agent repeated the exec it had falsely reported as timed out,
-   the repeat had nothing left to deny, and the run died on "the manager denied
-   no such request" — about a denial that had already happened. Every guest
-   command was then classified rather than that one patched; the two that were
-   not repeat-safe are fixed, and this one now prints every request's state with
-   the listing's own status and errors beside it, so an empty list can never be
+1. Every guest command is repeat-safe, because the agent repeats an exec it has
+   falsely reported as timed out. `deny-pending` prints every request's state
+   afterwards, with the listing's own status and errors beside it, rather than
+   the set it denied — so a repeat that finds nothing left to deny is not
+   reported as "the manager denied no such request", and an empty list is never
    read as an empty set of requests.
-2. The refusal was driven correctly and asserted wrongly: the run reached
-   `“refused-client” was not approved: it is already denied.` and then failed
-   comparing it against `text_of`, which joins **every** string in the element,
-   so the identifier and the platform role arrive in front of the sentence. The
-   other reads here pass that helper to `grep`, which is why the difference had
-   not shown up before.
-3. `testanyware input scroll … --dy -10` is parsed as a cluster of short flags
-   ("unexpected argument '-1' found"). `--dy=-10` is the form, and which sign
-   moves towards the end of the list is now measured on a row rather than
-   assumed.
+2. The window's sentence is read from the element's `value` and compared
+   exactly. `text_of`, which the other reads pass to `grep`, joins **every**
+   string in the element, so the identifier and the platform role arrive in
+   front of the sentence.
+3. The scroll is `testanyware input scroll … --dy=-10`; `--dy -10` is parsed as a
+   cluster of short flags ("unexpected argument '-1' found"). Which sign moves
+   towards the end of the list is measured on a row, not assumed.
 
-In all three, Koine's own answers in the transcript were correct. No behaviour of
-the notarized build differed from the spec in any run.
+No behaviour of the notarized build differed from the spec in this run.
 
 Lines over 300 characters are cut at `[…]`.
 
