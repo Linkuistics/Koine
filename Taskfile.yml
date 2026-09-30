@@ -286,8 +286,24 @@ tasks:
     cmds:
       - scripts/vm-verify-contract-client.sh
 
+  app:vm-verify-launch-contract-client:
+    desc: Verify in a clean TestAnyware macOS VM that the contract-only client, regenerated from the schema the signed bundle serves and written from the documented contract alone, obtains its grants through the window, introspects that schema, and launches Notes through workspaceLaunchApplication while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive as an independent witness sees activation; telling apart a dependency that is unavailable, a capability denial with its complete required set, a launch that failed and an absent process; and hands the receipt's process to a desktop read unchanged
+    deps: [client]
+    cmds:
+      - scripts/vm-verify-launch-contract-client.sh
+
   conformance:
-    desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against the extension-host profile (docs/design/profiles/) by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served, and the provider candidates it runs against the profile's pin; the run first proves the check red against four mutated copies of the contract and three mutated pins
+    desc: Hold three profiles (docs/design/profiles/) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
+    cmds:
+      - scripts/conformance.sh
+
+  conformance:headless:
+    desc: Only the two profiles a headless host serves, old-host and extension-host core + desktop; no VM
+    cmds:
+      - KOINE_CONFORMANCE_SKIP_VM=1 scripts/conformance.sh
+
+  conformance:vm:
+    desc: Only core + desktop + workspace, served by the signed Koine.app in a clean TestAnyware macOS VM (the application is built by `task app`; notarization is recorded, not required)
     cmds:
       - scripts/vm-verify-conformance.sh
 

@@ -1,0 +1,15 @@
+{
+  "name": "extension-host core + desktop + workspace",
+  "design": "../desktop-workspace-schema-extension-host.graphql",
+  "management": "extended",
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": null
+    },
+    {
+      "provider": "workspace", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": null
+    }
+  ]
+}

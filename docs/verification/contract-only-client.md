@@ -287,3 +287,16 @@ Any click driven from a snapshot must raise its window first.
 whatever covers it, so a label and comparison code can verify correctly while a
 click at those screen coordinates goes to the window on top — here, an approval
 clicked into TextEdit. `approve_in_window` raises the window before it clicks.
+
+## The launch path (launch-contract)
+
+The client was regenerated from the introspection the **signed** build serves with
+the workspace provider bundled (digest `a56a3387…`) and extended with `launch`, and
+the run above still applies to it. What the launch added to what a stranger meets,
+the discipline it was written under (an instruction this time, checked against the
+author's tool calls afterwards, not a sandbox) and the VM run that drives it are in
+[launch-contract.md](launch-contract.md); the sixteen places it had to guess, each
+repaired in the documents or declined for version 1, are in
+[launch-contract-client-findings.md](launch-contract-client-findings.md). `task
+client` now generates the operations the client uses from both published operations
+files, by name, and the desktop five still run unmodified.

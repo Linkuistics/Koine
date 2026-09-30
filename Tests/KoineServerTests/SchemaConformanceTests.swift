@@ -2,9 +2,11 @@ import Foundation
 import GraphQL
 import KoineConformanceCheck
 import KoineCore
+import KoineProviderAPI
 import Testing
 
 @testable import KoineServer
+@testable import WorkspaceProviderLogic
 
 /// The instrument `task conformance` runs on, pinned here.
 ///
@@ -301,11 +303,11 @@ import Testing
         return try String(contentsOf: root.appending(path: path), encoding: .utf8)
     }
 
-    private func composed() async throws -> (canonical: String, digest: String) {
-        let sdl = try Self.repositoryFile("Providers/DesktopProvider/schema.graphql")
+    private static func desktopStub() throws -> Stub {
+        let sdl = try repositoryFile("Providers/DesktopProvider/schema.graphql")
         // The coordinates the real descriptor registers; the schema does not
         // depend on their authority, only on their being complete.
-        let desktop = Stub(
+        return Stub(
             id: "desktop", prefix: "Desktop", sdl: sdl,
             fields: [
                 ("Query.desktopApplication", .read),
@@ -321,7 +323,21 @@ import Testing
             ],
             origin: .bundled
         )
-        let harness = try await Harness(providers: [desktop.active])
+    }
+
+    /// The workspace bundle's real descriptor and the SDL it ships, with a
+    /// provider that is never asked anything: only the schema is composed here.
+    private static func workspaceProvider() throws -> ActiveProvider {
+        ActiveProvider(
+            descriptor: workspaceDescriptor(
+                schemaSDL: try repositoryFile("Providers/WorkspaceProvider/schema.graphql")),
+            provider: WorkspaceCompositionTests.ScriptedWorkspace(WorkspaceCompositionTests.Script()),
+            origin: .bundled
+        )
+    }
+
+    private func composed(_ providers: [ActiveProvider]) async throws -> (canonical: String, digest: String) {
+        let harness = try await Harness(providers: providers)
         #expect(harness.server.providerDiagnostics.isEmpty)
         let credential = try await harness.consoleGrant(label: "c", capabilities: [])
         let introspection = try await harness.post(
@@ -335,6 +351,10 @@ import Testing
         let canonical = try CanonicalSchemaText.canonicalText(
             ofSDL: try IntrospectionSDL.sdl(fromIntrospectionResponse: response))
         return (canonical, digest)
+    }
+
+    private func composed() async throws -> (canonical: String, digest: String) {
+        try await composed([Self.desktopStub().active])
     }
 
     /// Two claims at once, because either alone can be satisfied by a schema
@@ -354,6 +374,52 @@ import Testing
         #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         // Declared order too, which the report above cannot see.
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
+    // MARK: core + desktop + workspace
+
+    /// The same two claims for the third profile: the bundles' own SDL, composed
+    /// with the core through the engine, is the workspace profile's design file,
+    /// declared order included.
+    @Test func theServedCoreDesktopWorkspaceSchemaIsItsDesignContract() async throws {
+        let design = try Self.repositoryFile("docs/design/desktop-workspace-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: design))
+        ).differences()
+        #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
+    /// What is not implemented yet. A leaf that lands a root removes its
+    /// coordinates from here, and the profile's design file gains them: the set
+    /// only ever shrinks, toward the complete workspace design.
+    static let workspaceCoordinatesNotYetImplemented: Set<String> = [
+        "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath", "Mutation.workspaceRevealPath",
+        "WorkspaceRevealResult", "WorkspaceRevealReceipt",
+    ]
+
+    /// The workspace part of the profile is the design SDL restricted, never
+    /// reworded: against the desktop design plus the complete workspace design,
+    /// the profile's file lacks exactly the roots not implemented and the types
+    /// only they reach, and every coordinate it does declare is identical — text,
+    /// nullability, arguments and all.
+    @Test func theWorkspaceProfileIsTheWorkspaceDesignRestrictedVerbatim() throws {
+        let profile = try Self.repositoryFile("docs/design/desktop-workspace-schema-extension-host.graphql")
+        let complete = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
+            + "\n" + (try Self.repositoryFile("docs/design/workspace-schema.graphql"))
+        let found = SchemaComparison(
+            served: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: profile)),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: complete))
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == Self.workspaceCoordinatesNotYetImplemented,
+            Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        // The shipped SDL is that same restriction: nothing implemented is missing from it.
+        #expect(
+            try CanonicalSchemaText.canonicalText(ofSDL: profile).contains("workspaceLaunchApplication"))
     }
 }
 
@@ -422,6 +488,32 @@ import Testing
                 != CanonicalSchemaText.digest(ofSDL: String(contentsOf: extended.design, encoding: .utf8)))
     }
 
+    /// The workspace profile is the extension-host profile plus the workspace
+    /// contribution and its candidate, and nothing else: against the desktop-only
+    /// design file it adds the workspace coordinates and changes no other.
+    @Test func theWorkspaceProfileAddsTheWorkspaceContributionAndNothingElse() throws {
+        let extended = try Self.profile("core-desktop-extension-host")
+        let workspace = try Self.profile("core-desktop-workspace-extension-host")
+        #expect(workspace.profile.management == .extended)
+        #expect(workspace.design.lastPathComponent == "desktop-workspace-schema-extension-host.graphql")
+        let extendedText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: extended.design, encoding: .utf8))
+        let workspaceText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: workspace.design, encoding: .utf8))
+        let found = SchemaComparison(
+            served: try parse(source: workspaceText), design: try parse(source: extendedText)
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == [
+                "Mutation.workspaceLaunchApplication", "WorkspaceApplicationInput",
+                "WorkspaceOperationStatus", "WorkspaceDependencyReason",
+                "WorkspaceDependencyUnavailable", "WorkspaceProcessIdentity",
+                "WorkspaceOpenReceipt", "WorkspaceOpenResult",
+            ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        #expect(workspace.profile.providers.map { $0.fields["provider"] ?? nil } == ["desktop", "workspace"])
+    }
+
     // MARK: Candidates
 
     @Test func theExactPinnedCandidateHoldsTheProfile() throws {
@@ -429,6 +521,50 @@ import Testing
         #expect(extended.problems(inServed: [Self.row()]).isEmpty)
         let old = try Self.profile("core-desktop-old-host").profile
         #expect(old.problems(inServed: [Self.row(extended: false)]).isEmpty)
+    }
+
+    private static func workspaceRow(_ overrides: [String: String?] = [:]) -> [String: String?] {
+        row(["provider": "workspace", "candidateId": "c2", "selectedCandidateId": "c2"].merging(overrides) { $1 })
+    }
+
+    @Test func bothPinnedCandidatesHoldTheWorkspaceProfile() throws {
+        let workspace = try Self.profile("core-desktop-workspace-extension-host").profile
+        #expect(workspace.problems(inServed: [Self.row(), Self.workspaceRow()]).isEmpty)
+        // The order the host reports them in is not the profile's to fix.
+        #expect(workspace.problems(inServed: [Self.workspaceRow(), Self.row()]).isEmpty)
+    }
+
+    @Test func aMissingRequiredWorkspaceFailsTheWorkspaceProfile() throws {
+        let workspace = try Self.profile("core-desktop-workspace-extension-host").profile
+        let problems = workspace.problems(inServed: [Self.row()])
+        #expect(problems.count == 1, Comment(rawValue: "\(problems)"))
+        #expect(problems[0].contains("required workspace 1.0.0") && problems[0].contains("is missing"))
+        // And an extension-host profile with no workspace fails a host that serves one.
+        let desktopOnly = try Self.profile("core-desktop-extension-host").profile
+        let stray = desktopOnly.problems(inServed: [Self.row(), Self.workspaceRow()])
+        #expect(stray.count == 1 && stray[0].contains("unexpected row workspace"))
+    }
+
+    @Test(arguments: [
+        ("a different workspace release", ["version": "1.1.0"]),
+        ("a different workspace schema", ["schemaVersion": "2.0.0"]),
+        ("a workspace that failed", ["state": "FAILED"]),
+        ("a per-user workspace", ["origin": "PER_USER"]),
+        ("a workspace that was not selected", ["selection": "NOT_SELECTED"]),
+    ] as [(String, [String: String?])])
+    func aWorkspaceThatDiffersFromThePinIsNamedWithWhatIsServed(
+        what: String, changes: [String: String?]
+    ) throws {
+        let workspace = try Self.profile("core-desktop-workspace-extension-host").profile
+        let problems = workspace.problems(inServed: [Self.row(), Self.workspaceRow(changes)])
+        // The pinned row is named with what is served instead, and the served row the
+        // profile did not expect is reported beside it.
+        #expect(
+            problems.contains {
+                $0.contains("required workspace 1.0.0") && $0.contains("is not served as expected")
+            }, Comment(rawValue: "\(what): \(problems)"))
+        #expect(problems.contains { $0.contains("unexpected row workspace") })
+        #expect(problems.count == 2, Comment(rawValue: "\(what): \(problems)"))
     }
 
     @Test func aRequiredProviderThatIsOmittedFailsTheProfileRatherThanShrinkingIt() throws {

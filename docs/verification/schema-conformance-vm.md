@@ -1,35 +1,51 @@
-# Whole-contract schema conformance on the notarized build
+# Whole-contract schema conformance
 
 The "Public GraphQL API" seam of `docs/specs/machine.md`, checked as a whole: the
-schema the **notarized** `Koine.app` actually serves — composed with the desktop
-provider it `dlopen`s out of `Contents/PlugIns` — against
-`docs/design/desktop-schema.graphql`, by type, field, argument, nullability,
-default, deprecation and description. The schema Koine serves is that file
-exactly.
+schema a host actually serves, composed with the providers it bundles, against a
+design SDL, by type, field, argument, nullability, default, deprecation and
+description. The schema Koine serves is that file exactly. `task conformance` does
+it for three profiles, each against the host that serves it.
 
-## Profiles (selection-diagnostics)
+## Profiles
 
-The 0.1.0 run recorded below held the host to `docs/design/desktop-schema.graphql`.
-That file is now the **old-host profile's** design SDL and is unchanged. The
-notarized build is an extension host: it serves the same schema plus the candidate
-diagnostics on `KoineProviderStatus`, so `task conformance` holds it to the
-`core-desktop-extension-host` profile
-([`docs/design/profiles/`](../design/profiles/)): the design SDL
-`desktop-schema-extension-host.graphql` **and**, pinned separately, the provider
-candidates the host runs (`desktop` 1.0.0, `BUNDLED`, `SELECTED`). The run adds
-three controls for the pin (a different release, a required provider that is not
-served, a served row the profile does not expect) beside the four for the design
-text. A run against the extension-host profile is a new recording; the transcript
-below was made against the original file and stays what it says it is. Evidence
-for the extension-host profile is recorded where its run is (pending the next
-notarized build); the same pin and the design SDL run against a real independent
-host in `task compat`, see [binary-compatibility.md](binary-compatibility.md).
+A profile ([`docs/design/profiles/`](../design/profiles/)) is a design SDL and,
+pinned separately from it, the exact provider candidates the host runs: an
+identical schema and digest cannot say which binary ran.
+
+| Profile | Design SDL | Candidates pinned | Served by |
+|---|---|---|---|
+| `core-desktop-old-host` | `desktop-schema.graphql`, unchanged since 0.1.0 | `desktop` 1.0.0 / 1.0.0, `ACTIVE` | the **released** v0.1.0 server, built from its own sources, with the desktop provider built from that release bundled |
+| `core-desktop-extension-host` | `desktop-schema-extension-host.graphql` | `desktop` 1.0.0 / 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED` | this tree's headless host, desktop its only bundled provider |
+| `core-desktop-workspace-extension-host` | `desktop-workspace-schema-extension-host.graphql`: the workspace design restricted to the implemented roots and the types they reach, verbatim | `desktop` and `workspace`, each 1.0.0 / 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED` | the **signed** `Koine.app`, in a clean TestAnyware VM |
+
+Why each is served where it is. The signed application bundles workspace now, and a
+bundle cannot be altered without breaking its signature, so a VM can serve only the
+third. The first two need hosts that run alone: this tree's for the extension host,
+and the **released** host for the old one, because only a host that predates the
+candidate fields serves the original management schema. The released host's own
+headless driver takes a data directory alone and so rejected the released desktop
+provider as reserved (`desktop is reserved.`, seen before the fix);
+`scripts/compat-released-host-main.swift` is that driver plus the bundled root the
+released application has, copied over the driver in the extracted released tree by
+`scripts/build-baseline-host.sh`. The released server code is untouched, and the
+digest it serves is the released one.
+
+The workspace profile's design file keeps to what is implemented. It is the
+workspace design restricted to the implemented roots and the types they reach, never
+reworded: `DesignContractConformanceTests` compares it with the desktop design plus
+the complete workspace design and demands that the only differences are the roots
+not yet implemented and the two types only they reach, so a root that lands is added
+verbatim and a missing coordinate is always a difference. The same test file proves
+the provider's own SDL, composed with the core through the engine, is that design
+file, declared order included.
 
 ## Procedure
 
 ```sh
-task app && task app:notarize   # on the host; .build/app/Koine.app, stapled
-task conformance                # scripts/vm-verify-conformance.sh
+task app                        # on the host; .build/app/Koine.app, signed (notarization is not required)
+task conformance                # scripts/conformance.sh: the three profiles
+task conformance:headless       # the two profiles a headless host serves, no VM
+task conformance:vm             # scripts/vm-verify-conformance.sh: the signed application's profile
 ```
 
 The clean clone, the transcript (`.build/vm-verify/conformance-<timestamp>.log`),
@@ -37,16 +53,19 @@ The clean clone, the transcript (`.build/vm-verify/conformance-<timestamp>.log`)
 [resident-app-vm.md](resident-app-vm.md). Nothing runs the application on the
 host: introspecting means launching Koine, so the response is captured in the
 guest and brought back, and the comparison is text against text
-(`Tools/Conformance`).
+(`Tools/Conformance`). The two headless profiles are served over loopback HTTP by
+hosts that run alone (`scripts/conformance-capture-headless.py`).
 
 | Step | How | Expectation checked |
 |---|---|---|
-| The bundle under test | `xcrun stapler validate`, on the host before a clone is spun and again on the installed copy | both pass; an unstapled bundle refuses the run rather than quietly checking a different build |
-| Composition | `koineManagement.providers` | `desktop` is `ACTIVE`, so the schema being checked is the composed one and not the core alone |
+| The bundle under test | `codesign --verify --deep --strict`, on the host before a clone is spun and again on the installed copy | both pass; whether the ticket is stapled is recorded, and required only under `KOINE_CONFORMANCE_REQUIRE_NOTARIZED=1` |
+| Composition | `koineManagement.providers` | `desktop` and `workspace` are `ACTIVE`, so the schema being checked is the composed one and not the core alone |
 | Capture | `scripts/vm-verify-introspect.py`, the query `KoineConformance --print-query` prints | HTTP 200, no `errors`, and `Koine.schemaDigest` read over the same connection in the same session |
-| Control | four mutated copies of the design SDL | the check goes **red** on each, and says which half caught it |
+| Design controls | mutated copies of the design SDL (`scripts/conformance-lib.sh`) | the check goes **red** on each, and says which half caught it |
+| Pin controls | mutated copies of the profile | the check goes **red** on each, naming the profile problem |
 | Digest | the design file, canonically printed, against `Koine.schemaDigest` | equal — and this half is what sees declared order |
 | Report | the introspected schema against the design file | empty |
+| Pin | the served `koineManagement.providers` rows against the profile | every pinned candidate served as pinned, and no row the profile did not expect |
 
 ## What a green run is, and why it is two things
 
@@ -126,6 +145,15 @@ that keeps declared order and composition is what fixes it.
   a digest an earlier bundle served is the failure this rule exists for.
 
 ## Evidence
+
+**Run of 2026-09-30 (launch-contract):** the three profiles, against the schemas
+their hosts served, with the digests, the candidates and every control's result, are
+recorded in [launch-contract.md](launch-contract.md). The VM run for the signed
+application's profile is `conformance-20260930T230050.log`, with desktop and
+workspace both `ACTIVE`, `BUNDLED` and `SELECTED`, digest
+`a56a3387c7bef91758e31713fd9a7f632855c2b3a9eaaf5f8e5cce1b66d49aea` equal to the
+design file's, no differences. The original 0.1.0 run follows, made against the
+original file and unchanged.
 
 Run of 2026-09-20, transcript `conformance-20260920T214349.log`, against
 `.build/app/Koine.app` version **0.1.0**, signed `Developer ID Application:

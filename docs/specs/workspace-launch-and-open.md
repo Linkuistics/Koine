@@ -23,6 +23,10 @@ Every root below is nullable and requires **workspace:control AND
 desktop:control**, unconditionally. Every nested result and receipt field carries
 that same conjunction. Neither read capability is required. There are no
 Reference arguments and thus no additional reference-owner requirements here.
+A capability denial reports `requiredCapabilities` in the order
+`["workspace:control", "desktop:control"]`, workspace's own capability first, and
+`requiredCapability` names the first of them the grant lacks; the set is not
+alphabetical and a client never sorts it.
 
 | Coordinate | Input | Available value |
 | --- | --- | --- |
@@ -39,7 +43,9 @@ elsewhere. With a path, only a registered
 application bundle at that file identity with the matching identifier is
 eligible. Missing registration/bundle is `APPLICATION_NOT_INSTALLED`; an extant
 bundle with a different identifier is `APPLICATION_IDENTITY_MISMATCH`. Neither
-substitutes another copy. A future search result can pass its identifier/path
+substitutes another copy. These are the only two reasons a launch reports, and a
+missing constrained path is the former; `PATH_NOT_FOUND` and `NO_DEFAULT_HANDLER`
+belong to the operations that open a path or a URL. A future search result can pass its identifier/path
 without requiring a reference conversion. Registration is native discovery,
 not Koine provider approval or an additional application allowlist. Installed
 means registered and present as an application bundle when inspected. Check the
@@ -66,7 +72,7 @@ discovery/focus afterward. Do not report `wasAlreadyRunning` from a racy prechec
 
 Paths are literal absolute paths on Koine's machine, not file URLs, globs,
 tilde expansion or environment substitutions. Reject empty, relative and
-NUL-containing paths as input errors; spaces and shell punctuation remain
+NUL-containing paths, and a blank identifier (empty or whitespace alone), as input errors; spaces and shell punctuation remain
 literal. Resolve symlinks for application-copy comparison and compare native
 volume/file resource identity, not spelling, Unicode normalization or a path
 prefix. Failure to establish identity is `failed`. Document paths are
@@ -143,6 +149,13 @@ cannot express it. Available means native acknowledgment, not that a document
 finished rendering, a page loaded, or Finder selection was independently seen.
 A null root always has an execution/input error for these four fields.
 
+A client reports the action's outcome from `status` and the errors separately, and
+never collapses them: `AVAILABLE` with an error below the result means the action
+was acknowledged and part of the receipt was withheld, not that it did not happen.
+A client that finds the invariant broken (a null root with no error, both branches
+or neither, an unnamed status) reports `failed`, and a null root for these fields is
+never absence.
+
 `WorkspaceOpenReceipt` contains only optional `WorkspaceProcessIdentity`
 (`pid`, `startedAt`), the bounded action handoff allowed by the Machine contract.
 Installed paths, bundle identifiers and default-handler metadata remain read
@@ -161,6 +174,11 @@ process: replacement between observations and later exit remain possible.
 Exit, ambiguity or unreadable start time produces `process: null`, never PID-only
 identity or the current foreground process. The native application's launch date
 is not a substitute for the exact kernel value. Later exit is always possible.
+
+A null `process` after `AVAILABLE` is expected, not a failure: the action was
+acknowledged and its application's identity is not known. A client that then needs
+the application's windows locates the process by its own means, since desktop has no
+lookup by bundle identifier, and proceeds as for any captured process.
 
 The client copies a non-null identity into `desktopApplication(process:)` under
 `desktop:read`, then uses returned desktop references unchanged. Workspace
@@ -415,11 +433,31 @@ what was established; every row above keeps its pending remainder.
   again after it was given and revoked, launch and reactivation work and no consent
   dialog appears; Notes' first run and Gatekeeper approval are recorded. Pending:
   the separate Gatekeeper timeout case, and the third-party launchers' onboarding.
+- **A client from the documented contract alone.** G and V
+  ([launch-contract.md](../verification/launch-contract.md)): `clients/contract-only`,
+  regenerated from the signed build's served introspection and written from the
+  published documents, enrols its own grants, introspects the schema it was generated
+  against (digest equal), launches Notes cold and reactivates it with another
+  application in front (activation and the kernel identity observed by an
+  independent witness), and tells apart a dependency that is unavailable, a
+  capability denial with the complete required set, a `failed` launch and an absent
+  process. Every place it had to guess is repaired in the documents or declined for
+  version 1 ([launch-contract-client-findings.md](../verification/launch-contract-client-findings.md)).
+  Pending: the other operations' examples, which are not served yet.
 - **Packaging/selection.** N: the signed bundle, built by its own definition and
   linking only the host framework, loads from the in-application root beside
   desktop through the selection-aware loader, `ACTIVE` and `SELECTED` at
   `1.0.0`/`1.0.0`. `task check:provider-catalogue` holds the catalogue's workspace
-  entry to the signed packaged bundle. Pending: the complete selection matrix
-  (`selection-acceptance`), old/new binaries with this provider, and the
-  core + desktop + workspace conformance profile (`launch-contract`).
+  entry to the signed packaged bundle. Conformance: `task conformance` holds three
+  profiles to the schemas their hosts serve, each after its design and pin controls
+  were seen red, with the candidates pinned apart from the SDL and the digest —
+  old-host core + desktop against the released host, extension-host core + desktop
+  against this tree's headless host, and core + desktop + workspace, with desktop and
+  workspace `1.0.0`/`1.0.0` both bundled, against the signed application in a VM, its
+  design SDL the workspace design restricted to the implemented roots and the types
+  they reach, verbatim ([schema-conformance-vm.md](../verification/schema-conformance-vm.md),
+  [launch-contract.md](../verification/launch-contract.md)). A missing required
+  provider or coordinate fails. Pending: the complete selection matrix
+  (`selection-acceptance`), old/new binaries with this provider, and selected
+  updates and explicit absent/rejected sets in conformance.
 

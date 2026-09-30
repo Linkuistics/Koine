@@ -49,5 +49,13 @@ if [ "$(cat "${TREE}/.koine-baseline-revision" 2>/dev/null || true)" != "${COMMI
 fi
 echo "baseline: ${REVISION} (${COMMIT})" >&2
 
+# The released driver, plus the bundled root the release's own application has and a
+# headless host could not give it: the released server it embeds is untouched, and
+# given one argument the driver is the released one exactly. `task conformance`
+# needs it to serve the released contract from the released desktop provider,
+# bundled as the release bundles it. Copied every run, so a tree reused for its
+# build directory still has it.
+cp scripts/compat-released-host-main.swift "${TREE}/Fixtures/CompatibilityHost/main.swift"
+
 scripts/build-compat-tree.sh "${CONFIGURATION}" "${TREE}" "${PAIRS}/baseline"
 echo "${PAIRS}"

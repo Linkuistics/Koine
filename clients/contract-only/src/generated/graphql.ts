@@ -126,6 +126,15 @@ export type KoineOsPermission = {
   permission: Scalars['String']['output'];
 };
 
+export type KoineProviderOrigin =
+  | 'BUNDLED'
+  | 'PER_USER';
+
+export type KoineProviderSelection =
+  | 'NOT_SELECTED'
+  | 'SELECTED'
+  | 'UNAVAILABLE';
+
 export type KoineProviderState =
   | 'ACTIVE'
   | 'FAILED'
@@ -134,9 +143,19 @@ export type KoineProviderState =
 
 export type KoineProviderStatus = {
   __typename?: 'KoineProviderStatus';
+  /** Opaque identity of origin plus canonical installed bundle location, unique within this startup. Null only for a synthetic row. Not a resource reference. */
+  candidateId: Maybe<Scalars['String']['output']>;
   diagnostic: Maybe<Scalars['String']['output']>;
+  /** Where the bundle is physically installed. Null for a synthetic row; never inferred from composition position. */
+  origin: Maybe<KoineProviderOrigin>;
   provider: Scalars['String']['output'];
+  /** Stable, open diagnostic code for a refusal or selection explanation. Null for a healthy selected row with nothing competing or missing. */
+  reason: Maybe<Scalars['String']['output']>;
   schemaVersion: Scalars['String']['output'];
+  /** The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even after a later failure. */
+  selectedCandidateId: Maybe<Scalars['String']['output']>;
+  /** Whether this candidate is the frozen choice for its provider identity. Synthetic rows are UNAVAILABLE. */
+  selection: Maybe<KoineProviderSelection>;
   state: KoineProviderState;
   version: Scalars['String']['output'];
 };
@@ -162,6 +181,8 @@ export type Mutation = {
   koineRequestGrant: Maybe<KoineGrantRequestReceipt>;
   /** koine:manage. Idempotent for an already revoked grant; never grants authority. */
   koineRevokeGrant: Maybe<KoineGrant>;
+  /** Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first. */
+  workspaceLaunchApplication: Maybe<WorkspaceOpenResult>;
 };
 
 
@@ -195,6 +216,11 @@ export type MutationKoineRevokeGrantArgs = {
   grantId: Scalars['ID']['input'];
 };
 
+
+export type MutationWorkspaceLaunchApplicationArgs = {
+  application: WorkspaceApplicationInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   /** desktop:read. An absent process is ordinary null. */
@@ -224,6 +250,62 @@ export type QueryDesktopApplicationByReferenceArgs = {
 
 export type QueryDesktopWindowArgs = {
   ref: Scalars['Reference']['input'];
+};
+
+/** A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input. */
+export type WorkspaceApplicationInput = {
+  /** Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed. */
+  applicationPath: InputMaybe<Scalars['String']['input']>;
+  /** Nonblank native bundle identifier, not a display name or process identity. */
+  bundleIdentifier: Scalars['String']['input'];
+};
+
+/** Pre-submission prerequisite failure; no successful value accompanies it. */
+export type WorkspaceDependencyReason =
+  | 'APPLICATION_IDENTITY_MISMATCH'
+  | 'APPLICATION_NOT_INSTALLED'
+  | 'NO_DEFAULT_HANDLER'
+  | 'PATH_NOT_FOUND';
+
+/** A failed prerequisite, under workspace:control AND desktop:control. Not a stale issued reference or execution error. */
+export type WorkspaceDependencyUnavailable = {
+  __typename?: 'WorkspaceDependencyUnavailable';
+  /** Requires workspace:control AND desktop:control. Human explanation and recovery; never a shell command to execute automatically. */
+  guidance: Scalars['String']['output'];
+  /** Requires workspace:control AND desktop:control. Closed reason for not submitting this action. */
+  reason: WorkspaceDependencyReason;
+};
+
+/** Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed. */
+export type WorkspaceOpenReceipt = {
+  __typename?: 'WorkspaceOpenReceipt';
+  /** Requires workspace:control AND desktop:control. Optional observation of the completion callback's application: stable positive PID, matching kernel start reads and executable file identity, equal native application object, non-terminated at the checks. Any unavailable value or mismatch yields null. Not atomic effect binding; never a PID-only, launch-date or foreground fallback. */
+  process: Maybe<WorkspaceProcessIdentity>;
+};
+
+/** Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths. */
+export type WorkspaceOpenResult = {
+  __typename?: 'WorkspaceOpenResult';
+  /** Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request. */
+  dependency: Maybe<WorkspaceDependencyUnavailable>;
+  /** Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result. */
+  status: WorkspaceOperationStatus;
+  /** Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result. */
+  value: Maybe<WorkspaceOpenReceipt>;
+};
+
+/** AVAILABLE is native acknowledgment; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request. Neither status overrides publication errors. */
+export type WorkspaceOperationStatus =
+  | 'AVAILABLE'
+  | 'DEPENDENCY_UNAVAILABLE';
+
+/** Observed process incarnation for this action, under workspace:control AND desktop:control. May exit immediately; not a desktop reference. */
+export type WorkspaceProcessIdentity = {
+  __typename?: 'WorkspaceProcessIdentity';
+  /** Requires workspace:control AND desktop:control. Positive process identifier; use only with startedAt. */
+  pid: Scalars['Int']['output'];
+  /** Requires workspace:control AND desktop:control. Exact kernel process start instant, YYYY-MM-DDTHH:MM:SS.ffffffZ; copy with pid into the desktop process input under desktop:read. */
+  startedAt: Scalars['String']['output'];
 };
 
 export type DesktopChoicesQueryVariables = Exact<{
@@ -257,6 +339,15 @@ export type InspectOwnConnectionQueryVariables = Exact<{ [key: string]: never; }
 
 export type InspectOwnConnectionQuery = { __typename?: 'Query', koine: { __typename?: 'Koine', contractVersion: string, instanceId: string, schemaDigest: string, ownGrant: { __typename?: 'KoineGrant', capabilities: Array<string>, state: KoineGrantState } | null } };
 
+export type WorkspaceOpenOutcomeFragment = { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null };
+
+export type LaunchInstalledApplicationMutationVariables = Exact<{
+  application: WorkspaceApplicationInput;
+}>;
+
+
+export type LaunchInstalledApplicationMutation = { __typename?: 'Mutation', workspaceLaunchApplication: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
+
 export class TypedDocumentString<TResult, TVariables>
   extends String
   implements DocumentTypeDecoration<TResult, TVariables>
@@ -275,7 +366,21 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
-
+export const WorkspaceOpenOutcomeFragmentDoc = new TypedDocumentString(`
+    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process {
+      pid
+      startedAt
+    }
+  }
+  dependency {
+    reason
+    guidance
+  }
+}
+    `, {"fragmentName":"WorkspaceOpenOutcome"}) as unknown as TypedDocumentString<WorkspaceOpenOutcomeFragment, unknown>;
 export const DesktopChoicesDocument = new TypedDocumentString(`
     query DesktopChoices($process: DesktopProcessIdentity!) {
   desktopApplication(process: $process) {
@@ -329,3 +434,22 @@ export const InspectOwnConnectionDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<InspectOwnConnectionQuery, InspectOwnConnectionQueryVariables>;
+export const LaunchInstalledApplicationDocument = new TypedDocumentString(`
+    mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
+  workspaceLaunchApplication(application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process {
+      pid
+      startedAt
+    }
+  }
+  dependency {
+    reason
+    guidance
+  }
+}`) as unknown as TypedDocumentString<LaunchInstalledApplicationMutation, LaunchInstalledApplicationMutationVariables>;

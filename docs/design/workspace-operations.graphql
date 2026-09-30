@@ -4,6 +4,12 @@
 # Inspect errors at/below each result: they may suppress a branch without changing
 # a published status. No installed path or default-handler metadata is in a receipt.
 # Encode Unicode URL data and IDNA host labels before supplying an HTTP(S) URI.
+#
+# This file lists every designed workspace operation; a given Koine serves only
+# the roots whose increments have landed (LaunchInstalledApplication so far). Generate
+# the operations you use, by name, with the fragments they spread, against the
+# introspection of the Koine you generate from, and let generation fail if one does
+# not validate there; do not validate this whole file.
 
 fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
   status
@@ -37,8 +43,9 @@ mutation RevealPath($path: String!) {
   }
 }
 
-# A separate request, only when the preceding receipt has a process and the
-# caller has desktop:read. Copy the two values; do not convert reference URIs.
+# This is DesktopChoices from desktop-operations.graphql under another name; a client
+# may send either. A separate request, only when the preceding receipt has a process
+# and the caller has desktop:read. Copy the two values; do not convert reference URIs.
 # Any explicit focus uses returned window references in desktopFocusWindow under
 # desktop:control and the desktop consent contract; no automatic open replay.
 query CaptureOpenedApplication($process: DesktopProcessIdentity!) {

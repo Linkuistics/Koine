@@ -11,19 +11,28 @@ written from the contract alone had to guess
 Nothing here is specific to one client. A client that follows it needs no
 knowledge of Koine's source.
 
-This guide's examples and digest describe the served 0.1.0 baseline. The
-[workflow-provider design](specs/workflow-providers.md) is pending implementation;
-discover its operations from an upgraded server's introspection when available,
-not from their presence in a design document.
+This guide describes what a Koine serves today: the core, the bundled `desktop`
+provider and, beside it, the bundled `workspace` provider's launch operation
+(["Launching an application"](#launching-an-application)). The
+[workflow-provider design](specs/workflow-providers.md) names more workspace
+operations than are served yet; discover what a given Koine serves from its own
+introspection, never from the presence of an operation in a design document.
 
 ## Contract version
 
 | | |
 |---|---|
 | Contract | `koine-desktop/1` |
-| Schema digest | `ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf` |
-| Served by | Koine 0.1.0 with its bundled `desktop` provider and no per-user provider |
+| Schema digest | `a56a3387c7bef91758e31713fd9a7f632855c2b3a9eaaf5f8e5cce1b66d49aea` |
+| Served by | the signed Koine with its bundled `desktop` and `workspace` providers and no per-user provider |
 | Evidence | [schema-conformance-vm.md](verification/schema-conformance-vm.md) |
+
+The digest is per build, because the providers a Koine bundles are part of the
+schema it serves. Koine 0.1.0, which bundled `desktop` alone, served
+`ee17dfd16a7d00079a9dd1e7523954dba8ced0052096e75d2dc7bdaacb5e2baf`, and a host that
+serves `desktop` with the candidate diagnostics and no `workspace` serves
+`fc0611aec9aec32896c16a2634c7953ac30f418bec662fa3dc8cbbe95b0455dd`; each is one of
+the three [profiles](design/profiles/) `task conformance` holds a host to.
 
 A client should read the digest it generates against from the Koine it generates
 against, as described next, rather than copy it from this table.
@@ -53,9 +62,9 @@ things a client's operations never notice:
 
 - a changed description of any type, field, argument or enum value (the
   schema's own description is not digested);
-- a per-user provider installed or removed on that Mac, which adds or removes its
-  own types and root fields — two Macs running the same Koine can serve
-  different digests;
+- a provider bundled in or left out of the application, or a per-user provider
+  installed or removed on that Mac, which adds or removes its own types and root
+  fields — two Macs running the same Koine can serve different digests;
 - an additive, optional field in a provider's schema;
 - a Koine upgrade whose printer changed, even with the schema unchanged.
 
@@ -131,13 +140,16 @@ seven-day retention any retry is `credential-in-use`: start again with a fresh
 secret.
 
 **Capabilities** in version 1 are `koine:manage` and, for each active provider,
-`<providerId>:read` and `<providerId>:control` — for the bundled provider,
-`desktop:read` and `desktop:control`. `Koine.availableCapabilities` lists them,
-under a grant. A name that is not available is refused when the request is
-submitted (`failed`, "Unknown capabilities"), so a misspelling is never put to
-the user. A client that uses the desktop path normally asks for both desktop
-capabilities; `koine:manage` lets its holder issue and revoke every other grant,
-and the user is warned before approving it.
+`<providerId>:read` and `<providerId>:control` — for the bundled providers,
+`desktop:read`, `desktop:control`, `workspace:read` and `workspace:control`.
+`Koine.availableCapabilities` lists them, under a grant. A name that is not
+available is refused when the request is submitted (`failed`, "Unknown
+capabilities"), so a misspelling is never put to the user. A client that uses the
+desktop path normally asks for both desktop capabilities; a client that launches
+applications asks for `workspace:control` **and** `desktop:control` and needs no
+read capability (["Launching an application"](#launching-an-application));
+`koine:manage` lets its holder issue and revoke every other grant, and the user
+is warned before approving it.
 
 Store the credential in the Keychain; a script may use a file only its user can
 read. Koine cannot show it again: a lost credential is replaced by revoking its
@@ -163,8 +175,17 @@ Standard GraphQL code generation works from Koine's introspection.
 - **Operations.** [`desktop-operations.graphql`](design/desktop-operations.graphql)
   publishes the five a desktop client needs: `DesktopChoices`,
   `FocusDesktopWindow`, `RequestDesktopGrant`, `PollOwnGrantRequest` and
-  `InspectOwnConnection`. They are the handoff's path, not the whole schema. A
-  client may write its own; in particular, the application's `ref`, `name` and
+  `InspectOwnConnection`;
+  [`workspace-operations.graphql`](design/workspace-operations.graphql) publishes
+  the workspace ones, of which `LaunchInstalledApplication` is served today. They
+  are the published paths, not the whole schema. A published operations file may
+  list operations whose roots a given Koine does not serve yet, so a client
+  generates the operations it uses, by name, with the fragments they spread, and
+  lets generation fail if one does not validate against the introspection it
+  generated from; it does not validate the whole file, and it does not select
+  "whatever validates", which would silently drop an operation Koine stopped
+  serving. `CaptureOpenedApplication` is `DesktopChoices` under another name: send
+  either. A client may write its own; in particular, the application's `ref`, `name` and
   `bundleIdentifier` resolve without Accessibility consent, but `DesktopChoices`
   also selects `windows`, which does not, so without consent that operation
   returns no application at all. Management operations (`koineManagement`,
@@ -244,24 +265,35 @@ four values in `koine-desktop/1`:
 | `unknown-provider` | A reference names a provider that is not registered | none |
 | `failed` | The operation was attempted and did not succeed | `reason` and `requestState` on the management outcomes the spec's table lists |
 
-An error with a non-empty `path` and **no** `kind` is an input error a provider
+An error with a non-empty `path` and **no** `kind` is an *input error* a provider
 found in an argument — a `startedAt` in any other form than the one above, a
-`pid` that is not positive — and nothing was attempted; the client's request was
-wrong. A `kind` outside these four is not served by this contract; a client that
+`pid` that is not positive, a blank bundle identifier — and nothing was attempted;
+the client's request was wrong. A client reports it as its own outcome and never
+as `failed`: for a mutation `failed` means "may have acted", and this means it did
+not. A `kind` outside these four is not served by this contract; a client that
 meets one, or an error with an empty `path` and no `kind`, classifies it as `failed`, which
 asserts nothing about the resource.
 
-**Designed workflow extension, not served by 0.1.0:** new operations can report
-other consent identifiers in `osPermission`, still with `permissionOwner: koine`,
-and an optional `permissionTarget` naming the application or resource scope.
-Treat unfamiliar identifiers as OS-permission refusals and show Koine's guidance;
-do not label them Accessibility. Existing desktop operations keep the values in
-the table. Reads never request consent. App-side API enablement is instead an
-integration prerequisite, and file search reports partial/unknown coverage
-separately from a complete empty result. New additional-capability fields also
-return `requiredCapabilities` with their complete set alongside the first unmet
-`requiredCapability`; this does not make field authority introspectable. See the
-[extension error contract](specs/machine.md#errors-and-partial-data).
+**Served by a Koine with the workspace provider:** a field that needs more than one
+capability — a launch needs `workspace:control` **and** `desktop:control` — returns,
+on every capability error for it, at either phase and at any nested path,
+`extensions.requiredCapabilities`: the complete set, in a fixed order, beside
+`requiredCapability`, which names the first member of that order the grant lacks. A
+client that needs the whole set reads the list and asks for one adequate grant; it
+never sorts or filters the list, and the order is not alphabetical (for a launch it
+is `["workspace:control", "desktop:control"]`). This does not make field authority
+introspectable: a client learns the set from a denial, or from the field's own
+description. See the [extension error
+contract](specs/machine.md#errors-and-partial-data).
+
+**Designed, not served yet:** new operations can report other consent identifiers
+in `osPermission`, still with `permissionOwner: koine`, and an optional
+`permissionTarget` naming the application or resource scope. Treat unfamiliar
+identifiers as OS-permission refusals and show Koine's guidance; do not label them
+Accessibility. Existing desktop operations keep the values in the table. Reads
+never request consent. App-side API enablement is instead an integration
+prerequisite, and file search reports partial/unknown coverage separately from a
+complete empty result.
 
 For the served desktop operations, three rules make these usable:
 
@@ -300,6 +332,11 @@ again is a new focus request, not a repair of the old one, and it re-resolves th
 window as the first did. Whether to make it is the caller's choice, not the
 client library's.
 
+**Koine answers a request within five seconds** (a deadline is a `failed` answer,
+HTTP 200, not a dropped connection). A client timeout shorter than that discards
+answers Koine would have given, and reports a launch that ran as an unknown
+outcome; choose a longer one.
+
 A `failed` mutation may still have acted. A `failed` error with an **empty
 `path`** and `data` null means the operation passed its deadline or its response
 exceeded the size limit, and any action in it may have run. A `failed` error at
@@ -308,6 +345,62 @@ after activating the application has still brought it forward — but also a
 deadline reached as the action started, or a grant store Koine could not read.
 So a client reports every `failed` focus as "not confirmed", not as "did
 nothing".
+
+## Launching an application
+
+`workspaceLaunchApplication` launches an installed application or asks for a running
+one to be reactivated. [`workspace-operations.graphql`](design/workspace-operations.graphql)
+publishes it as `LaunchInstalledApplication`, and the [workspace
+spec](specs/workspace-launch-and-open.md) is the contract. What a client needs from
+it, in the order it meets them:
+
+1. **Two controls, no read.** The grant needs `workspace:control` **and**
+   `desktop:control`, because bringing an application forward is an effect on the
+   desktop. It needs neither `*:read` capability, and the receipt is complete
+   without one. A grant with either control alone is refused before anything runs:
+   HTTP 403, `kind: permission`, `permissionClass: capability`, `phase:
+   authorization`, at the action's path, with `requiredCapability` naming the first
+   control the grant lacks (`workspace:control` for a desktop-only grant,
+   `desktop:control` for a workspace-only one) and `requiredCapabilities` the whole
+   set, `["workspace:control", "desktop:control"]`, in that order. Nothing was
+   inspected and nothing launched.
+2. **Name the application by its bundle identifier**, never by display name. Koine has
+   no lookup that turns one into the other; a client supplies identifiers from its
+   own catalogue. `applicationPath` is optional and pins one installed copy; without
+   it a running copy is reused.
+3. **Read the result as a typed outcome.** `status` selects one of two:
+   `AVAILABLE` (the native launch call acknowledged; `value` is set) or
+   `DEPENDENCY_UNAVAILABLE` (nothing was submitted because a prerequisite failed;
+   `dependency` is set with a closed `reason`, `APPLICATION_NOT_INSTALLED` when no
+   registered application has that identifier, and a `guidance` sentence to show).
+   A dependency result is not an error and not a success: it is its own outcome,
+   and `errors` is empty. Read `errors` and `status` together. An error below the
+   result can withhold a branch without changing the status, and `AVAILABLE` with
+   an error below it means the launch was acknowledged and part of the receipt was
+   withheld, never that it did not happen. A null `workspaceLaunchApplication` with
+   no error, both branches, neither, or a status this guide does not name is not
+   absence: it breaks the contract, and a client reports it as `failed`.
+4. **`failed` means it may have happened.** An application that is installed but
+   cannot be opened, a native refusal, an acknowledgment that did not come in
+   three seconds: each is `kind: failed` at the action's path, and the application
+   may already be starting. Do not retry, and do not try another handler; a second
+   request is a new launch or a reactivation. A lost answer is the same: an unknown
+   outcome, even if the application opened.
+5. **`AVAILABLE` is acknowledgment, not activation.** It says nothing about what is in
+   front or whether a window has drawn. A client that needs either observes it.
+6. **The receipt's process is handed on unchanged.** `value.process` is
+   `{ pid, startedAt }` for the launched or reactivated application, where `startedAt`
+   is exactly the desktop contract's `DesktopProcessStart`. To read the application,
+   copy the two values into `desktopApplication(process:)` under `desktop:read` (the
+   `choices --pid --started-at` path of the contract-only client), as a separate
+   request. `process` can be null after a successful launch: the application may
+   have exited at once, or its start time may not have been readable. That is
+   expected, not a failure, and never a licence to fall back to a PID alone; a
+   client that needs the application's windows then finds the process by its own
+   means. A process that no longer runs resolves to ordinary null with no error,
+   which is how a client learns the application has exited. Listing its windows
+   needs Koine to hold Accessibility consent, as for any window read, and without
+   it `windows` is an `os-permission` refusal while the application itself resolves.
 
 ## What version 1 does not do
 
@@ -322,4 +415,10 @@ A client written from the contract alone asked for each of these;
 - a marker on deadline and response-cap errors (an empty `path` identifies most
   of them, and a client treats every `failed` mutation as unconfirmed);
 - `availableCapabilities` readable without a grant (the version-1 set is stated
-  above).
+  above);
+- a way to find a bundle identifier, or to ask which applications are installed: a
+  launch client brings its own identifiers;
+- a marker on a `failed` answer that says whether the failure came before or after
+  the native call, so every `failed` launch is treated as one that may have begun;
+- timing as a signal: how long a launch took does not say which bound (the
+  three-second acknowledgment wait or the five-second deadline) ended it.

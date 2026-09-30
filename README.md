@@ -186,7 +186,9 @@ task fixture:selection  # build, sign and keep apart the bundles the first-party
 task bundled-providers  # build the desktop and workspace providers by their own build definitions, sign and approve them for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
-task conformance  # the schema and the candidates the notarized bundle serves, in a VM, against docs/design/profiles/core-desktop-extension-host.json
+task conformance  # three profiles of docs/design/profiles/ against the schemas and candidates their hosts serve: the released host, this tree's headless host, and the signed bundle in a VM
+task conformance:headless  # only the two profiles a headless host serves; no VM
+task conformance:vm  # only core + desktop + workspace, served by the signed bundle in a VM
 task app       # assemble and sign .build/app/Koine.app
 task app:notarize  # notarize, staple and zip it (KOINE_NOTARY_PROFILE, default koine-notary)
 task app:verify  # version, signature, hardened runtime, designated requirement, stapled ticket, Gatekeeper
@@ -221,16 +223,23 @@ The tests embed the server over a temporary data directory; they never touch
 
 ### Schema conformance
 
-`task conformance` is the whole-contract check: it launches the **notarized**
-bundle in a clean TestAnyware clone, captures the introspection response a
-standard code generator would ask for, and compares the schema that describes
-with [`docs/design/desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql)
-(the design SDL of the [extension-host profile](docs/design/profiles/core-desktop-extension-host.json),
-which also pins the provider candidates the host runs; the released
-[`desktop-schema.graphql`](docs/design/desktop-schema.graphql) is the old-host
-profile's) by type, field, argument, nullability, default, deprecation and description. The
-comparison itself is host-side (`Tools/Conformance`), so nothing is launched
-here. Evidence:
+`task conformance` is the whole-contract check, for each of three
+[profiles](docs/design/profiles/), every one against the schema a host actually
+serves. A profile names a design SDL and, separately from it, the exact provider
+candidates the host runs, because an identical schema and digest cannot say which
+binary ran:
+
+| Profile | Design SDL | Served by |
+|---|---|---|
+| `core-desktop-old-host` | [`desktop-schema.graphql`](docs/design/desktop-schema.graphql), the released contract, unchanged | the **released** v0.1.0 host, built from its own sources, with its own desktop provider bundled |
+| `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql) | this tree's headless host with desktop as its only bundled provider |
+| `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](docs/design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | the **signed** `Koine.app` with desktop and workspace bundled, in a clean TestAnyware clone |
+
+The first two are served by headless hosts over loopback HTTP; the third launches
+the signed bundle in a VM and captures the introspection response a standard code
+generator would ask for. The comparison itself is host-side (`Tools/Conformance`),
+so nothing is launched on this Mac. Each profile is compared by type, field,
+argument, nullability, default, deprecation and description. Evidence:
 [`docs/verification/schema-conformance-vm.md`](docs/verification/schema-conformance-vm.md).
 
 A green run is two claims, and neither alone would do:
@@ -243,17 +252,24 @@ A green run is two claims, and neither alone would do:
 - the **difference report** against the introspected schema is empty, which says
   the same thing from the public seam and says *where* when it is not.
 
-Before believing either, the run mutates four copies of the contract — a
+Before believing either, every profile's run mutates copies of the contract — a
 description, a nullability marker, an argument default, two transposed root
-fields — and requires the check to go red on each, naming which half caught it.
-The transposed pair is caught by the digest alone: declared order is exactly
-what the introspected text cannot carry (see the spec's "Public GraphQL
+fields, and for the workspace profile the launch root removed, a workspace
+description changed and its field moved before desktop's — and of the pin — a
+different release, a required provider that is not served, a served row the
+profile did not expect — and requires the check to go red on each, naming what
+caught it. The transposed pair is caught by the digest alone: declared order is
+exactly what the introspected text cannot carry (see the spec's "Public GraphQL
 contract" for the three limits of that seam).
 
 `DesignContractConformanceTests` makes the same comparison in process, against a
-composition that contributes `Providers/DesktopProvider/schema.graphql` as the
-bundled provider does, so drift fails `task test` in seconds rather than a VM
-run later. It is the fast guard, not the authority: it cannot see a shipped
+composition that contributes `Providers/DesktopProvider/schema.graphql` and
+`Providers/WorkspaceProvider/schema.graphql` as the bundled providers do, so drift
+fails `task test` in seconds rather than a VM run later. It also holds the
+workspace profile's design file to the complete workspace design: the only
+differences allowed are the roots not yet implemented and the types only they
+reach, so a root that lands is added to the profile verbatim, and no description
+is ever reworded. It is the fast guard, not the authority: it cannot see a shipped
 bundle whose SDL differs from the file in the tree.
 
 Revocation ordering and store failure are tested on an `Engine` over a scripted

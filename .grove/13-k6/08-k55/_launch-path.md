@@ -33,7 +33,11 @@ Every later increment widens this path and adds no layer it lacks.
 - The old-host core + desktop profile is preserved. The extension-host
   core + desktop and core + desktop + workspace profiles pass against served
   schemas, with exact candidate versions pinned separately from SDL and digest.
-- A client written from the documented contract alone drives the launch.
+  Evidence: `docs/verification/schema-conformance-vm.md` and
+  `docs/verification/launch-contract.md`.
+- A client written from the documented contract alone drives the launch. Evidence:
+  `docs/verification/launch-contract.md`; its guesses, each repaired or declined:
+  `docs/verification/launch-contract-client-findings.md`.
 - The Taskfile carries the reusable build, catalogue-check, conformance and VM
   recipes the path needed.
 - Each acceptance row this path establishes links its evidence. Every other row,

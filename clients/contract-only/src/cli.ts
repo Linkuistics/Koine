@@ -7,6 +7,7 @@ import {
   findApplication,
   type ProcessIdentity,
 } from './adapter/process-identity.js';
+import { interpretLaunch } from './adapter/launch.js';
 import {
   GENERATED_AGAINST_CONTRACT_VERSION,
   GENERATED_AGAINST_SCHEMA_DIGEST,
@@ -16,6 +17,7 @@ import {
   DesktopChoicesDocument,
   FocusDesktopWindowDocument,
   InspectOwnConnectionDocument,
+  LaunchInstalledApplicationDocument,
   PollOwnGrantRequestDocument,
   RequestDesktopGrantDocument,
 } from './generated/graphql.js';
@@ -33,6 +35,7 @@ const USAGE = `koine-client <command> [options]
   choices    --secret <path> --application <name>
   choices    --secret <path> --pid <n> --started-at <instant>
   focus      --secret <path> --ref <reference>
+  launch     --secret <path> --bundle-identifier <id> [--application-path <absolute path>]
 `;
 
 interface Args {
@@ -396,6 +399,54 @@ async function commandFocus(args: Args): Promise<Json> {
   };
 }
 
+async function commandLaunch(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const bundleIdentifier = require_(args, 'bundle-identifier');
+  const applicationPath = args.single.get('application-path');
+  const credential = await loadOrCreateCredential(secretPath);
+
+  // Sent exactly once, whatever happens: a launch is not safe to repeat, and a
+  // lost answer is `unknown-outcome`. Values go in as literal variables; nothing
+  // is checked client-side, so an input the provider refuses is refused by the
+  // provider, at the original path, where this client can report it.
+  const application: Json = {
+    bundleIdentifier,
+    ...(applicationPath === undefined ? {} : { applicationPath }),
+  };
+  const result = await send({
+    document: LaunchInstalledApplicationDocument.toString(),
+    operationName: 'LaunchInstalledApplication',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { application },
+  });
+
+  const facts = interpretLaunch(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    application,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the launch reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
 function redact(payload: Json, secrets: readonly string[]): string {
   let text = JSON.stringify(payload);
   for (const secret of secrets) {
@@ -446,6 +497,9 @@ async function main(): Promise<void> {
         break;
       case 'focus':
         payload = await commandFocus(args);
+        break;
+      case 'launch':
+        payload = await commandLaunch(args);
         break;
       default:
         throw new UsageError(`unknown command ${JSON.stringify(command)}`);

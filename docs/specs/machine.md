@@ -188,7 +188,7 @@ versions. The [schema](../design/desktop-schema-extension-host.graphql) states e
 types and nullability (the [original schema](../design/desktop-schema.graphql)
 is the old-host profile, kept as released, see "Conformance profiles"); the [client operations](../design/desktop-operations.graphql)
 show the handoff's requests. The schema Koine serves matches the schema file,
-checked by `task conformance` against the notarized build
+checked by `task conformance`, for each profile against the host that serves it
 ([schema-conformance-vm.md](../verification/schema-conformance-vm.md)), and the
 five operations run unmodified from a client generated only from the documented
 contract ([contract-only-client.md](../verification/contract-only-client.md)).
@@ -511,6 +511,13 @@ output reads still use ordinary read authorization and GraphQL propagation;
 a denied output field is not evidence that the preceding action did not occur.
 The desktop receipt avoids that ambiguity for the common control-only call.
 
+The two places an action can be refused are told apart by path. A capability error
+with `phase: execution` **at a root action's own path** means dispatch admission
+refused that action: it did not start, because an admitted action is reported and
+never re-checked. A denial that follows an action's acknowledgment can only appear
+**below** the action's result, at a nested field, and leaves the action's own
+outcome as its published status says.
+
 ### Errors and partial data
 
 Execution errors carry `message`, standard response `path` (including aliases
@@ -526,7 +533,7 @@ after preflight. An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
 
-**Workflow extension — pending implementation.** Baseline desktop operations
+**Workflow extension — consent identifiers, pending implementation.** Baseline desktop operations
 retain `osPermission: accessibility` and `permissionOwner: koine`. New provider
 operations may report other documented consent identifiers in `osPermission`,
 still owned by `koine`, with optional `permissionTarget` naming the consent's
@@ -542,16 +549,29 @@ or a new consent/entitlement, still requires Antony's decision.
 All extension reads are prompt-free, including prerequisite and protected-folder
 checks. A probe that would prompt is not a permitted read mechanism; report
 unknown/blocked readiness or coverage instead. App-side API enablement is a
-dependency prerequisite, distinct from OS consent. Extension capability errors
-also carry the complete set described under additional capability requirements;
-protected UI targets use `unavailable` with `reason: protected-target`.
+dependency prerequisite, distinct from OS consent. Protected UI targets use
+`unavailable` with `reason: protected-target`.
+
+**Additional capability errors — implemented in framework minor 1.** Every
+capability error on a field that has additional requirements, at either phase and
+at any nested path below it, carries `extensions.requiredCapabilities`, the
+complete ordered set described under additional capability requirements, beside
+`requiredCapability`, the first unmet member of that order. The order is the
+field's own capability first, so the set is not alphabetical: for
+`workspaceLaunchApplication` it is `["workspace:control", "desktop:control"]`, and a
+grant holding `desktop:control` alone has `workspace:control` as the first unmet
+member, one holding `workspace:control` alone has `desktop:control`. A client never
+sorts or filters the list.
 
 `extensions.kind` takes exactly four values in `koine-desktop/1`: `permission`,
 `unavailable`, `unknown-provider` and `failed`. The set is closed for this
 contract version; it is stated here rather than as a schema enum because
 extensions are not part of a GraphQL schema. An execution error with a non-empty
-`path` and no `kind` is an argument a provider found invalid, reported as input coercion;
-nothing was attempted.
+`path` and no `kind` is an argument a provider found invalid; nothing was attempted.
+It is an execution error like any other: the response keeps the original path and
+the root field is null when its type allows, and only what the schema's scalars and
+non-null types reject is variable coercion, HTTP 400 with no `data`. A blank string
+is empty or whitespace alone.
 
 | Condition | Classification |
 |---|---|
@@ -1401,6 +1421,7 @@ substitute for the other, because an identical digest cannot prove which binary 
 | --- | --- | --- |
 | `core-desktop-old-host` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), unchanged since 0.1.0 | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, over the original five management fields |
 | `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
+| `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](../design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | `desktop` and `workspace`, each 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
 
 The extension-host SDL is the old one plus exactly the five nullable
 `KoineProviderStatus` fields and the `KoineProviderOrigin` and
@@ -1409,9 +1430,18 @@ difference. The set of rows is explicit. A required provider that is not served
 fails the profile, and so does a served row the profile does not list, so
 neither an omission nor an extra provider can shrink or blur what is expected. An
 extension-host profile also requires the candidate fields on every row, and every
-`SELECTED` row to name itself. The core + desktop + workspace profile and the
-profiles with selected updates and explicit absent or rejected sets are added
-beside these by the increments that make those providers real.
+`SELECTED` row to name itself. Each profile is checked against the schema a host
+serves, and only after its design and pin controls have been seen red: the
+old-host profile against the released host running its own desktop provider, the
+extension-host profile against this tree's headless host, and the core + desktop +
+workspace profile against the signed application in a VM
+([schema-conformance-vm.md](../verification/schema-conformance-vm.md),
+[launch-contract.md](../verification/launch-contract.md)). The workspace design
+file never rewords the workspace design: a test holds it to the complete workspace
+design, so that the only differences are the roots not yet implemented and the
+types only they reach, and a root that lands is added to the profile verbatim. The
+profiles with selected updates and explicit absent or rejected sets are added beside
+these by the increments that make those cases real.
 
 #### Selection acceptance
 
