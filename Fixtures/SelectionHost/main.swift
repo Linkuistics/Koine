@@ -18,6 +18,11 @@ import MachO
 // has none. The one private seam it uses is the discovery order, so a driver can
 // reverse it while the real verifier and loader run.
 //
+// A second private seam, for a restart that changes the assessment verdict: the environment
+// variable KOINE_FIXTURE_ASSESSMENT is `accept` or `refuse`, and replaces Gatekeeper's verdict on
+// a quarantined image with that one, so a driver can flip it between two runs of one data
+// directory (scripts/verify-selection-failures.py). Unset, the real Gatekeeper answers.
+//
 // usage: KoineSelectionHost <data directory> [--reverse-discovery]
 //
 // Prints one JSON line when ready (port, a credential holding every available
@@ -59,19 +64,31 @@ let contents = URL(fileURLWithPath: CommandLine.arguments[0]).resolvingSymlinksI
     .deletingLastPathComponent().deletingLastPathComponent()
 var seam = ProviderLoader.Seam()
 if arguments.contains("--reverse-discovery") { seam.discoveryOrder = { $0.reversed() } }
+switch ProcessInfo.processInfo.environment["KOINE_FIXTURE_ASSESSMENT"] {
+case "accept": seam.assessment = { _ in nil }
+case "refuse": seam.assessment = { _ in "the injected verdict refuses it, and" }
+default: break
+}
 // On the main thread: verifying a signature blocks on work Security dispatches.
-let server = try KoineServer(
-    dataDirectory: dataDirectory, policy: .version1,
-    providerRoots: [
-        .bundled(contents.appendingPathComponent("PlugIns", isDirectory: true)),
-        KoineServer.installedProviderRoot(in: dataDirectory),
-    ],
-    providerCatalogue: ProviderCatalogue.load(
-        from: contents.appendingPathComponent("Resources/ProviderCatalogue.json")
-    ),
-    providerStaging: nil, osPermissions: { [] }, now: { Date() }, additionalProviders: [],
-    loaderSeam: seam
-)
+// A root the host cannot enumerate stops startup here, and the driver reads why.
+let server: KoineServer
+do {
+    server = try KoineServer(
+        dataDirectory: dataDirectory, policy: .version1,
+        providerRoots: [
+            .bundled(contents.appendingPathComponent("PlugIns", isDirectory: true)),
+            KoineServer.installedProviderRoot(in: dataDirectory),
+        ],
+        providerCatalogue: ProviderCatalogue.load(
+            from: contents.appendingPathComponent("Resources/ProviderCatalogue.json")
+        ),
+        providerStaging: nil, osPermissions: { [] }, now: { Date() }, additionalProviders: [],
+        loaderSeam: seam
+    )
+} catch {
+    emit(["error": "\(error)"])
+    exit(1)
+}
 
 Task {
     do {

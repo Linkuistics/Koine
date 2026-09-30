@@ -29,7 +29,15 @@ This driver owns, of those rows:
     and a valid dependency cycle survives;
   * a shipped provider that publishes and then fails to start: its schema and authority
     remain, its fields are unavailable, nothing that depends on it is removed for that
-    alone, and no bundled copy is tried in its place.
+    alone, and no bundled copy is tried in its place;
+  * the schema digest: the same SDL from either root keeps it and the identifier-sorted
+    position of a shipped identity (whatever order the catalogue lists the slots in),
+    changed SDL changes it, an extra ordinary provider changes it, and the management
+    fields refuse a grant without `koine:manage`;
+  * restart: removing an update, changing the host's baseline or changing the assessment
+    verdict is recomputed and grants no authority (a grant held before is exactly what it
+    was, and what became available is not added to it), and a per-user root the host
+    cannot read stops startup before any provider runs.
 
 usage: verify-selection-failures.py <hosts> <fixtures> <results.json> [--only <substring>] [--conformance <KoineConformance>]
 
@@ -55,6 +63,7 @@ OD, UNKNOWN = "fixtureod", "unknown"
 # A provider built with FIXTURE_ADDITIONAL greets with its second revision's additional-capabilities greeting.
 SK_DEPENDANT_GREETING = "hello from the fixturesk provider, revision 2, using additional capabilities"
 OD_GREETING = "hello from the fixtureod provider"
+SK_UPDATE_GREETING = "hello from the fixturesk provider, revision 2"
 OD_DEPENDANT_GREETING = "hello from the fixtureod provider, revision 2, using additional capabilities"
 SH_DEPENDANT_GREETING = "hello from the fixturesh provider, revision 2, using additional capabilities"
 ALL_CAPABILITIES = ["fixturesh:read", "fixturesh:control", "fixturesk:read", "fixturesk:control",
@@ -313,13 +322,175 @@ def scenarios():
         installs=[U("ordinary", "first"), U("ordinary", "second"), U("ordinary-framework-future", "rival")],
         ran=[FRESH], absent_fields=["fixtureOdInfo"],
     ))
+    # -- The schema digest ---------------------------------------------------------------------
+    # The digest is of the canonical SDL of what is published: core first, shipped identities
+    # sorted by identifier, then ordinary providers sorted by identifier, each field in its
+    # declared order. So it moves with the content and with the position of a contribution, and
+    # with nothing else: not the root a copy came from, its release, or the order the catalogue
+    # lists the slots in. `two-slots` lists fixturesk before fixturesh, and `two-slots-sorted`
+    # lists them in identifier order, so a digest they share is identifier order.
+    sh_ok, sk_ok = R(SH, "1.0.0", "B", ACTIVE, SEL, None), R(SK, "1.0.0", "B", ACTIVE, SEL, None)
+    sh_2 = R(SH, "2.0.0", "U", ACTIVE, SEL, None)
+    sh_1_superseded = R(SH, "1.0.0", "B", REJECTED, NOT, "superseded-candidate")
+    sk_1_1 = R(SK, "1.1.0", "U", ACTIVE, SEL, None)
+    sk_1_superseded = R(SK, "1.0.0", "B", REJECTED, NOT, "superseded-candidate")
+    bare = [sh_ok, sk_ok]
+    sh_updated = [sh_2, sh_1_superseded, sk_ok]
+    both_updated = [sh_2, sh_1_superseded, sk_1_1, sk_1_superseded]
+    add(Scenario(
+        "the same SDL from either root keeps the digest and the shipped position",
+        bare, host="two-slots", ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="same", managed=True,
+        then=[
+            Phase(sh_updated, label="fixturesh from the per-user root, at another release",
+                  actions=[("install", "r2.0.0", "sh-update")], ran=["sh-update", SK_NAME],
+                  order=["sh-update", SK_NAME], digest="same",
+                  serves=("fixtureShInfo", UPDATE_GREETING)),
+            Phase(both_updated, label="both slots from the per-user root",
+                  actions=[("install", "sk-r1.1.0", "sk-update")], ran=["sh-update", "sk-update"],
+                  order=["sh-update", "sk-update"], digest="same",
+                  serves=("fixtureSkInfo", SK_UPDATE_GREETING)),
+            Phase(bare, label="both updates removed and the host restarted",
+                  actions=[("remove", "sh-update"), ("remove", "sk-update")], ran=[FRESH, SK_NAME],
+                  order=[FRESH, SK_NAME], digest="same",
+                  serves=("fixtureShInfo", BASE_GREETING)),
+        ],
+    ))
+    add(Scenario(
+        "a catalogue listing the slots in another order publishes them in the same order",
+        sh_updated, host="two-slots", installs=[U("r2.0.0", "sh-update")], ran=["sh-update", SK_NAME],
+        order=["sh-update", SK_NAME],
+        digest="update", rename=True,
+        then=[
+            Phase(sh_updated, label="the catalogue lists fixturesh first", host="two-slots-sorted",
+                  ran=["sh-update", SK_NAME], order=["sh-update", SK_NAME], digest="update"),
+            Phase(bare, label="the catalogue lists fixturesh first, the update removed", host="two-slots-sorted",
+                  actions=[("remove", "sh-update")], ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="bare"),
+            Phase(bare, label="the catalogue lists fixturesk first, the update still removed", host="two-slots",
+                  ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="bare"),
+        ],
+    ))
+    shipped_changed = [R(SH, "2.0.0", "U", ACTIVE, SEL, None), sh_1_superseded, sk_ok]
+    add(Scenario(
+        "changed SDL in a newer copy changes the digest, and only its own content does",
+        bare, host="two-slots", ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="base",
+        differs=[("base", "extra"), ("base", "described"), ("extra", "described")],
+        then=[
+            Phase(shipped_changed, label="one type added", actions=[("install", "sdl-changed", "sh-update")],
+                  ran=["sh-update", SK_NAME], order=["sh-update", SK_NAME], digest="extra"),
+            Phase(shipped_changed, label="that type described otherwise",
+                  actions=[("replace", "sh-update", "sdl-changed-description")], ran=["sh-update", SK_NAME],
+                  order=["sh-update", SK_NAME],
+                  digest="described"),
+            Phase(shipped_changed, label="an update with the baseline's SDL again, at the same release",
+                  actions=[("replace", "sh-update", "r2.0.0")], ran=["sh-update", SK_NAME],
+                  order=["sh-update", SK_NAME], digest="base"),
+        ],
+    ))
+    od_ok, unknown_ok = R(OD, "1.0.0", "U", ACTIVE, SEL, None), R(UNKNOWN, "1.0.0", "U", ACTIVE, SEL, None)
+    add(Scenario(
+        "an extra ordinary provider changes the digest, and leaves the shipped position alone",
+        bare, host="two-slots", ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="base", rename=True,
+        differs=[("base", "with-od"), ("with-od", "with-od-unknown"), ("base", "unknown-only")],
+        then=[
+            Phase(bare + [od_ok], label="an ordinary provider added", actions=[("install", "ordinary", "first")],
+                  ran=[FRESH, SK_NAME, "first"],
+                  order=[FRESH, SK_NAME, "first"], digest="with-od", serves=("fixtureOdInfo", OD_GREETING)),
+            # fixtureod sorts before fixturesh, so an update taken into the ordinary group by identifier
+            # would move before it; it stays where the shipped identities are.
+            Phase(sh_updated + [od_ok], label="the shipped update added beside it",
+                  actions=[("install", "r2.0.0", "sh-update")], ran=["sh-update", SK_NAME, "first"],
+                  order=["sh-update", SK_NAME, "first"],
+                  digest="with-od", managed=True),
+            Phase(sh_updated + [od_ok, unknown_ok], label="a second ordinary provider added",
+                  actions=[("install", "unknown", "second")], ran=["sh-update", SK_NAME, "first", "second"],
+                  order=["sh-update", SK_NAME, "first", "second"],
+                  digest="with-od-unknown"),
+            Phase(sh_updated + [unknown_ok], label="the first ordinary provider removed",
+                  actions=[("remove", "first")], ran=["sh-update", SK_NAME, "second"],
+                  order=["sh-update", SK_NAME, "second"], digest="unknown-only"),
+            Phase(bare, label="everything removed", actions=[("remove", "sh-update"), ("remove", "second")],
+                  ran=[FRESH, SK_NAME], order=[FRESH, SK_NAME], digest="base"),
+        ],
+    ))
+
+    # -- Restart ------------------------------------------------------------------------------
+    # Every start recomputes from what is in the roots and the host: removing an update rolls
+    # back (there is no anti-rollback), a host shipped with a different baseline is another
+    # catalogue over the same data, and none of it adds to a grant made before.
+    update_1_5 = R(SH, "1.5.0", "U", ACTIVE, SEL, None)
+    add(Scenario(
+        "a restart after an update is removed recomputes, and grants nothing to a grant held before",
+        [update_1_5, bundle, od_ok], installs=[U("r1.5.0", "update"), U("ordinary", "first")],
+        ran=["update", "first"], serves=("fixtureShInfo", UPDATE_GREETING), rename=True,
+        then=[
+            Phase([healthy_bundle, od_ok], label="the update removed", actions=[("remove", "update")],
+                  ran=[FRESH, "first"], serves=("fixtureShInfo", BASE_GREETING),
+                  clients=[(1, "fixtureOdInfo", "served")]),
+            Phase([healthy_bundle], label="the ordinary provider removed", actions=[("remove", "first")],
+                  ran=[FRESH], absent_fields=["fixtureOdInfo"], no_capabilities=["fixtureod:read", "fixtureod:control"],
+                  clients=[(1, "fixtureOdInfo", "unpublished")]),
+            Phase([healthy_bundle, od_ok], label="the ordinary provider installed again",
+                  actions=[("install", "ordinary", "first")], ran=[FRESH, "first"], capabilities=["fixtureod:read"],
+                  # The credential made while it was absent holds no fixtureod capability, and is told so.
+                  clients=[(3, "fixtureOdInfo", "denied"), (1, "fixtureOdInfo", "served")]),
+            Phase([update_1_5, bundle, od_ok], label="the update installed again: nothing rolled it back for good",
+                  actions=[("install", "r1.5.0", "update")], ran=["update", "first"],
+                  serves=("fixtureShInfo", UPDATE_GREETING)),
+        ],
+    ))
+    add(Scenario(
+        "a restart under a host with a changed baseline recomputes, and an older host recomputes it back",
+        [update_1_5, bundle], installs=[U("r1.5.0", "update")], ran=["update"],
+        serves=("fixtureShInfo", UPDATE_GREETING),
+        then=[
+            Phase([R(SH, "1.7.0", "B", ACTIVE, SEL, "selected-with-refusals"), R(SH, "1.5.0", "U", REJECTED, NOT, "older-than-bundled")],
+                  label="the host's designated baseline is release 1.7.0, above the update", host="slot-baseline-1.7.0",
+                  ran=[FRESH], serves=("fixtureShInfo", BASE_GREETING)),
+            Phase([update_1_5, bundle], label="the older host again: the update outranks its baseline once more",
+                  host="slot", ran=["update"], serves=("fixtureShInfo", UPDATE_GREETING)),
+        ],
+    ))
+    refused_update = R(SH, "2.0.0", "U", REJECTED, NOT, "quarantine-refused", "the injected verdict refuses it")
+    refused_od = R(OD, "1.0.0", "U", REJECTED, NOT, "quarantine-refused", "the injected verdict refuses it")
+    falls_back = R(SH, "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals")
+    accepted = [sh_2, sh_1_superseded, od_ok]
+    add(Scenario(
+        "a restart under a changed assessment verdict recomputes both ways, and remembers neither",
+        accepted, installs=[U("r2.0.0", "update", quarantined=True), U("ordinary", "first", quarantined=True)],
+        env={"KOINE_FIXTURE_ASSESSMENT": "accept"}, quarantine=True, ran=["update", "first"],
+        serves=("fixtureShInfo", UPDATE_GREETING),
+        then=[
+            Phase([refused_update, falls_back, refused_od], label="the verdict now refuses", quarantine=True,
+                  env={"KOINE_FIXTURE_ASSESSMENT": "refuse"}, ran=[FRESH], serves=("fixtureShInfo", BASE_GREETING),
+                  absent_fields=["fixtureOdInfo"], no_capabilities=["fixtureod:read", "fixtureod:control"]),
+            Phase(accepted, label="the verdict accepts again: the refusal was not kept", quarantine=True,
+                  env={"KOINE_FIXTURE_ASSESSMENT": "accept"}, ran=["update", "first"],
+                  serves=("fixtureShInfo", UPDATE_GREETING), capabilities=["fixtureod:read"],
+                  # The grant made while the verdict refused never held the ordinary provider's capability.
+                  clients=[(2, "fixtureOdInfo", "denied")]),
+            Phase([refused_update, falls_back, refused_od], label="and refuses once more", quarantine=True,
+                  env={"KOINE_FIXTURE_ASSESSMENT": "refuse"}, ran=[FRESH], serves=("fixtureShInfo", BASE_GREETING)),
+        ],
+    ))
+    add(Scenario(
+        "a per-user root the host cannot read stops startup, and giving it back recovers exactly",
+        [healthy_bundle, od_ok], installs=[U("ordinary", "first")], ran=[FRESH, "first"],
+        serves=("fixtureShInfo", BASE_GREETING),
+        then=[
+            Phase([], label="the per-user root unreadable", actions=[("chmod", "providers", 0)],
+                  start_fails="permission"),
+            Phase([healthy_bundle, od_ok], label="the per-user root given back",
+                  actions=[("chmod", "providers", 0o700)], ran=[FRESH, "first"],
+                  serves=("fixtureShInfo", BASE_GREETING)),
+        ],
+    ))
     return s
 
 
 OWNED_REASONS = {
     "principal-collision", "principal-class-missing", "principal-class-invalid", "load-failed",
     "descriptor-mismatch", "invalid-sdl", "missing-prefix", "missing-capability-owner", "manifest-collision",
-    "start-failed", "not-approved", "framework-incompatible", "signature-refused",
+    "start-failed", "not-approved", "framework-incompatible", "signature-refused", "quarantine-refused",
 }
 
 PENDING = []

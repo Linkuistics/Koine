@@ -30,6 +30,15 @@ and, for the ordinary duplicates, the cascade and the start failure of the same 
   * a provider that failed its start still answering as if it were running
   * every eligible candidate loaded, after a shipped provider fails its start
 
+and, for the digest and restart rows of the same driver:
+
+  * composition not keeping the shipped identities ahead of the ordinary ones, and
+    composing them in reverse identifier order (the start order, the digest's positions)
+  * a digest taken over the type names alone (changed SDL, a changed description)
+  * every grant holding koine:manage
+  * the assessment verdict never asked, and a refusal remembered across restarts
+  * a per-user root that cannot be enumerated read as an empty one
+
 Each mutation is applied to a COPY of the source tree (.build/selection-mutations/tree,
 its own build directory, so later runs are incremental): the working tree is never
 edited. The copy's headless host is assembled and signed into the same purpose-built
@@ -188,6 +197,64 @@ MUTATIONS = {
          "a shipped provider that fails its start and has no dependants is not replaced by its bundled copy"],
         "failures",
     ),
+    "composition-ignores-the-shipped-group": (
+        CORE + "Composition.swift",
+        "($0.active.origin == .bundled ? 0 : 1, $0.active.descriptor.providerId)\n"
+        "                < ($1.active.origin == .bundled ? 0 : 1, $1.active.descriptor.providerId)",
+        "($0.active.descriptor.providerId)\n                < ($1.active.descriptor.providerId)",
+        ["an extra ordinary provider changes the digest"],
+        "failures",
+    ),
+    "composition-in-reverse-identifier-order": (
+        CORE + "Composition.swift",
+        "($0.active.origin == .bundled ? 0 : 1, $0.active.descriptor.providerId)\n"
+        "                < ($1.active.origin == .bundled ? 0 : 1, $1.active.descriptor.providerId)",
+        "($0.active.origin == .bundled ? 0 : 1, $1.active.descriptor.providerId)\n"
+        "                < ($1.active.origin == .bundled ? 0 : 1, $0.active.descriptor.providerId)",
+        ["the same SDL from either root keeps the digest", "a catalogue listing the slots in another order"],
+        "failures",
+    ),
+    "digest-over-type-names-only": (
+        CORE + "CanonicalSDL.swift",
+        "hex(SHA256.hash(data: Data(text(of: schema).utf8)))",
+        'hex(SHA256.hash(data: Data(schema.typeMap.keys.sorted().joined(separator: ",").utf8)))',
+        ["changed SDL in a newer copy changes the digest"],
+        "failures",
+    ),
+    "every-grant-manages": (
+        CORE + "Authority.swift",
+        "            return Set(grant.capabilities)\n",
+        "            return Set(grant.capabilities).union([CoreCapability.manage])\n",
+        ["the same SDL from either root keeps the digest", "an extra ordinary provider changes the digest"],
+        "failures",
+    ),
+    "quarantine-verdict-never-asked": (
+        LOADER + "ProviderLoader.swift",
+        "for image in images.sorted() where Gatekeeper.isQuarantined(image) {",
+        "for image in images.sorted() where false && Gatekeeper.isQuarantined(image) {",
+        ["a restart under a changed assessment verdict"],
+        "failures",
+    ),
+    "refusal-remembered-across-restarts": (
+        LOADER + "ProviderLoader.swift",
+        "guard let reason = seam.assessment(image) else { continue }",
+        'let kept = staged + ".refused"\n'
+        "            let remembered = FileManager.default.fileExists(atPath: kept)\n"
+        '            guard let reason = remembered ? "a refusal was kept from an earlier start, and" : seam.assessment(image)\n'
+        "            else { continue }\n"
+        "            FileManager.default.createFile(atPath: kept, contents: Data())",
+        ["a restart under a changed assessment verdict"],
+        "failures",
+    ),
+    "unreadable-root-read-as-empty": (
+        LOADER + "ProviderLoader.swift",
+        "let bundles = try FileManager.default\n"
+        "                .contentsOfDirectory(at: root.location, includingPropertiesForKeys: nil)",
+        "let bundles = ((try? FileManager.default\n"
+        "                .contentsOfDirectory(at: root.location, includingPropertiesForKeys: nil)) ?? [])",
+        ["a per-user root the host cannot read"],
+        "failures",
+    ),
 }
 
 
@@ -204,6 +271,10 @@ def main():
     os.makedirs(tree, exist_ok=True)
     os.makedirs(output, exist_ok=True)
     framework = run(["scripts/stage-provider-framework.sh", "debug"], REPOSITORY).stdout.strip()
+    # The conformance tool is the unmutated tree's: the printer that takes the expected digest is never
+    # the subject of a mutation, so a host's digest is held to a reference that cannot move with it.
+    run(["swift", "build", "--product", "KoineConformance"], REPOSITORY)
+    conformance = os.path.join(run(["swift", "build", "--show-bin-path"], REPOSITORY).stdout.strip(), "KoineConformance")
     report = {}
     for name in wanted:
         path, old, new, scenarios, *driver = MUTATIONS[name]
@@ -227,7 +298,8 @@ def main():
         for scenario in scenarios:
             results = os.path.join(output, name, "results.json")
             subprocess.run(
-                [os.path.join(REPOSITORY, "scripts", driver), hosts, fixtures, results, "--only", scenario],
+                [os.path.join(REPOSITORY, "scripts", driver), hosts, fixtures, results, "--only", scenario]
+                + (["--conformance", conformance] if driver == DRIVERS["failures"] else []),
                 cwd=REPOSITORY, capture_output=True, text=True,
             )
             with open(results) as file:

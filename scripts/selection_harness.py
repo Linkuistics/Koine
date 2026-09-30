@@ -29,12 +29,19 @@ served, with the profile's own controls seen red (`conformance=`).
 A scenario may go on to further phases over the same data directory: an action
 (a copy removed, replaced or added) and then a restart, which is a new host
 process with a new marker log. Recovery from a failed choice is repair or removal,
-then restart, and nothing else.
+then restart, and nothing else. A phase can also restart the data directory under a
+different signed host (`host=`, a changed baseline or catalogue order), change the
+assessment verdict the host is given (`env=`, for a copy quarantined with the
+user-approved flag, which the OS then asks nothing about), make the per-user root
+unreadable so that startup stops (`start_fails=`), and record the served schema digest
+(`digest=`), which must be the same wherever a tag recurs and differ where the scenario
+says it must (`differs=`).
 
 The real verifier, staging and loader run in every scenario. The one private seam
 in use is the discovery order, reversed for the alternative run.
 """
 
+import glob
 import json
 import os
 import re
@@ -58,6 +65,7 @@ BASE_GREETING = "hello from the fixturesh provider"
 UPDATE_GREETING = "hello from the fixturesh provider, revision 2"
 
 SH = "fixturesh"
+SH_READ = "fixturesh:read"
 SK = "fixturesk"
 ACTIVE, REJECTED, INCOMPATIBLE, FAILED = "ACTIVE", "REJECTED", "INCOMPATIBLE", "FAILED"
 SEL, NOT, UNAVAIL = "SELECTED", "NOT_SELECTED", "UNAVAILABLE"
@@ -70,12 +78,13 @@ FRESH = "FixtureSh"  # the bundled baseline's install name
 class Install:
     """One entry of the per-user provider root: a fixture case installed as `name`."""
 
-    def __init__(self, case, name, approved=True, alias_of=None):
+    def __init__(self, case, name, approved=True, alias_of=None, quarantined=False):
         self.case, self.name, self.approved, self.alias_of = case, name, approved, alias_of
+        self.quarantined = quarantined
 
 
-def U(case, name, approved=True):
-    return Install(case, name, approved)
+def U(case, name, approved=True, quarantined=False):
+    return Install(case, name, approved, quarantined=quarantined)
 
 
 def Alias(name, target):
@@ -92,13 +101,21 @@ class Phase:
     """What one host process is expected to do, and the action that precedes it.
 
     `actions` are applied to the stopped host's data directory before it restarts:
-    ("remove", name), ("install", case, name) or ("replace", name, case).
+    ("remove", name), ("install", case, name[, quarantined]), ("replace", name, case) or
+    ("chmod", "providers", mode). `host` names the signed host this phase runs as (default: the
+    scenario's), `env` is added to the scenario's environment for this phase alone,
+    `quarantine` says a copy is quarantined and the verdict is the injected one,
+    `start_fails` that startup must stop with that text, `digest` tags the served schema
+    digest, `managed` has the phase show that koine:manage alone opens the management
+    fields, and `clients` are (phase of a credential, root field, verdict) for a credential an
+    earlier phase was given: its verdict is "denied", "served" or "unpublished".
     """
 
     def __init__(
         self, rows, actions=(), ran=(), partial=None, serves=None, absent_fields=(), present_fields=(),
         order=None, rows_note=None, label=None, capabilities=(), no_capabilities=(), mutations=(),
-        no_mutations=(), unavailable=(), conformance=None,
+        no_mutations=(), unavailable=(), conformance=None, host=None, env=None, quarantine=False,
+        start_fails=None, digest=None, managed=False, clients=(),
     ):
         self.rows, self.rows_note, self.label = list(rows), rows_note, label
         self.actions = list(actions)
@@ -113,15 +130,20 @@ class Phase:
         self.capabilities, self.no_capabilities = list(capabilities), list(no_capabilities)
         self.mutations, self.no_mutations = list(mutations), list(no_mutations)
         self.unavailable, self.conformance = list(unavailable), conformance
+        self.host, self.env, self.quarantine, self.start_fails = host, env or {}, quarantine, start_fails
+        self.digest, self.managed, self.clients = digest, managed, list(clients)
 
 
 class Scenario(Phase):
     def __init__(
-        self, name, rows, host="slot", installs=(), rename=False, then=(), env=None, reverse=True, **phase
+        self, name, rows, host="slot", installs=(), rename=False, then=(), env=None, reverse=True, differs=(),
+        **phase
     ):
-        super().__init__(rows, **phase)
-        self.name, self.host, self.installs = name, host, list(installs)
-        self.rename, self.then, self.env, self.reverse = rename, list(then), env or {}, reverse
+        super().__init__(rows, host=host, env=env, **phase)
+        self.name, self.installs = name, list(installs)
+        self.rename, self.then, self.reverse = rename, list(then), reverse
+        # Pairs of digest tags the scenario's phases must have served different digests for.
+        self.differs = list(differs)
 
 
 # --- Environment --------------------------------------------------------------------
@@ -179,10 +201,12 @@ class HostRun:
         self.renames = renames
         self.installed = {}  # install name (unrenamed) -> case, for what is in the per-user root now
         self.phase = 0
+        self.credentials = []  # the credential each phase's host process gave, in phase order
+        self.granted = []  # the capabilities each of those held when it was given
         for install in scenario.installs:
             self.install(install)
         self.process = None
-        self.start()
+        self.start(scenario)
 
     # -- the per-user root
 
@@ -196,6 +220,8 @@ class HostRun:
             return
         shutil.copytree(self.suite.bundle(install.case), destination, symlinks=True)
         self.installed[install.name] = install.case
+        if install.quarantined:
+            self.quarantine(destination)
         if install.approved:
             try:
                 with open(os.path.join(destination, "manifest.json")) as file:
@@ -205,14 +231,29 @@ class HostRun:
             with open(os.path.join(self.providers, provider + ".approval.json"), "w") as file:
                 json.dump({"providerId": provider, "teamIdentifier": self.suite.team}, file)
 
+    @staticmethod
+    def quarantine(bundle):
+        """Marks each image of an installed bundle as downloaded and already approved by the user.
+
+        The flags' 0x40 bit is the user's approval, which the OS takes as settled: dlopen of a
+        quarantined image that Gatekeeper has not notarized would otherwise put up a dialog. The
+        loader asks for a verdict whenever the attribute is present, so the verdict the host
+        injects (KOINE_FIXTURE_ASSESSMENT) is the only one there is."""
+        for image in glob.glob(os.path.join(bundle, "*.dylib")):
+            subprocess.run(["xattr", "-w", "com.apple.quarantine", "00c3;65000000;KoineTest;", image], check=True)
+
     def apply(self, actions):
         for action in actions:
             kind = action[0]
             if kind == "remove":
                 shutil.rmtree(self._place(action[1]), ignore_errors=False)
                 self.installed.pop(action[1], None)
+            elif kind == "chmod":
+                # The per-user root, made unreadable (0) or given back (0o700).
+                assert action[1] == "providers"
+                os.chmod(self.providers, action[2])
             elif kind == "install":
-                self.install(U(action[1], action[2]))
+                self.install(U(action[1], action[2], quarantined=len(action) > 3 and action[3]))
             elif kind == "replace":
                 shutil.rmtree(self._place(action[1]))
                 self.installed.pop(action[1], None)
@@ -222,15 +263,18 @@ class HostRun:
 
     # -- the process
 
-    def start(self):
+    def start(self, phase):
+        """Starts the signed host this phase names over the data directory; raises if it stops."""
         self.phase += 1
-        # The assessment verdict is one constant across runs because nothing is quarantined.
+        self.host_name = phase.host or self.scenario.host
+        self.env = dict(self.scenario.env, **phase.env)
+        # Unless a phase quarantines a copy on purpose, nothing is, so every assessment verdict is the same.
         self.quarantined = subprocess.run(
             ["xattr", "-rl", self.data], capture_output=True, text=True
         ).stdout.count("com.apple.quarantine")
         self.marker_log = os.path.join(self.directory, f"markers-{self.phase}.log")
-        environment = dict(os.environ, KOINE_FIXTURE_MARKER_LOG=self.marker_log, **self.scenario.env)
-        command = [self.suite.host_binary(self.scenario.host), self.data] + (
+        environment = dict(os.environ, KOINE_FIXTURE_MARKER_LOG=self.marker_log, **self.env)
+        command = [self.suite.host_binary(self.host_name), self.data] + (
             ["--reverse-discovery"] if self.reversed_order else []
         )
         self.process = subprocess.Popen(
@@ -243,16 +287,22 @@ class HostRun:
         finally:
             watchdog.cancel()
         if not line:
-            raise RuntimeError(f"The host exited before it was ready: {self.process.stderr.read()}")
+            message = f"The host exited before it was ready: {self.process.stderr.read()}"
+            self.process = None
+            raise RuntimeError(message)
         self.ready = json.loads(line)
         if "error" in self.ready:
+            self.process.wait(timeout=60)
+            self.process = None
             raise RuntimeError(f"The host failed to start: {self.ready['error']}")
+        self.credentials.append(self.ready["credential"])
+        self.granted.append(self.own_capabilities())
 
-    def post(self, query):
+    def post(self, query, credential=None):
         request = urllib.request.Request(
             f"http://127.0.0.1:{self.ready['port']}/graphql",
             data=json.dumps({"query": query, "variables": {}}).encode(),
-            headers={"Content-Type": "application/json", "Authorization": f"Bearer {self.ready['credential']}"},
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {credential or self.ready['credential']}"},
         )
         try:
             with urllib.request.urlopen(request, timeout=30) as response:
@@ -280,6 +330,14 @@ class HostRun:
     def capabilities(self):
         return self.data_of("{ koine { availableCapabilities } }")["koine"]["availableCapabilities"]
 
+    def own_capabilities(self, credential=None):
+        """What the grant behind `credential` (by default this phase's) holds, as it says itself."""
+        status, reply = self.post("{ koine { ownGrant { capabilities } } }", credential)
+        return sorted(((reply or {}).get("data") or {}).get("koine", {}).get("ownGrant", {}).get("capabilities", []))
+
+    def digest(self):
+        return self.data_of("{ koine { schemaDigest } }")["koine"]["schemaDigest"]
+
     def markers(self):
         """[(install name, phase)] in the order written, from the staged image each line names."""
         try:
@@ -303,7 +361,10 @@ class HostRun:
         return (json.loads(line) if line else {}), code
 
     def stop(self):
-        result = self.stop_process()
+        # A host that never started has nothing to stop, and its data directory is given back.
+        result = self.stop_process() if self.process else ({"stopped": True}, 0)
+        if os.path.isdir(self.providers):
+            os.chmod(self.providers, 0o700)
         shutil.rmtree(self.directory, ignore_errors=True)
         return result
 
@@ -371,9 +432,14 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
     """Asserts one host process against its phase; returns nothing, records through `check`."""
     rows = host.rows()
     markers = host.markers()
-    check("no installed copy is quarantined, so every assessment verdict is the same", host.quarantined == 0,
-          host.quarantined)
-    check("hostTeam", (host.ready["hostTeam"] is not None) == (suite.spec["hosts"][host.scenario.host]["signing"] == "developer-id"),
+    if phase.quarantine:
+        check("a quarantined copy is judged by the injected verdict alone",
+              host.quarantined > 0 and host.env.get("KOINE_FIXTURE_ASSESSMENT") in ("accept", "refuse"),
+              [host.quarantined, host.env.get("KOINE_FIXTURE_ASSESSMENT")])
+    else:
+        check("no installed copy is quarantined, so every assessment verdict is the same", host.quarantined == 0,
+              host.quarantined)
+    check("hostTeam", (host.ready["hostTeam"] is not None) == (suite.spec["hosts"][host.host_name]["signing"] == "developer-id"),
           host.ready["hostTeam"])
     for failure in invariants(rows):
         check("report invariant", False, failure)
@@ -425,6 +491,24 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
               [status, reply])
     if phase.conformance:
         check_conformance(host, phase.conformance, suite, check, record)
+    if phase.digest:
+        served = host.digest()
+        first = record.setdefault("digests", {}).setdefault(phase.digest, served)
+        check(f"the schema digest {phase.digest!r} is the same wherever it recurs in this run", served == first,
+              [served, first])
+        if phase.order:
+            check_composition(host, phase.order, installed, suite, check)
+    if phase.managed:
+        check_management(host, check)
+    # Authority is only ever what a grant was given. A credential from an earlier phase still holds
+    # exactly what it held, whatever this restart made available, and each verdict the phase names
+    # for one is what it serves now.
+    for number, (credential, held) in enumerate(zip(host.credentials[:-1], host.granted[:-1]), 1):
+        now = host.own_capabilities(credential)
+        check(f"the grant behind phase {number}'s credential is unchanged by the restart: no authority is added",
+              now == held, [now, held])
+    for number, root, verdict in phase.clients:
+        check_client(host, host.credentials[number - 1], number, root, verdict, check)
     # Controls: which compiled binary each install that did not run every phase would
     # have been, and which was seen to run every phase.
     for name, steps in observed.items():
@@ -443,6 +527,117 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
     record.setdefault("phases", []).append({"rows": rows, "markers": observed})
     record["rows_observed"] = record.get("rows_observed", []) + rows
     record["markers_observed"] = observed
+
+
+CORE_DESIGN = os.path.join(REPOSITORY, "docs", "design", "core-schema-extension-host.graphql")
+EXTENSION = re.compile(r"^extend type (Query|Mutation) \{\n(.*?)\n\}\n", re.S | re.M)
+
+
+def composed_design(suite, order, installed):
+    """The core's design SDL with each named provider's contribution added in `order`: what a host that
+    composes them in that order serves, written out so the conformance tool can print it and take its digest."""
+    with open(CORE_DESIGN) as file:
+        text = file.read()
+    bodies = {"Query": [], "Mutation": []}
+    rest = []
+    for name in order:
+        with open(os.path.join(suite.bundle(installed[name]), "schema.graphql")) as file:
+            schema = file.read() + "\n"
+        for root, body in EXTENSION.findall(schema):
+            bodies[root].append(body)
+        rest.append(EXTENSION.sub("", schema).strip())
+    for root, added in bodies.items():
+        opening = f"\ntype {root} {{\n"
+        start = text.index(opening) + len(opening)
+        end = text.index("\n}\n", start)
+        text = text[:end] + "".join("\n" + body for body in added) + text[end:]
+    return text + "\n" + "\n\n".join(part for part in rest if part) + "\n"
+
+
+def check_composition(host, order, installed, suite, check):
+    """Holds the served schema and its digest to the design written out in the start order the phase
+    asserts, and shows the same contributions in the reverse order turn the digest half red: the digest
+    is of declared order, so that is where a contribution's position is read."""
+    if not suite.conformance:
+        check("the conformance tool is given (--conformance)", False, None)
+        return
+    query = subprocess.run([suite.conformance, "--print-query"], capture_output=True, text=True, check=True).stdout
+    status, introspection = host.post(query)
+    served = host.digest()
+    work = tempfile.mkdtemp(prefix="koine-selection-order-")
+    try:
+        with open(os.path.join(work, "introspection.json"), "w") as file:
+            json.dump(introspection, file)
+
+        def hold(names):
+            design = os.path.join(work, "design.graphql")
+            with open(design, "w") as file:
+                file.write(composed_design(suite, names, installed))
+            return subprocess.run(
+                [suite.conformance, "--introspection", os.path.join(work, "introspection.json"), "--design", design,
+                 "--served-digest", served], capture_output=True, text=True,
+            )
+
+        clean = hold(order)
+        check(f"the served schema and digest are the core with {', '.join(order)} composed in that order: CONFORMANT",
+              clean.returncode == 0 and "CONFORMANT" in clean.stdout, clean.stdout[-600:])
+        if len(order) > 1:
+            red = hold(list(reversed(order)))
+            check("control: the same contributions composed in the reverse order are not the served digest",
+                  red.returncode != 0 and "they differ" in red.stdout, red.stdout[-600:])
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
+def check_management(host, check):
+    """A grant without koine:manage reads the digest, and the management fields refuse it."""
+    created = host.data_of(
+        'mutation { koineCreateGrant(input: { clientLabel: "no manage", capabilities: ["%s"] }) '
+        "{ credential grant { grantId capabilities } } }" % SH_READ
+    )["koineCreateGrant"]
+    weak = created["credential"]
+    check("the grant made for the check holds no koine:manage", "koine:manage" not in created["grant"]["capabilities"],
+          created["grant"])
+    status, reply = host.post("{ koine { schemaDigest } }", weak)
+    check("without koine:manage the digest is still served, and is the one koine:manage reads",
+          status == 200 and not (reply or {}).get("errors")
+          and reply["data"]["koine"]["schemaDigest"] == host.digest(), [status, reply])
+    required = "This operation requires the koine:manage capability."
+    for name, query in (
+        ("koineManagement.providers", "{ koineManagement { providers { provider } } }"),
+        ("koineManagement.grants", "{ koineManagement { grants { grantId } } }"),
+        ("koineManagement.osPermissions", "{ koineManagement { osPermissions { permission } } }"),
+        ("koineCreateGrant", 'mutation { koineCreateGrant(input: { clientLabel: "x", capabilities: [] }) { credential } }'),
+        ("koineRevokeGrant", 'mutation { koineRevokeGrant(grantId: "%s") { grantId } }' % created["grant"]["grantId"]),
+    ):
+        status, reply = host.post(query, weak)
+        errors = (reply or {}).get("errors") or []
+        check(f"{name} refuses a grant without koine:manage",
+              bool(errors) and all(required in (e.get("message") or "")
+                                   and (e.get("extensions") or {}).get("requiredCapability") == "koine:manage"
+                                   for e in errors), [status, reply])
+        check(f"{name} returned nothing to it", not any(((reply or {}).get("data") or {}).values()), reply)
+    status, reply = host.post("{ koineManagement { providers { provider } } }")
+    check("the same field answers a grant with koine:manage",
+          status == 200 and not reply.get("errors") and bool(reply["data"]["koineManagement"]["providers"]), reply)
+
+
+def check_client(host, credential, number, root, verdict, check):
+    """What a credential given in an earlier phase is told of `root` now."""
+    status, reply = host.post("{ %s { greeting } }" % root, credential)
+    errors = (reply or {}).get("errors") or []
+    data = ((reply or {}).get("data") or {}).get(root)
+    if verdict == "denied":
+        passed = bool(errors) and data is None and all(
+            (e.get("extensions") or {}).get("kind") == "permission" for e in errors
+        )
+    elif verdict == "served":
+        passed = not errors and bool(data)
+    else:  # "unpublished"
+        passed = bool(errors) and data is None and all(
+            (e.get("extensions") or {}).get("kind") != "permission" for e in errors
+        )
+    check(f"phase {number}'s credential is {verdict} at {root}", passed, [status, reply])
 
 
 def check_conformance(host, profile, suite, check, record):
@@ -518,6 +713,18 @@ def check_conformance(host, profile, suite, check, record):
         shutil.rmtree(work, ignore_errors=True)
 
 
+def check_failed_start(host, phase, failure, suite, check, record):
+    """A host that must not start: it stops with the phase's text, before any provider code ran."""
+    check(f"startup stops, naming {phase.start_fails!r}", failure is not None and phase.start_fails in failure,
+          failure)
+    check("no provider image ran, the designated baselines included", host.markers() == [], host.markers())
+    installed = dict(host.installed)
+    installed.update(dict(suite.plugins(host.host_name)))
+    record.setdefault("unloaded", {}).update(
+        {f"{name} (a startup that stops)": suite.binary_of[case] for name, case in installed.items()}
+    )
+
+
 def run_scenario(suite, scenario, reversed_order, renamed, results):
     label = f"{scenario.name} [{scenario.host}; {'reversed' if reversed_order else 'forward'} discovery{'; paths renamed' if renamed else ''}]"
     renames = {}
@@ -542,16 +749,33 @@ def run_scenario(suite, scenario, reversed_order, renamed, results):
     phases = [scenario] + scenario.then
     try:
         for index, phase in enumerate(phases):
-            if index:
-                stopped, code = host.stop_process()
-                check(f"phase {index}: the host stops cleanly", code == 0 and stopped.get("stopped") is True, [code, stopped])
-                host.apply(phase.actions)
-                host.start()
-            installed = dict(host.installed)
-            installed.update(dict(suite.plugins(scenario.host)))
             prefix = "" if len(phases) == 1 else f"[phase {index + 1}{': ' + phase.label if phase.label else ''}] "
             phase_check = lambda name, passed, observed=None, prefix=prefix: check(prefix + name, passed, observed)
+            if index:
+                if host.process:
+                    stopped, code = host.stop_process()
+                    check(f"phase {index}: the host stops cleanly", code == 0 and stopped.get("stopped") is True, [code, stopped])
+                host.apply(phase.actions)
+                failure = None
+                try:
+                    host.start(phase)
+                except RuntimeError as error:
+                    failure = str(error)
+                if phase.start_fails:
+                    check_failed_start(host, phase, failure, suite, phase_check, record)
+                    continue
+                if failure:
+                    raise RuntimeError(failure)
+            elif phase.start_fails:
+                raise ValueError("the first phase of a scenario must start")
+            installed = dict(host.installed)
+            installed.update(dict(suite.plugins(host.host_name)))
             check_phase(host, phase, phase_check, suite, installed, record, label, f" (phase {index + 1})" if index else "")
+        digests = record.get("digests", {})
+        for one, other in scenario.differs:
+            check(f"the schema digest {one!r} differs from {other!r}",
+                  one in digests and other in digests and digests[one] != digests[other],
+                  [digests.get(one), digests.get(other)])
     except Exception as error:  # noqa: BLE001
         check("the scenario runs", False, repr(error))
     finally:
@@ -559,6 +783,22 @@ def run_scenario(suite, scenario, reversed_order, renamed, results):
         check("the host stops cleanly", code == 0 and stopped.get("stopped") is True, [code, stopped])
     ok = all(entry["passed"] for entry in record["checks"])
     print(f"  {'ok  ' if ok else 'FAIL'} {label}")
+
+
+def check_digests_across_runs(scenario, runs, results):
+    """Discovery order and path names decide nothing: each tagged digest is one value across every run."""
+    tags = {tag for record in runs for tag in record.get("digests", {})}
+    if not tags or len(runs) < 2:
+        return
+    observed = {tag: sorted({record["digests"][tag] for record in runs if tag in record.get("digests", {})}) for tag in tags}
+    failing = {tag: values for tag, values in observed.items() if len(values) != 1}
+    record = {"scenario": scenario.name, "label": f"{scenario.name} [digests across discovery orders and path names]",
+              "host": scenario.host, "derived": True, "checks": [{
+                  "check": "each tagged digest is the same in every run of the scenario", "passed": not failing,
+                  "observed": failing or observed}]}
+    results.append(record)
+    if failing:
+        print(f"    FAIL digests differ between runs: {failing}")
 
 
 def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="", argv=None):
@@ -589,6 +829,7 @@ def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="",
             run_scenario(suite, scenario, reversed_order, False, results)
         if scenario.rename:
             run_scenario(suite, scenario, False, True, results)
+        check_digests_across_runs(scenario, [r for r in results if r["scenario"] == scenario.name], results)
 
     # A refused-marker assertion is paired with a control: the same compiled binary
     # seen writing every marker in another run. A phase an image that did run never
@@ -620,7 +861,7 @@ def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="",
              "reasonsUnseen": unseen, "pending": [{"row": row, "reason": reason} for row, reason in pending]},
             file, indent=1, default=str,
         )
-    print(f"{len(results)} host runs, {len(failed)} failed, {len(uncontrolled)} without a control, {len(unseen)} owned reasons unseen")
+    print(f"{len([r for r in results if not r.get('derived')])} host runs, {len(failed)} failed, {len(uncontrolled)} without a control, {len(unseen)} owned reasons unseen")
     for row, reason in pending:
         print(f"PENDING {row}: {reason}")
     sys.exit(1 if failed or uncontrolled or unseen else 0)

@@ -41,6 +41,12 @@
 # refuse (incompatible framework, an ad-hoc signature, a tampered seal) or that claim only
 # its identifier or only its prefix.
 #
+# The digest and restart rows (scripts/verify-selection-failures.py, the sections of
+# docs/verification/selection-failures.md that follow the cascade ones) add an update whose
+# SDL differs from the baseline's only by one extra enum (`sdl-changed`), and one whose extra
+# enum differs from that one only in its description (`sdl-changed-description`); and a
+# designated baseline of a later release (`baseline-r1.7.0`), for a host whose baseline changed.
+#
 # Every fixture signing identifier is distinct from every production one and is
 # admitted only by the test catalogues of scripts/build-selection-hosts.py.
 #
@@ -144,6 +150,16 @@ type OtherThing {
 }
 SDL
 
+cat >"${WORK}/extra-valid.graphql" <<'SDL'
+"An additional enum in the slot's own namespace; an enum needs no resolver."
+enum FixtureShExtra {
+  ALPHA
+  BETA
+}
+SDL
+sed 's/An additional enum in/An additional enum, described otherwise, in/' "${WORK}/extra-valid.graphql" \
+    >"${WORK}/extra-valid-described.graphql"
+
 binary sh-baseline Sh ""
 binary sh-update Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
 binary sk-baseline Sk ""
@@ -151,6 +167,8 @@ binary sk-update Sk "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
 binary sh-update-private Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -L${WORK}/private/good -Xlinker -needed-lFixturePrivate"
 binary sh-update-bad-sdl Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/broken-sdl.graphql"
 binary sh-update-outside-prefix Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/outside-prefix.graphql"
+binary sh-update-extra-sdl Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/extra-valid.graphql"
+binary sh-update-extra-sdl-described Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/extra-valid-described.graphql"
 binary od Od ""
 binary od-claim-sh Od "" "${WORK}/claim-sh.graphql"
 binary od-claim-input Od "" "${WORK}/claim-input.graphql"
@@ -222,6 +240,9 @@ make f-schema-outside-prefix sh-update-outside-prefix "${FAIL}"
 #   dlopen: one binary, one private dependency that loads and one that does not.
 INCLUDE="${WORK}/private/good/libFixturePrivate.dylib" make f-dlopen-good sh-update-private "${FAIL}"
 INCLUDE="${WORK}/private/bad/libFixturePrivate.dylib" make f-dlopen-unloadable sh-update-private "${FAIL}"
+#   an update whose SDL is the baseline's plus one type, and that type described otherwise.
+make sdl-changed sh-update-extra-sdl "${FAIL}"
+make sdl-changed-description sh-update-extra-sdl-described "${FAIL}"
 #   a release that loads: the repair every recovery installs.
 make f-repaired sh-update "${FAIL}"
 
@@ -243,6 +264,8 @@ make baseline-release-mismatch sh-baseline "m['version'] = '1.0.1'; ${SCHEMA}"
 make baseline-other-identifier sh-baseline "${SCHEMA}" dev.antony.Koine.provider.fixturesh.impostor
 make baseline-adhoc sh-baseline "${SCHEMA}" adhoc
 make baseline-framework-future sh-baseline "m['framework']['minimumMinor'] = 99; ${SCHEMA}"
+#   a later designated release, for a host whose baseline changed (release 1.7.0 outranks an update 1.5.0).
+make baseline-r1.7.0 sh-baseline "m['version'] = '1.7.0'; ${SCHEMA}"
 
 # --- Sk: a second shipped slot ---------------------------------------------------
 

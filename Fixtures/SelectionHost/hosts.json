@@ -19,6 +19,10 @@
       "providerId": "fixturesk", "graphQLPrefix": "FixtureSk", "bundle": "FixtureSk.koineprovider",
       "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesk"
     },
+    "sh-1.7": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.7.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
     "input": { "providerId": "fixtureinput", "graphQLPrefix": "FixtureInput" }
   },
   "hosts": {
@@ -67,6 +71,15 @@
       "purpose": "Two enabled slots listed in an order that is not their identifier order (fixturesk, then fixturesh).",
       "signing": "developer-id", "identities": ["sk", "sh", "input"],
       "plugins": [{ "case": "baseline" }, { "case": "sk-baseline" }]
+    },
+    "two-slots-sorted": {
+      "purpose": "The same two slots listed in their identifier order (fixturesh, then fixturesk): only the catalogue's order differs from two-slots.",
+      "signing": "developer-id", "identities": ["sh", "sk", "input"],
+      "plugins": [{ "case": "baseline" }, { "case": "sk-baseline" }]
+    },
+    "slot-baseline-1.7.0": {
+      "purpose": "The slot's host shipped later: its designated baseline is release 1.7.0, so the data directory of a 1.0.0 host is restarted under a changed baseline.",
+      "signing": "developer-id", "identities": ["sh-1.7", "input"], "plugins": [{ "case": "baseline-r1.7.0" }]
     },
     "adhoc-host": {
       "purpose": "The same application signed ad hoc: no verified Team ID, so no shipped candidate is admitted.",

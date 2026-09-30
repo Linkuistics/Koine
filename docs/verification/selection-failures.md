@@ -11,8 +11,10 @@ one [selection-decisions.md](selection-decisions.md) describes, now a library
 This record covers `freeze-failures`: a frozen update failing after its choice, the
 principal conflicts among frozen selections, and the later-failure half of
 diagnostic completeness; and `duplicates-cascade`: ordinary duplicates, the
-capability-owner cascade and a start failure. The digest and restart rows are
-`digest-restart`'s, which adds its own section here.
+capability-owner cascade and a start failure; and `digest-restart`: the schema digest
+across roots, changed SDL and an extra provider, the management fields' authority, and
+restart after a removal, a changed baseline, a changed assessment verdict and an
+unreadable root.
 
 ## Procedure
 
@@ -45,6 +47,39 @@ the text; a subset run cannot close the control pairing.
   a client reads, and holds them to `docs/design/profiles/<profile>.json` with the
   same `KoineConformance` tool `task conformance` uses, then shows that check red
   against a wrong design and four mutated pins before the clean verdict counts.
+- **Hosts and verdicts per phase.** A phase may restart the same data directory under
+  another signed host (`host=`: a catalogue that lists the slots in another order, a
+  host whose designated baseline is another release) and with another environment
+  (`env=`). `KoineSelectionHost` reads `KOINE_FIXTURE_ASSESSMENT` (`accept` or `refuse`)
+  into `ProviderLoader.Seam.assessment`, the private seam for Gatekeeper's verdict on a
+  quarantined image; unset, the real Gatekeeper answers. The driver quarantines an
+  installed copy with `com.apple.quarantine` = `00c3;…`: the `0x40` bit is the user's
+  approval, which the OS takes as settled, so the injected verdict is the only one there
+  is and `dlopen` of the accepted image puts up no dialog (see Observations).
+- **Startup that stops.** A phase may expect the host not to start (`start_fails=`): it
+  reads the error the host printed, asserts no marker was written, not even the
+  designated baseline's, and records every install as never having run, which the same
+  binaries writing their markers in the phases around it control. `KoineSelectionHost`
+  prints a startup error as JSON, as it prints a failure to start the server.
+- **The digest.** A phase tags the `Koine.schemaDigest` it serves (`digest=`). The same tag is
+  one value wherever it recurs in a scenario and across its forward, reversed and renamed
+  runs; `differs=` names tags that must be different. Where the phase also asserts the start
+  `order`, which is the composition order, the harness writes out the design SDL a host
+  composing in that order serves (`docs/design/core-schema-extension-host.graphql` with
+  each provider's `schema.graphql` added in order), and holds the served introspection and
+  digest to it with `KoineConformance --design … --served-digest …`: `CONFORMANT`, and the
+  same contributions in the reverse order seen `NOT CONFORMANT` ("the DECLARED ORDER of
+  object and input fields"). That reference is written from the asserted order, so a digest
+  cannot agree with itself.
+- **Management authority.** A `managed` phase makes a grant holding `fixturesh:read` alone
+  and shows `koineManagement.providers`, `.grants`, `.osPermissions`, `koineCreateGrant` and
+  `koineRevokeGrant` refuse it, each naming `koine:manage`, with nothing returned, while
+  `koine.schemaDigest` is served to it and is the digest `koine:manage` reads.
+- **Authority across restarts.** Grants are durable, so a credential from an earlier phase
+  works after a restart. Every phase after the first reads each earlier credential's
+  `ownGrant.capabilities` and requires exactly what it held when it was made, and a phase
+  can name a root field an earlier credential is `served`, `denied` (kind `permission`) or
+  `unpublished` at.
 - **Host class.** `KoineSelectionHost` registers `KoineSelectionHostClass` in its
   own image, so a manifest can name a class the host already has. `NSObject` is the
   system's.
@@ -91,6 +126,20 @@ binary requires `fixturesh:read` or `fixturesk:read` for its `…RenameItemCheck
 
 The chain is `fixturesh` ← `fixturesk` ← `fixtureod`; `dep-sh-needs-sk` with
 `dep-sk-needs-sh` is the cycle.
+
+### What the digest and restart fixtures are
+
+| Case | What it is | Used for |
+|---|---|---|
+| `sdl-changed` | a `fixturesh` 2.0.0 update whose SDL is the baseline's plus one enum, `FixtureShExtra` | changed SDL in a newer copy |
+| `sdl-changed-description` | the same, the enum described otherwise | a description alone changes the digest |
+| `baseline-r1.7.0` | the designated baseline at release 1.7.0 | the host `slot-baseline-1.7.0`, a changed baseline |
+
+The baseline and the updates of `fixturesh` and `fixturesk` have the same SDL (only the greeting
+differs between revisions), so an update from the per-user root is "the same SDL from the other
+root". Two hosts are added to `Fixtures/SelectionHost/hosts.json`: `two-slots-sorted` lists
+`fixturesh` before `fixturesk`, where `two-slots` lists `fixturesk` first, so a digest they share
+is identifier order and not catalogue order; and `slot-baseline-1.7.0`.
 
 ## Evidence by row
 
@@ -238,6 +287,81 @@ the third installed:
   wrote no marker. Without dependants the result is the same: the bundled baseline is
   not started in its place.
 
+### Same SDL across roots, changed SDL in a newer copy, extra ordinary provider
+
+Row: *Same SDL across roots, changed SDL in newer copy, extra ordinary provider*.
+**Established at N and G.** The fixtures' composed digest is `622530fb…`
+(`fixturesh` then `fixturesk`) in every run that publishes the baseline SDL, however it got
+there. Forward and reversed discovery, and renamed paths, give the same digests.
+
+- **Same SDL from either root.** In `two-slots`, with `fixturesk` listed first in the
+  catalogue: the two bundled baselines; then `fixturesh` from the per-user root at release
+  2.0.0; then `fixturesk` from it at 1.1.0; then both removed and the host restarted. The
+  digest is `622530fb…` in all four. Which binary ran is not the digest's to say, so each
+  phase pins it separately: the rows name the release (`1.0.0` / `2.0.0` / `1.1.0`) and
+  origin, the markers name the image that ran (the bundled baseline in the first and last,
+  the update in the others), and the greeting is that binary's.
+- **Identifier-sorted position.** Each phase asserts the start order, which is the
+  composition order: `FixtureSh` before `FixtureSk`, and `sh-update` before `sk-update`,
+  whichever root each came from, although the catalogue lists `fixturesk` first. The
+  served schema and digest are then held to the design the `KoineConformance` tool prints
+  for the core with those contributions in that order (`CONFORMANT`), and the reverse order
+  is seen `NOT CONFORMANT` in every phase: the digest is of declared order, so this is where
+  a wrong position would show.
+- **The catalogue's order decides nothing.** One data directory is restarted under
+  `two-slots` (`fixturesk` first) and `two-slots-sorted` (`fixturesh` first), with and
+  without the update: the digest is the same, and so is the start order.
+- **Changed SDL.** A `fixturesh` update with one more enum changes the digest
+  (`6a1bf436…`); the same enum described otherwise changes it again (`f592b3ea…`); an update
+  with the baseline's SDL at the same release brings back `622530fb…`. Each phase is
+  held to its design SDL, so the changed digests are the digests of those schemas and not
+  merely different.
+- **Extra ordinary provider.** Adding `fixtureod` changes the digest (`d474413f…`) and puts
+  it after both shipped identities (`FixtureSh`, `FixtureSk`, `fixtureod` — although `fixtureod`
+  sorts before both). Adding the `fixturesh` update beside it leaves the digest where it was,
+  with the update still first: a shipped identity is not taken into the ordinary group
+  by its physical root. A second ordinary provider (`unknown`) changes it again
+  (`a7841744…`), and with the first removed it is another (`2dd86be3…`). Everything removed
+  and the host restarted gives `622530fb…` once more.
+- **Management fields denied without `koine:manage`.** In two of the phases above a grant
+  holding `fixturesh:read` alone reads `koine.schemaDigest` (the value the manager reads)
+  and is refused `koineManagement.providers`, `.grants` and `.osPermissions`, `koineCreateGrant`
+  and `koineRevokeGrant`, each with `requiredCapability: koine:manage` and no data, while the
+  grant that holds it is answered.
+
+### Restart
+
+Row: *Restart after update removal or changed baseline; changed assessment verdict;
+unreadable root*. **Established at N and G.** Every start recomputes from the roots and the
+host; there is no anti-rollback and no verdict kept across restarts.
+
+- **After an update is removed** (`slot`, a 1.5.0 update, the baseline and `fixtureod`
+  installed; five phases). The update is selected and runs; removed, the host restarts on the
+  bundled baseline 1.0.0 and answers as it: rolled back, as the spec allows. The ordinary
+  provider is then removed, and the first phase's credential is told `fixtureOdInfo` is
+  unpublished, its grant unchanged (it still holds `fixtureod:read`). Installed again, the
+  credential made while it was absent is `denied` at `fixtureOdInfo` — what became available
+  was not added to a grant held before — and the first phase's is `served`. The update
+  installed once more is selected again: nothing held it back.
+- **Under a host with a changed baseline.** The data directory of a host whose designated
+  baseline is 1.0.0, with a 1.5.0 update selected, is restarted under `slot-baseline-1.7.0`:
+  the baseline is `ACTIVE` / `SELECTED` / `selected-with-refusals` and the update
+  `older-than-bundled` and never loaded. Back under the 1.0.0 host, the update is selected
+  and runs again.
+- **A changed assessment verdict, injected at N.** A shipped update and an ordinary
+  provider, each quarantined with the user-approved flag, start under `accept`: both run.
+  Under `refuse` the same data directory gives `quarantine-refused` for both (the diagnostic
+  names the injected verdict), the bundled baseline is selected and runs, and no
+  `fixtureod` capability or field is served. Under `accept` again both run: the refusal
+  was not kept. The grant made while the verdict refused never holds `fixtureod:read`
+  and is `denied` there; under `refuse` once more the result is the same as the first time.
+- **An unreadable root.** With the per-user root made unreadable (`chmod 0`) the host does
+  not start: it prints `The file “Providers” couldn’t be opened because you don’t have
+  permission to view it.` (POSIX 13), wrote no marker, and so ran not even the bundled
+  baseline that the same host runs in the phases either side — nothing is run from a
+  partial set. Given back (`0700`), the next host process runs the same two providers as the
+  first, with the same rows.
+
 ## Controls
 
 Every install that wrote nothing, or did not reach every phase, needs a run that shows
@@ -246,13 +370,17 @@ the baseline, a healthy update, a healthy update with a loadable private depende
 two baselines, a second slot's update, two ordinary providers, a dependant and its
 dependant whose owners are present, and the valid cycle. The start-failing update is its
 own control: it wrote every marker. `failures.json` lists which run supplied each in
-`controls`; eleven compiled binaries are controlled.
+`controls`; thirteen compiled binaries are controlled. The digest and restart scenarios are
+their own controls, bar the two binaries that only they use (`sdl-changed`'s and
+`sdl-changed-description`'s), which each write every marker in the phase that runs them. A
+startup that stops is controlled by the same baseline and ordinary binaries writing their
+markers in the phases either side of it.
 
 ## Instruments seen red
 
 `task selection:mutation` breaks one decision at a time in a copy of the tree (as
 [selection-decisions.md](selection-decisions.md#instruments-seen-red) describes) and
-runs the named scenarios of this driver. Each of the twelve below was seen red in every
+runs the named scenarios of this driver. Each of the nineteen below was seen red in every
 host run of each scenario named:
 
 | Broken decision | Scenario | Red runs |
@@ -269,15 +397,22 @@ host run of each scenario named:
 | A cycle given no owner (a dependant counted as an owner only when it has none) | `control: a valid dependency cycle…`, `control: a dependant whose capability owner is present…` | 2 of 2 each |
 | A provider that failed its start still answering | both start-failure scenarios | 2 of 2 each |
 | Every eligible candidate loaded, after a shipped provider fails its start | both start-failure scenarios | 2 of 2 each |
+| Shipped and ordinary providers composed by identifier alone | `an extra ordinary provider changes the digest…`: start order and the written-out design | 3 of 3 |
+| Composition in reverse identifier order | `the same SDL from either root…`, `a catalogue listing the slots in another order…`: start order, the design and its reverse-order control | 2 of 2, 3 of 3 |
+| A digest over the type names alone | `changed SDL in a newer copy…`: a description changes nothing | 2 of 2 |
+| Every grant holding `koine:manage` | `the same SDL from either root…`, `an extra ordinary provider…`: each management field answers | 2 of 2, 3 of 3 |
+| The assessment verdict never asked | `a restart under a changed assessment verdict…` | 2 of 2 |
+| A refusal remembered across restarts (a marker beside the staged copy) | the same scenario: the third phase is refused | 2 of 2 |
+| A per-user root that cannot be read taken as empty | `a per-user root the host cannot read…`: the host starts and runs the baseline | 2 of 2 |
 
 ## Run record
 
 2026-10-01, macOS 26.6.2 (25G83), arm64, debug build, Developer ID signed (hardened
-runtime, not notarized). `task selection:failures`: **44 scenarios, 100 host runs**,
-**0 failed, 0 without a control, 0 owned reasons unseen** (sixteen stable reasons observed,
+runtime, not notarized). `task selection:failures`: **52 scenarios, 119 host runs**,
+**0 failed, 0 without a control, 0 owned reasons unseen** (nineteen stable reasons observed,
 including `manifest-collision`, `missing-capability-owner`, `start-failed`,
-`not-approved`, `framework-incompatible` and `signature-refused`). `task
-selection:mutation`: the twelve mutations above seen. `swift test` over the conformance
+`quarantine-refused`, `older-than-bundled`, `framework-incompatible` and
+`signature-refused`). `task selection:mutation`: the nineteen mutations above seen. `swift test` over the conformance
 suites: 26 tests pass, including the new design and profile tests. `task check:docs` passes.
 
 ## Observations
@@ -299,6 +434,22 @@ suites: 26 tests pass, including the new design and profile tests. `task check:d
   `descriptor-mismatch`) or the core (`invalid-sdl`, `missing-prefix`) refused it, and
   its diagnostic carries both its own failure and the competing refusals.
 
+- **A quarantined image without the user-approved flag wedged the host.** The first attempt
+  at an injected `accept` quarantined a copy with `0083;…`; the host then hung in `dlopen` of
+  a Developer ID signed image that is not notarized, which is the dialog the loader's
+  assessment exists to forestall, and had to be killed. With the `0x40` bit set (`00c3;…`)
+  the OS asks nothing and the injected verdict alone decides. No real notarized copy is
+  involved, so a real Gatekeeper verdict stays V's.
+- **Grants survive a restart, and so does what they hold.** A credential from an earlier
+  host process is still valid and holds exactly the capabilities it was made with; a
+  provider that comes and goes changes what is *available*, never a grant. `ownGrant` of a
+  credential made while a capability's owner was absent does not list it, and is refused the
+  field once the owner is back.
+- **The digest covers declared order, and the composition order is the start order.** The
+  conformance tool reads the digest as the canonical text of the design SDL, whose root fields
+  keep the order they were declared in; the same contributions in the reverse order are a
+  different schema and say so. `Composition.swift` sorts shipped identities (by role, not by
+  root) before ordinary ones, each by identifier.
 - **An ordinary provider beside a refused rival shows no trace of it.** The valid
   `fixtureod` row is `ACTIVE` / `SELECTED` with a null reason and diagnostic; the
   rival's own row carries its reason and points at the valid copy as its
@@ -314,6 +465,8 @@ suites: 26 tests pass, including the new design and profile tests. `task check:d
 
 ## Not established here
 
-- The digest and restart rows: `digest-restart`.
+- The alternate-team host: `alternate-team-signing`.
+- That the digest is stable across Koine builds: it is the same on one host and printer, which
+  is all the spec promises.
 - Notarized hosts, quarantined downloads and every V row: `selection-vm`.
 - No claim that the loader is a sandbox. The absence of a marker is the observation.
