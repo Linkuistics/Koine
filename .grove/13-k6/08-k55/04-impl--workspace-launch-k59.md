@@ -15,6 +15,8 @@ loader, and served under `workspace:control` AND `desktop:control`.
 - `docs/design/workspace-schema.graphql` and `workspace-operations.graphql`.
 - The desktop provider's own build definition and logic-test target, as the
   pattern for a provider built outside the root package.
+- The protected-path answer recorded by `protected-path-metadata-k73`, for the
+  inspection selection performs.
 
 ## Done when
 
@@ -39,6 +41,9 @@ loader, and served under `workspace:control` AND `desktop:control`.
   - a constrained bundle with another identifier is `APPLICATION_IDENTITY_MISMATCH`;
   - a constrained copy is never substituted, and an unconstrained launch reuses a
     running copy.
+- Selection inspects only through the calls `protected-path-metadata-k73`
+  recorded as prompt-free. A call it recorded as prompting follows Antony's
+  answer to that stated limit, and the complete input is kept either way.
 - Unreadable metadata is `failed`; absence is `APPLICATION_NOT_INSTALLED`.
 - Launch uses no new instance, supplied arguments, environment or Apple events,
   and prompting stays disabled.

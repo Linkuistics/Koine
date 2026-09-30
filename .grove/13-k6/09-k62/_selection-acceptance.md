@@ -9,9 +9,12 @@ selection contract rather than on the launch path's principal cases alone.
 ## Done when
 
 - Every row has evidence at each assigned seam, linked from Machine's
-  "Selection acceptance" table. The one exception is a V case needing a second
-  Developer ID team's certificate. Such a case is recorded pending with that
-  prerequisite and owned by the late root leaf `alternate-team-signing`.
+  "Selection acceptance" table. The one exception is a part of a case, at any
+  assigned seam, that needs a second real Developer ID team's certificate:
+  second-team trust refusal and the alternate-team host, at N, G or V. Without
+  that certificate, such a part is recorded pending with that prerequisite and
+  owned by the late root leaf `alternate-team-signing`. Every other part of
+  those rows still closes here.
 - Conformance adds selected-update profiles and explicit absent/rejected
   profiles, each pinning exact candidate versions.
 - Each native scenario, and each alternative order within it, runs in a fresh
@@ -39,7 +42,7 @@ Row owners, in Machine's table order:
 | Old host + old desktop; new host + old baseline | `selection-updates` | `selection-vm` |
 | Compatible newer desktop/workspace update | `selection-updates` | `selection-vm` |
 | Pre-extension host + new update, normal and renamed principal | `selection-updates` | `selection-vm` |
-| Approval/Team ID/seal/location/compatibility/quarantine refusals | `selection-updates` | `selection-vm`; second team: `alternate-team-signing` |
+| Approval/Team ID/seal/location/compatibility/quarantine refusals | `selection-updates`; second team: `alternate-team-signing` | `selection-vm`; second team: `alternate-team-signing` |
 | Same-team fixture under another signing identifier | `selection-updates` | `selection-vm` |
 | 1.9.0 vs 1.10.0; malformed; equal/older; schema | `selection-decisions` | — |
 | Ties, successive groups, lower duplicates, alias | `selection-decisions` | — |
@@ -54,8 +57,13 @@ Row owners, in Machine's table order:
 | Same/changed SDL across roots; extra provider | `selection-failures` | — |
 | Mixed releases and reused helper source | `selection-updates` | `selection-vm` |
 | Restart, removal, verdict change, unreadable root | `selection-failures` | — |
-| Malformed catalogue; no-team host; alternate-team host | `selection-decisions` | `alternate-team-signing` |
+| Malformed catalogue; no-team host; alternate-team host | `selection-decisions`; alternate-team host: `alternate-team-signing` | alternate-team host: `alternate-team-signing` |
 | Diagnostic completeness | `selection-decisions` | — |
+
+`alternate-team-signing` owns every certificate-dependent part at each seam. If
+the certificate is already available when `selection-decisions`,
+`selection-updates` or `selection-vm` runs, that leaf closes its part instead,
+and `alternate-team-signing` confirms it.
 
 ## Notes
 

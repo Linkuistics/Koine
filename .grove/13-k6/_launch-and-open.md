@@ -78,18 +78,21 @@ by test catalogues; no entitlement or certificate-class change is authorized.
 
 `launch-and-open-k29` cut the working increments below. Each leaves Koine
 working and verifies its behavior through the three seams. A `review-planning`
-step reads the cut before any of it runs.
+step reads the cut before any of it runs, and `launch-and-open-k82` integrates
+it.
 
-3. `launch-path`: one real launch end to end. It carries the framework minor,
+3. `protected-path-metadata`: the bounded prompt question, answered ahead of
+   every path consumer: launch's installation selection, path opening, reveal
+   and `app-and-file-search`. It is evidence rather than a working increment,
+   so it runs first.
+4. `launch-path`: one real launch end to end. It carries the framework minor,
    selection, packaging, conformance, the contract-only client and VM acceptance.
-   This is the charter's first slice.
-4. `selection-acceptance`: Machine's whole selection matrix, proven while the
+   This is the charter's first implementation slice.
+5. `selection-acceptance`: Machine's whole selection matrix, proven while the
    loader is fresh and before later runs rest on it.
-5. `application-launchers`: all twelve launchers on a reusable prepared VM,
+6. `application-launchers`: all twelve launchers on a reusable prepared VM,
    which also supplies Dia and Zed to later increments.
-6. `web-urls`: URL opening for web search.
-7. `protected-path-metadata`: the bounded prompt question, answered ahead of
-   every path consumer, including `app-and-file-search`.
+7. `web-urls`: URL opening for web search.
 8. `document-paths`: documents, directories and the Zed settings directory.
 9. `reveal-path`: Finder reveal. It lands the last root, so conformance then
    requires the complete design SDL.
@@ -173,7 +176,8 @@ location-document redirects are disclosed reach, not prevented effects; native
 Finder aliases are refused for opening but can be revealed. This increment
 owns workspace disclosure in create/approve and existing-grant views and field
 descriptions before workspace ships. Schedule the protected-path metadata probe
-before path-opening implementation or search consumes that contract.
+before launch's installation selection, path-opening implementation or search
+consumes that contract.
 
 Expected packaged workspace release/schema is `1.0.0`/`1.0.0`, release signing
 identifier `dev.antony.Koine.provider.workspace`. Existing desktop is

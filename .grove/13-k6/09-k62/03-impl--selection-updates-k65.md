@@ -32,8 +32,9 @@ fall back visibly, candidate-specific staging, and mixed releases.
   - escaping location;
   - incompatible framework, feature, OS or architecture;
   - failed quarantine assessment.
-  Stage and quarantine recovery is exercised. Real second-team signing stays
-  pending for `alternate-team-signing`.
+  Stage and quarantine recovery is exercised. Real second-team signing passes
+  only if a second team's certificate is available; otherwise its N and G parts
+  stay pending for `alternate-team-signing`.
 - An approved same-team fixture claims a reserved pair and a high release under
   a fixture signing identifier. The production catalogue refuses it as
   `signing-identifier-mismatch`, and the valid release stays selected. A test
