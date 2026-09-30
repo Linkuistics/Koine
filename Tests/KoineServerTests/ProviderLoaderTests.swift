@@ -129,7 +129,7 @@ import Testing
         Refusal(variant: "foreign-architecture", state: "INCOMPATIBLE", diagnostic: "is built for"),
         Refusal(variant: "newer-os", state: "INCOMPATIBLE", diagnostic: "requires macOS 99.0"),
         Refusal(variant: "newer-runtime", state: "INCOMPATIBLE", diagnostic: "Swift runtime 99.0"),
-        Refusal(variant: "understated-os", state: "REJECTED", diagnostic: "was built for macOS 13.0"),
+        Refusal(variant: "understated-os", state: "REJECTED", diagnostic: "was built for macOS 26.0"),
         Refusal(variant: "principal-collision", state: "REJECTED", diagnostic: "already registered"),
         Refusal(variant: "library-outside-bundle", state: "REJECTED", diagnostic: "outside the bundle"),
         Refusal(variant: "architecture-mismatch", state: "REJECTED", diagnostic: "but libFixtureProvider.dylib holds"),

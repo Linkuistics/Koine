@@ -10,6 +10,6 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 source "${HERE}/../../scripts/signing-env.sh"
 mkdir -p "$1"
 OUT="$(cd "$1" && pwd)/WindowIdentityProbe"
-swiftc -O -swift-version 5 -target "$(uname -m)-apple-macos13.0" -o "${OUT}" "${HERE}/main.swift"
+swiftc -O -swift-version 5 -target "$(uname -m)-apple-macos${MINIMUM_OS}" -o "${OUT}" "${HERE}/main.swift"
 codesign --force --options runtime --timestamp=none --sign "${SIGNING_IDENTITY}" "${OUT}" 2>/dev/null
 echo "${OUT}"

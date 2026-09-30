@@ -902,4 +902,5 @@ def main():
     harness.main(scenarios, owned_reasons=OWNED_REASONS, pending=PENDING, doc=__doc__, extra_runs=EXTRA)
 
 
-main()
+if __name__ == "__main__":
+    main()

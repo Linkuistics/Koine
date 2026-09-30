@@ -58,6 +58,10 @@ import urllib.request
 REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOSTS_SPEC = os.path.join(REPOSITORY, "Fixtures", "SelectionHost", "hosts.json")
 
+# The V seam: a quarantined install is a genuine download (HostRun.download) and the verdict on it is
+# Gatekeeper's own, in a guest whose Gatekeeper is enforcing; no verdict is injected.
+GENUINE_QUARANTINE = os.environ.get("KOINE_SELECTION_GENUINE_QUARANTINE") == "1"
+
 PROVIDERS = (
     "{ koineManagement { providers { provider version schemaVersion state diagnostic "
     "candidateId origin selection selectedCandidateId reason } } }"
@@ -267,6 +271,23 @@ class Suite:
                 cache[host][name] = staged_name("BUNDLED", os.path.realpath(path), path)
         return cache[host]
 
+    def all_bundled_stage_names(self):
+        """The staged names of every bundle sealed inside any host of this suite: what a staged copy of a host's own
+        bundle is called, whichever host staged it (a data directory outlives the host that began it)."""
+        if "_all_bundled" not in self.__dict__:
+            names = set()
+            for host in self.spec["hosts"]:
+                if os.path.isdir(os.path.join(self.hosts, host)):
+                    names |= set(self.bundled_stage(host).values())
+            self._all_bundled = names
+        return self._all_bundled
+
+    def host_quarantined(self, host):
+        """Whether the host application itself carries a download's quarantine attribute (the V seam's notarized
+        hosts arrive as a download)."""
+        app = os.path.join(self.hosts, host, "KoineSelectionHost.app")
+        return subprocess.run(["xattr", "-p", "com.apple.quarantine", app], capture_output=True).returncode == 0
+
     def host_binary(self, host):
         return os.path.join(self.hosts, host, "KoineSelectionHost.app", "Contents", "MacOS", "KoineSelectionHost")
 
@@ -384,9 +405,49 @@ class HostRun:
         The flags' 0x40 bit is the user's approval, which the OS takes as settled: dlopen of a
         quarantined image that Gatekeeper has not notarized would otherwise put up a dialog. The
         loader asks for a verdict whenever the attribute is present, so the verdict the host
-        injects (KOINE_FIXTURE_ASSESSMENT) is the only one there is."""
+        injects (KOINE_FIXTURE_ASSESSMENT) is the only one there is.
+
+        With GENUINE_QUARANTINE (the V seam, in a Gatekeeper-enforcing guest) nothing is injected and
+        nothing is pre-approved: see `download`."""
+        if GENUINE_QUARANTINE:
+            HostRun.download(bundle)
+            return
         for image in glob.glob(os.path.join(bundle, "*.dylib")):
             subprocess.run(["xattr", "-w", "com.apple.quarantine", "00c3;65000000;KoineTest;", image], check=True)
+
+    @staticmethod
+    def download(bundle):
+        """Makes the bundle what a downloaded and unzipped one is: the archive carries the attribute a browser
+        writes (flags 0181, the agent, a UUID; not yet approved by the user) and the unarchiver gives it to
+        everything it extracts, the bundle, its files and its images. The bundle is replaced by the
+        extracted copy, so the attribute arrived the way a download's does and was not written onto the
+        tree. The OS, not this driver, then decides what Gatekeeper says of each image."""
+        parent = os.path.dirname(bundle)
+        work = tempfile.mkdtemp(prefix="koine-download-")
+        try:
+            archive = os.path.join(work, os.path.basename(bundle) + ".zip")
+            subprocess.run(["ditto", "-c", "-k", "--keepParent", bundle, archive], check=True)
+            value = "0181;%x;Safari;%s" % (int(__import__("time").time()), __import__("uuid").uuid4())
+            subprocess.run(["xattr", "-w", "com.apple.quarantine", value, archive], check=True)
+            extracted = os.path.join(work, "extracted")
+            os.makedirs(extracted)
+            subprocess.run(["ditto", "-x", "-k", archive, extracted], check=True)
+            (name,) = os.listdir(extracted)
+            make_writable(bundle)
+            shutil.rmtree(bundle)
+            os.rename(os.path.join(extracted, name), os.path.join(parent, os.path.basename(bundle)))
+        finally:
+            shutil.rmtree(work, ignore_errors=True)
+
+    @staticmethod
+    def assess(path):
+        """Gatekeeper's verdict on one image, asked as the loader asks it (`spctl --assess --type open --context
+        context:primary-signature`): (accepted, the text it printed)."""
+        result = subprocess.run(
+            ["/usr/sbin/spctl", "--assess", "--type", "open", "--context", "context:primary-signature", "-v", path],
+            capture_output=True, text=True,
+        )
+        return result.returncode == 0, (result.stdout + result.stderr).strip()
 
     def apply(self, actions):
         for action in actions:
@@ -453,9 +514,17 @@ class HostRun:
         self.refresh_labels()
         self.env = dict(self.scenario.env, **phase.env)
         # Unless a phase quarantines a copy on purpose, nothing is, so every assessment verdict is the same.
-        self.quarantined = subprocess.run(
-            ["xattr", "-rl", self.data], capture_output=True, text=True
-        ).stdout.count("com.apple.quarantine")
+        listing = subprocess.run(["xattr", "-rl", self.data], capture_output=True, text=True).stdout
+        if GENUINE_QUARANTINE:
+            # A staged copy of a host's OWN bundle inherits the attribute of the download the host arrived as:
+            # that is the host's, not an installed copy's, and is judged by the host's ticket.
+            own = tuple(f"/ProviderStaging/{name}" for name in self.suite.all_bundled_stage_names())
+            self.quarantined = sum(
+                1 for line in listing.splitlines()
+                if "com.apple.quarantine" in line and not any(mark in line for mark in own)
+            )
+        else:
+            self.quarantined = listing.count("com.apple.quarantine")
         self.marker_log = os.path.join(self.directory, f"markers-{self.phase}.log")
         environment = dict(os.environ, KOINE_FIXTURE_MARKER_LOG=self.marker_log, **self.env)
         command = [self.suite.host_binary(self.host_name), self.data] + (
@@ -622,7 +691,11 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
     """Asserts one host process against its phase; returns nothing, records through `check`."""
     rows = host.rows()
     markers = host.markers()
-    if phase.quarantine:
+    if phase.quarantine and GENUINE_QUARANTINE:
+        check("a quarantined copy is judged by Gatekeeper's own verdict: nothing is injected",
+              host.quarantined > 0 and "KOINE_FIXTURE_ASSESSMENT" not in host.env
+              and "KOINE_FIXTURE_ASSESSMENT" not in os.environ, [host.quarantined, host.env])
+    elif phase.quarantine:
         check("a quarantined copy is judged by the injected verdict alone",
               host.quarantined > 0 and host.env.get("KOINE_FIXTURE_ASSESSMENT") in ("accept", "refuse"),
               [host.quarantined, host.env.get("KOINE_FIXTURE_ASSESSMENT")])

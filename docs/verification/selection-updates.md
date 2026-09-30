@@ -71,7 +71,7 @@ A scenario name is a substring of the name in `scenarios()`; each runs forward a
 ### Old host and new host over an old baseline
 
 Row: *Old host + old desktop; new host + independently compiled old designated baseline*.
-**Established at N and G; V pending in `selection-vm`.**
+**Established at N and G; V established: [selection-vm.md](selection-vm.md).**
 
 - `old host: the released host and its desktop provider`: the released host, running the released
   desktop provider as its bundled provider, `ACTIVE`; its desktop operations answer as the contract
@@ -94,8 +94,8 @@ Row: *Old host + old desktop; new host + independently compiled old designated b
 
 ### Compatible newer updates
 
-Row: *Selection-aware host + compatible newer desktop/workspace update*. **Established at N and G; V
-pending in `selection-vm`.**
+Row: *Selection-aware host + compatible newer desktop/workspace update*. **Established at N and G; V established:
+[selection-vm.md](selection-vm.md).**
 
 - `a separately approved newer desktop update…`: four phases over one data directory under **one
   signed host**. Baseline only; then a 1.5.0 update with its approval record, which is
@@ -119,7 +119,7 @@ pending in `selection-vm`.**
 ### A host that predates the feature
 
 Row: *Pre-extension host + newly published desktop/workspace update, both normal and renamed
-principal*. **Established at N and G; V pending in `selection-vm`.**
+principal*. **Established at N and G; V established: [selection-vm.md](selection-vm.md).**
 
 - `old host: a newly published desktop update, the principal class kept` and `…renamed`: the released
   host (v0.1.0), with the released desktop provider bundled, is given the **real** 1.1.0 desktop update
@@ -142,7 +142,7 @@ principal*. **Established at N and G; V pending in `selection-vm`.**
 
 Row: *Missing approval, wrong Team ID, unsigned/ad-hoc/tampered seal, escaping location, incompatible
 framework/feature/OS/architecture, failed quarantine assessment*. **Established at N and G except a bundle
-signed by a second team, pending in `alternate-team-signing`; V pending in `selection-vm`.**
+signed by a second team, pending in `alternate-team-signing`; V established: [selection-vm.md](selection-vm.md).**
 
 Each case runs for the desktop stand-in and the workspace stand-in. A refused release (2.0.0) is
 installed beside a healthy lower update and then alone. Each refusal writes **no marker**, the lower
@@ -190,7 +190,7 @@ and the alternate-team host, need that team's certificate, which this keychain d
 ### A fixture under another signing identifier
 
 Row: *Approved same-team fixture claiming a reserved pair/high release under a different signing
-identifier*. **Established at N and G; V pending in `selection-vm`.**
+identifier*. **Established at N and G; V established: [selection-vm.md](selection-vm.md).**
 
 - `an approved same-team provider claiming the reserved pairs…`: on the host `production` (the shipped
   catalogue, whole, around the real desktop and workspace), providers named `desktop` / `Desktop` and
@@ -212,7 +212,7 @@ identifier*. **Established at N and G; V pending in `selection-vm`.**
 ### Equal bytes in both roots
 
 Row: *Equal bytes and basename in both roots; quarantined per-user copy; legacy shared staging entry*.
-**Established at N and G; V pending in `selection-vm`.**
+**Established at N and G; V established: [selection-vm.md](selection-vm.md).**
 
 The host `slot-caught-up` designates as its baseline the very directory `r1.5.0`, which an earlier host
 installed per user: equal bytes, equal bundle name, one copy in each root.
@@ -236,8 +236,7 @@ installed per user: equal bytes, equal bundle name, one copy in each root.
 
 ### Mixed releases
 
-Row: *Mixed desktop/workspace releases and reused helper source*. **Established at N and G; V pending in
-`selection-vm`.**
+Row: *Mixed desktop/workspace releases and reused helper source*. **Established at N and G; V established: [selection-vm.md](selection-vm.md).**
 
 On the host `production`, with the **real** providers:
 

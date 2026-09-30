@@ -29,6 +29,9 @@
 # dylib as its executable, so one signature seals the dylib, manifest and schema.
 set -euo pipefail
 
+# The floor is Koine's own: App/Info.plist's LSMinimumSystemVersion, as the real providers take it.
+# shellcheck source=../../scripts/signing-env.sh
+source "$(dirname "$0")/../../scripts/signing-env.sh"
 FRAMEWORKS="$(cd "$1" && pwd)"
 mkdir -p "$2"
 ROOT="$(cd "$2" && pwd)"
@@ -64,19 +67,19 @@ fi
     cat "${WORK}/schema.graphql"
     echo '"""#'
 } >"${WORK}/SchemaSDL.swift"
-clang -c -target "$(uname -m)-apple-macos13.0" -o "${WORK}/initializer.o" initializer.c
+clang -c -target "$(uname -m)-apple-macos${MINIMUM_OS}" -o "${WORK}/initializer.o" initializer.c
 
 rm -rf "${BUNDLE}"
 mkdir -p "${BUNDLE}"
 # shellcheck disable=SC2086  # both are argument lists
 swiftc -emit-library -module-name "${STEM}Provider" -swift-version 6 \
-    -target "$(uname -m)-apple-macos13.0" \
+    -target "$(uname -m)-apple-macos${MINIMUM_OS}" \
     ${FIXTURE_FRAMEWORK:--F ${FRAMEWORKS} -framework KoineProviderAPI} \
     -Xlinker -install_name -Xlinker "@rpath/lib${STEM}Provider.dylib" \
     ${FIXTURE_SWIFTC:-} \
     -o "${BUNDLE}/lib${STEM}Provider.dylib" \
     "${WORK}/FixtureProvider.swift" "${WORK}/SchemaSDL.swift" "${WORK}/initializer.o"
-tagged manifest.json | sed "s/@ARCH@/$(uname -m)/" >"${BUNDLE}/manifest.json"
+tagged manifest.json | sed -e "s/@ARCH@/$(uname -m)/" -e "s/@MINIMUM_OS@/${MINIMUM_OS}/" >"${BUNDLE}/manifest.json"
 cp "${WORK}/schema.graphql" "${BUNDLE}/"
 cat >"${BUNDLE}/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>

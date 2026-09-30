@@ -30,7 +30,7 @@ source "${HERE}/../../scripts/signing-env.sh"
 API_SOURCES="${HERE}/../../ProviderAPI/Sources/KoineProviderAPI"
 HOST_ARCH="$(uname -m)"
 if [ "${HOST_ARCH}" = arm64 ]; then OTHER_ARCH=x86_64; else OTHER_ARCH=arm64; fi
-TARGET="${HOST_ARCH}-apple-macos13.0"
+TARGET="${HOST_ARCH}-apple-macos${MINIMUM_OS}"
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 

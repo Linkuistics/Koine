@@ -68,6 +68,8 @@ rm -rf "$2"
 mkdir -p "$2"
 OUT="$(cd "$2" && pwd)"
 HERE="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=../../scripts/signing-env.sh
+source "${HERE}/../../scripts/signing-env.sh"
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 
@@ -141,7 +143,7 @@ SDL
 # A private dependency inside the bundle, in two forms of one install name: one that
 # loads, and one whose own dependency is a system-path library that does not exist (a
 # path under /usr/lib is a system path to the loader's checks, so only dyld refuses it).
-TARGET="$(uname -m)-apple-macos13.0"
+TARGET="$(uname -m)-apple-macos${MINIMUM_OS}"
 mkdir -p "${WORK}/private/good" "${WORK}/private/bad" "${WORK}/private/absent"
 echo 'int koine_fixture_private(void) { return 0; }' >"${WORK}/private/private.c"
 echo 'int koine_fixture_absent(void) { return 0; }' >"${WORK}/private/absent.c"
