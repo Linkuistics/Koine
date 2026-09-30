@@ -171,6 +171,17 @@ Standard GraphQL code generation works from Koine's introspection.
   approving, revoking) are published by no operations file: a client that does
   not hold `koine:manage` cannot use them, which is why a client cannot approve
   its own request.
+- **Provider status.** `koineManagement.providers` has one row per discovered
+  provider candidate, so a provider identity can have several rows: the copy
+  running, and every copy that was refused or passed over. `candidateId`,
+  `origin` (`BUNDLED` or `PER_USER`), `selection` (`SELECTED`, `NOT_SELECTED` or
+  `UNAVAILABLE`), `selectedCandidateId` and `reason` are nullable and additive;
+  group rows by `provider` and treat `reason` as an open, stable code, showing an
+  unknown one as it is. A `SELECTED` row names itself, even after a later failure.
+  A row with no `candidateId` describes an enabled slot with nothing to run
+  (`missing-bundled`, `no-eligible-candidate`), or a catalogue failure under the
+  provider name `(unknown)`, which no provider can have. Never show a plain
+  success beside a refusal the same provider has.
 
 ## Process identity
 

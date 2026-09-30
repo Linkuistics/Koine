@@ -3,8 +3,9 @@
 **The shared Machine and desktop contract.** Koine 0.1.0 implements the baseline:
 the shared resilient Swift framework, one resident Koine application and bearer
 credentials with live revocation. The
-served schema matches [the design schema](../design/desktop-schema.graphql)
-under a repeatable check, and the platform behavior is verified on the notarized
+served schema matches [the design schema](../design/desktop-schema-extension-host.graphql)
+(and, for hosts that predate the candidate diagnostics, the
+[original](../design/desktop-schema.graphql)) under a repeatable check, and the platform behavior is verified on the notarized
 build in Gatekeeper-enforcing VMs. "Test seams and acceptance" says, case by
 case, what is established and by which evidence, and what is open. Process
 identity is a PID plus its kernel start instant; the races public Accessibility
@@ -183,8 +184,9 @@ code or to undo actions.
 ## Public GraphQL contract
 
 `koine-desktop/1` names the public contract, separately from plugin ABI
-versions. The [schema](../design/desktop-schema.graphql) states exact
-types and nullability; the [client operations](../design/desktop-operations.graphql)
+versions. The [schema](../design/desktop-schema-extension-host.graphql) states exact
+types and nullability (the [original schema](../design/desktop-schema.graphql)
+is the old-host profile, kept as released, see "Conformance profiles"); the [client operations](../design/desktop-operations.graphql)
 show the handoff's requests. The schema Koine serves matches the schema file,
 checked by `task conformance` against the notarized build
 ([schema-conformance-vm.md](../verification/schema-conformance-vm.md)), and the
@@ -1387,6 +1389,30 @@ which binary ran. Preserve the original core + desktop profile for old hosts and
 add extension-host profiles with the expanded management schema. An omitted required
 provider fails the profile instead of shrinking its expected schema.
 
+#### Conformance profiles
+
+A profile is a design SDL plus, separately, the exact provider candidates the host
+runs. Profiles live in [`docs/design/profiles/`](../design/profiles/) and
+`task conformance` holds the host to one; the check
+(`Tools/Conformance --profile … --providers …`) has two halves that neither
+substitute for the other, because an identical digest cannot prove which binary ran.
+
+| Profile | Design SDL | Candidates pinned |
+| --- | --- | --- |
+| `core-desktop-old-host` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), unchanged since 0.1.0 | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, over the original five management fields |
+| `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
+
+The extension-host SDL is the old one plus exactly the five nullable
+`KoineProviderStatus` fields and the `KoineProviderOrigin` and
+`KoineProviderSelection` enums; a test compares them and names any other
+difference. The set of rows is explicit. A required provider that is not served
+fails the profile, and so does a served row the profile does not list, so
+neither an omission nor an extra provider can shrink or blur what is expected. An
+extension-host profile also requires the candidate fields on every row, and every
+`SELECTED` row to name itself. The core + desktop + workspace profile and the
+profiles with selected updates and explicit absent or rejected sets are added
+beside these by the increments that make those providers real.
+
 #### Selection acceptance
 
 Launch-and-open owns implementation and acceptance of this entire contract before
@@ -1413,7 +1439,7 @@ native loading, signing or V observations.
 
 | Case | Seams | Required observation |
 | --- | --- | --- |
-| Old host + old desktop; new host + independently compiled old designated baseline | N, G, V | Existing desktop operations/errors/grants work; preserve old and extension-host core + desktop profiles. Catalogue matches the packaged baseline; no new factory witness. |
+| Old host + old desktop; new host + independently compiled old designated baseline | N, G, V | Existing desktop operations/errors/grants work; preserve old and extension-host core + desktop profiles (see "Conformance profiles"). Catalogue matches the packaged baseline; no new factory witness. |
 | Selection-aware host + compatible newer desktop/workspace update | N, G, V | Separate correct approval; exactly one chosen image/factory/start marker per slot; unselected bundle never loads. Management names the update and real operations work without rebuilding the host. |
 | Pre-extension host + newly published desktop/workspace update, both normal and renamed principal | N, G, V | `first-party-selection-v1` is refused as `INCOMPATIBLE` before load; no update initializer/factory marker. Existing bundled desktop remains usable. On the extension host, a per-user update missing this feature is refused as `selection-feature-required`. |
 | Missing approval, wrong Team ID, unsigned/ad-hoc/tampered seal, escaping location, incompatible framework/feature/OS/architecture, failed quarantine assessment | N, G, V | Each refusal has no initializer marker; eligible lower/bundled selection has visible refusal diagnostics. Real second-team signing stays pending if no certificate is available; mocks cannot close it. Stage/quarantine recovery is exercised. |

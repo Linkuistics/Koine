@@ -61,7 +61,8 @@ let package = Package(
             dependencies: ["KoineCore", "KoineServer", "KoineManagementClient", "KoineProviderLoader"]
         ),
         // The conformance check (task conformance, scripts/vm-verify-conformance.sh):
-        // the schema a running Koine serves, against docs/design/desktop-schema.graphql.
+        // the schema a running Koine serves, against a profile's design SDL
+        // (docs/design/profiles/), and the candidates it runs against the profile's pin.
         // It prints the served schema through KoineCore's own canonical printer;
         // GraphQL is a dependency here for the structural comparison alone. The
         // library is where the tests reach it; scripts/build-app.sh ships neither.

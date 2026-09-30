@@ -46,7 +46,8 @@ skill set.
   grants, service availability, acceptance status
 - [Configured workflow requirements](docs/requirements/modaliser-workflows.md):
   agreed requirements for planned provider extensions and application-menu access
-- [GraphQL schema](docs/design/desktop-schema.graphql) and
+- GraphQL schema: [extension host](docs/design/desktop-schema-extension-host.graphql),
+  [original](docs/design/desktop-schema.graphql), and the [profiles](docs/design/profiles/); and
   [client operations](docs/design/desktop-operations.graphql)
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
   [the server and native providers](docs/adr/koine-server-and-native-providers.md),
@@ -185,7 +186,7 @@ task fixture:selection  # build, sign and keep apart the bundles the first-party
 task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
-task conformance  # the schema the notarized bundle serves, in a VM, against docs/design/desktop-schema.graphql
+task conformance  # the schema and the candidates the notarized bundle serves, in a VM, against docs/design/profiles/core-desktop-extension-host.json
 task app       # assemble and sign .build/app/Koine.app
 task app:notarize  # notarize, staple and zip it (KOINE_NOTARY_PROFILE, default koine-notary)
 task app:verify  # version, signature, hardened runtime, designated requirement, stapled ticket, Gatekeeper
@@ -223,8 +224,11 @@ The tests embed the server over a temporary data directory; they never touch
 `task conformance` is the whole-contract check: it launches the **notarized**
 bundle in a clean TestAnyware clone, captures the introspection response a
 standard code generator would ask for, and compares the schema that describes
-with [`docs/design/desktop-schema.graphql`](docs/design/desktop-schema.graphql)
-by type, field, argument, nullability, default, deprecation and description. The
+with [`docs/design/desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql)
+(the design SDL of the [extension-host profile](docs/design/profiles/core-desktop-extension-host.json),
+which also pins the provider candidates the host runs; the released
+[`desktop-schema.graphql`](docs/design/desktop-schema.graphql) is the old-host
+profile's) by type, field, argument, nullability, default, deprecation and description. The
 comparison itself is host-side (`Tools/Conformance`), so nothing is launched
 here. Evidence:
 [`docs/verification/schema-conformance-vm.md`](docs/verification/schema-conformance-vm.md).

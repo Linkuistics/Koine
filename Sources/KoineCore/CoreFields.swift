@@ -78,7 +78,9 @@ struct CoreFields: Sendable {
                                    "requestedCapabilities", "state", "grant"], .requestStatus),
             ("KoineManagement", ["requests", "grants", "providers", "osPermissions"],
              .capability(CoreCapability.manage)),
-            ("KoineProviderStatus", ["provider", "version", "schemaVersion", "state", "diagnostic"],
+            ("KoineProviderStatus",
+             ["provider", "version", "schemaVersion", "state", "diagnostic", "candidateId", "origin",
+              "selection", "selectedCandidateId", "reason"],
              .capability(CoreCapability.manage)),
             ("KoineOSPermission", ["permission", "owner", "granted"],
              .capability(CoreCapability.manage)),
@@ -208,6 +210,11 @@ struct CoreFields: Sendable {
             "schemaVersion": status.schemaVersion,
             "state": status.state.rawValue,
             "diagnostic": status.diagnostic,
+            "candidateId": status.candidateId,
+            "origin": status.origin?.rawValue,
+            "selection": status.selection?.rawValue,
+            "selectedCandidateId": status.selectedCandidateId,
+            "reason": status.reason,
         ]
     }
 

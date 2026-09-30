@@ -3,6 +3,14 @@
 # contract": the schema the NOTARIZED Koine.app actually serves, composed with
 # its bundled desktop provider, against docs/design/desktop-schema.graphql.
 #
+# The check holds the host to a PROFILE (docs/design/profiles/): the design SDL it
+# serves and, separately from it, the exact provider candidates it runs. An
+# identical schema and digest cannot say which binary ran. The notarized
+# application is an extension host, so it is held to
+# core-desktop-extension-host.json; core-desktop-old-host.json is the released
+# contract for hosts that predate the candidate fields, and is preserved
+# unchanged beside it.
+#
 # Nothing here runs the application on the host — introspecting means launching
 # Koine, so it is launched in a clean TestAnyware clone and the introspection
 # response is brought back. The comparison itself is host-side
@@ -19,17 +27,20 @@
 # KOINE_VM_PASSWORD is the VM account's password (the golden image's default: admin).
 # KOINE_CONFORMANCE_CAPTURE reuses a captured introspection response instead of
 #   starting a VM — for re-running the comparison against an earlier run's
-#   evidence, never for producing new evidence.
+#   evidence, never for producing new evidence. KOINE_CONFORMANCE_PROVIDERS names
+#   the providers response captured with it (default: .build/conformance/providers.json).
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 # shellcheck source=scripts/signing-env.sh
 source scripts/signing-env.sh
 
-DESIGN="docs/design/desktop-schema.graphql"
+PROFILE="docs/design/profiles/core-desktop-extension-host.json"
+DESIGN="docs/design/desktop-schema-extension-host.graphql"
 OUT=".build/conformance"
 mkdir -p "${OUT}"
 CAPTURE="${OUT}/introspection.json"
+PROVIDERS="${OUT}/providers.json"
 SERVED_SDL="${OUT}/served.graphql"
 
 # The comparison, and the mutated-design controls, run against whatever capture
@@ -40,6 +51,7 @@ CHECK="$(swift build --show-bin-path)/KoineConformance"
 
 if [ -n "${KOINE_CONFORMANCE_CAPTURE:-}" ]; then
     CAPTURE="${KOINE_CONFORMANCE_CAPTURE}"
+    PROVIDERS="${KOINE_CONFORMANCE_PROVIDERS:-${PROVIDERS}}"
     SERVED_DIGEST="${KOINE_CONFORMANCE_DIGEST:-}"
     echo "Re-running the comparison against ${CAPTURE} — no VM, no new evidence."
     step() { printf '\n== %s\n' "$*"; }
@@ -82,10 +94,14 @@ else
     create_grant "${GRANT_LABEL}" "${CREDENTIAL_FILE}" "koine:manage" "desktop:read" "desktop:control"
 
     step "The bundled desktop provider is ACTIVE, so the composed schema is the one being checked"
-    ask '{ koineManagement { providers { provider version schemaVersion state diagnostic } } }'
+    ask '{ koineManagement { providers { provider version schemaVersion state diagnostic candidateId origin selection selectedCandidateId reason } } }'
     sed -n 1p <<<"${RESPONSE}" |
         jq -e '[.data.koineManagement.providers[] | select(.provider == "desktop")] | .[0].state == "ACTIVE"' >/dev/null ||
         fail "the desktop provider is not ACTIVE; a schema checked without it is not the composed contract"
+    # The candidates the profile pins are read from the same session as the schema.
+    sed -n 1p <<<"${RESPONSE}" | jq -e '.data.koineManagement.providers' >"${PROVIDERS}" ||
+        fail "the run read no koineManagement.providers"
+    echo "Providers served: $(jq -c '[.[] | {provider, version, state, origin, selection, reason}]' "${PROVIDERS}")"
 
     step "Capture the introspection response, as a code generator would ask for it"
     testanyware file upload "${OUT}/introspection.graphql" /Users/admin/introspection.graphql >/dev/null
@@ -174,8 +190,34 @@ control "two root fields transposed" \
   koine: Koine!'
 rm -f "${OUT}/control.graphql" "${OUT}/control.log"
 
+step "The positive control for the candidates: a mutated profile must turn the pin red"
+# The schema and its digest are unmoved by which binary ran, so the pin is its own
+# claim and gets its own controls: a wrong release, a required provider that is
+# not served, and a row the profile did not expect. Each must fail for its stated
+# reason, not because the mutated file no longer parses.
+DESIGN_ABSOLUTE="$(cd "$(dirname "${DESIGN}")" && pwd)/$(basename "${DESIGN}")"
+profile_control() {
+    local what="$1" expression="$2" expected="$3" file="${OUT}/control-profile.json"
+    jq --arg design "${DESIGN_ABSOLUTE}" ".design = \$design | ${expression}" "${PROFILE}" >"${file}"
+    if "${CHECK}" --introspection "${CAPTURE}" --profile "${file}" --providers "${PROVIDERS}" \
+        >"${OUT}/control.log" 2>&1; then
+        sed 's/^/  /' "${OUT}/control.log"
+        fail "the check passed a profile with ${what}; it cannot be trusted when it passes"
+    fi
+    grep -q "${expected}" "${OUT}/control.log" || {
+        sed 's/^/  /' "${OUT}/control.log"
+        fail "${what} turned the check red without the profile problem it should name (${expected})"
+    }
+    echo "  ${what}: red, naming '${expected}'"
+}
+profile_control "a different release pinned" '.providers[0].version = "9.9.9"' 'is not served as expected'
+profile_control "a required provider that is not served" \
+    '.providers += [{"provider": "workspace", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}]' 'is missing'
+profile_control "a served row the profile does not expect" '.providers = []' 'unexpected row desktop'
+rm -f "${OUT}/control-profile.json" "${OUT}/control.log"
+
 step "The contract as it stands"
-"${CHECK}" --introspection "${CAPTURE}" --design "${DESIGN}" \
+"${CHECK}" --introspection "${CAPTURE}" --profile "${PROFILE}" --providers "${PROVIDERS}" \
     ${SERVED_DIGEST:+--served-digest "${SERVED_DIGEST}"} --sdl-out "${SERVED_SDL}" || {
     echo
     echo "The served schema is not ${DESIGN}. Classify every difference above:"

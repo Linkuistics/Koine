@@ -7,6 +7,24 @@ provider it `dlopen`s out of `Contents/PlugIns` — against
 default, deprecation and description. The schema Koine serves is that file
 exactly.
 
+## Profiles (selection-diagnostics)
+
+The 0.1.0 run recorded below held the host to `docs/design/desktop-schema.graphql`.
+That file is now the **old-host profile's** design SDL and is unchanged. The
+notarized build is an extension host: it serves the same schema plus the candidate
+diagnostics on `KoineProviderStatus`, so `task conformance` holds it to the
+`core-desktop-extension-host` profile
+([`docs/design/profiles/`](../design/profiles/)): the design SDL
+`desktop-schema-extension-host.graphql` **and**, pinned separately, the provider
+candidates the host runs (`desktop` 1.0.0, `BUNDLED`, `SELECTED`). The run adds
+three controls for the pin (a different release, a required provider that is not
+served, a served row the profile does not expect) beside the four for the design
+text. A run against the extension-host profile is a new recording; the transcript
+below was made against the original file and stays what it says it is. Evidence
+for the extension-host profile is recorded where its run is (pending the next
+notarized build); the same pin and the design SDL run against a real independent
+host in `task compat`, see [binary-compatibility.md](binary-compatibility.md).
+
 ## Procedure
 
 ```sh

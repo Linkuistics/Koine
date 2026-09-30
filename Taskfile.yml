@@ -273,7 +273,7 @@ tasks:
       - scripts/vm-verify-contract-client.sh
 
   conformance:
-    desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against docs/design/desktop-schema.graphql by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served; the run first proves the check red against four mutated copies of the contract
+    desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against the extension-host profile (docs/design/profiles/) by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served, and the provider candidates it runs against the profile's pin; the run first proves the check red against four mutated copies of the contract and three mutated pins
     cmds:
       - scripts/vm-verify-conformance.sh
 

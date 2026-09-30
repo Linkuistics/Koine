@@ -17,12 +17,103 @@ public struct CreatedGrant: Sendable, Equatable, Decodable {
     public let credential: String
 }
 
-/// One provider bundle as `koineManagement.providers` reports it.
+/// One provider candidate as `koineManagement.providers` reports it: a bundle
+/// found in one of the two roots, or a synthetic row for an enabled slot with
+/// nothing to run. The candidate fields are nullable, so a host that predates
+/// them still decodes.
 public struct ManagedProvider: Sendable, Equatable, Decodable {
     public let provider: String
     public let version: String
     public let state: String
     public let diagnostic: String?
+    public let candidateId: String?
+    /// `BUNDLED` or `PER_USER`; nil for a synthetic row.
+    public let origin: String?
+    /// `SELECTED`, `NOT_SELECTED` or `UNAVAILABLE`.
+    public let selection: String?
+    public let selectedCandidateId: String?
+    /// A stable, open code; an unknown one is shown as it is.
+    public let reason: String?
+
+    public init(
+        provider: String, version: String, state: String, diagnostic: String? = nil,
+        candidateId: String? = nil, origin: String? = nil, selection: String? = nil,
+        selectedCandidateId: String? = nil, reason: String? = nil
+    ) {
+        self.provider = provider
+        self.version = version
+        self.state = state
+        self.diagnostic = diagnostic
+        self.candidateId = candidateId
+        self.origin = origin
+        self.selection = selection
+        self.selectedCandidateId = selectedCandidateId
+        self.reason = reason
+    }
+}
+
+/// Every candidate of one provider identity, the way the window shows them: the
+/// running version first, then every copy that was refused, passed over or is
+/// missing, each with its own origin and reason.
+public struct ManagedProviderGroup: Sendable, Equatable, Identifiable {
+    public let provider: String
+    /// The frozen choice, whatever became of it afterwards: a selected copy that
+    /// failed is still the one Koine chose, and is shown as failed. Without
+    /// candidate fields (a host that predates them, or a provider composed in
+    /// process), the active row.
+    public let running: ManagedProvider?
+    /// Every other row for the identity, in the order the host served them.
+    public let others: [ManagedProvider]
+
+    public var id: String { provider }
+
+    /// Whether anything about this identity is not a plain success. A success
+    /// indication never stands alone beside one of these.
+    public var hasRefusals: Bool {
+        guard let running else { return true }
+        return running.state != "ACTIVE" || running.reason != nil || !others.isEmpty
+    }
+
+    /// Groups rows by provider identity, keeping the host's order of both.
+    public static func grouping(_ rows: [ManagedProvider]) -> [ManagedProviderGroup] {
+        var order: [String] = []
+        var byProvider: [String: [ManagedProvider]] = [:]
+        for row in rows {
+            if byProvider[row.provider] == nil { order.append(row.provider) }
+            byProvider[row.provider, default: []].append(row)
+        }
+        return order.map { provider in
+            let members = byProvider[provider] ?? []
+            let chosen =
+                members.firstIndex { $0.selection == "SELECTED" }
+                ?? members.firstIndex { $0.selection == nil && $0.state == "ACTIVE" }
+            var others = members
+            let running = chosen.map { others.remove(at: $0) }
+            return ManagedProviderGroup(provider: provider, running: running, others: others)
+        }
+    }
+}
+
+extension ManagedProvider {
+    /// Where the copy is installed, in words. Never inferred from its position.
+    public var originLabel: String {
+        switch origin {
+        case "BUNDLED": "In Koine.app"
+        case "PER_USER": "Installed for you"
+        case nil: "Not installed"
+        default: origin ?? ""
+        }
+    }
+
+    public var selectionLabel: String {
+        switch selection {
+        case "SELECTED": "Chosen"
+        case "NOT_SELECTED": "Not used"
+        case "UNAVAILABLE": "Nothing to run"
+        case nil: ""
+        default: selection ?? ""
+        }
+    }
 }
 
 /// One OS permission as `koineManagement.osPermissions` reports it.
@@ -159,7 +250,10 @@ public struct ManagementClient: Sendable {
             { koine { contractVersion instanceId }
               koineManagement {
                 requests { requestId clientLabel comparisonCode requestedCapabilities state }
-                providers { provider version state diagnostic }
+                providers {
+                  provider version state diagnostic
+                  candidateId origin selection selectedCandidateId reason
+                }
                 osPermissions { permission owner granted }
               } }
             """,

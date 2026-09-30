@@ -98,9 +98,23 @@ type KoineProviderStatus {
   schemaVersion: String!
   state: KoineProviderState!
   diagnostic: String
+  "Opaque identity of origin plus canonical installed bundle location, unique within this startup. Null only for a synthetic row. Not a resource reference."
+  candidateId: String
+  "Where the bundle is physically installed. Null for a synthetic row; never inferred from composition position."
+  origin: KoineProviderOrigin
+  "Whether this candidate is the frozen choice for its provider identity. Synthetic rows are UNAVAILABLE."
+  selection: KoineProviderSelection
+  "The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even after a later failure."
+  selectedCandidateId: String
+  "Stable, open diagnostic code for a refusal or selection explanation. Null for a healthy selected row with nothing competing or missing."
+  reason: String
 }
 
 enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
+
+enum KoineProviderOrigin { BUNDLED PER_USER }
+
+enum KoineProviderSelection { SELECTED NOT_SELECTED UNAVAILABLE }
 
 type KoineOSPermission {
   permission: String!

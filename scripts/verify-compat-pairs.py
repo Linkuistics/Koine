@@ -39,6 +39,10 @@ FEATURE = "additional-capabilities-v1"
 ITEMS = "{ fixtureItems { ref name note tags detail { size } } }"
 CALLS = "{ fixtureCalls { resolver count } }"
 STATUS = "{ koineManagement { providers { provider version state diagnostic } } }"
+CANDIDATES = (
+    "{ koineManagement { providers { provider version schemaVersion state diagnostic "
+    "candidateId origin selection selectedCandidateId reason } } }"
+)
 
 
 def products(revision):
@@ -382,9 +386,12 @@ def desktop_pair(name, host_revision, conformance):
     """The desktop provider built from the released revision, in this release's host.
 
     It is bundled, as the application supplies it, so `desktop` is its to own. The
-    served schema is held to docs/design/desktop-schema.graphql by the conformance
-    check the release runs, with its own positive control: the same check against a
-    design text with one description changed must come back red."""
+    served schema and the candidates it runs are held to the extension-host
+    core + desktop profile (docs/design/profiles/) by the conformance check the
+    release runs, with its own positive controls: the same check against a design
+    text with one description changed, and against a profile that pins another
+    release, must come back red. The original core + desktop design file is the
+    old-host profile's; only a released host serves it, and the V run owns that."""
     bundled = os.path.join(products("baseline"), "DesktopProviders")
     case = Case(name, "desktop provider built from the released revision (against 1.0)", host_revision)
     empty = tempfile.mkdtemp(prefix="koine-compat-empty-")
@@ -414,13 +421,22 @@ def desktop_pair(name, host_revision, conformance):
         capture = os.path.join(directory, "introspection.json")
         with open(capture, "w") as file:
             json.dump(introspection, file)
-        design = os.path.join(REPOSITORY, "docs", "design", "desktop-schema.graphql")
+        profile = os.path.join(REPOSITORY, "docs", "design", "profiles", "core-desktop-extension-host.json")
+        with open(profile) as file:
+            pinned = json.load(file)
+        design = os.path.normpath(os.path.join(os.path.dirname(profile), pinned["design"]))
+        providers_path = os.path.join(directory, "providers.json")
+        _, candidates = host.post(CANDIDATES)
+        with open(providers_path, "w") as file:
+            json.dump(candidates, file)
         run = subprocess.run(
-            [conformance, "--introspection", capture, "--design", design, "--served-digest", koine["schemaDigest"]],
+            [conformance, "--introspection", capture, "--profile", profile, "--providers", providers_path,
+             "--served-digest", koine["schemaDigest"]],
             capture_output=True, text=True,
         )
         case.check(
-            "the served schema is the baseline contract: no difference from docs/design/desktop-schema.graphql and the served digest is that text's",
+            "the served schema is the extension-host contract and the candidate run is the profile's pin: "
+            "no difference from the design SDL, the served digest is that text's, and desktop 1.0.0 is BUNDLED and SELECTED",
             status == 200 and run.returncode == 0, {"exit": run.returncode, "output": (run.stdout + run.stderr)[-400:]},
         )
         with open(design) as file:
@@ -435,6 +451,29 @@ def desktop_pair(name, host_revision, conformance):
         case.check(
             "control: the same check is red against a design text with one description changed",
             text != open(mutated).read() and red.returncode == 1, {"exit": red.returncode},
+        )
+        wrong = dict(pinned, design=design)
+        wrong["providers"] = [dict(pinned["providers"][0], version="9.9.9")]
+        wrong_path = os.path.join(directory, "wrong-profile.json")
+        with open(wrong_path, "w") as file:
+            json.dump(wrong, file)
+        pin_red = subprocess.run(
+            [conformance, "--introspection", capture, "--profile", wrong_path, "--providers", providers_path,
+             "--served-digest", koine["schemaDigest"]],
+            capture_output=True, text=True,
+        )
+        case.check(
+            "control: the same schema and digest are red against a profile that pins another release",
+            pin_red.returncode == 1 and "is not served as expected" in pin_red.stdout,
+            {"exit": pin_red.returncode, "output": pin_red.stdout[-300:]},
+        )
+        # Composition positions and origins as the host really reported them.
+        served = candidates["data"]["koineManagement"]["providers"]
+        case.check(
+            "the desktop row is the bundled designated copy the host selected, and names itself",
+            len(served) == 1 and served[0]["origin"] == "BUNDLED" and served[0]["selection"] == "SELECTED"
+            and served[0]["candidateId"] == served[0]["selectedCandidateId"] and served[0]["reason"] is None,
+            served,
         )
         shutil.rmtree(directory, ignore_errors=True)
     finally:

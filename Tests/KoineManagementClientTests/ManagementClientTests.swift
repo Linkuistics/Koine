@@ -304,4 +304,106 @@ private final class Flag: @unchecked Sendable {
         get { lock.withLock { stored } }
         set { lock.withLock { stored = newValue } }
     }
+
+    // MARK: Provider groups
+
+    private static func row(
+        _ provider: String, _ version: String, _ state: String, origin: String?, selection: String,
+        id: String?, chosen: String?, reason: String? = nil
+    ) -> ManagedProvider {
+        ManagedProvider(
+            provider: provider, version: version, state: state, diagnostic: nil, candidateId: id,
+            origin: origin, selection: selection, selectedCandidateId: chosen, reason: reason)
+    }
+
+    @Test func copiesOfOneIdentityGroupUnderTheRunningVersionInTheHostsOrder() {
+        let groups = ManagedProviderGroup.grouping([
+            Self.row("desktop", "1.0.0", "REJECTED", origin: "BUNDLED", selection: "NOT_SELECTED",
+                     id: "b", chosen: "u", reason: "superseded-candidate"),
+            Self.row("desktop", "1.1.0", "ACTIVE", origin: "PER_USER", selection: "SELECTED",
+                     id: "u", chosen: "u"),
+            Self.row("workspace", "unknown", "REJECTED", origin: nil, selection: "UNAVAILABLE",
+                     id: nil, chosen: nil, reason: "missing-bundled"),
+        ])
+
+        #expect(groups.map(\.provider) == ["desktop", "workspace"])
+        let desktop = groups[0]
+        // The chosen copy leads, though the host served the bundled one first.
+        #expect(desktop.running?.candidateId == "u" && desktop.running?.originLabel == "Installed for you")
+        #expect(desktop.others.map(\.candidateId) == ["b"])
+        #expect(desktop.others[0].originLabel == "In Koine.app" && desktop.others[0].selectionLabel == "Not used")
+        // A running copy with a passed-over one beside it is not a plain success.
+        #expect(desktop.hasRefusals)
+        let workspace = groups[1]
+        #expect(workspace.running == nil && workspace.hasRefusals)
+        #expect(workspace.others[0].originLabel == "Not installed")
+        #expect(workspace.others[0].selectionLabel == "Nothing to run")
+    }
+
+    @Test func aLoneHealthyChoiceIsTheOnlyGroupThatShowsNoRefusal() {
+        let healthy = Self.row("desktop", "1.0.0", "ACTIVE", origin: "BUNDLED", selection: "SELECTED",
+                               id: "b", chosen: "b")
+        #expect(!ManagedProviderGroup.grouping([healthy]).contains { $0.hasRefusals })
+
+        // Each of these must not read as plain success.
+        let withReason = Self.row("desktop", "1.0.0", "ACTIVE", origin: "BUNDLED", selection: "SELECTED",
+                                  id: "b", chosen: "b", reason: "selected-with-refusals")
+        let failed = Self.row("desktop", "1.0.0", "FAILED", origin: "BUNDLED", selection: "SELECTED",
+                              id: "b", chosen: "b", reason: "start-failed")
+        for row in [withReason, failed] {
+            let group = ManagedProviderGroup.grouping([row])[0]
+            #expect(group.running == row && group.hasRefusals)
+        }
+    }
+
+    @Test func aSelectedCopyThatFailedIsStillTheOneKoineChose() {
+        let failed = Self.row("desktop", "1.1.0", "REJECTED", origin: "PER_USER", selection: "SELECTED",
+                              id: "u", chosen: "u", reason: "load-failed")
+        let bundled = Self.row("desktop", "1.0.0", "REJECTED", origin: "BUNDLED", selection: "NOT_SELECTED",
+                               id: "b", chosen: "u", reason: "superseded-candidate")
+        let group = ManagedProviderGroup.grouping([bundled, failed])[0]
+        #expect(group.running == failed && group.others == [bundled])
+    }
+
+    @Test func rowsFromAHostWithoutCandidateFieldsStillGroupByIdentity() {
+        let old = ManagedProvider(provider: "desktop", version: "1.0.0", state: "ACTIVE")
+        let group = ManagedProviderGroup.grouping([old])[0]
+        #expect(group.running == old && !group.hasRefusals)
+    }
+
+    @Test func statusReadsTheCandidateFieldsAsServed() async throws {
+        let reply = """
+            {"data":{"koine":{"contractVersion":"koine-desktop/1","instanceId":"i"},
+             "koineManagement":{"requests":[],"osPermissions":[],"providers":[
+               {"provider":"desktop","version":"1.0.0","state":"ACTIVE","diagnostic":null,
+                "candidateId":"c","origin":"BUNDLED","selection":"SELECTED",
+                "selectedCandidateId":"c","reason":null},
+               {"provider":"workspace","version":"unknown","state":"REJECTED","diagnostic":"x",
+                "candidateId":null,"origin":null,"selection":"UNAVAILABLE",
+                "selectedCandidateId":null,"reason":"missing-bundled"}]}}}
+            """
+        let seen = Recorded()
+        let client = ManagementClient { body in
+            seen.append(String(decoding: body, as: UTF8.self))
+            return Data(reply.utf8)
+        }
+
+        let status = try await client.status()
+
+        #expect(status.providers.count == 2)
+        #expect(status.providers[0].origin == "BUNDLED" && status.providers[0].reason == nil)
+        #expect(status.providers[1].candidateId == nil && status.providers[1].reason == "missing-bundled")
+        // The window asks for every candidate field, or it could not tell copies apart.
+        let query = try #require(seen.values.first)
+        for field in ["candidateId", "origin", "selection", "selectedCandidateId", "reason"] {
+            #expect(query.contains(field), Comment(rawValue: "the status query does not ask for \(field)"))
+        }
+    }
+
+    private final class Recorded: @unchecked Sendable {
+        private let lock = NSLock()
+        private var stored: [String] = []
+        func append(_ value: String) { lock.withLock { stored.append(value) } }
+        var values: [String] { lock.withLock { stored } }
+    }
 }

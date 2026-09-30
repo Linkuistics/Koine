@@ -88,27 +88,13 @@ struct ServiceStatusView: View {
     }
 
     private var providers: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Providers").font(.headline)
             if let status = model.status, status.providers.isEmpty {
                 Text("No providers found.").foregroundColor(.secondary)
             }
-            ForEach(model.status?.providers ?? [], id: \.provider) { provider in
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("\(provider.provider) \(provider.version)")
-                        Spacer()
-                        Text(provider.state.capitalized)
-                            .font(.caption)
-                            .foregroundColor(provider.state == "ACTIVE" ? .primary : .orange)
-                    }
-                    if let diagnostic = provider.diagnostic {
-                        Text(diagnostic).font(.caption).foregroundColor(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .accessibilityElement(children: .combine)
-                .accessibilityIdentifier("provider-\(provider.provider)")
+            ForEach(ManagedProviderGroup.grouping(model.status?.providers ?? [])) { group in
+                ProviderGroupView(group: group)
             }
         }
     }
@@ -132,5 +118,60 @@ struct ServiceStatusView: View {
                     .accessibilityIdentifier("status-problem")
             }
         }
+    }
+}
+
+/// One provider identity: the version Koine runs, and beneath it every copy that
+/// was refused, passed over or is missing, each with where it is installed and
+/// why. A healthy heading is never shown over a refusal it would conceal.
+private struct ProviderGroupView: View {
+    let group: ManagedProviderGroup
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if let running = group.running {
+                candidate(running, running: true)
+            } else {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(group.provider)
+                    Spacer()
+                    Text("Not running").font(.caption).foregroundColor(.orange)
+                }
+            }
+            ForEach(Array(group.others.enumerated()), id: \.offset) { _, other in
+                candidate(other, running: false).padding(.leading, 12)
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("provider-\(group.provider)")
+    }
+
+    private func candidate(_ row: ManagedProvider, running: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(row.version == "unknown" ? row.provider : "\(row.provider) \(row.version)")
+                    .font(running ? .body : .callout)
+                Spacer()
+                Text(stateText(row, running: running))
+                    .font(.caption)
+                    .foregroundColor(row.state == "ACTIVE" && !group.hasRefusals ? .primary : .orange)
+            }
+            // Physical origin and selection, so two copies of one identity can be
+            // told apart; the stable reason is shown as the host reports it.
+            let facts = [row.originLabel, row.selectionLabel, row.reason].compactMap { $0 }.filter { !$0.isEmpty }
+            if !facts.isEmpty {
+                Text(facts.joined(separator: " · ")).font(.caption2).foregroundColor(.secondary)
+            }
+            if let diagnostic = row.diagnostic {
+                Text(diagnostic).font(.caption).foregroundColor(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+    }
+
+    /// A running copy with anything refused beside it is not simply "Active".
+    private func stateText(_ row: ManagedProvider, running: Bool) -> String {
+        let state = row.state.capitalized
+        return running && row.state == "ACTIVE" && group.hasRefusals ? "\(state), with refusals" : state
     }
 }

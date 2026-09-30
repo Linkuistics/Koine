@@ -8,7 +8,8 @@ import Testing
 
 /// The instrument `task conformance` runs on, pinned here.
 ///
-/// The VM run says the schema Koine serves is `docs/design/desktop-schema.graphql`.
+/// The VM run says the schema Koine serves is the profile's design SDL
+/// (`docs/design/desktop-schema-extension-host.graphql`).
 /// A clean report and a misaddressed comparison look identical, and so do a
 /// faithful capture and one that quietly dropped what it could not carry — so
 /// what this suite establishes is what the instrument can and cannot see, by
@@ -239,7 +240,7 @@ import Testing
     ) async throws {
         let (canonical, _) = try await canonicalIntrospected([Self.rich()])
         // The design side is the provider's own declaration with one thing
-        // changed, which is what mutating docs/design/desktop-schema.graphql
+        // changed, which is what mutating the profile's design SDL
         // does in the VM run.
         #expect(
             Self.richDesign.contains(mutation.from),
@@ -344,7 +345,7 @@ import Testing
     /// file is the one Koine served, which additionally covers declared order —
     /// invisible to the report — and needs nothing from introspection.
     @Test func theServedSchemaIsTheDesignContract() async throws {
-        let design = try Self.repositoryFile("docs/design/desktop-schema.graphql")
+        let design = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
         let (canonical, digest) = try await composed()
         let found = SchemaComparison(
             served: try parse(source: canonical),
@@ -353,5 +354,141 @@ import Testing
         #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         // Declared order too, which the report above cannot see.
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+}
+
+// MARK: Profiles
+
+/// The two profiles `task conformance` holds a host to. The old-host profile is
+/// the released contract and must stay byte-for-byte what it was; the
+/// extension-host profile is that contract plus the candidate diagnostics and
+/// nothing else. Candidates are pinned apart from both, because an identical
+/// digest cannot prove which binary ran.
+@Suite struct ConformanceProfileTests {
+    private static func url(_ path: String) -> URL {
+        URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appending(path: path)
+    }
+
+    private static func profile(_ name: String) throws -> (profile: ConformanceProfile, design: URL) {
+        try ConformanceProfile.load(from: url("docs/design/profiles/\(name).json"))
+    }
+
+    private static func row(
+        _ overrides: [String: String?] = [:], extended: Bool = true
+    ) -> [String: String?] {
+        var row: [String: String?] = [
+            "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0",
+            "state": "ACTIVE", "diagnostic": nil,
+        ]
+        if extended {
+            row.merge([
+                "candidateId": "c1", "origin": "BUNDLED", "selection": "SELECTED",
+                "selectedCandidateId": "c1", "reason": nil,
+            ]) { $1 }
+        }
+        return row.merging(overrides) { $1 }
+    }
+
+    // MARK: The design files
+
+    @Test func theOldHostProfileIsTheReleasedContractPlusNothingBut() throws {
+        let old = try Self.profile("core-desktop-old-host")
+        let extended = try Self.profile("core-desktop-extension-host")
+        #expect(old.profile.management == .baseline && extended.profile.management == .extended)
+        #expect(old.design.lastPathComponent == "desktop-schema.graphql")
+        #expect(extended.design.lastPathComponent == "desktop-schema-extension-host.graphql")
+
+        let oldText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: old.design, encoding: .utf8))
+        let extendedText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: extended.design, encoding: .utf8))
+        let found = SchemaComparison(
+            served: try parse(source: extendedText), design: try parse(source: oldText)
+        ).differences()
+
+        // Exactly the additions: five nullable fields and the two enums they use.
+        #expect(
+            Set(found.map(\.coordinate)) == [
+                "KoineProviderStatus.candidateId", "KoineProviderStatus.origin",
+                "KoineProviderStatus.selection", "KoineProviderStatus.selectedCandidateId",
+                "KoineProviderStatus.reason", "KoineProviderOrigin", "KoineProviderSelection",
+            ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        // The two profiles are two schemas: their digests differ.
+        #expect(
+            try CanonicalSchemaText.digest(ofSDL: String(contentsOf: old.design, encoding: .utf8))
+                != CanonicalSchemaText.digest(ofSDL: String(contentsOf: extended.design, encoding: .utf8)))
+    }
+
+    // MARK: Candidates
+
+    @Test func theExactPinnedCandidateHoldsTheProfile() throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        #expect(extended.problems(inServed: [Self.row()]).isEmpty)
+        let old = try Self.profile("core-desktop-old-host").profile
+        #expect(old.problems(inServed: [Self.row(extended: false)]).isEmpty)
+    }
+
+    @Test func aRequiredProviderThatIsOmittedFailsTheProfileRatherThanShrinkingIt() throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        let problems = extended.problems(inServed: [])
+        #expect(problems.count == 1 && problems[0].contains("required desktop 1.0.0"))
+        #expect(problems[0].contains("is missing"))
+    }
+
+    @Test(arguments: [
+        ("a different release", ["version": "1.1.0"]),
+        ("a different schema", ["schemaVersion": "1.1.0"]),
+        ("another state", ["state": "FAILED"]),
+        ("another origin", ["origin": "PER_USER"]),
+        ("not selected", ["selection": "NOT_SELECTED"]),
+        ("a reason where none is expected", ["reason": "selected-with-refusals"]),
+    ] as [(String, [String: String?])])
+    func aCandidateThatDiffersFromThePinIsNamedWithWhatIsServed(
+        what: String, changes: [String: String?]
+    ) throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        let problems = extended.problems(inServed: [Self.row(changes)])
+        #expect(!problems.isEmpty, Comment(rawValue: "\(what) passed the profile"))
+        #expect(problems.contains { $0.contains("is not served as expected") }, Comment(rawValue: "\(problems)"))
+    }
+
+    @Test func aRowTheProfileDidNotExpectFailsIt() throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        let stray = Self.row(["provider": "workspace", "candidateId": "c2", "selectedCandidateId": "c2"])
+        let problems = extended.problems(inServed: [Self.row(), stray])
+        #expect(problems.count == 1 && problems[0].contains("unexpected row workspace"))
+    }
+
+    @Test func anExtensionHostMustServeTheCandidateFieldsOnEveryRow() throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        let problems = extended.problems(inServed: [Self.row(extended: false)])
+        #expect(problems.contains { $0.contains("does not carry the candidate fields") })
+    }
+
+    @Test func aSelectedRowMustNameItself() throws {
+        let extended = try Self.profile("core-desktop-extension-host").profile
+        let problems = extended.problems(inServed: [Self.row(["selectedCandidateId": "elsewhere"])])
+        #expect(problems.contains { $0.contains("does not name itself") })
+    }
+
+    @Test func aProfileNeedsItsFourPinnedFields() throws {
+        let text = #"{ "name": "x", "design": "d.graphql", "management": "baseline", "providers": [ { "provider": "desktop" } ] }"#
+        #expect(throws: (any Error).self) {
+            try JSONDecoder().decode(ConformanceProfile.self, from: Data(text.utf8))
+        }
+    }
+
+    @Test func servedRowsReadFromAResponseOrABareArray() throws {
+        let rows = #"[ { "provider": "desktop", "reason": null } ]"#
+        let wrapped = #"{ "data": { "koineManagement": { "providers": \#(rows) } } }"#
+        let fromWrapped = try ConformanceProfile.servedRows(fromJSON: Data(wrapped.utf8))
+        let fromBare = try ConformanceProfile.servedRows(fromJSON: Data(rows.utf8))
+        #expect(fromWrapped == fromBare && fromBare.count == 1)
+        // A null is kept, distinct from an absent key.
+        #expect(fromBare[0]["reason"] != nil && (fromBare[0]["reason"] ?? "x") == nil)
+        #expect(fromBare[0]["origin"] == nil)
     }
 }
