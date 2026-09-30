@@ -1,0 +1,62 @@
+# Workspace 1.0.0 contribution as served by this increment: the launch root and every type it
+# reaches, verbatim from docs/design/workspace-schema.graphql. Each later root lands with its
+# own leaf; a coordinate that is not implemented here is not served.
+
+"""A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
+input WorkspaceApplicationInput {
+  """Nonblank native bundle identifier, not a display name or process identity."""
+  bundleIdentifier: String!
+  """Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed."""
+  applicationPath: String
+}
+
+"""AVAILABLE is native acknowledgment; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request. Neither status overrides publication errors."""
+enum WorkspaceOperationStatus {
+  AVAILABLE
+  DEPENDENCY_UNAVAILABLE
+}
+
+"""Pre-submission prerequisite failure; no successful value accompanies it."""
+enum WorkspaceDependencyReason {
+  APPLICATION_NOT_INSTALLED
+  APPLICATION_IDENTITY_MISMATCH
+  PATH_NOT_FOUND
+  NO_DEFAULT_HANDLER
+}
+
+"""A failed prerequisite, under workspace:control AND desktop:control. Not a stale issued reference or execution error."""
+type WorkspaceDependencyUnavailable {
+  """Requires workspace:control AND desktop:control. Closed reason for not submitting this action."""
+  reason: WorkspaceDependencyReason!
+  """Requires workspace:control AND desktop:control. Human explanation and recovery; never a shell command to execute automatically."""
+  guidance: String!
+}
+
+"""Observed process incarnation for this action, under workspace:control AND desktop:control. May exit immediately; not a desktop reference."""
+type WorkspaceProcessIdentity {
+  """Requires workspace:control AND desktop:control. Positive process identifier; use only with startedAt."""
+  pid: Int!
+  """Requires workspace:control AND desktop:control. Exact kernel process start instant, YYYY-MM-DDTHH:MM:SS.ffffffZ; copy with pid into the desktop process input under desktop:read."""
+  startedAt: String!
+}
+
+"""Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed."""
+type WorkspaceOpenReceipt {
+  """Requires workspace:control AND desktop:control. Optional observation of the completion callback's application: stable positive PID, matching kernel start reads and executable file identity, equal native application object, non-terminated at the checks. Any unavailable value or mismatch yields null. Not atomic effect binding; never a PID-only, launch-date or foreground fallback."""
+  process: WorkspaceProcessIdentity
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceOpenResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceOpenReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+extend type Mutation {
+  """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first."""
+  workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
+}

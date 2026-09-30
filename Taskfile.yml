@@ -65,7 +65,7 @@ tasks:
       - swift build --build-tests
       - task: fixture:variants
       - task: fixture:selection
-      - task: desktop-provider
+      - task: bundled-providers
       - swift test --skip-build
 
   fixture:
@@ -91,13 +91,16 @@ tasks:
         PRODUCTS="$(swift build --show-bin-path)"
         Fixtures/FixtureProvider/build-selection.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureSelection"
 
-  desktop-provider:
-    desc: Build the desktop provider by its own build definition against the staged framework, then sign and approve it as an installed provider for the loader tests
+  bundled-providers:
+    desc: Build the bundled providers (desktop, workspace) by their own build definitions against the staged framework into one root, as Contents/PlugIns holds them, then sign each and approve it as an installed provider for the loader tests
     cmds:
       - |
         FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
-        BUNDLE="$(Providers/DesktopProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../DesktopProviders")"
-        Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
+        ROOT="$(dirname "${FRAMEWORK}")/../BundledProviders"
+        for provider in DesktopProvider WorkspaceProvider; do
+          BUNDLE="$(Providers/${provider}/build.sh "$(dirname "${FRAMEWORK}")" "${ROOT}")"
+          Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
+        done
 
   app:
     desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)

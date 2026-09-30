@@ -96,30 +96,33 @@ if [ "${FRAMEWORK_TEAM}" != "${TEAM_ID}" ]; then
     exit 1
 fi
 
-# The in-application provider root holds exactly the desktop provider: signed by
-# the same team with the hardened runtime, linking the framework by its install
-# name, and embedding no copy of it.
+# The in-application provider root holds exactly the bundled providers (desktop and
+# workspace): each signed by the same team with the hardened runtime, linking the
+# framework by its install name, and embedding no copy of it. The identifiers and
+# versions are `task check:provider-catalogue`'s.
 PLUGINS="${APP_BUNDLE}/Contents/PlugIns"
-DESKTOP="${PLUGINS}/Desktop.koineprovider"
-if [ "$(ls -A "${PLUGINS}" 2>/dev/null)" != "Desktop.koineprovider" ]; then
-    echo "Error: ${PLUGINS} does not hold exactly Desktop.koineprovider." >&2
+if [ "$(ls -A "${PLUGINS}" 2>/dev/null)" != "$(printf 'Desktop.koineprovider\nWorkspace.koineprovider')" ]; then
+    echo "Error: ${PLUGINS} does not hold exactly Desktop.koineprovider and Workspace.koineprovider." >&2
     exit 1
 fi
-codesign --verify --strict --verbose=2 "${DESKTOP}"
-DESKTOP_DETAILS="$(codesign --display --verbose=2 "${DESKTOP}" 2>&1)"
-if [ "$(sed -n 's/^TeamIdentifier=//p' <<<"${DESKTOP_DETAILS}")" != "${TEAM_ID}" ] ||
-    ! grep -q '^CodeDirectory.*flags=.*runtime' <<<"${DESKTOP_DETAILS}"; then
-    echo "Error: the desktop provider is not signed by team ${TEAM_ID} with the hardened runtime." >&2
-    exit 1
-fi
-if ! otool -L "${DESKTOP}/libDesktopProvider.dylib" | grep -qF "${INSTALL_NAME} "; then
-    echo "Error: the desktop provider does not link ${INSTALL_NAME}." >&2
-    exit 1
-fi
-if [ -n "$(find "${DESKTOP}" -name '*.framework')" ]; then
-    echo "Error: the desktop provider embeds a framework." >&2
-    exit 1
-fi
+for NAME in Desktop Workspace; do
+    PROVIDER="${PLUGINS}/${NAME}.koineprovider"
+    codesign --verify --strict --verbose=2 "${PROVIDER}"
+    PROVIDER_DETAILS="$(codesign --display --verbose=2 "${PROVIDER}" 2>&1)"
+    if [ "$(sed -n 's/^TeamIdentifier=//p' <<<"${PROVIDER_DETAILS}")" != "${TEAM_ID}" ] ||
+        ! grep -q '^CodeDirectory.*flags=.*runtime' <<<"${PROVIDER_DETAILS}"; then
+        echo "Error: the ${NAME} provider is not signed by team ${TEAM_ID} with the hardened runtime." >&2
+        exit 1
+    fi
+    if ! otool -L "${PROVIDER}/lib${NAME}Provider.dylib" | grep -qF "${INSTALL_NAME} "; then
+        echo "Error: the ${NAME} provider does not link ${INSTALL_NAME}." >&2
+        exit 1
+    fi
+    if [ -n "$(find "${PROVIDER}" -name '*.framework')" ]; then
+        echo "Error: the ${NAME} provider embeds a framework." >&2
+        exit 1
+    fi
+done
 
 echo "Designated requirement:"
 codesign --display --requirements - "${APP_BUNDLE}" 2>/dev/null | sed -n 's/^designated => /  /p'

@@ -89,6 +89,21 @@ let package = Package(
         // (Providers/DesktopProvider/build.sh) and is no product of this package.
         .target(name: "DesktopProviderLogic", path: "Providers/DesktopProvider/Logic"),
         .testTarget(name: "DesktopProviderLogicTests", dependencies: ["DesktopProviderLogic"]),
+        // The same for the workspace provider, whose Logic is the provider itself,
+        // built against a native adapter a test substitutes. Its kernel start-instant
+        // helper is the desktop provider's, linked in by symlink as source.
+        .target(
+            name: "WorkspaceProviderLogic",
+            dependencies: [.product(name: "KoineProviderAPI", package: "ProviderAPI")],
+            path: "Providers/WorkspaceProvider/Logic"
+        ),
+        .testTarget(
+            name: "WorkspaceProviderLogicTests",
+            dependencies: [
+                "WorkspaceProviderLogic",
+                .product(name: "KoineProviderAPI", package: "ProviderAPI"),
+            ]
+        ),
         .testTarget(
             name: "KoineManagementClientTests",
             dependencies: ["KoineManagementClient", "KoineServer", "KoineCore"]
@@ -98,6 +113,8 @@ let package = Package(
             dependencies: [
                 "KoineServer", "KoineCore", "KoineSQLiteStore", "KoineProviderLoader",
                 "KoineHTTP", "KoineConformanceCheck",
+                // The workspace provider's own Logic, for its real descriptor at the composition point.
+                "WorkspaceProviderLogic",
                 // For in-test descriptors; the fixture bundle is built elsewhere.
                 .product(name: "KoineProviderAPI", package: "ProviderAPI"),
             ]

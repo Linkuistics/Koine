@@ -5,7 +5,8 @@ import KoineServer
 import Testing
 
 /// The desktop provider's bundle, built by its own build definition, loaded by
-/// the one native loader and asked over loopback HTTP. Only what needs no
+/// the one native loader, from the in-application root as it holds every bundled
+/// provider, and asked over loopback HTTP. Only what needs no
 /// Accessibility consent and drives nothing is asked here, of an application
 /// that is already running; windows are verified in a VM
 /// (docs/verification/desktop-window-identity.md). `task test` builds the bundle.
@@ -27,8 +28,8 @@ import Testing
     }
 
     /// A server around the in-application root as the application supplies it: the
-    /// sealed catalogue enables `desktop` at its packaged values, and the host's
-    /// verified team approves it.
+    /// sealed catalogue enables `desktop` and `workspace` at their packaged values,
+    /// and the host's verified team approves them.
     static func harness(providerRoots: [URL] = []) async throws -> Harness {
         try await Harness(
             providerRoots: providerRoots, bundledRoots: [.bundled(try root())],
@@ -38,7 +39,7 @@ import Testing
 
     static func root() throws -> URL {
         let root = Bundle(for: TestBundleAnchor.self).bundleURL.deletingLastPathComponent()
-            .appendingPathComponent("DesktopProviders", isDirectory: true)
+            .appendingPathComponent("BundledProviders", isDirectory: true)
         let bundle = root.appendingPathComponent("Desktop.koineprovider").path
         try #require(
             FileManager.default.fileExists(atPath: bundle),

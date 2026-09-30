@@ -53,11 +53,13 @@ FRAMEWORK_FLOOR="$(plist_string LSMinimumSystemVersion ProviderAPI/Info.plist)"
 [ "${FRAMEWORK_FLOOR}" = "${MINIMUM_OS}" ] ||
     disagrees "ProviderAPI/Info.plist" "${FRAMEWORK_FLOOR}" "${MINIMUM_OS}"
 
-# The desktop provider's manifest is derived, not restated: what is checked is
-# that it is still the placeholder Providers/DesktopProvider/build.sh substitutes.
-grep -q '"minimumOS": "@MINIMUM_OS@"' Providers/DesktopProvider/manifest.json ||
-    disagrees "Providers/DesktopProvider/manifest.json" \
-        "$(sed -n 's/.*"minimumOS": "\(.*\)".*/\1/p' Providers/DesktopProvider/manifest.json)" "@MINIMUM_OS@"
+# Each bundled provider's manifest is derived, not restated: what is checked is
+# that it is still the placeholder its build.sh substitutes.
+for PROVIDER in DesktopProvider WorkspaceProvider; do
+    grep -q '"minimumOS": "@MINIMUM_OS@"' "Providers/${PROVIDER}/manifest.json" ||
+        disagrees "Providers/${PROVIDER}/manifest.json" \
+            "$(sed -n 's/.*"minimumOS": "\(.*\)".*/\1/p' "Providers/${PROVIDER}/manifest.json")" "@MINIMUM_OS@"
+done
 
 # The prose. Each document states the floor in its own sentence, and the sentence
 # is what a reader is held to; a grep for the exact phrase is what keeps it true.
@@ -77,13 +79,16 @@ if [ -d "${APP_BUNDLE}" ]; then
         disagrees "${APP_BUNDLE}/Contents/Info.plist" "${BUNDLE_FLOOR}" "${MINIMUM_OS}"
     for image in "Contents/MacOS/${APP_NAME}" \
         "Contents/Frameworks/${PROVIDER_FRAMEWORK_NAME}.framework/Versions/A/${PROVIDER_FRAMEWORK_NAME}" \
-        "Contents/PlugIns/Desktop.koineprovider/libDesktopProvider.dylib"; do
+        "Contents/PlugIns/Desktop.koineprovider/libDesktopProvider.dylib" \
+        "Contents/PlugIns/Workspace.koineprovider/libWorkspaceProvider.dylib"; do
         MINOS="$(otool -l "${APP_BUNDLE}/${image}" | awk '/^ *minos /{print $2; exit}')"
         [ "${MINOS}" = "${MINIMUM_OS}" ] || disagrees "${image}" "minos ${MINOS}" "minos ${MINIMUM_OS}"
     done
-    PROVIDER_FLOOR="$(sed -n 's/.*"minimumOS": "\(.*\)".*/\1/p' "${APP_BUNDLE}/Contents/PlugIns/Desktop.koineprovider/manifest.json")"
-    [ "${PROVIDER_FLOOR}" = "${MINIMUM_OS}" ] ||
-        disagrees "the bundled provider's manifest" "${PROVIDER_FLOOR}" "${MINIMUM_OS}"
+    for NAME in Desktop Workspace; do
+        PROVIDER_FLOOR="$(sed -n 's/.*"minimumOS": "\(.*\)".*/\1/p' "${APP_BUNDLE}/Contents/PlugIns/${NAME}.koineprovider/manifest.json")"
+        [ "${PROVIDER_FLOOR}" = "${MINIMUM_OS}" ] ||
+            disagrees "the bundled ${NAME} provider's manifest" "${PROVIDER_FLOOR}" "${MINIMUM_OS}"
+    done
     echo "Assembled bundle checked: ${APP_BUNDLE}"
 else
     echo "No assembled bundle at ${APP_BUNDLE}; its Info.plist and Mach-O minos were not checked. Run: task app"

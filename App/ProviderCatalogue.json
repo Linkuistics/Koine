@@ -8,7 +8,14 @@
       "schema": "1.0.0",
       "signingIdentifier": "dev.antony.Koine.provider.desktop"
     },
-    { "providerId": "workspace", "graphQLPrefix": "Workspace" },
+    {
+      "providerId": "workspace",
+      "graphQLPrefix": "Workspace",
+      "bundle": "Workspace.koineprovider",
+      "release": "1.0.0",
+      "schema": "1.0.0",
+      "signingIdentifier": "dev.antony.Koine.provider.workspace"
+    },
     { "providerId": "input", "graphQLPrefix": "Input" },
     { "providerId": "menus", "graphQLPrefix": "Menus" },
     { "providerId": "iterm", "graphQLPrefix": "Iterm" },

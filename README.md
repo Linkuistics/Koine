@@ -179,11 +179,11 @@ never run at: docs/verification/latency-and-support-matrix.md.
 ```sh
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build, then stage KoineProviderAPI.framework
-task test      # build, stage, build the fixture provider, its variants and the desktop provider, then the suites over real loopback HTTP
+task test      # build, stage, build the fixture provider, its variants and the bundled providers, then the suites over real loopback HTTP
 task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
 task fixture:selection  # build, sign and keep apart the bundles the first-party selection tests choose between
-task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
+task bundled-providers  # build the desktop and workspace providers by their own build definitions, sign and approve them for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
 task conformance  # the schema and the candidates the notarized bundle serves, in a VM, against docs/design/profiles/core-desktop-extension-host.json
@@ -366,9 +366,9 @@ selected names are checked together, before the first `dlopen`). After
 provider selection"). One call, `ProviderLoader.selectAndLoad`, takes both roots
 and the sealed catalogue: `Contents/Resources/ProviderCatalogue.json`, from
 `App/ProviderCatalogue.json`, which reserves `desktop`, `workspace`, `input`,
-`menus`, `iterm` and `herdr`, and enables `desktop` alone, at the versions and
-code-signing identifier `task check:provider-catalogue` holds to the signed
-`Desktop.koineprovider`. Every candidate is discovered, staged, verified and
+`menus`, `iterm` and `herdr`, and enables `desktop` and `workspace`, at the versions
+and code-signing identifiers `task check:provider-catalogue` holds to the signed
+`Desktop.koineprovider` and `Workspace.koineprovider`. Every candidate is discovered, staged, verified and
 reported before any provider code loads; the calculation over their verdicts
 (`ProviderSelection.plan`) is pure, so the tests substitute candidate sets,
 orders and verdicts through a package-private seam without a public test API. For
@@ -441,7 +441,7 @@ origin, location and content, none of which an extended attribute changes, so Ko
 reuses the copy it already made and that copy keeps the attribute; with Koine stopped, delete
 that candidate's `<Name>-<digest>` directory under `ProviderStaging` as well — the
 diagnostic gives the exact command. Koine itself never clears the attribute. The
-bundled desktop provider is not assessed and is unaffected: the application's
+bundled providers are not assessed and are unaffected: the application's
 notarization ticket covers `Contents/PlugIns`, so it loads from a quarantined,
 downloaded `Koine.app`. Evidence:
 [`docs/verification/provider-quarantine-precheck-vm.md`](docs/verification/provider-quarantine-precheck-vm.md),
@@ -449,7 +449,7 @@ and for the platform's own refusal without this check,
 [`docs/verification/notarized-release-vm.md`](docs/verification/notarized-release-vm.md).
 
 `Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, which holds
-the bundles the catalogue designates (the desktop provider) and nothing else,
+the bundles the catalogue designates (the desktop and workspace providers) and nothing else,
 approved for the application's own Team ID and never by a file, and the per-user
 root. A reserved identity belongs to the exact identifier/prefix pair as a shipped
 provider, from either root; any other claimant of its names is refused alone.

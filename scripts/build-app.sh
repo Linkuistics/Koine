@@ -30,10 +30,12 @@ PROVIDER_FRAMEWORK="$(scripts/stage-provider-framework.sh release)"
 rm -rf "${APP_BUNDLE}"
 mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources" \
     "${APP_BUNDLE}/Contents/Frameworks" "${APP_BUNDLE}/Contents/PlugIns"
-# Contents/PlugIns is the in-application provider root. The desktop provider is
+# Contents/PlugIns is the in-application provider root. Each bundled provider is
 # built by its own build definition against the staged framework's interface,
 # placed here, and signed before the bundle that seals it.
-Providers/DesktopProvider/build.sh "$(dirname "${PROVIDER_FRAMEWORK}")" "${APP_BUNDLE}/Contents/PlugIns" >/dev/null
+for provider in DesktopProvider WorkspaceProvider; do
+    Providers/${provider}/build.sh "$(dirname "${PROVIDER_FRAMEWORK}")" "${APP_BUNDLE}/Contents/PlugIns" >/dev/null
+done
 cp "${BIN_DIR}/KoineApp" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
 # The one framework image the host and every provider link. Its module
 # interface is for building providers, not for the shipped application.

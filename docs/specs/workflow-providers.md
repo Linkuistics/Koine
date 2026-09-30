@@ -248,7 +248,7 @@ the phrase “plus effects” is not a completed trace.
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |
 | Displays | Desktop read/control for list, proportional transfer and display focus; client display labels | Window layout. Pending. |
-| Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code. Unconstrained launch allows running-copy reuse; an installation constraint does not. | [Launch/open acceptance](workspace-launch-and-open.md#acceptance), including activation with another app frontmost and bounded acknowledgment. Designed; G/N/V pending. |
+| Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code. Unconstrained launch allows running-copy reuse; an installation constraint does not. | [Launch/open acceptance](workspace-launch-and-open.md#acceptance), including activation with another app frontmost and bounded acknowledgment. Served by the bundled workspace provider; L, G and N are established for this root, and V (activation, cold and warm, the twelve launchers) is pending. |
 | Application search | Workspace read discovery remains to be designed; reuse `workspaceLaunchApplication` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard and MRU | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Pending. |
 | File search | Workspace read discovery remains to be designed; reuse `workspaceOpenPath` and `workspaceRevealPath`, each `workspace:control` AND `desktop:control`; client clipboard. Source documents retain default handlers; Finder aliases cannot be opened by this contract but can be revealed. | App and file search; reused [launch/open actions](workspace-launch-and-open.md#operations). Protected-path metadata evidence precedes reliance on path opening. Pending. |
 | Web search | Client query/suggestions/typed-query fallback; `Mutation.workspaceOpenURL(url:)`, `workspace:control` AND `desktop:control` | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Designed; G/N/V pending. |
@@ -377,10 +377,11 @@ admission and read publication, with the missing-owner cascade, established at
 the public seam over in-test contributions and in independently built binaries
 (`AdditionalCapabilityTests`,
 [binary-compatibility.md](../verification/binary-compatibility.md)). No shipped
-provider declares a set yet. The launch-and-open increment's workspace provider
-is its first consumer and the first check of a shipped provider's actual extra
-requirements, through the existing native seam. Its planning must include that
-vertical dependency. This design adds no implementation leaves. The held-interactions design separately
+provider declared one until the launch-and-open increment's workspace provider,
+which is its first consumer: `workspaceLaunchApplication` and every field it
+reaches require `workspace:control` with an additional `desktop:control`, composed
+and loaded through the existing native seam (`WorkspaceCompositionTests`,
+`WorkspaceProviderTests`). Its planning included that vertical dependency. This design adds no implementation leaves. The held-interactions design separately
 owns any framework support for grant-bound lifetimes and autonomous cleanup;
 such support also needs an explicit minor and required feature before use.
 

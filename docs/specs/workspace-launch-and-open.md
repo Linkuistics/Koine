@@ -1,13 +1,15 @@
 # Workspace launch and open
 
-**Designed, pending implementation and acceptance.** Workspace supplies the
+**Designed; `workspaceLaunchApplication` is implemented and its L, G and N parts
+are recorded under [Acceptance](#evidence-so-far), the other three roots and every
+V part pending.** Workspace supplies the
 launchers, browser opening, file/folder opening and Finder reveal required by
 the [workflow inventory](../requirements/modaliser-workflows.md#workflow-inventory).
 The [workflow spec](workflow-providers.md) owns the cumulative authority trace;
 the [Machine contract](machine.md) owns authorization, errors and composition.
 The [authority](../adr/provider-authority-follows-effects.md) and
 [selection](../adr/first-party-provider-selection.md) decisions bind this design.
-Nothing here claims that Koine 0.1.0 serves workspace.
+Nothing here claims that the released Koine 0.1.0 serves workspace.
 
 Start with the [request sequence](../design/architecture/index.html#diagram-workspace-open)
 and [outcome boundary](../design/architecture/index.html#diagram-workspace-outcomes).
@@ -344,3 +346,57 @@ fallback, chooser/MRU, clipboard and settings reload/relaunch. Reusable build,
 fixture, conformance and VM recipes extend the existing Taskfile. Missing app
 installations or certificates leave acceptance live; they are not passing absence
 tests for the required working paths.
+
+### Evidence so far
+
+`workspace-launch` shipped the bundled provider serving `workspaceLaunchApplication`
+and the types it reaches, verbatim from the design file. The other three roots
+and their types are not served until their leaves land. What follows is exactly
+what was established; every row above keeps its pending remainder.
+
+- **Twelve launchers, stopped and running.** Nothing established: no real
+  application was launched. Pending in full (`launch-vm`, `application-launchers`).
+- **Multiple copies and installation.** L (`SelectionTests`): absent and unregistered
+  identifiers, a registration whose bundle is gone, a present copy in the Trash
+  (eligible), identifier mismatch with nothing substituted, a chosen copy matched by
+  file identity (another spelling matches; another volume does not), a present but
+  unregistered copy, an unreadable candidate as `failed`. Running-copy reuse is
+  carried as the submitted substitution flag. N (`WorkspaceProviderTests`): the real
+  adapter answers an absent identifier, absent constrained paths and a real system
+  bundle with another identifier, submitting nothing. Pending: real symlink and
+  Unicode spellings, deletion after registration, a real second copy, running-copy
+  reuse (V), and `application-installations`.
+- **Input boundary.** L and N: a blank identifier and an empty, relative or
+  NUL-containing application path are input errors at the original path with no
+  `kind`, before any inspection. The other operations' inputs have not landed.
+- **Receipt/failure boundary.** G (`WorkspaceCompositionTests`): error-free
+  exclusive branches; publication denial at the status, value, process,
+  non-null process fields and both dependency fields, with the partial data and
+  error paths each leaves; an absent process as null. L (`ObservationTests`): every
+  step of the observation rule, one mismatch at a time. Pending: an observed real
+  process identity accepted by `desktopApplication(process:)` (V).
+- **Bounded acknowledgment.** L (`LaunchTests`): a negative acknowledgment, a
+  missing callback and a late callback (ignored, and releasing its slot exactly
+  once), cancellation before and during the wait, one-shot completion, exhausted
+  capacity refused before submission and restored by a callback. G: an action's
+  own `failed` at its path with later actions still running, against an earlier
+  core deadline that answers the whole request and starts no later action.
+  Pending: real completion timing, and Gatekeeper held past the bound (N/V).
+- **Authority/revocation.** G and N (through the real signed bundle): neither
+  control alone, and neither read, is enough; both controls without reads reach the
+  provider; denial precedes inspection; the first unmet member and the complete set;
+  multi-action preflight, aliases and `@skip`, revocation between actions.
+  Pending: V's observation of no denied launch, and disclosure
+  (`workspace-disclosure`).
+- **Consent and prompts.** The real adapter inspects only through the calls
+  the [probe](../verification/protected-path-metadata.md#inspection-results) measured
+  prompt-free, and never asks for a file's default handler. Accessibility
+  absent/revoked, app onboarding and Gatekeeper are pending (V).
+- **Packaging/selection.** N: the signed bundle, built by its own definition and
+  linking only the host framework, loads from the in-application root beside
+  desktop through the selection-aware loader, `ACTIVE` and `SELECTED` at
+  `1.0.0`/`1.0.0`. `task check:provider-catalogue` holds the catalogue's workspace
+  entry to the signed packaged bundle. Pending: the complete selection matrix
+  (`selection-acceptance`), old/new binaries with this provider, and the
+  core + desktop + workspace conformance profile (`launch-contract`).
+

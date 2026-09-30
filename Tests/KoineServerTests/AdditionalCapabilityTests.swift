@@ -722,8 +722,8 @@ private final class FailingStartProvider: Provider, @unchecked Sendable {
 }
 
 extension EngineResponse.Outcome {
-    fileprivate var isForbidden: Bool { if case .forbidden = self { true } else { false } }
-    fileprivate var isExecuted: Bool { if case .executed = self { true } else { false } }
+    var isForbidden: Bool { if case .forbidden = self { true } else { false } }
+    var isExecuted: Bool { if case .executed = self { true } else { false } }
     fileprivate var isInvalid: Bool { if case .invalidRequest = self { true } else { false } }
 }
 

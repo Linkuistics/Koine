@@ -142,11 +142,15 @@ echo "${IMAGES}"
 # rather than from the root it was found in — the behaviour signed-app-provider-vm.md
 # already records for the per-user root, and it holds for the bundled one too.
 # So the witness that the BUNDLED provider loaded is a Desktop- staging entry,
-# together with Contents/PlugIns holding exactly that provider in the guest.
+# together with Contents/PlugIns holding the bundled providers in the guest (desktop
+# and, since workspace shipped, Workspace.koineprovider; this script has not been
+# rerun against a build that includes it).
 grep 'DesktopProvider' <<<"${IMAGES}" | grep -qF "/ProviderStaging/Desktop-" ||
     fail "the desktop provider's image was not mapped from a Desktop- staging copy"
-guest "ls ${INSTALLED}/Contents/PlugIns" | grep -qx 'Desktop.koineprovider' ||
-    fail "the in-application provider root does not hold exactly Desktop.koineprovider"
+for bundle in Desktop.koineprovider Workspace.koineprovider; do
+    guest "ls ${INSTALLED}/Contents/PlugIns" | grep -qx "${bundle}" ||
+        fail "the in-application provider root does not hold ${bundle}"
+done
 
 step "A quarantined, UN-NOTARIZED same-team provider is refused before dlopen, with no system dialog"
 # notarized-release-vm.md recorded the platform refusing this image at dlopen,

@@ -139,10 +139,10 @@ import Testing
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
     }
 
-    /// What the application seals: desktop enabled at its packaged values, and the
-    /// five later identities reserved and not enabled early. `task
-    /// check:provider-catalogue` holds the same file to the signed bundle.
-    @Test func theShippedCatalogueEnablesDesktopAndReservesTheOtherFive() throws {
+    /// What the application seals: desktop and workspace enabled at their packaged
+    /// values, and the four later identities reserved and not enabled early. `task
+    /// check:provider-catalogue` holds the same file to the signed bundles.
+    @Test func theShippedCatalogueEnablesDesktopAndWorkspaceAndReservesTheOtherFour() throws {
         let file = Self.repository.appendingPathComponent("App/ProviderCatalogue.json")
         let catalogue = try ProviderCatalogue(json: Data(contentsOf: file))
 
@@ -155,31 +155,37 @@ import Testing
         #expect(desktop.bundleName == "Desktop.koineprovider")
         #expect(desktop.release == ProviderVersion("1.0.0") && desktop.schema == ProviderVersion("1.0.0"))
         #expect(desktop.signingIdentifier == "dev.antony.Koine.provider.desktop")
-        for reserved in ["workspace", "input", "menus", "iterm", "herdr"] {
+        let workspace = try #require(catalogue.entry(for: "workspace")?.baseline)
+        #expect(workspace.bundleName == "Workspace.koineprovider")
+        #expect(workspace.release == ProviderVersion("1.0.0") && workspace.schema == ProviderVersion("1.0.0"))
+        #expect(workspace.signingIdentifier == "dev.antony.Koine.provider.workspace")
+        for reserved in ["input", "menus", "iterm", "herdr"] {
             #expect(catalogue.entry(for: reserved)?.baseline == nil, "\(reserved) must not be enabled yet")
         }
     }
 
-    /// The desktop provider's own source states the same identity and versions:
+    /// Each bundled provider's own source states the same identity and versions:
     /// the catalogue is not free to drift from what it designates.
-    @Test func theShippedCatalogueAgreesWithTheDesktopProvidersManifest() throws {
+    @Test(arguments: [("desktop", "DesktopProvider"), ("workspace", "WorkspaceProvider")])
+    func theShippedCatalogueAgreesWithTheBundledProvidersManifest(identity: String, directory: String) throws {
         let catalogue = try ProviderCatalogue(
             json: Data(contentsOf: Self.repository.appendingPathComponent("App/ProviderCatalogue.json"))
         )
-        let desktop = try #require(catalogue.entry(for: "desktop"))
+        let entry = try #require(catalogue.entry(for: identity))
         let manifest = try #require(
             JSONSerialization.jsonObject(
-                with: Data(contentsOf: Self.repository.appendingPathComponent("Providers/DesktopProvider/manifest.json"))
+                with: Data(contentsOf: Self.repository.appendingPathComponent("Providers/\(directory)/manifest.json"))
             ) as? [String: Any]
         )
-        #expect(manifest["providerId"] as? String == desktop.providerId)
-        #expect(manifest["graphQLPrefix"] as? String == desktop.graphQLPrefix)
-        #expect(manifest["version"] as? String == desktop.baseline?.release.description)
-        #expect(manifest["schemaVersion"] as? String == desktop.baseline?.schema.description)
+        #expect(manifest["providerId"] as? String == entry.providerId)
+        #expect(manifest["graphQLPrefix"] as? String == entry.graphQLPrefix)
+        #expect(manifest["version"] as? String == entry.baseline?.release.description)
+        #expect(manifest["schemaVersion"] as? String == entry.baseline?.schema.description)
         let script = try String(
-            contentsOf: Self.repository.appendingPathComponent("Providers/DesktopProvider/build.sh"), encoding: .utf8
+            contentsOf: Self.repository.appendingPathComponent("Providers/\(directory)/build.sh"), encoding: .utf8
         )
-        #expect(script.contains("<key>CFBundleIdentifier</key><string>\(desktop.baseline?.signingIdentifier ?? "?")</string>"))
+        #expect(script.contains("<key>CFBundleIdentifier</key><string>\(entry.baseline?.signingIdentifier ?? "?")</string>"))
+        #expect(script.contains("\(entry.baseline?.bundleName ?? "?")"))
     }
 
     // MARK: The host's feature
