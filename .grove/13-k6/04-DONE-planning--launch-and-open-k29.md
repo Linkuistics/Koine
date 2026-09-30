@@ -104,3 +104,50 @@ missing required providers must fail that profile rather than weaken it.
   cascades. No fixture substitutes for required real loader/VM evidence.
 - Grow Taskfile build, preparation, fixture and VM recipes from those slices.
   Existing design validation/render tasks are not runtime conformance.
+
+## Decisions (running log)
+
+Bootstrapped from an empty working change on `2af6d3b5` (k54). Read the root and
+node briefs, the workspace spec, Machine's additional-capability and selection
+sections including the whole selection-acceptance table, both ADRs, the glossary,
+k18/k54, the Taskfile, and the loader, framework and build definitions.
+
+The first slice is a node, not one leaf. The charter's "first leaf" must carry
+the framework minor, selection support, a second bundled provider, packaging,
+conformance, a contract-only client and VM acceptance. That is several sessions of
+work, and grove's unit is one session. So `launch-path` is the first working
+increment. Its six leaves are ordered expand-first, and each leaves `task test`
+and the signed app green. Only the node as a whole delivers the end-to-end launch.
+None of its leaves is a dead layer, because each is verifiable at its own seam:
+fixture providers for the framework feature and desktop candidates for selection.
+Packaging stays with the first operation, as the charter requires.
+
+The first slice implements the complete `WorkspaceApplicationInput`, including
+the optional installation path, at L/G/N. The alternative was a bundle-identifier-
+only input widened later. It would serve a launch field whose design description
+cites `applicationPath`, so the served SDL would diverge from the design file.
+Multiple-copy V acceptance becomes its own later leaf, which also covers named-app
+opening.
+
+Conformance grows by root. Until every workspace root is implemented, the
+workspace profile expects the design SDL restricted to the implemented roots and
+the types they reach, verbatim. The leaf landing the last root requires the
+complete design file. A coordinate missing from the served schema always fails.
+
+Increment order: launch path, then the whole selection matrix, then the
+remaining operations, then disclosure. Selection is proven directly after the
+path because every later workspace N/V run stands on that loader. Its code is
+freshest then, and flushing plumbing out early is the pathfinder's stated
+purpose. The twelve-launcher preparation precedes URL and path work because it
+installs Dia and Zed, which those increments need. The protected-path
+probe precedes both path consumers and, through tree order, app-and-file-search.
+
+Certificate-dependent alternate-team V cases get a late root-level HITL leaf
+ahead of `baseline-acceptance`. Placing them in this node would stall the AFK
+increments behind a human-held certificate. Leaving them unowned would surface
+them only at baseline closure. This node may close with only those cases pending.
+
+This decomposition is load-bearing for about twenty sessions and embodies
+interpretive choices: the first-slice node, the conformance growth rule, the
+ordering and the certificate placement. It earns a `review-planning` step
+inserted ahead of the first increment, rather than an in-session reviewer.

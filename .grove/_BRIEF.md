@@ -62,7 +62,10 @@ classification, and scope reconciliation. Then, in order:
 9. `iterm`.
 10. `herdr` — addressed through the iTerm session.
 11. `account-acceptance` — HITL, late so it does not stall AFK work.
-12. `baseline-acceptance`.
+12. `alternate-team-signing` — HITL and late for the same reason. It covers the
+    selection and trust cases that need a second Developer ID team's certificate.
+    `launch-and-open-k29` added it.
+13. `baseline-acceptance`.
 
 Each increment resolves its bounded native-evidence question, then its API
 design, before a trailing `planning` leaf cuts implementation.

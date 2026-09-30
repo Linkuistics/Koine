@@ -76,6 +76,51 @@ by test catalogues; no entitlement or certificate-class change is authorized.
    and no-handler cases.
 2. `planning` — cut implementation leaves from the settled design.
 
+`launch-and-open-k29` cut the working increments below. Each leaves Koine
+working and verifies its behavior through the three seams. A `review-planning`
+step reads the cut before any of it runs.
+
+3. `launch-path`: one real launch end to end. It carries the framework minor,
+   selection, packaging, conformance, the contract-only client and VM acceptance.
+   This is the charter's first slice.
+4. `selection-acceptance`: Machine's whole selection matrix, proven while the
+   loader is fresh and before later runs rest on it.
+5. `application-launchers`: all twelve launchers on a reusable prepared VM,
+   which also supplies Dia and Zed to later increments.
+6. `web-urls`: URL opening for web search.
+7. `protected-path-metadata`: the bounded prompt question, answered ahead of
+   every path consumer, including `app-and-file-search`.
+8. `document-paths`: documents, directories and the Zed settings directory.
+9. `reveal-path`: Finder reveal. It lands the last root, so conformance then
+   requires the complete design SDL.
+10. `application-installations`: multiple-copy acceptance for launch and
+    named-application opening.
+11. `workspace-disclosure`: grant-view disclosure before workspace ships.
+
+Spec acceptance rows, by owner. An operation's leaves own its parts of the
+cross-cutting rows.
+
+| Spec row | Owners |
+| --- | --- |
+| Twelve launchers | `launch-path` (one app), `application-launchers` |
+| Multiple copies and installation | `workspace-launch` (L/G/N), `application-installations` |
+| Browser URL | `web-urls` |
+| Documents/directories/settings | `document-paths` |
+| Finder reveal | `reveal-path` |
+| Input boundary | each operation's leaves |
+| Receipt/failure boundary | `workspace-launch`, `launch-vm`; each operation for its receipt |
+| Bounded acknowledgment | `workspace-launch`, `launch-vm`, `launchers-vm` (Gatekeeper); each operation's L |
+| Authority/revocation and disclosure | each operation's leaves; `workspace-disclosure` |
+| Consent and prompts | `launch-vm`, `launcher-apps`, `launchers-vm`, `protected-path-metadata`; each V leaf |
+| Packaging/selection | `launch-path`, `selection-acceptance` |
+
+Only the certificate-dependent alternate-team cases may remain pending when this
+node closes. They stay live in the late root leaf `alternate-team-signing`.
+
+Conformance grows by root. Until the last root lands, the workspace profile
+expects the design SDL restricted to the implemented roots and the types they
+reach, verbatim. A missing coordinate always fails; nothing is silently omitted.
+
 ## Notes
 
 The launchers' secondary actions belong to `app-and-file-search`: reveal, copy
