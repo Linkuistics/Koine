@@ -96,7 +96,7 @@ let package = Package(
             name: "KoineServerTests",
             dependencies: [
                 "KoineServer", "KoineCore", "KoineSQLiteStore", "KoineProviderLoader",
-                "KoineConformanceCheck",
+                "KoineHTTP", "KoineConformanceCheck",
                 // For in-test descriptors; the fixture bundle is built elsewhere.
                 .product(name: "KoineProviderAPI", package: "ProviderAPI"),
             ]

@@ -39,3 +39,32 @@ sometimes dropped without a response.
 
 Cut from `additional-capabilities-k56`, whose acceptance needed a stable pair
 run. It sits ahead of `provider-selection-k57` because that leaf reuses the pairs.
+
+## Decisions (running log)
+
+**The cause is `busy` cleared before the response is written.** In
+`LoopbackListener.serve` the connection's `busy` flag was cleared by
+`endRequest` *after the handler returned and before `write`*. `stop()`'s drain
+closes every connection that is not `busy`, so a stop beginning in that gap
+closed the channel under a response that was ready but unwritten: the caller saw
+`RemoteDisconnected`. In the compat `stop` check, `stopProviders()` cancels the
+held resolve, the handler returns at once, and the listener's drain then runs
+in exactly that gap; hence the roughly one-in-five rate, and a host that
+exits 0 with `stopMilliseconds` 0. Evidence: the forced-order test
+`ListenerStopOrderingTests.aResponseReadyWhenStopClosesIdleConnectionsIsStillWritten`,
+run with the old order restored, fails with `Connection reset by peer`; with the
+fix, it passes.
+
+**Fix: `busy` holds until the write completes.** `endRequest` moves after the
+write and the keep-alive promise is taken after the ordering point, from
+`isStopping`. A stop beginning during the write leaves the connection to close
+itself after the write (the drain skipped it as busy), so `drain` was split into
+`closeIdle()` (returns the tasks) and the wait in `stop()`, which gives the test
+a seam between them (`ListenerPoint.idleClosed`). A response written while a stop
+begins may promise keep-alive and then close, as any idle keep-alive connection
+may.
+
+**A request parsed after stop began is still not handled** (`beginRequest`
+false): the connection closes with no response. That is the ordinary
+TCP race for a request sent as the listener closes, not a request "already
+received" by the handler; it is left as is and stated in the listener's doc.

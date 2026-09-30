@@ -133,14 +133,21 @@ back HTTP 200, the resolver was called, and the action ran under a grant that
 lacked the set). The unit and public-GraphQL cases in `AdditionalCapabilityTests`
 were watched to fail the same way, and the copy was restored before the run above.
 
-**One check is intermittent, and not because of this feature.** The `stop` check,
-which asks that a caller held in the plugin be answered before the host exits,
-failed in roughly one run in five of `task compat:verify` while these cases
-were being built (`RemoteDisconnected('Remote end closed connection without response')` on
-the held call, the host itself exiting 0 in 0 ms). The same check, run 25 times
-alone against the *released* host, failed once; against the new host, zero of 25.
-It predates the extension and it is not fixed here: a held caller can be dropped
-without a response as the server stops. It is recorded as its own follow-up.
+**The `stop` check was intermittent, and the released host still is.** The check asks
+that a caller held in the plugin be answered before the host exits. It failed in
+roughly one run in five of `task compat:verify` (`RemoteDisconnected('Remote end
+closed connection without response')` on the held call, the host exiting 0 in 0
+ms). The listener cleared a connection's `busy` flag after the handler returned
+and before the response was written, and `stop()` closes every connection that is
+not `busy`; with the held resolve cancelled, the handler returns at once and the
+close landed in that gap. The current host keeps `busy` until the write completes,
+and `ListenerStopOrderingTests` forces the order (it fails with the old order
+restored). 25 consecutive `task compat:verify` runs passed all 100 `stop` checks
+of the current host. The **released v0.1.0 host has the same ordering and still
+has the defect**: in those 25 runs the `stop` check failed once, against the
+baseline host and with the identical symptom, so a run of `compat:verify` can
+still fail on the released side of a pair. That is a limit of the released
+binary, not a regression.
 
 Refused in the paired setting, released-tree variants in the 1.1 host and
 newer-tree variants in the released host alike, each with an empty initializer
