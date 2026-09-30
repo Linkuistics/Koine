@@ -17,6 +17,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             let server = try KoineServer(
                 dataDirectory: data,
                 providerRoots: Self.bundledProviderRoot + [KoineServer.installedProviderRoot(in: data)],
+                providerCatalogue: Self.providerCatalogue,
                 osPermissions: AccessibilityPermission.source
             )
             self.server = server
@@ -38,20 +39,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    /// The providers Koine ships, by identifier. Each is approved for Koine's
-    /// own Team ID: this list and that identity are sealed by the application
-    /// signature.
-    private static let bundledProviderIds = ["desktop"]
-
-    /// `Contents/PlugIns`, the root sealed inside the application bundle. An
-    /// unsigned development run has no Team ID, and so approves nothing in it.
+    /// `Contents/PlugIns`, the root sealed inside the application bundle. It holds
+    /// the bundles the catalogue designates; their approval is this host's own
+    /// Team ID, derived from its verified signature, so an unsigned development
+    /// run has none and admits no shipped candidate.
     private static var bundledProviderRoot: [ProviderRoot] {
         guard let plugIns = Bundle.main.builtInPlugInsURL else { return [] }
-        let team = ProviderApproval.hostTeamIdentifier
-        let approvals = bundledProviderIds.compactMap { id in
-            team.map { ProviderApproval(providerId: id, teamIdentifier: $0) }
+        return [.bundled(plugIns)]
+    }
+
+    /// The identities Koine ships, sealed with the application:
+    /// `Contents/Resources/ProviderCatalogue.json`, from `App/ProviderCatalogue.json`.
+    /// Absent or malformed, it admits no provider and says so, rather than
+    /// inventing reservations from the bundles found.
+    private static var providerCatalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid> {
+        guard let url = Bundle.main.url(forResource: "ProviderCatalogue", withExtension: "json")
+        else {
+            return .failure(ProviderCatalogue.Invalid(reason: "The application has no ProviderCatalogue.json."))
         }
-        return [.bundled(plugIns, approvals: approvals)]
+        return ProviderCatalogue.load(from: url)
     }
 
     // Returning false keeps the run loop, and so the listener, alive with no

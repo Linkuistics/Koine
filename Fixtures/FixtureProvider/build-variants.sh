@@ -129,6 +129,10 @@ swiftc -emit-library -parse-as-library -enable-library-evolution -wmo \
 FIXTURE_FRAMEWORK="-I ${WORK}/newer -L${WORK}/newer -lKoineProviderAPI" \
     FIXTURE_SWIFTC="-D FIXTURE_NEEDS_NEWER_FRAMEWORK" compiled newer-framework Nf >/dev/null
 
+# Good, and designated by a purpose-built catalogue: what the in-application
+# root loads, under the running host's own team.
+compiled bundled-designated Bd >/dev/null
+
 BUNDLE="$(compiled missing-principal Mp)"
 edit_manifest "${BUNDLE}" 'm["principalClass"] = "KoineFixtureMpAbsentFactory"'
 

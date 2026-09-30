@@ -52,6 +52,10 @@ otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }' | whi
 done
 install_name_tool -add_rpath "@executable_path/../Frameworks" "${EXECUTABLE}"
 cp App/Info.plist "${APP_BUNDLE}/Contents/Info.plist"
+# The sealed provider catalogue: the identities Koine reserves, and for each
+# enabled one the bundle, versions and signing identifier `task
+# check:provider-catalogue` holds to the signed bundle it designates.
+cp App/ProviderCatalogue.json "${APP_BUNDLE}/Contents/Resources/ProviderCatalogue.json"
 
 if [ "$(plist_string CFBundleIdentifier "${APP_BUNDLE}/Contents/Info.plist")" != "${BUNDLE_ID}" ]; then
     echo "Error: App/Info.plist CFBundleIdentifier is not ${BUNDLE_ID} (scripts/signing-env.sh)." >&2

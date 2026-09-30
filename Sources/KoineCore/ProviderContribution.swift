@@ -5,11 +5,35 @@ import KoineProviderAPI
 /// host holds for its active lifetime. How it was loaded is not the core's
 /// concern.
 public struct ActiveProvider: Sendable {
-    /// Where the provider was installed. Only a bundled provider, sealed inside
-    /// the application, may own the `desktop` identifier and prefix.
+    /// The provider's standing. A `bundled` provider is a selected candidate of a
+    /// shipped identity, whichever root it came from: only it may own that
+    /// identity's reserved names, and it is published before ordinary providers.
+    /// An `external` provider is an ordinary one.
     public enum Origin: Sendable {
         case bundled
         case external
+    }
+
+    /// What the loader knows of the candidate this provider came from, kept so
+    /// every later phase reports the same candidate.
+    public struct Candidate: Sendable {
+        public let candidateId: String
+        public let origin: ProviderStatus.Origin
+        /// The loader's reason for a healthy selection, such as
+        /// `selected-with-refusals`; nil when there is nothing to say.
+        public let reason: String?
+        /// Competing refusals and recovery of this selection's identity.
+        public let note: String?
+
+        public init(
+            candidateId: String, origin: ProviderStatus.Origin, reason: String? = nil,
+            note: String? = nil
+        ) {
+            self.candidateId = candidateId
+            self.origin = origin
+            self.reason = reason
+            self.note = note
+        }
     }
 
     public let descriptor: ProviderDescriptor
@@ -18,11 +42,13 @@ public struct ActiveProvider: Sendable {
     /// The plugin and schema versions its manifest declares, for status.
     public let version: String
     public let schemaVersion: String
+    public let candidate: Candidate?
 
     public init(
         descriptor: ProviderDescriptor, provider: any Provider, origin: Origin = .external,
-        version: String = "0.0.0", schemaVersion: String = "0.0.0"
+        version: String = "0.0.0", schemaVersion: String = "0.0.0", candidate: Candidate? = nil
     ) {
+        self.candidate = candidate
         self.descriptor = descriptor
         self.provider = provider
         self.origin = origin

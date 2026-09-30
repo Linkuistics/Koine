@@ -5,15 +5,23 @@ import Foundation
 /// the installed bundle itself, so an update written while Koine starts cannot
 /// change what was checked (docs/specs/machine.md, "Loading and trust").
 ///
-/// A copy is named by its content, `<bundle name>-<digest>`. An unchanged bundle
-/// reuses its copy, and so its dyld image path; an update is a new copy beside
-/// the old. The copy's signature is verified on every start, so reuse trusts
-/// nothing about it.
-enum ProviderStaging {
+/// A copy belongs to one candidate: it is named by the bundle's name and a digest
+/// of the physical origin, the canonical installed location and the content. An
+/// unchanged candidate reuses its copy, and so its dyld image path; an update is a
+/// new copy beside the old. Equal bytes or equal names in different candidates
+/// never share a copy, so one candidate's quarantine is never inherited by
+/// another, and no entry the earlier content-only naming left behind can be
+/// reused: its name is not one this scheme produces
+/// (docs/specs/machine.md, "Selection before execution"). The copy's signature is
+/// verified on every start, and the per-user quarantine assessment is made of the
+/// copy that loads on every start, so reuse trusts nothing about it.
+package enum ProviderStaging {
     struct Failed: Error {}
 
     /// Copies the bundle at `bundlePath` under `staging` and returns the copy.
-    static func stage(bundleAt bundlePath: String, under staging: URL) throws -> URL {
+    static func stage(
+        bundleAt bundlePath: String, origin: ProviderCandidateReport.Origin, under staging: URL
+    ) throws -> URL {
         let files = FileManager.default
         try files.createDirectory(
             at: staging, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700]
@@ -27,7 +35,9 @@ enum ProviderStaging {
             // resolved, the copy would be that link.
             guard isDirectory(incoming) else { throw Failed() }
             // The digest is of the copy: what is named is what will be checked.
-            staged = staging.appendingPathComponent(try stagedName(of: incoming, from: bundlePath))
+            staged = staging.appendingPathComponent(
+                try stagedName(of: incoming, from: bundlePath, origin: origin)
+            )
             if !files.fileExists(atPath: staged.path) {
                 try setWritable(false, under: incoming)
                 // Fails when another server staged the same content first.
@@ -48,9 +58,16 @@ enum ProviderStaging {
         return kind as? FileAttributeType == .typeDirectory
     }
 
-    static func stagedName(of bundle: URL, from bundlePath: String) throws -> String {
+    /// `bundle` is the content to digest; `bundlePath` is the canonical installed
+    /// location it was copied from.
+    package static func stagedName(
+        of bundle: URL, from bundlePath: String, origin: ProviderCandidateReport.Origin
+    ) throws -> String {
         let name = ((bundlePath as NSString).lastPathComponent as NSString).deletingPathExtension
-        return "\(name)-\(try digest(of: bundle))"
+        let identity = SHA256.hash(
+            data: Data("\(origin.rawValue)\0\(bundlePath)\0\(try digest(of: bundle))".utf8)
+        )
+        return "\(name)-" + identity.prefix(16).map { String(format: "%02x", $0) }.joined()
     }
 
     /// SHA-256 over every entry's path, kind and content, and whether a file is

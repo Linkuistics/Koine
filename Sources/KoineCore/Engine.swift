@@ -71,13 +71,14 @@ public final class Engine: Sendable {
     public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        reservedIdentities: [ReservedIdentity] = ReservedIdentity.desktopOnly,
         osPermissions: @escaping OSPermissionSource = { [] },
         now: @escaping TimeSource = { Date() }
     ) throws {
         try self.init(
             store: store, instanceId: instanceId, policy: policy, providers: providers,
-            unloadedProviders: unloadedProviders, osPermissions: osPermissions, now: now,
-            reached: { _ in }
+            unloadedProviders: unloadedProviders, reservedIdentities: reservedIdentities,
+            osPermissions: osPermissions, now: now, reached: { _ in }
         )
     }
 
@@ -86,6 +87,7 @@ public final class Engine: Sendable {
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        reservedIdentities: [ReservedIdentity] = ReservedIdentity.desktopOnly,
         osPermissions: @escaping OSPermissionSource = { [] },
         now: @escaping TimeSource = { Date() }, reached: @escaping OrderingHook
     ) throws {
@@ -105,7 +107,9 @@ public final class Engine: Sendable {
         )
         let schemaDescription = coreDocument.definitions
             .compactMap { ($0 as? SchemaDefinition)?.description?.value }.first
-        let composition = Composition(core: core, providers: providers, policy: policy) {
+        let composition = Composition(
+            core: core, providers: providers, policy: policy, reserved: reservedIdentities
+        ) {
             IntrospectionSize.bytes(of: $0, schemaDescription: schemaDescription)
                 <= policy.maximumResponseBytes
         }

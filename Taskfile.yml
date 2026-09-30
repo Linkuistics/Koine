@@ -64,6 +64,7 @@ tasks:
     cmds:
       - swift build --build-tests
       - task: fixture:variants
+      - task: fixture:selection
       - task: desktop-provider
       - swift test --skip-build
 
@@ -81,6 +82,14 @@ tasks:
       - |
         PRODUCTS="$(swift build --show-bin-path)"
         Fixtures/FixtureProvider/build-variants.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/FixtureVariants"
+
+  fixture:selection:
+    desc: Build, sign and keep apart the bundles the first-party selection tests choose between (decision cases, and an independently compiled baseline and update for the one real load)
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/build-selection.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureSelection"
 
   desktop-provider:
     desc: Build the desktop provider by its own build definition against the staged framework, then sign and approve it as an installed provider for the loader tests
@@ -109,6 +118,11 @@ tasks:
     desc: Check that every place stating Koine's macOS floor - Package.swift, the desktop provider's manifest, the spec, the README and the assembled bundle's Info.plist and Mach-O minos - agrees with App/Info.plist's LSMinimumSystemVersion
     cmds:
       - scripts/check-minimum-os.sh
+
+  check:provider-catalogue:
+    desc: Compare the sealed provider catalogue (App/ProviderCatalogue.json) with the SIGNED packaged bundles it designates - each enabled entry's signing identifier read from the bundle's signature, its release and schema from its manifest, nothing else in Contents/PlugIns, no reserved-only claim - with a self-test that each mutation is seen to fail. Run `task app` first
+    cmds:
+      - scripts/check-provider-catalogue.py --self-test {{.CLI_ARGS}}
 
   check:docs:
     desc: Check every relative link and #anchor in the documentation outside .grove/ resolves (--unlinked lists evidence documents nothing living cites)

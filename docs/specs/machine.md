@@ -1062,7 +1062,9 @@ from a provider that fails startup after publication, as described above.
 
 ### First-party provider selection
 
-**Extension — designed, pending implementation and acceptance.** The
+**Extension — the loader's selection is implemented (`provider-selection`); its
+management fields and window grouping (`selection-diagnostics`) and its
+acceptance are pending.** The
 [selection decision](../adr/first-party-provider-selection.md) owns the trade-off.
 The [selection flow](../design/architecture/index.html#diagram-provider-selection)
 and [failure boundary](../design/architecture/index.html#diagram-provider-publication)
@@ -1108,6 +1110,16 @@ enabled slot. If neither can, the slot is unavailable and remains reserved.
 A malformed or internally conflicting host catalogue is a packaging failure:
 publish core management alone with a catalogue diagnostic and admit no provider,
 rather than inventing reservations from discovered bundles.
+
+The catalogue is sealed with the application as
+`Contents/Resources/ProviderCatalogue.json` (source `App/ProviderCatalogue.json`):
+an object whose `identities` array holds `providerId` and `graphQLPrefix` for
+every entry and, for an enabled one, `bundle` (the designated bundle's name in
+`Contents/PlugIns`), `release`, `schema` and `signingIdentifier`. An unknown key,
+a partial baseline, a malformed version, two entries that overlap on an
+identifier or prefix in either direction, or a claim on `koine` is a conflicting
+catalogue. `task check:provider-catalogue` holds an enabled entry to the signed
+packaged bundle's own signature and manifest.
 
 #### Eligibility and precedence
 
@@ -1331,7 +1343,16 @@ not that their signature failed. Other required reasons include `reserved-identi
 `no-eligible-candidate`, `manifest-collision`, `principal-collision`,
 `missing-capability-owner` and `selected-with-refusals`.
 Existing trust/compatibility failures retain their
-classification and gain a stable reason at implementation. `diagnostic` supplies
+classification and gain a stable reason at implementation:
+`location-outside-root`, `staging-failed`, `manifest-invalid`, `not-approved`,
+`approval-team-mismatch`, `signature-refused`, `framework-incompatible`,
+`feature-unavailable`, `architecture-incompatible`, `os-incompatible`,
+`runtime-incompatible`, `image-invalid`, `quarantine-refused`, `load-failed`,
+`principal-class-missing`, `principal-class-invalid`, `descriptor-mismatch` and
+`check-failed`. A refusal the core makes after loading carries the
+kebab-case form of its diagnostic (`invalid-sdl`, `name-collision`,
+`reserved-identity` for a reserved name claimed by a loaded descriptor, and so
+on), and a selected provider whose start fails carries `start-failed`. `diagnostic` supplies
 the concrete failure, compared versions, affected owner and recovery action.
 The native UI groups copies by identity, identifies physical origin and selection,
 and shows ignored/refused updates alongside the running version. No success banner

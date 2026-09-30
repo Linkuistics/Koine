@@ -181,6 +181,7 @@ task build     # swift build, then stage KoineProviderAPI.framework
 task test      # build, stage, build the fixture provider, its variants and the desktop provider, then the suites over real loopback HTTP
 task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
+task fixture:selection  # build, sign and keep apart the bundles the first-party selection tests choose between
 task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
 task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
@@ -311,9 +312,10 @@ that carries the promise. Three things follow from SwiftPM's rules:
 Swift dylib, `manifest.json`, `schema.graphql` and an `Info.plist` whose
 `CFBundleExecutable` names the dylib. That makes the directory a shallow
 code-signing bundle, so `codesign` seals all of it with one signature.
-`KoineServer(dataDirectory:policy:providerRoots:providerStaging:)` considers
-every bundle directly inside each given `ProviderRoot` at construction and composes the SDL and field
-registrations of those it loads into the schema; nothing else is searched. A
+`KoineServer(dataDirectory:policy:providerRoots:providerCatalogue:providerStaging:)`
+selects among the bundles directly inside each given `ProviderRoot` at
+construction, under the sealed catalogue (below), and composes the SDL and field
+registrations of those it selects into the schema; nothing else is searched. A
 provider's fields require `<providerId>:read` or `<providerId>:control`, which
 also appear in `koine.availableCapabilities`.
 
@@ -324,14 +326,18 @@ example): `providerId`, `graphQLPrefix`, `version`, `schemaVersion`,
 states what it supplies: framework 1.1 (`HostCompatibility`, held equal to
 `ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`:
 `additional-capabilities-v1`, which a field's additional read or control
-requirements need; docs/specs/machine.md, "Additional capability requirements").
+requirements need, docs/specs/machine.md, "Additional capability requirements";
+and `first-party-selection-v1`, which every newly published update of a shipped
+identity declares so that an earlier host refuses it before `dlopen`).
 
 **The native loader** (`KoineProviderLoader`) refuses a bundle before any of its
 code runs wherever it can, since dylib initializers run inside `dlopen`. Trust
 comes first: the bundle's canonical location must lie inside its root; the
-bundle is copied to a read-only directory named by its content under
-`ProviderStaging` in the data directory, and everything after is checked of,
-and loaded from, that copy (`ProviderStaging.swift`); the manifest's provider
+bundle is copied to a read-only directory under `ProviderStaging` in the data
+directory, named by the bundle's name and a digest of its physical origin, its
+canonical location and its content, so no two candidates ever share a copy, and
+everything after is checked of, and loaded from, that copy
+(`ProviderStaging.swift`); the manifest's provider
 must have an approval record; and the copy must carry a valid signature by the
 approved Team ID (`ProviderTrust.swift`, the Security framework's static
 validation, strict, with the requirement `anchor apple generic and certificate
@@ -346,9 +352,32 @@ dependency and run path is the framework's install name, under `/usr/lib/` or
 `/System/Library/`, or a recursively validated `@loader_path` file inside the
 bundle, each such image signed by the approved identity itself; for a per-user
 provider, that Gatekeeper accepts every such image that is quarantined (below);
-and that no other image has registered the principal class name. After
+and, once every candidate has been through all of this and one has been chosen
+per identity, that no other image has registered the principal class name (the
+selected names are checked together, before the first `dlopen`). After
 `dlopen` the principal class must originate in that image, conform to
 `ProviderFactory`, and produce a descriptor that agrees with the manifest.
+
+**Selection** (`ProviderSelection.swift`, docs/specs/machine.md, "First-party
+provider selection"). One call, `ProviderLoader.selectAndLoad`, takes both roots
+and the sealed catalogue: `Contents/Resources/ProviderCatalogue.json`, from
+`App/ProviderCatalogue.json`, which reserves `desktop`, `workspace`, `input`,
+`menus`, `iterm` and `herdr`, and enables `desktop` alone, at the versions and
+code-signing identifier `task check:provider-catalogue` holds to the signed
+`Desktop.koineprovider`. Every candidate is discovered, staged, verified and
+reported before any provider code loads; the calculation over their verdicts
+(`ProviderSelection.plan`) is pure, so the tests substitute candidate sets,
+orders and verdicts through a package-private seam without a public test API. For
+a shipped identity the bundled copy is the floor, and a per-user copy replaces it
+only with all of: an approval record naming the host's own Team ID; a signature
+whose code-signing identifier is the catalogue's release identifier, read from
+the staged bundle; `first-party-selection-v1` declared; a numerically greater
+release (`major.minor.patch`, so `1.10.0` beats `1.9.0`); and the same schema
+major with a schema version at least the baseline's. A tie among the greatest
+releases is refused whole and the calculation repeats; the choice then freezes,
+and nothing is retried after a later failure in that process. The Team ID is the
+running host's own, read from its verified signature: an unsigned or ad-hoc host
+(as `swift test` is) has none and admits no shipped candidate.
 
 An honest bundle this host cannot run is `INCOMPATIBLE`; an unapproved,
 unsigned, ad-hoc or differently signed one, one changed after sealing, a
@@ -404,9 +433,9 @@ two ways out:
   step 4.
 
 Clearing it after a refusal is not enough on its own. The staged copy is named by
-content, which an extended attribute does not change, so Koine reuses the copy
-it already made and that copy keeps the attribute; with Koine stopped, delete
-that bundle's `<Name>-<digest>` directory under `ProviderStaging` as well — the
+origin, location and content, none of which an extended attribute changes, so Koine
+reuses the copy it already made and that copy keeps the attribute; with Koine stopped, delete
+that candidate's `<Name>-<digest>` directory under `ProviderStaging` as well — the
 diagnostic gives the exact command. Koine itself never clears the attribute. The
 bundled desktop provider is not assessed and is unaffected: the application's
 notarization ticket covers `Contents/PlugIns`, so it loads from a quarantined,
@@ -415,11 +444,11 @@ downloaded `Koine.app`. Evidence:
 and for the platform's own refusal without this check,
 [`docs/verification/notarized-release-vm.md`](docs/verification/notarized-release-vm.md).
 
-`Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose
-approvals are built in (the shipped provider IDs with the Team ID of the
-application's own signature) and which holds the desktop provider, and the
-per-user root. A provider's origin is its root's: the `desktop` identifier and
-prefix are reserved to the in-application root.
+`Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, which holds
+the bundles the catalogue designates (the desktop provider) and nothing else,
+approved for the application's own Team ID and never by a file, and the per-user
+root. A reserved identity belongs to the exact identifier/prefix pair as a shipped
+provider, from either root; any other claimant of its names is refused alone.
 
 **Lifecycle** (`KoineCore/ProviderLifecycle.swift`): providers start after
 composition; every resolve goes through the provider's lifecycle, which
@@ -460,6 +489,25 @@ steps above do by hand. An ad-hoc signed variant stands for a different
 identity, so no second certificate is needed. The tests construct servers off
 the Swift concurrency pool and share one staging directory, so dyld maps each
 fixture once per process.
+
+`Fixtures/FixtureProvider/build-selection.sh` builds the bundles
+`ProviderSelectionTests` chooses between, under `FixtureSelection/<case>/`: sealed
+copies of the fixture that differ in what the selection decision reads (release,
+schema, declared features, identity claims, signing identifier). The tests run the
+real staging, verification and selection over copies of them in a throwaway pair
+of roots, around the loader's package-private seam, which records which frozen
+selections would load instead of loading them; so no principal class of the `Sl`
+family is ever registered in the test process. One test loads an independently
+compiled baseline and update (`Sm`) for real and asks the update's binary a
+question over loopback HTTP; its initializer log shows the bundle never ran. A
+catalogue that lists a fixture identifier is the test's own: nothing here is ever
+signed under a production provider's release identifier. Fresh host processes,
+marker controls and purpose-built signed hosts are `selection-acceptance`'s.
+
+`task check:provider-catalogue` (after `task app`) holds the sealed catalogue to
+the signed packaged bundle: the identifier read from its signature, the release and
+schema from its manifest, nothing else in `Contents/PlugIns`. Its `--self-test`
+mutates the catalogue and requires each mutation to be reported.
 
 ### Binary compatibility pairs
 

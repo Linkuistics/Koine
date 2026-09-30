@@ -64,12 +64,18 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
                 )
             ]
             #if FIXTURE_UNDECLARED
-                let features: [String] = []
+                var features: [String] = []
             #else
-                let features = [ProviderDescriptor.additionalCapabilitiesFeature]
+                var features = [ProviderDescriptor.additionalCapabilitiesFeature]
             #endif
         #else
-            let features: [String] = []
+            var features: [String] = []
+        #endif
+        #if FIXTURE_SELECTION
+            // A newly published first-party update states the host feature that
+            // lets an earlier host refuse it before dlopen. It is a plain string:
+            // it needs no framework declaration.
+            features.append("first-party-selection-v1")
         #endif
         return ProviderDescriptor(
             providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
@@ -119,7 +125,9 @@ final class FixtureProvider: Provider, @unchecked Sendable {
     // that uses only the baseline framework, and FIXTURE_ADDITIONAL also uses
     // the declarations framework minor 1 added (docs/specs/machine.md,
     // "Additional capability requirements"). FIXTURE_UNDECLARED, with it, omits
-    // the feature from the descriptor: the use a host must refuse.
+    // the feature from the descriptor: the use a host must refuse. FIXTURE_SELECTION
+    // declares `first-party-selection-v1`, as a newly published first-party
+    // update does (scripts/build-selection-fixtures.sh).
     private static var greeting: String {
         #if FIXTURE_ADDITIONAL
             "hello from the fixture provider, revision 2, using additional capabilities"

@@ -40,9 +40,35 @@ public struct ProviderDiagnostic: Sendable, Equatable {
     }
 }
 
+/// The host feature every newly published first-party update declares, so that
+/// an earlier host refuses it before `dlopen`. It is a host selection feature,
+/// not a framework declaration (docs/specs/machine.md, "Eligibility and
+/// precedence"); the native loader states the same name.
+public let firstPartySelectionFeature = "first-party-selection-v1"
+
 /// Host features a provider may require: `additional-capabilities-v1`, carried by
-/// framework minor 1 (docs/specs/machine.md, "Additional capability requirements").
-public let koineHostFeatures: Set<String> = [ProviderDescriptor.additionalCapabilitiesFeature]
+/// framework minor 1 (docs/specs/machine.md, "Additional capability requirements"),
+/// and `first-party-selection-v1`, which needs no framework minor.
+public let koineHostFeatures: Set<String> = [
+    ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature,
+]
+
+/// An identifier and prefix reserved to a shipped provider. Names beneath a
+/// reserved identity belong to that shipped provider alone, whether or not it
+/// is present, admitted or started (docs/specs/machine.md, "Reserved identities").
+public struct ReservedIdentity: Sendable, Equatable {
+    public let providerId: String
+    public let graphQLPrefix: String
+
+    public init(providerId: String, graphQLPrefix: String) {
+        self.providerId = providerId
+        self.graphQLPrefix = graphQLPrefix
+    }
+
+    /// Before a host states its catalogue, the desktop provider's identity is
+    /// the one reservation a composition makes.
+    public static let desktopOnly = [ReservedIdentity(providerId: "desktop", graphQLPrefix: "Desktop")]
+}
 
 /// Composes provider contributions onto the core schema
 /// (docs/specs/machine.md, "Composition and operation placement"). A provider is
@@ -58,7 +84,7 @@ struct Composition {
     /// whose addition it rejects is refused.
     init(
         core: GraphQLSchema, providers: [ActiveProvider], policy: RequestPolicy,
-        admits: (GraphQLSchema) -> Bool
+        reserved: [ReservedIdentity] = ReservedIdentity.desktopOnly, admits: (GraphQLSchema) -> Bool
     ) {
         var diagnostics: [ProviderDiagnostic] = []
         var candidates: [Candidate] = []
@@ -66,7 +92,9 @@ struct Composition {
         for (index, active) in providers.enumerated() {
             do {
                 candidates.append(
-                    try Candidate(index: index, active: active, core: core, policy: policy)
+                    try Candidate(
+                        index: index, active: active, core: core, policy: policy, reserved: reserved
+                    )
                 )
             } catch let refusal as Refusal {
                 diagnostics.append(refusal.diagnostic(for: active))
@@ -230,7 +258,10 @@ private struct Candidate {
         "String", "Int", "Float", "Boolean", "ID",
     ]
 
-    init(index: Int, active: ActiveProvider, core: GraphQLSchema, policy: RequestPolicy) throws {
+    init(
+        index: Int, active: ActiveProvider, core: GraphQLSchema, policy: RequestPolicy,
+        reserved: [ReservedIdentity]
+    ) throws {
         self.index = index
         self.active = active
         let descriptor = active.descriptor
@@ -244,7 +275,10 @@ private struct Candidate {
             )
         }
         for claimed in [descriptor.providerId, prefix]
-        where Self.owner(of: claimed, bundled: active.origin == .bundled) != nil {
+        where Self.owner(
+            of: claimed, provider: descriptor.providerId, shipped: active.origin == .bundled,
+            reserved: reserved
+        ) != nil {
             var refusal = Refusal(.reservedName, "\(claimed) is reserved.")
             refusal.reservedIdentity = true
             throw refusal
@@ -279,12 +313,14 @@ private struct Candidate {
             throw Refusal(.invalidSDL, sdlMessage(error))
         }
         let lowerPrefix = prefix.prefix(1).lowercased() + prefix.dropFirst()
-        let bundled = active.origin == .bundled
+        let shipped = active.origin == .bundled
         func checkName(_ name: String, _ what: String, prefix required: String) throws {
             if Self.reservedTypeNames.contains(name) || name.hasPrefix("__") {
                 throw Refusal(.reservedName, "\(what) \(name) is reserved.")
             }
-            if let owner = Self.owner(of: name, bundled: bundled) {
+            if let owner = Self.owner(
+                of: name, provider: descriptor.providerId, shipped: shipped, reserved: reserved
+            ) {
                 throw Refusal(.reservedName, "\(what) \(name) uses the \(owner) prefix.")
             }
             guard name.hasPrefix(required) else {
@@ -513,11 +549,18 @@ private struct Candidate {
     }
 
     /// The owner whose prefix `name` falls under, when this provider is not it.
-    /// The core owns `koine`/`Koine`; the bundled provider owns `desktop`/`Desktop`.
-    private static func owner(of name: String, bundled: Bool) -> String? {
+    /// The core owns `koine`/`Koine`; each reserved identity belongs to the
+    /// shipped provider selected for it, and to no other claimant.
+    private static func owner(
+        of name: String, provider: String, shipped: Bool, reserved: [ReservedIdentity]
+    ) -> String? {
         let lower = name.lowercased()
         if lower.hasPrefix("koine") { return "koine" }
-        if lower.hasPrefix("desktop"), !bundled { return "desktop" }
+        for identity in reserved
+        where lower.hasPrefix(identity.providerId) || lower.hasPrefix(identity.graphQLPrefix.lowercased()) {
+            if shipped, identity.providerId == provider { continue }
+            return identity.providerId
+        }
         return nil
     }
 }

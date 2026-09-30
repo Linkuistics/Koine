@@ -10,13 +10,30 @@ import Testing
 /// that is already running; windows are verified in a VM
 /// (docs/verification/desktop-window-identity.md). `task test` builds the bundle.
 @Suite struct DesktopProviderTests {
-    /// The in-application root, as the application supplies it: `desktop` is
-    /// reserved to it, approved for the identity every Koine bundle is signed with.
-    static func bundled() throws -> [ProviderRoot] {
-        let team = try ProviderLoaderTests.fixtureApproval().teamIdentifier
-        return [
-            .bundled(try root(), approvals: [ProviderApproval(providerId: "desktop", teamIdentifier: team)])
-        ]
+    /// The shipped catalogue, `App/ProviderCatalogue.json`: what the application
+    /// seals. Holding the test to it means the bundle this suite builds carries
+    /// the versions and signing identifier the catalogue states.
+    static func catalogue() throws -> ProviderCatalogue {
+        let file = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("App/ProviderCatalogue.json")
+        return try ProviderCatalogue(json: Data(contentsOf: file))
+    }
+
+    /// The team every Koine bundle is signed with: the one a signed host would
+    /// derive from its own signature. This test host is unsigned.
+    static func team() throws -> String {
+        try ProviderLoaderTests.fixtureApproval().teamIdentifier
+    }
+
+    /// A server around the in-application root as the application supplies it: the
+    /// sealed catalogue enables `desktop` at its packaged values, and the host's
+    /// verified team approves it.
+    static func harness(providerRoots: [URL] = []) async throws -> Harness {
+        try await Harness(
+            providerRoots: providerRoots, bundledRoots: [.bundled(try root())],
+            catalogue: .success(try catalogue()), hostTeam: try team()
+        )
     }
 
     static func root() throws -> URL {
@@ -54,7 +71,7 @@ import Testing
     }
 
     @Test func aRunningApplicationResolvesOnlyByBothHalvesOfItsIdentity() async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let running = try #require(
             NSWorkspace.shared.runningApplications.first { $0.activationPolicy == .regular },
@@ -84,7 +101,7 @@ import Testing
     }
 
     @Test func anAbsentProcessIsOrdinaryNull() async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         // Above the kernel's highest PID (99998).
         let reply = try await harness.post(
@@ -101,7 +118,7 @@ import Testing
         (0, "2026-09-19T01:02:03.000456Z"), (-5, "2026-09-19T01:02:03.000456Z"),
     ])
     func aMalformedProcessIdentityIsAnInputError(pid: Int, startedAt: String) async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let reply = try await harness.post(
             Self.query(pid: pid, startedAt: startedAt), authorization: "Bearer \(reader)"
@@ -115,7 +132,7 @@ import Testing
     }
 
     @Test func withoutDesktopReadItIsACapabilityError() async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let stranger = try await harness.consoleGrant(label: "stranger", capabilities: ["desktop:control"])
         let reply = try await harness.post(
             Self.query(pid: 1, startedAt: "2026-09-19T01:02:03.000456Z"),
@@ -138,7 +155,7 @@ import Testing
     }
 
     @Test func anApplicationReachedByItsReferenceReportsTheSameFields() async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let pid = try Self.running().processIdentifier
         let found = try await harness.post(
@@ -177,7 +194,7 @@ import Testing
         ("desktopWindow", "koine://desktop/window/412/5/SHORT/7"),
     ])
     func aReferenceThatNoLongerNamesItsTargetIsUnavailable(field: String, reference: String) async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let pid = try Self.running().processIdentifier
         let start = try Self.startMicroseconds(pid)
@@ -196,9 +213,7 @@ import Testing
     }
 
     @Test func aReferenceNamingAnotherProviderReachesThisOneAndIsUnavailable() async throws {
-        let harness = try await Harness(
-            providerRoots: [try NativeProviderTests.fixtureRoot()], bundledRoots: try Self.bundled()
-        )
+        let harness = try await Self.harness(providerRoots: [try NativeProviderTests.fixtureRoot()])
         let reader = try await harness.consoleGrant(
             label: "reader", capabilities: ["desktop:read", "fixture:read"]
         )
@@ -226,9 +241,7 @@ import Testing
         ProviderAuthorizationTests.first,
     ])
     func focusingAReferenceThatNamesNoHeldWindowIsUnavailable(reference: String) async throws {
-        let harness = try await Harness(
-            providerRoots: [try NativeProviderTests.fixtureRoot()], bundledRoots: try Self.bundled()
-        )
+        let harness = try await Self.harness(providerRoots: [try NativeProviderTests.fixtureRoot()])
         // Preflight also requires control of the provider a reference names, so the
         // fixture's reference reaches this provider only with `fixture:control`.
         let controller = try await harness.consoleGrant(
@@ -250,7 +263,7 @@ import Testing
     }
 
     @Test func focusingWithoutDesktopControlIsRefusedBeforeTheProviderIsAsked() async throws {
-        let harness = try await Harness(bundledRoots: try Self.bundled())
+        let harness = try await Self.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let reply = try await harness.post(
             Self.focus, variables: ["ref": "koine://desktop/window/1000000/5/00ab34cd56ef7890/1"],

@@ -1,6 +1,6 @@
 import Foundation
 import KoineCore
-import KoineProviderLoader
+@testable import KoineProviderLoader
 @testable import KoineServer
 
 /// A running server over a throwaway data directory, plus the client's view of
@@ -11,6 +11,8 @@ final class Harness {
 
     private var policy: RequestPolicy
     private let providerRoots: [ProviderRoot]
+    private let catalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid>
+    private let seam: ProviderLoader.Seam
     private let providers: [ActiveProvider]
     private let osPermissions: OSPermissionSource
     private let clock: TestClock?
@@ -21,19 +23,36 @@ final class Harness {
     static let providerStaging = FileManager.default.temporaryDirectory
         .appendingPathComponent("koine-test-staging-\(UUID().uuidString)", isDirectory: true)
 
+    /// The sealed catalogue every server here is built around unless a test
+    /// supplies its own: `desktop` reserved and no shipped bundle, so the desktop
+    /// identity is refused to any ordinary provider and no unsigned test host
+    /// admits a shipped candidate.
+    static let reservedDesktop = ProviderCatalogue.reserving(["desktop": "Desktop"])
+
     /// `providerRoots` are per-user installed roots, approval records included;
-    /// `bundledRoots` are read before them.
+    /// `bundledRoots` are read before them. `catalogue` is the host's sealed
+    /// catalogue, and `hostTeam` the Team ID the running host would derive from
+    /// its own signature: a test host is unsigned, so a test that admits a shipped
+    /// candidate supplies the team its bundles are signed with, through the
+    /// loader's private seam. `loaderSeam` adjusts the rest of that seam.
     /// `seed` runs on the data directory before the server first opens it.
     /// `providers` are in-test contributions, composed with the loaded ones.
     /// `clock` is the server's time source; without one it reads the wall clock.
     init(
         policy: RequestPolicy = .version1, providerRoots: [URL] = [],
         bundledRoots: [ProviderRoot] = [], providers: [ActiveProvider] = [],
-        seed: ((URL) throws -> Void)? = nil, osPermissions: @escaping OSPermissionSource = { [] },
-        clock: TestClock? = nil
+        catalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid> = .success(Harness.reservedDesktop),
+        hostTeam: String? = nil, seed: ((URL) throws -> Void)? = nil,
+        osPermissions: @escaping OSPermissionSource = { [] }, clock: TestClock? = nil,
+        loaderSeam: ((inout ProviderLoader.Seam) -> Void)? = nil
     ) async throws {
         self.osPermissions = osPermissions
         self.clock = clock
+        self.catalogue = catalogue
+        var seam = ProviderLoader.Seam()
+        seam.hostTeam = { hostTeam }
+        loaderSeam?(&seam)
+        self.seam = seam
         self.providerRoots = bundledRoots + providerRoots.map(ProviderRoot.installed)
         self.providers = providers
         directory = FileManager.default.temporaryDirectory
@@ -43,7 +62,9 @@ final class Harness {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try seed(directory)
         }
-        server = try await Self.makeServer(directory, policy, self.providerRoots, providers, osPermissions, clock)
+        server = try await Self.makeServer(
+            directory, policy, self.providerRoots, catalogue, seam, providers, osPermissions, clock
+        )
         try await server.start()
     }
 
@@ -53,10 +74,12 @@ final class Harness {
     /// global dispatch pool too, whose threads are bounded: enough suites
     /// constructing at once hung the run there. The application constructs once,
     /// on the main thread.
-    private static let constructing = DispatchQueue(label: "dev.antony.Koine.tests.constructing")
+    static let constructing = DispatchQueue(label: "dev.antony.Koine.tests.constructing")
 
     private static func makeServer(
-        _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot], _ providers: [ActiveProvider],
+        _ directory: URL, _ policy: RequestPolicy, _ roots: [ProviderRoot],
+        _ catalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid>,
+        _ seam: ProviderLoader.Seam, _ providers: [ActiveProvider],
         _ osPermissions: @escaping OSPermissionSource, _ clock: TestClock?
     ) async throws -> KoineServer {
         let now: TimeSource
@@ -67,9 +90,9 @@ final class Harness {
                     with: Result {
                         try KoineServer(
                             dataDirectory: directory, policy: policy,
-                            providerRoots: roots,
+                            providerRoots: roots, providerCatalogue: catalogue,
                             providerStaging: providerStaging, osPermissions: osPermissions,
-                            now: now, additionalProviders: providers
+                            now: now, additionalProviders: providers, loaderSeam: seam
                         )
                     }
                 )
@@ -82,7 +105,9 @@ final class Harness {
     func restart(policy: RequestPolicy? = nil) async throws {
         if let policy { self.policy = policy }
         await server.stop()
-        server = try await Self.makeServer(directory, self.policy, providerRoots, providers, osPermissions, clock)
+        server = try await Self.makeServer(
+            directory, self.policy, providerRoots, catalogue, seam, providers, osPermissions, clock
+        )
         try await server.start()
     }
 
@@ -335,5 +360,17 @@ extension Harness {
 func offPool<T: Sendable>(_ work: @escaping @Sendable () throws -> T) async throws -> T {
     try await withCheckedThrowingContinuation { continuation in
         DispatchQueue.global().async { continuation.resume(with: Result(catching: work)) }
+    }
+}
+
+extension ProviderCatalogue {
+    /// A catalogue of reserved-only identities, `[providerId: prefix]`, in
+    /// identifier order.
+    static func reserving(_ identities: [String: String]) -> ProviderCatalogue {
+        try! ProviderCatalogue(
+            entries: identities.sorted { $0.key < $1.key }.map {
+                Entry(providerId: $0.key, graphQLPrefix: $0.value)
+            }
+        )
     }
 }
