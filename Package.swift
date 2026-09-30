@@ -84,6 +84,13 @@ let package = Package(
             name: "KoineCompatibilityHost", dependencies: ["KoineServer", "KoineProviderLoader"],
             path: "Fixtures/CompatibilityHost"
         ),
+        // Test material: the headless host of the selection acceptance
+        // (scripts/build-selection-hosts.sh), a real signed application in everything
+        // selection reads. scripts/build-app.sh does not ship it.
+        .executableTarget(
+            name: "KoineSelectionHost", dependencies: ["KoineServer", "KoineProviderLoader"],
+            path: "Fixtures/SelectionHost", exclude: ["hosts.json"]
+        ),
         // The desktop provider's pure files, named here only so `swift test`
         // reaches them. The provider itself is built by its own build definition
         // (Providers/DesktopProvider/build.sh) and is no product of this package.

@@ -1,12 +1,20 @@
 import Foundation
 import KoineProviderAPI
 
+// The image's own marker (initializer.c): which phase of this image ran, to the
+// log KOINE_FIXTURE_MARKER_LOG names. It resolves within the same image.
+@_silgen_name("koine_image_marker")
+private func koineFixtureMarker(_ phase: UnsafePointer<CChar>)
+
 // Test material: the independently built provider the native seam is exercised
 // with. build.sh generates `fixtureSchemaSDL` from schema.graphql.
 
 @objc(KoineFixtureProviderFactory)
 final class FixtureProviderFactory: NSObject, ProviderFactory {
-    override required init() { super.init() }
+    override required init() {
+        super.init()
+        koineFixtureMarker("factory")
+    }
 
     var descriptor: ProviderDescriptor {
         let read = [
@@ -77,10 +85,19 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
             // it needs no framework declaration.
             features.append("first-party-selection-v1")
         #endif
-        return ProviderDescriptor(
-            providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
-            fields: fields, requiredFeatures: features
-        )
+        #if FIXTURE_DESCRIBES_SLOT
+            // A runtime descriptor that names a shipped slot's identity under a manifest
+            // that does not. The build tags every "fixture" literal, so the names are split.
+            return ProviderDescriptor(
+                providerId: "fix" + "turesh", graphQLPrefix: "Fix" + "tureSh", schemaSDL: fixtureSchemaSDL,
+                fields: fields, requiredFeatures: features
+            )
+        #else
+            return ProviderDescriptor(
+                providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
+                fields: fields, requiredFeatures: features
+            )
+        #endif
     }
 
     func makeProvider() -> any Provider { FixtureProvider() }
@@ -110,6 +127,7 @@ final class FixtureProvider: Provider, @unchecked Sendable {
     private var held: [CheckedContinuation<Void, Never>] = []
 
     func start() async throws {
+        koineFixtureMarker("start")
         #if FIXTURE_FAILS_START
             throw FixtureStartFailure()
         #endif

@@ -327,3 +327,32 @@ tasks:
     desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP
     cmds:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
+
+  selection:fixtures:
+    desc: Build, sign and keep apart the real provider bundles the selection acceptance installs (an old baseline and an update per slot, ordinary providers, claimants), each writing initializer, factory and start markers; output .build/selection-acceptance/fixtures
+    cmds:
+      - swift build --product KoineSelectionHost
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/FixtureProvider/build-decisions.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+
+  selection:hosts:
+    desc: Assemble and sign the purpose-built headless hosts of the selection acceptance, each with its own test catalogue and in-application bundles sealed BEFORE its signature (Fixtures/SelectionHost/hosts.json); output .build/selection-acceptance/hosts. Optionally name hosts (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        scripts/build-selection-hosts.py "$(swift build --show-bin-path)" "${FRAMEWORK}" \
+          .build/selection-acceptance/fixtures .build/selection-acceptance/hosts {{.CLI_ARGS}}
+
+  selection:decisions:
+    desc: Run the selection decision rows (N and G) - every scenario and each alternative order in its own signed host process with a fresh marker log, over loopback HTTP - and write .build/selection-acceptance/decisions.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - scripts/verify-selection-decisions.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/decisions.json {{.CLI_ARGS}}
+
+  selection:mutation:
+    desc: Make each instrument of the selection decisions come back RED against a loader with one decision deliberately broken (text version order, first-copy tie break, no signing-identifier check, reserved claims unrefused, equal release taking over, unselected candidates loading, a team given to an ad-hoc host), each in a copy of the tree under .build/selection-mutations; the working tree is never edited. Names may follow (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - scripts/check-selection-mutations.py .build/selection-acceptance/fixtures .build/selection-acceptance/mutations {{.CLI_ARGS}}

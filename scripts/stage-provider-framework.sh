@@ -23,10 +23,12 @@ fi
 # The interface is an intermediate of the build; its directory carries the
 # configuration's name as the build system spells it (Debug, Release).
 CONFIG_DIR="$(basename "${BIN_DIR}")"
-# .build/compat holds whole trees of other revisions (scripts/build-compat-pairs.sh).
+# .build/compat holds whole trees of other revisions (scripts/build-compat-pairs.sh),
+# and .build/selection-mutations one copy with a decision broken on purpose
+# (scripts/check-selection-mutations.py).
 INTERFACES=()
 while IFS= read -r found; do INTERFACES+=("${found}"); done < <(
-    find .build -path .build/compat -prune -o \
+    find .build \( -path .build/compat -o -path .build/selection-mutations \) -prune -o \
         -path "*/${MODULE}.build/${CONFIG_DIR}/*" -name "${MODULE}.swiftinterface" -print
 )
 if [ "${#INTERFACES[@]}" -ne 1 ]; then
