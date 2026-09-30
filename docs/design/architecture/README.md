@@ -5,6 +5,7 @@ exports:
 
 - [workspace launch/open and desktop handoff](index.html#diagram-workspace-open)
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
+- [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [first-party candidate selection](index.html#diagram-provider-selection) and
   [publication and failure](index.html#diagram-provider-publication);
 - the designed extension's [provider boundaries](index.html#diagram-workflow-providers),
@@ -32,11 +33,21 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel links the new workspace views and unchanged selection
-and provider context. The [workspace spec](../../specs/workspace-launch-and-open.md)
+The current-discussion panel focuses on native metadata and handler lookup,
+with the request and outcome views as context. The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
 bounded acknowledgment, process-only receipts and publication errors.
+
+The current evidence discussion records the
+[protected-path prompt boundary](index.html#diagram-workspace-inspection): the
+tested metadata route was prompt-free, while document file-URL handler lookup
+prompted even when returning an app after denial. The
+[evidence report](../../verification/protected-path-metadata.md) contains exact
+calls, result/error classes, controls and unavailable volumes. Protected default
+opening remains pending a human consent/semantics decision. The updated
+[request sequence](index.html#diagram-workspace-open) qualifies its inspection
+premise with that limit; the outcome view remains unchanged context.
 
 Serve locally with `task design:serve` and open
 <http://127.0.0.1:8765/#diagram-workflow-providers>. The task serves only this

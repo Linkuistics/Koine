@@ -2,6 +2,13 @@
 
 ## Goal
 
+Consume `docs/verification/protected-path-metadata.md` for the native inspection
+limit. Named-app opening can use the measured metadata route. File-URL
+default-handler lookup prompts on first protected-document access even after
+metadata succeeds. Protected default opening remains live work: settle its
+consent/semantics trade-off with Antony before relying on that call; do not
+accept it through an implicit consent request or a silently changed handler rule.
+
 Documents, directories and client settings. `workspaceOpenPath` opens a literal
 local path in its default or a named application under the narrow metadata
 refusal policy, including opening the configuration directory in Zed.

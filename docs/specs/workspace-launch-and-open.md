@@ -43,7 +43,10 @@ not Koine provider approval or an additional application allowlist. Installed
 means registered and present as an application bundle when inspected. Check the
 resolved bundle before submission, including unconstrained selection; unreadable
 metadata is `failed`, not absence. A present registered bundle in the Trash
-remains eligible: moving it there is not an uninstall in this contract. Do not
+remains eligible: moving it there is not an uninstall in this contract. Use the
+bounded [protected-path metadata route](../verification/protected-path-metadata.md#inspection-results)
+for both constrained and unconstrained selection; do not substitute a prompting
+file-URL handler lookup for bundle presence or identity. Do not
 claim a missing registered copy is present merely because its registration remains.
 The named-app selector requires a bundle identifier; bundle-less programs have
 no selector route. This does not prevent a default handler without an identifier
@@ -69,6 +72,10 @@ location-based requests with normal symlink semantics, not pinned file identitie
 An absent path/dangling link found before submission is `PATH_NOT_FOUND`.
 Replacement or handler changes racing submission may fail or open a new
 occupant. Search must not imply stronger identity than this contract.
+The [native prompt boundary](../verification/protected-path-metadata.md#handler-lookup-limit)
+applies before submission: successful metadata inspection does not establish
+that default-handler lookup is prompt-free. Protected default-document opening
+remains pending; named-app opening and reveal do not need that file-handler read.
 
 Path opening submits a document/directory to an installed handler. Its refusal
 policy is a metadata check, not proof that the contents cannot execute. After
@@ -256,6 +263,19 @@ shipping; do not silently add Automation or Files and Folders. Denial without
 that evidence remains `failed`. Existing response deadlines do not bound macOS
 completion or undo an already submitted request.
 
+The [protected-path native evidence](../verification/protected-path-metadata.md)
+limits this design's inspection premise: the tested metadata and registered-app
+route was prompt-free on first-use Desktop, Documents and Downloads; file-URL
+default-handler lookup prompted for documents on all three. A returned handler
+after denying that dialog does not satisfy prompt-free inspection. Launch's
+installation presence/identity checks, named-app path opening and reveal may use
+the recorded metadata route; they gain no general permission to inspect contents.
+Default opening of protected documents remains pending a human decision about
+consent or handler semantics. Search must not use that file-URL lookup as a
+prompt-free read. No new consent identifier, entitlement or setup route is
+authorized. Unavailable removable/network-volume observations remain unknown.
+This is bounded platform evidence, not acceptance of the workspace operations.
+
 Four operations keep browser, document, application and reveal semantics clearer
 than a generic `open(target, options)` dispatcher exposing native options.
 Compared with mandatory discovery references, bundle identity permits stopped-app
@@ -316,7 +336,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. |
 | Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. |
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus. Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
-| Consent and prompts | G, N, V | Accessibility absent/revoked; first protected-path metadata inspection before path/search consumers; app onboarding and the separate Gatekeeper timeout case. Inspect actual calls and prompts. No new consent/signing posture is implied. Without an agreed consent identifier, inspection denial remains failed, not absence or an invented os-permission. A metadata prompt keeps the path case pending for escalation. |
+| Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case. No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,

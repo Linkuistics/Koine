@@ -2,6 +2,13 @@
 
 ## Goal
 
+Consume `docs/verification/protected-path-metadata.md` before choosing native
+inspection calls. The measured metadata route is prompt-free on the three
+protected home roots; document file-URL default-handler lookup prompts.
+Handler metadata stays unknown/blocked where a prompt-free route is unestablished.
+This result does not establish traversal/content-search consent, and approves no
+new entitlement, consent identifier or type-only handler substitution.
+
 Design installed-application search and file search, and how a result feeds
 `launch-and-open`'s operations and the clipboard allocation.
 

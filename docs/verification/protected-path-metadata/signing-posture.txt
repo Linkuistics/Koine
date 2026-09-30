@@ -1,0 +1,30 @@
+Executable=/Applications/KoineK73Probe.app/Contents/MacOS/Koine
+Identifier=dev.antony.Koine.K73Probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=677 flags=0x10000(runtime) hashes=10+7 location=embedded
+Signature size=8976
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Sep 30, 2026 at 3:31:43 AM
+Info.plist entries=12
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=188
+warning: Specifying ':' in the path is deprecated and will not work in a future release
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict></dict></plist>
+{
+  "CFBundleDisplayName" => "Koine K73 Probe"
+  "CFBundleExecutable" => "Koine"
+  "CFBundleIdentifier" => "dev.antony.Koine.K73Probe"
+  "CFBundleInfoDictionaryVersion" => "6.0"
+  "CFBundleName" => "Koine"
+  "CFBundlePackageType" => "APPL"
+  "CFBundleShortVersionString" => "0.1.0"
+  "CFBundleVersion" => "0.1.0"
+  "LSApplicationCategoryType" => "public.app-category.developer-tools"
+  "LSMinimumSystemVersion" => "26.0"
+  "NSHighResolutionCapable" => true
+  "NSPrincipalClass" => "NSApplication"
+}

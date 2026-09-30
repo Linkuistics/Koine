@@ -1,6 +1,18 @@
 version: '3'
 
 tasks:
+  fixture:protected-path-metadata:
+    desc: Build and sign the disposable path-metadata probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-protected-path-probe.sh
+
+  fixture:protected-path-metadata-vm:
+    desc: Measure individual path calls in an already prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-protected-path.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:
@@ -119,6 +131,7 @@ tasks:
     desc: Render workspace launch/open views (D2 0.9.0 and PlantUML 1.2026.8)
     cmds:
       - plantuml -tsvg docs/design/architecture/workspace-open.puml
+      - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
 
   design:workspace-check:

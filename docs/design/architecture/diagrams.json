@@ -2,13 +2,23 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Launch and open with explicit native outcomes",
-    "status": "Design · implementation and acceptance pending",
-    "summary": "Four workspace mutations require workspace and desktop control, including receipt fields. Unconstrained app selection can reuse a running copy; a registered path constrains the installation. Native acknowledgment has a bounded wait and does not prove activation. A receipt contains only optional process identity; desktop capture is a separate read. Packaging consumes the settled first-party selection contract.",
-    "diagramIds": ["workspace-open", "workspace-outcomes", "provider-selection", "provider-publication", "workflow-providers"],
+    "title": "Protected-path metadata and the handler lookup limit",
+    "status": "Native evidence recorded · protected default opening pending human decision",
+    "summary": "The tested metadata and registered-app calls were prompt-free on first-use Desktop, Documents and Downloads. File-URL default-handler lookup prompted, even when returning TextEdit after denial. No new consent is approved; protected default opening and handler reads remain pending. Removable and network volumes were unavailable.",
+    "diagramIds": [
+      "workspace-inspection",
+      "workspace-open",
+      "workspace-outcomes"
+    ],
     "updatedDiagrams": [
-      {"id": "workspace-open", "summary": "Launch/open request with conditional running-copy reuse, bounded acknowledgment and optional process-only desktop handoff."},
-      {"id": "workspace-outcomes", "summary": "Pre-submission absence, acknowledgment and ambiguous failure remain distinct; publication can suppress result fields."}
+      {
+        "id": "workspace-inspection",
+        "summary": "Added the measured metadata-versus-handler sequence, including the dialog and usable handler after denial."
+      },
+      {
+        "id": "workspace-open",
+        "summary": "Qualified prerequisite inspection with the measured default-handler prompt limit."
+      }
     ]
   },
   "groups": [
@@ -49,6 +59,15 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "workspace-inspection",
+      "group": "workspace",
+      "title": "First-use metadata and default-handler prompt boundary",
+      "renderer": "svg",
+      "source": "workspace-inspection.puml",
+      "rendered": "workspace-inspection.svg",
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+    },
     {
       "id": "workspace-open",
       "group": "workspace",

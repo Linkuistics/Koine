@@ -134,6 +134,16 @@ its place here.
 
 ## Design handoff
 
+`protected-path-metadata-k73` records its bounded answer in
+`docs/verification/protected-path-metadata.md`. The tested first-use metadata and
+registered-application route is prompt-free on Desktop, Documents and Downloads;
+document file-URL default-handler lookup prompts, including a usable handler
+returned after denial. Constrained/unconstrained launch presence, named-app
+opening and reveal can use the measured metadata route. Protected default
+opening stays live in `document-paths`, pending a human consent/semantics decision;
+search must not use that lookup as a readiness read. No consent is added.
+Removable/network-volume observations are unavailable, not passing acceptance.
+
 `launch-and-open-k18` delivers `docs/specs/workspace-launch-and-open.md`, the
 workspace SDL/client examples in `docs/design/`, and two views in the existing
 architecture viewer. The shared workflow trace now names the four mutation

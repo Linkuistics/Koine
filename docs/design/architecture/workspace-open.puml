@@ -12,7 +12,12 @@ participant "macOS / app" as Native
 Client -> Core: launch app / open web URL / open path
 Core -> Core: preflight every root action\nlive admission: both control grants
 Core -> Workspace: admitted action
-Workspace -> Native: resolve installed app / path / handler\nno launch or consent request
+Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
+note over Workspace,Native
+First-use metadata route measured prompt-free on three protected roots.
+Document file-URL handler lookup prompts: protected default opening
+remains pending a human decision; do not attempt it as a readiness read.
+end note
 alt missing prerequisite before submission
   Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
 else ready

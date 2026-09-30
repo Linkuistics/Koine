@@ -1,0 +1,28 @@
+@startuml workspace-inspection
+skinparam backgroundColor #F8FAFC
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 17
+skinparam shadowing false
+hide footbox
+title First-use protected paths — measured macOS 26.5 / 25F71
+participant "Signed GUI probe" as Probe
+participant "macOS metadata / Launch Services" as Native
+actor "VM operator" as Operator
+note over Probe,Native
+Each case starts with probe consent reset and no TCC rows.
+Desktop, Documents and Downloads; own responsible process.
+end note
+Probe -> Native: stat / symlinks / resource metadata\nbundle identity / registered app
+Native --> Probe: values or ENOENT; no consent prompt
+Probe -> Native: default-handler lookup for a text file
+Native -> Operator: Files and Folders consent dialog
+Operator --> Native: Don't Allow
+Native --> Probe: TextEdit URL despite denied consent
+note over Probe,Native
+A returned handler does not prove prompt-free inspection.
+Protected default opening and handler reads remain pending.
+Named-app selection and reveal do not need this lookup.
+No new consent or entitlement is approved by the probe.
+Removable/network volumes: unavailable, not passed.
+end note
+@enduml

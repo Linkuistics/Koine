@@ -339,6 +339,16 @@ inventory, target application/scope and consent-acquisition path must be settled
 by their evidence/design owner. This policy approves no new entitlement or
 consent; any signing-posture change is still raised with Antony first.
 
+The [protected-path probe](../verification/protected-path-metadata.md#handler-lookup-limit)
+found a concrete limit for workspace: tested first-use metadata and registered-app
+inspection was prompt-free on Desktop, Documents and Downloads, but file-URL
+default-handler lookup for documents prompted. Application/file search must keep
+handler metadata unknown/blocked wherever no prompt-free route has been established,
+and must not call that lookup to discover whether consent is needed. Protected
+default opening remains pending; this result authorizes no new consent or
+content-type-only substitution. The metadata result does not establish prompt-free
+directory traversal or content search. Removable/network volumes were unavailable.
+
 ## Compatibility and delivery
 
 Keep `koine-desktop/1`. New provider schemas and optional fields are additive;
