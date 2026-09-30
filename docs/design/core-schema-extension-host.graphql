@@ -1,0 +1,128 @@
+"""
+The koine-core/1 schema with the extension-host management fields and no provider: the
+core alone, as a host serves it when every provider it was given is refused or removed
+before publication. It is docs/design/desktop-schema-extension-host.graphql with the
+desktop contribution removed and nothing else changed, which a test holds it to. Root
+fields keep the core's declared order, because the schema digest is taken over a canonical
+text that keeps declared order.
+"""
+schema { query: Query mutation: Mutation }
+
+"Opaque koine:// URI string. Pass it unchanged; only its provider interprets the remainder."
+scalar Reference
+
+type Query {
+  "Authenticated caller metadata. No provider capability required."
+  koine: Koine!
+  "Proof of the submitted secret, or its resulting active grant; own request only."
+  koineGrantRequest: KoineGrantRequest
+  "koine:manage. Never returns bearer credentials."
+  koineManagement: KoineManagement
+}
+
+type Mutation {
+  "Anonymous enrollment only; cannot be mixed with other root actions."
+  koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
+  "koine:manage. Approves only a subset of the immutable requested capabilities."
+  koineApproveGrantRequest(requestId: ID!, capabilities: [String!]!): KoineGrant
+  "koine:manage. Denies a pending request."
+  koineDenyGrantRequest(requestId: ID!): KoineGrantRequest
+  "koine:manage. Credential is returned once after durable creation."
+  koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
+  "koine:manage. Idempotent for an already revoked grant; never grants authority."
+  koineRevokeGrant(grantId: ID!): KoineGrant
+}
+
+type Koine {
+  contractVersion: String!
+  instanceId: String!
+  "Equality token for the served schema; compare, do not interpret."
+  schemaDigest: String!
+  "Caller only; null only for the non-exportable in-process console principal."
+  ownGrant: KoineGrant
+  "Names available to request. Listing them supplies no authority."
+  availableCapabilities: [String!]!
+}
+
+input KoineRequestGrantInput {
+  clientLabel: String!
+  "Canonical lower-case SHA-256 hex digest of a 32-byte random bearer secret."
+  credentialDigest: String!
+  capabilities: [String!]!
+}
+
+input KoineCreateGrantInput {
+  clientLabel: String!
+  capabilities: [String!]!
+}
+
+type KoineGrantRequestReceipt {
+  requestId: ID!
+  comparisonCode: String!
+}
+
+type KoineGrantRequest {
+  requestId: ID!
+  clientLabel: String!
+  comparisonCode: String!
+  requestedCapabilities: [String!]!
+  state: KoineGrantRequestState!
+  "Present only after approval; scoped to this request."
+  grant: KoineGrant
+}
+
+enum KoineGrantRequestState { PENDING APPROVED DENIED EXPIRED }
+
+type KoineGrant {
+  grantId: ID!
+  clientLabel: String!
+  capabilities: [String!]!
+  state: KoineGrantState!
+}
+
+enum KoineGrantState { ACTIVE REVOKED }
+
+type KoineCreatedGrant {
+  grant: KoineGrant!
+  "One-time 32-byte random bearer secret encoded as unpadded base64url."
+  credential: String!
+}
+
+"All fields require koine:manage."
+type KoineManagement {
+  requests: [KoineGrantRequest!]!
+  grants: [KoineGrant!]!
+  providers: [KoineProviderStatus!]!
+  "Read on each request. Reading never asks the user for consent."
+  osPermissions: [KoineOSPermission!]!
+}
+
+type KoineProviderStatus {
+  provider: String!
+  version: String!
+  schemaVersion: String!
+  state: KoineProviderState!
+  diagnostic: String
+  "Opaque identity of origin plus canonical installed bundle location, unique within this startup. Null only for a synthetic row. Not a resource reference."
+  candidateId: String
+  "Where the bundle is physically installed. Null for a synthetic row; never inferred from composition position."
+  origin: KoineProviderOrigin
+  "Whether this candidate is the frozen choice for its provider identity. Synthetic rows are UNAVAILABLE."
+  selection: KoineProviderSelection
+  "The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even after a later failure."
+  selectedCandidateId: String
+  "Stable, open diagnostic code for a refusal or selection explanation. Null for a healthy selected row with nothing competing or missing."
+  reason: String
+}
+
+enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
+
+enum KoineProviderOrigin { BUNDLED PER_USER }
+
+enum KoineProviderSelection { SELECTED NOT_SELECTED UNAVAILABLE }
+
+type KoineOSPermission {
+  permission: String!
+  owner: String!
+  granted: Boolean!
+}

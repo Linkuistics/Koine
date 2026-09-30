@@ -62,12 +62,22 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
         #if FIXTURE_ADDITIONAL
             // Framework minor 1: one action that also requires `fixture:read`,
             // so a grant holding control alone is refused, with the whole set.
+            #if FIXTURE_NEEDS_SH
+                // The capability owner is another provider's identity, for the
+                // selection acceptance's cascade (docs/verification/selection-failures.md).
+                // The build tags every "fixture" literal that is not split like this.
+                let owner = "fix" + "turesh"
+            #elseif FIXTURE_NEEDS_SK
+                let owner = "fix" + "turesk"
+            #else
+                let owner = "fixture"
+            #endif
             fields += [
                 ProviderFieldRegistration(
                     coordinate: "Mutation.fixtureRenameItemChecked", resolverId: "renameItem",
                     authority: .control,
                     additionalRequirements: [
-                        ProviderCapabilityRequirement(providerId: "fixture", kind: .read)
+                        ProviderCapabilityRequirement(providerId: owner, kind: .read)
                     ]
                 )
             ]

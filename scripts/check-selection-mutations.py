@@ -22,6 +22,14 @@ and, for the failure boundary of scripts/verify-selection-failures.py:
   * the descriptor's features not compared with the manifest's
   * every eligible candidate loaded, after a frozen update fails
 
+and, for the ordinary duplicates, the cascade and the start failure of the same driver:
+
+  * a refused rival contesting an ordinary identity as an eligible one would
+  * eligible ordinary duplicates not both refused
+  * the capability-owner removal never run, run for one round only, or given no cycle
+  * a provider that failed its start still answering as if it were running
+  * every eligible candidate loaded, after a shipped provider fails its start
+
 Each mutation is applied to a COPY of the source tree (.build/selection-mutations/tree,
 its own build directory, so later runs are incremental): the working tree is never
 edited. The copy's headless host is assembled and signed into the same purpose-built
@@ -39,6 +47,7 @@ import sys
 
 REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOADER = "Sources/KoineProviderLoader/"
+CORE = "Sources/KoineCore/"
 
 DRIVERS = {"decisions": "verify-selection-decisions.py", "failures": "verify-selection-failures.py"}
 
@@ -122,6 +131,61 @@ MUTATIONS = {
         "if case .selected? = plan.verdicts[$0] { true } else { false }",
         "if case .selected? = plan.verdicts[$0] { true } else { prepared[$0] != nil }",
         ["dlopen refuses its private dependency", "its principal class is one the host's own image registered"],
+        "failures",
+    ),
+    "refused-rival-contests": (
+        LOADER + "ProviderSelection.swift",
+        "ordered.filter { $0.role == .ordinary && $0.isVerified }",
+        "ordered.filter { $0.role == .ordinary }",
+        ["a refused rival never evicts a valid ordinary provider: incompatible with this host's framework",
+         "a refused rival never evicts a valid ordinary provider: ad-hoc signed",
+         "a refused rival never evicts a valid ordinary provider: unapproved, claiming only the prefix"],
+        "failures",
+    ),
+    "eligible-duplicates-not-refused": (
+        LOADER + "ProviderSelection.swift",
+        "if rivals.isEmpty {",
+        "if true {",
+        ["two eligible copies of one ordinary provider are both refused, and none loads",
+         "two eligible providers that share only a prefix are both refused"],
+        "failures",
+    ),
+    "cascade-never-removes": (
+        CORE + "Composition.swift",
+        "let stranded = composed.admitted.filter { !$0.additionalOwners.isSubset(of: present) }",
+        "let stranded: [Candidate] = []",
+        ["the third on that: its SDL does not parse", "the third on that: its principal class is one the host's own image registered"],
+        "failures",
+    ),
+    "cascade-one-round-only": (
+        CORE + "Composition.swift",
+        "guard !stranded.isEmpty else { break }",
+        "guard !stranded.isEmpty, !removed else { break }",
+        ["the third on that: its SDL does not parse", "the third on that: its principal class is one the host's own image registered"],
+        "failures",
+    ),
+    "cascade-no-cycle": (
+        CORE + "Composition.swift",
+        "let present = Set(composed.admitted.map(\\.providerId))",
+        "let present = Set(composed.admitted.filter { $0.additionalOwners.isEmpty }.map(\\.providerId))",
+        ["control: a valid dependency cycle between two shipped providers survives, with a third on it",
+         "control: a dependant whose capability owner is present loads, and so does its dependant"],
+        "failures",
+    ),
+    "failed-start-still-answers": (
+        CORE + "ProviderLifecycle.swift",
+        "guard case .started = state else {\n            return .failure(",
+        "guard true else {\n            return .failure(",
+        ["a shipped provider that fails its start keeps its schema and authority, strands nothing, and is not replaced",
+         "a shipped provider that fails its start and has no dependants is not replaced by its bundled copy"],
+        "failures",
+    ),
+    "alternatives-load-after-start-failure": (
+        LOADER + "ProviderLoader.swift",
+        "if case .selected? = plan.verdicts[$0] { true } else { false }",
+        "if case .selected? = plan.verdicts[$0] { true } else { prepared[$0] != nil }",
+        ["a shipped provider that fails its start keeps its schema and authority, strands nothing, and is not replaced",
+         "a shipped provider that fails its start and has no dependants is not replaced by its bundled copy"],
         "failures",
     ),
 }

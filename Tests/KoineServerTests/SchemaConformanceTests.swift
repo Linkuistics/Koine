@@ -376,6 +376,20 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 
+    /// The core alone, which a host serves when every provider it was given is refused
+    /// or removed before publication: the cascade profile's design file, the same two
+    /// claims as above.
+    @Test func theServedCoreAloneIsItsDesignContract() async throws {
+        let design = try Self.repositoryFile("docs/design/core-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed([])
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: design))
+        ).differences()
+        #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
     // MARK: core + desktop + workspace
 
     /// The same two claims for the third profile: the bundles' own SDL, composed
@@ -512,6 +526,90 @@ import Testing
             ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         #expect(workspace.profile.providers.map { $0.fields["provider"] ?? nil } == ["desktop", "workspace"])
+    }
+
+    /// The cascade profile's design is the extension-host core + desktop design with the
+    /// desktop contribution taken out and nothing else changed: every coordinate it lacks
+    /// is one of desktop's, and every one it has is identical.
+    @Test func theCoreAloneDesignIsTheDesktopDesignLessDesktop() throws {
+        let cascade = try Self.profile("selection-cascade-extension-host")
+        #expect(cascade.profile.management == .extended)
+        #expect(cascade.design.lastPathComponent == "core-schema-extension-host.graphql")
+        let extended = try Self.profile("core-desktop-extension-host")
+        let coreText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: cascade.design, encoding: .utf8))
+        let desktopText = try CanonicalSchemaText.canonicalText(
+            ofSDL: try String(contentsOf: extended.design, encoding: .utf8))
+        let found = SchemaComparison(
+            served: try parse(source: coreText), design: try parse(source: desktopText)
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == [
+                "Query.desktopApplication", "Query.desktopApplicationByReference", "Query.desktopWindow",
+                "Mutation.desktopFocusWindow", "DesktopProcessStart", "DesktopProcessIdentity",
+                "DesktopApplication", "DesktopWindow", "DesktopObservation", "DesktopFocusReceipt",
+            ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        #expect(
+            try CanonicalSchemaText.digest(ofSDL: String(contentsOf: cascade.design, encoding: .utf8))
+                != CanonicalSchemaText.digest(ofSDL: String(contentsOf: extended.design, encoding: .utf8)))
+    }
+
+    private static func cascadeRow(
+        _ provider: String, _ version: String, schema: String, origin: String, selection: String, reason: String,
+        _ id: String
+    ) -> [String: String?] {
+        [
+            "provider": provider, "version": version, "schemaVersion": schema, "state": "REJECTED",
+            "diagnostic": "x", "candidateId": id, "origin": origin, "selection": selection,
+            "selectedCandidateId": selection == "SELECTED" ? id : "other", "reason": reason,
+        ]
+    }
+
+    private static var cascadeServed: [[String: String?]] {
+        [
+            cascadeRow("fixturesh", "2.0.0", schema: "1.1.0", origin: "PER_USER", selection: "SELECTED", reason: "invalid-sdl", "a"),
+            cascadeRow("fixturesh", "1.0.0", schema: "1.1.0", origin: "BUNDLED", selection: "NOT_SELECTED", reason: "superseded-candidate", "b"),
+            cascadeRow("fixturesk", "1.1.0", schema: "1.0.0", origin: "PER_USER", selection: "SELECTED", reason: "missing-capability-owner", "c"),
+            cascadeRow("fixturesk", "1.0.0", schema: "1.0.0", origin: "BUNDLED", selection: "NOT_SELECTED", reason: "superseded-candidate", "d"),
+            cascadeRow("fixtureod", "1.0.0", schema: "1.0.0", origin: "PER_USER", selection: "SELECTED", reason: "missing-capability-owner", "e"),
+        ]
+    }
+
+    /// The absent/rejected profile pins every row the cascade leaves: the refused desktop stand-in and
+    /// its superseded baseline, the two providers removed for a missing owner, and their reasons.
+    @Test func theCascadeProfilePinsEveryRejectedRowExactly() throws {
+        let cascade = try Self.profile("selection-cascade-extension-host").profile
+        #expect(cascade.providers.count == 5)
+        #expect(cascade.problems(inServed: Self.cascadeServed).isEmpty)
+        // Served in any order.
+        #expect(cascade.problems(inServed: Self.cascadeServed.reversed()).isEmpty)
+    }
+
+    @Test(arguments: [
+        ("a provider that was not removed", 4, ["state": "ACTIVE", "reason": nil]),
+        ("a removal for another reason", 4, ["reason": "principal-collision"]),
+        ("the third removed as not selected", 4, ["selection": "NOT_SELECTED"]),
+        ("another release of the refused desktop", 0, ["version": "2.0.1"]),
+        ("a refused desktop with another reason", 0, ["reason": "load-failed"]),
+    ] as [(String, Int, [String: String?])])
+    func aCascadeThatDiffersFromTheProfileIsNamed(what: String, index: Int, changes: [String: String?]) throws {
+        let cascade = try Self.profile("selection-cascade-extension-host").profile
+        var served = Self.cascadeServed
+        served[index].merge(changes) { $1 }
+        let problems = cascade.problems(inServed: served)
+        #expect(!problems.isEmpty, Comment(rawValue: "\(what) passed the profile"))
+        #expect(problems.contains { $0.contains("is not served as expected") }, Comment(rawValue: "\(problems)"))
+    }
+
+    @Test func aCascadeMissingARowOrHoldingAnExtraOneFailsTheProfile() throws {
+        let cascade = try Self.profile("selection-cascade-extension-host").profile
+        let missing = cascade.problems(inServed: Array(Self.cascadeServed.dropLast()))
+        #expect(missing.count == 1 && missing[0].contains("required fixtureod 1.0.0") && missing[0].contains("is missing"))
+        let stray = Self.cascadeRow(
+            "workspace", "1.0.0", schema: "1.0.0", origin: "BUNDLED", selection: "SELECTED", reason: "x", "f")
+        let extra = cascade.problems(inServed: Self.cascadeServed + [stray])
+        #expect(extra.count == 1 && extra[0].contains("unexpected row workspace"))
     }
 
     // MARK: Candidates

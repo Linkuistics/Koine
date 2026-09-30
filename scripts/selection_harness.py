@@ -21,6 +21,11 @@ observer at once:
     run. A phase an image that did run never reached is paired the same way, by
     that binary or by a declared twin built from the same source without the defect.
 
+A phase can also assert what the whole host serves: the capabilities it makes available,
+the Query and Mutation fields it publishes, fields that are published and unavailable, and
+a conformance profile (docs/design/profiles/) held to the schema and the candidate rows it
+served, with the profile's own controls seen red (`conformance=`).
+
 A scenario may go on to further phases over the same data directory: an action
 (a copy removed, replaced or added) and then a restart, which is a new host
 process with a new marker log. Recovery from a failed choice is repair or removal,
@@ -92,7 +97,8 @@ class Phase:
 
     def __init__(
         self, rows, actions=(), ran=(), partial=None, serves=None, absent_fields=(), present_fields=(),
-        order=None, rows_note=None, label=None,
+        order=None, rows_note=None, label=None, capabilities=(), no_capabilities=(), mutations=(),
+        no_mutations=(), unavailable=(), conformance=None,
     ):
         self.rows, self.rows_note, self.label = list(rows), rows_note, label
         self.actions = list(actions)
@@ -101,6 +107,12 @@ class Phase:
         self.markers.update(partial or {})
         self.serves, self.order = serves, order
         self.absent_fields, self.present_fields = list(absent_fields), list(present_fields)
+        # Capabilities `koine.availableCapabilities` lists, and ones it does not; Mutation fields
+        # published, and not; (root field, text) of a published Query field whose resolution
+        # fails with that text; a conformance profile file to hold the served schema and rows to.
+        self.capabilities, self.no_capabilities = list(capabilities), list(no_capabilities)
+        self.mutations, self.no_mutations = list(mutations), list(no_mutations)
+        self.unavailable, self.conformance = list(unavailable), conformance
 
 
 class Scenario(Phase):
@@ -116,8 +128,8 @@ class Scenario(Phase):
 
 
 class Suite:
-    def __init__(self, hosts, fixtures, twins=None):
-        self.hosts, self.fixtures = hosts, fixtures
+    def __init__(self, hosts, fixtures, twins=None, conformance=None):
+        self.hosts, self.fixtures, self.conformance = hosts, fixtures, conformance
         with open(HOSTS_SPEC) as file:
             self.spec = json.load(file)
         self.binary_of = {}
@@ -258,9 +270,15 @@ class HostRun:
     def rows(self):
         return self.data_of(PROVIDERS)["koineManagement"]["providers"]
 
-    def query_fields(self):
-        fields = self.data_of('{ __type(name: "Query") { fields { name } } }')["__type"]["fields"]
+    def type_fields(self, name):
+        fields = self.data_of('{ __type(name: "%s") { fields { name } } }' % name)["__type"]["fields"]
         return [field["name"] for field in fields]
+
+    def query_fields(self):
+        return self.type_fields("Query")
+
+    def capabilities(self):
+        return self.data_of("{ koine { availableCapabilities } }")["koine"]["availableCapabilities"]
 
     def markers(self):
         """[(install name, phase)] in the order written, from the staged image each line names."""
@@ -386,6 +404,27 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
             check("no provider field is published", not [f for f in phase.absent_fields if f in served], served)
         if phase.present_fields:
             check("the surviving provider fields are published", all(f in served for f in phase.present_fields), served)
+    if phase.capabilities or phase.no_capabilities:
+        available = host.capabilities()
+        if phase.capabilities:
+            check("the capabilities of these providers are available", all(c in available for c in phase.capabilities), available)
+        if phase.no_capabilities:
+            check("no capability of these providers is available", not [c for c in phase.no_capabilities if c in available], available)
+    if phase.mutations or phase.no_mutations:
+        served = host.type_fields("Mutation")
+        if phase.mutations:
+            check("these Mutation fields are published", all(f in served for f in phase.mutations), served)
+        if phase.no_mutations:
+            check("none of these Mutation fields is published", not [f for f in phase.no_mutations if f in served], served)
+    for root, text in phase.unavailable:
+        status, reply = host.post("{ %s { greeting } }" % root)
+        errors = (reply or {}).get("errors") or []
+        check(f"{root} is published and its resolution fails as unavailable with {text!r}",
+              bool(errors) and all(text in (e.get("message") or "") and (e.get("extensions") or {}).get("kind") == "unavailable"
+                                   for e in errors) and not (reply.get("data") or {}).get(root),
+              [status, reply])
+    if phase.conformance:
+        check_conformance(host, phase.conformance, suite, check, record)
     # Controls: which compiled binary each install that did not run every phase would
     # have been, and which was seen to run every phase.
     for name, steps in observed.items():
@@ -404,6 +443,79 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
     record.setdefault("phases", []).append({"rows": rows, "markers": observed})
     record["rows_observed"] = record.get("rows_observed", []) + rows
     record["markers_observed"] = observed
+
+
+def check_conformance(host, profile, suite, check, record):
+    """Holds the served schema and provider rows to a conformance profile with the same
+    tool `task conformance` uses (Tools/Conformance), then shows the check red against
+    mutated copies of the pin: a profile that cannot fail proves nothing."""
+    if not suite.conformance:
+        check("the conformance tool is given (--conformance)", False, None)
+        return
+    query = subprocess.run([suite.conformance, "--print-query"], capture_output=True, text=True, check=True).stdout
+    status, introspection = host.post(query)
+    served = host.data_of("{ koine { schemaDigest } }")["koine"]["schemaDigest"]
+    work = tempfile.mkdtemp(prefix="koine-selection-profile-")
+    try:
+        files = {"introspection.json": introspection, "providers.json": host.rows()}
+        for name, value in files.items():
+            with open(os.path.join(work, name), "w") as file:
+                json.dump(value, file)
+        path = os.path.join(REPOSITORY, profile)
+        with open(path) as file:
+            pinned = json.load(file)
+
+        def hold(pin, extra=(), design=None):
+            copy = os.path.join(work, "profile.json")
+            document = dict(pinned, design=design or os.path.join(os.path.dirname(path), pinned["design"]), providers=pin)
+            with open(copy, "w") as file:
+                json.dump(document, file)
+            return subprocess.run(
+                [suite.conformance, "--introspection", os.path.join(work, "introspection.json"), "--profile", copy,
+                 "--providers", os.path.join(work, "providers.json"), "--served-digest", served, *extra],
+                capture_output=True, text=True,
+            )
+
+        clean = hold(pinned["providers"])
+        check(f"the host holds the profile {profile}: CONFORMANT", clean.returncode == 0 and "CONFORMANT" in clean.stdout,
+              clean.stdout[-600:])
+        controls = {}
+        if pinned["providers"]:
+            first = pinned["providers"][0]
+            wrong_reason = [dict(first, reason="a-reason-nobody-gives")] + pinned["providers"][1:]
+            wrong_selection = [dict(first, selection="NOT_SELECTED" if first.get("selection") == "SELECTED" else "SELECTED")] + pinned["providers"][1:]
+            for what, pin, expected in (
+                ("a reason that is not served", wrong_reason, "is not served as expected"),
+                ("a selection that is not served", wrong_selection, "is not served as expected"),
+                ("a row left out of the pin", pinned["providers"][1:], "unexpected row"),
+                ("a provider the host does not serve", pinned["providers"]
+                 + [{"provider": "absentprovider", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}], "is missing"),
+            ):
+                red = hold(pin)
+                controls[what] = red.returncode
+                check(f"control: a profile with {what} turns the check red, naming {expected!r}",
+                      red.returncode != 0 and expected in red.stdout, red.stdout[-600:])
+        # The design half is seen red too: the wrong design (another host's, with a provider in
+        # it) and this design with one nullability marker removed.
+        own = os.path.join(os.path.dirname(path), pinned["design"])
+        with open(own) as file:
+            text = file.read()
+        marker = "koine: Koine!"
+        if marker not in text:
+            check("the design control has something to mutate", False, marker)
+        mutated = os.path.join(work, "mutated.graphql")
+        with open(mutated, "w") as file:
+            file.write(text.replace(marker, "koine: Koine", 1))
+        other = os.path.join(REPOSITORY, "docs", "design", "desktop-schema-extension-host.graphql")
+        for what, design in (("a design with a provider's contribution in it", other),
+                             ("a design with a nullability marker removed", mutated)):
+            red = hold(pinned["providers"], design=design)
+            controls[what] = red.returncode
+            check(f"control: {what} turns the check red", red.returncode != 0 and "difference(s) between" in red.stdout and "they differ" in red.stdout,
+                  red.stdout[-600:])
+        record.setdefault("conformance", []).append({"profile": profile, "controls": controls, "digest": served})
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
 
 
 def run_scenario(suite, scenario, reversed_order, renamed, results):
@@ -450,8 +562,13 @@ def run_scenario(suite, scenario, reversed_order, renamed, results):
 
 
 def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="", argv=None):
-    """The whole driver: `<hosts> <fixtures> <results.json> [--only <substring>]`."""
+    """The whole driver: `<hosts> <fixtures> <results.json> [--only <substring>] [--conformance <tool>]`."""
     arguments = list(sys.argv[1:] if argv is None else argv)
+    conformance = None
+    if "--conformance" in arguments:
+        index = arguments.index("--conformance")
+        conformance = os.path.abspath(arguments[index + 1])
+        del arguments[index : index + 2]
     only = None
     if "--only" in arguments:
         index = arguments.index("--only")
@@ -460,7 +577,7 @@ def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="",
     if len(arguments) != 3:
         raise SystemExit(doc)
     hosts, fixtures, output = (os.path.abspath(argument) for argument in arguments)
-    suite = Suite(hosts, fixtures, twins)
+    suite = Suite(hosts, fixtures, twins, conformance)
     results = []
     chosen = [scenario for scenario in scenarios() if only is None or only in scenario.name]
     print(f"{len(chosen)} scenarios")

@@ -31,6 +31,16 @@
 # SDL the core refuses (`sh-update-bad-sdl`, `sh-update-outside-prefix`); and
 # ordinary providers that claim another provider's, or the host's, principal class.
 #
+# The cascade and duplicates rows (scripts/verify-selection-failures.py, the sections
+# of docs/verification/selection-failures.md that follow the freeze ones) add the
+# dependants: a provider that additionally requires another's capability (framework
+# minor 1, `additional-capabilities-v1`), so that one refused or removed provider strands
+# another. `Sk` and `Sh` updates each name the other as an owner, `Od` names `Sk`, and so
+# the fixtures can form a chain (sh <- sk <- od) and a cycle (sh <-> sk); a shipped
+# update whose `start()` throws; and ordinary rivals of `fixtureod` that pre-load checks
+# refuse (incompatible framework, an ad-hoc signature, a tampered seal) or that claim only
+# its identifier or only its prefix.
+#
 # Every fixture signing identifier is distinct from every production one and is
 # admitted only by the test catalogues of scripts/build-selection-hosts.py.
 #
@@ -146,6 +156,13 @@ binary od-claim-sh Od "" "${WORK}/claim-sh.graphql"
 binary od-claim-input Od "" "${WORK}/claim-input.graphql"
 binary od-describes-slot Od "-D FIXTURE_DESCRIBES_SLOT"
 binary unknown stem:Unknown ""
+# Dependants, and a start that fails. FIXTURE_ADDITIONAL (the environment) adds the field
+# that carries the requirement to the schema; the define registers it.
+ADDITIONAL='-D FIXTURE_ADDITIONAL'
+FIXTURE_ADDITIONAL=1 binary sh-update-needs-sk Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION ${ADDITIONAL} -D FIXTURE_NEEDS_SK"
+FIXTURE_ADDITIONAL=1 binary sk-update-needs-sh Sk "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION ${ADDITIONAL} -D FIXTURE_NEEDS_SH"
+FIXTURE_ADDITIONAL=1 binary od-needs-sk Od "${ADDITIONAL} -D FIXTURE_NEEDS_SK"
+binary sh-update-fails-start Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -D FIXTURE_FAILS_START"
 
 # --- Sh: the designated baseline and what contests it ----------------------------
 
@@ -208,6 +225,19 @@ INCLUDE="${WORK}/private/bad/libFixturePrivate.dylib" make f-dlopen-unloadable s
 #   a release that loads: the repair every recovery installs.
 make f-repaired sh-update "${FAIL}"
 
+# A shipped update that publishes and then fails its start.
+make sf-start-fails sh-update-fails-start "${FAIL}"
+
+# Dependants: the capability owner is named in the descriptor and the manifest requires the
+# feature that carries it (framework minor 1). An update also declares the selection feature.
+ADD="m['requiredFeatures'] = ['additional-capabilities-v1']; m['framework']['minimumMinor'] = 1"
+ADD_SELECTION="m['requiredFeatures'] = ['${FEATURE}', 'additional-capabilities-v1']; m['framework']['minimumMinor'] = 1"
+#   a fixturesk update and a fixturesh update that additionally require the other's read capability.
+make dep-sk-needs-sh sk-update-needs-sh "m['version'] = '1.1.0'; ${ADD_SELECTION}"
+make dep-sh-needs-sk sh-update-needs-sk "m['version'] = '2.0.0'; ${SCHEMA}; ${ADD_SELECTION}"
+#   an ordinary provider that additionally requires fixturesk's read capability.
+make dep-od-needs-sk od-needs-sk "${ADD}"
+
 # The designated bundle as a purpose-built host seals it, and the ways it can be wrong.
 make baseline-release-mismatch sh-baseline "m['version'] = '1.0.1'; ${SCHEMA}"
 make baseline-other-identifier sh-baseline "${SCHEMA}" dev.antony.Koine.provider.fixturesh.impostor
@@ -227,6 +257,16 @@ make ordinary-claims-reserved-only-namespace od-claim-input "pass"
 # A manifest that names an ordinary provider, over a descriptor that names the slot's identity.
 make ordinary-describes-slot od-describes-slot "pass"
 make unknown unknown "pass"
+# Rivals of `ordinary` (fixtureod / FixtureOd). Two that are eligible and claim half of its
+# identity, and three that a pre-load check refuses though they claim all of it: a framework
+# minor the host lacks (honest, so INCOMPATIBLE), an ad-hoc signature, and a seal broken after
+# it was made (the only bundle here altered after signing).
+make ordinary-same-prefix od "m['providerId'] = 'fixtureother'"
+make ordinary-same-identifier od "m['graphQLPrefix'] = 'FixtureOdOther'"
+make ordinary-framework-future od "m['framework']['minimumMinor'] = 99"
+make ordinary-adhoc od "pass" adhoc
+make ordinary-tampered od "pass"
+printf '\n# altered after it was sealed\n' >>"${OUT}/ordinary-tampered/FixtureOd.koineprovider/schema.graphql"
 # Ordinary providers that claim a principal class that is not theirs: a shipped
 # provider's, the host's own, and another ordinary provider's.
 make ordinary-principal-sh od "m['principalClass'] = 'KoineFixtureShProviderFactory'"

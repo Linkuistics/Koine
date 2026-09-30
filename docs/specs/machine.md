@@ -1441,9 +1441,20 @@ workspace profile against the signed application in a VM
 [launch-contract.md](../verification/launch-contract.md)). The workspace design
 file never rewords the workspace design: a test holds it to the complete workspace
 design, so that the only differences are the roots not yet implemented and the
-types only they reach, and a root that lands is added to the profile verbatim. The
-profiles with selected updates and explicit absent or rejected sets are added beside
-these by the increments that make those cases real.
+types only they reach, and a root that lands is added to the profile verbatim. An
+explicit absent/rejected profile is held in the same way:
+
+| Profile | Design SDL | Candidates pinned |
+| --- | --- | --- |
+| `selection-cascade-extension-host` | [`core-schema-extension-host.graphql`](../design/core-schema-extension-host.graphql): the extension-host core with no provider contribution, which a test holds to `desktop-schema-extension-host.graphql` less exactly the desktop coordinates | five `REJECTED` rows and no `ACTIVE` one: the refused shipped provider (`SELECTED`, `invalid-sdl`) and its superseded bundled baseline, the shipped update removed for a missing capability owner (`SELECTED`, `missing-capability-owner`) and its superseded baseline, and the ordinary provider removed the same way |
+
+It is served by a signed purpose-built host and checked by `task selection:failures`, not
+`task conformance`, because it is a failure profile: the fixture providers stand in for the desktop,
+workspace and third providers so that nothing in the production catalogue is refused
+([selection-failures.md](../verification/selection-failures.md#desktop-rejected-before-publication)).
+Its design half is seen red against the wrong design and a mutated copy, and its pin half against a
+wrong reason, a wrong selection, a row left out and a provider that is not served. The profiles with
+selected updates are added beside these by the increments that make those cases real.
 
 #### Selection acceptance
 
@@ -1483,10 +1494,10 @@ native loading, signing or V observations.
 | Missing/refused/mismatched designated bundle, valid newer update, unexpected in-app claimant | N, G | Purpose-built signed hosts retain catalogue floor/reservations. Newer update can fill the slot; equal/older cannot. Missing bundle remains a synthetic diagnostic even with an active update. Exact mismatch/unexpected reasons; never substitute the unexpected bundle. | **Established** at N and G: [designated bundle](../verification/selection-decisions.md#designated-bundle) |
 | Equal bytes and basename in both roots; quarantined per-user copy; legacy shared staging entry | N, G, V | Stage in both orders and restart after host catches up to the update. Copies remain candidate-specific; bundled loading never inherits per-user quarantine and per-user assessment is never skipped by cache reuse. No unexpected dialog; record actual assessment and loaded paths. | Pending |
 | Frozen update fails principal check, dlopen, descriptor or schema with healthy alternatives | N, G | No alternative loaded/started; choice stays identifiable. Principal refusal precedes load; post-load refusal can leave images mapped. Repair/remove and restart to recover. | **Established** at N and G: [frozen update fails later](../verification/selection-failures.md#frozen-update-fails-later) |
-| Shipped update principal conflicts with another shipped bundle; ordinary candidate conflicts with shipped selection or host class | N, G | Both shipped selections refused symmetrically; ordinary claimant alone refused against shipped owner; host-class conflicts refused. No retry. Diagnostics/capability-owner cascade agree. | **Established** at N and G for the conflicts, **pending** in `duplicates-cascade` for the capability-owner cascade's agreement: [principal conflicts](../verification/selection-failures.md#principal-conflicts) |
-| Ordinary duplicate identities/prefixes, with unapproved/incompatible rivals | N, G | Only pre-load-eligible rivals contest. Eligible duplicates both refused as `manifest-collision` / `NOT_SELECTED`; a refused untrusted rival cannot evict a valid provider. | Pending |
-| Desktop rejected before publication; workspace depends on desktop; third provider on workspace | N, G | Fixed-point removal agrees with exact absent/rejected profile, capabilities and diagnostics; management usable. Valid dependency cycle survives. | Pending |
-| Desktop published but start fails | N, G | Schema/authority retained; its fields unavailable; workspace not removed solely for this failure; no bundled retry. | Pending |
+| Shipped update principal conflicts with another shipped bundle; ordinary candidate conflicts with shipped selection or host class | N, G | Both shipped selections refused symmetrically; ordinary claimant alone refused against shipped owner; host-class conflicts refused. No retry. Diagnostics/capability-owner cascade agree. | **Established** at N and G: [principal conflicts](../verification/selection-failures.md#principal-conflicts), and the capability-owner cascade's agreement with them: [the cascade](../verification/selection-failures.md#desktop-rejected-before-publication) |
+| Ordinary duplicate identities/prefixes, with unapproved/incompatible rivals | N, G | Only pre-load-eligible rivals contest. Eligible duplicates both refused as `manifest-collision` / `NOT_SELECTED`; a refused untrusted rival cannot evict a valid provider. | **Established** at N and G: [ordinary duplicates](../verification/selection-failures.md#ordinary-duplicates) |
+| Desktop rejected before publication; workspace depends on desktop; third provider on workspace | N, G | Fixed-point removal agrees with exact absent/rejected profile, capabilities and diagnostics; management usable. Valid dependency cycle survives. | **Established** at N and G: [desktop rejected before publication](../verification/selection-failures.md#desktop-rejected-before-publication) |
+| Desktop published but start fails | N, G | Schema/authority retained; its fields unavailable; workspace not removed solely for this failure; no bundled retry. | **Established** at N and G: [desktop published but start fails](../verification/selection-failures.md#desktop-published-but-start-fails) |
 | Same SDL across roots, changed SDL in newer copy, extra ordinary provider | N, G | Same-content replacement preserves digest and identifier-sorted shipped position; changed SDL changes digest. Pin candidate versions separately. Deny management fields without `koine:manage`. Include later enabled identities in purpose-built catalogue to distinguish identifier order from catalogue order. | Pending |
 | Mixed desktop/workspace releases and reused helper source | N, G, V | Private-image module/runtime-class inventory is disjoint across identities and host except the single host-owned shared framework; each selected provider executes its own expected implementation. Record native observations without claiming loader sandboxing. | Pending |
 | Restart after update removal or changed baseline; changed assessment verdict; unreadable root | N, G | Recompute without granting authority; no anti-rollback or cross-restart verdict guarantee. Inject verdict changes at N. Root enumeration failure stops startup instead of using a partial set. | Pending |
