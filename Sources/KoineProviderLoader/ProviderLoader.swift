@@ -8,7 +8,7 @@ import ObjectiveC
 public struct HostCompatibility: Sendable {
     /// Version 1 supports exactly this framework major.
     public static let frameworkMajor = 1
-    public static let frameworkMinor = 0
+    public static let frameworkMinor = 1
 
     public let frameworkMajor: Int
     public let frameworkMinor: Int
@@ -58,6 +58,9 @@ public struct ProviderBundleReport: Sendable {
 /// and every one after the first is made of the staged copy that is loaded.
 public enum ProviderLoader {
     public static let bundleExtension = "koineprovider"
+
+    /// The framework minor that carries each host feature a manifest can require.
+    static let featureMinimumMinors = ["additional-capabilities-v1": 1]
 
     static let frameworkName = "KoineProviderAPI"
     static let frameworkInstallName =
@@ -202,6 +205,15 @@ public enum ProviderLoader {
         guard missing.isEmpty else {
             throw Refusal.incompatible(
                 "The provider requires host features this Koine lacks: \(missing.joined(separator: ", "))."
+            )
+        }
+        // A feature is carried by a framework minor, and the manifest states both:
+        // one that names the feature under an older minimum minor says less than
+        // the binary needs, and is refused as the inconsistent manifest it is.
+        for (feature, minor) in Self.featureMinimumMinors
+        where manifest.requiredFeatures.contains(feature) && manifest.framework.minimumMinor < minor {
+            throw Refusal.rejected(
+                "The manifest requires \(feature) but declares framework minimum minor \(manifest.framework.minimumMinor); the feature needs \(manifest.framework.major).\(minor)."
             )
         }
         guard manifest.architectures.contains(HostPlatform.architecture) else {

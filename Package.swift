@@ -80,7 +80,7 @@ let package = Package(
         // Test material: the headless host of the binary compatibility pairs
         // (scripts/build-compat-pairs.sh). scripts/build-app.sh does not ship it.
         .executableTarget(
-            name: "KoineCompatibilityHost", dependencies: ["KoineServer"],
+            name: "KoineCompatibilityHost", dependencies: ["KoineServer", "KoineProviderLoader"],
             path: "Fixtures/CompatibilityHost"
         ),
         // The desktop provider's pure files, named here only so `swift test`

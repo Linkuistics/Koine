@@ -379,8 +379,10 @@ can designate public enrollment or management authority.
 
 #### Additional capability requirements
 
-**Extension — pending implementation.** A field may add an immutable set of
-provider read/control capabilities to its existing own-class requirement.
+**Extension — implemented in framework minor 1, no shipped provider yet uses
+it.** A field may add an immutable set of provider read/control capabilities to
+its existing own-class requirement. "Acceptance status" records what has been
+shown and what has not.
 The [effect-authority decision](../adr/provider-authority-follows-effects.md)
 explains why this is necessary. It does not replace the foreign-reference rule
 or let a provider make a field public. Root mutation fields still require their
@@ -436,8 +438,9 @@ capability owners and repeat until the admitted set stops changing, in canonical
 order. Report the missing owner in management diagnostics; do not weaken a field
 or publish a partially protected contribution. Cycles of otherwise valid
 capability dependencies are allowed; they are authority names, not initialization
-calls. Providers must not use them to require an order for calling one another's
-start methods. A provider failing startup keeps its published schema and
+calls: the check is membership of the admitted set, never a walk of the
+dependency graph. Providers must not use them to require an order for calling one
+another's start methods. A provider failing startup keeps its published schema and
 capability names under the existing lifecycle policy, while its own resolvers
 report `unavailable`. Naming its authority does not call it or establish a readiness
 dependency. Rejection removes its contribution and triggers the missing-owner
@@ -446,13 +449,27 @@ cascade; startup failure alone does not. The native seam must cover both cases.
 This adds field metadata semantics through a compatible major-1 framework
 minor and required feature `additional-capabilities-v1`. Both manifest and
 descriptor declare the feature; the manifest declares the implementing minimum
-minor. That minor is assigned with the implementation release; it is not advertised by
-0.1.0. Add new resilient declarations/initializers with empty defaults for old
-registrations; retain old symbols and behavior. An old host must refuse the
-new provider before loading. A new host must reject a descriptor that uses
-additional requirements without the feature declaration. Silently ignoring the
-set is never a compatibility fallback. Independent old/new binary pairs must
-verify these semantics before release.
+minor, which is 1. Framework 1.1 is the first to advertise the feature; Koine
+0.1.0 advertises framework 1.0 and no feature. The new declarations are
+`ProviderCapabilityRequirement` (a provider identifier and `read` or `control`),
+a `ProviderFieldRegistration` initializer that takes the set, and the feature's
+name, `ProviderDescriptor.additionalCapabilitiesFeature`. The set is empty for
+every registration made with the old initializer, which is retained with its
+behavior. An old host must refuse the new provider before loading. A new host
+must reject a descriptor that uses additional requirements without the feature
+declaration: `REJECTED`, not `INCOMPATIBLE`, since the descriptor is at fault and
+the host lacks nothing. It likewise refuses, whole, a contribution whose set
+names an identifier no provider can have (`koine` and everything under its
+prefix), adds control to a field a query can reach, or gives a `Reference`
+argument or input field a default that is not a reference. A manifest that names
+the feature under a minimum minor lower than the one that carries it is refused
+before any code loads. Silently ignoring the set is never a compatibility fallback.
+Independent old/new binary pairs verify these semantics before release.
+
+Composition does not check that a field's description states its declared set.
+Prose cannot be verified faithfully, so that stays a publication rule: a provider
+that ships a set tests its own descriptions, and a client that needs the set reads
+`extensions.requiredCapabilities`, which is the mechanical statement of it.
 
 ### Mutation preflight and revocation
 
@@ -1484,7 +1501,10 @@ which.
 | Revoked credentials fail on an existing keep-alive connection and after restart | **Established.** `GrantManagementTests`, `GrantDecisionTests`; on the very connection a credential was served on, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
 | Store/commit failure never reports a durable approval or revocation | **Established** at the public seam over a scripted store: `RevocationOrderingTests`, `GrantDecisionTests`. Not induced in a VM, which cannot make the store fail on demand. |
 | Lost manual-secret delivery requires revoke and recreate | **Established.** `GrantManagementTests` finds no credential or digest in any management response; the window's accessibility tree likewise, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
-| An old provider on an upgraded host and framework; an old host with an upgraded provider built for its baseline; framework identity, factory casts, ARC, async resolution, cancellation, observation startup | **Established** for independently built pairs on unsigned hosts, [binary-compatibility.md](../verification/binary-compatibility.md), with `NativeProviderTests` and `ProviderLifecycleTests`. The signed, hardened application loads independently built same-team providers, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md), and its bundled provider from a quarantined notarized bundle, [notarized-release-vm.md](../verification/notarized-release-vm.md). **Open**: a pair across two framework minors under the signed application. |
+| Additional capability requirements: one ordered set for whole-mutation preflight, live dispatch admission and read publication; `requiredCapability` names the first unmet member and `extensions.requiredCapabilities` the whole set; a contribution whose capability owner is missing is removed to a fixed point; a descriptor using the set without the feature is refused | **Established** at the public seam over in-test contributions: `AdditionalCapabilityTests` (aliases, fragments, argument defaults, nested reference inputs, `@skip`/`@include`, multi-action preflight with zero action calls, revocation between actions, read republication, cycles, a refused owner, a removal that readmits nothing, a provider that fails startup after publication and is not removed), each watched to fail against a registration that ignores the set. Also in independently built binaries, [binary-compatibility.md](../verification/binary-compatibility.md): the released host refuses a provider requiring the feature before any of its code loads, a provider built against framework 1.0 and the released desktop provider run unchanged on the new host, and the new host refuses an undeclared use and enforces the set. Preflight reads each action's arguments as execution will, so a reference that
+arrives by an operation variable's default, as a lone value for a list, or as an
+input field's default names its owner before any action. **Open**: no shipped provider declares a set, so `workspace-launch` is its first consumer and the first check of a shipped provider's actual extra requirements; the pair across two framework minors under the signed, hardened application. |
+| An old provider on an upgraded host and framework; an old host with an upgraded provider built for its baseline; framework identity, factory casts, ARC, async resolution, cancellation, observation startup | **Established** for independently built pairs on unsigned hosts, [binary-compatibility.md](../verification/binary-compatibility.md), with `NativeProviderTests` and `ProviderLifecycleTests`. The old side is built from the released 0.1.0 sources (`task compat:baseline`), so the pair is across two real framework minors, 1.0 and 1.1. The signed, hardened application loads independently built same-team providers, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md), and its bundled provider from a quarantined notarized bundle, [notarized-release-vm.md](../verification/notarized-release-vm.md). **Open**: a pair across two framework minors under the signed application. |
 | Unsupported majors, minors and features, and bundled duplicate frameworks, refused before loading; schema and ownership collisions refused before activation | **Established.** `ProviderLoaderTests`, `CompositionTests`; [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). |
 | Mismatched signing identities refused before code is loaded | **Established** for another Team ID in the approval record, an ad-hoc signature and none: `ProviderLoaderTests`, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). **Open**: a bundle signed by a second real Developer ID team, which needs a second certificate, and what the kernel does with one behind Koine's check. |
 | Signed installation and login launch without a client | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [resident-app-vm.md](../verification/resident-app-vm.md); a quarantined first launch, [notarized-release-vm.md](../verification/notarized-release-vm.md); installed, uninstalled and zapped through the published Homebrew cask, [homebrew-install-vm.md](../verification/homebrew-install-vm.md). **Open**: login-item approval waiting on the user (`requiresApproval`) has never been observed; registration went straight to enabled in every run. |

@@ -20,8 +20,11 @@ The workflow extension uses this policy for
 [additional capability requirements](../specs/machine.md#additional-capability-requirements):
 a compatible minor adds metadata while old registrations keep empty additional
 sets. A required feature prevents an older host from silently dropping the new
-authority. This remains a design obligation until the extension's binary pairs
-have been exercised; baseline compatibility evidence does not establish it.
+authority. The extension's independently built binary pairs have been exercised
+([binary-compatibility.md](../verification/binary-compatibility.md)): an old host
+refuses the feature before loading, and a new host runs an old provider and the
+released desktop provider unchanged. A shipped provider's use of it and the pair
+under the signed application are still open.
 
 Koine does not use a C-compatible function table with byte buffers, because
 idiomatic Swift authoring matters more: its smaller shared type surface does not

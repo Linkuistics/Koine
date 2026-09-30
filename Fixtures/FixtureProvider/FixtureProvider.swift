@@ -51,9 +51,29 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
                 authority: .control
             ),
         ]
+        #if FIXTURE_ADDITIONAL
+            // Framework minor 1: one action that also requires `fixture:read`,
+            // so a grant holding control alone is refused, with the whole set.
+            fields += [
+                ProviderFieldRegistration(
+                    coordinate: "Mutation.fixtureRenameItemChecked", resolverId: "renameItem",
+                    authority: .control,
+                    additionalRequirements: [
+                        ProviderCapabilityRequirement(providerId: "fixture", kind: .read)
+                    ]
+                )
+            ]
+            #if FIXTURE_UNDECLARED
+                let features: [String] = []
+            #else
+                let features = [ProviderDescriptor.additionalCapabilitiesFeature]
+            #endif
+        #else
+            let features: [String] = []
+        #endif
         return ProviderDescriptor(
             providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
-            fields: fields, requiredFeatures: []
+            fields: fields, requiredFeatures: features
         )
     }
 
@@ -96,11 +116,13 @@ final class FixtureProvider: Provider, @unchecked Sendable {
 
     // scripts/build-compat-pairs.sh builds the later revisions of this provider
     // for the binary compatibility pairs: FIXTURE_REVISION_2 is newer source
-    // that uses only the baseline framework, and FIXTURE_USES_MINOR_1 also
-    // uses the declarations its evidence-only framework minor 1 adds.
+    // that uses only the baseline framework, and FIXTURE_ADDITIONAL also uses
+    // the declarations framework minor 1 added (docs/specs/machine.md,
+    // "Additional capability requirements"). FIXTURE_UNDECLARED, with it, omits
+    // the feature from the descriptor: the use a host must refuse.
     private static var greeting: String {
-        #if FIXTURE_USES_MINOR_1
-            koineProviderMinor1Greeting(revision: 2)
+        #if FIXTURE_ADDITIONAL
+            "hello from the fixture provider, revision 2, using additional capabilities"
         #elseif FIXTURE_REVISION_2
             "hello from the fixture provider, revision 2"
         #else
@@ -108,9 +130,6 @@ final class FixtureProvider: Provider, @unchecked Sendable {
         #endif
     }
 
-    #if FIXTURE_USES_MINOR_1
-        func describeInstance() -> String { "the fixture provider, revision 2" }
-    #endif
     func stop() async {}
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {

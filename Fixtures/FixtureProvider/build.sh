@@ -14,6 +14,9 @@
 #                     link it, in place of the staged framework's
 #   FIXTURE_UNSEALED  leaves the bundle unsigned and unapproved; build-variants.sh
 #                     seals every variant itself, once its content is final
+#   FIXTURE_ADDITIONAL  adds additional.graphql to the schema; with
+#                     FIXTURE_SWIFTC="-D FIXTURE_ADDITIONAL" it registers that
+#                     field's additional requirement (framework minor 1)
 # Both argument lists are split on spaces: this is test material built under .build.
 #
 # The bundle is a shallow code-signing bundle: Info.plist at its root names the
@@ -40,6 +43,10 @@ tagged() {
 
 tagged FixtureProvider.swift >"${WORK}/FixtureProvider.swift"
 tagged schema.graphql >"${WORK}/schema.graphql"
+if [ -n "${FIXTURE_ADDITIONAL:-}" ]; then
+    printf '\n' >>"${WORK}/schema.graphql"
+    tagged additional.graphql >>"${WORK}/schema.graphql"
+fi
 {
     echo "let fixture${TAG}SchemaSDL = #\"\"\""
     cat "${WORK}/schema.graphql"

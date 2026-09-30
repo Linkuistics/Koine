@@ -298,8 +298,8 @@ module/class names and the single host framework image. Test signing identifiers
 belong only in purpose-built test catalogues.
 
 Workspace manifest and descriptor declare `additional-capabilities-v1` and the
-implementing framework minor; newly published first-party updates also declare
-`first-party-selection-v1`. The implementation assigns that compatible minor.
+implementing framework minor, which is 1 (`minimumMinor: 1`); newly published
+first-party updates also declare `first-party-selection-v1`.
 The [entire selection matrix](machine.md#selection-acceptance) is part of this
 increment, not optional follow-up. Follow its N/G/V assignment, fresh processes,
 marker controls, signed catalogue fixtures, quarantine rules and exact diagnostics.

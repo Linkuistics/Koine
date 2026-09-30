@@ -40,11 +40,28 @@ public struct ProviderFieldRegistration: Sendable {
     public var coordinate: String
     public var resolverId: String
     public var authority: ProviderFieldAuthority
+    /// Further provider capabilities the field requires beside its own; empty
+    /// for every registration made before framework minor 1. A descriptor that
+    /// uses this declares `ProviderDescriptor.additionalCapabilitiesFeature`.
+    public var additionalRequirements: [ProviderCapabilityRequirement]
 
     public init(coordinate: String, resolverId: String, authority: ProviderFieldAuthority) {
+        self.init(
+            coordinate: coordinate, resolverId: resolverId, authority: authority,
+            additionalRequirements: []
+        )
+    }
+
+    /// Framework minor 1. The set is immutable authority metadata: the host
+    /// requires it wherever it requires `authority`.
+    public init(
+        coordinate: String, resolverId: String, authority: ProviderFieldAuthority,
+        additionalRequirements: [ProviderCapabilityRequirement]
+    ) {
         self.coordinate = coordinate
         self.resolverId = resolverId
         self.authority = authority
+        self.additionalRequirements = additionalRequirements
     }
 }
 
@@ -54,4 +71,31 @@ public struct ProviderFieldRegistration: Sendable {
 public enum ProviderFieldAuthority: Sendable {
     case read
     case control
+}
+
+/// One provider capability a field requires in addition to its own: the
+/// capability `<providerId>:read` or `<providerId>:control`. It names an
+/// authority, never a call: a provider is not started, or ordered, by being
+/// named. Core enrollment and management authority cannot be named.
+public struct ProviderCapabilityRequirement: Sendable, Hashable {
+    public enum Kind: Sendable, Hashable {
+        case read
+        case control
+    }
+
+    public var providerId: String
+    public var kind: Kind
+
+    public init(providerId: String, kind: Kind) {
+        self.providerId = providerId
+        self.kind = kind
+    }
+}
+
+extension ProviderDescriptor {
+    /// The required feature a descriptor declares when any registration carries
+    /// additional requirements. A host that lacks it refuses the provider before
+    /// loading; a host that has it refuses a descriptor that uses the
+    /// requirements without declaring it.
+    public static var additionalCapabilitiesFeature: String { "additional-capabilities-v1" }
 }

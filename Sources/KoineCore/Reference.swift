@@ -76,7 +76,12 @@ func makeReferenceScalar() throws -> GraphQLScalarType {
         // The design SDL's text, docs/design/desktop-schema.graphql.
         description: "Opaque koine:// URI string. Pass it unchanged; only its provider interprets the remainder.",
         serialize: { value in
-            guard let text = value as? String, ReferenceEnvelope(text) != nil else {
+            // The library also serializes a declared default, which it holds as a
+            // `Map`, when it prints or introspects the schema; a resolver's
+            // result arrives as a plain string.
+            let text: String?
+            if case .string(let held)? = value as? Map { text = held } else { text = value as? String }
+            guard let text, ReferenceEnvelope(text) != nil else {
                 throw GraphQLError(message: malformed)
             }
             return .string(text)

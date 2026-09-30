@@ -183,6 +183,7 @@ task fixture   # stage the framework, build the fixture provider outside the pac
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
 task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
+task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
 task conformance  # the schema the notarized bundle serves, in a VM, against docs/design/desktop-schema.graphql
 task app       # assemble and sign .build/app/Koine.app
 task app:notarize  # notarize, staple and zip it (KOINE_NOTARY_PROFILE, default koine-notary)
@@ -320,9 +321,10 @@ Every manifest field is required (`Fixtures/FixtureProvider/manifest.json` is an
 example): `providerId`, `graphQLPrefix`, `version`, `schemaVersion`,
 `architectures`, `minimumOS`, `minimumSwiftRuntime`, `framework` (`major`,
 `minimumMinor`), `requiredFeatures`, `principalClass` and `library`. The host
-states what it supplies: framework 1.0 (`HostCompatibility`, held equal to
-`ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`,
-empty in version 1).
+states what it supplies: framework 1.1 (`HostCompatibility`, held equal to
+`ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`:
+`additional-capabilities-v1`, which a field's additional read or control
+requirements need; docs/specs/machine.md, "Additional capability requirements").
 
 **The native loader** (`KoineProviderLoader`) refuses a bundle before any of its
 code runs wherever it can, since dylib initializers run inside `dlopen`. Trust
@@ -463,18 +465,22 @@ fixture once per process.
 
 `task compat` is the repeatable recipe behind
 `docs/verification/binary-compatibility.md`. `scripts/build-compat-pairs.sh`
-copies the sources into two trees under `.build/compat/<configuration>/`, each
-with its own build directory: `baseline`, as the sources are, and `newer`, the
-same sources with an evidence-only framework minor 1 applied
-(`Fixtures/CompatibilityPairs/Minor1.swift`, a defaulted `Provider` requirement,
-and a host that supplies 1.1). That minor is never part of the shipped
-framework. Each tree builds its framework, its fixture and variants, and
-`KoineCompatibilityHost` (`Fixtures/CompatibilityHost`), a headless host that
-serves one data directory's per-user provider root until its standard input
+builds two independent revisions under `.build/compat/<configuration>/`, each in
+a tree of its own with its own build directory: `baseline`, extracted from the
+**released** revision (the tag `v0.1.0`; `KOINE_BASELINE_REVISION` names another),
+and `newer`, a copy of this working tree. The baseline is built by
+`scripts/build-baseline-host.sh`, also `task compat:baseline`, so any check that
+needs the pre-extension host reuses the same build; it is never this tree with
+edits. Each tree builds its framework, its fixture and variants, its desktop
+provider and `KoineCompatibilityHost` (`Fixtures/CompatibilityHost`), a headless
+host that serves one data directory's per-user provider root, and an optional
+second directory standing in for `Contents/PlugIns`, until its standard input
 ends. It is test material: `scripts/build-app.sh` does not ship it and it adds
-no API. `later/` holds later revisions of the fixture, each compiled against a
-named revision's framework. `CONFIGURATION=release task compat` does the same in
-release.
+no API. `later/` holds later revisions of the fixture, from the newer tree's
+source, each compiled against a named revision's framework;
+`FIXTURE_ADDITIONAL` (`Fixtures/FixtureProvider/build.sh`) is the one that uses
+the additional-capabilities feature. `CONFIGURATION=release task compat` does the
+same in release.
 
 `scripts/verify-compat-pairs.py` makes each pair at run time, by installing one
 tree's bundle and approval record under the other tree's host, one host process
@@ -484,7 +490,9 @@ before and after, and writes `results.json` beside the trees.
 A provider for an older Koine is compiled against that Koine's framework minor,
 not only written without newer declarations: a conformance compiled against a
 newer minor records the defaults of the requirements that minor added, and an
-older host's dynamic loader refuses it.
+older host's dynamic loader refuses it. Framework 1.1 adds no protocol
+requirement, so a provider compiled against it that uses nothing new still runs
+on a 1.0 host; the pairs show that, and it is a fact about this minor.
 
 ## Desktop provider
 

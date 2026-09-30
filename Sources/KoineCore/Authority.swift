@@ -23,6 +23,10 @@ struct DomainError: Error {
     let kind: Kind
     let message: String
     var requiredCapability: String?
+    /// With `requiredCapability`, and only for a field that declares additional
+    /// requirements: every capability the denied action needs, in the order the
+    /// engine checks them, so one adequate grant can be requested.
+    var requiredCapabilities: [String]?
     /// The platform consent Koine lacks; makes a permission error an
     /// `os-permission` one.
     var osPermission: String?
@@ -289,11 +293,26 @@ final class Authority: Sendable {
         }
     }
 
-    func check(_ requirement: FieldAuthority, for principal: Principal) throws {
+    /// Every requirement of one field against the authority the principal holds
+    /// at a single reading of it, so a revocation that lands between two members
+    /// cannot make the first unmet member a later one than it was.
+    func check(_ requirements: [FieldAuthority], for principal: Principal) throws {
         let held: Set<String>?
         do { held = try capabilities(of: principal) } catch {
             throw DomainError.failed("The grant store is unavailable.")
         }
+        for requirement in requirements {
+            try check(requirement, held: held, for: principal)
+        }
+    }
+
+    func check(_ requirement: FieldAuthority, for principal: Principal) throws {
+        try check([requirement], for: principal)
+    }
+
+    private func check(
+        _ requirement: FieldAuthority, held: Set<String>?, for principal: Principal
+    ) throws {
         switch requirement {
         case .anonymousEnrollment:
             guard case .anonymous = principal else { throw DomainError.enrollmentIsAnonymous }

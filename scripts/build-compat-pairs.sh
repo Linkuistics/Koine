@@ -1,13 +1,15 @@
 #!/bin/bash
 # Builds the binaries of the binary compatibility pairs
-# (docs/verification/binary-compatibility.md) from two framework revisions, each
-# in its own copy of the source tree with its own build directory:
+# (docs/verification/binary-compatibility.md) from two independent revisions,
+# each in its own copy of the source tree with its own build directory:
 #
-#   baseline  this working tree as it is: framework 1.0, its host and its fixture
-#   newer     the same tree with the evidence-only framework minor 1 applied
-#             (Fixtures/CompatibilityPairs/Minor1.swift, a defaulted `Provider`
-#             requirement, and a host that supplies 1.1) and its host
-#   later     later revisions of the fixture, from the newer tree's source
+#   baseline  the RELEASED revision (v0.1.0, or KOINE_BASELINE_REVISION): framework
+#             1.0, before the additional-capabilities feature, with its host,
+#             fixture and desktop provider (scripts/build-baseline-host.sh)
+#   newer     this working tree as it is: framework 1.1, which serves
+#             `additional-capabilities-v1`, with its host and fixture
+#   later     later revisions of the fixture, from the newer tree's source, each
+#             compiled against the framework its name says
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -22,66 +24,21 @@ CONFIGURATION="${1:-debug}"
 PAIRS="$(pwd)/.build/compat/${CONFIGURATION}"
 mkdir -p "${PAIRS}"
 
-# copy_tree <revision>: the sources alone; each copy keeps its own .build.
-copy_tree() {
-    mkdir -p "${PAIRS}/$1/src"
-    rsync -a --delete --exclude .build --exclude .git --exclude .jj --exclude .grove \
-        --exclude .playwright-mcp ./ "${PAIRS}/$1/src/"
-}
+# The old side is the released source, never a copy of this tree with edits.
+scripts/build-baseline-host.sh "${CONFIGURATION}" >/dev/null
 
-# build_tree <revision>: the host, the staged framework, the plain fixture and
-# the loader's variants, exactly as `task test` builds them.
-build_tree() {
-    (
-        cd "${PAIRS}/$1/src"
-        swift build -c "${CONFIGURATION}" --product KoineCompatibilityHost >&2
-        FRAMEWORK="$(scripts/stage-provider-framework.sh "${CONFIGURATION}")"
-        PRODUCTS="$(dirname "$(dirname "${FRAMEWORK}")")"
-        Fixtures/FixtureProvider/build.sh "${PRODUCTS}/PackageFrameworks" \
-            "${PRODUCTS}/FixtureProviders" >&2
-        Fixtures/FixtureProvider/build-variants.sh "${PRODUCTS}/PackageFrameworks" \
-            "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/FixtureVariants" >&2
-        # A release executable's run path is its own directory alone; a debug
-        # one also has PackageFrameworks. Either way the host finds the staged framework.
-        ln -sfn PackageFrameworks/KoineProviderAPI.framework "${PRODUCTS}/KoineProviderAPI.framework"
-        rm -f "${PAIRS}/$1/products"
-        ln -s "${PRODUCTS}" "${PAIRS}/$1/products"
-    )
-}
-
-copy_tree baseline
-copy_tree newer
-
-# The newer revision. Each edit asserts what it replaces, so a source change
-# that would make the overlay silently miss fails here instead.
-cp Fixtures/CompatibilityPairs/Minor1.swift \
-    "${PAIRS}/newer/src/ProviderAPI/Sources/KoineProviderAPI/Minor1.swift"
-python3 - "${PAIRS}/newer/src" <<'PY'
-import sys
-tree = sys.argv[1]
-def edit(path, old, new):
-    path = f"{tree}/{path}"
-    with open(path) as file:
-        text = file.read()
-    if text.count(old) != 1:
-        sys.exit(f"Error: expected exactly one {old!r} in {path}.")
-    with open(path, "w") as file:
-        file.write(text.replace(old, new))
-edit("Sources/KoineProviderLoader/ProviderLoader.swift",
-     "public static let frameworkMinor = 0", "public static let frameworkMinor = 1")
-edit("ProviderAPI/Sources/KoineProviderAPI/ProviderFactory.swift",
-     "    func stop() async\n}",
-     "    func stop() async\n    /// Added in framework minor 1; defaulted in Minor1.swift.\n"
-     "    func describeInstance() -> String\n}")
-edit("ProviderAPI/Info.plist", "<string>1.0.0</string>", "<string>1.1.0</string>")
-PY
-
-build_tree baseline
-build_tree newer
+# The new side: this tree's sources alone; the copy keeps its own .build.
+mkdir -p "${PAIRS}/newer/src"
+rsync -a --delete --exclude .build --exclude .git --exclude .jj --exclude .grove \
+    --exclude .playwright-mcp ./ "${PAIRS}/newer/src/"
+scripts/build-compat-tree.sh "${CONFIGURATION}" "${PAIRS}/newer/src" "${PAIRS}/newer"
+# The conformance check the release runs, to read what the new host serves.
+(cd "${PAIRS}/newer/src" && swift build -c "${CONFIGURATION}" --product KoineConformance >&2)
 
 # later_fixture <case> <framework revision> <swiftc flags> <python over the manifest `m`>:
 # a later revision of the fixture, from the newer tree's source, compiled against
-# the named revision's staged framework as a plugin author's SDK.
+# the named revision's staged framework as a plugin author's SDK. FIXTURE_ADDITIONAL
+# (in the environment) also puts the additional-capability field in its schema.
 later_fixture() {
     (
         cd "${PAIRS}/newer/src"
@@ -101,16 +58,32 @@ PY
     )
 }
 
+FEATURE='additional-capabilities-v1'
+
 # Newer source for the baseline: compiled against framework 1.0, it uses no newer
 # declaration and declares no newer requirement.
 later_fixture revision2 baseline "-D FIXTURE_REVISION_2" 'm["version"] = "1.1.0"'
-# The same source and the same claim, compiled against framework 1.1. Its
-# conformance to `Provider` records the default of the requirement 1.1 added, so
-# the binary needs 1.1 although its source uses nothing new: the manifest lies.
+# The same source and the same claim, compiled against framework 1.1. This minor
+# adds no requirement to a protocol, so its conformance records no default for one
+# and the binary needs nothing 1.1 added: the manifest does not lie.
 later_fixture revision2-built-against-newer newer "-D FIXTURE_REVISION_2" \
     'm["version"] = "1.1.0"'
-# The same source using the newer declarations, which it declares.
-later_fixture minor1 newer "-D FIXTURE_USES_MINOR_1" \
-    'm["version"] = "1.1.0"; m["framework"]["minimumMinor"] = 1'
+# The same source using the feature, which it declares in the manifest and the
+# descriptor, with the minimum minor that carries it.
+export FIXTURE_ADDITIONAL=1
+later_fixture additional newer "-D FIXTURE_ADDITIONAL" \
+    "m['version'] = '1.1.0'; m['framework']['minimumMinor'] = 1; m['requiredFeatures'] = ['${FEATURE}']"
+# The feature declared but the minimum minor left at 0: an old host is refused by
+# the feature alone, which is the refusal the minor check would otherwise pre-empt.
+later_fixture additional-feature-only newer "-D FIXTURE_ADDITIONAL" \
+    "m['version'] = '1.1.0'; m['requiredFeatures'] = ['${FEATURE}']"
+# The use with no declaration in the descriptor or the manifest: a host that has
+# the feature must refuse it, because ignoring the set would be a silent fallback.
+later_fixture additional-undeclared newer "-D FIXTURE_ADDITIONAL -D FIXTURE_UNDECLARED" \
+    "m['version'] = '1.1.0'; m['framework']['minimumMinor'] = 1"
+# A descriptor that declares the feature under a manifest that does not.
+later_fixture additional-manifest-omits newer "-D FIXTURE_ADDITIONAL" \
+    "m['version'] = '1.1.0'; m['framework']['minimumMinor'] = 1"
+unset FIXTURE_ADDITIONAL
 
 echo "${PAIRS}"

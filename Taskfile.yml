@@ -269,8 +269,13 @@ tasks:
       - task: compat:build
       - task: compat:verify
 
+  compat:baseline:
+    desc: Build the pre-extension host, framework, fixtures and desktop provider from the RELEASED revision (KOINE_BASELINE_REVISION, default v0.1.0) in a tree of its own under .build/compat; the old side of every old/new check (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-baseline-host.sh {{.CONFIGURATION | default "debug"}}
+
   compat:build:
-    desc: Build the baseline and newer-minor revisions in separate trees under .build/compat, and the later fixtures (CONFIGURATION=debug|release)
+    desc: Build the released baseline (compat:baseline) and this tree's newer revision in separate trees under .build/compat, and the later fixtures (CONFIGURATION=debug|release)
     cmds:
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 

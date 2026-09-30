@@ -371,10 +371,16 @@ identical SDL/digests do not prove which binary was selected. Per-user replaceme
 occupy shipped positions; other per-user providers follow. Keep old-host profiles
 separate from extension-host profiles with additive candidate diagnostics.
 
-The launch-and-open increment owns the first implementation of additional
-capability requirements, exercised by workspace open/launch and through the
-existing native seam. Its planning must include that vertical dependency. This
-design adds no implementation leaves. The held-interactions design separately
+The framework feature itself is implemented: framework minor 1 with
+`additional-capabilities-v1`, enforced at whole-mutation preflight, dispatch
+admission and read publication, with the missing-owner cascade, established at
+the public seam over in-test contributions and in independently built binaries
+(`AdditionalCapabilityTests`,
+[binary-compatibility.md](../verification/binary-compatibility.md)). No shipped
+provider declares a set yet. The launch-and-open increment's workspace provider
+is its first consumer and the first check of a shipped provider's actual extra
+requirements, through the existing native seam. Its planning must include that
+vertical dependency. This design adds no implementation leaves. The held-interactions design separately
 owns any framework support for grant-bound lifetimes and autonomous cleanup;
 such support also needs an explicit minor and required feature before use.
 
@@ -405,7 +411,7 @@ outcome or independently built native compatibility.
 | Public GraphQL | Read-only/focus-only cannot send keys or invoke menus. Input-only and menu-only control paths work without desktop control, using their own references and receipts. Workspace-only control cannot launch/open/reveal. Missing any declared additional capability denies the entire selected mutation before all actions; aliases, fragments, input objects, defaults and skipped fields preserve the rule. Revocation before dispatch refuses the next action; read publication rechecks all read requirements. |
 | Public GraphQL | Dependency unavailable, stale target, complete empty result, partial/unknown search coverage and both permission classes remain distinguishable, including a prerequisite that vanishes between readiness and action. Existing desktop classifications are unchanged. Protected readiness does not leak through a denied grant. |
 | Public GraphQL and isolated VMs | Input/menu grants cannot drive Koine's approval, creation, revocation or Quit controls, including previously obtained targets and session-directed paths. Recognized consent/security targets are refused. Space switching needs both input and desktop control; disabled/remapped bindings exercise refusal and the stated race limit. A display-focus or menu-only grant never acquires a pointer-button fallback. |
-| Native binary interface | Old compiled registrations retain old behavior on the new framework; a provider requiring additional-capabilities-v1 is refused before loading on an old host. New-host checks enforce its actual extra requirements. Compare independently built binaries and signed supported pairs; test unavailable capability owners and registration/manifest disagreement. |
+| Native binary interface | Old compiled registrations retain old behavior on the new framework; a provider requiring additional-capabilities-v1 is refused before loading on an old host. New-host checks enforce its actual extra requirements. Compare independently built binaries and signed supported pairs; test unavailable capability owners and registration/manifest disagreement. **Established for the framework feature**, with a fixture provider: the released host refuses it before load, the new host enforces its set and refuses an undeclared use and a manifest/descriptor disagreement, and an old provider and the released desktop provider run unchanged on the new host, on independently built unsigned hosts. **Pending**: the workspace provider's own extra requirements, and every signed pair. |
 | Native call-path inspection and isolated TestAnyware macOS VMs | Enumerate each primitive, parameter, preparation, fallback and cleanup path against the authority trace. Use targets whose invoked operation does not itself change focus to distinguish Koine's extra activation calls from app reactions, and record both observations and inspected calls. A VM focus change alone proves neither the presence nor absence of a hidden call. Workspace activation requires both grants; real menu-only and application-input-only paths preserve independent grants. Record permissions, app/tool versions, limits and pending account cases. |
 | Isolated TestAnyware macOS VMs | Every read remains prompt-free, including first access to protected roots and Automation readiness. Revocation/inactivity cleanup uses only mechanisms admitted at start. Grant UI/descriptions disclose workspace app/document reach, expanded desktop control and broad input/menu reach before each surface ships. |
 

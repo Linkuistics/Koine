@@ -1,4 +1,5 @@
 import Foundation
+import KoineProviderLoader
 import KoineServer
 import MachO
 
@@ -9,7 +10,12 @@ import MachO
 // provider root, and adds no API: a driver reaches it as any client does, over
 // loopback HTTP with a grant.
 //
-// usage: KoineCompatibilityHost <data directory>
+// usage: KoineCompatibilityHost <data directory> [<in-application root>]
+//
+// The second argument stands in for `Contents/PlugIns`: a directory of bundles,
+// each approved by the `<providerId>.approval.json` beside it, that load as the
+// bundled provider the identifier `desktop` is reserved to. A host of an earlier
+// release takes the data directory alone.
 //
 // Prints one JSON line when ready (port, a credential holding every available
 // capability, and the KoineProviderAPI images mapped into this process), serves
@@ -33,16 +39,30 @@ func console(_ server: KoineServer, _ query: String, _ variables: [String: Any] 
 
 struct HostFailure: Error, CustomStringConvertible { let description: String }
 
-guard CommandLine.arguments.count == 2 else {
-    FileHandle.standardError.write(Data("usage: KoineCompatibilityHost <data directory>\n".utf8))
+guard (2...3).contains(CommandLine.arguments.count) else {
+    FileHandle.standardError.write(
+        Data("usage: KoineCompatibilityHost <data directory> [<in-application root>]\n".utf8)
+    )
     exit(2)
 }
 let dataDirectory = URL(fileURLWithPath: CommandLine.arguments[1], isDirectory: true)
+var roots = [KoineServer.installedProviderRoot(in: dataDirectory)]
+if CommandLine.arguments.count == 3 {
+    let bundled = URL(fileURLWithPath: CommandLine.arguments[2], isDirectory: true)
+    let records = try FileManager.default.contentsOfDirectory(
+        at: bundled, includingPropertiesForKeys: nil
+    ).filter { $0.lastPathComponent.hasSuffix(".approval.json") }
+    roots.insert(
+        .bundled(
+            bundled,
+            approvals: try records.map {
+                try JSONDecoder().decode(ProviderApproval.self, from: Data(contentsOf: $0))
+            }
+        ), at: 0
+    )
+}
 // On the main thread: verifying a signature blocks on work Security dispatches.
-let server = try KoineServer(
-    dataDirectory: dataDirectory,
-    providerRoots: [KoineServer.installedProviderRoot(in: dataDirectory)]
-)
+let server = try KoineServer(dataDirectory: dataDirectory, providerRoots: roots)
 
 Task {
     do {

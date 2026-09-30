@@ -80,6 +80,8 @@ struct ProviderContribution: Sendable {
             // A reference to another provider's resource needs that owner's
             // capability of the field's class; using one never grants access.
             // An unregistered owner has none, and is `unknown-provider` later.
+            let additional = additionalCapabilities(of: field).filter { $0 != capability }
+            let usesSet = !additional.isEmpty
             let owners: @Sendable (Map) -> [FieldAuthority] = { arguments in
                 var owners: Set<String> = []
                 for (name, value) in arguments.dictionary ?? [:] {
@@ -90,10 +92,18 @@ struct ProviderContribution: Sendable {
                         owners.insert(owner)
                     }
                 }
-                return owners.sorted().map { .capability("\($0):\(authorityClass)") }
+                // A field that declares a set orders its owners' capabilities by
+                // code point, as it does the set; every other field keeps the
+                // order of the owners' identifiers, which is its baseline.
+                let names = owners.sorted().map { "\($0):\(authorityClass)" }
+                return (usesSet ? names.sorted(by: codePointOrder) : names).map {
+                    .capability($0)
+                }
             }
             all[coordinate] = FieldRegistration(
-                authority: .capability(capability), argumentAuthorities: owners
+                authority: .capability(capability),
+                additionalCapabilities: additional,
+                argumentAuthorities: owners
             ) { input in
                 var arguments: [String: ProviderValue] = [:]
                 for (name, value) in input.arguments.dictionary ?? [:] {
@@ -149,6 +159,26 @@ struct ProviderContribution: Sendable {
     }
 }
 
+/// The capability names of a registration's additional requirements, in Unicode
+/// code-point order: the order the host checks and reports them in. Comparing
+/// the scalars is the contract's order and does not depend on the locale or on
+/// String's normalization-aware comparison.
+private func additionalCapabilities(of field: ProviderFieldRegistration) -> [String] {
+    var names: [String] = []
+    for requirement in field.additionalRequirements {
+        switch requirement.kind {
+        case .read: names.append("\(requirement.providerId):read")
+        case .control: names.append("\(requirement.providerId):control")
+        @unknown default: break  // composition has refused this already
+        }
+    }
+    return Set(names).sorted(by: codePointOrder)
+}
+
+private func codePointOrder(_ left: String, _ right: String) -> Bool {
+    left.unicodeScalars.lexicographicallyPrecedes(right.unicodeScalars)
+}
+
 /// What the library carries as the source value of a provider's object, so a
 /// nested resolver receives exactly the value its provider returned.
 private struct ProviderObject: Sendable {
@@ -181,6 +211,16 @@ extension ProviderValue {
 private func providerValue(_ map: Map, as type: (any GraphQLType)?) -> ProviderValue? {
     let type = (type as? GraphQLNonNull)?.ofType ?? type
     let scalar = (type as? GraphQLScalarType)?.name
+    // A solitary value where a list is declared is a one-element list, as the
+    // library coerces it at dispatch; preflight sees the value as written.
+    if let list = type as? GraphQLList {
+        switch map {
+        case .array, .undefined, .null: break
+        default:
+            guard let element = providerValue(map, as: list.ofType) else { return nil }
+            return .list([element])
+        }
+    }
     switch map {
     case .undefined, .null: return .null
     case .bool(let value): return .bool(value)
@@ -203,6 +243,12 @@ private func providerValue(_ map: Map, as type: (any GraphQLType)?) -> ProviderV
         var object: [String: ProviderValue] = [:]
         for (key, value) in values {
             guard let converted = providerValue(value, as: fields[key]?.type) else { return nil }
+            object[key] = converted
+        }
+        // A field left out takes its declared default, which can be a reference.
+        for (key, field) in fields where object[key] == nil {
+            guard let fallback = field.defaultValue, fallback != .undefined else { continue }
+            guard let converted = providerValue(fallback, as: field.type) else { return nil }
             object[key] = converted
         }
         return .object(object)

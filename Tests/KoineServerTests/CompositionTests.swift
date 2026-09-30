@@ -33,6 +33,7 @@ struct Stub {
         id: String, prefix: String, sdl: String,
         fields: [(String, ProviderFieldAuthority)], origin: ActiveProvider.Origin = .external,
         requiredFeatures: [String] = [],
+        additional: [String: [ProviderCapabilityRequirement]] = [:],
         resolve: @escaping StubProvider.Resolve = { _ in .success(.string("ok")) }
     ) {
         provider = StubProvider(resolve)
@@ -40,9 +41,15 @@ struct Stub {
             descriptor: ProviderDescriptor(
                 providerId: id, graphQLPrefix: prefix, schemaSDL: sdl,
                 fields: fields.map {
-                    ProviderFieldRegistration(coordinate: $0.0, resolverId: $0.0, authority: $0.1)
+                    ProviderFieldRegistration(
+                        coordinate: $0.0, resolverId: $0.0, authority: $0.1,
+                        additionalRequirements: additional[$0.0] ?? []
+                    )
                 },
-                requiredFeatures: requiredFeatures
+                // A descriptor that uses the set declares the feature that carries it.
+                requiredFeatures: additional.isEmpty
+                    ? requiredFeatures
+                    : requiredFeatures + [ProviderDescriptor.additionalCapabilitiesFeature]
             ),
             provider: provider, origin: origin
         )
@@ -186,6 +193,12 @@ struct Stub {
             testDescription: "directive applied to a core root type",
             reason: .foreignTypeExtension, id: "bad", prefix: "Bad",
             sdl: "directive @badMark on OBJECT extend type Query @badMark { badValue: String }",
+            fields: [("Query.badValue", .read)]
+        ),
+        Refused(
+            testDescription: "Reference default that is no reference", reason: .invalidSDL,
+            id: "bad", prefix: "Bad",
+            sdl: #"extend type Query { badValue(r: Reference = "junk"): String }"#,
             fields: [("Query.badValue", .read)]
         ),
         Refused(
