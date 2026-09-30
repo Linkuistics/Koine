@@ -2,6 +2,7 @@ import Foundation
 import KoineProviderLoader
 import KoineServer
 import MachO
+import ObjectiveC
 
 // Test material for the selection acceptance (docs/verification/selection-decisions.md):
 // a headless host that is a real signed application in everything selection reads.
@@ -26,8 +27,9 @@ import MachO
 // usage: KoineSelectionHost <data directory> [--reverse-discovery]
 //
 // Prints one JSON line when ready (port, a credential holding every available
-// capability, the team this process verified, and the KoineProviderAPI images
-// mapped), serves until standard input ends, then stops and prints how long that took.
+// capability, the team this process verified, the KoineProviderAPI images
+// mapped, and every image that is not the system's with the runtime classes it defines),
+// serves until standard input ends, then stops and prints how long that took.
 
 /// A class registered by this host's own image, for a fixture manifest to name as its
 /// principal class: the loader's check that a selected provider's principal class name is
@@ -37,6 +39,25 @@ import MachO
 func emit(_ object: [String: Any]) {
     let data = try! JSONSerialization.data(withJSONObject: object, options: [.sortedKeys])
     FileHandle.standardOutput.write(data + Data("\n".utf8))
+}
+
+/// Every image mapped into this process that is not the system's, with the Objective-C runtime
+/// class names the image defines: the native observation of what a provider brought with it
+/// (docs/verification/selection-updates.md). A refused bundle's image is absent.
+func mappedImages() -> [[String: Any]] {
+    (0..<_dyld_image_count()).compactMap { index in
+        guard let path = _dyld_get_image_name(index).map({ String(cString: $0) }) else { return nil }
+        if path.hasPrefix("/usr/lib/") || path.hasPrefix("/System/") || path.hasPrefix("/Library/Apple/") {
+            return nil
+        }
+        var count: UInt32 = 0
+        var classes: [String] = []
+        if let names = objc_copyClassNamesForImage(path, &count) {
+            classes = (0..<Int(count)).map { String(cString: names[$0]) }.sorted()
+            free(names)
+        }
+        return ["path": path, "classes": classes]
+    }
 }
 
 func console(_ server: KoineServer, _ query: String, _ variables: [String: Any] = [:]) async throws
@@ -111,7 +132,7 @@ Task {
         }.filter { URL(fileURLWithPath: $0).lastPathComponent.contains("KoineProviderAPI") }
         emit([
             "port": port, "credential": credential, "frameworkImages": frameworkImages,
-            "hostTeam": ProviderApproval.hostTeamIdentifier ?? NSNull(),
+            "hostTeam": ProviderApproval.hostTeamIdentifier ?? NSNull(), "images": mappedImages(),
         ])
     } catch {
         emit(["error": "\(error)"])

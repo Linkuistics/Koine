@@ -38,7 +38,30 @@ def rpaths(executable):
     return [lines[i + 2].split()[1] for i, line in enumerate(lines) if "cmd LC_RPATH" in line]
 
 
+PRODUCTION_CATALOGUE = os.path.join(REPOSITORY, "App", "ProviderCatalogue.json")
+ENABLED_KEYS = ("bundle", "release", "schema", "signingIdentifier")
+
+
+def production_catalogue(definition):
+    """The shipped catalogue (App/ProviderCatalogue.json) as a host sealed around real bundles carries it:
+    verbatim, or with the named identities reserved-only (their baseline left out), which is the one
+    change a host makes that does not ship that provider. Nothing else about it is altered."""
+    with open(PRODUCTION_CATALOGUE) as file:
+        text = file.read()
+    reserved = definition["production"].get("reservedOnly", [])
+    if not reserved:
+        return text
+    catalogue = json.loads(text)
+    for identity in catalogue["identities"]:
+        if identity["providerId"] in reserved:
+            for key in ENABLED_KEYS:
+                identity.pop(key, None)
+    return json.dumps(catalogue, indent=2)
+
+
 def catalogue_of(definition, identities):
+    if "production" in definition:
+        return production_catalogue(definition)
     if "catalogue" in definition:
         catalogue = definition["catalogue"]
     else:
@@ -57,19 +80,34 @@ def production_names():
 
 
 def check_fixture_identities(name, definition, identities):
-    """A test catalogue never admits a production name: fixtures are only ever admitted by test catalogues."""
+    """A test catalogue never admits a production name: fixtures are only ever admitted by test catalogues.
+
+    Two kinds of host are let past that, each for a stated reason. `production` hosts carry the shipped
+    catalogue (whole, or with identities reserved-only) around REAL first-party bundles, which is the
+    host the signed application is. `productionNames` hosts give a fixture the shipped provider's
+    identifier and prefix (the pair a production catalogue reserves) so that the same compiled binary
+    can be shown loading under a signing identifier the production catalogue does not admit; such a
+    host still never names a production signing identifier."""
+    if "production" in definition:
+        return
     catalogue = definition.get("catalogue") or {"identities": [identities[n] for n in definition["identities"]]}
     if isinstance(catalogue, str):
         return
     taken = production_names()
     for identity in catalogue["identities"]:
         for key in ("providerId", "graphQLPrefix", "signingIdentifier"):
+            if definition.get("productionNames") and key != "signingIdentifier":
+                continue
             if identity.get(key, "").lower() in taken:
                 raise SystemExit(f"{name}: test catalogue uses the production {key} {identity[key]!r}")
 
 
 def build(name, definition, identities, products, framework, fixtures, output):
     check_fixture_identities(name, definition, identities)
+    if "production" in definition:
+        for plugin in definition["plugins"]:
+            if not plugin["case"].startswith(("current-", "released-")):
+                raise SystemExit(f"{name}: a production host holds real first-party bundles, not {plugin['case']!r}")
     app = os.path.join(output, name, "KoineSelectionHost.app")
     shutil.rmtree(os.path.dirname(app), ignore_errors=True)
     contents = os.path.join(app, "Contents")
@@ -133,7 +171,12 @@ def main():
     products, framework, fixtures, output = (os.path.abspath(argument) for argument in sys.argv[1:5])
     with open(HOSTS) as file:
         spec = json.load(file)
-    wanted = sys.argv[5:] or list(spec["hosts"])
+    named = sys.argv[5:]
+    # `task` hands its CLI_ARGS to every recipe in a run, this one included, so a driver's own flags
+    # (`--only <text>`) can arrive here: they name no host, and every host is built.
+    if any(argument.startswith("--") for argument in named):
+        named = []
+    wanted = named or list(spec["hosts"])
     for name in wanted:
         print(build(name, spec["hosts"][name], spec["identities"], products, framework, fixtures, output))
 

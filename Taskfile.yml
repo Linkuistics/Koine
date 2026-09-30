@@ -329,12 +329,14 @@ tasks:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
 
   selection:fixtures:
-    desc: Build, sign and keep apart the real provider bundles the selection acceptance installs (an old baseline and an update per slot, ordinary providers, claimants), each writing initializer, factory and start markers; output .build/selection-acceptance/fixtures
+    desc: Build, sign and keep apart the provider bundles the selection acceptance installs - fixtures (an old baseline and an update per slot, ordinary providers, claimants, one refusal per trust check), each writing initializer, factory and start markers, and the REAL first-party providers (the released desktop, this tree's desktop and workspace, and newer releases of both that state first-party-selection-v1); output .build/selection-acceptance/fixtures
+    deps: [compat:baseline]
     cmds:
       - swift build --product KoineSelectionHost
       - |
         FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
         Fixtures/FixtureProvider/build-decisions.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+        scripts/build-selection-real.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
 
   selection:hosts:
     desc: Assemble and sign the purpose-built headless hosts of the selection acceptance, each with its own test catalogue and in-application bundles sealed BEFORE its signature (Fixtures/SelectionHost/hosts.json); output .build/selection-acceptance/hosts. Optionally name hosts (CLI_ARGS)
@@ -358,8 +360,15 @@ tasks:
       - swift build --product KoineConformance
       - scripts/verify-selection-failures.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/failures.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
 
+  selection:updates:
+    desc: Run the selection update rows (N and G) - an old host with an old desktop provider and a selection-aware host over an independently compiled old designated baseline (existing operations, errors and grants answered identically, core + desktop profiles held), separately approved newer desktop and workspace updates that are the one image per slot, a host that predates first-party-selection-v1 given newly published updates with the principal class kept and renamed, every trust refusal a per-user update can meet with its fall-back and the stage and quarantine recoveries, a provider claiming a reserved pair under a fixture signing identifier, equal bytes and names in both roots staged in both orders and a legacy staging entry, and mixed releases of the real desktop and workspace built from reused helper source with their image inventory - each scenario, alternative order and restart in its own signed host process - and write .build/selection-acceptance/updates.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - swift build --product KoineConformance
+      - scripts/verify-selection-updates.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/updates.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
+
   selection:mutation:
-    desc: Make each instrument of the selection decisions come back RED against a loader with one decision deliberately broken (text version order, first-copy tie break, no signing-identifier check, reserved claims unrefused, equal release taking over, unselected candidates loading, a team given to an ad-hoc host; and for the failure boundary two shipped principal conflicts not both refused, an ordinary claimant not refused, a host class not counted, descriptor features not compared, alternatives loaded after a failure; and for the duplicates, cascade and start failure a refused rival contesting, eligible duplicates not refused, the capability-owner removal never run, run for one round or given no cycle, a failed start still answering, alternatives loaded after a failed start; and for the digest and restart rows composition without the shipped group first or in reverse identifier order, a digest over type names alone, every grant holding koine:manage, the assessment verdict never asked or a refusal remembered, an unreadable root read as empty), each in a copy of the tree under .build/selection-mutations; the working tree is never edited. Names may follow (CLI_ARGS)
+    desc: Make each instrument of the selection decisions come back RED against a loader with one decision deliberately broken (text version order, first-copy tie break, no signing-identifier check, reserved claims unrefused, equal release taking over, unselected candidates loading, a team given to an ad-hoc host; and for the failure boundary two shipped principal conflicts not both refused, an ordinary claimant not refused, a host class not counted, descriptor features not compared, alternatives loaded after a failure; and for the duplicates, cascade and start failure a refused rival contesting, eligible duplicates not refused, the capability-owner removal never run, run for one round or given no cycle, a failed start still answering, alternatives loaded after a failed start; and for the digest and restart rows composition without the shipped group first or in reverse identifier order, a digest over type names alone, every grant holding koine:manage, the assessment verdict never asked or a refusal remembered, an unreadable root read as empty; and for the update rows an approval's Team ID not compared or no approval required, signatures not verified, a location outside the root accepted, the quarantine assessment skipped, staging names shared across origins, the selection feature not required, the signing identifier not compared, compatibility not checked, every eligible candidate loaded), each in a copy of the tree under .build/selection-mutations; the working tree is never edited. Names may follow (CLI_ARGS)
     deps: [selection:fixtures]
     cmds:
       - scripts/check-selection-mutations.py .build/selection-acceptance/fixtures .build/selection-acceptance/mutations {{.CLI_ARGS}}

@@ -9,7 +9,14 @@ private func koineFixtureMarker(_ phase: UnsafePointer<CChar>)
 // Test material: the independently built provider the native seam is exercised
 // with. build.sh generates `fixtureSchemaSDL` from schema.graphql.
 
-@objc(KoineFixtureProviderFactory)
+// FIXTURE_RENAMED_PRINCIPAL: an update that names another principal class than the release
+// before it, which the selection acceptance installs beside a host that predates the
+// `first-party-selection-v1` feature (docs/verification/selection-updates.md).
+#if FIXTURE_RENAMED_PRINCIPAL
+    @objc(KoineFixtureProviderFactoryRenamed)
+#else
+    @objc(KoineFixtureProviderFactory)
+#endif
 final class FixtureProviderFactory: NSObject, ProviderFactory {
     override required init() {
         super.init()

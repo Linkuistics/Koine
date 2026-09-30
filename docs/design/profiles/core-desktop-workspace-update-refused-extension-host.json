@@ -1,0 +1,32 @@
+{
+  "name": "extension-host core + desktop + workspace, updates that do not state first-party-selection-v1 refused",
+  "design": "../desktop-workspace-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Held by scripts/verify-selection-updates.py (`task selection:updates`) against a signed purpose-built host that",
+    "is the signed application in everything selection reads, headless: the shipped provider catalogue around the",
+    "real providers of this tree (and, for the desktop-only profile, around the RELEASED desktop provider as the",
+    "designated baseline), with newer releases of the same sources installed per user. The design SDL is the",
+    "unchanged contract: an update adds no schema. The pins are what tell the binaries apart, because an identical",
+    "digest cannot prove which binary ran. A row that is missing or extra fails the profile.",
+    "An explicit rejected profile: each per-user update is INCOMPATIBLE / selection-feature-required before it loads, and each baseline keeps the slot with the refusal in its reason."
+  ],
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "INCOMPATIBLE",
+      "origin": "PER_USER", "selection": "NOT_SELECTED", "reason": "selection-feature-required"
+    },
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": "selected-with-refusals"
+    },
+    {
+      "provider": "workspace", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "INCOMPATIBLE",
+      "origin": "PER_USER", "selection": "NOT_SELECTED", "reason": "selection-feature-required"
+    },
+    {
+      "provider": "workspace", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": "selected-with-refusals"
+    }
+  ]
+}

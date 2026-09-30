@@ -270,8 +270,8 @@ test` still passes (285 tests in the server suite among the others).
 
 - The alternate-team host (above).
 - Notarized hosts and quarantined downloads, and every V row: `selection-vm`.
-- Update-side trust refusals, staging and mixed releases: `selection-updates`. A
-  frozen choice failing later, collisions, the cascade, the digest and restart:
-  `selection-failures`.
+- Update-side trust refusals, staging and mixed releases: [selection-updates.md](selection-updates.md).
+  A frozen choice failing later, collisions, the cascade, the digest and restart:
+  [selection-failures.md](selection-failures.md).
 - No claim that the loader is a sandbox. A refused image's absence from the marker
   log is the observation; native code the loader loaded stays trusted.

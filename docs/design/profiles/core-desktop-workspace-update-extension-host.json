@@ -1,0 +1,31 @@
+{
+  "name": "extension-host core + desktop + workspace, both providers updated",
+  "design": "../desktop-workspace-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Held by scripts/verify-selection-updates.py (`task selection:updates`) against a signed purpose-built host that",
+    "is the signed application in everything selection reads, headless: the shipped provider catalogue around the",
+    "real providers of this tree (and, for the desktop-only profile, around the RELEASED desktop provider as the",
+    "designated baseline), with newer releases of the same sources installed per user. The design SDL is the",
+    "unchanged contract: an update adds no schema. The pins are what tell the binaries apart, because an identical",
+    "digest cannot prove which binary ran. A row that is missing or extra fails the profile."
+  ],
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "PER_USER", "selection": "SELECTED", "reason": null
+    },
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "REJECTED",
+      "origin": "BUNDLED", "selection": "NOT_SELECTED", "reason": "superseded-candidate"
+    },
+    {
+      "provider": "workspace", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "PER_USER", "selection": "SELECTED", "reason": null
+    },
+    {
+      "provider": "workspace", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "REJECTED",
+      "origin": "BUNDLED", "selection": "NOT_SELECTED", "reason": "superseded-candidate"
+    }
+  ]
+}

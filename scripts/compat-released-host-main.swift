@@ -2,6 +2,7 @@ import Foundation
 import KoineProviderLoader
 import KoineServer
 import MachO
+import ObjectiveC
 
 // Test material for the binary compatibility pairs (docs/verification/
 // binary-compatibility.md): a headless host that runs alone, so an old host can
@@ -28,6 +29,25 @@ import MachO
 func emit(_ object: [String: Any]) {
     let data = try! JSONSerialization.data(withJSONObject: object, options: [.sortedKeys])
     FileHandle.standardOutput.write(data + Data("\n".utf8))
+}
+
+/// Every image mapped into this process that is not the system's, with the Objective-C runtime
+/// class names the image defines: the native observation of what a provider brought with it
+/// (docs/verification/selection-updates.md). A refused bundle's image is absent.
+func mappedImages() -> [[String: Any]] {
+    (0..<_dyld_image_count()).compactMap { index in
+        guard let path = _dyld_get_image_name(index).map({ String(cString: $0) }) else { return nil }
+        if path.hasPrefix("/usr/lib/") || path.hasPrefix("/System/") || path.hasPrefix("/Library/Apple/") {
+            return nil
+        }
+        var count: UInt32 = 0
+        var classes: [String] = []
+        if let names = objc_copyClassNamesForImage(path, &count) {
+            classes = (0..<Int(count)).map { String(cString: names[$0]) }.sorted()
+            free(names)
+        }
+        return ["path": path, "classes": classes]
+    }
 }
 
 func console(_ server: KoineServer, _ query: String, _ variables: [String: Any] = [:]) async throws
@@ -83,7 +103,7 @@ Task {
         let frameworkImages = (0..<_dyld_image_count()).compactMap { index in
             _dyld_get_image_name(index).map { String(cString: $0) }
         }.filter { URL(fileURLWithPath: $0).lastPathComponent.contains("KoineProviderAPI") }
-        emit(["port": port, "credential": credential, "frameworkImages": frameworkImages])
+        emit(["port": port, "credential": credential, "frameworkImages": frameworkImages, "images": mappedImages()])
     } catch {
         emit(["error": "\(error)"])
         exit(1)

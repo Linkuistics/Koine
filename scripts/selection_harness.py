@@ -42,9 +42,11 @@ in use is the discovery order, reversed for the alternative run.
 """
 
 import glob
+import hashlib
 import json
 import os
 import re
+import stat
 import shutil
 import subprocess
 import sys
@@ -72,19 +74,79 @@ SEL, NOT, UNAVAIL = "SELECTED", "NOT_SELECTED", "UNAVAILABLE"
 FRESH = "FixtureSh"  # the bundled baseline's install name
 
 
+# --- Staging names, as the loader forms them ---------------------------------------
+
+
+def content_digest(bundle):
+    """ProviderStaging.digest(of:): SHA-256 over every entry's path, kind and content, and whether a
+    file is executable, in path order; the first 16 bytes as hex."""
+    entries = []
+    for directory, names, files in os.walk(bundle):
+        for name in names + files:
+            entries.append(os.path.relpath(os.path.join(directory, name), bundle))
+    digest = hashlib.sha256()
+    for entry in sorted(entries):
+        path = os.path.join(bundle, entry)
+        mode = os.lstat(path).st_mode
+        digest.update(f"{entry}\0".encode())
+        if stat.S_ISDIR(mode):
+            digest.update(b"d\0")
+        elif stat.S_ISLNK(mode):
+            digest.update(f"l{os.readlink(path)}\0".encode())
+        elif stat.S_ISREG(mode):
+            with open(path, "rb") as file:
+                content = file.read()
+            digest.update(f"f{'-' if mode & 0o111 == 0 else 'x'}{len(content)}\0".encode())
+            digest.update(content)
+        else:
+            raise ValueError(f"{path} is neither a file, a directory nor a link")
+    return digest.hexdigest()[:32]
+
+
+def staged_name(origin, installed, bundle):
+    """ProviderStaging.stagedName(of:from:origin:): the bundle's name, then a digest of its physical
+    origin (BUNDLED, PER_USER), its canonical installed location and its content. `installed` is the
+    canonical path (realpath) and `bundle` the directory whose content is digested."""
+    name = os.path.basename(installed)
+    name = name[: -len(".koineprovider")] if name.endswith(".koineprovider") else name
+    identity = hashlib.sha256(f"{origin}\0{installed}\0{content_digest(bundle)}".encode()).hexdigest()[:32]
+    return f"{name}-{identity}"
+
+
+def legacy_staged_name(installed, bundle):
+    """The name the earlier, content-only scheme gave a copy: `<bundle name>-<content digest>`."""
+    name = os.path.basename(installed)
+    name = name[: -len(".koineprovider")] if name.endswith(".koineprovider") else name
+    return f"{name}-{content_digest(bundle)}"
+
+
+def make_writable(directory):
+    """Staged copies are read-only; a driver that damages or removes one has to undo that first."""
+    for root, names, files in os.walk(directory):
+        for entry in [root] + [os.path.join(root, n) for n in names + files]:
+            if not os.path.islink(entry):
+                os.chmod(entry, os.lstat(entry).st_mode | 0o200)
+
+
 # --- Scenario vocabulary ------------------------------------------------------------
 
 
 class Install:
-    """One entry of the per-user provider root: a fixture case installed as `name`."""
+    """One entry of the per-user provider root: a fixture case installed as `name`.
 
-    def __init__(self, case, name, approved=True, alias_of=None, quarantined=False):
+    `team` is the Team ID the approval record names (default: the team that signs the fixtures), and
+    `approved=False` writes none; `outside` places the bundle outside the root and links to it from
+    inside, as a location that resolves out of the root; `keep_approval` leaves the approval record as
+    it is (a newer release replacing an older one, approved once)."""
+
+    def __init__(self, case, name, approved=True, alias_of=None, quarantined=False, team=None, outside=False,
+                 keep_approval=False):
         self.case, self.name, self.approved, self.alias_of = case, name, approved, alias_of
-        self.quarantined = quarantined
+        self.quarantined, self.team, self.outside, self.keep_approval = quarantined, team, outside, keep_approval
 
 
-def U(case, name, approved=True, quarantined=False):
-    return Install(case, name, approved, quarantined=quarantined)
+def U(case, name, approved=True, quarantined=False, **more):
+    return Install(case, name, approved, quarantined=quarantined, **more)
 
 
 def Alias(name, target):
@@ -108,14 +170,17 @@ class Phase:
     `start_fails` that startup must stop with that text, `digest` tags the served schema
     digest, `managed` has the phase show that koine:manage alone opens the management
     fields, and `clients` are (phase of a credential, root field, verdict) for a credential an
-    earlier phase was given: its verdict is "denied", "served" or "unpublished".
+    earlier phase was given: its verdict is "denied", "served" or "unpublished". `actions` also
+    include ("put", Install), ("replace-keep-approval", name, case), ("unquarantine", name),
+    ("unstage", label-or-None), ("damage-staged", label), ("chmod-staging", mode) and
+    ("plant-legacy", name, case[, quarantined]).
     """
 
     def __init__(
         self, rows, actions=(), ran=(), partial=None, serves=None, absent_fields=(), present_fields=(),
         order=None, rows_note=None, label=None, capabilities=(), no_capabilities=(), mutations=(),
         no_mutations=(), unavailable=(), conformance=None, host=None, env=None, quarantine=False,
-        start_fails=None, digest=None, managed=False, clients=(),
+        start_fails=None, digest=None, managed=False, clients=(), images=None, extra=(), operations=None,
     ):
         self.rows, self.rows_note, self.label = list(rows), rows_note, label
         self.actions = list(actions)
@@ -132,6 +197,13 @@ class Phase:
         self.unavailable, self.conformance = list(unavailable), conformance
         self.host, self.env, self.quarantine, self.start_fails = host, env or {}, quarantine, start_fails
         self.digest, self.managed, self.clients = digest, managed, list(clients)
+        # The provider images this phase's host process has mapped, by label (the install name, or
+        # `<name>@bundled` / `<name>@user` where a bundle of one name is in both roots): what a real
+        # first-party provider, which writes no marker, is seen loaded by. None: not asserted.
+        self.images = images
+        # Further checks of this phase, each called as `check(host, check, context)`; and the stem of
+        # the fixture whose operations (items, errors, grants) are exercised, e.g. "FixtureSh".
+        self.extra, self.operations = list(extra), operations
 
 
 class Scenario(Phase):
@@ -174,6 +246,27 @@ class Suite:
         text = subprocess.run(["codesign", "-dvv", self.bundle(case)], capture_output=True, text=True).stderr
         return next(line.split("=", 1)[1] for line in text.splitlines() if line.startswith("TeamIdentifier="))
 
+    def is_real(self, case):
+        """Whether a case is a real first-party provider, which writes no marker: it is seen loaded by
+        its image being mapped into the host process, and served by its state being ACTIVE."""
+        return self.binary_of[case].startswith("real-")
+
+    def manifest_of(self, case):
+        with open(os.path.join(self.bundle(case), "manifest.json")) as file:
+            return json.load(file)
+
+    def bundled_stage(self, host):
+        """{install name: staged directory name} of the bundles sealed inside a host, as the loader
+        will name their staged copies."""
+        cache = self.__dict__.setdefault("_bundled_stage", {})
+        if host not in cache:
+            plugins = os.path.join(self.hosts, host, "KoineSelectionHost.app", "Contents", "PlugIns")
+            cache[host] = {}
+            for name, _ in self.plugins(host):
+                path = os.path.join(plugins, name + ".koineprovider")
+                cache[host][name] = staged_name("BUNDLED", os.path.realpath(path), path)
+        return cache[host]
+
     def host_binary(self, host):
         return os.path.join(self.hosts, host, "KoineSelectionHost.app", "Contents", "MacOS", "KoineSelectionHost")
 
@@ -200,6 +293,8 @@ class HostRun:
         os.chmod(self.data, 0o700)
         self.renames = renames
         self.installed = {}  # install name (unrenamed) -> case, for what is in the per-user root now
+        self.user_stage = {}  # install name -> the staged directory name the loader will give its copy
+        self.collision_labels = {}  # staged directory -> label, where a bundle name is in both roots
         self.phase = 0
         self.credentials = []  # the credential each phase's host process gave, in phase order
         self.granted = []  # the capabilities each of those held when it was given
@@ -218,18 +313,69 @@ class HostRun:
         if install.alias_of:
             os.symlink(self.renames.get(install.alias_of, install.alias_of) + ".koineprovider", destination)
             return
-        shutil.copytree(self.suite.bundle(install.case), destination, symlinks=True)
+        bundle = destination
+        if install.outside:
+            # The bundle lives beside the data directory; the root holds a link to it.
+            bundle = os.path.join(self.directory, "elsewhere", os.path.basename(destination))
+            os.makedirs(os.path.dirname(bundle), exist_ok=True)
+            shutil.copytree(self.suite.bundle(install.case), bundle, symlinks=True)
+            os.symlink(bundle, destination)
+        else:
+            shutil.copytree(self.suite.bundle(install.case), destination, symlinks=True)
         self.installed[install.name] = install.case
+        self.user_stage[install.name] = staged_name("PER_USER", os.path.realpath(destination), bundle)
         if install.quarantined:
-            self.quarantine(destination)
-        if install.approved:
+            self.quarantine(bundle)
+        if install.approved and not install.keep_approval:
             try:
-                with open(os.path.join(destination, "manifest.json")) as file:
+                with open(os.path.join(bundle, "manifest.json")) as file:
                     provider = json.load(file)["providerId"]
             except ValueError:
                 return  # a manifest that names no provider has nothing to approve
             with open(os.path.join(self.providers, provider + ".approval.json"), "w") as file:
-                json.dump({"providerId": provider, "teamIdentifier": self.suite.team}, file)
+                json.dump({"providerId": provider, "teamIdentifier": install.team or self.suite.team}, file)
+
+    @property
+    def staging(self):
+        return os.path.join(self.data, "ProviderStaging")
+
+    def staged_dirs(self):
+        """{staged directory name: does it carry com.apple.quarantine} for what the loader has staged."""
+        found = {}
+        if os.path.isdir(self.staging):
+            for name in sorted(os.listdir(self.staging)):
+                path = os.path.join(self.staging, name)
+                attributes = subprocess.run(["xattr", "-l", path], capture_output=True, text=True).stdout
+                images = glob.glob(os.path.join(path, "*.dylib"))
+                for image in images:
+                    attributes += subprocess.run(["xattr", "-l", image], capture_output=True, text=True).stdout
+                found[name] = "com.apple.quarantine" in attributes
+        return found
+
+    def label_of(self, staged):
+        """What a staged directory is called: the install's name, with a `@bundled` / `@user` suffix where
+        one bundle name is in both roots (their staged names differ, which is the point)."""
+        if staged in self.collision_labels:
+            return self.collision_labels[staged]
+        name = re.sub(r"-[0-9a-f]{32}$", "", staged)
+        return re.sub(r"^p\d\d-", "", name) if self.renames else name
+
+    def refresh_labels(self):
+        bundled = self.suite.bundled_stage(self.host_name)
+        both = set(bundled) & set(self.user_stage)
+        self.collision_labels = {}
+        for name in both:
+            self.collision_labels[bundled[name]] = name + "@bundled"
+            self.collision_labels[self.user_stage[name]] = name + "@user"
+
+    def loaded_labels(self):
+        """The provider images mapped into the current host process, by label: a bundle the loader
+        refused, or never selected, left no image."""
+        out = []
+        for image in self.ready.get("images", []):
+            if "/ProviderStaging/" in image["path"]:
+                out.append(self.label_of(os.path.basename(os.path.dirname(image["path"]))))
+        return sorted(out)
 
     @staticmethod
     def quarantine(bundle):
@@ -248,16 +394,53 @@ class HostRun:
             if kind == "remove":
                 shutil.rmtree(self._place(action[1]), ignore_errors=False)
                 self.installed.pop(action[1], None)
+                self.user_stage.pop(action[1], None)
             elif kind == "chmod":
                 # The per-user root, made unreadable (0) or given back (0o700).
                 assert action[1] == "providers"
                 os.chmod(self.providers, action[2])
             elif kind == "install":
                 self.install(U(action[1], action[2], quarantined=len(action) > 3 and action[3]))
+            elif kind == "put":
+                self.install(action[1])
             elif kind == "replace":
                 shutil.rmtree(self._place(action[1]))
                 self.installed.pop(action[1], None)
                 self.install(U(action[2], action[1]))
+            elif kind == "replace-keep-approval":
+                shutil.rmtree(self._place(action[1]))
+                self.installed.pop(action[1], None)
+                self.install(U(action[2], action[1], keep_approval=True))
+            elif kind == "unquarantine":
+                subprocess.run(["xattr", "-dr", "com.apple.quarantine", self._place(action[1])], check=True)
+            elif kind == "unstage":
+                # With the host stopped: the user's second step in the diagnostic's own recovery.
+                for name in list(os.listdir(self.staging)) if os.path.isdir(self.staging) else []:
+                    if action[1] is None or self.label_of(name) == action[1]:
+                        make_writable(os.path.join(self.staging, name))
+                        shutil.rmtree(os.path.join(self.staging, name))
+            elif kind == "damage-staged":
+                (name,) = [n for n in os.listdir(self.staging) if self.label_of(n) == action[1]]
+                directory = os.path.join(self.staging, name)
+                make_writable(directory)
+                (image,) = glob.glob(os.path.join(directory, "*.dylib"))
+                with open(image, "ab") as file:
+                    file.write(b"\0damaged after it was staged\0")
+            elif kind == "chmod-staging":
+                os.makedirs(self.staging, exist_ok=True)
+                os.chmod(self.staging, action[1])
+            elif kind == "plant-legacy":
+                # ("plant-legacy", content case, for case, bundle name[, quarantined]): an entry of the
+                # earlier content-only scheme, named for `for case`'s bytes and holding `content case`'s.
+                _, content, named_for, bundle_name = action[:4]
+                os.makedirs(self.staging, exist_ok=True)
+                name = legacy_staged_name(bundle_name + ".koineprovider", self.suite.bundle(named_for))
+                destination = os.path.join(self.staging, name)
+                shutil.copytree(self.suite.bundle(content), destination, symlinks=True)
+                if len(action) > 4 and action[4]:
+                    self.quarantine(destination)
+                self.legacy = getattr(self, "legacy", {})
+                self.legacy[name] = content_digest(destination)
             else:
                 raise ValueError(f"unknown action {action!r}")
 
@@ -267,6 +450,7 @@ class HostRun:
         """Starts the signed host this phase names over the data directory; raises if it stops."""
         self.phase += 1
         self.host_name = phase.host or self.scenario.host
+        self.refresh_labels()
         self.env = dict(self.scenario.env, **phase.env)
         # Unless a phase quarantines a copy on purpose, nothing is, so every assessment verdict is the same.
         self.quarantined = subprocess.run(
@@ -298,10 +482,10 @@ class HostRun:
         self.credentials.append(self.ready["credential"])
         self.granted.append(self.own_capabilities())
 
-    def post(self, query, credential=None):
+    def post(self, query, credential=None, variables=None):
         request = urllib.request.Request(
             f"http://127.0.0.1:{self.ready['port']}/graphql",
-            data=json.dumps({"query": query, "variables": {}}).encode(),
+            data=json.dumps({"query": query, "variables": variables or {}}).encode(),
             headers={"Content-Type": "application/json", "Authorization": f"Bearer {credential or self.ready['credential']}"},
         )
         try:
@@ -330,6 +514,13 @@ class HostRun:
     def capabilities(self):
         return self.data_of("{ koine { availableCapabilities } }")["koine"]["availableCapabilities"]
 
+    def create_grant(self, capabilities):
+        """A credential holding exactly these capabilities, made with the host's own grant."""
+        quoted = ", ".join('"%s"' % c for c in capabilities)
+        return self.data_of(
+            'mutation { koineCreateGrant(input: { clientLabel: "driver", capabilities: [%s] }) { credential } }' % quoted
+        )["koineCreateGrant"]["credential"]
+
     def own_capabilities(self, credential=None):
         """What the grant behind `credential` (by default this phase's) holds, as it says itself."""
         status, reply = self.post("{ koine { ownGrant { capabilities } } }", credential)
@@ -347,10 +538,7 @@ class HostRun:
             return []
         out = []
         for phase, image in lines:
-            staged = os.path.basename(os.path.dirname(image))
-            name = re.sub(r"-[0-9a-f]{32}$", "", staged)
-            name = re.sub(r"^p\d\d-", "", name) if self.renames else name
-            out.append((name, phase))
+            out.append((self.label_of(os.path.basename(os.path.dirname(image))), phase))
         return out
 
     def stop_process(self):
@@ -365,6 +553,8 @@ class HostRun:
         result = self.stop_process() if self.process else ({"stopped": True}, 0)
         if os.path.isdir(self.providers):
             os.chmod(self.providers, 0o700)
+        # Staged copies are read-only: without this the directory is left behind, run after run.
+        make_writable(self.directory)
         shutil.rmtree(self.directory, ignore_errors=True)
         return result
 
@@ -457,6 +647,10 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
         observed.setdefault(name, []).append(step)
     wanted_markers = {name: list(steps) for name, steps in phase.markers.items()}
     check("markers", observed == wanted_markers, {"observed": observed, "wanted": wanted_markers})
+    loaded = host.loaded_labels()
+    if phase.images is not None:
+        check("the provider images mapped into the process", loaded == sorted(phase.images),
+              {"observed": loaded, "wanted": sorted(phase.images)})
     if phase.order:
         firsts = [name for name, step in markers if step == "start"]
         check("start order", firsts == phase.order, firsts)
@@ -489,6 +683,10 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
               bool(errors) and all(text in (e.get("message") or "") and (e.get("extensions") or {}).get("kind") == "unavailable"
                                    for e in errors) and not (reply.get("data") or {}).get(root),
               [status, reply])
+    if phase.operations:
+        check_operations(host, phase.operations, check)
+    for extra in phase.extra:
+        extra(host, check, {"suite": suite, "installed": installed, "rows": rows, "record": record})
     if phase.conformance:
         check_conformance(host, phase.conformance, suite, check, record)
     if phase.digest:
@@ -510,20 +708,35 @@ def check_phase(host, phase, check, suite, installed, record, controls_tag, tag=
     for number, root, verdict in phase.clients:
         check_client(host, host.credentials[number - 1], number, root, verdict, check)
     # Controls: which compiled binary each install that did not run every phase would
-    # have been, and which was seen to run every phase.
+    # have been, and which was seen to run every phase. A real first-party provider writes no
+    # marker: it is seen to run by its image being mapped while a row for its release is ACTIVE.
+    active = {(row["provider"], row["version"]) for row in rows if row["state"] == ACTIVE}
+    fixtures = {name: case for name, case in installed.items() if not suite.is_real(case)}
+    real = {name: case for name, case in installed.items() if suite.is_real(case)}
     for name, steps in observed.items():
-        if tuple(steps) == FULL and name in installed:
-            suite.controls.setdefault(suite.binary_of[installed[name]], controls_tag)
+        if tuple(steps) == FULL and name in fixtures:
+            suite.controls.setdefault(suite.binary_of[fixtures[name]], controls_tag)
     record.setdefault("unloaded", {}).update(
-        {name + tag: suite.binary_of[case] for name, case in installed.items() if name not in observed}
+        {name + tag: suite.binary_of[case] for name, case in fixtures.items() if name not in observed}
     )
     record.setdefault("partial", {}).update(
         {
-            name + tag: {"binary": suite.binary_of[installed[name]], "reached": steps}
+            name + tag: {"binary": suite.binary_of[fixtures[name]], "reached": steps}
             for name, steps in observed.items()
-            if name in installed and tuple(steps) != FULL
+            if name in fixtures and tuple(steps) != FULL
         }
     )
+    for name, case in real.items():
+        if phase.images is None:
+            continue  # a phase that states no images asserts nothing of a real install's
+        manifest = suite.manifest_of(case)
+        binary = suite.binary_of[case]
+        if name in loaded and (manifest["providerId"], manifest["version"]) in active:
+            suite.controls.setdefault(binary, controls_tag)
+        elif name in loaded:
+            record["partial"][name + tag] = {"binary": binary, "reached": ["image"]}
+        else:
+            record["unloaded"][name + tag] = binary
     record.setdefault("phases", []).append({"rows": rows, "markers": observed})
     record["rows_observed"] = record.get("rows_observed", []) + rows
     record["markers_observed"] = observed
@@ -677,8 +890,13 @@ def check_conformance(host, profile, suite, check, record):
         controls = {}
         if pinned["providers"]:
             first = pinned["providers"][0]
-            wrong_reason = [dict(first, reason="a-reason-nobody-gives")] + pinned["providers"][1:]
-            wrong_selection = [dict(first, selection="NOT_SELECTED" if first.get("selection") == "SELECTED" else "SELECTED")] + pinned["providers"][1:]
+            if pinned.get("management") == "baseline":
+                # A baseline row has no reason or selection to be wrong about: the row's release and state are.
+                wrong_reason = [dict(first, version="9.9.9")] + pinned["providers"][1:]
+                wrong_selection = [dict(first, state="REJECTED" if first.get("state") != "REJECTED" else "ACTIVE")] + pinned["providers"][1:]
+            else:
+                wrong_reason = [dict(first, reason="a-reason-nobody-gives")] + pinned["providers"][1:]
+                wrong_selection = [dict(first, selection="NOT_SELECTED" if first.get("selection") == "SELECTED" else "SELECTED")] + pinned["providers"][1:]
             for what, pin, expected in (
                 ("a reason that is not served", wrong_reason, "is not served as expected"),
                 ("a selection that is not served", wrong_selection, "is not served as expected"),
@@ -701,7 +919,11 @@ def check_conformance(host, profile, suite, check, record):
         mutated = os.path.join(work, "mutated.graphql")
         with open(mutated, "w") as file:
             file.write(text.replace(marker, "koine: Koine", 1))
-        other = os.path.join(REPOSITORY, "docs", "design", "desktop-schema-extension-host.graphql")
+        # A design with another provider's contribution in it: the desktop design, or, for the profile
+        # that is the desktop design, the desktop + workspace one.
+        designs = [os.path.join(REPOSITORY, "docs", "design", name) for name in
+                   ("desktop-schema-extension-host.graphql", "desktop-workspace-schema-extension-host.graphql")]
+        other = next(design for design in designs if os.path.realpath(design) != os.path.realpath(own))
         for what, design in (("a design with a provider's contribution in it", other),
                              ("a design with a nullability marker removed", mutated)):
             red = hold(pinned["providers"], design=design)
@@ -723,6 +945,303 @@ def check_failed_start(host, phase, failure, suite, check, record):
     record.setdefault("unloaded", {}).update(
         {f"{name} (a startup that stops)": suite.binary_of[case] for name, case in installed.items()}
     )
+
+
+# --- Operations of a provider, as any client exercises them --------------------------
+
+
+def _errors(reply):
+    return (reply or {}).get("errors") or []
+
+
+def _kind(error):
+    return (error.get("extensions") or {}).get("kind")
+
+
+def check_operations(host, stem, check):
+    """A fixture's operations work in the selected binary: its items are served, its failures arrive as their
+    kinds, a control action runs and is seen, and a grant holds exactly what it was given (a read-only
+    grant reads and is refused the action, naming the capability it lacks)."""
+    head = stem[0].lower() + stem[1:]
+    lower = stem.lower()
+    items = host.data_of("{ %sItems { ref name } }" % head)[f"{head}Items"]
+    check(f"{stem}: its items are served", [item["name"] for item in items] == ["first", "second"], items)
+    status, reply = host.post("{ %sProbe(outcome: UNAVAILABLE) }" % head)
+    check(f"{stem}: an unavailable outcome arrives as unavailable",
+          bool(_errors(reply)) and all(_kind(e) == "unavailable" for e in _errors(reply)), [status, reply])
+    status, reply = host.post('{ %sItem(ref: "koine://%s/item/99") { name } }' % (head, lower))
+    check(f"{stem}: a reference to an item that is gone is unavailable",
+          bool(_errors(reply)) and all(_kind(e) == "unavailable" for e in _errors(reply)), [status, reply])
+    weak = host.data_of(
+        'mutation { koineCreateGrant(input: { clientLabel: "read only", capabilities: ["%s:read"] }) '
+        "{ credential grant { capabilities } } }" % lower
+    )["koineCreateGrant"]
+    status, reply = host.post("{ %sItems { name } }" % head, weak["credential"])
+    check(f"{stem}: a read-only grant reads", status == 200 and not _errors(reply), [status, reply])
+    rename = 'mutation { %sRenameItem(ref: "koine://%s/item/1", name: "renamed") { ref affected { name } } }' % (head, lower)
+    status, reply = host.post(rename, weak["credential"])
+    check(f"{stem}: it is refused the action, naming the capability it lacks",
+          bool(_errors(reply)) and all(_kind(e) == "permission" and
+                                       (e.get("extensions") or {}).get("requiredCapability") == f"{lower}:control"
+                                       for e in _errors(reply)), [status, reply])
+    status, reply = host.post(rename)
+    check(f"{stem}: the host's own grant runs the action", status == 200 and not _errors(reply)
+          and reply["data"][f"{head}RenameItem"]["ref"] == f"koine://{lower}/item/1", [status, reply])
+    items = host.data_of("{ %sItems { name } }" % head)[f"{head}Items"]
+    check(f"{stem}: the action's effect is read back from the running binary",
+          [item["name"] for item in items] == ["renamed", "second"], items)
+    calls = {c["resolver"]: c["count"] for c in host.data_of("{ %sCalls { resolver count } }" % head)[f"{head}Calls"]}
+    check(f"{stem}: the binary counted the calls it served", calls.get("items", 0) >= 2 and calls.get("renameItem") == 1, calls)
+
+
+def process_identity(pid):
+    """(pid, start instant) in the contract's canonical form, from the kernel's record of the process
+    (proc_pidinfo PROC_PIDTBSDINFO, whole microseconds), as a client captures it."""
+    import ctypes
+    import datetime
+
+    buffer = ctypes.create_string_buffer(136)
+    libproc = ctypes.CDLL("/usr/lib/libproc.dylib", use_errno=True)
+    if libproc.proc_pidinfo(pid, 3, ctypes.c_uint64(0), buffer, 136) != 136:
+        raise OSError(ctypes.get_errno(), "proc_pidinfo")
+    micros = int.from_bytes(buffer.raw[120:128], "little") * 1_000_000 + int.from_bytes(buffer.raw[128:136], "little")
+
+    def canonical(value):
+        instant = datetime.datetime.fromtimestamp(value // 1_000_000, datetime.timezone.utc)
+        return instant.strftime("%Y-%m-%dT%H:%M:%S") + ".%06dZ" % (value % 1_000_000)
+
+    return {"pid": pid, "startedAt": canonical(micros)}, canonical(micros + 1)
+
+
+APPLICATION = "query($process: DesktopProcessIdentity!) { desktopApplication(process: $process) { ref name bundleIdentifier } }"
+WINDOWS = "query($process: DesktopProcessIdentity!) { desktopApplication(process: $process) { windows { ref title observation } } }"
+
+
+def desktop_operations(post, create_grant):
+    """The desktop operations that need no window to exist, sent to a host that serves the desktop provider, and
+    what each answered, normalised so that two hosts can be compared: `post(query, variables, credential)`
+    returns (HTTP status, reply) and `create_grant(capabilities)` a credential holding exactly those.
+
+    The steps are an application running here (this process's own, so that one always exists), a different
+    process claimed at its PID, an absent process, a malformed process identity, a reference that is stale,
+    and the same operations under a read-only grant and under a control-only one."""
+    own, later = process_identity(os.getpid())
+    absent = {"pid": 1_000_000, "startedAt": own["startedAt"]}
+    # An application that is running, when this Mac's session has Finder (a desktop session always does).
+    found = subprocess.run(["pgrep", "-x", "Finder"], capture_output=True, text=True).stdout.split()
+    finder = process_identity(int(found[0]))[0] if found else None
+    stale = "koine://desktop/window/1/2"
+    malformed = {"pid": os.getpid(), "startedAt": own["startedAt"][:-8] + "Z"}
+    read, control = create_grant(["desktop:read"]), create_grant(["desktop:control"])
+
+    def normalise(status, reply):
+        errors = [
+            {"kind": _kind(e), "message": e.get("message"), "path": e.get("path"),
+             "requiredCapability": (e.get("extensions") or {}).get("requiredCapability")}
+            for e in _errors(reply)
+        ]
+        return {"status": status, "data": (reply or {}).get("data"), "errors": errors}
+
+    def go(query, variables=None, credential=None):
+        return normalise(*post(query, variables or {}, credential))
+
+    steps = {
+        "application, this process": go(APPLICATION, {"process": own}),
+        "application, the same PID a microsecond later": go(APPLICATION, {"process": {"pid": own["pid"], "startedAt": later}}),
+        "application, an absent process": go(APPLICATION, {"process": absent}),
+        "application, a malformed process identity": go(APPLICATION, {"process": malformed}),
+        "windows, this process": go(WINDOWS, {"process": own}),
+        "window, a stale reference": go("query($ref: Reference!) { desktopWindow(ref: $ref) { ref } }", {"ref": stale}),
+        "focus, a stale reference": go("mutation($ref: Reference!) { desktopFocusWindow(ref: $ref) { ref } }", {"ref": stale}),
+        "read-only grant reads an absent process": go(APPLICATION, {"process": absent}, read),
+        "read-only grant is refused focus": go("mutation($ref: Reference!) { desktopFocusWindow(ref: $ref) { ref } }", {"ref": stale}, read),
+        "control-only grant is refused a read": go(APPLICATION, {"process": absent}, control),
+        "control-only grant reaches focus": go("mutation($ref: Reference!) { desktopFocusWindow(ref: $ref) { ref } }", {"ref": stale}, control),
+    }
+    if finder:
+        steps["application, a running one (Finder)"] = go(APPLICATION, {"process": finder})
+        steps["windows, a running application (Finder)"] = go(WINDOWS, {"process": finder})
+    return steps
+
+
+def check_desktop_expectations(results, check, where):
+    """What the desktop contract promises of those operations (docs/design/desktop-schema.graphql): an absent
+    process and a process that is not the one claimed are ordinary nulls, a malformed identity and a stale
+    reference are errors of the kinds the contract names, and a grant holds exactly its capability."""
+    def no_errors(name):
+        return results[name]["status"] == 200 and not results[name]["errors"]
+
+    check(f"{where}: an absent process is an ordinary null",
+          no_errors("application, an absent process") and results["application, an absent process"]["data"] == {"desktopApplication": None},
+          results["application, an absent process"])
+    check(f"{where}: the same PID claimed a microsecond later is a different process, an ordinary null",
+          no_errors("application, the same PID a microsecond later")
+          and results["application, the same PID a microsecond later"]["data"] == {"desktopApplication": None},
+          results["application, the same PID a microsecond later"])
+    check(f"{where}: a malformed process identity is refused, naming the instant's form",
+          bool(results["application, a malformed process identity"]["errors"])
+          and all("process.startedAt must be the process start instant" in (e["message"] or "")
+                  for e in results["application, a malformed process identity"]["errors"])
+          and results["application, a malformed process identity"]["data"] == {"desktopApplication": None},
+          results["application, a malformed process identity"])
+    finder = results.get("application, a running one (Finder)")
+    # The positive path needs an application: without one a provider that answered null everywhere would pass.
+    check(f"{where}: a running application (Finder) was there to exercise the positive path", finder is not None, None)
+    if finder is not None:
+        served = ((finder["data"] or {}).get("desktopApplication") or {})
+        check(f"{where}: a running application is served by name and bundle identifier",
+              finder["status"] == 200 and not finder["errors"] and served.get("name") == "Finder"
+              and served.get("bundleIdentifier") == "com.apple.finder", finder)
+    for name in ("window, a stale reference", "focus, a stale reference"):
+        check(f"{where}: {name} is unavailable",
+              bool(results[name]["errors"]) and all(e["kind"] == "unavailable" for e in results[name]["errors"]),
+              results[name])
+    check(f"{where}: a read-only grant reads", no_errors("read-only grant reads an absent process"),
+          results["read-only grant reads an absent process"])
+    for name, needs in (("read-only grant is refused focus", "desktop:control"), ("control-only grant is refused a read", "desktop:read")):
+        check(f"{where}: {name}, naming {needs}",
+              bool(results[name]["errors"]) and all(e["kind"] == "permission" and e["requiredCapability"] == needs
+                                                     for e in results[name]["errors"]), results[name])
+    check(f"{where}: a control-only grant reaches the action, and the stale reference is what fails",
+          bool(results["control-only grant reaches focus"]["errors"])
+          and all(e["kind"] == "unavailable" for e in results["control-only grant reaches focus"]["errors"]),
+          results["control-only grant reaches focus"])
+
+
+class ReleasedHost:
+    """The RELEASED headless host (v0.1.0, scripts/build-baseline-host.sh; its driver is
+    scripts/compat-released-host-main.swift): a host that predates selection, its catalogue and the
+    candidate fields. One process over a fresh data directory, a per-user root and a bundled root that
+    stands in for `Contents/PlugIns`, each bundle with the approval record the released application
+    gives its own. Markers come from the fixture images, as in every host of this harness."""
+
+    BASELINE_ROWS = "{ koineManagement { providers { provider version schemaVersion state diagnostic } } }"
+
+    def __init__(self, suite, bundled, installs=()):
+        """`bundled` is the cases standing in for Contents/PlugIns (their own names), `installs` (case, name)
+        for the per-user root; each is approved for the team that signs the fixtures."""
+        self.suite = suite
+        self.directory = tempfile.mkdtemp(prefix="koine-released-")
+        self.data = os.path.join(self.directory, "data")
+        self.providers = os.path.join(self.data, "Providers")
+        self.plugins = os.path.join(self.directory, "PlugIns")
+        os.makedirs(self.providers)
+        os.makedirs(self.plugins)
+        os.chmod(self.data, 0o700)
+        self.installed = {}  # name -> case, per-user
+        self.bundled = {}  # name -> case
+        for case in bundled:
+            self._place(case, self.plugins, None)
+        for case, name in installs:
+            self._place(case, self.providers, name)
+        self.marker_log = os.path.join(self.directory, "markers.log")
+        binary = os.path.join(REPOSITORY, ".build", "compat", "debug", "baseline", "products", "KoineCompatibilityHost")
+        self.process = subprocess.Popen(
+            [binary, self.data, self.plugins], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            env=dict(os.environ, KOINE_FIXTURE_MARKER_LOG=self.marker_log), text=True,
+        )
+        watchdog = threading.Timer(90, self.process.kill)
+        watchdog.start()
+        try:
+            line = self.process.stdout.readline()
+        finally:
+            watchdog.cancel()
+        if not line:
+            raise RuntimeError(f"The released host exited before it was ready: {self.process.stderr.read()}")
+        self.ready = json.loads(line)
+        if "error" in self.ready:
+            raise RuntimeError(f"The released host failed to start: {self.ready['error']}")
+
+    def _place(self, case, root, name):
+        source = self.suite.bundle(case)
+        label = name or os.path.basename(source)[: -len(".koineprovider")]
+        shutil.copytree(source, os.path.join(root, label + ".koineprovider"), symlinks=True)
+        manifest = self.suite.manifest_of(case)
+        with open(os.path.join(root, manifest["providerId"] + ".approval.json"), "w") as file:
+            json.dump({"providerId": manifest["providerId"], "teamIdentifier": self.suite.team}, file)
+        (self.installed if root == self.providers else self.bundled)[label] = case
+
+    def post(self, query, credential=None, variables=None):
+        request = urllib.request.Request(
+            f"http://127.0.0.1:{self.ready['port']}/graphql",
+            data=json.dumps({"query": query, "variables": variables or {}}).encode(),
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {credential or self.ready['credential']}"},
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.status, json.loads(response.read())
+        except urllib.error.HTTPError as error:
+            body = error.read()
+            return error.code, json.loads(body) if body else None
+
+    def data_of(self, query):
+        status, reply = self.post(query)
+        if status != 200 or reply.get("errors"):
+            raise RuntimeError(f"{query} answered {status} {reply}")
+        return reply["data"]
+
+    def create_grant(self, capabilities):
+        quoted = ", ".join('"%s"' % c for c in capabilities)
+        return self.data_of(
+            'mutation { koineCreateGrant(input: { clientLabel: "driver", capabilities: [%s] }) { credential } }' % quoted
+        )["koineCreateGrant"]["credential"]
+
+    def rows(self):
+        return self.data_of(self.BASELINE_ROWS)["koineManagement"]["providers"]
+
+    def markers(self):
+        try:
+            with open(self.marker_log) as file:
+                lines = [line.rstrip("\n").split("\t") for line in file if line.strip()]
+        except FileNotFoundError:
+            return []
+        return [(re.sub(r"-[0-9a-f]{32}$", "", os.path.basename(os.path.dirname(image))), phase) for phase, image in lines]
+
+    def loaded_labels(self):
+        return sorted(re.sub(r"-[0-9a-f]{32}$", "", os.path.basename(os.path.dirname(i["path"])))
+                      for i in self.ready.get("images", []) if "/ProviderStaging/" in i["path"])
+
+    def stop(self):
+        self.process.stdin.close()
+        line = self.process.stdout.readline()
+        code = self.process.wait(timeout=60)
+        make_writable(self.directory)
+        shutil.rmtree(self.directory, ignore_errors=True)
+        return (json.loads(line) if line else {}), code
+
+
+
+def installed_by_label(host, suite):
+    """{label: case} for what the current host process could have run: the per-user installs and the bundles sealed
+    inside the host. A bundle name in both roots is two candidates, `<name>@user` and `<name>@bundled`: keyed by the
+    bare name the bundled case would replace the per-user one, and a control would be credited to the wrong binary."""
+    bundled = dict(suite.plugins(host.host_name))
+    out = {}
+    for name, case in host.installed.items():
+        out[name + "@user" if name in bundled else name] = case
+    for name, case in bundled.items():
+        out[name + "@bundled" if name in host.installed else name] = case
+    return out
+
+
+def recorder(results, scenario, label, host):
+    """A run the scenario vocabulary does not describe (the released host, a differential of two hosts):
+    its record, in the shape every other run leaves, and the `check` that writes to it."""
+    record = {"scenario": scenario, "label": label, "host": host, "checks": []}
+    results.append(record)
+
+    def check(name, passed, observed=None):
+        record["checks"].append({"check": name, "passed": bool(passed), "observed": observed})
+        if not passed:
+            print(f"    FAIL {name}: {observed}")
+        return passed
+
+    return record, check
+
+
+def finish_record(record):
+    ok = all(entry["passed"] for entry in record["checks"])
+    print(f"  {'ok  ' if ok else 'FAIL'} {record['label']}")
 
 
 def run_scenario(suite, scenario, reversed_order, renamed, results):
@@ -768,8 +1287,7 @@ def run_scenario(suite, scenario, reversed_order, renamed, results):
                     raise RuntimeError(failure)
             elif phase.start_fails:
                 raise ValueError("the first phase of a scenario must start")
-            installed = dict(host.installed)
-            installed.update(dict(suite.plugins(host.host_name)))
+            installed = installed_by_label(host, suite)
             check_phase(host, phase, phase_check, suite, installed, record, label, f" (phase {index + 1})" if index else "")
         digests = record.get("digests", {})
         for one, other in scenario.differs:
@@ -801,7 +1319,7 @@ def check_digests_across_runs(scenario, runs, results):
         print(f"    FAIL digests differ between runs: {failing}")
 
 
-def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="", argv=None):
+def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="", argv=None, extra_runs=()):
     """The whole driver: `<hosts> <fixtures> <results.json> [--only <substring>] [--conformance <tool>]`."""
     arguments = list(sys.argv[1:] if argv is None else argv)
     conformance = None
@@ -830,6 +1348,9 @@ def main(scenarios, owned_reasons, pending, doc, twins=None, own_reason_note="",
         if scenario.rename:
             run_scenario(suite, scenario, False, True, results)
         check_digests_across_runs(scenario, [r for r in results if r["scenario"] == scenario.name], results)
+    # Runs the scenario vocabulary does not describe, each called as `run(suite, results, only)`.
+    for run in extra_runs:
+        run(suite, results, only)
 
     # A refused-marker assertion is paired with a control: the same compiled binary
     # seen writing every marker in another run. A phase an image that did run never

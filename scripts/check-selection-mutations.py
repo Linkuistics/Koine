@@ -39,6 +39,18 @@ and, for the digest and restart rows of the same driver:
   * the assessment verdict never asked, and a refusal remembered across restarts
   * a per-user root that cannot be enumerated read as an empty one
 
+and, for the update rows of scripts/verify-selection-updates.py:
+
+  * an approval record's Team ID not compared with the host's, and no approval required
+  * signatures not verified (an unsigned, ad-hoc or altered bundle, or a damaged staged copy)
+  * a location that resolves outside the root not refused
+  * the quarantine assessment of a per-user copy skipped
+  * staging names that share a copy across origins (the earlier, content-only scheme)
+  * the selection feature not required of a per-user update
+  * the signing identifier not compared with the catalogue's (a fixture under another identifier)
+  * compatibility (framework, feature, OS, architecture) not checked
+  * every eligible candidate loaded (the unselected baseline's image mapped beside the update's)
+
 Each mutation is applied to a COPY of the source tree (.build/selection-mutations/tree,
 its own build directory, so later runs are incremental): the working tree is never
 edited. The copy's headless host is assembled and signed into the same purpose-built
@@ -56,9 +68,14 @@ import sys
 
 REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOADER = "Sources/KoineProviderLoader/"
+TRUST = "Sources/KoineProviderLoader/ProviderTrust.swift"
+STAGING = "Sources/KoineProviderLoader/ProviderStaging.swift"
 CORE = "Sources/KoineCore/"
 
-DRIVERS = {"decisions": "verify-selection-decisions.py", "failures": "verify-selection-failures.py"}
+DRIVERS = {
+    "decisions": "verify-selection-decisions.py", "failures": "verify-selection-failures.py",
+    "updates": "verify-selection-updates.py",
+}
 
 # name -> (file, text to replace, replacement, scenarios of the driver that must go red[, driver]).
 MUTATIONS = {
@@ -255,6 +272,82 @@ MUTATIONS = {
         ["a per-user root the host cannot read"],
         "failures",
     ),
+    "approval-team-not-compared": (
+        LOADER + "ProviderLoader.swift",
+        "guard approval.teamIdentifier == hostTeam else {",
+        "guard true || approval.teamIdentifier == hostTeam else {",
+        ["an approval naming another Team ID refuses every per-user copy"],
+        "updates",
+    ),
+    "approval-not-required": (
+        LOADER + "ProviderLoader.swift",
+        "let approval = try approval(for: manifest, role: role, in: root, hostTeam: hostTeam)",
+        'let approval = (try? approval(for: manifest, role: role, in: root, hostTeam: hostTeam))\n'
+        '                ?? ProviderApproval(providerId: manifest.providerId, teamIdentifier: hostTeam ?? "")',
+        ["missing approval refuses every per-user copy", "an approval naming another Team ID refuses every per-user copy"],
+        "updates",
+    ),
+    "signatures-not-verified": (
+        TRUST,
+        "static func refusal(of path: String, approvedBy approval: ProviderApproval) -> String? {",
+        "static func refusal(of path: String, approvedBy approval: ProviderApproval) -> String? {\n        if true { return nil }",
+        ["an unsigned bundle is refused before load", "an ad-hoc signed bundle is refused before load",
+         "a seal altered after it was made is refused before load", "a staged copy damaged after it was made"],
+        "updates",
+    ),
+    "location-not-checked": (
+        LOADER + "ProviderLoader.swift",
+        'guard let rootPath = canonicalPath(root.location.path), installed.hasPrefix(rootPath + "/")',
+        'guard let rootPath = canonicalPath(root.location.path), installed.hasPrefix(rootPath + "/") || true',
+        ["whose location resolves outside the root"],
+        "updates",
+    ),
+    "quarantine-assessment-skipped": (
+        LOADER + "ProviderLoader.swift",
+        "if !root.isBundled {\n                try checkGatekeeper(",
+        "if false && !root.isBundled {\n                try checkGatekeeper(",
+        ["a failed quarantine assessment is refused before load", "a quarantine refusal is recovered"],
+        "updates",
+    ),
+    "staging-shared-across-origins": (
+        STAGING,
+        'return "\\(name)-" + identity.prefix(16).map { String(format: "%02x", $0) }.joined()',
+        'return "\\(name)-\\(try digest(of: bundle))"',
+        ["equal bytes in both roots, the per-user copy staged first", "equal bytes in both roots, the bundled copy staged first",
+         "a legacy shared staging entry", "a quarantined legacy entry"],
+        "updates",
+    ),
+    "selection-feature-not-required": (
+        LOADER + "ProviderLoader.swift",
+        "!manifest.requiredFeatures.contains(firstPartySelectionFeature)",
+        "!manifest.requiredFeatures.contains(firstPartySelectionFeature), false",
+        ["update that does not state first-party-selection-v1 is refused before it loads",
+         "real updates that do not state the feature are refused"],
+        "updates",
+    ),
+    "no-signing-identifier-check-for-impostors": (
+        LOADER + "ProviderLoader.swift",
+        "guard signer == baseline.signingIdentifier else {",
+        "guard true || signer == baseline.signingIdentifier else {",
+        ["claiming the reserved pairs at a high release", "admits its own distinct fixture identifier"],
+        "updates",
+    ),
+    "compatibility-not-checked": (
+        LOADER + "ProviderLoader.swift",
+        "try checkCompatibility(of: manifest, with: host)",
+        "_ = try? checkCompatibility(of: manifest, with: host)",
+        ["an incompatible framework is refused before load", "a feature this host lacks is refused before load",
+         "a newer operating system is refused before load", "another architecture is refused before load"],
+        "updates",
+    ),
+    "unselected-candidates-load-updates": (
+        LOADER + "ProviderLoader.swift",
+        "if case .selected? = plan.verdicts[$0] { true } else { false }",
+        "if case .selected? = plan.verdicts[$0] { true } else { prepared[$0] != nil }",
+        ["a mixed release: a newer desktop beside the workspace baseline",
+         "a compatible newer workspace update beside the desktop baseline", "both real providers updated independently"],
+        "updates",
+    ),
 }
 
 
@@ -299,7 +392,7 @@ def main():
             results = os.path.join(output, name, "results.json")
             subprocess.run(
                 [os.path.join(REPOSITORY, "scripts", driver), hosts, fixtures, results, "--only", scenario]
-                + (["--conformance", conformance] if driver == DRIVERS["failures"] else []),
+                + (["--conformance", conformance] if driver in (DRIVERS["failures"], DRIVERS["updates"]) else []),
                 cwd=REPOSITORY, capture_output=True, text=True,
             )
             with open(results) as file:

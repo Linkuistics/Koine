@@ -8,7 +8,10 @@
     "A plugin is a case of Fixtures/FixtureProvider/build-decisions.sh, installed under `as`",
     "(default: the bundle's own name). Fixture signing identifiers are distinct from every",
     "production provider's and are admitted here alone. The catalogue may be an object, or",
-    "text for a catalogue that is not JSON at all."
+    "text for a catalogue that is not JSON at all. A `production` host carries App/ProviderCatalogue.json",
+    "(whole, or with the named identities reserved-only) around the REAL first-party bundles (cases current-*",
+    "and released-*); a `productionNames` host gives a fixture the shipped provider's identifier and prefix",
+    "under a signing identifier that is not a production one (scripts/build-selection-hosts.py)."
   ],
   "identities": {
     "sh": {
@@ -22,6 +25,22 @@
     "sh-1.7": {
       "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
       "release": "1.7.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
+    "sh-1.5": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.5.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
+    "sh-impostor-id": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.0.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh.impostor"
+    },
+    "desktop-impostor": {
+      "providerId": "desktop", "graphQLPrefix": "Desktop", "bundle": "Desktop.koineprovider",
+      "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.desktop.impostor"
+    },
+    "workspace-impostor": {
+      "providerId": "workspace", "graphQLPrefix": "Workspace", "bundle": "Workspace.koineprovider",
+      "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.workspace.impostor"
     },
     "input": { "providerId": "fixtureinput", "graphQLPrefix": "FixtureInput" }
   },
@@ -84,6 +103,28 @@
     "adhoc-host": {
       "purpose": "The same application signed ad hoc: no verified Team ID, so no shipped candidate is admitted.",
       "signing": "ad-hoc", "identities": ["sh", "input"], "plugins": [{ "case": "baseline" }]
+    },
+    "slot-caught-up": {
+      "purpose": "The host a later release ships: its designated baseline is release 1.5.0, byte for byte and by bundle name the update an earlier host had installed per user (one directory, copied into both roots).",
+      "signing": "developer-id", "identities": ["sh-1.5", "input"], "plugins": [{ "case": "r1.5.0" }]
+    },
+    "slot-impostor-admitted": {
+      "purpose": "A test catalogue that admits the distinct signing identifier `...fixturesh.impostor` for the slot, with a designated bundle signed under it.",
+      "signing": "developer-id", "identities": ["sh-impostor-id", "input"], "plugins": [{ "case": "baseline-other-identifier" }]
+    },
+    "desktop-old": {
+      "purpose": "The shipped catalogue around the RELEASED desktop provider as the designated baseline (workspace reserved-only): a selection-aware host over an independently compiled old baseline.",
+      "signing": "developer-id", "production": { "reservedOnly": ["workspace"] }, "plugins": [{ "case": "released-desktop" }]
+    },
+    "production": {
+      "purpose": "The shipped catalogue, whole, around this tree's real desktop and workspace providers as the designated baselines: the host the signed application is, headless.",
+      "signing": "developer-id", "production": {},
+      "plugins": [{ "case": "current-desktop" }, { "case": "current-workspace" }]
+    },
+    "impostor-host": {
+      "purpose": "The shipped identifiers and prefixes of desktop and workspace, admitting fixture signing identifiers that are not the production ones, around fixtures that are those designated baselines: the control that the binaries a production host refuses really load.",
+      "signing": "developer-id", "productionNames": true, "identities": ["desktop-impostor", "workspace-impostor", "input"],
+      "plugins": [{ "case": "desktop-impostor-baseline" }, { "case": "workspace-impostor-baseline" }]
     },
     "catalogue-malformed": {
       "purpose": "A catalogue with a key it does not know.",

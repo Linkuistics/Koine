@@ -47,6 +47,16 @@
 # enum differs from that one only in its description (`sdl-changed-description`); and a
 # designated baseline of a later release (`baseline-r1.7.0`), for a host whose baseline changed.
 #
+# The update rows (scripts/verify-selection-updates.py, docs/verification/selection-updates.md)
+# add compatible newer releases of both slots and the same with another principal class (the
+# renamed-principal variant an earlier host must refuse by feature alone), one refusal per
+# trust check a per-user update can fail (unsigned, ad hoc, altered after its seal, another
+# architecture, a newer OS, a feature this host lacks), two providers that claim the reserved
+# pairs `desktop` and `workspace` and are signed under a fixture signing identifier (the
+# bundle and release a production catalogue refuses, and the same compiled binary as the
+# designated baseline of a test catalogue that admits that identifier). The host of the equal-bytes
+# rows designates the very bundle `r1.5.0` as its baseline: one directory, copied into both roots.
+#
 # Every fixture signing identifier is distinct from every production one and is
 # admitted only by the test catalogues of scripts/build-selection-hosts.py.
 #
@@ -91,7 +101,7 @@ with open(path, "w") as file:
 PY
 }
 
-# make <case> <binary name> <manifest statements> [<signing identifier> | adhoc]:
+# make <case> <binary name> <manifest statements> [<signing identifier> | adhoc | unsigned]:
 # a copy of the compiled binary's bundle with its manifest changed, sealed.
 make() {
     local dir="${OUT}/$1"
@@ -102,12 +112,15 @@ make() {
     local bundle="${dir}/$(basename "${source}")"
     [ -z "${INCLUDE:-}" ] || cp "${INCLUDE}" "${bundle}/"
     edit "${bundle}" "$3"
-    if [ "${4:-}" != "" ] && [ "${4:-}" != "adhoc" ]; then
+    if [ "${4:-}" != "" ] && [ "${4:-}" != "adhoc" ] && [ "${4:-}" != "unsigned" ]; then
         /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $4" "${bundle}/Info.plist"
     fi
     FIXTURE_UNAPPROVED=1 "${HERE}/seal.sh" "${bundle}" >/dev/null
     if [ "${4:-}" = "adhoc" ]; then
         codesign --force --sign - "${bundle}" 2>/dev/null
+    fi
+    if [ "${4:-}" = "unsigned" ]; then
+        codesign --remove-signature "${bundle}" 2>/dev/null
     fi
     printf '%s\t%s\n' "$1" "$2" >>"${OUT}/index.tsv"
 }
@@ -181,6 +194,12 @@ FIXTURE_ADDITIONAL=1 binary sh-update-needs-sk Sh "-D FIXTURE_REVISION_2 -D FIXT
 FIXTURE_ADDITIONAL=1 binary sk-update-needs-sh Sk "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION ${ADDITIONAL} -D FIXTURE_NEEDS_SH"
 FIXTURE_ADDITIONAL=1 binary od-needs-sk Od "${ADDITIONAL} -D FIXTURE_NEEDS_SK"
 binary sh-update-fails-start Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -D FIXTURE_FAILS_START"
+# The update rows: the same update under another principal class, and providers named for the
+# reserved pairs of the production catalogue (their module and class names are the real ones').
+binary sh-update-renamed Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -D FIXTURE_RENAMED_PRINCIPAL"
+binary sk-update-renamed Sk "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -D FIXTURE_RENAMED_PRINCIPAL"
+binary desktop-impostor stem:Desktop "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
+binary workspace-impostor stem:Workspace "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
 
 # --- Sh: the designated baseline and what contests it ----------------------------
 
@@ -299,5 +318,60 @@ make unknown-principal-od unknown "m['principalClass'] = 'KoineFixtureOdProvider
 make unidentified od "pass"
 printf '{ not a manifest' >"${OUT}/unidentified/FixtureOd.koineprovider/manifest.json"
 FIXTURE_UNAPPROVED=1 "${HERE}/seal.sh" "${OUT}/unidentified/FixtureOd.koineprovider" >/dev/null
+
+# --- The update rows (scripts/verify-selection-updates.py) -----------------------------
+
+# Compatible newer releases of both slots, and the same with another principal class. A host
+# that predates `first-party-selection-v1` must refuse the renamed one by the feature alone,
+# as the one that keeps the principal name (which an earlier host could also meet as a
+# duplicate of a factory it had already run).
+make r1.6.0 sh-update "m['version'] = '1.6.0'; ${SCHEMA}; ${UPDATE}"
+make sk-r1.2.0 sk-update "m['version'] = '1.2.0'; ${UPDATE}"
+make r1.5.0-renamed sh-update-renamed \
+    "m['version'] = '1.5.0'; ${SCHEMA}; ${UPDATE}; m['principalClass'] = 'KoineFixtureShProviderFactoryRenamed'"
+make sk-r1.1.0-renamed sk-update-renamed \
+    "m['version'] = '1.1.0'; ${UPDATE}; m['principalClass'] = 'KoineFixtureSkProviderFactoryRenamed'"
+#   and one that does not state the feature at all, in both principal forms.
+make r2.0.0-no-feature-renamed sh-update-renamed \
+    "m['version'] = '2.0.0'; ${SCHEMA}; m['principalClass'] = 'KoineFixtureShProviderFactoryRenamed'"
+make sk-r1.1.0-no-feature sk-update "m['version'] = '1.1.0'"
+make sk-r1.1.0-no-feature-renamed sk-update-renamed \
+    "m['version'] = '1.1.0'; m['principalClass'] = 'KoineFixtureSkProviderFactoryRenamed'"
+
+# One refusal per trust check a per-user update can fail, each at release 2.0.0 so that it
+# outranks a healthy lower update and the designated baseline: `trust_cases <prefix> <binary>
+# <manifest statements of the release>`. Approval (none, or another Team ID) and the location
+# are the driver's, because they are not in the bundle; the framework minor is r4.0.0-
+# framework-future's, in decisions above.
+# The architecture this Mac is not: the manifest claims it, and the host refuses before it reads an image.
+if [ "$(uname -m)" = arm64 ]; then OTHER_ARCH=x86_64; else OTHER_ARCH=arm64; fi
+trust_cases() {
+    local tag="$1" binary="$2" release="$3"
+    make "${tag}t-unsigned" "${binary}" "${release}" unsigned
+    make "${tag}t-adhoc" "${binary}" "${release}" adhoc
+    make "${tag}t-tampered" "${binary}" "${release}"
+    printf '\n# altered after it was sealed\n' >>"${OUT}/${tag}t-tampered/$(ls "${OUT}/${tag}t-tampered")/schema.graphql"
+    make "${tag}t-architecture" "${binary}" "${release}; m['architectures'] = ['${OTHER_ARCH}']"
+    make "${tag}t-os" "${binary}" "${release}; m['minimumOS'] = '99.0'"
+    make "${tag}t-feature" "${binary}" \
+        "${release}; m['requiredFeatures'] = ['${FEATURE}', 'time-travel']"
+    make "${tag}t-framework" "${binary}" "${release}; m['framework']['minimumMinor'] = 99"
+    make "${tag}t-good" "${binary}" "${release}"
+}
+trust_cases "" sh-update "m['version'] = '2.0.0'; ${SCHEMA}; ${UPDATE}"
+trust_cases "sk-" sk-update "m['version'] = '2.0.0'; ${UPDATE}"
+
+# Providers named for the production catalogue's reserved pairs, signed under a fixture signing
+# identifier (never the production one): refused by a production catalogue as a release of a
+# slot it does not admit, and the same compiled binary loads as the designated baseline of a
+# test catalogue that admits that identifier.
+make desktop-impostor-9.0.0 desktop-impostor "m['version'] = '9.0.0'; ${UPDATE}" \
+    dev.antony.Koine.provider.desktop.impostor
+make desktop-impostor-baseline desktop-impostor "m['version'] = '1.0.0'; ${UPDATE}" \
+    dev.antony.Koine.provider.desktop.impostor
+make workspace-impostor-9.0.0 workspace-impostor "m['version'] = '9.0.0'; ${UPDATE}" \
+    dev.antony.Koine.provider.workspace.impostor
+make workspace-impostor-baseline workspace-impostor "m['version'] = '1.0.0'; ${UPDATE}" \
+    dev.antony.Koine.provider.workspace.impostor
 
 echo "${OUT}"
