@@ -5,7 +5,9 @@ The decision rows of "Selection acceptance" in
 node assigns them: **N**, the native loader with real independently built binaries in
 a fresh signed host process, and **G**, public GraphQL management over loopback
 HTTP. It also builds the signed-host harness the other selection-acceptance leaves
-(`selection-failures`, `selection-updates`, `selection-vm`) reuse.
+(`selection-failures`, `selection-updates`, `selection-vm`) reuse. Its reusable parts
+are `scripts/selection_harness.py`, which the failure-boundary driver
+([selection-failures.md](selection-failures.md)) imports too.
 
 The in-process suite `ProviderSelectionTests` holds these decisions while the
 loader is written. It cannot show what a fresh process shows: that an image the
@@ -34,7 +36,8 @@ notarized**; the V seam and its notarized hosts are `selection-vm`'s.
 | Markers: each image appends `initializer`, `factory` and `start` with its own path to `KOINE_FIXTURE_MARKER_LOG`, from its own code | `Fixtures/FixtureProvider/initializer.c`, `FixtureProvider.swift` | (built with the bundles) |
 | The host: a real application bundle in everything selection reads. Catalogue from `Contents/Resources`, in-application root `Contents/PlugIns`, approval Team ID from its own verified signature; it reads no environment itself (the images it loads read the marker log's path) | `Fixtures/SelectionHost/main.swift` (`KoineSelectionHost`) | (`swift build`) |
 | Purpose-built signed hosts: each names its catalogue and bundles in `Fixtures/SelectionHost/hosts.json`, which are put in **before** the framework and the application are signed. No seal is altered afterwards and no notarized application is touched | `scripts/build-selection-hosts.py` | `selection:hosts` |
-| The driver: a fresh host process, data directory, per-user root and marker log for every scenario and for each alternative order within it | `scripts/verify-selection-decisions.py` | `selection:decisions` |
+| The driver's library: a fresh host process, data directory, per-user root and marker log for every scenario and for each alternative order within it; the checks, invariants and control pairing | `scripts/selection_harness.py` | (imported) |
+| The decision rows, as scenarios over that library | `scripts/verify-selection-decisions.py` | `selection:decisions` |
 | The mutation check | `scripts/check-selection-mutations.py` | `selection:mutation` |
 
 The hosts, as `hosts.json` states them: `slot` (one enabled slot and a
@@ -196,7 +199,7 @@ alternate-team host, pending.**
 Row: *Diagnostic completeness, including a real provider named `unknown` and an
 unidentified bundle*. **Established for the decision rows;** the later-failure
 half (a frozen choice retaining its identity and competing refusals after a
-failure) is `selection-failures`'.
+failure) is in [selection-failures.md](selection-failures.md#diagnostic-completeness-the-later-failure-half).
 
 - `the report is complete…`: thirteen rows from one installation, one for each
   candidate and no synthetic row for a slot that has a choice, with every enum and
@@ -267,7 +270,8 @@ test` still passes (285 tests in the server suite among the others).
 
 - The alternate-team host (above).
 - Notarized hosts and quarantined downloads, and every V row: `selection-vm`.
-- Update-side trust refusals, staging, mixed releases, and a frozen choice failing
-  later: `selection-updates`, `selection-failures`.
+- Update-side trust refusals, staging and mixed releases: `selection-updates`. A
+  frozen choice failing later, collisions, the cascade, the digest and restart:
+  `selection-failures`.
 - No claim that the loader is a sandbox. A refused image's absence from the marker
   log is the observation; native code the loader loaded stays trusted.

@@ -23,6 +23,14 @@
 #       that names fixtureod.
 #   Unknown  an ordinary provider whose identifier really is `unknown`.
 #
+# The failure boundary (scripts/verify-selection-failures.py, docs/verification/
+# selection-failures.md) adds cases of these binaries whose manifest names another
+# principal class, whose descriptor disagrees with it, or whose schema is refused; two
+# more binaries, one with a private dependency that will not load (`sh-update-private`,
+# the same main image with a good and a bad `libFixturePrivate.dylib`) and two whose
+# SDL the core refuses (`sh-update-bad-sdl`, `sh-update-outside-prefix`); and
+# ordinary providers that claim another provider's, or the host's, principal class.
+#
 # Every fixture signing identifier is distinct from every production one and is
 # admitted only by the test catalogues of scripts/build-selection-hosts.py.
 #
@@ -76,6 +84,7 @@ make() {
     source="$(echo "${WORK}/$2"/*.koineprovider)"
     cp -R "${source}" "${dir}/"
     local bundle="${dir}/$(basename "${source}")"
+    [ -z "${INCLUDE:-}" ] || cp "${INCLUDE}" "${bundle}/"
     edit "${bundle}" "$3"
     if [ "${4:-}" != "" ] && [ "${4:-}" != "adhoc" ]; then
         /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $4" "${bundle}/Info.plist"
@@ -100,10 +109,38 @@ type FixtureInputClaimed {
 }
 SDL
 
+# A private dependency inside the bundle, in two forms of one install name: one that
+# loads, and one whose own dependency is a system-path library that does not exist (a
+# path under /usr/lib is a system path to the loader's checks, so only dyld refuses it).
+TARGET="$(uname -m)-apple-macos13.0"
+mkdir -p "${WORK}/private/good" "${WORK}/private/bad" "${WORK}/private/absent"
+echo 'int koine_fixture_private(void) { return 0; }' >"${WORK}/private/private.c"
+echo 'int koine_fixture_absent(void) { return 0; }' >"${WORK}/private/absent.c"
+clang -dynamiclib -target "${TARGET}" -install_name @loader_path/libFixturePrivate.dylib \
+    -o "${WORK}/private/good/libFixturePrivate.dylib" "${WORK}/private/private.c"
+clang -dynamiclib -target "${TARGET}" -install_name /usr/lib/libkoine_fixture_absent.dylib \
+    -o "${WORK}/private/absent/libkoine_fixture_absent.dylib" "${WORK}/private/absent.c"
+clang -dynamiclib -target "${TARGET}" -install_name @loader_path/libFixturePrivate.dylib \
+    -L"${WORK}/private/absent" -Wl,-needed-lkoine_fixture_absent \
+    -o "${WORK}/private/bad/libFixturePrivate.dylib" "${WORK}/private/private.c"
+cat >"${WORK}/broken-sdl.graphql" <<'SDL'
+type FixtureShBroken {
+  note: String
+SDL
+cat >"${WORK}/outside-prefix.graphql" <<'SDL'
+"A type outside the provider's prefix."
+type OtherThing {
+  note: String
+}
+SDL
+
 binary sh-baseline Sh ""
 binary sh-update Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
 binary sk-baseline Sk ""
 binary sk-update Sk "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION"
+binary sh-update-private Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION -L${WORK}/private/good -Xlinker -needed-lFixturePrivate"
+binary sh-update-bad-sdl Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/broken-sdl.graphql"
+binary sh-update-outside-prefix Sh "-D FIXTURE_REVISION_2 -D FIXTURE_SELECTION" "${WORK}/outside-prefix.graphql"
 binary od Od ""
 binary od-claim-sh Od "" "${WORK}/claim-sh.graphql"
 binary od-claim-input Od "" "${WORK}/claim-input.graphql"
@@ -146,6 +183,31 @@ make claims-reserved-only sh-update \
 make claims-overlapping-reserved-only sh-update \
     "m['version'] = '5.0.0'; m['providerId'] = 'fixtureinputx'; m['graphQLPrefix'] = 'FixtureInputTools'; ${SCHEMA}; ${UPDATE}"
 
+# A frozen update that fails after its choice is made, at release 2.0.0 so that it
+# outranks a lower update (1.5.0) and the bundled baseline, both healthy.
+FAIL="m['version'] = '2.0.0'; ${SCHEMA}; ${UPDATE}"
+#   its principal class is a class the host already has: one of the host image's own, and
+#   one of the system's. Refused before any dlopen.
+make f-principal-host-class sh-update "${FAIL}; m['principalClass'] = 'KoineSelectionHostClass'"
+make f-principal-system-class sh-update "${FAIL}; m['principalClass'] = 'NSObject'"
+#   its principal class is another shipped provider's: the loader refuses both, before load.
+make f-principal-sk sh-update "${FAIL}; m['principalClass'] = 'KoineFixtureSkProviderFactory'"
+#   its image loads and registers no class of that name, and one that is no factory.
+make f-principal-missing sh-update "${FAIL}; m['principalClass'] = 'KoineFixtureShAbsentFactory'"
+make f-principal-not-factory sh-update "${FAIL}; m['principalClass'] = 'KoineFixtureShNotAFactory'"
+#   its descriptor says less than its manifest: the manifest requires a feature the
+#   descriptor does not declare, so the loader refuses the disagreement after loading.
+make f-descriptor-mismatch sh-update \
+    "${FAIL}; m['requiredFeatures'] = ['${FEATURE}', 'additional-capabilities-v1']; m['framework']['minimumMinor'] = 1"
+#   its schema is refused by the core: SDL that does not parse, and a type outside its prefix.
+make f-schema-invalid-sdl sh-update-bad-sdl "${FAIL}"
+make f-schema-outside-prefix sh-update-outside-prefix "${FAIL}"
+#   dlopen: one binary, one private dependency that loads and one that does not.
+INCLUDE="${WORK}/private/good/libFixturePrivate.dylib" make f-dlopen-good sh-update-private "${FAIL}"
+INCLUDE="${WORK}/private/bad/libFixturePrivate.dylib" make f-dlopen-unloadable sh-update-private "${FAIL}"
+#   a release that loads: the repair every recovery installs.
+make f-repaired sh-update "${FAIL}"
+
 # The designated bundle as a purpose-built host seals it, and the ways it can be wrong.
 make baseline-release-mismatch sh-baseline "m['version'] = '1.0.1'; ${SCHEMA}"
 make baseline-other-identifier sh-baseline "${SCHEMA}" dev.antony.Koine.provider.fixturesh.impostor
@@ -165,6 +227,11 @@ make ordinary-claims-reserved-only-namespace od-claim-input "pass"
 # A manifest that names an ordinary provider, over a descriptor that names the slot's identity.
 make ordinary-describes-slot od-describes-slot "pass"
 make unknown unknown "pass"
+# Ordinary providers that claim a principal class that is not theirs: a shipped
+# provider's, the host's own, and another ordinary provider's.
+make ordinary-principal-sh od "m['principalClass'] = 'KoineFixtureShProviderFactory'"
+make ordinary-principal-host-class od "m['principalClass'] = 'KoineSelectionHostClass'"
+make unknown-principal-od unknown "m['principalClass'] = 'KoineFixtureOdProviderFactory'"
 # A bundle whose manifest cannot be read names no provider at all.
 make unidentified od "pass"
 printf '{ not a manifest' >"${OUT}/unidentified/FixtureOd.koineprovider/manifest.json"

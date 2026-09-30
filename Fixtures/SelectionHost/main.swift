@@ -24,6 +24,11 @@ import MachO
 // capability, the team this process verified, and the KoineProviderAPI images
 // mapped), serves until standard input ends, then stops and prints how long that took.
 
+/// A class registered by this host's own image, for a fixture manifest to name as its
+/// principal class: the loader's check that a selected provider's principal class name is
+/// free in the host as it already is (scripts/verify-selection-failures.py).
+@objc(KoineSelectionHostClass) final class SelectionHostClass: NSObject {}
+
 func emit(_ object: [String: Any]) {
     let data = try! JSONSerialization.data(withJSONObject: object, options: [.sortedKeys])
     FileHandle.standardOutput.write(data + Data("\n".utf8))

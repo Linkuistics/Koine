@@ -14,6 +14,14 @@ come back dirty against a loader with one decision deliberately broken:
   * every eligible candidate loaded      the never-ran markers
   * a host with no team given one        the ad-hoc host rows
 
+and, for the failure boundary of scripts/verify-selection-failures.py:
+
+  * two shipped selections not both refused on a principal conflict
+  * an ordinary claimant of a principal not refused
+  * a principal class of the host's own not counted as a conflict
+  * the descriptor's features not compared with the manifest's
+  * every eligible candidate loaded, after a frozen update fails
+
 Each mutation is applied to a COPY of the source tree (.build/selection-mutations/tree,
 its own build directory, so later runs are incremental): the working tree is never
 edited. The copy's headless host is assembled and signed into the same purpose-built
@@ -32,6 +40,9 @@ import sys
 REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOADER = "Sources/KoineProviderLoader/"
 
+DRIVERS = {"decisions": "verify-selection-decisions.py", "failures": "verify-selection-failures.py"}
+
+# name -> (file, text to replace, replacement, scenarios of the driver that must go red[, driver]).
 MUTATIONS = {
     "text-version-order": (
         LOADER + "ProviderCatalogue.swift",
@@ -75,6 +86,44 @@ MUTATIONS = {
         'guard let hostTeam = Optional(hostTeam ?? "TA43A4RUP3") else {',
         ["an ad-hoc host admits no shipped candidate"],
     ),
+    "shipped-conflict-not-symmetric": (
+        LOADER + "ProviderLoader.swift",
+        "if shipped.count > 1 {",
+        "if false && shipped.count > 1 {",
+        ["a shipped update and another shipped identity's bundle are refused symmetrically",
+         "two shipped updates are equal slot owners"],
+        "failures",
+    ),
+    "ordinary-claimant-not-refused": (
+        LOADER + "ProviderLoader.swift",
+        "for (candidate, _) in others { refused[candidate.id] = refused[candidate.id] ?? message }",
+        "for (candidate, _) in others where false { refused[candidate.id] = refused[candidate.id] ?? message }",
+        ["an ordinary claimant of a shipped principal is refused alone, the bundled owner running",
+         "ordinary claimants of one principal are both refused"],
+        "failures",
+    ),
+    "host-class-not-a-conflict": (
+        LOADER + "ProviderLoader.swift",
+        "if let existing = objc_lookUpClass(name), imagePath(of: existing) != ready.library {",
+        "if false, let existing = objc_lookUpClass(name), imagePath(of: existing) != ready.library {",
+        ["its principal class is one the host's own image registered", "its principal class is a system class",
+         "an ordinary claimant of a host class is refused"],
+        "failures",
+    ),
+    "descriptor-features-not-compared": (
+        LOADER + "ProviderLoader.swift",
+        "Set(descriptor.requiredFeatures) == Set(manifest.requiredFeatures)",
+        "true",
+        ["its descriptor disagrees with its manifest"],
+        "failures",
+    ),
+    "alternatives-load-after-failure": (
+        LOADER + "ProviderLoader.swift",
+        "if case .selected? = plan.verdicts[$0] { true } else { false }",
+        "if case .selected? = plan.verdicts[$0] { true } else { prepared[$0] != nil }",
+        ["dlopen refuses its private dependency", "its principal class is one the host's own image registered"],
+        "failures",
+    ),
 }
 
 
@@ -93,7 +142,8 @@ def main():
     framework = run(["scripts/stage-provider-framework.sh", "debug"], REPOSITORY).stdout.strip()
     report = {}
     for name in wanted:
-        path, old, new, scenarios = MUTATIONS[name]
+        path, old, new, scenarios, *driver = MUTATIONS[name]
+        driver = DRIVERS[driver[0] if driver else "decisions"]
         print(f"== {name}", flush=True)
         run(["rsync", "-a", "--delete", "--exclude", ".build", "--exclude", ".git", "--exclude", ".jj",
              "--exclude", ".grove", "--exclude", ".playwright-mcp", "--exclude", "node_modules",
@@ -113,7 +163,7 @@ def main():
         for scenario in scenarios:
             results = os.path.join(output, name, "results.json")
             subprocess.run(
-                [os.path.join(REPOSITORY, "scripts/verify-selection-decisions.py"), hosts, fixtures, results, "--only", scenario],
+                [os.path.join(REPOSITORY, "scripts", driver), hosts, fixtures, results, "--only", scenario],
                 cwd=REPOSITORY, capture_output=True, text=True,
             )
             with open(results) as file:
