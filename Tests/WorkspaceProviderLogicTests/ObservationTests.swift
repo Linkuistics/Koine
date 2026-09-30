@@ -88,6 +88,21 @@ import Testing
     @Test func aFreshLookupThatFindsNothingOrSomethingElseIsNull() {
         let application = FakeApplication()
         application.freshEqual = false
-        #expect(observeProcess(of: application, native: Self.native()) == nil)
+        #expect(observeProcess(of: application, native: Self.native(), settle: .milliseconds(30)) == nil)
+    }
+
+    /// Seen on a real cold launch: the callback arrived before the system's record
+    /// of the application was complete, and the first fresh lookup was not equal.
+    @Test func aFreshLookupThatIsEqualOnlyOnALaterTryYieldsTheKernelInstant() {
+        let application = FakeApplication()
+        application.freshLookupsUnequal = 3
+        let observed = observeProcess(of: application, native: Self.native())
+        #expect(observed == ObservedProcess(pid: 4242, start: Self.start))
+    }
+
+    @Test func aFreshLookupThatOnlySettlesAfterTheBoundIsNull() {
+        let application = FakeApplication()
+        application.freshLookupsUnequal = 1_000
+        #expect(observeProcess(of: application, native: Self.native(), settle: .milliseconds(30)) == nil)
     }
 }

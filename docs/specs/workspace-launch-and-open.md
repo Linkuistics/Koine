@@ -354,8 +354,17 @@ and the types it reaches, verbatim from the design file. The other three roots
 and their types are not served until their leaves land. What follows is exactly
 what was established; every row above keeps its pending remainder.
 
-- **Twelve launchers, stopped and running.** Nothing established: no real
-  application was launched. Pending in full (`launch-vm`, `application-launchers`).
+- **Twelve launchers, stopped and running.** V for **one** launcher, Notes
+  (`com.apple.Notes` 4.13, `/System/Applications/Notes.app`), in a signed clone
+  ([launch-vm.md](../verification/launch-vm.md)): first run and Gatekeeper approval
+  completed and recorded; a cold launch and a reactivation each with another
+  application in front and Koine inactive, activation seen by an independent
+  witness and never inferred, callback latency recorded for both (165 ms and 22 ms,
+  activation 150 ms and 9 ms); the running copy reused, exactly one instance;
+  the client's recovery (a desktop read, then an explicit focus, each under its own
+  grant) exercised separately. Controls-only activation met the requirement, so
+  nothing goes to Antony. Pending: the other eleven launchers, and G and N for the
+  real installations (`application-launchers`).
 - **Multiple copies and installation.** L (`SelectionTests`): absent and unregistered
   identifiers, a registration whose bundle is gone, a present copy in the Trash
   (eligible), identifier mismatch with nothing substituted, a chosen copy matched by
@@ -373,25 +382,39 @@ what was established; every row above keeps its pending remainder.
   exclusive branches; publication denial at the status, value, process,
   non-null process fields and both dependency fields, with the partial data and
   error paths each leaves; an absent process as null. L (`ObservationTests`): every
-  step of the observation rule, one mismatch at a time. Pending: an observed real
-  process identity accepted by `desktopApplication(process:)` (V).
+  step of the observation rule, one mismatch at a time, and the fifth step's
+  bounded settle. V ([launch-vm.md](../verification/launch-vm.md)): the receipt's
+  `{pid, startedAt}` equals the kernel's reading by an independent witness,
+  `desktopApplication(process:)` accepts it unchanged under `desktop:read`, and
+  after the process's real exit answers null. The V run found the process null on
+  most cold launches, a race in the fresh lookup's equality, and the settle is its
+  fix. Publication denial and revocation at the fields are G's; no atomic
+  effect-binding is claimed.
 - **Bounded acknowledgment.** L (`LaunchTests`): a negative acknowledgment, a
   missing callback and a late callback (ignored, and releasing its slot exactly
   once), cancellation before and during the wait, one-shot completion, exhausted
   capacity refused before submission and restored by a callback. G: an action's
   own `failed` at its path with later actions still running, against an earlier
-  core deadline that answers the whole request and starts no later action.
-  Pending: real completion timing, and Gatekeeper held past the bound (N/V).
+  core deadline that answers the whole request and starts no later action. V
+  ([launch-vm.md](../verification/launch-vm.md)): real completion timing of one
+  application, cold and reactivation, well inside the bound. Pending: Gatekeeper
+  held past the bound, and N.
 - **Authority/revocation.** G and N (through the real signed bundle): neither
   control alone, and neither read, is enough; both controls without reads reach the
   provider; denial precedes inspection; the first unmet member and the complete set;
-  multi-action preflight, aliases and `@skip`, revocation between actions.
-  Pending: V's observation of no denied launch, and disclosure
-  (`workspace-disclosure`).
+  multi-action preflight, aliases and `@skip`, revocation between actions. V
+  ([launch-vm.md](../verification/launch-vm.md)): both controls with no read
+  capability launch and reactivate; either control alone (HTTP 403 at
+  authorization, the first unmet member and the complete set named), `desktop:read`
+  alone and a revoked grant (401) launch nothing and move no focus, with the
+  application stopped and running. Pending: disclosure (`workspace-disclosure`).
 - **Consent and prompts.** The real adapter inspects only through the calls
   the [probe](../verification/protected-path-metadata.md#inspection-results) measured
-  prompt-free, and never asks for a file's default handler. Accessibility
-  absent/revoked, app onboarding and Gatekeeper are pending (V).
+  prompt-free, and never asks for a file's default handler. V
+  ([launch-vm.md](../verification/launch-vm.md)): with Accessibility absent, and
+  again after it was given and revoked, launch and reactivation work and no consent
+  dialog appears; Notes' first run and Gatekeeper approval are recorded. Pending:
+  the separate Gatekeeper timeout case, and the third-party launchers' onboarding.
 - **Packaging/selection.** N: the signed bundle, built by its own definition and
   linking only the host framework, loads from the in-application root beside
   desktop through the selection-aware loader, `ACTIVE` and `SELECTED` at

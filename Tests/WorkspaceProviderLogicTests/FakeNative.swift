@@ -113,6 +113,9 @@ final class FakeApplication: LaunchedApplication, @unchecked Sendable {
     private var terminatedReads = 0
     var executable: FileIdentity?
     var freshEqual = true
+    /// The number of fresh lookups that find something else before one is equal.
+    var freshLookupsUnequal = 0
+    private var freshLookups = 0
 
     init(pids: [Int32] = [4242], terminated: [Bool] = [false], executable: FileIdentity? = FakeNative.identity("exe")) {
         pidSequence = pids
@@ -135,5 +138,10 @@ final class FakeApplication: LaunchedApplication, @unchecked Sendable {
     }
 
     var executableIdentity: FileIdentity? { executable }
-    func freshLookupEqualsSelf(pid: Int32) -> Bool { freshEqual }
+    func freshLookupEqualsSelf(pid: Int32) -> Bool {
+        lock.withLock {
+            freshLookups += 1
+            return freshEqual && freshLookups > freshLookupsUnequal
+        }
+    }
 }

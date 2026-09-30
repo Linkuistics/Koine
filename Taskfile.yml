@@ -263,6 +263,17 @@ tasks:
     cmds:
       - scripts/vm-verify-enrollment.sh
 
+  check:launch-call-path:
+    desc: Enumerate the workspace provider's launch path - its one NSWorkspace open request, the ten parameters it sets, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside it (each pattern is first seen to match a control)
+    deps: [app]
+    cmds:
+      - scripts/check-launch-call-path.sh
+
+  app:vm-verify-launch:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's workspaceLaunchApplication, under workspace:control AND desktop:control and no read capability, launches Notes while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive, as an independent witness sees activation, one instance and the kernel's identity for the returned process; that either control alone, desktop:read alone and a revoked grant launch nothing and move no focus; and that launch works and raises no consent prompt with Accessibility absent and again after it is revoked, with the client's recovery, a desktop read plus an explicit focus, exercised separately
+    cmds:
+      - scripts/vm-verify-launch.sh
+
   client:
     desc: Generate the contract-only client's TypeScript from the introspection response it was captured against, validating the five operations of docs/design/desktop-operations.graphql against that schema, then typecheck, bundle to one dependency-free file and run its adapter checks
     dir: clients/contract-only
