@@ -387,3 +387,18 @@ tasks:
     deps: [app]
     cmds:
       - scripts/vm-verify-selection.sh
+
+  launchers:prepare:
+    desc: Prepare a reusable TestAnyware macOS image (tart image koine-launchers-prepared, from the platform golden) with Gatekeeper ENFORCING and the twelve named launchers - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero - installed from their normal distribution (Jump Desktop from the vendor, as the cask's build aborts on macOS 26), each launched once past Gatekeeper and first-run UI without signing in, a pristine quarantined copy of one archived apart, Dia made the alternate default browser and Safari restored, and an inventory of the actual bundle identifiers, versions, paths and signatures written to .build/launcher-apps/inventory.json. Takes about half an hour and replaces the image. KOINE_LAUNCHERS_IMAGE and KOINE_LAUNCHERS_OUTPUT override the names
+    cmds:
+      - scripts/vm-prepare-launchers.sh prepare
+
+  launchers:verify:
+    desc: Check the image launchers:prepare kept - a fresh clone is inventoried again and compared with the recorded inventory, the archived quarantined copy extracts still quarantined and unopened, and every launcher opens with Gatekeeper enforcing and not one dialog to answer
+    cmds:
+      - scripts/vm-prepare-launchers.sh verify
+
+  launchers:inventory:
+    desc: Read the prepared launcher image again in a fresh clone and rewrite .build/launcher-apps/inventory.json (every application's actual bundle identifier, version, path, signature, Gatekeeper verdict and quarantine state, the default browser, the archived quarantined copy), keeping the first-run record launchers:prepare made. Later increments that reuse the twelve applications start from this document
+    cmds:
+      - scripts/vm-prepare-launchers.sh inventory

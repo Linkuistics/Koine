@@ -6,7 +6,9 @@
 # KOINE_VM_LOG_PREFIX names the transcript. The TestAnyware workarounds here are
 # explained in docs/verification/resident-app-vm.md.
 
-if [ ! -d "${APP_BUNDLE}" ]; then
+# KOINE_VM_NO_APP=1 is for the runs that prepare or inspect a guest and install no
+# Koine (vm-prepare-launchers.sh): they need the clone and the helpers, not the build.
+if [ "${KOINE_VM_NO_APP:-0}" != 1 ] && [ ! -d "${APP_BUNDLE}" ]; then
     echo "Error: ${APP_BUNDLE} does not exist. Run: task app" >&2
     exit 1
 fi
@@ -23,7 +25,7 @@ mkdir -p "${LOG_DIR}"
 LOG="${LOG_DIR}/${KOINE_VM_LOG_PREFIX:-}$(date +%Y%m%dT%H%M%S).log"
 exec > >(tee "${LOG}") 2>&1
 
-VM_ID="koine-verify-$$"
+VM_ID="${KOINE_VM_ID:-koine-verify-$$}"
 export TESTANYWARE_VM_ID="${VM_ID}"
 INSTALLED="/Applications/${APP_NAME}.app"
 DATA='$HOME/Library/Application Support/Koine'
@@ -61,6 +63,37 @@ guest() {
     echo "guest exec kept timing out: $1" >&2
     [ -z "${out}" ] || echo "${out}" >&2
     return 255
+}
+
+# guest_text <command>: for a read whose output the caller parses. The agent's
+# false "timed out" report (scripts/vm-verify-lib.sh, guest) can follow a complete
+# answer, and after twelve tries `guest` gives up with the answer in hand: keep the
+# answer, drop the report, and let the caller's parsing prove it whole.
+guest_text() {
+    local out
+    out="$(guest "$1" 2>&1)" || true
+    grep -v -e '^Process timed out after' -e '^guest exec kept timing out' -e '^\[Process timed out' <<<"${out}" || true
+}
+# guest_long <name> <local script>: runs a script that outlasts the agent's 30s
+# exec window — a Homebrew install, a cask download — detached in the guest, and
+# polls for its exit status. Its transcript is echoed into this run's log, and
+# its status is returned. guest() silently retries an exec that falsely times
+# out, and these scripts can not be repeated: one run's reinstall was launched
+# twice, and the second `brew install` truncated the log to "Not upgrading
+# koine". So the launch takes a guard directory, and a retried launch that finds
+# it already taken starts nothing.
+guest_long() {
+    local name="$1" script="$2" status
+    testanyware file upload "${script}" "/Users/admin/${name}.sh" >/dev/null
+    guest "mkdir \$HOME/${name}.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
+    for _ in $(seq 1 180); do
+        if guest "[ -e \$HOME/${name}.exit ]" >/dev/null 2>&1; then break; fi
+        sleep 5
+    done
+    guest "cat \$HOME/${name}.log" | sed 's/^/  | /'
+    status="$(guest "cat \$HOME/${name}.exit" 2>/dev/null | tr -d '[:space:]')"
+    [ -n "${status}" ] || fail "${name} did not finish within 15 minutes"
+    return "${status}"
 }
 
 cleanup() {
@@ -157,7 +190,9 @@ start_vm() {
     # KOINE_VM_DISPLAY overrides the guest's resolution. Only the notarized run
     # needs it, to put a control far below the fold of a System Settings pane on
     # screen at all; every other run takes testanyware's default.
+    # KOINE_VM_BASE clones a prepared tart image instead of the platform's golden.
     testanyware vm start --platform macos --id "${VM_ID}" \
+        ${KOINE_VM_BASE:+--base "${KOINE_VM_BASE}"} \
         ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
     guest 'sw_vers; uname -m'
     echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"

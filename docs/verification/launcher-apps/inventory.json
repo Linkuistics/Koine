@@ -1,0 +1,540 @@
+{
+  "apps": [
+    {
+      "architectures": [
+        "arm64"
+      ],
+      "build": "87750",
+      "bundleIdentifier": "company.thebrowser.dia",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "14.0",
+      "name": "Dia",
+      "path": "/Applications/Dia.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Dia.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)",
+      "teamIdentifier": "S6N382Y83G",
+      "version": "1.50.1"
+    },
+    {
+      "architectures": [
+        "arm64"
+      ],
+      "build": "12553",
+      "bundleIdentifier": "com.openai.codex",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "13.0",
+      "name": "ChatGPT",
+      "path": "/Applications/ChatGPT.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/ChatGPT.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: OpenAI OpCo, LLC (2DC432GLL2)",
+      "teamIdentifier": "2DC432GLL2",
+      "version": "26.928.31416"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "build": "2.16120.0",
+      "bundleIdentifier": "com.anthropic.claudefordesktop",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "13.0",
+      "name": "Claude",
+      "path": "/Applications/Claude.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Claude.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Anthropic PBC (Q6L2SF6YDW)",
+      "teamIdentifier": "Q6L2SF6YDW",
+      "version": "2.16120.0"
+    },
+    {
+      "architectures": [
+        "arm64"
+      ],
+      "build": "20260930.150108",
+      "bundleIdentifier": "dev.zed.Zed",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "10.15.7",
+      "name": "Zed",
+      "path": "/Applications/Zed.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Zed.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ)",
+      "teamIdentifier": "MQ55VZLNZQ",
+      "version": "1.22.0"
+    },
+    {
+      "architectures": [
+        "arm64"
+      ],
+      "build": "1.140.0",
+      "bundleIdentifier": "com.microsoft.VSCode",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "12.0",
+      "name": "Visual Studio Code",
+      "path": "/Applications/Visual Studio Code.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Visual Studio Code.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+      "teamIdentifier": "UBF8T346G9",
+      "version": "1.140.0"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "build": "1001365",
+      "bundleIdentifier": "com.p5sys.jump.mac.viewer.web",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "11.0",
+      "name": "Jump Desktop",
+      "path": "/Applications/Jump Desktop.app",
+      "quarantine": {
+        "agent": "Safari",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Jump Desktop.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: PhaseFive Systems (2HCKV38EEC)",
+      "teamIdentifier": "2HCKV38EEC",
+      "version": "10.15.31.0"
+    },
+    {
+      "architectures": [
+        "arm64"
+      ],
+      "build": "3.2.15",
+      "bundleIdentifier": "com.moonshot.kimichat",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "12.0",
+      "name": "Kimi",
+      "path": "/Applications/Kimi.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Kimi.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Beijing Moonshot Technology Co., Ltd (2J9472RW75)",
+      "teamIdentifier": "2J9472RW75",
+      "version": "3.2.15"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "build": "3.7.3",
+      "bundleIdentifier": "com.googlecode.iterm2",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "13.0",
+      "name": "iTerm",
+      "path": "/Applications/iTerm.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/iTerm.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)",
+      "teamIdentifier": "H7V7XYVQ7D",
+      "version": "3.7.3"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64e"
+      ],
+      "build": "3864.600.51.1.1",
+      "bundleIdentifier": "com.apple.mail",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Apple System"
+      },
+      "installed": true,
+      "minimumSystemVersion": "26.5",
+      "name": "Mail",
+      "path": "/System/Applications/Mail.app",
+      "quarantine": {
+        "agent": null,
+        "approved": false,
+        "flags": null,
+        "present": false
+      },
+      "realPath": "/System/Applications/Mail.app",
+      "running": false,
+      "signingAuthority": "Software Signing",
+      "teamIdentifier": "not set",
+      "version": "16.0"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64e"
+      ],
+      "build": "3146.121.7",
+      "bundleIdentifier": "com.apple.Notes",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Apple System"
+      },
+      "installed": true,
+      "minimumSystemVersion": "26.5",
+      "name": "Notes",
+      "path": "/System/Applications/Notes.app",
+      "quarantine": {
+        "agent": null,
+        "approved": false,
+        "flags": null,
+        "present": false
+      },
+      "realPath": "/System/Applications/Notes.app",
+      "running": false,
+      "signingAuthority": "Software Signing",
+      "teamIdentifier": "not set",
+      "version": "4.13"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "build": "1.13.7",
+      "bundleIdentifier": "md.obsidian",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "12.0",
+      "name": "Obsidian",
+      "path": "/Applications/Obsidian.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Obsidian.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Dynalist Inc. (6JSW4SJWN9)",
+      "teamIdentifier": "6JSW4SJWN9",
+      "version": "1.13.7"
+    },
+    {
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "build": "10.0.5",
+      "bundleIdentifier": "org.zotero.zotero",
+      "gatekeeper": {
+        "accepted": true,
+        "source": "Notarized Developer ID"
+      },
+      "installed": true,
+      "minimumSystemVersion": "10.9.0",
+      "name": "Zotero",
+      "path": "/Applications/Zotero.app",
+      "quarantine": {
+        "agent": "Homebrew\\x20Cask",
+        "approved": true,
+        "flags": "01c1",
+        "present": true
+      },
+      "realPath": "/Applications/Zotero.app",
+      "running": false,
+      "signingAuthority": "Developer ID Application: Corporation for Digital Scholarship (8LAYR367YV)",
+      "teamIdentifier": "8LAYR367YV",
+      "version": "10.0.5"
+    }
+  ],
+  "defaultBrowser": {
+    "http": {
+      "bundleIdentifier": "com.apple.Safari",
+      "path": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+    },
+    "https": {
+      "bundleIdentifier": "com.apple.Safari",
+      "path": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+    }
+  },
+  "gatekeeperPendingArchives": [
+    "Obsidian.app.tar.gz"
+  ],
+  "system": {
+    "architecture": "arm64",
+    "buildVersion": "25F71",
+    "gatekeeper": [
+      "assessments enabled",
+      "developer id enabled"
+    ],
+    "homebrew": [
+      "Homebrew 7.0.7"
+    ],
+    "productVersion": "26.5"
+  },
+  "firstRunActions": [
+    {
+      "application": "Dia",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Dia” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:06 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Dia",
+      "dialogOwner": "UserNotificationCenter",
+      "button": "Don’t Allow",
+      "meaning": "system permission request (declined)",
+      "words": "“Dia” would like to access the Microphone. / Websites may use your microphone for features on their site.",
+      "recurring": false
+    },
+    {
+      "application": "ChatGPT",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“ChatGPT” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:06 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Claude",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Claude” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:07 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Zed",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Zed” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:07 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Visual Studio Code",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Visual Studio Code” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:08 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Jump Desktop",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Jump Desktop” is an app downloaded from the Internet. Are you sure you want to open it? / Safari downloaded this file today at 7:08 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Jump Desktop",
+      "dialogOwner": "UserNotificationCenter",
+      "button": "Don’t Allow",
+      "meaning": "system permission request (declined)",
+      "words": "“Jump Desktop” would like to access files in your Documents folder. / ",
+      "recurring": false
+    },
+    {
+      "application": "Kimi",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Kimi” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:11 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Kimi",
+      "dialogOwner": "universalAccessAuthWarn",
+      "button": "Deny",
+      "meaning": "Accessibility (events) request (denied)",
+      "words": "“Kimi” would like to control this computer using accessibility features. / Grant access to this application in Privacy & Security settings, located in System Settings. / Accessibility Access (Events)",
+      "recurring": true
+    },
+    {
+      "application": "Kimi",
+      "dialogOwner": "UserNotificationCenter",
+      "button": "Don’t Allow",
+      "meaning": "system permission request (declined)",
+      "words": "“Kimi” would like to access the Microphone. / Kimi 需要使用麦克风来进行语音输入",
+      "recurring": false
+    },
+    {
+      "application": "Kimi",
+      "dialogOwner": "universalAccessAuthWarn",
+      "button": "Deny",
+      "meaning": "Accessibility (events) request (denied)",
+      "words": "“Kimi” would like to control this computer using accessibility features. / Grant access to this application in Privacy & Security settings, located in System Settings. / Accessibility Access (Events)",
+      "recurring": true
+    },
+    {
+      "application": "Kimi",
+      "dialogOwner": "universalAccessAuthWarn",
+      "button": "Deny",
+      "meaning": "Accessibility (events) request (denied)",
+      "words": "“Kimi” would like to control this computer using accessibility features. / Grant access to this application in Privacy & Security settings, located in System Settings. / Accessibility Access (Events)",
+      "recurring": true
+    },
+    {
+      "application": "iTerm",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“iTerm” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:11 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "iTerm",
+      "dialogOwner": "UserNotificationCenter",
+      "button": "Don’t Allow",
+      "meaning": "system permission request (declined)",
+      "words": "Allow “iTerm” to find devices on local networks? / An application in iTerm2 wants to access the local network.",
+      "recurring": false
+    },
+    {
+      "application": "iTerm",
+      "dialogOwner": "iTerm2",
+      "button": "OK",
+      "meaning": "confirm quitting with a session open",
+      "words": "Quit iTerm2? / All sessions will be closed. / Why am I being prompted? / ⌥⌘1 / -zsh",
+      "recurring": false
+    },
+    {
+      "application": "iTerm",
+      "dialogOwner": "iTerm2",
+      "button": "Don’t Check",
+      "meaning": "update-check question, asked from the second launch on",
+      "words": "Check for updates automatically? / Should iTerm2 automatically check for updates? You can always check for updates manually from the iTerm2 menu. / ",
+      "recurring": false
+    },
+    {
+      "application": "iTerm",
+      "dialogOwner": "iTerm2",
+      "button": "OK",
+      "meaning": "confirm quitting with a session open",
+      "words": "Quit iTerm2? / All sessions will be closed. / Why am I being prompted? / ⌥⌘1 / -zsh",
+      "recurring": false
+    },
+    {
+      "application": "Notes",
+      "dialogOwner": "Notes",
+      "button": "Continue",
+      "meaning": "welcome sheet",
+      "words": "Notes / Great new tools for notes synced to your Apple Account. / Welcome to Notes / Organize Your Thoughts / Format your notes with tables, titles, checklists, and text styles. / Note to Self, or with Anyone / Invite others to view or make changes to a note. / Capture documents, audio, photos, and ",
+      "recurring": false
+    },
+    {
+      "application": "Notes",
+      "dialogOwner": "Notes",
+      "button": "Cancel",
+      "meaning": "Turn On iCloud offer (declined)",
+      "words": "On My Mac / Notes / No Notes / Notes / No notes / Turn On iCloud / To access your notes from all your devices, turn on iCloud for Notes.",
+      "recurring": false
+    },
+    {
+      "application": "Obsidian",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Obsidian” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:11 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "Zotero",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Open",
+      "meaning": "Gatekeeper: downloaded from the Internet, open it?",
+      "words": "“Zotero” is an app downloaded from the Internet. Are you sure you want to open it? / Homebrew Cask downloaded this file today at 7:11 AM. Apple checked it for malicious software and none was detected.",
+      "recurring": false
+    },
+    {
+      "application": "default browser",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Use “Dia”",
+      "meaning": "confirm the default browser",
+      "words": "/Applications/Dia.app"
+    },
+    {
+      "application": "default browser",
+      "dialogOwner": "CoreServicesUIAgent",
+      "button": "Use “Safari”",
+      "meaning": "confirm the default browser",
+      "words": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+    }
+  ]
+}

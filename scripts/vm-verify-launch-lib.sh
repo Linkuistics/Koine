@@ -64,15 +64,6 @@ watch_start() {
         sleep 1
     done
 }
-# guest_text <command>: for a read whose output the caller parses. The agent's
-# false "timed out" report (scripts/vm-verify-lib.sh, guest) can follow a complete
-# answer, and after twelve tries `guest` gives up with the answer in hand: keep the
-# answer, drop the report, and let the caller's parsing prove it whole.
-guest_text() {
-    local out
-    out="$(guest "$1" 2>&1)" || true
-    grep -v -e '^Process timed out after' -e '^guest exec kept timing out' -e '^\[Process timed out' <<<"${out}" || true
-}
 watch_read() { EVENTS="$(guest_text "cat ${WATCH}")"; }
 watch_stop() { guest "pkill -f 'LaunchWitness watch'" || true; }
 # activation_of <bundle identifier> <after ms>: the witness saw this application
