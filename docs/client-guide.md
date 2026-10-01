@@ -402,6 +402,35 @@ it, in the order it meets them:
    needs Koine to hold Accessibility consent, as for any window read, and without
    it `windows` is an `os-permission` refusal while the application itself resolves.
 
+## Opening a URL
+
+`workspaceOpenURL` opens a web URL in the default browser. [`workspace-operations.graphql`](design/workspace-operations.graphql)
+publishes it as `OpenSearchURL`; the [workspace spec](specs/workspace-launch-and-open.md)
+is the contract. It answers like a launch, with the same two controls and no read, the
+same typed `status`, `value.process` and `dependency`, and the same reading of `failed`
+(items 1, 3, 4, 5 and 6 above apply unchanged). What differs:
+
+1. **The client builds the URL; Koine never repairs it.** The URL is one string of
+   ASCII: the `URI` grammar of [RFC 3986 section 3](https://www.rfc-editor.org/rfc/rfc3986#section-3)
+   with an `http` or `https` scheme, a host, optional query and fragment, valid percent
+   escapes (`%` and two hex digits), and no credentials, whitespace, backslash or
+   control character. Percent-encode UTF-8 path and query text, and give an
+   internationalized host as ASCII labels (`xn--bcher-kva.example`), not Unicode and not
+   percent escapes. A URL that does not fit, another scheme (`file`, `javascript` and
+   custom schemes included) or a malformed one is an input error at the field's path
+   with no `kind`; nothing was looked up and nothing opened. Valid bytes reach the browser
+   exactly as sent: Koine does not trim, normalize or re-encode them.
+2. **The default browser opens it, not an application that claims the link.** Koine finds
+   the default handler of the scheme alone, then asks that application to open the URL, so
+   a link another application would take as a universal link still opens in the browser.
+3. **No browser is a dependency, not an error.** With no default browser registered the
+   result is `DEPENDENCY_UNAVAILABLE` with `reason: NO_DEFAULT_HANDLER` and a `guidance`
+   sentence to show; nothing was submitted. A default changed after Koine resolved it
+   neither retargets nor replays that action.
+4. **Search is the client's.** Query entry, suggestions and the fallback to opening the
+   typed query when suggestions fail stay in the client; Koine makes no search request and
+   contacts no search service.
+
 ## What version 1 does not do
 
 A client written from the contract alone asked for each of these;

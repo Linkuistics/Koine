@@ -15,9 +15,13 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var executables: [Int32: FileIdentity] = [:]
     private var pendingCompletions: [@Sendable (LaunchCompletion) -> Void] = []
     private var launchLog: [(url: URL, substituting: Bool)] = []
+    private var webHandlers: [WebURL.Scheme: URL] = [:]
+    private var handlerLookupLog: [WebURL.Scheme] = []
+    private var openLog: [(url: URL, application: URL)] = []
     private var inspectionLog: [String] = []
     private var startReads: [Int32: Int] = [:]
-    /// What a launch does at once, if anything; the default holds the callback for the test.
+    /// What a submission (a launch or a URL open) does at once, if anything; the default
+    /// holds the callback for the test.
     var onLaunch: (@Sendable (@escaping @Sendable (LaunchCompletion) -> Void) -> Void)?
 
     // MARK: Arrangement
@@ -44,6 +48,23 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         return bundle
     }
 
+    /// The default handler of `scheme`, as a present, registered application.
+    @discardableResult
+    func installBrowser(
+        _ identifier: String = "com.apple.Safari", at path: String = "/Applications/Safari.app",
+        schemes: [WebURL.Scheme] = [.http, .https]
+    ) -> ApplicationBundle {
+        let bundle = ApplicationBundle(
+            url: URL(fileURLWithPath: path), bundleIdentifier: identifier, identity: Self.identity(path)
+        )
+        inspect(path, as: .application(bundle))
+        lock.withLock { for scheme in schemes { webHandlers[scheme] = bundle.url } }
+        return bundle
+    }
+
+    /// Changes (or removes) the registered default after it was asked about.
+    func setWebHandler(_ scheme: WebURL.Scheme, to url: URL?) { lock.withLock { webHandlers[scheme] = url } }
+
     func processStarts(_ pid: Int32, _ reads: [ProcessLookup]) { lock.withLock { starts[pid] = reads } }
     func executable(_ pid: Int32, _ identity: FileIdentity?) { lock.withLock { executables[pid] = identity } }
 
@@ -55,6 +76,10 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
 
     var launches: [(url: URL, substituting: Bool)] { lock.withLock { launchLog } }
     var inspected: [String] { lock.withLock { inspectionLog } }
+    /// Every scheme the provider asked a default handler about, in order. The lookup has no
+    /// other parameter, which is what makes it scheme-only.
+    var handlerLookups: [WebURL.Scheme] { lock.withLock { handlerLookupLog } }
+    var opens: [(url: URL, application: URL)] { lock.withLock { openLog } }
     var completions: Int { lock.withLock { pendingCompletions.count } }
 
     /// Answers the `index`th submission's callback now, from the test's thread.
@@ -85,6 +110,23 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     ) {
         lock.withLock {
             launchLog.append((url, substitutingRunningCopy))
+            pendingCompletions.append(completion)
+        }
+        onLaunch?(completion)
+    }
+
+    func defaultApplication(forWebScheme scheme: WebURL.Scheme) -> URL? {
+        lock.withLock {
+            handlerLookupLog.append(scheme)
+            return webHandlers[scheme]
+        }
+    }
+
+    func openWebURL(
+        _ url: URL, withApplicationAt application: URL, completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        lock.withLock {
+            openLog.append((url, application))
             pendingCompletions.append(completion)
         }
         onLaunch?(completion)

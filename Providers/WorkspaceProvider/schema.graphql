@@ -1,5 +1,5 @@
-# Workspace 1.0.0 contribution as served by this increment: the launch root and every type it
-# reaches, verbatim from docs/design/workspace-schema.graphql. Each later root lands with its
+# Workspace 1.0.0 contribution as served by this increment: the launch and URL roots and every
+# type they reach, verbatim from docs/design/workspace-schema.graphql. Each later root lands with its
 # own leaf; a coordinate that is not implemented here is not served.
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
@@ -59,4 +59,6 @@ type WorkspaceOpenResult {
 extend type Mutation {
   """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first."""
   workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
+  workspaceOpenURL(url: String!): WorkspaceOpenResult
 }

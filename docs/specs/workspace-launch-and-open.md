@@ -1,8 +1,8 @@
 # Workspace launch and open
 
-**Designed; `workspaceLaunchApplication` is implemented and its L, G and N parts
-are recorded under [Acceptance](#evidence-so-far), the other three roots and every
-V part pending.** Workspace supplies the
+**Designed; `workspaceLaunchApplication` and `workspaceOpenURL` are implemented and
+their L, G and N parts are recorded under [Acceptance](#evidence-so-far), the other
+two roots and the URL root's V part pending.** Workspace supplies the
 launchers, browser opening, file/folder opening and Finder reveal required by
 the [workflow inventory](../requirements/modaliser-workflows.md#workflow-inventory).
 The [workflow spec](workflow-providers.md) owns the cumulative authority trace;
@@ -368,8 +368,9 @@ tests for the required working paths.
 ### Evidence so far
 
 `workspace-launch` shipped the bundled provider serving `workspaceLaunchApplication`
-and the types it reaches, verbatim from the design file. The other three roots
-and their types are not served until their leaves land. What follows is exactly
+and the types it reaches, verbatim from the design file, and `open-url` added
+`workspaceOpenURL` (its two lines, verbatim; it reaches no new type). The other two
+roots and their types are not served until their leaves land. What follows is exactly
 what was established; every row above keeps its pending remainder.
 
 - **Twelve launchers, stopped and running.** V for **all twelve**
@@ -397,7 +398,44 @@ what was established; every row above keeps its pending remainder.
   reuse (V), and `application-installations`.
 - **Input boundary.** L and N: a blank identifier and an empty, relative or
   NUL-containing application path are input errors at the original path with no
-  `kind`, before any inspection. The other operations' inputs have not landed.
+  `kind`, before any inspection. For the URL: L (`WebURLTests`, `OpenURLTests`), G
+  (`WorkspaceCompositionTests`, the real provider over a recording native stand-in) and
+  N (`WorkspaceProviderTests`, the signed bundle) refuse every class below at the
+  original path with no `kind`, before any handler lookup, and nothing reaches the
+  handler. The path and reveal operations' inputs have not landed.
+- **Browser URL.** L, G and N, no browser driven; V is pending (`open-url-vm`).
+  The grammar is held as a decision over bytes (`WebURLTests`): accepted are an `http`
+  or `https` scheme in any case, a host, path, query and fragment with valid percent
+  escapes (encoded query and fragment included), ports (empty allowed), IPv4, IPv6 (hex groups of at most four digits, an IPv4 tail without leading zeros) and
+  IPvFuture literals, and ASCII IDNA A-labels (RFC 3492 vectors for `bücher`, `münchen`,
+  `例え`, `テスト`); each accepted URL is also shown to reach the native layer as the very
+  bytes validated. Refused, each class by its own cases, are control characters,
+  whitespace, backslashes, raw Unicode in path, query, fragment and host, credentials,
+  other schemes (`file`, `javascript`, custom), a missing scheme or host, invalid percent
+  escapes, characters RFC 3986 does not allow, percent-encoded or malformed hosts, and
+  IDNA violations (an `xn--` label that is not Punycode, decodes to ASCII only or to a
+  control character, or does not re-encode, and `--` in the third and fourth positions of another label). Bounded by
+  design: whether a decoded label's code points are valid in IDNA 2008 is the browser's
+  to decide, and a port has the grammar's `*DIGIT` with no range. A mutated validator that
+  admits everything turned the L and G refusal cases red. The handler is found by the
+  scheme alone: L records every lookup's only parameter (`http` or `https`), and the
+  real adapter passes `http:` or `https:` and nothing from the submitted URL;
+  `task check:launch-call-path` inspects exactly that, one lookup and one open request
+  addressed to the resolved application with launch's ten configuration settings, each
+  new check first seen red against a mutated source. L, with the native adapter
+  substituted: an absent handler, a handler whose bundle is gone and a default per scheme
+  without fallback are `NO_DEFAULT_HANDLER` with nothing submitted, unreadable handler
+  metadata is `failed`, a default changed after resolution neither retargets nor replays
+  and the next action resolves afresh, a negative acknowledgment, a missing callback and
+  a late callback (ignored, releasing its slot once), cancellation before and during the
+  wait, one-shot completion, and exhausted capacity (shared with launches) refused before
+  submission and restored by a callback. G: the URL root's authority (neither control
+  alone, a refusal before any lookup, the first unmet member and the complete set), its
+  branches, an action's own `failed` with later actions still running against an earlier
+  core deadline that answers the whole request, preflight across both roots, aliases and
+  `@skip`, revocation between actions, and publication denial at the result. N: the signed
+  bundle serves the root with its design text, both controls are required, and malformed
+  URLs are input errors; no well-formed URL is sent from the host.
 - **Receipt/failure boundary.** G (`WorkspaceCompositionTests`): error-free
   exclusive branches; publication denial at the status, value, process,
   non-null process fields and both dependency fields, with the partial data and
@@ -425,7 +463,7 @@ what was established; every row above keeps its pending remainder.
   dialog still the only one ten seconds on. Declined, nothing launched; accepted, exactly
   the one original launch and no second; no result was published after the answer and the
   next request was served normally. Pending: N.
-- **Authority/revocation.** G and N (through the real signed bundle): neither
+- **Authority/revocation.** G and N (through the real signed bundle), for both roots: neither
   control alone, and neither read, is enough; both controls without reads reach the
   provider; denial precedes inspection; the first unmet member and the complete set;
   multi-action preflight, aliases and `@skip`, revocation between actions. V
@@ -469,7 +507,9 @@ what was established; every row above keeps its pending remainder.
   design SDL the workspace design restricted to the implemented roots and the types
   they reach, verbatim ([schema-conformance-vm.md](../verification/schema-conformance-vm.md),
   [launch-contract.md](../verification/launch-contract.md)). A missing required
-  provider or coordinate fails. Pending: the complete selection matrix
+  provider or coordinate fails. The profile's design file now also declares
+  `workspaceOpenURL`, with a control that removes it; the run of that against the signed
+  application in a VM is `open-url-vm`'s. Pending: the complete selection matrix
   (`selection-acceptance`), old/new binaries with this provider, and selected
   updates and explicit absent/rejected sets in conformance.
 

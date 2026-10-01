@@ -60,21 +60,17 @@ struct NativeWorkspace: WorkspaceNative {
         return .unreadable(cocoa.localizedDescription)
     }
 
-    /// Launch or activate, as the contract fixes it: activation on, no new instance,
-    /// no printing or hiding, no arguments, environment or Apple event, and no
-    /// ordinary error or authentication UI. Recent-item behavior stays the default.
+    /// The configuration every open request carries, as the contract fixes it: activation on,
+    /// no new instance, no printing or hiding, no arguments, environment or Apple event, and
+    /// no ordinary error or authentication UI. Recent-item behavior stays the default.
     /// A running copy at another location is used only when `substitutingRunningCopy`.
     /// Gatekeeper's dialog is not suppressible by `promptsUserIfNeeded`, so the
     /// callback can come long after the provider's wait ended.
-    /// https://developer.apple.com/documentation/appkit/nsworkspace/openapplication(at:configuration:completionhandler:)
     /// https://developer.apple.com/documentation/appkit/nsworkspace/openconfiguration/createsnewapplicationinstance
     /// https://developer.apple.com/documentation/appkit/nsworkspace/openconfiguration/allowsrunningapplicationsubstitution
     /// https://developer.apple.com/documentation/appkit/nsworkspace/openconfiguration/promptsuserifneeded
     /// (Each is confirmed against the SDK's NSWorkspace.h, macOS 26.)
-    func launchApplication(
-        at url: URL, substitutingRunningCopy: Bool,
-        completion: @escaping @Sendable (LaunchCompletion) -> Void
-    ) {
+    private func openConfiguration(substitutingRunningCopy: Bool) -> NSWorkspace.OpenConfiguration {
         let configuration = NSWorkspace.OpenConfiguration()
         configuration.activates = true
         configuration.createsNewApplicationInstance = false
@@ -86,11 +82,53 @@ struct NativeWorkspace: WorkspaceNative {
         configuration.arguments = []
         configuration.environment = [:]
         configuration.appleEvent = nil
+        return configuration
+    }
+
+    /// Launch or activate.
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/openapplication(at:configuration:completionhandler:)
+    func launchApplication(
+        at url: URL, substitutingRunningCopy: Bool,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        let configuration = openConfiguration(substitutingRunningCopy: substitutingRunningCopy)
         NSWorkspace.shared.openApplication(at: url, configuration: configuration) { application, error in
             if let error {
                 completion(.refused(error.localizedDescription))
             } else {
                 completion(.acknowledged(application.map(RunningApplication.init)))
+            }
+        }
+    }
+
+    /// The default handler of a web scheme, asked about the scheme and nothing else. The URL
+    /// handed to the lookup is the scheme with no authority, path, query or fragment, so no
+    /// part of a submitted URL reaches Launch Services' handler discovery, universal links
+    /// included. A web scheme's answer is the default browser; a lookup of a non-file URL
+    /// is not one of the file-URL lookups that prompted (protected-path-metadata.md).
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/urlforapplication(toopen:)-7qkzf
+    /// (Confirmed against the SDK's NSWorkspace.h, macOS 26: `URLForApplicationToOpenURL:`.)
+    func defaultApplication(forWebScheme scheme: WebURL.Scheme) -> URL? {
+        guard let schemeOnly = URL(string: "\(scheme.rawValue):") else { return nil }
+        return NSWorkspace.shared.urlForApplication(toOpen: schemeOnly)
+    }
+
+    /// Open a URL in an explicitly chosen application. The system is not asked which
+    /// application should receive it, so a URL that is a universal link cannot be routed
+    /// to a native app instead, and `requiresUniversalLinks` stays at its default (NO).
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/open(_:withapplicationat:configuration:completionhandler:)
+    /// (Confirmed against the SDK's NSWorkspace.h, macOS 26: `openURLs:withApplicationAtURL:...`.)
+    func openWebURL(
+        _ url: URL, withApplicationAt application: URL,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        let configuration = openConfiguration(substitutingRunningCopy: true)
+        NSWorkspace.shared.open([url], withApplicationAt: application, configuration: configuration) {
+            running, error in
+            if let error {
+                completion(.refused(error.localizedDescription))
+            } else {
+                completion(.acknowledged(running.map(RunningApplication.init)))
             }
         }
     }

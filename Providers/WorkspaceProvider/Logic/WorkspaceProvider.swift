@@ -1,7 +1,7 @@
 import Foundation
 import KoineProviderAPI
 
-// The contribution: the launch root and every type it reaches, under
+// The contribution: the launch and URL roots and every type they reach, under
 // workspace:control AND desktop:control. Later roots extend this list with their
 // own leaves; the SDL (schema.graphql) is served verbatim from the design file.
 
@@ -19,12 +19,16 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
         "WorkspaceProcessIdentity": ["pid", "startedAt"],
         "WorkspaceDependencyUnavailable": ["reason", "guidance"],
     ]
+    // The roots, in the order the contribution declares them.
     var fields = [
+        ("Mutation.workspaceLaunchApplication", "launchApplication"),
+        ("Mutation.workspaceOpenURL", "openURL"),
+    ].map { coordinate, resolverId in
         ProviderFieldRegistration(
-            coordinate: "Mutation.workspaceLaunchApplication", resolverId: "launchApplication",
+            coordinate: coordinate, resolverId: resolverId,
             authority: .control, additionalRequirements: workspaceAdditionalRequirements
         )
-    ]
+    }
     for (type, names) in nested.sorted(by: { $0.key < $1.key }) {
         fields += names.map {
             ProviderFieldRegistration(
@@ -39,8 +43,8 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
     )
 }
 
-/// Launches or reactivates an installed application by bundle identity. Nothing
-/// is cached between calls: the installation is inspected on every action, and
+/// Launches or reactivates an installed application by bundle identity, and opens a web
+/// URL in the default browser. Nothing is cached between calls: the installation is inspected on every action, and
 /// the one thing held is the bound on native submissions still outstanding.
 final class WorkspaceProvider: Provider, @unchecked Sendable {
     /// Below the core's five-second request ceiling, which can still win first.
@@ -82,6 +86,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         }
         switch request.resolverId {
         case "launchApplication": return await launch(request.arguments["application"])
+        case "openURL": return await openWebURL(request.arguments["url"])
         default: return .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -98,7 +103,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         let request: ApplicationRequest
         switch parse(argument) {
         case .success(let parsed): request = parsed
-        case .failure(let error): return .failure(ProviderFailure(kind: .invalidInput, message: error.message))
+        case .failure(let error): return .failure(invalid(error.message))
         }
         guard !Task.isCancelled else { return failed("Cancelled before the application was inspected.") }
         let native = native
@@ -108,28 +113,61 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         case .failed(let message): return failed(message)
         case .selected(let url, let substituting):
             // Inspection was a read; from here on an effect may have begun.
-            return await submit(url, substituting: substituting)
+            return await submit(doing: "launch or activate the application", acknowledging: "launch") { completion in
+                native.launchApplication(at: url, substitutingRunningCopy: substituting, completion: completion)
+            }
         }
     }
 
-    private func submit(_ url: URL, substituting: Bool) async -> ResolutionResult {
+    // MARK: Open URL
+
+    /// Opens a web URL in the default browser, resolved from the URL's scheme alone and
+    /// then addressed explicitly: a URL that is a universal link for another application
+    /// is still opened by the browser. The bytes submitted are the bytes received.
+    private func openWebURL(_ argument: ProviderValue?) async -> ResolutionResult {
+        guard case .string(let text)? = argument else { return .failure(invalid("url must be a string.")) }
+        let webURL: WebURL
+        switch WebURL.validated(text) {
+        case .success(let validated): webURL = validated
+        case .failure(let error): return .failure(invalid(error.message))
+        }
+        // Nothing is repaired to fit: bytes the platform would change are not submitted.
+        guard let url = webURL.url else {
+            return failed("The system cannot represent this URL without changing it, so it was not opened.")
+        }
+        guard !Task.isCancelled else { return failed("Cancelled before the default browser was looked up.") }
         let native = native
-        let acknowledgment = await submitOnce(
-            { completion in
-                native.launchApplication(at: url, substitutingRunningCopy: substituting, completion: completion)
-            },
-            limit: limit, bound: bound
-        )
+        let selection = await onQueue { selectWebHandler(webURL.scheme, native: native) }
+        switch selection {
+        case .dependency(let reason, let guidance): return .success(dependency(reason, guidance))
+        case .failed(let message): return failed(message)
+        case .selected(let browser, _):
+            // Resolved once. A default changed after this point neither retargets nor replays.
+            return await submit(doing: "open the URL", acknowledging: "open request") { completion in
+                native.openWebURL(url, withApplicationAt: browser, completion: completion)
+            }
+        }
+    }
+
+    /// One native submission under the shared bound, and how it ends as a result. `doing`
+    /// completes "The system did not ..." and `acknowledging` names the request in the
+    /// timeout and cancellation messages.
+    private func submit(
+        doing action: String, acknowledging noun: String,
+        _ send: (@escaping @Sendable (LaunchCompletion) -> Void) -> Void
+    ) async -> ResolutionResult {
+        let native = native
+        let acknowledgment = await submitOnce(send, limit: limit, bound: bound)
         switch acknowledgment {
         case .notSubmitted(let reason): return failed(reason)
-        case .refused(let reason): return failed("The system did not launch or activate the application: \(reason)")
+        case .refused(let reason): return failed("The system did not \(action): \(reason)")
         case .timedOut:
             return failed(
-                "The system did not acknowledge the launch within \(bound.components.seconds) seconds. "
+                "The system did not acknowledge the \(noun) within \(bound.components.seconds) seconds. "
                     + "It may still complete; the request was not repeated."
             )
         case .cancelled:
-            return failed("Cancelled while waiting for the system to acknowledge the launch.")
+            return failed("Cancelled while waiting for the system to acknowledge the \(noun).")
         case .acknowledged(let application):
             var observed: ObservedProcess?
             if let application { observed = await onQueue { observeProcess(of: application, native: native) } }
@@ -170,6 +208,10 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
             "value": .null,
             "dependency": .object(["reason": .string(reason.rawValue), "guidance": .string(guidance)]),
         ])
+    }
+
+    private func invalid(_ message: String) -> ProviderFailure {
+        ProviderFailure(kind: .invalidInput, message: message)
     }
 
     private func failed(_ message: String) -> ResolutionResult {

@@ -73,6 +73,21 @@ protocol WorkspaceNative: Sendable {
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     )
 
+    /// The registered default handler for a web URL scheme, resolved from `scheme` alone
+    /// (`http` or `https`): never from the URL being opened, whose host or path could
+    /// make a universal-link-aware lookup answer with something other than the browser.
+    /// Nil when nothing is registered.
+    func defaultApplication(forWebScheme scheme: WebURL.Scheme) -> URL?
+
+    /// Submits one request to open `url` in the application at `application`, which the
+    /// caller resolved: the system is never asked to choose. Same one-shot completion
+    /// contract as `launchApplication`, with the same activation, no new instance and
+    /// no prompting.
+    func openWebURL(
+        _ url: URL, withApplicationAt application: URL,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    )
+
     /// The kernel's record of the process.
     func processStart(of pid: Int32) -> ProcessLookup
     /// The file identity of the executable the live process `pid` is running.

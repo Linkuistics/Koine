@@ -5,6 +5,7 @@ import Foundation
 enum DependencyReason: String, Sendable {
     case applicationNotInstalled = "APPLICATION_NOT_INSTALLED"
     case applicationIdentityMismatch = "APPLICATION_IDENTITY_MISMATCH"
+    case noDefaultHandler = "NO_DEFAULT_HANDLER"
 }
 
 /// One `WorkspaceApplicationInput`, validated.
@@ -93,6 +94,27 @@ private func selectConstrained(_ request: ApplicationRequest, path: String, nati
         }
     }
     return notInstalled(request)
+}
+
+/// What a URL open is sent to: the default handler for the URL's scheme, present as an
+/// application bundle when inspected. Registration alone is not presence, as for a launch;
+/// the handler's identifier is workspace read data and is neither checked nor reported.
+/// Only prompt-free metadata calls, and the lookup is by scheme (see `WorkspaceNative`).
+func selectWebHandler(_ scheme: WebURL.Scheme, native: some WorkspaceNative) -> Selection {
+    guard let handler = native.defaultApplication(forWebScheme: scheme) else { return noDefaultHandler() }
+    switch native.inspectApplication(at: handler.path) {
+    case .absent, .notApplication: return noDefaultHandler()  // a stale registration
+    case .unreadable(let reason): return .failed(unreadable(reason))
+    case .application: return .selected(handler, substituting: true)
+    }
+}
+
+private func noDefaultHandler() -> Selection {
+    .dependency(
+        .noDefaultHandler,
+        guidance: "No default web browser is registered on this Mac for http and https links, so the link "
+            + "was not opened. Choose a default browser in System Settings, then try again."
+    )
 }
 
 private func notInstalled(_ request: ApplicationRequest) -> Selection {

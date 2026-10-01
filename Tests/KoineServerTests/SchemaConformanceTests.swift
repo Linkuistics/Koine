@@ -410,7 +410,7 @@ import Testing
     /// coordinates from here, and the profile's design file gains them: the set
     /// only ever shrinks, toward the complete workspace design.
     static let workspaceCoordinatesNotYetImplemented: Set<String> = [
-        "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath", "Mutation.workspaceRevealPath",
+        "Mutation.workspaceOpenPath", "Mutation.workspaceRevealPath",
         "WorkspaceRevealResult", "WorkspaceRevealReceipt",
     ]
 
@@ -432,8 +432,10 @@ import Testing
             Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         // The shipped SDL is that same restriction: nothing implemented is missing from it.
-        #expect(
-            try CanonicalSchemaText.canonicalText(ofSDL: profile).contains("workspaceLaunchApplication"))
+        let implemented = try CanonicalSchemaText.canonicalText(ofSDL: profile)
+        for root in ["workspaceLaunchApplication", "workspaceOpenURL"] {
+            #expect(implemented.contains(root), "\(root) is implemented and must be declared")
+        }
     }
 }
 
@@ -519,7 +521,7 @@ import Testing
         ).differences()
         #expect(
             Set(found.map(\.coordinate)) == [
-                "Mutation.workspaceLaunchApplication", "WorkspaceApplicationInput",
+                "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "WorkspaceApplicationInput",
                 "WorkspaceOperationStatus", "WorkspaceDependencyReason",
                 "WorkspaceDependencyUnavailable", "WorkspaceProcessIdentity",
                 "WorkspaceOpenReceipt", "WorkspaceOpenResult",
