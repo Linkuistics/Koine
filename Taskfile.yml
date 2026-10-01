@@ -398,6 +398,12 @@ tasks:
     cmds:
       - scripts/vm-prepare-launchers.sh verify
 
+  launchers:vm:
+    desc: Accept the twelve named launchers in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero each launched cold and reactivated while running with TextEdit in front and Koine inactive, an independent witness observing activation, the one instance and the kernel's identity for the returned process, and callback and activation latency recorded beside each version; a not-installed and a deleted application reporting APPLICATION_NOT_INSTALLED; and the quarantined Obsidian copy's Gatekeeper dialog held past the three-second bound (failed, no replay, nothing published after it is declined or accepted). Exits 3 when the only failures are controls-only activations, which stay pending for Antony. KOINE_LAUNCHERS_ONLY=<name,...> runs a subset, KOINE_LAUNCHERS_SKIP_EXTRA=1 skips the not-installed and Gatekeeper cases
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-launchers.sh
+
   launchers:inventory:
     desc: Read the prepared launcher image again in a fresh clone and rewrite .build/launcher-apps/inventory.json (every application's actual bundle identifier, version, path, signature, Gatekeeper verdict and quarantine state, the default browser, the archived quarantined copy), keeping the first-run record launchers:prepare made. Later increments that reuse the twelve applications start from this document
     cmds:

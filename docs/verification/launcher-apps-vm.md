@@ -222,9 +222,10 @@ the preparation.
 ## Limits and what stays pending
 
 - **Acceptance is not done here.** No launcher was launched by Koine, no activation
-  was observed and no callback latency was measured; `launchers-vm` does that against
-  this image.
-- **The Gatekeeper-pending timeout** is not exercised, only prepared for.
+  was observed and no callback latency was measured; [launchers-vm.md](launchers-vm.md)
+  does that against this image.
+- **The Gatekeeper-pending timeout** is not exercised here, only prepared for;
+  [launchers-vm.md](launchers-vm.md) holds the dialog open.
 - **Nothing was signed in to.** Dia, ChatGPT, Claude, Kimi and Obsidian's sync have
   accounts, Jump Desktop a trial, Mail an account sheet. None of that was needed to
   launch, and no account-dependent workflow is in scope.

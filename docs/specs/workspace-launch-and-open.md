@@ -372,17 +372,19 @@ and the types it reaches, verbatim from the design file. The other three roots
 and their types are not served until their leaves land. What follows is exactly
 what was established; every row above keeps its pending remainder.
 
-- **Twelve launchers, stopped and running.** V for **one** launcher, Notes
-  (`com.apple.Notes` 4.13, `/System/Applications/Notes.app`), in a signed clone
-  ([launch-vm.md](../verification/launch-vm.md)): first run and Gatekeeper approval
-  completed and recorded; a cold launch and a reactivation each with another
-  application in front and Koine inactive, activation seen by an independent
-  witness and never inferred, callback latency recorded for both (165 ms and 22 ms,
-  activation 150 ms and 9 ms); the running copy reused, exactly one instance;
-  the client's recovery (a desktop read, then an explicit focus, each under its own
-  grant) exercised separately. Controls-only activation met the requirement, so
-  nothing goes to Antony. Pending: the other eleven launchers, and G and N for the
-  real installations (`application-launchers`).
+- **Twelve launchers, stopped and running.** V for **all twelve**
+  ([launchers-vm.md](../verification/launchers-vm.md)), in a clone of the prepared image
+  ([launcher-apps-vm.md](../verification/launcher-apps-vm.md)): each of Dia, ChatGPT,
+  Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and
+  Zotero cold-launched and reactivated by the contract-only client under
+  `workspace:control` and `desktop:control` alone, with another application in front and
+  Koine inactive; the witness saw each activated, one instance, a receipt equal to the
+  kernel's identity, and the reactivation reuse the process. Identifiers, versions, paths
+  and callback latency (102-319 ms cold, 33-87 ms reactivation) are recorded. Controls-only
+  activation met the requirement for every launcher, so nothing goes to Antony. Earlier,
+  Notes alone in [launch-vm.md](../verification/launch-vm.md). Not installed and
+  installed-then-deleted report `APPLICATION_NOT_INSTALLED`. Pending: G and N for the real
+  installations (`application-installations` for multiple copies).
 - **Multiple copies and installation.** L (`SelectionTests`): absent and unregistered
   identifiers, a registration whose bundle is gone, a present copy in the Trash
   (eligible), identifier mismatch with nothing substituted, a chosen copy matched by
@@ -415,8 +417,14 @@ what was established; every row above keeps its pending remainder.
   own `failed` at its path with later actions still running, against an earlier
   core deadline that answers the whole request and starts no later action. V
   ([launch-vm.md](../verification/launch-vm.md)): real completion timing of one
-  application, cold and reactivation, well inside the bound. Pending: Gatekeeper
-  held past the bound, and N.
+  application, cold and reactivation, well inside the bound; and
+  ([launchers-vm.md](../verification/launchers-vm.md)) all twelve inside it, then a
+  quarantined, never-opened application whose Gatekeeper dialog was held open past the
+  bound: the answer came at the bound (about 3.2 s), `failed` with effect
+  `may-have-begun`, no process, never dependency absence, the request sent once and the
+  dialog still the only one ten seconds on. Declined, nothing launched; accepted, exactly
+  the one original launch and no second; no result was published after the answer and the
+  next request was served normally. Pending: N.
 - **Authority/revocation.** G and N (through the real signed bundle): neither
   control alone, and neither read, is enough; both controls without reads reach the
   provider; denial precedes inspection; the first unmet member and the complete set;
@@ -431,8 +439,12 @@ what was established; every row above keeps its pending remainder.
   prompt-free, and never asks for a file's default handler. V
   ([launch-vm.md](../verification/launch-vm.md)): with Accessibility absent, and
   again after it was given and revoked, launch and reactivation work and no consent
-  dialog appears; Notes' first run and Gatekeeper approval are recorded. Pending:
-  the separate Gatekeeper timeout case, and the third-party launchers' onboarding.
+  dialog appears; Notes' first run and Gatekeeper approval are recorded. V
+  ([launchers-vm.md](../verification/launchers-vm.md)): none of the twelve launchers
+  raised Gatekeeper's dialog or a consent of Koine's from a Koine launch in an
+  enforcing image; Kimi's own local-network request, which it raises on some launches,
+  is its onboarding, recorded and declined. The Gatekeeper timeout case is closed (see
+  Bounded acknowledgment).
 - **A client from the documented contract alone.** G and V
   ([launch-contract.md](../verification/launch-contract.md)): `clients/contract-only`,
   regenerated from the signed build's served introspection and written from the
