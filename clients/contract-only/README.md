@@ -9,18 +9,21 @@ connection. No Koine source was consulted. The `launch` command was added by a
 second pass under a stricter reading restriction; every place that pass had to
 guess is in
 [`docs/verification/launch-contract-client-findings.md`](../../docs/verification/launch-contract-client-findings.md).
+`open-url` and `search` were added by a third pass under the same restriction;
+its guesses are in
+[`docs/verification/open-url-contract-client-findings.md`](../../docs/verification/open-url-contract-client-findings.md).
 
 ## Regenerated against
 
 `capture/` holds the response of the signed Koine.app serving **core + desktop +
-workspace**, where the workspace part is the launch root alone
-(`workspaceLaunchApplication` and the types it reaches: `WorkspaceApplicationInput`,
-`WorkspaceOpenResult`, `WorkspaceOperationStatus`, `WorkspaceOpenReceipt`,
-`WorkspaceProcessIdentity`, `WorkspaceDependencyUnavailable`,
+workspace**, where the workspace part is the launch root and the URL root
+(`workspaceLaunchApplication`, `workspaceOpenURL` and the types they reach:
+`WorkspaceApplicationInput`, `WorkspaceOpenResult`, `WorkspaceOperationStatus`,
+`WorkspaceOpenReceipt`, `WorkspaceProcessIdentity`, `WorkspaceDependencyUnavailable`,
 `WorkspaceDependencyReason`). Contract `koine-desktop/1`, schema digest
-`a56a3387c7bef91758e31713fd9a7f632855c2b3a9eaaf5f8e5cce1b66d49aea`. The other three
-workspace roots (`workspaceOpenURL`, `workspaceOpenPath`, `workspaceRevealPath`)
-are designed but not served, so they are not in the captured schema.
+`1815b52f078ff4a1c7ca08d284ccfd50c03422d47055c8b926500391a1569d19`. The other two
+workspace roots (`workspaceOpenPath`, `workspaceRevealPath`) are designed but not
+served, so they are not in the captured schema.
 
 It builds to one dependency-free ES module, `dist/koine-client.mjs`, which runs
 on macOS arm64 under Node 24 with nothing installed beside it.
@@ -40,20 +43,22 @@ node dist/koine-client.mjs probe
 | `codegen` | `@graphql-codegen/cli` reads `capture/introspection.json` as the schema and, as the documents, the published `docs/design/desktop-operations.graphql` (whole: five operations) and the operations this client uses from the published `docs/design/workspace-operations.graphql` (see below), **validates** them against that schema, and writes `src/generated/graphql.ts` (types plus `TypedDocumentString` documents, `documentMode: 'string'`, so nothing from `graphql` is needed at runtime) |
 | `typecheck` | `tsc --noEmit` under `strict`, `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess` |
 | `bundle` | `build.mjs` bakes in graphql-js's own `getIntrospectionQuery({ descriptions: true })` and the digest from `capture/capture.json`, then esbuild bundles `src/cli.ts`; the build fails if anything from `node_modules` reaches the bundle |
-| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs`, each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch |
+| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs` (and the URL root's, in `test/open-url-stubs.mjs`, with the suggestion sources `search` talks to in `test/suggestion-stubs.mjs`), each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch, per open and per search |
 
 Generation reads the published operations documents where the contract publishes
-them, so there is no copy that can drift from them. All five desktop operations
-and `LaunchInstalledApplication` validate against the captured introspection, and
+them, so there is no copy that can drift from them. All five desktop operations,
+`LaunchInstalledApplication` and `OpenSearchURL` validate against the captured introspection, and
 nothing in those documents was edited — the client was made to fit the contract,
 never the other way round. The validation has been watched failing: `nonsenseField`
 added to `DesktopChoices` stops generation with `Cannot query field
-"nonsenseField" on type "DesktopWindow"`, and adding `OpenSearchURL` to the used
-list stops it with `Cannot query field "workspaceOpenURL" on type "Mutation"`.
+"nonsenseField" on type "DesktopWindow"`, and adding `OpenDocumentOrDirectory`
+to the used list stops it with `Cannot query field "workspaceOpenPath" on type
+"Mutation"` (before `workspaceOpenURL` was served, `OpenSearchURL` stopped it the
+same way).
 
 **Selecting the served operations.** `workspace-operations.graphql` also declares
-`OpenSearchURL`, `OpenDocumentOrDirectory` and `RevealPath`, whose roots the
-captured server does not serve, so the file cannot be validated whole. The
+`OpenDocumentOrDirectory` and `RevealPath`, whose roots the captured server does
+not serve, so the file cannot be validated whole. The
 documents do not say how a client picks the served subset; `codegen.ts` decides:
 it lists, by name, the operations the client uses
 (`WORKSPACE_OPERATIONS_USED`), cuts each one's text out of the published file by
@@ -91,6 +96,11 @@ Every result carries `command`, `ok`, `classification`, `endpoint`, `http`,
 | `choices --secret <p> --pid <n> --started-at <instant>` | The same operation with the process identity given literally. |
 | `focus --secret <p> --ref <reference>` | `FocusDesktopWindow` on that reference, byte-for-byte. |
 | `launch --secret <p> --bundle-identifier <id> [--application-path <absolute path>]` | `LaunchInstalledApplication`, sent **once**; needs `workspace:control` and `desktop:control` (no read capability). See "Launch" below. |
+| `open-url --secret <p> (--url <text> \| --url-file <path>)` | `OpenSearchURL` with the text as the one literal variable, byte-for-byte, sent **once**; same two controls. See "Open URL" below. |
+| `search --secret <p> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]` | The client-owned search flow: optionally ask a suggestion source, then build the typed-query URL and open it with `OpenSearchURL`, once. See "Search" below. |
+
+Any `--name value` may also be written `--name=value`; that is the only way to give
+a value that itself begins with `--` (a query, or a URL under test).
 
 ### Launch
 
@@ -137,6 +147,75 @@ no error, which the contract says never happens for this field and so is not
 absence; both or neither branch present without an error; an unknown status; a
 malformed `process`; a body that is not a GraphQL response) is classified
 `failed` with `contractViolation` set and `actionEffect: unknown`.
+
+### Open URL
+
+`open-url` sends the published `OpenSearchURL` mutation (`workspaceOpenURL(url:)`)
+exactly once, with the URL as one literal variable `{"url": ...}`. A URL open is
+not safe to repeat: the client never replays it, and a lost answer is
+`unknown-outcome`. The text is sent **byte-for-byte**: nothing is trimmed,
+normalised, decoded or percent-encoded, and nothing is validated client-side, so
+raw Unicode, whitespace, backslashes, credentials, other schemes and escapes that
+are not valid all reach the provider, which refuses what the contract says it
+refuses, as an `input-error`, and the refusal is what the command reports.
+
+- `--url <text>` takes the text from the command line. `--url=<text>` is the same
+  and the only way to give one that begins with `--`.
+- `--url-file <path>` reads the file's bytes as UTF-8 and sends exactly that text:
+  a trailing newline, a CR LF, a leading space or a byte order mark are part of it
+  (a file written by `echo` therefore ends in a newline the provider will refuse as
+  whitespace; write it with `printf %s`). A file that is not valid UTF-8 cannot be
+  a GraphQL string: nothing is sent and the result is `failed` with a `clientError`.
+- Exactly one of the two is required.
+
+The answer has the shape of a launch's, because the contract gives the URL root the
+same result type, invariant and failure table; the interpretation is one module,
+`src/adapter/workspace-open.ts`, given the root it reads. Besides the common fields
+it prints every field "Launch" lists (`status`, `actionEffect`, `receipt`,
+`process`, `processState`, `choicesArguments`, `dependency`, `requiredCapability`,
+`requiredCapabilities`, `phase`, `branchSuppressed`, `resultErrorPaths`,
+`contractViolation`, `sentMs`, `receivedMs`, `credential`) with `url`, the exact
+text that was sent. What differs from a launch:
+
+| outcome | `classification` | what to read |
+|---|---|---|
+| a browser took the URL | `ok` | `status: AVAILABLE`, `actionEffect: acknowledged` (not proof a page loaded); `process` may be null (`processState: null-in-receipt`), which is not a failure |
+| no default browser | `dependency-unavailable` | `dependency.reason` is `NO_DEFAULT_HANDLER` with `guidance`; nothing was submitted |
+| a URL the provider refuses | `input-error` | an error with no `kind` at a path under `workspaceOpenURL`, read at the field's path (`["workspaceOpenURL"]`) or at the argument's (`["workspaceOpenURL","url"]`), reported in `resultErrorPaths`; `actionEffect: none` |
+| capability denial, `failed`, suppressed branches, invariant violations | as for launch | the same two controls, the same complete ordered set `["workspace:control","desktop:control"]`; a `contractViolation` names `workspaceOpenURL` |
+
+### Search
+
+`search` is the client-owned flow the documents describe ("query entry,
+suggestions and typed-query fallback remain client-owned; Koine does not construct
+searches or contact Google"). It does two things, in order:
+
+1. **Ask the suggestion source** (only if `--suggestions-url` is given): one plain
+   HTTP GET of that template with the query percent-encoded into its one `%s`, a
+   2 second limit on the whole exchange, redirects refused, and nothing it does is
+   fatal. The result is `answered` (HTTP 2xx and a body that is a JSON array whose
+   second element is a list of strings, the common `[query, [suggestion, ...]]`
+   answer) or `failed` (connection refused, timeout, non-2xx, a redirect, a body
+   that is not that), with a `detail`; without a source, `not-attempted`.
+2. **Build the typed-query URL and open it**, whatever 1 did: the UTF-8 bytes of the
+   query percent-encoded into `--engine-template` (default
+   `https://www.google.com/search?q=%s`): every byte outside the RFC 3986
+   unreserved set (`A-Z a-z 0-9 - . _ ~`) becomes `%` and two upper-case hex digits,
+   a space is `%20`. Then one `OpenSearchURL`, exactly as `open-url` sends it.
+
+This command has no chooser, so suggestions never change what is opened: the typed
+query is always the URL. The client talks to the Koine endpoint and the suggestion
+source only; it never contacts the search engine (the template is text that goes to
+Koine), and a suggestion source that redirects is not followed. The output is the
+`open-url` output (its `url` is the URL built) plus
+
+```json
+"search": { "query": "...", "engineTemplate": "...", "urlBuilt": "...",
+            "suggestions": { "attempted": true, "outcome": "not-attempted | answered | failed", "detail": "..." } }
+```
+
+A template without exactly one `%s`, or a missing `--query`, is a usage error and
+nothing is sent.
 
 ### Repeat safety
 

@@ -25,6 +25,7 @@ mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
   }
 }
 
+# Opens any absolute HTTP(S) URL in the default browser; the name is the search flow's use of it.
 mutation OpenSearchURL($url: String!) {
   workspaceOpenURL(url: $url) { ...WorkspaceOpenOutcome }
 }

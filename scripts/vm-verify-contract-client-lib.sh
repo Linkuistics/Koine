@@ -67,26 +67,37 @@ enrol() {
     echo "Approved: request ${id}, comparison code ${code}, capabilities $(jq -c '.grant.capabilities' <<<"${ANSWER}")"
 }
 
-# contract_client_once <argument...>: for a command that is NOT safe to repeat, a
-# launch. `guest` and `guest_json` retry the agent's false "timed out" answer, which
-# is right for a read and wrong here: a second launch is a reactivation. So the
-# client runs ONCE through the agent, writes its one line to a file of its own, and
-# the file is read back (a read is safe to repeat). Only "the agent was not reached
-# at all" (status 7) is run again, since then nothing ran. The line is left in ANSWER.
 ONCE_CALLS=0
+# contract_client_once <argument...>: for a command that is NOT safe to repeat (a launch, a
+# URL open): `guest` and `guest_json` retry the agent's false "timed out" answer, which is
+# right for a read and wrong here, since a second launch is a reactivation. So the client
+# runs through the agent with its one line going to a file of its own, which is read back
+# (a read is safe to repeat), and it is never run twice once it has started.
+# The agent has answered "not reached" (status 7) for a command that went on to run: the
+# client then ran again and the second launch was a reactivation, so the recorded send
+# instant came 45 seconds after the process started. The answer file is created when the
+# shell starts the command, so a file that exists means it ran, and it is waited for.
 contract_client_once() {
     local file status
     ONCE_CALLS=$((ONCE_CALLS + 1))
+    ANSWER=""
     file="\$HOME/client-answer-${ONCE_CALLS}.json"
+    guest "rm -f ${file}" >/dev/null || true
     for _ in 1 2 3; do
         status=0
         testanyware file exec "${CLIENT} $* > ${file}" >/dev/null 2>&1 || status=$?
-        [ "${status}" != 7 ] || {
+        if [ "${status}" = 7 ] || [ "${status}" = 255 ]; then
+            if guest_text "[ -e ${file} ] && echo started" | grep -qx started; then break; fi
             sleep 5
             continue
-        }
+        fi
         break
     done
-    ANSWER="$(guest_json "cat ${file}")" || fail "the contract-only client left no answer for: $*"
+    for _ in $(seq 1 20); do
+        ANSWER="$(guest_json "cat ${file}" 2>/dev/null)" && break
+        sleep 3
+    done
+    [ -n "${ANSWER:-}" ] && jq -e . >/dev/null <<<"${ANSWER}" || fail "the contract-only client left no answer for: $*"
     echo "${ANSWER}"
 }
+

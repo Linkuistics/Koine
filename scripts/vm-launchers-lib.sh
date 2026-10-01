@@ -164,8 +164,14 @@ install_default_browser_tool() {
 }
 default_browser() { guest_text '$HOME/vm-default-browser get' | grep '^http -> ' | sed 's/^http -> //'; }
 # set_default_browser <application path> <button label, e.g. Use “Dia”>
+# The agent's exec channel can run a command twice, a retry arriving after the first run has
+# long been answered, and each run of `set` raises a confirmation dialog of its own that
+# nothing would answer. So the launch takes a guard directory unique to this run and call,
+# and a retried launch that finds it taken starts nothing (as guest_long's does).
+SET_DEFAULT_CALLS=0
 set_default_browser() {
-    guest "rm -f \$HOME/default-browser.out; (nohup \$HOME/vm-default-browser set '$1' > \$HOME/default-browser.out 2>&1 &)" || true
+    SET_DEFAULT_CALLS=$((SET_DEFAULT_CALLS + 1))
+    guest "mkdir \$HOME/default-browser-${VM_ID}-${SET_DEFAULT_CALLS}.started 2>/dev/null || exit 0; rm -f \$HOME/default-browser.out; (nohup \$HOME/vm-default-browser set '$1' > \$HOME/default-browser.out 2>&1 &)" || true
     local buttons hit
     for _ in $(seq 1 15); do
         sleep 2
@@ -178,6 +184,11 @@ set_default_browser() {
     testanyware input click $(jq -r '"\(.x) \(.y)"' <<<"${hit}") >/dev/null
     jq -cn --arg button "$2" --arg path "$1" '{application: "default browser", dialogOwner: "CoreServicesUIAgent", button: $button, meaning: "confirm the default browser", words: $path}' >>"${ACTIONS}"
     sleep 3
+    # Nothing is left standing: a confirmation still on screen would be taken for another
+    # system dialog by whatever runs next.
+    buttons="$(screen_buttons)"
+    [ "$(jq -r '[.[] | select(.app == "CoreServicesUIAgent")] | length' <<<"${buttons}")" = 0 ] ||
+        fail "a default-browser confirmation is still on screen after answering it: $(jq -c '[.[] | select(.app == "CoreServicesUIAgent") | .label]' <<<"${buttons}")"
 }
 
 # The pristine quarantined copy for the Gatekeeper-pending case: archived BEFORE any

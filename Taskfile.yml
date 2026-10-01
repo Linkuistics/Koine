@@ -281,6 +281,16 @@ tasks:
       - npm ci
       - npm run build
 
+  client:capture:
+    desc: Re-capture what the contract-only client is generated against from the signed Koine.app's own served schema - runs `task conformance:vm` (the signed bundle in a clean TestAnyware macOS VM, introspected as a code generator would) and copies its introspection response and the Koine.schemaDigest read in the same session into clients/contract-only/capture/. Run `task client` afterwards; it fails if an operation it uses no longer validates
+    cmds:
+      - task: conformance:vm
+      - cp .build/conformance/workspace/introspection.json clients/contract-only/capture/introspection.json
+      - |
+        jq -n --arg digest "$(cat .build/conformance/workspace/digest)" \
+          '{note: "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); `task client:capture` rewrites both.", contractVersion: "koine-desktop/1", schemaDigest: $digest}' \
+          > clients/contract-only/capture/capture.json
+
   app:vm-verify-contract-client:
     desc: Verify in a clean TestAnyware macOS VM that a client written from the documented contract alone obtains a grant through the window, introspects the schema it was generated against, resolves a running application, lists its windows and focuses a chosen one with the reference returned unchanged, telling a capability denial, an OS-permission refusal, an absent process, a gone window and a stopped service apart
     cmds:
@@ -403,6 +413,18 @@ tasks:
     deps: [app, client]
     cmds:
       - scripts/vm-verify-launchers.sh
+
+  open-url:vm:
+    desc: Accept workspaceOpenURL in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - with Safari the default browser, then a test browser (Fixtures/UrlBrowser, which records the exact string it is handed) and Dia made the alternate default (Safari restored at the end) - as a page server in the guest and an independent witness see it - an encoded path, query and fragment byte for byte (cold browser, then running), an ASCII IDNA host, a universal-link candidate received by the browser first, and the client's search flow with a suggestion source that refuses the connection and one that never answers still opening the typed-query URL; then, with Safari, 18 refused inputs (invalid escapes, raw Unicode, whitespace, backslashes, credentials, other schemes) with nothing repaired or opened, either control alone and a revoked grant refused, the default Google template's URL opened, and every network system call Koine made read from the system (no outbound connect, with a control). Dia shows no page in the image (its first run stops at an account gate), so for Dia the delivery is observed and the page load is recorded as pending (exit 3, as when an acknowledged open is not seen activating). KOINE_OPEN_URL_ONLY=Safari,UrlBrowser,Dia,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-url.sh
+
+  open-url:network:
+    desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-network.sh
 
   launchers:inventory:
     desc: Read the prepared launcher image again in a fresh clone and rewrite .build/launcher-apps/inventory.json (every application's actual bundle identifier, version, path, signature, Gatekeeper verdict and quarantine state, the default browser, the archived quarantined copy), keeping the first-run record launchers:prepare made. Later increments that reuse the twelve applications start from this document

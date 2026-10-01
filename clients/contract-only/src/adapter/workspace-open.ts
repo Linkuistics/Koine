@@ -2,8 +2,11 @@ import type { Classification, ClassifiedError } from './classification.js';
 import type { SendResult } from './transport.js';
 
 /**
- * Reads one `LaunchInstalledApplication` answer. The contract's rules, which this
- * module is the single place to apply:
+ * Reads one answer of a workspace root that returns `WorkspaceOpenResult`
+ * (`workspaceLaunchApplication`, `workspaceOpenURL`; the spec gives them one result
+ * type, one invariant and one failure table, so one reading serves both, told only
+ * which root it is reading). The contract's rules, which this module is the single
+ * place to apply:
  *
  * - `status` is `AVAILABLE` or `DEPENDENCY_UNAVAILABLE`. Absent an error at or
  *   below the result, exactly one of `value` and `dependency` is non-null,
@@ -18,7 +21,12 @@ import type { SendResult } from './transport.js';
  * - `failed`: "effects may have begun; no replay". Preflight refusal happens
  *   before any action.
  */
-const ROOT = 'workspaceLaunchApplication';
+
+/** The two roots this reading is applied to. */
+export type WorkspaceOpenRoot = 'workspaceLaunchApplication' | 'workspaceOpenURL';
+
+/** The fields of `WorkspaceOpenResult`: an error below one of these is below the result, not the action's own. */
+const RESULT_FIELDS: readonly string[] = ['status', 'value', 'dependency'];
 
 export type ActionEffect =
   /** This action submitted nothing: dependency result, input error, refusal before dispatch. */
@@ -40,7 +48,7 @@ export type ProcessState =
   /** There is no receipt at all (dependency result, failure, refusal, lost answer). */
   | 'no-receipt';
 
-export interface LaunchFacts {
+export interface WorkspaceOpenFacts {
   readonly classification: Classification;
   readonly status: string | null;
   readonly actionEffect: ActionEffect;
@@ -54,7 +62,7 @@ export interface LaunchFacts {
   readonly requiredCapability: string | null;
   readonly requiredCapabilities: readonly string[] | null;
   readonly phase: string | null;
-  /** Paths of errors at or below the launch result. */
+  /** Paths of errors at or below the result. */
   readonly resultErrorPaths: readonly (readonly (string | number)[])[];
   /** The published status selected a branch that an error left null. */
   readonly branchSuppressed: boolean;
@@ -89,7 +97,7 @@ function under(error: ClassifiedError, prefix: readonly (string | number)[]): bo
   return prefix.every((segment, i) => path[i] === segment);
 }
 
-export function interpretLaunch(result: SendResult): LaunchFacts {
+export function interpretWorkspaceOpen(result: SendResult, rootName: WorkspaceOpenRoot): WorkspaceOpenFacts {
   const base = {
     receipt: null,
     process: null,
@@ -136,9 +144,9 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
   }
 
   const data = result.data;
-  const root = data === null ? undefined : data[ROOT];
+  const root = data === null ? undefined : data[rootName];
   const rootObject = isObject(root) ? root : null;
-  const resultErrors = result.errors.filter((e) => e.path !== null && e.path[0] === ROOT);
+  const resultErrors = result.errors.filter((e) => e.path !== null && e.path[0] === rootName);
   const resultErrorPaths = resultErrors.map((e) => e.path as readonly (string | number)[]);
 
   const status = rootObject !== null && typeof rootObject['status'] === 'string' ? rootObject['status'] : null;
@@ -154,7 +162,7 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
       ? { reason: dependencyObject['reason'], guidance: dependencyObject['guidance'] }
       : null;
 
-  const violate = (why: string): LaunchFacts => ({
+  const violate = (why: string): WorkspaceOpenFacts => ({
     ...base,
     ...capabilityFacts,
     status,
@@ -174,7 +182,7 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
   let processState: ProcessState;
   if (process !== null) processState = 'present';
   else if (receipt !== null) {
-    processState = result.errors.some((e) => under(e, [ROOT, 'value', 'process']))
+    processState = result.errors.some((e) => under(e, [rootName, 'value', 'process']))
       ? 'suppressed'
       : 'null-in-receipt';
   } else if (status === 'AVAILABLE') processState = 'suppressed';
@@ -199,7 +207,17 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
     if (status === 'AVAILABLE') actionEffect = 'acknowledged';
     else if (status === 'DEPENDENCY_UNAVAILABLE') actionEffect = 'none';
     else {
-      const own = resultErrors.filter((e) => e.path?.length === 1);
+      // An error at the action's own path, or an input error at one of its
+      // arguments (a path of the root plus the argument name): "this field does not
+      // act". An error at a result field is below the result, not the action's own.
+      const own = resultErrors.filter(
+        (e) =>
+          e.path?.length === 1 ||
+          (e.classification === 'input-error' &&
+            e.path !== null &&
+            e.path.length > 1 &&
+            !RESULT_FIELDS.includes(String(e.path[1]))),
+      );
       if (own.some((e) => e.classification === 'failed')) actionEffect = 'may-have-begun';
       else if (
         own.length > 0 &&
@@ -233,8 +251,8 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
   if (rootObject === null) {
     return violate(
       root === null
-        ? 'the root is null with no error, which the contract says cannot happen for this field (it is not absence)'
-        : 'the response has no workspaceLaunchApplication result and no error',
+        ? `the ${rootName} root is null with no error, which the contract says cannot happen for this field (it is not absence)`
+        : `the response has no ${rootName} result and no error`,
     );
   }
   if (status === 'AVAILABLE') {
@@ -264,4 +282,12 @@ export function interpretLaunch(result: SendResult): LaunchFacts {
     };
   }
   return violate(`status ${JSON.stringify(rootObject['status'])} is not AVAILABLE or DEPENDENCY_UNAVAILABLE`);
+}
+
+export function interpretLaunch(result: SendResult): WorkspaceOpenFacts {
+  return interpretWorkspaceOpen(result, 'workspaceLaunchApplication');
+}
+
+export function interpretOpenURL(result: SendResult): WorkspaceOpenFacts {
+  return interpretWorkspaceOpen(result, 'workspaceOpenURL');
 }

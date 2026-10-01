@@ -10,7 +10,7 @@ const STARTED_AT = '2026-09-30T05:06:07.123456Z';
 const GUIDANCE = 'Notes is not installed; install it, then launch again.';
 
 /** `kind: permission`, `permissionClass: capability`: the field's own capability first, then the additional one. */
-const capabilityError = (path, requiredCapability, phase, requiredCapabilities = ['workspace:control', 'desktop:control']) => ({
+export const capabilityError = (path, requiredCapability, phase, requiredCapabilities = ['workspace:control', 'desktop:control']) => ({
   message: 'refused',
   path,
   extensions: { kind: 'permission', permissionClass: 'capability', requiredCapability, requiredCapabilities, phase },

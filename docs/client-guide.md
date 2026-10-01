@@ -405,31 +405,61 @@ it, in the order it meets them:
 ## Opening a URL
 
 `workspaceOpenURL` opens a web URL in the default browser. [`workspace-operations.graphql`](design/workspace-operations.graphql)
-publishes it as `OpenSearchURL`; the [workspace spec](specs/workspace-launch-and-open.md)
+publishes it as `OpenSearchURL` (the name is the search flow's use of it: the root opens any
+absolute http(s) URL); the [workspace spec](specs/workspace-launch-and-open.md)
 is the contract. It answers like a launch, with the same two controls and no read, the
 same typed `status`, `value.process` and `dependency`, and the same reading of `failed`
 (items 1, 3, 4, 5 and 6 above apply unchanged). What differs:
 
 1. **The client builds the URL; Koine never repairs it.** The URL is one string of
    ASCII: the `URI` grammar of [RFC 3986 section 3](https://www.rfc-editor.org/rfc/rfc3986#section-3)
-   with an `http` or `https` scheme, a host, optional query and fragment, valid percent
-   escapes (`%` and two hex digits), and no credentials, whitespace, backslash or
-   control character. Percent-encode UTF-8 path and query text, and give an
-   internationalized host as ASCII labels (`xn--bcher-kva.example`), not Unicode and not
-   percent escapes. A URL that does not fit, another scheme (`file`, `javascript` and
-   custom schemes included) or a malformed one is an input error at the field's path
-   with no `kind`; nothing was looked up and nothing opened. Valid bytes reach the browser
-   exactly as sent: Koine does not trim, normalize or re-encode them.
+   with an `http` or `https` scheme (in any letter case), a host, optional query and
+   fragment, valid percent escapes (`%` and two hex digits), and no credentials,
+   whitespace, backslash or control character. Percent-encode UTF-8 path and query text,
+   and give an internationalized host as ASCII labels (`xn--bcher-kva.example`), not
+   Unicode and not percent escapes. A URL that does not fit, another scheme (`file`,
+   `javascript` and custom schemes included) or a malformed one is an input error with
+   no `kind`, **at the root field's own response path** (its alias if one was used, for
+   example `["workspaceOpenURL"]`; the provider reports the argument it refused at the
+   field, not below it). It is an execution error in an HTTP 200 answer, not an HTTP 400:
+   the argument is a `String`, so nothing in GraphQL's own coercion rejects it. Nothing was
+   looked up and nothing opened. Valid bytes reach the browser exactly as sent: Koine does
+   not trim, normalize or re-encode them.
+   - *What is accepted and refused beyond that.* A port is `*DIGIT` (empty allowed, no
+     range); the host is a registered name, an IPv4 address, or an IPv6 or IPvFuture
+     literal in brackets; an `xn--` label must be valid Punycode that decodes to something
+     other than ASCII alone or a control character; whether a decoded label's code points
+     are valid in IDNA 2008 is the browser's to decide. Characters RFC 3986 does not allow
+     in a path, query or fragment (`[`, `]`, `"`, `<`, `>`, `{`, `}`, `|`, `^`, a backtick)
+     are refused.
+   - *Putting typed text into a query value.* Percent-encode each UTF-8 byte that is not
+     an unreserved character (`A-Z a-z 0-9 - . _ ~`) as `%` and two hex digits (the grammar
+     allows either case; upper case is the convention); a space is `%20`, and `%` itself is
+     `%25`. `café 日本` becomes `caf%C3%A9%20%E6%97%A5%E6%9C%AC`. Do not Unicode-normalize
+     typed text first.
+   - *A client's own handling.* A client that exposes the operation to a person or a test
+     sends the text it was given, so that the provider's refusal is what is seen; a client
+     that builds URLs encodes before it calls. One that reads the URL from a file or a pipe
+     sends what it read: a trailing newline is whitespace and makes the URL invalid, so it
+     strips only what its caller asked it to.
 2. **The default browser opens it, not an application that claims the link.** Koine finds
    the default handler of the scheme alone, then asks that application to open the URL, so
    a link another application would take as a universal link still opens in the browser.
 3. **No browser is a dependency, not an error.** With no default browser registered the
-   result is `DEPENDENCY_UNAVAILABLE` with `reason: NO_DEFAULT_HANDLER` and a `guidance`
-   sentence to show; nothing was submitted. A default changed after Koine resolved it
-   neither retargets nor replays that action.
-4. **Search is the client's.** Query entry, suggestions and the fallback to opening the
-   typed query when suggestions fail stay in the client; Koine makes no search request and
-   contacts no search service.
+   result is `DEPENDENCY_UNAVAILABLE` with `reason: NO_DEFAULT_HANDLER` (the only reason
+   this operation reports) and a `guidance` sentence to show; nothing was submitted. A
+   default changed after Koine resolved it neither retargets nor replays that action.
+4. **Search is the client's.** Query entry, the search engine and its URL template,
+   suggestions and the fallback to opening the typed query when suggestions fail stay in the
+   client; Koine knows no engine, makes no search request and contacts no search service.
+   Whatever a suggestion source does (refuses the connection, times out, answers
+   something unreadable), the client still opens the typed-query URL: the fallback is the
+   choice of what to open, made *before* the one open request, and is never a second open
+   after a failed one.
+5. **The receipt names a browser, not a page.** `value.process`, when present, is the
+   browser that was asked to open the URL. It names no window, tab or page; a client that
+   wants the browser's windows uses it as for a launch, and the browser may show the page in
+   any of them. A second request is a second open: there is no idempotency key in version 1.
 
 ## What version 1 does not do
 

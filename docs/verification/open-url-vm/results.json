@@ -1,0 +1,681 @@
+[
+  {
+    "browser": "Safari",
+    "bundleIdentifier": "com.apple.Safari",
+    "version": "26.5",
+    "build": "21624.2.5.11.4",
+    "path": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app",
+    "witness": "page"
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "encoded path, query and fragment (cold browser)",
+    "url": "http://koine-url.test:8765/search/a%20b?q=caf%C3%A9+%E6%97%A5%E6%9C%AC&x=%26%23%25&e=%3D#frag%20ment-%C3%A9",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "cold": true,
+    "status": "passed",
+    "answerMs": 110,
+    "activationMs": 93,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "encoded path, query and fragment (running browser)",
+    "url": "http://koine-url.test:8765/second/%E6%97%A5?k=%2B%2F%3F&v=a%20b#%E2%9C%93-frag",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 43,
+    "activationMs": 32,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "ASCII IDNA host",
+    "url": "http://xn--bcher-kva.test:8765/idna?label=b%C3%BCcher#top",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 59,
+    "activationMs": 51,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "recorded: plain open of the universal-link candidate",
+    "firstApplication": "com.apple.Safari",
+    "browserActivations": 6,
+    "mapsEvents": 7
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "universal-link candidate stays in the browser",
+    "url": "https://maps.apple.com/?q=Koine%20URL%20acceptance",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 44,
+    "activationMs": 22,
+    "receiptIsKernelIdentity": "true",
+    "notes": "Safari itself then handed the link to Maps (after its own activation), as it does for Apple-domain links; "
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "search, suggestion source refusing the connection",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "status": "passed",
+    "answerMs": 33,
+    "activationMs": 12,
+    "notes": ""
+  },
+  {
+    "section": "Safari as the default browser",
+    "case": "search, suggestion source that never answers",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "com.apple.Safari",
+    "witness": "page",
+    "status": "passed",
+    "answerMs": 45,
+    "activationMs": 18,
+    "notes": ""
+  },
+  {
+    "case": "refused",
+    "input": "bad-escape-letters",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url has an invalid percent escape in its path.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "bad-escape-truncated",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url has an invalid percent escape in its path.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "bad-escape-query",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url has an invalid percent escape in its query.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "unicode-path",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must be ASCII: percent-encode UTF-8 path and query text, and give the host as ASCII IDNA labels.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "unicode-query",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must be ASCII: percent-encode UTF-8 path and query text, and give the host as ASCII IDNA labels.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "unicode-host",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must be ASCII: percent-encode UTF-8 path and query text, and give the host as ASCII IDNA labels.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "space",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain whitespace.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "leading-space",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain whitespace.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "trailing-newline",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain a control character.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "tab",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain a control character.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "control",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain a control character.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "backslash-path",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain a backslash.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "backslash-authority",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain a backslash.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "credentials",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not contain credentials.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "scheme-file",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must use the http or https scheme.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "scheme-javascript",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must use the http or https scheme.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "scheme-custom",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must use the http or https scheme.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "refused",
+    "input": "empty",
+    "status": "passed",
+    "error": {
+      "classification": "input-error",
+      "message": "url must not be empty.",
+      "path": [
+        "workspaceOpenURL"
+      ],
+      "kind": null,
+      "permissionClass": null,
+      "requiredCapability": null,
+      "requiredCapabilities": null,
+      "phase": null,
+      "osPermission": null,
+      "permissionOwner": null,
+      "reason": null,
+      "requestState": null
+    }
+  },
+  {
+    "case": "authority: workspace:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: desktop:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: revoked grant",
+    "status": "passed"
+  },
+  {
+    "case": "default engine",
+    "url": "https://www.google.com/search?q=koine%20url%20acceptance",
+    "status": "passed",
+    "browserActivated": true
+  },
+  {
+    "browser": "UrlBrowser",
+    "bundleIdentifier": "dev.koine.test.UrlBrowser",
+    "version": "1.0",
+    "build": "1",
+    "path": "/Users/admin/Applications/UrlBrowser.app",
+    "witness": "fixture"
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "encoded path, query and fragment (cold browser)",
+    "url": "http://koine-url.test:8765/search/a%20b?q=caf%C3%A9+%E6%97%A5%E6%9C%AC&x=%26%23%25&e=%3D#frag%20ment-%C3%A9",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "cold": true,
+    "status": "passed",
+    "answerMs": 579,
+    "activationMs": 561,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "encoded path, query and fragment (running browser)",
+    "url": "http://koine-url.test:8765/second/%E6%97%A5?k=%2B%2F%3F&v=a%20b#%E2%9C%93-frag",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 34,
+    "activationMs": 29,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "ASCII IDNA host",
+    "url": "http://xn--bcher-kva.test:8765/idna?label=b%C3%BCcher#top",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 33,
+    "activationMs": 27,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "recorded: plain open of the universal-link candidate",
+    "firstApplication": "dev.koine.test.UrlBrowser",
+    "browserActivations": 1,
+    "mapsEvents": 0
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "universal-link candidate stays in the browser",
+    "url": "https://maps.apple.com/?q=Koine%20URL%20acceptance",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 34,
+    "activationMs": 29,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "search, suggestion source refusing the connection",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "status": "passed",
+    "answerMs": 21,
+    "activationMs": 9,
+    "notes": ""
+  },
+  {
+    "section": "UrlBrowser as the default browser",
+    "case": "search, suggestion source that never answers",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "dev.koine.test.UrlBrowser",
+    "witness": "fixture",
+    "status": "passed",
+    "answerMs": 22,
+    "activationMs": 8,
+    "notes": ""
+  },
+  {
+    "browser": "Dia",
+    "bundleIdentifier": "company.thebrowser.dia",
+    "version": "1.50.1",
+    "build": "87750",
+    "path": "/Applications/Dia.app",
+    "witness": "delivered"
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "encoded path, query and fragment (cold browser)",
+    "url": "http://koine-url.test:8765/search/a%20b?q=caf%C3%A9+%E6%97%A5%E6%9C%AC&x=%26%23%25&e=%3D#frag%20ment-%C3%A9",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "cold": true,
+    "status": "passed",
+    "answerMs": 275,
+    "activationMs": 264,
+    "receiptIsKernelIdentity": "true",
+    "notes": "delivery only: Dia shows no page in this image (its first run stops at an account gate that is never passed); "
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "encoded path, query and fragment (running browser)",
+    "url": "http://koine-url.test:8765/second/%E6%97%A5?k=%2B%2F%3F&v=a%20b#%E2%9C%93-frag",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 180,
+    "activationMs": 158,
+    "receiptIsKernelIdentity": "true",
+    "notes": "delivery only: Dia shows no page in this image (its first run stops at an account gate that is never passed); "
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "ASCII IDNA host",
+    "url": "http://xn--bcher-kva.test:8765/idna?label=b%C3%BCcher#top",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 61,
+    "activationMs": 39,
+    "receiptIsKernelIdentity": "true",
+    "notes": "delivery only: Dia shows no page in this image (its first run stops at an account gate that is never passed); "
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "recorded: plain open of the universal-link candidate",
+    "firstApplication": "company.thebrowser.dia",
+    "browserActivations": 1,
+    "mapsEvents": 0
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "universal-link candidate stays in the browser",
+    "url": "https://maps.apple.com/?q=Koine%20URL%20acceptance",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "cold": false,
+    "status": "passed",
+    "answerMs": 46,
+    "activationMs": 33,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "search, suggestion source refusing the connection",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "status": "passed",
+    "answerMs": 32,
+    "activationMs": 10,
+    "notes": "delivery only: Dia shows no page in this image (its first run stops at an account gate that is never passed); "
+  },
+  {
+    "section": "Dia as the default browser",
+    "case": "search, suggestion source that never answers",
+    "url": "http://koine-url.test:8765/search?q=koine%20caf%C3%A9%20%26%20co%20%231",
+    "browser": "company.thebrowser.dia",
+    "witness": "delivered",
+    "status": "passed",
+    "answerMs": 41,
+    "activationMs": 16,
+    "notes": "delivery only: Dia shows no page in this image (its first run stops at an account gate that is never passed); "
+  },
+  {
+    "case": "Dia page load",
+    "status": "pending-account",
+    "notes": "Dia 1.50.1 delivered the URLs (acknowledged, activated, the receipt the kernel identity, nothing else receiving them) but shows no page: its first run stops at an account gate that is never passed. Whether delivery is enough for Dia, or Dia is to be signed in in the image, or another alternate is to stand in, is Antony's decision."
+  },
+  {
+    "case": "no request from Koine",
+    "koineNetworkCalls": 200,
+    "koineConnects": 0,
+    "controlConnects": 3,
+    "status": "passed"
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]

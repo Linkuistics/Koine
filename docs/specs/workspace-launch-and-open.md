@@ -1,8 +1,9 @@
 # Workspace launch and open
 
 **Designed; `workspaceLaunchApplication` and `workspaceOpenURL` are implemented and
-their L, G and N parts are recorded under [Acceptance](#evidence-so-far), the other
-two roots and the URL root's V part pending.** Workspace supplies the
+their L, G and N parts, and the URL root's V part, are recorded under
+[Acceptance](#evidence-so-far); the other two roots are pending, and so is one part of
+the URL root's V evidence, Dia's page load (below).** Workspace supplies the
 launchers, browser opening, file/folder opening and Finder reveal required by
 the [workflow inventory](../requirements/modaliser-workflows.md#workflow-inventory).
 The [workflow spec](workflow-providers.md) owns the cumulative authority trace;
@@ -45,7 +46,7 @@ eligible. Missing registration/bundle is `APPLICATION_NOT_INSTALLED`; an extant
 bundle with a different identifier is `APPLICATION_IDENTITY_MISMATCH`. Neither
 substitutes another copy. These are the only two reasons a launch reports, and a
 missing constrained path is the former; `PATH_NOT_FOUND` and `NO_DEFAULT_HANDLER`
-belong to the operations that open a path or a URL. A future search result can pass its identifier/path
+belong to the operations that open a path or a URL; `workspaceOpenURL` reports `NO_DEFAULT_HANDLER` and no other reason. A future search result can pass its identifier/path
 without requiring a reference conversion. Registration is native discovery,
 not Koine provider approval or an additional application allowlist. Installed
 means registered and present as an application bundle when inspected. Check the
@@ -197,8 +198,8 @@ view because it has no parent. Native acknowledgment is not selection verificati
 | Constrained bundle has another identifier | Dependency `APPLICATION_IDENTITY_MISMATCH`; no substitution/action. |
 | Path missing or dangling link | Dependency `PATH_NOT_FOUND`; no action. |
 | Existing path or valid web URL has no default opener | Dependency `NO_DEFAULT_HANDLER`; no chooser/action. |
-| Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. |
-| Missing/revoked client authority | `permission` / `capability`, before resource inspection. |
+| Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. The path is the root field's own, its alias if one was used (`["workspaceOpenURL"]`), an execution error in an HTTP 200 answer. |
+| Missing client authority | `permission` / `capability`, before resource inspection. A revoked or unknown credential never reaches admission: it is HTTP 401 (`unauthenticated`). |
 | Filesystem access denied without established consent cause | `failed`; do not infer absence or invent a consent. |
 | Native error/false acknowledgment, timeout, or prerequisite lost after submission | `failed`; effects may have begun; no replay or alternate handler. |
 
@@ -349,14 +350,14 @@ here are bounded questions for those seams, not a claim that implementation exis
 | --- | --- | --- |
 | Twelve launchers, stopped and running | G, N, V | Install Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. Complete first-run/Gatekeeper preparation separately; record actual IDs, versions, paths and callback latency. Cold-launch each and reactivate it with another app frontmost and Koine inactive; observe activation and any returned identity. Acknowledgment without activation does not pass. Exercise the optional desktop handoff separately; a controls-only activation failure stays pending for escalation. No account-dependent workflow is needed. |
 | Multiple copies and installation | G, N, V; L for inspection failures | Registered fixture at two locations: unconstrained launch/named-app open reuses a running copy elsewhere; a path constraint addresses exactly the chosen copy. Check missing/unregistered copy, stale registration after deletion, identifier mismatch and a still-registered present copy in Trash (eligible). Check symlink/Unicode path spellings by native file identity and metadata denial as failed. Bundle-less programs have no named-selector route; default handler use remains distinct. |
-| Browser URL | G, N, V; L for absent handler | Safari and alternate default Dia; encoded query/fragment, IDNA host and universal-link candidate; inspect scheme-only handler discovery. Invalid escapes/raw Unicode/whitespace/backslashes are refused without repair. Client suggestion failure still opens typed-query URL. No Koine Google request. A controlled absent-handler adapter result proves workspace mapping at L; G fakes prove client handling only. |
+| Browser URL | G, N, V; L for absent handler | Safari and alternate default Dia; encoded query/fragment, IDNA host and universal-link candidate; inspect scheme-only handler discovery. Invalid escapes/raw Unicode/whitespace/backslashes are refused without repair. Client suggestion failure (refused, timed out or unreadable) still opens the typed-query URL, once: the fallback is chosen before the single open, never a second open after a failed one. No Koine Google request. A controlled absent-handler adapter result proves workspace mapping at L; G fakes prove client handling only. V: [open-url-vm.md](../verification/open-url-vm.md). |
 | Documents/directories/settings | G, N, V | Temporary text file, directory and document package; default open and named Zed; config directory; missing file/parent/link/app/handler; inspection denial; literal spaces/punctuation and symlinks. No handler-setting changes. |
 | Finder reveal | G, N, V; L for unavailable Finder/false acknowledgment | File, folder, app bundle, alias and filesystem root; observe actual selection/root view in V. L runs real workspace mapping for missing Finder and false acknowledgment; G fakes cover client handling only. Receipt alone does not establish selection. |
-| Input boundary | G, N, V; L for type/race cases | Blank selector, relative/NUL paths, non-web schemes, credentials/control characters and recognized app/native-executable payloads including symlinks fail before submission. A source script opens in its default editor and explicitly named Zed, irrespective of executable bits; do not reject JavaScript merely for public.executable conformance. Finder aliases to documents/apps are refused before dispatch. In disposable V fixtures, observe Terminal/script and location-document reactions as disclosed, without claiming a sandbox. L varies metadata and replacement outcomes. No executable/argv/environment/shell API; required app launch still works. |
-| Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. |
-| Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. |
-| Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus. Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
-| Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case. No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
+| Input boundary | G, N, V; L for type/race cases | Blank selector, relative/NUL paths, non-web schemes, credentials/control characters and recognized app/native-executable payloads including symlinks fail before submission. A source script opens in its default editor and explicitly named Zed, irrespective of executable bits; do not reject JavaScript merely for public.executable conformance. Finder aliases to documents/apps are refused before dispatch. In disposable V fixtures, observe Terminal/script and location-document reactions as disclosed, without claiming a sandbox. L varies metadata and replacement outcomes. No executable/argv/environment/shell API; required app launch still works. URL input at V: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants). |
+| Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. URL receipts at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser). |
+| Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. URL answer times at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser). |
+| Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants)). Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
+| Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
@@ -403,7 +404,8 @@ what was established; every row above keeps its pending remainder.
   N (`WorkspaceProviderTests`, the signed bundle) refuse every class below at the
   original path with no `kind`, before any handler lookup, and nothing reaches the
   handler. The path and reveal operations' inputs have not landed.
-- **Browser URL.** L, G and N, no browser driven; V is pending (`open-url-vm`).
+- **Browser URL.** L, G, N and V. L, G and N drive no browser (below); V is
+  [open-url-vm.md](../verification/open-url-vm.md), summarized after this paragraph.
   The grammar is held as a decision over bytes (`WebURLTests`): accepted are an `http`
   or `https` scheme in any case, a host, path, query and fragment with valid percent
   escapes (encoded query and fragment included), ports (empty allowed), IPv4, IPv6 (hex groups of at most four digits, an IPv4 tail without leading zeros) and
@@ -435,7 +437,31 @@ what was established; every row above keeps its pending remainder.
   core deadline that answers the whole request, preflight across both roots, aliases and
   `@skip`, revocation between actions, and publication denial at the result. N: the signed
   bundle serves the root with its design text, both controls are required, and malformed
-  URLs are input errors; no well-formed URL is sent from the host.
+  URLs are input errors; no well-formed URL is sent from the host. **V**
+  ([open-url-vm.md](../verification/open-url-vm.md)), by the contract-only client in a
+  clone of the prepared image with Accessibility never granted: with Safari the default, an
+  encoded path, query and fragment (cold browser, then running), an ASCII IDNA host and the
+  client's search flow with a suggestion source that refused the connection and one that never
+  answered each reached the browser byte for byte (a page server in the guest saw the
+  request-target, `Host`, `location.href` and fragment as submitted; the search cases check the
+  typed-query target and `location.href`); the same with a test browser made the alternate
+  default, which records the exact string it is handed; eighteen
+  refused inputs (invalid escapes, raw Unicode, whitespace including a trailing newline,
+  backslashes, credentials, other schemes, the empty string) were input errors at
+  `["workspaceOpenURL"]` in an HTTP 200 answer with nothing repaired or opened, and either
+  control alone (403, the first unmet member and the complete ordered set) and a revoked grant
+  (401) opened nothing; the receipt's process was the kernel's for the browser in each of the
+  twelve direct opens (the search cases do not compare it); Koine's packets were on loopback only
+  in a packet-level capture of two searches, with controls for curl and for a process named
+  `Koine` on `URLSession` and Network.framework, and the engine's lookups were made for Safari;
+  Accessibility was read as absent at the start and the end, with no consent dialog. **The universal-link candidate** (a Maps link) was
+  received by the browser first with no application diverted to on Koine's account, but this
+  image cannot show the system's own dispatch diverting a plain `open` (Safari itself forwards
+  Apple links to Maps, and no installed application has a resolvable associated domain), so
+  the scheme-only lookup rests on `task check:launch-call-path` run on the signed bundle.
+  **Pending: Dia's page load.** Dia's first run stops at an account gate, so for Dia the run
+  observed that the open was acknowledged, Dia activated and the receipt equal to the kernel's
+  identity, and no page: what Dia was handed is not observed; what counts is Antony's to settle (`account-acceptance`'s leaf `dia-url-page-load-k88`).
 - **Receipt/failure boundary.** G (`WorkspaceCompositionTests`): error-free
   exclusive branches; publication denial at the status, value, process,
   non-null process fields and both dependency fields, with the partial data and
@@ -507,9 +533,10 @@ what was established; every row above keeps its pending remainder.
   design SDL the workspace design restricted to the implemented roots and the types
   they reach, verbatim ([schema-conformance-vm.md](../verification/schema-conformance-vm.md),
   [launch-contract.md](../verification/launch-contract.md)). A missing required
-  provider or coordinate fails. The profile's design file now also declares
-  `workspaceOpenURL`, with a control that removes it; the run of that against the signed
-  application in a VM is `open-url-vm`'s. Pending: the complete selection matrix
+  provider or coordinate fails. The profile's design file also declares
+  `workspaceOpenURL`, with a control that removes it, and the signed application in a VM
+  serves exactly that (digest `1815b52f…`, `task conformance` passing all three profiles,
+  [open-url-vm.md](../verification/open-url-vm.md#regression-and-what-was-re-run)). Pending: the complete selection matrix
   (`selection-acceptance`), old/new binaries with this provider, and selected
   updates and explicit absent/rejected sets in conformance.
 

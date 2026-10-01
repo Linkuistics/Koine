@@ -7,7 +7,14 @@ import {
   findApplication,
   type ProcessIdentity,
 } from './adapter/process-identity.js';
-import { interpretLaunch } from './adapter/launch.js';
+import { interpretLaunch, interpretOpenURL, type WorkspaceOpenFacts } from './adapter/workspace-open.js';
+import {
+  askSuggestions,
+  DEFAULT_ENGINE_TEMPLATE,
+  fillTemplate,
+  splitTemplate,
+  type SuggestionReport,
+} from './adapter/search.js';
 import {
   GENERATED_AGAINST_CONTRACT_VERSION,
   GENERATED_AGAINST_SCHEMA_DIGEST,
@@ -18,10 +25,11 @@ import {
   FocusDesktopWindowDocument,
   InspectOwnConnectionDocument,
   LaunchInstalledApplicationDocument,
+  OpenSearchUrlDocument,
   PollOwnGrantRequestDocument,
   RequestDesktopGrantDocument,
 } from './generated/graphql.js';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 type Json = Record<string, unknown>;
 
@@ -36,6 +44,11 @@ const USAGE = `koine-client <command> [options]
   choices    --secret <path> --pid <n> --started-at <instant>
   focus      --secret <path> --ref <reference>
   launch     --secret <path> --bundle-identifier <id> [--application-path <absolute path>]
+  open-url   --secret <path> (--url <text> | --url-file <path>)
+  search     --secret <path> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]
+
+Any --name value may also be written --name=value, which is the only way to give a
+value that itself begins with "--".
 `;
 
 interface Args {
@@ -53,14 +66,24 @@ function parseArgs(argv: readonly string[]): Args {
     if (flag === undefined || !flag.startsWith('--')) {
       throw new UsageError(`unexpected argument ${JSON.stringify(flag ?? '')}`);
     }
-    const value = argv[i + 1];
-    if (value === undefined || value.startsWith('--')) {
-      throw new UsageError(`option ${flag} needs a value`);
+    // `--name=value` carries its value in the same argument, so a value that begins
+    // with `--` (a query, a URL under test) can still be given.
+    const equals = flag.indexOf('=');
+    let name = flag;
+    let value: string | undefined;
+    if (equals > 2) {
+      name = flag.slice(0, equals);
+      value = flag.slice(equals + 1);
+    } else {
+      value = argv[i + 1];
+      if (value === undefined || value.startsWith('--')) {
+        throw new UsageError(`option ${flag} needs a value`);
+      }
+      i += 1;
     }
-    i += 1;
-    if (flag === '--capability') capabilities.push(value);
-    else if (single.has(flag.slice(2))) throw new UsageError(`option ${flag} given twice`);
-    else single.set(flag.slice(2), value);
+    if (name === '--capability') capabilities.push(value);
+    else if (single.has(name.slice(2))) throw new UsageError(`option ${name} given twice`);
+    else single.set(name.slice(2), value);
   }
   return { command, single, capabilities };
 }
@@ -447,6 +470,98 @@ async function commandLaunch(args: Args): Promise<Json> {
   };
 }
 
+/**
+ * The facts every `workspaceOpenURL` command prints. `url` is the exact text that
+ * went into the variable. Sent exactly once, whatever happens: a URL open is not
+ * safe to repeat, and a lost answer is `unknown-outcome`. Nothing is checked,
+ * trimmed, normalised or encoded here, so a URL the provider refuses (raw Unicode,
+ * whitespace, a backslash) is refused by the provider, at the original path, where
+ * this client can report it.
+ */
+async function openUrl(secretPath: string, credential: Credential, url: string): Promise<Json> {
+  const result = await send({
+    document: OpenSearchUrlDocument.toString(),
+    operationName: 'OpenSearchURL',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { url },
+  });
+  const facts: WorkspaceOpenFacts = interpretOpenURL(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    url,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
+async function commandOpenUrl(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('url');
+  const file = args.single.get('url-file');
+  if (literal === undefined && file === undefined) throw new UsageError('--url or --url-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--url and --url-file cannot be combined');
+
+  let url: string;
+  if (literal !== undefined) url = literal;
+  else {
+    // The file's bytes, as UTF-8, exactly: no trailing-newline stripping, no BOM
+    // removal, no trimming. Bytes that are not UTF-8 cannot be a GraphQL string, so
+    // they are a client error, not something to repair with U+FFFD.
+    const bytes = await readFile(file as string);
+    try {
+      url = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+    } catch {
+      throw new Error(`${file} is not valid UTF-8; nothing was sent`);
+    }
+  }
+
+  const credential = await loadOrCreateCredential(secretPath);
+  return openUrl(secretPath, credential, url);
+}
+
+async function commandSearch(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const query = require_(args, 'query');
+  const engineTemplate = args.single.get('engine-template') ?? DEFAULT_ENGINE_TEMPLATE;
+  const suggestionsUrl = args.single.get('suggestions-url');
+  const engineParts = splitTemplate(engineTemplate);
+  if (typeof engineParts === 'string') throw new UsageError(`--engine-template is unusable: ${engineParts}`);
+  if (suggestionsUrl !== undefined) {
+    const parts = splitTemplate(suggestionsUrl);
+    if (typeof parts === 'string') throw new UsageError(`--suggestions-url is unusable: ${parts}`);
+  }
+  const credential = await loadOrCreateCredential(secretPath);
+
+  // (a) Ask the suggestion source, if one was given. It is never fatal and never
+  // decides anything: this command has no chooser, so whatever it answers or fails
+  // to answer, (b) the typed query is what is opened. The search engine itself is
+  // never contacted from here: the template is only text that goes to Koine.
+  const suggestions: SuggestionReport = await askSuggestions(suggestionsUrl, query);
+
+  // (b) The typed-query URL, then exactly one open.
+  const urlBuilt = fillTemplate(engineTemplate, query);
+  const opened = await openUrl(secretPath, credential, urlBuilt);
+  return { ...opened, search: { query, engineTemplate, urlBuilt, suggestions } };
+}
+
 function redact(payload: Json, secrets: readonly string[]): string {
   let text = JSON.stringify(payload);
   for (const secret of secrets) {
@@ -500,6 +615,12 @@ async function main(): Promise<void> {
         break;
       case 'launch':
         payload = await commandLaunch(args);
+        break;
+      case 'open-url':
+        payload = await commandOpenUrl(args);
+        break;
+      case 'search':
+        payload = await commandSearch(args);
         break;
       default:
         throw new UsageError(`unknown command ${JSON.stringify(command)}`);

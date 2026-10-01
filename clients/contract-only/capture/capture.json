@@ -1,5 +1,5 @@
 {
-  "note": "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); the workspace part is the launch root alone.",
+  "note": "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); the workspace part is the launch root and the URL root (workspaceLaunchApplication and workspaceOpenURL).",
   "contractVersion": "koine-desktop/1",
-  "schemaDigest": "a56a3387c7bef91758e31713fd9a7f632855c2b3a9eaaf5f8e5cce1b66d49aea"
+  "schemaDigest": "1815b52f078ff4a1c7ca08d284ccfd50c03422d47055c8b926500391a1569d19"
 }

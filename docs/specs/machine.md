@@ -576,7 +576,7 @@ is empty or whitespace alone.
 | Condition | Classification |
 |---|---|
 | Malformed GraphQL, unknown fields or arguments | GraphQL request validation; no domain execution |
-| Malformed URI scalar or process identity | GraphQL input coercion; no action |
+| Malformed process identity or another custom-scalar value (version 1 serves no URI scalar: a URL is a `String` the provider checks) | GraphQL input coercion; no action |
 | Well-formed reference names an unregistered provider | `unknown-provider`, after applicable capability checks |
 | Known authority, wrong resource kind, malformed provider remainder, or gone target | `unavailable` |
 | Missing client read/control/management authority | `permission`, `capability` |

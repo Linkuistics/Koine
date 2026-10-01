@@ -204,3 +204,13 @@ later working increments cover all apps and the full assigned selection matrix
 before workspace ships. Do not replace pending acceptance by a mock-only or
 reduced profile. `task design:workspace-check` validates only design SDL/examples;
 `task conformance` must still be extended and run against the actual served schema.
+
+`web-urls-k70` found, and later increments should expect, that Dia's first run is an
+account gate: a page opened in it is never shown, so Dia can be observed at delivery only
+(acknowledgment, activation, kernel identity) until an account is provided. That case is
+`dia-url-page-load-k88` in `account-acceptance`. `Fixtures/UrlBrowser` (a test browser that records
+the exact strings it is handed) and `scripts/vm-url-witness-server.mjs` (a guest page server that
+reports a browser's own `location.href`, fragment included) are reusable for any increment that
+needs to see what an application was handed. The image cannot show a universal-link divergence
+(no installed application has a resolvable associated domain, and Safari forwards Apple links to
+Maps itself), so a row that wants one inspects the call path instead.

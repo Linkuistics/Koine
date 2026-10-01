@@ -64,6 +64,8 @@ source scripts/vm-verify-gatekeeper-lib.sh
 source scripts/vm-launchers-lib.sh
 # shellcheck source=scripts/vm-verify-contract-client-lib.sh
 source scripts/vm-verify-contract-client-lib.sh
+# shellcheck source=scripts/vm-verify-witness-lib.sh
+source scripts/vm-verify-witness-lib.sh
 
 BUNDLE="clients/contract-only/dist/koine-client.mjs"
 [ -f "${BUNDLE}" ] || { echo "Error: ${BUNDLE} does not exist. Run: task client" >&2; exit 1; }
@@ -89,35 +91,6 @@ RESULTS="${WORK}/results.jsonl"
 OUT_DIR=".build/launchers-vm"
 mkdir -p "${OUT_DIR}"
 
-# contract_client_once, as the shared library has it but never run twice once it has started.
-# The agent has answered "not reached" (status 7) for a command that went on to run: the
-# client then ran again and the second launch was a reactivation, so the recorded send
-# instant came 45 seconds after the process started. The answer file is created when the
-# shell starts the command, so a file that exists means it ran, and it is waited for.
-contract_client_once() {
-    local file status
-    ONCE_CALLS=$((ONCE_CALLS + 1))
-    ANSWER=""
-    file="\$HOME/client-answer-${ONCE_CALLS}.json"
-    guest "rm -f ${file}" >/dev/null || true
-    for _ in 1 2 3; do
-        status=0
-        testanyware file exec "${CLIENT} $* > ${file}" >/dev/null 2>&1 || status=$?
-        if [ "${status}" = 7 ] || [ "${status}" = 255 ]; then
-            if guest_text "[ -e ${file} ] && echo started" | grep -qx started; then break; fi
-            sleep 5
-            continue
-        fi
-        break
-    done
-    for _ in $(seq 1 20); do
-        ANSWER="$(guest_json "cat ${file}" 2>/dev/null)" && break
-        sleep 3
-    done
-    [ -n "${ANSWER:-}" ] && jq -e . >/dev/null <<<"${ANSWER}" || fail "the contract-only client left no answer for: $*"
-    echo "${ANSWER}"
-}
-
 # launch_application <credential file> <bundle identifier> [client options...]: one launch,
 # never repeated. The client's answer is left in ANSWER.
 launch_application() {
@@ -125,28 +98,6 @@ launch_application() {
     shift 2
     contract_client_once "launch --secret \"${credential}\" --bundle-identifier ${id} $*"
 }
-
-# --- what the witness and the screen say ------------------------------------------
-quiet_instances() { INSTANCES="$(guest_json "\$HOME/LaunchWitness instances $1")"; }
-instance_count() { quiet_instances "$1"; jq -r '.instances | length' <<<"${INSTANCES}"; }
-# activation_wait <bundle identifier> <after ms>: ACTIVATED_MS, or empty after 40 seconds.
-activation_wait() {
-    ACTIVATED_MS=""
-    for _ in $(seq 1 20); do
-        watch_read
-        ACTIVATED_MS="$(jq -rs "[.[] | select(.event == \"activated\" and .application.bundleIdentifier == \"$1\" and .atMs >= $2) | .atMs] | first // empty" <<<"${EVENTS}")"
-        [ -z "${ACTIVATED_MS}" ] || return 0
-        sleep 2
-    done
-    return 1
-}
-# system_dialogs: the owners and buttons of any Gatekeeper, permission or Accessibility
-# dialog on screen, as "owner:button" words; empty when there is none.
-system_dialogs() {
-    screen_buttons | jq -r '[.[] | select(.app == "CoreServicesUIAgent" or .app == "UserNotificationCenter" or .app == "universalAccessAuthWarn") | "\(.app):\(.label)"] | join(", ")'
-}
-bundle_value() { guest_text "/usr/libexec/PlistBuddy -c 'Print :$2' '$1/Contents/Info.plist'" | tail -1; }
-record() { jq -cn "$@" >>"${RESULTS}"; }
 
 # one_launch <label> <credential file> <bundle identifier> [client options...]: puts TextEdit
 # in front, sends one launch and watches the system for it. Leaves in globals: ACK_CLASS,
@@ -191,40 +142,6 @@ nothing_moved() {
     witness_front >/dev/null
     [ "$(jq -c '[.application.pid, .application.startedAt]' <<<"${FRONT}")" = "${front_before}" ] || fail "${what}: focus moved"
     echo "Observation: ${what}: nothing launched, activated or moved."
-}
-
-# judge_dialogs <when> <dialogs as system_dialogs printed them>: in launcher_case, whose
-# `status` and `notes` it updates. Koine must raise nothing of its own and the launch must not
-# raise Gatekeeper's dialog (the preparation approved every application). A permission request
-# an application raises for itself is that application's onboarding (Kimi asks to find devices
-# on the local network): it is recorded with its words, then declined so that it does not
-# stand over the next case, and fails the case only if it names Koine. Kimi's recurring
-# Accessibility (events) request is the preparation's recorded recurring behaviour, left for
-# the quit that clears it.
-judge_dialogs() {
-    local when="$1" dialogs="$2" words hit
-    [ -n "${dialogs}" ] || return 0
-    notes="${notes}on screen after the ${when}: ${dialogs}; "
-    if grep -q 'CoreServicesUIAgent' <<<"${dialogs}"; then
-        status="failed"
-        notes="${notes}Gatekeeper's dialog was raised by the ${when}; "
-    fi
-    if grep -q 'UserNotificationCenter' <<<"${dialogs}"; then
-        words="$(screen_text UserNotificationCenter | cut -c1-300)"
-        echo "Permission request on screen after the ${when}: ${words}"
-        if grep -qi 'koine' <<<"${words}"; then
-            status="failed"
-            notes="${notes}a permission request names Koine: ${words}; "
-        else
-            hit="$(screen_buttons | jq -c '[.[] | select(.app == "UserNotificationCenter" and .label == "Don’t Allow")][0]')"
-            if [ "${hit}" != null ]; then
-                # shellcheck disable=SC2046
-                testanyware input click $(jq -r '"\(.x) \(.y)"' <<<"${hit}") >/dev/null
-                sleep 2
-            fi
-            notes="${notes}the application's own permission request, declined: ${words}; "
-        fi
-    fi
 }
 
 # --- one application, stopped and then running --------------------------------------
