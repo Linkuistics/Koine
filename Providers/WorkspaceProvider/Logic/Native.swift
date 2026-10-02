@@ -112,6 +112,17 @@ protocol WorkspaceNative: Sendable {
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     )
 
+    /// Submits one request that Finder select the item at `path`, which the caller inspected
+    /// and which is submitted as written (`selectFile(_:inFileViewerRootedAtPath:)`: Finder's
+    /// own boolean acknowledgment, no Accessibility, keystroke or menu check). When
+    /// `filesystemRoot`, which the inspection decided from the filesystem and not from the
+    /// spelling, the request is the documented root view instead: the root has no parent to
+    /// select it in. The call is synchronous natively; the adapter must never run it on a
+    /// cooperative thread. `completion` is `.acknowledged(nil)` for a true result and
+    /// `.refused` for a false one, and otherwise has the same one-shot contract as
+    /// `launchApplication`: it may run once, on any thread, at any time, or never.
+    func revealPath(_ path: String, filesystemRoot: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void)
+
     /// The kernel's record of the process.
     func processStart(of pid: Int32) -> ProcessLookup
     /// The file identity of the executable the live process `pid` is running.

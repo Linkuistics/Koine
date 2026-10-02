@@ -39,6 +39,12 @@ import Testing
             status value { process { pid startedAt } } dependency { reason guidance } } }
         """
 
+    /// The reveal's path travels as a variable too.
+    static let revealPath = """
+        mutation($path: String!) {
+          reveal: workspaceRevealPath(path: $path) { status value { path } dependency { reason guidance } } }
+        """
+
     // MARK: Loading
 
     @Test func theSignedBundleLoadsBesideDesktopFromTheInApplicationRoot() async throws {
@@ -78,53 +84,60 @@ import Testing
 
     // MARK: The served contribution
 
-    /// Every definition the bundle serves is a block of the design file, verbatim, and the
-    /// only roots are the launch and URL ones: each later root lands with its leaf.
-    @Test func theServedSDLIsTheLaunchURLAndPathRootsAndTheirReachVerbatimFromTheDesignFile() throws {
+    /// The bundle serves the complete workspace design: everything after the two files' header
+    /// comments is identical, so every definition is a block of the design file, verbatim, and no
+    /// root is missing or reworded.
+    @Test func theServedSDLIsTheCompleteWorkspaceDesignVerbatim() throws {
         let served = try WorkspaceCompositionTests.schemaSDL()
         let design = try String(
             contentsOf: Self.repository.appending(path: "docs/design/workspace-schema.graphql"), encoding: .utf8)
+        func body(_ text: String) -> String {
+            text.components(separatedBy: "\n\n").dropFirst().joined(separator: "\n\n")
+        }
+        #expect(body(served) == body(design), "the served contribution is not the design file's body")
         let blocks = served.components(separatedBy: "\n\n").filter { $0.contains("\"\"\"") }
-        #expect(blocks.count == 8)
+        #expect(blocks.count == 10)
         for block in blocks where !block.hasPrefix("extend type Mutation") {
             #expect(design.contains(block), "not verbatim from the design file: \(block.prefix(60))")
         }
         // The roots are a documentation line and a field line each, in the design's order.
         let lines = try #require(blocks.first { $0.hasPrefix("extend type Mutation") })
             .components(separatedBy: "\n").filter { !$0.isEmpty }.dropFirst().dropLast()
-        try #require(lines.count == 6, "three roots, each a documentation line and a field line")
+        try #require(lines.count == 8, "four roots, each a documentation line and a field line")
         let roots = Array(lines)
         for pair in stride(from: 0, to: roots.count, by: 2) {
             #expect(design.contains(roots[pair] + "\n" + roots[pair + 1]), "not verbatim: \(roots[pair + 1])")
         }
         #expect(
             roots[1].hasPrefix("  workspaceLaunchApplication(") && roots[3].hasPrefix("  workspaceOpenURL(")
-                && roots[5].hasPrefix("  workspaceOpenPath("))
-        for later in ["workspaceRevealPath", "WorkspaceRevealResult", "WorkspaceRevealReceipt"] {
-            #expect(!served.contains(later), "\(later) has not landed")
+                && roots[5].hasPrefix("  workspaceOpenPath(") && roots[7].hasPrefix("  workspaceRevealPath("))
+        for reached in ["WorkspaceRevealResult", "WorkspaceRevealReceipt"] {
+            #expect(served.contains("type \(reached) {"), "\(reached) is reached by the last root")
         }
     }
 
-    @Test func theLoadedProviderServesTheLaunchURLAndPathRootsAndNoOther() async throws {
+    @Test func theLoadedProviderServesAllFourRootsAndNoOther() async throws {
         let harness = try await DesktopProviderTests.harness()
         let credential = try await harness.consoleGrant(label: "c", capabilities: [])
         let reply = try await harness.post(
             """
             { m: __type(name: "Mutation") { fields { name description args { name type { kind name ofType { name } } } } }
-              o: __type(name: "WorkspaceOpenResult") { fields { name } } }
+              o: __type(name: "WorkspaceOpenResult") { fields { name } }
+              r: __type(name: "WorkspaceRevealResult") { fields { name } }
+              p: __type(name: "WorkspaceRevealReceipt") { fields { name } } }
             """, authorization: "Bearer \(credential)")
         let fields = try #require(
             ((reply.data?["m"] as? [String: Any])?["fields"] as? [[String: Any]]))
         let workspace = fields.filter { ($0["name"] as? String)?.hasPrefix("workspace") == true }
         #expect(
             workspace.compactMap { $0["name"] as? String }
-                == ["workspaceLaunchApplication", "workspaceOpenPath", "workspaceOpenURL"])
+                == ["workspaceLaunchApplication", "workspaceOpenPath", "workspaceOpenURL", "workspaceRevealPath"])
         for field in workspace {
             let description = try #require(field["description"] as? String)
             #expect(description.hasPrefix("Requires workspace:control AND desktop:control."))
         }
         // The URL root takes one required string.
-        let url = try #require(workspace.last)
+        let url = try #require(workspace.first { $0["name"] as? String == "workspaceOpenURL" })
         let args = try #require(url["args"] as? [[String: Any]])
         #expect(args.count == 1 && args[0]["name"] as? String == "url")
         let type = try #require(args[0]["type"] as? [String: Any])
@@ -138,6 +151,16 @@ import Testing
         let applicationType = try #require(pathArgs[1]["type"] as? [String: Any])
         #expect(applicationType["kind"] as? String == "INPUT_OBJECT" && applicationType["name"] as? String == "WorkspaceApplicationInput")
         #expect((reply.data?["o"] as? [String: Any])?["fields"] is [Any])
+        // The reveal root takes one required string and answers the reveal result, whose receipt is the path.
+        let reveal = try #require(workspace.first { $0["name"] as? String == "workspaceRevealPath" })
+        let revealArgs = try #require(reveal["args"] as? [[String: Any]])
+        #expect(revealArgs.compactMap { $0["name"] as? String } == ["path"])
+        let revealType = try #require(revealArgs[0]["type"] as? [String: Any])
+        #expect(revealType["kind"] as? String == "NON_NULL" && (revealType["ofType"] as? [String: Any])?["name"] as? String == "String")
+        let result = try #require((reply.data?["r"] as? [String: Any])?["fields"] as? [[String: Any]])
+        #expect(Set(result.compactMap { $0["name"] as? String }) == ["status", "value", "dependency"])
+        let receipt = try #require((reply.data?["p"] as? [String: Any])?["fields"] as? [[String: Any]])
+        #expect(receipt.compactMap { $0["name"] as? String } == ["path"])
         await harness.stop()
     }
 
@@ -437,5 +460,65 @@ import Testing
     static var repository: URL {
         URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+    }
+
+    // MARK: The reveal root through the real bundle
+
+    @Test(arguments: [
+        ["workspace:control"], ["desktop:control"], ["desktop:read"], ["workspace:read", "desktop:read"], [],
+    ])
+    func eitherControlAloneIsRefusedForTheRevealRootBeforeAnythingIsInspected(held: [String]) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let credential = try await harness.consoleGrant(label: "c", capabilities: held)
+        // A path that exists, so a missing refusal would select it in this host's Finder.
+        let fixtures = try Fixtures()
+        defer { fixtures.remove() }
+        let reply = try await harness.post(
+            Self.revealPath, variables: ["path": fixtures.text], authorization: "Bearer \(credential)")
+        let error = try #require(reply.errors.first)
+        #expect(error["path"] as? [String] == ["reveal"])
+        let extensions = try #require(error["extensions"] as? [String: Any])
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(extensions["phase"] as? String == "authorization")
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.controls)
+        #expect(reply.data == nil, "preflight refuses the whole request; nothing ran")
+        await harness.stop()
+    }
+
+    @Test func aMissingPathADanglingLinkAFileWithATrailingSlashAndALoopAreNotFoundForRevealAndNothingIsSubmitted() async throws {
+        let fixtures = try Fixtures()
+        defer { fixtures.remove() }
+        let harness = try await DesktopProviderTests.harness()
+        let credential = try await harness.consoleGrant(label: "c", capabilities: Self.controls)
+        // The same inspection as opening: `realpath` alone accepts `notes.txt/` and `notes.txt/.`.
+        for path in [
+            fixtures.missing, fixtures.path("dangling"), fixtures.path("notes.txt/below-a-file"),
+            fixtures.text + "/", fixtures.text + "//", fixtures.text + "/.", fixtures.path("loop-a"),
+            fixtures.path(String(repeating: "n", count: 300)),
+        ] {
+            let reply = try await harness.post(
+                Self.revealPath, variables: ["path": path], authorization: "Bearer \(credential)")
+            let reveal = try #require(reply.data?["reveal"] as? [String: Any], Comment(rawValue: "\(reply.errors)"))
+            #expect(reveal["status"] as? String == "DEPENDENCY_UNAVAILABLE", Comment(rawValue: path))
+            #expect(reveal["value"] is NSNull)
+            #expect((reveal["dependency"] as? [String: Any])?["reason"] as? String == "PATH_NOT_FOUND", Comment(rawValue: path))
+        }
+        await harness.stop()
+    }
+
+    @Test(arguments: [
+        "", "relative/notes.txt", "./notes.txt", "~/notes.txt", "$HOME/notes.txt", "file:///etc/hosts", " /etc/hosts",
+        "/Users/koine-test/a\u{0}b",
+    ])
+    func anUnusableRevealPathIsAnInputErrorAtTheOriginalPathWithNoKind(_ path: String) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let credential = try await harness.consoleGrant(label: "c", capabilities: Self.controls)
+        let reply = try await harness.post(
+            Self.revealPath, variables: ["path": path], authorization: "Bearer \(credential)")
+        let error = try #require(reply.errors.first, Comment(rawValue: "\(path.debugDescription) was accepted"))
+        #expect(error["path"] as? [String] == ["reveal"])
+        #expect((error["extensions"] as? [String: Any])?["kind"] == nil, "an input error carries no kind")
+        #expect(reply.data?["reveal"] is NSNull)
+        await harness.stop()
     }
 }

@@ -8,6 +8,7 @@ import { startStub } from './stub-server.mjs';
 import { LAUNCH_ANSWERS, PROCESS } from './launch-stubs.mjs';
 import { OPEN_URL_ANSWERS } from './open-url-stubs.mjs';
 import { OPEN_PATH_ANSWERS } from './open-path-stubs.mjs';
+import { REVEAL_ANSWERS, echo as revealEcho } from './reveal-stubs.mjs';
 import { startSuggestionSources } from './suggestion-stubs.mjs';
 
 const run = promisify(execFile);
@@ -50,6 +51,8 @@ let openUrlMode = 'available-process';
 const openUrlRequests = [];
 let openPathMode = 'available-process';
 const openPathRequests = [];
+let revealMode = 'available';
+const revealRequests = [];
 const stub = await startStub(({ request, auth }) => {
   const name = request.operationName;
   if (name === 'LaunchInstalledApplication') {
@@ -63,6 +66,10 @@ const stub = await startStub(({ request, auth }) => {
   if (name === 'OpenDocumentOrDirectory') {
     openPathRequests.push({ request, auth });
     return OPEN_PATH_ANSWERS[openPathMode]();
+  }
+  if (name === 'RevealPath') {
+    revealRequests.push({ request, auth });
+    return REVEAL_ANSWERS[revealMode]();
   }
   if (name === 'DesktopChoices' && choicesNull) {
     return { status: 200, body: { data: { desktopApplication: null }, _process: request.variables.process } };
@@ -810,6 +817,137 @@ for (const [label, bytes] of pathFileCases) {
 }
 openPathMode = 'available-process';
 
+// --- reveal-path --------------------------------------------------------
+// `workspaceRevealPath` answers `WorkspaceRevealResult`: the open roots' exclusive branches with the
+// receipt `{ path }` and no process (test/reveal-stubs.mjs). Every case sends exactly one request.
+const REVEAL_ROOT = 'workspaceRevealPath';
+const revealPath = '/tmp/koine test/notes (1).txt';
+revealEcho.path = revealPath;
+const revealArgs = ['reveal-path', '--secret', secret, '--path', revealPath];
+const REVEAL_KEYS = ['credential', 'sentMs', 'receivedMs', 'status', 'actionEffect', 'receipt', 'selectionObserved', 'dependency', 'requiredCapability', 'requiredCapabilities', 'phase', 'branchSuppressed', 'resultErrorPaths', 'contractViolation', 'endpoint', 'http', 'response', 'errors', 'transport', 'outcomeUnknown', 'path'];
+// [stub, classification, status, actionEffect, outcomeUnknown, extra checks]
+const revealCases = [
+  ['available', 'ok', 'AVAILABLE', 'acknowledged', false, (r) => {
+    check('reveal-path available: the receipt is the echoed path and nothing else', JSON.stringify(r.receipt) === JSON.stringify({ path: revealPath }) && r.dependency === null, r.receipt);
+    check('reveal-path available: acknowledgment is never selection', r.selectionObserved === false && !Object.keys(r).some((k) => /process|choices/i.test(k)), Object.keys(r));
+  }],
+  ['dependency-path-not-found', 'dependency-unavailable', 'DEPENDENCY_UNAVAILABLE', 'none', false, (r) => {
+    check('reveal-path PATH_NOT_FOUND: reason and guidance copied verbatim, no claim about the world', r.dependency.reason === 'PATH_NOT_FOUND' && r.dependency.guidance.includes('check it') && JSON.stringify(Object.keys(r.dependency)) === JSON.stringify(['reason', 'guidance']) && r.receipt === null, r.dependency);
+  }],
+  ['dependency-finder-not-installed', 'dependency-unavailable', 'DEPENDENCY_UNAVAILABLE', 'none', false, (r) => {
+    check('reveal-path APPLICATION_NOT_INSTALLED: Finder absence is a typed dependency, nothing submitted', r.dependency.reason === 'APPLICATION_NOT_INSTALLED' && r.receipt === null && r.errors.length === 0, r);
+  }],
+  ['denied-lacks-workspace', 'capability-denied', null, 'none', false, (r) => {
+    check('reveal-path denied: HTTP 403, no data, first unmet and the complete set in the spec order', r.http.status === 403 && r.response.data === undefined && r.requiredCapability === 'workspace:control' && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET) && r.phase === 'authorization', r);
+    check('reveal-path denied: at the action path', JSON.stringify(r.errors[0].path) === JSON.stringify([REVEAL_ROOT]), r.errors[0]);
+  }],
+  ['denied-lacks-desktop', 'capability-denied', null, 'none', false, (r) => {
+    check('reveal-path denied: first unmet is desktop:control, the set is still whole', r.requiredCapability === 'desktop:control' && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET), r);
+  }],
+  ['denied-revoked-before-dispatch', 'capability-denied', null, 'none', false, (r) => {
+    check('reveal-path revoked before dispatch: phase execution, HTTP 200, the action did not start', r.phase === 'execution' && r.http.status === 200, r);
+  }],
+  ['failed-false-acknowledgment', 'failed', null, 'may-have-begun', true, (r) => {
+    check('reveal-path false acknowledgment: failed at the action path, effects may have begun, no replay', JSON.stringify(r.errors[0].path) === JSON.stringify([REVEAL_ROOT]) && r.dependency === null && r.receipt === null, r.errors);
+  }],
+  ['failed-inspection-denied', 'failed', null, 'may-have-begun', true, (r) => {
+    check('reveal-path inspection denied: failed, never read as a missing path', r.dependency === null && r.status === null, r);
+  }],
+  ['failed-deadline', 'failed', null, 'unknown', true, (r) => {
+    check('reveal-path deadline: the whole response is answered, the client cannot say what the action did', r.errors[0].path.length === 0 && r.response.data === null, r);
+  }],
+  ['input-error', 'input-error', null, 'none', false, (r) => {
+    check('reveal-path input error: no kind, at the root field\'s own path, nothing attempted', r.errors[0].kind === null && JSON.stringify(r.errors[0].path) === JSON.stringify([REVEAL_ROOT]), r.errors);
+  }],
+  ['suppressed-value', null, 'AVAILABLE', 'acknowledged', null, (r) => {
+    check('reveal-path suppressed value: the status still says acknowledged; flagged as a suppressed branch', r.branchSuppressed === true && r.receipt === null && JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([REVEAL_ROOT, 'value'])) && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET), r);
+  }],
+  ['suppressed-path', null, 'AVAILABLE', 'acknowledged', null, (r) => {
+    check('reveal-path suppressed path: the receipt went with its non-null path; the error is kept at its path', r.receipt === null && r.branchSuppressed === true && JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([REVEAL_ROOT, 'value', 'path'])) && r.requiredCapability === 'desktop:control', r);
+  }],
+  ['suppressed-dependency', null, 'DEPENDENCY_UNAVAILABLE', 'none', null, (r) => {
+    check('reveal-path suppressed dependency: the status says nothing was submitted', r.dependency === null && r.branchSuppressed === true && r.outcomeUnknown === false, r);
+  }],
+  ['suppressed-status', null, null, 'unknown', null, (r) => {
+    check('reveal-path suppressed status: the client cannot say what the action did', r.response.data[REVEAL_ROOT] === null && r.actionEffect === 'unknown' && r.outcomeUnknown === true, r);
+  }],
+  ['null-root-no-error', 'failed', null, 'unknown', true, (r) => {
+    check('reveal-path null root with no error is not absence, and the message names this root', r.classification !== 'absent' && r.contractViolation.includes('workspaceRevealPath') && !r.contractViolation.includes('workspaceOpenPath'), r.contractViolation);
+  }],
+  ['both-branches', 'failed', 'AVAILABLE', 'unknown', true, (r) => { check('reveal-path both branches: a contract violation', r.contractViolation !== null, r); }],
+  ['available-without-value', 'failed', 'AVAILABLE', 'unknown', true, (r) => { check('reveal-path AVAILABLE without value: a contract violation', r.contractViolation !== null, r); }],
+  ['receipt-without-path', 'failed', 'AVAILABLE', 'unknown', true, (r) => { check('reveal-path receipt without a path: a contract violation, not a success', r.contractViolation !== null && r.receipt === null, r); }],
+  ['unknown-status', 'failed', 'SELECTED', 'unknown', true, (r) => { check('reveal-path a status that is neither: a violation, never "selected"', r.contractViolation !== null && r.selectionObserved === false, r); }],
+  ['dependency-with-value', 'failed', 'DEPENDENCY_UNAVAILABLE', 'unknown', true, (r) => { check('reveal-path dependency with a value: a contract violation', r.contractViolation !== null, r); }],
+  ['not-a-response', 'failed', null, 'unknown', true, (r) => { check('reveal-path not a response: never read as success', r.ok === false && r.contractViolation !== null, r); }],
+];
+for (const [name, classification, status, effect, unknown, extra] of revealCases) {
+  revealMode = name;
+  const before = revealRequests.length;
+  const before_ms = Date.now();
+  const { result, stdout } = await cli(stub.descriptor, revealArgs);
+  const after_ms = Date.now();
+  check(`reveal-path ${name}: exactly one request, never replayed`, revealRequests.length - before === 1, revealRequests.length - before);
+  if (classification !== null) check(`reveal-path ${name}: classification ${classification}`, result.classification === classification, result.classification);
+  check(`reveal-path ${name}: status ${status}`, result.status === status, result.status);
+  check(`reveal-path ${name}: actionEffect ${effect}`, result.actionEffect === effect, result.actionEffect);
+  if (unknown !== null) check(`reveal-path ${name}: outcomeUnknown ${unknown}`, result.outcomeUnknown === unknown, result.outcomeUnknown);
+  check(`reveal-path ${name}: command, ok, path`, result.command === 'reveal-path' && result.ok === (result.classification === 'ok') && result.path === revealPath);
+  check(`reveal-path ${name}: timing fields`, Number.isInteger(result.sentMs) && before_ms <= result.sentMs && result.sentMs <= result.receivedMs && result.receivedMs <= after_ms, [before_ms, result.sentMs, result.receivedMs, after_ms]);
+  check(`reveal-path ${name}: secret never printed`, !stdout.includes(secretTextForLaunch));
+  check(`reveal-path ${name}: common fields present`, REVEAL_KEYS.every((k) => k in result), REVEAL_KEYS.filter((k) => !(k in result)));
+  extra(result);
+}
+
+// An echo that is not what was sent is copied, never corrected: the contract promises the submitted path
+// and a client reports what it was given, so a difference is for the reader to see.
+revealMode = 'available';
+{
+  revealEcho.path = '/tmp/something else';
+  const { result } = await cli(stub.descriptor, revealArgs);
+  check('reveal-path: the receipt path is copied as answered, not compared or corrected', result.receipt.path === '/tmp/something else' && result.path === revealPath && result.classification === 'ok', result);
+  revealEcho.path = revealPath;
+}
+
+// The request itself: the published operation, one literal variable, the bearer.
+{
+  const before = revealRequests.length;
+  await cli(stub.descriptor, revealArgs);
+  const sent = revealRequests.at(-1);
+  check('reveal-path request: operation name and exactly one literal variable', sent.request.operationName === 'RevealPath' && JSON.stringify(sent.request.variables) === JSON.stringify({ path: revealPath }), sent.request.variables);
+  check('reveal-path request: bearer presented', sent.auth !== null && sent.auth.startsWith('Bearer '));
+  check('reveal-path request: the published document, and no other root', sent.request.query.includes('workspaceRevealPath(path: $path)') && !sent.request.query.includes('workspaceOpenPath') && !sent.request.query.includes('workspaceLaunchApplication') && !sent.request.query.includes('workspaceOpenURL'), sent.request.query);
+  check('reveal-path request: one request', revealRequests.length - before === 1);
+}
+
+// Bytes in, bytes out, as for the open roots: the provider refuses what it refuses.
+revealMode = 'input-error';
+for (const raw of ['', 'relative/notes.txt', '~/notes.txt', 'file:///tmp/notes.txt', ' /tmp/notes.txt', '/tmp/notes.txt\n', '/tmp/x/', '//tmp//x/./y/../z', '/', '/tmp/café/é', '/tmp/100%25/%zz']) {
+  const before = revealRequests.length;
+  const { result } = await cli(stub.descriptor, ['reveal-path', '--secret', secret, `--path=${raw}`]);
+  const shown = JSON.stringify(raw).slice(0, 60);
+  check(`reveal-path raw ${shown}: sent byte-for-byte, once, with no other variable`, revealRequests.length - before === 1 && revealRequests.at(-1).request.variables.path === raw && JSON.stringify(Object.keys(revealRequests.at(-1).request.variables)) === JSON.stringify(['path']), shown);
+  check(`reveal-path raw ${shown}: refusal observed, path echoed`, result.classification === 'input-error' && result.path === raw && result.actionEffect === 'none', result.classification);
+}
+{
+  const file = join(dir, 'reveal-path.bin');
+  for (const [label, bytes] of [['plain', Buffer.from('/tmp/notes.txt')], ['trailing LF', Buffer.from('/tmp/notes.txt\n')], ['NUL', Buffer.from('/tmp/a\0b')]]) {
+    await writeFile(file, bytes);
+    const before = revealRequests.length;
+    await cli(stub.descriptor, ['reveal-path', '--secret', secret, '--path-file', file]);
+    check(`reveal-path --path-file ${label}: the file's bytes as UTF-8, nothing stripped`, revealRequests.length - before === 1 && revealRequests.at(-1).request.variables.path === bytes.toString('utf8'), revealRequests.at(-1).request.variables);
+  }
+}
+{
+  const bad = [['neither', ['reveal-path', '--secret', secret]], ['both', ['reveal-path', '--secret', secret, '--path', '/a', '--path-file', '/b']]];
+  for (const [label, args] of bad) {
+    const before = revealRequests.length;
+    const { result } = await cli(stub.descriptor, args);
+    check(`reveal-path usage, ${label}: a request error and nothing sent`, result.classification === 'request-error' && revealRequests.length === before, result);
+  }
+}
+revealMode = 'available';
+
 // --- search -------------------------------------------------------------
 // The client-owned flow. Whatever the suggestion source does, exactly one
 // OpenSearchURL carries the typed-query URL, and the search engine is never contacted.
@@ -929,6 +1067,10 @@ check('open-url cut after send -> unknown-outcome, sent once, never replayed', l
 killed = 0;
 const lostPath = await cli(killerDescriptor, [...pathArgs, ...NAMED]);
 check('open-path cut after send -> unknown-outcome, sent once, never replayed', lostPath.result.classification === 'unknown-outcome' && lostPath.result.outcomeUnknown === true && lostPath.result.actionEffect === 'unknown' && killed === 1 && lostPath.result.processState === 'no-receipt' && lostPath.result.receivedMs === null && Number.isInteger(lostPath.result.sentMs) && lostPath.result.path === goodPath && lostPath.result.application.bundleIdentifier === 'dev.zed.Zed', [killed, lostPath.result]);
+killed = 0;
+killed = 0;
+const lostReveal = await cli(killerDescriptor, revealArgs);
+check('reveal-path cut after send -> unknown-outcome, sent once, never replayed', lostReveal.result.classification === 'unknown-outcome' && lostReveal.result.outcomeUnknown === true && lostReveal.result.actionEffect === 'unknown' && killed === 1 && lostReveal.result.receipt === null && lostReveal.result.receivedMs === null && Number.isInteger(lostReveal.result.sentMs) && lostReveal.result.selectionObserved === false && lostReveal.result.path === revealPath, [killed, lostReveal.result]);
 killed = 0;
 const lostSearch = await cli(killerDescriptor, ['search', '--secret', secret, '--query', 'café 日本']);
 check('search cut after send -> unknown-outcome, one request, URL reported', lostSearch.result.classification === 'unknown-outcome' && lostSearch.result.outcomeUnknown === true && killed === 1 && lostSearch.result.search.urlBuilt === `${GOOGLE}caf%C3%A9%20%E6%97%A5%E6%9C%AC`, [killed, lostSearch.result]);

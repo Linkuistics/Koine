@@ -406,18 +406,15 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 
-    /// What is not implemented yet. A leaf that lands a root removes its
-    /// coordinates from here, and the profile's design file gains them: the set
-    /// only ever shrinks, toward the complete workspace design.
-    static let workspaceCoordinatesNotYetImplemented: Set<String> = [
-        "Mutation.workspaceRevealPath", "WorkspaceRevealResult", "WorkspaceRevealReceipt",
-    ]
+    /// What is not implemented yet: nothing. The last root has landed, so the profile's file is
+    /// the complete workspace design. A root added to the design later that this set does not
+    /// name turns the next test red, and the set grows only for a root that has not landed.
+    static let workspaceCoordinatesNotYetImplemented: Set<String> = []
 
-    /// The workspace part of the profile is the design SDL restricted, never
-    /// reworded: against the desktop design plus the complete workspace design,
-    /// the profile's file lacks exactly the roots not implemented and the types
-    /// only they reach, and every coordinate it does declare is identical — text,
-    /// nullability, arguments and all.
+    /// The workspace part of the profile is the design SDL, never reworded: against the
+    /// desktop design plus the complete workspace design, the profile's file lacks exactly the
+    /// roots not implemented (none now) and the types only they reach, and every coordinate it
+    /// does declare is identical — text, nullability, arguments and all.
     @Test func theWorkspaceProfileIsTheWorkspaceDesignRestrictedVerbatim() throws {
         let profile = try Self.repositoryFile("docs/design/desktop-workspace-schema-extension-host.graphql")
         let complete = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
@@ -432,7 +429,7 @@ import Testing
         #expect(found.allSatisfy { $0.aspect == .presence })
         // The shipped SDL is that same restriction: nothing implemented is missing from it.
         let implemented = try CanonicalSchemaText.canonicalText(ofSDL: profile)
-        for root in ["workspaceLaunchApplication", "workspaceOpenURL", "workspaceOpenPath"] {
+        for root in ["workspaceLaunchApplication", "workspaceOpenURL", "workspaceOpenPath", "workspaceRevealPath"] {
             #expect(implemented.contains(root), "\(root) is implemented and must be declared")
         }
     }
@@ -521,10 +518,10 @@ import Testing
         #expect(
             Set(found.map(\.coordinate)) == [
                 "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath",
-                "WorkspaceApplicationInput",
+                "Mutation.workspaceRevealPath", "WorkspaceApplicationInput",
                 "WorkspaceOperationStatus", "WorkspaceDependencyReason",
                 "WorkspaceDependencyUnavailable", "WorkspaceProcessIdentity",
-                "WorkspaceOpenReceipt", "WorkspaceOpenResult",
+                "WorkspaceOpenReceipt", "WorkspaceOpenResult", "WorkspaceRevealReceipt", "WorkspaceRevealResult",
             ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         #expect(workspace.profile.providers.map { $0.fields["provider"] ?? nil } == ["desktop", "workspace"])

@@ -77,6 +77,12 @@ struct NativeWorkspace: WorkspaceNative {
         var literal = stat()
         errno = 0
         guard stat(path, &literal) == 0 else { return Self.unavailable(errno) }
+        // Whether this is the root itself, by file identity and not by spelling (`lstat`: a link
+        // to `/` is a link; `..` is resolved by the kernel, so `/var/..` is `/private`).
+        var named = stat()
+        var root = stat()
+        let isFilesystemRoot =
+            lstat(path, &named) == 0 && lstat("/", &root) == 0 && named.st_dev == root.st_dev && named.st_ino == root.st_ino
         errno = 0
         guard let resolved = realpath(path, nil) else { return Self.unavailable(errno) }
         defer { free(resolved) }
@@ -97,7 +103,7 @@ struct NativeWorkspace: WorkspaceNative {
         return .present(
             PathFacts(
                 isDirectory: isDirectory, isApplication: isApplication, isAliasFile: isAliasFile,
-                contentType: values.contentType?.identifier
+                contentType: values.contentType?.identifier, isFilesystemRoot: isFilesystemRoot
             )
         )
     }
@@ -220,6 +226,29 @@ struct NativeWorkspace: WorkspaceNative {
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     ) {
         submitOpen(url, withApplicationAt: application, substitutingRunningCopy: substitutingRunningCopy, completion: completion)
+    }
+
+    /// Finder's own selection request and its boolean acknowledgment; the filesystem root has
+    /// no parent to select it in, so it is the documented root view (a nil item and the root as
+    /// the viewer's root). Whether the path is the root was decided by the inspection from the
+    /// filesystem (`PathFacts.isFilesystemRoot`), never from how the path is spelled. The call
+    /// is synchronous and talks to Finder, so it runs on a global queue, never a cooperative
+    /// thread, and a late result is ignored by the caller's one-shot.
+    /// No Accessibility, keystroke, menu or Apple event check follows it: a true result is the
+    /// acknowledgment, not observed selection.
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/selectfile(_:infileviewerrootedatpath:)
+    /// (Confirmed against the SDK's NSWorkspace.h, macOS 26: `selectFile:inFileViewerRootedAtPath:`;
+    /// a nil path shows `rootFullPath` selecting nothing, and an empty root selects in the main viewer.)
+    func revealPath(_ path: String, filesystemRoot: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let accepted =
+                filesystemRoot
+                ? NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/")
+                : NSWorkspace.shared.selectFile(path, inFileViewerRootedAtPath: "")
+            completion(
+                accepted ? .acknowledged(nil) : .refused("Finder did not acknowledge selecting the item.")
+            )
+        }
     }
 
     func processStart(of pid: Int32) -> ProcessLookup { readKernelProcessStart(of: pid) }

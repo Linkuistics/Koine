@@ -5,13 +5,13 @@ import Testing
 @testable import KoineCore
 @testable import WorkspaceProviderLogic
 
-/// The workspace launch, URL and path roots at the composition point (G): the real descriptor and
+/// The workspace launch, URL, path and reveal roots at the composition point (G): the real descriptor and
 /// the SDL the bundle serves, composed through the engine every transport executes
 /// through, with the provider a scripted stand-in. What is asserted is the core's
 /// and the client's handling: authority, preflight, revocation, publication and the
 /// deadline. Workspace's own mapping is `WorkspaceProviderLogicTests`'; a real
 /// binary and a real application are the N and V seams'. No launch or open happens
-/// here; the URL grammar and the path roots' input and refusal policy are held through the
+/// here; the URL grammar and the path and reveal roots' input and refusal policy are held through the
 /// engine with the real provider over a native stand-in that records what reached it.
 @Suite struct WorkspaceCompositionTests {
     // MARK: The contribution as composed
@@ -186,7 +186,7 @@ import Testing
 
     // MARK: Composition
 
-    @Test func theContributionComposesAndServesTheLaunchURLAndPathRootsOnly() async throws {
+    @Test func theContributionComposesAndServesAllFourRoots() async throws {
         let bench = try await Bench()
         #expect(bench.engine.providerDiagnostics.isEmpty)
         let root = try await bench.grant([])
@@ -195,8 +195,10 @@ import Testing
             { m: __type(name: "Mutation") { fields { name } } r: __type(name: "WorkspaceRevealResult") { name } }
             """, as: root.principal)
         let names = ((types.data?["m"] as? [String: Any])?["fields"] as? [[String: Any]] ?? []).compactMap { $0["name"] as? String }
-        #expect(names.filter { $0.hasPrefix("workspace") } == ["workspaceLaunchApplication", "workspaceOpenPath", "workspaceOpenURL"])
-        #expect(types.data?["r"] is NSNull, "a root that has not landed is not served")
+        #expect(
+            names.filter { $0.hasPrefix("workspace") }
+                == ["workspaceLaunchApplication", "workspaceOpenPath", "workspaceOpenURL", "workspaceRevealPath"])
+        #expect((types.data?["r"] as? [String: Any])?["name"] as? String == "WorkspaceRevealResult")
     }
 
     @Test func aMissingDesktopOwnerRemovesWorkspaceAndNamesIt() async throws {
@@ -250,6 +252,9 @@ import Testing
         #expect(
             served == [
                 "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath",
+                "Mutation.workspaceRevealPath",
+                "WorkspaceRevealResult.status", "WorkspaceRevealResult.value", "WorkspaceRevealResult.dependency",
+                "WorkspaceRevealReceipt.path",
                 "WorkspaceOpenResult.status", "WorkspaceOpenResult.value", "WorkspaceOpenResult.dependency",
                 "WorkspaceOpenReceipt.process",
                 "WorkspaceProcessIdentity.pid", "WorkspaceProcessIdentity.startedAt",
@@ -662,20 +667,26 @@ import Testing
         private var inspectedPaths: [String] = []
         private var arranged: [String: PathInspection] = [:]
         private var lookedUpDocuments: [String] = []
+        private var revealed: [String] = []
         static let browser = URL(fileURLWithPath: "/Applications/Browser.app")
+        static let finder = URL(fileURLWithPath: "/System/Library/CoreServices/Finder.app")
 
         var opened: [String] { lock.withLock { openedURLs } }
         var lookups: [WebURL.Scheme] { lock.withLock { lookedUp } }
         var pathsOpened: [String] { lock.withLock { openedPaths } }
         var pathsInspected: [String] { lock.withLock { inspectedPaths } }
         var documentLookups: [String] { lock.withLock { lookedUpDocuments } }
+        var pathsRevealed: [String] { lock.withLock { revealed } }
 
-        func registeredApplication(bundleIdentifier: String) -> URL? { nil }
+        func registeredApplication(bundleIdentifier: String) -> URL? {
+            bundleIdentifier == finderBundleIdentifier ? Self.finder : nil
+        }
         func registeredApplications(bundleIdentifier: String) -> [URL] { [] }
         func inspectApplication(at path: String) -> ApplicationInspection {
             .application(
                 ApplicationBundle(
-                    url: URL(fileURLWithPath: path), bundleIdentifier: "com.example.browser",
+                    url: URL(fileURLWithPath: path),
+                    bundleIdentifier: path == Self.finder.path ? finderBundleIdentifier : "com.example.browser",
                     identity: FileIdentity(volume: NSNumber(value: 1), file: "browser" as NSString)))
         }
         func launchApplication(
@@ -709,6 +720,10 @@ import Testing
             completion: @escaping @Sendable (LaunchCompletion) -> Void
         ) {
             lock.withLock { openedPaths.append(url.path) }
+            completion(.acknowledged(nil))
+        }
+        func revealPath(_ path: String, filesystemRoot: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void) {
+            lock.withLock { revealed.append(path) }
             completion(.acknowledged(nil))
         }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
@@ -1119,6 +1134,337 @@ import Testing
         #expect(reply.extensions(at: ["bad"])["kind"] == nil && reply.extensions(at: ["relative"])["kind"] == nil)
         #expect((reply.data?["good"] as? [String: Any])?["status"] as? String == "AVAILABLE")
         #expect(native.pathsOpened == ["/Users/test/ok.txt"])
+    }
+
+    // MARK: The reveal root
+
+    static let reveal = """
+        mutation { reveal: workspaceRevealPath(path: "/Users/test/notes.txt") {
+          status value { path } dependency { reason guidance } } }
+        """
+
+    static func revealAvailable(_ path: String = "/Users/test/notes.txt") -> ProviderValue {
+        .object(["status": .string("AVAILABLE"), "value": .object(["path": .string(path)]), "dependency": .null])
+    }
+
+    @Test func bothControlsWithoutReadsAreEnoughForTheRevealRoot() async throws {
+        let bench = try await Bench()
+        bench.script.answer { _ in .success(Self.revealAvailable()) }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.reveal, as: client.principal)
+
+        #expect(reply.errors.isEmpty)
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["status"] as? String == "AVAILABLE")
+        #expect((reveal["value"] as? [String: Any])?["path"] as? String == "/Users/test/notes.txt")
+        #expect(reveal["dependency"] is NSNull)
+        #expect(bench.script.log == ["revealPath"], "the reveal root reaches its own resolver")
+    }
+
+    @Test(arguments: [
+        ["workspace:control"], ["desktop:control"], ["workspace:read", "desktop:read"],
+        ["workspace:read", "desktop:control"], ["desktop:read", "desktop:control"], [],
+    ])
+    func eitherControlAloneIsRefusedForTheRevealRootBeforeAnythingIsInspected(held: [String]) async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(held)
+        let reply = try await bench.run(Self.reveal, as: client.principal)
+
+        #expect(reply.outcome.isForbidden)
+        let extensions = reply.extensions(at: ["reveal"])
+        let expected = held.contains("workspace:control") ? "desktop:control" : "workspace:control"
+        #expect(extensions["requiredCapability"] as? String == expected)
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.controls)
+        #expect(extensions["phase"] as? String == "authorization")
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(bench.script.log.isEmpty, "denial precedes inspection: the provider is never entered")
+    }
+
+    @Test(arguments: ["PATH_NOT_FOUND", "APPLICATION_NOT_INSTALLED"])
+    func eachRevealDependencyIsTheDependencyBranchOnly(_ reason: String) async throws {
+        let bench = try await Bench()
+        bench.script.answer { _ in
+            .success(
+                .object([
+                    "status": .string("DEPENDENCY_UNAVAILABLE"), "value": .null,
+                    "dependency": .object(["reason": .string(reason), "guidance": .string("Guidance.")]),
+                ]))
+        }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.reveal, as: client.principal)
+
+        #expect(reply.errors.isEmpty)
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["status"] as? String == "DEPENDENCY_UNAVAILABLE")
+        #expect(reveal["value"] is NSNull)
+        let dependency = try #require(reveal["dependency"] as? [String: Any])
+        #expect(dependency["reason"] as? String == reason)
+        #expect(dependency["guidance"] as? String == "Guidance.")
+    }
+
+    @Test func aRevealFailureIsAnErrorAtItsOwnPathAndInvalidInputCarriesNoKind() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        bench.script.answer { _ in .failure(ProviderFailure(kind: .failed, message: "Finder did not acknowledge.")) }
+        let failed = try await bench.run(Self.reveal, as: client.principal)
+        #expect(failed.data?["reveal"] is NSNull)
+        #expect(failed.extensions(at: ["reveal"])["kind"] as? String == "failed")
+
+        bench.script.answer { _ in .failure(ProviderFailure(kind: .invalidInput, message: "path bad")) }
+        let invalid = try await bench.run(Self.reveal, as: client.principal)
+        #expect(invalid.data?["reveal"] is NSNull)
+        #expect(invalid.extensions(at: ["reveal"])["kind"] == nil)
+    }
+
+    /// The action has run. Revoking as `point` is reached denies that field's publication and
+    /// every later one, with the same set as preflight. One branch is selected per scenario.
+    private func revealRevoked(
+        at point: OrderingPoint, selecting selection: String, answer: ProviderValue = WorkspaceCompositionTests.revealAvailable()
+    ) async throws -> (Bench.Reply, Bench) {
+        let bench = try await Bench()
+        bench.script.answer { _ in .success(answer) }
+        let client = try await bench.grant(Self.controls)
+        bench.when(point) { await bench.revoke(client.id) }
+        let reply = try await bench.run(
+            "mutation { reveal: workspaceRevealPath(path: \"/Users/test/notes.txt\") { \(selection) } }", as: client.principal)
+        return (reply, bench)
+    }
+
+    @Test func denialAtTheRevealResultsStatusWithholdsTheWholeResultAtTheStatusPath() async throws {
+        let (reply, bench) = try await revealRevoked(at: .admitted("WorkspaceRevealResult.status"), selecting: "status")
+        #expect(bench.script.log == ["revealPath"], "the reveal ran; its result was withheld")
+        #expect(reply.data?["reveal"] is NSNull)
+        #expect(reply.paths == [["reveal", "status"]])
+        expectDenied(reply, at: ["reveal", "status"])
+    }
+
+    @Test func denialAtTheRevealValueWithholdsItAtItsPathAndLeavesTheResultStanding() async throws {
+        let (reply, _) = try await revealRevoked(at: .admitted("WorkspaceRevealResult.value"), selecting: "value { path }")
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["value"] is NSNull)
+        #expect(reply.paths == [["reveal", "value"]])
+        expectDenied(reply, at: ["reveal", "value"])
+    }
+
+    @Test func denialAtTheRevealPathRemovesTheReceiptBecauseItIsNonNull() async throws {
+        let (reply, _) = try await revealRevoked(at: .admitted("WorkspaceRevealReceipt.path"), selecting: "value { path }")
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["value"] is NSNull, "path is non-null: its denial removes the receipt, not the result")
+        #expect(reply.error(at: ["reveal", "value", "path"]) != nil)
+        expectDenied(reply, at: ["reveal", "value", "path"])
+    }
+
+    @Test func denialAtARevealDependencyWithholdsItAtItsPathAndLeavesTheResultStanding() async throws {
+        let (reply, _) = try await revealRevoked(
+            at: .admitted("WorkspaceRevealResult.dependency"), selecting: "dependency { reason guidance }",
+            answer: Self.dependency)
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["dependency"] is NSNull)
+        #expect(reply.paths == [["reveal", "dependency"]])
+        expectDenied(reply, at: ["reveal", "dependency"])
+    }
+
+    @Test func aPublishedRevealStatusIsNotChangedByAnActionsLaterOutcome() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        for (answer, status) in [(Self.revealAvailable(), "AVAILABLE"), (Self.dependency, "DEPENDENCY_UNAVAILABLE")] {
+            bench.script.answer { _ in .success(answer) }
+            let reply = try await bench.run(Self.reveal, as: client.principal)
+            let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+            #expect(reveal["status"] as? String == status)
+            #expect((reveal["value"] is NSNull) == (status == "DEPENDENCY_UNAVAILABLE"))
+            #expect((reveal["dependency"] is NSNull) == (status == "AVAILABLE"))
+        }
+    }
+
+    // MARK: Several actions, the reveal among them
+
+    static let everyRoot = """
+        mutation {
+          first: workspaceLaunchApplication(application: { bundleIdentifier: "com.apple.Notes" }) { status }
+          second: workspaceOpenPath(path: "/Users/test/notes.txt") { status }
+          third: workspaceOpenURL(url: "https://example.com/") { status }
+          fourth: workspaceRevealPath(path: "/Users/test/notes.txt") { status }
+        }
+        """
+
+    @Test func anyDeniedActionMeansNoRevealOrOtherActionBegins() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(["desktop:control"])
+        let reply = try await bench.run(Self.everyRoot, as: client.principal)
+        #expect(reply.outcome.isForbidden)
+        #expect(reply.data == nil)
+        for alias in ["first", "second", "third", "fourth"] {
+            #expect(reply.extensions(at: [alias])["requiredCapabilities"] as? [String] == Self.controls, Comment(rawValue: alias))
+        }
+        #expect(bench.script.log.isEmpty)
+    }
+
+    @Test func actionsOfAllFourRootsRunInOrderUnderTheSameGrant() async throws {
+        let bench = try await Bench()
+        bench.script.answer { request in
+            request.resolverId == "revealPath" ? .success(Self.revealAvailable()) : .success(Self.available(pid: nil))
+        }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.everyRoot, as: client.principal)
+        #expect(reply.errors.isEmpty)
+        #expect(bench.script.log == ["launchApplication", "openPath", "openURL", "revealPath"])
+    }
+
+    @Test func revocationBetweenARevealAndTheNextActionStopsTheNextWithTheSameSet() async throws {
+        let bench = try await Bench()
+        bench.script.answer { _ in .success(Self.revealAvailable()) }
+        let client = try await bench.grant(Self.controls)
+        bench.when(.admitted("Mutation.workspaceRevealPath")) { await bench.revoke(client.id) }
+        let reply = try await bench.run(
+            """
+            mutation {
+              first: workspaceRevealPath(path: "/Users/test/a.txt") { status }
+              second: workspaceRevealPath(path: "/Users/test/b.txt") { status }
+            }
+            """, as: client.principal)
+        #expect(reply.outcome.isExecuted)
+        #expect(bench.script.log == ["revealPath"], "the second reveal is never entered")
+        let extensions = reply.extensions(at: ["second"])
+        #expect(extensions["phase"] as? String == "execution")
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.controls)
+        #expect(reply.data?["second"] is NSNull)
+    }
+
+    @Test func aliasesAndSkippedRevealsAreHonouredByPreflight() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(["workspace:control"])
+        let document = """
+            mutation($skip: Boolean!) {
+              renamed: workspaceRevealPath(path: "/Users/test/a.txt") @skip(if: $skip) { status }
+            }
+            """
+        let denied = try await bench.run(document, ["skip": false], as: client.principal)
+        #expect(denied.error(at: ["renamed"]) != nil, "the original response path is the alias")
+        let skipped = try await bench.run(document, ["skip": true], as: client.principal)
+        #expect(skipped.errors.isEmpty)
+        #expect(bench.script.log.isEmpty)
+    }
+
+    @Test func aRevealsFailedIsAtItsPathAndLaterActionsStillRun() async throws {
+        let bench = try await Bench()
+        bench.script.answer { request in
+            guard request.resolverId == "revealPath" else { return .success(Self.available(pid: nil)) }
+            return .failure(ProviderFailure(kind: .failed, message: "Finder did not acknowledge."))
+        }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(
+            """
+            mutation {
+              first: workspaceRevealPath(path: "/Users/test/a.txt") { status }
+              second: workspaceOpenURL(url: "https://example.com/") { status }
+            }
+            """, as: client.principal)
+        #expect(reply.data?["first"] is NSNull)
+        #expect(reply.extensions(at: ["first"])["kind"] as? String == "failed")
+        #expect((reply.data?["second"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(bench.script.log == ["revealPath", "openURL"])
+    }
+
+    @Test func anEarlierCoreDeadlineAnswersTheWholeRequestAndNoLaterRevealBegins() async throws {
+        var policy = RequestPolicy.version1
+        policy.executionDeadline = .milliseconds(150)
+        let bench = try await Bench(policy: policy)
+        bench.script.answer { _ in
+            try? await Task.sleep(for: .seconds(20))
+            return .failure(ProviderFailure(kind: .failed, message: "Finder did not acknowledge."))
+        }
+        let client = try await bench.grant(Self.controls)
+        let started = ContinuousClock.now
+        let reply = try await bench.run(
+            """
+            mutation {
+              first: workspaceRevealPath(path: "/Users/test/a.txt") { status }
+              second: workspaceRevealPath(path: "/Users/test/b.txt") { status }
+            }
+            """, as: client.principal)
+        #expect(ContinuousClock.now - started < .seconds(10))
+        #expect(reply.json["data"] is NSNull, "the whole response is answered, not one action's path")
+        #expect(reply.errors.count == 1 && (reply.errors.first?["path"] as? [Any])?.isEmpty == true)
+        #expect((reply.errors.first?["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+        try await Task.sleep(for: .milliseconds(100))
+        #expect(bench.script.log == ["revealPath"])
+    }
+
+    // MARK: The reveal input, through the engine and the real provider
+
+    static let revealWithVariables = """
+        mutation($path: String!) {
+          reveal: workspaceRevealPath(path: $path) { status value { path } dependency { reason guidance } } }
+        """
+
+    @Test(arguments: [
+        "/Users/test/notes.txt", "/Users/test/a b/c d.txt", "/Users/test/$HOME/`x`;'\"*?.txt", "/Users/test/caf\u{E9}.txt",
+        "/Users/test/config/", "/",
+    ])
+    func aLiteralAbsolutePathReachesFinderAsWrittenAndTheReceiptEchoesIt(_ path: String) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(Self.revealWithVariables, ["path": path], as: client)
+        #expect(reply.errors.isEmpty, Comment(rawValue: "\(reply.errors)"))
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["status"] as? String == "AVAILABLE")
+        #expect((reveal["value"] as? [String: Any])?["path"] as? String == path)
+        #expect(native.pathsInspected == [path])
+        #expect(native.pathsRevealed == [path])
+        #expect(native.pathsOpened.isEmpty && native.documentLookups.isEmpty, "a reveal opens nothing and finds no handler")
+    }
+
+    @Test(arguments: [
+        ("", "empty"), ("relative/notes.txt", "relative"), ("./notes.txt", "relative"), ("~/notes.txt", "tilde"),
+        ("$HOME/notes.txt", "environment"), ("file:///Users/test/notes.txt", "file URL"), (" /Users/test/notes.txt", "leading space"),
+        ("/Users/test/a\u{0}b", "NUL"),
+    ])
+    func anUnusableRevealPathIsAnInputErrorAtTheOriginalPathAndNothingIsInspected(_ path: String, _ why: String) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(Self.revealWithVariables, ["path": path], as: client)
+        #expect(reply.error(at: ["reveal"]) != nil, Comment(rawValue: "\(why): \(path.debugDescription) was accepted"))
+        #expect(reply.extensions(at: ["reveal"])["kind"] == nil, "an input error carries no kind")
+        #expect(reply.data?["reveal"] is NSNull)
+        #expect(native.pathsInspected.isEmpty && native.pathsRevealed.isEmpty, Comment(rawValue: why))
+    }
+
+    @Test(arguments: [
+        ("application bundle", PathFacts(isDirectory: true, isApplication: true, isAliasFile: false, contentType: "com.apple.application-bundle")),
+        ("unix executable", PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "public.unix-executable")),
+        ("Finder alias", PathFacts(isDirectory: false, isApplication: false, isAliasFile: true, contentType: "com.apple.alias-file")),
+    ])
+    func whatOpeningRefusesIsRevealedThroughTheEngine(_ why: String, _ facts: PathFacts) async throws {
+        let (bench, native, client) = try await Self.realPathProvider { $0.arrange("/Users/test/payload", as: .present(facts)) }
+        let reply = try await bench.run(Self.revealWithVariables, ["path": "/Users/test/payload"], as: client)
+        #expect(reply.errors.isEmpty, Comment(rawValue: why))
+        #expect((reply.data?["reveal"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(native.pathsRevealed == ["/Users/test/payload"] && native.pathsOpened.isEmpty, Comment(rawValue: why))
+    }
+
+    @Test func aMissingPathIsDependencyAbsenceThroughTheEngineForReveal() async throws {
+        let (bench, native, client) = try await Self.realPathProvider { $0.arrange("/Users/test/gone", as: .absent) }
+        let reply = try await bench.run(Self.revealWithVariables, ["path": "/Users/test/gone"], as: client)
+        #expect(reply.errors.isEmpty)
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["status"] as? String == "DEPENDENCY_UNAVAILABLE")
+        #expect(reveal["value"] is NSNull)
+        #expect((reveal["dependency"] as? [String: Any])?["reason"] as? String == "PATH_NOT_FOUND")
+        #expect(native.pathsRevealed.isEmpty)
+    }
+
+    @Test func aRefusedRevealInAMultiActionRequestStopsOnlyItselfAndTheNextStillRuns() async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(
+            """
+            mutation {
+              relative: workspaceRevealPath(path: "ok.txt") { status }
+              good: workspaceRevealPath(path: "/Users/test/ok.txt") { status value { path } }
+            }
+            """, as: client)
+        #expect(reply.data?["relative"] is NSNull)
+        #expect(reply.extensions(at: ["relative"])["kind"] == nil)
+        #expect((reply.data?["good"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(native.pathsRevealed == ["/Users/test/ok.txt"])
     }
 
     // MARK: An action's own failure against an earlier core deadline

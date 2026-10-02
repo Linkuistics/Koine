@@ -1,5 +1,5 @@
 {
   "note": "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); `task client:capture` rewrites both.",
   "contractVersion": "koine-desktop/1",
-  "schemaDigest": "f98a3862c3bb77417c38eef9fe4edccd16e0bf76b6f4b8fc7bdf6708190be32d"
+  "schemaDigest": "3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733"
 }

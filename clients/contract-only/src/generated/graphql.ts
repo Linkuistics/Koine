@@ -187,6 +187,8 @@ export type Mutation = {
   workspaceOpenPath: Maybe<WorkspaceOpenResult>;
   /** Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first. */
   workspaceOpenURL: Maybe<WorkspaceOpenResult>;
+  /** Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first. */
+  workspaceRevealPath: Maybe<WorkspaceRevealResult>;
 };
 
 
@@ -234,6 +236,11 @@ export type MutationWorkspaceOpenPathArgs = {
 
 export type MutationWorkspaceOpenUrlArgs = {
   url: Scalars['String']['input'];
+};
+
+
+export type MutationWorkspaceRevealPathArgs = {
+  path: Scalars['String']['input'];
 };
 
 export type Query = {
@@ -323,6 +330,24 @@ export type WorkspaceProcessIdentity = {
   startedAt: Scalars['String']['output'];
 };
 
+/** Finder acknowledgment under workspace:control AND desktop:control; selection is not independently observed. */
+export type WorkspaceRevealReceipt = {
+  __typename?: 'WorkspaceRevealReceipt';
+  /** Requires workspace:control AND desktop:control. Submitted absolute path; a directory is selected in its parent, and root is shown as a root view. */
+  path: Scalars['String']['output'];
+};
+
+/** Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths. */
+export type WorkspaceRevealResult = {
+  __typename?: 'WorkspaceRevealResult';
+  /** Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request. */
+  dependency: Maybe<WorkspaceDependencyUnavailable>;
+  /** Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result. */
+  status: WorkspaceOperationStatus;
+  /** Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result. */
+  value: Maybe<WorkspaceRevealReceipt>;
+};
+
 export type DesktopChoicesQueryVariables = Exact<{
   process: DesktopProcessIdentity;
 }>;
@@ -377,6 +402,13 @@ export type OpenDocumentOrDirectoryMutationVariables = Exact<{
 
 
 export type OpenDocumentOrDirectoryMutation = { __typename?: 'Mutation', workspaceOpenPath: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
+
+export type RevealPathMutationVariables = Exact<{
+  path: Scalars['String']['input'];
+}>;
+
+
+export type RevealPathMutation = { __typename?: 'Mutation', workspaceRevealPath: { __typename?: 'WorkspaceRevealResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceRevealReceipt', path: string } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -521,3 +553,17 @@ export const OpenDocumentOrDirectoryDocument = new TypedDocumentString(`
     guidance
   }
 }`) as unknown as TypedDocumentString<OpenDocumentOrDirectoryMutation, OpenDocumentOrDirectoryMutationVariables>;
+export const RevealPathDocument = new TypedDocumentString(`
+    mutation RevealPath($path: String!) {
+  workspaceRevealPath(path: $path) {
+    status
+    value {
+      path
+    }
+    dependency {
+      reason
+      guidance
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<RevealPathMutation, RevealPathMutationVariables>;

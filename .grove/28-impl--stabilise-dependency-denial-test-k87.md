@@ -27,3 +27,8 @@ load the test frameworks.
 field it names (the denial presumably reported at the other sibling; not examined), and passed on
 every filtered rerun. Treat it with this one.
 
+
+`reveal-path-k77` saw the same family again, in full `swift test` runs: `denialInsideADependencyWithholdsItsNonNullFieldAndSoTheDependency`
+and `denialAtANonNullProcessFieldRemovesTheProcessAndNamesThatField` both failed together in two
+consecutive full runs (`task test`), one of them alone in a third, and two of three following full runs were
+entirely green; the suite alone failed once in three. Neither touches the reveal root's code.

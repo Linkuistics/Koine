@@ -13,6 +13,7 @@ import {
   interpretOpenURL,
   type WorkspaceOpenFacts,
 } from './adapter/workspace-open.js';
+import { interpretReveal, type WorkspaceRevealFacts } from './adapter/workspace-reveal.js';
 import {
   askSuggestions,
   DEFAULT_ENGINE_TEMPLATE,
@@ -34,6 +35,7 @@ import {
   OpenSearchUrlDocument,
   PollOwnGrantRequestDocument,
   RequestDesktopGrantDocument,
+  RevealPathDocument,
 } from './generated/graphql.js';
 import { readFile, writeFile } from 'node:fs/promises';
 
@@ -52,6 +54,7 @@ const USAGE = `koine-client <command> [options]
   launch     --secret <path> --bundle-identifier <id> [--application-path <absolute path>]
   open-url   --secret <path> (--url <text> | --url-file <path>)
   open-path  --secret <path> (--path <text> | --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]
+  reveal-path --secret <path> (--path <text> | --path-file <file>)
   search     --secret <path> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]
 
 Any --name value may also be written --name=value, which is the only way to give a
@@ -611,6 +614,55 @@ async function commandOpenPath(args: Args): Promise<Json> {
   };
 }
 
+/**
+ * `workspaceRevealPath`, published as `RevealPath`. The path is the exact text given, as for
+ * `open-path`: not checked, trimmed, expanded, resolved or made absolute here. There is no
+ * application argument and no process in the receipt, which is `{ path }`. Sent exactly once,
+ * whatever happens: a reveal is not safe to repeat, and a lost answer is `unknown-outcome`.
+ * The answer carries `selectionObserved: false` always, because Finder's acknowledgment is the
+ * whole of what the contract offers.
+ */
+async function commandRevealPath(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('path');
+  const file = args.single.get('path-file');
+  if (literal === undefined && file === undefined) throw new UsageError('--path or --path-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--path and --path-file cannot be combined');
+
+  const path = literal !== undefined ? literal : await readExactUtf8(file as string);
+  const credential = await loadOrCreateCredential(secretPath);
+
+  const result = await send({
+    document: RevealPathDocument.toString(),
+    operationName: 'RevealPath',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { path },
+  });
+  const facts: WorkspaceRevealFacts = interpretReveal(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    path,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    selectionObserved: facts.selectionObserved,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
 async function commandSearch(args: Args): Promise<Json> {
   const secretPath = require_(args, 'secret');
   const query = require_(args, 'query');
@@ -695,6 +747,9 @@ async function main(): Promise<void> {
         break;
       case 'open-path':
         payload = await commandOpenPath(args);
+        break;
+      case 'reveal-path':
+        payload = await commandRevealPath(args);
         break;
       case 'search':
         payload = await commandSearch(args);

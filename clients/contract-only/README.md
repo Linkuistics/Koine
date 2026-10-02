@@ -14,19 +14,22 @@ its guesses are in
 [`docs/verification/open-url-contract-client-findings.md`](../../docs/verification/open-url-contract-client-findings.md).
 `open-path` was added by a fourth pass under the same restriction; its guesses are in
 [`docs/verification/open-path-contract-client-findings.md`](../../docs/verification/open-path-contract-client-findings.md).
+`reveal-path` was added by the implementing leaf itself, **not** by a reading-restricted pass:
+it is `open-path` with the receipt `{ path }` in place of `{ process }`, read by
+`src/adapter/workspace-reveal.ts` under the same rules, so it carries no findings document and
+its independence from the repository is not claimed.
 
 ## Regenerated against
 
 `capture/` holds the response of the signed Koine.app serving **core + desktop +
-workspace**, where the workspace part is the launch, URL and path roots
-(`workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath` and the types
-they reach: `WorkspaceApplicationInput`, `WorkspaceOpenResult`,
-`WorkspaceOperationStatus`, `WorkspaceOpenReceipt`, `WorkspaceProcessIdentity`,
-`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`). Contract
+workspace**, where the workspace part is the complete design: all four roots
+(`workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath`,
+`workspaceRevealPath`) and the types they reach: `WorkspaceApplicationInput`,
+`WorkspaceOpenResult`, `WorkspaceRevealResult`, `WorkspaceOperationStatus`,
+`WorkspaceOpenReceipt`, `WorkspaceRevealReceipt`, `WorkspaceProcessIdentity`,
+`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`. Contract
 `koine-desktop/1`, schema digest
-`f98a3862c3bb77417c38eef9fe4edccd16e0bf76b6f4b8fc7bdf6708190be32d`. The remaining
-workspace root (`workspaceRevealPath`) is designed but not served, so it is not in the
-captured schema.
+`3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`.
 
 It builds to one dependency-free ES module, `dist/koine-client.mjs`, which runs
 on macOS arm64 under Node 24 with nothing installed beside it.
@@ -46,23 +49,23 @@ node dist/koine-client.mjs probe
 | `codegen` | `@graphql-codegen/cli` reads `capture/introspection.json` as the schema and, as the documents, the published `docs/design/desktop-operations.graphql` (whole: five operations) and the operations this client uses from the published `docs/design/workspace-operations.graphql` (see below), **validates** them against that schema, and writes `src/generated/graphql.ts` (types plus `TypedDocumentString` documents, `documentMode: 'string'`, so nothing from `graphql` is needed at runtime) |
 | `typecheck` | `tsc --noEmit` under `strict`, `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess` |
 | `bundle` | `build.mjs` bakes in graphql-js's own `getIntrospectionQuery({ descriptions: true })` and the digest from `capture/capture.json`, then esbuild bundles `src/cli.ts`; the build fails if anything from `node_modules` reaches the bundle |
-| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs` (the URL root's, in `test/open-url-stubs.mjs`, with the suggestion sources `search` talks to in `test/suggestion-stubs.mjs`; the path root's, in `test/open-path-stubs.mjs`), each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch, per open and per search |
+| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs` (the URL root's, in `test/open-url-stubs.mjs`, with the suggestion sources `search` talks to in `test/suggestion-stubs.mjs`; the path root's, in `test/open-path-stubs.mjs`; the reveal root's, in `test/reveal-stubs.mjs`, whose receipt is `{ path }` and whose reading is `src/adapter/workspace-reveal.ts`), each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch, per open and per search |
 
 Generation reads the published operations documents where the contract publishes
 them, so there is no copy that can drift from them. All five desktop operations,
-`LaunchInstalledApplication`, `OpenSearchURL` and `OpenDocumentOrDirectory` validate against the captured introspection, and
+`LaunchInstalledApplication`, `OpenSearchURL`, `OpenDocumentOrDirectory` and `RevealPath` validate against the captured introspection, and
 nothing in those documents was edited — the client was made to fit the contract,
 never the other way round. The validation has been watched failing: `nonsenseField`
 added to `DesktopChoices` stops generation with `Cannot query field
-"nonsenseField" on type "DesktopWindow"`, and adding `RevealPath`
-to the used list stops it with `Cannot query field "workspaceRevealPath" on type
-"Mutation"` (before `workspaceOpenURL` and `workspaceOpenPath` were served,
-`OpenSearchURL` and `OpenDocumentOrDirectory` stopped it the same way).
+"nonsenseField" on type "DesktopWindow"`, and (before each root was served) listing
+`OpenSearchURL`, `OpenDocumentOrDirectory` or `RevealPath` stopped it with `Cannot query field
+"workspaceOpenURL" on type "Mutation"` and the like.
 
-**Selecting the served operations.** `workspace-operations.graphql` also declares
-`RevealPath`, whose root the captured server does not serve, so the file cannot be
-validated whole. The
-documents do not say how a client picks the served subset; `codegen.ts` decides:
+**Selecting the operations.** `workspace-operations.graphql` also declares
+`CaptureOpenedApplication`, a desktop read under another name, so the client does not use every
+definition in the file. (Before the last workspace root was served, `RevealPath` could not be
+validated against the captured schema either, so the file could not be validated whole.) The
+documents do not say how a client picks a subset; `codegen.ts` decides:
 it lists, by name, the operations the client uses
 (`WORKSPACE_OPERATIONS_USED`), cuts each one's text out of the published file by
 source location together with every fragment it spreads (transitively), and hands
@@ -100,6 +103,7 @@ Every result carries `command`, `ok`, `classification`, `endpoint`, `http`,
 | `focus --secret <p> --ref <reference>` | `FocusDesktopWindow` on that reference, byte-for-byte. |
 | `launch --secret <p> --bundle-identifier <id> [--application-path <absolute path>]` | `LaunchInstalledApplication`, sent **once**; needs `workspace:control` and `desktop:control` (no read capability). See "Launch" below. |
 | `open-url --secret <p> (--url <text> \| --url-file <path>)` | `OpenSearchURL` with the text as the one literal variable, byte-for-byte, sent **once**; same two controls. See "Open URL" below. |
+| `reveal-path --secret <p> (--path <text> \| --path-file <file>)` | `RevealPath` with the path as a literal variable, byte-for-byte, sent **once**; same two controls. See "Reveal path" below. |
 | `open-path --secret <p> (--path <text> \| --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]` | `OpenDocumentOrDirectory` with the path as a literal variable, byte-for-byte, sent **once**; same two controls. See "Open path" below. |
 | `search --secret <p> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]` | The client-owned search flow: optionally ask a suggestion source, then build the typed-query URL and open it with `OpenSearchURL`, once. See "Search" below. |
 
@@ -225,6 +229,22 @@ from a launch or a URL open:
 | nothing at the path, no default handler, a named application not installed or with another identifier | `dependency-unavailable` | `dependency.reason` is `PATH_NOT_FOUND`, `NO_DEFAULT_HANDLER`, `APPLICATION_NOT_INSTALLED` or `APPLICATION_IDENTITY_MISMATCH`, copied verbatim with `guidance`; every one reads the same way: `actionEffect: none`, nothing was submitted, `outcomeUnknown: false`. `PATH_NOT_FOUND` is not reported as a statement that the path does not exist, and no reason is acted on |
 | an input or a payload the provider refuses (empty, relative or NUL path; a blank identifier; an application bundle, program or Finder alias) | `input-error` | an error with no `kind` at the root field's own path (`["workspaceOpenPath"]`); one a level below is read the same way; `actionEffect: none`. The class of refusal is only in the error's `message`, which this client reports and never reads |
 | capability denial, `failed`, suppressed branches, invariant violations | as for launch | the same two controls, the same complete ordered set `["workspace:control","desktop:control"]`; a `contractViolation` names `workspaceOpenPath`. A `failed` is never read as a missing path (inspection that is denied is `failed`) |
+
+### Reveal path
+
+`reveal-path` sends the published `RevealPath` mutation (`workspaceRevealPath(path:)`) exactly
+once: a reveal is not safe to repeat, the client never replays it, and a lost answer is
+`unknown-outcome`. The path is handled as for `open-path` (`--path`, `--path=`, `--path-file`,
+byte-for-byte, exactly one of the two). There is no application argument.
+
+The answer carries the facts `open-path`'s does, except that the receipt is `{ "path": <the echoed
+path> }` and there is no `process`, `processState` or `choicesArguments`. `receipt.path` is copied as
+answered, never compared with what was sent. `selectionObserved` is always `false`: the contract's
+`AVAILABLE` is Finder's acknowledgment and says in as many words that selection is not
+independently observed, so the client reports an acknowledged action (`actionEffect:
+"acknowledged"`) and never a selected item. A `PATH_NOT_FOUND` or `APPLICATION_NOT_INSTALLED`
+dependency is copied verbatim with its guidance and is `actionEffect: "none"`; neither is turned
+into a claim about the path or about Finder.
 
 ### Search
 

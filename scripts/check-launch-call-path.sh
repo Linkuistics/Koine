@@ -1,6 +1,6 @@
 #!/bin/bash
 # Enumerates the native primitives, parameters, preparation, fallback and cleanup
-# calls of the workspace provider's launch, URL and path paths, from its source and from the
+# calls of the workspace provider's launch, URL, path and reveal paths, from its source and from the
 # built bundle's own imports, and checks them against the authority trace: the
 # launch path makes ONE launch request, NSWorkspace.openApplication(at:configuration:),
 # with activation on as the trace declares (workspace:control AND desktop:control);
@@ -9,7 +9,9 @@
 # alone (never a part of the submitted URL), with the same configuration; the path root
 # makes the same single open request, to the default application of the item as the
 # system's file lookup answers it or to the named installation, and inspects the item
-# only through metadata calls; and no
+# only through metadata calls; the reveal root makes ONE Finder selection request,
+# NSWorkspace.selectFile(_:inFileViewerRootedAtPath:), in its two documented forms (an item,
+# or the filesystem root as a root view), from a background queue, and nothing else; and no
 # activation, hiding, raising, accessibility, event-posting, scripting or
 # process-spawning call beside them. A focus change seen in a VM proves neither the
 # presence nor the absence of a hidden call (docs/specs/workflow-providers.md,
@@ -32,8 +34,8 @@ fail() { echo "FAILED: $*" >&2; exit 1; }
 # What no launch path may contain: a Koine-selected effect the trace does not
 # declare. Source patterns and, for the bundle, the Objective-C selectors and
 # imported symbols they would compile to.
-FORBIDDEN_SOURCE='\.activate\(|activate\(from|\.hide\(|\.unhide\(|hideOtherApplications|\.raise|AXUIElement|AXIsProcess|CGEvent|CGWindow|NSAppleScript|NSAppleEventDescriptor|Process\(\)|posix_spawn|\bsystem\(|\.terminate\(|\.forceTerminate|open(URL|URLs|File)\(|activateIgnoringOtherApps|NSWorkspace\.shared\.launchApplication|showFile|selectFile|urlsForApplications\(toOpen|LSCopyDefault|requiresUniversalLinks|setDefaultApplication'
-FORBIDDEN_BINARY='^(URLsForApplicationsToOpenURL:|setRequiresUniversalLinks:|setDefaultApplicationAtURL:[A-Za-z:]*|activateWithOptions:|activateFromApplication:|activateIgnoringOtherApps:|activate|hideOtherApplications|unhide|unhideAllApplications|terminate|forceTerminate|launchApplication:|openURL:|openURLs:|openFile:|selectFile:[A-Za-z:]*|_AX[A-Za-z]*|_CGEvent[A-Za-z]*|_CGWindow[A-Za-z]*|_kill|_posix_spawn[a-z_]*|_execv[a-z]*|_system)$'
+FORBIDDEN_SOURCE='\.activate\(|activate\(from|\.hide\(|\.unhide\(|hideOtherApplications|\.raise|AXUIElement|AXIsProcess|CGEvent|CGWindow|NSAppleScript|NSAppleEventDescriptor|Process\(\)|posix_spawn|\bsystem\(|\.terminate\(|\.forceTerminate|open(URL|URLs|File)\(|activateIgnoringOtherApps|NSWorkspace\.shared\.launchApplication|showFile|activateFileViewerSelecting|urlsForApplications\(toOpen|LSCopyDefault|requiresUniversalLinks|setDefaultApplication'
+FORBIDDEN_BINARY='^(URLsForApplicationsToOpenURL:|setRequiresUniversalLinks:|setDefaultApplicationAtURL:[A-Za-z:]*|activateWithOptions:|activateFromApplication:|activateIgnoringOtherApps:|activate|hideOtherApplications|unhide|unhideAllApplications|terminate|forceTerminate|launchApplication:|openURL:|openURLs:|openFile:|activateFileViewerSelectingURLs:|_AX[A-Za-z]*|_CGEvent[A-Za-z]*|_CGWindow[A-Za-z]*|_kill|_posix_spawn[a-z_]*|_execv[a-z]*|_system)$'
 
 # Every pattern is first seen to match something it must, or a clean read below
 # would be the same observation as a broken instrument.
@@ -90,13 +92,30 @@ grep -rq -E 'URL\(fileURLWithPath: path\.text, isDirectory: facts\.isDirectory\)
 
 echo
 echo "== Source: the item is inspected only through the calls the metadata probe measured prompt-free"
-INSPECTION="$(grep -n -E 'realpath\(|[^a-zA-Z.]stat\(|resourceValues\(forKeys' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -v -E ':[0-9]+:\s*//' || true)"
+INSPECTION="$(grep -n -E 'realpath\(|l?stat\(|resourceValues\(forKeys' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${INSPECTION}"
 grep -q 'forKeys: \[.isApplicationKey, .contentTypeKey, .isAliasFileKey\]' <<<"${INSPECTION}" || fail "the item's resource keys are not the measured three"
 if grep -rn -E 'contentsOfDirectory|enumerator\(|contents\(atPath|Data\(contentsOf|String\(contentsOf|FileHandle|fopen\(|open\(path|opendir|readdir' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//'; then
     fail "the workspace provider reads a directory or a file's contents"
 fi
 echo "none read"
+
+echo
+echo "== Source: exactly one Finder selection request, in its two documented forms, and nothing else for a reveal"
+SELECTS="$(grep -rn -E 'selectFile\(' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
+echo "${SELECTS}"
+[ "$(grep -c . <<<"${SELECTS}")" = 2 ] || fail "the reveal path does not make its selection request in exactly two forms"
+grep -q -F 'NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/")' <<<"${SELECTS}" ||
+    fail "the filesystem-root form is not the documented root view"
+grep -q -F 'NSWorkspace.shared.selectFile(path, inFileViewerRootedAtPath: "")' <<<"${SELECTS}" ||
+    fail "the item form is not the documented selection in the main viewer"
+[ "$(grep -c -E 'func revealPath\(' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)" = 1 ] ||
+    fail "the reveal request is not one native function"
+grep -q -F 'DispatchQueue.global(qos: .userInitiated).async' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift ||
+    fail "the synchronous reveal request no longer runs on a global queue"
+# The path handed to the request is the validated path the provider inspected, as written.
+grep -rq -E 'native\.revealPath\(target, filesystemRoot: filesystemRoot, completion: completion\)' Providers/WorkspaceProvider/Logic ||
+    fail "the reveal request is not given the inspected path"
 
 echo
 echo "== Source: nothing beside them activates, hides, raises, posts events, scripts, spawns or terminates"
@@ -109,11 +128,12 @@ echo
 echo "== Bundle: ${LIBRARY}"
 echo "Imported Objective-C classes:"
 nm -u "${LIBRARY}" | grep OBJC_CLASS | sed 's/^ *_OBJC_CLASS_\$_/  /' | sort
-echo "Selectors that reach the workspace (open requests, handler lookup and the configuration):"
-strings "${LIBRARY}" | grep -E '^(openApplicationAtURL:configuration:completionHandler:|openURLs:withApplicationAtURL:configuration:completionHandler:|URLForApplicationToOpenURL:|set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):)$' | sort -u | sed 's/^/  /'
+echo "Selectors that reach the workspace (open requests, the Finder selection, handler lookup and the configuration):"
+strings "${LIBRARY}" | grep -E '^(openApplicationAtURL:configuration:completionHandler:|openURLs:withApplicationAtURL:configuration:completionHandler:|URLForApplicationToOpenURL:|selectFile:inFileViewerRootedAtPath:|set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):)$' | sort -u | sed 's/^/  /'
 strings "${LIBRARY}" | grep -qx 'openApplicationAtURL:configuration:completionHandler:' || fail "the bundle does not carry the open request"
 strings "${LIBRARY}" | grep -qx 'openURLs:withApplicationAtURL:configuration:completionHandler:' || fail "the bundle does not carry the URL open request"
 strings "${LIBRARY}" | grep -qx 'URLForApplicationToOpenURL:' || fail "the bundle does not carry the handler lookup"
+strings "${LIBRARY}" | grep -qx 'selectFile:inFileViewerRootedAtPath:' || fail "the bundle does not carry the Finder selection request"
 [ "$(strings "${LIBRARY}" | grep -c -x -E 'set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):' | sort -u)" -ge 10 ] ||
     fail "the bundle lacks one of the ten configuration setters"
 echo "Forbidden selectors and imported symbols:"
@@ -122,4 +142,4 @@ if { strings "${LIBRARY}"; nm -u "${LIBRARY}"; } | sed 's/^ *//' | grep -E "${FO
 fi
 echo "  none"
 echo
-echo "PASSED: one launch request and one open request (URL or path) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as their declared effect, items inspected by measured metadata calls only, and no other activation, input, scripting or process call"
+echo "PASSED: one launch request, one open request (URL or path) and one Finder selection request (in its two documented forms) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as the launch's declared effect, items inspected by measured metadata calls only, and no other activation, input, scripting or process call"

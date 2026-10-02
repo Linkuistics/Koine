@@ -25,6 +25,7 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var documentLookupLog: [URL] = []
     private var pathOpenLog: [(url: URL, application: URL, substituting: Bool)] = []
     private var inspectionLog: [String] = []
+    private var revealLog: [(path: String, root: Bool)] = []
     private var startReads: [Int32: Int] = [:]
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
@@ -79,11 +80,13 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// A present document or directory with the metadata given, and the types it conforms to.
     func document(
         _ path: String, directory: Bool = false, application: Bool = false, alias: Bool = false,
-        type: String? = "public.plain-text", conformsTo: [String] = []
+        type: String? = "public.plain-text", conformsTo: [String] = [], root: Bool = false
     ) {
         lock.withLock {
             pathInspections[path] = .present(
-                PathFacts(isDirectory: directory, isApplication: application, isAliasFile: alias, contentType: type))
+                PathFacts(
+                    isDirectory: directory, isApplication: application, isAliasFile: alias, contentType: type,
+                    isFilesystemRoot: root))
             if let type { typeAncestors[type, default: []].formUnion(conformsTo) }
         }
     }
@@ -126,6 +129,10 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// Every document or directory the provider asked a default application about, in order.
     var documentLookups: [URL] { lock.withLock { documentLookupLog } }
     var pathOpens: [(url: URL, application: URL, substituting: Bool)] { lock.withLock { pathOpenLog } }
+    /// Every path Finder was asked to select, in order.
+    var reveals: [String] { lock.withLock { revealLog.map(\.path) } }
+    /// Whether each reveal was the root view, in order.
+    var revealedAsRoot: [Bool] { lock.withLock { revealLog.map(\.root) } }
     var completions: Int { lock.withLock { pendingCompletions.count } }
 
     /// Answers the `index`th submission's callback now, from the test's thread.
@@ -202,6 +209,14 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     ) {
         lock.withLock {
             pathOpenLog.append((url, application, substitutingRunningCopy))
+            pendingCompletions.append(completion)
+        }
+        onLaunch?(completion)
+    }
+
+    func revealPath(_ path: String, filesystemRoot: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void) {
+        lock.withLock {
+            revealLog.append((path, filesystemRoot))
             pendingCompletions.append(completion)
         }
         onLaunch?(completion)

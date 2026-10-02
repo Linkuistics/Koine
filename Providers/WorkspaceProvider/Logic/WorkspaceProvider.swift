@@ -1,7 +1,7 @@
 import Foundation
 import KoineProviderAPI
 
-// The contribution: the launch, URL and path roots and every type they reach, under
+// The contribution: the launch, URL, path and reveal roots and every type they reach, under
 // workspace:control AND desktop:control. Later roots extend this list with their
 // own leaves; the SDL (schema.graphql) is served verbatim from the design file.
 
@@ -16,6 +16,8 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
     let nested = [
         "WorkspaceOpenResult": ["status", "value", "dependency"],
         "WorkspaceOpenReceipt": ["process"],
+        "WorkspaceRevealResult": ["status", "value", "dependency"],
+        "WorkspaceRevealReceipt": ["path"],
         "WorkspaceProcessIdentity": ["pid", "startedAt"],
         "WorkspaceDependencyUnavailable": ["reason", "guidance"],
     ]
@@ -24,6 +26,7 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
         ("Mutation.workspaceLaunchApplication", "launchApplication"),
         ("Mutation.workspaceOpenURL", "openURL"),
         ("Mutation.workspaceOpenPath", "openPath"),
+        ("Mutation.workspaceRevealPath", "revealPath"),
     ].map { coordinate, resolverId in
         ProviderFieldRegistration(
             coordinate: coordinate, resolverId: resolverId,
@@ -45,8 +48,8 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
 }
 
 /// Launches or reactivates an installed application by bundle identity, opens a web URL in
-/// the default browser, and opens a document or directory in its default or a named
-/// application. Nothing is cached between calls: the installation is inspected on every action, and
+/// the default browser, opens a document or directory in its default or a named
+/// application, and asks Finder to reveal a path. Nothing is cached between calls: the installation is inspected on every action, and
 /// the one thing held is the bound on native submissions still outstanding.
 final class WorkspaceProvider: Provider, @unchecked Sendable {
     /// Below the core's five-second request ceiling, which can still win first.
@@ -90,6 +93,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         case "launchApplication": return await launch(request.arguments["application"])
         case "openURL": return await openWebURL(request.arguments["url"])
         case "openPath": return await openPath(request.arguments["path"], application: request.arguments["application"])
+        case "revealPath": return await revealPath(request.arguments["path"])
         default: return .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -190,12 +194,46 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         }
     }
 
+    // MARK: Reveal path
+
+    /// Asks Finder to select a literal absolute path, which is inspected first as for opening
+    /// and submitted as written. The receipt echoes the submitted path and nothing else: it is
+    /// Finder's boolean acknowledgment, never an observation that the item is selected.
+    private func revealPath(_ pathArgument: ProviderValue?) async -> ResolutionResult {
+        guard case .string(let text)? = pathArgument else { return .failure(invalid("path must be a string.")) }
+        let path: LocalPath
+        switch LocalPath.validated(text) {
+        case .success(let validated): path = validated
+        case .failure(let error): return .failure(invalid(error.message))
+        }
+        guard !Task.isCancelled else { return failed("Cancelled before the path was inspected.") }
+        let native = native
+        let plan = await onQueue { planReveal(path, native: native) }
+        switch plan {
+        case .dependency(let reason, let guidance): return .success(dependency(reason, guidance))
+        case .failed(let message): return failed(message)
+        case .submit(let target, let filesystemRoot):
+            // Once. A replacement after inspection neither retargets nor replays.
+            return await submit(
+                doing: "reveal the item in Finder", acknowledging: "reveal request",
+                { completion in native.revealPath(target, filesystemRoot: filesystemRoot, completion: completion) },
+                receipt: { _ in
+                    .object([
+                        "status": .string("AVAILABLE"), "value": .object(["path": .string(target)]),
+                        "dependency": .null,
+                    ])
+                })
+        }
+    }
+
     /// One native submission under the shared bound, and how it ends as a result. `doing`
     /// completes "The system did not ..." and `acknowledging` names the request in the
-    /// timeout and cancellation messages.
+    /// timeout and cancellation messages. An acknowledged open or launch reports the observed
+    /// process; `receipt` replaces that for a request that has none to observe.
     private func submit(
         doing action: String, acknowledging noun: String,
-        _ send: (@escaping @Sendable (LaunchCompletion) -> Void) -> Void
+        _ send: (@escaping @Sendable (LaunchCompletion) -> Void) -> Void,
+        receipt: ((LaunchedApplication?) async -> ProviderValue)? = nil
     ) async -> ResolutionResult {
         let native = native
         let acknowledgment = await submitOnce(send, limit: limit, bound: bound)
@@ -210,6 +248,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         case .cancelled:
             return failed("Cancelled while waiting for the system to acknowledge the \(noun).")
         case .acknowledged(let application):
+            if let receipt { return .success(await receipt(application)) }
             var observed: ObservedProcess?
             if let application { observed = await onQueue { observeProcess(of: application, native: native) } }
             return .success(available(observed))

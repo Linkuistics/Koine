@@ -120,9 +120,9 @@ cross-cutting rows.
 Only the certificate-dependent alternate-team cases may remain pending when this
 node closes. They stay live in the late root leaf `alternate-team-signing`.
 
-Conformance grows by root. Until the last root lands, the workspace profile
-expects the design SDL restricted to the implemented roots and the types they
-reach, verbatim. A missing coordinate always fails; nothing is silently omitted.
+Conformance grew by root, and the last root has landed: the workspace profile now expects the
+complete design SDL, verbatim (`reveal-path-k77`). A missing coordinate always fails; nothing is
+silently omitted.
 
 ## Notes
 
@@ -230,3 +230,9 @@ fixture name and a before-request check, is the witness of what an application w
 hours, because the guest agent costs seconds per command: run it detached
 (`python3 subprocess.Popen(..., start_new_session=True)`), since a harness background task is killed
 at two hours.
+
+`reveal-path-k77` serves `workspaceRevealPath` (evidence in `docs/verification/reveal-path-vm.md`)
+and found one thing only Antony can settle, so it is a root leaf and not prose, as
+`protected-default-open-k89` is: revealing a third-party application bundle made macOS post
+"Koine was prevented from modifying apps on your Mac". It sits ahead of `baseline-acceptance` as
+`reveal-app-bundle-notice-k90`. The reveal itself worked and no consent was requested.

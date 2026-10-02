@@ -56,6 +56,8 @@ type Mutation {
   workspaceOpenURL(url: String!): WorkspaceOpenResult
   """Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. Refuse native application-bundle, Unix/Windows executable and Finder-alias metadata after symlink resolution; no content sandbox or race-free classification. Script/source documents can use default editors. A handler can execute scripts or follow location documents to other schemes/targets. No executable selector, argv, environment or shell expansion. Missing path/app/default handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
   workspaceOpenPath(path: String!, application: WorkspaceApplicationInput): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first."""
+  workspaceRevealPath(path: String!): WorkspaceRevealResult
 }
 
 "All fields require desktop:read."
@@ -125,12 +127,28 @@ type WorkspaceOpenReceipt {
   process: WorkspaceProcessIdentity
 }
 
+"""Finder acknowledgment under workspace:control AND desktop:control; selection is not independently observed."""
+type WorkspaceRevealReceipt {
+  """Requires workspace:control AND desktop:control. Submitted absolute path; a directory is selected in its parent, and root is shown as a root view."""
+  path: String!
+}
+
 """Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
 type WorkspaceOpenResult {
   """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
   status: WorkspaceOperationStatus!
   """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
   value: WorkspaceOpenReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceRevealResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceRevealReceipt
   """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
   dependency: WorkspaceDependencyUnavailable
 }

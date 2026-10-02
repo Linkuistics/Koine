@@ -99,7 +99,7 @@ func submitOnce(
 ) async -> Acknowledgment {
     guard !Task.isCancelled else { return .notSubmitted("Cancelled before the request was submitted.") }
     guard let slot = limit.reserve() else {
-        return .notSubmitted("Too many native launch requests are still outstanding; none was submitted.")
+        return .notSubmitted("Too many native requests are still outstanding; none was submitted.")
     }
     let outcome = OneShot<Acknowledgment>()
     submit { completion in

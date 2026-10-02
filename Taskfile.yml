@@ -264,7 +264,7 @@ tasks:
       - scripts/vm-verify-enrollment.sh
 
   check:launch-call-path:
-    desc: Enumerate the workspace provider's launch, URL and path calls - its one NSWorkspace launch request, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
+    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
     deps: [app]
     cmds:
       - scripts/check-launch-call-path.sh
@@ -425,6 +425,18 @@ tasks:
     deps: [app, client]
     cmds:
       - scripts/vm-verify-open-path.sh
+
+  reveal-path:vm:
+    desc: Accept workspaceRevealPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a directory of siblings with a file, a folder, a Finder alias file, a literal-punctuation file and a symlink) and the real Zed bundle - each revealed from a Finder with no window open, and what Finder then shows read by an independent observer (Finder's own account of its front window's folder and selected item by AppleScript run from the test agent, not Koine, whose own Automation consent is given once before Koine starts) with a screenshot of each - a file, a folder (also with a trailing slash), an application bundle (selected and never launched), a Finder alias file (itself, not resolved), the filesystem root as a root view, literal spaces and punctuation and a symlink; the receipt is only Finder's acknowledgment and echoes the path; then refused inputs, missing paths and either control alone or a revoked grant, with nothing revealed or activated and Finder still showing no window. KOINE_REVEAL_ONLY=reveal,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-reveal-path.sh
+
+  reveal-path:probe-notification:
+    desc: A bounded probe in a clone of the prepared image with the signed Koine - after a baseline with none, does a refused workspaceOpenPath of a third-party application (inspection only), a workspaceRevealPath of Notes, of TextEdit and of Zed (twice) make macOS post "Koine was prevented from modifying apps on your Mac"? Read from the screen's own text, with a screenshot of each step. One sample each; it does not say which operation the system refused
+    deps: [app, client]
+    cmds:
+      - scripts/vm-probe-reveal-notification.sh
 
   open-url:network:
     desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic

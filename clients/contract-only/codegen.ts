@@ -28,6 +28,7 @@ const WORKSPACE_OPERATIONS_USED: readonly string[] = [
   'LaunchInstalledApplication',
   'OpenSearchURL',
   'OpenDocumentOrDirectory',
+  'RevealPath',
 ];
 
 function servedRootFields(): ReadonlySet<string> {

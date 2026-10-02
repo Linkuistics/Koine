@@ -12,9 +12,9 @@ Nothing here is specific to one client. A client that follows it needs no
 knowledge of Koine's source.
 
 This guide describes what a Koine serves today: the core, the bundled `desktop`
-provider and, beside it, the bundled `workspace` provider's launch, URL and path
-operations (["Launching an application"](#launching-an-application), ["Opening a URL"](#opening-a-url) and
-["Opening a document or folder"](#opening-a-document-or-folder)); its reveal operation is not served yet. The
+provider and, beside it, the bundled `workspace` provider's launch, URL, path and
+reveal operations (["Launching an application"](#launching-an-application), ["Opening a URL"](#opening-a-url),
+["Opening a document or folder"](#opening-a-document-or-folder) and ["Revealing a path in Finder"](#revealing-a-path-in-finder)). The
 [workflow-provider design](specs/workflow-providers.md) names more workspace
 operations than are served yet; discover what a given Koine serves from its own
 introspection, never from the presence of an operation in a design document.
@@ -526,6 +526,57 @@ What differs:
    the application that was asked to open the item (the default handler or the one you
    named). It names no window or document, may be null, and says nothing about whether the
    item rendered. A second request is a second open: there is no idempotency key in version 1.
+
+## Revealing a path in Finder
+
+`workspaceRevealPath` asks Finder to show a local path: the item selected in its folder, or, for
+the filesystem root, a window on the root. [`workspace-operations.graphql`](design/workspace-operations.graphql)
+publishes it as `RevealPath`; the [workspace spec](specs/workspace-launch-and-open.md) is the
+contract. It needs the same two controls and no read (item 1 of [Launching an
+application](#launching-an-application)), has the same typed `status` and `dependency`, and the same
+reading of `failed`. What differs:
+
+1. **The receipt is the path, and nothing else.** `value.path` echoes the path you submitted, as
+   written. There is no `process`, so there is nothing to hand to a desktop read, and nothing about
+   Finder is disclosed. The result type is `WorkspaceRevealResult`, not `WorkspaceOpenResult`; select
+   `value { path }`.
+2. **`AVAILABLE` is Finder's acknowledgment, never selection.** Koine asks Finder to select the item and
+   reports Finder's own yes or no. It does not look at the screen, and it adds no check of its own
+   through Accessibility, a keystroke or a menu. A client that must know what Finder is showing has to
+   find out for itself; the receipt does not say. A `false` from Finder is `failed`, with the effects
+   possibly begun, and the request is not repeated.
+3. **The path is the same literal path as for opening.** One absolute path on Koine's machine,
+   with the same input errors at the field's path (empty, relative, NUL), nothing trimmed, expanded or
+   resolved, and the same inspection first: nothing there, a link to nothing, a path below a file, a
+   link loop and a name too long to exist are `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`, and nothing
+   was submitted. Inspection that was denied is `failed`, never absence.
+4. **Nothing is refused for being what it is.** An application bundle, a program and a Finder alias file
+   are the very items to reveal rather than open: the application is selected, never launched, and the
+   alias is selected itself, never resolved to its target. A symlink is selected as the link. There is no
+   `application` argument and no default handler lookup.
+5. **Finder missing is `APPLICATION_NOT_INSTALLED`.** If Finder is not registered as an application
+   bundle when inspected, that is the dependency, and the `guidance` names Finder. It is checked after the
+   path, so a missing path is reported first. The only two reasons a reveal reports are `PATH_NOT_FOUND`
+   and `APPLICATION_NOT_INSTALLED`.
+6. **A folder is shown in its parent.** A folder is selected in the window of the folder that holds it,
+   and the filesystem root, which has no parent, is shown as a root view with nothing selected. Where
+   Finder puts the window, and whether a window already open on that folder is reused, is Finder's.
+7. **One request, bounded, never replayed.** The wait for Finder's answer ends after three seconds or on
+   cancellation, with `failed` and the same "effects may have begun" meaning: a slow Finder may still
+   show the item after the answer, and a late acknowledgment is ignored. A client does not retry; a second
+   request is a second reveal.
+8. **Send a clean path, and do not rely on Finder coming forward.** A path with `.` or `..` segments is
+   inspected as the kernel reads it and handed to Finder as written, and Finder reads it its own way:
+   in the acceptance run `/var/..` (the kernel's `/private`) showed the root with `var` selected. And
+   with another application in front, an item reveal selected the item without Finder taking the
+   front, while a reveal of the root brought it forward. The contract asks for neither; a client that
+   needs Finder in front launches or reactivates it (`workspaceLaunchApplication` for
+   `com.apple.finder`).
+9. **Revealing a third-party application may raise a system notice.** In the acceptance image macOS posted
+   "Koine was prevented from modifying apps on your Mac" when a third-party application bundle was
+   revealed (system applications and the refusal of an open did not). The reveal worked. Whether
+   that is acceptable is an open decision
+   ([reveal-path-vm.md](verification/reveal-path-vm.md#the-app-management-notice)).
 
 ## What version 1 does not do
 

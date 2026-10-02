@@ -3,8 +3,7 @@
 # contract", for the profile the SIGNED Koine.app serves: the core composed with its
 # two bundled providers, desktop and workspace, held to
 # docs/design/profiles/core-desktop-workspace-extension-host.json. The profile names
-# the design SDL (the workspace design restricted to the implemented roots and the
-# types they reach, verbatim) and, separately from it, the exact provider candidates
+# the design SDL (the complete workspace design, every root, verbatim) and, separately from it, the exact provider candidates
 # the application runs, because an identical schema and digest cannot say which
 # binary ran. The two profiles a headless host serves, old-host and extension-host
 # core + desktop, are checked beside this one by scripts/conformance.sh, which runs
