@@ -1,6 +1,7 @@
 import AppKit
 import Darwin
 import Foundation
+import UniformTypeIdentifiers
 
 /// The real native adapter: NSWorkspace, Launch Services registration, the
 /// filesystem's own metadata and libproc. It is exercised by the signed-bundle
@@ -50,14 +51,73 @@ struct NativeWorkspace: WorkspaceNative {
     }
 
     private func absentOrUnreadable(_ error: Error) -> ApplicationInspection {
+        isMissing(error) ? .absent : .unreadable((error as NSError).localizedDescription)
+    }
+
+    /// A missing file as Foundation reports it, directly or beneath a POSIX ENOENT.
+    private func isMissing(_ error: Error) -> Bool {
         let cocoa = error as NSError
-        if cocoa.domain == NSCocoaErrorDomain, cocoa.code == NSFileReadNoSuchFileError { return .absent }
+        if cocoa.domain == NSCocoaErrorDomain, cocoa.code == NSFileReadNoSuchFileError { return true }
         if let underlying = cocoa.userInfo[NSUnderlyingErrorKey] as? NSError,
             underlying.domain == NSPOSIXErrorDomain, underlying.code == Int(ENOENT)
         {
-            return .absent
+            return true
         }
-        return .unreadable(cocoa.localizedDescription)
+        return false
+    }
+
+    /// Only measured prompt-free calls (docs/verification/protected-path-metadata.md): `stat` and
+    /// `realpath`, and the `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource
+    /// values. The literal path is `stat`ed first, because `realpath` forgives what the kernel
+    /// does not: it resolves `file.txt/` and `file.txt/.` to the file, while the open would
+    /// address a path below a file. Symlinks are then resolved, so a link to an application is
+    /// an application and a dangling link is absent; an alias file is not a symlink and is
+    /// identified as itself. Nothing reads contents or lists a directory.
+    func inspectPath(_ path: String) -> PathInspection {
+        var literal = stat()
+        errno = 0
+        guard stat(path, &literal) == 0 else { return Self.unavailable(errno) }
+        errno = 0
+        guard let resolved = realpath(path, nil) else { return Self.unavailable(errno) }
+        defer { free(resolved) }
+        var status = stat()
+        guard stat(resolved, &status) == 0 else { return Self.unavailable(errno) }
+        let isDirectory = (status.st_mode & S_IFMT) == S_IFDIR
+        let url = URL(fileURLWithPath: String(cString: resolved), isDirectory: isDirectory)
+        let values: URLResourceValues
+        do {
+            values = try url.resourceValues(forKeys: [.isApplicationKey, .contentTypeKey, .isAliasFileKey])
+        } catch {
+            return isMissing(error) ? .absent : .unreadable((error as NSError).localizedDescription)
+        }
+        // A value the platform did not supply is a failed inspection, not a "no".
+        guard let isApplication = values.isApplication, let isAliasFile = values.isAliasFile else {
+            return .unreadable("its type metadata is not available")
+        }
+        return .present(
+            PathFacts(
+                isDirectory: isDirectory, isApplication: isApplication, isAliasFile: isAliasFile,
+                contentType: values.contentType?.identifier
+            )
+        )
+    }
+
+    /// What a failed `stat` or `realpath` means. Nothing is there to open when the name does not
+    /// exist (ENOENT, which includes a dangling link), a component is not a directory (ENOTDIR),
+    /// the links never reach anything (ELOOP) or the name is too long to exist (ENAMETOOLONG).
+    /// Anything else, a denial included, is a failed inspection and never absence.
+    private static func unavailable(_ code: Int32) -> PathInspection {
+        switch code {
+        case ENOENT, ENOTDIR, ELOOP, ENAMETOOLONG: return .absent
+        default: return .unreadable(String(cString: strerror(code)))
+        }
+    }
+
+    /// https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/conforms(to:)
+    func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool {
+        guard let type = UTType(identifier) else { return identifier == ancestor }
+        guard let parent = UTType(ancestor) else { return identifier == ancestor }
+        return type.conforms(to: parent)
     }
 
     /// The configuration every open request carries, as the contract fixes it: activation on,
@@ -122,7 +182,16 @@ struct NativeWorkspace: WorkspaceNative {
         _ url: URL, withApplicationAt application: URL,
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     ) {
-        let configuration = openConfiguration(substitutingRunningCopy: true)
+        submitOpen(url, withApplicationAt: application, substitutingRunningCopy: true, completion: completion)
+    }
+
+    /// The one request that opens a URL or a path in a chosen application.
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/open(_:withapplicationat:configuration:completionhandler:)
+    private func submitOpen(
+        _ url: URL, withApplicationAt application: URL, substitutingRunningCopy: Bool,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        let configuration = openConfiguration(substitutingRunningCopy: substitutingRunningCopy)
         NSWorkspace.shared.open([url], withApplicationAt: application, configuration: configuration) {
             running, error in
             if let error {
@@ -131,6 +200,26 @@ struct NativeWorkspace: WorkspaceNative {
                 completion(.acknowledged(running.map(RunningApplication.init)))
             }
         }
+    }
+
+    /// The default application for a document or directory: the file-URL lookup, which is the
+    /// one route to this answer. It prompted for Files and Folders consent for documents on
+    /// first-use Desktop, Documents and Downloads, and returned a handler even after the
+    /// dialog was denied (protected-path-metadata.md); a directory's did not prompt. No
+    /// consent is added for it, so protected default opening is a pending limit.
+    /// https://developer.apple.com/documentation/appkit/nsworkspace/urlforapplication(toopen:)-7qkzf
+    /// (Confirmed against the SDK's NSWorkspace.h, macOS 26: `URLForApplicationToOpenURL:`.)
+    func defaultApplication(toOpen url: URL) -> URL? {
+        NSWorkspace.shared.urlForApplication(toOpen: url)
+    }
+
+    /// Open a document or directory in an explicitly chosen application, with the shared
+    /// configuration: nothing asks the system which application should receive it.
+    func openPath(
+        _ url: URL, withApplicationAt application: URL, substitutingRunningCopy: Bool,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        submitOpen(url, withApplicationAt: application, substitutingRunningCopy: substitutingRunningCopy, completion: completion)
     }
 
     func processStart(of pid: Int32) -> ProcessLookup { readKernelProcessStart(of: pid) }

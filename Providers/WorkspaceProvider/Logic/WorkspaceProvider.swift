@@ -1,7 +1,7 @@
 import Foundation
 import KoineProviderAPI
 
-// The contribution: the launch and URL roots and every type they reach, under
+// The contribution: the launch, URL and path roots and every type they reach, under
 // workspace:control AND desktop:control. Later roots extend this list with their
 // own leaves; the SDL (schema.graphql) is served verbatim from the design file.
 
@@ -23,6 +23,7 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
     var fields = [
         ("Mutation.workspaceLaunchApplication", "launchApplication"),
         ("Mutation.workspaceOpenURL", "openURL"),
+        ("Mutation.workspaceOpenPath", "openPath"),
     ].map { coordinate, resolverId in
         ProviderFieldRegistration(
             coordinate: coordinate, resolverId: resolverId,
@@ -43,8 +44,9 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
     )
 }
 
-/// Launches or reactivates an installed application by bundle identity, and opens a web
-/// URL in the default browser. Nothing is cached between calls: the installation is inspected on every action, and
+/// Launches or reactivates an installed application by bundle identity, opens a web URL in
+/// the default browser, and opens a document or directory in its default or a named
+/// application. Nothing is cached between calls: the installation is inspected on every action, and
 /// the one thing held is the bound on native submissions still outstanding.
 final class WorkspaceProvider: Provider, @unchecked Sendable {
     /// Below the core's five-second request ceiling, which can still win first.
@@ -87,6 +89,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         switch request.resolverId {
         case "launchApplication": return await launch(request.arguments["application"])
         case "openURL": return await openWebURL(request.arguments["url"])
+        case "openPath": return await openPath(request.arguments["path"], application: request.arguments["application"])
         default: return .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -145,6 +148,44 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
             // Resolved once. A default changed after this point neither retargets nor replays.
             return await submit(doing: "open the URL", acknowledging: "open request") { completion in
                 native.openWebURL(url, withApplicationAt: browser, completion: completion)
+            }
+        }
+    }
+
+    // MARK: Open path
+
+    /// Opens a literal absolute path in its default application or a named one. The target is
+    /// inspected first (a missing file is never conflated with a missing handler), refused by
+    /// its metadata if it is an application, an executable program or a Finder alias, and only
+    /// then is the application chosen. The path is submitted as written; the handler follows
+    /// links as usual, so this is a request about a location, not a pinned file identity.
+    private func openPath(_ pathArgument: ProviderValue?, application argument: ProviderValue?) async -> ResolutionResult {
+        guard case .string(let text)? = pathArgument else { return .failure(invalid("path must be a string.")) }
+        let path: LocalPath
+        switch LocalPath.validated(text) {
+        case .success(let validated): path = validated
+        case .failure(let error): return .failure(invalid(error.message))
+        }
+        let named: ApplicationRequest?
+        switch argument {
+        case .null?, nil: named = nil
+        default:
+            switch parse(argument) {
+            case .success(let parsed): named = parsed
+            case .failure(let error): return .failure(invalid(error.message))
+            }
+        }
+        guard !Task.isCancelled else { return failed("Cancelled before the path was inspected.") }
+        let native = native
+        let plan = await onQueue { planPathOpen(path, application: named, native: native) }
+        switch plan {
+        case .dependency(let reason, let guidance): return .success(dependency(reason, guidance))
+        case .refused(let message): return .failure(invalid(message))
+        case .failed(let message): return failed(message)
+        case .submit(let target, let handler, let substituting):
+            // Resolved once. A handler or file changed after this point neither retargets nor replays.
+            return await submit(doing: "open the file or folder", acknowledging: "open request") { completion in
+                native.openPath(target, withApplicationAt: handler, substitutingRunningCopy: substituting, completion: completion)
             }
         }
     }

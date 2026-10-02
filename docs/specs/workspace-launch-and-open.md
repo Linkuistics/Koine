@@ -1,9 +1,10 @@
 # Workspace launch and open
 
-**Designed; `workspaceLaunchApplication` and `workspaceOpenURL` are implemented and
-their L, G and N parts, and the URL root's V part, are recorded under
-[Acceptance](#evidence-so-far); the other two roots are pending, and so is one part of
-the URL root's V evidence, Dia's page load (below).** Workspace supplies the
+**Designed; `workspaceLaunchApplication`, `workspaceOpenURL` and `workspaceOpenPath` are
+implemented and their L, G and N parts, and the URL root's V part, are recorded under
+[Acceptance](#evidence-so-far); the path root's V part and the reveal root are pending,
+and so is one part of the URL root's V evidence, Dia's page load (below), and default
+opening of protected documents (see [Documents and directories](#evidence-so-far)).** Workspace supplies the
 launchers, browser opening, file/folder opening and Finder reveal required by
 the [workflow inventory](../requirements/modaliser-workflows.md#workflow-inventory).
 The [workflow spec](workflow-providers.md) owns the cumulative authority trace;
@@ -369,9 +370,10 @@ tests for the required working paths.
 ### Evidence so far
 
 `workspace-launch` shipped the bundled provider serving `workspaceLaunchApplication`
-and the types it reaches, verbatim from the design file, and `open-url` added
-`workspaceOpenURL` (its two lines, verbatim; it reaches no new type). The other two
-roots and their types are not served until their leaves land. What follows is exactly
+and the types it reaches, verbatim from the design file, `open-url` added
+`workspaceOpenURL` and `open-path` added `workspaceOpenPath` (each its two lines,
+verbatim; neither reaches a new type). The reveal root and its types are not served
+until its leaf lands. What follows is exactly
 what was established; every row above keeps its pending remainder.
 
 - **Twelve launchers, stopped and running.** V for **all twelve**
@@ -399,11 +401,76 @@ what was established; every row above keeps its pending remainder.
   reuse (V), and `application-installations`.
 - **Input boundary.** L and N: a blank identifier and an empty, relative or
   NUL-containing application path are input errors at the original path with no
-  `kind`, before any inspection. For the URL: L (`WebURLTests`, `OpenURLTests`), G
+  `kind`, before any inspection (the path root's own input is below). For the URL: L (`WebURLTests`, `OpenURLTests`), G
   (`WorkspaceCompositionTests`, the real provider over a recording native stand-in) and
   N (`WorkspaceProviderTests`, the signed bundle) refuse every class below at the
   original path with no `kind`, before any handler lookup, and nothing reaches the
-  handler. The path and reveal operations' inputs have not landed.
+  handler. For the path (`OpenPathTests`, `WorkspaceCompositionTests`,
+  `WorkspaceProviderTests`; none opens anything): an empty, relative, `~`, `$HOME`,
+  `file:`-URL, leading-space or NUL-containing path, a non-string path, and an unusable
+  application (any of the launch input's cases, an application that is not an object)
+  are input errors at the original path with no `kind`, checked before the target is
+  inspected, so a missing path with a blank application reports the input. Spaces, shell
+  punctuation, percent signs, Unicode and `..` are submitted as written and inspected
+  as written. A target classified as an application bundle (resource metadata or its
+  content type), an executable (`public.unix-executable`, `com.microsoft.windows-executable`
+  or a subtype) or a Finder alias (`isAliasFileKey`, `com.apple.alias-file` or a subtype)
+  is the same input error for the default handler and for a named application, with
+  no handler lookup, no application inspection and nothing submitted; each class names
+  its own reason. A mutated policy that refuses nothing, one that tests the broad
+  `public.executable` ancestor, one that skips aliases and one that reads an inspection
+  denial as absence each turned L red. Shell, JavaScript, `.command`, `.webloc`, a
+  folder and a document package, and a target with no content type, are not refused.
+  The reveal operation's input has not landed.
+- **Documents, directories and settings.** L (`OpenPathTests`), G
+  (`WorkspaceCompositionTests`, the real provider over a recording native stand-in) and
+  N (`WorkspaceProviderTests`, the signed bundle); nothing is opened on the host. The
+  target is inspected first and only through the calls
+  [measured prompt-free](../verification/protected-path-metadata.md#inspection-results):
+  `realpath`, `stat`, and the `isApplicationKey`, `contentTypeKey` and `isAliasFileKey`
+  resource values. A missing path, a dangling link, a path below a file (including a file addressed
+  with a trailing `/`, which `realpath` alone forgives), a symlink loop and a name too long to
+  exist are `PATH_NOT_FOUND` with no handler lookup, no application inspection and nothing
+  submitted, whether or not an application is named and whether or not it is installed;
+  metadata that cannot be read, or a type value the platform did not supply, is `failed`,
+  never absence. Then the application is
+  chosen: omitted and `null` are the same default; the default is found by the
+  system's file lookup for that item and must be present as a bundle when inspected,
+  else `NO_DEFAULT_HANDLER` (a stale registration is no handler, unreadable metadata is
+  `failed`); a named application takes the launch's selection, so `APPLICATION_NOT_INSTALLED`
+  and `APPLICATION_IDENTITY_MISMATCH` are as there, a path constraint disables
+  running-copy substitution and no default is looked up. A directory reaches a named
+  application such as Zed. The literal path is submitted as written, once; a replacement
+  after inspection is not re-inspected and is not replayed, a default changed after
+  resolution neither retargets nor replays, and the next action inspects afresh. The
+  open is bounded, one-shot and counted exactly as launch and the URL root are, with the
+  one capacity shared by all three roots; a refusal or dependency never uses capacity.
+  G: the root's authority (neither control alone, refusal before any inspection, the first
+  unmet member and the complete set), every dependency branch, a failure at the action's
+  path, publication denial at the result, preflight across all three roots, aliases and
+  `@skip`, revocation between actions, and an earlier core deadline. N: the signed bundle
+  serves the root with its design text, both controls are required, and against real
+  fixtures the real adapter reports a missing path, a dangling link and a path below a
+  file as `PATH_NOT_FOUND`, an absent, mismatched or wrongly pinned named application as
+  its dependency, and a link to an application, a link to a Mach-O program, a Windows
+  executable and a real Finder alias as input errors, with nothing opened. A call-path
+  check (`task check:launch-call-path`) holds the item lookup to the item's own URL and
+  the inspection to the three measured resource keys, with no directory listing and no
+  content read, each new check first seen red against a mutated source.
+  Known limit: an extensionless file with its executable bit set has content type
+  `public.unix-executable` and is refused as a program, while the same file without the bit
+  is opened; the type rule above and the "irrespective of executable bits" row disagree there,
+  and the rule is applied as written.
+  **Pending, and not accepted here:** default opening of a *protected* document. The
+  system's file lookup is the only route to the default application, and in the
+  [measurement](../verification/protected-path-metadata.md#handler-lookup-limit) it raised
+  a Files and Folders prompt for documents on Desktop, Documents and Downloads and
+  returned a handler even after denial; a directory's did not. Nothing here requests or
+  suppresses that consent or substitutes another rule, so the operation is accepted for
+  unprotected locations and for named applications, and the protected default case stays
+  live work for Antony's consent decision (`document-paths`). Also pending: V
+  (`open-path-vm`), the contract-only client's examples, and the conformance profile at
+  V.
 - **Browser URL.** L, G, N and V. L, G and N drive no browser (below); V is
   [open-url-vm.md](../verification/open-url-vm.md), summarized after this paragraph.
   The grammar is held as a decision over bytes (`WebURLTests`): accepted are an `http`
@@ -473,7 +540,8 @@ what was established; every row above keeps its pending remainder.
   after the process's real exit answers null. The V run found the process null on
   most cold launches, a race in the fresh lookup's equality, and the settle is its
   fix. Publication denial and revocation at the fields are G's; no atomic
-  effect-binding is claimed.
+  effect-binding is claimed. The path root answers through the same value builder, so
+  the receipt contains no installed path, bundle identifier or handler metadata (L, G).
 - **Bounded acknowledgment.** L (`LaunchTests`): a negative acknowledgment, a
   missing callback and a late callback (ignored, and releasing its slot exactly
   once), cancellation before and during the wait, one-shot completion, exhausted
@@ -489,7 +557,7 @@ what was established; every row above keeps its pending remainder.
   dialog still the only one ten seconds on. Declined, nothing launched; accepted, exactly
   the one original launch and no second; no result was published after the answer and the
   next request was served normally. Pending: N.
-- **Authority/revocation.** G and N (through the real signed bundle), for both roots: neither
+- **Authority/revocation.** G and N (through the real signed bundle), for all three roots: neither
   control alone, and neither read, is enough; both controls without reads reach the
   provider; denial precedes inspection; the first unmet member and the complete set;
   multi-action preflight, aliases and `@skip`, revocation between actions. V

@@ -21,3 +21,9 @@ load the test frameworks.
 - The assertion holds whichever sibling's denial is reported, or the scenario selects one
   field, as the other denial tests do.
 - Repeated full runs (at least twenty) show no failure of it.
+
+`open-path-k75` saw the same family once more: `denialAtANonNullProcessFieldRemovesTheProcessAndNamesThatField`
+(`pid` and `startedAt` are non-null siblings) failed in one full run with no error at the
+field it names (the denial presumably reported at the other sibling; not examined), and passed on
+every filtered rerun. Treat it with this one.
+

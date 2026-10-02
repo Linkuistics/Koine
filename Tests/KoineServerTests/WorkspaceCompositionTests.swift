@@ -5,14 +5,14 @@ import Testing
 @testable import KoineCore
 @testable import WorkspaceProviderLogic
 
-/// The workspace launch and URL roots at the composition point (G): the real descriptor and
+/// The workspace launch, URL and path roots at the composition point (G): the real descriptor and
 /// the SDL the bundle serves, composed through the engine every transport executes
 /// through, with the provider a scripted stand-in. What is asserted is the core's
 /// and the client's handling: authority, preflight, revocation, publication and the
 /// deadline. Workspace's own mapping is `WorkspaceProviderLogicTests`'; a real
 /// binary and a real application are the N and V seams'. No launch or open happens
-/// here; the URL grammar is held through the engine with the real provider over a
-/// native stand-in that records what reached it.
+/// here; the URL grammar and the path roots' input and refusal policy are held through the
+/// engine with the real provider over a native stand-in that records what reached it.
 @Suite struct WorkspaceCompositionTests {
     // MARK: The contribution as composed
 
@@ -186,7 +186,7 @@ import Testing
 
     // MARK: Composition
 
-    @Test func theContributionComposesAndServesTheLaunchAndURLRootsOnly() async throws {
+    @Test func theContributionComposesAndServesTheLaunchURLAndPathRootsOnly() async throws {
         let bench = try await Bench()
         #expect(bench.engine.providerDiagnostics.isEmpty)
         let root = try await bench.grant([])
@@ -195,7 +195,7 @@ import Testing
             { m: __type(name: "Mutation") { fields { name } } r: __type(name: "WorkspaceRevealResult") { name } }
             """, as: root.principal)
         let names = ((types.data?["m"] as? [String: Any])?["fields"] as? [[String: Any]] ?? []).compactMap { $0["name"] as? String }
-        #expect(names.filter { $0.hasPrefix("workspace") } == ["workspaceLaunchApplication", "workspaceOpenURL"])
+        #expect(names.filter { $0.hasPrefix("workspace") } == ["workspaceLaunchApplication", "workspaceOpenPath", "workspaceOpenURL"])
         #expect(types.data?["r"] is NSNull, "a root that has not landed is not served")
     }
 
@@ -249,7 +249,7 @@ import Testing
         let served = Set(descriptor.fields.map(\.coordinate))
         #expect(
             served == [
-                "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL",
+                "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath",
                 "WorkspaceOpenResult.status", "WorkspaceOpenResult.value", "WorkspaceOpenResult.dependency",
                 "WorkspaceOpenReceipt.process",
                 "WorkspaceProcessIdentity.pid", "WorkspaceProcessIdentity.startedAt",
@@ -658,10 +658,17 @@ import Testing
         private let lock = NSLock()
         private var openedURLs: [String] = []
         private var lookedUp: [WebURL.Scheme] = []
+        private var openedPaths: [String] = []
+        private var inspectedPaths: [String] = []
+        private var arranged: [String: PathInspection] = [:]
+        private var lookedUpDocuments: [String] = []
         static let browser = URL(fileURLWithPath: "/Applications/Browser.app")
 
         var opened: [String] { lock.withLock { openedURLs } }
         var lookups: [WebURL.Scheme] { lock.withLock { lookedUp } }
+        var pathsOpened: [String] { lock.withLock { openedPaths } }
+        var pathsInspected: [String] { lock.withLock { inspectedPaths } }
+        var documentLookups: [String] { lock.withLock { lookedUpDocuments } }
 
         func registeredApplication(bundleIdentifier: String) -> URL? { nil }
         func registeredApplications(bundleIdentifier: String) -> [URL] { [] }
@@ -682,6 +689,26 @@ import Testing
             _ url: URL, withApplicationAt application: URL, completion: @escaping @Sendable (LaunchCompletion) -> Void
         ) {
             lock.withLock { openedURLs.append(url.absoluteString) }
+            completion(.acknowledged(nil))
+        }
+        func arrange(_ path: String, as inspection: PathInspection) { lock.withLock { arranged[path] = inspection } }
+        func inspectPath(_ path: String) -> PathInspection {
+            lock.withLock {
+                inspectedPaths.append(path)
+                return arranged[path]
+                    ?? .present(PathFacts(isDirectory: path.hasSuffix("/"), isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
+            }
+        }
+        func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool { identifier == ancestor }
+        func defaultApplication(toOpen url: URL) -> URL? {
+            lock.withLock { lookedUpDocuments.append(url.path) }
+            return Self.browser
+        }
+        func openPath(
+            _ url: URL, withApplicationAt application: URL, substitutingRunningCopy: Bool,
+            completion: @escaping @Sendable (LaunchCompletion) -> Void
+        ) {
+            lock.withLock { openedPaths.append(url.path) }
             completion(.acknowledged(nil))
         }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
@@ -752,6 +779,347 @@ import Testing
         #expect(browser.opened == ["https://example.com/ok"])
     }
 
+
+    // MARK: The path root
+
+    static let openPath = """
+        mutation { open: workspaceOpenPath(path: "/Users/test/notes.txt") {
+          status value { process { pid startedAt } } dependency { reason guidance } } }
+        """
+    static let openPathNamed = """
+        mutation { open: workspaceOpenPath(path: "/Users/test/config", application: { bundleIdentifier: "dev.zed.Zed" }) {
+          status value { process { pid startedAt } } dependency { reason guidance } } }
+        """
+
+    @Test(arguments: [openPath, openPathNamed])
+    func bothControlsWithoutReadsAreEnoughForThePathRoot(_ document: String) async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(document, as: client.principal)
+
+        #expect(reply.errors.isEmpty)
+        let open = try #require(reply.data?["open"] as? [String: Any])
+        #expect(open["status"] as? String == "AVAILABLE")
+        #expect((((open["value"] as? [String: Any])?["process"]) as? [String: Any])?["pid"] as? Int == 4242)
+        #expect(open["dependency"] is NSNull)
+        #expect(bench.script.log == ["openPath"], "the path root reaches its own resolver")
+    }
+
+    @Test func theOptionalApplicationReachesTheResolverAsGivenOrAbsent() async throws {
+        let bench = try await Bench()
+        let seen = Seen()
+        bench.script.answer { request in
+            seen.add(request.arguments)
+            return .success(Self.available(pid: nil))
+        }
+        let client = try await bench.grant(Self.controls)
+        _ = try await bench.run(Self.openPath, as: client.principal)
+        _ = try await bench.run(Self.openPathNamed, as: client.principal)
+        _ = try await bench.run(
+            "mutation { open: workspaceOpenPath(path: \"/a\", application: null) { status } }", as: client.principal)
+        let arguments = seen.all
+        #expect(arguments.count == 3)
+        #expect(arguments[0]["path"] == .string("/Users/test/notes.txt") && (arguments[0]["application"] ?? .null) == .null)
+        #expect(arguments[1]["application"] == .object(["bundleIdentifier": .string("dev.zed.Zed")]) || arguments[1]["application"] == .object(["bundleIdentifier": .string("dev.zed.Zed"), "applicationPath": .null]))
+        #expect(arguments[2]["application"] == .null || arguments[2]["application"] == nil)
+    }
+
+    final class Seen: @unchecked Sendable {
+        private let lock = NSLock()
+        private var seen: [[String: ProviderValue]] = []
+        var all: [[String: ProviderValue]] { lock.withLock { seen } }
+        func add(_ arguments: [String: ProviderValue]) { lock.withLock { seen.append(arguments) } }
+    }
+
+    @Test(arguments: [
+        ["workspace:control"], ["desktop:control"], ["workspace:read", "desktop:read"],
+        ["workspace:read", "desktop:control"], ["desktop:read", "desktop:control"], [],
+    ])
+    func eitherControlAloneIsRefusedForThePathRootBeforeAnythingIsInspected(held: [String]) async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(held)
+        let reply = try await bench.run(Self.openPathNamed, as: client.principal)
+
+        #expect(reply.outcome.isForbidden)
+        let extensions = reply.extensions(at: ["open"])
+        let expected = held.contains("workspace:control") ? "desktop:control" : "workspace:control"
+        #expect(extensions["requiredCapability"] as? String == expected)
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.controls)
+        #expect(extensions["phase"] as? String == "authorization")
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(bench.script.log.isEmpty, "denial precedes inspection: the provider is never entered")
+    }
+
+    @Test(arguments: ["PATH_NOT_FOUND", "NO_DEFAULT_HANDLER", "APPLICATION_NOT_INSTALLED", "APPLICATION_IDENTITY_MISMATCH"])
+    func eachPathDependencyIsTheDependencyBranchOnly(_ reason: String) async throws {
+        let bench = try await Bench()
+        bench.script.answer { _ in
+            .success(
+                .object([
+                    "status": .string("DEPENDENCY_UNAVAILABLE"), "value": .null,
+                    "dependency": .object(["reason": .string(reason), "guidance": .string("Guidance.")]),
+                ]))
+        }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.openPath, as: client.principal)
+
+        #expect(reply.errors.isEmpty)
+        let open = try #require(reply.data?["open"] as? [String: Any])
+        #expect(open["status"] as? String == "DEPENDENCY_UNAVAILABLE")
+        #expect(open["value"] is NSNull)
+        let dependency = try #require(open["dependency"] as? [String: Any])
+        #expect(dependency["reason"] as? String == reason)
+        #expect(dependency["guidance"] as? String == "Guidance.")
+    }
+
+    @Test func aPathFailureIsAnErrorAtItsOwnPathAndInvalidInputCarriesNoKind() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        bench.script.answer { _ in .failure(ProviderFailure(kind: .failed, message: "The system refused.")) }
+        let failed = try await bench.run(Self.openPath, as: client.principal)
+        #expect(failed.data?["open"] is NSNull)
+        #expect(failed.extensions(at: ["open"])["kind"] as? String == "failed")
+
+        bench.script.answer { _ in .failure(ProviderFailure(kind: .invalidInput, message: "path bad")) }
+        let invalid = try await bench.run(Self.openPath, as: client.principal)
+        #expect(invalid.data?["open"] is NSNull)
+        #expect(invalid.extensions(at: ["open"])["kind"] == nil)
+    }
+
+    @Test func denialAtThePathResultsStatusWithholdsTheWholeResultAtTheStatusPath() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        bench.when(.admitted("WorkspaceOpenResult.status")) { await bench.revoke(client.id) }
+        let reply = try await bench.run(
+            "mutation { open: workspaceOpenPath(path: \"/Users/test/notes.txt\") { status } }", as: client.principal)
+        #expect(bench.script.log == ["openPath"], "the open ran; its result was withheld")
+        #expect(reply.data?["open"] is NSNull)
+        #expect(reply.paths == [["open", "status"]])
+        expectDenied(reply, at: ["open", "status"])
+    }
+
+    // MARK: Several actions, the path among them
+
+    static let launchOpenPathOpenURL = """
+        mutation {
+          first: workspaceLaunchApplication(application: { bundleIdentifier: "com.apple.Notes" }) { status }
+          second: workspaceOpenPath(path: "/Users/test/notes.txt") { status }
+          third: workspaceOpenURL(url: "https://example.com/") { status }
+        }
+        """
+
+    @Test func anyDeniedActionMeansNoPathOrOtherActionBegins() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(["desktop:control"])
+        let reply = try await bench.run(Self.launchOpenPathOpenURL, as: client.principal)
+        #expect(reply.outcome.isForbidden)
+        #expect(reply.data == nil)
+        for alias in ["first", "second", "third"] {
+            #expect(reply.extensions(at: [alias])["requiredCapabilities"] as? [String] == Self.controls, Comment(rawValue: alias))
+        }
+        #expect(bench.script.log.isEmpty)
+    }
+
+    @Test func actionsOfAllThreeRootsRunInOrderUnderTheSameGrant() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.launchOpenPathOpenURL, as: client.principal)
+        #expect(reply.errors.isEmpty)
+        #expect(bench.script.log == ["launchApplication", "openPath", "openURL"])
+    }
+
+    @Test func revocationBetweenAPathAndTheNextActionStopsTheNextWithTheSameSet() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(Self.controls)
+        bench.when(.admitted("Mutation.workspaceOpenPath")) { await bench.revoke(client.id) }
+        let reply = try await bench.run(
+            """
+            mutation {
+              first: workspaceOpenPath(path: "/Users/test/a.txt") { status }
+              second: workspaceOpenPath(path: "/Users/test/b.txt") { status }
+            }
+            """, as: client.principal)
+        #expect(reply.outcome.isExecuted)
+        #expect(bench.script.log == ["openPath"], "the second open is never entered")
+        let extensions = reply.extensions(at: ["second"])
+        #expect(extensions["phase"] as? String == "execution")
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.controls)
+        #expect(reply.data?["second"] is NSNull)
+    }
+
+    @Test func aliasesAndSkippedPathOpensAreHonouredByPreflight() async throws {
+        let bench = try await Bench()
+        let client = try await bench.grant(["workspace:control"])
+        let document = """
+            mutation($skip: Boolean!) {
+              renamed: workspaceOpenPath(path: "/Users/test/a.txt") @skip(if: $skip) { status }
+            }
+            """
+        let denied = try await bench.run(document, ["skip": false], as: client.principal)
+        #expect(denied.error(at: ["renamed"]) != nil, "the original response path is the alias")
+        let skipped = try await bench.run(document, ["skip": true], as: client.principal)
+        #expect(skipped.errors.isEmpty)
+        #expect(bench.script.log.isEmpty)
+    }
+
+    @Test func aPathsFailedIsAtItsPathAndLaterActionsStillRun() async throws {
+        let bench = try await Bench()
+        bench.script.answer { request in
+            guard request.resolverId == "openPath" else { return .success(Self.available(pid: nil)) }
+            return .failure(ProviderFailure(kind: .failed, message: "The system did not acknowledge."))
+        }
+        let client = try await bench.grant(Self.controls)
+        let reply = try await bench.run(Self.launchOpenPathOpenURL, as: client.principal)
+        #expect((reply.data?["first"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(reply.data?["second"] is NSNull)
+        #expect(reply.extensions(at: ["second"])["kind"] as? String == "failed")
+        #expect((reply.data?["third"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(bench.script.log == ["launchApplication", "openPath", "openURL"])
+    }
+
+    @Test func anEarlierCoreDeadlineAnswersTheWholeRequestAndNoLaterPathOpenBegins() async throws {
+        var policy = RequestPolicy.version1
+        policy.executionDeadline = .milliseconds(150)
+        let bench = try await Bench(policy: policy)
+        bench.script.answer { _ in
+            try? await Task.sleep(for: .seconds(20))
+            return .failure(ProviderFailure(kind: .failed, message: "The system did not acknowledge."))
+        }
+        let client = try await bench.grant(Self.controls)
+        let started = ContinuousClock.now
+        let reply = try await bench.run(
+            """
+            mutation {
+              first: workspaceOpenPath(path: "/Users/test/a.txt") { status }
+              second: workspaceOpenPath(path: "/Users/test/b.txt") { status }
+            }
+            """, as: client.principal)
+        #expect(ContinuousClock.now - started < .seconds(10))
+        #expect(reply.json["data"] is NSNull, "the whole response is answered, not one action's path")
+        #expect(reply.errors.count == 1 && (reply.errors.first?["path"] as? [Any])?.isEmpty == true)
+        #expect((reply.errors.first?["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+        try await Task.sleep(for: .milliseconds(100))
+        #expect(bench.script.log == ["openPath"])
+    }
+
+    // MARK: The path inputs and the refusal policy, through the engine and the real provider
+
+    static let openPathWithVariables = """
+        mutation($path: String!, $application: WorkspaceApplicationInput) {
+          open: workspaceOpenPath(path: $path, application: $application) {
+            status value { process { pid } } dependency { reason guidance } } }
+        """
+
+    static func realPathProvider(
+        arranging: (RecordingBrowser) -> Void = { _ in }
+    ) async throws -> (bench: Bench, native: RecordingBrowser, client: Principal) {
+        let native = RecordingBrowser()
+        arranging(native)
+        let bench = try await Bench(provider: WorkspaceProvider(native: native))
+        let client = try await bench.grant(Self.controls)
+        return (bench, native, client.principal)
+    }
+
+    @Test(arguments: [
+        "/Users/test/notes.txt", "/Users/test/a b/c d.txt", "/Users/test/$HOME/`x`;'\"*?.txt", "/Users/test/caf\u{E9}.txt",
+        "/Users/test/config/",
+    ])
+    func aLiteralAbsolutePathReachesTheHandlerAsWrittenAndIsAvailable(_ path: String) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(Self.openPathWithVariables, ["path": path], as: client)
+        #expect(reply.errors.isEmpty, Comment(rawValue: "\(reply.errors)"))
+        #expect((reply.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(native.pathsInspected == [path])
+        #expect(native.pathsOpened.count == 1)
+    }
+
+    @Test(arguments: [
+        ("", "empty"), ("relative/notes.txt", "relative"), ("./notes.txt", "relative"), ("~/notes.txt", "tilde"),
+        ("$HOME/notes.txt", "environment"), ("file:///Users/test/notes.txt", "file URL"), (" /Users/test/notes.txt", "leading space"),
+        ("/Users/test/a\u{0}b", "NUL"),
+    ])
+    func anUnusablePathIsAnInputErrorAtTheOriginalPathAndNothingIsInspected(_ path: String, _ why: String) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(Self.openPathWithVariables, ["path": path], as: client)
+        #expect(reply.error(at: ["open"]) != nil, Comment(rawValue: "\(why): \(path.debugDescription) was accepted"))
+        #expect(reply.extensions(at: ["open"])["kind"] == nil, "an input error carries no kind")
+        #expect(reply.data?["open"] is NSNull)
+        #expect(native.pathsInspected.isEmpty && native.pathsOpened.isEmpty && native.documentLookups.isEmpty, Comment(rawValue: why))
+    }
+
+    @Test(arguments: [
+        ["bundleIdentifier": "   "], ["bundleIdentifier": ""],
+        ["bundleIdentifier": "dev.zed.Zed", "applicationPath": ""],
+        ["bundleIdentifier": "dev.zed.Zed", "applicationPath": "Zed.app"],
+    ])
+    func anUnusableApplicationIsAnInputErrorAtTheOriginalPathAndNothingIsInspected(_ application: [String: String]) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let reply = try await bench.run(
+            Self.openPathWithVariables, ["path": "/Users/test/notes.txt", "application": application], as: client)
+        #expect(reply.error(at: ["open"]) != nil)
+        #expect(reply.extensions(at: ["open"])["kind"] == nil)
+        #expect(native.pathsInspected.isEmpty && native.pathsOpened.isEmpty)
+    }
+
+    @Test func aMissingOrNullApplicationOpensInTheDefaultHandler() async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        for variables: [String: Any] in [["path": "/a"], ["path": "/b", "application": NSNull()]] {
+            let reply = try await bench.run(Self.openPathWithVariables, variables, as: client)
+            #expect((reply.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(reply.errors)"))
+        }
+        #expect(native.documentLookups == ["/a", "/b"])
+        #expect(native.pathsOpened == ["/a", "/b"])
+    }
+
+    @Test(arguments: [
+        ("application bundle", PathFacts(isDirectory: true, isApplication: true, isAliasFile: false, contentType: "com.apple.application-bundle")),
+        ("unix executable", PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "public.unix-executable")),
+        ("windows executable", PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "com.microsoft.windows-executable")),
+        ("Finder alias", PathFacts(isDirectory: false, isApplication: false, isAliasFile: true, contentType: "com.apple.alias-file")),
+    ])
+    func refusedPayloadMetadataIsAnInputErrorAtTheOriginalPathAndNothingReachesAHandler(
+        _ why: String, _ facts: PathFacts
+    ) async throws {
+        let (bench, native, client) = try await Self.realPathProvider { $0.arrange("/Users/test/payload", as: .present(facts)) }
+        for application: [String: Any]? in [nil, ["bundleIdentifier": "dev.zed.Zed"]] {
+            var variables: [String: Any] = ["path": "/Users/test/payload"]
+            variables["application"] = application
+            let reply = try await bench.run(Self.openPathWithVariables, variables, as: client)
+            #expect(reply.error(at: ["open"]) != nil, Comment(rawValue: "\(why) was accepted"))
+            #expect(reply.extensions(at: ["open"])["kind"] == nil, "an input error carries no kind")
+            #expect(reply.data?["open"] is NSNull)
+        }
+        #expect(native.documentLookups.isEmpty && native.pathsOpened.isEmpty, Comment(rawValue: why))
+    }
+
+    @Test func aMissingPathIsDependencyAbsenceThroughTheEngine() async throws {
+        let (bench, native, client) = try await Self.realPathProvider { $0.arrange("/Users/test/gone", as: .absent) }
+        let reply = try await bench.run(Self.openPathWithVariables, ["path": "/Users/test/gone"], as: client)
+        #expect(reply.errors.isEmpty)
+        let open = try #require(reply.data?["open"] as? [String: Any])
+        #expect(open["status"] as? String == "DEPENDENCY_UNAVAILABLE")
+        #expect(open["value"] is NSNull)
+        #expect((open["dependency"] as? [String: Any])?["reason"] as? String == "PATH_NOT_FOUND")
+        #expect(native.documentLookups.isEmpty && native.pathsOpened.isEmpty)
+    }
+
+    @Test func aRefusedPathInAMultiActionRequestStopsOnlyItselfAndTheNextStillRuns() async throws {
+        let (bench, native, client) = try await Self.realPathProvider {
+            $0.arrange("/Users/test/payload", as: .present(PathFacts(isDirectory: true, isApplication: true, isAliasFile: false, contentType: nil)))
+        }
+        let reply = try await bench.run(
+            """
+            mutation {
+              bad: workspaceOpenPath(path: "/Users/test/payload") { status }
+              good: workspaceOpenPath(path: "/Users/test/ok.txt") { status }
+              relative: workspaceOpenPath(path: "ok.txt") { status }
+            }
+            """, as: client)
+        #expect(reply.data?["bad"] is NSNull && reply.data?["relative"] is NSNull)
+        #expect(reply.extensions(at: ["bad"])["kind"] == nil && reply.extensions(at: ["relative"])["kind"] == nil)
+        #expect((reply.data?["good"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(native.pathsOpened == ["/Users/test/ok.txt"])
+    }
 
     // MARK: An action's own failure against an earlier core deadline
 

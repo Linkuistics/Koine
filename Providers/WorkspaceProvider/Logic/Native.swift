@@ -88,6 +88,30 @@ protocol WorkspaceNative: Sendable {
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     )
 
+    /// Prompt-free metadata inspection of a document or directory: `realpath`, `stat` and the
+    /// `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource values
+    /// (docs/verification/protected-path-metadata.md). Never reads contents, never lists a
+    /// directory, never asks for a default handler.
+    func inspectPath(_ path: String) -> PathInspection
+
+    /// Whether the content type `identifier` conforms to (or is) `ancestor`.
+    func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool
+
+    /// The registered default application for a document or directory at `url`: the
+    /// system's file-URL handler lookup, with the limit `selectPathHandler` states (it
+    /// prompted for protected documents). Nil when nothing is registered, and for a missing
+    /// file too, which is why the caller inspects the target first.
+    func defaultApplication(toOpen url: URL) -> URL?
+
+    /// Submits one request to open the document or directory `url` in the application at
+    /// `application`, which the caller resolved: the system is never asked to choose. Same
+    /// one-shot completion contract and configuration as `launchApplication`; a running copy
+    /// at another location is used only when `substitutingRunningCopy`.
+    func openPath(
+        _ url: URL, withApplicationAt application: URL, substitutingRunningCopy: Bool,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    )
+
     /// The kernel's record of the process.
     func processStart(of pid: Int32) -> ProcessLookup
     /// The file identity of the executable the live process `pid` is running.

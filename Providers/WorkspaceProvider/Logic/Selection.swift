@@ -5,6 +5,7 @@ import Foundation
 enum DependencyReason: String, Sendable {
     case applicationNotInstalled = "APPLICATION_NOT_INSTALLED"
     case applicationIdentityMismatch = "APPLICATION_IDENTITY_MISMATCH"
+    case pathNotFound = "PATH_NOT_FOUND"
     case noDefaultHandler = "NO_DEFAULT_HANDLER"
 }
 

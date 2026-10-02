@@ -6,7 +6,7 @@
 # Encode Unicode URL data and IDNA host labels before supplying an HTTP(S) URI.
 #
 # This file lists every designed workspace operation; a given Koine serves only
-# the roots whose increments have landed (LaunchInstalledApplication and OpenSearchURL so far). Generate
+# the roots whose increments have landed (LaunchInstalledApplication, OpenSearchURL and OpenDocumentOrDirectory so far). Generate
 # the operations you use, by name, with the fragments they spread, against the
 # introspection of the Koine you generate from, and let generation fail if one does
 # not validate there; do not validate this whole file.

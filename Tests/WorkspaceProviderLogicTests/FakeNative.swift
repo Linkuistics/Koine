@@ -18,6 +18,12 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var webHandlers: [WebURL.Scheme: URL] = [:]
     private var handlerLookupLog: [WebURL.Scheme] = []
     private var openLog: [(url: URL, application: URL)] = []
+    private var pathInspections: [String: PathInspection] = [:]
+    private var pathInspectionLog: [String] = []
+    private var typeAncestors: [String: Set<String>] = [:]
+    private var documentHandlers: [String: URL] = [:]
+    private var documentLookupLog: [URL] = []
+    private var pathOpenLog: [(url: URL, application: URL, substituting: Bool)] = []
     private var inspectionLog: [String] = []
     private var startReads: [Int32: Int] = [:]
     /// What a submission (a launch or a URL open) does at once, if anything; the default
@@ -65,6 +71,41 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// Changes (or removes) the registered default after it was asked about.
     func setWebHandler(_ scheme: WebURL.Scheme, to url: URL?) { lock.withLock { webHandlers[scheme] = url } }
 
+    /// What the metadata says about `path`; an unarranged path is absent.
+    func inspectPath(_ path: String, as result: PathInspection) {
+        lock.withLock { pathInspections[path] = result }
+    }
+
+    /// A present document or directory with the metadata given, and the types it conforms to.
+    func document(
+        _ path: String, directory: Bool = false, application: Bool = false, alias: Bool = false,
+        type: String? = "public.plain-text", conformsTo: [String] = []
+    ) {
+        lock.withLock {
+            pathInspections[path] = .present(
+                PathFacts(isDirectory: directory, isApplication: application, isAliasFile: alias, contentType: type))
+            if let type { typeAncestors[type, default: []].formUnion(conformsTo) }
+        }
+    }
+
+    /// The default application for the document or directory at `path`, as a present, registered application.
+    @discardableResult
+    func installDocumentHandler(
+        for path: String, _ identifier: String = "com.apple.TextEdit", at appPath: String = "/System/Applications/TextEdit.app"
+    ) -> ApplicationBundle {
+        let bundle = ApplicationBundle(
+            url: URL(fileURLWithPath: appPath), bundleIdentifier: identifier, identity: Self.identity(appPath)
+        )
+        inspect(appPath, as: .application(bundle))
+        lock.withLock { documentHandlers[URL(fileURLWithPath: path).path] = bundle.url }
+        return bundle
+    }
+
+    /// Changes (or removes) the default for `path` after it was asked about.
+    func setDocumentHandler(for path: String, to url: URL?) {
+        lock.withLock { documentHandlers[URL(fileURLWithPath: path).path] = url }
+    }
+
     func processStarts(_ pid: Int32, _ reads: [ProcessLookup]) { lock.withLock { starts[pid] = reads } }
     func executable(_ pid: Int32, _ identity: FileIdentity?) { lock.withLock { executables[pid] = identity } }
 
@@ -80,6 +121,11 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// other parameter, which is what makes it scheme-only.
     var handlerLookups: [WebURL.Scheme] { lock.withLock { handlerLookupLog } }
     var opens: [(url: URL, application: URL)] { lock.withLock { openLog } }
+    /// Every path whose metadata the provider read, in order.
+    var pathInspected: [String] { lock.withLock { pathInspectionLog } }
+    /// Every document or directory the provider asked a default application about, in order.
+    var documentLookups: [URL] { lock.withLock { documentLookupLog } }
+    var pathOpens: [(url: URL, application: URL, substituting: Bool)] { lock.withLock { pathOpenLog } }
     var completions: Int { lock.withLock { pendingCompletions.count } }
 
     /// Answers the `index`th submission's callback now, from the test's thread.
@@ -127,6 +173,35 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     ) {
         lock.withLock {
             openLog.append((url, application))
+            pendingCompletions.append(completion)
+        }
+        onLaunch?(completion)
+    }
+
+    func inspectPath(_ path: String) -> PathInspection {
+        lock.withLock {
+            pathInspectionLog.append(path)
+            return pathInspections[path] ?? .absent
+        }
+    }
+
+    func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool {
+        lock.withLock { identifier == ancestor || typeAncestors[identifier]?.contains(ancestor) == true }
+    }
+
+    func defaultApplication(toOpen url: URL) -> URL? {
+        lock.withLock {
+            documentLookupLog.append(url)
+            return documentHandlers[url.path]
+        }
+    }
+
+    func openPath(
+        _ url: URL, withApplicationAt application: URL, substitutingRunningCopy: Bool,
+        completion: @escaping @Sendable (LaunchCompletion) -> Void
+    ) {
+        lock.withLock {
+            pathOpenLog.append((url, application, substitutingRunningCopy))
             pendingCompletions.append(completion)
         }
         onLaunch?(completion)

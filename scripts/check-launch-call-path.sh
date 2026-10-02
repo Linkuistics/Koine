@@ -1,12 +1,15 @@
 #!/bin/bash
 # Enumerates the native primitives, parameters, preparation, fallback and cleanup
-# calls of the workspace provider's launch and URL paths, from its source and from the
+# calls of the workspace provider's launch, URL and path paths, from its source and from the
 # built bundle's own imports, and checks them against the authority trace: the
 # launch path makes ONE launch request, NSWorkspace.openApplication(at:configuration:),
 # with activation on as the trace declares (workspace:control AND desktop:control);
 # the URL path makes ONE open request, NSWorkspace.open(_:withApplicationAt:configuration:),
 # to an application it resolved itself, from a handler lookup that is given the scheme
-# alone (never a part of the submitted URL), with the same configuration; and no
+# alone (never a part of the submitted URL), with the same configuration; the path root
+# makes the same single open request, to the default application of the item as the
+# system's file lookup answers it or to the named installation, and inspects the item
+# only through metadata calls; and no
 # activation, hiding, raising, accessibility, event-posting, scripting or
 # process-spawning call beside them. A focus change seen in a VM proves neither the
 # presence nor the absence of a hidden call (docs/specs/workflow-providers.md,
@@ -59,25 +62,41 @@ done
     fail "the request sets a parameter this check does not name"
 
 echo
-echo "== Source: exactly one URL open request, to an application resolved beforehand"
+echo "== Source: exactly one open request (a URL or a path), to an application resolved beforehand"
 OPENS="$(grep -rn -E 'NSWorkspace\.shared\.open\(' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${OPENS}"
-[ "$(grep -c . <<<"${OPENS}")" = 1 ] || fail "the URL path does not make exactly one open request"
+[ "$(grep -c . <<<"${OPENS}")" = 1 ] || fail "the URL and path roots do not share exactly one open request"
 grep -q -E 'open\(\[url\], withApplicationAt: application, configuration: configuration\)' <<<"${OPENS}" ||
     fail "the URL open request is not addressed to an explicit application with the shared configuration"
 [ "$(grep -rc -E 'openConfiguration\(substitutingRunningCopy:' "${SOURCES[@]}" | awk -F: '{s+=$2} END {print s}')" -ge 3 ] ||
     fail "the launch and URL requests no longer take their configuration from the one helper"
 
 echo
-echo "== Source: the default handler is looked up by the scheme alone"
+echo "== Source: the default handler is looked up by the scheme alone, or for the item being opened"
 LOOKUPS="$(grep -rn -E 'urlForApplication\(toOpen:' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${LOOKUPS}"
-[ "$(grep -c . <<<"${LOOKUPS}")" = 1 ] || fail "handler discovery is not a single lookup"
-grep -q 'urlForApplication(toOpen: schemeOnly)' <<<"${LOOKUPS}" || fail "the lookup is not given the scheme-only URL"
+[ "$(grep -c . <<<"${LOOKUPS}")" = 2 ] || fail "handler discovery is not exactly two lookups: a scheme and an item"
+grep -q 'urlForApplication(toOpen: schemeOnly)' <<<"${LOOKUPS}" || fail "the web lookup is not given the scheme-only URL"
+grep -q 'urlForApplication(toOpen: url)' <<<"${LOOKUPS}" || fail "the item lookup is not given the item's own URL"
 SCHEME_ONLY="$(grep -rn -E 'schemeOnly = ' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${SCHEME_ONLY}"
 grep -q -F 'URL(string: "\(scheme.rawValue):")' <<<"${SCHEME_ONLY}" || fail "the scheme-only URL is built from more than the scheme"
-[ "$(grep -c . <<<"${SCHEME_ONLY}")" = 1 ] || fail "more than one URL is built for a lookup"
+[ "$(grep -c . <<<"${SCHEME_ONLY}")" = 1 ] || fail "more than one URL is built for a scheme lookup"
+# The item lookup's argument is the file URL the provider built from a validated local path.
+ITEM_LOOKUP_FUNCTION="$(grep -n -E 'func defaultApplication\(toOpen url: URL\)' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift || true)"
+[ "$(grep -c . <<<"${ITEM_LOOKUP_FUNCTION}")" = 1 ] || fail "the item lookup is not one function taking a URL"
+grep -rq -E 'URL\(fileURLWithPath: path\.text, isDirectory: facts\.isDirectory\)' "${SOURCES[@]}" ||
+    fail "the item URL is no longer built from the validated local path"
+
+echo
+echo "== Source: the item is inspected only through the calls the metadata probe measured prompt-free"
+INSPECTION="$(grep -n -E 'realpath\(|[^a-zA-Z.]stat\(|resourceValues\(forKeys' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -v -E ':[0-9]+:\s*//' || true)"
+echo "${INSPECTION}"
+grep -q 'forKeys: \[.isApplicationKey, .contentTypeKey, .isAliasFileKey\]' <<<"${INSPECTION}" || fail "the item's resource keys are not the measured three"
+if grep -rn -E 'contentsOfDirectory|enumerator\(|contents\(atPath|Data\(contentsOf|String\(contentsOf|FileHandle|fopen\(|open\(path|opendir|readdir' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the workspace provider reads a directory or a file's contents"
+fi
+echo "none read"
 
 echo
 echo "== Source: nothing beside them activates, hides, raises, posts events, scripts, spawns or terminates"
@@ -94,7 +113,7 @@ echo "Selectors that reach the workspace (open requests, handler lookup and the 
 strings "${LIBRARY}" | grep -E '^(openApplicationAtURL:configuration:completionHandler:|openURLs:withApplicationAtURL:configuration:completionHandler:|URLForApplicationToOpenURL:|set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):)$' | sort -u | sed 's/^/  /'
 strings "${LIBRARY}" | grep -qx 'openApplicationAtURL:configuration:completionHandler:' || fail "the bundle does not carry the open request"
 strings "${LIBRARY}" | grep -qx 'openURLs:withApplicationAtURL:configuration:completionHandler:' || fail "the bundle does not carry the URL open request"
-strings "${LIBRARY}" | grep -qx 'URLForApplicationToOpenURL:' || fail "the bundle does not carry the scheme handler lookup"
+strings "${LIBRARY}" | grep -qx 'URLForApplicationToOpenURL:' || fail "the bundle does not carry the handler lookup"
 [ "$(strings "${LIBRARY}" | grep -c -x -E 'set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):' | sort -u)" -ge 10 ] ||
     fail "the bundle lacks one of the ten configuration setters"
 echo "Forbidden selectors and imported symbols:"
@@ -103,4 +122,4 @@ if { strings "${LIBRARY}"; nm -u "${LIBRARY}"; } | sed 's/^ *//' | grep -E "${FO
 fi
 echo "  none"
 echo
-echo "PASSED: one launch request and one URL open request to an explicitly resolved handler, found by the scheme alone, with activation as their declared effect, and no other activation, input, scripting or process call"
+echo "PASSED: one launch request and one open request (URL or path) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as their declared effect, items inspected by measured metadata calls only, and no other activation, input, scripting or process call"

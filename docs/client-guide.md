@@ -461,6 +461,51 @@ same typed `status`, `value.process` and `dependency`, and the same reading of `
    wants the browser's windows uses it as for a launch, and the browser may show the page in
    any of them. A second request is a second open: there is no idempotency key in version 1.
 
+## Opening a document or folder
+
+`workspaceOpenPath` opens a local file, folder or document package in its default
+application or in one you name. [`workspace-operations.graphql`](design/workspace-operations.graphql)
+publishes it as `OpenDocumentOrDirectory`; the [workspace spec](specs/workspace-launch-and-open.md)
+is the contract. It answers like a launch, with the same two controls and no read, the same
+typed `status`, `value.process` and `dependency`, and the same reading of `failed` (items
+1, 3, 4, 5 and 6 of [Launching an application](#launching-an-application) apply unchanged).
+What differs:
+
+1. **The path is literal.** It is one absolute path on the machine Koine runs on: not a
+   file URL, a glob, `~` or `$HOME`. Spaces and shell punctuation are ordinary characters
+   and are never expanded. An empty, relative or NUL-containing path, and a blank
+   `application.bundleIdentifier`, are input errors at the field's path with no `kind`;
+   nothing was inspected and nothing opened.
+2. **A missing path is a dependency, and it is reported first.** `PATH_NOT_FOUND` means
+   nothing exists there or the path is a link to nothing, so nothing was submitted. It is
+   decided before any application is looked up, so it is never confused with a missing
+   handler, and it wins over a named application that is also missing.
+3. **Some things are refused, as input.** After symlinks are resolved, an application
+   bundle, a program (a Unix or Windows executable) and a Finder alias file are refused:
+   an input error at the field's path with no `kind`, for the default and for a named
+   application alike, and nothing opened. This reads metadata only. It does not prove a
+   file's contents cannot run, and a replacement after the check is not seen. Ordinary
+   source and script documents (`.sh`, `.js`, `.command`) are **not** refused, whatever
+   their permission bits; the application you open them in decides what a script does, so
+   a Terminal-bound script may run. A script with **no extension** whose executable bit is
+   set is classified as a program and refused; give it a typed extension or clear the bit. A `.webloc` or `.url` document may be followed to
+   another target by its handler. To show an application or an alias in Finder, reveal it
+   rather than open it.
+4. **`application` is optional.** Omit it or send `null` for the default application; a
+   missing one is `DEPENDENCY_UNAVAILABLE` with `NO_DEFAULT_HANDLER` and no chooser. A
+   named application uses the same input and installation rules as a launch
+   (`APPLICATION_NOT_INSTALLED`, `APPLICATION_IDENTITY_MISMATCH`), and a folder can be
+   sent to one, such as an editor. If the named application cannot open the item, that is
+   `failed`: no other application is tried and no default is changed.
+5. **A location, not a file.** The path is submitted as written and any link in it is
+   followed by the application. A file replaced between the check and the open may open
+   something else or fail.
+6. **Protected folders.** Asking the system for the default application of a *document* in
+   Desktop, Documents or Downloads can raise a Files and Folders prompt for Koine that
+   Koine does not request (a folder's lookup did not in the measurement). Whether and how to open protected
+   documents in their default application is undecided; until it is, name an application
+   for them.
+
 ## What version 1 does not do
 
 A client written from the contract alone asked for each of these;

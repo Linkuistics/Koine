@@ -100,6 +100,8 @@ PY
             "__import__('re').sub(r'  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n', '', s, count=1)"
         control "the workspace URL root removed" \
             "__import__('re').sub(r'  \"\"\"Requires workspace:control AND desktop:control\\. Accept the ASCII[^\n]*\"\"\"\n  workspaceOpenURL[^\n]*\n', '', s, count=1)"
+        control "the workspace path root removed" \
+            "__import__('re').sub(r'  \"\"\"Requires workspace:control AND desktop:control\\. Open one literal[^\n]*\"\"\"\n  workspaceOpenPath[^\n]*\n', '', s, count=1)"
         control "a workspace type's description changed" \
             "s.replace('Closed reason for not submitting this action.', 'Closed reason for not submitting this action!', 1)"
         control "the workspace launch field moved before desktop's" \
