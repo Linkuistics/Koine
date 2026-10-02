@@ -7,7 +7,12 @@ import {
   findApplication,
   type ProcessIdentity,
 } from './adapter/process-identity.js';
-import { interpretLaunch, interpretOpenURL, type WorkspaceOpenFacts } from './adapter/workspace-open.js';
+import {
+  interpretLaunch,
+  interpretOpenPath,
+  interpretOpenURL,
+  type WorkspaceOpenFacts,
+} from './adapter/workspace-open.js';
 import {
   askSuggestions,
   DEFAULT_ENGINE_TEMPLATE,
@@ -25,6 +30,7 @@ import {
   FocusDesktopWindowDocument,
   InspectOwnConnectionDocument,
   LaunchInstalledApplicationDocument,
+  OpenDocumentOrDirectoryDocument,
   OpenSearchUrlDocument,
   PollOwnGrantRequestDocument,
   RequestDesktopGrantDocument,
@@ -45,6 +51,7 @@ const USAGE = `koine-client <command> [options]
   focus      --secret <path> --ref <reference>
   launch     --secret <path> --bundle-identifier <id> [--application-path <absolute path>]
   open-url   --secret <path> (--url <text> | --url-file <path>)
+  open-path  --secret <path> (--path <text> | --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]
   search     --secret <path> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]
 
 Any --name value may also be written --name=value, which is the only way to give a
@@ -512,6 +519,20 @@ async function openUrl(secretPath: string, credential: Credential, url: string):
   };
 }
 
+/**
+ * A file's bytes as UTF-8 text, exactly: no trailing-newline stripping, no BOM
+ * removal, no trimming. Bytes that are not UTF-8 cannot be a GraphQL string, so they
+ * are a client error, not something to repair with U+FFFD.
+ */
+async function readExactUtf8(file: string): Promise<string> {
+  const bytes = await readFile(file);
+  try {
+    return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+  } catch {
+    throw new Error(`${file} is not valid UTF-8; nothing was sent`);
+  }
+}
+
 async function commandOpenUrl(args: Args): Promise<Json> {
   const secretPath = require_(args, 'secret');
   const literal = args.single.get('url');
@@ -519,22 +540,75 @@ async function commandOpenUrl(args: Args): Promise<Json> {
   if (literal === undefined && file === undefined) throw new UsageError('--url or --url-file is required');
   if (literal !== undefined && file !== undefined) throw new UsageError('--url and --url-file cannot be combined');
 
-  let url: string;
-  if (literal !== undefined) url = literal;
-  else {
-    // The file's bytes, as UTF-8, exactly: no trailing-newline stripping, no BOM
-    // removal, no trimming. Bytes that are not UTF-8 cannot be a GraphQL string, so
-    // they are a client error, not something to repair with U+FFFD.
-    const bytes = await readFile(file as string);
-    try {
-      url = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
-    } catch {
-      throw new Error(`${file} is not valid UTF-8; nothing was sent`);
-    }
-  }
+  const url = literal !== undefined ? literal : await readExactUtf8(file as string);
 
   const credential = await loadOrCreateCredential(secretPath);
   return openUrl(secretPath, credential, url);
+}
+
+/**
+ * `workspaceOpenPath`, published as `OpenDocumentOrDirectory`. The path is the exact
+ * text given (a literal, or a file's bytes read as UTF-8 and nothing else). It is not
+ * checked, trimmed, expanded, resolved, encoded or made absolute here: the provider
+ * refuses what it refuses, at the root field's path, and this client reports that.
+ * `application` is left out of the variables for the default handler and is
+ * `{bundleIdentifier, applicationPath?}` when one is named. Sent exactly once,
+ * whatever happens: an open is not safe to repeat, and a lost answer is
+ * `unknown-outcome`.
+ */
+async function commandOpenPath(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('path');
+  const file = args.single.get('path-file');
+  const bundleIdentifier = args.single.get('bundle-identifier');
+  const applicationPath = args.single.get('application-path');
+  if (literal === undefined && file === undefined) throw new UsageError('--path or --path-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--path and --path-file cannot be combined');
+  // `WorkspaceApplicationInput.bundleIdentifier` is `String!`: there is no way to say
+  // "this copy, whatever its identifier", so a path constraint alone has no wire form.
+  if (applicationPath !== undefined && bundleIdentifier === undefined) {
+    throw new UsageError('--application-path needs --bundle-identifier (the input type requires an identifier)');
+  }
+
+  const path = literal !== undefined ? literal : await readExactUtf8(file as string);
+  const application: Json | null =
+    bundleIdentifier === undefined
+      ? null
+      : { bundleIdentifier, ...(applicationPath === undefined ? {} : { applicationPath }) };
+  const credential = await loadOrCreateCredential(secretPath);
+
+  const result = await send({
+    document: OpenDocumentOrDirectoryDocument.toString(),
+    operationName: 'OpenDocumentOrDirectory',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: application === null ? { path } : { path, application },
+  });
+  const facts: WorkspaceOpenFacts = interpretOpenPath(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    path,
+    application,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
 }
 
 async function commandSearch(args: Args): Promise<Json> {
@@ -618,6 +692,9 @@ async function main(): Promise<void> {
         break;
       case 'open-url':
         payload = await commandOpenUrl(args);
+        break;
+      case 'open-path':
+        payload = await commandOpenPath(args);
         break;
       case 'search':
         payload = await commandSearch(args);

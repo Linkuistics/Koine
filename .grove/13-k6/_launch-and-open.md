@@ -214,3 +214,19 @@ reports a browser's own `location.href`, fragment included) are reusable for any
 needs to see what an application was handed. The image cannot show a universal-link divergence
 (no installed application has a resolvable associated domain, and Safari forwards Apple links to
 Maps itself), so a row that wants one inspects the call path instead.
+
+`document-paths-k74` accepted `workspaceOpenPath` at V (`docs/verification/open-path-vm.md`) and
+left one case pending, as the protected-path answer required: default opening of a document in
+Desktop, Documents or Downloads, which needs Antony's consent decision. It is
+`protected-default-open-k89`, a root `design` leaf ahead of `baseline-acceptance`, so that this
+node closes without it. Later increments should expect what the image's handlers are: `.py`, `.json`
+and `.md` open in Zed, `.swift` in Visual Studio Code, `.js` in Safari, `.sh` in iTerm, `.command` in
+Terminal, so a case wanting "a different application from the named one" must choose its type with
+that in mind (the run reads and checks them). `scripts/vm-open-path-fixtures.sh` (disposable
+documents, links, scripts, Finder aliases and a mode-000 directory, idempotent under the agent's
+double-run) is reusable, and the handler's own window, read from the window server with a unique
+fixture name and a before-request check, is the witness of what an application was handed;
+`reveal-path` needs the Finder equivalent. A V recipe of about forty cases takes about three
+hours, because the guest agent costs seconds per command: run it detached
+(`python3 subprocess.Popen(..., start_new_session=True)`), since a harness background task is killed
+at two hours.

@@ -1,8 +1,8 @@
 # Workspace launch and open
 
 **Designed; `workspaceLaunchApplication`, `workspaceOpenURL` and `workspaceOpenPath` are
-implemented and their L, G and N parts, and the URL root's V part, are recorded under
-[Acceptance](#evidence-so-far); the path root's V part and the reveal root are pending,
+implemented and their L, G and N parts, and the URL and path roots' V parts, are recorded under
+[Acceptance](#evidence-so-far); the reveal root is pending,
 and so is one part of the URL root's V evidence, Dia's page load (below), and default
 opening of protected documents (see [Documents and directories](#evidence-so-far)).** Workspace supplies the
 launchers, browser opening, file/folder opening and Finder reveal required by
@@ -94,7 +94,10 @@ bundle by its native resource metadata, or with a content type conforming to
 `com.apple.application-bundle`, `public.unix-executable` or
 `com.microsoft.windows-executable`. Do not use the broad `public.executable` or
 `public.script` ancestors, or executable permission bits, to reject ordinary
-source documents. Unknown type alone does not prove executable content; failed
+source documents. The content type decides, not the permission bits: a document
+with a typed extension (`.sh`, `.js`, `.py`, `.command`) is not refused whatever its
+bits, and an extensionless file whose executable bit is set has the type
+`public.unix-executable` and is refused as a program. Unknown type alone does not prove executable content; failed
 metadata inspection is `failed`. No content sniffing opens protected bytes.
 Refuse native alias files (`com.apple.alias-file`) before handler resolution in
 both forms; this API does not resolve Finder aliases or let them bypass the
@@ -352,13 +355,13 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Twelve launchers, stopped and running | G, N, V | Install Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. Complete first-run/Gatekeeper preparation separately; record actual IDs, versions, paths and callback latency. Cold-launch each and reactivate it with another app frontmost and Koine inactive; observe activation and any returned identity. Acknowledgment without activation does not pass. Exercise the optional desktop handoff separately; a controls-only activation failure stays pending for escalation. No account-dependent workflow is needed. |
 | Multiple copies and installation | G, N, V; L for inspection failures | Registered fixture at two locations: unconstrained launch/named-app open reuses a running copy elsewhere; a path constraint addresses exactly the chosen copy. Check missing/unregistered copy, stale registration after deletion, identifier mismatch and a still-registered present copy in Trash (eligible). Check symlink/Unicode path spellings by native file identity and metadata denial as failed. Bundle-less programs have no named-selector route; default handler use remains distinct. |
 | Browser URL | G, N, V; L for absent handler | Safari and alternate default Dia; encoded query/fragment, IDNA host and universal-link candidate; inspect scheme-only handler discovery. Invalid escapes/raw Unicode/whitespace/backslashes are refused without repair. Client suggestion failure (refused, timed out or unreadable) still opens the typed-query URL, once: the fallback is chosen before the single open, never a second open after a failed one. No Koine Google request. A controlled absent-handler adapter result proves workspace mapping at L; G fakes prove client handling only. V: [open-url-vm.md](../verification/open-url-vm.md). |
-| Documents/directories/settings | G, N, V | Temporary text file, directory and document package; default open and named Zed; config directory; missing file/parent/link/app/handler; inspection denial; literal spaces/punctuation and symlinks. No handler-setting changes. |
+| Documents/directories/settings | G, N, V | Temporary text file, directory and document package; default open and named Zed; config directory; missing file/parent/link/app/handler; inspection denial; literal spaces/punctuation and symlinks. No handler-setting changes. V: [open-path-vm.md](../verification/open-path-vm.md). |
 | Finder reveal | G, N, V; L for unavailable Finder/false acknowledgment | File, folder, app bundle, alias and filesystem root; observe actual selection/root view in V. L runs real workspace mapping for missing Finder and false acknowledgment; G fakes cover client handling only. Receipt alone does not establish selection. |
-| Input boundary | G, N, V; L for type/race cases | Blank selector, relative/NUL paths, non-web schemes, credentials/control characters and recognized app/native-executable payloads including symlinks fail before submission. A source script opens in its default editor and explicitly named Zed, irrespective of executable bits; do not reject JavaScript merely for public.executable conformance. Finder aliases to documents/apps are refused before dispatch. In disposable V fixtures, observe Terminal/script and location-document reactions as disclosed, without claiming a sandbox. L varies metadata and replacement outcomes. No executable/argv/environment/shell API; required app launch still works. URL input at V: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants). |
-| Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. URL receipts at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser). |
-| Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. URL answer times at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser). |
-| Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants)). Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
-| Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
+| Input boundary | G, N, V; L for type/race cases | Blank selector, relative/NUL paths, non-web schemes, credentials/control characters and recognized app/native-executable payloads including symlinks fail before submission. A source script with a typed extension opens in its default editor and explicitly named Zed, irrespective of executable bits (an extensionless file with the bit set is a program by type and is refused); do not reject JavaScript merely for public.executable conformance. Finder aliases to documents/apps are refused before dispatch. In disposable V fixtures, observe Terminal/script and location-document reactions as disclosed, without claiming a sandbox. L varies metadata and replacement outcomes. No executable/argv/environment/shell API; required app launch still works. URL input at V: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path input at V: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants). |
+| Receipt/failure boundary | G, N, V; L for deterministic observations | Error-free exclusive branches; publication denial/revocation at status, value and nested process fields with correct partial data/error paths. Receipts contain no installed path/identifier/handler metadata. Nullable process after acknowledgment; exact kernel instant accepted by desktop. L checks different start samples, executable mismatch, terminated/equal-object checks and unavailable values; inspect the rule for PID reuse rather than claim V induces it. V observes real exit and matching kernel identity. No atomic effect-binding claim. URL receipts at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser); path receipts at V: [open-path-vm.md](../verification/open-path-vm.md#opening-in-the-default-handler-and-in-zed). |
+| Bounded acknowledgment | L, G, N, V | L controls callback before/after three seconds, no callback, cancellation, one-shot completion and bounded outstanding submissions; G checks action-path failure versus the earlier core deadline in multi-action requests. N/V record real completion timing. V holds Gatekeeper open past the bound, confirms failed without replay, then dismisses it and verifies no late result. Slow launch is an expected ambiguous failed outcome, never dependency absence or a passing normal-launch case. URL answer times at V: [open-url-vm.md](../verification/open-url-vm.md#opening-in-each-browser); path answer times at V: [open-path-vm.md](../verification/open-path-vm.md#opening-in-the-default-handler-and-in-zed). |
+| Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Before workspace ships, check native create/approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls. |
+| Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
@@ -457,10 +460,10 @@ what was established; every row above keeps its pending remainder.
   check (`task check:launch-call-path`) holds the item lookup to the item's own URL and
   the inspection to the three measured resource keys, with no directory listing and no
   content read, each new check first seen red against a mutated source.
-  Known limit: an extensionless file with its executable bit set has content type
+  An extensionless file with its executable bit set has content type
   `public.unix-executable` and is refused as a program, while the same file without the bit
-  is opened; the type rule above and the "irrespective of executable bits" row disagree there,
-  and the rule is applied as written.
+  is opened: the type decides, as the Operations paragraph and the Input boundary row now say
+  (this was recorded as a known limit while they read differently).
   **Pending, and not accepted here:** default opening of a *protected* document. The
   system's file lookup is the only route to the default application, and in the
   [measurement](../verification/protected-path-metadata.md#handler-lookup-limit) it raised
@@ -468,9 +471,31 @@ what was established; every row above keeps its pending remainder.
   returned a handler even after denial; a directory's did not. Nothing here requests or
   suppresses that consent or substitutes another rule, so the operation is accepted for
   unprotected locations and for named applications, and the protected default case stays
-  live work for Antony's consent decision (`document-paths`). Also pending: V
-  (`open-path-vm`), the contract-only client's examples, and the conformance profile at
-  V.
+  live work for Antony's consent decision (`protected-default-open-k89`).
+  **V** ([open-path-vm.md](../verification/open-path-vm.md)), by the contract-only client in a
+  clone of the prepared image with Accessibility never granted: a temporary text file under
+  `/tmp`, a directory and a document package each opened in their default handler and with Zed
+  named, and the configuration directory in Zed; in each, a window of the handler naming the fixture
+  (none of that application's windows named it before the request) and the receipt's process equal to
+  the kernel's identity of the handler. Literal spaces and shell punctuation, decomposed Unicode, a
+  symlink to a file, to a directory and a file through a symlinked parent opened as written. Source
+  scripts, each with and without its executable bit, opened in their default editor (Swift in Code,
+  Python in Zed) and in named Zed (JavaScript and Swift). Twenty-five requests were refused, unavailable or failed with no
+  application launched or activated (a weak window comparison beside it is described in the document): the input errors (empty, relative,
+  tilde, file URL, NUL, a blank application) at `["workspaceOpenPath"]` in an HTTP 200 answer, an
+  application bundle and a link to one, three Finder alias files, a Mach-O program and a Windows
+  executable by type; `PATH_NOT_FOUND` for a missing file, parent, link, a path below a file and a
+  trailing slash, and before a missing application; `APPLICATION_NOT_INSTALLED`;
+  `NO_DEFAULT_HANDLER`; and a file inside a mode-000 directory `failed`. Either control alone
+  (403, the first unmet member and the complete ordered set), a revoked grant (401) and a missing
+  path under one control (403: the denial precedes inspection) opened nothing. The handlers' reactions
+  were recorded and not prevented: Terminal ran a `.command` script that had its executable bit and
+  no marker appeared for one that had not, iTerm wrote no marker for a `.sh` script, Safari requested the page a
+  `.webloc` names, and TextEdit opened the file a `.fileloc` names. No default-handler setting changed
+  and Accessibility was read as absent at the start and the end, with no consent dialog listed after any open. The workspace
+  profile at V includes the path root (`task conformance`, all three profiles, the path root's removal seen red,
+  digest `f98a3862…`). One macOS image, one sample of each timing; a protected document, a removable
+  or network volume and an iCloud item were not exercised.
 - **Browser URL.** L, G, N and V. L, G and N drive no browser (below); V is
   [open-url-vm.md](../verification/open-url-vm.md), summarized after this paragraph.
   The grammar is held as a decision over bytes (`WebURLTests`): accepted are an `http`
@@ -587,7 +612,10 @@ what was established; every row above keeps its pending remainder.
   capability denial with the complete required set, a `failed` launch and an absent
   process. Every place it had to guess is repaired in the documents or declined for
   version 1 ([launch-contract-client-findings.md](../verification/launch-contract-client-findings.md)).
-  Pending: the other operations' examples, which are not served yet.
+  The same reading-restricted pass added `open-url` and `search`
+  ([open-url-contract-client-findings.md](../verification/open-url-contract-client-findings.md)) and
+  `open-path` ([open-path-contract-client-findings.md](../verification/open-path-contract-client-findings.md)),
+  which opened a document and a directory in the V run above. Pending: the reveal operation's examples, which is not served yet.
 - **Packaging/selection.** N: the signed bundle, built by its own definition and
   linking only the host framework, loads from the in-application root beside
   desktop through the selection-aware loader, `ACTIVE` and `SELECTED` at
@@ -604,7 +632,9 @@ what was established; every row above keeps its pending remainder.
   provider or coordinate fails. The profile's design file also declares
   `workspaceOpenURL`, with a control that removes it, and the signed application in a VM
   serves exactly that (digest `1815b52f…`, `task conformance` passing all three profiles,
-  [open-url-vm.md](../verification/open-url-vm.md#regression-and-what-was-re-run)). Pending: the complete selection matrix
+  [open-url-vm.md](../verification/open-url-vm.md#regression-and-what-was-re-run)); with
+  `workspaceOpenPath` added the same holds at digest `f98a3862…`, its removal seen red
+  ([open-path-vm.md](../verification/open-path-vm.md#regression-and-what-was-re-run)). Pending: the complete selection matrix
   (`selection-acceptance`), old/new binaries with this provider, and selected
   updates and explicit absent/rejected sets in conformance.
 

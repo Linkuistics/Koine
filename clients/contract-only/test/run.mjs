@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { startStub } from './stub-server.mjs';
 import { LAUNCH_ANSWERS, PROCESS } from './launch-stubs.mjs';
 import { OPEN_URL_ANSWERS } from './open-url-stubs.mjs';
+import { OPEN_PATH_ANSWERS } from './open-path-stubs.mjs';
 import { startSuggestionSources } from './suggestion-stubs.mjs';
 
 const run = promisify(execFile);
@@ -47,6 +48,8 @@ let choicesNull = false;
 const launchRequests = [];
 let openUrlMode = 'available-process';
 const openUrlRequests = [];
+let openPathMode = 'available-process';
+const openPathRequests = [];
 const stub = await startStub(({ request, auth }) => {
   const name = request.operationName;
   if (name === 'LaunchInstalledApplication') {
@@ -56,6 +59,10 @@ const stub = await startStub(({ request, auth }) => {
   if (name === 'OpenSearchURL') {
     openUrlRequests.push({ request, auth });
     return OPEN_URL_ANSWERS[openUrlMode]();
+  }
+  if (name === 'OpenDocumentOrDirectory') {
+    openPathRequests.push({ request, auth });
+    return OPEN_PATH_ANSWERS[openPathMode]();
   }
   if (name === 'DesktopChoices' && choicesNull) {
     return { status: 200, body: { data: { desktopApplication: null }, _process: request.variables.process } };
@@ -554,6 +561,255 @@ for (const [label, bytes] of fileCases) {
   check('open-url: --url or --url-file is required, and not both; nothing sent', openUrlRequests.length === before && neither.result.classification === 'request-error' && both.result.classification === 'request-error', [neither.result, both.result]);
 }
 
+// --- open-path ----------------------------------------------------------
+// The same table as open-url, from the path root's own wire shapes (test/open-path-stubs.mjs).
+// Every case sends exactly one request. The PATH_NOT_FOUND, NO_DEFAULT_HANDLER and both
+// application reasons are rows of their own: the client reads each the same way.
+const PATH_ROOT = 'workspaceOpenPath';
+const goodPath = '/tmp/koine test/notes (1).txt';
+const pathArgs = ['open-path', '--secret', secret, '--path', goodPath];
+const NAMED = ['--bundle-identifier', 'dev.zed.Zed'];
+const OPEN_URL_KEYS = ['credential', 'sentMs', 'receivedMs', 'status', 'actionEffect', 'receipt', 'process', 'processState', 'choicesArguments', 'dependency', 'requiredCapability', 'requiredCapabilities', 'phase', 'branchSuppressed', 'resultErrorPaths', 'contractViolation'];
+const dependencyRow = (reason, text) => ['dependency-' + reason.toLowerCase().replaceAll('_', '-').replace('application-', ''), 'dependency-unavailable', 'DEPENDENCY_UNAVAILABLE', 'none', 'no-receipt', false, (r) => {
+  check(`open-path ${reason}: reason and guidance copied verbatim`, r.dependency.reason === reason && r.dependency.guidance.includes(text), r.dependency);
+  check(`open-path ${reason}: a typed result, not an error; nothing was submitted, nothing is unknown`, r.errors.length === 0 && r.ok === false && r.process === null && r.receipt === null && r.outcomeUnknown === false && r.actionEffect === 'none', r);
+  check(`open-path ${reason}: only the contract's facts, no claim of its own about the world`, JSON.stringify(Object.keys(r.dependency)) === JSON.stringify(['reason', 'guidance']) && !Object.keys(r).some((k) => /exist|found|missing|handler/i.test(k)), Object.keys(r));
+}];
+const openPathCases = [
+  // name, classification, status, actionEffect, processState, outcomeUnknown, extra checks
+  ['available-process', 'ok', 'AVAILABLE', 'acknowledged', 'present', false, (r) => {
+    check('open-path available: process copied unchanged', r.process.pid === PROCESS.pid && r.process.startedAt === PROCESS.startedAt, r.process);
+    check('open-path available: receipt carries the process, no dependency, no capability facts', r.receipt.process.pid === PROCESS.pid && r.dependency === null && r.requiredCapability === null && r.requiredCapabilities === null);
+    check('open-path available: ok, the path echoed exactly, no application', r.ok === true && r.path === goodPath && r.application === null, [r.path, r.application]);
+    check('open-path available: choices arguments hand the identity over unchanged', JSON.stringify(r.choicesArguments) === JSON.stringify(['--pid', '4242', '--started-at', PROCESS.startedAt]));
+    check('open-path available: the same facts as open-url, plus path and application, and nothing else',
+      JSON.stringify(Object.keys(r).filter((k) => ![...OPEN_URL_KEYS, 'command', 'ok', 'classification', 'endpoint', 'http', 'response', 'errors', 'transport', 'outcomeUnknown'].includes(k)).sort()) === JSON.stringify(['application', 'path']), Object.keys(r));
+  }],
+  ['available-null-process', 'ok', 'AVAILABLE', 'acknowledged', 'null-in-receipt', false, (r) => {
+    check('open-path null process: receipt present, process null, still ok', r.process === null && r.receipt !== null && r.receipt.process === null && r.ok === true && r.errors.length === 0, r);
+  }],
+  dependencyRow('PATH_NOT_FOUND', 'Nothing was found'),
+  dependencyRow('NO_DEFAULT_HANDLER', 'registered to open'),
+  dependencyRow('APPLICATION_NOT_INSTALLED', 'Zed'),
+  dependencyRow('APPLICATION_IDENTITY_MISMATCH', 'different identifier'),
+  ['denied-lacks-workspace', 'capability-denied', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path denied: HTTP 403, no data, phase authorization', r.http.status === 403 && r.response.data === undefined && r.phase === 'authorization', r.http);
+    check('open-path denied: first unmet is workspace:control, the complete set in the spec order', r.requiredCapability === 'workspace:control' && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET), r);
+    check('open-path denied: per error, at the action path', JSON.stringify(r.errors[0].path) === JSON.stringify([PATH_ROOT]) && JSON.stringify(r.errors[0].requiredCapabilities) === JSON.stringify(FULL_SET), r.errors[0]);
+  }],
+  ['denied-lacks-desktop', 'capability-denied', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path denied: first unmet is desktop:control, the set is still whole', r.requiredCapability === 'desktop:control' && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET), r);
+  }],
+  ['denied-lacks-both', 'capability-denied', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path denied: neither held, one first-unmet plus the whole set', r.requiredCapability === 'workspace:control' && r.requiredCapabilities.length === 2, r);
+  }],
+  ['denied-revoked-before-dispatch', 'capability-denied', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path denied at execution: phase execution, HTTP 200', r.phase === 'execution' && r.http.status === 200, r);
+  }],
+  ['failed-at-action', 'failed', null, 'may-have-begun', 'no-receipt', true, (r) => {
+    check('open-path failed: error at the action path, no dependency, no process', JSON.stringify(r.errors[0].path) === JSON.stringify([PATH_ROOT]) && r.dependency === null && r.process === null, r.errors);
+  }],
+  ['failed-inspection-denied', 'failed', null, 'may-have-begun', 'no-receipt', true, (r) => {
+    check('open-path failed inspection: never read as a missing path', r.dependency === null && r.status === null && r.classification === 'failed', r);
+  }],
+  ['failed-deadline', 'failed', null, 'unknown', 'no-receipt', true, (r) => {
+    check('open-path failed deadline: empty path, data null', r.errors[0].path.length === 0 && r.response.data === null);
+  }],
+  ['input-error', 'input-error', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path input error: no kind, at the root field\'s own path, nothing attempted', r.errors[0].kind === null && JSON.stringify(r.errors[0].path) === JSON.stringify([PATH_ROOT]) && r.outcomeUnknown === false, r.errors);
+    check('open-path input error: error path reported', JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([PATH_ROOT])), r.resultErrorPaths);
+  }],
+  ['input-error-argument-path', 'input-error', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path input error one level down: still the action\'s own refusal, reported at that path', r.errors[0].kind === null && JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([PATH_ROOT, 'path'])), r);
+  }],
+  ['input-error-application-path', 'input-error', null, 'none', 'no-receipt', false, (r) => {
+    check('open-path input error at the application\'s identifier: the action\'s own refusal', JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([PATH_ROOT, 'application', 'bundleIdentifier'])), r);
+  }],
+  ['suppressed-value', 'capability-denied', 'AVAILABLE', 'acknowledged', 'suppressed', false, (r) => {
+    check('open-path suppressed value: status still says acknowledged; error kept with path and set', r.status === 'AVAILABLE' && JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([PATH_ROOT, 'value'])) && JSON.stringify(r.requiredCapabilities) === JSON.stringify(FULL_SET), r);
+    check('open-path suppressed value: flagged as a suppressed branch', r.branchSuppressed === true && r.process === null && r.receipt === null);
+  }],
+  ['suppressed-process', 'capability-denied', 'AVAILABLE', 'acknowledged', 'suppressed', false, (r) => {
+    check('open-path suppressed process: receipt present, process withheld, not absent', r.receipt !== null && r.process === null && r.branchSuppressed === false && r.requiredCapability === 'desktop:control', r);
+  }],
+  ['suppressed-dependency', 'capability-denied', 'DEPENDENCY_UNAVAILABLE', 'none', 'no-receipt', false, (r) => {
+    check('open-path suppressed dependency: status says nothing was submitted', r.status === 'DEPENDENCY_UNAVAILABLE' && r.dependency === null && r.branchSuppressed === true, r);
+  }],
+  ['suppressed-dependency-guidance', 'capability-denied', 'DEPENDENCY_UNAVAILABLE', 'none', 'no-receipt', false, (r) => {
+    check('open-path suppressed guidance: the reason went with the dependency object and is not guessed; still nothing submitted', r.dependency === null && r.branchSuppressed === true && r.actionEffect === 'none' && r.outcomeUnknown === false, r);
+    check('open-path suppressed guidance: the error is kept with its path', JSON.stringify(r.resultErrorPaths) === JSON.stringify(PATHS([PATH_ROOT, 'dependency', 'guidance'])), r.resultErrorPaths);
+  }],
+  ['suppressed-status', 'capability-denied', null, 'unknown', 'no-receipt', true, (r) => {
+    check('open-path suppressed status: the client cannot say what the action did', r.response.data[PATH_ROOT] === null && r.actionEffect === 'unknown', r);
+  }],
+  ['violation-null-root', 'failed', null, 'unknown', 'no-receipt', true, (r) => {
+    check('open-path null root with no error is not absence, and the message names this root', r.classification !== 'absent' && r.contractViolation.includes('workspaceOpenPath') && !r.contractViolation.includes('workspaceOpenURL'), r.contractViolation);
+  }],
+  ['violation-both-branches', 'failed', 'AVAILABLE', 'unknown', 'no-receipt', true, (r) => {
+    check('open-path both branches: a contract violation', r.contractViolation !== null);
+  }],
+  ['violation-not-a-response', 'failed', null, 'unknown', 'no-receipt', true, (r) => {
+    check('open-path not a response: never read as success', r.ok === false && r.contractViolation !== null, r);
+  }],
+  ['violation-dependency-missing', 'failed', 'DEPENDENCY_UNAVAILABLE', 'unknown', 'no-receipt', true, (r) => {
+    check('open-path dependency branch missing: a contract violation', r.contractViolation !== null);
+  }],
+  ['violation-unnamed-status', 'failed', 'PATH_NOT_FOUND', 'unknown', 'no-receipt', true, (r) => {
+    check('open-path a reason where a status belongs: a contract violation, not a dependency result', r.contractViolation !== null && r.dependency === null, r);
+  }],
+  ['violation-wrong-root', 'failed', null, 'unknown', 'no-receipt', true, (r) => {
+    check('open-path answer for another root: a violation naming workspaceOpenPath, not success', r.ok === false && r.contractViolation.includes('workspaceOpenPath'), r.contractViolation);
+  }],
+];
+for (const [name, classification, status, effect, processState, unknown, extra] of openPathCases) {
+  openPathMode = name;
+  const before = openPathRequests.length;
+  const before_ms = Date.now();
+  const { result, stdout } = await cli(stub.descriptor, pathArgs);
+  const after_ms = Date.now();
+  const sent = openPathRequests.length - before;
+  check(`open-path ${name}: exactly one request, never replayed`, sent === 1, sent);
+  check(`open-path ${name}: classification ${classification}`, result.classification === classification, result.classification);
+  check(`open-path ${name}: status ${status}`, result.status === status, result.status);
+  check(`open-path ${name}: actionEffect ${effect}`, result.actionEffect === effect, result.actionEffect);
+  check(`open-path ${name}: processState ${processState}`, result.processState === processState, result.processState);
+  check(`open-path ${name}: outcomeUnknown ${unknown}`, result.outcomeUnknown === unknown, result.outcomeUnknown);
+  check(`open-path ${name}: command, ok, path, application`, result.command === 'open-path' && result.ok === (classification === 'ok') && result.path === goodPath && result.application === null);
+  check(`open-path ${name}: timing fields`, Number.isInteger(result.sentMs) && Number.isInteger(result.receivedMs) && before_ms <= result.sentMs && result.sentMs <= result.receivedMs && result.receivedMs <= after_ms, [before_ms, result.sentMs, result.receivedMs, after_ms]);
+  check(`open-path ${name}: secret never printed`, !stdout.includes(secretTextForLaunch));
+  check(`open-path ${name}: common fields present`, ['endpoint', 'http', 'response', 'errors', 'transport', 'outcomeUnknown', 'receipt', 'process', 'processState', 'dependency', 'requiredCapability', 'requiredCapabilities', 'phase', 'branchSuppressed', 'resultErrorPaths', 'contractViolation', 'sentMs', 'receivedMs', 'path', 'application'].every((k) => k in result));
+  extra(result);
+}
+
+// A named application changes the variables and the echo, not the reading.
+{
+  openPathMode = 'dependency-not-installed';
+  const before = openPathRequests.length;
+  const { result } = await cli(stub.descriptor, [...pathArgs, ...NAMED]);
+  check('open-path named application: one request; the reading is the same', openPathRequests.length - before === 1 && result.classification === 'dependency-unavailable' && result.dependency.reason === 'APPLICATION_NOT_INSTALLED' && result.actionEffect === 'none', result);
+  check('open-path named application: echoed as sent', JSON.stringify(result.application) === JSON.stringify({ bundleIdentifier: 'dev.zed.Zed' }), result.application);
+  // PATH_NOT_FOUND for a named application is still only "nothing was submitted".
+  openPathMode = 'dependency-path-not-found';
+  const second = await cli(stub.descriptor, [...pathArgs, ...NAMED, '--application-path', '/Applications/Zed.app']);
+  check('open-path named application and a missing path: PATH_NOT_FOUND, nothing submitted', second.result.dependency.reason === 'PATH_NOT_FOUND' && second.result.actionEffect === 'none' && second.result.outcomeUnknown === false && JSON.stringify(second.result.application) === JSON.stringify({ bundleIdentifier: 'dev.zed.Zed', applicationPath: '/Applications/Zed.app' }), second.result);
+}
+
+// The request itself: the published operation, literal variables, the bearer.
+openPathMode = 'available-process';
+{
+  const before = openPathRequests.length;
+  await cli(stub.descriptor, pathArgs);
+  const sent = openPathRequests.at(-1);
+  check('open-path request: operation name and exactly one literal variable for the default handler', sent.request.operationName === 'OpenDocumentOrDirectory' && JSON.stringify(sent.request.variables) === JSON.stringify({ path: goodPath }), sent.request.variables);
+  check('open-path request: no application key for the default handler', !('application' in sent.request.variables));
+  check('open-path request: bearer presented', sent.auth !== null && sent.auth.startsWith('Bearer '));
+  check('open-path request: the published document, fragment included', sent.request.query.includes('workspaceOpenPath(path: $path, application: $application)') && sent.request.query.includes('fragment WorkspaceOpenOutcome on WorkspaceOpenResult') && !sent.request.query.includes('workspaceOpenURL') && !sent.request.query.includes('workspaceLaunchApplication'), sent.request.query);
+  check('open-path request: one request', openPathRequests.length - before === 1);
+  await cli(stub.descriptor, [...pathArgs, ...NAMED]);
+  check('open-path request: a named application is {bundleIdentifier} and nothing else', JSON.stringify(openPathRequests.at(-1).request.variables) === JSON.stringify({ path: goodPath, application: { bundleIdentifier: 'dev.zed.Zed' } }), openPathRequests.at(-1).request.variables);
+  await cli(stub.descriptor, [...pathArgs, ...NAMED, '--application-path', '/Applications/Zed Two.app']);
+  check('open-path request: applicationPath sent verbatim, only when given', JSON.stringify(openPathRequests.at(-1).request.variables) === JSON.stringify({ path: goodPath, application: { bundleIdentifier: 'dev.zed.Zed', applicationPath: '/Applications/Zed Two.app' } }), openPathRequests.at(-1).request.variables);
+  await cli(stub.descriptor, [...pathArgs, '--bundle-identifier', '']);
+  check('open-path request: a blank identifier is sent for the provider to refuse', JSON.stringify(openPathRequests.at(-1).request.variables) === JSON.stringify({ path: goodPath, application: { bundleIdentifier: '' } }), openPathRequests.at(-1).request.variables);
+}
+
+// Bytes in, bytes out: no trimming, expanding, resolving, decoding or encoding, whatever the
+// text is. The provider refuses what it refuses; here the stub answers an input error and
+// the client must have sent the text untouched and reported the refusal.
+openPathMode = 'input-error';
+const rawPaths = [
+  '',
+  'relative/notes.txt',
+  '~/notes.txt',
+  '$HOME/notes.txt',
+  'file:///tmp/notes.txt',
+  ' /tmp/notes.txt',
+  '/tmp/notes.txt ',
+  '/tmp/notes.txt\n',
+  '/tmp/notes.txt\r\n',
+  '/tmp/a b/c\td',
+  '/tmp/*.txt',
+  '/tmp/{a,b}/$(id)/`id`/;rm -rf x',
+  '/tmp/café/日本/\u{1F600}',
+  '/tmp/café/é',
+  '/tmp/100%25/%41/%zz',
+  '/tmp/x/',
+  '//tmp//x/./y/../z',
+  // (A NUL cannot be an argv element at all; that is what --path-file is for, below.)
+  '/' + 'a'.repeat(5000),
+  '--looks-like-an-option',
+  '/Applications/Notes.app',
+];
+for (const raw of rawPaths) {
+  const before = openPathRequests.length;
+  const { result } = await cli(stub.descriptor, ['open-path', '--secret', secret, `--path=${raw}`]);
+  const shown = JSON.stringify(raw).slice(0, 60);
+  check(`open-path raw ${shown}: sent byte-for-byte, once`, openPathRequests.length - before === 1 && openPathRequests.at(-1).request.variables.path === raw && JSON.stringify(Object.keys(openPathRequests.at(-1).request.variables)) === JSON.stringify(['path']), shown);
+  check(`open-path raw ${shown}: refusal observed, path echoed`, result.classification === 'input-error' && result.path === raw && result.actionEffect === 'none', result.classification);
+}
+{
+  // The two-argument form gives the same text.
+  const before = openPathRequests.length;
+  await cli(stub.descriptor, ['open-path', '--secret', secret, '--path', '/tmp/a b\\c']);
+  check('open-path: separate --path value sent verbatim', openPathRequests.length - before === 1 && openPathRequests.at(-1).request.variables.path === '/tmp/a b\\c');
+}
+
+// --path-file: the file's bytes as UTF-8 text, nothing stripped.
+const pathFileCases = [
+  ['plain', Buffer.from('/tmp/notes.txt', 'utf8')],
+  ['trailing LF', Buffer.from('/tmp/notes.txt\n', 'utf8')],
+  ['trailing CRLF', Buffer.from('/tmp/notes.txt\r\n', 'utf8')],
+  ['two lines', Buffer.from('/tmp/a\n/tmp/b\n', 'utf8')],
+  ['leading space and trailing spaces', Buffer.from('  /tmp/notes.txt  ', 'utf8')],
+  ['non-ASCII and emoji', Buffer.from('/tmp/café/日本/\u{1F600}.txt', 'utf8')],
+  ['decomposed accent', Buffer.from('/tmp/café', 'utf8')],
+  ['NUL inside', Buffer.from('/tmp/a\u0000b', 'utf8')],
+  ['NUL at the end', Buffer.from('/tmp/a\u0000', 'utf8')],
+  ['byte order mark kept', Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), Buffer.from('/tmp/notes.txt', 'utf8')])],
+  ['empty file', Buffer.alloc(0)],
+  ['just a newline', Buffer.from('\n', 'utf8')],
+];
+const pathFile = join(dir, 'path.txt');
+for (const [label, bytes] of pathFileCases) {
+  await writeFile(pathFile, bytes);
+  const before = openPathRequests.length;
+  const { result } = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path-file', pathFile]);
+  const expected = bytes.toString('utf8');
+  check(`open-path file (${label}): the file's text sent exactly, once`, openPathRequests.length - before === 1 && openPathRequests.at(-1).request.variables.path === expected && Buffer.from(openPathRequests.at(-1).request.variables.path, 'utf8').equals(bytes), openPathRequests.at(-1)?.request.variables);
+  check(`open-path file (${label}): path echoed exactly`, result.path === expected);
+}
+{
+  // The same file with a named application: the path is still the file's text.
+  await writeFile(pathFile, Buffer.from('/tmp/dir with space/\n', 'utf8'));
+  const before = openPathRequests.length;
+  await cli(stub.descriptor, ['open-path', '--secret', secret, '--path-file', pathFile, ...NAMED]);
+  check('open-path file with a named application: path exact, application sent', openPathRequests.length - before === 1 && openPathRequests.at(-1).request.variables.path === '/tmp/dir with space/\n' && openPathRequests.at(-1).request.variables.application.bundleIdentifier === 'dev.zed.Zed', openPathRequests.at(-1).request.variables);
+}
+{
+  // Bytes that are not UTF-8 cannot be a GraphQL string; nothing is sent, and nothing is repaired.
+  const before = openPathRequests.length;
+  for (const [label, bytes] of [
+    ['invalid byte', Buffer.from([0x2f, 0x74, 0x6d, 0x70, 0x2f, 0xff, 0xfe])],
+    ['truncated sequence', Buffer.from([0x2f, 0x74, 0xe6, 0x97])],
+    ['overlong NUL', Buffer.from([0x2f, 0xc0, 0x80])],
+    ['lone surrogate encoded', Buffer.from([0x2f, 0xed, 0xa0, 0x80])],
+    ['Latin-1 name', Buffer.from('/tmp/caf\xe9', 'latin1')],
+  ]) {
+    await writeFile(pathFile, bytes);
+    const { result } = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path-file', pathFile]);
+    check(`open-path file (not UTF-8: ${label}): nothing sent, reported as a client error`, openPathRequests.length === before && result.classification === 'failed' && /UTF-8/.test(result.clientError) && result.ok === false && result.outcomeUnknown === false, result);
+  }
+  const { result: missing } = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path-file', join(dir, 'absent.txt')]);
+  check('open-path file (missing): nothing sent, reported as a client error', openPathRequests.length === before && missing.classification === 'failed' && typeof missing.clientError === 'string', missing);
+  const neither = await cli(stub.descriptor, ['open-path', '--secret', secret]);
+  const both = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path', '/tmp/x', '--path-file', pathFile]);
+  const pathOnly = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path', '/tmp/x', '--application-path', '/Applications/Zed.app']);
+  const twice = await cli(stub.descriptor, ['open-path', '--secret', secret, '--path', '/tmp/x', '--path', '/tmp/y']);
+  check('open-path: --path or --path-file is required, and not both; --application-path needs an identifier; nothing sent',
+    openPathRequests.length === before && [neither, both, pathOnly, twice].every((x) => x.result.classification === 'request-error' && x.result.ok === false), [neither.result, both.result, pathOnly.result, twice.result]);
+}
+openPathMode = 'available-process';
+
 // --- search -------------------------------------------------------------
 // The client-owned flow. Whatever the suggestion source does, exactly one
 // OpenSearchURL carries the typed-query URL, and the search engine is never contacted.
@@ -641,6 +897,8 @@ check('launch with no connection -> service-unavailable, nothing submitted', dow
 
 const downOpen = await cli(stub.descriptor, openArgs);
 check('open-url with no connection -> service-unavailable, nothing submitted', downOpen.result.classification === 'service-unavailable' && downOpen.result.actionEffect === 'none' && downOpen.result.outcomeUnknown === false && downOpen.result.sentMs === null && downOpen.result.receivedMs === null && downOpen.result.url === goodUrl, downOpen.result);
+const downPath = await cli(stub.descriptor, pathArgs);
+check('open-path with no connection -> service-unavailable, nothing submitted', downPath.result.classification === 'service-unavailable' && downPath.result.actionEffect === 'none' && downPath.result.outcomeUnknown === false && downPath.result.sentMs === null && downPath.result.receivedMs === null && downPath.result.path === goodPath && downPath.result.application === null, downPath.result);
 const downSearch = await cli(stub.descriptor, ['search', '--secret', secret, '--query', 'café 日本']);
 check('search with no connection -> service-unavailable, URL still built, suggestions not attempted', downSearch.result.classification === 'service-unavailable' && downSearch.result.search.urlBuilt === `${GOOGLE}caf%C3%A9%20%E6%97%A5%E6%9C%AC` && downSearch.result.search.suggestions.outcome === 'not-attempted', downSearch.result);
 
@@ -668,6 +926,9 @@ check('launch cut after send: no process, no receipt', lostLaunch.result.process
 killed = 0;
 const lostOpen = await cli(killerDescriptor, openArgs);
 check('open-url cut after send -> unknown-outcome, sent once, never replayed', lostOpen.result.classification === 'unknown-outcome' && lostOpen.result.outcomeUnknown === true && lostOpen.result.actionEffect === 'unknown' && killed === 1 && lostOpen.result.processState === 'no-receipt' && lostOpen.result.receivedMs === null && Number.isInteger(lostOpen.result.sentMs), [killed, lostOpen.result]);
+killed = 0;
+const lostPath = await cli(killerDescriptor, [...pathArgs, ...NAMED]);
+check('open-path cut after send -> unknown-outcome, sent once, never replayed', lostPath.result.classification === 'unknown-outcome' && lostPath.result.outcomeUnknown === true && lostPath.result.actionEffect === 'unknown' && killed === 1 && lostPath.result.processState === 'no-receipt' && lostPath.result.receivedMs === null && Number.isInteger(lostPath.result.sentMs) && lostPath.result.path === goodPath && lostPath.result.application.bundleIdentifier === 'dev.zed.Zed', [killed, lostPath.result]);
 killed = 0;
 const lostSearch = await cli(killerDescriptor, ['search', '--secret', secret, '--query', 'café 日本']);
 check('search cut after send -> unknown-outcome, one request, URL reported', lostSearch.result.classification === 'unknown-outcome' && lostSearch.result.outcomeUnknown === true && killed === 1 && lostSearch.result.search.urlBuilt === `${GOOGLE}caf%C3%A9%20%E6%97%A5%E6%9C%AC`, [killed, lostSearch.result]);

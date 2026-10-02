@@ -183,6 +183,8 @@ export type Mutation = {
   koineRevokeGrant: Maybe<KoineGrant>;
   /** Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first. */
   workspaceLaunchApplication: Maybe<WorkspaceOpenResult>;
+  /** Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. Refuse native application-bundle, Unix/Windows executable and Finder-alias metadata after symlink resolution; no content sandbox or race-free classification. Script/source documents can use default editors. A handler can execute scripts or follow location documents to other schemes/targets. No executable selector, argv, environment or shell expansion. Missing path/app/default handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first. */
+  workspaceOpenPath: Maybe<WorkspaceOpenResult>;
   /** Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first. */
   workspaceOpenURL: Maybe<WorkspaceOpenResult>;
 };
@@ -221,6 +223,12 @@ export type MutationKoineRevokeGrantArgs = {
 
 export type MutationWorkspaceLaunchApplicationArgs = {
   application: WorkspaceApplicationInput;
+};
+
+
+export type MutationWorkspaceOpenPathArgs = {
+  application: InputMaybe<WorkspaceApplicationInput>;
+  path: Scalars['String']['input'];
 };
 
 
@@ -315,22 +323,6 @@ export type WorkspaceProcessIdentity = {
   startedAt: Scalars['String']['output'];
 };
 
-export type WorkspaceOpenOutcomeFragment = { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null };
-
-export type LaunchInstalledApplicationMutationVariables = Exact<{
-  application: WorkspaceApplicationInput;
-}>;
-
-
-export type LaunchInstalledApplicationMutation = { __typename?: 'Mutation', workspaceLaunchApplication: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
-
-export type OpenSearchUrlMutationVariables = Exact<{
-  url: Scalars['String']['input'];
-}>;
-
-
-export type OpenSearchUrlMutation = { __typename?: 'Mutation', workspaceOpenURL: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
-
 export type DesktopChoicesQueryVariables = Exact<{
   process: DesktopProcessIdentity;
 }>;
@@ -361,6 +353,30 @@ export type InspectOwnConnectionQueryVariables = Exact<{ [key: string]: never; }
 
 
 export type InspectOwnConnectionQuery = { __typename?: 'Query', koine: { __typename?: 'Koine', contractVersion: string, instanceId: string, schemaDigest: string, ownGrant: { __typename?: 'KoineGrant', capabilities: Array<string>, state: KoineGrantState } | null } };
+
+export type WorkspaceOpenOutcomeFragment = { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null };
+
+export type LaunchInstalledApplicationMutationVariables = Exact<{
+  application: WorkspaceApplicationInput;
+}>;
+
+
+export type LaunchInstalledApplicationMutation = { __typename?: 'Mutation', workspaceLaunchApplication: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
+
+export type OpenSearchUrlMutationVariables = Exact<{
+  url: Scalars['String']['input'];
+}>;
+
+
+export type OpenSearchUrlMutation = { __typename?: 'Mutation', workspaceOpenURL: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
+
+export type OpenDocumentOrDirectoryMutationVariables = Exact<{
+  path: Scalars['String']['input'];
+  application: InputMaybe<WorkspaceApplicationInput>;
+}>;
+
+
+export type OpenDocumentOrDirectoryMutation = { __typename?: 'Mutation', workspaceOpenPath: { __typename?: 'WorkspaceOpenResult', status: WorkspaceOperationStatus, value: { __typename?: 'WorkspaceOpenReceipt', process: { __typename?: 'WorkspaceProcessIdentity', pid: number, startedAt: string } | null } | null, dependency: { __typename?: 'WorkspaceDependencyUnavailable', reason: WorkspaceDependencyReason, guidance: string } | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -395,44 +411,6 @@ export const WorkspaceOpenOutcomeFragmentDoc = new TypedDocumentString(`
   }
 }
     `, {"fragmentName":"WorkspaceOpenOutcome"}) as unknown as TypedDocumentString<WorkspaceOpenOutcomeFragment, unknown>;
-export const LaunchInstalledApplicationDocument = new TypedDocumentString(`
-    mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
-  workspaceLaunchApplication(application: $application) {
-    ...WorkspaceOpenOutcome
-  }
-}
-    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
-  status
-  value {
-    process {
-      pid
-      startedAt
-    }
-  }
-  dependency {
-    reason
-    guidance
-  }
-}`) as unknown as TypedDocumentString<LaunchInstalledApplicationMutation, LaunchInstalledApplicationMutationVariables>;
-export const OpenSearchUrlDocument = new TypedDocumentString(`
-    mutation OpenSearchURL($url: String!) {
-  workspaceOpenURL(url: $url) {
-    ...WorkspaceOpenOutcome
-  }
-}
-    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
-  status
-  value {
-    process {
-      pid
-      startedAt
-    }
-  }
-  dependency {
-    reason
-    guidance
-  }
-}`) as unknown as TypedDocumentString<OpenSearchUrlMutation, OpenSearchUrlMutationVariables>;
 export const DesktopChoicesDocument = new TypedDocumentString(`
     query DesktopChoices($process: DesktopProcessIdentity!) {
   desktopApplication(process: $process) {
@@ -486,3 +464,60 @@ export const InspectOwnConnectionDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<InspectOwnConnectionQuery, InspectOwnConnectionQueryVariables>;
+export const LaunchInstalledApplicationDocument = new TypedDocumentString(`
+    mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
+  workspaceLaunchApplication(application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process {
+      pid
+      startedAt
+    }
+  }
+  dependency {
+    reason
+    guidance
+  }
+}`) as unknown as TypedDocumentString<LaunchInstalledApplicationMutation, LaunchInstalledApplicationMutationVariables>;
+export const OpenSearchUrlDocument = new TypedDocumentString(`
+    mutation OpenSearchURL($url: String!) {
+  workspaceOpenURL(url: $url) {
+    ...WorkspaceOpenOutcome
+  }
+}
+    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process {
+      pid
+      startedAt
+    }
+  }
+  dependency {
+    reason
+    guidance
+  }
+}`) as unknown as TypedDocumentString<OpenSearchUrlMutation, OpenSearchUrlMutationVariables>;
+export const OpenDocumentOrDirectoryDocument = new TypedDocumentString(`
+    mutation OpenDocumentOrDirectory($path: String!, $application: WorkspaceApplicationInput) {
+  workspaceOpenPath(path: $path, application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+    fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process {
+      pid
+      startedAt
+    }
+  }
+  dependency {
+    reason
+    guidance
+  }
+}`) as unknown as TypedDocumentString<OpenDocumentOrDirectoryMutation, OpenDocumentOrDirectoryMutationVariables>;

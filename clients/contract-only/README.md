@@ -12,18 +12,21 @@ guess is in
 `open-url` and `search` were added by a third pass under the same restriction;
 its guesses are in
 [`docs/verification/open-url-contract-client-findings.md`](../../docs/verification/open-url-contract-client-findings.md).
+`open-path` was added by a fourth pass under the same restriction; its guesses are in
+[`docs/verification/open-path-contract-client-findings.md`](../../docs/verification/open-path-contract-client-findings.md).
 
 ## Regenerated against
 
 `capture/` holds the response of the signed Koine.app serving **core + desktop +
-workspace**, where the workspace part is the launch root and the URL root
-(`workspaceLaunchApplication`, `workspaceOpenURL` and the types they reach:
-`WorkspaceApplicationInput`, `WorkspaceOpenResult`, `WorkspaceOperationStatus`,
-`WorkspaceOpenReceipt`, `WorkspaceProcessIdentity`, `WorkspaceDependencyUnavailable`,
-`WorkspaceDependencyReason`). Contract `koine-desktop/1`, schema digest
-`1815b52f078ff4a1c7ca08d284ccfd50c03422d47055c8b926500391a1569d19`. The other two
-workspace roots (`workspaceOpenPath`, `workspaceRevealPath`) are designed but not
-served, so they are not in the captured schema.
+workspace**, where the workspace part is the launch, URL and path roots
+(`workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath` and the types
+they reach: `WorkspaceApplicationInput`, `WorkspaceOpenResult`,
+`WorkspaceOperationStatus`, `WorkspaceOpenReceipt`, `WorkspaceProcessIdentity`,
+`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`). Contract
+`koine-desktop/1`, schema digest
+`f98a3862c3bb77417c38eef9fe4edccd16e0bf76b6f4b8fc7bdf6708190be32d`. The remaining
+workspace root (`workspaceRevealPath`) is designed but not served, so it is not in the
+captured schema.
 
 It builds to one dependency-free ES module, `dist/koine-client.mjs`, which runs
 on macOS arm64 under Node 24 with nothing installed beside it.
@@ -43,22 +46,22 @@ node dist/koine-client.mjs probe
 | `codegen` | `@graphql-codegen/cli` reads `capture/introspection.json` as the schema and, as the documents, the published `docs/design/desktop-operations.graphql` (whole: five operations) and the operations this client uses from the published `docs/design/workspace-operations.graphql` (see below), **validates** them against that schema, and writes `src/generated/graphql.ts` (types plus `TypedDocumentString` documents, `documentMode: 'string'`, so nothing from `graphql` is needed at runtime) |
 | `typecheck` | `tsc --noEmit` under `strict`, `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess` |
 | `bundle` | `build.mjs` bakes in graphql-js's own `getIntrospectionQuery({ descriptions: true })` and the digest from `capture/capture.json`, then esbuild bundles `src/cli.ts`; the build fails if anything from `node_modules` reaches the bundle |
-| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs` (and the URL root's, in `test/open-url-stubs.mjs`, with the suggestion sources `search` talks to in `test/suggestion-stubs.mjs`), each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch, per open and per search |
+| `test` | `test/run.mjs` drives the built bundle against a stub server that replays the wire shapes the spec describes, covering every classification; the launch answers are in `test/launch-stubs.mjs` (the URL root's, in `test/open-url-stubs.mjs`, with the suggestion sources `search` talks to in `test/suggestion-stubs.mjs`; the path root's, in `test/open-path-stubs.mjs`), each transcribed from the workspace spec's own tables (dependency results, both receipt shapes, preflight and execution-phase capability denials with `requiredCapabilities`, `failed` at the action's path and at the deadline, an input error, suppressed status/value/process/dependency branches, and the invariant violations), with one request asserted per launch, per open and per search |
 
 Generation reads the published operations documents where the contract publishes
 them, so there is no copy that can drift from them. All five desktop operations,
-`LaunchInstalledApplication` and `OpenSearchURL` validate against the captured introspection, and
+`LaunchInstalledApplication`, `OpenSearchURL` and `OpenDocumentOrDirectory` validate against the captured introspection, and
 nothing in those documents was edited — the client was made to fit the contract,
 never the other way round. The validation has been watched failing: `nonsenseField`
 added to `DesktopChoices` stops generation with `Cannot query field
-"nonsenseField" on type "DesktopWindow"`, and adding `OpenDocumentOrDirectory`
-to the used list stops it with `Cannot query field "workspaceOpenPath" on type
-"Mutation"` (before `workspaceOpenURL` was served, `OpenSearchURL` stopped it the
-same way).
+"nonsenseField" on type "DesktopWindow"`, and adding `RevealPath`
+to the used list stops it with `Cannot query field "workspaceRevealPath" on type
+"Mutation"` (before `workspaceOpenURL` and `workspaceOpenPath` were served,
+`OpenSearchURL` and `OpenDocumentOrDirectory` stopped it the same way).
 
 **Selecting the served operations.** `workspace-operations.graphql` also declares
-`OpenDocumentOrDirectory` and `RevealPath`, whose roots the captured server does
-not serve, so the file cannot be validated whole. The
+`RevealPath`, whose root the captured server does not serve, so the file cannot be
+validated whole. The
 documents do not say how a client picks the served subset; `codegen.ts` decides:
 it lists, by name, the operations the client uses
 (`WORKSPACE_OPERATIONS_USED`), cuts each one's text out of the published file by
@@ -97,6 +100,7 @@ Every result carries `command`, `ok`, `classification`, `endpoint`, `http`,
 | `focus --secret <p> --ref <reference>` | `FocusDesktopWindow` on that reference, byte-for-byte. |
 | `launch --secret <p> --bundle-identifier <id> [--application-path <absolute path>]` | `LaunchInstalledApplication`, sent **once**; needs `workspace:control` and `desktop:control` (no read capability). See "Launch" below. |
 | `open-url --secret <p> (--url <text> \| --url-file <path>)` | `OpenSearchURL` with the text as the one literal variable, byte-for-byte, sent **once**; same two controls. See "Open URL" below. |
+| `open-path --secret <p> (--path <text> \| --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]` | `OpenDocumentOrDirectory` with the path as a literal variable, byte-for-byte, sent **once**; same two controls. See "Open path" below. |
 | `search --secret <p> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]` | The client-owned search flow: optionally ask a suggestion source, then build the typed-query URL and open it with `OpenSearchURL`, once. See "Search" below. |
 
 Any `--name value` may also be written `--name=value`; that is the only way to give
@@ -183,6 +187,44 @@ text that was sent. What differs from a launch:
 | no default browser | `dependency-unavailable` | `dependency.reason` is `NO_DEFAULT_HANDLER` with `guidance`; nothing was submitted |
 | a URL the provider refuses | `input-error` | an error with no `kind` at a path under `workspaceOpenURL`, read at the field's path (`["workspaceOpenURL"]`) or at the argument's (`["workspaceOpenURL","url"]`), reported in `resultErrorPaths`; `actionEffect: none` |
 | capability denial, `failed`, suppressed branches, invariant violations | as for launch | the same two controls, the same complete ordered set `["workspace:control","desktop:control"]`; a `contractViolation` names `workspaceOpenURL` |
+
+### Open path
+
+`open-path` sends the published `OpenDocumentOrDirectory` mutation
+(`workspaceOpenPath(path:, application:)`) exactly once. A path open is not safe to
+repeat: the client never replays it, and a lost answer is `unknown-outcome`. The path
+goes into the one variable `path` **byte-for-byte**: nothing is validated, trimmed,
+expanded (`~`, `$HOME`, globs), resolved, made absolute, normalised or encoded
+client-side, so an empty, relative or NUL-containing path, a file URL, a path with a
+trailing newline or one that names an application bundle all reach the provider, which
+refuses what the contract says it refuses (an `input-error`) or answers
+`PATH_NOT_FOUND`, and that answer is what the command reports.
+
+- `--path <text>` takes the text from the command line; `--path=<text>` is the same
+  and the only way to give one that begins with `--`. An argument cannot carry a NUL.
+- `--path-file <file>` reads the file's bytes as UTF-8 and sends exactly that text:
+  a trailing newline (so a file written by `echo` names a path that ends in one; write
+  it with `printf %s`), a leading space, a NUL byte, non-ASCII text and a byte order
+  mark are all part of the path. A file that is not valid UTF-8 cannot be a GraphQL
+  string, so nothing is sent and the result is `failed` with a `clientError`.
+- Exactly one of the two is required.
+- Without `--bundle-identifier` the `application` variable is **omitted** (the
+  contract says omitted and `null` are the same default handler) and the output's
+  `application` is `null`. With it the variable is `{bundleIdentifier}` plus
+  `applicationPath` when `--application-path` is given, each verbatim (a blank
+  identifier is the provider's to refuse). `--application-path` without an identifier
+  is a usage error and nothing is sent, because the input type requires the identifier.
+
+Besides the common fields it prints every field "Launch" lists, plus `path` (the exact
+text sent) and `application` (the object sent, or null), and nothing else. What differs
+from a launch or a URL open:
+
+| outcome | `classification` | what to read |
+|---|---|---|
+| the handler took the item | `ok` | `status: AVAILABLE`, `actionEffect: acknowledged` (not proof a document rendered); `process`, when present, is whatever the receipt carried and may be null |
+| nothing at the path, no default handler, a named application not installed or with another identifier | `dependency-unavailable` | `dependency.reason` is `PATH_NOT_FOUND`, `NO_DEFAULT_HANDLER`, `APPLICATION_NOT_INSTALLED` or `APPLICATION_IDENTITY_MISMATCH`, copied verbatim with `guidance`; every one reads the same way: `actionEffect: none`, nothing was submitted, `outcomeUnknown: false`. `PATH_NOT_FOUND` is not reported as a statement that the path does not exist, and no reason is acted on |
+| an input or a payload the provider refuses (empty, relative or NUL path; a blank identifier; an application bundle, program or Finder alias) | `input-error` | an error with no `kind` at the root field's own path (`["workspaceOpenPath"]`); one a level below is read the same way; `actionEffect: none`. The class of refusal is only in the error's `message`, which this client reports and never reads |
+| capability denial, `failed`, suppressed branches, invariant violations | as for launch | the same two controls, the same complete ordered set `["workspace:control","desktop:control"]`; a `contractViolation` names `workspaceOpenPath`. A `failed` is never read as a missing path (inspection that is denied is `failed`) |
 
 ### Search
 

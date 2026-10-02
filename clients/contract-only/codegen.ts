@@ -10,10 +10,10 @@ import { Kind, parse, visit, type DocumentNode, type FragmentDefinitionNode } fr
  *
  * `desktop-operations.graphql` is used whole: all five of its operations are
  * served. `workspace-operations.graphql` is a *design* file: besides the two
- * operations this client uses (`LaunchInstalledApplication`, `OpenSearchURL`; the
- * captured server now serves both of their roots) it declares operations whose
- * roots the captured server does not serve yet (`OpenDocumentOrDirectory`,
- * `RevealPath`). The documents do not say how a client picks the served subset,
+ * operations this client uses (`LaunchInstalledApplication`, `OpenSearchURL`,
+ * `OpenDocumentOrDirectory`; the captured server now serves all three of their
+ * roots) it declares an operation whose root the captured server does not serve
+ * yet (`RevealPath`). The documents do not say how a client picks the served subset,
  * so this file decides: the client names the operations it uses, below, and takes
  * each one's text from the published file byte-for-byte together with the
  * fragments it spreads (transitively). Every selected definition is then
@@ -24,7 +24,11 @@ import { Kind, parse, visit, type DocumentNode, type FragmentDefinitionNode } fr
  */
 const DESKTOP_OPERATIONS = '../../docs/design/desktop-operations.graphql';
 const WORKSPACE_OPERATIONS = '../../docs/design/workspace-operations.graphql';
-const WORKSPACE_OPERATIONS_USED: readonly string[] = ['LaunchInstalledApplication', 'OpenSearchURL'];
+const WORKSPACE_OPERATIONS_USED: readonly string[] = [
+  'LaunchInstalledApplication',
+  'OpenSearchURL',
+  'OpenDocumentOrDirectory',
+];
 
 function servedRootFields(): ReadonlySet<string> {
   const introspection = JSON.parse(readFileSync('./capture/introspection.json', 'utf8')) as {

@@ -420,6 +420,12 @@ tasks:
     cmds:
       - scripts/vm-verify-open-url.sh
 
+  open-path:vm:
+    desc: Accept workspaceOpenPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a temporary text file under /tmp, a directory, a document package, links, source scripts with and without executable bits, programs and Finder alias files, a configuration directory) opened in their default handler and with Zed named, the handler's own window read from the window server and the receipt's process compared with the kernel's; literal spaces, punctuation, decomposed Unicode and symlinks; refused inputs and payloads, every dependency, a denied inspection (failed) and either control alone or a revoked grant, all with nothing opening; the disclosed reactions of Terminal, iTerm, Safari and Finder to scripts and location documents, recorded and not prevented; and that no default-handler setting changed. Exits 3 when the only open outcome left is an acknowledged open not seen activating its handler. KOINE_OPEN_PATH_ONLY=default,zed,literal,source,refus,react runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-path.sh
+
   open-url:network:
     desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
     deps: [app, client]

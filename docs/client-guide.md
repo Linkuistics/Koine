@@ -12,8 +12,9 @@ Nothing here is specific to one client. A client that follows it needs no
 knowledge of Koine's source.
 
 This guide describes what a Koine serves today: the core, the bundled `desktop`
-provider and, beside it, the bundled `workspace` provider's launch operation
-(["Launching an application"](#launching-an-application)). The
+provider and, beside it, the bundled `workspace` provider's launch, URL and path
+operations (["Launching an application"](#launching-an-application), ["Opening a URL"](#opening-a-url) and
+["Opening a document or folder"](#opening-a-document-or-folder)); its reveal operation is not served yet. The
 [workflow-provider design](specs/workflow-providers.md) names more workspace
 operations than are served yet; discover what a given Koine serves from its own
 introspection, never from the presence of an operation in a design document.
@@ -177,7 +178,7 @@ Standard GraphQL code generation works from Koine's introspection.
   `FocusDesktopWindow`, `RequestDesktopGrant`, `PollOwnGrantRequest` and
   `InspectOwnConnection`;
   [`workspace-operations.graphql`](design/workspace-operations.graphql) publishes
-  the workspace ones, of which `LaunchInstalledApplication` is served today. They
+  the workspace ones, of which `LaunchInstalledApplication`, `OpenSearchURL` and `OpenDocumentOrDirectory` are served today. They
   are the published paths, not the whole schema. A published operations file may
   list operations whose roots a given Koine does not serve yet, so a client
   generates the operations it uses, by name, with the fragments they spread, and
@@ -475,11 +476,25 @@ What differs:
    file URL, a glob, `~` or `$HOME`. Spaces and shell punctuation are ordinary characters
    and are never expanded. An empty, relative or NUL-containing path, and a blank
    `application.bundleIdentifier`, are input errors at the field's path with no `kind`;
-   nothing was inspected and nothing opened.
+   nothing was inspected and nothing opened. A path is an ordinary `String`, so the
+   refusal is an execution error in an HTTP 200 answer, at the root field's own response
+   path (its alias if one was used, for example `["workspaceOpenPath"]`), not an HTTP 400.
+   Nothing in a path is trimmed, expanded, normalized or resolved before inspection: a
+   leading space makes it relative (an input error), while a trailing space, a trailing
+   newline or any other control character except NUL, a trailing `/`, `.` and `..`
+   segments, `%`, and Unicode in either normalization form are part of the name and are
+   inspected as written, so a name that does not exist is `PATH_NOT_FOUND`. A client that
+   reads the path from a file or a pipe sends the text it read: a trailing newline is part
+   of the name, so it names nothing unless a file really has that name, and a client strips
+   only what its own caller asked it to.
 2. **A missing path is a dependency, and it is reported first.** `PATH_NOT_FOUND` means
    nothing exists there or the path is a link to nothing, so nothing was submitted. It is
    decided before any application is looked up, so it is never confused with a missing
-   handler, and it wins over a named application that is also missing.
+   handler, and it wins over a named application that is also missing. It says only that
+   inspection found nothing openable at that spelling and nothing was submitted: a missing
+   item, a link to nothing, a path below a file, a link loop and a name too long to exist
+   all report it, and an item created a moment later is not seen. Inspection that was
+   denied is `failed`, never `PATH_NOT_FOUND`.
 3. **Some things are refused, as input.** After symlinks are resolved, an application
    bundle, a program (a Unix or Windows executable) and a Finder alias file are refused:
    an input error at the field's path with no `kind`, for the default and for a named
@@ -490,7 +505,9 @@ What differs:
    a Terminal-bound script may run. A script with **no extension** whose executable bit is
    set is classified as a program and refused; give it a typed extension or clear the bit. A `.webloc` or `.url` document may be followed to
    another target by its handler. To show an application or an alias in Finder, reveal it
-   rather than open it.
+   rather than open it. The input error's `message` says which check refused the item. It
+   is for a person: its wording is not part of the contract, and a client that needs to
+   branch checks the payload itself first.
 4. **`application` is optional.** Omit it or send `null` for the default application; a
    missing one is `DEPENDENCY_UNAVAILABLE` with `NO_DEFAULT_HANDLER` and no chooser. A
    named application uses the same input and installation rules as a launch
@@ -505,12 +522,18 @@ What differs:
    Koine does not request (a folder's lookup did not in the measurement). Whether and how to open protected
    documents in their default application is undecided; until it is, name an application
    for them.
+7. **The receipt names an application, not a document.** `value.process`, when present, is
+   the application that was asked to open the item (the default handler or the one you
+   named). It names no window or document, may be null, and says nothing about whether the
+   item rendered. A second request is a second open: there is no idempotency key in version 1.
 
 ## What version 1 does not do
 
 A client written from the contract alone asked for each of these;
 `koine-desktop/1` does not provide them:
 
+- a way to name a file or folder whose own name is not valid UTF-8: a path is a GraphQL
+  string, so only the folder that holds it, if that is nameable, can be opened;
 - an example value or `@specifiedBy` on `DesktopProcessStart` and `Reference`
   (the grammar and the mapping are stated above instead);
 - `extensions.kind` as a schema enum (the closed table above is the contract);

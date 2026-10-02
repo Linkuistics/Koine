@@ -3,10 +3,10 @@ import type { SendResult } from './transport.js';
 
 /**
  * Reads one answer of a workspace root that returns `WorkspaceOpenResult`
- * (`workspaceLaunchApplication`, `workspaceOpenURL`; the spec gives them one result
- * type, one invariant and one failure table, so one reading serves both, told only
- * which root it is reading). The contract's rules, which this module is the single
- * place to apply:
+ * (`workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath`; the spec
+ * gives them one result type, one invariant and one failure table, so one reading
+ * serves all three, told only which root it is reading). The contract's rules, which
+ * this module is the single place to apply:
  *
  * - `status` is `AVAILABLE` or `DEPENDENCY_UNAVAILABLE`. Absent an error at or
  *   below the result, exactly one of `value` and `dependency` is non-null,
@@ -20,10 +20,23 @@ import type { SendResult } from './transport.js';
  * - `AVAILABLE` "means native acknowledgment", not that anything rendered.
  * - `failed`: "effects may have begun; no replay". Preflight refusal happens
  *   before any action.
+ *
+ * What the path root adds, and how little of it is a reading rule. Its dependency
+ * reasons are all four of the enum's (`PATH_NOT_FOUND` and `NO_DEFAULT_HANDLER` for
+ * the path itself, `APPLICATION_NOT_INSTALLED` and `APPLICATION_IDENTITY_MISMATCH`
+ * for a named application), and every one of them is read the same way on purpose:
+ * `dependency.reason` and `guidance` are copied verbatim, the action's effect is
+ * `none` ("this action submitted no domain request") and the outcome is not
+ * unknown. Nothing here turns a reason into a claim about the world: in particular
+ * `PATH_NOT_FOUND` is reported as "nothing was submitted" and never as "the path does
+ * not exist", because the documents' own list of what it covers is wider than that
+ * (a link to nothing, a path below a file, a link loop) and says nothing about the
+ * next moment. An input error is "at the root field's own path"; one a level below
+ * (the argument's name) is still read as the action's own refusal, as for the URL.
  */
 
-/** The two roots this reading is applied to. */
-export type WorkspaceOpenRoot = 'workspaceLaunchApplication' | 'workspaceOpenURL';
+/** The roots this reading is applied to. */
+export type WorkspaceOpenRoot = 'workspaceLaunchApplication' | 'workspaceOpenURL' | 'workspaceOpenPath';
 
 /** The fields of `WorkspaceOpenResult`: an error below one of these is below the result, not the action's own. */
 const RESULT_FIELDS: readonly string[] = ['status', 'value', 'dependency'];
@@ -290,4 +303,8 @@ export function interpretLaunch(result: SendResult): WorkspaceOpenFacts {
 
 export function interpretOpenURL(result: SendResult): WorkspaceOpenFacts {
   return interpretWorkspaceOpen(result, 'workspaceOpenURL');
+}
+
+export function interpretOpenPath(result: SendResult): WorkspaceOpenFacts {
+  return interpretWorkspaceOpen(result, 'workspaceOpenPath');
 }
