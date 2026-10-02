@@ -438,6 +438,12 @@ tasks:
     cmds:
       - scripts/vm-probe-reveal-notification.sh
 
+  installations:vm:
+    desc: Accept the Multiple copies and installation row for workspaceLaunchApplication and for workspaceOpenPath with a named application, in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - Fixtures/InstallationFixture installed at two locations under one bundle identifier by scripts/vm-installation-fixtures.sh and registered with Launch Services, each copy logging which copy it is and what it was handed, with an independent witness reading the kernel's identity of the process the receipt names - an unconstrained launch and an unconstrained named open reusing the running copy at the other location, an installation path addressing exactly the chosen copy while the other runs and when both do, a symlink to the folder, a symlink to the bundle and composed and decomposed Unicode spellings compared by file identity, a missing copy, an unregistered copy, a deleted copy, a registration that outlived its Info.plist and an identifier mismatch each reporting its dependency with nothing launched or substituted, a registered copy moved into the Trash (how long Launch Services keeps its registration, measured, and what each form then reports), an unreadable folder and a bundle with unreadable contents reporting failed, a program that is not a bundle having no selector route and a default handler that declares no identifier still receiving a document. KOINE_INSTALLATIONS_ONLY=reuse,spelling,absent,trash,denied,bundle runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-installations.sh
+
   open-url:network:
     desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
     deps: [app, client]

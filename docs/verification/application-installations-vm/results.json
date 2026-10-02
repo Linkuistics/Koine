@@ -1,0 +1,2247 @@
+[
+  {
+    "section": "registration",
+    "case": "what Launch Services says before any request",
+    "status": "recorded",
+    "registration": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\ndev.koine.test.InstallationFixture.Composed\t/Users/admin/install-fx/Café/Fixture.app\t/Users/admin/install-fx/Café/Fixture.app\ndev.koine.test.InstallationFixture.Decomposed\t/Users/admin/install-fx/Café ñ/Fixture.app\t/Users/admin/install-fx/Café ñ/Fixture.app\ndev.koine.test.InstallationFixture.Stale\tnone\tnone\ndev.koine.test.InstallationFixture.NoPlist\t/Users/admin/install-fx/noplist/Fixture.app\t/Users/admin/install-fx/noplist/Fixture.app\ndev.koine.test.InstallationFixture.Trashed\tnone\tnone\ndev.koine.test.InstallationFixture.Unregistered\t/Users/admin/install-fx/unregistered/Fixture.app\t/Users/admin/install-fx/unregistered/Fixture.app\ndev.koine.test.InstallationFixture.Locked\t/Users/admin/install-fx/locked/Fixture.app\t/Users/admin/install-fx/locked/Fixture.app",
+    "preferredCopy": "A"
+  },
+  {
+    "section": "reuse",
+    "case": "launch: nothing running; unconstrained launch starts the copy Launch Services chooses (A)",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1140,
+          "startedAt": "2026-10-02T22:20:18.743602Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        }
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 1140,
+          "startedAt": "2026-10-02T22:20:18.743602Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979619175,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 1140
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "1140 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1140,
+        "startedAt": "2026-10-02T22:20:18.743602Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "launch: the other copy (B) is running; an unconstrained launch reuses it and starts no second copy",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979628386,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 1166
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1166,
+        "startedAt": "2026-10-02T22:20:27.948619Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "launch: unconstrained, with B running, reuses B rather than starting A",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        }
+      },
+      "before": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979718359,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "reopen",
+          "label": "B",
+          "pid": 1166
+        }
+      ],
+      "procsBefore": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1166,
+        "startedAt": "2026-10-02T22:20:27.948619Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "launch: a path chooses exactly A while B runs; B is untouched",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979726781,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 1299
+        }
+      ],
+      "procsBefore": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1299 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1299,
+        "startedAt": "2026-10-02T22:22:06.627795Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "launch: with both running, a path chooses B (reopen) and starts nothing",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979851292,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "reopen",
+          "label": "B",
+          "pid": 1166
+        }
+      ],
+      "procsBefore": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1299 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1299 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1166,
+        "startedAt": "2026-10-02T22:20:27.948619Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "launch: with both running, a path chooses A (reopen) and starts nothing",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1166,
+          "startedAt": "2026-10-02T22:20:27.948619Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1299,
+          "startedAt": "2026-10-02T22:22:06.627795Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979859276,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "reopen",
+          "label": "A",
+          "pid": 1299
+        }
+      ],
+      "procsBefore": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1299 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1166 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1299 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1299,
+        "startedAt": "2026-10-02T22:22:06.627795Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "open: nothing running; the named application unconstrained opens the document in the copy Launch Services chooses (A)",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1410,
+          "startedAt": "2026-10-02T22:24:53.616748Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        }
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 1410,
+          "startedAt": "2026-10-02T22:24:53.616748Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790979893699,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "open",
+          "label": "A",
+          "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+          "pid": 1410
+        },
+        {
+          "atMs": 1790979893719,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 1410
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "1410 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1410,
+        "startedAt": "2026-10-02T22:24:53.616748Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "open: B is running; the named application unconstrained reuses it for the document",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980015534,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 1595
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1595,
+        "startedAt": "2026-10-02T22:26:55.395514Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "open: the unconstrained named open hands the document to the running B, never starting A",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        }
+      },
+      "before": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980023527,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "open",
+          "label": "B",
+          "path": "/Users/admin/install-fx/docs/note-2.koineinstall",
+          "pid": 1595
+        }
+      ],
+      "procsBefore": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1595,
+        "startedAt": "2026-10-02T22:26:55.395514Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "open: a path chooses exactly A while B runs; the document goes to A only",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1643,
+          "startedAt": "2026-10-02T22:27:11.799229Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1643,
+          "startedAt": "2026-10-02T22:27:11.799229Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980031881,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "open",
+          "label": "A",
+          "path": "/Users/admin/install-fx/docs/note-3.koineinstall",
+          "pid": 1643
+        },
+        {
+          "atMs": 1790980031900,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 1643
+        }
+      ],
+      "procsBefore": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1643 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1643,
+        "startedAt": "2026-10-02T22:27:11.799229Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "open: with both running, a path chooses B; the document goes to B only",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1643,
+          "startedAt": "2026-10-02T22:27:11.799229Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1595,
+          "startedAt": "2026-10-02T22:26:55.395514Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        {
+          "pid": 1643,
+          "startedAt": "2026-10-02T22:27:11.799229Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980066310,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "open",
+          "label": "B",
+          "path": "/Users/admin/install-fx/docs/note-4.koineinstall",
+          "pid": 1595
+        }
+      ],
+      "procsBefore": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1643 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1595 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture",
+        "1643 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1595,
+        "startedAt": "2026-10-02T22:26:55.395514Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "reuse",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "section": "spelling",
+    "case": "launch: a symlink to the copy's folder chooses copy B by file identity, with copy A running",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1759,
+          "startedAt": "2026-10-02T22:29:19.216895Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/link-to-B/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1740,
+          "startedAt": "2026-10-02T22:28:48.936564Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1740,
+          "startedAt": "2026-10-02T22:28:48.936564Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        {
+          "pid": 1759,
+          "startedAt": "2026-10-02T22:29:19.216895Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980159304,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 1759
+        }
+      ],
+      "procsBefore": [
+        "1740 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1740 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture",
+        "1759 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1759,
+        "startedAt": "2026-10-02T22:29:19.216895Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "open: a symlink to the copy's folder chooses copy B by file identity, with copy A running and B stopped",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1832,
+          "startedAt": "2026-10-02T22:31:55.760090Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/link-to-B/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1740,
+          "startedAt": "2026-10-02T22:28:48.936564Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1740,
+          "startedAt": "2026-10-02T22:28:48.936564Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        {
+          "pid": 1832,
+          "startedAt": "2026-10-02T22:31:55.760090Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980315832,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "open",
+          "label": "B",
+          "path": "/Users/admin/install-fx/docs/note-5.koineinstall",
+          "pid": 1832
+        },
+        {
+          "atMs": 1790980315852,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 1832
+        }
+      ],
+      "procsBefore": [
+        "1740 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1740 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture",
+        "1832 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1832,
+        "startedAt": "2026-10-02T22:31:55.760090Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "launch: a symlink to the copy's bundle chooses copy B by file identity, with copy A running",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 1999,
+          "startedAt": "2026-10-02T22:37:27.876890Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/link-to-B-app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1934,
+          "startedAt": "2026-10-02T22:35:27.761696Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1934,
+          "startedAt": "2026-10-02T22:35:27.761696Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        {
+          "pid": 1999,
+          "startedAt": "2026-10-02T22:37:27.876890Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790980647975,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 1999
+        }
+      ],
+      "procsBefore": [
+        "1934 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1934 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture",
+        "1999 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 1999,
+        "startedAt": "2026-10-02T22:37:27.876890Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "open: a symlink to the copy's bundle chooses copy B by file identity, with copy A running and B stopped",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2170,
+          "startedAt": "2026-10-02T22:47:06.358179Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/link-to-B-app"
+        }
+      },
+      "before": [
+        {
+          "pid": 1934,
+          "startedAt": "2026-10-02T22:35:27.761696Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1934,
+          "startedAt": "2026-10-02T22:35:27.761696Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        {
+          "pid": 2170,
+          "startedAt": "2026-10-02T22:47:06.358179Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1790981226435,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "open",
+          "label": "B",
+          "path": "/Users/admin/install-fx/docs/note-6.koineinstall",
+          "pid": 2170
+        },
+        {
+          "atMs": 1790981226454,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 2170
+        }
+      ],
+      "procsBefore": [
+        "1934 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1934 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture",
+        "2170 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2170,
+        "startedAt": "2026-10-02T22:47:06.358179Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "launch: a path spelled decomposed chooses the copy registered composed",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2269,
+          "startedAt": "2026-10-02T22:51:12.390057Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Composed",
+          "applicationPath": "/Users/admin/install-fx/Café/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [
+        {
+          "atMs": 1790981472836,
+          "bundlePath": "/Users/admin/install-fx/Café/Fixture.app",
+          "event": "launched",
+          "label": "U1",
+          "pid": 2269
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2269 /Users/admin/install-fx/Café/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2269,
+        "startedAt": "2026-10-02T22:51:12.390057Z",
+        "bundle": "/Users/admin/install-fx/Café/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "open: a path spelled decomposed chooses the copy registered composed",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2323,
+          "startedAt": "2026-10-02T22:52:17.959898Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Composed",
+          "applicationPath": "/Users/admin/install-fx/Café/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [
+        {
+          "atMs": 1790981538039,
+          "bundlePath": "/Users/admin/install-fx/Café/Fixture.app",
+          "event": "open",
+          "label": "U1",
+          "path": "/Users/admin/install-fx/docs/note-7.koineinstall",
+          "pid": 2323
+        },
+        {
+          "atMs": 1790981538058,
+          "bundlePath": "/Users/admin/install-fx/Café/Fixture.app",
+          "event": "launched",
+          "label": "U1",
+          "pid": 2323
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2323 /Users/admin/install-fx/Café/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2323,
+        "startedAt": "2026-10-02T22:52:17.959898Z",
+        "bundle": "/Users/admin/install-fx/Café/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "launch: a path spelled composed chooses the copy registered decomposed",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2399,
+          "startedAt": "2026-10-02T22:56:04.682130Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Decomposed",
+          "applicationPath": "/Users/admin/install-fx/Café ñ/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [
+        {
+          "atMs": 1790981765544,
+          "bundlePath": "/Users/admin/install-fx/Café ñ/Fixture.app",
+          "event": "launched",
+          "label": "U2",
+          "pid": 2399
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2399 /Users/admin/install-fx/Café ñ/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2399,
+        "startedAt": "2026-10-02T22:56:04.682130Z",
+        "bundle": "/Users/admin/install-fx/Café ñ/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "open: a path spelled composed chooses the copy registered decomposed",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2492,
+          "startedAt": "2026-10-02T22:59:46.825167Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Decomposed",
+          "applicationPath": "/Users/admin/install-fx/Café ñ/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [
+        {
+          "atMs": 1790981986903,
+          "bundlePath": "/Users/admin/install-fx/Café ñ/Fixture.app",
+          "event": "open",
+          "label": "U2",
+          "path": "/Users/admin/install-fx/docs/note-8.koineinstall",
+          "pid": 2492
+        },
+        {
+          "atMs": 1790981986921,
+          "bundlePath": "/Users/admin/install-fx/Café ñ/Fixture.app",
+          "event": "launched",
+          "label": "U2",
+          "pid": 2492
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2492 /Users/admin/install-fx/Café ñ/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2492,
+        "startedAt": "2026-10-02T22:59:46.825167Z",
+        "bundle": "/Users/admin/install-fx/Café ñ/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "spelling",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "section": "absent",
+    "case": "launch: a missing copy (the path does not exist), chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/no such folder/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a missing copy (the path does not exist), chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/no such folder/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a present copy that is not registered, chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Unregistered at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Unregistered",
+          "applicationPath": "/Users/admin/install-fx/unregistered/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Unregistered\t/Users/admin/install-fx/unregistered/Fixture.app\t/Users/admin/install-fx/unregistered/Fixture.app"
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a present copy that is not registered, chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Unregistered at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Unregistered",
+          "applicationPath": "/Users/admin/install-fx/unregistered/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Unregistered\t/Users/admin/install-fx/unregistered/Fixture.app\t/Users/admin/install-fx/unregistered/Fixture.app"
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a copy deleted after it was registered, chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Stale at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Stale",
+          "applicationPath": "/Users/admin/install-fx/stale/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a copy deleted after it was registered, chosen by its path, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Stale at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Stale",
+          "applicationPath": "/Users/admin/install-fx/stale/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a registration that outlived its bundle's Info.plist (the bundle declares no identifier), chosen by its path, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture.NoPlist. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.NoPlist",
+          "applicationPath": "/Users/admin/install-fx/noplist/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a registration that outlived its bundle's Info.plist (the bundle declares no identifier), chosen by its path, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture.NoPlist. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.NoPlist",
+          "applicationPath": "/Users/admin/install-fx/noplist/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a present copy of another identifier, chosen by its path, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.Other. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.Other",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a present copy of another identifier, chosen by its path, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.Other. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.Other",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a present copy that is not registered, by identifier alone, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Unregistered is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Unregistered"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone"
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a present copy that is not registered, by identifier alone, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Unregistered is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Unregistered"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Unregistered\tnone\tnone"
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a copy deleted after it was registered, by identifier alone, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Stale is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Stale"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a copy deleted after it was registered, by identifier alone, is APPLICATION_NOT_INSTALLED",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Stale is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Stale"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: a registration that outlived its bundle's Info.plist, by identifier alone, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture.NoPlist. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.NoPlist"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "open: a registration that outlived its bundle's Info.plist, by identifier alone, is APPLICATION_IDENTITY_MISMATCH",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture.NoPlist. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.NoPlist"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "launch: with B running, a missing path is still APPLICATION_NOT_INSTALLED and B is not substituted",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/no such folder/Fixture.app"
+        }
+      },
+      "before": [
+        {
+          "pid": 3275,
+          "startedAt": "2026-10-02T23:28:49.134358Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 3275,
+          "startedAt": "2026-10-02T23:28:49.134358Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [],
+      "procsBefore": [
+        "3275 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "3275 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "absent",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "section": "trash",
+    "case": "how long Launch Services keeps a registered copy moved into the Trash",
+    "status": "recorded",
+    "timeline": [
+      {
+        "moved": true,
+        "firstAnswer": {
+          "afterSeconds": 0.04,
+          "registeredCopy": "/Users/admin/.Trash/Window-0.app",
+          "everyCopy": "none"
+        },
+        "firstNoneAfterSeconds": 0.052,
+        "lastAnswer": {
+          "registeredCopy": "none",
+          "everyCopy": "none"
+        },
+        "lookups": 792,
+        "everRegisteredAfterFirstNone": false
+      },
+      {
+        "moved": true,
+        "firstAnswer": {
+          "afterSeconds": 0.063,
+          "registeredCopy": "/Users/admin/.Trash/Window-1.app",
+          "everyCopy": "none"
+        },
+        "firstNoneAfterSeconds": 0.072,
+        "lastAnswer": {
+          "registeredCopy": "none",
+          "everyCopy": "none"
+        },
+        "lookups": 783,
+        "everRegisteredAfterFirstNone": false
+      },
+      {
+        "moved": true,
+        "firstAnswer": {
+          "afterSeconds": 0.04,
+          "registeredCopy": "/Users/admin/.Trash/Window-2.app",
+          "everyCopy": "none"
+        },
+        "firstNoneAfterSeconds": 0.051,
+        "lastAnswer": {
+          "registeredCopy": "none",
+          "everyCopy": "none"
+        },
+        "lookups": 786,
+        "everRegisteredAfterFirstNone": false
+      }
+    ]
+  },
+  {
+    "section": "trash",
+    "case": "launch: a copy moved into the Trash, by identifier alone, reports what Launch Services then says (nothing registered)",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Trashed is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Trashed"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Trashed\t/Users/admin/.Trash/Fixture-trashed.app\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Trashed\tnone\tnone"
+    }
+  },
+  {
+    "section": "trash",
+    "case": "launch: a copy moved into the Trash, chosen by its path, reports what Launch Services then says (nothing registered)",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Trashed at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Trashed",
+          "applicationPath": "/Users/admin/.Trash/Fixture-trashed.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Trashed\t/Users/admin/.Trash/Fixture-trashed.app\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Trashed\tnone\tnone"
+    }
+  },
+  {
+    "section": "trash",
+    "case": "open: a copy moved into the Trash, chosen by its path, reports what Launch Services then says (nothing registered)",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture.Trashed at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Trashed",
+          "applicationPath": "/Users/admin/.Trash/Fixture-trashed.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": "dev.koine.test.InstallationFixture.Trashed\t/Users/admin/.Trash/Fixture-trashed.app\tnone",
+      "registrationAfter": "dev.koine.test.InstallationFixture.Trashed\tnone\tnone"
+    }
+  },
+  {
+    "section": "trash",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "section": "denied",
+    "case": "what Launch Services says for a registered copy in an unreadable folder",
+    "status": "recorded",
+    "registration": "dev.koine.test.InstallationFixture.Locked\tnone\tnone"
+  },
+  {
+    "section": "denied",
+    "case": "launch: a path inside an unreadable folder is failed, never absence",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application could not be inspected: Permission denied.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Locked",
+          "applicationPath": "/Users/admin/install-fx/locked/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "denied",
+    "case": "open: a path inside an unreadable folder is failed, never absence",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application could not be inspected: Permission denied.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Locked",
+          "applicationPath": "/Users/admin/install-fx/locked/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "denied",
+    "case": "a registration that points into an unreadable folder",
+    "status": "not-producible",
+    "notes": "Launch Services reports no registration for the copy once its folder is unreadable"
+  },
+  {
+    "section": "denied",
+    "case": "what Launch Services says for a registered copy whose contents are unreadable",
+    "status": "recorded",
+    "registration": "dev.koine.test.InstallationFixture.Locked\tnone\tnone"
+  },
+  {
+    "section": "denied",
+    "case": "launch: a bundle whose contents cannot be read is failed, never a different identifier",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application could not be inspected: Permission denied.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Locked",
+          "applicationPath": "/Users/admin/install-fx/locked/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "denied",
+    "case": "open: a bundle whose contents cannot be read is failed, never a different identifier",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application could not be inspected: Permission denied.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture.Locked",
+          "applicationPath": "/Users/admin/install-fx/locked/Fixture.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "denied",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "section": "bundle",
+    "case": "launch: a program that is not a bundle has no named-selector route",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/bare/program"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "bundle",
+    "case": "open: a program that is not a bundle has no named-selector route",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_NOT_INSTALLED",
+          "guidance": "No installed application with bundle identifier dev.koine.test.InstallationFixture at the requested location is registered on this Mac. Install it, then try again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/bare/program"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "bundle",
+    "case": "launch: a bundle that declares no identifier is not reachable by any named identifier",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/anon/Anonymous.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "bundle",
+    "case": "open: a bundle that declares no identifier is not reachable by a named identifier",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "dependency-unavailable",
+        "status": "DEPENDENCY_UNAVAILABLE",
+        "dependency": {
+          "reason": "APPLICATION_IDENTITY_MISMATCH",
+          "guidance": "The application found does not have bundle identifier dev.koine.test.InstallationFixture. No other copy was substituted; choose the application again."
+        },
+        "errors": [],
+        "process": null,
+        "actionEffect": "none",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/anon/Anonymous.app"
+        }
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "bundle",
+    "case": "open: the default handler of a document, which declares no identifier, still receives it",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 6427,
+          "startedAt": "2026-10-02T23:53:18.653170Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": null
+      },
+      "before": [],
+      "after": [],
+      "log": [
+        {
+          "atMs": 1790985199102,
+          "bundlePath": "/Users/admin/install-fx/anon/Anonymous.app",
+          "event": "open",
+          "label": "ANON",
+          "path": "/Users/admin/install-fx/docs/default-anon.koineanon",
+          "pid": 6427
+        },
+        {
+          "atMs": 1790985199120,
+          "bundlePath": "/Users/admin/install-fx/anon/Anonymous.app",
+          "event": "launched",
+          "label": "ANON",
+          "pid": 6427
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "6427 /Users/admin/install-fx/anon/Anonymous.app/Contents/MacOS/Anonymous"
+      ],
+      "witness": {
+        "pid": 6427,
+        "startedAt": "2026-10-02T23:53:18.653170Z",
+        "bundle": "/Users/admin/install-fx/anon/Anonymous.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "bundle",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]

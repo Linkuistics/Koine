@@ -251,6 +251,56 @@ import Testing
         #expect(native.documentLookups.isEmpty)
     }
 
+    // MARK: Named selection and default handlers are distinct (application-installations-k78)
+
+    @Test func aDefaultHandlerThatDeclaresNoBundleIdentifierStillReceivesTheDocument() async throws {
+        let (native, provider) = Self.bench()
+        native.onLaunch = { $0(.acknowledged(nil)) }
+        // The registered handler is present as an application bundle and has no identifier:
+        // there is no selector route for it, and the default route does not need one.
+        native.inspect(
+            "/Applications/Anonymous.app",
+            as: .application(
+                ApplicationBundle(
+                    url: URL(fileURLWithPath: "/Applications/Anonymous.app"), bundleIdentifier: nil,
+                    identity: FakeNative.identity("anonymous"))))
+        native.setDocumentHandler(for: Self.document, to: URL(fileURLWithPath: "/Applications/Anonymous.app"))
+        let fields = try #require(LaunchTests.value(await provider.resolve(Self.request())))
+        #expect(fields["status"] == .string("AVAILABLE"))
+        #expect(native.pathOpens.map(\.application.path) == ["/Applications/Anonymous.app"])
+
+        // The same bundle is not reachable through the named selector, by any identifier.
+        let named = try #require(
+            LaunchTests.value(
+                await provider.resolve(
+                    Self.request(application: Self.named("com.example.anonymous", path: "/Applications/Anonymous.app")))))
+        #expect(Self.dependencyReason(named) == .string("APPLICATION_IDENTITY_MISMATCH"))
+        #expect(native.pathOpens.count == 1, "the refused named request submitted nothing")
+    }
+
+    @Test func aBundleLessProgramNamedAsTheApplicationIsNotInstalledAndTheDefaultIsNotUsedInItsPlace() async throws {
+        let (native, provider) = Self.bench()
+        native.inspect("/Users/test/bin/tool", as: .notApplication)
+        let fields = try #require(
+            LaunchTests.value(
+                await provider.resolve(Self.request(application: Self.named(Self.zed, path: "/Users/test/bin/tool")))))
+        #expect(Self.dependencyReason(fields) == .string("APPLICATION_NOT_INSTALLED"))
+        #expect(native.pathOpens.isEmpty)
+        #expect(native.documentLookups.isEmpty, "no default handler is looked up as a substitute")
+    }
+
+    @Test func aChosenInstallationThatCannotBeReadIsFailedWithNothingSubmitted() async throws {
+        let (native, provider) = Self.bench()
+        native.inspect("/Users/test/Locked/Zed.app", as: .unreadable("Permission denied"))
+        let failure = try #require(
+            LaunchTests.failure(
+                await provider.resolve(Self.request(application: Self.named(Self.zed, path: "/Users/test/Locked/Zed.app")))))
+        #expect(failure.kind == .failed)
+        #expect(failure.message.contains("Permission denied"))
+        #expect(native.pathOpens.isEmpty)
+        #expect(native.documentLookups.isEmpty)
+    }
+
     // MARK: The refusal policy
 
     /// Metadata that identifies something the policy refuses, each by its own route.

@@ -231,6 +231,136 @@ import Testing
         await harness.stop()
     }
 
+    // MARK: Installations through the real adapter (application-installations-k78)
+
+    /// Where a real system bundle is reached through other spellings: a link to the bundle, a link
+    /// to its folder, and the same links named with composed and decomposed Unicode. A named
+    /// identifier that is not the bundle's makes each a mismatch, which is only reachable if the
+    /// real adapter resolved the spelling to the bundle itself: nothing is ever submitted.
+    struct Spellings {
+        let directory: URL
+        init() throws {
+            let manager = FileManager.default
+            directory = URL(fileURLWithPath: NSTemporaryDirectory())
+                .appending(path: "koine-k78-\(UUID().uuidString)").resolvingSymlinksInPath()
+            try manager.createDirectory(at: directory, withIntermediateDirectories: true)
+            try manager.createSymbolicLink(
+                atPath: directory.appending(path: "link-to-notes.app").path,
+                withDestinationPath: "/System/Applications/Notes.app")
+            try manager.createSymbolicLink(
+                atPath: directory.appending(path: "link-to-applications").path, withDestinationPath: "/System/Applications")
+            // The link is created under its decomposed name and asked for under its composed one.
+            try manager.createSymbolicLink(
+                atPath: directory.appending(path: "Cafe\u{301}.app").path, withDestinationPath: "/System/Applications/Notes.app")
+            // A program that is not a bundle.
+            try manager.createSymbolicLink(atPath: directory.appending(path: "program").path, withDestinationPath: "/bin/ls")
+            // A bundle that declares no identifier (no Info.plist at all), and one whose contents nobody
+            // may read: `Bundle(url:)` answers nil for both, and only the second is a denial.
+            try manager.createDirectory(
+                at: directory.appending(path: "NoIdentifier.app/Contents"), withIntermediateDirectories: true)
+            try manager.createDirectory(
+                at: directory.appending(path: "Sealed.app/Contents"), withIntermediateDirectories: true)
+            try Data("<plist version=\"1.0\"><dict/></plist>".utf8).write(
+                to: directory.appending(path: "Sealed.app/Contents/Info.plist"))
+            try manager.setAttributes(
+                [.posixPermissions: 0], ofItemAtPath: directory.appending(path: "Sealed.app/Contents").path)
+            // A folder nobody may enter, and a path inside it.
+            try manager.createDirectory(at: directory.appending(path: "locked"), withIntermediateDirectories: true)
+            try manager.setAttributes([.posixPermissions: 0], ofItemAtPath: directory.appending(path: "locked").path)
+        }
+        func path(_ name: String) -> String { directory.appending(path: name).path }
+        func remove() {
+            for name in ["locked", "Sealed.app/Contents"] {
+                try? FileManager.default.setAttributes(
+                    [.posixPermissions: 0o755], ofItemAtPath: directory.appending(path: name).path)
+            }
+            try? FileManager.default.removeItem(at: directory)
+        }
+    }
+
+    @Test func everySpellingOfARealBundleIsResolvedToTheBundleItselfNotCompared() async throws {
+        let notes = "/System/Applications/Notes.app"
+        try #require(FileManager.default.fileExists(atPath: notes), "Notes is not installed at its system path.")
+        let spellings = try Spellings()
+        defer { spellings.remove() }
+        let fixtures = try Fixtures()
+        defer { fixtures.remove() }
+        let harness = try await DesktopProviderTests.harness()
+        let credential = try await harness.consoleGrant(label: "c", capabilities: Self.controls)
+        // The composed spelling of the name the link was created under: the file system treats them as one.
+        let composed = spellings.directory.path + "/Caf\u{E9}.app"
+        for path in [
+            spellings.path("link-to-notes.app"), spellings.path("link-to-applications") + "/Notes.app", composed,
+            spellings.path("Cafe\u{301}.app"),
+        ] {
+            let reply = try await harness.post(
+                Self.launch("com.example.koine.not-notes", path: path), authorization: "Bearer \(credential)")
+            let launch = try #require(reply.data?["launch"] as? [String: Any], Comment(rawValue: "\(path) \(reply.errors)"))
+            #expect(launch["status"] as? String == "DEPENDENCY_UNAVAILABLE", Comment(rawValue: path))
+            #expect(
+                (launch["dependency"] as? [String: Any])?["reason"] as? String == "APPLICATION_IDENTITY_MISMATCH",
+                Comment(rawValue: path))
+            let open = try await harness.post(
+                Self.openPath,
+                variables: ["path": fixtures.text, "application": ["bundleIdentifier": "com.example.koine.not-notes", "applicationPath": path]],
+                authorization: "Bearer \(credential)")
+            let opened = try #require(open.data?["open"] as? [String: Any], Comment(rawValue: "\(path) \(open.errors)"))
+            #expect(
+                (opened["dependency"] as? [String: Any])?["reason"] as? String == "APPLICATION_IDENTITY_MISMATCH",
+                Comment(rawValue: path))
+        }
+        await harness.stop()
+    }
+
+    @Test func aBundleLessProgramHasNoSelectorRouteAndAnUnreadableFolderIsFailedNotAbsence() async throws {
+        let spellings = try Spellings()
+        defer { spellings.remove() }
+        let fixtures = try Fixtures()
+        defer { fixtures.remove() }
+        let harness = try await DesktopProviderTests.harness()
+        let credential = try await harness.consoleGrant(label: "c", capabilities: Self.controls)
+
+        // A program is present and is not an application bundle: not installed, whatever identifier it is offered under.
+        for identifier in ["com.apple.Notes", "com.example.koine.program"] {
+            let reply = try await harness.post(
+                Self.launch(identifier, path: spellings.path("program")), authorization: "Bearer \(credential)")
+            let launch = try #require(reply.data?["launch"] as? [String: Any], Comment(rawValue: "\(reply.errors)"))
+            #expect((launch["dependency"] as? [String: Any])?["reason"] as? String == "APPLICATION_NOT_INSTALLED")
+            let open = try await harness.post(
+                Self.openPath,
+                variables: ["path": fixtures.text, "application": ["bundleIdentifier": identifier, "applicationPath": spellings.path("program")]],
+                authorization: "Bearer \(credential)")
+            let opened = try #require(open.data?["open"] as? [String: Any], Comment(rawValue: "\(open.errors)"))
+            #expect((opened["dependency"] as? [String: Any])?["reason"] as? String == "APPLICATION_NOT_INSTALLED")
+        }
+
+        // A bundle that declares no identifier is a mismatch; one whose contents cannot be read is a denial,
+        // which is a failure and never a different identifier.
+        let anonymous = try await harness.post(
+            Self.launch("com.apple.Notes", path: spellings.path("NoIdentifier.app")), authorization: "Bearer \(credential)")
+        let anonymousLaunch = try #require(anonymous.data?["launch"] as? [String: Any], Comment(rawValue: "\(anonymous.errors)"))
+        #expect((anonymousLaunch["dependency"] as? [String: Any])?["reason"] as? String == "APPLICATION_IDENTITY_MISMATCH")
+        let sealed = try await harness.post(
+            Self.launch("com.apple.Notes", path: spellings.path("Sealed.app")), authorization: "Bearer \(credential)")
+        #expect(sealed.data?["launch"] is NSNull, "an unreadable bundle is not a mismatch")
+        #expect((sealed.errors.first?["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+
+        // Nobody may enter the folder: the inspection is denied, which is a failure and never absence.
+        let denied = spellings.path("locked") + "/Fixture.app"
+        let launch = try await harness.post(
+            Self.launch("com.apple.Notes", path: denied), authorization: "Bearer \(credential)")
+        #expect(launch.data?["launch"] is NSNull)
+        let error = try #require(launch.errors.first)
+        #expect(error["path"] as? [String] == ["launch"])
+        #expect((error["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+        let open = try await harness.post(
+            Self.openPath, variables: ["path": fixtures.text, "application": ["bundleIdentifier": "com.apple.Notes", "applicationPath": denied]],
+            authorization: "Bearer \(credential)")
+        #expect(open.data?["open"] is NSNull)
+        #expect((open.errors.first?["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+        await harness.stop()
+    }
+
     @Test func aBlankIdentifierAndAnUnusablePathAreInputErrorsAtTheOriginalPathWithNoKind() async throws {
         let harness = try await DesktopProviderTests.harness()
         let credential = try await harness.consoleGrant(label: "c", capabilities: Self.controls)

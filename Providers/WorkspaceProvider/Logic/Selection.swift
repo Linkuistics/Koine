@@ -83,7 +83,19 @@ private func selectConstrained(_ request: ApplicationRequest, path: String, nati
     }
     guard chosen.bundleIdentifier == request.bundleIdentifier else { return mismatch(request) }
     // Present with the right identifier: eligible only if Launch Services knows this very copy.
-    for registered in native.registeredApplications(bundleIdentifier: request.bundleIdentifier) {
+    // Both of its answers are asked, because they were seen to disagree: a registered copy moved
+    // to the Trash is returned by the lookup for the identifier and left out of the list of every
+    // copy (docs/verification/application-installations-vm.md), and a present registered copy in
+    // the Trash stays eligible. Apple documents neither answer's treatment of the Trash
+    // (https://developer.apple.com/documentation/appkit/nsworkspace/urlsforapplications(withbundleidentifier:)):
+    // this is observed on macOS 26.5, not verified against an official source.
+    var candidates = native.registeredApplications(bundleIdentifier: request.bundleIdentifier)
+    if let preferred = native.registeredApplication(bundleIdentifier: request.bundleIdentifier),
+        !candidates.contains(preferred)
+    {
+        candidates.append(preferred)
+    }
+    for registered in candidates {
         switch native.inspectApplication(at: registered.path) {
         case .application(let bundle) where bundle.identity == chosen.identity:
             return .selected(registered, substituting: false)

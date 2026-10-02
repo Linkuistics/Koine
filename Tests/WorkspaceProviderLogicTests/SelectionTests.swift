@@ -209,6 +209,106 @@ import Testing
         #expect(url.path == "/Users/a/Apps/Notes.app")
     }
 
+    // MARK: Installations the earlier cases left (application-installations-k78)
+
+    @Test func aChosenCopyThatCannotBeReadIsFailedNeverAbsenceOrAnotherCopy() {
+        let native = FakeNative()
+        native.install(Self.notes, at: "/Applications/Notes.app", file: "system")
+        native.inspect("/Users/a/Locked/Notes.app", as: .unreadable("Permission denied"))
+        guard case .failed(let message) = selectInstallation(request(path: "/Users/a/Locked/Notes.app"), native: native)
+        else {
+            Issue.record("a denied inspection of the chosen path is failed, never absence")
+            return
+        }
+        #expect(message.contains("Permission denied"))
+        #expect(native.inspected == ["/Users/a/Locked/Notes.app"], "no other copy was consulted to stand in")
+    }
+
+    @Test func aChosenPresentCopyInTheTrashIsEligibleWhenItIsStillRegistered() {
+        let native = FakeNative()
+        native.install(Self.notes, at: "/Applications/Notes.app", file: "system")
+        native.install(Self.notes, at: "/Users/a/.Trash/Notes.app", file: "trashed", isDefault: false)
+        guard case .selected(let url, let substituting) = selectInstallation(
+            request(path: "/Users/a/.Trash/Notes.app"), native: native)
+        else {
+            Issue.record("moving a copy to the Trash is not an uninstall in this contract")
+            return
+        }
+        #expect(url.path == "/Users/a/.Trash/Notes.app")
+        #expect(!substituting)
+    }
+
+    @Test func aTrashedCopyThatOnlyTheIdentifiersOwnLookupReportsIsStillEligibleWhenChosen() {
+        // What Launch Services was seen to do for a registered copy moved to the Trash: the
+        // lookup by identifier returns it and the list of every copy does not. Eligibility
+        // must not depend on which of the two calls remembers the copy.
+        let native = FakeNative()
+        let trashed = URL(fileURLWithPath: "/Users/a/.Trash/Notes.app")
+        native.register(Self.notes, at: trashed, listed: false)
+        native.inspect(
+            trashed.path,
+            as: .application(
+                ApplicationBundle(url: trashed, bundleIdentifier: Self.notes, identity: FakeNative.identity("trashed"))))
+        guard case .selected(let url, let substituting) = selectInstallation(request(path: trashed.path), native: native)
+        else {
+            Issue.record("a registered present copy in the Trash is eligible however Launch Services lists it")
+            return
+        }
+        #expect(url.path == trashed.path)
+        #expect(!substituting)
+    }
+
+    @Test func aChosenPresentCopyWhoseRegistrationWasDeletedWithItIsNotInstalled() {
+        // The registration for the chosen path is gone after the bundle was deleted: nothing
+        // is there to inspect, whatever Launch Services still lists for the identifier.
+        let native = FakeNative()
+        native.register(Self.notes, at: URL(fileURLWithPath: "/Users/a/Apps/Notes.app"))
+        native.inspect("/Users/a/Apps/Notes.app", as: .absent)
+        expectDependency(
+            selectInstallation(request(path: "/Users/a/Apps/Notes.app"), native: native), .applicationNotInstalled)
+    }
+
+    @Test func aBundleLessProgramHasNoRouteToTheNamedSelector() {
+        // A Mach-O program is present and is not an application bundle: it is never selected,
+        // whatever identifier is named, constrained or not.
+        let native = FakeNative()
+        native.inspect("/Users/a/bin/tool", as: .notApplication)
+        expectDependency(selectInstallation(request(path: "/Users/a/bin/tool"), native: native), .applicationNotInstalled)
+        native.register(Self.notes, at: URL(fileURLWithPath: "/Users/a/bin/tool"))
+        expectDependency(selectInstallation(request(), native: native), .applicationNotInstalled)
+    }
+
+    @Test func aChosenBundleThatDeclaresNoIdentifierIsAMismatchForAnyNamedIdentifier() {
+        let native = FakeNative()
+        native.inspect(
+            "/Users/a/Apps/Anonymous.app",
+            as: .application(
+                ApplicationBundle(
+                    url: URL(fileURLWithPath: "/Users/a/Apps/Anonymous.app"), bundleIdentifier: nil,
+                    identity: FakeNative.identity("anonymous")
+                )
+            )
+        )
+        expectDependency(
+            selectInstallation(request(path: "/Users/a/Apps/Anonymous.app"), native: native), .applicationIdentityMismatch)
+    }
+
+    @Test func eachOfSeveralRegisteredCopiesIsAddressedByItsOwnIdentityNeverByTheFirstListed() {
+        let native = FakeNative()
+        native.install(Self.notes, at: "/Applications/A/Notes.app", file: "a")
+        native.install(Self.notes, at: "/Applications/B/Notes.app", file: "b", isDefault: false)
+        native.install(Self.notes, at: "/Applications/C/Notes.app", file: "c", isDefault: false)
+        for copy in ["A", "B", "C"] {
+            let path = "/Applications/\(copy)/Notes.app"
+            guard case .selected(let url, let substituting) = selectInstallation(request(path: path), native: native) else {
+                Issue.record("\(path) is registered and present")
+                continue
+            }
+            #expect(url.path == path)
+            #expect(!substituting)
+        }
+    }
+
     // MARK: Input
 
     @Test(arguments: ["", " ", "\t\n", "\u{2003}"])

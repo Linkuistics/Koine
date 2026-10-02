@@ -2,7 +2,7 @@
 
 **Designed; all four roots, `workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath`
 and `workspaceRevealPath`, are implemented and their L, G and N parts, and the V parts of the URL,
-path and reveal roots, are recorded under [Acceptance](#evidence-so-far); pending are one part of
+path and reveal roots and the multiple-copies row, are recorded under [Acceptance](#evidence-so-far); pending are one part of
 the URL root's V evidence, Dia's page load (below), default opening of protected documents (see
 [Documents and directories](#evidence-so-far)), and a decision on the system notice that revealing a
 third-party application raised (see [Finder reveal](#evidence-so-far)).** Workspace supplies the
@@ -54,7 +54,8 @@ not Koine provider approval or an additional application allowlist. Installed
 means registered and present as an application bundle when inspected. Check the
 resolved bundle before submission, including unconstrained selection; unreadable
 metadata is `failed`, not absence. A present registered bundle in the Trash
-remains eligible: moving it there is not an uninstall in this contract. Use the
+remains eligible: moving it there is not an uninstall in this contract. (Launch Services does not keep
+the registration: see [Multiple copies and installation](#evidence-so-far).) Use the
 bounded [protected-path metadata route](../verification/protected-path-metadata.md#inspection-results)
 for both constrained and unconstrained selection; do not substitute a prompting
 file-URL handler lookup for bundle presence or identity. Do not
@@ -354,7 +355,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Case | Seams | Required observation and preparation |
 | --- | --- | --- |
 | Twelve launchers, stopped and running | G, N, V | Install Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. Complete first-run/Gatekeeper preparation separately; record actual IDs, versions, paths and callback latency. Cold-launch each and reactivate it with another app frontmost and Koine inactive; observe activation and any returned identity. Acknowledgment without activation does not pass. Exercise the optional desktop handoff separately; a controls-only activation failure stays pending for escalation. No account-dependent workflow is needed. |
-| Multiple copies and installation | G, N, V; L for inspection failures | Registered fixture at two locations: unconstrained launch/named-app open reuses a running copy elsewhere; a path constraint addresses exactly the chosen copy. Check missing/unregistered copy, stale registration after deletion, identifier mismatch and a still-registered present copy in Trash (eligible). Check symlink/Unicode path spellings by native file identity and metadata denial as failed. Bundle-less programs have no named-selector route; default handler use remains distinct. |
+| Multiple copies and installation | G, N, V; L for inspection failures | Registered fixture at two locations: unconstrained launch/named-app open reuses a running copy elsewhere; a path constraint addresses exactly the chosen copy. Check missing/unregistered copy, stale registration after deletion, identifier mismatch and a still-registered present copy in Trash (eligible). Check symlink/Unicode path spellings by native file identity and metadata denial as failed. Bundle-less programs have no named-selector route; default handler use remains distinct. V: [application-installations-vm.md](../verification/application-installations-vm.md). |
 | Browser URL | G, N, V; L for absent handler | Safari and alternate default Dia; encoded query/fragment, IDNA host and universal-link candidate; inspect scheme-only handler discovery. Invalid escapes/raw Unicode/whitespace/backslashes are refused without repair. Client suggestion failure (refused, timed out or unreadable) still opens the typed-query URL, once: the fallback is chosen before the single open, never a second open after a failed one. No Koine Google request. A controlled absent-handler adapter result proves workspace mapping at L; G fakes prove client handling only. V: [open-url-vm.md](../verification/open-url-vm.md). |
 | Documents/directories/settings | G, N, V | Temporary text file, directory and document package; default open and named Zed; config directory; missing file/parent/link/app/handler; inspection denial; literal spaces/punctuation and symlinks. No handler-setting changes. V: [open-path-vm.md](../verification/open-path-vm.md). |
 | Finder reveal | G, N, V; L for unavailable Finder/false acknowledgment | File, folder, app bundle, alias and filesystem root; observe actual selection/root view in V. L runs real workspace mapping for missing Finder and false acknowledgment; G fakes cover client handling only. Receipt alone does not establish selection. V: [reveal-path-vm.md](../verification/reveal-path-vm.md). |
@@ -394,16 +395,43 @@ what was established; every row above keeps its pending remainder.
   Notes alone in [launch-vm.md](../verification/launch-vm.md). Not installed and
   installed-then-deleted report `APPLICATION_NOT_INSTALLED`. Pending: G and N for the real
   installations (`application-installations` for multiple copies).
-- **Multiple copies and installation.** L (`SelectionTests`): absent and unregistered
-  identifiers, a registration whose bundle is gone, a present copy in the Trash
-  (eligible), identifier mismatch with nothing substituted, a chosen copy matched by
-  file identity (another spelling matches; another volume does not), a present but
-  unregistered copy, an unreadable candidate as `failed`. Running-copy reuse is
-  carried as the submitted substitution flag. N (`WorkspaceProviderTests`): the real
-  adapter answers an absent identifier, absent constrained paths and a real system
-  bundle with another identifier, submitting nothing. Pending: real symlink and
-  Unicode spellings, deletion after registration, a real second copy, running-copy
-  reuse (V), and `application-installations`.
+- **Multiple copies and installation.** L, G, N and V ([application-installations-vm.md](../verification/application-installations-vm.md)).
+  L (`SelectionTests`, `OpenPathTests`): absent and unregistered identifiers, a registration whose
+  bundle is gone, a present copy in the Trash (eligible, whether Launch Services reports it through the
+  lookup by identifier or through the list of every copy), identifier mismatch with nothing substituted,
+  a chosen copy matched by file identity (another spelling matches; another volume does not), several
+  registered copies each addressed by their own identity, a present but unregistered copy, an unreadable
+  candidate and an unreadable chosen path as `failed`, a bundle-less program never selected, a bundle
+  that declares no identifier a mismatch and a default handler that declares none still receiving a
+  document. Running-copy reuse is carried as the submitted substitution flag. G
+  (`WorkspaceInstallationsCompositionTests`, the real provider over a stand-in with two installed
+  copies, the installation a GraphQL variable): the unconstrained form submits Launch Services' copy
+  with substitution allowed and a path submits exactly that copy with it forbidden, for a launch and a
+  named open, and each dependency and a `failed` reach the client with nothing submitted. N
+  (`WorkspaceProviderTests`, the signed bundle, nothing opened): the real adapter resolves a link to a
+  bundle, a link to its folder and a decomposed spelling of a name by the bundle itself, a Mach-O
+  program is not installed, a bundle with no Info.plist is a mismatch, and a bundle whose contents
+  cannot be read, and a path inside an unreadable folder, are `failed`. V, in the prepared image with
+  a fixture application ([InstallationFixture](../../Fixtures/InstallationFixture/main.swift), built
+  once in the guest and installed at two locations by a reusable recipe) registered under one
+  identifier twice: an unconstrained launch and an unconstrained named open **reused the copy running
+  at the other location**, starting no second one, and an installation path **addressed exactly the
+  chosen copy**, with the other running and with both, for the launch and for the document; a
+  symlink to the folder, a symlink to the bundle and composed and decomposed Unicode spellings chose
+  their copy by file identity; a missing copy, an unregistered copy, a deleted copy, a bundle that lost
+  its Info.plist and a copy of another identifier reported their dependency, by path and by
+  identifier, with nothing launched or substituted; an unreadable folder and an unreadable bundle were
+  `failed`; a program that is not a bundle has no selector route, a bundle that declares no identifier
+  is not reachable by one, and a default handler that declares none received a document. The same run
+  recorded that **Launch Services drops a registration the moment its bundle is deleted** and that it
+  **deregisters a registered copy within about 50 ms of its being moved into the Trash** (an unconstrained
+  and a path-chosen request after the move reported `APPLICATION_NOT_INSTALLED`), so the
+  state "registered present copy in the Trash" cannot be reached by a request on macOS 26.5 and is held
+  at L and G with the answers arranged as they were observed (the lookup by identifier returns the
+  Trash copy and the list of every copy omits it, which this increment found the constrained selection
+  mishandled and fixed). A registration that points into an unreadable folder is likewise not
+  reachable at V, because Launch Services stops reporting it. Not covered: removable or network
+  volumes, and a second installed copy of any of the twelve real applications.
 - **Input boundary.** L and N: a blank identifier and an empty, relative or
   NUL-containing application path are input errors at the original path with no
   `kind`, before any inspection (the path root's own input is below). For the URL: L (`WebURLTests`, `OpenURLTests`), G

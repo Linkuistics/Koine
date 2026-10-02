@@ -42,12 +42,29 @@ struct NativeWorkspace: WorkspaceNative {
         guard let volume = values.volumeIdentifier, let file = values.fileResourceIdentifier else {
             return .unreadable("its file identity is not available")
         }
+        let identifier = Bundle(url: url)?.bundleIdentifier
+        // `Bundle(url:)` answers nil both for a bundle that declares no identifier and for one whose
+        // Info.plist it may not read, and a denial must never read as another identifier. The nil is
+        // observed (macOS 26.5), not documented: https://developer.apple.com/documentation/foundation/bundle/init(url:)
+        if identifier == nil, let reason = infoPlistDenial(in: url) { return .unreadable(reason) }
         return .application(
-            ApplicationBundle(
-                url: url, bundleIdentifier: Bundle(url: url)?.bundleIdentifier,
-                identity: FileIdentity(volume: volume, file: file)
-            )
+            ApplicationBundle(url: url, bundleIdentifier: identifier, identity: FileIdentity(volume: volume, file: file))
         )
+    }
+
+    /// Why the bundle's Info.plist cannot be read, or nil when it can or is not there. Only `stat` and
+    /// `access` on the one path: neither opens the file, and `Bundle(url:)` already reads it
+    /// (docs/verification/protected-path-metadata.md). Absence (ENOENT, ENOTDIR) is a bundle that declares
+    /// no identifier, not a denial.
+    private func infoPlistDenial(in bundle: URL) -> String? {
+        let plist = bundle.appending(path: "Contents/Info.plist").path
+        var status = stat()
+        errno = 0
+        if stat(plist, &status) != 0 {
+            return errno == ENOENT || errno == ENOTDIR ? nil : String(cString: strerror(errno))
+        }
+        errno = 0
+        return access(plist, R_OK) == 0 ? nil : String(cString: strerror(errno))
     }
 
     private func absentOrUnreadable(_ error: Error) -> ApplicationInspection {

@@ -33,9 +33,12 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
 
     // MARK: Arrangement
 
-    func register(_ identifier: String, at url: URL, default isDefault: Bool = true) {
+    /// `listed: false` is a registration that Launch Services reports for the identifier's own
+    /// lookup and leaves out of the list of every copy, as it does for a copy moved to the
+    /// Trash (observed in docs/verification/application-installations-vm.md).
+    func register(_ identifier: String, at url: URL, default isDefault: Bool = true, listed: Bool = true) {
         lock.withLock {
-            allRegistered[identifier, default: []].append(url)
+            if listed { allRegistered[identifier, default: []].append(url) }
             if isDefault { defaultRegistered[identifier] = url }
         }
     }

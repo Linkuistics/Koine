@@ -236,3 +236,19 @@ and found one thing only Antony can settle, so it is a root leaf and not prose, 
 `protected-default-open-k89` is: revealing a third-party application bundle made macOS post
 "Koine was prevented from modifying apps on your Mac". It sits ahead of `baseline-acceptance` as
 `reveal-app-bundle-notice-k90`. The reveal itself worked and no consent was requested.
+
+`application-installations-k78` accepted the multiple-copies row at L, G, N and V
+(`docs/verification/application-installations-vm.md`). Later increments should expect: Launch
+Services drops a registration the instant its bundle is deleted and deregisters a registered copy
+within about 50 ms of its move into the Trash, so neither a listed-but-missing copy nor a registered
+Trash copy can be put in front of a request on macOS 26.5; it also registers a bundle it finds under
+the home folder on its own, so a case about an unregistered copy must unregister it and read the
+answer in the same guest process right before the request. `scripts/vm-installation-fixtures.sh`
+(one identifier installed at two or more registered locations, plus links, Unicode spellings, an
+unregistered, a deleted, an Info.plist-less and an unreadable copy and a bundle with no identifier)
+and `scripts/vm-registration-lookup.swift` (what `NSWorkspace` itself answers) are reusable, as is
+`scripts/vm-installation-request.py`, which does one request and all its observation in one guest
+process: the guest agent costs seconds per exec and reports a false timeout for a quarter of them, so
+a case made of many execs takes minutes. `app-and-file-search` acting on a chosen installation uses
+the constrained form this increment accepted, and `urlsForApplications` omits a copy that
+`urlForApplication` returns (the Trash), so never rely on the list alone.
