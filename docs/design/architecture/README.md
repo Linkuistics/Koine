@@ -41,81 +41,32 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel presents canonical-path review repairs and the
-[remaining path-design dependencies](../../specs/workspace-search.md#path-design-dependencies).
-It retains the specified
-[serviceability evidence and controls](index.html#diagram-search-serviceability).
-The [construction document](../../verification/search-serviceability.md) defines
-the fixed loss-aware sink, owned/call-envelope inventory, passive actual NIO
-hooks, source/handler equivalence and detection controls, matched independent
-connections/store/actions, and limit/cohort/late-return/restart subjects.
-Controlled saturation and unheld native runs have distinct evidence labels.
-A deliberate descriptor filler validates real normally inherited accept
-exhaustion; its induced failing observation never passes search serviceability.
-
-The [native allocation contract](index.html#diagram-search-resources) and
-[two-temporary phase flow](index.html#diagram-search-inspection) remain its inputs.
-Reported native facts and empirical serviceability are the two independently
-delegated observation boundaries. Opaque acquisitions, peaks and internal
-health remain unproved. Known wrong witnesses, observed independent resource
-failure/backoff, lost events, changed hook behavior and inconclusive references
-cannot pass. Native prompt/useful-launch/home/compatibility outcomes and the
-separate measured home-omissions decision remain pending.
+The current-discussion panel presents selected bounded path resolution, pre-open
+parent/child policy and observed spelling/name finalization. All remain design:
+resolution review precedes long-path classification design/review, then the
+complete-resource review/planning. Native/binary/no-dialog/useful-coverage
+outcomes and the operator's measured omissions decision remain pending.
 
 Current changes:
-- [Canonical → Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Separates prefix, final-target and checked-link scopes; removes the held-identity movement and native-size join proofs; exposes required path design.
-- [Traversal → Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Keeps FIFO/two credits and exposes unresolved pre-open child policy and classification.
-- [Coverage → Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Separates account/native witness failures and public overflow from native descent-only size handling.
-- [Handoff → Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Requires path producers/reviews ahead of resource review while retaining action authority.
-- [Allocation → Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Preserves allocation ownership and exposes the long-path classification conflict.
-- [Inspection → Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Preserves serial ownership and names unresolved resolver/spelling decisions.
 
-The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require resolver/pre-open policy, spelling/size-name and classification producers
-with their reviews before the complete-resource review/planning. Finish shallower admitted
-listings before deeper ones, with one current stream/root and a 512-task/384 KiB
-pending queue. Frontier overflow counts matchable anchors in one reserved root
-group and continues sibling-name examination; depth has a separate group.
-The shared account reserves roots + 2 credits/job below the inherited soft limit,
-leaving 128 descriptors outside owned search credits and capping those at 72.
-Worker-only cleanup retains streams, paths and credits after blocked-call freeze.
-Current-stream checks precede every listing turn/read; checked component
-walks repeat against the wait. A changed queued prefix/parent stops the root
-once rather than allocating a failure per task. Residual check-to-read/open
-races remain native acceptance obligations. Public fsgetpath uses descriptor-derived
-filesystem/object inputs, not atomic descriptor binding. Holding prevents ordinary
-inode reuse while held; self-comparison does not detect movement. Parent
-association/reopened expected identity can expose change; first unassociated
-observations have no independent movement detector. Its
-8,192-byte buffer includes NUL; native directory text is at most 8,191 bytes,
-while public joined-file values can still reach 8,192 bytes. Known native/public
-public location overflow groups at an established actual parent; native descent
-refusal alone does not omit a representable directory name. Shared-prefix failure
-stops one root; target-only failure under an unchanged parent stays exact and
-checked-link failure stays per-candidate. ENOSPC alone is not movement. Native
-witness failure is dependency-scoped; witness-account overflow is job-wide.
-The desired native 4,224-byte task shape has conditional 79/80 byte arithmetic;
-classification/spelling reachability remains a design gap, and
-synthetic 43/44 maximum-value arithmetic is separate. Opaque
-empty/nil answers cannot establish absence. Native call/error rules and the instrument contract are finalized;
-complete applicable owned/accept-backoff construction is specified under the
-selected reported-result and empirical-evidence boundaries; execution is pending and opaque internals
-remain unproved.
-Normally launched signed-host listener/store/action serviceability must pass;
-static arithmetic, periodic descriptor counts and eventual error-free client
-replies are insufficient. Canonical review and native resource design/review precede planning. Safari/Finder, protected Library-link calls,
-useful home coverage and measured omissions remain pending.
-Canonical target names/paths make app ranking independent of link/direct route;
-native bundle identity merges one installation without merging distinct copies
-with equal identifiers. Reviewed BLOCKED transport keeps null matches and
-UNKNOWN consent, subject to field/lifecycle/publication errors. Changed-root or
-uncertain inspection is a failure-class reason before prompt risk; it does not
-change admission. Search 1.1.0 declares both existing authority/selection features;
-current checks move to search-required profiles while retained action-only
-binaries/profiles remain distinct under the
-[compatibility contract](../../specs/workspace-search.md#compatibility-subjects-and-diagnostic-acceptance).
-No reduced home/application baseline is accepted, and existing
-framework failure mapping stays fixed.
+- [Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Adds one bounded resolver and pre-open child identity policy; separates fresh reports, listed locations and name-preserving descent-size scopes.
+- [Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Adds current-location A/B reacquisition and listed-location tasks while preserving FIFO, independent change evidence and shared budgets.
+- [Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Makes queued native-size failure an exact descendant SUBTREE that preserves finalized names.
+- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — States name-preserving path behavior and resolution-review then classification-design/review dependencies.
+- [Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Connects the selected resolver/spelling rules to unchanged allocation ownership; long-path classification remains unresolved.
+- [Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Uses independent identity/association during candidate recheck and preserves retained metadata across same-identity spelling variants.
+
+The specified [serviceability controls](index.html#diagram-search-serviceability)
+remain unchanged context. Q/S, two temporary credits, worker-only cleanup,
+freeze/cohort recovery, public ceilings, domain and three-second wait remain
+binding. Cached directory spellings can differ without movement: independent
+reacquisition/association checks detect observed change, while first unassociated
+observations have no independent detector. All file entry kinds use listed
+locations; descendants use fresh native reports. Queued native-size refusal
+preserves finalized names with VALUE_LIMIT SUBTREE; public overflow omits names
+with actual-parent CHILD_GROUP. Native classification reachability remains open,
+independently of synthetic 43/44 and conditional listed-task 79/80 arithmetic.
+
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -133,12 +84,12 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update also changes these prose sections:
 
-- [Serviceability construction contract](../../specs/workspace-search.md#serviceability-construction-handoff) — Replaces the unfinished handoff with specified event, control, saturation and verdict contracts.
-- [Search serviceability subjects](../../verification/search-serviceability.md) — Adds concrete private/provider/GraphQL/native case recipes and pending evidence verdicts.
-- [Native resource handoff](../../verification/search-native-resources.md#final-allocation-handoff) — Connects the selected allocation to complete subject design and its whole-resource review.
-- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Marks construction specified while execution/native/binary acceptance remain pending.
-
-The canonical and two-temporary ownership views remain unchanged context.
+- [Bounded component resolution](../../specs/workspace-search.md#bounded-component-resolution) — Specifies one route, link/expanded-text bounds and native transition semantics.
+- [Pre-open parent and child policy](../../specs/workspace-search.md#pre-open-parent-and-child-policy) — Adds native variant/identity checks before child open.
+- [Observed spelling and file-name finalization](../../specs/workspace-search.md#observed-spelling-and-file-name-finalization) — Preserves every representable entry kind and separates listed locations from descendant reports.
+- [Resolver and spelling subjects](../../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction) — Defines controlled/provider/VM cases and independent observers without claiming native evidence.
+- [Native resource handoff](../../verification/search-native-resources.md#final-allocation-handoff) — Reconciles independent change evidence and two-temporary reacquisition.
+- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Describes name-preserving descent size and cached-spelling limits.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -338,3 +289,15 @@ only; public-call compilation is recorded separately in the
 [call analysis](../../verification/search-canonical-paths.md), and design review,
 native reachability, prompt behavior, independent binaries and useful coverage
 remain pending.
+
+
+The resolution revision was inspected in Safari in the isolated macOS
+26.5/25F71 clone `koine-path-resolution-k122`. Fresh canonical, traversal,
+coverage, handoff, allocation and inspection deep links reached their rendered
+views with visible starts/current/updated markers. The 1,900-pixel light views
+and canonical dark view were readable; the 800-pixel dark discussion panel
+reflowed its status, relevant links and change summaries. Narrow graph fit is
+an overview; use the native-size/export reading options as above. The manifest
+and six changed D2/SVG pairs matched host/guest SHA-256 item-by-item, including
+the final canonical edge order. This is presentation evidence only; no Koine
+search, classification, prompt-safety, resource or binary case ran.

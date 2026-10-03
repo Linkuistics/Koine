@@ -11,14 +11,22 @@ This makes one installation one chooser entry without retaining a history of
 every discarded route. It also means an application link's alias name is not
 an extra application comparison key, and copy/reveal uses the canonical target
 rather than the link. That naming/selection contract is surprising and costly
-to change after clients use it. Stable route-independent rank allows bounded
-top-N eviction while retaining every observed rootIndex for the final choices
-in unchanged native observations.
+to change after clients use it. Stable reported spelling permits route-independent
+bounded top-N rank and
+observed root membership. A retained identity keeps its first finalized reported
+name/path when later same-identity spellings differ; discarded identities have
+no global spelling history.
 
-Admitted root/frame/queued-task/witness paths use the same filesystem-reported directory-path
-operation as bundle targets; preliminary link resolution is not their returned
-canonical spelling. File entry paths join a canonical parent with the observed
-name, preserving final symlink locations. Mixing realpath's Data-volume spelling
+Admitted root/frame/witness observations use the same reported-directory
+operation as bundle targets; queued tasks retain listed locations and identities; preliminary link resolution is not their returned
+canonical spelling. File entry paths of every kind join a reported parent with
+the observed
+name, preserving final symlink locations. Descendants use fresh successful
+directory reports, which can differ from that anchor's listed location.
+Same-identity cached variants are observations, not movement proof; exact-path
+file deduplication can leave distinct strings for one object. A global spelling/
+identity history would add retention and eviction obligations beyond the bounds.
+Mixing realpath's Data-volume spelling
 with a different canonical presentation would duplicate unchanged file locations and
 fabricate application path changes. Synthetic protected/cloud targets derive
 from canonical-home components without opening excluded directories. Actual

@@ -364,10 +364,11 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Canonical review requires further
-[path design](specs/workspace-search.md#path-design-dependencies): resolver/pre-open
-policy, cached spelling, representable directory names and long-path classification.
-Those producers and their reviews precede the complete-resource review/planning;
+**Designed, not served yet.** The selected
+[path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
+checks parent and child policy before opening, and preserves representable names.
+Its review precedes long-path classification design/review, then the
+complete-resource review/planning;
 native allocation and
 [serviceability instrument/subject construction](verification/search-serviceability.md)
 are specified as design; the whole-resource review also precedes planning.
@@ -412,7 +413,10 @@ frames and bundles share the
 [canonical directory observation](specs/workspace-search.md#canonical-directory-observation);
 file locations join a canonical parent with the observed entry name, preserving
 final symlinks. Firmlink-alias roots merge equal returned paths and observed
-rootIndices; requestedPath still shows the supplied spelling. Distinct native
+rootIndices; requestedPath still shows supplied spelling. Cached native names
+can vary: different file-location strings can name one object. Each current
+listing uses a fresh reported prefix; earlier locations stay observations.
+Retained app identities keep their first finalized reported name/path. Distinct native
 copies with equal bundle identifiers stay distinct; each final choice retains
 observed matching rootIndices under the spec's stability/observation limits.
 Query matching is a literal filename substring: canonical app filename or
@@ -429,7 +433,7 @@ Read `status`, `matches`, each root's `coverage`, `dependency`,
 coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
 eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
 somewhere beneath that root. completedDirectories counts EOF listings, not an
-unchanged snapshot. Skipped CHILD_GROUP counts invalid/native-or-public-size-refused child anchors of its actual parent;
+unchanged snapshot. Skipped CHILD_GROUP counts invalid/publicly unrepresentable child locations of its actual parent;
 the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
 depth/frontier-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
 group: each depth-32 anchor itself increments the count, even an empty directory
@@ -445,14 +449,22 @@ means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means a known public/native path-size refusal, including the native
 NUL-inclusive buffer boundary. Name-omitting groups require an established
 unrepresentable candidate location; native descent refusal alone does not omit
-a representable directory/package name. Its size/scope realization remains in
-the path-design work. Successful native directory text is at most
-8,191 bytes; the public returned value limit stays 8,192 bytes. Joined file
-locations can use that last byte. Native-size omissions remain affecting
+a representable directory/package/bundle name. A queued ordinary directory's
+known native descent refusal has VALUE_LIMIT SUBTREE at its listed location,
+null count and descent-only guidance, without name withdrawal or truncation.
+Depth-32 anchors and packages make no child canonical call for descent.
+Successful native directory text is at most
+8,191 bytes; the public returned value limit stays 8,192 bytes. Joined locations
+of every file-search entry kind can use that last byte. Native-size omissions remain affecting
 coverage, not accepted workflow loss; paths are never shortened or replaced
 by another spelling. ENOSPC alone is size evidence, not movement; a refused
 shared current/prefix check stops its root, while target-only failure under an
 established unchanged parent stays exact and checked-link failure stays ENTRY.
+One resolver handles every length/source with 32 link expansions, bounded
+readlink/pending text and native dot/dot-dot semantics. Protected/cloud child
+identities and native variant lookups are checked before child open. Exact
+accounts/errors are in the spec; these calls still need no-dialog acceptance.
+Same-identity spelling differences alone are not change or inspection failure.
 Held-descriptor identity self-comparison does not detect movement or inode reuse;
 first root/witness and unassociated link-target observations have no independent
 movement detector. A failed native witness affects only dependent roots;

@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Repair canonical-path scopes and expose design dependencies",
-    "status": "Review integrated · path producers/reviews required",
-    "summary": "Canonical review repairs shared-prefix versus target/link scopes, witness dependency versus account failures, held-descriptor detector claims and ADR ownership. Resolver/pre-open child policy, cached spelling, representable-directory size handling and long-path classification need design producers and their own reviews before the complete-resource review/planning. Queue arithmetic is conditional on classification/spelling reachability. Native/binary/no-dialog/useful-coverage acceptance and the measured home-omissions decision remain pending.",
+    "title": "Bound resolution and preserve observed names",
+    "status": "Selected design \u00b7 mandatory review pending",
+    "summary": "One component resolver handles every source and length, with 32 link expansions, bounded pending text and native dot/dot-dot/restart semantics. Parent AND child native identity policy precedes open. File locations preserve parent/listed names; fresh reports supply descendants; same-identity bytes alone are not change. Queued native descent size preserves names at exact SUBTREE. Resolution review precedes classification design/review, then whole-resource review/planning. Native/no-dialog/useful-coverage acceptance and the operator omissions decision remain pending.",
     "diagramIds": [
       "search-canonical",
       "search-traversal",
@@ -17,49 +17,49 @@
     "updatedDiagrams": [
       {
         "id": "search-canonical",
-        "summary": "Separates shared-prefix, target and link scopes; removes native-size join proof and held-identity movement claims; exposes path design dependencies."
+        "summary": "Adds one bounded resolver and pre-open child identity policy; separates fresh reports, listed locations and name-preserving descent-size scopes."
       },
       {
         "id": "search-traversal",
-        "summary": "Retains FIFO and two credits while making child-policy/resolver/classification design explicit."
+        "summary": "Adds current-location A/B reacquisition and listed-location tasks while preserving FIFO, independent change evidence and shared budgets."
       },
       {
         "id": "search-coverage",
-        "summary": "Separates witness account failure from dependent native failure and public overflow from unresolved descent-only size handling."
+        "summary": "Makes queued native-size failure an exact descendant SUBTREE that preserves finalized names."
       },
       {
         "id": "search-handoff",
-        "summary": "Keeps action authority and public limits while requiring path design/reviews before the resource review."
+        "summary": "States name-preserving path behavior and resolution-review then classification-design/review dependencies."
       },
       {
         "id": "search-resources",
-        "summary": "Preserves allocation ownership; selected long-path classification integration is unresolved."
+        "summary": "Connects the selected resolver/spelling rules to unchanged allocation ownership; long-path classification remains unresolved."
       },
       {
         "id": "search-inspection",
-        "summary": "Preserves serial two-temporary ownership; resolver and same-identity spelling decisions remain open."
+        "summary": "Uses independent identity/association during candidate recheck and preserves retained metadata across same-identity spelling variants."
       }
     ]
   },
   "groups": [
     {
       "id": "search",
-      "title": "Application and file search · designed",
-      "description": "FIFO and allocation ownership/subject construction are designed within reported-fact and empirical-evidence limits. Canonical review requires resolver/policy, spelling/size-name and classification producers/reviews before the resource review/planning. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Native/binary/useful-coverage acceptance remains pending."
+      "title": "Application and file search \u00b7 designed",
+      "description": "Selected bounded resolution/policy/spelling/name design requires review before long-path classification design/review, then the resource review/planning. FIFO, Q/S, two temporaries, all accounts and wait, reported-fact/empirical-evidence boundaries, workflow/domain, consent and compatibility remain binding. Native/binary/useful-coverage acceptance remains pending."
     },
     {
       "id": "workspace",
-      "title": "Launch and open · designed, not yet served",
+      "title": "Launch and open \u00b7 designed, not yet served",
       "description": "Installed application selection, web/document opening and Finder reveal. Native acknowledgment does not certify rendered contents or foreground state; document handlers can execute content or follow redirects."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection · designed, not yet served",
+      "title": "First-party selection \u00b7 designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension · designed, not yet served",
+      "title": "Workflow extension \u00b7 designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -100,7 +100,7 @@
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Allocation ownership/subject construction design, not native acceptance; selected long-path classification and resolver/spelling integration remain unresolved. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Serviceability instrument/subject construction is specified; path producers/reviews precede mandatory whole-resource review/planning and execution remains pending. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
+      "caption": "Allocation ownership/subject construction design, not native acceptance; selected long-path classification remains unresolved; resolution/policy/spelling/name design requires review. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Serviceability instrument/subject construction is specified; path producers/reviews precede mandatory whole-resource review/planning and execution remains pending. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
     },
     {
       "id": "search-inspection",
@@ -109,7 +109,7 @@
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
-      "caption": "Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending. The resolver/pre-open child policy, long-path classification and same-identity spelling contract require producer/review work before the complete-resource review/planning."
+      "caption": "Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending. Selected resolution/policy/spelling/name design requires review before long-path classification design/review, then complete-resource review/planning. Same-identity byte variants are not independent change; retained app spelling remains first-finalized."
     },
     {
       "id": "search-canonical",
@@ -118,7 +118,7 @@
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "Source/SDK call proposal and bounded review repairs, not native acceptance. fsgetpath takes held-directory-derived filesystem/object inputs, not the descriptor. Holding prevents ordinary inode reuse while held; self-comparison does not detect movement. Parent association/reopened expected identity can expose change; first unassociated observations lack an independent detector. ENOSPC alone is size, not movement, and parent/name join length is not native-spelling proof. Shared prerequisite failure stops one root; independent target failures stay SUBTREE and checked-link failures stay ENTRY. The 8192-byte buffer includes NUL; representable directory-name/descent handling is unresolved. Resolver/pre-open child policy, cached spelling and long-path classification require producers/reviews before the resource review/planning. Native no-dialog/queue/useful-coverage outcomes remain pending."
+      "caption": "Selected design, not native acceptance. One component resolver at every length/source uses 32 link expansions, an 8193-byte readlink buffer, 8192-byte pending text and derived finite work. Native dot/dot-dot/mount/firmlink transitions and absolute restarts never use lexical deletion. Parent and no-follow child identities/known-policy lookups precede open; dialog/hydration acceptance remains required. fsgetpath reports cached spelling with default firmlink presentation, not a unique identity string. Fresh directory reports supply descendant prefixes; queued listed locations and earlier results remain observations. Retained app identities keep first finalized spelling. Same-identity byte differences alone prove no movement/failure; independent association/reopened expected identity can expose change, while first unassociated observations lack a detector. Full-buffer ENOSPC is size, not change. All file entry kinds retain representable 8192-byte locations; queued descent-size refusal uses VALUE_LIMIT SUBTREE without name withdrawal/truncation. Shared proof failure stops one root; target failures stay exact and links stay ENTRY. Resolution review precedes classification design/review, then complete-resource review/planning; native queue/classification/no-dialog/useful outcomes remain pending."
     },
     {
       "id": "search-traversal",
@@ -127,7 +127,7 @@
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn uses the canonical observation before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Resolver/pre-open policy, spelling/size-name and classification producers/reviews precede the resource review/planning; specified owned-event/accept-backoff subjects remain design obligations; measured workflow omissions remain unaccepted."
+      "caption": "Selected per-root FIFO design, not runtime acceptance. Before each listing turn, independently reacquire stored location with A/B while the stream holds its root credit, then use fresh reported spelling/policy before reads. Listed-location tasks retain expected target/parent identities, never an assumed child canonical join. Parent AND child checks precede opening; independent shared failure stops one root, final-target failure under stable parent stays exact. Native descent-size refuses descendants without withdrawing names; depth/package no-descent cases need no child canonicalization. Prefix walks/reacquisition repeat against the same wait and scratch, not entry credits. No byte-only movement inference. Worker-only cleanup retains stream/queue/credits. Resolution review, classification design/review and complete-resource review precede planning. Useful native coverage and measured omissions remain unaccepted."
     },
     {
       "id": "search-coverage",
@@ -136,7 +136,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain CAPACITY_LIMIT/INSPECTION_FAILED meanings. Established unrepresentable candidate locations use actual-parent VALUE_LIMIT groups; native descent refusal alone does not omit a representable name. ENOSPC alone is not movement. Shared-prefix failure stops one root; independent final-target failure under an unchanged parent stays exact and checked-link failure stays per-candidate. Native witness failure refuses dependent roots; only witness-account overflow is job-wide. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Path design producers/reviews precede complete-resource review/planning. Native and serviceability acceptance remains pending."
+      "caption": "Selected observation/coverage design, not runtime acceptance. Required witnesses are charged before turns; native witness errors refuse dependent roots while account overflow refuses the job. Protected/policy scopes remain explicit. Invalid/publicly unrepresentable names use actual-parent CHILD_GROUP; ordinary directory anchors stay matchable under depth/frontier/native descent limits. Known queued native descent ENOSPC under unchanged association is VALUE_LIMIT SUBTREE/null count with no name withdrawal or inferred truncation. Other target failures stay exact; shared proof failure stops one root. Outcome/no-progress precedence, lifecycle errors and compatible typed BLOCKED transport remain unchanged. Resolution review precedes classification design/review, then resource review/planning. No native or reduced workflow acceptance is supplied."
     },
     {
       "id": "search-handoff",
@@ -145,7 +145,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed selection handoff. The fsgetpath canonical observation and native bundle identity merge observed routes; distinct installations stay distinct. Established unrepresentable locations are omitted rather than shortened; native descent-only directory size handling is unresolved. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Path design producers/reviews precede the complete-resource review/planning; binary/native acceptance remains pending."
+      "caption": "Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Resolution review precedes classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending."
     },
     {
       "id": "search-discovery",
@@ -163,7 +163,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",

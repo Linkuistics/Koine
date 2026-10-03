@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Canonical review requires resolver/spelling/size-name/classification design and reviews; serviceability subject construction is specified; whole-resource review precedes planning;
+# Resolution/policy/spelling/name design requires review before classification design/review; serviceability subject construction is specified; whole-resource review precedes planning;
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
@@ -116,7 +116,8 @@ query InspectAliasedMatches($roots: [String!]) {
 # Distinct native copies sharing an identifier stay distinct. File links are locations.
 # Roots/frames/bundles use one filesystem-reported directory-path operation.
 # For FindFiles, roots [home, Data-volume alias of home] retain requested spellings
-# but share resolvedPath; a common file returns once with both observed rootIndices.
+# and, under stable reported spelling, share resolvedPath; equal returned file
+# paths merge observed rootIndices. Cached variants can remain distinct locations.
 # Its path joins canonical parent + observed name, never final symlink target.
 # Pre-turn policy-witness account failure is FAILED: every root has UNKNOWN,
 # zero counts/no searched scope and INSPECTION_FAILED REMAINDER at requestedPath.

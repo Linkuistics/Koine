@@ -3,11 +3,13 @@
 This is source/SDK analysis for the
 [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
 not a native search measurement. Implementation, independent provider/GraphQL
-and signed hardened macOS acceptance remain pending. The canonical review found
+and signed hardened macOS acceptance remain pending. The selected resolver,
+pre-open policy and spelling/name contracts require their load-bearing review
+before classification design and its review, then complete-resource review/planning.
+The
 [path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
-that require producer/review work before the complete-resource review/planning:
-resolver/pre-open policy, cached spelling, representable directory names and
-long-path classification. No shorter domain, consent/setup, entitlement or limit increase
+keep long-path classification/end-to-end reachability unresolved.
+No shorter domain, consent/setup, entitlement or limit increase
 is accepted. The [application identity decision](../adr/application-search-uses-bundle-identity.md)
 owns the naming choice; the spec owns private calls, errors and subjects.
 
@@ -80,8 +82,8 @@ For the byte subject, measure a canonical ordinary root at exactly 4,096 UTF-8
 bytes and give it 100 distinct 127-byte ASCII child-directory names, each with
 a short marker. Paths charge 4,224 + 512 = 4,736 bytes/task: 79 consume 374,144
 of the 375,040-byte queue-object allowance; 80 need 378,880. The arithmetic is
-conditional on classification and canonical spelling actually establishing those
-tasks. The selected path-based resourceValues/Bundle calls conflict with the
+conditional on classification admitting those listed-location tasks; descent reports
+are separate observations. The selected path-based resourceValues/Bundle calls conflict with the
 long-path attribute prohibition; component-relative fixture creation alone does
 not establish adapter reachability. The classification producer must re-derive
 this subject. If reachable, the queue trace must observe byte refusal below 512
@@ -97,8 +99,8 @@ text needing 8,192 bytes, and a longer chain separately test successful
 canonicalization, full-buffer ENOSPC and public joined-value overflow. Construct
 aliases component-wise when requestedPath must remain at most 4,096 bytes;
 symlink targets and hop counts must satisfy the platform's measured limits.
-The adapter's own hop/readlink/expanded-work and dot-dot/firmlink rules are not
-yet specified; the resolver producer owns them for every path length and source.
+The same specified 32-expansion/readlink/component rules apply at every source
+and length; native construction must also obey actual per-call platform limits.
 Do not presume a Foundation/full-path open or classification can reach them. If a length is
 unreachable on the guest, record the failing call and leave that subject pending.
 
@@ -122,3 +124,48 @@ fsgetpath buffer is invalid. Native 8,191-byte directory values and 8,192-byte
 joined file locations are different subjects. No capacity arithmetic establishes
 latency, safe prompting behavior, independent resource serviceability or useful
 home coverage. Actual omissions still feed the existing operator decision.
+
+## Resolver and spelling subject construction
+
+This is design construction, not executed evidence. The graph CLI in the
+resolution session refused an active unverified generation; documents and
+primary sources were read directly. No current graph/code claim or native
+acceptance is added. Apple documents APFS's case/normalization behavior in its
+[APFS FAQ](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/APFS_Guide/FAQ/FAQ.html).
+That motivates native alias lookups, rather than treating search folding as
+filesystem equivalence. Apple's
+[readlink manual source](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/readlink.2)
+describes returned bytes without an added NUL. Its
+[lookup source](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/vfs/vfs_lookup.c)
+explains native absolute/parent and link processing. These explain APIs, not
+the guest build or measured APFS cached names. The adapter's 32 expansions
+and derived work accounting are selected bounds, not a new OS guarantee.
+
+Record sequence number, source/context, parent/child identities, raw input/
+listed/reported/link bytes, return count/errno, hop/remaining/work counters,
+live scratch occurrences and A/B ownership. Record policy decision **before**
+open, then association checks, name finalization, queue charge/refusal, dequeue
+report and descendant prefix. Every native call has its existing serviceability
+envelope. Independent dialog/hydration observers start before Koine's read and
+outlive late cleanup. Failure to build/observe a witness stays pending/failed.
+
+| Subject | Controlled private adapter | Independent provider/GraphQL and signed VM construction |
+| --- | --- | --- |
+| One route/link bounds | Identical short/long root, link and registration sources take one walker. 31/32 expansions can finish; 33 refuses before readlink 33. Two-link cycle stops at the same bound with uncertainty, not absence or proven cycle. Buffers/counts 0, 1, 8,192, 8,193; invalid UTF-8/NUL and ENOENT/EIO/resource/freeze branches. | Component-relative helper makes short-target chains 31/32/33 and a two-link cycle without asking the kernel to follow a whole chain. Query roots and app candidates; registration fixtures use diagnostic result selection inside the real provider, labelled injection rather than real LS evidence. Record actual readlink counts/public scopes. Native oversized link text is a subject only if the guest permits creation; controlled large counts prove no native reachability. |
+| Expanded suffix/work | Splice at 8,192/8,193 text bytes; readlink count and pending-splice overflow differ. Count dots/dot-dots and expansion: at most 135,168 consumed components plus 32 restarts. Cancellation at readlink/splice/restart/parent/child admits no subsequent inspection. No visited/component array. | Make short-target links containing next-link plus dot-component suffixes to accumulate pending text; pad to measured splice boundaries within native per-target limits. Helper independently records link bytes. Capture actual consumed components/pending text. Earlier native/time/resource failure stays pending for that boundary. Freeze beside retained root streams and candidate/registration values; record every scratch occurrence and at most A/B. |
+| Absolute/parent transitions | Absolute link closes old pair and restarts at `/`; repeated/trailing slash and dot/dot-dot use native rules. Allowed startup firmlink transition, unsupported/unknown mount and root-parent identity. Fixed-anchor mode alone permits required Preboot transit. | Relative/absolute links in admitted temp/home; independent descriptor helper records native parent identities on `/`, startup/data mount roots and firmlinked Users/Applications. Exercise real Cryptex relative target before region listing; record every parent/mount. Unrelated Preboot sibling and file-search Cryptex root refuse. Real default Safari/Finder remains a separate required outcome. |
+| Policy before child open | Parent passes, child is protected/cloud identity: refuse before child open/fsgetpath. Supplied variant and known component native lookups through one home have equal identity; distinct identities on case-sensitive volume are not aliases. Unknown/moved witness refuses dependencies. Include restart/dot-dot/expanded links. | Seed case and NFC/NFD lookup BEFORE parent listing and child/bundle canonicalization. Query Desktop/Documents/Downloads and Library/Mail variants through home/Data aliases, roots and app links; Library blocks before Mail lookup. Include actual known cloud routes with meaningful Unicode variants when present (ASCII names have no distinct NFC/NFD form). Independently observe no dialog/hydration or protected child open. Fixture Unicode policy names are private-seam evidence, never substituted real cloud acceptance. Renamed same-identity witnesses and symlink-component aliases use separate barriers. |
+| Cached directory/bundle spelling | Same target/parent identity with differing listed and successive report bytes, longer/shorter NFC/NFD included: no false movement/size inference. Queue keeps parent/listed join; descent uses reported prefix. Current-turn A/B reacquisition compares independent identity; serial reported-path replay proves region-anchor membership without byte-prefix equality or recursive/third-descriptor work. Freeze retains charges. | Helper first opens alternate case/normalization lookup, then Koine lists parent/canonicalizes bundle/dequeues child. Capture helper/listed/adapter bytes and identities. Identical native output is no measured mismatch; differing branch remains controlled evidence only. Public checks preserve raw bytes/earlier locations, exact-string file dedup and first retained app spelling/membership, without global spelling-history promise. |
+| Public name/native descent | Exactly 8,192-byte ordinary directory, depth-32 anchor, package/bundle, file, link and alias locations remain name candidates. No child canonical call for intrinsic/no-descent cases. Queued ENOSPC under unchanged parent gives VALUE_LIMIT SUBTREE/null count without name group/truncation. Public 8,193 join omits name with actual-parent group. | Helper creates measured parent/name pairs component-relatively; query each kind separately to avoid rank loss. Real-provider injected classification exercises finalization but is labelled substitution. K123 must establish real classification/registration reachability before native pass. Private seam also covers fitting join/longer cache report and overlong join/shorter report: join bytes never predict native size. |
+| Scopes/errors/witnesses | Shared prefix/current location, independent target under stable parent, link and required policy witness changes have separate scopes. ENOSPC without change, EIO/ENOENT without absence proof and independent association mismatch. Native witness failure is dependency-scoped; account overflow job-wide. 512 dependent tasks create one stop. | Independent mover/barriers establish actual parent/target; no held-fd reuse claim. Successful unrelated roots/candidates accompany refused dependency. Freeze/late return uses fixed sink/serviceability controls. Wrong scope, post-refusal I/O, fallback spelling, lost representable name or dialog fails; synthetic events prove no native race outcome. |
+
+The desired 4,224-byte queue subject uses **listed task locations**, not equality
+between cached child canonical text and parent/name. Measured 4,096-byte parent
+and 127-byte names produce 4,224-byte joins and unchanged 4,736-byte charges
+(79 fit; 80 exceeds bytes); classification must still admit tasks and descendant
+canonicalization must separately succeed. Controlled 43/44 and native 512/513
+count subjects stay distinct. Current-turn location reacquisition adds prefix
+work before reads, so the 496/15,872 dequeue-only figures are not total-work
+measurements. Per-witness home/default outcomes and every measured omission
+still go to the operator decision. No native measurement, shorter domain,
+setup/account/limit change or consent is accepted here.

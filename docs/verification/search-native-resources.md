@@ -236,7 +236,11 @@ The [ownership contract](../specs/workspace-search.md#allocation-and-lifetime-ow
 releases candidate descriptors before registration/preferred-target walks and
 reacquires the original candidate before finalization, using only two temporary
 credits. No array history, pinned third descriptor or idle root-credit borrowing
-is allowed. Identity checks detect observed movement and preserve the ABA limit.
+is allowed. Reopened expected identity and parent/child association are
+independent change evidence; held-fd self-comparison and path-byte differences
+are not. The selected resolution/spelling contract preserves retained app
+metadata and uses A/B for current-location reacquisition before each listing
+turn. Long-path classification and all native outcomes remain pending.
 
 Admission, finalization and freeze share one gate. Late results close on the
 worker; late resource errors latch the surviving cohort before membership

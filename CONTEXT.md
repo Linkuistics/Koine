@@ -169,14 +169,16 @@ at least one **Prompt risk**, and no inspection/change/work/resource failure. It
 state is UNKNOWN, with no matches list and explicit **Search coverage**.
 
 **Search location**: An observed filesystem path returned for later client
-selection; canonical directories use one filesystem-reported presentation,
-and file entries join a canonical parent and their
-observed name, preserving final symlink locations. Firmlink-alias roots deduplicate
+selection; canonical directory observations use exact filesystem-reported bytes with
+default firmlink presentation, which can vary with cached names. File entries
+of every kind join a reported parent and their observed name, preserving final
+symlink locations; descendants use fresh directory reports. Firmlink-alias roots deduplicate
 equal returned paths and merge observed membership. A location is distinct from
 a **resource reference** and from a pinned native file identity. A later action
 revalidates the path and may encounter another occupant. The
 [path contract](docs/specs/workspace-search.md#path-design-dependencies) owns
-spelling, native-size/descent diagnostics and its unresolved realization; a
+spelling and name-preserving native-size/descent diagnostics; long-path
+classification realization remains unresolved; a
 native descent limit alone does not make a representable name unreturnable.
 
 **Search application identity**: The established native bundle directory identity

@@ -39,7 +39,11 @@ Reopen detailed records for a consumer that needs exclusion identities.
 The [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation)
 distinguishes known native/public size refusals from uncertainty. Name-omitting
 actual-parent groups require an established unrepresentable candidate location;
-a descent-only native limitation does not itself omit a representable name.
+a descent-only native limitation preserves every representable file-search
+entry kind. A known queued descent-size refusal is exact VALUE_LIMIT SUBTREE
+at the listed location, with no name withdrawal or result truncation; no-descent
+anchors need no native canonical call. Exact diagnostics spend existing room
+instead of adding another public grouped identity/count contract.
 Changed/uncertain shared prerequisites use one root stop, independent target
 failures under an unchanged parent stay exact, and checked-link failures stay
 per-candidate.

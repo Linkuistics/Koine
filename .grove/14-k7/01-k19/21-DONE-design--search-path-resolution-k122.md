@@ -76,3 +76,48 @@ Escalate before relying on a changed k119 call set or workflow/approval posture;
 any proposed/measured coverage loss goes to `protected-home-search-k93` before
 it becomes a dependency. No arbitrary sample or synthetic/native substitution
 clears useful-coverage acceptance.
+
+## Decisions (running log)
+
+- Use Grove's AFK design procedure and the existing three acceptance seams.
+  The graph CLI refused an active unverified generation; read documents directly,
+  make no implementation/graph completeness claim and do not disturb the server.
+- Select one component-relative resolver at every length/source. Keep 32 link
+  expansions, an 8,193-byte readlink buffer, 8,192-byte remaining/expanded text
+  and derived finite transition accounting inside the existing scratch/wait.
+  Native dot/dot-dot and mount/firmlink transitions replace lexical deletion.
+- Check the current parent and the not-yet-opened child. Use no-follow native
+  lookups against required protected/cloud witness identities to recognize the
+  filesystem's case/normalization aliases; textual folding is not an admission
+  proof. No protected directory is opened to acquire its policy identity.
+- File-search names of every entry kind use reported-parent plus listed-name
+  locations, including ordinary directories/packages/bundles at 8,192 bytes.
+  Queue that location and expected target/parent identities. Descent obtains a
+  fresh reported directory spelling; a native-only size refusal diagnoses
+  descendants at exact VALUE_LIMIT SUBTREE without withdrawing the name.
+- Same-identity path-byte differences alone are neither movement nor failure.
+  Current listing prefixes use fresh reported observations after independent
+  location reacquisition; queued locations preserve their original observations.
+  Retained application identities preserve the first finalized reported name/path.
+  Native alias spellings can defeat exact-path file deduplication; no unbounded
+  identity history or alternative canonical spelling is introduced.
+- Preserve k119's calls, two temporaries, accounts, freeze/refusal/cleanup and
+  all public limits. Long-path classification/end-to-end reachability remains
+  k123's question; all proposed bounds/race/spelling omissions feed k93, and no
+  native outcome or smaller useful workflow is accepted here.
+
+- Region admission uses a serial no-follow replay of the successful reported
+  path, observing native region-anchor identity rather than byte-equal prefixes.
+  Close prior A/B before replay; no recursive parent replays or third descriptor.
+  Each added replay/current-turn proof spends the existing wait/scratch and
+  stays part of the measured workflow omissions, not accepted throughput.
+
+- Final validation: task design:search-render passed with Taskfile/eight D2
+  digests unchanged. task design:search-check passed independent/composed SDL,
+  examples and rejection controls; task check:docs passed. All 276 final
+  documentation/schema/check subjects were SHA-256-identical item-by-item
+  before/after. This covers repository Markdown outside the checker exclusions,
+  docs artifacts, Taskfile, the checker and package manifests; no native/runtime
+  result follows. Safari preview checked six changed deep links, wide light/
+  canonical dark and narrow dark discussion; thirteen manifest/source/export
+  digests matched host/guest. The isolated preview clone was stopped.

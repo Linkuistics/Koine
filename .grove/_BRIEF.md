@@ -235,3 +235,20 @@ in-process calls, bounded result consumption, two-temporary ownership, freeze/
 late-return/refusal/recovery contract and observable handoff. k113 completes serviceability
 instrument/subject construction; mandatory complete-resource review k120,
 native acceptance and the separate measured home-omissions decision remain live.
+
+
+k122 selects one bounded component resolver at every source/length (32 link
+expansions, bounded readlink/pending text, derived expanded work and native
+absolute/dot-dot/firmlink transitions). Parent AND no-follow child policy checks
+use protected/known-cloud identities and native variant lookups before opening.
+File-search locations of every kind preserve reported-parent/listed-name joins,
+including 8,192 bytes; queued native descent ENOSPC under independently unchanged
+parent/association uses VALUE_LIMIT SUBTREE without withdrawing names. Fresh
+reports supply descendant prefixes, retained app identities keep first-finalized
+spelling, and byte differences alone prove no movement/failure. Current-turn
+location reacquisition spends the same two temporaries, scratch and wait; exact
+file dedup can leave cache-variant locations distinct. No changed k119 call set,
+account, domain, consent, version or native acceptance is supplied. The mandatory
+resolution review precedes k123 classification design and its own review, then
+k120/k30. Native classification reachability, all useful/default/no-dialog/binary
+outcomes and k93's actual bound/spelling/rewalk omissions decision remain live.
