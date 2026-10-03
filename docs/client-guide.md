@@ -364,7 +364,9 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Per-root FIFO breadth-first discovery and atomic
+**Designed, not served yet.** Canonical-path and opaque native-resource call/
+measurement repairs require their producer/review chains before planning.
+Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review
 are [required before planning](specs/workspace-search.md#discovery-obligations-before-planning).
@@ -417,12 +419,20 @@ means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means an individual path bound. Independent root budgets prevent
 one root spending later roots' credits. Cyclic root turns finish shallower
 admitted listings before deeper ones within each root; depths across roots can
-differ. A root's 100,000-entry allowance can still cut a wide level short.
+differ. A root's 100,000-entry allowance can still cut a wide level short and omit
+later names/listings at that same level. FIFO lists names once but repeats
+checked component walks; those and listing-turn checks spend the shared wait.
+Each current stream is revalidated before its next turn/read. A changed queued
+prefix/parent stops its root once; only a changed target under an established
+unchanged parent has an exact SUBTREE exception.
 Queue overflow, native stalls, descriptor refusal and the shared three-second
 wait can leave names unvisited. The owned search descriptor ceiling is
 min(72, max(0, soft limit − 128)); each job atomically reserves roots + 2 credits.
 Pre-turn worker/descriptor refusal gives every root CAPACITY_LIMIT; actual native
-open failure is INSPECTION_FAILED. All reservations survive blocked-call freeze
+open failure is INSPECTION_FAILED. Lower allowance is compared with summed
+surviving job reservations and refusal remains latched until cohort cleanup,
+even if the limit rises. At soft limit 256 a fifth job is worker-refused;
+descriptor admission binds only below 200. All reservations survive blocked-call freeze
 until worker-only cleanup. Platform-internal opens and unrelated demand use
 the remaining table; normally launched host serviceability requires native
 acceptance. Honest partial coverage does not accept workflow omissions. Exact native
@@ -471,6 +481,11 @@ Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain
 their pending decisions described below.
 
+Search CAPACITY_LIMIT guidance distinguishes busy admission from native
+inspections disabled by a lower-limit/resource-failure cohort. A resource flag
+plus one indefinitely blocked cohort call disables all new searches even with
+free workers, until process restart. Opaque empty/nil metadata cannot alone
+establish UNREGISTERED or absence; its native error-health contract is open.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.

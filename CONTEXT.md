@@ -147,7 +147,10 @@ descendants without stopping examination of sibling anchor names.
 
 **Search remainder**: Eligible work unfinished when a search freezes, with or
 without **Search progress**, including unopened roots, unread tails and
-queued/unopened descent and held-stream/unfinished inspection. It excludes established
+queued/unopened descent and held-stream/unfinished inspection. A changed or
+unestablished queued walk prefix/immediate parent uses one root remainder;
+only a changed final target under an established unchanged parent has an exact
+subtree exception. It excludes established
 observations and diagnosed depth/frontier omissions without identifying them and
 never means the whole root was skipped.
 

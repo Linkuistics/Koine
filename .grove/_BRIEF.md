@@ -195,3 +195,18 @@ raised with Antony before it is built on; adding an entitlement or a new
 consent is such a change. So does an incompatible contract-version change.
 Modaliser's mechanisms are evidence of intended results, never a mechanism to
 reproduce or a bug to freeze.
+
+
+search-traversal-k107 integrates k106's ten findings. Current streams recheck
+before every listing turn/read; changed queued prefixes/parents stop their root
+once, avoiding per-task diagnostic fan-out. FIFO repeats checked component walks
+against the wait; fixtures name preserved shallow project anchors and omitted
+same-level/deeper contents. Lower-limit refusal compares summed reservations and
+latches until cohort cleanup; one indefinite resource-failure cohort can require
+process restart. Public coverage and traversal decisions now have separate ADRs;
+private descriptor/cleanup mechanics remain in the spec. Native canonical-path
+selection (search-canonical-paths-k108) and opaque resource-call/error plus
+serviceability instruments (search-native-resources-k109) are externalized
+design producers, each required to cut a load-bearing review before planning.
+No native acceptance, shorter domain, new consent/setup or larger limit is
+approved; k93 must consume actual per-witness omissions.

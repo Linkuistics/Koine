@@ -115,7 +115,7 @@ k104 policy/canonical-path obligations. Native opaque opens and normally launche
 listener/store/action serviceability stay mandatory subjects. The producer cuts
 its mandatory load-bearing review before planning.
 
-The durable design marks traversal review and all runtime/binary acceptance pending;
+The durable design marks native producer reviews and all runtime/binary acceptance pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)
@@ -127,3 +127,16 @@ arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
   Koine host; its instrumentation is test-only and does not ship.
 - Retain the agreed public GraphQL, native provider binary and isolated VM
   seams. Query entry, chooser, action menu, MRU and clipboard remain client-owned.
+
+
+k107 applies k106's bounded repairs: turn-before-read checks, one changed-prefix/
+parent root remainder, target-only exact exceptions, repeated component-walk
+costs, restored 36-project/position-12 and explicit same-level loss fixtures,
+summed-reservation lowered-limit latching, disabled-cohort recovery guidance and
+a traversal ADR separate from coverage vocabulary. Real native path/resource
+selection is externalized, not repaired by assumption: search-canonical-paths-k108
+owns lossless canonical calls/native size grouping and reachable queue subjects;
+search-native-resources-k109 owns opaque error-health signals and constructible
+transient-descriptor/accept-backoff serviceability measurement. Both cut mandatory
+load-bearing reviews before planning. k93 still owns measured workflow omissions;
+all runtime/binary/native acceptance remains pending.

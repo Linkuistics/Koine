@@ -39,7 +39,7 @@ approve the other.
   min(72, max(0, soft limit − 128)) owned descriptor credits. This reserve bounds
   explicit opens, not platform-internal/unrelated demand; normally launched
   signed-host listener/store/action serviceability stays mandatory acceptance.
-  k105's load-bearing review precedes planning. Actual wide/deep/default/home,
+  k105 review integration and the k108/k109 native producer reviews precede planning. Actual wide/deep/default/home,
   component/canonical/no-dialog and independent binary acceptance remains pending.
   Worker-only cleanup retains queue/stream/credit charges across blocked-call
   freeze; fresh component walks check current parent policy before opens. No
@@ -67,3 +67,15 @@ This is the new protected-traversal limit, not a repeat of the earlier workflow
 interview or the default-opener decision. No new consent, entitlement, usage key
 or content-type handler substitution has been approved. An index alternative
 does not remove the measured prompt or establish inventory coverage.
+
+
+Consume k107's reviewed-finding integration and the pending k108/k109 producer
+reviews before drawing conclusions from acceptance. FIFO preserves the measured
+36-project home's shallow anchors, but its enormous child at position 12 can
+omit later project depth-3 contents; a separate wide depth-2 listing also loses
+later same-level names/listings. Repeated checked component walks can exhaust
+the unchanged wait before entry work. Record those exact witnesses/omissions
+alongside depth/frontier/value/policy outcomes. Native canonical-path limits and
+opaque descriptor/error/serviceability instrumentation remain open design work;
+periodic descriptor counts and delayed successful listener replies are not proof.
+No shorter canonical domain or arbitrary native-order sample is accepted.

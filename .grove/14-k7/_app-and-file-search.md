@@ -44,8 +44,7 @@ anchors; frontier overflow omits descent while sibling names continue. Canonical
 target names/paths and native bundle identity keep route-independent ranking.
 `search-traversal-k105` supplies atomic process-wide worker/descriptor admission:
 roots + 2 credits/job from min(72, max(0, soft RLIMIT_NOFILE − 128)), no limit
-change. Four maximum-root jobs hold at most 72 owned credits. Its mandatory
-load-bearing review must retire before planning. Normally launched host
+change. Four maximum-root jobs hold at most 72 owned credits. Its review integration and the k108/k109 native producers/reviews must retire before planning. Normally launched host
 listener/store/action serviceability, opaque metadata opens, real Safari/Finder,
 protected Library-link calls and useful home coverage remain pending. Invalid/overlong children keep actual-parent groups; depth uses one root
 group with matchable anchors. Stops use REMAINDER with or without progress.
@@ -72,3 +71,18 @@ new stream adapter, arbitrary protected traversal or unsupported volumes.
 This extension deliberately lifts the desktop contract's exclusions of
 non-running applications and broad discovery for these workflows only.
 `provider-architecture` records the reconciliation this node relies on.
+
+
+k107's integration repairs listing-turn revalidation, shared changed-prefix
+scope, repeated-walk costs, measured-shape/same-level loss subjects, cohort
+guidance and the summed-reservation lowered-limit predicate. Current streams
+check before the next read even in file-only listings; only target change under
+an established unchanged parent has an exact SUBTREE exception. The public
+coverage and traversal ADRs are separate; descriptor/cleanup mechanics stay
+private in the spec. search-canonical-paths-k108 must settle actual canonical
+calls and native size/group/queue subjects. search-native-resources-k109 must
+settle opaque success/error signals and an instrument for transient descriptor
+events plus suppressed listener accept/backoff. Both producers require mandatory
+load-bearing reviews before k30 planning. Errorless empty/nil, periodic counts
+or eventual replies do not clear them. Native/binary/useful-coverage acceptance
+and k93's actual omissions decision remain pending.

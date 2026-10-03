@@ -40,17 +40,23 @@ They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel presents per-root FIFO breadth-first traversal and
 atomic process-wide descriptor admission alongside reviewed transport/compatibility.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require its load-bearing review before planning. Finish shallower admitted
+require the native canonical-path/resource producers and their load-bearing reviews before planning. Finish shallower admitted
 listings before deeper ones, with one current stream/root and a 512-task/384 KiB
 pending queue. Frontier overflow counts matchable anchors in one reserved root
 group and continues sibling-name examination; depth has a separate group.
 The shared account reserves roots + 2 credits/job below the inherited soft limit,
 leaving 128 descriptors outside owned search credits and capping those at 72.
 Worker-only cleanup retains streams, paths and credits after blocked-call freeze.
-Fresh checked component walks and current-parent checks precede opens; residual
-prompt risk and opaque platform descriptors remain native acceptance obligations.
+Current-stream checks precede every listing turn/read; checked component
+walks repeat against the wait. A changed queued prefix/parent stops the root
+once rather than allocating a failure per task. Residual check-to-read/open
+races remain native acceptance obligations. The named F_GETPATH route cannot
+implement maximum accounting paths; canonical-path selection is open. Opaque
+empty/nil answers cannot establish absence; resource-call health and an instrument
+for transient opens/accept backoff are open too.
 Normally launched signed-host listener/store/action serviceability must pass;
-static arithmetic is insufficient. Safari/Finder, protected Library-link calls,
+static arithmetic, periodic descriptor counts and eventual error-free client
+replies are insufficient. Native path/resource producer reviews precede planning. Safari/Finder, protected Library-link calls,
 useful home coverage and measured omissions remain pending.
 Canonical target names/paths make app ranking independent of link/direct route;
 native bundle identity merges one installation without merging distinct copies
@@ -86,7 +92,8 @@ The current update changes these views:
 - [Search contract → resource accounting](../../specs/workspace-search.md#resource-accounting-and-scheduling) — Defines the exact order property, queue count/byte charges, unchanged coverage reservation and the iterative-deepening trade-off.
 - [Search contract → process-wide descriptor admission](../../specs/workspace-search.md#process-wide-descriptor-admission) — Adds atomic whole-job credits, soft-limit/reserve rules, native refusal cohorts and explicit platform/serviceability limits.
 - [Search contract → capacity examples](../../specs/workspace-search.md#capacity-examples-and-acceptance-threshold) — Gives per-name shallow/deep/later-root subjects and exact wide/depth/descriptor outcomes under unchanged bounds.
-- [Coverage decision](../../adr/search-coverage-describes-observations.md) — Chooses FIFO frontier omissions over DFS shallow-name loss and iterative-deepening rescans; records process admission costs and revisit conditions.
+- [Coverage decision](../../adr/search-coverage-describes-observations.md) — Defines public observation/group/remainder vocabulary.
+- [Traversal decision](../../adr/search-traversal-preserves-shallow-names.md) — Chooses FIFO order with frontier, same-level omission and repeated-prefix-work trade-offs; private resource mechanics remain in the spec.
 - [Application identity decision](../../adr/application-search-uses-bundle-identity.md) — Includes queued-task paths in the unified canonical spelling rule.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
@@ -204,3 +211,11 @@ This checks presentation only; source review, adapter/binary acceptance, no-dial
 native calls, useful coverage and normally launched process serviceability stay
 pending. Render all four search views with `task design:search-render` (D2 0.9.0,
 Dagre); serve this directory with `task design:serve`.
+
+The k107 integration regenerates the traversal/coverage/handoff exports with
+turn-before-read revalidation, changed-prefix remainder and repeated-walk costs.
+Native canonical paths (k108) and opaque resource calls/serviceability instruments
+(k109) require their producers and load-bearing reviews before planning. Their
+eventual native evidence must observe transient descriptor events and suppressed
+accept backoff; the views and schema checks do not supply it. Older presentation
+records above refer to their then-current exports.

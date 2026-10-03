@@ -19,10 +19,14 @@ Admitted root/frame/queued-task/witness paths use the same filesystem-reported d
 operation as bundle targets; preliminary link resolution is not their returned
 canonical spelling. File entry paths join a canonical parent with the observed
 name, preserving final symlink locations. Mixing realpath's Data-volume spelling
-with descriptor-path presentation would duplicate unchanged file locations and
+with a different canonical presentation would duplicate unchanged file locations and
 fabricate application path changes. Synthetic protected/cloud targets derive
 from canonical-home components without opening excluded directories. Actual
 firmlink, case and Unicode call behavior remains a signed-host obligation.
+The native canonical route is reopened by search-canonical-paths-k108: the
+1,024-byte F_GETPATH buffer cannot implement the conservative 8,192-byte path
+account. Its producer/review must settle actual calls and grouped size refusals
+before planning; no shorter domain or alternate spelling is accepted.
 
 Exact-path deduplication duplicates Safari when a checked link and a canonical
 root both discover it. Identifier deduplication merges real separate copies.

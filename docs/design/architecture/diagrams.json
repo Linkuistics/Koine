@@ -3,8 +3,8 @@
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
     "title": "Shallow names, bounded descent and shared descriptor admission",
-    "status": "Designed · traversal review and native acceptance pending",
-    "summary": "Per-root FIFO breadth-first work finishes shallower admitted listings before deeper ones. A 512-task/384 KiB account rejects descent into one counted FRONTIER_LIMIT root group while anchor names and sibling examination survive; DEPTH_LIMIT remains separate. One current stream/root and two temporary opens/job use atomically reserved process-wide credits, at most min(72, max(0, soft limit − 128)), without raising the limit. Worker-only cleanup retains streams, pending paths and credits through blocked-call freeze. Fresh component walks and canonical-parent checks precede child opens. Platform-internal descriptors and listener/store/action serviceability require normally launched signed-host acceptance. Load-bearing traversal review precedes planning; transport/compatibility meanings remain reviewed and measured workflow omissions remain unaccepted.",
+    "status": "Designed · native path/resource repairs and reviews before planning",
+    "summary": "FIFO finishes shallower admitted listings before deeper names, retaining one stream/root and a 512-task/384 KiB queue. Depth/frontier groups count matchable anchors. Current streams recheck before each listing turn/read; changed queued prefixes/parents stop the root once. FIFO repeats checked component walks against the wait and can omit later same-level/deeper names; these omissions remain unaccepted. Whole-job worker/descriptor credits remain owned until worker cleanup. Lower-limit refusal compares summed reservations and latches until cohort cleanup; indefinite native failure cohorts can disable new search until process restart. Canonical path selection and opaque resource-call/error/serviceability instruments are open design producers, each requiring load-bearing review before planning. Errorless nil/empty metadata, descriptor polling and eventual client success cannot certify their obligations. Transport/compatibility meanings remain reviewed; native/binary acceptance remains pending.",
     "diagramIds": [
       "search-traversal",
       "search-coverage",
@@ -15,15 +15,15 @@
     "updatedDiagrams": [
       {
         "id": "search-traversal",
-        "summary": "Adds FIFO depth order, bounded queue decisions, fresh checked descent and atomic process descriptor credits."
+        "summary": "Adds turn-before-read checks, shared-prefix root remainder and repeated-walk costs; native path/resource producers remain open."
       },
       {
         "id": "search-coverage",
-        "summary": "Replaces the reopened DFS path with FIFO work, separate frontier/depth anchor groups and worker-owned credit cleanup."
+        "summary": "Preserves frontier/depth groups, distinguishes changed-prefix remainder and names native call/instrument repairs."
       },
       {
         "id": "search-handoff",
-        "summary": "Names the new traversal/account and counted frontier omissions while retaining canonical identity and authorized action selection."
+        "summary": "Retains canonical identity and authorized selection while making native path/resource decisions explicit."
       }
     ]
   },
@@ -31,7 +31,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Breadth-first traversal and shared descriptor admission require load-bearing review. Typed BLOCKED transport is reviewed; independent binary/native/default/home coverage and normally launched process serviceability remain pending."
+      "description": "FIFO repairs are designed. Native canonical-path and opaque resource/error/instrument choices require producers and load-bearing reviews before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
     },
     {
       "id": "workspace",
@@ -77,7 +77,7 @@
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Proposed per-root FIFO algorithm with a shared process ledger. Finishing each listing before dequeue preserves observed depth order; a queue refusal omits descendants and keeps the anchor matchable. No rescan, cookie or sibling array. Each root retains one current stream; fresh checked descent uses two temporary job credits. The descriptor reserve bounds explicit Koine opens; platform-internal/unrelated demand and check-to-open races remain native acceptance obligations. All queue/entry/depth/deadline omissions require measured workflow review."
+      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn checks its current stream before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Native canonical paths and transient opaque descriptor/accept-backoff instruments require producer/review work before planning; measured workflow omissions remain unaccepted."
     },
     {
       "id": "search-coverage",
@@ -86,7 +86,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Validate and atomically reserve worker/owned descriptor credits; capacity refusal gives every root CAPACITY_LIMIT before opens, witness-account refusal uses INSPECTION_FAILED. Fixed-region admission and fully charged policy witnesses remain. FIFO breadth-first work has one current stream/root and a bounded pending queue. Separate depth/frontier groups count observed matchable anchors, never descendants; frontier refusal continues sibling-name examination. REMAINDER records unfinished work with or without progress. The worker alone releases streams/queue/credits after blocked calls return. Fresh component rewalks and pre-open current-parent checks require actual no-dialog acceptance. Normally launched process serviceability includes opaque platform opens; static arithmetic is insufficient. Reviewed outcome/lifecycle/compatibility meanings stay fixed."
+      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain existing CAPACITY_LIMIT/INSPECTION_FAILED meanings. Lower allowance compares summed reservations until cleanup. FIFO turn-before-read checks and one changed-prefix root remainder prevent stale post-refusal paths and queued failure fan-out. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Canonical-path/resource instrument choices are open; periodic counts or successful delayed replies cannot certify serviceability."
     },
     {
       "id": "search-handoff",
@@ -95,7 +95,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. Roots, frames, queued tasks and bundles share one canonical directory-path operation; firmlink-alias file paths merge observed membership, while application native identity merges checked-link/direct routes without merging distinct copies. Clients inspect status, coverage and all errors before selecting existing actions under both controls, preserving the installation path. Clipboard/MRU remain client-owned. FIFO/descriptor credits require load-bearing review; native/default/home, no-dialog and independent binary acceptance remain pending."
+      "caption": "Designed selection handoff. One stable canonical path/native bundle identity merges observed routes, while distinct installations stay distinct; actual native path selection is open. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Native path/resource producers and their reviews precede planning; binary/native acceptance remains pending."
     },
     {
       "id": "search-discovery",
