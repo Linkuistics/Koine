@@ -32,6 +32,18 @@ default application, reveal, copy path and open in Zed.
 
 ## Notes
 
+The search design is `docs/specs/workspace-search.md`, with the separate additive
+`docs/design/workspace-search-schema.graphql` and client examples beside it.
+Every search root/output field needs workspace read only; existing action
+receipts keep both controls. Planning consumes the design review before cutting
+implementation. The feature-gated framework minor-2 scoped permission mapping
+is a vertical dependency, not a new consent identifier or setup route. Preserve
+action-only conformance profiles while adding search-required profiles.
+`protected-home-search-k93` keeps Antony's partial-home versus explicit-setup
+decision live before baseline acceptance. Default opening and app reveal keep
+their existing separate decisions. The mechanism report does not accept the
+new stream adapter, arbitrary protected traversal or unsupported volumes.
+
 This extension deliberately lifts the desktop contract's exclusions of
 non-running applications and broad discovery for these workflows only.
 `provider-architecture` records the reconciliation this node relies on.

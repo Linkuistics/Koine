@@ -2,25 +2,31 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Search discovery and first-use traversal",
-    "status": "Native evidence recorded · API design follows",
-    "summary": "Bounded directory-name enumeration and registered-app inspection were prompt-free in signed Koine on macOS 26.5. Protected directory enumeration and a protected Spotlight query prompted. Disabling indexing did not cause query startup to fail. No new consent or entitlement is approved.",
+    "title": "Search coverage and selection handoff",
+    "status": "Design recorded · implementation and acceptance pending",
+    "summary": "Filename enumeration reports every effective root's complete/partial/unknown domain coverage. Known protected traversal is skipped before access; an all-blocked result retains coverage and withholds matches with a scoped OS-permission error, without inventing a consent. Clients own choice, clipboard and MRU; existing actions revalidate location inputs under both control grants.",
     "diagramIds": [
+      "search-coverage",
+      "search-handoff",
       "search-discovery",
       "workspace-inspection"
     ],
     "updatedDiagrams": [
       {
-        "id": "search-discovery",
-        "summary": "Added the signed-host comparison of directory listing, application registration lookup, protected traversal and Spotlight index states."
+        "id": "search-coverage",
+        "summary": "Added per-root searched/skipped coverage and distinct available, all-blocked, dependency and failed publication branches."
+      },
+      {
+        "id": "search-handoff",
+        "summary": "Added client query/choice/clipboard ownership and selected locations feeding separately authorized existing actions with revalidation."
       }
     ]
   },
   "groups": [
     {
       "id": "search",
-      "title": "Application and file search · native evidence",
-      "description": "Mechanism and permission evidence for the following API design. Configured scope and partial/unknown coverage must remain explicit."
+      "title": "Application and file search · designed",
+      "description": "Scope, coverage and location handoff, with bounded native evidence as context. The new streaming adapter and scoped diagnostics remain implementation/acceptance obligations."
     },
     {
       "id": "workspace",
@@ -59,6 +65,24 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "search-coverage",
+      "group": "search",
+      "title": "Report every root and preserve all-blocked coverage",
+      "renderer": "svg",
+      "source": "search-coverage.d2",
+      "rendered": "search-coverage.svg",
+      "caption": "Designed read contract, pending implementation and G/N/V acceptance. Complete covers the declared visible-name domain, never an atomic filesystem snapshot. Home is partial; protected/cloud/unsupported scope and work limits remain explicit. All prompt-risk roots produce BLOCKED with a nullable matches error while coverage survives. Its scoped-permission-diagnostics-v1 framework addition reports unknown consent state without a consent identifier. Native memory, syscall and same-user race limits remain; no new consent/setup/entitlement is approved."
+    },
+    {
+      "id": "search-handoff",
+      "group": "search",
+      "title": "Choose a location, then revalidate through existing actions",
+      "renderer": "svg",
+      "source": "search-handoff.d2",
+      "rendered": "search-handoff.svg",
+      "caption": "Designed component/data handoff within the existing workspace provider, not deployment containers. Search requires workspace:read; launch/open/reveal and receipts require workspace:control AND desktop:control. A selected installed app keeps both identifier and installation path. File locations are not pinned identities; unknown installation/default-handler values do not become absence or a fallback. Clipboard writes, chooser and MRU remain client-owned. Protected default opening and the third-party app-reveal notice retain their existing live decisions; search-to-action acceptance is pending."
+    },
     {
       "id": "search-discovery",
       "group": "search",

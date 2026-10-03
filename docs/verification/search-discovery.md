@@ -6,8 +6,8 @@ Koine host without prompting in this macOS 26.5 VM. Protected directory
 enumeration and a Spotlight query scoped to Desktop prompted. Search must skip
 such traversal before native access under the current no-new-consent policy.
 Neither successful Spotlight startup nor its result count diagnoses index
-availability. The API, coverage types and consent diagnostics are the next
-design step, not delivered runtime behavior.
+availability. The [search design](../specs/workspace-search.md) now fixes the API,
+coverage types and scoped diagnostics; implementation and acceptance are pending.
 
 The [comparison view](../design/architecture/index.html#diagram-search-discovery)
 shows the measured branches. The preceding
@@ -127,6 +127,17 @@ acceptance. The golden's system applications and Koine suffice for this mechanis
 comparison; the following implementation acceptance must install the required
 real applications. Query latency and action/clipboard behavior are not measured
 by this experiment.
+
+## Design handoff
+
+The [scope/coverage view](../design/architecture/index.html#diagram-search-coverage)
+and [action handoff](../design/architecture/index.html#diagram-search-handoff)
+consume this report in the [search contract](../specs/workspace-search.md).
+The chosen stream adapter is different from this probe's Foundation array
+listing. Its no-follow, resource and cancellation behavior needs its own signed
+VM acceptance; this report cannot prove it. The design keeps protected traversal
+blocked and adds no consent identifier, entitlement or setup. Earlier references
+to the following API design name this consuming step, not shipped functionality.
 
 ## Provenance and reproduction
 

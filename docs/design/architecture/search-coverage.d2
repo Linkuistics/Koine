@@ -1,0 +1,25 @@
+# Designed coverage/publication contract, not native acceptance.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Search root field\nworkspace:read before inspection" {class: start}
+Admission: "Admit every effective root\nDefaults or supplied roots\nCanonical scope + volume + prompt-risk policy"
+Skip: "Do not enumerate blocked scope\nKeep root + skipped path + reason\nConsent state UNKNOWN; no consent identifier"
+Scan: "Stream eligible names\nNo contents, index or handler lookup\nBound entries, depth, values and workers"
+Coverage: "One coverage object per root\nCOMPLETE / PARTIAL / UNKNOWN\nSearched scope + skipped remainder"
+Available: "Some progress → AVAILABLE\nSorted bounded matches, possibly empty\nCoverage still states omissions"
+Blocked: "All prompt-risk → BLOCKED\nmatches null + OS-permission error\nCoverage survives"
+Other: "No progress, other causes\nAll absent/excluded → dependency\nFailure or mixed causes → FAILED"
+Publish: "Publish under live read authority\nInspect status, coverage AND errors\nResult truncation ≠ traversal coverage"
+Start -> Admission: "1 · validate inputs"
+Admission -> Skip: "2 · blocked / unsupported"
+Admission -> Scan: "2 · admitted ordinary scope"
+Skip -> Coverage: "3 · diagnostic only"
+Scan -> Coverage: "3 · EOF, exclusion or bound"
+Coverage -> Available: "4 · any root made progress"
+Coverage -> Blocked: "4 · solely protected prompt risk"
+Coverage -> Other: "4 · no usable observation"
+Available -> Publish: "5 · matches + coverage"
+Blocked -> Publish: "5 · nullable matches error"
+Other -> Publish: "5 · distinct outcome"

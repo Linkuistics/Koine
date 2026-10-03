@@ -1,0 +1,51 @@
+# Designed examples, not served operations. Requires workspace:read only.
+# Check status, coverage AND errors, particularly at aliased nullable matches.
+# Result-count truncation and partial traversal are independent.
+
+fragment SearchCoverage on WorkspaceSearchRootCoverage {
+  rootIndex
+  requestedPath
+  resolvedPath
+  state
+  examinedEntries
+  searched { path extent }
+  skipped {
+    path extent reason affectsCoverage guidance
+    permission {
+      kind permissionClass permissionOwner permissionReason permissionTarget
+      osPermission consentState
+    }
+  }
+}
+
+query FindInstalledApplications($query: String!, $roots: [String!], $limit: Int = 50) {
+  apps: workspaceSearchApplications(query: $query, roots: $roots, limit: $limit) {
+    status
+    choices: matches { name applicationPath bundleIdentifier installationState rootIndices }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
+  files: workspaceSearchFiles(query: $query, roots: $roots, limit: $limit) {
+    status
+    choices: matches {
+      name path kind contentType openDisposition rootIndices
+      defaultHandlerState
+      defaultApplication { bundleIdentifier applicationPath }
+      defaultHandlerGuidance
+    }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+# After the user chooses, copy the app's identifier AND installation path into
+# WorkspaceApplicationInput, or the file path into the existing open/reveal
+# operations in workspace-operations.graphql. Controls are separately required.
+# Copy path/known identifier to the client's clipboard, and update client MRU
+# there. Never launch an UNKNOWN installation or infer NO_DEFAULT_HANDLER from
+# null metadata. Never retry an action by dropping its installation constraint.

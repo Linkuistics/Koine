@@ -1,0 +1,193 @@
+# Designed additive workspace search contribution; not served behavior.
+# Every root and every reachable output field requires workspace:read only.
+# Compose after workspace-schema.graphql; no foreign provider type is imported.
+
+"""Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches with an execution error at matches. Inspect publication errors and every root's coverage."""
+enum WorkspaceSearchStatus {
+  AVAILABLE
+  BLOCKED
+  DEPENDENCY_UNAVAILABLE
+  FAILED
+}
+
+"""Coverage of the declared visible-name domain, never an atomic filesystem snapshot. Intrinsic hidden/package/symlink-descendant exclusions remain explicit."""
+enum WorkspaceSearchCoverageState {
+  COMPLETE
+  PARTIAL
+  UNKNOWN
+}
+
+"""DIRECT_CHILDREN reached EOF; PARTIAL_CHILDREN covers only obtained entries; SUBTREE describes a skipped remainder, never a complete searched subtree."""
+enum WorkspaceSearchScopeExtent {
+  DIRECT_CHILDREN
+  PARTIAL_CHILDREN
+  SUBTREE
+}
+
+"""Closed skip reasons. Only HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS and SPECIAL_FILE are intrinsic domain exclusions; all others affect coverage."""
+enum WorkspaceSearchSkipReason {
+  HIDDEN
+  PACKAGE_CONTENTS
+  SYMLINK_DESCENDANTS
+  SPECIAL_FILE
+  PROMPT_RISK
+  CLOUD_SCOPE
+  UNSUPPORTED_SCOPE
+  UNSUPPORTED_VOLUME
+  MOUNT_BOUNDARY
+  ROOT_NOT_FOUND
+  ROOT_NOT_DIRECTORY
+  ACCESS_DENIED
+  INSPECTION_FAILED
+  CHANGED_DURING_SEARCH
+  UNREPRESENTABLE_NAME
+  DEPTH_LIMIT
+  ENTRY_LIMIT
+  DIAGNOSTIC_LIMIT
+  VALUE_LIMIT
+  TIME_LIMIT
+  CAPACITY_LIMIT
+}
+
+enum WorkspaceSearchPermissionKind { PERMISSION }
+enum WorkspaceSearchPermissionClass { OS_PERMISSION }
+enum WorkspaceSearchPermissionOwner { KOINE }
+enum WorkspaceSearchPermissionReason { PROMPT_RISK }
+enum WorkspaceSearchConsentState { UNKNOWN }
+
+"""Requires workspace:read. Known traversal prompt risk, not observed denial or proof of absent consent. No new consent identifier or setup is approved."""
+type WorkspaceSearchPermission {
+  kind: WorkspaceSearchPermissionKind!
+  permissionClass: WorkspaceSearchPermissionClass!
+  permissionOwner: WorkspaceSearchPermissionOwner!
+  permissionReason: WorkspaceSearchPermissionReason!
+  """Canonical blocked scope, or requested absolute scope when unresolved."""
+  permissionTarget: String!
+  """Null in this design. Never Accessibility or an invented Files and Folders consent identifier."""
+  osPermission: String
+  consentState: WorkspaceSearchConsentState!
+}
+
+"""Requires workspace:read. Absolute scope actually examined; never SUBTREE for searched coverage."""
+type WorkspaceSearchScope {
+  path: String!
+  extent: WorkspaceSearchScopeExtent!
+}
+
+"""Requires workspace:read. A bounded exclusion or unknown remainder, including synthetic policy scopes that assert no existence."""
+type WorkspaceSearchSkippedScope {
+  path: String!
+  extent: WorkspaceSearchScopeExtent!
+  reason: WorkspaceSearchSkipReason!
+  affectsCoverage: Boolean!
+  """Non-null exactly for PROMPT_RISK absent publication errors; native access denial with unknown consent cause is not this object."""
+  permission: WorkspaceSearchPermission
+  """Human explanation and recovery. Do not execute guidance as a command or trigger a read to acquire consent."""
+  guidance: String!
+}
+
+"""Requires workspace:read. Exactly one per effective root, in input order, including missing, duplicate and never-scheduled roots."""
+type WorkspaceSearchRootCoverage {
+  rootIndex: Int!
+  requestedPath: String!
+  """Canonical root if established; null does not mean absent."""
+  resolvedPath: String
+  state: WorkspaceSearchCoverageState!
+  examinedEntries: Int!
+  searched: [WorkspaceSearchScope!]!
+  skipped: [WorkspaceSearchSkippedScope!]!
+}
+
+enum WorkspaceSearchDependencyReason { NO_SEARCHABLE_ROOT }
+
+"""Requires workspace:read. Every root is absent, not a directory or unsupported/excluded by the declared domain. Exact reasons remain in coverage; never an index-health inference."""
+type WorkspaceSearchDependency {
+  reason: WorkspaceSearchDependencyReason!
+  guidance: String!
+}
+
+"""INSTALLED is a present application with a nonblank identifier registered at its native file identity. UNKNOWN cannot form a launch selector. Positively unregistered bundles are omitted."""
+enum WorkspaceSearchInstallationState {
+  INSTALLED
+  UNKNOWN
+}
+
+"""Requires workspace:read. A location observation, not a process incarnation or resource reference. Pass both known identifier and path to the existing constrained launch input; actions revalidate."""
+type WorkspaceApplicationMatch {
+  applicationPath: String!
+  """Final filename including extension; no localized display-name or icon lookup."""
+  name: String!
+  bundleIdentifier: String
+  installationState: WorkspaceSearchInstallationState!
+  """Every effective root in which this exact returned path matched, ascending; duplicate bundle identifiers do not merge installations."""
+  rootIndices: [Int!]!
+}
+
+enum WorkspaceSearchFileKind {
+  FILE
+  DIRECTORY
+  PACKAGE
+  APPLICATION
+  ALIAS
+  SYMLINK
+  UNKNOWN
+}
+
+"""ELIGIBLE is only the current metadata payload check, not handler availability or future readability. REFUSED items can be revealed/copied. UNKNOWN never proves executable content."""
+enum WorkspaceSearchOpenDisposition {
+  ELIGIBLE
+  REFUSED
+  UNKNOWN
+}
+
+enum WorkspaceSearchDefaultHandlerState { UNKNOWN }
+
+"""Requires workspace:read. A known installed app selector shape, not an input object or authority grant. Search does not populate defaultApplication in this design."""
+type WorkspaceSearchApplicationSelector {
+  bundleIdentifier: String!
+  applicationPath: String!
+}
+
+"""Requires workspace:read. A selectable location, not a pinned file identity. Symlinks/aliases are names only; descendant symlinks are never traversed."""
+type WorkspaceFileMatch {
+  path: String!
+  name: String!
+  kind: WorkspaceSearchFileKind!
+  """Native type identifier when obtained prompt-free; no contents are read. Null is unknown, not proof of no type."""
+  contentType: String
+  openDisposition: WorkspaceSearchOpenDisposition!
+  """Always UNKNOWN: no document default-handler lookup or type-only fallback occurs in search."""
+  defaultHandlerState: WorkspaceSearchDefaultHandlerState!
+  """Always null in this design, never evidence of NO_DEFAULT_HANDLER."""
+  defaultApplication: WorkspaceSearchApplicationSelector
+  defaultHandlerGuidance: String!
+  rootIndices: [Int!]!
+}
+
+"""Requires workspace:read throughout. Coverage survives all-blocked/all-failed matches errors unless normal publication denial propagates. No error-free result has both matches and dependency."""
+type WorkspaceApplicationSearchResult {
+  status: WorkspaceSearchStatus!
+  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED raises permission/os-permission here; FAILED raises failed here. Native absence is not encoded as an empty successful list."""
+  matches: [WorkspaceApplicationMatch!]
+  coverage: [WorkspaceSearchRootCoverage!]!
+  dependency: WorkspaceSearchDependency
+  """At least one matching location omitted by count/value bounds. Independent of per-root traversal coverage."""
+  resultsTruncated: Boolean!
+}
+
+"""Requires workspace:read throughout. Empty AVAILABLE may be partial; inspect coverage and errors. BLOCKED/FAILED carry no list, not a healthy empty result."""
+type WorkspaceFileSearchResult {
+  status: WorkspaceSearchStatus!
+  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED raises permission/os-permission here; FAILED raises failed here."""
+  matches: [WorkspaceFileMatch!]
+  coverage: [WorkspaceSearchRootCoverage!]!
+  dependency: WorkspaceSearchDependency
+  resultsTruncated: Boolean!
+}
+
+extend type Query {
+  """Requires workspace:read only, including every result field. Literal case/diacritic-insensitive filename substring, at most 256 UTF-8 bytes, no NUL; empty matches all. Omitted/null roots use /Applications, /System/Applications and Koine-home Applications; supplied roots replace them (1...16 literal absolute local paths, at most 4096 bytes each). Non-null limit is 1...200, default 50. Enumerate the supported visible-name domain without Spotlight or consent probing. Return bounded ranking and exact per-root coverage, not exhaustive installed-app inventory or MRU. A three-second wait can return partial coverage; the core deadline may answer first. Protected traversal is blocked before native access."""
+  workspaceSearchApplications(query: String!, roots: [String!], limit: Int = 50): WorkspaceApplicationSearchResult
+  """Requires workspace:read only, including every result field. Same literal filename query, root and limit rules as application search; omitted/null roots use Koine's home. Ordinary local startup-volume roots only, with hidden/package/symlink-descendant exclusions and explicit protected/cloud/mount/bound diagnostics. Home is partial, not complete empty. No content/default-handler lookup, download, clipboard or action. Locations feed existing open/reveal inputs without an identity guarantee; the client owns chooser and MRU. Three-second wait, bounded work/retained values and no continuation cursor; inspect coverage and publication errors."""
+  workspaceSearchFiles(query: String!, roots: [String!], limit: Int = 50): WorkspaceFileSearchResult
+}

@@ -14,6 +14,12 @@ Design installed-application search and file search, and how a result feeds
 
 ## Context
 
+- Durable design: `docs/specs/workspace-search.md`,
+  `docs/design/workspace-search-schema.graphql` and
+  `docs/design/workspace-search-operations.graphql`; the architecture viewer's
+  search coverage and handoff views accompany them. Search and the minor-2
+  diagnostic extension remain designed, pending implementation/acceptance.
+
 - `provider-architecture-k5` and `launch-and-open-k18`.
 - Requirement rows Application search and File search, and the empty-result
   versus failure rule in "Ownership and existing constraints".
@@ -53,6 +59,8 @@ roots and an honest report of what the mechanism cannot see.
    index observations inside signed hardened Koine.
 2. `app-and-file-search-k92` — synthesize the evidence into the API, scope and
    action contract before the increment's existing planning leaf.
+3. Fresh `review-design` of k92's load-bearing API, coverage and diagnostic
+   contract, before the increment's planning leaf.
 
 ## Decisions (running log)
 

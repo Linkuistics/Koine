@@ -20,6 +20,13 @@ The [workspace SDL](../design/workspace-schema.graphql) and
 [client operations](../design/workspace-operations.graphql) fix the public shapes.
 The SDL is a contribution, not the complete composed schema.
 
+The designed [application/file search extension](workspace-search.md) feeds these
+same inputs: a selected installed application supplies both identifier and
+installation path; a file supplies its literal path. Search does not issue a
+reference, resolve a default handler, write the clipboard or weaken action-time
+revalidation. Its standalone SDL remains separate until implementation extends
+the exact workspace conformance profile.
+
 ## Operations
 
 Every root below is nullable and requires **workspace:control AND
@@ -719,4 +726,3 @@ what was established; every row above keeps its pending remainder.
   ([reveal-path-vm.md](../verification/reveal-path-vm.md#the-contract-only-client-and-the-workspace-profile)). Pending: the complete selection matrix
   (`selection-acceptance`), old/new binaries with this provider, and selected
   updates and explicit absent/rejected sets in conformance.
-

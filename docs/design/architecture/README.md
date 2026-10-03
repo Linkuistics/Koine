@@ -7,6 +7,8 @@ exports:
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
+- [search scope and coverage](index.html#diagram-search-coverage) and
+  [selection and action handoff](index.html#diagram-search-handoff);
 - [first-party candidate selection](index.html#diagram-provider-selection) and
   [publication and failure](index.html#diagram-provider-publication);
 - the designed extension's [provider boundaries](index.html#diagram-workflow-providers),
@@ -34,8 +36,8 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel focuses on search discovery and protected
-traversal, with the preceding metadata/handler view as unchanged context.
+The current-discussion panel focuses on the designed search coverage and selection
+handoff, with discovery evidence and the metadata/handler view as unchanged context.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -51,14 +53,21 @@ opening remains pending a human consent/semantics decision. The updated
 [request sequence](index.html#diagram-workspace-open) qualifies its inspection
 premise with that limit; the outcome view remains unchanged context.
 
-The current update adds
-[search discovery → protected traversal](index.html#diagram-search-discovery) —
-Added the signed-host comparison of directory listing, application-registration
-inspection and Spotlight under enabled/disabled indexing. The
-[evidence report](../../verification/search-discovery.md) retains per-case
-results, prompt screenshots and unchanged subject hashes. It recommends bounded
-name enumeration and explicit skipped coverage; API design follows. Neither the
-diagram nor the probe is an exhaustive filesystem or index-availability proof.
+The current update changes these views:
+
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Added the
+  per-root coverage and aggregate outcome branches, including nullable matches
+  with scoped prompt-risk errors while coverage survives.
+- [Search → selection and action handoff](index.html#diagram-search-handoff) —
+  Added client choice/clipboard ownership and constrained inputs to existing
+  separately authorized actions with fresh revalidation.
+- [Search contract](../../specs/workspace-search.md) — Fixed filename semantics,
+  defaults, native/retained-value limits, unknown metadata, error diagnostics and
+  the pending three-seam acceptance contract.
+
+The [evidence report](../../verification/search-discovery.md) and its existing
+view remain unchanged mechanism context. The new stream adapter is a design,
+not native acceptance or an exhaustive filesystem/index-availability proof.
 
 Serve locally with `task design:serve` and open
 <http://127.0.0.1:8765/#diagram-workflow-providers>. The task serves only this
@@ -93,11 +102,16 @@ Run `task design:workspace-render` to regenerate the workspace sequence and
 outcome flow with the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
-Run `task design:search-render` for the search-discovery view with D2 0.9.0,
+Run `task design:search-render` for the three search views with D2 0.9.0,
 Dagre, light theme 0 and dark theme 200. Open
-<http://127.0.0.1:8765/#diagram-search-discovery>. The session's checked
-presentation uses <http://127.0.0.1:8879/#diagram-search-discovery> because the
-default port was occupied. A byte-identical mirror was inspected in Safari
-inside the evidence VM; no host browser control was available.
-The deep link, topic/updated markers and SVG rendering were checked at a wide
-window in light and dark appearance and at Safari's narrow window width.
+<http://127.0.0.1:8765/#diagram-search-coverage>.
+Run `task design:search-check` for independent/composed SDL and example validation,
+with failing schema controls; this does not prove runtime branch invariants.
+The preceding discovery-only presentation was checked in the isolated evidence
+VM. The current search-design presentation was checked on 2026-10-03 in Safari
+on the isolated macOS 26.5 clone `koine-k92-design`, using a byte-identical local
+copy of the manifest and SVG exports. Both deep links, the labelled starts and
+outcome branches were readable at a wide window size in light and dark
+appearance. The discussion, changed markers and outline reflowed at an
+800-pixel window width; narrow fit remains an overview as described above.
+These are presentation checks; native search acceptance remains pending.

@@ -1,0 +1,20 @@
+# Designed component/data handoff. Source roles, not deployment containers.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Client query\nFilename + roots + limit" {class: start}
+Search: "Workspace search\nworkspace:read\nLocation metadata + honest coverage"
+Choices: "Client derives choices\nCheck coverage / unknown values / errors\nChooser and MRU stay here"
+Selected: "Client selects one location\nApp: known identifier AND installation path\nFile: path, not pinned identity"
+Clipboard: "Client clipboard write\nKnown path / identifier\nNo Koine pasteboard operation"
+Action: "Existing workspace actions\nLaunch · open · reveal\nworkspace:control AND desktop:control"
+Revalidate: "Workspace revalidates on action\nPresence · registration · payload\nNo dropped constraint or alternate-copy retry"
+Outcome: "Existing action outcome\nDependency / refusal / failure / acknowledgment\nNative races and pending action decisions remain"
+Start -> Search: "1 · on-demand read"
+Search -> Choices: "2 · matches + per-root scopes"
+Choices -> Selected: "3 · user choice"
+Selected -> Clipboard: "4 · copy choice"
+Selected -> Action: "4 · explicit domain action"
+Action -> Revalidate: "5 · fresh inspection"
+Revalidate -> Outcome: "6 · submit or refuse"

@@ -546,6 +546,20 @@ This does not add enum values to existing management permission types or alter
 what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
 
+**Search extension — scoped prompt-risk diagnostics, designed/pending.**
+The [search contract](workspace-search.md#extension-only-permission-diagnostics)
+adds a feature-gated refusal of known prompting traversal before attempting it.
+Its error keeps `kind: permission`, `permissionClass: os-permission` and
+`permissionOwner: koine`, carries `permissionReason: prompt-risk` and the absolute
+`permissionTarget`, and omits `osPermission` because no consent identifier or
+absent-consent observation is established. This is not a new consent or an
+Accessibility fallback. Existing named-consent and desktop errors remain exactly
+as above. The compatible framework minor-2 feature
+`scoped-permission-diagnostics-v1` is required before a provider can use this
+mapping; its absent/malformed combination is not silently mapped to a capability
+denial or an empty consent string. Per-root read diagnostics and nullable matches
+preserve the search's all-blocked outcome. No management permission enum changes.
+
 All extension reads are prompt-free, including prerequisite and protected-folder
 checks. A probe that would prompt is not a permitted read mechanism; report
 unknown/blocked readiness or coverage instead. App-side API enablement is a
@@ -916,6 +930,14 @@ the object its provider returned, unchanged. `ProviderFailure` is `unavailable`,
 the provider's report of a registration mismatch, or `invalidInput`, for an
 argument that is no value of a provider-owned type; the host reports that one as
 input coercion, with a response path and no domain classification.
+
+The designed search extension adds optional `permissionTarget` and
+`permissionReason` accessors to the resilient `ProviderFailure` in framework
+major 1/minor 2, gated by `scoped-permission-diagnostics-v1`. It retains the
+existing cases/constructors and old failure mappings. Its exact nil-consent,
+prompt-risk semantics and old-host refusal are specified by the
+[search diagnostic contract](workspace-search.md#extension-only-permission-diagnostics).
+This is an implementation dependency, not delivered framework behavior.
 
 Resolvers use Swift async functions and framework-owned result values.
 Arguments and results are ordinary owned Swift values under ARC, not borrowed

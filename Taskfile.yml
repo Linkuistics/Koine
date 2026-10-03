@@ -153,9 +153,50 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workflow-targets.puml
 
   design:search-render:
-    desc: Render bounded search-discovery evidence (D2 0.9.0, Dagre)
+    desc: Render search evidence, coverage and handoff (D2 0.9.0, Dagre)
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-coverage.d2 docs/design/architecture/search-coverage.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-handoff.d2 docs/design/architecture/search-handoff.svg
+
+  design:search-check:
+    desc: Validate additive search SDL and examples independently and with desktop/workspace, preserving action examples; design only, not runtime acceptance
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const search = parse(read('workspace-search-schema.graphql'));
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean }'), search);
+        const actions = extendSchema(buildSchema(read('desktop-schema.graphql')), parse(read('workspace-schema.graphql')));
+        const complete = extendSchema(actions, search);
+        const examples = parse(read('workspace-search-operations.graphql'));
+        const errors = [...validateSchema(independent), ...validateSchema(complete),
+          ...validate(independent, examples), ...validate(complete, examples),
+          ...validate(complete, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const removed = { ...search, definitions: search.definitions.map(definition =>
+          definition.kind === 'ObjectTypeExtension' ? { ...definition,
+            fields: definition.fields.filter(field => field.name.value !== 'workspaceSearchFiles') } : definition) };
+        if (!validate(extendSchema(actions, removed), examples).some(error => error.message.includes('workspaceSearchFiles'))) {
+          throw new Error('Control did not reject removed file search');
+        }
+        const invalid = parse('query { workspaceSearchFiles(query: "x", limit: "wrong") { impossibleField } }');
+        if (validate(complete, invalid).length < 2) throw new Error('Controls did not reject wrong input and unknown output');
+        const foreign = parse('extend type Query { workspaceWrong: DesktopApplication }');
+        let refused = false;
+        try { extendSchema(independent, foreign); } catch (error) { refused = error.message.includes('DesktopApplication'); }
+        if (!refused) throw new Error('Control did not reject foreign provider type');
+        for (const name of ['WorkspaceApplicationSearchResult', 'WorkspaceFileSearchResult']) {
+          if (String(complete.getType(name).getFields().matches.type).endsWith('!')) {
+            throw new Error('All-blocked matches must be nullable to preserve coverage');
+          }
+        }
+        console.log('Search SDL and both examples valid independently and composed; existing action examples valid; removed-root, input/output and foreign-type controls rejected. Runtime and branch-invariant acceptance remain pending.');
+        JS
 
   design:serve:
     desc: Serve only the architecture presentation on loopback (PORT overrides 8765)

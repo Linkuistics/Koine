@@ -67,6 +67,12 @@ classification, and scope reconciliation. Then, in order:
     `launch-and-open-k29` added it.
 13. `baseline-acceptance`.
 
+`app-and-file-search-k92` externalizes `protected-home-search-k93` before
+baseline acceptance: Antony must accept/disclose the explicit partial home domain
+or approve a separate traversal-consent/setup contract. That is distinct from
+`protected-default-open-k89`'s handler lookup, but any chosen setup must be
+coordinated. No new consent, entitlement or usage key is approved by search.
+
 Each increment resolves its bounded native-evidence question, then its API
 design, before a trailing `planning` leaf cuts implementation.
 
