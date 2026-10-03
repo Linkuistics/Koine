@@ -222,6 +222,11 @@ tasks:
     cmds:
       - scripts/vm-verify-grant-workflows.sh
 
+  app:vm-verify-disclosure:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window discloses workspace control's reach in the create-grant view for a new grant, the request view for a pending request and the grant list for existing grants, each observed on screen and equal to the text a koine:manage client reads over HTTP, that koine:manage and desktop capabilities show none, that a revoked grant discloses nothing and that a restart changes no grant
+    cmds:
+      - scripts/vm-verify-disclosure.sh
+
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
     cmds:

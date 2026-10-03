@@ -13,7 +13,8 @@ import Foundation
 /// not expect. Neither shrinks what is expected.
 public struct ConformanceProfile: Decodable, Sendable, Equatable {
     /// Which management schema the host serves. `baseline` hosts predate the
-    /// candidate fields; an `extended` host serves them on every row.
+    /// candidate fields (and the capability disclosures, which the schema
+    /// comparison covers); an `extended` host serves the candidate fields on every row.
     public enum Management: String, Decodable, Sendable {
         case baseline
         case extended

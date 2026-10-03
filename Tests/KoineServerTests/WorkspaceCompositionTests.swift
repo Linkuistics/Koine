@@ -376,7 +376,7 @@ import Testing
 
     @Test func denialAtANonNullProcessFieldRemovesTheProcessAndNamesThatField() async throws {
         let (reply, _) = try await revoked(
-            at: .admitted("WorkspaceProcessIdentity.pid"), selecting: "value { process { pid startedAt } }")
+            at: .admitted("WorkspaceProcessIdentity.pid"), selecting: "value { process { pid } }")
         let value = try #require(((reply.data?["launch"] as? [String: Any])?["value"]) as? [String: Any])
         #expect(value["process"] is NSNull, "pid is non-null: its denial removes the process, not the receipt")
         #expect(reply.error(at: ["launch", "value", "process", "pid"]) != nil)
@@ -396,7 +396,7 @@ import Testing
 
     @Test func denialInsideADependencyWithholdsItsNonNullFieldAndSoTheDependency() async throws {
         let (reply, _) = try await revoked(
-            at: .admitted("WorkspaceDependencyUnavailable.reason"), selecting: "dependency { reason guidance }",
+            at: .admitted("WorkspaceDependencyUnavailable.reason"), selecting: "dependency { reason }",
             answer: Self.dependency)
         let launch = try #require(reply.data?["launch"] as? [String: Any])
         #expect(launch["dependency"] is NSNull)

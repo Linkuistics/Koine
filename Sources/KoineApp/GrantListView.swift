@@ -38,6 +38,7 @@ final class GrantListModel: ObservableObject {
 
 struct GrantListView: View {
     @ObservedObject var model: GrantListModel
+    @ObservedObject var disclosures: DisclosureModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -93,6 +94,14 @@ struct GrantListView: View {
                 Text(grant.clientLabel)
                 Text(grant.capabilities.isEmpty ? "No capabilities" : grant.capabilities.joined(separator: ", "))
                     .font(.caption).foregroundColor(.secondary)
+                // A revoked grant holds nothing now, so it discloses nothing.
+                ForEach(isActive ? grant.capabilities : [], id: \.self) { capability in
+                    if let text = disclosures.disclosure(for: capability) {
+                        CapabilityDisclosureText(
+                            text: text, identifier: "grant-disclosure-\(grant.grantId)-\(capability)"
+                        )
+                    }
+                }
             }
             Spacer()
             Text(grant.state.capitalized)

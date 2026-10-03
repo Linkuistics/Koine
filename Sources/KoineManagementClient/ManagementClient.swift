@@ -200,6 +200,26 @@ public struct ManagementClient: Sendable {
         return reply.koine.availableCapabilities
     }
 
+    /// What a person must be told about each capability's reach, keyed by
+    /// capability name. Only a capability with a disclosure is a key. The text is
+    /// the server's, so the window and any other `koine:manage` client show the
+    /// same words; a host that predates the field rejects the query.
+    public func capabilityDisclosures() async throws -> [String: String] {
+        struct Reply: Decodable {
+            struct Entry: Decodable { let capability, disclosure: String }
+            struct Management: Decodable { let capabilityDisclosures: [Entry] }
+            let koineManagement: Management?
+        }
+        let reply: Reply = try await run(
+            "{ koineManagement { capabilityDisclosures { capability disclosure } } }", variables: [:]
+        )
+        guard let management = reply.koineManagement else { throw ManagementError.malformedResponse }
+        return Dictionary(
+            management.capabilityDisclosures.map { ($0.capability, $0.disclosure) },
+            uniquingKeysWith: { first, _ in first }
+        )
+    }
+
     public func createGrant(label: String, capabilities: [String]) async throws -> CreatedGrant {
         struct Reply: Decodable { let koineCreateGrant: CreatedGrant? }
         let reply: Reply = try await run(

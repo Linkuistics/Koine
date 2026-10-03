@@ -39,6 +39,12 @@ verbatim and a missing coordinate is always a difference. The same test file pro
 the provider's own SDL, composed with the core through the engine, is that design
 file, declared order included.
 
+The two extension-host design files and the workspace profile's carry
+`KoineManagement.capabilityDisclosures` and `KoineCapabilityDisclosure`
+([capability disclosures](../specs/machine.md#capability-disclosures)); the
+old-host design file does not, and `ConformanceProfileTests` holds the difference
+to the candidate fields and exactly these two coordinates.
+
 ## Procedure
 
 ```sh

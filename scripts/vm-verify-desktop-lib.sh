@@ -31,11 +31,14 @@ guest_json() {
 create_grant() {
     local label="$1" file="$2"
     shift 2
-    click '.id=="grant-label"'
+    # The form is longer than the window (a capability's disclosure sits under
+    # it), so each control is scrolled on screen before it is clicked.
+    [ -n "${SCROLL_CALIBRATED:-}" ] || { calibrate_window_scroll; SCROLL_CALIBRATED=1; }
+    reveal_click '.id=="grant-label"'
     testanyware input type "${label}" >/dev/null
     sleep 1
-    for capability in "$@"; do click ".id==\"capability-${capability}\""; done
-    click '.role=="button" and .label=="Create Grant"'
+    for capability in "$@"; do reveal_click ".id==\"capability-${capability}\""; done
+    reveal_click '.role=="button" and .label=="Create Grant"'
     [ -n "$(value_of '.id=="grant-credential"')" ] || fail "the credential sheet did not appear"
     click '.role=="button" and .label=="Copy"'
     guest "umask 077; pbpaste > \"${file}\"; ls -l \"${file}\""

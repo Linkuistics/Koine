@@ -58,10 +58,12 @@ echo "Listener without a credential: HTTP ${UNAUTHENTICATED}"
 
 step "Create a grant through the UI and deliver its credential to a script"
 place_window
-click '.id=="grant-label"'
+# The form is longer than the window (a capability's disclosure sits under it).
+calibrate_window_scroll
+reveal_click '.id=="grant-label"'
 testanyware input type "${GRANT_LABEL}" >/dev/null
 sleep 1
-click '.role=="button" and .label=="Create Grant"'
+reveal_click '.role=="button" and .label=="Create Grant"'
 [ -n "$(value_of '.id=="grant-credential"')" ] || fail "the credential sheet did not appear"
 # Delivery is the sheet's own Copy button and the VM's clipboard; the
 # credential is never printed or brought to the host.

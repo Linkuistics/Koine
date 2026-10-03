@@ -277,7 +277,7 @@ the phrase “plus effects” is not a completed trace.
 | Context menus (additional requirement) | Menus read/control; both point and focused-element capture; same lifecycle | Context menus. Pending. |
 | List and label state (cross-cutting requirement) | Desktop, iTerm and herdr reads as applicable; client labeling/rendering/ordering | Window layout; iTerm; herdr. Pending. |
 | Interruption and cleanup (cross-cutting requirement) | Koine input/menu owners; bounded cleanup and explicit crash recovery | Held interactions; context menus. Pending. |
-| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Launch and open for workspace; window layout, extended by pointer and media; app input; menu bar. Pending before each surface ships. |
+| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Launch and open for workspace (accepted: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md)); window layout, extended by pointer and media; app input; menu bar. Pending before each of those surfaces ships. |
 
 The standalone acceptance client demonstrates Koine's part and identifies every
 client step. Account-dependent results require dedicated VM accounts and data;

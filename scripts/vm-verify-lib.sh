@@ -137,6 +137,70 @@ await_element() {
     fail "window element $1 was not $2"
 }
 text_of() { element "$1" | jq -r '[.. | strings] | join(" ")'; }
+# The window is a fixed 480x680 frame around scrolling content (the grant form's
+# disclosures make it longer than the frame), so an element is on screen, and
+# clickable, only when its frame lies inside the window's. The accessibility tree
+# reports an element that is scrolled out of view as well, so what a person can
+# see is decided by geometry, not by the tree's membership.
+TITLE_BAR=30
+read_frame() {
+    local entry
+    entry="$(testanyware agent windows --json |
+        jq -c --arg name "${APP_NAME}" '[.windows[] | select(((.title // .name // "")) | test($name))][0]')"
+    read -r FRAME_X FRAME_Y FRAME_W FRAME_H <<<"$(jq -r \
+        '[(.positionX // .x // .bounds.x), (.positionY // .y // .bounds.y),
+          (.sizeWidth // .width // .bounds.width), (.sizeHeight // .bounds.height // .height)]
+         | map(if type == "number" then floor else . end) | join(" ")' <<<"${entry}")"
+    case "${FRAME_H}" in '' | null) fail "the window's frame could not be read from the agent: ${entry}" ;; esac
+    BOTTOM=$((FRAME_Y + FRAME_H))
+}
+# on_screen <jq condition>: the element exists and lies wholly inside the window.
+on_screen() {
+    local e
+    e="$(element "$1")"
+    [ "${e}" != null ] || return 1
+    jq -e --argjson top "$((FRAME_Y + TITLE_BAR))" --argjson bottom "${BOTTOM}" \
+        '.positionY >= $top and (.positionY + .sizeHeight) <= $bottom' >/dev/null <<<"${e}"
+}
+# Which sign of --dy moves content towards the end. Natural scrolling makes this
+# a setting, so it is measured on an element rather than assumed.
+SCROLL_END=-10
+scroll_by() {
+    testanyware input scroll $((FRAME_X + FRAME_W / 2)) $((FRAME_Y + FRAME_H / 2)) "--dy=$1" >/dev/null
+    sleep 1
+}
+calibrate_window_scroll() {
+    local before after
+    read_frame
+    before="$(element '.id=="grant-label"' | jq -r '.positionY')"
+    scroll_by -10
+    after="$(element '.id=="grant-label"' | jq -r '.positionY')"
+    if [ "$(jq -n "${after} < ${before}")" = true ]; then SCROLL_END=-10; else SCROLL_END=10; fi
+    echo "grant-label at y=${before} moved to y=${after} under --dy -10; towards the end is --dy ${SCROLL_END}"
+    for _ in $(seq 1 30); do scroll_by $((-SCROLL_END)); done
+}
+# reveal <jq condition>: scroll until the element is wholly on screen.
+reveal() {
+    local e y
+    read_frame
+    for _ in $(seq 1 60); do
+        if on_screen "$1"; then return 0; fi
+        e="$(element "$1")"
+        [ "${e}" != null ] || fail "no UI element matches: $1"
+        y="$(jq -r '.positionY' <<<"${e}")"
+        if [ "$(jq -n "${y} > ${FRAME_Y} + ${FRAME_H} / 2")" = true ]; then
+            scroll_by "${SCROLL_END}"
+        else
+            scroll_by $((-SCROLL_END))
+        fi
+    done
+    fail "scrolling did not bring $1 on screen"
+}
+# reveal_click <jq condition>: scroll the element on screen, then click it.
+reveal_click() {
+    reveal "$1"
+    click "$1"
+}
 # Notification banners ("Login Item Added") cover the top-right of the screen
 # and swallow clicks; keep the window at the top-left.
 place_window() {

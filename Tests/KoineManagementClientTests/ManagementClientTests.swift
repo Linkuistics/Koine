@@ -59,6 +59,12 @@ import Testing
         #expect(served == ["koine:manage"])
     }
 
+    @Test func disclosuresAreTheServedOnesKeyedByCapability() async throws {
+        let served = try await withServer { _, client in try await client.capabilityDisclosures() }
+        #expect(Set(served.keys) == ["workspace:control"])
+        #expect(served["workspace:control"] == CapabilityDisclosures.workspaceControl)
+    }
+
     @Test func aCreatedGrantsCredentialAuthenticatesOverHTTP() async throws {
         try await withServer { port, client in
             let created = try await client.createGrant(

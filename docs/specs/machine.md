@@ -1358,6 +1358,31 @@ on extension-host reports wherever their meaning is known; nullable types preser
 older callers and represent unidentified/synthetic cases. Management authority
 continues to protect the entire surface, including locations in human diagnostics.
 
+### Capability disclosures
+
+Grant creation, request approval and the grant list must tell a person a
+capability's reach wherever it is granted or held, and a `koine:manage` client
+must be able to show the same words. The provider framework carries no
+description, and an ordinary provider has no disclosure channel, so the core owns
+a small catalogue keyed by capability name. Management serves it as additive
+metadata, with no new provider-framework requirement, capability or error kind:
+
+| Field / GraphQL type | Meaning |
+| --- | --- |
+| `KoineManagement.capabilityDisclosures: [KoineCapabilityDisclosure!]!` | One entry per capability that has a disclosure, in capability order, served whether or not its provider is active, because a grant may hold a capability whose provider failed to load. Requires `koine:manage`; serving it supplies no authority. |
+| `KoineCapabilityDisclosure { capability: String!, disclosure: String! }` | The capability name as listed in `availableCapabilities` and held by grants, and plain text stating its reach, including any other capability it needs. |
+
+The extension-host design files carry the field; `desktop-schema.graphql` and the
+`core-desktop-old-host` profile do not, because a released host never served it.
+A client of an older host gets a GraphQL error for the field and must show its own
+fallback rather than treat the absence as "nothing to disclose". The native window
+shows each disclosure beside its capability in all three places and shows nothing
+for a revoked grant, which holds nothing. `workspace:control` is the first entry;
+[workspace disclosure](../verification/workspace-disclosure-vm.md) records the text
+and its acceptance. Each later increment that owes a disclosure
+([workflow spec](workflow-providers.md#authority-allocation)) adds its capability
+here, so the window and every manager change together.
+
 Non-selected valid copies use `REJECTED` with a precise reason: `older-than-bundled`,
 `equal-to-bundled` or `superseded-candidate`; it means their contribution was refused,
 not that their signature failed. Other required reasons include `reserved-identity`,

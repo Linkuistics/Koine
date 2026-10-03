@@ -90,6 +90,8 @@ type KoineManagement {
   providers: [KoineProviderStatus!]!
   "Read on each request. Reading never asks the user for consent."
   osPermissions: [KoineOSPermission!]!
+  "What a person must be told about each capability's reach wherever it is granted or reviewed, one entry per capability that has a disclosure and whether or not its provider is active. Show it beside the capability in grant creation, request approval and the grant list. Serving it supplies no authority."
+  capabilityDisclosures: [KoineCapabilityDisclosure!]!
 }
 
 type KoineProviderStatus {
@@ -120,5 +122,12 @@ type KoineOSPermission {
   permission: String!
   owner: String!
   granted: Boolean!
+}
+
+type KoineCapabilityDisclosure {
+  "The capability name, as listed in availableCapabilities and held by grants."
+  capability: String!
+  "Plain text stating the capability's reach, including any other capability it needs."
+  disclosure: String!
 }
 """#

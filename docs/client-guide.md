@@ -193,6 +193,13 @@ Standard GraphQL code generation works from Koine's introspection.
   approving, revoking) are published by no operations file: a client that does
   not hold `koine:manage` cannot use them, which is why a client cannot approve
   its own request.
+- **Capability disclosures.** `koineManagement.capabilityDisclosures` lists, per
+  capability that has one, the plain text a person must see where the capability is
+  granted or held (today `workspace:control`). A client that creates, approves or
+  lists grants shows it beside the capability, and does not decide that a capability
+  without an entry is harmless: only the capabilities a catalogue entry exists for
+  have been described. A host that predates the field answers the query with a
+  GraphQL error, which is not "nothing to disclose".
 - **Provider status.** `koineManagement.providers` has one row per discovered
   provider candidate, so a provider identity can have several rows: the copy
   running, and every copy that was refused or passed over. `candidateId`,

@@ -8,6 +8,7 @@ struct ManagementView: View {
     @StateObject private var create: CreateGrantModel
     @StateObject private var status: StatusModel
     @StateObject private var review: RequestReviewModel
+    @StateObject private var disclosures: DisclosureModel
     @StateObject private var loginLaunch = LoginLaunchModel()
     private let port: Int
 
@@ -26,6 +27,7 @@ struct ManagementView: View {
                 await grants.refresh()
             }
         )
+        _disclosures = StateObject(wrappedValue: DisclosureModel(client: client))
         self.port = port
     }
 
@@ -34,11 +36,11 @@ struct ManagementView: View {
             VStack(alignment: .leading, spacing: 16) {
                 AccessibilityStatusView(model: status)
                 Divider()
-                RequestReviewView(status: status, model: review)
+                RequestReviewView(status: status, model: review, disclosures: disclosures)
                 Divider()
-                GrantListView(model: grants)
+                GrantListView(model: grants, disclosures: disclosures)
                 Divider()
-                CreateGrantView(model: create)
+                CreateGrantView(model: create, disclosures: disclosures)
                 Divider()
                 LoginLaunchView(model: loginLaunch)
                 Divider()
@@ -46,6 +48,7 @@ struct ManagementView: View {
             }
             .padding(20)
             .task { await status.follow() }
+            .task { await disclosures.load() }
         }
         .frame(width: 480, height: 680)
     }

@@ -89,6 +89,7 @@ final class RequestReviewModel: ObservableObject {
 struct RequestReviewView: View {
     @ObservedObject var status: StatusModel
     @ObservedObject var model: RequestReviewModel
+    @ObservedObject var disclosures: DisclosureModel
 
     private var pending: [ManagedGrantRequest] {
         (status.status?.requests ?? []).filter { $0.state == "PENDING" }
@@ -105,6 +106,7 @@ struct RequestReviewView: View {
                 row(request)
                 Divider()
             }
+            DisclosureProblemText(model: disclosures)
             if let problem = model.problem {
                 Text(problem).font(.caption).foregroundColor(.red)
                     .fixedSize(horizontal: false, vertical: true)
@@ -157,6 +159,11 @@ struct RequestReviewView: View {
                     )
                 )
                 .accessibilityIdentifier("request-capability-\(id)-\(capability)")
+                if let text = disclosures.disclosure(for: capability) {
+                    CapabilityDisclosureText(
+                        text: text, identifier: "request-disclosure-\(id)-\(capability)"
+                    )
+                }
             }
             if request.requestedCapabilities.contains(RequestReviewModel.manage) {
                 Label(

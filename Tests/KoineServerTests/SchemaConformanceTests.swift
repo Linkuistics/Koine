@@ -486,12 +486,14 @@ import Testing
             served: try parse(source: extendedText), design: try parse(source: oldText)
         ).differences()
 
-        // Exactly the additions: five nullable fields and the two enums they use.
+        // Exactly the additions: five nullable fields and the two enums they use, and the
+        // capability disclosures (one management field and the type it returns).
         #expect(
             Set(found.map(\.coordinate)) == [
                 "KoineProviderStatus.candidateId", "KoineProviderStatus.origin",
                 "KoineProviderStatus.selection", "KoineProviderStatus.selectedCandidateId",
                 "KoineProviderStatus.reason", "KoineProviderOrigin", "KoineProviderSelection",
+                "KoineManagement.capabilityDisclosures", "KoineCapabilityDisclosure",
             ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         // The two profiles are two schemas: their digests differ.

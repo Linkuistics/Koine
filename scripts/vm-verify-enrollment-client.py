@@ -14,6 +14,7 @@ usage: vm-verify-enrollment-client.py <secret file> enrol <label> [capability...
        vm-verify-enrollment-client.py <secret file> poll
        vm-verify-enrollment-client.py <secret file> own
        vm-verify-enrollment-client.py <secret file> manage
+       vm-verify-enrollment-client.py <secret file> disclosures
        vm-verify-enrollment-client.py <secret file> approve <request id> [capability...]
        vm-verify-enrollment-client.py <secret file> shown-in <file>
 """
@@ -28,6 +29,7 @@ OWN = "{ koine { ownGrant { grantId clientLabel capabilities state } } }"
 MANAGE = """{ koineManagement {
   requests { requestId clientLabel comparisonCode requestedCapabilities state }
   grants { grantId clientLabel capabilities state } } }"""
+DISCLOSURES = "{ koineManagement { capabilityDisclosures { capability disclosure } } }"
 APPROVE = """mutation($id: ID!, $capabilities: [String!]!) {
   koineApproveGrantRequest(requestId: $id, capabilities: $capabilities) { grantId clientLabel capabilities state }
 }"""
@@ -92,7 +94,7 @@ def main():
             with open(kept, "w") as file:
                 file.write(json.dumps({"case": case, "status": status, "response": response}))
         else:
-            status, response = ask(bearer, {"poll": POLL, "own": OWN, "manage": MANAGE}[case])
+            status, response = ask(bearer, {"poll": POLL, "own": OWN, "manage": MANAGE, "disclosures": DISCLOSURES}[case])
     print(json.dumps({"case": case, "status": status, "response": response}))
 
 
