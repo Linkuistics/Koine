@@ -1,7 +1,7 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
 # Canonical-target application identity and DFS/root depth counts await review.
-# Typed BLOCKED awaits its separate review; all runtime acceptance pending.
+# Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
@@ -46,8 +46,9 @@ query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
   }
 }
 
-# BLOCKED is inspectable without matches and produces no search execution error.
+# BLOCKED is inspectable without matches and produces no search-generated error.
 # FAILED also has no matches error when that field is not selected.
+# These invariants require no execution errors at or above selected fields.
 query InspectSearchCoverage($roots: [String!]) {
   apps: workspaceSearchApplications(query: "", roots: $roots) {
     status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
@@ -57,10 +58,14 @@ query InspectSearchCoverage($roots: [String!]) {
   }
 }
 
-# Within each root, BLOCKED gives two null aliases and no search errors. FAILED
+# Absent execution errors at or above selected fields, BLOCKED gives two null
+# aliases and no search-generated errors. FAILED
 # gives failed at [apps, first]/[apps, second] or [files, first]/[files, second].
 # Root aliases are independent snapshots; nested aliases reuse their frozen result.
 # Publication capability errors can suppress any field, including coverage/status.
+# Provider stop between root/nested resolution can give unavailable at matches,
+# leaving BLOCKED status beside errors; normal non-null propagation still applies.
+# No-progress PROMPT_RISK plus CHANGED_DURING_SEARCH/INSPECTION_FAILED is FAILED.
 query InspectAliasedMatches($roots: [String!]) {
   apps: workspaceSearchApplications(query: "", roots: $roots) {
     status

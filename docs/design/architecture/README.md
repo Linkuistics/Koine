@@ -37,7 +37,8 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel focuses on fixed-region Preboot admission,
-depth-first traversal/root depth counts and canonical application identity.
+depth-first traversal/root depth counts, canonical application identity and the
+reviewed transport's failure/compatibility subjects.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
 require their load-bearing review before planning and actual-adapter acceptance
 for Safari/Finder, protected Library-link resolution and useful home discovery.
@@ -45,8 +46,14 @@ Held streams eliminate width-dependent queues but cost up to 512 descriptors
 per job; exact failures/deadlines and depth-first partial order remain limits.
 Canonical target names/paths make app ranking independent of link/direct route;
 native bundle identity merges one installation without merging distinct copies
-with equal identifiers. BLOCKED retains its separate review, null matches and
-UNKNOWN consent. No reduced home/application baseline is accepted, and existing
+with equal identifiers. Reviewed BLOCKED transport keeps null matches and
+UNKNOWN consent, subject to field/lifecycle/publication errors. Changed-root or
+uncertain inspection is a failure-class reason before prompt risk; it does not
+change admission. Search 1.1.0 declares both existing authority/selection features;
+current checks move to search-required profiles while retained action-only
+binaries/profiles remain distinct under the
+[compatibility contract](../../specs/workspace-search.md#compatibility-subjects-and-diagnostic-acceptance).
+No reduced home/application baseline is accepted, and existing
 framework failure mapping stays fixed.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
@@ -78,6 +85,9 @@ The current update changes these views:
   Chose canonical bundle names over alias-dependent rank/history and distinct-path duplicates.
 - [Coverage decision](../../adr/search-coverage-describes-observations.md) —
   Reworked held-stream/depth-group trade-offs and the retained-value ceiling in place.
+- [Search transport and compatibility](../../specs/workspace-search.md#compatibility-subjects-and-diagnostic-acceptance) —
+  Classified no-progress changed/uncertain roots, retained lifecycle errors beside
+  status and separated current search checks/update fixtures from historical subjects.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -163,3 +173,11 @@ The manifest and both changed SVGs had matching per-file SHA-256 values in the
 workspace and guest copy. Static full-view rasters were also inspected for
 group/outcome and action branches. This checks presentation, not search API,
 provider-binary, prompt-free native-call or useful-coverage acceptance.
+
+The transport-integration revision was regenerated with D2 0.9.0 through
+`task design:search-render` and inspected as librsvg rasters at 1200 pixels
+(coverage) and 900 pixels (handoff). Labelled starts, changed-root/failure
+precedence, lifecycle-error guidance and action branches were readable without
+clipping. This checks static light rendering only; the earlier Safari, dark-mode
+and narrow-window observations do not validate these revised exports. Runtime,
+independent binary pairs and native search acceptance remain pending.

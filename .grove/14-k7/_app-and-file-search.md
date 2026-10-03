@@ -45,8 +45,12 @@ cuts its load-bearing review before planning; real Safari/Finder, protected
 Library-link resolution, useful home coverage and descriptor pressure remain
 pending. Invalid/overlong children keep actual-parent groups; depth uses one root
 group with matchable anchors. Stops use REMAINDER with or without progress.
-Prompt-risk transport is typed BLOCKED success/null data, pending its own review;
-fixed framework meanings stay unchanged and no diagnostic ABI addition is needed.
+Prompt-risk transport is reviewed typed BLOCKED success/null data, with k103's
+changed/uncertain-root precedence, lifecycle-error exemptions and explicit
+verification-consumer migration. Search 1.1.0 declares both authority/selection
+features; current search checks/newer fixtures and retained action-only subjects
+stay separate, with binary/runtime acceptance pending.
+Fixed framework meanings stay unchanged and no diagnostic ABI addition is needed.
 Preserve action-only conformance against
 an independently retained workspace 1.0.0 compatibility host while adding a
 separate exact search-required profile for the upgraded host.

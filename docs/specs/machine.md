@@ -524,9 +524,13 @@ Execution errors carry `message`, standard response `path` (including aliases
 and list positions), and `extensions.kind`. Permission errors add
 `extensions.permissionClass`, either `capability` or `os-permission`.
 Capability errors identify the required capability in
-`extensions.requiredCapability`, without revealing protected resource existence. OS errors identify `accessibility` and Koine as the
-permission owner, in `extensions.osPermission` and `extensions.permissionOwner`
-(`koine`). Capability errors also carry `extensions.phase`: `authorization`
+`extensions.requiredCapability`, without revealing protected resource existence.
+OS errors carry the provider's consent string and Koine as permission owner in
+`extensions.osPermission` and `extensions.permissionOwner` (`koine`). Served
+desktop operations report `accessibility`; generic handling preserves the
+[legacy failure mapping](#provider-failure-compatibility), including nil mapped
+to an empty string and blank strings unchanged. Capability errors also carry
+`extensions.phase`: `authorization`
 when preflight refused the operation before any action, `execution` when a field
 was refused as it ran — a read, or a mutation action whose grant was revoked
 after preflight. An unavailable error may echo a reference the caller supplied,
@@ -536,12 +540,16 @@ stack traces. Every propagated error retains the original failure path.
 **Workflow extension — consent identifiers, pending implementation.** Baseline desktop operations
 retain `osPermission: accessibility` and `permissionOwner: koine`. New provider
 operations may report other documented consent identifiers in `osPermission`,
-still owned by `koine`, with optional `permissionTarget` naming the consent's
-application or resource scope. These diagnostic strings are extensible on the
+still owned by `koine`. The existing framework carries no error-extension
+`permissionTarget` or permission reason. Search's target/reason belongs only to
+its typed coverage payload. A future generic failure target/reason transport
+requires a separately specified compatible framework minor/required feature,
+pre-load refusal and validation/legacy-mapping matrix before any operation
+relies on it. Consent identifier strings are extensible on the
 new operations, not new `kind` or `permissionClass` values. A client of them must
 retain an unfamiliar consent as `os-permission`, show its guidance and direct
 the user to Koine; it must not relabel every consent as Accessibility. Owners
-must document exact identifiers and target meaning before adding a consent.
+must document exact identifiers and scope meaning before adding a consent.
 This does not add enum values to existing management permission types or alter
 what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
@@ -552,7 +560,8 @@ refuses known prompting traversal before attempting it and preserves per-root
 coverage with no list in BLOCKED. The
 [diagnostic decision](../adr/prompt-risk-is-search-data.md) carries that branch
 as ordinary provider success values: selected matches and dependency are null,
-without a search execution error. Coverage's permission object describes prompt
+without a search-generated execution error. Existing field/lifecycle errors
+and normal non-null propagation still apply. Coverage's permission object describes prompt
 risk and UNKNOWN consent, never observed missing consent. Coverage-only queries
 and matches aliases have the same outcome; mixed successful roots retain
 AVAILABLE and their own blocked-scope diagnostics. FAILED retains the existing
@@ -963,9 +972,12 @@ continues supplying original GraphQL paths and permissionOwner koine.
 Targets/reasons exist only in search's typed coverage payload in this design;
 they cannot be attached to ProviderFailure through invented accessors. Existing
 feature/version loader checks still apply, independently of this table. An old
-selection-aware framework-1.1 host can carry the new schema/result values; an
-older host lacking the workspace bundle's existing required features refuses it
-before loading. No diagnostic-specific old-host refusal is needed or promised.
+selection-aware framework-1.1 host can carry the new schema/result values and
+supports the search update's declared `additional-capabilities-v1` and
+`first-party-selection-v1`. Both manifest and descriptor require those features;
+the manifest declares framework major 1/minimum minor 1. Selection is an existing host feature
+newly declared by this update. An older host lacking the required minor/features
+refuses it before loading. No diagnostic-specific old-host refusal is needed or promised.
 
 ### Resolution and lifecycle
 

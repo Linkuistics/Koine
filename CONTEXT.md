@@ -153,10 +153,12 @@ that obtained no eligible observation.
 
 **Prompt risk**: A known possibility that an inspection would request OS
 consent, causing Koine to skip it under its read policy. It is not an observation
-that Koine lacks consent; search describes it as **Search policy blocking**.
+that Koine lacks consent; search reports a PROMPT_RISK skipped scope even in an
+AVAILABLE result. It contributes to **Search policy blocking** only when no
+root made progress and no failure-class reason exists.
 
 **Search policy blocking**: The search BLOCKED outcome with no observed progress,
-at least one **Prompt risk**, and no actual native/work failure. Its consent
+at least one **Prompt risk**, and no inspection/change/work/resource failure. Its consent
 state is UNKNOWN, with no matches list and explicit **Search coverage**.
 
 **Search location**: An observed filesystem path returned for later client

@@ -25,8 +25,10 @@ acceptance subjects. Counted groups and independent root budgets retain their ob
 [coverage decision](../adr/search-coverage-describes-observations.md) explains
 the public granularity trade-off. These are design obligations, not native
 acceptance or Antony's acceptance of reduced workflow coverage. Prompt-risk
-transport uses schema-level BLOCKED with null matches and no execution error;
-its load-bearing review is pending. Preserve the outcome precedence below. Protected-home
+transport has its reviewed schema-level BLOCKED contract with null matches and
+no search-generated execution error, subject to field/lifecycle/publication errors.
+The compatibility subjects below require distinct retained and search-release
+checks before acceptance. Preserve the outcome precedence below. Protected-home
 acceptance must assess measured bound-driven omissions alongside protected
 scope before the baseline closes. Arbitrary native-order samples are not accepted.
 
@@ -143,7 +145,9 @@ requires all of the following, before enumeration or bundle inspection:
 - Resolve only the fixed `/System/Cryptexes/App/System/Applications` presentation
   root as the application-region anchor. A client root or registration answer
   cannot nominate an anchor. Positively absent optional default retains its
-  empty-domain treatment; uncertain resolution refuses inspection.
+  empty-domain treatment; uncertain resolution refuses inspection with
+  INSPECTION_FAILED unless established absence or unsupported classification
+  supplies its own reason. No-progress outcome follows the reason table below.
 - Inspect the fixed `/System/Volumes/Preboot` mountpoint without listing it.
   Its no-follow opened directory must be a mount root, with public mount metadata
   reporting that exact mountpoint, local APFS, no network/removable/union
@@ -155,8 +159,10 @@ requires all of the following, before enumeration or bundle inspection:
   Preboot mount root on the same inspected mount, or on the startup pair within
   the fixed presentation region. Resolve the trusted presentation path, not a
   guessed UUID or a general Preboot prefix. Establish/recheck its directory
-  identity and mounted-volume metadata when opening it. Changed identity/mount
-  refuses; a nested/other local APFS mount is not admitted by this exception.
+  identity and mounted-volume metadata when opening it. Observed identity/mount
+  change refuses with CHANGED_DURING_SEARCH; a nested/other local APFS mount is
+  not admitted by this exception. Established unsupported classification uses
+  UNSUPPORTED_VOLUME or MOUNT_BOUNDARY, rather than an inferred change.
 - Admit only that anchor and its descendants on the same mount for application
   search, including a checked link target there. Preboot's siblings, parent,
   broad mount root and arbitrary APFS mounts remain unsupported. Explicit
@@ -344,16 +350,16 @@ not assert membership. No cross-request snapshot, cache or inventory is kept.
 
 The two result types share these outcome semantics:
 
-| `status` | `matches`, `dependency`, and execution error, absent publication denial |
+| `status` | `matches`, `dependency`, and search-generated execution error, absent other field errors |
 | --- | --- |
 | `AVAILABLE` | Non-null list, possibly empty; null dependency. At least one root made progress. Check every coverage object before describing an empty list as complete. |
-| `BLOCKED` | Null matches and dependency, with no search execution error, including when matches is selected. No progress, no real native/work failure, and at least one prompt-risk scope; other roots may be absent/excluded. Coverage records each cause. This is a blocked policy outcome, never consent-absence inference or healthy empty. |
+| `BLOCKED` | Null matches and dependency, with no search-generated execution error, including when matches is selected. No progress, no failure-class reason below, and at least one prompt-risk scope; other roots may be absent/excluded. Coverage records each cause. This is a blocked policy outcome, never consent-absence inference or healthy empty. |
 | `DEPENDENCY_UNAVAILABLE` | Null matches; dependency `NO_SEARCHABLE_ROOT` with guidance. Every root is missing, not a directory, or excluded/unsupported by the declared domain; no execution error at matches. Coverage gives the exact per-root reasons. |
-| `FAILED` | Null matches and dependency; `matches` raises `failed`. No progress and at least one actual native failure, timeout/capacity refusal or unrepresentable root. Prompt risk mixed solely with absence/exclusion is not a native failure. |
+| `FAILED` | Null matches and dependency; `matches` raises `failed`. No progress and at least one native/identity inspection failure, work-bound/resource refusal or unrepresentable root, as classified below. Prompt risk mixed solely with absence/exclusion is not a failure. |
 
 If any root made progress, `AVAILABLE` takes precedence and successful matches
 coexist with explicit partial/unknown diagnostics. With no progress, FAILED
-takes precedence for a real native/work failure, then BLOCKED for any prompt-risk
+takes precedence for a failure-class reason, then BLOCKED for any prompt-risk
 scope, then DEPENDENCY_UNAVAILABLE for purely absent/excluded roots. For example,
 `[Desktop, missing]` and `[Desktop, unsupported-volume]` are BLOCKED;
 `[Desktop, access-denied]` is FAILED. A non-TCC access denial has
@@ -361,6 +367,23 @@ scope, then DEPENDENCY_UNAVAILABLE for purely absent/excluded roots. For example
 Cocoa 257 alone. Other unexpected failures are `INSPECTION_FAILED`. In a
 blocked result a client may highlight the first prompt-risk root in input order;
 coverage retains every cause and target and is the only diagnostic payload.
+
+Every skipped reason has a no-progress precedence class; a refused root must
+record the established reason, never an unclassified generic refusal:
+
+| Class | Reasons | No-progress aggregate contribution |
+| --- | --- | --- |
+| Failure | ACCESS_DENIED, INSPECTION_FAILED, CHANGED_DURING_SEARCH, UNREPRESENTABLE_NAME, DEPTH_LIMIT, FRONTIER_LIMIT, ENTRY_LIMIT, DIAGNOSTIC_LIMIT, VALUE_LIMIT, TIME_LIMIT, CAPACITY_LIMIT | FAILED, even alongside PROMPT_RISK. DEPTH_LIMIT occurs only after entry progress in this adapter, and FRONTIER_LIMIT is not emitted; neither changes that invariant. |
+| Prompt risk | PROMPT_RISK | BLOCKED only when no failure-class reason exists. |
+| Absence/exclusion | HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS, SPECIAL_FILE, CLOUD_SCOPE, UNSUPPORTED_SCOPE, UNSUPPORTED_VOLUME, MOUNT_BOUNDARY, ROOT_NOT_FOUND, OPTIONAL_ROOT_ABSENT, ROOT_NOT_DIRECTORY | DEPENDENCY_UNAVAILABLE only when no failure or prompt-risk reason exists. OPTIONAL_ROOT_ABSENT retains COMPLETE empty-domain coverage without progress. |
+
+In particular, a root replaced between canonicalization and open records
+CHANGED_DURING_SEARCH and contributes failure; `[Desktop, changed-root]` is
+FAILED. Uncertain fixed-anchor resolution contributes INSPECTION_FAILED unless
+metadata positively establishes absence or an unsupported layout. These outcome
+classes do not broaden root admission or authorize retries. After any progress,
+all classes remain exact coverage diagnostics under AVAILABLE.
+
 These are **new search result** rules, not changes
 to desktop null/absence behavior. A null search root always has an input,
 capability or execution error. Status/coverage/matches are read fields: revocation
@@ -376,7 +399,7 @@ another native inspection or a GraphQL error hidden inside provider values.
 
 ### Selection and publication invariants
 
-Absent authorization, input, deadline/response-limit or publication errors, every
+Absent any execution error at or above a selected field, every
 BLOCKED response object has status BLOCKED, matches null when selected,
 dependency null when selected, resultsTruncated false, and one UNKNOWN coverage
 object per effective root, except a positively absent optional default retains
@@ -386,10 +409,15 @@ permission object, and every root records its own blocking/absence/exclusion
 cause. There are no observed matches to truncate. No search resolver returns a
 missing-consent failure or synthesizes an error for this branch. Omitting matches
 does not change status, coverage or whether an inspection was attempted.
+Authorization, input, deadline/response-limit, provider-lifecycle and publication
+errors retain their existing handling. A provider stopped after root resolution
+can return unavailable at a nested field, including nullable matches; the
+surviving status does not override it. Normal non-null propagation can suppress
+other fields or the root. No error-free branch invariant is promised there.
 
 Repeated matches aliases within one root read the same frozen result: BLOCKED
-returns null at each alias with no errors; FAILED emits a failed error at each
-selected alias, retaining its original response path and nullable-field coverage.
+returns null at each alias without a search-generated error; FAILED emits a failed
+error at each selected alias, retaining its original response path and nullable-field coverage.
 Separate aliases of the Query root are independent searches with independent
 coverage and shared process-wide capacity accounting; no atomic cross-alias
 snapshot is promised. Mixed roots with any progress publish AVAILABLE and a list,
@@ -445,8 +473,11 @@ change is approved.
 Register the new search output types as read fields separately from the existing
 control-only action types; the workspace provider's current all-control helper
 is not the authority for search. Publish workspace provider/schema 1.1.0 as an
-additive release, retaining the catalogue identity,
-composition position and existing required features. A release number never
+additive release, retaining the catalogue identity and composition position.
+Both manifest and descriptor declare `additional-capabilities-v1` and
+`first-party-selection-v1`; the manifest declares framework major 1/minimum minor 1.
+The latter feature is the existing host-selection feature newly declared by this published search
+update; it is not a diagnostic feature. A release number never
 substitutes for introspection or a conformance profile.
 
 ## Matches, ordering and bounds
@@ -869,9 +900,12 @@ Its exact profile is
 against the unchanged
 [action-only composed SDL](../design/desktop-workspace-schema-extension-host.graphql).
 Retain its host/framework/provider binaries, source revision and digests before
-upgrading search. Existing selection-update purpose-built hosts/profiles remain
-their own pinned subjects; a fixture workspace 1.1.0 with schema 1.0.0 is not the
-search release merely because its release number matches.
+upgrading search. Existing selection-update evidence and purpose-built subjects
+remain historical and must be retained with their original profiles and binary
+digests. Their build recipes consume the current tree: rerunning them after a
+search edit does not retain the historical subject. In particular, the historical
+workspace 1.1.0/schema 1.0.0 update fixture is not the search release merely
+because its release number matches.
 
 The search-serving subject is workspace-search-1.1, bundling workspace
 provider/schema 1.1.0 and desktop 1.0.0 with the existing framework-1.1 contract.
@@ -890,13 +924,28 @@ new-provider/old-host direction installs the approved search 1.1.0 bundle as a
 per-user update on the independently retained host, with exact SELECTED/PER_USER
 and NOT_SELECTED/BUNDLED candidate pins in its search-required profile variant.
 
+Implementation migrates the tree-bound verification consumers explicitly:
+
+| Current consumer | Search-release obligation; historical subject stays unchanged |
+| --- | --- |
+| Real selection bundle builder (`build-selection-real`) | Its current workspace becomes provider/schema 1.1.0. Newly built workspace updates and renamed updates are release 1.2.0/schema 1.1.0, strictly above that baseline; desktop fixture versions stay independent. Construct and verify feature lists from declared features rather than substituting the old one-feature descriptor literal. Remove the selection feature only from the intentionally refused manifest copies; accepted manifests/descriptors both declare it. |
+| Production selection scenarios (`verify-selection-updates`) | Current-production baseline pins move to bundled workspace 1.1.0/schema 1.1.0. Workspace update/refusal pins move to 1.2.0/schema 1.1.0, with new exact search-required baseline, desktop-update, workspace-update, both-update and refused-update profile variants and full candidate rows. Retained pre-search scenarios keep their old binaries/profiles and cannot rebuild them from this tree. |
+| Current composition tests (`SchemaConformanceTests`) | The served-core/desktop/current-workspace comparison moves to the new complete search SDL/digest and exact search-required pins. Keep the action-only SDL restriction test and historical profile-model/pin tests as historical contract checks; give them independent fixtures, not the current provider. Add separate search-profile and mutation controls rather than changing historical expected pins. |
+| Signed production-app conformance (`vm-verify-conformance`) | Its default subject/profile becomes workspace-search-1.1 and the new exact search-required profile. Action-only runs explicitly select the retained compatibility host or upgraded-core/retained-provider subject and their unchanged profile. Record subject, binaries, catalogue, capture and digests together; a replay of an old capture is not new search evidence. |
+
+Move the consuming check, not its historical profile/SDL. Retain the designated
+pre-search host/framework/providers before the first source edit that would
+change those binaries. The migration and new profile variants are implementation
+obligations, not artifacts already built or passing here.
+
 | Independently built pair / case | Required observation, pending implementation |
 | --- | --- |
 | Retained workspace 1.0.0 on workspace-actions-1.0-upgraded-core | All four actions and old named-consent/nil/blank failure mapping remain unchanged; run the unchanged exact action-only profile with that retained provider and catalogue baseline, and retain its binary identity. |
-| New search 1.1.0 provider on retained selection-aware framework-1.1 host | Loads under its existing minimum minor/features; additive SDL and BLOCKED success/null values work without a diagnostic feature. Use the search-required exact profile with candidate rows appropriate to the selected new bundle, not action-only bundled pins. No new shared-framework symbol is imported. |
-| New search provider on released Koine 0.1.0/framework 1.0 | Existing additional-capabilities-v1 / first-party-selection-v1 requirements cause pre-load refusal with no initializer marker; this is existing incompatibility, not a new prompt-risk feature. |
-| Both roots, each wholly protected; coverage-only and two matches aliases | BLOCKED, null matches/dependency, false resultsTruncated, no search execution errors. Coverage retains targets, PROMPT_RISK, null osPermission and UNKNOWN consent. No nested selection schedules native reads. Include optional-absent default plus prompt risk: absent optional coverage remains COMPLETE, not UNKNOWN. |
-| Prompt risk + missing/unsupported; prompt risk + actual denied/native/work failure; pure absent/excluded | Respectively BLOCKED without errors, FAILED with failed at each selected matches alias, and DEPENDENCY_UNAVAILABLE without matches errors. Coverage-only FAILED still publishes status/coverage without a selected matches error. |
+| New search 1.1.0 provider on retained selection-aware framework-1.1 host | Loads with minimum minor 1 and both additional-capabilities-v1 and first-party-selection-v1 declared in manifest/descriptor; that retained host supports both. Additive SDL and BLOCKED success/null values work without a diagnostic feature. Use the search-required exact profile with candidate rows appropriate to the selected new bundle, not action-only bundled pins. No new shared-framework symbol is imported. |
+| New search provider on released Koine 0.1.0/framework 1.0 | Framework minimum minor 1 and the declared additional-capabilities-v1 / first-party-selection-v1 requirements cause pre-load refusal with no initializer marker. Selection is an existing host feature newly required by this update, not a new prompt-risk feature. |
+| Both roots, each wholly protected; coverage-only and two matches aliases | Absent any execution error at or above selected fields: BLOCKED, null matches/dependency, false resultsTruncated, no search-generated errors. Coverage retains targets, PROMPT_RISK, null osPermission and UNKNOWN consent. No nested selection schedules native reads. Include optional-absent default plus prompt risk: absent optional coverage remains COMPLETE, not UNKNOWN. |
+| Prompt risk + missing/unsupported; prompt risk + actual denied/native/work failure or changed root; pure absent/excluded | Respectively BLOCKED without search-generated errors, FAILED with failed at each selected matches alias, and DEPENDENCY_UNAVAILABLE without matches errors. Include uncertain fixed-anchor resolution as INSPECTION_FAILED and observed identity/mount change as CHANGED_DURING_SEARCH; established unsupported classification keeps its exclusion reason. Coverage-only FAILED still publishes status/coverage without a selected matches error. |
+| Provider stops after a BLOCKED root resolves, before a nested alias resolves | Existing unavailable error at each affected original response path. Nullable matches may leave BLOCKED status/coverage beside that error; non-null field failure propagates normally. No branch invariant overrides the lifecycle error, and no native read is retried. |
 | Successful ordinary/empty root + protected root | AVAILABLE with a non-null list, possibly empty, and exact per-root partial/unknown diagnostics; no synthetic matches permission error. |
 | Revocation before root or selected nested publication | Capability execution error at the original aliased path; no root work on admission denial. Nullable matches can be null while other data survives. Non-null status or a coverage member propagates to the nullable root; permission.kind denial can null just the nullable permission object, with its original root/coverage/skipped list indices in the error path. Do not assert error-free BLOCKED invariants on the denied response. |
 | All existing failure kinds × nil/empty/whitespace/named permission | Verify the Machine mapping unchanged through independently built fixture binaries and original paths, including ignored permission on non-osPermission kinds and resolverMismatch for unknownResolver. No prompt-risk accessor or new malformed diagnostic exists. |

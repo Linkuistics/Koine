@@ -19,8 +19,8 @@ Design installed-application search and file search, and how a result feeds
   `docs/design/workspace-search-operations.graphql`; the architecture viewer's
   search coverage and handoff views accompany them. Review integration requires
   fresh default-discovery/resource and prompt-risk transport design before
-  planning. Prompt-risk transport is typed BLOCKED data with null matches/
-  dependency and no execution error, pending its own load-bearing review.
+  planning. Prompt-risk transport is reviewed typed BLOCKED data with null matches/
+  dependency and no search-generated error, subject to lifecycle/field errors.
   Existing failure/consent mapping stays fixed; no diagnostic framework addition.
   Search remains pending implementation/acceptance.
 
@@ -85,9 +85,18 @@ bundle identity. Its load-bearing review must retire before planning. Descriptor
 costs, changed observations and actual default/home witnesses remain acceptance
 obligations; alias-named links remain file locations, not extra application names.
 k99 reconciles shared-file edits without losing its BLOCKED responsibility.
+k103 integrates its seven findings: the search manifest/descriptor declare both
+existing authority/selection features; current composition/VM/selection consumers
+move to exact search-required profiles and workspace 1.2.0/schema 1.1.0 update
+fixtures, while historical action-only profiles/retained binaries stay unchanged.
+No-progress CHANGED_DURING_SEARCH and uncertain resolution/INSPECTION_FAILED
+contribute FAILED; established absence/unsupported classification keeps exclusion.
+These reason/outcome clarifications do not alter k101's admission predicates.
+Nested lifecycle errors are exempt from error-free BLOCKED invariants. k102 must
+reconcile those shared-text repairs while reviewing discovery itself.
 
 These producer/review repairs live in this node, so planning cannot run before
-they retire. The durable design marks discovery review and transport review pending;
+they retire. The durable design marks discovery review and all runtime/binary acceptance pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)

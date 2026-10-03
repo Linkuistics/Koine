@@ -11,8 +11,11 @@ retains the framework's permission-error meaning, as specified by the
 
 This makes prompt policy inspectable even in a coverage-only query and preserves
 all causes in a mixed-root result. It also makes BLOCKED an enduring schema
-obligation: clients must inspect status, coverage and publication errors rather
-than relying on GraphQL errors alone. Ordinary ProviderValue objects/nulls carry
+obligation: clients must inspect status, coverage and all field/lifecycle/publication
+errors rather than relying on GraphQL errors alone. Future named-consent output
+enum values require a separately specified compatibility policy before use;
+the present UNKNOWN/PROMPT_RISK values do not settle that evolution.
+Ordinary ProviderValue objects/nulls carry
 it through the [resilient framework](resilient-provider-framework.md), with no
 new symbols, framework minor or host feature. Existing
 [authority](provider-authority-follows-effects.md), action errors and

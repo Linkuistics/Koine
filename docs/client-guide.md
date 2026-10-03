@@ -268,7 +268,7 @@ four values in `koine-desktop/1`:
 
 | `kind` | Meaning | Further `extensions` |
 |---|---|---|
-| `permission` | Refused for want of authority | `permissionClass`: `capability` (the client's grant lacks it; `requiredCapability` names it when there is one, and `phase` is `authorization` when preflight refused the operation or `execution` when a field was refused as it ran — a read, or a mutation action whose grant was revoked after preflight) or `os-permission` (Koine lacks the user's consent; `osPermission` is `accessibility`, `permissionOwner` is `koine`) |
+| `permission` | Refused for want of authority | `permissionClass`: `capability` (the client's grant lacks it; `requiredCapability` names it when there is one, and `phase` is `authorization` when preflight refused the operation or `execution` when a field was refused as it ran — a read, or a mutation action whose grant was revoked after preflight) or `os-permission` (`permissionOwner` is `koine`; `osPermission` carries the supplied consent string, `accessibility` for served desktop operations; legacy nil maps to an empty string and blanks remain unchanged) |
 | `unavailable` | The target is gone, or the reference is not one this provider produces | none |
 | `unknown-provider` | A reference names a provider that is not registered | none |
 | `failed` | The operation was attempted and did not succeed | `reason` and `requestState` on the management outcomes the spec's table lists |
@@ -295,24 +295,32 @@ description. See the [extension error
 contract](specs/machine.md#errors-and-partial-data).
 
 **Designed, not served yet:** new operations can report other consent identifiers
-in `osPermission`, still with `permissionOwner: koine`, and an optional
-`permissionTarget` naming the application or resource scope. Treat unfamiliar
+in `osPermission`, still with `permissionOwner: koine`. There is no generic
+error-extension `permissionTarget` in the existing framework; search reports
+its scope/reason as typed coverage data. Future error target/reason transport
+needs a separately designed framework/host extension before use. Treat unfamiliar
 identifiers as OS-permission refusals and show Koine's guidance; do not label them
-Accessibility. Existing desktop operations keep the values in the table. Reads
+Accessibility. Nil/blank legacy values are unspecified-consent failures; show
+their guidance without inventing an identifier, as the
+[failure compatibility table](specs/machine.md#provider-failure-compatibility)
+requires. Existing desktop operations keep `accessibility`. Reads
 never request consent. App-side API enablement is instead an integration
 prerequisite, and file search reports partial/unknown coverage separately from a
 complete empty result.
 
-For the served desktop operations, three rules make these usable:
+For desktop operations, three rules make these usable; the consent distinction
+also applies to other providers:
 
 - **A root lookup that is null with no error is absence**; a root lookup that is
   null with an error is that error, whatever path the error carries — a denied
   non-null field discards its nearest nullable parent, so the error's path may be
   deeper than the null.
-- **Tell `os-permission` from `capability`.** The first is sent to the user with
-  directions to give *Koine* Accessibility consent in System Settings; a client
-  never asks for that permission itself. The second is the client's grant, which
-  the user changes in Koine.
+- **Tell `os-permission` from `capability`.** Direct the first to Koine with its
+  supplied guidance. For the documented `accessibility` consent, direct the user
+  to give *Koine* Accessibility consent in System Settings. Preserve other named
+  identifiers and unspecified legacy values; never relabel them Accessibility.
+  A client never asks for Koine's OS permission itself. The second is the client's
+  grant, which the user changes in Koine.
 - **One response can carry several errors**, on different branches. The contract
   sets no precedence among them; a client that reduces them to one outcome
   chooses its own order, and should keep every error.
@@ -399,10 +407,11 @@ VALUE_LIMIT means an individual path bound. Independent root budgets prevent
 one root spending later roots' credits. Cyclic root turns run depth-first inside
 each root, with no pending-directory queue. Width/depth cannot exhaust diagnostics
 per parent, but exact native failures/invalid names can; native stalls, descriptor
-refusal and shared deadlines can still leave useful names unvisited. Home excludes protected traversal. In a
-BLOCKED result, matches is null and coverage remains available. Coverage's
+refusal and shared deadlines can still leave useful names unvisited. Home excludes protected traversal. In an
+error-free BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
-Accessibility or established consent absence. BLOCKED is error-free search data,
+Accessibility or established consent absence. Absent execution errors at or above
+the selected fields, BLOCKED is error-free search data,
 including when choices: matches is selected: choices and dependency are null,
 resultsTruncated is false, roots have no progress and UNKNOWN coverage (a
 positively absent optional default retains COMPLETE empty-domain coverage), and at least
@@ -413,18 +422,24 @@ Observed missing named consent on other operations retains the permission error
 and its documented identifier/guidance; an unfamiliar identifier remains an OS
 consent failure directed to Koine. Legacy nil/blank identifiers are unspecified
 consent errors, never a prompt-risk sentinel. With no
-progress, real native/work failure wins, then any prompt-risk scope is BLOCKED,
+progress, native/identity inspection failure or work/resource refusal wins,
+including CHANGED_DURING_SEARCH or uncertain inspection as INSPECTION_FAILED;
+then any prompt-risk scope is BLOCKED,
 then purely missing/unsupported roots have a dependency outcome. A missing root
 alongside prompt risk does not turn the request into a native failure.
 
-Coverage-only queries get the same BLOCKED status/diagnostics without selecting
-matches. Repeating matches under two aliases returns null twice without errors;
+Error-free coverage-only queries get the same BLOCKED status/diagnostics without
+selecting matches. Absent execution errors at or above selected fields, repeating
+matches under two aliases returns null twice without search-generated errors;
 FAILED instead raises failed at each selected alias path. Separate root aliases
 are independent searches, not one shared snapshot. After any progress, AVAILABLE
 may include blocked scopes in coverage without a matches error. Check GraphQL
 errors before classifying any branch: revocation can null a nullable list or
 propagate a denied non-null coverage/status field to the root. A surviving
 status never overrides that denial, and coverage is not promised after it.
+The provider can also stop between root and nested resolution: unavailable at
+nullable matches may leave status/coverage beside the error; non-null failures
+propagate normally. A surviving BLOCKED status never waives a lifecycle error.
 
 Derive choices locally. An INSTALLED application with a known identifier feeds
 both that identifier and `applicationPath` to the constrained launch below;
