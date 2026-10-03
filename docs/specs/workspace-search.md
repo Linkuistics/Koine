@@ -8,7 +8,7 @@ are the reading entry; the
 [canonical observation view](../design/architecture/index.html#diagram-search-canonical)
 shows the current native path proposal, and the
 [resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
-shows the in-process continuation and the unapproved helper alternative. The [search SDL](../design/workspace-search-schema.graphql)
+shows the finalized in-process allocation and the remaining construction/review handoff. The [search SDL](../design/workspace-search-schema.graphql)
 and [client examples](../design/workspace-search-operations.graphql) define an
 additive workspace contribution. They compose with the existing
 [launch/open contract](workspace-launch-and-open.md), not a second provider.
@@ -18,7 +18,7 @@ remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
 keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
-**Canonical paths are designed; their review and native resource design precede planning.**
+**Canonical paths and native allocation are designed; their reviews precede planning.**
 Narrow fixed-region Preboot admission permits its measured read-write layout.
 Per-root FIFO breadth-first work finishes shallower admitted listings before
 deeper ones, preserving later home-root names against an early enormous branch.
@@ -30,8 +30,9 @@ platform-native inspection. The selected evidence boundary leaves opaque
 internal acquisitions and peaks unproved. The
 [canonical directory observation](#canonical-directory-observation) chooses
 public fsgetpath with descriptor-derived identity and grouped size refusals;
-its load-bearing review is required. `search-native-resources-k109` must choose
-error-observable metadata/resource calls and a serviceability instrument. Each
+its load-bearing review is required. The in-process allocation below selects
+metadata/resource calls and the observable instrument contract; serviceability
+subjects and the complete-resource review remain required. Each
 producer requires its own load-bearing review before planning. Current streams
 are revalidated before every listing turn; changed queued prefixes stop their
 root once. FIFO also repeats component walks against the wait budget. One reserved depth group retains anchor-count
@@ -62,12 +63,13 @@ refusal of helper design and retains the single-process posture. The need for
 isolation has not been established. Antony subsequently instructed "you decide";
 under that delegation, the requirements session independently selected the
 native-result meaning and empirical serviceability-evidence boundary in the
-[observation contract](#proposed-in-process-observation-contract). Registration
+[observation contract](#in-process-observation-contract). Registration
 and other native facts are reported observations, with disclosed possible
 undetected incorrect results; controlled outcomes and complete owned/hook events
 leave opaque internal demand unproved. These selections change only those two
 guarantees and do not follow from the helper refusal. The final in-process
-allocation contract, serviceability subjects and mandatory review remain live.
+allocation contract below is settled; serviceability instrument/subject construction
+and mandatory review remain live.
 The owned-credit formula, two temporary credits, limits, domain, authority,
 consent, compatibility and all other native acceptance obligations remain binding.
 
@@ -709,9 +711,9 @@ proof of absence. An empty registration array or nil Bundle identifier never
 establishes absence, UNREGISTERED or a missing identifier; both remain UNKNOWN
 with affecting coverage even if later stat/access succeeds. Resource exhaustion
 can produce the same answer.
-`search-native-resources-k109` must finalize the search call/error contract under
+The finalized search call/error contract below uses
 the [selected observation boundaries](#observation-boundary-decision-questions)
-with load-bearing review; reuse of the existing action adapter does not settle it.
+and still requires load-bearing review; existing action acceptance does not clear search.
 Both public per-identifier registration answers remain selection inputs where
 their inspection is established; registrations alone do not prove presence.
 One established native bundle identity (mounted volume/device and inode, with
@@ -1022,9 +1024,9 @@ platform API can allocate internally. Bundle/registration/resource metadata
 calls may open unexposed descriptors; execute one such call at a time per job
 and treat those internal opens as demand against R, together with listener,
 store, other providers/actions and inherited descriptors. R is a chosen budget,
-not an OS reservation or proof those consumers use at most 128. The current opaque call/error route and native serviceability measurement
-are reopened by `search-native-resources-k109`, which must cut a load-bearing
-review before planning. A ledger sees owned charges only; descriptor polling
+not an OS reservation or proof those consumers use at most 128. The finalized
+in-process call/error contract below retains the selected observation limits.
+Instrument/subject construction and the complete-resource review precede planning. A ledger sees owned charges only; descriptor polling
 or before/after Bundle/registration counts miss transient opens and cannot
 attribute demand among concurrent search/listener/store/action threads. An
 empty/nil answer cannot certify successful metadata inspection. NIO's async
@@ -1046,8 +1048,8 @@ resource/backoff events; an independent resource failure or accept backoff fails
 conservatively, even if later replies succeed. Lost applicable events, attribution
 gaps and inconclusive reference comparisons cannot pass. This resource criterion
 adds no general latency target. Combined demand must fit L minus owned search
-occupancy; the reserve is not an OS guarantee. Final call/instrument contracts,
-subject construction and review remain pending. Static caps, polling, simulated
+occupancy; the reserve is not an OS guarantee. Call/instrument contracts below are finalized;
+instrument/subject construction and review remain pending. Static caps, polling, simulated
 tables and shell-raised hosts cannot substitute for native evidence. Arbitrarily
 heavy unrelated clients, system-wide ENFILE and externally lowered limits remain
 outside a general serviceability guarantee.
@@ -1063,8 +1065,9 @@ independent decisions under delegated judgment. They replace only the original
 proof-of-internal-health requirement for the named native facts and exhaustive
 opaque-event/fully-owned-route requirement for serviceability evidence. Resource
 budgets, domain, authority, consent, compatibility and the agreed GraphQL,
-native-binary and isolated-VM seams remain unchanged. The complete runtime
-allocation contract is still pending final design.
+native-binary and isolated-VM seams remain unchanged. The complete in-process
+allocation contract below is finalized as design, pending complete-resource
+review, implementation and native acceptance.
 
 The helper was proposed to contain one particular failure: platform metadata
 calls can acquire descriptors outside search's owned account, and exhausting
@@ -1076,10 +1079,10 @@ a normal-search failure or establish that a separate process is necessary.
 Isolation also adds signing, IPC, bootstrap, TCC-responsibility and child-lifetime
 obligations, and does not establish healthy metadata or system-wide serviceability.
 
-| Direction | Caller burden and allocation ownership | Reason it cannot yet be the runtime contract |
+| Direction | Caller burden and allocation ownership | Selection and cost |
 | --- | --- | --- |
 | Direct owned inspection | One private native boundary owns checked opens, identity, reads and errors within roots + 2 credits. | A bounded manifest parser does not supply registration or native package/type semantics. Suffixes, a private registration database and UNKNOWN for every launch candidate would change the workflow. |
-| Opaque inspection in Koine, within the selected boundaries | Keeps native semantics and single-process composition; checked reported facts and empirical independent outcomes carry explicit internal-health/visibility limits. | Exact normalization, owned lifetime choreography and complete applicable instrumentation still need finalization, subjects and review. CFError, polling and eventual replies do not prove opaque safety; signing/launch posture stays unchanged. |
+| Opaque inspection in Koine, within the selected boundaries | Keeps native semantics and single-process composition; checked reported facts and empirical independent outcomes carry explicit internal-health/visibility limits. | Selected design below normalizes results, serializes two-credit walks and defines applicable instrumentation. Construction, review and acceptance remain pending. CFError, polling and eventual replies do not prove opaque safety; signing/launch posture stays unchanged. |
 | Finite-table private helper, outside approved scope | A separate descriptor table could contain opaque per-process demand, at the cost of transport and child ownership. | The operator declined this design direction. Necessity is unestablished; separation proves neither metadata health, host spawn demand, system-wide demand nor orphan cleanup. |
 
 The declined proposal was a support executable sealed inside Koine's app,
@@ -1130,16 +1133,16 @@ an extension-only replacement is insufficient. The canonical `fstat`,
 `fstatfs` and `fsgetpath` choice and native-size obligations remain unchanged.
 
 Freeze cannot reclaim a blocked worker's descriptors. The in-process contract
-must retain charges through worker-only cleanup, preserve previously finalized
-observations and own late returns and closes exactly once. A resource failure
+retains charges through worker-only cleanup, preserves previously finalized
+observations and owns late returns and closes exactly once. A resource failure
 beside an indefinite call retains disabled-search guidance and prevents new
 inspections/jobs; provider restart cannot reset that state. Process-restart
 recovery remains an acceptance obligation.
 
-The next allocation design must finalize reported native result/error rules,
-owned versus opaque demand, two-credit ownership and recovery before
-serviceability subjects can be constructed. Its acceptance handoff must refuse
-negatives with observed/associated resource failure and retain the disclosed
+The finalized allocation below supplies reported native result/error rules,
+owned versus opaque demand, two-credit ownership and recovery for construction
+of serviceability subjects. Its acceptance handoff refuses
+negatives with observed/associated resource failure and retains the disclosed
 undetectable-failure limit; nil identifiers remain UNKNOWN. Preserve the owned
 transient-open and suppressed accept/backoff detection controls, independent
 listener/store/action work, cohort/lower-limit cases, retained compatibility
@@ -1152,11 +1155,14 @@ reclamation, parent-death, replacement or timeout-kill claim is accepted.
 Mandatory review of the complete resource artifact still precedes planning.
 Native, binary and workflow acceptance remain pending.
 
-#### Proposed in-process observation contract
+<a id="proposed-in-process-observation-contract"></a>
 
-**Native-result meaning and serviceability-evidence boundaries selected under
-Antony's "you decide" delegation; complete runtime allocation design remains
-pending.** These are two independent agent decisions, not two personal yes
+#### In-process observation contract
+
+**Final allocation design within the native-result and serviceability-evidence
+boundaries selected under Antony's "you decide" delegation. Implementation,
+complete-resource review and native acceptance remain pending.** The boundaries
+are two independent agent decisions, not two personal yes
 answers attributed to Antony. Retain the approved single-process posture and
 prefer the native calls below over new content readers or private registration
 scraping. The [resolved decisions](#observation-boundary-decision-questions)
@@ -1171,16 +1177,16 @@ clients supply no call order, locks or resource-health protocol. The runtime
 owns process-lifetime reservations and freeze; the accumulator alone finalizes
 metadata and coverage together. Native answers cannot introduce discovery roots.
 
-| Responsibility / actual calls | Proposed usable observation | Uncertain or failing observation |
+| Responsibility / actual calls | Usable reported observation | Uncertain or failing observation |
 | --- | --- | --- |
 | Owned listing, identity and path: checked `openat`, `fstatat`/`fstat`, `fstatfs`, `fdopendir`/`readdir`, and the canonical `fsgetpath` operation | Existing policy/identity/location checks and explicit POSIX success/EOF. `fdopendir` transfers an owned descriptor; it creates no second charge. | Captured errno, changed association, invalid output or native-size refusal follows the existing scope rules. Set errno immediately before `readdir`; nil with nonzero errno is failure, never EOF. |
 | Native application/package/hidden/alias/type metadata: a fresh `URL.resourceValues(forKeys:)` for `.isApplicationKey`, `.isPackageKey`, `.isHiddenKey`, `.isAliasFileKey`, `.contentTypeKey`, with only keys needed for this entry | Required booleans must actually be supplied; a nonnil type identifier must fit the optional-string account. These are native reported facts, not extension inference. Existing directory identity/canonical checks bracket the call. | A thrown error, missing required value, conflicting facts or unrepresentable optional value yields affecting inspection coverage and unknown fields, or omission when application classification cannot be established. It cannot authorize descent into a possibly hidden/package directory. Native false/no values have the selected residual internal-health limit. |
-| Identifier: `Bundle(url:)` followed by `bundleIdentifier`, without executable loading or localized/icon/resource lookup | A supplied nonblank bounded string is an observed identifier, subject to bundle identity/location rechecks. | Nil, blank, wrong type or overlong value means null identifier, UNKNOWN installation and affecting INSPECTION_FAILED coverage. Never assert that the bundle declares no identifier. Later `stat`/`access` does not upgrade nil; no direct Info.plist read is proposed. |
+| Identifier: `Bundle(url:)` followed by `bundleIdentifier`, without executable loading or localized/icon/resource lookup | A supplied nonblank bounded string is an observed identifier, subject to bundle identity/location rechecks. | Nil, blank, wrong type or overlong value means null identifier, UNKNOWN installation and affecting INSPECTION_FAILED coverage. Never assert that the bundle declares no identifier. Later `stat`/`access` does not upgrade nil; no direct Info.plist read is selected. |
 | All registrations: `LSCopyApplicationURLsForBundleIdentifier`, with initialized `outError` | A nonempty CFArray with no error supplies reported registration URLs; inspect one at a time, never bridge it into a second growing Swift array. Each candidate URL must be a bounded file URL admitted by the existing policy, then checked for present native bundle identity. A positive exact identity can establish INSTALLED. | Nil/nil, empty array, array plus error, wrong element type or any error except the specifically decoded not-found result is uncertain. Any EMFILE/ENFILE in captured underlying causes latches resource refusal. Never use the action adapter's errorless registration array to prove absence. |
-| Preferred per-identifier observation: `NSWorkspace.urlForApplication(withBundleIdentifier:)` | A nonnil URL is a separate selection input only after the same policy, presence and native-identity checks. | Nil is no negative fact. A conflicting positive preferred observation invalidates a proposed negative from the all-registration query. A failed/blocked preferred-target check prevents negative finalization; no fallback retargets the candidate. |
+| Preferred per-identifier observation: `NSWorkspace.urlForApplication(withBundleIdentifier:)` | A nonnil URL is a separate selection input only after the same policy, presence and native-identity checks. | Nil is no negative fact. A conflicting positive preferred observation invalidates a tentative negative from the all-registration query. A failed/blocked preferred-target check prevents negative finalization; no fallback retargets the candidate. |
 | Type conformance: `UTType(identifier)` and `conforms(to:)` against the existing executable/application/alias refusal types | A supplied native type and established conformance select the existing file disposition; preserve native package/alias semantics. | Failed type construction or missing type remains UNKNOWN with affecting coverage. Neither a suffix nor unknown type alone proves executable status. The native type service has the same opaque-health limit. |
 
-These are search's proposed calls, not a claim that the action adapter already
+These are search's selected calls, not a claim that the action adapter already
 implements them. File-search symlink entries retain UNKNOWN fields without
 target/resource inspection; the checked application-link exception still needs
 both-spelling policy checks and its actual-call prompt acceptance. Apple
@@ -1194,12 +1200,12 @@ Fresh Foundation resource-value requests can still use platform caches; fresh
 URLs do not create an atomic filesystem snapshot. Prompt-free evidence covers
 the [previously measured keys and fixtures](../verification/protected-path-metadata.md),
 not the new package/hidden combinations or every link/volume. Any prompting
-route fails acceptance; this proposal supplies no permission to prompt.
+route fails acceptance; this design supplies no permission to prompt.
 
 Under the selected reported-observation semantics, UNREGISTERED means **the public registration
 observation reported no registration for this checked present native identity**.
 It could be finalized in only two cases: the all-registration query returned
-nil with the proposed allowlisted pair `kCFErrorDomainOSStatus` and
+nil with the allowlisted pair `kCFErrorDomainOSStatus` and
 `kLSApplicationNotFoundErr` (−10814), and no observed resource error or preferred
 observation matching this candidate's native identity; or a nonempty no-error
 array was fully consumed and every relevant URL's identity/absence was established with
@@ -1226,9 +1232,90 @@ identifiers likewise carry a possible undetected incorrect-fact limit; known
 incorrect witness outcomes remain acceptance failures. Even an apparently
 positive answer is a platform observation, rechecked
 at action time, not a certified internally healthy platform snapshot. No
-separate no-identifier assertion is proposed or exposed through a null field.
+separate no-identifier assertion is selected or exposed through a null field.
 
-##### Proposed allocation and lifetime ownership
+##### Bounded native-result consumption
+
+Native objects returned before validation are opaque platform allocations, not
+charged copied values and not a hidden RSS/descriptor bound. Initialize the
+registration error output to null. Own and release each returned Create/Copy
+array/error once on the worker. Obtain the array count once as a checked
+nonnegative CFIndex; index it with one checked counter and borrow one element
+at a time. The owning array retains its elements until release. Never release
+borrowed elements, eagerly bridge the array, sort it, build a deduplication set,
+or retain a per-registration identity history. Copied target path/identity and
+fixed found/uncertain flags share scratch with the candidate. Release these
+copied target values after each check. A fresh array is a new observation,
+never an uncharged retry or continuation of a failed one.
+
+Validate CF element type before conversion. Accept only local absolute file
+URLs, with no query, fragment, remote host or NUL; URL syntax is not evidence of
+target presence. Use CFGetTypeID/CFURLGetTypeID before URL conversion and
+CFArrayGetCount/CFArrayGetValueAtIndex for borrowed iteration. Copy filesystem
+representation with CFURLGetFileSystemRepresentation through a caller-owned buffer
+of 8,193 bytes including NUL, within the existing 8,192-byte text ceiling and
+scratch account, then use the existing checked component walk and policy.
+No growing absoluteString/path normalization or native-error description is
+retained. A refused URL prevents a whole-array negative; a known absent final
+target under an established parent can be accounted for. Registration URLs do
+not expand admission regions and never resolve Finder alias files. Only the
+existing checked application-link rule permits symlink target inspection.
+
+Check cancellation, wait, cohort and refreshed limit before each native call,
+each array element and each component transition. Array elements and these
+metadata checks consume wait/scratch, not directory-entry credits. There is no
+new arbitrary registration-count cutoff: finite arrays may be consumed with
+constant retained state only while the existing wait permits. Interrupted or
+unrepresentable observations are UNKNOWN with affecting coverage or the existing
+stop remainder. A positive matching identity can end the all-registration scan;
+a negative requires complete consumption. Returned array order never selects
+the discovered application or supplies an exhaustive installed-app inventory.
+
+Validate optional strings before copying within the existing 1,024-byte value
+ceiling, including type identifiers, bundle identifiers and error domains.
+Use a length precheck and fixed UTF-8 conversion buffer (CFStringGetBytes for
+CF strings), refusing incomplete conversion before retaining a Swift copy.
+Foundation/UTType-produced objects before this check remain opaque allocations.
+No trimming, truncation or alternate identifier is published. A missing/invalid
+required boolean cannot be replaced by false. Missing optional type is UNKNOWN
+with affecting coverage; a missing identifier never asserts a missing key.
+The policy decision still precedes the metadata request. File symlink/alias
+targets, document handler lookup, content reads, localized resources, icons,
+registration writes and hydration remain outside this read. Fresh URLs and
+Bundle values may use opaque caches and preserve the selected health limit.
+
+Error normalization uses domain/code and only supplied underlying-error links,
+never localized text or arbitrary userInfo enumeration. Visit at most sixteen
+error objects, using bounded identity/queue slots in scratch; inspect supplied
+single/multiple underlying causes by index without bridging an unbounded list.
+A repeated object/cycle, malformed cause, excessive child count, overlong domain
+or unfinished classification makes the classification incomplete. Any recognized
+POSIX-domain EMFILE/ENFILE seen before that stop wins and latches the cohort;
+incompleteness alone refuses a negative without inventing exhaustion. Numeric
+errno values in other domains do not identify a resource error. The allowlisted
+not-found pair remains kCFErrorDomainOSStatus/−10814 with no resource cause and
+complete error classification; its actual supported-runtime pair is a mandatory
+native subject, not a fact established by the SDK declaration alone.
+
+Finalize registration from one bounded candidate observation. A no-error
+nonempty array with a checked matching native identity supports INSTALLED only
+while no malformed/conflicting input or inspection uncertainty has been observed
+in that all-registration observation. Later positives cannot rescue an already
+uncertain observation; a positive may stop before unexamined elements.
+The two checked negative branches above support UNREGISTERED only after the
+separate preferred observation has either returned nil or a checked absent/
+different native identity. A preferred identity matching the candidate while
+the all-registration result says negative is a conflict: UNKNOWN with affecting
+coverage, no fallback. Failed/blocked/changed/malformed preferred-target checking
+also prevents a negative. Nil preferred input adds no health proof. Array/error,
+empty or nil/nil results never become negatives; a preferred positive cannot
+rescue that failed all-registration observation. Metadata uncertainty can retain
+a canonical candidate as UNKNOWN for reveal/copy, but useful configured launch
+acceptance still requires actual INSTALLED Safari/Finder and distinct-copy cases.
+
+<a id="proposed-allocation-and-lifetime-ownership"></a>
+
+##### Allocation and lifetime ownership
 
 Keep the existing Q = roots + 2, S = min(72, max(0, L − 128)), four workers,
 accounts, inherited host limits, domain and no-wait admission. All explicit
@@ -1236,9 +1323,33 @@ opens/dups acquire a temporary or root credit first; in-progress attempts count
 against occupancy before entering the syscall. Component walks close the old
 descriptor before advancing beyond two temporaries. Registration-target checks
 reuse this serial walk; they open no extra persistent stream and cannot borrow
-an unused root credit. Release native result objects before the next candidate
-once their bounded copied values are accounted for. Do not retain a history of
-registration URLs, alternative bundle layouts or discarded native identities.
+an unused root credit. Release the owning array/error and candidate objects
+before the next discovery candidate once their bounded copied values are
+accounted for; borrowed elements remain owned by the array until its release.
+Do not retain a history of registration URLs, alternative bundle layouts or discarded native identities.
+
+The serial choreography below applies even while all root streams are held.
+Root-stream credits never become spare temporary credits. Each retained path,
+identity, buffer and wrapper is charged before storage in the same 128 KiB
+scratch partition; a candidate plus one target and a two-component walk fit the
+existing shape, or refuse with affecting coverage before another allocation.
+
+| Phase | Temporary A / B and retained observation |
+| --- | --- |
+| Candidate identity and native metadata | Walk with A as checked parent and B as newly opened child; validate child/parent association, then close A before advancing. At the final pair, canonical and metadata checks use those charged descriptors and bounded candidate values. No third validation descriptor. |
+| Before registration-target inspection | Record candidate path/identity/identifier in scratch, then close both temporaries. Retain values, never an original candidate descriptor while starting another walk. The root listing streams stay separately charged. |
+| Each returned registration or preferred URL | Reuse A/B for a fresh policy-checked component walk. Bracket final target acquisition with the held immediate parent's no-follow association checks, capture checked identity/absence, and close A/B before the next URL. An existing validated root stream may anchor descriptor-relative work without dup; it cannot lend its credit. |
+| Before candidate finalization | Release registration/preferred result objects once their bounded verdicts are captured. Reacquire the original candidate with A/B and compare path, mount, native identity/incarnation and parent association with the initial observation. An observed change/uncertainty follows the existing exact-target versus root-remainder rules; no result is finalized from a stale candidate. Hold A/B through the commit/discard decision, then close them on the worker. |
+| Next entry, freeze or unwind | Only bounded copied values reach the accumulator. Worker cleanup owns every stream, temporary and native object. A late acquisition follows the same charged cleanup path even when its data cannot be committed. |
+
+The initial and final observations are not an atomic snapshot or protection
+against ABA. Native calls are path-based where their public APIs require it;
+held-descriptor checks before/after expose observed movement, not a descriptor
+binding for Foundation/Launch Services. Long component-resolved locations retain
+the original domain/value limits. If an actual public metadata call cannot
+inspect a supported long-path witness, diagnose its failure and fail that
+workflow subject; do not silently install a shorter domain or a content-reader
+fallback. Prompt/canonical subjects must inspect this exact call ordering.
 
 Framework metadata, Bundle, Launch Services, UTType, Foundation conversion and
 their caches/Mach replies remain **opaque in-process demand**. Execute one native
@@ -1259,7 +1370,7 @@ At L = 128 no job opens; at 160 only one maximum-root reservation fits; at 200
 four maximum-root reservations fit; at 256 a fifth job is worker-refused. Infinite
 uses S = 72; failed/unknown inspection refuses without work. A later higher
 limit cannot clear an existing refusal cohort. No setrlimit call, helper, IPC,
-loader, entitlement or different normal-launch route is proposed. ENFILE remains
+loader, entitlement or different normal-launch route is selected. ENFILE remains
 a system-wide failure; neither Q nor the inherited per-process limit contains it.
 
 Admission of each owned attempt or opaque span has a single linearization point
@@ -1288,7 +1399,50 @@ The next normal process creates an empty owner and rereads its actual L. Existin
 grants persist by their current store contract, while failed external work can
 still cause refusal. No orphan-child recovery is needed because no child exists.
 
-##### Proposed observable acceptance boundary
+Admission, candidate/coverage finalization and freeze use the runtime's same
+serialization gate. An admitted call has a unique attempt identity and charges
+occupancy before leaving the gate; the gate is never held across native work.
+The accumulator can commit candidate metadata, rank/root membership and its
+diagnostic transition together only while that job/root remains unfrozen and
+the cohort permits it. If freeze/refusal wins first, discard the uncommitted
+data and retain only worker cleanup state. If finalization wins first, a later
+freeze/resource event preserves that finalized observation. Timer/publication
+threads freeze bounded snapshots; they never mutate worker-owned native objects
+or close descriptors. This specifies the race outcome without a hard deadline
+or a claim that an already admitted syscall can be cancelled.
+
+Bounded returned-object error normalization and worker closes/releases are
+unwind bookkeeping within the admitted attempt, not permission for another
+filesystem/metadata/registration inspection after freeze.
+A late failure is still normalized for visible resource causes **before** that
+worker releases its cohort membership. It can latch the surviving cohort even
+when its own response is already frozen; it cannot rewrite that response. A late
+successful open first enters the worker's charged cleanup state, then closes
+there without publication. Failed conversion leaves the original fd owned;
+successful fdopendir transfers its one charge to closedir. Record one close
+attempt per owned fd/stream identity, including numeric-fd reuse across later
+attempts. On ambiguous close failure, do not repeat a close on the old number
+or claim successful cleanup: retain that job's reservation/refusal and fixed
+recovery guidance until process restart. Such a job never frees a replacement
+worker or enables new admission. This is a bounded surviving refusal owner,
+not an unbounded numeric-fd quarantine or an externally closed stream.
+
+Limit cases are reservations, never estimates of opaque occupancy:
+
+| Refreshed limit | Required admission/refusal behavior |
+| --- | --- |
+| L = 128 | S = 0; no Q fits, no filesystem/opaque inspection starts. |
+| L = 160 | S = 32; one Q = 18 job fits, a second maximum-root job is credit-refused. Smaller Q jobs may fit subject to four workers. |
+| L = 200 or 256 | S = 72; four Q = 18 jobs fit; the fifth is worker-refused, including at 256. |
+| Infinite | S = 72 without sentinel arithmetic; no platform/system-wide resource bound follows. |
+| Unknown initial read | INSPECTION_FAILED for every requested root before native work; neither worker nor Q is admitted. |
+| Unknown refresh or S′ below summed surviving C | Latch inspection-failed or lower-limit refusal respectively; stop new calls/jobs, retain reservations and earlier/frozen observations until complete cohort cleanup and a fresh read. A later rise cannot clear it. |
+| Lower L with S′ still at least C | Existing reservations fit; new job needs C + Q at most S′ and a free worker. Refresh/readmission never borrows idle root occupancy. |
+| EMFILE/ENFILE or uncertain close with an indefinite survivor | Preserve the process-lifetime refusal owner across provider restart. New requests receive the existing disabled-search guidance without work. New normal process ownership can recover only if its actual L and independent/native resources permit it. |
+
+<a id="proposed-observable-acceptance-boundary"></a>
+
+##### Observable acceptance boundary
 
 Keep the already agreed independent real GraphQL/native-provider and normally
 launched signed hardened Koine isolated-VM seams. Under delegated judgment,
@@ -1311,11 +1465,11 @@ into the normally signed test build with unchanged entitlements/identity/launch;
 it requires no injection or target attachment. The integration and observer
 equivalence still need construction and review, not a verdict from this document.
 
-| Discriminator / subject | Required observable outcome under the proposal |
+| Discriminator / subject | Required observable outcome under the selected design |
 | --- | --- |
 | Nil identifier with later successful stat/access; nil/nil, empty/errorful registration or not-found code in another domain | Null identifier/UNKNOWN with affecting coverage, or resource refusal when established. No invented no-identifier fact or UNREGISTERED. |
 | Adapter reports not-found/nonmatching array while a resource event is explicitly associated with the observation | Refuse negative finalization and latch the cohort; earlier finalized/frozen candidates stay unchanged. Suppressing the error input must make this control fail. |
-| Same normal-looking registration answer with an internal failure invisible at the proposed boundary | The proposal cannot distinguish it from a normal negative. This is the disclosed first decision's residual risk; it must not be labelled a passing hidden-health test. |
+| Same normal-looking registration answer with an internal failure invisible at the selected boundary | The selected observation cannot distinguish it from a normal negative. This is the disclosed first decision's residual risk; it must not be labelled a passing hidden-health test. |
 | Healthy registered real Safari/Finder; genuinely unregistered fixture and separate copies sharing an identifier | Required launch selectors/checked identity, real UNREGISTERED observation and distinct-copy choices. All-UNKNOWN metadata or reveal-only coverage cannot pass the configured application workflow. |
 | Owned transient open/close between occupancy polls; deliberately dropped owned event | Event ledger observes the transient and rejects the dropped-event subject. It proves owned instrumentation only, never opaque completeness. |
 | Synthetic pre-backoff accept error suppressed downstream; real accept resource failure | Both the error and actual scheduling/read behavior are visible even if a fresh client later succeeds. Missing/dropped hook events invalidate the run. Real normally launched exhaustion/control remains mandatory, not inferred from injection. |
@@ -1327,7 +1481,7 @@ equivalence still need construction and review, not a verdict from this document
 Useful coverage, prompt behavior, canonical races/size grouping, all original
 FIFO/witness/binary/compatibility subjects and the operator's separate measured
 home-omissions decision remain mandatory. No observed independent error is waived
-because clients eventually reply; the proposed change is the **visibility and
+because clients eventually reply; the selected change is the **visibility and
 scope of the evidence**, not permission to accept observed search-caused failure.
 An incomplete opaque trace supplies no hidden-resource proof. Under the selected
 empirical boundary, a passing controlled subject certifies only its observed
@@ -1371,12 +1525,51 @@ search domain, authority, public version and compatibility remain binding.
 Native prompt acceptance, real Safari/Finder launch usefulness and the separate
 measured home-omissions decision remain mandatory. No helper, new content reader,
 permission, smaller domain or all-UNKNOWN launch acceptance is selected.
-The final design continuation must complete every remaining allocation obligation,
-reconcile durable public meanings and any earned ADR/glossary record, and give
-the serviceability producer a coherent observable handoff. Subject construction
+The in-process allocation design above completes the remaining call, copied-value,
+two-credit, freeze and recovery contract within these two scopes. The
+[native-fact decision](../adr/search-native-facts-are-reported-observations.md)
+records its durable public meaning. The observable handoff below gives
+the serviceability producer the remaining construction obligations. Subject construction
 and mandatory complete-resource review still precede planning. These decisions
 are requirements selections, not implementation or native/binary/workflow
 acceptance, and no released contract meaning or version changes here.
+
+##### Serviceability construction handoff
+
+The serviceability producer receives this finalized allocation contract, the
+canonical-directory contract and the unchanged three test seams. It must
+construct the instrument and executable subjects, reconcile their evidence
+limits, then cut the mandatory complete-resource review before planning. The
+following are required discriminators, not results already obtained:
+
+| Subject / seam | Observable falsifier and required control |
+| --- | --- |
+| Controlled private adapter through the actual provider binary and independent GraphQL client | Exercise every value/error combination above, exact/foreign-domain not-found, cycle/17th error, oversized strings/URLs, malformed/incomplete arrays, blocked preferred checks and conflicting identities. A negative after uncertainty/resource input fails. Check null fields and affecting coverage together; an unrelated mock accumulator or SDL-only validation cannot pass. |
+| Two-temporary ownership and freeze through that same actual provider | Hold every root stream, walk a registration target while the original candidate is released, and reacquire the candidate. Attempt a third temporary/borrowed root credit; mutate the candidate between walks; freeze immediately before and after admission/finalization; return late success and EMFILE. Wrong owner/charge, post-freeze commit, lost late latch, duplicated close, retry or replacement fails. Close-failure controls must retain refusal across provider restart. |
+| Native reported results in normally launched signed hardened Koine | Record actual all-registration CFArray/error domain/code and separate preferred result for registered Safari/Finder, a purpose-built genuinely unregistered bundle and distinct copies sharing an identifier. Independent fixtures/witnesses establish expected paths/identifiers and constrained launch. Wrong known witnesses, unsupported not-found normalization or all-UNKNOWN launchers fail; undetectable hidden health remains a disclosed limit, never a passed control. |
+| Native policy/identity/domain through independent GraphQL and signed-host VM | Run actual package/hidden/alias/type/Bundle/registration URL checks, protected Library/application links and long/canonical/native-size witnesses under the existing policy. Observe calls and UI, no content/hydration, register writes, alias resolution or consent dialog. A prompt, silently shortened supported domain, canonical fallback or useful-launch loss fails. Retain k93's separately measured home omissions decision. |
+| Owned/hook completeness in the normally signed instrumented host | Preallocate a finite event sink before the subject; identify process/thread/attempt/search/root/cohort and independent operation, global or per-producer monotone sequence and explicit overflow. Record attempt reservation/result/transfer/close/release, limit/refusal/worker changes, native entry/return/error/freeze and finalization; a pending span at freeze is explicit rather than silently unmatched. Deliberately omit an owned transient open/close or an accept hook and overflow the sink: each must invalidate the run. Export after the subject; no logging file opens or growing strings during it. |
+| Real NIO accept suppression and backoff | Capture upstream IOError before suppression and actual delay selection, scheduling/rescheduling/cancellation and context.read resume, including inactive/removed cases. Use the exact dependency revision and preserve order/delay/suppression. Synthetic error injection proves hook placement; real accept exhaustion in the normally launched signed host proves the socket path. A downstream-only observer, missing applicable event or inference from eventual success fails. |
+| Four saturated searches plus independently driven actual listener/store/actions | While finite and indefinite listing/metadata/canonical spans occupy four workers, independent clients make fresh connections and queries, durable grant operations and authorized launch/open/reveal with witnesses. Pair a no-search reference under matched demand/launch/fixtures. Record outcomes and latency without inventing a target. Independent resource error or accept backoff fails conservatively even after later success; failed reference, attribution gaps or incomplete controls are inconclusive, never passing. |
+| Limits and refusal recovery through provider and normal process restart | Cover the reservation table, low/high refresh with C distinct from occupancy, finite cleanup, indefinite span beside another job's resource failure and unknown limit. No request joins or retries a latched cohort. Provider restart must retain it; fresh normal process may admit only after reading its current limit. System-wide ENFILE and unbounded unrelated overload remain outside a general serviceability guarantee. |
+| Retained action-only and upgraded search binary subjects | Keep retained workspace 1.0.0 host/provider/SDL/profiles independent of search 1.1.0 subjects, with unchanged authority/selection feature and error mapping. A historical capture, rebuilt old subject or subset-schema success cannot clear search compatibility. |
+
+The instrument contract is implementable inside the host and dependency test
+build under the existing normal signature and entitlements; it requires no
+kernel attachment, injection, helper or diagnostic launch. Subject construction
+must show passive-hook equivalence, identify the build/dependency/signing/OS
+and frozen inputs, and prove loss controls can fail. Its fixed diagnostic
+storage/overhead is test instrumentation, disclosed separately from production
+accounts; an instrument that changes pipeline behavior cannot pass by observing
+its own replacement behavior. Native-call envelopes and complete applicable
+owned/hook events still leave platform descriptors, RSS, asynchronous work and
+swallowed errors unproved. Supplementary raw tracing cannot expand that claim
+without its own visibility/decoding/loss evidence.
+
+No success here accepts arbitrary sampling, reduced home/application workflows,
+new setup/consent/signing, larger accounts or changed limits. The contract is
+ready for construction and whole-resource review; all native, compatibility
+and useful-coverage verdicts remain pending.
 
 ### Match retention and freeze
 
@@ -1795,8 +1988,8 @@ pending implementation/acceptance:
 | Application links/aliases | Using canonical target filename/path, registered .app targets yield INSTALLED and unregistered targets yield UNREGISTERED; denied/protected/dangling or changed targets cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities, both registration answers and one filesystem-reported canonical path across case/component/link spellings. Limit-1 duplicate routes have false count truncation and merged rootIndices; equal-identifier native copies remain distinct. Canonical target queries match, alias-only app queries do not; file queries retain link names. Inject canonical-path/value failures and rename/reuse observations. Path and identifier action inputs remain unchanged. | Inspect actual target/link metadata, resolution order and mount checks. Include links to Desktop/Documents/Downloads and a named protected Library sub-area (Mail data), with component aliases. No protected traversal, alias-file resolution, default-handler lookup, registration writes or content/hydration request. Resolution itself must be prompt-free under actual signed Koine; earlier metadata evidence does not establish it. Cryptex admission/races use the actual adapter; no new keys/entitlements. |
 | Wide realistic layouts / later-root scheduling | The measured-shape 36-project/position-12 subject returns later depth-1 and all depth-2 project anchors plus four depth-2 home markers before ENTRY_LIMIT; later project depth-3 markers and depth-4 deep-needle are absent through home. Its explicit Deep root returns the needle. The separate flat depth-2 sink omits dev-file-199998 and the four later depth-2 markers. The 5,000-child subject returns all anchors and first 512 markers, FRONTIER_LIMIT count 4,488. Query each witness to avoid ranking loss. | Controlled native order/clock verifies FIFO depth order, both turn ceilings and single name listings. Record repeated component opens/canonical calls/turn checks and elapsed wait: 496 opens/chain, 15,872 in the depth-anchor fixture, 7,936/job for 16 chains before other calls. Verify every named retained/omitted witness, queue charges and thirteen coverage shapes. Exact search-required/action-only profiles remain distinct. | Actual home/default and measured-scale trees record native order, each shallow/same-level/deep/later-root witness, reasons, coverage and elapsed shares of entry work versus component/canonical/turn checks. Use adapter event counters/timestamps, not entry totals as a performance proxy. Real Safari/Finder and protected Library-link calls remain pending; k93 must assess actual queue/entry/depth/value/deadline omissions. |
 | Exact scope groups / exhaustion | Invalid/overlong names have actual-parent CHILD_GROUP and omit anchor names. DEPTH_LIMIT and FRONTIER_LIMIT are separately reserved root groups counting observed matchable anchors, not descendants, with depth precedence even for empty anchors. Stop uses REMAINDER/null count; only progress adds a searched record. | 512 short tasks fit; task 513 frontier-refused. Controlled 8,192-byte values admit 43 tasks; task 44 is byte-refused. These are accounting subjects, not evidence of native path reachability. No eviction/retry; siblings stay matchable. Freeze preserves charged queued/in-flight paths and prior diagnostics. Thirteen shapes/16 rootIndices/fifteen witnesses fit; witness overflow refuses all roots before turns. | The [canonical subjects](#canonical-path-acceptance-subjects) separate synthetic 43/44 arithmetic from native 4,224-byte tasks (79/80 byte boundary), 128-byte tasks (512/513 count boundary), and full-buffer size refusals. Canonical review and all native outcomes remain pending. Actual APFS short/wide/depth fixtures use adapter charge/check counters; record each witness/path occurrence and refusal check. Invalid bytes/alternate layouts remain controlled subjects. |
-| Shared process descriptor serviceability | At L=256, four 16-root jobs reserve 72 credits; a fifth refuses on workers. At L=160, S=32: one Q=18 job fits and a second refuses on descriptors. At L=128 none fits. A refresh S′ below summed surviving Q reservations latches CAPACITY_LIMIT for scheduled unfinished roots/new jobs even if occupancy is lower; a higher read does not resume that cohort. Native resource failure uses INSPECTION_FAILED and disables new inspections/jobs until cleanup. | Shared owner across provider instances races whole worker/credit acquisition and charges/transfers/closes. Cover 128/160/200/256/infinite/unknown; lower S below reservations while occupancy still fits, then raise it and prove refusal remains until cleanup. Combine EMFILE/ENFILE with one indefinitely blocked cohort call; free workers do not enable new search, provider restart does not recover, fresh process does. Inject opaque failure with empty/nil answers: no positive absence fact. Simulations do not prove serviceability. | Final native call/error selection and complete applicable owned/admission and listener/backoff hooks, native-call envelopes and independent outcomes await search-native-resources-k109 and its mandatory review. The instrument must fail owned transient-open/dropped-event and NIO suppressed-error controls; opaque events/peaks remain unproved under the selected boundary. Normal signed launch retains inherited L; four saturated searches/blocked metadata run beside independent fresh listener connections, grant-store work and authorized actions. Record event/margin/outcome/latency per operation; any search-caused resource failure or accept backoff fails even with later successful responses. Polling/error-free replies/shell-raised limits cannot pass it. |
-| Cancellation during a blocked call | Freeze once with TIME_LIMIT when publishable; external cancellation may have no response. Late work changes no counters/matches/groups/coverage. Queue/stream/credits survive until worker cleanup. Resource refusal plus an indefinitely blocked cohort explicitly disables new search until process restart; guidance distinguishes that from ordinary busy admission. | Separately block listing, registration, component and canonical calls with multiple streams/nonempty FIFO; combine one indefinite block and another job resource failure. Release finite calls and verify exactly-once worker close/drop, no late I/O/publication and release only after unwind. Reuse closed descriptor numbers to detect stray closes. Provider restart retains pool/ledger/latch. | Late-return cleanup/no-dialog subjects remain pending; descriptor attribution/serviceability uses k109’s selected instrument. Record owned occupancy, native-call envelopes and independent operations; opaque internal occupancy/lifetimes remain unproved. An indefinite block retains slots/credits and a resource-refusal cohort across provider restart; no replacement threads or external closes. Fresh process restores admission. |
+| Shared process descriptor serviceability | At L=256, four 16-root jobs reserve 72 credits; a fifth refuses on workers. At L=160, S=32: one Q=18 job fits and a second refuses on descriptors. At L=128 none fits. A refresh S′ below summed surviving Q reservations latches CAPACITY_LIMIT for scheduled unfinished roots/new jobs even if occupancy is lower; a higher read does not resume that cohort. Native resource failure uses INSPECTION_FAILED and disables new inspections/jobs until cleanup. | Shared owner across provider instances races whole worker/credit acquisition and charges/transfers/closes. Cover 128/160/200/256/infinite/unknown; lower S below reservations while occupancy still fits, then raise it and prove refusal remains until cleanup. Combine EMFILE/ENFILE with one indefinitely blocked cohort call; free workers do not enable new search, provider restart does not recover, fresh process does. Inject opaque failure with empty/nil answers: no positive absence fact. Simulations do not prove serviceability. | Native calls/error normalization and the owned/admission, listener/backoff and native-call instrument contract are finalized above; construction of complete applicable hooks/subjects and the whole-resource review remain pending. The instrument must fail owned transient-open/dropped-event and NIO suppressed-error controls; opaque events/peaks remain unproved under the selected boundary. Normal signed launch retains inherited L; four saturated searches/blocked metadata run beside independent fresh listener connections, grant-store work and authorized actions. Record event/margin/outcome/latency per operation; any search-caused resource failure or accept backoff fails even with later successful responses. Polling/error-free replies/shell-raised limits cannot pass it. |
+| Cancellation during a blocked call | Freeze once with TIME_LIMIT when publishable; external cancellation may have no response. Late work changes no counters/matches/groups/coverage. Queue/stream/credits survive until worker cleanup. Resource refusal plus an indefinitely blocked cohort explicitly disables new search until process restart; guidance distinguishes that from ordinary busy admission. | Separately block listing, registration, component and canonical calls with multiple streams/nonempty FIFO; combine one indefinite block and another job resource failure. Release finite calls and verify exactly-once worker close/drop, no late inspection/publication and release only after unwind. Reuse closed descriptor numbers to detect stray closes. Provider restart retains pool/ledger/latch. | Late-return cleanup/no-dialog subjects remain pending; descriptor attribution/serviceability uses k109’s selected instrument. Record owned occupancy, native-call envelopes and independent operations; opaque internal occupancy/lifetimes remain unproved. An indefinite block retains slots/credits and a resource-refusal cohort across provider restart; no replacement threads or external closes. Fresh process restores admission. |
 | Current/queued parent moves into protected scope | File-search current streams recheck before every listing turn/read, even with no child opens. Observed current movement uses one root CHANGED_DURING_SEARCH REMAINDER. Changed/missing walk prefix or immediate parent likewise stops the root once; a changed final target gets exact SUBTREE only after its parent is established unchanged. Uncertainty uses INSPECTION_FAILED at the corresponding scope. Preserve progress/prior groups; no post-refusal entry read, stale-path publication or metadata open. | Use diagnostic turn/walk barriers and a sequence-numbered check/read/open/publication trace. Move a 100,000-entry file listing after a 64-entry turn; its next check refuses before reading. Queue 512 tasks beneath one ancestor, then rename/remove/replace it: one remainder, no per-task diagnostic fan-out or DIAGNOSTIC_LIMIT. Inject ENOENT/ENOTDIR at an intermediate parent; separately replace only a target under unchanged parent and continue unrelated tasks. Inject after-check races as limits, not atomic safety. | Actual adapter diagnostic barriers pause before a next-turn listing check and before a mid-walk parent check; an independent mover places current/queued subtrees in Documents/Desktop/Downloads/Library or outside root. Trace actual canonical checks, subsequent entry reads/metadata opens and published paths; no stale-path publication/read follows an observed refusal. Independent dialog/hydration witness tests remaining check-to-read/open windows. Use the fsgetpath identity/association rechecks and size/movement precedence; its load-bearing review and native outcomes remain pending. Prompting routes fail and require redesign. |
 | Firmlink/case/Unicode canonical paths | Roots naming home and its Data-volume alias have the same resolvedPath and one file location with both observed rootIndices. App link/direct routes retain one canonical path/native identity, stable rank and false duplicate truncation. RequestedPath retains input spelling; synthetic policy targets use canonical-home components. | Supply differing preliminary realpath and final fsgetpath spellings for one identity; require the single final canonical operation everywhere. Case/component/Unicode route variants cannot fabricate CHANGED_DURING_SEARCH in unchanged observations. Unknown/overlong canonical output has affecting coverage with no fallback. | On the startup APFS pair, use home and /System/Volumes/Data/Users/<user> roots plus /Applications and its Data alias. Create differently cased and NFC/NFD-named link spellings to one permitted bundle; observe actual filesystem identity/name behavior rather than assuming separate Unicode files. Inspect root/frame/bundle/policy path production and per-choice membership with no protected open or dialog. |
 

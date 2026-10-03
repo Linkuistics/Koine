@@ -182,6 +182,14 @@ filesystem-reported canonical name/path supplies matching, ranking and the
 selected location; equal bundle identifiers do not merge distinct native copies.
 It is neither a process incarnation nor a query-long pinned file identity.
 
+**Search native fact**: A checked result reported by a native metadata or
+registration service. It does not certify internal platform health; undetected
+failure or stale service state can make it incorrect. UNREGISTERED reports no
+registration for the checked present **Search application identity** under the
+documented negative branches. Nil identifier is unknown, never a missing-key
+fact. Malformed/incomplete/conflicting results and observed resource errors do
+not establish negatives; known incorrect witnesses still fail acceptance.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

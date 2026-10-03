@@ -365,14 +365,14 @@ nothing".
 ## Searching for applications and files
 
 **Designed, not served yet.** The fsgetpath canonical-path proposal requires its
-load-bearing review; opaque native-resource call/measurement design and its
-review also precede planning.
+load-bearing review; native allocation is finalized as design; serviceability instrument/subject
+construction and the whole-resource review also precede planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
-records error-channel and observer limits; allocation and constructible subjects
+records error-channel and observer limits; constructible instruments/subjects
 remain open, with no native/binary acceptance or reduced workflow coverage.
 The [allocation scope decision](specs/workspace-search.md#native-allocation-decision)
 retains single-process inspection after helper design was declined. The
-[in-process observation proposal](specs/workspace-search.md#proposed-in-process-observation-contract)
+[in-process observation contract](specs/workspace-search.md#in-process-observation-contract)
 names actual native calls, uncertainty/refusal and worker recovery. Under
 Antony's "you decide" delegation, two independent requirements decisions select
 reported native metadata/registration meaning and empirical serviceability
@@ -381,7 +381,7 @@ or another native fact incorrect; opaque allocations/peaks/internal errors remai
 unproved. Nil identifier always remains UNKNOWN with affecting coverage.
 Malformed/errorful/incomplete observations remain uncertain, observed resource
 errors refuse negatives, and known incorrect witnesses or UNKNOWN metadata for
-every configured launcher still fail. Final allocation design, subjects and
+every configured launcher still fail. Allocation design is finalized; instruments/subjects and
 review remain pending; all other workflow, prompt, limit and compatibility
 obligations remain binding.
 Per-root FIFO breadth-first discovery and atomic
@@ -514,7 +514,9 @@ plus one indefinitely blocked cohort call disables all new searches even with
 free workers, until process restart. Opaque empty/nil metadata cannot alone
 establish UNREGISTERED or absence. The selected native-result boundary allows
 only the exact checked not-found or fully checked nonmatching-array branches,
-without a conflicting preferred result; final call/error design remains open.
+without a conflicting preferred result. The finalized call/error contract
+bounds copied values, shares two temporary credits serially and rechecks the
+original candidate before finalization; native results still require acceptance.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.

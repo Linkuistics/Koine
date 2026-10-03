@@ -1,0 +1,26 @@
+# Phase flow, not an atomic snapshot or model-checked state machine.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Admitted worker\nRoot streams keep their own credits\nTemporaries A / B are free" {class: start}
+Candidate: "Walk + check candidate\nA = parent; B = opened child\nCapture bounded path / identity / identifier"
+Release: "Close candidate A / B\nRetain copied values in scratch\nNo pinned third descriptor"
+Targets: "Borrow one registration / preferred URL\nCheck policy + walk with A / B\nClose both before next URL"
+Recheck: "Release native result owners\nReacquire original candidate with A / B\nCompare identity / path / parent / mount"
+Gate: "Commit permitted?\nSame gate as admission and freeze\nCandidate + diagnostics finalized together" {shape: diamond}
+Commit: "Unfrozen + cohort permits\nCommit bounded observation\nThen worker closes A / B"
+Discard: "Freeze / refusal / observed change wins\nNo candidate publication\nWorker retains cleanup ownership"
+Cleanup: "Late return → worker close once\nLate resource error → cohort latch\nAmbiguous close → keep Q until restart"
+Start -> Candidate: "1 · charge before call"
+Candidate -> Release: "2 · capture"
+Release -> Targets: "3 · serial target checks"
+Targets -> Targets: "4 · next"
+Targets -> Recheck: "5 · bounded verdict ready"
+Recheck -> Gate: "6 · current observation"
+Gate -> Commit: "7 · commit wins"
+Gate -> Discard: "7 · discard"
+Candidate -> Discard: "late / failed return"
+Targets -> Discard: "late / failed return"
+Commit -> Cleanup: "8 · unwind"
+Discard -> Cleanup: "8 · unwind"

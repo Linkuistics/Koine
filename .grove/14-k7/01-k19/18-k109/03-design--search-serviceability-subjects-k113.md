@@ -12,6 +12,26 @@ Consume the native allocation decision, the workspace-search resource/native
 acceptance tables and docs/verification/search-native-resources.md. Preserve
 k108's fsgetpath/repeated-walk costs and all original k109 completion conditions.
 
+k119 finalizes the in-process allocation in
+docs/specs/workspace-search.md#in-process-observation-contract and
+#serviceability-construction-handoff, with the promoted summary at
+docs/verification/search-native-resources.md#final-allocation-handoff. Consume
+the two independently selected k118 boundaries: native facts are reported
+observations with disclosed internal-health limits; empirical serviceability
+uses complete applicable owned/hook events and independent outcomes while
+opaque acquisitions/peaks/internal errors remain unproved. These change only
+those two original obligations. Exact runtime not-found domain/code, passive
+hook equivalence/loss controls, real prompt/useful-launch witnesses, independent
+outcomes and native/binary acceptance remain pending.
+
+Build subjects for serial candidate release → registration/preferred walks →
+original-candidate recheck, borrowed CFArray iteration/copied-value accounting,
+bounded error normalization, the shared admission/finalization/freeze gate,
+late error before cohort release and ambiguous-close permanent refusal. Do not
+reopen helpers, add a third temporary/borrowed root credit, new content/consent,
+larger accounts or a shorter domain by fallback. Cut no competing review: this
+leaf still owns the mandatory complete k109 review as its last work act.
+
 ## Done when
 - Name all relevant observable acquire/release/error/backoff events and their
   concurrent search/thread/listener/store/action attribution. State completeness,

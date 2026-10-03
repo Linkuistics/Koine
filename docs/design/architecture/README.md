@@ -8,7 +8,8 @@ exports:
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
-- [native allocation scope and in-process continuation](index.html#diagram-search-resources);
+- [final native allocation and observable handoff](index.html#diagram-search-resources)
+  and [two-temporary inspection ownership](index.html#diagram-search-inspection);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
@@ -40,24 +41,24 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel presents the
-[resource boundary proposal](index.html#diagram-search-resources): helper design
+[final native allocation contract](index.html#diagram-search-resources): helper design
 remains declined. Actual in-process calls, uncertainty, owned/opaque demand,
 two-credit ownership and freeze/restart recovery are now specified in the
-[observation proposal](../../specs/workspace-search.md#proposed-in-process-observation-contract).
+[observation contract](../../specs/workspace-search.md#in-process-observation-contract).
 Antony's "you decide" delegates the remaining choices. Two independent decisions
 select reported registration/native metadata meaning and empirical independent
 outcome acceptance with opaque acquisitions/peaks/internal errors unproved.
 Only those named guarantees change; neither follows from declining helpers.
 Known incorrect witnesses, observed resource failure/backoff and lost applicable
-events still fail. Final allocation, subjects and review remain live; the
+events still fail. Allocation design is finalized; instruments/subjects and review remain live; the
 source/SDK gap establishes no normal-search failure or necessity for isolation.
 The [allocation decision](../../specs/workspace-search.md#native-allocation-decision)
-selects no runtime route until those answers and final reconciliation. The
+selects the in-process native route within those scoped answers; it claims no runtime acceptance. The
 [feasibility analysis](../../verification/search-native-resources.md) records
 the evidence and residual obligations. The unchanged canonical path view,
 FIFO and reviewed transport/compatibility provide context.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require the canonical proposal's review and native resource design/review before planning. Finish shallower admitted
+require the canonical proposal's review and serviceability construction/whole-resource review before planning. Finish shallower admitted
 listings before deeper ones, with one current stream/root and a 512-task/384 KiB
 pending queue. Frontier overflow counts matchable anchors in one reserved root
 group and continues sibling-name examination; depth has a separate group.
@@ -75,8 +76,8 @@ size omissions group at a stable actual parent before finalization; formerly
 fitting prefixes now too long stop once as change. The canonical proposal needs
 load-bearing review. Planned native 4,224-byte tasks bind at 79/80 by bytes;
 synthetic 43/44 maximum-value arithmetic is separate. Opaque
-empty/nil answers cannot establish absence. Final native call/error rules and
-complete applicable owned/accept-backoff instrumentation remain open under the
+empty/nil answers cannot establish absence. Native call/error rules and the instrument contract are finalized;
+complete applicable owned/accept-backoff construction remains open under the
 selected reported-result and empirical-evidence boundaries; opaque internals
 remain unproved.
 Normally launched signed-host listener/store/action serviceability must pass;
@@ -111,10 +112,12 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views and summaries:
 
-- [Search → native observation boundary](index.html#diagram-search-resources) — Separates the two requirements choices selected under delegation from retained ownership and the still-pending final allocation/acceptance work.
-- [Proposed in-process contract](../../specs/workspace-search.md#proposed-in-process-observation-contract) — Specifies native result/error rules, owned/opaque resources, freeze/restart behavior and falsifiable subjects without relabelling internal-health gaps as proof.
-- [Native resource analysis](../../verification/search-native-resources.md#provenance-and-verification-boundary) — Identifies the public API evidence and the proposed instrument's explicit opaque-visibility limit.
-- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — States selected reported-result and empirical-evidence limits while keeping final allocation/review/native acceptance pending.
+- [Search → final native allocation and handoff](index.html#diagram-search-resources) — Finalizes native-result consumption, freeze/late-return/recovery and the construction/review handoff within both delegated boundaries.
+- [Search → two-temporary inspection ownership](index.html#diagram-search-inspection) — Adds candidate release, serial registration-target walks, original-candidate recheck and commit/freeze cleanup branches.
+- [In-process allocation contract](../../specs/workspace-search.md#in-process-observation-contract) — Finalizes bounded native-result consumption, two-credit candidate/registration/recheck ownership and freeze/late-return/recovery rules.
+- [Native resource handoff](../../verification/search-native-resources.md#final-allocation-handoff) — Carries the final allocation contract and observable falsifiers to serviceability construction without claiming native acceptance.
+- [Native-fact decision](../../adr/search-native-facts-are-reported-observations.md) — Records the reported-observation meaning and the rejected internal-health proof requirement.
+- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — States selected reported-result and empirical-evidence limits with allocation design finalized and serviceability construction/review/native acceptance pending.
 
 The canonical, traversal, coverage and handoff views remain unchanged context.
 
@@ -155,13 +158,25 @@ Run `task design:workspace-render` to regenerate the workspace sequence and
 outcome flow with the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
-Run `task design:search-render` for the six search views with D2 0.9.0,
-ELK for the canonical/resource views and Dagre for the remaining views, light theme 0
+Run `task design:search-render` for the seven search views with D2 0.9.0,
+ELK for the canonical/resource/inspection views and Dagre for the remaining views, light theme 0
 and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
 with failing schema controls; this does not prove runtime branch invariants.
-The in-process observation proposal was checked in Safari in the isolated
+The final native allocation and two-temporary ownership views were checked in
+Safari in the isolated `koine-k119-design` macOS clone. Fresh resource and
+inspection links reached their intended titles and Current/Updated markers;
+the 1920-pixel light view and complete SVG rasters showed readable branches.
+Overlapping paired edge labels were shortened and rerendered before checking
+the final exports. The discussion panel reflowed at 640 pixels in dark
+appearance. Diagram reading at that width still uses the native-size/export
+trade-off above. This is presentation verification, not Koine native search,
+consent, binary or serviceability acceptance. Serve the current view with
+`task design:serve PORT=8779` and open
+<http://127.0.0.1:8779/index.html#diagram-search-resources>.
+
+The earlier in-process observation proposal was checked in Safari in the isolated
 `koine-k117-design` macOS clone. Viewer, manifest, source and resource export
 were byte-identical to the host files. A fresh resource deep link reached the
 intended title and Current/Updated markers; the start node and both decision

@@ -2,11 +2,12 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Selected native-observation boundaries",
-    "status": "Delegated requirements decisions · final allocation design pending",
-    "summary": "After Antony instructed “you decide”, two independent requirements decisions select checked reported registration/native metadata facts and empirical serviceability evidence through complete applicable owned/hook events, native-call envelopes and controlled independent outcomes. Undetected incorrect facts and opaque acquisitions/peaks/internal errors remain explicit limits. Known wrong witnesses, observed resource failure/backoff, lost applicable events and inconclusive controls still fail. All other obligations remain binding; helper design remains declined and final allocation, subjects, review and native acceptance remain pending.",
+    "title": "Finalize native allocation and observable handoff",
+    "status": "Final design · construction/review/native acceptance pending",
+    "summary": "The in-process contract now fixes native-result normalization and copied-value bounds, serial candidate/registration/recheck walks within two temporaries, and admission/finalization/freeze ownership including late resource errors and ambiguous closes. Both independently delegated observation boundaries retain their explicit internal-health/opaque-demand limits. The next producer constructs actual-provider/GraphQL and normally signed-host serviceability subjects and cuts the mandatory complete-resource review. No native acceptance, smaller workflow domain or helper is selected.",
     "diagramIds": [
       "search-resources",
+      "search-inspection",
       "search-canonical",
       "search-traversal",
       "search-coverage",
@@ -17,7 +18,11 @@
     "updatedDiagrams": [
       {
         "id": "search-resources",
-        "summary": "Shows both independently selected requirements boundaries, retained ownership and failing controls, then the still-pending final allocation, subjects and mandatory review."
+        "summary": "Replaces pending allocation with the finalized calls, copied-value ownership, freeze gate and remaining construction/review handoff."
+      },
+      {
+        "id": "search-inspection",
+        "summary": "Adds the serial two-temporary candidate/registration/recheck sequence and commit-versus-freeze cleanup branches."
       }
     ]
   },
@@ -25,7 +30,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are proposed. Helper design remains declined. Under delegated judgment, reported native facts and empirical evidence are selected with disclosed internal-health/opaque-visibility limits. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Complete allocation, serviceability subjects and mandatory reviews precede planning; runtime/binary/native acceptance remains pending."
+      "description": "FIFO and canonical fsgetpath are designed. In-process native allocation is finalized within independently selected reported-fact/empirical-evidence limits. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Canonical and whole-resource reviews plus serviceability construction precede planning; runtime/binary/native acceptance remains pending."
     },
     {
       "id": "workspace",
@@ -67,11 +72,20 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Selected native-observation boundaries",
+      "title": "Finalize native allocation and observable handoff",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Requirements boundaries selected under Antony’s “you decide” delegation; final runtime allocation and native acceptance remain pending. Checked LS not-found or a fully checked nonempty nonmatching array may report UNREGISTERED; a conflicting preferred result prevents it. Native metadata and positive identifiers are reported facts and can be wrong after an undetected internal failure or stale state. Nil identifiers remain UNKNOWN with affecting coverage. Independently selected empirical evidence uses complete applicable owned/hooks events, native-call envelopes and controlled independent listener/store/action outcomes, leaving opaque acquisitions/peaks/lifetimes/internal errors unproved. Known wrong witnesses, observed resource failure/backoff, lost applicable events and inconclusive controls still fail. Q/S, two temporaries, freeze/late-return/worker-only cleanup, restart ownership, signing/consent/domain/authority/version/seams and useful-launch/home-omissions obligations remain binding. Final allocation handoff, serviceability subjects and mandatory review still precede planning."
+      "caption": "Final design, not native acceptance. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Construct serviceability subjects and mandatory whole-resource review before planning. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
+    },
+    {
+      "id": "search-inspection",
+      "group": "search",
+      "title": "Reuse two temporaries before finalization",
+      "renderer": "svg",
+      "source": "search-inspection.d2",
+      "rendered": "search-inspection.svg",
+      "caption": "Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending."
     },
     {
       "id": "search-canonical",

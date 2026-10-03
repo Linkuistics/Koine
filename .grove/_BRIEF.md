@@ -223,6 +223,8 @@ neither source/SDK analysis nor synthetic capacity arithmetic accepts omissions.
 The native-resource continuation now uses the independently selected
 [observation boundaries](../docs/specs/workspace-search.md#observation-boundary-decision-questions)
 from k118 under Antony's "you decide" delegation. Only reported-native-fact
-meaning and empirical serviceability evidence change; final allocation k119,
-serviceability subjects/review k113, native acceptance and the separate measured
+meaning and empirical serviceability evidence change. k119 finalizes the
+in-process calls, bounded result consumption, two-temporary ownership, freeze/
+late-return/refusal/recovery contract and observable handoff. Serviceability
+instruments/subjects/review k113, native acceptance and the separate measured
 home-omissions decision remain live.

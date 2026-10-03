@@ -1,11 +1,11 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Canonical fsgetpath proposal needs review; native resource design/review precede planning;
+# Canonical fsgetpath proposal needs review; serviceability construction/whole-resource review precede planning;
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
 # Delegated choices select reported native results and empirical evidence with opaque internals unproved.
-# Final allocation design/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
+# Allocation design is finalized; serviceability construction/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
   rootIndex

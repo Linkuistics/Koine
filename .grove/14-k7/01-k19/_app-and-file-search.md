@@ -173,5 +173,7 @@ seams and all runtime/binary/useful-coverage obligations remain unchanged.
 k118 records "you decide" and independently selects the current
 [reported-native-result and empirical-evidence boundaries](../../../docs/specs/workspace-search.md#observation-boundary-decision-questions).
 Only those two original guarantees are replaced; no internal-health/opaque-event
-proof, reduced workflow/domain or native acceptance is claimed. k119 must still
-finalize allocation before k113 constructs subjects and cuts mandatory review.
+proof, reduced workflow/domain or native acceptance is claimed. k119 finalizes
+in-process calls, copied-result bounds, serial two-temporary rechecks and
+freeze/late-return/refusal/recovery. k113 receives the observable construction
+handoff and retains instruments/subjects plus mandatory complete-resource review.

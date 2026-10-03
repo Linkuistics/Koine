@@ -125,3 +125,20 @@ chain or implementation leaves.
   witnesses, observed independent resource failure/backoff, lost applicable
   events and inconclusive controls still fail. k119 must complete the allocation
   contract before k113 constructs subjects and cuts the mandatory review.
+
+- k119 completes k116/k112's in-process allocation design within the two explicit
+  k118 scope selections. Consume docs/specs/workspace-search.md's final in-process
+  observation, bounded native-result consumption, allocation/lifetime ownership
+  and serviceability construction handoff; docs/verification/search-native-resources.md
+  promotes that handoff with residual doubts. Native calls and error branches,
+  borrowed registration results/copied-value accounts, serial two-temporary
+  candidate/target/recheck walks, freeze/finalization linearization, late resource
+  errors, uncertain-close refusal and process-lifetime recovery are settled.
+- k113 remains live and must construct the complete applicable owned/hook and
+  independent-outcome instruments/subjects, including detection/loss controls,
+  normally signed host saturation, combined indefinite/resource cohorts and all
+  limit/reference cases, then cut the mandatory complete-resource review. Opaque
+  internal acquisitions/health remain explicitly unproved. Exact runtime error
+  pair, native prompt/useful-launch/home witnesses, compatibility and k93's
+  measured omissions decision remain pending. No duplicate review or implementation
+  leaves, helper, changed signature/consent/domain/accounts/limits are introduced.

@@ -97,3 +97,21 @@ settle a runtime contract. Do only the first child in this session.
   These two scoped changes are distinct from helper refusal and do not claim
   internal-health/opaque-event proof or native acceptance. All other obligations
   remain live for k119, then k113's subjects and mandatory complete-resource review.
+
+- k119 completes the allocation design carried through k116. The selected route
+  is native inspection inside Koine, with reported-fact semantics and empirical
+  evidence as separately selected by k118. Those are the only replacements of
+  the original fact-health/fully-owned-or-complete-opaque-observer obligations.
+  The helper/IPC/child-limit branches do not apply to this declined alternative;
+  direct contents/parsing is not selected. Nil identifier remains UNKNOWN, no
+  missing-key assertion is made, native type/package/alias services remain, and
+  configured launch usefulness is still mandatory rather than all-UNKNOWN.
+- The remaining original conditions are supplied by the final observation,
+  bounded-result, ownership/recovery and serviceability-handoff sections of
+  docs/specs/workspace-search.md, the reported-fact ADR/glossary and reconciled
+  SDL/examples/guide/trace/resource views. Two-temporary serial walks, owned vs
+  opaque demand, all inherited/infinite/unknown/lowered/system-wide limit cases,
+  cohort persistence and process recovery are explicit. No posture, limits,
+  contents, consent, accounts, version, authority or compatibility change occurs.
+  Promote the final handoff to k109/k113; instrument construction, whole-resource
+  review and actual native/binary/useful-coverage acceptance remain live there.

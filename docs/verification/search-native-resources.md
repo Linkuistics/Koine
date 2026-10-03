@@ -1,10 +1,10 @@
 # Search native resource feasibility
 
-**Source/SDK analysis only; allocation design and native acceptance remain
+**Source/SDK analysis and finalized allocation handoff; native acceptance remains
 pending.** An error-bearing registration API exists, but substituting that API
 does not supply a bound or event ledger for platform-internal descriptors.
 The [resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
-shows the in-process continuation and the unapproved helper alternative. The
+shows the finalized in-process allocation and the remaining construction/review handoff. The
 [search resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling)
 continues to bind, including its original budgets and serviceability obligations.
 No inspection route, helper, consent, signing change, smaller domain or reduced
@@ -17,11 +17,12 @@ failure or established that isolation is necessary. The subsequent
 were selected independently under Antony's "you decide" delegation: checked
 registration and other native facts may mean reported observations, and empirical
 serviceability acceptance may leave opaque internal demand unproved. Neither
-selection follows from declining helpers. The concrete in-process proposal
-names calls, owned/opaque demand, freeze/restart ownership and failure
-discriminators; final allocation design, subjects and review remain pending.
+selection follows from declining helpers. The finalized in-process contract
+names calls, bounded copied-value consumption, serial candidate/registration/
+recheck walks, owned/opaque demand and freeze/late-return/restart ownership.
+Instrument/subject construction and complete-resource review remain pending.
 Only the two named guarantees change. This report supplies no hidden-health
-proof, completed runtime contract or native acceptance.
+proof, implemented runtime contract or native acceptance.
 
 ## Call health is separate from descriptor visibility
 
@@ -29,15 +30,15 @@ proof, completed runtime contract or native acceptance.
 | --- | --- | --- |
 | Current action adapter's NSWorkspace per-identifier registration | Array, without an error result | Empty is not an error-observable negative registration fact. Search cannot infer UNREGISTERED from this alone. |
 | Current Bundle identifier, followed on nil by stat/access of Info.plist | Optional identifier; later POSIX presence/readability checks | A readable plist after Bundle returned nil does not prove Bundle read it successfully. EMFILE can fail an earlier open while both later checks succeed. |
-| LSCopyApplicationURLsForBundleIdentifier, supplying outError | Returned CFArray or retained CFError | The documented error channel improves diagnosis but does not expose internal opens, their peak demand or every swallowed internal failure. It is a candidate, not an accepted substitution. |
+| LSCopyApplicationURLsForBundleIdentifier, supplying outError | Returned CFArray or retained CFError | The documented error channel improves diagnosis but does not expose internal opens, their peak demand or every swallowed internal failure. It is selected by the subsequent allocation design, not established as safe by this analysis. |
 | Streaming listing and descriptor-derived fsgetpath | Explicit owned descriptors and POSIX return/error checks | The ledger does not cover arbitrary platform metadata internals; fsgetpath's identity/race/native-size obligations remain separate. |
 
 The installed macOS SDK's Launch Services LSInfo.h documents that the CF query
 returns URLs when found and reports kLSApplicationNotFoundErr through outError
 when none is found. It marks the API deprecated in favor of NSWorkspace, with
 API_TO_BE_DEPRECATED as the upper endpoint; it remains declared in this SDK.
-That is a migration cost, not a reason to erase the error channel. A final
-adapter must retain domain/code and bounded underlying-error classification,
+That is a migration cost, not a reason to erase the error channel. The selected
+adapter contract retains domain/code and bounded underlying-error classification,
 rather than treating every CFError as absence. An unexpected array/error
 combination or nil/nil remains uncertain.
 
@@ -46,8 +47,8 @@ matches the checked-out action adapter's array-only boundary. This analysis
 does not modify that adapter or claim action acceptance clears search. The selected
 reported-observation boundary permits the exact checked not-found branch to
 support UNREGISTERED, with an undetected internal-failure/stale-service limit.
-Final design must normalize and verify that branch; it cannot assume every
-internal failure has a distinct public error. Registration still needs presence/native-identity
+The final design normalizes that branch; native acceptance must verify it. No
+assumption that every internal failure has a distinct public error is allowed. Registration still needs presence/native-identity
 checks and cannot nominate an admission anchor.
 
 For identifiers, a possible replacement is an explicit bounded metadata-plist
@@ -139,8 +140,8 @@ that Koine needs a separate process. The operator declined helper design.
 
 Reported native facts plus complete applicable owned/hook events, native-call
 envelopes and independent outcomes are now the selected requirements boundary;
-opaque acquisitions/peaks/internal errors remain unproved. Exact runtime
-normalization, ownership and constructible controls still need final design.
+opaque acquisitions/peaks/internal errors remain unproved. Runtime normalization/ownership and the observable construction contract are
+finalized in the spec; executable controls and native acceptance remain pending.
 A complete raw observer remains an alternative, not a requirement of the
 selected empirical boundary.
 
@@ -179,8 +180,8 @@ exit cannot pass those controls. Helper-specific controls apply only if that
 direction is separately authorized; they do not require a helper in the current
 single-process continuation. Reported/associated resource errors still require
 in-process refusal controls, while an invisible internal failure carries the
-selected native-result limit rather than a claimed passing health test. Complete
-allocation design remains live before serviceability-subject construction.
+selected native-result limit rather than a claimed passing health test. The finalized
+allocation contract now supplies the serviceability construction handoff below.
 The selected fact/evidence boundaries replace only their named original
 obligations; domain, consent, signing, host limits and other acceptance still bind.
 
@@ -213,16 +214,63 @@ reachable queue witnesses. Actual metadata/workflow omissions remain visible
 for the operator decision; all-UNKNOWN metadata or an arbitrary sample cannot
 accept the baseline. No native/binary/useful-coverage result is supplied here.
 
+## Final allocation handoff
+
+The [in-process observation contract](../specs/workspace-search.md#in-process-observation-contract)
+is the selected design, consuming the two independently delegated boundaries.
+It keeps native package/type/alias services and Bundle positives, with nil always
+UNKNOWN; LS all-registration results retain an error channel and separate
+NSWorkspace preferred observation. Negative registration requires the exact
+allowlisted, completely classified not-found result or a fully checked nonempty
+nonmatching array, with no conflict. The runtime error-domain pair is a native
+acceptance subject, not proved by the SDK's numeric constant.
+
+The [bounded-result rules](../specs/workspace-search.md#bounded-native-result-consumption)
+borrow array elements, bound copied paths/strings and sixteen error objects in
+existing scratch, and consume results under the existing wait with no arbitrary
+new registration-count cap. Framework-returned objects remain opaque allocations.
+The [ownership contract](../specs/workspace-search.md#allocation-and-lifetime-ownership)
+releases candidate descriptors before registration/preferred-target walks and
+reacquires the original candidate before finalization, using only two temporary
+credits. No array history, pinned third descriptor or idle root-credit borrowing
+is allowed. Identity checks detect observed movement and preserve the ABA limit.
+
+Admission, finalization and freeze share one gate. Late results close on the
+worker; late resource errors latch the surviving cohort before membership
+release while frozen data stays immutable. Ambiguous close retains the refusal
+owner until process restart without re-closing a numeric fd. Provider restart
+cannot replenish blocked ownership. Q/S, inherited/infinite/unknown/lowered
+limits, system-wide ENFILE, original accounts/domain/authority/version and
+retained-versus-search-release compatibility remain unchanged.
+
+The [serviceability handoff](../specs/workspace-search.md#serviceability-construction-handoff)
+requires actual-provider/independent GraphQL controls and normally launched
+signed hardened VM subjects. Construct complete owned/admission and pre-NIO-
+suppression/backoff events, fixed loss-aware storage and native-call envelopes;
+prove transient/dropped-event/overflow/suppressed-error controls can fail. Run
+independent fresh connections, durable store work and authorized witnessed
+actions beside four saturated searches, with matched no-search references,
+late/indefinite cohort recovery and all limit cases. Observed resource failure/
+backoff, incorrect known witnesses, lost applicable events and inconclusive
+comparisons cannot pass. Prompt-free exact calls and useful Safari/Finder/home
+witnesses remain pending; k93 owns measured home-omissions acceptance.
+
+The serviceability producer constructs those subjects and cuts the mandatory
+review of the complete resource artifact. Final allocation design supplies no
+native acceptance or internal-health/opaque-event proof. A later subject failure
+requires repair or a separately authorized scope decision; it cannot install
+new contents, consent, signature, limits, smaller domain or helper by fallback.
+
 ## Provenance and verification boundary
 
-The in-process proposal checked the present action adapter and listener against
+The in-process design checked the present action adapter and listener against
 the same NIO revision and SDK declaration, and verified Apple's
 [all-registration contract](https://developer.apple.com/documentation/coreservices/1449290-lscopyapplicationurlsforbundleid).
 The documented not-found result is not a claim about every swallowed internal
-failure. Proposed identifier inspection keeps Bundle positives and treats every
+failure. Selected identifier inspection keeps Bundle positives and treats every
 nil as UNKNOWN with affecting coverage; it neither reads Info.plist directly nor
 asserts a missing key. Native package/hidden/type keys and prompt behavior still
-need their actual-call subjects. The proposed instrument measures owned events,
+need their actual-call subjects. The selected instrument contract requires owned events,
 call envelopes and pre-suppression accept/backoff hooks; it explicitly cannot
 certify opaque transient acquisitions. The requirements session independently
 selected this narrower evidence boundary under Antony's "you decide" delegation;

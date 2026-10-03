@@ -98,3 +98,19 @@ human. k113 cannot cut review or treat a proposed boundary as acceptance.
   backoff still fail; no all-UNKNOWN launch coverage or weaker prompt/domain
   acceptance is selected. k119 remains live to finalize every other allocation
   condition; k113 still owns subjects and the mandatory review.
+
+- k119 finalizes the complete in-process allocation contract within k118's two
+  scoped replacements. Exact native calls, all returned-value/error branches,
+  bounded CFArray/copied-value/error consumption and negative/no-identifier
+  meaning are specified; native runtime/error-pair/prompt/useful-launch verdicts
+  remain acceptance work. Serial candidate release, registration/preferred walks
+  and original-candidate recheck use only two temporaries, with the original
+  identity/ABA/policy/canonical limits retained.
+- The shared admission/finalization/freeze gate, late error before membership
+  release, one worker-owned close attempt, ambiguous-close surviving refusal,
+  finite/indefinite cohorts, refreshed/summed-reservation limits and provider/
+  process restart ownership are settled without changed Q/S/accounts/domain.
+  The observable instrument contract and actual-provider/GraphQL/normal-host
+  falsifiers are handed to k113. This satisfies the remaining design conditions;
+  it does not claim the replaced health/opaque-observer proofs or native results.
+  k113 retains instrument/subject construction and k109's mandatory review.

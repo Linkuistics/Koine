@@ -98,6 +98,7 @@ and k93's per-witness omission decision remain pending.
 
 k118 independently selects the durable
 [observation boundaries](../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
-under Antony's "you decide" delegation. These scoped fact/evidence choices do
-not clear final allocation, native acceptance, compatibility or k93's measured
-omissions decision. k119 and k113's subject/review work remain live.
+under Antony's "you decide" delegation. These scoped fact/evidence choices
+do not claim native acceptance, compatibility or k93's measured omissions
+decision. k119 finalizes allocation/copy bounds/two-temporary freeze/recovery
+and the construction handoff; k113's instruments/subjects/review remain live.
