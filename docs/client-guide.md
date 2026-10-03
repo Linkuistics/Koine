@@ -538,12 +538,19 @@ not prove an observed location absent. The
 [long-location handoff dependency](specs/workspace-search.md#long-location-action-dependency)
 requires a supported action-route design and review before this seam is complete.
 The [native boundary and error repair](specs/workspace-launch-and-open.md#long-location-action-boundary)
-is designed but unimplemented: size/link-limit and uncertain metadata failures
+is designed but unimplemented: whole/expanded size, unresolved link-budget and
+unacquired-fact failures
 must use failed rather than invent a missing path, app, identifier or handler.
 It does not establish native long-location support. Keep paths
 and selected installation constraints unchanged; no clipped path, alternate
 copy, disabled-action baseline or shorter search ceiling is approved. Copy is
 client-owned; long-result launch/reveal/default/Zed outcomes remain pending.
+Established cycles/impossible components and completed native no-type/no-identifier
+reports keep their accepted outcomes. Launch-and-open owns independently created
+long action fixtures; search acceptance owns the additional actual-search
+handoff. Independent long-path observers require positive controls; fixture
+acceptance cannot pass search provenance. The repair is designed as action-only
+release/schema 1.0.1, separately from retained 1.0.0 and search 1.1.0.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain
@@ -721,9 +728,12 @@ What differs:
    inspection found nothing openable at that spelling and nothing was submitted: a missing
    item, a link to nothing or a path below a file can report it, and an item created
    a moment later is not seen. Inspection that was denied is `failed`, never
-   `PATH_NOT_FOUND`. The existing 1.0.0 implementation also reports link-limit and
-   path-size failures as PATH_NOT_FOUND; that is a known defect, not evidence that
-   an observed long location is absent. The designed correction is pending the
+   `PATH_NOT_FOUND`. The retained 1.0.0 also reports a cycle and an impossible
+   component that way; those concrete outcomes remain required. Its broader
+   mapping of every ELOOP/ENAMETOOLONG is defective: an unresolved finite-link
+   budget or whole/expanded path-size refusal proves no absence. The designed
+   1.0.1 correction returns pre-submission `failed` for those uncertainties and
+   preserves established cycle/name-limit absence. It is pending the
    [long-location route](specs/workspace-launch-and-open.md#long-location-action-boundary).
 3. **Some things are refused, as input.** After symlinks are resolved, an application
    bundle, a program (a Unix or Windows executable) and a Finder alias file are refused:
@@ -737,13 +747,19 @@ What differs:
    another target by its handler. To show an application or an alias in Finder, reveal it
    rather than open it. The input error's `message` says which check refused the item. It
    is for a person: its wording is not part of the contract, and a client that needs to
-   branch checks the payload itself first.
+   branch checks the payload itself first. A successfully acquired native report
+   with no content type retains non-refusal; unavailable classification is
+   `failed`, never a made-up no-type value that bypasses executable/alias checks.
 4. **`application` is optional.** Omit it or send `null` for the default application; a
    missing one is `DEPENDENCY_UNAVAILABLE` with `NO_DEFAULT_HANDLER` and no chooser. A
    named application uses the same input and installation rules as a launch
    (`APPLICATION_NOT_INSTALLED`, `APPLICATION_IDENTITY_MISMATCH`), and a folder can be
    sent to one, such as an editor. If the named application cannot open the item, that is
-   `failed`: no other application is tried and no default is changed.
+   `failed`: no other application is tried and no default is changed. For a long
+   target, a nil handler lookup alone does not establish no handler; the pending
+   repair requires supported lookup provenance, otherwise `failed` before submission.
+   An established no-identifier bundle still mismatches a named selector and can
+   still be a default handler; failed identifier acquisition means `failed`.
 5. **A location, not a file.** The path is submitted as written and any link in it is
    followed by the application. A file replaced between the check and the open may open
    something else or fail.
@@ -755,7 +771,9 @@ What differs:
 7. **The receipt names an application, not a document.** `value.process`, when present, is
    the application that was asked to open the item (the default handler or the one you
    named). It names no window or document, may be null, and says nothing about whether the
-   item rendered. A second request is a second open: there is no idempotency key in version 1.
+   item rendered. Long-app executable identity reads are separately pending;
+   systematic length-caused null is not an accepted loss of the desktop handoff.
+   A second request is a second open: there is no idempotency key in version 1.
 
 ## Revealing a path in Finder
 
@@ -777,11 +795,13 @@ reading of `failed`. What differs:
    possibly begun, and the request is not repeated.
 3. **The path is the same literal path as for opening.** One absolute path on Koine's machine,
    with the same input errors at the field's path (empty, relative, NUL), nothing trimmed, expanded or
-   resolved, and the same inspection first: nothing there, a link to nothing, a path below a file, a
-   genuinely missing component are `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`,
+   resolved, and the same inspection first: a missing component, a link to nothing,
+   or a path below a file is `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`,
    and nothing was submitted. Inspection that was denied is `failed`, never absence.
-   The same pending correction to the 1.0.0 link-limit/path-size defect applies
-   here; raw length is no absence or actionability verdict.
+   The same pending 1.0.1 correction applies here: established cycles and
+   impossible components retain PATH_NOT_FOUND, while unresolved link budgets
+   and whole/expanded size refusal mean failed. Raw length alone decides neither
+   absence nor actionability.
 4. **Nothing is refused for being what it is.** An application bundle, a program and a Finder alias file
    are the very items to reveal rather than open: the application is selected, never launched, and the
    alias is selected itself, never resolved to its target. A symlink is selected as the link. There is no

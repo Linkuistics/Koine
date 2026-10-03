@@ -3,8 +3,8 @@
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
     "title": "Separate long-location action prerequisites",
-    "status": "Boundary design · route unresolved · mandatory review next",
-    "summary": "Source length, expanded/native spelling, classification and submission have separate limits. Size and uncertain metadata must not invent dependency absence; this repair is designed and unimplemented. A supported long-location action route still needs design/review before search consumers. Short-path evidence, controls, selected installation, consent policy and public shapes remain bounded and unchanged.",
+    "status": "Boundary review integrated · route unresolved · final review required",
+    "summary": "Lookup, classification, handler discovery, registered submission spelling and receipt identity have separate native limits. The designed 1.0.1 repair preserves established cycle/name-limit/nil outcomes and refuses unacquired facts without invented absence. Launch-and-open owns independent long action fixtures; app-and-file-search owns later actual-search provenance. A supported route and final review remain required before consumers; no workflow loss, systematic long-app null receipt or new consent is accepted.",
     "diagramIds": [
       "workspace-long-locations",
       "workspace-open",
@@ -16,7 +16,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-long-locations",
-        "summary": "Adds the four action stages, proposed failure repair and unresolved native route."
+        "summary": "Separates native consumers and explicit absence, refusal and uncertainty branches; preserves baseline outcomes and splits action/search acceptance."
       },
       {
         "id": "workspace-open",
@@ -289,7 +289,7 @@
       "renderer": "svg",
       "source": "workspace-long-locations.d2",
       "rendered": "workspace-long-locations.svg",
-      "caption": "Boundary design, not a selected complete action route or native acceptance. Search supplies up to 8192 UTF-8 bytes; original and expanded/native lengths differ. Component presence cannot replace native payload/bundle/identity/registration facts. Size, link-limit and uncertain metadata failures must not fabricate dependency absence; the correction is unimplemented. The actual roughly 1500-byte file/default/Zed/reveal and constrained-app cases remain pending. Mandatory boundary review precedes route design; final route review precedes search consumers. No shorter domain, copy-only baseline, new consent or private policy is accepted."
+      "caption": "Reviewed boundary repair, not a supported complete route or native acceptance. Search supplies up to 8192 UTF-8 bytes. Distinguish source/expanded text, native facts, file-URL handler lookup, registered app spelling and receipt executable identity. Established cycles/impossible components remain PATH_NOT_FOUND; completed native nil facts retain their accepted meanings. Unresolved link budgets, whole/expanded size refusal and unacquired facts mean pre-submission failed. Explicit dependency and payload-refusal branches submit nothing. Independent roughly 1500-byte action fixtures belong to launch-and-open; actual-search handoff belongs to later search acceptance. Positive long-path observer controls, short-workflow regressions with long registered copies and separate 1.0.0/1.0.1/1.1.0 profiles remain pending. Final route review precedes consumers. No shortened/copy-only baseline, systematic null receipt loss, new consent or private policy is accepted."
     }
   ]
 }

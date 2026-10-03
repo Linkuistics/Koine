@@ -8,6 +8,11 @@
 # application's identifier AND applicationPath. Never omit the constraint after
 # failure. Long-result native inspection/submission remains pending; a valid
 # operation against this retained action-only SDL is not actionability evidence.
+# The same operation shapes validate against the designed 1.0.1 repair SDL.
+# Launch/named open may submit a registered application spelling of the same
+# native identity; record it separately from the supplied installation constraint.
+# Action fixtures close in launch-and-open; actual-search provenance closes later
+# in app-and-file-search acceptance. Receipt null is no long-process evidence.
 #
 # This file lists every designed workspace operation, and every root has landed
 # (LaunchInstalledApplication, OpenSearchURL, OpenDocumentOrDirectory and RevealPath). The

@@ -2378,10 +2378,19 @@ no native actionability pass. The
 [construction contract](../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction)
 records these subjects and the action producer owns their unresolved route.
 
+App-and-file-search planning/acceptance owns these actual-search G/N/V rows.
+The earlier launch-and-open acceptance uses independently component-created
+long action fixtures and cannot claim search-result provenance. Search design
+requires the reviewed action route; search acceptance uses the accepted repaired
+action provider. Neither set closes the other or drops a working subject. Long
+delivery, Finder-selection and process/copy observers must first read the same
+long fixture through an independent non-Koine control; observer limits leave
+the affected observation pending, never pass or fail Koine.
+
 | Seam | Required cases, all pending for search |
 | --- | --- |
 | Public GraphQL | Both roots and every nested field under workspace read alone; neither control nor desktop read substitutes. Input defaults/null/empty/limits, mandatory canonical-equivalent Unicode matching, app stem/filename ranking (`zed`, `Zed.app`, `.app`) and rank ties; complete empty versus partial empty, absent optional default versus explicit missing root, UNKNOWN coverage, duplicate/overlapping roots, top-list truncation independent of coverage. Both BLOCKED roots retain exact coverage and null list/dependency without errors, including coverage-only and repeated aliased matches selections. No-progress prompt-risk plus absent/unsupported is BLOCKED; prompt-risk plus real native failure is FAILED at each matches alias; all absent/unsupported has a dependency branch. Mixed successful roots are AVAILABLE with diagnostics and no synthetic matches error. Unregistered apps remain visible for reveal/copy, never launch. Revocation before root and nullable/non-null nested publication has original-path errors/normal propagation; status never overrides them. Absent search provider/schema detection. A reading-restricted standalone client derives choices and every permitted action using only SDL/spec/introspection. |
-| Native binary interface | Extend the actual workspace bundle, not a second namespace. Preserve existing named-consent/desktop errors, nil/blank construction/mapping and all four action contributions exactly. Ordinary ProviderValue success/object/null carries BLOCKED through old/new host/provider pairs, with no diagnostic symbols or feature gate. The exact compatibility and search-host subjects below retain desktop-only, absent/rejected and exact-candidate profiles; neither a subset schema check nor historical-profile rewriting proves compatibility. |
+| Native binary interface | Extend the actual workspace bundle, not a second namespace. Preserve existing named-consent/desktop errors, nil/blank construction/mapping and all four action shapes; incorporate the exact 1.0.1 provenance descriptions in the search 1.1.0 subject. Retained 1.0.0 compatibility contributions stay verbatim in their separate subjects. Ordinary ProviderValue success/object/null carries BLOCKED through old/new host/provider pairs, with no diagnostic symbols or feature gate. The exact compatibility and search-host subjects below retain desktop-only, absent/rejected and exact-candidate profiles; neither a subset schema check nor historical-profile rewriting proves compatibility. |
 | Isolated TestAnyware macOS VMs | Actual signed hardened Koine and the new stream adapter, with no new keys/entitlements: applications in default/nested/user roots, duplicate installed copies, missing identifier/unregistered/unreadable candidates; ordinary and empty directories, home partial, every directly supplied protected root and symlink/component alias, Library and known cloud exclusions; missing/mode-denied roots, index disabled with identical ordinary behavior. Large single directory exceeding entry limit, scope/value/depth and descriptor bounds, cancellation while listing/registration blocks, late completion and worker-capacity recovery, symlink replacement/mount change. Verify no consent dialog or file-content/hydration request from search and inspect all actual calls. Install the required real apps; demonstrate constrained launch, reveal, default ordinary-document open, Zed open and client-owned clipboard/MRU with visible witnesses. Real removable/network/cloud cases stay excluded or pending, never substituted with the ordinary disk-image fixture. Record actual OS/app versions, latency and limits. |
 
 ### Compatibility subjects and diagnostic acceptance
@@ -2405,7 +2414,9 @@ The search-serving subject is workspace-search-1.1, bundling workspace
 provider/schema 1.1.0 and desktop 1.0.0 with the existing framework-1.1 contract.
 Implementation must add the exact core-desktop-workspace-search-extension-host
 profile and desktop-workspace-search-schema-extension-host composed SDL:
-complete core/management + unchanged desktop/actions + this search contribution,
+complete core/management + unchanged desktop/action shapes + the
+[1.0.1 repaired action descriptions](../design/workspace-action-repair-schema.graphql)
+and this search contribution,
 with the actual full candidate rows and those bundled pins. The new profile is
 required design work, not a profile already passing here. Do not change the
 action-only profile/SDL to make the upgraded bundled host pass it.

@@ -153,6 +153,15 @@ acceptance through planning in this increment after that reviewed design, before
 any search consumer treats the handoff as complete. No implementation leaf or
 native long-path pass is supplied by the boundary child.
 
+k132 integrates the boundary review. Launch-and-open planning owns independent
+component-created long action fixtures and action-only 1.0.1 acceptance;
+app-and-file-search owns the additional actual-search G/N/V handoff after its
+implementation. Search design consumes the reviewed route; search acceptance
+consumes the accepted action provider. Both working subject sets remain required,
+avoiding search shipping as a prerequisite for earlier launch-and-open acceptance.
+The boundary preserves established cycle/impossible-component/nil outcomes and
+adds handler, registered spelling, receipt and short-regression obligations.
+
 `protected-path-metadata-k73` records its bounded answer in
 `docs/verification/protected-path-metadata.md`. The tested first-use metadata and
 registered-application route is prompt-free on Desktop, Documents and Downloads;

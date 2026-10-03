@@ -146,3 +146,12 @@ launch-and-open chain precedes search consumers, including k123/k120/k30.
 A boundary retirement, successful declaration/link check or earlier short-path
 pass completes no action handoff. Native outcomes and k93 measured omissions
 remain pending under the original approval posture.
+
+k132 assigns actual-search long-result G/N/V handoff acceptance to this increment
+after search ships. The earlier launch-and-open chain completes route design/
+review and independently constructed long action acceptance without depending
+on search implementation. This increment consumes that accepted action provider
+and still proves actual roughly 1,500-byte file/long-app provenance and unchanged
+selected values through every required action. Neither fixture-only acceptance
+nor an injected search result closes this handoff. Retained action 1.0.0, repair
+1.0.1 and search 1.1.0 binaries/descriptions/profiles stay distinct.

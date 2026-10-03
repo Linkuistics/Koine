@@ -1,7 +1,8 @@
 # Designed workspace 1.0.0 contribution; not a claim of served behavior.
 # Retained action-only compatibility contract. Long-location error/metadata-route
-# repairs remain designed/pending in workspace-launch-and-open.md; they require
-# a separate repaired-provider description/digest/profile, not a relabelled baseline.
+# repairs remain designed/pending in workspace-launch-and-open.md; designed
+# release/schema 1.0.1 uses workspace-action-repair-schema.graphql and a separate
+# composed digest/exact-candidate profile. This retained 1.0.0 description stays unchanged.
 # All output fields are mutation-only, with workspace:control AND desktop:control.
 # Exact composition/digest includes core and every admitted provider contribution.
 

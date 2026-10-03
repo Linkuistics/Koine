@@ -271,3 +271,14 @@ launch-and-open chain precedes search consumers, including k123/k120/k30.
 A boundary retirement, successful declaration/link check or earlier short-path
 pass completes no action handoff. Native outcomes and k93 measured omissions
 remain pending under the original approval posture.
+
+k132 integrates the native-boundary review without completing the route.
+Launch-and-open owns independent long action fixtures and their acceptance;
+app-and-file-search later owns actual-search G/N/V provenance and handoff.
+The reviewed route and accepted action provider precede their respective search
+consumers; actual search shipping is not an earlier action-fixture prerequisite.
+Both original working subject sets remain required. Established short-cycle,
+impossible-component and native nil meanings stay intact; handler acquisition,
+registered spelling, receipt identity and regressions with long copies are
+explicit route obligations. No short-workflow loss, systematic long-app null
+receipt, incompatible meaning or new consent is accepted.

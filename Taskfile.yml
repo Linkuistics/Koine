@@ -177,7 +177,8 @@ tasks:
         const search = parse(read('workspace-search-schema.graphql'));
         const independent = extendSchema(buildSchema('type Query { placeholder: Boolean }'), search);
         const actions = extendSchema(buildSchema(read('desktop-schema.graphql')), parse(read('workspace-schema.graphql')));
-        const complete = extendSchema(actions, search);
+        const repairedActions = extendSchema(buildSchema(read('desktop-schema.graphql')), parse(read('workspace-action-repair-schema.graphql')));
+        const complete = extendSchema(repairedActions, search);
         const examples = parse(read('workspace-search-operations.graphql'));
         const errors = [...validateSchema(independent), ...validateSchema(complete),
           ...validate(independent, examples), ...validate(complete, examples),
@@ -251,6 +252,76 @@ tasks:
       - xcrun --sdk macosx --show-sdk-version
       - xcrun clang --version
       - xcrun clang -arch arm64 -mmacosx-version-min=26.0 -Wall -Wextra -Werror -Wno-deprecated-declarations docs/verification/long-action-native-boundary/api-check.c -framework CoreServices -framework CoreFoundation -o .build/long-action-native-boundary/api-check
+      - xcrun nm -u .build/long-action-native-boundary/api-check > .build/long-action-native-boundary/imports.txt
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        const imports = new Set(readFileSync('.build/long-action-native-boundary/imports.txt', 'utf8').trim().split(/\s+/));
+        const required = ['_openat', '_fstatat', '_readlinkat', '_fsgetpath', '_FSMakeFSRefUnicode',
+          '_FSCompareFSRefs', '_LSCopyItemInfoForRef', '_LSCopyItemAttribute', '_CFURLCreateFromFSRef'];
+        const check = symbols => {
+          const missing = required.filter(symbol => !symbols.has(symbol));
+          if (missing.length) throw new Error('Missing probe imports: ' + missing.join(', '));
+        };
+        check(imports);
+        const removed = new Set(imports);
+        removed.delete('_fsgetpath');
+        let rejected = false;
+        try { check(removed); } catch (error) { rejected = error.message.includes('_fsgetpath'); }
+        if (!rejected) throw new Error('Control did not reject a missing intended import');
+        console.log('All nine intended imports present; missing-import control rejected. SDK stub link check only; probe not executed and guest availability untested.');
+        JS
+
+  design:action-repair-check:
+    desc: Validate the designed 1.0.1 action description delta, unchanged shapes/examples and distinct same-printer composition; no served digest or native pass
+    deps: [design:workspace-check]
+    dir: clients/contract-only
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, print, printSchema, validate, validateSchema, visit } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const baseline = parse(read('workspace-schema.graphql'), { noLocation: true });
+        const repair = parse(read('workspace-action-repair-schema.graphql'), { noLocation: true });
+        const shape = ast => print(visit(ast, { enter: node => node.description ? { ...node, description: undefined } : undefined }));
+        if (shape(baseline) !== shape(repair)) throw new Error('Repair changed the retained action shape');
+        const descriptions = ast => {
+          const result = new Map();
+          visit(ast, { enter(node, key, parent, path) {
+            if (node.description) result.set(path.join('.'), node.description.value);
+          } });
+          return result;
+        };
+        const oldDescriptions = descriptions(baseline);
+        const expected = new Set(['workspaceLaunchApplication', 'workspaceOpenPath', 'workspaceRevealPath']);
+        const assertDelta = ast => {
+          const next = descriptions(ast);
+          const changed = [...next].filter(([path, value]) => oldDescriptions.get(path) !== value);
+          const mutation = ast.definitions.find(definition => definition.name?.value === 'Mutation');
+          const fields = mutation.fields.filter(field => expected.has(field.name.value));
+          if (changed.length !== expected.size || oldDescriptions.size !== next.size || fields.length !== expected.size) {
+            throw new Error('Wrong description delta');
+          }
+          const oldMutation = baseline.definitions.find(definition => definition.name?.value === 'Mutation');
+          for (const field of fields) {
+            const old = oldMutation.fields.find(candidate => candidate.name.value === field.name.value).description.value;
+            if (!field.description.value.startsWith(old + ' ')) throw new Error('Repair did not append the agreed description');
+          }
+        };
+        assertDelta(repair);
+        let rejected = false;
+        try { assertDelta(baseline); } catch { rejected = true; }
+        if (!rejected) throw new Error('Control credited an unchanged baseline as a repair delta');
+        const host = buildSchema(read('desktop-schema.graphql'));
+        const old = extendSchema(host, baseline);
+        const next = extendSchema(host, repair);
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }'), repair);
+        const errors = [...validateSchema(independent), ...validateSchema(next), ...validate(next, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        if (printSchema(old) === printSchema(next)) throw new Error('Description changes disappeared from canonical composition');
+        console.log('Designed repair has three appended descriptions, unchanged action shape and valid examples; unchanged-baseline control rejected. Same-printer SDL differs; actual served digest/candidate profiles and runtime outcomes remain pending.');
+        JS
 
   design:selection-render:
     desc: Render first-party selection and publication views (D2 0.9.0 and PlantUML 1.2026.8)

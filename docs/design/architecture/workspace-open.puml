@@ -15,8 +15,10 @@ Core -> Workspace: admitted action
 Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
 note over Workspace,Native
 First-use metadata route measured prompt-free on three protected roots.
-Long-location metadata/classification route remains unresolved.
-Size/uncertainty-to-failed correction is designed, not implemented.
+Long metadata/handler/submission/receipt route remains unresolved.
+Whole-size/unresolved-link/unacquired-fact repair is designed 1.0.1.
+Established cycle/name-limit/nil outcomes retain their meanings.
+Selected app URL is registered spelling of the constrained native identity.
 Document file-URL handler lookup prompts: protected default opening
 remains pending a human decision; do not attempt it as a readiness read.
 end note

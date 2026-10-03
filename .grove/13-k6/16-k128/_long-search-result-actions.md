@@ -70,3 +70,13 @@ Done when above remains binding; retiring the first child closes none of it.
 No implementation leaves are cut here; planning owns native execution after
 the reviewed supported route. If the route needs an unapproved posture or workflow
 trade-off, escalate a concrete decision rather than repeating evidence indefinitely.
+
+Integration k132 separates closure ownership: launch-and-open planning executes
+independently component-created long action fixtures before search; the later
+app-and-file-search planning/acceptance executes actual-search G/N/V handoff
+rows. The original required working subjects and approval posture remain binding.
+Design/final review precedes search design consumers; search-result provenance
+is not a prerequisite for earlier action-fixture acceptance. The repaired
+boundary includes established cycle/name-limit/nil semantics, handler acquisition,
+registered spelling, receipt identity and short regressions with long copies.
+Action-only 1.0.1 and search 1.1.0 use separate profiles from retained 1.0.0.

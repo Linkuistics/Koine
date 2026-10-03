@@ -223,6 +223,7 @@ view because it has no parent. Native acknowledgment is not selection verificati
 | Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. The path is the root field's own, its alias if one was used (`["workspaceOpenURL"]`), an execution error in an HTTP 200 answer. |
 | Missing client authority | `permission` / `capability`, before resource inspection. A revoked or unknown credential never reaches admission: it is HTTP 401 (`unauthenticated`). |
 | Filesystem access denied without established consent cause | `failed`; do not infer absence or invent a consent. |
+| Whole/expanded native path-size refusal, unresolved link-budget exhaustion, or unacquired/malformed prerequisite facts | Designed repair: pre-submission `failed`; guidance names stage/cause and no domain request was submitted. Bare ELOOP/ENAMETOOLONG or higher-level nil/no-such-file cannot establish dependency absence. |
 | Native error/false acknowledgment, timeout, or prerequisite lost after submission | `failed`; effects may have begun; no replay or alternate handler. |
 
 After admission, validate/inspect an open-path target before resolving its
@@ -239,21 +240,53 @@ transport outcome can be unknown even when the app opens successfully.
 Search returns locations through 8,192 UTF-8 bytes. That is a discovery value
 ceiling, not a new action input bound or a guarantee of native actionability.
 Action paths retain their existing literal absolute-path syntax. Distinguish
-supplied text, symlink-expanded/native spelling, native classification and the
-actual submitted request. Neither source length nor a successful controlled
-adapter result proves the later stages can act.
+supplied text, symlink-expanded/native spelling, native classification, file-URL
+default-handler discovery, the registered application's submission spelling,
+and receipt executable-identity observation. Launch/named open submits the
+registered URL selected by native identity; it need not have the same spelling
+or length as applicationPath. Document/reveal target bytes remain the caller's.
+Neither source length nor a successful controlled adapter result proves the
+later stages can act.
 
-The selected error repair is **designed and unimplemented**. Native path-size
-refusal and unresolved link-limit exhaustion mean failed inspection, never
-PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED. An inconclusive native type,
-identifier, identity or registration inspection also means failed; it cannot
-establish identity mismatch or no default handler. Missing-component/not-directory
-results establish a dependency only when the relevant lookup actually resolved
-that component/spelling. A higher-level no-such-file result that merely wraps
-another stage's failure is insufficient. Preserve the cause in human guidance
-without adding an error kind or dependency enum. Before submission, refuse
-uncertainty without effects; after submission, keep the existing failed/ambiguous
-outcome and never replay.
+The selected error repair is **designed and unimplemented**. Whole/expanded
+native path-size refusal and unresolved finite-link-budget exhaustion mean
+failed inspection, never PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED. Preserve
+PATH_NOT_FOUND for an established unresolvable cycle or a component established
+to exceed the relevant filesystem's name limit, as for the accepted short
+two-link-cycle and 300-byte-component subjects. ELOOP alone does not prove a
+cycle; ENAMETOOLONG alone does not prove an impossible component. Missing/below-file
+results establish a dependency only when the relevant lookup resolved that
+component/spelling. A higher-level no-such-file wrapper without established
+operation/cause is insufficient. Preserve stage/cause in human guidance without
+adding an error kind or dependency enum. Pre-submission uncertainty causes no
+domain request; post-submission failure retains possible effects and no replay.
+
+Completed native facts and unacquired facts have distinct inspection outcomes.
+An applicable supported acquisition that successfully reports no content type,
+with required application/alias flags established, retains the accepted no-type
+non-refusal. An established absent Info.plist or successful native bundle-information
+report with no declared identifier retains APPLICATION_IDENTITY_MISMATCH for a
+named selector; an identifier-free default handler remains eligible. Missing
+required flags/identity, observed read/parse failure or unsupported acquisition
+means failed. Nil alone cannot stand for failed acquisition, nor can it default
+required flags to false. The [fact-provenance rules](../verification/long-action-native-boundary.md#fact-provenance-and-established-nils)
+require the route to establish these meanings without guessed metadata or new
+content reads. Known long program/application/alias subjects must still be refused.
+
+A supported file-URL handler lookup must establish its applicability and a
+native no-handler report for the exact target before NO_DEFAULT_HANDLER is
+justified. The existing URL-or-nil adapter supplies no error cause; presence
+alone does not establish long-URL lookup support. Unestablished handler acquisition
+is failed. First-use long-file/directory lookup has independent prompt subjects.
+Do not substitute a generic type/extension handler or approve new consent.
+
+Inspection of a registered long copy must not regress short constrained or
+unconstrained launch/named open, or Finder readiness for reveal. Unknown candidate
+equality remains failed, never a skippable unrelated copy. The route must repair
+inspection while retaining exact selection. Receipt observation separately checks
+callback and live executable identity, including proc_pidpath and resource-value
+path consumers. Record long-app process/null causes; systematic length-caused null
+is a defect to repair or an explicit Antony decision, not silently accepted loss.
 
 The existing whole-path metadata route does not support claiming this handoff
 complete. Component-relative lookup and canonical path observation are candidate
@@ -271,22 +304,39 @@ copy. Protected default-document opening and the third-party reveal notice remai
 their existing decisions. Do not accept a shorter domain, disabled action or
 copy-only workflow in place of the required long-file and constrained-app cases.
 
-Use the existing private action adapter enabling point for deterministic
-stage/error mapping, independent provider/public GraphQL for the real contract,
-independently retained old/new binaries for compatibility, and signed isolated
-macOS for actual search-to-action outcomes. Required working subjects include
-a roughly 1,500-byte ordinary file opened by its default handler and Zed and
-revealed in Finder, and a long registered application launched with its selected
-identifier and path while another copy runs. Observe delivery/selection/copy
-independently; a search-result injection or acknowledgment alone cannot close
-these cases. Construction/registration/classification/submission failure stays
-pending for its intended subject. Existing short-path evidence cannot close it.
+L uses the existing private action adapter to check planner responses to supplied
+outcomes; it does not exercise the errno/Foundation/plist classifier inside the
+substituted adapter. N component-created host fixtures exercise that real mapping,
+G checks the public contract, independently retained old/new binaries check
+compatibility, and V checks signed isolated macOS behavior.
 
-The repaired release retains the contract version, input/result shapes and
-error kinds, with its own exact descriptions/digest and candidate profile. Keep
-the independently retained 1.0.0 action-only bundle/profile unchanged. Implementing
-and executing the reviewed route belongs to this increment's planning work;
-measured workflow omissions feed the existing operator decision before acceptance.
+Launch-and-open planning owns independently constructed action fixtures: a
+roughly 1,500-byte ordinary file opened by its default handler and Zed and revealed
+in Finder, and a long registered application cold/warm launched and used for named
+open with identifier and path while another copy runs. App-and-file-search
+planning/acceptance owns the additional actual-search G/N/V handoff: search returns
+those locations, then unchanged selected values drive the same actions. No injected
+search result closes that later row. Search design consumes the reviewed route;
+search acceptance consumes the accepted action provider, avoiding a circular
+implementation dependency. Both sets of working subjects remain required.
+Observe delivery/selection/copy/process independently, first positively controlling
+each long-path observer through a non-Koine route. Observer limits and
+construction/registration/earlier-stage failure leave their subjects pending;
+neither acknowledgment nor old short-path evidence closes them.
+
+The compatible action-only correction is workspace release/schema **1.0.1** under
+`koine-desktop/1`, preserving accepted concrete short-cycle/name-limit/established-nil
+outcomes, input/result shapes and error kinds. Its
+[repair SDL](../design/workspace-action-repair-schema.graphql) supplies exact changed
+launch/open/reveal descriptions. On the same host/printer these canonical description
+changes must change the composed digest; the numeric digest and full exact-candidate
+profiles are captured from actual implementation. Keep independently retained 1.0.0
+bundle/SDL/profile unchanged. Search release/schema 1.1.0 incorporates the repaired
+descriptions in its separate composed profile. Planning owns the
+[implementation/compatibility obligations](../verification/long-action-native-boundary.md#compatibility-and-implementation-obligations).
+Any unavoidable incompatible meaning, short-workflow loss or systematic long-app
+null receipt goes to Antony before adoption. Measured workflow omissions still
+feed the existing operator decision before baseline acceptance.
 
 ## Ownership, native design and alternatives
 
@@ -416,8 +466,9 @@ route that can return one.
 Use **G** public GraphQL and a contract-only client, **N** real independently
 built native provider/host binaries, **V** signed isolated TestAnyware macOS VMs.
 **L** below is a supporting provider-local test: instantiate the real workspace
-provider with its private native adapter substituted. It proves workspace's
-classification, not an OS outcome or the independently built binary seam.
+provider with its private native adapter substituted. It proves planner mapping
+from supplied inspection outcomes, not the real adapter's errno/Foundation/plist
+classification, an OS outcome or the independently built binary seam.
 Composition-point fakes can separately prove core/client result handling at G.
 Every row remains pending; add evidence links when accepted. Native predictions
 here are bounded questions for those seams, not a claim that implementation exists.
@@ -435,6 +486,8 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Native create, approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls, observed in the window and compared with the text management serves: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md). |
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
+| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | Execute the [independent action subjects](../verification/long-action-native-boundary.md#independent-subjects-for-the-route-design) after reviewed route implementation: roughly 1,500-byte default/Zed open and reveal, long constrained cold/warm launch/named open, real stage/cause/nil classification, registered spelling and receipt observation, short-workflow regression with long registered candidates, handler prompting, positive observer controls and separate 1.0.0/1.0.1 binary profiles. All remain pending; no actual search implementation is required to close action fixtures. |
+| Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns the long file/application; unchanged selected path and identifier drive the accepted actions with independent delivery/selection/copy/process witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this additional provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
 fallback, chooser/MRU, clipboard and settings reload/relaunch. Reusable build,
@@ -443,6 +496,13 @@ installations or certificates leave acceptance live; they are not passing absenc
 tests for the required working paths.
 
 ### Evidence so far
+
+The following records describe the retained action-only 1.0.0 baseline and its
+actual short-path subjects. Its broad ELOOP/ENAMETOOLONG mapping is historical
+behavior, not the repaired-provider rule. The concrete cycle/impossible-component
+outcomes stay required, but 1.0.1 must establish their causes and rerun them with
+all established-nil and short-workflow regressions. These records and original
+client findings are preserved; none is an action-repair or long-location pass.
 
 `workspace-launch` shipped the bundled provider serving `workspaceLaunchApplication`
 and the types it reaches, verbatim from the design file, `open-url` added
@@ -538,7 +598,8 @@ what was established; every row above keeps its pending remainder.
   with a trailing `/`, which `realpath` alone forgives), a symlink loop and a name too long to
   exist are `PATH_NOT_FOUND` with no handler lookup, no application inspection and nothing
   submitted, whether or not an application is named and whether or not it is installed;
-  metadata that cannot be read, or a type value the platform did not supply, is `failed`,
+  metadata that cannot be read, or a required application/alias flag the platform
+  did not supply, is `failed`,
   never absence. Then the application is
   chosen: omitted and `null` are the same default; the default is found by the
   system's file lookup for that item and must be present as a bundle when inspected,
