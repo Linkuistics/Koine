@@ -356,8 +356,10 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Discovery/coverage awaits review and native
-acceptance; typed BLOCKED transport awaits its load-bearing review.
+**Designed, not served yet.** Discovery admission, traversal/diagnostic growth
+and application deduplication [need repair before planning](specs/workspace-search.md#discovery-obligations-before-planning),
+then review and native acceptance; typed BLOCKED transport awaits its separate
+load-bearing review.
 Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
 [search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
@@ -366,7 +368,10 @@ root defaults, bounds, ranking and coverage. Both roots and every output field
 need `workspace:read` only. Omitted/null roots use Koine's application directories
 or home; explicit roots replace them. Application defaults additionally include
 generic CoreServices and Cryptex application regions. Checked visible .app links
-can supply an observed application path; they never authorize target traversal. Query matching is a literal filename
+can supply an observed application path; they never authorize target traversal.
+Link/canonical paths to one bundle still need a representative-spelling decision;
+do not infer distinct installations merely from two paths or equal identifiers.
+Query matching is a literal filename
 substring: app filename or `.app`-stripped stem, file full filename. Canonically
 equivalent Unicode spellings must match under the specified fixed folding;
 `zed` ranks `Zed.app` before `Zed Preview.app`. Complete means the declared
@@ -379,10 +384,16 @@ Read `status`, `matches`, each root's `coverage`, `dependency`,
 coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
 eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
 somewhere beneath that root. completedDirectories counts EOF listings, not an
-unchanged snapshot. Skipped CHILD_GROUP counts encountered anchors of its parent;
-DESCENDANT_GROUP counts intrinsic anchors beneath its root. Neither says all
-children were skipped. REMAINDER has null count and describes unfinished work,
-not an entirely skipped root. Independent root budgets/rotating work prevent
+unchanged snapshot. Skipped CHILD_GROUP counts affected encountered anchors of
+its parent: FRONTIER_LIMIT/DEPTH_LIMIT omit descendants while anchor names can
+match; UNREPRESENTABLE_NAME/overlong-path VALUE_LIMIT omit the anchor too.
+DESCENDANT_GROUP counts intrinsic anchors beneath its root, including package
+or symlink anchors that can remain file matches. Neither says all children
+were skipped. REMAINDER has null count and describes unfinished work with or
+without progress, anchored at the resolved root or representable requested root.
+No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
+means total diagnostic room (record/byte account identified in guidance);
+VALUE_LIMIT means an individual path bound. Independent root budgets prevent
 one root spending later roots' credits, but native stalls/deadlines can still
 leave them unvisited. Home excludes protected traversal. In a
 BLOCKED result, matches is null and coverage remains available. Coverage's
@@ -425,6 +436,8 @@ their pending decisions described below.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.
+Four retained jobs can hold about 157 MiB of charged result/frontier values plus
+bounded scratch; this is an accounting ceiling, not allocated memory or RSS.
 
 ## Launching an application
 

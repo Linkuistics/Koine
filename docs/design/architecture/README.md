@@ -36,11 +36,13 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel focuses on typed prompt-risk BLOCKED outcomes,
-with selection handoff, discovery evidence and the metadata/handler view as context.
-Generic system-app roots, checked .app-link metadata, exact observation/group/
-remainder semantics and independent root budgets await load-bearing review and
-native acceptance. BLOCKED uses null matches/dependency and exact coverage without
+The current-discussion panel focuses on clarified coverage meanings and open
+discovery obligations, with selection handoff, evidence and metadata as context.
+The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
+require repaired Preboot admission, traversal/diagnostic aggregation and application
+identity before planning, followed by their load-bearing review. Parent-keyed
+frontier/depth groups can still stop deeper scans; distinct app paths can identify
+one bundle. BLOCKED uses null matches/dependency and exact coverage without
 a search execution error; UNKNOWN consent does not mean missing named consent.
 Its load-bearing review and runtime acceptance remain pending. No reduced
 home/application baseline is accepted; existing framework failure mapping is fixed.
@@ -61,12 +63,13 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views:
 
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Added
-  null matches/dependency without an execution error for BLOCKED, UNKNOWN
-  consent diagnostics and the publication-denial limit.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Clarified
+  affected group anchors, matchable frontier/depth names, remainders with or
+  without progress, and total diagnostic room versus individual path limits;
+  made the open admission/traversal design obligations visible.
 - [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  Added the client’s blocked-scope/unknown-consent display before AVAILABLE
-  selection and retained installation-specific action choices.
+  Made the pending application identity/representative-spelling design visible;
+  retained blocked-scope guidance and installation-constrained actions.
 - [Search contract → selection and publication](../../specs/workspace-search.md#selection-and-publication-invariants) —
   Defined coverage-only/aliased matches, error-free branch invariants, mixed
   roots and live-revocation expectations.
@@ -141,3 +144,10 @@ windows. Safari displayed the SVGs with their light background inside the dark
 viewer; that rendering remained readable. The manifest and both changed SVGs
 had matching SHA-256 digests in the workspace and guest copy. This checks
 presentation only; it establishes no runtime branch, binary or native acceptance.
+
+The coverage-clarification/discovery-obligation revision was regenerated with
+`task design:search-render` and inspected as librsvg rasters at 1200 pixels
+(coverage) and 900 pixels (handoff). Labelled starts, updated group/remainder
+meanings, pending-design labels, outcome branches and action arrows were readable
+without clipping. This is static light rendering; the earlier Safari, narrow
+reflow and dark-mode observations do not validate these revised exports.

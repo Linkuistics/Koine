@@ -1,7 +1,8 @@
 # Designed additive workspace search contribution; not served behavior.
 # Every root and every reachable output field requires workspace:read only.
 # Compose after workspace-schema.graphql; no foreign provider type is imported.
-# Discovery/coverage and typed BLOCKED transport await load-bearing review.
+# Discovery admission/traversal/application identity need repair and review.
+# Typed BLOCKED transport awaits its separate load-bearing review.
 # Native/default coverage and the protected-home baseline remain unaccepted.
 
 """Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches. With no progress, real native/work failure precedes prompt risk, which precedes pure absence/exclusion. BLOCKED returns null matches/dependency without a search execution error, including matches aliases; consent is UNKNOWN, never observed absent. FAILED raises failed at each selected matches alias. Coverage-only selections retain the same status/diagnostics. Inspect publication errors and every root's coverage."""
@@ -25,7 +26,7 @@ enum WorkspaceSearchScopeExtent {
   OBSERVED_DESCENDANTS
 }
 
-"""ENTRY is one uncertain/omitted entry; SUBTREE is a named wholly skipped descendant scope. CHILD_GROUP counts only encountered child anchors of path; DESCENDANT_GROUP counts encountered intrinsic anchors somewhere under the root. Neither group means all children/descendants. REMAINDER is unfinished work after observed progress, including unvisited tails/tasks/metadata; it never claims the whole root was skipped."""
+"""ENTRY is one uncertain/omitted entry; SUBTREE is a named wholly skipped descendant scope. CHILD_GROUP counts affected encountered child anchors: FRONTIER_LIMIT/DEPTH_LIMIT omit descendants only and anchor names remain matchable; UNREPRESENTABLE_NAME or overlong-path VALUE_LIMIT omit anchors and descendants. These are its only reasons. DESCENDANT_GROUP counts encountered intrinsic anchors under the root; package/symlink names can remain file matches. Neither group means all children/descendants or necessarily omitted anchor names. REMAINDER is unfinished work with or without progress, including unopened roots/tails/tasks/metadata; it never claims the whole root was skipped or a known-size domain. Its anchor is the resolved root if established within bounds, otherwise the representable requested root. No-progress stops have UNKNOWN coverage and no searched record."""
 enum WorkspaceSearchSkippedExtent {
   ENTRY
   SUBTREE
@@ -34,7 +35,7 @@ enum WorkspaceSearchSkippedExtent {
   REMAINDER
 }
 
-"""Only HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS, SPECIAL_FILE and OPTIONAL_ROOT_ABSENT are intrinsic exclusions; all others affect coverage. Intrinsic descendant anchors aggregate per root/reason; exceptional unnamed children group at their actual representable parent."""
+"""Only HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS, SPECIAL_FILE and OPTIONAL_ROOT_ABSENT are intrinsic exclusions; all others affect coverage. Intrinsic descendant anchors aggregate per root/reason. CHILD_GROUP is limited to FRONTIER_LIMIT/DEPTH_LIMIT/UNREPRESENTABLE_NAME/overlong-path VALUE_LIMIT at the actual representable parent. Other exceptions identify an exact entry/subtree or root remainder."""
 enum WorkspaceSearchSkipReason {
   HIDDEN
   PACKAGE_CONTENTS
@@ -55,9 +56,13 @@ enum WorkspaceSearchSkipReason {
   DEPTH_LIMIT
   FRONTIER_LIMIT
   ENTRY_LIMIT
+  """Coverage record-count or total-byte partition exhausted: root REMAINDER preserves earlier diagnostics. Fixed guidance identifies which account; record count wins if both fail."""
   DIAGNOSTIC_LIMIT
+  """Individual path exceeds its value bound, never total diagnostic room. CHILD_GROUP omits an overlong child and descendants; root REMAINDER stops an overlong resolved root at its representable requested path, resolvedPath null."""
   VALUE_LIMIT
+  """Wait expired: REMAINDER even before progress or while the first listing blocks. No-progress coverage is UNKNOWN with no searched record."""
   TIME_LIMIT
+  """Process-wide worker admission refused before inspection: requested-root REMAINDER, UNKNOWN coverage and no searched record."""
   CAPACITY_LIMIT
 }
 
@@ -137,7 +142,7 @@ type WorkspaceApplicationMatch {
   name: String!
   bundleIdentifier: String
   installationState: WorkspaceSearchInstallationState!
-  """Every effective root in which this exact returned path matched, ascending; duplicate bundle identifiers do not merge installations."""
+  """Provisional exact-path membership, ascending; application identity/representative spelling across checked links and canonical roots requires repair before planning. Identifier equality alone does not merge actual distinct copies."""
   rootIndices: [Int!]!
 }
 
@@ -204,8 +209,8 @@ type WorkspaceFileSearchResult {
 }
 
 extend type Query {
-  """Requires workspace:read only, including every result field. Literal substring of filename or stem after removing one terminal .app (ASCII case-insensitive); rank by the better exact/prefix/substring tier. NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Query at most 256 UTF-8 bytes, no NUL; empty matches all. Default application roots are /Applications, /System/Applications, Koine-home Applications, /System/Library/CoreServices and /System/Cryptexes/App/System/Applications. Ordinary folders are traversed; visible .app links receive checked target metadata only, never target traversal. Added roots/link/stream behavior awaits signed-host acceptance. Cyclic root/directory scheduling and independent root budgets do not guarantee syscall duration or exhaustive inventory. Supplied roots replace defaults (1...16 literal absolute local paths, at most 4096 bytes each). Positively absent optional home/Cryptex defaults have COMPLETE empty-domain coverage; explicit missing roots do not. Non-null limit is 1...200, default 50. No Spotlight or consent probing. No exhaustive installed-app inventory or MRU. A three-second wait can return partial coverage; the core deadline may answer first. Protected traversal is blocked before native access."""
+  """Requires workspace:read only, including every result field. Literal substring of filename or stem after removing one terminal .app (ASCII case-insensitive); rank by the better exact/prefix/substring tier. NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Query at most 256 UTF-8 bytes, no NUL; empty matches all. Default application roots are /Applications, /System/Applications, Koine-home Applications, /System/Library/CoreServices and /System/Cryptexes/App/System/Applications. Ordinary folders are traversed; visible .app links receive checked target metadata only, never target traversal. Admission, traversal/diagnostic aggregation and application identity require repair and review before planning; added roots/link/stream behavior awaits signed-host acceptance. Cyclic root/directory scheduling and independent root budgets do not guarantee syscall duration or exhaustive inventory. Supplied roots replace defaults (1...16 literal absolute local paths, at most 4096 bytes each). Positively absent optional home/Cryptex defaults have COMPLETE empty-domain coverage; explicit missing roots do not. Non-null limit is 1...200, default 50. No Spotlight or consent probing. No exhaustive installed-app inventory or MRU. A three-second wait can return partial coverage; the core deadline may answer first. Protected traversal is blocked before descent; pre-policy native link resolution into sensitive Library targets has no measured prompt-free guarantee and requires actual-call acceptance."""
   workspaceSearchApplications(query: String!, roots: [String!], limit: Int = 50): WorkspaceApplicationSearchResult
-  """Requires workspace:read only, including every result field. Literal substring of full filename including extension, NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Same input lengths, root and limit rules as application search; omitted/null roots use Koine's home. Ordinary local startup-volume roots only, with hidden/package/symlink-descendant exclusions and explicit protected/cloud/mount/bound diagnostics. Home cannot be COMPLETE under this policy: PARTIAL with progress, UNKNOWN without progress; Root observation/group/remainder semantics and independent budgets await review and native acceptance; useful default coverage and the baseline remain unaccepted. No content/default-handler lookup, download, clipboard or action. Locations feed existing open/reveal inputs without an identity guarantee; the client owns chooser and MRU. Three-second wait, bounded work/retained values and no continuation cursor; inspect coverage and publication errors."""
+  """Requires workspace:read only, including every result field. Literal substring of full filename including extension, NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Same input lengths, root and limit rules as application search; omitted/null roots use Koine's home. Ordinary local startup-volume roots only, with hidden/package/symlink-descendant exclusions and explicit protected/cloud/mount/bound diagnostics. Home cannot be COMPLETE under this policy: PARTIAL with progress, UNKNOWN without progress; Group reasons distinguish omitted names from descendants; REMAINDER applies with or without progress. Traversal/diagnostic aggregation requires repair and review before planning; native acceptance remains pending; useful default coverage and the baseline remain unaccepted. No content/default-handler lookup, download, clipboard or action. Locations feed existing open/reveal inputs without an identity guarantee; the client owns chooser and MRU. Three-second wait, bounded work/retained values and no continuation cursor; inspect coverage and publication errors."""
   workspaceSearchFiles(query: String!, roots: [String!], limit: Int = 50): WorkspaceFileSearchResult
 }

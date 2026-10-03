@@ -35,10 +35,14 @@ default application, reveal, copy path and open in Zed.
 The search design is `docs/specs/workspace-search.md`, with the separate additive
 `docs/design/workspace-search-schema.graphql` and client examples beside it.
 Every search root/output field needs workspace read only; existing action
-receipts keep both controls. Planning consumes the design review and the two
-review-repair producer decisions before cutting implementation. The discovery/coverage redesign now gives generic system-app roots, checked
+receipts keep both controls. Planning consumes the design reviews and
+review-repair producer decisions before cutting implementation. The discovery/coverage redesign proposes generic system-app roots, checked
 .app links, counted groups/remainders and independent root budgets. Its review
-and useful native/default coverage, including Safari/Finder, remain pending.
+found admission, traversal/diagnostic-growth and duplicate-installation-path
+defects. `search-defaults-k101` repairs those choices and cuts its load-bearing
+review before planning; useful native/default coverage, including Safari/Finder,
+remains pending. Parent groups distinguish matchable frontier/depth anchors from
+omitted invalid/overlong names; stops use REMAINDER with or without progress.
 Prompt-risk transport is typed BLOCKED success/null data, pending its own review;
 fixed framework meanings stay unchanged and no diagnostic ABI addition is needed.
 Preserve action-only conformance against

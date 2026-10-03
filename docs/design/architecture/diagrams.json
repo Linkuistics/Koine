@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Prompt risk as typed BLOCKED data",
-    "status": "Designed · awaiting load-bearing review and runtime acceptance",
-    "summary": "BLOCKED returns null matches/dependency and exact coverage without a search execution error, including aliased matches and coverage-only queries. PROMPT_RISK means unattempted policy with UNKNOWN consent, never observed missing consent. Existing named-consent failure meanings and nil/blank mapping remain fixed; no diagnostic framework feature is added. Publication denial can suppress any selected branch. Generic discovery/resource design and bound-driven home coverage remain pending their separate review, native acceptance and human decision.",
+    "title": "Search coverage meanings and open discovery obligations",
+    "status": "Designed · discovery repair and separate transport review pending",
+    "summary": "Groups count affected anchors: frontier/depth bounds omit descendants while names can match; invalid/overlong names are omitted too. REMAINDER describes unfinished work with or without progress; DIAGNOSTIC_LIMIT is total room and VALUE_LIMIT an individual path. Preboot admission, traversal/diagnostic growth and application identity need repair and review before planning. Typed BLOCKED retains null matches/dependency and exact coverage without a search execution error, including aliases and coverage-only queries; PROMPT_RISK has UNKNOWN consent. Existing failure mapping and live publication checks remain fixed. Native acceptance and the measured home-coverage decision remain pending.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Settled BLOCKED as null matches/dependency without an execution error and made publication denial explicit."
+        "summary": "Clarified group anchor names, no-progress remainders and diagnostic/path reasons; made the open admission/traversal obligations visible."
       },
       {
         "id": "search-handoff",
-        "summary": "Added the client’s blocked-scope/unknown-consent display before any AVAILABLE selection."
+        "summary": "Made the pending one-choice application identity design visible while preserving BLOCKED guidance and constrained actions."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Typed prompt-risk BLOCKED data, default discovery, bounded root scheduling and exact coverage groups, with location handoff and measured native evidence. Load-bearing reviews and runtime/default coverage remain pending."
+      "description": "Exact coverage group/remainder meanings and typed BLOCKED data, with location handoff and measured native evidence. Discovery admission/traversal/application identity require repair and review; separate transport review and runtime/default coverage remain pending."
     },
     {
       "id": "workspace",
@@ -72,7 +72,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Real native/work failure precedes prompt risk, then pure absence/exclusion when no progress. BLOCKED is typed data: null matches/dependency, false resultsTruncated and no search execution error, including aliases/coverage-only selections; PROMPT_RISK has UNKNOWN consent and null osPermission. Other root reasons remain exact; optional absent defaults keep COMPLETE empty domains. Named-consent failures retain their existing error meaning. Live publication denial can suppress status, coverage or matches through normal propagation. Five generic application roots, checked .app links, counted groups/remainders and independent budgets remain designed; actual calls/layouts and bound-driven baseline acceptance are pending."
+      "caption": "Designed flow, not runtime acceptance. Groups count affected anchors, never all children: frontier/depth names remain matchable, invalid/overlong child names are omitted. REMAINDER applies with or without progress, at the resolved root or representable requested root; no-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT identifies total record/byte room; VALUE_LIMIT is an individual path bound. Cryptex admission, FIFO frontier/parent diagnostic growth and application identity require repair and review before planning. Real no-progress native/work failure precedes BLOCKED prompt risk, then pure absence/exclusion. BLOCKED keeps null matches/dependency, false truncation and no search execution error; consent is UNKNOWN. Publication denial can suppress branches; optional absent defaults keep COMPLETE. Native and bound-driven baseline acceptance remain pending."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. Clients inspect status, coverage and errors before choices: BLOCKED displays the skipped scope and UNKNOWN consent, never healthy empty or missing named consent. Only AVAILABLE provides selectable locations. INSTALLED with a known identifier enables constrained launch; UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. A checked .app link retains its observed name/path; action-time resolution compares native identity again. Clients own clipboard/MRU. Existing actions require both controls and revalidate presence/registration/payload; no selection pins a file or drops its path constraint. Runtime/native acceptance and protected-opening/reveal decisions remain separate."
+      "caption": "Designed location handoff. Discovery repair must settle a single application choice when link/canonical paths identify one bundle, including its representative observed spelling; path inequality alone does not establish separate installations. Clients inspect status, coverage and errors: BLOCKED displays skipped scope and UNKNOWN consent. Only AVAILABLE supplies choices. INSTALLED with a known identifier enables constrained launch; UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. Actions revalidate native identity, presence, registration and payload under both controls, never dropping the selected path constraint. Clients own clipboard/MRU. Runtime/native acceptance and protected-opening/reveal decisions remain separate."
     },
     {
       "id": "search-discovery",

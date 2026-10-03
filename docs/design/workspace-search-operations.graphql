@@ -1,6 +1,7 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Discovery/coverage and typed BLOCKED await review; all runtime acceptance pending.
+# Discovery admission/traversal/application identity need repair and review.
+# Typed BLOCKED awaits its separate review; all runtime acceptance pending.
 # Result-count truncation and partial traversal are independent.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
@@ -89,5 +90,10 @@ query InspectAliasedMatches($roots: [String!]) {
 
 # Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
 # CHILD_GROUP/DESCENDANT_GROUP count observed anchors, not all children or
-# omitted descendant names. REMAINDER describes unfinished work, not the whole
-# root, and has count null. Inspect completedDirectories as EOF observations.
+# omitted descendant names. FRONTIER_LIMIT/DEPTH_LIMIT anchor names can match;
+# UNREPRESENTABLE_NAME/overlong-path VALUE_LIMIT anchors cannot be returned.
+# REMAINDER describes unfinished work with or without progress, not the whole
+# root, and has count null. Anchor: resolved root, else representable requested
+# root. No-progress stops have UNKNOWN coverage and no searched record.
+# DIAGNOSTIC_LIMIT is total diagnostic room (count/bytes identified by guidance);
+# VALUE_LIMIT is an individual path bound. Inspect completedDirectories as EOF.

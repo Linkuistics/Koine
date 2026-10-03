@@ -76,8 +76,14 @@ roots and an honest report of what the mechanism cannot see.
    contract and independent exact-host/profile obligations; its producer cuts
    its own review. No new diagnostic ABI dependency is needed.
 
-Both producer/review repairs live in this node, so planning cannot run before
-they retire. The durable design marks both load-bearing reviews pending;
+`search-coverage-k100` triages the discovery review: scope/remainder/reason and
+constructible acceptance clarifications land in place, while `search-defaults-k101`
+repairs narrow Preboot admission, traversal/diagnostic aggregation and application
+identity before cutting its own load-bearing review. k99 reconciles any intervening
+shared-file edits without losing its separate BLOCKED transport responsibility.
+
+These producer/review repairs live in this node, so planning cannot run before
+they retire. The durable design marks discovery repair and transport review pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)

@@ -14,10 +14,13 @@ remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
 keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
-**Discovery and coverage design awaits its load-bearing review.** Generic system
-application roots and checked application-link metadata replace the incomplete
-defaults. Counted scope groups and independent root budgets replace a traversal
-log that could exhaust diagnostics inside the first root. The
+**Discovery design requires repair before planning.** Its review found that
+read-only Cryptex admission excludes the recorded Safari location, parent-keyed
+frontier/depth diagnostics can still stop a realistic home scan, and exact-path
+deduplication can return two routes to one installation. The
+[open discovery obligations](#discovery-obligations-before-planning) require a
+fresh design and load-bearing review. Counted intrinsic groups and independent
+root budgets retain their observation contract. The
 [coverage decision](../adr/search-coverage-describes-observations.md) explains
 the public granularity trade-off. These are design obligations, not native
 acceptance or Antony's acceptance of reduced workflow coverage. Prompt-risk
@@ -25,6 +28,37 @@ transport uses schema-level BLOCKED with null matches and no execution error;
 its load-bearing review is pending. Preserve the outcome precedence below. Protected-home
 acceptance must assess measured bound-driven omissions alongside protected
 scope before the baseline closes. Arbitrary native-order samples are not accepted.
+
+## Discovery obligations before planning
+
+The following defects require a new producer design and load-bearing review,
+not conditional implementation acceptance of the rules below:
+
+- Replace read-only mount admission with a narrowly identified startup Cryptex
+  application region. The retained [mount inventory](../verification/protected-path-metadata/environment.json)
+  describes Preboot as local APFS without read-only; the retained
+  [Safari witness](../verification/open-url-vm/results.json) resolves there.
+  Neither accepting all local APFS nor silently dropping Safari
+  meets the agreed application workflow.
+- Settle traversal order and frontier/depth diagnostic aggregation together.
+  Four-stream FIFO scheduling can accumulate 4,096 queued directories; each
+  rejected parent then consumes the 96 KiB nonreserved coverage partition.
+  Root summaries remove ordinary-directory/intrinsic diagnostic growth, but
+  exceptional parent groups can still stop deeper discovery with
+  DIAGNOSTIC_LIMIT. Weigh depth-bounded traversal and root-level aggregation,
+  including retained state, reopened paths and visible omissions. Larger
+  arbitrary cutoffs do not establish useful home coverage.
+- Settle application deduplication by observed bundle identity, representative
+  spelling, ranking and root membership. A checked link and a canonical-root
+  path may identify one installation. Exact returned-path deduplication below
+  does not merge those routes. Identifier equality alone does not merge actual
+  separate copies. File choices retain their location semantics.
+
+These open choices do not approve a smaller domain or native-order sampling.
+The useful default Safari/Finder and measured home-coverage cases remain
+mandatory; protected and bound-driven omissions still need the existing
+operator decision. The admission, traversal and application path rules below
+describe the unrepaired proposal, not a settled implementation contract.
 
 ## Mechanism and alternatives
 
@@ -88,9 +122,12 @@ Application defaults, in coverage order, are `/Applications`,
 `/System/Library/CoreServices`, and `/System/Cryptexes/App/System/Applications`.
 These are generic discovery regions, not a catalogue of configured identifiers.
 Nested ordinary directories are searched; application/package contents are not.
-CoreServices includes Finder and its Applications subdirectory on the inspected
-layout. The Cryptex root admits relocated system apps; a visible `.app` symlink
-in another root can identify one without traversing its contents. The first two
+Finder beneath CoreServices and relocated apps beneath the Cryptex region are
+layout premises awaiting actual-adapter acceptance, as is a visible `.app`
+symlink identifying one without traversing its contents. The durable
+[Safari registration](../verification/launcher-apps/inventory.json) and
+[open-URL witness](../verification/open-url-vm/results.json) place Safari in
+Preboot; neither establishes discovery or the link route. The first two
 roots' one-level listing is measured; added roots, recursion and link metadata
 require signed-host acceptance. Layouts outside these roots/checked links remain
 outside the default domain even if Launch Services knows them.
@@ -119,7 +156,9 @@ The latter may be a distinct local read-only system APFS mount: allow that known
 presentation region only when public mount metadata establishes local, read-only
 APFS without removable/network classification. An arbitrary read-only mount is
 not a system-app region. Unknown classification blocks inspection. This new
-admission needs VM acceptance; file search gains neither region nor general
+admission contradicts the recorded read-write Preboot layout and must be
+replaced before planning (see the open obligations below); a read-only test
+alone cannot provide Safari reachability. File search gains neither region nor general
 system-volume traversal. Search does not admit `/` as a broad traversal root, another user's home, or arbitrary
 system directories. Outside these supported regions report UNKNOWN with
 `UNSUPPORTED_SCOPE`, without enumeration. Mount identity is established by
@@ -144,7 +183,7 @@ entries themselves are not matches. A root's own name is not a match.
 
 Application-only link exception: a visible symbolic-link name ending in
 ASCII-case-insensitive `.app` is a metadata candidate, never a directory task.
-Resolve with the measured metadata route before bundle inspection; check both
+Resolve with native metadata before bundle inspection; check both
 spellings against protected/cloud policy, admitted regions and volumes. Check
 link and target identities before/after inspection; observed change refuses
 that candidate with `CHANGED_DURING_SEARCH`. Only a present application target
@@ -158,6 +197,16 @@ blocked target inspection records an affecting ENTRY diagnostic and cannot
 produce COMPLETE empty coverage. Known non-app targets are not app matches.
 Other links retain intrinsic descendant exclusion. This new application-link
 route has no inferred prompt-free guarantee; signed-host acceptance is pending.
+Native resolution itself precedes canonical-target policy classification.
+The metadata evidence covers only its Desktop/Documents/Downloads fixtures;
+it does not establish resolution into sensitive Library areas as prompt-free.
+Check an already recognized protected/cloud spelling before any resolution,
+then the resolved target before bundle inspection or traversal. A literal link
+target whose policy cannot be established without resolution gains no exemption.
+Acceptance must inspect every actual resolution call for a link into a named
+TCC-protected Library area, such as Mail data, including component/link aliases.
+A dialog or hydration request leaves this route pending and requires redesign;
+never probe consent through a product read.
 
 Protected policy takes precedence over hidden/package exclusions. Before any
 listing, block Desktop, Documents and Downloads under Koine's home and their
@@ -213,25 +262,33 @@ Skipped records have a separate extent vocabulary:
 | --- | --- |
 | `ENTRY` | The named entry's inspection/matching was omitted or uncertain; says nothing about children. |
 | `SUBTREE` | This named directory's eligible descendants were not searched. Synthetic policy scopes assert no existence. |
-| `CHILD_GROUP` | Exactly `count` encountered child anchors of this representable parent have this reason; identities are withheld. A directory anchor's descendants are omitted too, but are not counted. Never asserts that all children were skipped. |
+| `CHILD_GROUP` | Exactly `count` encountered child anchors of this representable parent are affected by this reason; identities are withheld. FRONTIER_LIMIT/DEPTH_LIMIT omit only eligible descendants: the anchor name can be examined and matched. UNREPRESENTABLE_NAME or overlong-path VALUE_LIMIT omit the anchor's inspection/matching and any descendants. Descendants are not counted. Never asserts that all children were skipped. |
 | `DESCENDANT_GROUP` | Exactly `count` encountered intrinsic-exclusion anchors somewhere beneath this root have this reason; identities are withheld. Counts anchors, not descendant names; asserts neither a complete listing nor whole-subtree exclusion. |
 | `REMAINDER` | Eligible work beneath this root unfinished at freeze: unread stream tails, queued/unopened directories and unfinished metadata. Excludes established observations without enumerating them; never asserts the whole root was skipped. Its size is unknown. |
 
 `count` is positive only for the two GROUP extents, null otherwise. A group
 contains an observed set, not every same-reason entry in an unread directory.
 Group records require identical reason, guidance and `affectsCoverage`.
-CHILD_GROUP never carries permission: prompt risk needs an exact ENTRY/SUBTREE
+CHILD_GROUP carries only FRONTIER_LIMIT, DEPTH_LIMIT, UNREPRESENTABLE_NAME or
+overlong-path VALUE_LIMIT, never permission: prompt risk needs an exact ENTRY/SUBTREE
 target. Ordinary hidden, package, symlink-descendant and special-file anchors
 coalesce into one DESCENDANT_GROUP per reason/root. A package or symlink anchor
 may itself be a file match. A directly excluded root/optional absence uses
 ENTRY or SUBTREE, not a zero-count group. Unrepresentable children use CHILD_GROUP
 at their representable parent, never replacement bytes or parent SUBTREE.
 Representable candidate failures use ENTRY; other eligible child-subtree skips
-use SUBTREE or CHILD_GROUP at their actual parent. Different parents/targets
+use exact SUBTREE records. Different parents/targets
 remain separate. The four synthetic protected scopes stay explicit.
-One stop cause per root uses its pre-reserved REMAINDER; specific earlier
-failures/policy survive. Partial searched observations and a remainder anchored
-at the same root are compatible assertions.
+One stop cause per root uses its pre-reserved REMAINDER, with or without progress;
+specific earlier failures/policy survive. Anchor it at the resolved root when
+established within bounds, otherwise at the representable requested root.
+TIME_LIMIT (including an unopened root or blocked first listing), CAPACITY_LIMIT,
+ENTRY_LIMIT and DIAGNOSTIC_LIMIT stops use REMAINDER. An individual overlong
+resolved root uses VALUE_LIMIT/REMAINDER at the requested root, resolvedPath null.
+No-progress stops have UNKNOWN coverage, zero searched records and null count;
+the no-progress aggregate failure rule applies. A remainder identifies unfinished
+eligible work, not proof that the whole root was skipped or its domain established.
+Partial searched observations and a remainder at the same root are compatible.
 
 | Root state | Meaning |
 | --- | --- |
@@ -376,7 +433,10 @@ as UNKNOWN with a null identifier for reveal/path-copy, and cannot form a launch
 selector. Report missing/failed application metadata as partial coverage, not
 proof of absence. Inspect both public per-identifier registration answers as
 the existing constrained selector does; registrations alone do not prove presence.
-Separate paths with the same bundle identifier remain separate installations.
+Under the provisional exact-path rule, separate returned paths remain separate
+choices; the same identifier does not establish either one installation or
+separate installations. The application-identity obligation above must settle
+checked-link/canonical duplicates before planning.
 There is no exhaustive enumeration of Launch Services registrations.
 
 File matches carry absolute `path`, final filename `name`, `kind` (including
@@ -456,11 +516,17 @@ Nonintrinsic exceptions are keyed by exact path/extent/reason; CHILD_GROUP by
 parent/reason. Updating a group consumes no new record. Before inspecting the
 next entry, keep the stop reservation available. If a required new exception
 would exceed the remaining record/byte partition, stop this root, preserve every
-previous diagnostic and write DIAGNOSTIC_LIMIT/VALUE_LIMIT into the reserved
-REMAINDER. It covers that entry's uncommitted outcome and all remaining work,
+previous diagnostic and write DIAGNOSTIC_LIMIT into the reserved REMAINDER for
+either total coverage-byte or record-count exhaustion. Fixed guidance identifies
+which account was exhausted (record count takes precedence if both would fail).
+VALUE_LIMIT is reserved for an individual path exceeding its explicit value
+bound, not total diagnostic space. The reserved remainder covers that entry's
+uncommitted outcome and all remaining work,
 not a falsely universal parent SUBTREE. Mandatory diagnosis always wins; no
 match can consume coverage space. Ordinary directories add counters, not
 records; intrinsic omissions use four root groups, not one record per package.
+Exceptional parent groups still grow with encountered parents and can exhaust
+diagnostics; their interaction with traversal is an open obligation above.
 
 The scheduling unit is at most 64 entries of one directory, including its
 classification and any candidate metadata. Visit admitted unfinished roots
@@ -480,7 +546,8 @@ A newly encountered directory is queued only within the frontier count/byte
 budget. Otherwise record FRONTIER_LIMIT as CHILD_GROUP at its parent, affecting
 coverage, and keep scanning names/other tasks. Do not silently evict an earlier
 task or retain an unbounded directory array. Depth refusal similarly uses
-DEPTH_LIMIT at the parent; each group counts omitted directory anchors. Pending
+DEPTH_LIMIT at the parent; each group counts directory anchors whose descendants
+were omitted, not omitted anchor names. Those names remain eligible matches. Pending
 tasks store bounded paths, fixed-width inspected device/inode identity and
 bounded classification flags, not opaque expanding metadata or live descriptors.
 Reopen via checked no-follow component walks and revalidate policy/identity;
@@ -542,7 +609,7 @@ latency and resultsTruncated, and compare individual known names, not totals.
 | Layout / query | Expected contract outcome when work completes before the deadline |
 | --- | --- |
 | Application root: 32 branches × 96 leaf directories × 3 ordinary files, plus 150 app bundles and 75 hidden entries; query a known app | 12,545 entries, 3,105 EOF listings, at most 3,072 pending leaf tasks (under 4,096), COMPLETE eligible domain with one SUBTREE searched record and two intrinsic groups, plus the known installed/unregistered match. App/package contents add no frontier tasks. Long paths must separately fit the 2 MiB frontier account. |
-| Home: Development with 32 projects × 96 ordinary leaf directories, each with 3 files and one hidden entry; five home anchors including four protected policy names | 15,397 entries, 3,106 EOF listings; one OBSERVED_DESCENDANTS summary, explicit four protected scopes and one hidden-anchor group. PARTIAL due to policy, not DIAGNOSTIC_LIMIT. Known ordinary filenames at different branches/depths are found. This domain still needs Antony's decision. |
+| Home: Development with 32 projects × 96 ordinary leaf directories, each with 3 files and one hidden entry; five home anchors including four protected policy names | 15,397 entries, 3,106 EOF listings; one OBSERVED_DESCENDANTS summary, explicit four protected scopes and one hidden-anchor group. In this constructed layout under the frontier/byte ceilings, PARTIAL is due to policy, not DIAGNOSTIC_LIMIT. Known ordinary filenames at different branches/depths are found. This says nothing about a wider/deeper real home; its domain still needs Antony's decision. |
 | First application root has 100,001 nonmatching entries; later defaults contain the required real apps | First root PARTIAL/ENTRY_LIMIT; each responsive later root gets turns/its own credits and returns its app matches. Entry exhaustion alone cannot mark later roots unscheduled. The shared time/native-stall limit can, and must show TIME_LIMIT/REMAINDER there. |
 | One directory has 5,000 ordinary child directories | Names can all be examined but some child anchors exceed the frontier; PARTIAL/FRONTIER_LIMIT CHILD_GROUP at that directory with the exact rejected count. If other streams finish tasks during enqueue, count follows that deterministic observed schedule, not a claimed fixed 904. |
 | Complete directory has 250 matching ordinary files; limit 50 | COMPLETE/SUBTREE, best 50 returnable paths, resultsTruncated true. A partial scan with no omitted observed match can instead have resultsTruncated false. |
@@ -592,7 +659,9 @@ none. The accumulator, root coverage partitions (at most 4 MiB), match slots
 (at most 3.125 MiB) and frontier partitions (at most 32 MiB) belong to that admitted job,
 even if its response wait ends. Four admitted jobs can retain those accounts
 until native cleanup, without replacement slots after provider restart. These
-are explicit ceilings on charged structures, not a hard RSS guarantee. No
+accounts total about 39 MiB per job and 157 MiB for four retained
+jobs, plus bounded scratch; blocked calls can retain all four. They are explicit
+ceilings on charged structures, not allocated memory or a hard RSS guarantee. No
 Foundation `contentsOfDirectory` or `scandir` sorting array or complete-directory
 materialization is used for traversal.
 
@@ -627,6 +696,11 @@ GraphQL UTF-8 strings. Never replace undecodable bytes and return a different
 location. Omit such an entry and its descendants with `UNREPRESENTABLE_NAME`
 as a CHILD_GROUP at its representable parent, affecting coverage; an unrepresentable
 resolved root fails inspection rather than becoming a fabricated path.
+Malformed bytes are mandatory controlled-adapter cases, including valid siblings
+and an unrepresentable resolved root. The admitted APFS VM supplies lossless
+valid-name/path witnesses; no invalid-byte filesystem fixture is required or
+admitted merely to manufacture a native pass. This does not assert a universal
+APFS encoding guarantee. Unsupported raw-byte filesystems remain excluded.
 
 ## Selection and action handoff
 
@@ -719,10 +793,10 @@ pending implementation/acceptance:
 
 | Case | Public GraphQL expected observation | Native binary expected observation | Signed hardened VM expected observation |
 | --- | --- | --- | --- |
-| Default Safari/Finder and a different system-app layout | Omitted/null roots expose all five defaults in order; Safari/Finder have observed paths, nonblank identifiers, INSTALLED after established registration; both feed constrained launch. A positively absent Cryptex optional root is COMPLETE/OPTIONAL_ROOT_ABSENT; explicit absence is UNKNOWN/ROOT_NOT_FOUND. | Exact search SDL includes the new extents/counts/default descriptions; unchanged action-only compatibility host/profile remains exact. Search values survive the real provider boundary without a second namespace. | Required real apps installed; Safari link and Finder CoreServices path are found under default search without dialogs/launch. Known app paths/identifiers and subsequent authorized actions have independent witnesses. Another supported system layout uses the generic roots/link rule, not app-name exceptions. Missing layout/call evidence stays pending. |
-| Application links/aliases | A registered .app target yields the link name/path; unregistered target yields UNREGISTERED; denied/protected/dangling or changed target cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities and both registration answers. Path and identifier handoff remains unchanged. | Actual target/link metadata and mount checks inspected; link to Desktop/Documents/Downloads/Library is blocked before traversal; no alias resolution, default-handler lookup, registration or content/hydration request. Cryptex mount admission and races use actual adapter; no new signing keys/entitlements. |
-| Wide realistic layouts / later-root scheduling | The above known names/states/counts hold for completed work; no per-directory diagnostic cutoff. Later roots have independent budgets; response exposes any real timeout/remainder rather than claiming they were searched. | Real bundle with controlled responsive streams verifies 64-entry cyclic root/directory scheduling, 4-stream/4,096-task quotas and all byte ceilings. The pending exact search-required profile detects missing fields; action-only pins unchanged. | Run both layouts and large first/single directories in the actual host, record per-root coverage/latency/name witnesses. Expected known names in responsive later roots are present by response freeze. Failure to reach them is pending acceptance, never a conditional pass from local counts. |
-| Exact scope groups / exhaustion | A parent with two invalid names and valid siblings has CHILD_GROUP count 2, not SUBTREE; intrinsic groups count encountered anchors only. Stop produces REMAINDER with null count and OBSERVED_DESCENDANTS after progress; no-progress roots have no searched record. Match truncation is independent. | Controlled entries/EOF verify group keys/count nullability, four reserved policy targets, byte charging at each string occurrence, all sixteen rootIndices, count/value/diagnostic/frontier/depth limits. Exhaustion preserves earlier records; match slots cannot consume diagnostic reservation. | Invalid native name bytes, many packages/hidden entries, long paths, frontier/depth/diagnostic exhaustion and cancellation exhibit the same observable records without replacement paths. Actual native names and adapter calls are inspected, not simulated as native proof. |
+| Default Safari/Finder and controlled alternate layouts | Omitted/null roots expose all five defaults in order; Safari/Finder have observed paths, nonblank identifiers, INSTALLED after established registration; both feed constrained launch. A positively absent Cryptex optional root is COMPLETE/OPTIONAL_ROOT_ABSENT; explicit absence is UNKNOWN/ROOT_NOT_FOUND. | Controlled adapter supplies alternate canonical anchors, absent optional region and real distinct copies versus two routes to one bundle, under the repaired identity/admission design. Exact search SDL and unchanged action-only compatibility subjects remain required. | Required real apps installed; actual Safari and Finder paths are found under default search without dialogs/launch, after the open admission/identity obligations are repaired. Known paths/identifiers and actions have independent witnesses. Test another layout when a concrete supported VM subject exists; otherwise record that condition as not applicable with OS/layout evidence, without claiming native proof of alternate layouts. Actual default/call cases remain mandatory and pending. |
+| Application links/aliases | Under the repaired representative-spelling rule, registered .app targets yield INSTALLED and unregistered targets yield UNREGISTERED; denied/protected/dangling or changed targets cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities and both registration answers. Path and identifier handoff remains unchanged. | Inspect actual target/link metadata, resolution order and mount checks. Include links to Desktop/Documents/Downloads and a named protected Library sub-area (Mail data), with component aliases. No protected traversal, alias-file resolution, default-handler lookup, registration writes or content/hydration request. Resolution itself must be prompt-free under actual signed Koine; earlier metadata evidence does not establish it. Cryptex admission/races use the actual adapter; no new keys/entitlements. |
+| Wide realistic layouts / later-root scheduling | The above known names/states/counts hold for completed work. The repaired traversal/aggregation must avoid a parent-diagnostic cutoff determining a native-order sample. Later roots have independent budgets; real timeout/remainder never claims they were searched. | Real bundle with controlled responsive streams verifies the repaired schedule/frontier/diagnostic rules and all byte ceilings, including more rejecting parents than fit the current 96 KiB partition and a deep name witness. Exact search-required profile detects missing fields; action-only pins unchanged. | Run constructed layouts, realistic wide/deep home trees and large first/single directories in the actual host; record per-root coverage/latency and shallow/deep/later-root name witnesses. Failure to reach required names is pending acceptance, never a conditional pass from local counts. Bound-driven omissions go to the existing human decision. |
+| Exact scope groups / exhaustion | Two malformed adapter names with valid siblings have CHILD_GROUP count 2, not SUBTREE. FRONTIER_LIMIT/DEPTH_LIMIT names remain matchable while descendants are omitted; VALUE_LIMIT/UNREPRESENTABLE_NAME anchors are omitted too. Stop produces REMAINDER/null count with or without progress, resolved/requested anchor as specified; only progress adds a searched record. DIAGNOSTIC_LIMIT identifies total diagnostic room, VALUE_LIMIT an individual path. Match truncation is independent. | Controlled entries/EOF verify those reason/extent pairs, no-progress timeout/capacity/overlong-root stops, group keys/count nullability, four reserved policy targets, per-occurrence charging and all sixteen rootIndices. Record-count and byte exhaustion both use DIAGNOSTIC_LIMIT with distinct fixed guidance. Include malformed resolved roots, deep/wide layouts and every bound. Earlier records survive; matches cannot consume diagnostic reservation. | Use valid admitted APFS names, packages/hidden entries, long paths, actual frontier/depth/diagnostic exhaustion and cancellation, without replacement paths. Inspect actual native names/calls. Malformed-byte cases are controlled-adapter obligations, not an unconditional native VM fixture; unsupported volumes are not substitutes. |
 
 Home protected traversal remains a live baseline gap: any change to consent,
 entitlements or setup needs Antony's decision before reliance. The already live
