@@ -1,7 +1,7 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Discovery review reopened traversal order/process-wide descriptors; replacement
-# and its load-bearing review precede planning. Native/canonical/cleanup acceptance pending.
+# FIFO breadth-first traversal and process-wide descriptor credits are designed;
+# their load-bearing review precedes planning. Native/canonical/cleanup acceptance pending.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
 
@@ -97,11 +97,14 @@ query InspectAliasedMatches($roots: [String!]) {
 # Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
 # CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
 # those anchor names cannot be returned. DESCENDANT_GROUP counts intrinsic
-# or depth-bound anchors beneath the root: each DEPTH_LIMIT anchor increments
+# or depth/frontier-bound anchors beneath the root: each DEPTH_LIMIT anchor increments
 # the count, even when empty/unlisted; names remain matchable.
-# Neither count describes all children or omitted descendants. No queue-width
-# FRONTIER_LIMIT is produced by the reopened DFS proposal; the replacement
-# must reconcile any frontier group/reason.
+# FRONTIER_LIMIT separately counts observed anchors whose descent task cannot
+# fit; names remain matchable and sibling examination continues. Neither count
+# describes all children or omitted descendants. Depth takes precedence over frontier.
+# The per-root FIFO finishes a shallower level before deeper admitted work.
+# Atomic worker/descriptor credit refusal gives CAPACITY_LIMIT to every root
+# before opens, not permission absence. Native resource failure is INSPECTION_FAILED.
 # App links discover canonical target names/paths, not alias-named choices;
 # link/direct routes merge by native bundle identity and combine rootIndices.
 # Distinct native copies sharing an identifier stay distinct. File links are locations.

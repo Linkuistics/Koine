@@ -37,27 +37,28 @@ The search design is `docs/specs/workspace-search.md`, with the separate additiv
 Every search root/output field needs workspace read only; existing action
 receipts keep both controls. Planning consumes the design reviews and producer decisions before cutting
 implementation. The revised discovery contract has fixed-region Preboot admission
-without read-only dependence, depth-first held streams with cyclic root turns and
-reserved root depth counts, and canonical target names/paths ranked independently
-of link/direct discovery routes. Native bundle identity merges one app installation
-while separate copies sharing an identifier stay distinct. `search-defaults-k101`
-cuts its load-bearing review before planning; real Safari/Finder, protected
-Library-link resolution, useful home coverage and descriptor pressure remain
-pending. Invalid/overlong children keep actual-parent groups; depth uses one root
+without read-only dependence, per-root FIFO breadth-first work with cyclic
+64-entry/32-transition turns, one current stream/root and a 512-task/384 KiB
+pending queue. Separate reserved depth/frontier groups count observed matchable
+anchors; frontier overflow omits descent while sibling names continue. Canonical
+target names/paths and native bundle identity keep route-independent ranking.
+`search-traversal-k105` supplies atomic process-wide worker/descriptor admission:
+roots + 2 credits/job from min(72, max(0, soft RLIMIT_NOFILE − 128)), no limit
+change. Four maximum-root jobs hold at most 72 owned credits. Its mandatory
+load-bearing review must retire before planning. Normally launched host
+listener/store/action serviceability, opaque metadata opens, real Safari/Finder,
+protected Library-link calls and useful home coverage remain pending. Invalid/overlong children keep actual-parent groups; depth uses one root
 group with matchable anchors. Stops use REMAINDER with or without progress.
 Prompt-risk transport is reviewed typed BLOCKED success/null data, with k103's
 changed/uncertain-root precedence, lifecycle-error exemptions and explicit
 verification-consumer migration. Search 1.1.0 declares both authority/selection
 features; current search checks/newer fixtures and retained action-only subjects
 stay separate, with binary/runtime acceptance pending.
-k104's discovery triage reopens traversal order/process descriptor admission in
-`search-traversal-k105`, with a mandatory load-bearing review before planning.
-DFS loses later shallow home names at the entry budget; root-local descriptor
-refusal cannot protect the listener/store/actions. Worker-only cleanup, fresh
-parent-location checks, unified canonical paths, charged policy witnesses and
-unknown Preboot failure wording are repaired in place with native acceptance
-pending. The current stack/descriptor figures are proposal shapes, not safe
-process allowances. Fixed framework meanings stay unchanged and no diagnostic
+k104's worker-only cleanup, fresh parent-location checks, unified canonical
+paths, charged policy witnesses and unknown Preboot failure wording remain.
+FIFO queued tasks use fresh checked component walks and retain path/identity
+charges across freeze; job credits release only after worker cleanup. Bound-driven
+omissions are explicit, not accepted workflow weakening. Fixed framework meanings stay unchanged and no diagnostic
 ABI addition is needed.
 Preserve action-only conformance against
 an independently retained workspace 1.0.0 compatibility host while adding a

@@ -138,15 +138,18 @@ completeness could not be established.
 **Search scope group**: A counted set of encountered scope anchors sharing an
 exclusion reason, with child identities withheld; the reason determines whether
 anchor names or only descendants are omitted. CHILD_GROUP invalid/overlong-name
-anchors belong to the named parent; DESCENDANT_GROUP intrinsic/depth-bound
-anchors lie beneath the named root (depth anchors remain matchable, including
+anchors belong to the named parent; DESCENDANT_GROUP intrinsic/depth/frontier-bound
+anchors lie beneath the named root (depth/frontier anchors remain matchable, including
 empty directories whose EOF was not observed); counts never
-mean all children or omitted descendant names.
+mean all children or omitted descendant names. FRONTIER_LIMIT counts observed
+directory anchors whose pending descent cannot fit the bounded queue; it omits
+descendants without stopping examination of sibling anchor names.
 
 **Search remainder**: Eligible work unfinished when a search freezes, with or
 without **Search progress**, including unopened roots, unread tails and
-unopened descent and held-stream/unfinished inspection. It excludes established
-observations without identifying them and never means the whole root was skipped.
+queued/unopened descent and held-stream/unfinished inspection. It excludes established
+observations and diagnosed depth/frontier omissions without identifying them and
+never means the whole root was skipped.
 
 **Search progress**: Examination of an entry or observation of an empty
 directory's end, used to distinguish an available partial search from one

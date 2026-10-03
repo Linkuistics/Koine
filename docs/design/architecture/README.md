@@ -7,6 +7,7 @@ exports:
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
+- [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
 - [first-party candidate selection](index.html#diagram-provider-selection) and
@@ -36,16 +37,21 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel reports traversal/resource redesign and the native
-ownership repairs alongside reviewed transport/compatibility subjects.
+The current-discussion panel presents per-root FIFO breadth-first traversal and
+atomic process-wide descriptor admission alongside reviewed transport/compatibility.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require replacement traversal order/process-wide descriptor admission and its
-load-bearing review before planning. DFS spends the entry budget inside an early
-branch before later shallow names, and its streams can exhaust resources shared
-with listener/store/actions. Those are defects to repair, not accepted limits.
-Worker-only cancellation cleanup, current-parent pre-open checks and charged
-protected/cloud witnesses retain actual-call acceptance. The canonical-path,
-Safari/Finder, protected Library-link and useful-home subjects remain pending.
+require its load-bearing review before planning. Finish shallower admitted
+listings before deeper ones, with one current stream/root and a 512-task/384 KiB
+pending queue. Frontier overflow counts matchable anchors in one reserved root
+group and continues sibling-name examination; depth has a separate group.
+The shared account reserves roots + 2 credits/job below the inherited soft limit,
+leaving 128 descriptors outside owned search credits and capping those at 72.
+Worker-only cleanup retains streams, paths and credits after blocked-call freeze.
+Fresh checked component walks and current-parent checks precede opens; residual
+prompt risk and opaque platform descriptors remain native acceptance obligations.
+Normally launched signed-host listener/store/action serviceability must pass;
+static arithmetic is insufficient. Safari/Finder, protected Library-link calls,
+useful home coverage and measured omissions remain pending.
 Canonical target names/paths make app ranking independent of link/direct route;
 native bundle identity merges one installation without merging distinct copies
 with equal identifiers. Reviewed BLOCKED transport keeps null matches and
@@ -74,23 +80,14 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views:
 
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Marks DFS
-  order/shared descriptor admission for replacement; charges all policy witnesses,
-  counts depth anchors themselves and requires worker-only cleanup/current-parent checks.
-- [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  Unifies admitted root/frame/bundle path production and firmlink file-location
-  deduplication while retaining native identity and both-control action handoff.
-- [Search contract → resource accounting](../../specs/workspace-search.md#resource-accounting-and-scheduling) —
-  Distinguishes proposed stack shapes from a safe process descriptor allowance;
-  enumerates fifteen region/mount/protected/cloud witnesses and temporary copies,
-  with job-wide pre-turn account refusal and constructible cancellation subjects.
-- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) —
-  Reconciles root/frame/bundle canonical spelling without alias-dependent app rank/history.
-- [Coverage decision](../../adr/search-coverage-describes-observations.md) —
-  Reopens traversal/resource choice, preserving public group granularity and worker-owned cleanup.
-- [Search transport and compatibility](../../specs/workspace-search.md#compatibility-subjects-and-diagnostic-acceptance) —
-  Classified no-progress changed/uncertain roots, retained lifecycle errors beside
-  status and separated current search checks/update fixtures from historical subjects.
+- [Search → finish shallow names before bounded descent](index.html#diagram-search-traversal) — Adds FIFO order, separate descent-bound groups, fresh component walks and shared descriptor credits.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Replaces the reopened DFS path with FIFO work and matchable frontier anchors; adds atomic admission and worker-owned credit cleanup.
+- [Search → selection and action handoff](index.html#diagram-search-handoff) — Names the revised traversal/account and frontier omissions while retaining canonical identity and both-control actions.
+- [Search contract → resource accounting](../../specs/workspace-search.md#resource-accounting-and-scheduling) — Defines the exact order property, queue count/byte charges, unchanged coverage reservation and the iterative-deepening trade-off.
+- [Search contract → process-wide descriptor admission](../../specs/workspace-search.md#process-wide-descriptor-admission) — Adds atomic whole-job credits, soft-limit/reserve rules, native refusal cohorts and explicit platform/serviceability limits.
+- [Search contract → capacity examples](../../specs/workspace-search.md#capacity-examples-and-acceptance-threshold) — Gives per-name shallow/deep/later-root subjects and exact wide/depth/descriptor outcomes under unchanged bounds.
+- [Coverage decision](../../adr/search-coverage-describes-observations.md) — Chooses FIFO frontier omissions over DFS shallow-name loss and iterative-deepening rescans; records process admission costs and revisit conditions.
+- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) — Includes queued-task paths in the unified canonical spelling rule.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -192,4 +189,18 @@ refusal branch, traversal-replacement labels, anchor counts, outcome branches
 and action arrows were readable without clipping. This checks static light
 presentation; the earlier Safari/dark/narrow-window checks do not validate this
 revision. Native calls, useful coverage and independent binary acceptance remain
-pending, along with traversal replacement and its load-bearing review.
+pending. That earlier presentation check does not validate later traversal revisions.
+
+The FIFO/descriptor revision was inspected in Safari on the isolated macOS
+26.5/25F71 clone `koine-k105-design`. Fresh traversal, coverage and handoff links
+identified their intended revised views; the focused traversal flow was readable
+at a 1900-pixel window width. Coverage's revised admission/traversal labels and
+handoff's search contract labels were checked in the browser. The 800-pixel dark
+discussion panel reflowed its proposal status, relevant links and three changed
+view summaries without clipping. Wide dark presentation retained readable SVG
+labels, including the light-background focused flow. The manifest and three
+changed exports had matching per-file SHA-256 values in the workspace and guest.
+This checks presentation only; source review, adapter/binary acceptance, no-dialog
+native calls, useful coverage and normally launched process serviceability stay
+pending. Render all four search views with `task design:search-render` (D2 0.9.0,
+Dagre); serve this directory with `task design:serve`.

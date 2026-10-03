@@ -105,7 +105,17 @@ and protect the shared process descriptor table without changing its limit.
 That producer must cut a load-bearing review; planning awaits that chain too.
 
 These producer/review repairs live in this node, so planning cannot run before
-they retire. The durable design marks discovery review and all runtime/binary acceptance pending;
+they retire. k105 now chooses FIFO breadth-first order with one stream/root, a bounded
+512-task/384 KiB pending queue and separately reserved FRONTIER_LIMIT group.
+Anchor names remain matchable and sibling scanning continues on overflow.
+Atomic roots + 2 descriptor credits/job share min(72, max(0, soft limit − 128))
+with the four-worker pool; no limit is raised. Worker cleanup retains every
+queue/stream/credit charge after freeze. Fresh checked component rewalks preserve
+k104 policy/canonical-path obligations. Native opaque opens and normally launched
+listener/store/action serviceability stay mandatory subjects. The producer cuts
+its mandatory load-bearing review before planning.
+
+The durable design marks traversal review and all runtime/binary acceptance pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)

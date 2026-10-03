@@ -153,9 +153,10 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workflow-targets.puml
 
   design:search-render:
-    desc: Render search evidence, coverage and handoff (D2 0.9.0, Dagre)
+    desc: Render search evidence, traversal/account, coverage and handoff (D2 0.9.0, Dagre)
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-traversal.d2 docs/design/architecture/search-traversal.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-coverage.d2 docs/design/architecture/search-coverage.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-handoff.d2 docs/design/architecture/search-handoff.svg
 

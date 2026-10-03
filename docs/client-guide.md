@@ -364,9 +364,9 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Review reopened traversal order and process-wide
-descriptor admission: DFS loses shallow home names and can exhaust resources
-shared with listener, store and actions. Their replacement and load-bearing review
+**Designed, not served yet.** Per-root FIFO breadth-first discovery and atomic
+process-wide descriptor credits preserve shallow-name order and bound owned
+search opens below the inherited soft limit with a non-search reserve. Their load-bearing review
 are [required before planning](specs/workspace-search.md#discovery-obligations-before-planning).
 Admission, canonical-path and cleanup repairs retain actual-adapter/default
 acceptance obligations. Typed BLOCKED transport is reviewed; runtime/binary
@@ -403,21 +403,29 @@ eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
 somewhere beneath that root. completedDirectories counts EOF listings, not an
 unchanged snapshot. Skipped CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
 the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
-depth-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
+depth/frontier-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
 group: each depth-32 anchor itself increments the count, even an empty directory
-whose EOF is not observed; names remain matchable and only descendants are omitted. Package
+whose EOF is not observed; names remain matchable and only descendants are omitted.
+FRONTIER_LIMIT separately counts observed directory anchors whose descent tasks
+cannot fit the 512-task/384 KiB traversal account. Their names remain matchable;
+sibling names continue to be examined. Depth precedes frontier. Package
 or symlink intrinsic anchors can also remain file matches. Neither says all children
 were skipped. REMAINDER has null count and describes unfinished work with or
 without progress, anchored at the resolved root or representable requested root.
 No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
 means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means an individual path bound. Independent root budgets prevent
-one root spending later roots' credits. The reopened DFS proposal has cyclic root
-turns and no directory queue, but an early enormous branch can consume the
-100,000-entry allowance before later shallow names. Native stalls, descriptor
-refusal and shared deadlines can also leave names unvisited. Honest partial
-coverage does not accept that workflow loss; the replacement must weigh
-shallow-first order and protect the process descriptor table. Exact native
+one root spending later roots' credits. Cyclic root turns finish shallower
+admitted listings before deeper ones within each root; depths across roots can
+differ. A root's 100,000-entry allowance can still cut a wide level short.
+Queue overflow, native stalls, descriptor refusal and the shared three-second
+wait can leave names unvisited. The owned search descriptor ceiling is
+min(72, max(0, soft limit − 128)); each job atomically reserves roots + 2 credits.
+Pre-turn worker/descriptor refusal gives every root CAPACITY_LIMIT; actual native
+open failure is INSPECTION_FAILED. All reservations survive blocked-call freeze
+until worker-only cleanup. Platform-internal opens and unrelated demand use
+the remaining table; normally launched host serviceability requires native
+acceptance. Honest partial coverage does not accept workflow omissions. Exact native
 failures/invalid names can still exhaust diagnostics. Home excludes protected traversal. In an
 error-free BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
@@ -467,11 +475,12 @@ Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.
 Only the worker closes its frames, after any blocked call returns; cancellation
-cannot reclaim even idle streams from another thread. The current proposal's
-four retained jobs can hold less than 53.782 MiB of charged result/stack/anchor
-values plus 0.5 MiB scratch. Its 512-stream-per-job shape is not an admissible
-allowance from the shared process table: a replacement descriptor account and
-non-search reserve are required before implementation. All policy witnesses are
+cannot reclaim even idle streams from another thread. Queued paths and whole-job
+descriptor credits also remain charged until cleanup. Four jobs hold less than
+54.282 MiB including scratch, with at most 72 explicitly owned descriptors
+(one stream/root plus two temporary opens/job). Atomic admission below the
+effective soft limit leaves a non-search reserve; opaque platform opens and
+unrelated demand still require normally launched native serviceability acceptance. All policy witnesses are
 charged; pre-turn anchor-account failure gives every root no-progress
 INSPECTION_FAILED. These are proposal/accounting ceilings, not native memory or
 useful-coverage acceptance; no descriptor-limit setup is implicit.

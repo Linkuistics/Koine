@@ -28,24 +28,22 @@ approve the other.
 - `app-and-file-search-k94` findings S1/S2 and `app-and-file-search-k95` triage:
   the original 512-record DFS proposal can stop inside /Applications and never
   visit later defaults. Default discovery/resource design must be reworked
-  before planning and acceptance. k101 now proposes five generic app roots,
-  fixed presentation-region/Preboot mount admission, canonical-target app names
-  and native bundle identity, cyclic 64-entry root turns and depth-first held
-  streams (32 frames/384 KiB per root, no width queue). One reserved root depth
-  group counts matchable anchors with omitted descendants. Exact failure and
-  invalid/value groups keep diagnostic limits; 100,000 entries and 512/256 KiB
-  coverage scopes per root, fixed match slots and the shared three-second wait
-  remain. Four jobs' reopened stack shape has less than 53.782 MiB retained charges plus
-  0.5 MiB scratch; 512 streams per job is not an admissible process allowance.
-  k102/k104 route early-branch shallow-name loss and shared descriptor exhaustion
-  to `search-traversal-k105`, which must replace the order/account and cut its
-  load-bearing review before planning. Normally launched host listener/store/action
-  serviceability and individual later shallow witnesses are mandatory subjects.
-  k104 repairs worker-only cancellation cleanup, pre-open parent-location checks,
-  unified canonical paths and fully charged protected/cloud witnesses; their
-  actual-call/no-dialog acceptance remains pending. Transport is reviewed;
-  compatibility/runtime subjects remain pending. No descriptor-limit setup is
-  approved. These limits are not accepted
+  before planning and acceptance. Current k105 design keeps five app roots,
+  fixed-region Preboot admission, canonical bundle names/identity and cyclic
+  64-entry/32-transition root turns. Per-root FIFO breadth-first work finishes
+  shallower admitted listings before deeper ones, one stream/root with a
+  512-task/384 KiB pending queue. Separate reserved depth/frontier groups count
+  matchable anchors; frontier refuses descent while sibling names continue.
+  Entry/coverage/match/wait bounds are unchanged. Four jobs' retained + scratch
+  charges remain <54.282 MiB; atomic roots + 2 credits/job share at most
+  min(72, max(0, soft limit − 128)) owned descriptor credits. This reserve bounds
+  explicit opens, not platform-internal/unrelated demand; normally launched
+  signed-host listener/store/action serviceability stays mandatory acceptance.
+  k105's load-bearing review precedes planning. Actual wide/deep/default/home,
+  component/canonical/no-dialog and independent binary acceptance remains pending.
+  Worker-only cleanup retains queue/stream/credit charges across blocked-call
+  freeze; fresh component walks check current parent policy before opens. No
+  descriptor-limit setup or new consent is approved. These limits are not accepted
   workflow coverage. Consume wide/deep/later-root/default/descriptor subjects
   item by item, including native timeout, depth/resource and path-value omissions;
   use measured final coverage, not inspection counts or arithmetic.

@@ -1,0 +1,35 @@
+# Proposed per-root algorithm; process account is shared by every job/instance.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Valid authorized search\nAtomic worker + (roots + 2) descriptor credits" {class: start}
+Refuse: "Credits / worker unavailable\nAll roots CAPACITY_LIMIT; no opens"
+Cycle: "Cyclic root turn\n64 entries / 32 transitions maximum"
+Stream: "One current stream for this root\nClassify next name; metadata in bounded scratch"
+Anchor: "Matchable ordinary directory?\nDepth below 32 and queue room?"
+Depth: "Depth 32 → DEPTH_LIMIT root group\nName remains matchable; no descent"
+Frontier: "512 tasks / 384 KiB full → FRONTIER_LIMIT\nName remains matchable; continue siblings"
+Queue: "Append path / target + parent identities\nFIFO; no eviction / retry / sibling array"
+EOF: "EOF → close current stream\nDequeue oldest pending directory"
+Done: "Queue empty → root finished\nCOMPLETE only without affecting omissions"
+Walk: "Fresh checked no-follow component walk\nTwo temporary credits; pre-open parent checks\nCompare expected root / parent / target"
+Stop: "Freeze once: stream tail / queue → REMAINDER\nCommitted depth / frontier groups survive\nWorker alone cleans up after blocked return"
+Limits: "Shared process account\nS = min(72, max(0, soft limit − 128))\nAt most 18 owned credits / job\nPlatform / unrelated demand uses remaining table\nNormally launched serviceability pending"
+Start -> Refuse: "1 · atomic admission fails"
+Start -> Cycle: "1 · all job credits reserved"
+Start -> Limits: "1 · shared ledger, not a private table"
+Cycle -> Stream: "2 · admitted root"
+Stream -> Anchor: "3 · observed name"
+Anchor -> Depth: "4 · depth first"
+Anchor -> Frontier: "4 · queue count / bytes"
+Anchor -> Queue: "4 · descent fits"
+Anchor -> Cycle: "4 · file / intrinsic / policy outcome"
+Depth -> Cycle: "5 · next turn / name"
+Frontier -> Cycle: "5 · next turn / name"
+Queue -> Cycle: "5 · next turn / name"
+Stream -> EOF: "3 · listing ends"
+EOF -> Walk: "4 · pending task"
+EOF -> Done: "4 · no pending task"
+Walk -> Cycle: "5 · new listing / diagnosed refusal"
+Cycle -> Stop: "2 · wait / work / failure stop"

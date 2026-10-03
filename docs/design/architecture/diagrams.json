@@ -2,10 +2,11 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Search traversal repair and native ownership",
-    "status": "Designed · transport reviewed; traversal replacement/review required",
-    "summary": "Discovery review reopened DFS order and process-wide descriptor admission: an early enormous branch spends the root entry budget before shallow home names, and held streams share the table with listener, store and actions. A replacement and load-bearing review precede planning. Worker-only cleanup retains every frame charge across blocked-call cancellation; canonical-parent location/identity/policy is checked before child open, with the residual prompt window unaccepted. Roots/frames/bundles use one filesystem-reported directory-path operation, and all protected/cloud witnesses are charged; pre-turn witness-account failure refuses every root. Unknown Preboot inspection is INSPECTION_FAILED. Typed BLOCKED transport and distinct retained/search-release compatibility subjects remain reviewed; runtime/binary/default/home acceptance and the human coverage decision remain pending.",
+    "title": "Shallow names, bounded descent and shared descriptor admission",
+    "status": "Designed · traversal review and native acceptance pending",
+    "summary": "Per-root FIFO breadth-first work finishes shallower admitted listings before deeper ones. A 512-task/384 KiB account rejects descent into one counted FRONTIER_LIMIT root group while anchor names and sibling examination survive; DEPTH_LIMIT remains separate. One current stream/root and two temporary opens/job use atomically reserved process-wide credits, at most min(72, max(0, soft limit − 128)), without raising the limit. Worker-only cleanup retains streams, pending paths and credits through blocked-call freeze. Fresh component walks and canonical-parent checks precede child opens. Platform-internal descriptors and listener/store/action serviceability require normally launched signed-host acceptance. Load-bearing traversal review precedes planning; transport/compatibility meanings remain reviewed and measured workflow omissions remain unaccepted.",
     "diagramIds": [
+      "search-traversal",
       "search-coverage",
       "search-handoff",
       "search-discovery",
@@ -13,12 +14,16 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "search-traversal",
+        "summary": "Adds FIFO depth order, bounded queue decisions, fresh checked descent and atomic process descriptor credits."
+      },
+      {
         "id": "search-coverage",
-        "summary": "Marks traversal/process descriptors for replacement; charges all policy witnesses, counts depth anchors themselves and requires worker-only cleanup/current-parent checks. Outcome and lifecycle meanings stay fixed."
+        "summary": "Replaces the reopened DFS path with FIFO work, separate frontier/depth anchor groups and worker-owned credit cleanup."
       },
       {
         "id": "search-handoff",
-        "summary": "Roots/frames/bundles share canonical path production; native bundle identity and both-control action handoff remain, with traversal replacement/review and native acceptance pending."
+        "summary": "Names the new traversal/account and counted frontier omissions while retaining canonical identity and authorized action selection."
       }
     ]
   },
@@ -26,7 +31,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Reviewed typed BLOCKED transport and retained/search-release compatibility subjects. Discovery review requires replacement traversal/process-wide descriptor admission and its load-bearing review before planning; canonical paths, worker ownership, moved-parent policy and witness-account repairs retain native/default/home acceptance obligations."
+      "description": "Breadth-first traversal and shared descriptor admission require load-bearing review. Typed BLOCKED transport is reviewed; independent binary/native/default/home coverage and normally launched process serviceability remain pending."
     },
     {
       "id": "workspace",
@@ -66,13 +71,22 @@
   ],
   "diagrams": [
     {
+      "id": "search-traversal",
+      "group": "search",
+      "title": "Finish shallow names before bounded descent",
+      "renderer": "svg",
+      "source": "search-traversal.d2",
+      "rendered": "search-traversal.svg",
+      "caption": "Proposed per-root FIFO algorithm with a shared process ledger. Finishing each listing before dequeue preserves observed depth order; a queue refusal omits descendants and keeps the anchor matchable. No rescan, cookie or sibling array. Each root retains one current stream; fresh checked descent uses two temporary job credits. The descriptor reserve bounds explicit Koine opens; platform-internal/unrelated demand and check-to-open races remain native acceptance obligations. All queue/entry/depth/deadline omissions require measured workflow review."
+    },
+    {
       "id": "search-coverage",
       "group": "search",
       "title": "Report every root and distinguish blocked scope from failure",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Fixed presentation-region/Preboot admission permits read-write or read-only local APFS; unknown identity/classification uses INSPECTION_FAILED, established unsupported classification remains exclusion. Review reopened DFS order and shared process descriptors: early branches spend the entry budget before shallow names, and search can exhaust the listener/store/action table. Replacement order/account and load-bearing review precede planning. All region/mount/protected/cloud witnesses are charged; pre-turn account refusal gives every root no-progress INSPECTION_FAILED. DEPTH_LIMIT counts each anchor itself, including empty unlisted directories, not omitted descendants; names remain matchable. REMAINDER covers unfinished work with or without progress. The worker alone closes frames after blocked calls return; current parent location/identity/policy is checked before child open. Native prompt/race, useful coverage and binary acceptance remain pending; typed BLOCKED/failure/lifecycle meanings stay fixed."
+      "caption": "Designed flow, not runtime acceptance. Validate and atomically reserve worker/owned descriptor credits; capacity refusal gives every root CAPACITY_LIMIT before opens, witness-account refusal uses INSPECTION_FAILED. Fixed-region admission and fully charged policy witnesses remain. FIFO breadth-first work has one current stream/root and a bounded pending queue. Separate depth/frontier groups count observed matchable anchors, never descendants; frontier refusal continues sibling-name examination. REMAINDER records unfinished work with or without progress. The worker alone releases streams/queue/credits after blocked calls return. Fresh component rewalks and pre-open current-parent checks require actual no-dialog acceptance. Normally launched process serviceability includes opaque platform opens; static arithmetic is insufficient. Reviewed outcome/lifecycle/compatibility meanings stay fixed."
     },
     {
       "id": "search-handoff",
@@ -81,7 +95,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. Admitted anchors, roots, frames and bundles share one filesystem-reported directory-path operation. File entries join canonical parent plus observed name, preserving final symlinks; firmlink-alias roots merge equal returned paths and observed rootIndices. Native bundle identity merges checked-link/direct application routes without merging equal-identifier copies; alias names remain file locations. Actual firmlink/case/Unicode and protected-call behavior remains pending. Clients inspect status, coverage and all errors, then choose and authorize existing actions under both controls, never dropping the selected installation path. Clipboard/MRU remain client-owned. Transport is reviewed; traversal replacement/load-bearing review, independent binary/native acceptance and protected-opening/reveal decisions remain pending."
+      "caption": "Designed location handoff. Roots, frames, queued tasks and bundles share one canonical directory-path operation; firmlink-alias file paths merge observed membership, while application native identity merges checked-link/direct routes without merging distinct copies. Clients inspect status, coverage and all errors before selecting existing actions under both controls, preserving the installation path. Clipboard/MRU remain client-owned. FIFO/descriptor credits require load-bearing review; native/default/home, no-dialog and independent binary acceptance remain pending."
     },
     {
       "id": "search-discovery",

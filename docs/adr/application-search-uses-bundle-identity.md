@@ -15,7 +15,7 @@ to change after clients use it. Stable route-independent rank allows bounded
 top-N eviction while retaining every observed rootIndex for the final choices
 in unchanged native observations.
 
-Admitted root/frame/witness paths use the same filesystem-reported directory-path
+Admitted root/frame/queued-task/witness paths use the same filesystem-reported directory-path
 operation as bundle targets; preliminary link resolution is not their returned
 canonical spelling. File entry paths join a canonical parent with the observed
 name, preserving final symlink locations. Mixing realpath's Data-volume spelling
