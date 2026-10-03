@@ -8,7 +8,11 @@ shows the unresolved architectural choice. The
 [search resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling)
 continues to bind, including its original budgets and serviceability obligations.
 No inspection route, helper, consent, signing change, smaller domain or reduced
-metadata/workflow guarantee is accepted by this analysis.
+metadata/workflow guarantee is accepted by this analysis. The subsequent
+[allocation decision](../specs/workspace-search.md#native-allocation-decision)
+prefers finite-table isolation for further design and externalizes its required
+helper/child-limit decision; it does not turn these feasibility candidates into
+an accepted runtime contract.
 
 ## Call health is separate from descriptor visibility
 
@@ -134,6 +138,16 @@ require decisions before use. Isolation does not cure silent nil/empty facts or
 turn system-wide ENFILE into a host-local property.
 
 ## Acceptance obligations carried forward
+
+The allocation comparison adds concrete falsifiers without claiming a selected
+route: apparently negative metadata after a swallowed child resource failure;
+a persistent host IPC endpoint overlapping a two-descriptor walk; bootstrap
+allocations before a proposed finite child limit is enforced; and an indefinite
+child surviving host exit while a replacement host attempts admission. A
+successful reply/exit, a 32-descriptor child proposal or parent exit cannot pass
+these controls. The human scope decision and complete allocation design remain
+live work before serviceability-subject construction. Existing negative-fact,
+domain, consent, signing, host-limit and native serviceability obligations bind.
 
 - A transient open/close entirely between occupancy samples must be visible
   wherever the selected argument relies on those events. Omitting it must fail

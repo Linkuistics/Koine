@@ -370,6 +370,10 @@ review also precede planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
 records error-channel and observer limits; allocation and constructible subjects
 remain open, with no accepted change to public outcomes or workflow coverage.
+The [allocation recommendation](specs/workspace-search.md#native-allocation-decision)
+prefers finite-table private-helper design, conditional on a human packaging/
+child-limit decision. It adds no deployed helper or implicit limit/consent setup;
+negative metadata health, two-credit IPC and restart ownership still need design.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review

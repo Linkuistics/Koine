@@ -101,3 +101,9 @@ chain or implementation leaves.
 - Error-observable public API availability is distinct from hidden-allocation
   bounds and signed-host event visibility. The feasibility report records this
   distinction; it changes no accepted contract or runtime verdict.
+
+- k112 crosses a required human packaging/child-limit decision and remains an
+  open allocation node. Its boundary-comparison child prefers finite-table
+  isolation for further design, then a requirements child obtains the explicit
+  scope answer and a design child must settle the original allocation contract.
+  k113 cannot construct final subjects or cut k109's review from a recommendation.

@@ -244,6 +244,14 @@ different grants. Keep client responsibilities and unresolved acceptance
 visible. API design must resolve a conditional tool effect before implementation;
 the phrase “plus effects” is not a completed trace.
 
+Search's [native allocation recommendation](workspace-search.md#native-allocation-decision)
+prefers finite-table private-helper design conditional on an explicit human
+packaging/child-limit decision. The complete allocation contract remains live:
+two-credit IPC/walk ownership, trustworthy negative metadata and child
+reclamation across host restart must be resolved before serviceability subjects
+and mandatory review. This adds no granted effect, accepted helper, changed
+host limit or weaker workflow/domain guarantee to the search rows below.
+
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |

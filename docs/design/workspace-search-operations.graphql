@@ -91,8 +91,12 @@ query InspectAliasedMatches($roots: [String!]) {
 # operations in workspace-operations.graphql. Controls are separately required.
 # Copy path/known identifier to the client's clipboard, and update client MRU
 # there. Launch only INSTALLED, never UNREGISTERED or UNKNOWN; both can be
-# revealed/path-copied, and any known identifier can be copied. Do not infer NO_DEFAULT_HANDLER from
-# null metadata. Never retry an action by dropping its installation constraint.
+# revealed/path-copied, and any known identifier can be copied. The proposed
+# finite-table helper needs an explicit human
+# decision and complete allocation design; its reply/exit is not negative-fact
+# health. Existing UNREGISTERED/identifier guarantees remain binding.
+# Do not infer NO_DEFAULT_HANDLER from null metadata. Never retry an action by
+# dropping its installation constraint.
 
 # Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
 # CHILD_GROUP counts invalid/overlong child anchors of its actual parent;

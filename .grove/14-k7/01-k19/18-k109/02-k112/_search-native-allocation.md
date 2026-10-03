@@ -1,4 +1,4 @@
-# search-native-allocation-k112
+# search-native-allocation-k112 — brief
 
 
 ## Goal
@@ -45,3 +45,30 @@ Graph Tier 2, project Users-antony-Development-Koine.add-plugins-for-modaliser-r
 generation 2026-09-29T10:36:20Z was stale for listener, and did not track native
 adapter/dependency files; docs are excluded. Confirm freshness/coverage and read
 exact source. Do not inherit a graph completeness or native proof claim.
+
+## Decomposition
+
+The allocation choice crosses an unapproved support-process/limit boundary.
+Keep every original completion condition above; a recommendation does not
+settle a runtime contract. Do only the first child in this session.
+
+1. search-allocation-boundary-k114 produces the concrete comparison, preferred
+   isolation direction, required human decision and failure discriminators.
+2. search-helper-posture-k115 obtains the narrowly framed human decision about
+   signed support-process packaging and finite child descriptor limits. It
+   grants no weaker metadata/domain or serviceability guarantee by implication.
+3. search-allocation-contract-k116 settles the full call/allocation contract
+   within that answer, including trustworthy negative facts and process-restart
+   ownership, before k113 constructs serviceability subjects and cuts k109's
+   mandatory review. No implementation leaves or duplicate reviewer.
+
+## Decisions (running log)
+
+- Direct owned metadata alone cannot replace the registration/type services;
+  an error-bearing CF query does not establish a bound on internal descriptors.
+  No complete approved-posture observer is established by the feasibility report.
+- Prefer a finite-table private support-process direction for further design.
+  This is a recommendation requiring an explicit packaging/child-limit decision,
+  not permission to spawn, sign, change limits or weaken negative metadata facts.
+- Decompose at that human decision. Retire only the boundary-comparison child;
+  this allocation node, k109 and the complete resource contract remain live.

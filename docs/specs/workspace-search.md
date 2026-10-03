@@ -8,7 +8,7 @@ are the reading entry; the
 [canonical observation view](../design/architecture/index.html#diagram-search-canonical)
 shows the current native path proposal, and the
 [resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
-shows unresolved allocation alternatives. The [search SDL](../design/workspace-search-schema.graphql)
+shows the preferred isolation direction and its required human decision. The [search SDL](../design/workspace-search-schema.graphql)
 and [client examples](../design/workspace-search-operations.graphql) define an
 additive workspace contribution. They compose with the existing
 [launch/open contract](workspace-launch-and-open.md), not a second provider.
@@ -56,6 +56,9 @@ separates a public CFError-bearing registration candidate from hidden-allocation
 bounds and signed-host event visibility. It selects no runtime mechanism. The
 resource producer is decomposed into feasibility, allocation and constructible
 serviceability-subject design; its complete artifact still requires review.
+The [allocation decision](#native-allocation-decision) recommends finite-table
+isolation for further design, conditional on an explicit private-helper and
+child-limit decision. No runtime route or weaker metadata fact is accepted.
 The owned-credit formula, two temporary credits, metadata/public outcomes,
 domain and all native acceptance obligations below remain binding.
 
@@ -1033,6 +1036,119 @@ until the producer selects the call and instrument contracts; static caps,
 periodic counts and a shell-raised host cannot stand in for them. Arbitrarily heavy unrelated clients,
 system-wide ENFILE and externally lowered limits are outside a serviceability
 guarantee. No static cap, simulated table or shell-raised host is native evidence.
+
+### Native allocation decision
+
+**Recommendation awaiting a human scope decision; the binding resource and
+metadata contracts above remain unchanged.** Prefer a private support process
+with a finite descriptor table for further allocation design. Direct owned
+inspection is useful for filesystem identity and canonical paths, but cannot
+by itself supply native package/type and Launch Services registration semantics.
+Retaining opaque inspection inside Koine needs a complete event observer under
+the approved signing/normal-launch posture; none is established by the
+[feasibility analysis](../verification/search-native-resources.md).
+This recommendation changes neither the provider framework nor the agreed
+GraphQL, native-binary and isolated-VM seams.
+
+| Direction | Caller burden and allocation ownership | Reason it cannot yet be the runtime contract |
+| --- | --- | --- |
+| Direct owned inspection | One private native boundary owns checked opens, identity, reads and errors within roots + 2 credits. | A bounded manifest parser does not supply registration or native package/type semantics. Suffixes, a private registration database and UNKNOWN for every launch candidate would change the workflow. |
+| Opaque inspection in Koine | Keeps current single-process composition; a complete observer must account internal acquisitions, releases and swallowed resource failures. | CFError, formatted filesystem output, table polling and eventual client replies do not provide that evidence. A different signature, entitlement or launch posture is not approved. |
+| Finite-table private helper, preferred for further design | Native inspection has a separate process table; the host owns admission, transport, result validation and child lifetime through one private boundary. | Packaging/child-limit approval is required. Table separation proves neither metadata health, host spawn demand, system-wide demand nor orphan cleanup. |
+
+The concrete scope proposed for the human decision is a support executable
+sealed inside Koine's application, signed by the same Developer ID team under
+a distinct fixed signing identifier, with empty entitlements. It is launched
+only by an admitted search worker, never installed as an independent service,
+selected as a provider, or exposed as a client API. Admission would verify the
+sealed executable's identity before use. No new TCC consent, usage key,
+diagnostic entitlement or alternate host signature is proposed. The responsible
+TCC identity and prompt behavior must be established for this actual launch;
+same-team signing does not establish either. The human is asked whether this
+packaging direction and a finite **lowered child** descriptor limit may be
+designed. Koine's host limit remains inherited and is never set.
+
+A proposed child ceiling is 32 descriptors, including standard descriptors,
+IPC, loader/framework acquisitions and inspection streams. At most one live
+or unreaped child may belong to each admitted job, with at most four across
+the process. The intended post-bootstrap ceiling is therefore 128 child
+descriptors, separate from the existing host credit account. This is proposed
+capacity, not an established bootstrap/system-wide bound: enforcement must
+precede opaque work and account acquisitions before enforcement. Finite child
+limits may only be lowered, never raised; inherited infinite or unknown values
+are not a bound. Failed limit inspection/enforcement or an inadequate inherited
+limit must refuse before filesystem inspection. The final design must state
+the exact lower/hard-limit rule, actual bootstrap allocation and whether 32
+supports useful metadata under the real applications. Host limits
+128/160/200/256/infinite/unknown and the summed-reservation lower-limit latch
+retain their existing meanings. Child-limit/resource failure cannot be reported
+as absence or healthy empty results.
+
+Two host temporary credits are still absolute. Public `socketpair` creates two
+host endpoints before `posix_spawn`; closing the child endpoint in the parent
+after successful spawn leaves one charged endpoint. Two `pipe` calls require
+four transient endpoints and do not fit. A persistent IPC endpoint cannot
+overlap a host component walk needing both temporaries. Closing an endpoint
+early, an unused root credit, or a child's separate table does not remove this
+conflict. The final design must either serialize the complete inspection/child
+exit/transport-close lifetime before such a walk, charging repeated spawn work
+to the same wait, or move the complete native walk behind the helper boundary
+while preserving all queue, turn, identity, policy and freeze contracts.
+Neither arrangement is selected here. The actual public spawn/file-action
+implementation must have a bounded host acquisition path; a documented child
+file action is not evidence about every host library acquisition. No third
+temporary credit, hidden control socket or root-credit borrowing is allowed.
+
+The observation boundary must distinguish value, health and lifetime. Public
+`LSCopyApplicationURLsForBundleIdentifier` with `outError` is the error-bearing
+registration candidate; preserve error domain/code and bounded underlying
+resource causes. An unexpected result/error combination or nil/nil is uncertain.
+A matching returned URL still needs presence and native-identity checks; it
+cannot introduce a discovery root. A not-found CFError, an empty array, a
+nonmatching array or nil `Bundle` identifier cannot establish UNREGISTERED or
+no identifier unless the final adapter establishes the whole relevant
+observation's resource health. A reply from a healthy IPC channel, successful
+child exit, later `stat`/`access`, and a finite child limit do not establish that
+health. Swallowed child EMFILE/ENFILE must not publish a negative fact. Reporting
+all uncertain registrations as UNKNOWN would retain reveal/copy choices but
+would not satisfy the promised native UNREGISTERED subjects or configured
+launch coverage. Approving a helper does not approve that semantics change.
+
+A direct identifier reader remains an alternative requiring exact layouts,
+no-follow policy/identity checks, checked `openat`/`read`/EOF/error handling,
+bounded XML/binary-plist parsing and scratch accounting. Only a complete stable
+metadata observation can establish a missing key. No arbitrary file contents,
+plist-link following, localization/icon reads, content sniffing or hydration is
+authorized by this recommendation. Native package/type semantics must survive;
+an extension-only replacement is insufficient. The canonical `fstat`,
+`fstatfs` and `fsgetpath` choice and native-size obligations remain unchanged.
+
+Freeze cannot reclaim a blocked worker's descriptors or replace its child.
+The final contract must own late replies, transport closes and public `waitpid`
+exit/reap results exactly once, retain all charges through cleanup and preserve
+previously finalized observations. A resource failure beside an indefinite
+call must retain disabled-search guidance and prevent new inspections/jobs;
+provider restart cannot reset this state. Host restart is not proof an old
+child exited. Before promising process-restart recovery, establish reclamation
+or an admission rule that counts surviving children across host incarnations;
+repeated restarts must not accumulate new children/system-wide demand. No
+parent-death assumption, detached helper, timeout kill or replacement loop is
+accepted here.
+
+The next allocation design must settle these health, bootstrap, two-credit and
+restart obligations within the explicit human answer before serviceability
+subjects can be constructed. Its acceptance handoff must include a swallowed
+resource error with an apparently negative registration/identifier reply,
+a live transport overlapping a two-descriptor walk, child bootstrap before
+limit enforcement, and a blocked child surviving host exit. Each must fail
+the corresponding purported proof. Preserve the transient-open and suppressed
+accept/backoff detection controls, independent listener/store/action work,
+cohort/lower-limit cases, retained compatibility profiles and actual useful
+Safari/Finder/home coverage. A process-table bound can replace observation of
+internal descriptor peaks only where the proved argument covers that demand;
+it cannot replace metadata health or listener/backoff observation. Mandatory
+review of the complete resource artifact still precedes planning. Native,
+binary and workflow acceptance remain pending.
 
 ### Match retention and freeze
 

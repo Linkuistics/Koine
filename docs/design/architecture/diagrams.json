@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Error channels, event visibility and the unresolved allocation boundary",
-    "status": "Feasibility analysis · allocation and subjects remain open",
-    "summary": "A public CFError-bearing registration query is a candidate, not proof of bounded internal opens or complete failure reporting. Formatted fs_usage and the local ktrace manual do not establish the required normally signed-host event ledger. Compare direct owned inspection, complete raw observation and private support-process candidates; no runtime mechanism, helper, signing/consent/limit change or reduced workflow guarantee is selected. A passive pre-backoff listener hook is a constructible observation candidate, with actual scheduling and native controls still to design. The resource producer now has separate feasibility, allocation and subject design children. Its complete artifact and the canonical proposal require load-bearing reviews before planning; native, binary and useful-coverage acceptance remains pending.",
+    "title": "Finite-table isolation needs an explicit human scope decision",
+    "status": "Recommendation · helper and child limits unapproved",
+    "summary": "Prefer a private same-team signed helper with empty entitlements and a finite lowered child descriptor limit for further design. This does not select an approved runtime mechanism. Direct owned metadata cannot alone supply native registration/type semantics; no complete in-process observer is established. Two host temporary credits prohibit persistent IPC overlapping a two-descriptor walk. Successful IPC/child exit and a finite table do not establish negative metadata health, and parent exit does not prove child reclamation. A human packaging/child-limit decision precedes the complete allocation contract, serviceability subjects and mandatory review. Public outcomes, domain, host limits, grants, seams and native acceptance remain unchanged.",
     "diagramIds": [
       "search-resources",
       "search-canonical",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "search-resources",
-        "summary": "Adds the source/SDK comparison of metadata health, trace visibility, allocation alternatives and pre-backoff listener observation, with no selected runtime mechanism."
+        "summary": "Recommends finite-table helper design subject to a human scope decision; exposes the two-credit conflict, negative-fact health and child-reclamation blockers before serviceability handoff."
       }
     ]
   },
@@ -25,7 +25,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are proposed. Resource feasibility records candidates and limitations; allocation and serviceability-subject design remain open. The complete resource artifact and canonical proposal require review before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
+      "description": "FIFO and canonical fsgetpath are proposed. Finite-table helper design is recommended subject to an explicit packaging/child-limit decision; the complete allocation contract and serviceability subjects remain open. The complete resource artifact and canonical proposal require review before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
     },
     {
       "id": "workspace",
@@ -67,11 +67,11 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Separate metadata health, descriptor bounds and event visibility",
+      "title": "Require a human scope decision before finite-table isolation",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Source/SDK feasibility only. The CFError-bearing Launch Services candidate does not certify all internal failures or transient descriptor demand. Formatted fs_usage and local ktrace documentation do not establish a complete observer under the approved hardened posture; that is an evidence limit, not proof tracing is impossible. Direct owned inspection and isolated opaque inspection are alternatives requiring design, not accepted runtime routes. Two temporary credits, signed responsibility, infinite/unknown limits and system-wide demand cannot disappear from their contracts. Observe listener errors before NIO suppression; delay/scheduled-read/resumption and real native discriminators remain to construct. Allocation design, serviceability subjects and mandatory review precede planning; native acceptance stays pending."
+      "caption": "Allocation recommendation, not approval or native acceptance. Prefer a private signed finite-table helper only for further design, after the human packaging/child-limit decision. A proposed 32-descriptor child ceiling does not bound bootstrap, establish negative metadata health or prove useful coverage. Socketpair transiently uses both host temporaries; persistent IPC cannot overlap a two-descriptor walk. Child exit/reap and old children across host restart need ownership, not a parent-death assumption. Native registration/type semantics, domain, host limits and all current budgets remain binding. A refusal of the helper direction returns the design to an alternative within those constraints; no runtime route is selected by this graph. Complete allocation, independent serviceability subjects and mandatory review precede planning; suppressed accept/backoff and transient-open controls remain required."
     },
     {
       "id": "search-canonical",

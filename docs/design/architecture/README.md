@@ -8,7 +8,7 @@ exports:
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
-- [native resource feasibility and allocation alternatives](index.html#diagram-search-resources);
+- [native allocation recommendation and required human decision](index.html#diagram-search-resources);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
@@ -40,10 +40,13 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel presents the
-[resource boundary comparison](index.html#diagram-search-resources): error
-channels do not establish hidden-allocation bounds or signed-host event
-visibility. It compares raw tracing, direct owned inspection and private
-support-process candidates, without selecting a runtime route. The
+[resource boundary comparison](index.html#diagram-search-resources): finite-table
+private-helper design is preferred, conditional on the explicit human packaging/
+child-limit decision. Error channels and successful IPC/child exit do not
+establish negative metadata health. Persistent IPC cannot overlap a two-descriptor
+walk within two temporary credits; parent exit does not prove child reclamation.
+The [allocation decision](../../specs/workspace-search.md#native-allocation-decision)
+keeps those obligations live before selecting a runtime route. The
 [feasibility analysis](../../verification/search-native-resources.md) records
 the evidence and residual obligations. The unchanged canonical path view,
 FIFO and reviewed transport/compatibility provide context.
@@ -100,9 +103,9 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views and summaries:
 
-- [Search → native resource feasibility](index.html#diagram-search-resources) — Separates healthy result signals, hidden allocation bounds and signed-host event visibility; all three allocation alternatives remain open.
-- [Search resource contract](../../specs/workspace-search.md#resource-accounting-and-scheduling) — Links the feasibility comparison and preserves its budgets, metadata outcomes, eligible domain and native acceptance obligations.
-- [Native resource analysis](../../verification/search-native-resources.md) — Records source/SDK evidence, tracing limitations, the two-credit constraint and the allocation/serviceability decisions still required.
+- [Search → native allocation decision](index.html#diagram-search-resources) — Prefers finite-table helper design subject to explicit approval and exposes the two-credit, negative-health and child-reclamation blockers.
+- [Native allocation contract](../../specs/workspace-search.md#native-allocation-decision) — Frames the concrete packaging/child-limit decision and preserves every binding budget, metadata, domain and acceptance obligation for the complete design.
+- [Native resource analysis](../../verification/search-native-resources.md#acceptance-obligations-carried-forward) — Adds falsifiers for swallowed negative replies, overlapping IPC/walk lifetimes, pre-limit bootstrap and children surviving host exit.
 
 The canonical, traversal, coverage and handoff views remain unchanged context.
 
@@ -149,6 +152,15 @@ and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
 with failing schema controls; this does not prove runtime branch invariants.
+The allocation recommendation was inspected in local Safari at
+<http://127.0.0.1:8874/#diagram-search-resources>, using the existing static
+viewer. A fresh deep link reached the resource title and Current/Updated
+markers; its SVG start node, allocation branches and labels rendered in the
+light desktop view. The manifest's current discussion and single changed-view
+summary matched the source. This presentation check supplies no native call,
+consent, helper/signing, binary or resource verdict. Dark appearance was not
+checked. Older presentation records below concern their earlier revisions.
+
 The resource feasibility view was checked in Safari in the isolated macOS
 26.5/25F71 clone `koine-k111-design`. The manifest, viewer, D2 source and SVG
 were byte-identical to the host subjects. A fresh resource deep link reached

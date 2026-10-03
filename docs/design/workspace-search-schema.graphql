@@ -134,7 +134,7 @@ type WorkspaceSearchDependency {
   guidance: String!
 }
 
-"""INSTALLED is a present application with a nonblank identifier registered at its native file identity. UNREGISTERED positively lacks registration at that identity; UNKNOWN lacks established metadata/registration. Both remain reveal/copy candidates, and neither forms a launch choice."""
+"""INSTALLED is a present application with a nonblank identifier registered at its native file identity. UNREGISTERED positively lacks registration at that identity; UNKNOWN lacks established metadata/registration. Both remain reveal/copy candidates, and neither forms a launch choice. A finite helper descriptor table or successful IPC reply/child exit does not establish negative metadata health; the helper allocation direction requires an explicit human decision and complete design before use. No public outcome or workflow guarantee is weakened."""
 enum WorkspaceSearchInstallationState {
   INSTALLED
   UNREGISTERED

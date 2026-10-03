@@ -160,3 +160,11 @@ and k113 owns serviceability subject construction and the mandatory review of
 the complete k109 artifact. All original k109 completion conditions still bind.
 Planning/acceptance, helper packaging/signing, consent, limit changes and any
 reduced metadata/domain guarantee remain unapproved.
+
+k112 decomposes at the explicit helper/child-limit human decision. k114 records
+the finite-table isolation recommendation, two-credit IPC/walk conflict,
+negative-metadata-health and child-reclamation blockers; it approves no runtime
+route. k115 obtains the narrow packaging/limit scope answer, then k116 must
+settle every original k112 completion condition before k113 constructs subjects
+and cuts k109's mandatory review. The public contract, host limits, domain,
+seams and all runtime/binary/useful-coverage obligations remain unchanged.
