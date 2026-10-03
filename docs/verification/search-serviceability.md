@@ -259,7 +259,8 @@ registration/setup writes occur before measurement; search performs none.
 
 First consume the [path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
 and their producer/review outcomes. The current selected calls are not reconciled
-with long-path classification; queue/size reachability cannot be inferred from
+with pre-open witness/replay phases or long-path classification; long-result
+actions also need their launch/open design/review chain. Queue/size reachability cannot be inferred from
 fixture creation or capacity arithmetic. Run the settled resource/package/hidden/alias/type/Bundle/registration/preferred
 calls and serial walks against protected application/Library links, supported
 long/canonical/native-size fixtures and actual home/default roots. Independent

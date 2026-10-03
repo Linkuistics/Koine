@@ -1,6 +1,7 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Resolution/policy/spelling/name design requires review before classification design/review; serviceability subject construction is specified; whole-resource review precedes planning;
+# Pre-open witness and replay/size-phase repairs need producer reviews before classification; whole-resource review precedes planning.
+# Long-result action support/error meaning needs launch/open design and review; search ceiling is no actionability guarantee.
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.

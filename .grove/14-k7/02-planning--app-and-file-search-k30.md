@@ -13,6 +13,12 @@ vertical `impl` leaves that each stay verifiable through the three seams.
   the unresolved default-discovery/coverage budget. Consume the settled
   diagnostic ADR and mechanism contract after their reviews.
 - The node brief's `Done when`.
+- k124/k125 route witness repairs through search-preopen-witnesses-k126 and
+  replay/size phases through search-path-observation-phases-k127. Their producer
+  reviews/integrations precede classification k123's chain, then resource k120.
+  Consume long-search-result-actions-k128's launch/open design/review chain too;
+  no copy-only or PATH_MAX-limited baseline, changed call set, larger account or
+  workflow loss is approved by this integration.
 
 ## Done when
 

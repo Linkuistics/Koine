@@ -79,3 +79,12 @@ alongside depth/frontier/value/policy outcomes. Native canonical-path limits and
 opaque descriptor/error/serviceability instrumentation remain open design work;
 periodic descriptor counts and delayed successful listener replies are not proof.
 No shorter canonical domain or arbitrary native-order sample is accepted.
+
+Consume k124/k125's pre-open witness k126 and replay/size-phase k127 repairs
+and mandatory reviews, plus long-result action k128's launch/open design/review.
+Measure omitted home work from unresolved policy-link proofs, repeated replay/
+rewalk cost and any independently proved current/prefix size refusal; measure
+whether returned long selections can actually launch/reveal/default/Zed open.
+The unchanged 8,192-byte search ceiling establishes no actionability guarantee;
+overlength does not prove absence. A copy-only or shorter baseline requires
+Antony's explicit workflow decision and is not approved by those repairs.

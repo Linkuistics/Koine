@@ -41,20 +41,22 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel presents selected bounded path resolution, pre-open
-parent/child policy and observed spelling/name finalization. All remain design:
-resolution review precedes long-path classification design/review, then the
-complete-resource review/planning. Native/binary/no-dialog/useful-coverage
+The current-discussion panel marks the reviewed path prerequisites that need
+producer repairs: pre-open mount/symlink witnesses, region replay/metadata
+phases and current/prefix size scopes. Their mandatory reviews precede long-path
+classification design/review, then complete-resource review/planning. Long-result
+actions require launch/open design/review; the search ceiling is no actionability
+guarantee. Native/binary/no-dialog/useful-coverage
 outcomes and the operator's measured omissions decision remain pending.
 
 Current changes:
 
-- [Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Adds one bounded resolver and pre-open child identity policy; separates fresh reports, listed locations and name-preserving descent-size scopes.
-- [Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Adds current-location A/B reacquisition and listed-location tasks while preserving FIFO, independent change evidence and shared budgets.
-- [Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Makes queued native-size failure an exact descendant SUBTREE that preserves finalized names.
-- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — States name-preserving path behavior and resolution-review then classification-design/review dependencies.
-- [Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Connects the selected resolver/spelling rules to unchanged allocation ownership; long-path classification remains unresolved.
-- [Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Uses independent identity/association during candidate recheck and preserves retained metadata across same-identity spelling variants.
+- [Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Marks witness, replay and current/prefix size repairs while preserving resolver bounds and names.
+- [Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Retains FIFO/listed tasks; current-turn replay and independently proved prefix-size continuation need repair.
+- [Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Retains exact queued size diagnostics; genuine shared-proof failure differs from unresolved current/prefix size scope.
+- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Discloses PATH_MAX-limited action inspection and launch/open design/review for long results.
+- [Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Keeps k119 constraints; replay/metadata composition and classification need repair before resource review.
+- [Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Marks missing replay/bracket/final-membership phases without inferring a third descriptor or uncharged reacquisition.
 
 The specified [serviceability controls](index.html#diagram-search-serviceability)
 remain unchanged context. Q/S, two temporary credits, worker-only cleanup,
@@ -66,6 +68,8 @@ locations; descendants use fresh native reports. Queued native-size refusal
 preserves finalized names with VALUE_LIMIT SUBTREE; public overflow omits names
 with actual-parent CHILD_GROUP. Native classification reachability remains open,
 independently of synthetic 43/44 and conditional listed-task 79/80 arithmetic.
+No missing witness/replay phase is supplied by these exports. No call set,
+account, domain, consent or accepted workflow coverage changes here.
 
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
@@ -84,12 +88,12 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update also changes these prose sections:
 
-- [Bounded component resolution](../../specs/workspace-search.md#bounded-component-resolution) — Specifies one route, link/expanded-text bounds and native transition semantics.
-- [Pre-open parent and child policy](../../specs/workspace-search.md#pre-open-parent-and-child-policy) — Adds native variant/identity checks before child open.
-- [Observed spelling and file-name finalization](../../specs/workspace-search.md#observed-spelling-and-file-name-finalization) — Preserves every representable entry kind and separates listed locations from descendant reports.
+- [Bounded component resolution](../../specs/workspace-search.md#bounded-component-resolution) — Keeps bounds; no-follow ELOOP after a directory probe uses changed association, not hop guidance.
+- [Pre-open parent and child policy](../../specs/workspace-search.md#pre-open-parent-and-child-policy) — Marks symlink-target proofs and foreign-mount pre-open guards for the witness producer.
+- [Observed spelling and file-name finalization](../../specs/workspace-search.md#observed-spelling-and-file-name-finalization) — Preserves names and marks missing replay/metadata composition for phase repair.
 - [Resolver and spelling subjects](../../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction) — Defines controlled/provider/VM cases and independent observers without claiming native evidence.
 - [Native resource handoff](../../verification/search-native-resources.md#final-allocation-handoff) — Reconciles independent change evidence and two-temporary reacquisition.
-- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Describes name-preserving descent size and cached-spelling limits.
+- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Discloses long-result action support and truthful overlength failure as an unresolved handoff.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,

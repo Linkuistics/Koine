@@ -20,7 +20,7 @@ remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
 keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
-**Path resolution is designed; its review and classification design precede planning.**
+**Path review requires witness and observation-phase repairs before classification.**
 Narrow fixed-region Preboot admission permits its measured read-write layout.
 Per-root FIFO breadth-first work finishes shallower admitted listings before
 deeper ones, preserving later home-root names against an early enormous branch.
@@ -34,8 +34,10 @@ internal acquisitions and peaks unproved. The
 public fsgetpath with descriptor-derived identity and explicit size refusals.
 The [path design](#path-design-dependencies) specifies one bounded resolver,
 pre-open parent/child policy, observed spelling and representable directory names.
-Its load-bearing review precedes long-path classification design and that
-producer's review, then the complete-resource review and planning. The in-process allocation below selects
+Pre-open mount/symlink witnesses and replay/size-refusal phases need producer
+repairs and their own load-bearing reviews before long-path classification and
+its review, then complete-resource review and planning. Long-result action
+support also requires the launch/open increment's design/review chain. The in-process allocation below selects
 metadata/resource calls and the observable instrument contract; serviceability
 subject construction is specified below; implementation and the complete-resource
 review remain required. Each
@@ -360,10 +362,18 @@ must establish this route's behavior and prompt-free calls before acceptance.
 
 ### Path design dependencies
 
-The resolver, policy, spelling and file-name contracts below are selected design,
-pending their load-bearing review before the classification producer consumes
-them. They resolve canonical review's resolver/spelling/name-policy questions;
-they are not native acceptance. Long-path hidden/package/alias/type/application
+The resolver bounds and file-name contract below remain selected design, not
+native acceptance. Review found unresolved pre-open mount and symlinked-policy
+witness decisions, plus a region replay that cannot yet be composed with the
+two-temporary metadata/commit phases. Separate witness and observation-phase
+producers must repair these prerequisites and cut load-bearing reviews before
+classification consumes them. The observation-phase repair also owns current/
+prefix native-size scopes under independent proof; a conservative root stop
+must not be mistaken for evidence of movement or accepted workflow loss.
+Long returned locations also exceed the established launch/open inspection
+route: its increment owns a design/review chain before the handoff is complete.
+All these dependencies precede complete-resource review and planning.
+Long-path hidden/package/alias/type/application
 classification and identifier/registration remain a separate design conflict:
 component-relative opening and the prohibition on long PATH_MAX-limited
 attribute arguments conflict with the selected URL.resourceValues/Bundle calls.
@@ -421,6 +431,14 @@ resolution. Alias files are never resolved. A checked app link is not a
 directory task. Intrinsic firmlink/mount behavior is native lookup behavior,
 not an adapter-managed symbolic-link expansion.
 
+An `openat` with O_NOFOLLOW that reports ELOOP after its no-follow probe saw a
+directory reports a changed type/association, not a resolver cycle. Apply that
+context's change scope (shared prerequisite REMAINDER, independent target
+SUBTREE, checked-link candidate ENTRY); do not expand the replacement or retry.
+Without such independent type/association evidence an unexplained error remains
+INSPECTION_FAILED, with no claim of a loop. Admission/freeze/resource precedence
+still forbids subsequent inspection after refusal.
+
 For a permitted link, probe its identity without following, then read its
 target with `readlinkat` through the same held containing parent. Recheck that
 parent and link association/type/incarnation metadata afterwards. Capture
@@ -442,10 +460,13 @@ and verify that association. Never remove a textual component to implement it.
 At `/`, the native parent remains `/`; at a mount root it uses native namespace
 parent lookup, and at a firmlink it uses the actual mounted namespace. Apply
 startup-pair/allowed Preboot transition checks, never infer permission from
-a textual prefix or volume alias. A disallowed/unknown mount refuses before
-listing or metadata classification; an open needed to obtain mount metadata
-is transit and still requires pre-open protected/cloud policy. Native prompts
-or hydration during probes/opens fail acceptance.
+a textual prefix or volume alias. An unestablished foreign device transition
+must not be opened merely to classify its mount. The pre-open witness producer
+must specify the no-follow device guard, startup/home bootstrap and fixed
+Preboot exceptions before this route is implementable; existing home/cloud
+policy supplies no removable/network consent proof. Native prompts or hydration
+during probes/opens fail acceptance. Neither a speculative transit open nor a
+new consent policy is selected by this dependency.
 
 The fixed Cryptex `App` link's relative `../../System/Volumes/Preboot/Cryptexes/App`
 is interpreted from `/System/Cryptexes`, so its two native `..` transitions reach
@@ -460,7 +481,7 @@ system/data firmlink pair and fixed Preboot route keep their existing classifier
 | Resolver account | Bound and refusal |
 | --- | --- |
 | Source | Supplied requestedPath at most 4,096 bytes; checked native/registration/stored location text at most 8,192. Validate before copying/calls. |
-| Link expansions | At most 32 completed `readlinkat` target expansions, including repeats; expansion 33 is refused without another readlink. Native ELOOP or hop exhaustion is INSPECTION_FAILED with bounded loop/hop guidance, not absence, unsupported domain or proven cycle. No visited-link set or retry. |
+| Link expansions | At most 32 completed `readlinkat` target expansions, including repeats; expansion 33 is refused without another readlink, as INSPECTION_FAILED with bounded-hop guidance, not absence, unsupported domain or proven cycle. Native no-follow ELOOP uses the type/association rule above, never hop guidance. No visited-link set or retry. |
 | Pending text | Target plus separating slash plus unconsumed suffix must fit 8,192 UTF-8 bytes before committing the splice. Expanded overflow is VALUE_LIMIT, no truncated resolution. This bounds pending text, not a guessed canonical path length. |
 | Components/work | At most 4,096 nonempty components in each bounded text fragment; count `.` and `..` too. Across original plus 32 expansions, at most 33 × 4,096 = 135,168 consumed component transitions, plus at most 32 absolute restarts. This derived 135,200 bound replaces the old 4,096-total-walk inference; suffixes are not counted twice unless actually consumed. Each transition has fixed checks/calls; wait can stop first. |
 | Scratch | Eight bounded path slots, one candidate and fixed cursor/counters; no component or ancestor array. Charge simultaneous input, pending text, readlink text, splice output, current reported path, native output, registration-target value and comparison key at every occurrence. Reuse a slot only after its old value is released. Buffer terminators, wrappers, link/association metadata and cursors use the existing other-state allowance. No new account. |
@@ -491,9 +512,13 @@ open/list a protected directory to acquire its identity. Keep the same charged
 presentation/component and native-identity witnesses and dependencies. Refresh
 the relevant no-follow witness association before a child decision; witness
 replacement/change/uncertainty refuses dependent work. An observed symlink
-at a policy route remains blocked at that route, but supplies no target identity;
-its literal target can add a known blocked spelling within the same account,
-and a required unestablished alias proof cannot be dropped. Known absence is
+at a policy route remains blocked at that route, but supplies no target identity.
+Its literal target is not native target-alias proof. The pre-open witness
+producer must distinguish targets beneath an established blocked ancestor
+from ordinary relocated targets needing additional proof, and specify relevant
+dependencies/refusal scopes. Until that repair is reviewed, this clause supplies
+neither a target-open permission nor a rule failing every home child. A required
+unestablished alias proof cannot be dropped. Known absence is
 not a fabricated identity. These metadata calls require their own no-dialog
 acceptance; earlier metadata fixtures do not supply it.
 
@@ -546,6 +571,14 @@ walk charged to the same wait/scratch; the 135,200 expanded-source bound is per
 source walk, not a total-cost claim for replay/rechecks. Closed-candidate replay
 still has the stated ABA limit. Known queued descent-size refusal needs the
 established parent/child association, not a fabricated child report to replay.
+
+This replay requirement is not yet a complete phase contract. Closing A/B for
+replay conflicts with the held metadata bracket and final commit pair below.
+The observation-phase producer must specify replay contexts/report, identity
+versus finalized-spelling membership, re-establishment costs and root-stream
+conversion. Do not execute this paragraph and the existing phase table as if
+they compose; no extra descriptor, uncharged reacquisition or pre-admission
+metadata is authorized.
 
 - A root/witness uses its first successful report for that observation and
   requestedPath retains input text. Each current listing turn takes a fresh
@@ -746,7 +779,7 @@ joined path is separately established by its measured byte length.
 | --- | --- |
 | Unresolved root has a known native-size refusal | UNKNOWN, resolvedPath null, one VALUE_LIMIT REMAINDER at its representable requestedPath. No searched record or fabricated canonical path. |
 | Admission/home/mount witness cannot supply a canonical path | Native failure refuses only roots dependent on that witness, with UNKNOWN/zero counts and requested-path INSPECTION_FAILED REMAINDER unless an established policy/domain reason applies. The witness dependency rules below differ from job-wide account overflow. Do not drop or invent a required witness. |
-| Current stream or queued walk prefix/parent has native-size or other inspection refusal | Stop that root once: CHANGED_DURING_SEARCH REMAINDER only with independent change evidence, otherwise INSPECTION_FAILED REMAINDER. A formerly fitting byte spelling alone is not a movement detector. Preserve progress/prior groups; no further read/open or per-dependent-task exceptions. |
+| Current stream or queued walk prefix/parent has native-size or other inspection refusal | Existing conservative root stop requires observation-phase repair: distinguish lost shared policy/location proof from an independently established size-only refusal before selecting continuation. It is not movement evidence or accepted loss of queued siblings. A genuinely failed shared proof stops once with CHANGED_DURING_SEARCH only on independent change, otherwise INSPECTION_FAILED; preserve progress/prior groups and forbid following reads/opens or per-dependent-task exceptions. |
 | Independent final target is absent/replaced or uncertain after its immediate parent is established unchanged | Exact CHANGED_DURING_SEARCH or INSPECTION_FAILED SUBTREE; continue unrelated tasks. Recheck after ENOSPC as after any non-resource error. If the association is broken, target change wins over size; no retroactive name omission. |
 | Queued target's walk prefix/immediate parent is changed or uncertain | One root CHANGED_DURING_SEARCH or INSPECTION_FAILED REMAINDER. Only a failed shared prerequisite, not target uncertainty by itself, licenses this root stop. |
 | Checked application-link target fails, changes or lacks an established actual parent | Per-candidate affecting ENTRY at the representable link location, using the established size/change/inspection reason; continue other candidates. An unassociated target cannot justify an actual-parent group or root-wide failure. Resource/cohort refusal still takes precedence. |
@@ -1228,6 +1261,12 @@ prefix/parent versus final-target association and apply the same scope distincti
 root REMAINDER for failed shared prerequisites, exact SUBTREE for an independent
 target beneath an established unchanged parent. Independent observed change
 uses CHANGED_DURING_SEARCH; uncertainty uses INSPECTION_FAILED.
+An unchanged current/prefix identity and association do not alone establish
+every required fresh policy proof. The observation-phase producer must settle
+whether a size-only refusal loses such a shared prerequisite or permits exact
+continuation; per-transition reports are policy/location checks, not byte-based
+movement detectors. The current root-stop rule is under repair, not an accepted
+reason to omit queued siblings after independent proof.
 No later size refusal retroactively groups an already finalized name.
 No child open follows observed movement/unknown policy. The remaining
 check-to-open prompt window and actual canonical calls require signed-host
@@ -1659,6 +1698,13 @@ identity, buffer and wrapper is charged before storage in the same 128 KiB
 scratch partition; a candidate plus one target and a two-component walk fit the
 existing shape, or refuse with affecting coverage before another allocation.
 
+**Region replay is missing from this phase table.** It records k119's selected
+ownership constraints, not a completed composition with the replay rule above.
+The observation-phase design/review must reconcile replay, metadata bracket
+re-establishment, root-stream conversion and final report/membership before
+implementation or classification relies on the table. Its call set, credit
+and scratch ceilings remain unchanged inputs; no extra phase is inferred here.
+
 | Phase | Temporary A / B and retained observation |
 | --- | --- |
 | Candidate identity and native metadata | Walk with A as checked parent and B as newly opened child; validate child/parent association, then close A before advancing. At the final pair, canonical and metadata checks use those charged descriptors and bounded candidate values. No third validation descriptor. |
@@ -2056,7 +2102,15 @@ decision ahead of that dependence instead of treating it as already approved.
 
 ### Canonical path acceptance subjects
 
-All subjects remain pending. The selected resolution/policy/spelling/name
+All subjects remain pending. Pre-open mount/symlink witnesses and replay/size
+phases require producer repairs and mandatory reviews before classification;
+the launch/open increment separately owns long-result action design/review.
+The [resolver/spelling subjects](../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction)
+also require foreign-mount guards/dialog observers, cloud/relocated policy links,
+metadata-bracket/root-conversion replay phases and cache-lengthened current/
+prefix reports beside unchanged associations and real movement. No shortened
+fixture or injected action success proves those native outcomes.
+The selected resolution/policy/spelling/name
 contract requires review; long-path classification/end-to-end reachability must
 then be reconciled before a native classified task is treated as constructible.
 The [resolver/spelling construction](../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction)
@@ -2284,10 +2338,39 @@ route here. Client MRU, chooser labels and secondary-action presentation do not
 become server state. Desktop process capture/focus after an action stays the
 separate, authorized receipt handoff in the launch/open contract.
 
+### Long-location action dependency
+
+The search ceiling of 8,192 returned UTF-8 bytes is a discovery/copy contract,
+not an established actionability ceiling. The existing
+[action inspection contract](workspace-launch-and-open.md#evidence-so-far)
+uses realpath/stat and selected path-based resource values; the SDK PATH_MAX
+is 1,024 bytes including NUL. Its overlength-as-not-found branch does not prove
+that a component-created long location is absent. Search can therefore observe
+a roughly 1,500-byte file or a long application location whose later inspection
+cannot use that route. Expanded/native spelling limits matter too; raw input
+length alone is no reliable presence or actionability verdict.
+
+The launch/open increment must design and review supported long-result actions
+and truthful failure meaning before this handoff is complete. No action contract
+changes here. Keep selected paths unchanged and installation constraints intact;
+do not clip a location, omit applicationPath, retry another copy or infer absence
+from overlength. Client-owned copy remains available, but a copy-only or shorter
+baseline is unaccepted. Long-result launch, reveal, default and Zed opening need
+explicit cross-seam subjects below. Measured inability to act on useful results
+belongs in the existing home/workflow omissions decision before acceptance.
+
 ## Test seams and acceptance
 
 Reuse the three already agreed seams; implementation/acceptance is planning's
 work. The evidence comparison is mechanism input, not search API acceptance.
+
+Within those seams, long-result handoff subjects must take an actual roughly
+1,500-byte file and long bundle selection into default/Zed open, reveal and
+constrained launch. Independently observe extant identity, inspection/submission,
+truthful failure, grants and dialogs; controlled success/error mapping supplies
+no native actionability pass. The
+[construction contract](../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction)
+records these subjects and the action producer owns their unresolved route.
 
 | Seam | Required cases, all pending for search |
 | --- | --- |

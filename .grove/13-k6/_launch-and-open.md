@@ -134,6 +134,16 @@ its place here.
 
 ## Design handoff
 
+`search-path-resolution-k124`/k125 found that returned long search locations
+outgrow this increment's PATH_MAX-limited metadata route and can be reported
+missing by its overlength branch. `long-search-result-actions-k128` owns the
+design and mandatory review for long-result launch/open/reveal and truthful
+failure meaning. It runs here before search's witness/phase/classification and
+resource review/planning consumers. Earlier short-path acceptance remains
+bounded to its subjects; no shorter search ceiling, selector fallback, copy-only
+baseline, new consent or incompatible version is approved. Actual actionability
+and measured workflow omissions stay pending and feed k93 before acceptance.
+
 `protected-path-metadata-k73` records its bounded answer in
 `docs/verification/protected-path-metadata.md`. The tested first-use metadata and
 registered-application route is prompt-free on Desktop, Documents and Downloads;

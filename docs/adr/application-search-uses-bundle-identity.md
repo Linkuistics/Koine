@@ -17,20 +17,6 @@ observed root membership. A retained identity keeps its first finalized reported
 name/path when later same-identity spellings differ; discarded identities have
 no global spelling history.
 
-Admitted root/frame/witness observations use the same reported-directory
-operation as bundle targets; queued tasks retain listed locations and identities; preliminary link resolution is not their returned
-canonical spelling. File entry paths of every kind join a reported parent with
-the observed
-name, preserving final symlink locations. Descendants use fresh successful
-directory reports, which can differ from that anchor's listed location.
-Same-identity cached variants are observations, not movement proof; exact-path
-file deduplication can leave distinct strings for one object. A global spelling/
-identity history would add retention and eviction obligations beyond the bounds.
-Mixing realpath's Data-volume spelling
-with a different canonical presentation would duplicate unchanged file locations and
-fabricate application path changes. Synthetic protected/cloud targets derive
-from canonical-home components without opening excluded directories. Actual
-firmlink, case and Unicode call behavior remains a signed-host obligation.
 The naming contract uses the default firmlink presentation and never replaces
 a refused path with an alternate spelling. The public value ceilings and eligible
 domain remain unchanged; path-size diagnostics do not accept reduced workflow

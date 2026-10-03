@@ -248,7 +248,15 @@ reports supply descendant prefixes, retained app identities keep first-finalized
 spelling, and byte differences alone prove no movement/failure. Current-turn
 location reacquisition spends the same two temporaries, scratch and wait; exact
 file dedup can leave cache-variant locations distinct. No changed k119 call set,
-account, domain, consent, version or native acceptance is supplied. The mandatory
-resolution review precedes k123 classification design and its own review, then
-k120/k30. Native classification reachability, all useful/default/no-dialog/binary
+account, domain, consent, version or native acceptance is supplied.
+Review k124 is integrated by k125: pre-open mount/symlink witnesses move to
+search-preopen-witnesses-k126, followed by replay/size-refusal phases in
+search-path-observation-phases-k127. Both producers must insert mandatory
+reviews before their next consumer; k123 classification and its own review,
+then k120/k30, consume those reconciled chains. Long-result action support
+and truthful overlength failure move to long-search-result-actions-k128 in
+the earlier launch-and-open node, with its own mandatory review before search
+consumers. The 8,192-byte search ceiling is no actionability guarantee; no
+shorter/copy-only baseline, new consent or changed call set is approved. Native classification reachability, all useful/default/no-dialog/
+binary
 outcomes and k93's actual bound/spelling/rewalk omissions decision remain live.

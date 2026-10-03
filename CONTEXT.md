@@ -177,8 +177,11 @@ equal returned paths and merge observed membership. A location is distinct from
 a **resource reference** and from a pinned native file identity. A later action
 revalidates the path and may encounter another occupant. The
 [path contract](docs/specs/workspace-search.md#path-design-dependencies) owns
-spelling and name-preserving native-size/descent diagnostics; long-path
-classification realization remains unresolved; a
+spelling and name-preserving native-size/descent diagnostics; pre-open witnesses,
+replay/size phases and long-path classification realization remain unresolved.
+The [action handoff](docs/specs/workspace-search.md#long-location-action-dependency)
+also needs launch/open design and review: the search value ceiling is no
+actionability guarantee, and overlength is no proof of absence. A
 native descent limit alone does not make a representable name unreturnable.
 
 **Search application identity**: The established native bundle directory identity

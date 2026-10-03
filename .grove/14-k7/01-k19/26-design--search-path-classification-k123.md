@@ -12,7 +12,12 @@ omission band or claiming queue reachability from capacity arithmetic.
 - Findings: `search-canonical-paths-k110` at
   `b9a5d6401257a8b3f66973330edfdc065fbf3440`; triage: `search-canonical-paths-k121`.
 - Consume `search-path-resolution-k122` and its mandatory review/integration
-  first. The tree must put that chain ahead of this producer. Reconcile the
+  first. k124/k125 externalize `search-preopen-witnesses-k126` then
+  `search-path-observation-phases-k127`, each with its mandatory review and any
+  earned integration before this producer. Also consume the earlier
+  launch-and-open `long-search-result-actions-k128` design/review chain for the
+  action handoff; do not infer long-result action support from search ceilings.
+  The tree must put those chains ahead of this producer. Reconcile the
   current artifact rather than stale k108/k119 line coordinates.
 - `docs/specs/workspace-search.md`: Path design dependencies, selected in-process
   call table, native-result consumption, two-temporary ownership, FIFO accounting,

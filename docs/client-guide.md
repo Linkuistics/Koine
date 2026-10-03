@@ -367,8 +367,10 @@ nothing".
 **Designed, not served yet.** The selected
 [path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
 checks parent and child policy before opening, and preserves representable names.
-Its review precedes long-path classification design/review, then the
-complete-resource review/planning;
+Pre-open mount/symlink witnesses and replay/size-phase repairs need mandatory
+producer reviews before long-path classification design/review, then the
+complete-resource review/planning; long-result action support needs its own
+launch/open design and review;
 native allocation and
 [serviceability instrument/subject construction](verification/search-serviceability.md)
 are specified as design; the whole-resource review also precedes planning.
@@ -530,6 +532,14 @@ or stale service state. UNREGISTERED and UNKNOWN remain reveal/copy choices and
 cannot launch by this route; a known identifier can still be copied. File paths feed
 existing open/reveal operations. Null default-app metadata is unknown, not no handler.
 Search classification does not pin a file or promise that opening will succeed.
+The 8,192-byte search ceiling also does not establish long-result action support:
+the existing action inspection uses PATH_MAX-limited calls, and overlength does
+not prove an observed location absent. The
+[long-location handoff dependency](specs/workspace-search.md#long-location-action-dependency)
+requires launch/open design and review before this seam is complete. Keep paths
+and selected installation constraints unchanged; no clipped path, alternate
+copy, disabled-action baseline or shorter search ceiling is approved. Copy is
+client-owned; long-result launch/reveal/default/Zed outcomes remain pending.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain

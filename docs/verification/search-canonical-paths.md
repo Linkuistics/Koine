@@ -4,8 +4,11 @@ This is source/SDK analysis for the
 [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
 not a native search measurement. Implementation, independent provider/GraphQL
 and signed hardened macOS acceptance remain pending. The selected resolver,
-pre-open policy and spelling/name contracts require their load-bearing review
-before classification design and its review, then complete-resource review/planning.
+pre-open policy and spelling/name contracts require mount/symlink witness and
+replay/size-phase repairs with load-bearing reviews before classification design
+and its review, then complete-resource review/planning. Long-result actions
+require a separate design/review in the launch/open increment. No complete
+two-temporary replay/metadata composition or long-result action pass is claimed.
 The
 [path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
 keep long-path classification/end-to-end reachability unresolved.
@@ -140,6 +143,37 @@ describes returned bytes without an added NUL. Its
 explains native absolute/parent and link processing. These explain APIs, not
 the guest build or measured APFS cached names. The adapter's 32 expansions
 and derived work accounting are selected bounds, not a new OS guarantee.
+
+[Apple's open manual source](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/open.2)
+assigns ELOOP to O_NOFOLLOW finding a final symlink. In this single-component
+walker, that error after a directory probe is the context's changed type/
+association outcome, not evidence of a followed-link loop. Expansion 33 alone
+uses bounded-hop guidance. A native barrier must place replacement between
+probe and open; controlled errno injection proves mapping only, not that race.
+
+The following subjects preserve selected bounds and name semantics, but their
+pre-open witness and replay phases remain prerequisites under repair. Required
+additional subjects are:
+
+- No-follow device refusal before any unknown removable/network/image or nested
+  foreign-mount open, across root/link/registration/dequeue/current sources;
+  startup/home/bootstrap and fixed Preboot exceptions need independent proof.
+  Observe dialogs/hydration throughout probes and late cleanup. Refused URLs
+  cannot justify a registration negative.
+- Cloud/iCloud policy links beneath established blocked Library and relocated
+  Documents into ordinary Work/Docs, with case/NFC/NFD/Data aliases. The witness
+  producer must define required target proofs and dependency-scoped outcomes;
+  a literal spelling or unavailable volume is no passing substitute.
+- Region replay before metadata and at finalization, root-stream conversion,
+  and fresh current/prefix reports with cache-lengthened ENOSPC after unchanged
+  association. The phase producer must supply coherent A/B/metadata brackets,
+  copied-value/work charges and exact-versus-shared refusal outcomes. Separate
+  real movement from controlled cache variation; queued siblings are witnesses.
+- Take actual roughly 1,500-byte file and long bundle search results into default/
+  Zed open, reveal and constrained launch. Independently record identity/presence,
+  action inspection/submission/error and dialogs at provider/GraphQL/binary/VM
+  seams; an injected action success is no native long-path pass. The launch/open
+  producer owns the unresolved route and truthful overlength failure meaning.
 
 Record sequence number, source/context, parent/child identities, raw input/
 listed/reported/link bytes, return count/errno, hop/remaining/work counters,

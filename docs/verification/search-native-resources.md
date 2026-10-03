@@ -240,7 +240,10 @@ is allowed. Reopened expected identity and parent/child association are
 independent change evidence; held-fd self-comparison and path-byte differences
 are not. The selected resolution/spelling contract preserves retained app
 metadata and uses A/B for current-location reacquisition before each listing
-turn. Long-path classification and all native outcomes remain pending.
+turn. Region replay does not yet compose with these metadata/commit brackets;
+pre-open witnesses and replay/size-phase producer repairs/reviews precede
+classification. Long-result actions also need launch/open design/review.
+The selected call set/accounts are unchanged; all native outcomes remain pending.
 
 Admission, finalization and freeze share one gate. Late results close on the
 worker; late resource errors latch the surviving cohort before membership

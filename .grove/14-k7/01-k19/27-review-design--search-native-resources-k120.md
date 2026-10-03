@@ -30,6 +30,10 @@ decisions, not merely the last child's diff:
 - k110's canonical review is integrated by `search-canonical-paths-k121`.
   Consume the `search-path-resolution-k122` and `search-path-classification-k123`
   producer/review/integration chains before this review. Reconcile their commits
+  after k124/k125's pre-open witness k126 and replay/size-phase k127 producer
+  repairs and mandatory reviews, plus long-result actions k128's design/review
+  in launch-and-open. None of those unresolved prerequisites is proved by k119's
+  phase table, capacity arithmetic or a shorter native fixture. Reconcile
   with k109's historical artifact: resolver/pre-open policy, cached spelling,
   representable directory-name/descent and long-path classification were not
   settled by k108/k119. K121 repairs shared-prefix versus target/link scopes,
