@@ -8,6 +8,7 @@ exports:
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
+- [native resource feasibility and allocation alternatives](index.html#diagram-search-resources);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
@@ -38,8 +39,14 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel presents one canonical directory observation and
-native size refusals alongside FIFO and reviewed transport/compatibility.
+The current-discussion panel presents the
+[resource boundary comparison](index.html#diagram-search-resources): error
+channels do not establish hidden-allocation bounds or signed-host event
+visibility. It compares raw tracing, direct owned inspection and private
+support-process candidates, without selecting a runtime route. The
+[feasibility analysis](../../verification/search-native-resources.md) records
+the evidence and residual obligations. The unchanged canonical path view,
+FIFO and reviewed transport/compatibility provide context.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
 require the canonical proposal's review and native resource design/review before planning. Finish shallower admitted
 listings before deeper ones, with one current stream/root and a 512-task/384 KiB
@@ -91,16 +98,13 @@ opening remains pending a human consent/semantics decision. The updated
 [request sequence](index.html#diagram-workspace-open) qualifies its inspection
 premise with that limit; the outcome view remains unchanged context.
 
-The current update changes these views and contracts:
+The current update changes these views and summaries:
 
-- [Search → canonical directory observation](index.html#diagram-search-canonical) — Adds fsgetpath, its NUL-inclusive native boundary, rechecks and actual-parent/root refusal branches.
-- [Search → finish shallow names before bounded descent](index.html#diagram-search-traversal) — Uses the canonical proposal for current-stream checks and names its pending review.
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Distinguishes known native/public size omissions from formerly fitting prefix movement.
-- [Search → selection and action handoff](index.html#diagram-search-handoff) — Names the canonical proposal and unchanged public limits while retaining existing authorized actions.
-- [Search contract → canonical directory observation](../../specs/workspace-search.md#canonical-directory-observation) — Defines actual calls, buffers, association checks, error precedence and grouped omissions.
-- [Search contract → canonical acceptance subjects](../../specs/workspace-search.md#canonical-path-acceptance-subjects) — Separates native 79/80 byte and 512/513 count subjects from synthetic 43/44 arithmetic, with independent instruments.
-- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) — Cites the fsgetpath observation and keeps native naming/coverage acceptance pending.
-- [Native call analysis](../../verification/search-canonical-paths.md) — Records public source/SDK facts and constructible subjects without claiming native execution.
+- [Search → native resource feasibility](index.html#diagram-search-resources) — Separates healthy result signals, hidden allocation bounds and signed-host event visibility; all three allocation alternatives remain open.
+- [Search resource contract](../../specs/workspace-search.md#resource-accounting-and-scheduling) — Links the feasibility comparison and preserves its budgets, metadata outcomes, eligible domain and native acceptance obligations.
+- [Native resource analysis](../../verification/search-native-resources.md) — Records source/SDK evidence, tracing limitations, the two-credit constraint and the allocation/serviceability decisions still required.
+
+The canonical, traversal, coverage and handoff views remain unchanged context.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -139,12 +143,21 @@ Run `task design:workspace-render` to regenerate the workspace sequence and
 outcome flow with the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
-Run `task design:search-render` for the five search views with D2 0.9.0,
-ELK for the canonical view and Dagre for the remaining views, light theme 0
+Run `task design:search-render` for the six search views with D2 0.9.0,
+ELK for the canonical/resource views and Dagre for the remaining views, light theme 0
 and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
 with failing schema controls; this does not prove runtime branch invariants.
+The resource feasibility view was checked in Safari in the isolated macOS
+26.5/25F71 clone `koine-k111-design`. The manifest, viewer, D2 source and SVG
+were byte-identical to the host subjects. A fresh resource deep link reached
+the intended title and Current/Updated markers; the SVG start and upper branches
+were readable at a 1920-pixel window. The current-discussion panel showed the
+feasibility status, relevant context links and the single changed-view summary.
+The whole light export was also inspected as a 1600-pixel librsvg raster.
+This verifies light presentation only; dark/narrow browser appearance was not
+checked. Native inspection/resource acceptance remains pending.
 The preceding discovery-only presentation was checked in the isolated evidence
 VM. The current search-design presentation was checked on 2026-10-03 in Safari
 on the isolated macOS 26.5 clone `koine-k92-design`, using a byte-identical local

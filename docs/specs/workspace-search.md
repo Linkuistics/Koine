@@ -6,7 +6,9 @@ The [scope and coverage view](../design/architecture/index.html#diagram-search-c
 and [selection handoff](../design/architecture/index.html#diagram-search-handoff)
 are the reading entry; the
 [canonical observation view](../design/architecture/index.html#diagram-search-canonical)
-shows the current native path proposal. The [search SDL](../design/workspace-search-schema.graphql)
+shows the current native path proposal, and the
+[resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
+shows unresolved allocation alternatives. The [search SDL](../design/workspace-search-schema.graphql)
 and [client examples](../design/workspace-search-operations.graphql) define an
 additive workspace contribution. They compose with the existing
 [launch/open contract](workspace-launch-and-open.md), not a second provider.
@@ -48,6 +50,14 @@ The compatibility subjects below require distinct retained and search-release
 checks before acceptance. Preserve the outcome precedence below. Protected-home
 acceptance must assess measured bound-driven omissions alongside protected
 scope before the baseline closes. Arbitrary native-order samples are not accepted.
+
+The [resource feasibility analysis](../verification/search-native-resources.md)
+separates a public CFError-bearing registration candidate from hidden-allocation
+bounds and signed-host event visibility. It selects no runtime mechanism. The
+resource producer is decomposed into feasibility, allocation and constructible
+serviceability-subject design; its complete artifact still requires review.
+The owned-credit formula, two temporary credits, metadata/public outcomes,
+domain and all native acceptance obligations below remain binding.
 
 ## Discovery obligations before planning
 

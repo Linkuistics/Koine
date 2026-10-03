@@ -152,3 +152,11 @@ byte boundary; controlled 43/44 arithmetic remains separate. The spec, call
 analysis and canonical view carry the detailed subjects. Its mandatory
 load-bearing review, k109 design/review, all native outcomes and k93's measured
 workflow-omissions decision remain ahead of planning/acceptance.
+
+k109 is now a design node. k111 records error-channel and tracing feasibility
+in docs/verification/search-native-resources.md and the resource comparison;
+it selects no runtime route. k112 owns the bounded native allocation decision,
+and k113 owns serviceability subject construction and the mandatory review of
+the complete k109 artifact. All original k109 completion conditions still bind.
+Planning/acceptance, helper packaging/signing, consent, limit changes and any
+reduced metadata/domain guarantee remain unapproved.

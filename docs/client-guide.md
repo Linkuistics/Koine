@@ -367,6 +367,9 @@ nothing".
 **Designed, not served yet.** The fsgetpath canonical-path proposal requires its
 load-bearing review; opaque native-resource call/measurement design and its
 review also precede planning.
+The [resource feasibility analysis](verification/search-native-resources.md)
+records error-channel and observer limits; allocation and constructible subjects
+remain open, with no accepted change to public outcomes or workflow coverage.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review

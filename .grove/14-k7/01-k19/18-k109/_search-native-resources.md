@@ -1,4 +1,4 @@
-# search-native-resources-k109
+# search-native-resources-k109 — brief
 
 ## Goal
 
@@ -76,3 +76,28 @@ Substantial design only, not implementation or a native evidence chain. k93
 owns useful coverage/omissions with Antony. No shell-raised limit, diagnostic
 entitlement, alternate signature or smaller domain is approved. The producer
 cuts its review lazily once its artifact exists.
+
+## Decomposition
+
+The native-call substitution alone cannot settle the allocation/instrument
+contract. The session decomposes at that architectural seam, preserving every
+original completion condition above; these are design children, not an evidence
+chain or implementation leaves.
+
+1. search-resource-feasibility-k111 records source/SDK error routes, tracing
+   limitations and the alternatives' unresolved obligations.
+2. search-native-allocation-k112 chooses the concrete bounded call/allocation
+   and observation boundary, reconciling public facts, ownership, signing and
+   consent. It must externalize a required human choice before relying on it.
+3. search-serviceability-subjects-k113 constructs the independent/signed-host
+   instruments and subjects, reconciles all durable summary layers, and cuts
+   the mandatory load-bearing review of search-native-resources-k109 under
+   app-and-file-search-k19 as its last work act. The review must name concrete
+   residual doubts. Planning k30 waits for all children, review and any earned
+   integration.
+
+## Decisions (running log)
+
+- Error-observable public API availability is distinct from hidden-allocation
+  bounds and signed-host event visibility. The feasibility report records this
+  distinction; it changes no accepted contract or runtime verdict.
