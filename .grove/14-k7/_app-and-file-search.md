@@ -38,9 +38,10 @@ Every search root/output field needs workspace read only; existing action
 receipts keep both controls. Planning consumes the design review and the two
 review-repair producer decisions before cutting implementation. The discovery/coverage redesign now gives generic system-app roots, checked
 .app links, counted groups/remainders and independent root budgets. Its review
-and useful native/default coverage, including Safari/Finder, remain pending. Prompt-risk transport must preserve fixed framework
-meanings and weigh the schema-level alternative; the withdrawn minor-2 mapping
-is not an implementation dependency. Preserve action-only conformance against
+and useful native/default coverage, including Safari/Finder, remain pending.
+Prompt-risk transport is typed BLOCKED success/null data, pending its own review;
+fixed framework meanings stay unchanged and no diagnostic ABI addition is needed.
+Preserve action-only conformance against
 an independently retained workspace 1.0.0 compatibility host while adding a
 separate exact search-required profile for the upgraded host.
 `protected-home-search-k93` keeps Antony's partial-home versus explicit-setup

@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Discovery/coverage awaits review/native acceptance; BLOCKED transport awaits design.
+# Discovery/coverage and typed BLOCKED await review; all runtime acceptance pending.
 # Result-count truncation and partial traversal are independent.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
@@ -39,6 +39,40 @@ query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
       defaultApplication { bundleIdentifier applicationPath }
       defaultHandlerGuidance
     }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+# BLOCKED is inspectable without matches and produces no search execution error.
+# FAILED also has no matches error when that field is not selected.
+query InspectSearchCoverage($roots: [String!]) {
+  apps: workspaceSearchApplications(query: "", roots: $roots) {
+    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
+  }
+  files: workspaceSearchFiles(query: "", roots: $roots) {
+    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
+  }
+}
+
+# Within each root, BLOCKED gives two null aliases and no search errors. FAILED
+# gives failed at [apps, first]/[apps, second] or [files, first]/[files, second].
+# Root aliases are independent snapshots; nested aliases reuse their frozen result.
+# Publication capability errors can suppress any field, including coverage/status.
+query InspectAliasedMatches($roots: [String!]) {
+  apps: workspaceSearchApplications(query: "", roots: $roots) {
+    status
+    first: matches { name applicationPath }
+    second: matches { name applicationPath }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+  files: workspaceSearchFiles(query: "", roots: $roots) {
+    status
+    first: matches { name path }
+    second: matches { name path }
     coverage { ...SearchCoverage }
     dependency { reason guidance }
     resultsTruncated

@@ -251,7 +251,7 @@ the phrase “plus effects” is not a completed trace.
 | Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code. Unconstrained launch allows running-copy reuse; an installation constraint does not. | [Launch/open acceptance](workspace-launch-and-open.md#acceptance), including activation with another app frontmost and bounded acknowledgment. Served by the bundled workspace provider; L, G and N are established for this root, and V (activation, cold and warm, the twelve launchers, and the Gatekeeper timeout) is accepted in [launchers-vm.md](../verification/launchers-vm.md). |
 | Application search — discovery | `Query.workspaceSearchApplications(query:, roots:, limit:)` and every reachable output field: `workspace:read` only; no references or additional requirements. Client owns query entry, chooser, action menu, MRU, path-copy and known-identifier clipboard writes. | [Search contract](workspace-search.md#queries-and-inputs), [SDL](../design/workspace-search-schema.graphql), [examples](../design/workspace-search-operations.graphql). Mechanism input: [signed-host discovery](../verification/search-discovery.md). Generic CoreServices/Cryptex defaults and checked .app-link metadata provide designed Safari/Finder reachability. Root observation/group/remainder semantics and independent budgets await load-bearing review; arbitrary bounded sampling is not accepted. G/N/V search acceptance pending. |
 | Application search — selected actions | `Mutation.workspaceLaunchApplication(application:)` with the selected known identifier AND installation path; `Mutation.workspaceRevealPath(path:)`; every receipt field: `workspace:control` AND `desktop:control`. | [Selection handoff](workspace-search.md#selection-and-action-handoff). Reuses [launch/open evidence](workspace-launch-and-open.md#evidence-so-far); search-to-action G/N/V pending. The third-party app-reveal notice decision remains live (`reveal-app-bundle-notice-k90`). |
-| File search — discovery | `Query.workspaceSearchFiles(query:, roots:, limit:)` and every reachable output field: `workspace:read` only; no references or additional requirements. Client owns query entry, chooser, action menu, MRU and path clipboard writes. | [Coverage and outcomes](workspace-search.md#coverage-and-aggregate-outcomes), same SDL/examples and G/N/V obligations. Home protected scopes stay blocked with explicit partial/unknown coverage; handler metadata stays unknown. Root summaries and independent work/frontier/diagnostic budgets await review and native acceptance; prompt-risk transport awaits producer design before planning. Protected-home acceptance must also consider bound-driven omissions. Search implementation/acceptance pending. |
+| File search — discovery | `Query.workspaceSearchFiles(query:, roots:, limit:)` and every reachable output field: `workspace:read` only; no references or additional requirements. Client owns query entry, chooser, action menu, MRU and path clipboard writes. | [Coverage and outcomes](workspace-search.md#coverage-and-aggregate-outcomes), same SDL/examples and G/N/V obligations. Home protected scopes stay blocked with explicit partial/unknown coverage; handler metadata stays unknown. Root summaries and independent work/frontier/diagnostic budgets await review and native acceptance; typed BLOCKED transport awaits its load-bearing review before planning; no diagnostic framework addition is needed. Protected-home acceptance must also consider bound-driven omissions. Search implementation/acceptance pending. |
 | File search — selected actions | `Mutation.workspaceOpenPath(path:, application:)`, application omitted for default or an explicit Zed selector; `Mutation.workspaceRevealPath(path:)`; every receipt field: `workspace:control` AND `desktop:control`. No search read is implicit in these actions. | [Handoff](workspace-search.md#selection-and-action-handoff); existing [path](../verification/open-path-vm.md) and [reveal](../verification/reveal-path-vm.md) evidence remains bounded to its accepted cases. Source documents retain handlers; aliases/application payloads cannot be opened but can be revealed. Search-to-action G/N/V pending; protected default opening stays pending (`protected-default-open-k89`). |
 | Web search | Client query/suggestions/typed-query fallback; `Mutation.workspaceOpenURL(url:)`, `workspace:control` AND `desktop:control` | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Served by the bundled workspace provider; L, G, N and V are established for this root ([evidence](workspace-launch-and-open.md#evidence-so-far), [VM acceptance](../verification/open-url-vm.md)), except Dia's page load, which stays pending an account decision. Client responsibilities, recorded: query entry, the search engine and its template, suggestions and the typed-query fallback (the one open, chosen before the request) are the client's; Koine makes no search request and has no Google proxy (its network calls over the VM run include no `connect`). The [contract-only client](../../clients/contract-only/README.md) does all of it from the documented contract ([findings](../verification/open-url-contract-client-findings.md)). |
 | Media | Desktop control, system route | Pointer and media. Pending. |
@@ -305,14 +305,19 @@ complete list. Unknown state/geometry is similarly represented explicitly.
 Search additionally reports coverage for each requested root: searched scope,
 skipped scope and reason, and whether coverage is complete, partial or unknown.
 Successful matches may coexist with explicit partial coverage; an empty partial
-result is not a complete successful search. Consent-blocked roots carry the
-`permission` / `os-permission` classification and owner/consent diagnostics in
-their coverage outcome. If observed missing consent blocks every requested scope,
-search fails with that permission error rather than returning a healthy empty
-list. Known prompt risk with UNKNOWN consent is a different observation: search
-withholds the list and preserves coverage, but its error-versus-schema transport
-requires a producer decision before planning. Do not reinterpret the fixed
-missing-named-consent ProviderFailure case to implement it. For no-progress search,
+result is not a complete successful search. Observed missing named consent retains
+the permission/os-permission error with Koine as owner; if such consent blocks
+every requested scope, the shared rule is a permission failure, never healthy
+empty. The current search mechanism does not obtain that observation.
+**Prompt-risk policy is an explicit exception to the all-blocked permission-error
+premise:** UNKNOWN consent means no consent absence was established. Search returns
+typed BLOCKED with null matches and dependency, explicit coverage and no search
+execution error even when matches is selected, under the
+[diagnostic decision](../adr/prompt-risk-is-search-data.md). The coverage object
+keeps PERMISSION/OS_PERMISSION/KOINE classification for the policy reason, with
+null osPermission; it does not change the framework's missing-named-consent case.
+Coverage-only and aliased selections keep the same branch, subject to ordinary
+authorization/publication errors. For no-progress search,
 actual native/work failure precedes prompt risk, which precedes pure
 absence/exclusion; prompt-risk plus a missing/unsupported root is BLOCKED,
 without inventing a native failure. Missing indexes or
@@ -368,8 +373,9 @@ those limits with name enumeration, explicit scope exclusions and no index-healt
 dependency. Review repair retains per-root coverage and a blocked outcome
 without a successful list. Discovery/coverage now has generic system-app roots,
 counted groups and independently budgeted cyclic root scheduling, awaiting review
-and native acceptance. Prompt-risk transport still needs design before planning. The withdrawn
-nil-consent framework mapping is not an implementation dependency. No new
+and native acceptance. Prompt-risk transport uses typed BLOCKED success/null
+values, pending its load-bearing review before planning. The framework's
+named-consent mapping remains fixed; no diagnostic ABI addition is needed. No new
 consent or entitlement is approved; implementation and acceptance remain pending.
 
 ## Compatibility and delivery

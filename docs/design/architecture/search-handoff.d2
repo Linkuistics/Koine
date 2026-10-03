@@ -5,8 +5,8 @@ classes: {
 }
 Start: "Start here · Client query\nFilename + roots + limit" {class: start}
 Search: "Workspace search\nworkspace:read\nObserved paths, including checked .app links\nCounts + groups + unfinished remainder"
-Choices: "Client derives choices\nCheck coverage / registration / errors\nUNREGISTERED + UNKNOWN: reveal/copy only"
-Selected: "Client selects one location\nLaunch INSTALLED: identifier AND path\nFile: path, not pinned identity"
+Choices: "Client checks status + coverage + errors\nBLOCKED: show skipped scope, consent unknown\nAVAILABLE: derive choices from registration"
+Selected: "Client selects an AVAILABLE location\nLaunch INSTALLED: identifier AND path\nUNREGISTERED / UNKNOWN: reveal + copy only"
 Clipboard: "Client clipboard write\nKnown path / identifier\nNo Koine pasteboard operation"
 Action: "Existing workspace actions\nLaunch · open · reveal\nworkspace:control AND desktop:control"
 Revalidate: "Workspace revalidates on action\nPresence · registration · payload\nNo dropped constraint or alternate-copy retry"

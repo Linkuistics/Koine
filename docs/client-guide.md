@@ -357,7 +357,7 @@ nothing".
 ## Searching for applications and files
 
 **Designed, not served yet.** Discovery/coverage awaits review and native
-acceptance; prompt-risk transport awaits its separate producer decision.
+acceptance; typed BLOCKED transport awaits its load-bearing review.
 Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
 [search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
@@ -387,11 +387,29 @@ one root spending later roots' credits, but native stalls/deadlines can still
 leave them unvisited. Home excludes protected traversal. In a
 BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
-Accessibility or established consent absence. Its GraphQL error transport is
-unsettled; clients must not assume the withdrawn nil-consent mapping. With no
+Accessibility or established consent absence. BLOCKED is error-free search data,
+including when choices: matches is selected: choices and dependency are null,
+resultsTruncated is false, roots have no progress and UNKNOWN coverage (a
+positively absent optional default retains COMPLETE empty-domain coverage), and at least
+one scope carries PROMPT_RISK. Show “Scope not searched: Koine avoids an inspection
+that may request consent; consent state unknown,” followed by the scope/guidance.
+Do not show a healthy empty search or ask the user to acquire a named consent.
+Observed missing named consent on other operations retains the permission error
+and its documented identifier/guidance; an unfamiliar identifier remains an OS
+consent failure directed to Koine. Legacy nil/blank identifiers are unspecified
+consent errors, never a prompt-risk sentinel. With no
 progress, real native/work failure wins, then any prompt-risk scope is BLOCKED,
 then purely missing/unsupported roots have a dependency outcome. A missing root
 alongside prompt risk does not turn the request into a native failure.
+
+Coverage-only queries get the same BLOCKED status/diagnostics without selecting
+matches. Repeating matches under two aliases returns null twice without errors;
+FAILED instead raises failed at each selected alias path. Separate root aliases
+are independent searches, not one shared snapshot. After any progress, AVAILABLE
+may include blocked scopes in coverage without a matches error. Check GraphQL
+errors before classifying any branch: revocation can null a nullable list or
+propagate a denied non-null coverage/status field to the root. A surviving
+status never overrides that denial, and coverage is not promised after it.
 
 Derive choices locally. An INSTALLED application with a known identifier feeds
 both that identifier and `applicationPath` to the constrained launch below;

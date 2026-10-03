@@ -61,3 +61,50 @@ before implementation planning depends on it.
 This is a design/ADR producer, not a framework implementation leaf. Keep current
 desktop/action mappings as the compatibility baseline. A new consent or setup
 is neither necessary nor approved merely to represent a blocked read policy.
+
+## Decisions (running log)
+
+- Choose schema-level BLOCKED with successful null matches/dependency and exact
+  coverage. UNKNOWN consent reports unattempted prompt-risk policy, never observed
+  denial. The existing ProviderValue success/null path suffices; no diagnostic
+  framework symbols, feature or minor are needed. A new structured failure would
+  impose permanent cross-kind validation and old-host refusal for no extra search
+  information. Record this independent decision in the minimum coherent ADR set.
+- Keep observed missing named consent on the existing permission-error route.
+  Preserve no-progress precedence (real native/work failure, prompt risk, pure
+  absence/exclusion), AVAILABLE after any progress, and normal publication denial.
+  Coverage-only selections must describe BLOCKED without errors; every aliased
+  BLOCKED matches selection returns null without an error or another native read.
+- Verify against current source: framework osPermission permits public nil/blank
+  construction; the adapter maps nil to an empty string and retains blank strings.
+  Search must not use either as prompt risk. Other kinds ignore permission;
+  unknownResolver reports resolverMismatch. This design preserves that baseline.
+- Design the first search provider/schema as additive 1.1.0 on the existing
+  framework-1.1/features contract. Name workspace-actions-1.0-compatibility,
+  workspace-actions-1.0-upgraded-core and workspace-search-1.1 as distinct binary
+  subjects. Preserve the exact old action profile/SDL and catalogue baseline;
+  require a separate exact search profile plus its per-user-selected variant.
+  Existing fixture update 1.1.0/schema 1.0.0 remains separate from search 1.1.0.
+- Use the mandated tree review as the fresh-context instrument under Grove and
+  doubt-driven-development; no in-session reviewer ran. Implementation planning
+  consumes both repair reviews, never this producer alone. New consent/setup,
+  default opening, app reveal and bound-driven home acceptance stay live elsewhere.
+
+## Verification
+
+Tier 2 graph project is Users-antony-Development-Koine.add-plugins-for-modaliser-requirements,
+generation 2026-09-29T10:36:20Z. Discovery found ProviderFailure and the adapter;
+its trace is heuristic/stale rather than current authoritative evidence. Coverage
+reported the current adapter/Authority/Engine changed, docs excluded and Engine
+parse gap 295. Read current Resolution.swift, ProviderContribution's complete
+registration/mapping path, Authority's domain errors, Engine's error/publication
+path and the reported gap directly. No exhaustive graph claim was made.
+
+Design SDL/example and documentation-link checks passed on frozen subjects;
+negative schema controls rejected removed search, wrong input/unknown field and
+foreign-provider type. D2 0.9.0 regenerated the search exports. Safari in isolated
+macOS 26.5/25F71 inspected coverage/handoff fresh deep links and wide light views,
+dark discussion/outline and 800-pixel reflow. Manifest and both changed SVGs were
+digest-identical in the guest. SVG images remained light inside the dark shell.
+These checks do not establish runtime branch invariants, new binary pairs or
+native search/no-dialog acceptance; the spec's three-seam obligations stay pending.

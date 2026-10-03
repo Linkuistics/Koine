@@ -12,6 +12,10 @@ The cost is disciplined evolution of public types, protocol requirements,
 concurrency contracts and semantics, plus a single framework identity at
 runtime. A plugin may require newer framework symbols than an old host supplies;
 its minimum version must be checked before loading, not negotiated afterward.
+Typed [search prompt-risk outcomes](prompt-risk-is-search-data.md) use existing
+success values and do not add framework symbols/features or reinterpret fixed
+failure meanings. Constructible nil/blank consent failures retain their legacy
+mapping; they cannot become sentinels for policy blocking.
 Swift's [library-evolution rules](https://www.swift.org/blog/library-evolution/)
 support this direction; compatibility is demonstrated with independently built
 old/new binary pairs through the native plugin seam.

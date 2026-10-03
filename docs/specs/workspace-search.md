@@ -10,7 +10,9 @@ additive workspace contribution. They compose with the existing
 [launch/open contract](workspace-launch-and-open.md), not a second provider.
 The [effect-authority decision](../adr/provider-authority-follows-effects.md)
 and [first-party selection decision](../adr/first-party-provider-selection.md)
-remain binding. No released or currently served search behavior is claimed.
+remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
+keeps policy blocking in typed search data. No released or currently served
+search behavior is claimed.
 
 **Discovery and coverage design awaits its load-bearing review.** Generic system
 application roots and checked application-link metadata replace the incomplete
@@ -19,9 +21,8 @@ log that could exhaust diagnostics inside the first root. The
 [coverage decision](../adr/search-coverage-describes-observations.md) explains
 the public granularity trade-off. These are design obligations, not native
 acceptance or Antony's acceptance of reduced workflow coverage. Prompt-risk
-transport separately needs a compatible design and an ADR; the withdrawn
-nil-consent `ProviderFailure.osPermission` mapping is not an implementation
-instruction. Preserve the repaired outcome precedence below. Protected-home
+transport uses schema-level BLOCKED with null matches and no execution error;
+its load-bearing review is pending. Preserve the outcome precedence below. Protected-home
 acceptance must assess measured bound-driven omissions alongside protected
 scope before the baseline closes. Arbitrary native-order samples are not accepted.
 
@@ -257,7 +258,7 @@ The two result types share these outcome semantics:
 | `status` | `matches`, `dependency`, and execution error, absent publication denial |
 | --- | --- |
 | `AVAILABLE` | Non-null list, possibly empty; null dependency. At least one root made progress. Check every coverage object before describing an empty list as complete. |
-| `BLOCKED` | Null matches and dependency. No progress, no real native/work failure, and at least one prompt-risk scope; other roots may be absent/excluded. Coverage survives and records each cause. Error transport remains a producer design decision; do not implement the withdrawn nil-consent mapping. No consent-absence inference. |
+| `BLOCKED` | Null matches and dependency, with no search execution error, including when matches is selected. No progress, no real native/work failure, and at least one prompt-risk scope; other roots may be absent/excluded. Coverage records each cause. This is a blocked policy outcome, never consent-absence inference or healthy empty. |
 | `DEPENDENCY_UNAVAILABLE` | Null matches; dependency `NO_SEARCHABLE_ROOT` with guidance. Every root is missing, not a directory, or excluded/unsupported by the declared domain; no execution error at matches. Coverage gives the exact per-root reasons. |
 | `FAILED` | Null matches and dependency; `matches` raises `failed`. No progress and at least one actual native failure, timeout/capacity refusal or unrepresentable root. Prompt risk mixed solely with absence/exclusion is not a native failure. |
 
@@ -269,8 +270,9 @@ scope, then DEPENDENCY_UNAVAILABLE for purely absent/excluded roots. For example
 `[Desktop, access-denied]` is FAILED. A non-TCC access denial has
 `ACCESS_DENIED` and no permission object; do not infer a consent from errno or
 Cocoa 257 alone. Other unexpected failures are `INSPECTION_FAILED`. In a
-blocked result the first prompt-risk root in input order supplies the primary
-diagnostic scope; coverage retains every cause and target. These are **new search result** rules, not changes
+blocked result a client may highlight the first prompt-risk root in input order;
+coverage retains every cause and target and is the only diagnostic payload.
+These are **new search result** rules, not changes
 to desktop null/absence behavior. A null search root always has an input,
 capability or execution error. Status/coverage/matches are read fields: revocation
 may suppress any selected branch through standard non-null propagation. A
@@ -278,9 +280,45 @@ published status never overrides errors. An error-free result must satisfy the
 table's branch invariant; clients report malformed combinations as failure.
 The FAILED error is raised when `matches` is selected; a status-and-coverage
 query can inspect diagnostics without selecting that failing field. It still
-carries no successful list. BLOCKED's error-versus-schema transport is unsettled.
-Any matches refusal derives from status and coverage without another native
-inspection or an arbitrary GraphQL error hidden inside provider values.
+carries no successful list. BLOCKED returns an ordinary successful null value at
+matches. FAILED raises the existing failed ProviderFailure at each selected
+matches response path. Both derive from the immutable root result without
+another native inspection or a GraphQL error hidden inside provider values.
+
+### Selection and publication invariants
+
+Absent authorization, input, deadline/response-limit or publication errors, every
+BLOCKED response object has status BLOCKED, matches null when selected,
+dependency null when selected, resultsTruncated false, and one UNKNOWN coverage
+object per effective root, except a positively absent optional default retains
+its COMPLETE empty-domain state. All roots have zero examinedEntries/completedDirectories
+and no searched scopes; at least one skipped scope has PROMPT_RISK with its
+permission object, and every root records its own blocking/absence/exclusion
+cause. There are no observed matches to truncate. No search resolver returns a
+missing-consent failure or synthesizes an error for this branch. Omitting matches
+does not change status, coverage or whether an inspection was attempted.
+
+Repeated matches aliases within one root read the same frozen result: BLOCKED
+returns null at each alias with no errors; FAILED emits a failed error at each
+selected alias, retaining its original response path and nullable-field coverage.
+Separate aliases of the Query root are independent searches with independent
+coverage and shared process-wide capacity accounting; no atomic cross-alias
+snapshot is promised. Mixed roots with any progress publish AVAILABLE and a list,
+even an empty one, with prompt-risk and other skipped scopes in their own coverage.
+Those diagnostics never create a matches permission error.
+
+These guarantees describe only authorized publication. If revocation commits
+before a field's publication admission, the existing capability error appears
+at that field's original alias/list path. Denial on non-null status/coverage or
+a non-null field inside permission propagates to the nearest nullable ancestor;
+the permission object itself is nullable, so its denied kind/target can null
+that object while other coverage survives. Denial on nullable
+matches may leave status/coverage while nulling that list. Root denial nulls that
+root. A previously published BLOCKED or AVAILABLE status does not waive later
+checks, certify a healthy empty list, or guarantee that coverage survives. Clients
+check errors before classifying the surviving branch; they distinguish this
+capability refusal from the policy diagnostic. Already published bytes cannot
+be recalled. No publication check retries native work or acquires consent.
 
 ### Extension-only permission diagnostics
 
@@ -295,21 +333,30 @@ is extended. Guidance says this scope is not searched under current Koine policy
 use an ordinary root, and contact Koine's operator for the pending setup decision.
 Do not tell a client to trigger a read or acquire an invented consent.
 
-Prompt risk is not the fixed version-1 `ProviderFailure.osPermission` meaning
-of missing named consent. Do not send it through that case with nil `permission`.
-Before planning, a producer must compare schema-level BLOCKED data with a
-compatible new diagnostic mechanism, record the enduring choice and rejected
-alternative in the ADR set, and settle the shared all-blocked rule. If it adds
-framework symbols, it must define the entire kind/consent/target/reason mapping
-matrix, legacy nil/blank behavior and feature-gated old-host refusal, including
-ordinary named-consent failures with targets. No minor number or required
-feature is assigned by this unsettled proposal. Current named-consent/desktop
-errors and workspace actions retain their existing meaning. No new consent,
-entitlement, usage key, setup route or `koine-desktop/1` change is approved.
+The [diagnostic decision](../adr/prompt-risk-is-search-data.md) chooses schema
+data over a new framework failure. Prompt risk is not the fixed version-1
+ProviderFailure.osPermission meaning of missing named consent; neither nil nor
+blank permission becomes a prompt-risk sentinel. No failure target/reason
+accessors, framework minor or diagnostic host feature are added. The
+[framework mapping](machine.md#provider-failure-compatibility) preserves every
+existing failure kind and constructible nil/blank/named permission value.
+
+An established observation of missing named consent remains a permission error
+with that identifier, Koine as owner and the normal response path. It is not
+BLOCKED data with UNKNOWN consent. This search mechanism obtains no such
+observation: it does not probe protected traversal and ACCESS_DENIED alone does
+not identify consent. Adding a reliably observed named-consent state would
+require a separately specified diagnostic/schema extension and, for a new
+consent/setup, Antony's decision. Clients show PROMPT_RISK as “Scope not searched:
+Koine avoids an inspection that may request consent; consent state unknown,”
+then its scope and guidance. They show a named-consent error as missing that
+documented consent, retaining unfamiliar identifiers and directing the user to
+Koine. No new consent, entitlement, usage key, setup route or koine-desktop/1
+change is approved.
 Register the new search output types as read fields separately from the existing
 control-only action types; the workspace provider's current all-control helper
-is not the authority for search. Publish an additive workspace schema minor and
-an independently compatible provider release, retaining the catalogue identity,
+is not the authority for search. Publish workspace provider/schema 1.1.0 as an
+additive release, retaining the catalogue identity,
 composition position and existing required features. A release number never
 substitutes for introspection or a conformance profile.
 
@@ -608,9 +655,58 @@ work. The evidence comparison is mechanism input, not search API acceptance.
 
 | Seam | Required cases, all pending for search |
 | --- | --- |
-| Public GraphQL | Both roots and every nested field under workspace read alone; neither control nor desktop read substitutes. Input defaults/null/empty/limits, mandatory canonical-equivalent Unicode matching, app stem/filename ranking (`zed`, `Zed.app`, `.app`) and rank ties; complete empty versus partial empty, absent optional default versus explicit missing root, UNKNOWN coverage, duplicate/overlapping roots, top-list truncation independent of coverage. BLOCKED retains coverage and no list; its error assertions await the diagnostic decision. No-progress prompt-risk plus absent/unsupported is BLOCKED; prompt-risk plus real native failure is FAILED; all absent/unsupported has a dependency branch. Unregistered apps remain visible for reveal/copy, never launch. Revocation and non-null publication paths; absent search provider/schema detection. A reading-restricted standalone client derives choices and every permitted action using only SDL/spec/introspection. |
-| Native binary interface | Extend the actual workspace bundle, not a second namespace. Preserve existing named-consent/desktop errors and all four action contributions exactly. Diagnostic old/new binaries and feature/malformed-mapping cases must follow the forthcoming diagnostic design, not the withdrawn minor-2 proposal. Run unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins against a compatibility host bundling that independently retained release. Run the shipped search host against a separate exact profile containing action + search SDL and its actual candidate/version pins. Retain desktop-only, absent/rejected and exact-candidate profiles; neither a subset schema check nor historical-profile rewriting proves compatibility. |
+| Public GraphQL | Both roots and every nested field under workspace read alone; neither control nor desktop read substitutes. Input defaults/null/empty/limits, mandatory canonical-equivalent Unicode matching, app stem/filename ranking (`zed`, `Zed.app`, `.app`) and rank ties; complete empty versus partial empty, absent optional default versus explicit missing root, UNKNOWN coverage, duplicate/overlapping roots, top-list truncation independent of coverage. Both BLOCKED roots retain exact coverage and null list/dependency without errors, including coverage-only and repeated aliased matches selections. No-progress prompt-risk plus absent/unsupported is BLOCKED; prompt-risk plus real native failure is FAILED at each matches alias; all absent/unsupported has a dependency branch. Mixed successful roots are AVAILABLE with diagnostics and no synthetic matches error. Unregistered apps remain visible for reveal/copy, never launch. Revocation before root and nullable/non-null nested publication has original-path errors/normal propagation; status never overrides them. Absent search provider/schema detection. A reading-restricted standalone client derives choices and every permitted action using only SDL/spec/introspection. |
+| Native binary interface | Extend the actual workspace bundle, not a second namespace. Preserve existing named-consent/desktop errors, nil/blank construction/mapping and all four action contributions exactly. Ordinary ProviderValue success/object/null carries BLOCKED through old/new host/provider pairs, with no diagnostic symbols or feature gate. The exact compatibility and search-host subjects below retain desktop-only, absent/rejected and exact-candidate profiles; neither a subset schema check nor historical-profile rewriting proves compatibility. |
 | Isolated TestAnyware macOS VMs | Actual signed hardened Koine and the new stream adapter, with no new keys/entitlements: applications in default/nested/user roots, duplicate installed copies, missing identifier/unregistered/unreadable candidates; ordinary and empty directories, home partial, every directly supplied protected root and symlink/component alias, Library and known cloud exclusions; missing/mode-denied roots, index disabled with identical ordinary behavior. Large single directory exceeding entry limit, scope/value/depth bounds, cancellation while listing/registration blocks, late completion and worker-capacity recovery, symlink replacement/mount change. Verify no consent dialog or file-content/hydration request from search and inspect all actual calls. Install the required real apps; demonstrate constrained launch, reveal, default ordinary-document open, Zed open and client-owned clipboard/MRU with visible witnesses. Real removable/network/cloud cases stay excluded or pending, never substituted with the ordinary disk-image fixture. Record actual OS/app versions, latency and limits. |
+
+### Compatibility subjects and diagnostic acceptance
+
+Use independently retained binaries, not two rebuilds after a search edit. The
+named workspace-actions-1.0-compatibility host is a retained selection-aware
+framework-1.1 host bundling workspace provider/schema 1.0.0 and desktop 1.0.0.
+Its exact profile is
+[core-desktop-workspace-extension-host](../design/profiles/core-desktop-workspace-extension-host.json),
+against the unchanged
+[action-only composed SDL](../design/desktop-workspace-schema-extension-host.graphql).
+Retain its host/framework/provider binaries, source revision and digests before
+upgrading search. Existing selection-update purpose-built hosts/profiles remain
+their own pinned subjects; a fixture workspace 1.1.0 with schema 1.0.0 is not the
+search release merely because its release number matches.
+
+The search-serving subject is workspace-search-1.1, bundling workspace
+provider/schema 1.1.0 and desktop 1.0.0 with the existing framework-1.1 contract.
+Implementation must add the exact core-desktop-workspace-search-extension-host
+profile and desktop-workspace-search-schema-extension-host composed SDL:
+complete core/management + unchanged desktop/actions + this search contribution,
+with the actual full candidate rows and those bundled pins. The new profile is
+required design work, not a profile already passing here. Do not change the
+action-only profile/SDL to make the upgraded bundled host pass it.
+For the old-provider/new-host direction, build a dedicated
+workspace-actions-1.0-upgraded-core compatibility subject from the upgraded core
+with a normally signed sealed catalogue still bundling the retained workspace
+1.0.0 baseline. Its exact action-only profile remains unchanged. This is not a
+downgrade/override of the shipped search host's 1.1.0 catalogue. Conversely, the
+new-provider/old-host direction installs the approved search 1.1.0 bundle as a
+per-user update on the independently retained host, with exact SELECTED/PER_USER
+and NOT_SELECTED/BUNDLED candidate pins in its search-required profile variant.
+
+| Independently built pair / case | Required observation, pending implementation |
+| --- | --- |
+| Retained workspace 1.0.0 on workspace-actions-1.0-upgraded-core | All four actions and old named-consent/nil/blank failure mapping remain unchanged; run the unchanged exact action-only profile with that retained provider and catalogue baseline, and retain its binary identity. |
+| New search 1.1.0 provider on retained selection-aware framework-1.1 host | Loads under its existing minimum minor/features; additive SDL and BLOCKED success/null values work without a diagnostic feature. Use the search-required exact profile with candidate rows appropriate to the selected new bundle, not action-only bundled pins. No new shared-framework symbol is imported. |
+| New search provider on released Koine 0.1.0/framework 1.0 | Existing additional-capabilities-v1 / first-party-selection-v1 requirements cause pre-load refusal with no initializer marker; this is existing incompatibility, not a new prompt-risk feature. |
+| Both roots, each wholly protected; coverage-only and two matches aliases | BLOCKED, null matches/dependency, false resultsTruncated, no search execution errors. Coverage retains targets, PROMPT_RISK, null osPermission and UNKNOWN consent. No nested selection schedules native reads. Include optional-absent default plus prompt risk: absent optional coverage remains COMPLETE, not UNKNOWN. |
+| Prompt risk + missing/unsupported; prompt risk + actual denied/native/work failure; pure absent/excluded | Respectively BLOCKED without errors, FAILED with failed at each selected matches alias, and DEPENDENCY_UNAVAILABLE without matches errors. Coverage-only FAILED still publishes status/coverage without a selected matches error. |
+| Successful ordinary/empty root + protected root | AVAILABLE with a non-null list, possibly empty, and exact per-root partial/unknown diagnostics; no synthetic matches permission error. |
+| Revocation before root or selected nested publication | Capability execution error at the original aliased path; no root work on admission denial. Nullable matches can be null while other data survives. Non-null status or a coverage member propagates to the nullable root; permission.kind denial can null just the nullable permission object, with its original root/coverage/skipped list indices in the error path. Do not assert error-free BLOCKED invariants on the denied response. |
+| All existing failure kinds × nil/empty/whitespace/named permission | Verify the Machine mapping unchanged through independently built fixture binaries and original paths, including ignored permission on non-osPermission kinds and resolverMismatch for unknownResolver. No prompt-risk accessor or new malformed diagnostic exists. |
+
+Public GraphQL and the real provider binary establish branch/alias/mapping
+behavior with controlled adapter outcomes; the signed hardened VM establishes
+the actual policy skips/no-dialog behavior, ordinary plus protected combinations,
+and existing actions. Controlled nil/blank/unknown-resolver fixtures establish
+compatibility, not a new OS-consent observation. Retain input/output and digest
+records for every pair; none of these obligations is established by SDL checks.
 
 Supporting private-adapter tests control EOF, ordering, denied metadata, blocked
 workers, deadlines and changed identity. They prove mapping and bounds, not

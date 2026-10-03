@@ -546,20 +546,21 @@ This does not add enum values to existing management permission types or alter
 what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
 
-**Search extension — prompt-risk transport, unsettled design.**
+**Search extension — typed prompt-risk outcome, pending implementation.**
 The [search contract](workspace-search.md#extension-only-permission-diagnostics)
 refuses known prompting traversal before attempting it and preserves per-root
-coverage with no successful list in BLOCKED. Its coverage diagnostic describes
-prompt risk and UNKNOWN consent state; it is not evidence of missing named
-consent. The earlier proposal to reuse `ProviderFailure.osPermission` with nil
-consent is withdrawn: version-1 meanings below remain fixed. A producer design
-must choose schema-level BLOCKED data or a compatible diagnostic mechanism,
-record its trade-off in the ADR set, and reconcile the workflow all-blocked rule
-before implementation planning. Any framework addition must specify every
-kind/consent/target/reason combination and legacy nil/blank behavior, with
-feature/version refusal before loading. No minor-2 feature or new error mapping
-is authorized yet; current named-consent/desktop errors remain exactly as above.
-No management permission enum, consent, entitlement or setup change is approved.
+coverage with no list in BLOCKED. The
+[diagnostic decision](../adr/prompt-risk-is-search-data.md) carries that branch
+as ordinary provider success values: selected matches and dependency are null,
+without a search execution error. Coverage's permission object describes prompt
+risk and UNKNOWN consent, never observed missing consent. Coverage-only queries
+and matches aliases have the same outcome; mixed successful roots retain
+AVAILABLE and their own blocked-scope diagnostics. FAILED retains the existing
+failed error at selected matches. Authorization and live publication checks still
+apply to every field; their errors can suppress coverage through normal null
+propagation. There is no extension to GraphQL error kinds/permission extensions,
+ProviderFailure, framework minor/features or management permission enums. Existing
+named-consent errors remain fixed. No consent, entitlement or setup is approved.
 
 All extension reads are prompt-free, including prerequisite and protected-folder
 checks. A probe that would prompt is not a permitted read mechanism; report
@@ -932,13 +933,41 @@ the provider's report of a registration mismatch, or `invalidInput`, for an
 argument that is no value of a provider-owned type; the host reports that one as
 input coercion, with a response path and no domain classification.
 
-The search extension's error/ABI design is unsettled. Optional target/reason
-accessors and a nil-consent reuse of `osPermission` are not implementation
-instructions; that case retains its fixed missing-named-consent meaning. The
-[search diagnostic contract](workspace-search.md#extension-only-permission-diagnostics)
-names the producer obligations, including the schema-level alternative and an
-ADR if an enduring compatible mechanism is chosen. Planning must consume that
-decision before cutting any framework dependency.
+### Provider failure compatibility
+
+Search adds no failure case, target/reason accessor, minor or host feature.
+Its BLOCKED branch uses success object/null values under the existing ABI;
+the [diagnostic contract](workspace-search.md#extension-only-permission-diagnostics)
+does not alter the following baseline mapping. Public failure construction
+already permits nil and arbitrary strings; clients/providers must not infer
+that a semantically incomplete value was unconstructible. Search cannot treat
+nil/blank consent as a prompt-risk sentinel or tighten legacy validation.
+
+| Existing failure kind | permission nil | permission blank (empty or whitespace-only) | permission named/nonblank |
+| --- | --- | --- | --- |
+| osPermission | Existing permission/os-permission error, owner koine, osPermission empty string | Same error with the supplied string unchanged, without trimming | Same error with the supplied consent unchanged |
+| unavailable | unavailable error; permission ignored | Same | Same |
+| failed | failed error; permission ignored | Same | Same |
+| invalidInput | Input coercion error with path and no domain kind; permission ignored | Same | Same |
+| unknownResolver | failed error and existing resolverMismatch provider diagnostic; permission ignored | Same | Same |
+
+The first row's nil/blank values lack a useful consent identifier; they are
+legacy malformed semantic values, not evidence of prompt risk or permission
+to change their wire behavior. A client can show the supplied guidance and an
+unspecified-consent failure, never synthesize Accessibility or UNKNOWN consent
+data from them. No new malformed-provider diagnostic is introduced for those
+values. A future unknown kind retains the existing failed fallback; malformed
+success trees retain the existing failed malformed-value handling. The host
+continues supplying original GraphQL paths and permissionOwner koine.
+
+Targets/reasons exist only in search's typed coverage payload in this design;
+they cannot be attached to ProviderFailure through invented accessors. Existing
+feature/version loader checks still apply, independently of this table. An old
+selection-aware framework-1.1 host can carry the new schema/result values; an
+older host lacking the workspace bundle's existing required features refuses it
+before loading. No diagnostic-specific old-host refusal is needed or promised.
+
+### Resolution and lifecycle
 
 Resolvers use Swift async functions and framework-owned result values.
 Arguments and results are ordinary owned Swift values under ARC, not borrowed

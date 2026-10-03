@@ -36,12 +36,14 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel focuses on default discovery and coverage scheduling,
+The current-discussion panel focuses on typed prompt-risk BLOCKED outcomes,
 with selection handoff, discovery evidence and the metadata/handler view as context.
 Generic system-app roots, checked .app-link metadata, exact observation/group/
 remainder semantics and independent root budgets await load-bearing review and
-native acceptance. Prompt-risk transport remains a separate design decision;
-no reduced home/application baseline or nil-consent framework mapping is accepted.
+native acceptance. BLOCKED uses null matches/dependency and exact coverage without
+a search execution error; UNKNOWN consent does not mean missing named consent.
+Its load-bearing review and runtime acceptance remain pending. No reduced
+home/application baseline is accepted; existing framework failure mapping is fixed.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -60,19 +62,18 @@ premise with that limit; the outcome view remains unchanged context.
 The current update changes these views:
 
 - [Search → scope and coverage](index.html#diagram-search-coverage) — Added
-  generic system-app roots, separately reserved diagnostics/matches and cyclic
-  root/stream work. Defined counted groups and stopped work without universal
-  skipped-child claims; BLOCKED transport remains pending.
+  null matches/dependency without an execution error for BLOCKED, UNKNOWN
+  consent diagnostics and the publication-denial limit.
 - [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  Checked .app links retain their observed spelling; existing actions revalidate
-  it. UNREGISTERED/UNKNOWN retain reveal/copy choices.
-- [Search contract](../../specs/workspace-search.md#resource-accounting-and-scheduling) —
-  Replaced the shared traversal-log budget with root summaries, independent
-  budgets and fixed match slots. Added wide-layout/later-root/large-directory
-  expected outcomes for all three seams and kept actual coverage unaccepted.
-- [Coverage decision](../../adr/search-coverage-describes-observations.md) —
-  Recorded the public granularity and reservation trade-offs versus a detailed
-  traversal log or persistent inventory.
+  Added the client’s blocked-scope/unknown-consent display before AVAILABLE
+  selection and retained installation-specific action choices.
+- [Search contract → selection and publication](../../specs/workspace-search.md#selection-and-publication-invariants) —
+  Defined coverage-only/aliased matches, error-free branch invariants, mixed
+  roots and live-revocation expectations.
+- [Prompt-risk decision](../../adr/prompt-risk-is-search-data.md) — Chose typed
+  result data over a new permanent framework diagnostic and stated its reopen condition.
+- [Machine → provider failure compatibility](../../specs/machine.md#provider-failure-compatibility) —
+  Preserved all existing kinds and nil/blank/named consent mapping without new accessors.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -130,3 +131,13 @@ were rasterized with librsvg and inspected at 1200/900-pixel widths: labelled
 starts, outcome branches, arrows and handoff text were readable without clipping.
 This checks static light rendering; it is not a new Safari/reflow or dark-mode
 check and makes no native search claim.
+
+The typed-BLOCKED revision was checked in Safari on the isolated macOS
+26.5/25F71 clone `koine-k97-design`. Fresh coverage/handoff deep links identified
+the intended views, with labelled starts, readable outcome branches and action
+handoff at a 1600-pixel window width. The discussion panel's links, changed-view
+summaries and outline agreed with the manifest in wide and 800-pixel dark-mode
+windows. Safari displayed the SVGs with their light background inside the dark
+viewer; that rendering remained readable. The manifest and both changed SVGs
+had matching SHA-256 digests in the workspace and guest copy. This checks
+presentation only; it establishes no runtime branch, binary or native acceptance.

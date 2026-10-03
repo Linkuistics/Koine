@@ -1,10 +1,10 @@
 # Designed additive workspace search contribution; not served behavior.
 # Every root and every reachable output field requires workspace:read only.
 # Compose after workspace-schema.graphql; no foreign provider type is imported.
-# Discovery/coverage awaits load-bearing review; BLOCKED transport awaits design.
+# Discovery/coverage and typed BLOCKED transport await load-bearing review.
 # Native/default coverage and the protected-home baseline remain unaccepted.
 
-"""Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches. With no progress, real native/work failure precedes prompt risk, which precedes pure absence/exclusion. FAILED raises an error at matches; BLOCKED transport awaits design. Inspect publication errors and every root's coverage."""
+"""Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches. With no progress, real native/work failure precedes prompt risk, which precedes pure absence/exclusion. BLOCKED returns null matches/dependency without a search execution error, including matches aliases; consent is UNKNOWN, never observed absent. FAILED raises failed at each selected matches alias. Coverage-only selections retain the same status/diagnostics. Inspect publication errors and every root's coverage."""
 enum WorkspaceSearchStatus {
   AVAILABLE
   BLOCKED
@@ -182,10 +182,10 @@ type WorkspaceFileMatch {
   rootIndices: [Int!]!
 }
 
-"""Requires workspace:read throughout. Coverage survives FAILED matches errors unless normal publication denial propagates. BLOCKED withholds the list; its transport awaits design. No error-free result has both matches and dependency."""
+"""Requires workspace:read throughout. Coverage survives FAILED matches errors unless normal publication denial propagates. BLOCKED is typed policy data, with null matches/dependency, false resultsTruncated and no search execution error; all roots have no progress, with UNKNOWN coverage except absent optional defaults' COMPLETE empty domain. No error-free result has both matches and dependency. Status never overrides a publication error."""
 type WorkspaceApplicationSearchResult {
   status: WorkspaceSearchStatus!
-  """Non-null exactly for AVAILABLE absent publication errors. FAILED raises failed here; BLOCKED transport awaits design, with no nil-consent ProviderFailure mapping authorized. Native absence is not encoded as an empty successful list."""
+  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED and DEPENDENCY_UNAVAILABLE return ordinary null without an error; FAILED raises failed here, separately at every selected alias. Read the frozen root result without another native inspection. Publication denial retains its capability error/path and normal null propagation. Native absence is not encoded as an empty successful list."""
   matches: [WorkspaceApplicationMatch!]
   coverage: [WorkspaceSearchRootCoverage!]!
   dependency: WorkspaceSearchDependency
@@ -193,10 +193,10 @@ type WorkspaceApplicationSearchResult {
   resultsTruncated: Boolean!
 }
 
-"""Requires workspace:read throughout. Empty AVAILABLE may be partial; inspect coverage and errors. BLOCKED/FAILED carry no list, not a healthy empty result."""
+"""Requires workspace:read throughout. Empty AVAILABLE may be partial; inspect coverage and errors. BLOCKED is error-free typed policy data with null matches/dependency, false resultsTruncated and no progress; UNKNOWN coverage except absent optional defaults' COMPLETE empty domain. FAILED carries no list and errors at selected matches. Status never overrides a publication error."""
 type WorkspaceFileSearchResult {
   status: WorkspaceSearchStatus!
-  """Non-null exactly for AVAILABLE absent publication errors. FAILED raises failed here; BLOCKED transport awaits design."""
+  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED and DEPENDENCY_UNAVAILABLE return ordinary null without an error; FAILED raises failed here at every selected alias. No nested selection schedules native work. Publication denial retains its capability error/path and normal null propagation."""
   matches: [WorkspaceFileMatch!]
   coverage: [WorkspaceSearchRootCoverage!]!
   dependency: WorkspaceSearchDependency

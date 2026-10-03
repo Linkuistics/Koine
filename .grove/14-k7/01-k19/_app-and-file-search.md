@@ -19,7 +19,9 @@ Design installed-application search and file search, and how a result feeds
   `docs/design/workspace-search-operations.graphql`; the architecture viewer's
   search coverage and handoff views accompany them. Review integration requires
   fresh default-discovery/resource and prompt-risk transport design before
-  planning; the nil-consent minor-2 mapping is withdrawn as an instruction.
+  planning. Prompt-risk transport is typed BLOCKED data with null matches/
+  dependency and no execution error, pending its own load-bearing review.
+  Existing failure/consent mapping stays fixed; no diagnostic framework addition.
   Search remains pending implementation/acceptance.
 
 - `provider-architecture-k5` and `launch-and-open-k18`.
@@ -69,12 +71,14 @@ roots and an honest report of what the mechanism cannot see.
    .app-link metadata; partitions root work/frontier/diagnostic budgets and match
    reservations. Its producer cuts a load-bearing review. All native/default
    coverage cases and Antony's bound-driven omissions decision remain pending.
-6. `search-permission-transport-k97` settles compatible BLOCKED transport and
-   the ADR/complete mapping contract; its producer cuts its own review.
+6. `search-permission-transport-k97` chooses schema-only BLOCKED transport and
+   records the enduring diagnostic ADR, legacy mapping, branch/alias/publication
+   contract and independent exact-host/profile obligations; its producer cuts
+   its own review. No new diagnostic ABI dependency is needed.
 
 Both producer/review repairs live in this node, so planning cannot run before
-they retire. The durable design explicitly marks those decisions unsettled;
-the integration did not accept either arbitrary sampling or the nil-consent ABI.
+they retire. The durable design marks both load-bearing reviews pending;
+arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)
 

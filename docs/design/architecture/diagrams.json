@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Default discovery, observed coverage and bounded scheduling",
-    "status": "Designed · awaiting review, native acceptance and baseline decision",
-    "summary": "Generic CoreServices/Cryptex application roots and checked .app links address system layouts. Root observation summaries, counted groups and an unfinished remainder avoid universal skipped-child claims. Independent root budgets and rotating streams preserve later roots’ credits; native stalls and the shared deadline still limit progress. Fixed match slots preserve ranking and diagnostic reservation. Prompt-risk transport remains a separate producer decision; no reduced application/home baseline has been accepted.",
+    "title": "Prompt risk as typed BLOCKED data",
+    "status": "Designed · awaiting load-bearing review and runtime acceptance",
+    "summary": "BLOCKED returns null matches/dependency and exact coverage without a search execution error, including aliased matches and coverage-only queries. PROMPT_RISK means unattempted policy with UNKNOWN consent, never observed missing consent. Existing named-consent failure meanings and nil/blank mapping remain fixed; no diagnostic framework feature is added. Publication denial can suppress any selected branch. Generic discovery/resource design and bound-driven home coverage remain pending their separate review, native acceptance and human decision.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Added generic system-app discovery, independent root budgets, rotating streams and exact observation/group/remainder meanings."
+        "summary": "Settled BLOCKED as null matches/dependency without an execution error and made publication denial explicit."
       },
       {
         "id": "search-handoff",
-        "summary": "Clarified that checked .app-link paths remain observed locations for existing action revalidation."
+        "summary": "Added the client’s blocked-scope/unknown-consent display before any AVAILABLE selection."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Default discovery, bounded root scheduling and exact coverage groups, with location handoff and measured native evidence. Review and runtime/default coverage remain pending; prompt-risk transport is separate."
+      "description": "Typed prompt-risk BLOCKED data, default discovery, bounded root scheduling and exact coverage groups, with location handoff and measured native evidence. Load-bearing reviews and runtime/default coverage remain pending."
     },
     {
       "id": "workspace",
@@ -72,7 +72,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Five generic application roots include CoreServices and Cryptex; visible .app links receive checked metadata only. Root partitions and rotating streams prevent credit starvation, not native-call stalls. Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS asserts counts only. CHILD_GROUP/DESCENDANT_GROUP count observed anchors, never all children; REMAINDER preserves unfinished work. Fixed match slots cannot consume coverage reservation. Real failure precedes prompt risk, then pure absence/exclusion when no progress. BLOCKED transport awaits its separate producer; new calls/layouts and bound-driven baseline coverage remain pending."
+      "caption": "Designed flow, not runtime acceptance. Real native/work failure precedes prompt risk, then pure absence/exclusion when no progress. BLOCKED is typed data: null matches/dependency, false resultsTruncated and no search execution error, including aliases/coverage-only selections; PROMPT_RISK has UNKNOWN consent and null osPermission. Other root reasons remain exact; optional absent defaults keep COMPLETE empty domains. Named-consent failures retain their existing error meaning. Live publication denial can suppress status, coverage or matches through normal propagation. Five generic application roots, checked .app links, counted groups/remainders and independent budgets remain designed; actual calls/layouts and bound-driven baseline acceptance are pending."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. A checked .app link retains its observed name/path; action-time resolution compares native installation identity again. Only INSTALLED with a known identifier enables constrained launch. UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. Clients own clipboard/MRU. Existing actions require both controls and revalidate presence/registration/payload; no selection pins a file or drops its path constraint. Runtime/native action acceptance and existing protected-opening/reveal decisions remain separate."
+      "caption": "Designed location handoff. Clients inspect status, coverage and errors before choices: BLOCKED displays the skipped scope and UNKNOWN consent, never healthy empty or missing named consent. Only AVAILABLE provides selectable locations. INSTALLED with a known identifier enables constrained launch; UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. A checked .app link retains its observed name/path; action-time resolution compares native identity again. Clients own clipboard/MRU. Existing actions require both controls and revalidate presence/registration/payload; no selection pins a file or drops its path constraint. Runtime/native acceptance and protected-opening/reveal decisions remain separate."
     },
     {
       "id": "search-discovery",

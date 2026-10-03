@@ -195,7 +195,7 @@ tasks:
             throw new Error('All-blocked matches must be nullable to preserve coverage');
           }
         }
-        console.log('Search SDL and both examples valid independently and composed; existing action examples valid; removed-root, input/output and foreign-type controls rejected. Runtime and branch-invariant acceptance remain pending.');
+        console.log('Search SDL and all examples valid independently and composed; existing action examples valid; removed-root, input/output and foreign-type controls rejected. Runtime and branch-invariant acceptance remain pending.');
         JS
 
   design:serve:
