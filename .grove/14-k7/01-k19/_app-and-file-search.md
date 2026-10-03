@@ -194,3 +194,9 @@ or smaller workflow/domain is accepted. Opaque acquisitions/health remain
 unproved; exact runtime error normalization, prompt/useful-launch/home witnesses,
 compatibility and k93 stay pending. Mandatory review search-native-resources-k120
 reads the complete k109 artifact before planning/earned integration.
+
+Review `search-canonical-paths-k110` recorded nine design findings against k108.
+They include a conflict between k108's no-long-path-attribute rule and the
+path-based classification calls, which affects shared k119 text. Integration
+`search-canonical-paths-k121` triages them ahead of
+`search-native-resources-k120`. Planning waits on both.
