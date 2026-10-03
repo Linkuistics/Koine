@@ -14,6 +14,12 @@ the workspace-search spec and k108 canonical-call analysis. The feasibility
 report selects no runtime route. The action adapter remains unchanged evidence.
 
 ## Done when
+k118's separate delegated selections replace only the original internal-health
+proof for named reported native facts and complete opaque-event/fully-owned-route
+evidence requirement below. The current durable observation contract names the
+exact limits. All other original conditions survive; k119 still owes complete
+allocation design and the observable handoff to k113.
+
 - Choose between direct bounded inspection and isolated opaque inspection,
   or establish a complete event instrument under the approved posture. No
   polling, formatted-output assumptions or error-free client replies suffice.
@@ -86,3 +92,8 @@ settle a runtime contract. Do only the first child in this session.
   recovery. k118 must obtain separate answers on negative meaning and limited
   opaque-event evidence; k119 must settle every original condition still binding.
   The helper refusal changes neither guarantee. k113 still awaits final design.
+- k118 subsequently records "you decide" and separately selects reported native
+  fact meaning and empirical independent-outcome evidence under that delegation.
+  These two scoped changes are distinct from helper refusal and do not claim
+  internal-health/opaque-event proof or native acceptance. All other obligations
+  remain live for k119, then k113's subjects and mandatory complete-resource review.

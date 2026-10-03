@@ -4,8 +4,8 @@
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
-# Proposed native-observation/evidence changes are unapproved; examples retain
-# current meanings and do not accept UNKNOWN metadata for every launcher.
+# Delegated choices select reported native results and empirical evidence with opaque internals unproved.
+# Final allocation design/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
   rootIndex
@@ -93,10 +93,10 @@ query InspectAliasedMatches($roots: [String!]) {
 # operations in workspace-operations.graphql. Controls are separately required.
 # Copy path/known identifier to the client's clipboard, and update client MRU
 # there. Launch only INSTALLED, never UNREGISTERED or UNKNOWN; both can be
-# revealed/path-copied, and any known identifier can be copied. The proposed
-# finite-table helper needs an explicit human
-# decision and complete allocation design; its reply/exit is not negative-fact
-# health. Existing UNREGISTERED/identifier guarantees remain binding.
+# revealed/path-copied, and any known identifier can be copied. UNREGISTERED is
+# a checked reported native-service negative, with an undetected-failure/stale-state
+# limit; nil identifiers stay UNKNOWN. Helper design remains declined. Complete
+# allocation design, subjects/review and native acceptance remain pending.
 # Do not infer NO_DEFAULT_HANDLER from null metadata. Never retry an action by
 # dropping its installation constraint.
 

@@ -12,16 +12,16 @@ metadata/workflow guarantee is accepted by this analysis. The subsequent
 [allocation decision](../specs/workspace-search.md#native-allocation-decision)
 records the operator's refusal of the helper proposal and retains the
 single-process posture. This analysis has not demonstrated a normal-search
-failure or established that isolation is necessary; the continuation must
-settle an in-process bounded route or complete approved-posture observation.
-These feasibility candidates are not an accepted runtime contract.
-The [concrete in-process proposal](../specs/workspace-search.md#proposed-in-process-observation-contract)
-now names native calls, owned/opaque demand, freeze/restart ownership and exact
-failure discriminators. It requires two separate human decisions on reported
-negative-registration semantics and controlled serviceability evidence with
-incomplete opaque-event visibility. Neither change is approved or follows from
-declining helpers. The original guarantees remain live; this report provides
-no hidden-health proof, selected runtime route or native acceptance.
+failure or established that isolation is necessary. The subsequent
+[observation decisions](../specs/workspace-search.md#observation-boundary-decision-questions)
+were selected independently under Antony's "you decide" delegation: checked
+registration and other native facts may mean reported observations, and empirical
+serviceability acceptance may leave opaque internal demand unproved. Neither
+selection follows from declining helpers. The concrete in-process proposal
+names calls, owned/opaque demand, freeze/restart ownership and failure
+discriminators; final allocation design, subjects and review remain pending.
+Only the two named guarantees change. This report supplies no hidden-health
+proof, completed runtime contract or native acceptance.
 
 ## Call health is separate from descriptor visibility
 
@@ -43,10 +43,11 @@ combination or nil/nil remains uncertain.
 
 The published [NSWorkspace API](https://developer.apple.com/documentation/appkit/nsworkspace/urlsforapplications(withbundleidentifier:))
 matches the checked-out action adapter's array-only boundary. This analysis
-does not modify that adapter or claim action acceptance clears search. The final
-design must decide whether a documented not-found error supports UNREGISTERED
-given its resource-health evidence; it cannot assume every internal failure has
-a distinct public error. Registration still needs presence/native-identity
+does not modify that adapter or claim action acceptance clears search. The selected
+reported-observation boundary permits the exact checked not-found branch to
+support UNREGISTERED, with an undetected internal-failure/stale-service limit.
+Final design must normalize and verify that branch; it cannot assume every
+internal failure has a distinct public error. Registration still needs presence/native-identity
 checks and cannot nominate an admission anchor.
 
 For identifiers, a possible replacement is an explicit bounded metadata-plist
@@ -136,6 +137,13 @@ that Koine needs a separate process. The operator declined helper design.
 | Direct owned calls with checked metadata outcomes | Exposes opens/errors at the private adapter using existing credits and failure seam | Preserve actual application/type/registration semantics and prompt policy within existing accounts. Direct plist reading supplies no registration query. Dropping INSTALLED or all launch choices changes the workflow. |
 | Private signed support process, outside approved scope | Could separate its descriptor table from Koine's | Packaging was declined; necessity is unestablished. Any separately authorized reconsideration still owes IPC/trust, TCC identity, host transient opens, limits, system-wide demand, reply health/negative facts and blocked-child ownership. |
 
+Reported native facts plus complete applicable owned/hook events, native-call
+envelopes and independent outcomes are now the selected requirements boundary;
+opaque acquisitions/peaks/internal errors remain unproved. Exact runtime
+normalization, ownership and constructible controls still need final design.
+A complete raw observer remains an alternative, not a requirement of the
+selected empirical boundary.
+
 Continue inside the approved process posture. Direct owned calls have less
 composition machinery where they preserve required metadata, but do not by
 themselves supply registration/type semantics. A complete observer remains an
@@ -169,15 +177,17 @@ an indefinite child surviving host exit while a replacement host attempts
 admission. A successful reply/exit, a 32-descriptor child proposal or parent
 exit cannot pass those controls. Helper-specific controls apply only if that
 direction is separately authorized; they do not require a helper in the current
-single-process continuation. Swallowed-error negative facts still require
-in-process failure discriminators. The complete allocation design remains live
-before serviceability-subject construction. Existing negative-fact, domain,
-consent, signing, host-limit and native serviceability obligations bind.
+single-process continuation. Reported/associated resource errors still require
+in-process refusal controls, while an invisible internal failure carries the
+selected native-result limit rather than a claimed passing health test. Complete
+allocation design remains live before serviceability-subject construction.
+The selected fact/evidence boundaries replace only their named original
+obligations; domain, consent, signing, host limits and other acceptance still bind.
 
-- A transient open/close entirely between occupancy samples must be visible
-  wherever the selected argument relies on those events. Omitting it must fail
-  the completeness control. If opaque events are outside a bounded argument,
-  label the boundary and prove the bound rather than claiming measurement.
+- An owned transient open/close entirely between occupancy samples must appear
+  in the applicable complete ledger; omitting it must fail the completeness
+  control. Opaque internal events are outside the selected empirical boundary:
+  disclose their unproved demand and lifetimes, never claim measured/bounded peaks.
 - Record pre-backoff accept IOError despite downstream suppression, selected
   delay, scheduled/resumed reads and fresh-connection outcome. Later success
   cannot erase a backoff event.
@@ -214,8 +224,9 @@ nil as UNKNOWN with affecting coverage; it neither reads Info.plist directly nor
 asserts a missing key. Native package/hidden/type keys and prompt behavior still
 need their actual-call subjects. The proposed instrument measures owned events,
 call envelopes and pre-suppression accept/backoff hooks; it explicitly cannot
-certify opaque transient acquisitions. Only an explicit human evidence decision
-can replace the original complete-observer obligation with this narrower claim.
+certify opaque transient acquisitions. The requirements session independently
+selected this narrower evidence boundary under Antony's "you decide" delegation;
+it did not prove the original complete-observer obligation was met.
 No native failure, absence of a possible observer or need for isolation was proved.
 
 Graph project Users-antony-Development-Koine.add-plugins-for-modaliser-requirements

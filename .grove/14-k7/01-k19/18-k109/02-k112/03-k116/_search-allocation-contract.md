@@ -18,6 +18,12 @@ need for isolation. Do not relabel the refused helper proposal as approved or
 repeat the feasibility chain.
 
 ## Done when
+k118 records Antony's "you decide" delegation and independently selects the two
+boundaries in the current observation contract. They replace only the original
+internal-health proof for named native facts and exhaustive opaque-event/fully-
+owned-route evidence obligation below. Other completion conditions remain binding;
+k119 must finish the allocation contract before k113's subjects and review.
+
 - Every original k112 completion condition holds; no candidate/proposed mechanism
   is relabelled accepted because it has a separate process table or CFError.
 - Name actual metadata/type/registration calls, success/error/health outcomes and
@@ -84,3 +90,11 @@ human. k113 cannot cut review or treat a proposed boundary as acceptance.
 - Preserve single-process inspection, no content reads or new permissions,
   native type/registration services, Q/S, worker-only cleanup, immutable prior
   observations, provider-restart persistence and process-restart recovery.
+- k118 resolves the two requirements choices separately under Antony's "you
+  decide" delegation: reported registration/metadata facts with disclosed
+  undetected-error limits, and empirical independent outcomes with complete
+  applicable owned/hook events while opaque internals remain unproved. Only
+  those named guarantees change. Known wrong witnesses and observed errors/
+  backoff still fail; no all-UNKNOWN launch coverage or weaker prompt/domain
+  acceptance is selected. k119 remains live to finalize every other allocation
+  condition; k113 still owns subjects and the mandatory review.

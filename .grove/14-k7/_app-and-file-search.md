@@ -95,3 +95,9 @@ and no shorter workflow coverage is accepted. Native 79/80 byte subjects are
 separate from synthetic 43/44 arithmetic. Its load-bearing review and k109's
 resource design/review precede k30; signed-native outcomes, binary acceptance
 and k93's per-witness omission decision remain pending.
+
+k118 independently selects the durable
+[observation boundaries](../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
+under Antony's "you decide" delegation. These scoped fact/evidence choices do
+not clear final allocation, native acceptance, compatibility or k93's measured
+omissions decision. k119 and k113's subject/review work remain live.

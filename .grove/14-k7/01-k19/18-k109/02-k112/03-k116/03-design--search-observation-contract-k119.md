@@ -2,7 +2,7 @@
 
 
 ## Goal
-Settle the complete in-process allocation contract from k118's exact answers,
+Settle the complete in-process allocation contract from k118's separate delegated selections,
 fulfilling every original k116/k112 completion condition still binding. A
 proposal or partial answer cannot close the allocation node.
 
@@ -11,6 +11,11 @@ Original parent charters, k117 proposal and k118 recorded answers; current
 workspace-search spec, native-resource report, k108 canonical contract,
 k103/k104/k107 transport/identity/cleanup/compatibility repairs and all durable
 summaries. k113 owns complete-resource subjects and the mandatory review.
+Antony instructed "you decide"; k118 independently selected reported native
+registration/metadata facts and empirical serviceability evidence, with their
+explicit unproved internal-health/opaque-demand limits. Consume those exact
+scopes without re-interviewing or attributing two personal yes answers. Every
+other original allocation/acceptance obligation remains binding.
 
 ## Done when
 - Preserve every original completion condition unless k118 explicitly changes
@@ -38,7 +43,8 @@ summaries. k113 owns complete-resource subjects and the mandatory review.
 ## Notes
 k113 cuts the mandatory review only after the complete k109 artifact exists.
 Do not cut a competing review or treat empirical visibility as internal-health
-proof. If both decisions are approved, selected semantics still need rigorous
-instrument/subject construction, prompt verification and actual useful launch
-coverage. If the close cascade reaches k112, reconcile its unchanged charter
-with the explicit human scope answers and promote the final handoff to k109.
+proof. Both boundaries are selected under delegation; selected semantics still
+need rigorous instrument/subject construction, prompt verification and actual
+useful launch coverage. If the close cascade reaches k112, reconcile every
+remaining condition with those two explicit scope changes and promote the
+complete final handoff to k109.

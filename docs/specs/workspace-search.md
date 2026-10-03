@@ -25,8 +25,9 @@ deeper ones, preserving later home-root names against an early enormous branch.
 The bounded queue reports omitted descent in one reserved root frontier group;
 anchor names remain matchable. A process-wide descriptor account reserves job
 credits atomically below the inherited soft limit, leaving a non-search reserve.
-Normally launched host serviceability remains an acceptance obligation, including
-platform-internal descriptors. The
+Normally launched host serviceability remains an acceptance obligation during
+platform-native inspection. The selected evidence boundary leaves opaque
+internal acquisitions and peaks unproved. The
 [canonical directory observation](#canonical-directory-observation) chooses
 public fsgetpath with descriptor-derived identity and grouped size refusals;
 its load-bearing review is required. `search-native-resources-k109` must choose
@@ -58,15 +59,17 @@ resource producer is decomposed into feasibility, allocation and constructible
 serviceability-subject design; its complete artifact still requires review.
 The [allocation decision](#native-allocation-decision) records the operator's
 refusal of helper design and retains the single-process posture. The need for
-isolation has not been established. The continuation must settle an owned
-bounded route or complete approved-posture observation in Koine; no runtime
-route or weaker metadata fact is accepted.
-The [proposed observation contract](#proposed-in-process-observation-contract)
-now makes the narrower native-result and serviceability-evidence choices
-reviewable. Both require separate human answers; the helper refusal authorizes
-neither. The original obligations remain binding until those answers are recorded.
-The owned-credit formula, two temporary credits, metadata/public outcomes,
-domain and all native acceptance obligations below remain binding.
+isolation has not been established. Antony subsequently instructed "you decide";
+under that delegation, the requirements session independently selected the
+native-result meaning and empirical serviceability-evidence boundary in the
+[observation contract](#proposed-in-process-observation-contract). Registration
+and other native facts are reported observations, with disclosed possible
+undetected incorrect results; controlled outcomes and complete owned/hook events
+leave opaque internal demand unproved. These selections change only those two
+guarantees and do not follow from the helper refusal. The final in-process
+allocation contract, serviceability subjects and mandatory review remain live.
+The owned-credit formula, two temporary credits, limits, domain, authority,
+consent, compatibility and all other native acceptance obligations remain binding.
 
 ## Discovery obligations before planning
 
@@ -692,19 +695,23 @@ Application matches carry an absolute metadata-resolved canonical `applicationPa
 filename `name`, nullable bundle identifier and `installationState`.
 `INSTALLED` means an application bundle with a known nonblank identifier and
 that exact native file identity present in public registration inspection.
-`UNREGISTERED` means registration inspection positively found no entry for that
-exact present bundle identity; retain it as a reveal/path-copy candidate and
+`UNREGISTERED` means checked registration inspection reported no entry for that
+exact present bundle identity under the selected native-observation meaning;
+it does not prove internally healthy service work or exclude a stale-service
+false negative. Retain it as a reveal/path-copy candidate and
 copy its identifier when known, but never offer constrained launch for it.
 `UNKNOWN` means application metadata/registration could not be established;
 never silently replace it with another installation. A bundle without an
 identifier may appear
 as UNKNOWN with a null identifier for reveal/path-copy, and cannot form a launch
 selector. Report missing/failed application metadata as partial coverage, not
-proof of absence. An empty registration array or nil Bundle identifier without
-an error-observable success signal does not establish absence, UNREGISTERED or
-a bundle with no identifier: resource exhaustion can produce the same answer.
-`search-native-resources-k109` must settle the search call/health contract with
-load-bearing review; reuse of the existing action adapter does not settle it.
+proof of absence. An empty registration array or nil Bundle identifier never
+establishes absence, UNREGISTERED or a missing identifier; both remain UNKNOWN
+with affecting coverage even if later stat/access succeeds. Resource exhaustion
+can produce the same answer.
+`search-native-resources-k109` must finalize the search call/error contract under
+the [selected observation boundaries](#observation-boundary-decision-questions)
+with load-bearing review; reuse of the existing action adapter does not settle it.
 Both public per-identifier registration answers remain selection inputs where
 their inspection is established; registrations alone do not prove presence.
 One established native bundle identity (mounted volume/device and inode, with
@@ -1025,33 +1032,39 @@ listener bootstrap uses AcceptBackoffHandler with error forwarding disabled;
 accept EMFILE may therefore pause accepts for one second without a public error.
 Error-free client replies alone are not a serviceability verdict.
 
-The producer must name a constructible instrument for all relevant descriptor
-acquire/release/error events (including opaque calls), search/cohort attribution,
-and listener accept failures/backoff, with positive transient-open and suppressed-
-accept controls under the actual signed hardened host. If that observation route
-is unavailable under the approved posture, it must choose an observably bounded
-native-call/allocation design instead; an unmeasurable high-water requirement
-cannot clear acceptance. The host is launched normally with its inherited limit,
-while independent new connections/queries, durable grant-store operations and
-authorized launch/open/reveal run. Record each operation, latency, descriptor
-margin and attributable resource/backoff events; any search-caused independent
-resource failure or accept backoff fails the subject, even if later replies
-succeed. This resource criterion adds no general latency target. Combined demand
-must fit L minus owned search occupancy. These subjects remain unconstructible
-until the producer selects the call and instrument contracts; static caps,
-periodic counts and a shell-raised host cannot stand in for them. Arbitrarily heavy unrelated clients,
-system-wide ENFILE and externally lowered limits are outside a serviceability
-guarantee. No static cap, simulated table or shell-raised host is native evidence.
+The independently selected [evidence boundary](#observation-boundary-decision-questions)
+requires a constructible instrument for complete owned-credit/admission and
+listener accept/backoff hook events, exact native-call envelopes and controlled
+independent listener/store/action outcomes. The owned transient-open and
+suppressed-accept controls must fail when their applicable events are lost.
+Opaque internal acquisitions, peaks, lifetimes and swallowed errors remain
+unproved; neither a successful span nor an owned ledger supplies that proof.
+The host is launched normally with its inherited limit while independent new
+connections/queries, durable grant-store operations and authorized launch/open/
+reveal run. Record each operation, latency, owned occupancy and observed
+resource/backoff events; an independent resource failure or accept backoff fails
+conservatively, even if later replies succeed. Lost applicable events, attribution
+gaps and inconclusive reference comparisons cannot pass. This resource criterion
+adds no general latency target. Combined demand must fit L minus owned search
+occupancy; the reserve is not an OS guarantee. Final call/instrument contracts,
+subject construction and review remain pending. Static caps, polling, simulated
+tables and shell-raised hosts cannot substitute for native evidence. Arbitrarily
+heavy unrelated clients, system-wide ENFILE and externally lowered limits remain
+outside a general serviceability guarantee.
 
 ### Native allocation decision
 
 **Scope decision: retain Koine's single-process posture. Helper packaging and
 child descriptor-limit changes are not authorized.** The operator declined the
 support-process proposal, questioning why a separate process was needed.
-Continue allocation design inside Koine with an owned bounded native route or
-complete approved-posture observation. The binding resource, metadata, domain,
-authority and compatibility contracts and the agreed GraphQL, native-binary
-and isolated-VM seams remain unchanged. No concrete runtime route is selected.
+Continue allocation design inside Koine. After Antony instructed "you decide",
+select the reported-native-result and empirical-evidence boundaries below as
+independent decisions under delegated judgment. They replace only the original
+proof-of-internal-health requirement for the named native facts and exhaustive
+opaque-event/fully-owned-route requirement for serviceability evidence. Resource
+budgets, domain, authority, consent, compatibility and the agreed GraphQL,
+native-binary and isolated-VM seams remain unchanged. The complete runtime
+allocation contract is still pending final design.
 
 The helper was proposed to contain one particular failure: platform metadata
 calls can acquire descriptors outside search's owned account, and exhausting
@@ -1066,7 +1079,7 @@ obligations, and does not establish healthy metadata or system-wide serviceabili
 | Direction | Caller burden and allocation ownership | Reason it cannot yet be the runtime contract |
 | --- | --- | --- |
 | Direct owned inspection | One private native boundary owns checked opens, identity, reads and errors within roots + 2 credits. | A bounded manifest parser does not supply registration or native package/type semantics. Suffixes, a private registration database and UNKNOWN for every launch candidate would change the workflow. |
-| Opaque inspection in Koine | Keeps current single-process composition; a complete observer must account internal acquisitions, releases and swallowed resource failures. | CFError, formatted filesystem output, table polling and eventual client replies do not provide that evidence. A different signature, entitlement or launch posture is not approved. |
+| Opaque inspection in Koine, within the selected boundaries | Keeps native semantics and single-process composition; checked reported facts and empirical independent outcomes carry explicit internal-health/visibility limits. | Exact normalization, owned lifetime choreography and complete applicable instrumentation still need finalization, subjects and review. CFError, polling and eventual replies do not prove opaque safety; signing/launch posture stays unchanged. |
 | Finite-table private helper, outside approved scope | A separate descriptor table could contain opaque per-process demand, at the cost of transport and child ownership. | The operator declined this design direction. Necessity is unestablished; separation proves neither metadata health, host spawn demand, system-wide demand nor orphan cleanup. |
 
 The declined proposal was a support executable sealed inside Koine's app,
@@ -1093,15 +1106,19 @@ The observation boundary must distinguish value, health and lifetime. Public
 registration candidate; preserve error domain/code and bounded underlying
 resource causes. An unexpected result/error combination or nil/nil is uncertain.
 A matching returned URL still needs presence and native-identity checks; it
-cannot introduce a discovery root. A not-found CFError, an empty array, a
-nonmatching array or nil `Bundle` identifier cannot establish UNREGISTERED or
-no identifier unless the final adapter establishes the whole relevant
-observation's resource health. A superficially successful native return, later
-`stat`/`access`, and absence of a reported resource error do not establish that
-health. Swallowed EMFILE/ENFILE must not publish a negative fact. Reporting
-all uncertain registrations as UNKNOWN would retain reveal/copy choices but
-would not satisfy the promised native UNREGISTERED subjects or configured
-launch coverage. Declining the helper does not approve that semantics change.
+cannot introduce a discovery root. Under the selected reported-observation
+meaning, only the exact checked not-found branch or a fully checked nonempty
+no-error array can establish UNREGISTERED as detailed below. Empty arrays,
+unexpected errors, incomplete/conflicting observations and nil identifiers
+remain uncertain; nil never asserts a missing identifier. Reported or explicitly
+associated EMFILE/ENFILE refuses negatives and latches the cohort. Undetected
+internal failure or stale service state can still produce a normal-looking
+negative, an accepted fact-meaning limit rather than a passed health test.
+Later `stat`/`access` and lack of reported error prove no internal health.
+All-UNKNOWN launch metadata and incorrect known-witness outcomes still fail
+acceptance. The decision covers reported type/package/hidden/alias facts and
+positive identifiers as well as registration; the helper refusal supplied none
+of this authority.
 
 A direct identifier reader remains an alternative requiring exact layouts,
 no-follow policy/identity checks, checked `openat`/`read`/EOF/error handling,
@@ -1119,10 +1136,11 @@ beside an indefinite call retains disabled-search guidance and prevents new
 inspections/jobs; provider restart cannot reset that state. Process-restart
 recovery remains an acceptance obligation.
 
-The next allocation design must settle in-process health, owned and opaque
-demand, two-credit ownership and recovery before serviceability subjects can
-be constructed. Its acceptance handoff must reject apparently negative
-registration/identifier replies after swallowed resource errors. Preserve the
+The next allocation design must finalize reported native result/error rules,
+owned versus opaque demand, two-credit ownership and recovery before
+serviceability subjects can be constructed. Its acceptance handoff must refuse
+negatives with observed/associated resource failure and retain the disclosed
+undetectable-failure limit; nil identifiers remain UNKNOWN. Preserve the owned
 transient-open and suppressed accept/backoff detection controls, independent
 listener/store/action work, cohort/lower-limit cases, retained compatibility
 profiles and actual useful Safari/Finder/home coverage. Polling and eventual
@@ -1136,14 +1154,15 @@ Native, binary and workflow acceptance remain pending.
 
 #### Proposed in-process observation contract
 
-**Proposal awaiting a human semantics/evidence decision; not the selected runtime
-contract.** Retain the approved single-process posture. Prefer the native calls
-below over new content readers or private registration scraping, but distinguish
-their reported observations from a proof of internal platform health. This
-proposal changes two guarantees explicitly, as described under
-[the decision questions](#observation-boundary-decision-questions). Approval of
-only one leaves allocation design open. The existing stronger negative-fact and
-complete-event obligations above are not satisfied by this proposal.
+**Native-result meaning and serviceability-evidence boundaries selected under
+Antony's "you decide" delegation; complete runtime allocation design remains
+pending.** These are two independent agent decisions, not two personal yes
+answers attributed to Antony. Retain the approved single-process posture and
+prefer the native calls below over new content readers or private registration
+scraping. The [resolved decisions](#observation-boundary-decision-questions)
+replace only the named fact-health and opaque-event guarantees. Reported
+observations do not prove internal platform health, and controlled acceptance
+does not prove hidden-resource safety. Every other obligation remains binding.
 
 One private inspection boundary owns result/error normalization and exposes
 value, uncertainty, observed change or resource refusal to the accumulator.
@@ -1155,7 +1174,7 @@ metadata and coverage together. Native answers cannot introduce discovery roots.
 | Responsibility / actual calls | Proposed usable observation | Uncertain or failing observation |
 | --- | --- | --- |
 | Owned listing, identity and path: checked `openat`, `fstatat`/`fstat`, `fstatfs`, `fdopendir`/`readdir`, and the canonical `fsgetpath` operation | Existing policy/identity/location checks and explicit POSIX success/EOF. `fdopendir` transfers an owned descriptor; it creates no second charge. | Captured errno, changed association, invalid output or native-size refusal follows the existing scope rules. Set errno immediately before `readdir`; nil with nonzero errno is failure, never EOF. |
-| Native application/package/hidden/alias/type metadata: a fresh `URL.resourceValues(forKeys:)` for `.isApplicationKey`, `.isPackageKey`, `.isHiddenKey`, `.isAliasFileKey`, `.contentTypeKey`, with only keys needed for this entry | Required booleans must actually be supplied; a nonnil type identifier must fit the optional-string account. These are native reported facts, not extension inference. Existing directory identity/canonical checks bracket the call. | A thrown error, missing required value, conflicting facts or unrepresentable optional value yields affecting inspection coverage and unknown fields, or omission when application classification cannot be established. It cannot authorize descent into a possibly hidden/package directory. Native false/no values have the residual internal-health limit being proposed. |
+| Native application/package/hidden/alias/type metadata: a fresh `URL.resourceValues(forKeys:)` for `.isApplicationKey`, `.isPackageKey`, `.isHiddenKey`, `.isAliasFileKey`, `.contentTypeKey`, with only keys needed for this entry | Required booleans must actually be supplied; a nonnil type identifier must fit the optional-string account. These are native reported facts, not extension inference. Existing directory identity/canonical checks bracket the call. | A thrown error, missing required value, conflicting facts or unrepresentable optional value yields affecting inspection coverage and unknown fields, or omission when application classification cannot be established. It cannot authorize descent into a possibly hidden/package directory. Native false/no values have the selected residual internal-health limit. |
 | Identifier: `Bundle(url:)` followed by `bundleIdentifier`, without executable loading or localized/icon/resource lookup | A supplied nonblank bounded string is an observed identifier, subject to bundle identity/location rechecks. | Nil, blank, wrong type or overlong value means null identifier, UNKNOWN installation and affecting INSPECTION_FAILED coverage. Never assert that the bundle declares no identifier. Later `stat`/`access` does not upgrade nil; no direct Info.plist read is proposed. |
 | All registrations: `LSCopyApplicationURLsForBundleIdentifier`, with initialized `outError` | A nonempty CFArray with no error supplies reported registration URLs; inspect one at a time, never bridge it into a second growing Swift array. Each candidate URL must be a bounded file URL admitted by the existing policy, then checked for present native bundle identity. A positive exact identity can establish INSTALLED. | Nil/nil, empty array, array plus error, wrong element type or any error except the specifically decoded not-found result is uncertain. Any EMFILE/ENFILE in captured underlying causes latches resource refusal. Never use the action adapter's errorless registration array to prove absence. |
 | Preferred per-identifier observation: `NSWorkspace.urlForApplication(withBundleIdentifier:)` | A nonnil URL is a separate selection input only after the same policy, presence and native-identity checks. | Nil is no negative fact. A conflicting positive preferred observation invalidates a proposed negative from the all-registration query. A failed/blocked preferred-target check prevents negative finalization; no fallback retargets the candidate. |
@@ -1177,7 +1196,7 @@ the [previously measured keys and fixtures](../verification/protected-path-metad
 not the new package/hidden combinations or every link/volume. Any prompting
 route fails acceptance; this proposal supplies no permission to prompt.
 
-Under the proposed weaker semantics, UNREGISTERED means **the public registration
+Under the selected reported-observation semantics, UNREGISTERED means **the public registration
 observation reported no registration for this checked present native identity**.
 It could be finalized in only two cases: the all-registration query returned
 nil with the proposed allowlisted pair `kCFErrorDomainOSStatus` and
@@ -1201,8 +1220,11 @@ registration or UNKNOWN for every application. It explicitly admits a residual
 false negative if Launch Services returns a normal-looking not-found/incomplete
 answer after an undetected internal failure or stale service state. A complete
 array also cannot prove absence outside that observed service answer. The
-original contract disallows that inference; changing it needs the first human
-answer. Even an apparently positive answer is a platform observation, rechecked
+original internal-health requirement is replaced for these facts by the selected
+reported-observation meaning. Native type/package/hidden/alias values and positive
+identifiers likewise carry a possible undetected incorrect-fact limit; known
+incorrect witness outcomes remain acceptance failures. Even an apparently
+positive answer is a platform observation, rechecked
 at action time, not a certified internally healthy platform snapshot. No
 separate no-identifier assertion is proposed or exposed through a null field.
 
@@ -1226,8 +1248,9 @@ check its length. Only copied values fall under the existing scratch account;
 no whole-array bridge or diagnostic-error-tree copy may escape it. Serial calls
 do not bound internal descriptor/RSS demand, asynchronous platform work or
 system-wide resources. Native entry/exit events label these spans, not their
-internal acquisitions. This is why the proposal does not meet the original
-fully owned route/complete observer condition. R remains a budget, not an OS
+internal acquisitions. The selected evidence boundary leaves those acquisitions
+unproved rather than claiming the original fully owned route/complete observer
+condition was met. R remains a budget, not an OS
 reservation. It cannot ensure that another consumer's next open or accept fits.
 
 Refresh the host limit before **every** new native inspection, including opaque
@@ -1267,10 +1290,10 @@ still cause refusal. No orphan-child recovery is needed because no child exists.
 
 ##### Proposed observable acceptance boundary
 
-Keep independent real GraphQL/native-provider subjects and normally launched
-signed hardened Koine in isolated macOS VMs. The second human decision would
-replace exhaustive opaque descriptor-event certification with an explicitly
-limited argument: complete owned-credit/admission events; exact native-call
+Keep the already agreed independent real GraphQL/native-provider and normally
+launched signed hardened Koine isolated-VM seams. Under delegated judgment,
+independently select an empirical evidence boundary replacing exhaustive opaque
+descriptor-event certification with an explicitly limited argument: complete owned-credit/admission events; exact native-call
 entry/return/value/error/freeze envelopes; and independently observed listener,
 grant-store and authorized action outcomes. A private-adapter ledger cannot
 certify hidden native calls; raw tracing, if independently validated, remains
@@ -1306,47 +1329,54 @@ FIFO/witness/binary/compatibility subjects and the operator's separate measured
 home-omissions decision remain mandatory. No observed independent error is waived
 because clients eventually reply; the proposed change is the **visibility and
 scope of the evidence**, not permission to accept observed search-caused failure.
-Under the original contract, an incomplete opaque trace remains inconclusive.
-Even if this proposal is approved, a passing controlled subject certifies only
-its observed outcomes and owned/hooks completeness, not absence of transient
-opaque demand or all possible native false negatives.
+An incomplete opaque trace supplies no hidden-resource proof. Under the selected
+empirical boundary, a passing controlled subject certifies only its observed
+outcomes and complete applicable owned/hooks events, not absence of transient
+opaque demand or all possible native false negatives. Missing applicable events
+or inconclusive independent controls still cannot pass.
 
 ##### Observation boundary decision questions
 
-Recommend the following two explicit decisions for consideration, because they
-retain public native semantics and the actual configured launch workflow inside
-the approved process posture without claiming an unavailable internal-health
-proof. The justification is the documented API boundary and current evidence
-gap, not demonstrated normal-search harm or established necessity for isolation.
+Antony instructed "you decide" after the first question was presented. Under
+that delegation, resolve the remaining requirements choices separately below;
+do not attribute a personal yes to an unasked second question. The decisions
+retain native semantics and configured launch usefulness within the approved
+posture. Their justification is the documented API boundary and present evidence
+gap, not a demonstrated normal-search failure or necessity for isolation.
 
-1. **Native result meaning, including registration:** May UNREGISTERED mean the checked public service
-   observation described above, with disclosed possible undetected internal
-   failure/stale-service false negatives, instead of requiring proof that all
-   internal work was healthy? Nil identifier remains UNKNOWN, never no identifier;
-   malformed/errorful/incomplete observations remain uncertain. This changes the
-   strength of the pending public meaning and needs explicit approval. The same
-   choice treats native type/package/hidden/alias values and positive identifiers
-   as reported platform observations without proof of internally healthy work.
-   Undetected incorrect native metadata could omit a name or misclassify its
-   disposition; known-witness incorrect outcomes still fail acceptance. Approval
-   of registration meaning alone must not be stretched to cover those facts.
-2. **Serviceability evidence:** May acceptance establish complete owned/hook
-   events and controlled independent outcomes while explicitly leaving opaque
-   allocation peaks/internal events unproved, instead of requiring the original
-   complete acquire/release/error observer or a fully owned equivalent route?
-   Observed independent failure/backoff still fails; lost applicable events and
-   inconclusive runs still cannot pass. This changes the acceptance guarantee.
+1. **Selected native-result meaning, including registration and other metadata.**
+   UNREGISTERED means the checked reported service observation described above,
+   permitting an undetected internal-failure/stale-service false negative without
+   proof of internally healthy work. Nil identifier always remains UNKNOWN with
+   affecting coverage; malformed/errorful/incomplete/blocked/conflicting results
+   cannot establish a negative. Reported or associated resource errors refuse it.
+   This selection also covers reported native type/package/hidden/alias values
+   and positive identifiers; an undetected incorrect fact could omit a name or
+   misclassify its disposition. Known incorrect witnesses and all-UNKNOWN
+   configured launch coverage still fail. The exact not-found domain/code and
+   actual-call prompt/identity behavior remain native acceptance obligations.
+2. **Independently selected serviceability-evidence boundary.** Complete applicable
+   owned/hook events, exact native-call envelopes and controlled independent
+   real listener/store/authorized-action outcomes may establish empirical
+   acceptance while opaque acquisitions, peaks, lifetimes and swallowed errors
+   remain unproved. Observed independent resource failure or accept backoff fails
+   conservatively, including when later replies succeed. Lost applicable events,
+   attribution gaps and inconclusive runs cannot pass. Existing GraphQL,
+   native-provider and normally launched signed-host VM seams are retained;
+   inspection controls and listener/backoff hooks work inside those seams.
 
-Retaining either original requirement is a legitimate answer. It leaves the
-corresponding allocation obligation live before serviceability construction and
-planning; the same proposal cannot be renamed a proof. No refusal automatically
-approves helpers, content reads, consent, smaller roots, all-UNKNOWN launch
-coverage, different signing/limits or abandonment. A final design continuation
-must consume both answers, reconcile spec/SDL/client language and any earned ADR
-or glossary change, and give the serviceability producer a coherent handoff.
-Only then can the complete-resource mandatory review be cut. Native acceptance
-and the existing public contract version remain pending/unchanged; no released
-contract meaning is being changed in this design session.
+Only these two guarantees change. Q/S, two temporaries, inherited limits,
+worker-only freeze/late-return/cleanup/restart ownership, signing, consent,
+search domain, authority, public version and compatibility remain binding.
+Native prompt acceptance, real Safari/Finder launch usefulness and the separate
+measured home-omissions decision remain mandatory. No helper, new content reader,
+permission, smaller domain or all-UNKNOWN launch acceptance is selected.
+The final design continuation must complete every remaining allocation obligation,
+reconcile durable public meanings and any earned ADR/glossary record, and give
+the serviceability producer a coherent observable handoff. Subject construction
+and mandatory complete-resource review still precede planning. These decisions
+are requirements selections, not implementation or native/binary/workflow
+acceptance, and no released contract meaning or version changes here.
 
 ### Match retention and freeze
 
@@ -1454,8 +1484,10 @@ resource failure. A controlled ledger proves the accounting rules, not native
 isolation. A normally launched host saturation subject must demonstrate listener
 requests, grant-store work and authorized actions stay serviceable using the
 call/instrument contract required by search-native-resources-k109. Record
-effective soft limit, reserve, credits, owned occupancy, attributed total/opaque
-acquire/release/error events and listener backoff; polling is not high-water proof.
+effective soft limit, reserve, credits, owned occupancy, complete applicable
+owned/hook events, native-call envelopes and independent resource/backoff
+outcomes. Opaque acquisitions/peaks remain unproved under the selected evidence
+boundary; polling supplies no transient high-water proof.
 Combine an indefinitely blocked call with another job's native resource failure
 and verify new jobs remain disabled until process restart. Instrument component
 walk/canonical/turn-check counts and elapsed shares on all chain and realistic
@@ -1530,7 +1562,8 @@ The descriptor account above permits at most one stream per root and two explici
 temporary opens per job, atomically reserved with worker admission; four jobs
 use at most 72 owned credits. Platform-internal/unrelated opens consume the
 non-search margin, not uncharged explicit-search opens. The normally launched
-host must establish serviceability under this allocation; no limit change is
+host must establish the selected empirical serviceability acceptance under this
+allocation, without certifying opaque acquisition peaks; no limit change is
 implicit. Native refusal stops further search opens for its admitted cohort.
 All worker-owned streams, including idle ones, stay owned and charged across
 cancellation until the admitted native call returns and worker-only cleanup
@@ -1762,8 +1795,8 @@ pending implementation/acceptance:
 | Application links/aliases | Using canonical target filename/path, registered .app targets yield INSTALLED and unregistered targets yield UNREGISTERED; denied/protected/dangling or changed targets cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities, both registration answers and one filesystem-reported canonical path across case/component/link spellings. Limit-1 duplicate routes have false count truncation and merged rootIndices; equal-identifier native copies remain distinct. Canonical target queries match, alias-only app queries do not; file queries retain link names. Inject canonical-path/value failures and rename/reuse observations. Path and identifier action inputs remain unchanged. | Inspect actual target/link metadata, resolution order and mount checks. Include links to Desktop/Documents/Downloads and a named protected Library sub-area (Mail data), with component aliases. No protected traversal, alias-file resolution, default-handler lookup, registration writes or content/hydration request. Resolution itself must be prompt-free under actual signed Koine; earlier metadata evidence does not establish it. Cryptex admission/races use the actual adapter; no new keys/entitlements. |
 | Wide realistic layouts / later-root scheduling | The measured-shape 36-project/position-12 subject returns later depth-1 and all depth-2 project anchors plus four depth-2 home markers before ENTRY_LIMIT; later project depth-3 markers and depth-4 deep-needle are absent through home. Its explicit Deep root returns the needle. The separate flat depth-2 sink omits dev-file-199998 and the four later depth-2 markers. The 5,000-child subject returns all anchors and first 512 markers, FRONTIER_LIMIT count 4,488. Query each witness to avoid ranking loss. | Controlled native order/clock verifies FIFO depth order, both turn ceilings and single name listings. Record repeated component opens/canonical calls/turn checks and elapsed wait: 496 opens/chain, 15,872 in the depth-anchor fixture, 7,936/job for 16 chains before other calls. Verify every named retained/omitted witness, queue charges and thirteen coverage shapes. Exact search-required/action-only profiles remain distinct. | Actual home/default and measured-scale trees record native order, each shallow/same-level/deep/later-root witness, reasons, coverage and elapsed shares of entry work versus component/canonical/turn checks. Use adapter event counters/timestamps, not entry totals as a performance proxy. Real Safari/Finder and protected Library-link calls remain pending; k93 must assess actual queue/entry/depth/value/deadline omissions. |
 | Exact scope groups / exhaustion | Invalid/overlong names have actual-parent CHILD_GROUP and omit anchor names. DEPTH_LIMIT and FRONTIER_LIMIT are separately reserved root groups counting observed matchable anchors, not descendants, with depth precedence even for empty anchors. Stop uses REMAINDER/null count; only progress adds a searched record. | 512 short tasks fit; task 513 frontier-refused. Controlled 8,192-byte values admit 43 tasks; task 44 is byte-refused. These are accounting subjects, not evidence of native path reachability. No eviction/retry; siblings stay matchable. Freeze preserves charged queued/in-flight paths and prior diagnostics. Thirteen shapes/16 rootIndices/fifteen witnesses fit; witness overflow refuses all roots before turns. | The [canonical subjects](#canonical-path-acceptance-subjects) separate synthetic 43/44 arithmetic from native 4,224-byte tasks (79/80 byte boundary), 128-byte tasks (512/513 count boundary), and full-buffer size refusals. Canonical review and all native outcomes remain pending. Actual APFS short/wide/depth fixtures use adapter charge/check counters; record each witness/path occurrence and refusal check. Invalid bytes/alternate layouts remain controlled subjects. |
-| Shared process descriptor serviceability | At L=256, four 16-root jobs reserve 72 credits; a fifth refuses on workers. At L=160, S=32: one Q=18 job fits and a second refuses on descriptors. At L=128 none fits. A refresh S′ below summed surviving Q reservations latches CAPACITY_LIMIT for scheduled unfinished roots/new jobs even if occupancy is lower; a higher read does not resume that cohort. Native resource failure uses INSPECTION_FAILED and disables new inspections/jobs until cleanup. | Shared owner across provider instances races whole worker/credit acquisition and charges/transfers/closes. Cover 128/160/200/256/infinite/unknown; lower S below reservations while occupancy still fits, then raise it and prove refusal remains until cleanup. Combine EMFILE/ENFILE with one indefinitely blocked cohort call; free workers do not enable new search, provider restart does not recover, fresh process does. Inject opaque failure with empty/nil answers: no positive absence fact. Simulations do not prove serviceability. | Native call/error selection and an instrument seeing transient opaque descriptor events, attribution and suppressed accept/backoff await search-native-resources-k109 and its mandatory review. The selected instrument must fail transient-open and NIO suppressed-error controls. Normal signed launch retains inherited L; four saturated searches/blocked metadata run beside independent fresh listener connections, grant-store work and authorized actions. Record event/margin/outcome/latency per operation; any search-caused resource failure or accept backoff fails even with later successful responses. Polling/error-free replies/shell-raised limits cannot pass it. |
-| Cancellation during a blocked call | Freeze once with TIME_LIMIT when publishable; external cancellation may have no response. Late work changes no counters/matches/groups/coverage. Queue/stream/credits survive until worker cleanup. Resource refusal plus an indefinitely blocked cohort explicitly disables new search until process restart; guidance distinguishes that from ordinary busy admission. | Separately block listing, registration, component and canonical calls with multiple streams/nonempty FIFO; combine one indefinite block and another job resource failure. Release finite calls and verify exactly-once worker close/drop, no late I/O/publication and release only after unwind. Reuse closed descriptor numbers to detect stray closes. Provider restart retains pool/ledger/latch. | Late-return cleanup/no-dialog subjects remain pending; descriptor attribution/serviceability uses k109’s selected instrument. Record owned/opaque occupancy and independent operations. An indefinite block retains slots/credits and a resource-refusal cohort across provider restart; no replacement threads or external closes. Fresh process restores admission. |
+| Shared process descriptor serviceability | At L=256, four 16-root jobs reserve 72 credits; a fifth refuses on workers. At L=160, S=32: one Q=18 job fits and a second refuses on descriptors. At L=128 none fits. A refresh S′ below summed surviving Q reservations latches CAPACITY_LIMIT for scheduled unfinished roots/new jobs even if occupancy is lower; a higher read does not resume that cohort. Native resource failure uses INSPECTION_FAILED and disables new inspections/jobs until cleanup. | Shared owner across provider instances races whole worker/credit acquisition and charges/transfers/closes. Cover 128/160/200/256/infinite/unknown; lower S below reservations while occupancy still fits, then raise it and prove refusal remains until cleanup. Combine EMFILE/ENFILE with one indefinitely blocked cohort call; free workers do not enable new search, provider restart does not recover, fresh process does. Inject opaque failure with empty/nil answers: no positive absence fact. Simulations do not prove serviceability. | Final native call/error selection and complete applicable owned/admission and listener/backoff hooks, native-call envelopes and independent outcomes await search-native-resources-k109 and its mandatory review. The instrument must fail owned transient-open/dropped-event and NIO suppressed-error controls; opaque events/peaks remain unproved under the selected boundary. Normal signed launch retains inherited L; four saturated searches/blocked metadata run beside independent fresh listener connections, grant-store work and authorized actions. Record event/margin/outcome/latency per operation; any search-caused resource failure or accept backoff fails even with later successful responses. Polling/error-free replies/shell-raised limits cannot pass it. |
+| Cancellation during a blocked call | Freeze once with TIME_LIMIT when publishable; external cancellation may have no response. Late work changes no counters/matches/groups/coverage. Queue/stream/credits survive until worker cleanup. Resource refusal plus an indefinitely blocked cohort explicitly disables new search until process restart; guidance distinguishes that from ordinary busy admission. | Separately block listing, registration, component and canonical calls with multiple streams/nonempty FIFO; combine one indefinite block and another job resource failure. Release finite calls and verify exactly-once worker close/drop, no late I/O/publication and release only after unwind. Reuse closed descriptor numbers to detect stray closes. Provider restart retains pool/ledger/latch. | Late-return cleanup/no-dialog subjects remain pending; descriptor attribution/serviceability uses k109’s selected instrument. Record owned occupancy, native-call envelopes and independent operations; opaque internal occupancy/lifetimes remain unproved. An indefinite block retains slots/credits and a resource-refusal cohort across provider restart; no replacement threads or external closes. Fresh process restores admission. |
 | Current/queued parent moves into protected scope | File-search current streams recheck before every listing turn/read, even with no child opens. Observed current movement uses one root CHANGED_DURING_SEARCH REMAINDER. Changed/missing walk prefix or immediate parent likewise stops the root once; a changed final target gets exact SUBTREE only after its parent is established unchanged. Uncertainty uses INSPECTION_FAILED at the corresponding scope. Preserve progress/prior groups; no post-refusal entry read, stale-path publication or metadata open. | Use diagnostic turn/walk barriers and a sequence-numbered check/read/open/publication trace. Move a 100,000-entry file listing after a 64-entry turn; its next check refuses before reading. Queue 512 tasks beneath one ancestor, then rename/remove/replace it: one remainder, no per-task diagnostic fan-out or DIAGNOSTIC_LIMIT. Inject ENOENT/ENOTDIR at an intermediate parent; separately replace only a target under unchanged parent and continue unrelated tasks. Inject after-check races as limits, not atomic safety. | Actual adapter diagnostic barriers pause before a next-turn listing check and before a mid-walk parent check; an independent mover places current/queued subtrees in Documents/Desktop/Downloads/Library or outside root. Trace actual canonical checks, subsequent entry reads/metadata opens and published paths; no stale-path publication/read follows an observed refusal. Independent dialog/hydration witness tests remaining check-to-read/open windows. Use the fsgetpath identity/association rechecks and size/movement precedence; its load-bearing review and native outcomes remain pending. Prompting routes fail and require redesign. |
 | Firmlink/case/Unicode canonical paths | Roots naming home and its Data-volume alias have the same resolvedPath and one file location with both observed rootIndices. App link/direct routes retain one canonical path/native identity, stable rank and false duplicate truncation. RequestedPath retains input spelling; synthetic policy targets use canonical-home components. | Supply differing preliminary realpath and final fsgetpath spellings for one identity; require the single final canonical operation everywhere. Case/component/Unicode route variants cannot fabricate CHANGED_DURING_SEARCH in unchanged observations. Unknown/overlong canonical output has affecting coverage with no fallback. | On the startup APFS pair, use home and /System/Volumes/Data/Users/<user> roots plus /Applications and its Data alias. Create differently cased and NFC/NFD-named link spellings to one permitted bundle; observe actual filesystem identity/name behavior rather than assuming separate Unicode files. Inspect root/frame/bundle/policy path production and per-choice membership with no protected open or dialog. |
 

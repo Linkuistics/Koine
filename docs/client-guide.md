@@ -369,16 +369,21 @@ load-bearing review; opaque native-resource call/measurement design and its
 review also precede planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
 records error-channel and observer limits; allocation and constructible subjects
-remain open, with no accepted change to public outcomes or workflow coverage.
+remain open, with no native/binary acceptance or reduced workflow coverage.
 The [allocation scope decision](specs/workspace-search.md#native-allocation-decision)
 retains single-process inspection after helper design was declined. The
 [in-process observation proposal](specs/workspace-search.md#proposed-in-process-observation-contract)
-names actual native calls, uncertainty/refusal and worker recovery. It asks
-separately whether native metadata and registration may mean reported observations,
-whether serviceability evidence may leave opaque allocations unproved. Both
-changes are unapproved; current negative-fact and complete-event obligations
-still bind. Nil identifier never means a proven missing identifier, and the
-proposal cannot pass with UNKNOWN metadata for every configured launcher.
+names actual native calls, uncertainty/refusal and worker recovery. Under
+Antony's "you decide" delegation, two independent requirements decisions select
+reported native metadata/registration meaning and empirical serviceability
+evidence. An undetected internal failure or stale state can make registration
+or another native fact incorrect; opaque allocations/peaks/internal errors remain
+unproved. Nil identifier always remains UNKNOWN with affecting coverage.
+Malformed/errorful/incomplete observations remain uncertain, observed resource
+errors refuse negatives, and known incorrect witnesses or UNKNOWN metadata for
+every configured launcher still fail. Final allocation design, subjects and
+review remain pending; all other workflow, prompt, limit and compatibility
+obligations remain binding.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review
@@ -492,8 +497,10 @@ propagate normally. A surviving BLOCKED status never waives a lifecycle error.
 
 Derive choices locally. An INSTALLED application with a known identifier feeds
 both that identifier and `applicationPath` to the constrained launch below;
-UNREGISTERED and UNKNOWN installations remain reveal/copy choices and cannot
-launch by this route; a known identifier can still be copied. File paths feed
+UNREGISTERED means the checked macOS observation reported no registration for
+that native bundle identity; it can be wrong after an undetected internal failure
+or stale service state. UNREGISTERED and UNKNOWN remain reveal/copy choices and
+cannot launch by this route; a known identifier can still be copied. File paths feed
 existing open/reveal operations. Null default-app metadata is unknown, not no handler.
 Search classification does not pin a file or promise that opening will succeed.
 Both controls are required for the later actions; selection does not confer them.
@@ -505,7 +512,9 @@ Search CAPACITY_LIMIT guidance distinguishes busy admission from native
 inspections disabled by a lower-limit/resource-failure cohort. A resource flag
 plus one indefinitely blocked cohort call disables all new searches even with
 free workers, until process restart. Opaque empty/nil metadata cannot alone
-establish UNREGISTERED or absence; its native error-health contract is open.
+establish UNREGISTERED or absence. The selected native-result boundary allows
+only the exact checked not-found or fully checked nonmatching-array branches,
+without a conflicting preferred result; final call/error design remains open.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.
@@ -515,7 +524,9 @@ descriptor credits also remain charged until cleanup. Four jobs hold less than
 54.282 MiB including scratch, with at most 72 explicitly owned descriptors
 (one stream/root plus two temporary opens/job). Atomic admission below the
 effective soft limit leaves a non-search reserve; opaque platform opens and
-unrelated demand still require normally launched native serviceability acceptance. All policy witnesses are
+unrelated demand still require normally launched empirical serviceability
+acceptance through complete applicable owned/hook events and independent
+outcomes. Opaque acquisitions and peaks remain unproved. All policy witnesses are
 charged; pre-turn anchor-account failure gives every root no-progress
 INSPECTION_FAILED. These are proposal/accounting ceilings, not native memory or
 useful-coverage acceptance; no descriptor-limit setup is implicit.

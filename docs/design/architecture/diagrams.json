@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Decide the in-process native-observation boundary",
-    "status": "Proposal · two human semantics/evidence answers required",
-    "summary": "Actual native calls, uncertainty, owned/opaque demand and worker recovery are specified. The proposal asks separately whether metadata and negative registration may mean reported platform observations, admitting undetected incorrect facts, and whether serviceability evidence may leave opaque allocation peaks/internal events unproved. Both changes are unapproved; original guarantees remain binding and helper design remains declined.",
+    "title": "Selected native-observation boundaries",
+    "status": "Delegated requirements decisions · final allocation design pending",
+    "summary": "After Antony instructed “you decide”, two independent requirements decisions select checked reported registration/native metadata facts and empirical serviceability evidence through complete applicable owned/hook events, native-call envelopes and controlled independent outcomes. Undetected incorrect facts and opaque acquisitions/peaks/internal errors remain explicit limits. Known wrong witnesses, observed resource failure/backoff, lost applicable events and inconclusive controls still fail. All other obligations remain binding; helper design remains declined and final allocation, subjects, review and native acceptance remain pending.",
     "diagramIds": [
       "search-resources",
       "search-canonical",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "search-resources",
-        "summary": "Names the concrete native-call proposal and separates the negative-registration meaning and opaque-event evidence decisions, with explicit no/partial-answer and approval branches."
+        "summary": "Shows both independently selected requirements boundaries, retained ownership and failing controls, then the still-pending final allocation, subjects and mandatory review."
       }
     ]
   },
@@ -25,7 +25,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are proposed. Helper design was declined. The concrete in-process observation proposal needs explicit negative-semantics and evidence answers; original resource/metadata guarantees still bind. Complete allocation, serviceability subjects and mandatory reviews remain ahead of planning. Runtime/binary/native acceptance remains pending."
+      "description": "FIFO and canonical fsgetpath are proposed. Helper design remains declined. Under delegated judgment, reported native facts and empirical evidence are selected with disclosed internal-health/opaque-visibility limits. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Complete allocation, serviceability subjects and mandatory reviews precede planning; runtime/binary/native acceptance remains pending."
     },
     {
       "id": "workspace",
@@ -67,11 +67,11 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Decide the in-process native-observation boundary",
+      "title": "Selected native-observation boundaries",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Unapproved in-process proposal, not native acceptance. Use native resource keys, Bundle positives, UTType, error-bearing LS all-registration results and the separate NSWorkspace preferred observation. Nil identifiers remain UNKNOWN with affecting coverage. Negative registration would mean the checked service answer, admitting an undetected internal-failure/stale-service limit; owned/hook events and controlled independent outcomes would leave opaque allocations unproved. These are two separate human decisions. Q/S, two temporaries, freeze/late-return/worker-only cleanup and provider/process restart ownership remain binding. Either retained original guarantee leaves allocation work live; only both approved changes permit final contract reconciliation before serviceability construction and mandatory review. Helpers, consent/signing/limit/domain changes and all-UNKNOWN launch acceptance remain unauthorized."
+      "caption": "Requirements boundaries selected under Antony’s “you decide” delegation; final runtime allocation and native acceptance remain pending. Checked LS not-found or a fully checked nonempty nonmatching array may report UNREGISTERED; a conflicting preferred result prevents it. Native metadata and positive identifiers are reported facts and can be wrong after an undetected internal failure or stale state. Nil identifiers remain UNKNOWN with affecting coverage. Independently selected empirical evidence uses complete applicable owned/hooks events, native-call envelopes and controlled independent listener/store/action outcomes, leaving opaque acquisitions/peaks/lifetimes/internal errors unproved. Known wrong witnesses, observed resource failure/backoff, lost applicable events and inconclusive controls still fail. Q/S, two temporaries, freeze/late-return/worker-only cleanup, restart ownership, signing/consent/domain/authority/version/seams and useful-launch/home-omissions obligations remain binding. Final allocation handoff, serviceability subjects and mandatory review still precede planning."
     },
     {
       "id": "search-canonical",

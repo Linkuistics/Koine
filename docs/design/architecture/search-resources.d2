@@ -1,31 +1,31 @@
-# In-process native-observation proposal. Two human answers required; acceptance pending.
+# Two requirements boundaries selected under delegated judgment; final allocation and acceptance pending.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · In-process proposal\nHelper declined; existing contract still binds" {class: start}
+Start: "Start here · Selected boundaries\nSingle process; final allocation pending" {class: start}
 Calls: "Native reported observations\nResource keys / Bundle / UTType\nLS all URLs + NSWorkspace preferred"
 Unknown: "Nil / missing / incomplete / failed\nUNKNOWN + affecting coverage\nNo inferred no-identifier fact"
-Negative: "Proposed negative registration\nExact LS not-found or fully checked array\nUndetected internal failure can look identical"
+Negative: "Selected registration meaning\nChecked LS not-found or full nonmatching array\nUndetected failure / stale state can mislead"
 Ownership: "Retained owned account\nQ = roots + 2; at most 72 credits\nOpaque internals are outside its proof"
 Lifetime: "Retained freeze + recovery\nLate return → worker-only close once\nProvider restart keeps blocked cohort"
-Evidence: "Proposed evidence boundary\nOwned events + native call envelopes\nOpaque peaks / swallowed errors unproved"
+Evidence: "Independently selected evidence\nComplete owned/hooks + native call envelopes\nOpaque acquisitions / peaks / errors unproved"
 Listener: "Observe actual independent outcomes\nAccept error before suppression + backoff\nFresh clients / grant store / authorized actions"
-Decision: "Two explicit human answers\nNegative-result meaning?\nLimited opaque-event evidence?" {shape: diamond}
-Retain: "Either original guarantee retained\nAllocation work stays live\nNo renamed proof or automatic helper approval"
-Accept: "Only if both changes approved\nFinalize coherent in-process contract\nReconcile public meanings + acceptance"
+Failures: "Acceptance still fails\nKnown wrong witnesses / resource error / backoff\nLost applicable events / inconclusive controls"
+Decision: "Two decisions under delegation\nReported native facts + empirical evidence\nNo internal-health or hidden-safety proof" {shape: diamond}
+Contract: "Remaining final allocation design\nNormalize results + two-credit ownership\nComplete handoff; retain other obligations"
 Pending: "Then serviceability subjects + review\nBefore implementation planning\nNative / binary / useful coverage pending"
-Start -> Calls: "1 · concrete route"
+Start -> Calls: "1 · native semantics"
 Start -> Ownership: "1 · preserve limits"
 Calls -> Unknown: "2 · uncertain result"
-Calls -> Negative: "2 · proposed native negative"
+Calls -> Negative: "2 · checked native negative"
 Ownership -> Lifetime: "2"
 Ownership -> Evidence: "2"
-Evidence -> Listener: "3 · observable failures still fail"
-Unknown -> Decision: "4 · distinguish absent from unknown"
-Negative -> Decision: "4 · semantics decision"
-Listener -> Decision: "4 · evidence decision"
-Lifetime -> Decision: "4 · unchanged obligations"
-Decision -> Retain: "5 · no / partial answer"
-Decision -> Accept: "5 · both explicitly approved"
-Accept -> Pending: "6 · coherent handoff"
+Evidence -> Listener: "3 · empirical subjects"
+Listener -> Failures: "3 · failures still fail"
+Unknown -> Decision: "4 · retain uncertainty"
+Negative -> Decision: "4 · fact meaning"
+Listener -> Decision: "4 · evidence scope"
+Lifetime -> Decision: "4"
+Decision -> Contract: "5 · finalize design"
+Contract -> Pending: "6 · coherent handoff"

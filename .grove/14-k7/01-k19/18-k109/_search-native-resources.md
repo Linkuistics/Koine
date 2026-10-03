@@ -37,6 +37,12 @@ client replies cannot certify opaque calls or listener serviceability.
 
 ## Done when
 
+Interpret the two original fact-health/complete-opaque-observer requirements below
+under the independently selected [observation boundaries](../../../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
+recorded by k118 under Antony's "you decide" delegation. Only those guarantees
+change; every other condition remains binding. Final allocation design, subjects,
+mandatory review and native acceptance remain pending.
+
 - Choose metadata/registration calls and observable success/error/health signals
   that prevent exhaustion from publishing positive absence/no-identifier facts.
   Account for owned/opaque descriptor demand, cohort triggers, immutable prior
@@ -113,3 +119,9 @@ chain or implementation leaves.
   serviceability obligations. A source/SDK risk is not a demonstrated
   normal-search failure or proof of isolation's necessity. k113 still awaits
   the complete contract before constructing subjects and cutting review.
+- k118 records Antony's "you decide" delegation and independently selects the
+  reported-native-result and empirical serviceability-evidence boundaries in
+  the durable spec. Opaque health/acquisitions remain unproved; known incorrect
+  witnesses, observed independent resource failure/backoff, lost applicable
+  events and inconclusive controls still fail. k119 must complete the allocation
+  contract before k113 constructs subjects and cuts the mandatory review.

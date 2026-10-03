@@ -44,10 +44,12 @@ The current-discussion panel presents the
 remains declined. Actual in-process calls, uncertainty, owned/opaque demand,
 two-credit ownership and freeze/restart recovery are now specified in the
 [observation proposal](../../specs/workspace-search.md#proposed-in-process-observation-contract).
-Two separate human answers are required: reported native negative-registration
-meaning and controlled serviceability evidence with opaque events/peaks unproved.
-Either retained original guarantee leaves allocation work live; neither follows
-from declining helpers. The original obligations remain binding, and the
+Antony's "you decide" delegates the remaining choices. Two independent decisions
+select reported registration/native metadata meaning and empirical independent
+outcome acceptance with opaque acquisitions/peaks/internal errors unproved.
+Only those named guarantees change; neither follows from declining helpers.
+Known incorrect witnesses, observed resource failure/backoff and lost applicable
+events still fail. Final allocation, subjects and review remain live; the
 source/SDK gap establishes no normal-search failure or necessity for isolation.
 The [allocation decision](../../specs/workspace-search.md#native-allocation-decision)
 selects no runtime route until those answers and final reconciliation. The
@@ -73,8 +75,10 @@ size omissions group at a stable actual parent before finalization; formerly
 fitting prefixes now too long stop once as change. The canonical proposal needs
 load-bearing review. Planned native 4,224-byte tasks bind at 79/80 by bytes;
 synthetic 43/44 maximum-value arithmetic is separate. Opaque
-empty/nil answers cannot establish absence; resource-call health and an instrument
-for transient opens/accept backoff are open too.
+empty/nil answers cannot establish absence. Final native call/error rules and
+complete applicable owned/accept-backoff instrumentation remain open under the
+selected reported-result and empirical-evidence boundaries; opaque internals
+remain unproved.
 Normally launched signed-host listener/store/action serviceability must pass;
 static arithmetic, periodic descriptor counts and eventual error-free client
 replies are insufficient. Canonical review and native resource design/review precede planning. Safari/Finder, protected Library-link calls,
@@ -107,10 +111,10 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views and summaries:
 
-- [Search → native observation boundary](index.html#diagram-search-resources) — Separates concrete calls and retained ownership from the two unapproved semantics/evidence decisions, with explicit retained-requirement and approval branches.
+- [Search → native observation boundary](index.html#diagram-search-resources) — Separates the two requirements choices selected under delegation from retained ownership and the still-pending final allocation/acceptance work.
 - [Proposed in-process contract](../../specs/workspace-search.md#proposed-in-process-observation-contract) — Specifies native result/error rules, owned/opaque resources, freeze/restart behavior and falsifiable subjects without relabelling internal-health gaps as proof.
 - [Native resource analysis](../../verification/search-native-resources.md#provenance-and-verification-boundary) — Identifies the public API evidence and the proposed instrument's explicit opaque-visibility limit.
-- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Removes the stale helper recommendation and states the still-unapproved negative/evidence changes.
+- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — States selected reported-result and empirical-evidence limits while keeping final allocation/review/native acceptance pending.
 
 The canonical, traversal, coverage and handoff views remain unchanged context.
 

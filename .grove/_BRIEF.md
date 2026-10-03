@@ -219,3 +219,10 @@ use the public 8,192-byte ceiling. Native reachability/queue subjects and all
 prompt/race/useful-coverage outcomes stay pending. The producer's mandatory
 load-bearing review and k109's resource design/review precede search planning;
 neither source/SDK analysis nor synthetic capacity arithmetic accepts omissions.
+
+The native-resource continuation now uses the independently selected
+[observation boundaries](../docs/specs/workspace-search.md#observation-boundary-decision-questions)
+from k118 under Antony's "you decide" delegation. Only reported-native-fact
+meaning and empirical serviceability evidence change; final allocation k119,
+serviceability subjects/review k113, native acceptance and the separate measured
+home-omissions decision remain live.

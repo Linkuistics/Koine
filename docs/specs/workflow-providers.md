@@ -252,14 +252,16 @@ and worker cleanup/recovery must be resolved in process before serviceability
 subjects and mandatory review. Helper packaging and child limits are not
 authorized; grants, host limits and workflow/domain guarantees remain binding.
 The [in-process observation proposal](workspace-search.md#proposed-in-process-observation-contract)
-now specifies the calls, ownership and failure discriminators. Its native-result
-meaning for negative registration and limited opaque-event acceptance boundary
-need two explicit human answers; neither follows from declining helpers.
-The native-result question also discloses the internal-health limit on reported
-type/package/hidden/alias facts and positive identifiers; a registration-only
-answer cannot approve the rest by implication.
-Original acceptance obligations remain live, and no trace row is accepted by
-this proposal.
+specifies calls, ownership and failure discriminators. Under Antony's "you decide"
+delegation, independently select reported native-result meaning for registration
+and type/package/hidden/alias facts and positive identifiers, and empirical
+serviceability evidence through complete applicable owned/hook events, call
+envelopes and independent outcomes. Undetected incorrect native facts and opaque
+resource acquisitions/peaks/internal errors remain explicit limits. Observed
+resource failures/backoff, lost applicable events, inconclusive controls and
+incorrect known witnesses still fail. Only the two named guarantees change;
+final allocation design, subjects and mandatory review remain live. No trace
+row, reduced workflow coverage or native/binary acceptance is established.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |
