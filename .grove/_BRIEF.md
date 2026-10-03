@@ -211,14 +211,21 @@ design producers, each required to cut a load-bearing review before planning.
 No native acceptance, shorter domain, new consent/setup or larger limit is
 approved; k93 must consume actual per-witness omissions.
 
-k108 supplies the public fsgetpath canonical proposal: descriptor-derived
-filesystem/object identity, observation rechecks and grouped native/public size
-refusals with unchanged value ceilings/domain. Its NUL-inclusive 8,192-byte
-buffer returns at most 8,191 directory text bytes; joined file locations can
-use the public 8,192-byte ceiling. Native reachability/queue subjects and all
-prompt/race/useful-coverage outcomes stay pending. The producer's mandatory
-load-bearing review and k109's resource design/review precede search planning;
-neither source/SDK analysis nor synthetic capacity arithmetic accepts omissions.
+k110/k121's canonical review/integration keeps the public fsgetpath proposal
+and unchanged value ceilings/domain, but requires resolver/pre-open policy,
+cached spelling, representable directory-name/descent and long-path classification
+design producers/reviews before k120's complete-resource review/planning.
+Held identity self-comparison is not movement detection; ENOSPC alone is not
+change. Shared-prefix failure stops one root; independent final-target failure
+stays exact and checked-link failure stays per-candidate. Native witness failure
+is dependency-scoped; witness-account overflow is job-wide. Queue arithmetic
+does not establish classified canonical task reachability. Native/binary/prompt/
+useful-coverage outcomes and k93's measured omissions decision stay pending.
+
+The path continuations are `search-path-resolution-k122` then
+`search-path-classification-k123`, each with a producer-cut mandatory review
+before its next consumer. K120's complete-resource review and k30 planning
+consume the reconciled chains, preserving the original approval posture.
 
 The native-resource continuation now uses the independently selected
 [observation boundaries](../docs/specs/workspace-search.md#observation-boundary-decision-questions)

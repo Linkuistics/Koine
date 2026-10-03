@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Canonical fsgetpath proposal needs review; serviceability subject construction is specified; whole-resource review precedes planning;
+# Canonical review requires resolver/spelling/size-name/classification design and reviews; serviceability subject construction is specified; whole-resource review precedes planning;
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
@@ -134,7 +134,10 @@ query InspectAliasedMatches($roots: [String!]) {
 # be omitted and remain unaccepted workflow coverage.
 # CAPACITY_LIMIT guidance distinguishes busy admission from a latched disabled
 # cohort; one indefinite block can require process restart after resource failure.
-# Canonical fsgetpath, identity rechecks and grouped size refusals require their
-# load-bearing review and native acceptance. Owned-event/accept-backoff
+# Held-descriptor identity checks do not detect movement; first unassociated
+# observations have no independent movement detector. ENOSPC alone is not change.
+# Native descent refusal alone does not omit a representable directory name.
+# Native witness errors affect dependent roots; account overflow is job-wide.
+# Path-design producers and reviews precede whole-resource review/planning. Owned-event/accept-backoff
 # instrument construction is specified in search-serviceability.md; execution/review remain pending.
 # Opaque acquisitions/peaks remain unproved; schema acceptance establishes no serviceability.

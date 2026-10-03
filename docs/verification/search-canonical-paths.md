@@ -3,8 +3,11 @@
 This is source/SDK analysis for the
 [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
 not a native search measurement. Implementation, independent provider/GraphQL
-and signed hardened macOS acceptance remain pending, as does the load-bearing
-design review. No shorter domain, consent/setup, entitlement or limit increase
+and signed hardened macOS acceptance remain pending. The canonical review found
+[path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
+that require producer/review work before the complete-resource review/planning:
+resolver/pre-open policy, cached spelling, representable directory names and
+long-path classification. No shorter domain, consent/setup, entitlement or limit increase
 is accepted. The [application identity decision](../adr/application-search-uses-bundle-identity.md)
 owns the naming choice; the spec owns private calls, errors and subjects.
 
@@ -28,6 +31,17 @@ descriptor observations do not turn it into an atomic descriptor-path API.
 The zero-options route allows default firmlink presentation. That is a design
 premise to verify on each supported startup/Preboot layout, not native evidence
 that alias spellings already agree.
+
+[Apple's path builder](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/vfs/vfs_cache.c)
+can copy vnode cached names. This is evidence against assuming that fsgetpath
+must equal a canonical-parent/listed-name join, not a measured APFS mismatch.
+Case/normalization cache-seeding subjects must record both spellings and identity.
+Join length therefore does not prove native ENOSPC, and a same-identity byte
+difference alone is not movement evidence. Holding the directory descriptor
+prevents ordinary reuse while held; repeating its identity/fsid checks does not
+detect movement. Parent association or separately established location evidence
+can expose change. First roots/witnesses and unassociated link targets lack an
+independent movement detector; the public lookup is not an atomic binding.
 
 [Apple's public header source](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/sys/fsgetpath.h)
 places fsgetpath_ext and its private options outside the public declaration.
@@ -65,12 +79,15 @@ shortened substitute. It cannot declare provider correctness.
 For the byte subject, measure a canonical ordinary root at exactly 4,096 UTF-8
 bytes and give it 100 distinct 127-byte ASCII child-directory names, each with
 a short marker. Paths charge 4,224 + 512 = 4,736 bytes/task: 79 consume 374,144
-of the 375,040-byte queue-object allowance; 80 need 378,880. The real adapter's
-sequence-numbered queue trace must observe the byte refusal with count below
-512; GraphQL must preserve all 100 anchor observations and diagnose the omitted
-descent. Native order chooses which 79 marker subtrees fit; record that order
-and compare each witness. A deadline/resource stop before the boundary does
-not pass it. This is a planned reachable shape, not a run result.
+of the 375,040-byte queue-object allowance; 80 need 378,880. The arithmetic is
+conditional on classification and canonical spelling actually establishing those
+tasks. The selected path-based resourceValues/Bundle calls conflict with the
+long-path attribute prohibition; component-relative fixture creation alone does
+not establish adapter reachability. The classification producer must re-derive
+this subject. If reachable, the queue trace must observe byte refusal below 512
+and preserve 100 anchors with 21 frontier refusals, selecting 79 marker subtrees
+by captured native order. Metadata rejection, deadline or resource stop does
+not pass the boundary.
 
 The short-path subject instead pads a measured canonical root and names so
 every task is 128 bytes, with 513 children and individual marker queries.
@@ -80,8 +97,24 @@ text needing 8,192 bytes, and a longer chain separately test successful
 canonicalization, full-buffer ENOSPC and public joined-value overflow. Construct
 aliases component-wise when requestedPath must remain at most 4,096 bytes;
 symlink targets and hop counts must satisfy the platform's measured limits.
-Do not presume a Foundation/full-path open can reach them. If a length is
+The adapter's own hop/readlink/expanded-work and dot-dot/firmlink rules are not
+yet specified; the resolver producer owns them for every path length and source.
+Do not presume a Foundation/full-path open or classification can reach them. If a length is
 unreachable on the guest, record the failing call and leave that subject pending.
+
+At the 8,192-byte public location ceiling, distinguish an ordinary directory,
+package/bundle, depth-32 directory with no descent, file, final link and alias.
+Native descent refusal does not establish that an anchor name must be omitted.
+Size scopes must retain exact final-target SUBTREE and checked-link ENTRY
+failures beneath an unchanged parent; only shared prefix/parent failure stops
+the root. Native witness failure refuses dependent roots; only witness-account
+overflow is job-wide. These design obligations need separate controls, including
+one failed Cryptex/Preboot witness beside successful home/Applications roots.
+
+Protected case/NFC/NFD component variants must be classified before child open,
+not recognized only after fsgetpath. Dialog/hydration observers must include
+Desktop/Documents/Downloads/Library/Mail and known cloud variants. Prior protected
+metadata evidence supplies no acceptance for these openat/fsgetpath calls.
 
 The 43/44-task shape uses controlled 8,192-byte adapter values only. A raw C
 buffer is not a GraphQL path value and includes its terminator; an 8,193-byte

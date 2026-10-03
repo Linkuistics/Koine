@@ -1,4 +1,4 @@
-# Proposed private operation; observation checks are not atomic binding.
+# Private call proposal and review repairs; unresolved path design is explicit.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
@@ -6,23 +6,27 @@ classes: {
 Start: "Start here · Owned permitted directory\nRoot / stream / target / witness context" {class: start}
 Before: "Retain descriptor; fstat + fstatfs\nCheck known policy / mounted identity\nTarget: actual parent + child association"
 Call: "Public fsgetpath(f_fsid, st_ino)\nFixed 8192-byte buffer INCLUDING NUL\nNo extra owned descriptor / alternate spelling"
-After: "Recheck identity / mount / association\nDecode exact bytes; compare prior path\nApply protected / cloud / region policy"
+After: "Recheck metadata / parent association\nHeld identity self-check is not movement detection\nDecode exact bytes; reapply policy"
 Path: "Lossless directory observation\nAt most 8191 text bytes\nFile location = canonical parent + name\nPublic joined-value ceiling stays 8192"
-Size: "Known size only\nFull-buffer ENOSPC, or directory join\nthat cannot fit text + NUL\nRecheck parent / association after error"
-Parent: "Stable actual parent; unfinalized anchor\nVALUE_LIMIT CHILD_GROUP; count anchor\nOmit name + descendants; continue siblings"
-Root: "Unresolved root: VALUE_LIMIT / REMAINDER\nrequestedPath; resolvedPath null\nFormerly fitting stream / prefix now too long:\nCHANGED_DURING_SEARCH / REMAINDER"
+Size: "Known native size: full-buffer ENOSPC\nJoin length is not native spelling proof\nRecheck parent / association after error\nNo inferred omission of representable name"
+Parent: "Established public location overflow\nVALUE_LIMIT CHILD_GROUP at actual parent\nNative descent-only size-name design pending"
+Root: "Unresolved root: VALUE_LIMIT / REMAINDER\nrequestedPath; resolvedPath null\nShared stream / prefix inspection fails:\nOne change / uncertainty REMAINDER"
 Failure: "Refuse following read / open\nUse context's change / uncertainty / policy outcome\nNo per-dependent-task failure fan-out\nNo stale / truncated / alternate path fallback"
-Limit: "Source / SDK proposal; review pending\nfsid/object lookup is not descriptor-bound\nABA / check-to-call races remain\nSigned no-dialog / native-size subjects pending"
+Exact: "Stable parent; final target fails\nExact change / uncertainty SUBTREE\nChecked-link target fails: candidate ENTRY\nContinue unrelated work"
+Design: "Producer + review work before resource review\nResolver bounds / pre-open child policy\nCached spelling / representable size-name rules\nLong-path classification / queue reachability"
+Limit: "fsid/object lookup is not descriptor-bound\nFirst unassociated observation: no movement detector\nABA / check-to-call races remain\nNative / no-dialog subjects pending"
 Start -> Before: "1 · existing checked opening"
 Before -> Call: "2 · observations established"
 Before -> Failure: "2 · refused / uncertain"
-Call -> After: "3 · successful count + bytes"
+Call -> After: "3 · success or non-resource error"
 Call -> Size: "3 · captured full-buffer ENOSPC"
-Call -> Failure: "3 · other error / malformed output"
+Call -> Failure: "3 · cancellation / resource refusal"
 After -> Path: "4 · established unchanged / permitted"
 After -> Failure: "4 · mismatch / unknown / policy refusal"
 Size -> Parent: "4 · stable association before finalization"
-Size -> Root: "4 · root or formerly fitting prefix"
-Size -> Failure: "4 · changed / uncertain association"
+Size -> Root: "4 · unresolved root / failed shared prerequisite"
+Size -> Exact: "4 · target-only / checked-link failure"
+Size -> Design: "4 · native-only refusal; representable name"
 Path -> Limit: "5 · observation limits"
-Path -> Size: "5 · directory join cannot fit NUL; before enqueue"
+Path -> Parent: "5 · independently established public overflow"
+Path -> Design: "5 · same-identity spelling unresolved"

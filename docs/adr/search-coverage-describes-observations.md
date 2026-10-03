@@ -37,7 +37,11 @@ that alternative only with a supported prompt-free mechanism and useful
 coverage/availability evidence, or an expressly approved changed workflow.
 Reopen detailed records for a consumer that needs exclusion identities.
 The [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation)
-distinguishes known native/public size refusals from uncertainty and preserves
-actual-parent groups and one root stop for dependent queued work.
+distinguishes known native/public size refusals from uncertainty. Name-omitting
+actual-parent groups require an established unrepresentable candidate location;
+a descent-only native limitation does not itself omit a representable name.
+Changed/uncertain shared prerequisites use one root stop, independent target
+failures under an unchanged parent stay exact, and checked-link failures stay
+per-candidate.
 Neither these observations nor accounting accept reduced home/application
 coverage: the operator's existing baseline decision remains required.

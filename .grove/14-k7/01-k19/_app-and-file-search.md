@@ -198,5 +198,16 @@ reads the complete k109 artifact before planning/earned integration.
 Review `search-canonical-paths-k110` recorded nine design findings against k108.
 They include a conflict between k108's no-long-path-attribute rule and the
 path-based classification calls, which affects shared k119 text. Integration
-`search-canonical-paths-k121` triages them ahead of
-`search-native-resources-k120`. Planning waits on both.
+`search-canonical-paths-k121` repairs refusal scopes, witness dependencies and
+detector/ADR claims. C1/C2/C5/C7/C8 require resolver/spelling/size-name and
+classification producers with their own load-bearing reviews ahead of
+`search-native-resources-k120`; planning waits on those chains too. The current
+selected path-based call set is unchanged and its long-path conflict unresolved.
+Classified task reachability is not proved by 79/80 arithmetic. All native,
+prompt, binary, useful-coverage and k93 omission decisions remain pending.
+
+The continuations are `search-path-resolution-k122` (C2/C5/C7/C8, including
+resolver/spelling/size-name and pre-open child policy) followed by
+`search-path-classification-k123` (C1 and end-to-end native task/classification
+reachability). Each producer must insert its mandatory review ahead of its next
+consumer; k120 consumes the reconciled chains, and k30 remains after them.

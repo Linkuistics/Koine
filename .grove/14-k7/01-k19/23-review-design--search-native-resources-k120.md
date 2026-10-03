@@ -27,7 +27,15 @@ decisions, not merely the last child's diff:
 - docs/adr/search-native-facts-are-reported-observations.md and the existing
   application/coverage/traversal/prompt-risk ADRs; CONTEXT.md; SDL/examples,
   client guide, workflow trace, viewer sources/exports/captions/current discussion.
-- k108's fsgetpath design is input, with separate review k110 still live.
+- k110's canonical review is integrated by `search-canonical-paths-k121`.
+  Consume the `search-path-resolution-k122` and `search-path-classification-k123`
+  producer/review/integration chains before this review. Reconcile their commits
+  with k109's historical artifact: resolver/pre-open policy, cached spelling,
+  representable directory-name/descent and long-path classification were not
+  settled by k108/k119. K121 repairs shared-prefix versus target/link scopes,
+  witness dependencies versus account failure, and held-descriptor detector
+  claims; its SDL/examples change only descriptions/comments. Do not resurrect
+  native-size join proofs or claim ENOSPC alone proves movement.
   k93's per-witness home omissions decision and actual native/binary acceptance
   remain pending. No helper/content reader/new consent/signature/limit/account/
   smaller domain is authorized by this design.

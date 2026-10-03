@@ -364,8 +364,11 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** The fsgetpath canonical-path proposal requires its
-load-bearing review; native allocation and
+**Designed, not served yet.** Canonical review requires further
+[path design](specs/workspace-search.md#path-design-dependencies): resolver/pre-open
+policy, cached spelling, representable directory names and long-path classification.
+Those producers and their reviews precede the complete-resource review/planning;
+native allocation and
 [serviceability instrument/subject construction](verification/search-serviceability.md)
 are specified as design; the whole-resource review also precedes planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
@@ -384,7 +387,8 @@ or another native fact incorrect; opaque allocations/peaks/internal errors remai
 unproved. Nil identifier always remains UNKNOWN with affecting coverage.
 Malformed/errorful/incomplete observations remain uncertain, observed resource
 errors refuse negatives, and known incorrect witnesses or UNKNOWN metadata for
-every configured launcher still fail. Allocation and subject design are finalized;
+every configured launcher still fail. Allocation ownership and serviceability subject construction are specified;
+the selected metadata call set's long-path integration remains unresolved;
 implementation, execution and review remain pending; all other workflow, prompt, limit and compatibility
 obligations remain binding.
 Per-root FIFO breadth-first discovery and atomic
@@ -439,12 +443,20 @@ without progress, anchored at the resolved root or representable requested root.
 No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
 means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means a known public/native path-size refusal, including the native
-NUL-inclusive buffer boundary. Successful native directory text is at most
+NUL-inclusive buffer boundary. Name-omitting groups require an established
+unrepresentable candidate location; native descent refusal alone does not omit
+a representable directory/package name. Its size/scope realization remains in
+the path-design work. Successful native directory text is at most
 8,191 bytes; the public returned value limit stays 8,192 bytes. Joined file
 locations can use that last byte. Native-size omissions remain affecting
 coverage, not accepted workflow loss; paths are never shortened or replaced
-by another spelling. A formerly fitting current/prefix path now too long is
-change evidence and stops the root once. Independent root budgets prevent
+by another spelling. ENOSPC alone is size evidence, not movement; a refused
+shared current/prefix check stops its root, while target-only failure under an
+established unchanged parent stays exact and checked-link failure stays ENTRY.
+Held-descriptor identity self-comparison does not detect movement or inode reuse;
+first root/witness and unassociated link-target observations have no independent
+movement detector. A failed native witness affects only dependent roots;
+witness-account overflow still refuses the job before turns. Independent root budgets prevent
 one root spending later roots' credits. Cyclic root turns finish shallower
 admitted listings before deeper ones within each root; depths across roots can
 differ. A root's 100,000-entry allowance can still cut a wide level short and omit

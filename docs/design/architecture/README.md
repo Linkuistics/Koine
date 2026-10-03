@@ -9,7 +9,7 @@ exports:
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
 - [serviceability evidence and failure controls](index.html#diagram-search-serviceability);
-- [final native allocation and observable handoff](index.html#diagram-search-resources)
+- [native allocation ownership and observable handoff](index.html#diagram-search-resources)
   and [two-temporary inspection ownership](index.html#diagram-search-inspection);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
@@ -41,7 +41,9 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel presents the specified
+The current-discussion panel presents canonical-path review repairs and the
+[remaining path-design dependencies](../../specs/workspace-search.md#path-design-dependencies).
+It retains the specified
 [serviceability evidence and controls](index.html#diagram-search-serviceability).
 The [construction document](../../verification/search-serviceability.md) defines
 the fixed loss-aware sink, owned/call-envelope inventory, passive actual NIO
@@ -61,14 +63,16 @@ cannot pass. Native prompt/useful-launch/home/compatibility outcomes and the
 separate measured home-omissions decision remain pending.
 
 Current changes:
-- [Serviceability → Observe applicable events and independent serviceability](index.html#diagram-search-serviceability) — Adds event completeness, broken controls, matched outcomes and conservative failure paths.
-- [Allocation → Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Connects the allocation contract to the completed construction design and pending whole-resource review.
-- [Traversal → Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Replaces open instrument design with specified subjects and pending review.
-- [Coverage → Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Marks whole-resource review pending after completed allocation/subject design.
-- [Handoff → Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Marks resource review pending while native/action acceptance remains pending.
+- [Canonical → Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Separates prefix, final-target and checked-link scopes; removes the held-identity movement and native-size join proofs; exposes required path design.
+- [Traversal → Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Keeps FIFO/two credits and exposes unresolved pre-open child policy and classification.
+- [Coverage → Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Separates account/native witness failures and public overflow from native descent-only size handling.
+- [Handoff → Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Requires path producers/reviews ahead of resource review while retaining action authority.
+- [Allocation → Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Preserves allocation ownership and exposes the long-path classification conflict.
+- [Inspection → Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Preserves serial ownership and names unresolved resolver/spelling decisions.
 
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require canonical and whole-resource reviews before planning. Finish shallower admitted
+require resolver/pre-open policy, spelling/size-name and classification producers
+with their reviews before the complete-resource review/planning. Finish shallower admitted
 listings before deeper ones, with one current stream/root and a 512-task/384 KiB
 pending queue. Frontier overflow counts matchable anchors in one reserved root
 group and continues sibling-name examination; depth has a separate group.
@@ -79,12 +83,19 @@ Current-stream checks precede every listing turn/read; checked component
 walks repeat against the wait. A changed queued prefix/parent stops the root
 once rather than allocating a failure per task. Residual check-to-read/open
 races remain native acceptance obligations. Public fsgetpath uses descriptor-derived
-filesystem/object identity with rechecks, not atomic descriptor binding. Its
+filesystem/object inputs, not atomic descriptor binding. Holding prevents ordinary
+inode reuse while held; self-comparison does not detect movement. Parent
+association/reopened expected identity can expose change; first unassociated
+observations have no independent movement detector. Its
 8,192-byte buffer includes NUL; native directory text is at most 8,191 bytes,
 while public joined-file values can still reach 8,192 bytes. Known native/public
-size omissions group at a stable actual parent before finalization; formerly
-fitting prefixes now too long stop once as change. The canonical proposal needs
-load-bearing review. Planned native 4,224-byte tasks bind at 79/80 by bytes;
+public location overflow groups at an established actual parent; native descent
+refusal alone does not omit a representable directory name. Shared-prefix failure
+stops one root; target-only failure under an unchanged parent stays exact and
+checked-link failure stays per-candidate. ENOSPC alone is not movement. Native
+witness failure is dependency-scoped; witness-account overflow is job-wide.
+The desired native 4,224-byte task shape has conditional 79/80 byte arithmetic;
+classification/spelling reachability remains a design gap, and
 synthetic 43/44 maximum-value arithmetic is separate. Opaque
 empty/nil answers cannot establish absence. Native call/error rules and the instrument contract are finalized;
 complete applicable owned/accept-backoff construction is specified under the

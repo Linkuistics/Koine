@@ -257,7 +257,10 @@ preferred identities where constructible. Wrong not-found normalization,
 incorrect known witnesses or UNKNOWN for every launcher fails. Fixture
 registration/setup writes occur before measurement; search performs none.
 
-Run the exact resource/package/hidden/alias/type/Bundle/registration/preferred
+First consume the [path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
+and their producer/review outcomes. The current selected calls are not reconciled
+with long-path classification; queue/size reachability cannot be inferred from
+fixture creation or capacity arithmetic. Run the settled resource/package/hidden/alias/type/Bundle/registration/preferred
 calls and serial walks against protected application/Library links, supported
 long/canonical/native-size fixtures and actual home/default roots. Independent
 UI and hydration observers witness no consent dialog/content request. Preserve
