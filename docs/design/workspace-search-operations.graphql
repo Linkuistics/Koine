@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# FIFO repairs are designed; native path/resource producer reviews precede planning;
+# Canonical fsgetpath proposal needs review; native resource design/review precede planning;
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
@@ -118,7 +118,9 @@ query InspectAliasedMatches($roots: [String!]) {
 # root, and has count null. Anchor: resolved root, else representable requested
 # root. No-progress stops have UNKNOWN coverage and no searched record.
 # DIAGNOSTIC_LIMIT is total diagnostic room (count/bytes identified by guidance);
-# VALUE_LIMIT is an individual path bound. Inspect completedDirectories as EOF.
+# VALUE_LIMIT is known public/native path-size refusal, never lookup uncertainty.
+# Native directory text is at most 8191 bytes (8192 including NUL); joined file
+# locations retain the public 8192-byte ceiling. Inspect completedDirectories as EOF.
 
 # FIFO repeats checked prefix walks against the shared wait. A current stream
 # rechecks before each listing turn/read; a changed queued prefix stops the root
@@ -126,5 +128,6 @@ query InspectAliasedMatches($roots: [String!]) {
 # be omitted and remain unaccepted workflow coverage.
 # CAPACITY_LIMIT guidance distinguishes busy admission from a latched disabled
 # cohort; one indefinite block can require process restart after resource failure.
-# Canonical native path limits and transient opaque-resource/accept-backoff
-# instruments remain open producer/review subjects, not schema acceptance.
+# Canonical fsgetpath, identity rechecks and grouped size refusals require their
+# load-bearing review and native acceptance. Transient opaque-resource/accept-backoff
+# instrument design remains open; none is established by schema acceptance.

@@ -210,3 +210,12 @@ serviceability instruments (search-native-resources-k109) are externalized
 design producers, each required to cut a load-bearing review before planning.
 No native acceptance, shorter domain, new consent/setup or larger limit is
 approved; k93 must consume actual per-witness omissions.
+
+k108 supplies the public fsgetpath canonical proposal: descriptor-derived
+filesystem/object identity, observation rechecks and grouped native/public size
+refusals with unchanged value ceilings/domain. Its NUL-inclusive 8,192-byte
+buffer returns at most 8,191 directory text bytes; joined file locations can
+use the public 8,192-byte ceiling. Native reachability/queue subjects and all
+prompt/race/useful-coverage outcomes stay pending. The producer's mandatory
+load-bearing review and k109's resource design/review precede search planning;
+neither source/SDK analysis nor synthetic capacity arithmetic accepts omissions.

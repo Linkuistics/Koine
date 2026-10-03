@@ -23,10 +23,12 @@ with a different canonical presentation would duplicate unchanged file locations
 fabricate application path changes. Synthetic protected/cloud targets derive
 from canonical-home components without opening excluded directories. Actual
 firmlink, case and Unicode call behavior remains a signed-host obligation.
-The native canonical route is reopened by search-canonical-paths-k108: the
-1,024-byte F_GETPATH buffer cannot implement the conservative 8,192-byte path
-account. Its producer/review must settle actual calls and grouped size refusals
-before planning; no shorter domain or alternate spelling is accepted.
+The private [canonical directory observation](../specs/workspace-search.md#canonical-directory-observation)
+uses public fsgetpath with descriptor-derived identity and its default firmlink
+presentation. It reports native-size omissions instead of falling back to a
+different spelling. Its load-bearing review and signed-host acceptance remain
+required before planning/acceptance respectively; the public value ceilings and
+eligible domain remain unchanged, and no reduced workflow coverage is accepted.
 
 Exact-path deduplication duplicates Safari when a checked link and a canonical
 root both discover it. Identifier deduplication merges real separate copies.

@@ -169,7 +169,8 @@ at least one **Prompt risk**, and no inspection/change/work/resource failure. It
 state is UNKNOWN, with no matches list and explicit **Search coverage**.
 
 **Search location**: An observed filesystem path returned for later client
-selection; file entries join a filesystem-reported canonical parent and their
+selection; canonical directories use the unified fsgetpath-based observation
+with explicit native-size omissions, and file entries join a canonical parent and their
 observed name, preserving final symlink locations. Firmlink-alias roots deduplicate
 equal returned paths and merge observed membership. A location is distinct from
 a **resource reference** and from a pinned native file identity. A later action

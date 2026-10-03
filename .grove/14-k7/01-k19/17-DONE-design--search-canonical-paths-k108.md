@@ -54,3 +54,29 @@ Design only, not implementation or a native evidence chain. k109 separately
 owns opaque resource errors/serviceability instruments; coordinate canonical
 calls' descriptor costs with it. k93 owns reduced coverage decisions with Antony.
 The producer cuts its review lazily once its artifact exists.
+
+## Decisions (running log)
+
+- Choose the public fsgetpath route, using a pinned directory's fstat object
+  number and fstatfs filesystem identity, one fixed 8,192-byte native buffer,
+  and identity/mount/path association rechecks. The syscall counts its NUL:
+  successful native directory text is at most 8,191 bytes. This is an observed
+  native size boundary, not a reduction of the 8,192-byte public value bound,
+  eligible domain or accepted workflow coverage. No larger buffer, private API,
+  entitlement or F_GETPATH/realpath fallback. Stable-parent target size refusals
+  group at the actual parent; unestablished/current/prefix size refusals stop
+  the root once. Error/identity uncertainty never establishes native size.
+- Retain the existing private-adapter, independent provider/GraphQL and signed
+  VM seams. Construct native paths component-wise, including a 4,096-byte
+  root with 127-byte children (4,224-byte tasks: 79 fit, 80 byte-refused), and
+  keep synthetic maximum-value 43/44 arithmetic explicitly separate. Actual
+  prompt behavior, race outcomes, native reachability and runtime boundaries
+  remain pending; the mandatory producer review precedes planning.
+- Refine size/movement precedence: an ordinary directory's canonical-parent/
+  observed-name join needing more than 8,192 bytes including NUL is diagnosed
+  before matching/enqueue, while an ordinary file location can use all 8,192
+  text bytes. If a formerly fitting current/prefix/queued path later receives
+  full-buffer ENOSPC, that size change is movement evidence: one root
+  CHANGED_DURING_SEARCH remainder, or INSPECTION_FAILED if its prior association
+  was unestablished. Never retroactively put an already observed directory name
+  into a name-omitting CHILD_GROUP.

@@ -4,7 +4,9 @@
 name discovery for the agreed [application and file workflows](../requirements/modaliser-workflows.md#workflow-inventory).
 The [scope and coverage view](../design/architecture/index.html#diagram-search-coverage)
 and [selection handoff](../design/architecture/index.html#diagram-search-handoff)
-are the reading entry. The [search SDL](../design/workspace-search-schema.graphql)
+are the reading entry; the
+[canonical observation view](../design/architecture/index.html#diagram-search-canonical)
+shows the current native path proposal. The [search SDL](../design/workspace-search-schema.graphql)
 and [client examples](../design/workspace-search-operations.graphql) define an
 additive workspace contribution. They compose with the existing
 [launch/open contract](workspace-launch-and-open.md), not a second provider.
@@ -14,7 +16,7 @@ remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
 keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
-**Traversal review repairs leave two native design choices open before planning.**
+**Canonical paths are designed; their review and native resource design precede planning.**
 Narrow fixed-region Preboot admission permits its measured read-write layout.
 Per-root FIFO breadth-first work finishes shallower admitted listings before
 deeper ones, preserving later home-root names against an early enormous branch.
@@ -22,8 +24,10 @@ The bounded queue reports omitted descent in one reserved root frontier group;
 anchor names remain matchable. A process-wide descriptor account reserves job
 credits atomically below the inherited soft limit, leaving a non-search reserve.
 Normally launched host serviceability remains an acceptance obligation, including
-platform-internal descriptors. `search-canonical-paths-k108` must choose a
-buildable canonical-path route; `search-native-resources-k109` must choose
+platform-internal descriptors. The
+[canonical directory observation](#canonical-directory-observation) chooses
+public fsgetpath with descriptor-derived identity and grouped size refusals;
+its load-bearing review is required. `search-native-resources-k109` must choose
 error-observable metadata/resource calls and a serviceability instrument. Each
 producer requires its own load-bearing review before planning. Current streams
 are revalidated before every listing turn; changed queued prefixes stop their
@@ -47,8 +51,8 @@ scope before the baseline closes. Arbitrary native-order samples are not accepte
 
 ## Discovery obligations before planning
 
-The admission, identity and breadth-first/resource contracts require the native
-path/resource repairs and their load-bearing reviews before implementation
+The admission, identity and breadth-first/resource contracts require the canonical
+observation review and native resource design/review before implementation
 planning. Shallow-name order is per root, not a
 promise that all shallow names fit the entry budget or three-second wait.
 Queue/entry/depth/value/deadline omissions stay explicit and unaccepted until
@@ -303,30 +307,149 @@ failed canonicalization without established absence is `INSPECTION_FAILED`.
 Unknown canonical paths remain null. There is no trusted arbitrary-path escape
 around the exclusion policy.
 
-Use one lossless filesystem-reported directory-path operation for admitted
-region/mount witnesses, resolved roots, held frames and application bundles:
-its native route is reopened by `search-canonical-paths-k108`, with mandatory
-load-bearing review before planning. `F_GETPATH`/`F_GETPATH_NOFIRMLINK` use
-MAXPATHLEN (PATH_MAX 1,024 on the inspected SDK), so they cannot implement the
-8,192-byte accounting domain. `fsgetpath` takes filesystem/object identity,
-not a descriptor; it is a candidate to evaluate, not an accepted fallback.
-The producer must reconcile identity, canonical spelling, grouping of native
-path-limit omissions and constructible native queue-byte subjects without
-silently narrowing the domain. Preliminary
+Use the same [canonical directory observation](#canonical-directory-observation)
+for admitted region/mount witnesses, resolved roots, current streams, queued
+targets, application bundles and opened policy witnesses. Preliminary
 component/link resolution supplies a candidate for policy checks, not a public
-canonical spelling. Recheck native identity and mount when obtaining that path;
-never mix realpath's Data-volume spelling with the chosen canonical presentation.
+canonical spelling. Never mix realpath's Data-volume spelling with the chosen
+canonical presentation.
 Build an ordinary file-entry location from its canonical parent and the lossless
 observed entry name; do not resolve a final symlink/alias or Unicode-fold its path.
 Firmlink aliases to one root therefore yield equal returned file paths and merge
 observed rootIndices under exact-path deduplication. Synthetic protected/cloud
 targets use components beneath the canonical home witness without opening
 excluded directories merely to canonicalize them; known supplied aliases still
-undergo the earlier spelling/identity policy checks. Unknown/overlong native
-paths retain the existing INSPECTION_FAILED/VALUE_LIMIT distinction; a known
-path-size refusal must not fan out as unrelated inspection failures. The native
-mapping remains a producer obligation, never a second canonicalization fallback. Signed-host firmlink, case and Unicode witnesses
+undergo the earlier spelling/identity policy checks. Unknown paths and known
+native-size refusals retain the INSPECTION_FAILED/VALUE_LIMIT distinction below.
+Signed-host firmlink, case and Unicode witnesses
 must establish this route's behavior and prompt-free calls before acceptance.
+
+### Canonical directory observation
+
+One private adapter operation accepts an already owned, no-follow-opened
+directory descriptor and its inspection context: admission witness, root,
+current stream, walk prefix or target beneath an established parent. It returns
+either a lossless observed path with native directory/mount identity, a known
+native-size refusal, an observed change, or inspection failure with the captured
+native error. Callers apply the scope rules below; they never select another
+path spelling or reconstruct a successful canonical directory from input text.
+The operation hides native buffers and error decoding behind this single
+interface; the existing native-adapter constructor supplies controlled outcomes.
+No GraphQL type, provider-framework symbol or new public test seam is added.
+
+The chosen public calls are `fstat`, `fstatfs`, and `fsgetpath`. Retain the owned
+descriptor throughout. Obtain the object's `st_dev`, `st_ino` and birth instant
+and the mounted filesystem's `f_fsid`, type, flags and mountpoint; pass the
+actual `f_fsid` and 64-bit `st_ino` to `fsgetpath`, never a fabricated fsid from
+st_dev, a bundle identifier or a queued stale object number. The admitted mount
+witness uses `fgetattrlist` with ATTR_VOL_INFO and ATTR_VOL_CAPABILITIES in a
+fixed 256-byte attribute buffer, validating its returned length and capability
+valid-mask before using a
+`VOL_CAP_FMT_PATH_FROM_ID` bit. An unknown capability check is inspection
+failure; a missing capability on an otherwise admitted volume leaves discovery
+unsupported by this adapter and pending, with INSPECTION_FAILED, rather than
+silently excluding its names. These metadata calls need no additional owned
+descriptor. The fixed native buffer is charged to the existing scratch account;
+opaque kernel/library resource costs remain the native resource design's concern.
+
+Call `fsgetpath` with exactly 8,192 bytes. On success its positive return count
+includes the terminating NUL, so native directory text can contain at most
+8,191 bytes. Require the reported count to fit, the last byte to be NUL, no
+embedded NUL, an absolute component path and a strict, round-tripping UTF-8
+decode. Preserve bytes, case and Unicode; no normalization or replacement
+characters. Invalid native output is uncertain inspection, never size evidence.
+The public 4,096-byte requested / 8,192-byte returned-or-scratch value ceilings
+remain unchanged. Joined file locations can reach 8,192 text bytes; a directory
+of that text length cannot fit this syscall's NUL-inclusive buffer and receives
+an affecting native-size omission. It is still in the eligible domain. This
+explicit native limitation is neither a smaller configured limit nor accepted
+workflow coverage; no 8,193-byte syscall buffer or private long-path entitlement
+is assumed. The [native call analysis](../verification/search-canonical-paths.md)
+records the public declarations, limits and remaining acceptance subjects.
+
+After fsgetpath returns, on success **or a non-resource error**, check
+cancellation and then repeat `fstat`/`fstatfs` to compare the established
+directory identity and mounted-volume observation. Cancelled work does no new
+inspection; resource failure follows the existing cohort stop immediately.
+Before a target-size group, reacquire the held actual parent's canonical
+observation, require its path/identity/policy to be unchanged, and repeat the
+child association check. A pre-call check alone does not license that group.
+Parent checks use the same operation in parent/current-stream context without
+recursively demanding its own parent or opening another descriptor.
+Directory content mtime is
+not an identity discriminator. When a target has an established parent, bracket
+acquisition with no-follow `fstatat` of that parent's observed child name and
+compare its directory identity with the held target. The parent itself must
+have passed its current canonical/policy check. Compare successful canonical
+paths with established frame/task paths and reapply region/mount/protected/cloud
+policy before publication, child metadata work or entry/EOF read. Queued tasks
+reacquire descriptors by the existing checked component walk, not fsgetpath of
+an old inode. Supplied and expanded long paths are resolved component-wise
+with bounded no-follow `openat` and checked `readlinkat` steps; the adapter must
+not feed an entire long absolute path to a PATH_MAX-limited open, realpath,
+Foundation canonicalization or path-based attribute query. The same two
+temporary descriptor credits cover these walks, with old walk descriptors
+closed on transfer. No third validation descriptor or retained ancestor array.
+
+The public API is an fsid/object lookup, **not descriptor-bound pathname
+resolution**. Holding a descriptor and comparing identity/association observations
+guards ordinary reuse and detects observed change; it does not make path
+acquisition atomic, establish a mount-generation token, prevent ABA between
+checks or pin a later action. An unlinked/renamed object or lookup error cannot
+establish absence of the supplied root. Kernel movement retries can also end
+with ENOENT. Treat a witnessed association/path/mount mismatch as
+CHANGED_DURING_SEARCH; without that evidence, non-size lookup failures remain
+uncertain. There is no product retry, cached-path success or fallback spelling.
+Signed-host tests must check the lookup itself for protected-alias prompts and
+hydration; the source/SDK facts supply no consent guarantee. A prompting route
+requires redesign before acceptance.
+
+`fsgetpath` returning -1 with captured ENOSPC **at the fixed full buffer**
+establishes a native path-size refusal. A second, pre-enqueue proof is the
+lossless canonical-parent/name join of an observed ordinary directory: text
+length 8,192 or greater cannot fit that same NUL-inclusive buffer. Diagnose it
+at the actual parent before finalizing its match or enqueueing; this does not
+apply to an ordinary file, final symlink or alias location at exactly 8,192 bytes.
+It prevents tasks that are guaranteed to fail solely at the native size boundary.
+EINVAL, malformed output, missing
+capability, ENOTSUP, ENOENT and EIO do not. EACCES/EPERM retain an observed access
+refusal without inferring a named consent; EMFILE/ENFILE retain the existing
+resource-failure/cohort handling. A too-small test buffer is an adapter defect,
+not legitimate VALUE_LIMIT coverage. Public value overflow of a losslessly
+joined path is separately established by its measured byte length.
+
+| Context / evidence | Scope and continuation |
+| --- | --- |
+| Unresolved root has a known native-size refusal | UNKNOWN, resolvedPath null, one VALUE_LIMIT REMAINDER at its representable requestedPath. No searched record or fabricated canonical path. |
+| Admission/home/mount witness cannot supply a canonical path | The existing pre-turn witness refusal yields all roots UNKNOWN/zero counts with requested-path INSPECTION_FAILED REMAINDER; size detail is fixed guidance. Do not drop or invent a policy witness. |
+| Current stream or queued walk prefix/parent now exceeds native size | A previously established path that fit this fixed buffer no longer fits: observed path change uses one CHANGED_DURING_SEARCH REMAINDER. If the prior association/path was never established, use one INSPECTION_FAILED REMAINDER. Preserve progress and prior groups; no further read/open or per-dependent-task exceptions. |
+| Independent target has a size refusal and an established unchanged representable actual parent and child association | VALUE_LIMIT CHILD_GROUP keyed by actual parent/reason; count that encountered anchor once, omit its name and descendants, continue unrelated siblings/tasks. Do not first finalize the candidate as a match. |
+| Target's parent/association is changed or uncertain, including a checked-link target whose actual parent is unestablished | Change or uncertainty takes precedence: one root CHANGED_DURING_SEARCH or INSPECTION_FAILED REMAINDER. An ENOSPC from an unassociated object cannot justify a parent group. |
+| Joined path exceeds the public value ceiling, or an ordinary directory join cannot fit the native NUL-inclusive ceiling, before enqueue/publication | VALUE_LIMIT CHILD_GROUP at the established actual parent; no finalized match/queued task and no shortened path. Ordinary file locations at exactly the public ceiling remain representable. |
+
+Groups require no new child identity list and use one fixed native/public
+path-size guidance template. Native-size groups can grow only for distinct
+established parents, not every dependent queued task beneath one inaccessible
+prefix. Existing coverage record/byte exhaustion still stops honestly.
+In file search an already finalized directory-name observation can survive a
+later dequeue refusal. If the final target unexpectedly returns ENOSPC, do not
+retroactively emit a name-omitting CHILD_GROUP: stop the root once with
+CHANGED_DURING_SEARCH when its formerly fitting path/association is established,
+otherwise INSPECTION_FAILED. That later stop omits unfinished descent, does not
+retroactively count the name as unexamined or invent resultsTruncated. A candidate
+refused before finalization may set resultsTruncated only after its matching
+location/application identity was established, under the existing rule. With
+no progress a size remainder remains failure-class before prompt risk.
+
+`F_GETPATH` cannot cover the native long-path subjects; reducing every buffer
+to PATH_MAX would add unaccepted omissions. `realpath`/Foundation alternatives
+mix presentation spellings and impose separate resolution limits. A manual
+parent/name reconstruction needs additional binding, firmlink and descriptor
+semantics and is not a successful canonical fallback. Use public fsgetpath's
+default firmlink presentation, never private `fsgetpath_ext` or no-firmlink
+options. Actual startup-pair, Preboot, case and Unicode spellings must pass the
+same adapter/VM subjects. Reopen this choice if those fail or if its measured
+size/race/prompt omissions defeat the workflow; no narrower domain is approved.
 
 ## Coverage and aggregate outcomes
 
@@ -354,7 +477,7 @@ Skipped records have a separate extent vocabulary:
 | --- | --- |
 | `ENTRY` | The named entry's inspection/matching was omitted or uncertain; says nothing about children. |
 | `SUBTREE` | This named directory's eligible descendants were not searched. Synthetic policy scopes assert no existence. |
-| `CHILD_GROUP` | Exactly `count` encountered child anchors of this representable parent have UNREPRESENTABLE_NAME or overlong-path VALUE_LIMIT; inspection/matching and any descendants are omitted. Identities are withheld. Descendants are not counted. Never asserts that all children were skipped. |
+| `CHILD_GROUP` | Exactly `count` encountered child anchors of this representable actual parent have UNREPRESENTABLE_NAME or known native/public path-size VALUE_LIMIT; inspection/matching and any descendants are omitted. Identities are withheld. Descendants are not counted. Never asserts that all children were skipped. |
 | `DESCENDANT_GROUP` | Exactly `count` encountered anchors somewhere beneath this root have one intrinsic reason, DEPTH_LIMIT or FRONTIER_LIMIT; identities are withheld. Intrinsic reasons retain their name/domain rules. Depth/frontier bounds omit only eligible descendants: directory anchor names remain matchable. Counts anchors, not descendant names; asserts neither a complete listing nor whole-subtree exclusion. |
 | `REMAINDER` | Eligible work beneath this root unfinished at freeze: unread stream tails, queued/unopened descent, held-stream work and unfinished metadata. Excludes established observations and already diagnosed frontier/depth omissions without enumerating them; never asserts the whole root was skipped. Its size is unknown. |
 
@@ -362,7 +485,7 @@ Skipped records have a separate extent vocabulary:
 contains an observed set, not every same-reason entry in an unread directory.
 Group records require identical reason, guidance and `affectsCoverage`.
 CHILD_GROUP carries only UNREPRESENTABLE_NAME or
-overlong-path VALUE_LIMIT, never permission: prompt risk needs an exact ENTRY/SUBTREE
+known native/public path-size VALUE_LIMIT, never permission: prompt risk needs an exact ENTRY/SUBTREE
 target. Ordinary hidden, package, symlink-descendant and special-file anchors
 coalesce into one DESCENDANT_GROUP per reason/root. DEPTH_LIMIT has one separately
 reserved DESCENDANT_GROUP per root; it affects coverage and counts only observed
@@ -384,7 +507,7 @@ One stop cause per root uses its pre-reserved REMAINDER, with or without progres
 specific earlier failures/policy survive. Anchor it at the resolved root when
 established within bounds, otherwise at the representable requested root.
 TIME_LIMIT (including an unopened root or blocked first listing), CAPACITY_LIMIT,
-ENTRY_LIMIT and DIAGNOSTIC_LIMIT stops use REMAINDER. An individual overlong
+ENTRY_LIMIT and DIAGNOSTIC_LIMIT stops use REMAINDER. An individual overlong or native-size-refused
 resolved root uses VALUE_LIMIT/REMAINDER at the requested root, resolvedPath null.
 No-progress stops have UNKNOWN coverage, zero searched records and null count;
 the no-progress aggregate failure rule applies. A remainder identifies unfinished
@@ -668,13 +791,13 @@ would exceed the remaining record/byte partition, stop this root, preserve every
 previous diagnostic and write DIAGNOSTIC_LIMIT into the reserved REMAINDER for
 either total coverage-byte or record-count exhaustion. Fixed guidance identifies
 which account was exhausted (record count takes precedence if both would fail).
-VALUE_LIMIT is reserved for an individual path exceeding its explicit value
-bound, not total diagnostic space. The reserved remainder covers that entry's
+VALUE_LIMIT is reserved for an individual public/native path-size refusal,
+not total diagnostic space or unclassified lookup failure. The reserved remainder covers that entry's
 uncommitted outcome and all remaining work,
 not a falsely universal parent SUBTREE. Mandatory diagnosis always wins; no
 match can consume coverage space. Ordinary directories add counters, not
 records; intrinsic omissions use four root groups, not one record per package.
-Only invalid/overlong-name parent groups and independent exact native/policy
+Only invalid/native-or-public-size child parent groups and independent exact native/policy
 failures grow with exceptional targets. Width and depth bounds allocate no
 exceptional parent records. A changed queued walk prefix or immediate parent
 stops the root once, rather than allocating one record per dependent task.
@@ -730,7 +853,7 @@ the same reserved group. Controlled/native instrumentation records which check
 refused; no extra public group or reason follows. Later tasks may fit after dequeue; no refused anchor
 is retried and no queued task is evicted. Thus all 5,000 shallow child names can
 be examined even though only a bounded prefix of their marker descendants is
-scheduled. An individual overlong child path uses VALUE_LIMIT CHILD_GROUP and
+scheduled. An individual public/native-size-refused child path uses VALUE_LIMIT CHILD_GROUP and
 omits its name too, rather than masquerading as queue exhaustion. A timer freeze
 records unread/queued/unfinished work as REMAINDER; already committed frontier
 and depth groups survive, with no claim about omitted descendant counts.
@@ -756,6 +879,9 @@ after its immediate parent is established unchanged; continue unrelated tasks.
 An uncertain target under such a parent has exact INSPECTION_FAILED SUBTREE.
 No new expected-ancestor array is retained. A current stream/held walk parent's
 observed movement also stops the root with CHANGED_DURING_SEARCH REMAINDER.
+Full-buffer ENOSPC for a formerly fitting canonical path is likewise change
+evidence; uncertain prior association instead uses one INSPECTION_FAILED stop.
+No later size refusal retroactively groups an already finalized name.
 No child open follows observed movement/unknown policy. The remaining
 check-to-open prompt window and actual canonical calls require signed-host
 acceptance. Rewalking a bounded path does not rescan its ancestors' names, but repeats their
@@ -991,12 +1117,14 @@ Short ASCII fixture paths keep the nonoverflow shapes within traversal and reser
 bounds. Add long-path, invalid-name and native exception variants separately;
 invalid/value parent groups and exact failures can exhaust diagnostics even
 though the reserved frontier/depth groups cannot. Run individual witness queries
-so result-count ranking cannot obscure traversal. Controlled accounting tests use 8,192-byte paths (43 fit, task 44 byte-refused)
-and the independent 512-task count boundary with short paths. These maximum
-values do not establish reachable native paths: the currently named F_GETPATH
-route has a 1,024-byte buffer. Native canonical-path limits, grouped overlong
-omissions and actual count/byte boundaries await search-canonical-paths-k108;
-no VM subject is credited for constructing the controlled 43/44 shape. Inject concurrent atomic admissions, open/dup failure, transferred
+so result-count ranking cannot obscure traversal. Controlled accounting tests use
+8,192-byte paths (43 fit, task 44 byte-refused) and the independent 512-task count
+boundary with short paths. These maximum values do not establish native directory
+reachability. Public fsgetpath's NUL-inclusive buffer returns at most 8,191 text
+bytes; the [canonical native subjects](#canonical-path-acceptance-subjects)
+instead construct a 4,096-byte root and 4,224-byte child tasks (79 fit, task 80
+byte-refused), plus the short-path count boundary. No VM subject is credited for
+the synthetic maximum shape. Inject concurrent atomic admissions, open/dup failure, transferred
 stream ownership, limit reduction, opaque platform demand and cohort-wide native
 resource failure. A controlled ledger proves the accounting rules, not native
 isolation. A normally launched host saturation subject must demonstrate listener
@@ -1020,6 +1148,35 @@ to revisit or a concrete trade-off for the existing protected-home decision,
 never a passing baseline. No implementation assumes those future measurements.
 If a reduced domain/setup is proposed as a prerequisite, move the existing human
 decision ahead of that dependence instead of treating it as already approved.
+
+### Canonical path acceptance subjects
+
+All subjects remain pending. Use the existing controlled private adapter, an
+independently built real workspace provider through public GraphQL, and the
+signed hardened normally launched macOS host in an isolated VM. A diagnostic
+build may record barriers/calls but must preserve the host identity, grants,
+entitlements and three-second wait. The independent client asserts public
+results; a sequence-numbered native trace records actual calls, lengths,
+captured errors, association checks, queue charges and checks, reads and
+publication. It is an instrument, not a substituted canonicalizer. Its controls
+must reject truncated output, a 1,024-byte buffer, fabricated fsids, stale queued
+inode lookup, missing rechecks and per-task prefix failure fan-out. Independent
+fixture and dialog/hydration observers do not credit Koine's own report of success.
+
+| Subject | Controlled adapter / independent provider-GraphQL assertion | Signed macOS construction and observing instrument |
+| --- | --- | --- |
+| Root admission and native size | Requested 4,096 accepted and 4,097 rejected before calls. Canonical success counts include NUL; 8,191 text bytes succeeds, full-buffer ENOSPC yields requested-path VALUE_LIMIT remainder/null resolvedPath. EINVAL/EIO/ENOENT, truncated/invalid UTF-8 output and unknown capabilities yield uncertainty, not size/absence. No-progress failure beats PROMPT_RISK. | Component-relative helper builds measured roots above 1,024 and at 4,096 bytes; create short checked aliases to 8,191/8,192/longer directory text without making an overlong kernel pathname argument. Helper and adapter independently record fstat/fstatfs identity, actual syscall size/count/errno and bytes. Unreachable lengths or early wait failures stay pending, never substituted smaller fixtures. |
+| Actual-parent size groups and prefix stop | Many full-buffer target refusals beneath one established stable parent produce one VALUE_LIMIT CHILD_GROUP and exact anchor count, no successful candidates. Changed/uncertain association takes precedence. A queued prefix/current stream size refusal stops the root once; 512 dependent tasks do not create 512 INSPECTION_FAILED records. Prior observations/groups survive; no further reads/opens follow observed refusal. | Construct long-component chains and wide sibling sets with mkdirat/openat, checking native component limits. A mover plus diagnostic next-turn/mid-walk barriers relocates a current/prefix directory so its path no longer fits. The trace and GraphQL show one remainder and no post-refusal I/O. Native parent grouping is credited only when the actual parent and full-buffer refusal are independently established. |
+| Reachable queue bytes and count | Synthetic 8,192-byte tasks prove 43/44 arithmetic only. Measured 4,224-byte tasks charge 4,736 each: 79 fit, task 80 byte-refused. A separate 128-byte/513-child shape binds at 512 by count. Anchor matches precede queue omission; markers follow the captured admitted order. | Canonical root exactly 4,096 bytes, 100 distinct 127-byte child names with markers: all 100 anchors remain observed, 21 frontier anchors omitted if the fixture completes within the real wait, and first 79 marker subtrees scheduled. Trace observes the actual byte check; independent client queries each marker. A short padded native root makes 128-byte paths for the count subject. A time/resource stop does not certify either boundary. |
+| Firmlink, case, Unicode and policy witnesses | Differing preliminary spellings for one unchanged identity produce one canonical path and merged membership. Native text is preserved; invalid bytes are not repaired. Synthetic protected/cloud scopes use canonical-home components without opening excluded directories. | Startup pair home/Data aliases and Applications/Data aliases; actual Preboot Safari and CoreServices Finder; differently cased/NFC/NFD link routes to one permitted bundle. The helper observes actual names/identities and the client checks paths/rootIndices. Trace every root/current/queued/bundle/opened-witness producer to the same fsgetpath route. Independent dialog/hydration witness watches Desktop/Documents/Downloads/Library Mail aliases and intervening component aliases. A dialog requires redesign. |
+| Queued/current movement, deletion and identity reuse | Hold the descriptor throughout fsgetpath and before/after fstat/fstatfs. Inject path/identity/mount/association mismatches, ENOENT without mismatch, reused inode/fsid values and cancellation between calls. Never resolve a queued number before reopening/rechecking it; no stale fallback or new call after freeze. | Move current/queued directories across admitted/protected roots at barriers; replace or unlink a target while its descriptor is held and again after queueing closes it. Compare helper before/after identities, adapter call order and returned GraphQL paths. If actual reuse is not obtained, record that limit; the controlled reuse discriminator still must pass. Residual ABA/check-to-open behavior remains a platform limit, not proof of atomic identity. |
+
+Keep per-file input/export digests and per-witness results. The
+[call analysis](../verification/search-canonical-paths.md#constructible-subjects-and-instruments)
+records construction arithmetic separately from outcomes. These subjects add no
+new product seam or native acceptance chain. Resource-call health/serviceability
+instrument design remains separate, and all observed omissions remain inputs
+to the existing home/application workflow decision.
 
 ## Native ownership and race limits
 
@@ -1071,8 +1228,10 @@ conservative 16-slot shape even when fewer fields are populated. A maximum
 8,192-byte controlled task charges 8,704 bytes, so 43 fit, including the dequeued in-flight
 task until inspection completes. A 128-byte task charges 640 bytes, so the
 512-task count ceiling wins before the byte ceiling. This is conservative
-value-account arithmetic; native queue-byte subjects await the canonical-path
-producer, rather than assuming F_GETPATH can return these maximum values.
+value-account arithmetic, distinct from the constructible 4,224-byte native
+task shape (4,736 charged bytes: 79 fit within 375,040, task 80 does not).
+Native execution and the canonical design review remain pending; native
+boundaries must be observed rather than inferred from this arithmetic.
 When a task successfully becomes the current frame, release its queue charge
 and transfer the path/identity into the reserved frame without retaining another
 uncharged copy. Frozen queue values and worker-owned in-flight values remain
@@ -1278,11 +1437,11 @@ pending implementation/acceptance:
 | Default Safari/Finder and controlled alternate layouts | Omitted/null roots expose all five defaults in order; Safari/Finder have observed paths, nonblank identifiers, INSTALLED after established registration; both feed constrained launch. A positively absent Cryptex optional root is COMPLETE/OPTIONAL_ROOT_ABSENT; explicit absence is UNKNOWN/ROOT_NOT_FOUND. | Controlled adapter supplies alternate canonical anchors, absent optional region and real distinct copies versus two routes to one bundle, under the canonical-target identity and fixed-region admission design. Exact search SDL and unchanged action-only compatibility subjects remain required. | Required real apps installed; actual Safari and Finder paths are found under default search without dialogs/launch, under the reviewed admission/identity contract. Known paths/identifiers and actions have independent witnesses. Test another layout when a concrete supported VM subject exists; otherwise record that condition as not applicable with OS/layout evidence, without claiming native proof of alternate layouts. Actual default/call cases remain mandatory and pending. |
 | Application links/aliases | Using canonical target filename/path, registered .app targets yield INSTALLED and unregistered targets yield UNREGISTERED; denied/protected/dangling or changed targets cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities, both registration answers and one filesystem-reported canonical path across case/component/link spellings. Limit-1 duplicate routes have false count truncation and merged rootIndices; equal-identifier native copies remain distinct. Canonical target queries match, alias-only app queries do not; file queries retain link names. Inject canonical-path/value failures and rename/reuse observations. Path and identifier action inputs remain unchanged. | Inspect actual target/link metadata, resolution order and mount checks. Include links to Desktop/Documents/Downloads and a named protected Library sub-area (Mail data), with component aliases. No protected traversal, alias-file resolution, default-handler lookup, registration writes or content/hydration request. Resolution itself must be prompt-free under actual signed Koine; earlier metadata evidence does not establish it. Cryptex admission/races use the actual adapter; no new keys/entitlements. |
 | Wide realistic layouts / later-root scheduling | The measured-shape 36-project/position-12 subject returns later depth-1 and all depth-2 project anchors plus four depth-2 home markers before ENTRY_LIMIT; later project depth-3 markers and depth-4 deep-needle are absent through home. Its explicit Deep root returns the needle. The separate flat depth-2 sink omits dev-file-199998 and the four later depth-2 markers. The 5,000-child subject returns all anchors and first 512 markers, FRONTIER_LIMIT count 4,488. Query each witness to avoid ranking loss. | Controlled native order/clock verifies FIFO depth order, both turn ceilings and single name listings. Record repeated component opens/canonical calls/turn checks and elapsed wait: 496 opens/chain, 15,872 in the depth-anchor fixture, 7,936/job for 16 chains before other calls. Verify every named retained/omitted witness, queue charges and thirteen coverage shapes. Exact search-required/action-only profiles remain distinct. | Actual home/default and measured-scale trees record native order, each shallow/same-level/deep/later-root witness, reasons, coverage and elapsed shares of entry work versus component/canonical/turn checks. Use adapter event counters/timestamps, not entry totals as a performance proxy. Real Safari/Finder and protected Library-link calls remain pending; k93 must assess actual queue/entry/depth/value/deadline omissions. |
-| Exact scope groups / exhaustion | Invalid/overlong names have actual-parent CHILD_GROUP and omit anchor names. DEPTH_LIMIT and FRONTIER_LIMIT are separately reserved root groups counting observed matchable anchors, not descendants, with depth precedence even for empty anchors. Stop uses REMAINDER/null count; only progress adds a searched record. | 512 short tasks fit; task 513 frontier-refused. Controlled 8,192-byte values admit 43 tasks; task 44 is byte-refused. These are accounting subjects, not evidence of native path reachability. No eviction/retry; siblings stay matchable. Freeze preserves charged queued/in-flight paths and prior diagnostics. Thirteen shapes/16 rootIndices/fifteen witnesses fit; witness overflow refuses all roots before turns. | Native long-path limits, grouped refusals and reachable count/byte subjects await search-canonical-paths-k108 and its review. F_GETPATH cannot construct the controlled 8,192-byte shape. Actual APFS short/wide/depth fixtures use adapter charge/check counters; record each witness/path occurrence and refusal check. Invalid bytes/alternate layouts remain controlled subjects. |
+| Exact scope groups / exhaustion | Invalid/overlong names have actual-parent CHILD_GROUP and omit anchor names. DEPTH_LIMIT and FRONTIER_LIMIT are separately reserved root groups counting observed matchable anchors, not descendants, with depth precedence even for empty anchors. Stop uses REMAINDER/null count; only progress adds a searched record. | 512 short tasks fit; task 513 frontier-refused. Controlled 8,192-byte values admit 43 tasks; task 44 is byte-refused. These are accounting subjects, not evidence of native path reachability. No eviction/retry; siblings stay matchable. Freeze preserves charged queued/in-flight paths and prior diagnostics. Thirteen shapes/16 rootIndices/fifteen witnesses fit; witness overflow refuses all roots before turns. | The [canonical subjects](#canonical-path-acceptance-subjects) separate synthetic 43/44 arithmetic from native 4,224-byte tasks (79/80 byte boundary), 128-byte tasks (512/513 count boundary), and full-buffer size refusals. Canonical review and all native outcomes remain pending. Actual APFS short/wide/depth fixtures use adapter charge/check counters; record each witness/path occurrence and refusal check. Invalid bytes/alternate layouts remain controlled subjects. |
 | Shared process descriptor serviceability | At L=256, four 16-root jobs reserve 72 credits; a fifth refuses on workers. At L=160, S=32: one Q=18 job fits and a second refuses on descriptors. At L=128 none fits. A refresh S′ below summed surviving Q reservations latches CAPACITY_LIMIT for scheduled unfinished roots/new jobs even if occupancy is lower; a higher read does not resume that cohort. Native resource failure uses INSPECTION_FAILED and disables new inspections/jobs until cleanup. | Shared owner across provider instances races whole worker/credit acquisition and charges/transfers/closes. Cover 128/160/200/256/infinite/unknown; lower S below reservations while occupancy still fits, then raise it and prove refusal remains until cleanup. Combine EMFILE/ENFILE with one indefinitely blocked cohort call; free workers do not enable new search, provider restart does not recover, fresh process does. Inject opaque failure with empty/nil answers: no positive absence fact. Simulations do not prove serviceability. | Native call/error selection and an instrument seeing transient opaque descriptor events, attribution and suppressed accept/backoff await search-native-resources-k109 and its mandatory review. The selected instrument must fail transient-open and NIO suppressed-error controls. Normal signed launch retains inherited L; four saturated searches/blocked metadata run beside independent fresh listener connections, grant-store work and authorized actions. Record event/margin/outcome/latency per operation; any search-caused resource failure or accept backoff fails even with later successful responses. Polling/error-free replies/shell-raised limits cannot pass it. |
 | Cancellation during a blocked call | Freeze once with TIME_LIMIT when publishable; external cancellation may have no response. Late work changes no counters/matches/groups/coverage. Queue/stream/credits survive until worker cleanup. Resource refusal plus an indefinitely blocked cohort explicitly disables new search until process restart; guidance distinguishes that from ordinary busy admission. | Separately block listing, registration, component and canonical calls with multiple streams/nonempty FIFO; combine one indefinite block and another job resource failure. Release finite calls and verify exactly-once worker close/drop, no late I/O/publication and release only after unwind. Reuse closed descriptor numbers to detect stray closes. Provider restart retains pool/ledger/latch. | Late-return cleanup/no-dialog subjects remain pending; descriptor attribution/serviceability uses k109’s selected instrument. Record owned/opaque occupancy and independent operations. An indefinite block retains slots/credits and a resource-refusal cohort across provider restart; no replacement threads or external closes. Fresh process restores admission. |
-| Current/queued parent moves into protected scope | File-search current streams recheck before every listing turn/read, even with no child opens. Observed current movement uses one root CHANGED_DURING_SEARCH REMAINDER. Changed/missing walk prefix or immediate parent likewise stops the root once; a changed final target gets exact SUBTREE only after its parent is established unchanged. Uncertainty uses INSPECTION_FAILED at the corresponding scope. Preserve progress/prior groups; no post-refusal entry read, stale-path publication or metadata open. | Use diagnostic turn/walk barriers and a sequence-numbered check/read/open/publication trace. Move a 100,000-entry file listing after a 64-entry turn; its next check refuses before reading. Queue 512 tasks beneath one ancestor, then rename/remove/replace it: one remainder, no per-task diagnostic fan-out or DIAGNOSTIC_LIMIT. Inject ENOENT/ENOTDIR at an intermediate parent; separately replace only a target under unchanged parent and continue unrelated tasks. Inject after-check races as limits, not atomic safety. | Actual adapter diagnostic barriers pause before a next-turn listing check and before a mid-walk parent check; an independent mover places current/queued subtrees in Documents/Desktop/Downloads/Library or outside root. Trace actual canonical checks, subsequent entry reads/metadata opens and published paths; no stale-path publication/read follows an observed refusal. Independent dialog/hydration witness tests remaining check-to-read/open windows. Native canonical route remains k108’s design subject; prompting routes fail and require redesign. |
-| Firmlink/case/Unicode canonical paths | Roots naming home and its Data-volume alias have the same resolvedPath and one file location with both observed rootIndices. App link/direct routes retain one canonical path/native identity, stable rank and false duplicate truncation. RequestedPath retains input spelling; synthetic policy targets use canonical-home components. | Supply differing preliminary realpath and descriptor-path spellings for one identity; require the single final canonical operation everywhere. Case/component/Unicode route variants cannot fabricate CHANGED_DURING_SEARCH in unchanged observations. Unknown/overlong canonical output has affecting coverage with no fallback. | On the startup APFS pair, use home and /System/Volumes/Data/Users/<user> roots plus /Applications and its Data alias. Create differently cased and NFC/NFD-named link spellings to one permitted bundle; observe actual filesystem identity/name behavior rather than assuming separate Unicode files. Inspect root/frame/bundle/policy path production and per-choice membership with no protected open or dialog. |
+| Current/queued parent moves into protected scope | File-search current streams recheck before every listing turn/read, even with no child opens. Observed current movement uses one root CHANGED_DURING_SEARCH REMAINDER. Changed/missing walk prefix or immediate parent likewise stops the root once; a changed final target gets exact SUBTREE only after its parent is established unchanged. Uncertainty uses INSPECTION_FAILED at the corresponding scope. Preserve progress/prior groups; no post-refusal entry read, stale-path publication or metadata open. | Use diagnostic turn/walk barriers and a sequence-numbered check/read/open/publication trace. Move a 100,000-entry file listing after a 64-entry turn; its next check refuses before reading. Queue 512 tasks beneath one ancestor, then rename/remove/replace it: one remainder, no per-task diagnostic fan-out or DIAGNOSTIC_LIMIT. Inject ENOENT/ENOTDIR at an intermediate parent; separately replace only a target under unchanged parent and continue unrelated tasks. Inject after-check races as limits, not atomic safety. | Actual adapter diagnostic barriers pause before a next-turn listing check and before a mid-walk parent check; an independent mover places current/queued subtrees in Documents/Desktop/Downloads/Library or outside root. Trace actual canonical checks, subsequent entry reads/metadata opens and published paths; no stale-path publication/read follows an observed refusal. Independent dialog/hydration witness tests remaining check-to-read/open windows. Use the fsgetpath identity/association rechecks and size/movement precedence; its load-bearing review and native outcomes remain pending. Prompting routes fail and require redesign. |
+| Firmlink/case/Unicode canonical paths | Roots naming home and its Data-volume alias have the same resolvedPath and one file location with both observed rootIndices. App link/direct routes retain one canonical path/native identity, stable rank and false duplicate truncation. RequestedPath retains input spelling; synthetic policy targets use canonical-home components. | Supply differing preliminary realpath and final fsgetpath spellings for one identity; require the single final canonical operation everywhere. Case/component/Unicode route variants cannot fabricate CHANGED_DURING_SEARCH in unchanged observations. Unknown/overlong canonical output has affecting coverage with no fallback. | On the startup APFS pair, use home and /System/Volumes/Data/Users/<user> roots plus /Applications and its Data alias. Create differently cased and NFC/NFD-named link spellings to one permitted bundle; observe actual filesystem identity/name behavior rather than assuming separate Unicode files. Inspect root/frame/bundle/policy path production and per-choice membership with no protected open or dialog. |
 
 Home protected traversal remains a live baseline gap: any change to consent,
 entitlements or setup needs Antony's decision before reliance. The already live

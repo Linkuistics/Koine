@@ -2,10 +2,11 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Shallow names, bounded descent and shared descriptor admission",
-    "status": "Designed · native path/resource repairs and reviews before planning",
-    "summary": "FIFO finishes shallower admitted listings before deeper names, retaining one stream/root and a 512-task/384 KiB queue. Depth/frontier groups count matchable anchors. Current streams recheck before each listing turn/read; changed queued prefixes/parents stop the root once. FIFO repeats checked component walks against the wait and can omit later same-level/deeper names; these omissions remain unaccepted. Whole-job worker/descriptor credits remain owned until worker cleanup. Lower-limit refusal compares summed reservations and latches until cohort cleanup; indefinite native failure cohorts can disable new search until process restart. Canonical path selection and opaque resource-call/error/serviceability instruments are open design producers, each requiring load-bearing review before planning. Errorless nil/empty metadata, descriptor polling and eventual client success cannot certify their obligations. Transport/compatibility meanings remain reviewed; native/binary acceptance remains pending.",
+    "title": "One canonical directory observation and truthful native size omissions",
+    "status": "Proposed · canonical review and resource design before planning",
+    "summary": "Public fsgetpath uses descriptor-derived filesystem/object identity and a fixed 8192-byte buffer including NUL. Successful directory text is at most 8191 bytes; joined file locations retain the public 8192-byte value bound. Identity/mount/association rechecks and policy checks precede further reads, opens and publication; they are observations, not atomic descriptor binding. Known native/public size refusals group at an established actual parent before finalization; formerly fitting current/prefix paths now size-refused stop the root once as change. Native 4096-byte roots with 4224-byte child tasks have a planned 79/80 byte boundary, separate from synthetic 43/44 maximum-value arithmetic. The canonical proposal requires load-bearing review. Opaque resource-call/error and transient descriptor/accept-backoff instrument design remains open. Signed no-dialog, native reachability, useful home coverage and independent binary/runtime acceptance remain pending; no reduced domain or workflow coverage is accepted.",
     "diagramIds": [
+      "search-canonical",
       "search-traversal",
       "search-coverage",
       "search-handoff",
@@ -14,16 +15,20 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "search-canonical",
+        "summary": "Adds the public fsgetpath call, NUL-inclusive native limit, identity/policy rechecks and actual-parent versus root refusal branches."
+      },
+      {
         "id": "search-traversal",
-        "summary": "Adds turn-before-read checks, shared-prefix root remainder and repeated-walk costs; native path/resource producers remain open."
+        "summary": "Names fsgetpath for current checks and distinguishes its pending review from open resource instrument design."
       },
       {
         "id": "search-coverage",
-        "summary": "Preserves frontier/depth groups, distinguishes changed-prefix remainder and names native call/instrument repairs."
+        "summary": "Clarifies known native/public path-size grouping and change precedence when a formerly fitting prefix no longer fits."
       },
       {
         "id": "search-handoff",
-        "summary": "Retains canonical identity and authorized selection while making native path/resource decisions explicit."
+        "summary": "Names the canonical proposal and unchanged public limits while retaining authorized action handoff and pending native acceptance."
       }
     ]
   },
@@ -31,7 +36,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO repairs are designed. Native canonical-path and opaque resource/error/instrument choices require producers and load-bearing reviews before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
+      "description": "FIFO and canonical fsgetpath are proposed. Canonical review and opaque resource/error/instrument design/review precede planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
     },
     {
       "id": "workspace",
@@ -71,13 +76,22 @@
   ],
   "diagrams": [
     {
+      "id": "search-canonical",
+      "group": "search",
+      "title": "Observe one canonical path and diagnose native size refusals",
+      "renderer": "svg",
+      "source": "search-canonical.d2",
+      "rendered": "search-canonical.svg",
+      "caption": "Source/SDK-grounded proposal, not native acceptance. fsgetpath takes filesystem/object identity obtained from an owned directory, not the descriptor itself. Before/after identity, mount and parent association checks detect observed changes but do not prevent ABA or check-to-call races. Its 8192-byte buffer counts NUL, preserving at most 8191 directory text bytes; the public 8192-byte value bound still applies to joined file locations. Size omissions need actual-parent proof before finalization, or one root stop. Canonical load-bearing review and signed no-dialog/long-path/identity/native queue subjects remain pending."
+    },
+    {
       "id": "search-traversal",
       "group": "search",
       "title": "Finish shallow names before bounded descent",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn checks its current stream before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Native canonical paths and transient opaque descriptor/accept-backoff instruments require producer/review work before planning; measured workflow omissions remain unaccepted."
+      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn uses the canonical observation before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Canonical review and opaque descriptor/accept-backoff instrument design/review precede planning; measured workflow omissions remain unaccepted."
     },
     {
       "id": "search-coverage",
@@ -86,7 +100,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain existing CAPACITY_LIMIT/INSPECTION_FAILED meanings. Lower allowance compares summed reservations until cleanup. FIFO turn-before-read checks and one changed-prefix root remainder prevent stale post-refusal paths and queued failure fan-out. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Canonical-path/resource instrument choices are open; periodic counts or successful delayed replies cannot certify serviceability."
+      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain existing CAPACITY_LIMIT/INSPECTION_FAILED meanings. Known native/public path-size omissions use actual-parent VALUE_LIMIT groups before finalization. A formerly fitting prefix now too long is change evidence and stops once, without retroactive name omissions. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Canonical review and resource instrument design/review precede planning; periodic counts or successful delayed replies cannot certify serviceability."
     },
     {
       "id": "search-handoff",
@@ -95,7 +109,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed selection handoff. One stable canonical path/native bundle identity merges observed routes, while distinct installations stay distinct; actual native path selection is open. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Native path/resource producers and their reviews precede planning; binary/native acceptance remains pending."
+      "caption": "Designed selection handoff. The fsgetpath canonical observation and native bundle identity merge observed routes; distinct installations stay distinct. Size-refused paths are omitted with affecting coverage rather than shortened. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Canonical review and native resource design/review precede planning; binary/native acceptance remains pending."
     },
     {
       "id": "search-discovery",

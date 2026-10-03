@@ -14,7 +14,7 @@ Root summaries, intrinsic anchor counts and independent root partitions
 decouple ordinary-directory diagnostic volume from discovery. One reserved
 root depth group counts encountered anchors themselves, including an empty
 directory whose EOF was not observed; names remain matchable and counts never
-describe omitted descendants. Exact invalid/overlong-name parents, exceptional
+describe omitted descendants. Exact invalid/size-refused child parents, exceptional
 failures and permission targets stay visible. Exhaustion preserves an honest
 remainder. Maximum-size match slots keep metadata growth out of diagnostics
 and ranked eviction. This costs reserved capacity and withholds grouped identities.
@@ -36,5 +36,8 @@ found no usable index-health signal and a prompting protected query. Reopen
 that alternative only with a supported prompt-free mechanism and useful
 coverage/availability evidence, or an expressly approved changed workflow.
 Reopen detailed records for a consumer that needs exclusion identities.
+The [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation)
+distinguishes known native/public size refusals from uncertainty and preserves
+actual-parent groups and one root stop for dependent queued work.
 Neither these observations nor accounting accept reduced home/application
 coverage: the operator's existing baseline decision remains required.

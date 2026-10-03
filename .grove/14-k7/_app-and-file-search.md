@@ -86,3 +86,12 @@ events plus suppressed listener accept/backoff. Both producers require mandatory
 load-bearing reviews before k30 planning. Errorless empty/nil, periodic counts
 or eventual replies do not clear them. Native/binary/useful-coverage acceptance
 and k93's actual omissions decision remain pending.
+
+k108's canonical proposal now uses public fsgetpath with descriptor-derived
+identity and mount/association rechecks, a fixed NUL-inclusive 8,192-byte
+buffer, actual-parent size groups and one stop for dependent changed prefixes.
+Native directory text fits 8,191 bytes; public value ceilings/domain are unchanged,
+and no shorter workflow coverage is accepted. Native 79/80 byte subjects are
+separate from synthetic 43/44 arithmetic. Its load-bearing review and k109's
+resource design/review precede k30; signed-native outcomes, binary acceptance
+and k93's per-witness omission decision remain pending.

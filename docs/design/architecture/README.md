@@ -7,6 +7,7 @@ exports:
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
+- [canonical path observation and native size refusals](index.html#diagram-search-canonical);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
@@ -37,10 +38,10 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel presents per-root FIFO breadth-first traversal and
-atomic process-wide descriptor admission alongside reviewed transport/compatibility.
+The current-discussion panel presents one canonical directory observation and
+native size refusals alongside FIFO and reviewed transport/compatibility.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require the native canonical-path/resource producers and their load-bearing reviews before planning. Finish shallower admitted
+require the canonical proposal's review and native resource design/review before planning. Finish shallower admitted
 listings before deeper ones, with one current stream/root and a 512-task/384 KiB
 pending queue. Frontier overflow counts matchable anchors in one reserved root
 group and continues sibling-name examination; depth has a separate group.
@@ -50,13 +51,19 @@ Worker-only cleanup retains streams, paths and credits after blocked-call freeze
 Current-stream checks precede every listing turn/read; checked component
 walks repeat against the wait. A changed queued prefix/parent stops the root
 once rather than allocating a failure per task. Residual check-to-read/open
-races remain native acceptance obligations. The named F_GETPATH route cannot
-implement maximum accounting paths; canonical-path selection is open. Opaque
+races remain native acceptance obligations. Public fsgetpath uses descriptor-derived
+filesystem/object identity with rechecks, not atomic descriptor binding. Its
+8,192-byte buffer includes NUL; native directory text is at most 8,191 bytes,
+while public joined-file values can still reach 8,192 bytes. Known native/public
+size omissions group at a stable actual parent before finalization; formerly
+fitting prefixes now too long stop once as change. The canonical proposal needs
+load-bearing review. Planned native 4,224-byte tasks bind at 79/80 by bytes;
+synthetic 43/44 maximum-value arithmetic is separate. Opaque
 empty/nil answers cannot establish absence; resource-call health and an instrument
 for transient opens/accept backoff are open too.
 Normally launched signed-host listener/store/action serviceability must pass;
 static arithmetic, periodic descriptor counts and eventual error-free client
-replies are insufficient. Native path/resource producer reviews precede planning. Safari/Finder, protected Library-link calls,
+replies are insufficient. Canonical review and native resource design/review precede planning. Safari/Finder, protected Library-link calls,
 useful home coverage and measured omissions remain pending.
 Canonical target names/paths make app ranking independent of link/direct route;
 native bundle identity merges one installation without merging distinct copies
@@ -84,17 +91,16 @@ opening remains pending a human consent/semantics decision. The updated
 [request sequence](index.html#diagram-workspace-open) qualifies its inspection
 premise with that limit; the outcome view remains unchanged context.
 
-The current update changes these views:
+The current update changes these views and contracts:
 
-- [Search → finish shallow names before bounded descent](index.html#diagram-search-traversal) — Adds FIFO order, separate descent-bound groups, fresh component walks and shared descriptor credits.
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Replaces the reopened DFS path with FIFO work and matchable frontier anchors; adds atomic admission and worker-owned credit cleanup.
-- [Search → selection and action handoff](index.html#diagram-search-handoff) — Names the revised traversal/account and frontier omissions while retaining canonical identity and both-control actions.
-- [Search contract → resource accounting](../../specs/workspace-search.md#resource-accounting-and-scheduling) — Defines the exact order property, queue count/byte charges, unchanged coverage reservation and the iterative-deepening trade-off.
-- [Search contract → process-wide descriptor admission](../../specs/workspace-search.md#process-wide-descriptor-admission) — Adds atomic whole-job credits, soft-limit/reserve rules, native refusal cohorts and explicit platform/serviceability limits.
-- [Search contract → capacity examples](../../specs/workspace-search.md#capacity-examples-and-acceptance-threshold) — Gives per-name shallow/deep/later-root subjects and exact wide/depth/descriptor outcomes under unchanged bounds.
-- [Coverage decision](../../adr/search-coverage-describes-observations.md) — Defines public observation/group/remainder vocabulary.
-- [Traversal decision](../../adr/search-traversal-preserves-shallow-names.md) — Chooses FIFO order with frontier, same-level omission and repeated-prefix-work trade-offs; private resource mechanics remain in the spec.
-- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) — Includes queued-task paths in the unified canonical spelling rule.
+- [Search → canonical directory observation](index.html#diagram-search-canonical) — Adds fsgetpath, its NUL-inclusive native boundary, rechecks and actual-parent/root refusal branches.
+- [Search → finish shallow names before bounded descent](index.html#diagram-search-traversal) — Uses the canonical proposal for current-stream checks and names its pending review.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Distinguishes known native/public size omissions from formerly fitting prefix movement.
+- [Search → selection and action handoff](index.html#diagram-search-handoff) — Names the canonical proposal and unchanged public limits while retaining existing authorized actions.
+- [Search contract → canonical directory observation](../../specs/workspace-search.md#canonical-directory-observation) — Defines actual calls, buffers, association checks, error precedence and grouped omissions.
+- [Search contract → canonical acceptance subjects](../../specs/workspace-search.md#canonical-path-acceptance-subjects) — Separates native 79/80 byte and 512/513 count subjects from synthetic 43/44 arithmetic, with independent instruments.
+- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) — Cites the fsgetpath observation and keeps native naming/coverage acceptance pending.
+- [Native call analysis](../../verification/search-canonical-paths.md) — Records public source/SDK facts and constructible subjects without claiming native execution.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -133,8 +139,9 @@ Run `task design:workspace-render` to regenerate the workspace sequence and
 outcome flow with the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
-Run `task design:search-render` for the three search views with D2 0.9.0,
-Dagre, light theme 0 and dark theme 200. Open
+Run `task design:search-render` for the five search views with D2 0.9.0,
+ELK for the canonical view and Dagre for the remaining views, light theme 0
+and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
 with failing schema controls; this does not prove runtime branch invariants.
@@ -219,3 +226,21 @@ Native canonical paths (k108) and opaque resource calls/serviceability instrumen
 eventual native evidence must observe transient descriptor events and suppressed
 accept backoff; the views and schema checks do not supply it. Older presentation
 records above refer to their then-current exports.
+
+The k108 canonical-path revision was inspected in Firefox on the isolated
+Ubuntu 24.04 clone `koine-k108-design`. All four changed deep links identified
+their intended views at a 1920-pixel window width. Labelled starts, canonical
+call/size/parent/root branches, coverage outcomes and action handoff were
+readable; tall views use normal vertical scrolling. Light presentation and
+dark canonical/coverage/handoff presentation were checked. The discussion's
+status, six relevant links, four changed markers/summaries and outline agreed
+with the manifest; its dark discussion reflowed at an observed 800-pixel window
+width without horizontal clipping. Before/after per-file SHA-256 values stayed
+unchanged for index.html, diagrams.json and the canonical/traversal/coverage/
+handoff D2/SVG pairs, and each matched the guest copy. ELK was selected for the
+new canonical view after comparing its readable call/entry layout with Dagre.
+The clone was stopped after the check. This is browser presentation evidence
+only; public-call compilation is recorded separately in the
+[call analysis](../../verification/search-canonical-paths.md), and design review,
+native reachability, prompt behavior, independent binaries and useful coverage
+remain pending.

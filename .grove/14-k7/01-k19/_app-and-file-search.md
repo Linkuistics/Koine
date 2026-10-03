@@ -140,3 +140,15 @@ search-native-resources-k109 owns opaque error-health signals and constructible
 transient-descriptor/accept-backoff serviceability measurement. Both cut mandatory
 load-bearing reviews before planning. k93 still owns measured workflow omissions;
 all runtime/binary/native acceptance remains pending.
+
+k108 chooses a unified public fsgetpath observation with descriptor-derived
+identity, before/after mount/association checks, a fixed 8,192-byte NUL-inclusive
+buffer and no alternate spelling. Native directory text is at most 8,191 bytes;
+public requested/returned ceilings and the eligible domain remain unchanged.
+Known size omissions before finalization use actual-parent groups; a formerly
+fitting current/prefix/queued path now too long stops once as change, without
+retroactive name omissions. Constructible native 4,224-byte tasks have a 79/80
+byte boundary; controlled 43/44 arithmetic remains separate. The spec, call
+analysis and canonical view carry the detailed subjects. Its mandatory
+load-bearing review, k109 design/review, all native outcomes and k93's measured
+workflow-omissions decision remain ahead of planning/acceptance.

@@ -364,8 +364,9 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Canonical-path and opaque native-resource call/
-measurement repairs require their producer/review chains before planning.
+**Designed, not served yet.** The fsgetpath canonical-path proposal requires its
+load-bearing review; opaque native-resource call/measurement design and its
+review also precede planning.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review
@@ -383,7 +384,8 @@ or home; explicit roots replace them. Application defaults additionally include
 generic CoreServices and Cryptex application regions. Checked visible .app links discover canonical bundle target names/paths; they
 never authorize target traversal or create alias-named application choices.
 Link/direct routes merge by native bundle directory identity. Admitted roots,
-frames and bundles share one filesystem-reported directory-path operation;
+frames and bundles share the
+[canonical directory observation](specs/workspace-search.md#canonical-directory-observation);
 file locations join a canonical parent with the observed entry name, preserving
 final symlinks. Firmlink-alias roots merge equal returned paths and observed
 rootIndices; requestedPath still shows the supplied spelling. Distinct native
@@ -403,7 +405,7 @@ Read `status`, `matches`, each root's `coverage`, `dependency`,
 coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
 eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
 somewhere beneath that root. completedDirectories counts EOF listings, not an
-unchanged snapshot. Skipped CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
+unchanged snapshot. Skipped CHILD_GROUP counts invalid/native-or-public-size-refused child anchors of its actual parent;
 the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
 depth/frontier-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
 group: each depth-32 anchor itself increments the count, even an empty directory
@@ -416,7 +418,13 @@ were skipped. REMAINDER has null count and describes unfinished work with or
 without progress, anchored at the resolved root or representable requested root.
 No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
 means total diagnostic room (record/byte account identified in guidance);
-VALUE_LIMIT means an individual path bound. Independent root budgets prevent
+VALUE_LIMIT means a known public/native path-size refusal, including the native
+NUL-inclusive buffer boundary. Successful native directory text is at most
+8,191 bytes; the public returned value limit stays 8,192 bytes. Joined file
+locations can use that last byte. Native-size omissions remain affecting
+coverage, not accepted workflow loss; paths are never shortened or replaced
+by another spelling. A formerly fitting current/prefix path now too long is
+change evidence and stops the root once. Independent root budgets prevent
 one root spending later roots' credits. Cyclic root turns finish shallower
 admitted listings before deeper ones within each root; depths across roots can
 differ. A root's 100,000-entry allowance can still cut a wide level short and omit
