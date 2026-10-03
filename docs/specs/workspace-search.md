@@ -14,10 +14,12 @@ remain binding. The [prompt-risk decision](../adr/prompt-risk-is-search-data.md)
 keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
-**Discovery redesign awaits load-bearing review before planning.** Narrow
-fixed-region Preboot admission permits its measured read-write layout;
-depth-first held streams remove width-dependent directory queues, and one
-reserved depth group removes depth diagnostics per parent. Applications use
+**Traversal repair and its load-bearing review are required before planning.**
+Narrow fixed-region Preboot admission permits its measured read-write layout.
+Review found that the proposed depth-first held streams lose required shallow
+home names and can exhaust the process descriptor table shared with unrelated
+Koine work. That traversal/resource choice is reopened, not ready to implement.
+One reserved depth group retains anchor-count semantics. Applications use
 canonical target names/paths and native bundle identity for one choice per
 observed installation. The
 [discovery obligations](#discovery-obligations-before-planning) remain mandatory
@@ -34,8 +36,13 @@ scope before the baseline closes. Arbitrary native-order samples are not accepte
 
 ## Discovery obligations before planning
 
-The admission, traversal and identity contracts below are a coherent design
-proposal requiring its load-bearing review before implementation planning.
+The admission and identity contracts below retain their bounded design repairs;
+the traversal/resource proposal requires a new producer and load-bearing review
+before implementation planning. Its replacement must weigh shallow-first order
+on an early enormous home branch and define a Koine-owned process-wide search
+descriptor account below the effective soft limit, with an explicit reserve for
+listener, store, other providers and actions, without raising that limit.
+Root-local descriptor refusal does not isolate this shared process resource.
 The retained [mount inventory](../verification/protected-path-metadata/environment.json)
 describes local APFS Preboot without read-only; the retained
 [Safari witness](../verification/open-url-vm/results.json) resolves there.
@@ -44,9 +51,12 @@ nor safe link resolution. Actual default Safari/Finder, protected Library-link
 resolution, realistic wide/deep home trees and descriptor-resource failures
 remain acceptance obligations across the three seams below.
 
-The redesign removes a width-dependent frontier/parent-diagnostic cutoff; it
-does not establish useful discovery within three seconds. Depth-first order
-can still omit later sibling branches at a work/time stop. Protected and
+The current proposal removes a width-dependent frontier/parent-diagnostic cutoff;
+it does not establish useful discovery within three seconds. Review's read-only
+host inspection found more than 400,000 entries in Development, with an early
+branch over 200,000; DFS exhausts the 100,000-entry root budget before later
+depth-1 home names. This informs the replacement's constructible subjects, not
+native acceptance. Protected and
 measured bound-driven omissions need the existing operator decision. Arbitrary
 native-order samples remain unaccepted; no smaller workflow domain, new consent,
 setup or entitlement follows from this proposal.
@@ -152,7 +162,8 @@ requires all of the following, before enumeration or bundle inspection:
   Its no-follow opened directory must be a mount root, with public mount metadata
   reporting that exact mountpoint, local APFS, no network/removable/union
   classification, and an established native device/mount identity. Unknown
-  identity or classification is UNSUPPORTED_VOLUME. Read-only is neither required
+  identity or classification is INSPECTION_FAILED; positively established
+  unsupported classification is UNSUPPORTED_VOLUME. Read-only is neither required
   nor sufficient. An alternate supported layout can place the anchor on the
   already admitted startup system/data pair instead.
 - The canonical application anchor must lie component-wise beneath that fixed
@@ -270,6 +281,23 @@ failed canonicalization without established absence is `INSPECTION_FAILED`.
 Unknown canonical paths remain null. There is no trusted arbitrary-path escape
 around the exclusion policy.
 
+Use one lossless filesystem-reported directory-path operation for admitted
+region/mount witnesses, resolved roots, held frames and application bundles:
+the public descriptor-path route, subject to actual-call acceptance. Preliminary
+component/link resolution supplies a candidate for policy checks, not a public
+canonical spelling. Recheck native identity and mount when obtaining that path;
+never mix realpath's Data-volume spelling with the descriptor-path presentation.
+Build an ordinary file-entry location from its canonical parent and the lossless
+observed entry name; do not resolve a final symlink/alias or Unicode-fold its path.
+Firmlink aliases to one root therefore yield equal returned file paths and merge
+observed rootIndices under exact-path deduplication. Synthetic protected/cloud
+targets use components beneath the canonical home witness without opening
+excluded directories merely to canonicalize them; known supplied aliases still
+undergo the earlier spelling/identity policy checks. Unknown/overlong native
+paths retain the existing INSPECTION_FAILED/VALUE_LIMIT rules, never a second
+canonicalization fallback. Signed-host firmlink, case and Unicode witnesses
+must establish this route's behavior and prompt-free calls before acceptance.
+
 ## Coverage and aggregate outcomes
 
 There is exactly one coverage object per effective input root, in input order,
@@ -298,7 +326,7 @@ Skipped records have a separate extent vocabulary:
 | `SUBTREE` | This named directory's eligible descendants were not searched. Synthetic policy scopes assert no existence. |
 | `CHILD_GROUP` | Exactly `count` encountered child anchors of this representable parent have UNREPRESENTABLE_NAME or overlong-path VALUE_LIMIT; inspection/matching and any descendants are omitted. Identities are withheld. Descendants are not counted. Never asserts that all children were skipped. |
 | `DESCENDANT_GROUP` | Exactly `count` encountered anchors somewhere beneath this root have one intrinsic reason or DEPTH_LIMIT; identities are withheld. Intrinsic reasons retain their name/domain rules. DEPTH_LIMIT omits only eligible descendants: directory anchor names remain matchable. Counts anchors, not descendant names; asserts neither a complete listing nor whole-subtree exclusion. |
-| `REMAINDER` | Eligible work beneath this root unfinished at freeze: unread stream tails, queued/unopened directories and unfinished metadata. Excludes established observations without enumerating them; never asserts the whole root was skipped. Its size is unknown. |
+| `REMAINDER` | Eligible work beneath this root unfinished at freeze: unread stream tails, unopened descent, held-stream work and unfinished metadata. Excludes established observations without enumerating them; never asserts the whole root was skipped. Its size is unknown. |
 
 `count` is positive only for the two GROUP extents, null otherwise. A group
 contains an observed set, not every same-reason entry in an unread directory.
@@ -499,9 +527,9 @@ the existing constrained selector does; registrations alone do not prove presenc
 One established native bundle identity (mounted volume/device and inode, with
 available incarnation metadata checked for change) makes one application choice.
 Canonical target filename/path supplies its representative spelling, comparison
-keys and rank irrespective of root/link route. Canonicalization uses a lossless filesystem-reported path for the inspected
-bundle directory identity (the public descriptor path operation is a candidate
-route requiring actual-call acceptance), never requested-case spelling, Unicode
+keys and rank irrespective of root/link route. Canonicalization uses the same
+lossless filesystem-reported directory-path operation as roots, frames and
+admission witnesses, requiring actual-call acceptance, never requested-case spelling, Unicode
 folding or textual prefix replacement. If that native path cannot be obtained
 within its native/value limits, omit the candidate with affecting coverage;
 never substitute a link spelling. The canonical filename is that path's final
@@ -564,8 +592,8 @@ not native library/kernel allocations or wall-clock syscall duration.
 | Entry work | 100,000 consumed/classified directory entries **per root**, including nonmatches and intrinsic exclusions; duplicates are independently charged |
 | Coverage | 512 searched/skipped records and 256 KiB charged values **per root**; the root object is also charged to its byte account; roots cannot consume each other's partition |
 | Matches | `limit` reserved 16 KiB slots, at most 3.125 MiB for 200; paths, metadata, guidance, wrappers and all sixteen root-index slots included |
-| Traversal stack | At most 32 held directory streams/frames and 384 KiB charged frame bookkeeping per root; no pending-directory queue |
-| Admission anchors | 128 KiB per job for fixed canonical region/mount witnesses, including temporary retained anchor values; coverage paths remain separately charged |
+| Traversal stack proposal, reopened | At most 32 held directory streams/frames and 384 KiB charged frame bookkeeping per root; no pending-directory queue. Shape ceiling only; replacement order/process descriptor account required before implementation |
+| Admission/policy anchors | 320 KiB per job for region/mount, protected and known cloud witnesses, including every retained path occurrence and temporary witness; coverage paths remain separately charged |
 | Result wrappers | 8 KiB per job for aggregate/dependency objects, bounded guidance and outer list slots |
 | Scratch | 128 KiB charged values per job, one candidate and component walk at a time; at most two temporary descriptors; individual returned/scratch paths and folded comparison keys at most 8,192 UTF-8 bytes; names/optional metadata/guidance at most 1,024/1,024/256 bytes |
 | Wait | Three seconds from admission, shared by all roots; no hard native-call deadline |
@@ -609,6 +637,9 @@ with exceptional targets. Width and depth themselves allocate no exceptional
 parent records. Such actual failures can still exhaust diagnostics honestly;
 neither coarse groups nor a reserved depth count guarantees useful coverage.
 
+The following DFS scheduling/stack shape is the reopened proposal, not an
+implementation-ready traversal choice. Its replacement must reconcile these
+examples, all accounts and the three-seam acceptance subjects before planning.
 The scheduling unit is at most 64 consumed entries of one root, including
 classification and candidate metadata. Visit admitted unfinished roots cyclically
 in input order, one unit each; admission/root metadata gets one turn per root
@@ -624,23 +655,33 @@ turns; no per-root elapsed-time/progress guarantee is made.
 
 Root depth is zero; entries at relative depths 1…32 are examined. Only ordinary
 directories at depths 0…31 are opened, so the deepest stack has 32 streams.
-A directory anchor at depth 32 remains matchable, but its descendants increment
+A directory anchor at depth 32 remains matchable and itself increments
 the one reserved root DEPTH_LIMIT DESCENDANT_GROUP; the directory is not opened.
+Even an empty such directory affects coverage: its EOF/emptiness is unobserved,
+and the count never asserts that it has omitted children.
 This is an affecting bound, not an intrinsic domain exclusion. Package, hidden,
 protected and other intrinsic/policy rules precede ordinary-directory descent.
 A 5,000-child directory retains only its current branch, regardless of width;
 there is no directory frontier overflow or parent-keyed depth diagnostic.
 FRONTIER_LIMIT is retained in the additive vocabulary but is not emitted by
 this stack adapter. Failure to acquire a descriptor is an actual native failure:
-stop that root with INSPECTION_FAILED REMAINDER and fixed resource guidance,
-without retries or changing process descriptor limits. Earlier observations and
-other roots survive. A path too long to retain uses the existing VALUE_LIMIT
+stop the observing root with INSPECTION_FAILED REMAINDER and fixed resource
+guidance, without retries or changing process descriptor limits. Earlier
+observations survive, but the shared table can also refuse unrelated Koine
+opens; other roots/work are not isolated. The replacement descriptor account
+must prevent search exhausting that table, with account-exhaustion semantics
+chosen alongside traversal order. A path too long to retain uses the existing VALUE_LIMIT
 parent group, not truncated bookkeeping or a silently evicted frame.
 
 Each frame keeps one bounded absolute path, fixed-width native identity and
-classification/stream state, charged before opening. Child opens use the held
-parent descriptor, then revalidate identity/policy/mount before conversion to a
-stream. Never close/reopen ancestor streams to reconstruct an ordinal, retain
+classification/stream state, charged before opening. Before every child directory
+open, obtain the held parent's current filesystem-reported canonical location
+and identity, compare them with its frame and reapply protected/cloud/region/mount
+policy. An observed move refuses descent with CHANGED_DURING_SEARCH REMAINDER;
+unknown location/inspection uses INSPECTION_FAILED, without opening the child.
+Then open one child through that parent and revalidate identity/policy/mount
+before stream conversion. The check-to-open window remains an explicit native
+prompt risk requiring actual-call acceptance. Never close/reopen ancestor streams to reconstruct an ordinal, retain
 cookies across fresh streams, or retain sibling arrays. Observed rename or
 replacement is CHANGED_DURING_SEARCH, not a new target or retry. Stopping at
 100,000 consumed entries does not read another entry to guess EOF, so PARTIAL
@@ -653,9 +694,10 @@ start a deep child while four ancestor streams are held. Closing/reopening
 parents trades descriptors for unstable continuation and repeated work. Held
 streams remove those width/cookie dependencies at the cost of more descriptors
 and depth-first partial-order bias: an early enormous branch can use that root's
-entry/time allowance before later siblings. A review or actual-adapter evidence
-showing unacceptable descriptor pressure or lost required witnesses reopens
-this choice; it does not authorize a sample or new setup.
+entry/time allowance before later siblings. Review has established both grounds
+for reopening this choice. A shallow-first queue with one reserved root frontier
+group and iterative deepening must be weighed against this measured shape;
+neither a larger queue nor a smaller domain is an already chosen replacement.
 
 Reserve each match slot at its 16 KiB maximum from the outset, separately from
 coverage/frontier budgets. The path/name/optional-string caps and sixteen index
@@ -715,6 +757,12 @@ leave no response. No new I/O is scheduled after cancellation/expiry, late
 native results cannot mutate the frozen value, and no retry occurs. Cancellation
 cleanup never waits for a blocked syscall. A native call already admitted can
 finish later; transport loss is not evidence that it was stopped.
+The worker is the sole owner of its streams/frames and alone unwinds them.
+The timer/canceller can freeze the accumulator and set cancellation, but cannot
+close even an idle worker-owned stream. When the call returns, the worker checks
+cancellation before using any returned value or scheduling another call, then
+closes each owned frame exactly once and releases its charges. No other thread
+can reuse a closed frame's descriptor number through a stale frame.
 
 ### Capacity examples and acceptance threshold
 
@@ -733,15 +781,19 @@ latency and resultsTruncated, and compare individual known names, not totals.
 | 1,000 short-name branches reach ordinary directory anchors at relative depth 32, each with an unexamined child | At most 32 held streams per branch; the 1,000 depth-32 anchors are examined/matchable. Exactly one affecting root DEPTH_LIMIT DESCENDANT_GROUP, count 1,000; PARTIAL with no per-parent diagnostic cutoff. Omitted descendants have unknown size. |
 | Complete directory has 250 matching ordinary files; limit 50 | COMPLETE/SUBTREE, best 50 paths, resultsTruncated true. A partial scan without an omitted observed match can have false truncation. |
 | Checked .app link plus canonical root route to Safari; limit 1 | One canonical Safari choice with both matching rootIndices, false count truncation. Another independently installed native copy with the same identifier causes true count truncation and remains independently eligible. |
-| An early DFS branch consumes 100,000 entries before a later sibling marker | PARTIAL/ENTRY_LIMIT and REMAINDER; the later marker is unexamined, never a claimed complete empty or accepted sample. Other roots' credits survive. |
+| Home-shaped controlled order: an early Development subtree has at least 400,000 entries, one early branch over 200,000, with depth-1 Pictures, Zotero, Sites, Applications and nix-migration.md after it | The current DFS proposal exhausts ENTRY_LIMIT before these shallow witnesses and fails the workflow obligation. The replacement must specify shallow-first ordering and expected per-witness results within unchanged budgets; remaining bound-driven omissions stay unaccepted. GraphQL/binary use responsive controlled streams; actual signed-host measurements must report each witness and deadline separately. |
 
 Short ASCII fixture paths keep these shapes within stack and reserved coverage
 bounds. Add long-path, invalid-name and native exception variants separately;
 invalid/value parent groups and exact failures can exhaust diagnostics even
 though ordinary width and depth groups cannot. The depth example must keep its
 constructed entry total below 100,000. A controlled 16-root × 32-frame subject
-checks the 512-descriptor ceiling, and injected descriptor refusal freezes only
-the affected root without new slots, retries or resource-limit changes.
+checks only the proposed 512-stream shape with simulated descriptors, not a
+normally launched host's available table. Injected descriptor refusal diagnoses
+the observing root without retries; it proves no isolation of unrelated work.
+The replacement must add normally launched host saturation subjects demonstrating
+that listener requests, grant-store work and authorized actions remain serviceable,
+with effective soft limit, non-search reserve and search charges recorded.
 
 None predicts native throughput or proves that a real home/default installation
 fits three seconds or its descriptor environment. Acceptance also runs realistic
@@ -779,21 +831,26 @@ work returns, cleanup releases capacity. If calls never return, affected slots
 remain unavailable until a full Koine process restart; CAPACITY_LIMIT guidance
 states that recovery and no automatic restart occurs. One client's aliases can
 saturate the pool: bounded admission does not promise per-client fairness.
-Per job, sixteen roots times 32 held streams permit at most 512 stream
+The reopened stack shape permits, per job, sixteen roots times 32 held streams,
+at most 512 stream
 descriptors plus two temporary component-walk descriptors; four jobs permit
 at most 2,056 traversal/component descriptors, separate from transport and
 platform-owned descriptors. These are ceilings, not an assurance that the OS
-admits that many. No descriptor-limit change is implicit. Native resource
-refusal freezes the affected root as specified; a descriptor used by a blocked
-call stays owned until that call returns. Cancellation closes other idle held
-streams without racing the blocked stream; provider restart creates no new
-slot or replacement descriptor for the retained job.
+admits that many, nor a safe allowance from Koine's shared process table.
+Implementation requires the replacement process-wide search descriptor account
+and non-search reserve. No descriptor-limit change is implicit. Native resource
+refusal diagnoses the observing root but can affect unrelated jobs/opens.
+All worker-owned streams, including idle ones, stay owned and charged across
+cancellation until the admitted native call returns and worker-only cleanup
+finishes. Provider restart creates no new slot or replacement descriptor for
+the retained job.
 
 Coverage partitions total at most 4 MiB, stack bookkeeping 6 MiB,
-match slots 3.125 MiB, anchor witnesses 0.125 MiB and wrappers 8 KiB per job:
-13.258 MiB, or less than 53.032 MiB for four jobs, plus bounded scratch.
+match slots 3.125 MiB, anchor witnesses 0.3125 MiB and wrappers 8 KiB per job:
+13.446 MiB, or less than 53.782 MiB for four jobs, plus bounded scratch.
 Scratch adds at most 128 KiB per job (0.5 MiB for four), so all charged
-retained/scratch accounts together are less than 53.532 MiB for four jobs.
+retained/scratch accounts together are less than 54.282 MiB for four jobs.
+Stack figures remain proposal shape ceilings until the traversal repair lands.
 These charged values remain the admitted job's even after its response wait
 expires; freeze shares/transfers them, never duplicates the accumulator.
 A stack frame's maximum shape is an 8,192-byte path, a 256-byte object and at
@@ -810,13 +867,30 @@ at most four object wrappers and 64 scalar/list slots charge at most 13.25 KiB;
 application native identity fits those slots. Comparison keys are computed in
 bounded scratch rather than retained again in each slot. Folded scratch keys
 also have an 8,192-byte ceiling; an overlong derived key omits its candidate with
-INSPECTION_FAILED instead of truncating comparison. Anchor witnesses retain at
-most twelve bounded 8,192-byte string
-occurrences, forty wrappers and 512 slots (114 KiB within 128 KiB). Scratch holds
+INSPECTION_FAILED instead of truncating comparison. The fixed witness set is:
+six admitted regions (home, Applications, System Applications, local temporary
+directory, CoreServices and the Cryptex app region); three mount roots (startup
+system, startup data and fixed Preboot); four protected home scopes (Desktop,
+Documents, Downloads and Library); and the known home Dropbox/OneDrive cloud
+routes. Positively absent optional witnesses retain absence, not fabricated
+identity. Charge up to two retained presentation/canonical path occurrences per
+witness and two temporary witness paths: at most 32 bounded 8,192-byte occurrences,
+forty wrappers and 512 slots, totaling 274 KiB within 320 KiB. Fixed literals need
+no per-job copy; every actual retained copy still counts. Additional known cloud
+aliases/witnesses must fit the same occurrence/wrapper/slot and byte ceilings or
+refuse the job, never disappear from policy to save room. Scratch holds
 one 16 KiB candidate, at most eight 8,192-byte path/comparison-key occurrences
-and 16 KiB other charged state (96 KiB within 128 KiB). Exceeding an anchor or
-scratch aggregate budget stops the affected root with INSPECTION_FAILED
-REMAINDER and fixed resource guidance; no growing platform value is retained
+and 16 KiB other charged state (96 KiB within 128 KiB). Fill the job's anchor
+account before any entry/listing turn. If a required witness or temporary value
+cannot fit, fail the whole job: each root has UNKNOWN, zero counts/no searched
+record and INSPECTION_FAILED REMAINDER at its requested path; resolvedPath is
+null because admission did not finalize. Already initialized exact policy
+diagnostics remain, using requested scope spellings when canonical targets were
+not established; failure still takes precedence over prompt risk. No policy
+witness is dropped to continue searching.
+This is a job account failure, not inference that any root is absent/unsupported.
+Scratch aggregate exhaustion during a root turn stops that root with
+INSPECTION_FAILED REMAINDER and fixed resource guidance; no growing platform value is retained
 uncharged. Accounting tests must inspect actual value occurrences against these
 conservative shapes, including all 16
 rootIndices. Four blocked jobs can retain all accounts until cleanup. This is
@@ -827,13 +901,19 @@ Canonical-root inspection is metadata only. Open admitted directories using
 public descriptor-relative operations with no-follow/directory flags; verify
 file identity against the classified directory and recheck policy/volume on the
 opened descriptor before converting it to a stream. Descendant opens use a
-held parent descriptor and a single child name, never unchecked symlink parents.
+held parent descriptor and a single child name, after the pre-open canonical
+parent location/identity/policy check above, never unchecked symlink parents.
 Root component walks do the same. Detect/reject
 identity changes or new links as `CHANGED_DURING_SEARCH`; do not follow them or
 retry a replacement. Mount/classification uncertainty blocks descent. Bundle
 and type metadata remain path-based public calls with pre/post identity checks;
-they establish no atomic binding. Symlink races, rename of a held directory,
-mount changes and platform metadata behavior remain limits. Observed change
+they establish no atomic binding. A parent moved between turns is refused before
+child open; descriptor-location inspection itself must be established prompt-free
+on the actual moved descriptor. A move after the last check but before open,
+symlink races, mount changes and platform metadata behavior remain limits.
+The remaining check-to-open race is not accepted as a no-prompt guarantee;
+a prompting moved-ancestor case requires redesign rather than a conditional pass.
+Observed change
 invalidates that scope's completeness; unobserved same-user adversarial races
 are not a claimed security guarantee or a no-prompt proof.
 
@@ -970,8 +1050,11 @@ pending implementation/acceptance:
 | --- | --- | --- | --- |
 | Default Safari/Finder and controlled alternate layouts | Omitted/null roots expose all five defaults in order; Safari/Finder have observed paths, nonblank identifiers, INSTALLED after established registration; both feed constrained launch. A positively absent Cryptex optional root is COMPLETE/OPTIONAL_ROOT_ABSENT; explicit absence is UNKNOWN/ROOT_NOT_FOUND. | Controlled adapter supplies alternate canonical anchors, absent optional region and real distinct copies versus two routes to one bundle, under the canonical-target identity and fixed-region admission design. Exact search SDL and unchanged action-only compatibility subjects remain required. | Required real apps installed; actual Safari and Finder paths are found under default search without dialogs/launch, under the reviewed admission/identity contract. Known paths/identifiers and actions have independent witnesses. Test another layout when a concrete supported VM subject exists; otherwise record that condition as not applicable with OS/layout evidence, without claiming native proof of alternate layouts. Actual default/call cases remain mandatory and pending. |
 | Application links/aliases | Using canonical target filename/path, registered .app targets yield INSTALLED and unregistered targets yield UNREGISTERED; denied/protected/dangling or changed targets cannot yield COMPLETE empty. Alias files/non-app symlinks never become launchable apps. File-search symlinks remain UNKNOWN without target inspection. | Controlled adapter supplies matching/mismatched native identities, both registration answers and one filesystem-reported canonical path across case/component/link spellings. Limit-1 duplicate routes have false count truncation and merged rootIndices; equal-identifier native copies remain distinct. Canonical target queries match, alias-only app queries do not; file queries retain link names. Inject canonical-path/value failures and rename/reuse observations. Path and identifier action inputs remain unchanged. | Inspect actual target/link metadata, resolution order and mount checks. Include links to Desktop/Documents/Downloads and a named protected Library sub-area (Mail data), with component aliases. No protected traversal, alias-file resolution, default-handler lookup, registration writes or content/hydration request. Resolution itself must be prompt-free under actual signed Koine; earlier metadata evidence does not establish it. Cryptex admission/races use the actual adapter; no new keys/entitlements. |
-| Wide realistic layouts / later-root scheduling | The above known names/states/counts hold for completed work. Depth-first stacks and one reserved depth group eliminate queue-width/parent-depth diagnostic cutoffs, while entry/time/resource omissions stay explicit and unaccepted. Later roots have independent budgets; real timeout/remainder never claims they were searched. | Real bundle with controlled responsive streams verifies the root-cycle/DFS/stack/diagnostic rules and all byte ceilings, including 5,000-child layouts, 1,000 depth-bound anchors, all 16 maximally deep roots, descriptor refusal and a deep name witness. Exact search-required profile detects missing fields; action-only pins unchanged. | Run constructed layouts, realistic wide/deep home trees and large first/single directories in the actual host; record per-root coverage/latency and shallow/deep/later-root name witnesses. Failure to reach required names is pending acceptance, never a conditional pass from local counts. Bound-driven omissions go to the existing human decision. |
-| Exact scope groups / exhaustion | Two malformed adapter names with valid siblings have CHILD_GROUP count 2, not SUBTREE. DEPTH_LIMIT is one root DESCENDANT_GROUP with matchable anchor names and omitted descendants; FRONTIER_LIMIT is not produced by this adapter. VALUE_LIMIT/UNREPRESENTABLE_NAME use CHILD_GROUP and omit anchors too. Stop produces REMAINDER/null count with or without progress, resolved/requested anchor as specified; only progress adds a searched record. DIAGNOSTIC_LIMIT identifies total diagnostic room, VALUE_LIMIT an individual path. Match truncation is independent. | Controlled entries/EOF verify those reason/extent pairs, no-progress timeout/capacity/overlong-root stops, group keys/count nullability, four reserved policy targets, per-occurrence charging and all sixteen rootIndices. Record-count and byte exhaustion both use DIAGNOSTIC_LIMIT with distinct fixed guidance. Include malformed resolved roots, deep/wide layouts and every bound. Earlier records survive; matches cannot consume diagnostic reservation. | Use valid admitted APFS names, packages/hidden entries, long paths, actual depth/value/diagnostic exhaustion and descriptor-resource refusal/cancellation, without replacement paths. Inspect actual native names/calls. Malformed-byte cases are controlled-adapter obligations, not an unconditional native VM fixture; unsupported volumes are not substitutes. |
+| Wide realistic layouts / later-root scheduling | Existing counts describe only the reopened DFS proposal. The replacement must specify shallow-first witnesses for the 400,000-entry/200,000-entry early-branch subject, including later depth-1 names, and reconcile width/depth group semantics. Later roots keep independent credits; actual timeout/remainder never claims they were searched. | Real bundle with responsive controlled streams exercises the final reviewed order, process-wide descriptor account and byte ceilings. Preserve 5,000-child, 1,000 depth-anchor, 16-root, deep-name and exception subjects; simulated descriptors alone cannot prove process serviceability. Exact search-required profile detects missing fields; action-only pins unchanged. | Run the reviewed order on measured-scale home/default trees and a normally launched host with effective soft limit recorded. Saturate searches while independent listener requests, grant-store operations and authorized actions succeed. Record each shallow/deep/later-root witness, reserve/charges, coverage and latency. Omissions remain pending the human decision, never a conditional pass. |
+| Exact scope groups / exhaustion | Two malformed adapter names with valid siblings have CHILD_GROUP count 2, not SUBTREE. DEPTH_LIMIT counts each matchable depth-32 anchor, including an empty directory whose EOF is not observed; descendants are not counted. FRONTIER_LIMIT is absent from the reopened DFS proposal; replacement must specify any change. Stop uses REMAINDER/null count with or without progress; only progress adds a searched record. DIAGNOSTIC_LIMIT is total room, VALUE_LIMIT an individual path; truncation remains independent. | Controlled entries/EOF verify group keys/counts, empty depth-32 anchors, malformed/overlong roots, four reserved policy targets and all sixteen rootIndices. Charge the full fifteen-witness/temporary-path anchor shape; inject one additional occurrence/slot or aggregate overflow before turns. Anchor-account refusal yields every root UNKNOWN with zero counts/no searched scope, requested-path INSPECTION_FAILED REMAINDER and aggregate FAILED at selected matches. Earlier root-turn diagnostics survive scratch/coverage refusal. | Use valid admitted APFS names, packages/hidden entries, long paths and actual depth/value/diagnostic exhaustion. Inspect all region/mount/protected/cloud witnesses and copies retained by the actual adapter; controlled accounting overflow is not a forced native malformed-byte subject. No witness is silently discarded. |
+| Cancellation during a blocked call | Timer publishes one frozen TIME_LIMIT result when it can; external cancellation may have no response. Late completion cannot change counters, choices or coverage. | Block readdir, registration and path metadata separately with a worker holding multiple frames; freeze/cancel, keep every frame/job charged, then release the call. Assert worker-only, exactly-once close, no stale descriptor use, no new post-cancel I/O and release only after unwind. Reuse released descriptor numbers in an independent controlled owner to detect stray close/use. | Cancel actual delayed native work while listener/store/action activity continues; inspect ownership/cleanup and record capacity before/after late completion. Indefinitely blocked workers remain charged across provider restart; no idle-frame cross-thread close or limit change. |
+| Held ancestor moves into protected scope | After progress: AVAILABLE with preserved observations and CHANGED_DURING_SEARCH REMAINDER; unestablished current-location inspection uses INSPECTION_FAILED. No child open follows observed movement. | Pause immediately before child-open checks, move the parent in the adapter to Documents, Desktop, Downloads or Library, then resume. Verify current canonical location/identity/policy precede open and the open is refused. Also inject move after the final check to expose the stated residual window rather than asserting atomic safety. | Move an ordinary held subtree into each protected home scope between turns, without listing that scope through search. Inspect the actual descriptor-location operation, absence of child-open after observed movement, and any dialog/hydration. A prompting location/check-to-open route remains pending and requires redesign. |
+| Firmlink/case/Unicode canonical paths | Roots naming home and its Data-volume alias have the same resolvedPath and one file location with both observed rootIndices. App link/direct routes retain one canonical path/native identity, stable rank and false duplicate truncation. RequestedPath retains input spelling; synthetic policy targets use canonical-home components. | Supply differing preliminary realpath and descriptor-path spellings for one identity; require the single final canonical operation everywhere. Case/component/Unicode route variants cannot fabricate CHANGED_DURING_SEARCH in unchanged observations. Unknown/overlong canonical output has affecting coverage with no fallback. | On the startup APFS pair, use home and /System/Volumes/Data/Users/<user> roots plus /Applications and its Data alias. Create differently cased and NFC/NFD-named link spellings to one permitted bundle; observe actual filesystem identity/name behavior rather than assuming separate Unicode files. Inspect root/frame/bundle/policy path production and per-choice membership with no protected open or dialog. |
 
 Home protected traversal remains a live baseline gap: any change to consent,
 entitlements or setup needs Antony's decision before reliance. The already live

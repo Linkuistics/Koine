@@ -50,7 +50,15 @@ changed/uncertain-root precedence, lifecycle-error exemptions and explicit
 verification-consumer migration. Search 1.1.0 declares both authority/selection
 features; current search checks/newer fixtures and retained action-only subjects
 stay separate, with binary/runtime acceptance pending.
-Fixed framework meanings stay unchanged and no diagnostic ABI addition is needed.
+k104's discovery triage reopens traversal order/process descriptor admission in
+`search-traversal-k105`, with a mandatory load-bearing review before planning.
+DFS loses later shallow home names at the entry budget; root-local descriptor
+refusal cannot protect the listener/store/actions. Worker-only cleanup, fresh
+parent-location checks, unified canonical paths, charged policy witnesses and
+unknown Preboot failure wording are repaired in place with native acceptance
+pending. The current stack/descriptor figures are proposal shapes, not safe
+process allowances. Fixed framework meanings stay unchanged and no diagnostic
+ABI addition is needed.
 Preserve action-only conformance against
 an independently retained workspace 1.0.0 compatibility host while adding a
 separate exact search-required profile for the upgraded host.

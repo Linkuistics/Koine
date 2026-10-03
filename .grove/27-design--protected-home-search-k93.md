@@ -35,10 +35,17 @@ approve the other.
   group counts matchable anchors with omitted descendants. Exact failure and
   invalid/value groups keep diagnostic limits; 100,000 entries and 512/256 KiB
   coverage scopes per root, fixed match slots and the shared three-second wait
-  remain. Four jobs can hold less than 53.032 MiB retained charged values plus
-  0.5 MiB scratch, and up to 512 traversal descriptors per job. Native descriptor
-  refusal is explicit; no descriptor-limit setup is approved. The discovery and
-  transport reviews must finish before planning. These limits are not accepted
+  remain. Four jobs' reopened stack shape has less than 53.782 MiB retained charges plus
+  0.5 MiB scratch; 512 streams per job is not an admissible process allowance.
+  k102/k104 route early-branch shallow-name loss and shared descriptor exhaustion
+  to `search-traversal-k105`, which must replace the order/account and cut its
+  load-bearing review before planning. Normally launched host listener/store/action
+  serviceability and individual later shallow witnesses are mandatory subjects.
+  k104 repairs worker-only cancellation cleanup, pre-open parent-location checks,
+  unified canonical paths and fully charged protected/cloud witnesses; their
+  actual-call/no-dialog acceptance remains pending. Transport is reviewed;
+  compatibility/runtime subjects remain pending. No descriptor-limit setup is
+  approved. These limits are not accepted
   workflow coverage. Consume wide/deep/later-root/default/descriptor subjects
   item by item, including native timeout, depth/resource and path-value omissions;
   use measured final coverage, not inspection counts or arithmetic.

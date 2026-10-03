@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Search outcomes, compatibility and useful discovery",
-    "status": "Designed · transport reviewed; discovery review and acceptance pending",
-    "summary": "Typed BLOCKED preserves UNKNOWN consent and null matches without a search-generated error; all field/lifecycle/publication errors still apply. With no progress, changed identity or uncertain inspection contributes FAILED before prompt risk. Search 1.1.0 declares both existing authority/selection features. Current checks move to exact search-required profiles and newer update fixtures; historical action-only profiles and retained binaries remain separate. Fixed-region Preboot admission, root-cyclic depth-first streams and canonical application identity still await discovery review. Descriptor costs and native-order/time omissions stay explicit; actual Safari/Finder, protected Library-link resolution and useful home coverage remain pending.",
+    "title": "Search traversal repair and native ownership",
+    "status": "Designed · transport reviewed; traversal replacement/review required",
+    "summary": "Discovery review reopened DFS order and process-wide descriptor admission: an early enormous branch spends the root entry budget before shallow home names, and held streams share the table with listener, store and actions. A replacement and load-bearing review precede planning. Worker-only cleanup retains every frame charge across blocked-call cancellation; canonical-parent location/identity/policy is checked before child open, with the residual prompt window unaccepted. Roots/frames/bundles use one filesystem-reported directory-path operation, and all protected/cloud witnesses are charged; pre-turn witness-account failure refuses every root. Unknown Preboot inspection is INSPECTION_FAILED. Typed BLOCKED transport and distinct retained/search-release compatibility subjects remain reviewed; runtime/binary/default/home acceptance and the human coverage decision remain pending.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Classified no-progress inspection/change/resource refusals before prompt risk and retained lifecycle/publication errors; fixed-region admission and DFS/root depth groups still await discovery review."
+        "summary": "Marks traversal/process descriptors for replacement; charges all policy witnesses, counts depth anchors themselves and requires worker-only cleanup/current-parent checks. Outcome and lifecycle meanings stay fixed."
       },
       {
         "id": "search-handoff",
-        "summary": "Clients check all errors even beside BLOCKED status; transport is reviewed, binary subjects remain pending, and canonical-identity action handoff retains both controls."
+        "summary": "Roots/frames/bundles share canonical path production; native bundle identity and both-control action handoff remain, with traversal replacement/review and native acceptance pending."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Reviewed typed BLOCKED transport and explicit no-progress failure classes, with distinct retained/action-only and new search-release checks. Discovery review of fixed-region admission, root-cyclic DFS and canonical identity, actual-adapter acceptance and the human home decision remain pending."
+      "description": "Reviewed typed BLOCKED transport and retained/search-release compatibility subjects. Discovery review requires replacement traversal/process-wide descriptor admission and its load-bearing review before planning; canonical paths, worker ownership, moved-parent policy and witness-account repairs retain native/default/home acceptance obligations."
     },
     {
       "id": "workspace",
@@ -72,7 +72,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Fixed presentation-region/Preboot mount admission permits read-write or read-only local APFS; arbitrary Preboot/mounts and file-search access remain unsupported. Root-cyclic 64-entry turns use depth-first held streams (32 frames per root); no wide directory queue. One reserved DEPTH_LIMIT root group counts encountered directory anchors: names remain matchable, descendants skip. Invalid/overlong children use exact-parent CHILD_GROUP and omit names too. REMAINDER covers unfinished work with or without progress; DIAGNOSTIC_LIMIT identifies total room, VALUE_LIMIT an individual path. No-progress CHANGED_DURING_SEARCH or INSPECTION_FAILED contributes FAILED before prompt risk; established absence/exclusion keeps its dependency class. BLOCKED adds no search error, but lifecycle/publication errors still apply. Discovery review, binary pairs and actual default/home acceptance remain pending."
+      "caption": "Designed flow, not runtime acceptance. Fixed presentation-region/Preboot admission permits read-write or read-only local APFS; unknown identity/classification uses INSPECTION_FAILED, established unsupported classification remains exclusion. Review reopened DFS order and shared process descriptors: early branches spend the entry budget before shallow names, and search can exhaust the listener/store/action table. Replacement order/account and load-bearing review precede planning. All region/mount/protected/cloud witnesses are charged; pre-turn account refusal gives every root no-progress INSPECTION_FAILED. DEPTH_LIMIT counts each anchor itself, including empty unlisted directories, not omitted descendants; names remain matchable. REMAINDER covers unfinished work with or without progress. The worker alone closes frames after blocked calls return; current parent location/identity/policy is checked before child open. Native prompt/race, useful coverage and binary acceptance remain pending; typed BLOCKED/failure/lifecycle meanings stay fixed."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. One native bundle directory identity makes one application choice; checked-link/direct routes use the filesystem-reported canonical target filename/path for matching, ranking and display. Equal identifiers do not merge separate native copies. Link alias names remain file locations, not extra application names. Root membership derives from observed matching routes under the spec's stability/race limits. Clients inspect status, coverage and all errors; BLOCKED displays skipped scope and UNKNOWN consent, and never waives a lifecycle error beside status. INSTALLED with known identifier enables constrained launch; actions revalidate under both controls, never dropping the selected path. Clients own clipboard/MRU. Transport is reviewed; discovery review, binary/native acceptance and protected-opening/reveal decisions remain pending."
+      "caption": "Designed location handoff. Admitted anchors, roots, frames and bundles share one filesystem-reported directory-path operation. File entries join canonical parent plus observed name, preserving final symlinks; firmlink-alias roots merge equal returned paths and observed rootIndices. Native bundle identity merges checked-link/direct application routes without merging equal-identifier copies; alias names remain file locations. Actual firmlink/case/Unicode and protected-call behavior remains pending. Clients inspect status, coverage and all errors, then choose and authorize existing actions under both controls, never dropping the selected installation path. Clipboard/MRU remain client-owned. Transport is reviewed; traversal replacement/load-bearing review, independent binary/native acceptance and protected-opening/reveal decisions remain pending."
     },
     {
       "id": "search-discovery",

@@ -95,6 +95,15 @@ These reason/outcome clarifications do not alter k101's admission predicates.
 Nested lifecycle errors are exempt from error-free BLOCKED invariants. k102 must
 reconcile those shared-text repairs while reviewing discovery itself.
 
+k104 integrates k102's bounded repairs: worker-only cleanup, current-parent
+location checks before child open, one canonical directory-path operation,
+Preboot unknown-class failure and fully charged policy witnesses. The residual
+check-to-open prompt window and actual canonical calls remain pending. D1/D2
+are real and require `search-traversal-k105`: replace the DFS/descriptor choice,
+weigh shallow-first work on the 400,000-entry/200,000-entry early-branch shape,
+and protect the shared process descriptor table without changing its limit.
+That producer must cut a load-bearing review; planning awaits that chain too.
+
 These producer/review repairs live in this node, so planning cannot run before
 they retire. The durable design marks discovery review and all runtime/binary acceptance pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.

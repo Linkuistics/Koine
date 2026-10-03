@@ -364,10 +364,13 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Discovery admission, traversal/diagnostic growth
-and canonical application identity [await load-bearing review before planning](specs/workspace-search.md#discovery-obligations-before-planning),
-then actual-adapter/default acceptance; typed BLOCKED transport awaits its separate
-load-bearing review.
+**Designed, not served yet.** Review reopened traversal order and process-wide
+descriptor admission: DFS loses shallow home names and can exhaust resources
+shared with listener, store and actions. Their replacement and load-bearing review
+are [required before planning](specs/workspace-search.md#discovery-obligations-before-planning).
+Admission, canonical-path and cleanup repairs retain actual-adapter/default
+acceptance obligations. Typed BLOCKED transport is reviewed; runtime/binary
+acceptance remains pending.
 Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
 [search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
@@ -377,7 +380,11 @@ need `workspace:read` only. Omitted/null roots use Koine's application directori
 or home; explicit roots replace them. Application defaults additionally include
 generic CoreServices and Cryptex application regions. Checked visible .app links discover canonical bundle target names/paths; they
 never authorize target traversal or create alias-named application choices.
-Link/direct routes merge by native bundle directory identity. Distinct native
+Link/direct routes merge by native bundle directory identity. Admitted roots,
+frames and bundles share one filesystem-reported directory-path operation;
+file locations join a canonical parent with the observed entry name, preserving
+final symlinks. Firmlink-alias roots merge equal returned paths and observed
+rootIndices; requestedPath still shows the supplied spelling. Distinct native
 copies with equal bundle identifiers stay distinct; each final choice retains
 observed matching rootIndices under the spec's stability/observation limits.
 Query matching is a literal filename substring: canonical app filename or
@@ -397,17 +404,21 @@ somewhere beneath that root. completedDirectories counts EOF listings, not an
 unchanged snapshot. Skipped CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
 the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
 depth-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
-group: anchor names remain matchable and only descendants are omitted; package
+group: each depth-32 anchor itself increments the count, even an empty directory
+whose EOF is not observed; names remain matchable and only descendants are omitted. Package
 or symlink intrinsic anchors can also remain file matches. Neither says all children
 were skipped. REMAINDER has null count and describes unfinished work with or
 without progress, anchored at the resolved root or representable requested root.
 No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
 means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means an individual path bound. Independent root budgets prevent
-one root spending later roots' credits. Cyclic root turns run depth-first inside
-each root, with no pending-directory queue. Width/depth cannot exhaust diagnostics
-per parent, but exact native failures/invalid names can; native stalls, descriptor
-refusal and shared deadlines can still leave useful names unvisited. Home excludes protected traversal. In an
+one root spending later roots' credits. The reopened DFS proposal has cyclic root
+turns and no directory queue, but an early enormous branch can consume the
+100,000-entry allowance before later shallow names. Native stalls, descriptor
+refusal and shared deadlines can also leave names unvisited. Honest partial
+coverage does not accept that workflow loss; the replacement must weigh
+shallow-first order and protect the process descriptor table. Exact native
+failures/invalid names can still exhaust diagnostics. Home excludes protected traversal. In an
 error-free BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
 Accessibility or established consent absence. Absent execution errors at or above
@@ -455,10 +466,15 @@ their pending decisions described below.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.
-Four retained jobs can hold less than 53.032 MiB of charged result/stack/anchor
-values plus bounded scratch, with up to 512 traversal streams per job. The OS
-may refuse descriptors sooner; no resource-limit setup is implicit. These are
-accounting ceilings, not allocated memory, RSS or a promise of useful coverage.
+Only the worker closes its frames, after any blocked call returns; cancellation
+cannot reclaim even idle streams from another thread. The current proposal's
+four retained jobs can hold less than 53.782 MiB of charged result/stack/anchor
+values plus 0.5 MiB scratch. Its 512-stream-per-job shape is not an admissible
+allowance from the shared process table: a replacement descriptor account and
+non-search reserve are required before implementation. All policy witnesses are
+charged; pre-turn anchor-account failure gives every root no-progress
+INSPECTION_FAILED. These are proposal/accounting ceilings, not native memory or
+useful-coverage acceptance; no descriptor-limit setup is implicit.
 
 ## Launching an application
 

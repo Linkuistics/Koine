@@ -72,7 +72,12 @@ baseline acceptance: Antony must accept/disclose the explicit partial home domai
 or approve a separate traversal-consent/setup contract. Review integration k95
 also routes any proposed weakening through that decision with explicit final
 bound-driven omissions; arbitrary default-search samples are not accepted.
-Default discovery/resource design awaits load-bearing review before search
+Discovery review k102/k104 reopens DFS order and shared-process descriptor
+admission in `search-traversal-k105`, whose load-bearing review must retire before
+planning. Narrow ownership/canonical-path/policy-account repairs retain native
+acceptance; shallow-name loss and unrelated-work descriptor failures are defects
+to repair, never accepted omissions. Default discovery/resource design awaits
+load-bearing review before search
 implementation planning. Prompt-risk transport's k99 review/k103 integration
 clarifies no-progress failure classes, lifecycle errors and separate retained
 versus search-release verification subjects; binary/runtime acceptance remains

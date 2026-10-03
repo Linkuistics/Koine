@@ -8,45 +8,46 @@ defines each extent, count and bound. This public vocabulary is costly to change
 once clients use it and deliberately gives them less location detail than a
 filesystem audit.
 
-A per-directory searched record and per-entry intrinsic exclusion consume a
-finite diagnostic budget before a realistic application/home tree can be
-searched. Increasing that shared budget merely moves the cutoff and permits
-one root to starve later roots. Root summaries, intrinsic anchor counts and
-independent root partitions decouple ordinary-directory/intrinsic diagnostic
-volume from name discovery and prevent one root spending another's credits.
-Depth-first held-stream stacks remove the width-dependent pending queue; one
-reserved root depth-bound group counts encountered anchors whose descendants
-were omitted, while their names remain matchable. Exact invalid/overlong-name
-parents, exceptional failures and permission targets stay visible and can still
-exhaust diagnostics. This distinction binds the public count/extent vocabulary.
-Resource exhaustion preserves an honest remainder. Match slots reserve their
-maximum size separately so metadata growth cannot consume diagnostics or
-change which ranked names fit. The four admitted jobs can retain less than 53.032 MiB
-of charged coverage/stack/match/anchor/wrapper values plus bounded scratch, including
-while native calls block; this is an accounting ceiling, not allocated memory
-or RSS. This costs reserved capacity and withholds the
-identities of grouped exclusions. Held ancestor streams cost up to 512 traversal
-descriptors per job; the OS may refuse before that ceiling. Depth-first partial
-order can spend a root's allowance on an early branch before later siblings.
-Those omissions remain explicit and pending acceptance, not a reproducible partial
-sample nor an exhaustive installed-app inventory.
+Per-directory searched records and per-entry intrinsic exclusions consume a
+finite diagnostic budget before realistic application/home discovery finishes.
+Root summaries, intrinsic anchor counts and independent root partitions
+decouple ordinary-directory diagnostic volume from discovery. One reserved
+root depth group counts encountered anchors themselves, including an empty
+directory whose EOF was not observed; names remain matchable and counts never
+describe omitted descendants. Exact invalid/overlong-name parents, exceptional
+failures and permission targets stay visible. Exhaustion preserves an honest
+remainder. Maximum-size match slots keep metadata growth out of diagnostics
+and ranked eviction. This costs reserved capacity and withholds grouped identities.
 
-Breadth-first FIFO with four streams needs a wide pending queue and rejects deep
-work before reaching it; larger arbitrary queues move the cutoff. Closing and
-reopening ancestor streams substitutes unstable continuation/repeated work for
-descriptor cost. Reopen held-stream traversal if actual-adapter evidence shows
-unacceptable descriptor pressure or lost required witnesses, before accepting
-any changed domain/setup. The
+Traversal order and descriptor admission require a replacement and load-bearing
+review before implementation. DFS's early enormous branch can consume the
+root entry budget before shallow home names; its held streams can exhaust
+the descriptor table shared with listener, store, providers and actions.
+Root-local refusal does not isolate that process resource. The replacement
+must weigh shallow-first traversal, including bounded breadth-first work with
+one reserved root frontier group and iterative deepening, and a process-wide
+search descriptor account below the effective soft limit with non-search
+reserve. No larger descriptor limit or smaller domain follows. The
 [discovery obligations](../specs/workspace-search.md#discovery-obligations-before-planning)
-require load-bearing review and actual Safari/Finder/home acceptance; arithmetic
-establishes no throughput or native prompt guarantee.
+keep the measured-scale witnesses and normally launched host serviceability live.
 
-An exhaustive index or persistent paginated search would retain more history,
-but adds lifetime, invalidation, consent and availability contracts. The
+Worker-owned frames remain charged through cancellation until worker-only
+cleanup; another thread cannot close idle frames under a blocked call.
+Before descendant open, recheck the held parent's canonical location, identity
+and policy. Observed movement refuses descent; the remaining check-to-open
+window and the location call itself need prompt-free signed-host acceptance.
+Admission/policy witnesses include protected and cloud paths with every retained
+occurrence charged; failure of their pre-turn job account refuses every root,
+rather than silently omitting a policy witness. The spec owns the enumerated
+maximum shapes, not a claim about native memory or throughput.
+
+A detailed traversal log still buys identities that the chooser does not need.
+An exhaustive index or persistent paginated search adds lifetime, invalidation,
+consent and availability contracts. The
 [signed-host comparison](../verification/search-discovery.md#design-consequences-and-limits)
 found no usable index-health signal and a prompting protected query. Reopen
 that alternative only with a supported prompt-free mechanism and useful
 coverage/availability evidence, or an expressly approved changed workflow.
-Reopen detailed traversal records if a real consumer needs exclusion identities
-rather than name search. Neither this choice nor the bounds accept reduced
-home/application coverage: that needs the operator's existing baseline decision.
+Reopen detailed records for a consumer that needs exclusion identities.
+Neither these observations nor accounting accept reduced home/application
+coverage: the operator's existing baseline decision remains required.

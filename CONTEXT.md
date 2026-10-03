@@ -139,12 +139,13 @@ completeness could not be established.
 exclusion reason, with child identities withheld; the reason determines whether
 anchor names or only descendants are omitted. CHILD_GROUP invalid/overlong-name
 anchors belong to the named parent; DESCENDANT_GROUP intrinsic/depth-bound
-anchors lie beneath the named root (depth anchors remain matchable); counts never
+anchors lie beneath the named root (depth anchors remain matchable, including
+empty directories whose EOF was not observed); counts never
 mean all children or omitted descendant names.
 
 **Search remainder**: Eligible work unfinished when a search freezes, with or
 without **Search progress**, including unopened roots, unread tails and
-queued/unfinished inspection. It excludes established
+unopened descent and held-stream/unfinished inspection. It excludes established
 observations without identifying them and never means the whole root was skipped.
 
 **Search progress**: Examination of an entry or observation of an empty
@@ -162,8 +163,11 @@ at least one **Prompt risk**, and no inspection/change/work/resource failure. It
 state is UNKNOWN, with no matches list and explicit **Search coverage**.
 
 **Search location**: An observed filesystem path returned for later client
-selection, distinct from a **resource reference** and from a pinned native file
-identity. A later action revalidates the path and may encounter another occupant.
+selection; file entries join a filesystem-reported canonical parent and their
+observed name, preserving final symlink locations. Firmlink-alias roots deduplicate
+equal returned paths and merge observed membership. A location is distinct from
+a **resource reference** and from a pinned native file identity. A later action
+revalidates the path and may encounter another occupant.
 
 **Search application identity**: The established native bundle directory identity
 used to merge checked-link and direct discovery routes in one search. Its
