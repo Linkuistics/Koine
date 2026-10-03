@@ -349,6 +349,15 @@ default opening remains pending; this result authorizes no new consent or
 content-type-only substitution. The metadata result does not establish prompt-free
 directory traversal or content search. Removable/network volumes were unavailable.
 
+The [search-discovery comparison](../verification/search-discovery.md) then
+measured directory traversal inside signed hardened Koine. Ordinary directory
+listing, a home scan with exclusions and application-registration inspection
+were prompt-free in its bounded fixture; direct Desktop/Documents/Downloads
+listing and a Desktop Spotlight query prompted. Disabling indexing did not
+make filename queries fail. The following API design must consume those limits,
+state coverage and avoid prompting discovery probes. No new consent or
+entitlement is approved by this evidence, and search remains designed/pending.
+
 ## Compatibility and delivery
 
 Keep `koine-desktop/1`. New provider schemas and optional fields are additive;

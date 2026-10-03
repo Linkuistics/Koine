@@ -1,4 +1,4 @@
-# app-and-file-search-k19
+# app-and-file-search-k19 — brief
 
 ## Goal
 
@@ -46,3 +46,20 @@ The spec states:
 
 Do not chase exhaustive filesystem coverage. The requirement is the configured
 roots and an honest report of what the mechanism cannot see.
+
+## Decomposition
+
+1. `search-discovery-evidence-k91` — bounded native mechanisms and permission /
+   index observations inside signed hardened Koine.
+2. `app-and-file-search-k92` — synthesize the evidence into the API, scope and
+   action contract before the increment's existing planning leaf.
+
+## Decisions (running log)
+
+- Consume k73's prompt-free metadata route only for its measured calls. Search
+  performs no document handler lookup and adds no consent or entitlement.
+- Compare bounded directory-name enumeration with Spotlight in the isolated
+  VM. A diagnostic workspace bundle runs inside the actual signed hardened
+  Koine host; its instrumentation is test-only and does not ship.
+- Retain the agreed public GraphQL, native provider binary and isolated VM
+  seams. Query entry, chooser, action menu, MRU and clipboard remain client-owned.

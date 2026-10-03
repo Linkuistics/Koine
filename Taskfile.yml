@@ -1,6 +1,19 @@
 version: '3'
 
 tasks:
+  fixture:search-evidence:
+    desc: Build signed Koine with diagnostic workspace startup instrumentation; run only in an isolated VM
+    deps: [app]
+    cmds:
+      - bash scripts/build-search-evidence.sh
+
+  fixture:search-evidence-vm:
+    desc: Measure discovery and its permission/index limits in a prepared disposable VM; exit zero is not acceptance
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-search.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
   fixture:protected-path-metadata:
     desc: Build and sign the disposable path-metadata probe (launch only in an isolated TestAnyware VM)
     cmds:
@@ -138,6 +151,11 @@ tasks:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-providers.d2 docs/design/architecture/workflow-providers.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-authority.d2 docs/design/architecture/workflow-authority.svg
       - plantuml -tsvg docs/design/architecture/workflow-targets.puml
+
+  design:search-render:
+    desc: Render bounded search-discovery evidence (D2 0.9.0, Dagre)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
 
   design:serve:
     desc: Serve only the architecture presentation on loopback (PORT overrides 8765)

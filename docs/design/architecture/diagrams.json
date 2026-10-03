@@ -2,26 +2,26 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Protected-path metadata and the handler lookup limit",
-    "status": "Native evidence recorded · protected default opening pending human decision",
-    "summary": "The tested metadata and registered-app calls were prompt-free on first-use Desktop, Documents and Downloads. File-URL default-handler lookup prompted, even when returning TextEdit after denial. No new consent is approved; protected default opening and handler reads remain pending. Removable and network volumes were unavailable.",
+    "title": "Search discovery and first-use traversal",
+    "status": "Native evidence recorded · API design follows",
+    "summary": "Bounded directory-name enumeration and registered-app inspection were prompt-free in signed Koine on macOS 26.5. Protected directory enumeration and a protected Spotlight query prompted. Disabling indexing did not cause query startup to fail. No new consent or entitlement is approved.",
     "diagramIds": [
-      "workspace-inspection",
-      "workspace-open",
-      "workspace-outcomes"
+      "search-discovery",
+      "workspace-inspection"
     ],
     "updatedDiagrams": [
       {
-        "id": "workspace-inspection",
-        "summary": "Added the measured metadata-versus-handler sequence, including the dialog and usable handler after denial."
-      },
-      {
-        "id": "workspace-open",
-        "summary": "Qualified prerequisite inspection with the measured default-handler prompt limit."
+        "id": "search-discovery",
+        "summary": "Added the signed-host comparison of directory listing, application registration lookup, protected traversal and Spotlight index states."
       }
     ]
   },
   "groups": [
+    {
+      "id": "search",
+      "title": "Application and file search · native evidence",
+      "description": "Mechanism and permission evidence for the following API design. Configured scope and partial/unknown coverage must remain explicit."
+    },
     {
       "id": "workspace",
       "title": "Launch and open · designed, not yet served",
@@ -59,6 +59,15 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "search-discovery",
+      "group": "search",
+      "title": "Discover names without probing protected traversal",
+      "renderer": "svg",
+      "source": "search-discovery.d2",
+      "rendered": "search-discovery.svg",
+      "caption": "Bounded evidence, macOS 26.5/25F71 in a clean TestAnyware VM. Test-only workspace startup instrumentation ran inside the actual signed hardened Koine host with unchanged identity, Info.plist and empty entitlements. Ordinary directory listing, the home scan with exclusions and system-app inspection were prompt-free. Direct Desktop/Documents/Downloads listing and a Desktop Spotlight query prompted. Denial produced Cocoa 257 for listing but an apparently successful zero-result query. Disabled indexing still returned filenames, including from the test disk image. This recommends name enumeration with explicit skipped scope; it proves neither exhaustive discovery nor a race-free no-prompt guarantee. The API and new consent diagnostics remain the next design step."
+    },
     {
       "id": "workspace-inspection",
       "group": "workspace",
