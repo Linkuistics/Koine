@@ -244,13 +244,13 @@ different grants. Keep client responsibilities and unresolved acceptance
 visible. API design must resolve a conditional tool effect before implementation;
 the phrase “plus effects” is not a completed trace.
 
-Search's [native allocation recommendation](workspace-search.md#native-allocation-decision)
-prefers finite-table private-helper design conditional on an explicit human
-packaging/child-limit decision. The complete allocation contract remains live:
-two-credit IPC/walk ownership, trustworthy negative metadata and child
-reclamation across host restart must be resolved before serviceability subjects
-and mandatory review. This adds no granted effect, accepted helper, changed
-host limit or weaker workflow/domain guarantee to the search rows below.
+Search's [native allocation scope decision](workspace-search.md#native-allocation-decision)
+retains the single-process posture after the operator declined helper design,
+questioning its necessity. The complete allocation contract remains live:
+owned/opaque demand, two-credit walk ownership, trustworthy negative metadata
+and worker cleanup/recovery must be resolved in process before serviceability
+subjects and mandatory review. Helper packaging and child limits are not
+authorized; grants, host limits and workflow/domain guarantees remain binding.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

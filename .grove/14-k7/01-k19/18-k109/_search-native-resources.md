@@ -107,3 +107,9 @@ chain or implementation leaves.
   isolation for further design, then a requirements child obtains the explicit
   scope answer and a design child must settle the original allocation contract.
   k113 cannot construct final subjects or cut k109's review from a recommendation.
+- k115 resolves that scope question with Antony's "No, I don't understand why
+  we need a separate process." No helper or child limit is authorized. k116
+  continues inside Koine's process and must settle all allocation/health and
+  serviceability obligations. A source/SDK risk is not a demonstrated
+  normal-search failure or proof of isolation's necessity. k113 still awaits
+  the complete contract before constructing subjects and cutting review.

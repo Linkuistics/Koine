@@ -8,7 +8,7 @@ exports:
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
-- [native allocation recommendation and required human decision](index.html#diagram-search-resources);
+- [native allocation scope and in-process continuation](index.html#diagram-search-resources);
 - [shallow-first traversal and shared descriptors](index.html#diagram-search-traversal);
 - [search scope and coverage](index.html#diagram-search-coverage) and
   [selection and action handoff](index.html#diagram-search-handoff);
@@ -40,11 +40,12 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel presents the
-[resource boundary comparison](index.html#diagram-search-resources): finite-table
-private-helper design is preferred, conditional on the explicit human packaging/
-child-limit decision. Error channels and successful IPC/child exit do not
-establish negative metadata health. Persistent IPC cannot overlap a two-descriptor
-walk within two temporary credits; parent exit does not prove child reclamation.
+[resource boundary comparison](index.html#diagram-search-resources): the operator
+declined helper design, questioning why a separate process was needed. The
+source/SDK concern does not demonstrate a normal-search failure or establish
+isolation's necessity. Continue inside Koine's process; owned/opaque demand,
+two-credit walk ownership, trustworthy negative metadata and worker cleanup/
+recovery still require a complete contract.
 The [allocation decision](../../specs/workspace-search.md#native-allocation-decision)
 keeps those obligations live before selecting a runtime route. The
 [feasibility analysis](../../verification/search-native-resources.md) records
@@ -103,9 +104,9 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views and summaries:
 
-- [Search → native allocation decision](index.html#diagram-search-resources) — Prefers finite-table helper design subject to explicit approval and exposes the two-credit, negative-health and child-reclamation blockers.
-- [Native allocation contract](../../specs/workspace-search.md#native-allocation-decision) — Frames the concrete packaging/child-limit decision and preserves every binding budget, metadata, domain and acceptance obligation for the complete design.
-- [Native resource analysis](../../verification/search-native-resources.md#acceptance-obligations-carried-forward) — Adds falsifiers for swallowed negative replies, overlapping IPC/walk lifetimes, pre-limit bootstrap and children surviving host exit.
+- [Search → native allocation decision](index.html#diagram-search-resources) — Records the helper scope refusal and keeps native semantics, two-credit ownership, negative-health and worker-recovery obligations live in process.
+- [Native allocation contract](../../specs/workspace-search.md#native-allocation-decision) — Retains the single-process posture and every binding budget, metadata, domain and acceptance obligation; the complete native route remains pending.
+- [Native resource analysis](../../verification/search-native-resources.md#acceptance-obligations-carried-forward) — Explains the possible shared-table failure, retains in-process negative-fact and serviceability controls, and makes helper-specific falsifiers conditional on separate authorization.
 
 The canonical, traversal, coverage and handoff views remain unchanged context.
 

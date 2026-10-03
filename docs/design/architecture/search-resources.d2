@@ -1,33 +1,34 @@
-# Allocation recommendation. No approved helper/runtime route or native pass.
+# Helper scope declined. In-process allocation design and native acceptance pending.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
 Start: "Start here · Native allocation\nKeep the binding search contract" {class: start}
-Facts: "Value is separate from health\nEmpty / nil / successful child exit\nCannot certify negative facts"
+Facts: "Value is separate from health\nEmpty / nil / apparently successful call\nCannot certify negative facts"
 Direct: "Direct owned inspection\nIdentity / canonical calls fit\nRegistration / native types unresolved"
 Trace: "Opaque inspection in Koine\nComplete approved-posture observer\nNot established by feasibility"
-Recommend: "Preferred direction · finite-table helper\nPrivate executable inside signed app\nPackaging + child limit need human decision" {style: {fill: "#E5EAF0"; stroke-width: 2}}
-Human: "Required human scope decision\nSame-team helper / empty entitlements\nMay design finite lowered child limit?" {shape: diamond}
-Decline: "If direction declined · retain posture\nOwned semantic route or complete observer\nStill required; no silent weakening"
-Budget: "Two host temporary credits\nSocketpair uses two, then one\nPersistent IPC + two-FD walk cannot fit"
+Helper: "Declined alternative · finite-table helper\nCould contain per-process FD demand\nNecessity not established" {style: {fill: "#E5EAF0"; stroke-width: 2}}
+Scope: "Human answer · helper not approved\nRetain Koine's single-process posture\nChild-limit question inapplicable" {shape: diamond}
+Continue: "Continue in process\nOwned semantic route or complete observer\nStill required; no silent weakening"
+Budget: "Two host temporary credits\nOwned + opaque demand need a contract\nNo root-credit borrowing"
 Health: "Negative-fact proof remains required\nCFError or finite table is insufficient\nNo implicit UNKNOWN-only weakening"
-Lifetime: "Own blocked + unreaped children\nParent exit does not prove reclamation\nNo accumulation across host restart"
-Contract: "Complete allocation design next\nResolve bootstrap / TCC / health / lifetime\nKeep host limits, domain, grants + seams"
+Lifetime: "Own blocked workers + late returns\nRetain charges through worker cleanup\nProvider restart does not reset refusal"
+Contract: "Complete in-process allocation design next\nResolve call health / demand / recovery\nKeep host limits, domain, grants + seams"
 Listener: "Observe accept before NIO suppression\nError / delay / scheduled read / resume\nEventual replies do not clear backoff"
 Subjects: "Then construct independent subjects\nTransient-open + suppressed-error controls\nFour searches beside listener / store / actions"
 Pending: "Mandatory complete-resource review\nBefore planning\nNative + binary + useful coverage pending"
 Start -> Facts: "1 · trustworthy observation"
 Start -> Direct: "1 · compare ownership"
 Start -> Trace: "1 · compare observation"
-Direct -> Recommend: "2 · semantics gap"
-Trace -> Recommend: "2 · visibility gap"
+Start -> Helper: "2 · prior proposal"
+Helper -> Scope: "3 · scope declined"
+Direct -> Continue: "2 · preserve native semantics"
+Trace -> Continue: "2 · establish observation"
 Facts -> Health: "2 · preserve metadata contract"
-Recommend -> Human: "3 · approval before reliance"
-Human -> Budget: "4 · if direction allowed"
-Human -> Lifetime: "4 · if direction allowed"
-Human -> Decline: "4 · if direction declined"
-Decline -> Contract: "5 · prove alternative"
+Scope -> Continue: "4 · retain posture"
+Continue -> Budget
+Continue -> Lifetime
+Continue -> Contract: "5 · settle native route"
 Budget -> Contract: "5 · settle allocation"
 Health -> Contract: "5 · prove health"
 Lifetime -> Contract: "5 · settle recovery"

@@ -4,15 +4,17 @@
 pending.** An error-bearing registration API exists, but substituting that API
 does not supply a bound or event ledger for platform-internal descriptors.
 The [resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
-shows the unresolved architectural choice. The
+shows the in-process continuation and the unapproved helper alternative. The
 [search resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling)
 continues to bind, including its original budgets and serviceability obligations.
 No inspection route, helper, consent, signing change, smaller domain or reduced
 metadata/workflow guarantee is accepted by this analysis. The subsequent
 [allocation decision](../specs/workspace-search.md#native-allocation-decision)
-prefers finite-table isolation for further design and externalizes its required
-helper/child-limit decision; it does not turn these feasibility candidates into
-an accepted runtime contract.
+records the operator's refusal of the helper proposal and retains the
+single-process posture. This analysis has not demonstrated a normal-search
+failure or established that isolation is necessary; the continuation must
+settle an in-process bounded route or complete approved-posture observation.
+These feasibility candidates are not an accepted runtime contract.
 
 ## Call health is separate from descriptor visibility
 
@@ -109,18 +111,31 @@ invalidate the subject. Table snapshots cannot repair lost transient history.
 
 ## Allocation alternatives
 
+The isolation rationale is a possible shared-table failure. Apple's
+[resource-limit manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/getrlimit.2.html)
+defines RLIMIT_NOFILE per process; its
+[connection-accept manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/accept.2.html)
+documents EMFILE when that table is full and ENFILE for system-wide exhaustion.
+Opaque metadata opens inside Koine could therefore interfere with unrelated
+client connections. A separate process could contain the per-process demand,
+while adding transport, signing and lifecycle costs and still requiring
+system-wide and metadata-health evidence. These platform failure semantics
+explain the proposal; they do not demonstrate a normal-search failure or prove
+that Koine needs a separate process. The operator declined helper design.
+
 | Alternative | Benefit | Load-bearing unresolved obligation |
 | --- | --- | --- |
 | Opaque calls in Koine with complete raw kernel events | Retains current single-process native API composition | Prove normally signed target visibility and complete allocation/lifetime/error decoding, including hidden opens and accept pause. This analysis does not do so. |
 | Direct owned calls with checked metadata outcomes | Exposes opens/errors at the private adapter using existing credits and failure seam | Preserve actual application/type/registration semantics and prompt policy within existing accounts. Direct plist reading supplies no registration query. Dropping INSTALLED or all launch choices changes the workflow. |
-| Private signed support process for opaque inspection | Can separate its descriptor table from Koine's | Settle IPC/packaging/trust, responsible TCC identity, host transient opens, finite/infinite/unknown inherited limits, system-wide demand, reply health/negative facts and blocked-child ownership. Isolation alone bounds neither all resources nor metadata health. |
+| Private signed support process, outside approved scope | Could separate its descriptor table from Koine's | Packaging was declined; necessity is unestablished. Any separately authorized reconsideration still owes IPC/trust, TCC identity, host transient opens, limits, system-wide demand, reply health/negative facts and blocked-child ownership. |
 
-Prefer an allocation argument independent of attaching to opaque code. Direct
-calls have the smallest composition cost where they preserve required metadata;
-isolation is a fallback candidate if public registration cannot be observably
-bounded in process. This is a direction for the decision, **not a selected
-runtime mechanism**. Reverse the preference if a complete observer under the
-unchanged posture is established without changing workflow/resource contracts.
+Continue inside the approved process posture. Direct owned calls have less
+composition machinery where they preserve required metadata, but do not by
+themselves supply registration/type semantics. A complete observer remains an
+alternative if its visibility and error/lifetime decoding can be established
+under unchanged signing and normal launch. The helper is a comparison outside
+approved scope; an observation gap does not prove that it is needed. These
+source/SDK alternatives select no runtime mechanism or weaker guarantee.
 
 A socketpair transiently creates **two** host descriptors even if one endpoint
 closes immediately after spawn. Holding one for a whole job leaves only one
@@ -139,15 +154,18 @@ turn system-wide ENFILE into a host-local property.
 
 ## Acceptance obligations carried forward
 
-The allocation comparison adds concrete falsifiers without claiming a selected
-route: apparently negative metadata after a swallowed child resource failure;
-a persistent host IPC endpoint overlapping a two-descriptor walk; bootstrap
-allocations before a proposed finite child limit is enforced; and an indefinite
-child surviving host exit while a replacement host attempts admission. A
-successful reply/exit, a 32-descriptor child proposal or parent exit cannot pass
-these controls. The human scope decision and complete allocation design remain
-live work before serviceability-subject construction. Existing negative-fact,
-domain, consent, signing, host-limit and native serviceability obligations bind.
+The allocation comparison names concrete falsifiers for the declined helper
+alternative: apparently negative metadata after a swallowed child resource
+failure; a persistent host IPC endpoint overlapping a two-descriptor walk;
+bootstrap allocations before a proposed finite child limit is enforced; and
+an indefinite child surviving host exit while a replacement host attempts
+admission. A successful reply/exit, a 32-descriptor child proposal or parent
+exit cannot pass those controls. Helper-specific controls apply only if that
+direction is separately authorized; they do not require a helper in the current
+single-process continuation. Swallowed-error negative facts still require
+in-process failure discriminators. The complete allocation design remains live
+before serviceability-subject construction. Existing negative-fact, domain,
+consent, signing, host-limit and native serviceability obligations bind.
 
 - A transient open/close entirely between occupancy samples must be visible
   wherever the selected argument relies on those events. Omitting it must fail

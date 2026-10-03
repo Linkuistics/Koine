@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Finite-table isolation needs an explicit human scope decision",
-    "status": "Recommendation · helper and child limits unapproved",
-    "summary": "Prefer a private same-team signed helper with empty entitlements and a finite lowered child descriptor limit for further design. This does not select an approved runtime mechanism. Direct owned metadata cannot alone supply native registration/type semantics; no complete in-process observer is established. Two host temporary credits prohibit persistent IPC overlapping a two-descriptor walk. Successful IPC/child exit and a finite table do not establish negative metadata health, and parent exit does not prove child reclamation. A human packaging/child-limit decision precedes the complete allocation contract, serviceability subjects and mandatory review. Public outcomes, domain, host limits, grants, seams and native acceptance remain unchanged.",
+    "title": "Continue native inspection inside Koine",
+    "status": "Helper scope declined · in-process design pending",
+    "summary": "The operator declined helper design, questioning the need for a separate process. Retain Koine's single-process posture; helper packaging and child limits are not authorized. The proposal addressed possible opaque descriptor demand interfering with unrelated work, but the source/SDK analysis demonstrates no normal-search failure or necessity for isolation. The complete in-process allocation contract must settle native semantics, trustworthy negative metadata, owned/opaque demand and worker cleanup/recovery through an owned bounded route or complete approved-posture observation. Two temporary credits and all public outcomes, domain, host limits, grants, seams and serviceability requirements remain binding. Serviceability subjects and mandatory review follow that contract; native acceptance remains pending.",
     "diagramIds": [
       "search-resources",
       "search-canonical",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "search-resources",
-        "summary": "Recommends finite-table helper design subject to a human scope decision; exposes the two-credit conflict, negative-fact health and child-reclamation blockers before serviceability handoff."
+        "summary": "Records the helper scope refusal and retains in-process inspection; exposes native semantics, two-credit ownership, negative-fact health and worker cleanup/recovery obligations before serviceability handoff."
       }
     ]
   },
@@ -25,7 +25,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are proposed. Finite-table helper design is recommended subject to an explicit packaging/child-limit decision; the complete allocation contract and serviceability subjects remain open. The complete resource artifact and canonical proposal require review before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
+      "description": "FIFO and canonical fsgetpath are proposed. Helper design was declined; allocation continues inside Koine's process with existing limits and guarantees. The complete allocation contract and serviceability subjects remain open. The complete resource artifact and canonical proposal require review before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
     },
     {
       "id": "workspace",
@@ -67,11 +67,11 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Require a human scope decision before finite-table isolation",
+      "title": "Retain the single-process posture for native inspection",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Allocation recommendation, not approval or native acceptance. Prefer a private signed finite-table helper only for further design, after the human packaging/child-limit decision. A proposed 32-descriptor child ceiling does not bound bootstrap, establish negative metadata health or prove useful coverage. Socketpair transiently uses both host temporaries; persistent IPC cannot overlap a two-descriptor walk. Child exit/reap and old children across host restart need ownership, not a parent-death assumption. Native registration/type semantics, domain, host limits and all current budgets remain binding. A refusal of the helper direction returns the design to an alternative within those constraints; no runtime route is selected by this graph. Complete allocation, independent serviceability subjects and mandatory review precede planning; suppressed accept/backoff and transient-open controls remain required."
+      "caption": "Human scope answer: helper design is not approved because the need for a separate process was not understood. The source/SDK analysis identifies a possible shared-descriptor-table risk, not a demonstrated normal-search failure or proof that isolation is necessary. The declined helper alternative adds IPC, signing, TCC and child-lifetime obligations; its proposed 32-descriptor ceiling proves no metadata health or system-wide bound. Continue in process with native registration/type semantics, trustworthy negative facts, two temporary credits, worker-only cleanup and existing host limits/domain intact. An owned bounded route or complete approved-posture observation must settle the allocation contract before independent serviceability subjects and mandatory review. Suppressed accept/backoff and transient-open controls remain required; no native or binary acceptance is supplied."
     },
     {
       "id": "search-canonical",

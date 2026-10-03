@@ -54,9 +54,10 @@ settle a runtime contract. Do only the first child in this session.
 
 1. search-allocation-boundary-k114 produces the concrete comparison, preferred
    isolation direction, required human decision and failure discriminators.
-2. search-helper-posture-k115 obtains the narrowly framed human decision about
-   signed support-process packaging and finite child descriptor limits. It
-   grants no weaker metadata/domain or serviceability guarantee by implication.
+2. search-helper-posture-k115 records Antony's refusal of the helper proposal,
+   questioning the need for a separate process. Helper packaging and child
+   limits are not authorized; the single-process posture continues with no
+   weaker metadata/domain or serviceability guarantee by implication.
 3. search-allocation-contract-k116 settles the full call/allocation contract
    within that answer, including trustworthy negative facts and process-restart
    ownership, before k113 constructs serviceability subjects and cuts k109's
@@ -72,3 +73,10 @@ settle a runtime contract. Do only the first child in this session.
   not permission to spawn, sign, change limits or weaken negative metadata facts.
 - Decompose at that human decision. Retire only the boundary-comparison child;
   this allocation node, k109 and the complete resource contract remain live.
+- k115: Antony answered "No, I don't understand why we need a separate process."
+  Retain the single-process posture. The helper rationale is a resource risk
+  and an observation gap, not a demonstrated normal-search failure or proof
+  of necessity. The child-limit question is inapplicable after packaging was
+  declined. k116 must settle an in-process owned bounded route or complete
+  approved-posture observation under every original completion condition;
+  k112/k109 and k113's mandatory review remain live.
