@@ -5,6 +5,7 @@ exports:
 
 - [workspace launch/open and desktop handoff](index.html#diagram-workspace-open)
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
+- [long-location lookup, classification and submission](index.html#diagram-workspace-long-locations);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
@@ -41,22 +42,25 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel marks the reviewed path prerequisites that need
-producer repairs: pre-open mount/symlink witnesses, region replay/metadata
-phases and current/prefix size scopes. Their mandatory reviews precede long-path
-classification design/review, then complete-resource review/planning. Long-result
-actions require launch/open design/review; the search ceiling is no actionability
-guarantee. Native/binary/no-dialog/useful-coverage
-outcomes and the operator's measured omissions decision remain pending.
+The current-discussion panel separates long-location input, resolution, native
+classification and submission. It marks the truthful size/uncertainty failure
+repair designed and unimplemented, while a supported replacement route remains
+unresolved. Boundary review precedes route design and final review before search
+consumers. The separate search witness/replay/classification repairs and reviews
+remain live; this discussion supplies none of them. The search ceiling is no
+actionability guarantee. Native/binary/no-dialog/useful-coverage outcomes and
+the operator's measured omissions decision remain pending.
 
 Current changes:
 
-- [Observe one canonical path and diagnose native size refusals](index.html#diagram-search-canonical) — Marks witness, replay and current/prefix size repairs while preserving resolver bounds and names.
-- [Finish shallow names before bounded descent](index.html#diagram-search-traversal) — Retains FIFO/listed tasks; current-turn replay and independently proved prefix-size continuation need repair.
-- [Report every root and distinguish blocked scope from failure](index.html#diagram-search-coverage) — Retains exact queued size diagnostics; genuine shared-proof failure differs from unresolved current/prefix size scope.
-- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Discloses PATH_MAX-limited action inspection and launch/open design/review for long results.
-- [Connect native allocation to specified serviceability subjects](index.html#diagram-search-resources) — Keeps k119 constraints; replay/metadata composition and classification need repair before resource review.
-- [Reuse two temporaries before finalization](index.html#diagram-search-inspection) — Marks missing replay/bracket/final-membership phases without inferring a third descriptor or uncharged reacquisition.
+- [Separate long-location lookup, classification and submission](index.html#diagram-workspace-long-locations) — Adds the four action stages, proposed failure repair and unresolved supported route.
+- [Launch or open, then capture desktop state](index.html#diagram-workspace-open) — Separates uncertain inspection from missing prerequisites and labels long support unimplemented.
+- [Keep dependency absence before the submission boundary](index.html#diagram-workspace-outcomes) — Rejects size and uncertain metadata as absence while retaining acknowledgment/no-replay meaning.
+- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Marks the error repair designed and the supported route/review still required.
+
+The unchanged [canonical path view](index.html#diagram-search-canonical) and
+[protected metadata view](index.html#diagram-workspace-inspection) remain relevant
+context; they do not establish long-location action acceptance.
 
 The specified [serviceability controls](index.html#diagram-search-serviceability)
 remain unchanged context. Q/S, two temporary credits, worker-only cleanup,
@@ -88,12 +92,12 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update also changes these prose sections:
 
-- [Bounded component resolution](../../specs/workspace-search.md#bounded-component-resolution) — Keeps bounds; no-follow ELOOP after a directory probe uses changed association, not hop guidance.
-- [Pre-open parent and child policy](../../specs/workspace-search.md#pre-open-parent-and-child-policy) — Marks symlink-target proofs and foreign-mount pre-open guards for the witness producer.
-- [Observed spelling and file-name finalization](../../specs/workspace-search.md#observed-spelling-and-file-name-finalization) — Preserves names and marks missing replay/metadata composition for phase repair.
-- [Resolver and spelling subjects](../../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction) — Defines controlled/provider/VM cases and independent observers without claiming native evidence.
-- [Native resource handoff](../../verification/search-native-resources.md#final-allocation-handoff) — Reconciles independent change evidence and two-temporary reacquisition.
-- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Discloses long-result action support and truthful overlength failure as an unresolved handoff.
+- [Long-location action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Separates four limits and requires established absence before a dependency result.
+- [Source, SDK and independent subjects](../../verification/long-action-native-boundary.md) — Explains the existing defect, candidate APIs and unexecuted search-to-action subjects.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Keeps the supported route and review required before consumers.
+- [Client action guidance](../../client-guide.md#opening-a-document-or-folder) — Distinguishes the existing 1.0.0 mapping from the pending truthful-failure repair.
+- [Workflow action trace](../../specs/workflow-providers.md) — Preserves exact selected inputs and marks long-route acceptance pending.
+- [Search location glossary](../../../CONTEXT.md) — Separates discovery location limits from native action support.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -104,6 +108,20 @@ Serve locally with `task design:serve` and open
 presentation directory. Graphs start at the node labelled “Start here”; sequences
 start at their first message.
 Use `task design:serve PORT=8767` if the default port is already occupied.
+
+The long-location boundary revision was inspected in Firefox in the isolated
+Ubuntu 24.04 clone `koine-long-actions-design`. Fresh deep links reached the
+four changed views and their Current/Updated markers. The sequence and outcome
+branches were readable in the 1920-pixel light view; the new boundary's lower
+classification/failure/submission branches and the handoff's long-action note
+were readable in dark appearance. The current discussion's status, links and
+four change summaries reflowed at an 800-pixel window in dark appearance.
+For the final checks, the viewer, manifest and all four changed source/export
+pairs had equal per-file SHA-256 values in host and guest, unchanged before and
+after inspection. This is presentation evidence only; no Koine native action,
+protected read, binary compatibility or signed-macOS subject ran. The clone was
+stopped after checking. Serve this revision with `task design:serve PORT=8899`
+and open <http://127.0.0.1:8899/#diagram-workspace-long-locations>.
 
 The serviceability revision was inspected in Safari in the isolated macOS
 26.5/25F71 clone `koine-k113-design`. Fresh serviceability and resource deep links
@@ -140,8 +158,8 @@ Run `task design:selection-render` to regenerate the two selection exports with
 the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-provider-selection>.
 
-Run `task design:workspace-render` to regenerate the workspace sequence and
-outcome flow with the same pinned renderer versions. Start with
+Run `task design:workspace-render` to regenerate the workspace sequence,
+outcome flow and long-location boundary with the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
 Run `task design:search-render` for the eight search views with D2 0.9.0,

@@ -1,4 +1,4 @@
-# long-search-result-actions-k128
+# long-search-result-actions-k128 — brief
 
 
 ## Goal
@@ -56,3 +56,17 @@ ceiling must not become a promise of actions that report extant paths missing.
 
 This leaf reopens only the long-result action seam, not prior accepted launch
 workflows or the separate protected-default-open/app-reveal human decisions.
+
+## Decomposition
+
+`long-action-native-boundary-k129` establishes the source/SDK limits, truthful
+failure correction and independent subjects without inventing a complete route.
+Its load-bearing review and any integration precede `long-action-route-k130`,
+which completes the supported metadata/classification/selection/submission
+design and remaining artifact reconciliation. The final producer must cut this
+node's mandatory review before closure. The entire chain stays in launch-and-open
+and is reached before the later search node, including k123/k120/k30. The original
+Done when above remains binding; retiring the first child closes none of it.
+No implementation leaves are cut here; planning owns native execution after
+the reviewed supported route. If the route needs an unapproved posture or workflow
+trade-off, escalate a concrete decision rather than repeating evidence indefinitely.

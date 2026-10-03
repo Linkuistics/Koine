@@ -4,6 +4,10 @@
 # Inspect errors at/below each result: they may suppress a branch without changing
 # a published status. No installed path or default-handler metadata is in a receipt.
 # Encode Unicode URL data and IDNA host labels before supplying an HTTP(S) URI.
+# Search-to-action variables preserve every returned path byte and the selected
+# application's identifier AND applicationPath. Never omit the constraint after
+# failure. Long-result native inspection/submission remains pending; a valid
+# operation against this retained action-only SDL is not actionability evidence.
 #
 # This file lists every designed workspace operation, and every root has landed
 # (LaunchInstalledApplication, OpenSearchURL, OpenDocumentOrDirectory and RevealPath). The

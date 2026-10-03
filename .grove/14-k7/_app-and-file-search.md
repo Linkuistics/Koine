@@ -135,3 +135,14 @@ consumers. The 8,192-byte search ceiling is no actionability guarantee; no
 shorter/copy-only baseline, new consent or changed call set is approved. Native classification reachability, all useful/default/no-dialog/
 binary
 outcomes and k93's actual bound/spelling/rewalk omissions decision remain live.
+
+
+k128 is now a live node: long-action-native-boundary-k129 records source/SDK
+limits, the unimplemented failure correction and independent actual long-result
+subjects. Its mandatory review/integration precedes long-action-route-k130, which
+must establish supported classification/selection/submission, reconcile the
+whole original artifact contract and cut the final node review. The entire
+launch-and-open chain precedes search consumers, including k123/k120/k30.
+A boundary retirement, successful declaration/link check or earlier short-path
+pass completes no action handoff. Native outcomes and k93 measured omissions
+remain pending under the original approval posture.

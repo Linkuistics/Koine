@@ -15,11 +15,15 @@ Core -> Workspace: admitted action
 Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
 note over Workspace,Native
 First-use metadata route measured prompt-free on three protected roots.
+Long-location metadata/classification route remains unresolved.
+Size/uncertainty-to-failed correction is designed, not implemented.
 Document file-URL handler lookup prompts: protected default opening
 remains pending a human decision; do not attempt it as a readiness read.
 end note
 alt missing prerequisite before submission
   Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
+else uncertain inspection / size / unresolved link bound
+  Workspace --> Client: failed, not inferred absence\ndesigned correction; long route still required
 else ready
   Workspace -> Native: submit launch/open; request activation\nreuse running copy unless path-constrained
   alt native acknowledgment within wait bound

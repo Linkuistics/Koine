@@ -180,8 +180,11 @@ revalidates the path and may encounter another occupant. The
 spelling and name-preserving native-size/descent diagnostics; pre-open witnesses,
 replay/size phases and long-path classification realization remain unresolved.
 The [action handoff](docs/specs/workspace-search.md#long-location-action-dependency)
-also needs launch/open design and review: the search value ceiling is no
-actionability guarantee, and overlength is no proof of absence. A
+also needs a supported launch/open route and review: its
+[native boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)
+selects an unimplemented failure repair, while classification/selection/submission
+support remains unresolved. The search value ceiling is no actionability
+guarantee, and overlength is no proof of absence. A
 native descent limit alone does not make a representable name unreturnable.
 
 **Search application identity**: The established native bundle directory identity

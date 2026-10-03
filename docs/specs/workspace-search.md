@@ -2350,9 +2350,15 @@ a roughly 1,500-byte file or a long application location whose later inspection
 cannot use that route. Expanded/native spelling limits matter too; raw input
 length alone is no reliable presence or actionability verdict.
 
-The launch/open increment must design and review supported long-result actions
-and truthful failure meaning before this handoff is complete. No action contract
-changes here. Keep selected paths unchanged and installation constraints intact;
+The launch/open increment's
+[native boundary and proposed failure repair](workspace-launch-and-open.md#long-location-action-boundary)
+distinguishes size/link-limit/classification uncertainty from established absence.
+That repair is unimplemented; the replacement supported metadata/selection and
+submission route remains a live design, followed by mandatory review, before
+this handoff is complete. The
+[source/SDK analysis and subjects](../verification/long-action-native-boundary.md)
+do not prove native long actionability or resolve search's path-design dependencies.
+Keep selected paths unchanged and installation constraints intact;
 do not clip a location, omit applicationPath, retry another copy or infer absence
 from overlength. Client-owned copy remains available, but a copy-only or shorter
 baseline is unaccepted. Long-result launch, reveal, default and Zed opening need

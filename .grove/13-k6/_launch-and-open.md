@@ -144,6 +144,15 @@ bounded to its subjects; no shorter search ceiling, selector fallback, copy-only
 baseline, new consent or incompatible version is approved. Actual actionability
 and measured workflow omissions stay pending and feed k93 before acceptance.
 
+k128 decomposed into `long-action-native-boundary-k129` and
+`long-action-route-k130`: the first supplies source/SDK limits, truthful failure
+meaning and actual long-result subjects, with mandatory review before the second.
+The supported native classification/selection/submission route remains live;
+the final producer must cut k128's load-bearing review. Route implementation and
+acceptance through planning in this increment after that reviewed design, before
+any search consumer treats the handoff as complete. No implementation leaf or
+native long-path pass is supplied by the boundary child.
+
 `protected-path-metadata-k73` records its bounded answer in
 `docs/verification/protected-path-metadata.md`. The tested first-use metadata and
 registered-application route is prompt-free on Desktop, Documents and Downloads;

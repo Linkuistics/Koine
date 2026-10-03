@@ -52,6 +52,11 @@ document default-handler call. This does not test a launch or a race.
 
 ## Handler lookup limit
 
+These measurements do not cover the long-location component/native-reference
+mechanisms discussed in the [action boundary analysis](long-action-native-boundary.md).
+Replacing the whole-path metadata route requires its own signed no-dialog and
+classification evidence; the result here cannot be generalized to that route.
+
 Handler discovery is capable of raising consent even when the eventual result
 looks usable. Suppressing NSWorkspace **submission** prompts does not establish
 that this earlier **lookup** is prompt-free. A handler URL after denial cannot

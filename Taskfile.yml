@@ -214,6 +214,7 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workspace-open.puml
       - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
 
   design:workspace-check:
     desc: Validate the workspace SDL independently, its composition with the documented baseline, and its five example operations (design check, not runtime conformance)
@@ -242,6 +243,14 @@ tasks:
         if (!refusedForeignType) throw new Error('Negative control did not reject a foreign provider type');
         console.log('Workspace SDL, independent composition, baseline composition and five operations valid; both negative controls rejected. Runtime acceptance remains pending.');
         JS
+
+  design:long-action-api-check:
+    desc: Compile/link public long-action mechanism candidates without running them; declarations are not native acceptance
+    cmds:
+      - mkdir -p .build/long-action-native-boundary
+      - xcrun --sdk macosx --show-sdk-version
+      - xcrun clang --version
+      - xcrun clang -arch arm64 -mmacosx-version-min=26.0 -Wall -Wextra -Werror -Wno-deprecated-declarations docs/verification/long-action-native-boundary/api-check.c -framework CoreServices -framework CoreFoundation -o .build/long-action-native-boundary/api-check
 
   design:selection-render:
     desc: Render first-party selection and publication views (D2 0.9.0 and PlantUML 1.2026.8)

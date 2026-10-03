@@ -536,7 +536,11 @@ The 8,192-byte search ceiling also does not establish long-result action support
 the existing action inspection uses PATH_MAX-limited calls, and overlength does
 not prove an observed location absent. The
 [long-location handoff dependency](specs/workspace-search.md#long-location-action-dependency)
-requires launch/open design and review before this seam is complete. Keep paths
+requires a supported action-route design and review before this seam is complete.
+The [native boundary and error repair](specs/workspace-launch-and-open.md#long-location-action-boundary)
+is designed but unimplemented: size/link-limit and uncertain metadata failures
+must use failed rather than invent a missing path, app, identifier or handler.
+It does not establish native long-location support. Keep paths
 and selected installation constraints unchanged; no clipped path, alternate
 copy, disabled-action baseline or shorter search ceiling is approved. Copy is
 client-owned; long-result launch/reveal/default/Zed outcomes remain pending.
@@ -715,9 +719,12 @@ What differs:
    decided before any application is looked up, so it is never confused with a missing
    handler, and it wins over a named application that is also missing. It says only that
    inspection found nothing openable at that spelling and nothing was submitted: a missing
-   item, a link to nothing, a path below a file, a link loop and a name too long to exist
-   all report it, and an item created a moment later is not seen. Inspection that was
-   denied is `failed`, never `PATH_NOT_FOUND`.
+   item, a link to nothing or a path below a file can report it, and an item created
+   a moment later is not seen. Inspection that was denied is `failed`, never
+   `PATH_NOT_FOUND`. The existing 1.0.0 implementation also reports link-limit and
+   path-size failures as PATH_NOT_FOUND; that is a known defect, not evidence that
+   an observed long location is absent. The designed correction is pending the
+   [long-location route](specs/workspace-launch-and-open.md#long-location-action-boundary).
 3. **Some things are refused, as input.** After symlinks are resolved, an application
    bundle, a program (a Unix or Windows executable) and a Finder alias file are refused:
    an input error at the field's path with no `kind`, for the default and for a named
@@ -771,8 +778,10 @@ reading of `failed`. What differs:
 3. **The path is the same literal path as for opening.** One absolute path on Koine's machine,
    with the same input errors at the field's path (empty, relative, NUL), nothing trimmed, expanded or
    resolved, and the same inspection first: nothing there, a link to nothing, a path below a file, a
-   link loop and a name too long to exist are `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`, and nothing
-   was submitted. Inspection that was denied is `failed`, never absence.
+   genuinely missing component are `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`,
+   and nothing was submitted. Inspection that was denied is `failed`, never absence.
+   The same pending correction to the 1.0.0 link-limit/path-size defect applies
+   here; raw length is no absence or actionability verdict.
 4. **Nothing is refused for being what it is.** An application bundle, a program and a Finder alias file
    are the very items to reveal rather than open: the application is selected, never launched, and the
    alias is selected itself, never resolved to its target. A symlink is selected as the link. There is no

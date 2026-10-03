@@ -30,6 +30,12 @@ host. The unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins run
 against a separate compatibility host containing that independently retained
 bundle; they do not describe the upgraded bundled search provider.
 
+The [long-location action boundary](#long-location-action-boundary) identifies
+an additional unimplemented correction: native size and unresolved-link failures
+must not report an extant location missing. A replacement long-location metadata,
+classification and submission route is still required; source/SDK analysis alone
+does not complete that design or extend the short-path acceptance above.
+
 ## Operations
 
 Every root below is nullable and requires **workspace:control AND
@@ -227,6 +233,60 @@ action submitted no domain request, not that preceding root actions did nothing.
 Provider input checks do not turn whole-mutation authorization into transactional
 input validation. Disconnection/cancellation after submission is not rollback;
 transport outcome can be unknown even when the app opens successfully.
+
+### Long-location action boundary
+
+Search returns locations through 8,192 UTF-8 bytes. That is a discovery value
+ceiling, not a new action input bound or a guarantee of native actionability.
+Action paths retain their existing literal absolute-path syntax. Distinguish
+supplied text, symlink-expanded/native spelling, native classification and the
+actual submitted request. Neither source length nor a successful controlled
+adapter result proves the later stages can act.
+
+The selected error repair is **designed and unimplemented**. Native path-size
+refusal and unresolved link-limit exhaustion mean failed inspection, never
+PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED. An inconclusive native type,
+identifier, identity or registration inspection also means failed; it cannot
+establish identity mismatch or no default handler. Missing-component/not-directory
+results establish a dependency only when the relevant lookup actually resolved
+that component/spelling. A higher-level no-such-file result that merely wraps
+another stage's failure is insufficient. Preserve the cause in human guidance
+without adding an error kind or dependency enum. Before submission, refuse
+uncertainty without effects; after submission, keep the existing failed/ambiguous
+outcome and never replay.
+
+The existing whole-path metadata route does not support claiming this handoff
+complete. Component-relative lookup and canonical path observation are candidate
+building blocks, not substitutes for native application/alias/type classification,
+bundle identity/identifier or registration checks. A public supported route for
+all those prerequisites and the unchanged selected location still needs design
+and mandatory review. The [source and SDK analysis](../verification/long-action-native-boundary.md)
+records current limitations, candidate API boundaries and independent subjects;
+it selects no private policy or deprecated conversion as a repair.
+
+Retain workspace and desktop controls, prompt-free reads, payload refusals,
+exact installation constraints, handler semantics, cancellation and acknowledgment
+bounds. Never clip/rewrite a location, remove applicationPath or retry another
+copy. Protected default-document opening and the third-party reveal notice remain
+their existing decisions. Do not accept a shorter domain, disabled action or
+copy-only workflow in place of the required long-file and constrained-app cases.
+
+Use the existing private action adapter enabling point for deterministic
+stage/error mapping, independent provider/public GraphQL for the real contract,
+independently retained old/new binaries for compatibility, and signed isolated
+macOS for actual search-to-action outcomes. Required working subjects include
+a roughly 1,500-byte ordinary file opened by its default handler and Zed and
+revealed in Finder, and a long registered application launched with its selected
+identifier and path while another copy runs. Observe delivery/selection/copy
+independently; a search-result injection or acknowledgment alone cannot close
+these cases. Construction/registration/classification/submission failure stays
+pending for its intended subject. Existing short-path evidence cannot close it.
+
+The repaired release retains the contract version, input/result shapes and
+error kinds, with its own exact descriptions/digest and candidate profile. Keep
+the independently retained 1.0.0 action-only bundle/profile unchanged. Implementing
+and executing the reviewed route belongs to this increment's planning work;
+measured workflow omissions feed the existing operator decision before acceptance.
 
 ## Ownership, native design and alternatives
 

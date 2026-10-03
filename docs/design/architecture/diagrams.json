@@ -2,64 +2,55 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Repair path prerequisites before classification",
-    "status": "Reviewed design \u00b7 producer repairs and reviews required",
-    "summary": "Resolver bounds and name-preserving locations remain selected. Review found missing pre-open foreign-mount/symlink witness rules and incomplete replay/metadata phases; current/prefix size scopes need independent-proof repair. Two producer/review chains precede classification and its review, then whole-resource review/planning. Long-result actions require launch/open design/review: the search ceiling is no actionability guarantee. No call set, account, domain, consent or accepted workflow coverage changes; native/binary/no-dialog/useful outcomes and the operator omissions decision remain pending.",
+    "title": "Separate long-location action prerequisites",
+    "status": "Boundary design · route unresolved · mandatory review next",
+    "summary": "Source length, expanded/native spelling, classification and submission have separate limits. Size and uncertain metadata must not invent dependency absence; this repair is designed and unimplemented. A supported long-location action route still needs design/review before search consumers. Short-path evidence, controls, selected installation, consent policy and public shapes remain bounded and unchanged.",
     "diagramIds": [
-      "search-canonical",
-      "search-traversal",
-      "search-coverage",
+      "workspace-long-locations",
+      "workspace-open",
+      "workspace-outcomes",
       "search-handoff",
-      "search-resources",
-      "search-inspection",
-      "search-serviceability"
+      "workspace-inspection",
+      "search-canonical"
     ],
     "updatedDiagrams": [
       {
-        "id": "search-canonical",
-        "summary": "Marks mount/symlink witnesses, replay composition and current/prefix size scopes as producer repairs; preserves resolver bounds and names."
+        "id": "workspace-long-locations",
+        "summary": "Adds the four action stages, proposed failure repair and unresolved native route."
       },
       {
-        "id": "search-traversal",
-        "summary": "Retains FIFO and listed tasks; marks current-turn replay and independently proved prefix-size continuation unresolved."
+        "id": "workspace-open",
+        "summary": "Separates uncertain inspection from missing prerequisites and labels long support unimplemented."
       },
       {
-        "id": "search-coverage",
-        "summary": "Retains exact name-preserving queued size semantics; distinguishes genuine shared-proof failure from unresolved current/prefix size scope."
+        "id": "workspace-outcomes",
+        "summary": "Rejects size and uncertain metadata as absence while retaining the submission boundary."
       },
       {
         "id": "search-handoff",
-        "summary": "Discloses PATH_MAX-limited action inspection and launch/open design/review for long returned locations."
-      },
-      {
-        "id": "search-resources",
-        "summary": "Keeps k119 allocation constraints; replay/metadata composition and classification need repair before whole-resource review."
-      },
-      {
-        "id": "search-inspection",
-        "summary": "Marks missing replay/bracket/final-membership phases; no third descriptor or uncharged reacquisition is inferred."
+        "summary": "Marks the error repair designed and the supported route/review still required."
       }
     ]
   },
   "groups": [
     {
       "id": "search",
-      "title": "Application and file search \u00b7 designed",
+      "title": "Application and file search · designed",
       "description": "Resolver bounds and name-preserving locations remain selected. Review found missing pre-open foreign-mount/symlink witness rules and incomplete replay/metadata phases; current/prefix size scopes need independent-proof repair. Two producer/review chains precede classification and its review, then whole-resource review/planning. Long-result actions require launch/open design/review: the search ceiling is no actionability guarantee. No call set, account, domain, consent or accepted workflow coverage changes; native/binary/no-dialog/useful outcomes and the operator omissions decision remain pending."
     },
     {
       "id": "workspace",
-      "title": "Launch and open \u00b7 designed, not yet served",
+      "title": "Launch and open · designed, not yet served",
       "description": "Installed application selection, web/document opening and Finder reveal. Native acknowledgment does not certify rendered contents or foreground state; document handlers can execute content or follow redirects."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection \u00b7 designed, not yet served",
+      "title": "First-party selection · designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension \u00b7 designed, not yet served",
+      "title": "Workflow extension · designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -145,7 +136,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Discloses PATH_MAX-limited action inspection and launch/open design/review for long returned locations. Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Witness and observation-phase repairs/reviews precede classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending."
+      "caption": "Discloses PATH_MAX-limited action inspection and launch/open design/review for long returned locations. Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Witness and observation-phase repairs/reviews precede classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "search-discovery",
@@ -163,7 +154,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",
@@ -172,7 +163,7 @@
       "renderer": "svg",
       "source": "workspace-open.puml",
       "rendered": "workspace-open.svg",
-      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits."
+      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "workspace-outcomes",
@@ -181,7 +172,7 @@
       "renderer": "svg",
       "source": "workspace-outcomes.d2",
       "rendered": "workspace-outcomes.svg",
-      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection."
+      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "provider-selection",
@@ -290,6 +281,15 @@
       "source": "sdk-contributions.d2",
       "rendered": "sdk-contributions.svg",
       "caption": "The shared Swift framework as the loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Independently built old/new binaries are verified through the native plugin seam (docs/verification/binary-compatibility.md); native trust is distinct from client capabilities."
+    },
+    {
+      "id": "workspace-long-locations",
+      "group": "workspace",
+      "title": "Separate long-location lookup, classification and submission",
+      "renderer": "svg",
+      "source": "workspace-long-locations.d2",
+      "rendered": "workspace-long-locations.svg",
+      "caption": "Boundary design, not a selected complete action route or native acceptance. Search supplies up to 8192 UTF-8 bytes; original and expanded/native lengths differ. Component presence cannot replace native payload/bundle/identity/registration facts. Size, link-limit and uncertain metadata failures must not fabricate dependency absence; the correction is unimplemented. The actual roughly 1500-byte file/default/Zed/reveal and constrained-app cases remain pending. Mandatory boundary review precedes route design; final route review precedes search consumers. No shorter domain, copy-only baseline, new consent or private policy is accepted."
     }
   ]
 }
