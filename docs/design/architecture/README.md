@@ -36,16 +36,18 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel focuses on clarified coverage meanings and open
-discovery obligations, with selection handoff, evidence and metadata as context.
+The current-discussion panel focuses on fixed-region Preboot admission,
+depth-first traversal/root depth counts and canonical application identity.
 The [discovery obligations](../../specs/workspace-search.md#discovery-obligations-before-planning)
-require repaired Preboot admission, traversal/diagnostic aggregation and application
-identity before planning, followed by their load-bearing review. Parent-keyed
-frontier/depth groups can still stop deeper scans; distinct app paths can identify
-one bundle. BLOCKED uses null matches/dependency and exact coverage without
-a search execution error; UNKNOWN consent does not mean missing named consent.
-Its load-bearing review and runtime acceptance remain pending. No reduced
-home/application baseline is accepted; existing framework failure mapping is fixed.
+require their load-bearing review before planning and actual-adapter acceptance
+for Safari/Finder, protected Library-link resolution and useful home discovery.
+Held streams eliminate width-dependent queues but cost up to 512 descriptors
+per job; exact failures/deadlines and depth-first partial order remain limits.
+Canonical target names/paths make app ranking independent of link/direct route;
+native bundle identity merges one installation without merging distinct copies
+with equal identifiers. BLOCKED retains its separate review, null matches and
+UNKNOWN consent. No reduced home/application baseline is accepted, and existing
+framework failure mapping stays fixed.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -63,20 +65,19 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views:
 
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Clarified
-  affected group anchors, matchable frontier/depth names, remainders with or
-  without progress, and total diagnostic room versus individual path limits;
-  made the open admission/traversal design obligations visible.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Replaced FIFO
+  frontier/parent-depth diagnostics with root-cyclic DFS held streams and a
+  reserved depth group; narrowed Preboot admission without read-only dependence.
 - [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  Made the pending application identity/representative-spelling design visible;
-  retained blocked-scope guidance and installation-constrained actions.
-- [Search contract → selection and publication](../../specs/workspace-search.md#selection-and-publication-invariants) —
-  Defined coverage-only/aliased matches, error-free branch invariants, mixed
-  roots and live-revocation expectations.
-- [Prompt-risk decision](../../adr/prompt-risk-is-search-data.md) — Chose typed
-  result data over a new permanent framework diagnostic and stated its reopen condition.
-- [Machine → provider failure compatibility](../../specs/machine.md#provider-failure-compatibility) —
-  Preserved all existing kinds and nil/blank/named consent mapping without new accessors.
+  Merged link/direct routes by native identity, using canonical target names/paths
+  for matching, ranking and selection while preserving both-control handoff.
+- [Search contract → resource accounting](../../specs/workspace-search.md#resource-accounting-and-scheduling) —
+  Accounted for 32 frames per root, descriptor pressure, reserved depth counts,
+  monotone route-independent top-N and unchanged exact exceptional diagnostics.
+- [Application identity decision](../../adr/application-search-uses-bundle-identity.md) —
+  Chose canonical bundle names over alias-dependent rank/history and distinct-path duplicates.
+- [Coverage decision](../../adr/search-coverage-describes-observations.md) —
+  Reworked held-stream/depth-group trade-offs and the retained-value ceiling in place.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -151,3 +152,14 @@ The coverage-clarification/discovery-obligation revision was regenerated with
 meanings, pending-design labels, outcome branches and action arrows were readable
 without clipping. This is static light rendering; the earlier Safari, narrow
 reflow and dark-mode observations do not validate these revised exports.
+
+The fixed-region/DFS/canonical-identity revision was checked in Safari on the
+isolated macOS 26.5/25F71 clone `koine-k101-design`. Fresh coverage/handoff
+deep links identified the intended views, with readable labelled starts and
+changed traversal/identity labels at a 1600-pixel window width. The 800-pixel
+dark discussion panel reflowed with its status, relevant links, changed-view
+summaries and outline; wide dark presentation retained readable light SVGs.
+The manifest and both changed SVGs had matching per-file SHA-256 values in the
+workspace and guest copy. Static full-view rasters were also inspected for
+group/outcome and action branches. This checks presentation, not search API,
+provider-binary, prompt-free native-call or useful-coverage acceptance.

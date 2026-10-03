@@ -14,19 +14,32 @@ searched. Increasing that shared budget merely moves the cutoff and permits
 one root to starve later roots. Root summaries, intrinsic anchor counts and
 independent root partitions decouple ordinary-directory/intrinsic diagnostic
 volume from name discovery and prevent one root spending another's credits.
-Exact exceptional parents and permission targets remain visible, but
-parent-keyed frontier/depth groups can still exhaust diagnostics and stop deeper
-discovery. The [open discovery obligations](../specs/workspace-search.md#discovery-obligations-before-planning)
-require a fresh traversal/aggregation design and review before planning; this
-granularity choice does not settle that schedule or accept its sample.
+Depth-first held-stream stacks remove the width-dependent pending queue; one
+reserved root depth-bound group counts encountered anchors whose descendants
+were omitted, while their names remain matchable. Exact invalid/overlong-name
+parents, exceptional failures and permission targets stay visible and can still
+exhaust diagnostics. This distinction binds the public count/extent vocabulary.
 Resource exhaustion preserves an honest remainder. Match slots reserve their
 maximum size separately so metadata growth cannot consume diagnostics or
-change which ranked names fit. The four admitted jobs can retain about 157 MiB
-of charged coverage/frontier/match/wrapper values plus bounded scratch, including
+change which ranked names fit. The four admitted jobs can retain less than 53.032 MiB
+of charged coverage/stack/match/anchor/wrapper values plus bounded scratch, including
 while native calls block; this is an accounting ceiling, not allocated memory
 or RSS. This costs reserved capacity and withholds the
-identities of grouped exclusions. It provides neither a reproducible partial
+identities of grouped exclusions. Held ancestor streams cost up to 512 traversal
+descriptors per job; the OS may refuse before that ceiling. Depth-first partial
+order can spend a root's allowance on an early branch before later siblings.
+Those omissions remain explicit and pending acceptance, not a reproducible partial
 sample nor an exhaustive installed-app inventory.
+
+Breadth-first FIFO with four streams needs a wide pending queue and rejects deep
+work before reaching it; larger arbitrary queues move the cutoff. Closing and
+reopening ancestor streams substitutes unstable continuation/repeated work for
+descriptor cost. Reopen held-stream traversal if actual-adapter evidence shows
+unacceptable descriptor pressure or lost required witnesses, before accepting
+any changed domain/setup. The
+[discovery obligations](../specs/workspace-search.md#discovery-obligations-before-planning)
+require load-bearing review and actual Safari/Finder/home acceptance; arithmetic
+establishes no throughput or native prompt guarantee.
 
 An exhaustive index or persistent paginated search would retain more history,
 but adds lifetime, invalidation, consent and availability contracts. The

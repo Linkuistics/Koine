@@ -77,13 +77,17 @@ roots and an honest report of what the mechanism cannot see.
    its own review. No new diagnostic ABI dependency is needed.
 
 `search-coverage-k100` triages the discovery review: scope/remainder/reason and
-constructible acceptance clarifications land in place, while `search-defaults-k101`
-repairs narrow Preboot admission, traversal/diagnostic aggregation and application
-identity before cutting its own load-bearing review. k99 reconciles any intervening
-shared-file edits without losing its separate BLOCKED transport responsibility.
+constructible acceptance clarifications land in place. `search-defaults-k101`
+replaces read-only admission with fixed presentation-region/Preboot mount checks,
+FIFO frontier with root-cyclic DFS held streams and one reserved root depth group,
+and route-dependent app spellings with canonical target names/paths and native
+bundle identity. Its load-bearing review must retire before planning. Descriptor
+costs, changed observations and actual default/home witnesses remain acceptance
+obligations; alias-named links remain file locations, not extra application names.
+k99 reconciles shared-file edits without losing its BLOCKED responsibility.
 
 These producer/review repairs live in this node, so planning cannot run before
-they retire. The durable design marks discovery repair and transport review pending;
+they retire. The durable design marks discovery review and transport review pending;
 arbitrary sampling is unaccepted and the diagnostic choice adds no new ABI.
 
 ## Decisions (running log)

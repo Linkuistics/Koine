@@ -72,8 +72,8 @@ baseline acceptance: Antony must accept/disclose the explicit partial home domai
 or approve a separate traversal-consent/setup contract. Review integration k95
 also routes any proposed weakening through that decision with explicit final
 bound-driven omissions; arbitrary default-search samples are not accepted.
-Default discovery/resource design and compatible prompt-risk transport must
-be repaired and reviewed before search implementation planning. That is distinct from
+Default discovery/resource design and compatible prompt-risk transport await
+load-bearing review before search implementation planning. That is distinct from
 `protected-default-open-k89`'s handler lookup, but any chosen setup must be
 coordinated. No new consent, entitlement or usage key is approved by search.
 

@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Search coverage meanings and open discovery obligations",
-    "status": "Designed · discovery repair and separate transport review pending",
-    "summary": "Groups count affected anchors: frontier/depth bounds omit descendants while names can match; invalid/overlong names are omitted too. REMAINDER describes unfinished work with or without progress; DIAGNOSTIC_LIMIT is total room and VALUE_LIMIT an individual path. Preboot admission, traversal/diagnostic growth and application identity need repair and review before planning. Typed BLOCKED retains null matches/dependency and exact coverage without a search execution error, including aliases and coverage-only queries; PROMPT_RISK has UNKNOWN consent. Existing failure mapping and live publication checks remain fixed. Native acceptance and the measured home-coverage decision remain pending.",
+    "title": "Useful discovery: fixed regions, bounded depth and one application choice",
+    "status": "Designed · discovery and transport review pending",
+    "summary": "Fixed presentation-region/Preboot mount identity admits local APFS read-write or read-only without broad Preboot access. Cyclic root turns use depth-first held streams with no width queue; one reserved root depth group counts matchable anchors whose descendants are omitted. Canonical target filename/path supplies application matching/ranking/display, and native bundle identity merges link/direct routes without merging distinct copies sharing an identifier. Descriptor costs and native-order/time omissions stay explicit; arithmetic is not native acceptance. Typed BLOCKED, exact permission targets and live publication behavior are unchanged. Actual Safari/Finder, sensitive Library-link resolution and useful home coverage remain pending.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Clarified group anchor names, no-progress remainders and diagnostic/path reasons; made the open admission/traversal obligations visible."
+        "summary": "Replaced FIFO frontier/parent diagnostics with root-cyclic DFS held streams and a reserved depth group; narrowed Preboot admission without read-only dependence."
       },
       {
         "id": "search-handoff",
-        "summary": "Made the pending one-choice application identity design visible while preserving BLOCKED guidance and constrained actions."
+        "summary": "Merged link/direct discovery by native bundle identity and used the canonical target name/path for matching, ranking and selection."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Exact coverage group/remainder meanings and typed BLOCKED data, with location handoff and measured native evidence. Discovery admission/traversal/application identity require repair and review; separate transport review and runtime/default coverage remain pending."
+      "description": "Designed fixed-region admission, depth-first/root-cyclic traversal and canonical application identity, with exact coverage and unchanged typed BLOCKED. Load-bearing design/transport reviews, actual-adapter default coverage and the human home decision remain pending."
     },
     {
       "id": "workspace",
@@ -72,7 +72,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed flow, not runtime acceptance. Groups count affected anchors, never all children: frontier/depth names remain matchable, invalid/overlong child names are omitted. REMAINDER applies with or without progress, at the resolved root or representable requested root; no-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT identifies total record/byte room; VALUE_LIMIT is an individual path bound. Cryptex admission, FIFO frontier/parent diagnostic growth and application identity require repair and review before planning. Real no-progress native/work failure precedes BLOCKED prompt risk, then pure absence/exclusion. BLOCKED keeps null matches/dependency, false truncation and no search execution error; consent is UNKNOWN. Publication denial can suppress branches; optional absent defaults keep COMPLETE. Native and bound-driven baseline acceptance remain pending."
+      "caption": "Designed flow, not runtime acceptance. Fixed presentation-region/Preboot mount admission permits read-write or read-only local APFS; arbitrary Preboot/mounts and file-search access remain unsupported. Root-cyclic 64-entry turns use depth-first held streams (32 frames per root); no wide directory queue. One reserved DEPTH_LIMIT root group counts encountered directory anchors: names remain matchable, descendants skip. Invalid/overlong children use exact-parent CHILD_GROUP and omit names too. Intrinsic groups retain their domain rules. REMAINDER covers unfinished work with or without progress; DIAGNOSTIC_LIMIT identifies total room, VALUE_LIMIT an individual path. Descriptor failures/deadlines and native-order partial coverage are explicit, never accepted sampling. BLOCKED/publication semantics are unchanged; review and actual default/home acceptance remain pending."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed location handoff. Discovery repair must settle a single application choice when link/canonical paths identify one bundle, including its representative observed spelling; path inequality alone does not establish separate installations. Clients inspect status, coverage and errors: BLOCKED displays skipped scope and UNKNOWN consent. Only AVAILABLE supplies choices. INSTALLED with a known identifier enables constrained launch; UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. Actions revalidate native identity, presence, registration and payload under both controls, never dropping the selected path constraint. Clients own clipboard/MRU. Runtime/native acceptance and protected-opening/reveal decisions remain separate."
+      "caption": "Designed location handoff. One native bundle directory identity makes one application choice; checked-link/direct routes use the filesystem-reported canonical target filename/path for matching, ranking and display. Equal identifiers do not merge separate native copies. Link alias names remain file locations, not extra application names. Root membership derives from observed matching routes under the spec's stability/race limits. Clients inspect status, coverage and errors; BLOCKED displays skipped scope and UNKNOWN consent. INSTALLED with known identifier enables constrained launch; actions revalidate under both controls, never dropping the selected path. Clients own clipboard/MRU. Review, actual native acceptance and existing protected-opening/reveal decisions remain pending."
     },
     {
       "id": "search-discovery",

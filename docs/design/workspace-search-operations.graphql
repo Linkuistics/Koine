@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Discovery admission/traversal/application identity need repair and review.
+# Canonical-target application identity and DFS/root depth counts await review.
 # Typed BLOCKED awaits its separate review; all runtime acceptance pending.
 # Result-count truncation and partial traversal are independent.
 
@@ -89,9 +89,14 @@ query InspectAliasedMatches($roots: [String!]) {
 # null metadata. Never retry an action by dropping its installation constraint.
 
 # Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
-# CHILD_GROUP/DESCENDANT_GROUP count observed anchors, not all children or
-# omitted descendant names. FRONTIER_LIMIT/DEPTH_LIMIT anchor names can match;
-# UNREPRESENTABLE_NAME/overlong-path VALUE_LIMIT anchors cannot be returned.
+# CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
+# those anchor names cannot be returned. DESCENDANT_GROUP counts intrinsic
+# or depth-bound anchors beneath the root: DEPTH_LIMIT names remain matchable.
+# Neither count describes all children or omitted descendants. No queue-width
+# FRONTIER_LIMIT is produced by this held-stream adapter.
+# App links discover canonical target names/paths, not alias-named choices;
+# link/direct routes merge by native bundle identity and combine rootIndices.
+# Distinct native copies sharing an identifier stay distinct. File links are locations.
 # REMAINDER describes unfinished work with or without progress, not the whole
 # root, and has count null. Anchor: resolved root, else representable requested
 # root. No-progress stops have UNKNOWN coverage and no searched record.

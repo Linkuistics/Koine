@@ -357,8 +357,8 @@ nothing".
 ## Searching for applications and files
 
 **Designed, not served yet.** Discovery admission, traversal/diagnostic growth
-and application deduplication [need repair before planning](specs/workspace-search.md#discovery-obligations-before-planning),
-then review and native acceptance; typed BLOCKED transport awaits its separate
+and canonical application identity [await load-bearing review before planning](specs/workspace-search.md#discovery-obligations-before-planning),
+then actual-adapter/default acceptance; typed BLOCKED transport awaits its separate
 load-bearing review.
 Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
@@ -367,12 +367,14 @@ and [example operations](design/workspace-search-operations.graphql) fix inputs,
 root defaults, bounds, ranking and coverage. Both roots and every output field
 need `workspace:read` only. Omitted/null roots use Koine's application directories
 or home; explicit roots replace them. Application defaults additionally include
-generic CoreServices and Cryptex application regions. Checked visible .app links
-can supply an observed application path; they never authorize target traversal.
-Link/canonical paths to one bundle still need a representative-spelling decision;
-do not infer distinct installations merely from two paths or equal identifiers.
-Query matching is a literal filename
-substring: app filename or `.app`-stripped stem, file full filename. Canonically
+generic CoreServices and Cryptex application regions. Checked visible .app links discover canonical bundle target names/paths; they
+never authorize target traversal or create alias-named application choices.
+Link/direct routes merge by native bundle directory identity. Distinct native
+copies with equal bundle identifiers stay distinct; each final choice retains
+observed matching rootIndices under the spec's stability/observation limits.
+Query matching is a literal filename substring: canonical app filename or
+`.app`-stripped stem, file full filename (including the file link's own name).
+Canonically
 equivalent Unicode spellings must match under the specified fixed folding;
 `zed` ranks `Zed.app` before `Zed Preview.app`. Complete means the declared
 visible-name domain, not everything on disk. A positively absent optional home
@@ -384,18 +386,20 @@ Read `status`, `matches`, each root's `coverage`, `dependency`,
 coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
 eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
 somewhere beneath that root. completedDirectories counts EOF listings, not an
-unchanged snapshot. Skipped CHILD_GROUP counts affected encountered anchors of
-its parent: FRONTIER_LIMIT/DEPTH_LIMIT omit descendants while anchor names can
-match; UNREPRESENTABLE_NAME/overlong-path VALUE_LIMIT omit the anchor too.
-DESCENDANT_GROUP counts intrinsic anchors beneath its root, including package
-or symlink anchors that can remain file matches. Neither says all children
+unchanged snapshot. Skipped CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
+the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
+depth-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
+group: anchor names remain matchable and only descendants are omitted; package
+or symlink intrinsic anchors can also remain file matches. Neither says all children
 were skipped. REMAINDER has null count and describes unfinished work with or
 without progress, anchored at the resolved root or representable requested root.
 No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
 means total diagnostic room (record/byte account identified in guidance);
 VALUE_LIMIT means an individual path bound. Independent root budgets prevent
-one root spending later roots' credits, but native stalls/deadlines can still
-leave them unvisited. Home excludes protected traversal. In a
+one root spending later roots' credits. Cyclic root turns run depth-first inside
+each root, with no pending-directory queue. Width/depth cannot exhaust diagnostics
+per parent, but exact native failures/invalid names can; native stalls, descriptor
+refusal and shared deadlines can still leave useful names unvisited. Home excludes protected traversal. In a
 BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
 Accessibility or established consent absence. BLOCKED is error-free search data,
@@ -436,8 +440,10 @@ their pending decisions described below.
 Search CAPACITY_LIMIT can persist after cancellation: slots are released only
 when native work and cleanup finish. If calls never return, recovery requires
 restarting the Koine process; provider stop/start does not replenish the pool.
-Four retained jobs can hold about 157 MiB of charged result/frontier values plus
-bounded scratch; this is an accounting ceiling, not allocated memory or RSS.
+Four retained jobs can hold less than 53.032 MiB of charged result/stack/anchor
+values plus bounded scratch, with up to 512 traversal streams per job. The OS
+may refuse descriptors sooner; no resource-limit setup is implicit. These are
+accounting ceilings, not allocated memory, RSS or a promise of useful coverage.
 
 ## Launching an application
 

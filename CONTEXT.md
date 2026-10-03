@@ -137,8 +137,9 @@ completeness could not be established.
 
 **Search scope group**: A counted set of encountered scope anchors sharing an
 exclusion reason, with child identities withheld; the reason determines whether
-anchor names or only descendants are omitted. CHILD_GROUP anchors belong to the
-named parent; DESCENDANT_GROUP anchors lie beneath the named root; counts never
+anchor names or only descendants are omitted. CHILD_GROUP invalid/overlong-name
+anchors belong to the named parent; DESCENDANT_GROUP intrinsic/depth-bound
+anchors lie beneath the named root (depth anchors remain matchable); counts never
 mean all children or omitted descendant names.
 
 **Search remainder**: Eligible work unfinished when a search freezes, with or
@@ -161,6 +162,12 @@ state is UNKNOWN, with no matches list and explicit **Search coverage**.
 **Search location**: An observed filesystem path returned for later client
 selection, distinct from a **resource reference** and from a pinned native file
 identity. A later action revalidates the path and may encounter another occupant.
+
+**Search application identity**: The established native bundle directory identity
+used to merge checked-link and direct discovery routes in one search. Its
+filesystem-reported canonical name/path supplies matching, ranking and the
+selected location; equal bundle identifiers do not merge distinct native copies.
+It is neither a process incarnation nor a query-long pinned file identity.
 
 ## Example dialogue
 
