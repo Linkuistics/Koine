@@ -126,6 +126,27 @@ reference** is still valid or a successful query has any results.
 tool instance and its containing terminal session, not a shared **resource
 reference** or an atomic snapshot across **providers**.
 
+**Search domain**: The names eligible for a search beneath its effective roots,
+after its declared intrinsic exclusions. It is narrower than all filesystem
+contents and does not establish an exhaustive installed-application inventory.
+
+**Search coverage**: One effective root's completeness within the **search
+domain**: COMPLETE means all eligible names were examined, PARTIAL means some
+were examined with omissions, and UNKNOWN means useful examination or
+completeness could not be established.
+
+**Search progress**: Examination of an entry or observation of an empty
+directory's end, used to distinguish an available partial search from one
+that obtained no eligible observation.
+
+**Prompt risk**: A known possibility that an inspection would request OS
+consent, causing Koine to skip it under its read policy. It is not an observation
+that Koine lacks consent.
+
+**Search location**: An observed filesystem path returned for later client
+selection, distinct from a **resource reference** and from a pinned native file
+identity. A later action revalidates the path and may encounter another occupant.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

@@ -38,6 +38,9 @@ old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel focuses on the designed search coverage and selection
 handoff, with discovery evidence and the metadata/handler view as unchanged context.
+Search review repair requires fresh default-discovery/resource and prompt-risk
+transport producer decisions before implementation planning. The 512-record
+DFS proposal and nil-consent framework mapping are not accepted instructions.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -55,15 +58,17 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views:
 
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Added the
-  per-root coverage and aggregate outcome branches, including nullable matches
-  with scoped prompt-risk errors while coverage survives.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Corrected
+  no-progress precedence: real failure, then any prompt risk, then pure
+  absence/exclusion. BLOCKED preserves coverage and no list; error transport
+  awaits its producer decision.
 - [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  Added client choice/clipboard ownership and constrained inputs to existing
-  separately authorized actions with fresh revalidation.
-- [Search contract](../../specs/workspace-search.md) — Fixed filename semantics,
-  defaults, native/retained-value limits, unknown metadata, error diagnostics and
-  the pending three-seam acceptance contract.
+  UNREGISTERED/UNKNOWN choices remain reveal/copy candidates; only INSTALLED
+  supplies the constrained launch input. Existing actions still revalidate.
+- [Search contract](../../specs/workspace-search.md) — Repaired Unicode/app-stem
+  ranking, absent optional-default coverage, registration state, blocked-worker
+  recovery and exact compatibility-profile subjects. Default discovery/resource
+  representation and prompt-risk transport remain explicitly unsettled.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
@@ -115,3 +120,9 @@ outcome branches were readable at a wide window size in light and dark
 appearance. The discussion, changed markers and outline reflowed at an
 800-pixel window width; narrow fit remains an overview as described above.
 These are presentation checks; native search acceptance remains pending.
+That Safari check predates the review repairs above and does not validate the
+current regenerated exports. In k95, the regenerated coverage and handoff SVGs
+were rasterized with librsvg and inspected at 1200/900-pixel widths: labelled
+starts, outcome branches, arrows and handoff text were readable without clipping.
+This checks static light rendering; it is not a new Safari/reflow or dark-mode
+check and makes no native search claim.

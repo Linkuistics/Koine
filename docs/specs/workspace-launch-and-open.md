@@ -24,8 +24,11 @@ The designed [application/file search extension](workspace-search.md) feeds thes
 same inputs: a selected installed application supplies both identifier and
 installation path; a file supplies its literal path. Search does not issue a
 reference, resolve a default handler, write the clipboard or weaken action-time
-revalidation. Its standalone SDL remains separate until implementation extends
-the exact workspace conformance profile.
+revalidation. Its standalone SDL remains separate pending design review repair.
+Implementation adds an exact search-required profile for the search-serving
+host. The unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins run
+against a separate compatibility host containing that independently retained
+bundle; they do not describe the upgraded bundled search provider.
 
 ## Operations
 

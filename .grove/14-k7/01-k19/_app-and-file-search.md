@@ -17,8 +17,10 @@ Design installed-application search and file search, and how a result feeds
 - Durable design: `docs/specs/workspace-search.md`,
   `docs/design/workspace-search-schema.graphql` and
   `docs/design/workspace-search-operations.graphql`; the architecture viewer's
-  search coverage and handoff views accompany them. Search and the minor-2
-  diagnostic extension remain designed, pending implementation/acceptance.
+  search coverage and handoff views accompany them. Review integration requires
+  fresh default-discovery/resource and prompt-risk transport design before
+  planning; the nil-consent minor-2 mapping is withdrawn as an instruction.
+  Search remains pending implementation/acceptance.
 
 - `provider-architecture-k5` and `launch-and-open-k18`.
 - Requirement rows Application search and File search, and the empty-result
@@ -61,6 +63,15 @@ roots and an honest report of what the mechanism cannot see.
    action contract before the increment's existing planning leaf.
 3. Fresh `review-design` of k92's load-bearing API, coverage and diagnostic
    contract, before the increment's planning leaf.
+4. `app-and-file-search-k95` triages that review and applies bounded repairs.
+5. `search-coverage-k96` reworks default discovery, scope representation and
+   resource arbitration; its producer cuts a load-bearing review.
+6. `search-permission-transport-k97` settles compatible BLOCKED transport and
+   the ADR/complete mapping contract; its producer cuts its own review.
+
+Both producer/review repairs live in this node, so planning cannot run before
+they retire. The durable design explicitly marks those decisions unsettled;
+the integration did not accept either arbitrary sampling or the nil-consent ABI.
 
 ## Decisions (running log)
 

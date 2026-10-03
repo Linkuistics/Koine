@@ -356,34 +356,47 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** Introspect for `workspaceSearchApplications` and
+**Design under review repair, not served yet.** Default discovery/resource bounds
+and prompt-risk transport require producer decisions before implementation.
+Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
 [search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
 and [example operations](design/workspace-search-operations.graphql) fix inputs,
 root defaults, bounds, ranking and coverage. Both roots and every output field
 need `workspace:read` only. Omitted/null roots use Koine's application directories
 or home; explicit roots replace them. Query matching is a literal filename
-substring, and complete means the declared visible-name domain, not everything
-on disk.
+substring: app filename or `.app`-stripped stem, file full filename. Canonically
+equivalent Unicode spellings must match under the specified fixed folding;
+`zed` ranks `Zed.app` before `Zed Preview.app`. Complete means the declared
+visible-name domain, not everything on disk. A positively absent optional home
+Applications default has COMPLETE empty-domain coverage with
+OPTIONAL_ROOT_ABSENT; an explicitly supplied missing root remains UNKNOWN.
 
 Read `status`, `matches`, each root's `coverage`, `dependency`,
 `resultsTruncated` and errors together. Empty matches with PARTIAL/UNKNOWN
-coverage is not complete empty. Home excludes protected traversal. In an
-all-blocked result, matches is null with an OS-permission error when selected;
-coverage remains available. The new error can omit `osPermission` and instead
-name `permissionReason: prompt-risk` and `permissionTarget`: preserve that class
-and show the guidance, rather than claiming Accessibility or consent absence.
-All-native-failure and missing/unsupported-root outcomes are different again.
+coverage is not complete empty. Home excludes protected traversal. In a
+BLOCKED result, matches is null and coverage remains available. Coverage's
+PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
+Accessibility or established consent absence. Its GraphQL error transport is
+unsettled; clients must not assume the withdrawn nil-consent mapping. With no
+progress, real native/work failure wins, then any prompt-risk scope is BLOCKED,
+then purely missing/unsupported roots have a dependency outcome. A missing root
+alongside prompt risk does not turn the request into a native failure.
 
 Derive choices locally. An INSTALLED application with a known identifier feeds
 both that identifier and `applicationPath` to the constrained launch below;
-UNKNOWN installations cannot launch by this route. File paths feed existing
-open/reveal operations. Null default-app metadata is unknown, not no handler.
+UNREGISTERED and UNKNOWN installations remain reveal/copy choices and cannot
+launch by this route; a known identifier can still be copied. File paths feed
+existing open/reveal operations. Null default-app metadata is unknown, not no handler.
 Search classification does not pin a file or promise that opening will succeed.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain
 their pending decisions described below.
+
+Search CAPACITY_LIMIT can persist after cancellation: slots are released only
+when native work and cleanup finish. If calls never return, recovery requires
+restarting the Koine process; provider stop/start does not replenish the pool.
 
 ## Launching an application
 

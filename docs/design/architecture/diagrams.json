@@ -3,8 +3,8 @@
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
     "title": "Search coverage and selection handoff",
-    "status": "Design recorded · implementation and acceptance pending",
-    "summary": "Filename enumeration reports every effective root's complete/partial/unknown domain coverage. Known protected traversal is skipped before access; an all-blocked result retains coverage and withholds matches with a scoped OS-permission error, without inventing a consent. Clients own choice, clipboard and MRU; existing actions revalidate location inputs under both control grants.",
+    "status": "Review repairs recorded · discovery/budgets and prompt-risk transport need design",
+    "summary": "Search retains every root's coverage and withholds a list for blocked scope. With no progress, real failure precedes prompt risk, which precedes pure absence/exclusion. Default discovery/resource representation and prompt-risk error transport require producer decisions before planning; no nil-consent framework mapping is authorized. Clients own choice, clipboard and MRU; only INSTALLED apps can launch, and existing actions revalidate under both controls.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Added per-root searched/skipped coverage and distinct available, all-blocked, dependency and failed publication branches."
+        "summary": "Repaired no-progress precedence and exposed the pending discovery/budget and BLOCKED transport decisions."
       },
       {
         "id": "search-handoff",
-        "summary": "Added client query/choice/clipboard ownership and selected locations feeding separately authorized existing actions with revalidation."
+        "summary": "Retained UNREGISTERED/UNKNOWN reveal/copy choices; only INSTALLED supplies a constrained launch selector."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Scope, coverage and location handoff, with bounded native evidence as context. The new streaming adapter and scoped diagnostics remain implementation/acceptance obligations."
+      "description": "Scope, coverage and location handoff, with bounded native evidence as context. Default discovery/resource representation and prompt-risk transport need producer design before implementation and acceptance."
     },
     {
       "id": "workspace",
@@ -68,11 +68,11 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Report every root and preserve all-blocked coverage",
+      "title": "Report every root and distinguish blocked scope from failure",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed read contract, pending implementation and G/N/V acceptance. Complete covers the declared visible-name domain, never an atomic filesystem snapshot. Home is partial; protected/cloud/unsupported scope and work limits remain explicit. All prompt-risk roots produce BLOCKED with a nullable matches error while coverage survives. Its scoped-permission-diagnostics-v1 framework addition reports unknown consent state without a consent identifier. Native memory, syscall and same-user race limits remain; no new consent/setup/entitlement is approved."
+      "caption": "Review-repaired read contract, pending producer decisions, implementation and G/N/V acceptance. Complete covers the declared domain; a positively absent optional home Applications default has an empty domain. With no progress, real native/work failure precedes any prompt risk, which precedes pure absence/exclusion. BLOCKED retains coverage without a list; its error transport is unsettled and no nil-consent ProviderFailure mapping is authorized. Default discovery, child-exclusion extents and budget arbitration need rework. Permanently blocked workers recover only on a full Koine restart. No new consent/setup/entitlement is approved."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed component/data handoff within the existing workspace provider, not deployment containers. Search requires workspace:read; launch/open/reveal and receipts require workspace:control AND desktop:control. A selected installed app keeps both identifier and installation path. File locations are not pinned identities; unknown installation/default-handler values do not become absence or a fallback. Clipboard writes, chooser and MRU remain client-owned. Protected default opening and the third-party app-reveal notice retain their existing live decisions; search-to-action acceptance is pending."
+      "caption": "Designed component/data handoff within the existing workspace provider, not deployment containers. Search requires workspace:read; launch/open/reveal and receipts require workspace:control AND desktop:control. Only an INSTALLED app launches, with both identifier and path; UNREGISTERED and UNKNOWN remain reveal/copy candidates. File locations are not pinned identities; unknown default-handler values do not become absence or a fallback. Clipboard writes, chooser and MRU remain client-owned. Protected default opening and the third-party app-reveal notice retain their existing live decisions; search-to-action acceptance is pending."
     },
     {
       "id": "search-discovery",

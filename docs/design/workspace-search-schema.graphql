@@ -1,8 +1,10 @@
 # Designed additive workspace search contribution; not served behavior.
 # Every root and every reachable output field requires workspace:read only.
 # Compose after workspace-schema.graphql; no foreign provider type is imported.
+# Review requires default-discovery/resource and prompt-risk transport designs
+# before implementation. Scope extents/bounds and BLOCKED errors are unsettled.
 
-"""Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches with an execution error at matches. Inspect publication errors and every root's coverage."""
+"""Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches. With no progress, real native/work failure precedes prompt risk, which precedes pure absence/exclusion. FAILED raises an error at matches; BLOCKED transport awaits design. Inspect publication errors and every root's coverage."""
 enum WorkspaceSearchStatus {
   AVAILABLE
   BLOCKED
@@ -24,7 +26,7 @@ enum WorkspaceSearchScopeExtent {
   SUBTREE
 }
 
-"""Closed skip reasons. Only HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS and SPECIAL_FILE are intrinsic domain exclusions; all others affect coverage."""
+"""Closed skip reasons. Only HIDDEN, PACKAGE_CONTENTS, SYMLINK_DESCENDANTS, SPECIAL_FILE and OPTIONAL_ROOT_ABSENT are intrinsic domain exclusions; all others affect coverage. Child-exclusion grouping awaits coverage redesign."""
 enum WorkspaceSearchSkipReason {
   HIDDEN
   PACKAGE_CONTENTS
@@ -36,6 +38,7 @@ enum WorkspaceSearchSkipReason {
   UNSUPPORTED_VOLUME
   MOUNT_BOUNDARY
   ROOT_NOT_FOUND
+  OPTIONAL_ROOT_ABSENT
   ROOT_NOT_DIRECTORY
   ACCESS_DENIED
   INSPECTION_FAILED
@@ -86,7 +89,7 @@ type WorkspaceSearchSkippedScope {
   guidance: String!
 }
 
-"""Requires workspace:read. Exactly one per effective root, in input order, including missing, duplicate and never-scheduled roots."""
+"""Requires workspace:read. Exactly one per effective root, in input order, including missing, duplicate and never-scheduled roots. Positively absent optional home Applications default: COMPLETE, zero entries, no searched scopes, OPTIONAL_ROOT_ABSENT with affectsCoverage false; no progress. Explicit missing roots remain UNKNOWN/ROOT_NOT_FOUND."""
 type WorkspaceSearchRootCoverage {
   rootIndex: Int!
   requestedPath: String!
@@ -106,9 +109,10 @@ type WorkspaceSearchDependency {
   guidance: String!
 }
 
-"""INSTALLED is a present application with a nonblank identifier registered at its native file identity. UNKNOWN cannot form a launch selector. Positively unregistered bundles are omitted."""
+"""INSTALLED is a present application with a nonblank identifier registered at its native file identity. UNREGISTERED positively lacks registration at that identity; UNKNOWN lacks established metadata/registration. Both remain reveal/copy candidates, and neither forms a launch choice."""
 enum WorkspaceSearchInstallationState {
   INSTALLED
+  UNREGISTERED
   UNKNOWN
 }
 
@@ -164,10 +168,10 @@ type WorkspaceFileMatch {
   rootIndices: [Int!]!
 }
 
-"""Requires workspace:read throughout. Coverage survives all-blocked/all-failed matches errors unless normal publication denial propagates. No error-free result has both matches and dependency."""
+"""Requires workspace:read throughout. Coverage survives FAILED matches errors unless normal publication denial propagates. BLOCKED withholds the list; its transport awaits design. No error-free result has both matches and dependency."""
 type WorkspaceApplicationSearchResult {
   status: WorkspaceSearchStatus!
-  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED raises permission/os-permission here; FAILED raises failed here. Native absence is not encoded as an empty successful list."""
+  """Non-null exactly for AVAILABLE absent publication errors. FAILED raises failed here; BLOCKED transport awaits design, with no nil-consent ProviderFailure mapping authorized. Native absence is not encoded as an empty successful list."""
   matches: [WorkspaceApplicationMatch!]
   coverage: [WorkspaceSearchRootCoverage!]!
   dependency: WorkspaceSearchDependency
@@ -178,7 +182,7 @@ type WorkspaceApplicationSearchResult {
 """Requires workspace:read throughout. Empty AVAILABLE may be partial; inspect coverage and errors. BLOCKED/FAILED carry no list, not a healthy empty result."""
 type WorkspaceFileSearchResult {
   status: WorkspaceSearchStatus!
-  """Non-null exactly for AVAILABLE absent publication errors. BLOCKED raises permission/os-permission here; FAILED raises failed here."""
+  """Non-null exactly for AVAILABLE absent publication errors. FAILED raises failed here; BLOCKED transport awaits design."""
   matches: [WorkspaceFileMatch!]
   coverage: [WorkspaceSearchRootCoverage!]!
   dependency: WorkspaceSearchDependency
@@ -186,8 +190,8 @@ type WorkspaceFileSearchResult {
 }
 
 extend type Query {
-  """Requires workspace:read only, including every result field. Literal case/diacritic-insensitive filename substring, at most 256 UTF-8 bytes, no NUL; empty matches all. Omitted/null roots use /Applications, /System/Applications and Koine-home Applications; supplied roots replace them (1...16 literal absolute local paths, at most 4096 bytes each). Non-null limit is 1...200, default 50. Enumerate the supported visible-name domain without Spotlight or consent probing. Return bounded ranking and exact per-root coverage, not exhaustive installed-app inventory or MRU. A three-second wait can return partial coverage; the core deadline may answer first. Protected traversal is blocked before native access."""
+  """Requires workspace:read only, including every result field. Literal substring of filename or stem after removing one terminal .app (ASCII case-insensitive); rank by the better exact/prefix/substring tier. NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Query at most 256 UTF-8 bytes, no NUL; empty matches all. Proposed default roots are /Applications, /System/Applications and Koine-home Applications; default discovery and bounds require redesign before implementation, including configured Safari/Finder reachability. Supplied roots replace defaults (1...16 literal absolute local paths, at most 4096 bytes each). Positively absent optional home default has COMPLETE empty-domain coverage; explicit missing roots do not. Non-null limit is 1...200, default 50. No Spotlight or consent probing. No exhaustive installed-app inventory or MRU. A three-second wait can return partial coverage; the core deadline may answer first. Protected traversal is blocked before native access."""
   workspaceSearchApplications(query: String!, roots: [String!], limit: Int = 50): WorkspaceApplicationSearchResult
-  """Requires workspace:read only, including every result field. Same literal filename query, root and limit rules as application search; omitted/null roots use Koine's home. Ordinary local startup-volume roots only, with hidden/package/symlink-descendant exclusions and explicit protected/cloud/mount/bound diagnostics. Home is partial, not complete empty. No content/default-handler lookup, download, clipboard or action. Locations feed existing open/reveal inputs without an identity guarantee; the client owns chooser and MRU. Three-second wait, bounded work/retained values and no continuation cursor; inspect coverage and publication errors."""
+  """Requires workspace:read only, including every result field. Literal substring of full filename including extension, NFC normalization, en_US_POSIX case/diacritic folding, NFC again; canonical equivalents must match. Same input lengths, root and limit rules as application search; omitted/null roots use Koine's home. Ordinary local startup-volume roots only, with hidden/package/symlink-descendant exclusions and explicit protected/cloud/mount/bound diagnostics. Home cannot be COMPLETE under this policy: PARTIAL with progress, UNKNOWN without progress; coverage/resource representation and useful default coverage require redesign before implementation. No content/default-handler lookup, download, clipboard or action. Locations feed existing open/reveal inputs without an identity guarantee; the client owns chooser and MRU. Three-second wait, bounded work/retained values and no continuation cursor; inspect coverage and publication errors."""
   workspaceSearchFiles(query: String!, roots: [String!], limit: Int = 50): WorkspaceFileSearchResult
 }

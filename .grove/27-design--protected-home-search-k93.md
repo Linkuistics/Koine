@@ -7,6 +7,10 @@ protected-traversal policy satisfies the baseline, or whether protected home
 discovery needs a separately approved consent/setup contract. The design can
 return ordinary filenames honestly without that approval; the full baseline
 must not close around an unaccepted platform limit.
+Also settle whether the eventual default-search work bounds provide useful
+coverage for the agreed application/home workflows. Protected-scope exclusion
+and order-dependent sampling are different limits; approval of one does not
+approve the other.
 
 
 
@@ -21,6 +25,11 @@ must not close around an unaccepted platform limit.
   chosen setup rather than inventing separate conflicting consent identities.
 - Application/file search's implementation acceptance, available by this late
   leaf, and the cumulative workflow trace.
+- `app-and-file-search-k94` findings S1/S2 and `app-and-file-search-k95` triage:
+  the original 512-record DFS proposal can stop inside /Applications and never
+  visit later defaults. Default discovery/resource design must be reworked
+  before planning and acceptance; use its measured final coverage here, not
+  one Mac's inspection counts as an acceptance result.
 
 ## Done when
 - Antony chooses between accepting and disclosing the explicit partial home
@@ -32,6 +41,9 @@ must not close around an unaccepted platform limit.
   implementation and signed-VM acceptance through planning, not this leaf.
 - The search acceptance/trace records the choice and its remaining live work;
   baseline acceptance cannot treat unknown/blocked scope as a complete pass.
+- Any accepted weakening of application/home coverage states the actual searched
+  domain and bound-driven omissions with Antony. Do not infer acceptance of an
+  arbitrary bounded sample from the protected-traversal decision.
 
 ## Notes
 This is the new protected-traversal limit, not a repeat of the earlier workflow

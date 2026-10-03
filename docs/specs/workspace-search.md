@@ -12,6 +12,18 @@ The [effect-authority decision](../adr/provider-authority-follows-effects.md)
 and [first-party selection decision](../adr/first-party-provider-selection.md)
 remain binding. No released or currently served search behavior is claimed.
 
+**Design review requires two producer decisions before implementation planning.**
+Default discovery and coverage/resource representation need rework: the current
+DFS/512-record proposal can stop inside the first root, and its defaults cannot
+find configured Safari/Finder locations. The bounds below are a proposal to
+replace, not an accepted application/home coverage limit. Child-exclusion
+coalescing and diagnostic-versus-match value arbitration are also unsettled.
+Separately, prompt-risk error transport needs a compatible design and an ADR;
+the previously proposed nil-consent `ProviderFailure.osPermission` mapping is
+withdrawn as an implementation instruction. The remaining contract repairs
+below do not settle either mechanism or transport. Protected-home acceptance
+must consider the eventual bound-driven omissions alongside protected scope.
+
 ## Mechanism and alternatives
 
 Use on-demand directory-name enumeration and application-registration
@@ -54,14 +66,18 @@ as an existing provider input error (no `kind`), with no filesystem inspection.
 Variable coercion retains the existing GraphQL HTTP 400 distinction.
 `limit` must be non-null and in 1…200; its omission defaults to fifty.
 
-The query is a literal substring of the final filename, including its extension,
-not a path, bundle identifier, localized name, content, glob, regex or fuzzy
-expression. It is at most 256 UTF-8 bytes and contains no NUL. Empty matches all
-eligible names; whitespace is literal and is not trimmed. Match using Unicode
-case/diacritic-insensitive comparison with a fixed POSIX locale, independent of
-the user's language. Canonically equivalent spelling may match, but output
-names/paths retain their original Unicode. This comparison does not establish
-filesystem identity. No query causes an application or document to open.
+The query is a literal substring, not a path, bundle identifier, localized name,
+content, glob, regex or fuzzy expression. File search compares the final filename
+including its extension. Application search compares both that filename and its
+stem with exactly one terminal `.app` extension removed (case-insensitive ASCII
+extension comparison); use the better ranking tier of those two keys.
+It is at most 256 UTF-8 bytes and contains no NUL. Empty matches all eligible
+names; whitespace is literal and is not trimmed. For each comparison key and
+the query, normalize to Unicode NFC, apply case/diacritic-insensitive folding
+with the fixed `en_US_POSIX` locale, then normalize to NFC again. Compare the
+folded Unicode scalar sequences. Canonically equivalent spellings must match;
+output names/paths retain their original Unicode. This comparison does not
+establish filesystem identity. No query opens an application or document.
 
 ### Roots and search domain
 
@@ -70,8 +86,13 @@ user's home `Applications` directory, in that order. The first two are the
 measured roots; the home default and recursive inspection still need acceptance.
 File default is **Koine's actual home directory**, never the client's home or
 the provider's current directory. `requestedPath` exposes each effective default.
-No client configuration is read. A missing optional home Applications directory
-is reported, not dropped. Supplying roots replaces the defaults.
+No client configuration is read. A positively missing optional home Applications
+default is reported, not dropped: COMPLETE, zero examined entries, no searched
+scopes, and `OPTIONAL_ROOT_ABSENT` with `affectsCoverage: false` at that path.
+Its eligible domain is empty and it makes no search progress. This exception
+applies only to that optional default and positively established absence;
+inaccessible/uncertain defaults and explicitly supplied missing roots keep their
+ordinary unknown/failure diagnostics. Supplying roots replaces the defaults.
 
 The first implementation admits ordinary directories on the local startup
 system/data APFS volumes within Koine's home, `/Applications`,
@@ -138,14 +159,16 @@ never claim a complete subtree while hiding its skipped descendants.
 
 | Root state | Meaning |
 | --- | --- |
-| `COMPLETE` | Every eligible name in this root's declared domain was examined, no relevant name/classification was unknown, and all listings reached EOF. It is neither an atomic snapshot nor the full filesystem tree. Intrinsic hidden/package/symlink-descendant exclusions are still reported. |
-| `PARTIAL` | Some scope was examined, but policy, a work bound, failed inspection/listing or missing required application metadata omitted eligible scope/candidates. Home is necessarily partial under this policy. |
+| `COMPLETE` | Every eligible name in this root's declared domain was examined, no relevant name/classification was unknown, and all required listings reached EOF; positively absent optional defaults have an empty domain. It is neither an atomic snapshot nor the full filesystem tree. Intrinsic exclusions remain reported. |
+| `PARTIAL` | Some scope was examined, but policy, a work bound, failed inspection/listing or missing required application metadata omitted eligible scope/candidates. Home is PARTIAL when progress occurs and UNKNOWN without progress; its policy exclusions prevent COMPLETE. |
 | `UNKNOWN` | No eligible scope was examined or its completeness cannot be established; reason/path still state what blocked or stopped it. An unscheduled root is never complete. |
 
 Each skipped scope has a closed reason, human guidance and `affectsCoverage`.
 Only intrinsic domain exclusions (`HIDDEN`, `PACKAGE_CONTENTS`,
-`SYMLINK_DESCENDANTS`, `SPECIAL_FILE`) have false; every other reason is true.
-Coverage precedence is UNKNOWN when no progress was made, otherwise PARTIAL
+`SYMLINK_DESCENDANTS`, `SPECIAL_FILE`, `OPTIONAL_ROOT_ABSENT`) have false;
+every other reason is true. The positively absent optional default is COMPLETE
+without progress; otherwise coverage precedence is UNKNOWN when no progress
+was made, otherwise PARTIAL
 when any true reason exists, otherwise COMPLETE. Successfully obtaining one
 entry or observing EOF in an empty directory is progress. Missing metadata for
 a matched candidate contributes `INSPECTION_FAILED`, even when a location can
@@ -158,26 +181,30 @@ The two result types share these outcome semantics:
 | `status` | `matches`, `dependency`, and execution error, absent publication denial |
 | --- | --- |
 | `AVAILABLE` | Non-null list, possibly empty; null dependency. At least one root made progress. Check every coverage object before describing an empty list as complete. |
-| `BLOCKED` | Null matches and dependency; `matches` raises `permission` / `os-permission` when every effective root was stopped solely by known protected-traversal prompt risk. Coverage survives. No consent-absence inference. |
+| `BLOCKED` | Null matches and dependency. No progress, no real native/work failure, and at least one prompt-risk scope; other roots may be absent/excluded. Coverage survives and records each cause. Error transport remains a producer design decision; do not implement the withdrawn nil-consent mapping. No consent-absence inference. |
 | `DEPENDENCY_UNAVAILABLE` | Null matches; dependency `NO_SEARCHABLE_ROOT` with guidance. Every root is missing, not a directory, or excluded/unsupported by the declared domain; no execution error at matches. Coverage gives the exact per-root reasons. |
-| `FAILED` | Null matches and dependency; `matches` raises `failed`. No progress and at least one native failure, timeout/capacity refusal, unrepresentable root, or a mixture of prompt risk with other blocked/failing roots. |
+| `FAILED` | Null matches and dependency; `matches` raises `failed`. No progress and at least one actual native failure, timeout/capacity refusal or unrepresentable root. Prompt risk mixed solely with absence/exclusion is not a native failure. |
 
 If any root made progress, `AVAILABLE` takes precedence and successful matches
-coexist with explicit partial/unknown diagnostics. A non-TCC access denial has
+coexist with explicit partial/unknown diagnostics. With no progress, FAILED
+takes precedence for a real native/work failure, then BLOCKED for any prompt-risk
+scope, then DEPENDENCY_UNAVAILABLE for purely absent/excluded roots. For example,
+`[Desktop, missing]` and `[Desktop, unsupported-volume]` are BLOCKED;
+`[Desktop, access-denied]` is FAILED. A non-TCC access denial has
 `ACCESS_DENIED` and no permission object; do not infer a consent from errno or
-Cocoa 257 alone. Other unexpected failures are `INSPECTION_FAILED`. In an
-all-blocked result the error's target is the first root in input order;
-coverage retains every target. These are **new search result** rules, not changes
+Cocoa 257 alone. Other unexpected failures are `INSPECTION_FAILED`. In a
+blocked result the first prompt-risk root in input order supplies the primary
+diagnostic scope; coverage retains every cause and target. These are **new search result** rules, not changes
 to desktop null/absence behavior. A null search root always has an input,
 capability or execution error. Status/coverage/matches are read fields: revocation
 may suppress any selected branch through standard non-null propagation. A
 published status never overrides errors. An error-free result must satisfy the
 table's branch invariant; clients report malformed combinations as failure.
-The BLOCKED/FAILED error is raised when `matches` is selected; a status-and-coverage
+The FAILED error is raised when `matches` is selected; a status-and-coverage
 query can inspect diagnostics without selecting that failing field. It still
-carries no successful list. The matches resolver derives its refusal from
-status and coverage without another native inspection or an arbitrary GraphQL
-error hidden inside provider values.
+carries no successful list. BLOCKED's error-versus-schema transport is unsettled.
+Any matches refusal derives from status and coverage without another native
+inspection or an arbitrary GraphQL error hidden inside provider values.
 
 ### Extension-only permission diagnostics
 
@@ -192,29 +219,17 @@ is extended. Guidance says this scope is not searched under current Koine policy
 use an ordinary root, and contact Koine's operator for the pending setup decision.
 Do not tell a client to trigger a read or acquire an invented consent.
 
-The all-blocked GraphQL error retains `kind: permission`,
-`permissionClass: os-permission`, `permissionOwner: koine`, adds
-`permissionReason: prompt-risk` and `permissionTarget`, and **omits**
-`osPermission` and capability `phase`/`requiredCapability`. It has the selected
-`matches` response path, including an alias. Coverage has the same guidance.
-Existing clients of new operations must tolerate an absent consent identifier;
-they show the message/scope and preserve the permission classification.
-
-This needs a compatible framework **major 1, minor 2** design addition, required
-feature `scoped-permission-diagnostics-v1`: optional String accessors
-`ProviderFailure.permissionTarget` and `permissionReason`, default nil, with
-the existing `osPermission` case. The combination nil `permission`, nonblank
-target and reason `prompt-risk` represents this scoped refusal only when the
-descriptor/manifest require the feature. The host validates that combination,
-maps it without a consent identifier, and rejects malformed/undeclared scoped
-failures as `failed` with a provider diagnostic. It must not pass nil through
-the current missing-consent string fallback. Ordinary named-consent failures,
-all old provider registrations and desktop outputs keep their existing mapping.
-This adds no enum case, consent, entitlement, usage key or consent-acquisition
-flow, and keeps `koine-desktop/1`. A host lacking minor 2/the feature refuses the
-new workspace update before load. Existing workspace actions retain their SDL,
-authority and failure behavior. Planning owns this vertical framework dependency
-and its independent old/new binary checks; it is not implemented by this spec.
+Prompt risk is not the fixed version-1 `ProviderFailure.osPermission` meaning
+of missing named consent. Do not send it through that case with nil `permission`.
+Before planning, a producer must compare schema-level BLOCKED data with a
+compatible new diagnostic mechanism, record the enduring choice and rejected
+alternative in the ADR set, and settle the shared all-blocked rule. If it adds
+framework symbols, it must define the entire kind/consent/target/reason mapping
+matrix, legacy nil/blank behavior and feature-gated old-host refusal, including
+ordinary named-consent failures with targets. No minor number or required
+feature is assigned by this unsettled proposal. Current named-consent/desktop
+errors and workspace actions retain their existing meaning. No new consent,
+entitlement, usage key, setup route or `koine-desktop/1` change is approved.
 Register the new search output types as read fields separately from the existing
 control-only action types; the workspace provider's current all-control helper
 is not the authority for search. Publish an additive workspace schema minor and
@@ -228,9 +243,12 @@ Application matches carry an absolute canonical-root-based `applicationPath`,
 filename `name`, nullable bundle identifier and `installationState`.
 `INSTALLED` means an application bundle with a known nonblank identifier and
 that exact native file identity present in public registration inspection.
+`UNREGISTERED` means registration inspection positively found no entry for that
+exact present bundle identity; retain it as a reveal/path-copy candidate and
+copy its identifier when known, but never offer constrained launch for it.
 `UNKNOWN` means application metadata/registration could not be established;
-never silently replace it with another installation. Positively unregistered
-bundles are not installed-app matches. A bundle without an identifier may appear
+never silently replace it with another installation. A bundle without an
+identifier may appear
 as UNKNOWN with a null identifier for reveal/path-copy, and cannot form a launch
 selector. Report missing/failed application metadata as partial coverage, not
 proof of absence. Inspect both public per-identifier registration answers as
@@ -258,8 +276,10 @@ Unknown default metadata is not `NO_DEFAULT_HANDLER` and does not disable an
 explicit attempt through the permitted opening contract.
 
 Retain the best `limit` matches among names actually examined: exact folded
-name, folded prefix, then folded substring; ties by folded name in Unicode scalar
-order, raw name in that order, then raw absolute path in UTF-8 byte order. Sort
+comparison key, folded prefix, then folded substring. Applications use the
+better tier from filename and stem, so `zed` ranks `Zed.app` before
+`Zed Preview.app`; files use only the filename. Ties use the folded full name in
+Unicode scalar order, raw name in that order, then raw absolute path in UTF-8 byte order. Sort
 the retained list by that same tuple. No score, MRU or native directory order is
 promised to a client. `resultsTruncated` means at least one matching location
 was omitted by the result-count/value budget. It is separate from coverage:
@@ -267,7 +287,14 @@ complete traversal can still return a truncated top list. Native traversal order
 can affect the subset at a work bound; repeated partial scans have no stable
 global top-N guarantee. No continuation cursor or pagination snapshot exists.
 
-Per root field: sixteen roots, 200 matches, 20,000 total examined entries,
+**Resource/scope proposal awaiting producer redesign.** The present extent
+vocabulary cannot represent grouped child exclusions or an unrepresentable
+child at its parent without an overclaim. The shared byte budget below also
+lacks a match-versus-required-diagnostic arbitration rule. Do not implement the
+coalescing, fallback or byte-accounting recipe until those choices and useful
+default coverage are settled and reviewed.
+
+Proposed per root field: sixteen roots, 200 matches, 20,000 total examined entries,
 maximum depth 32, 512 combined searched/skipped records, and 512 KiB of retained
 UTF-8 value payload (strings plus 256 bytes per object and 16 bytes per scalar/list
 slot charged before insertion).
@@ -302,11 +329,19 @@ are the enabling points for controlled failures/clocks; neither is a new product
 seam or a fake application's acceptance.
 
 Use a dedicated blocking worker pool of four outstanding search jobs, with no
-unbounded queue. An admitted job remains counted until its native work and
+unbounded queue. This pool and admission accounting belong to the Koine process,
+shared by all workspace-search aliases, requests and provider instances.
+An admitted job remains counted until its native work and
 descriptor cleanup finish, even after its wait expires. Capacity refusal returns
 FAILED with UNKNOWN coverage and `CAPACITY_LIMIT`, before filesystem work.
 Provider stop cancels jobs without waiting for blocked native calls; workers
-retain neither credentials nor resolvers. Per-job DFS holds at most 33 directory
+retain neither credentials nor resolvers. Provider stop/start does not create
+replacement slots or reclaim descriptors a native call still uses. When native
+work returns, cleanup releases capacity. If calls never return, affected slots
+remain unavailable until a full Koine process restart; CAPACITY_LIMIT guidance
+states that recovery and no automatic restart occurs. One client's aliases can
+saturate the pool: bounded admission does not promise per-client fairness.
+Per-job DFS holds at most 33 directory
 streams plus at most two temporary directory descriptors for component walks
 and checked descent, not a queue of every child path. Component walks retain
 only the current and next descriptor, within the input-path and wait bounds.
@@ -372,13 +407,19 @@ work. The evidence comparison is mechanism input, not search API acceptance.
 
 | Seam | Required cases, all pending for search |
 | --- | --- |
-| Public GraphQL | Both roots and every nested field under workspace read alone; neither control nor desktop read substitutes. Input defaults/null/empty/limits, Unicode/literal matching and rank ties; complete empty versus partial empty, UNKNOWN coverage, duplicate/overlapping roots, top-list truncation independent of coverage. All-blocked retains coverage and error at aliased matches; all absent/unsupported has a dependency branch; unclassified denials/timeouts fail; mixed success preserves failed/blocked scope. Revocation and non-null publication paths; absent search provider/schema detection. A reading-restricted standalone client derives choices and every permitted action using only SDL/spec/introspection. |
-| Native binary interface | Extend the actual workspace bundle, not a second namespace; independently built old provider/new minor-2 host, new search provider/old host refusal before load, manifest/descriptor feature agreement and malformed scoped failure refusal. Preserve existing named-consent/desktop errors and all four action contributions exactly. Conformance adds a search-required profile while retaining action-only, desktop-only, absent/rejected and exact-candidate profiles; do not edit action-only expected SDL to claim unserved search. |
+| Public GraphQL | Both roots and every nested field under workspace read alone; neither control nor desktop read substitutes. Input defaults/null/empty/limits, mandatory canonical-equivalent Unicode matching, app stem/filename ranking (`zed`, `Zed.app`, `.app`) and rank ties; complete empty versus partial empty, absent optional default versus explicit missing root, UNKNOWN coverage, duplicate/overlapping roots, top-list truncation independent of coverage. BLOCKED retains coverage and no list; its error assertions await the diagnostic decision. No-progress prompt-risk plus absent/unsupported is BLOCKED; prompt-risk plus real native failure is FAILED; all absent/unsupported has a dependency branch. Unregistered apps remain visible for reveal/copy, never launch. Revocation and non-null publication paths; absent search provider/schema detection. A reading-restricted standalone client derives choices and every permitted action using only SDL/spec/introspection. |
+| Native binary interface | Extend the actual workspace bundle, not a second namespace. Preserve existing named-consent/desktop errors and all four action contributions exactly. Diagnostic old/new binaries and feature/malformed-mapping cases must follow the forthcoming diagnostic design, not the withdrawn minor-2 proposal. Run unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins against a compatibility host bundling that independently retained release. Run the shipped search host against a separate exact profile containing action + search SDL and its actual candidate/version pins. Retain desktop-only, absent/rejected and exact-candidate profiles; neither a subset schema check nor historical-profile rewriting proves compatibility. |
 | Isolated TestAnyware macOS VMs | Actual signed hardened Koine and the new stream adapter, with no new keys/entitlements: applications in default/nested/user roots, duplicate installed copies, missing identifier/unregistered/unreadable candidates; ordinary and empty directories, home partial, every directly supplied protected root and symlink/component alias, Library and known cloud exclusions; missing/mode-denied roots, index disabled with identical ordinary behavior. Large single directory exceeding entry limit, scope/value/depth bounds, cancellation while listing/registration blocks, late completion and worker-capacity recovery, symlink replacement/mount change. Verify no consent dialog or file-content/hydration request from search and inspect all actual calls. Install the required real apps; demonstrate constrained launch, reveal, default ordinary-document open, Zed open and client-owned clipboard/MRU with visible witnesses. Real removable/network/cloud cases stay excluded or pending, never substituted with the ordinary disk-image fixture. Record actual OS/app versions, latency and limits. |
 
 Supporting private-adapter tests control EOF, ordering, denied metadata, blocked
 workers, deadlines and changed identity. They prove mapping and bounds, not
 native consent behavior. No numeric interactive-latency target is invented.
+Worker recovery cases distinguish calls that finish after cancellation from
+calls held indefinitely: prove saturation persists across provider stop/start,
+no replacement threads/descriptors accrue, and a fresh Koine process restores
+capacity. The default-discovery producer must add realistic application/home
+fixtures, later-root starvation, Safari/Finder reachability, exact child-exclusion
+scope semantics and value-budget arbitration to the three-seam obligations.
 Home protected traversal remains a live baseline gap: any change to consent,
 entitlements or setup needs Antony's decision before reliance. The already live
 protected-default-open and app-reveal-notice decisions are not resolved here.

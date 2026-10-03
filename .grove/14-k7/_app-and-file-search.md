@@ -35,12 +35,17 @@ default application, reveal, copy path and open in Zed.
 The search design is `docs/specs/workspace-search.md`, with the separate additive
 `docs/design/workspace-search-schema.graphql` and client examples beside it.
 Every search root/output field needs workspace read only; existing action
-receipts keep both controls. Planning consumes the design review before cutting
-implementation. The feature-gated framework minor-2 scoped permission mapping
-is a vertical dependency, not a new consent identifier or setup route. Preserve
-action-only conformance profiles while adding search-required profiles.
+receipts keep both controls. Planning consumes the design review and the two
+review-repair producer decisions before cutting implementation. Default
+discovery/coverage/resource design must address useful coverage and configured
+Safari/Finder reachability. Prompt-risk transport must preserve fixed framework
+meanings and weigh the schema-level alternative; the withdrawn minor-2 mapping
+is not an implementation dependency. Preserve action-only conformance against
+an independently retained workspace 1.0.0 compatibility host while adding a
+separate exact search-required profile for the upgraded host.
 `protected-home-search-k93` keeps Antony's partial-home versus explicit-setup
-decision live before baseline acceptance. Default opening and app reveal keep
+decision live before baseline acceptance, including eventual bound-driven
+omissions; arbitrary bounded samples have not been accepted. Default opening and app reveal keep
 their existing separate decisions. The mechanism report does not accept the
 new stream adapter, arbitrary protected traversal or unsupported volumes.
 

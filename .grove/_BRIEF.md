@@ -69,7 +69,11 @@ classification, and scope reconciliation. Then, in order:
 
 `app-and-file-search-k92` externalizes `protected-home-search-k93` before
 baseline acceptance: Antony must accept/disclose the explicit partial home domain
-or approve a separate traversal-consent/setup contract. That is distinct from
+or approve a separate traversal-consent/setup contract. Review integration k95
+also routes any proposed weakening through that decision with explicit final
+bound-driven omissions; arbitrary default-search samples are not accepted.
+Default discovery/resource design and compatible prompt-risk transport must
+be repaired and reviewed before search implementation planning. That is distinct from
 `protected-default-open-k89`'s handler lookup, but any chosen setup must be
 coordinated. No new consent, entitlement or usage key is approved by search.
 

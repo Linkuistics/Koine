@@ -1,5 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
+# Default discovery/bounds and BLOCKED transport require design before serving.
 # Result-count truncation and partial traversal are independent.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
@@ -47,5 +48,6 @@ query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
 # WorkspaceApplicationInput, or the file path into the existing open/reveal
 # operations in workspace-operations.graphql. Controls are separately required.
 # Copy path/known identifier to the client's clipboard, and update client MRU
-# there. Never launch an UNKNOWN installation or infer NO_DEFAULT_HANDLER from
+# there. Launch only INSTALLED, never UNREGISTERED or UNKNOWN; both can be
+# revealed/path-copied, and any known identifier can be copied. Do not infer NO_DEFAULT_HANDLER from
 # null metadata. Never retry an action by dropping its installation constraint.
