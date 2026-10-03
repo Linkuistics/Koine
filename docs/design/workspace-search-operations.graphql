@@ -1,11 +1,11 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Canonical fsgetpath proposal needs review; serviceability construction/whole-resource review precede planning;
+# Canonical fsgetpath proposal needs review; serviceability subject construction is specified; whole-resource review precedes planning;
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
 # Delegated choices select reported native results and empirical evidence with opaque internals unproved.
-# Allocation design is finalized; serviceability construction/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
+# Allocation design is finalized; serviceability construction is specified; execution/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
   rootIndex
@@ -135,5 +135,6 @@ query InspectAliasedMatches($roots: [String!]) {
 # CAPACITY_LIMIT guidance distinguishes busy admission from a latched disabled
 # cohort; one indefinite block can require process restart after resource failure.
 # Canonical fsgetpath, identity rechecks and grouped size refusals require their
-# load-bearing review and native acceptance. Transient opaque-resource/accept-backoff
-# instrument design remains open; none is established by schema acceptance.
+# load-bearing review and native acceptance. Owned-event/accept-backoff
+# instrument construction is specified in search-serviceability.md; execution/review remain pending.
+# Opaque acquisitions/peaks remain unproved; schema acceptance establishes no serviceability.

@@ -190,6 +190,11 @@ documented negative branches. Nil identifier is unknown, never a missing-key
 fact. Malformed/incomplete/conflicting results and observed resource errors do
 not establish negatives; known incorrect witnesses still fail acceptance.
 
+**Search serviceability evidence**: Complete applicable owned/hook events and
+native-call envelopes paired with independent listener, grant-store and
+authorized-action outcomes for a declared search subject. It is empirical
+evidence, leaving opaque acquisitions, peaks and internal health unproved.
+
 ## Example dialogue
 
 **Developer:** Is the desktop provider part of the Machine package?

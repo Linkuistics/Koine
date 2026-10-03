@@ -1,10 +1,12 @@
 # Search native resource feasibility
 
-**Source/SDK analysis and finalized allocation handoff; native acceptance remains
+**Source/SDK analysis and finalized allocation/subject design; native acceptance remains
 pending.** An error-bearing registration API exists, but substituting that API
 does not supply a bound or event ledger for platform-internal descriptors.
 The [resource boundary comparison](../design/architecture/index.html#diagram-search-resources)
-shows the finalized in-process allocation and the remaining construction/review handoff. The
+shows the finalized in-process allocation. The
+[serviceability construction](search-serviceability.md) supplies the event inventory,
+passive hooks and concrete subjects; the complete-resource review remains pending. The
 [search resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling)
 continues to bind, including its original budgets and serviceability obligations.
 No inspection route, helper, consent, signing change, smaller domain or reduced
@@ -20,7 +22,8 @@ serviceability acceptance may leave opaque internal demand unproved. Neither
 selection follows from declining helpers. The finalized in-process contract
 names calls, bounded copied-value consumption, serial candidate/registration/
 recheck walks, owned/opaque demand and freeze/late-return/restart ownership.
-Instrument/subject construction and complete-resource review remain pending.
+Instrument/subject construction is specified; implementation, execution and
+complete-resource review remain pending.
 Only the two named guarantees change. This report supplies no hidden-health
 proof, implemented runtime contract or native acceptance.
 
@@ -245,7 +248,8 @@ retained-versus-search-release compatibility remain unchanged.
 
 The [serviceability handoff](../specs/workspace-search.md#serviceability-construction-handoff)
 requires actual-provider/independent GraphQL controls and normally launched
-signed hardened VM subjects. Construct complete owned/admission and pre-NIO-
+signed hardened VM subjects. The [subject design](search-serviceability.md) specifies
+complete owned/admission and pre-NIO-
 suppression/backoff events, fixed loss-aware storage and native-call envelopes;
 prove transient/dropped-event/overflow/suppressed-error controls can fail. Run
 independent fresh connections, durable store work and authorized witnessed
@@ -255,8 +259,13 @@ backoff, incorrect known witnesses, lost applicable events and inconclusive
 comparisons cannot pass. Prompt-free exact calls and useful Safari/Finder/home
 witnesses remain pending; k93 owns measured home-omissions acceptance.
 
-The serviceability producer constructs those subjects and cuts the mandatory
-review of the complete resource artifact. Final allocation design supplies no
+The subject design includes independent loss/site-counter controls, passive
+source/handler equivalence, real normally inherited accept-exhaustion detection,
+controlled saturation versus unheld native work, matched independent outcomes
+and every limit/cohort/restart case. Its diagnostic filler deliberately produces
+a failing serviceability observation; it is never search acceptance or search
+attribution evidence. All executable controls remain pending. The mandatory
+review consumes the complete resource artifact. Final allocation/subject design supplies no
 native acceptance or internal-health/opaque-event proof. A later subject failure
 requires repair or a separately authorized scope decision; it cannot install
 new contents, consent, signature, limits, smaller domain or helper by fallback.

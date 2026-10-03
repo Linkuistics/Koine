@@ -365,11 +365,14 @@ nothing".
 ## Searching for applications and files
 
 **Designed, not served yet.** The fsgetpath canonical-path proposal requires its
-load-bearing review; native allocation is finalized as design; serviceability instrument/subject
-construction and the whole-resource review also precede planning.
+load-bearing review; native allocation and
+[serviceability instrument/subject construction](verification/search-serviceability.md)
+are specified as design; the whole-resource review also precedes planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
-records error-channel and observer limits; constructible instruments/subjects
-remain open, with no native/binary acceptance or reduced workflow coverage.
+records error-channel and observer limits. The subject design defines bounded
+owned/hook events, passive NIO equivalence/loss controls and matched independent
+listener/store/action outcomes; execution remains pending, with no native/binary
+acceptance or reduced workflow coverage.
 The [allocation scope decision](specs/workspace-search.md#native-allocation-decision)
 retains single-process inspection after helper design was declined. The
 [in-process observation contract](specs/workspace-search.md#in-process-observation-contract)
@@ -381,12 +384,12 @@ or another native fact incorrect; opaque allocations/peaks/internal errors remai
 unproved. Nil identifier always remains UNKNOWN with affecting coverage.
 Malformed/errorful/incomplete observations remain uncertain, observed resource
 errors refuse negatives, and known incorrect witnesses or UNKNOWN metadata for
-every configured launcher still fail. Allocation design is finalized; instruments/subjects and
-review remain pending; all other workflow, prompt, limit and compatibility
+every configured launcher still fail. Allocation and subject design are finalized;
+implementation, execution and review remain pending; all other workflow, prompt, limit and compatibility
 obligations remain binding.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
-search opens below the inherited soft limit with a non-search reserve. Their load-bearing review
+search opens below the inherited soft limit with a non-search reserve. Their load-bearing reviews
 are [required before planning](specs/workspace-search.md#discovery-obligations-before-planning).
 Admission, canonical-path and cleanup repairs retain actual-adapter/default
 acceptance obligations. Typed BLOCKED transport is reviewed; runtime/binary

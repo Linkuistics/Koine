@@ -225,6 +225,6 @@ The native-resource continuation now uses the independently selected
 from k118 under Antony's "you decide" delegation. Only reported-native-fact
 meaning and empirical serviceability evidence change. k119 finalizes the
 in-process calls, bounded result consumption, two-temporary ownership, freeze/
-late-return/refusal/recovery contract and observable handoff. Serviceability
-instruments/subjects/review k113, native acceptance and the separate measured
-home-omissions decision remain live.
+late-return/refusal/recovery contract and observable handoff. k113 completes serviceability
+instrument/subject construction; mandatory complete-resource review k120,
+native acceptance and the separate measured home-omissions decision remain live.

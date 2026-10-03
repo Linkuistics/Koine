@@ -100,5 +100,7 @@ k118 independently selects the durable
 [observation boundaries](../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
 under Antony's "you decide" delegation. These scoped fact/evidence choices
 do not claim native acceptance, compatibility or k93's measured omissions
-decision. k119 finalizes allocation/copy bounds/two-temporary freeze/recovery
-and the construction handoff; k113's instruments/subjects/review remain live.
+decision. k119 finalizes allocation/copy bounds/two-temporary freeze/recovery; k113
+completes instrument/subject construction. Mandatory complete-resource review
+search-native-resources-k120 remains live before planning; native acceptance
+and k93's measured omissions decision remain pending.

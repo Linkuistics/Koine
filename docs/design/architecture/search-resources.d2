@@ -1,4 +1,4 @@
-# Final in-process allocation design; construction, review and native acceptance pending.
+# Final allocation/subject construction design; review, execution and native acceptance pending.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
@@ -11,7 +11,7 @@ Ownership: "Serial two-temporary walks\nCapture candidate → close → check UR
 Gate: "One admission / commit / freeze gate\nFreeze first → discard uncommitted data\nCommit first → preserve observation"
 Recovery: "Worker-only cleanup\nLate error latches surviving cohort\nIndefinite / uncertain close → restart Koine"
 Evidence: "Independent empirical boundary\nComplete owned/hooks + call envelopes\nOpaque acquisitions / peaks / errors unproved"
-Subjects: "Construct actual-provider / GraphQL / VM subjects\nPre-suppression accept + real backoff events\nFresh clients / grant store / authorized actions"
+Subjects: "Specified provider / GraphQL / VM subjects\nPre-suppression accept + real backoff events\nFresh clients / grant store / authorized actions"
 Failures: "Wrong witnesses / resource error / backoff fail\nLost applicable events / inconclusive controls fail\nNo arbitrary sample or all-UNKNOWN launch acceptance"
 Review: "Mandatory complete-resource review\nBefore implementation planning\nNative / binary / useful coverage pending"
 Start -> Facts: "1 · facts"
@@ -22,6 +22,6 @@ Ownership -> Gate: "2 · checked re-observation"
 Gate -> Recovery: "3 · retain charges"
 Meaning -> Evidence: "4"
 Recovery -> Evidence: "4"
-Evidence -> Subjects: "5 · construction handoff"
+Evidence -> Subjects: "5 · specified instrument / controls"
 Subjects -> Failures: "6 · discriminate"
 Failures -> Review: "7 · review whole contract"

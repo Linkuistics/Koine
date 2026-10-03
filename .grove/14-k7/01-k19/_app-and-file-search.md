@@ -175,5 +175,22 @@ k118 records "you decide" and independently selects the current
 Only those two original guarantees are replaced; no internal-health/opaque-event
 proof, reduced workflow/domain or native acceptance is claimed. k119 finalizes
 in-process calls, copied-result bounds, serial two-temporary rechecks and
-freeze/late-return/refusal/recovery. k113 receives the observable construction
-handoff and retains instruments/subjects plus mandatory complete-resource review.
+freeze/late-return/refusal/recovery. k113 completes the observable instrument/subject construction; the mandatory
+complete-resource review k120 remains live.
+
+## Native-resource design promotion
+
+k113 completes the event/subject construction design in
+docs/verification/search-serviceability.md and workspace-search's construction
+contract. The fixed loss-aware sink/site controls, passive actual NIO
+error/socket/backoff hooks, separate real normally inherited exhaustion
+diagnostic, controlled saturation versus unheld native runs and matched
+independent listener/store/actions are specified. Borrowed/copy/error accounts,
+two-temporary candidate/target/recheck, shared-gate freeze/late-error ordering,
+ambiguous-close permanent refusal and every limit/cohort/restart case remain
+binding. Render/SDL/examples/docs checks passed on unchanged per-file inputs;
+isolated Safari presentation was inspected. No runtime/native/binary evidence
+or smaller workflow/domain is accepted. Opaque acquisitions/health remain
+unproved; exact runtime error normalization, prompt/useful-launch/home witnesses,
+compatibility and k93 stay pending. Mandatory review search-native-resources-k120
+reads the complete k109 artifact before planning/earned integration.

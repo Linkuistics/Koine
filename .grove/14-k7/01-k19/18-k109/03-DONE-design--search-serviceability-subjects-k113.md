@@ -64,3 +64,50 @@ Substantial design only. No native evidence chain, implementation or accepted
 workflow weakening. Keep the agreed public GraphQL, independent native binary
 and isolated VM seams. The final review owns the complete k109 artifact, not
 merely this child's subjects.
+
+## Decisions (running log)
+
+- The serviceability instrument uses a fixed, loss-aware in-process sink for
+  owned/admission events, native-call envelopes and passive hooks at the actual
+  NIO error/backoff points. It does not depend on kernel attachment, diagnostic
+  entitlements, occupancy polling or complete opaque-descriptor observation.
+  Existing reported-fact and empirical-evidence boundaries remain unchanged.
+- Controlled adapter/barrier/fault subjects and unheld native subjects have
+  separate verdicts. A deliberate in-host descriptor filler proves detection
+  of real accept exhaustion under the inherited finite limit; it never passes
+  serviceability or attributes that induced error to production search. Matched
+  independent clients/store/actions test actual serviceability conservatively.
+  All runtime controls and native outcomes remain pending implementation.
+- The detailed construction lives in docs/verification/search-serviceability.md,
+  with behavioral obligations in workspace-search and the serviceability view.
+  Exact native calls, borrowed/copy/error bounds, candidate/target/recheck order,
+  gate/late-error/ambiguous-close ownership, all limit/refusal cases, matched
+  normally signed native subjects and independent binary profiles are retained.
+  Source-site counters and known scripted expectations guard whole-hook/pair loss;
+  declared indefinite spans have finite open-at-cut records rather than a hung
+  exporter. Maximum-root native saturation requires its actual inherited allowance,
+  with smaller-Q runs labelled separately. No additional irreversible decision
+  earns an ADR; the existing native-fact ADR and glossary limits remain binding.
+
+## Verification
+
+`task design:search-render`, `task design:search-check` and `task check:docs`
+passed. The SDL/examples check validated independent/composed search and existing
+actions and rejected removed-root, invalid input/output and foreign-type controls.
+All 275 per-file SHA-256 subjects stayed unchanged across the final checks: every
+docs file, CONTEXT, Taskfile, dependency pin, link checker and client manifests.
+The untracked digest record is .build/k113-design/frozen-inputs.json.
+
+Safari presentation inspection in the isolated macOS 26.5/25F71 clone checked
+fresh serviceability/resource links, readable wide views, narrow light/dark
+discussion reflow and equal host/guest manifest/changed-SVG digests. The clone
+was stopped. These checks supply no resource-control, native-call, useful-coverage
+or binary-compatibility acceptance. No implementation or production code changed.
+
+The original k109 design completion conditions are met within k118's two
+selected scopes: k119 supplies calls/allocation/lifetime/fact limits and this
+child supplies concrete event/detection/independent-outcome/limit/cohort subjects
+and durable reconciliation. The last work act commissions the complete k109
+review; its retirement closes k109's design node only. Native outcomes, exact
+runtime not-found normalization, hook equivalence/loss execution, actual
+prompt/useful-launch/home witnesses, binary pairs and k93 remain pending.

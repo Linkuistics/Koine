@@ -2,27 +2,38 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Finalize native allocation and observable handoff",
-    "status": "Final design · construction/review/native acceptance pending",
-    "summary": "The in-process contract now fixes native-result normalization and copied-value bounds, serial candidate/registration/recheck walks within two temporaries, and admission/finalization/freeze ownership including late resource errors and ambiguous closes. Both independently delegated observation boundaries retain their explicit internal-health/opaque-demand limits. The next producer constructs actual-provider/GraphQL and normally signed-host serviceability subjects and cuts the mandatory complete-resource review. No native acceptance, smaller workflow domain or helper is selected.",
+    "title": "Construct serviceability evidence and failure controls",
+    "status": "Construction design complete · review/execution pending",
+    "summary": "The event inventory and bounded sink now define owned/call-envelope and passive NIO observations, loss/site-counter and real-exhaustion controls, controlled saturation versus unheld native work, matched independent clients/store/actions and every cohort/limit/restart subject. Opaque acquisitions, peaks and internal health remain unproved. Whole-resource review precedes planning; native/binary/useful-coverage acceptance and the measured home-omissions decision remain pending.",
     "diagramIds": [
+      "search-serviceability",
       "search-resources",
       "search-inspection",
       "search-canonical",
       "search-traversal",
       "search-coverage",
-      "search-handoff",
-      "search-discovery",
-      "workspace-inspection"
+      "search-handoff"
     ],
     "updatedDiagrams": [
       {
-        "id": "search-resources",
-        "summary": "Replaces pending allocation with the finalized calls, copied-value ownership, freeze gate and remaining construction/review handoff."
+        "id": "search-serviceability",
+        "summary": "Adds the event/loss-control and matched independent-outcome paths, with conservative failure and limited empirical verdicts."
       },
       {
-        "id": "search-inspection",
-        "summary": "Adds the serial two-temporary candidate/registration/recheck sequence and commit-versus-freeze cleanup branches."
+        "id": "search-resources",
+        "summary": "Connects finalized allocation to the specified serviceability instrument/subjects and pending complete-resource review."
+      },
+      {
+        "id": "search-traversal",
+        "summary": "Replaces open instrument design with specified subjects and pending resource review."
+      },
+      {
+        "id": "search-coverage",
+        "summary": "Marks the complete native-resource design pending review rather than still awaiting allocation."
+      },
+      {
+        "id": "search-handoff",
+        "summary": "Marks the complete native-resource design pending review while action and native acceptance remain pending."
       }
     ]
   },
@@ -30,7 +41,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are designed. In-process native allocation is finalized within independently selected reported-fact/empirical-evidence limits. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Canonical and whole-resource reviews plus serviceability construction precede planning; runtime/binary/native acceptance remains pending."
+      "description": "FIFO, canonical fsgetpath and in-process allocation/subject construction are designed within the selected reported-fact and empirical-evidence limits. Q/S, two temporaries, prompt policy, workflow/domain and compatibility remain binding. Canonical and whole-resource reviews precede planning; instrument execution/runtime/binary/native acceptance remains pending."
     },
     {
       "id": "workspace",
@@ -70,13 +81,22 @@
   ],
   "diagrams": [
     {
+      "id": "search-serviceability",
+      "group": "search",
+      "title": "Observe applicable events and independent serviceability",
+      "renderer": "svg",
+      "source": "search-serviceability.d2",
+      "rendered": "search-serviceability.svg",
+      "caption": "Evidence flow, not implementation or native acceptance. Owned events and native-call envelopes, passive pre-suppression NIO error/scheduling hooks and independent clients/store/actions have separate attribution. Fixed storage, site counters, owner generations and open-at-cut/loss controls reject incomplete evidence. Deliberate transient/dropped-event/overflow/suppressed-error and real-exhaustion controls must fail the serviceability observation they induce; they never pass search acceptance. Controlled saturation and unheld native runs retain distinct evidence labels. Matched no-search references cannot waive independent resource error or accept backoff, even after eventual success. A complete passing finite subject supports only empirical outcomes under the selected boundary; opaque acquisitions/peaks/internal health remain unproved. All runtime controls, exact native prompt/useful-launch/home and compatibility acceptance remain pending."
+    },
+    {
       "id": "search-resources",
       "group": "search",
-      "title": "Finalize native allocation and observable handoff",
+      "title": "Connect native allocation to specified serviceability subjects",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Final design, not native acceptance. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Construct serviceability subjects and mandatory whole-resource review before planning. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
+      "caption": "Final design, not native acceptance. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Serviceability instrument/subject construction is specified; mandatory whole-resource review precedes planning and execution remains pending. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
     },
     {
       "id": "search-inspection",
@@ -103,7 +123,7 @@
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn uses the canonical observation before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Canonical review and opaque descriptor/accept-backoff instrument design/review precede planning; measured workflow omissions remain unaccepted."
+      "caption": "Proposed per-root FIFO algorithm, not runtime acceptance. Every listing turn uses the canonical observation before reading. Prefix/parent change stops one root; target-only change under stable parent is exact. Name listings occur once, but checked prefix walks repeat against the wait. Depth precedes frontier; frontier omits descendants while anchors remain matchable. Worker-only cleanup retains stream/queue/credits. Canonical review and specified owned-event/accept-backoff subjects and whole-resource review precede planning; measured workflow omissions remain unaccepted."
     },
     {
       "id": "search-coverage",
@@ -112,7 +132,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain existing CAPACITY_LIMIT/INSPECTION_FAILED meanings. Known native/public path-size omissions use actual-parent VALUE_LIMIT groups before finalization. A formerly fitting prefix now too long is change evidence and stops once, without retroactive name omissions. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Canonical review and resource instrument design/review precede planning; periodic counts or successful delayed replies cannot certify serviceability."
+      "caption": "Designed coverage flow. Atomic busy admission and latched disabled cohorts retain existing CAPACITY_LIMIT/INSPECTION_FAILED meanings. Known native/public path-size omissions use actual-parent VALUE_LIMIT groups before finalization. A formerly fitting prefix now too long is change evidence and stops once, without retroactive name omissions. Counted depth/frontier groups and typed BLOCKED/lifecycle semantics remain. Canonical review and whole-resource review precede planning; periodic counts or successful delayed replies cannot certify serviceability."
     },
     {
       "id": "search-handoff",
@@ -121,7 +141,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed selection handoff. The fsgetpath canonical observation and native bundle identity merge observed routes; distinct installations stay distinct. Size-refused paths are omitted with affecting coverage rather than shortened. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Canonical review and native resource design/review precede planning; binary/native acceptance remains pending."
+      "caption": "Designed selection handoff. The fsgetpath canonical observation and native bundle identity merge observed routes; distinct installations stay distinct. Size-refused paths are omitted with affecting coverage rather than shortened. Empty/nil opaque metadata alone cannot establish absence or UNREGISTERED. Clients inspect status/coverage/errors before existing actions under both controls. Canonical review and whole-resource review precede planning; binary/native acceptance remains pending."
     },
     {
       "id": "search-discovery",

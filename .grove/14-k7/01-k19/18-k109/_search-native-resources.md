@@ -40,8 +40,8 @@ client replies cannot certify opaque calls or listener serviceability.
 Interpret the two original fact-health/complete-opaque-observer requirements below
 under the independently selected [observation boundaries](../../../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
 recorded by k118 under Antony's "you decide" delegation. Only those guarantees
-change; every other condition remains binding. Final allocation design, subjects,
-mandatory review and native acceptance remain pending.
+change; every other condition remains binding. Final allocation/subject design is complete; the mandatory review is commissioned,
+and native acceptance remains pending.
 
 - Choose metadata/registration calls and observable success/error/health signals
   that prevent exhaustion from publishing positive absence/no-identifier facts.
@@ -142,3 +142,24 @@ chain or implementation leaves.
   pair, native prompt/useful-launch/home witnesses, compatibility and k93's
   measured omissions decision remain pending. No duplicate review or implementation
   leaves, helper, changed signature/consent/domain/accounts/limits are introduced.
+
+## Completion promotion
+
+k113 completes the event/subject construction design in
+docs/verification/search-serviceability.md and workspace-search's construction
+contract. The fixed loss-aware sink/site controls, passive actual NIO
+error/socket/backoff hooks, separate real normally inherited exhaustion
+diagnostic, controlled saturation versus unheld native runs and matched
+independent listener/store/actions are specified. Borrowed/copy/error accounts,
+two-temporary candidate/target/recheck, shared-gate freeze/late-error ordering,
+ambiguous-close permanent refusal and every limit/cohort/restart case remain
+binding. Render/SDL/examples/docs checks passed on unchanged per-file inputs;
+isolated Safari presentation was inspected. No runtime/native/binary evidence
+or smaller workflow/domain is accepted. Opaque acquisitions/health remain
+unproved; exact runtime error normalization, prompt/useful-launch/home witnesses,
+compatibility and k93 stay pending. Mandatory review search-native-resources-k120
+reads the complete k109 artifact before planning/earned integration.
+
+The original Done when is satisfied as design within k118's two selected
+boundaries. All descendants are terminal; k109 closes here, with its complete
+producer review k120 live under k19. No other native guarantee is waived.
