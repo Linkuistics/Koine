@@ -61,6 +61,10 @@ refusal of helper design and retains the single-process posture. The need for
 isolation has not been established. The continuation must settle an owned
 bounded route or complete approved-posture observation in Koine; no runtime
 route or weaker metadata fact is accepted.
+The [proposed observation contract](#proposed-in-process-observation-contract)
+now makes the narrower native-result and serviceability-evidence choices
+reviewable. Both require separate human answers; the helper refusal authorizes
+neither. The original obligations remain binding until those answers are recorded.
 The owned-credit formula, two temporary credits, metadata/public outcomes,
 domain and all native acceptance obligations below remain binding.
 
@@ -1129,6 +1133,220 @@ required helper tests in the current single-process continuation. No helper
 reclamation, parent-death, replacement or timeout-kill claim is accepted.
 Mandatory review of the complete resource artifact still precedes planning.
 Native, binary and workflow acceptance remain pending.
+
+#### Proposed in-process observation contract
+
+**Proposal awaiting a human semantics/evidence decision; not the selected runtime
+contract.** Retain the approved single-process posture. Prefer the native calls
+below over new content readers or private registration scraping, but distinguish
+their reported observations from a proof of internal platform health. This
+proposal changes two guarantees explicitly, as described under
+[the decision questions](#observation-boundary-decision-questions). Approval of
+only one leaves allocation design open. The existing stronger negative-fact and
+complete-event obligations above are not satisfied by this proposal.
+
+One private inspection boundary owns result/error normalization and exposes
+value, uncertainty, observed change or resource refusal to the accumulator.
+The existing native constructor is its enabling point for controlled outcomes;
+clients supply no call order, locks or resource-health protocol. The runtime
+owns process-lifetime reservations and freeze; the accumulator alone finalizes
+metadata and coverage together. Native answers cannot introduce discovery roots.
+
+| Responsibility / actual calls | Proposed usable observation | Uncertain or failing observation |
+| --- | --- | --- |
+| Owned listing, identity and path: checked `openat`, `fstatat`/`fstat`, `fstatfs`, `fdopendir`/`readdir`, and the canonical `fsgetpath` operation | Existing policy/identity/location checks and explicit POSIX success/EOF. `fdopendir` transfers an owned descriptor; it creates no second charge. | Captured errno, changed association, invalid output or native-size refusal follows the existing scope rules. Set errno immediately before `readdir`; nil with nonzero errno is failure, never EOF. |
+| Native application/package/hidden/alias/type metadata: a fresh `URL.resourceValues(forKeys:)` for `.isApplicationKey`, `.isPackageKey`, `.isHiddenKey`, `.isAliasFileKey`, `.contentTypeKey`, with only keys needed for this entry | Required booleans must actually be supplied; a nonnil type identifier must fit the optional-string account. These are native reported facts, not extension inference. Existing directory identity/canonical checks bracket the call. | A thrown error, missing required value, conflicting facts or unrepresentable optional value yields affecting inspection coverage and unknown fields, or omission when application classification cannot be established. It cannot authorize descent into a possibly hidden/package directory. Native false/no values have the residual internal-health limit being proposed. |
+| Identifier: `Bundle(url:)` followed by `bundleIdentifier`, without executable loading or localized/icon/resource lookup | A supplied nonblank bounded string is an observed identifier, subject to bundle identity/location rechecks. | Nil, blank, wrong type or overlong value means null identifier, UNKNOWN installation and affecting INSPECTION_FAILED coverage. Never assert that the bundle declares no identifier. Later `stat`/`access` does not upgrade nil; no direct Info.plist read is proposed. |
+| All registrations: `LSCopyApplicationURLsForBundleIdentifier`, with initialized `outError` | A nonempty CFArray with no error supplies reported registration URLs; inspect one at a time, never bridge it into a second growing Swift array. Each candidate URL must be a bounded file URL admitted by the existing policy, then checked for present native bundle identity. A positive exact identity can establish INSTALLED. | Nil/nil, empty array, array plus error, wrong element type or any error except the specifically decoded not-found result is uncertain. Any EMFILE/ENFILE in captured underlying causes latches resource refusal. Never use the action adapter's errorless registration array to prove absence. |
+| Preferred per-identifier observation: `NSWorkspace.urlForApplication(withBundleIdentifier:)` | A nonnil URL is a separate selection input only after the same policy, presence and native-identity checks. | Nil is no negative fact. A conflicting positive preferred observation invalidates a proposed negative from the all-registration query. A failed/blocked preferred-target check prevents negative finalization; no fallback retargets the candidate. |
+| Type conformance: `UTType(identifier)` and `conforms(to:)` against the existing executable/application/alias refusal types | A supplied native type and established conformance select the existing file disposition; preserve native package/alias semantics. | Failed type construction or missing type remains UNKNOWN with affecting coverage. Neither a suffix nor unknown type alone proves executable status. The native type service has the same opaque-health limit. |
+
+These are search's proposed calls, not a claim that the action adapter already
+implements them. File-search symlink entries retain UNKNOWN fields without
+target/resource inspection; the checked application-link exception still needs
+both-spelling policy checks and its actual-call prompt acceptance. Apple
+documents the all-registration query's returned URL
+array and its nil plus `kLSApplicationNotFoundErr` result, and marks the API
+deprecated in favor of NSWorkspace. It remains declared in the inspected SDK.
+The error channel is the reason to propose it; deprecation is a migration cost.
+The [public API contract](https://developer.apple.com/documentation/coreservices/1449290-lscopyapplicationurlsforbundleid)
+does not supply an internal-allocation bound or a completeness/health token.
+Fresh Foundation resource-value requests can still use platform caches; fresh
+URLs do not create an atomic filesystem snapshot. Prompt-free evidence covers
+the [previously measured keys and fixtures](../verification/protected-path-metadata.md),
+not the new package/hidden combinations or every link/volume. Any prompting
+route fails acceptance; this proposal supplies no permission to prompt.
+
+Under the proposed weaker semantics, UNREGISTERED means **the public registration
+observation reported no registration for this checked present native identity**.
+It could be finalized in only two cases: the all-registration query returned
+nil with the proposed allowlisted pair `kCFErrorDomainOSStatus` and
+`kLSApplicationNotFoundErr` (−10814), and no observed resource error or preferred
+observation matching this candidate's native identity; or a nonempty no-error
+array was fully consumed and every relevant URL's identity/absence was established with
+none matching, with no preferred observation matching this candidate's identity.
+Preserve the actual error domain/code; a numeric code in another domain is not
+not-found. Decode
+underlying causes one at a time, at most sixteen objects within existing scratch,
+detecting cycles/truncation without copying an unbounded tree; an incomplete error
+classification is uncertain, never a negative. A policy-blocked, changed,
+malformed, too-long or unreadable registration URL, incomplete iteration, wait
+expiry or refusal prevents the whole-array negative. A known absent stale URL
+can be accounted for; an unreadable one cannot be called absent. The preferred
+nil does not supply health for either case. The exact domain/code pair must be
+confirmed against the supported runtime in the real-provider subjects.
+
+This retains positive **and** negative registration cases, not positive-only
+registration or UNKNOWN for every application. It explicitly admits a residual
+false negative if Launch Services returns a normal-looking not-found/incomplete
+answer after an undetected internal failure or stale service state. A complete
+array also cannot prove absence outside that observed service answer. The
+original contract disallows that inference; changing it needs the first human
+answer. Even an apparently positive answer is a platform observation, rechecked
+at action time, not a certified internally healthy platform snapshot. No
+separate no-identifier assertion is proposed or exposed through a null field.
+
+##### Proposed allocation and lifetime ownership
+
+Keep the existing Q = roots + 2, S = min(72, max(0, L − 128)), four workers,
+accounts, inherited host limits, domain and no-wait admission. All explicit
+opens/dups acquire a temporary or root credit first; in-progress attempts count
+against occupancy before entering the syscall. Component walks close the old
+descriptor before advancing beyond two temporaries. Registration-target checks
+reuse this serial walk; they open no extra persistent stream and cannot borrow
+an unused root credit. Release native result objects before the next candidate
+once their bounded copied values are accounted for. Do not retain a history of
+registration URLs, alternative bundle layouts or discarded native identities.
+
+Framework metadata, Bundle, Launch Services, UTType, Foundation conversion and
+their caches/Mach replies remain **opaque in-process demand**. Execute one native
+inspection at a time per job; concurrent jobs can still make four such calls.
+The returned CFArray is itself a platform-owned allocation before Koine can
+check its length. Only copied values fall under the existing scratch account;
+no whole-array bridge or diagnostic-error-tree copy may escape it. Serial calls
+do not bound internal descriptor/RSS demand, asynchronous platform work or
+system-wide resources. Native entry/exit events label these spans, not their
+internal acquisitions. This is why the proposal does not meet the original
+fully owned route/complete observer condition. R remains a budget, not an OS
+reservation. It cannot ensure that another consumer's next open or accept fits.
+
+Refresh the host limit before **every** new native inspection, including opaque
+ones, and retain the existing summed-reservation lowered/unknown-limit latch.
+At L = 128 no job opens; at 160 only one maximum-root reservation fits; at 200
+four maximum-root reservations fit; at 256 a fifth job is worker-refused. Infinite
+uses S = 72; failed/unknown inspection refuses without work. A later higher
+limit cannot clear an existing refusal cohort. No setrlimit call, helper, IPC,
+loader, entitlement or different normal-launch route is proposed. ENFILE remains
+a system-wide failure; neither Q nor the inherited per-process limit contains it.
+
+Admission of each owned attempt or opaque span has a single linearization point
+under the runtime's refusal/freeze check. Calls already admitted when freeze
+wins can return later; no call is newly admitted after it. A successful late
+open is installed in worker-owned cleanup state even when its data is discarded.
+The timer/canceller never closes it. Failed `fdopendir` leaves the original
+descriptor worker-owned; successful conversion transfers exactly one owner to
+the stream. The worker closes each owned descriptor/stream exactly once and
+releases its occupancy and reservation only after unwind. Never retry a close
+using a stale numeric fd after a reported failure; ambiguous close health cannot
+justify new search admission and requires process recovery. Framework-owned
+objects are released by the worker; their hidden lifetimes cannot be certified
+by that release. Finite delayed returns test cleanup; an indefinitely blocked
+call retains its worker, objects, scratch and full Q.
+
+Observed POSIX/underlying native resource failures retain the existing cohort
+latch, freeze unfinalized work and preserve finalized/frozen values. No retry,
+replacement worker, alternate metadata call or new job starts until the entire
+cohort cleans up and L is read afresh. Provider stop/start reuses the same
+process-lifetime owner and cannot erase a surviving job/refusal. One indefinite
+call beside another job's resource failure therefore disables new search until
+Koine process restart. Restart ends this incarnation's in-process ownership;
+it does not prove global resource health or stop remote filesystem/service work.
+The next normal process creates an empty owner and rereads its actual L. Existing
+grants persist by their current store contract, while failed external work can
+still cause refusal. No orphan-child recovery is needed because no child exists.
+
+##### Proposed observable acceptance boundary
+
+Keep independent real GraphQL/native-provider subjects and normally launched
+signed hardened Koine in isolated macOS VMs. The second human decision would
+replace exhaustive opaque descriptor-event certification with an explicitly
+limited argument: complete owned-credit/admission events; exact native-call
+entry/return/value/error/freeze envelopes; and independently observed listener,
+grant-store and authorized action outcomes. A private-adapter ledger cannot
+certify hidden native calls; raw tracing, if independently validated, remains
+supplementary and must disclose decoded families and loss. Polling establishes
+no transient-event claim and is not a passing instrument for hidden acquisitions.
+
+The test instrument records pre-backoff accept IOError, selected delay,
+schedule/cancel and actual resumed read at the real NIO event points. Preserve
+the production bootstrap order, forwarding suppression and delay. A handler
+installed only downstream is invalid. Fixed/preallocated event storage with
+operation/thread/search/cohort identities, monotone sequences and explicit
+overflow/unmatched-span controls avoids logging opens during the subject.
+Lost owned/hook events invalidate the subject. This instrumentation is compiled
+into the normally signed test build with unchanged entitlements/identity/launch;
+it requires no injection or target attachment. The integration and observer
+equivalence still need construction and review, not a verdict from this document.
+
+| Discriminator / subject | Required observable outcome under the proposal |
+| --- | --- |
+| Nil identifier with later successful stat/access; nil/nil, empty/errorful registration or not-found code in another domain | Null identifier/UNKNOWN with affecting coverage, or resource refusal when established. No invented no-identifier fact or UNREGISTERED. |
+| Adapter reports not-found/nonmatching array while a resource event is explicitly associated with the observation | Refuse negative finalization and latch the cohort; earlier finalized/frozen candidates stay unchanged. Suppressing the error input must make this control fail. |
+| Same normal-looking registration answer with an internal failure invisible at the proposed boundary | The proposal cannot distinguish it from a normal negative. This is the disclosed first decision's residual risk; it must not be labelled a passing hidden-health test. |
+| Healthy registered real Safari/Finder; genuinely unregistered fixture and separate copies sharing an identifier | Required launch selectors/checked identity, real UNREGISTERED observation and distinct-copy choices. All-UNKNOWN metadata or reveal-only coverage cannot pass the configured application workflow. |
+| Owned transient open/close between occupancy polls; deliberately dropped owned event | Event ledger observes the transient and rejects the dropped-event subject. It proves owned instrumentation only, never opaque completeness. |
+| Synthetic pre-backoff accept error suppressed downstream; real accept resource failure | Both the error and actual scheduling/read behavior are visible even if a fresh client later succeeds. Missing/dropped hook events invalidate the run. Real normally launched exhaustion/control remains mandatory, not inferred from injection. |
+| Four searches with blocked listing/metadata/canonical work while fresh clients query, change grants and perform authorized launch/open/reveal | Record each independent completion/error and every accept pause. An independent resource failure or accept backoff during this subject fails conservatively; an attribution gap cannot certify isolation. No general latency target or proof of invisible FD peaks is claimed. |
+| No-search reference under matched launch, fixture and independent demand | Establish the reference's actual behavior and resource/backoff signals. If it also fails, classify unrelated demand/inconclusive comparison; it cannot convert the search-run failure into a pass. |
+| One indefinite native span plus another job's EMFILE/ENFILE, then provider restart and process restart | Disabled guidance, no replacement/retry/new search, retained Q across provider restart; finite late returns close once. Only a new normally launched process resets local ownership, with successful admission conditional on its current L/resources. |
+| Finite/infinite/unknown/lowered/higher limits, reserved credits versus current occupancy | The unchanged admission and cohort cases above, including the surviving summed-Q predicate and higher-limit nonrecovery. System-wide demand and unrelated overload remain disclosed limits. |
+
+Useful coverage, prompt behavior, canonical races/size grouping, all original
+FIFO/witness/binary/compatibility subjects and the operator's separate measured
+home-omissions decision remain mandatory. No observed independent error is waived
+because clients eventually reply; the proposed change is the **visibility and
+scope of the evidence**, not permission to accept observed search-caused failure.
+Under the original contract, an incomplete opaque trace remains inconclusive.
+Even if this proposal is approved, a passing controlled subject certifies only
+its observed outcomes and owned/hooks completeness, not absence of transient
+opaque demand or all possible native false negatives.
+
+##### Observation boundary decision questions
+
+Recommend the following two explicit decisions for consideration, because they
+retain public native semantics and the actual configured launch workflow inside
+the approved process posture without claiming an unavailable internal-health
+proof. The justification is the documented API boundary and current evidence
+gap, not demonstrated normal-search harm or established necessity for isolation.
+
+1. **Native result meaning, including registration:** May UNREGISTERED mean the checked public service
+   observation described above, with disclosed possible undetected internal
+   failure/stale-service false negatives, instead of requiring proof that all
+   internal work was healthy? Nil identifier remains UNKNOWN, never no identifier;
+   malformed/errorful/incomplete observations remain uncertain. This changes the
+   strength of the pending public meaning and needs explicit approval. The same
+   choice treats native type/package/hidden/alias values and positive identifiers
+   as reported platform observations without proof of internally healthy work.
+   Undetected incorrect native metadata could omit a name or misclassify its
+   disposition; known-witness incorrect outcomes still fail acceptance. Approval
+   of registration meaning alone must not be stretched to cover those facts.
+2. **Serviceability evidence:** May acceptance establish complete owned/hook
+   events and controlled independent outcomes while explicitly leaving opaque
+   allocation peaks/internal events unproved, instead of requiring the original
+   complete acquire/release/error observer or a fully owned equivalent route?
+   Observed independent failure/backoff still fails; lost applicable events and
+   inconclusive runs still cannot pass. This changes the acceptance guarantee.
+
+Retaining either original requirement is a legitimate answer. It leaves the
+corresponding allocation obligation live before serviceability construction and
+planning; the same proposal cannot be renamed a proof. No refusal automatically
+approves helpers, content reads, consent, smaller roots, all-UNKNOWN launch
+coverage, different signing/limits or abandonment. A final design continuation
+must consume both answers, reconcile spec/SDL/client language and any earned ADR
+or glossary change, and give the serviceability producer a coherent handoff.
+Only then can the complete-resource mandatory review be cut. Native acceptance
+and the existing public contract version remain pending/unchanged; no released
+contract meaning is being changed in this design session.
 
 ### Match retention and freeze
 

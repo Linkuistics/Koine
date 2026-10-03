@@ -251,6 +251,15 @@ owned/opaque demand, two-credit walk ownership, trustworthy negative metadata
 and worker cleanup/recovery must be resolved in process before serviceability
 subjects and mandatory review. Helper packaging and child limits are not
 authorized; grants, host limits and workflow/domain guarantees remain binding.
+The [in-process observation proposal](workspace-search.md#proposed-in-process-observation-contract)
+now specifies the calls, ownership and failure discriminators. Its native-result
+meaning for negative registration and limited opaque-event acceptance boundary
+need two explicit human answers; neither follows from declining helpers.
+The native-result question also discloses the internal-health limit on reported
+type/package/hidden/alias facts and positive identifiers; a registration-only
+answer cannot approve the rest by implication.
+Original acceptance obligations remain live, and no trace row is accepted by
+this proposal.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

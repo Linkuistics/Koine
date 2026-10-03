@@ -40,14 +40,17 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 The current-discussion panel presents the
-[resource boundary comparison](index.html#diagram-search-resources): the operator
-declined helper design, questioning why a separate process was needed. The
-source/SDK concern does not demonstrate a normal-search failure or establish
-isolation's necessity. Continue inside Koine's process; owned/opaque demand,
-two-credit walk ownership, trustworthy negative metadata and worker cleanup/
-recovery still require a complete contract.
+[resource boundary proposal](index.html#diagram-search-resources): helper design
+remains declined. Actual in-process calls, uncertainty, owned/opaque demand,
+two-credit ownership and freeze/restart recovery are now specified in the
+[observation proposal](../../specs/workspace-search.md#proposed-in-process-observation-contract).
+Two separate human answers are required: reported native negative-registration
+meaning and controlled serviceability evidence with opaque events/peaks unproved.
+Either retained original guarantee leaves allocation work live; neither follows
+from declining helpers. The original obligations remain binding, and the
+source/SDK gap establishes no normal-search failure or necessity for isolation.
 The [allocation decision](../../specs/workspace-search.md#native-allocation-decision)
-keeps those obligations live before selecting a runtime route. The
+selects no runtime route until those answers and final reconciliation. The
 [feasibility analysis](../../verification/search-native-resources.md) records
 the evidence and residual obligations. The unchanged canonical path view,
 FIFO and reviewed transport/compatibility provide context.
@@ -104,9 +107,10 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views and summaries:
 
-- [Search → native allocation decision](index.html#diagram-search-resources) — Records the helper scope refusal and keeps native semantics, two-credit ownership, negative-health and worker-recovery obligations live in process.
-- [Native allocation contract](../../specs/workspace-search.md#native-allocation-decision) — Retains the single-process posture and every binding budget, metadata, domain and acceptance obligation; the complete native route remains pending.
-- [Native resource analysis](../../verification/search-native-resources.md#acceptance-obligations-carried-forward) — Explains the possible shared-table failure, retains in-process negative-fact and serviceability controls, and makes helper-specific falsifiers conditional on separate authorization.
+- [Search → native observation boundary](index.html#diagram-search-resources) — Separates concrete calls and retained ownership from the two unapproved semantics/evidence decisions, with explicit retained-requirement and approval branches.
+- [Proposed in-process contract](../../specs/workspace-search.md#proposed-in-process-observation-contract) — Specifies native result/error rules, owned/opaque resources, freeze/restart behavior and falsifiable subjects without relabelling internal-health gaps as proof.
+- [Native resource analysis](../../verification/search-native-resources.md#provenance-and-verification-boundary) — Identifies the public API evidence and the proposed instrument's explicit opaque-visibility limit.
+- [Client search guide](../../client-guide.md#searching-for-applications-and-files) — Removes the stale helper recommendation and states the still-unapproved negative/evidence changes.
 
 The canonical, traversal, coverage and handoff views remain unchanged context.
 
@@ -153,6 +157,20 @@ and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
 with failing schema controls; this does not prove runtime branch invariants.
+The in-process observation proposal was checked in Safari in the isolated
+`koine-k117-design` macOS clone. Viewer, manifest, source and resource export
+were byte-identical to the host files. A fresh resource deep link reached the
+intended title and Current/Updated markers; the start node and both decision
+branches were readable in the 1920-pixel light view. The lower decision branches
+were also checked in dark appearance. A fresh discussion deep link showed the
+two unapproved decisions and one changed-view summary; its text reflowed at a
+640-pixel window. Narrow diagram reading remains the native-size/export trade-off
+above, not a claim of readable whole-graph text at phone width. The clone was
+stopped after presentation checking. No Koine native search, permission, binary
+or serviceability subject ran. The host presentation is served at
+<http://127.0.0.1:8875/#diagram-search-resources>.
+
+Earlier presentation records below refer to their earlier revisions.
 The allocation recommendation was inspected in local Safari at
 <http://127.0.0.1:8874/#diagram-search-resources>, using the existing static
 viewer. A fresh deep link reached the resource title and Current/Updated

@@ -370,10 +370,15 @@ review also precede planning.
 The [resource feasibility analysis](verification/search-native-resources.md)
 records error-channel and observer limits; allocation and constructible subjects
 remain open, with no accepted change to public outcomes or workflow coverage.
-The [allocation recommendation](specs/workspace-search.md#native-allocation-decision)
-prefers finite-table private-helper design, conditional on a human packaging/
-child-limit decision. It adds no deployed helper or implicit limit/consent setup;
-negative metadata health, two-credit IPC and restart ownership still need design.
+The [allocation scope decision](specs/workspace-search.md#native-allocation-decision)
+retains single-process inspection after helper design was declined. The
+[in-process observation proposal](specs/workspace-search.md#proposed-in-process-observation-contract)
+names actual native calls, uncertainty/refusal and worker recovery. It asks
+separately whether native metadata and registration may mean reported observations,
+whether serviceability evidence may leave opaque allocations unproved. Both
+changes are unapproved; current negative-fact and complete-event obligations
+still bind. Nil identifier never means a proven missing identifier, and the
+proposal cannot pass with UNKNOWN metadata for every configured launcher.
 Per-root FIFO breadth-first discovery and atomic
 process-wide descriptor credits preserve shallow-name order and bound owned
 search opens below the inherited soft limit with a non-search reserve. Their load-bearing review

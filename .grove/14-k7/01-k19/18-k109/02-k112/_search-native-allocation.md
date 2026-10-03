@@ -80,3 +80,9 @@ settle a runtime contract. Do only the first child in this session.
   declined. k116 must settle an in-process owned bounded route or complete
   approved-posture observation under every original completion condition;
   k112/k109 and k113's mandatory review remain live.
+- k116 decomposes at a separately framed semantics/evidence decision. k117
+  specifies an unapproved in-process proposal with exact native calls, nil as
+  UNKNOWN, reported registration negatives, owned/opaque accounting and worker
+  recovery. k118 must obtain separate answers on negative meaning and limited
+  opaque-event evidence; k119 must settle every original condition still binding.
+  The helper refusal changes neither guarantee. k113 still awaits final design.

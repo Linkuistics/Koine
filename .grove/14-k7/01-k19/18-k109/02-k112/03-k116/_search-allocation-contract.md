@@ -1,4 +1,4 @@
-# search-allocation-contract-k116
+# search-allocation-contract-k116 — brief
 
 
 ## Goal
@@ -47,3 +47,40 @@ Any separately authorized reconsideration of helpers still owes every original
 k112 isolation condition, including bootstrap, two-credit IPC, TCC identity,
 metadata health and surviving-child ownership across restart. Missing observation
 evidence alone does not establish that isolation is necessary.
+
+## Decomposition
+
+The in-process public APIs do not supply the original complete internal-health
+or descriptor-event argument in the evidence available here. The exact scope
+question is now concrete: may registration mean the documented native result,
+and may serviceability acceptance establish observed independent outcomes with
+explicitly incomplete opaque-allocation visibility? This is a separate human
+semantics decision, not a consequence of the helper refusal.
+
+1. search-observation-boundary-k117 produces the complete reviewable in-process
+   proposal, exact retained/changed guarantees, failure discriminators and
+   decision question. It does not select that proposal as the runtime contract.
+2. A requirements child obtains independent answers on negative registration
+   semantics and the serviceability evidence boundary, preserving all other
+   constraints. A refusal retains the original obligation; no automatic prune.
+3. A design continuation settles the allocation contract from those answers,
+   reconciles every affected durable artifact and supplies k113's observable
+   handoff. A partial answer cannot retire this node.
+
+Do only the first child in this session. No implementation or duplicate review.
+All original Done when conditions above survive until expressly changed by the
+human. k113 cannot cut review or treat a proposed boundary as acceptance.
+
+## Decisions (running log)
+
+- Public error reporting, process-owned credits and internal platform health
+  are different obligations. The present source/SDK evidence supplies neither
+  a fully owned registration/type route nor a complete approved-posture observer.
+  This is an evidence gap, not proof that isolation is necessary or that an
+  observer is impossible.
+- Externalize the precise semantics/evidence decision rather than relabelling
+  CFError as a hidden-allocation proof. Recommend a disclosed native-observation
+  boundary for consideration; retain the original contract until Antony answers.
+- Preserve single-process inspection, no content reads or new permissions,
+  native type/registration services, Q/S, worker-only cleanup, immutable prior
+  observations, provider-restart persistence and process-restart recovery.

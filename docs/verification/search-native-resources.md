@@ -15,6 +15,13 @@ single-process posture. This analysis has not demonstrated a normal-search
 failure or established that isolation is necessary; the continuation must
 settle an in-process bounded route or complete approved-posture observation.
 These feasibility candidates are not an accepted runtime contract.
+The [concrete in-process proposal](../specs/workspace-search.md#proposed-in-process-observation-contract)
+now names native calls, owned/opaque demand, freeze/restart ownership and exact
+failure discriminators. It requires two separate human decisions on reported
+negative-registration semantics and controlled serviceability evidence with
+incomplete opaque-event visibility. Neither change is approved or follows from
+declining helpers. The original guarantees remain live; this report provides
+no hidden-health proof, selected runtime route or native acceptance.
 
 ## Call health is separate from descriptor visibility
 
@@ -197,6 +204,19 @@ for the operator decision; all-UNKNOWN metadata or an arbitrary sample cannot
 accept the baseline. No native/binary/useful-coverage result is supplied here.
 
 ## Provenance and verification boundary
+
+The in-process proposal checked the present action adapter and listener against
+the same NIO revision and SDK declaration, and verified Apple's
+[all-registration contract](https://developer.apple.com/documentation/coreservices/1449290-lscopyapplicationurlsforbundleid).
+The documented not-found result is not a claim about every swallowed internal
+failure. Proposed identifier inspection keeps Bundle positives and treats every
+nil as UNKNOWN with affecting coverage; it neither reads Info.plist directly nor
+asserts a missing key. Native package/hidden/type keys and prompt behavior still
+need their actual-call subjects. The proposed instrument measures owned events,
+call envelopes and pre-suppression accept/backoff hooks; it explicitly cannot
+certify opaque transient acquisitions. Only an explicit human evidence decision
+can replace the original complete-observer obligation with this narrower claim.
+No native failure, absence of a possible observer or need for isolation was proved.
 
 Graph project Users-antony-Development-Koine.add-plugins-for-modaliser-requirements
 was ready at generation 2026-09-29T10:36:20Z. Tier 2 discovery/trace/snippet and

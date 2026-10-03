@@ -4,6 +4,8 @@
 # Native/canonical/cleanup acceptance remains pending after those design reviews.
 # Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
 # Result-count truncation and partial traversal are independent.
+# Proposed native-observation/evidence changes are unapproved; examples retain
+# current meanings and do not accept UNKNOWN metadata for every launcher.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
   rootIndex

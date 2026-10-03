@@ -6,6 +6,8 @@
 # Native-size groups, worker ownership and policy witnesses await native acceptance.
 # Typed BLOCKED transport is reviewed; runtime/binary acceptance remains pending.
 # Native/default coverage and the protected-home baseline remain unaccepted.
+# In-process observation proposal needs explicit negative-semantics/evidence answers;
+# current field meanings and complete native-resource obligations remain binding.
 
 """Requires workspace:read throughout. AVAILABLE has matches only; DEPENDENCY_UNAVAILABLE has dependency only; BLOCKED/FAILED withhold matches. With no progress, native/identity inspection failure or work/resource refusal precedes prompt risk, which precedes pure absence/exclusion. CHANGED_DURING_SEARCH contributes failure; uncertain anchor resolution is INSPECTION_FAILED unless absence/exclusion is established. BLOCKED returns null matches/dependency without a search-generated error, including matches aliases; consent is UNKNOWN, never observed absent. FAILED raises failed at each selected matches alias. Error-free coverage-only selections retain the same status/diagnostics. All branch invariants are subject to execution errors at or above selected fields, including lifecycle and publication; inspect errors and every root's coverage."""
 enum WorkspaceSearchStatus {

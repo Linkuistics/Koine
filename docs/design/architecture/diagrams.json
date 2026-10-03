@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Continue native inspection inside Koine",
-    "status": "Helper scope declined · in-process design pending",
-    "summary": "The operator declined helper design, questioning the need for a separate process. Retain Koine's single-process posture; helper packaging and child limits are not authorized. The proposal addressed possible opaque descriptor demand interfering with unrelated work, but the source/SDK analysis demonstrates no normal-search failure or necessity for isolation. The complete in-process allocation contract must settle native semantics, trustworthy negative metadata, owned/opaque demand and worker cleanup/recovery through an owned bounded route or complete approved-posture observation. Two temporary credits and all public outcomes, domain, host limits, grants, seams and serviceability requirements remain binding. Serviceability subjects and mandatory review follow that contract; native acceptance remains pending.",
+    "title": "Decide the in-process native-observation boundary",
+    "status": "Proposal · two human semantics/evidence answers required",
+    "summary": "Actual native calls, uncertainty, owned/opaque demand and worker recovery are specified. The proposal asks separately whether metadata and negative registration may mean reported platform observations, admitting undetected incorrect facts, and whether serviceability evidence may leave opaque allocation peaks/internal events unproved. Both changes are unapproved; original guarantees remain binding and helper design remains declined.",
     "diagramIds": [
       "search-resources",
       "search-canonical",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "search-resources",
-        "summary": "Records the helper scope refusal and retains in-process inspection; exposes native semantics, two-credit ownership, negative-fact health and worker cleanup/recovery obligations before serviceability handoff."
+        "summary": "Names the concrete native-call proposal and separates the negative-registration meaning and opaque-event evidence decisions, with explicit no/partial-answer and approval branches."
       }
     ]
   },
@@ -25,7 +25,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "FIFO and canonical fsgetpath are proposed. Helper design was declined; allocation continues inside Koine's process with existing limits and guarantees. The complete allocation contract and serviceability subjects remain open. The complete resource artifact and canonical proposal require review before planning. Typed BLOCKED transport is reviewed; runtime/binary/native coverage and serviceability remain pending."
+      "description": "FIFO and canonical fsgetpath are proposed. Helper design was declined. The concrete in-process observation proposal needs explicit negative-semantics and evidence answers; original resource/metadata guarantees still bind. Complete allocation, serviceability subjects and mandatory reviews remain ahead of planning. Runtime/binary/native acceptance remains pending."
     },
     {
       "id": "workspace",
@@ -67,11 +67,11 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Retain the single-process posture for native inspection",
+      "title": "Decide the in-process native-observation boundary",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Human scope answer: helper design is not approved because the need for a separate process was not understood. The source/SDK analysis identifies a possible shared-descriptor-table risk, not a demonstrated normal-search failure or proof that isolation is necessary. The declined helper alternative adds IPC, signing, TCC and child-lifetime obligations; its proposed 32-descriptor ceiling proves no metadata health or system-wide bound. Continue in process with native registration/type semantics, trustworthy negative facts, two temporary credits, worker-only cleanup and existing host limits/domain intact. An owned bounded route or complete approved-posture observation must settle the allocation contract before independent serviceability subjects and mandatory review. Suppressed accept/backoff and transient-open controls remain required; no native or binary acceptance is supplied."
+      "caption": "Unapproved in-process proposal, not native acceptance. Use native resource keys, Bundle positives, UTType, error-bearing LS all-registration results and the separate NSWorkspace preferred observation. Nil identifiers remain UNKNOWN with affecting coverage. Negative registration would mean the checked service answer, admitting an undetected internal-failure/stale-service limit; owned/hook events and controlled independent outcomes would leave opaque allocations unproved. These are two separate human decisions. Q/S, two temporaries, freeze/late-return/worker-only cleanup and provider/process restart ownership remain binding. Either retained original guarantee leaves allocation work live; only both approved changes permit final contract reconciliation before serviceability construction and mandatory review. Helpers, consent/signing/limit/domain changes and all-UNKNOWN launch acceptance remain unauthorized."
     },
     {
       "id": "search-canonical",
