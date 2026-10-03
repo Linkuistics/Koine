@@ -36,11 +36,12 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel focuses on the designed search coverage and selection
-handoff, with discovery evidence and the metadata/handler view as unchanged context.
-Search review repair requires fresh default-discovery/resource and prompt-risk
-transport producer decisions before implementation planning. The 512-record
-DFS proposal and nil-consent framework mapping are not accepted instructions.
+The current-discussion panel focuses on default discovery and coverage scheduling,
+with selection handoff, discovery evidence and the metadata/handler view as context.
+Generic system-app roots, checked .app-link metadata, exact observation/group/
+remainder semantics and independent root budgets await load-bearing review and
+native acceptance. Prompt-risk transport remains a separate design decision;
+no reduced home/application baseline or nil-consent framework mapping is accepted.
 The [workspace spec](../../specs/workspace-launch-and-open.md)
 and its SDL include the design-review corrections; implementation and native
 acceptance remain pending. The views distinguish conditional running-copy reuse,
@@ -58,17 +59,20 @@ premise with that limit; the outcome view remains unchanged context.
 
 The current update changes these views:
 
-- [Search → scope and coverage](index.html#diagram-search-coverage) — Corrected
-  no-progress precedence: real failure, then any prompt risk, then pure
-  absence/exclusion. BLOCKED preserves coverage and no list; error transport
-  awaits its producer decision.
+- [Search → scope and coverage](index.html#diagram-search-coverage) — Added
+  generic system-app roots, separately reserved diagnostics/matches and cyclic
+  root/stream work. Defined counted groups and stopped work without universal
+  skipped-child claims; BLOCKED transport remains pending.
 - [Search → selection and action handoff](index.html#diagram-search-handoff) —
-  UNREGISTERED/UNKNOWN choices remain reveal/copy candidates; only INSTALLED
-  supplies the constrained launch input. Existing actions still revalidate.
-- [Search contract](../../specs/workspace-search.md) — Repaired Unicode/app-stem
-  ranking, absent optional-default coverage, registration state, blocked-worker
-  recovery and exact compatibility-profile subjects. Default discovery/resource
-  representation and prompt-risk transport remain explicitly unsettled.
+  Checked .app links retain their observed spelling; existing actions revalidate
+  it. UNREGISTERED/UNKNOWN retain reveal/copy choices.
+- [Search contract](../../specs/workspace-search.md#resource-accounting-and-scheduling) —
+  Replaced the shared traversal-log budget with root summaries, independent
+  budgets and fixed match slots. Added wide-layout/later-root/large-directory
+  expected outcomes for all three seams and kept actual coverage unaccepted.
+- [Coverage decision](../../adr/search-coverage-describes-observations.md) —
+  Recorded the public granularity and reservation trade-offs versus a detailed
+  traversal log or persistent inventory.
 
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,

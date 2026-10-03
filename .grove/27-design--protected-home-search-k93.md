@@ -28,8 +28,14 @@ approve the other.
 - `app-and-file-search-k94` findings S1/S2 and `app-and-file-search-k95` triage:
   the original 512-record DFS proposal can stop inside /Applications and never
   visit later defaults. Default discovery/resource design must be reworked
-  before planning and acceptance; use its measured final coverage here, not
-  one Mac's inspection counts as an acceptance result.
+  before planning and acceptance; k96 now specifies five generic app roots,
+  checked .app-link metadata, root observation/group/remainder scopes, 100,000
+  entries and 512/256 KiB diagnostic scopes per root, a 4-stream/4,096-task/2 MiB
+  frontier per root, fixed match slots and the shared three-second wait.
+  Those limits have not been accepted as workflow coverage. Consume its wide
+  fixture/later-root/large-directory three-seam results item by item, including
+  native timeout, frontier and path-value omissions. Use measured final coverage
+  here, not one Mac's inspection counts or static capacity arithmetic.
 
 ## Done when
 - Antony chooses between accepting and disclosing the explicit partial home

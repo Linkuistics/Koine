@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Search coverage and selection handoff",
-    "status": "Review repairs recorded · discovery/budgets and prompt-risk transport need design",
-    "summary": "Search retains every root's coverage and withholds a list for blocked scope. With no progress, real failure precedes prompt risk, which precedes pure absence/exclusion. Default discovery/resource representation and prompt-risk error transport require producer decisions before planning; no nil-consent framework mapping is authorized. Clients own choice, clipboard and MRU; only INSTALLED apps can launch, and existing actions revalidate under both controls.",
+    "title": "Default discovery, observed coverage and bounded scheduling",
+    "status": "Designed · awaiting review, native acceptance and baseline decision",
+    "summary": "Generic CoreServices/Cryptex application roots and checked .app links address system layouts. Root observation summaries, counted groups and an unfinished remainder avoid universal skipped-child claims. Independent root budgets and rotating streams preserve later roots’ credits; native stalls and the shared deadline still limit progress. Fixed match slots preserve ranking and diagnostic reservation. Prompt-risk transport remains a separate producer decision; no reduced application/home baseline has been accepted.",
     "diagramIds": [
       "search-coverage",
       "search-handoff",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "search-coverage",
-        "summary": "Repaired no-progress precedence and exposed the pending discovery/budget and BLOCKED transport decisions."
+        "summary": "Added generic system-app discovery, independent root budgets, rotating streams and exact observation/group/remainder meanings."
       },
       {
         "id": "search-handoff",
-        "summary": "Retained UNREGISTERED/UNKNOWN reveal/copy choices; only INSTALLED supplies a constrained launch selector."
+        "summary": "Clarified that checked .app-link paths remain observed locations for existing action revalidation."
       }
     ]
   },
@@ -26,7 +26,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Scope, coverage and location handoff, with bounded native evidence as context. Default discovery/resource representation and prompt-risk transport need producer design before implementation and acceptance."
+      "description": "Default discovery, bounded root scheduling and exact coverage groups, with location handoff and measured native evidence. Review and runtime/default coverage remain pending; prompt-risk transport is separate."
     },
     {
       "id": "workspace",
@@ -72,7 +72,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Review-repaired read contract, pending producer decisions, implementation and G/N/V acceptance. Complete covers the declared domain; a positively absent optional home Applications default has an empty domain. With no progress, real native/work failure precedes any prompt risk, which precedes pure absence/exclusion. BLOCKED retains coverage without a list; its error transport is unsettled and no nil-consent ProviderFailure mapping is authorized. Default discovery, child-exclusion extents and budget arbitration need rework. Permanently blocked workers recover only on a full Koine restart. No new consent/setup/entitlement is approved."
+      "caption": "Designed flow, not runtime acceptance. Five generic application roots include CoreServices and Cryptex; visible .app links receive checked metadata only. Root partitions and rotating streams prevent credit starvation, not native-call stalls. Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS asserts counts only. CHILD_GROUP/DESCENDANT_GROUP count observed anchors, never all children; REMAINDER preserves unfinished work. Fixed match slots cannot consume coverage reservation. Real failure precedes prompt risk, then pure absence/exclusion when no progress. BLOCKED transport awaits its separate producer; new calls/layouts and bound-driven baseline coverage remain pending."
     },
     {
       "id": "search-handoff",
@@ -81,7 +81,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Designed component/data handoff within the existing workspace provider, not deployment containers. Search requires workspace:read; launch/open/reveal and receipts require workspace:control AND desktop:control. Only an INSTALLED app launches, with both identifier and path; UNREGISTERED and UNKNOWN remain reveal/copy candidates. File locations are not pinned identities; unknown default-handler values do not become absence or a fallback. Clipboard writes, chooser and MRU remain client-owned. Protected default opening and the third-party app-reveal notice retain their existing live decisions; search-to-action acceptance is pending."
+      "caption": "Designed location handoff. A checked .app link retains its observed name/path; action-time resolution compares native installation identity again. Only INSTALLED with a known identifier enables constrained launch. UNREGISTERED/UNKNOWN retain reveal/path-copy and known-identifier copy. Clients own clipboard/MRU. Existing actions require both controls and revalidate presence/registration/payload; no selection pins a file or drops its path constraint. Runtime/native action acceptance and existing protected-opening/reveal decisions remain separate."
     },
     {
       "id": "search-discovery",

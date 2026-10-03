@@ -356,25 +356,35 @@ nothing".
 
 ## Searching for applications and files
 
-**Design under review repair, not served yet.** Default discovery/resource bounds
-and prompt-risk transport require producer decisions before implementation.
+**Designed, not served yet.** Discovery/coverage awaits review and native
+acceptance; prompt-risk transport awaits its separate producer decision.
 Introspect for `workspaceSearchApplications` and
 `workspaceSearchFiles`; do not infer availability from a release number. The
 [search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
 and [example operations](design/workspace-search-operations.graphql) fix inputs,
 root defaults, bounds, ranking and coverage. Both roots and every output field
 need `workspace:read` only. Omitted/null roots use Koine's application directories
-or home; explicit roots replace them. Query matching is a literal filename
+or home; explicit roots replace them. Application defaults additionally include
+generic CoreServices and Cryptex application regions. Checked visible .app links
+can supply an observed application path; they never authorize target traversal. Query matching is a literal filename
 substring: app filename or `.app`-stripped stem, file full filename. Canonically
 equivalent Unicode spellings must match under the specified fixed folding;
 `zed` ranks `Zed.app` before `Zed Preview.app`. Complete means the declared
 visible-name domain, not everything on disk. A positively absent optional home
-Applications default has COMPLETE empty-domain coverage with
+Applications or optional Cryptex default has COMPLETE empty-domain coverage with
 OPTIONAL_ROOT_ABSENT; an explicitly supplied missing root remains UNKNOWN.
 
 Read `status`, `matches`, each root's `coverage`, `dependency`,
 `resultsTruncated` and errors together. Empty matches with PARTIAL/UNKNOWN
-coverage is not complete empty. Home excludes protected traversal. In a
+coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
+eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
+somewhere beneath that root. completedDirectories counts EOF listings, not an
+unchanged snapshot. Skipped CHILD_GROUP counts encountered anchors of its parent;
+DESCENDANT_GROUP counts intrinsic anchors beneath its root. Neither says all
+children were skipped. REMAINDER has null count and describes unfinished work,
+not an entirely skipped root. Independent root budgets/rotating work prevent
+one root spending later roots' credits, but native stalls/deadlines can still
+leave them unvisited. Home excludes protected traversal. In a
 BLOCKED result, matches is null and coverage remains available. Coverage's
 PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
 Accessibility or established consent absence. Its GraphQL error transport is

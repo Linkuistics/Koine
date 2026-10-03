@@ -36,9 +36,9 @@ The search design is `docs/specs/workspace-search.md`, with the separate additiv
 `docs/design/workspace-search-schema.graphql` and client examples beside it.
 Every search root/output field needs workspace read only; existing action
 receipts keep both controls. Planning consumes the design review and the two
-review-repair producer decisions before cutting implementation. Default
-discovery/coverage/resource design must address useful coverage and configured
-Safari/Finder reachability. Prompt-risk transport must preserve fixed framework
+review-repair producer decisions before cutting implementation. The discovery/coverage redesign now gives generic system-app roots, checked
+.app links, counted groups/remainders and independent root budgets. Its review
+and useful native/default coverage, including Safari/Finder, remain pending. Prompt-risk transport must preserve fixed framework
 meanings and weigh the schema-level alternative; the withdrawn minor-2 mapping
 is not an implementation dependency. Preserve action-only conformance against
 an independently retained workspace 1.0.0 compatibility host while adding a

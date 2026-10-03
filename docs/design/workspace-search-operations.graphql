@@ -1,6 +1,6 @@
 # Designed examples, not served operations. Requires workspace:read only.
 # Check status, coverage AND errors, particularly at aliased nullable matches.
-# Default discovery/bounds and BLOCKED transport require design before serving.
+# Discovery/coverage awaits review/native acceptance; BLOCKED transport awaits design.
 # Result-count truncation and partial traversal are independent.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
@@ -9,9 +9,10 @@ fragment SearchCoverage on WorkspaceSearchRootCoverage {
   resolvedPath
   state
   examinedEntries
+  completedDirectories
   searched { path extent }
   skipped {
-    path extent reason affectsCoverage guidance
+    path extent count reason affectsCoverage guidance
     permission {
       kind permissionClass permissionOwner permissionReason permissionTarget
       osPermission consentState
@@ -51,3 +52,8 @@ query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
 # there. Launch only INSTALLED, never UNREGISTERED or UNKNOWN; both can be
 # revealed/path-copied, and any known identifier can be copied. Do not infer NO_DEFAULT_HANDLER from
 # null metadata. Never retry an action by dropping its installation constraint.
+
+# Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
+# CHILD_GROUP/DESCENDANT_GROUP count observed anchors, not all children or
+# omitted descendant names. REMAINDER describes unfinished work, not the whole
+# root, and has count null. Inspect completedDirectories as EOF observations.

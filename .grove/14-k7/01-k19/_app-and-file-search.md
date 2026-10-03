@@ -64,8 +64,11 @@ roots and an honest report of what the mechanism cannot see.
 3. Fresh `review-design` of k92's load-bearing API, coverage and diagnostic
    contract, before the increment's planning leaf.
 4. `app-and-file-search-k95` triages that review and applies bounded repairs.
-5. `search-coverage-k96` reworks default discovery, scope representation and
-   resource arbitration; its producer cuts a load-bearing review.
+5. `search-coverage-k96` replaces per-directory logs with exact root observation,
+   group and remainder semantics; expands generic system-app defaults and checked
+   .app-link metadata; partitions root work/frontier/diagnostic budgets and match
+   reservations. Its producer cuts a load-bearing review. All native/default
+   coverage cases and Antony's bound-driven omissions decision remain pending.
 6. `search-permission-transport-k97` settles compatible BLOCKED transport and
    the ADR/complete mapping contract; its producer cuts its own review.
 

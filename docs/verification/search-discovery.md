@@ -133,6 +133,8 @@ by this experiment.
 The [scope/coverage view](../design/architecture/index.html#diagram-search-coverage)
 and [action handoff](../design/architecture/index.html#diagram-search-handoff)
 consume this report in the [search contract](../specs/workspace-search.md).
+The [coverage decision](../adr/search-coverage-describes-observations.md) adopts
+this comparison without claiming an index-health signal or exhaustive inventory.
 The chosen stream adapter is different from this probe's Foundation array
 listing. Its no-follow, resource and cancellation behavior needs its own signed
 VM acceptance; this report cannot prove it. The design keeps protected traversal

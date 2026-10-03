@@ -135,6 +135,15 @@ domain**: COMPLETE means all eligible names were examined, PARTIAL means some
 were examined with omissions, and UNKNOWN means useful examination or
 completeness could not be established.
 
+**Search scope group**: A counted set of encountered exclusion anchors, with
+child identities withheld. CHILD_GROUP anchors belong to the named parent;
+DESCENDANT_GROUP anchors lie somewhere beneath the named root. Counts are
+observed anchors, not all children or omitted descendant names.
+
+**Search remainder**: Eligible work unfinished when a search freezes, including
+unread tails and queued/unfinished inspection. It excludes established
+observations without identifying them and never means the whole root was skipped.
+
 **Search progress**: Examination of an entry or observation of an empty
 directory's end, used to distinguish an available partial search from one
 that obtained no eligible observation.
