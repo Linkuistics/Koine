@@ -216,6 +216,7 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-route-candidates.d2 docs/design/architecture/workspace-route-candidates.svg
 
   design:workspace-check:
     desc: Validate the workspace SDL independently, its composition with the documented baseline, and its five example operations (design check, not runtime conformance)
@@ -258,7 +259,9 @@ tasks:
         import { readFileSync } from 'node:fs';
         const imports = new Set(readFileSync('.build/long-action-native-boundary/imports.txt', 'utf8').trim().split(/\s+/));
         const required = ['_openat', '_fstatat', '_readlinkat', '_fsgetpath', '_FSMakeFSRefUnicode',
-          '_FSCompareFSRefs', '_LSCopyItemInfoForRef', '_LSCopyItemAttribute', '_CFURLCreateFromFSRef'];
+          '_FSCompareFSRefs', '_LSCopyItemInfoForRef', '_LSCopyItemAttribute', '_CFURLCreateFromFSRef',
+          '_fpathconf', '_FSPathMakeRef', '_FSGetCatalogInfo', '_LSGetApplicationForItem',
+          '_CFBundleCopyInfoDictionaryForURL', '_proc_pidpath'];
         const check = symbols => {
           const missing = required.filter(symbol => !symbols.has(symbol));
           if (missing.length) throw new Error('Missing probe imports: ' + missing.join(', '));
@@ -269,7 +272,7 @@ tasks:
         let rejected = false;
         try { check(removed); } catch (error) { rejected = error.message.includes('_fsgetpath'); }
         if (!rejected) throw new Error('Control did not reject a missing intended import');
-        console.log('All nine intended imports present; missing-import control rejected. SDK stub link check only; probe not executed and guest availability untested.');
+        console.log('All intended imports present; missing-import control rejected. SDK stub link check only; probe not executed and guest availability untested.');
         JS
 
   design:action-repair-check:

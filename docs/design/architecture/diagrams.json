@@ -2,10 +2,11 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Separate long-location action prerequisites",
-    "status": "Boundary review integrated · route unresolved · final review required",
-    "summary": "Lookup, classification, handler discovery, registered submission spelling and receipt identity have separate native limits. The designed 1.0.1 repair preserves established cycle/name-limit/nil outcomes and refuses unacquired facts without invented absence. Launch-and-open owns independent long action fixtures; app-and-file-search owns later actual-search provenance. A supported route and final review remain required before consumers; no workflow loss, systematic long-app null receipt or new consent is accepted.",
+    "title": "Prototype selected before completing the native route",
+    "status": "Bounded prototype selected · route unresolved",
+    "summary": "Public parent/reference APIs provide classification and exact-item binding candidates. Selected-copy identifier provenance, original long submission and receipt acquisition remain unproved. Antony's delegated choice selects one bounded native prototype under the existing public-API/signing/consent posture, followed by returned route design. No route, native acceptance, workflow loss, systematic null receipt or new posture is adopted. The route and final review stay live; action fixtures and actual-search provenance retain separate owners.",
     "diagramIds": [
+      "workspace-route-candidates",
       "workspace-long-locations",
       "workspace-open",
       "workspace-outcomes",
@@ -15,20 +16,8 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "workspace-long-locations",
-        "summary": "Separates native consumers and explicit absence, refusal and uncertainty branches; preserves baseline outcomes and splits action/search acceptance."
-      },
-      {
-        "id": "workspace-open",
-        "summary": "Separates uncertain inspection from missing prerequisites and labels long support unimplemented."
-      },
-      {
-        "id": "workspace-outcomes",
-        "summary": "Rejects size and uncertain metadata as absence while retaining the submission boundary."
-      },
-      {
-        "id": "search-handoff",
-        "summary": "Marks the error repair designed and the supported route/review still required."
+        "id": "workspace-route-candidates",
+        "summary": "Records the selected bounded prototype under Antony's delegation while retaining the acquisition gaps and original contract."
       }
     ]
   },
@@ -75,6 +64,15 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "workspace-route-candidates",
+      "group": "workspace",
+      "title": "Evaluate public candidates and unresolved acquisitions",
+      "renderer": "svg",
+      "source": "workspace-route-candidates.d2",
+      "rendered": "workspace-route-candidates.svg",
+      "caption": "Bounded source/SDK evaluation, not a selected route or native acceptance. Deprecated reference APIs are positive candidates, not automatically unsupported. The inspected item attributes do not supply the selected app's identifier, and a bundle dictionary alone lacks acquisition provenance. NSWorkspace long submission and callback/live executable identity remain unmeasured. Antony's delegated choice selects one bounded prototype under the current public-API/signing/consent posture before route closure, followed by returned design. No private policy, shortened location, alternate app copy, guessed metadata, copy-only baseline or systematic null-receipt loss is authorized. The established failure repair, independent action fixtures, later actual-search provenance and 1.0.0/1.0.1/1.1.0 profiles remain binding."
+    },
     {
       "id": "search-serviceability",
       "group": "search",

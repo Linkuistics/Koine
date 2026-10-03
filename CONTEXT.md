@@ -187,7 +187,10 @@ impossible-component and native no-type/no-identifier outcomes. Unacquired facts
 whole/expanded size refusal and unresolved link budgets prove no absence.
 Classification/selection, default-handler acquisition, submission and receipt
 executable-identity support remain unresolved. Launch-and-open owns independent
-long action fixtures; app-and-file-search owns the later actual-search G/N/V
+long action fixtures; the [route evaluation](docs/verification/long-action-route.md)
+documents public candidates and the selected one-session prototype under
+Antony's delegated sequencing choice; the route remains unadopted and unmeasured.
+App-and-file-search owns the later actual-search G/N/V
 handoff. Neither set passes the other. The search value ceiling is no actionability
 guarantee, and overlength is no proof of absence. A
 native descent limit alone does not make a representable name unreturnable.

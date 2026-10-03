@@ -6,6 +6,7 @@ exports:
 - [workspace launch/open and desktop handoff](index.html#diagram-workspace-open)
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
 - [long-location lookup, classification and submission](index.html#diagram-workspace-long-locations);
+- [public route candidates and acquisition gaps](index.html#diagram-workspace-route-candidates);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
@@ -51,12 +52,39 @@ remain live; this discussion supplies none of them. The search ceiling is no
 actionability guarantee. Native/binary/no-dialog/useful-coverage outcomes and
 the operator's measured omissions decision remain pending.
 
+The current discussion now presents the bounded
+[route evaluation](../../verification/long-action-route.md#decision-for-antony):
+public reference candidates leave identifier provenance, long submission and
+receipt acquisition unproved. Antony's "you decide" delegation selects one
+bounded native prototype under the existing public-API/signing/consent posture,
+then returned design. No complete route or native acceptance is adopted; the
+existing boundary and search dependencies remain live.
+
 Current changes:
 
-- [Separate long-location lookup, classification and submission](index.html#diagram-workspace-long-locations) — Adds the four action stages, proposed failure repair and unresolved supported route.
-- [Launch or open, then capture desktop state](index.html#diagram-workspace-open) — Separates uncertain inspection from missing prerequisites and labels long support unimplemented.
-- [Keep dependency absence before the submission boundary](index.html#diagram-workspace-outcomes) — Rejects size and uncertain metadata as absence while retaining acknowledgment/no-replay meaning.
-- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — Marks the error repair designed and the supported route/review still required.
+- [Evaluate public candidates and unresolved acquisitions](index.html#diagram-workspace-route-candidates) — Records the selected bounded prototype while retaining the acquisition gaps and original contract.
+- [Bounded prototype decision](../../verification/long-action-route.md#decision-for-antony) — Records Antony's delegation, the finite protocol and return to design without accepting workflow loss.
+
+The source-evaluation version was checked in Firefox in the isolated Ubuntu presentation
+clone `koine-k130-presentation`: the deep link reached its title and Current/Updated
+markers, the start and acquisition labels rendered in light and dark appearance,
+and the dark discussion panel exposed the pending decision and changed-view link.
+A 320-pixel responsive view showed the intro/decision heading reflow; complete
+narrow diagram readability is not claimed. The full light SVG was separately
+rasterized and inspected, and overlapping edge labels were shortened and rendered
+again. Viewer, manifest and final D2/SVG matched host/guest SHA-256 values
+item-by-item. This checks presentation only, not any macOS native action or
+prompt outcome. Serve the view with `task design:serve PORT=8876`.
+
+After Antony delegated the choice, the selected-prototype view was rerendered
+and checked in Firefox in the isolated Linux clone `koine-k133-decision`.
+The deep link reached the diagram title/markers; upper labels were readable in
+light and dark appearance. The current-discussion link showed the selected
+prototype, unresolved-route status and changed-view link in dark appearance.
+The complete light export was rasterized and inspected, including its revised
+decision/contract labels. Host/guest viewer, manifest and D2/SVG SHA-256 values
+matched per file and stayed unchanged during this check. The clone is stopped.
+This is presentation evidence; no native macOS acquisition or action ran.
 
 The unchanged [canonical path view](index.html#diagram-search-canonical) and
 [protected metadata view](index.html#diagram-workspace-inspection) remain relevant

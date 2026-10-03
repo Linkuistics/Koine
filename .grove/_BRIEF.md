@@ -282,3 +282,11 @@ impossible-component and native nil meanings stay intact; handler acquisition,
 registered spelling, receipt identity and regressions with long copies are
 explicit route obligations. No short-workflow loss, systematic long-app null
 receipt, incompatible meaning or new consent is accepted.
+
+Antony's "you decide" delegation selects one bounded native prototype for
+k130's remaining acquisition gaps. The route node orders source evaluation
+k133, prototype k134 and returned design k135, under the unchanged public-API/
+signing/consent posture. The finite prototype precedes route closure; production
+implementation/native acceptance remains planning's after supported design and
+k128's mandatory final review. No automatic evidence chain or accepted workflow
+loss is created, and the launch/open chain still precedes search consumers.

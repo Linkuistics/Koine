@@ -264,6 +264,14 @@ incorrect known witnesses still fail. Only the two named guarantees change;
 allocation/subject design is finalized; implementation, execution and mandatory review remain live. No trace
 row, reduced workflow coverage or native/binary acceptance is established.
 
+The selected-action rows below also consume the
+[bounded public route evaluation](../verification/long-action-route.md).
+Reference-based native facts are candidates; selected-copy identifier provenance,
+unchanged long submission and receipt acquisition remain unproved. Antony's
+delegated choice selects one bounded native prototype before route closure.
+No route or new acceptance is adopted, and the retained action/search subjects
+stay distinct.
+
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |

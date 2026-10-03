@@ -12,6 +12,12 @@ owns the behavioral meaning. The
 [search handoff](../specs/workspace-search.md#long-location-action-dependency)
 continues to require a complete, reviewed action route.
 
+The [route evaluation](long-action-route.md) now evaluates the public
+reference-based candidates and selected-copy identifier/receipt gaps. It
+records Antony's delegated choice of one bounded native prototype before route
+closure; it does not select a complete route, prove impossibility or authorize
+workflow loss.
+
 ## Native consumers and distinct limits
 
 | Stage | Evidence | What it establishes |

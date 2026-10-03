@@ -162,6 +162,15 @@ avoiding search shipping as a prerequisite for earlier launch-and-open acceptanc
 The boundary preserves established cycle/impossible-component/nil outcomes and
 adds handler, registered spelling, receipt and short-regression obligations.
 
+Antony delegated k130's prototype-versus-pending choice with "you decide".
+k130 now orders source evaluation k133, one bounded native prototype k134 and
+returned route design k135. The prototype is authorized under the existing
+public-API/signing/consent posture before route closure; it changes no retained
+meaning or working subject and supplies no native acceptance. Production
+implementation/full acceptance still follows the supported route and k128's
+mandatory final review through planning. No automatic further evidence chain
+is authorized.
+
 `protected-path-metadata-k73` records its bounded answer in
 `docs/verification/protected-path-metadata.md`. The tested first-use metadata and
 registered-application route is prompt-free on Desktop, Documents and Downloads;

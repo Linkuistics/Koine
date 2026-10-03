@@ -2358,6 +2358,10 @@ submission route remains a live design, followed by mandatory review, before
 this handoff is complete. The
 [source/SDK analysis and subjects](../verification/long-action-native-boundary.md)
 do not prove native long actionability or resolve search's path-design dependencies.
+The [bounded route evaluation](../verification/long-action-route.md) supplies
+public candidates and acquisition gaps. Antony's delegated choice selects one
+bounded native prototype before route closure; it supplies no selected route
+or action/search acceptance.
 Keep selected paths unchanged and installation constraints intact;
 do not clip a location, omit applicationPath, retry another copy or infer absence
 from overlength. Client-owned copy remains available, but a copy-only or shorter

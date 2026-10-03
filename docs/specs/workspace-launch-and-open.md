@@ -297,6 +297,15 @@ and mandatory review. The [source and SDK analysis](../verification/long-action-
 records current limitations, candidate API boundaries and independent subjects;
 it selects no private policy or deprecated conversion as a repair.
 
+The [bounded route evaluation](../verification/long-action-route.md) identifies
+positive public reference-based classification/binding candidates, but leaves
+selected-copy identifier provenance, long submission and receipt acquisition
+unproved. Antony's "you decide" delegation selects one bounded native prototype
+before route closure, changing the source-first ordering only for that finite
+investigation. Production implementation and full native acceptance still follow
+the supported/reviewed route through planning. No route, new read posture or
+workflow limitation is adopted.
+
 Retain workspace and desktop controls, prompt-free reads, payload refusals,
 exact installation constraints, handler semantics, cancellation and acknowledgment
 bounds. Never clip/rewrite a location, remove applicationPath or retry another

@@ -80,3 +80,16 @@ is not a prerequisite for earlier action-fixture acceptance. The repaired
 boundary includes established cycle/name-limit/nil semantics, handler acquisition,
 registered spelling, receipt identity and short regressions with long copies.
 Action-only 1.0.1 and search 1.1.0 use separate profiles from retained 1.0.0.
+
+k130's [bounded route evaluation](../../../docs/verification/long-action-route.md)
+records public reference-based candidates but no complete selected route.
+Selected-copy identifier provenance, raw long submission and receipt acquisition
+remain gaps. Antony's "you decide" delegation selects the recommended one-session
+native prototype under the existing public-API/signing/consent posture before
+route closure. k130 decomposes into source evaluation k133, prototype k134 and
+returned route design k135. That finite investigation is the sole sequencing
+exception; production implementation/native acceptance remains planning's after
+the supported/reviewed route. No native outcome, accepted loss or changed meaning
+is supplied. k130 and this node remain live, and k135 must cut the mandatory
+final producer review before closure; downstream consumers cannot close on the
+evaluation or prototype alone.
