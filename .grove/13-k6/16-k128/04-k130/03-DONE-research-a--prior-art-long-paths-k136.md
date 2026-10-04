@@ -59,3 +59,33 @@ Read-only research: no native execution, no code, no grove growth. Do not select
 a route or claim a workflow is acceptable; k135 and Antony decide. Record each
 route's mandate-exclusion status plainly so the later decision is concrete.
 Write the survey as `docs/research/prior-art-long-paths-a.md`.
+
+## Decisions (running log)
+
+- Adopt the mandated `research-a` leaf; read the root→k130 brief chain and k134's
+  measured result. Solo survey (no `-b` corpus); output path is
+  `docs/research/prior-art-long-paths-a.md`. No reviewer allowance is spent.
+- Gather the corpus as four parallel, read-only web surveys split by question:
+  Unix/POSIX representation, Windows plus language runtimes, macOS hand-off, and
+  failure meaning/designed refusal. Each owes primary citations, a walk-away
+  check per system and recorded silences; the synthesis is checked against the
+  sources before it is written.
+- The macOS gatherer ran an unrequested, unentitled host probe (macOS 26.6.2,
+  scratchpad tree only) despite the no-native-execution note. Its outcomes are
+  not survey evidence: report them only in a separately fenced "host leads" section
+  as unmeasured questions for k135's VM, never as findings, and do not repeat it.
+- All four corpora returned. Spot-verified against primary text before writing:
+  Apple's `urlForApplication(toOpen:)` nil contract, hermes-agent #75011/#122027,
+  xnu-12377.1.9 `tests/vfs/longpaths.c` (`open_volfs` succeeds with policy off;
+  whole-path calls ENAMETOOLONG at MAXPATHLEN), Apple Libc fts's "kernel won't
+  resolve them" comment and libarchive #744's "free pass"/"not worth the trouble".
+- Answer Antony's question directly: no surveyed system hands off an array of
+  components; over-limit actors carry a directory handle plus relative name, and
+  every cross-process hand-off found is a string or an fd turned back into a
+  string. Present routes with exclusion labels and no selection; k135 decides.
+- Wrote `docs/research/prior-art-long-paths-a.md` around the four questions,
+  with a route/exclusion table for k135 and no selection. Composed URLs were
+  re-checked (two corrected: Microsoft's path-limit page, Apple's disambiguated
+  `urlForApplication(toOpen:)` slug); no link points into `.grove/`.
+  `task check:docs` passed. No review is cut (research kind); retiring closes
+  no node because k135 stays live under k130.
