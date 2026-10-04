@@ -38,6 +38,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-long-action.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}} install fixtures acquire register thresholds submit_docs launch reveal prompts
 
+  fixture:native-reference-acquisition:
+    desc: Build and sign the disposable native-reference acquisition helper (k143; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-native-reference-probe.sh
+
+  fixture:native-reference-acquisition-vm:
+    desc: Run the k143 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that a route passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-native-reference.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

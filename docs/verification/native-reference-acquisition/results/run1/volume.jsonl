@@ -1,0 +1,2 @@
+{"finishedAt": "1791113899.857", "id": "v", "mode": "volume", "pid": 736, "result": {"capabilities": [26963679, 28274631, 0, 0], "fsid": [16777233, 26], "fstypename": "apfs", "mntfromname": "/dev/disk3s5", "mntonname": "/System/Volumes/Data", "valid": [134217727, 33554431, 0, 0], "VOL_CAP_FMT_64BIT_OBJECT_IDS": {"capabilityBitSet": 1, "validBitSet": 1}, "VOL_CAP_FMT_PERSISTENTOBJECTIDS": {"capabilityBitSet": 1, "validBitSet": 1}}, "startedAt": 1791113899.857317}
+{"id": "__done__"}

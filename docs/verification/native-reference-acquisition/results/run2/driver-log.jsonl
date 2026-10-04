@@ -1,0 +1,25 @@
+{"event": "clone-start-request", "at": 1791114103.2522109, "elapsed": 0.0}
+{"event": "vm-started", "vm": "testanyware-9d617caf", "rc": 0, "stderr": "Setting guest display resolution to 1920x1080 px...\n  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)\n", "at": 1791114116.397363, "elapsed": 13.1}
+{"event": "prepared", "at": 1791114118.72975, "elapsed": 15.5}
+{"case": "ctl-short-file", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114120.640037, "elapsed": 17.4}
+{"case": "ctl-short-dir", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114122.02847, "elapsed": 18.8}
+{"case": "ctl-short-missing", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114123.41221, "elapsed": 20.2}
+{"event": "controls", "ok": true, "at": 1791114123.412302, "elapsed": 20.2}
+{"case": "volume", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114124.788366, "elapsed": 21.5}
+{"case": "mk-file-900", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114125.857593, "elapsed": 22.6}
+{"case": "walk-file-900", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114126.929143, "elapsed": 23.7}
+{"case": "mk-dir-900", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114128.002868, "elapsed": 24.8}
+{"case": "walk-dir-900", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114129.07709, "elapsed": 25.8}
+{"case": "mk-file-1023", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114130.466146, "elapsed": 27.2}
+{"case": "walk-file-1023", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114131.8675048, "elapsed": 28.6}
+{"case": "mk-dir-1023", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114132.936594, "elapsed": 29.7}
+{"case": "walk-dir-1023", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114134.004545, "elapsed": 30.8}
+{"case": "mk-file-1024", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114135.078868, "elapsed": 31.8}
+{"case": "walk-file-1024", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114136.156321, "elapsed": 32.9}
+{"case": "mk-dir-1024", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114137.2297, "elapsed": 34.0}
+{"case": "walk-dir-1024", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114138.615057, "elapsed": 35.4}
+{"case": "mk-file-1500", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114139.680616, "elapsed": 36.4}
+{"case": "walk-file-1500", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114141.057784, "elapsed": 37.8}
+{"case": "mk-dir-1500", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114142.4414232, "elapsed": 39.2}
+{"case": "walk-dir-1500", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791114143.512319, "elapsed": 40.3}
+{"event": "teardown", "rc": 0, "at": 1791114144.189552, "elapsed": 40.9}

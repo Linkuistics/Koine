@@ -79,3 +79,19 @@ probe/research series. A remaining gap is consumed
 by long-action-route-k144; do not retire k141 or cut k128's final review here.
 Production implementation and full native/binary acceptance remain planning's
 work. The probe's throwaway nature does not relax evidence/provenance.
+
+## Decisions (running log)
+
+- Adopt the mandated prototype in the stated jj workspace. Build the helper from public SDK 27.0 declarations
+  verified in Files.h/LSInfoDeprecated.h (the shell `grep` function mangled `-A` output; `/usr/bin/grep` used).
+- Run 1 (build 1): short controls passed; 900/1,023 fully consumable; 1,024 acquired but consumers -43/-41;
+  1,500 stopped at the probe's own post-descent catalog gate. That gate was a proven instrumentation defect
+  (not in the charter's walk). Spend the single repair (reason in results/repair-reason.md), build 2, run 2.
+- Run 2: identical through 1,024; both 1,500 subjects reach FSOpenIterator -43 at the level whose reference
+  exceeds 1,023 bytes. Caps spent (2 builds, 2 collections, 1 repair; 57 s and 41 s; no watchdog). Guest stopped;
+  before/after digests agree in both runs. Report: docs/verification/native-reference-acquisition.md, linked from
+  the route evaluation. No submission, registration, spec/SDL/version change.
+- Present the result to Antony for his reaction; record it below before retiring.
+- Antony's reaction: accepted the result ("Accept; k144 returns the gap"). Flat enumeration is closed as a
+  route; k144 returns the remaining exact gap (item-array openers fed a returned reference stay unmeasured and
+  owed) and presents options to him. No further experiment is authorized by this answer.

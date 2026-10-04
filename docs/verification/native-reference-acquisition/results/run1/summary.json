@@ -1,0 +1,53 @@
+{
+ "complete": true,
+ "controlsOk": true,
+ "file-900": {
+  "state": "done",
+  "objectPathLength": 900,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "dir-900": {
+  "state": "done",
+  "objectPathLength": 900,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "file-1023": {
+  "state": "done",
+  "objectPathLength": 1023,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "dir-1023": {
+  "state": "done",
+  "objectPathLength": 1023,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "file-1024": {
+  "state": "done",
+  "objectPathLength": 1024,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "dir-1024": {
+  "state": "done",
+  "objectPathLength": 1024,
+  "acquired": true,
+  "firstFailedStage": null
+ },
+ "file-1500": {
+  "state": "done",
+  "objectPathLength": 1500,
+  "acquired": null,
+  "firstFailedStage": "FSGetCatalogInfo-after-descent"
+ },
+ "dir-1500": {
+  "state": "done",
+  "objectPathLength": 1500,
+  "acquired": null,
+  "firstFailedStage": "FSGetCatalogInfo-after-descent"
+ },
+ "elapsedSeconds": 57.3
+}

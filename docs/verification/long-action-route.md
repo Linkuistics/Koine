@@ -271,6 +271,11 @@ No new native measurement has run in this commissioning session. One fresh
 adversarial charter read identified the missing aggregate execution bound;
 the limits above resolve it without changing APIs, subjects or privacy posture.
 
+**Result (k143):** see the [native reference acquisition report](native-reference-acquisition.md). Flat enumeration
+returns references past 1,023 bytes, but `FSGetCatalogInfo` (-43), the Launch Services reference calls (-41) and
+`FSOpenIterator` on a returned directory (-43) fail from 1,024 bytes, so the 1,500-byte subjects were not reached.
+Antony accepted this result; k144 returns the remaining gap.
+
 ## SDK and source provenance
 
 The inspected SDK is macOS 27.0, at the Xcode macOS SDK root. Its public
