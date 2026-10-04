@@ -2368,9 +2368,14 @@ consume the completed research. The
 [returned disposition](../verification/long-action-route.md#application-research-reconciliation)
 keeps opener delivery and the real receiver's subsequent access separate; Zed's
 inspected backend still reads by whole path. Public legacy native item arrays
-do not establish long reference acquisition or end-to-end parity. Antony
-selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
-with one finite reference-acquisition diagnostic and returned design. External
+do not establish a complete long acquisition/submission route or end-to-end
+parity. The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
+returns references at 1,024 bytes but tested consumers reject them; traversal
+cannot reach the 1,500-byte subjects. Antony accepted the result. Item-array
+submission is still unmeasured, and the
+[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+was authorized on 2026-10-05 for one prototype and retained returned design;
+no new action outcome is established. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.
 No search actionability field, shorter value ceiling, native classification fact

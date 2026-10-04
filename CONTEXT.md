@@ -196,8 +196,15 @@ synthesis are complete; [returned design](docs/verification/long-action-route.md
 separates local access, opener delivery and the real receiver's later access.
 Zed's inspected backend still reads whole paths after IPC. Public legacy FSRef
 item arrays exist without established long acquisition or end-to-end parity.
-Antony selected continued [internal native-reference investigation](docs/verification/long-action-route.md#internal-native-reference-investigation):
-one bounded flat-enumeration diagnostic and returned design. Node-ID resolution
+Antony selected continued [internal native-reference investigation](docs/verification/long-action-route.md#internal-native-reference-investigation).
+Its bounded flat-enumeration diagnostic is complete and accepted. The
+[returned gap](docs/verification/long-action-route.md#native-reference-result-and-remaining-gap)
+records references returned at 1,024 bytes but rejected by tested consumers;
+the walk cannot reach 1,500-byte subjects. Item-array submission remains
+unmeasured; Antony authorized the
+[finite diagnostic](docs/verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+on 2026-10-05. One prototype and retained returned design follow; no execution
+or complete route is yet established. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External
 inquiries remain unused drafts, and no automatic probe series is authorized.
 The refusal proposal is not adopted; no complete route or action acceptance

@@ -664,10 +664,15 @@ Its subsequent SDK 27.0 read narrows Q2: public deprecated
 and LSLaunchFSRefSpec accept arrays of whole FSRefs. They do not accept components
 of one pathname or a parent descriptor plus name. Public
 [FSGetCatalogInfoBulk](https://developer.apple.com/documentation/coreservices/1566447-fsgetcataloginfobulk)
-can return references, but no long acquisition/consumption outcome is established
-for that branch. The tested constructors failed; legacy opener parity and the
-receiver's later access remain unresolved. These are returned-design source
-observations, not sources either independent survey read or a new native probe.
+can return references. The later k143
+[acquisition result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
+now shows named references at 1,024 bytes rejected by tested catalog/fact/handler/
+directory consumers, with traversal failing before the 1,500-byte objects.
+That closes the tested enumeration path as a complete route, not every consumer
+or public mechanism. The tested constructors failed; legacy opener parity and the
+receiver's later access remain unresolved. These are later source/result
+reconciliations; neither independent survey read them, and this reconciliation
+runs no new native probe.
 The bounded absence of an established macOS route survives; a blanket absence
 of native item-array APIs does not.
 
@@ -678,8 +683,13 @@ preserves Antony's requirement and names the missing platform/receiver capabilit
 Antony subsequently selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
 superseding the unused external inquiry drafts. The new SDK read narrows catalog
 enumeration to flat iterators and rejects an unsupported 64-bit-inode-to-UInt32
-node shortcut. One finite disposable-guest acquisition diagnostic and returned
-design are commissioned; no native result or automatic probe series is claimed.
+node shortcut. The finite acquisition diagnostic is complete; Antony accepted
+its result. The two FSRef item-array submission consumers remain unmeasured,
+and Antony authorized the
+[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+on 2026-10-05 for one prototype and retained returned design. It remains
+unexecuted. No complete route, action acceptance or automatic probe
+series is claimed.
 These later observations/decisions are not part of either independent survey.
 
 ## Sources added or re-read by this synthesis

@@ -559,9 +559,14 @@ handoff. Antony [retained the original requirement](verification/long-action-rou
 The completed research and [returned disposition](verification/long-action-route.md#application-research-reconciliation)
 also require real receiver access: Zed's inspected backend reads by whole path
 after IPC delivery. Public legacy native item arrays do not supply an established
-long acquisition/submission route. Antony selected continued
-[internal investigation](verification/long-action-route.md#internal-native-reference-investigation),
-with one finite reference-acquisition diagnostic and returned design. External
+long acquisition/submission route. The
+[completed internal diagnostic](verification/long-action-route.md#native-reference-result-and-remaining-gap)
+returned references at 1,024 bytes but tested consumers rejected them; its walk
+could not reach the 1,500-byte subjects. Antony accepted the result. Item-array
+submission is still unmeasured; the
+[finite diagnostic](verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+was authorized on 2026-10-05, with one prototype and retained returned design;
+no new action outcome is yet established. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
 receiver-visible spelling change or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.

@@ -1,8 +1,8 @@
 # Native reference acquisition diagnostic (k143)
 
-**Result: flat enumeration does not get past the 1,023-byte wall.** `FSOpenIterator` +
-`FSGetCatalogInfoBulk` return names, counts and a reference at every level, but a reference whose original path
-exceeds 1,023 bytes is not consumable: `FSGetCatalogInfo` answers -43 and the Launch Services reference calls answer
+**Result: flat enumeration returns references, but native facts and continued descent fail beyond 1,023 bytes.** `FSOpenIterator` +
+`FSGetCatalogInfoBulk` return names, counts and a reference at traversed levels, but a reference whose original path
+exceeds 1,023 bytes is rejected by the tested consumers: `FSGetCatalogInfo` answers -43 and the Launch Services reference calls answer
 -41, and `FSOpenIterator` on such a directory reference answers -43, so the walk cannot descend to the 1,500-byte
 subjects. One signed throwaway helper, one disposable macOS 26.5 (25F71, arm64, APFS) guest. This is a diagnostic
 of the acquisition seam only: not action or search acceptance, no application/Finder submission, no route selected,
@@ -33,7 +33,7 @@ watchdog fired.
 | file, directory | 900 | complete, exact name + decoy matched | `FSGetCatalogInfo` 0; same-bytes compare 0; decoy compare -1420; `LSCopyItemInfoForRef` 0; content type `public.plain-text` / `public.folder`; `LSGetApplicationForItem` 0; `FSResolveNodeID` from the catalog volume/node 0 and compares equal; directory iterated inside, `inner.txt` found |
 | file, directory | 1,023 | same | same as 900 |
 | file, directory | 1,024 | complete, exact name + decoy matched (a reference was returned) | `FSGetCatalogInfo` **-43**; `LSCopyItemInfoForRef`, `LSCopyItemAttribute` and `LSGetApplicationForItem` **-41**; `FSResolveNodeID` not attempted (no native volume/node pair); same-bytes compare 0, decoy compare -1420; directory: `FSOpenIterator` **-43** |
-| file, directory | 1,500 | levels 1-4 (≤1,012 bytes) complete; level 5 (1,257/1,258 bytes) returned a matching child but `FSGetCatalogInfo` on it answered -43; `FSOpenIterator` on that child **-43**, so no batch ran at level 6 | none reachable |
+| file, directory | 1,500 | levels 1-4 (≤1,012 bytes) complete; level 5 (1,257/1,258 bytes) returned a matching child but `FSGetCatalogInfo` on it answered -43; run 1 stopped at that probe gate, while run 2 reached `FSOpenIterator` on that child **-43**, so no batch ran at level 6 | none reachable |
 
 Short controls passed in both runs: component walk and whole-path `FSPathMakeRef` of the same short object
 compare equal (0); the same-parent decoy compares different (-1420); iterating a short directory for an absent name
@@ -53,11 +53,21 @@ one. Two builds, two collections, one repair: the cap is spent.
 - **Source-inferred vs native.** The failure point is the reference's original byte length (1,023 pass, 1,024
   fail, 1,258 fail), matching the k134 constructor boundary. This is an observation on one guest/OS build, not a
   theorem; -43 still cannot be read as absence.
-- Enumeration **acquires** an opaque reference past the boundary, yet no tested consumer accepts it: catalog info,
-  Launch Services type/flags and exact-item handler lookup, iteration below it, and (because no native node pair is
-  obtainable) `FSResolveNodeID`. `FSResolveNodeID` was tested only on references at or below 1,023 bytes, as
-  consumption, not as an acquisition route.
+- Enumeration returns an opaque reference past the boundary. Tested catalog info,
+  Launch Services type/flags and exact-item handler lookup, and iteration below
+  the returned directory reject it. Native same-byte/decoy comparison succeeds,
+  without establishing another consumer's behavior. No native volume/node pair
+  is obtainable there, so `FSResolveNodeID` was tested only on references at or
+  below 1,023 bytes, as consumption, not as an acquisition route.
 - Unmeasured and still owed: item-array openers (`LSOpenItemsWithRole`, `LSLaunchFSRefSpec.itemRefs`) fed a
   returned reference, receiver behaviour, long app-copy registration/identity, Finder selection, receipt identity.
   Nothing here submits any location. A positive acquisition result would have left those open; this negative one
   adds only that the flat-enumeration acquisition route does not remove the wall.
+
+The [returned design](long-action-route.md#native-reference-result-and-remaining-gap)
+consumes both runs and Antony's accepted reaction. Same-byte reference comparison
+at 1,024 bytes is not an independent long same-object acquisition control;
+collection completion is not consumer success. The
+[finite item-array diagnostic](long-action-route.md#proposed-item-array-submission-diagnostic)
+was authorized on 2026-10-05. It remains unexecuted and supplies no 1,500-byte
+acquisition or action pass.

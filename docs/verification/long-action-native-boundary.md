@@ -22,8 +22,14 @@ keep the original cases binding. Both surveys and synthesis are complete;
 distinguishes local access, opener delivery and real receiver access, and narrows
 the SDK item-array silence. Antony selected continued
 [internal investigation](long-action-route.md#internal-native-reference-investigation),
-with one finite native-reference diagnostic and returned design. Flat enumeration
-remains unmeasured; native node-ID provenance cannot be replaced by an inode cast.
+whose finite native-reference diagnostic is complete. The
+[returned result and gap](long-action-route.md#native-reference-result-and-remaining-gap)
+show that enumeration returns references at 1,024 bytes but tested consumers
+reject them; the walk cannot reach the 1,500-byte subjects. Item-array submission
+remains unmeasured; Antony authorized the
+[finite diagnostic](long-action-route.md#proposed-item-array-submission-diagnostic)
+on 2026-10-05, followed by retained returned design. It remains unexecuted.
+Native node-ID provenance cannot be replaced by an inode cast.
 External inquiries remain unused drafts.
 The refusal proposal is not adopted. No complete route, universal impossibility or native
 action acceptance is established.

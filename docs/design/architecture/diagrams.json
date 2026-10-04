@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Local access, opener delivery and receiver access remain separate",
-    "status": "Requirement retained · internal investigation selected",
-    "summary": "Both application surveys and synthesis are complete. Local component access does not supply native facts/registration, original-location delivery, real receiver access or executable identity. Zed's inspected backend still reads whole paths after IPC. Public deprecated FSRef item arrays exist, but long acquisition and parity remain unestablished. Antony selected continued internal investigation. SDK 27.0 requires flat bulk iterators, and native UInt32 node resolution cannot use a cast 64-bit inode. One finite disposable-guest acquisition diagnostic and returned design are commissioned. No new native result is claimed. External inquiries remain unused drafts; no sender or owner response is needed. The original cases, grants, profiles, observations and final review remain binding. A spelling/setup exception still needs a new decision; no automatic probe series is authorized.",
+    "title": "Returned references do not complete the long action route",
+    "status": "Requirement retained · item-array diagnostic authorized · execution pending",
+    "summary": "The finite flat-enumeration diagnostic is complete. It returned references at 1,024 bytes, but catalog, native-fact/handler and directory consumers rejected them; traversal could not reach the 1,500-byte subjects. Antony accepted that result and authorized the exact finite item-array diagnostic on 2026-10-05. Two public openers each submit files at 900/1,023/1,024 bytes to one short recording app: six calls per collection, at most twelve after one instrumentation repair, within a 15-minute clone-through-teardown cap. One prototype and retained returned design are commissioned; no new native run is claimed. Native facts, long-copy registration/selection, real default/Zed receiver access, Finder selection and receipt identity remain separate gaps. Keep the original cases, grants, profiles and final review owed. No automatic probe series or workflow loss is adopted; external inquiries remain unused drafts.",
     "diagramIds": [
       "workspace-route-candidates",
       "workspace-long-locations",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-route-candidates",
-        "summary": "Replaces the inquiry branch with the selected finite flat-enumeration investigation and native node-ID provenance constraint; external drafts are unused."
+        "summary": "Records authorization of the fixed item-array diagnostic and one prototype/returned-design handoff; keeps the accepted acquisition failures and remaining route obligations visible."
       }
     ]
   },
@@ -71,7 +71,7 @@
       "renderer": "svg",
       "source": "workspace-route-candidates.d2",
       "rendered": "workspace-route-candidates.svg",
-      "caption": "A labeled obligation graph, not an executable pipeline. Completed synthesis supports local component access and exposes receiver reconstruction. Four capability gaps converge on the live route; no arrow claims an implemented stage or native pass. Public legacy item arrays contain whole FSRefs, not pathname components. Antony selected one finite internal acquisition diagnostic: a flat catalog walk must return a usable long reference. Native UInt32 node resolution requires catalog provenance; truncating a 64-bit inode supplies none. External inquiries are unused drafts, and no owner response is needed. No new native measurement, complete route, spelling/setup exception or workflow loss is claimed. Real default/Zed opening, Finder selection, exact copy/receipt, independent action fixtures, later actual-search provenance and separate 1.0.0/1.0.1/1.1.0 subjects remain required. Final review precedes consumers after a supported route exists."
+      "caption": "A labeled obligation graph. k143 returned exact-name references at 1,024 bytes; catalog consumption returned -43, Launch Services fact/handler calls -41, and directory iteration -43. Traversal stopped before the 1,500-byte objects. Comparison success is not a classification or submission pass. Antony authorized exactly one item-array prototype and retained returned design on 2026-10-05; its six-call corpus is bounded to two collections after one repair and a 15-minute guest cap. Both openers remain unmeasured, and the diagnostic would not supply 1,500-byte acquisition, real receiver access or full parity. Local relative access remains a lead. Original default/Zed opening, Finder selection, exact-copy facts/receipt, grants and independent action/search and 1.0.0/1.0.1/1.1.0 subjects remain required. No complete route, final review, node closure, exception or automatic probe series is earned."
     },
     {
       "id": "search-serviceability",

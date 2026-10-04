@@ -310,10 +310,15 @@ Both application surveys and their synthesis are complete; the
 [returned disposition](../verification/long-action-route.md#application-research-reconciliation)
 separates local access, opener delivery and real receiver access. Zed's inspected
 backend still reads by whole path after IPC. Public legacy FSRef item arrays
-exist, but long-reference acquisition and full contract parity remain unestablished.
-Antony selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation):
-one bounded native-reference diagnostic and returned design. Flat catalog
-enumeration is unmeasured; node resolution requires native catalog provenance.
+exist, but a complete long acquisition/submission route and full contract parity
+remain unestablished. The authorized
+[internal diagnostic result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
+returns exact-name references at 1,024 bytes, rejected by tested catalog/fact/
+handler/directory consumers, and cannot reach the 1,500-byte subjects. Antony
+accepted that result. The two item-array openers remain unmeasured; the
+[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+was authorized on 2026-10-05 for one prototype and retained returned design.
+No new native action outcome is established. Node resolution requires native catalog provenance.
 External inquiries remain unused drafts. No automatic probe series is authorized. The refusal proposal remains unadopted; all
 working cases and exclusions bind.
 Keep the supported route, final review and planning obligations live. No route,

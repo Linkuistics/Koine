@@ -273,10 +273,14 @@ lookup, submission and receipt obligations remain unmet or unmeasured. The
 preserve all long working cases. Both surveys and synthesis are complete;
 [returned design](../verification/long-action-route.md#application-research-reconciliation)
 separates local access, opener delivery and real receiver access. The legacy
-FSRef item-array clarification supplies no long acquisition or parity pass.
-Antony selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
-with one finite flat-enumeration diagnostic and returned design. External
-inquiries are unused drafts. No new native result, route or acceptance is established. Action/search subjects stay distinct.
+FSRef item-array clarification supplies no complete long route or parity pass.
+The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
+returns references at 1,024 bytes but tested consumers reject them; the walk
+cannot reach the 1,500-byte subjects. Antony accepted that diagnostic result,
+which supplies no action acceptance. Item-array submission remains unmeasured;
+the [finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+was authorized on 2026-10-05 for one prototype and retained returned design.
+No new action outcome is established. External inquiries are unused drafts. Action/search subjects stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

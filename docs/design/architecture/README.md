@@ -57,28 +57,73 @@ The [returned disposition](../../verification/long-action-route.md#application-r
 separates local component access, native facts/selection, opener delivery, real
 receiver access and executable identity. Zed's inspected backend reads whole
 paths after IPC delivery. Public legacy FSRef item arrays exist, but long
-acquisition and full contract parity remain unestablished. Antony selected
-[continued internal investigation](../../verification/long-action-route.md#internal-native-reference-investigation).
-The SDK requires flat bulk iterators, and native node-ID resolution cannot use
-a cast 64-bit inode. One finite disposable-guest acquisition diagnostic and
-returned design are commissioned. External inquiries remain unused drafts;
+acquisition/submission and full contract parity remain unestablished. The
+[completed internal result](../../verification/long-action-route.md#native-reference-result-and-remaining-gap)
+returned references at 1,024 bytes, but tested catalog/fact/handler and directory
+consumers rejected them; traversal could not reach the 1,500-byte subjects.
+Antony accepted that result. The SDK requires flat bulk iterators, and native
+node-ID resolution cannot use a cast 64-bit inode. The two item-array openers
+remain unmeasured. Antony authorized the
+[finite item-array diagnostic](../../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
+on 2026-10-05. Its six-call corpus permits at most two collections after one
+instrumentation repair, within a 15-minute clone-through-teardown cap. One
+prototype and retained returned design are commissioned; only submission
+behavior would be measured, with every other route stage still owed.
+External inquiries remain unused drafts;
 no sender or upstream response is needed for the current work.
 A named spelling/setup exception remains an unapproved alternative.
 No support request has been sent, and no automatic probe series is authorized.
-No new native outcome is claimed. Antony's original requirement remains retained; final
+No new native run or action pass is claimed. Antony's original requirement remains retained; final
 review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Replaces the inquiry branch with the finite internal acquisition investigation and native node-ID constraint.
-- [Application research reconciliation](../../verification/long-action-route.md#application-research-reconciliation) — Maps mechanisms and all six synthesis questions to retained contracts and explicit gaps.
-- [Internal native-reference investigation](../../verification/long-action-route.md#internal-native-reference-investigation) — Records exact SDK constraints, bounded fixtures/controls, one diagnostic and returned design; external drafts are unused.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Narrows the macOS item-array silence using public legacy SDK declarations without claiming long acquisition or parity.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Carries the completed research and independent receiver-access obligation.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Keeps original action subjects live after research without shortening locations or closing the handoff.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — States that IPC delivery and native item arrays do not establish a complete long route.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Carries the selected internal investigation while preserving distinct action/search acceptance.
-- [Search location glossary](../../../CONTEXT.md#language) — Records completed research and the local/opener/receiver distinction.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Marks the fixed item-array diagnostic authorized while keeping acquisition failures and route gaps visible.
+- [Returned reference result and remaining gap](../../verification/long-action-route.md#native-reference-result-and-remaining-gap) — Preserves the accepted failure map and assigns the retained final design to k147 without closing route nodes.
+- [Authorized item-array submission diagnostic](../../verification/long-action-route.md#proposed-item-array-submission-diagnostic) — Records Antony's decision, exact public default/parameter semantics, fixed corpus and prototype/returned-design handoffs.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Adds the latest human commission as later reconciliation, separate from both surveys.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Records the finite authorization with native action outcomes and the full route/review still pending.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Records the authorized diagnostic without crediting actionability or actual-search acceptance.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Identifies the authorized, unexecuted diagnostic as incomplete long-route evidence.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Carries the finite authorization separately from action/search acceptance.
+- [Search location glossary](../../../CONTEXT.md#language) — Records one authorized prototype and retained returned design with no complete route established.
+
+The authorized-diagnostic revision was checked in Firefox 151.0.3 in the isolated
+Linux clone `koine-k145-authorization`. A fresh light deep link identified the
+intended diagram and Current/Updated markers; navigation from the dark discussion
+reached the same view. At a 1,920-pixel browser width, the start, completed
+result, local-access and four gap labels were readable in light and dark
+appearance. The complete light SVG was rasterized and inspected, including the
+authorized diagnostic, scope limit and unapproved/pending alternatives. The dark
+discussion panel showed the authorized/execution-pending status, fixed corpus
+and aggregate cap, seven context links and one changed-view summary. Its heading,
+status and introductory prose reflowed at 320 × 480; narrow whole-diagram
+readability and a complete dark export are not claimed. Viewer, manifest and
+changed D2/SVG digests matched host/guest per file and stayed unchanged across
+the check. The clone is stopped. This is presentation evidence only; the macOS
+diagnostic remains queued in k146 and no native action/search pass is supplied.
+Host discussion: <http://127.0.0.1:8890/#discussion>.
+Changed diagram: <http://127.0.0.1:8890/#diagram-workspace-route-candidates>.
+
+The following browser record applies to the preceding returned-result proposal.
+
+The returned-acquisition-result revision was checked in Firefox 151.0.3 in the
+isolated Linux clone `koine-k144-design`. Fresh light and dark deep links
+identified the intended diagram and Current/Updated markers. At a 1,920-pixel
+browser width, the start, completed result, local-access and four gap labels
+were readable in both appearances. The complete light SVG was rasterized and
+inspected, including the proposed six-call diagnostic, its limits and the
+pending alternative. The dark discussion panel showed the retained requirement,
+accepted acquisition result, seven context links and one changed-view summary.
+Its heading, status and introductory prose reflowed at 320 × 480; narrow
+whole-diagram readability and a complete dark export are not claimed. Viewer,
+manifest and changed D2/SVG digests matched host/guest per file and stayed
+unchanged across the check. The clone is stopped. This verifies presentation
+only; no new native macOS action, acquisition or acceptance subject ran.
+Host discussion: <http://127.0.0.1:8890/#discussion>.
+Changed diagram: <http://127.0.0.1:8890/#diagram-workspace-route-candidates>.
+
+The following record applies to the preceding internal-investigation revision.
 
 The internal-investigation revision was checked in Firefox 151.0.3 in the
 isolated Linux clone `koine-k142-internal`. Its fresh light deep link identified
@@ -92,7 +137,7 @@ Its heading, status and introductory prose reflowed at 320 × 480; narrow whole-
 diagram readability and a complete dark export are not claimed. Viewer,
 manifest and changed D2/SVG digests matched host/guest per file and stayed
 unchanged across the check. The clone is stopped. This verifies presentation
-only; the native acquisition diagnostic remains queued.
+only; the native acquisition diagnostic was queued at that revision.
 Host discussion: <http://127.0.0.1:8880/#discussion>.
 
 The following record applies to the preceding selected-inquiry revision.

@@ -1,12 +1,15 @@
 # Long-location route evaluation
 
-**The retained long-location route is unresolved after the finite prototype,
+**The retained long-location route is unresolved after the finite prototypes,
 two application surveys and adversarial synthesis.** Parent-relative filesystem
 operations can reach the items. The tested public native-fact and opener routes
 did not complete the roughly 1,500-byte workflows; the inspected Zed receiver
 also performs whole-path filesystem reads after delivery.
 This is bounded evidence about tested mechanisms, not universal impossibility.
-No production route or workflow loss is adopted.
+The completed flat-enumeration diagnostic returns references at 1,024 bytes,
+but its tested consumers reject them and its walk cannot reach the 1,500-byte
+subjects. Item-array submission remains unmeasured. No production route or
+workflow loss is adopted.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
 and the [remaining decision](#decision-for-antony). The
@@ -14,8 +17,8 @@ and the [remaining decision](#decision-for-antony). The
 measurements; the [prior-art survey](../research/prior-art-long-paths-a.md)
 answers the representation question. The [reviewed boundary](long-action-native-boundary.md),
 independent action/search subjects and separate compatibility profiles remain
-binding. No new native action measurement ran in this source/commissioning
-session; the finite internal acquisition diagnostic below is queued separately.
+binding. The [acquisition result](#native-reference-result-and-remaining-gap)
+is consumed here without another native run; it is not action acceptance.
 
 Antony retained the original requirement and requested the now-completed
 [application research synthesis](../research/long-pathname-applications.md),
@@ -23,9 +26,11 @@ based on independent [survey A](../research/long-pathname-applications-a.md)
 and [survey B](../research/long-pathname-applications-b.md). The refusal
 recommendation remains unadopted. This returned design follows the mechanisms
 through their receivers and narrows SDK acquisition candidates. Antony's later
-instruction selects [internal investigation](#internal-native-reference-investigation)
-and one finite acquisition diagnostic with returned design, without an automatic
-probe series. It establishes no complete route. Final review and action acceptance remain required
+instruction selected [internal investigation](#internal-native-reference-investigation).
+That finite diagnostic is complete and Antony accepted its result. The
+[item-array diagnostic](#proposed-item-array-submission-diagnostic) was authorized
+on 2026-10-05 and remains unexecuted, without an automatic probe series.
+No complete route is established. Final review and action acceptance remain required
 before the search handoff can close.
 
 ## Source candidates and remaining obligations
@@ -165,9 +170,11 @@ synthesis's macOS counterpart question is narrowed, not credited as a route.
 The input to each array is an already constructed whole native item reference.
 k134's tested FSPathMakeRef and FSMakeFSRefUnicode constructions failed for
 long locations. Public [catalog enumeration](https://developer.apple.com/documentation/coreservices/1566447-fsgetcataloginfobulk)
-can also return FSRefs; its declaration does not establish long enumeration,
-subsequent native-fact acquisition or opener/receiver support. None of those
-unmeasured branches was executed here. FSRef bytes remain opaque; no handmade
+also returns FSRefs. k143 now measures that branch: an exact-name reference is
+returned at 1,024 bytes, while catalog/fact/handler consumers and directory
+iteration fail. The 1,500-byte objects are unreached. Neither legacy item-array
+opener was executed; rejection by other consumers proves no opener result.
+FSRef bytes remain opaque; no handmade
 reference is admitted. Deprecation alone rejects nothing, and the tested failures
 do not prove every reference-acquisition route impossible. A supported complete
 legacy route would still owe the retained configuration, exact-copy, grant,
@@ -203,13 +210,16 @@ The SDK 27.0 read narrows the alternatives:
 
 | Candidate | Applicable public evidence | Disposition |
 | --- | --- | --- |
-| Flat catalog enumeration | CarbonCore `Files.h` declares `FSOpenIterator` and `FSGetCatalogInfoBulk`, with returned names, catalog information and opaque FSRefs. Its comment requires `kFSIterateFlat`. Apple's [retired iteration guide](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/FileSystem/Articles/IteratingFiles.html) demonstrates that flat pattern and describes opening further iterators for descent. | Follow only the named children in a component-created fixture tree. Whether enumeration constructs usable references beyond 1,023 bytes remains unmeasured. The HFS-oriented guide is no current APFS or long-path guarantee. |
+| Flat catalog enumeration | CarbonCore `Files.h` declares `FSOpenIterator` and `FSGetCatalogInfoBulk`, with returned names, catalog information and opaque FSRefs. Its comment requires `kFSIterateFlat`. Apple's [retired iteration guide](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/FileSystem/Articles/IteratingFiles.html) demonstrates that flat pattern and describes opening further iterators for descent. | k143 followed named fixture children. Enumeration returns references at 1,024 bytes, but the tested consumers reject them and descent stops before 1,500 bytes. Closed as a complete acquisition route for these subjects. The HFS-oriented guide is no current APFS or long-path guarantee. |
 | Resolve a native node ID | `Files.h` declares [FSResolveNodeID](https://developer.apple.com/documentation/coreservices/1565623-fsresolvenodeid) with a Carbon volume reference and `UInt32` node ID. | A native catalog volume/node pair is a legitimate diagnostic input. It must first be acquired; this is not an independent descriptor-to-reference route. Never truncate a 64-bit inode or construct FSRef bytes. |
 | Obtain that node ID from descriptor attributes | SDK `sys/attr.h` and pinned [XNU attr.h](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.121.6/bsd/sys/attr.h#L220-L224) say the 32-bit `fid_objno` fields are undefined when the volume advertises `VOL_CAP_FMT_64BIT_OBJECT_IDS`; only `ATTR_CMN_FILEID`/`ATTR_CMN_PARENTID` supply legitimate object IDs there. | The proposed `fgetattrlist` → 32-bit cast → `FSResolveNodeID` shortcut lacks supported identity. A valid 64-bit file ID is not a Carbon node-ID conversion. Record the volume's valid/capability bits and preserve native catalog provenance. |
 | Bulk subtree scan | `FSGetCatalogInfoBulk` requires a flat iterator. `FSCatalogSearch` instead requires a subtree iterator rooted at the volume root. | No volume-wide scan is commissioned. It would introduce unrelated traversal, cost and protected-access questions. |
 | Volume/parent/name `PBMakeFSRefSync` | The SDK encloses this older entry point in `#if !__LP64__`. | It supplies no arm64 route. This differs from the public deprecated FSRef array openers, which are declared under `TARGET_OS_OSX`. |
 
-The focused question is: **can a flat catalog walk return the exact original
+The following charter describes the completed k143 diagnostic. Its result and
+current decision are below; these bounds commission no repeat.
+
+The focused question was: **can a flat catalog walk return the exact original
 file/directory as a usable opaque FSRef at 1,024 and roughly 1,500 bytes, when
 the tested path and parent/name constructors fail?** Usability means successful
 native comparison/catalog consumption, not a nonzero buffer or URL conversion.
@@ -267,7 +277,7 @@ the exact residual gap, while a positive result earns only the stages measured.
 Long app-copy identity/registration, opener parity, real receiver operations,
 Finder selection and receipt identity still owe their original evidence.
 Only a complete route earns k128's mandatory final review before consumers.
-No new native measurement has run in this commissioning session. One fresh
+The commissioning session ran no native measurement. Its one fresh
 adversarial charter read identified the missing aggregate execution bound;
 the limits above resolve it without changing APIs, subjects or privacy posture.
 
@@ -275,6 +285,134 @@ the limits above resolve it without changing APIs, subjects or privacy posture.
 returns references past 1,023 bytes, but `FSGetCatalogInfo` (-43), the Launch Services reference calls (-41) and
 `FSOpenIterator` on a returned directory (-43) fail from 1,024 bytes, so the 1,500-byte subjects were not reached.
 Antony accepted this result; k144 returns the remaining gap.
+
+### Native-reference result and remaining gap
+
+Antony's reaction was **"Accept; k144 returns the gap"**. This closes k143's
+finite diagnostic, not the retained route. The
+[report](native-reference-acquisition.md) and both raw collections remain intact.
+Re-reading the repaired helper and per-case records gives these stage boundaries:
+
+| Subject | Last established stage | First failed consumer / effect on design |
+| --- | --- | --- |
+| File and directory at 900 and 1,023 bytes | Exact name and same-parent decoy returned; short independent constructor/comparison controls pass. Catalog, flags/type, handler and catalog-derived node resolution succeed; the directory's inner entry is reached. | No acquisition failure in these subjects. No opener was submitted. |
+| File and directory at 1,024 bytes | Final flat batch returns both exact names with `errFSNoMoreItems`, two entries and no reported container change. | `FSGetCatalogInfo` returns -43; flags/type and handler calls return -41. Directory `FSOpenIterator` returns -43. These are native fact/directory acquisition failures, not absent items, no type or no handler. |
+| File and directory at 1,500 bytes | The walk returns the named intermediate directory at 1,258 / 1,257 bytes. | Catalog consumption there returns -43; the next `FSOpenIterator` returns -43, with no next batch. The final objects and their consumers are unreached. Run 1 stopped at an instrumentation gate; run 2, after the sole repair, establishes this iterator stop. |
+
+At 1,024 bytes the same-byte FSRef copy compares equal and the decoy compares
+different. That is native comparison behavior, not an independently acquired
+long same-object control or proof that the reference can classify, open or reveal
+the object. `summary.json`'s `complete` means the finite collection finished;
+`acquired` means a named reference was returned. Neither means a working route.
+The attempted next component's cumulative length in a failed iterator record
+is not a reached object length.
+
+The process was an ordinary signed accessory helper on macOS 26.5/25F71 arm64,
+APFS with valid/set 64-bit object-ID capability, built with SDK 27.0. Both
+collections retain their source/binary/environment digests. No protected tree,
+new consent or private policy was used; end screenshots show no dialog for
+these subjects, not all possible protected reads. Both builds/collections and
+the one repair are spent. No further probe ran in k144.
+
+The public SDK supports returning references separately from consuming them.
+Its flat-iterator requirement and the retired HFS example do not promise that
+each APFS reference consumer supports these lengths. `FSResolveNodeID` still
+requires native catalog volume/node provenance: k143 tested it only after a
+successful catalog report at or below 1,023 bytes. The failure does not license
+an inode cast, opaque-byte reconstruction, volume scan or reference-URL rewrite.
+
+The retained gaps remain independent:
+
+| Required capability | Current evidence / exact gap |
+| --- | --- |
+| Native facts and cause | Local relative access works; neither tested reference acquisition path supplies all long flags/type/bundle facts. Checked missing/cycle/name-limit and established-nil meanings remain required. |
+| Long registered copy and selection | k134's registration failed. k143 creates no apps or registrations and supplies no selected-copy identifier/identity route. |
+| Original-location submission | NSWorkspace diagnostic failures remain; `LSOpenItemsWithRole` and `LSOpenFromRefSpec` fed returned references have no native result. k143's walk cannot supply their 1,500-byte inputs. |
+| Real receiver and Finder | No long document was delivered by k143. Zed's pinned whole-path backend remains a separate source-derived obstacle. No Finder selection or real default/Zed rendering pass follows from enumeration or witness delivery. |
+| Executable identity and receipt | No long app launched. A legacy ProcessSerialNumber or launched FSRef alone does not establish the retained PID/start-instant and executable-identity receipt. |
+
+No source or result establishes the complete retained route. Keep k144 and
+k141/k135/k130/k128 live; k147 now owns the retained final returned design.
+k128's final review is owed only after that route exists.
+
+<a id="proposed-item-array-submission-diagnostic"></a>
+
+### Authorized item-array submission diagnostic
+
+**Authorized, not executed.** Antony answered **"authorised"** on 2026-10-05 to
+the exact finite proposal. Measure the unmeasured opener consumers without
+inferring their behavior from catalog failure. The authorization changes no
+original working case and commissions no automatic next experiment.
+
+SDK 27.0 `LSOpenDeprecated.h` declares two applicable inputs:
+`LSOpenItemsWithRole` takes whole FSRefs and optional `LSApplicationParameters`
+naming an application; `LSOpenFromRefSpec` takes `LSLaunchFSRefSpec` with appRef
+and itemRefs. The first documents `odoc` delivery and optional PSN outputs;
+the second returns an optional launched FSRef. The headers recommend
+NSWorkspace. Public declaration/deprecation supplies neither long behavior
+nor full configuration, cancellation, exact-copy or receipt parity.
+
+The same SDK defines `LSApplicationParameters.version` as zero. With an explicit
+application reference, `LSOpenItemsWithRole` ignores the role mask; use
+`kLSRolesAll` without asking default-handler selection to supply the receiver.
+`LSOpen.h` defines `kLSLaunchDefaults` as open/async and identifies
+`kLSLaunchAndDisplayErrors` as UI error reporting. Use the public defaults in
+both structures, with optional event/environment/argv/refcon parameters null;
+do not substitute a guessed zero flag or error UI. These are declaration and
+call-configuration checks, not native behavior or complete production parity.
+
+The concrete diagnostic boundary is:
+
+- One disposable macOS guest, ordinary signed helper and short-path recording
+  application; SDK/compiler/OS/build, filesystem, signatures, entitlements,
+  source/binary and input/output digests recorded. Test data only in an
+  unprotected fixture tree; no consent/reset, private policy, usage keys,
+  protected content, long-copy registration, default-handler changes or external inquiry.
+- Three independently component-created text files at exactly 900, 1,023 and
+  1,024 original UTF-8 bytes excluding NUL, plus same-parent decoys. Reconstruct
+  transient references by k143's flat named-child walk in the submitting
+  process. No long constructor, URL/reference conversion, shortened path,
+  handmade bytes or alternate acquisition advances the walk.
+- Exactly one document per call, through each of the two named openers to the
+  same explicit short recording-app reference: six calls per collection.
+  Verify the short app reference independently. Preserve short same-object,
+  decoy and absent-name controls. Use verified public async/default launch
+  flags, without error-display UI or a direct Apple Event fallback.
+- Record each API's status, timing and valid output independently of listener
+  evidence. The recording app logs received URL/path bytes and event counts;
+  an independent reader compares them with the component-created fixture's
+  original byte spelling and decoy. The 900-byte calls run first as listener
+  controls within the six-call corpus. A success status
+  without exact delivery is not a delivery pass; missing output is not an
+  established failure cause or receipt. Stop on an unexpected dialog.
+- At most two builds, two collections of that fixed corpus and one proven
+  instrumentation repair: at most 12 opener calls in total, with a second
+  collection allowed only after that repair. Retain every attempt and its reason. Bound the
+  guest session from clone-start request through teardown to 15 minutes and
+  each case to 30 seconds plus five seconds termination grace. Keep k143's
+  32-level/eight-entry/four-batch/one-iterator acquisition limits. A short-control,
+  tooling or bound failure returns incomplete; no alternate API/guest retry.
+- Return the result and a retained-design reconciliation to Antony. A positive
+  1,024-byte delivery earns only this consumer/subject. It does not acquire
+  1,500-byte references, native facts, default binding, long registration,
+  real Zed content access, Finder selection, grant/cancellation parity or long
+  receipt identity. A negative closes only these tested opener paths. No
+  automatic later probe, implementation leaf, final review or node closure.
+
+This is an API diagnostic with deliberately unestablished production
+prerequisites, as in k134, not a Koine action. Its value is resolving a precise
+remaining consumer question; its cost is another bounded experiment that cannot
+alone satisfy the original route. Keeping the route pending spends no further
+measurement but yields no new evidence. Investigating a short same-object
+namespace is a different spelling/setup exception and remains unapproved.
+
+k144 is decomposed in place: `item-array-submission-k145` completes this
+source/charter handoff, `item-array-submission-k146` executes the one throwaway
+diagnostic and obtains Antony's reaction, and `long-action-route-k147` consumes
+the committed result as the retained final design. The first child's completion
+advances the loop only to the prototype; no route node closes. There is no
+repeat series or implementation leaf, and k147 still owes the full original
+route and k128's mandatory final review before downstream consumers.
 
 ## SDK and source provenance
 
@@ -425,13 +563,18 @@ later actual-search G/N/V provenance remain separate acceptance subjects.
 Retained 1.0.0, action-only repair 1.0.1 and search 1.1.0 stay independent.
 No ADR selects an unestablished route or an unaccepted workflow loss.
 
-**Antony selected continued internal investigation after asking why owner input
-was needed.** The [bounded acquisition charter](#internal-native-reference-investigation)
-is the current next step. The earlier "proceed" inquiry choice is superseded;
+**The acquisition diagnostic is complete, with its negative result accepted.
+Antony authorized the exact finite item-array diagnostic on 2026-10-05.** The
+[returned gap](#native-reference-result-and-remaining-gap) remains unresolved;
+the [authorized charter](#proposed-item-array-submission-diagnostic) now fixes
+the next execution and returned-design handoff. A positive result would still
+leave all other retained stages owed. The earlier "proceed" inquiry choice is superseded;
 no external response is a prerequisite and no request has been sent. Internal
-investigation may resolve a native acquisition question without resolving the
-opener or receiver; no complete route is guaranteed. One finite diagnostic and
-returned design preserve the original working cases. This authorizes no spelling,
+investigation resolved only the tested acquisition branch, leaving the
+opener and receiver gaps. No complete route is guaranteed. Acceptance of k143
+alone authorized no additional experiment; the later decision covers exactly
+the fixed opener diagnostic and returned design. It preserves every
+original working case and authorizes no spelling,
 setup, private-policy, consent or contract exception and no automatic probe series.
 
 The alternative is an explicit decision to investigate one named exception,
@@ -599,16 +742,31 @@ schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
 
 ## Deterministic check boundary
 
-The internal-investigation update changes prose, the finite diagnostic charter
-and the candidate diagram. The
-Taskfile, retained/repair/search/desktop SDL and operation examples, declaration
-probe, client dependency manifests, documentation checker, viewer and unchanged
-context diagram sources still match the successful structural-check subjects
-item-by-item by SHA-256. Those checks are carried forward for those unchanged
-subjects, not credited as another execution or an external submission.
+The authorized diagnostic handoff (k145) changes current-state prose, SDK call
+configuration, child charters and the candidate diagram. Structural/native
+subjects remain unchanged; the previously passing action-repair/search and
+declaration checks are carried forward only for their identical subjects, not
+credited as a new execution. Render, browser and final document-link checks
+verify the handoff's presentation/structure and supply no native route or action
+acceptance. Exact presentation evidence and limits belong in the
+[viewer README](../design/architecture/README.md).
+
+The following returned-result checks apply to the preceding proposal revision.
+
+The k144 returned result changes prose, the proposed finite opener charter
+and the candidate diagram. `task design:action-repair-check` and
+`task design:search-check` were rerun and passed their existing positive and
+negative controls. The Taskfile, retained/repair/search/desktop SDL and operation
+examples, declaration probe, client dependency manifests and documentation
+checker still match the earlier successful structural-check subjects
+item-by-item by SHA-256. No declaration probe or native action ran in k144.
 `task design:workspace-render` regenerated the changed export; its current
-browser evidence is in the [viewer README](../design/architecture/README.md).
-Final documentation links use `task check:docs`.
+browser evidence and limits are in the [viewer README](../design/architecture/README.md).
+`task check:docs` passed for the final reconciled documentation with all frozen
+document, check, presentation and raw-evidence subjects unchanged across the run.
+These checks establish structure and presentation, not a complete native route.
+
+The following records apply to preceding revisions.
 
 The k141 reconciliation reran `task design:action-repair-check` and
 `task design:search-check`; both passed their existing positive and negative
