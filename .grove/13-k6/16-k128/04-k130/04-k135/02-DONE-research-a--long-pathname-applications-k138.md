@@ -85,3 +85,36 @@ research and durable survey artifacts. It authorizes no code changes, new
 native experiment or automatic further evidence chain. The returned design
 consumes the synthesis before route selection. Keep the original requirement
 and all mandatory review/acceptance obligations intact.
+
+## Decisions (running log)
+
+- Adopt the mandated research-a leaf in the stated jj workspace. Read the brief
+  chain, the three verification documents and the earlier survey's headings
+  (leads only). The research-b survey is not read. No native probe runs; source
+  is read from pinned public repositories and official documentation.
+- Gather breadth with four parallel read-only subagents, one per use-case family
+  (launch/editors, build/package/repository, archive/copy/backup/sync,
+  remote/virtual/protocol), each returning pinned citations and labelled
+  normative/observed/inference claims. These are corpus gatherers, not
+  reviewers; research kinds spend no reviewer allowance. Load-bearing citations
+  are re-fetched and checked by this session before they enter the survey.
+- All four gatherer reports returned. This session re-fetched and matched the
+  load-bearing quotes and line anchors in each family (pinned GitHub raw
+  sources, RFC/9p text, Microsoft/Dropbox pages, GitHub/GitLab/Qt issue APIs,
+  local SDK LSConstants.h). Mismatches were only line-wrapped comments, found on
+  recheck. Claims not re-fetched keep their gatherer label and are marked as
+  inference or silence in the survey rather than promoted.
+- Delivered `docs/research/long-pathname-applications-a.md`: four families,
+  per-system ingress/representation/boundary/consumer traces with N/O/I labels,
+  a mechanism comparison by consumer scope, applicability against each retained
+  Koine case with mandate labels, bounded leads, silences and walk-away table.
+  It selects no route and changes no requirement or exclusion.
+- `task check:docs` passed (exit 0); a deliberately broken anchor in the new file
+  made it fail (exit 1) before the file was restored and rechecked green. Every
+  external link returned 200 except GNOME GitLab (bot-blocked; issue confirmed
+  through its API) and Savannah's `extract.c` tree view (502 at check time;
+  content verified earlier this session, Savannah links moved to the
+  cgit.git.savannah.gnu.org host).
+- No review is cut (research kinds spend none) and no review names this leaf. No
+  run ID is in the environment, so no Creator line is written. Node k135 keeps
+  live children k139/k140/k141, so retirement closes no node.
