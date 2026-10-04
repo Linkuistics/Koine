@@ -50,6 +50,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-native-reference.py --output {{.OUTPUT | shellQuote}}
 
+  fixture:item-array-submission:
+    desc: Build and sign the disposable item-array helper and short recording app (k146; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-item-array-probe.sh
+
+  fixture:item-array-submission-vm:
+    desc: Run the k146 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that delivery passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-item-array.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

@@ -1,0 +1,17 @@
+{"event": "clone-start-request", "at": 1791125232.782743, "elapsed": 0.0}
+{"event": "vm-started", "vm": "testanyware-4f5b7c1c", "rc": 0, "stderr": "Setting guest display resolution to 1920x1080 px...\n  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)\n", "at": 1791125253.364795, "elapsed": 20.6}
+{"event": "prepared", "at": 1791125255.096428, "elapsed": 22.3}
+{"case": "ctl-short-file", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125256.819197, "elapsed": 24.0}
+{"case": "ctl-short-missing", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125258.2038841, "elapsed": 25.4}
+{"event": "controls", "ok": true, "at": 1791125258.203957, "elapsed": 25.4}
+{"case": "volume", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125259.284087, "elapsed": 26.5}
+{"case": "mk-file-900", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125260.37385, "elapsed": 27.6}
+{"case": "mk-file-1023", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125261.761677, "elapsed": 29.0}
+{"case": "mk-file-1024", "state": "done", "rows": 2, "seconds": 0.7, "at": 1791125262.833566, "elapsed": 30.1}
+{"case": "submit-LSOpenItemsWithRole-900", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125265.59134, "elapsed": 32.8}
+{"case": "submit-LSOpenFromRefSpec-900", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125276.694956, "elapsed": 43.9}
+{"case": "submit-LSOpenItemsWithRole-1023", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125287.509121, "elapsed": 54.7}
+{"case": "submit-LSOpenFromRefSpec-1023", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125298.604615, "elapsed": 65.8}
+{"case": "submit-LSOpenItemsWithRole-1024", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125309.407237, "elapsed": 76.6}
+{"case": "submit-LSOpenFromRefSpec-1024", "state": "done", "rows": 2, "seconds": 1.4, "at": 1791125320.510234, "elapsed": 87.7}
+{"event": "teardown", "rc": 0, "at": 1791125329.851462, "elapsed": 97.1}

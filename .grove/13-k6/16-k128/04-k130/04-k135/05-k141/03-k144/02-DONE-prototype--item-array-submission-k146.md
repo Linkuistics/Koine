@@ -71,3 +71,20 @@ registration, real default/Zed rendering, Finder selection, grant/cancellation
 parity or executable receipt. A negative is bounded to the tested paths.
 Keep k144/k141/k135/k130/k128 live; cut no automatic evidence chain or final
 review. Production implementation/full acceptance remain planning's work.
+
+## Decisions (running log)
+
+- Built one throwaway helper and short recorder (build 1) and ran collection 1: 900-byte calls delivered exactly;
+  1,023 delivered an `odoc` the recorder could not read (raw bookmark not retained); 1,024 returned -41 from both
+  openers with no event. Run 1 earns no 1,023 pass.
+- The recorder's failure to retain the raw delivered descriptor is the one proven instrumentation repair (build 2,
+  collection 2): raw bytes and the bookmark's stored path are retained. Run 2 read 900 and 1,023 exactly for both
+  openers; 1,024 repeated -41 with no event. Twelve calls, two builds, ~95 s per guest; caps held, no dialog.
+- Report: docs/verification/item-array-submission.md, presented to Antony.
+- Antony's reaction: "ChatGPT research says we should use (directory handle, path component) for our representation
+  of file system locations, specifically to avoid this. We can also use URL/NSURL with file-reference URLs as a
+  mechanism." This is a design direction, not an authorization: it gives k147 two candidate representations to
+  assess (directory-handle + component; file-reference URLs) against the retained route, without presuming either
+  satisfies the original requirement (the file-reference spelling is a shortened-spelling question and the handle
+  form changes the location contract). It commissions no experiment; any measurement needs a new finite decision.
+  k144/k141/k135/k130/k128 stay live; long-action-route-k147 consumes the committed report and this reaction.

@@ -1,0 +1,147 @@
+{
+ "complete": true,
+ "calls": [
+  {
+   "name": "submit-LSOpenItemsWithRole-900",
+   "size": 900,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.03464305400848389,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 900,
+    "observedItems": [
+     {
+      "seq": 1,
+      "urlBytes": 907,
+      "decodedBytes": 900,
+      "exact": true,
+      "isDecoy": false
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-900",
+   "size": 900,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.025454998016357422,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 900,
+    "observedItems": [
+     {
+      "seq": 1,
+      "urlBytes": 907,
+      "decodedBytes": 900,
+      "exact": true,
+      "isDecoy": false
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenItemsWithRole-1023",
+   "size": 1023,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.025729060173034668,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1023,
+    "observedItems": [
+     {
+      "seq": 1,
+      "urlBytes": null,
+      "decodedBytes": null,
+      "exact": false,
+      "isDecoy": false
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "delivery-not-exact"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-1023",
+   "size": 1023,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.027889013290405273,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1023,
+    "observedItems": [
+     {
+      "seq": 1,
+      "urlBytes": null,
+      "decodedBytes": null,
+      "exact": false,
+      "isDecoy": false
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "delivery-not-exact"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenItemsWithRole-1024",
+   "size": 1024,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": -41,
+   "seconds": 4.00543212890625e-05,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1024,
+    "observedItems": [],
+    "odocEvents": 0,
+    "verdict": "no-delivery-observed"
+   },
+   "recorderEvents": []
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-1024",
+   "size": 1024,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": -41,
+   "seconds": 5.4955482482910156e-05,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1024,
+    "observedItems": [],
+    "odocEvents": 0,
+    "verdict": "no-delivery-observed"
+   },
+   "recorderEvents": []
+  }
+ ],
+ "controlsOk": true,
+ "elapsedSeconds": 97.1
+}
