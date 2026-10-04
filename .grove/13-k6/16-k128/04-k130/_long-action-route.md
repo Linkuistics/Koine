@@ -85,17 +85,35 @@ It changes no supported-route, accepted-meaning, read-posture or review criterio
 3. prior-art-long-paths-k136 (`research-a`) answers Antony's reaction to k134
    ("research how other systems/libraries/applications manage this - for example
    do they have to use an array of paths?"): a read-only survey, no native run.
-4. long-action-route-k135 (`design`) consumes the k134 result and k136 survey,
-   completes the retained supported route and artifact reconciliation, or
-   escalates a concrete measured trade-off. It cuts k128's mandatory final review
-   before closure.
+4. long-action-route-k135 is now a node. After consuming k134/k136 and presenting
+   the measured trade-off, Antony retained the original requirement and requested
+   broader research into how real applications handle long pathnames. k137
+   commissions an independent research pair k138/k139, synthesis k140 and returned
+   design k141. The final design still owes the retained supported route,
+   reconciliation and k128's mandatory final review before closure.
 
-There is no automatic second prototype or evidence chain; k136 is the one
-research step Antony requested himself. Production
+The new pair/synthesis is expressly requested, not an automatic evidence chain.
+No second native prototype or further chain is authorized. Production
 implementation/native acceptance remains planning's after the reviewed route.
 The original Done when above remains binding for this node and k128.
 
 ## Decisions (running log)
+
+- Antony retained the original requirement and requested research into actual
+  application long-pathname handling across use cases/contexts. k135 is
+  decomposed into commissioning k137, independent surveys k138/k139, synthesis
+  k140 and returned design k141. The refusal proposal is not adopted. Only the
+  commissioning child finishes this session; the route nodes stay live and the
+  final review waits for the supported route. Earlier decision entries below
+  record the preceding proposals and authorized work.
+
+- k135 consumes the prototype and requested survey. Directory handle plus
+  relative name solves local access; no complete admitted opener route is
+  established. The returned evaluation and viewer present the measured
+  1,023/1,024-byte witness boundary and a concrete unadopted refusal trade-off.
+  Its acceptance would give up the original long working subjects and needs
+  Antony's explicit decision. k135/k130/k128 stay live; no final review,
+  retirement, new investigation or completion signal is earned yet.
 
 - k134 ran: a PATH_MAX wall at the submission, classification, registration and
   lookup APIs (1,023 bytes passes, 1,024 fails); parent-relative POSIX calls work.

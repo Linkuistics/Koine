@@ -297,14 +297,20 @@ and mandatory review. The [source and SDK analysis](../verification/long-action-
 records current limitations, candidate API boundaries and independent subjects;
 it selects no private policy or deprecated conversion as a repair.
 
-The [bounded route evaluation](../verification/long-action-route.md) identifies
-positive public reference-based classification/binding candidates, but leaves
-selected-copy identifier provenance, long submission and receipt acquisition
-unproved. Antony's "you decide" delegation selects one bounded native prototype
-before route closure, changing the source-first ordering only for that finite
-investigation. Production implementation and full native acceptance still follow
-the supported/reviewed route through planning. No route, new read posture or
-workflow limitation is adopted.
+The [returned route evaluation](../verification/long-action-route.md#measured-reconciliation)
+consumes the finite prototype and requested prior-art survey. Relative filesystem
+operations reached the long items; the tested public native-fact, registration,
+handler and submission routes did not complete the retained working subjects.
+Exact witness delivery at 1,023 bytes and failure at 1,024 establish a bounded
+submission result, not universal impossibility or action acceptance. A nil
+long default-handler lookup establishes neither no handler nor default submission.
+Directory handles/component lists do not supply the missing opener interface.
+Antony [retained the original requirement and commissioned broader application
+research](../verification/long-action-route.md#decision-for-antony). Two independent
+long-pathname surveys and synthesis precede returned route design. The refusal
+proposal is not adopted; all long working cases and exclusions remain binding.
+Keep the supported route, final review and planning obligations live. No route,
+new read posture, version change or workflow limitation is adopted.
 
 Retain workspace and desktop controls, prompt-free reads, payload refusals,
 exact installation constraints, handler semantics, cancellation and acknowledgment

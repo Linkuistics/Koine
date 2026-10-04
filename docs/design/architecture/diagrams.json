@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Prototype selected before completing the native route",
-    "status": "Bounded prototype selected · route unresolved",
-    "summary": "Public parent/reference APIs provide classification and exact-item binding candidates. Selected-copy identifier provenance, original long submission and receipt acquisition remain unproved. Antony's delegated choice selects one bounded native prototype under the existing public-API/signing/consent posture, followed by returned route design. No route, native acceptance, workflow loss, systematic null receipt or new posture is adopted. The route and final review stay live; action fixtures and actual-search provenance retain separate owners.",
+    "title": "Original long-path requirement retained; application research commissioned",
+    "status": "Requirement retained · independent surveys and synthesis next",
+    "summary": "Antony retained the original long-path working requirement and requested research into how other applications handle long pathnames across use cases and contexts. Two independent surveys with the same brief will trace real representations and operations through file/editor/launch, build/package/repository, archive/backup/sync and remote/virtual workflows. Synthesis will check contradictions, correlated sources and receiver/full-path limits before returned route design. The finite prototype and earlier survey remain bounded evidence; no complete supported route is established and the refusal proposal is not adopted. Original selected bytes, exact installation, native facts, receipts and all review/acceptance obligations remain binding. No new native experiment or automatic further chain is selected. See the retained requirement and research commission in the route evaluation.",
     "diagramIds": [
       "workspace-route-candidates",
       "workspace-long-locations",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-route-candidates",
-        "summary": "Records the selected bounded prototype under Antony's delegation while retaining the acquisition gaps and original contract."
+        "summary": "Replaces the pending refusal alternatives with Antony's retained requirement, two independent application surveys, synthesis and returned supported-route design."
       }
     ]
   },
@@ -67,11 +67,11 @@
     {
       "id": "workspace-route-candidates",
       "group": "workspace",
-      "title": "Evaluate public candidates and unresolved acquisitions",
+      "title": "Retain long-path working cases and research real applications",
       "renderer": "svg",
       "source": "workspace-route-candidates.d2",
       "rendered": "workspace-route-candidates.svg",
-      "caption": "Bounded source/SDK evaluation, not a selected route or native acceptance. Deprecated reference APIs are positive candidates, not automatically unsupported. The inspected item attributes do not supply the selected app's identifier, and a bundle dictionary alone lacks acquisition provenance. NSWorkspace long submission and callback/live executable identity remain unmeasured. Antony's delegated choice selects one bounded prototype under the current public-API/signing/consent posture before route closure, followed by returned design. No private policy, shortened location, alternate app copy, guessed metadata, copy-only baseline or systematic null-receipt loss is authorized. The established failure repair, independent action fixtures, later actual-search provenance and 1.0.0/1.0.1/1.1.0 profiles remain binding."
+      "caption": "The original requirement is retained. Two independently sourced application surveys with the same brief and a synthesis step are commissioned before returned route design. The earlier one-guest prototype measured a 1023/1024-byte witness boundary, not universal impossibility; diagnostic submissions bypassed prerequisites and default-open stopped at nil lookup. The earlier survey supplies leads, not a conclusion to confirm. Synthesis owns adversarial checks, contradictions and source correlation. No refusal, spelling change, alternate copy, private policy or new consent is adopted. Native classification/selection, handler applicability/prompting and receipt identity remain unresolved. Independent action fixtures, later actual-search provenance and 1.0.0/1.0.1/1.1.0 profiles remain binding; final route review precedes consumers."
     },
     {
       "id": "search-serviceability",

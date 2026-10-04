@@ -551,9 +551,14 @@ long action fixtures; search acceptance owns the additional actual-search
 handoff. Independent long-path observers require positive controls; fixture
 acceptance cannot pass search provenance. The repair is designed as action-only
 release/schema 1.0.1, separately from retained 1.0.0 and search 1.1.0.
-The [public route evaluation](verification/long-action-route.md) leaves the
-supported route unresolved. Antony's delegated choice selects one bounded native
-prototype before route closure and changes none of these client obligations.
+The [returned route evaluation](verification/long-action-route.md#measured-reconciliation)
+leaves the supported route unresolved after the prototype and prior-art survey:
+the tested opener APIs did not complete long actions, while relative filesystem
+inspection reached the items. Arrays/descriptors do not establish another opener
+handoff. Antony [retained the original requirement and commissioned application
+research](verification/long-action-route.md#decision-for-antony): two independent
+long-pathname surveys and synthesis precede returned route design. The refusal
+proposal is not adopted; no new actionability field or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain

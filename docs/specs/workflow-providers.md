@@ -265,12 +265,14 @@ allocation/subject design is finalized; implementation, execution and mandatory 
 row, reduced workflow coverage or native/binary acceptance is established.
 
 The selected-action rows below also consume the
-[bounded public route evaluation](../verification/long-action-route.md).
-Reference-based native facts are candidates; selected-copy identifier provenance,
-unchanged long submission and receipt acquisition remain unproved. Antony's
-delegated choice selects one bounded native prototype before route closure.
-No route or new acceptance is adopted, and the retained action/search subjects
-stay distinct.
+[returned public route evaluation](../verification/long-action-route.md#measured-reconciliation).
+The finite prototype and requested survey establish local relative access,
+not a complete admitted opener route: long native facts, selection, default
+lookup, submission and receipt obligations remain unmet or unmeasured. The
+[retained requirement and application research commission](../verification/long-action-route.md#decision-for-antony)
+preserve all long working cases. Two independent long-pathname surveys and
+synthesis precede returned design; the refusal proposal is not adopted. No
+complete route or new acceptance is established; action/search subjects stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

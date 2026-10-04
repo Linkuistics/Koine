@@ -52,18 +52,56 @@ remain live; this discussion supplies none of them. The search ceiling is no
 actionability guarantee. Native/binary/no-dialog/useful-coverage outcomes and
 the operator's measured omissions decision remain pending.
 
-The current discussion now presents the bounded
-[route evaluation](../../verification/long-action-route.md#decision-for-antony):
-public reference candidates leave identifier provenance, long submission and
-receipt acquisition unproved. Antony's "you decide" delegation selects one
-bounded native prototype under the existing public-API/signing/consent posture,
-then returned design. No complete route or native acceptance is adopted; the
-existing boundary and search dependencies remain live.
+The current discussion records the
+[retained requirement and research commission](../../verification/long-action-route.md#decision-for-antony).
+Antony retained the original working cases and requested broader research into
+how actual applications handle long pathnames across contexts. Two independent
+surveys with the same brief precede synthesis and returned route design. The
+surveys trace representations, operations and process boundaries; synthesis
+checks contradictions, shared sources and reconstruction/receiver limits.
+The measured prototype and earlier survey stay bounded evidence. The refusal
+proposal is not adopted, and the supported route, final review and native
+acceptance remain live.
 
 Current changes:
 
-- [Evaluate public candidates and unresolved acquisitions](index.html#diagram-workspace-route-candidates) — Records the selected bounded prototype while retaining the acquisition gaps and original contract.
-- [Bounded prototype decision](../../verification/long-action-route.md#decision-for-antony) — Records Antony's delegation, the finite protocol and return to design without accepting workflow loss.
+- [Retained cases and application research](index.html#diagram-workspace-route-candidates) — Replaces the pending alternatives with the retained requirement, independent surveys, synthesis and returned route design.
+- [Retained requirement and research commission](../../verification/long-action-route.md#decision-for-antony) — Records Antony's answer and the concrete application/use-case research questions while preserving original working cases and exclusions.
+- [Measured reconciliation](../../verification/long-action-route.md#measured-reconciliation) — Keeps acquisition, diagnostic submission and unmeasured receipt evidence distinct; long default-open stopped before submission.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Carries the retained requirement and commissioned research before supported route/review.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Preserves original selected-path working subjects while broader application research precedes design.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the retained requirement and research commission; selected-path obligations remain binding.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Records the research dependency without crediting a route or new acceptance.
+- [Search location glossary](../../../CONTEXT.md#language) — Carries the retained requirement and independent application research before returned route design.
+
+The commissioned-research view was checked in Firefox in the isolated Linux
+clone `koine-k137-research`. A fresh deep link reached its retained-cases title
+and Current/Updated markers. Upper start/access/handoff/retained labels were
+readable in light and dark appearance at 1,920 pixels; the complete light SVG
+was rasterized and inspected through both surveys, synthesis and returned design.
+The dark discussion panel showed the retained requirement, seven context links
+and the single changed-view summary. Its heading, status and prose reflowed in
+Firefox's 320 × 480 responsive view. Narrow whole-diagram fit is an overview,
+not a label-readability claim. Viewer, manifest and changed D2/SVG SHA-256 values
+matched host/guest per file before and after the UI check. The clone is stopped.
+This verifies presentation only; no native macOS action or acceptance subject ran.
+Host discussion: <http://127.0.0.1:8877/#discussion>.
+
+The preceding returned-design view was checked in Firefox in the isolated Linux clone
+`koine-k135-decision`. Fresh diagram links reached the revised title and
+Current/Updated markers. The upper start/access/handoff labels were readable
+at 1,920 pixels in light and dark appearance; the complete light export was
+also rasterized and inspected, including all three decision branches. The
+dark discussion panel showed the pending decision, seven context links and
+one changed-view summary. Its heading, status and prose reflowed in Firefox's
+320 × 480 responsive view. Whole-diagram fit at that width remains an overview;
+use the export or reflowable decision packet for reading. Viewer, manifest and
+changed D2/SVG SHA-256 values matched host/guest item-by-item and stayed unchanged
+through the check. The clone is stopped. This verifies presentation only;
+no new native macOS action, acquisition, consent or acceptance subject ran.
+Host discussion: <http://127.0.0.1:8877/#discussion>.
+
+Earlier presentation records below apply to their earlier revisions.
 
 The source-evaluation version was checked in Firefox in the isolated Ubuntu presentation
 clone `koine-k130-presentation`: the deep link reached its title and Current/Updated

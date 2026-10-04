@@ -12,11 +12,15 @@ owns the behavioral meaning. The
 [search handoff](../specs/workspace-search.md#long-location-action-dependency)
 continues to require a complete, reviewed action route.
 
-The [route evaluation](long-action-route.md) now evaluates the public
-reference-based candidates and selected-copy identifier/receipt gaps. It
-records Antony's delegated choice of one bounded native prototype before route
-closure; it does not select a complete route, prove impossibility or authorize
-workflow loss.
+The [returned route evaluation](long-action-route.md#measured-reconciliation)
+consumes the finite prototype and requested prior-art survey. Relative lookup
+reached long items; tested classification/registration/handler/submission APIs
+did not complete the original working cases. The
+[retained requirement and research commission](long-action-route.md#decision-for-antony)
+keep the original cases binding and commission two independent application
+long-pathname surveys plus synthesis before returned design. The refusal
+proposal is not adopted. No complete route, universal impossibility or native
+action acceptance is established.
 
 ## Native consumers and distinct limits
 

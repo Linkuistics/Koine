@@ -37,7 +37,7 @@ applications were measured the same way.
 | Bundle identifier provenance | Component-relative read of `Contents/Info.plist` + property-list parse returned the identifier for both long apps, distinguished missing (ENOENT), malformed/no-identifier (parsed, none) and unreadable (EACCES 13). `Bundle`/`CFBundleCopyInfoDictionaryForURL` on the long URL return nothing. Across all **79** installed apps the identifier agreed with `Bundle` and `CFBundle` for **79**; every one has only the conventional `Contents/Info.plist`. | A candidate; parity shown only for this one layout, not a general guarantee. |
 | FSRef parity on a short path | `/Applications/Safari.app` (a symlink into the cryptex volume): component-rebuilt reference fails -1407 while whole-path `FSPathMakeRef` succeeds. | Component rebuilding is not equivalent to the native whole-path reference. |
 | Registration | `LSRegisterURL` on the long apps: -10810. `urlsForApplications(withBundleIdentifier:)` lists short and ≤1,023-byte copies (a 908-byte witness copy was found) but never a long one. | Long installations cannot be registered or selected; rows pending. |
-| Default-handler lookup | `urlForApplication(toOpen:)` is nil for every existing file ≥ 1,024 bytes (document, link, package) and non-nil below. | Nil is indistinguishable from "no handler". |
+| Default-handler lookup | `urlForApplication(toOpen:)` is nil for every existing file ≥ 1,024 bytes (document, link, package) and non-nil below. The long default-open diagnostic then stops with an internal "no-handler" label; it does not submit. | Nil is indistinguishable from "no handler"; that diagnostic label is not an established native negative or default-open result. |
 | Open submission (NSWorkspace, explicit application) | Witness document delivered with exact bytes at 900, 1,000 and **1,023** bytes; **fails at 1,024 and above** with `NSCocoaErrorDomain` 256 "miscellaneous error" in about 9 ms; nothing delivered. Same for Zed and a long witness app. Short controls (witness, TextEdit window) positive. | A hard PATH_MAX boundary at the submission API. |
 | Launch (constrained, another copy running) | Short cold launch and short-again-while-running returned the same process, executable path observed by the app itself, `proc_pidpath`, and `lsof`. The long copy fails with 256 in about 3 ms, cold or while the short copy runs. | Long launch not possible; short regression holds. |
 | Reveal | Short control: accepted, Finder window observed. Long file and folder: `selectFile` returns NO, no window. | Fails with no cause. |
@@ -65,10 +65,16 @@ applications were measured the same way.
   have 256); the probe was fixed and the whole matrix rerun. A first `submit`
   attempt used a wrong Finder observer (Automation consent); the window list is the
   observer. Neither earlier result is used.
-- Zed and the system default (TextEdit) were exercised only as submission targets;
-  no handler-specific behaviour is claimed.
+- Zed was a long submission target; TextEdit supplied a short positive submission
+  control. Long default-open rows stopped at nil lookup and submitted nothing.
+  No long default-handler delivery or handler-specific behavior is claimed.
 
 ## Recommendation for Antony's reaction
+
+This section preserves k134's recommendation, **not an adopted contract**.
+Antony later [retained the original requirement and commissioned broader
+application research](long-action-route.md#decision-for-antony). No long working
+case is dropped and no search actionability field is added.
 
 The measured pattern is a PATH_MAX wall (1,023 passes, 1,024 fails) inside the
 public classification, registration, lookup and submission APIs, while the

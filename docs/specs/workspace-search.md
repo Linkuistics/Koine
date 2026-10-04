@@ -2358,10 +2358,17 @@ submission route remains a live design, followed by mandatory review, before
 this handoff is complete. The
 [source/SDK analysis and subjects](../verification/long-action-native-boundary.md)
 do not prove native long actionability or resolve search's path-design dependencies.
-The [bounded route evaluation](../verification/long-action-route.md) supplies
-public candidates and acquisition gaps. Antony's delegated choice selects one
-bounded native prototype before route closure; it supplies no selected route
-or action/search acceptance.
+The [returned route evaluation](../verification/long-action-route.md#measured-reconciliation)
+consumes the finite prototype and requested prior-art survey. Relative inspection
+reached long items, but the tested native-fact/registration/handler/submission
+routes did not establish their required actions. Component arrays or directory
+handles supply no admitted macOS opener handoff. The
+[retained requirement and research commission](../verification/long-action-route.md#decision-for-antony)
+now precede returned design: two independent real-application long-pathname
+surveys and synthesis. The refusal proposal is not adopted; original working
+cases and exclusions remain binding.
+No search actionability field, shorter value ceiling, native classification fact
+or action/search acceptance follows from these results.
 Keep selected paths unchanged and installation constraints intact;
 do not clip a location, omit applicationPath, retry another copy or infer absence
 from overlength. Client-owned copy remains available, but a copy-only or shorter

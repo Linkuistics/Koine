@@ -1,27 +1,29 @@
 # Long-location route evaluation
 
-The evaluated public mechanisms do **not yet justify a complete supported
-route** under the retained action contract. They provide useful candidates,
-not evidence that the required working cases fail or that every public route
-is impossible. No provider implementation or native action ran in this design
-session. The [reviewed boundary](long-action-native-boundary.md) and its
-independent action/search subjects remain binding.
+**The retained long-location route is unresolved after the finite prototype
+and requested prior-art survey.** Parent-relative filesystem operations can
+reach the items; the tested public classification, registration, handler and
+submission APIs cannot complete the required roughly 1,500-byte workflows.
+This is bounded evidence about tested mechanisms, not universal impossibility.
+No production route or workflow loss is adopted.
 
-The selected prototype ran; its measured results and recommendation are in
-[long-action-route-prototype.md](long-action-route-prototype.md).
+Start with the [measured boundary and decision view](../design/architecture/index.html#diagram-workspace-route-candidates)
+and the [retained requirement and research commission](#decision-for-antony). The
+[prototype](long-action-route-prototype.md) supplies the committed native
+measurements; the [prior-art survey](../research/prior-art-long-paths-a.md)
+answers the representation question. The [reviewed boundary](long-action-native-boundary.md),
+independent action/search subjects and separate compatibility profiles remain
+binding. This returned design performs no new native action investigation.
 
-Start with the [candidate and gap view](../design/architecture/index.html#diagram-workspace-route-candidates).
-The source evidence below supports a bounded decision, rather than another
-open-ended evidence chain. A route, final review and action acceptance remain
-required before the search handoff can close.
+Antony explicitly retained the original requirement and requested broader
+research into how real applications deal with long pathnames across use cases
+and contexts. The refusal recommendation is not adopted. An independent survey
+pair and synthesis are commissioned before returned route design; they will
+trace actual representations, operations and process boundaries. No new native
+experiment is authorized. A supported route, final review and action acceptance
+remain required before the search handoff can close.
 
-Antony delegated the prototype-versus-pending choice with "you decide". The
-recommended **one bounded native prototype** is selected under the existing
-public-API/signing/consent posture. Grove now orders source evaluation k133,
-native prototype k134, then returned route design k135 beneath k130. This
-selects the finite investigation, not a supported route or native acceptance.
-
-## Supported candidates and remaining gaps
+## Source candidates and remaining obligations
 
 | Consumer | Positive public evidence | Unsettled obligation |
 | --- | --- | --- |
@@ -38,6 +40,69 @@ These are API contracts and source observations. None establishes that an opaque
 service internally avoids converting a reference back into limited path text.
 Known incorrect native results still fail acceptance; successful status is a
 reported fact, not proof of platform health.
+
+## Measured reconciliation
+
+The source candidates above now have the following bounded native results.
+Keep acquisition, diagnostic submission and accepted provider behavior distinct.
+
+| Obligation | Prototype result | Returned design consequence |
+| --- | --- | --- |
+| Presence and cause | Component-relative POSIX calls reached long subjects and distinguished missing/below-file, active cycle, exhausted link budget and isolated impossible ASCII component. | A usable local mechanism candidate; preserve the reviewed cause interface. Prompt/policy and general native equivalence still require acceptance. |
+| Native flags/type and identity | Parent-built FSRef failed once cumulative path length exceeded 1,023 bytes; URL item information/resource keys also failed. Short Safari's component-built reference differed from the whole-path route. | Neither reference representation nor a larger URL string supplies classification. Reference equality and exact-item binding were unreachable, not passing. No suffix, permission-bit or guessed metadata replacement. |
+| Identifier | Relative conventional plist reads distinguished errors and matched Bundle for 79 installed apps, all using that layout. | A sample, not native bundle-layout equivalence or approved content-read policy. It does not repair missing flags, registration or submission. |
+| Registration/selection | Long registration failed; measured registered enumeration did not expose the long copies. | Constrained long-copy selection is not established. Never omit the path or choose a short copy. Short selection regressions with long candidates remain required. |
+| Default handler | Existing long documents returned nil; the default-open diagnostic then stopped and labelled its result "no-handler". | That label is not NO_DEFAULT_HANDLER evidence: no supported applicable lookup was established and no default submission occurred. [Apple's nil contract](https://developer.apple.com/documentation/appkit/nsworkspace/urlforapplication(toopen:)-7qkzf) already combines missing target and missing handler. |
+| Original-byte submission | Witness delivery at 1,023 bytes matched submitted bytes; 1,024 failed with Cocoa 256 and no witness delivery. Zed open at 1,498 and constrained launch at 1,508 also failed; Finder reveal at 1,498 returned NO. | Tests locate a boundary for those calls/subjects. They bypassed missing prerequisites as API diagnostics, so they pass no action row. Default/Zed/reveal/constrained long working cases remain unmet. |
+| Receipt and prompting | No long app launched; exact-item binding and long lookup prompt reachability were not established. | Long receipt identity and first-use handler/prompt subjects remain pending. No systematic null receipt or prompt-free conclusion follows from early API refusal. |
+
+The decisive raw records are [1,023-byte delivery](long-action-route/results/submit-thr-open-1023.json),
+[1,024-byte refusal](long-action-route/results/submit-thr-open-1024.json),
+[default lookup stop](long-action-route/results/submit-doc-long-default.json),
+[Zed submission](long-action-route/results/submit-doc-long-zed.json),
+[constrained launch](long-action-route/results/submit-launch-long-cold.json) and
+[Finder reveal](long-action-route/results/submit-reveal-long.json).
+These records were re-read for this design; no native measurement was repeated.
+The prototype's one guest/build, prerequisite bypass, missing alias fixture,
+discarded runs and void binding row retain their stated limits.
+
+## Representation and ownership
+
+The survey found directory handle plus relative name in systems that perform
+over-limit filesystem work. Component lists are resolver working state; the
+survey found no admitted macOS opener interface that accepts them. Keep the
+public location string: an array at Koine's GraphQL boundary would require
+clients to reconstruct the same input and would leave the native handoff gap.
+This is an inference from the bounded survey, not proof that no such API exists.
+The newly commissioned application surveys will examine concrete workflows
+beyond that survey's API/representation coverage; they have not yet delivered
+findings and do not change this bounded observation.
+
+Workspace owns presence, native classification/selection and submission behind
+the existing private action adapter. The resolver can hide descriptor lifetime,
+link-expansion work and cause provenance from callers. Its descriptor is
+process-local and cannot be supplied to NSWorkspace's URL/path APIs. XPC fd
+transfer serves cooperating peers; Finder, Zed and arbitrary default handlers
+have no demonstrated matching interface. Passing an array or fd moves caller
+obligations without satisfying the existing launch/open contract.
+
+The other surveyed representations do not supply an adopted repair:
+
+- Ordinary bookmarks resolve back to URLs; long-item creation/resolution and
+  opener delivery are unproved. Security-scoped variants require a new posture.
+- File-reference/volfs locations replace the caller's path with an identity
+  spelling and are excluded. [Apple's kernel test](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/tests/vfs/longpaths.c)
+  supports volfs *file opening*, not NSWorkspace delivery/registration/receipt
+  behavior; [Apple DTS](https://developer.apple.com/forums/thread/103162)
+  cautions against relying on it where fsgetpath is available.
+- Short links/aliases, another app copy, legacy openers and the private
+  long-path policy remain excluded. Policy on Koine alone would not establish
+  behavior in the separate service and receiver processes.
+
+The survey's unauthorized host leads are not design evidence and were not rerun.
+An excluded representation could be reconsidered only by a concrete new decision;
+its kernel reachability alone would still leave classification, selection,
+delivery, receipt and no-prompt behavior unproved.
 
 ## SDK and source provenance
 
@@ -147,56 +212,50 @@ Finder aliases retains native refusal. Reveal submits their original locations.
 
 ## Decision for Antony
 
-**Selected under Antony's "you decide" delegation: one bounded native prototype
-before settling the route**, under the existing signing/consent posture and
-public APIs only. This changes the source-first ordering for that finite
-investigation. Production implementation and full native acceptance remain
-planning's work after a supported/reviewed route. The prototype is chartered as
-long-action-route-k134, followed by returned design long-action-route-k135;
-neither has run in this source-evaluation session.
+**Antony retained the original working requirement and requested broader
+application research.** His instruction was "retain the original requirement -
+invoke research processes to see how other applications deal with this problem",
+clarified as "Specifically how long pathnames are dealt with. This must occur
+for other use cases and contexts." The proposed disclosed refusal is not
+adopted; all original roughly 1,500-byte working cases and exclusions remain.
+No shortening, alternate-copy selection, private policy, new consent, guessed
+native facts or systematic length-caused null receipt is authorized.
 
-| Choice | Benefit | Cost and consequence |
-| --- | --- | --- |
-| **Selected:** one bounded prototype, then return to design | Tests the strongest public candidates against the actual required cases rather than treating undocumented length behavior as established. | One isolated native investigation before an implementation-ready route exists. Any failed or unobserved prerequisite leaves its row pending; no automatic follow-on evidence chain or workflow-loss acceptance. |
-| Considered alternative: leave the route pending until stronger supported evidence is supplied | Retains the source-first boundary without adopting a speculative acquisition. | Long-location actions and downstream search consumers would remain live. This would not reject the workflows or claim impossibility. |
+The commissioned process has two independent surveys with the same brief,
+followed by synthesis and returned route design. The existing dispatch policy
+supplies different providers for the two surveys; it is unchanged. Both survey
+sessions seek breadth and primary evidence independently. Synthesis owns the
+adversarial move, disagreements and correlated-source checks.
 
-Private policy/entitlement, shortening, another app copy, type/extension guesses,
-copy-only operation and systematic null receipts are outside both choices.
-There is no measured workflow-loss trade-off to approve from this session.
+| Step | Concrete question and deliverable |
+| --- | --- |
+| Independent application survey A | Trace real long-pathname workflows through file managers/editors/launch, build/package/repository tools, archive/copy/backup/sync and remote/virtual namespaces. Deliver `docs/research/long-pathname-applications-a.md`. |
+| Independent application survey B | Answer the same brief without reading A, seeking an independent primary-source corpus. Deliver `docs/research/long-pathname-applications-b.md`. |
+| Synthesis | Union evidenced coverage, preserve contradictions and silences, test apparently transferable mechanisms against reconstruction/receiver limits and distinguish shared-source agreement from corroboration. Deliver `docs/research/long-pathname-applications.md`. |
+| Returned route design | Consume the synthesis, establish the retained supported route and reconcile artifacts, or present the exact remaining gap and concrete proposal to Antony. No further experiment or automatic research chain is selected. |
 
-The selected prototype is **one session with one result**, not an implementation
-plan: component-create a measured roughly 1500-byte ordinary file and a modern
-application bundle, then acquire reference flags/type, selected-copy identifier
-with explicit read/parse provenance, registration equality and exact-item binding.
-Prepare independent executable-identity observers and measure action receipts
-after submission. Compare the candidate metadata route with the
-existing native route on short controls, no-type/no-identifier, malformed/denied
-metadata, scripts/packages, aliases/programs/apps, cycle/component/link-budget
-causes and short selection with long registrations. Explicitly evaluate the
-metadata-read scope and conventional/other native bundle-layout parity; do not
-adopt a fixture-only layout policy as a general route.
+For each real system, follow normal and over-limit ingress, representation,
+traversal, metadata, external boundary and consumer. Distinguish storing or
+showing a pathname from successful operations and application delivery. Cover
+macOS, Linux/POSIX and Windows contrasts; state byte/character/UTF-16 units,
+NUL inclusion, per-component versus whole/expanded limits, versions/configuration
+and failure behavior. Source concrete uses of component sequences, cwd/dirfd,
+handles/IDs, virtual mappings or rewriting rather than assuming an API name or
+larger buffer establishes success. The earlier survey supplies leads, not a
+conclusion to confirm. Missing primary evidence remains an explicit silence.
+Excluded mechanisms can be explained as prior art but require a new human
+decision before Koine adopts them. Research may find successful strategies,
+bounded dead ends or remaining questions; no outcome is predetermined.
 
-Only if applicable pre-submission prerequisites are established, submit unchanged bytes to default
-and Zed open/reveal and constrained cold/warm launch/named open with another
-same-identifier copy running. Record source, expanded, registered and submitted
-spellings and lengths separately. Positively control independent long-path
-delivery, Finder-selection and kernel/executable observers before using them.
-Distinguish failed submission, failed receipt acquisition and an unestablished
-observer; a native acknowledgment alone cannot establish receipt identity.
-Observe first-use reads/handler lookup and stop on a new consent/setup need.
-Do not request consent to turn a failure into a pass. A prerequisite failure
-must not produce misleading submission or prompt-absence results.
-
-Present supported mechanisms, actual failures and unresolved observations against
-those subjects, with a specific recommendation for Antony's reaction. His
-delegation settles execution of this prototype; any measured workflow-loss or
-read-posture trade-off still requires its own concrete decision before adoption.
-Do not grow a second
-prototype/evidence leaf automatically. A successful prototype could inform a
-route proposal; it would not replace the parent's final review, independent
-provider/public/binary/action acceptance, later actual-search G/N/V provenance,
-or k93's measured omissions decision. Preserve the exact retained 1.0.0,
-action-only 1.0.1 and search 1.1.0 descriptions/digests/candidate profiles.
+The commissioning increment completes only this authorization, task sequence
+and current design record. Its completion signal advances the driver to fresh
+research sessions; it does not close the unresolved route nodes. Final design
+still owes the complete supported acquisition/submission route and k128's
+mandatory `long-search-result-actions` review before search consumers or
+implementation planning. Independent component-created action fixtures and
+later actual-search G/N/V provenance remain separate acceptance subjects.
+Retained 1.0.0, action-only repair 1.0.1 and search 1.1.0 stay independent.
+No ADR selects an unestablished route or an unaccepted workflow loss.
 
 ## Deterministic check boundary
 
@@ -208,8 +267,30 @@ versus repaired descriptions, action shapes and examples; they prove no native
 route or outcome. `task design:workspace-render` renders the candidate view;
 `task check:docs` checks document links. Native working subjects remain pending.
 
-The expanded declaration/import task passed with SDK 27.0 and Apple clang
+The source-evaluation declaration/import task passed with SDK 27.0 and Apple clang
 21.0.0, including the removed-import control. Independent/composed action SDL,
 the three-description repair delta and search/action examples passed their
 existing negative controls. These results establish declarations and document
-structure, not a complete acquisition route. The probe was never executed.
+structure, not a complete acquisition route. That declaration probe was never
+executed; the separate signed k134 prototype supplied the bounded native
+measurements above.
+
+The returned design reran `task design:action-repair-check` (including workspace
+SDL/examples and the unchanged-baseline control) and `task design:search-check`
+(including composed examples and removed-root/input/output/foreign-type controls).
+Both passed. The Taskfile, retained/repair/search/desktop SDL and operation
+subjects, client dependency manifests, document-check script and presentation
+viewer/manifest/changed source/export stayed unchanged by SHA-256 across the
+structural run. Documentation links use `task check:docs`; presentation is
+checked separately as described in the [viewer README](../design/architecture/README.md).
+No numeric served digest, provider implementation, native outcome or binary
+profile is credited by these checks. The SDL/examples remain the retained
+contracts because no workflow-loss alternative is yet adopted.
+
+The research commission changes prose and the route diagram, not SDL, operations,
+check mechanics or client dependencies. Those structural subjects and the viewer
+still match the prior successful structural-check revision item-by-item by
+SHA-256. The independent survey briefs are identical apart from their handles,
+and all commissioned child charters are populated. The revised diagram renders;
+its browser presentation evidence is recorded in the linked viewer README.
+These are commissioning checks, not research findings or supported-route proof.
