@@ -1,0 +1,21 @@
+{
+ "case": "reveal-long",
+ "rows": [
+  {
+   "finishedAt": "1791090813.866",
+   "id": "reveal-long",
+   "mode": "reveal",
+   "pid": 2604,
+   "result": {
+    "accepted": false,
+    "submittedLength": 1498
+   },
+   "startedAt": 1791090813.866302
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": []
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n"
+}

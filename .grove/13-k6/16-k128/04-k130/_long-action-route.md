@@ -82,15 +82,25 @@ It changes no supported-route, accepted-meaning, read-posture or review criterio
    evaluation, exact evidence gaps and selected finite next step.
 2. long-action-route-k134 (`prototype`) produces one isolated native result and
    recommendation for Antony's reaction, with failed/unmeasured rows explicit.
-3. long-action-route-k135 (`design`) consumes that result, completes the retained
-   supported route and artifact reconciliation, or escalates a concrete measured
-   trade-off. It cuts k128's mandatory final review before closure.
+3. prior-art-long-paths-k136 (`research-a`) answers Antony's reaction to k134
+   ("research how other systems/libraries/applications manage this - for example
+   do they have to use an array of paths?"): a read-only survey, no native run.
+4. long-action-route-k135 (`design`) consumes the k134 result and k136 survey,
+   completes the retained supported route and artifact reconciliation, or
+   escalates a concrete measured trade-off. It cuts k128's mandatory final review
+   before closure.
 
-There is no automatic second prototype or evidence chain. Production
+There is no automatic second prototype or evidence chain; k136 is the one
+research step Antony requested himself. Production
 implementation/native acceptance remains planning's after the reviewed route.
 The original Done when above remains binding for this node and k128.
 
 ## Decisions (running log)
+
+- k134 ran: a PATH_MAX wall at the submission, classification, registration and
+  lookup APIs (1,023 bytes passes, 1,024 fails); parent-relative POSIX calls work.
+  Antony declined the recommended refusal limit and asked for prior-art research
+  instead; k136 is cut ahead of k135 and no workflow loss is accepted.
 
 - Adopt the mandated design leaf in the stated jj workspace. Read the brief
   chain and k132's reviewed failure/provenance contract. Native execution stays

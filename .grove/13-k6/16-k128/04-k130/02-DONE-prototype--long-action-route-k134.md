@@ -67,3 +67,45 @@ independent provider/public/binary/action acceptance or actual-search G/N/V row.
 No private long-path policy, shortening, alternate app copy, guessed metadata,
 copy-only baseline or systematic null receipt loss is authorized. Existing
 protected-default-open and app-reveal decisions stay separately owned.
+
+## Result
+
+One signed throwaway probe ran in one macOS 26.5 clone of the launchers image. The
+measured picture, limits and recommendation are in
+`docs/verification/long-action-route-prototype.md`; raw records in
+`docs/verification/long-action-route/results/`. In short: a PATH_MAX wall - a
+1,023-byte witness document was delivered byte for byte, 1,024 and above fail in
+every tested public classification/registration/lookup/submission API (generic
+`NSCocoaErrorDomain` 256, nil, `fnfErr` -43, NO) - while parent-relative POSIX
+calls resolve ~1,500-byte paths with truthful causes. Submission was probed
+outside the contract's prerequisite gate as an API diagnostic only; nothing is
+credited as action acceptance.
+
+## Reaction
+
+Recommendation presented: adopt a disclosed refusal limit (verify existence
+component-relatively, refuse >=1,024-byte locations with a distinct truthful
+failure, search marks them not actionable). Antony did not adopt it. His words:
+"Let's research how other systems/libraries/applications manage this - for example
+do they have to use an array of paths?" No workflow loss is accepted; the question
+is now whether a representation other systems use (component arrays, directory
+handle plus name, platform path-list forms) can reach macOS's opener under the
+mandate.
+
+## Decisions (running log)
+
+- Built and ran the prototype: probe `docs/verification/long-action-route/probe.m`,
+  builder and driver scripts, Taskfile `fixture:long-action-route[-vm]`. Digests of
+  probe, builder, driver, Info.plist/entitlements and archive were frozen per run and
+  matched before/after.
+- Discarded an early acquisition run (a descriptor leak lost rows in LS-launched
+  processes) and an early reveal observer (it raised Automation consent); both were
+  fixed and the matrix rerun. The `lsbind` first-use row is void (wrong item).
+- Antony's reaction is a research request, not a route choice. Cut one `research-a`
+  survey (k136) ahead of design k135 under k130; no second corpus, no new native
+  evidence. k135 consumes this result and that survey and still owes Antony the
+  concrete trade-off before adopting any loss.
+- Prototype meets its Done when for what could be measured; unmeasured rows (alias/
+  program/script classification, identity comparison, exact-item binding, long
+  registered selection, long receipt identity, long-lookup prompt behaviour) are
+  reported pending, never passing. Retirement closes neither k130 nor k128.

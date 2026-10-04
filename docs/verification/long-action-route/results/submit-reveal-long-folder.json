@@ -1,0 +1,21 @@
+{
+ "case": "reveal-long-folder",
+ "rows": [
+  {
+   "finishedAt": "1791090819.008",
+   "id": "reveal-long-folder",
+   "mode": "reveal",
+   "pid": 2610,
+   "result": {
+    "accepted": false,
+    "submittedLength": 1494
+   },
+   "startedAt": 1791090819.008391
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": []
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n"
+}

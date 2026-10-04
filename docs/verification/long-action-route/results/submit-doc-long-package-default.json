@@ -1,0 +1,21 @@
+{
+ "case": "doc-long-package-default",
+ "rows": [
+  {
+   "finishedAt": "1791091117.510",
+   "id": "doc-long-package-default",
+   "mode": "open",
+   "pid": 2836,
+   "result": {
+    "defaultHandler": null,
+    "outcome": "no-handler"
+   },
+   "startedAt": 1791091117.50983
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": []
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"sample.txt\" (standard) 656x422 [focused] app:\"TextEdit\"\n"
+}

@@ -7,6 +7,9 @@ is impossible. No provider implementation or native action ran in this design
 session. The [reviewed boundary](long-action-native-boundary.md) and its
 independent action/search subjects remain binding.
 
+The selected prototype ran; its measured results and recommendation are in
+[long-action-route-prototype.md](long-action-route-prototype.md).
+
 Start with the [candidate and gap view](../design/architecture/index.html#diagram-workspace-route-candidates).
 The source evidence below supports a bounded decision, rather than another
 open-ended evidence chain. A route, final review and action acceptance remain
