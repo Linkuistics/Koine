@@ -85,3 +85,41 @@ research and durable survey artifacts. It authorizes no code changes, new
 native experiment or automatic further evidence chain. The returned design
 consumes the synthesis before route selection. Keep the original requirement
 and all mandatory review/acceptance obligations intact.
+
+## Decisions (running log)
+
+- Adopt the mandated research-b leaf and preserve the identical commission's
+  retained working cases and exclusions. Read the ancestor briefs, glossary,
+  cited ADRs and bounded native evidence; do not read survey A. No native probe,
+  production change, route selection or new task chain belongs to this survey.
+- The codebase-memory CLI refuses startup because a pre-coordination or
+  unverified generation is active. No project/generation/coverage result is
+  available. Use bounded document reads and pinned public implementation source
+  without codebase completeness claims. The existing Taskfile owns document checks.
+- Select a bounded corpus spanning Zed's cooperating CLI/editor, Nautilus/GIO
+  launch and local traversal, CMake/Ninja generated paths and compiler handoff,
+  GNU tar archive creation/extraction, restic backup/restore, Robocopy and OpenSSH
+  SFTP. Follow representation through each consumer, labelling documented
+  promises, source-derived behavior, historical reports and unresolved outcomes.
+- CotEditor 5.0.0 supplies an additional real macOS bookmark/restoration workflow:
+  security-scoped blobs resolve back to URLs, reachability and document reads.
+  This establishes application usage, not long-path success or permission to
+  change consent. Preserve failed-restoration and long-support uncertainty.
+- Deliver the independent source-backed survey in the mandated `-b.md` path.
+  Separate Zed's small-launch/IPC transfer from whole-path receiver I/O, GNU tar
+  creation from extraction, restic's repaired Windows metadata regression from
+  its POSIX whole-path backend, generated-name shortening from unchanged source
+  locations, and protocol handles from initial OPEN/reconstructed metadata.
+  Source tests/reporter follow-ups are evidence at their stated boundaries;
+  no complete Koine route, universal impossibility or accepted loss is inferred.
+- Final `task check:docs` passed. All 79 documentation, diagram-manifest,
+  Taskfile and check-script subjects matched their frozen SHA-256 values
+  item-by-item before/after; all 49 survey reference labels are defined. Checked
+  the GNU release-source archive digest and corrected the recorded value to the
+  actual downloaded bytes. These checks establish documentation integrity,
+  not external/native action acceptance.
+- The survey satisfies this research leaf's bounded families, operation/receiver
+  traces, unit distinctions, walk-away conclusions, citation/evidence levels,
+  silences and Koine comparison. Retire only k139; k140 synthesis and k141
+  returned design stay live, so no route-node close, ADR selection or final
+  producer review is earned here.
