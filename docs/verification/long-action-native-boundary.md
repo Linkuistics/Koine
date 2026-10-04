@@ -13,13 +13,19 @@ owns the behavioral meaning. The
 continues to require a complete, reviewed action route.
 
 The [returned route evaluation](long-action-route.md#measured-reconciliation)
-consumes the finite prototype and requested prior-art survey. Relative lookup
+consumes the finite prototype and completed application research. Relative lookup
 reached long items; tested classification/registration/handler/submission APIs
 did not complete the original working cases. The
-[retained requirement and research commission](long-action-route.md#decision-for-antony)
-keep the original cases binding and commission two independent application
-long-pathname surveys plus synthesis before returned design. The refusal
-proposal is not adopted. No complete route, universal impossibility or native
+[retained requirement and remaining decision](long-action-route.md#decision-for-antony)
+keep the original cases binding. Both surveys and synthesis are complete;
+[returned design](long-action-route.md#application-research-reconciliation)
+distinguishes local access, opener delivery and real receiver access, and narrows
+the SDK item-array silence. Antony selected continued
+[internal investigation](long-action-route.md#internal-native-reference-investigation),
+with one finite native-reference diagnostic and returned design. Flat enumeration
+remains unmeasured; native node-ID provenance cannot be replaced by an inode cast.
+External inquiries remain unused drafts.
+The refusal proposal is not adopted. No complete route, universal impossibility or native
 action acceptance is established.
 
 ## Native consumers and distinct limits

@@ -269,10 +269,14 @@ The selected-action rows below also consume the
 The finite prototype and requested survey establish local relative access,
 not a complete admitted opener route: long native facts, selection, default
 lookup, submission and receipt obligations remain unmet or unmeasured. The
-[retained requirement and application research commission](../verification/long-action-route.md#decision-for-antony)
-preserve all long working cases. Two independent long-pathname surveys and
-synthesis precede returned design; the refusal proposal is not adopted. No
-complete route or new acceptance is established; action/search subjects stay distinct.
+[retained requirement and remaining decision](../verification/long-action-route.md#decision-for-antony)
+preserve all long working cases. Both surveys and synthesis are complete;
+[returned design](../verification/long-action-route.md#application-research-reconciliation)
+separates local access, opener delivery and real receiver access. The legacy
+FSRef item-array clarification supplies no long acquisition or parity pass.
+Antony selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
+with one finite flat-enumeration diagnostic and returned design. External
+inquiries are unused drafts. No new native result, route or acceptance is established. Action/search subjects stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

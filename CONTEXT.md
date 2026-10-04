@@ -188,11 +188,18 @@ whole/expanded size refusal and unresolved link budgets prove no absence.
 Classification/selection, default-handler acquisition, submission and receipt
 executable-identity support remain unresolved. Launch-and-open owns independent
 long action fixtures; the [returned route evaluation](docs/verification/long-action-route.md#measured-reconciliation)
-consumes the prototype and prior-art survey. Relative filesystem access reached
+consumes the prototype and completed application research. Relative filesystem access reached
 long items, while tested public opener routes did not complete their actions.
 Component arrays/descriptors supply no established opener handoff. Antony
-retained the original working requirement and commissioned two independent
-application long-pathname surveys plus synthesis before returned route design.
+retained the original working requirement. The two application surveys and
+synthesis are complete; [returned design](docs/verification/long-action-route.md#application-research-reconciliation)
+separates local access, opener delivery and the real receiver's later access.
+Zed's inspected backend still reads whole paths after IPC. Public legacy FSRef
+item arrays exist without established long acquisition or end-to-end parity.
+Antony selected continued [internal native-reference investigation](docs/verification/long-action-route.md#internal-native-reference-investigation):
+one bounded flat-enumeration diagnostic and returned design. Node-ID resolution
+requires native catalog provenance; a 64-bit inode cast supplies none. External
+inquiries remain unused drafts, and no automatic probe series is authorized.
 The refusal proposal is not adopted; no complete route or action acceptance
 is established.
 App-and-file-search owns the later actual-search G/N/V

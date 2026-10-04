@@ -52,27 +52,80 @@ remain live; this discussion supplies none of them. The search ceiling is no
 actionability guarantee. Native/binary/no-dialog/useful-coverage outcomes and
 the operator's measured omissions decision remain pending.
 
-The current discussion records the
-[retained requirement and research commission](../../verification/long-action-route.md#decision-for-antony).
-Antony retained the original working cases and requested broader research into
-how actual applications handle long pathnames across contexts. Two independent
-surveys with the same brief precede synthesis and returned route design. The
-surveys trace representations, operations and process boundaries; synthesis
-checks contradictions, shared sources and reconstruction/receiver limits.
-The measured prototype and earlier survey stay bounded evidence. The refusal
-proposal is not adopted, and the supported route, final review and native
-acceptance remain live.
+The current discussion consumes the completed application surveys and synthesis.
+The [returned disposition](../../verification/long-action-route.md#application-research-reconciliation)
+separates local component access, native facts/selection, opener delivery, real
+receiver access and executable identity. Zed's inspected backend reads whole
+paths after IPC delivery. Public legacy FSRef item arrays exist, but long
+acquisition and full contract parity remain unestablished. Antony selected
+[continued internal investigation](../../verification/long-action-route.md#internal-native-reference-investigation).
+The SDK requires flat bulk iterators, and native node-ID resolution cannot use
+a cast 64-bit inode. One finite disposable-guest acquisition diagnostic and
+returned design are commissioned. External inquiries remain unused drafts;
+no sender or upstream response is needed for the current work.
+A named spelling/setup exception remains an unapproved alternative.
+No support request has been sent, and no automatic probe series is authorized.
+No new native outcome is claimed. Antony's original requirement remains retained; final
+review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Retained cases and application research](index.html#diagram-workspace-route-candidates) — Replaces the pending alternatives with the retained requirement, independent surveys, synthesis and returned route design.
-- [Retained requirement and research commission](../../verification/long-action-route.md#decision-for-antony) — Records Antony's answer and the concrete application/use-case research questions while preserving original working cases and exclusions.
-- [Measured reconciliation](../../verification/long-action-route.md#measured-reconciliation) — Keeps acquisition, diagnostic submission and unmeasured receipt evidence distinct; long default-open stopped before submission.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Carries the retained requirement and commissioned research before supported route/review.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Preserves original selected-path working subjects while broader application research precedes design.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the retained requirement and research commission; selected-path obligations remain binding.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Records the research dependency without crediting a route or new acceptance.
-- [Search location glossary](../../../CONTEXT.md#language) — Carries the retained requirement and independent application research before returned route design.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Replaces the inquiry branch with the finite internal acquisition investigation and native node-ID constraint.
+- [Application research reconciliation](../../verification/long-action-route.md#application-research-reconciliation) — Maps mechanisms and all six synthesis questions to retained contracts and explicit gaps.
+- [Internal native-reference investigation](../../verification/long-action-route.md#internal-native-reference-investigation) — Records exact SDK constraints, bounded fixtures/controls, one diagnostic and returned design; external drafts are unused.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Narrows the macOS item-array silence using public legacy SDK declarations without claiming long acquisition or parity.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Carries the completed research and independent receiver-access obligation.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Keeps original action subjects live after research without shortening locations or closing the handoff.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — States that IPC delivery and native item arrays do not establish a complete long route.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Carries the selected internal investigation while preserving distinct action/search acceptance.
+- [Search location glossary](../../../CONTEXT.md#language) — Records completed research and the local/opener/receiver distinction.
+
+The internal-investigation revision was checked in Firefox 151.0.3 in the
+isolated Linux clone `koine-k142-internal`. Its fresh light deep link identified
+the intended diagram and Current/Updated markers. At a 1,920-pixel browser
+width, the start, evidence, local-access and four gap labels were readable in
+light and dark appearance. The dark selected-investigation/exception branches
+were observed; the complete light SVG was also rasterized and inspected,
+including both bottom draft/node-ID boxes. The dark discussion panel showed
+the selected internal status, seven context links and one changed-view summary.
+Its heading, status and introductory prose reflowed at 320 × 480; narrow whole-
+diagram readability and a complete dark export are not claimed. Viewer,
+manifest and changed D2/SVG digests matched host/guest per file and stayed
+unchanged across the check. The clone is stopped. This verifies presentation
+only; the native acquisition diagnostic remains queued.
+Host discussion: <http://127.0.0.1:8880/#discussion>.
+
+The following record applies to the preceding selected-inquiry revision.
+
+The selected-inquiry revision was checked in Firefox in the isolated Linux
+clone `koine-k141-inquiry`. A fresh light deep link reached the revised diagram
+with its Current/Updated markers; the upper and gap labels were readable at a
+1,920-pixel browser width. The complete light SVG was rasterized and inspected,
+including the selected inquiry, pending sender/channels and unapproved exception.
+The dark discussion panel showed the selected-inquiry/submission-pending status,
+seven context links and one changed-view summary. Heading, status and introductory
+prose reflowed at 320 × 480; narrow diagram readability is not claimed. Viewer,
+manifest and changed D2/SVG SHA-256 values matched host/guest per file and stayed
+unchanged through the check. The clone is stopped. This verifies presentation
+only; no native macOS action or external inquiry submission ran.
+Host discussion: <http://127.0.0.1:8880/#discussion>.
+
+The following browser record applies to the preceding proposed-inquiry revision.
+
+The preceding view was checked in Firefox in the isolated Linux clone
+`koine-k141-design`. A fresh deep link reached the revised title and
+Current/Updated markers. At a 1,920-pixel browser width, the start, evidence,
+local-access and four gap labels were readable in light and dark appearance.
+The complete light SVG was also rasterized and inspected, including both
+proposed decision branches. The dark discussion panel showed the retained
+requirement, seven context links and one changed-view summary. Its heading,
+status and prose reflowed in Firefox's 320 × 480 responsive view; narrow
+whole-diagram fit remains an overview. Viewer, manifest and changed D2/SVG
+SHA-256 values matched host/guest per file before and after the check. The clone
+is stopped. This verifies presentation only; no new native macOS action or
+acceptance subject ran. Host discussion: <http://127.0.0.1:8880/#discussion>.
+
+Previous browser results below apply to their previous revisions.
 
 The commissioned-research view was checked in Firefox in the isolated Linux
 clone `koine-k137-research`. A fresh deep link reached its retained-cases title
@@ -156,7 +209,7 @@ opening remains pending a human consent/semantics decision. The updated
 [request sequence](index.html#diagram-workspace-open) qualifies its inspection
 premise with that limit; the outcome view remains unchanged context.
 
-The current update also changes these prose sections:
+The earlier native-boundary update changed these prose sections:
 
 - [Long-location action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Separates four limits and requires established absence before a dependency result.
 - [Source, SDK and independent subjects](../../verification/long-action-native-boundary.md) — Explains the existing defect, candidate APIs and unexecuted search-to-action subjects.

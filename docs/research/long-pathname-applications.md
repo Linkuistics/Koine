@@ -34,10 +34,11 @@ findings survive:
      Delivering a location therefore would not, by itself, make the receiver
      open it.
 
-   The only protocol-level exception found is the Windows `DelegateExecute`
+   The protocol-level exception followed by this synthesis is Windows `DelegateExecute`
    verb, whose handler receives a Shell item array. This synthesis found it; its
-   receiver behaviour past MAX_PATH is unsourced, and no macOS counterpart
-   appears in either corpus.
+   receiver behaviour past MAX_PATH is unsourced. Neither survey followed the
+   legacy macOS FSRef item-array counterpart; [returned design](#returned-design-reconciliation)
+   narrows that silence without establishing a long route.
 4. **For Koine**, one supported lead survives:
    [component-relative presence and cause](#72-supported-promising-leads). It
    carries four qualifications: the descriptor budget, recovery branches,
@@ -322,8 +323,8 @@ disagreement is preserved even where one side looks likely wrong.
      synthesis sourced the shell's construction for an over-limit item.
    - **Outcome.** A's universal phrasing is too strong for Windows. Its narrower
      claim, that no surveyed system delivers an over-limit location *unchanged*
-     to a *path-taking* opener, still stands. Neither corpus contains a macOS
-     counterpart.
+     to a *path-taking* opener, still stands. Neither survey followed the legacy
+     macOS counterpart identified by [returned design](#returned-design-reconciliation).
 6. **How general the negative is** (A short answer and §1.8; B mechanism
    comparison).
    - **A's summary** phrasing slides toward a universal: "every sourced system
@@ -459,8 +460,9 @@ the surveys propose as transferable is tested against all three.
 - **Not every "array" is one path.** In B, an array means *many complete
   paths* (Zed's `Vec<String>`), *children in a tree* (restic) or *resolver
   working state* (Zed's fallback). None is one location split into components.
-- **The Windows exception.** The only arbitrary-handler protocol carrying item
-  sequences is `DelegateExecute` (correction 5).
+- **The Windows exception in this corpus.** `DelegateExecute` carries item
+  sequences (correction 5). The returned design's SDK follow-up also identifies
+  macOS legacy FSRef item arrays; neither supplies an established long macOS route.
 - **Verdict.** No macOS application interface in either corpus accepts a
   component array.
 
@@ -648,6 +650,37 @@ resolved, plus its own searches.
   - Whether every QEMU 9pfs operation avoids whole strings.
 - **Windows.** A Microsoft statement of Explorer's numeric limit, and the
   behaviour of a `DelegateExecute` handler given an item beyond `MAX_PATH`.
+
+## Returned design reconciliation
+
+The [returned design](../verification/long-action-route.md#application-research-reconciliation)
+uses this synthesis for local-access ownership, receiver obligations, truthful
+cause/fact meaning and bounded evidence. The action/search specs, guide, trace
+and glossary now cite that disposition. No complete route or workflow loss is
+adopted, and no ADR selects an unestablished mechanism.
+
+Its subsequent SDK 27.0 read narrows Q2: public deprecated
+[LSOpenItemsWithRole](https://developer.apple.com/documentation/coreservices/1449783-lsopenitemswithrole)
+and LSLaunchFSRefSpec accept arrays of whole FSRefs. They do not accept components
+of one pathname or a parent descriptor plus name. Public
+[FSGetCatalogInfoBulk](https://developer.apple.com/documentation/coreservices/1566447-fsgetcataloginfobulk)
+can return references, but no long acquisition/consumption outcome is established
+for that branch. The tested constructors failed; legacy opener parity and the
+receiver's later access remain unresolved. These are returned-design source
+observations, not sources either independent survey read or a new native probe.
+The bounded absence of an established macOS route survives; a blanket absence
+of native item-array APIs does not.
+
+Q1 retains real-application delivery/rendering and Finder-selection observations;
+the public receipt keeps its narrower acknowledgment/identity meaning. The
+[remaining decision](../verification/long-action-route.md#decision-for-antony)
+preserves Antony's requirement and names the missing platform/receiver capability.
+Antony subsequently selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
+superseding the unused external inquiry drafts. The new SDK read narrows catalog
+enumeration to flat iterators and rejects an unsupported 64-bit-inode-to-UInt32
+node shortcut. One finite disposable-guest acquisition diagnostic and returned
+design are commissioned; no native result or automatic probe series is claimed.
+These later observations/decisions are not part of either independent survey.
 
 ## Sources added or re-read by this synthesis
 

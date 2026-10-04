@@ -1,27 +1,32 @@
 # Long-location route evaluation
 
-**The retained long-location route is unresolved after the finite prototype
-and requested prior-art survey.** Parent-relative filesystem operations can
-reach the items; the tested public classification, registration, handler and
-submission APIs cannot complete the required roughly 1,500-byte workflows.
+**The retained long-location route is unresolved after the finite prototype,
+two application surveys and adversarial synthesis.** Parent-relative filesystem
+operations can reach the items. The tested public native-fact and opener routes
+did not complete the roughly 1,500-byte workflows; the inspected Zed receiver
+also performs whole-path filesystem reads after delivery.
 This is bounded evidence about tested mechanisms, not universal impossibility.
 No production route or workflow loss is adopted.
 
-Start with the [measured boundary and decision view](../design/architecture/index.html#diagram-workspace-route-candidates)
-and the [retained requirement and research commission](#decision-for-antony). The
+Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
+and the [remaining decision](#decision-for-antony). The
 [prototype](long-action-route-prototype.md) supplies the committed native
 measurements; the [prior-art survey](../research/prior-art-long-paths-a.md)
 answers the representation question. The [reviewed boundary](long-action-native-boundary.md),
 independent action/search subjects and separate compatibility profiles remain
-binding. This returned design performs no new native action investigation.
+binding. No new native action measurement ran in this source/commissioning
+session; the finite internal acquisition diagnostic below is queued separately.
 
-Antony explicitly retained the original requirement and requested broader
-research into how real applications deal with long pathnames across use cases
-and contexts. The refusal recommendation is not adopted. An independent survey
-pair and synthesis are commissioned before returned route design; they will
-trace actual representations, operations and process boundaries. No new native
-experiment is authorized. A supported route, final review and action acceptance
-remain required before the search handoff can close.
+Antony retained the original requirement and requested the now-completed
+[application research synthesis](../research/long-pathname-applications.md),
+based on independent [survey A](../research/long-pathname-applications-a.md)
+and [survey B](../research/long-pathname-applications-b.md). The refusal
+recommendation remains unadopted. This returned design follows the mechanisms
+through their receivers and narrows SDK acquisition candidates. Antony's later
+instruction selects [internal investigation](#internal-native-reference-investigation)
+and one finite acquisition diagnostic with returned design, without an automatic
+probe series. It establishes no complete route. Final review and action acceptance remain required
+before the search handoff can close.
 
 ## Source candidates and remaining obligations
 
@@ -33,7 +38,7 @@ remain required before the search handoff can close.
 | Identity and registration selection | `FSCompareFSRefs` documents equality of native objects, with `errFSRefsDifferent` as a distinct result. `NSWorkspace` supplies preferred and all registered URLs; each exact URL can be inspected component by component without converting an FSRef to a URL. | Check reference construction and comparison errors; preserve registration uncertainty and both enumeration orders. APFS reference performance and races remain native questions. A registration query for an identifier does not establish the selected bundle's currently declared identifier. |
 | Bundle identifier | `CFBundleCopyInfoDictionaryForURL` is public and supplies a bundle-information dictionary. Public bundle structures explain conventional application metadata locations. | Neither that dictionary-only API nor the inspected LS item-attribute catalogue provides the needed selected-copy read/parse provenance. Historical CF source has path buffers and empty-dictionary failure branches. Component-relative metadata parsing is a candidate, but native bundle-layout/identifier equivalence and unchanged read behavior must be established before adopting it. |
 | Exact-item default handler | `LSGetApplicationForItem` consults the item's binding, including a user override; the SDK documents `kLSApplicationNotFoundErr`. Its app-reference and app-URL outputs are separately optional. | This is a stronger candidate than the existing URL-or-nil result, not a type/extension fallback. Establish target/handler identity, output validity and long-item parity; first-use prompts remain unmeasured. An applicable checked not-found report alone can justify NO_DEFAULT_HANDLER. |
-| Submission | The existing public NSWorkspace primitives take an application URL, document URL or Finder path. Reusing them preserves configuration, acknowledgment and the supplied document/reveal location at Koine's call boundary. | Those signatures do not prove processing/delivery of the required long URLs. Application submission must use the exact selected registered URL, with running-copy substitution disabled for a constrained request. A shortened link, file-reference URL or legacy open primitive would change the question. |
+| Submission | The existing public NSWorkspace primitives take an application URL, document URL or Finder path. Reusing them preserves configuration, acknowledgment and the supplied document/reveal location at Koine's call boundary. | Those signatures do not prove processing/delivery of the required long URLs. Application submission must use the exact selected registered URL, with running-copy substitution disabled for a constrained request. Shortened links/file-reference spelling are excluded; a public legacy primitive needs complete configuration, location, acknowledgment, receipt and receiver parity. |
 | Receipt executable identity | Public `proc_pidpath` returns executable-path text; component-relative identity lookup could avoid the adapter's subsequent whole-path resource lookup. | The public maximum buffer is 4096 bytes, independently of the 8192-byte search value ceiling. Published XNU also performs whole-path vnode revalidation. Callback executableURL, live path acquisition and identity lookup must each succeed for the required long app. Increasing the buffer does not prove this; systematic length-caused null remains unaccepted. |
 
 These are API contracts and source observations. None establishes that an opaque
@@ -74,9 +79,10 @@ survey found no admitted macOS opener interface that accepts them. Keep the
 public location string: an array at Koine's GraphQL boundary would require
 clients to reconstruct the same input and would leave the native handoff gap.
 This is an inference from the bounded survey, not proof that no such API exists.
-The newly commissioned application surveys will examine concrete workflows
-beyond that survey's API/representation coverage; they have not yet delivered
-findings and do not change this bounded observation.
+The completed application synthesis adds cooperating component protocols and
+an explicit receiver boundary. Its [bounded applicability map](../research/long-pathname-applications.md#7-koine-applicability-map)
+supplies no complete retained route. The SDK clarification below distinguishes
+arrays of whole native items from components of one pathname.
 
 Workspace owns presence, native classification/selection and submission behind
 the existing private action adapter. The resolver can hide descriptor lifetime,
@@ -95,14 +101,175 @@ The other surveyed representations do not supply an adopted repair:
   supports volfs *file opening*, not NSWorkspace delivery/registration/receipt
   behavior; [Apple DTS](https://developer.apple.com/forums/thread/103162)
   cautions against relying on it where fsgetpath is available.
-- Short links/aliases, another app copy, legacy openers and the private
-  long-path policy remain excluded. Policy on Koine alone would not establish
+- Short links/aliases, another app copy and the private
+  long-path policy remain excluded. Public deprecated openers require complete
+  retained-contract parity; deprecation alone does not exclude them. Policy on Koine alone would not establish
   behavior in the separate service and receiver processes.
 
 The survey's unauthorized host leads are not design evidence and were not rerun.
 An excluded representation could be reconsidered only by a concrete new decision;
 its kernel reachability alone would still leave classification, selection,
 delivery, receipt and no-prompt behavior unproved.
+
+## Application research reconciliation
+
+The synthesis's corrections bind this disposition: shared-source agreement is
+not independent execution; a Linux 1,500-byte success is below its usual lookup
+limit; Windows opt-in and archive-record capacity are different subjects. The
+GNU tar descriptor-recovery defect and restic metadata regression show why
+recovery and every fact consumer need independent checks. Neither is evidence
+that a macOS opener works.
+
+| Mechanism | Supported scope | Remaining retained obligation |
+| --- | --- | --- |
+| Directory descriptor and short name; component protocols | Owned local access; cooperating NFS/9P/FUSE endpoints walk components. k134 measured the local POSIX route. | Native flags/type, bundle-identifier provenance, registration, exact-item handler, opener and receiver access. Preserve descriptor bounds, recovery, symlink/dot semantics and prompt policy. |
+| Zed CLI strings over IPC | A real document side channel at the surveyed pins. | Its receiver canonicalizes and loads by whole path. Delivery alone does not establish the required real Zed document opening, exact registered copy or Koine receipt. |
+| Native item-reference arrays | SDK 27.0 declares LSOpenItemsWithRole and LSLaunchFSRefSpec.itemRefs. | Acquire applicable long FSRefs, establish legacy opener parity and receiver handling. These are whole item references, not parent/name or component inputs. |
+| fsgetpath | Public long-text observation from native identity, already selected by search. | Text observation supplies neither opener submission nor executable identity of an arbitrary live process. proc_pidpath re-enters whole-path lookup. |
+| Bookmarks, identity spelling and short virtual namespaces | Real persistence/cooperating or mapped-namespace mechanisms in the corpus. | Original submission spelling, classification, registration, receiver access, receipt and policy equivalence. Excluded/new-posture choices still need Antony's decision. |
+
+### Opener and receiver are separate obligations
+
+The pinned [Zed real filesystem backend](https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/fs/src/fs.rs)
+loads text with `std::fs::read_to_string`, bytes with `std::fs::read`, and
+canonicalizes through `std::fs::canonicalize` on macOS. The
+[CLI receiver](https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/zed/src/zed/open_listener.rs)
+accepts full path strings and opens workspaces/items through that filesystem
+boundary. These branches were re-read for k141. Their over-limit consequence
+under the retained process posture is source-derived, not a new native Zed run.
+Changing Koine's string transport does not replace Zed's filesystem operations.
+
+The [independent working subjects](long-action-native-boundary.md#independent-subjects-for-the-route-design)
+retain real default/Zed document delivery/rendering and Finder selection
+observations. A witness logging a URL proves only delivery to that witness.
+Neither that log nor an acknowledgment closes the real application working case.
+This clarifies acceptance, without expanding the public receipt into a guarantee
+of rendered content or narrowing acceptance to successful submission.
+
+The reviewed private WorkspaceNative enabling point remains the existing seam.
+Workspace owns local resolution, fact acquisition, selection and submission;
+the external receiver owns its filesystem work. An adapter substitute cannot
+prove external receiver behavior. Exposing components/fds to GraphQL clients
+would add obligations without giving NSWorkspace or arbitrary receivers a
+matching protocol. No new public seam or generic extension layer is justified.
+
+### SDK item-array clarification
+
+The macOS 27.0 SDK's LSOpenDeprecated.h documents
+[LSOpenItemsWithRole](https://developer.apple.com/documentation/coreservices/1449783-lsopenitemswithrole)
+as accepting an array of FSRefs and sending an open-documents event. Its
+LSLaunchFSRefSpec contains a selected appRef and itemRefs array. Thus a blanket
+claim that macOS has no native item-array opener would be incorrect. The
+synthesis's macOS counterpart question is narrowed, not credited as a route.
+
+The input to each array is an already constructed whole native item reference.
+k134's tested FSPathMakeRef and FSMakeFSRefUnicode constructions failed for
+long locations. Public [catalog enumeration](https://developer.apple.com/documentation/coreservices/1566447-fsgetcataloginfobulk)
+can also return FSRefs; its declaration does not establish long enumeration,
+subsequent native-fact acquisition or opener/receiver support. None of those
+unmeasured branches was executed here. FSRef bytes remain opaque; no handmade
+reference is admitted. Deprecation alone rejects nothing, and the tested failures
+do not prove every reference-acquisition route impossible. A supported complete
+legacy route would still owe the retained configuration, exact-copy, grant,
+acknowledgment, receipt and receiver contracts before adoption.
+
+### Disposition of the synthesis's open questions
+
+| Question | Returned design disposition |
+| --- | --- |
+| Q1: delivery or real document opening? | Retain independent real-application delivery/rendering and selection observations. Public acknowledgment stays narrower. No acceptance weakening is selected. |
+| Q2: parent/name or item-sequence opener? | The inspected NSWorkspace open/launch/reveal inputs are whole URLs/paths. Legacy FSRef item arrays exist; long acquisition and end-to-end semantics remain gaps. No parent/name/component opener is established by these headers. |
+| Q3: object identity instead of proc_pidpath? | Unresolved. Cwd/root/fd/mapped-region statistics or executable UUID alone do not identify the exact running installation under the retained observation rule. No replacement receipt rule is selected. |
+| Q4: long-copy registration? | Unresolved. k134's registration failed; no applicable source or successful registered-copy route is established. |
+| Q5: prompt-free component reads? | k134 prompted at Documents. The local mechanism is a candidate beneath the existing policy, not a new protected read approval. Protected default lookup remains its separate human decision. |
+| Q6: Apple receiver long-path policy? | Unknown. The published private-policy gate does not establish which closed Apple processes opt in, or change the policy of Zed/default handlers. |
+
+The residual is precise: native fact acquisition and registration/selection;
+an unchanged-location opener handoff; the real receiver's subsequent operations;
+and exact executable-identity observation. A solution for any one must not be
+credited for the others. The current source and measurements leave these
+required stages unresolved; this is no theorem about every macOS interface.
+
+### Internal native-reference investigation
+
+Antony's instruction to "continue with our own investigation" supersedes the
+external inquiry path. The inquiry texts below remain unused drafts. No sender,
+account connection or upstream response is needed to run this investigation.
+The new authorization covers bounded public source/SDK work and one disposable
+guest diagnostic for the specific acquisition question below. It changes no
+working case, input spelling, consent, setup, private policy or receipt rule.
+
+The SDK 27.0 read narrows the alternatives:
+
+| Candidate | Applicable public evidence | Disposition |
+| --- | --- | --- |
+| Flat catalog enumeration | CarbonCore `Files.h` declares `FSOpenIterator` and `FSGetCatalogInfoBulk`, with returned names, catalog information and opaque FSRefs. Its comment requires `kFSIterateFlat`. Apple's [retired iteration guide](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/FileSystem/Articles/IteratingFiles.html) demonstrates that flat pattern and describes opening further iterators for descent. | Follow only the named children in a component-created fixture tree. Whether enumeration constructs usable references beyond 1,023 bytes remains unmeasured. The HFS-oriented guide is no current APFS or long-path guarantee. |
+| Resolve a native node ID | `Files.h` declares [FSResolveNodeID](https://developer.apple.com/documentation/coreservices/1565623-fsresolvenodeid) with a Carbon volume reference and `UInt32` node ID. | A native catalog volume/node pair is a legitimate diagnostic input. It must first be acquired; this is not an independent descriptor-to-reference route. Never truncate a 64-bit inode or construct FSRef bytes. |
+| Obtain that node ID from descriptor attributes | SDK `sys/attr.h` and pinned [XNU attr.h](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.121.6/bsd/sys/attr.h#L220-L224) say the 32-bit `fid_objno` fields are undefined when the volume advertises `VOL_CAP_FMT_64BIT_OBJECT_IDS`; only `ATTR_CMN_FILEID`/`ATTR_CMN_PARENTID` supply legitimate object IDs there. | The proposed `fgetattrlist` → 32-bit cast → `FSResolveNodeID` shortcut lacks supported identity. A valid 64-bit file ID is not a Carbon node-ID conversion. Record the volume's valid/capability bits and preserve native catalog provenance. |
+| Bulk subtree scan | `FSGetCatalogInfoBulk` requires a flat iterator. `FSCatalogSearch` instead requires a subtree iterator rooted at the volume root. | No volume-wide scan is commissioned. It would introduce unrelated traversal, cost and protected-access questions. |
+| Volume/parent/name `PBMakeFSRefSync` | The SDK encloses this older entry point in `#if !__LP64__`. | It supplies no arm64 route. This differs from the public deprecated FSRef array openers, which are declared under `TARGET_OS_OSX`. |
+
+The focused question is: **can a flat catalog walk return the exact original
+file/directory as a usable opaque FSRef at 1,024 and roughly 1,500 bytes, when
+the tested path and parent/name constructors fail?** Usability means successful
+native comparison/catalog consumption, not a nonzero buffer or URL conversion.
+The walk starts from one short fixture-root reference and opens a new flat
+iterator only for the selected returned directory. It never reconstructs the
+whole long path to advance. Record the first failed acquisition or consumer
+stage, returned count, names, `containerChanged`, native status and cumulative
+original UTF-8 length. A returned reference does not imply later APIs avoid
+whole-path reconstruction.
+
+The finite subject is eight independent, component-created fixtures: an ordinary
+file and directory at each of 900, 1,023, 1,024 and 1,500 UTF-8 bytes, excluding
+NUL. All individual ASCII names are valid. Use a short same-object reference
+control, a same-parent decoy and a completed missing-name iteration control.
+Request at most eight entries per batch, four batches per fixture directory,
+32 selected-directory levels and one live iterator. Bounds or unexpected
+contents terminate the diagnostic as incomplete; they do not prove absence.
+Process valid returned entries on `errFSNoMoreItems`, and distinguish that
+completed iteration from another error. Close all iterators/descriptors.
+The whole diagnostic permits at most two builds, two collection attempts of
+this same fixed corpus and one instrumentation repair. Retain every attempt's
+raw output and the reason for any repair; never merge runs into a cleaner result.
+An external watchdog limits each native-case helper to 30 seconds, with at most
+five additional seconds for termination. The guest session, from clone-start
+request through teardown, has a 15-minute elapsed cap. Exhaustion, a blocked
+call or an uncorrected short-control failure ends as incomplete. No alternative
+guest/API route, added subject or later automatic retry is commissioned.
+
+For acquired references, record `FSGetCatalogInfo` and `FSCompareFSRefs`
+results and narrowly attempt reference-based item flags/content type and exact-item
+preferred-handler lookup. Record each native status independently. Neither a
+failed call nor an unacquired/null output proves no type or no handler. Test
+`FSResolveNodeID` only using a successfully returned native catalog volume/node
+pair, then compare its returned reference with the enumerated reference. This
+can test that resolution's consumption behavior, but cannot claim a new way to
+acquire the original node ID. Do not convert the long reference to a short
+identity spelling or submit it to an application in this probe.
+
+Use one disposable macOS guest and a minimal signed helper with the earlier
+prototype's ordinary process/privacy posture. Record OS/build, SDK/compiler,
+architecture, filesystem, signing/entitlements, actual volume capability bits,
+source/binary digests and observed dialogs. No protected Documents/Desktop tree,
+TCC reset/approval, private policy or new long-path entitlement is permitted.
+The fixture body is test data, not permission to read production documents.
+Unchanged host files are not subjects. A guest/tool or short-control failure
+is recorded; it does not trigger another platform or automatic investigation.
+
+The first child `native-reference-acquisition-k142` records this source
+disposition and finite charter. `native-reference-acquisition-k143` executes the
+throwaway diagnostic and presents the observed result for Antony's reaction;
+`long-action-route-k144` consumes it as the retained final design. There is one
+probe and one returned-design step, not a repeat-until-success series. The route
+node `long-action-route-k141` remains live. A negative/incomplete result returns
+the exact residual gap, while a positive result earns only the stages measured.
+Long app-copy identity/registration, opener parity, real receiver operations,
+Finder selection and receipt identity still owe their original evidence.
+Only a complete route earns k128's mandatory final review before consumers.
+No new native measurement has run in this commissioning session. One fresh
+adversarial charter read identified the missing aggregate execution bound;
+the limits above resolve it without changing APIs, subjects or privacy posture.
 
 ## SDK and source provenance
 
@@ -221,18 +388,16 @@ adopted; all original roughly 1,500-byte working cases and exclusions remain.
 No shortening, alternate-copy selection, private policy, new consent, guessed
 native facts or systematic length-caused null receipt is authorized.
 
-The commissioned process has two independent surveys with the same brief,
-followed by synthesis and returned route design. The existing dispatch policy
-supplies different providers for the two surveys; it is unchanged. Both survey
-sessions seek breadth and primary evidence independently. Synthesis owns the
-adversarial move, disagreements and correlated-source checks.
+The commissioned process is complete: both surveys answered the same brief,
+and synthesis unions the evidence, corrects claims and exposes correlated sources.
+Returned design has consumed them and re-read the applicable receiver and SDK
+branches. It has not established a complete retained route.
 
 | Step | Concrete question and deliverable |
 | --- | --- |
-| Independent application survey A | Trace real long-pathname workflows through file managers/editors/launch, build/package/repository tools, archive/copy/backup/sync and remote/virtual namespaces. Deliver `docs/research/long-pathname-applications-a.md`. |
-| Independent application survey B | Answer the same brief without reading A, seeking an independent primary-source corpus. Deliver `docs/research/long-pathname-applications-b.md`. |
-| Synthesis | Union evidenced coverage, preserve contradictions and silences, test apparently transferable mechanisms against reconstruction/receiver limits and distinguish shared-source agreement from corroboration. Deliver `docs/research/long-pathname-applications.md`. |
-| Returned route design | Consume the synthesis, establish the retained supported route and reconcile artifacts, or present the exact remaining gap and concrete proposal to Antony. No further experiment or automatic research chain is selected. |
+| Independent application surveys | [A](../research/long-pathname-applications-a.md) and [B](../research/long-pathname-applications-b.md) delivered finite primary-source corpora. Neither established the complete retained route. |
+| Synthesis | [Combined research](../research/long-pathname-applications.md) followed reconstructions and receivers, corrected claims and separated shared-source readings from independent behavior. |
+| Returned route design | [Mechanism disposition and exact remaining gaps](#application-research-reconciliation), including public item arrays and preserved real-application acceptance. Antony subsequently authorized [internal investigation](#internal-native-reference-investigation), with one finite acquisition probe and returned design. |
 
 For each real system, follow normal and over-limit ingress, representation,
 traversal, metadata, external boundary and consumer. Distinguish storing or
@@ -247,17 +412,210 @@ Excluded mechanisms can be explained as prior art but require a new human
 decision before Koine adopts them. Research may find successful strategies,
 bounded dead ends or remaining questions; no outcome is predetermined.
 
-The commissioning increment completes only this authorization, task sequence
-and current design record. Its completion signal advances the driver to fresh
-research sessions; it does not close the unresolved route nodes. Final design
-still owes the complete supported acquisition/submission route and k128's
+The returned-design route nodes remain live. Final design
+still owes the complete supported acquisition/submission/receiver route and k128's
 mandatory `long-search-result-actions` review before search consumers or
 implementation planning. Independent component-created action fixtures and
 later actual-search G/N/V provenance remain separate acceptance subjects.
 Retained 1.0.0, action-only repair 1.0.1 and search 1.1.0 stay independent.
 No ADR selects an unestablished route or an unaccepted workflow loss.
 
+**Antony selected continued internal investigation after asking why owner input
+was needed.** The [bounded acquisition charter](#internal-native-reference-investigation)
+is the current next step. The earlier "proceed" inquiry choice is superseded;
+no external response is a prerequisite and no request has been sent. Internal
+investigation may resolve a native acquisition question without resolving the
+opener or receiver; no complete route is guaranteed. One finite diagnostic and
+returned design preserve the original working cases. This authorizes no spelling,
+setup, private-policy, consent or contract exception and no automatic probe series.
+
+The alternative is an explicit decision to investigate one named exception,
+such as a short virtual namespace backed by the original objects. That changes
+receiver-visible spelling and can need setup; it is unapproved and its macOS
+classification/registration, receiver, save, reveal and receipt behavior is
+unproved. A symlink/hard link or copy is not presumed equivalent. Any such
+investigation would need a finite charter, failure boundary and returned design;
+permission to investigate would not adopt its behavior or waive original cases.
+The declined refusal proposal is not put forward again.
+
+### Prepared capability inquiry
+
+The bounded inquiry is superseded by internal investigation. The common brief below supplies context;
+the focused Apple and Zed drafts that follow are the concrete submission texts.
+No support request has been sent, and no external issue has been created.
+
+> We need a public macOS route for original local paths around 1,500 UTF-8
+> bytes, built component by component with individually valid names. Public
+> openat/fstatat/readlinkat reach these items. In one macOS 26.5 (25F71) guest,
+> an NSWorkspace witness received exact bytes at 1,023 bytes; the 1,024-byte
+> subject returned Cocoa error 256 without witness delivery. Long FSRef
+> construction and Launch Services registration/handler lookup also failed.
+> Those submissions were API diagnostics, not accepted production actions.
+>
+> Which currently supported public mechanism can acquire native item/type and
+> application facts, register/select the exact application copy, open the
+> original item in its default or named application, reveal it in Finder, and
+> observe the launched executable's exact installation identity? If legacy
+> item-reference arrays or catalog enumeration are relevant, how are the long
+> references acquired and consumed without re-entering a limited whole-path
+> call? We retain original submission spelling, no private policy, no new
+> read consent/setup, and no alternate copy or shorter namespace.
+>
+> For the named Zed document case, the inspected receiver canonicalizes and
+> reads full paths after IPC delivery. What supported receiver mechanism
+> preserves this original long item through content reading and subsequent
+> document operations? Transport success alone cannot establish that outcome.
+> Please distinguish supported scope/version from untested possibilities.
+
+The Apple platform questions and Zed receiver question may be addressed to their
+respective owners, using the same bounded packet. An answer about one stage does
+not close another. Existing [raw measurements](long-action-route-prototype.md#what-was-measured),
+[SDK candidates](#sdk-and-source-provenance) and the
+[receiver source](#opener-and-receiver-are-separate-obligations) make the gap
+inspectable without a new experiment.
+
+### Inquiry channels
+
+Channel guidance was checked on 4 October 2026. [Apple code-level support](https://developer.apple.com/support/technical/)
+asks for one focused API problem per request. Its private request form requires
+a developer-program account; [Developer Forums](https://developer.apple.com/support/forums/)
+provide a public alternative requiring an Apple Account. Use the opener boundary
+as the first platform question, rather than asking Apple to design all four
+missing stages or explain Zed internals. A partial answer leaves native facts,
+registration/selection, Finder and receipt identity unresolved.
+
+[Zed support](https://zed.dev/support) publishes `hi@zed.dev` for general
+inquiries. Its repository's current [discussion categories](https://github.com/zed-industries/zed/discussions), read through the
+GitHub API, are Announcements, Feature Requests, Show and tell and Zed GPUI;
+there is no general Q&A category. Use the inquiry address for this source-based
+capability question. No direct Zed CLI over-limit failure was measured, so the
+NSWorkspace diagnostic is not presented as a reproduced Zed bug. GitHub CLI
+authentication is available, but supplies neither an Apple nor an email sender.
+
+Previously proposed destinations: Apple Developer Forums for the focused public API
+question and `hi@zed.dev` for the receiver inquiry. A private Apple code-level
+request is an alternative if Antony prefers it and has program access.
+These unused drafts require no publication choice or sender for the current work. No connector
+installation, support entitlement, new account or disclosure of the repository
+is assumed.
+
+### Apple opener inquiry draft
+
+**Destination:** Apple Developer Forums, or private code-level support if chosen.
+**Title:** Supported public route to open an original macOS document path over 1023 bytes
+
+> Is there a supported public macOS mechanism for opening a local document at
+> its original absolute path when that path is roughly 1,500 UTF-8 bytes,
+> excluding the terminating NUL, and each component is individually valid?
+>
+> A signed test app in one macOS 26.5 (25F71) guest created the directory tree
+> using mkdirat/openat and used public NSWorkspace document opening with an
+> explicitly selected short-path witness application. At 1,023 bytes, the
+> witness received the submitted path with identical bytes. At 1,024 bytes,
+> the callback returned NSCocoaErrorDomain code 256 and nothing was delivered.
+> A separate 1,498-byte submission to a short-path Zed installation returned
+> the same error class. Component-relative access still reached the documents.
+> These were opener diagnostics; prerequisite native item/type/registration
+> checks had not passed for the long subjects. They establish no accepted
+> application action or universal limit on every public mechanism.
+>
+> The diagnostic sequence was: create valid ASCII components relative to
+> directory descriptors, adjust the leaf depth/name to the measured total
+> byte lengths, create the document using openat, then submit its original
+> file URL to the selected application through NSWorkspace. The 1,023-byte
+> witness delivery was the positive control. No fixture was created by a
+> whole-path filesystem call. SDK declarations were checked with macOS SDK
+> 27.0; that SDK version is distinct from the guest OS build.
+>
+> LSOpenItemsWithRole and LSLaunchFSRefSpec accept arrays of whole FSRefs,
+> but the tested FSPathMakeRef and parent/name FSMakeFSRefUnicode constructors
+> failed for the long items. If catalog enumeration or another public reference
+> route is applicable, how should the reference be acquired and submitted
+> without re-entering a limited whole-path operation?
+>
+> We need to preserve the original path spelling and selected application
+> installation. Short links, identity-spelled paths, copies, another app
+> installation, private APIs/policy and additional read consent or user setup
+> do not meet this requirement. Could you name the supported API, its OS scope,
+> and any receiver-dependent limitations? If only part is supported, please
+> identify that boundary rather than treating URL/string capacity as delivery.
+
+The draft's byte lengths and error class are checked against the existing
+[1,023-byte](long-action-route/results/submit-thr-open-1023.json),
+[1,024-byte](long-action-route/results/submit-thr-open-1024.json) and
+[Zed submission](long-action-route/results/submit-doc-long-zed.json) records.
+It includes no raw pathname, account identifier or repository URL. Existing
+probe source/logs remain local supporting material; attachments are not selected.
+
+### Zed receiver inquiry draft
+
+**To:** `hi@zed.dev`
+**Subject:** Supported Zed mechanism for original macOS document paths around 1500 bytes
+
+> Does Zed currently support opening and reading an existing local macOS
+> document at its original absolute path when that path is roughly 1,500 UTF-8
+> bytes, excluding the terminating NUL, with individually valid components?
+> Is there a supported external delivery mechanism that also preserves that
+> same item through content loading and subsequent document operations?
+>
+> We are separating delivery from the receiver's filesystem work. At source
+> commit 76659a55a8c10ed355a070f8764a0b1733e3c115, the CLI receiver accepts
+> full path strings, while the real filesystem backend canonicalizes with
+> std::fs::canonicalize and loads with std::fs::read_to_string/std::fs::read:
+>
+> https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/zed/src/zed/open_listener.rs
+>
+> https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/fs/src/fs.rs
+>
+> That is a source-derived question, not a newly reproduced CLI failure. A
+> separate NSWorkspace submission at 1,498 bytes failed upstream with Cocoa
+> error 256 in one macOS 26.5 guest; it did not demonstrate that Zed received
+> or rejected the document. Public component-relative calls reached the item.
+>
+> We must retain the original path spelling and exact selected installation,
+> without a shorter namespace, another copy, private long-path policy or new
+> user setup/read consent. If an existing supported mechanism satisfies this,
+> please identify the version, delivery API/protocol and filesystem route
+> used after receipt. String transport or a larger input buffer alone would
+> not establish content access. If it is unsupported or needs a receiver
+> change, that precise scope is useful too.
+
+### What a reply can establish
+
+Record any response with its actual source and date; do not promote a discussion
+reply or source inference into native acceptance. A usable lead must name its
+supported scope and show where original-path acquisition, delivery and receiver
+access occur. Map it back to each outstanding stage separately. No response,
+a partial answer or a statement that the workflow is unsupported leaves the
+final design live under the retained requirement. A probe beyond the current
+internal charter, or changed spelling,
+setup, consent or receipt rule still needs its own explicit decision. No polling
+schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
+
 ## Deterministic check boundary
+
+The internal-investigation update changes prose, the finite diagnostic charter
+and the candidate diagram. The
+Taskfile, retained/repair/search/desktop SDL and operation examples, declaration
+probe, client dependency manifests, documentation checker, viewer and unchanged
+context diagram sources still match the successful structural-check subjects
+item-by-item by SHA-256. Those checks are carried forward for those unchanged
+subjects, not credited as another execution or an external submission.
+`task design:workspace-render` regenerated the changed export; its current
+browser evidence is in the [viewer README](../design/architecture/README.md).
+Final documentation links use `task check:docs`.
+
+The k141 reconciliation reran `task design:action-repair-check` and
+`task design:search-check`; both passed their existing positive and negative
+controls. `task design:long-action-api-check` passed against SDK 27.0 and Apple
+clang 21.0.0, including its removed-import control; the probe was not executed.
+The Taskfile, SDL/operation subjects, client dependency manifests, check script
+and presentation viewer/manifest/changed source/export stayed unchanged by
+SHA-256 throughout these checks. `task design:workspace-render` regenerated the
+changed candidate SVG; the actual browser checks and their limits are recorded
+in the [viewer README](../design/architecture/README.md). `task check:docs`
+passed for the reconciled documentation. These checks credit no supported native
+route, accepted binary profile or completed working subject.
 
 `task design:long-action-api-check` compiles and links the declaration probe and
 checks intended imports against SDK stubs, with a removed-import negative

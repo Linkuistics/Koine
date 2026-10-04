@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Original long-path requirement retained; application research commissioned",
-    "status": "Requirement retained · independent surveys and synthesis next",
-    "summary": "Antony retained the original long-path working requirement and requested research into how other applications handle long pathnames across use cases and contexts. Two independent surveys with the same brief will trace real representations and operations through file/editor/launch, build/package/repository, archive/backup/sync and remote/virtual workflows. Synthesis will check contradictions, correlated sources and receiver/full-path limits before returned route design. The finite prototype and earlier survey remain bounded evidence; no complete supported route is established and the refusal proposal is not adopted. Original selected bytes, exact installation, native facts, receipts and all review/acceptance obligations remain binding. No new native experiment or automatic further chain is selected. See the retained requirement and research commission in the route evaluation.",
+    "title": "Local access, opener delivery and receiver access remain separate",
+    "status": "Requirement retained · internal investigation selected",
+    "summary": "Both application surveys and synthesis are complete. Local component access does not supply native facts/registration, original-location delivery, real receiver access or executable identity. Zed's inspected backend still reads whole paths after IPC. Public deprecated FSRef item arrays exist, but long acquisition and parity remain unestablished. Antony selected continued internal investigation. SDK 27.0 requires flat bulk iterators, and native UInt32 node resolution cannot use a cast 64-bit inode. One finite disposable-guest acquisition diagnostic and returned design are commissioned. No new native result is claimed. External inquiries remain unused drafts; no sender or owner response is needed. The original cases, grants, profiles, observations and final review remain binding. A spelling/setup exception still needs a new decision; no automatic probe series is authorized.",
     "diagramIds": [
       "workspace-route-candidates",
       "workspace-long-locations",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-route-candidates",
-        "summary": "Replaces the pending refusal alternatives with Antony's retained requirement, two independent application surveys, synthesis and returned supported-route design."
+        "summary": "Replaces the inquiry branch with the selected finite flat-enumeration investigation and native node-ID provenance constraint; external drafts are unused."
       }
     ]
   },
@@ -67,11 +67,11 @@
     {
       "id": "workspace-route-candidates",
       "group": "workspace",
-      "title": "Retain long-path working cases and research real applications",
+      "title": "Separate local access, opener delivery and receiver access",
       "renderer": "svg",
       "source": "workspace-route-candidates.d2",
       "rendered": "workspace-route-candidates.svg",
-      "caption": "The original requirement is retained. Two independently sourced application surveys with the same brief and a synthesis step are commissioned before returned route design. The earlier one-guest prototype measured a 1023/1024-byte witness boundary, not universal impossibility; diagnostic submissions bypassed prerequisites and default-open stopped at nil lookup. The earlier survey supplies leads, not a conclusion to confirm. Synthesis owns adversarial checks, contradictions and source correlation. No refusal, spelling change, alternate copy, private policy or new consent is adopted. Native classification/selection, handler applicability/prompting and receipt identity remain unresolved. Independent action fixtures, later actual-search provenance and 1.0.0/1.0.1/1.1.0 profiles remain binding; final route review precedes consumers."
+      "caption": "A labeled obligation graph, not an executable pipeline. Completed synthesis supports local component access and exposes receiver reconstruction. Four capability gaps converge on the live route; no arrow claims an implemented stage or native pass. Public legacy item arrays contain whole FSRefs, not pathname components. Antony selected one finite internal acquisition diagnostic: a flat catalog walk must return a usable long reference. Native UInt32 node resolution requires catalog provenance; truncating a 64-bit inode supplies none. External inquiries are unused drafts, and no owner response is needed. No new native measurement, complete route, spelling/setup exception or workflow loss is claimed. Real default/Zed opening, Finder selection, exact copy/receipt, independent action fixtures, later actual-search provenance and separate 1.0.0/1.0.1/1.1.0 subjects remain required. Final review precedes consumers after a supported route exists."
     },
     {
       "id": "search-serviceability",

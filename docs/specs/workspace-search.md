@@ -2359,14 +2359,20 @@ this handoff is complete. The
 [source/SDK analysis and subjects](../verification/long-action-native-boundary.md)
 do not prove native long actionability or resolve search's path-design dependencies.
 The [returned route evaluation](../verification/long-action-route.md#measured-reconciliation)
-consumes the finite prototype and requested prior-art survey. Relative inspection
+consumes the finite prototype, prior-art survey and completed application synthesis. Relative inspection
 reached long items, but the tested native-fact/registration/handler/submission
 routes did not establish their required actions. Component arrays or directory
 handles supply no admitted macOS opener handoff. The
-[retained requirement and research commission](../verification/long-action-route.md#decision-for-antony)
-now precede returned design: two independent real-application long-pathname
-surveys and synthesis. The refusal proposal is not adopted; original working
-cases and exclusions remain binding.
+[retained requirement and remaining decision](../verification/long-action-route.md#decision-for-antony)
+consume the completed research. The
+[returned disposition](../verification/long-action-route.md#application-research-reconciliation)
+keeps opener delivery and the real receiver's subsequent access separate; Zed's
+inspected backend still reads by whole path. Public legacy native item arrays
+do not establish long reference acquisition or end-to-end parity. Antony
+selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
+with one finite reference-acquisition diagnostic and returned design. External
+inquiries are unused drafts; no automatic probe series is authorized. Original working
+cases and exclusions remain binding; the refusal proposal remains unadopted.
 No search actionability field, shorter value ceiling, native classification fact
 or action/search acceptance follows from these results.
 Keep selected paths unchanged and installation constraints intact;

@@ -552,13 +552,18 @@ handoff. Independent long-path observers require positive controls; fixture
 acceptance cannot pass search provenance. The repair is designed as action-only
 release/schema 1.0.1, separately from retained 1.0.0 and search 1.1.0.
 The [returned route evaluation](verification/long-action-route.md#measured-reconciliation)
-leaves the supported route unresolved after the prototype and prior-art survey:
+leaves the supported route unresolved after the prototype and completed application research:
 the tested opener APIs did not complete long actions, while relative filesystem
 inspection reached the items. Arrays/descriptors do not establish another opener
-handoff. Antony [retained the original requirement and commissioned application
-research](verification/long-action-route.md#decision-for-antony): two independent
-long-pathname surveys and synthesis precede returned route design. The refusal
-proposal is not adopted; no new actionability field or working-case loss is approved.
+handoff. Antony [retained the original requirement](verification/long-action-route.md#decision-for-antony).
+The completed research and [returned disposition](verification/long-action-route.md#application-research-reconciliation)
+also require real receiver access: Zed's inspected backend reads by whole path
+after IPC delivery. Public legacy native item arrays do not supply an established
+long acquisition/submission route. Antony selected continued
+[internal investigation](verification/long-action-route.md#internal-native-reference-investigation),
+with one finite reference-acquisition diagnostic and returned design. External
+inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
+receiver-visible spelling change or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain
