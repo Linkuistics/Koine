@@ -684,12 +684,19 @@ Antony subsequently selected continued [internal investigation](../verification/
 superseding the unused external inquiry drafts. The new SDK read narrows catalog
 enumeration to flat iterators and rejects an unsupported 64-bit-inode-to-UInt32
 node shortcut. The finite acquisition diagnostic is complete; Antony accepted
-its result. The two FSRef item-array submission consumers remain unmeasured,
-and Antony authorized the
-[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-on 2026-10-05 for one prototype and retained returned design. It remains
-unexecuted. No complete route, action acceptance or automatic probe
-series is claimed.
+its result. The later [item-array diagnostic](../verification/item-array-submission.md)
+measured both consumers: exact spelling delivered at 900/1,023 bytes and -41
+with no recorder event at 1,024. Its finite allowance is spent. The
+[returned representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
+consumes Antony's directory-handle/component and file-reference URL direction.
+It distinguishes internal operands from identity-spelled submission: the E2
+exception applies to the external spelling, not all internal reference use.
+Public NSURL/CFURL reference factories are distinct from the unsupported FSRef
+bridges and from manually constructed volfs strings. Long acquisition/local
+consumption remains unmeasured; one finite acquisition-only diagnostic is
+authorized on 2026-10-05 for one prototype and retained returned design. It
+remains unexecuted. No complete route, action acceptance or automatic
+probe series is claimed.
 These later observations/decisions are not part of either independent survey.
 
 ## Sources added or re-read by this synthesis

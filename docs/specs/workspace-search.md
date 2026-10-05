@@ -2371,11 +2371,17 @@ inspected backend still reads by whole path. Public legacy native item arrays
 do not establish a complete long acquisition/submission route or end-to-end
 parity. The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
 returns references at 1,024 bytes but tested consumers reject them; traversal
-cannot reach the 1,500-byte subjects. Antony accepted the result. Item-array
-submission is still unmeasured, and the
-[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-was authorized on 2026-10-05 for one prototype and retained returned design;
-no new action outcome is established. External
+cannot reach the 1,500-byte subjects. Antony accepted the result. The
+[completed item-array diagnostic](../verification/item-array-submission.md)
+delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 before
+recorder delivery. Its allowance is spent and establishes no action acceptance.
+The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
+separates per-action descriptor/name operands from unchanged public observed
+pathname values. Exported retained handles would change the location/lifetime
+contract. File-reference URL acquisition is an unmeasured internal candidate,
+with one finite acquisition-only diagnostic authorized on 2026-10-05 for one
+prototype and retained returned design. It remains unexecuted; identity-spelled
+external submission is not selected. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.
 No search actionability field, shorter value ceiling, native classification fact

@@ -277,10 +277,17 @@ FSRef item-array clarification supplies no complete long route or parity pass.
 The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
 returns references at 1,024 bytes but tested consumers reject them; the walk
 cannot reach the 1,500-byte subjects. Antony accepted that diagnostic result,
-which supplies no action acceptance. Item-array submission remains unmeasured;
-the [finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-was authorized on 2026-10-05 for one prototype and retained returned design.
-No new action outcome is established. External inquiries are unused drafts. Action/search subjects stay distinct.
+which supplies no action acceptance. The
+[completed item-array diagnostic](../verification/item-array-submission.md)
+delivered exact spelling at 900/1,023 bytes, while both openers failed at 1,024
+before recorder delivery. Its allowance is spent; selected-action acceptance
+stays pending. The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
+keeps internal descriptor/name resolution separate from public pathname values
+and from an external opener/receiver protocol. One file-reference URL
+acquisition/local-consumer diagnostic was authorized on 2026-10-05 for one
+prototype and retained returned design. It remains unexecuted and supplies no
+fact, grant, receipt or action pass. External inquiries are unused drafts.
+Action/search subjects and retained/repair/search profiles stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

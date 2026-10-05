@@ -59,8 +59,11 @@ one. Two builds, two collections, one repair: the cap is spent.
   without establishing another consumer's behavior. No native volume/node pair
   is obtainable there, so `FSResolveNodeID` was tested only on references at or
   below 1,023 bytes, as consumption, not as an acquisition route.
-- Unmeasured and still owed: item-array openers (`LSOpenItemsWithRole`, `LSLaunchFSRefSpec.itemRefs`) fed a
-  returned reference, receiver behaviour, long app-copy registration/identity, Finder selection, receipt identity.
+- k146 subsequently measured item-array openers fed returned references: see
+  [the separate report](item-array-submission.md). Exact spelling was delivered
+  at 900/1,023 bytes; both openers failed at 1,024 before recorder delivery.
+  Receiver content access, long app-copy registration/identity, Finder selection
+  and receipt identity remain owed.
   Nothing here submits any location. A positive acquisition result would have left those open; this negative one
   adds only that the flat-enumeration acquisition route does not remove the wall.
 
@@ -69,5 +72,8 @@ consumes both runs and Antony's accepted reaction. Same-byte reference compariso
 at 1,024 bytes is not an independent long same-object acquisition control;
 collection completion is not consumer success. The
 [finite item-array diagnostic](long-action-route.md#proposed-item-array-submission-diagnostic)
-was authorized on 2026-10-05. It remains unexecuted and supplies no 1,500-byte
-acquisition or action pass.
+was authorized on 2026-10-05 and is now complete, with its allowance spent.
+It supplies no 1,500-byte acquisition or action pass. The
+[returned representation assessment](long-action-route.md#item-array-result-and-representation-assessment)
+consumes that separate result and Antony's candidate direction; it proposes
+no repeat of this enumeration diagnostic.

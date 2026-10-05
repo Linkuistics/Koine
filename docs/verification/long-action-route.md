@@ -8,7 +8,8 @@ also performs whole-path filesystem reads after delivery.
 This is bounded evidence about tested mechanisms, not universal impossibility.
 The completed flat-enumeration diagnostic returns references at 1,024 bytes,
 but its tested consumers reject them and its walk cannot reach the 1,500-byte
-subjects. Item-array submission remains unmeasured. No production route or
+subjects. Both measured item-array openers also fail at 1,024 bytes before
+recorder delivery. No production route or
 workflow loss is adopted.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
@@ -28,8 +29,12 @@ recommendation remains unadopted. This returned design follows the mechanisms
 through their receivers and narrows SDK acquisition candidates. Antony's later
 instruction selected [internal investigation](#internal-native-reference-investigation).
 That finite diagnostic is complete and Antony accepted its result. The
-[item-array diagnostic](#proposed-item-array-submission-diagnostic) was authorized
-on 2026-10-05 and remains unexecuted, without an automatic probe series.
+[item-array diagnostic](#proposed-item-array-submission-diagnostic) is complete.
+The [returned result and representation assessment](#item-array-result-and-representation-assessment)
+consume Antony's directory-handle/component and file-reference URL direction.
+Antony authorized one finite acquisition-only diagnostic on 2026-10-05, with
+one prototype and retained returned design. It remains unexecuted and commissions
+no automatic probe series.
 No complete route is established. Final review and action acceptance remain required
 before the search handoff can close.
 
@@ -78,12 +83,15 @@ discarded runs and void binding row retain their stated limits.
 
 ## Representation and ownership
 
-The survey found directory handle plus relative name in systems that perform
-over-limit filesystem work. Component lists are resolver working state; the
-survey found no admitted macOS opener interface that accepts them. Keep the
-public location string: an array at Koine's GraphQL boundary would require
-clients to reconstruct the same input and would leave the native handoff gap.
-This is an inference from the bounded survey, not proof that no such API exists.
+Separate the public observed pathname from the private operands used to resolve
+it. A directory descriptor plus one component is a supported local-access
+candidate already measured in k134. Its use inside one action need not change
+the public location string or keep a search-time file alive. Component lists
+are resolver working state. Exporting retained directory handles would add
+server state, expiry/restart/revocation and stale-selection rules; it is a
+different public contract and would still require a cooperating opener.
+No such change is selected. This is a bounded interface assessment, not proof
+that every macOS interface lacks a parent/name input.
 The completed application synthesis adds cooperating component protocols and
 an explicit receiver boundary. Its [bounded applicability map](../research/long-pathname-applications.md#7-koine-applicability-map)
 supplies no complete retained route. The SDK clarification below distinguishes
@@ -101,8 +109,11 @@ The other surveyed representations do not supply an adopted repair:
 
 - Ordinary bookmarks resolve back to URLs; long-item creation/resolution and
   opener delivery are unproved. Security-scoped variants require a new posture.
-- File-reference/volfs locations replace the caller's path with an identity
-  spelling and are excluded. [Apple's kernel test](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/tests/vfs/longpaths.c)
+- Public file-reference URLs may be assessed as transient internal operands.
+  Submitting an identity-spelled URL instead of the original selected pathname
+  is the excluded spelling change; merely creating a reference internally is
+  not that exception. Manually constructing volfs/file-ID spellings remains
+  unselected. [Apple's kernel test](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/tests/vfs/longpaths.c)
   supports volfs *file opening*, not NSWorkspace delivery/registration/receipt
   behavior; [Apple DTS](https://developer.apple.com/forums/thread/103162)
   cautions against relying on it where fsgetpath is available.
@@ -173,7 +184,9 @@ long locations. Public [catalog enumeration](https://developer.apple.com/documen
 also returns FSRefs. k143 now measures that branch: an exact-name reference is
 returned at 1,024 bytes, while catalog/fact/handler consumers and directory
 iteration fail. The 1,500-byte objects are unreached. Neither legacy item-array
-opener was executed; rejection by other consumers proves no opener result.
+opener was executed by k143; later k146 measured both and found exact delivery
+at 900/1,023 bytes and -41 with no event at 1,024. That later result is
+submission evidence for the short recorder, not inference from catalog failure.
 FSRef bytes remain opaque; no handmade
 reference is admitted. Deprecation alone rejects nothing, and the tested failures
 do not prove every reference-acquisition route impossible. A supported complete
@@ -327,7 +340,7 @@ The retained gaps remain independent:
 | --- | --- |
 | Native facts and cause | Local relative access works; neither tested reference acquisition path supplies all long flags/type/bundle facts. Checked missing/cycle/name-limit and established-nil meanings remain required. |
 | Long registered copy and selection | k134's registration failed. k143 creates no apps or registrations and supplies no selected-copy identifier/identity route. |
-| Original-location submission | NSWorkspace diagnostic failures remain; `LSOpenItemsWithRole` and `LSOpenFromRefSpec` fed returned references have no native result. k143's walk cannot supply their 1,500-byte inputs. |
+| Original-location submission | NSWorkspace diagnostic failures remain. k146 later measured both item-array openers: 900/1,023-byte spelling delivered, 1,024-byte calls -41 with no event. k143's walk cannot supply their 1,500-byte inputs. |
 | Real receiver and Finder | No long document was delivered by k143. Zed's pinned whole-path backend remains a separate source-derived obstacle. No Finder selection or real default/Zed rendering pass follows from enumeration or witness delivery. |
 | Executable identity and receipt | No long app launched. A legacy ProcessSerialNumber or launched FSRef alone does not establish the retained PID/start-instant and executable-identity receipt. |
 
@@ -337,12 +350,13 @@ k128's final review is owed only after that route exists.
 
 <a id="proposed-item-array-submission-diagnostic"></a>
 
-### Authorized item-array submission diagnostic
+### Completed authorized item-array submission diagnostic
 
-**Authorized, not executed.** Antony answered **"authorised"** on 2026-10-05 to
-the exact finite proposal. Measure the unmeasured opener consumers without
-inferring their behavior from catalog failure. The authorization changes no
-original working case and commissions no automatic next experiment.
+**Completed in k146.** Antony answered **"authorised"** on 2026-10-05 to
+this exact finite charter. The [report](item-array-submission.md) retains both
+collections and the sole recorder repair. Both openers delivered the original
+spelling at 900/1,023 bytes; both returned -41 at 1,024 without a recorder event.
+The bounds below describe the spent diagnostic, not permission to repeat it.
 
 SDK 27.0 `LSOpenDeprecated.h` declares two applicable inputs:
 `LSOpenItemsWithRole` takes whole FSRefs and optional `LSApplicationParameters`
@@ -413,6 +427,131 @@ the committed result as the retained final design. The first child's completion
 advances the loop only to the prototype; no route node closes. There is no
 repeat series or implementation leaf, and k147 still owes the full original
 route and k128's mandatory final review before downstream consumers.
+
+### Item-array result and representation assessment
+
+Antony reacted: **"ChatGPT research says we should use (directory handle, path
+component) for our representation of file system locations, specifically to
+avoid this. We can also use URL/NSURL with file-reference URLs as a mechanism."**
+Assess those two candidates under the retained requirement. The reaction
+commissions no new native experiment or submission-spelling exception.
+
+The [actual report](item-array-submission.md) and raw records establish a narrow
+consumer boundary. In repaired run 2, both 900-byte calls delivered a bookmark
+that also coerced to a file URL. At 1,023, both delivered a bookmark whose stored
+path matched the fixture exactly; the recorder also logged a resolved path,
+but neither reading establishes real receiver content access. Run 1's missing
+raw bookmark leaves its 1,023 observations ungraded. At 1,024 both calls return
+-41, with no recorder launch/event. SDK 27.0 MacErrors.h names -41 `mFulErr`;
+that name proves neither memory exhaustion nor the internal rejecting layer.
+The summary's `firstFailedStage: null` is not a pass: the raw call status
+establishes submission refusal. Twelve calls, two builds/collections and the
+sole recorder repair are spent. No native call was repeated in k147.
+
+| Representation | Owner and caller obligations | What is supported / what remains open |
+| --- | --- | --- |
+| Original observed pathname plus private directory descriptor/name | Workspace re-resolves at each action, keeps exact input text apart from lookup operands, bounds and closes descriptors before completing; clients continue sending the pathname. | k134 establishes local relative access. Preserve component/link/dot/trailing semantics, cause provenance, prompt policy and no search-time pinning. Native flags/type/bundle facts, registration/handler, external submission, receiver access and receipt remain separate acquisitions. |
+| Retained directory handle plus component exposed to clients | Server owns handle lifetimes, process restart/expiry, grant interaction and changing parent/name associations; callers need a stateful protocol. | Could address a cooperating consumer, but changes current location semantics and adds state without an established NSWorkspace/receiver adapter. Not selected; no new public seam is justified by the measured local need. |
+| Transient public file-reference URL, with original text retained separately | Workspace owns native creation, actual same-object verification, conversion failures and lifetime. No serialized reference survives a restart/remount and no reference string is handcrafted. | NSURL/CFURL offer supported creation APIs distinct from FSRefs. Long acquisition, URL-consuming local I/O, native facts and subsequent original-byte submission are unmeasured. Sending the identity URL externally would need a separate spelling decision. |
+
+The SDK's NSURL.h declares `fileReferenceURL`, `filePathURL` and relative file
+URL constructors. CFURL.h declares `CFURLCreateFileReferenceURL`, with an error
+output, and `CFURLCreateWithFileSystemPathRelativeToBase`. These are not
+`CFURLCreateFromFSRef`/`CFURLGetFSRef`, which that SDK marks unsupported.
+[Apple's file-reference documentation](https://developer.apple.com/documentation/foundation/nsurl/filereferenceurl%28%29?language=objc)
+defines object-oriented URLs, requires reachable objects, allows generation
+failure and limits their lifetime across restart/remount. It supplies no
+overlength or opener-delivery guarantee. A relative URL is also not a POSIX
+directory descriptor: construction/resolution may still recover whole paths.
+
+Historical [CF-1153.18 URL source](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFURL.c#L4486)
+attempts file-path conversion when appending a component to a reference URL.
+Its absolute-URL code also converts a reference base without a directory slash.
+This is concrete counterevidence to assuming a parent-reference append always
+retains a short identity anchor, not a claim about current macOS implementation.
+The published file-reference factory is a stub in that open-source snapshot;
+it cannot establish Darwin's implementation. Source/SDK support therefore
+justifies a candidate diagnostic, not a working route or a universal failure.
+
+**Recommendation:** use descriptor/name as the private local-resolution design
+candidate, preserve the public observed pathname, and investigate public
+file-reference URL acquisition before any external submission. The alternative
+is to keep the original route pending without another measurement. Exporting
+handles or trying identity-spelled opener submission is a different contract
+decision. No ADR selects any unestablished complete mechanism.
+
+<a id="proposed-file-reference-url-acquisition-diagnostic"></a>
+
+### Authorized file-reference URL acquisition diagnostic
+
+**Authorized, unexecuted.** Antony answered **"authorized"** on 2026-10-05 to
+the exact finite proposal. This is one experiment to answer
+whether public URL factories can acquire and locally consume the original long
+object without an FSRef. It performs no opener, Finder or registration request
+and adopts no spelling, setup, consent, private-policy or contract exception.
+
+- One ordinary signed throwaway helper in one disposable macOS guest; record
+  OS/build/architecture, filesystem/capability bits, SDK/compiler, signature/
+  entitlements and source/binary/input/output digests. No protected content,
+  usage keys, TCC reset/approval, private policy, long app/default registration,
+  external inquiry, cwd change or production edit. An unexpected dialog stops it.
+- Exactly four component-created ordinary text files at 900/1,023/1,024/1,500
+  original UTF-8 bytes excluding NUL, valid ASCII components at most 245 bytes,
+  unique fixed markers and same-parent decoys. Independent `openat`/`fstat`
+  controls establish each target and decoy's full native device/inode identity.
+  Keep a short independently constructed same-object control and a missing-name
+  conversion control; missing/error outputs never become an absence claim.
+- Two acquisition cases per file, eight per collection. First, create a path
+  URL with the original spelling and request `CFURLCreateFileReferenceURL`.
+  Second, acquire a short root's native reference URL, form each child with
+  `CFURLCreateWithFileSystemPathRelativeToBase` using its exact single component
+  and known directory flag, then request a fresh native reference for that
+  child before advancing. Record each level's reference predicate, returned
+  URL/base forms, cumulative original length and CFError; do not advance after
+  failure. Check each returned reference anchor has no base URL before using
+  it for the next level; an observed retained base chain ends as incomplete.
+  Use no appending-path convenience, hand-built file-ID/volfs string, FSRef bridge,
+  bookmark fallback, fd namespace or alternate acquisition API.
+- A non-null URL or reference predicate is not a usable-object pass. For each
+  acquired final reference, separately attempt public
+  [NSFileHandle URL opening](https://developer.apple.com/documentation/foundation/nsfilehandle/filehandleforreadingfromurl:error:),
+  compare `fstat` of its descriptor with the independently opened target and
+  decoy, and read only the fixed fixture marker (at most 64 bytes). Record path
+  conversion through `CFURLCreateFilePathURL` separately, including exact
+  original-byte comparison; conversion success alone earns no I/O pass. Never
+  pass converted whole-path text back into lookup to make a case succeed.
+- At most 32 selected levels, three live descriptors (independent parent,
+  target/control and URL consumer), and three caller-owned URL objects:
+  the current base-free anchor, relative child input and replacement reference
+  during a swap. Record then release the child and old anchor before advancing.
+  Serialize and release logging/path-conversion temporaries within the same
+  three-object ceiling; inspect base URLs without retaining them. These are
+  owned-object bounds, not a claim about opaque Foundation allocations.
+  Limit recorded URL text to 8,192 bytes per value. Oversize,
+  short-control, instrumentation or tooling failure returns incomplete. The
+  helper exposes first failed stage, typed errors and bounds, closes owned
+  resources and runs under an external 30-second watchdog per acquisition
+  case plus five seconds termination grace.
+- At most two builds, two collections of the identical corpus and one proven
+  instrumentation repair: at most sixteen acquisition cases. A second
+  collection follows only that repair, never a different API/subject/guest
+  strategy. One clone-through-teardown aggregate cap of 15 minutes; stop and
+  retain all attempts on exhaustion. A returned design consumes the result and
+  Antony's reaction, without automatically commissioning another experiment.
+
+A positive earns only the measured acquisition/local URL consumer and identity
+controls. It supplies no native payload facts, bundle-identifier provenance,
+exact-item default binding, long registration/copy selection, external original-
+byte delivery, real Zed/default rendering, Finder acknowledgment/selection,
+grant/cancellation parity or executable receipt. Restoring the original path
+before external submission leaves the known handoff problem; sending a
+reference URL instead is expressly outside this charter. A negative is bounded
+to these two creation patterns and their local consumer on that guest build.
+Keep k147 and every route ancestor live until the retained complete route exists;
+the final k128 review and both action/search acceptance sets remain owed.
+The authorized source/charter handoff is k148, followed by the single prototype
+file-reference-url-acquisition-k149 and retained returned design
+long-action-route-k150. Completing the handoff or prototype closes no route node.
 
 ## SDK and source provenance
 
@@ -563,17 +702,23 @@ later actual-search G/N/V provenance remain separate acceptance subjects.
 Retained 1.0.0, action-only repair 1.0.1 and search 1.1.0 stay independent.
 No ADR selects an unestablished route or an unaccepted workflow loss.
 
-**The acquisition diagnostic is complete, with its negative result accepted.
-Antony authorized the exact finite item-array diagnostic on 2026-10-05.** The
-[returned gap](#native-reference-result-and-remaining-gap) remains unresolved;
-the [authorized charter](#proposed-item-array-submission-diagnostic) now fixes
-the next execution and returned-design handoff. A positive result would still
-leave all other retained stages owed. The earlier "proceed" inquiry choice is superseded;
+**Both acquisition and item-array diagnostics are complete.** The
+[item-array result and representation assessment](#item-array-result-and-representation-assessment)
+consume the spent charter and Antony's two candidate representations. Both
+openers delivered exact spelling at 900/1,023 and failed at 1,024 before any
+recorder event. No complete route or acceptance is established. Antony authorized the
+[finite public file-reference URL acquisition diagnostic](#proposed-file-reference-url-acquisition-diagnostic),
+limited to internal acquisition/local consumption without any external
+submission or adoption, on 2026-10-05. It remains unexecuted; one prototype and
+retained returned design follow. The earlier "proceed" inquiry choice is superseded;
 no external response is a prerequisite and no request has been sent. Internal
-investigation resolved only the tested acquisition branch, leaving the
-opener and receiver gaps. No complete route is guaranteed. Acceptance of k143
-alone authorized no additional experiment; the later decision covers exactly
-the fixed opener diagnostic and returned design. It preserves every
+investigation resolved only the tested acquisition and item-array branches,
+leaving the complete opener and receiver gaps. No complete route is guaranteed.
+Acceptance of k143 alone authorized no additional experiment; k146's later
+permission covered exactly the fixed opener diagnostic and this returned
+design. The representation direction alone commissioned no measurement; the
+later explicit decision covers this fixed URL diagnostic and its returned
+design only. It preserves every
 original working case and authorizes no spelling,
 setup, private-policy, consent or contract exception and no automatic probe series.
 
@@ -742,7 +887,36 @@ schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
 
 ## Deterministic check boundary
 
-The authorized diagnostic handoff (k145) changes current-state prose, SDK call
+The authorized URL handoff (k148) changes current-state prose, the finite charter,
+child handoffs and the candidate diagram. Structural/native evidence subjects
+remain unchanged; the preceding action-repair/search checks are carried forward
+only for their identical subjects, not credited as new executions. Render,
+browser and final document-link checks verify presentation/structure and supply
+no native route or action acceptance. The exact browser evidence and limits are
+in the [viewer README](../design/architecture/README.md).
+
+The following check record applies to the preceding proposal revision.
+
+The k147 returned design consumes the committed item-array result and reaction,
+reconciles stale execution-pending prose, and assesses the two representations.
+Its new charter is proposed, not executed. Public SDK/historical source reads,
+document links, unchanged action/repair/search structural contracts and rendered
+presentation are the applicable verification surfaces; none establishes native
+URL acquisition, a complete route or release acceptance.
+
+`task design:action-repair-check` and `task design:search-check` were rerun
+sequentially and passed their existing positive and negative controls. All 299
+frozen document, structural-check, presentation, SDK/source and raw-evidence
+subjects stayed unchanged across those checks and the document-link check.
+After the browser found overlapping edge labels, only the changed D2/SVG were
+adjusted and regenerated; structural-check subjects stayed unchanged. The final
+rendered browser evidence and its limits are in the
+[viewer README](../design/architecture/README.md). No declaration probe was
+compiled or executed in k147; native URL acquisition remains unmeasured.
+
+The following record applies to the preceding authorized diagnostic handoff.
+
+The authorized diagnostic handoff (k145) changed current-state prose, SDK call
 configuration, child charters and the candidate diagram. Structural/native
 subjects remain unchanged; the previously passing action-repair/search and
 declaration checks are carried forward only for their identical subjects, not

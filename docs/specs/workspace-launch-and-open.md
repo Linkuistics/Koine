@@ -315,10 +315,18 @@ remain unestablished. The authorized
 [internal diagnostic result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
 returns exact-name references at 1,024 bytes, rejected by tested catalog/fact/
 handler/directory consumers, and cannot reach the 1,500-byte subjects. Antony
-accepted that result. The two item-array openers remain unmeasured; the
-[finite diagnostic](../verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-was authorized on 2026-10-05 for one prototype and retained returned design.
-No new native action outcome is established. Node resolution requires native catalog provenance.
+accepted that result. The [completed item-array diagnostic](../verification/item-array-submission.md)
+delivered exact spelling at 900/1,023 bytes through both openers; both failed
+at 1,024 before recorder delivery. Its twelve-call allowance is spent, and it
+establishes no production action. The
+[representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
+keeps descriptor/name operands private to an action and public pathname values
+unchanged. Public file-reference URL acquisition is a separate unmeasured
+candidate. Antony authorized its finite acquisition/local-consumer diagnostic
+on 2026-10-05 for one prototype and retained returned design; it remains
+unexecuted. Identity-spelled submission is not selected. Native facts,
+registration/handler, real receiver/Finder behavior and receipt remain owed.
+Node resolution requires native catalog provenance.
 External inquiries remain unused drafts. No automatic probe series is authorized. The refusal proposal remains unadopted; all
 working cases and exclusions bind.
 Keep the supported route, final review and planning obligations live. No route,

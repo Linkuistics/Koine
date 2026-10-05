@@ -58,11 +58,19 @@ builds, two collections, one repair, twelve calls: the cap is spent.
 ## Reading, and what stays open
 
 - **Boundary.** Delivery succeeds at 1,023 and the call fails at 1,024 for both openers before any launch. This matches
-  k143's 1,023/1,024 boundary and `PATH_MAX` (1,024 including the NUL); -41 was not mapped to a named public constant
-  or cause here, and which Launch Services layer rejects the reference is unmeasured. The result is bounded to these two
+  k143's 1,023/1,024 boundary and `PATH_MAX` (1,024 including the NUL). The returned design's SDK read names -41
+  `mFulErr`; that name is not a measured cause, and which Launch Services layer rejects the reference is unmeasured. The result is bounded to these two
   calls, one guest build and one subject type.
 - **No pass for production.** Positive 900/1,023 deliveries show only that these openers deliver a bookmark carrying the
   original spelling to a short recorder. The retained 1,500-byte case was never reached: its reference is not
   obtainable (k143), and 1,024 already fails here. A negative at 1,024 closes only these tested opener paths.
 - Not measured: other receivers, real Zed rendering, Finder selection, cancellation/grant parity, long registration
   or executable-identity receipts.
+
+The [returned design](long-action-route.md#item-array-result-and-representation-assessment)
+consumes both collections and Antony's directory-handle/component and
+file-reference URL direction. Neither representation is credited as a complete
+route. A separate finite public URL acquisition/local-consumer diagnostic is
+authorized on 2026-10-05 and remains unexecuted; no item-array repeat or
+identity-spelled submission is commissioned. This report's measured corpus and
+raw records remain intact.

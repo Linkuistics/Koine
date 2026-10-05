@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Returned references do not complete the long action route",
-    "status": "Requirement retained · item-array diagnostic authorized · execution pending",
-    "summary": "The finite flat-enumeration diagnostic is complete. It returned references at 1,024 bytes, but catalog, native-fact/handler and directory consumers rejected them; traversal could not reach the 1,500-byte subjects. Antony accepted that result and authorized the exact finite item-array diagnostic on 2026-10-05. Two public openers each submit files at 900/1,023/1,024 bytes to one short recording app: six calls per collection, at most twelve after one instrumentation repair, within a 15-minute clone-through-teardown cap. One prototype and retained returned design are commissioned; no new native run is claimed. Native facts, long-copy registration/selection, real default/Zed receiver access, Finder selection and receipt identity remain separate gaps. Keep the original cases, grants, profiles and final review owed. No automatic probe series or workflow loss is adopted; external inquiries remain unused drafts.",
+    "title": "Authorized public file-reference URL acquisition",
+    "status": "Requirement retained · URL diagnostic authorized · execution pending",
+    "summary": "Both measured item-array openers delivered exact spelling at 900/1,023 bytes and returned -41 at 1,024 before any recorder event. The twelve-call allowance and sole recorder repair are spent. Antony's directory-handle/component and file-reference URL direction is assessed here. Private per-action descriptor/name resolution can preserve the public observed pathname; exported retained handles would change its lifetime contract. Public NSURL/CFURL reference factories are distinct from the unsupported FSRef bridges. Long acquisition/local URL consumption remains unmeasured. Antony authorized one acquisition-only diagnostic on 2026-10-05 with two creation patterns at 900/1,023/1,024/1,500 bytes, independent same-object controls, eight cases per collection, at most sixteen after one instrumentation repair and a 15-minute guest cap. One prototype and retained returned design follow; it remains unexecuted and performs no external submission. Native facts, long-copy registration/selection, real default/Zed access, Finder and receipt remain separate gaps. No complete route, workflow loss, exception, new native run or automatic probe series is adopted; external inquiries remain unused drafts.",
     "diagramIds": [
       "workspace-route-candidates",
       "workspace-long-locations",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-route-candidates",
-        "summary": "Records authorization of the fixed item-array diagnostic and one prototype/returned-design handoff; keeps the accepted acquisition failures and remaining route obligations visible."
+        "summary": "Records authorization of the fixed public URL diagnostic and its prototype/returned-design handoff, preserving both measured opener failures and the remaining route obligations."
       }
     ]
   },
@@ -71,7 +71,7 @@
       "renderer": "svg",
       "source": "workspace-route-candidates.d2",
       "rendered": "workspace-route-candidates.svg",
-      "caption": "A labeled obligation graph. k143 returned exact-name references at 1,024 bytes; catalog consumption returned -43, Launch Services fact/handler calls -41, and directory iteration -43. Traversal stopped before the 1,500-byte objects. Comparison success is not a classification or submission pass. Antony authorized exactly one item-array prototype and retained returned design on 2026-10-05; its six-call corpus is bounded to two collections after one repair and a 15-minute guest cap. Both openers remain unmeasured, and the diagnostic would not supply 1,500-byte acquisition, real receiver access or full parity. Local relative access remains a lead. Original default/Zed opening, Finder selection, exact-copy facts/receipt, grants and independent action/search and 1.0.0/1.0.1/1.1.0 subjects remain required. No complete route, final review, node closure, exception or automatic probe series is earned."
+      "caption": "A labeled obligation graph. The completed item-array diagnostic delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 with no recorder event. This measures delivery to the short recorder, not real receiver I/O. Internal descriptor/name operands need not change public pathname values. Public file-reference URLs are an unmeasured acquisition/local-consumer candidate, distinct from old FSRef bridges. Antony authorized exactly one finite diagnostic on 2026-10-05; one prototype and retained returned design follow. It remains unexecuted and submits nothing externally. Identity-spelled submission or exported retained handles requires a separate decision. Original roughly 1,500-byte working cases, native facts, exact registered copy, default/Zed opening, Finder selection, executable receipt, grants and independent action/search and 1.0.0/1.0.1/1.1.0 subjects remain required. No complete route, final review, node closure, native acceptance or automatic probe series is earned."
     },
     {
       "id": "search-serviceability",

@@ -200,11 +200,18 @@ Antony selected continued [internal native-reference investigation](docs/verific
 Its bounded flat-enumeration diagnostic is complete and accepted. The
 [returned gap](docs/verification/long-action-route.md#native-reference-result-and-remaining-gap)
 records references returned at 1,024 bytes but rejected by tested consumers;
-the walk cannot reach 1,500-byte subjects. Item-array submission remains
-unmeasured; Antony authorized the
-[finite diagnostic](docs/verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-on 2026-10-05. One prototype and retained returned design follow; no execution
-or complete route is yet established. Node-ID resolution
+the walk cannot reach 1,500-byte subjects. The
+[completed item-array diagnostic](docs/verification/item-array-submission.md)
+delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 before
+recorder delivery. Its allowance is spent. The
+[representation assessment](docs/verification/long-action-route.md#item-array-result-and-representation-assessment)
+keeps private per-action descriptor/name operands distinct from the public
+observed pathname, which is re-resolved on use. Exporting retained handles
+would change that lifetime contract. File-reference URL acquisition is an
+unmeasured internal candidate. Antony authorized the finite acquisition-only
+diagnostic on 2026-10-05; one prototype and retained returned design follow.
+It remains unexecuted. No external identity spelling or complete route is
+selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External
 inquiries remain unused drafts, and no automatic probe series is authorized.
 The refusal proposal is not adopted; no complete route or action acceptance

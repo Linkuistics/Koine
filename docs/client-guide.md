@@ -562,11 +562,16 @@ after IPC delivery. Public legacy native item arrays do not supply an establishe
 long acquisition/submission route. The
 [completed internal diagnostic](verification/long-action-route.md#native-reference-result-and-remaining-gap)
 returned references at 1,024 bytes but tested consumers rejected them; its walk
-could not reach the 1,500-byte subjects. Antony accepted the result. Item-array
-submission is still unmeasured; the
-[finite diagnostic](verification/long-action-route.md#proposed-item-array-submission-diagnostic)
-was authorized on 2026-10-05, with one prototype and retained returned design;
-no new action outcome is yet established. External
+could not reach the 1,500-byte subjects. Antony accepted the result. The
+[completed item-array diagnostic](verification/item-array-submission.md)
+delivered exact spelling at 900/1,023 bytes through both openers; both failed
+at 1,024 before recorder delivery. This passes no production action.
+The [representation assessment](verification/long-action-route.md#item-array-result-and-representation-assessment)
+keeps the client's observed pathname input unchanged: internal descriptor/name
+lookup does not require a retained-handle protocol. Public file-reference URL
+acquisition remains an unmeasured candidate. Its finite diagnostic was authorized
+on 2026-10-05 for one prototype and retained returned design; no execution or
+identity-spelled submission is claimed. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
 receiver-visible spelling change or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.
