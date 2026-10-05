@@ -1,0 +1,14 @@
+{
+  "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-same-object.py": "845225775ccf8b9687ab1368d7fba86a232a2e37b86c40676d9f70f09b278af0",
+  "scripts/vm-probe-file-reference-url.py": "9cb0fd13249894be306a918c1c40222f6ccbc2686ab7333792219d475f980cfa",
+  "docs/verification/same-object-namespace/probe.m": "c69ab1681c5aa03fd78802d16853f9a2e25697919025b292332e8b4508d59775",
+  "docs/verification/same-object-namespace/plan.md": "16800e556e6400069814d2557dce8d75c5c715a1be77676e09a3f64427ed6afa",
+  "scripts/build-same-object-probe.sh": "e749aff817dfbd2f68fd7fb66c3bc91cbed63245e2b79bf7e972bd8e2c31c915",
+  "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+  "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+  "Taskfile.yml": "7ccbd70482e7be7a2475af6c724b821b5adf3f9246ba42ff4422332d0c73dfb5",
+  "docs/verification/long-action-route.md": "b8573dde4682158bac4fd8eb942d5de26f3d08c1bf2cb2f7bd3a6a7ecf5f5100",
+  ".build/same-object-namespace.zip": "a2a833475069f9cc25eb9e5ab15a8f70055bf83fa3affa6bb2aed5efd958ad1c",
+  ".build/k152-zed.zip": "11e1b388eaba833d49b4fa983d63ea4b8e36074b4a077715361fe87ee3a8f17b",
+  "docs/verification/same-object-namespace/results/corpus.json": "67fc3608a848708bcae1f748980c7eb1d685e5a03c4b15d4f01d8be90dfb232e"
+}

@@ -74,6 +74,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-file-reference-url.py --output {{.OUTPUT | shellQuote}}
 
+  fixture:same-object-namespace:
+    desc: Build/sign the authorized k152 throwaway helper; execute only in its disposable guest
+    cmds:
+      - scripts/build-same-object-probe.sh
+
+  fixture:same-object-namespace-vm:
+    desc: Run the one k152 collection; incomplete outcomes are evidence, never route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-same-object.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

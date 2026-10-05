@@ -168,3 +168,16 @@ charter in k150: both the fixed-MAXPATHLEN suffix and stale-receiver findings
 were actionable and corrected. No additional charter reviewer is commissioned.
 This is an evidence-dependent decomposition, not a repeat/pass series; the one
 prototype's collection and time caps admit no retry or second guest.
+
+## Human reaction to the same-object prototype
+
+Antony answered “I agree” on 2026-10-06 to accepting k152’s incomplete
+[report](../../../../../../../../../docs/verification/same-object-namespace-prototype.md)
+for k153 to assess the remaining route gap, with no retry authorized. Local
+identity/marker access passed for all four fixtures before submission, including
+both 1,500-byte targets. The receiver collection missed Zed’s project trust
+dialog stop boundary; preserve that deviation and give later requests no
+compliant receiver/selection credit. The guest is disposed and the finite
+allowance is spent. Retiring k152 completes only the prototype and its reaction;
+this node and all route ancestors remain live for the complete supported route
+and original final-review obligation.
