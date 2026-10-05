@@ -62,6 +62,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-item-array.py --output {{.OUTPUT | shellQuote}}
 
+  fixture:file-reference-url-acquisition:
+    desc: Build and sign the k149 throwaway URL helper; execute only in the authorized isolated VM
+    cmds:
+      - scripts/build-file-reference-url-probe.sh
+
+  fixture:file-reference-url-acquisition-vm:
+    desc: Run the fixed k149 eight-case diagnostic in one fresh clone; completion is not route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-file-reference-url.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

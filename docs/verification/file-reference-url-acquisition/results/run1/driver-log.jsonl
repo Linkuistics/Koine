@@ -1,0 +1,10 @@
+{"event": "clone-start-request", "utcEpoch": 1791190629.5801542, "elapsed": 0.0}
+{"event": "vm-started", "utcEpoch": 1791190644.8492532, "elapsed": 15.27, "vm": "testanyware-c3ea1731"}
+{"event": "helper-completed", "utcEpoch": 1791190647.287982, "elapsed": 17.71, "name": "volume", "mode": "volume"}
+{"event": "helper-completed", "utcEpoch": 1791190647.6033752, "elapsed": 18.02, "name": "fixture-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791190647.9259672, "elapsed": 18.35, "name": "fixture-1023", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791190648.2358022, "elapsed": 18.66, "name": "fixture-1024", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791190648.5593688, "elapsed": 18.98, "name": "fixture-1500", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791190648.86511, "elapsed": 19.28, "name": "missing-control", "mode": "missing"}
+{"event": "stopped", "utcEpoch": 1791190648.865224, "elapsed": 19.29, "reason": "missing-name reference control did not expose typed failure"}
+{"event": "teardown", "utcEpoch": 1791190649.2745988, "elapsed": 19.69, "rc": 0}

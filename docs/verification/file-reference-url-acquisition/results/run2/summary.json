@@ -1,0 +1,100 @@
+{
+  "complete": true,
+  "acquisitionCases": [
+    {
+      "name": "direct-900",
+      "bytes": 900,
+      "pattern": "direct",
+      "result": {
+        "pattern": "direct",
+        "localReadExact": true,
+        "event": "caseResult",
+        "acquired": true
+      }
+    },
+    {
+      "name": "relative-900",
+      "bytes": 900,
+      "pattern": "relative",
+      "result": {
+        "pattern": "relative",
+        "localReadExact": true,
+        "event": "caseResult",
+        "acquired": true
+      }
+    },
+    {
+      "name": "direct-1023",
+      "bytes": 1023,
+      "pattern": "direct",
+      "result": {
+        "pattern": "direct",
+        "localReadExact": true,
+        "event": "caseResult",
+        "acquired": true
+      }
+    },
+    {
+      "name": "relative-1023",
+      "bytes": 1023,
+      "pattern": "relative",
+      "result": {
+        "pattern": "relative",
+        "localReadExact": true,
+        "event": "caseResult",
+        "acquired": true
+      }
+    },
+    {
+      "name": "direct-1024",
+      "bytes": 1024,
+      "pattern": "direct",
+      "result": {
+        "pattern": "direct",
+        "localReadExact": false,
+        "event": "caseResult",
+        "acquired": false
+      }
+    },
+    {
+      "name": "relative-1024",
+      "bytes": 1024,
+      "pattern": "relative",
+      "result": {
+        "pattern": "relative",
+        "localReadExact": false,
+        "event": "caseResult",
+        "acquired": false
+      }
+    },
+    {
+      "name": "direct-1500",
+      "bytes": 1500,
+      "pattern": "direct",
+      "result": {
+        "pattern": "direct",
+        "localReadExact": false,
+        "event": "caseResult",
+        "acquired": false
+      }
+    },
+    {
+      "name": "relative-1500",
+      "bytes": 1500,
+      "pattern": "relative",
+      "result": {
+        "pattern": "relative",
+        "localReadExact": false,
+        "event": "caseResult",
+        "acquired": false
+      }
+    }
+  ],
+  "builds": 1,
+  "collections": 1,
+  "repairs": 0,
+  "teardownExit": 0,
+  "elapsedSeconds": 22.2,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

@@ -1,0 +1,11 @@
+{
+  "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-file-reference-url.py": "018f8c67f1cc3c3ccf31d01c125b2ef52df00ec311f9ef4a66838df0387257e1",
+  "docs/verification/file-reference-url-acquisition/probe.m": "7e48b0d04c218f7deb07daa48e570f4f89258e0c115d27c34b344e22309ea2d9",
+  "scripts/build-file-reference-url-probe.sh": "80309fade1730a7c5b977c1f5dcd45b0891ddcd13bcab12220b0cfb1eef76cd3",
+  "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+  "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+  "Taskfile.yml": "7281b13a5f049b29d3e831f8c418882ff3cfa876160fdd58895aa9c19ce9daee",
+  "docs/verification/long-action-route.md": "6a6def6e97908e87529b62243352a89dbd1ac9483cebbec20d91346622b224c7",
+  ".build/file-reference-url-acquisition.zip": "87a72945bb1a7ff73a3bdf988a9b19f69c458c6e96b12ab1b30b70ecb123ee21",
+  "docs/verification/file-reference-url-acquisition/results/run1/corpus.json": "9cfe050002bf7cb0679ab7bf128794bb3029f857bcf212abcf452d159c112ee6"
+}

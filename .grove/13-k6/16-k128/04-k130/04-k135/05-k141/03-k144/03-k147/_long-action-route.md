@@ -132,3 +132,14 @@ survey, external inquiry, implementation leaf or unearned final review is cut.
   into the authorized source/charter handoff completed here, one prototype and
   the retained returned design. Keep the full route and final-review obligation
   live in the node; complete only the first child in this session.
+
+## Human reaction to the URL prototype
+
+Antony's reaction to k149 on 2026-10-05: "It is an *absolute* requirement
+that we work around the path limit. The raison d'etre of Koine fails otherwise."
+Long-path support is a non-negotiable product requirement. The measured failures
+exclude only these tested candidates; they authorize no shorter/copy-only
+baseline, workflow loss or closure with the gap unresolved. Continue toward an
+actual workaround under the retained contract. This statement does not itself
+select a mechanism or waive the existing public-API, spelling, consent, setup,
+receiver and receipt obligations.

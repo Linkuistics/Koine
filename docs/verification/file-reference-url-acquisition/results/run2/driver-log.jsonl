@@ -1,0 +1,17 @@
+{"event": "clone-start-request", "utcEpoch": 1791193099.836308, "elapsed": 0.0}
+{"event": "vm-started", "utcEpoch": 1791193113.0148659, "elapsed": 13.18, "vm": "testanyware-73496c80"}
+{"event": "helper-completed", "utcEpoch": 1791193116.4971719, "elapsed": 16.66, "name": "volume", "mode": "volume"}
+{"event": "helper-completed", "utcEpoch": 1791193116.802785, "elapsed": 16.97, "name": "fixture-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791193117.110267, "elapsed": 17.27, "name": "fixture-1023", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791193117.41378, "elapsed": 17.58, "name": "fixture-1024", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791193117.722532, "elapsed": 17.89, "name": "fixture-1500", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791193118.035799, "elapsed": 18.2, "name": "missing-control", "mode": "missing"}
+{"event": "helper-completed", "utcEpoch": 1791193118.460311, "elapsed": 18.62, "name": "direct-900", "mode": "direct"}
+{"event": "helper-completed", "utcEpoch": 1791193118.879597, "elapsed": 19.04, "name": "relative-900", "mode": "relative"}
+{"event": "helper-completed", "utcEpoch": 1791193119.294257, "elapsed": 19.46, "name": "direct-1023", "mode": "direct"}
+{"event": "helper-completed", "utcEpoch": 1791193119.730134, "elapsed": 19.89, "name": "relative-1023", "mode": "relative"}
+{"event": "helper-completed", "utcEpoch": 1791193120.1533492, "elapsed": 20.32, "name": "direct-1024", "mode": "direct"}
+{"event": "helper-completed", "utcEpoch": 1791193120.575001, "elapsed": 20.74, "name": "relative-1024", "mode": "relative"}
+{"event": "helper-completed", "utcEpoch": 1791193121.0667892, "elapsed": 21.23, "name": "direct-1500", "mode": "direct"}
+{"event": "helper-completed", "utcEpoch": 1791193121.484349, "elapsed": 21.65, "name": "relative-1500", "mode": "relative"}
+{"event": "teardown", "utcEpoch": 1791193122.0397298, "elapsed": 22.2, "rc": 0}

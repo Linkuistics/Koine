@@ -1,0 +1,12 @@
+{
+  "complete": false,
+  "acquisitionCases": [],
+  "builds": 1,
+  "collections": 1,
+  "repairs": 0,
+  "stop": "missing-name reference control did not expose typed failure",
+  "teardownExit": 0,
+  "elapsedSeconds": 19.69,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

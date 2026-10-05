@@ -84,3 +84,60 @@ executable receipt. Sending a reference URL externally is outside the charter.
 A negative is bounded to these two patterns and local consumer on that guest.
 Keep k147/k144/k141/k135/k130/k128 live. Production implementation/full acceptance
 remain planning's work; no final review or automatic evidence chain is earned.
+
+## Decisions (running log)
+
+- Adopt k149 and the already authorized acquisition/local-consumer charter. Use
+  one signed throwaway helper, four component-created targets and decoys, and
+  the fixed direct/relative cases. No production or public-contract edit.
+- Graph CLI startup refuses the active unverified/pre-coordination generation;
+  no project, generation or coverage verdict is available. Use exact bounded
+  document/SDK/source reads and make no exhaustive graph claim.
+- Execute the existing approved design: add helper/build/driver mechanics and
+  Taskfile entries; compile and verify before starting the clone cap; freeze
+  inputs, run controls then eight cases under watchdogs; retain raw records,
+  stop the guest and present the bounded result for the human reaction.
+  Prototype authorization supplies the throwaway-code scope; no production
+  implementation, separate speculative plan or further experiment is needed.
+- One host build compiles cleanly with Apple clang 21.0.0 / SDK 27.0 and
+  verifies its ordinary hardened-runtime Developer ID signature with empty
+  entitlements. Python syntax/lint and Bash syntax/source-aware shellcheck pass;
+  fixture arithmetic yields the four exact lengths within depth/component bounds.
+  The driver preserves stdout/stderr/code verbatim and uses an external guest
+  watchdog; it runs no automatic repair or second collection.
+- The sole clone completed fixture creation and the missing-name control, then
+  the driver stopped before all eight acquisition cases: native JSON numeric
+  zero failed a Python Boolean identity check. Raw native records show a null
+  reference with Cocoa 260/POSIX 2 and successful ordinary path conversion;
+  this is instrument failure, not URL acquisition evidence. Guest teardown
+  succeeded at 19.69 seconds; no guest retry is authorized.
+- Preserve the exact executed driver and all raw records/digests. The offline
+  regression reproduced the faulty check, then passed with the single predicate
+  correction and four rejection controls. No native repair/second collection
+  ran. Present the incomplete result and corrected reviewable recipe for the
+  human reaction; do not retire or signal while that reaction is pending.
+- Antony answered "authorized" to one replacement guest with the identical
+  corpus, APIs and bounds after the verified driver correction. This explicitly
+  overrides the no-guest-retry rule for this replacement only. Preserve run1;
+  reuse its signed binary, run one corrected collection as run2, and commission
+  no other retry or experiment.
+- The authorized replacement completed all eight acquisition cases in 22.20
+  seconds with the unchanged signed binary and identical corpus. Direct and
+  component-relative patterns acquire/read/convert exact original bytes at
+  900/1,023. Direct 1,024/1,500 returns Cocoa 258; relative 1,024 fails at
+  its final file and relative 1,500 at the 1,253-byte directory prefix, also
+  Cocoa 258. Short same-object/decoy/marker/conversion controls pass throughout.
+  No returned base chain, dialog, watchdog or ownership-bound failure occurred
+  in the recorded observations. Preserve typed errors and unrun long consumers.
+- Both raw output manifests and frozen subject sets verify; corpus files are
+  identical, and both guests report disposal. One build, two collections, one
+  correction and eight total acquisition cases were used. The human-authorized
+  replacement has its fresh bounded interval; do not claim one continuous cap
+  across the decision pause. Present the completed bounded report for reaction;
+  k150 still owns all complete-route/reconciliation obligations.
+- Antony's human reaction is explicit: working around the path limit is an
+  absolute requirement and Koine's raison d'etre depends on it. Record that
+  direction durably and in k150/the parent brief. This completes the prototype's
+  measured-result/reaction deliverable, not the long-route requirement. Retire
+  only k149; k150 and every route ancestor remain live. No new native diagnostic
+  or changed contract is inferred.

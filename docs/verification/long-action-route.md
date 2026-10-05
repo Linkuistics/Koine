@@ -33,10 +33,22 @@ That finite diagnostic is complete and Antony accepted its result. The
 The [returned result and representation assessment](#item-array-result-and-representation-assessment)
 consume Antony's directory-handle/component and file-reference URL direction.
 Antony authorized one finite acquisition-only diagnostic on 2026-10-05, with
-one prototype and retained returned design. It remains unexecuted and commissions
-no automatic probe series.
+one prototype and retained returned design. The [completed bounded URL diagnostic](file-reference-url-acquisition-prototype.md)
+includes the retained failed instrumentation attempt and expressly authorized
+replacement; it commissions no automatic probe series.
 No complete route is established. Final review and action acceptance remain required
 before the search handoff can close.
+
+## Non-negotiable long-path requirement
+
+Antony's reaction to k149 on 2026-10-05: "It is an *absolute* requirement
+that we work around the path limit. The raison d'etre of Koine fails otherwise."
+Long-path support is a non-negotiable product requirement. The measured failures
+exclude only these tested candidates; they authorize no shorter/copy-only
+baseline, workflow loss or closure with the gap unresolved. Continue toward an
+actual workaround under the retained contract. This statement does not itself
+select a mechanism or waive the existing public-API, spelling, consent, setup,
+receiver and receipt obligations.
 
 ## Source candidates and remaining obligations
 
@@ -484,8 +496,9 @@ decision. No ADR selects any unestablished complete mechanism.
 
 ### Authorized file-reference URL acquisition diagnostic
 
-**Authorized, unexecuted.** Antony answered **"authorized"** on 2026-10-05 to
-the exact finite proposal. This is one experiment to answer
+**Executed in k149; bounded result, no complete route.** The [actual report](file-reference-url-acquisition-prototype.md)
+records the first instrumentation stop and expressly authorized replacement.
+Antony answered **"authorized"** on 2026-10-05 to the exact finite proposal. This is one experiment to answer
 whether public URL factories can acquire and locally consume the original long
 object without an FSRef. It performs no opener, Finder or registration request
 and adopts no spelling, setup, consent, private-policy or contract exception.

@@ -4,11 +4,27 @@
 ## Goal
 
 Consume the finite public URL acquisition diagnostic and complete k147's retained
-supported long-action route, or return the exact gap under the original requirement.
+supported long-action route. If a mechanism remains unresolved, identify the
+precise gap and concrete work needed while keeping the route live; reporting
+a gap is not satisfaction of the absolute long-path requirement.
 
 
 
 ## Context
+
+Antony's reaction to k149 on 2026-10-05: "It is an *absolute* requirement
+that we work around the path limit. The raison d'etre of Koine fails otherwise."
+Long-path support is a non-negotiable product requirement. The measured failures
+exclude only these tested candidates; they authorize no shorter/copy-only
+baseline, workflow loss or closure with the gap unresolved. Continue toward an
+actual workaround under the retained contract. This statement does not itself
+select a mechanism or waive the existing public-API, spelling, consent, setup,
+receiver and receipt obligations.
+
+- Actual k149 report: docs/verification/file-reference-url-acquisition-prototype.md.
+  Both direct/component-relative patterns pass local identity/marker/original-byte
+  conversion at 900/1,023 bytes but fail acquisition at 1,024/1,500. Preserve the
+  initial instrument stop, sole correction and expressly authorized replacement.
 
 - k148's authorized source/charter disposition, k149's committed actual report,
   every attempt/control and Antony's reaction. A URL/reference predicate,

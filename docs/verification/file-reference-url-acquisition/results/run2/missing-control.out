@@ -1,0 +1,4 @@
+{"reference":0,"hasBase":0,"base":"","event":"url","nonNull":0,"originalBytes":39,"error":{"domain":"NSCocoaErrorDomain","underlying":{"code":2,"domain":"NSPOSIXErrorDomain"},"code":260},"stage":"missingReference","url":""}
+{"reference":0,"hasBase":0,"base":"","event":"url","nonNull":1,"originalBytes":39,"error":{},"stage":"pathConversion","url":"file:\/\/\/Users\/admin\/k149\/f900\/missing-name.txt"}
+{"bytes":39,"exact":true,"event":"conversionBytes","pathB64":"L1VzZXJzL2FkbWluL2sxNDkvZjkwMC9taXNzaW5nLW5hbWUudHh0"}
+{"event":"done"}
