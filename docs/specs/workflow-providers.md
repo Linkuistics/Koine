@@ -283,10 +283,13 @@ delivered exact spelling at 900/1,023 bytes, while both openers failed at 1,024
 before recorder delivery. Its allowance is spent; selected-action acceptance
 stays pending. The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
 keeps internal descriptor/name resolution separate from public pathname values
-and from an external opener/receiver protocol. One file-reference URL
-acquisition/local-consumer diagnostic was authorized on 2026-10-05 for one
-prototype and retained returned design. It remains unexecuted and supplies no
-fact, grant, receipt or action pass. External inquiries are unused drafts.
+and from an external opener/receiver protocol. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
+passes local acquisition/reading/original bytes at 900/1,023 but fails acquisition
+at 1,024/1,500, before any long local-consumer or later stage. Preserve its
+instrument stop, correction and explicitly authorized replacement. Long-path
+support is absolute. The [returned workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
+records the authorized, unexecuted finite spelling/legacy-support diagnostic;
+it supplies no production fact, grant, receipt or action pass. External inquiries are unused drafts.
 Action/search subjects and retained/repair/search profiles stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |

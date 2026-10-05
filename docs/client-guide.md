@@ -569,11 +569,15 @@ at 1,024 before recorder delivery. This passes no production action.
 The [representation assessment](verification/long-action-route.md#item-array-result-and-representation-assessment)
 keeps the client's observed pathname input unchanged: internal descriptor/name
 lookup does not require a retained-handle protocol. Public file-reference URL
-acquisition remains an unmeasured candidate. Its finite diagnostic was authorized
-on 2026-10-05 for one prototype and retained returned design; no execution or
-identity-spelled submission is claimed. External
+acquisition was measured in the [completed diagnostic](verification/file-reference-url-acquisition-prototype.md):
+both factories pass local identity/reading/original bytes at 900/1,023 and fail
+acquisition at 1,024/1,500. No long action or receiver pass follows. Long-path
+support remains absolute. The [next workaround proposal](verification/long-action-route.md#url-result-and-next-workaround)
+now has authorization for one finite diagnostic of short native same-object
+spelling and legacy-support assumptions. It is unexecuted and changes no current
+client input or accepted production behavior. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
-receiver-visible spelling change or working-case loss is approved.
+production receiver-visible spelling change or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain

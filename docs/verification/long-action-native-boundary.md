@@ -25,10 +25,16 @@ the SDK item-array silence. Antony selected continued
 whose finite native-reference diagnostic is complete. The
 [returned result and gap](long-action-route.md#native-reference-result-and-remaining-gap)
 show that enumeration returns references at 1,024 bytes but tested consumers
-reject them; the walk cannot reach the 1,500-byte subjects. Item-array submission
-remains unmeasured; Antony authorized the
-[finite diagnostic](long-action-route.md#proposed-item-array-submission-diagnostic)
-on 2026-10-05, followed by retained returned design. It remains unexecuted.
+reject them; the walk cannot reach the 1,500-byte subjects. The later
+[item-array diagnostic](item-array-submission.md) delivers exact spelling at
+900/1,023 but both openers fail at 1,024 before recorder delivery. The
+[completed URL diagnostic](file-reference-url-acquisition-prototype.md) passes
+local acquisition/reading/original bytes at 900/1,023 and fails acquisition at
+1,024/1,500. Preserve its instrument stop, correction and expressly authorized
+replacement. Long-path support is absolute. The [returned workaround proposal](long-action-route.md#url-result-and-next-workaround)
+records Antony's authorization for one finite bare same-object spelling/legacy-
+support diagnostic. It is unexecuted; no production exception or automatic
+follow-on is commissioned.
 Native node-ID provenance cannot be replaced by an inode cast.
 External inquiries remain unused drafts.
 The refusal proposal is not adopted. No complete route, universal impossibility or native

@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Authorized public file-reference URL acquisition",
-    "status": "Requirement retained · URL diagnostic authorized · execution pending",
-    "summary": "Both measured item-array openers delivered exact spelling at 900/1,023 bytes and returned -41 at 1,024 before any recorder event. The twelve-call allowance and sole recorder repair are spent. Antony's directory-handle/component and file-reference URL direction is assessed here. Private per-action descriptor/name resolution can preserve the public observed pathname; exported retained handles would change its lifetime contract. Public NSURL/CFURL reference factories are distinct from the unsupported FSRef bridges. Long acquisition/local URL consumption remains unmeasured. Antony authorized one acquisition-only diagnostic on 2026-10-05 with two creation patterns at 900/1,023/1,024/1,500 bytes, independent same-object controls, eight cases per collection, at most sixteen after one instrumentation repair and a 15-minute guest cap. One prototype and retained returned design follow; it remains unexecuted and performs no external submission. Native facts, long-copy registration/selection, real default/Zed access, Finder and receipt remain separate gaps. No complete route, workflow loss, exception, new native run or automatic probe series is adopted; external inquiries remain unused drafts.",
+    "title": "URL result and next long-path workaround",
+    "status": "Long-path requirement absolute · finite namespace diagnostic authorized",
+    "summary": "Both public URL creation patterns passed acquisition, local identity/marker reads and original-byte conversion at 900/1,023 bytes, but failed acquisition at 1,024/1,500. The initial instrument stop, sole correction and expressly authorized replacement remain separate. Long consumers and later action stages were not reached. Antony authorized the exact finite bare native object namespace diagnostic: XNU source/tests supply a same-object local opening lead, while filename loss, changed submission spelling, lasting support and Zed normalization remain explicit limits. A filename-preserving suffix variant was removed after source review found its fixed PATH_MAX append. One guest/collection, four file/directory subjects, at most twelve default/Zed/Finder requests and a 45-minute cap will test real receivers in a fresh prototype session, with a verified fresh receiver baseline for each request. Native execution is unrun; no production spelling/support exception, complete route or workflow loss is adopted. The completed source/charter handoff leaves one prototype and returned design live. Native facts, long registration/selection/constrained launch, executable receipt, final review and independent action/search acceptance remain required.",
     "diagramIds": [
       "workspace-route-candidates",
       "workspace-long-locations",
@@ -17,7 +17,7 @@
     "updatedDiagrams": [
       {
         "id": "workspace-route-candidates",
-        "summary": "Records authorization of the fixed public URL diagnostic and its prototype/returned-design handoff, preserving both measured opener failures and the remaining route obligations."
+        "summary": "Consumes the completed URL failures, marks long-path support absolute, and records authorization for the bounded bare-object namespace/receiver diagnostic while retaining its production gaps."
       }
     ]
   },
@@ -71,7 +71,7 @@
       "renderer": "svg",
       "source": "workspace-route-candidates.d2",
       "rendered": "workspace-route-candidates.svg",
-      "caption": "A labeled obligation graph. The completed item-array diagnostic delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 with no recorder event. This measures delivery to the short recorder, not real receiver I/O. Internal descriptor/name operands need not change public pathname values. Public file-reference URLs are an unmeasured acquisition/local-consumer candidate, distinct from old FSRef bridges. Antony authorized exactly one finite diagnostic on 2026-10-05; one prototype and retained returned design follow. It remains unexecuted and submits nothing externally. Identity-spelled submission or exported retained handles requires a separate decision. Original roughly 1,500-byte working cases, native facts, exact registered copy, default/Zed opening, Finder selection, executable receipt, grants and independent action/search and 1.0.0/1.0.1/1.1.0 subjects remain required. No complete route, final review, node closure, native acceptance or automatic probe series is earned."
+      "caption": "Source/charter view, not native action acceptance. k149 passes local acquisition/reading/original bytes at 900/1,023 and fails acquisition at 1,024/1,500; long consumers and subsequent stages were not reached. Private descriptor/name resolution keeps public pathname inputs. The bare volfs object spelling is covered by pinned upstream local-open tests, not an opener/receiver promise; the filename-preserving suffix variant still hits MAXPATHLEN and is excluded. Antony authorized only the exact finite diagnostic of changed external spelling, filename loss and compatibility-only support. Zed may normalize back to a long whole path. Receiver observations need per-request freshness. Native execution is unrun and no production exception or complete route is adopted. Every original working case, native fact/selection/receipt contract, controls, independent action/search and 1.0.0/1.0.1/1.1.0 acceptance, final review and planning duty remains live."
     },
     {
       "id": "search-serviceability",

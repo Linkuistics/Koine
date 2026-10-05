@@ -2378,10 +2378,14 @@ recorder delivery. Its allowance is spent and establishes no action acceptance.
 The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
 separates per-action descriptor/name operands from unchanged public observed
 pathname values. Exported retained handles would change the location/lifetime
-contract. File-reference URL acquisition is an unmeasured internal candidate,
-with one finite acquisition-only diagnostic authorized on 2026-10-05 for one
-prototype and retained returned design. It remains unexecuted; identity-spelled
-external submission is not selected. External
+contract. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
+passes acquisition/local reading/original bytes at 900/1,023 but fails acquisition
+at 1,024/1,500. Long local consumption and subsequent action stages were not
+reached. Its instrument stop, correction and expressly authorized replacement
+remain separate. Long-path support is absolute. The [returned proposal](../verification/long-action-route.md#url-result-and-next-workaround)
+records authorization for one finite same-object spelling/legacy-support
+diagnostic. It is unexecuted; no production exception or automatic native
+follow-on is authorized. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.
 No search actionability field, shorter value ceiling, native classification fact

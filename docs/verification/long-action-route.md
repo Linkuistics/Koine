@@ -12,6 +12,14 @@ subjects. Both measured item-array openers also fail at 1,024 bytes before
 recorder delivery. No production route or
 workflow loss is adopted.
 
+The [completed URL result and next decision](#url-result-and-next-workaround)
+now supersedes execution-pending URL prose. Both public URL creation patterns
+failed acquisition at 1,024/1,500 bytes; neither ran a long local consumer.
+Long-path support remains an absolute requirement. A concrete same-object
+namespace diagnostic is now expressly authorized below for changed diagnostic
+spelling and legacy-support investigation. It remains unexecuted; no production
+exception or complete route is adopted.
+
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
 and the [remaining decision](#decision-for-antony). The
 [prototype](long-action-route-prototype.md) supplies the committed native
@@ -430,7 +438,9 @@ prerequisites, as in k134, not a Koine action. Its value is resolving a precise
 remaining consumer question; its cost is another bounded experiment that cannot
 alone satisfy the original route. Keeping the route pending spends no further
 measurement but yields no new evidence. Investigating a short same-object
-namespace is a different spelling/setup exception and remains unapproved.
+namespace was outside that item-array charter. Antony later authorized only
+the exact finite [bare-object diagnostic](#authorized-finite-same-object-namespace-diagnostic);
+no production exception or additional setup is adopted.
 
 k144 is decomposed in place: `item-array-submission-k145` completes this
 source/charter handoff, `item-array-submission-k146` executes the one throwaway
@@ -464,7 +474,7 @@ sole recorder repair are spent. No native call was repeated in k147.
 | --- | --- | --- |
 | Original observed pathname plus private directory descriptor/name | Workspace re-resolves at each action, keeps exact input text apart from lookup operands, bounds and closes descriptors before completing; clients continue sending the pathname. | k134 establishes local relative access. Preserve component/link/dot/trailing semantics, cause provenance, prompt policy and no search-time pinning. Native flags/type/bundle facts, registration/handler, external submission, receiver access and receipt remain separate acquisitions. |
 | Retained directory handle plus component exposed to clients | Server owns handle lifetimes, process restart/expiry, grant interaction and changing parent/name associations; callers need a stateful protocol. | Could address a cooperating consumer, but changes current location semantics and adds state without an established NSWorkspace/receiver adapter. Not selected; no new public seam is justified by the measured local need. |
-| Transient public file-reference URL, with original text retained separately | Workspace owns native creation, actual same-object verification, conversion failures and lifetime. No serialized reference survives a restart/remount and no reference string is handcrafted. | NSURL/CFURL offer supported creation APIs distinct from FSRefs. Long acquisition, URL-consuming local I/O, native facts and subsequent original-byte submission are unmeasured. Sending the identity URL externally would need a separate spelling decision. |
+| Transient public file-reference URL, with original text retained separately | Workspace owns native creation, actual same-object verification, conversion failures and lifetime. No serialized reference survives a restart/remount and no reference string is handcrafted. | NSURL/CFURL offer supported creation APIs distinct from FSRefs. k149 subsequently passed acquisition/local reading/original bytes at 900/1,023 but failed acquisition at 1,024/1,500. Long local I/O and later native facts/submission were not reached. Sending an identity URL externally still needs a separate spelling decision. |
 
 The SDK's NSURL.h declares `fileReferenceURL`, `filePathURL` and relative file
 URL constructors. CFURL.h declares `CFURLCreateFileReferenceURL`, with an error
@@ -485,7 +495,7 @@ The published file-reference factory is a stub in that open-source snapshot;
 it cannot establish Darwin's implementation. Source/SDK support therefore
 justifies a candidate diagnostic, not a working route or a universal failure.
 
-**Recommendation:** use descriptor/name as the private local-resolution design
+**Recommendation before k149:** use descriptor/name as the private local-resolution design
 candidate, preserve the public observed pathname, and investigate public
 file-reference URL acquisition before any external submission. The alternative
 is to keep the original route pending without another measurement. Exporting
@@ -565,6 +575,153 @@ the final k128 review and both action/search acceptance sets remain owed.
 The authorized source/charter handoff is k148, followed by the single prototype
 file-reference-url-acquisition-k149 and retained returned design
 long-action-route-k150. Completing the handoff or prototype closes no route node.
+
+### URL result and next workaround
+
+**k149 is complete; the retained route is not.** The
+[actual report](file-reference-url-acquisition-prototype.md) and both collections
+are the evidence. The first collection stopped before all acquisition cases
+because its driver rejected numeric zero as a missing-name failure. The sole
+verified correction and expressly authorized replacement ran all eight cases.
+Both patterns acquired, locally read and recovered the original bytes at
+900/1,023. At 1,024 the direct factory reports Cocoa 258 with underlying POSIX
+63; the relative factory fails at the final child after acquiring its 1,013-byte
+parent. At 1,500 direct creation reports Cocoa 258 without an underlying cause
+in the record; relative creation fails at a 1,253-byte directory prefix. Treat
+these as typed native failures of the measured acquisitions, never absence or
+proof that every public mechanism fails.
+
+Successful anchors were base-free. The helper's three descriptor/three
+caller-owned-URL limits do not bound opaque Foundation allocations. Independent
+descriptor/decoy and fixed-marker controls passed. Short hard links were controls
+only, not fallback operands; they limit the fixture population. There was one
+build, two collections, one driver correction and two expressly authorized
+guests. Their 19.69/22.20-second intervals are separate, not one continuous
+aggregate measurement. Sampled UI snapshots showed no dialog; they prove no
+general prompt-free behavior. Neither factory reached long local consumption,
+native facts, registration/handler, submission, receiver/Finder or receipt.
+This returned design performs no new native measurement.
+
+| Stage | Current evidence | Concrete work still needed |
+| --- | --- | --- |
+| Local path resolution and cause | Component-relative access works on k134's long subjects. k149's URL factories fail long acquisition. | Preserve the bounded per-action resolver, original text, no-prompt policy and reviewed absence/failure provenance. |
+| Native facts and selection | Tested long fact/handler/reference and registration routes failed or were unreached. | Acquire native flags/type/identifier with cause provenance, exact-item binding and the exact registered long app copy. |
+| Handoff and receiver | Tested URL and item-array openers did not deliver long subjects. Pinned Zed reads/canonicalizes by whole path. | Establish a usable operand through the opener and real default/Zed reading; independently observe actual Finder selection. |
+| Receipt | No long app launched; existing process/executable acquisition is not repaired. | Preserve PID/start-instant and exact executable identity, including short actions with long registered copies; accept no systematic length-caused null. |
+
+#### Same-object namespace candidate
+
+The pinned [XNU lookup branch](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/bsd/vfs/vfs_lookup.c#L373-L447)
+recognizes legacy volfs paths and expands its lookup buffer up to MAXLONGPATHLEN
+without gating that branch on the process's long-path policy. Its
+[parser](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/bsd/vfs/vfs_lookup.c#L2312)
+accepts a native volume/object pair. Its remaining-filename branch appends with
+a fixed MAXPATHLEN bound even after expanded path acquisition; the
+parent-object/final-name variant therefore is not the proposed long route. The
+[upstream long-path test](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/tests/vfs/longpaths.c#L659-L694)
+opens an object via `/.vol/<device>/<inode>` and compares full device/inode
+identity. The [test dispatch](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/tests/vfs/longpaths.c#L1091-L1133)
+uses the long-success expectations with policy both off and on. This is pinned
+source/upstream-test evidence, not a Koine guest result or a public opener promise.
+
+This gives a specific potential workaround: retain the client's original
+observed path, resolve it afresh by components, and use a short native
+same-object operand behind the private adapter. The authorized diagnostic uses
+`/.vol/<native-device>/<native-target-inode>`, rather than a copied file,
+hard link, symlink, renamed
+directory or another application copy. Full native identity and marker checks
+must establish what each operand actually reaches. No 32-bit Carbon node-ID
+cast or fabricated FSRef/file-reference URL is involved.
+
+There are three material limits. This bare operand does not preserve the final
+filename/extension: resource classification and exact-item handler behavior must
+be measured, never repaired by guessing a type. The kernel itself labels this a compatibility
+path that may disappear, and [Apple DTS](https://developer.apple.com/forums/thread/103162)
+recommends fsgetpath instead and disclaims lasting volfs support. Also,
+[Zed's inspected reader](https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/fs/src/fs.rs#L954-L970)
+and [canonicalizer](https://github.com/zed-industries/zed/blob/76659a55a8c10ed355a070f8764a0b1733e3c115/crates/fs/src/fs.rs#L1053-L1065)
+may turn a short operand back into the rejected long whole pathname. A native
+open success therefore cannot stand in for receiver rendering or save behavior.
+This candidate is **outside the retained original-byte external-submission rule
+and lacks its required durable supported-API assurance**. It is not selected
+as a compliant production route. No native policy toggle or entitlement is
+proposed, and no claim that all admitted alternatives are impossible is made.
+
+<a id="proposed-finite-same-object-namespace-diagnostic"></a>
+
+#### Authorized finite same-object namespace diagnostic
+
+**Antony answered "authorized" on 2026-10-05** to this exact finite diagnostic.
+That permits investigation of this named native-submission spelling/legacy-support
+exception for known harmless fixtures only; it adopts no production exception.
+The diagnostic tests a concrete long-object route through actual receivers.
+Retain the absolute functional requirement and every original acceptance row.
+The source/charter handoff is k151, the one prototype is k152 and the retained
+returned design is k153. Native execution remains unrun in this design session.
+
+- One signed throwaway helper in one disposable macOS guest, one collection,
+  at most two builds and one proven instrumentation correction before collection.
+  One 45-minute clone-through-teardown cap; no guest retry, second collection,
+  alternate namespace/API strategy or automatic follow-on. Preserve incomplete
+  results on failure/cap exhaustion. An unexpected consent/security dialog stops
+  the run. Prepare only ordinary Zed/Finder first-run state already admitted by
+  the baseline; unavailable preparation returns incomplete.
+- Four independently component-created subjects: one text file and one ordinary
+  directory at each of 900/1,500 original UTF-8 bytes excluding NUL. Valid ASCII
+  components at most 245 bytes, at most 32 levels. Each directory has a uniquely
+  named fixed-marker text child; each subject has a same-parent distinct decoy.
+  Independent `openat`/`fstat` and at most 64 marker bytes establish the original
+  target, parent and decoy. No short hard-link control, user file, protected path,
+  remote mount or changed process cwd. Keep only three live helper descriptors;
+  serialize controls, close resources, and log at most 8,192 bytes per value.
+- Derive exactly the target-device/full-64-bit-inode operand above. Do not append
+  a filename or add another spelling to rescue an unsuccessful case.
+  Before any submission, independently reopen it, compare full target and decoy
+  identity, and read the fixture marker or directory child. A failed identity or
+  900-byte control stops as incomplete. Record path-URL representation, native
+  resource flags/type and exact-item default-handler observations separately;
+  no guessed extension/permission-bit fact or nil-as-absence mapping. Missing
+  facts leave production prerequisites unresolved.
+- For each subject attempt at most one default open, one named open to the
+  exact known short registered Zed copy, and one Finder reveal: at most twelve
+  external requests. Use the existing public NSWorkspace primitives/configuration
+  with the proposed short same-object operand. A failed default-handler acquisition
+  leaves that default row unrun, not NO_DEFAULT_HANDLER. Named/reveal diagnostic
+  requests may bypass unresolved production metadata only for these known harmless
+  fixtures and must label that bypass. Record the first failed stage, typed errors,
+  exact submitted operand, any recoverable delivered operand and three-second
+  acknowledgment/cancellation bounds. No retry under a different spelling/copy.
+- Before each external request record a fresh receiver baseline. Close the previous
+  fixture buffers/windows and clear Finder selection, then verify the subject/decoy
+  is not already displayed or selected. When default and named receivers coincide,
+  this reset is still required. If reset cannot be established, only independently
+  attributable fresh delivery/read evidence can grade that request; residual UI
+  without such evidence is unmeasured. Never inherit another request's rendering.
+- Observe actual text/child rendering in default/Zed and actual Finder selection
+  independently from acknowledgment or launch. Verify each observation identifies
+  the original fixture rather than its decoy; an inaccessible observer returns
+  unmeasured. Keep opaque delivered operands opaque. Do not weaken provenance by
+  equating a title, witness URL, PSN or callback with successful original-object
+  access. Record any pathname normalization and unchanged original marker/identity
+  before/after; there is no save/write experiment or inferred save support.
+- Record OS/build/architecture, fixture volume/capabilities, installed Zed version,
+  SDK/compiler, signature/entitlements, inputs, exact raw outputs, before/after
+  per-subject digests and native/UI observation provenance. Sampled no-dialog
+  observations are not a general no-prompt promise. Stop/dispose the guest and
+  preserve its teardown receipt. A returned design consumes all outcomes and
+  Antony's reaction without automatically commissioning more work.
+
+A positive earns only its measured same-object access/handoff/receiver rows
+under this expressly investigated exception. It cannot meet the unchanged
+original-byte submission rule, establish lasting volfs support, repair long-app
+registration/constrained launch/receipt, certify native metadata or save semantics,
+or close independent action/search, binary and public acceptance. A negative
+closes only this spelling/consumer/build combination. Either outcome leaves
+k150 and all route ancestors live until a complete agreed supported route and
+k128's mandatory final review exist. Retire only the completed source/charter
+child here; the authorized prototype and returned design run in fresh sessions.
+No repeat or automatic new experiment is authorized; production implementation
+remains planning's work.
 
 ## SDK and source provenance
 
@@ -722,8 +879,11 @@ openers delivered exact spelling at 900/1,023 and failed at 1,024 before any
 recorder event. No complete route or acceptance is established. Antony authorized the
 [finite public file-reference URL acquisition diagnostic](#proposed-file-reference-url-acquisition-diagnostic),
 limited to internal acquisition/local consumption without any external
-submission or adoption, on 2026-10-05. It remains unexecuted; one prototype and
-retained returned design follow. The earlier "proceed" inquiry choice is superseded;
+submission or adoption, on 2026-10-05. Its [actual result](file-reference-url-acquisition-prototype.md)
+is now complete: both patterns pass local acquisition/reading/original bytes at
+900/1,023 and fail acquisition at 1,024/1,500. The initial instrument stop, sole
+correction and expressly authorized replacement remain distinct. The earlier
+"proceed" inquiry choice is superseded;
 no external response is a prerequisite and no request has been sent. Internal
 investigation resolved only the tested acquisition and item-array branches,
 leaving the complete opener and receiver gaps. No complete route is guaranteed.
@@ -735,14 +895,17 @@ design only. It preserves every
 original working case and authorizes no spelling,
 setup, private-policy, consent or contract exception and no automatic probe series.
 
-The alternative is an explicit decision to investigate one named exception,
-such as a short virtual namespace backed by the original objects. That changes
-receiver-visible spelling and can need setup; it is unapproved and its macOS
-classification/registration, receiver, save, reveal and receipt behavior is
-unproved. A symlink/hard link or copy is not presumed equivalent. Any such
-investigation would need a finite charter, failure boundary and returned design;
-permission to investigate would not adopt its behavior or waive original cases.
-The declined refusal proposal is not put forward again.
+**Current decision:** Antony answered "authorized" on 2026-10-05 to the exact
+[finite same-object namespace diagnostic](#authorized-finite-same-object-namespace-diagnostic).
+It tests a concrete kernel-source lead through real receivers while retaining
+the absolute functional requirement. This permits changed native submission
+spelling and investigation of a compatibility-only mechanism for the diagnostic
+only, without production adoption. The source/charter child k151 hands off one
+prototype k152 and returned design k153 in k150's retained route subtree.
+Original client values, objects, working cases, controls, authority and acceptance
+remain required. No shorter, copy-only or failed-action baseline is offered. Receiver normalization, native
+metadata/selection, long constrained launch, receipt and lasting support remain
+explicit gaps; a finite positive does not waive them.
 
 ### Prepared capability inquiry
 
@@ -899,6 +1062,36 @@ setup, consent or receipt rule still needs its own explicit decision. No polling
 schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
 
 ## Deterministic check boundary
+
+k150 consumes all committed URL attempts and reconciles current prose and the
+candidate view. `task design:action-repair-check` and `task design:search-check`
+were run sequentially and passed their existing positive/negative controls.
+Taskfile, document checker, retained/repair/search/desktop SDL, both operation
+files and contract-client dependency manifests stayed unchanged by per-file
+SHA-256 throughout those runs. `task design:workspace-render` regenerated the
+view with D2 0.9.0; the actual browser/export checks and their limits are in the
+[viewer README](../design/architecture/README.md). Documentation links passed
+before recording these verification notes and are checked again on the final
+frozen subjects. No declaration probe, native macOS diagnostic, production code,
+served digest, binary profile or action/search acceptance is supplied here.
+The finite namespace diagnostic is now authorized but unexecuted. The completed
+source/charter handoff retires only k151; k152/k153 keep k150 and every route
+ancestor live. No complete-route review or final-design retirement is earned.
+
+The later k151 authorization handoff changes current charter/prose and the
+editable visual discussion to authorized/unexecuted status. The structural
+checks above are carried forward for identical subjects: all ten structural
+input digests and five carried public SDK headers match. Pinned-source and
+native raw-evidence subjects are frozen for the final document check; no native
+corpus is rewritten. The newly rendered view's light/dark discussion, fresh
+deep links, complete light export and actual 500 × 600 introductory reflow were
+inspected as recorded in the viewer README; the complete dark export remains
+uninspected. The separate Linux presentation clone is stopped. Final document
+links are checked on frozen final subjects before retirement. No new declaration,
+macOS execution, production code, complete supported route or public acceptance
+is claimed.
+
+The following record applies to the preceding authorized URL handoff.
 
 The authorized URL handoff (k148) changes current-state prose, the finite charter,
 child handoffs and the candidate diagram. Structural/native evidence subjects

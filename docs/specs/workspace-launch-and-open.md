@@ -321,10 +321,15 @@ at 1,024 before recorder delivery. Its twelve-call allowance is spent, and it
 establishes no production action. The
 [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
 keeps descriptor/name operands private to an action and public pathname values
-unchanged. Public file-reference URL acquisition is a separate unmeasured
-candidate. Antony authorized its finite acquisition/local-consumer diagnostic
-on 2026-10-05 for one prototype and retained returned design; it remains
-unexecuted. Identity-spelled submission is not selected. Native facts,
+unchanged. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
+passes acquisition/local identity/marker/original-byte conversion at 900/1,023
+but fails acquisition at 1,024/1,500. No long local-consumer pass follows; retain
+the initial instrument stop, sole correction and expressly authorized replacement.
+Long-path support remains absolute. The [next workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
+records authorization for one finite same-object namespace diagnostic of changed
+spelling/legacy-support assumptions; it is unexecuted and no production exception
+is adopted. Original
+working cases and complete-route review remain owed. Native facts,
 registration/handler, real receiver/Finder behavior and receipt remain owed.
 Node resolution requires native catalog provenance.
 External inquiries remain unused drafts. No automatic probe series is authorized. The refusal proposal remains unadopted; all

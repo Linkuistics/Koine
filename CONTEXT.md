@@ -207,11 +207,16 @@ recorder delivery. Its allowance is spent. The
 [representation assessment](docs/verification/long-action-route.md#item-array-result-and-representation-assessment)
 keeps private per-action descriptor/name operands distinct from the public
 observed pathname, which is re-resolved on use. Exporting retained handles
-would change that lifetime contract. File-reference URL acquisition is an
-unmeasured internal candidate. Antony authorized the finite acquisition-only
-diagnostic on 2026-10-05; one prototype and retained returned design follow.
-It remains unexecuted. No external identity spelling or complete route is
-selected. Node-ID resolution
+would change that lifetime contract. The [completed URL diagnostic](docs/verification/file-reference-url-acquisition-prototype.md)
+passes acquisition/local reading/original-byte conversion at 900/1,023 bytes
+but fails acquisition at 1,024/1,500. Its initial instrument stop, sole repair
+and expressly authorized replacement remain distinct. Long local consumption
+and later action stages were not reached. Long-path support is absolute. The
+[returned workaround proposal](docs/verification/long-action-route.md#url-result-and-next-workaround)
+now carries Antony's authorization of one finite short native same-object
+spelling/legacy-support diagnostic. It remains unexecuted; changed production
+spelling and durable-support exceptions are not adopted. No complete
+route or automatic follow-on is selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External
 inquiries remain unused drafts, and no automatic probe series is authorized.
 The refusal proposal is not adopted; no complete route or action acceptance

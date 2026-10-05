@@ -692,11 +692,16 @@ consumes Antony's directory-handle/component and file-reference URL direction.
 It distinguishes internal operands from identity-spelled submission: the E2
 exception applies to the external spelling, not all internal reference use.
 Public NSURL/CFURL reference factories are distinct from the unsupported FSRef
-bridges and from manually constructed volfs strings. Long acquisition/local
-consumption remains unmeasured; one finite acquisition-only diagnostic is
-authorized on 2026-10-05 for one prototype and retained returned design. It
-remains unexecuted. No complete route, action acceptance or automatic
-probe series is claimed.
+bridges and from manually constructed volfs strings. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
+passes local acquisition/identity/reading/original bytes at 900/1,023 but fails
+acquisition at 1,024/1,500. No long local-consumer or later-stage pass follows.
+The [returned workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
+preserves the absolute long-path requirement and records authorization for one
+finite native same-object spelling/legacy-support diagnostic. Pinned XNU lookup
+and upstream tests supply a concrete local lead, while Apple DTS and Zed's
+canonicalizer preserve the support and receiver gaps. The diagnostic is
+authorized but unexecuted; no production mechanism or exception is adopted. No complete route, action acceptance or
+automatic probe series is claimed.
 These later observations/decisions are not part of either independent survey.
 
 ## Sources added or re-read by this synthesis

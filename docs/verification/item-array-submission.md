@@ -70,7 +70,12 @@ builds, two collections, one repair, twelve calls: the cap is spent.
 The [returned design](long-action-route.md#item-array-result-and-representation-assessment)
 consumes both collections and Antony's directory-handle/component and
 file-reference URL direction. Neither representation is credited as a complete
-route. A separate finite public URL acquisition/local-consumer diagnostic is
-authorized on 2026-10-05 and remains unexecuted; no item-array repeat or
-identity-spelled submission is commissioned. This report's measured corpus and
-raw records remain intact.
+route. The separate [completed URL diagnostic](file-reference-url-acquisition-prototype.md)
+passes acquisition/local reading/original bytes at 900/1,023 but fails acquisition
+at 1,024/1,500. Preserve its instrument stop, correction and explicitly authorized
+replacement; no long local-consumer pass follows. The [returned workaround proposal](long-action-route.md#url-result-and-next-workaround)
+retains the absolute requirement; Antony separately authorized the finite
+bare-object spelling/legacy-support diagnostic. It is unexecuted. No item-array
+repeat, production identity-spelled submission or complete route is commissioned
+by these results. This report's measured corpus
+and raw records remain intact.

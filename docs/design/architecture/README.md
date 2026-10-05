@@ -70,30 +70,82 @@ The [representation assessment](../../verification/long-action-route.md#item-arr
 consumes Antony's two candidates. Per-action directory descriptor/name operands
 can preserve public pathname values; exporting retained handles changes their
 lifetime contract. Public NSURL/CFURL reference creation is distinct from the
-unsupported FSRef bridges. Long acquisition/local consumption remains
-unmeasured. One [acquisition-only URL diagnostic](../../verification/long-action-route.md#proposed-file-reference-url-acquisition-diagnostic)
-was authorized on 2026-10-05: two creation patterns at four lengths, independent
-same-object controls, at most sixteen cases after one repair and a 15-minute
-guest cap. One prototype and retained returned design follow; the diagnostic
-remains unexecuted. It performs no external submission or contract adoption.
+unsupported FSRef bridges. The [completed URL diagnostic](../../verification/file-reference-url-acquisition-prototype.md)
+passes local acquisition/identity/marker/original bytes at 900/1,023 but fails
+acquisition at 1,024/1,500. Long local consumption and subsequent stages were
+not reached. Preserve the initial instrument stop, sole correction and expressly
+authorized replacement as distinct attempts. Long-path support is absolute.
+The [returned workaround proposal](../../verification/long-action-route.md#url-result-and-next-workaround)
+uses pinned XNU bare-object opening tests as a lead for one finite real-receiver
+diagnostic. A filename-preserving suffix variant was rejected by source review:
+its append still uses MAXPATHLEN. Bare identity loses the filename and requires
+changed external spelling plus legacy-support investigation. Antony authorized
+that finite diagnostic only; no production exception is adopted. Zed normalization and native fact/handler parity remain gaps.
+One guest/collection, four file/directory subjects, at most twelve requests,
+per-request fresh receiver controls and a 45-minute cap are authorized, unrun.
+The source/charter handoff is followed by one prototype and returned design.
 External inquiries remain unused drafts;
 no sender or upstream response is needed for the current work.
-A named spelling/setup exception remains an unapproved alternative.
+Any production spelling/setup exception remains unapproved.
 No support request has been sent, and no automatic probe series is authorized.
 No new native run occurred in returned design, and no action pass is claimed. Antony's original requirement remains retained; final
 review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Records authorization of the fixed acquisition-only diagnostic while keeping both representation candidates and measured item-array failures visible.
-- [Item-array result and representation assessment](../../verification/long-action-route.md#item-array-result-and-representation-assessment) — Distinguishes public pathname values, private operands, native URL factories and external submission spelling.
-- [Authorized file-reference URL acquisition diagnostic](../../verification/long-action-route.md#proposed-file-reference-url-acquisition-diagnostic) — Records the exact approved corpus, controls and ownership/execution bounds, with one prototype and retained returned-design handoff; execution remains pending.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the later opener result, internal/external spelling distinction and explicit finite diagnostic authorization.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Carries the measured result and authorized internal URL diagnostic without closing route or review obligations.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Records the finite acquisition authorization while keeping public pathname semantics and actual-search acceptance separate.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Carries the measured opener result and authorized URL diagnostic with unchanged public input.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Records the finite diagnostic authorization and retains distinct action/search/profile acceptance.
-- [Search location glossary](../../../CONTEXT.md#language) — Distinguishes private operands from exported handles and records authorization of the unexecuted internal diagnostic.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Replaces the spent URL proposal with its measured result, the absolute requirement and an authorized, unexecuted bare-object namespace investigation.
+- [URL result and next workaround](../../verification/long-action-route.md#url-result-and-next-workaround) — Reconciles all URL attempts, separates remaining stages and assesses the pinned-source namespace lead and its limits.
+- [Finite same-object namespace diagnostic](../../verification/long-action-route.md#proposed-finite-same-object-namespace-diagnostic) — Records authorization for the exact bounded real-receiver experiment with identity/decoy and per-request freshness controls; production adoption stays open.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the later URL failures and distinguishes upstream local-open evidence from unmeasured receiver behavior.
+- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Replaces stale item-array execution-pending prose with both completed diagnostic results and the authorized finite next diagnostic.
+- [Item-array result bridge](../../verification/item-array-submission.md) — Consumes the later URL result without changing its measured corpus or inferring another experiment.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Consumes URL failures and keeps every long working case, native stage and final-review obligation live.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Replaces stale unexecuted-URL prose while preserving actual-search provenance and unchanged public locations.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records URL failures and leaves client input and accepted production behavior unchanged.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Consumes the result without crediting a grant, receipt, native fact or action pass.
+- [Search location glossary](../../../CONTEXT.md#language) — Records completed URL acquisition limits and the authorized finite spelling/support-policy diagnostic.
+
+The k151 authorized source/charter revision was checked in Firefox 151.0.3
+in the isolated Linux clone `koine-k151-authorization`. The fresh light deep
+link at a 1,280-pixel browser width showed the intended title and Current/Updated
+markers. Light and dark discussion views showed the authorized/unexecuted status,
+all seven context links and one changed-view summary. The dark deep link at an
+actual 1,854-pixel window showed readable start/result/local-resolution labels.
+The complete light SVG export was inspected at 1,100 pixels, including the
+bare-object exception and authorized bounds; the complete dark export remains
+uninspected. The settled dark 500 × 600 window reflowed the discussion heading,
+status and introductory text. The first browser launch's temporary profile was
+invisible to Firefox's sandbox; moving the same profile into the guest home
+resolved that presentation setup failure. Viewer/manifest/D2/SVG digests agreed
+host/guest before and after inspection and stayed unchanged item by item. The
+clone's stop receipt reports successful disposal. This Linux presentation check
+uses none of the authorized macOS diagnostic's guest/collection allowance and
+supplies no native action/search acceptance. Current host discussion:
+<http://127.0.0.1:51592/#discussion>.
+Changed view: <http://127.0.0.1:51592/#diagram-workspace-route-candidates>.
+
+The following browser record applies to the preceding unapproved proposal
+revision; the authorization revision has its own record above.
+
+The k150 returned-URL/namespace-proposal revision was checked in Firefox 151.0.3
+in the isolated Linux clone `koine-k150-design`. A fresh light deep link at a
+1,280-pixel browser width identified the intended view and Current/Updated
+markers. The dark discussion showed the absolute requirement, proposed status,
+seven context links and one changed-view summary. At approximately 1,850 pixels,
+the dark deep link's start, result and local-resolution labels were readable.
+The complete light export was rasterized with librsvg at 1,100 pixels and
+inspected through every proposal/limit branch; a complete dark export was not
+inspected. Firefox clamped the narrow GUI window to 500 × 480; its discussion
+heading/status and introductory prose reflowed there. A separate headless
+320 × 480 screenshot attempt timed out and produced no image, so it supplies
+no narrow-screen evidence. Viewer, manifest and changed D2/SVG SHA-256 values
+matched host/guest per file and remained unchanged through inspection. The
+clone's stop receipt reports successful disposal. This verifies presentation
+only; no new native macOS experiment or action/search acceptance ran.
+Host discussion: <http://127.0.0.1:51592/#discussion>.
+Changed view: <http://127.0.0.1:51592/#diagram-workspace-route-candidates>.
+
+The following browser record applies to the preceding authorization revision.
 
 The authorized URL diagnostic revision was checked in Firefox 151.0.3 in the
 isolated Linux clone `koine-k148-authorization`. A fresh light deep link
