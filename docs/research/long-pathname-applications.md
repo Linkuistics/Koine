@@ -700,10 +700,13 @@ measures the pinned XNU local lead: original identity/marker access passes at
 900/1,500 bytes. Long application/type facts fail; a missed Zed trust stop leaves
 no compliant long receiver or Finder-selection result. Antony accepted the
 incomplete report with no retry. The
-[returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
-keep the support/receiver stages open. Antony authorized the new two-request
-named-Zed diagnostic on 2026-10-06 with its fixture-only restricted-mode
-interaction; it remains unexecuted. No
+[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+now establish fresh reading of both original files by the exact short Zed copy
+after restricted-mode choices. The long buffer shows an inode-only filename;
+native application/type acquisition still fails, exact delivery is opaque and
+saving is untested. Antony authorized the finite local-only bookmark diagnostic
+on 2026-10-06; it remains unexecuted. This source/receiver distinction preserves the surveys' bounded
+whole-path readings; it does not infer failure of every short operand. No
 production mechanism or exception, complete route, action acceptance or
 automatic probe series is claimed.
 These later observations/decisions are not part of either independent survey.

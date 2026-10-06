@@ -217,10 +217,13 @@ now has a [completed same-object result](docs/verification/same-object-namespace
 local identity/marker access passes at 900/1,500 bytes; long application/type
 facts fail and a missed Zed trust stop leaves no compliant long receiver or
 Finder-selection result. Antony accepted the incomplete report with no retry.
-The [returned gaps and focused diagnostic](docs/verification/long-action-route.md#same-object-result-and-remaining-route)
-keep the full route live. Antony authorized the new two-request Zed diagnostic
-on 2026-10-06, with only its verified fixture's Stay in Restricted Mode choice;
-it remains unexecuted. Changed production spelling and
+The [focused Zed result and returned assessment](docs/verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+establish fresh reading of both originals by the exact short registered Zed copy
+after restricted-mode choices. The long buffer has an inode-only filename;
+long application/type facts still fail, exact delivery is opaque and saving is
+untested. Antony authorized the finite local-only bookmark diagnostic on
+2026-10-06; it remains unexecuted and
+supplies no receiver naming or production pass. Changed production spelling and
 durable-support exceptions are not adopted. No complete route or automatic
 follow-on is selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External

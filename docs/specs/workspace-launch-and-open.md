@@ -330,10 +330,12 @@ establishes independent local identity/marker access at 900/1,500 bytes, but lon
 application/type facts failed. Zed's control trust dialog was the required stop;
 later requests earn no compliant receiver/selection credit and the allowance is
 spent. Antony accepted the incomplete report with no retry authorized. The
-[returned result and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
-retain the unresolved stages; a two-request named-Zed diagnostic with a
-fixture-only restricted-mode interaction was newly authorized by Antony on
-2026-10-06 and remains unexecuted. No
+[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+now establish fresh reading of both original files by the exact short Zed copy
+after restricted-mode choices. The long buffer has an inode-only filename;
+native application/type checks fail, delivered operands are opaque and saving
+is untested. Antony authorized the finite local-only bookmark diagnostic on
+2026-10-06; it remains unexecuted and supplies no Zed naming promise. No
 production spelling/support exception is adopted. Original
 working cases and complete-route review remain owed. Native facts,
 registration/handler, real receiver/Finder behavior and receipt remain owed.

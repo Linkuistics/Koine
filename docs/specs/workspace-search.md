@@ -2386,10 +2386,12 @@ remain separate. Long-path support is absolute. The [completed same-object diagn
 passes local identity/marker access at 900/1,500 bytes; long application/type
 facts failed and a missed Zed trust stop leaves no compliant long receiver or
 Finder-selection result. Antony accepted the incomplete report with no retry.
-The [returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
-keep this handoff unresolved. Antony authorized the new two-request Zed
-diagnostic on 2026-10-06 with its fixture-only restricted-mode choice; it remains
-unexecuted. No production exception or automatic native follow-on is
+The [focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+establish fresh reading of both originals by the exact short Zed copy after
+restricted-mode choices. Long-file application/type facts still fail, and the
+long buffer has an inode-only filename. Exact delivery and saving are unmeasured.
+Antony authorized the finite local-only bookmark diagnostic on 2026-10-06; it
+remains unexecuted and this handoff remains unresolved. No production exception or automatic native follow-on is
 authorized. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.

@@ -291,10 +291,14 @@ support is absolute. The [completed same-object diagnostic](../verification/same
 passes local identity/marker access at 900/1,500 bytes; long application/type
 facts failed. The missed Zed trust stop leaves no compliant long receiver or
 Finder-selection result. Antony accepted the incomplete report with no retry.
-The [returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
-keep the route live. Antony authorized the new two-request Zed diagnostic on
-2026-10-06 with its fixture-only restricted-mode choice; it remains unexecuted
-and supplies no production fact, grant, receipt or action pass. External inquiries are unused drafts.
+The separately completed
+[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+establish fresh reading of both originals by the exact short registered Zed copy
+after restricted-mode choices. Long native application/type acquisition still
+fails; the long buffer has an inode-only filename, exact delivery is opaque and
+saving is untested. Antony authorized the finite local-only bookmark diagnostic
+on 2026-10-06; it remains unexecuted. This supplies no production fact, grant or action acceptance and
+keeps the complete route live. External inquiries are unused drafts.
 Action/search subjects and retained/repair/search profiles stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |

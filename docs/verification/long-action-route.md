@@ -21,8 +21,15 @@ namespace diagnostic is now complete with a stop-rule deviation. Its
 local identity/marker access at 900/1,500 bytes, but long application/type facts
 failed and no compliant long receiver or Finder-selection result was obtained.
 Antony accepted that report for returned design with no retry authorized.
-The [remaining route and authorized focused diagnostic](#same-object-result-and-remaining-route)
-keep production spelling/support exceptions and the complete route unresolved.
+The separately authorized [focused Zed result](#focused-zed-result-and-bookmark-question)
+now establishes fresh reading of both original files by the exact short Zed copy
+after restricted-mode choices. The long buffer has an inode-only filename;
+native application/type checks still fail, delivered operands are opaque and
+saving is untested. Antony accepted that readable report. The
+[returned assessment and authorized bookmark diagnostic](focused-zed-route-assessment.md)
+separate stored naming information from a usable receiver address. This local-only
+diagnostic is authorized but unexecuted; production spelling/support and the complete route remain
+unresolved.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
 and the [remaining decision](#decision-for-antony). The
@@ -764,7 +771,9 @@ No formal model would discharge these opaque native/receiver outcomes.
 
 ### Authorized focused Zed receiver diagnostic
 
-**Antony answered "authorized" on 2026-10-06; unexecuted.** This new finite
+**Antony answered "authorized" on 2026-10-06; the diagnostic is now complete
+and its report accepted.** Preserve this charter as the scope of the
+[actual result](focused-zed-receiver-prototype.md). This finite
 two-file receiver diagnostic answers one question: can the exact installed
 short Zed copy render the original 1,500-byte file through the bare native-ID
 operand, when the known project dialog is dismissed by staying restricted?
@@ -853,6 +862,45 @@ Every original long working case, short regression, authority, compatibility
 and support obligation remains binding. k156 and all route ancestors stay live
 until the complete agreed supported route exists; no automatic next experiment,
 production exception, implementation or final review follows this authorization.
+
+### Focused Zed result and bookmark question
+
+**k155 completes the named-file receiver question; k156 keeps the full route
+live.** Antony accepted the [readable report](focused-zed-receiver-prototype.md)
+on 2026-10-06: “I've read the document. I agree.” The one guest/collection made
+two requests, then disposed the guest in 152.15 seconds. Both unique original
+markers were visible in fresh, unobstructed buffers owned by the exact selected
+short registered Zed copy, after one authorized Stay in Restricted Mode choice
+per request. Independent identities/decoys, reset, kernel start instant/live
+executable and UI-owner evidence support this positive. Neither trust nor a
+production consent/spelling exception follows.
+
+The long buffer shows inode **223952**, not the original filename. Long
+application and content-type checks report Cocoa 256 / underlying POSIX 28;
+they remain unacquired facts. Exact delivered operands are opaque, saving is
+untested and default/directory/Finder/long-app/cancellation subjects were unrun.
+The [technical evidence](focused-zed-receiver-technical-evidence.md) owns the
+raw process/request/control records; k152's missed-stop evidence remains frozen.
+
+Antony then asks whether bookmarks would improve Zed's filename, and whether
+their cleanup would be an issue. The
+[returned assessment](focused-zed-route-assessment.md#bookmarks-and-zeds-filename)
+re-reads the public SDK and pinned Zed URL-string/file-path ingress. An embedded
+original name is not a separate display-name input on that inspected path;
+resolving to the long original pathname could restore the known consumption
+limit. Per-action bookmark data needs no durable registry. Security-scoped
+access and file-ID-preference flags are not naming repairs.
+
+The [finite bookmark charter](focused-zed-route-assessment.md#proposed-finite-bookmark-diagnostic)
+has four serialized creation/resolution cases, one guest/collection, a 15-minute
+cap and zero external application requests. It separately grades stored-name
+recovery, actual returned URL and independently verified same-object reading.
+Antony answered **"authorized"** on 2026-10-06 to that exact diagnostic; it
+remains unexecuted. k157 completes the source/charter handoff, k158 runs the sole
+prototype and k159 assesses its report and reaction under k156. No automatic
+successor is commissioned. Both acceptance sets, three profiles, original byte spelling,
+supported basis, long native facts/exact-copy receipt and k128's final review
+remain required. No ADR selects this incomplete route.
 
 ## SDK and source provenance
 
@@ -1026,7 +1074,7 @@ design only. It preserves every
 original working case and authorizes no spelling,
 setup, private-policy, consent or contract exception and no automatic probe series.
 
-**Current decision:** Antony accepted k152's incomplete
+**Earlier decision:** Antony accepted k152's incomplete
 [same-object report](same-object-namespace-prototype.md#returned-gap-and-human-reaction)
 on 2026-10-06 with no retry authorized. Its spent permission covered changed
 diagnostic spelling and legacy-support investigation only, without production
@@ -1036,7 +1084,8 @@ results. Antony subsequently answered **"authorized"** on 2026-10-06 to the
 [focused two-request Zed diagnostic](#authorized-focused-zed-receiver-diagnostic):
 one 900-byte control and one 1,500-byte original file, one guest/collection and
 15-minute cap, with a fixture-only Stay in Restricted Mode interaction and exact
-live-executable attribution. The diagnostic remains unexecuted. This new finite
+live-executable attribution. The diagnostic has since completed with the accepted
+[focused result](#focused-zed-result-and-bookmark-question). This finite
 permission admits only the verified restricted-mode choice, granting no trust;
 it rewrites no old stop-rule evidence. k154 hands the charter to prototype k155
 and returned design k156. No production exception, automatic next experiment,
@@ -1046,7 +1095,21 @@ file/directory/app working case, both controls, cancellation, authority, three
 compatibility profiles and independent action/search acceptance remain required.
 Native facts/selection, real default/Zed directory/Finder behavior, long
 constrained launch, executable receipt, original submission bytes and durable
-support remain explicit gaps; a focused receiver positive could waive none.
+support remain explicit gaps; the focused receiver positive waives none.
+
+**Current decision:** Antony answered **"authorized"** on 2026-10-06 to the exact
+[local-only bookmark diagnostic](focused-zed-route-assessment.md#proposed-finite-bookmark-diagnostic).
+The [returned assessment](focused-zed-route-assessment.md) consumes k155's accepted
+positive and Antony's name/cleanup questions. The diagnostic asks whether a bookmark
+can recover an original name and yield a URL that still reads the same long file;
+it promises no Zed naming improvement. It remains unexecuted: k157 hands off
+the source/charter, k158 owns one guest/collection and k159 retains returned
+design. Four cases, at most two builds before collection, a 15-minute
+clone-through-disposal cap and zero external application requests bind unchanged.
+No repair/recollection, security scope/UI interaction, reader fallback or
+automatic follow-on is authorized. k156 and every route ancestor remain live.
+No production exception, automatic investigation chain, final review or route
+retirement is earned by this finite diagnostic authorization.
 
 ### Prepared capability inquiry
 
@@ -1203,6 +1266,53 @@ setup, consent or receipt rule still needs its own explicit decision. No polling
 schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
 
 ## Deterministic check boundary
+
+The k157 authorized source/charter handoff records Antony's exact decision,
+reconciles current approval labels and cuts the one prototype k158 plus returned
+design k159 under k156. Its changes are documentation/tree/presentation only.
+The fixed cases, bookmark options, reader and bounds are unchanged from the
+reviewed proposal. No new native experiment, application request, declaration
+check or implementation runs in the handoff. Retire only k157 once its final
+document and presentation checks pass; k158/k159 keep k156 and every route
+ancestor live, so no parent close or full-route review is earned.
+
+`task design:workspace-render` and `task check:docs` passed for this handoff.
+All 495 frozen document/presentation/checker/structural/evidence and local
+task/brief subjects matched individually afterward. The authorized charter's
+test bullets match the reviewed proposal byte for byte; 357 retained evidence
+and structural-check subjects match the preceding checked revision individually,
+so its unchanged SDL/example checks remain applicable without a new native or
+structural run. The [presentation record](../design/architecture/README.md)
+covers the settled light/dark/narrow views, complete exports, transferred-subject
+digests and disposal. Final prose recording is checked again on frozen subjects
+before retiring and sealing only k157.
+
+The following records apply to earlier design revisions.
+
+k156 consumes the accepted focused Zed report and bounded raw/control/process
+evidence. It reconciles current route prose and the editable receiver/bookmark
+view while leaving both k152 and k155 corpora immutable. Pinned Zed ingress
+and SDK bookmark semantics are source evidence only; no new macOS diagnostic
+or application request runs in returned design. Its bookmark charter is a
+proposal awaiting Antony's decision. Current validation belongs to document
+links, independent retained/repair/search structural tasks and presentation.
+All native/binary/public
+acceptance remains planning's after a complete supported design and review.
+
+`task design:workspace-render`, `task design:action-repair-check` (including
+the retained workspace checks), `task design:search-check` and `task check:docs`
+passed. Retained action, repair and search SDL/examples were checked independently
+and composed with their existing negative controls. The 491 frozen document,
+anchor, manifest, checker, structural and evidence subjects matched their
+pre-check digests individually afterward; all 119 k155 output-manifest digests
+also matched. These are structural/document checks, not binary/public acceptance.
+The [presentation record](../design/architecture/README.md) covers settled light,
+dark and narrow browser views, complete exports, matching transferred subjects
+and successful disposal of the separate Linux clone. Final prose recording is
+followed by another frozen-subject documentation check before describing the
+open jj change. k156 is neither retired nor signalled: the full route is unresolved.
+
+The following records apply to earlier design revisions.
 
 k153 consumes the accepted incomplete same-object report, exact native/UI
 records and Zed's public restricted-mode contract. It reconciles current prose

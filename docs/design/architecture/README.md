@@ -83,39 +83,81 @@ unexpected project trust UI. The driver missed that stop boundary and six later
 requests earn no compliant receiver/selection credit. Long Zed has no after-UI
 capture; long directory requests were unrun. Antony accepted the incomplete
 report with no retry. The allowance is spent and raw instruments remain frozen.
-The [returned gaps and focused diagnostic](../../verification/long-action-route.md#same-object-result-and-remaining-route)
-keep the absolute requirement. Antony separately authorized the new two-request
-named-Zed file diagnostic on 2026-10-06: one 900-byte control and one 1,500-byte
-target, one guest/collection and a 15-minute cap. Its sole security-UI exception
-is the verified exact fixture's
-Stay in Restricted Mode choice, granting no trust; every other security UI stops.
-It requires fresh receiver baselines and independently established kernel start
-instant/live executable identity of the selected short registered copy. This new
-commission is authorized and unexecuted. k154 completes the assessment/charter
-handoff, k155 runs the sole prototype and k156 assesses its report/reaction.
-Native facts, real default/Zed directory
-and Finder behavior, long application selection/receipt, original external bytes
-and lasting support remain unresolved; no production exception is adopted.
+The separately completed
+[focused Zed result](../../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
+establishes fresh original-file reading at 900/1,500 bytes by the exact short
+registered Zed copy after one authorized restricted-mode choice each. The long
+buffer shows inode 223952 rather than its original filename. Long native
+application/type acquisition still fails, delivered operands are opaque and
+saving is untested. Antony accepted the readable report; its two-request
+permission is spent and k152's missed-stop corpus remains unchanged.
+The [returned bookmark assessment](../../verification/focused-zed-route-assessment.md)
+answers Antony's name and cleanup questions: the inspected Zed ingress consumes
+URL strings/paths, with no separate bookmark-name input. An action-local bookmark
+needs no durable registry. A proposed local-only diagnostic separately checks
+stored original name, returned URL and fixed whole-path same-object reading;
+four cases, one guest/collection, a 15-minute cap and zero external requests.
+Antony answered **"authorized"** on 2026-10-06 to that exact diagnostic. It
+remains unexecuted: k157 hands off the source/charter, prototype k158 owns the
+sole collection and returned design k159 retains the full route under k156.
+The fixed reader, bookmark options and caps are unchanged; no repair/recollection,
+scope/UI interaction or automatic successor is authorized. It supplies no
+receiver naming promise. Native facts,
+default/directory/Finder behavior, long app selection/receipt, original external
+bytes and lasting support remain unresolved; no production exception is adopted.
 External inquiries remain unused drafts;
 no sender or upstream response is needed for the current work.
 Any production spelling/setup exception remains unapproved.
 No support request has been sent, and no automatic probe series is authorized.
-No new native run occurred in returned design, and no action pass is claimed. Antony's original requirement remains retained; final
+No new native run occurred in this source/charter handoff, and no action pass is claimed. Antony's original requirement remains retained; final
 review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Records the accepted incomplete result and new two-request authorization while retaining all complete-route gaps.
-- [Same-object result and remaining route](../../verification/long-action-route.md#same-object-result-and-remaining-route) — Separates native-fact failures and receiver/unrun boundaries from the local positive and accepted incomplete report.
-- [Focused Zed receiver diagnostic](../../verification/long-action-route.md#authorized-focused-zed-receiver-diagnostic) — Records Antony's exact authorization, fixture-only restricted-mode interaction and fresh prototype/returned-design handoff with live-executable attribution.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the accepted result and new finite authorization without changing either original survey's evidence.
-- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Carries the new diagnostic authorization while preserving the measured boundary and unresolved facts/receivers.
-- [Item-array result bridge](../../verification/item-array-submission.md) — Carries the new diagnostic authorization while preserving the item-array corpus and spent allowance.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Keeps native-fact, receiver, long-app and final-review obligations live after the incomplete result.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Consumes the result with actual-search provenance and unchanged public locations still required.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the separate new finite authorization without changing accepted client behavior.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Keeps grants, receipts and action acceptance distinct from the diagnostic result.
-- [Search location glossary](../../../CONTEXT.md#language) — Records the completed incomplete result and separately authorized, unexecuted focused diagnostic.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Marks the exact bookmark diagnostic authorized/unexecuted and hands collection to k158 while retaining all route gaps.
+- [Focused Zed result and bookmark question](../../verification/long-action-route.md#focused-zed-result-and-bookmark-question) — Records Antony's authorization and the source/charter, prototype and returned-design split.
+- [Finite bookmark diagnostic](../../verification/focused-zed-route-assessment.md#proposed-finite-bookmark-diagnostic) — Records authorization of the unchanged four cases, fixed reader, zero external requests and finite caps.
+- [Remaining route decision](../../verification/long-action-route.md#decision-for-antony) — Replaces the pending decision with the authorized finite commission and keeps the complete route live.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Marks the local diagnostic authorized/unexecuted without changing either independent survey corpus.
+- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Carries the finite authorization while retaining failed native acquisition and full-route obligations.
+- [Item-array result bridge](../../verification/item-array-submission.md) — Marks the local bookmark test authorized/unexecuted and preserves the spent item-array allowance.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Records the finite authorization without adopting production behavior.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Marks the diagnostic authorized/unexecuted while keeping the action handoff unresolved.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the finite authorization with unchanged client behavior.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Marks the diagnostic authorized/unexecuted without granting an action pass.
+- [Search location glossary](../../../CONTEXT.md#language) — Carries the authorized/unexecuted local test alongside unchanged public paths.
+
+The k157 authorization handoff was checked in Firefox 151.0.3 in the isolated
+Linux clone `koine-k157-authorization`. A fresh light deep link identified the
+intended view and Current/Updated markers. Settled light and dark discussion
+views showed authorized/unexecuted status, all seven context links and one
+changed-view summary. The actual 500 × 600 dark content viewport reflowed the
+heading, status and prose. Complete light and dark exports at 1,056 × 1,594
+showed all nine nodes and numbered reading edges without overlap. The first
+post-click light capture still showed the diagram and receives no discussion
+credit; its settled recapture supplies that evidence. Viewer/manifest/D2/SVG
+digests matched host/guest individually before and after inspection. The clone's
+stop receipt confirmed disposal. These are presentation checks only; the
+authorized macOS guest/collection remains unspent.
+
+The following presentation records apply to earlier revisions.
+
+The k156 returned assessment was checked in Firefox 151.0.3 in the isolated
+Linux clone `koine-k156-design`. A fresh light deep link identified the intended
+view and Current/Updated markers. Settled light and dark discussion views showed
+the accepted result, unapproved proposal, seven context links and one changed-view
+summary. The actual 500 × 600 dark content viewport reflowed the heading, status
+and prose without horizontal clipping. Complete light and dark SVG exports at
+1,056 × 1,594 showed all nine nodes and numbered reading edges without overlap.
+Initial headless viewer captures showed only the loading message and earn no
+presentation credit; the settled GUI views supply that evidence. The agent's
+window-resize command failed without an X11 window ID; a fresh narrow profile
+provided the measured viewport. Viewer/manifest/D2/SVG digests matched host/guest
+individually before and after inspection. The clone's stop receipt reports
+successful disposal. This checks presentation only, with no macOS experiment,
+receiver request or native action acceptance.
+
+The following presentation records apply to earlier revisions.
 
 The k154 authorized handoff was checked in Firefox 151.0.3 in the isolated
 Linux clone `koine-k154-authorization`. A fresh light deep link at a 1,280-pixel

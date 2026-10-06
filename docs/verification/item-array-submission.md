@@ -77,10 +77,13 @@ replacement; no long local-consumer pass follows. The [completed same-object dia
 passes local identity/marker access at 900/1,500 bytes; long application/type
 facts fail and a missed Zed trust stop leaves no compliant long receiver or
 Finder-selection result. Antony accepted the incomplete report with no retry.
-The [returned gaps and focused diagnostic](long-action-route.md#same-object-result-and-remaining-route)
-keep the absolute requirement and complete route live. Antony authorized the
-new two-request Zed diagnostic on 2026-10-06 with its fixture-only restricted-mode
-choice; it remains unexecuted. No item-array repeat, production identity-spelled
+The separately completed
+[focused Zed result and returned assessment](long-action-route.md#focused-zed-result-and-bookmark-question)
+establish fresh reading of both originals by the exact short Zed copy after
+restricted-mode choices. Native application/type acquisition still fails; the
+long buffer shows an inode-only filename, exact delivery is opaque and saving
+is untested. Antony authorized the finite local-only bookmark diagnostic on
+2026-10-06; it remains unexecuted. No item-array repeat, production identity-spelled
 submission or complete route is commissioned
 by these results. This report's measured corpus
 and raw records remain intact.
