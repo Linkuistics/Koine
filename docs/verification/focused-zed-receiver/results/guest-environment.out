@@ -1,0 +1,120 @@
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+Darwin Manageds-Virtual-Machine.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:32 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_VMAPPLE arm64
+VirtualMac2,1
+arm64
+   Device Identifier:         disk3s5
+   Device Node:               /dev/disk3s5
+   Whole:                     No
+   Part of Whole:             disk3
+
+   Volume Name:               Data
+   Mounted:                   Yes
+   Mount Point:               /System/Volumes/Data
+
+   Partition Type:            41504653-0000-11AA-AA11-00306543ECAC
+   File System Personality:   APFS
+   Type (Bundle):             apfs
+   Name (User Visible):       APFS
+   Owners:                    Enabled
+
+   OS Can Be Installed:       Yes
+   Booter Disk:               disk3s2
+   Recovery Disk:             disk3s3
+   Media Type:                
+   Protocol:                  
+   SMART Status:              Not Supported
+   Volume UUID:               F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+   Disk / Partition UUID:     F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+
+   Disk Size:                 44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Device Block Size:         4096 Bytes
+
+   Volume Used Space:         6.8 GB (6787022848 Bytes) (exactly 13255904 512-Byte-Units)
+   Container Total Space:     44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Container Free Space:      16.2 GB (16174321664 Bytes) (exactly 31590472 512-Byte-Units)
+   Allocation Block Size:     4096 Bytes
+
+   Media OS Use Only:         No
+   Media Read-Only:           No
+   Volume Read-Only:          No
+
+   Device Location:           Internal
+   Removable Media:           Fixed
+
+   Solid State:               Yes
+
+   This disk is an APFS Volume.  APFS Information:
+   APFS Container:            disk3
+   APFS Physical Store:       disk0s2
+   APFS Volume Group:         F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+   Encrypted:                 No
+   FileVault:                 No
+   Sealed:                    No
+   Locked:                    No
+
+Executable=/private/tmp/k155-bundle/K155Probe.app/Contents/MacOS/K155Probe
+Identifier=dev.antony.Koine.K155Probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=550 flags=0x10000(runtime) hashes=6+7 location=embedded
+Signature size=8977
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 6, 2026 at 6:01:53 AM
+Info.plist entries=5
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=188
+[Dict]
+cca9a8a0253b5c37c0472135768a762ce2b9c768e63c46eb8e838ba25f8068c0  /tmp/k155-bundle/K155Probe.app/Contents/MacOS/K155Probe
+Executable=/Applications/Zed.app/Contents/MacOS/zed
+Identifier=dev.zed.Zed
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=2016343 flags=0x10000(runtime) hashes=63000+7 location=embedded
+Signature size=9059
+Authority=Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Sep 30, 2026 at 3:03:33 PM
+Info.plist entries=30
+TeamIdentifier=MQ55VZLNZQ
+Runtime Version=15.0.0
+Sealed Resources version=2 rules=13 files=5
+Internal requirements count=1 size=172
+[Dict]
+	[Key] com.apple.security.automation.apple-events
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.cs.allow-jit
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.cs.allow-unsigned-executable-memory
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.device.audio-input
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.device.camera
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.files.downloads.read-write
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.files.user-selected.read-write
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.personal-information.addressbook
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.personal-information.calendars
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.personal-information.location
+	[Value]
+		[Bool] true
+	[Key] com.apple.security.personal-information.photos-library
+	[Value]
+		[Bool] true

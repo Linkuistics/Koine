@@ -86,6 +86,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-same-object.py --output {{.OUTPUT | shellQuote}}
 
+  fixture:focused-zed-receiver:
+    desc: Build/sign k155 throwaway helper; its finite authorization is not repeat permission
+    cmds:
+      - bash scripts/build-focused-zed-probe.sh
+
+  fixture:focused-zed-receiver-vm:
+    desc: One supervised k155 two-request collection; never rerun after its allowance is spent
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-focused-zed.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

@@ -56,6 +56,16 @@ the absolute long-path requirement; keep this final design child live if unresol
 
 ## Notes
 
+Antony accepted the readable k155 report on 2026-10-06: "I've read the
+document. I agree." The report is at
+docs/verification/focused-zed-receiver-prototype.md, with detailed provenance
+in docs/verification/focused-zed-receiver-technical-evidence.md. Carry the
+observed reading of both original files into design, while preserving the
+short-address spelling exception, restricted-mode dialog, number-only long
+filename, failed native metadata checks, opaque delivery, untested saving and
+remaining complete-route obligations. This acceptance commissions no further
+experiment and does not adopt the workaround for production.
+
 Scoped source/charter/prototype retirements waive no complete-route or review
 obligation. Select no ADR for an unestablished mechanism and infer no universal
 impossibility from finite failure. Private native operands do not authorize a

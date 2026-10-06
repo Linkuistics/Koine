@@ -1,0 +1,4 @@
+{"event":"runningZed","pid":766,"bundleURL":"\/Applications\/Zed.app"}
+{"event":"terminateReceiver","pid":766,"accepted":true}
+{"event":"runningCount","count":1}
+{"event":"done"}
