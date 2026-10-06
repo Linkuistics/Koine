@@ -572,10 +572,14 @@ lookup does not require a retained-handle protocol. Public file-reference URL
 acquisition was measured in the [completed diagnostic](verification/file-reference-url-acquisition-prototype.md):
 both factories pass local identity/reading/original bytes at 900/1,023 and fail
 acquisition at 1,024/1,500. No long action or receiver pass follows. Long-path
-support remains absolute. The [next workaround proposal](verification/long-action-route.md#url-result-and-next-workaround)
-now has authorization for one finite diagnostic of short native same-object
-spelling and legacy-support assumptions. It is unexecuted and changes no current
-client input or accepted production behavior. External
+support remains absolute. The [completed same-object diagnostic](verification/same-object-namespace-prototype.md)
+passes local identity/marker access at 900/1,500 bytes, but long application/type
+facts failed. A missed Zed trust-dialog stop leaves no compliant long receiver
+or Finder-selection result. Antony accepted the incomplete report with no
+retry authorized. The [returned gaps and focused diagnostic](verification/long-action-route.md#same-object-result-and-remaining-route)
+leave the route unresolved. Antony authorized the new two-request Zed diagnostic
+on 2026-10-06 with its fixture-only restricted-mode choice; it remains unexecuted
+and changes no client input or accepted production behavior. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
 production receiver-visible spelling change or working-case loss is approved.
 Both controls are required for the later actions; selection does not confer them.

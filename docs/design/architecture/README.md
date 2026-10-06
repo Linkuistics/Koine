@@ -75,15 +75,27 @@ passes local acquisition/identity/marker/original bytes at 900/1,023 but fails
 acquisition at 1,024/1,500. Long local consumption and subsequent stages were
 not reached. Preserve the initial instrument stop, sole correction and expressly
 authorized replacement as distinct attempts. Long-path support is absolute.
-The [returned workaround proposal](../../verification/long-action-route.md#url-result-and-next-workaround)
-uses pinned XNU bare-object opening tests as a lead for one finite real-receiver
-diagnostic. A filename-preserving suffix variant was rejected by source review:
-its append still uses MAXPATHLEN. Bare identity loses the filename and requires
-changed external spelling plus legacy-support investigation. Antony authorized
-that finite diagnostic only; no production exception is adopted. Zed normalization and native fact/handler parity remain gaps.
-One guest/collection, four file/directory subjects, at most twelve requests,
-per-request fresh receiver controls and a 45-minute cap are authorized, unrun.
-The source/charter handoff is followed by one prototype and returned design.
+The [completed same-object diagnostic](../../verification/same-object-namespace-prototype.md)
+establishes independent local identity/marker access for files and directories
+at 900/1,500 bytes. Long application/type facts failed despite returned handlers.
+TextEdit renders the 900-byte control; Zed shows its control marker behind
+unexpected project trust UI. The driver missed that stop boundary and six later
+requests earn no compliant receiver/selection credit. Long Zed has no after-UI
+capture; long directory requests were unrun. Antony accepted the incomplete
+report with no retry. The allowance is spent and raw instruments remain frozen.
+The [returned gaps and focused diagnostic](../../verification/long-action-route.md#same-object-result-and-remaining-route)
+keep the absolute requirement. Antony separately authorized the new two-request
+named-Zed file diagnostic on 2026-10-06: one 900-byte control and one 1,500-byte
+target, one guest/collection and a 15-minute cap. Its sole security-UI exception
+is the verified exact fixture's
+Stay in Restricted Mode choice, granting no trust; every other security UI stops.
+It requires fresh receiver baselines and independently established kernel start
+instant/live executable identity of the selected short registered copy. This new
+commission is authorized and unexecuted. k154 completes the assessment/charter
+handoff, k155 runs the sole prototype and k156 assesses its report/reaction.
+Native facts, real default/Zed directory
+and Finder behavior, long application selection/receipt, original external bytes
+and lasting support remain unresolved; no production exception is adopted.
 External inquiries remain unused drafts;
 no sender or upstream response is needed for the current work.
 Any production spelling/setup exception remains unapproved.
@@ -93,17 +105,60 @@ review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Replaces the spent URL proposal with its measured result, the absolute requirement and an authorized, unexecuted bare-object namespace investigation.
-- [URL result and next workaround](../../verification/long-action-route.md#url-result-and-next-workaround) — Reconciles all URL attempts, separates remaining stages and assesses the pinned-source namespace lead and its limits.
-- [Finite same-object namespace diagnostic](../../verification/long-action-route.md#proposed-finite-same-object-namespace-diagnostic) — Records authorization for the exact bounded real-receiver experiment with identity/decoy and per-request freshness controls; production adoption stays open.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the later URL failures and distinguishes upstream local-open evidence from unmeasured receiver behavior.
-- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Replaces stale item-array execution-pending prose with both completed diagnostic results and the authorized finite next diagnostic.
-- [Item-array result bridge](../../verification/item-array-submission.md) — Consumes the later URL result without changing its measured corpus or inferring another experiment.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Consumes URL failures and keeps every long working case, native stage and final-review obligation live.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Replaces stale unexecuted-URL prose while preserving actual-search provenance and unchanged public locations.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records URL failures and leaves client input and accepted production behavior unchanged.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Consumes the result without crediting a grant, receipt, native fact or action pass.
-- [Search location glossary](../../../CONTEXT.md#language) — Records completed URL acquisition limits and the authorized finite spelling/support-policy diagnostic.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Records the accepted incomplete result and new two-request authorization while retaining all complete-route gaps.
+- [Same-object result and remaining route](../../verification/long-action-route.md#same-object-result-and-remaining-route) — Separates native-fact failures and receiver/unrun boundaries from the local positive and accepted incomplete report.
+- [Focused Zed receiver diagnostic](../../verification/long-action-route.md#authorized-focused-zed-receiver-diagnostic) — Records Antony's exact authorization, fixture-only restricted-mode interaction and fresh prototype/returned-design handoff with live-executable attribution.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the accepted result and new finite authorization without changing either original survey's evidence.
+- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Carries the new diagnostic authorization while preserving the measured boundary and unresolved facts/receivers.
+- [Item-array result bridge](../../verification/item-array-submission.md) — Carries the new diagnostic authorization while preserving the item-array corpus and spent allowance.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Keeps native-fact, receiver, long-app and final-review obligations live after the incomplete result.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Consumes the result with actual-search provenance and unchanged public locations still required.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the separate new finite authorization without changing accepted client behavior.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Keeps grants, receipts and action acceptance distinct from the diagnostic result.
+- [Search location glossary](../../../CONTEXT.md#language) — Records the completed incomplete result and separately authorized, unexecuted focused diagnostic.
+
+The k154 authorized handoff was checked in Firefox 151.0.3 in the isolated
+Linux clone `koine-k154-authorization`. A fresh light deep link at a 1,280-pixel
+content width identified the intended view and Current/Updated markers. The
+settled dark discussion showed authorized/unexecuted status, all seven context
+links and one changed-view summary. Complete light and explicitly configured
+dark SVG exports were inspected at 1,100 × 1,850: all nodes/edges and the new
+authorization labels are readable without overlap. The actual 500 × 600 dark
+content window reflowed the discussion heading, status and introductory prose.
+An initial launch used a nonexistent guest home; inspection identified the
+actual account, and moving the presentation/profile there corrected that setup.
+Transient hash/reload screenshots did not reach discussion; the settled semantic
+Current discussion link did. The first nominal dark headless export remained
+light; explicit Firefox dark-content preferences produced the inspected dark
+export. Viewer/manifest/D2/SVG digests matched host/guest individually before
+and after inspection and stayed unchanged. The clone's stop receipt reports
+successful disposal. These presentation checks use none of the authorized macOS
+diagnostic allowance and establish no native result or complete route.
+Current host discussion: <http://127.0.0.1:8878/#discussion>.
+Changed view: <http://127.0.0.1:8878/#diagram-workspace-route-candidates>.
+
+The following browser records apply to earlier design revisions.
+
+The k153 returned-result/proposal revision was checked in Firefox 151.0.3 in
+the isolated Linux clone `koine-k153-design`. Fresh light and dark deep links
+at a 1,280-pixel browser width identified the intended view and Current/Updated
+markers. The dark discussion showed its proposed status, seven context links
+and one actual changed-view summary. Complete light and dark exports were
+inspected at 1,100 × 1,850, with all nodes/edges and no overlapping labels.
+At an actual 500 × 600 Firefox content window, the discussion heading, status
+and introductory prose reflowed without horizontal clipping. A later settled
+1,854-pixel check reached the discussion; it adds no wide diagram verdict.
+The agent resize primitive lacked an X11 identifier, so the guest's existing
+xdotool resized the independently identified Firefox window. Transient resize
+captures were discarded in favor of the settled view. Viewer/manifest/D2/SVG
+digests matched host/guest and stayed unchanged per file before/after inspection.
+The clone's stop receipt reports successful disposal. These are presentation
+checks, using none of the spent macOS diagnostic allowance, and establish no
+native action/search or complete-route acceptance. Current host discussion:
+<http://127.0.0.1:8878/#discussion>.
+Changed view: <http://127.0.0.1:8878/#diagram-workspace-route-candidates>.
+
+The following browser records apply to earlier design revisions.
 
 The k151 authorized source/charter revision was checked in Firefox 151.0.3
 in the isolated Linux clone `koine-k151-authorization`. The fresh light deep

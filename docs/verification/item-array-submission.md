@@ -73,9 +73,14 @@ file-reference URL direction. Neither representation is credited as a complete
 route. The separate [completed URL diagnostic](file-reference-url-acquisition-prototype.md)
 passes acquisition/local reading/original bytes at 900/1,023 but fails acquisition
 at 1,024/1,500. Preserve its instrument stop, correction and explicitly authorized
-replacement; no long local-consumer pass follows. The [returned workaround proposal](long-action-route.md#url-result-and-next-workaround)
-retains the absolute requirement; Antony separately authorized the finite
-bare-object spelling/legacy-support diagnostic. It is unexecuted. No item-array
-repeat, production identity-spelled submission or complete route is commissioned
+replacement; no long local-consumer pass follows. The [completed same-object diagnostic](same-object-namespace-prototype.md)
+passes local identity/marker access at 900/1,500 bytes; long application/type
+facts fail and a missed Zed trust stop leaves no compliant long receiver or
+Finder-selection result. Antony accepted the incomplete report with no retry.
+The [returned gaps and focused diagnostic](long-action-route.md#same-object-result-and-remaining-route)
+keep the absolute requirement and complete route live. Antony authorized the
+new two-request Zed diagnostic on 2026-10-06 with its fixture-only restricted-mode
+choice; it remains unexecuted. No item-array repeat, production identity-spelled
+submission or complete route is commissioned
 by these results. This report's measured corpus
 and raw records remain intact.

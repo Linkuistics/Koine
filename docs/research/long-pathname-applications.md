@@ -695,12 +695,16 @@ Public NSURL/CFURL reference factories are distinct from the unsupported FSRef
 bridges and from manually constructed volfs strings. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
 passes local acquisition/identity/reading/original bytes at 900/1,023 but fails
 acquisition at 1,024/1,500. No long local-consumer or later-stage pass follows.
-The [returned workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
-preserves the absolute long-path requirement and records authorization for one
-finite native same-object spelling/legacy-support diagnostic. Pinned XNU lookup
-and upstream tests supply a concrete local lead, while Apple DTS and Zed's
-canonicalizer preserve the support and receiver gaps. The diagnostic is
-authorized but unexecuted; no production mechanism or exception is adopted. No complete route, action acceptance or
+The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
+measures the pinned XNU local lead: original identity/marker access passes at
+900/1,500 bytes. Long application/type facts fail; a missed Zed trust stop leaves
+no compliant long receiver or Finder-selection result. Antony accepted the
+incomplete report with no retry. The
+[returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
+keep the support/receiver stages open. Antony authorized the new two-request
+named-Zed diagnostic on 2026-10-06 with its fixture-only restricted-mode
+interaction; it remains unexecuted. No
+production mechanism or exception, complete route, action acceptance or
 automatic probe series is claimed.
 These later observations/decisions are not part of either independent survey.
 

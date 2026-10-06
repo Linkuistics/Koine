@@ -213,10 +213,16 @@ but fails acquisition at 1,024/1,500. Its initial instrument stop, sole repair
 and expressly authorized replacement remain distinct. Long local consumption
 and later action stages were not reached. Long-path support is absolute. The
 [returned workaround proposal](docs/verification/long-action-route.md#url-result-and-next-workaround)
-now carries Antony's authorization of one finite short native same-object
-spelling/legacy-support diagnostic. It remains unexecuted; changed production
-spelling and durable-support exceptions are not adopted. No complete
-route or automatic follow-on is selected. Node-ID resolution
+now has a [completed same-object result](docs/verification/same-object-namespace-prototype.md):
+local identity/marker access passes at 900/1,500 bytes; long application/type
+facts fail and a missed Zed trust stop leaves no compliant long receiver or
+Finder-selection result. Antony accepted the incomplete report with no retry.
+The [returned gaps and focused diagnostic](docs/verification/long-action-route.md#same-object-result-and-remaining-route)
+keep the full route live. Antony authorized the new two-request Zed diagnostic
+on 2026-10-06, with only its verified fixture's Stay in Restricted Mode choice;
+it remains unexecuted. Changed production spelling and
+durable-support exceptions are not adopted. No complete route or automatic
+follow-on is selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External
 inquiries remain unused drafts, and no automatic probe series is authorized.
 The refusal proposal is not adopted; no complete route or action acceptance

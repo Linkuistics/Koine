@@ -325,10 +325,16 @@ unchanged. The [completed URL diagnostic](../verification/file-reference-url-acq
 passes acquisition/local identity/marker/original-byte conversion at 900/1,023
 but fails acquisition at 1,024/1,500. No long local-consumer pass follows; retain
 the initial instrument stop, sole correction and expressly authorized replacement.
-Long-path support remains absolute. The [next workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
-records authorization for one finite same-object namespace diagnostic of changed
-spelling/legacy-support assumptions; it is unexecuted and no production exception
-is adopted. Original
+Long-path support remains absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
+establishes independent local identity/marker access at 900/1,500 bytes, but long
+application/type facts failed. Zed's control trust dialog was the required stop;
+later requests earn no compliant receiver/selection credit and the allowance is
+spent. Antony accepted the incomplete report with no retry authorized. The
+[returned result and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
+retain the unresolved stages; a two-request named-Zed diagnostic with a
+fixture-only restricted-mode interaction was newly authorized by Antony on
+2026-10-06 and remains unexecuted. No
+production spelling/support exception is adopted. Original
 working cases and complete-route review remain owed. Native facts,
 registration/handler, real receiver/Finder behavior and receipt remain owed.
 Node resolution requires native catalog provenance.

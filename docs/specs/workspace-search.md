@@ -2382,10 +2382,15 @@ contract. The [completed URL diagnostic](../verification/file-reference-url-acqu
 passes acquisition/local reading/original bytes at 900/1,023 but fails acquisition
 at 1,024/1,500. Long local consumption and subsequent action stages were not
 reached. Its instrument stop, correction and expressly authorized replacement
-remain separate. Long-path support is absolute. The [returned proposal](../verification/long-action-route.md#url-result-and-next-workaround)
-records authorization for one finite same-object spelling/legacy-support
-diagnostic. It is unexecuted; no production exception or automatic native
-follow-on is authorized. External
+remain separate. Long-path support is absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
+passes local identity/marker access at 900/1,500 bytes; long application/type
+facts failed and a missed Zed trust stop leaves no compliant long receiver or
+Finder-selection result. Antony accepted the incomplete report with no retry.
+The [returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
+keep this handoff unresolved. Antony authorized the new two-request Zed
+diagnostic on 2026-10-06 with its fixture-only restricted-mode choice; it remains
+unexecuted. No production exception or automatic native follow-on is
+authorized. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.
 No search actionability field, shorter value ceiling, native classification fact

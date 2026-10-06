@@ -287,9 +287,14 @@ and from an external opener/receiver protocol. The [completed URL diagnostic](..
 passes local acquisition/reading/original bytes at 900/1,023 but fails acquisition
 at 1,024/1,500, before any long local-consumer or later stage. Preserve its
 instrument stop, correction and explicitly authorized replacement. Long-path
-support is absolute. The [returned workaround proposal](../verification/long-action-route.md#url-result-and-next-workaround)
-records the authorized, unexecuted finite spelling/legacy-support diagnostic;
-it supplies no production fact, grant, receipt or action pass. External inquiries are unused drafts.
+support is absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
+passes local identity/marker access at 900/1,500 bytes; long application/type
+facts failed. The missed Zed trust stop leaves no compliant long receiver or
+Finder-selection result. Antony accepted the incomplete report with no retry.
+The [returned gaps and focused diagnostic](../verification/long-action-route.md#same-object-result-and-remaining-route)
+keep the route live. Antony authorized the new two-request Zed diagnostic on
+2026-10-06 with its fixture-only restricted-mode choice; it remains unexecuted
+and supplies no production fact, grant, receipt or action pass. External inquiries are unused drafts.
 Action/search subjects and retained/repair/search profiles stay distinct.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |

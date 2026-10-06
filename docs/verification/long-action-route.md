@@ -16,9 +16,13 @@ The [completed URL result and next decision](#url-result-and-next-workaround)
 now supersedes execution-pending URL prose. Both public URL creation patterns
 failed acquisition at 1,024/1,500 bytes; neither ran a long local consumer.
 Long-path support remains an absolute requirement. A concrete same-object
-namespace diagnostic is now expressly authorized below for changed diagnostic
-spelling and legacy-support investigation. It remains unexecuted; no production
-exception or complete route is adopted.
+namespace diagnostic is now complete with a stop-rule deviation. Its
+[accepted incomplete report](same-object-namespace-prototype.md) establishes
+local identity/marker access at 900/1,500 bytes, but long application/type facts
+failed and no compliant long receiver or Finder-selection result was obtained.
+Antony accepted that report for returned design with no retry authorized.
+The [remaining route and authorized focused diagnostic](#same-object-result-and-remaining-route)
+keep production spelling/support exceptions and the complete route unresolved.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
 and the [remaining decision](#decision-for-antony). The
@@ -656,8 +660,9 @@ That permits investigation of this named native-submission spelling/legacy-suppo
 exception for known harmless fixtures only; it adopts no production exception.
 The diagnostic tests a concrete long-object route through actual receivers.
 Retain the absolute functional requirement and every original acceptance row.
-The source/charter handoff is k151, the one prototype is k152 and the retained
-returned design is k153. Native execution remains unrun in this design session.
+The source/charter handoff was k151 and the prototype was k152; k153 consumes
+its [actual incomplete result](same-object-namespace-prototype.md). The scope
+below is the spent authorization record, not permission to repeat its commands.
 
 - One signed throwaway helper in one disposable macOS guest, one collection,
   at most two builds and one proven instrumentation correction before collection.
@@ -718,10 +723,136 @@ registration/constrained launch/receipt, certify native metadata or save semanti
 or close independent action/search, binary and public acceptance. A negative
 closes only this spelling/consumer/build combination. Either outcome leaves
 k150 and all route ancestors live until a complete agreed supported route and
-k128's mandatory final review exist. Retire only the completed source/charter
-child here; the authorized prototype and returned design run in fresh sessions.
-No repeat or automatic new experiment is authorized; production implementation
-remains planning's work.
+k128's mandatory final review exist. Only the source/charter and prototype
+children have retired. No repeat or automatic new experiment is authorized;
+production implementation remains planning's work.
+
+### Same-object result and remaining route
+
+**The finite diagnostic is complete and its allowance is spent.** Antony
+answered “I agree” on 2026-10-06 to accepting the
+[incomplete report](same-object-namespace-prototype.md#returned-gap-and-human-reaction)
+for this assessment, with no retry authorized. Preserve its one guest/build/
+collection, all raw requests and the 91.58-second teardown interval. The
+driver missed Zed's **Unrecognized Project** dialog at the second request;
+six later requests crossed the required stop boundary. None earns compliant
+receiver or selection credit. The seven-row post-UI summary is not the attempted-request
+count: eight helper request outputs exist, with the last lacking post-UI capture.
+The instrument remains frozen; correction would require a separately authorized
+new diagnostic, not a rewritten account of this one.
+
+| Stage | Admitted evidence | Remaining obligation |
+| --- | --- | --- |
+| Original object access | Independent component-created target/parent/decoy and bare-operand device/inode plus exact-marker checks pass for both files and directories at 900/1,500 bytes, before submission. Inodes in this sample have no high bits. | General races, policy and high-bit/other-volume behavior remain unmeasured; no retained client handle or pinned search object is introduced. |
+| Native facts and exact handler | At 900 bytes the measured flags/type and exact-item TextEdit/Finder handler observations complete. At 1,500 some flags complete and handlers return, but application/type acquisition reports Cocoa 256 with underlying POSIX 28. | Required long application/type facts are unacquired. Preserve typed causes; the handler does not repair classification or establish general metadata parity. Bundle identifier and long registration/selection were not tested. |
+| Submission and delivery | The sole pre-boundary default file request acknowledges and TextEdit independently renders the 900-byte exact marker. The next named control acknowledges and shows the marker behind unexpected trust UI. | Callbacks establish acknowledgment only. Exact delivered operands are opaque; recovered UI filenames prove no byte-exact delivery. The bare operand changes Koine's submission spelling even for the clean control. |
+| Real long receivers and Finder | No compliant long receiver or actual Finder-selection result. Long TextEdit's error is a retained post-boundary observation; long Zed has helper output without after-UI capture. Long directory actions and long reveal were unrun. | Real default/Zed file/directory access and actual Finder selection remain required. Do not turn post-boundary failures into admitted receiver verdicts, or unrun rows into failures. |
+| Long application and receipt | No long application, registered-copy selection/constrained launch, bundle identifier or executable-identity receipt subject ran. | Preserve exact selected native copy, registered submission spelling and PID/start-instant/live executable identity; systematic null is not accepted. |
+| Lifetime, authority and support | No target copy/move/link or private policy was used. The guest was disposed. Recorded callbacks arrived inside three seconds. | Early cancellation, grants/revocation, independent action/search and binary/public acceptance remain pending. Final inspections were unrun. Volfs's lasting-support and original-byte-submission exceptions are unadopted. |
+
+Keep the existing private native action seam: Workspace owns per-action
+resolution, fact provenance, selection and submission; the receiver owns its
+subsequent filesystem access. A local same-object pass cannot replace either
+side's remaining contract. The
+[pinned Zed reader and canonicalizer](#opener-and-receiver-are-separate-obligations)
+are still whole-path consumers. The visible 900-byte Zed marker establishes a
+control observation at the security stop, not the unmeasured long result or a
+prompt-free pass. The real guest version and source pin are distinct evidence.
+No formal model would discharge these opaque native/receiver outcomes.
+
+<a id="proposed-focused-zed-receiver-diagnostic"></a>
+
+### Authorized focused Zed receiver diagnostic
+
+**Antony answered "authorized" on 2026-10-06; unexecuted.** This new finite
+two-file receiver diagnostic answers one question: can the exact installed
+short Zed copy render the original 1,500-byte file through the bare native-ID
+operand, when the known project dialog is dismissed by staying restricted?
+This completes no native-fact, default-handler, Finder, long-app or support
+obligation. Its alternative is to leave this receiver branch unmeasured and
+retain the route live until a different source-supported candidate is selected.
+Repeating the broad twelve-request matrix would spend work on already known
+local access and unrelated consumers before settling this one missing result.
+
+[Zed's worktree-trust contract](https://zed.dev/docs/worktree-trust) applies to
+single-file projects as well as directories. It separates remaining restricted
+from granting trust; restricted mode suppresses project settings and related
+language/MCP-server execution. The
+[actual control screenshot](same-object-namespace/results/after-file-900-named.png)
+contains **Stay in Restricted Mode** and the exact control marker behind the
+modal. This supports a specific diagnostic interaction, not a promise that the
+long case opens or that another Zed build has the same UI.
+
+- One disposable macOS guest, one collection, at most two builds before it and
+  a 15-minute clone-through-disposal cap. No repair/recollection after the first
+  external request; a failed control or unavailable observer ends incomplete.
+  Preserve k152's helper/driver/evidence; a new instrument has a separate plan,
+  output directory, version and per-input/output digests. No new golden image,
+  survey, external inquiry or automatic follow-on.
+- Exactly two independently component-created harmless ASCII text files at
+  900/1,500 UTF-8 bytes excluding NUL, each with a same-parent distinct decoy
+  and fixed unique marker. Use no project settings, language/MCP configuration,
+  user/protected/remote file, copy, rename, hard link, symlink or cwd change.
+  Verify original and bare native-device/full-inode identity and at most 64
+  marker bytes before and after each request. Serialize the existing maximum
+  three owned descriptors and log at most 8,192 bytes per value; opaque native
+  allocations are outside that owned bound. Failed identity ends incomplete.
+- At most two external document requests: one control, then one long named
+  `NSWorkspace.openURLs` request to the exact independently verified short
+  registered Zed copy. Retain activation, no new instance, no running-copy
+  substitution, prompting disabled and the three-second acknowledgment bound.
+  No default open, Finder reveal, long app, retry, alternate spelling or separate
+  launch/open preparation request. An unavailable ordinary prepared Zed copy
+  ends incomplete. Long application/type failures remain recorded and only
+  known fixture submission bypasses those production prerequisites.
+- Verify no prior Zed fixture buffer or marker before each request; terminate
+  the control receiver before the long request and confirm its disappearance.
+  Record the callback PID and independently acquire its kernel start instant and
+  live executable identity, checking both callback and live executable identity
+  against the selected short registered Zed copy under the existing receipt
+  observation rule. Match the post-request UI to that process incarnation.
+  Missing/mismatched executable evidence or unestablished reset/UI attribution
+  ends incomplete with that receiver row unmeasured. This diagnostic attribution
+  earns no long-application receipt credit; no stale-buffer success is admitted.
+- The sole authorized security-UI exception is one **Stay in Restricted Mode**
+  choice per request on the exact fixture's **Unrecognized Project** dialog.
+  Verify receiver ownership and the unique fixture basename/path context before
+  that choice; otherwise stop. Do not grant trust, tick either trust checkbox,
+  enable `trust_all_worktrees`, edit a trust database or change OS permissions.
+  Any other consent/security UI stops immediately before the next effect.
+  Capture native outputs, UI tree and screenshot before/after the permitted
+  choice. Require supervisor inspection after each request, before the next;
+  a wording-only detector cannot authorize continuing. The known modal remains
+  an observed dialog and this is never prompt-free production acceptance.
+- Independently require the fresh exact target marker, distinct from decoy,
+  visible in the real Zed text buffer. A title, callback, process launch or
+  dismissed modal alone passes nothing. If the exact marker is visible behind
+  a modal but cannot be confirmed afterwards, record only the boundary observation.
+  Delivery stays opaque unless a supported observation actually recovers it.
+  No receiver instrumentation, save/write test or inferred save semantics.
+- Preserve OS/build/volume, SDK/compiler, exact Zed version/registered copy,
+  signatures/entitlements, original and submitted inputs, typed failures, raw
+  UI/native records, before/after per-subject digests and a teardown receipt.
+  Dispose even on failure. Return one report and human reaction; a positive
+  would establish only the named-file receiver behavior under the diagnostic
+  spelling/UI exception. No production exception, complete route, ADR, final
+  review, implementation or automatic continuation follows.
+
+This is a new authorization: k152's finite permission remains spent, its reaction
+authorized no retry and its original security-stop rule remains the rule against
+which that report is assessed. The new permission covers only the two-request
+scope and verified restricted-mode interaction above. The source/charter handoff
+is focused-zed-receiver-k154; focused-zed-receiver-k155 runs the sole prototype
+and obtains Antony's reaction; long-action-route-k156 assesses its actual report
+toward the complete retained route. Preserve a separate plan/instrument/raw
+corpus under docs/verification/focused-zed-receiver/ and report at
+docs/verification/focused-zed-receiver-prototype.md; k152 remains immutable.
+The charter reviewer allowance was already spent on executable-copy attribution,
+and that finding is corrected. No second charter reviewer is commissioned.
+Every original long working case, short regression, authority, compatibility
+and support obligation remains binding. k156 and all route ancestors stay live
+until the complete agreed supported route exists; no automatic next experiment,
+production exception, implementation or final review follows this authorization.
 
 ## SDK and source provenance
 
@@ -895,17 +1026,27 @@ design only. It preserves every
 original working case and authorizes no spelling,
 setup, private-policy, consent or contract exception and no automatic probe series.
 
-**Current decision:** Antony answered "authorized" on 2026-10-05 to the exact
-[finite same-object namespace diagnostic](#authorized-finite-same-object-namespace-diagnostic).
-It tests a concrete kernel-source lead through real receivers while retaining
-the absolute functional requirement. This permits changed native submission
-spelling and investigation of a compatibility-only mechanism for the diagnostic
-only, without production adoption. The source/charter child k151 hands off one
-prototype k152 and returned design k153 in k150's retained route subtree.
-Original client values, objects, working cases, controls, authority and acceptance
-remain required. No shorter, copy-only or failed-action baseline is offered. Receiver normalization, native
-metadata/selection, long constrained launch, receipt and lasting support remain
-explicit gaps; a finite positive does not waive them.
+**Current decision:** Antony accepted k152's incomplete
+[same-object report](same-object-namespace-prototype.md#returned-gap-and-human-reaction)
+on 2026-10-06 with no retry authorized. Its spent permission covered changed
+diagnostic spelling and legacy-support investigation only, without production
+adoption. The [returned stage assessment](#same-object-result-and-remaining-route)
+preserves the local positive, native-fact failures and missing receiver/selection
+results. Antony subsequently answered **"authorized"** on 2026-10-06 to the
+[focused two-request Zed diagnostic](#authorized-focused-zed-receiver-diagnostic):
+one 900-byte control and one 1,500-byte original file, one guest/collection and
+15-minute cap, with a fixture-only Stay in Restricted Mode interaction and exact
+live-executable attribution. The diagnostic remains unexecuted. This new finite
+permission admits only the verified restricted-mode choice, granting no trust;
+it rewrites no old stop-rule evidence. k154 hands the charter to prototype k155
+and returned design k156. No production exception, automatic next experiment,
+implementation, final review or complete-route retirement is earned. Original
+client values, objects, every
+file/directory/app working case, both controls, cancellation, authority, three
+compatibility profiles and independent action/search acceptance remain required.
+Native facts/selection, real default/Zed directory/Finder behavior, long
+constrained launch, executable receipt, original submission bytes and durable
+support remain explicit gaps; a focused receiver positive could waive none.
 
 ### Prepared capability inquiry
 
@@ -1063,6 +1204,49 @@ schedule, follow-up campaign or new Grove chain is commissioned by this inquiry.
 
 ## Deterministic check boundary
 
+k153 consumes the accepted incomplete same-object report, exact native/UI
+records and Zed's public restricted-mode contract. It reconciles current prose
+and the editable candidate view without changing k152's instrument, report or
+raw corpus. The one in-session reviewer identified a missing executable-copy
+attribution requirement; the focused charter independently verifies the
+kernel start instant and live executable against the selected short copy.
+This is a bounded charter correction, not native execution or permission.
+Documentation, diagram rendering and independent retained/repair/search
+structural checks are the applicable validation surfaces. Native/binary/public
+acceptance remains planning's work after the complete supported route and its
+mandatory review. Antony's new authorization decomposes k153 into completed
+assessment/source-charter k154, the sole prototype k155 and retained returned
+design k156. k155/k156 keep every route ancestor live. No automatic retry or
+new investigation follows; no native macOS request executes in this handoff.
+
+`task design:action-repair-check` (including retained workspace) and
+`task design:search-check` ran sequentially and passed their positive/negative
+controls. The frozen Taskfile, SDL/examples, client dependency manifests,
+documentation checker, presentation and native-evidence subjects stayed
+unchanged item by item through the structural runs and initial document check.
+D2 0.9.0 regenerated the candidate export; actual browser/export evidence and
+its checked widths are in the [viewer README](../design/architecture/README.md).
+Four host/guest viewer/manifest/source/export digests matched individually and
+stayed unchanged across that inspection. The Linux presentation clone is disposed.
+Final documentation links are checked again after these verification-note edits
+on newly frozen subjects; no native macOS diagnostic, production implementation,
+declaration check, served digest or binary/public acceptance is claimed here.
+
+The k154 authorized handoff regenerates the candidate view with D2 0.9.0 and
+checks it in an isolated Linux Firefox 151.0.3 clone. The fresh light deep link,
+settled dark discussion, complete light/dark exports and actual 500 × 600 dark
+introductory reflow are inspected; the viewer README records setup corrections
+and excluded transient captures. Four host/guest presentation digests match
+individually before/after; the clone is disposed. The fourteen current structural
+inputs/checker/dependency subjects match the k153 frozen revision that passed
+the sequential action-repair/search tasks. The older k150 Taskfile digest differs
+because it predates the intervening prototype tasks; that older comparison is
+not the verification basis. No structural input changes or new native request
+are made in this authorization handoff. Freeze the final document/check/raw
+subjects and verify links again before retirement and sealing.
+
+The following records apply to earlier design revisions.
+
 k150 consumes all committed URL attempts and reconciles current prose and the
 candidate view. `task design:action-repair-check` and `task design:search-check`
 were run sequentially and passed their existing positive/negative controls.
@@ -1074,9 +1258,10 @@ view with D2 0.9.0; the actual browser/export checks and their limits are in the
 before recording these verification notes and are checked again on the final
 frozen subjects. No declaration probe, native macOS diagnostic, production code,
 served digest, binary profile or action/search acceptance is supplied here.
-The finite namespace diagnostic is now authorized but unexecuted. The completed
-source/charter handoff retires only k151; k152/k153 keep k150 and every route
-ancestor live. No complete-route review or final-design retirement is earned.
+At that revision the finite namespace diagnostic was authorized but unexecuted.
+The source/charter handoff retired only k151; k152 has since supplied its accepted
+incomplete report. K153 keeps k150 and every route ancestor live. No complete-route
+review or final-design retirement is earned.
 
 The later k151 authorization handoff changes current charter/prose and the
 editable visual discussion to authorized/unexecuted status. The structural

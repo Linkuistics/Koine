@@ -31,10 +31,14 @@ reject them; the walk cannot reach the 1,500-byte subjects. The later
 [completed URL diagnostic](file-reference-url-acquisition-prototype.md) passes
 local acquisition/reading/original bytes at 900/1,023 and fails acquisition at
 1,024/1,500. Preserve its instrument stop, correction and expressly authorized
-replacement. Long-path support is absolute. The [returned workaround proposal](long-action-route.md#url-result-and-next-workaround)
-records Antony's authorization for one finite bare same-object spelling/legacy-
-support diagnostic. It is unexecuted; no production exception or automatic
-follow-on is commissioned.
+replacement. Long-path support is absolute. The [completed same-object diagnostic](same-object-namespace-prototype.md)
+passes local identity/marker access at 900/1,500 bytes; long application/type
+facts failed and a missed Zed trust stop leaves no compliant long receiver or
+Finder-selection result. Antony accepted the incomplete report with no retry.
+The [returned gaps and focused diagnostic](long-action-route.md#same-object-result-and-remaining-route)
+retain the complete-route obligations. Antony authorized the new two-request Zed
+diagnostic on 2026-10-06 with its fixture-only restricted-mode choice; it remains
+unexecuted. No production exception or automatic follow-on is commissioned.
 Native node-ID provenance cannot be replaced by an inode cast.
 External inquiries remain unused drafts.
 The refusal proposal is not adopted. No complete route, universal impossibility or native
