@@ -1,0 +1,2 @@
+task: [fixture:local-url-naming] bash scripts/build-local-url-name-probe.sh
+.build/local-url-naming/K161Probe.app: replacing existing signature

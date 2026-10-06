@@ -1,6 +1,27 @@
 version: '3'
 
 tasks:
+  fixture:local-url-naming:
+    desc: Build/sign k161 local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-local-url-name-probe.sh
+
+  fixture:local-url-naming-vm:
+    desc: One approved k161 eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:local-url-naming-check:
+    desc: Check k161 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-local-url-name.py docs/verification/local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-local-url-name.py
+      - shellcheck -x scripts/build-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-local-url-name-probe.sh
+      - pytest -q docs/verification/local-url-naming/test_supervisor.py
+
   fixture:search-evidence:
     desc: Build signed Koine with diagnostic workspace startup instrumentation; run only in an isolated VM
     deps: [app]

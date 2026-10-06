@@ -1,0 +1,6 @@
+{"event": "preflight", "utcEpoch": 1791285104.880227, "elapsed": 4.33, "stdinIsTTY": true, "stdoutIsTTY": true, "ttyName": "/dev/ttys000", "term": "xterm-256color", "prompt": "TRANSPORT CHECK: reply PREFLIGHT-60a633a3ead1869e within 60 seconds; no guest allocated.", "token": "PREFLIGHT-60a633a3ead1869e", "received": "PREFLIGHT-60a633a3ead1869e", "elapsedSeconds": 4.331606207997538, "success": true}
+{"event": "clone-start-request", "utcEpoch": 1791285104.8804858, "elapsed": 0.0, "base": "koine-launchers-prepared"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791285121.245311, "elapsed": 16.36, "name": "preparation", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791285155.9498339, "elapsed": 51.07, "name": "preparation", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791285156.513103, "elapsed": 51.63, "name": "fixture-900", "mode": "fixture"}
+{"event": "stopped", "utcEpoch": 1791285156.8105228, "elapsed": 51.93, "reason": "guest command fixture-1500: exit 3"}

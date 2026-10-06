@@ -1,0 +1,8 @@
+task: [fixture:local-url-naming-check] ruff check --select E,F,I --line-length 100 scripts/vm-probe-local-url-name.py docs/verification/local-url-naming/test_supervisor.py
+All checks passed!
+task: [fixture:local-url-naming-check] python3 -m py_compile scripts/vm-probe-local-url-name.py
+task: [fixture:local-url-naming-check] shellcheck -x scripts/build-local-url-name-probe.sh
+task: [fixture:local-url-naming-check] shfmt -d -i 2 -ci scripts/build-local-url-name-probe.sh
+task: [fixture:local-url-naming-check] pytest -q docs/verification/local-url-naming/test_supervisor.py
+.....                                                                    [100%]
+5 passed in 0.09s

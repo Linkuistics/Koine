@@ -1,0 +1,31 @@
+{
+  "version": "k161-1",
+  "complete": false,
+  "builds": 2,
+  "collections": 1,
+  "repairs": 0,
+  "externalRequests": 0,
+  "cases": [],
+  "attemptedCases": 0,
+  "firstFailure": {
+    "stage": "supervisionOrControl",
+    "cause": "guest command fixture-1500: exit 3"
+  },
+  "remaining": [
+    "original-900",
+    "bare-900",
+    "original-1500",
+    "bare-1500",
+    "parent-public-900",
+    "parent-bare-900",
+    "parent-public-1500",
+    "parent-bare-1500"
+  ],
+  "stop": "guest command fixture-1500: exit 3",
+  "disposed": true,
+  "teardownExit": 0,
+  "inventoryConfirmedAbsent": true,
+  "elapsedSeconds": 55.22,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}
