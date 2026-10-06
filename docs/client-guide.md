@@ -581,8 +581,15 @@ retry authorized. The separately completed
 establish fresh reading of both original files by the exact short Zed copy after
 restricted-mode choices. The long buffer shows an inode-only filename; native
 application/type checks fail, exact delivery is opaque and saving is untested.
-Antony authorized the finite local-only bookmark diagnostic on 2026-10-06. It
-remains unexecuted and promises no Zed filename improvement. This changes no client input or accepted
+Antony accepted the [incomplete bookmark report](verification/bookmark-name-resolution-prototype.md)
+on 2026-10-06. Its sole collection stopped on supervisor-input EOF before any
+fixture or case; all native stages/controls remain unrun and its allowance is
+spent. A [replacement local collection](verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
+with input verified before cloning was approved on 2026-10-06. Antony also
+requested the [parent-reference/name group](verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
+eight local cases share one guest, one collection and the 15-minute cap.
+All new stages remain unrun, and promises no
+Zed filename improvement. This changes no client input or accepted
 production behavior; the complete route remains unresolved. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
 production receiver-visible spelling change or working-case loss is approved.

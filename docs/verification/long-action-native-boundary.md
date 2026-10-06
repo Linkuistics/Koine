@@ -40,8 +40,14 @@ The separately completed
 establish fresh reading of both original files by the exact short Zed copy after
 restricted-mode choices. Long native application/type facts still fail; the
 long buffer has an inode-only filename, exact delivery is opaque and saving is
-untested. Antony authorized the finite local-only bookmark diagnostic on
-2026-10-06; it remains unexecuted. Complete-route
+untested. Antony accepted the [incomplete bookmark report](bookmark-name-resolution-prototype.md)
+on 2026-10-06. Supervisor-input EOF stopped its sole collection before fixtures
+or cases; all native stages/controls are unrun and its allowance is spent.
+A [replacement local collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
+with input verified before cloning was approved on 2026-10-06. Antony also
+requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic);
+eight local cases share one guest, one collection and the 15-minute cap.
+All new stages remain unrun. Complete-route
 obligations remain; no production exception or automatic follow-on is commissioned.
 Native node-ID provenance cannot be replaced by an inode cast.
 External inquiries remain unused drafts.

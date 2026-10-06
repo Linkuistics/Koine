@@ -221,9 +221,15 @@ The [focused Zed result and returned assessment](docs/verification/long-action-r
 establish fresh reading of both originals by the exact short registered Zed copy
 after restricted-mode choices. The long buffer has an inode-only filename;
 long application/type facts still fail, exact delivery is opaque and saving is
-untested. Antony authorized the finite local-only bookmark diagnostic on
-2026-10-06; it remains unexecuted and
-supplies no receiver naming or production pass. Changed production spelling and
+untested. Antony accepted the [incomplete bookmark report](docs/verification/bookmark-name-resolution-prototype.md)
+on 2026-10-06: its sole collection stopped at preparation on supervisor-input
+EOF, before fixtures or cases. All native stages and controls are unrun; this
+is no bookmark negative or receiver naming/production pass. Its authorization
+is spent. One [replacement local collection](docs/verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
+with input verified before cloning was approved on 2026-10-06. Antony also
+requested the [parent-reference/name group](docs/verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
+eight local cases share one guest, one collection and the 15-minute cap.
+All new stages remain unrun. Changed production spelling and
 durable-support exceptions are not adopted. No complete route or automatic
 follow-on is selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External

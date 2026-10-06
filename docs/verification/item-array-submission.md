@@ -82,8 +82,14 @@ The separately completed
 establish fresh reading of both originals by the exact short Zed copy after
 restricted-mode choices. Native application/type acquisition still fails; the
 long buffer shows an inode-only filename, exact delivery is opaque and saving
-is untested. Antony authorized the finite local-only bookmark diagnostic on
-2026-10-06; it remains unexecuted. No item-array repeat, production identity-spelled
+is untested. Antony accepted the [incomplete bookmark report](bookmark-name-resolution-prototype.md)
+on 2026-10-06. Its sole collection stopped on supervisor-input EOF before any
+fixture or case; all native stages/controls are unrun and its allowance is spent.
+A [replacement local collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
+with input verified before cloning was approved on 2026-10-06. Antony also
+requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic);
+eight local cases share one guest, one collection and the 15-minute cap.
+All new stages remain unrun. No item-array repeat, production identity-spelled
 submission or complete route is commissioned
 by these results. This report's measured corpus
 and raw records remain intact.

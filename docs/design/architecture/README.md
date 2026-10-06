@@ -94,38 +94,59 @@ permission is spent and k152's missed-stop corpus remains unchanged.
 The [returned bookmark assessment](../../verification/focused-zed-route-assessment.md)
 answers Antony's name and cleanup questions: the inspected Zed ingress consumes
 URL strings/paths, with no separate bookmark-name input. An action-local bookmark
-needs no durable registry. A proposed local-only diagnostic separately checks
-stored original name, returned URL and fixed whole-path same-object reading;
-four cases, one guest/collection, a 15-minute cap and zero external requests.
-Antony answered **"authorized"** on 2026-10-06 to that exact diagnostic. It
-remains unexecuted: k157 hands off the source/charter, prototype k158 owns the
-sole collection and returned design k159 retains the full route under k156.
-The fixed reader, bookmark options and caps are unchanged; no repair/recollection,
-scope/UI interaction or automatic successor is authorized. It supplies no
-receiver naming promise. Native facts,
+needs no durable registry. Antony accepted the
+[stopped bookmark report](../../verification/bookmark-name-resolution-prototype.md)
+on 2026-10-06. Supervisor-input EOF ended its sole collection at preparation,
+before fixtures or native cases. Stored Name/Path, URL resolution, fixed
+whole-path reading and independent controls are all unrun. Disposal took 19.22
+seconds; this execution failure is no native negative or retry authorization.
+The [replacement decision](../../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
+is approved on 2026-10-06. Antony's added
+[parent-reference/name question](../../verification/focused-zed-route-assessment.md#parent-reference-plus-original-name)
+is distinct from converting a child back to an identity-only reference.
+The original four bookmark cases and separate four parent-reference cases share
+one guest/collection, two precollection builds, a 15-minute cap and zero external
+requests. Verify acknowledged interactive input before cloning; keep separate
+inspected READY checkpoints, exact readers/ownership caps and all old raw corpora
+in separate evidence. Permit no repair/recollection, scope/UI interaction or
+automatic successor. All new stages and real Zed naming remain unrun. Source/
+charter k160 hands off to prototype k161 and returned route design k162; k159
+and the full route under k156 stay live. Native facts,
 default/directory/Finder behavior, long app selection/receipt, original external
 bytes and lasting support remain unresolved; no production exception is adopted.
 External inquiries remain unused drafts;
 no sender or upstream response is needed for the current work.
 Any production spelling/setup exception remains unapproved.
 No support request has been sent, and no automatic probe series is authorized.
-No new native run occurred in this source/charter handoff, and no action pass is claimed. Antony's original requirement remains retained; final
+No new macOS native run occurred in this returned assessment, and no action pass is claimed. Antony's original requirement remains retained; final
 review, planning and native acceptance wait for a complete supported route.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Marks the exact bookmark diagnostic authorized/unexecuted and hands collection to k158 while retaining all route gaps.
-- [Focused Zed result and bookmark question](../../verification/long-action-route.md#focused-zed-result-and-bookmark-question) — Records Antony's authorization and the source/charter, prototype and returned-design split.
-- [Finite bookmark diagnostic](../../verification/focused-zed-route-assessment.md#proposed-finite-bookmark-diagnostic) — Records authorization of the unchanged four cases, fixed reader, zero external requests and finite caps.
-- [Remaining route decision](../../verification/long-action-route.md#decision-for-antony) — Replaces the pending decision with the authorized finite commission and keeps the complete route live.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Marks the local diagnostic authorized/unexecuted without changing either independent survey corpus.
-- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Carries the finite authorization while retaining failed native acquisition and full-route obligations.
-- [Item-array result bridge](../../verification/item-array-submission.md) — Marks the local bookmark test authorized/unexecuted and preserves the spent item-array allowance.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Records the finite authorization without adopting production behavior.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Marks the diagnostic authorized/unexecuted while keeping the action handoff unresolved.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records the finite authorization with unchanged client behavior.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Marks the diagnostic authorized/unexecuted without granting an action pass.
-- [Search location glossary](../../../CONTEXT.md#language) — Carries the authorized/unexecuted local test alongside unchanged public paths.
+- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Shows the accepted preparation stop, approved replacement and separate parent-reference/name group, with one shared budget and no receiver result.
+- [Stopped result and remaining route](../../verification/focused-zed-route-assessment.md#stopped-bookmark-result-and-remaining-route) — Reconciles raw counts, EOF, unrun native stages and the unchanged full-route gap.
+- [Replacement bookmark decision](../../verification/focused-zed-route-assessment.md#replacement-bookmark-decision) — Records the approval, exact four bookmark cases and pre-allocation input round trip.
+- [Parent reference plus original name](../../verification/focused-zed-route-assessment.md#parent-reference-plus-original-name) — Separates public relative construction, native pathname expansion, local reading and actual Zed naming.
+- [Parent-reference name diagnostic](../../verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic) — Bounds four additional local cases inside the same one-guest, 15-minute collection.
+- [Remaining route decision](../../verification/long-action-route.md#decision-for-antony) — Records the approval and fresh prototype/returned-design handoff while preserving the full route.
+- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Carries the stopped attempt without changing either independent survey.
+- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Preserves failed facts and records no bookmark negative or automatic follow-on.
+- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Keeps original working cases and production obligations after the stopped attempt.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Leaves the handoff unresolved and distinguishes local diagnostic permission from action grants and acceptance.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records no naming pass or client behavior change.
+- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Keeps action acceptance pending after the all-unrun attempt.
+- [Search location glossary](../../../CONTEXT.md#language) — Records the accepted preparation stop and approved local collection and separate parent-reference question alongside unchanged public paths.
+
+The [approved charter verification](../../verification/focused-zed-route-assessment.md#approved-charter-verification)
+checks the current revision: D2 rendering, complete light export, isolated
+Firefox 151.0.3 fresh light/dark deep links and markers, settled dark discussion
+and actual 320 × 480 title/status/introductory reflow. Each of the four view
+subjects matches between host, guest and served bytes. Other exports and the
+complete dark export were not re-inspected in this presentation clone; failed
+initial profile/input and premature screenshots earn no credit. This is
+presentation evidence only; the clone was disposed. The
+[preceding proposed-replacement verification](../../verification/focused-zed-route-assessment.md#verification-of-the-returned-assessment)
+and historical checks below describe their earlier revisions.
 
 The k157 authorization handoff was checked in Firefox 151.0.3 in the isolated
 Linux clone `koine-k157-authorization`. A fresh light deep link identified the

@@ -26,10 +26,16 @@ now establishes fresh reading of both original files by the exact short Zed copy
 after restricted-mode choices. The long buffer has an inode-only filename;
 native application/type checks still fail, delivered operands are opaque and
 saving is untested. Antony accepted that readable report. The
-[returned assessment and authorized bookmark diagnostic](focused-zed-route-assessment.md)
-separate stored naming information from a usable receiver address. This local-only
-diagnostic is authorized but unexecuted; production spelling/support and the complete route remain
-unresolved.
+[returned assessment](focused-zed-route-assessment.md#stopped-bookmark-result-and-remaining-route)
+separates stored naming information from a usable receiver address. The accepted
+[bookmark report](bookmark-name-resolution-prototype.md) stopped at preparation
+on supervisor-input EOF; every native case and control is unrun. Its authorization
+is spent. One [replacement collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
+was approved on 2026-10-06, with input verified before guest allocation.
+Antony also requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic).
+The unchanged four bookmark and four additional local parent-reference cases
+share one guest, collection and 15-minute cap; all new stages remain unrun.
+Production spelling/support and the complete route remain unresolved.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
 and the [remaining decision](#decision-for-antony). The
@@ -895,10 +901,16 @@ The [finite bookmark charter](focused-zed-route-assessment.md#proposed-finite-bo
 has four serialized creation/resolution cases, one guest/collection, a 15-minute
 cap and zero external application requests. It separately grades stored-name
 recovery, actual returned URL and independently verified same-object reading.
-Antony answered **"authorized"** on 2026-10-06 to that exact diagnostic; it
-remains unexecuted. k157 completes the source/charter handoff, k158 runs the sole
-prototype and k159 assesses its report and reaction under k156. No automatic
-successor is commissioned. Both acceptance sets, three profiles, original byte spelling,
+Antony authorized it, then accepted k158's
+[incomplete report](bookmark-name-resolution-prototype.md) on 2026-10-06. The sole
+collection stopped at preparation on closed supervisor input; no fixture or
+bookmark case ran. Disposal completed in 19.22 seconds. Stored Name/Path, URL
+resolution, whole-path reading and independent controls are all unrun, not
+native negatives. The [returned result and next decision](focused-zed-route-assessment.md#stopped-bookmark-result-and-remaining-route)
+preserve the spent authorization and propose one new identical local collection
+with an acknowledged input preflight before cloning. This proposal is not
+authorized. k159 and k156 remain live; no automatic successor is commissioned.
+Both acceptance sets, three profiles, original byte spelling,
 supported basis, long native facts/exact-copy receipt and k128's final review
 remain required. No ADR selects this incomplete route.
 
@@ -1097,19 +1109,27 @@ Native facts/selection, real default/Zed directory/Finder behavior, long
 constrained launch, executable receipt, original submission bytes and durable
 support remain explicit gaps; the focused receiver positive waives none.
 
-**Current decision:** Antony answered **"authorized"** on 2026-10-06 to the exact
-[local-only bookmark diagnostic](focused-zed-route-assessment.md#proposed-finite-bookmark-diagnostic).
-The [returned assessment](focused-zed-route-assessment.md) consumes k155's accepted
-positive and Antony's name/cleanup questions. The diagnostic asks whether a bookmark
-can recover an original name and yield a URL that still reads the same long file;
-it promises no Zed naming improvement. It remains unexecuted: k157 hands off
-the source/charter, k158 owns one guest/collection and k159 retains returned
-design. Four cases, at most two builds before collection, a 15-minute
-clone-through-disposal cap and zero external application requests bind unchanged.
-No repair/recollection, security scope/UI interaction, reader fallback or
-automatic follow-on is authorized. k156 and every route ancestor remain live.
-No production exception, automatic investigation chain, final review or route
-retirement is earned by this finite diagnostic authorization.
+**Current decision recorded:** Antony approved the
+[replacement bookmark collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
+on 2026-10-06 and asked whether a parent-directory reference followed by the
+original final name would let tools such as Zed use that name. The
+[source assessment](focused-zed-route-assessment.md#parent-reference-plus-original-name)
+separates this candidate from the earlier child-reference factory and records
+concrete pathname-expansion hazards without predicting the native result.
+The [separate four-case parent group](focused-zed-route-assessment.md#parent-reference-name-diagnostic)
+shares the unchanged four bookmark cases' one guest/collection, two precollection
+builds, 15-minute cap and zero external requests. Preclone interactive-input
+preflight and separate inspected READY checkpoints remain binding. Preserve
+all old raw evidence and freeze a distinct new input/output corpus.
+
+Name-bearing construction, stored properties, actual absolute/path resolution,
+whole-path same-object reading and real Zed naming remain distinct. Every new
+native stage is unrun. k159 is decomposed into completed source/charter k160,
+one fresh prototype k161 and returned route design k162; native work belongs
+to k161. The final child and k159/k156 and every route ancestor remain live
+while the complete route is unresolved. This authorizes no receiver request,
+restricted-mode/trust interaction, automatic repeat/successor, production
+exception, final review, implementation or route retirement.
 
 ### Prepared capability inquiry
 

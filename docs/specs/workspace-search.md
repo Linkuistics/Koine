@@ -2390,8 +2390,15 @@ The [focused Zed result and returned assessment](../verification/long-action-rou
 establish fresh reading of both originals by the exact short Zed copy after
 restricted-mode choices. Long-file application/type facts still fail, and the
 long buffer has an inode-only filename. Exact delivery and saving are unmeasured.
-Antony authorized the finite local-only bookmark diagnostic on 2026-10-06; it
-remains unexecuted and this handoff remains unresolved. No production exception or automatic native follow-on is
+Antony accepted the [incomplete bookmark report](../verification/bookmark-name-resolution-prototype.md)
+on 2026-10-06. Its sole collection stopped on supervisor-input EOF before fixtures
+or cases; every native stage and control is unrun. The spent authorization
+grants no retry. One [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
+with input verified before cloning was approved on 2026-10-06. Antony also
+requested the [parent-reference/name group](../verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
+eight local cases share one guest, one collection and the 15-minute cap.
+All new stages remain unrun. This handoff
+remains unresolved. No production exception or automatic native follow-on is
 authorized. External
 inquiries are unused drafts; no automatic probe series is authorized. Original working
 cases and exclusions remain binding; the refusal proposal remains unadopted.
