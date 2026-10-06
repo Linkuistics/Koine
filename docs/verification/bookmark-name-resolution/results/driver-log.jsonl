@@ -1,0 +1,4 @@
+{"event": "clone-start-request", "utcEpoch": 1791277411.095289, "elapsed": 0.0, "base": "koine-launchers-prepared"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791277429.585771, "elapsed": 18.49, "name": "preparation", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791277429.586018, "elapsed": 18.49, "name": "preparation", "answer": ""}
+{"event": "stopped", "utcEpoch": 1791277429.586098, "elapsed": 18.49, "reason": "supervisor stop at preparation: "}

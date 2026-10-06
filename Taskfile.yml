@@ -98,6 +98,18 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-focused-zed.py --output {{.OUTPUT | shellQuote}}
 
+  fixture:bookmark-name-resolution:
+    desc: Build/sign k158 throwaway Foundation helper; execute only in its authorized disposable guest
+    cmds:
+      - bash scripts/build-bookmark-name-probe.sh
+
+  fixture:bookmark-name-resolution-vm:
+    desc: One supervised k158 four-case collection; finite authorization is not repeat permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-bookmark-name.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

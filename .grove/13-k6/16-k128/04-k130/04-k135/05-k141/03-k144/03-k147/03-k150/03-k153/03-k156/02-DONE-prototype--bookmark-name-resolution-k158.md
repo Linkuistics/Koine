@@ -70,3 +70,53 @@ fixture acquisition. No persistent client-reference protocol, scope/trust grant,
 production spelling/support exception, workflow loss or automatic follow-on.
 Saving, real receiver/Finder behavior, native facts and long-app receipt are not
 measured by this prototype. Stop at its budget and return the actual evidence.
+
+## Decisions (running log)
+
+- Adopt the mandated prototype in the stated jj workspace and carry the exact
+  authorized charter unchanged. k159 and every route ancestor remain live.
+  The graph CLI refuses startup on an unverified/pre-coordination generation;
+  no project, generation or coverage evidence is available. Use exact bounded
+  document, SDK and prior-instrument reads without graph completeness claims.
+- Implement the already approved throwaway measurement in a separate
+  Foundation-only helper and supervised TestAnyware driver. Preserve the existing
+  empty-entitlement hardened-runtime signing posture. Use one clone of the
+  prepared launchers image, no receiver or external application request, the
+  fixed four cases and READY/STOP-only observation. Separate helper processes
+  release case native values before the next. Raw bookmark bytes are preserved
+  directly after their 64-KiB size check; no persistent client registry is built.
+- The first and only precollection build passes clang -Wall/-Wextra/-Werror,
+  signing and strict signature verification without host execution. Ruff,
+  Python compilation, shellcheck and shfmt pass; exact corpus arithmetic verifies
+  900/1,500 ASCII bytes, 4/6 directory components and distinct <=64-byte markers.
+  Freeze all plan/instrument/transport/signing/SDK/build/corpus subjects and
+  retained k152/k155 evidence before the sole collection. No repair/recollection
+  or second guest is authorized; return the actual finite outcome for reaction.
+- The sole collection stopped at preparation: the harness invocation omitted an
+  interactive terminal, and the supervisor's readline received EOF immediately.
+  The driver safely stopped before fixture/helper execution. This is our execution
+  mistake, not a bookmark/API failure. Preserve the frozen instrument and raw
+  outcome; perform no repair/recollection under the explicit charter. Actual
+  counts are one build, one guest/collection attempt, zero native cases, zero
+  external application requests, zero UI interactions and zero repairs.
+- The stop receipt confirms disposal in 19.22 seconds, under the 900-second cap;
+  final VM inventory contains no clone. All 368 frozen subjects and 30 output
+  entries match their individual SHA-256 values. The installed binary matches
+  its frozen host digest. The preparation screen/tree were inspected only after
+  disposal and earn no live checkpoint or native-observation credit. All stored-
+  name, resolution, read, identity/marker controls and runtime cap measurements
+  remain unrun. Write the readable incomplete report and technical provenance,
+  then obtain Antony's reaction before retiring/sealing k158 or signalling exit.
+  k159 and every route ancestor remain live; select no mechanism or new experiment.
+- Final task check:docs passes on 94 frozen Markdown/manifest/checker/Taskfile
+  subjects with every digest unchanged afterward. The 368 before/after native
+  subject entries and all 30 raw-output entries still verify individually.
+  Preserve this incomplete report in the open jj change, awaiting Antony's
+  reaction. No retirement, parent close, seal or exit signal is earned yet.
+- Antony answered **"accepted"** on 2026-10-06 to the incomplete report for
+  k159 to assess, with no retry. Record that reaction without inferring a
+  bookmark failure or a new experimental grant. Retire only this scoped
+  prototype and seal its artifacts/raw evidence/tree changes together. k159
+  remains live, so no parent-chain close is due; the complete route and final
+  review obligation remain unresolved. Recheck final documents and raw hashes,
+  then signal dispatch as the last action.

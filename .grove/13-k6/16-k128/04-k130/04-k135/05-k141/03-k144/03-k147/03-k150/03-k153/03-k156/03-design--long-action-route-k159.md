@@ -49,6 +49,15 @@ full route remains unresolved; a local naming result does not meet it.
 
 ## Notes
 
+Antony accepted k158's incomplete report on 2026-10-06 with **"accepted"**.
+The sole collection stopped on supervisor-input EOF during preparation, before
+fixture creation or any bookmark case. Every name/path, resolution, same-object
+read and identity/marker control remains unrun. The guest was disposed after
+19.22 seconds; the exact instrument and raw evidence are preserved at
+docs/verification/bookmark-name-resolution/, with readable and technical reports
+beside it. The question is unanswered, not a finite native negative. Acceptance
+authorizes no repair, recollection or automatic next experiment.
+
 The experiment answers a local bookmark question, not general application
 support. Its finite negative proves no universal impossibility; its positive
 waives no native fact, original-spelling, durable-support or real receiver duty.

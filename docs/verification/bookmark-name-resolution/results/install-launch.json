@@ -1,0 +1,9 @@
+{
+  "command": "(ditto -x -k /tmp/k158.zip /tmp/k158-bundle; mkdir /Users/admin/k158) >/tmp/k149-cmd-1.out 2>/tmp/k149-cmd-1.err; echo $? >/tmp/k149-cmd-1.tmp; mv /tmp/k149-cmd-1.tmp /tmp/k149-cmd-1.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

@@ -80,6 +80,15 @@ obligations. No implementation leaves are commissioned.
 
 ## Notes
 
+Antony accepted k158's incomplete bookmark report on 2026-10-06 with
+**"accepted"**. The sole collection stopped at the preparation checkpoint on
+closed supervisor input; neither fixture nor any bookmark case ran. The guest
+was disposed after 19.22 seconds. This is an execution failure, not a bookmark
+negative. Preserve all raw records and the spent no-repair/no-recollection
+allowance. k159 consumes the [readable report](../../../../../../../../../../../docs/verification/bookmark-name-resolution-prototype.md)
+and reaction under the unchanged complete-route obligation. No automatic next
+experiment or production exception is authorized; this node remains live.
+
 Antony accepted the readable k155 report on 2026-10-06: "I've read the
 document. I agree." The report is at
 docs/verification/focused-zed-receiver-prototype.md, with detailed provenance
