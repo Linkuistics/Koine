@@ -1,0 +1,160 @@
+{
+  "version": "k164-1",
+  "complete": true,
+  "builds": 1,
+  "collections": 1,
+  "repairs": 0,
+  "externalRequests": 0,
+  "cases": [
+    {
+      "name": "original-900",
+      "bytes": 900,
+      "mode": "original",
+      "result": {
+        "read": true,
+        "firstFailure": null,
+        "storedPath": true,
+        "event": "caseResult",
+        "resolution": true,
+        "storedName": true
+      }
+    },
+    {
+      "name": "bare-900",
+      "bytes": 900,
+      "mode": "bare",
+      "result": {
+        "read": true,
+        "firstFailure": null,
+        "storedPath": true,
+        "event": "caseResult",
+        "resolution": true,
+        "storedName": true
+      }
+    },
+    {
+      "name": "original-1500",
+      "bytes": 1500,
+      "mode": "original",
+      "result": {
+        "event": "caseResult",
+        "firstFailure": "creation",
+        "read": "unrun",
+        "resolution": "unrun",
+        "storedName": "unrun"
+      }
+    },
+    {
+      "name": "bare-1500",
+      "bytes": 1500,
+      "mode": "bare",
+      "result": {
+        "read": "unrun",
+        "firstFailure": "resolution",
+        "event": "caseResult",
+        "resolution": false,
+        "storedName": true
+      }
+    },
+    {
+      "name": "parent-public-900",
+      "bytes": 900,
+      "mode": "parent-public",
+      "result": {
+        "read": true,
+        "firstFailure": null,
+        "event": "caseResult",
+        "relativeName": {
+          "bytes": 21,
+          "b64": "SzE2NC1vcmlnaW5hbC05MDAudHh0",
+          "originalNameExact": 1,
+          "acquired": true
+        },
+        "absoluteName": {
+          "bytes": 21,
+          "b64": "SzE2NC1vcmlnaW5hbC05MDAudHh0",
+          "originalNameExact": 1,
+          "acquired": true
+        }
+      }
+    },
+    {
+      "name": "parent-bare-900",
+      "bytes": 900,
+      "mode": "parent-bare",
+      "result": {
+        "read": true,
+        "firstFailure": null,
+        "event": "caseResult",
+        "relativeName": {
+          "bytes": 21,
+          "b64": "SzE2NC1vcmlnaW5hbC05MDAudHh0",
+          "originalNameExact": 1,
+          "acquired": true
+        },
+        "absoluteName": {
+          "bytes": 21,
+          "b64": "SzE2NC1vcmlnaW5hbC05MDAudHh0",
+          "originalNameExact": 1,
+          "acquired": true
+        }
+      }
+    },
+    {
+      "name": "parent-public-1500",
+      "bytes": 1500,
+      "mode": "parent-public",
+      "result": {
+        "read": "unrun",
+        "firstFailure": "pathExtraction",
+        "event": "caseResult",
+        "relativeName": {
+          "bytes": 22,
+          "b64": "SzE2NC1vcmlnaW5hbC0xNTAwLnR4dA==",
+          "originalNameExact": 1,
+          "acquired": true
+        },
+        "absoluteName": {
+          "bytes": 22,
+          "b64": "SzE2NC1vcmlnaW5hbC0xNTAwLnR4dA==",
+          "originalNameExact": 1,
+          "acquired": true
+        }
+      }
+    },
+    {
+      "name": "parent-bare-1500",
+      "bytes": 1500,
+      "mode": "parent-bare",
+      "result": {
+        "read": false,
+        "firstFailure": "wholePathOpen",
+        "event": "caseResult",
+        "relativeName": {
+          "bytes": 22,
+          "b64": "SzE2NC1vcmlnaW5hbC0xNTAwLnR4dA==",
+          "originalNameExact": 1,
+          "acquired": true
+        },
+        "absoluteName": {
+          "bytes": 22,
+          "b64": "SzE2NC1vcmlnaW5hbC0xNTAwLnR4dA==",
+          "originalNameExact": 1,
+          "acquired": true
+        }
+      }
+    }
+  ],
+  "attemptedCases": 8,
+  "firstFailure": {
+    "case": "original-1500",
+    "stage": "creation"
+  },
+  "remaining": [],
+  "disposed": true,
+  "teardownExit": 0,
+  "inventoryConfirmedAbsent": true,
+  "elapsedSeconds": 183.9,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

@@ -1,0 +1,9 @@
+{
+  "command": "(/tmp/k164-bundle/K164Probe.app/Contents/MacOS/K164Probe original /tmp/k164-original-900.json & probe_pid=$!; (sleep 30; kill -TERM \"$probe_pid\" 2>/dev/null; sleep 5; kill -KILL \"$probe_pid\" 2>/dev/null) & guard_pid=$!; wait \"$probe_pid\"; probe_status=$?; kill \"$guard_pid\" 2>/dev/null; wait \"$guard_pid\" 2>/dev/null; exit \"$probe_status\") >/tmp/k149-cmd-5.out 2>/tmp/k149-cmd-5.err; echo $? >/tmp/k149-cmd-5.tmp; mv /tmp/k149-cmd-5.tmp /tmp/k149-cmd-5.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

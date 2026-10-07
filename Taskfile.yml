@@ -22,6 +22,27 @@ tasks:
       - shfmt -d -i 2 -ci scripts/build-local-url-name-probe.sh
       - pytest -q docs/verification/local-url-naming/test_supervisor.py
 
+  fixture:separated-local-url-naming:
+    desc: Build/sign k164 separated-control local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-separated-local-url-name-probe.sh
+
+  fixture:separated-local-url-naming-vm:
+    desc: One authorized k164 separated eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-separated-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:separated-local-url-naming-check:
+    desc: Check k164 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-separated-local-url-name.py docs/verification/separated-local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-separated-local-url-name.py
+      - shellcheck -x scripts/build-separated-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-separated-local-url-name-probe.sh
+      - pytest -q docs/verification/separated-local-url-naming/test_supervisor.py
+
   fixture:search-evidence:
     desc: Build signed Koine with diagnostic workspace startup instrumentation; run only in an isolated VM
     deps: [app]

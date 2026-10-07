@@ -1,0 +1,71 @@
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+Darwin Manageds-Virtual-Machine.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:32 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_VMAPPLE arm64
+   Device Identifier:         disk3s5
+   Device Node:               /dev/disk3s5
+   Whole:                     No
+   Part of Whole:             disk3
+
+   Volume Name:               Data
+   Mounted:                   Yes
+   Mount Point:               /System/Volumes/Data
+
+   Partition Type:            41504653-0000-11AA-AA11-00306543ECAC
+   File System Personality:   APFS
+   Type (Bundle):             apfs
+   Name (User Visible):       APFS
+   Owners:                    Enabled
+
+   OS Can Be Installed:       Yes
+   Booter Disk:               disk3s2
+   Recovery Disk:             disk3s3
+   Media Type:                
+   Protocol:                  
+   SMART Status:              Not Supported
+   Volume UUID:               F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+   Disk / Partition UUID:     F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+
+   Disk Size:                 44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Device Block Size:         4096 Bytes
+
+   Volume Used Space:         15.4 GB (15422640128 Bytes) (exactly 30122344 512-Byte-Units)
+   Container Total Space:     44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Container Free Space:      7.5 GB (7527182336 Bytes) (exactly 14701528 512-Byte-Units)
+   Allocation Block Size:     4096 Bytes
+
+   Media OS Use Only:         No
+   Media Read-Only:           No
+   Volume Read-Only:          No
+
+   Device Location:           Internal
+   Removable Media:           Fixed
+
+   Solid State:               Yes
+
+   This disk is an APFS Volume.  APFS Information:
+   APFS Container:            disk3
+   APFS Physical Store:       disk0s2
+   APFS Volume Group:         F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+   Encrypted:                 No
+   FileVault:                 No
+   Sealed:                    No
+   Locked:                    No
+
+assessments enabled
+Executable=/private/tmp/k164-bundle/K164Probe.app/Contents/MacOS/K164Probe
+Identifier=dev.antony.Koine.K164Probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=550 flags=0x10000(runtime) hashes=6+7 location=embedded
+Signature size=8977
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 7, 2026 at 1:40:36 AM
+Info.plist entries=5
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=188
+[Dict]
+5dde2b972627d10d485393421847e65a93a7deb0d4899fdc754b1fb070bba201  /tmp/k164-bundle/K164Probe.app/Contents/MacOS/K164Probe

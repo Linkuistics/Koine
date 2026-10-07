@@ -1,0 +1,8 @@
+{"event": "preflight", "utcEpoch": 1791337276.974536, "elapsed": 7.51, "stdinIsTTY": true, "stdoutIsTTY": true, "ttyName": "/dev/ttys000", "term": "xterm-256color", "prompt": "TRANSPORT CHECK: reply PREFLIGHT-8c0ee88570f44bae within 60 seconds; no guest allocated.", "token": "PREFLIGHT-8c0ee88570f44bae", "received": "PREFLIGHT-8c0ee88570f44bae", "elapsedSeconds": 7.5085256670136005, "success": true}
+{"event": "clone-start-request", "utcEpoch": 1791337276.9747221, "elapsed": 0.0, "base": "koine-launchers-prepared"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791337296.788033, "elapsed": 19.81, "name": "preparation", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791337312.946156, "elapsed": 35.97, "name": "preparation", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791337313.514442, "elapsed": 36.54, "name": "fixture-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791337313.552167, "elapsed": 36.58, "name": "fixture-1500", "mode": "fixture"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791337313.60424, "elapsed": 36.63, "name": "before-original-900", "choices": ["READY", "STOP"]}
+{"event": "stopped", "utcEpoch": 1791337373.60914, "elapsed": 96.63, "reason": "supervisor response deadline expired"}

@@ -78,3 +78,10 @@ parity nor original-spelling durable support, long-app selection/receipt, other
 workflows, action/search acceptance or a complete route. No receiver/trust/retry
 scope is authorized. The returned route design k165 and every route ancestor
 remain live. Do not cut a final route review or implementation from this result.
+
+## Decisions (running log)
+
+- Built distinct k164 instrument (separated controls; unsuffixed bare-parent open/fstat only in parent cases, failure => remaining length unrun). One build, five guard tests pass. Preflight 7.5 s; fixtures 900/1500 passed their separated controls.
+- Collection stopped at before-original-900: my supervisor reply missed the 60 s bound (tool call hung). Guest disposed (99.26 s), 725 subjects unchanged, all eight cases unrun. No retry (no permission). Report written: docs/verification/separated-local-url-naming-prototype.md. Asked Antony: accept incomplete vs authorize one new collection. Do not retire before the reaction.
+- Antony answered "b": one new collection authorized. Ran same frozen instrument to results-2 (new output dir; results/ preserved). All eight cases ran; 725 subjects unchanged; disposed in 183.9 s. Bookmark 900 both work; 1500: original creation fails (260), bare creates (stored name exact, path "/") but resolution fails (4). Parent cases: name exact in all URL text; 900 reads ok (public and bare); 1500 public path nil, 1500 bare ENAMETOOLONG. Report rewritten. Awaiting Antony's reaction; do not retire first.
+- Antony's reaction: stop; filed GH issue Linkuistics/Koine#1. Own code uses a dirfd/*at `Directory` abstraction (component-wise, no absolute-path strings, no FileManager/URL.path/realpath primitives); applications that cannot take long paths surface the failure; long-path application support deferred past v1. No further native investigation. k165 consumes this report and the reaction; k159 and ancestors stay live. Retiring k164.
