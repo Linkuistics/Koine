@@ -1,75 +1,45 @@
 # Long-location route evaluation
 
-**The retained long-location route is unresolved after the finite prototypes,
-two application surveys and adversarial synthesis.** Parent-relative filesystem
-operations can reach the items. The tested public native-fact and opener routes
-did not complete the roughly 1,500-byte workflows; the inspected Zed receiver
-also performs whole-path filesystem reads after delivery.
-This is bounded evidence about tested mechanisms, not universal impossibility.
-The completed flat-enumeration diagnostic returns references at 1,024 bytes,
-but its tested consumers reject them and its walk cannot reach the 1,500-byte
-subjects. Both measured item-array openers also fail at 1,024 bytes before
-recorder delivery. No production route or
-workflow loss is adopted.
+**The investigation is closed for v1.** Koine resolves long locations itself and
+refuses, truthfully, to hand applications any location too long for macOS's
+whole-path services. Making applications accept such locations is deferred past
+v1 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)). The
+[v1 decision](#v1-decision) below is current; everything after it is the
+evaluation record that led there, kept as evidence.
 
-The [completed URL result and next decision](#url-result-and-next-workaround)
-now supersedes execution-pending URL prose. Both public URL creation patterns
-failed acquisition at 1,024/1,500 bytes; neither ran a long local consumer.
-Long-path support remains an absolute requirement. A concrete same-object
-namespace diagnostic is now complete with a stop-rule deviation. Its
-[accepted incomplete report](same-object-namespace-prototype.md) establishes
-local identity/marker access at 900/1,500 bytes, but long application/type facts
-failed and no compliant long receiver or Finder-selection result was obtained.
-Antony accepted that report for returned design with no retry authorized.
-The separately authorized [focused Zed result](#focused-zed-result-and-bookmark-question)
-now establishes fresh reading of both original files by the exact short Zed copy
-after restricted-mode choices. The long buffer has an inode-only filename;
-native application/type checks still fail, delivered operands are opaque and
-saving is untested. Antony accepted that readable report. The
-[returned assessment](focused-zed-route-assessment.md#stopped-bookmark-result-and-remaining-route)
-separates stored naming information from a usable receiver address. The accepted
-[bookmark report](bookmark-name-resolution-prototype.md) stopped at preparation
-on supervisor-input EOF; every native case and control is unrun. Its authorization
-is spent. One [replacement collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
-was approved on 2026-10-06, with input verified before guest allocation.
-Antony also requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic).
-The replacement [stopped at a trailing-slash bare-parent control](local-url-naming-prototype.md)
-with ENAMETOOLONG after a successful input preflight. Antony accepted its
-incomplete report on 2026-10-07. All eight naming cases remain unrun and its
-allowance is spent. The [returned control assessment](focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-distinguishes that exact failure from bookmark/URL outcomes. One
-[separated local collection](focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-Production spelling/support and the complete route remain unresolved.
+## V1 decision
 
-Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
-and the [remaining decision](#decision-for-antony). The
-[prototype](long-action-route-prototype.md) supplies the committed native
-measurements; the [prior-art survey](../research/prior-art-long-paths-a.md)
-answers the representation question. The [reviewed boundary](long-action-native-boundary.md),
-independent action/search subjects and separate compatibility profiles remain
-binding. The [acquisition result](#native-reference-result-and-remaining-gap)
-is consumed here without another native run; it is not action acceptance.
+On 2026-10-07, reacting to the
+[separated local naming collection](separated-local-url-naming-prototype.md),
+Antony stopped the investigation: Koine's own filesystem code uses a
+directory-descriptor abstraction resolving component by component, applications
+that cannot take long absolute paths surface the failure, and long-path
+application support is deferred until after v1. That supersedes, for v1, his
+2026-10-05 [absolute requirement](#non-negotiable-long-path-requirement) and the
+[retained working cases](#decision-for-antony). No further native
+investigation, external inquiry or workaround is authorized; the
+[inquiry drafts](#prepared-capability-inquiry) were never sent.
 
-Antony retained the original requirement and requested the now-completed
-[application research synthesis](../research/long-pathname-applications.md),
-based on independent [survey A](../research/long-pathname-applications-a.md)
-and [survey B](../research/long-pathname-applications-b.md). The refusal
-recommendation remains unadopted. This returned design follows the mechanisms
-through their receivers and narrows SDK acquisition candidates. Antony's later
-instruction selected [internal investigation](#internal-native-reference-investigation).
-That finite diagnostic is complete and Antony accepted its result. The
-[item-array diagnostic](#proposed-item-array-submission-diagnostic) is complete.
-The [returned result and representation assessment](#item-array-result-and-representation-assessment)
-consume Antony's directory-handle/component and file-reference URL direction.
-Antony authorized one finite acquisition-only diagnostic on 2026-10-05, with
-one prototype and retained returned design. The [completed bounded URL diagnostic](file-reference-url-acquisition-prototype.md)
-includes the retained failed instrumentation attempt and expressly authorized
-replacement; it commissions no automatic probe series.
-No complete route is established. Final review and action acceptance remain required
-before the search handoff can close.
+The current contract is the
+[v1 action boundary](../specs/workspace-launch-and-open.md#long-location-action-boundary)
+and the [descriptor-relative access decision](../adr/filesystem-access-is-descriptor-relative.md).
+What each diagnostic contributed to it:
+
+| Evidence | What it established | Where it lands in v1 |
+| --- | --- | --- |
+| [k134 prototype](long-action-route-prototype.md) | Component-relative calls reached about 1,500-byte items with truthful causes; submission, registration, handler lookup and type acquisition delivered at 1,023 bytes and failed at 1,024; a read-mode walk prompted at Documents. | Koine's own resolution; the `PATH_MAX` hand-off limit; search-only handles with a prompt acceptance obligation. |
+| [Application surveys](../research/long-pathname-applications.md) | Mature descriptor walks and their failure modes; no macOS opener accepts a descriptor or component list. | The walk's obligations; no hand-off workaround. |
+| [Native references](#native-reference-result-and-remaining-gap), [item arrays](item-array-submission.md), [file-reference URLs](file-reference-url-acquisition-prototype.md) | References, item-array submission and URL acquisition all stop at 1,024 bytes. | Rejected hand-off workarounds. |
+| [Same-object namespace](same-object-namespace-prototype.md), [focused Zed](focused-zed-receiver-prototype.md) | Local identity access works at 1,500 bytes; native facts fail and Zed reads by whole path, naming the buffer by inode. | Receiver parity is not reachable by a Koine-side spelling. |
+| [Bookmark](bookmark-name-resolution-prototype.md), [local naming](local-url-naming-prototype.md), [separated local naming](separated-local-url-naming-prototype.md) | Two stopped attempts, then all eight cases: names survive in URL text, but 1,500-byte bookmarks and parent-reference reads fail. | Rejected hand-off workarounds; the question moves to Koine#1. |
+
+Every measurement keeps its own limits, raw corpus and spent allowance; this
+decision repeats none of them and adds no native result.
+
+## Evaluation record
+
+The sections below record the evaluation as it ran, before the v1 decision.
+Their "remaining", "retained" and "unresolved" language describes that time.
 
 ## Non-negotiable long-path requirement
 

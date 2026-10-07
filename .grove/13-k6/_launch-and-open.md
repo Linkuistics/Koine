@@ -171,6 +171,20 @@ implementation/full acceptance still follows the supported route and k128's
 mandatory final review through planning. No automatic further evidence chain
 is authorized.
 
+k165 closed long-search-result-actions-k128 on 2026-10-07. After the separated
+local naming collection, Antony deferred long-path application support past v1
+([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)). The v1
+contract is the action spec's long-location boundary: Koine resolves every action
+location component by component from search-only handles
+(`docs/adr/filesystem-access-is-descriptor-relative.md`), so absence is
+established at any length; an extant location whose literal, expanded or resolved
+spelling needs `PATH_MAX` or more is refused with `failed` before any request;
+within the limit the accepted route is unchanged. Mandatory review
+long-search-result-actions-k166, and any integration it earns, precede planning
+long-location-actions-k167 and every search consumer (k123/k120/k30). First-use
+prompt-free resolution in Desktop/Documents/Downloads is an acceptance
+obligation; a prompt returns to Antony rather than reviving whole-path calls.
+
 `protected-path-metadata-k73` records its bounded answer in
 `docs/verification/protected-path-metadata.md`. The tested first-use metadata and
 registered-application route is prompt-free on Desktop, Documents and Downloads;

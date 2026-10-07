@@ -15,17 +15,17 @@ Core -> Workspace: admitted action
 Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
 note over Workspace,Native
 First-use metadata route measured prompt-free on three protected roots.
-Long metadata/handler/submission/receipt route remains unresolved.
-Whole-size/unresolved-link/unacquired-fact repair is designed 1.0.1.
-Established cycle/name-limit/nil outcomes retain their meanings.
+Designed 1.0.1 (v1): Koine resolves the location component by component;
+only that resolution establishes absence. A spelling needing PATH_MAX or
+more is failed before any request; within it the route is unchanged.
 Selected app URL is registered spelling of the constrained native identity.
 Document file-URL handler lookup prompts: protected default opening
 remains pending a human decision; do not attempt it as a readiness read.
 end note
 alt missing prerequisite before submission
   Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
-else uncertain inspection / size / unresolved link bound
-  Workspace --> Client: failed, not inferred absence\ndesigned correction; long route still required
+else uncertain inspection / link budget / hand-off limit
+  Workspace --> Client: failed, not inferred absence\nincludes the v1 hand-off limit refusal
 else ready
   Workspace -> Native: submit launch/open; request activation\nreuse running copy unless path-constrained
   alt native acknowledgment within wait bound

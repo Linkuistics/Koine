@@ -290,3 +290,12 @@ signing/consent posture. The finite prototype precedes route closure; production
 implementation/native acceptance remains planning's after supported design and
 k128's mandatory final review. No automatic evidence chain or accepted workflow
 loss is created, and the launch/open chain still precedes search consumers.
+
+k165 closed the k128 route node under Antony's 2026-10-07 v1 decision
+([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)): no
+long-path application support in v1. Actions resolve locations themselves
+(`docs/adr/filesystem-access-is-descriptor-relative.md`) and refuse an extant
+location too long for the application hand-off with `failed`; search keeps its
+8,192-byte ceiling and drops nothing. Review k166, then planning k167, in
+launch-and-open precede search consumers k123/k120/k30. That refusal is an
+accepted limit, so k93's omissions decision need not re-decide it.

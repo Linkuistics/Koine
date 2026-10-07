@@ -532,73 +532,22 @@ or stale service state. UNREGISTERED and UNKNOWN remain reveal/copy choices and
 cannot launch by this route; a known identifier can still be copied. File paths feed
 existing open/reveal operations. Null default-app metadata is unknown, not no handler.
 Search classification does not pin a file or promise that opening will succeed.
-The 8,192-byte search ceiling also does not establish long-result action support:
-the existing action inspection uses PATH_MAX-limited calls, and overlength does
-not prove an observed location absent. The
-[long-location handoff dependency](specs/workspace-search.md#long-location-action-dependency)
-requires a supported action-route design and review before this seam is complete.
-The [native boundary and error repair](specs/workspace-launch-and-open.md#long-location-action-boundary)
-is designed but unimplemented: whole/expanded size, unresolved link-budget and
-unacquired-fact failures
-must use failed rather than invent a missing path, app, identifier or handler.
-It does not establish native long-location support. Keep paths
-and selected installation constraints unchanged; no clipped path, alternate
-copy, disabled-action baseline or shorter search ceiling is approved. Copy is
-client-owned; long-result launch/reveal/default/Zed outcomes remain pending.
-Established cycles/impossible components and completed native no-type/no-identifier
-reports keep their accepted outcomes. Launch-and-open owns independently created
-long action fixtures; search acceptance owns the additional actual-search
-handoff. Independent long-path observers require positive controls; fixture
-acceptance cannot pass search provenance. The repair is designed as action-only
-release/schema 1.0.1, separately from retained 1.0.0 and search 1.1.0.
-The [returned route evaluation](verification/long-action-route.md#measured-reconciliation)
-leaves the supported route unresolved after the prototype and completed application research:
-the tested opener APIs did not complete long actions, while relative filesystem
-inspection reached the items. Arrays/descriptors do not establish another opener
-handoff. Antony [retained the original requirement](verification/long-action-route.md#decision-for-antony).
-The completed research and [returned disposition](verification/long-action-route.md#application-research-reconciliation)
-also require real receiver access: Zed's inspected backend reads by whole path
-after IPC delivery. Public legacy native item arrays do not supply an established
-long acquisition/submission route. The
-[completed internal diagnostic](verification/long-action-route.md#native-reference-result-and-remaining-gap)
-returned references at 1,024 bytes but tested consumers rejected them; its walk
-could not reach the 1,500-byte subjects. Antony accepted the result. The
-[completed item-array diagnostic](verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes through both openers; both failed
-at 1,024 before recorder delivery. This passes no production action.
-The [representation assessment](verification/long-action-route.md#item-array-result-and-representation-assessment)
-keeps the client's observed pathname input unchanged: internal descriptor/name
-lookup does not require a retained-handle protocol. Public file-reference URL
-acquisition was measured in the [completed diagnostic](verification/file-reference-url-acquisition-prototype.md):
-both factories pass local identity/reading/original bytes at 900/1,023 and fail
-acquisition at 1,024/1,500. No long action or receiver pass follows. Long-path
-support remains absolute. The [completed same-object diagnostic](verification/same-object-namespace-prototype.md)
-passes local identity/marker access at 900/1,500 bytes, but long application/type
-facts failed. A missed Zed trust-dialog stop leaves no compliant long receiver
-or Finder-selection result. Antony accepted the incomplete report with no
-retry authorized. The separately completed
-[focused Zed result and returned assessment](verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-establish fresh reading of both original files by the exact short Zed copy after
-restricted-mode choices. The long buffer shows an inode-only filename; native
-application/type checks fail, exact delivery is opaque and saving is untested.
-Antony accepted the [incomplete bookmark report](verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06. Its sole collection stopped on supervisor-input EOF before any
-fixture or case; all native stages/controls remain unrun and its allowance is
-spent. A [replacement local collection](verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-No Zed filename improvement is established. This changes no client input or accepted
-production behavior; the complete route remains unresolved. External
-inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
-production receiver-visible spelling change or working-case loss is approved.
+The 8,192-byte search ceiling does not make every result actionable. In the
+designed v1 action contract (release/schema 1.0.1, unimplemented), launch, open
+and reveal resolve the location themselves, component by component. A location
+that has gone is still `PATH_NOT_FOUND`, or `APPLICATION_NOT_INSTALLED` for an
+installation, whatever its length. An extant location whose spelling needs 1,024
+bytes or more including the terminating NUL — as written, after a link expands,
+or fully resolved — is refused with `failed` before any application is asked,
+and the guidance names the application hand-off limit and the byte count. macOS's
+opener, registration and handler services take whole pathnames and stop there;
+making applications accept longer locations is deferred past v1
+([v1 action boundary](specs/workspace-launch-and-open.md#long-location-action-boundary),
+[search handoff](specs/workspace-search.md#long-location-action-dependency)).
+Keep showing such results and offering copy. You may mark a location of 1,024 or
+more UTF-8 bytes as too long to open in v1, but still report each action from its
+own outcome: a shorter spelling can expand past the limit through a link. Never
+shorten or rewrite a location, drop `applicationPath` or retry another copy.
 Both controls are required for the later actions; selection does not confer them.
 Write copied paths/known identifiers to your own clipboard and keep your own
 MRU. Protected default-document opening and the application-reveal notice retain
@@ -776,13 +725,14 @@ What differs:
    inspection found nothing openable at that spelling and nothing was submitted: a missing
    item, a link to nothing or a path below a file can report it, and an item created
    a moment later is not seen. Inspection that was denied is `failed`, never
-   `PATH_NOT_FOUND`. The retained 1.0.0 also reports a cycle and an impossible
-   component that way; those concrete outcomes remain required. Its broader
-   mapping of every ELOOP/ENAMETOOLONG is defective: an unresolved finite-link
-   budget or whole/expanded path-size refusal proves no absence. The designed
-   1.0.1 correction returns pre-submission `failed` for those uncertainties and
-   preserves established cycle/name-limit absence. It is pending the
-   [long-location route](specs/workspace-launch-and-open.md#long-location-action-boundary).
+   `PATH_NOT_FOUND`. A link cycle and a component longer than its filesystem
+   allows report it too. The retained 1.0.0 also reports every ELOOP/ENAMETOOLONG
+   that way, which is a defect: a long link chain or a long but extant path proves
+   no absence. The designed 1.0.1 resolves the path component by component and
+   returns `failed` for those instead, including an extant location too long to
+   hand to an application, as the
+   [long-location boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)
+   states.
 3. **Some things are refused, as input.** After symlinks are resolved, an application
    bundle, a program (a Unix or Windows executable) and a Finder alias file are refused:
    an input error at the field's path with no `kind`, for the default and for a named

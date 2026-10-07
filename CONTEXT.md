@@ -180,72 +180,24 @@ revalidates the path and may encounter another occupant. The
 spelling and name-preserving native-size/descent diagnostics; pre-open witnesses,
 replay/size phases and long-path classification realization remain unresolved.
 The [action handoff](docs/specs/workspace-search.md#long-location-action-dependency)
-also needs a supported launch/open route and review: its
-[native boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)
-selects an unimplemented 1.0.1 failure repair preserving established short-cycle,
-impossible-component and native no-type/no-identifier outcomes. Unacquired facts,
-whole/expanded size refusal and unresolved link budgets prove no absence.
-Classification/selection, default-handler acquisition, submission and receipt
-executable-identity support remain unresolved. Launch-and-open owns independent
-long action fixtures; the [returned route evaluation](docs/verification/long-action-route.md#measured-reconciliation)
-consumes the prototype and completed application research. Relative filesystem access reached
-long items, while tested public opener routes did not complete their actions.
-Component arrays/descriptors supply no established opener handoff. Antony
-retained the original working requirement. The two application surveys and
-synthesis are complete; [returned design](docs/verification/long-action-route.md#application-research-reconciliation)
-separates local access, opener delivery and the real receiver's later access.
-Zed's inspected backend still reads whole paths after IPC. Public legacy FSRef
-item arrays exist without established long acquisition or end-to-end parity.
-Antony selected continued [internal native-reference investigation](docs/verification/long-action-route.md#internal-native-reference-investigation).
-Its bounded flat-enumeration diagnostic is complete and accepted. The
-[returned gap](docs/verification/long-action-route.md#native-reference-result-and-remaining-gap)
-records references returned at 1,024 bytes but rejected by tested consumers;
-the walk cannot reach 1,500-byte subjects. The
-[completed item-array diagnostic](docs/verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 before
-recorder delivery. Its allowance is spent. The
-[representation assessment](docs/verification/long-action-route.md#item-array-result-and-representation-assessment)
-keeps private per-action descriptor/name operands distinct from the public
-observed pathname, which is re-resolved on use. Exporting retained handles
-would change that lifetime contract. The [completed URL diagnostic](docs/verification/file-reference-url-acquisition-prototype.md)
-passes acquisition/local reading/original-byte conversion at 900/1,023 bytes
-but fails acquisition at 1,024/1,500. Its initial instrument stop, sole repair
-and expressly authorized replacement remain distinct. Long local consumption
-and later action stages were not reached. Long-path support is absolute. The
-[returned workaround proposal](docs/verification/long-action-route.md#url-result-and-next-workaround)
-now has a [completed same-object result](docs/verification/same-object-namespace-prototype.md):
-local identity/marker access passes at 900/1,500 bytes; long application/type
-facts fail and a missed Zed trust stop leaves no compliant long receiver or
-Finder-selection result. Antony accepted the incomplete report with no retry.
-The [focused Zed result and returned assessment](docs/verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-establish fresh reading of both originals by the exact short registered Zed copy
-after restricted-mode choices. The long buffer has an inode-only filename;
-long application/type facts still fail, exact delivery is opaque and saving is
-untested. Antony accepted the [incomplete bookmark report](docs/verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06: its sole collection stopped at preparation on supervisor-input
-EOF, before fixtures or cases. All native stages and controls are unrun; this
-is no bookmark negative or receiver naming/production pass. Its authorization
-is spent. One [replacement local collection](docs/verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](docs/verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](docs/verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](docs/verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized. Changed production spelling
-and durable-support exceptions are not adopted. No complete route or automatic
-follow-on is selected. Node-ID resolution
-requires native catalog provenance; a 64-bit inode cast supplies none. External
-inquiries remain unused drafts, and no automatic probe series is authorized.
-The refusal proposal is not adopted; no complete route or action acceptance
-is established.
-App-and-file-search owns the later actual-search G/N/V
-handoff. Neither set passes the other. The search value ceiling is no actionability
-guarantee, and overlength is no proof of absence. A
-native descent limit alone does not make a representable name unreturnable.
+re-resolves the location with **location resolution** and can refuse it at the
+**application hand-off limit**. The search value ceiling is no actionability
+guarantee, and overlength is no proof of absence. A native descent limit alone
+does not make a representable name unreturnable.
+
+**Location resolution**: Koine's own component-by-component walk of a literal
+absolute path from held, search-only directory handles, following links with
+the kernel's semantics. It alone establishes that a location is absent, and it
+yields the object's device and inode and its literal, link-expanded and resolved
+spellings ([decision](docs/adr/filesystem-access-is-descriptor-relative.md)).
+_Avoid_: realpath check, path inspection (for the whole-path calls it replaced)
+
+**Application hand-off limit**: The `PATH_MAX` boundary (1,024 bytes including
+NUL) at which macOS opener, registration, type and handler services stop
+accepting a whole pathname. In v1 an action refuses an extant location whose
+spelling reaches it with `failed`, before asking any application
+([boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)).
+_Avoid_: overlength path, path too long (as an absence or input error)
 
 **Search application identity**: The established native bundle directory identity
 used to merge checked-link and direct discovery routes in one search. Its
@@ -279,3 +231,11 @@ read it?
 
 **Domain expert:** From a result the desktop provider returned, as a URI
 string. Pass it back unchanged; what its remainder means is the provider's.
+
+**Developer:** Search returned a 1,500-byte location and opening it came back
+`failed`. Has the file gone?
+
+**Domain expert:** No. Location resolution found it; a missing one would be
+`PATH_NOT_FOUND`. It failed at the application hand-off limit: in v1 macOS
+cannot be handed that spelling, so Koine asked no application. Keep the result
+visible and let the user copy it.

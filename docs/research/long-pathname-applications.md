@@ -653,76 +653,18 @@ resolved, plus its own searches.
 
 ## Returned design reconciliation
 
-The [returned design](../verification/long-action-route.md#application-research-reconciliation)
-uses this synthesis for local-access ownership, receiver obligations, truthful
-cause/fact meaning and bounded evidence. The action/search specs, guide, trace
-and glossary now cite that disposition. No complete route or workflow loss is
-adopted, and no ADR selects an unestablished mechanism.
-
-Its subsequent SDK 27.0 read narrows Q2: public deprecated
-[LSOpenItemsWithRole](https://developer.apple.com/documentation/coreservices/1449783-lsopenitemswithrole)
-and LSLaunchFSRefSpec accept arrays of whole FSRefs. They do not accept components
-of one pathname or a parent descriptor plus name. Public
-[FSGetCatalogInfoBulk](https://developer.apple.com/documentation/coreservices/1566447-fsgetcataloginfobulk)
-can return references. The later k143
-[acquisition result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
-now shows named references at 1,024 bytes rejected by tested catalog/fact/handler/
-directory consumers, with traversal failing before the 1,500-byte objects.
-That closes the tested enumeration path as a complete route, not every consumer
-or public mechanism. The tested constructors failed; legacy opener parity and the
-receiver's later access remain unresolved. These are later source/result
-reconciliations; neither independent survey read them, and this reconciliation
-runs no new native probe.
-The bounded absence of an established macOS route survives; a blanket absence
-of native item-array APIs does not.
-
-Q1 retains real-application delivery/rendering and Finder-selection observations;
-the public receipt keeps its narrower acknowledgment/identity meaning. The
-[remaining decision](../verification/long-action-route.md#decision-for-antony)
-preserves Antony's requirement and names the missing platform/receiver capability.
-Antony subsequently selected continued [internal investigation](../verification/long-action-route.md#internal-native-reference-investigation),
-superseding the unused external inquiry drafts. The new SDK read narrows catalog
-enumeration to flat iterators and rejects an unsupported 64-bit-inode-to-UInt32
-node shortcut. The finite acquisition diagnostic is complete; Antony accepted
-its result. The later [item-array diagnostic](../verification/item-array-submission.md)
-measured both consumers: exact spelling delivered at 900/1,023 bytes and -41
-with no recorder event at 1,024. Its finite allowance is spent. The
-[returned representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
-consumes Antony's directory-handle/component and file-reference URL direction.
-It distinguishes internal operands from identity-spelled submission: the E2
-exception applies to the external spelling, not all internal reference use.
-Public NSURL/CFURL reference factories are distinct from the unsupported FSRef
-bridges and from manually constructed volfs strings. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
-passes local acquisition/identity/reading/original bytes at 900/1,023 but fails
-acquisition at 1,024/1,500. No long local-consumer or later-stage pass follows.
-The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
-measures the pinned XNU local lead: original identity/marker access passes at
-900/1,500 bytes. Long application/type facts fail; a missed Zed trust stop leaves
-no compliant long receiver or Finder-selection result. Antony accepted the
-incomplete report with no retry. The
-[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-now establish fresh reading of both original files by the exact short Zed copy
-after restricted-mode choices. The long buffer shows an inode-only filename;
-native application/type acquisition still fails, exact delivery is opaque and
-saving is untested. Antony accepted the [incomplete bookmark report](../verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06: the sole collection stopped on supervisor-input EOF before
-fixtures or cases. Every native stage/control is unrun, not a native negative,
-and the allowance is spent. A [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](../verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](../verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-This source/receiver distinction preserves the surveys' bounded
-whole-path readings; it does not infer failure of every short operand. No
-production mechanism or exception, complete route, action acceptance or
-automatic probe series is claimed.
-These later observations/decisions are not part of either independent survey.
+**Where the findings landed.** §5.1's component-relative resolution became the
+[descriptor-relative access decision](../adr/filesystem-access-is-descriptor-relative.md),
+and each of its attacks — descriptor budget, recovery branches, depth-evading
+checks, reconstructed strings, prompts and spelling — is an obligation in the
+[v1 action boundary](../specs/workspace-launch-and-open.md#obligations-from-earlier-descriptor-walks).
+§5.2–§5.5's hand-off leads did not yield a supported route: the later diagnostics
+the [route evaluation](../verification/long-action-route.md#v1-decision) lists
+stopped at 1,024 bytes or could not read the 1,500-byte file, and Zed reads by
+whole path after delivery. On 2026-10-07 Antony deferred long-path application
+support past v1 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)),
+so v1 refuses the hand-off truthfully instead. §7.5's open questions move to that
+issue. Neither independent survey read those later diagnostics or the decision.
 
 ## Sources added or re-read by this synthesis
 

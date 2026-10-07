@@ -1,64 +1,22 @@
 # Long-location action boundary
 
-Source/SDK analysis and a proposed error-contract repair, **not native action
-acceptance**. This answers why the existing metadata route cannot establish
-actionability for every search location. It does not select a replacement
-classification/selection route. The remaining route design and its mandatory
-review stay live before search consumers. No shorter search ceiling, copy-only
-workflow, private policy, new consent or incompatible version is approved.
+Source/SDK analysis and the error-contract repair it motivated, **not native
+action acceptance**. It explains why the shipped whole-path metadata route
+cannot establish presence or actionability for every search location.
 
-The [action boundary](../specs/workspace-launch-and-open.md#long-location-action-boundary)
-owns the behavioral meaning. The
+**Current status.** On 2026-10-07 Antony deferred making applications accept
+long locations past v1 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)).
+The [v1 action boundary](../specs/workspace-launch-and-open.md#long-location-action-boundary)
+now owns the behavioural meaning: Koine's own
+[descriptor-relative resolution](../adr/filesystem-access-is-descriptor-relative.md)
+establishes presence and cause at any length, and a location whose spelling needs
+`PATH_MAX` bytes or more is refused at the application hand-off with `failed`.
+The [route evaluation](long-action-route.md#v1-decision) records how the
+diagnostics that followed this analysis led there. The
 [search handoff](../specs/workspace-search.md#long-location-action-dependency)
-continues to require a complete, reviewed action route.
-
-The [returned route evaluation](long-action-route.md#measured-reconciliation)
-consumes the finite prototype and completed application research. Relative lookup
-reached long items; tested classification/registration/handler/submission APIs
-did not complete the original working cases. The
-[retained requirement and remaining decision](long-action-route.md#decision-for-antony)
-keep the original cases binding. Both surveys and synthesis are complete;
-[returned design](long-action-route.md#application-research-reconciliation)
-distinguishes local access, opener delivery and real receiver access, and narrows
-the SDK item-array silence. Antony selected continued
-[internal investigation](long-action-route.md#internal-native-reference-investigation),
-whose finite native-reference diagnostic is complete. The
-[returned result and gap](long-action-route.md#native-reference-result-and-remaining-gap)
-show that enumeration returns references at 1,024 bytes but tested consumers
-reject them; the walk cannot reach the 1,500-byte subjects. The later
-[item-array diagnostic](item-array-submission.md) delivers exact spelling at
-900/1,023 but both openers fail at 1,024 before recorder delivery. The
-[completed URL diagnostic](file-reference-url-acquisition-prototype.md) passes
-local acquisition/reading/original bytes at 900/1,023 and fails acquisition at
-1,024/1,500. Preserve its instrument stop, correction and expressly authorized
-replacement. Long-path support is absolute. The [completed same-object diagnostic](same-object-namespace-prototype.md)
-passes local identity/marker access at 900/1,500 bytes; long application/type
-facts failed and a missed Zed trust stop leaves no compliant long receiver or
-Finder-selection result. Antony accepted the incomplete report with no retry.
-The separately completed
-[focused Zed result and returned assessment](long-action-route.md#focused-zed-result-and-bookmark-question)
-establish fresh reading of both original files by the exact short Zed copy after
-restricted-mode choices. Long native application/type facts still fail; the
-long buffer has an inode-only filename, exact delivery is opaque and saving is
-untested. Antony accepted the [incomplete bookmark report](bookmark-name-resolution-prototype.md)
-on 2026-10-06. Supervisor-input EOF stopped its sole collection before fixtures
-or cases; all native stages/controls are unrun and its allowance is spent.
-A [replacement local collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-Complete-route obligations remain; no production exception or automatic follow-on is commissioned.
-Native node-ID provenance cannot be replaced by an inode cast.
-External inquiries remain unused drafts.
-The refusal proposal is not adopted. No complete route, universal impossibility or native
-action acceptance is established.
+consumes that boundary. The sections below are the source evidence as analysed;
+where they speak of a replacement classification or submission route still to be
+designed, the v1 decision supersedes that obligation.
 
 ## Native consumers and distinct limits
 
@@ -154,10 +112,11 @@ rebuilding the baseline nor relabelling a historical update retains it.
 
 The compatibility judgement is a correction of unjustified negatives for
 extant/unestablished targets, preserving the documented concrete short-path
-and established-nil behavior. If the route requires reversing those outcomes,
-an incompatible meaning, short-workflow loss or systematic null long-app
-receipts, stop for Antony's decision before adoption. No such trade-off is
-accepted here. Planning must reconcile the native errno/Foundation/plist
+and established-nil behavior. The v1 hand-off refusal changes an extant
+over-limit location from the 1.0.0 defect's dependency absence to `failed`, with
+the same kinds and enums; Antony accepted that long locations do not reach
+applications in v1. Any further incompatible meaning or short-workflow loss
+still needs his decision before adoption. Planning must reconcile the native errno/Foundation/plist
 comments and mapping, N fixture provenance, contract-only client coverage and
 its findings record with this contract. Those implementations remain unchanged
 in this design integration.

@@ -2,22 +2,33 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Authorized local naming: independent file and parent controls",
-    "status": "Long-path requirement absolute · k161 accepted incomplete · k164 authorized · eight cases unrun",
-    "summary": "k155 established fresh original-file reading at 900/1,500 bytes by the exact short registered Zed copy after restricted-mode choices; long naming is inode-only, native application/type facts fail, delivery is opaque and saving is untested. k158 stopped on preparation input EOF. The approved k161 replacement passed interactive preflight but stopped at its 1,500-byte trailing-slash bare-parent control with ENAMETOOLONG before all eight naming cases. Antony accepted that incomplete report on 2026-10-07; its allowance is spent. Pinned XNU treats the slash as a suffix and appends through MAXPATHLEN, a source-consistent explanation rather than proof of the guest kernel execution. The shared parent control prevented unrelated bookmark measurements. Antony’s 2026-10-07 “authorized” approves one new local collection: unchanged four bookmark cases under independent file controls, then four parent/name cases with a separately verified unsuffixed parent identity control while preserving the original slash-ended directory URL candidate. One guest/collection, max two precollection builds, 15 minutes, zero external requests and no repair/recollection. Source/charter k163 hands off the exact contract to fresh-context prototype k164, then returned complete-route design k165 consumes its report and Antony’s reaction. No native case runs in the source session; all eight cases remain unrun and no repair/recollection or automatic next investigation is authorized. Preserve all old corpora. Stored/URL name, resolution, actual whole-path same-object reading and real receiver naming remain separate. A parent named-reader positive requires the absolute child text’s original name and a verified same-object read; relative name is graded separately. Original bytes, durable support, native facts, default/directory/Finder, exact long-app selection/receipt, independent action/search and three profiles, final review and planning remain owed. k165, k162 and all route ancestors remain live.",
+    "title": "Long locations in v1: resolve truthfully, refuse at the application hand-off",
+    "status": "Proposed for mandatory review · Antony deferred long-path application support past v1 (2026-10-07, Koine#1) · unimplemented",
+    "summary": "After the separated local naming collection, Antony stopped the long-path investigation. Koine’s own filesystem work resolves locations component by component from search-only directory handles (new decision filesystem-access-is-descriptor-relative), so a missing location is PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED at any length and an extant one is never reported missing. An extant location whose literal, link-expanded or resolved spelling needs PATH_MAX (1,024 bytes including NUL) or more is refused with failed before any application request; guidance names the hand-off limit and byte count. Within the limit the accepted short-path route is unchanged. No workaround, new error kind, input bound or shorter search ceiling; search results stay visible and copyable. Open: first-use prompt behaviour of search-only resolution in protected folders is unmeasured and is an acceptance obligation; a prompt would go to Antony. The retired route-candidates view’s evidence lives in the route evaluation and Koine#1. Review, then planning, follow.",
     "diagramIds": [
-      "workspace-route-candidates",
       "workspace-long-locations",
+      "search-handoff",
       "workspace-open",
       "workspace-outcomes",
-      "search-handoff",
       "workspace-inspection",
       "search-canonical"
     ],
     "updatedDiagrams": [
       {
-        "id": "workspace-route-candidates",
-        "summary": "Shows k161’s accepted zero-case parent-control stop and the newly authorized separation of file controls from parent candidates, with k163 → k164 → k165 handoff; preserves the slash-ended URL and every complete-route obligation."
+        "id": "workspace-long-locations",
+        "summary": "Redrawn for v1: resolution outcomes, the hand-off limit refusal, and the unchanged short-path route within the limit."
+      },
+      {
+        "id": "search-handoff",
+        "summary": "The long-location note and action edge now state the v1 refusal instead of an unresolved route."
+      },
+      {
+        "id": "workspace-open",
+        "summary": "The inspection note and uncertain-inspection branch now state v1 resolution and the hand-off limit refusal."
+      },
+      {
+        "id": "workspace-outcomes",
+        "summary": "The inspection node now says absence comes only from Koine’s own resolution and names the v1 refusal."
       }
     ]
   },
@@ -25,7 +36,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Resolver bounds and name-preserving locations remain selected. Review found missing pre-open foreign-mount/symlink witness rules and incomplete replay/metadata phases; current/prefix size scopes need independent-proof repair. Two producer/review chains precede classification and its review, then whole-resource review/planning. Long-result actions require launch/open design/review: the search ceiling is no actionability guarantee. No call set, account, domain, consent or accepted workflow coverage changes; native/binary/no-dialog/useful outcomes and the operator omissions decision remain pending."
+      "description": "Resolver bounds and name-preserving locations remain selected. Review found missing pre-open foreign-mount/symlink witness rules and incomplete replay/metadata phases; current/prefix size scopes need independent-proof repair. Two producer/review chains precede classification and its review, then whole-resource review/planning. The search ceiling is no actionability guarantee: in v1 an action refuses an extant location too long for the application hand-off, pending launch/open review. No call set, account, domain, consent or accepted workflow coverage changes; native/binary/no-dialog/useful outcomes and the operator omissions decision remain pending."
     },
     {
       "id": "workspace",
@@ -64,15 +75,6 @@
     }
   ],
   "diagrams": [
-    {
-      "id": "workspace-route-candidates",
-      "group": "workspace",
-      "title": "Separate local access, opener delivery and receiver access",
-      "renderer": "svg",
-      "source": "workspace-route-candidates.d2",
-      "rendered": "workspace-route-candidates.svg",
-      "caption": "Evidence and authorized finite diagnostic; the production route remains unresolved. k161 passed input preflight then stopped on trailing-slash bareParentControlOpen / ENAMETOOLONG; all eight naming cases remain unrun. The newly authorized collection separates file controls from parent prerequisites, keeping the exact bookmark options, parent directory URL, constructors and whole-path reader. A verified unsuffixed parent does not prove a slash-ended URL or named child. Antony authorized it on 2026-10-07: source/charter k163, fresh-context prototype k164, then returned route design k165. No automatic next investigation follows. One guest/collection, max two builds, 15 minutes, zero external requests, no repair/recollection. k155 credits fresh contents in the exact short Zed copy only, with inode-only naming. Native facts, original spelling/durable support, other receivers/Finder, long-app selection/receipt, all profiles and independent action/search acceptance remain owed. k165, k162 and all route ancestors stay live. Parent named-reader positivity requires original-name equality in the absolute child text and verified same-object reading, with relative name graded separately."
-    },
     {
       "id": "search-serviceability",
       "group": "search",
@@ -134,7 +136,7 @@
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Discloses PATH_MAX-limited action inspection and launch/open design/review for long returned locations. Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Witness and observation-phase repairs/reviews precede classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Long returned locations stay visible and copyable; in v1 an action resolves them and refuses an extant location whose spelling needs PATH_MAX or more with failed. Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Witness and observation-phase repairs/reviews precede classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending. The v1 long-location boundary is proposed for review and unimplemented. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "search-discovery",
@@ -161,7 +163,7 @@
       "renderer": "svg",
       "source": "workspace-open.puml",
       "rendered": "workspace-open.svg",
-      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. The v1 long-location boundary (proposed for review, unimplemented) resolves locations component by component and refuses an extant location whose spelling needs PATH_MAX or more with failed before any request. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "workspace-outcomes",
@@ -170,7 +172,7 @@
       "renderer": "svg",
       "source": "workspace-outcomes.d2",
       "rendered": "workspace-outcomes.svg",
-      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. Long-location boundary analysis selects an unimplemented failure correction; a supported metadata/classification/submission route and review remain live. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. The v1 long-location boundary (proposed for review, unimplemented) resolves locations component by component and refuses an extant location whose spelling needs PATH_MAX or more with failed before any request. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "provider-selection",
@@ -283,11 +285,11 @@
     {
       "id": "workspace-long-locations",
       "group": "workspace",
-      "title": "Separate long-location lookup, classification and submission",
+      "title": "Resolve the location, then check the application hand-off limit",
       "renderer": "svg",
       "source": "workspace-long-locations.d2",
       "rendered": "workspace-long-locations.svg",
-      "caption": "Reviewed boundary repair, not a supported complete route or native acceptance. Search supplies up to 8192 UTF-8 bytes. Distinguish source/expanded text, native facts, file-URL handler lookup, registered app spelling and receipt executable identity. Established cycles/impossible components remain PATH_NOT_FOUND; completed native nil facts retain their accepted meanings. Unresolved link budgets, whole/expanded size refusal and unacquired facts mean pre-submission failed. Explicit dependency and payload-refusal branches submit nothing. Independent roughly 1500-byte action fixtures belong to launch-and-open; actual-search handoff belongs to later search acceptance. Positive long-path observer controls, short-workflow regressions with long registered copies and separate 1.0.0/1.0.1/1.1.0 profiles remain pending. Final route review precedes consumers. No shortened/copy-only baseline, systematic null receipt loss, new consent or private policy is accepted."
+      "caption": "Proposed v1 contract for review; unimplemented, no native acceptance. Koine resolves every action location itself from search-only handles, so absence (missing, dangling, cycle, impossible component) is established at any length and later platform nil/ENOENT/ENAMETOOLONG is never absence. An extant location whose literal, link-expanded or resolved spelling needs PATH_MAX (1,024 bytes including NUL) or more is refused with failed before any request; application support for such locations is deferred past v1 (Koine#1). Within the limit the accepted short-path metadata, handler, submission and receipt route is unchanged. First-use prompt behaviour of search-only resolution in Desktop, Documents and Downloads is an acceptance obligation; a prompt goes to Antony."
     }
   ]
 }

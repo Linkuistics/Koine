@@ -264,55 +264,15 @@ incorrect known witnesses still fail. Only the two named guarantees change;
 allocation/subject design is finalized; implementation, execution and mandatory review remain live. No trace
 row, reduced workflow coverage or native/binary acceptance is established.
 
-The selected-action rows below also consume the
-[returned public route evaluation](../verification/long-action-route.md#measured-reconciliation).
-The finite prototype and requested survey establish local relative access,
-not a complete admitted opener route: long native facts, selection, default
-lookup, submission and receipt obligations remain unmet or unmeasured. The
-[retained requirement and remaining decision](../verification/long-action-route.md#decision-for-antony)
-preserve all long working cases. Both surveys and synthesis are complete;
-[returned design](../verification/long-action-route.md#application-research-reconciliation)
-separates local access, opener delivery and real receiver access. The legacy
-FSRef item-array clarification supplies no complete long route or parity pass.
-The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
-returns references at 1,024 bytes but tested consumers reject them; the walk
-cannot reach the 1,500-byte subjects. Antony accepted that diagnostic result,
-which supplies no action acceptance. The
-[completed item-array diagnostic](../verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes, while both openers failed at 1,024
-before recorder delivery. Its allowance is spent; selected-action acceptance
-stays pending. The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
-keeps internal descriptor/name resolution separate from public pathname values
-and from an external opener/receiver protocol. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
-passes local acquisition/reading/original bytes at 900/1,023 but fails acquisition
-at 1,024/1,500, before any long local-consumer or later stage. Preserve its
-instrument stop, correction and explicitly authorized replacement. Long-path
-support is absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
-passes local identity/marker access at 900/1,500 bytes; long application/type
-facts failed. The missed Zed trust stop leaves no compliant long receiver or
-Finder-selection result. Antony accepted the incomplete report with no retry.
-The separately completed
-[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-establish fresh reading of both originals by the exact short registered Zed copy
-after restricted-mode choices. Long native application/type acquisition still
-fails; the long buffer has an inode-only filename, exact delivery is opaque and
-saving is untested. Antony accepted the [incomplete bookmark report](../verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06: supervisor-input EOF stopped its sole collection before fixtures
-or cases, leaving every native stage/control unrun and the allowance spent.
-One [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](../verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](../verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-This supplies no production fact, grant or action acceptance and
-keeps the complete route live. External inquiries are unused drafts.
-Action/search subjects and retained/repair/search profiles stay distinct.
+The selected-action rows below use the launch/open increment's
+[v1 long-location boundary](workspace-launch-and-open.md#long-location-action-boundary):
+the same `workspace:control` AND `desktop:control` operations resolve every
+selected location themselves and refuse, with `failed`, an extant location too
+long for macOS's application hand-off. That refusal adds no capability, grant,
+consent or operation; long-path application support is deferred past v1. The
+[route evaluation](../verification/long-action-route.md#v1-decision) records
+the evidence. Action-only and actual-search subjects, and the retained 1.0.0,
+repair 1.0.1 and search 1.1.0 profiles, stay distinct and pending.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

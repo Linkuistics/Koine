@@ -1,38 +1,27 @@
 # What the Zed and stopped local naming results establish
 
-**Zed can read the original 1,500-byte-path file through its short same-object
-address on the tested system. Bookmarks might recover naming information, but
-we have no evidence that they give Zed both the original filename and a usable
-long-file address.** The complete Koine route remains unresolved.
+**Closed for v1.** The [separated local naming collection](separated-local-url-naming-prototype.md)
+ran all eight cases: at 900 bytes bookmarks and a parent reference plus the
+original name reach the same object; at 1,500 bytes the original name survives
+in a stored bookmark name and in URL text, but neither route reads the file. Antony then deferred long-path application
+support past v1 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1));
+the [route evaluation's v1 decision](long-action-route.md#v1-decision) and the
+[v1 action boundary](../specs/workspace-launch-and-open.md#long-location-action-boundary)
+are current. This assessment is the evidence record that led there.
 
-Antony accepted the [focused receiver report](focused-zed-receiver-prototype.md)
-on 2026-10-06. That accepts the observation; it adopts no production workaround
-and commissions no further experiment. This assessment consumes that report
-and Antony's subsequent bookmark and cleanup questions.
-
-Antony subsequently authorized the exact
-[finite bookmark diagnostic](#finite-bookmark-diagnostic) on 2026-10-06. Its
-[accepted incomplete report](bookmark-name-resolution-prototype.md) supplies
-no bookmark measurement: the sole collection stopped on closed supervisor input
-at preparation, before creating fixtures or executing any case. The guest was
-disposed after 19.22 seconds. Acceptance grants no retry. Complete-route node k159
-retains the complete supported-route obligation under k156; the
-[replacement](#replacement-bookmark-decision) was approved. Antony also
-requested the [parent-reference plus name](#parent-reference-plus-original-name)
-question; its separate local cases shared the replacement's single collection
-and aggregate budget. That collection has now [stopped at a parent control](#local-naming-result-and-control-assessment).
-Antony accepted its incomplete report on 2026-10-07. All eight naming cases
-remain unrun; the allowance is spent. Antony's subsequent 2026-10-07 “authorized”
-approves the [separated local naming charter](#separated-local-naming-proposal)
-for one fresh-context prototype k164, following source/charter k163. Returned
-complete-route design k165 consumes the actual report and reaction. Approval
-selects no production route and grants no repair/recollection or automatic next
-investigation.
-
-Start with the [receiver and bookmark view](../design/architecture/index.html#diagram-workspace-route-candidates).
-Graphs enter at the dark **Start here** node; numbered edges indicate reading
-order. The diagram and the following sections describe evidence and the charter,
-not a selected production mechanism.
+As assessed before that decision: Zed can read the original 1,500-byte-path file
+through its short same-object address on the tested system, and bookmarks might
+recover naming information, but nothing showed that they give Zed both the
+original filename and a usable long-file address. Antony accepted the
+[focused receiver report](focused-zed-receiver-prototype.md) on 2026-10-06, then
+authorized the [finite bookmark diagnostic](#finite-bookmark-diagnostic), whose
+[sole collection stopped](bookmark-name-resolution-prototype.md) at preparation;
+the [replacement](#replacement-bookmark-decision) with the
+[parent-reference plus name](#parent-reference-plus-original-name) cases
+[stopped at a parent control](#local-naming-result-and-control-assessment); and
+the [separated local naming charter](#separated-local-naming-proposal) produced
+the eight-case result above. Graphs in the architecture viewer enter at the dark
+**Start here** node; numbered edges indicate reading order.
 
 ## The measured receiver positive
 

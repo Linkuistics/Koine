@@ -36,8 +36,8 @@ The [path design](#path-design-dependencies) specifies one bounded resolver,
 pre-open parent/child policy, observed spelling and representable directory names.
 Pre-open mount/symlink witnesses and replay/size-refusal phases need producer
 repairs and their own load-bearing reviews before long-path classification and
-its review, then complete-resource review and planning. Long-result action
-support also requires the launch/open increment's design/review chain. The in-process allocation below selects
+its review, then complete-resource review and planning. Long-result actions
+follow the launch/open increment's v1 boundary and its pending review. The in-process allocation below selects
 metadata/resource calls and the observable instrument contract; serviceability
 subject construction is specified below; implementation and the complete-resource
 review remain required. Each
@@ -2340,104 +2340,58 @@ separate, authorized receipt handoff in the launch/open contract.
 
 ### Long-location action dependency
 
-The search ceiling of 8,192 returned UTF-8 bytes is a discovery/copy contract,
-not an established actionability ceiling. The existing
-[action inspection contract](workspace-launch-and-open.md#evidence-so-far)
-uses realpath/stat and selected path-based resource values; the SDK PATH_MAX
-is 1,024 bytes including NUL. Its overlength-as-not-found branch does not prove
-that a component-created long location is absent. Search can therefore observe
-a roughly 1,500-byte file or a long application location whose later inspection
-cannot use that route. Expanded/native spelling limits matter too; raw input
-length alone is no reliable presence or actionability verdict.
+The search ceiling of 8,192 returned UTF-8 bytes is a discovery and copy
+contract, not an actionability promise. The launch/open increment's
+[v1 action boundary](workspace-launch-and-open.md#long-location-action-boundary)
+decides what an action does with a returned location. Koine resolves the location
+component by component under the
+[descriptor-relative access decision](../adr/filesystem-access-is-descriptor-relative.md),
+so a returned location that still exists is never reported missing. If its
+literal, link-expanded or resolved spelling needs `PATH_MAX` (1,024) bytes or more
+including NUL, the action is refused before any application request with `failed`
+and guidance naming the hand-off limit. Locations within the limit act exactly as
+before. Making applications accept longer locations is deferred past v1
+([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)); the
+[route evaluation](../verification/long-action-route.md#v1-decision) records the
+evidence behind that decision.
 
-The launch/open increment's
-[native boundary and proposed failure repair](workspace-launch-and-open.md#long-location-action-boundary)
-distinguishes size/link-limit/classification uncertainty from established absence.
-That repair is unimplemented; the replacement supported metadata/selection and
-submission route remains a live design, followed by mandatory review, before
-this handoff is complete. The
-[source/SDK analysis and subjects](../verification/long-action-native-boundary.md)
-do not prove native long actionability or resolve search's path-design dependencies.
-The [returned route evaluation](../verification/long-action-route.md#measured-reconciliation)
-consumes the finite prototype, prior-art survey and completed application synthesis. Relative inspection
-reached long items, but the tested native-fact/registration/handler/submission
-routes did not establish their required actions. Component arrays or directory
-handles supply no admitted macOS opener handoff. The
-[retained requirement and remaining decision](../verification/long-action-route.md#decision-for-antony)
-consume the completed research. The
-[returned disposition](../verification/long-action-route.md#application-research-reconciliation)
-keeps opener delivery and the real receiver's subsequent access separate; Zed's
-inspected backend still reads by whole path. Public legacy native item arrays
-do not establish a complete long acquisition/submission route or end-to-end
-parity. The [completed internal result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
-returns references at 1,024 bytes but tested consumers reject them; traversal
-cannot reach the 1,500-byte subjects. Antony accepted the result. The
-[completed item-array diagnostic](../verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes; both openers failed at 1,024 before
-recorder delivery. Its allowance is spent and establishes no action acceptance.
-The [representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
-separates per-action descriptor/name operands from unchanged public observed
-pathname values. Exported retained handles would change the location/lifetime
-contract. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
-passes acquisition/local reading/original bytes at 900/1,023 but fails acquisition
-at 1,024/1,500. Long local consumption and subsequent action stages were not
-reached. Its instrument stop, correction and expressly authorized replacement
-remain separate. Long-path support is absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
-passes local identity/marker access at 900/1,500 bytes; long application/type
-facts failed and a missed Zed trust stop leaves no compliant long receiver or
-Finder-selection result. Antony accepted the incomplete report with no retry.
-The [focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-establish fresh reading of both originals by the exact short Zed copy after
-restricted-mode choices. Long-file application/type facts still fail, and the
-long buffer has an inode-only filename. Exact delivery and saving are unmeasured.
-Antony accepted the [incomplete bookmark report](../verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06. Its sole collection stopped on supervisor-input EOF before fixtures
-or cases; every native stage and control is unrun. The spent authorization
-grants no retry. One [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](../verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](../verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-This handoff remains unresolved. No production exception or automatic native follow-on is
-authorized. External
-inquiries are unused drafts; no automatic probe series is authorized. Original working
-cases and exclusions remain binding; the refusal proposal remains unadopted.
-No search actionability field, shorter value ceiling, native classification fact
-or action/search acceptance follows from these results.
-Keep selected paths unchanged and installation constraints intact;
-do not clip a location, omit applicationPath, retry another copy or infer absence
-from overlength. Client-owned copy remains available, but a copy-only or shorter
-baseline is unaccepted. Long-result launch, reveal, default and Zed opening need
-explicit cross-seam subjects below. Measured inability to act on useful results
-belongs in the existing home/workflow omissions decision before acceptance.
+Search's own traversal already resolves components from held descriptors, which
+is the same decision. Search adds no actionability field and no shorter value
+ceiling, and drops nothing because an action would refuse it: a client can still
+show, copy and attempt every returned location, and reports the refusal from the
+action's guidance. Keep selected paths unchanged and installation constraints
+intact; never clip a location, omit applicationPath or retry another copy.
+The v1 refusal is Antony's accepted limit, so the home/workflow omissions
+decision before acceptance does not need to re-decide it; it still owns search's
+own measured omissions. Search acceptance below retains the actual-search
+handoff rows: an over-limit returned file and application receive the stated
+refusal, and a returned location within the limit acts.
 
 ## Test seams and acceptance
 
 Reuse the three already agreed seams; implementation/acceptance is planning's
 work. The evidence comparison is mechanism input, not search API acceptance.
 
-Within those seams, long-result handoff subjects must take an actual roughly
-1,500-byte file and long bundle selection into default/Zed open, reveal and
-constrained launch. Independently observe extant identity, inspection/submission,
-truthful failure, grants and dialogs; controlled success/error mapping supplies
-no native actionability pass. The
+Within those seams, long-result handoff subjects take an actual roughly
+1,500-byte file and an over-limit bundle selection into default/Zed open, reveal
+and constrained launch, and a returned location within the limit into the same
+actions. Independently observe extant identity, the stated `failed` refusal with
+no application request for the over-limit selections, delivery for the one
+within the limit, grants and dialogs; controlled success/error mapping supplies
+no native pass. The
 [construction contract](../verification/search-canonical-paths.md#resolver-and-spelling-subject-construction)
-records these subjects and the action producer owns their unresolved route.
+records how these subjects are built; the
+[v1 action boundary](workspace-launch-and-open.md#long-location-action-boundary)
+owns their outcomes.
 
 App-and-file-search planning/acceptance owns these actual-search G/N/V rows.
 The earlier launch-and-open acceptance uses independently component-created
 long action fixtures and cannot claim search-result provenance. Search design
-requires the reviewed action route; search acceptance uses the accepted repaired
-action provider. Neither set closes the other or drops a working subject. Long
-delivery, Finder-selection and process/copy observers must first read the same
-long fixture through an independent non-Koine control; observer limits leave
-the affected observation pending, never pass or fail Koine.
+consumes the reviewed action boundary; search acceptance uses the accepted
+repaired action provider. Neither set closes the other. Delivery,
+Finder-selection and process/copy observers must first see an independent
+non-Koine control; observer limits leave the affected observation pending,
+never pass or fail Koine.
 
 | Seam | Required cases, all pending for search |
 | --- | --- |

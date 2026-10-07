@@ -30,11 +30,12 @@ host. The unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins run
 against a separate compatibility host containing that independently retained
 bundle; they do not describe the upgraded bundled search provider.
 
-The [long-location action boundary](#long-location-action-boundary) identifies
-an additional unimplemented correction: native size and unresolved-link failures
-must not report an extant location missing. A replacement long-location metadata,
-classification and submission route is still required; source/SDK analysis alone
-does not complete that design or extend the short-path acceptance above.
+The [long-location action boundary](#long-location-action-boundary) is designed
+for v1 and unimplemented. Koine resolves action locations component by component,
+so an extant location is never reported missing. A location too long for macOS's
+application hand-off is refused with `failed` and a stated cause; making
+applications accept it is deferred past v1. None of this extends the short-path
+acceptance above.
 
 ## Operations
 
@@ -94,8 +95,9 @@ Paths are literal absolute paths on Koine's machine, not file URLs, globs,
 tilde expansion or environment substitutions. Reject empty, relative and
 NUL-containing paths, and a blank identifier (empty or whitespace alone), as input errors; spaces and shell punctuation remain
 literal. Resolve symlinks for application-copy comparison and compare native
-volume/file resource identity, not spelling, Unicode normalization or a path
-prefix. Failure to establish identity is `failed`. Document paths are
+file identity, not spelling, Unicode normalization or a path prefix: the designed
+v1 repair takes device and inode from Koine's own
+[resolution](#resolving-an-action-location). Failure to establish identity is `failed`. Document paths are
 location-based requests with normal symlink semantics, not pinned file identities.
 An absent path/dangling link found before submission is `PATH_NOT_FOUND`.
 Replacement or handler changes racing submission may fail or open a new
@@ -223,7 +225,7 @@ view because it has no parent. Native acknowledgment is not selection verificati
 | Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. The path is the root field's own, its alias if one was used (`["workspaceOpenURL"]`), an execution error in an HTTP 200 answer. |
 | Missing client authority | `permission` / `capability`, before resource inspection. A revoked or unknown credential never reaches admission: it is HTTP 401 (`unauthenticated`). |
 | Filesystem access denied without established consent cause | `failed`; do not infer absence or invent a consent. |
-| Whole/expanded native path-size refusal, unresolved link-budget exhaustion, or unacquired/malformed prerequisite facts | Designed repair: pre-submission `failed`; guidance names stage/cause and no domain request was submitted. Bare ELOOP/ENAMETOOLONG or higher-level nil/no-such-file cannot establish dependency absence. |
+| Extant location whose literal, expanded or resolved spelling needs `PATH_MAX` bytes or more; link budget exhausted; metadata unacquired or malformed | Designed v1 repair: pre-submission `failed`; guidance names the stage, cause and byte count, and no domain request was made. Only Koine's own [resolution](#resolving-an-action-location) establishes absence; a later ELOOP, ENAMETOOLONG, nil or no-such-file never does. |
 | Native error/false acknowledgment, timeout, or prerequisite lost after submission | `failed`; effects may have begun; no replay or alternate handler. |
 
 After admission, validate/inspect an open-path target before resolving its
@@ -237,167 +239,158 @@ transport outcome can be unknown even when the app opens successfully.
 
 ### Long-location action boundary
 
-Search returns locations through 8,192 UTF-8 bytes. That is a discovery value
-ceiling, not a new action input bound or a guarantee of native actionability.
-Action paths retain their existing literal absolute-path syntax. Distinguish
-supplied text, symlink-expanded/native spelling, native classification, file-URL
-default-handler discovery, the registered application's submission spelling,
-and receipt executable-identity observation. Launch/named open submits the
-registered URL selected by native identity; it need not have the same spelling
-or length as applicationPath. Document/reveal target bytes remain the caller's.
-Neither source length nor a successful controlled adapter result proves the
-later stages can act.
+**Designed for v1; unimplemented.** Koine resolves every action location
+itself, component by component, so it never reports an extant location
+missing. It then refuses to hand an application any location whose spelling
+would need `PATH_MAX` bytes or more, with `failed` and a stated cause. Making
+applications accept such locations is deferred past v1
+([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)); Antony
+made that trade-off on 2026-10-07 after the
+[separated local naming collection](../verification/separated-local-url-naming-prototype.md).
+The [descriptor-relative access decision](../adr/filesystem-access-is-descriptor-relative.md)
+binds the resolution; the
+[long-location view](../design/architecture/index.html#diagram-workspace-long-locations)
+draws the order below.
 
-The selected error repair is **designed and unimplemented**. Whole/expanded
-native path-size refusal and unresolved finite-link-budget exhaustion mean
-failed inspection, never PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED. Preserve
-PATH_NOT_FOUND for an established unresolvable cycle or a component established
-to exceed the relevant filesystem's name limit, as for the accepted short
-two-link-cycle and 300-byte-component subjects. ELOOP alone does not prove a
-cycle; ENAMETOOLONG alone does not prove an impossible component. Missing/below-file
-results establish a dependency only when the relevant lookup resolved that
-component/spelling. A higher-level no-such-file wrapper without established
-operation/cause is insufficient. Preserve stage/cause in human guidance without
-adding an error kind or dependency enum. Pre-submission uncertainty causes no
-domain request; post-submission failure retains possible effects and no replay.
+Search returns locations through 8,192 UTF-8 bytes. That is a discovery and copy
+ceiling, not an action input bound: action paths keep their literal
+absolute-path syntax, and a long path is valid input. Length is a property of the
+application hand-off, not a caller error.
 
-Completed native facts and unacquired facts have distinct inspection outcomes.
-An applicable supported acquisition that successfully reports no content type,
-with required application/alias flags established, retains the accepted no-type
-non-refusal. An established absent Info.plist or successful native bundle-information
-report with no declared identifier retains APPLICATION_IDENTITY_MISMATCH for a
-named selector; an identifier-free default handler remains eligible. Missing
-required flags/identity, observed read/parse failure or unsupported acquisition
-means failed. Nil alone cannot stand for failed acquisition, nor can it default
-required flags to false. The [fact-provenance rules](../verification/long-action-native-boundary.md#fact-provenance-and-established-nils)
-require the route to establish these meanings without guessed metadata or new
-content reads. Known long program/application/alias subjects must still be refused.
+#### Resolving an action location
 
-A supported file-URL handler lookup must establish its applicability and a
-native no-handler report for the exact target before NO_DEFAULT_HANDLER is
-justified. The existing URL-or-nil adapter supplies no error cause; presence
-alone does not establish long-URL lookup support. Unestablished handler acquisition
-is failed. First-use long-file/directory lookup has independent prompt subjects.
-Do not substitute a generic type/extension handler or approve new consent.
+Each action resolves its target, and a constrained launch or named open its
+`applicationPath`, before any platform lookup. Resolution starts from a handle on
+the filesystem root and takes the literal components in order. It opens each
+directory search-only (`O_SEARCH`), never for listing, and opens no file. `.` is
+skipped, `..` moves to the current directory's physical parent, and a symbolic
+link is expanded from its own text, absolute or relative, exactly as the kernel
+would. A trailing slash demands a directory. The final link is followed, as the
+accepted short-path contract does. Each step uses one single-component call,
+so its error names that component.
 
-Inspection of a registered long copy must not regress short constrained or
-unconstrained launch/named open, or Finder readiness for reveal. Unknown candidate
-equality remains failed, never a skippable unrelated copy. The route must repair
-inspection while retaining exact selection. Receipt observation separately checks
-callback and live executable identity, including proc_pidpath and resource-value
-path consumers. Record long-app process/null causes; systematic length-caused null
-is a defect to repair or an explicit Antony decision, not silently accepted loss.
+| Resolution observation | Outcome |
+| --- | --- |
+| A component does not exist, or a non-directory sits where a directory is required, including a dangling link and a trailing slash after a file | `PATH_NOT_FOUND`; `APPLICATION_NOT_INSTALLED` for an application path. |
+| A component is longer than its directory's own name limit (`fpathconf`) | `PATH_NOT_FOUND`: an established impossible component. |
+| A link expansion repeats an earlier link with the same remaining path | `PATH_NOT_FOUND`: an established cycle. |
+| 32 expansions without such a repeat | `failed`: the link budget, not absence. |
+| Denial or any other error at a component | `failed`, naming the component and cause; never absence or an invented consent. |
+| Every component resolves | The object's device and inode, its type, whether it is the filesystem root, and three spellings: the literal path, each remaining path after a link expansion, and the resolved path. |
 
-The existing whole-path metadata route does not support claiming this handoff
-complete. Component-relative lookup and canonical path observation are candidate
-building blocks, not substitutes for native application/alias/type classification,
-bundle identity/identifier or registration checks. A public supported route for
-all those prerequisites and the unchanged selected location still needs design
-and mandatory review. The [source and SDK analysis](../verification/long-action-native-boundary.md)
-records current limitations, candidate API boundaries and independent subjects;
-it selects no private policy or deprecated conversion as a repair.
+Absence is established only by this walk. A later platform nil, no-such-file
+wrapper, `ENOENT`, `ELOOP` or `ENAMETOOLONG` is `failed`, because the walk
+already found the object. Application-copy comparison uses the walk's device and
+inode for the constrained copy and for every registered candidate; a candidate
+the walk cannot resolve is unknown equality and `failed`, never a skipped copy.
+Receipt observation resolves the live executable's kernel path
+(`proc_pidpath`, up to 4,096 bytes) the same way, with the existing null rules.
 
-The [returned route evaluation](../verification/long-action-route.md#measured-reconciliation)
-consumes the finite prototype, prior-art survey and completed application synthesis. Relative filesystem
-operations reached the long items; the tested public native-fact, registration,
-handler and submission routes did not complete the retained working subjects.
-Exact witness delivery at 1,023 bytes and failure at 1,024 establish a bounded
-submission result, not universal impossibility or action acceptance. A nil
-long default-handler lookup establishes neither no handler nor default submission.
-Directory handles/component lists do not supply the missing opener interface.
-Antony [retained the original requirement](../verification/long-action-route.md#decision-for-antony).
-Both application surveys and their synthesis are complete; the
-[returned disposition](../verification/long-action-route.md#application-research-reconciliation)
-separates local access, opener delivery and real receiver access. Zed's inspected
-backend still reads by whole path after IPC. Public legacy FSRef item arrays
-exist, but a complete long acquisition/submission route and full contract parity
-remain unestablished. The authorized
-[internal diagnostic result](../verification/long-action-route.md#native-reference-result-and-remaining-gap)
-returns exact-name references at 1,024 bytes, rejected by tested catalog/fact/
-handler/directory consumers, and cannot reach the 1,500-byte subjects. Antony
-accepted that result. The [completed item-array diagnostic](../verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes through both openers; both failed
-at 1,024 before recorder delivery. Its twelve-call allowance is spent, and it
-establishes no production action. The
-[representation assessment](../verification/long-action-route.md#item-array-result-and-representation-assessment)
-keeps descriptor/name operands private to an action and public pathname values
-unchanged. The [completed URL diagnostic](../verification/file-reference-url-acquisition-prototype.md)
-passes acquisition/local identity/marker/original-byte conversion at 900/1,023
-but fails acquisition at 1,024/1,500. No long local-consumer pass follows; retain
-the initial instrument stop, sole correction and expressly authorized replacement.
-Long-path support remains absolute. The [completed same-object diagnostic](../verification/same-object-namespace-prototype.md)
-establishes independent local identity/marker access at 900/1,500 bytes, but long
-application/type facts failed. Zed's control trust dialog was the required stop;
-later requests earn no compliant receiver/selection credit and the allowance is
-spent. Antony accepted the incomplete report with no retry authorized. The
-[focused Zed result and returned assessment](../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-now establish fresh reading of both original files by the exact short Zed copy
-after restricted-mode choices. The long buffer has an inode-only filename;
-native application/type checks fail, delivered operands are opaque and saving
-is untested. Antony accepted the [incomplete bookmark report](../verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06. Supervisor-input EOF stopped its sole collection before fixtures
-or cases; all native stages and controls are unrun, not bookmark negatives.
-The allowance is spent. A [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-passed its input preflight but stopped at a trailing-slash bare-parent control
-with ENAMETOOLONG before all eight cases. Antony accepted the
-[incomplete local naming report](../verification/local-url-naming-prototype.md)
-on 2026-10-07; its allowance is spent. The
-[returned control assessment](../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-separates that exact failure from the unrun naming candidates. A
-[new separated collection](../verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
-was authorized on 2026-10-07 for one fresh-context prototype (k164),
-followed by returned complete-route design k165. All eight cases remain unrun;
-no repair/recollection or automatic next investigation is authorized.
-Neither result supplies a Zed naming promise. No
-production spelling/support exception is adopted. Original
-working cases and complete-route review remain owed. Native facts,
-registration/handler, real receiver/Finder behavior and receipt remain owed.
-Node resolution requires native catalog provenance.
-External inquiries remain unused drafts. No automatic probe series is authorized. The refusal proposal remains unadopted; all
-working cases and exclusions bind.
-Keep the supported route, final review and planning obligations live. No route,
-new read posture, version change or workflow limitation is adopted.
+#### Application hand-off limit
 
-Retain workspace and desktop controls, prompt-free reads, payload refusals,
-exact installation constraints, handler semantics, cancellation and acknowledgment
-bounds. Never clip/rewrite a location, remove applicationPath or retry another
-copy. Protected default-document opening and the third-party reveal notice remain
-their existing decisions. Do not accept a shorter domain, disabled action or
-copy-only workflow in place of the required long-file and constrained-app cases.
+After resolution, compare the byte length of every spelling the platform would
+need: the literal path, every expanded remainder and the resolved path. For a
+launch or named open this also covers the selected registered application's
+location. If any of them needs `PATH_MAX` (1,024) bytes or more including its
+terminating NUL, the action is `failed` before submission. Guidance names the
+application hand-off stage, the spelling and its byte count, and says no request
+was made. No classification, registration, handler lookup, Finder request or
+launch is attempted. `PATH_MAX` is the SDK constant; the
+[k134 prototype](../verification/long-action-route-prototype.md#what-was-measured)
+found submission, registration, handler lookup and type acquisition all
+delivering or answering at 1,023 bytes and failing at 1,024.
 
-L uses the existing private action adapter to check planner responses to supplied
-outcomes; it does not exercise the errno/Foundation/plist classifier inside the
-substituted adapter. N component-created host fixtures exercise that real mapping,
-G checks the public contract, independently retained old/new binaries check
-compatibility, and V checks signed isolated macOS behavior.
+Below the limit, the accepted short-path route is unchanged. Type, application
+and alias flags, registration, `Bundle` identifiers, handler lookup, submission,
+acknowledgment and receipt use the
+[protected-path metadata route](../verification/protected-path-metadata.md#inspection-results)
+addressed by the resolved spelling, and the target bytes submitted for opening or
+reveal remain the caller's literal path. Their accepted meanings stand. A nil
+handler for a target the walk found is `NO_DEFAULT_HANDLER`. A completed no-type
+report is not a refusal. A bundle without an identifier mismatches a named
+selector but can still be a default handler. An application, executable or alias
+target is refused. Metadata failure is `failed`. Every launched application runs
+an executable whose path the kernel accepted, so the limit adds no systematic
+`process: null`.
 
-Launch-and-open planning owns independently constructed action fixtures: a
-roughly 1,500-byte ordinary file opened by its default handler and Zed and revealed
-in Finder, and a long registered application cold/warm launched and used for named
-open with identifier and path while another copy runs. App-and-file-search
-planning/acceptance owns the additional actual-search G/N/V handoff: search returns
-those locations, then unchanged selected values drive the same actions. No injected
-search result closes that later row. Search design consumes the reviewed route;
-search acceptance consumes the accepted action provider, avoiding a circular
-implementation dependency. Both sets of working subjects remain required.
-Observe delivery/selection/copy/process independently, first positively controlling
-each long-path observer through a non-Koine route. Observer limits and
-construction/registration/earlier-stage failure leave their subjects pending;
-neither acknowledgment nor old short-path evidence closes them.
+#### Obligations from earlier descriptor walks
 
-The compatible action-only correction is workspace release/schema **1.0.1** under
-`koine-desktop/1`, preserving accepted concrete short-cycle/name-limit/established-nil
-outcomes, input/result shapes and error kinds. Its
-[repair SDL](../design/workspace-action-repair-schema.graphql) supplies exact changed
-launch/open/reveal descriptions. On the same host/printer these canonical description
-changes must change the composed digest; the numeric digest and full exact-candidate
-profiles are captured from actual implementation. Keep independently retained 1.0.0
-bundle/SDL/profile unchanged. Search release/schema 1.1.0 incorporates the repaired
-descriptions in its separate composed profile. Planning owns the
-[implementation/compatibility obligations](../verification/long-action-native-boundary.md#compatibility-and-implementation-obligations).
-Any unavoidable incompatible meaning, short-workflow loss or systematic long-app
-null receipt goes to Antony before adoption. Measured workflow omissions still
-feed the existing operator decision before baseline acceptance.
+The [application survey](../research/long-pathname-applications.md#51-component-relative-resolution-for-presence-and-cause)
+records how mature walks failed. Each is an obligation here:
+
+- **Descriptor budget.** A walk holds at most two handles, the current directory
+  and the next, and closes both before submission. It needs no new budget.
+- **No recovery branch.** A failed step is the outcome. There is no whole-path
+  fallback, reopen-by-name recovery or retry.
+- **No depth-evading checks.** Payload refusal applies to the resolved object at
+  any depth. An over-limit location is refused before classification, never
+  admitted because classification could not run.
+- **No reconstructed long strings.** A spelling reaches a whole-path platform
+  call only after it passes the limit.
+- **No prompts.** Resolution lists nothing and opens no file. Its first-use
+  behaviour in Desktop, Documents and Downloads is an acceptance obligation:
+  k134's read-mode walk prompted at Documents, and search-only opens are
+  unmeasured. A prompt goes to Antony, never a whole-path fallback or a shipped
+  dialog.
+- **No spelling drift.** Resolution follows kernel semantics with no ancestor
+  canonicalization, and never rewrites, shortens or normalizes the submitted
+  bytes.
+
+#### What v1 does not do
+
+- **No hand-off workaround.** Bookmarks, a parent reference plus name,
+  file-reference URLs, `/.vol` addresses, FSRef item arrays, short links, copies or
+  aliases, working-directory tricks, private policy and receiver side channels
+  are all out. The [route evaluation](../verification/long-action-route.md#v1-decision)
+  and its diagnostics found none that delivers a long location to an application
+  with its original spelling, native facts and receipt. Zed reads by whole path
+  after delivery anyway. Koine#1 owns the question after v1.
+- **No new error kind or dependency reason.** The refusal is `failed` with
+  guidance, so the action-only repair stays compatible (1.0.1). A distinct reason
+  such as `PATH_TOO_LONG` would be a new output enum value for existing clients,
+  an incompatible change needing its own decision, for a case v1 clients can
+  already report from the guidance.
+- **No input bound or shortened search ceiling.** A search result through 8,192
+  bytes remains valid input and a valid copy value.
+- **No silent loss.** A long location is never dropped, rewritten or retried
+  against another copy; the client is told why it cannot be handed over.
+
+#### Subjects and versions
+
+Launch-and-open planning owns independently component-created action subjects;
+no search implementation is needed to close them:
+
+- **L** checks the planner's mapping for every resolution row and the limit with
+  the substituted private adapter.
+- **N** exercises the real walk on host fixtures: every resolution row at short
+  and roughly 1,500-byte depth, and the 1,023/1,024-byte boundary for a literal
+  path, a short literal whose link expansion is long, and the resolved spelling.
+- **G** checks the public outcome: `failed` with guidance at the action's
+  response path, never a dependency, for an extant over-limit location.
+- **V** uses signed isolated macOS. A 1,023-byte document opens in its default
+  handler and in Zed and is revealed. That positively controls the delivery and
+  Finder observers, which then show nothing delivered or selected for 1,024-byte
+  and roughly 1,500-byte files and directories. Also check: a missing long path
+  is `PATH_NOT_FOUND`, an over-limit constrained application path is `failed`,
+  short launch, named open and reveal still work with a long copy of the same
+  application on disk, and first-use resolution in Desktop, Documents and
+  Downloads is prompt-free.
+
+App-and-file-search acceptance owns the actual handoff: actual search returns an
+over-limit file and application, the unchanged selected values receive this
+refusal, and a returned location within the limit acts. Injected results and the
+action subjects cannot close it.
+
+The action-only correction is workspace release/schema **1.0.1** under
+`koine-desktop/1`, with unchanged input/result shapes, error kinds and enums. Its
+[repair SDL](../design/workspace-action-repair-schema.graphql) appends the exact
+launch/open/reveal description text, which must change the composed digest on
+the same host and printer. Keep the retained 1.0.0 bundle, SDL and profile
+unchanged. Search release/schema 1.1.0 carries the same descriptions in its own
+composed profile. Planning owns the native, test and contract-client
+[implementation obligations](../verification/long-action-native-boundary.md#compatibility-and-implementation-obligations).
+Earlier short-path evidence stays bounded to its subjects; the 1.0.0 mapping of
+`ELOOP`/`ENAMETOOLONG` to absence is the defect this replaces.
 
 ## Ownership, native design and alternatives
 
@@ -547,8 +540,8 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Native create, approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls, observed in the window and compared with the text management serves: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md). |
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
-| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | Execute the [independent action subjects](../verification/long-action-native-boundary.md#independent-subjects-for-the-route-design) after reviewed route implementation: roughly 1,500-byte default/Zed open and reveal, long constrained cold/warm launch/named open, real stage/cause/nil classification, registered spelling and receipt observation, short-workflow regression with long registered candidates, handler prompting, positive observer controls and separate 1.0.0/1.0.1 binary profiles. All remain pending; no actual search implementation is required to close action fixtures. |
-| Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns the long file/application; unchanged selected path and identifier drive the accepted actions with independent delivery/selection/copy/process witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this additional provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
+| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary for literal, expanded and resolved spellings, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. All pending; no search implementation is required. |
+| Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns an over-limit file and application; the unchanged selected path and identifier receive the stated `failed` refusal with no delivery, while a returned location within the limit acts, with independent witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
 fallback, chooser/MRU, clipboard and settings reload/relaunch. Reusable build,
@@ -559,10 +552,10 @@ tests for the required working paths.
 ### Evidence so far
 
 The following records describe the retained action-only 1.0.0 baseline and its
-actual short-path subjects. Its broad ELOOP/ENAMETOOLONG mapping is historical
-behavior, not the repaired-provider rule. The concrete cycle/impossible-component
-outcomes stay required, but 1.0.1 must establish their causes and rerun them with
-all established-nil and short-workflow regressions. These records and original
+actual short-path subjects. Its broad ELOOP/ENAMETOOLONG-as-absence mapping is the
+defect the v1 [resolution](#resolving-an-action-location) replaces. The concrete
+cycle/impossible-component outcomes stay required; 1.0.1 establishes their causes
+by resolution and reruns them with the short-workflow regressions. These records and original
 client findings are preserved; none is an action-repair or long-location pass.
 
 `workspace-launch` shipped the bundled provider serving `workspaceLaunchApplication`

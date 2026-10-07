@@ -5,8 +5,7 @@ exports:
 
 - [workspace launch/open and desktop handoff](index.html#diagram-workspace-open)
   and [native outcome boundary](index.html#diagram-workspace-outcomes);
-- [long-location lookup, classification and submission](index.html#diagram-workspace-long-locations);
-- [public route candidates and acquisition gaps](index.html#diagram-workspace-route-candidates);
+- [long-location resolution and application hand-off](index.html#diagram-workspace-long-locations);
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
@@ -43,405 +42,36 @@ acceptance. First-party bundle selection now has its
 integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
-The current-discussion panel separates long-location input, resolution, native
-classification and submission. It marks the truthful size/uncertainty failure
-repair designed and unimplemented, while a supported replacement route remains
-unresolved. Boundary review precedes route design and final review before search
-consumers. The separate search witness/replay/classification repairs and reviews
-remain live; this discussion supplies none of them. The search ceiling is no
-actionability guarantee. Native/binary/no-dialog/useful-coverage outcomes and
-the operator's measured omissions decision remain pending.
 
-The current discussion consumes the completed application surveys and synthesis.
-The [returned disposition](../../verification/long-action-route.md#application-research-reconciliation)
-separates local component access, native facts/selection, opener delivery, real
-receiver access and executable identity. Zed's inspected backend reads whole
-paths after IPC delivery. Public legacy FSRef item arrays exist, but long
-acquisition/submission and full contract parity remain unestablished. The
-[completed internal result](../../verification/long-action-route.md#native-reference-result-and-remaining-gap)
-returned references at 1,024 bytes, but tested catalog/fact/handler and directory
-consumers rejected them; traversal could not reach the 1,500-byte subjects.
-Antony accepted that result. The SDK requires flat bulk iterators, and native
-node-ID resolution cannot use a cast 64-bit inode. The
-[completed item-array diagnostic](../../verification/item-array-submission.md)
-delivered exact spelling at 900/1,023 bytes through both openers; both failed
-at 1,024 before recorder delivery. Its twelve-call allowance is spent.
-The [representation assessment](../../verification/long-action-route.md#item-array-result-and-representation-assessment)
-consumes Antony's two candidates. Per-action directory descriptor/name operands
-can preserve public pathname values; exporting retained handles changes their
-lifetime contract. Public NSURL/CFURL reference creation is distinct from the
-unsupported FSRef bridges. The [completed URL diagnostic](../../verification/file-reference-url-acquisition-prototype.md)
-passes local acquisition/identity/marker/original bytes at 900/1,023 but fails
-acquisition at 1,024/1,500. Long local consumption and subsequent stages were
-not reached. Preserve the initial instrument stop, sole correction and expressly
-authorized replacement as distinct attempts. Long-path support is absolute.
-The [completed same-object diagnostic](../../verification/same-object-namespace-prototype.md)
-establishes independent local identity/marker access for files and directories
-at 900/1,500 bytes. Long application/type facts failed despite returned handlers.
-TextEdit renders the 900-byte control; Zed shows its control marker behind
-unexpected project trust UI. The driver missed that stop boundary and six later
-requests earn no compliant receiver/selection credit. Long Zed has no after-UI
-capture; long directory requests were unrun. Antony accepted the incomplete
-report with no retry. The allowance is spent and raw instruments remain frozen.
-The separately completed
-[focused Zed result](../../verification/long-action-route.md#focused-zed-result-and-bookmark-question)
-establishes fresh original-file reading at 900/1,500 bytes by the exact short
-registered Zed copy after one authorized restricted-mode choice each. The long
-buffer shows inode 223952 rather than its original filename. Long native
-application/type acquisition still fails, delivered operands are opaque and
-saving is untested. Antony accepted the readable report; its two-request
-permission is spent and k152's missed-stop corpus remains unchanged.
-The [returned bookmark assessment](../../verification/focused-zed-route-assessment.md)
-answers Antony's name and cleanup questions: the inspected Zed ingress consumes
-URL strings/paths, with no separate bookmark-name input. An action-local bookmark
-needs no durable registry. Antony accepted the
-[stopped bookmark report](../../verification/bookmark-name-resolution-prototype.md)
-on 2026-10-06. Supervisor-input EOF ended its sole collection at preparation,
-before fixtures or native cases. Stored Name/Path, URL resolution, fixed
-whole-path reading and independent controls are all unrun. Disposal took 19.22
-seconds; this execution failure is no native negative or retry authorization.
-The [replacement collection](../../verification/local-url-naming-prototype.md)
-passed its input preflight but stopped at a trailing-slash bare parent control
-with ENAMETOOLONG before any of its eight cases. Antony accepted the incomplete
-report on 2026-10-07. This is distinct from k158's preparation EOF; both spent
-attempts and every earlier corpus stay immutable. The
-[control assessment](../../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
-records the pinned-source suffix hazard and coupling of the parent candidate
-control into unrelated bookmark measurements. It establishes no naming result.
-Antony's 2026-10-07 “authorized” approves the
-[separated local naming charter](../../verification/focused-zed-route-assessment.md#separated-local-naming-proposal):
-the same eight local cases with file controls independent of parent candidate
-prerequisites. It retains the slash-ended directory URL and exact constructors/
-whole-path reader; an unsuffixed parent identity control supplies no candidate
-pass. One new guest/collection, at most two builds, 15 minutes, zero external
-requests and no repair/recollection bind the fresh-context prototype k164.
-Source/charter k163 hands it off; returned design k165 consumes its actual report
-and Antony's reaction. All eight cases remain unrun. No automatic next
-investigation is commissioned. Original bytes,
-durable support, native facts, all default/directory/Finder/app workflows,
-long selected-copy receipts and all lifecycle/acceptance obligations remain.
-k162 and every complete-route ancestor stay live; final review/planning wait
-for the complete supported route. External inquiries remain unused drafts.
+The current discussion is **long locations in v1**. On 2026-10-07 Antony
+deferred making applications accept long locations past v1
+([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)) after the
+[separated local naming collection](../../verification/separated-local-url-naming-prototype.md).
+The [long-location view](index.html#diagram-workspace-long-locations) now draws
+the proposed v1 contract: Koine's own location resolution establishes absence or
+presence at any length under the
+[descriptor-relative access decision](../../adr/filesystem-access-is-descriptor-relative.md),
+then an extant location whose spelling needs `PATH_MAX` bytes or more is refused
+at the application hand-off with `failed`, before any request. Within the limit
+the accepted short-path route is unchanged. The design is proposed for its
+mandatory review and is unimplemented; native, binary, public and signed-VM
+acceptance belong to planning. The [route evaluation](../../verification/long-action-route.md#v1-decision)
+keeps every diagnostic as evidence, so the former route-candidates view, which
+drew the workaround search, is retired.
 
 Current changes:
 
-- [Local access, opener delivery and receiver access](index.html#diagram-workspace-route-candidates) — Shows the accepted parent-control stop and newly authorized separation of file/parent controls, with the fresh prototype and returned route-design handoff.
-- [Local naming result and control assessment](../../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment) — Separates partial fixture controls, exact trailing-slash failure and eight unrun candidate cases, with source inference labelled.
-- [Separated local naming charter](../../verification/focused-zed-route-assessment.md#separated-local-naming-proposal) — Records Antony’s authorization for one eight-case collection with independent control groups and the unchanged parent URL and reader.
-- [Remaining route decision](../../verification/long-action-route.md#decision-for-antony) — Records the new authorization and separate source, prototype and returned complete-route design responsibilities.
-- [Action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Preserves complete working subjects and review/acceptance after the zero-case native stop.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Keeps actual-search handoff distinct from local diagnostic evidence and future independent action fixtures.
-- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Records no filename improvement or input/lifetime change.
-- [Workflow selected-action trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Leaves native/binary/public action acceptance pending.
-- [Search location glossary](../../../CONTEXT.md#language) — Records the accepted native stop and authorized finite diagnostic without adopting production spelling/support exceptions.
-- [Research-to-design bridge](../../research/long-pathname-applications.md#returned-design-reconciliation) — Reconciles the later native stop without changing either independent survey.
-- [Native-boundary evidence bridge](../../verification/long-action-native-boundary.md) — Carries the exact failed control without interpreting it as absence or a candidate negative.
-- [Item-array evidence bridge](../../verification/item-array-submission.md) — Updates the current continuation while keeping measured submissions/raw records intact.
+- [Resolve the location, then check the application hand-off limit](index.html#diagram-workspace-long-locations) — Redrawn for v1: resolution outcomes, the hand-off limit refusal, and the unchanged short-path route after it.
+- [Launch or open, then capture desktop state](index.html#diagram-workspace-open) — The inspection note and uncertain-inspection branch now state v1 resolution and the hand-off limit refusal.
+- [Keep dependency absence before the submission boundary](index.html#diagram-workspace-outcomes) — The inspection node now says absence comes only from Koine's own resolution and names the v1 refusal.
+- [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — The long-location note now states the v1 refusal instead of an unresolved route.
+- [Long-location action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Replaced the investigation narrative with resolution, hand-off limit, walk obligations, non-actions and subjects.
+- [Descriptor-relative access decision](../../adr/filesystem-access-is-descriptor-relative.md) — New record of why Koine resolves locations itself, with search-only handles and the prompt revisit condition.
+- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — States what search results receive from v1 actions; search drops nothing.
+- [Client selection guidance](../../client-guide.md#searching-for-applications-and-files) — Tells clients to keep long results visible and copyable and to report the refusal.
+- [Route evaluation v1 decision](../../verification/long-action-route.md#v1-decision) — Closes the investigation and maps each diagnostic to where it lands.
+- [Glossary](../../../CONTEXT.md#language) — Adds location resolution and the application hand-off limit.
 
-The current revision's deterministic/presentation verification is recorded in
-the [authorization handoff](../../verification/focused-zed-route-assessment.md#separated-authorization-verification).
-Historical checks below apply only to their named revisions.
-
-The [approved charter verification](../../verification/focused-zed-route-assessment.md#approved-charter-verification)
-checks the earlier k160 authorization revision: D2 rendering, complete light
-export, isolated Firefox 151.0.3 fresh light/dark deep links and markers, settled dark discussion
-and actual 320 × 480 title/status/introductory reflow. Each of the four view
-subjects matches between host, guest and served bytes. Other exports and the
-complete dark export were not re-inspected in this presentation clone; failed
-initial profile/input and premature screenshots earn no credit. This is
-presentation evidence only; the clone was disposed. The
-[preceding proposed-replacement verification](../../verification/focused-zed-route-assessment.md#verification-of-the-returned-assessment)
-and historical checks below describe their earlier revisions.
-
-The k157 authorization handoff was checked in Firefox 151.0.3 in the isolated
-Linux clone `koine-k157-authorization`. A fresh light deep link identified the
-intended view and Current/Updated markers. Settled light and dark discussion
-views showed authorized/unexecuted status, all seven context links and one
-changed-view summary. The actual 500 × 600 dark content viewport reflowed the
-heading, status and prose. Complete light and dark exports at 1,056 × 1,594
-showed all nine nodes and numbered reading edges without overlap. The first
-post-click light capture still showed the diagram and receives no discussion
-credit; its settled recapture supplies that evidence. Viewer/manifest/D2/SVG
-digests matched host/guest individually before and after inspection. The clone's
-stop receipt confirmed disposal. These are presentation checks only; the
-authorized macOS guest/collection remains unspent.
-
-The following presentation records apply to earlier revisions.
-
-The k156 returned assessment was checked in Firefox 151.0.3 in the isolated
-Linux clone `koine-k156-design`. A fresh light deep link identified the intended
-view and Current/Updated markers. Settled light and dark discussion views showed
-the accepted result, unapproved proposal, seven context links and one changed-view
-summary. The actual 500 × 600 dark content viewport reflowed the heading, status
-and prose without horizontal clipping. Complete light and dark SVG exports at
-1,056 × 1,594 showed all nine nodes and numbered reading edges without overlap.
-Initial headless viewer captures showed only the loading message and earn no
-presentation credit; the settled GUI views supply that evidence. The agent's
-window-resize command failed without an X11 window ID; a fresh narrow profile
-provided the measured viewport. Viewer/manifest/D2/SVG digests matched host/guest
-individually before and after inspection. The clone's stop receipt reports
-successful disposal. This checks presentation only, with no macOS experiment,
-receiver request or native action acceptance.
-
-The following presentation records apply to earlier revisions.
-
-The k154 authorized handoff was checked in Firefox 151.0.3 in the isolated
-Linux clone `koine-k154-authorization`. A fresh light deep link at a 1,280-pixel
-content width identified the intended view and Current/Updated markers. The
-settled dark discussion showed authorized/unexecuted status, all seven context
-links and one changed-view summary. Complete light and explicitly configured
-dark SVG exports were inspected at 1,100 × 1,850: all nodes/edges and the new
-authorization labels are readable without overlap. The actual 500 × 600 dark
-content window reflowed the discussion heading, status and introductory prose.
-An initial launch used a nonexistent guest home; inspection identified the
-actual account, and moving the presentation/profile there corrected that setup.
-Transient hash/reload screenshots did not reach discussion; the settled semantic
-Current discussion link did. The first nominal dark headless export remained
-light; explicit Firefox dark-content preferences produced the inspected dark
-export. Viewer/manifest/D2/SVG digests matched host/guest individually before
-and after inspection and stayed unchanged. The clone's stop receipt reports
-successful disposal. These presentation checks use none of the authorized macOS
-diagnostic allowance and establish no native result or complete route.
-Current host discussion: <http://127.0.0.1:8878/#discussion>.
-Changed view: <http://127.0.0.1:8878/#diagram-workspace-route-candidates>.
-
-The following browser records apply to earlier design revisions.
-
-The k153 returned-result/proposal revision was checked in Firefox 151.0.3 in
-the isolated Linux clone `koine-k153-design`. Fresh light and dark deep links
-at a 1,280-pixel browser width identified the intended view and Current/Updated
-markers. The dark discussion showed its proposed status, seven context links
-and one actual changed-view summary. Complete light and dark exports were
-inspected at 1,100 × 1,850, with all nodes/edges and no overlapping labels.
-At an actual 500 × 600 Firefox content window, the discussion heading, status
-and introductory prose reflowed without horizontal clipping. A later settled
-1,854-pixel check reached the discussion; it adds no wide diagram verdict.
-The agent resize primitive lacked an X11 identifier, so the guest's existing
-xdotool resized the independently identified Firefox window. Transient resize
-captures were discarded in favor of the settled view. Viewer/manifest/D2/SVG
-digests matched host/guest and stayed unchanged per file before/after inspection.
-The clone's stop receipt reports successful disposal. These are presentation
-checks, using none of the spent macOS diagnostic allowance, and establish no
-native action/search or complete-route acceptance. Current host discussion:
-<http://127.0.0.1:8878/#discussion>.
-Changed view: <http://127.0.0.1:8878/#diagram-workspace-route-candidates>.
-
-The following browser records apply to earlier design revisions.
-
-The k151 authorized source/charter revision was checked in Firefox 151.0.3
-in the isolated Linux clone `koine-k151-authorization`. The fresh light deep
-link at a 1,280-pixel browser width showed the intended title and Current/Updated
-markers. Light and dark discussion views showed the authorized/unexecuted status,
-all seven context links and one changed-view summary. The dark deep link at an
-actual 1,854-pixel window showed readable start/result/local-resolution labels.
-The complete light SVG export was inspected at 1,100 pixels, including the
-bare-object exception and authorized bounds; the complete dark export remains
-uninspected. The settled dark 500 × 600 window reflowed the discussion heading,
-status and introductory text. The first browser launch's temporary profile was
-invisible to Firefox's sandbox; moving the same profile into the guest home
-resolved that presentation setup failure. Viewer/manifest/D2/SVG digests agreed
-host/guest before and after inspection and stayed unchanged item by item. The
-clone's stop receipt reports successful disposal. This Linux presentation check
-uses none of the authorized macOS diagnostic's guest/collection allowance and
-supplies no native action/search acceptance. Current host discussion:
-<http://127.0.0.1:51592/#discussion>.
-Changed view: <http://127.0.0.1:51592/#diagram-workspace-route-candidates>.
-
-The following browser record applies to the preceding unapproved proposal
-revision; the authorization revision has its own record above.
-
-The k150 returned-URL/namespace-proposal revision was checked in Firefox 151.0.3
-in the isolated Linux clone `koine-k150-design`. A fresh light deep link at a
-1,280-pixel browser width identified the intended view and Current/Updated
-markers. The dark discussion showed the absolute requirement, proposed status,
-seven context links and one changed-view summary. At approximately 1,850 pixels,
-the dark deep link's start, result and local-resolution labels were readable.
-The complete light export was rasterized with librsvg at 1,100 pixels and
-inspected through every proposal/limit branch; a complete dark export was not
-inspected. Firefox clamped the narrow GUI window to 500 × 480; its discussion
-heading/status and introductory prose reflowed there. A separate headless
-320 × 480 screenshot attempt timed out and produced no image, so it supplies
-no narrow-screen evidence. Viewer, manifest and changed D2/SVG SHA-256 values
-matched host/guest per file and remained unchanged through inspection. The
-clone's stop receipt reports successful disposal. This verifies presentation
-only; no new native macOS experiment or action/search acceptance ran.
-Host discussion: <http://127.0.0.1:51592/#discussion>.
-Changed view: <http://127.0.0.1:51592/#diagram-workspace-route-candidates>.
-
-The following browser record applies to the preceding authorization revision.
-
-The authorized URL diagnostic revision was checked in Firefox 151.0.3 in the
-isolated Linux clone `koine-k148-authorization`. A fresh light deep link
-identified the intended diagram and Current/Updated markers; navigation from
-the dark discussion reached the same view. At a 1,920-pixel browser width, the
-start, measured result, both candidates and gap labels were readable in light
-and dark appearance. Complete light and dark SVGs were rasterized and inspected,
-including the authorized diagnostic, finite caps and pending alternatives.
-The dark discussion showed the authorized/execution-pending status, approved
-corpus and handoff, seven context links and one changed-view summary. Its heading,
-status and beginning of the introductory prose reflowed at 320 × 480; narrow
-whole-diagram readability is not claimed. Viewer, manifest and changed D2/SVG
-SHA-256 values matched host/guest per file and stayed unchanged through the check.
-The clone is stopped. This verifies presentation only; no native macOS diagnostic
-or action/search acceptance subject ran in this handoff.
-Host discussion: <http://127.0.0.1:8893/#discussion>.
-Changed diagram: <http://127.0.0.1:8893/#diagram-workspace-route-candidates>.
-
-The following browser record applies to the preceding proposal revision.
-
-The k147 representation-assessment revision was checked in Firefox 151.0.3 in
-the isolated Linux clone `koine-k147-design`. A fresh light deep link identified
-the intended diagram and Current/Updated markers; navigation from the dark
-discussion reached that view. At a 1,920-pixel browser width, the start, measured
-result, both candidates and gap labels were readable in both appearances.
-Two overlapping edge labels were removed and the regenerated view rechecked.
-Complete light and dark SVGs were rasterized and inspected, including the
-finite proposal, bounds and pending alternatives. The dark discussion showed
-the retained requirement, consumed result, unapproved proposal, seven context
-links and one changed-view summary. Its heading, status and beginning of the
-introductory prose reflowed at 320 × 480; narrow whole-diagram readability is
-not claimed. Viewer, manifest and changed D2/SVG SHA-256 values matched
-host/guest per file and stayed unchanged across the final browser check.
-The clone is stopped. This is presentation evidence only: no new native macOS
-diagnostic, production action or acceptance subject ran.
-Host discussion: <http://127.0.0.1:8893/#discussion>.
-Changed diagram: <http://127.0.0.1:8893/#diagram-workspace-route-candidates>.
-
-The following presentation record applies to the preceding authorization revision.
-
-The authorized-diagnostic revision was checked in Firefox 151.0.3 in the isolated
-Linux clone `koine-k145-authorization`. A fresh light deep link identified the
-intended diagram and Current/Updated markers; navigation from the dark discussion
-reached the same view. At a 1,920-pixel browser width, the start, completed
-result, local-access and four gap labels were readable in light and dark
-appearance. The complete light SVG was rasterized and inspected, including the
-authorized diagnostic, scope limit and unapproved/pending alternatives. The dark
-discussion panel showed the authorized/execution-pending status, fixed corpus
-and aggregate cap, seven context links and one changed-view summary. Its heading,
-status and introductory prose reflowed at 320 × 480; narrow whole-diagram
-readability and a complete dark export are not claimed. Viewer, manifest and
-changed D2/SVG digests matched host/guest per file and stayed unchanged across
-the check. The clone is stopped. This is presentation evidence only; the macOS
-diagnostic remains queued in k146 and no native action/search pass is supplied.
-Host discussion: <http://127.0.0.1:8890/#discussion>.
-Changed diagram: <http://127.0.0.1:8890/#diagram-workspace-route-candidates>.
-
-The following browser record applies to the preceding returned-result proposal.
-
-The returned-acquisition-result revision was checked in Firefox 151.0.3 in the
-isolated Linux clone `koine-k144-design`. Fresh light and dark deep links
-identified the intended diagram and Current/Updated markers. At a 1,920-pixel
-browser width, the start, completed result, local-access and four gap labels
-were readable in both appearances. The complete light SVG was rasterized and
-inspected, including the proposed six-call diagnostic, its limits and the
-pending alternative. The dark discussion panel showed the retained requirement,
-accepted acquisition result, seven context links and one changed-view summary.
-Its heading, status and introductory prose reflowed at 320 × 480; narrow
-whole-diagram readability and a complete dark export are not claimed. Viewer,
-manifest and changed D2/SVG digests matched host/guest per file and stayed
-unchanged across the check. The clone is stopped. This verifies presentation
-only; no new native macOS action, acquisition or acceptance subject ran.
-Host discussion: <http://127.0.0.1:8890/#discussion>.
-Changed diagram: <http://127.0.0.1:8890/#diagram-workspace-route-candidates>.
-
-The following record applies to the preceding internal-investigation revision.
-
-The internal-investigation revision was checked in Firefox 151.0.3 in the
-isolated Linux clone `koine-k142-internal`. Its fresh light deep link identified
-the intended diagram and Current/Updated markers. At a 1,920-pixel browser
-width, the start, evidence, local-access and four gap labels were readable in
-light and dark appearance. The dark selected-investigation/exception branches
-were observed; the complete light SVG was also rasterized and inspected,
-including both bottom draft/node-ID boxes. The dark discussion panel showed
-the selected internal status, seven context links and one changed-view summary.
-Its heading, status and introductory prose reflowed at 320 × 480; narrow whole-
-diagram readability and a complete dark export are not claimed. Viewer,
-manifest and changed D2/SVG digests matched host/guest per file and stayed
-unchanged across the check. The clone is stopped. This verifies presentation
-only; the native acquisition diagnostic was queued at that revision.
-Host discussion: <http://127.0.0.1:8880/#discussion>.
-
-The following record applies to the preceding selected-inquiry revision.
-
-The selected-inquiry revision was checked in Firefox in the isolated Linux
-clone `koine-k141-inquiry`. A fresh light deep link reached the revised diagram
-with its Current/Updated markers; the upper and gap labels were readable at a
-1,920-pixel browser width. The complete light SVG was rasterized and inspected,
-including the selected inquiry, pending sender/channels and unapproved exception.
-The dark discussion panel showed the selected-inquiry/submission-pending status,
-seven context links and one changed-view summary. Heading, status and introductory
-prose reflowed at 320 × 480; narrow diagram readability is not claimed. Viewer,
-manifest and changed D2/SVG SHA-256 values matched host/guest per file and stayed
-unchanged through the check. The clone is stopped. This verifies presentation
-only; no native macOS action or external inquiry submission ran.
-Host discussion: <http://127.0.0.1:8880/#discussion>.
-
-The following browser record applies to the preceding proposed-inquiry revision.
-
-The preceding view was checked in Firefox in the isolated Linux clone
-`koine-k141-design`. A fresh deep link reached the revised title and
-Current/Updated markers. At a 1,920-pixel browser width, the start, evidence,
-local-access and four gap labels were readable in light and dark appearance.
-The complete light SVG was also rasterized and inspected, including both
-proposed decision branches. The dark discussion panel showed the retained
-requirement, seven context links and one changed-view summary. Its heading,
-status and prose reflowed in Firefox's 320 × 480 responsive view; narrow
-whole-diagram fit remains an overview. Viewer, manifest and changed D2/SVG
-SHA-256 values matched host/guest per file before and after the check. The clone
-is stopped. This verifies presentation only; no new native macOS action or
-acceptance subject ran. Host discussion: <http://127.0.0.1:8880/#discussion>.
-
-Previous browser results below apply to their previous revisions.
-
-The commissioned-research view was checked in Firefox in the isolated Linux
-clone `koine-k137-research`. A fresh deep link reached its retained-cases title
-and Current/Updated markers. Upper start/access/handoff/retained labels were
-readable in light and dark appearance at 1,920 pixels; the complete light SVG
-was rasterized and inspected through both surveys, synthesis and returned design.
-The dark discussion panel showed the retained requirement, seven context links
-and the single changed-view summary. Its heading, status and prose reflowed in
-Firefox's 320 × 480 responsive view. Narrow whole-diagram fit is an overview,
-not a label-readability claim. Viewer, manifest and changed D2/SVG SHA-256 values
-matched host/guest per file before and after the UI check. The clone is stopped.
-This verifies presentation only; no native macOS action or acceptance subject ran.
-Host discussion: <http://127.0.0.1:8877/#discussion>.
-
-The preceding returned-design view was checked in Firefox in the isolated Linux clone
-`koine-k135-decision`. Fresh diagram links reached the revised title and
-Current/Updated markers. The upper start/access/handoff labels were readable
-at 1,920 pixels in light and dark appearance; the complete light export was
-also rasterized and inspected, including all three decision branches. The
-dark discussion panel showed the pending decision, seven context links and
-one changed-view summary. Its heading, status and prose reflowed in Firefox's
-320 × 480 responsive view. Whole-diagram fit at that width remains an overview;
-use the export or reflowable decision packet for reading. Viewer, manifest and
-changed D2/SVG SHA-256 values matched host/guest item-by-item and stayed unchanged
-through the check. The clone is stopped. This verifies presentation only;
-no new native macOS action, acquisition, consent or acceptance subject ran.
-Host discussion: <http://127.0.0.1:8877/#discussion>.
-
-Earlier presentation records below apply to their earlier revisions.
-
-The source-evaluation version was checked in Firefox in the isolated Ubuntu presentation
-clone `koine-k130-presentation`: the deep link reached its title and Current/Updated
-markers, the start and acquisition labels rendered in light and dark appearance,
-and the dark discussion panel exposed the pending decision and changed-view link.
-A 320-pixel responsive view showed the intro/decision heading reflow; complete
-narrow diagram readability is not claimed. The full light SVG was separately
-rasterized and inspected, and overlapping edge labels were shortened and rendered
-again. Viewer, manifest and final D2/SVG matched host/guest SHA-256 values
-item-by-item. This checks presentation only, not any macOS native action or
-prompt outcome. Serve the view with `task design:serve PORT=8876`.
-
-After Antony delegated the choice, the selected-prototype view was rerendered
-and checked in Firefox in the isolated Linux clone `koine-k133-decision`.
-The deep link reached the diagram title/markers; upper labels were readable in
-light and dark appearance. The current-discussion link showed the selected
-prototype, unresolved-route status and changed-view link in dark appearance.
-The complete light export was rasterized and inspected, including its revised
-decision/contract labels. Host/guest viewer, manifest and D2/SVG SHA-256 values
-matched per file and stayed unchanged during this check. The clone is stopped.
-This is presentation evidence; no native macOS acquisition or action ran.
 
 The unchanged [canonical path view](index.html#diagram-search-canonical) and
 [protected metadata view](index.html#diagram-workspace-inspection) remain relevant
@@ -475,15 +105,6 @@ opening remains pending a human consent/semantics decision. The updated
 [request sequence](index.html#diagram-workspace-open) qualifies its inspection
 premise with that limit; the outcome view remains unchanged context.
 
-The earlier native-boundary update changed these prose sections:
-
-- [Long-location action boundary](../../specs/workspace-launch-and-open.md#long-location-action-boundary) — Separates four limits and requires established absence before a dependency result.
-- [Source, SDK and independent subjects](../../verification/long-action-native-boundary.md) — Explains the existing defect, candidate APIs and unexecuted search-to-action subjects.
-- [Search action dependency](../../specs/workspace-search.md#long-location-action-dependency) — Keeps the supported route and review required before consumers.
-- [Client action guidance](../../client-guide.md#opening-a-document-or-folder) — Distinguishes the existing 1.0.0 mapping from the pending truthful-failure repair.
-- [Workflow action trace](../../specs/workflow-providers.md) — Preserves exact selected inputs and marks long-route acceptance pending.
-- [Search location glossary](../../../CONTEXT.md) — Separates discovery location limits from native action support.
-
 The [evidence report](../../verification/search-discovery.md) and its existing
 view remain unchanged mechanism context. The new stream adapter is a design,
 not native acceptance or an exhaustive filesystem/index-availability proof.
@@ -493,20 +114,6 @@ Serve locally with `task design:serve` and open
 presentation directory. Graphs start at the node labelled “Start here”; sequences
 start at their first message.
 Use `task design:serve PORT=8767` if the default port is already occupied.
-
-The long-location boundary revision was inspected in Firefox in the isolated
-Ubuntu 24.04 clone `koine-long-actions-design`. Fresh deep links reached the
-four changed views and their Current/Updated markers. The sequence and outcome
-branches were readable in the 1920-pixel light view; the new boundary's lower
-classification/failure/submission branches and the handoff's long-action note
-were readable in dark appearance. The current discussion's status, links and
-four change summaries reflowed at an 800-pixel window in dark appearance.
-For the final checks, the viewer, manifest and all four changed source/export
-pairs had equal per-file SHA-256 values in host and guest, unchanged before and
-after inspection. This is presentation evidence only; no Koine native action,
-protected read, binary compatibility or signed-macOS subject ran. The clone was
-stopped after checking. Serve this revision with `task design:serve PORT=8899`
-and open <http://127.0.0.1:8899/#diagram-workspace-long-locations>.
 
 The serviceability revision was inspected in Safari in the isolated macOS
 26.5/25F71 clone `koine-k113-design`. Fresh serviceability and resource deep links
@@ -544,7 +151,8 @@ the same pinned renderer versions. Start with
 <http://127.0.0.1:8765/#diagram-provider-selection>.
 
 Run `task design:workspace-render` to regenerate the workspace sequence,
-outcome flow and long-location boundary with the same pinned renderer versions. Start with
+outcome flow and long-location boundary with the same pinned renderer versions
+(ELK for the long-location view, Dagre for the outcome flow). Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
 Run `task design:search-render` for the eight search views with D2 0.9.0,

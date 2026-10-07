@@ -336,13 +336,12 @@ tasks:
       - python3 -m http.server {{.PORT | default "8765"}} --bind 127.0.0.1 --directory docs/design/architecture
 
   design:workspace-render:
-    desc: Render workspace launch/open views (D2 0.9.0 and PlantUML 1.2026.8)
+    desc: Render workspace launch/open views (D2 0.9.0, long-location view ELK, outcomes Dagre; PlantUML 1.2026.8)
     cmds:
       - plantuml -tsvg docs/design/architecture/workspace-open.puml
       - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
-      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
-      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-route-candidates.d2 docs/design/architecture/workspace-route-candidates.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
 
   design:workspace-check:
     desc: Validate the workspace SDL independently, its composition with the documented baseline, and its five example operations (design check, not runtime conformance)
