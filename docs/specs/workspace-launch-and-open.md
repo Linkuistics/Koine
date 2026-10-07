@@ -239,11 +239,14 @@ transport outcome can be unknown even when the app opens successfully.
 
 ### Long-location action boundary
 
-**Designed for v1; the target stage of reveal and of open implemented, the rest unimplemented.** The
-descriptor walk, the hand-off limit and the target stage are accepted at L, G and N for reveal
-([record](../verification/reveal-locations.md)) and for open
-([record](../verification/open-path-locations.md)), with the present outcomes no refusal or result shows left
-to V. Both application stages, receipt executable identities and the 1.0.1 release are not yet built.
+**Designed for v1; the target stage of reveal and of open and the supplied-application stage implemented, the
+rest unimplemented.** The descriptor walk, the hand-off limit and the target stage are accepted at L, G and N
+for reveal ([record](../verification/reveal-locations.md)) and for open
+([record](../verification/open-path-locations.md)), and the supplied-application stage (a constrained launch's
+and a named open's `applicationPath`, with the registered-candidate comparison) at L, G and N
+([record](../verification/application-locations.md)), with the present outcomes no refusal or result shows
+left to V. The discovered-application stage, receipt executable identities and the 1.0.1 release are not
+yet built.
 Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
@@ -418,6 +421,13 @@ measured the exact boundary only at submission: a 1,023-byte document path was
 delivered with exact bytes and 1,024 and 1,025 failed. Its metadata and handler
 lookups answered for 1,021 to 1,023-byte paths and next failed at the tested
 1,098 bytes, and registration was tried only short and at about 1,500 bytes.
+
+A supplied application's identifier is read from `Contents/Info.plist`, a path 20 bytes longer than the
+bundle's own. Observed on macOS 26.5 through the signed provider
+([record](../verification/application-locations.md#the-bundles-own-infoplist-is-twenty-bytes-deeper)): a
+bundle whose own path is 1,004 bytes or fewer is read, and one of 1,005 to 1,023 bytes is within the limit and
+is not refused at it, but the platform answers `ENAMETOOLONG` for its Info.plist, which is `failed` naming that
+cause, never an absence or another identifier. The route is the retained one, which failed the same way.
 
 Below the limit, the accepted short-path route is unchanged. It uses the
 [protected-path metadata route](../verification/protected-path-metadata.md#inspection-results)
@@ -696,7 +706,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Native create, approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls, observed in the window and compared with the text management serves: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md). |
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
-| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. Reveal's target stage: L, G and N accepted ([reveal-locations.md](../verification/reveal-locations.md)); open's target stage and payload refusal on the resolved object: L, G and N accepted ([open-path-locations.md](../verification/open-path-locations.md)); every other stage, N gaps closed by effect, V and the packaging are pending. No search implementation is required. |
+| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. Reveal's target stage: L, G and N accepted ([reveal-locations.md](../verification/reveal-locations.md)); open's target stage and payload refusal on the resolved object: L, G and N accepted ([open-path-locations.md](../verification/open-path-locations.md)); the supplied-application stage (`applicationPath` and the registered-candidate comparison by device and inode): L, G and N accepted, the candidates' comparison at L and G only because Launch Services' registrations cannot be arranged on a host ([application-locations.md](../verification/application-locations.md)); every other stage, N gaps closed by effect, V and the packaging are pending. No search implementation is required. |
 | Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns an over-limit file and application; the unchanged selected path and identifier receive the stated `failed` refusal with no delivery, while a returned location within the limit acts, with independent witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,

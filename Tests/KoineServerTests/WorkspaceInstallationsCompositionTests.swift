@@ -62,12 +62,33 @@ import Testing
         func readPathFacts(of location: ResolvedLocation) -> PathInspection {
             .present(PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
         }
+        /// An arranged application is the object its file names (one inode per file, the volume's device); an
+        /// unarranged `.app` is absent; anything else is a document the test does not look at.
         func resolveLocation(_ path: String) -> LocationResolution {
             let spelling = Spelling(bytes: Array(path.utf8))
-            return .present(
-                ResolvedLocation(
-                    literal: spelling, expansions: [], resolved: spelling,
-                    identity: ObjectIdentity(device: 1, inode: 1), type: .regularFile))
+            func present(_ identity: ObjectIdentity, _ type: ObjectType) -> LocationResolution {
+                .present(
+                    ResolvedLocation(literal: spelling, expansions: [], resolved: spelling, identity: identity, type: type))
+            }
+            switch lock.withLock({ inspections[path] }) {
+            case .application(let bundle)?:
+                let file = Array("\(bundle.identity.file)".utf8).reduce(UInt64(7)) { $0 &* 31 &+ UInt64($1) }
+                return present(ObjectIdentity(device: 1, inode: file), .directory)
+            case .notApplication?: return present(ObjectIdentity(device: 1, inode: 2), .regularFile)
+            case .unreadable(let reason)?: return .failed(component: path, cause: reason)
+            case .absent?: return .absent(.missing(component: path))
+            case nil:
+                return path.hasSuffix(".app")
+                    ? .absent(.missing(component: path)) : present(ObjectIdentity(device: 1, inode: 1), .regularFile)
+            }
+        }
+        func readApplicationBundle(of location: ResolvedLocation) -> BundleRead {
+            switch lock.withLock({ inspections[location.resolved.text] }) {
+            case .application(let bundle)?: return .application(identifier: bundle.bundleIdentifier)
+            case .notApplication?: return .notApplication
+            case .unreadable(let reason)?: return .unreadable(reason)
+            case .absent?, nil: return .unreadable("its metadata reports nothing there")
+            }
         }
         func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision { .notRoot }
         func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool { identifier == ancestor }
@@ -210,5 +231,79 @@ import Testing
             #expect(reply.extensions(at: [field])["kind"] as? String == "failed")
         }
         #expect(native.launches.isEmpty && native.opens.isEmpty)
+    }
+
+    // MARK: Long locations (application-locations-k176)
+
+    /// A path of exactly `count` bytes ending in `.app`.
+    static func long(_ count: Int, _ label: String = "Fixture") -> String {
+        let suffix = "/\(label).app"
+        return "/Long" + String(repeating: "d", count: count - suffix.utf8.count - 5) + suffix
+    }
+
+    /// G: an extant over-limit constrained path, even one a registered copy sits at, is `failed` with guidance at
+    /// the action's own response path: no result, no dependency, nothing submitted.
+    @Test(arguments: [1024, 1025, 1500, 4000], ["launch", "open"])
+    func anOverLimitConstrainedPathIsFailedWithGuidanceAtTheActionsPathAndNothingIsSubmitted(_ length: Int, _ field: String) async throws {
+        let (bench, native, client) = try await Self.bench()
+        let path = Self.long(length)
+        native.install(Self.id, at: path, file: "long")
+        let reply =
+            field == "launch"
+            ? try await bench.run(Self.launch, ["application": Self.application(path: path)], as: client)
+            : try await bench.run(
+                Self.openPath, ["path": "/Users/test/notes.txt", "application": Self.application(path: path)], as: client)
+        #expect(reply.data?[field] is NSNull, "no result and no dependency")
+        let extensions = reply.extensions(at: [field])
+        #expect(extensions["kind"] as? String == "failed")
+        let message = try #require(reply.errors.first?["message"] as? String)
+        for needed in ["application hand-off", "\(length) bytes", "No request was made"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(native.launches.isEmpty && native.opens.isEmpty)
+    }
+
+    @Test(arguments: [1023])
+    func aConstrainedPathAtTheLongestHandedOverSpellingIsSubmittedAsRegistered(_ length: Int) async throws {
+        let (bench, native, client) = try await Self.bench()
+        let path = Self.long(length)
+        native.install(Self.id, at: path, file: "long")
+        let reply = try await bench.run(Self.launch, ["application": Self.application(path: path)], as: client)
+        #expect((reply.data?["launch"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(reply.errors)"))
+        #expect(native.launches.map(\.url.path) == [path])
+    }
+
+    /// A long copy of the same application on disk, registered beside the short ones, never stops a workflow whose
+    /// selected copy is short, for a launch or a named open.
+    @Test func aLongRegisteredCopyOfTheSameApplicationDoesNotStopAShortWorkflow() async throws {
+        // The long copy is registered first, so it is enumerated, compared and skipped before each match.
+        let native = Copies()
+        native.install(Self.id, at: Self.long(1500, "Other"), file: "long", preferred: true)
+        native.install(Self.id, at: Self.copyA, file: "a")
+        native.install(Self.id, at: Self.copyB, file: "b")
+        let bench = try await WorkspaceCompositionTests.Bench(provider: WorkspaceProvider(native: native))
+        let client = try await bench.grant(WorkspaceCompositionTests.controls).principal
+        let launch = try await bench.run(Self.launch, ["application": Self.application(path: Self.copyA)], as: client)
+        #expect((launch.data?["launch"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(launch.errors)"))
+        let open = try await bench.run(
+            Self.openPath, ["path": "/Users/test/notes.txt", "application": Self.application(path: Self.copyB)], as: client)
+        #expect((open.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(open.errors)"))
+        #expect(native.launches.map(\.url.path) == [Self.copyA])
+        #expect(native.opens.map(\.application.path) == [Self.copyB])
+        #expect(native.launches.map(\.substituting) == [false] && native.opens.map(\.substituting) == [false])
+    }
+
+    /// The short copy the caller chose is the same object as a registered long one that is enumerated first: the
+    /// selected registration is long, so it is refused and the short one is not substituted.
+    @Test func aLongCopyThatIsTheSelectedOneIsRefusedAndTheShortSpellingOfItIsNeverSubstituted() async throws {
+        let (bench, native, client) = try await Self.bench()
+        let identifier = "\(Self.id).Linked"
+        native.install(identifier, at: Self.long(1500, "Linked"), file: "linked", preferred: true)
+        native.install(identifier, at: "/Applications/Linked/Fixture.app", file: "linked")
+        let reply = try await bench.run(
+            Self.launch, ["application": Self.application(identifier, path: "/Applications/Linked/Fixture.app")], as: client)
+        #expect(reply.data?["launch"] is NSNull)
+        #expect(reply.extensions(at: ["launch"])["kind"] as? String == "failed")
+        #expect(native.launches.isEmpty, "the short copy of the same application was not substituted")
     }
 }

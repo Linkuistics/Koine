@@ -31,6 +31,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var roots: [String: FilesystemRootDecision] = [:]
     private var rootLog: [String] = []
     private var registrationLog: [String] = []
+    private var bundleReadLog: [String] = []
+    private var inodes: [String: UInt64] = [:]
     private var startReads: [Int32: Int] = [:]
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
@@ -91,6 +93,32 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         lock.withLock { locations[path] = resolution }
     }
 
+    /// What the walk finds at an application's `path` when it is not arranged with `location(_:as:)`: the
+    /// application as `inspect(_:as:)` says. A present copy is the object named by its `FileIdentity`'s file
+    /// (two spellings of one file are one inode, on the volume's device), so every earlier arrangement of an
+    /// installation resolves without further setup. An absent or unarranged path is absent.
+    private func applicationLocation(_ path: String, _ inspection: ApplicationInspection?) -> LocationResolution {
+        let spelling = Spelling(bytes: Array(path.utf8))
+        func present(_ identity: ObjectIdentity, _ type: ObjectType, resolved: String? = nil) -> LocationResolution {
+            .present(
+                ResolvedLocation(
+                    literal: spelling, expansions: [], resolved: resolved.map { Spelling(bytes: Array($0.utf8)) } ?? spelling,
+                    identity: identity, type: type))
+        }
+        switch inspection {
+        case .application(let bundle)?:
+            let key = "\(bundle.identity.file)"
+            let inode = inodes[key] ?? UInt64(inodes.count + 1)
+            inodes[key] = inode
+            let volume = (bundle.identity.volume as? NSNumber)?.int32Value ?? 1
+            return present(ObjectIdentity(device: volume, inode: inode), .directory)
+        case .notApplication?:
+            return present(ObjectIdentity(device: 1, inode: UInt64(abs(path.hashValue)) | 1 << 40), .regularFile)
+        case .unreadable(let reason)?: return .failed(component: path, cause: reason)
+        case .absent?, nil: return .absent(.missing(component: path))
+        }
+    }
+
     /// What the root decision on the literal `path` answers; unarranged it is not the root.
     func filesystemRoot(_ path: String, as decision: FilesystemRootDecision) {
         lock.withLock { roots[path] = decision }
@@ -147,6 +175,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// Every document or directory the provider asked a default application about, in order.
     var documentLookups: [URL] { lock.withLock { documentLookupLog } }
     var pathOpens: [(url: URL, application: URL, substituting: Bool)] { lock.withLock { pathOpenLog } }
+    /// Every resolved spelling whose application bundle the provider read, in order.
+    var bundleReads: [String] { lock.withLock { bundleReadLog } }
     /// Every identifier whose registration the provider asked Launch Services about, in order.
     var registrationLookups: [String] { lock.withLock { registrationLog } }
     /// Every location the provider asked to be resolved, in order.
@@ -236,7 +266,20 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
                         identity: ObjectIdentity(device: 1, inode: UInt64(abs(path.hashValue))),
                         type: facts.isDirectory ? .directory : .regularFile))
             case .unreadable(let reason)?: return .failed(component: path, cause: reason)
-            case .absent?, nil: return .absent(.missing(component: path))
+            case .absent?, nil: return applicationLocation(path, inspections[path])
+            }
+        }
+    }
+
+    func readApplicationBundle(of location: ResolvedLocation) -> BundleRead {
+        let path = location.resolved.text
+        return lock.withLock {
+            bundleReadLog.append(path)
+            switch inspections[path] {
+            case .application(let bundle)?: return .application(identifier: bundle.bundleIdentifier)
+            case .notApplication?: return .notApplication
+            case .unreadable(let reason)?: return .unreadable(reason)
+            case .absent?, nil: return .unreadable("its metadata reports nothing there")
             }
         }
     }

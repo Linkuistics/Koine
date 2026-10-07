@@ -114,7 +114,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         }
         guard !Task.isCancelled else { return failed("Cancelled before the application was inspected.") }
         let native = native
-        let selection = await onQueue { selectInstallation(request, native: native) }
+        let selection = await onQueue { selectInstallation(request, forAction: "launched", native: native) }
         switch selection {
         case .dependency(let reason, let guidance): return .success(dependency(reason, guidance))
         case .failed(let message): return failed(message)

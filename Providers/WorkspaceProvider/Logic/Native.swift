@@ -36,6 +36,17 @@ enum ApplicationInspection: Sendable {
     case unreadable(String)
 }
 
+/// What reading the application bundle at a resolved location found. There is no absence: the walk had just
+/// found the object, so a read that reports nothing there is a failure, never a missing application.
+enum BundleRead: Sendable {
+    /// Present, and not an application bundle.
+    case notApplication
+    /// An application bundle; nil when it declares no identifier and its Info.plist is not unreadable.
+    case application(identifier: String?)
+    /// The metadata could not be read; this is never absence and never another identifier.
+    case unreadable(String)
+}
+
 enum FilesystemRootDecision: Equatable, Sendable {
     case root
     case notRoot
@@ -69,8 +80,17 @@ protocol WorkspaceNative: Sendable {
     /// Every registered copy of the identifier.
     func registeredApplications(bundleIdentifier: String) -> [URL]
     /// Prompt-free metadata inspection (docs/verification/protected-path-metadata.md):
-    /// `realpath`, resource values and `Bundle(url:)`, never a default-handler lookup.
+    /// `realpath`, resource values and `Bundle(url:)`, never a default-handler lookup. It addresses a location
+    /// Launch Services reported, not one the caller supplied, until `discovered-applications` replaces it with
+    /// the walk; a caller's `applicationPath` goes through `resolveLocation` and `readApplicationBundle`.
     func inspectApplication(at path: String) -> ApplicationInspection
+
+    /// Prompt-free metadata of the application bundle the walk resolved, read from its resolved spelling and
+    /// never the caller's: the `isApplicationKey` resource value and the bundle's identifier
+    /// (docs/verification/protected-path-metadata.md). The caller applied the hand-off limit first. The
+    /// file identity is the walk's own device and inode, so nothing here reads it. Never reads contents beyond
+    /// the bundle's own Info.plist, never lists a directory, never asks for a default handler.
+    func readApplicationBundle(of location: ResolvedLocation) -> BundleRead
 
     /// Submits one launch-or-activate request. `completion` may run once, on any
     /// thread, at any time, or never; the caller neither waits on it nor retries.

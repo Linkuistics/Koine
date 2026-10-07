@@ -101,7 +101,14 @@ echo "== Source: the item is inspected only through the calls the metadata probe
 READ_FACTS="$(awk '/func readPathFacts\(of location: ResolvedLocation\)/ {on=1} on {print} on && /^    }$/ {exit}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)"
 echo "${READ_FACTS}"
 [ -n "${READ_FACTS}" ] || fail "the item's metadata read is not one native function"
-grep -q -F 'location.resolved.bytes' <<<"${READ_FACTS}" || fail "the item's metadata is not read from the resolved spelling's bytes"
+# Both metadata reads (the item's and a supplied application's) build their URL by the one helper, from the resolved bytes.
+FILE_SYSTEM_URL="$(awk '/private func fileSystemURL\(of location: ResolvedLocation\)/ {on=1} on {print} on && /^    }$/ {exit}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)"
+echo "${FILE_SYSTEM_URL}"
+grep -q -F 'location.resolved.bytes' <<<"${FILE_SYSTEM_URL}" || fail "the metadata URL is not built from the resolved spelling's bytes"
+if grep -E 'location\.literal|realpath\(|l?stat\(|path\.text' <<<"${FILE_SYSTEM_URL}" | grep -v -E '^\s*//'; then
+    fail "the metadata URL addresses the caller's spelling or makes a whole-path call"
+fi
+grep -q -F 'fileSystemURL(of: location)' <<<"${READ_FACTS}" || fail "the item's metadata is not read from the resolved spelling's URL"
 if grep -E 'location\.literal|realpath\(|l?stat\(|path\.text' <<<"${READ_FACTS}" | grep -v -E '^\s*//'; then
     fail "the item's metadata read addresses the caller's spelling or makes a whole-path call"
 fi
@@ -143,7 +150,7 @@ echo "search-only handles; no read, write or create mode"
 line() { grep -n -F "$1" "${REVEAL}" | head -1 | cut -d: -f1; }
 SETTLE_REVEAL="$(line 'settleTarget(path, unaccomplished: "revealed", native: native)')"
 ROOT="$(line 'native.isFilesystemRoot(literalPath: path.text)')"
-FINDER="$(line 'selectInstallation(finder, native: native)')"
+FINDER="$(line 'selectInstallation(finder, forAction: "revealed", native: native)')"
 for found in "${SETTLE_REVEAL}" "${ROOT}" "${FINDER}"; do [ -n "${found}" ] || fail "the reveal planner no longer has one of the target stage, root decision, Finder"; done
 [ "${SETTLE_REVEAL}" -lt "${ROOT}" ] && [ "${ROOT}" -lt "${FINDER}" ] ||
     fail "the reveal planner's order is not target stage, root decision, Finder"
@@ -170,7 +177,7 @@ SETTLE="$(line_in "${OPEN}" 'settleTarget(path, unaccomplished: "opened", native
 FACTS="$(line_in "${OPEN}" 'native.readPathFacts(of: location)')"
 POLICY="$(line_in "${OPEN}" 'refusalReason(for: facts, native: native)')"
 HANDLER="$(line_in "${OPEN}" 'selectPathHandler(target, native: native)')"
-INSTALLATION="$(line_in "${OPEN}" 'selectInstallation(application, native: native)')"
+INSTALLATION="$(line_in "${OPEN}" 'selectInstallation(application, forAction: "opened", native: native)')"
 for found in "${SETTLE}" "${FACTS}" "${POLICY}" "${HANDLER}" "${INSTALLATION}"; do
     [ -n "${found}" ] || fail "the open planner no longer has one of target stage, metadata read, payload policy, handler, installation"
 done
@@ -181,6 +188,43 @@ if grep -n -E 'realpath|resourceValues|[^A-Za-z]stat\(' "${OPEN}" | grep -v -E '
     fail "the open planner addresses the caller's location by a call of its own"
 fi
 echo "the open planner makes no other path call"
+
+echo
+echo "== Source: a supplied application is resolved by the walk and limited, its bundle read from the resolved spelling, and its candidates resolved and compared by identity"
+# Stage 2 of the spec's order: a constrained launch's and a named open's `applicationPath`. The chosen copy is resolved,
+# then refused at the limit, and only then is its bundle read; the registered candidates follow, each resolved by the
+# same walk and compared by device and inode, their own metadata never read, and the selected registration is limited.
+APPLICATION_STAGE=Providers/WorkspaceProvider/Logic/ApplicationStage.swift
+A_RESOLVE="$(line_in "${APPLICATION_STAGE}" 'native.resolveLocation(path)')"
+A_LIMIT="$(line_in "${APPLICATION_STAGE}" 'HandOffLimit.refusal(of: found')"
+A_READ="$(line_in "${APPLICATION_STAGE}" 'native.readApplicationBundle(of: chosen)')"
+A_LISTED="$(line_in "${APPLICATION_STAGE}" 'native.registeredApplications(bundleIdentifier')"
+A_CANDIDATE="$(line_in "${APPLICATION_STAGE}" 'native.resolveLocation(registered.path)')"
+A_SELECTED="$(line_in "${APPLICATION_STAGE}" 'HandOffLimit.refusal(of: copy')"
+for found in "${A_RESOLVE}" "${A_LIMIT}" "${A_READ}" "${A_LISTED}" "${A_CANDIDATE}" "${A_SELECTED}"; do
+    [ -n "${found}" ] || fail "the supplied-application stage no longer has one of resolve, limit, bundle read, registered copies, candidate resolution, selected limit"
+done
+[ "${A_RESOLVE}" -lt "${A_LIMIT}" ] && [ "${A_LIMIT}" -lt "${A_READ}" ] && [ "${A_READ}" -lt "${A_LISTED}" ] &&
+    [ "${A_LISTED}" -lt "${A_CANDIDATE}" ] && [ "${A_CANDIDATE}" -lt "${A_SELECTED}" ] ||
+    fail "the supplied-application stage's order is not resolve, limit, bundle read, registered copies, candidates, selected limit"
+echo "supplied-application order: resolve (line ${A_RESOLVE}), limit (${A_LIMIT}), bundle read (${A_READ}), registered copies (${A_LISTED}), candidates (${A_CANDIDATE}), selected limit (${A_SELECTED})"
+[ "$(grep -c -F 'readApplicationBundle(' "${APPLICATION_STAGE}")" = 1 ] ||
+    fail "a bundle is read in the supplied-application stage other than the chosen copy's"
+[ "$(grep -c -E 'copy\.identity == chosen\.identity' "${APPLICATION_STAGE}")" = 1 ] ||
+    fail "the candidates are not compared with the chosen copy by the walk's device and inode"
+if grep -n -E 'inspectApplication|readPathFacts|realpath|resourceValues|[^A-Za-z]stat\(' "${APPLICATION_STAGE}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the supplied-application stage addresses a location by a call of its own"
+fi
+echo "the stage makes no path call of its own, and reads one bundle"
+APPLICATION_READ="$(awk '/func readApplicationBundle\(of location: ResolvedLocation\)/ {on=1} on {print} on && /^    }$/ {exit}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)"
+echo "${APPLICATION_READ}"
+[ -n "${APPLICATION_READ}" ] || fail "the application bundle read is not one native function"
+grep -q -F 'fileSystemURL(of: location)' <<<"${APPLICATION_READ}" || fail "the application bundle is not read from the resolved spelling"
+if grep -E 'location\.literal|realpath\(|l?stat\(|path\.text|isMissing' <<<"${APPLICATION_READ}" | grep -v -E '^\s*//'; then
+    fail "the application bundle read addresses the caller's spelling, makes a whole-path call or reads a missing file as absence"
+fi
+grep -q -F 'forKeys: [.isApplicationKey]' <<<"${APPLICATION_READ}" || fail "the bundle's resource key is not the measured one"
+echo "the bundle's metadata is read from the resolved spelling's bytes, as one resource value and the identifier"
 ROOT_CALL="$(grep -n -A12 -F 'func isFilesystemRoot(literalPath path: String)' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -c -E 'lstat\(')"
 [ "${ROOT_CALL}" = 2 ] || fail "the root decision is not exactly two lstat calls, the literal path and /"
 echo "the root decision: lstat of the literal text and of /, after the limit"

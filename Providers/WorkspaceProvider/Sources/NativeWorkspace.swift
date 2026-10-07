@@ -16,11 +16,17 @@ struct NativeWorkspace: WorkspaceNative {
         NSWorkspace.shared.urlsForApplications(withBundleIdentifier: bundleIdentifier)
     }
 
-    /// Only the calls docs/verification/protected-path-metadata.md measured as
-    /// prompt-free on first-use Desktop, Documents and Downloads: `realpath`, the
-    /// `isApplicationKey`, `volumeIdentifierKey` and `fileResourceIdentifierKey`
-    /// resource values, and `Bundle(url:)`. Nothing here asks for a file's default
+    /// The location Launch Services reported for an unconstrained launch, a default handler or Finder, by
+    /// the calls docs/verification/protected-path-metadata.md measured as prompt-free on first-use Desktop,
+    /// Documents and Downloads: `realpath`, the `isApplicationKey`, `volumeIdentifierKey` and
+    /// `fileResourceIdentifierKey` resource values, and `Bundle(url:)`. Nothing here asks for a file's default
     /// handler, which prompted, and nothing reads a directory or a file's contents.
+    ///
+    /// **Not the caller's location.** A path the caller supplies is resolved by the walk and read by
+    /// `readApplicationBundle(of:)`. This whole-path read is kept only for the registered location that
+    /// discovery finds, until `discovered-applications` replaces it with the walk, and it never reports a
+    /// long location missing: only the two errnos that name a missing component are absence, and
+    /// `ENAMETOOLONG` and `ELOOP` are an unreadable location.
     func inspectApplication(at path: String) -> ApplicationInspection {
         errno = 0
         guard let resolved = realpath(path, nil) else {
@@ -52,10 +58,44 @@ struct NativeWorkspace: WorkspaceNative {
         )
     }
 
+    /// The three facts of an application bundle the walk resolved, read from its resolved spelling: whether
+    /// the platform calls it an application and its identifier. Its file identity is the walk's own device
+    /// and inode. The planner applied the hand-off limit first, so this spelling is under `PATH_MAX`. The
+    /// object was found a moment ago, so any error here, a missing-file one included, is `unreadable`: absence
+    /// of a location is established by the walk alone, and this read never decides it.
+    func readApplicationBundle(of location: ResolvedLocation) -> BundleRead {
+        let url = fileSystemURL(of: location)
+        let values: URLResourceValues
+        do {
+            values = try url.resourceValues(forKeys: [.isApplicationKey])
+        } catch {
+            return .unreadable((error as NSError).localizedDescription)
+        }
+        guard let isApplication = values.isApplication else { return .unreadable("its type metadata is not available") }
+        guard isApplication else { return .notApplication }
+        let identifier = Bundle(url: url)?.bundleIdentifier
+        // As in `inspectApplication`: a nil is a bundle that declares none or one whose Info.plist may not be read.
+        if identifier == nil, let reason = infoPlistDenial(in: url) { return .unreadable(reason) }
+        return .application(identifier: identifier)
+    }
+
+    /// The URL of the resolved object, built from the resolved spelling's own bytes, so nothing is normalized
+    /// or repaired, and typed by the walk.
+    private func fileSystemURL(of location: ResolvedLocation) -> URL {
+        let representation = location.resolved.bytes.map { CChar(bitPattern: $0) } + [0]
+        return representation.withUnsafeBufferPointer {
+            URL(
+                fileURLWithFileSystemRepresentation: $0.baseAddress!, isDirectory: location.type == .directory,
+                relativeTo: nil)
+        }
+    }
+
     /// Why the bundle's Info.plist cannot be read, or nil when it can or is not there. Only `stat` and
     /// `access` on the one path: neither opens the file, and `Bundle(url:)` already reads it
     /// (docs/verification/protected-path-metadata.md). Absence (ENOENT, ENOTDIR) is a bundle that declares
-    /// no identifier, not a denial.
+    /// no identifier, not a denial. The plist's path is longer than the bundle's, so a bundle whose resolved
+    /// spelling is within the limit but whose plist's is not answers `ENAMETOOLONG`, which is a denial here:
+    /// `failed`, never a mismatch.
     private func infoPlistDenial(in bundle: URL) -> String? {
         let plist = bundle.appending(path: "Contents/Info.plist").path
         var status = stat()
@@ -71,7 +111,8 @@ struct NativeWorkspace: WorkspaceNative {
         isMissing(error) ? .absent : .unreadable((error as NSError).localizedDescription)
     }
 
-    /// A missing file as Foundation reports it, directly or beneath a POSIX ENOENT.
+    /// A missing file as Foundation reports it, directly or beneath a POSIX ENOENT. Used for a location the
+    /// platform reported; no caller's location is ever judged absent by it.
     private func isMissing(_ error: Error) -> Bool {
         let cocoa = error as NSError
         if cocoa.domain == NSCocoaErrorDomain, cocoa.code == NSFileReadNoSuchFileError { return true }
@@ -114,10 +155,7 @@ struct NativeWorkspace: WorkspaceNative {
     /// addresses the caller's location, and nothing reads contents or lists a directory.
     func readPathFacts(of location: ResolvedLocation) -> PathInspection {
         let isDirectory = location.type == .directory
-        let representation = location.resolved.bytes.map { CChar(bitPattern: $0) } + [0]
-        let url = representation.withUnsafeBufferPointer {
-            URL(fileURLWithFileSystemRepresentation: $0.baseAddress!, isDirectory: isDirectory, relativeTo: nil)
-        }
+        let url = fileSystemURL(of: location)
         let values: URLResourceValues
         do {
             values = try url.resourceValues(forKeys: [.isApplicationKey, .contentTypeKey, .isAliasFileKey])

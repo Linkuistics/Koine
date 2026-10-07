@@ -38,7 +38,7 @@ func planReveal(_ path: LocalPath, native: some WorkspaceNative) -> RevealPlan {
     case .failed(let reason): return .failed("The path could not be inspected: \(reason).")
     }
     let finder = ApplicationRequest(bundleIdentifier: finderBundleIdentifier, applicationPath: nil)
-    switch selectInstallation(finder, native: native) {
+    switch selectInstallation(finder, forAction: "revealed", native: native) {
     case .selected: return .submit(path: path.text, filesystemRoot: filesystemRoot)
     case .failed(let message): return .failed(message)
     case .dependency:

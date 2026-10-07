@@ -53,15 +53,18 @@ enum Selection: Sendable {
 /// - Presence is checked on the bundle itself, whatever registration says: a
 ///   registered copy that is gone is not installed, and a present copy in the
 ///   Trash is still eligible.
-/// - With a path, only a registered application bundle at that file identity
-///   (compared after symlink resolution, never by spelling) with the requested
-///   identifier is eligible. Another copy is never substituted.
+/// - With a path (`selectSuppliedApplication`), the path is resolved by the walk and
+///   refused at the hand-off limit, and only a registered copy at that device and
+///   inode with the requested identifier is eligible. Another copy is never substituted.
 /// - Metadata that cannot be read is `failed`, not absence.
 ///
 /// Every call here is one of the prompt-free metadata calls
 /// (docs/verification/protected-path-metadata.md); none looks up a file handler.
-func selectInstallation(_ request: ApplicationRequest, native: some WorkspaceNative) -> Selection {
-    if let path = request.applicationPath { return selectConstrained(request, path: path, native: native) }
+/// `action` is what no request did, in the past tense the guidance uses.
+func selectInstallation(_ request: ApplicationRequest, forAction action: String, native: some WorkspaceNative) -> Selection {
+    if let path = request.applicationPath {
+        return selectSuppliedApplication(request, path: path, forAction: action, native: native)
+    }
     guard let registered = native.registeredApplication(bundleIdentifier: request.bundleIdentifier) else {
         return notInstalled(request)
     }
@@ -72,41 +75,6 @@ func selectInstallation(_ request: ApplicationRequest, native: some WorkspaceNat
         guard bundle.bundleIdentifier == request.bundleIdentifier else { return mismatch(request) }
         return .selected(registered, substituting: true)
     }
-}
-
-private func selectConstrained(_ request: ApplicationRequest, path: String, native: some WorkspaceNative) -> Selection {
-    let chosen: ApplicationBundle
-    switch native.inspectApplication(at: path) {
-    case .absent, .notApplication: return notInstalled(request)
-    case .unreadable(let reason): return .failed(unreadable(reason))
-    case .application(let bundle): chosen = bundle
-    }
-    guard chosen.bundleIdentifier == request.bundleIdentifier else { return mismatch(request) }
-    // Present with the right identifier: eligible only if Launch Services knows this very copy.
-    // Both of its answers are asked, because they were seen to disagree: a registered copy moved
-    // to the Trash is returned by the lookup for the identifier and left out of the list of every
-    // copy (docs/verification/application-installations-vm.md), and a present registered copy in
-    // the Trash stays eligible. Apple documents neither answer's treatment of the Trash
-    // (https://developer.apple.com/documentation/appkit/nsworkspace/urlsforapplications(withbundleidentifier:)):
-    // this is observed on macOS 26.5, not verified against an official source.
-    var candidates = native.registeredApplications(bundleIdentifier: request.bundleIdentifier)
-    if let preferred = native.registeredApplication(bundleIdentifier: request.bundleIdentifier),
-        !candidates.contains(preferred)
-    {
-        candidates.append(preferred)
-    }
-    for registered in candidates {
-        switch native.inspectApplication(at: registered.path) {
-        case .application(let bundle) where bundle.identity == chosen.identity:
-            return .selected(registered, substituting: false)
-        case .application, .absent, .notApplication:
-            continue  // another copy, or a registration whose bundle is gone
-        case .unreadable(let reason):
-            // Whether this is the chosen copy is unknown, and guessing either way is wrong.
-            return .failed(unreadable(reason))
-        }
-    }
-    return notInstalled(request)
 }
 
 /// What a URL open is sent to: the default handler for the URL's scheme, present as an
@@ -130,7 +98,7 @@ private func noDefaultHandler() -> Selection {
     )
 }
 
-private func notInstalled(_ request: ApplicationRequest) -> Selection {
+func notInstalled(_ request: ApplicationRequest) -> Selection {
     let where_ = request.applicationPath == nil ? "" : " at the requested location"
     return .dependency(
         .applicationNotInstalled,
@@ -139,7 +107,7 @@ private func notInstalled(_ request: ApplicationRequest) -> Selection {
     )
 }
 
-private func mismatch(_ request: ApplicationRequest) -> Selection {
+func mismatch(_ request: ApplicationRequest) -> Selection {
     .dependency(
         .applicationIdentityMismatch,
         guidance: "The application found does not have bundle identifier \(request.bundleIdentifier). "
@@ -147,6 +115,6 @@ private func mismatch(_ request: ApplicationRequest) -> Selection {
     )
 }
 
-private func unreadable(_ reason: String) -> String {
+func unreadable(_ reason: String) -> String {
     "The application could not be inspected: \(reason)."
 }

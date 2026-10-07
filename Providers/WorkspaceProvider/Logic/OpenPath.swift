@@ -113,7 +113,7 @@ func planPathOpen(_ path: LocalPath, application: ApplicationRequest?, native: s
 
     let selection: Selection
     if let application {
-        selection = selectInstallation(application, native: native)
+        selection = selectInstallation(application, forAction: "opened", native: native)
     } else {
         selection = selectPathHandler(target, native: native)
     }

@@ -4,8 +4,10 @@
 
 A control that has never been seen to fail is not a control (grove's rule for a clean
 read). The walk tests (`LocationWalkTests`, S), the planner tests (`RevealLocationTests`, L, and
-`OpenLocationTests`, O) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which asks
-both a reveal and an open) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
+`OpenLocationTests`, O), the supplied-application stage's planner tests (`ApplicationLocationTests`, A, and
+`WorkspaceInstallationsCompositionTests`, G) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which
+asks both a reveal and an open, and `WorkspaceApplicationLocationTests`, B, which asks a constrained launch and a
+named open) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
 (.build/location-walk-mutations/tree, with its own build directory, so later runs are
 incremental), rebuilds the copy's tests and its independently built, signed workspace
 bundle from the mutated source, and runs each named suite. A mutation is seen when every
@@ -33,14 +35,20 @@ WALK = LOGIC + "LocationWalk.swift"
 LIMIT = LOGIC + "HandOffLimit.swift"
 TARGET = LOGIC + "TargetStage.swift"
 OPEN = LOGIC + "OpenPath.swift"
+APPLICATION = LOGIC + "ApplicationStage.swift"
 NATIVE = "Providers/WorkspaceProvider/Sources/NativeWorkspace.swift"
 
-# S: the walk's own source; L: reveal's planner; O: open's planner; N: the signed bundle, asked for both.
+# S: the walk's own source; L: reveal's planner; O: open's planner; A: the supplied-application stage's planner;
+# G: that stage through the public engine; N: the signed bundle, asked for a reveal and an open of a path;
+# B: the signed bundle, asked for a constrained launch and a named open.
 SUITES = {
     "S": "LocationWalkTests",
     "L": "RevealLocationTests",
     "O": "OpenLocationTests",
+    "A": "ApplicationLocationTests",
+    "G": "WorkspaceInstallationsCompositionTests",
     "N": "WorkspaceLongLocationTests",
+    "B": "WorkspaceApplicationLocationTests",
 }
 
 # name -> (file, text to replace, replacement, suites that must go red)
@@ -141,19 +149,19 @@ MUTATIONS = {
         LIMIT,
         "where spelling.byteCount >= pathMax",
         "where spelling.byteCount > pathMax",
-        "SLON",
+        "SLONAB",
     ),
     "the-limit-ignores-expansions": (
         LIMIT,
         "where spelling.byteCount >= pathMax {",
         "where spelling.byteCount >= pathMax && kind != .expanded(number: 1) && kind != .expanded(number: 2) {",
-        "SLON",
+        "SLONAB",
     ),
     "the-limit-counts-the-terminating-nul": (
         LIMIT,
         "static let pathMax = 1024",
         "static let pathMax = 1023",
-        "SLON",
+        "SLONAB",
     ),
     "an-impossible-name-or-cycle-is-failed": (
         TARGET,
@@ -177,7 +185,7 @@ MUTATIONS = {
         NATIVE,
         "let representation = location.resolved.bytes.map",
         "let representation = location.literal.bytes.map",
-        "N",
+        "NB",
     ),
     "a-later-metadata-absence-is-absence": (
         OPEN,
@@ -196,6 +204,105 @@ MUTATIONS = {
         "let target = URL(fileURLWithPath: path.text, isDirectory: facts.isDirectory)",
         "let target = URL(fileURLWithPath: location.resolved.text, isDirectory: facts.isDirectory)",
         "O",
+    ),
+    "an-application-limit-is-not-applied-to-the-chosen-copy": (
+        APPLICATION,
+        '        if let refusal = HandOffLimit.refusal(of: found, forAction: action, noun: "application path") {\n'
+        "            return .failed(refusal)\n        }\n        chosen = found",
+        "        chosen = found",
+        "AB",
+    ),
+    "the-bundle-is-read-before-the-limit": (
+        APPLICATION,
+        '        if let refusal = HandOffLimit.refusal(of: found, forAction: action, noun: "application path") {\n'
+        "            return .failed(refusal)\n        }\n        chosen = found\n    }\n"
+        "    switch native.readApplicationBundle(of: chosen) {",
+        "        chosen = found\n    }\n    let early = native.readApplicationBundle(of: chosen)\n"
+        '    if let refusal = HandOffLimit.refusal(of: chosen, forAction: action, noun: "application path") { return .failed(refusal) }\n'
+        "    switch early {",
+        "A",
+    ),
+    "the-limit-is-not-applied-to-the-selected-copy": (
+        APPLICATION,
+        '            if let refusal = HandOffLimit.refusal(of: copy, forAction: action, noun: "registered application path") {\n'
+        "                return .failed(refusal)\n            }\n",
+        "",
+        "AG",
+    ),
+    "the-limit-is-applied-to-an-unequal-candidate": (
+        APPLICATION,
+        "        case .present:\n            continue  // another copy, however long its spelling",
+        "        case .present(let other):\n"
+        '            if let refusal = HandOffLimit.refusal(of: other, forAction: action, noun: "registered application path") { return .failed(refusal) }\n'
+        "            continue",
+        "AG",
+    ),
+    "an-impossible-name-or-cycle-at-the-chosen-path-is-absence": (
+        APPLICATION,
+        "    case .absent(let absence) where absence.isImpossibleOrCycle:\n"
+        '        return .failed("The application path could not be resolved: \\(explanation(of: absence)).")\n',
+        "",
+        "AB",
+    ),
+    "a-failed-walk-at-the-chosen-path-is-absence": (
+        APPLICATION,
+        'return .failed("The application path could not be resolved at \\(component.debugDescription): \\(cause).")',
+        "return notInstalled(request)",
+        "AB",
+    ),
+    "a-stale-candidate-stops-the-stage": (
+        APPLICATION,
+        "        case .absent:\n            continue  // a registration whose bundle is gone",
+        "        case .absent:\n            return notInstalled(request)",
+        "A",
+    ),
+    "an-unresolvable-candidate-is-skipped": (
+        APPLICATION,
+        "        case .failed(let component, let cause):\n"
+        "            // Whether this is the chosen copy is unknown, and guessing either way is wrong.\n"
+        '            return .failed(unknownEquality("it could not be resolved at \\(component.debugDescription): \\(cause)"))',
+        "        case .failed:\n            continue",
+        "A",
+    ),
+    "an-impossible-or-cyclic-candidate-is-skipped": (
+        APPLICATION,
+        "        case .absent(let absence) where absence.isImpossibleOrCycle:\n"
+        '            return .failed(unknownEquality("\\(explanation(of: absence))"))\n',
+        "",
+        "A",
+    ),
+    "equality-ignores-the-device": (
+        APPLICATION,
+        "copy.identity == chosen.identity",
+        "copy.identity.inode == chosen.identity.inode",
+        "A",
+    ),
+    "equality-ignores-the-inode": (
+        APPLICATION,
+        "copy.identity == chosen.identity",
+        "copy.identity.device == chosen.identity.device",
+        "A",
+    ),
+    "a-candidates-metadata-is-read": (
+        APPLICATION,
+        "        switch native.resolveLocation(registered.path) {",
+        "        let probed = native.resolveLocation(registered.path)\n"
+        "        if case .present(let location) = probed { _ = native.readApplicationBundle(of: location) }\n"
+        "        switch probed {",
+        "A",
+    ),
+    "the-preferred-copy-is-not-compared": (APPLICATION, "        candidates.append(preferred)", "        _ = preferred", "A"),
+    "candidates-are-compared-in-the-wrong-order": (
+        APPLICATION,
+        "    for registered in candidates {",
+        "    for registered in candidates.reversed() {",
+        "A",
+    ),
+    "the-selected-copy-allows-substitution": (
+        APPLICATION,
+        "return .selected(registered, substituting: false)",
+        "return .selected(registered, substituting: true)",
+        "AG",
     ),
 }
 

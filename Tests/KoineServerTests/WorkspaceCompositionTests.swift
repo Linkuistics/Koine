@@ -693,6 +693,7 @@ import Testing
                     bundleIdentifier: path == Self.finder.path ? finderBundleIdentifier : "com.example.browser",
                     identity: FileIdentity(volume: NSNumber(value: 1), file: "browser" as NSString)))
         }
+        func readApplicationBundle(of location: ResolvedLocation) -> BundleRead { .application(identifier: "com.example.browser") }
         func launchApplication(
             at url: URL, substitutingRunningCopy: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void
         ) { completion(.refused("a launch is not part of this test")) }

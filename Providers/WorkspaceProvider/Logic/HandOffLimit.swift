@@ -22,14 +22,15 @@ enum HandOffLimit {
     }
 
     /// Guidance for a refused location: it names the hand-off stage, the spelling and its byte count, and says
-    /// no request was made. It is a `failed` outcome, never a dependency: the location exists.
-    static func refusal(of location: ResolvedLocation, forAction action: String) -> String? {
+    /// no request was made. It is a `failed` outcome, never a dependency: the location exists. `noun` is what
+    /// the location is, "path" for a target and "application path" for an application's.
+    static func refusal(of location: ResolvedLocation, forAction action: String, noun: String = "path") -> String? {
         guard let (kind, byteCount) = firstOverLimit(location) else { return nil }
         let spelling: String
         switch kind {
-        case .literal: spelling = "the path as written"
-        case .expanded(let number): spelling = "the remaining path after symbolic link \(number)"
-        case .resolved: spelling = "the resolved path"
+        case .literal: spelling = "the \(noun) as written"
+        case .expanded(let number): spelling = "the remaining \(noun) after symbolic link \(number)"
+        case .resolved: spelling = "the resolved \(noun)"
         }
         return "The application hand-off was refused: \(spelling) is \(byteCount) bytes, and a path of "
             + "\(pathMax) bytes or more cannot be handed to an application (\(longestHandedOver) is the most, "
