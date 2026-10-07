@@ -51,3 +51,33 @@ action-only release/schema 1.0.1 and its independent subjects.
 ## Notes
 
 Long-path application support itself is out of scope (Linkuistics/Koine#1).
+
+## Decisions (running log)
+
+- **Cut by stage and operation.** The spec orders target, supplied application,
+  discovered application. Each stage leaf replaces whole-path inspection for one
+  stage and runs at L, G and N, so each is a working increment. The walk itself
+  lands with reveal, whose planner is smallest and which owns the root rule; open-path
+  adds its payload refusal on the same walk.
+- **Retention first.** A workspace 1.0.0 binary can be kept only before the
+  provider source changes, so `retained-workspace-baseline` is leaf 1. The existing
+  baseline revision, `v0.1.0`, has no workspace provider, and `current-workspace` in
+  the selection fixtures is built from this tree.
+- **The prompt question is measured inside leaf 2, first.** A separate gate leaf
+  would be evidence without behaviour, and the walk is the thing to measure. The
+  leaf's first done-when item stops it on a prompt; V repeats the check in the
+  signed app.
+- **Release after behaviour.** The repair SDL's descriptions state behaviour, so
+  1.0.1 is packaged after the three stage leaves, not with the first. The cost is
+  that the served schema says 1.0.0 while behaviour is corrected, which is not a
+  contract change (shapes, enums and error kinds are unchanged).
+- **V after the release.** Acceptance is of the signed 1.0.1 bundle. The earlier
+  prompt measurement bounds the risk that V finds a design-level problem late.
+- **What N can observe.** The signed bundle on the host launches and reveals
+  nothing, so present outcomes are tested through shared source or refusals that
+  follow resolution. Said in the node brief and `reveal-locations`.
+- **Review cut.** `review-planning` k171 is placed before the node, as k81 was,
+  so it runs first; its integration, if any, is inserted before the node by the
+  review.
+- **Not cut:** per-leaf `review-impl` chains (earned reactively); search handoff
+  (stays with `app-and-file-search`).

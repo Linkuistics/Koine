@@ -319,3 +319,13 @@ finding, that the open-path SDL put a discovered handler's limit before its
 discovery, is integrated by k170: an over-limit target gets no discovery read,
 while a discovered application is refused after the read that found it and
 before its metadata; neither makes a domain request.
+
+`long-location-actions-k167` cut node `long-locations-k172`: nine leaves, each leaving
+Koine working. The retained 1.0.0 workspace is built first, before any source
+change; the descriptor-relative walk lands with reveal and open-path for the target
+stage, then the supplied and discovered application stages follow; the 1.0.1
+release, its compatibility pairs and the two V leaves come last, so acceptance
+rests on the shipped artifact. The first leaf to build the walk measures first-use
+prompting before building the rest, and a prompt returns to Antony. Review
+`long-location-actions-k171` reads the cut before any of it runs. Its owner table
+for the spec's subjects is in the node brief.
