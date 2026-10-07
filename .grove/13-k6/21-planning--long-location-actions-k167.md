@@ -17,14 +17,21 @@ action-only release/schema 1.0.1 and its independent subjects.
   long-search-result-actions-k169 of integration k168 and any integration it
   earns. Integration k168 counts pathname bytes without the NUL (1,023 handed
   over, 1,024 refused); orders a target stage before a supplied or discovered
-  application stage, with the limit before any pathname call and never on an
-  unequal registered candidate; keeps retained application-location, candidate
-  and Finder outcomes; and adds subjects the spec's "Subjects and versions" now
-  lists: 31/32/33-link and self-extending chains, a containing-directory cycle
-  state, ASCII-only impossible names beside extant multibyte/combining names, a
-  final directory without search permission, reveal's `lstat` root rule with and
-  without a trailing slash, and registered candidates before and after the match
-  at L.
+  application stage, with each location's limit before any pathname call on it
+  and never on an unequal registered candidate; keeps retained
+  application-location, candidate and Finder outcomes; and adds subjects the
+  spec's "Subjects and versions" now lists: 31/32/33-link and self-extending
+  chains, a containing-directory cycle state, ASCII-only impossible names beside
+  extant multibyte/combining names, a final directory without search permission,
+  reveal's `lstat` root rule with and without a trailing slash, and registered
+  candidates before and after the match at L.
+- Integration long-search-result-actions-k170 made the open-path SDL's refusal
+  stage-specific: an over-limit target gets no metadata or discovery read, an
+  over-limit `applicationPath` no metadata or registration lookup, and an
+  over-limit discovered application (preferred copy or default handler) is
+  refused after the discovery read that found it, with no metadata read or
+  submission. The spec's L subjects check those counts; "no request" means no
+  domain request, never zero reads.
 - `docs/verification/long-action-native-boundary.md#compatibility-and-implementation-obligations`
   for the retained 1.0.0 / repair 1.0.1 / search 1.1.0 profile split.
 - The shipped adapter's `inspectPath`/`inspectApplication` use `realpath`/`stat`

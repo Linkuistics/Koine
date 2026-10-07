@@ -314,4 +314,8 @@ Finder outcomes stand. Cycles are a repeated (containing directory, link text,
 pending suffix) state; 32 expansions are allowed; only an ASCII over-limit name
 proves impossibility; the final component is examined, never opened; reveal keeps
 its `lstat` root rule. Its in-session reviewer's seven further findings were fixed,
-so re-review long-search-result-actions-k169 precedes planning k167.
+so re-review long-search-result-actions-k169 precedes planning k167. k169's one
+finding, that the open-path SDL put a discovered handler's limit before its
+discovery, is integrated by k170: an over-limit target gets no discovery read,
+while a discovered application is refused after the read that found it and
+before its metadata; neither makes a domain request.

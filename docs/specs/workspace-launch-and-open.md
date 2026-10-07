@@ -469,7 +469,12 @@ no search implementation is needed to close them:
 
 - **L** checks the planner's mapping for every resolution row, every stage and
   the limit with the substituted private adapter, including the cases no fixture
-  can build: an over-limit discovered application or default handler; a stale
+  can build: an over-limit target, after which the adapter records no metadata
+  read and no handler, registration or Finder lookup; an over-limit
+  `applicationPath`, with no metadata read of it and no registration lookup; an
+  over-limit discovered application or default handler, which records exactly
+  the discovery read that found it and then no metadata read of it and no
+  submission; a stale
   absent candidate, an unequal long candidate and an unequal candidate with
   unreadable metadata beside the present chosen copy, each enumerated before and
   after it (skipped); a candidate whose resolution fails before the match
