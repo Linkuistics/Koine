@@ -710,6 +710,18 @@ import Testing
                     ?? .present(PathFacts(isDirectory: path.hasSuffix("/"), isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
             }
         }
+        func resolveLocation(_ path: String) -> LocationResolution {
+            lock.withLock {
+                inspectedPaths.append(path)
+                if case .absent? = arranged[path] { return .absent(.missing(component: path)) }
+                let spelling = Spelling(bytes: Array(path.utf8))
+                return .present(
+                    ResolvedLocation(
+                        literal: spelling, expansions: [], resolved: spelling,
+                        identity: ObjectIdentity(device: 1, inode: 1), type: .regularFile))
+            }
+        }
+        func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision { .notRoot }
         func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool { identifier == ancestor }
         func defaultApplication(toOpen url: URL) -> URL? {
             lock.withLock { lookedUpDocuments.append(url.path) }
@@ -1214,6 +1226,42 @@ import Testing
         let invalid = try await bench.run(Self.reveal, as: client.principal)
         #expect(invalid.data?["reveal"] is NSNull)
         #expect(invalid.extensions(at: ["reveal"])["kind"] == nil)
+    }
+
+    /// G for an extant location of any length: the real provider over a stand-in that finds every path present, and
+    /// records what reaches the request. Over the application hand-off limit the public outcome is `failed` with
+    /// guidance at the action's own response path, never a dependency, and nothing is revealed.
+    static let revealWithVariable = """
+        mutation($path: String!) { reveal: workspaceRevealPath(path: $path) {
+          status value { path } dependency { reason guidance } } }
+        """
+
+    @Test(arguments: [1024, 1025, 1500, 4000])
+    func aRevealOfAnExtantPathOfOneThousandTwentyFourBytesOrMoreIsFailedWithGuidanceAndNothingIsRevealed(
+        _ length: Int
+    ) async throws {
+        let (bench, browser, client) = try await Self.realProvider()
+        let path = "/" + String(repeating: "a", count: length - 1)
+        let reply = try await bench.run(Self.revealWithVariable, ["path": path], as: client)
+        #expect(reply.data?["reveal"] is NSNull, "no result and no dependency: the action failed")
+        #expect(reply.extensions(at: ["reveal"])["kind"] as? String == "failed")
+        let message = try #require(reply.error(at: ["reveal"])?["message"] as? String)
+        for needed in ["application hand-off", "\(length) bytes", "No request was made"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(browser.pathsRevealed.isEmpty, "nothing was revealed")
+        #expect(browser.documentLookups.isEmpty && browser.pathsOpened.isEmpty)
+    }
+
+    @Test func aRevealOfAPathOfOneThousandTwentyThreeBytesIsHandedOverAsBefore() async throws {
+        let (bench, browser, client) = try await Self.realProvider()
+        let path = "/" + String(repeating: "a", count: 1022)
+        let reply = try await bench.run(Self.revealWithVariable, ["path": path], as: client)
+        #expect(reply.errors.isEmpty, Comment(rawValue: "\(reply.errors)"))
+        let reveal = try #require(reply.data?["reveal"] as? [String: Any])
+        #expect(reveal["status"] as? String == "AVAILABLE")
+        #expect((reveal["value"] as? [String: Any])?["path"] as? String == path)
+        #expect(browser.pathsRevealed == [path])
     }
 
     /// The action has run. Revoking as `point` is reached denies that field's publication and

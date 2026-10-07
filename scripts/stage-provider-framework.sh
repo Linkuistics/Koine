@@ -24,11 +24,12 @@ fi
 # configuration's name as the build system spells it (Debug, Release).
 CONFIG_DIR="$(basename "${BIN_DIR}")"
 # .build/compat holds whole trees of other revisions (scripts/build-compat-pairs.sh),
-# and .build/selection-mutations one copy with a decision broken on purpose
-# (scripts/check-selection-mutations.py).
+# and .build/selection-mutations and .build/location-walk-mutations one copy each with a
+# decision broken on purpose (scripts/check-selection-mutations.py,
+# scripts/check-location-walk-mutations.py).
 INTERFACES=()
 while IFS= read -r found; do INTERFACES+=("${found}"); done < <(
-    find .build \( -path .build/compat -o -path .build/selection-mutations \) -prune -o \
+    find .build \( -path .build/compat -o -path .build/selection-mutations -o -path .build/location-walk-mutations \) -prune -o \
         -path "*/${MODULE}.build/${CONFIG_DIR}/*" -name "${MODULE}.swiftinterface" -print
 )
 if [ "${#INTERFACES[@]}" -ne 1 ]; then

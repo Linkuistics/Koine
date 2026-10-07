@@ -34,10 +34,13 @@ grant lookup, never listing, and resolution opens no file contents. Search's
 listing streams still read the directories they list, under search's own
 protected-scope policy. A read-mode walk prompted at the Documents component in
 k134, where the accepted whole-path metadata route did not.
-Search-only first-use behaviour in Desktop, Documents and Downloads is
-unmeasured and is an acceptance obligation, not an assumption. If it prompts,
-the prompt-free read rule and this decision conflict; that goes to Antony
-rather than reintroducing whole-path primitives or shipping a prompt.
+Search-only first-use behaviour in Desktop, Documents and Downloads was
+[measured](../verification/descriptor-walk-prompt.md) on macOS 26.5: the walk's
+`openat(O_SEARCH)`, `fstatat` and `readlinkat` did not prompt, where the
+read-mode control did. It remains an acceptance obligation for the VM rows and
+other OS builds, not an assumption. If it ever prompts, the prompt-free read
+rule and this decision conflict; that goes to Antony rather than reintroducing
+whole-path primitives or shipping a prompt.
 
 This decision does not make applications accept long locations. macOS opener,
 registration, type and handler services take whole pathnames and fail at

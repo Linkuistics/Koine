@@ -62,6 +62,14 @@ import Testing
         func inspectPath(_ path: String) -> PathInspection {
             .present(PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
         }
+        func resolveLocation(_ path: String) -> LocationResolution {
+            let spelling = Spelling(bytes: Array(path.utf8))
+            return .present(
+                ResolvedLocation(
+                    literal: spelling, expansions: [], resolved: spelling,
+                    identity: ObjectIdentity(device: 1, inode: 1), type: .regularFile))
+        }
+        func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision { .notRoot }
         func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool { identifier == ancestor }
         func defaultApplication(toOpen url: URL) -> URL? { nil }
         func openPath(

@@ -239,7 +239,11 @@ transport outcome can be unknown even when the app opens successfully.
 
 ### Long-location action boundary
 
-**Designed for v1; unimplemented.** Koine resolves every action location
+**Designed for v1; reveal's target stage implemented, the rest unimplemented.** The descriptor
+walk, the hand-off limit and reveal's target stage are accepted at L, G and N, with the present outcomes
+no refusal shows left to V ([record](../verification/reveal-locations.md)). The open-path target stage,
+both application stages, receipt executable identities and the 1.0.1 release are not yet built.
+Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
 is `PATH_MAX` (1,024) bytes or more, with `failed` and a stated cause. Making
@@ -277,7 +281,7 @@ its error names that component.
 | --- | --- |
 | A component does not exist, or a non-directory sits where a directory is required, including a dangling link and a trailing slash after a file | Absent: `PATH_NOT_FOUND` for a target; the application dependency for an application location (below). |
 | A component's own lookup fails with `ENAMETOOLONG`, the component is ASCII, and its byte length exceeds the `fpathconf(_PC_NAME_MAX)` value its directory returns | An established impossible component: absent, `PATH_NOT_FOUND`, for a target; `failed` for an application location, as the accepted application inspection treats it. |
-| The same link text is read again in the same containing directory with the same exact pending suffix | An established cycle: absent, `PATH_NOT_FOUND`, for a target; `failed` for an application location, as above. |
+| The same link text is read again in the same containing directory with the same pending suffix (a run of slashes counted as one) | An established cycle: absent, `PATH_NOT_FOUND`, for a target; `failed` for an application location, as above. |
 | Resolution needs a 33rd link expansion without such a repeat | `failed`: the link budget, not absence. |
 | Any other `ENAMETOOLONG` at a component (a non-ASCII name, or one within the returned limit), `fpathconf` returning `-1`, one link read twice with different text, denial, or any other error at a component | `failed`, naming the component and cause; never absence or an invented consent. |
 | Every component resolves | Present: the object's device and inode and its type; for reveal, the root decision below; and three spellings: the literal path, each remaining path after a link expansion, and the resolved path. |
@@ -295,9 +299,11 @@ bytes), so a non-ASCII `ENAMETOOLONG` is `failed`, not absence.
 link text is read from the directory containing the link, and one symbolic-link
 inode can have entries in two directories, so the same link and pending suffix
 can recur on a finite path. The state is therefore the containing directory's
-device and inode, the link text, and the exact pending suffix including any
-trailing slash: what follows an expansion depends on nothing else, so a repeated
-state would recur at any budget. The link's own device and inode serve only to
+device and inode, the link text, and the pending suffix including any trailing
+slash, a run of slashes counted as one because the kernel reads it as one: what
+follows an expansion depends on nothing else, so a repeated state would recur at
+any budget. A link whose text ends in a slash (`a` → `a/`) gains one on every
+lap and is therefore a cycle, where an exact comparison would never repeat. The link's own device and inode serve only to
 notice one link read twice with different text, which is a changed observation,
 `failed`. Up to 32 expansions are allowed, as the kernel allows: a location that
 resolves after its 32nd expansion is present. A cycle the budget ends before it
@@ -442,10 +448,12 @@ records how mature walks failed. Each is an obligation here:
   admitted because classification could not run.
 - **No reconstructed long strings.** A spelling reaches a whole-path platform
   call only after it passes the limit.
-- **No prompts.** Resolution lists nothing and opens no file. Its first-use
-  behaviour in Desktop, Documents and Downloads is an acceptance obligation:
-  k134's read-mode walk prompted at Documents, and search-only opens are
-  unmeasured. A prompt goes to Antony, never a whole-path fallback or a shipped
+- **No prompts.** Resolution lists nothing and opens no file. k134's read-mode
+  walk prompted at Documents; the search-only walk did not prompt on first-use
+  Desktop, Documents or Downloads
+  ([measured](../verification/descriptor-walk-prompt.md)), so its first-use
+  behaviour stays an acceptance obligation only for the V rows and other OS
+  builds. A prompt goes to Antony, never a whole-path fallback or a shipped
   dialog.
 - **No spelling drift.** Resolution follows kernel semantics with no ancestor
   canonicalization, and never rewrites, shortens or normalizes the submitted
@@ -687,7 +695,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Native create, approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls, observed in the window and compared with the text management serves: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md). |
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
-| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. All pending; no search implementation is required. |
+| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. Reveal's target stage: L, G and N accepted ([reveal-locations.md](../verification/reveal-locations.md)); every other stage, N gaps closed by effect, V and the packaging are pending. No search implementation is required. |
 | Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns an over-limit file and application; the unchanged selected path and identifier receive the stated `failed` refusal with no delivery, while a returned location within the limit acts, with independent witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
@@ -1051,3 +1059,16 @@ what was established; every row above keeps its pending remainder.
   ([reveal-path-vm.md](../verification/reveal-path-vm.md#the-contract-only-client-and-the-workspace-profile)). Pending: the complete selection matrix
   (`selection-acceptance`), old/new binaries with this provider, and selected
   updates and explicit absent/rejected sets in conformance.
+- **Long-location actions: reveal's target stage.** The descriptor walk
+  (`Providers/WorkspaceProvider/Logic/LocationWalk.swift`), the hand-off limit
+  (`HandOffLimit.swift`) and reveal's use of them are accepted at L
+  (`RevealLocationTests`), G (`WorkspaceCompositionTests`) and N
+  (`WorkspaceLongLocationTests`, through the independently built, signed bundle on
+  the host), with the walk's own source tested on host fixtures at short and
+  about-1,500-byte depth (`LocationWalkTests`, supporting evidence only) and every
+  check seen to fail against a mutated walk. First-use resolution is
+  [prompt-free](../verification/descriptor-walk-prompt.md). The N gaps, the
+  present outcomes no refusal exposes, are named with their owner in the
+  [record](../verification/reveal-locations.md#what-n-could-not-observe) and closed at V by
+  `target-locations-vm`. The open-path target, both application stages, receipt
+  executable identities and release 1.0.1 are pending.

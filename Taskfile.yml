@@ -68,6 +68,31 @@ tasks:
     cmds:
       - python3 scripts/vm-probe-protected-path.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
 
+  fixture:descriptor-walk-prompt:
+    desc: Build and sign the disposable k174 descriptor-walk prompt probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - bash scripts/build-descriptor-walk-probe.sh
+
+  fixture:descriptor-walk-prompt-vm:
+    desc: Measure the walk's calls on first-use Desktop, Documents and Downloads in a prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-descriptor-walk.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:descriptor-walk-prompt-check:
+    desc: Check the k174 probe driver and build script without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-descriptor-walk.py
+      - python3 -m py_compile scripts/vm-probe-descriptor-walk.py
+      - shellcheck -x scripts/build-descriptor-walk-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-descriptor-walk-probe.sh
+
+  check:location-walk-mutations:
+    desc: Show the location-walk, planner and signed-bundle tests go red against one deliberately broken decision of the walk at a time, in a copy of the tree under .build/location-walk-mutations (first run builds the copy; later runs are incremental)
+    cmds:
+      - python3 scripts/check-location-walk-mutations.py {{.CLI_ARGS}}
+
   fixture:long-action-route:
     desc: Build and sign the disposable long-location prototype bundles (k134; launch only in an isolated TestAnyware VM)
     cmds:

@@ -36,6 +36,13 @@ enum ApplicationInspection: Sendable {
     case unreadable(String)
 }
 
+enum FilesystemRootDecision: Equatable, Sendable {
+    case root
+    case notRoot
+    /// The platform could not say, about a location the walk had found.
+    case failed(String)
+}
+
 enum LaunchCompletion: Sendable {
     /// The system's acknowledgment, with the application it answered with, when it did.
     case acknowledged(LaunchedApplication?)
@@ -93,6 +100,18 @@ protocol WorkspaceNative: Sendable {
     /// (docs/verification/protected-path-metadata.md). Never reads contents, never lists a
     /// directory, never asks for a default handler.
     func inspectPath(_ path: String) -> PathInspection
+
+    /// Resolves a caller's location component by component, never by a whole-path call
+    /// (`LocationWalk`; docs/specs/workspace-launch-and-open.md "Resolving an action location"). Lists
+    /// nothing, opens no file, and answers presence with the device, inode, type and every spelling, absence
+    /// with its cause, or a failure naming the component and cause.
+    func resolveLocation(_ path: String) -> LocationResolution
+
+    /// Whether the object `lstat` names for the literal `path` is the filesystem root's own device and
+    /// inode, whatever the spelling (`lstat` does not follow a final link unless the kernel's lookup does).
+    /// A whole-path call: the caller applies the hand-off limit first, and a failure here, about a location
+    /// the walk found, is reported and never read as absence.
+    func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision
 
     /// Whether the content type `identifier` conforms to (or is) `ancestor`.
     func contentType(_ identifier: String, conformsTo ancestor: String) -> Bool

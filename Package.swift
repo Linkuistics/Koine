@@ -104,10 +104,13 @@ let package = Package(
             dependencies: [.product(name: "KoineProviderAPI", package: "ProviderAPI")],
             path: "Providers/WorkspaceProvider/Logic"
         ),
+        // Fixture-building support shared by the workspace walk's own tests and the signed-bundle tests: a
+        // directory tree built component by component, so no whole-path call ever addresses a long location.
+        .target(name: "WorkspaceTestSupport", path: "Tests/WorkspaceTestSupport"),
         .testTarget(
             name: "WorkspaceProviderLogicTests",
             dependencies: [
-                "WorkspaceProviderLogic",
+                "WorkspaceProviderLogic", "WorkspaceTestSupport",
                 .product(name: "KoineProviderAPI", package: "ProviderAPI"),
             ]
         ),
@@ -119,7 +122,7 @@ let package = Package(
             name: "KoineServerTests",
             dependencies: [
                 "KoineServer", "KoineCore", "KoineSQLiteStore", "KoineProviderLoader",
-                "KoineHTTP", "KoineConformanceCheck",
+                "KoineHTTP", "KoineConformanceCheck", "WorkspaceTestSupport",
                 // The workspace provider's own Logic, for its real descriptor at the composition point.
                 "WorkspaceProviderLogic",
                 // For in-test descriptors; the fixture bundle is built elsewhere.

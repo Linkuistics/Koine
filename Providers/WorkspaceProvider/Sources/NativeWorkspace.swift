@@ -83,6 +83,28 @@ struct NativeWorkspace: WorkspaceNative {
         return false
     }
 
+    /// The caller's location by the descriptor walk: search-only, single-component calls from held directory
+    /// handles, measured prompt-free on first-use Desktop, Documents and Downloads
+    /// (docs/verification/descriptor-walk-prompt.md). No whole-path call addresses the location, so a long
+    /// one is never reported missing; the application hand-off limit is applied by the planner before any
+    /// call below addresses it by name.
+    func resolveLocation(_ path: String) -> LocationResolution { LocationWalk.resolve(path) }
+
+    /// Reveal's root rule, kept on the literal text: `lstat` does not follow a final link unless the kernel's
+    /// own lookup does, as it does for a trailing slash, so a link to `/` is the link and `/Volumes/<name>/`
+    /// is the root; `..` is physical, so `/var/..` is `/private`. A whole-path call, made only after the
+    /// limit passed the literal, and any failure of it is a failure, never absence (`lstat` was measured
+    /// prompt-free: docs/verification/protected-path-metadata.md).
+    func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision {
+        var named = stat()
+        var root = stat()
+        errno = 0
+        guard lstat(path, &named) == 0 else { return .failed(String(cString: strerror(errno))) }
+        errno = 0
+        guard lstat("/", &root) == 0 else { return .failed(String(cString: strerror(errno))) }
+        return named.st_dev == root.st_dev && named.st_ino == root.st_ino ? .root : .notRoot
+    }
+
     /// Only measured prompt-free calls (docs/verification/protected-path-metadata.md): `stat` and
     /// `realpath`, and the `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource
     /// values. The literal path is `stat`ed first, because `realpath` forgives what the kernel
@@ -94,12 +116,6 @@ struct NativeWorkspace: WorkspaceNative {
         var literal = stat()
         errno = 0
         guard stat(path, &literal) == 0 else { return Self.unavailable(errno) }
-        // Whether this is the root itself, by file identity and not by spelling (`lstat`: a link
-        // to `/` is a link; `..` is resolved by the kernel, so `/var/..` is `/private`).
-        var named = stat()
-        var root = stat()
-        let isFilesystemRoot =
-            lstat(path, &named) == 0 && lstat("/", &root) == 0 && named.st_dev == root.st_dev && named.st_ino == root.st_ino
         errno = 0
         guard let resolved = realpath(path, nil) else { return Self.unavailable(errno) }
         defer { free(resolved) }
@@ -120,7 +136,7 @@ struct NativeWorkspace: WorkspaceNative {
         return .present(
             PathFacts(
                 isDirectory: isDirectory, isApplication: isApplication, isAliasFile: isAliasFile,
-                contentType: values.contentType?.identifier, isFilesystemRoot: isFilesystemRoot
+                contentType: values.contentType?.identifier
             )
         )
     }
@@ -247,8 +263,8 @@ struct NativeWorkspace: WorkspaceNative {
 
     /// Finder's own selection request and its boolean acknowledgment; the filesystem root has
     /// no parent to select it in, so it is the documented root view (a nil item and the root as
-    /// the viewer's root). Whether the path is the root was decided by the inspection from the
-    /// filesystem (`PathFacts.isFilesystemRoot`), never from how the path is spelled. The call
+    /// the viewer's root). Whether the path is the root was decided from the filesystem
+    /// (`isFilesystemRoot(literalPath:)`), never from how the path is spelled. The call
     /// is synchronous and talks to Finder, so it runs on a global queue, never a cooperative
     /// thread, and a late result is ignored by the caller's one-shot.
     /// No Accessibility, keystroke, menu or Apple event check follows it: a true result is the

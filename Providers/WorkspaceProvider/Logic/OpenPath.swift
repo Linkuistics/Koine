@@ -29,11 +29,6 @@ struct PathFacts: Equatable, Sendable {
     var isAliasFile: Bool
     /// The content type identifier, when the platform reports one.
     var contentType: String?
-    /// The path, as written and without following a link in its last component, is the
-    /// filesystem root itself (the same file as `/`, by `lstat`), whatever its spelling: `/`,
-    /// `//`, `/.` and `/..` are, and `/var/..` is not (it is `/private`, since `..` is physical).
-    /// A symlink to `/` is a link, not the root. Only a reveal reads it.
-    var isFilesystemRoot: Bool = false
 }
 
 enum PathInspection: Sendable {

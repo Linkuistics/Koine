@@ -84,7 +84,7 @@ import Testing
         native.document(path)
         let fields = try #require(LaunchTests.value(await provider.resolve(Self.request(.string(path)))))
         #expect(fields["value"] == .object(["path": .string(path)]))
-        #expect(native.pathInspected == [path], "inspected as written")
+        #expect(native.resolved == [path], "resolved as written")
         #expect(native.reveals == [path], "and submitted as written")
     }
 
@@ -141,7 +141,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(.string(path)))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.pathInspected.isEmpty && native.inspected.isEmpty && native.reveals.isEmpty)
+        #expect(native.resolved.isEmpty && native.inspected.isEmpty && native.reveals.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
 
@@ -151,7 +151,7 @@ import Testing
             let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(argument))))
             #expect(failure.kind == .invalidInput)
         }
-        #expect(native.pathInspected.isEmpty && native.reveals.isEmpty)
+        #expect(native.resolved.isEmpty && native.reveals.isEmpty)
     }
 
     // MARK: Prerequisites
@@ -162,7 +162,7 @@ import Testing
         #expect(fields["status"] == .string("DEPENDENCY_UNAVAILABLE"))
         #expect(fields["value"] == .null)
         #expect(Self.dependencyReason(fields) == .string("PATH_NOT_FOUND"))
-        #expect(native.pathInspected == ["/Users/test/gone.txt"])
+        #expect(native.resolved == ["/Users/test/gone.txt"])
         #expect(native.inspected.isEmpty, "no application was inspected")
         #expect(native.reveals.isEmpty)
         #expect(provider.submissionsInFlight == 0)
@@ -315,7 +315,7 @@ import Testing
         }
         let failure = try #require(LaunchTests.failure(await task.value))
         #expect(failure.kind == .failed)
-        #expect(native.pathInspected.isEmpty && native.reveals.isEmpty)
+        #expect(native.resolved.isEmpty && native.reveals.isEmpty)
     }
 
     @Test func exhaustedCapacityRefusesBeforeSubmissionAndIsRestoredByACallback() async throws {

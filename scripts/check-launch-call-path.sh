@@ -9,7 +9,10 @@
 # alone (never a part of the submitted URL), with the same configuration; the path root
 # makes the same single open request, to the default application of the item as the
 # system's file lookup answers it or to the named installation, and inspects the item
-# only through metadata calls; the reveal root makes ONE Finder selection request,
+# only through metadata calls; the reveal root first resolves the caller's location by the
+# descriptor walk (search-only single-component calls, no whole-path call, nothing listed or
+# opened) and applies the application hand-off limit before any whole-path call addresses
+# the location, then makes ONE Finder selection request,
 # NSWorkspace.selectFile(_:inFileViewerRootedAtPath:), in its two documented forms (an item,
 # or the filesystem root as a root view), from a background queue, and nothing else; and no
 # activation, hiding, raising, accessibility, event-posting, scripting or
@@ -101,6 +104,49 @@ fi
 echo "none read"
 
 echo
+echo "== Source: a reveal resolves its target by the descriptor walk, and the hand-off limit comes before any whole-path call"
+WALK=Providers/WorkspaceProvider/Logic/LocationWalk.swift
+REVEAL=Providers/WorkspaceProvider/Logic/RevealPath.swift
+# What the walk may not call: a whole-path or listing or content call. Seen first to match what it must.
+# (An empty argument list is the `stat()` struct initializer, not a call.)
+WHOLE_PATH='(^|[^A-Za-z_.])(stat|lstat|realpath|open|opendir|readdir|readlink|access|fopen|mkdir|unlink)\([^)]'
+printf 'let s = stat(path, &b)\nrealpath(path, nil)\nopen(path, O_RDONLY)\nopendir(p)\nreaddir(d)\nreadlink(p, &b, 9)\n' >"${CONTROL}"
+[ "$(grep -c -E "${WHOLE_PATH}" "${CONTROL}")" = 6 ] || fail "the whole-path pattern does not match the control it must"
+if grep -n -E "${WHOLE_PATH}" "${WALK}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the walk makes a whole-path, listing or content call"
+fi
+echo "the walk's calls:"
+grep -o -E '(openat|fstatat|fstat|readlinkat|fpathconf|Darwin\.close)\(' "${WALK}" | sort | uniq -c
+for call in 'openat(' 'fstatat(' 'fstat(' 'readlinkat(' 'fpathconf('; do
+    grep -q -F "${call}" "${WALK}" || fail "the walk no longer makes ${call}"
+done
+grep -q -E 'private static let searchOnly = O_SEARCH' "${WALK}" || fail "the walk's handles are not search-only (O_SEARCH)"
+if grep -n -E 'O_RDONLY|O_WRONLY|O_RDWR|O_CREAT|O_TRUNC|O_NOFOLLOW' "${WALK}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the walk opens with a read, write or create mode"
+fi
+echo "search-only handles; no read, write or create mode"
+[ "$(grep -c -E 'AT_SYMLINK_NOFOLLOW' "${WALK}")" -ge 1 ] || fail "the walk does not examine an entry without following its link"
+[ "$(grep -c -E 'func resolveLocation\(_ path: String\) -> LocationResolution \{ LocationWalk\.resolve\(path\) \}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)" = 1 ] ||
+    fail "the adapter's resolution is not the walk and nothing else"
+# The planner's order: resolve, then the limit, then the one whole-path call (the root rule's lstat), then Finder.
+line() { grep -n -F "$1" "${REVEAL}" | head -1 | cut -d: -f1; }
+RESOLVE="$(line 'native.resolveLocation(path.text)')"
+LIMIT="$(line 'HandOffLimit.refusal(')"
+ROOT="$(line 'native.isFilesystemRoot(literalPath: path.text)')"
+FINDER="$(line 'selectInstallation(finder, native: native)')"
+for found in "${RESOLVE}" "${LIMIT}" "${ROOT}" "${FINDER}"; do [ -n "${found}" ] || fail "the reveal planner no longer has one of resolve, limit, root decision, Finder"; done
+[ "${RESOLVE}" -lt "${LIMIT}" ] && [ "${LIMIT}" -lt "${ROOT}" ] && [ "${ROOT}" -lt "${FINDER}" ] ||
+    fail "the reveal planner's order is not resolve, limit, root decision, Finder"
+echo "planner order: resolve (line ${RESOLVE}), limit (${LIMIT}), root decision (${ROOT}), Finder (${FINDER})"
+if grep -n -E 'inspectPath|realpath|resourceValues|\.path\b' "${REVEAL}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the reveal planner addresses the caller's location by a call the limit does not precede"
+fi
+echo "the reveal planner makes no other path call"
+ROOT_CALL="$(grep -n -A12 -F 'func isFilesystemRoot(literalPath path: String)' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -c -E 'lstat\(')"
+[ "${ROOT_CALL}" = 2 ] || fail "the root decision is not exactly two lstat calls, the literal path and /"
+echo "the root decision: lstat of the literal text and of /, after the limit"
+
+echo
 echo "== Source: exactly one Finder selection request, in its two documented forms, and nothing else for a reveal"
 SELECTS="$(grep -rn -E 'selectFile\(' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${SELECTS}"
@@ -136,10 +182,19 @@ strings "${LIBRARY}" | grep -qx 'URLForApplicationToOpenURL:' || fail "the bundl
 strings "${LIBRARY}" | grep -qx 'selectFile:inFileViewerRootedAtPath:' || fail "the bundle does not carry the Finder selection request"
 [ "$(strings "${LIBRARY}" | grep -c -x -E 'set(Activates|AllowsRunningApplicationSubstitution|AppleEvent|Arguments|CreatesNewApplicationInstance|Environment|ForPrinting|Hides|HidesOthers|PromptsUserIfNeeded):' | sort -u)" -ge 10 ] ||
     fail "the bundle lacks one of the ten configuration setters"
+echo "Descriptor walk calls the bundle imports (search-only, single-component):"
+# `openat` is variadic in C, so Swift reaches it through its Darwin overlay's wrapper, `Darwin.openat(_:_:_:)`.
+for symbol in '_\$s6Darwin6openat[A-Za-z0-9_$]*' '_fstatat' '_fstat' '_readlinkat' '_fpathconf'; do
+    nm -u "${LIBRARY}" | grep -q -E "^[[:space:]]*${symbol}([^A-Za-z0-9_]|$)" || fail "the bundle does not import ${symbol}"
+    echo "  ${symbol}"
+done
+if nm -u "${LIBRARY}" | grep -E '^[[:space:]]*_(opendir|readdir|fdopendir|getdirentries|fopen|readlink)([^A-Za-z0-9_]|$)'; then
+    fail "the bundle imports a listing or whole-path call the walk does not make"
+fi
 echo "Forbidden selectors and imported symbols:"
 if { strings "${LIBRARY}"; nm -u "${LIBRARY}"; } | sed 's/^ *//' | grep -E "${FORBIDDEN_BINARY}"; then
     fail "the bundle imports or names a call the authority trace does not declare"
 fi
 echo "  none"
 echo
-echo "PASSED: one launch request, one open request (URL or path) and one Finder selection request (in its two documented forms) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as the launch's declared effect, items inspected by measured metadata calls only, and no other activation, input, scripting or process call"
+echo "PASSED: one launch request, one open request (URL or path) and one Finder selection request (in its two documented forms) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as the launch's declared effect, a reveal's target resolved by the descriptor walk (search-only single-component calls) before the hand-off limit and any whole-path call, other items inspected by measured metadata calls only, and no other activation, input, scripting or process call"

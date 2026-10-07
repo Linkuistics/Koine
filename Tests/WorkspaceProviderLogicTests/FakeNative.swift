@@ -26,6 +26,11 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var pathOpenLog: [(url: URL, application: URL, substituting: Bool)] = []
     private var inspectionLog: [String] = []
     private var revealLog: [(path: String, root: Bool)] = []
+    private var locations: [String: LocationResolution] = [:]
+    private var locationLog: [String] = []
+    private var roots: [String: FilesystemRootDecision] = [:]
+    private var rootLog: [String] = []
+    private var registrationLog: [String] = []
     private var startReads: [Int32: Int] = [:]
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
@@ -80,6 +85,17 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         lock.withLock { pathInspections[path] = result }
     }
 
+    /// What resolving `path` finds, whatever its metadata says. An unarranged path resolves as its
+    /// metadata says (`inspectPath(_:as:)`, `document`): present as itself, absent or failed.
+    func location(_ path: String, as resolution: LocationResolution) {
+        lock.withLock { locations[path] = resolution }
+    }
+
+    /// What the root decision on the literal `path` answers; unarranged it is not the root.
+    func filesystemRoot(_ path: String, as decision: FilesystemRootDecision) {
+        lock.withLock { roots[path] = decision }
+    }
+
     /// A present document or directory with the metadata given, and the types it conforms to.
     func document(
         _ path: String, directory: Bool = false, application: Bool = false, alias: Bool = false,
@@ -87,9 +103,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     ) {
         lock.withLock {
             pathInspections[path] = .present(
-                PathFacts(
-                    isDirectory: directory, isApplication: application, isAliasFile: alias, contentType: type,
-                    isFilesystemRoot: root))
+                PathFacts(isDirectory: directory, isApplication: application, isAliasFile: alias, contentType: type))
+            if root { roots[path] = .root }
             if let type { typeAncestors[type, default: []].formUnion(conformsTo) }
         }
     }
@@ -132,6 +147,12 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// Every document or directory the provider asked a default application about, in order.
     var documentLookups: [URL] { lock.withLock { documentLookupLog } }
     var pathOpens: [(url: URL, application: URL, substituting: Bool)] { lock.withLock { pathOpenLog } }
+    /// Every identifier whose registration the provider asked Launch Services about, in order.
+    var registrationLookups: [String] { lock.withLock { registrationLog } }
+    /// Every location the provider asked to be resolved, in order.
+    var resolved: [String] { lock.withLock { locationLog } }
+    /// Every literal path the root decision was asked about, in order.
+    var rootChecks: [String] { lock.withLock { rootLog } }
     /// Every path Finder was asked to select, in order.
     var reveals: [String] { lock.withLock { revealLog.map(\.path) } }
     /// Whether each reveal was the root view, in order.
@@ -147,11 +168,17 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     // MARK: WorkspaceNative
 
     func registeredApplication(bundleIdentifier: String) -> URL? {
-        lock.withLock { defaultRegistered[bundleIdentifier] }
+        lock.withLock {
+            registrationLog.append(bundleIdentifier)
+            return defaultRegistered[bundleIdentifier]
+        }
     }
 
     func registeredApplications(bundleIdentifier: String) -> [URL] {
-        lock.withLock { allRegistered[bundleIdentifier] ?? [] }
+        lock.withLock {
+            registrationLog.append(bundleIdentifier)
+            return allRegistered[bundleIdentifier] ?? []
+        }
     }
 
     func inspectApplication(at path: String) -> ApplicationInspection {
@@ -192,6 +219,31 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         lock.withLock {
             pathInspectionLog.append(path)
             return pathInspections[path] ?? .absent
+        }
+    }
+
+    func resolveLocation(_ path: String) -> LocationResolution {
+        lock.withLock {
+            locationLog.append(path)
+            if let arranged = locations[path] { return arranged }
+            switch pathInspections[path] {
+            case .present(let facts)?:
+                let spelling = Spelling(bytes: Array(path.utf8))
+                return .present(
+                    ResolvedLocation(
+                        literal: spelling, expansions: [], resolved: spelling,
+                        identity: ObjectIdentity(device: 1, inode: UInt64(abs(path.hashValue))),
+                        type: facts.isDirectory ? .directory : .regularFile))
+            case .unreadable(let reason)?: return .failed(component: path, cause: reason)
+            case .absent?, nil: return .absent(.missing(component: path))
+            }
+        }
+    }
+
+    func isFilesystemRoot(literalPath path: String) -> FilesystemRootDecision {
+        lock.withLock {
+            rootLog.append(path)
+            return roots[path] ?? .notRoot
         }
     }
 

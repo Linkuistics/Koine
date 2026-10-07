@@ -196,8 +196,8 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
 
     // MARK: Reveal path
 
-    /// Asks Finder to select a literal absolute path, which is inspected first as for opening
-    /// and submitted as written. The receipt echoes the submitted path and nothing else: it is
+    /// Asks Finder to select a literal absolute path, which is resolved first component by component and
+    /// checked against the application hand-off limit (`planReveal`), and submitted as written. The receipt echoes the submitted path and nothing else: it is
     /// Finder's boolean acknowledgment, never an observation that the item is selected.
     private func revealPath(_ pathArgument: ProviderValue?) async -> ResolutionResult {
         guard case .string(let text)? = pathArgument else { return .failure(invalid("path must be a string.")) }
