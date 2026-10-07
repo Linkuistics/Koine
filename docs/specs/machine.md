@@ -1514,6 +1514,7 @@ substitute for the other, because an identical digest cannot prove which binary 
 | `core-desktop-old-host` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), unchanged since 0.1.0 | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, over the original five management fields |
 | `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
 | `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](../design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | `desktop` and `workspace`, each 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
+| `core-desktop-workspace-repair-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql): the row above with the action-only repair's three appended descriptions (workspace 1.0.1), so its digest differs on the same host and printer | `desktop` 1.0.0 / schema 1.0.0 and `workspace` 1.0.1 / schema 1.0.1, each `ACTIVE`, `BUNDLED`, `SELECTED`, no reason; the signed application as shipped is held to this one, and the row above to the retained 1.0.0 bundle |
 
 The extension-host SDL is the old one plus exactly the five nullable
 `KoineProviderStatus` fields and the `KoineProviderOrigin` and

@@ -234,8 +234,9 @@ binary ran:
 | `core-desktop-old-host` | [`desktop-schema.graphql`](docs/design/desktop-schema.graphql), the released contract, unchanged | the **released** v0.1.0 host, built from its own sources, with its own desktop provider bundled |
 | `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql) | this tree's headless host with desktop as its only bundled provider |
 | `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](docs/design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | the **signed** `Koine.app` with desktop and workspace bundled, in a clean TestAnyware clone |
+| `core-desktop-workspace-repair-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](docs/design/desktop-workspace-repair-schema-extension-host.graphql): the same composition with the action-only repair's three description changes (workspace 1.0.1), verbatim | the **signed** `Koine.app` as shipped, in a clean TestAnyware clone; `task conformance` holds this one. The row above is the retained workspace 1.0.0, held to its own bundle by `task compat:workspace-baseline-verify` |
 
-The first two are served by headless hosts over loopback HTTP; the third launches
+The first two are served by headless hosts over loopback HTTP; the workspace ones launch
 the signed bundle in a VM and captures the introspection response a standard code
 generator would ask for. The comparison itself is host-side (`Tools/Conformance`),
 so nothing is launched on this Mac. Each profile is compared by type, field,

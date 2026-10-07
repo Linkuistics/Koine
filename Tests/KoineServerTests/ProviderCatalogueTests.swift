@@ -157,7 +157,8 @@ import Testing
         #expect(desktop.signingIdentifier == "dev.antony.Koine.provider.desktop")
         let workspace = try #require(catalogue.entry(for: "workspace")?.baseline)
         #expect(workspace.bundleName == "Workspace.koineprovider")
-        #expect(workspace.release == ProviderVersion("1.0.0") && workspace.schema == ProviderVersion("1.0.0"))
+        // 1.0.1 is the action-only long-location repair; the retained 1.0.0 is a separate artifact.
+        #expect(workspace.release == ProviderVersion("1.0.1") && workspace.schema == ProviderVersion("1.0.1"))
         #expect(workspace.signingIdentifier == "dev.antony.Koine.provider.workspace")
         for reserved in ["input", "menus", "iterm", "herdr"] {
             #expect(catalogue.entry(for: reserved)?.baseline == nil, "\(reserved) must not be enabled yet")

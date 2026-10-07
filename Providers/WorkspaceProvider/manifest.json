@@ -1,8 +1,8 @@
 {
   "providerId": "workspace",
   "graphQLPrefix": "Workspace",
-  "version": "1.0.0",
-  "schemaVersion": "1.0.0",
+  "version": "1.0.1",
+  "schemaVersion": "1.0.1",
   "architectures": ["@ARCH@"],
   "minimumOS": "@MINIMUM_OS@",
   "minimumSwiftRuntime": "5.7",

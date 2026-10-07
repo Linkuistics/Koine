@@ -272,7 +272,11 @@ long for macOS's application hand-off. That refusal adds no capability, grant,
 consent or operation; long-path application support is deferred past v1. The
 [route evaluation](../verification/long-action-route.md#v1-decision) records
 the evidence. Action-only and actual-search subjects, and the retained 1.0.0,
-repair 1.0.1 and search 1.1.0 profiles, stay distinct and pending.
+repair 1.0.1 and search 1.1.0 profiles, stay distinct. The signed application packages the
+action-only repair as workspace release/schema 1.0.1 and holds it to its own
+[profile](../design/profiles/core-desktop-workspace-repair-extension-host.json)
+([record](../verification/action-repair-release.md)); the retained 1.0.0 profile and the search 1.1.0 profile are
+not affected, and actual-search acceptance stays pending.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

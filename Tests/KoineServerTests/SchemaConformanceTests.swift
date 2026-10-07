@@ -395,8 +395,10 @@ import Testing
     /// The same two claims for the third profile: the bundles' own SDL, composed
     /// with the core through the engine, is the workspace profile's design file,
     /// declared order included.
+    /// The bundle in the tree is workspace 1.0.1, so what it serves is the repaired composition;
+    /// the retained 1.0.0 composition is held to the retained bundle (`task compat:workspace-baseline-verify`).
     @Test func theServedCoreDesktopWorkspaceSchemaIsItsDesignContract() async throws {
-        let design = try Self.repositoryFile("docs/design/desktop-workspace-schema-extension-host.graphql")
+        let design = try Self.repositoryFile("docs/design/desktop-workspace-repair-schema-extension-host.graphql")
         let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
         let found = SchemaComparison(
             served: try parse(source: canonical),
@@ -404,6 +406,24 @@ import Testing
         ).differences()
         #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
+    /// The repair is visible to the one thing a client compares: the schema the 1.0.1 bundle serves differs
+    /// from the retained 1.0.0 composition in exactly the three action descriptions, and so in digest, on
+    /// the same host and printer. Neither claim alone would do: the digest differs for any change at all.
+    @Test func theRepairDiffersFromTheRetainedCompositionInExactlyTheThreeActionDescriptions() async throws {
+        let retained = try Self.repositoryFile("docs/design/desktop-workspace-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: retained))
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == [
+                "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenPath", "Mutation.workspaceRevealPath",
+            ], Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .description })
+        #expect(try CanonicalSchemaText.digest(ofSDL: retained) != digest)
     }
 
     /// What is not implemented yet: nothing. The last root has landed, so the profile's file is
@@ -432,6 +452,21 @@ import Testing
         for root in ["workspaceLaunchApplication", "workspaceOpenURL", "workspaceOpenPath", "workspaceRevealPath"] {
             #expect(implemented.contains(root), "\(root) is implemented and must be declared")
         }
+    }
+
+    /// The 1.0.1 composition is the repair SDL restricted the same way: every workspace coordinate of the
+    /// profile is the repair design's, text and all, so the shipped contribution is never reworded.
+    @Test func theRepairProfileIsTheRepairDesignRestrictedVerbatim() throws {
+        let profile = try Self.repositoryFile("docs/design/desktop-workspace-repair-schema-extension-host.graphql")
+        let complete = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
+            + "\n" + (try Self.repositoryFile("docs/design/workspace-action-repair-schema.graphql"))
+        let found = SchemaComparison(
+            served: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: profile)),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: complete))
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == Self.workspaceCoordinatesNotYetImplemented,
+            Comment(rawValue: found.map(\.report).joined(separator: "\n")))
     }
 }
 
@@ -631,6 +666,36 @@ import Testing
         #expect(workspace.problems(inServed: [Self.row(), Self.workspaceRow()]).isEmpty)
         // The order the host reports them in is not the profile's to fix.
         #expect(workspace.problems(inServed: [Self.workspaceRow(), Self.row()]).isEmpty)
+    }
+
+    /// The repair's profile is the retained one with the workspace candidate and the design moved to the
+    /// repair's, and nothing else: the pins say which binary ran, so 1.0.0 and 1.0.1 each fail the other's.
+    @Test func theRepairProfilePinsWorkspace101AndNotTheRetainedRelease() throws {
+        let retained = try Self.profile("core-desktop-workspace-extension-host")
+        let repair = try Self.profile("core-desktop-workspace-repair-extension-host")
+        #expect(repair.profile.management == .extended)
+        #expect(repair.design.lastPathComponent == "desktop-workspace-repair-schema-extension-host.graphql")
+        #expect(repair.profile.providers.map { $0.fields["provider"] ?? nil } == ["desktop", "workspace"])
+        let desktop = Self.row()
+        let workspace101 = Self.workspaceRow(["version": "1.0.1", "schemaVersion": "1.0.1"])
+        #expect(repair.profile.problems(inServed: [desktop, workspace101]).isEmpty)
+        #expect(repair.profile.problems(inServed: [workspace101, desktop]).isEmpty)
+        // The retained workspace is not the repair, and the repair is not the retained workspace.
+        let retainedServed = repair.profile.problems(inServed: [desktop, Self.workspaceRow()])
+        #expect(retainedServed.contains { $0.contains("required workspace 1.0.1") && $0.contains("is not served as expected") })
+        #expect(retained.profile.problems(inServed: [desktop, workspace101]).contains {
+            $0.contains("required workspace 1.0.0") && $0.contains("is not served as expected")
+        })
+        // Release and schema are pinned separately: neither number stands in for the other.
+        for changes in [["schemaVersion": "1.0.0"], ["version": "1.0.0"]] {
+            let problems = repair.profile.problems(
+                inServed: [desktop, Self.workspaceRow(["version": "1.0.1", "schemaVersion": "1.0.1"].merging(changes) { $1 })])
+            #expect(problems.contains { $0.contains("is not served as expected") }, "\(changes)")
+        }
+        // The two profiles' designs are two schemas: their digests differ.
+        #expect(
+            try CanonicalSchemaText.digest(ofSDL: String(contentsOf: retained.design, encoding: .utf8))
+                != CanonicalSchemaText.digest(ofSDL: String(contentsOf: repair.design, encoding: .utf8)))
     }
 
     @Test func aMissingRequiredWorkspaceFailsTheWorkspaceProfile() throws {

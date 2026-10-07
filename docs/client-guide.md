@@ -533,7 +533,7 @@ cannot launch by this route; a known identifier can still be copied. File paths 
 existing open/reveal operations. Null default-app metadata is unknown, not no handler.
 Search classification does not pin a file or promise that opening will succeed.
 The 8,192-byte search ceiling does not make every result actionable. In the
-designed v1 action contract (release/schema 1.0.1, unimplemented), launch, open
+v1 action contract (workspace release/schema 1.0.1, served; its effect at V is pending), launch, open
 and reveal resolve the location themselves, component by component. A location
 that has gone is still `PATH_NOT_FOUND`, or `APPLICATION_NOT_INSTALLED` for an
 installation, whatever its length. An extant location whose spelling is 1,024
@@ -728,7 +728,7 @@ What differs:
    `PATH_NOT_FOUND`. A link cycle and a component that can never exist on its
    filesystem report it too. The retained 1.0.0 also reports every ELOOP/ENAMETOOLONG
    that way, which is a defect: a long link chain, a long but extant path or a long
-   non-ASCII name proves no absence. The designed 1.0.1 resolves the path component by component and
+   non-ASCII name proves no absence. Workspace 1.0.1 resolves the path component by component and
    returns `failed` for those instead, including an extant location too long to
    hand to an application, as the
    [long-location boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)
@@ -796,7 +796,7 @@ reading of `failed`. What differs:
    resolved, and the same inspection first: a missing component, a link to nothing,
    or a path below a file is `DEPENDENCY_UNAVAILABLE` with `PATH_NOT_FOUND`,
    and nothing was submitted. Inspection that was denied is `failed`, never absence.
-   The same pending 1.0.1 correction applies here: established cycles and
+   The same 1.0.1 correction applies here: established cycles and
    impossible components retain PATH_NOT_FOUND, while unresolved link budgets
    and whole/expanded size refusal mean failed. Raw length alone decides neither
    absence nor actionability.

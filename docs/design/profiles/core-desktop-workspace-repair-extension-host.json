@@ -1,0 +1,22 @@
+{
+  "name": "extension-host core + desktop + workspace 1.0.1",
+  "design": "../desktop-workspace-repair-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "The signed application as shipped: desktop 1.0.0 and the action-only repair, workspace release/schema 1.0.1.",
+    "Its design differs from the retained 1.0.0 profile's (core-desktop-workspace-extension-host.json, held to the",
+    "retained bundle by `task compat:workspace-baseline-verify`) in the three appended action descriptions alone,",
+    "so its canonical digest differs on the same host and printer. The candidate versions are pinned here, apart",
+    "from the SDL and the digest, because an identical schema and digest cannot say which binary ran."
+  ],
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": null
+    },
+    {
+      "provider": "workspace", "version": "1.0.1", "schemaVersion": "1.0.1", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": null
+    }
+  ]
+}

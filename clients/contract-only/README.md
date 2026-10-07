@@ -27,9 +27,12 @@ workspace**, where the workspace part is the complete design: all four roots
 `workspaceRevealPath`) and the types they reach: `WorkspaceApplicationInput`,
 `WorkspaceOpenResult`, `WorkspaceRevealResult`, `WorkspaceOperationStatus`,
 `WorkspaceOpenReceipt`, `WorkspaceRevealReceipt`, `WorkspaceProcessIdentity`,
-`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`. Contract
+`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`, served by workspace
+release/schema **1.0.1** (the action-only long-location repair: the same shapes, error kinds and
+enums as 1.0.0, with the three action descriptions extended). Contract
 `koine-desktop/1`, schema digest
-`3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`.
+`0a489328533ad17dcb54f2a81e1828588bfebd203da32cac11da57752e91f8d2`; the retained 1.0.0 served
+`3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`, so a client that pins the digest sees the repair.
 
 It builds to one dependency-free ES module, `dist/koine-client.mjs`, which runs
 on macOS arm64 under Node 24 with nothing installed beside it.

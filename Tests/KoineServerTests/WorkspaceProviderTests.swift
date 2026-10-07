@@ -62,7 +62,9 @@ import Testing
             #expect(row["state"] as? String == "ACTIVE", "\(identity)")
             #expect(row["origin"] as? String == "BUNDLED", "\(identity)")
             #expect(row["selection"] as? String == "SELECTED", "\(identity)")
-            #expect(row["version"] as? String == "1.0.0" && row["schemaVersion"] as? String == "1.0.0")
+            // The workspace bundle is the 1.0.1 action-only repair; the desktop provider is still 1.0.0.
+            let expected = identity == "workspace" ? "1.0.1" : "1.0.0"
+            #expect(row["version"] as? String == expected && row["schemaVersion"] as? String == expected, "\(identity)")
             #expect(row["reason"] is NSNull, "a healthy shipped row carries no reason")
         }
         #expect(rows.count == 2, "no reserved-only or missing row: \(rows)")
@@ -90,7 +92,7 @@ import Testing
     @Test func theServedSDLIsTheCompleteWorkspaceDesignVerbatim() throws {
         let served = try WorkspaceCompositionTests.schemaSDL()
         let design = try String(
-            contentsOf: Self.repository.appending(path: "docs/design/workspace-schema.graphql"), encoding: .utf8)
+            contentsOf: Self.repository.appending(path: "docs/design/workspace-action-repair-schema.graphql"), encoding: .utf8)
         func body(_ text: String) -> String {
             text.components(separatedBy: "\n\n").dropFirst().joined(separator: "\n\n")
         }

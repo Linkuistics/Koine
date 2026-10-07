@@ -434,7 +434,7 @@ tasks:
         JS
 
   design:action-repair-check:
-    desc: Validate the designed 1.0.1 action description delta, unchanged shapes/examples and distinct same-printer composition; no served digest or native pass
+    desc: Validate the 1.0.1 action description delta, unchanged shapes/examples and distinct same-printer composition (design check; what the signed host serves is held by `task conformance`)
     deps: [design:workspace-check]
     dir: clients/contract-only
     cmds:
@@ -481,7 +481,7 @@ tasks:
         const errors = [...validateSchema(independent), ...validateSchema(next), ...validate(next, parse(read('workspace-operations.graphql')))];
         if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
         if (printSchema(old) === printSchema(next)) throw new Error('Description changes disappeared from canonical composition');
-        console.log('Designed repair has three appended descriptions, unchanged action shape and valid examples; unchanged-baseline control rejected. Same-printer SDL differs; actual served digest/candidate profiles and runtime outcomes remain pending.');
+        console.log('Repair has three appended descriptions, unchanged action shape and valid examples; unchanged-baseline control rejected. Same-printer SDL differs; the served digest and candidates are held by task conformance, runtime outcomes by the V leaves.');
         JS
 
   design:selection-render:
@@ -618,7 +618,7 @@ tasks:
       - scripts/vm-verify-launch-contract-client.sh
 
   conformance:
-    desc: Hold three profiles (docs/design/profiles/) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
+    desc: Hold three profiles (docs/design/profiles/; the third is the 1.0.1 workspace repair) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
     cmds:
       - scripts/conformance.sh
 

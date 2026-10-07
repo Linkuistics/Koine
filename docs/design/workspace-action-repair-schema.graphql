@@ -1,9 +1,10 @@
-# Designed action-only workspace release/schema 1.0.1; unimplemented.
+# Workspace release/schema 1.0.1 contribution, as served (the action-only long-location repair).
 # Retained 1.0.0 is workspace-schema.graphql with independent binaries/profiles.
-# Exact delta: append the v1 long-location text to launch, open-path and reveal descriptions.
+# Exact delta: the v1 long-location text appended to the launch, open-path and reveal descriptions.
 # Shapes and other descriptions are unchanged. Search 1.1.0 incorporates this delta.
 # All output fields are mutation-only, with workspace:control AND desktop:control.
 # Exact composition/digest includes core and every admitted provider contribution.
+# Composed with desktop's contribution by desktop-workspace-repair-schema-extension-host.graphql.
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {

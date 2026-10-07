@@ -108,6 +108,18 @@ PY
             "s.replace('Closed reason for not submitting this action.', 'Closed reason for not submitting this action!', 1)"
         control "the workspace launch field moved before desktop's" \
             "__import__('re').sub(r'(  \"desktop:control\\. Focuses exactly[^\n]*\n  desktopFocusWindow[^\n]*\n)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\2\\1', s, count=1)"
+        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+            # The action-only repair is the three appended descriptions and nothing else, so the
+            # contract is held to each of them separately: a served schema that kept the retained
+            # 1.0.0 text for one action must be red, naming that action's description.
+            local index
+            for index in 0 1 2; do
+                control "the retained 1.0.0 description restored for action ${index} of the repair" \
+                    "(lambda pairs: s.replace(pairs[${index}][1], pairs[${index}][0]))([(a, b) for a, b in zip(open('docs/design/workspace-schema.graphql').read().split('\n\n', 1)[1].split('\n'), open('docs/design/workspace-action-repair-schema.graphql').read().split('\n\n', 1)[1].split('\n')) if a != b])"
+            done
+            control "all three retained 1.0.0 descriptions restored (the repair undone)" \
+                "__import__('functools').reduce(lambda t, p: t.replace(p[1], p[0]), [(a, b) for a, b in zip(open('docs/design/workspace-schema.graphql').read().split('\n\n', 1)[1].split('\n'), open('docs/design/workspace-action-repair-schema.graphql').read().split('\n\n', 1)[1].split('\n')) if a != b], s)"
+        fi
     fi
     rm -f "${work}/control.graphql" "${work}/control.log"
 
@@ -139,6 +151,14 @@ PY
             '.providers |= map(select(.provider != "workspace"))' 'unexpected row workspace'
         profile_control "another workspace release pinned" \
             '.providers |= map(if .provider == "workspace" then .version = "9.9.9" else . end)' 'is not served as expected'
+        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+            # The retained binary serves the same shapes under the earlier numbers, so these pins are
+            # what say that the repaired bundle ran, and neither number can stand in for the other.
+            profile_control "the retained workspace release 1.0.0 pinned for the repair" \
+                '.providers |= map(if .provider == "workspace" then .version = "1.0.0" else . end)' 'is not served as expected'
+            profile_control "the retained workspace schema 1.0.0 pinned for the repair" \
+                '.providers |= map(if .provider == "workspace" then .schemaVersion = "1.0.0" else . end)' 'is not served as expected'
+        fi
     fi
     rm -f "${work}/control-profile.json" "${work}/control.log"
     rmdir "${work}" 2>/dev/null || true
