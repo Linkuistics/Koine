@@ -31,6 +31,7 @@ scripts as `task test` does:
 | `baseline` | 1.0: the **released** revision, tag `v0.1.0` (`KOINE_BASELINE_REVISION` names another), extracted from the repository by `scripts/build-baseline-host.sh`, never this tree with edits | that release's `KoineCompatibilityHost`, staged framework, fixture, loader variants and sealed desktop provider |
 | `newer` | 1.1: this working tree, which serves `additional-capabilities-v1` | the same, from these sources, and the `KoineConformance` tool |
 | `later` | — | later revisions of the fixture, from the newer tree's source, each compiled against the framework its name says (below) |
+| `workspace-1.0.0` | 1.1: the pinned revision of [the retained workspace 1.0.0 bundle](retained-workspace-baseline.md), extracted by `scripts/build-retained-workspace.sh` (`task compat:workspace-baseline`), never this tree with edits | that revision's host, framework, fixtures and sealed desktop and workspace providers, kept apart in `bundled/` |
 
 The `later` fixtures are one source under compile flags and manifest edits:
 

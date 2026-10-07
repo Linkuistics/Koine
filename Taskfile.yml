@@ -615,6 +615,16 @@ tasks:
     cmds:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
 
+  compat:workspace-baseline:
+    desc: Build the RETAINED workspace 1.0.0 provider from the revision scripts/retained-workspace-1.0.0.json pins (jj tag workspace-1.0.0-baseline), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.0 - that revision's host, framework and desktop provider, and its sealed, approved Desktop and Workspace bundles kept apart in bundled/ with a record of their digests; the old side of every workspace old/new pair (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-baseline-verify:
+    desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)
+    cmds:
+      - scripts/verify-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
   selection:fixtures:
     desc: Build, sign and keep apart the provider bundles the selection acceptance installs - fixtures (an old baseline and an update per slot, ordinary providers, claimants, one refusal per trust check), each writing initializer, factory and start markers, and the REAL first-party providers (the released desktop, this tree's desktop and workspace, and newer releases of both that state first-party-selection-v1); output .build/selection-acceptance/fixtures
     deps: [compat:baseline]

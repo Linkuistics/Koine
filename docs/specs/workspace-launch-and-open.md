@@ -533,7 +533,7 @@ The action-only correction is workspace release/schema **1.0.1** under
 [repair SDL](../design/workspace-action-repair-schema.graphql) appends the exact
 launch/open/reveal description text, which must change the composed digest on
 the same host and printer. Keep the retained 1.0.0 bundle, SDL and profile
-unchanged. Search release/schema 1.1.0 carries the same descriptions in its own
+unchanged: [the bundle is built from a pinned revision and verified apart](../verification/retained-workspace-baseline.md). Search release/schema 1.1.0 carries the same descriptions in its own
 composed profile. Planning owns the native, test and contract-client
 [implementation obligations](../verification/long-action-native-boundary.md#compatibility-and-implementation-obligations).
 Earlier short-path evidence stays bounded to its subjects; the 1.0.0 mapping of
