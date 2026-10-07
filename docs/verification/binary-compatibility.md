@@ -11,7 +11,7 @@ collisions, architecture, dependency closure, staging) stay in
 ## Procedure
 
 ```sh
-task compat                         # compat:build, then compat:verify, in debug
+task compat                         # compat:build, compat:verify, then compat:workspace-subjects, in debug
 CONFIGURATION=release task compat   # the same in release
 task compat:baseline                # only the released side: the pre-extension host, framework, fixtures and desktop provider
 ```
@@ -32,6 +32,11 @@ scripts as `task test` does:
 | `newer` | 1.1: this working tree, which serves `additional-capabilities-v1` | the same, from these sources, and the `KoineConformance` tool |
 | `later` | — | later revisions of the fixture, from the newer tree's source, each compiled against the framework its name says (below) |
 | `workspace-1.0.0` | 1.1: the pinned revision of [the retained workspace 1.0.0 bundle](retained-workspace-baseline.md), extracted by `scripts/build-retained-workspace.sh` (`task compat:workspace-baseline`), never this tree with edits | that revision's host, framework, fixtures and sealed desktop and workspace providers, kept apart in `bundled/` |
+
+The workspace provider is a pair of its own, built beside these: this tree's 1.0.1 (and the same source stating
+`first-party-selection-v1`, as an earlier host requires of a per-user update) against the retained 1.0.0 in
+its revision's host. They are checked by the same driver, in its workspace cases, and
+recorded in [workspace-compatibility.md](workspace-compatibility.md).
 
 The `later` fixtures are one source under compile flags and manifest edits:
 
@@ -72,7 +77,7 @@ Developer ID Application, Team ID TA43A4RUP3, every host and framework image at
 `minos 26.0` and the fixture providers at `minos 13.0`: 24 cases, no failed check,
 no binary changed during the run. The baseline was built from `v0.1.0`
 (commit `ee4716130bbc`). The same recipe in release (`CONFIGURATION=release`) ran
-24 cases with no failed check.
+24 cases with no failed check. The workspace pairs added later, 8 further cases, are recorded in [workspace-compatibility.md](workspace-compatibility.md#run-record).
 
 | Pair | Result |
 |---|---|

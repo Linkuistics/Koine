@@ -10,7 +10,7 @@
 #                           sealed under dev.antony.Koine.provider.desktop: the old
 #                           designated baseline a selection-aware host is given
 #   current-desktop         this tree's desktop provider (release 1.0.0), sealed the same
-#   current-workspace       this tree's workspace provider (release 1.0.0)
+#   current-workspace       this tree's workspace provider (release/schema 1.0.1, the action-only repair)
 #   desktop-update          a NEWER release of the same source: 1.1.0, and the feature
 #   workspace-update        `first-party-selection-v1` stated in its manifest AND its
 #                           descriptor, as every newly published first-party update must
@@ -39,7 +39,8 @@ REPOSITORY="$(pwd)"
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 
-FEATURE='first-party-selection-v1'
+# shellcheck source=scripts/first-party-update-lib.sh
+source scripts/first-party-update-lib.sh
 RELEASED="${REPOSITORY}/.build/compat/debug/baseline/products/DesktopProviders/Desktop.koineprovider"
 if [ ! -d "${RELEASED}" ]; then
     echo "Error: ${RELEASED} does not exist. Run: task compat:baseline" >&2
@@ -57,41 +58,6 @@ place() {
     printf '%s\t%s\n' "$1" "$3" >>"${OUT}/index.tsv"
 }
 
-edit() { # edit <bundle> <python statements over the manifest dict `m`>
-    python3 - "$1/manifest.json" "$2" <<'PY'
-import json, sys
-path, statements = sys.argv[1], sys.argv[2]
-with open(path) as file:
-    m = json.load(file)
-exec(statements)
-with open(path, "w") as file:
-    json.dump(m, file, indent=2)
-PY
-}
-
-# A copy that builds as the repository's providers do. The substitution must change it.
-substitute() { # substitute <file> <from> <to>
-    python3 - "$1" "$2" "$3" <<'PY'
-import sys
-path, old, new = sys.argv[1:4]
-with open(path) as file:
-    text = file.read()
-if old not in text:
-    raise SystemExit(f"{path} does not contain {old!r}: the substitution would change nothing")
-with open(path, "w") as file:
-    file.write(text.replace(old, new))
-PY
-}
-
-tree() { # tree <name>: a copy of what the provider build definitions read, under ${WORK}/<name>
-    local root="${WORK}/$1"
-    mkdir -p "${root}/scripts" "${root}/App"
-    cp -R Providers "${root}/Providers"
-    cp scripts/signing-env.sh "${root}/scripts/"
-    cp App/Info.plist "${root}/App/"
-    echo "${root}"
-}
-
 # --- The bundles of this tree and of the released revision ------------------------------
 
 CURRENT="$(tree current)"
@@ -104,9 +70,7 @@ place released-desktop "${RELEASED}" real-desktop-released as-released
 UPDATE_TREE="$(tree update)"
 substitute "${UPDATE_TREE}/Providers/DesktopProvider/Sources/DesktopProvider.swift" \
     'requiredFeatures: []' "requiredFeatures: [\"${FEATURE}\"]"
-substitute "${UPDATE_TREE}/Providers/WorkspaceProvider/Logic/WorkspaceProvider.swift" \
-    'requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]' \
-    "requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, \"${FEATURE}\"]"
+state_feature_in_workspace "${UPDATE_TREE}"
 RENAMED_TREE="$(tree renamed)"
 cp "${UPDATE_TREE}/Providers/DesktopProvider/Sources/DesktopProvider.swift" \
     "${RENAMED_TREE}/Providers/DesktopProvider/Sources/DesktopProvider.swift"

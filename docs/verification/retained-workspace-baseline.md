@@ -77,3 +77,6 @@ Each check is preceded by the proof that it can fail.
 The suites are the retained revision's own, run in its own tree against its own host. They
 bound what this proves: the 1.0.0 behaviour it shipped with, short paths included. They
 close no long-location row, and no acceptance row of the spec is changed by this build.
+
+The pairs this build is the old side of, and the retained suites repeated against workspace 1.0.1, are in
+[workspace-compatibility.md](workspace-compatibility.md).

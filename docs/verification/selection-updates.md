@@ -13,8 +13,10 @@ of one:
 
 - the **released** revision's headless host (v0.1.0) and its desktop provider, compiled from that
   release's own source by `scripts/build-baseline-host.sh`, beside this tree's host and providers;
-- the **real** first-party providers as well as fixtures: this tree's desktop and workspace
-  (release 1.0.0), and **newer releases of the same sources** (1.1.0) that state
+- the **real** first-party providers as well as fixtures: this tree's desktop (release 1.0.0) and workspace
+  (release/schema 1.0.1, the [action-only repair](action-repair-release.md); the retained 1.0.0 is the old side of
+  [workspace-compatibility.md](workspace-compatibility.md), not of this acceptance), and **newer releases of the
+  same sources** (1.1.0) that state
   `first-party-selection-v1` in their manifest *and* their descriptor, as every newly published
   first-party update must;
 - fixtures where a defect must be made on purpose, as before, standing in for desktop
@@ -196,7 +198,7 @@ identifier*. **Established at N and G; V established: [selection-vm.md](selectio
   catalogue, whole, around the real desktop and workspace), providers named `desktop` / `Desktop` and
   `workspace` / `Workspace` at release 9.0.0, approved for the host's own team and signed under
   `dev.antony.Koine.provider.desktop.impostor` and `…workspace.impostor`, are `REJECTED` /
-  `signing-identifier-mismatch` before load, naming the identifier they carry; the real 1.0.0 providers
+  `signing-identifier-mismatch` before load, naming the identifier they carry; the real desktop 1.0.0 and workspace 1.0.1
   stay selected (`selected-with-refusals`, "claims release 9.0.0") and serve their operations; no
   fixture marker was written.
 - `the same compiled binaries load as the designated baselines of a test catalogue that admits their
@@ -242,8 +244,8 @@ On the host `production`, with the **real** providers:
 
 | Scenario | Desktop | Workspace | Profile pinned |
 |---|---|---|---|
-| the generation before any update | 1.0.0 bundled | 1.0.0 bundled | `core-desktop-workspace-extension-host` |
-| `a mixed release: a newer desktop beside the workspace baseline` | 1.1.0 per user | 1.0.0 bundled | `core-desktop-workspace-desktop-update-extension-host` |
+| the generation before any update | 1.0.0 bundled | 1.0.1 bundled | `core-desktop-workspace-repair-extension-host` |
+| `a mixed release: a newer desktop beside the workspace baseline` | 1.1.0 per user | 1.0.1 bundled | `core-desktop-workspace-desktop-update-extension-host` |
 | `a mixed release: a newer workspace beside the desktop baseline` | 1.0.0 bundled | 1.1.0 per user | `core-desktop-workspace-workspace-update-extension-host` |
 | `both real providers updated independently` | 1.1.0 per user | 1.1.0 per user | `core-desktop-workspace-update-extension-host` |
 | `both real updates under another principal class…` | 1.1.0, renamed | 1.1.0, renamed | the same |
@@ -273,8 +275,10 @@ selected provider loads remains trusted.
 ### Conformance profiles
 
 Six profiles are added beside the existing ones (Machine, "Conformance profiles"), each served by a signed
-headless host and held with `KoineConformance --profile`: the design SDL is the unchanged contract (an
-update adds no schema), and the pins are what tell the binaries apart.
+headless host and held with `KoineConformance --profile`: the design SDL is the repaired workspace 1.0.1
+composition (`desktop-workspace-repair-schema-extension-host.graphql`; an update adds no schema), and the pins
+are what tell the binaries apart. The four that name the workspace pin its baseline at 1.0.1 / schema 1.0.1 and its
+update at 1.1.0 / schema 1.0.1: a newer release of the repaired source serves the repaired schema.
 
 | Profile | Served by | Pins |
 |---|---|---|
@@ -287,9 +291,34 @@ update adds no schema), and the pins are what tell the binaries apart.
 
 Each check is preceded by its controls in the same run: the design half red against another design and
 against this design with a nullability marker removed, the pin half red against a wrong reason, a wrong
-selection, a row left out and a provider that is not served. The two existing profiles
-(`core-desktop-old-host`, `core-desktop-extension-host`) and `core-desktop-workspace-extension-host` are
-held by this driver against the signed hosts too.
+selection, a row left out and a provider that is not served. Every workspace row of a profile is also pinned at
+the retained 1.0.0 (its release, or its schema, as the profile has it at 1.0.1) in turn, and must come back red
+naming "is not served as expected", and the other composed designs (the desktop one, the retained 1.0.0
+desktop + workspace one, and the repair's, whichever is not the profile's own) must come back red. The two
+existing profiles (`core-desktop-old-host`, `core-desktop-extension-host`) and
+`core-desktop-workspace-repair-extension-host` are held by this driver against the signed hosts too; the retained
+`core-desktop-workspace-extension-host` is held to the retained bundle by
+[`task compat:workspace-baseline-verify`](retained-workspace-baseline.md) and to the retained host in the
+[compatibility pairs](workspace-compatibility.md).
+
+### Re-pinned to workspace 1.0.1
+
+The acceptance had pinned this tree's workspace at 1.0.0. With the repair the baseline is 1.0.1 / 1.0.1, so
+every row that names the real workspace was re-pinned, and nothing was left for the old value to pass by:
+
+- the four update profiles above (their baseline and update rows, and their design);
+- the generation before any update, now held to `core-desktop-workspace-repair-extension-host`;
+- the rows `production` expects (the baselines, the mixed releases, the refused real updates, and the
+  impostors, whose "claims release…" diagnostic now names the 1.0.1 the baseline is);
+- the `impostor-host`'s designated workspace, the fixture compiled as the shipped pair and signed under the
+  impostor identifier, so the control that the binaries a production host refuses really load stays the
+  catalogue's own designation: release and schema 1.0.1 in `Fixtures/SelectionHost/hosts.json` and
+  `Fixtures/FixtureProvider/build-decisions.sh`.
+
+The old pins were seen red before they were changed: the unchanged driver against this tree's 1.0.1 failed 16 of
+its 153 host runs, each on exactly the workspace row or the profile (for example `'workspace', '1.0.1', 'B'`
+served where `'1.0.0'` was wanted), and the same run with the pins changed passes all 153. The scenarios that
+use only fixtures, `selection:decisions` and `selection:failures`, assume no real release and are unchanged.
 
 ## Instruments seen red
 
@@ -347,6 +376,13 @@ does not always fail: `WorkspaceCompositionTests.denialInsideADependencyWithhold
 (a revocation race) failed in two full runs and passed in three and alone, and the parent revision fails
 `ProviderLoaderTests.aQuarantinedUnnotarizedProviderIsRefusedBeforeLoading` (it asks Gatekeeper online) in its
 own runs; no file under `Sources/`, `Tests/` or `Providers/` changed here.
+
+2026-10-07, the same machine, re-pinned to workspace 1.0.1 (`action-repair-compat-k179`): `task selection:updates`:
+**153 host runs, 2 413 checks, 0 failed, 0 without a control, 0 owned reasons unseen** (the 40 further checks are the
+workspace-row and design controls above); `task selection:decisions` 134 runs and `task selection:failures` 119 runs, 0
+failed; `task selection:mutation`: every mutation seen, every named scenario red in every host run (about thirty minutes in a
+copy of the tree). Before the pins were changed the same driver failed 16 host runs, which is what a pin that still said
+1.0.0 does against 1.0.1. The V seam was not re-run: it notarizes, and is left to its own task.
 
 An adversarial read by a fresh context (the leaf's one in-session reviewer) found no outright bug and eleven hollow
 or unbacked points, of which these were repaired: the start order of both shipped slots is now asserted; the control

@@ -513,10 +513,9 @@ def scenarios():
     ))
 
     # -- A provider named for a reserved pair, signed under a fixture signing identifier --------
-    production = [R("desktop", "1.0.0", "B", ACTIVE, SEL, None), R("workspace", "1.0.0", "B", ACTIVE, SEL, None)]
     add(Scenario(
         "the same compiled binaries load as the designated baselines of a test catalogue that admits their identifiers",
-        [R("desktop", "1.0.0", "B", ACTIVE, SEL, None), R("workspace", "1.0.0", "B", ACTIVE, SEL, None)],
+        [R("desktop", "1.0.0", "B", ACTIVE, SEL, None), R("workspace", "1.0.1", "B", ACTIVE, SEL, None)],
         host="impostor-host", ran=["Desktop", "Workspace"], images=["Desktop", "Workspace"],
     ))
     add(Scenario(
@@ -525,7 +524,7 @@ def scenarios():
         [R("desktop", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.desktop.impostor"),
          R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0"),
          R("workspace", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.workspace.impostor"),
-         R("workspace", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0")],
+         R("workspace", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0")],
         host="production", installs=[U("desktop-impostor-9.0.0", "desktop-impostor"), U("workspace-impostor-9.0.0", "workspace-impostor")],
         ran=[], images=["Desktop", "Workspace"], extra=[desktop_operations("production, impostors refused")],
     ))
@@ -592,9 +591,9 @@ def scenarios():
 
     # -- The real first-party providers: the old baseline, updates, and mixed releases ---------
     d_base = R("desktop", "1.0.0", "B", ACTIVE, SEL, None)
-    w_base = R("workspace", "1.0.0", "B", ACTIVE, SEL, None)
+    w_base = R("workspace", "1.0.1", "B", ACTIVE, SEL, None)
     d_sup = R("desktop", "1.0.0", "B", REJECTED, NOT, "superseded-candidate")
-    w_sup = R("workspace", "1.0.0", "B", REJECTED, NOT, "superseded-candidate")
+    w_sup = R("workspace", "1.0.1", "B", REJECTED, NOT, "superseded-candidate")
     d_upd = R("desktop", "1.1.0", "U", ACTIVE, SEL, None)
     w_upd = R("workspace", "1.1.0", "U", ACTIVE, SEL, None)
     modules = {"Desktop": "DesktopProvider", "desktop-update": "DesktopProvider", "desktop-update-renamed": "DesktopProvider",
@@ -620,7 +619,7 @@ def scenarios():
         "the shipped catalogue around this tree's desktop and workspace: the generation before any update",
         [d_base, w_base], host="production", images=["Desktop", "Workspace"],
         extra=[both_loaded(), desktop_operations("production, baselines"), workspace_operation],
-        conformance=PROFILES + "core-desktop-workspace-extension-host.json",
+        conformance=PROFILES + "core-desktop-workspace-repair-extension-host.json",
     ))
     add(Scenario(
         "a mixed release: a newer desktop beside the workspace baseline",
@@ -658,7 +657,7 @@ def scenarios():
     add(Scenario(
         "real updates that do not state the feature are refused before they load, and the baselines run",
         [refused_desktop, R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
-         refused_workspace, R("workspace", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
+         refused_workspace, R("workspace", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production", installs=[U("desktop-update-no-feature", "desktop-update"), U("workspace-update-no-feature", "workspace-update")],
         images=["Desktop", "Workspace"], extra=[desktop_operations("production, updates refused")],
         conformance=PROFILES + "core-desktop-workspace-update-refused-extension-host.json",
@@ -666,7 +665,7 @@ def scenarios():
     add(Scenario(
         "real updates that do not state the feature, under another principal class, are refused the same way",
         [refused_desktop, R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
-         refused_workspace, R("workspace", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
+         refused_workspace, R("workspace", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production",
         installs=[U("desktop-update-renamed-no-feature", "desktop-update"), U("workspace-update-renamed-no-feature", "workspace-update")],
         images=["Desktop", "Workspace"],

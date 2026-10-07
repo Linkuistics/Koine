@@ -40,7 +40,7 @@
     },
     "workspace-impostor": {
       "providerId": "workspace", "graphQLPrefix": "Workspace", "bundle": "Workspace.koineprovider",
-      "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.workspace.impostor"
+      "release": "1.0.1", "schema": "1.0.1", "signingIdentifier": "dev.antony.Koine.provider.workspace.impostor"
     },
     "input": { "providerId": "fixtureinput", "graphQLPrefix": "FixtureInput" }
   },

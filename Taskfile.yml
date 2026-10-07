@@ -633,10 +633,11 @@ tasks:
       - scripts/vm-verify-conformance.sh
 
   compat:
-    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
+    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers, the workspace 1.0.0 and 1.0.1 pairs among them) and repeat the retained workspace subjects against 1.0.1
     cmds:
       - task: compat:build
       - task: compat:verify
+      - task: compat:workspace-subjects
 
   compat:baseline:
     desc: Build the pre-extension host, framework, fixtures and desktop provider from the RELEASED revision (KOINE_BASELINE_REVISION, default v0.1.0) in a tree of its own under .build/compat; the old side of every old/new check (CONFIGURATION=debug|release)
@@ -644,14 +645,20 @@ tasks:
       - scripts/build-baseline-host.sh {{.CONFIGURATION | default "debug"}}
 
   compat:build:
-    desc: Build the released baseline (compat:baseline) and this tree's newer revision in separate trees under .build/compat, and the later fixtures (CONFIGURATION=debug|release)
+    desc: Build the retained workspace 1.0.0 (compat:workspace-baseline) and the released baseline (compat:baseline), then this tree's newer revision in a separate tree under .build/compat - its host, fixtures, workspace 1.0.1 as shipped and the same source stating first-party-selection-v1 as a per-user update - and the later fixtures (CONFIGURATION=debug|release)
     cmds:
+      - task: compat:workspace-baseline
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
-    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP
+    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP - the fixture pairs, and the workspace pairs - the retained 1.0.0 and this tree's 1.0.1 each under both hosts, and the approved per-user 1.0.1 variant over the bundled 1.0.0 in both - with the same locations probed through every one and the two releases compared (CONFIGURATION=debug|release; needs compat:build)
     cmds:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-subjects:
+    desc: Run the RETAINED workspace 1.0.0 revision's own short-path subjects (N, over the signed bundle) and composition suites (G), unedited, against this tree's workspace 1.0.1 bundle in a copy of that revision's tree; the instrument is first seen red against a 1.0.1 provider with the missing-path rule broken, and only the one assertion that names release 1.0.0 may fail (CONFIGURATION=debug|release; needs compat:build)
+    cmds:
+      - scripts/verify-repair-subjects.sh {{.CONFIGURATION | default "debug"}}
 
   compat:workspace-baseline:
     desc: Build the RETAINED workspace 1.0.0 provider from the revision scripts/retained-workspace-1.0.0.json pins (jj tag workspace-1.0.0-baseline), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.0 - that revision's host, framework and desktop provider, and its sealed, approved Desktop and Workspace bundles kept apart in bundled/ with a record of their digests; the old side of every workspace old/new pair (CONFIGURATION=debug|release)

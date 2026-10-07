@@ -373,7 +373,7 @@ make desktop-impostor-baseline desktop-impostor "m['version'] = '1.0.0'; ${UPDAT
     dev.antony.Koine.provider.desktop.impostor
 make workspace-impostor-9.0.0 workspace-impostor "m['version'] = '9.0.0'; ${UPDATE}" \
     dev.antony.Koine.provider.workspace.impostor
-make workspace-impostor-baseline workspace-impostor "m['version'] = '1.0.0'; ${UPDATE}" \
+make workspace-impostor-baseline workspace-impostor "m['version'] = '1.0.1'; m['schemaVersion'] = '1.0.1'; ${UPDATE}" \
     dev.antony.Koine.provider.workspace.impostor
 
 echo "${OUT}"

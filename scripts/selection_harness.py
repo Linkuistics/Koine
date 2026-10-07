@@ -981,6 +981,17 @@ def check_conformance(host, profile, suite, check, record):
                 controls[what] = red.returncode
                 check(f"control: a profile with {what} turns the check red, naming {expected!r}",
                       red.returncode != 0 and expected in red.stdout, red.stdout[-600:])
+            # Each workspace row pinned at the RETAINED release instead: the repair is 1.0.1/1.0.1, and a pin
+            # that still said 1.0.0 must not be able to pass for it.
+            for index, row in enumerate(pinned["providers"]):
+                moved = {key: "1.0.0" for key in ("version", "schemaVersion") if row.get("provider") == "workspace" and row.get(key) == "1.0.1"}
+                if not moved:
+                    continue
+                red = hold(pinned["providers"][:index] + [dict(row, **moved)] + pinned["providers"][index + 1:])
+                what = f"the workspace row {index + 1} ({row['origin']} {row['version']}) pinned at the retained 1.0.0"
+                controls[what] = red.returncode
+                check(f"control: a profile with {what} turns the check red, naming 'is not served as expected'",
+                      red.returncode != 0 and "is not served as expected" in red.stdout, red.stdout[-600:])
         # The design half is seen red too: the wrong design (another host's, with a provider in
         # it) and this design with one nullability marker removed.
         own = os.path.join(os.path.dirname(path), pinned["design"])
@@ -992,13 +1003,14 @@ def check_conformance(host, profile, suite, check, record):
         mutated = os.path.join(work, "mutated.graphql")
         with open(mutated, "w") as file:
             file.write(text.replace(marker, "koine: Koine", 1))
-        # A design with another provider's contribution in it: the desktop design, or, for the profile
-        # that is the desktop design, the desktop + workspace one.
+        # Every other composed design: the desktop one, the retained 1.0.0 desktop + workspace one and the
+        # repaired 1.0.1 one, which differs from it in three descriptions alone. Each must turn the check red.
         designs = [os.path.join(REPOSITORY, "docs", "design", name) for name in
-                   ("desktop-schema-extension-host.graphql", "desktop-workspace-schema-extension-host.graphql")]
-        other = next(design for design in designs if os.path.realpath(design) != os.path.realpath(own))
-        for what, design in (("a design with a provider's contribution in it", other),
-                             ("a design with a nullability marker removed", mutated)):
+                   ("desktop-schema-extension-host.graphql", "desktop-workspace-schema-extension-host.graphql",
+                    "desktop-workspace-repair-schema-extension-host.graphql")]
+        others = [design for design in designs if os.path.realpath(design) != os.path.realpath(own)]
+        for what, design in [(f"the design {os.path.basename(design)}", design) for design in others] + [
+                ("a design with a nullability marker removed", mutated)]:
             red = hold(pinned["providers"], design=design)
             controls[what] = red.returncode
             check(f"control: {what} turns the check red", red.returncode != 0 and "difference(s) between" in red.stdout and "they differ" in red.stdout,

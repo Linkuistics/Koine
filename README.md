@@ -556,6 +556,13 @@ tree's bundle and approval record under the other tree's host, one host process
 per case, and drives it over loopback HTTP with a grant. It digests every binary
 before and after, and writes `results.json` beside the trees.
 
+The workspace has pairs of its own ([record](docs/verification/workspace-compatibility.md)): the
+retained 1.0.0 bundle (`task compat:workspace-baseline`) and this tree's 1.0.1 each under both
+hosts, and the same 1.0.1 source stating `first-party-selection-v1`, approved per user, over the
+bundled 1.0.0, with the same locations probed through every pair and the two releases compared.
+`task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited,
+against the 1.0.1 bundle.
+
 A provider for an older Koine is compiled against that Koine's framework minor,
 not only written without newer declarations: a conformance compiled against a
 newer minor records the defaults of the requirements that minor added, and an

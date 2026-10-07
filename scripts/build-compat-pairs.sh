@@ -10,6 +10,13 @@
 #             `additional-capabilities-v1`, with its host and fixture
 #   later     later revisions of the fixture, from the newer tree's source, each
 #             compiled against the framework its name says
+#   workspace the newer tree's workspace provider (release/schema 1.0.1), sealed and
+#             approved as the application seals it (newer/products/WorkspaceProviders),
+#             and the same source stating first-party-selection-v1, which an earlier
+#             host requires of a per-user update (newer/workspace-per-user). Its old
+#             side is the RETAINED 1.0.0 bundle scripts/build-retained-workspace.sh
+#             keeps apart under workspace-1.0.0: it must exist first, and is never
+#             rebuilt here.
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -23,6 +30,10 @@ cd "$(dirname "$0")/.."
 CONFIGURATION="${1:-debug}"
 PAIRS="$(pwd)/.build/compat/${CONFIGURATION}"
 mkdir -p "${PAIRS}"
+[ -f "${PAIRS}/workspace-1.0.0/retained.json" ] || {
+    echo "Error: ${PAIRS}/workspace-1.0.0/retained.json does not exist. Run: task compat:workspace-baseline" >&2
+    exit 1
+}
 
 # The old side is the released source, never a copy of this tree with edits.
 scripts/build-baseline-host.sh "${CONFIGURATION}" >/dev/null
@@ -85,5 +96,27 @@ later_fixture additional-undeclared newer "-D FIXTURE_ADDITIONAL -D FIXTURE_UNDE
 later_fixture additional-manifest-omits newer "-D FIXTURE_ADDITIONAL" \
     "m['version'] = '1.1.0'; m['framework']['minimumMinor'] = 1"
 unset FIXTURE_ADDITIONAL
+
+# The workspace provider of the newer tree, by its own build definition against that tree's
+# framework, sealed and approved as the application seals it; then the same source with the
+# feature a per-user update must state. Nothing here is the retained bundle or built from it.
+(
+    cd "${PAIRS}/newer/src"
+    WORK="$(mktemp -d)"
+    trap 'rm -rf "${WORK}"' EXIT
+    # shellcheck source=scripts/first-party-update-lib.sh
+    source scripts/first-party-update-lib.sh
+    PRODUCTS="$(cd "${PAIRS}/newer/products" && pwd -P)"
+    rm -rf "${PRODUCTS}/WorkspaceProviders" "${PAIRS}/newer/workspace-per-user"
+    BUNDLE="$(Providers/WorkspaceProvider/build.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/WorkspaceProviders")"
+    Fixtures/FixtureProvider/seal.sh "${BUNDLE}" >&2
+    VARIANT_TREE="$(tree variant)"
+    state_feature_in_workspace "${VARIANT_TREE}"
+    VARIANT="$("${VARIANT_TREE}/Providers/WorkspaceProvider/build.sh" "${PRODUCTS}/PackageFrameworks" "${WORK}/variant")"
+    edit "${VARIANT}" "m['requiredFeatures'] = m['requiredFeatures'] + ['${FEATURE}']"
+    mkdir -p "${PAIRS}/newer/workspace-per-user"
+    cp -R "${VARIANT}" "${PAIRS}/newer/workspace-per-user/"
+    Fixtures/FixtureProvider/seal.sh "${PAIRS}/newer/workspace-per-user/Workspace.koineprovider" >&2
+)
 
 echo "${PAIRS}"
