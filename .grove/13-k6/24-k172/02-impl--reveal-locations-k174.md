@@ -52,16 +52,37 @@ the walk prompts, because the answer decides whether the ADR stands.
   byte count. An over-limit target gets no further pathname call.
 - Reveal's root rule keeps `lstat` on the literal text: `/`, `//`, `/.`, `/..`,
   `/var/..` and a link to `/`, with and without a trailing slash.
-- N exercises the real walk on host fixtures built component by component: every
-  resolution row at short and about 1,500-byte depth; the 1,023/1,024 boundary
-  for a literal path, a short literal with a long expansion and the resolved
-  spelling; 31- and 32-link chains that resolve and a 33-link chain that is the
-  budget; the retained two-link cycle and the finite repeated dot-link; a
-  self-extending `a` to `a/x` link; one symlink inode with entries in two
-  directories where the filesystem admits it; a final directory without search
-  permission (mode 0600); the retained 300-byte ASCII impossible component beside
-  extant multibyte names over 255 UTF-8 bytes where admitted and combining names.
-  Each check is seen to fail against a mutated walk.
+- Walk tests (supporting evidence, not N) exercise the walk's own shared source
+  directly on host fixtures built component by component: every resolution row at
+  short and about 1,500-byte depth; the 1,023/1,024 boundary for a literal path, a
+  short literal with a long expansion and the resolved spelling; 31- and 32-link
+  chains that resolve and a 33-link chain that is the budget; the retained
+  two-link cycle and the finite repeated dot-link; a self-extending `a` to `a/x`
+  link; one symlink inode with entries in two directories where the filesystem
+  admits it; a final directory without search permission (mode 0600); the retained
+  300-byte ASCII impossible component beside extant multibyte names over 255 UTF-8
+  bytes where admitted and combining names. Each check is seen to fail against a
+  mutated walk. The code under test is the code the provider ships, never a copy.
+  These tests do not show that the built provider includes, invokes and consumes
+  the walk, so they close no N subject.
+- N, through the independently built provider's signed bundle on the host, where
+  reveal makes no effect, observes what a result can show: every absent row; the
+  established cycle and impossible component (`PATH_NOT_FOUND`); the 33-link and
+  self-extending budget, denial and any other component failure (`failed`
+  naming component and cause); and every present outcome that is followed by the
+  limit's refusal, whose guidance names the literal, expanded or resolved
+  spelling and its byte count. That covers the 1,023/1,024 boundary for the
+  literal, the short-literal long-expansion and the resolved spelling, and the
+  present rows at about 1,500-byte depth (a resolving link chain, the mode-0600
+  final directory, the two-directory link inode, multibyte and combining names),
+  each placed where its spelling is 1,024 bytes or more so the refusal proves the
+  walk reached it. Each is seen to fail against a mutated provider.
+- Present outcomes that no refusal exposes (a within-limit 31- or 32-link chain,
+  the mode-0600 directory, the two-directory link, the multibyte names, and the
+  reveal root decision for `/`, `//`, `/.`, `/..`, `/var/..` and a link to `/`) are
+  not observable on the host without a reveal. This leaf records that gap in its
+  log, and `target-locations-vm-k180` closes them at V with the effect, while L
+  checks the planner's use of the root decision.
 - G: a public request for an extant over-limit path returns `failed` with the
   guidance at the action's response path, never a dependency, and nothing is
   revealed. Existing 1.0.0 short-path outcomes are unchanged.
@@ -72,8 +93,10 @@ the walk prompts, because the answer decides whether the ADR stands.
 ## Notes
 
 - Present outcomes cannot be seen through reveal on the host (nothing is revealed
-  there). Test the walk's own source directly for them, and use refusals that
-  follow resolution for what the signed bundle can show.
+  there). The signed bundle shows them only through a refusal that follows
+  resolution; direct shared-source tests are supporting evidence and never
+  stand in for N. Whatever a leaf cannot observe at N is named, with its V owner,
+  in the leaf's log rather than counted as passed.
 - Descriptor budget, no recovery branch and no spelling drift are the spec's
   obligations here; they are acceptance conditions, not nice-to-haves.
 - This leaf may decompose at a genuine seam, for example the planner mapping

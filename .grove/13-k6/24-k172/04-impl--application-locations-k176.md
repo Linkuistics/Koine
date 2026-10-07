@@ -5,8 +5,9 @@
 A caller-supplied `applicationPath` (a constrained launch or a named open) is
 resolved with the walk, refused at the hand-off limit before any registration or
 other platform call, and compared with the registered candidates by device and
-inode, so a long copy of the same application on disk never stops a short
-workflow.
+inode, so a long copy of the same application on disk never stops a workflow
+whose selected copy is short. A long copy that is itself the selected one is
+refused at the limit, never replaced by another.
 
 ## Context
 

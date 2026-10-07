@@ -321,8 +321,12 @@ completed reports keep their meanings, so no registration for an identifier is
 `APPLICATION_NOT_INSTALLED`, a completed nil default-handler report for a
 resolved target is `NO_DEFAULT_HANDLER`, and a bundle with no identifier is a
 mismatch for a named selector. Receipt observation resolves the live executable's
-kernel path (`proc_pidpath`, up to 4,096 bytes) the same way, with the existing
-null rules.
+kernel path (`proc_pidpath`, up to 4,096 bytes) and the retained application
+object's executable the same way, in one identity representation, with the
+existing null rules. The hand-off limit does not apply to it: the action was
+already acknowledged, so a present executable of any length gives its identity,
+and any other walk outcome gives no identity and the existing null process, never
+a refusal.
 
 #### Order of target and application stages
 
@@ -376,7 +380,11 @@ inode, an unequal candidate whose metadata cannot be read is skipped, where the
 retained identity read failed it; that failure existed only because equality was
 unknown, and resolution now settles it. The limit applies to the chosen copy and
 the selected application, never to an unequal candidate, so a long copy of the
-same application on disk does not stop a short workflow. A location the
+same application on disk does not stop a workflow whose selected application is
+short. When the long copy is the identifier's preferred one, an unconstrained launch
+or named open discovers and selects it and is refused at the limit: no other copy is
+substituted, and a short copy already running does not rescue it, because the
+refusal precedes the platform. A location the
 caller supplied is refused before any platform call on it; a discovered location
 is refused after the discovery read that found it and before anything addresses
 it by path. Discovery is a read, so in every case no domain request (launch, open
@@ -495,11 +503,19 @@ no search implementation is needed to close them:
   the filesystem admits it) and combining-character names, which must resolve;
   and the reveal root decision on `/`, `//`, `/.`, `/..`, `/var/..` and a link to
   `/` with and without a trailing slash, compared with the retained `lstat` rule.
+  N observes through the independently built provider binary on the host, which
+  launches and reveals nothing: a result, or a refusal that follows resolution and
+  names the spelling and its byte count. Tests of the walk's own shared source
+  support N and never close it. A present outcome that no refusal exposes (a
+  within-limit resolving chain, the mode-0600 directory, the two-directory link,
+  the multibyte names and the root decision) is observed at V by its effect.
 - **G** checks the public outcome: `failed` with guidance at the action's
   response path, never a dependency, for an extant over-limit location.
-- **V** uses signed isolated macOS. A document whose path is 1,023 bytes opens in
-  its default handler and in Zed and is revealed. That positively controls the
-  delivery and Finder observers, which then show nothing delivered or selected
+- **V** uses signed isolated macOS. Each delivery and Finder observer is first
+  controlled by an independent non-Koine route delivering a 1,023-byte subject;
+  no over-limit delivery is ever a control. A document whose path is 1,023 bytes
+  opens in its default handler and in Zed and is revealed. The controlled observers
+  then show nothing delivered or selected
   for 1,024-byte and roughly 1,500-byte files and directories. Also check: a
   missing long path is `PATH_NOT_FOUND`, an over-limit constrained application
   path is `failed`, short launch, named open and reveal still work with a long

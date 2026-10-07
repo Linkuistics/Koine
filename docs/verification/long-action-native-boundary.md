@@ -183,13 +183,27 @@ change or another installation to claim the original handoff passed.
 | Permission and completion | Either control alone refuses before inspection; cancel between stages; false/error/no/late callback, three-second wait and earlier core deadline. | Signed Koine with existing empty entitlements/usage keys, Accessibility absent/revoked and independently observed TCC/dialog/hydration state. Protected default-document lookup and app-reveal notice remain their existing human decisions. No consent is granted to close a new read failure. |
 | Compatibility | Independent 1.0.0, action-repair 1.0.1 and search 1.1.0 description/digest/profile subjects; unchanged action shape and error kinds. Description-only delta control does not prove runtime mapping. | Retained old bundle/host versus independently compiled repaired bundle on compatible hosts, with full exact candidate pins and public/grant outcomes. Repeat cycle/component/established-nil subjects and all short workflows. Search-serving end-to-end binaries remain distinct. |
 
+**Reading of this table under the v1 decision.** The rows above that expect a
+roughly 1,500-byte file or constrained installation to open, reveal or launch, and
+the row that expects an unconstrained launch to work when the long copy is the
+preferred one, describe the deferred long-path route and are superseded. In v1: a
+location of 1,024 bytes or more is refused with `failed` before any request;
+a long copy that is not the selected one never stops a short workflow; a long copy
+that is the preferred one is refused, with no other copy substituted and no rescue
+by a short copy already running; and receipt observation resolves both executable
+identities by the walk, never applying the hand-off limit after an acknowledged
+action. Those rows' independent witnesses survive only as refusals, a 1,023-byte
+positive subject and the short workflows beside a long copy.
+
 The existing seams remain L (private adapter enabling point), G (public GraphQL),
 N (independent provider/host binaries) and V (signed isolated macOS). No new
 public seam is proposed. L does not exercise the errno/Foundation/plist mapping
 inside the substituted adapter; N host fixtures and V guest fixtures do. Before
-crediting any long observation, positively control each delivery, Finder-selection
-and identity observer using the same long subject selected/opened/launched by an
-independent non-Koine route. Record exact bytes and native identity. The prior
+crediting any observation, positively control each delivery, Finder-selection
+and identity observer using a subject at the largest admitted length, 1,023 bytes,
+selected/opened/launched by an independent non-Koine route. An over-limit subject
+is never a control, because delivering one is the work v1 defers. Record exact
+bytes and native identity. The prior
 short Finder AppleScript observation is not a long-path control; an observer
 limit leaves the observation pending and cannot pass or fail Koine.
 

@@ -36,19 +36,30 @@ whole-path call before the limit.
 - L: an over-limit discovered application or default handler records exactly the
   discovery read that found it and then no metadata read and no submission; a
   cycle or impossible name at a default handler is `failed`; a Finder registration
-  with another identifier is `APPLICATION_NOT_INSTALLED`. A short workflow whose
-  preferred copy is a long one is not blocked when another copy is eligible and
-  chosen as before, as the spec states.
+  with another identifier is `APPLICATION_NOT_INSTALLED`. Two cases stay apart.
+  Where the **selected** copy is short (a constrained launch or named open choosing
+  it by `applicationPath`, or an unconstrained one whose preferred copy is short)
+  an unequal long registered copy, enumerated before or after it, never stops the
+  workflow. Where the identifier's **preferred** copy is the long one, an
+  unconstrained launch or named open discovers it, selects it and refuses its
+  over-limit spelling with `failed` before any request: no other copy is
+  substituted, and a short copy already running does not rescue it, because the
+  refusal precedes the platform. A substitution route would need contract
+  authority from Antony and is not a fixture repair.
 - N and G as for `application-locations-k176`, for the discovered forms. Every
   caller of `inspectApplication` is enumerated and either converted or shown not to
-  take a caller-influenced or registry-supplied location. `selectWebHandler`
+  take a caller-influenced or registry-supplied location. The receipt's executable
+  identities (`liveExecutableIdentity`, `RunningApplication.executableIdentity`,
+  `fileIdentity(ofPath:)`) are not callers of it and are owned by
+  `receipt-executable-identity-k183`; this leaf leaves them untouched. `selectWebHandler`
   has the same shape as a default handler; follow the spec if it states the rule,
   and if it is silent record the decision in this leaf's log and add the one line to
   the spec.
-- The two defects named in the spec are gone: no `ELOOP`/`ENAMETOOLONG` is mapped
-  to absence anywhere in the provider, and no whole-path call addresses a location
-  before the limit (`task check:launch-call-path` says so and is seen to fail
-  against a mutated source).
+- The two defects named in the spec are gone from the action stages: no
+  `ELOOP`/`ENAMETOOLONG` is mapped to absence anywhere in the provider, and no
+  whole-path call addresses a stage location before the limit
+  (`task check:launch-call-path` says so and is seen to fail against a mutated
+  source). The receipt identity route is checked by its own leaf.
 
 ## Notes
 

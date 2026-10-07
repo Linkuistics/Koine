@@ -329,3 +329,13 @@ rests on the shipped artifact. The first leaf to build the walk measures first-u
 prompting before building the rest, and a prompt returns to Antony. Review
 `long-location-actions-k171` reads the cut before any of it runs. Its owner table
 for the spec's subjects is in the node brief.
+
+k182 integrates k171's four findings, all actionable. A tenth leaf,
+`receipt-executable-identity-k183`, owns receipt observation's two executable
+identities, which no stage converts, with a null rule that never refuses after an
+acknowledged action. A preferred long copy is now refused without substitution and
+is separate from the short-selected-beside-long success case. The V observers are
+controlled at the 1,023-byte admitted length, never by an over-limit delivery. The
+shared-source walk tests no longer count as N: the signed bundle shows what a result
+or post-resolution refusal can, and the effect-only present outcomes are assigned to
+`target-locations-vm`. No public shape, enum, capability or version changed.
