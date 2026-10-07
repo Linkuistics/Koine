@@ -10,7 +10,7 @@ import Foundation
 
 /// Why a walk that established absence of an application location is nonetheless `failed`: an impossible name
 /// and a cycle say nothing is missing, only that the location cannot be what was asked for.
-private func explanation(of absence: Absence) -> String {
+func explanation(of absence: Absence) -> String {
     switch absence {
     case .impossibleComponent(let component): "its name \(component.debugDescription) is longer than the filesystem allows"
     case .cycle(let link): "the symbolic link \(link.debugDescription) leads back to itself"

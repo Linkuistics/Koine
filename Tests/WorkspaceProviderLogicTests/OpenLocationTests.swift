@@ -45,7 +45,7 @@ import Testing
     static func nothingElseWasAsked(_ native: FakeNative) {
         #expect(native.pathInspected.isEmpty, "no metadata was read")
         #expect(native.documentLookups.isEmpty && native.handlerLookups.isEmpty, "no handler lookup")
-        #expect(native.inspected.isEmpty && native.registrationLookups.isEmpty, "no application was looked at")
+        #expect(native.bundleReads.isEmpty && native.registrationLookups.isEmpty, "no application was looked at")
         #expect(native.rootChecks.isEmpty)
         #expect(native.pathOpens.isEmpty && native.launches.isEmpty && native.opens.isEmpty && native.reveals.isEmpty)
     }
@@ -102,7 +102,7 @@ import Testing
         let failure = try #require(LaunchTests.failure(await provider.resolve(OpenPathTests.request())))
         #expect(failure.kind == .failed)
         #expect(failure.message.contains("could not be inspected"))
-        #expect(native.documentLookups.isEmpty && native.inspected.isEmpty && native.pathOpens.isEmpty)
+        #expect(native.documentLookups.isEmpty && native.bundleReads.isEmpty && native.pathOpens.isEmpty)
     }
 
     // MARK: The limit
@@ -166,7 +166,7 @@ import Testing
         let failure = try #require(
             LaunchTests.failure(await provider.resolve(OpenPathTests.request(application: named))))
         #expect(failure.message.contains("2000 bytes"), "the refusal, not APPLICATION_NOT_INSTALLED")
-        #expect(native.registrationLookups.isEmpty && native.inspected.isEmpty)
+        #expect(native.registrationLookups.isEmpty && native.bundleReads.isEmpty)
     }
 
     @Test func anOverLimitTargetIsRefusedBeforeAHandlerLookupThatWouldAnswerNoDefaultHandler() async throws {
@@ -223,7 +223,7 @@ import Testing
                 LaunchTests.failure(await provider.resolve(OpenPathTests.request(application: application))))
             #expect(failure.kind == .invalidInput, "\(label) at \(resolved.utf8.count) bytes: \(failure.message)")
             #expect(native.pathInspected == [resolved], "\(label): read from the resolved spelling")
-            #expect(native.documentLookups.isEmpty && native.inspected.isEmpty && native.pathOpens.isEmpty)
+            #expect(native.documentLookups.isEmpty && native.bundleReads.isEmpty && native.pathOpens.isEmpty)
         }
     }
 

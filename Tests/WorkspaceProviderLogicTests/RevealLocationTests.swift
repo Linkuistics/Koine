@@ -35,7 +35,7 @@ import Testing
     /// What no request, lookup or metadata read was made after a refusal or an absence.
     static func nothingElseWasAsked(_ native: FakeNative) {
         #expect(native.rootChecks.isEmpty, "no whole-path call addresses the location")
-        #expect(native.inspected.isEmpty, "no application was inspected")
+        #expect(native.bundleReads.isEmpty, "no application was inspected")
         #expect(native.registrationLookups.isEmpty, "no registration lookup, so no Finder lookup")
         #expect(native.pathInspected.isEmpty, "no metadata was read")
         #expect(native.documentLookups.isEmpty && native.handlerLookups.isEmpty)
@@ -89,7 +89,7 @@ import Testing
         let failure = try #require(LaunchTests.failure(await provider.resolve(RevealPathTests.request())))
         #expect(failure.kind == .failed)
         #expect(failure.message.contains(reason))
-        #expect(native.reveals.isEmpty && native.inspected.isEmpty, "nothing was submitted, and Finder was not asked")
+        #expect(native.reveals.isEmpty && native.bundleReads.isEmpty, "nothing was submitted, and Finder was not asked")
     }
 
     // MARK: The limit
@@ -143,7 +143,7 @@ import Testing
         #expect(fields["status"] == .string("AVAILABLE"))
         #expect(fields["value"] == .object(["path": .string(Self.target)]))
         #expect(native.rootChecks == [Self.target], "the root rule reads the literal text")
-        #expect(native.inspected == [RevealPathTests.finderPath], "Finder is checked after the target")
+        #expect(native.bundleReads == [RevealPathTests.finderPath], "Finder is checked after the target")
         #expect(native.reveals == [Self.target])
         #expect(provider.submissionsInFlight == 0)
     }

@@ -48,7 +48,6 @@ import Testing
 
         func registeredApplication(bundleIdentifier: String) -> URL? { lock.withLock { preferred[bundleIdentifier] } }
         func registeredApplications(bundleIdentifier: String) -> [URL] { lock.withLock { listed[bundleIdentifier] ?? [] } }
-        func inspectApplication(at path: String) -> ApplicationInspection { lock.withLock { inspections[path] ?? .absent } }
         func launchApplication(
             at url: URL, substitutingRunningCopy: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void
         ) {
@@ -305,5 +304,57 @@ import Testing
         #expect(reply.data?["launch"] is NSNull)
         #expect(reply.extensions(at: ["launch"])["kind"] as? String == "failed")
         #expect(native.launches.isEmpty, "the short copy of the same application was not substituted")
+    }
+    // MARK: Discovered applications (discovered-applications-k177)
+
+    /// G: the identifier's preferred copy is found by the walk at a spelling of 1,024 bytes or more. An unconstrained
+    /// launch and a named open discover it, select it and refuse it at the limit, with guidance at the action's own
+    /// response path: never a dependency, and nothing submitted, though a short copy is registered beside it.
+    @Test(arguments: [1024, 1025, 1500, 4000], ["launch", "open"])
+    func anOverLimitPreferredCopyIsFailedWithGuidanceAndNoOtherCopyIsSubstituted(_ length: Int, _ field: String) async throws {
+        let native = Copies()
+        native.install(Self.id, at: Self.long(length, "Preferred"), file: "long", preferred: true)
+        native.install(Self.id, at: Self.copyA, file: "a")
+        let bench = try await WorkspaceCompositionTests.Bench(provider: WorkspaceProvider(native: native))
+        let client = try await bench.grant(WorkspaceCompositionTests.controls).principal
+        let reply =
+            field == "launch"
+            ? try await bench.run(Self.launch, ["application": Self.application()], as: client)
+            : try await bench.run(Self.openPath, ["path": "/Users/test/notes.txt", "application": Self.application()], as: client)
+        #expect(reply.data?[field] is NSNull, "no result and no dependency")
+        #expect(reply.extensions(at: [field])["kind"] as? String == "failed")
+        let message = try #require(reply.errors.first?["message"] as? String)
+        for needed in ["application hand-off", "registered application path", "\(length) bytes", "No request was made"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(native.launches.isEmpty && native.opens.isEmpty, "the short copy was not substituted")
+    }
+
+    @Test func aPreferredCopyAtTheLongestHandedOverSpellingIsSubmittedAsRegistered() async throws {
+        let native = Copies()
+        let path = Self.long(1023, "Preferred")
+        native.install(Self.id, at: path, file: "long", preferred: true)
+        let bench = try await WorkspaceCompositionTests.Bench(provider: WorkspaceProvider(native: native))
+        let client = try await bench.grant(WorkspaceCompositionTests.controls).principal
+        let reply = try await bench.run(Self.launch, ["application": Self.application()], as: client)
+        #expect((reply.data?["launch"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(reply.errors)"))
+        #expect(native.launches.map(\.url.path) == [path])
+        #expect(native.launches.map(\.substituting) == [true])
+    }
+
+    /// A long registered copy that is not the preferred one never stops an unconstrained launch or a named open.
+    @Test func aLongUnequalCopyBesideAShortPreferredOneNeverStopsAnUnconstrainedWorkflow() async throws {
+        let native = Copies()
+        native.install(Self.id, at: Self.long(1500, "Other"), file: "long")
+        native.install(Self.id, at: Self.copyA, file: "a", preferred: true)
+        let bench = try await WorkspaceCompositionTests.Bench(provider: WorkspaceProvider(native: native))
+        let client = try await bench.grant(WorkspaceCompositionTests.controls).principal
+        let launch = try await bench.run(Self.launch, ["application": Self.application()], as: client)
+        #expect((launch.data?["launch"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(launch.errors)"))
+        let open = try await bench.run(
+            Self.openPath, ["path": "/Users/test/notes.txt", "application": Self.application()], as: client)
+        #expect((open.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(open.errors)"))
+        #expect(native.launches.map(\.url.path) == [Self.copyA])
+        #expect(native.opens.map(\.application.path) == [Self.copyA])
     }
 }

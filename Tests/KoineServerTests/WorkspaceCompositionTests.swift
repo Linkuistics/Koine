@@ -665,6 +665,8 @@ import Testing
         private var lookedUp: [WebURL.Scheme] = []
         private var openedPaths: [String] = []
         private var inspectedPaths: [String] = []
+        private var applicationLocations: [String] = []
+        private var applicationLiteralBytes: Int?
         private var factsRead: [String] = []
         private var arranged: [String: PathInspection] = [:]
         private var lookedUpDocuments: [String] = []
@@ -675,8 +677,13 @@ import Testing
         var opened: [String] { lock.withLock { openedURLs } }
         var lookups: [WebURL.Scheme] { lock.withLock { lookedUp } }
         var pathsOpened: [String] { lock.withLock { openedPaths } }
-        /// Every path whose location was resolved, in order.
+        /// Every target path whose location was resolved, in order.
         var pathsInspected: [String] { lock.withLock { inspectedPaths } }
+        /// Makes the walk find Finder and the browser at a literal spelling of `bytes` bytes, as a registered
+        /// copy at a long location would be found; the registered URL Launch Services reports is unchanged.
+        func placeApplications(literalBytes bytes: Int) { lock.withLock { applicationLiteralBytes = bytes } }
+        /// Every registered application location (Finder's, the browser's) that was resolved, in order.
+        var applicationsResolved: [String] { lock.withLock { applicationLocations } }
         /// Every resolved spelling whose metadata was read, in order.
         var pathsRead: [String] { lock.withLock { factsRead } }
         var documentLookups: [String] { lock.withLock { lookedUpDocuments } }
@@ -686,14 +693,9 @@ import Testing
             bundleIdentifier == finderBundleIdentifier ? Self.finder : nil
         }
         func registeredApplications(bundleIdentifier: String) -> [URL] { [] }
-        func inspectApplication(at path: String) -> ApplicationInspection {
-            .application(
-                ApplicationBundle(
-                    url: URL(fileURLWithPath: path),
-                    bundleIdentifier: path == Self.finder.path ? finderBundleIdentifier : "com.example.browser",
-                    identity: FileIdentity(volume: NSNumber(value: 1), file: "browser" as NSString)))
+        func readApplicationBundle(of location: ResolvedLocation) -> BundleRead {
+            .application(identifier: location.resolved.text == Self.finder.path ? finderBundleIdentifier : "com.example.browser")
         }
-        func readApplicationBundle(of location: ResolvedLocation) -> BundleRead { .application(identifier: "com.example.browser") }
         func launchApplication(
             at url: URL, substitutingRunningCopy: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void
         ) { completion(.refused("a launch is not part of this test")) }
@@ -718,12 +720,20 @@ import Testing
         }
         func resolveLocation(_ path: String) -> LocationResolution {
             lock.withLock {
-                inspectedPaths.append(path)
+                if path == Self.finder.path || path == Self.browser.path {
+                    applicationLocations.append(path)
+                } else {
+                    inspectedPaths.append(path)
+                }
                 if case .absent? = arranged[path] { return .absent(.missing(component: path)) }
                 let spelling = Spelling(bytes: Array(path.utf8))
+                var literal = spelling
+                if (path == Self.finder.path || path == Self.browser.path), let bytes = applicationLiteralBytes {
+                    literal = Spelling(bytes: Array(("/" + String(repeating: "a", count: bytes - 1)).utf8))
+                }
                 return .present(
                     ResolvedLocation(
-                        literal: spelling, expansions: [], resolved: spelling,
+                        literal: literal, expansions: [], resolved: spelling,
                         identity: ObjectIdentity(device: 1, inode: 1), type: .regularFile))
             }
         }
@@ -1301,6 +1311,68 @@ import Testing
         #expect((reply.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE")
         #expect(native.pathsRead == [path])
         #expect(native.pathsOpened == [path])
+    }
+
+    /// G for a discovered application (docs/specs/workspace-launch-and-open.md, stage 3): the registered location
+    /// Launch Services reports for the default handler of a document, the default web browser or Finder is found by
+    /// the walk at a spelling of 1,024 bytes or more. The public outcome is `failed` with guidance at the action's own
+    /// response path, never a dependency, and neither the application's metadata nor any request was made. The
+    /// stand-in records the discovery read that found it, and nothing after.
+    @Test(arguments: [1024, 1025, 1500, 4000])
+    func anOverLimitDefaultHandlerIsFailedWithGuidanceAndNothingIsOpened(_ length: Int) async throws {
+        let (bench, native, client) = try await Self.realPathProvider { $0.placeApplications(literalBytes: length) }
+        let reply = try await bench.run(Self.openPathWithVariables, ["path": "/Users/test/notes.txt"], as: client)
+        #expect(reply.data?["open"] is NSNull, "no result and no dependency: the action failed")
+        #expect(reply.extensions(at: ["open"])["kind"] as? String == "failed")
+        let message = try #require(reply.error(at: ["open"])?["message"] as? String)
+        for needed in ["application hand-off", "registered application path as written", "\(length) bytes", "nothing was opened"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(native.documentLookups == ["/Users/test/notes.txt"], "exactly the discovery read")
+        #expect(native.applicationsResolved == [RecordingBrowser.browser.path], "the handler was resolved, and then refused")
+        #expect(native.pathsOpened.isEmpty)
+    }
+
+    @Test(arguments: [1024, 1025, 1500, 4000])
+    func anOverLimitDefaultBrowserIsFailedWithGuidanceAndNothingIsOpened(_ length: Int) async throws {
+        let (bench, browser, client) = try await Self.realProvider()
+        browser.placeApplications(literalBytes: length)
+        let reply = try await bench.run(Self.openURLWithVariable, ["url": "https://example.com/"], as: client)
+        #expect(reply.data?["open"] is NSNull, "no result and no dependency: the action failed")
+        #expect(reply.extensions(at: ["open"])["kind"] as? String == "failed")
+        let message = try #require(reply.error(at: ["open"])?["message"] as? String)
+        for needed in ["application hand-off", "registered application path as written", "\(length) bytes", "nothing was opened"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(browser.lookups == [.https], "exactly the discovery read")
+        #expect(browser.opened.isEmpty)
+    }
+
+    @Test(arguments: [1024, 1025, 1500, 4000])
+    func anOverLimitFinderIsFailedWithGuidanceAndNothingIsRevealed(_ length: Int) async throws {
+        let (bench, browser, client) = try await Self.realProvider()
+        browser.placeApplications(literalBytes: length)
+        let reply = try await bench.run(Self.revealWithVariable, ["path": "/Users/test/notes.txt"], as: client)
+        #expect(reply.data?["reveal"] is NSNull, "no result and no dependency: the action failed")
+        #expect(reply.extensions(at: ["reveal"])["kind"] as? String == "failed")
+        let message = try #require(reply.error(at: ["reveal"])?["message"] as? String)
+        for needed in ["application hand-off", "registered application path as written", "\(length) bytes", "nothing was revealed"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(browser.applicationsResolved == [RecordingBrowser.finder.path])
+        #expect(browser.pathsRevealed.isEmpty)
+    }
+
+    @Test func discoveredApplicationsAtTheLongestHandedOverSpellingAreHandedOverAsBefore() async throws {
+        let (bench, browser, client) = try await Self.realProvider()
+        browser.placeApplications(literalBytes: 1023)
+        let open = try await bench.run(Self.openURLWithVariable, ["url": "https://example.com/"], as: client)
+        #expect((open.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(open.errors)"))
+        let handled = try await bench.run(Self.openPathWithVariables, ["path": "/Users/test/notes.txt"], as: client)
+        #expect((handled.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(handled.errors)"))
+        let reveal = try await bench.run(Self.revealWithVariable, ["path": "/Users/test/notes.txt"], as: client)
+        #expect((reveal.data?["reveal"] as? [String: Any])?["status"] as? String == "AVAILABLE", Comment(rawValue: "\(reveal.errors)"))
+        #expect(browser.opened.count == 1 && browser.pathsOpened == ["/Users/test/notes.txt"] && browser.pathsRevealed == ["/Users/test/notes.txt"])
     }
 
     /// The action has run. Revoking as `point` is reached denies that field's publication and

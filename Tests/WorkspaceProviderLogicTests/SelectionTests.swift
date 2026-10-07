@@ -61,7 +61,7 @@ import Testing
         native.register(Self.notes, at: URL(fileURLWithPath: "/Applications/Notes.app"))
         native.install(Self.notes, at: "/Applications/Elsewhere/Notes.app", file: "e", isDefault: false)
         expectDependency(selectInstallation(request(), forAction: "launched", native: native), .applicationIdentityMismatch)
-        #expect(native.inspected == ["/Applications/Notes.app"], "no other copy is substituted or even consulted")
+        #expect(native.bundleReads == ["/Applications/Notes.app"], "no other copy is substituted or even consulted")
     }
 
     @Test func aBundleThatDeclaresNoIdentifierDoesNotMatch() {

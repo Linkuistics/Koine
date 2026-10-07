@@ -16,52 +16,11 @@ struct NativeWorkspace: WorkspaceNative {
         NSWorkspace.shared.urlsForApplications(withBundleIdentifier: bundleIdentifier)
     }
 
-    /// The location Launch Services reported for an unconstrained launch, a default handler or Finder, by
-    /// the calls docs/verification/protected-path-metadata.md measured as prompt-free on first-use Desktop,
-    /// Documents and Downloads: `realpath`, the `isApplicationKey`, `volumeIdentifierKey` and
-    /// `fileResourceIdentifierKey` resource values, and `Bundle(url:)`. Nothing here asks for a file's default
-    /// handler, which prompted, and nothing reads a directory or a file's contents.
-    ///
-    /// **Not the caller's location.** A path the caller supplies is resolved by the walk and read by
-    /// `readApplicationBundle(of:)`. This whole-path read is kept only for the registered location that
-    /// discovery finds, until `discovered-applications` replaces it with the walk, and it never reports a
-    /// long location missing: only the two errnos that name a missing component are absence, and
-    /// `ENAMETOOLONG` and `ELOOP` are an unreadable location.
-    func inspectApplication(at path: String) -> ApplicationInspection {
-        errno = 0
-        guard let resolved = realpath(path, nil) else {
-            // ENOENT is a missing path or a dangling link; ENOTDIR a missing directory in it.
-            if errno == ENOENT || errno == ENOTDIR { return .absent }
-            return .unreadable(String(cString: strerror(errno)))
-        }
-        defer { free(resolved) }
-        let url = URL(fileURLWithPath: String(cString: resolved))
-        let values: URLResourceValues
-        do {
-            values = try url.resourceValues(forKeys: [
-                .isApplicationKey, .volumeIdentifierKey, .fileResourceIdentifierKey,
-            ])
-        } catch {
-            return absentOrUnreadable(error)
-        }
-        guard values.isApplication == true else { return .notApplication }
-        guard let volume = values.volumeIdentifier, let file = values.fileResourceIdentifier else {
-            return .unreadable("its file identity is not available")
-        }
-        let identifier = Bundle(url: url)?.bundleIdentifier
-        // `Bundle(url:)` answers nil both for a bundle that declares no identifier and for one whose
-        // Info.plist it may not read, and a denial must never read as another identifier. The nil is
-        // observed (macOS 26.5), not documented: https://developer.apple.com/documentation/foundation/bundle/init(url:)
-        if identifier == nil, let reason = infoPlistDenial(in: url) { return .unreadable(reason) }
-        return .application(
-            ApplicationBundle(url: url, bundleIdentifier: identifier, identity: FileIdentity(volume: volume, file: file))
-        )
-    }
-
-    /// The three facts of an application bundle the walk resolved, read from its resolved spelling: whether
-    /// the platform calls it an application and its identifier. Its file identity is the walk's own device
-    /// and inode. The planner applied the hand-off limit first, so this spelling is under `PATH_MAX`. The
-    /// object was found a moment ago, so any error here, a missing-file one included, is `unreadable`: absence
+    /// The facts of an application bundle the walk resolved, read from its resolved spelling: whether the
+    /// platform calls it an application and its identifier. This is the one bundle read, for a location the
+    /// caller supplied and for one Launch Services reported (a registered copy, a default handler, Finder). Its
+    /// file identity is the walk's own device and inode. The planner applied the hand-off limit first, so this
+    /// spelling is under `PATH_MAX`. The object was found a moment ago, so any error here, a missing-file one included, is `unreadable`: absence
     /// of a location is established by the walk alone, and this read never decides it.
     func readApplicationBundle(of location: ResolvedLocation) -> BundleRead {
         let url = fileSystemURL(of: location)
@@ -74,7 +33,9 @@ struct NativeWorkspace: WorkspaceNative {
         guard let isApplication = values.isApplication else { return .unreadable("its type metadata is not available") }
         guard isApplication else { return .notApplication }
         let identifier = Bundle(url: url)?.bundleIdentifier
-        // As in `inspectApplication`: a nil is a bundle that declares none or one whose Info.plist may not be read.
+        // `Bundle(url:)` answers nil both for a bundle that declares no identifier and for one whose
+        // Info.plist it may not read, and a denial must never read as another identifier. The nil is
+        // observed (macOS 26.5), not documented: https://developer.apple.com/documentation/foundation/bundle/init(url:)
         if identifier == nil, let reason = infoPlistDenial(in: url) { return .unreadable(reason) }
         return .application(identifier: identifier)
     }
@@ -107,12 +68,8 @@ struct NativeWorkspace: WorkspaceNative {
         return access(plist, R_OK) == 0 ? nil : String(cString: strerror(errno))
     }
 
-    private func absentOrUnreadable(_ error: Error) -> ApplicationInspection {
-        isMissing(error) ? .absent : .unreadable((error as NSError).localizedDescription)
-    }
-
-    /// A missing file as Foundation reports it, directly or beneath a POSIX ENOENT. Used for a location the
-    /// platform reported; no caller's location is ever judged absent by it.
+    /// A missing file as Foundation reports it, directly or beneath a POSIX ENOENT, for the metadata of an object
+    /// the walk had just found: the planner reads it as a failure, so it never decides that anything is absent.
     private func isMissing(_ error: Error) -> Bool {
         let cocoa = error as NSError
         if cocoa.domain == NSCocoaErrorDomain, cocoa.code == NSFileReadNoSuchFileError { return true }

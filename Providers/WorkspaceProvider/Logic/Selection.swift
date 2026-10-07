@@ -58,8 +58,10 @@ enum Selection: Sendable {
 ///   inode with the requested identifier is eligible. Another copy is never substituted.
 /// - Metadata that cannot be read is `failed`, not absence.
 ///
-/// Every call here is one of the prompt-free metadata calls
-/// (docs/verification/protected-path-metadata.md); none looks up a file handler.
+/// Without a path, the registered copy is discovered, then resolved by the walk and refused at the limit
+/// before its bundle is read (`settleDiscoveredApplication`). Every pathname-based call is one of the
+/// prompt-free metadata calls (docs/verification/protected-path-metadata.md), made only after the limit;
+/// none looks up a file handler.
 /// `action` is what no request did, in the past tense the guidance uses.
 func selectInstallation(_ request: ApplicationRequest, forAction action: String, native: some WorkspaceNative) -> Selection {
     if let path = request.applicationPath {
@@ -68,24 +70,26 @@ func selectInstallation(_ request: ApplicationRequest, forAction action: String,
     guard let registered = native.registeredApplication(bundleIdentifier: request.bundleIdentifier) else {
         return notInstalled(request)
     }
-    switch native.inspectApplication(at: registered.path) {
-    case .absent, .notApplication: return notInstalled(request)  // stale registration
-    case .unreadable(let reason): return .failed(unreadable(reason))
-    case .application(let bundle):
-        guard bundle.bundleIdentifier == request.bundleIdentifier else { return mismatch(request) }
+    // Discovery found `registered`; it is resolved and limited before its bundle is read (`DiscoveredStage`).
+    switch settleDiscoveredApplication(registered, forAction: action, native: native) {
+    case .absent: return notInstalled(request)  // stale registration, or no application there
+    case .failed(let message): return .failed(message)
+    case .application(let identifier):
+        guard identifier == request.bundleIdentifier else { return mismatch(request) }
         return .selected(registered, substituting: true)
     }
 }
 
 /// What a URL open is sent to: the default handler for the URL's scheme, present as an
 /// application bundle when inspected. Registration alone is not presence, as for a launch;
-/// the handler's identifier is workspace read data and is neither checked nor reported.
-/// Only prompt-free metadata calls, and the lookup is by scheme (see `WorkspaceNative`).
-func selectWebHandler(_ scheme: WebURL.Scheme, native: some WorkspaceNative) -> Selection {
+/// the handler's identifier is workspace read data and is neither checked nor reported. The handler is a
+/// discovered application like any other: resolved by the walk and refused at the limit before its bundle is
+/// read. Only prompt-free metadata calls, and the lookup is by scheme (see `WorkspaceNative`).
+func selectWebHandler(_ scheme: WebURL.Scheme, forAction action: String, native: some WorkspaceNative) -> Selection {
     guard let handler = native.defaultApplication(forWebScheme: scheme) else { return noDefaultHandler() }
-    switch native.inspectApplication(at: handler.path) {
-    case .absent, .notApplication: return noDefaultHandler()  // a stale registration
-    case .unreadable(let reason): return .failed(unreadable(reason))
+    switch settleDiscoveredApplication(handler, forAction: action, native: native) {
+    case .absent: return noDefaultHandler()  // a stale registration
+    case .failed(let message): return .failed(message)
     case .application: return .selected(handler, substituting: true)
     }
 }

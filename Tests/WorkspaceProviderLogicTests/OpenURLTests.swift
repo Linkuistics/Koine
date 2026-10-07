@@ -164,7 +164,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(.string(input)))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.opens.isEmpty && native.handlerLookups.isEmpty && native.inspected.isEmpty)
+        #expect(native.opens.isEmpty && native.handlerLookups.isEmpty && native.bundleReads.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
 

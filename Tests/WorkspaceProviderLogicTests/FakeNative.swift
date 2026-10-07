@@ -3,6 +3,25 @@ import KoineProviderAPI
 
 @testable import WorkspaceProviderLogic
 
+/// How a test arranges an application location: the object at a path, as the filesystem would answer for it.
+/// Test vocabulary only; the provider reads a bundle by `readApplicationBundle(of:)`.
+struct ApplicationBundle: Sendable {
+    var url: URL
+    /// Nil for a bundle that declares none.
+    var bundleIdentifier: String?
+    var identity: FileIdentity
+}
+
+enum ApplicationInspection: Sendable {
+    /// Nothing at the path after symlink resolution: missing, or a dangling link.
+    case absent
+    /// Present, and not an application bundle.
+    case notApplication
+    case application(ApplicationBundle)
+    /// The metadata could not be read; this is never absence.
+    case unreadable(String)
+}
+
 /// The substituted private native adapter: every answer is set by the test, and
 /// every call the provider makes is recorded, so "nothing was submitted" and
 /// "nothing was inspected" are observed rather than inferred.
@@ -24,7 +43,6 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var documentHandlers: [String: URL] = [:]
     private var documentLookupLog: [URL] = []
     private var pathOpenLog: [(url: URL, application: URL, substituting: Bool)] = []
-    private var inspectionLog: [String] = []
     private var revealLog: [(path: String, root: Bool)] = []
     private var locations: [String: LocationResolution] = [:]
     private var locationLog: [String] = []
@@ -165,7 +183,6 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     // MARK: Observation
 
     var launches: [(url: URL, substituting: Bool)] { lock.withLock { launchLog } }
-    var inspected: [String] { lock.withLock { inspectionLog } }
     /// Every scheme the provider asked a default handler about, in order. The lookup has no
     /// other parameter, which is what makes it scheme-only.
     var handlerLookups: [WebURL.Scheme] { lock.withLock { handlerLookupLog } }
@@ -208,13 +225,6 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         lock.withLock {
             registrationLog.append(bundleIdentifier)
             return allRegistered[bundleIdentifier] ?? []
-        }
-    }
-
-    func inspectApplication(at path: String) -> ApplicationInspection {
-        lock.withLock {
-            inspectionLog.append(path)
-            return inspections[path] ?? .absent
         }
     }
 

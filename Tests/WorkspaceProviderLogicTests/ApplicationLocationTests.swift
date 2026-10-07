@@ -87,7 +87,6 @@ import Testing
     static func nothingElseWasAsked(_ native: FakeNative, sourceLocation: SourceLocation = #_sourceLocation) {
         #expect(native.registrationLookups.isEmpty, "no registration lookup", sourceLocation: sourceLocation)
         #expect(native.bundleReads.isEmpty, "no metadata read", sourceLocation: sourceLocation)
-        #expect(native.inspected.isEmpty, "no whole-path inspection", sourceLocation: sourceLocation)
         #expect(native.launches.isEmpty && native.pathOpens.isEmpty, "no submission", sourceLocation: sourceLocation)
     }
 
@@ -270,7 +269,6 @@ import Testing
         #expect(picked?.substituting == false)
         #expect(native.resolved == [Self.chosen, neighbour.path, match])
         #expect(native.bundleReads == [Self.chosen], "no candidate's own metadata was read")
-        #expect(native.inspected.isEmpty)
     }
 
     @Test(arguments: Neighbour.allCases)

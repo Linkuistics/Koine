@@ -84,7 +84,7 @@ import Testing
         native.document(path)
         let fields = try #require(LaunchTests.value(await provider.resolve(Self.request(.string(path)))))
         #expect(fields["value"] == .object(["path": .string(path)]))
-        #expect(native.resolved == [path], "resolved as written")
+        #expect(native.resolved == [path, Self.finderPath], "the path resolved as written, then Finder's registration")
         #expect(native.reveals == [path], "and submitted as written")
     }
 
@@ -141,7 +141,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(.string(path)))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.resolved.isEmpty && native.inspected.isEmpty && native.reveals.isEmpty)
+        #expect(native.resolved.isEmpty && native.bundleReads.isEmpty && native.reveals.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
 
@@ -163,7 +163,7 @@ import Testing
         #expect(fields["value"] == .null)
         #expect(Self.dependencyReason(fields) == .string("PATH_NOT_FOUND"))
         #expect(native.resolved == ["/Users/test/gone.txt"])
-        #expect(native.inspected.isEmpty, "no application was inspected")
+        #expect(native.bundleReads.isEmpty, "no application was inspected")
         #expect(native.reveals.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
@@ -190,7 +190,7 @@ import Testing
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request())))
         #expect(failure.kind == .failed)
         #expect(failure.message.contains("Permission denied"))
-        #expect(native.reveals.isEmpty && native.inspected.isEmpty)
+        #expect(native.reveals.isEmpty && native.bundleReads.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
 

@@ -13,7 +13,9 @@
 # spelling and only through metadata calls; the reveal root first resolves the caller's location by the
 # descriptor walk (search-only single-component calls, no whole-path call, nothing listed or
 # opened) and applies the application hand-off limit before any whole-path call addresses
-# the location, then makes ONE Finder selection request,
+# the location (and every application the provider discovers itself, a preferred copy, a default handler, the default
+# browser and Finder, is resolved by the same walk and limited before its bundle is read from the resolved
+# spelling, with no whole-path inspection of a registered location left), then makes ONE Finder selection request,
 # NSWorkspace.selectFile(_:inFileViewerRootedAtPath:), in its two documented forms (an item,
 # or the filesystem root as a root view), from a background queue, and nothing else; and no
 # activation, hiding, raising, accessibility, event-posting, scripting or
@@ -228,6 +230,71 @@ echo "the bundle's metadata is read from the resolved spelling's bytes, as one r
 ROOT_CALL="$(grep -n -A12 -F 'func isFilesystemRoot(literalPath path: String)' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -c -E 'lstat\(')"
 [ "${ROOT_CALL}" = 2 ] || fail "the root decision is not exactly two lstat calls, the literal path and /"
 echo "the root decision: lstat of the literal text and of /, after the limit"
+
+echo
+echo "== Source: a discovered application is resolved by the walk and limited, then its bundle read from the resolved spelling, and no location is addressed by a whole-path call before the limit"
+# Stages 3 and 4 of the spec's order: the identifier's preferred copy (an unconstrained launch or named open), the default
+# handler of a document or of a web scheme, and Finder's registration. Each discovery read reports a location; the one
+# stage resolves it by the walk, refuses an over-limit spelling, and only then reads the bundle.
+DISCOVERED_STAGE=Providers/WorkspaceProvider/Logic/DiscoveredStage.swift
+D_RESOLVE="$(line_in "${DISCOVERED_STAGE}" 'native.resolveLocation(discovered.path)')"
+D_LIMIT="$(line_in "${DISCOVERED_STAGE}" 'HandOffLimit.refusal(of: location')"
+D_READ="$(line_in "${DISCOVERED_STAGE}" 'native.readApplicationBundle(of: found)')"
+for found in "${D_RESOLVE}" "${D_LIMIT}" "${D_READ}"; do
+    [ -n "${found}" ] || fail "the discovered-application stage no longer has one of resolve, limit, bundle read"
+done
+[ "${D_RESOLVE}" -lt "${D_LIMIT}" ] && [ "${D_LIMIT}" -lt "${D_READ}" ] ||
+    fail "the discovered-application stage's order is not resolve, limit, bundle read"
+echo "discovered-application order: resolve (line ${D_RESOLVE}), limit (${D_LIMIT}), bundle read (${D_READ})"
+[ "$(grep -c -F 'readApplicationBundle(' "${DISCOVERED_STAGE}")" = 1 ] || fail "the discovered-application stage reads other than the one bundle"
+if grep -n -E 'inspectApplication|readPathFacts|realpath|resourceValues|[^A-Za-z]stat\(' "${DISCOVERED_STAGE}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the discovered-application stage addresses a location by a call of its own"
+fi
+# Every discovered application goes through that stage, after its own discovery read: seen to be exactly the three callers.
+CALLERS="$(grep -rn -E 'settleDiscoveredApplication\(' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' | grep -v 'func settleDiscoveredApplication' || true)"
+echo "${CALLERS}"
+[ "$(grep -c . <<<"${CALLERS}")" = 3 ] || fail "the discovered-application stage does not have exactly three callers (a preferred copy, a web handler, an item handler)"
+SELECTION=Providers/WorkspaceProvider/Logic/Selection.swift
+line_before() { # file, discovery-read text, stage text: the discovery read comes first
+    local read stage
+    read="$(line_in "$1" "$2")"
+    stage="$(line_in "$1" "$3")"
+    [ -n "${read}" ] && [ -n "${stage}" ] && [ "${read}" -lt "${stage}" ]
+}
+line_before "${SELECTION}" 'native.registeredApplication(bundleIdentifier: request.bundleIdentifier)' 'settleDiscoveredApplication(registered' ||
+    fail "a preferred copy is not found before it is resolved"
+line_before "${SELECTION}" 'native.defaultApplication(forWebScheme: scheme)' 'settleDiscoveredApplication(handler' ||
+    fail "a web handler is not found before it is resolved"
+line_before "${OPEN}" 'native.defaultApplication(toOpen: target)' 'settleDiscoveredApplication(handler' ||
+    fail "an item handler is not found before it is resolved"
+echo "each caller makes its discovery read, then the stage"
+# The old whole-path inspection of a registered location is gone, from the adapter and from the seam. Seen first to match.
+printf 'func inspectApplication(at path: String) -> ApplicationInspection {\nnative.inspectApplication(at: handler.path)\n' >"${CONTROL}"
+[ "$(grep -c -E 'inspectApplication' "${CONTROL}")" = 2 ] || fail "the inspection pattern does not match the control it must"
+if grep -rn -E 'inspectApplication|ApplicationInspection' "${SOURCES[@]}"; then
+    fail "the whole-path inspection of a registered application location is still there"
+fi
+echo "no whole-path inspection of a registered location remains"
+# What whole-path calls the adapter still makes: the reveal root rule's two lstat calls, after the limit on the literal, and the
+# Info.plist's stat and access, on the resolved spelling after the limit. No realpath, and no errno but ENOENT read as absence.
+NATIVE_FILE=Providers/WorkspaceProvider/Sources/NativeWorkspace.swift
+printf 'realpath(path, nil)\nlet r = stat(p, &s)\nlstat(p, &s)\naccess(p, R_OK)\n' >"${CONTROL}"
+[ "$(grep -c -E '(^|[^A-Za-z_.])(realpath|stat|lstat|access)\([^)]' "${CONTROL}")" = 4 ] || fail "the whole-path pattern does not match the control it must"
+ADAPTER_CALLS="$(grep -n -E '(^|[^A-Za-z_.])(realpath|stat|lstat|access)\([^)]' "${NATIVE_FILE}" | grep -v -E '^[0-9]+:\s*//' || true)"
+echo "${ADAPTER_CALLS}"
+[ "$(grep -c . <<<"${ADAPTER_CALLS}")" = 4 ] || fail "the adapter makes a whole-path call other than the root rule's two lstat and the Info.plist's stat and access"
+INFO_PLIST="$(awk '/private func infoPlistDenial\(in bundle: URL\)/ {on=1} on {print} on && /^    }$/ {exit}' "${NATIVE_FILE}")"
+[ "$(grep -c -E '(^|[^A-Za-z_.])(stat|access)\([^)]' <<<"${INFO_PLIST}")" = 2 ] || fail "the Info.plist's stat and access are not in the one function"
+if grep -n -E 'realpath' "${NATIVE_FILE}" | grep -v -E '^[0-9]+:\s*//'; then fail "the adapter still calls realpath"; fi
+IS_MISSING="$(awk '/private func isMissing\(_ error: Error\)/ {on=1} on {print} on && /^    }$/ {exit}' "${NATIVE_FILE}")"
+[ -n "${IS_MISSING}" ] || fail "isMissing is not one function"
+if grep -E 'ELOOP|ENAMETOOLONG|ENOTDIR' <<<"${IS_MISSING}" | grep -v -E '^\s*//'; then
+    fail "an errno that names more than a missing file is read as absence"
+fi
+if grep -rn -E 'ELOOP|ENAMETOOLONG' "${NATIVE_FILE}" Providers/WorkspaceProvider/Logic/Selection.swift "${DISCOVERED_STAGE}" "${APPLICATION_STAGE}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "an errno of a long or cyclic location is handled outside the walk"
+fi
+echo "no ELOOP or ENAMETOOLONG is mapped to absence in the adapter or a stage; the walk alone decides absence"
 
 echo
 echo "== Source: exactly one Finder selection request, in its two documented forms, and nothing else for a reveal"

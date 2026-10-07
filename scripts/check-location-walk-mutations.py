@@ -5,7 +5,9 @@
 A control that has never been seen to fail is not a control (grove's rule for a clean
 read). The walk tests (`LocationWalkTests`, S), the planner tests (`RevealLocationTests`, L, and
 `OpenLocationTests`, O), the supplied-application stage's planner tests (`ApplicationLocationTests`, A, and
-`WorkspaceInstallationsCompositionTests`, G) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which
+`WorkspaceInstallationsCompositionTests`, G), the discovered-application stage's planner tests
+(`DiscoveredApplicationTests`, D, and `WorkspaceCompositionTests`, C, for the browser, the default handler and Finder through
+the public engine) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which
 asks both a reveal and an open, and `WorkspaceApplicationLocationTests`, B, which asks a constrained launch and a
 named open) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
 (.build/location-walk-mutations/tree, with its own build directory, so later runs are
@@ -36,11 +38,14 @@ LIMIT = LOGIC + "HandOffLimit.swift"
 TARGET = LOGIC + "TargetStage.swift"
 OPEN = LOGIC + "OpenPath.swift"
 APPLICATION = LOGIC + "ApplicationStage.swift"
+DISCOVERED = LOGIC + "DiscoveredStage.swift"
+SELECTION = LOGIC + "Selection.swift"
 NATIVE = "Providers/WorkspaceProvider/Sources/NativeWorkspace.swift"
 
 # S: the walk's own source; L: reveal's planner; O: open's planner; A: the supplied-application stage's planner;
 # G: that stage through the public engine; N: the signed bundle, asked for a reveal and an open of a path;
-# B: the signed bundle, asked for a constrained launch and a named open.
+# B: the signed bundle, asked for a constrained launch and a named open; D: the discovered-application stage's planner;
+# C: the discovered default handler, browser and Finder through the public engine.
 SUITES = {
     "S": "LocationWalkTests",
     "L": "RevealLocationTests",
@@ -49,6 +54,8 @@ SUITES = {
     "G": "WorkspaceInstallationsCompositionTests",
     "N": "WorkspaceLongLocationTests",
     "B": "WorkspaceApplicationLocationTests",
+    "D": "DiscoveredApplicationTests",
+    "C": "WorkspaceCompositionTests",
 }
 
 # name -> (file, text to replace, replacement, suites that must go red)
@@ -149,19 +156,19 @@ MUTATIONS = {
         LIMIT,
         "where spelling.byteCount >= pathMax",
         "where spelling.byteCount > pathMax",
-        "SLONAB",
+        "SLONABDC",
     ),
     "the-limit-ignores-expansions": (
         LIMIT,
         "where spelling.byteCount >= pathMax {",
         "where spelling.byteCount >= pathMax && kind != .expanded(number: 1) && kind != .expanded(number: 2) {",
-        "SLONAB",
+        "SLONABD",
     ),
     "the-limit-counts-the-terminating-nul": (
         LIMIT,
         "static let pathMax = 1024",
         "static let pathMax = 1023",
-        "SLONAB",
+        "SLONABDC",
     ),
     "an-impossible-name-or-cycle-is-failed": (
         TARGET,
@@ -297,6 +304,74 @@ MUTATIONS = {
         "    for registered in candidates {",
         "    for registered in candidates.reversed() {",
         "A",
+    ),
+    "a-discovered-limit-is-not-applied": (
+        DISCOVERED,
+        '        if let refusal = HandOffLimit.refusal(of: location, forAction: action, noun: "registered application path") {\n'
+        "            return .failed(refusal)\n        }\n        found = location",
+        "        found = location",
+        "DCG",
+    ),
+    "a-discovered-bundle-is-read-before-the-limit": (
+        DISCOVERED,
+        '        if let refusal = HandOffLimit.refusal(of: location, forAction: action, noun: "registered application path") {\n'
+        "            return .failed(refusal)\n        }\n        found = location\n    }\n"
+        "    switch native.readApplicationBundle(of: found) {",
+        "        found = location\n    }\n    let early = native.readApplicationBundle(of: found)\n"
+        '    if let refusal = HandOffLimit.refusal(of: found, forAction: action, noun: "registered application path") { return .failed(refusal) }\n'
+        "    switch early {",
+        "D",
+    ),
+    "an-impossible-name-or-cycle-at-a-discovered-location-is-absence": (
+        DISCOVERED,
+        "    case .absent(let absence) where absence.isImpossibleOrCycle:\n"
+        "        // Neither is a missing registration: the location cannot be what discovery reported.\n"
+        "        return .failed(\n"
+        '            "The registered application path could not be resolved: \\(explanation(of: absence)).")\n',
+        "",
+        "D",
+    ),
+    "a-failed-walk-at-a-discovered-location-is-absence": (
+        DISCOVERED,
+        'return .failed("The registered application path could not be resolved at \\(component.debugDescription): \\(cause).")',
+        "return .absent",
+        "D",
+    ),
+    "a-discovered-non-application-is-an-application": (
+        DISCOVERED,
+        "    case .notApplication: return .absent\n    case .unreadable",
+        "    case .notApplication: return .application(identifier: nil)\n    case .unreadable",
+        "D",
+    ),
+    "an-unreadable-discovered-bundle-is-absence": (
+        DISCOVERED,
+        "    case .unreadable(let reason): return .failed(unreadable(reason))\n    case .application(let identifier): return .application(identifier: identifier)",
+        "    case .unreadable: return .absent\n    case .application(let identifier): return .application(identifier: identifier)",
+        "D",
+    ),
+    "a-discovered-location-that-is-gone-is-failed": (
+        DISCOVERED,
+        "    case .absent: return .absent  // a registration whose bundle is gone",
+        '    case .absent: return .failed("x")  // a registration whose bundle is gone',
+        "D",
+    ),
+    "an-unconstrained-launch-does-not-check-the-identifier": (
+        SELECTION,
+        "        guard identifier == request.bundleIdentifier else { return mismatch(request) }\n        return .selected(registered, substituting: true)",
+        "        return .selected(registered, substituting: true)",
+        "D",
+    ),
+    "a-default-browser-must-declare-an-identifier": (
+        SELECTION,
+        "    case .application: return .selected(handler, substituting: true)\n    }\n}\n\nprivate func noDefaultHandler",
+        "    case .application(let identifier):\n        guard identifier != nil else { return noDefaultHandler() }\n        return .selected(handler, substituting: true)\n    }\n}\n\nprivate func noDefaultHandler",
+        "D",
+    ),
+    "an-unconstrained-launch-forbids-substitution": (
+        SELECTION,
+        "        guard identifier == request.bundleIdentifier else { return mismatch(request) }\n        return .selected(registered, substituting: true)",
+        "        guard identifier == request.bundleIdentifier else { return mismatch(request) }\n        return .selected(registered, substituting: false)",
+        "DG",
     ),
     "the-selected-copy-allows-substitution": (
         APPLICATION,

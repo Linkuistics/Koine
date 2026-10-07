@@ -139,7 +139,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(Self.failure(await provider.resolve(Self.request(identifier, path: path))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.launches.isEmpty && native.inspected.isEmpty)
+        #expect(native.launches.isEmpty && native.bundleReads.isEmpty)
     }
 
     @Test func aMalformedApplicationArgumentIsInput() async throws {
@@ -150,7 +150,7 @@ import Testing
             let failure = try #require(Self.failure(await provider.resolve(request)))
             #expect(failure.kind == .invalidInput)
         }
-        #expect(native.launches.isEmpty && native.inspected.isEmpty)
+        #expect(native.launches.isEmpty && native.bundleReads.isEmpty)
     }
 
     // MARK: The bounded acknowledgment

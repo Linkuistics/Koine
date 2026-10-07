@@ -144,7 +144,7 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         }
         guard !Task.isCancelled else { return failed("Cancelled before the default browser was looked up.") }
         let native = native
-        let selection = await onQueue { selectWebHandler(webURL.scheme, native: native) }
+        let selection = await onQueue { selectWebHandler(webURL.scheme, forAction: "opened", native: native) }
         switch selection {
         case .dependency(let reason, let guidance): return .success(dependency(reason, guidance))
         case .failed(let message): return failed(message)

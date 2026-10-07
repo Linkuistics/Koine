@@ -136,9 +136,9 @@ func planPathOpen(_ path: LocalPath, application: ApplicationRequest?, native: s
 /// only; default opening of a protected document stays pending Antony's decision.
 func selectPathHandler(_ target: URL, native: some WorkspaceNative) -> Selection {
     guard let handler = native.defaultApplication(toOpen: target) else { return noPathHandler() }
-    switch native.inspectApplication(at: handler.path) {
-    case .absent, .notApplication: return noPathHandler()  // a stale registration
-    case .unreadable(let reason): return .failed("The application could not be inspected: \(reason).")
+    switch settleDiscoveredApplication(handler, forAction: "opened", native: native) {
+    case .absent: return noPathHandler()  // a stale registration
+    case .failed(let message): return .failed(message)
     case .application: return .selected(handler, substituting: true)
     }
 }

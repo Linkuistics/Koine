@@ -17,25 +17,6 @@ struct FileIdentity: Equatable, @unchecked Sendable {
     }
 }
 
-/// An application bundle as inspected, after symlinks were resolved.
-struct ApplicationBundle: Sendable {
-    /// The resolved location of the bundle.
-    var url: URL
-    /// Nil for a bundle that declares none.
-    var bundleIdentifier: String?
-    var identity: FileIdentity
-}
-
-enum ApplicationInspection: Sendable {
-    /// Nothing at the path after symlink resolution: missing, or a dangling link.
-    case absent
-    /// Present, and not an application bundle.
-    case notApplication
-    case application(ApplicationBundle)
-    /// The metadata could not be read; this is never absence.
-    case unreadable(String)
-}
-
 /// What reading the application bundle at a resolved location found. There is no absence: the walk had just
 /// found the object, so a read that reports nothing there is a failure, never a missing application.
 enum BundleRead: Sendable {
@@ -79,14 +60,8 @@ protocol WorkspaceNative: Sendable {
     func registeredApplication(bundleIdentifier: String) -> URL?
     /// Every registered copy of the identifier.
     func registeredApplications(bundleIdentifier: String) -> [URL]
-    /// Prompt-free metadata inspection (docs/verification/protected-path-metadata.md):
-    /// `realpath`, resource values and `Bundle(url:)`, never a default-handler lookup. It addresses a location
-    /// Launch Services reported, not one the caller supplied, until `discovered-applications` replaces it with
-    /// the walk; a caller's `applicationPath` goes through `resolveLocation` and `readApplicationBundle`.
-    func inspectApplication(at path: String) -> ApplicationInspection
-
     /// Prompt-free metadata of the application bundle the walk resolved, read from its resolved spelling and
-    /// never the caller's: the `isApplicationKey` resource value and the bundle's identifier
+    /// never the one Launch Services or the caller named: the `isApplicationKey` resource value and the bundle's identifier
     /// (docs/verification/protected-path-metadata.md). The caller applied the hand-off limit first. The
     /// file identity is the walk's own device and inode, so nothing here reads it. Never reads contents beyond
     /// the bundle's own Info.plist, never lists a directory, never asks for a default handler.

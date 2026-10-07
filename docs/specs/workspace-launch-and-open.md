@@ -239,14 +239,17 @@ transport outcome can be unknown even when the app opens successfully.
 
 ### Long-location action boundary
 
-**Designed for v1; the target stage of reveal and of open and the supplied-application stage implemented, the
-rest unimplemented.** The descriptor walk, the hand-off limit and the target stage are accepted at L, G and N
+**Designed for v1; the target stage of reveal and of open, the supplied-application stage and the
+discovered-application stage implemented, the rest unimplemented.** The descriptor walk, the hand-off limit and the target stage are accepted at L, G and N
 for reveal ([record](../verification/reveal-locations.md)) and for open
 ([record](../verification/open-path-locations.md)), and the supplied-application stage (a constrained launch's
 and a named open's `applicationPath`, with the registered-candidate comparison) at L, G and N
 ([record](../verification/application-locations.md)), with the present outcomes no refusal or result shows
-left to V. The discovered-application stage, receipt executable identities and the 1.0.1 release are not
-yet built.
+left to V. The discovered-application stage (an unconstrained launch's or a named open's preferred copy, a default
+handler, the default web browser and Finder) is accepted at L and G
+([record](../verification/discovered-applications.md)), with its N and V rows left to
+`application-locations-vm` because Launch Services' registrations cannot be arranged on a host. Receipt
+executable identities and the 1.0.1 release are not yet built.
 Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
@@ -369,7 +372,8 @@ that location by path.
 3. **Discovered application** (a launch or named open without
    `applicationPath`, the default handler, and reveal's Finder). A discovery read finds the location: the
    identifier's preferred registered copy, the default handler for the target that
-   passed stage 1, or Finder's registration. No registration is
+   passed stage 1, the default web browser for a URL open (found by its scheme alone, as that
+   operation already requires), or Finder's registration. No registration is
    `APPLICATION_NOT_INSTALLED` and a completed nil handler report is
    `NO_DEFAULT_HANDLER`. Resolve the discovered location: established absence is
    that same dependency, as a stale registration is today, and a resolution

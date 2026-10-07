@@ -566,7 +566,7 @@ tasks:
       - scripts/vm-verify-enrollment.sh
 
   check:launch-call-path:
-    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
+    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, every application it discovers itself resolved by the descriptor walk and limited before its bundle is read, with no whole-path inspection of a registered location left, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
     deps: [app]
     cmds:
       - scripts/check-launch-call-path.sh

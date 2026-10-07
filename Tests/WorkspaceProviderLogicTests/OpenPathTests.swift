@@ -140,7 +140,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(.string(path)))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.pathInspected.isEmpty && native.inspected.isEmpty && native.documentLookups.isEmpty)
+        #expect(native.pathInspected.isEmpty && native.bundleReads.isEmpty && native.documentLookups.isEmpty)
         #expect(native.pathOpens.isEmpty && native.registeredApplications(bundleIdentifier: Self.zed).count == 1)
         #expect(provider.submissionsInFlight == 0)
     }
@@ -166,7 +166,7 @@ import Testing
         let (native, provider) = Self.bench()
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(application: application))))
         #expect(failure.kind == .invalidInput)
-        #expect(native.pathInspected.isEmpty && native.inspected.isEmpty && native.pathOpens.isEmpty)
+        #expect(native.pathInspected.isEmpty && native.bundleReads.isEmpty && native.pathOpens.isEmpty)
     }
 
     // MARK: Absence: the target first, then the handler
@@ -181,7 +181,7 @@ import Testing
         #expect(Self.dependencyReason(fields) == .string("PATH_NOT_FOUND"))
         #expect(native.resolved == ["/Users/test/gone.txt"])
         #expect(native.pathInspected.isEmpty, "an absent target has no metadata to read")
-        #expect(native.documentLookups.isEmpty && native.inspected.isEmpty, "a missing file is not conflated with a missing handler")
+        #expect(native.documentLookups.isEmpty && native.bundleReads.isEmpty, "a missing file is not conflated with a missing handler")
         #expect(native.pathOpens.isEmpty && provider.submissionsInFlight == 0)
     }
 
@@ -200,7 +200,7 @@ import Testing
             LaunchTests.value(
                 await provider.resolve(Self.request(.string("/Users/test/gone.txt"), application: Self.named("com.example.none")))))
         #expect(Self.dependencyReason(fields) == .string("PATH_NOT_FOUND"))
-        #expect(native.inspected.isEmpty)
+        #expect(native.bundleReads.isEmpty)
     }
 
     @Test func anExistingPathWithNoDefaultHandlerIsNoDefaultHandler() async throws {
@@ -333,7 +333,7 @@ import Testing
             LaunchTests.failure(await provider.resolve(Self.request(.string("/Users/test/payload"), application: application))),
             Comment(rawValue: label))
         #expect(failure.kind == .invalidInput, Comment(rawValue: label))
-        #expect(native.documentLookups.isEmpty && native.inspected.isEmpty, "refused before any handler is chosen: \(label)")
+        #expect(native.documentLookups.isEmpty && native.bundleReads.isEmpty, "refused before any handler is chosen: \(label)")
         #expect(native.pathOpens.isEmpty && provider.submissionsInFlight == 0, Comment(rawValue: label))
     }
 
@@ -395,7 +395,7 @@ import Testing
         let failure = try #require(LaunchTests.failure(await provider.resolve(Self.request(application: application))))
         #expect(failure.kind == .failed)
         #expect(failure.message.contains("Operation not permitted"))
-        #expect(native.documentLookups.isEmpty && native.inspected.isEmpty && native.pathOpens.isEmpty)
+        #expect(native.documentLookups.isEmpty && native.bundleReads.isEmpty && native.pathOpens.isEmpty)
         #expect(provider.submissionsInFlight == 0)
     }
 
