@@ -56,6 +56,13 @@ applications were measured the same way.
   registered selection with a long copy, long receipt identity, long reveal
   observation beyond the failure, and the long-lookup prompt. No alias fixture was
   built.
+- Only submission was measured at the exact boundary. The threshold sweep
+  (`results/state.json`) submitted `sample.k134w` paths of 1,023, 1,024 and
+  1,025 bytes but ran `stat`, `FSPathMakeRef` and handler lookup on the sibling
+  `sample.txt`, two bytes shorter: those answered at 1,021, 1,022 and 1,023
+  bytes, and their next tested length, 1,098, failed. Registration was tried
+  only short and at about 1,500 bytes (`results/register.jsonl`). "1,023 passes,
+  1,024 fails" below is exact for submission and bounded for the other services.
 - One OS build (26.5/25F71), one SDK (27.0, clang 21.0.0), the probe signed Team
   `TA43A4RUP3` with Koine's entitlements and no usage keys; a reused VM; digest-frozen
   probe, builder, Info.plist/entitlements and archive (before = after in each of

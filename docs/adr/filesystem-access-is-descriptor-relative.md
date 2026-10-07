@@ -7,8 +7,11 @@ component from held directory handles (`openat`, `fstatat`, `readlinkat`,
 `FileManager`, `URL.path` or a joined absolute string. An absolute pathname is a
 value Koine reports to clients and hands to applications; it is not the access
 primitive. Koine's resolution mirrors the kernel's own semantics: literal
-components, at most 32 symbolic-link expansions, physical `..`, trailing-slash
-directory demands and per-filesystem name limits.
+components, at most 32 symbolic-link expansions, relative link text read from
+the link's own directory, physical `..` and trailing-slash directory demands. It
+never pre-judges a name against a filesystem limit: a successful lookup is
+presence, and a name-length refusal proves absence only where the comparison
+cannot depend on the filesystem's unknown unit.
 
 The trade-off is between a long location being misreported and Koine owning
 resolution semantics. Whole-path calls stop at the SDK's `PATH_MAX` of 1,024
@@ -17,9 +20,9 @@ bytes including NUL, and the shipped action inspection mapped their
 [k134 prototype](../verification/long-action-route-prototype.md#what-was-measured)
 showed component-relative calls reaching about 1,500-byte items and
 distinguishing missing, below-file, cycle, link-budget and impossible-component
-causes that whole-path calls cannot. In exchange Koine carries its own link,
-dot and name-limit rules, which must match the kernel exactly, and a descriptor
-budget. The [application survey](../research/long-pathname-applications.md#51-component-relative-resolution-for-presence-and-cause)
+causes that whole-path calls cannot. In exchange Koine carries its own link and
+dot rules, which must match the kernel exactly, a conservative reading of
+name-limit failures, and a descriptor budget. The [application survey](../research/long-pathname-applications.md#51-component-relative-resolution-for-presence-and-cause)
 records how mature walks failed — descriptor exhaustion, broken recovery
 branches, depth-evading security checks, reconstructed strings re-entering
 whole-path calls, consent prompts and drifting spelling — and the

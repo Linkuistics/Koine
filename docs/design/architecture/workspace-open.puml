@@ -15,9 +15,10 @@ Core -> Workspace: admitted action
 Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
 note over Workspace,Native
 First-use metadata route measured prompt-free on three protected roots.
-Designed 1.0.1 (v1): Koine resolves the location component by component;
-only that resolution establishes absence. A spelling needing PATH_MAX or
-more is failed before any request; within it the route is unchanged.
+Designed 1.0.1 (v1): Koine resolves the target, then the application,
+component by component; only that resolution establishes absence. A spelling
+of PATH_MAX (1,024) bytes or more, NUL not counted, is failed before any
+request; within it the route is unchanged.
 Selected app URL is registered spelling of the constrained native identity.
 Document file-URL handler lookup prompts: protected default opening
 remains pending a human decision; do not attempt it as a readiness read.

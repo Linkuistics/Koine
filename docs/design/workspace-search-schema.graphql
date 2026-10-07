@@ -143,7 +143,7 @@ enum WorkspaceSearchInstallationState {
   UNKNOWN
 }
 
-"""Requires workspace:read. A location observation, using the checked canonical target spelling, not a process incarnation or resource reference. Pass both known identifier and path to the existing constrained launch input; actions revalidate. The search ceiling does not establish actionability: actions resolve the location themselves and, in v1, refuse with failed any extant location whose spelling needs PATH_MAX (1,024) bytes or more, without dropping or rewriting it. Never drop the selected path."""
+"""Requires workspace:read. A location observation, using the checked canonical target spelling, not a process incarnation or resource reference. Pass both known identifier and path to the existing constrained launch input; actions revalidate. The search ceiling does not establish actionability: actions resolve the location themselves and, in v1, refuse with failed any extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, without dropping or rewriting it. Never drop the selected path."""
 type WorkspaceApplicationMatch {
   applicationPath: String!
   """Observed final filename including extension, of the canonical bundle target, never a link alias name; no localized display-name or icon lookup."""
@@ -181,7 +181,7 @@ type WorkspaceSearchApplicationSelector {
 
 """Requires workspace:read. A selectable location, not a pinned file identity. Symlinks/aliases are names only; descendant symlinks are never traversed."""
 type WorkspaceFileMatch {
-  """Canonical parent directory path plus the lossless observed entry name; final symlink/alias targets are not resolved. Firmlink-alias roots deduplicate equal returned locations. Values through 8192 bytes do not establish open/reveal support: in v1 an action refuses an extant location whose spelling needs PATH_MAX (1,024) bytes or more with failed, never as absence. The location stays returned and copyable; no shorter search ceiling applies."""
+  """Canonical parent directory path plus the lossless observed entry name; final symlink/alias targets are not resolved. Firmlink-alias roots deduplicate equal returned locations. Values through 8192 bytes do not establish open/reveal support: in v1 an action refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed, never as absence. The location stays returned and copyable; no shorter search ceiling applies."""
   path: String!
   name: String!
   kind: WorkspaceSearchFileKind!

@@ -296,6 +296,9 @@ k165 closed the k128 route node under Antony's 2026-10-07 v1 decision
 long-path application support in v1. Actions resolve locations themselves
 (`docs/adr/filesystem-access-is-descriptor-relative.md`) and refuse an extant
 location too long for the application hand-off with `failed`; search keeps its
-8,192-byte ceiling and drops nothing. Review k166, then planning k167, in
-launch-and-open precede search consumers k123/k120/k30. That refusal is an
-accepted limit, so k93's omissions decision need not re-decide it.
+8,192-byte ceiling and drops nothing. Review k166, its integration k168 and
+re-review k169, then planning k167, in launch-and-open precede search consumers
+k123/k120/k30. That refusal is an accepted limit, so k93's omissions decision
+need not re-decide it. k168 fixed the limit's count (pathname bytes without NUL:
+1,023 handed over) and the target/application stage order, keeping retained
+short-path outcomes.

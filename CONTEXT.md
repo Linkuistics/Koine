@@ -192,10 +192,12 @@ yields the object's device and inode and its literal, link-expanded and resolved
 spellings ([decision](docs/adr/filesystem-access-is-descriptor-relative.md)).
 _Avoid_: realpath check, path inspection (for the whole-path calls it replaced)
 
-**Application hand-off limit**: The `PATH_MAX` boundary (1,024 bytes including
-NUL) at which macOS opener, registration, type and handler services stop
-accepting a whole pathname. In v1 an action refuses an extant location whose
-spelling reaches it with `failed`, before asking any application
+**Application hand-off limit**: The `PATH_MAX` buffer size (1,024 bytes including
+the NUL, so a pathname of at most 1,023 bytes) that bounds the whole pathnames
+macOS opener, registration, type and handler services take; k134 measured the
+exact boundary at submission. In v1 an action refuses an extant location whose
+spelling is 1,024 bytes or more, not counting the NUL, with `failed`, before
+asking any application
 ([boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)).
 _Avoid_: overlength path, path too long (as an absence or input error)
 

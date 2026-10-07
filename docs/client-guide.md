@@ -536,8 +536,8 @@ The 8,192-byte search ceiling does not make every result actionable. In the
 designed v1 action contract (release/schema 1.0.1, unimplemented), launch, open
 and reveal resolve the location themselves, component by component. A location
 that has gone is still `PATH_NOT_FOUND`, or `APPLICATION_NOT_INSTALLED` for an
-installation, whatever its length. An extant location whose spelling needs 1,024
-bytes or more including the terminating NUL — as written, after a link expands,
+installation, whatever its length. An extant location whose spelling is 1,024
+bytes or more, not counting a terminating NUL — as written, after a link expands,
 or fully resolved — is refused with `failed` before any application is asked,
 and the guidance names the application hand-off limit and the byte count. macOS's
 opener, registration and handler services take whole pathnames and stop there;
@@ -725,10 +725,10 @@ What differs:
    inspection found nothing openable at that spelling and nothing was submitted: a missing
    item, a link to nothing or a path below a file can report it, and an item created
    a moment later is not seen. Inspection that was denied is `failed`, never
-   `PATH_NOT_FOUND`. A link cycle and a component longer than its filesystem
-   allows report it too. The retained 1.0.0 also reports every ELOOP/ENAMETOOLONG
-   that way, which is a defect: a long link chain or a long but extant path proves
-   no absence. The designed 1.0.1 resolves the path component by component and
+   `PATH_NOT_FOUND`. A link cycle and a component that can never exist on its
+   filesystem report it too. The retained 1.0.0 also reports every ELOOP/ENAMETOOLONG
+   that way, which is a defect: a long link chain, a long but extant path or a long
+   non-ASCII name proves no absence. The designed 1.0.1 resolves the path component by component and
    returns `failed` for those instead, including an extant location too long to
    hand to an application, as the
    [long-location boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)

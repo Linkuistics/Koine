@@ -2347,9 +2347,10 @@ decides what an action does with a returned location. Koine resolves the locatio
 component by component under the
 [descriptor-relative access decision](../adr/filesystem-access-is-descriptor-relative.md),
 so a returned location that still exists is never reported missing. If its
-literal, link-expanded or resolved spelling needs `PATH_MAX` (1,024) bytes or more
-including NUL, the action is refused before any application request with `failed`
-and guidance naming the hand-off limit. Locations within the limit act exactly as
+literal, link-expanded or resolved spelling is `PATH_MAX` (1,024) bytes or more,
+not counting its NUL (1,023 is the longest handed over), the action is refused
+before any application request with `failed` and guidance naming the hand-off
+limit. Locations within the limit act exactly as
 before. Making applications accept longer locations is deferred past v1
 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)); the
 [route evaluation](../verification/long-action-route.md#v1-decision) records the

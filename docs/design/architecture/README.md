@@ -48,20 +48,23 @@ deferred making applications accept long locations past v1
 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)) after the
 [separated local naming collection](../../verification/separated-local-url-naming-prototype.md).
 The [long-location view](index.html#diagram-workspace-long-locations) now draws
-the proposed v1 contract: Koine's own location resolution establishes absence or
+the v1 contract: Koine's own location resolution establishes absence or
 presence at any length under the
 [descriptor-relative access decision](../../adr/filesystem-access-is-descriptor-relative.md),
-then an extant location whose spelling needs `PATH_MAX` bytes or more is refused
-at the application hand-off with `failed`, before any request. Within the limit
-the accepted short-path route is unchanged. The design is proposed for its
-mandatory review and is unimplemented; native, binary, public and signed-VM
-acceptance belong to planning. The [route evaluation](../../verification/long-action-route.md#v1-decision)
+target first and then a supplied or discovered application, and an extant
+location whose spelling is `PATH_MAX` (1,024) bytes or more, not counting its
+NUL, is refused at the application hand-off with `failed`, before any request.
+Within the limit the accepted short-path route is unchanged. Its mandatory review's
+findings are integrated (the count convention, stage order, registered
+candidates, cycle state, link budget, name limits and reveal's root); the design
+is unimplemented, and native, binary, public and signed-VM acceptance belong to
+planning. The [route evaluation](../../verification/long-action-route.md#v1-decision)
 keeps every diagnostic as evidence, so the former route-candidates view, which
 drew the workaround search, is retired.
 
 Current changes:
 
-- [Resolve the location, then check the application hand-off limit](index.html#diagram-workspace-long-locations) — Redrawn for v1: resolution outcomes, the hand-off limit refusal, and the unchanged short-path route after it.
+- [Resolve the location, then check the application hand-off limit](index.html#diagram-workspace-long-locations) — Redrawn for v1 and its review: target and application stages, resolution outcomes, the hand-off limit refusal, and the unchanged short-path route within the limit.
 - [Launch or open, then capture desktop state](index.html#diagram-workspace-open) — The inspection note and uncertain-inspection branch now state v1 resolution and the hand-off limit refusal.
 - [Keep dependency absence before the submission boundary](index.html#diagram-workspace-outcomes) — The inspection node now says absence comes only from Koine's own resolution and names the v1 refusal.
 - [Choose a location, then revalidate through existing actions](index.html#diagram-search-handoff) — The long-location note now states the v1 refusal instead of an unresolved route.

@@ -225,7 +225,7 @@ view because it has no parent. Native acknowledgment is not selection verificati
 | Invalid input or refused payload metadata | Existing input error at original response path, no `kind`; this field does not act. The path is the root field's own, its alias if one was used (`["workspaceOpenURL"]`), an execution error in an HTTP 200 answer. |
 | Missing client authority | `permission` / `capability`, before resource inspection. A revoked or unknown credential never reaches admission: it is HTTP 401 (`unauthenticated`). |
 | Filesystem access denied without established consent cause | `failed`; do not infer absence or invent a consent. |
-| Extant location whose literal, expanded or resolved spelling needs `PATH_MAX` bytes or more; link budget exhausted; metadata unacquired or malformed | Designed v1 repair: pre-submission `failed`; guidance names the stage, cause and byte count, and no domain request was made. Only Koine's own [resolution](#resolving-an-action-location) establishes absence; a later ELOOP, ENAMETOOLONG, nil or no-such-file never does. |
+| Extant target or selected application whose literal, expanded or resolved spelling is `PATH_MAX` (1,024) bytes or more, not counting its NUL; link budget exhausted; metadata unacquired or malformed | Designed v1 repair: pre-submission `failed`; guidance names the stage, cause and byte count, and no domain request was made. Only Koine's own [resolution](#resolving-an-action-location) establishes that a location is absent; a later ELOOP, ENAMETOOLONG, nil or no-such-file never does. |
 | Native error/false acknowledgment, timeout, or prerequisite lost after submission | `failed`; effects may have begun; no replay or alternate handler. |
 
 After admission, validate/inspect an open-path target before resolving its
@@ -242,7 +242,7 @@ transport outcome can be unknown even when the app opens successfully.
 **Designed for v1; unimplemented.** Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
-would need `PATH_MAX` bytes or more, with `failed` and a stated cause. Making
+is `PATH_MAX` (1,024) bytes or more, with `failed` and a stated cause. Making
 applications accept such locations is deferred past v1
 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)); Antony
 made that trade-off on 2026-10-07 after the
@@ -259,53 +259,160 @@ application hand-off, not a caller error.
 
 #### Resolving an action location
 
-Each action resolves its target, and a constrained launch or named open its
-`applicationPath`, before any platform lookup. Resolution starts from a handle on
-the filesystem root and takes the literal components in order. It opens each
-directory search-only (`O_SEARCH`), never for listing, and opens no file. `.` is
+Each location an action uses is resolved before any pathname-based platform call
+addresses it, in the [order below](#order-of-target-and-application-stages).
+Resolution starts from a handle on the filesystem root and takes the literal
+components in order. It opens each directory it descends through search-only
+(`O_SEARCH`), never for listing, and opens no file. The final component is
+examined with one `fstatat` from its parent and never opened, so, as with the
+accepted `stat`, a final directory needs no search permission of its own. `.` is
 skipped, `..` moves to the current directory's physical parent, and a symbolic
-link is expanded from its own text, absolute or relative, exactly as the kernel
-would. A trailing slash demands a directory. The final link is followed, as the
-accepted short-path contract does. Each step uses one single-component call,
-so its error names that component.
+link is expanded from its own text, absolute or relative to the directory that
+contains the link, exactly as the kernel would. A trailing slash demands a
+directory. The final link is followed for presence, type and the hand-off, as the
+accepted short-path contract does. Each step uses one single-component call, so
+its error names that component.
 
 | Resolution observation | Outcome |
 | --- | --- |
-| A component does not exist, or a non-directory sits where a directory is required, including a dangling link and a trailing slash after a file | `PATH_NOT_FOUND`; `APPLICATION_NOT_INSTALLED` for an application path. |
-| A component is longer than its directory's own name limit (`fpathconf`) | `PATH_NOT_FOUND`: an established impossible component. |
-| A link expansion repeats an earlier link with the same remaining path | `PATH_NOT_FOUND`: an established cycle. |
-| 32 expansions without such a repeat | `failed`: the link budget, not absence. |
-| Denial or any other error at a component | `failed`, naming the component and cause; never absence or an invented consent. |
-| Every component resolves | The object's device and inode, its type, whether it is the filesystem root, and three spellings: the literal path, each remaining path after a link expansion, and the resolved path. |
+| A component does not exist, or a non-directory sits where a directory is required, including a dangling link and a trailing slash after a file | Absent: `PATH_NOT_FOUND` for a target; the application dependency for an application location (below). |
+| A component's own lookup fails with `ENAMETOOLONG`, the component is ASCII, and its byte length exceeds the `fpathconf(_PC_NAME_MAX)` value its directory returns | An established impossible component: absent, `PATH_NOT_FOUND`, for a target; `failed` for an application location, as the accepted application inspection treats it. |
+| The same link text is read again in the same containing directory with the same exact pending suffix | An established cycle: absent, `PATH_NOT_FOUND`, for a target; `failed` for an application location, as above. |
+| Resolution needs a 33rd link expansion without such a repeat | `failed`: the link budget, not absence. |
+| Any other `ENAMETOOLONG` at a component (a non-ASCII name, or one within the returned limit), `fpathconf` returning `-1`, one link read twice with different text, denial, or any other error at a component | `failed`, naming the component and cause; never absence or an invented consent. |
+| Every component resolves | Present: the object's device and inode and its type; for reveal, the root decision below; and three spellings: the literal path, each remaining path after a link expansion, and the resolved path. |
 
-Absence is established only by this walk. A later platform nil, no-such-file
-wrapper, `ENOENT`, `ELOOP` or `ENAMETOOLONG` is `failed`, because the walk
-already found the object. Application-copy comparison uses the walk's device and
-inode for the constrained copy and for every registered candidate; a candidate
-the walk cannot resolve is unknown equality and `failed`, never a skipped copy.
-Receipt observation resolves the live executable's kernel path
-(`proc_pidpath`, up to 4,096 bytes) the same way, with the existing null rules.
+**Name limits.** A successful lookup always establishes presence, whatever the
+name's length or the limit `fpathconf` reports. Resolution never judges a name
+before looking it up and never creates a name to test one. Only the ASCII
+comparison establishes impossibility, because it is independent of the
+filesystem's unit: for ASCII, bytes, UTF-16 units, characters and every Unicode
+normal form count alike. Filesystems count other names differently (HFS+ reports
+255 for `_PC_NAME_MAX` yet admits 255 UTF-16 units, which can be 765 UTF-8
+bytes), so a non-ASCII `ENAMETOOLONG` is `failed`, not absence.
+
+**Cycles.** A cycle is a repeated resolver state, not a repeated link. Relative
+link text is read from the directory containing the link, and one symbolic-link
+inode can have entries in two directories, so the same link and pending suffix
+can recur on a finite path. The state is therefore the containing directory's
+device and inode, the link text, and the exact pending suffix including any
+trailing slash: what follows an expansion depends on nothing else, so a repeated
+state would recur at any budget. The link's own device and inode serve only to
+notice one link read twice with different text, which is a changed observation,
+`failed`. Up to 32 expansions are allowed, as the kernel allows: a location that
+resolves after its 32nd expansion is present. A cycle the budget ends before it
+repeats is the budget, `failed`; that includes a link whose expansion re-enters
+itself with a longer pending suffix each time (`a` → `a/x`), which never repeats a
+state. Only a repeated state establishes a cycle.
+
+**Reveal's root.** The accepted root rule stands. Finder's root view is used only
+when the object `lstat` of the literal path names is the filesystem root's own
+device and inode. `lstat` does not follow a final link unless the kernel's own
+lookup does, as it does for a trailing slash. So a link to `/`, such as
+`/Volumes/<name>`, is selected as the link, while `/Volumes/<name>/` names the
+root; `/`, `//`, `/.` and `/..` are the root; `/var/..` is `/private` by the
+physical parent and is not. The followed identity still decides presence and the
+hand-off.
+
+Absence of a location is established only by this walk. A later platform
+`ENOENT`, `ELOOP`, `ENAMETOOLONG` or no-such-file wrapper about a location the
+walk found is `failed`. That rule is about location absence: the accepted
+completed reports keep their meanings, so no registration for an identifier is
+`APPLICATION_NOT_INSTALLED`, a completed nil default-handler report for a
+resolved target is `NO_DEFAULT_HANDLER`, and a bundle with no identifier is a
+mismatch for a named selector. Receipt observation resolves the live executable's
+kernel path (`proc_pidpath`, up to 4,096 bytes) the same way, with the existing
+null rules.
+
+#### Order of target and application stages
+
+The accepted order stands: the target is settled before any application is
+chosen, so a missing target is never conflated with a missing application or
+handler. Every stage resolves a location and applies the
+[hand-off limit](#application-hand-off-limit) before any platform call addresses
+that location by path.
+
+1. **Target** (open and reveal). Resolve the caller's path: absent is
+   `PATH_NOT_FOUND`, a resolution failure is `failed`, an over-limit spelling is
+   refused. Only then are the target's type, application and alias flags read and,
+   for open, the payload policy applied. Launch has no target.
+2. **Supplied application** (a constrained launch or named open). Resolve
+   `applicationPath`: absent is `APPLICATION_NOT_INSTALLED`, a resolution failure
+   is `failed`, an over-limit spelling is refused before any registration or other
+   platform call. Then read the chosen copy's bundle metadata: a present
+   non-application is `APPLICATION_NOT_INSTALLED`; another identifier, or none, is
+   `APPLICATION_IDENTITY_MISMATCH`. Then compare it with the pertinent registered
+   candidates (the identifier's registered copies, then its preferred copy if not
+   among them), in that order, stopping at the first match. Each candidate is
+   resolved and compared by device and inode alone; its own metadata is not read.
+   A candidate the walk establishes absent, or whose device and inode differ, is
+   skipped, wherever it is enumerated. A candidate reached before any match whose
+   resolution fails, a cycle or impossible name included, leaves equality unknown,
+   which is `failed`, never a skipped copy; candidates after the match are not
+   examined, as before. A present chosen copy that matches no candidate is
+   unregistered: `APPLICATION_NOT_INSTALLED`. The matching registration is the
+   selected application.
+3. **Discovered application** (a launch or named open without
+   `applicationPath`, the default handler, and reveal's Finder). A discovery read finds the location: the
+   identifier's preferred registered copy, the default handler for the target that
+   passed stage 1, or Finder's registration. No registration is
+   `APPLICATION_NOT_INSTALLED` and a completed nil handler report is
+   `NO_DEFAULT_HANDLER`. Resolve the discovered location: established absence is
+   that same dependency, as a stale registration is today, and a resolution
+   failure, a cycle or impossible name included, is `failed`. The discovered
+   location is the selected application.
+4. **Selected application.** Apply the limit to the selected application's
+   spellings, then read the pathname-based metadata it still needs: for a
+   discovered application, a present non-application is the stage 3 dependency
+   and a named selector's identifier is checked as before. Reveal reports every
+   Finder dependency, a mismatch included, as `APPLICATION_NOT_INSTALLED`, as
+   before. Then submit: a launch or
+   open addresses the selected application's registered location, with the
+   caller's literal target bytes for an open; a reveal asks Finder to select the
+   caller's literal path, or for the root view.
+
+Candidates are resolved only to compare them. Because equality is now device and
+inode, an unequal candidate whose metadata cannot be read is skipped, where the
+retained identity read failed it; that failure existed only because equality was
+unknown, and resolution now settles it. The limit applies to the chosen copy and
+the selected application, never to an unequal candidate, so a long copy of the
+same application on disk does not stop a short workflow. A location the
+caller supplied is refused before any platform call on it; a discovered location
+is refused after the discovery read that found it and before anything addresses
+it by path. Discovery is a read, so in every case no domain request (launch, open
+or Finder reveal) was made.
 
 #### Application hand-off limit
 
-After resolution, compare the byte length of every spelling the platform would
-need: the literal path, every expanded remainder and the resolved path. For a
-launch or named open this also covers the selected registered application's
-location. If any of them needs `PATH_MAX` (1,024) bytes or more including its
-terminating NUL, the action is `failed` before submission. Guidance names the
-application hand-off stage, the spelling and its byte count, and says no request
-was made. No classification, registration, handler lookup, Finder request or
-launch is attempted. `PATH_MAX` is the SDK constant; the
-[k134 prototype](../verification/long-action-route-prototype.md#what-was-measured)
-found submission, registration, handler lookup and type acquisition all
-delivering or answering at 1,023 bytes and failing at 1,024.
+After a location resolves, compare the byte length of every spelling the platform
+would need: the literal path, every expanded remainder and the resolved path. The
+stages above apply this to the target, to a supplied `applicationPath` and to the
+selected application. Lengths count the pathname's bytes and never its
+terminating NUL. `PATH_MAX` (1,024) is the SDK's buffer size **including** that
+NUL, so the longest spelling handed over is 1,023 bytes. A spelling of 1,024
+bytes or more is refused: the action is `failed` before submission. Guidance
+names the application hand-off stage, the spelling and its byte count, and says
+no request was made. Nothing addresses a refused location by path afterwards: a
+refused target gets no classification, handler lookup, Finder request or open,
+and a refused application no metadata read, launch or open.
 
-Below the limit, the accepted short-path route is unchanged. Type, application
-and alias flags, registration, `Bundle` identifiers, handler lookup, submission,
-acknowledgment and receipt use the
+The gate is the SDK constant applied to every whole-pathname service, not a
+measured threshold of each one. The
+[k134 prototype](../verification/long-action-route-prototype.md#what-was-measured)
+measured the exact boundary only at submission: a 1,023-byte document path was
+delivered with exact bytes and 1,024 and 1,025 failed. Its metadata and handler
+lookups answered for 1,021 to 1,023-byte paths and next failed at the tested
+1,098 bytes, and registration was tried only short and at about 1,500 bytes.
+
+Below the limit, the accepted short-path route is unchanged. It uses the
 [protected-path metadata route](../verification/protected-path-metadata.md#inspection-results)
-addressed by the resolved spelling, and the target bytes submitted for opening or
-reveal remain the caller's literal path. Their accepted meanings stand. A nil
+with its accepted addressing: type, application and alias flags and `Bundle`
+identifiers read the resolved spelling, as the accepted `realpath` route did;
+registration is looked up by identifier; default-handler lookup keeps the
+caller's literal target, as accepted. Submission addresses the selected
+application's registered location and carries the caller's literal target bytes
+for opening or reveal; acknowledgment and receipt follow it. Their accepted
+meanings stand. A nil
 handler for a target the walk found is `NO_DEFAULT_HANDLER`. A completed no-type
 report is not a refusal. A bundle without an identifier mismatches a named
 selector but can still be a default handler. An application, executable or alias
@@ -360,20 +467,39 @@ records how mature walks failed. Each is an obligation here:
 Launch-and-open planning owns independently component-created action subjects;
 no search implementation is needed to close them:
 
-- **L** checks the planner's mapping for every resolution row and the limit with
-  the substituted private adapter.
+- **L** checks the planner's mapping for every resolution row, every stage and
+  the limit with the substituted private adapter, including the cases no fixture
+  can build: an over-limit discovered application or default handler; a stale
+  absent candidate, an unequal long candidate and an unequal candidate with
+  unreadable metadata beside the present chosen copy, each enumerated before and
+  after it (skipped); a candidate whose resolution fails before the match
+  (`failed`) and after it (not examined, selected); a cycle or impossible name at
+  an application location or default handler (`failed`); and a Finder
+  registration with another identifier (`APPLICATION_NOT_INSTALLED`).
 - **N** exercises the real walk on host fixtures: every resolution row at short
-  and roughly 1,500-byte depth, and the 1,023/1,024-byte boundary for a literal
-  path, a short literal whose link expansion is long, and the resolved spelling.
+  and roughly 1,500-byte depth; the 1,023/1,024-byte boundary (pathname bytes,
+  NUL not counted) for a literal path, a short literal whose link expansion is
+  long, and the resolved spelling; acyclic 31- and 32-link chains that resolve
+  and a 33-link chain that is the budget; the retained two-link cycle and finite
+  repeated dot-link; a self-extending link (`a` → `a/x`), which is the budget;
+  one symlink inode with entries in two directories whose path is finite, where a
+  filesystem admits that construction; a final directory without search
+  permission (mode 0600), which resolves present and keeps its accepted open and
+  reveal outcomes; the retained 300-byte
+  ASCII impossible component beside extant multibyte (over 255 UTF-8 bytes where
+  the filesystem admits it) and combining-character names, which must resolve;
+  and the reveal root decision on `/`, `//`, `/.`, `/..`, `/var/..` and a link to
+  `/` with and without a trailing slash, compared with the retained `lstat` rule.
 - **G** checks the public outcome: `failed` with guidance at the action's
   response path, never a dependency, for an extant over-limit location.
-- **V** uses signed isolated macOS. A 1,023-byte document opens in its default
-  handler and in Zed and is revealed. That positively controls the delivery and
-  Finder observers, which then show nothing delivered or selected for 1,024-byte
-  and roughly 1,500-byte files and directories. Also check: a missing long path
-  is `PATH_NOT_FOUND`, an over-limit constrained application path is `failed`,
-  short launch, named open and reveal still work with a long copy of the same
-  application on disk, and first-use resolution in Desktop, Documents and
+- **V** uses signed isolated macOS. A document whose path is 1,023 bytes opens in
+  its default handler and in Zed and is revealed. That positively controls the
+  delivery and Finder observers, which then show nothing delivered or selected
+  for 1,024-byte and roughly 1,500-byte files and directories. Also check: a
+  missing long path is `PATH_NOT_FOUND`, an over-limit constrained application
+  path is `failed`, short launch, named open and reveal still work with a long
+  copy of the same application on disk, the root and link-to-root reveals keep
+  their accepted forms, and first-use resolution in Desktop, Documents and
   Downloads is prompt-free.
 
 App-and-file-search acceptance owns the actual handoff: actual search returns an
@@ -540,7 +666,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Authority/revocation and disclosure | G, N, V | Neither capability alone works; both controls without reads suffice including receipts. Denial precedes inspection. Aliases/fragments/defaults/skips, multi-action preflight, revoke between actions, first unmet capability plus complete ordered set. V observes no denied launch/focus (URL: [open-url-vm.md](../verification/open-url-vm.md#refused-inputs-and-denied-grants); path: [open-path-vm.md](../verification/open-path-vm.md#refused-inputs-dependencies-and-denied-grants); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#refused-inputs-dependencies-and-denied-grants)). Native create, approve and existing-grant views plus GraphQL descriptions disclose any registered installed app, document execution/redirects by handlers, and both required controls, observed in the window and compared with the text management serves: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md). |
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
-| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary for literal, expanded and resolved spellings, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. All pending; no search implementation is required. |
+| Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. All pending; no search implementation is required. |
 | Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns an over-limit file and application; the unchanged selected path and identifier receive the stated `failed` refusal with no delivery, while a returned location within the limit acts, with independent witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,

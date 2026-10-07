@@ -9,8 +9,9 @@ long locations past v1 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koi
 The [v1 action boundary](../specs/workspace-launch-and-open.md#long-location-action-boundary)
 now owns the behavioural meaning: Koine's own
 [descriptor-relative resolution](../adr/filesystem-access-is-descriptor-relative.md)
-establishes presence and cause at any length, and a location whose spelling needs
-`PATH_MAX` bytes or more is refused at the application hand-off with `failed`.
+establishes presence and cause at any length, and a location whose spelling is
+`PATH_MAX` (1,024) bytes or more, not counting its NUL, is refused at the
+application hand-off with `failed`.
 The [route evaluation](long-action-route.md#v1-decision) records how the
 diagnostics that followed this analysis led there. The
 [search handoff](../specs/workspace-search.md#long-location-action-dependency)

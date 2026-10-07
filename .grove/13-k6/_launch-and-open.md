@@ -303,3 +303,15 @@ process: the guest agent costs seconds per exec and reports a false timeout for 
 a case made of many execs takes minutes. `app-and-file-search` acting on a chosen installation uses
 the constrained form this increment accepted, and `urlsForApplications` omits a copy that
 `urlForApplication` returns (the Trash), so never rely on the list alone.
+
+k168 integrated review k166's eight findings without changing the v1 decision,
+shapes, enums or profiles. The hand-off limit counts pathname bytes without the
+NUL (1,023 handed over, 1,024 refused); only submission was measured at that exact
+boundary. A target stage precedes a supplied or discovered application stage, the
+limit precedes any pathname call on a location and never applies to an unequal
+registered candidate, and retained application-location, candidate-order and
+Finder outcomes stand. Cycles are a repeated (containing directory, link text,
+pending suffix) state; 32 expansions are allowed; only an ASCII over-limit name
+proves impossibility; the final component is examined, never opened; reveal keeps
+its `lstat` root rule. Its in-session reviewer's seven further findings were fixed,
+so re-review long-search-result-actions-k169 precedes planning k167.
