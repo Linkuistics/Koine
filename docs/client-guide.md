@@ -761,11 +761,16 @@ What differs:
 5. **A location, not a file.** The path is submitted as written and any link in it is
    followed by the application. A file replaced between the check and the open may open
    something else or fail.
-6. **Protected folders.** Asking the system for the default application of a *document* in
-   Desktop, Documents or Downloads can raise a Files and Folders prompt for Koine that
-   Koine does not request (a folder's lookup did not in the measurement). Whether and how to open protected
-   documents in their default application is undecided; until it is, name an application
-   for them.
+6. **Protected folders.** Opening an item in Desktop, Documents or Downloads raises a Files
+   and Folders prompt for Koine that Koine does not request. Asking the system for the
+   default application of a *document* there did in the measurement, and a verification run
+   found that submitting the open does too: a document opened with an application named,
+   and a directory opened by default or with Finder named, were each prompted on first use
+   ([measured](verification/target-locations-vm.md#first-use-in-the-protected-folders)), as a
+   plain program that is not Koine is. Naming an application does not avoid it. A reveal
+   (`workspaceRevealPath`) never prompted. Whether and how Koine helps with that consent is
+   undecided; until it is, expect a prompt on the first open of a protected item and prefer a
+   reveal when selecting it in Finder is enough.
 7. **The receipt names an application, not a document.** `value.process`, when present, is
    the application that was asked to open the item (the default handler or the one you
    named). It names no window or document, may be null, and says nothing about whether the

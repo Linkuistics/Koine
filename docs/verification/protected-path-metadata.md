@@ -79,7 +79,10 @@ Until the human resolves the trade-off, retain the current no-new-consent policy
 do not use the measured file-URL handler lookup as a prompt-free read or
 pre-submission readiness check on protected documents. Protected default
 opening remains a live acceptance gap. Named-app opening and reveal do not need
-that lookup. Search must expose unknown/blocked handler coverage rather than
+that lookup. (Submission was left unmeasured here, and a later run found it is
+the submission that prompts: a named open of a protected item and a directory's open
+raised the same prompt for Koine, and a reveal did not
+— [target-locations-vm.md](target-locations-vm.md#first-use-in-the-protected-folders).) Search must expose unknown/blocked handler coverage rather than
 attempting it to discover consent; this experiment establishes no traversal or
 content-search permission. Access failures remain `failed`, never inferred
 absence or a newly invented `os-permission` identifier.

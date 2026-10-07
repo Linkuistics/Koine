@@ -764,6 +764,30 @@ tasks:
     cmds:
       - scripts/vm-verify-reveal-path.sh
 
+  target-locations:vm:
+    desc: Accept the long-location target stage (workspace 1.0.1) at V, in a clone of the prepared image (task launchers:prepare), with the signed Koine through the contract-only client and Accessibility never granted - first the observers controlled at the admitted length (1,023-byte documents, a witness document that records its exact bytes, and directories opened and revealed by an independent non-Koine route and seen by the handler's window, the witness application and Finder's own account), then Koine's own opens and reveals at 1,023 bytes (default handler, Zed, Finder), the 1,024-byte and about 1,500-byte refusals (`failed` with guidance, nothing delivered or selected over a window longer than the control needed), a missing long path (PATH_NOT_FOUND), the present walk outcomes only an effect shows (31- and 32-link chains, a mode-0600 final directory, one link inode in two directories, a finite dot-link, multibyte and combining names, the 300-byte ASCII impossible component), the root and a link to it, and first use in Desktop, Documents and Downloads after a positive prompt control (a reveal prompt-free; an open's one prompt allowed in the clone, then completing). Exits 3 when an observer could not see its control (every observation pending) and 4 when a reveal raised a prompt. An open's first-use prompt in a protected folder is allowed in the disposable clone (Antony's decision), after which the open must complete and a second request be prompt-free. KOINE_TARGET_ONLY=reach,refus,walk,root,prompt runs the named sections after the controls. It takes hours; use target-locations:vm-detached
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-target-locations.sh
+
+  target-locations:vm-detached:
+    desc: Run target-locations:vm detached (nohup, its own session), print the transcript path and the pid, and return at once - the run outlasts any single command. Read the transcript with tail -f, or wait for .build/target-locations-vm/done
+    deps: [app, client]
+    cmds:
+      - |
+        mkdir -p .build/target-locations-vm
+        rm -f .build/target-locations-vm/done
+        log=".build/target-locations-vm/detached-$(date +%Y%m%dT%H%M%S).log"
+        nohup bash -c 'scripts/vm-verify-target-locations.sh; echo "$?" > .build/target-locations-vm/done' >"${log}" 2>&1 &
+        echo "pid $! ; detached output ${log} ; the run's own transcript is .build/vm-verify/target-locations-vm-*.log ; exit status in .build/target-locations-vm/done"
+
+  target-locations:fixtures-check:
+    desc: Lint the target-location V recipe without a guest - shellcheck the recipe and compile the fixture builder
+    cmds:
+      - shellcheck -x scripts/vm-verify-target-locations.sh
+      - python3 -m py_compile scripts/vm-long-location-fixtures.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-location-fixtures.py
+
   reveal-path:probe-notification:
     desc: A bounded probe in a clone of the prepared image with the signed Koine - after a baseline with none, does a refused workspaceOpenPath of a third-party application (inspection only), a workspaceRevealPath of Notes, of TextEdit and of Zed (twice) make macOS post "Koine was prevented from modifying apps on your Mac"? Read from the screen's own text, with a screenshot of each step. One sample each; it does not say which operation the system refused
     deps: [app, client]

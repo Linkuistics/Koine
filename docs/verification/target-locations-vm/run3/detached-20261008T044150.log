@@ -1,0 +1,627 @@
+Subjects of this run:
+a162c97887f00257d7d61b4eb7383272c8d7ad0ea1e6883374ff26ff632dfb11  scripts/vm-verify-target-locations.sh
+6fa6e524775ec99556c16be93bd745343565b9ca3e223f6d48f49a9ac02ee9dd  scripts/vm-long-location-fixtures.py
+d81df2c654fd3ee853537e745e39effced8a8d2009a4a0cdf88412fb15890cf2  scripts/vm-reveal-observe.applescript
+822358ded1e5b9852d2c8b138f48b97e1439b6618352a6bd70df11f0b23040d1  docs/verification/target-locations-vm/handler-lookup.swift
+67af1a2873368e1f1d627dbbedf99a0121322c3af293df81890f94c8fde390fa  docs/verification/target-locations-vm/submit.swift
+ea1f9726a86748f6e930a4413d33f6153562d028e775df12ad5a78dcac69b2bf  docs/verification/target-locations-vm/submitter-info.plist
+3a9d8c701bb0b0c31975be54f6ae2a0ed299913da8ab4546691ee469807face8  scripts/vm-verify-witness-lib.sh
+e8f9fcd6c45981d335d3f36841528a0f7f77dab73f5163634666588c29febe5d  scripts/vm-verify-contract-client-lib.sh
+be4629ebf9d75591f9d3aa385b04f245a544243346f2a9b8d15cf886643eb54a  scripts/vm-verify-launch-lib.sh
+10f1a9a9bc8d1b9342180543ebd61738f2ebc1a410572aabe4739a6f910e08c5  scripts/vm-launchers-lib.sh
+75510337b7a8cc6bb23bfed590ca9e4f8ba22e2252c21ad49378527a57c0ea1b  .build/long-action-route.zip
+e0f7285429fdbcd47cf4c848e4cab5ac0c903a74cc6cab42f32273751fa0d187  .build/descriptor-walk-prompt.zip
+ccf011001496fda8b4740c0298a0618090f0a48cad8f38ff27e113add2358e80  clients/contract-only/dist/koine-client.mjs
+64f81afb00dda0a7757a5bf851e013104741437f1310dc7728a8047489d8c9dc  .build/app/Koine.app/Contents/MacOS/Koine
+da73f1a02115558850ec7d36064b57b52a136d985dccf770034d7d76515e7e47  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/manifest.json
+node-v24.21.0-darwin-arm64.tar.xz: 6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe matches its published digest
+
+== Start a clean VM (koine-verify-2081)
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+arm64
+Gatekeeper: assessments enabled
+Gatekeeper in the clone: assessments enabled;developer id enabled;
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=36956 flags=0x10000(runtime) hashes=1144+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== Carry the client, the Node runtime, the witnesses, the observer, the fixture builder and the probes into the guest
+v24.21.0
+
+== The K134 witness application: a document handler for .k134w that records the exact bytes it is handed
+installed
+The witness is the default handler of .k134w: it recorded a short document.
+
+== The subjects, built component by component in the guest (no whole-path call addresses a long location)
+{"id": "c1023-txt-d", "bytes": 1023} {"id": "c1023-txt-z", "bytes": 1023} {"id": "c1023-wit", "bytes": 1023} {"id": "c1023-dir-d", "bytes": 1023} {"id": "c1023-dir-z", "bytes": 1023} {"id": "c1023-rev
+-txt", "bytes": 1023} {"id": "c1023-rev-dir", "bytes": 1023} {"id": "k1023-txt-d", "bytes": 1023} {"id": "k1023-txt-z", "bytes": 1023} {"id": "k1023-wit", "bytes": 1023} {"id": "k1023-dir-d", "bytes":
+ 1023} {"id": "k1023-dir-z", "bytes": 1023} {"id": "k1023-rev-txt", "bytes": 1023} {"id": "k1023-rev-dir", "bytes": 1023} {"id": "r1024-txt", "bytes": 1024} {"id": "r1024-wit", "bytes": 1024} {"id": "
+r1024-dir", "bytes": 1024} {"id": "r1500-txt", "bytes": 1500} {"id": "r1500-wit", "bytes": 1500} {"id": "r1500-dir", "bytes": 1500} {"id": "m1023", "bytes": 1023} {"id": "m1500", "bytes": 1500} {"id":
+ "w10", "bytes": 27} {"id": "w11", "bytes": 27} {"id": "w31", "bytes": 27} {"id": "w32", "bytes": 27} {"id": "closed", "bytes": 27} {"id": "two-dir", "bytes": 33} {"id": "dot", "bytes": 43} {"id": "mb
+300", "bytes": 333} {"id": "comb", "bytes": 99} {"id": "emoji", "bytes": 37} {"id": "impossible", "bytes": 323} 
+Subject c1023-txt-d: 1023 bytes
+Subject k1023-dir-d: 1023 bytes
+Subject r1024-txt: 1024 bytes
+Subject r1024-dir: 1024 bytes
+Subject r1500-wit: 1500 bytes
+Subject m1023: 1023 bytes
+
+== The guest's own account of every subject, by descriptors alone: present, absent or an impossible name
+c1023-txt-d 1023 present | c1023-txt-z 1023 present | c1023-wit 1023 present | c1023-dir-d 1023 present | c1023-dir-z 1023 present | c1023-rev-txt 1023 present | c1023-rev-dir 1023 present | k1023-txt
+-d 1023 present | k1023-txt-z 1023 present | k1023-wit 1023 present | k1023-dir-d 1023 present | k1023-dir-z 1023 present | k1023-rev-txt 1023 present | k1023-rev-dir 1023 present | r1024-txt 1024 pre
+sent | r1024-wit 1024 present | r1024-dir 1024 present | r1500-txt 1500 present | r1500-wit 1500 present | r1500-dir 1500 present | m1023 1023 absent | m1500 1500 absent | w10 27 present | w11 27 pres
+ent | w31 27 present | w32 27 present | closed 27 present | two-dir 33 present | dot 43 present | mb300 333 present | comb 99 present | emoji 37 present | impossible 323 impossible | 
+
+== The observer: Finder's own account of its windows and selection, read by a process that is not Koine
+The observer's own consent dialog: “testanyware-agent” wants access to control “Finder”. Allowing control will provide access to documents and data in “Finder”, and to perform actions within that app. / 
+Observer consent: asked and allowed. Finder's account with no window open: {"windows":0,"target":null,"title":null,"selected":[]}
+
+== The window server, the witness and the front application: the observers' baseline
+Windows: []
+
+== THE CONTROLS: 1,023-byte subjects opened and revealed by an independent, non-Koine route
+
+== control: txt opened by an independent route (default), c1023-txt-d, 1023 bytes
+Seen by TextEdit's window 2 s after the request: ["c1023-txt-d.txt"]
+Result: control: txt default c1023-txt-d: passed
+
+== control: txt opened by an independent route (zed), c1023-txt-z, 1023 bytes
+Seen by Zed's window 2 s after the request: ["c1023-txt-z.txt — c1023-txt-z.txt"]
+Result: control: txt zed c1023-txt-z: passed
+
+== control: wit opened by an independent route (default), c1023-wit, 1023 bytes
+Seen by the witness's exact bytes 0 s after the request: [{"deliveredLength":1023,"id":"dev.antony.Koine.K134Witness"}]
+Result: control: wit default c1023-wit: passed
+
+== control: dir opened by an independent route (default), c1023-dir-d, 1023 bytes
+Seen by Finder's window 0 s after the request: ["c1023-dir-d"]
+Result: control: dir default c1023-dir-d: passed
+
+== control: dir opened by an independent route (zed), c1023-dir-z, 1023 bytes
+Seen by Zed's window 0 s after the request: ["c1023-dir-z"]
+Result: control: dir zed c1023-dir-z: passed
+
+== control: file revealed by an independent route, c1023-rev-txt, 1023 bytes
+Finder's account 31 s after the request, exact path equal: {"kind":"Plain Text Document","name":"c1023-rev-txt.txt"}
+Result: control: reveal file c1023-rev-txt: passed
+
+== control: dir revealed by an independent route, c1023-rev-dir, 1023 bytes
+Finder's account 1 s after the request, exact path equal: {"kind":"Folder","name":"c1023-rev-dir"}
+Result: control: reveal dir c1023-rev-dir: passed
+The slowest control was seen 31 s after its request; an observation of nothing watches for longer than that.
+Observations of nothing will watch for 93 s after the last request.
+
+== Launch Koine; a manager grant in the window, then the contract-only client enrols its own grants
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Oct  7 18:01 /Users/admin/koine-secret-manager
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"label":"target-locations-client-both","requestedCapabilities":["workspace:control","desktop:control"],"requestId":"5345f4b3-f65b-4b65-9003-b10fbfb72a71","comparisonCode":"7NFH-MBD4","endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"5345f4b3-f65b-4b65-9003-b10fbfb72a71","comparisonCode":"7NFH-MBD4"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label target-locations-client-both  code 7NFH-MBD4
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"70f7439a-164a-4c79-927b-be3177b722e7","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"70f7439a-164a-4c79-927b-be3177b722e7","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request 5345f4b3-f65b-4b65-9003-b10fbfb72a71, comparison code 7NFH-MBD4, capabilities ["desktop:control","workspace:control"]
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"label":"target-locations-client-workspace","requestedCapabilities":["workspace:control"],"requestId":"90745b8a-0749-4582-8e29-46b0c3237a8e","comparisonCode":"549C-CC46","endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"90745b8a-0749-4582-8e29-46b0c3237a8e","comparisonCode":"549C-CC46"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label target-locations-client-workspace  code 549C-CC46
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"79f20886-49ff-4ae4-bfe5-b5cc6013d989","capabilities":["workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49177/graphql","instanceId":"7662a205-ddb7-4706-a3da-219db2737a8d"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"79f20886-49ff-4ae4-bfe5-b5cc6013d989","capabilities":["workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request 90745b8a-0749-4582-8e29-46b0c3237a8e, comparison code 549C-CC46, capabilities ["workspace:control"]
+Accessibility is not granted to Koine in this image: every request below is by workspace:control and desktop:control alone.
+
+== reach: a 1,023-byte document opened in its default handler, k1023-txt-d, 1023 bytes
+Seen by TextEdit's window 0 s after the answer: ["k1023-txt-d.txt"]
+Dialogs on screen: none
+Result: reach: a 1,023-byte document opened in its default handler: passed
+
+== reach: a 1,023-byte document opened with Zed named, k1023-txt-z, 1023 bytes
+Seen by Zed's window 0 s after the answer: ["c1023-dir-z — k1023-txt-z.txt"]
+Dialogs on screen: none
+Result: reach: a 1,023-byte document opened with Zed named: passed
+
+== reach: a 1,023-byte witness document, delivered with its exact bytes, k1023-wit, 1023 bytes
+Seen by the witness's exact bytes 0 s after the answer: delivered
+Dialogs on screen: none
+Result: reach: a 1,023-byte witness document, delivered with its exact bytes: passed
+
+== reach: a 1,023-byte directory opened in its default handler, k1023-dir-d, 1023 bytes
+Seen by Finder's window 0 s after the answer: ["k1023-dir-d"]
+Dialogs on screen: none
+Result: reach: a 1,023-byte directory opened in its default handler: passed
+
+== reach: a 1,023-byte directory opened with Zed named, k1023-dir-z, 1023 bytes
+Seen by Zed's window 0 s after the answer: ["k1023-dir-z"]
+Dialogs on screen: none
+Result: reach: a 1,023-byte directory opened with Zed named: passed
+
+== reach: a 1,023-byte document revealed, k1023-rev-txt, 1023 bytes
+Finder's account 1 s after the answer: {"windows":1,"target":"/Users/admin/tlf/k1023-rev-txt/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Dialogs on screen: none
+Result: reach: a 1,023-byte document revealed: passed
+
+== reach: a 1,023-byte directory revealed, k1023-rev-dir, 1023 bytes
+Finder's account 75 s after the answer: {"windows":1,"target":"/Users/admin/tlf/k1023-rev-dir/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Dialogs on screen: none
+Result: reach: a 1,023-byte directory revealed: passed
+
+== refus: extant 1,024-byte and about 1,500-byte locations are refused; nothing is delivered or selected
+Windows before the batch: [["Calculator","Calculator"],["Koine","Koine"],["TextEdit","c1023-txt-d.txt"],["TextEdit","k1023-txt-d.txt"],["Zed","k1023-dir-z"]]
+All 25 requests answered; watching 93 s more for anything delivered, opened or selected.
+r1024-txt-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-txt-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-txt-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+r1024-wit-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-wit-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-wit-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+r1024-dir-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-dir-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1024-dir-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+r1500-txt-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-txt-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-txt-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+r1500-wit-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-wit-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-wit-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+r1500-dir-open: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-dir-zed: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.","path":["workspaceOpenPath"],"kind":"failed"}]}
+r1500-dir-reveal: {"classification":"failed","actionEffect":"may-have-begun","errors":[{"message":"The application hand-off was refused: the path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was revealed.","path":["workspaceRevealPath"],"kind":"failed"}]}
+m1023-open: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."}}
+m1500-open: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."}}
+m1500-zed: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."}}
+m1023-reveal: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."}}
+m1500-reveal: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."}}
+impossible-open: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."}}
+impossible-reveal: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"PATH_NOT_FOUND","guidance":"Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."}}
+Observation: 18 extant over-limit requests (document, witness document and directory, each opened, opened in Zed and revealed, at 1,024 and about 1,500 bytes) and 7 absent ones, over 93 s: no launch, no activation, no window, no delivery to the witness, the front application unchanged, and Finder's own account still no window and no selection.
+
+== walk: present outcomes only an effect shows
+
+== walk: what an independent route does with a final directory without search permission (reference, recorded)
+Windows before: [["Calculator","Calculator"],["Koine","Koine"],["TextEdit","c1023-txt-d.txt"],["TextEdit","k1023-txt-d.txt"],["Zed","k1023-dir-z"]]
+Windows after an independent open of the mode-0600 directory: [["Calculator","Calculator"],["Koine","Koine"],["TextEdit","c1023-txt-d.txt"],["TextEdit","k1023-txt-d.txt"],["Zed","k1023-dir-z"]]
+
+== walk: w10 opened (default)
+TextEdit's window 0 s after the answer: ["w10-target.txt"]
+Dialogs on screen: none
+Result: walk: w10 open (default): passed
+
+== walk: w10: a 10-link chain revealed (the link itself is selected), w10, 27 bytes
+Finder's account 195 s after the answer: {"windows":1,"target":"/Users/admin/wfx/","title":"wfx","selected":[{"path":"/Users/admin/wfx/w10-target.txt","kind":"Alias","name":"w10-10.txt"}]}
+Dialogs on screen: none
+Result: walk: w10: a 10-link chain revealed (the link itself is selected): passed
+
+== walk: w11 opened in its default handler (the platform's lookup stops after ten links)
+w11: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"NO_DEFAULT_HANDLER","guidance":"No application is registered on this Mac to open this item, so it was not opened. Choose an application to open it with, or set a default for this kind of item in Finder."}}
+Result: walk: w11 default open (platform lookup limit): passed
+
+== walk: w11 opened (zed)
+Zed's window 0 s after the answer: ["k1023-dir-z — w11-target.txt"]
+Dialogs on screen: none
+Result: walk: w11 open (zed): passed
+
+== walk: w11: an 11-link chain revealed (the link itself is selected), w11, 27 bytes
+Finder's account 124 s after the answer: {"windows":1,"target":"/Users/admin/wfx/","title":"wfx","selected":[{"path":"/Users/admin/wfx/w11-target.txt","kind":"Alias","name":"w11-11.txt"}]}
+Dialogs on screen: none
+Result: walk: w11: an 11-link chain revealed (the link itself is selected): passed
+
+== walk: w31 opened in its default handler (the platform's lookup stops after ten links)
+w31: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"NO_DEFAULT_HANDLER","guidance":"No application is registered on this Mac to open this item, so it was not opened. Choose an application to open it with, or set a default for this kind of item in Finder."}}
+Result: walk: w31 default open (platform lookup limit): passed
+
+== walk: w31 opened (zed)
+Zed's window 0 s after the answer: ["k1023-dir-z — w31-target.txt"]
+Dialogs on screen: none
+Result: walk: w31 open (zed): passed
+
+== walk: w31: a 31-link chain revealed (the link itself is selected), w31, 27 bytes
+Finder's account 1 s after the answer: {"windows":1,"target":"/Users/admin/wfx/","title":"wfx","selected":[{"path":"/Users/admin/wfx/w31-target.txt","kind":"Alias","name":"w31-31.txt"}]}
+Dialogs on screen: none
+Result: walk: w31: a 31-link chain revealed (the link itself is selected): passed
+
+== walk: w32 opened in its default handler (the platform's lookup stops after ten links)
+w32: {"classification":"dependency-unavailable","actionEffect":"none","status":"DEPENDENCY_UNAVAILABLE","dependency":{"reason":"NO_DEFAULT_HANDLER","guidance":"No application is registered on this Mac to open this item, so it was not opened. Choose an application to open it with, or set a default for this kind of item in Finder."}}
+Result: walk: w32 default open (platform lookup limit): passed
+
+== walk: w32 opened (zed)
+Zed's window 0 s after the answer: ["k1023-dir-z — w32-target.txt"]
+Dialogs on screen: none
+Result: walk: w32 open (zed): passed
+
+== walk: w32: a 32-link chain revealed (the link itself is selected), w32, 27 bytes
+Finder's account 0 s after the answer: {"windows":1,"target":"/Users/admin/wfx/","title":"wfx","selected":[{"path":"/Users/admin/wfx/w32-target.txt","kind":"Alias","name":"w32-32.txt"}]}
+Dialogs on screen: none
+Result: walk: w32: a 32-link chain revealed (the link itself is selected): passed
+
+== walk: two-dir opened (default)
+TextEdit's window 0 s after the answer: ["two-dir.txt"]
+Dialogs on screen: none
+Result: walk: two-dir open (default): passed
+
+== walk: two-dir: one link inode in two directories revealed, two-dir, 33 bytes
+Finder's account 1 s after the answer: {"windows":1,"target":"/Users/admin/wfx/dA/sub/","title":"sub","selected":[{"path":"/Users/admin/wfx/dB/sub/two-dir.txt","kind":"Alias","name":"two-dir.txt"}]}
+Dialogs on screen: none
+Result: walk: two-dir: one link inode in two directories revealed: passed
+
+== walk: dot opened (default)
+TextEdit's window 0 s after the answer: ["dot-f.txt"]
+Dialogs on screen: none
+Result: walk: dot open (default): passed
+
+== walk: dot: a finite repeated dot-link revealed, dot, 43 bytes
+Finder's account 31 s after the answer: {"windows":1,"target":"/Users/admin/wfx/wdot/","title":"wdot","selected":[{"path":"/Users/admin/wfx/wdot/dot-f.txt","kind":"Plain Text Document","name":"dot-f.txt"}]}
+Dialogs on screen: none
+Result: walk: dot: a finite repeated dot-link revealed: passed
+
+== walk: mb300 opened (default)
+TextEdit's window 0 s after the answer: ["日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日-mb300.txt"]
+Dialogs on screen: none
+Result: walk: mb300 open (default): passed
+
+== walk: mb300: a 300-byte multibyte name revealed, mb300, 333 bytes
+Finder's account 64 s after the answer: {"windows":1,"target":"/Users/admin/wfx/names/","title":"names","selected":[{"path":"/Users/admin/wfx/names/日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日-mb300.txt","kind":"Plain Text Document","name":"日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日-mb300.txt"}]}
+Dialogs on screen: none
+Result: walk: mb300: a 300-byte multibyte name revealed: passed
+
+== walk: comb opened (default)
+TextEdit's window 0 s after the answer: ["café-éééééééééééééééééééé-comb.txt"]
+Dialogs on screen: none
+Result: walk: comb open (default): passed
+
+== walk: comb: a combining-character name revealed, comb, 99 bytes
+Finder's account 60 s after the answer: {"windows":1,"target":"/Users/admin/wfx/names/","title":"names","selected":[{"path":"/Users/admin/wfx/names/café-éééééééééééééééééééé-comb.txt","kind":"Plain Text Document","name":"café-éééééééééééééééééééé-comb.txt"}]}
+Dialogs on screen: none
+Result: walk: comb: a combining-character name revealed: passed
+
+== walk: emoji opened (default)
+TextEdit's window 0 s after the answer: ["😀-emoji.txt"]
+Dialogs on screen: none
+Result: walk: emoji open (default): passed
+
+== walk: emoji: an emoji name revealed, emoji, 37 bytes
+Finder's account 1 s after the answer: {"windows":1,"target":"/Users/admin/wfx/names/","title":"names","selected":[{"path":"/Users/admin/wfx/names/😀-emoji.txt","kind":"Plain Text Document","name":"😀-emoji.txt"}]}
+Dialogs on screen: none
+Result: walk: emoji: an emoji name revealed: passed
+
+== walk: closed: a final directory with mode 0600 revealed (never opened by the walk), closed, 27 bytes
+Finder's account 1 s after the answer: {"windows":1,"target":"/Users/admin/wfx/","title":"wfx","selected":[{"path":"/Users/admin/wfx/closed-dir/","kind":"Folder","name":"closed-dir"}]}
+Dialogs on screen: none
+Result: walk: closed: a final directory with mode 0600 revealed (never opened by the walk): passed
+
+== walk: a final directory with mode 0600 opened (recorded: the independent route showed no window either)
+closed open: {"classification":"ok","status":"AVAILABLE","dependency":null,"errors":[]}
+Windows after: [["Calculator","Calculator"],["Finder","wfx"],["Koine","Koine"],["TextEdit","c1023-txt-d.txt"],["TextEdit","café-éééééééééééééééééééé-comb.txt"],["TextEdit","dot-f.txt"],["TextEdit","k1023-txt-d.txt"],["TextEdit","two-dir.txt"],["TextEdit","w10-target.txt"],["TextEdit","日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日-mb300.txt"],["TextEdit","😀-emoji.txt"],["Zed","k1023-dir-z — w32-target.txt"]]
+
+== root: the filesystem root and a link to it, revealed
+       7
+lrwxr-xr-x  1 root  wheel  1 Oct  7 17:41 /Volumes/Macintosh HD -> /
+
+== root: / is the root view
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[]}
+Result: root: / is the root view: passed
+
+== root: // is the root view
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[]}
+Result: root: // is the root view: passed
+
+== root: /. is the root view
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[]}
+Result: root: /. is the root view: passed
+
+== root: /.. is the root view
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[]}
+Result: root: /.. is the root view: passed
+
+== root: /Volumes/Macintosh HD, a link to /, is selected as the link
+Finder's account: {"windows":1,"target":"/Volumes/","title":"Volumes","selected":[{"path":"/","kind":"Alias","name":"Macintosh HD"}]}
+Result: root: /Volumes/Macintosh HD, a link to /, is selected as the link: passed
+
+== root: /Volumes/Macintosh HD/ names the root: the root view
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[]}
+Result: root: /Volumes/Macintosh HD/ names the root: the root view: passed
+
+== root: /var/.. is /private by the physical parent, not the root (recorded as Finder shows it)
+Finder's account: {"windows":1,"target":"/","title":"Macintosh HD","selected":[{"path":"/private/var/","kind":"Alias","name":"var"}]}
+Result: root: /var/.. is /private by the physical parent, not the root (recorded as Finder shows it): passed
+For reference, an independent route (open -R) reads the link spellings differently from Koine's accepted rule and is recorded, not asserted:
+  open -R link: {"windows":1,"target":"/Volumes/","title":"Volumes","selected":[{"path":"/","kind":"Alias","name":"Macintosh HD"}]}
+  open -R link-slash: {"windows":1,"target":"/Volumes/","title":"Volumes","selected":[{"path":"/","kind":"Alias","name":"Macintosh HD"}]}
+
+== platform: what the system does by itself, with no Koine involved
+made
+prot-dir-Desktop.txt
+prot-dir-Documents.txt
+prot-dir-Downloads.txt
+prot-doc-Desktop.txt
+prot-doc-Documents.txt
+prot-doc-Downloads.txt
+
+== prompt: the positive control, a standalone probe's content read in Documents (must prompt)
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+The control's dialog: “KoineK174Probe” would like to access files in your Documents folder. / 
+NSWorkspace.urlForApplication(toOpen:) for the Nth link of a chain: 1 TextEdit.app;5 TextEdit.app;9 TextEdit.app;10 TextEdit.app;11 nil;12 nil;16 nil;20 nil;31 nil;32 nil;
+/Applications/KoineK180Submit.app: replacing existing signature
+built
+
+== platform: a plain program, not Koine: a document in /tmp handed to Zed (no protected folder)
+Successfully reset All approval status for dev.antony.k180.submit
+Requests seen: none
+The plain program's own output: named open: ok completed 
+Its rows in the consent database: ;
+Result: platform: a document in /tmp handed to Zed (no protected folder): passed (expected none, saw none)
+
+== platform: a plain program, not Koine: a document in Desktop handed to Zed
+Successfully reset All approval status for dev.antony.k180.submit
+Requests seen: “KoineK180Submit” would like to access files in your Desktop folder. /  | “Zed” would like to access files in your Desktop folder. /  | 
+The plain program's own output: named open: ok completed 
+Its rows in the consent database: kTCCServiceSystemPolicyDesktopFolder|dev.antony.k180.submit|0;
+Result: platform: a document in Desktop handed to Zed: passed (expected prompt, saw prompt)
+
+== platform: a plain program, not Koine: a document in Documents handed to Zed
+Successfully reset All approval status for dev.antony.k180.submit
+Requests seen: “KoineK180Submit” would like to access files in your Documents folder. /  | “Zed” would like to access files in your Documents folder. /  | 
+The plain program's own output: named open: ok completed 
+Its rows in the consent database: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.k180.submit|0;
+Result: platform: a document in Documents handed to Zed: passed (expected prompt, saw prompt)
+
+== platform: a plain program, not Koine: a document in Downloads handed to Zed
+Successfully reset All approval status for dev.antony.k180.submit
+Requests seen: “KoineK180Submit” would like to access files in your Downloads folder. /  | “Zed” would like to access files in your Downloads folder. /  | 
+The plain program's own output: named open: ok completed 
+Its rows in the consent database: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.k180.submit|0;
+Result: platform: a document in Downloads handed to Zed: passed (expected prompt, saw prompt)
+
+== platform: a plain program, not Koine: a directory in Desktop opened by its default handler
+Successfully reset All approval status for dev.antony.k180.submit
+Requests seen: “KoineK180Submit” would like to access files in your Desktop folder. /  | 
+The plain program's own output: default open: ok completed default open: ok completed default open: ok completed default open: ok completed 
+Its rows in the consent database: kTCCServiceSystemPolicyDesktopFolder|dev.antony.k180.submit|0;
+Result: platform: a directory in Desktop opened by its default handler: passed (expected prompt, saw prompt)
+
+== prompt: first-use resolution in Desktop, Documents and Downloads
+made
+prot-dir-Desktop.txt
+prot-dir-Documents.txt
+prot-dir-Downloads.txt
+prot-doc-Desktop.txt
+prot-doc-Documents.txt
+prot-doc-Downloads.txt
+
+== prompt: the positive control, a standalone probe's content read in Documents (must prompt)
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+The control's dialog: “KoineK174Probe” would like to access files in your Documents folder. / 
+
+== prompt: Desktop: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Desktop reveal-doc: passed
+
+== prompt: Desktop: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Desktop reveal-dir: passed
+
+== prompt: Desktop: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0
+Result: prompt: Desktop open-dir-finder: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Desktop folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0; 
+
+== prompt: Desktop: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0
+Result: prompt: Desktop open-dir: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Desktop folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0; 
+
+== prompt: Desktop: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0
+Result: prompt: Desktop open-doc-zed: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Desktop folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|0; 
+
+== prompt: Documents: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Documents reveal-doc: passed
+
+== prompt: Documents: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Documents reveal-dir: passed
+
+== prompt: Documents: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0
+Result: prompt: Documents open-dir-finder: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Documents folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0; 
+
+== prompt: Documents: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0
+Result: prompt: Documents open-dir: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Documents folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0; 
+
+== prompt: Documents: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0
+Result: prompt: Documents open-doc-zed: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Documents folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|0; 
+
+== prompt: Downloads: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Downloads reveal-doc: passed
+
+== prompt: Downloads: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Koine's rows after the request: none
+Result: prompt: Downloads reveal-dir: passed
+
+== prompt: Downloads: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0
+Result: prompt: Downloads open-dir-finder: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Downloads folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0; 
+
+== prompt: Downloads: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0
+Result: prompt: Downloads open-dir: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Downloads folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0; 
+
+== prompt: Downloads: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after the request: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0
+Result: prompt: Downloads open-doc-zed: prompted — not acknowledged: {"classification":"failed","errors":[{"classification":"failed","message":"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.","path":["workspaceOpenPath"],"kind":"failed","permissionClass":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"dependency":null}; a permission request names Koine; requests: “Koine” would like to access files in your Downloads folder. /  | Koine's consent rows changed: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|0; 
+
+== Accessibility was absent throughout, and no consent dialog is on screen
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+no consent dialog on screen (after every request); universalAccessAuthWarn: running
+
+== The subjects of the run are as they were at its start
+Unchanged: 15 files, digested before and after.
+
+== Results
+control: txt default by an independent route c1023-txt-d: passed
+control: txt zed by an independent route c1023-txt-z: passed
+control: wit default by an independent route c1023-wit: passed
+control: dir default by an independent route c1023-dir-d: passed
+control: dir zed by an independent route c1023-dir-z: passed
+control: file revealed by an independent route c1023-rev-txt: passed
+control: dir revealed by an independent route c1023-rev-dir: passed
+reach: a 1,023-byte document opened in its default handler k1023-txt-d: passed
+reach: a 1,023-byte document opened with Zed named k1023-txt-z: passed
+reach: a 1,023-byte witness document, delivered with its exact bytes k1023-wit: passed
+reach: a 1,023-byte directory opened in its default handler k1023-dir-d: passed
+reach: a 1,023-byte directory opened with Zed named k1023-dir-z: passed
+reach: a 1,023-byte document revealed k1023-rev-txt: passed
+reach: a 1,023-byte directory revealed k1023-rev-dir: passed
+refus: extant over-limit location refused r1024-txt: passed
+refus: extant over-limit location refused r1024-txt: passed
+refus: extant over-limit location refused r1024-txt: passed
+refus: extant over-limit location refused r1024-wit: passed
+refus: extant over-limit location refused r1024-wit: passed
+refus: extant over-limit location refused r1024-wit: passed
+refus: extant over-limit location refused r1024-dir: passed
+refus: extant over-limit location refused r1024-dir: passed
+refus: extant over-limit location refused r1024-dir: passed
+refus: extant over-limit location refused r1500-txt: passed
+refus: extant over-limit location refused r1500-txt: passed
+refus: extant over-limit location refused r1500-txt: passed
+refus: extant over-limit location refused r1500-wit: passed
+refus: extant over-limit location refused r1500-wit: passed
+refus: extant over-limit location refused r1500-wit: passed
+refus: extant over-limit location refused r1500-dir: passed
+refus: extant over-limit location refused r1500-dir: passed
+refus: extant over-limit location refused r1500-dir: passed
+refus: absent location is PATH_NOT_FOUND m1023: passed
+refus: absent location is PATH_NOT_FOUND m1500: passed
+refus: absent location is PATH_NOT_FOUND m1500: passed
+refus: absent location is PATH_NOT_FOUND m1023: passed
+refus: absent location is PATH_NOT_FOUND m1500: passed
+refus: absent location is PATH_NOT_FOUND impossible: passed
+refus: absent location is PATH_NOT_FOUND impossible: passed
+refus: nothing delivered or selected for any over-limit location : passed
+walk: reference: independent open of a final directory without search permission : recorded
+walk: present outcome opened (default) w10: passed
+walk: w10: a 10-link chain revealed (the link itself is selected) w10: passed
+walk: default open of a chain longer than ten links: the platform lookup answers nil w11: passed
+walk: present outcome opened (zed) w11: passed
+walk: w11: an 11-link chain revealed (the link itself is selected) w11: passed
+walk: default open of a chain longer than ten links: the platform lookup answers nil w31: passed
+walk: present outcome opened (zed) w31: passed
+walk: w31: a 31-link chain revealed (the link itself is selected) w31: passed
+walk: default open of a chain longer than ten links: the platform lookup answers nil w32: passed
+walk: present outcome opened (zed) w32: passed
+walk: w32: a 32-link chain revealed (the link itself is selected) w32: passed
+walk: present outcome opened (default) two-dir: passed
+walk: two-dir: one link inode in two directories revealed two-dir: passed
+walk: present outcome opened (default) dot: passed
+walk: dot: a finite repeated dot-link revealed dot: passed
+walk: present outcome opened (default) mb300: passed
+walk: mb300: a 300-byte multibyte name revealed mb300: passed
+walk: present outcome opened (default) comb: passed
+walk: comb: a combining-character name revealed comb: passed
+walk: present outcome opened (default) emoji: passed
+walk: emoji: an emoji name revealed emoji: passed
+walk: closed: a final directory with mode 0600 revealed (never opened by the walk) closed: passed
+walk: a final directory with mode 0600 opened : recorded
+root: / is the root view : passed
+root: // is the root view : passed
+root: /. is the root view : passed
+root: /.. is the root view : passed
+root: /Volumes/Macintosh HD, a link to /, is selected as the link : passed
+root: /Volumes/Macintosh HD/ names the root: the root view : passed
+root: /var/.. is /private by the physical parent, not the root (recorded as Finder shows it) : passed
+root: reference: independent open -R link: recorded
+root: reference: independent open -R link-slash: recorded
+prompt: positive control: a standalone probe prompts in Documents : passed
+platform: the default-handler lookup follows ten symbolic links and answers nil from eleven : passed
+platform: plain program: a document in /tmp handed to Zed (no protected folder) : passed
+platform: plain program: a document in Desktop handed to Zed : passed
+platform: plain program: a document in Documents handed to Zed : passed
+platform: plain program: a document in Downloads handed to Zed : passed
+platform: plain program: a directory in Desktop opened by its default handler : passed
+prompt: positive control: a standalone probe prompts in Documents : passed
+prompt: Desktop: reveal-doc : passed
+prompt: Desktop: reveal-dir : passed
+prompt: Desktop: open-dir-finder : prompted
+prompt: Desktop: open-dir : prompted
+prompt: Desktop: open-doc-zed : prompted
+prompt: Documents: reveal-doc : passed
+prompt: Documents: reveal-dir : passed
+prompt: Documents: open-dir-finder : prompted
+prompt: Documents: open-dir : prompted
+prompt: Documents: open-doc-zed : prompted
+prompt: Downloads: reveal-doc : passed
+prompt: Downloads: reveal-dir : passed
+prompt: Downloads: open-dir-finder : prompted
+prompt: Downloads: open-dir : prompted
+prompt: Downloads: open-doc-zed : prompted
+-: accessibility absent throughout : passed
+Written: .build/target-locations-vm/results.json
+
+== Quit Koine
+PROMPTED: first-use resolution raised a permission request naming Koine. If it prompts, the leaf stops and goes to Antony — transcript in .build/vm-verify/target-locations-vm-20261008T044150.log

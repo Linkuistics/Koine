@@ -20,6 +20,14 @@ accepted.
   "Pending, and not accepted here" paragraph) and the Consent row; `docs/client-guide.md`,
   "Opening a document or folder" item 6, which tells a client to name an application for a
   protected document until this is decided.
+- `docs/verification/target-locations-vm.md`, "First use in the protected folders" (found by
+  `target-locations-vm-k180`): the prompt is wider than the default-handler lookup of a document.
+  On first use in Desktop, Documents and Downloads, a document opened with Zed named and a
+  directory opened by default or with Finder named each raised "Koine would like to access files in
+  your … folder", while a reveal never did, and a plain program that is not Koine is prompted the same
+  way when it hands such an item to an application. So naming an application is **not** an escape
+  hatch, and a setup (or a decision to document the limitation) has to cover every open of a protected
+  target, not only a default open of a document.
 - `docs/verification/open-path-vm.md`: everything else about path opening is accepted at V in
   a prepared VM, with no fixture in a protected folder and Accessibility absent.
 - `.grove/14-k7/_app-and-file-search.md`: search must not use the file-URL lookup as a readiness
