@@ -59,7 +59,7 @@ import Testing
         func openWebURL(_ url: URL, withApplicationAt application: URL, completion: @escaping @Sendable (LaunchCompletion) -> Void) {
             completion(.refused("a URL open is not part of this test"))
         }
-        func inspectPath(_ path: String) -> PathInspection {
+        func readPathFacts(of location: ResolvedLocation) -> PathInspection {
             .present(PathFacts(isDirectory: false, isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
         }
         func resolveLocation(_ path: String) -> LocationResolution {

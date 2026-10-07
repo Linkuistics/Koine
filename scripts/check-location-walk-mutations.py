@@ -3,9 +3,9 @@
 """Shows that the location-walk tests go red against a walk that is wrong.
 
 A control that has never been seen to fail is not a control (grove's rule for a clean
-read). The walk tests (`LocationWalkTests`, S), the planner tests (`RevealLocationTests`,
-L) and the signed-bundle tests (`WorkspaceLongLocationTests`, N) all pass against the walk
-as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
+read). The walk tests (`LocationWalkTests`, S), the planner tests (`RevealLocationTests`, L, and
+`OpenLocationTests`, O) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which asks
+both a reveal and an open) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
 (.build/location-walk-mutations/tree, with its own build directory, so later runs are
 incremental), rebuilds the copy's tests and its independently built, signed workspace
 bundle from the mutated source, and runs each named suite. A mutation is seen when every
@@ -31,9 +31,17 @@ TREE = os.path.join(WORK, "tree")
 LOGIC = "Providers/WorkspaceProvider/Logic/"
 WALK = LOGIC + "LocationWalk.swift"
 LIMIT = LOGIC + "HandOffLimit.swift"
-REVEAL = LOGIC + "RevealPath.swift"
+TARGET = LOGIC + "TargetStage.swift"
+OPEN = LOGIC + "OpenPath.swift"
+NATIVE = "Providers/WorkspaceProvider/Sources/NativeWorkspace.swift"
 
-SUITES = {"S": "LocationWalkTests", "L": "RevealLocationTests", "N": "WorkspaceLongLocationTests"}
+# S: the walk's own source; L: reveal's planner; O: open's planner; N: the signed bundle, asked for both.
+SUITES = {
+    "S": "LocationWalkTests",
+    "L": "RevealLocationTests",
+    "O": "OpenLocationTests",
+    "N": "WorkspaceLongLocationTests",
+}
 
 # name -> (file, text to replace, replacement, suites that must go red)
 MUTATIONS = {
@@ -52,13 +60,13 @@ MUTATIONS = {
     ),
     "state-without-the-containing-directory": (
         WALK,
-        "LinkState(directory: containing, text: text, suffix: rest)",
-        "LinkState(directory: ObjectIdentity(device: 0, inode: 0), text: text, suffix: rest)",
+        "LinkState(directory: containing, text: text, suffix: Self.collapsingSlashes(rest))",
+        "LinkState(directory: ObjectIdentity(device: 0, inode: 0), text: text, suffix: Self.collapsingSlashes(rest))",
         "SN",
     ),
     "state-without-the-pending-suffix": (
         WALK,
-        "LinkState(directory: containing, text: text, suffix: rest)",
+        "LinkState(directory: containing, text: text, suffix: Self.collapsingSlashes(rest))",
         "LinkState(directory: containing, text: text, suffix: [])",
         "SN",
     ),
@@ -133,37 +141,61 @@ MUTATIONS = {
         LIMIT,
         "where spelling.byteCount >= pathMax",
         "where spelling.byteCount > pathMax",
-        "SLN",
+        "SLON",
     ),
     "the-limit-ignores-expansions": (
         LIMIT,
         "where spelling.byteCount >= pathMax {",
         "where spelling.byteCount >= pathMax && kind != .expanded(number: 1) && kind != .expanded(number: 2) {",
-        "SLN",
+        "SLON",
     ),
     "the-limit-counts-the-terminating-nul": (
         LIMIT,
         "static let pathMax = 1024",
         "static let pathMax = 1023",
-        "SLN",
+        "SLON",
     ),
     "an-impossible-name-or-cycle-is-failed": (
-        REVEAL,
-        "    case .absent:\n        return .dependency(",
-        '    case .absent(let why) where why.isImpossibleOrCycle:\n        return .failed("x")\n    case .absent:\n        return .dependency(',
-        "LN",
+        TARGET,
+        "    case .absent:\n        return .absent(",
+        '    case .absent(let why) where why.isImpossibleOrCycle:\n        return .failed("x")\n    case .absent:\n        return .absent(',
+        "LON",
     ),
     "a-failed-walk-is-a-missing-path": (
-        REVEAL,
+        TARGET,
         '    case .failed(let component, let cause):\n        return .failed("The path could not be resolved at \\(component.debugDescription): \\(cause).")',
-        '    case .failed:\n        return .dependency(.pathNotFound, guidance: "x")',
-        "LN",
+        '    case .failed:\n        return .absent(guidance: "x")',
+        "LON",
     ),
     "the-limit-is-not-applied": (
-        REVEAL,
-        'if let refusal = HandOffLimit.refusal(of: location, forAction: "revealed") { return .failed(refusal) }',
+        TARGET,
+        "if let refusal = HandOffLimit.refusal(of: location, forAction: unaccomplished) { return .failed(refusal) }",
         "",
-        "LN",
+        "LON",
+    ),
+    "an-open-reads-metadata-from-the-literal-spelling": (
+        NATIVE,
+        "let representation = location.resolved.bytes.map",
+        "let representation = location.literal.bytes.map",
+        "N",
+    ),
+    "a-later-metadata-absence-is-absence": (
+        OPEN,
+        'return .failed("The path could not be inspected: it was resolved, but its metadata reports nothing there.")',
+        'return .dependency(.pathNotFound, guidance: "x")',
+        "O",
+    ),
+    "the-payload-policy-is-not-applied-to-the-resolved-object": (
+        OPEN,
+        "if let reason = refusalReason(for: facts, native: native) { return .refused(reason) }",
+        "",
+        "ON",
+    ),
+    "an-open-submits-the-resolved-spelling": (
+        OPEN,
+        "let target = URL(fileURLWithPath: path.text, isDirectory: facts.isDirectory)",
+        "let target = URL(fileURLWithPath: location.resolved.text, isDirectory: facts.isDirectory)",
+        "O",
     ),
 }
 

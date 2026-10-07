@@ -1,7 +1,8 @@
 import Foundation
 
 // Opening a document or directory: the input, the metadata refusal policy, and the choice
-// of the application that receives it. Everything here reads only through the private native
+// of the application that receives it. The target is resolved component by component and refused at
+// the hand-off limit first (`settleTarget`). Everything here reads only through the private native
 // adapter, and only through the prompt-free metadata calls
 // (docs/verification/protected-path-metadata.md), with one exception the spec names: the
 // default handler of a document is found by the file-URL lookup, which prompted on
@@ -20,7 +21,7 @@ struct LocalPath: Equatable, Sendable {
     }
 }
 
-/// What the platform's resource metadata says about a path after its symlinks were resolved.
+/// What the platform's resource metadata says about the resolved object.
 struct PathFacts: Equatable, Sendable {
     var isDirectory: Bool
     /// The native resource metadata identifies an application bundle (`isApplicationKey`).
@@ -32,7 +33,8 @@ struct PathFacts: Equatable, Sendable {
 }
 
 enum PathInspection: Sendable {
-    /// Nothing at the path after symlink resolution: missing, or a dangling link.
+    /// The metadata reports nothing there. The walk had just found the object, so the planner reads this
+    /// as a failure, never as absence.
     case absent
     case present(PathFacts)
     /// The metadata could not be read; this is never absence.
@@ -85,19 +87,23 @@ enum PathPlan: Sendable {
     case failed(String)
 }
 
-/// The order the contract fixes: the target is inspected first, so a missing file is never
-/// conflated with a missing handler (a native lookup answers nil for either); then the
-/// application that receives it is chosen, the default handler or the named installation.
-/// Nothing is cached: every action inspects afresh.
+/// The order the contract fixes: the target is settled first, so a missing file is never conflated with a
+/// missing handler (a native lookup answers nil for either): it is resolved component by component and an
+/// over-limit spelling is refused (`settleTarget`), and only then are its type, application and alias flags
+/// read, from the resolved spelling, and the payload policy applied. Then the application that receives it
+/// is chosen, the default handler or the named installation. Nothing is cached: every action inspects afresh.
 func planPathOpen(_ path: LocalPath, application: ApplicationRequest?, native: some WorkspaceNative) -> PathPlan {
+    let location: ResolvedLocation
+    switch settleTarget(path, unaccomplished: "opened", native: native) {
+    case .absent(let guidance): return .dependency(.pathNotFound, guidance: guidance)
+    case .failed(let message): return .failed(message)
+    case .resolved(let found): location = found
+    }
     let facts: PathFacts
-    switch native.inspectPath(path.text) {
+    switch native.readPathFacts(of: location) {
     case .absent:
-        return .dependency(
-            .pathNotFound,
-            guidance: "Nothing exists at the requested path, or it is a link to something that does not, "
-                + "so nothing was opened. Check the path, then try again."
-        )
+        // The walk found it a moment ago: a later platform absence is a failure, never absence.
+        return .failed("The path could not be inspected: it was resolved, but its metadata reports nothing there.")
     case .unreadable(let reason): return .failed("The path could not be inspected: \(reason).")
     case .present(let found): facts = found
     }

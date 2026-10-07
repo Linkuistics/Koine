@@ -105,24 +105,19 @@ struct NativeWorkspace: WorkspaceNative {
         return named.st_dev == root.st_dev && named.st_ino == root.st_ino ? .root : .notRoot
     }
 
-    /// Only measured prompt-free calls (docs/verification/protected-path-metadata.md): `stat` and
-    /// `realpath`, and the `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource
-    /// values. The literal path is `stat`ed first, because `realpath` forgives what the kernel
-    /// does not: it resolves `file.txt/` and `file.txt/.` to the file, while the open would
-    /// address a path below a file. Symlinks are then resolved, so a link to an application is
-    /// an application and a dangling link is absent; an alias file is not a symlink and is
-    /// identified as itself. Nothing reads contents or lists a directory.
-    func inspectPath(_ path: String) -> PathInspection {
-        var literal = stat()
-        errno = 0
-        guard stat(path, &literal) == 0 else { return Self.unavailable(errno) }
-        errno = 0
-        guard let resolved = realpath(path, nil) else { return Self.unavailable(errno) }
-        defer { free(resolved) }
-        var status = stat()
-        guard stat(resolved, &status) == 0 else { return Self.unavailable(errno) }
-        let isDirectory = (status.st_mode & S_IFMT) == S_IFDIR
-        let url = URL(fileURLWithPath: String(cString: resolved), isDirectory: isDirectory)
+    /// The three resource values of the resolved object, measured prompt-free
+    /// (docs/verification/protected-path-metadata.md). The walk already followed every link, so the resolved
+    /// spelling names the object itself: a link to an application is the application, and an alias file,
+    /// which is not a link, is identified as itself. The URL is built from the resolved spelling's own bytes,
+    /// so nothing is normalized or repaired, and its type comes from the walk. The planner applied the
+    /// hand-off limit first, so this spelling is under `PATH_MAX`. No whole-path `stat` or `realpath`
+    /// addresses the caller's location, and nothing reads contents or lists a directory.
+    func readPathFacts(of location: ResolvedLocation) -> PathInspection {
+        let isDirectory = location.type == .directory
+        let representation = location.resolved.bytes.map { CChar(bitPattern: $0) } + [0]
+        let url = representation.withUnsafeBufferPointer {
+            URL(fileURLWithFileSystemRepresentation: $0.baseAddress!, isDirectory: isDirectory, relativeTo: nil)
+        }
         let values: URLResourceValues
         do {
             values = try url.resourceValues(forKeys: [.isApplicationKey, .contentTypeKey, .isAliasFileKey])
@@ -139,17 +134,6 @@ struct NativeWorkspace: WorkspaceNative {
                 contentType: values.contentType?.identifier
             )
         )
-    }
-
-    /// What a failed `stat` or `realpath` means. Nothing is there to open when the name does not
-    /// exist (ENOENT, which includes a dangling link), a component is not a directory (ENOTDIR),
-    /// the links never reach anything (ELOOP) or the name is too long to exist (ENAMETOOLONG).
-    /// Anything else, a denial included, is a failed inspection and never absence.
-    private static func unavailable(_ code: Int32) -> PathInspection {
-        switch code {
-        case ENOENT, ENOTDIR, ELOOP, ENAMETOOLONG: return .absent
-        default: return .unreadable(String(cString: strerror(code)))
-        }
     }
 
     /// https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/conforms(to:)

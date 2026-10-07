@@ -159,9 +159,9 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
     // MARK: Open path
 
     /// Opens a literal absolute path in its default application or a named one. The target is
-    /// inspected first (a missing file is never conflated with a missing handler), refused by
-    /// its metadata if it is an application, an executable program or a Finder alias, and only
-    /// then is the application chosen. The path is submitted as written; the handler follows
+    /// resolved and checked against the hand-off limit first (a missing file is never conflated
+    /// with a missing handler), refused by the metadata of the resolved object if it is an
+    /// application, an executable program or a Finder alias, and only then is the application chosen. The path is submitted as written; the handler follows
     /// links as usual, so this is a request about a location, not a pinned file identity.
     private func openPath(_ pathArgument: ProviderValue?, application argument: ProviderValue?) async -> ResolutionResult {
         guard case .string(let text)? = pathArgument else { return .failure(invalid("path must be a string.")) }

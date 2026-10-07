@@ -41,3 +41,24 @@ refusal applies to the resolved object at any depth.
 - Only the target stage is here. The default handler and any named application
   keep their present inspection until `application-locations-k176` and
   `discovered-applications-k177`.
+
+## Decisions (running log)
+
+- **One shared target stage.** `settleTarget` (`Logic/TargetStage.swift`) is stage 1 for both operations: resolve,
+  then the limit. Reveal's inline copy moved into it, so the two cannot drift, and the walk mutations that touched
+  reveal's planner now name it. Open's wording differs only in the past tense ("opened"), passed in.
+- **`inspectPath` is replaced by `readPathFacts(of: ResolvedLocation)`.** It reads the three resource values from a URL
+  built from the resolved spelling's own bytes (`URL(fileURLWithFileSystemRepresentation:)`), and takes the type from the
+  walk. The old literal `stat` (which guarded `file.txt/` against `realpath`'s forgiveness) and the `realpath` are gone:
+  the walk's trailing-slash rule and followed final link do that work. `PathInspection.absent` stays as the answer of a
+  read that reports nothing there; the planner reads it as `failed` (a later platform absence about a found location).
+- **N for open is named to an unregistered application.** An open the signed bundle on the host cannot be allowed to
+  complete, so every N open names `com.example.koine.k175.unregistered`. A present target within the limit that the
+  payload policy lets through then answers `APPLICATION_NOT_INSTALLED`, which proves the walk resolved it and its
+  metadata was read. That makes the 1,023-byte file, the 31/32-link chains, the mode-0600 final directory, the
+  two-directory link, the repeated dot-link and the multibyte names observable for open on the host, an N gap that
+  reveal could not close. Reveal's gap is unchanged and stays with `target-locations-vm-k180`; open's V is the effect.
+- **Payload rows at depth use the resolved object about 900 bytes down**, reached directly and through a 32-link chain
+  from a short literal, for an application bundle, a Mach-O executable and a Finder alias.
+- **The retained default-handler lookup and the literal submission are untouched**, as the leaf's notes say; the lookup
+  still prompts for protected documents and `protected-default-open-k89` still owns that.

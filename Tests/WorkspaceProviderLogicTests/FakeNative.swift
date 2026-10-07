@@ -142,7 +142,7 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     /// other parameter, which is what makes it scheme-only.
     var handlerLookups: [WebURL.Scheme] { lock.withLock { handlerLookupLog } }
     var opens: [(url: URL, application: URL)] { lock.withLock { openLog } }
-    /// Every path whose metadata the provider read, in order.
+    /// Every resolved spelling whose metadata the provider read, in order.
     var pathInspected: [String] { lock.withLock { pathInspectionLog } }
     /// Every document or directory the provider asked a default application about, in order.
     var documentLookups: [URL] { lock.withLock { documentLookupLog } }
@@ -215,8 +215,9 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         onLaunch?(completion)
     }
 
-    func inspectPath(_ path: String) -> PathInspection {
-        lock.withLock {
+    func readPathFacts(of location: ResolvedLocation) -> PathInspection {
+        let path = location.resolved.text
+        return lock.withLock {
             pathInspectionLog.append(path)
             return pathInspections[path] ?? .absent
         }

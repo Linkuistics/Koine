@@ -665,6 +665,7 @@ import Testing
         private var lookedUp: [WebURL.Scheme] = []
         private var openedPaths: [String] = []
         private var inspectedPaths: [String] = []
+        private var factsRead: [String] = []
         private var arranged: [String: PathInspection] = [:]
         private var lookedUpDocuments: [String] = []
         private var revealed: [String] = []
@@ -674,7 +675,10 @@ import Testing
         var opened: [String] { lock.withLock { openedURLs } }
         var lookups: [WebURL.Scheme] { lock.withLock { lookedUp } }
         var pathsOpened: [String] { lock.withLock { openedPaths } }
+        /// Every path whose location was resolved, in order.
         var pathsInspected: [String] { lock.withLock { inspectedPaths } }
+        /// Every resolved spelling whose metadata was read, in order.
+        var pathsRead: [String] { lock.withLock { factsRead } }
         var documentLookups: [String] { lock.withLock { lookedUpDocuments } }
         var pathsRevealed: [String] { lock.withLock { revealed } }
 
@@ -703,9 +707,10 @@ import Testing
             completion(.acknowledged(nil))
         }
         func arrange(_ path: String, as inspection: PathInspection) { lock.withLock { arranged[path] = inspection } }
-        func inspectPath(_ path: String) -> PathInspection {
-            lock.withLock {
-                inspectedPaths.append(path)
+        func readPathFacts(of location: ResolvedLocation) -> PathInspection {
+            let path = location.resolved.text
+            return lock.withLock {
+                factsRead.append(path)
                 return arranged[path]
                     ?? .present(PathFacts(isDirectory: path.hasSuffix("/"), isApplication: false, isAliasFile: false, contentType: "public.plain-text"))
             }
@@ -1057,6 +1062,7 @@ import Testing
         #expect(reply.errors.isEmpty, Comment(rawValue: "\(reply.errors)"))
         #expect((reply.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE")
         #expect(native.pathsInspected == [path])
+        #expect(native.pathsRead == [path], "its metadata is read once, from the resolved spelling")
         #expect(native.pathsOpened.count == 1)
     }
 
@@ -1262,6 +1268,38 @@ import Testing
         #expect(reveal["status"] as? String == "AVAILABLE")
         #expect((reveal["value"] as? [String: Any])?["path"] as? String == path)
         #expect(browser.pathsRevealed == [path])
+    }
+
+    /// G for an open of an extant location of any length: the same stand-in, which finds every path present and
+    /// records what reaches the handler. Over the limit the public outcome is `failed` with guidance at the
+    /// action's own response path, never a dependency, and nothing is read, looked up or opened.
+    @Test(arguments: [1024, 1025, 1500, 4000], [false, true])
+    func anOpenOfAnExtantPathOfOneThousandTwentyFourBytesOrMoreIsFailedWithGuidanceAndNothingIsOpened(
+        _ length: Int, _ named: Bool
+    ) async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let path = "/" + String(repeating: "a", count: length - 1)
+        var variables: [String: Any] = ["path": path]
+        if named { variables["application"] = ["bundleIdentifier": "dev.zed.Zed"] }
+        let reply = try await bench.run(Self.openPathWithVariables, variables, as: client)
+        #expect(reply.data?["open"] is NSNull, "no result and no dependency: the action failed")
+        #expect(reply.extensions(at: ["open"])["kind"] as? String == "failed")
+        let message = try #require(reply.error(at: ["open"])?["message"] as? String)
+        for needed in ["application hand-off", "\(length) bytes", "No request was made", "nothing was opened"] {
+            #expect(message.contains(needed), Comment(rawValue: "\(needed): \(message)"))
+        }
+        #expect(native.pathsRead.isEmpty, "no metadata was read")
+        #expect(native.documentLookups.isEmpty && native.pathsOpened.isEmpty, "no handler lookup and nothing opened")
+    }
+
+    @Test func anOpenOfAPathOfOneThousandTwentyThreeBytesIsHandedOverAsBefore() async throws {
+        let (bench, native, client) = try await Self.realPathProvider()
+        let path = "/" + String(repeating: "a", count: 1022)
+        let reply = try await bench.run(Self.openPathWithVariables, ["path": path], as: client)
+        #expect(reply.errors.isEmpty, Comment(rawValue: "\(reply.errors)"))
+        #expect((reply.data?["open"] as? [String: Any])?["status"] as? String == "AVAILABLE")
+        #expect(native.pathsRead == [path])
+        #expect(native.pathsOpened == [path])
     }
 
     /// The action has run. Revoking as `point` is reached denies that field's publication and

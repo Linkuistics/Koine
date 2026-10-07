@@ -95,11 +95,12 @@ protocol WorkspaceNative: Sendable {
         completion: @escaping @Sendable (LaunchCompletion) -> Void
     )
 
-    /// Prompt-free metadata inspection of a document or directory: `realpath`, `stat` and the
-    /// `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource values
-    /// (docs/verification/protected-path-metadata.md). Never reads contents, never lists a
-    /// directory, never asks for a default handler.
-    func inspectPath(_ path: String) -> PathInspection
+    /// Prompt-free metadata of the object the walk resolved, read from its resolved spelling (never the
+    /// caller's): the `isApplicationKey`, `contentTypeKey` and `isAliasFileKey` resource values
+    /// (docs/verification/protected-path-metadata.md). The caller applied the hand-off limit first. Never
+    /// reads contents, never lists a directory, never asks for a default handler; an answer of nothing
+    /// there is about a location the walk found, so it is reported and never read as absence.
+    func readPathFacts(of location: ResolvedLocation) -> PathInspection
 
     /// Resolves a caller's location component by component, never by a whole-path call
     /// (`LocationWalk`; docs/specs/workspace-launch-and-open.md "Resolving an action location"). Lists

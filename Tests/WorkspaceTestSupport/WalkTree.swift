@@ -54,12 +54,20 @@ public final class WalkTree: @unchecked Sendable {
         }
     }
 
-    public func makeFile(_ parts: [String]) throws {
+    public func makeFile(_ parts: [String], contents: [UInt8] = [], mode: mode_t = 0o644) throws {
         guard let name = parts.last else { return }
         try withDirectory(Array(parts.dropLast())) { directory in
-            let file = openat(directory, name, O_CREAT | O_WRONLY | O_EXCL, 0o644)
+            let file = openat(directory, name, O_CREAT | O_WRONLY | O_EXCL, mode)
             guard file >= 0 else { throw WalkTreeError.call("openat create", errno) }
-            close(file)
+            defer { close(file) }
+            var written = 0
+            while written < contents.count {
+                let count = contents[written...].withUnsafeBytes { write(file, $0.baseAddress, $0.count) }
+                guard count > 0 else { throw WalkTreeError.call("write", errno) }
+                written += count
+            }
+            // The creation mode is masked by the umask; the fixture's mode is exact.
+            guard fchmod(file, mode) == 0 else { throw WalkTreeError.call("fchmod", errno) }
         }
     }
 

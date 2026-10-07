@@ -3,7 +3,7 @@ import Foundation
 // Revealing a path in Finder: what is decided before the one native request. The input is the
 // same literal absolute path as opening. It is resolved component by component, never by a whole-path
 // call (LocationWalk), and refused at the application hand-off when a spelling reaches PATH_MAX
-// (HandOffLimit). There is no refusal policy beyond that: revealing an application, an executable or a
+// (HandOffLimit), both by `settleTarget`. There is no refusal policy beyond that: revealing an application, an executable or a
 // Finder alias selects it and opens nothing, so every present path within the limit is eligible.
 
 /// What a reveal does, decided before anything is submitted.
@@ -26,19 +26,11 @@ let finderBundleIdentifier = "com.apple.finder"
 /// installed application bundle by the launch's own selection. Nothing is cached: every action looks
 /// afresh, and no handler lookup is made, since the destination is not chosen by the item.
 func planReveal(_ path: LocalPath, native: some WorkspaceNative) -> RevealPlan {
-    let location: ResolvedLocation
-    switch native.resolveLocation(path.text) {
-    case .absent:
-        return .dependency(
-            .pathNotFound,
-            guidance: "Nothing exists at the requested path, or it is a link to something that does not, "
-                + "so nothing was revealed. Check the path, then try again."
-        )
-    case .failed(let component, let cause):
-        return .failed("The path could not be resolved at \(component.debugDescription): \(cause).")
-    case .present(let found): location = found
+    switch settleTarget(path, unaccomplished: "revealed", native: native) {
+    case .absent(let guidance): return .dependency(.pathNotFound, guidance: guidance)
+    case .failed(let message): return .failed(message)
+    case .resolved: break
     }
-    if let refusal = HandOffLimit.refusal(of: location, forAction: "revealed") { return .failed(refusal) }
     let filesystemRoot: Bool
     switch native.isFilesystemRoot(literalPath: path.text) {
     case .root: filesystemRoot = true

@@ -8,8 +8,9 @@
 # to an application it resolved itself, from a handler lookup that is given the scheme
 # alone (never a part of the submitted URL), with the same configuration; the path root
 # makes the same single open request, to the default application of the item as the
-# system's file lookup answers it or to the named installation, and inspects the item
-# only through metadata calls; the reveal root first resolves the caller's location by the
+# system's file lookup answers it or to the named installation, resolves the item by that
+# same walk and applies the same limit first, and reads its metadata only from the resolved
+# spelling and only through metadata calls; the reveal root first resolves the caller's location by the
 # descriptor walk (search-only single-component calls, no whole-path call, nothing listed or
 # opened) and applies the application hand-off limit before any whole-path call addresses
 # the location, then makes ONE Finder selection request,
@@ -95,7 +96,16 @@ grep -rq -E 'URL\(fileURLWithPath: path\.text, isDirectory: facts\.isDirectory\)
 
 echo
 echo "== Source: the item is inspected only through the calls the metadata probe measured prompt-free"
-INSPECTION="$(grep -n -E 'realpath\(|l?stat\(|resourceValues\(forKeys' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -v -E ':[0-9]+:\s*//' || true)"
+# The item's own metadata is read from the resolved spelling's bytes. No whole-path stat or realpath addresses the
+# caller's item: the walk found it, and the limit passed it, before this read.
+READ_FACTS="$(awk '/func readPathFacts\(of location: ResolvedLocation\)/ {on=1} on {print} on && /^    }$/ {exit}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)"
+echo "${READ_FACTS}"
+[ -n "${READ_FACTS}" ] || fail "the item's metadata read is not one native function"
+grep -q -F 'location.resolved.bytes' <<<"${READ_FACTS}" || fail "the item's metadata is not read from the resolved spelling's bytes"
+if grep -E 'location\.literal|realpath\(|l?stat\(|path\.text' <<<"${READ_FACTS}" | grep -v -E '^\s*//'; then
+    fail "the item's metadata read addresses the caller's spelling or makes a whole-path call"
+fi
+INSPECTION="$(grep -E 'resourceValues\(forKeys' <<<"${READ_FACTS}" | grep -v -E '^\s*//' || true)"
 echo "${INSPECTION}"
 grep -q 'forKeys: \[.isApplicationKey, .contentTypeKey, .isAliasFileKey\]' <<<"${INSPECTION}" || fail "the item's resource keys are not the measured three"
 if grep -rn -E 'contentsOfDirectory|enumerator\(|contents\(atPath|Data\(contentsOf|String\(contentsOf|FileHandle|fopen\(|open\(path|opendir|readdir' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//'; then
@@ -128,20 +138,49 @@ echo "search-only handles; no read, write or create mode"
 [ "$(grep -c -E 'AT_SYMLINK_NOFOLLOW' "${WALK}")" -ge 1 ] || fail "the walk does not examine an entry without following its link"
 [ "$(grep -c -E 'func resolveLocation\(_ path: String\) -> LocationResolution \{ LocationWalk\.resolve\(path\) \}' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift)" = 1 ] ||
     fail "the adapter's resolution is not the walk and nothing else"
-# The planner's order: resolve, then the limit, then the one whole-path call (the root rule's lstat), then Finder.
+# The planner's order: the target stage (resolve, then the limit, checked below in the stage itself), then the one
+# whole-path call (the root rule's lstat), then Finder.
 line() { grep -n -F "$1" "${REVEAL}" | head -1 | cut -d: -f1; }
-RESOLVE="$(line 'native.resolveLocation(path.text)')"
-LIMIT="$(line 'HandOffLimit.refusal(')"
+SETTLE_REVEAL="$(line 'settleTarget(path, unaccomplished: "revealed", native: native)')"
 ROOT="$(line 'native.isFilesystemRoot(literalPath: path.text)')"
 FINDER="$(line 'selectInstallation(finder, native: native)')"
-for found in "${RESOLVE}" "${LIMIT}" "${ROOT}" "${FINDER}"; do [ -n "${found}" ] || fail "the reveal planner no longer has one of resolve, limit, root decision, Finder"; done
-[ "${RESOLVE}" -lt "${LIMIT}" ] && [ "${LIMIT}" -lt "${ROOT}" ] && [ "${ROOT}" -lt "${FINDER}" ] ||
-    fail "the reveal planner's order is not resolve, limit, root decision, Finder"
-echo "planner order: resolve (line ${RESOLVE}), limit (${LIMIT}), root decision (${ROOT}), Finder (${FINDER})"
-if grep -n -E 'inspectPath|realpath|resourceValues|\.path\b' "${REVEAL}" | grep -v -E ':[0-9]+:\s*//'; then
+for found in "${SETTLE_REVEAL}" "${ROOT}" "${FINDER}"; do [ -n "${found}" ] || fail "the reveal planner no longer has one of the target stage, root decision, Finder"; done
+[ "${SETTLE_REVEAL}" -lt "${ROOT}" ] && [ "${ROOT}" -lt "${FINDER}" ] ||
+    fail "the reveal planner's order is not target stage, root decision, Finder"
+echo "reveal planner order: target stage (line ${SETTLE_REVEAL}), root decision (${ROOT}), Finder (${FINDER})"
+if grep -n -E 'readPathFacts|realpath|resourceValues|\.path\b' "${REVEAL}" | grep -v -E ':[0-9]+:\s*//'; then
     fail "the reveal planner addresses the caller's location by a call the limit does not precede"
 fi
 echo "the reveal planner makes no other path call"
+# The target stage both operations share: the walk, then the limit, in that order, before anything else.
+TARGET=Providers/WorkspaceProvider/Logic/TargetStage.swift
+line_in() { grep -n -F "$2" "$1" | head -1 | cut -d: -f1; }
+STAGE_RESOLVE="$(line_in "${TARGET}" 'native.resolveLocation(path.text)')"
+STAGE_LIMIT="$(line_in "${TARGET}" 'HandOffLimit.refusal(')"
+[ -n "${STAGE_RESOLVE}" ] && [ -n "${STAGE_LIMIT}" ] && [ "${STAGE_RESOLVE}" -lt "${STAGE_LIMIT}" ] ||
+    fail "the target stage's order is not resolve, then limit"
+if grep -n -E 'readPathFacts|realpath|stat\(|resourceValues|\.path\b' "${TARGET}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the target stage makes a path call of its own"
+fi
+echo "target stage order: resolve (line ${STAGE_RESOLVE}), limit (${STAGE_LIMIT})"
+echo
+echo "== Source: an open settles its target by that stage, then reads the resolved object's metadata, then the payload policy, then the handler"
+OPEN=Providers/WorkspaceProvider/Logic/OpenPath.swift
+SETTLE="$(line_in "${OPEN}" 'settleTarget(path, unaccomplished: "opened", native: native)')"
+FACTS="$(line_in "${OPEN}" 'native.readPathFacts(of: location)')"
+POLICY="$(line_in "${OPEN}" 'refusalReason(for: facts, native: native)')"
+HANDLER="$(line_in "${OPEN}" 'selectPathHandler(target, native: native)')"
+INSTALLATION="$(line_in "${OPEN}" 'selectInstallation(application, native: native)')"
+for found in "${SETTLE}" "${FACTS}" "${POLICY}" "${HANDLER}" "${INSTALLATION}"; do
+    [ -n "${found}" ] || fail "the open planner no longer has one of target stage, metadata read, payload policy, handler, installation"
+done
+[ "${SETTLE}" -lt "${FACTS}" ] && [ "${FACTS}" -lt "${POLICY}" ] && [ "${POLICY}" -lt "${INSTALLATION}" ] && [ "${POLICY}" -lt "${HANDLER}" ] ||
+    fail "the open planner's order is not target stage, metadata, payload policy, then the application"
+echo "open planner order: target stage (line ${SETTLE}), metadata (${FACTS}), payload policy (${POLICY}), installation (${INSTALLATION}), handler (${HANDLER})"
+if grep -n -E 'realpath|resourceValues|[^A-Za-z]stat\(' "${OPEN}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the open planner addresses the caller's location by a call of its own"
+fi
+echo "the open planner makes no other path call"
 ROOT_CALL="$(grep -n -A12 -F 'func isFilesystemRoot(literalPath path: String)' Providers/WorkspaceProvider/Sources/NativeWorkspace.swift | grep -c -E 'lstat\(')"
 [ "${ROOT_CALL}" = 2 ] || fail "the root decision is not exactly two lstat calls, the literal path and /"
 echo "the root decision: lstat of the literal text and of /, after the limit"

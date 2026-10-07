@@ -179,7 +179,8 @@ import Testing
         #expect(fields["status"] == .string("DEPENDENCY_UNAVAILABLE"))
         #expect(fields["value"] == .null)
         #expect(Self.dependencyReason(fields) == .string("PATH_NOT_FOUND"))
-        #expect(native.pathInspected == ["/Users/test/gone.txt"])
+        #expect(native.resolved == ["/Users/test/gone.txt"])
+        #expect(native.pathInspected.isEmpty, "an absent target has no metadata to read")
         #expect(native.documentLookups.isEmpty && native.inspected.isEmpty, "a missing file is not conflated with a missing handler")
         #expect(native.pathOpens.isEmpty && provider.submissionsInFlight == 0)
     }
