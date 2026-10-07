@@ -230,6 +230,7 @@ tasks:
       - task: fixture:variants
       - task: fixture:selection
       - task: bundled-providers
+      - task: fixture:receipt-identity-probe
       - swift test --skip-build
 
   fixture:
@@ -265,6 +266,13 @@ tasks:
           BUNDLE="$(Providers/${provider}/build.sh "$(dirname "${FRAMEWORK}")" "${ROOT}")"
           Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
         done
+
+  fixture:receipt-identity-probe:
+    desc: Build the receipt-identity probe - the workspace provider's own Logic and Sources compiled as its build definition compiles them, with a small entry point, so `task test` can run the shipped adapter's two executable identities (the live process's and the retained object's) against the real kernel and a process the test starts, with no launch on the host
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/ReceiptIdentityProbe/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../ReceiptIdentityProbe"
 
   app:
     desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)
@@ -566,10 +574,15 @@ tasks:
       - scripts/vm-verify-enrollment.sh
 
   check:launch-call-path:
-    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, every application it discovers itself resolved by the descriptor walk and limited before its bundle is read, with no whole-path inspection of a registered location left, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
+    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, every application it discovers itself resolved by the descriptor walk and limited before its bundle is read, with no whole-path inspection of a registered location left, the receipt's two executable identities (the live process's and the retained object's) each acquired by that walk as one device-and-inode representation with no length limit, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
     deps: [app]
     cmds:
       - scripts/check-launch-call-path.sh
+
+  check:launch-call-path-mutations:
+    desc: Show the receipt-identity part of `task check:launch-call-path` goes red against one deliberately broken decision of the receipt's two executable identities at a time (a symlink-resolving or resource-identifier call, a path decoded to text, a hand-off limit, an identity not acquired by the walk, a second representation), in a throwaway copy of what the check reads; the unmutated copy must pass first
+    cmds:
+      - python3 scripts/check-launch-call-path-mutations.py
 
   app:vm-verify-launch:
     desc: Verify in a clean TestAnyware macOS VM that the signed bundle's workspaceLaunchApplication, under workspace:control AND desktop:control and no read capability, launches Notes while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive, as an independent witness sees activation, one instance and the kernel's identity for the returned process; that either control alone, desktop:read alone and a revoked grant launch nothing and move no focus; and that launch works and raises no consent prompt with Accessibility absent and again after it is revoked, with the client's recovery, a desktop read plus an explicit focus, exercised separately

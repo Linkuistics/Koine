@@ -71,6 +71,23 @@ public final class WalkTree: @unchecked Sendable {
         }
     }
 
+    /// A file whose whole path, the root's included, is exactly `length` bytes: 245-byte directories (`segment`)
+    /// and then a name of 1 to 255 bytes. The parts are returned.
+    public func makeFile(pathLength length: Int, contents: [UInt8] = [], mode: mode_t = 0o644) throws -> [String] {
+        var directories = (length - root.utf8.count - 2) / 246
+        while directories >= 0 {
+            let name = length - root.utf8.count - directories * 246 - 1
+            if (1...255).contains(name) {
+                let parts = (0..<directories).map { Self.segment($0) } + [String(repeating: "f", count: name)]
+                try makeDirectories(Array(parts.dropLast()))
+                try makeFile(parts, contents: contents, mode: mode)
+                return parts
+            }
+            directories -= 1
+        }
+        throw WalkTreeError.call("no chain of length \(length)", 0)
+    }
+
     public func makeLink(_ text: String, at parts: [String]) throws {
         guard let name = parts.last else { return }
         try withDirectory(Array(parts.dropLast())) { directory in

@@ -297,6 +297,53 @@ fi
 echo "no ELOOP or ENAMETOOLONG is mapped to absence in the adapter or a stage; the walk alone decides absence"
 
 echo
+echo "== Source: the receipt's two executable identities are acquired by the walk, in one representation, and by no whole-path primitive"
+# Observation's third step compares the live process's executable (`proc_pidpath`) with the retained application object's
+# (`executableURL`). Neither route calls `inspectApplication`, so no stage converts them: each is read as bytes, resolved by the
+# walk, and compared as the walk's device and inode. The hand-off limit never applies to either: the action was acknowledged.
+EXECUTABLE=Providers/WorkspaceProvider/Logic/ExecutableIdentity.swift
+OBSERVATION=Providers/WorkspaceProvider/Logic/Observation.swift
+NATIVE_SEAM=Providers/WorkspaceProvider/Logic/Native.swift
+# What neither route may use: the old identity type, a symlink-resolving or pathname resource call. Seen first to match.
+IDENTITY_PRIMITIVES='fileIdentity\(ofPath|FileIdentity\b|resolvingSymlinksInPath|realpath\(|fileResourceIdentifier|volumeIdentifier|standardizedFileURL'
+printf 'fileIdentity(ofPath: p)\nFileIdentity(volume: v, file: f)\nurl.resolvingSymlinksInPath()\nrealpath(p, nil)\nvalues.fileResourceIdentifier\nvalues.volumeIdentifier\nurl.standardizedFileURL\n' >"${CONTROL}"
+[ "$(grep -c -E "${IDENTITY_PRIMITIVES}" "${CONTROL}")" = 7 ] || fail "the identity-primitive pattern does not match the control it must"
+if grep -rn -E "${IDENTITY_PRIMITIVES}" "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "a receipt identity still uses the old identity type, a symlink-resolving call or a pathname resource value"
+fi
+echo "no fileIdentity(ofPath:), FileIdentity, resolvingSymlinksInPath, realpath or file/volume resource identifier remains"
+LIVE_IDENTITY="$(awk '/func liveExecutableIdentity\(of pid: Int32\)/ {on=1} on {print} on && /^    }$/ {exit}' "${NATIVE_FILE}")"
+RETAINED_URL="$(awk '/^func identityOfExecutable\(at url: URL\)/ {on=1} on {print} on && /^}$/ {exit}' "${NATIVE_FILE}")"
+RETAINED_PROPERTY="$(awk '/var executableIdentity: ObjectIdentity\? \{/ {on=1} on {print} on && /^    }$/ {exit}' "${NATIVE_FILE}")"
+echo "${LIVE_IDENTITY}"
+echo "${RETAINED_URL}"
+echo "${RETAINED_PROPERTY}"
+for body in "${LIVE_IDENTITY}" "${RETAINED_URL}" "${RETAINED_PROPERTY}"; do
+    [ -n "${body}" ] || fail "a receipt identity route is not the one function or property this check names"
+done
+grep -q -F 'proc_pidpath(' <<<"${LIVE_IDENTITY}" || fail "the live identity is not read from the kernel's path (proc_pidpath)"
+grep -q -F 'ExecutableIdentity.of(path:' <<<"${LIVE_IDENTITY}" || fail "the live identity is not acquired by the walk"
+grep -q -F 'withUnsafeFileSystemRepresentation' <<<"${RETAINED_URL}" || fail "the retained identity is not read from the URL's own filesystem bytes"
+grep -q -F 'ExecutableIdentity.of(path:' <<<"${RETAINED_URL}" || fail "the retained identity is not acquired by the walk"
+grep -q -F 'identityOfExecutable(at:' <<<"${RETAINED_PROPERTY}" || fail "the retained object's identity is not its executable URL's"
+if grep -E 'resourceValues|\.path\b|String\(|realpath|l?stat\(|HandOffLimit|pathMax' <<<"${LIVE_IDENTITY}${RETAINED_URL}${RETAINED_PROPERTY}" | grep -v -E '^\s*//'; then
+    fail "a receipt identity route decodes its path, addresses it by a whole-path call or applies the hand-off limit"
+fi
+[ "$(grep -c -F 'proc_pidpath(' "${NATIVE_FILE}")" = 1 ] || fail "the kernel's executable path is read other than once"
+[ "$(grep -rho -F 'ExecutableIdentity.of(path:' "${SOURCES[@]}" | wc -l | tr -d ' ')" = 2 ] ||
+    fail "the walk is not the one acquisition of exactly the two receipt identities"
+# The rule itself: the walk, and never the hand-off limit.
+grep -q -F 'LocationWalk.resolve(path' "${EXECUTABLE}" || fail "the receipt identity rule does not resolve by the walk"
+grep -q -F 'guard case .present(let location)' "${EXECUTABLE}" || fail "the receipt identity rule does not yield an identity for a present location alone"
+if grep -n -H -E 'HandOffLimit|pathMax|byteCount|\.count|refusal|\.failed' "${EXECUTABLE}" | grep -v -E ':[0-9]+:\s*//'; then
+    fail "the receipt identity rule applies a length or turns an outcome into a refusal"
+fi
+# One representation: both sides of the comparison are the walk's `ObjectIdentity`, and nothing else is.
+[ "$(grep -c -E 'ObjectIdentity\?' "${NATIVE_SEAM}")" = 2 ] || fail "the native seam does not declare exactly the two identities as ObjectIdentity"
+grep -q -F 'claimed == live' "${OBSERVATION}" || fail "observation no longer compares the two identities"
+echo "both identities are read as bytes, resolved by the walk with no length limit, and compared as ObjectIdentity (device and inode)"
+
+echo
 echo "== Source: exactly one Finder selection request, in its two documented forms, and nothing else for a reveal"
 SELECTS="$(grep -rn -E 'selectFile\(' "${SOURCES[@]}" | grep -v -E ':[0-9]+:\s*//' || true)"
 echo "${SELECTS}"
@@ -347,4 +394,4 @@ if { strings "${LIBRARY}"; nm -u "${LIBRARY}"; } | sed 's/^ *//' | grep -E "${FO
 fi
 echo "  none"
 echo
-echo "PASSED: one launch request, one open request (URL or path) and one Finder selection request (in its two documented forms) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as the launch's declared effect, a reveal's target resolved by the descriptor walk (search-only single-component calls) before the hand-off limit and any whole-path call, other items inspected by measured metadata calls only, and no other activation, input, scripting or process call"
+echo "PASSED: one launch request, one open request (URL or path) and one Finder selection request (in its two documented forms) to an explicitly resolved handler, found by the scheme alone or for the item opened, with activation as the launch's declared effect, a reveal's target resolved by the descriptor walk (search-only single-component calls) before the hand-off limit and any whole-path call, other items inspected by measured metadata calls only, the receipt's two executable identities each acquired by that walk as the walk's device and inode with no length limit, and no other activation, input, scripting or process call"

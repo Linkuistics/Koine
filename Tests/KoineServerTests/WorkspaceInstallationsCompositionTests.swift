@@ -40,7 +40,7 @@ import Testing
                 inspections[path] = .application(
                     ApplicationBundle(
                         url: url, bundleIdentifier: identifier,
-                        identity: FileIdentity(volume: NSNumber(value: 1), file: file as NSString)))
+                        identity: .named(file)))
             }
         }
         func inspect(_ path: String, as result: ApplicationInspection) { lock.withLock { inspections[path] = result } }
@@ -71,8 +71,7 @@ import Testing
             }
             switch lock.withLock({ inspections[path] }) {
             case .application(let bundle)?:
-                let file = Array("\(bundle.identity.file)".utf8).reduce(UInt64(7)) { $0 &* 31 &+ UInt64($1) }
-                return present(ObjectIdentity(device: 1, inode: file), .directory)
+                return present(bundle.identity, .directory)
             case .notApplication?: return present(ObjectIdentity(device: 1, inode: 2), .regularFile)
             case .unreadable(let reason)?: return .failed(component: path, cause: reason)
             case .absent?: return .absent(.missing(component: path))
@@ -103,7 +102,7 @@ import Testing
             completion(.refused("a reveal is not part of this test"))
         }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
-        func liveExecutableIdentity(of pid: Int32) -> FileIdentity? { nil }
+        func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { nil }
     }
 
     static func bench() async throws -> (bench: WorkspaceCompositionTests.Bench, native: Copies, client: Principal) {
@@ -192,7 +191,7 @@ import Testing
             as: .application(
                 ApplicationBundle(
                     url: URL(fileURLWithPath: "/Users/test/Unregistered/Fixture.app"), bundleIdentifier: Self.id,
-                    identity: FileIdentity(volume: NSNumber(value: 1), file: "unregistered" as NSString))))
+                    identity: .named("unregistered"))))
         native.inspect("/Users/test/bin/program", as: .notApplication)
         native.install("dev.koine.test.Other", at: "/Applications/Other.app", file: "other")
 

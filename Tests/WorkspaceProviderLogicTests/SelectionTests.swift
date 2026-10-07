@@ -106,7 +106,7 @@ import Testing
         #expect(!substituting, "a chosen installation is never replaced by a running copy elsewhere")
     }
 
-    @Test func aPathSpelledThroughASymlinkIsMatchedByFileIdentity() {
+    @Test func aPathSpelledThroughASymlinkIsMatchedByObjectIdentity() {
         let native = FakeNative()
         native.install(Self.notes, at: "/Users/a/Apps/Notes.app", file: "mine")
         // The spelling the caller supplies resolves to the same file as the registration.

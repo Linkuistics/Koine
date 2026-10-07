@@ -104,7 +104,7 @@ a whole-path call before the limit. Classified:
   `protected-default-open` (it still prompts for Files and Folders consent on first-use Desktop, Documents and
   Downloads; the registered location it returns is now resolved by the walk like any other).
 - The receipt's executable identities (`liveExecutableIdentity`, `RunningApplication.executableIdentity`,
-  `fileIdentity(ofPath:)`) were not callers of the removed inspection and are left to
-  `receipt-executable-identity`.
+  `fileIdentity(ofPath:)`) were not callers of the removed inspection and were left to
+  `receipt-executable-identity`, which converted both ([record](receipt-executable-identity.md)).
 - A registered URL is walked by `URL.path` as a `String`, as for the supplied stage's registered copy: a visible
   trade-off, unreachable on APFS.

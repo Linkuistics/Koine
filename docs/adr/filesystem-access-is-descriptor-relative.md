@@ -1,7 +1,8 @@
 # Filesystem access is descriptor-relative
 
 Koine's own filesystem work — action-time presence and cause inspection, search
-traversal and application-copy identity — resolves a location component by
+traversal, application-copy identity and the receipt's two executable identities —
+resolves a location component by
 component from held directory handles (`openat`, `fstatat`, `readlinkat`,
 `fpathconf`), never by handing a whole absolute pathname to `realpath`, `stat`,
 `FileManager`, `URL.path` or a joined absolute string. An absolute pathname is a

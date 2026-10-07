@@ -66,3 +66,41 @@ address, and a mismatch is still a mismatch.
   would make every receipt `nil`.
 - `proc_pidpath` already reports a resolved kernel path of up to 4,096 bytes,
   longer than the hand-off limit; reading it needs no new buffer decision.
+
+## Decisions (running log)
+
+- **The shared type is `ObjectIdentity` (device and inode), and `FileIdentity` is gone.** `k176` had not changed it, so both
+  sides were converted together as the note said: a Foundation resource identifier can never equal a device and inode, and
+  leaving one side behind would have made every receipt `nil`. The test vocabulary (`ApplicationBundle.identity`,
+  `FakeNative.identity`, `ObjectIdentity.named`) is an inode derived from a name, so one test file name is one object.
+- **Observation's rule is its own file, `Logic/ExecutableIdentity.swift`** (`ExecutableIdentity.of(path:)`), not a branch of
+  the stages: it yields the walk's identity for a `.present` location and none for every other outcome, never reads
+  `HandOffLimit`, and treats a non-absolute spelling as unavailable (the walk always starts at `/`, so a relative one would
+  otherwise be read from the root).
+- **Both paths are bytes, never `String`.** The live one is `proc_pidpath`'s buffer up to the NUL; the retained one is the
+  URL's `withUnsafeFileSystemRepresentation`, in the free function `identityOfExecutable(at:)` (not `executableIdentity`,
+  which `RunningApplication`'s own property would shadow).
+- **N is an independent build of the shipped sources, not a call into the signed bundle.** The bundle reaches observation
+  only after a launch and exports no symbol (`nm -gU` shows none), so `Fixtures/ReceiptIdentityProbe` compiles `Logic/` and
+  `Sources/` as `build.sh` does with a small entry point; the test starts it as a process it owns. `NSRunningApplication.current`
+  has no `executableURL` for a plain command-line process, so the probe sets a `prohibited` activation policy (measured:
+  no window, no Dock tile).
+- **Found: there is no running process at about 1,500 bytes.** The kernel kills a program at exec whose physical path is
+  1,024 bytes or more (1,023 runs; 1,200 is refused at spawn). The brief's N row is therefore a running process at short
+  depth and at 1,023 through two links, plus the retained route's own conversion on present executables of 1,024 to 4,200
+  bytes and through every link form. Recorded in the spec and the record; not a defect, and it is why the limit adds no
+  systematic `process: null`.
+- **Found: `NSRunningApplication.executableURL` is the spelling the process was started by** (with `/private` dropped), not
+  the physical path, so the 1,023-byte row does send the retained walk through two links. The row pins that observation.
+- **Found on the real system, and not a defect:** of 139 running applications reporting both identities, 2 are not the same
+  file (`com.apple.WebKit.WebContent` reported for a `.EnhancedSecurity` process). The route the walk replaced says the same,
+  and N sets the walk against that route's verdict on every running application (0 disagreements).
+- **Review spent: one fresh-context read, nothing blocking.** Classified in `docs/verification/receipt-executable-identity.md`:
+  the same-path replacement false equal is the spec's stated non-atomic observation; the walk's quadratic list handling and
+  `openat` without `O_NOFOLLOW` are k174's accepted behaviour; a non-UTF-8 name is not exercised (fixtures are built from
+  `String`) and is left a visible trade-off.
+- **Call path:** `check-launch-call-path.sh` has a section enumerating the two routes and the rule, and
+  `scripts/check-launch-call-path-mutations.py` (`task check:launch-call-path-mutations`) sees it fail on 13 mutations in a
+  throwaway copy. `check-location-walk-mutations.py` gained suites X, V and R and six mutations, and builds the probe.
+- **Spec and docs:** status paragraph, receipt sentence, the stale "both application stages ... pending" line, the client
+  guide, the ADR's list of consumers and the older analysis table were brought to what is accepted; `docs/verification/receipt-executable-identity.md` is the record.

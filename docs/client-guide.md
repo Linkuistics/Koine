@@ -769,8 +769,8 @@ What differs:
 7. **The receipt names an application, not a document.** `value.process`, when present, is
    the application that was asked to open the item (the default handler or the one you
    named). It names no window or document, may be null, and says nothing about whether the
-   item rendered. Long-app executable identity reads are separately pending;
-   systematic length-caused null is not an accepted loss of the desktop handoff.
+   item rendered. The two executable identities behind it are read without a length limit, so a long
+   path alone never makes it null; systematic length-caused null is not an accepted loss of the desktop handoff.
    A second request is a second open: there is no idempotency key in version 1.
 
 ## Revealing a path in Finder

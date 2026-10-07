@@ -15,7 +15,7 @@ import Testing
     static let exe = FakeNative.identity("exe")
 
     /// A native whose PID 4242 runs `exe` and reads `start` on every read.
-    static func native(reads: [ProcessLookup] = [.running(start)], live: FileIdentity? = exe) -> FakeNative {
+    static func native(reads: [ProcessLookup] = [.running(start)], live: ObjectIdentity? = exe) -> FakeNative {
         let native = FakeNative()
         native.processStarts(4242, reads)
         native.executable(4242, live)
@@ -67,22 +67,24 @@ import Testing
         #expect(observeProcess(of: FakeApplication(), native: native) == nil)
     }
 
-    @Test func anExecutableTheObjectDoesNotReportIsNull() {
-        #expect(observeProcess(of: FakeApplication(executable: nil), native: Self.native()) == nil)
-    }
-
-    @Test func aLiveExecutableThatCannotBeReadIsNull() {
-        #expect(observeProcess(of: FakeApplication(), native: Self.native(live: nil)) == nil)
-    }
-
-    @Test func aLiveExecutableThatIsAnotherFileIsNull() {
-        let native = Self.native(live: FakeNative.identity("someone else's binary"))
-        #expect(observeProcess(of: FakeApplication(), native: native) == nil)
-    }
-
-    @Test func anExecutableOnAnotherVolumeIsAnotherFile() {
-        let native = Self.native(live: FakeNative.identity("exe", volume: 2))
-        #expect(observeProcess(of: FakeApplication(), native: native) == nil)
+    /// The third step on every combination the walk can leave: the two identities are the walk's device and
+    /// inode, so equality is the only way through and an unavailable value on either side is never equal to
+    /// anything, another unavailable value included. Each row otherwise satisfies every other step.
+    @Test(
+        arguments: [
+            ("equal identities", ObservationTests.exe as ObjectIdentity?, ObservationTests.exe as ObjectIdentity?, true),
+            ("different inodes", FakeNative.identity("exe"), FakeNative.identity("someone else's binary"), false),
+            ("the same inode on another device", FakeNative.identity("exe"), FakeNative.identity("exe", volume: 2), false),
+            ("the object's executable unavailable", nil, ObservationTests.exe, false),
+            ("the live executable unavailable", ObservationTests.exe, nil, false),
+            ("both unavailable", nil, nil, false),
+        ]
+    )
+    func theExecutablesMustBeTheSameObjectAndAnUnavailableOneIsNeverTheSame(
+        what: String, retained: ObjectIdentity?, live: ObjectIdentity?, observed: Bool
+    ) {
+        let outcome = observeProcess(of: FakeApplication(executable: retained), native: Self.native(live: live))
+        #expect(outcome == (observed ? ObservedProcess(pid: 4242, start: Self.start) : nil), Comment(rawValue: what))
     }
 
     @Test func aFreshLookupThatFindsNothingOrSomethingElseIsNull() {

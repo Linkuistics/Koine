@@ -9,7 +9,9 @@ read). The walk tests (`LocationWalkTests`, S), the planner tests (`RevealLocati
 (`DiscoveredApplicationTests`, D, and `WorkspaceCompositionTests`, C, for the browser, the default handler and Finder through
 the public engine) and the signed-bundle tests (`WorkspaceLongLocationTests`, N, which
 asks both a reveal and an open, and `WorkspaceApplicationLocationTests`, B, which asks a constrained launch and a
-named open) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
+named open), the receipt's executable-identity rule (`ExecutableIdentityTests`, X, and `ObservationTests`, V, and the
+signed-bundle-side `ReceiptExecutableIdentityTests`, R, which runs the shipped adapter's two identities in an independently
+built probe) all pass against the walk as it is. This breaks one decision of the shipped source at a time, in a COPY of the tree
 (.build/location-walk-mutations/tree, with its own build directory, so later runs are
 incremental), rebuilds the copy's tests and its independently built, signed workspace
 bundle from the mutated source, and runs each named suite. A mutation is seen when every
@@ -41,11 +43,15 @@ APPLICATION = LOGIC + "ApplicationStage.swift"
 DISCOVERED = LOGIC + "DiscoveredStage.swift"
 SELECTION = LOGIC + "Selection.swift"
 NATIVE = "Providers/WorkspaceProvider/Sources/NativeWorkspace.swift"
+EXECUTABLE = LOGIC + "ExecutableIdentity.swift"
+OBSERVATION = LOGIC + "Observation.swift"
 
 # S: the walk's own source; L: reveal's planner; O: open's planner; A: the supplied-application stage's planner;
 # G: that stage through the public engine; N: the signed bundle, asked for a reveal and an open of a path;
 # B: the signed bundle, asked for a constrained launch and a named open; D: the discovered-application stage's planner;
-# C: the discovered default handler, browser and Finder through the public engine.
+# C: the discovered default handler, browser and Finder through the public engine; X: the receipt's executable-identity
+# rule on the shipped walk; V: the receipt's observation rule; R: the receipt's two identities, live and retained, run by
+# the shipped adapter in the independently built probe (`task fixture:receipt-identity-probe`).
 SUITES = {
     "S": "LocationWalkTests",
     "L": "RevealLocationTests",
@@ -56,6 +62,9 @@ SUITES = {
     "B": "WorkspaceApplicationLocationTests",
     "D": "DiscoveredApplicationTests",
     "C": "WorkspaceCompositionTests",
+    "X": "ExecutableIdentityTests",
+    "V": "ObservationTests",
+    "R": "ReceiptExecutableIdentityTests",
 }
 
 # name -> (file, text to replace, replacement, suites that must go red)
@@ -64,9 +73,9 @@ MUTATIONS = {
         WALK,
         "guard expansions.count < LocationWalk.linkBudget",
         "guard expansions.count <= LocationWalk.linkBudget",
-        "SN",
+        "SNXR",
     ),
-    "budget-stops-at-31": (WALK, "static let linkBudget = 32", "static let linkBudget = 31", "SN"),
+    "budget-stops-at-31": (WALK, "static let linkBudget = 32", "static let linkBudget = 31", "SNXR"),
     "a-repeated-state-is-not-a-cycle": (
         WALK,
         "if visited.contains(state) {",
@@ -379,6 +388,42 @@ MUTATIONS = {
         "return .selected(registered, substituting: true)",
         "AG",
     ),
+    "observation-applies-the-hand-off-limit": (
+        EXECUTABLE,
+        "        guard case .present(let location) = LocationWalk.resolve(path, using: system) else { return nil }\n",
+        "        guard case .present(let location) = LocationWalk.resolve(path, using: system), path.count < HandOffLimit.pathMax else { return nil }\n",
+        "XR",
+    ),
+    "an-absent-executable-has-an-identity": (
+        EXECUTABLE,
+        "        guard case .present(let location) = LocationWalk.resolve(path, using: system) else { return nil }\n        return location.identity\n",
+        "        switch LocationWalk.resolve(path, using: system) {\n        case .present(let location): return location.identity\n        default: return ObjectIdentity(device: 0, inode: 0)\n        }\n",
+        "XR",
+    ),
+    "a-relative-spelling-is-read-from-the-root": (
+        EXECUTABLE,
+        '        guard path.first == UInt8(ascii: "/") else { return nil }\n',
+        "",
+        "X",
+    ),
+    "an-unavailable-identity-matches-an-unavailable-one": (
+        OBSERVATION,
+        "    guard let claimed = application.executableIdentity, let live = native.liveExecutableIdentity(of: pid),\n        claimed == live\n    else { return nil }\n",
+        "    guard application.executableIdentity == native.liveExecutableIdentity(of: pid) else { return nil }\n",
+        "V",
+    ),
+    "the-live-identity-reads-another-process": (
+        NATIVE,
+        "proc_pidpath(pid, $0.baseAddress, UInt32($0.count))",
+        "proc_pidpath(getppid(), $0.baseAddress, UInt32($0.count))",
+        "R",
+    ),
+    "a-url-longer-than-the-limit-is-unavailable": (
+        NATIVE,
+        "    guard url.isFileURL else { return nil }\n",
+        "    guard url.isFileURL, url.path.utf8.count < 1024 else { return nil }\n",
+        "R",
+    ),
 }
 
 
@@ -433,6 +478,7 @@ def main():
         built = (
             run(["swift", "build", "--build-tests"], TREE, log) == 0
             and run(["task", "bundled-providers"], TREE, log) == 0
+            and run(["task", "fixture:receipt-identity-probe"], TREE, log) == 0
         )
         record = {"suites": {}}
         if not built:

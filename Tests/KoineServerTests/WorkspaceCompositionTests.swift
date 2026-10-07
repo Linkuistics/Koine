@@ -755,7 +755,7 @@ import Testing
             completion(.acknowledged(nil))
         }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
-        func liveExecutableIdentity(of pid: Int32) -> FileIdentity? { nil }
+        func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { nil }
     }
 
     static func realProvider() async throws -> (bench: Bench, browser: RecordingBrowser, client: Principal) {

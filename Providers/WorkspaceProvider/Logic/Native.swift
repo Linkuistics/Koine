@@ -5,18 +5,6 @@ import Foundation
 // Sources/NativeWorkspace.swift, and provider-local tests substitute their own.
 // It is not a public seam and not evidence from a real binary or application.
 
-/// The volume and the file, as the platform names them, compared by the
-/// platform's own equality rather than by spelling, Unicode normalization or a
-/// path prefix (`volumeIdentifierKey` with `fileResourceIdentifierKey`).
-struct FileIdentity: Equatable, @unchecked Sendable {
-    let volume: any NSObjectProtocol
-    let file: any NSObjectProtocol
-
-    static func == (lhs: FileIdentity, rhs: FileIdentity) -> Bool {
-        lhs.volume.isEqual(rhs.volume) && lhs.file.isEqual(rhs.file)
-    }
-}
-
 /// What reading the application bundle at a resolved location found. There is no absence: the walk had just
 /// found the object, so a read that reports nothing there is a failure, never a missing application.
 enum BundleRead: Sendable {
@@ -47,8 +35,9 @@ enum LaunchCompletion: Sendable {
 protocol LaunchedApplication: Sendable {
     var processIdentifier: Int32 { get }
     var isTerminated: Bool { get }
-    /// The file identity of this application's executable, if the platform reports one.
-    var executableIdentity: FileIdentity? { get }
+    /// The device and inode of this application's executable, if the platform reports one and the walk
+    /// resolves it (`ExecutableIdentity`).
+    var executableIdentity: ObjectIdentity? { get }
     /// Whether a fresh native lookup of `pid` finds an application that is equal
     /// (`isEqual`, which the platform says to use instead of comparing PIDs) to this object.
     func freshLookupEqualsSelf(pid: Int32) -> Bool
@@ -140,6 +129,7 @@ protocol WorkspaceNative: Sendable {
 
     /// The kernel's record of the process.
     func processStart(of pid: Int32) -> ProcessLookup
-    /// The file identity of the executable the live process `pid` is running.
-    func liveExecutableIdentity(of pid: Int32) -> FileIdentity?
+    /// The device and inode of the executable the live process `pid` is running, by the kernel's path for it
+    /// and the same walk as the retained object's (`ExecutableIdentity`); nil when either is unavailable.
+    func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity?
 }

@@ -190,7 +190,8 @@ kernel process start instant in UTC with six fractional second digits. Use it
 only for the application returned by this action's completion callback. Retain
 that native application object, require a positive stable PID and non-terminated
 state, read the kernel start instant, compare the live process executable's file
-identity with that object's executable, then read the start instant again.
+identity with that object's executable (each the device and inode the descriptor walk resolves, below), then read the
+start instant again.
 The two kernel observations must match; a fresh native application lookup for
 the PID must compare equal to the retained object, whose PID and non-terminated
 state are checked again. Every unavailable value or mismatch yields null.
@@ -239,8 +240,8 @@ transport outcome can be unknown even when the app opens successfully.
 
 ### Long-location action boundary
 
-**Designed for v1; the target stage of reveal and of open, the supplied-application stage and the
-discovered-application stage implemented, the rest unimplemented.** The descriptor walk, the hand-off limit and the target stage are accepted at L, G and N
+**Designed for v1; the target stage of reveal and of open, the supplied-application stage, the
+discovered-application stage and the receipt's executable identities implemented, the release unimplemented.** The descriptor walk, the hand-off limit and the target stage are accepted at L, G and N
 for reveal ([record](../verification/reveal-locations.md)) and for open
 ([record](../verification/open-path-locations.md)), and the supplied-application stage (a constrained launch's
 and a named open's `applicationPath`, with the registered-candidate comparison) at L, G and N
@@ -248,8 +249,11 @@ and a named open's `applicationPath`, with the registered-candidate comparison) 
 left to V. The discovered-application stage (an unconstrained launch's or a named open's preferred copy, a default
 handler, the default web browser and Finder) is accepted at L and G
 ([record](../verification/discovered-applications.md)), with its N and V rows left to
-`application-locations-vm` because Launch Services' registrations cannot be arranged on a host. Receipt
-executable identities and the 1.0.1 release are not yet built.
+`application-locations-vm` because Launch Services' registrations cannot be arranged on a host. The receipt's two
+executable identities (the live process's and the retained object's) are acquired by the walk in one device-and-inode
+representation, with observation's own rule that no length limit applies, and are accepted at L and N
+([record](../verification/receipt-executable-identity.md)); the effect on a real launch's receipt is left to
+`application-locations-vm`. The 1.0.1 release is not yet built.
 Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
@@ -447,7 +451,10 @@ report is not a refusal. A bundle without an identifier mismatches a named
 selector but can still be a default handler. An application, executable or alias
 target is refused. Metadata failure is `failed`. Every launched application runs
 an executable whose path the kernel accepted, so the limit adds no systematic
-`process: null`.
+`process: null`. That is observed rather than assumed: on the macOS 26 host the kernel kills at exec, and the spawn
+service refuses, a program whose physical path is 1,024 bytes or more, so no running process has a path the walk
+could not also take
+([record](../verification/receipt-executable-identity.md#what-a-running-process-cannot-show)).
 
 #### Obligations from earlier descriptor walks
 
@@ -1092,5 +1099,6 @@ what was established; every row above keeps its pending remainder.
   accepted at L (`OpenLocationTests`), G (`WorkspaceCompositionTests`) and N (the
   same signed-bundle suite, asking an open that is named to an unregistered
   application so nothing can open), and its record is
-  [open-path-locations.md](../verification/open-path-locations.md). Both application
-  stages, receipt executable identities and release 1.0.1 are pending.
+  [open-path-locations.md](../verification/open-path-locations.md). The supplied- and
+  discovered-application stages and the receipt's executable identities are accepted as the status paragraph above records;
+  release 1.0.1 is pending.

@@ -9,7 +9,7 @@ struct ApplicationBundle: Sendable {
     var url: URL
     /// Nil for a bundle that declares none.
     var bundleIdentifier: String?
-    var identity: FileIdentity
+    var identity: ObjectIdentity
 }
 
 enum ApplicationInspection: Sendable {
@@ -31,7 +31,7 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var allRegistered: [String: [URL]] = [:]
     private var inspections: [String: ApplicationInspection] = [:]
     private var starts: [Int32: [ProcessLookup]] = [:]
-    private var executables: [Int32: FileIdentity] = [:]
+    private var executables: [Int32: ObjectIdentity] = [:]
     private var pendingCompletions: [@Sendable (LaunchCompletion) -> Void] = []
     private var launchLog: [(url: URL, substituting: Bool)] = []
     private var webHandlers: [WebURL.Scheme: URL] = [:]
@@ -50,7 +50,6 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var rootLog: [String] = []
     private var registrationLog: [String] = []
     private var bundleReadLog: [String] = []
-    private var inodes: [String: UInt64] = [:]
     private var startReads: [Int32: Int] = [:]
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
@@ -112,8 +111,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     }
 
     /// What the walk finds at an application's `path` when it is not arranged with `location(_:as:)`: the
-    /// application as `inspect(_:as:)` says. A present copy is the object named by its `FileIdentity`'s file
-    /// (two spellings of one file are one inode, on the volume's device), so every earlier arrangement of an
+    /// application as `inspect(_:as:)` says. A present copy is the object its `identity` names
+    /// (`identity(_:volume:)`: two spellings of one file are one inode), so every earlier arrangement of an
     /// installation resolves without further setup. An absent or unarranged path is absent.
     private func applicationLocation(_ path: String, _ inspection: ApplicationInspection?) -> LocationResolution {
         let spelling = Spelling(bytes: Array(path.utf8))
@@ -125,11 +124,7 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         }
         switch inspection {
         case .application(let bundle)?:
-            let key = "\(bundle.identity.file)"
-            let inode = inodes[key] ?? UInt64(inodes.count + 1)
-            inodes[key] = inode
-            let volume = (bundle.identity.volume as? NSNumber)?.int32Value ?? 1
-            return present(ObjectIdentity(device: volume, inode: inode), .directory)
+            return present(bundle.identity, .directory)
         case .notApplication?:
             return present(ObjectIdentity(device: 1, inode: UInt64(abs(path.hashValue)) | 1 << 40), .regularFile)
         case .unreadable(let reason)?: return .failed(component: path, cause: reason)
@@ -174,10 +169,12 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     }
 
     func processStarts(_ pid: Int32, _ reads: [ProcessLookup]) { lock.withLock { starts[pid] = reads } }
-    func executable(_ pid: Int32, _ identity: FileIdentity?) { lock.withLock { executables[pid] = identity } }
+    func executable(_ pid: Int32, _ identity: ObjectIdentity?) { lock.withLock { executables[pid] = identity } }
 
-    static func identity(_ file: String, volume: Int = 1) -> FileIdentity {
-        FileIdentity(volume: NSNumber(value: volume), file: file as NSString)
+    /// The object a test calls `file`: the same name is always the same inode on a volume (FNV-1a over its bytes).
+    static func identity(_ file: String, volume: Int = 1) -> ObjectIdentity {
+        let inode = Array(file.utf8).reduce(UInt64(0xcbf2_9ce4_8422_2325)) { ($0 ^ UInt64($1)) &* 0x100_0000_01b3 }
+        return ObjectIdentity(device: Int32(volume), inode: inode)
     }
 
     // MARK: Observation
@@ -340,7 +337,7 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         }
     }
 
-    func liveExecutableIdentity(of pid: Int32) -> FileIdentity? { lock.withLock { executables[pid] } }
+    func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { lock.withLock { executables[pid] } }
 }
 
 /// The application object a callback delivers, every observable set by the test.
@@ -352,13 +349,13 @@ final class FakeApplication: LaunchedApplication, @unchecked Sendable {
     private let terminatedSequence: [Bool]
     private var pidReads = 0
     private var terminatedReads = 0
-    var executable: FileIdentity?
+    var executable: ObjectIdentity?
     var freshEqual = true
     /// The number of fresh lookups that find something else before one is equal.
     var freshLookupsUnequal = 0
     private var freshLookups = 0
 
-    init(pids: [Int32] = [4242], terminated: [Bool] = [false], executable: FileIdentity? = FakeNative.identity("exe")) {
+    init(pids: [Int32] = [4242], terminated: [Bool] = [false], executable: ObjectIdentity? = FakeNative.identity("exe")) {
         pidSequence = pids
         terminatedSequence = terminated
         self.executable = executable
@@ -378,7 +375,7 @@ final class FakeApplication: LaunchedApplication, @unchecked Sendable {
         }
     }
 
-    var executableIdentity: FileIdentity? { executable }
+    var executableIdentity: ObjectIdentity? { executable }
     func freshLookupEqualsSelf(pid: Int32) -> Bool {
         lock.withLock {
             freshLookups += 1

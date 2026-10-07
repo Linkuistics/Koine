@@ -265,12 +265,14 @@ struct NativeWorkspace: WorkspaceNative {
 
     func processStart(of pid: Int32) -> ProcessLookup { readKernelProcessStart(of: pid) }
 
-    /// The executable the live process runs, by the kernel's own path for it.
-    func liveExecutableIdentity(of pid: Int32) -> FileIdentity? {
-        var buffer = [CChar](repeating: 0, count: 4 * Int(MAXPATHLEN))
-        guard proc_pidpath(pid, &buffer, UInt32(buffer.count)) > 0 else { return nil }
-        let path = String(decoding: buffer.prefix { $0 != 0 }.map { UInt8(bitPattern: $0) }, as: UTF8.self)
-        return fileIdentity(ofPath: path)
+    /// The executable the live process runs: the kernel's own path for it (`proc_pidpath`, whose buffer the
+    /// SDK's `PROC_PIDPATHINFO_MAXSIZE` sizes at 4 * `MAXPATHLEN`), resolved by the walk. The path is read as
+    /// bytes and never decoded, and its length is never limited: the action was acknowledged already.
+    func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? {
+        var buffer = [UInt8](repeating: 0, count: 4 * Int(MAXPATHLEN))
+        let length = buffer.withUnsafeMutableBytes { proc_pidpath(pid, $0.baseAddress, UInt32($0.count)) }
+        guard length > 0 else { return nil }
+        return ExecutableIdentity.of(path: Array(buffer.prefix { $0 != 0 }))
     }
 }
 
@@ -278,12 +280,15 @@ struct NativeWorkspace: WorkspaceNative {
 /// `processStart(of:)`, which a member of the same name would shadow.
 private func readKernelProcessStart(of pid: Int32) -> ProcessLookup { processStart(of: pid) }
 
-func fileIdentity(ofPath path: String) -> FileIdentity? {
-    let url = URL(fileURLWithPath: path).resolvingSymlinksInPath()
-    guard let values = try? url.resourceValues(forKeys: [.volumeIdentifierKey, .fileResourceIdentifierKey]),
-        let volume = values.volumeIdentifier, let file = values.fileResourceIdentifier
-    else { return nil }
-    return FileIdentity(volume: volume, file: file)
+/// The identity of the executable a `file:` URL names, by the walk, from the URL's own filesystem bytes
+/// (never `URL.path`, which is a `String` and so a decoded, repaired copy). Nil for a URL that is not a file URL.
+/// https://developer.apple.com/documentation/foundation/url/withunsafefilesystemrepresentation(_:)
+func identityOfExecutable(at url: URL) -> ObjectIdentity? {
+    guard url.isFileURL else { return nil }
+    let bytes = url.withUnsafeFileSystemRepresentation { pointer in
+        pointer.map { Array(UnsafeBufferPointer(start: UnsafeRawPointer($0).assumingMemoryBound(to: UInt8.self), count: strlen($0))) }
+    }
+    return bytes.flatMap { ExecutableIdentity.of(path: $0) }
 }
 
 /// The retained native application object.
@@ -295,8 +300,10 @@ final class RunningApplication: LaunchedApplication, @unchecked Sendable {
     var processIdentifier: Int32 { application.processIdentifier }
     var isTerminated: Bool { application.isTerminated }
 
-    var executableIdentity: FileIdentity? {
-        application.executableURL.flatMap { fileIdentity(ofPath: $0.path) }
+    /// The object's own `executableURL`, resolved by the walk like the live process's path.
+    /// https://developer.apple.com/documentation/appkit/nsrunningapplication/executableurl
+    var executableIdentity: ObjectIdentity? {
+        application.executableURL.flatMap { identityOfExecutable(at: $0) }
     }
 
     /// `isEqual`, not PID comparison, as NSRunningApplication.h directs.

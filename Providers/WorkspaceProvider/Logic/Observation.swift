@@ -12,7 +12,8 @@ struct ObservedProcess: Equatable, Sendable {
 ///
 /// 1. The retained object has a positive PID and is not terminated.
 /// 2. The kernel's start instant of that PID is read.
-/// 3. The live process's executable and the object's executable are the same file.
+/// 3. The live process's executable and the object's executable are the same file: the same device and
+///    inode, each acquired by the descriptor walk and never limited in length (`ExecutableIdentity`).
 /// 4. The start instant is read again and must be the same.
 /// 5. A fresh native lookup of the PID finds an application equal to the retained
 ///    object, whose PID and non-terminated state are checked again. Only this
