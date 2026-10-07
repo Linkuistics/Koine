@@ -585,11 +585,17 @@ Antony accepted the [incomplete bookmark report](verification/bookmark-name-reso
 on 2026-10-06. Its sole collection stopped on supervisor-input EOF before any
 fixture or case; all native stages/controls remain unrun and its allowance is
 spent. A [replacement local collection](verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-with input verified before cloning was approved on 2026-10-06. Antony also
-requested the [parent-reference/name group](verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
-eight local cases share one guest, one collection and the 15-minute cap.
-All new stages remain unrun, and promises no
-Zed filename improvement. This changes no client input or accepted
+passed its input preflight but stopped at a trailing-slash bare-parent control
+with ENAMETOOLONG before all eight cases. Antony accepted the
+[incomplete local naming report](verification/local-url-naming-prototype.md)
+on 2026-10-07; its allowance is spent. The
+[returned control assessment](verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+separates that exact failure from the unrun naming candidates. A
+[new separated collection](verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
+was authorized on 2026-10-07 for one fresh-context prototype (k164),
+followed by returned complete-route design k165. All eight cases remain unrun;
+no repair/recollection or automatic next investigation is authorized.
+No Zed filename improvement is established. This changes no client input or accepted
 production behavior; the complete route remains unresolved. External
 inquiries remain unused drafts; no automatic probe series is authorized. No new actionability field,
 production receiver-visible spelling change or working-case loss is approved.

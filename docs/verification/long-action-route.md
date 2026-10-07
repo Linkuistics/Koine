@@ -33,8 +33,15 @@ on supervisor-input EOF; every native case and control is unrun. Its authorizati
 is spent. One [replacement collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
 was approved on 2026-10-06, with input verified before guest allocation.
 Antony also requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic).
-The unchanged four bookmark and four additional local parent-reference cases
-share one guest, collection and 15-minute cap; all new stages remain unrun.
+The replacement [stopped at a trailing-slash bare-parent control](local-url-naming-prototype.md)
+with ENAMETOOLONG after a successful input preflight. Antony accepted its
+incomplete report on 2026-10-07. All eight naming cases remain unrun and its
+allowance is spent. The [returned control assessment](focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+distinguishes that exact failure from bookmark/URL outcomes. One
+[separated local collection](focused-zed-route-assessment.md#separated-local-naming-proposal)
+was authorized on 2026-10-07 for one fresh-context prototype (k164),
+followed by returned complete-route design k165. All eight cases remain unrun;
+no repair/recollection or automatic next investigation is authorized.
 Production spelling/support and the complete route remain unresolved.
 
 Start with the [local access, handoff and receiver view](../design/architecture/index.html#diagram-workspace-route-candidates)
@@ -1109,7 +1116,7 @@ Native facts/selection, real default/Zed directory/Finder behavior, long
 constrained launch, executable receipt, original submission bytes and durable
 support remain explicit gaps; the focused receiver positive waives none.
 
-**Current decision recorded:** Antony approved the
+**Prior collection decision:** Antony approved the
 [replacement bookmark collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
 on 2026-10-06 and asked whether a parent-directory reference followed by the
 original final name would let tools such as Zed use that name. The
@@ -1123,13 +1130,27 @@ preflight and separate inspected READY checkpoints remain binding. Preserve
 all old raw evidence and freeze a distinct new input/output corpus.
 
 Name-bearing construction, stored properties, actual absolute/path resolution,
-whole-path same-object reading and real Zed naming remain distinct. Every new
-native stage is unrun. k159 is decomposed into completed source/charter k160,
-one fresh prototype k161 and returned route design k162; native work belongs
-to k161. The final child and k159/k156 and every route ancestor remain live
-while the complete route is unresolved. This authorizes no receiver request,
-restricted-mode/trust interaction, automatic repeat/successor, production
-exception, final review, implementation or route retirement.
+whole-path same-object reading and real Zed naming remain distinct. k161's
+[accepted incomplete report](local-url-naming-prototype.md) records successful
+interactive preflight, complete 900-byte fixture controls and a 1,500-byte
+trailing-slash parent-control ENAMETOOLONG stop before all eight cases.
+Antony answered “Accepted.” on 2026-10-07. The authorization is spent; k158's
+EOF and k161's native control failure remain separate immutable attempts.
+The [returned assessment](focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+explains the source-consistent suffix hazard and the shared-control coupling.
+Antony's 2026-10-07 “authorized” approves the
+[separated local naming charter](focused-zed-route-assessment.md#separated-local-naming-proposal):
+one new eight-case local collection, with bookmark file controls independent
+of parent candidate prerequisites and the original slash-ended directory URL
+and exact constructors/reader retained. k159's returned route node k162 now
+contains source/charter k163, one fresh-context prototype k164 and returned
+complete-route design k165. k164 owns the collection/report/reaction; k165
+consumes actual outcomes without presuming success. All eight cases remain unrun.
+The final child, k162/k159/k156 and every route ancestor remain live while the
+complete supported route is unresolved. Approval authorizes no receiver request,
+restricted-mode/trust interaction, repair/recollection or automatic next
+investigation, production exception, final review, implementation or route
+retirement.
 
 ### Prepared capability inquiry
 

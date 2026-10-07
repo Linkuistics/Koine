@@ -338,10 +338,16 @@ is untested. Antony accepted the [incomplete bookmark report](../verification/bo
 on 2026-10-06. Supervisor-input EOF stopped its sole collection before fixtures
 or cases; all native stages and controls are unrun, not bookmark negatives.
 The allowance is spent. A [replacement local collection](../verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-with input verified before cloning was approved on 2026-10-06. Antony also
-requested the [parent-reference/name group](../verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
-eight local cases share one guest, one collection and the 15-minute cap.
-All new stages remain unrun.
+passed its input preflight but stopped at a trailing-slash bare-parent control
+with ENAMETOOLONG before all eight cases. Antony accepted the
+[incomplete local naming report](../verification/local-url-naming-prototype.md)
+on 2026-10-07; its allowance is spent. The
+[returned control assessment](../verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+separates that exact failure from the unrun naming candidates. A
+[new separated collection](../verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
+was authorized on 2026-10-07 for one fresh-context prototype (k164),
+followed by returned complete-route design k165. All eight cases remain unrun;
+no repair/recollection or automatic next investigation is authorized.
 Neither result supplies a Zed naming promise. No
 production spelling/support exception is adopted. Original
 working cases and complete-route review remain owed. Native facts,

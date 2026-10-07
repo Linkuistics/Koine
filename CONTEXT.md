@@ -226,11 +226,17 @@ on 2026-10-06: its sole collection stopped at preparation on supervisor-input
 EOF, before fixtures or cases. All native stages and controls are unrun; this
 is no bookmark negative or receiver naming/production pass. Its authorization
 is spent. One [replacement local collection](docs/verification/focused-zed-route-assessment.md#replacement-bookmark-decision)
-with input verified before cloning was approved on 2026-10-06. Antony also
-requested the [parent-reference/name group](docs/verification/focused-zed-route-assessment.md#parent-reference-name-diagnostic);
-eight local cases share one guest, one collection and the 15-minute cap.
-All new stages remain unrun. Changed production spelling and
-durable-support exceptions are not adopted. No complete route or automatic
+passed its input preflight but stopped at a trailing-slash bare-parent control
+with ENAMETOOLONG before all eight cases. Antony accepted the
+[incomplete local naming report](docs/verification/local-url-naming-prototype.md)
+on 2026-10-07; its allowance is spent. The
+[returned control assessment](docs/verification/focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+separates that exact failure from the unrun naming candidates. A
+[new separated collection](docs/verification/focused-zed-route-assessment.md#separated-local-naming-proposal)
+was authorized on 2026-10-07 for one fresh-context prototype (k164),
+followed by returned complete-route design k165. All eight cases remain unrun;
+no repair/recollection or automatic next investigation is authorized. Changed production spelling
+and durable-support exceptions are not adopted. No complete route or automatic
 follow-on is selected. Node-ID resolution
 requires native catalog provenance; a 64-bit inode cast supplies none. External
 inquiries remain unused drafts, and no automatic probe series is authorized.

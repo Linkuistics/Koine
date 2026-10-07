@@ -86,10 +86,16 @@ is untested. Antony accepted the [incomplete bookmark report](bookmark-name-reso
 on 2026-10-06. Its sole collection stopped on supervisor-input EOF before any
 fixture or case; all native stages/controls are unrun and its allowance is spent.
 A [replacement local collection](focused-zed-route-assessment.md#replacement-bookmark-decision)
-with input verified before cloning was approved on 2026-10-06. Antony also
-requested the [parent-reference/name group](focused-zed-route-assessment.md#parent-reference-name-diagnostic);
-eight local cases share one guest, one collection and the 15-minute cap.
-All new stages remain unrun. No item-array repeat, production identity-spelled
-submission or complete route is commissioned
+passed its input preflight but stopped at a trailing-slash bare-parent control
+with ENAMETOOLONG before all eight cases. Antony accepted the
+[incomplete local naming report](local-url-naming-prototype.md)
+on 2026-10-07; its allowance is spent. The
+[returned control assessment](focused-zed-route-assessment.md#local-naming-result-and-control-assessment)
+separates that exact failure from the unrun naming candidates. A
+[new separated collection](focused-zed-route-assessment.md#separated-local-naming-proposal)
+was authorized on 2026-10-07 for one fresh-context prototype (k164),
+followed by returned complete-route design k165. All eight cases remain unrun;
+no repair/recollection or automatic next investigation is authorized.
+No item-array repeat, production identity-spelled submission or complete route is commissioned
 by these results. This report's measured corpus
 and raw records remain intact.

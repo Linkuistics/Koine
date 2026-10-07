@@ -1,4 +1,4 @@
-# What the Zed and stopped bookmark results establish
+# What the Zed and stopped local naming results establish
 
 **Zed can read the original 1,500-byte-path file through its short same-object
 address on the tested system. Bookmarks might recover naming information, but
@@ -15,12 +15,19 @@ Antony subsequently authorized the exact
 [accepted incomplete report](bookmark-name-resolution-prototype.md) supplies
 no bookmark measurement: the sole collection stopped on closed supervisor input
 at preparation, before creating fixtures or executing any case. The guest was
-disposed after 19.22 seconds. Acceptance grants no retry. Returned design k159
+disposed after 19.22 seconds. Acceptance grants no retry. Complete-route node k159
 retains the complete supported-route obligation under k156; the
-[replacement](#replacement-bookmark-decision) is now approved. Antony also
+[replacement](#replacement-bookmark-decision) was approved. Antony also
 requested the [parent-reference plus name](#parent-reference-plus-original-name)
-question; its separate local cases share the replacement's single collection
-and aggregate budget. All new measurements remain unrun.
+question; its separate local cases shared the replacement's single collection
+and aggregate budget. That collection has now [stopped at a parent control](#local-naming-result-and-control-assessment).
+Antony accepted its incomplete report on 2026-10-07. All eight naming cases
+remain unrun; the allowance is spent. Antony's subsequent 2026-10-07 “authorized”
+approves the [separated local naming charter](#separated-local-naming-proposal)
+for one fresh-context prototype k164, following source/charter k163. Returned
+complete-route design k165 consumes the actual report and reaction. Approval
+selects no production route and grants no repair/recollection or automatic next
+investigation.
 
 Start with the [receiver and bookmark view](../design/architecture/index.html#diagram-workspace-route-candidates).
 Graphs enter at the dark **Start here** node; numbered edges indicate reading
@@ -240,18 +247,21 @@ earned integration and planning's native/binary/public acceptance.
 
 ## Replacement bookmark decision
 
-**Approved on 2026-10-06.** Antony answered **"approved"** to one replacement
+**Approved on 2026-10-06; stopped and accepted incomplete on 2026-10-07.** Antony answered **"approved"** to one replacement
 collection of the same four local bookmark cases. This is new permission;
 acceptance of k158 alone supplied none. His same message asks whether a parent
 directory reference plus the original final name could let tools such as Zed
 use that name. The [additional local group](#parent-reference-name-diagnostic)
-answers that requested construction question within the same one guest, one
+was intended to answer that construction question within the same one guest, one
 collection and 15-minute aggregate cap. It changes no bookmark case/options
-and supplies no receiver, production or complete-route permission.
+and supplies no receiver, production or complete-route permission. The
+[actual report](local-url-naming-prototype.md) records a successful input
+preflight but zero attempted cases after a parent-control stop. The charter
+below remains the provenance of that spent attempt, not permission to run again.
 
 | Approach | What it answers | Cost and limitation |
 | --- | --- | --- |
-| One replacement local collection (approved) | Stored Name/Path, actual resolved URL and whole-path same-object reading for the four original cases | One disposable guest, at most 15 minutes; it still supplies no Zed naming, opener parity or production support |
+| One replacement local collection (completed incomplete) | Reached fixture controls but no stored Name/Path, resolved URL or measured reader | Spent one guest/collection; the report grants no repair, repeat or receiver result |
 | Source-only reassessment | Reconsiders the already inspected contracts without native execution | No guest cost, but declarations cannot determine these unmeasured native outcomes |
 | Leave this candidate unanswered | Preserves the current evidence and complete requirement | No new work; the route and bookmark question remain unresolved |
 
@@ -351,8 +361,8 @@ native/receiver behaviors; the instrument is controlled observation.
 
 ## Parent-reference name diagnostic
 
-**Requested on 2026-10-06; all four cases unrun.** Antony's additional question
-adds this separately labelled group to the approved replacement collection.
+**Requested on 2026-10-06; collection stopped and accepted incomplete; all four cases unrun.** Antony's additional question
+added this separately labelled group to the approved replacement collection.
 It consumes no second guest, collection, build allowance or time budget.
 The bookmark group's four cases and options remain exact; eight total local
 cases serialize under the same 15-minute clone-through-disposal cap, with
@@ -432,6 +442,227 @@ successful same-object reading must both be observed to call a local named
 candidate positive. No external Zed request, restricted-mode choice, trust grant,
 receiver-name pass, lasting-support verdict, production selection, persistent
 registry, final review, implementation or automatic successor follows.
+
+## Local naming result and control assessment
+
+Antony answered **“Accepted.”** on 2026-10-07 to k161's
+[incomplete readable report](local-url-naming-prototype.md). Its
+[technical evidence](local-url-naming-technical-evidence.md) preserves the
+instrument, frozen inputs, raw controls, counts and disposal receipt.
+Acceptance supplies no repair or new collection permission.
+
+| Stage | 900-byte fixture | 1,500-byte fixture | What follows |
+| --- | --- | --- | --- |
+| Interactive input and preparation | Shared preclone token round trip passed; fresh preparation inspected | Same single guest | Distinct from k158's earlier EOF stop |
+| Component original/decoy markers | Exact; full identity and controls completed | Exact markers; full identity set not logged before stop | Partial long preparation evidence only |
+| Bare parent control | Trailing-slash address opened; directory identity matched | `bareParentControlOpen`, errno 63 / `ENAMETOOLONG` | Only that exact POSIX operand/flags failed |
+| Bare file control | Exact identity and marker | Unrun after parent stop | No long bare-file control for this run |
+| Four bookmark cases | Both unrun | Both unrun | No stored Name/Path, resolution, stale/error or measured reader result |
+| Four parent/name cases | Both unrun | Both unrun | No public parent reference, relative/absolute child or measured reader result |
+
+The fixed control called ordinary `open` on
+`/.vol/<device>/<full-parent-inode>/` with directory/no-follow/close-on-exec
+flags before any URL factory or bookmark. It tried no unsuffixed address.
+One collection used two precollection builds, two fixture invocations and
+zero naming-case attempts, external requests, UI interactions, repairs or retries.
+Disposal completed in 55.22 seconds and the final inventory confirmed absence.
+The 672 frozen input subjects and 45 final output subjects are separately
+checkable; neither the raw summary nor earlier corpora is rewritten here.
+
+In pinned XNU, parsing the inode leaves any suffix, and the later append uses
+`MAXPATHLEN` even after the vnode path was built into a larger buffer. A trailing
+slash is a nonempty suffix. This is a source-based explanation consistent with
+the error, **not proof of the exact guest kernel path**.
+[Pinned parser and suffix append](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/bsd/vfs/vfs_lookup.c#L2312-L2455).
+Earlier [k152 directory controls](same-object-namespace/results/inspect-directory-1500.out)
+opened an unsuffixed bare long-directory address and matched identity/marker.
+Those controls belong to another object/run; they establish no k161 parent pass.
+
+The shared helper placed the new parent-address prerequisite inside fixture
+creation and every bookmark control check. A failure of that representation
+therefore prevented even the four original bookmark measurements, which only
+need verified original/bare **file** operands and decoys. Remove that coupling
+only in a newly authorized instrument. Keep k161 immutable. A prospective
+unsuffixed directory control must still be measured independently, and its
+success would not prove that a slash-ended directory URL or a named child works.
+
+The [full stage obligations](#what-remains-required) remain unchanged:
+native fact/cause/type/identifier/handler acquisition, original external bytes
+and durable support, default/directory/settings/Finder behavior, exact long
+registered-app selection/constrained launch/named opening and live executable
+receipt. Short regressions, both grants, revocation/cancellation, three-second
+acknowledgment and existing consent/setup/private-policy exclusions still bind.
+Public pathnames are re-resolved per action. Independent action fixtures and
+later actual-search G/N/V evidence, plus 1.0.0/1.0.1/1.1.0 profiles, remain
+separate. k162 and all ancestors stay live; final review and planning wait for
+the complete supported route. This finite stop proves no universal impossibility.
+
+<a id="separated-local-naming-proposal"></a>
+
+## Separated local naming charter
+
+**Authorized on 2026-10-07.** Antony answered “authorized” to this exact reviewed
+contract: one new local collection of the same eight naming cases, with file
+controls independent of the parent URL candidate. It answers the outstanding
+requested questions without treating the failed slash spelling as a prerequisite
+for unrelated bookmark measurements. The source/charter handoff is k163; the
+fresh-context prototype is k164 and the returned complete-route design is k165.
+The complete supported route remains unresolved.
+
+| Choice | Benefit | Cost and limit |
+| --- | --- | --- |
+| One separated local collection (recommended) | Can measure the four bookmark cases even when a parent candidate fails; retains both parent/name constructions | One new disposable guest, at most 15 minutes; local evidence only, with no repair/recollection |
+| Source-only reassessment | No native execution cost | Explains the suffix hazard but cannot answer opaque bookmark/URL outcomes |
+| Keep the candidates unanswered | No new collection | Preserves the full requirement and unresolved route; supplies no naming result |
+
+The alternatives above were reviewed before authorization; the decision is settled.
+The binding authorized contract is:
+
+1. One new disposable macOS guest and one collection, existing prepared image,
+   public SDK/signing posture, at most two builds before collection and 15 minutes
+   from clone through disposal, reserving 60 seconds for teardown. Verify the
+   actual supervisor prompt/token round trip within 60 seconds **before** cloning;
+   inspect fresh screenshot/full agent tree before each separate READY. No
+   pre-supplied permission, EOF bypass, repair, recollection or automatic successor.
+2. Independently component-create the same harmless ASCII file-length subjects
+   (900/1,500 bytes), original basenames, unique markers and sibling decoys.
+   Shared fixture and before/after controls use component-opened original/decoy
+   identities/markers and the **unsuffixed bare file** identity/marker only.
+   Record the component-opened parent directory identity/type, without demanding
+   a slash-ended bare parent open. Any shared file identity/marker, observer,
+   type/ownership/size or budget failure ends the whole collection incomplete.
+3. Execute the unchanged four bookmark cases first, in the original order,
+   retaining the [exact options, stored Name/Path and whole-path reader](#finite-bookmark-diagnostic).
+   No parent-address control, new constructor, security scope, native name getter
+   or conversion/fallback is added to this group. Ordinary creation/resolution/
+   reader failures are per-case results; later cases run only under valid shared
+   controls and the aggregate budget.
+4. Then execute the four [parent/name cases](#parent-reference-name-diagnostic),
+   with their original relative constructor and measured absolute-path reader.
+   Before/after a parent case, verify the component-opened parent against one
+   **unsuffixed** bare-parent `open` with directory/no-follow/close-on-exec flags
+   and `fstat`. This is an independent identity control, never the measured
+   child reader. Failure marks the parent group at that length incomplete with
+   its remaining candidate stages unrun; it gives no candidate negative and
+   does not erase completed bookmark results. Proceed to the other length only
+   while shared file controls remain valid. Identity mismatch ends the collection.
+5. Preserve the original slash-ended directory NSURL input for each parent case;
+   record the actual constructor-produced spelling. An unsuffixed control does
+   **not** authorize an unsuffixed URL, slash removal, `isDirectory:NO`, another
+   creation pattern, child-reference conversion or candidate-reader fallback.
+   Nil/error at public reference acquisition remains that case's typed failed
+   stage, with later stages unrun. Keep relative-text/name observation before
+   explicit `absoluteURL`, the bounded text-only basename parser, base-shape
+   rules and exactly one returned-path open/fstat/at-most-64-byte read.
+6. Retain three caller-owned descriptors, four caller-owned NSURLs, one bookmark
+   NSData at most 64 KiB, strings at most 8,192 bytes and 64-byte markers; account
+   for distinct/aliased owners and release all case values before the next.
+   These limits bound no opaque native allocation. Zero external application
+   requests or UI interaction; no protected/remote/user file, copy/move/rename,
+   link/alias/cwd trick, consent/trust/scope, private policy or production change.
+7. Freeze a separate new plan/instrument/input corpus before collection; use one
+   writer and new outputs. Preserve k158, k161 and every earlier source/raw corpus
+   byte-for-byte. Report all eight cases and stages, typed/underlying errors,
+   first failure, incomplete/unrun outcomes, count/size/owner accounting,
+   before/after per-subject digests, output digests and teardown/inventory receipt.
+   Obtain Antony's reaction to one readable report. Grade the bookmark group's
+   stored original-name and resolved-URL name separately from its same-object
+   read; stored name plus reading alone is no name-bearing-URL positive. For a
+   parent case, a **named absolute-reader positive** requires exact original
+   basename equality in the recorded **absolute child URL text** and a verified
+   same-object whole-path read. Grade relative-text name independently: neither
+   a relative-name pass nor an absolute/read pass repairs another failed stage.
+   No local positive supplies real Zed naming, opener parity, production support
+   or a complete route.
+
+This is a newly authorized collection with a separate instrument/corpus, not a
+repair of k161 or reuse of its spent authorization. k164 executes it once in a
+fresh Grove session and records the readable report and Antony's reaction.
+k165 then consumes actual stage/control results toward the complete supported
+route. No native case runs in this source/charter session. Approval adds no
+receiver request, trust interaction, production exception, repair/recollection
+or automatic next investigation. No complete-route review or implementation is
+earned by the authorization. k162 and every route ancestor remain live.
+
+## Separated authorization verification
+
+The existing workspace render task completed with D2 0.9.0 for the authorization
+revision. The complete light export was inspected: the accepted stop, labelled
+source inference, k163 → k164 handoff, independent control groups, fixed bounds
+and retained k165/ancestor obligations are readable. Other workspace exports
+were regenerated with no content delta.
+
+Firefox 151.0.3 in isolated Linux presentation clone `koine-k163-authorization`
+displayed fresh light/dark candidate deep links, the intended topic, Current/
+Updated markers and readable upper labels. The settled dark discussion showed
+the authorized/eight-unrun status, all seven context links and complete changed-
+view summary. Its actual 500 × 480 browser window reflowed the heading/status
+and beginning of the introduction. The requested 320-pixel width was constrained
+to 500 pixels; it earns no 320-pixel viewport credit. The complete dark export
+was not inspected. The viewer, manifest, editable source and SVG digests match
+individually between host, guest and served host bytes. This was presentation
+verification only; the clone was disposed and absent from the final inventory.
+No macOS naming/reader/receiver case ran here.
+
+The 672 recorded k161 before/after input entries agree individually. Only this
+intentionally revised current assessment differs from those original current
+input subjects; the other 671 still match. Every one of the 45 final output-
+manifest files rehashes successfully. An initial verification assertion assumed
+an absolute spelling for the changed manifest key; the manifest uses a relative
+key. That assertion earned no output-file credit. The complete corrected run
+normalized the key and rechecked every input/output entry without changing any
+manifest or corpus.
+
+Final frozen-subject documentation checks, presentation-clone disposal and the
+source-only retirement boundary are recorded in k163's running decisions. The
+public SDL/examples, production code, Taskfile and three compatibility subjects
+remain unchanged. Prototype k164 and returned complete-route design k165 remain
+live beneath k162; no complete-route ancestor closes. The earlier verification
+sections apply only to their named revisions.
+
+## Separated assessment verification
+
+The following checks apply to the preceding proposed revision. They give the
+authorization/handoff revision no verification credit; its checks are recorded
+in the [authorization verification](#separated-authorization-verification) above.
+
+One fresh read-only reviewer challenged the finite charter's controls, ordering,
+ownership and evidence meaning. Its absolute-versus-relative naming finding was
+actionable: the final text now requires the absolute child text's original name
+and verified whole-path same-object reading for the parent named-reader positive,
+with relative-name grading separate. This is a narrow clarification of the
+fixed measurement, not a new construction or a second review need. Review
+supplies no native result or execution permission.
+
+`task design:workspace-render` completed with D2 0.9.0 after the final naming
+clarification. The complete final light export was inspected; the proposed
+measurement node requires absolute name plus verified reading rather than
+claiming an already measured result. The unchanged other workspace exports
+were regenerated by the same task without a content delta.
+
+Firefox 151.0.3 in isolated Linux clone `koine-k162-design` displayed fresh
+light/dark candidate deep links with the intended topic, Current/Updated markers
+and readable upper graph labels. The light discussion showed the accepted
+native stop, proposed collection, all seven context links and changed-view
+summary before the last naming sentence was added. The final dark narrow view
+showed the current heading/status and introductory prose reflowing in an actual
+500 × 720 browser window. The full final dark discussion/export and a 320-pixel
+viewport were not inspected. A rejected native resize, an immediate unsettled
+geometry reading and address-bar-only wide captures earn no additional credit.
+The final viewer, manifest, editable source and SVG digests match individually
+between host, guest and served host bytes. The clone was disposed; the final
+inventory contains only the three golden images, with no presentation clone.
+
+The 672 recorded k161 before/after input entries agree individually, and all 45
+output-manifest files were rehashed successfully. Rehashing the original input
+manifest identifies only this current assessment as changed; the other 671
+still match. Its frozen manifest and all old sources/raw results remain intact.
+This intentional current-prose revision is not rewritten collection evidence.
+Public SDL/examples, production code, Taskfile and three compatibility subjects
+are unchanged. Final frozen-subject documentation checks are recorded in k162's
+running decisions before preserving the open jj change. No native naming case,
+receiver request, binary/public acceptance or complete route is claimed.
+Historical checks that follow apply only to their named revisions.
 
 ## Verification of the returned assessment
 

@@ -1,21 +1,21 @@
-# long-action-route-k162
+# long-action-route-k165
 
 ## Goal
 
-Consume local-url-naming-k161's finite report and Antony's reaction toward the
-complete retained supported long-action route. Keep this final design child
-live whenever the full route remains unresolved.
+Consume local-url-naming-k164's single separated collection report and Antony's
+reaction toward the complete retained supported long-action route. Keep this
+final returned design live whenever the full route remains unresolved.
 
 ## Context
 
-- Parent long-action-route-k159's complete-route brief and inherited chain.
-- local-url-naming-k160's assessment and binding two-group local charter;
-  local-url-naming-k161's actual readable report, frozen plan/instrument/raw
-  records, independent controls, stage outcomes/causes, ownership/count/size
-  accounting, digests, teardown receipt and Antony's reaction.
-- k158's accepted zero-case EOF preparation stop and k155's accepted exact short
-  Zed fresh-reading/inode-only name; all earlier immutable reports and source
-  limitations. No new native result is presumed at this handoff.
+- Whole inherited brief chain, especially long-action-route-k162's complete-route
+  Done when and k163's finalized authorized source/charter assessment.
+- k164's actual readable report, new frozen plan/instrument/input/output corpus,
+  independent file/parent controls, stage outcomes/causes, name/read grades,
+  ownership/count/size accounting, digests, teardown/inventory and reaction.
+- k161's accepted zero-case trailing-slash parent-control failure, k158's separate
+  accepted preparation EOF and k155's fresh exact-short-copy Zed reading with
+  inode-only naming. Preserve all earlier immutable evidence and source limits.
 
 ## Done when
 
@@ -40,7 +40,7 @@ live whenever the full route remains unresolved.
   decision to Antony. The spent bookmark authorization supplies no automatic
   repair/repeat/survey/experiment chain, receiver request, persistent registry,
   production spelling/support or scope/trust/setup exception. Keep this child,
-  k159 and k156/k153/k150/k147/k144/k141/k135/k130/k128 live while unresolved.
+  k162/k159 and k156/k153/k150/k147/k144/k141/k135/k130/k128 live while unresolved.
 - Only after the complete agreed route exists cut mandatory review-design with
   bare stem long-search-result-actions and **Reviews:**
   long-search-result-actions-k128. Earned review/integration precedes k123/k120/
@@ -49,11 +49,12 @@ live whenever the full route remains unresolved.
 
 ## Notes
 
-Keep bookmark and parent-reference cases/stages separate. Local original-name
-plus same-object reading would still require a separately settled real receiver
-operand/fresh contents/tab-name measurement and a supported complete route.
-No requested filename workaround waives original external spelling, other
-working cases, facts, support or lifecycle obligations. A finite negative does
-not establish universal impossibility. Approval spends one bounded local
-collection only, not a repair/repeat or automatic next native investigation.
-No final design/node retirement is allowed while the full route remains open.
+The new authorization permits only k164's fixed eight-case collection, with no
+repair/recollection, receiver request or automatic investigation chain. Consume
+actual stage/control results, never presumed success. A stored bookmark name,
+relative/absolute URL name or local same-object read cannot establish production
+support or real Zed naming. Preserve the parent absolute-text-plus-read predicate
+and independent grades; unsuffixed identity controls never prove slash-ended
+candidate success. Any remaining receiver/support/fact/launch/lifecycle gap
+keeps this child and the complete-route ancestor chain live. Establish the full
+route before mandatory review-design of long-search-result-actions-k128.
