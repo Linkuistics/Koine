@@ -2,6 +2,12 @@
 
 ## Goal
 
+Consume the reviewed `search-tooling-k195` mechanism revision first. Antony's
+k190 clarification keeps search in Koine and requires reuse of existing OS
+facilities or established tools. Earlier traversal/witness details do not
+authorize a new search engine built from scratch; reconcile them before resuming
+this node's mechanism-specific work. Permission behavior remains required.
+
 Consume `docs/verification/protected-path-metadata.md` before choosing native
 inspection calls. The measured metadata route is prompt-free on the three
 protected home roots; document file-URL default-handler lookup prompts.
@@ -182,8 +188,9 @@ complete-resource review k120 remains live.
 
 Pre-open witness k126 is live: boundary k189/review k192/integration k194 retain
 fixed-layout bootstrap and evaluate serial lookup-only target acquisition.
-K190 decides its inspection-policy exemption and unmeasured relocated-target
-protection premise before returned contract k191. Library-route escapes retain
+K190 records the reuse requirement; the original inspection-policy decisions
+remain unselected pending reviewed tooling design before returned contract k191.
+Library-route escapes retain
 the origin limit; foreign probes can block before device refusal. The full-node
 review remains mandatory before k127, then k123/k120/k30 consume the reconciled
 chain. No arbitrary foreign open, literal-only alias blocking, recursive witness walk

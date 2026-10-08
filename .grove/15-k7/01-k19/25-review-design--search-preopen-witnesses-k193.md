@@ -9,6 +9,10 @@ including its explicit metadata decision, not only its last child's diff.
 
 ## Context
 
+- K190's human revision keeps search in Koine and requires reuse of existing OS
+  facilities or established tools; it selects neither original witness policy.
+  Consume search-tooling-k195's reviewed mechanism and reconciled charters before
+  treating any returned witness design as complete. This review stays live.
 - K126 remains live when this review is cut. Boundary k189/review k192 precede
   integration k194, requirements k190 and returned contract k191; that decision and complete
   returned artifact are required inputs, not supplied by this charter.

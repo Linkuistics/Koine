@@ -32,12 +32,20 @@ default application, reveal, copy path and open in Zed.
 
 ## Notes
 
+First consume `search-tooling-k195`, its mandatory review and earned integration.
+Antony retains search in Koine but requires an existing OS facility or
+established tool instead of search built from scratch. The old traversal and
+witness proposal is comparison input until that design reconciles it. Keep the
+native application/metadata and selected-action requirements, permission policy
+and agreed seams; no tool, exemption, consent or acceptance is selected here.
+
 Pre-open witness k126 remains live: boundary k189/review k192/integration k194,
 target-inspection decision k190, returned contract k191 and whole-node review precede observation
 phases k127, classification k123, resource review k120 and planning k30. The
 boundary retains fixed-layout bootstrap and evaluates existing lookup-only
-target acquisition; its exemption and relocated-target protection premise remain
-undecided. Library escapes retain the origin limit; foreign probes can block
+target acquisition; k190 selects neither its exemption nor a new protection
+policy. Reassess their necessity after tooling design. Library escapes retain
+the origin limit; foreign probes can block
 before device refusal. No new calls or home/default loss is accepted; k93 owns
 actual omissions.
 

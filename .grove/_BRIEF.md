@@ -160,10 +160,22 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
+Antony's k190 scope clarification retains application and file search in Koine
+but requires reuse of existing OS facilities or established tools instead of
+building search from scratch. Permission/dialog behavior remains part of the
+contract. `search-tooling-k195` is placed before the existing search node to
+choose and reconcile that mechanism; rg/fzf are suggestions, not dependencies.
+Its mandatory review and earned integration must precede resumed search work.
+Do not continue the earlier custom traversal as an implementation prescription.
+Native application metadata and existing launch/open/reveal remain required.
+The durable requirement is in `docs/requirements/modaliser-workflows.md` under
+Ownership and existing constraints. No consent/setup or native outcome follows.
+
 Pre-open witness k126 is live. Boundary k189/review k192/integration k194 retain
 fixed-layout bootstrap and evaluate existing lookup-only target acquisition.
-K190 settles its inspection-policy exemption and unmeasured relocated-target
-protection premise; returned contract k191 and mandatory whole-node review
+K190 records the reuse requirement; its original inspection-policy choices
+remain unselected pending the reviewed tooling design. Returned contract k191
+and mandatory whole-node review
 precede k127/k123/k120/k30. Library escapes retain the origin limit; foreign
 probes may block before device refusal, with existing retained-credit/cohort
 limits. No new call policy, consent,

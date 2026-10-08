@@ -44,7 +44,14 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 
-The current discussion is **pre-open target inspection policy**. Start at
+The search implementation is being reassessed under the
+[requirement to reuse existing OS facilities or established tools](../../requirements/modaliser-workflows.md#ownership-and-existing-constraints).
+Search stays in Koine. These views describe the earlier candidate and its open
+questions; they do not authorize a search engine built from scratch. Tooling
+design must reconcile the retained contract and native permission obligations
+before the mechanism-specific witness work continues.
+
+The earlier discussion is **pre-open target inspection policy**. Start at
 [Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen).
 The accepted fixed-layout bootstrap and post-open classifier remain selected.
 The [boundary analysis](../../verification/search-preopen-boundary.md) evaluates

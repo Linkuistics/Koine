@@ -16,6 +16,11 @@ approve the other.
 
 ## Context
 
+First consume search-tooling-k195's reviewed mechanism and charter reconciliation.
+K190 records Koine-owned search with reuse of existing OS facilities/tools; it
+does not accept a dependency, new consent/setup or measured workflow omissions.
+Acceptance must measure the chosen backend, not credit old traversal fixtures.
+
 Search-preopen-witnesses-k126 remains a live node through reviewed boundary
 k189/review k192/integration k194, target-inspection decision k190 and returned design k191, then mandatory
 whole-node review. The boundary selects neither literal-only alias blocking nor

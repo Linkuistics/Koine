@@ -48,6 +48,23 @@ suggestion orchestration remain client behavior, with Koine supplying native
 URL opening. The configured workflow is retained without requiring a Google
 network proxy in Koine.
 
+Application and file search remain Koine responsibilities. Their implementation
+must reuse existing OS facilities or established search tools rather than build
+a filesystem search engine from scratch. Koine supplies the API, native
+application discovery and metadata, integration and permission handling; clients
+retain query presentation, choosers and ordering policy. rg and fzf are suggested
+options, not selected dependencies. Tool choice, invocation or library use,
+availability and distribution belong to the revised search design. This
+constraint does not require a new custom traversal or matching algorithm.
+
+Permission behavior remains part of that design: using an existing engine does
+not establish prompt-free access. Search reads must not unexpectedly request OS
+consent, and the implementation must report skipped or unavailable work honestly.
+Any explicit consent/setup change still needs its own agreement. The earlier
+custom traversal proposal must be reassessed under this reuse requirement before
+further mechanism-specific design or implementation. Existing native action
+resolution and launch/open/reveal support are separate from search enumeration.
+
 This work does not edit or restart Modaliser or ModalAnyware. A standalone
 client must be able to demonstrate Koine's contribution. A required app-side
 integration may be part of the Koine solution; reusing or replacing the current
@@ -286,6 +303,13 @@ succeeded while Koine could not perform or confirm it. Restarting must not
 automatically replay the interrupted application action.
 
 ## Test seams and acceptance
+
+The tool-backed search design uses the already agreed seams: public results and
+permission diagnostics through GraphQL, the actual provider/host integration
+through the native binary interface, and real backend calls and dialog
+observation under signed Koine in isolated VMs. Backend controls are exercised
+inside those seams; they add no new product seam. Tool reuse alone supplies no
+native permission or useful-coverage acceptance.
 
 Antony agreed to reuse the three seams in the
 [desktop contract](../specs/machine.md#test-seams-and-acceptance):

@@ -12,6 +12,12 @@ required target-alias proof may silently become literal-only blocking.
 
 ## Context
 
+- Before further witness design, consume `search-tooling-k195`, its mandatory
+  review and earned integration. Antony's k190 clarification retains search in
+  Koine but requires existing OS facilities or established tools instead of a
+  new filesystem search engine. The earlier witness proposal must be reassessed
+  against the selected backend; native permission/metadata obligations are not
+  waived. K190's original protection/exemption choices remain unselected.
 - Findings are in review commit `c0ece7a8`, producer `7ec0af50ea38`; consume
   search-path-resolution-k125's committed integration and current artifacts.
 - `docs/specs/workspace-search.md`: Path design dependencies, component
@@ -80,11 +86,15 @@ every original Done when condition above. This node remains live through:
    concrete approval alternatives, affected summaries and browser presentation.
    Its load-bearing review precedes the metadata decision; integration, if
    earned, must precede that consumer too. No native experiment is cut here.
-2. `search-preopen-metadata-k190`: obtain Antony's decision on the remaining
-   target protection and lookup-only inspection policy. Approval to design is distinct
-   from approval to probe, new consent/setup or workflow loss.
-3. `search-preopen-contract-k191`: return to all original k126 completion
-   conditions under that decision; escalate remaining gaps rather than silently
+2. `search-preopen-metadata-k190`: record Antony's human revision: keep search
+   in Koine and reuse existing OS facilities or established tools. The original
+   target-protection and lookup-only choices remain unselected. Root-level
+   search-tooling-k195 and its mandatory review precede further witness work.
+   No new consent/setup, exemption, probe or workflow loss follows.
+3. `search-preopen-contract-k191`: consume the reviewed tooling design and
+   reconciled charter, then satisfy the applicable original k126 completion
+   conditions. Any still-required protection/lookup decision needs an explicit
+   requirements continuation first; escalate remaining gaps rather than silently
    changing domain or accounts. This closes k126 only after the full design is
    coherent. The mandatory node review is placed before k127; its earned
    integration also precedes k127. K123/k120/k30 still consume that chain.

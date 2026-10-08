@@ -8,6 +8,13 @@ a coherent pre-open witness algorithm before observation phases consume it.
 
 ## Context
 
+First consume `search-tooling-k195`, its mandatory review and earned integration.
+K190's human clarification retains search in Koine but requires reuse of existing
+OS facilities or established tools. It selects no lookup-only witness exemption
+or new metadata call. The tooling design must establish which original witness
+obligations still apply and reconcile the charters before this leaf proceeds;
+do not fill the missing decision by implementing the old custom-search route.
+
 Read the node's unabridged original charter, boundary analysis/review/integration
 and metadata decision. The spec, canonical analysis, SDL/examples, guide,
 glossary, workflow trace and search views remain current shared artifacts. K119

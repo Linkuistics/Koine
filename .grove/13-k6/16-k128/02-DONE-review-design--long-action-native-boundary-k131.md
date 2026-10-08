@@ -213,7 +213,7 @@ The schedule conflicts with that:
   Design handoff).
 - The briefs place "the entire launch-and-open chain" before the search
   consumers k123, k120 and k30 (`.grove/_BRIEF.md`;
-  `.grove/14-k7/_app-and-file-search.md`).
+  `.grove/15-k7/_app-and-file-search.md`).
 - No search implementation exists. `workspaceSearch` appears nowhere under
   `Providers`, `Sources` or `Tests`, and `app-and-file-search-k30` has not cut it.
 

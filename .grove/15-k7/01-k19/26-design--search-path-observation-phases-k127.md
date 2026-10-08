@@ -12,6 +12,9 @@ loss of a shared policy/location proof at current and prefix checks.
 
 ## Context
 
+- Consume the reviewed search-tooling-k195 mechanism and reconciled charters
+  before this leaf. K190 records tool reuse, not an answer to the original
+  witness-policy questions; its retirement must not be read as that approval.
 - Read review commit `c0ece7a8`, producer `7ec0af50ea38`, and k125's committed
   triage. First consume search-preopen-witnesses-k126 and its mandatory review/
   integration; those decisions supply this producer's policy prerequisites.

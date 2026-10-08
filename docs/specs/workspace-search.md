@@ -1,5 +1,16 @@
 # Application and file search
 
+**Implementation mechanism under reconsideration.** The
+[search ownership and reuse requirement](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
+keeps application and file search in Koine and requires existing OS facilities or
+established search tools instead of a search engine built from scratch. rg/fzf
+are suggestions, not selected dependencies. The detailed traversal and witness
+proposal below is input to that reassessment, not authorization to implement a
+custom filesystem search engine. Tooling design must reconcile the contract,
+permission policy, native application metadata, accounts and acceptance subjects
+before further mechanism-specific design or planning. Earlier measurements keep
+their recorded scope; no tool-backed route has passed acceptance.
+
 **Designed, pending implementation and acceptance.** Workspace supplies bounded
 name discovery for the agreed [application and file workflows](../requirements/modaliser-workflows.md#workflow-inventory).
 The [scope and coverage view](../design/architecture/index.html#diagram-search-coverage)

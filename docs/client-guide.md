@@ -364,7 +364,13 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** The selected
+Search stays in Koine, with an
+[implementation requirement](requirements/modaliser-workflows.md#ownership-and-existing-constraints)
+to reuse existing OS facilities or established tools. Backend selection and
+reconciliation of the earlier traversal proposal are pending. The permission
+policy and honest coverage reporting remain requirements of the selected route.
+
+**Designed, not served yet.** The earlier
 [path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
 checks parent and child policy before opening, and preserves representable names.
 The [pre-open boundary](specs/workspace-search.md#pre-open-proof-boundary)
