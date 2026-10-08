@@ -364,234 +364,73 @@ nothing".
 
 ## Searching for applications and files
 
-Search stays in Koine, with an
-[implementation requirement](requirements/modaliser-workflows.md#ownership-and-existing-constraints)
-to reuse existing OS facilities or established tools. Backend selection and
-reconciliation of the earlier traversal proposal are pending. The permission
-policy and honest coverage reporting remain requirements of the selected route.
+**Designed, not served yet.** The [search contract](specs/workspace-search.md)
+selects system find, Foundation literal matching and native application metadata.
+The client owns query entry, chooser, ranking, MRU, clipboard and action choice.
+Its process/protected-target decisions, mandatory reviews and actual G/N/V
+acceptance remain pending. No new consent/setup or signing posture is implied.
 
-**Designed, not served yet.** The earlier
-[path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
-checks parent and child policy before opening, and preserves representable names.
-The [pre-open boundary](specs/workspace-search.md#pre-open-proof-boundary)
-retains the fixed-layout bootstrap and evaluates lookup-only policy-target
-acquisition. A target-inspection decision and returned witness design remain
-required; no new metadata call or witness-mode exemption is selected. Relocated
-target prompt behavior is unmeasured; Library-route escapes use the inherited
-unrecognized-origin limit rather than failing independent home work. A foreign
-probe can block before device refusal, retaining workers/credits through freeze
-and late cleanup. No systematically failing home workflow is accepted. A refused
-registration URL cannot prove UNREGISTERED.
-Pre-open mount/symlink witnesses and replay/size-phase repairs need mandatory
-producer reviews before long-path classification design/review, then the
-complete-resource review/planning; long-result action support needs its own
-launch/open design and review;
-native allocation and
-[serviceability instrument/subject construction](verification/search-serviceability.md)
-are specified as design; the whole-resource review also precedes planning.
-The [resource feasibility analysis](verification/search-native-resources.md)
-records error-channel and observer limits. The subject design defines bounded
-owned/hook events, passive NIO equivalence/loss controls and matched independent
-listener/store/action outcomes; execution remains pending, with no native/binary
-acceptance or reduced workflow coverage.
-The [allocation scope decision](specs/workspace-search.md#native-allocation-decision)
-retains single-process inspection after helper design was declined. The
-[in-process observation contract](specs/workspace-search.md#in-process-observation-contract)
-names actual native calls, uncertainty/refusal and worker recovery. Under
-Antony's "you decide" delegation, two independent requirements decisions select
-reported native metadata/registration meaning and empirical serviceability
-evidence. An undetected internal failure or stale state can make registration
-or another native fact incorrect; opaque allocations/peaks/internal errors remain
-unproved. Nil identifier always remains UNKNOWN with affecting coverage.
-Malformed/errorful/incomplete observations remain uncertain, observed resource
-errors refuse negatives, and known incorrect witnesses or UNKNOWN metadata for
-every configured launcher still fail. Allocation ownership and serviceability subject construction are specified;
-the selected metadata call set's long-path integration remains unresolved;
-implementation, execution and review remain pending; all other workflow, prompt, limit and compatibility
-obligations remain binding.
-Per-root FIFO breadth-first discovery and atomic
-process-wide descriptor credits preserve shallow-name order and bound owned
-search opens below the inherited soft limit with a non-search reserve. Their load-bearing reviews
-are [required before planning](specs/workspace-search.md#discovery-obligations-before-planning).
-Admission, canonical-path and cleanup repairs retain actual-adapter/default
-acceptance obligations. Typed BLOCKED transport is reviewed; runtime/binary
-acceptance remains pending.
-Introspect for `workspaceSearchApplications` and
-`workspaceSearchFiles`; do not infer availability from a release number. The
-[search contract](specs/workspace-search.md), [SDL](design/workspace-search-schema.graphql)
-and [example operations](design/workspace-search-operations.graphql) fix inputs,
-root defaults, bounds, ranking and coverage. Both roots and every output field
-need `workspace:read` only. Omitted/null roots use Koine's application directories
-or home; explicit roots replace them. Application defaults additionally include
-generic CoreServices and Cryptex application regions. Checked visible .app links discover canonical bundle target names/paths; they
-never authorize target traversal or create alias-named application choices.
-Link/direct routes merge by native bundle directory identity. Admitted roots,
-frames and bundles share the
-[canonical directory observation](specs/workspace-search.md#canonical-directory-observation);
-file locations join a canonical parent with the observed entry name, preserving
-final symlinks. Firmlink-alias roots merge equal returned paths and observed
-rootIndices; requestedPath still shows supplied spelling. Cached native names
-can vary: different file-location strings can name one object. Each current
-listing uses a fresh reported prefix; earlier locations stay observations.
-Retained app identities keep their first finalized reported name/path. Distinct native
-copies with equal bundle identifiers stay distinct; each final choice retains
-observed matching rootIndices under the spec's stability/observation limits.
-Query matching is a literal filename substring: canonical app filename or
-`.app`-stripped stem, file full filename (including the file link's own name).
-Canonically
-equivalent Unicode spellings must match under the specified fixed folding;
-`zed` ranks `Zed.app` before `Zed Preview.app`. Complete means the declared
-visible-name domain, not everything on disk. A positively absent optional home
-Applications or optional Cryptex default has COMPLETE empty-domain coverage with
-OPTIONAL_ROOT_ABSENT; an explicitly supplied missing root remains UNKNOWN.
+Introspect for workspaceSearchApplications/workspaceSearchFiles, rather than
+inferring availability from the release number. Both roots/every output field
+need workspace:read only. The [SDL](design/workspace-search-schema.graphql) and
+[examples](design/workspace-search-operations.graphql) define inputs and results.
+Query is a literal filename substring, with Foundation NFC/case/diacritic handling;
+whitespace and pattern punctuation are literal. Null roots uses defaults; explicit
+roots replace them. Files default to Koine's home. Application defaults include
+conventional directories plus a separate OS-reported source; explicit application
+roots suppress out-of-root OS discovery expansion.
 
-Read `status`, `matches`, each root's `coverage`, `dependency`,
-`resultsTruncated` and errors together. Empty matches with PARTIAL/UNKNOWN
-coverage is not complete empty. After progress, searched SUBTREE means COMPLETE
-eligible-domain coverage; OBSERVED_DESCENDANTS gives only counted observations
-somewhere beneath that root. completedDirectories counts EOF listings, not an
-unchanged snapshot. Skipped CHILD_GROUP counts invalid/publicly unrepresentable child locations of its actual parent;
-the names and descendants are omitted. DESCENDANT_GROUP counts intrinsic or
-depth/frontier-bound anchors beneath its root. DEPTH_LIMIT is a single reserved root
-group: each depth-32 anchor itself increments the count, even an empty directory
-whose EOF is not observed; names remain matchable and only descendants are omitted.
-FRONTIER_LIMIT separately counts observed directory anchors whose descent tasks
-cannot fit the 512-task/384 KiB traversal account. Their names remain matchable;
-sibling names continue to be examined. Depth precedes frontier. Package
-or symlink intrinsic anchors can also remain file matches. Neither says all children
-were skipped. REMAINDER has null count and describes unfinished work with or
-without progress, anchored at the resolved root or representable requested root.
-No-progress stops have UNKNOWN coverage and no searched record. DIAGNOSTIC_LIMIT
-means total diagnostic room (record/byte account identified in guidance);
-VALUE_LIMIT means a known public/native path-size refusal, including the native
-NUL-inclusive buffer boundary. Name-omitting groups require an established
-unrepresentable candidate location; native descent refusal alone does not omit
-a representable directory/package/bundle name. A queued ordinary directory's
-known native descent refusal has VALUE_LIMIT SUBTREE at its listed location,
-null count and descent-only guidance, without name withdrawal or truncation.
-Depth-32 anchors and packages make no child canonical call for descent.
-Successful native directory text is at most
-8,191 bytes; the public returned value limit stays 8,192 bytes. Joined locations
-of every file-search entry kind can use that last byte. Native-size omissions remain affecting
-coverage, not accepted workflow loss; paths are never shortened or replaced
-by another spelling. ENOSPC alone is size evidence, not movement; a refused
-shared current/prefix check stops its root, while target-only failure under an
-established unchanged parent stays exact and checked-link failure stays ENTRY.
-One resolver handles every length/source with 32 link expansions, bounded
-readlink/pending text and native dot/dot-dot semantics. Protected/cloud child
-identities and native variant lookups are checked before child open. Exact
-accounts/errors are in the spec; these calls still need no-dialog acceptance.
-Same-identity spelling differences alone are not change or inspection failure.
-Held-descriptor identity self-comparison does not detect movement or inode reuse;
-first root/witness and unassociated link-target observations have no independent
-movement detector. A failed native witness affects only dependent roots;
-witness-account overflow still refuses the job before turns. Independent root budgets prevent
-one root spending later roots' credits. Cyclic root turns finish shallower
-admitted listings before deeper ones within each root; depths across roots can
-differ. A root's 100,000-entry allowance can still cut a wide level short and omit
-later names/listings at that same level. FIFO lists names once but repeats
-checked component walks; those and listing-turn checks spend the shared wait.
-Each current stream is revalidated before its next turn/read. A changed queued
-prefix/parent stops its root once; only a changed target under an established
-unchanged parent has an exact SUBTREE exception.
-Queue overflow, native stalls, descriptor refusal and the shared three-second
-wait can leave names unvisited. The owned search descriptor ceiling is
-min(72, max(0, soft limit − 128)); each job atomically reserves roots + 2 credits.
-Pre-turn worker/descriptor refusal gives every root CAPACITY_LIMIT; actual native
-open failure is INSPECTION_FAILED. Lower allowance is compared with summed
-surviving job reservations and refusal remains latched until cohort cleanup,
-even if the limit rises. At soft limit 256 a fifth job is worker-refused;
-descriptor admission binds only below 200. All reservations survive blocked-call freeze
-until worker-only cleanup. Platform-internal opens and unrelated demand use
-the remaining table; normally launched host serviceability requires native
-acceptance. Honest partial coverage does not accept workflow omissions. Exact native
-failures/invalid names can still exhaust diagnostics. Home excludes protected traversal. In an
-error-free BLOCKED result, matches is null and coverage remains available. Coverage's
-PROMPT_RISK object describes unattempted traversal and UNKNOWN consent, never
-Accessibility or established consent absence. Absent execution errors at or above
-the selected fields, BLOCKED is error-free search data,
-including when choices: matches is selected: choices and dependency are null,
-resultsTruncated is false, roots have no progress and UNKNOWN coverage (a
-positively absent optional default retains COMPLETE empty-domain coverage), and at least
-one scope carries PROMPT_RISK. Show “Scope not searched: Koine avoids an inspection
-that may request consent; consent state unknown,” followed by the scope/guidance.
-Do not show a healthy empty search or ask the user to acquire a named consent.
-Observed missing named consent on other operations retains the permission error
-and its documented identifier/guidance; an unfamiliar identifier remains an OS
-consent failure directed to Koine. Legacy nil/blank identifiers are unspecified
-consent errors, never a prompt-risk sentinel. With no
-progress, native/identity inspection failure or work/resource refusal wins,
-including CHANGED_DURING_SEARCH or uncertain inspection as INSPECTION_FAILED;
-then any prompt-risk scope is BLOCKED,
-then purely missing/unsupported roots have a dependency outcome. A missing root
-alongside prompt risk does not turn the request into a native failure.
+Read status, matches, every source's coverage, dependency, resultsTruncated and
+all errors together. COMPLETE is the declared eligible filesystem domain, not
+all files on disk or an atomic snapshot. OS_REPORTED coverage is always UNKNOWN;
+its seed/registration responses may be absent, stale or incomplete. Empty native
+responses are never an exhaustive healthy empty inventory. examinedEntries counts
+candidate observations, not directory EOF or all unseen names. OS-source paths
+are nullable; rootIndices are observed coverage-row indices, not lexical overlap.
+Hidden/package-suffix/link-descendant/same-device rules define the domain;
+protected/cloud/work/native omissions remain explicit. Home stays PARTIAL/UNKNOWN.
+Command warning paths/permission causes are not guessed from stderr.
 
-Error-free coverage-only queries get the same BLOCKED status/diagnostics without
-selecting matches. Absent execution errors at or above selected fields, repeating
-matches under two aliases returns null twice without search-generated errors;
-FAILED instead raises failed at each selected alias path. Separate root aliases
-are independent searches, not one shared snapshot. After any progress, AVAILABLE
-may include blocked scopes in coverage without a matches error. Check GraphQL
-errors before classifying any branch: revocation can null a nullable list or
-propagate a denied non-null coverage/status field to the root. A surviving
-status never overrides that denial, and coverage is not promised after it.
-The provider can also stop between root and nested resolution: unavailable at
-nullable matches may leave status/coverage beside the error; non-null failures
-propagate normally. A surviving BLOCKED status never waives a lifecycle error.
+Source order gives no shallow-first or top-N guarantee. Sort bounded choices and
+apply MRU locally. Truncation means an observed matching choice was omitted by
+result/value retention; unfinished coverage can exist without it. Paths preserve
+command bytes, including final links, without a unique canonical-parent promise.
+Application routes merge only by established native bundle identity; different
+copies sharing an identifier remain distinct. An alias supplies no extra app name.
 
-Derive choices locally. An INSTALLED application with a known identifier feeds
-both that identifier and `applicationPath` to the constrained launch below;
-UNREGISTERED means the checked macOS observation reported no registration for
-that native bundle identity; it can be wrong after an undetected internal failure
-or stale service state. UNREGISTERED and UNKNOWN remain reveal/copy choices and
-cannot launch by this route; a known identifier can still be copied. File paths feed
-existing open/reveal operations. Null default-app metadata is unknown, not no handler.
-Search classification does not pin a file or promise that opening will succeed.
-The 8,192-byte search ceiling does not make every result actionable. In the
-v1 action contract (workspace release/schema 1.0.1, served; its effect at V is pending), launch, open
-and reveal resolve the location themselves, component by component. A location
-that has gone is still `PATH_NOT_FOUND`, or `APPLICATION_NOT_INSTALLED` for an
-installation, whatever its length. An extant location whose spelling is 1,024
-bytes or more, not counting a terminating NUL — as written, after a link expands,
-or fully resolved — is refused with `failed` before any application is asked,
-and the guidance names the application hand-off limit and the byte count. macOS's
-opener, registration and handler services take whole pathnames and stop there;
-making applications accept longer locations is deferred past v1
-([v1 action boundary](specs/workspace-launch-and-open.md#long-location-action-boundary),
-[search handoff](specs/workspace-search.md#long-location-action-dependency)).
-Keep showing such results and offering copy. You may mark a location of 1,024 or
-more UTF-8 bytes as too long to open in v1, but still report each action from its
-own outcome: a shorter spelling can expand past the limit through a link. Never
-shorten or rewrite a location, drop `applicationPath` or retry another copy.
-Both controls are required for the later actions; selection does not confer them.
-Write copied paths/known identifiers to your own clipboard and keep your own
-MRU. Protected default-document opening and the application-reveal notice retain
-their pending decisions described below.
+With no useful progress, failure reasons precede prompt risk, which precedes
+pure unavailable/absent sources. BLOCKED has null matches/dependency and UNKNOWN
+consent, without a search-generated error. FAILED emits failed at each selected
+matches alias; coverage-only selections do not create that matches error. Other
+lifecycle/publication/core errors retain normal propagation and can suppress
+status/coverage too. Nested selections/aliases reuse one frozen result without
+more native work. The system child may have a different TCC responsible identity:
+permission diagnostics disclose accessProcess and unknown identity until measured.
+Never use a capability or successful native count to infer OS consent.
 
-Search CAPACITY_LIMIT guidance distinguishes busy admission from native
-inspections disabled by a lower-limit/resource-failure cohort. A resource flag
-plus one indefinitely blocked cohort call disables all new searches even with
-free workers, until process restart. Opaque empty/nil metadata cannot alone
-establish UNREGISTERED or absence. The selected native-result boundary allows
-only the exact checked not-found or fully checked nonmatching-array branches,
-without a conflicting preferred result. The finalized call/error contract
-bounds copied values, shares two temporary credits serially and rechecks the
-original candidate before finalization; native results still require acceptance.
-Search CAPACITY_LIMIT can persist after cancellation: slots are released only
-when native work and cleanup finish. If calls never return, recovery requires
-restarting the Koine process; provider stop/start does not replenish the pool.
-Only the worker closes its frames, after any blocked call returns; cancellation
-cannot reclaim even idle streams from another thread. Queued paths and whole-job
-descriptor credits also remain charged until cleanup. Four jobs hold less than
-54.282 MiB including scratch, with at most 72 explicitly owned descriptors
-(one stream/root plus two temporary opens/job). Atomic admission below the
-effective soft limit leaves a non-search reserve; opaque platform opens and
-unrelated demand still require normally launched empirical serviceability
-acceptance through complete applicable owned/hook events and independent
-outcomes. Opaque acquisitions and peaks remain unproved. All policy witnesses are
-charged; pre-turn anchor-account failure gives every root no-progress
-INSPECTION_FAILED. These are proposal/accounting ceilings, not native memory or
-useful-coverage acceptance; no descriptor-limit setup is implicit.
+INSTALLED apps with a known identifier supply BOTH identifier and applicationPath
+to constrained launch. UNREGISTERED is a checked reported native-service negative,
+with stale/undetected-failure limits; nil/empty errorless data remains UNKNOWN.
+UNKNOWN/UNREGISTERED apps stay reveal/copy candidates; copy known identifiers
+locally. File paths feed existing default/Zed open/reveal. Handler state remains
+UNKNOWN with null defaultApplication; search does no prompting handler lookup.
+Controls are separately required and actions revalidate/classify the selection.
+Never retry by dropping the installation constraint or selecting another copy.
+
+The [v1 action boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)
+remains unchanged: missing locations keep their dependency outcomes; an extant
+literal/expanded/resolved spelling of at least 1,024 bytes without NUL fails before
+application handoff. Search's 8,192-byte ceiling promises no actionability. Keep
+longer results visible and copyable, without shortening or rewriting them.
+Protected default opening and app-reveal notice retain their pending decisions.
+
+Cancellation freezes publication and cleans owned child/native work. Slots are
+retained until actual reap/native return, so CAPACITY_LIMIT can persist; provider
+restart cannot replenish the shared registry. Uninterruptible work/abrupt-parent
+orphan cleanup has explicit limits in the contract. Backend absence, ordinary
+healthy empty and policy blocking stay distinct. The
+[finite acceptance subjects](verification/search-tooling.md#finite-acceptance-subjects)
+remain unexecuted; earlier directory/lookup probes accept no tool-backed route.
 
 ## Launching an application
 

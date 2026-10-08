@@ -30,7 +30,7 @@ accepted.
   target, not only a default open of a document.
 - `docs/verification/open-path-vm.md`: everything else about path opening is accepted at V in
   a prepared VM, with no fixture in a protected folder and Accessibility absent.
-- `.grove/15-k7/_app-and-file-search.md`: search must not use the file-URL lookup as a readiness
+- `app-and-file-search-k7 (resolve its current brief)`: search must not use the file-URL lookup as a readiness
   read, and must say which handler coverage is unknown or blocked.
 
 ## Done when

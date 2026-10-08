@@ -309,7 +309,12 @@ permission diagnostics through GraphQL, the actual provider/host integration
 through the native binary interface, and real backend calls and dialog
 observation under signed Koine in isolated VMs. Backend controls are exercised
 inside those seams; they add no new product seam. Tool reuse alone supplies no
-native permission or useful-coverage acceptance.
+native permission or useful-coverage acceptance. The [selected design](../specs/workspace-search.md)
+uses system find/Foundation/native application services; subprocess permission,
+relocated-target protection and lookup-only target inspection remain human choices.
+The earlier custom FIFO/witness/account mechanics were candidate-specific, not
+product requirements. Useful default/home coverage and action workflows remain
+required; omissions cannot be silently accepted by choosing a tool.
 
 Antony agreed to reuse the three seams in the
 [desktop contract](../specs/machine.md#test-seams-and-acceptance):

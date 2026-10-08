@@ -1,5 +1,11 @@
 # Canonical directory call analysis
 
+**Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
+and [finite backend evidence](search-tooling.md) replace custom traversal/witness
+mechanics below. Retain this document as bounded prior evidence/design analysis,
+not an implementation prescription or acceptance of the new backend. Applicable
+native fact, permission and serviceability obligations remain live.
+
 The [pre-open boundary analysis](search-preopen-boundary.md) retains the accepted
 fixed-layout bootstrap and evaluates lookup-only policy-target acquisition under
 the descriptor-relative ADR and k174 evidence. Its search-policy exemption and
@@ -10,7 +16,7 @@ complete-table account fit are unproved; conditional metadata candidates remain
 unapproved. No new call, native result or reduced home/default workflow is selected.
 
 This is source/SDK analysis for the
-[canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
+[canonical directory contract](../specs/workspace-search.md#matching-and-returned-locations),
 not a native search measurement. Implementation, independent provider/GraphQL
 and signed hardened macOS acceptance remain pending. The selected resolver,
 pre-open policy and spelling/name contracts require mount/symlink witness and
@@ -19,7 +25,7 @@ and its review, then complete-resource review/planning. Long-result actions
 require a separate design/review in the launch/open increment. No complete
 two-temporary replay/metadata composition or long-result action pass is claimed.
 The
-[path-design dependencies](../specs/workspace-search.md#path-design-dependencies)
+[path-design dependencies](../specs/workspace-search.md#matching-and-returned-locations)
 keep long-path classification/end-to-end reachability unresolved.
 No shorter domain, consent/setup, entitlement or limit increase
 is accepted. The [application identity decision](../adr/application-search-uses-bundle-identity.md)
@@ -83,7 +89,7 @@ completeness or current implementation claim is made.
 
 ## Constructible subjects and instruments
 
-The [canonical acceptance subjects](../specs/workspace-search.md#canonical-path-acceptance-subjects)
+The [canonical acceptance subjects](../specs/workspace-search.md#test-seams-and-acceptance)
 name their own outcome witnesses. A disposable guest helper creates native
 trees using component-relative mkdirat/openat, never an overlong absolute
 mkdir argument. It records each actual component, fstat identity and fsgetpath

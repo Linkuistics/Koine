@@ -1,12 +1,18 @@
 # Search pre-open proof boundary
 
+**Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
+and [finite backend evidence](search-tooling.md) replace custom traversal/witness
+mechanics below. Retain this document as bounded prior evidence/design analysis,
+not an implementation prescription or acceptance of the new backend. Applicable
+native fact, permission and serviceability obligations remain live.
+
 **Reconciled source and contract analysis; target-inspection decision required.**
 The selected fixed-layout premise supplies a bootstrap route. Lookup-only target
 acquisition is an omitted alternative within the descriptor-relative ADR's call
 set; its search-policy authorization and unmeasured target behavior remain open.
 This analysis selects no replacement call or witness-mode exemption, approves no
 workflow loss, and adds no native measurement. The
-[witness contract](../specs/workspace-search.md#pre-open-proof-boundary) and
+[witness contract](../specs/workspace-search.md#permission-boundary-and-required-decision) and
 [focused view](../design/architecture/index.html#diagram-search-preopen) carry
 this boundary. Returned witness design and mandatory review, observation phases,
 classification and complete-resource review still precede planning.

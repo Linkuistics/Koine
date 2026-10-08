@@ -1,22 +1,19 @@
-# Designed component/data handoff. Source roles, not deployment containers.
+# Selected mechanism, subject to human choices/review/native acceptance.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Client query\nFilename + roots + limit" {class: start}
-Search: "Workspace search · workspace:read\nFIFO + descriptor credits; native acceptance pending\nReported spelling + bundle identity\nRepresentable names survive native descent size\nWitness + phase repairs / reviews → classification\nCounts + depth / frontier groups + remainder"
-Choices: "Client checks status + coverage + all errors\nBLOCKED: skipped scope, consent unknown\nLifecycle error can survive beside status\nAVAILABLE: derive choices from registration"
-Selected: "Client selects an AVAILABLE location\nLaunch INSTALLED: identifier AND path\nUNREGISTERED / UNKNOWN: reveal + copy only"
-Clipboard: "Client clipboard write\nKnown path / identifier\nNo Koine pasteboard operation"
-Action: "Existing workspace actions\nLaunch · open · reveal; each re-resolves the location\nworkspace:control AND desktop:control"
-Revalidate: "Workspace revalidates on action\nPresence · registration · payload\nNo dropped constraint or alternate-copy retry"
-Outcome: "Existing action outcome\nDependency / refusal / failure / acknowledgment\nNative races and pending action decisions remain"
-Start -> Search: "1 · on-demand read"
-Search -> Choices: "2 · matches + per-root scopes"
-Choices -> Selected: "3 · user choice"
-Selected -> Clipboard: "4 · copy choice"
-Long: "8192-byte search ceiling is no actionability guarantee\nActions resolve the location themselves\nv1: extant spelling ≥ PATH_MAX is failed at hand-off\nResult stays visible and copyable; nothing dropped"
-Selected -> Long: "4 · long-location dependency"
-Selected -> Action: "4 · explicit action; revalidated"
-Action -> Revalidate: "5 · fresh inspection"
-Revalidate -> Outcome: "6 · submit or refuse"
+Start: "Start here · Search choices + coverage\nClient chooser / ranking / MRU" {class: start}
+App: "INSTALLED app\nKnown identifier AND selected path"
+File: "File / folder\nUnchanged observed path"
+Action: "Existing launch / open / reveal\nworkspace:control AND desktop:control"
+Resolve: "Action-time location resolution\nRevalidate existence / classification / copy"
+Outcome: "Existing action outcome\nExtant >=1024-byte spelling: failed\nMissing remains missing"
+Copy: "Client clipboard\nUnknown/unregistered and long locations stay useful"
+Start -> App: "1 · explicit launch selection"
+Start -> File: "1 · explicit open / reveal"
+Start -> Copy: "1 · explicit local copy"
+App -> Action: "2 · retain installation constraint"
+File -> Action: "2 · no search identity pin"
+Action -> Resolve: "3 · unchanged action contract"
+Resolve -> Outcome: "4 · no alternate-copy retry"

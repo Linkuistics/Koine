@@ -555,7 +555,7 @@ what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
 
 **Search extension — typed prompt-risk outcome, pending implementation.**
-The [search contract](workspace-search.md#extension-only-permission-diagnostics)
+The [search contract](workspace-search.md#coverage-and-aggregate-outcomes)
 refuses known prompting traversal before attempting it and preserves per-root
 coverage with no list in BLOCKED. The
 [diagnostic decision](../adr/prompt-risk-is-search-data.md) carries that branch
@@ -946,7 +946,7 @@ input coercion, with a response path and no domain classification.
 
 Search adds no failure case, target/reason accessor, minor or host feature.
 Its BLOCKED branch uses success object/null values under the existing ABI;
-the [diagnostic contract](workspace-search.md#extension-only-permission-diagnostics)
+the [diagnostic contract](workspace-search.md#coverage-and-aggregate-outcomes)
 does not alter the following baseline mapping. Public failure construction
 already permits nil and arbitrary strings; clients/providers must not infer
 that a semantically incomplete value was unconstructible. Search cannot treat

@@ -9,7 +9,7 @@ host's inherited limit, public workflow/domain and negative-fact requirements.
 
 
 ## Context
-Read docs/specs/workspace-search.md#native-allocation-decision and the linked
+Read docs/specs/workspace-search.md#permission-boundary-and-required-decision and the linked
 comparison/view. No helper, signing change, child limit or diagnostic entitlement
 is approved. Existing public GraphQL/native-binary/isolated VM seams remain.
 

@@ -13,7 +13,7 @@ acceptance tables and docs/verification/search-native-resources.md. Preserve
 k108's fsgetpath/repeated-walk costs and all original k109 completion conditions.
 
 k119 finalizes the in-process allocation in
-docs/specs/workspace-search.md#in-process-observation-contract and
+docs/specs/workspace-search.md#native-application-and-file-metadata and
 #serviceability-construction-handoff, with the promoted summary at
 docs/verification/search-native-resources.md#final-allocation-handoff. Consume
 the two independently selected k118 boundaries: native facts are reported

@@ -1,5 +1,11 @@
 # Search native resource feasibility
 
+**Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
+and [finite backend evidence](search-tooling.md) replace custom traversal/witness
+mechanics below. Retain this document as bounded prior evidence/design analysis,
+not an implementation prescription or acceptance of the new backend. Applicable
+native fact, permission and serviceability obligations remain live.
+
 **Source/SDK analysis and finalized allocation/subject design; native acceptance remains
 pending.** An error-bearing registration API exists, but substituting that API
 does not supply a bound or event ledger for platform-internal descriptors.
@@ -7,15 +13,15 @@ The [resource boundary comparison](../design/architecture/index.html#diagram-sea
 shows the finalized in-process allocation. The
 [serviceability construction](search-serviceability.md) supplies the event inventory,
 passive hooks and concrete subjects; the complete-resource review remains pending. The
-[search resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling)
+[search resource contract](../specs/workspace-search.md#backend-invocation-and-worker-cleanup)
 continues to bind, including its original budgets and serviceability obligations.
 No inspection route, helper, consent, signing change, smaller domain or reduced
 metadata/workflow guarantee is accepted by this analysis. The subsequent
-[allocation decision](../specs/workspace-search.md#native-allocation-decision)
+[allocation decision](../specs/workspace-search.md#permission-boundary-and-required-decision)
 records the operator's refusal of the helper proposal and retains the
 single-process posture. This analysis has not demonstrated a normal-search
 failure or established that isolation is necessary. The subsequent
-[observation decisions](../specs/workspace-search.md#observation-boundary-decision-questions)
+[observation decisions](../specs/workspace-search.md#permission-boundary-and-required-decision)
 were selected independently under Antony's "you decide" delegation: checked
 registration and other native facts may mean reported observations, and empirical
 serviceability acceptance may leave opaque internal demand unproved. Neither
@@ -219,7 +225,7 @@ accept the baseline. No native/binary/useful-coverage result is supplied here.
 
 ## Final allocation handoff
 
-The [in-process observation contract](../specs/workspace-search.md#in-process-observation-contract)
+The [in-process observation contract](../specs/workspace-search.md#native-application-and-file-metadata)
 is the selected design, consuming the two independently delegated boundaries.
 It keeps native package/type/alias services and Bundle positives, with nil always
 UNKNOWN; LS all-registration results retain an error channel and separate
@@ -228,11 +234,11 @@ allowlisted, completely classified not-found result or a fully checked nonempty
 nonmatching array, with no conflict. The runtime error-domain pair is a native
 acceptance subject, not proved by the SDK's numeric constant.
 
-The [bounded-result rules](../specs/workspace-search.md#bounded-native-result-consumption)
+The [bounded-result rules](../specs/workspace-search.md#backend-invocation-and-worker-cleanup)
 borrow array elements, bound copied paths/strings and sixteen error objects in
 existing scratch, and consume results under the existing wait with no arbitrary
 new registration-count cap. Framework-returned objects remain opaque allocations.
-The [ownership contract](../specs/workspace-search.md#allocation-and-lifetime-ownership)
+The [ownership contract](../specs/workspace-search.md#backend-invocation-and-worker-cleanup)
 releases candidate descriptors before registration/preferred-target walks and
 reacquires the original candidate before finalization, using only two temporary
 credits. No array history, pinned third descriptor or idle root-credit borrowing
@@ -253,7 +259,7 @@ cannot replenish blocked ownership. Q/S, inherited/infinite/unknown/lowered
 limits, system-wide ENFILE, original accounts/domain/authority/version and
 retained-versus-search-release compatibility remain unchanged.
 
-The [serviceability handoff](../specs/workspace-search.md#serviceability-construction-handoff)
+The [serviceability handoff](../specs/workspace-search.md#backend-invocation-and-worker-cleanup)
 requires actual-provider/independent GraphQL controls and normally launched
 signed hardened VM subjects. The [subject design](search-serviceability.md) specifies
 complete owned/admission and pre-NIO-

@@ -88,3 +88,73 @@ small integration layer. Existing observations have their original bounds;
 acceptance still exercises the actual signed Koine and backend. Surface a real
 platform limit once with a concrete consequence instead of growing a deeper
 chain to manufacture a guarantee the platform cannot provide.
+
+## Decisions (running log)
+
+- Adopt the mandated design leaf in the authoritative jj workspace, initially
+  empty on k190's commit 5814505c. Read the glossary, root brief, requirements,
+  material public contracts and bounded discovery/metadata/lookup observations.
+  The graph CLI refused an active pre-coordination/unverified generation; direct
+  reads supply document evidence, without a graph generation/coverage claim.
+- Select macOS system find for candidate enumeration, Foundation's existing
+  literal string comparison for name matching, and NSWorkspace plus native bundle
+  metadata for application discovery/registration. This is a mechanism design,
+  conditional on the remaining human permission/process decision and review,
+  not permission to spawn a backend. Spotlight cannot establish healthy empty
+  from startup/count; rg --files omits directory choices; fd adds distribution;
+  fzf's chooser is client-owned and its filter would add a needless dependency
+  for the retained literal-substring contract. No custom traversal/matcher is
+  selected. Client ranking and MRU remain client policy.
+- k115's refusal of a custom isolation helper is not overridden by k190's reuse
+  requirement. Externalize a focused requirements decision before the search
+  node: allow one ordinary Apple-signed system-find child per admitted job, with
+  no custom/privileged helper or limit/signing/consent changes, or choose another
+  route; separately settle relocated-target protection and search-only lookup
+  of policy/app targets. Static prune/no-follow/device flags do not prove either
+  policy premise. The old lookup-only witness exemption is still needed if
+  target identity acquisition is required; it is not silently granted.
+- Replace candidate-specific FIFO, frontier, prefix replay and two-temporary
+  traversal mechanics with bounded command I/O, source-level coverage and native
+  metadata ownership. Retain limits as product adapter bounds where meaningful;
+  drop unsupported descriptor/memory/EOF/identity guarantees. Rewrite applicable
+  live charters to discharge the actual permission, parsing/lifecycle, metadata,
+  resource review and planning obligations. Obsolete algorithm portions are
+  identified explicitly, never credited as passed or pruned without permission.
+
+- Insert search-tool-permissions-k196 before app-and-file-search-k7 for the two
+  actual authorization choices. Rewrite live k126/k191/k193, k127, k123, k120,
+  k30 and k93 around retained obligations; preserve all live work and terminal
+  evidence. K109's original allocation artifact is comparison input to the carried
+  resource review, not current 72-credit/two-temporary authority. No prune/native
+  pass/implementation leaf is introduced; obsolete algorithm portions are explicit.
+
+## Verification
+
+- Final task design:search-render exited 0 for all nine D2 sources/exports with
+  D2 0.9.0. Full-size inspection found overlapping labels; shortening labels and
+  adding the coverage assessment node fixed those layouts before the final run.
+- Final task design:search-check exited 0: independent and composed search SDL,
+  search examples and existing action examples validated; removed-search-root,
+  invalid input/output and foreign-provider controls were rejected. Nullable
+  matches remained checked. This establishes design shape, not runtime behavior.
+- Final task check:docs exited 0 after correcting historical evidence links to
+  current headings. Its earlier missing-anchor failures were inspected, not
+  treated as an empty successful result.
+- Froze 371 per-item subjects: every documentation Markdown source outside the
+  checker's excluded trees, its manifest, scripts, docs/design sources/exports/
+  viewer, contract-only client source/configuration excluding dependencies/dist,
+  and Taskfile.yml. .build/search-tooling-k195/input-paths.json names the exact
+  items; before.sha256 and after.sha256 matched each item and set membership.
+  Final search-check.log and docs-check.log are separate local build outputs.
+- Served the dedicated architecture directory on loopback port 60343. Inspected
+  the current discussion, updated markers and fresh discovery/permission deep
+  links in a disposable TestAnyware Linux Firefox VM, including light, dark and
+  320-pixel responsive appearance after reload. Inspected all nine final exports
+  at readable full size; the browser VM is stopped. No backend/native acceptance
+  subject, consent, index, mount, signing or application experiment was run.
+- Checked the selected mechanism against Done when and the retained live charters.
+  The remaining load-bearing doubts go to the mandated scheduled review: find's
+  pre-prune metadata/access order, child attribution and approved target policy;
+  source completeness/native negatives; copied-resource/lifecycle bounds; useful
+  coverage and preservation of product/action obligations through reconciliation.
+  Native outcomes, process/protection answers and actual omissions stay pending.

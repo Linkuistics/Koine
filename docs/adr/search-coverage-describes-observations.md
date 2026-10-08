@@ -1,51 +1,22 @@
 # Search coverage describes observations
 
-Workspace search exposes root observation summaries and counted exclusion
-groups instead of a path-by-path traversal log. A complete eligible domain can
-be called a searched subtree; partial observations and an unfinished remainder
-cannot. The [search contract](../specs/workspace-search.md#coverage-and-aggregate-outcomes)
-defines each extent, count and bound. This public vocabulary is costly to change
-once clients use it and deliberately gives them less location detail than a
-filesystem audit.
+Search publishes per-source observation summaries and explicit exclusions or
+unfinished remainders, rather than a filesystem audit. The
+[coverage contract](../specs/workspace-search.md#coverage-and-aggregate-outcomes)
+allows COMPLETE only for qualified eligible-domain processing and never for the
+OS-reported application source. Healthy empty, unavailable service, policy
+blocking and incomplete empty remain distinct.
 
-Per-directory searched records and per-entry intrinsic exclusions consume a
-finite diagnostic budget before realistic application/home discovery finishes.
-Root summaries, intrinsic anchor counts and independent root partitions
-decouple ordinary-directory diagnostic volume from discovery. One reserved
-root depth group counts encountered anchors themselves, including an empty
-directory whose EOF was not observed; names remain matchable and counts never
-describe omitted descendants. Exact invalid/size-refused child parents, exceptional
-failures and permission targets stay visible. Exhaustion preserves an honest
-remainder. Maximum-size match slots keep metadata growth out of diagnostics
-and ranked eviction. This costs reserved capacity and withholds grouped identities.
+The public granularity is costly to reverse once clients consume it. It hides
+unseen child identities and native internal operations while giving clients
+source provenance, observed candidate counts and honest omissions. The selected
+[system-tool route](search-enumeration-reuses-system-find.md) cannot provide
+per-directory EOF, counted frontier groups or exact paths from human stderr;
+those earlier custom-candidate assumptions no longer bind. Unlocalized errors
+use source remainders; count truncation is separate from incomplete discovery.
 
-The separate [traversal decision](search-traversal-preserves-shallow-names.md)
-owns FIFO order and its frontier/repeated-work costs. Private descriptor
-admission, worker cleanup, revalidation and witness accounting live in the
-[resource contract](../specs/workspace-search.md#resource-accounting-and-scheduling),
-where their reversible mechanics and native evidence obligations can change
-without hiding them beneath this public-vocabulary slug. Changed queued
-prefixes use one root remainder; only independent exact failures can fan out
-into diagnostic exhaustion. No record/byte accounting certifies throughput.
-
-A detailed traversal log still buys identities that the chooser does not need.
-An exhaustive index or persistent paginated search adds lifetime, invalidation,
-consent and availability contracts. The
-[signed-host comparison](../verification/search-discovery.md#design-consequences-and-limits)
-found no usable index-health signal and a prompting protected query. Reopen
-that alternative only with a supported prompt-free mechanism and useful
-coverage/availability evidence, or an expressly approved changed workflow.
-Reopen detailed records for a consumer that needs exclusion identities.
-The [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation)
-distinguishes known native/public size refusals from uncertainty. Name-omitting
-actual-parent groups require an established unrepresentable candidate location;
-a descent-only native limitation preserves every representable file-search
-entry kind. A known queued descent-size refusal is exact VALUE_LIMIT SUBTREE
-at the listed location, with no name withdrawal or result truncation; no-descent
-anchors need no native canonical call. Exact diagnostics spend existing room
-instead of adding another public grouped identity/count contract.
-Changed/uncertain shared prerequisites use one root stop, independent target
-failures under an unchanged parent stay exact, and checked-link failures stay
-per-candidate.
-Neither these observations nor accounting accept reduced home/application
-coverage: the operator's existing baseline decision remains required.
+Detailed traversal logs require a different engine/instrument and exhaust finite
+room without helping the chooser. An exhaustive index needs a separate lifetime,
+consent and availability contract. Reopen for a consumer requiring those details,
+or when measured omitted witnesses require a changed backend/domain decision.
+This choice accepts no lost home/default workflow or native permission outcome.

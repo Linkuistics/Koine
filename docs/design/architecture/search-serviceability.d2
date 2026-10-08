@@ -1,29 +1,17 @@
-# Evidence flow; design only. Opaque acquisitions/health remain unproved.
+# Selected mechanism, subject to human choices/review/native acceptance.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Frozen subject\nNormal signed host; inherited limit\nReal provider + independent clients" {class: start}
-Owned: "Owned events + native envelopes\nAttempts / transfers / closes / gate\nCandidate → target walks → recheck"
-Listener: "Passive real NIO hooks\nPre-suppression error / chosen delay\nSchedule / cancel / actual read"
-Outcomes: "Independent outcomes\nFresh connections / durable grants\nWitnessed launch / open / reveal"
-Controls: "Broken detection controls\nTransient between polls / dropped pair\nOverflow / suppressed accept error"
-Loss: "Complete applicable evidence?\nSite counters / sequences / spans\nFD owner generations / open-at-cut" {shape: diamond}
-Invalid: "Lost event / attribution gap\nFailed reference / altered hook behavior\nInconclusive · cannot pass"
-Compare: "Matched no-search references\nControlled saturation ≠ unheld native work\nCompare operations item by item"
-Verdict: "Resource failure or accept backoff?\nLater successful reply cannot erase it" {shape: diamond}
-Fail: "Serviceability failure\nRepair or explicit scope decision"
-Limited: "Empirical pass for named subject only\nOpaque acquisitions / peaks / errors unproved\nRuntime controls and native outcomes pending"
-Start -> Owned: "1 · search"
-Start -> Listener: "1 · listener"
-Start -> Outcomes: "1 · clients / store / actions"
-Owned -> Controls: "2 · detect"
-Listener -> Controls: "2 · detect"
-Controls -> Loss: "3 · reject broken controls"
-Outcomes -> Loss: "3 · independent records"
-Loss -> Invalid: "no"
-Loss -> Compare: "yes"
-Compare -> Invalid: "inconclusive"
-Compare -> Verdict: "4 · complete comparison"
-Verdict -> Fail: "yes"
-Verdict -> Limited: "no · all named obligations met"
+Start: "Start here · Actual signed Koine + backend\nIsolated VM subject" {class: start}
+Events: "Owned events / native envelopes\nSpawn, pipes, signals, reap, loss markers"
+Independent: "Independent outcomes\nFresh listener, grant store, authorized actions"
+Controls: "Failing controls\nLost event / leaked child / late publication\nDialog + hydration positive observers"
+Assess: "Per-subject assessment\nActual outcomes + attribution + frozen provenance"
+Pending: "Native acceptance remains pending\nOpaque internal peaks / health unproved"
+Start -> Events: "1 · log"
+Start -> Independent: "1 · test"
+Controls -> Assess: "2 · detect known bad subjects"
+Events -> Assess: "2 · complete applicable record"
+Independent -> Assess: "2 · failures / backoff cannot pass"
+Assess -> Pending: "3 · this design runs no subjects"

@@ -4,7 +4,7 @@ Workspace search represents a wholly prompt-risk-blocked read as typed BLOCKED
 data, with null matches and dependency and explicit per-root coverage. Its
 permission diagnostic reports UNKNOWN consent: Koine declined an inspection
 known to be capable of prompting; it did not observe missing consent. The
-[search contract](../specs/workspace-search.md#extension-only-permission-diagnostics)
+[search contract](../specs/workspace-search.md#coverage-and-aggregate-outcomes)
 owns the branch invariants and client guidance. Observed missing named consent
 retains the framework's permission-error meaning, as specified by the
 [Machine contract](../specs/machine.md#errors-and-partial-data).

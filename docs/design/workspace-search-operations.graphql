@@ -1,27 +1,19 @@
-# Designed examples, not served operations. Requires workspace:read only.
-# Check status, coverage AND errors, particularly at aliased nullable matches.
-# Pre-open witness and replay/size-phase repairs need producer reviews before classification; whole-resource review precedes planning.
-# Fixed-layout bootstrap stands; lookup-only target inspection policy is undecided; see the pre-open proof boundary.
-# Foreign target refusal prevents a registration negative, and is not permission to lose home workflows.
-# Long-result action support/error meaning needs launch/open design and review; search ceiling is no actionability guarantee.
-# Native/canonical/cleanup acceptance remains pending after those design reviews.
-# Typed BLOCKED transport is reviewed; all runtime/binary acceptance pending.
-# Result-count truncation and partial traversal are independent.
-# Delegated choices select reported native results and empirical evidence with opaque internals unproved.
-# Allocation design is finalized; serviceability construction is specified; execution/review and native acceptance remain pending; UNKNOWN metadata for every launcher cannot pass.
+# Designed examples; system-tool/target permissions, review and native acceptance pending.
+# Requires workspace:read only. Inspect status, coverage, dependency, truncation AND errors.
+# Coverage rows include source provenance; native-source paths can be null.
 
 fragment SearchCoverage on WorkspaceSearchRootCoverage {
   rootIndex
+  source
   requestedPath
   resolvedPath
   state
   examinedEntries
-  completedDirectories
   searched { path extent }
   skipped {
-    path extent count reason affectsCoverage guidance
+    path extent reason affectsCoverage guidance
     permission {
-      kind permissionClass permissionOwner permissionReason permissionTarget
+      kind permissionClass permissionOwner accessProcess responsibleIdentity permissionReason permissionTarget
       osPermission consentState
     }
   }
@@ -91,57 +83,13 @@ query InspectAliasedMatches($roots: [String!]) {
   }
 }
 
-# After the user chooses, copy the app's identifier AND installation path into
-# WorkspaceApplicationInput, or the file path into the existing open/reveal
-# operations in workspace-operations.graphql. Controls are separately required.
-# Copy path/known identifier to the client's clipboard, and update client MRU
-# there. Launch only INSTALLED, never UNREGISTERED or UNKNOWN; both can be
-# revealed/path-copied, and any known identifier can be copied. UNREGISTERED is
-# a checked reported native-service negative, with an undetected-failure/stale-state
-# limit; nil identifiers stay UNKNOWN. Helper design remains declined. Complete
-# allocation design, subjects/review and native acceptance remain pending.
-# Do not infer NO_DEFAULT_HANDLER from null metadata. Never retry an action by
-# dropping its installation constraint.
-
-# Searched SUBTREE requires COMPLETE; OBSERVED_DESCENDANTS only asserts counts.
-# CHILD_GROUP counts invalid/overlong child anchors of its actual parent;
-# those anchor names cannot be returned. DESCENDANT_GROUP counts intrinsic
-# or depth/frontier-bound anchors beneath the root: each DEPTH_LIMIT anchor increments
-# the count, even when empty/unlisted; names remain matchable.
-# FRONTIER_LIMIT separately counts observed anchors whose descent task cannot
-# fit; names remain matchable and sibling examination continues. Neither count
-# describes all children or omitted descendants. Depth takes precedence over frontier.
-# The per-root FIFO finishes a shallower level before deeper admitted work.
-# Atomic worker/descriptor credit refusal gives CAPACITY_LIMIT to every root
-# before opens, not permission absence. Native resource failure is INSPECTION_FAILED.
-# App links discover canonical target names/paths, not alias-named choices;
-# link/direct routes merge by native bundle identity and combine rootIndices.
-# Distinct native copies sharing an identifier stay distinct. File links are locations.
-# Roots/frames/bundles use one filesystem-reported directory-path operation.
-# For FindFiles, roots [home, Data-volume alias of home] retain requested spellings
-# and, under stable reported spelling, share resolvedPath; equal returned file
-# paths merge observed rootIndices. Cached variants can remain distinct locations.
-# Its path joins canonical parent + observed name, never final symlink target.
-# Pre-turn policy-witness account failure is FAILED: every root has UNKNOWN,
-# zero counts/no searched scope and INSPECTION_FAILED REMAINDER at requestedPath.
-# REMAINDER describes unfinished work with or without progress, not the whole
-# root, and has count null. Anchor: resolved root, else representable requested
-# root. No-progress stops have UNKNOWN coverage and no searched record.
-# DIAGNOSTIC_LIMIT is total diagnostic room (count/bytes identified by guidance);
-# VALUE_LIMIT is known public/native path-size refusal, never lookup uncertainty.
-# Native directory text is at most 8191 bytes (8192 including NUL); joined file
-# locations retain the public 8192-byte ceiling. Inspect completedDirectories as EOF.
-
-# FIFO repeats checked prefix walks against the shared wait. A current stream
-# rechecks before each listing turn/read; a changed queued prefix stops the root
-# once rather than fanning out exact records. Later same-level/deeper names can
-# be omitted and remain unaccepted workflow coverage.
-# CAPACITY_LIMIT guidance distinguishes busy admission from a latched disabled
-# cohort; one indefinite block can require process restart after resource failure.
-# Held-descriptor identity checks do not detect movement; first unassociated
-# observations have no independent movement detector. ENOSPC alone is not change.
-# Native descent refusal alone does not omit a representable directory name.
-# Native witness errors affect dependent roots; account overflow is job-wide.
-# Path-design producers and reviews precede whole-resource review/planning. Owned-event/accept-backoff
-# instrument construction is specified in search-serviceability.md; execution/review remain pending.
-# Opaque acquisitions/peaks remain unproved; schema acceptance establishes no serviceability.
+# After explicit selection, pass BOTH known identifier and installation path for
+# INSTALLED application launch. UNKNOWN/UNREGISTERED apps stay reveal/copy choices.
+# Pass file paths unchanged to existing default/Zed open/reveal operations.
+# Those actions need workspace:control AND desktop:control and revalidate locations.
+# Extant action spellings >=1024 bytes without NUL fail at v1 handoff, not as absence;
+# keep longer search results visible/copyable. Search results carry no identity pin.
+# Clipboard, ranking and MRU are client-owned. No search nested selection launches
+# another command or native inspection; aliases reuse the frozen root snapshot.
+# Source order is no top-N, FIFO, directory EOF or counted-omission guarantee.
+# Empty native seeds/registration do not prove exhaustive healthy empty.

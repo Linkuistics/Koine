@@ -67,24 +67,18 @@ classification, and scope reconciliation. Then, in order:
     `launch-and-open-k29` added it.
 13. `baseline-acceptance`.
 
-`app-and-file-search-k92` externalizes `protected-home-search-k93` before
-baseline acceptance: Antony must accept/disclose the explicit partial home domain
-or approve a separate traversal-consent/setup contract. Review integration k95
-also routes any proposed weakening through that decision with explicit final
-bound-driven omissions; arbitrary default-search samples are not accepted.
-Discovery review k102/k104 led to `search-traversal-k105`'s per-root FIFO
-breadth-first work, bounded pending queue with matchable frontier anchors and
-atomic process-wide descriptor credits below the inherited soft limit with
-non-search reserve. Its load-bearing review must retire before planning. Narrow ownership/canonical-path/policy-account repairs retain native
-acceptance; shallow-name loss and unrelated-work descriptor failures are defects
-to repair, never accepted omissions. Default discovery/resource design awaits
-load-bearing review before search
-implementation planning. Prompt-risk transport's k99 review/k103 integration
-clarifies no-progress failure classes, lifecycle errors and separate retained
-versus search-release verification subjects; binary/runtime acceptance remains
-pending. That is distinct from
-`protected-default-open-k89`'s handler lookup, but any chosen setup must be
-coordinated. No new consent, entitlement or usage key is approved by search.
+Application/file search now consumes search-tooling-k195's selected system-find,
+Foundation matching and native application-service design, its mandatory review/
+earned integration, then search-tool-permissions-k196. Process permission and
+relocated-target/lookup-only policy remain concrete human decisions; k115's custom
+helper refusal is not overridden. Returned permission k126/k191/k193, command
+lifecycle k127, native metadata/long records k123 and carried resource review k120
+precede planning k30. Custom FIFO/frontier/prefix-witness accounts are obsolete
+candidate mechanics, not native passes. Actual signed identity/dialog/hydration,
+useful home/default/launcher witnesses, independent serviceability and binary
+acceptance remain pending. Protected-home k93 accepts actual per-witness omissions
+or a separately agreed setup/domain/backend contract before baseline; no arbitrary
+bounded sample or new consent/signing/limit change is accepted.
 
 Each increment resolves its bounded native-evidence question, then its API
 design, before a trailing `planning` leaf cuts implementation.
@@ -160,27 +154,15 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
-Antony's k190 scope clarification retains application and file search in Koine
-but requires reuse of existing OS facilities or established tools instead of
-building search from scratch. Permission/dialog behavior remains part of the
-contract. `search-tooling-k195` is placed before the existing search node to
-choose and reconcile that mechanism; rg/fzf are suggestions, not dependencies.
-Its mandatory review and earned integration must precede resumed search work.
-Do not continue the earlier custom traversal as an implementation prescription.
-Native application metadata and existing launch/open/reveal remain required.
-The durable requirement is in `docs/requirements/modaliser-workflows.md` under
-Ownership and existing constraints. No consent/setup or native outcome follows.
-
-Pre-open witness k126 is live. Boundary k189/review k192/integration k194 retain
-fixed-layout bootstrap and evaluate existing lookup-only target acquisition.
-K190 records the reuse requirement; its original inspection-policy choices
-remain unselected pending the reviewed tooling design. Returned contract k191
-and mandatory whole-node review
-precede k127/k123/k120/k30. Library escapes retain the origin limit; foreign
-probes may block before device refusal, with existing retained-credit/cohort
-limits. No new call policy, consent,
-accounts, domain or accepted home/default workflow loss follows from the
-boundary. K93 still owns actual per-witness omissions.
+Application/file search requirements and current design are in
+`docs/requirements/modaliser-workflows.md`, `docs/specs/workspace-search.md` and
+`docs/verification/search-tooling.md`. Search stays in Koine; clients own chooser,
+ranking/MRU and clipboard. The system-tool mechanism is selected for review, not
+implemented or natively accepted. Root-level k195 review/integration and k196 human
+choices precede the reconciled search node. Preserve native metadata, actual action
+contracts and agreed G/N/V seams. Closed prior search producers/measurements remain
+bounded comparison evidence; rewritten live charters discharge retained obligations.
+No live item is pruned or marked passed merely because its old algorithm is obsolete.
 
 `launch-and-open-k6` and its final node `long-locations-k172` deliver the
 action-only workspace release/schema 1.0.1: all four operations, the twelve
@@ -237,108 +219,7 @@ Modaliser's mechanisms are evidence of intended results, never a mechanism to
 reproduce or a bug to freeze.
 
 
-search-traversal-k107 integrates k106's ten findings. Current streams recheck
-before every listing turn/read; changed queued prefixes/parents stop their root
-once, avoiding per-task diagnostic fan-out. FIFO repeats checked component walks
-against the wait; fixtures name preserved shallow project anchors and omitted
-same-level/deeper contents. Lower-limit refusal compares summed reservations and
-latches until cohort cleanup; one indefinite resource-failure cohort can require
-process restart. Public coverage and traversal decisions now have separate ADRs;
-private descriptor/cleanup mechanics remain in the spec. Native canonical-path
-selection (search-canonical-paths-k108) and opaque resource-call/error plus
-serviceability instruments (search-native-resources-k109) are externalized
-design producers, each required to cut a load-bearing review before planning.
-No native acceptance, shorter domain, new consent/setup or larger limit is
-approved; k93 must consume actual per-witness omissions.
-
-k110/k121's canonical review/integration keeps the public fsgetpath proposal
-and unchanged value ceilings/domain, but requires resolver/pre-open policy,
-cached spelling, representable directory-name/descent and long-path classification
-design producers/reviews before k120's complete-resource review/planning.
-Held identity self-comparison is not movement detection; ENOSPC alone is not
-change. Shared-prefix failure stops one root; independent final-target failure
-stays exact and checked-link failure stays per-candidate. Native witness failure
-is dependency-scoped; witness-account overflow is job-wide. Queue arithmetic
-does not establish classified canonical task reachability. Native/binary/prompt/
-useful-coverage outcomes and k93's measured omissions decision stay pending.
-
-The path continuations are `search-path-resolution-k122` then
-`search-path-classification-k123`, each with a producer-cut mandatory review
-before its next consumer. K120's complete-resource review and k30 planning
-consume the reconciled chains, preserving the original approval posture.
-
-The native-resource continuation now uses the independently selected
-[observation boundaries](../docs/specs/workspace-search.md#observation-boundary-decision-questions)
-from k118 under Antony's "you decide" delegation. Only reported-native-fact
-meaning and empirical serviceability evidence change. k119 finalizes the
-in-process calls, bounded result consumption, two-temporary ownership, freeze/
-late-return/refusal/recovery contract and observable handoff. k113 completes serviceability
-instrument/subject construction; mandatory complete-resource review k120,
-native acceptance and the separate measured home-omissions decision remain live.
-
-
-k122 selects one bounded component resolver at every source/length (32 link
-expansions, bounded readlink/pending text, derived expanded work and native
-absolute/dot-dot/firmlink transitions). Parent AND no-follow child policy checks
-use protected/known-cloud identities and native variant lookups before opening.
-File-search locations of every kind preserve reported-parent/listed-name joins,
-including 8,192 bytes; queued native descent ENOSPC under independently unchanged
-parent/association uses VALUE_LIMIT SUBTREE without withdrawing names. Fresh
-reports supply descendant prefixes, retained app identities keep first-finalized
-spelling, and byte differences alone prove no movement/failure. Current-turn
-location reacquisition spends the same two temporaries, scratch and wait; exact
-file dedup can leave cache-variant locations distinct. No changed k119 call set,
-account, domain, consent, version or native acceptance is supplied.
-Review k124 is integrated by k125: pre-open mount/symlink witnesses move to
-search-preopen-witnesses-k126, followed by replay/size-refusal phases in
-search-path-observation-phases-k127. Both producers must insert mandatory
-reviews before their next consumer; k123 classification and its own review,
-then k120/k30, consume those reconciled chains. Long-result action support
-and truthful overlength failure move to long-search-result-actions-k128 in
-the earlier launch-and-open node, with its own mandatory review before search
-consumers. The 8,192-byte search ceiling is no actionability guarantee; no
-shorter/copy-only baseline, new consent or changed call set is approved. Native classification reachability, all useful/default/no-dialog/
-binary
-outcomes and k93's actual bound/spelling/rewalk omissions decision remain live.
-
-
-k128 is now a live node: long-action-native-boundary-k129 records source/SDK
-limits, the unimplemented failure correction and independent actual long-result
-subjects. Its mandatory review/integration precedes long-action-route-k130, which
-must establish supported classification/selection/submission, reconcile the
-whole original artifact contract and cut the final node review. The entire
-launch-and-open chain precedes search consumers, including k123/k120/k30.
-A boundary retirement, successful declaration/link check or earlier short-path
-pass completes no action handoff. Native outcomes and k93 measured omissions
-remain pending under the original approval posture.
-
-k132 integrates the native-boundary review without completing the route.
-Launch-and-open owns independent long action fixtures and their acceptance;
-app-and-file-search later owns actual-search G/N/V provenance and handoff.
-The reviewed route and accepted action provider precede their respective search
-consumers; actual search shipping is not an earlier action-fixture prerequisite.
-Both original working subject sets remain required. Established short-cycle,
-impossible-component and native nil meanings stay intact; handler acquisition,
-registered spelling, receipt identity and regressions with long copies are
-explicit route obligations. No short-workflow loss, systematic long-app null
-receipt, incompatible meaning or new consent is accepted.
-
-Antony's "you decide" delegation selects one bounded native prototype for
-k130's remaining acquisition gaps. The route node orders source evaluation
-k133, prototype k134 and returned design k135, under the unchanged public-API/
-signing/consent posture. The finite prototype precedes route closure; production
-implementation/native acceptance remains planning's after supported design and
-k128's mandatory final review. No automatic evidence chain or accepted workflow
-loss is created, and the launch/open chain still precedes search consumers.
-
-k165 closed the k128 route node under Antony's 2026-10-07 v1 decision
-([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)): no
-long-path application support in v1. Actions resolve locations themselves
-(`docs/adr/filesystem-access-is-descriptor-relative.md`) and refuse an extant
-location too long for the application hand-off with `failed`; search keeps its
-8,192-byte ceiling and drops nothing. Review k166, its integration k168 and
-re-review k169, then planning k167, in launch-and-open precede search consumers
-k123/k120/k30. That refusal is an accepted limit, so k93's omissions decision
-need not re-decide it. k168 fixed the limit's count (pathname bytes without NUL:
-1,023 handed over) and the target/application stage order, keeping retained
-short-path outcomes.
+The current search roll-up above replaces earlier custom traversal/witness
+prescriptions. Its process/protection decision and returned reviews remain live;
+actual-search acceptance belongs to app-and-file-search, while launch/open/reveal's
+accepted 1.0.1 action contract and long-location handoff limit stay independent.

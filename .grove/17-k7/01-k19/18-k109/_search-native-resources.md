@@ -1,5 +1,12 @@
 # search-native-resources-k109 — brief
 
+Current-route reconciliation: k195 replaces custom allocation/walk mechanics with
+system-tool I/O/lifecycle, preserving native-fact meaning and empirical independent
+serviceability. Its reviewed design, k196 answers and returned permission/lifecycle/
+metadata chains precede the carried complete-resource review k120. Earlier clauses
+below record this terminal producer’s original design, not current implementation
+authority or a native pass. No ancestor is reopened or obligation silently pruned.
+
 ## Goal
 
 Choose an error-observable bounded search-native inspection/resource contract
@@ -38,7 +45,7 @@ client replies cannot certify opaque calls or listener serviceability.
 ## Done when
 
 Interpret the two original fact-health/complete-opaque-observer requirements below
-under the independently selected [observation boundaries](../../../../docs/specs/workspace-search.md#observation-boundary-decision-questions)
+under the independently selected [observation boundaries](../../../../docs/specs/workspace-search.md#permission-boundary-and-required-decision)
 recorded by k118 under Antony's "you decide" delegation. Only those guarantees
 change; every other condition remains binding. Final allocation/subject design is complete; the mandatory review is commissioned,
 and native acceptance remains pending.

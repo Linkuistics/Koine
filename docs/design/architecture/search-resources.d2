@@ -1,27 +1,17 @@
-# Allocation ownership/subject construction design; path integration pending; review, execution and native acceptance pending.
+# Selected mechanism, subject to human choices/review/native acceptance.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Allocation ownership design\nSingle process; Q = roots + 2\nFour workers; up to 72 owned credits" {class: start}
-Facts: "Reported native facts\nResource keys / Bundle / UTType\nLS all URLs + preferred observation\nLong-path classification unresolved"
-Values: "Bound copied values in scratch\nBorrow one array element at a time\nNil / incomplete / conflict → UNKNOWN"
-Meaning: "Checked registration negative\nExact not-found or full nonmatching array\nUndetected failure / stale state can mislead"
-Ownership: "Serial two-temporary walks\nk119 constraints; replay / metadata phases unresolved\nFinal replay / membership needs producer repair"
-Gate: "One admission / commit / freeze gate\nFreeze first → discard uncommitted data\nCommit first → preserve observation"
-Recovery: "Worker-only cleanup\nLate error latches surviving cohort\nIndefinite / uncertain close → restart Koine"
-Evidence: "Independent empirical boundary\nComplete owned/hooks + call envelopes\nOpaque acquisitions / peaks / errors unproved"
-Subjects: "Specified provider / GraphQL / VM subjects\nPre-suppression accept + real backoff events\nFresh clients / grant store / authorized actions"
-Failures: "Wrong witnesses / resource error / backoff fail\nLost applicable events / inconclusive controls fail\nNo arbitrary sample or all-UNKNOWN launch acceptance"
-Review: "Witness + phase repairs / reviews → classification\nAction design / review; then resource review / planning\nNative / binary / useful coverage pending"
-Start -> Facts: "1 · facts"
-Start -> Ownership: "1 · ownership"
-Facts -> Values: "2 · normalize"
-Values -> Meaning: "3 · reported result"
-Ownership -> Gate: "2 · checked re-observation"
-Gate -> Recovery: "3 · retain charges"
-Meaning -> Evidence: "4"
-Recovery -> Evidence: "4"
-Evidence -> Subjects: "5 · specified instrument / controls"
-Subjects -> Failures: "6 · discriminate"
-Failures -> Review: "7 · review whole contract"
+Start: "Start here · Admitted job\nAt most four process-wide" {class: start}
+Child: "One live / unreaped find child\nFixed argv; two concurrent pipe drains"
+Native: "Native metadata in Koine\nCopied-value bounds; opaque peaks unproved"
+Freeze: "Cancel / deadline / revocation / stop\nFreeze publication; no later source"
+Cleanup: "TERM then KILL if still owned\nDrain, close, exactly one reap"
+Release: "Release slot\nOnly after child + native work finish"
+Start -> Child: "1 · authorized root"
+Start -> Native: "1 · approved target access"
+Child -> Freeze: "2 · stop"
+Native -> Freeze: "2 · stop"
+Freeze -> Cleanup: "3 · synchronized PID ownership"
+Cleanup -> Release: "4 · actual completion"

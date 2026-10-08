@@ -1,26 +1,17 @@
-# k119 constraints; region replay/metadata composition is incomplete.
+# Selected mechanism, subject to human choices/review/native acceptance.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Admitted worker\nRoot streams keep their own credits\nTemporaries A / B are free\nTarget inspection decision; replay phase repair pending" {class: start}
-Candidate: "Walk + check candidate\nA = parent; B = opened child\nCapture values; replay / metadata bracket unresolved"
-Release: "Close candidate A / B\nRetain copied values in scratch\nNo pinned third descriptor"
-Targets: "Borrow one registration / preferred URL\nCheck policy + walk with A / B\nClose both before next URL"
-Recheck: "Release native result owners\nReacquire original candidate with A / B\nCompare reopened identity / parent association\nRetained spelling; final replay / membership unresolved"
-Gate: "Commit permitted?\nSame gate as admission and freeze\nCandidate + diagnostics finalized together" {shape: diamond}
-Commit: "Unfrozen + cohort permits\nCommit bounded observation\nThen worker closes A / B"
-Discard: "Freeze / refusal / observed change wins\nNo candidate publication\nWorker retains cleanup ownership"
-Cleanup: "Foreign probe may already block before refusal\nFreeze retains worker / Q; late return closes once\nLate resource error → cohort latch\nIndefinite survivor / ambiguous close → restart"
-Start -> Candidate: "1 · charge before call"
-Candidate -> Release: "2 · capture"
-Release -> Targets: "3 · serial target checks"
-Targets -> Targets: "4 · next"
-Targets -> Recheck: "5 · bounded verdict ready"
-Recheck -> Gate: "6 · current observation"
-Gate -> Commit: "7 · commit wins"
-Gate -> Discard: "7 · discard"
-Candidate -> Discard: "late / failed return"
-Targets -> Discard: "late / failed return"
-Commit -> Cleanup: "8 · unwind"
-Discard -> Cleanup: "8 · unwind"
+Start: "Start here · Default app sources" {class: start}
+Roots: "Conventional application roots\nSystem names, checked Bundle metadata"
+Seeds: "OS-reported seeds\nRunning URLs + discovered identifiers"
+Inspect: "Bounded native registration inspection\nCheck present bundle identity / preferred URL"
+Positive: "INSTALLED / checked UNREGISTERED\nReported facts, not service-health proof"
+Unknown: "Unknown / incomplete / refused\nOS coverage never exhaustive"
+Start -> Roots: "1 · roots"
+Start -> Seeds: "1 · OS seeds"
+Roots -> Inspect: "2 · candidates"
+Seeds -> Inspect: "2 · targets"
+Inspect -> Positive: "3 · exact checked branches"
+Inspect -> Unknown: "3 · nil / stale / conflict / limit"

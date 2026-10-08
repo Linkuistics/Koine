@@ -13,7 +13,7 @@ before implementation planning depends on it.
 - `app-and-file-search-k94`, review commit `fe3283486341`, anchored to
   `e6f5f16c7980`; `app-and-file-search-k95` contains the integration triage and
   withdraws the previous nil-consent minor-2 mapping as an implementation rule.
-- `docs/specs/workspace-search.md#extension-only-permission-diagnostics`,
+- `docs/specs/workspace-search.md#coverage-and-aggregate-outcomes`,
   search SDL/examples, Machine's error/ABI tables, workflow all-blocked rule,
   client guide, coverage/handoff views and `task design:search-check`.
 - `docs/adr/resilient-provider-framework.md`,

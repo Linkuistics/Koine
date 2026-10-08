@@ -1,25 +1,17 @@
-# Bounded native observations; not an API or exhaustive coverage proof.
+# Selected mechanism, subject to human choices/review/native acceptance.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Signed Koine in an isolated VM\nFresh process and absent consent per case" {class: start}
-Directories: "FileManager directory listing\nNames and bounded metadata; no content read"
-Ordinary: "Ordinary root / home with exclusions\nNames returned without a prompt"
-Protected: "Desktop / Documents / Downloads traversal\nDialog → denial → Cocoa 257"
-Applications: "Application-directory listing\nisApplication + Bundle identifier\nNSWorkspace registration lookup"
-AppResults: "System applications and Koine found\nRegistered paths returned without a prompt"
-Spotlight: "NSMetadataQuery\nLiteral root + filename predicate"
-Ambiguous: "Query started; gathering finished\nProtected root prompted, then returned zero\nDisabling indexing retained existing matches"
-DesignInput: "Design input\nPrefer bounded name enumeration\nSkip protected traversal before native access\nReport scope and unknown metadata explicitly"
-Start -> Directories: "1 · directory cases"
-Directories -> Ordinary: "2 · unprotected / excluded scopes"
-Directories -> Protected: "2 · explicit experimental protected access"
-Start -> Applications: "1 · application cases"
-Applications -> AppResults: "2 · inspect candidates"
-Start -> Spotlight: "1 · index comparison"
-Spotlight -> Ambiguous: "2 · observe results and consent separately"
-Ordinary -> DesignInput: "3 · prompt-free candidate route"
-Protected -> DesignInput: "3 · cannot traverse on a read"
-AppResults -> DesignInput: "3 · discovery within stated roots"
-Ambiguous -> DesignInput: "3 · success/count is not an index-health signal"
+Start: "Start here · Client query\nworkspace:read" {class: start}
+Workspace: "Workspace search component\nSources, bounds, frozen coverage"
+Find: "System find child\nFilesystem names; no custom walker"
+Foundation: "Foundation library\nLiteral Unicode name matching"
+Native: "Native application services in Koine\nBundle facts + OS-reported seeds"
+Client: "Client chooser\nRanking, MRU, explicit action"
+Start -> Workspace: "1 · authorize"
+Workspace -> Find: "2 · only after process/policy decision"
+Workspace -> Native: "2 · only approved target access"
+Find -> Foundation: "3 · bounded NUL records"
+Native -> Foundation: "3 · checked application names"
+Foundation -> Client: "4 · choices + source coverage"

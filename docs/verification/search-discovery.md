@@ -1,6 +1,12 @@
 # Application and file discovery
 
-**Bounded directory-name enumeration is the recommended design input.** It found
+**Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
+and [finite backend evidence](search-tooling.md) replace custom traversal/witness
+mechanics below. Retain this document as bounded prior evidence/design analysis,
+not an implementation prescription or acceptance of the new backend. Applicable
+native fact, permission and serviceability obligations remain live.
+
+**The earlier bounded directory-name enumeration comparison.** It found
 ordinary files and application candidates inside the actual signed hardened
 Koine host without prompting in this macOS 26.5 VM. Protected directory
 enumeration and a Spotlight query scoped to Desktop prompted. Search must skip

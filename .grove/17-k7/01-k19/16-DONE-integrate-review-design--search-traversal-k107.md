@@ -119,7 +119,7 @@ implementation until this leaf, and anything it externalizes, retires.
   serviceability gate. The spec marks these choices open and distinguishes
   controlled arithmetic from future native subjects.
 - Split public traversal/frontier/repeated-work trade-offs into
-  docs/adr/search-traversal-preserves-shallow-names.md. Reversible private
+  docs/adr/search-enumeration-reuses-system-find.md. Reversible private
   descriptor/cleanup mechanics fail the ADR hard-to-reverse test and stay in
   the spec. Reconcile the live brief chain, k93, glossary, guide, trace,
   SDL/examples, captions/manifest/README and D2 sources with all ten dispositions.

@@ -90,7 +90,7 @@ second team is unavailable ([k63, line 39](08-k62/01-impl--selection-decisions-k
 and the N/G trust-refusal leaf likewise defers real second-team signing
 ([k65, line 28](08-k62/03-impl--selection-updates-k65.md)). Its owner table assigns
 those N/G parts only to k63/k65 and places k80 in the V column. Meanwhile
-[k80, line 24](../25-impl--alternate-team-signing-k80.md) correctly proposes to
+alternate-team-signing-k80, original line 24 correctly proposes to
 run pending N, G **and** V cases.
 
 Without the second certificate, these leaves can follow their own pending rules

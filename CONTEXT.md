@@ -130,44 +130,15 @@ reference** or an atomic snapshot across **providers**.
 after its declared intrinsic exclusions. It is narrower than all filesystem
 contents and does not establish an exhaustive installed-application inventory.
 
-**Search pre-open proof**: An established observation required before acquiring a
-directory, separate from its post-open verification. A no-follow child device
-can reject a foreign transition; its probe can already contact or block that
-filesystem. Fixed startup/Data and fixed-anchor-only Preboot acquisition retain
-the accepted layout premise and post-open classifier, without a new pre-open
-generation/capability requirement. A policy-link identity is not its target's.
-The [proof boundary](docs/specs/workspace-search.md#pre-open-proof-boundary)
-evaluates lookup-only target acquisition; its inspection-policy exemption and
-relocated-target prompt premise await a decision and returned design. Missing
-required proof authorizes neither arbitrary acquisition nor accepted workflow loss.
+**Search pre-open proof**: An observation required before native target access under search policy, separate from a post-access check. The [tool-backed permission contract](docs/specs/workspace-search.md#permission-boundary-and-required-decision) leaves relocated-target protection and lookup-only target acquisition as human choices. System-tool prune/no-follow/device flags supply no such proof; the earlier custom queued-walk witnesses are not the selected mechanism.
 
-**Search coverage**: One effective root's completeness within the **search
-domain**: COMPLETE means all eligible names were examined, PARTIAL means some
-were examined with omissions, and UNKNOWN means useful examination or
-completeness could not be established.
+**Search coverage**: One effective source's completeness within the search domain: COMPLETE is established eligible filesystem-domain processing, PARTIAL means observations with omissions, UNKNOWN means useful observation/completeness was not established. The OS-reported application source is always UNKNOWN, never an exhaustive installation inventory.
 
-**Search scope group**: A counted set of encountered scope anchors sharing an
-exclusion reason, with child identities withheld; the reason determines whether
-anchor names or only descendants are omitted. CHILD_GROUP invalid/overlong-name
-anchors belong to the named parent; DESCENDANT_GROUP intrinsic/depth/frontier-bound
-anchors lie beneath the named root (depth/frontier anchors remain matchable, including
-empty directories whose EOF was not observed); counts never
-mean all children or omitted descendant names. FRONTIER_LIMIT counts observed
-directory anchors whose pending descent cannot fit the bounded queue; it omits
-descendants without stopping examination of sibling anchor names.
+**Search source**: One effective filesystem root or the separate OS-reported application seed source. Coverage-row indices name observed result provenance, not all lexically overlapping roots.
 
-**Search remainder**: Eligible work unfinished when a search freezes, with or
-without **Search progress**, including unopened roots, unread tails and
-queued/unopened descent and held-stream/unfinished inspection. A changed or
-unestablished queued walk prefix/immediate parent uses one root remainder;
-only a changed final target under an established unchanged parent has an exact
-subtree exception. It excludes established
-observations and diagnosed depth/frontier omissions without identifying them and
-never means the whole root was skipped.
+**Search remainder**: Unfinished or unlocalized work of a source, with or without candidate observations. It describes command/native processing uncertainty without asserting how many names or descendants were omitted.
 
-**Search progress**: Examination of an entry or observation of an empty
-directory's end, used to distinguish an available partial search from one
-that obtained no eligible observation.
+**Search progress**: A complete candidate record actually considered, or established successful eligible empty filesystem processing. Empty native application-service responses alone are neither progress nor healthy empty.
 
 **Prompt risk**: A known possibility that an inspection would request OS
 consent, causing Koine to skip it under its read policy. It is not an observation
@@ -179,22 +150,7 @@ root made progress and no failure-class reason exists.
 at least one **Prompt risk**, and no inspection/change/work/resource failure. Its consent
 state is UNKNOWN, with no matches list and explicit **Search coverage**.
 
-**Search location**: An observed filesystem path returned for later client
-selection; canonical directory observations use exact filesystem-reported bytes with
-default firmlink presentation, which can vary with cached names. File entries
-of every kind join a reported parent and their observed name, preserving final
-symlink locations; descendants use fresh directory reports. Firmlink-alias roots deduplicate
-equal returned paths and merge observed membership. A location is distinct from
-a **resource reference** and from a pinned native file identity. A later action
-revalidates the path and may encounter another occupant. The
-[path contract](docs/specs/workspace-search.md#path-design-dependencies) owns
-spelling and name-preserving native-size/descent diagnostics; pre-open witnesses,
-replay/size phases and long-path classification realization remain unresolved.
-The [action handoff](docs/specs/workspace-search.md#long-location-action-dependency)
-re-resolves the location with **location resolution** and can refuse it at the
-**application hand-off limit**. The search value ceiling is no actionability
-guarantee, and overlength is no proof of absence. A native descent limit alone
-does not make a representable name unreturnable.
+**Search location**: A lossless absolute filesystem location returned for later client selection. File locations preserve system-command bytes, including final links, without a unique canonical-parent/firmlink spelling promise. Application locations use established resolved target spelling. A later action resolves the location itself and may encounter another occupant; the search value ceiling is no actionability guarantee.
 
 **Location resolution**: Koine's own component-by-component walk of a literal
 absolute path from held, search-only directory handles, following links with
@@ -212,11 +168,7 @@ asking any application
 ([boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)).
 _Avoid_: overlength path, path too long (as an absence or input error)
 
-**Search application identity**: The established native bundle directory identity
-used to merge checked-link and direct discovery routes in one search. Its
-filesystem-reported canonical name/path supplies matching, ranking and the
-selected location; equal bundle identifiers do not merge distinct native copies.
-It is neither a process incarnation nor a query-long pinned file identity.
+**Search application identity**: The established native bundle directory identity used to merge direct, checked-link and OS-reported routes while retained. Distinct copies sharing an identifier stay distinct. Its first finalized target name/path supplies matching and selection; source membership records observations only. It is neither a process incarnation nor a query-long pinned identity.
 
 **Search native fact**: A checked result reported by a native metadata or
 registration service. It does not certify internal platform health; undetected
@@ -226,10 +178,7 @@ documented negative branches. Nil identifier is unknown, never a missing-key
 fact. Malformed/incomplete/conflicting results and observed resource errors do
 not establish negatives; known incorrect witnesses still fail acceptance.
 
-**Search serviceability evidence**: Complete applicable owned/hook events and
-native-call envelopes paired with independent listener, grant-store and
-authorized-action outcomes for a declared search subject. It is empirical
-evidence, leaving opaque acquisitions, peaks and internal health unproved.
+**Search serviceability evidence**: Applicable owned spawn/pipe/kill/reap/native-call events paired with independent listener, grant-store and authorized-action outcomes for a finite declared subject. It is empirical evidence: opaque native/tool acquisitions, peaks and internal health remain unproved.
 
 ## Example dialogue
 

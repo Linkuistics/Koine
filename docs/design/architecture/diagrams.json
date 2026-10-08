@@ -1,41 +1,65 @@
 {
   "title": "Koine provider architecture",
-  "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
+  "intro": "Koine provider architecture and current search design. Management, server and native providers share the resident Koine process; the selected system-find search child is conditional on explicit permission. Graphs begin at the dark Start here node; sequences read from their first message. Diagram sources are editable; widen the window or open the SVG for focused reading.",
   "discussion": {
-    "title": "Pre-open witnesses: decide target inspection policy",
-    "status": "Boundary review reconciled; target policy and returned witness design pending",
-    "summary": "Fixed-layout bootstrap retains its accepted premise and post-acquisition classifier. Evaluate existing lookup-only O_SEARCH target acquisition first; its search-policy exemption and relocated-target prompt premise remain undecided. Library escapes retain the origin limit; foreign probes may contact or block a mount before device refusal, retaining worker/credits through freeze. Target identities must fit the full 32-path-occurrence account without another retained path. No new call, consent, account, smaller domain or accepted home/default loss. Returned design and mandatory review precede replay/size phases, classification and resource review/planning.",
+    "title": "Replace custom search with an existing system tool",
+    "status": "Mechanism selected for review; human process/protection choices pending",
+    "summary": "System find supplies candidate names, Foundation supplies literal matching, native application services supply metadata and OS-reported seeds, and clients own chooser/ranking/MRU. Static tool flags establish no relocated-target or lookup-only exemption. The focused requirements leaf precedes the returned permission contract and consumers; mandatory tooling review/earned integration precede the search node. No backend/native experiment, new consent/signing/limit, smaller accepted workflow or native pass follows.",
     "diagramIds": [
+      "search-discovery",
       "search-preopen",
-      "search-canonical",
-      "search-inspection",
+      "search-traversal",
       "search-coverage",
-      "workspace-inspection"
+      "search-resources",
+      "search-inspection",
+      "search-canonical",
+      "search-serviceability",
+      "search-handoff"
     ],
     "updatedDiagrams": [
       {
+        "id": "search-discovery",
+        "summary": "Selected design separates candidates, native metadata, library matching and client presentation. Process/protected-target decisions, review and native acceptance remain pending."
+      },
+      {
         "id": "search-preopen",
-        "summary": "Reconciles fixed bootstrap, lookup-only target alternatives, foreign wait limits and full witness accounts."
+        "summary": "Standard prune/no-follow/device flags prove no relocated-target protection. Lookup-only policy/application access still needs a human answer; no custom witness engine is selected."
       },
       {
         "id": "search-canonical",
-        "summary": "Retains fixed bootstrap and marks target inspection policy pending; foreign probes can block before refusal."
+        "summary": "Replaces per-directory fsgetpath/canonical-parent promises. Files preserve backend bytes; native application identity and existing action revalidation remain."
       },
       {
         "id": "search-inspection",
-        "summary": "Separates target inspection policy from replay repair; shows foreign-probe retention through freeze."
+        "summary": "Replaces two-temporary replay phases with bounded native fact/seed inspection. Empty native service answers and equal identifiers never prove healthy empty or merge separate copies."
+      },
+      {
+        "id": "search-resources",
+        "summary": "No inherited 72-credit/roots-plus-two/54.282 MiB claim. Uninterruptible work retains capacity; provider restart does not reset it and abrupt parent death can leave an orphan."
+      },
+      {
+        "id": "search-serviceability",
+        "summary": "Finite current-backend subjects preserve empirical serviceability and meaningful failure controls. Historical custom-walk instruments supply no new backend acceptance."
+      },
+      {
+        "id": "search-traversal",
+        "summary": "Replaces custom FIFO/frontier/checked-prefix replay. Source order gives no shallow-name or top-N guarantee; actual useful later-root/home omissions remain a human acceptance question."
       },
       {
         "id": "search-coverage",
-        "summary": "Retains fixed bootstrap and Library origin limits without independent home failure."
+        "summary": "Source provenance and candidate counts replace directory EOF/frontier groups. Warning stderr is unlocalized uncertainty; BLOCKED retains typed nulls and UNKNOWN consent."
+      },
+      {
+        "id": "search-handoff",
+        "summary": "Preserves action-only 1.0.1 and the accepted v1 application handoff limit. Actual search-result action provenance remains pending, distinct from independent action fixtures."
       }
     ]
   },
   "groups": [
     {
       "id": "search",
-      "title": "Application and file search · designed",
-      "description": "Fixed-layout bootstrap retains its accepted premise and post-acquisition classifier. Evaluate existing lookup-only O_SEARCH target acquisition first; its search-policy exemption and relocated-target prompt premise remain undecided. Library escapes retain the origin limit; foreign probes may contact or block a mount before device refusal, retaining worker/credits through freeze. Target identities must fit the full 32-path-occurrence account without another retained path. No new call, consent, account, smaller domain or accepted home/default loss. Returned design and mandatory review precede replay/size phases, classification and resource review/planning. Native, binary, prompt and useful-coverage acceptance remain pending."
+      "title": "Application and file search · tool-backed design",
+      "description": "System find, Foundation matching and native application services. Process/protection choices, mandatory review and native acceptance pending. No custom traversal/witness engine."
     },
     {
       "id": "workspace",
@@ -77,83 +101,83 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Establish pre-open proofs before acquiring a child",
+      "title": "Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
-      "caption": "Fixed-layout bootstrap remains selected. Lookup-only policy-target acquisition and its unmeasured relocated-target protection premise await the inspection-policy decision and returned witness design. Library escapes use the existing origin limit; foreign probes can block before device refusal. Conditional metadata candidates and a witness-mode exemption remain unapproved. This is a reconciled boundary, not an executable witness algorithm. The accepted fixed OS routes permit acquisition then descriptor classification/capability checks, with the privileged-replacement limit. General sources retain device guards. O_SEARCH transit differs from listing; k174 measured real protected-folder lookup calls on one build, not relocated/cloud/foreign targets or actual search acceptance. Work/Docs redirects and interdependent links require serial bounded witness ordering, not recursive acquisition. The 32-path-occurrence shape requires identity/association-only target retention. Cached-table correspondence/truncation, following-status Library/length/foreign contact and relative-attribute feasibility remain conditional questions. Unresponsive-mount subjects must observe retained workers/credits, freeze/late return and resource-failure cohort/restart behavior. Original design/reviews and later phases remain live."
+      "caption": "Standard prune/no-follow/device flags prove no relocated-target protection. Lookup-only policy/application access still needs a human answer; no custom witness engine is selected."
     },
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Observe applicable events and independent serviceability",
+      "title": "Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
-      "caption": "Evidence flow, not implementation or native acceptance. Owned events and native-call envelopes, passive pre-suppression NIO error/scheduling hooks and independent clients/store/actions have separate attribution. Fixed storage, site counters, owner generations and open-at-cut/loss controls reject incomplete evidence. Deliberate transient/dropped-event/overflow/suppressed-error and real-exhaustion controls must fail the serviceability observation they induce; they never pass search acceptance. Controlled saturation and unheld native runs retain distinct evidence labels. Matched no-search references cannot waive independent resource error or accept backoff, even after eventual success. A complete passing finite subject supports only empirical outcomes under the selected boundary; opaque acquisitions/peaks/internal health remain unproved. All runtime controls, exact native prompt/useful-launch/home and compatibility acceptance remain pending."
+      "caption": "Finite current-backend subjects preserve empirical serviceability and meaningful failure controls. Historical custom-walk instruments supply no new backend acceptance."
     },
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Connect native allocation to specified serviceability subjects",
+      "title": "Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Keeps k119 allocation constraints; replay/metadata composition and classification need repair before whole-resource review. Allocation ownership/subject construction design, not native acceptance; selected long-path classification remains unresolved; pre-open witness and replay/size-phase repairs require producer reviews. Native metadata/registration are reported observations under the delegated fact boundary; undetected internal failure or stale state can still mislead. Copied values/array iteration stay bounded in existing scratch/wait while returned platform objects remain opaque allocations. Two temporary credits cover serial candidate, registration-target and candidate-recheck walks. Admission/finalization/freeze share one gate; late resource errors latch the surviving cohort, and worker-only cleanup retains uncertain/blocked ownership across provider restart. Independently selected empirical evidence requires complete applicable owned/hooks and native-call envelopes plus independent real listener/store/action outcomes; opaque acquisitions/peaks/internal errors remain unproved. Serviceability instrument/subject construction is specified; path producers/reviews precede mandatory whole-resource review/planning and execution remains pending. Wrong witnesses, observed resource errors/backoff, lost applicable events and inconclusive controls cannot pass. Native prompt/useful-launch/home-omissions/compatibility acceptance stays pending."
+      "caption": "No inherited 72-credit/roots-plus-two/54.282 MiB claim. Uninterruptible work retains capacity; provider restart does not reset it and abrupt parent death can leave an orphan."
     },
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Reuse two temporaries before finalization",
+      "title": "Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
-      "caption": "Fixed-layout bootstrap remains selected. Lookup-only policy-target acquisition and its unmeasured relocated-target protection premise await the inspection-policy decision and returned witness design. Library escapes use the existing origin limit; foreign probes can block before device refusal. Conditional metadata candidates and a witness-mode exemption remain unapproved. Marks missing replay/bracket/final-membership phases; no third descriptor or uncharged reacquisition is inferred. Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending. Pre-open witness and replay/size-phase producer repairs/reviews precede long-path classification design/review, then complete-resource review/planning. Same-identity byte variants are not independent change; retained app spelling remains first-finalized."
+      "caption": "Replaces two-temporary replay phases with bounded native fact/seed inspection. Empty native service answers and equal identifiers never prove healthy empty or merge separate copies."
     },
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Observe one canonical path and diagnose native size refusals",
+      "title": "Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "Fixed-layout bootstrap remains selected. Lookup-only policy-target acquisition and its unmeasured relocated-target protection premise await the inspection-policy decision and returned witness design. Library escapes use the existing origin limit; foreign probes can block before device refusal. Conditional metadata candidates and a witness-mode exemption remain unapproved. Marks mount/symlink witnesses, replay composition and current/prefix size scopes as producer repairs; preserves resolver bounds and names. Selected design, not native acceptance. One component resolver at every length/source uses 32 link expansions, an 8193-byte readlink buffer, 8192-byte pending text and derived finite work. Native dot/dot-dot/mount/firmlink transitions and absolute restarts never use lexical deletion. Parent and no-follow child identities/known-policy lookups precede open; dialog/hydration acceptance remains required. fsgetpath reports cached spelling with default firmlink presentation, not a unique identity string. Fresh directory reports supply descendant prefixes; queued listed locations and earlier results remain observations. Retained app identities keep first finalized spelling. Same-identity byte differences alone prove no movement/failure; independent association/reopened expected identity can expose change, while first unassociated observations lack a detector. Full-buffer ENOSPC is size, not change. All file entry kinds retain representable 8192-byte locations; queued descent-size refusal uses VALUE_LIMIT SUBTREE without name withdrawal/truncation. Shared proof failure stops one root; target failures stay exact and links stay ENTRY. Witness and observation-phase repairs/reviews precede classification design/review, then complete-resource review/planning; native queue/classification/no-dialog/useful outcomes remain pending."
+      "caption": "Replaces per-directory fsgetpath/canonical-parent promises. Files preserve backend bytes; native application identity and existing action revalidation remain."
     },
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Finish shallow names before bounded descent",
+      "title": "Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Retains FIFO and listed tasks; marks current-turn replay and independently proved prefix-size continuation unresolved. Selected per-root FIFO design, not runtime acceptance. Before each listing turn, independently reacquire stored location with A/B while the stream holds its root credit, then use fresh reported spelling/policy before reads. Listed-location tasks retain expected target/parent identities, never an assumed child canonical join. Parent AND child checks precede opening; independent shared failure stops one root, final-target failure under stable parent stays exact. Native descent-size refuses descendants without withdrawing names; depth/package no-descent cases need no child canonicalization. Prefix walks/reacquisition repeat against the same wait and scratch, not entry credits. No byte-only movement inference. Worker-only cleanup retains stream/queue/credits. Witness and observation-phase repairs/reviews, classification design/review and complete-resource review precede planning. Useful native coverage and measured omissions remain unaccepted."
+      "caption": "Replaces custom FIFO/frontier/checked-prefix replay. Source order gives no shallow-name or top-N guarantee; actual useful later-root/home omissions remain a human acceptance question."
     },
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Report every root and distinguish blocked scope from failure",
+      "title": "Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Fixed-layout bootstrap remains selected. Lookup-only policy-target acquisition and its unmeasured relocated-target protection premise await the inspection-policy decision and returned witness design. Library escapes use the existing origin limit; foreign probes can block before device refusal. Conditional metadata candidates and a witness-mode exemption remain unapproved. Retains exact name-preserving queued size semantics; distinguishes genuine shared-proof failure from unresolved current/prefix size scope. Selected observation/coverage design, not runtime acceptance. Required witnesses are charged before turns; native witness errors refuse dependent roots while account overflow refuses the job. Protected/policy scopes remain explicit. Invalid/publicly unrepresentable names use actual-parent CHILD_GROUP; ordinary directory anchors stay matchable under depth/frontier/native descent limits. Known queued native descent ENOSPC under unchanged association is VALUE_LIMIT SUBTREE/null count with no name withdrawal or inferred truncation. Other target failures stay exact; shared proof failure stops one root. Outcome/no-progress precedence, lifecycle errors and compatible typed BLOCKED transport remain unchanged. Witness and observation-phase repairs/reviews precede classification design/review, then resource review/planning. No native or reduced workflow acceptance is supplied."
+      "caption": "Source provenance and candidate counts replace directory EOF/frontier groups. Warning stderr is unlocalized uncertainty; BLOCKED retains typed nulls and UNKNOWN consent."
     },
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Choose a location, then revalidate through existing actions",
+      "title": "Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Long returned locations stay visible and copyable; in v1 an action resolves them and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed. Designed source-role/data handoff, not deployment containers or action acceptance. File listed locations and fresh reported descendant prefixes are distinct observations; native-only descent size preserves representable names. Retained app identities keep their first finalized reported spelling; no global stable-cache history or later-action identity binding is promised. Client query/chooser/MRU/clipboard remain client-owned, and selection uses the existing constrained actions and complete grants. Witness and observation-phase repairs/reviews precede classification design/review and resource review/planning. Native useful coverage, no-dialog behavior, compatibility and measured omissions remain pending. The v1 long-location boundary is reviewed, its findings integrated, and unimplemented. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Preserves action-only 1.0.1 and the accepted v1 application handoff limit. Actual search-result action provenance remains pending, distinct from independent action fixtures."
     },
     {
       "id": "search-discovery",
       "group": "search",
-      "title": "Discover names without probing protected traversal",
+      "title": "Reuse system names and native application services",
       "renderer": "svg",
       "source": "search-discovery.d2",
       "rendered": "search-discovery.svg",
-      "caption": "Bounded evidence, macOS 26.5/25F71 in a clean TestAnyware VM. Test-only workspace startup instrumentation ran inside the actual signed hardened Koine host with unchanged identity, Info.plist and empty entitlements. Ordinary directory listing, the home scan with exclusions and system-app inspection were prompt-free. Direct Desktop/Documents/Downloads listing and a Desktop Spotlight query prompted. Denial produced Cocoa 257 for listing but an apparently successful zero-result query. Disabled indexing still returned filenames, including from the test disk image. This recommends name enumeration with explicit skipped scope; it proves neither exhaustive discovery nor a race-free no-prompt guarantee. The API and new consent diagnostics remain the next design step."
+      "caption": "Selected design separates candidates, native metadata, library matching and client presentation. Process/protected-target decisions, review and native acceptance remain pending."
     },
     {
       "id": "workspace-inspection",
