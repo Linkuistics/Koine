@@ -831,6 +831,33 @@ tasks:
     cmds:
       - bash scripts/reevaluate-application-locations.sh
 
+  prefix-registration:vm-packaged:
+    desc: One prefix-link route per physical 1024/1500-byte application; twelve public registration-order states with native identity snapshots and only actually admitted V subjects. Exit 3 preserves unavailable subjects
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+      KOINE_PREFIX_REGISTRATION: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  prefix-registration:vm-detached:
+    desc: Measure prefix registration in an isolated guest against packaged artifacts; transcript and exact completion status in .build/prefix-registration-vm
+    cmds:
+      - python3 scripts/detach-vm-task.py prefix-registration:vm-packaged .build/prefix-registration-vm
+
+  prefix-registration:fixtures-check:
+    desc: Check prefix construction/identity controls, native-precondition predicates and recipe lint without a GUI
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-prefix-registration-lib.sh scripts/check-prefix-observations.sh
+      - python3 -m py_compile scripts/vm-prefix-registration.py scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py scripts/check-prefix-evidence.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-prefix-registration.py scripts/check-prefix-registration.py scripts/vm-long-application-fixtures.py scripts/check-prefix-evidence.py
+      - python3 scripts/check-prefix-registration.py
+      - bash scripts/check-prefix-observations.sh
+
+  prefix-registration:evidence-check:
+    desc: Verify each retained prefix-route identity and all twelve native registration states, without a VM; exits 3 because native preconditions remain pending
+    cmds:
+      - python3 scripts/check-prefix-evidence.py
+
   open-url:network:
     desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
     deps: [app, client]

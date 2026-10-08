@@ -59,13 +59,13 @@ exposed on this image, not impossibility across macOS or every registration rout
 
 Two original V subjects remain **pending**: a short selected copy beside an
 actually registered unequal long copy, in both observed enumeration orders;
-and a long preferred copy refused cold and with a short copy running. The next
-leaf, `long-application-registration-k187`, tries one bounded prefix-link route:
-the link targets a short intermediate prefix and the registration argument
-appends the remaining components, while physical resolution still reaches the
-long copy. It must establish actual selection, order and physical identity.
-If those preconditions remain unavailable, it cuts a requirements leaf for
-Antony's explicit scope decision. No acceptance exception is made here.
+and a long preferred copy refused cold and with a short copy running. The [bounded prefix-link continuation](prefix-registration-vm.md),
+`long-application-registration-k187`, completed all twelve public registration
+states with independently established short route/long physical identities.
+Every long registration returned scan error -37; every final NSWorkspace query
+still lists only A/B and prefers A. Both native subjects remain pending.
+`long-application-acceptance-k188` carries the exact gap for Antony's explicit
+scope decision. No acceptance exception is made here.
 
 ## Retained observations and verdict correction
 

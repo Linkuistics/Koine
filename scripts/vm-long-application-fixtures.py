@@ -73,7 +73,7 @@ def main() -> None:
     # attempt. A short symbolic-link spelling is never mistaken for a long one.
     attempts = []
     lookup = home + "/lookup"
-    for subject in subjects:
+    for subject in ([] if "--no-registration" in sys.argv[3:] else subjects):
         path = subject["path"]
         for method in ("absolute", "relative-cwd", "short-link"):
             if method == "absolute":

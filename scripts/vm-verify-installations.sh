@@ -56,6 +56,7 @@ tart list --quiet 2>/dev/null | grep -x "${IMAGE}" >/dev/null || {
 }
 KOINE_VM_BASE="${IMAGE}"
 KOINE_VM_LOG_PREFIX="installations-vm-"
+[ "${KOINE_PREFIX_REGISTRATION:-0}" != 1 ] || KOINE_VM_LOG_PREFIX="prefix-registration-vm-"
 # shellcheck source=scripts/vm-verify-lib.sh
 source scripts/vm-verify-lib.sh
 # shellcheck source=scripts/vm-verify-desktop-lib.sh
@@ -82,6 +83,11 @@ if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then
         scripts/vm-verify-contract-client-trim.py scripts/vm-verify-launch-client.py
         Fixtures/LaunchWitness/main.swift Fixtures/LaunchWitness/build.sh
         scripts/stage-node-runtime.sh scripts/detach-vm-task.py Taskfile.yml App/Info.plist)
+    if [ "${KOINE_PREFIX_REGISTRATION:-0}" = 1 ]; then
+        SUBJECTS+=(scripts/vm-prefix-registration.py scripts/vm-prefix-registration-lib.sh
+            scripts/prefix-registration-observations.jq scripts/check-prefix-registration.py
+            scripts/check-prefix-observations.sh)
+    fi
 fi
 subjects_digest() {
     shasum -a 256 "${SUBJECTS[@]}"
@@ -115,6 +121,7 @@ RESULTS="${WORK}/results.jsonl"
 : >"${RESULTS}"
 OUT_DIR=".build/installations-vm"
 [ "${KOINE_APPLICATION_LOCATIONS:-0}" != 1 ] || OUT_DIR=".build/application-locations-vm"
+[ "${KOINE_PREFIX_REGISTRATION:-0}" != 1 ] || OUT_DIR=".build/prefix-registration-vm"
 mkdir -p "${OUT_DIR}"
 
 # --- the path files: the exact bytes each case submits -------------------------------------
@@ -212,9 +219,20 @@ request() {
     local kind="$1" id="$2" app="$3" doc="$4" effect="$5" file tries=0
     REQUEST_N=$((REQUEST_N + 1))
     file="\$HOME/request-${REQUEST_N}.json"
+    # Intentional splitting of recipe-owned NAME=value words for guest env.
+    # shellcheck disable=SC2086
     launch_detached "\$HOME/request-${REQUEST_N}.log" env ${REQUEST_ENV:-} python3 "\$HOME/request.py" "${file}" "${kind}" "${id}" "${app}" "${doc}" "${effect}" "${ID}" "${BUNDLE_ID}"
     OBS=""
-    until OBS="$(guest_text "cat ${file} 2>/dev/null")" && jq -e . >/dev/null 2>&1 <<<"${OBS}"; do
+    read_request() {
+        if [ "${KOINE_PREFIX_REGISTRATION:-0}" = 1 ]; then
+            testanyware file download "/Users/admin/request-${REQUEST_N}.json" "${OUT_DIR}/request-${REQUEST_N}.json" >/dev/null 2>&1 || return 1
+            OBS="$(cat "${OUT_DIR}/request-${REQUEST_N}.json")"
+        else
+            OBS="$(guest_text "cat ${file} 2>/dev/null")"
+        fi
+        jq -e . >/dev/null 2>&1 <<<"${OBS}"
+    }
+    until read_request; do
         tries=$((tries + 1))
         [ "${tries}" -lt 120 ] || fail "request ${REQUEST_N} left no answer: $(guest_text "cat \$HOME/request-${REQUEST_N}.log")"
         sleep 4
@@ -331,8 +349,13 @@ echo "Accessibility is not granted to Koine in this image: every request below i
 
 SECTIONS="${KOINE_INSTALLATIONS_ONLY:-}"
 if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then
-    # shellcheck source=scripts/vm-application-locations-lib.sh
-    source scripts/vm-application-locations-lib.sh
+    if [ "${KOINE_PREFIX_REGISTRATION:-0}" = 1 ]; then
+        # shellcheck source=scripts/vm-prefix-registration-lib.sh
+        source scripts/vm-prefix-registration-lib.sh
+    else
+        # shellcheck source=scripts/vm-application-locations-lib.sh
+        source scripts/vm-application-locations-lib.sh
+    fi
     SECTIONS=application-locations
 fi
 # wanted <section>: whether KOINE_INSTALLATIONS_ONLY (a comma-separated list of texts) names it.

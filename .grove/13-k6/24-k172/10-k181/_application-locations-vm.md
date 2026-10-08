@@ -118,3 +118,18 @@ identifier's preferred one is refused, never replaced by another.
    preference preconditions; an unresolved residue then earns a requirements
    leaf for Antony. No local-adapter pass, inference from disk-only success,
    or automatic relaxation of the parent charter is permitted.
+
+3. `long-application-acceptance-k188`: obtain Antony's explicit scope decision for
+   the still-unavailable native subjects, using k187's complete measured matrix.
+   This is the required human continuation, not another automatic experiment.
+
+## Latest native evidence
+
+K187 completed its one prefix route per physical length and twelve public
+registration states on macOS 26.5/25F71. Every long scan returns -37, and every
+final NSWorkspace query lists A then B and prefers A. All 55 recorded measurement
+input entries remained unchanged before the subsequent recipe correction.
+The full matrix and raw later reveal-matcher failure are preserved in
+`docs/verification/prefix-registration-vm.md`; no new Finder selection V pass
+is claimed. Both original native preconditions remain pending. K188 is live,
+so this node stays open and no acceptance exception is adopted.

@@ -137,3 +137,11 @@ Subject ownership (the spec's bullets are the claim; each leaf names its own):
   (`vm-installation-fixtures.sh`, `vm-open-path-fixtures.sh`,
   `vm-reveal-path-fixtures.sh`, `build-long-action-probe.sh`) are reusable.
 - Reusable steps go into `Taskfile.yml`; a leaf that finds one wanted adds it.
+
+- K187's bounded prefix-link matrix is complete: twelve native states, no long
+  listed/preferred copy exposed, with exact physical identities and unchanged
+  inputs. `docs/verification/prefix-registration-vm.md` records the gap and raw
+  recipe-only reveal matcher failure without adding a Finder V pass. The original
+  application V charter stays live in k181; `long-application-acceptance-k188`
+  now owns Antony's acceptance-scope decision. No further automatic registration
+  experiments or L/G-to-V relabelling are authorized by k187.

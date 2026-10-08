@@ -1,0 +1,117 @@
+{
+  "rawRunExit": 1,
+  "rawFailure": "Short reveal assertion evaluated .answer twice; matrix completed before it",
+  "matrix": [
+    {
+      "length": 1024,
+      "orderInvoked": "ABL",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1024,
+      "orderInvoked": "ALB",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1024,
+      "orderInvoked": "BAL",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1024,
+      "orderInvoked": "BLA",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1024,
+      "orderInvoked": "LAB",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1024,
+      "orderInvoked": "LBA",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "ABL",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "ALB",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "BAL",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "BLA",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "LAB",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    },
+    {
+      "length": 1500,
+      "orderInvoked": "LBA",
+      "operations": 7,
+      "longRegistrationExit": 1,
+      "longScanError": -37,
+      "registeredLongObserved": false,
+      "preferredLongObserved": false
+    }
+  ],
+  "registeredLongBothOrders": "pending",
+  "preferredLongColdAndRunning": "pending",
+  "newFinderSelectionAcceptance": "not established; no final selection record retained"
+}

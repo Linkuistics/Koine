@@ -1,0 +1,335 @@
+{
+  "basis": "Each printed pre-run digest checked after the stopped run, before any recipe correction",
+  "files": [
+    {
+      "path": "scripts/vm-verify-installations.sh",
+      "before": "6fab26a2eaa395d3c2a009339bf568b2e501ee16db32f87c87b3c86170bc8f48",
+      "after": "6fab26a2eaa395d3c2a009339bf568b2e501ee16db32f87c87b3c86170bc8f48",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-installation-fixtures.sh",
+      "before": "8f65da8874c76316a43e9674e37126362d8d5b2b40e9ad48307eb8368f507ac0",
+      "after": "8f65da8874c76316a43e9674e37126362d8d5b2b40e9ad48307eb8368f507ac0",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-installation-request.py",
+      "before": "173d077917bbdd6973fc3d04c26fcc6fadf567ba28fca571a4d6e9c531d21b39",
+      "after": "173d077917bbdd6973fc3d04c26fcc6fadf567ba28fca571a4d6e9c531d21b39",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-installation-trash-window.py",
+      "before": "27402802aa8c5b314a3c498394e99323a98a77abfcc7b5ff56cd1fc714ca54bf",
+      "after": "27402802aa8c5b314a3c498394e99323a98a77abfcc7b5ff56cd1fc714ca54bf",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-registration-lookup.swift",
+      "before": "f6bcdd93abd9c610296ee34400f64226f4bff6e1f25490fbce7d4a4290fc72c4",
+      "after": "f6bcdd93abd9c610296ee34400f64226f4bff6e1f25490fbce7d4a4290fc72c4",
+      "unchanged": true
+    },
+    {
+      "path": "Fixtures/InstallationFixture/main.swift",
+      "before": "2d10d17d7ff8680b219ccd8ac23a8a4f5fae9d9b0c575d5de3c69b97cf5980d3",
+      "after": "2d10d17d7ff8680b219ccd8ac23a8a4f5fae9d9b0c575d5de3c69b97cf5980d3",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-witness-lib.sh",
+      "before": "3a9d8c701bb0b0c31975be54f6ae2a0ed299913da8ab4546691ee469807face8",
+      "after": "3a9d8c701bb0b0c31975be54f6ae2a0ed299913da8ab4546691ee469807face8",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-contract-client-lib.sh",
+      "before": "e8f9fcd6c45981d335d3f36841528a0f7f77dab73f5163634666588c29febe5d",
+      "after": "e8f9fcd6c45981d335d3f36841528a0f7f77dab73f5163634666588c29febe5d",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-launch-lib.sh",
+      "before": "be4629ebf9d75591f9d3aa385b04f245a544243346f2a9b8d15cf886643eb54a",
+      "after": "be4629ebf9d75591f9d3aa385b04f245a544243346f2a9b8d15cf886643eb54a",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-launchers-lib.sh",
+      "before": "10f1a9a9bc8d1b9342180543ebd61738f2ebc1a410572aabe4739a6f910e08c5",
+      "after": "10f1a9a9bc8d1b9342180543ebd61738f2ebc1a410572aabe4739a6f910e08c5",
+      "unchanged": true
+    },
+    {
+      "path": "clients/contract-only/dist/koine-client.mjs",
+      "before": "ccf011001496fda8b4740c0298a0618090f0a48cad8f38ff27e113add2358e80",
+      "after": "ccf011001496fda8b4740c0298a0618090f0a48cad8f38ff27e113add2358e80",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/MacOS/Koine",
+      "before": "32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99",
+      "after": "32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-finder-observer-lib.sh",
+      "before": "df7614f8032870123c2a58c5f71e8dee1487d20d26830ddb64d3c8872614c2f6",
+      "after": "df7614f8032870123c2a58c5f71e8dee1487d20d26830ddb64d3c8872614c2f6",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-application-locations-lib.sh",
+      "before": "dde151f73e0a09f2256f158bf7ff30b9704f158b780a7bb952d40eeb3679f195",
+      "after": "dde151f73e0a09f2256f158bf7ff30b9704f158b780a7bb952d40eeb3679f195",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-long-application-fixtures.py",
+      "before": "83758d2406fa2ebad10228c8a8ab23bb67c4225ca57a91fa36bc2e17d3ec76f8",
+      "after": "83758d2406fa2ebad10228c8a8ab23bb67c4225ca57a91fa36bc2e17d3ec76f8",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-long-location-fixtures.py",
+      "before": "6fa6e524775ec99556c16be93bd745343565b9ca3e223f6d48f49a9ac02ee9dd",
+      "after": "6fa6e524775ec99556c16be93bd745343565b9ca3e223f6d48f49a9ac02ee9dd",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-reveal-observe.applescript",
+      "before": "d81df2c654fd3ee853537e745e39effced8a8d2009a4a0cdf88412fb15890cf2",
+      "after": "d81df2c654fd3ee853537e745e39effced8a8d2009a4a0cdf88412fb15890cf2",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "before": "288e07e65bb641550f281b09e32d824a7cc1d0130c932b425fadfa109df3d3bf",
+      "after": "288e07e65bb641550f281b09e32d824a7cc1d0130c932b425fadfa109df3d3bf",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "before": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+      "after": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/signing-env.sh",
+      "before": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+      "after": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-client.sh",
+      "before": "dcf439c68c1577c31250104828eb8b97006a0f7c872213e2d97d7e4cbfdb9620",
+      "after": "dcf439c68c1577c31250104828eb8b97006a0f7c872213e2d97d7e4cbfdb9620",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/application-location-observations.jq",
+      "before": "6a43bdeab2a121841bab2eebe32ce106b2d5a1d1a4b5d81cbc3cfa0ecf108e23",
+      "after": "6a43bdeab2a121841bab2eebe32ce106b2d5a1d1a4b5d81cbc3cfa0ecf108e23",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/application-refusal-observations.jq",
+      "before": "f4d2b5711d6a457ebb890d071ce02c617c6adc5d8035674df1d4af103e249e15",
+      "after": "f4d2b5711d6a457ebb890d071ce02c617c6adc5d8035674df1d4af103e249e15",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-contract-client-trim.py",
+      "before": "6bd106203a02e282ba8360cadabd7c04672c68bb0f3b7a2f93820b00d5cd4bcc",
+      "after": "6bd106203a02e282ba8360cadabd7c04672c68bb0f3b7a2f93820b00d5cd4bcc",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-verify-launch-client.py",
+      "before": "75b4a0fa7aa03175f34fabb7c037c9fba94feed9cb5b4152994b577c114337ed",
+      "after": "75b4a0fa7aa03175f34fabb7c037c9fba94feed9cb5b4152994b577c114337ed",
+      "unchanged": true
+    },
+    {
+      "path": "Fixtures/LaunchWitness/main.swift",
+      "before": "1d42fbaab10799de4b543222b7ca796fbc5fbd1b8d6ef68114cd657b7526271f",
+      "after": "1d42fbaab10799de4b543222b7ca796fbc5fbd1b8d6ef68114cd657b7526271f",
+      "unchanged": true
+    },
+    {
+      "path": "Fixtures/LaunchWitness/build.sh",
+      "before": "cc3071616f4d519055daae5f7e886f80799aa95d6701ced653ad14704ec7f69b",
+      "after": "cc3071616f4d519055daae5f7e886f80799aa95d6701ced653ad14704ec7f69b",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/stage-node-runtime.sh",
+      "before": "886f35a5115b7ca7a9fee21115c4a2fdede425cd560d0b679336e456cd530c0f",
+      "after": "886f35a5115b7ca7a9fee21115c4a2fdede425cd560d0b679336e456cd530c0f",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/detach-vm-task.py",
+      "before": "1af7cdff10fff175426e72903e7c374e3a2389f14f95614ed9b7e9661f5d7e12",
+      "after": "1af7cdff10fff175426e72903e7c374e3a2389f14f95614ed9b7e9661f5d7e12",
+      "unchanged": true
+    },
+    {
+      "path": "Taskfile.yml",
+      "before": "26abc2033699cd993d8cfbfd539b02205fb061e90585cf9d7c61c4816a57be03",
+      "after": "26abc2033699cd993d8cfbfd539b02205fb061e90585cf9d7c61c4816a57be03",
+      "unchanged": true
+    },
+    {
+      "path": "App/Info.plist",
+      "before": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+      "after": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-prefix-registration.py",
+      "before": "238104faaf2b018ff8d4cceea367d419373b79f6e527c08bf85707a0acc43dc0",
+      "after": "238104faaf2b018ff8d4cceea367d419373b79f6e527c08bf85707a0acc43dc0",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/vm-prefix-registration-lib.sh",
+      "before": "6734648d4295403af2021e5a84e4d40554e42541bc9235050b417934593c5519",
+      "after": "6734648d4295403af2021e5a84e4d40554e42541bc9235050b417934593c5519",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/prefix-registration-observations.jq",
+      "before": "dc22ad405bb57dc8cd22e57663473a692e4d12828034728533b2751c97cc4582",
+      "after": "dc22ad405bb57dc8cd22e57663473a692e4d12828034728533b2751c97cc4582",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/check-prefix-registration.py",
+      "before": "5df2dd144923ca8b9ea47d5cead18b3c8eb1a3f45a7928ff63343c72163a1e95",
+      "after": "5df2dd144923ca8b9ea47d5cead18b3c8eb1a3f45a7928ff63343c72163a1e95",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/check-prefix-observations.sh",
+      "before": "3263f78ecc6dbe859fa35b96586da90f4c4d127b8ed231cf9326a9b1436f8168",
+      "after": "3263f78ecc6dbe859fa35b96586da90f4c4d127b8ed231cf9326a9b1436f8168",
+      "unchanged": true
+    },
+    {
+      "path": ".build/node/node-v24.21.0-darwin-arm64.tar.xz",
+      "before": "6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe",
+      "after": "6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/.build/witness/LaunchWitness",
+      "before": "9e4e6b5619986ee7aa8bd99accb638dd574609777b0870c32c3b016013cc7cb2",
+      "after": "9e4e6b5619986ee7aa8bd99accb638dd574609777b0870c32c3b016013cc7cb2",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/KoineProviderAPI",
+      "before": "aabbed0769b36fb85a8ce3757556454e42a81ae60bcd486fddb23435b2d967e6",
+      "after": "aabbed0769b36fb85a8ce3757556454e42a81ae60bcd486fddb23435b2d967e6",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/Resources/Info.plist",
+      "before": "41b27cb37da14107451c22cab41524a2f439218c7ca3a776e853ccdfdd004621",
+      "after": "41b27cb37da14107451c22cab41524a2f439218c7ca3a776e853ccdfdd004621",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/_CodeSignature/CodeResources",
+      "before": "7f57754c0849b70945355f3eae9acb30ddd1eef9860bfb964f6b7e83160ebc38",
+      "after": "7f57754c0849b70945355f3eae9acb30ddd1eef9860bfb964f6b7e83160ebc38",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/Info.plist",
+      "before": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+      "after": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/MacOS/Koine",
+      "before": "32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99",
+      "after": "32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/Info.plist",
+      "before": "4f0ae19489ee20f3a0d709e978a7ddf23f41e4d6dc6a86de7eff73c03e1e1174",
+      "after": "4f0ae19489ee20f3a0d709e978a7ddf23f41e4d6dc6a86de7eff73c03e1e1174",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/_CodeSignature/CodeResources",
+      "before": "d7efacc2f138e1405acbf89acd10296fcb79c313b7d5e4775be91938c9928649",
+      "after": "d7efacc2f138e1405acbf89acd10296fcb79c313b7d5e4775be91938c9928649",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/libDesktopProvider.dylib",
+      "before": "fa2ee86a5439ab296233edd9b3313b660ffdca9decbea13234e96c8325b0c199",
+      "after": "fa2ee86a5439ab296233edd9b3313b660ffdca9decbea13234e96c8325b0c199",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/manifest.json",
+      "before": "3c5197da7324a1c8b4c1e381b69f6902627f48607a79820746df8bdd0282a3ad",
+      "after": "3c5197da7324a1c8b4c1e381b69f6902627f48607a79820746df8bdd0282a3ad",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/schema.graphql",
+      "before": "d78d1f49ff3c3968c7a3fd3ba7dad69797f89acbdaa24dd633cd210a865c765e",
+      "after": "d78d1f49ff3c3968c7a3fd3ba7dad69797f89acbdaa24dd633cd210a865c765e",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/Info.plist",
+      "before": "6bb5154d0fd08c30d46c638426e02e58bfc424826c99a8819d9bafaeb63b7027",
+      "after": "6bb5154d0fd08c30d46c638426e02e58bfc424826c99a8819d9bafaeb63b7027",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/_CodeSignature/CodeResources",
+      "before": "056b2408d65bdd4797ea4fc3fc767faf32872be9fe32b2aaea2a734564308d96",
+      "after": "056b2408d65bdd4797ea4fc3fc767faf32872be9fe32b2aaea2a734564308d96",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/libWorkspaceProvider.dylib",
+      "before": "0da3b53e5b10cc24fe3d9b67da0a1eaad239a1423fe333b9dfed352b69fce42c",
+      "after": "0da3b53e5b10cc24fe3d9b67da0a1eaad239a1423fe333b9dfed352b69fce42c",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/manifest.json",
+      "before": "da73f1a02115558850ec7d36064b57b52a136d985dccf770034d7d76515e7e47",
+      "after": "da73f1a02115558850ec7d36064b57b52a136d985dccf770034d7d76515e7e47",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/schema.graphql",
+      "before": "2bcfbbf06cb1d77acd8553898612c2c64272e8ef39fc12570a3674f24fd138a7",
+      "after": "2bcfbbf06cb1d77acd8553898612c2c64272e8ef39fc12570a3674f24fd138a7",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/Resources/ProviderCatalogue.json",
+      "before": "7cb6c788c4f2ac12f52a081a23c0501523edc0552fbdd83d5f39776d95b64e31",
+      "after": "7cb6c788c4f2ac12f52a081a23c0501523edc0552fbdd83d5f39776d95b64e31",
+      "unchanged": true
+    },
+    {
+      "path": ".build/app/Koine.app/Contents/_CodeSignature/CodeResources",
+      "before": "5ee17e062723ccdb61738b9560f29166dbf6456da5214c672b302a83fe50ea57",
+      "after": "5ee17e062723ccdb61738b9560f29166dbf6456da5214c672b302a83fe50ea57",
+      "unchanged": true
+    }
+  ]
+}

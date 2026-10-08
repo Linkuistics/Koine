@@ -46,6 +46,13 @@ secret = f"{home}/koine-secret-both"
 paths = f"{home}/paths"
 fixture_log = f"{home}/install-fixture.jsonl"
 process_pattern = re.compile(r"/Contents/MacOS/(Fixture|Anonymous)( |$)")
+strict_observation = os.environ.get("KOINE_PREFIX_REGISTRATION") == "1"
+
+
+def observation_error(message):
+    with open(out_path, "w", encoding="utf-8") as handle:
+        json.dump({"error": message}, handle)
+    sys.exit(0)
 
 
 def sh(args, timeout=60):
@@ -60,12 +67,18 @@ def witness_json(*args):
 
 
 def instances():
-    found = witness_json("instances", fixture_id) or {"instances": []}
+    found = witness_json("instances", fixture_id)
+    if strict_observation and (not isinstance(found, dict) or not isinstance(found.get("instances"), list)):
+        observation_error("native fixture instance observation unavailable")
+    found = found or {"instances": []}
     return [{"pid": i["pid"], "startedAt": i["startedAt"], "bundle": i["bundle"]} for i in found["instances"]]
 
 
 def fixture_processes():
-    listing = sh(["ps", "-axo", "pid=,command="]).stdout.splitlines()
+    result = sh(["ps", "-axo", "pid=,command="])
+    if strict_observation and result.returncode != 0:
+        observation_error("fixture process observation unavailable")
+    listing = result.stdout.splitlines()
     return sorted(line.strip() for line in listing if process_pattern.search(line))
 
 
@@ -77,10 +90,14 @@ def log_since(sent_ms):
                 try:
                     entry = json.loads(line)
                 except json.JSONDecodeError:
+                    if strict_observation:
+                        observation_error("fixture log observation is malformed")
                     continue
                 if entry.get("atMs", 0) >= sent_ms:
                     entries.append(entry)
     except FileNotFoundError:
+        if strict_observation:
+            observation_error("controlled fixture log is missing")
         pass
     return entries
 
@@ -142,6 +159,11 @@ else:
 if app != "-":
     with open(f"{paths}/{app}.txt", "rb") as handle:
         command += ["--application-path", handle.read().decode("utf-8")]
+native_selection = None
+if os.environ.get("KOINE_PREFIX_REGISTRATION") == "1":
+    from vm_prefix_registration import snapshot
+
+    native_selection = snapshot(paths)
 result = sh(command, timeout=120)
 try:
     answer = json.loads(result.stdout.strip().splitlines()[-1])
@@ -186,6 +208,7 @@ observed = {
     "before": before, "after": after, "log": log,
     "procsBefore": procs_before, "procsAfter": procs_after, "witness": receipt_witness,
     "registrationBefore": registration_before, "registrationAfter": registration_after,
+    "nativeSelectionBefore": native_selection,
 }
 with open(out_path + ".tmp", "w", encoding="utf-8") as handle:
     json.dump(observed, handle)
