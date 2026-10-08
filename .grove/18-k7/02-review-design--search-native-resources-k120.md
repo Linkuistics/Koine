@@ -1,6 +1,6 @@
 # search-native-resources-k120
 
-**Reviews:** search-native-resources-k109
+**Reviews:** app-and-file-search-k19
 
 ## Goal
 
@@ -8,7 +8,7 @@ Adversarially review carried native-fact and empirical serviceability obligation
 
 ## Context
 
-Consume k195 review/integration, k196 answers, k191/k193 and k127/k123 mandatory reviews/integrations. Reviews names the original k109 resource artifact, whose custom allocation mechanics have been replaced by those producer reconciliations. Read current workspace-search, search-tooling, ADRs, SDL/examples, guide/glossary/trace/views; prior resource/serviceability analyses are bounded comparison evidence, not the current two-temporary/72-credit protocol.
+Review the commit that closes app-and-file-search-k19 after k195 integration, all k196 choices, k191/k193 and k127/k123 mandatory reviews/integrations. This leaf sits beside k19, before k30, so the session closing k19 writes its actual Creator run here. k109 is historical comparison evidence, not this review's producer. Read the completed workspace-search/search-tooling, ADRs, SDL/examples, guide/glossary/trace/views and module/call-path contract.
 
 ## Done when
 

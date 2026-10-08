@@ -69,10 +69,16 @@ classification, and scope reconciliation. Then, in order:
 
 Application/file search now consumes search-tooling-k195's selected system-find,
 Foundation matching and native application-service design, its mandatory review/
-earned integration, then search-tool-permissions-k196. Process permission and
-relocated-target/lookup-only policy remain concrete human decisions; k115's custom
+earned integration, then search-tool-permissions-k196. Process permission,
+home ordering and materialization are separate human choices; in-process FileManager
+enumeration is the concrete child-refusal alternative, not an adopted backend.
+Search's fixed child lifecycle belongs to workspace:read, with k127 required to
+preserve action source/binary guards before implementation. Protected exclusions
+and measured order/work omissions require separate k93 answers. Known anchor/mount
+metadata contact and case/Unicode/Data-root aliases remain policy obligations.
+Relocated-target/lookup-only policy remains a concrete human decision; k115's custom
 helper refusal is not overridden. Returned permission k126/k191/k193, command
-lifecycle k127, native metadata/long records k123 and carried resource review k120
+lifecycle k127, native metadata/long records k123 and whole-k19 resource review k120
 precede planning k30. Custom FIFO/frontier/prefix-witness accounts are obsolete
 candidate mechanics, not native passes. Actual signed identity/dialog/hydration,
 useful home/default/launcher witnesses, independent serviceability and binary

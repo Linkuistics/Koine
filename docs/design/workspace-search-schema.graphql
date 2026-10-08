@@ -16,6 +16,7 @@ enum WorkspaceSearchScopeExtent { SUBTREE OBSERVED_DESCENDANTS }
 """ENTRY is independently identified; SUBTREE is a policy scope; REMAINDER is unfinished/unlocalized work. No unseen descendant or grouped-anchor count is inferred from command output."""
 enum WorkspaceSearchSkippedExtent { ENTRY SUBTREE REMAINDER }
 
+"""Each value's producer, extent, affectsCoverage and no-progress status is defined in workspace-search's skip-reason table. Command stderr cannot localize errno or establish CHANGED_DURING_SEARCH."""
 enum WorkspaceSearchSkipReason {
   DOMAIN_EXCLUSION
   PROMPT_RISK
@@ -50,9 +51,8 @@ type WorkspaceSearchPermission {
   kind: WorkspaceSearchPermissionKind!
   permissionClass: WorkspaceSearchPermissionClass!
   permissionOwner: WorkspaceSearchPermissionOwner!
+  """Adapter performing access, not an observed TCC responsible identity; that identity remains build/OS/launch-specific acceptance evidence."""
   accessProcess: WorkspaceSearchAccessProcess!
-  """Null until the actual OS-responsible identity is established."""
-  responsibleIdentity: String
   permissionReason: WorkspaceSearchPermissionReason!
   permissionTarget: String!
   """Null under this design, never inferred Accessibility or invented Files and Folders consent."""
@@ -75,7 +75,7 @@ type WorkspaceSearchRootCoverage {
   source: WorkspaceSearchSource!
   """Null for OS_REPORTED."""
   requestedPath: String
-  """Only an established observation, not a promised unique canonical spelling; null for OS_REPORTED."""
+  """Only an established observation, not a promised unique canonical spelling; null for OS_REPORTED. Root qualification and the command's directory marker do not pin identity."""
   resolvedPath: String
   state: WorkspaceSearchCoverageState!
   """Complete decoded candidate records/native seeds actually considered; not all filesystem names, directories or service calls."""
@@ -108,7 +108,7 @@ enum WorkspaceSearchOpenDisposition { ELIGIBLE REFUSED UNKNOWN }
 enum WorkspaceSearchDefaultHandlerState { UNKNOWN }
 type WorkspaceSearchApplicationSelector { bundleIdentifier: String! applicationPath: String! }
 type WorkspaceFileMatch {
-  """Lossless absolute command-reported location, including final link names. No canonical-parent/firmlink collapse. Extant action spellings >=1024 bytes without NUL fail under v1 handoff; keep them visible/copyable."""
+  """Lossless absolute command-reported location, including final links. Merge paths by exact UTF-8 bytes, not Swift canonical String equality. No canonical-parent/firmlink collapse. Extant action spellings >=1024 bytes without NUL fail at v1 handoff; keep visible/copyable."""
   path: String!
   name: String!
   kind: WorkspaceSearchFileKind!

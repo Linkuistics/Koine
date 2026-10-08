@@ -17,6 +17,10 @@ or traversal engine.
   proof. No implicit literal-only fallback or systematic home refusal.
 - Actual responsible identity, no-query-consent and finite signed-VM dialog/
   hydration/foreign/late-cleanup controls are specified, not marked passed.
+- All k196 ordering/dataless answers are consumed. Directory markers, file/link/
+  trailing-slash/replaced roots, withheld listings and case/Unicode/Data aliases
+  have an explicit qualified-completion contract; prune promises no pre-metadata
+  protection. No global policy change or workflow loss is inferred.
 - Durable contract/diagnostics/guide/glossary/trace/views and brief handoff agree;
   node completion names its run on existing mandatory k193 review before k127.
 

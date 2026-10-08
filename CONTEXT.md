@@ -132,7 +132,7 @@ contents and does not establish an exhaustive installed-application inventory.
 
 **Search pre-open proof**: An observation required before native target access under search policy, separate from a post-access check. The [tool-backed permission contract](docs/specs/workspace-search.md#permission-boundary-and-required-decision) leaves relocated-target protection and lookup-only target acquisition as human choices. System-tool prune/no-follow/device flags supply no such proof; the earlier custom queued-walk witnesses are not the selected mechanism.
 
-**Search coverage**: One effective source's completeness within the search domain: COMPLETE is established eligible filesystem-domain processing, PARTIAL means observations with omissions, UNKNOWN means useful observation/completeness was not established. The OS-reported application source is always UNKNOWN, never an exhaustive installation inventory.
+**Search coverage**: One effective source's completeness within the search domain: COMPLETE is qualified eligible processing, including the command's directory marker and non-withheld listing (or positive optional-root absence), PARTIAL means observations with omissions, UNKNOWN means useful observation/completeness was not established. The OS-reported application source is always UNKNOWN, never an exhaustive installation inventory.
 
 **Search source**: One effective filesystem root or the separate OS-reported application seed source. Coverage-row indices name observed result provenance, not all lexically overlapping roots.
 

@@ -3,8 +3,8 @@
   "intro": "Koine provider architecture and current search design. Management, server and native providers share the resident Koine process; the selected system-find search child is conditional on explicit permission. Graphs begin at the dark Start here node; sequences read from their first message. Diagram sources are editable; widen the window or open the SVG for focused reading.",
   "discussion": {
     "title": "Replace custom search with an existing system tool",
-    "status": "Mechanism selected for review; human process/protection choices pending",
-    "summary": "System find supplies candidate names, Foundation supplies literal matching, native application services supply metadata and OS-reported seeds, and clients own chooser/ranking/MRU. Static tool flags establish no relocated-target or lookup-only exemption. The focused requirements leaf precedes the returned permission contract and consumers; mandatory tooling review/earned integration precede the search node. No backend/native experiment, new consent/signing/limit, smaller accepted workflow or native pass follows.",
+    "status": "Tooling review integrated; process/protection, order and dataless choices pending",
+    "summary": "System find supplies candidates, Foundation supplies literal matching and native services supply metadata/seeds; clients own chooser/ranking/MRU. FileManager is a concrete in-process alternative. Unsorted home DFS can starve later shallow siblings; ordering and materialization remain human choices. Prune/device tests can follow anchor/mount metadata and byte patterns do not cover spelling aliases. Directory markers, exact byte comparisons and defined skip reasons qualify coverage. k127 preserves action source/binary guards; k123 bounds recognition calls. No implementation, native pass or workflow loss is accepted here.",
     "diagramIds": [
       "search-discovery",
       "search-preopen",
@@ -23,19 +23,19 @@
       },
       {
         "id": "search-preopen",
-        "summary": "Standard prune/no-follow/device flags prove no relocated-target protection. Lookup-only policy/application access still needs a human answer; no custom witness engine is selected."
+        "summary": "Four separate choices: find child/FileManager alternative, target/alias/metadata protection, home ordering and dataless policy. Returned root markers/withheld-listing qualification and signed acceptance remain pending."
       },
       {
         "id": "search-canonical",
-        "summary": "Replaces per-directory fsgetpath/canonical-parent promises. Files preserve backend bytes; native application identity and existing action revalidation remain."
+        "summary": "File merging/source-prefix checks use exact UTF-8 bytes, including overlapping NFC/NFD roots; native application identity and existing action revalidation remain separate."
       },
       {
         "id": "search-inspection",
-        "summary": "Replaces two-temporary replay phases with bounded native fact/seed inspection. Empty native service answers and equal identifiers never prove healthy empty or merge separate copies."
+        "summary": "k123 defines recognition candidates and finite native-call admission beyond copied-value/URL limits. Links match target names; empty service data never proves exhaustive empty or merges copies."
       },
       {
         "id": "search-resources",
-        "summary": "No inherited 72-credit/roots-plus-two/54.282 MiB claim. Uninterruptible work retains capacity; provider restart does not reset it and abrupt parent death can leave an orphan."
+        "summary": "Only fds 0–2 survive exec, with an empty mask, default signals and owned group. k127 preserves action source/binary guards. Uninterruptible work retains capacity and a blocked orphan has no lifetime bound."
       },
       {
         "id": "search-serviceability",
@@ -43,7 +43,7 @@
       },
       {
         "id": "search-traversal",
-        "summary": "Replaces custom FIFO/frontier/checked-prefix replay. Source order gives no shallow-name or top-N guarantee; actual useful later-root/home omissions remain a human acceptance question."
+        "summary": "Unsorted DFS can starve later shallow home siblings; k196 chooses that premise or reviewed find-backed source changes. Root markers qualify completion; processing continues after limit+1 within bounds."
       },
       {
         "id": "search-coverage",
@@ -105,7 +105,7 @@
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
-      "caption": "Standard prune/no-follow/device flags prove no relocated-target protection. Lookup-only policy/application access still needs a human answer; no custom witness engine is selected."
+      "caption": "Four separate choices: find child/FileManager alternative, target/alias/metadata protection, home ordering and dataless policy. Root qualification and signed acceptance remain pending."
     },
     {
       "id": "search-serviceability",
@@ -123,7 +123,7 @@
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "No inherited 72-credit/roots-plus-two/54.282 MiB claim. Uninterruptible work retains capacity; provider restart does not reset it and abrupt parent death can leave an orphan."
+      "caption": "Only fds 0–2 survive exec, with an empty mask, default signals and owned group. k127 preserves action source/binary guards. Blocked work retains capacity and an orphan has no lifetime bound."
     },
     {
       "id": "search-inspection",
@@ -132,7 +132,7 @@
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
-      "caption": "Replaces two-temporary replay phases with bounded native fact/seed inspection. Empty native service answers and equal identifiers never prove healthy empty or merge separate copies."
+      "caption": "k123 defines recognition candidates and finite native-call admission beyond copied-value/URL limits. Links match target names; empty native data never proves exhaustive empty or merges copies."
     },
     {
       "id": "search-canonical",
@@ -141,7 +141,7 @@
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "Replaces per-directory fsgetpath/canonical-parent promises. Files preserve backend bytes; native application identity and existing action revalidation remain."
+      "caption": "File merging/source-prefix checks use exact UTF-8 bytes, including overlapping NFC/NFD roots; native application identity and action revalidation remain separate."
     },
     {
       "id": "search-traversal",
@@ -150,7 +150,7 @@
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Replaces custom FIFO/frontier/checked-prefix replay. Source order gives no shallow-name or top-N guarantee; actual useful later-root/home omissions remain a human acceptance question."
+      "caption": "Unsorted DFS can starve later shallow home siblings; k196 chooses that premise or reviewed find-backed source changes. Root markers qualify completion; processing continues after limit+1 within bounds."
     },
     {
       "id": "search-coverage",

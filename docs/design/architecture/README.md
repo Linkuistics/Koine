@@ -9,7 +9,7 @@ or open the SVG export. Source is the editable artifact; never hand-edit exports
 
 [Reuse system names and native application services](index.html#diagram-search-discovery)
 is the reading entry. Mechanism selected for mandatory review, with explicit
-human system-child/protected-target decisions pending before returned permission
+human system-child/protected-target, home-order and dataless-policy decisions pending before returned permission
 and implementation. The [spec](../../specs/workspace-search.md) and
 [finite source/acceptance contract](../../verification/search-tooling.md) own the
 behavior; this presentation runs no backend or native experiment.
@@ -24,6 +24,11 @@ Changed views:
 - [Verify finite outcomes with independent controls](index.html#diagram-search-serviceability) — Specifies current-backend controls and independent outcomes without native passes.
 - [Delegate traversal and schedule bounded sources](index.html#diagram-search-traversal) — Removes FIFO/frontier guarantees; actual useful omissions remain pending.
 - [Report source completeness without invented counts](index.html#diagram-search-coverage) — Adds native-source uncertainty and removes directory EOF/group counts.
+- Review repairs require root directory markers, byte-equal file merging/prefix checks,
+  isolated spawn descriptors/signals and explicit skip-reason producers. k127 settles
+  the action/search binary guard; k123 bounds native recognition. FileManager is a
+  concrete child-refusal alternative. Unsorted home DFS can starve later shallow
+  names; the ordering premise and actual k93 policy/work omissions have separate answers.
 - [Choose a location and use existing actions](index.html#diagram-search-handoff) — Keeps the existing controls, revalidation and v1 handoff limit.
 
 ## Other architecture topics

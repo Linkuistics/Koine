@@ -6,6 +6,11 @@ unfinished remainders, rather than a filesystem audit. The
 allows COMPLETE only for qualified eligible-domain processing and never for the
 OS-reported application source. Healthy empty, unavailable service, policy
 blocking and incomplete empty remain distinct.
+Command exit 0 needs its depth-zero directory marker and qualified non-withheld
+listing, not empty stdout alone. Every retained skip reason has a defined producer,
+extent, coverage effect and no-progress precedence in the contract. Localized
+root/access/change reasons require independent authorized native observations;
+human stderr supplies only an unlocalized inspection remainder.
 
 The public granularity is costly to reverse once clients consume it. It hides
 unseen child identities and native internal operations while giving clients

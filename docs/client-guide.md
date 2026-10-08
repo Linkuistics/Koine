@@ -391,7 +391,10 @@ Hidden/package-suffix/link-descendant/same-device rules define the domain;
 protected/cloud/work/native omissions remain explicit. Home stays PARTIAL/UNKNOWN.
 Command warning paths/permission causes are not guessed from stderr.
 
-Source order gives no shallow-first or top-N guarantee. Sort bounded choices and
+Source order gives no shallow-first or top-N guarantee. A bounded unsorted deep
+home pass can repeatedly omit later shallow siblings; k196 decides its ordering
+premise, and k93 separately accepts actual policy versus order/work omissions.
+Sort bounded choices and
 apply MRU locally. Truncation means an observed matching choice was omitted by
 result/value retention; unfinished coverage can exist without it. Paths preserve
 command bytes, including final links, without a unique canonical-parent promise.
@@ -405,7 +408,9 @@ matches alias; coverage-only selections do not create that matches error. Other
 lifecycle/publication/core errors retain normal propagation and can suppress
 status/coverage too. Nested selections/aliases reuse one frozen result without
 more native work. The system child may have a different TCC responsible identity:
-permission diagnostics disclose accessProcess and unknown identity until measured.
+permission diagnostics disclose accessProcess, not an inferred signing-identity
+string. Actual responsible identity is OS/build/signing/launch-specific acceptance
+evidence, never a runtime identity copied from an earlier VM.
 Never use a capability or successful native count to infer OS consent.
 
 INSTALLED apps with a known identifier supply BOTH identifier and applicationPath
@@ -424,6 +429,8 @@ application handoff. Search's 8,192-byte ceiling promises no actionability. Keep
 longer results visible and copyable, without shortening or rewriting them.
 Protected default opening and app-reveal notice retain their pending decisions.
 
+Cancel superseded requests in an as-you-type chooser. Reaching limit or limit+1
+does not stop the selected scan; it continues within existing work/time bounds.
 Cancellation freezes publication and cleans owned child/native work. Slots are
 retained until actual reap/native return, so CAPACITY_LIMIT can persist; provider
 restart cannot replenish the shared registry. Uninterruptible work/abrupt-parent

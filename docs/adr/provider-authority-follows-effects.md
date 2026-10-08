@@ -83,6 +83,12 @@ opacity contracts. A verified need to transfer a particular held native target
 between providers would reopen this choice through a separately specified
 framework seam, not by parsing a URI remainder.
 
+Fixed system-search child creation, owned-group signalling and reap are internal
+workspace:read effects, including cleanup admitted with a job. They are conditional
+on the separate human process decision and confer no arbitrary process control.
+The returned search lifecycle design must preserve source/binary evidence that
+action paths cannot reach those calls; provider ownership alone does not prove it.
+
 Workspace is separate from desktop so existing desktop grants do not acquire
 home-directory search and file-opening authority. Desktop's pointer, media and
 geometry additions do extend its provider-wide control grant. This is an

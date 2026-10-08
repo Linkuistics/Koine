@@ -1,6 +1,6 @@
 # Application and file search
 
-**Mechanism selected for review; implementation and native acceptance pending.**
+**Tooling review integrated; human choices, returned design and native acceptance pending.**
 Koine reuses macOS system `find` for candidate enumeration, Foundation for literal
 name matching, and native application services for bundle metadata and reported
 locations. Clients own presentation, chooser, ranking and MRU. The
@@ -82,7 +82,7 @@ is always UNKNOWN, even after finite seed processing. Empty/stale service answer
 never establish an exhaustive healthy empty inventory. Explicit-root registration
 inspection supplies metadata only, never extra out-of-root discovery choices.
 
-Enumeration stays on its starting device, does not follow symlinks and emits
+Enumeration does not descend across devices, does not follow symlinks and emits
 regular files, directories and link locations. Hidden-name subtrees and special
 files are intrinsic exclusions. Known package-suffix anchors remain choices but
 contents are pruned: .app, .bundle, .framework, .plugin, .appex, .photoslibrary and
@@ -112,20 +112,40 @@ Explicit setup needs its separate agreement/operation. No Full Disk Access,
 entitlement, usage key, privilege, custom helper signing or host/child descriptor
 limit change is selected.
 
-Two focused choices remain for the human before returned permission design:
+Four focused choices remain for the human before returned permission design:
 
 1. **Process scope:** recommend permitting one ordinary Apple-signed system-find
    child per admitted job, with unchanged signing/limits. k115 rejected a custom
    isolation helper; k190's reuse requirement did not answer this different
-   proposal. Refusal requires another existing engine within the in-process posture.
+   proposal. The concrete child-refusal alternative is FileManager enumeration with
+   Foundation matching: localized errors/pruning and no child attribution/pipes/reap,
+   at the cost of unkillable blocked Koine calls and unmeasured long-path behavior.
+   libc fts with FTS_NOCHDIR is a lower-level reuse alternative with whole-path
+   PATH_MAX costs. Either requires returned design and mandatory review.
 2. **Protection scope:** prune/no-follow/same-device flags cannot prove protection
    of relocated sensitive targets, unknown cloud aliases, root-component links
-   or replacement races. Retain known protected-target identity protection where
+   or replacement races, nor case/Unicode/Data-root spelling aliases. Prune and
+   device checks may follow protected-anchor or foreign-mount metadata contact.
+   Retain known protected-target identity protection where
    required. Decide whether bounded lookup-only acquisition of policy/application
    target identities is allowed in search and whether the residual platform
    relocation/replacement limit is acceptable. k174 is bounded transit evidence,
    not an exemption. Refusal requires an explicitly agreed setup/domain contract
    or another backend; no silent literal-only blocking or all-home refusal.
+3. **Home ordering:** the unsorted preorder deep pass can exhaust the time/record
+   budget in one subtree before later shallow siblings. Decide whether to accept
+   that explicit order limit or return a reviewed find-backed shallow pass before
+   deep search, or immediate-child source scheduling. Those alternatives cost
+   repeated processing or source qualification/accounting. Recommend a returned
+   shallow-pass design before implementation unless named losses are acceptable.
+   No new source structure or workflow loss is selected here. k93 still decides
+   actual omissions separately from protected-scope exclusions.
+4. **Dataless policy:** choose process-wide materialization OFF, affecting all Koine
+   work and future children, versus verifying inherited effective policy and refusing
+   unknown/enabled policy. Recommend verification/refusal first, with any required
+   global pin separately agreed. The documented default is OFF, not a guarantee
+   about opaque services/cloud aliases. k191 must specify child/native settings,
+   failure/withheld-listing coverage and hydration controls. No setting is changed here.
 
 The selected route is concrete; its process permission/protection premise is not
 approved. The original lookup-only witness question therefore still matters for
@@ -146,11 +166,14 @@ verify the library behavior; failure does not authorize a custom matcher.
 Return source-observation order; there is no stable lexical, breadth-first,
 exact/prefix rank or top-N guarantee. Client ranking/MRU may reorder the bounded
 choices. The former ranking and shallow-name order were candidate mechanics,
-not a released contract. Real home/default omissions still need human acceptance.
+not a released contract. The current depth-first home pass risks repeated later
+shallow-name starvation; k196 decides that premise before implementation.
+Real home/default omissions still need human acceptance.
 
 File paths preserve absolute bytes emitted by find. Normalization affects only
 matching. No unique canonical filesystem spelling or firmlink-alias collapse is
-promised. Equal retained paths merge observed source membership; distinct strings
+promised. Exactly equal retained UTF-8 path bytes merge source membership;
+Swift String canonical equality is not that comparison. Distinct byte strings
 may name one file. Final link locations remain links. Native metadata can race;
 paths are observations, not pinned identities or resource references.
 
@@ -170,6 +193,16 @@ absence. Metadata length limits may withhold fields/application identity, but
 cannot silently withdraw a representable ordinary file name.
 
 ## Native application and file metadata
+
+k123 must define the directory/link/OS records admitted to native recognition and
+a finite per-job call budget including component resolution, resourceValues,
+Bundle, registration/preferred lookup and expansion. Suffixes only filter
+candidates; they never establish native identity. Links require target-based
+recognition before matching, so filtering only link names is unsound. Copy/URL
+limits and deadlines do not bound blocking calls. ENTRY_LIMIT REMAINDER records
+admission exhaustion without withdrawing representable ordinary file names.
+The exact candidate set/budget and useful-launch consequence require returned
+design and mandatory review before implementation; no smaller domain is accepted.
 
 Public application/type/alias facts and Bundle identifiers remain native.
 Use error-bearing per-identifier registration results, cross-checked with preferred
@@ -203,10 +236,16 @@ candidate records/native seed candidates actually considered, not every filesyst
 entry or native operation. No completed-directory/EOF count is published. Choice
 rootIndices contain only sources that actually observed that retained choice.
 
-COMPLETE requires a qualified filesystem root, normal exit 0, fully drained pipes,
+Except positive optional-root absence, COMPLETE requires a qualified filesystem
+root, the command's exact-root depth-zero directory marker, normal exit 0,
+fully drained pipes,
 no warning/error and no affecting policy/work/value/metadata omission. It describes
 eligible-domain processing on that run, not an atomic snapshot. Such a zero-candidate
-root is healthy empty. PARTIAL means observations plus omissions. UNKNOWN means
+root is healthy empty. The marker is neither a match nor examinedEntries progress.
+Missing marker or potentially withheld dataless listing cannot establish healthy
+empty; k191 supplies link/file/trailing-slash/replacement and effective-policy rules.
+A marker cannot pin identity or certify atomicity. PARTIAL means observations plus
+omissions. UNKNOWN means
 no useful candidate observation or unestablished completeness; OS_REPORTED is
 always UNKNOWN. Home remains PARTIAL/UNKNOWN under the protected-scope policy.
 
@@ -222,6 +261,41 @@ The same-device rule declares foreign descendants outside the intrinsic domain;
 report that rule without asserting an observed mount or count. Known unsupported
 root/target refusals remain affecting MOUNT_BOUNDARY/UNSUPPORTED_VOLUME. Exit 0
 alone never proves completeness without the root/policy and full-drain conditions.
+
+### Skip reasons and producers
+
+Each reason supplies guidance and source coverage. Affecting reasons prevent
+COMPLETE; without progress their class determines failure → prompt → absence/
+dependency precedence. Authorized native qualification is governed by k191, not
+an extra lookup permission. Never localize errno from command text.
+
+| Reason | Producer and extent | affectsCoverage; no-progress class |
+| --- | --- | --- |
+| DOMAIN_EXCLUSION | Declared hidden/package/link-descendant/special/same-device rule; SUBTREE or independently identified ENTRY, no guessed observed mount count. | false; domain only |
+| PROMPT_RISK | Known prompting root/anchor listing refusal; SUBTREE or identified target ENTRY, with UNKNOWN-consent permission guidance. | true; prompt |
+| CLOUD_SCOPE | Known cloud/FileProvider policy exclusion; SUBTREE or ENTRY. Add PROMPT_RISK where that risk is known. | true; absence/policy |
+| UNSUPPORTED_SCOPE | Known unsupported root/target scope, including Trash; SUBTREE or ENTRY. | true; absence/policy |
+| UNSUPPORTED_VOLUME | Independently established unsupported root/target volume; SUBTREE or ENTRY. | true; absence/policy |
+| MOUNT_BOUNDARY | Independently established disallowed root/target mount; SUBTREE or ENTRY, never a guessed find device refusal. | true; absence/policy |
+| ROOT_NOT_FOUND | Authorized native qualification positively establishes missing explicit root; SUBTREE. | true; absence |
+| OPTIONAL_ROOT_ABSENT | Positive absence of optional home Applications/Cryptex default; SUBTREE representing empty eligible source. | false; verified optional empty |
+| ROOT_NOT_DIRECTORY | Authorized native qualification establishes file/non-admitted link root; ENTRY. | true; absence/invalid source |
+| ACCESS_DENIED | Localized native qualification/metadata errno; root SUBTREE or target ENTRY. | true; failure |
+| INSPECTION_FAILED | Native/stream/spawn/read/wait error, command warning/nonzero exit, missing marker or unestablished listing; localized ENTRY/SUBTREE only with independent evidence, otherwise REMAINDER. | true; failure |
+| CHANGED_DURING_SEARCH | Independently observed root/target identity/type contradiction; ENTRY or root SUBTREE. Vanished find names/stderr alone do not produce it. | true; failure |
+| UNREPRESENTABLE_NAME | Lossless UTF-8 decoding failure; REMAINDER with no fabricated path. | true; failure |
+| ENTRY_LIMIT | Candidate/URL cap or returned finite native-call admission bound; REMAINDER. | true; failure |
+| DIAGNOSTIC_LIMIT | Diagnostic count, stderr capture or diagnostic storage exhaustion; REMAINDER. | true; failure |
+| VALUE_LIMIT | Path/copy value exceeds owned ceiling; REMAINDER for unretained path, otherwise identified ENTRY. | true; failure |
+| TIME_LIMIT | Source/overall deadline, including later sources blocked by retained work; REMAINDER. | true; failure |
+| CAPACITY_LIMIT | No process-wide job slot before work; each source REMAINDER. | true; failure |
+| BACKEND_UNAVAILABLE | Fixed executable missing/incompatible before traversal; filesystem-source REMAINDER. Spawn resource errors are INSPECTION_FAILED. | true; dependency |
+| NATIVE_SOURCE_UNAVAILABLE | OS seed service observably unavailable/unusable; OS-source REMAINDER. Empty response alone is UNKNOWN, not absence. | true; dependency |
+
+Positive optional-root absence may establish COMPLETE empty eligible processing;
+it does not erase another source's omission. Metadata failure affects coverage
+even if a file name remains selectable. This table binds all retained SDL reasons;
+returned producer changes must reconcile it and the examples.
 
 | Status | Data, absent unrelated execution errors |
 | --- | --- |
@@ -248,6 +322,19 @@ NUL-output expression. The [invocation contract](../verification/search-tooling.
 defines the byte protocol. No exec/delete/preview/TTY/interactive matcher/write
 is exposed. Missing/incompatible backend is a dependency; no downloaded replacement
 or automatic installation. Record actual system build at acceptance.
+Spawn inherits only explicit stdin/stdout/stderr file actions under
+POSIX_SPAWN_CLOEXEC_DEFAULT, an empty signal mask, default SIGPIPE/SIGTERM and a
+new owned process group. k127 verifies supported SDK construction/failure cleanup,
+including one job's EOF being independent of another blocked job.
+
+Fixed child creation, signalling only that owned group, and exactly-once reap
+are internal workspace:read search effects, including cleanup admitted at start.
+They expose no arbitrary process control and add no desktop/input control effect.
+The current workspace action source/whole-dylib guard forbids these imports. k127
+must settle a separate guarded action/search binary boundary or a demonstrated
+reachable-call-path guard with failing controls, under mandatory review before
+implementation. Preserve the accepted guard until then; do not simply allow these
+imports in its whole-binary check. k7/k30 carry this seam.
 
 At most four jobs are admitted process-wide, one live or unreaped child/job.
 Process sources in coverage order; within the three-second overall wait each gets
@@ -255,6 +342,8 @@ at most remaining time divided by remaining sources, passing unused time forward
 An unreaped blocked child/native call can prevent later sources starting; they get
 TIME_LIMIT REMAINDER. This source scheduler is not a resumable walker or fairness
 promise; useful later-root/home coverage needs measurement and human acceptance.
+The single unsorted home pass can starve later shallow siblings; its premise is
+a separate k196 ordering decision, not an implicit k93 acceptance.
 
 Consume at most 100,000 records/filesystem root and 1,000 native seed/registration
 URLs/job. Copied retained values are at most 8 MiB/job (results, diagnostics,
@@ -267,7 +356,12 @@ Foundation/Launch Services memory, FD peaks or process-tree allocation.
 
 The requested result limit keeps first matching choices but does not itself stop
 enumeration: observe later distinct matches to set truncation within work/time
-bounds. Merge duplicates only against retained choices, without an unbounded
+bounds, including after the (limit+1)th distinct match. No result-limit early stop
+is selected: completion or policy/work/time/error stops determine coverage. k127
+must preserve this rule or return a reviewed alternative with its coverage reason.
+Clients should cancel superseded as-you-type requests; cancellation retains capacity
+through actual cleanup and does not promise immediate admission.
+Merge duplicates only against retained choices, without an unbounded
 identity history. Reserve a source REMAINDER at diagnostic/data exhaustion. Final
 root completion requires real exit and both EOFs; launcher return, one EOF or
 signal/timeout never establishes success.
@@ -283,8 +377,11 @@ close all known owned resources and diagnose affecting uncertainty.
 Uninterruptible child/native work may retain a slot indefinitely. Provider restart
 cannot reset the process-wide registry; all occupied slots give CAPACITY_LIMIT.
 Orderly shutdown runs cleanup. Abrupt Koine death gives no macOS parent-death
-promise: a blocked orphan can persist until it exits or is terminated. Disclose/
-test that limit rather than inventing a supervising service. Host/child limits
+promise: a blocked orphan can persist until it exits or is terminated. With default
+unblocked SIGPIPE it ends at its first broken-pipe write; a blocked call has no
+such lifetime bound. Koine's record cap is not a child-side orphan bound. No listener
+or other job's pipe survives exec. Disclose/test the limit without a supervising
+service. Host/child limits
 remain unchanged. Former roots-plus-two, 72-credit and 54.282 MiB traversal claims
 are inapplicable. Independent listener/store/action outcomes remain required;
 command isolation is no serviceability proof.
@@ -324,8 +421,9 @@ as historical evidence. Exercise old selection-aware host/new provider and new
 host/retained provider, 1.0.1 provenance, lifecycle/revocation/aliased BLOCKED/FAILED
 and existing action examples. SDL validation proves no native/runtime/binary outcome.
 
-Before planning, consume tooling review/integration, focused human process/protection
-choices, returned permission contract/node review, applicable command-lifecycle
+Before planning, consume tooling review/integration, focused human process/protection,
+ordering and dataless choices, returned permission contract/node review,
+applicable command-lifecycle
 and metadata design/reviews, then whole-resource review. Rewritten live charters
 discharge real obligations; obsolete algorithms are not marked passed/pruned.
 Actual home/default omissions go to protected-home acceptance before baseline closes.

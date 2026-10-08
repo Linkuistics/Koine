@@ -4,13 +4,15 @@ classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
 Start: "Start here · Admitted job\nAt most four process-wide" {class: start}
-Child: "One live / unreaped find child\nFixed argv; two concurrent pipe drains"
-Native: "Native metadata in Koine\nCopied-value bounds; opaque peaks unproved"
+Child: "One live / unreaped find child\nOnly fds 0–2; empty mask; owned new group"
+Native: "Native metadata in Koine\nFinite call admission + copied bounds; opaque peaks unproved"
+Boundary: "k127 module / call-path decision\nPreserve action guard; search lifecycle under read"
 Freeze: "Cancel / deadline / revocation / stop\nFreeze publication; no later source"
 Cleanup: "TERM then KILL if still owned\nDrain, close, exactly one reap"
 Release: "Release slot\nOnly after child + native work finish"
 Start -> Child: "1 · authorized root"
 Start -> Native: "1 · approved target access"
+Boundary -> Child: "prerequisite · source + binary controls"
 Child -> Freeze: "2 · stop"
 Native -> Freeze: "2 · stop"
 Freeze -> Cleanup: "3 · synchronized PID ownership"

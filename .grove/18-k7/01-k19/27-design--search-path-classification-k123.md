@@ -10,6 +10,8 @@ Consume search-tooling-k195, its mandatory review/earned integration and search-
 
 ## Done when
 
+- Define the native recognition candidate set for directories, links and OS seeds; suffixes are filters, never identity. A link's own name cannot reject a target match. State a finite per-job native-call admission bound counting resolution, resourceValues/Bundle, registration/preferred and expansion, distinct from copied-value/URL bounds and deadlines. At exhaustion emit ENTRY_LIMIT affecting coverage, preserving representable file names. Name useful launcher/link consequences for k93; do not approve systematic loss or raise limits here.
+
 - Verify source/SDK support for the selected public resourceValues/Bundle, error-bearing registration/preferred observation and running-application seed calls. Specify bounded copied results, exact positive/negative/unknown branches and individually approved application target resolution.
 - Preserve native bundle-identity link/direct/OS merging and distinct same-identifier copies. Empty/stale/unavailable OS sources are UNKNOWN, not exhaustive empty. Refused/unexamined/truncated/errorful registration URLs establish no negative.
 - Specify file/folder names separately from optional metadata at 1023/1024/1500/4096/8192/8193-byte record boundaries; failure in a metadata call is no name absence or automatic name withdrawal. If native app identity cannot be established, diagnose the exact obligation/consumer consequence instead of accepting systematic UNKNOWN/lost launch choices. No new long-path search walker or shorter baseline is authorized.

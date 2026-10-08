@@ -556,7 +556,9 @@ or a new consent/entitlement, still requires Antony's decision.
 
 **Search extension — typed prompt-risk outcome, pending implementation.**
 The [search contract](workspace-search.md#coverage-and-aggregate-outcomes)
-refuses known prompting traversal before attempting it and preserves per-root
+refuses known prompting roots and prunes agreed scope spellings, with relocated/
+aliased-target and metadata-before-prune limits explicitly pending agreement.
+It preserves per-root
 coverage with no list in BLOCKED. The
 [diagnostic decision](../adr/prompt-risk-is-search-data.md) carries that branch
 as ordinary provider success values: selected matches and dependency are null,

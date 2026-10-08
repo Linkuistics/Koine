@@ -15,11 +15,13 @@ pass or measured home/default omission is accepted by design.
 ## Current handoff
 
 Root tooling producer k195 and its mandatory review/integration replace the old
-custom candidate. k196 obtains process/protection choices. Returned permission
+custom candidate. k196 obtains process/protection, ordering and dataless choices. Returned permission
 node k126/k191 and k193 precede k127 command observation/lifecycle and k123 native
 metadata/long records; each producer cuts its review before the next consumer.
-Whole-resource k120 reads the carried native-fact/serviceability obligations after
-those reconciliations. Planning k30 follows. Read workspace-search and search-tooling,
+Whole-resource k120 sits beside k19 and reviews its complete closing commit, including
+the carried native-fact/serviceability obligations and reviewed module/call-path
+decision. The session closing k19 names its run on k120; planning k30 follows.
+Read workspace-search and search-tooling,
 SDL/examples, current ADRs, glossary/guide/trace/views. Prior measurements retain
 their bounds; old FIFO/witness/account mechanics are comparison input only.
 

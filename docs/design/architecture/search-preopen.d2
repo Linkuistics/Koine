@@ -4,14 +4,18 @@ classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
 Start: "Start here · Selected tool route\nPermission premise is OPEN" {class: start}
-Process: "Human process choice\nAllow ordinary Apple-signed find child?"
-Target: "Human protection choice\nLookup-only target identities + residual limit?"
-Return: "Returned permission design\nRoots, prune, native targets, diagnostics"
+Process: "Human process choice\nFind child or FileManager alternative?"
+Target: "Human protection choice\nTarget lookup + alias / anchor / mount limits?"
+Order: "Human home-ordering choice\nDFS losses or reviewed shallow-pass / child sources?"
+Dataless: "Human dataless-policy choice\nVerify inherited OFF or agree process-wide pin?"
+Return: "Returned permission design\nRoot marker / aliases / withheld listings / targets"
 Observe: "Signed-VM acceptance\nActual child identity + dialog/hydration controls"
 Revise: "If refused / route cannot satisfy answer\nExplicit alternate engine or setup/domain decision"
 Start -> Process: "1 · prior helper refusal still matters"
 Process -> Target: "2 · separate protection question"
-Target -> Return: "3 · only within exact answers"
+Target -> Order: "3 · separate from protected exclusions"
+Order -> Dataless: "4 · no implied workflow acceptance"
+Dataless -> Return: "5 · only within exact answers"
 Process -> Revise: "refusal"
 Target -> Revise: "refusal / unsatisfied protection"
-Return -> Observe: "4 · after mandatory review"
+Return -> Observe: "6 · after mandatory review"

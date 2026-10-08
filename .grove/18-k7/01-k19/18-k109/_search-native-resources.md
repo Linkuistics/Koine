@@ -45,7 +45,8 @@ client replies cannot certify opaque calls or listener serviceability.
 ## Done when
 
 Interpret the two original fact-health/complete-opaque-observer requirements below
-under the independently selected [observation boundaries](../../../../docs/specs/workspace-search.md#permission-boundary-and-required-decision)
+under the independently selected [native-fact boundary](../../../../docs/adr/search-native-facts-are-reported-observations.md)
+and [empirical evidence boundary](../../../../docs/verification/search-tooling.md#finite-acceptance-subjects)
 recorded by k118 under Antony's "you decide" delegation. Only those guarantees
 change; every other condition remains binding. Final allocation/subject design is complete; the mandatory review is commissioned,
 and native acceptance remains pending.

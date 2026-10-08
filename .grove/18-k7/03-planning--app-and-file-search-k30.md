@@ -10,6 +10,8 @@ Consume k195 mandatory review/integration, k196 process/protection answers, k191
 
 ## Done when
 
+- Consume k127's reviewed module/call-path decision. Cut source AND native-binary authority-trace checks with failing action-to-search controls; preserve action-only guard evidence. Allocate fixed search-child spawn/owned signals/reap/cleanup under workspace:read. Never simply remove forbidden imports from the accepted whole-workspace guard.
+
 - Cut ordered implementation leaves covering bounded command integration, public source/coverage/authorization, real native application metadata/locations, cancellation/serviceability and finite signed-VM/useful-coverage/binary acceptance. Each working slice can be shown through the agreed seams.
 - Preserve independent retained 1.0.0/current 1.0.1 profiles/binaries and exact new search 1.1.0/full SDL/candidate pins plus 1.2.0 update/refusal subjects. Never relabel old captures as search evidence.
 - Keep actual-search action provenance, no-dialog/hydration/TCC controls, real launcher/Safari/Finder and named home/later-root omissions explicit. k93's human coverage decision remains before baseline acceptance. Unavailable fixtures remain live work.

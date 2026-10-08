@@ -13,7 +13,7 @@ fragment SearchCoverage on WorkspaceSearchRootCoverage {
   skipped {
     path extent reason affectsCoverage guidance
     permission {
-      kind permissionClass permissionOwner accessProcess responsibleIdentity permissionReason permissionTarget
+      kind permissionClass permissionOwner accessProcess permissionReason permissionTarget
       osPermission consentState
     }
   }
@@ -63,7 +63,8 @@ query InspectSearchCoverage($roots: [String!]) {
 # Publication capability errors can suppress any field, including coverage/status.
 # Provider stop between root/nested resolution can give unavailable at matches,
 # leaving BLOCKED status beside errors; normal non-null propagation still applies.
-# No-progress PROMPT_RISK plus CHANGED_DURING_SEARCH/INSPECTION_FAILED is FAILED.
+# No-progress PROMPT_RISK plus independently observed root/target change or
+# INSPECTION_FAILED is FAILED. Command stderr alone does not establish change.
 query InspectAliasedMatches($roots: [String!]) {
   apps: workspaceSearchApplications(query: "", roots: $roots) {
     status

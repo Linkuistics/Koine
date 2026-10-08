@@ -8,10 +8,12 @@ stay client-owned. Existing launch/open/reveal action contracts remain.
 
 ## Done when
 
+- Authority allocation, operation trace and source/native-binary call-path inspection remain as in launch-and-open. k127 settles search's process/module boundary under mandatory review; action paths retain independently controlled no-spawn/no-listing guarantees. Search-child lifecycle/owned cleanup is admitted under workspace:read, never arbitrary process control.
+
 - The reviewed tool-backed contract supplies bounded useful discovery, native app
   metadata/OS locations and honest source coverage, with empty/unavailable/blocked/
   partial/failure distinct. No exhaustive all-disk inventory is claimed.
-- Human process/protection decisions are consumed; ordinary reads cause no consent
+- Human process/protection, ordering and dataless decisions are consumed; ordinary reads cause no consent
   dialog/hydration, no new setup/signing posture is inferred, and responsible
   child/native identities and actual outcomes are tested under signed Koine.
 - Actual G/N/V search-result actions, independent binary/profile compatibility,
@@ -25,7 +27,8 @@ First consume root-level search-tooling-k195 mandatory review/earned integration
 then search-tool-permissions-k196. Design node k19 returns permission k126/k191,
 reviewed by k193, then command observation/cleanup k127 and native metadata/long
 records k123, each cutting mandatory review before its consumer. Carried resource
-review k120 reads their complete reconciled output; planning k30 follows it.
+review k120 sits beside k19 and reads its closing commit; k19's finishing session
+names its run there. Planning k30 follows review/integration.
 
 ## Current design
 
