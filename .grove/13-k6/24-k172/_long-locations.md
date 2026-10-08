@@ -61,7 +61,10 @@ artifact.
    shows, the missing long path, the root reveals and prompt-free first use.
 10. `application-locations-vm`: V for the over-limit application path, short
     workflows beside a long copy of the same application, and a long preferred copy
-    refused without substitution.
+    refused without substitution. Decomposed into `application-location-observations-k186`
+    (supplied literal refusals and disk-only short effects/receipts) and
+    `long-application-registration-k187` (one bounded prefix-link route for actual
+    native registration/order/preference, then a requirements decision if still unavailable).
 
 Subject ownership (the spec's bullets are the claim; each leaf names its own):
 
@@ -93,6 +96,12 @@ Subject ownership (the spec's bullets are the claim; each leaf names its own):
   `RevealPath.swift`, `Selection.swift`).
 
 ## Notes
+
+- Application V's measured slice is recorded in
+  `docs/verification/application-locations-vm.md`: 1,024/1,500-byte supplied
+  refusals cold/running; exact short A/B and preferred A launch/open receipts;
+  controlled Finder reveal. Native registered-long/both-order and preferred-long
+  rows remain pending. `application-locations-vm-k181` stays open for k187.
 
 - **A prompt stops the work.** If search-only resolution prompts in Desktop,
   Documents or Downloads, the slice stops and the question goes to Antony. There

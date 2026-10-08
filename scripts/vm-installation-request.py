@@ -22,7 +22,7 @@ KOINE_UNREGISTER=<bundle path>:<identifier> is the other: KOINE_UNREGISTER=<bund
 appears), requires that Launch Services then reports nothing for the identifier, and records that
 answer and the one after the request.
 
-usage: vm-installation-request.py <out file> <launch|open> <bundle identifier or -> <path file or ->
+usage: vm-installation-request.py <out file> <launch|open|reveal> <bundle identifier or -> <path file or ->
                                   <document file or -> <yes|no> <identifier of the fixture> <Koine's identifier>
 """
 import json
@@ -133,6 +133,8 @@ if trash:
 # 3. One request, never repeated.
 if kind == "launch":
     command = client + ["launch", "--secret", secret, "--bundle-identifier", ident]
+elif kind == "reveal":
+    command = client + ["reveal-path", "--secret", secret, "--path-file", f"{paths}/{doc}.txt"]
 else:
     command = client + ["open-path", "--secret", secret, "--path-file", f"{paths}/{doc}.txt"]
     if ident != "-":
@@ -160,7 +162,7 @@ if effect == "yes":
     # Anything else the request did lands within a moment of the first event.
     time.sleep(3)
 else:
-    time.sleep(8)
+    time.sleep(float(os.environ.get("KOINE_INSTALLATION_NO_EFFECT_WAIT", "8")))
 log = log_since(sent)
 after = instances()
 procs_after = fixture_processes()
@@ -177,7 +179,8 @@ if process:
 if unregister or trash:
     registration_after = sh([lookup, registered_id]).stdout.strip()
 
-wanted = ("classification", "status", "dependency", "errors", "process", "actionEffect", "application")
+wanted = ("classification", "status", "dependency", "errors", "process", "actionEffect", "application",
+          "path", "selectionObserved")
 observed = {
     "answer": {key: answer.get(key) for key in wanted},
     "before": before, "after": after, "log": log,

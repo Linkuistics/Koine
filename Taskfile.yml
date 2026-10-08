@@ -800,6 +800,37 @@ tasks:
     cmds:
       - scripts/vm-verify-installations.sh
 
+  application-locations:vm:
+    desc: Measure application-stage V subjects with workspace 1.0.1 in a disposable launcher clone - component-created 1024/1500-byte copies, native registration attempts, constrained refusals cold and beside a running short copy, short constrained and preferred workflows with kernel receipts, and Finder selection controlled at 1023 bytes. Exit 3 keeps unconstructible registered-long and preferred-long subjects pending; disk-only success never passes them
+    deps: [app, client]
+    cmds:
+      - task: application-locations:vm-packaged
+
+  application-locations:vm-packaged:
+    desc: Repeat application-location V measurements against already built app/client artifacts; checks their existence and hashes every packaged app file before and after the run
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  application-locations:vm-detached:
+    desc: Start application-locations:vm-packaged in its own session against already built artifacts; transcript in .build/application-locations-vm/detached.log and exit status in done (3 means pending subjects)
+    cmds:
+      - python3 scripts/detach-vm-task.py application-locations:vm-packaged .build/application-locations-vm
+
+  application-locations:fixtures-check:
+    desc: Lint the application-location VM recipe and its shared observers without a guest
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-application-locations-lib.sh scripts/vm-finder-observer-lib.sh scripts/vm-verify-target-locations.sh scripts/check-application-location-observations.sh scripts/reevaluate-application-locations.sh
+      - python3 -m py_compile scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py scripts/detach-vm-task.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-application-fixtures.py scripts/detach-vm-task.py
+      - bash scripts/check-application-location-observations.sh
+
+  application-locations:reevaluate:
+    desc: Re-evaluate each immutable application-location VM observation and digest the input/output; exits 3 for native registration subjects still pending
+    cmds:
+      - bash scripts/reevaluate-application-locations.sh
+
   open-url:network:
     desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
     deps: [app, client]

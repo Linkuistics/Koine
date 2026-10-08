@@ -40,7 +40,7 @@
 # KOINE_VM_KEEP=1 leaves the VM running afterwards, for inspection.
 # KOINE_VM_PASSWORD is the VM account's password (the golden image's default: admin).
 # KOINE_LAUNCHERS_IMAGE is the prepared image (default koine-launchers-prepared).
-# Exit status: 0 every case passed; 1 a case failed.
+# Exit status: 0 every case passed; 1 a case failed; 3 native application-location subjects pending.
 # shellcheck disable=SC2016  # guest-side $HOME
 set -euo pipefail
 
@@ -74,10 +74,21 @@ BUNDLE="clients/contract-only/dist/koine-client.mjs"
 SUBJECTS=(scripts/vm-verify-installations.sh scripts/vm-installation-fixtures.sh scripts/vm-installation-request.py scripts/vm-installation-trash-window.py scripts/vm-registration-lookup.swift
     Fixtures/InstallationFixture/main.swift scripts/vm-verify-witness-lib.sh scripts/vm-verify-contract-client-lib.sh
     scripts/vm-verify-launch-lib.sh scripts/vm-launchers-lib.sh "${BUNDLE}" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}")
-subjects_digest() { shasum -a 256 "${SUBJECTS[@]}"; }
-SUBJECTS_BEFORE="$(subjects_digest)"
-echo "Subjects of this run:"
-echo "${SUBJECTS_BEFORE}"
+if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then
+    SUBJECTS+=(scripts/vm-finder-observer-lib.sh scripts/vm-application-locations-lib.sh scripts/vm-long-application-fixtures.py
+        scripts/vm-long-location-fixtures.py scripts/vm-reveal-observe.applescript
+        scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh scripts/signing-env.sh
+        scripts/vm-verify-client.sh scripts/application-location-observations.jq scripts/application-refusal-observations.jq
+        scripts/vm-verify-contract-client-trim.py scripts/vm-verify-launch-client.py
+        Fixtures/LaunchWitness/main.swift Fixtures/LaunchWitness/build.sh
+        scripts/stage-node-runtime.sh scripts/detach-vm-task.py Taskfile.yml App/Info.plist)
+fi
+subjects_digest() {
+    shasum -a 256 "${SUBJECTS[@]}"
+    if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then
+        find "${APP_BUNDLE}" -type f -print0 | sort -z | xargs -0 shasum -a 256
+    fi
+}
 
 OTHER="Calculator"
 ID="dev.koine.test.InstallationFixture"
@@ -96,9 +107,14 @@ source scripts/vm-verify-witness-lib.sh
 
 NODE_ARCHIVE="$(scripts/stage-node-runtime.sh)"
 WITNESS_BIN="$(Fixtures/LaunchWitness/build.sh .build/witness)"
+SUBJECTS+=("${NODE_ARCHIVE}" "${WITNESS_BIN}")
+SUBJECTS_BEFORE="$(subjects_digest)"
+echo "Subjects of this run:"
+echo "${SUBJECTS_BEFORE}"
 RESULTS="${WORK}/results.jsonl"
 : >"${RESULTS}"
 OUT_DIR=".build/installations-vm"
+[ "${KOINE_APPLICATION_LOCATIONS:-0}" != 1 ] || OUT_DIR=".build/application-locations-vm"
 mkdir -p "${OUT_DIR}"
 
 # --- the path files: the exact bytes each case submits -------------------------------------
@@ -221,7 +237,7 @@ case_begin() {
 }
 # check <jq condition on OBS> <what must hold>
 check() {
-    if ! jq -e "$1" >/dev/null <<<"${OBS}"; then
+    if ! jq -L scripts -e "$1" >/dev/null <<<"${OBS}"; then
         CASE_STATUS=failed
         CASE_NOTES="${CASE_NOTES}$2; "
         echo "CHECK FAILED: $2"
@@ -314,6 +330,11 @@ expect '.grant.capabilities == ["desktop:control","workspace:control"] or .grant
 echo "Accessibility is not granted to Koine in this image: every request below is by workspace:control and desktop:control alone."
 
 SECTIONS="${KOINE_INSTALLATIONS_ONLY:-}"
+if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then
+    # shellcheck source=scripts/vm-application-locations-lib.sh
+    source scripts/vm-application-locations-lib.sh
+    SECTIONS=application-locations
+fi
 # wanted <section>: whether KOINE_INSTALLATIONS_ONLY (a comma-separated list of texts) names it.
 wanted() {
     local word
@@ -679,5 +700,9 @@ guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 || { echo "Koine did not quit on
 if [ "${FAILED_COUNT}" != 0 ]; then
     echo "FAILED: ${FAILED_COUNT} case(s) failed — transcript in ${LOG}" >&2
     exit 1
+fi
+if jq -e 'any(.[]; .status == "pending")' "${OUT_DIR}/results.json" >/dev/null; then
+    step "PENDING — native registration subjects remain live; transcript in ${LOG}"
+    exit 3
 fi
 step "PASSED — transcript in ${LOG}"

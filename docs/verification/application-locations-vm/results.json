@@ -1,0 +1,982 @@
+[
+  {
+    "section": "registration",
+    "case": "what Launch Services says before any request",
+    "status": "recorded",
+    "registration": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\ndev.koine.test.InstallationFixture.Composed\t/Users/admin/install-fx/Café/Fixture.app\t/Users/admin/install-fx/Café/Fixture.app\ndev.koine.test.InstallationFixture.Decomposed\t/Users/admin/install-fx/Café ñ/Fixture.app\t/Users/admin/install-fx/Café ñ/Fixture.app\ndev.koine.test.InstallationFixture.Stale\tnone\tnone\ndev.koine.test.InstallationFixture.NoPlist\t/Users/admin/install-fx/noplist/Fixture.app\t/Users/admin/install-fx/noplist/Fixture.app\ndev.koine.test.InstallationFixture.Trashed\tnone\tnone\ndev.koine.test.InstallationFixture.Unregistered\t/Users/admin/install-fx/unregistered/Fixture.app\t/Users/admin/install-fx/unregistered/Fixture.app\ndev.koine.test.InstallationFixture.Locked\t/Users/admin/install-fx/locked/Fixture.app\t/Users/admin/install-fx/locked/Fixture.app",
+    "preferredCopy": "A"
+  },
+  {
+    "section": "registration",
+    "case": "component-created long copies and native registration attempts",
+    "status": "recorded",
+    "observed": {
+      "subjects": [
+        {
+          "path": "/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app",
+          "bytes": 1024,
+          "device": 16777233,
+          "inode": 296768,
+          "identifier": "dev.koine.test.InstallationFixture"
+        },
+        {
+          "path": "/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app",
+          "bytes": 1500,
+          "device": 16777233,
+          "inode": 296785,
+          "identifier": "dev.koine.test.InstallationFixture"
+        }
+      ],
+      "attempts": [
+        {
+          "bytes": 1024,
+          "method": "absolute",
+          "registration": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        },
+        {
+          "bytes": 1024,
+          "method": "relative-cwd",
+          "registration": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        },
+        {
+          "bytes": 1024,
+          "method": "short-link",
+          "registration": {
+            "exit": null,
+            "phase": "short-link-construction",
+            "errno": 63,
+            "stdout": "",
+            "stderr": "[Errno 63] File name too long: '/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app' -> '/Users/admin/install-fx/registration-1024.app'"
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        },
+        {
+          "bytes": 1500,
+          "method": "absolute",
+          "registration": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        },
+        {
+          "bytes": 1500,
+          "method": "relative-cwd",
+          "registration": {
+            "exit": 1,
+            "stdout": "",
+            "stderr": "2026-10-08 03:11:12.553 lsregister[1147:10706] CFURLCopyResourcePropertyForKey failed because it was passed a URL which has no scheme\nfailed to scan Fixture.app: -50\n from spotlight"
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        },
+        {
+          "bytes": 1500,
+          "method": "short-link",
+          "registration": {
+            "exit": null,
+            "phase": "short-link-construction",
+            "errno": 63,
+            "stdout": "",
+            "stderr": "[Errno 63] File name too long: '/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app' -> '/Users/admin/install-fx/registration-1500.app'"
+          },
+          "lookup": {
+            "exit": 0,
+            "stdout": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n",
+            "stderr": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "section": "control",
+    "case": "independent 1023-byte document delivery",
+    "status": "passed",
+    "controlSentMs": 1791429131000,
+    "wrongPathMutationRejected": true,
+    "log": [
+      {
+        "atMs": 1791429132233,
+        "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+        "event": "open",
+        "label": "A",
+        "path": "/Users/admin/install-fx/control-document/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/control.koineinstall",
+        "pid": 1226
+      },
+      {
+        "atMs": 1791429132254,
+        "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+        "event": "launched",
+        "label": "A",
+        "pid": 1226
+      }
+    ]
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: 1024-byte constrained application, cold; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: 1024-byte constrained application, running; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [
+        {
+          "pid": 1638,
+          "startedAt": "2026-10-08T03:19:06.809216Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1638,
+          "startedAt": "2026-10-08T03:19:06.809216Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [],
+      "procsBefore": [
+        "1638 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1638 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: 1024-byte constrained application, cold; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: 1024-byte constrained application, running; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [
+        {
+          "pid": 1834,
+          "startedAt": "2026-10-08T03:26:25.152899Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 1834,
+          "startedAt": "2026-10-08T03:26:25.152899Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [],
+      "procsBefore": [
+        "1834 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "1834 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: 1500-byte constrained application, cold; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: 1500-byte constrained application, running; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched.",
+            "path": [
+              "workspaceLaunchApplication"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [
+        {
+          "pid": 2096,
+          "startedAt": "2026-10-08T03:34:50.703565Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 2096,
+          "startedAt": "2026-10-08T03:34:50.703565Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [],
+      "procsBefore": [
+        "2096 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "2096 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: 1500-byte constrained application, cold; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [],
+      "log": [],
+      "procsBefore": [],
+      "procsAfter": [],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: 1500-byte constrained application, running; no substitution",
+    "status": "failed",
+    "notes": "guidance does not name the stage, long spelling, byte count and no request; ",
+    "observed": {
+      "answer": {
+        "classification": "failed",
+        "status": null,
+        "dependency": null,
+        "errors": [
+          {
+            "classification": "failed",
+            "message": "The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened.",
+            "path": [
+              "workspaceOpenPath"
+            ],
+            "kind": "failed",
+            "permissionClass": null,
+            "requiredCapability": null,
+            "requiredCapabilities": null,
+            "phase": null,
+            "osPermission": null,
+            "permissionOwner": null,
+            "reason": null,
+            "requestState": null
+          }
+        ],
+        "process": null,
+        "actionEffect": "may-have-begun",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [
+        {
+          "pid": 2275,
+          "startedAt": "2026-10-08T03:38:21.657503Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "after": [
+        {
+          "pid": 2275,
+          "startedAt": "2026-10-08T03:38:21.657503Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [],
+      "procsBefore": [
+        "2275 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "procsAfter": [
+        "2275 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": null,
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: constrained short A beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2436,
+          "startedAt": "2026-10-08T03:42:15.624917Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2436,
+          "startedAt": "2026-10-08T03:42:15.624917Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791430935724,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 2436
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2436 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2436,
+        "startedAt": "2026-10-08T03:42:15.624917Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: constrained short A beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2509,
+          "startedAt": "2026-10-08T03:44:10.154495Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/A/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2509,
+          "startedAt": "2026-10-08T03:44:10.154495Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791431050233,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "open",
+          "label": "A",
+          "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+          "pid": 2509
+        },
+        {
+          "atMs": 1791431050251,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 2509
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2509 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2509,
+        "startedAt": "2026-10-08T03:44:10.154495Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: constrained short B beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2542,
+          "startedAt": "2026-10-08T03:44:19.706521Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2542,
+          "startedAt": "2026-10-08T03:44:19.706521Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791431060150,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 2542
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2542 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2542,
+        "startedAt": "2026-10-08T03:44:19.706521Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: constrained short B beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2575,
+          "startedAt": "2026-10-08T03:44:51.049909Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture",
+          "applicationPath": "/Users/admin/install-fx/B/Fixture.app"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2575,
+          "startedAt": "2026-10-08T03:44:51.049909Z",
+          "bundle": "/Users/admin/install-fx/B/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791431091134,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "open",
+          "label": "B",
+          "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+          "pid": 2575
+        },
+        {
+          "atMs": 1791431091151,
+          "bundlePath": "/Users/admin/install-fx/B/Fixture.app",
+          "event": "launched",
+          "label": "B",
+          "pid": 2575
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2575 /Users/admin/install-fx/B/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2575,
+        "startedAt": "2026-10-08T03:44:51.049909Z",
+        "bundle": "/Users/admin/install-fx/B/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "launch: unconstrained short preferred A beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2641,
+          "startedAt": "2026-10-08T03:47:41.629368Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        },
+        "path": null,
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2641,
+          "startedAt": "2026-10-08T03:47:41.629368Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791431261718,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 2641
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2641 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2641,
+        "startedAt": "2026-10-08T03:47:41.629368Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "open: unconstrained short preferred A beside long copies on disk",
+    "status": "passed",
+    "notes": "",
+    "observed": {
+      "answer": {
+        "classification": "ok",
+        "status": "AVAILABLE",
+        "dependency": null,
+        "errors": [],
+        "process": {
+          "pid": 2696,
+          "startedAt": "2026-10-08T03:48:47.103926Z"
+        },
+        "actionEffect": "acknowledged",
+        "application": {
+          "bundleIdentifier": "dev.koine.test.InstallationFixture"
+        },
+        "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+        "selectionObserved": null
+      },
+      "before": [],
+      "after": [
+        {
+          "pid": 2696,
+          "startedAt": "2026-10-08T03:48:47.103926Z",
+          "bundle": "/Users/admin/install-fx/A/Fixture.app"
+        }
+      ],
+      "log": [
+        {
+          "atMs": 1791431327189,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "open",
+          "label": "A",
+          "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+          "pid": 2696
+        },
+        {
+          "atMs": 1791431327208,
+          "bundlePath": "/Users/admin/install-fx/A/Fixture.app",
+          "event": "launched",
+          "label": "A",
+          "pid": 2696
+        }
+      ],
+      "procsBefore": [],
+      "procsAfter": [
+        "2696 /Users/admin/install-fx/A/Fixture.app/Contents/MacOS/Fixture"
+      ],
+      "witness": {
+        "pid": 2696,
+        "startedAt": "2026-10-08T03:48:47.103926Z",
+        "bundle": "/Users/admin/install-fx/A/Fixture.app"
+      },
+      "registrationBefore": null,
+      "registrationAfter": null
+    }
+  },
+  {
+    "section": "registration",
+    "case": "preferred long copy refusal, cold and with a short copy running",
+    "status": "pending",
+    "notes": "The measured native preferred copy is short. Selected-short successes cannot pass this subject."
+  },
+  {
+    "section": "registration",
+    "case": "short selected beside registered long copy in both enumeration orders",
+    "status": "pending",
+    "registration": "dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app",
+    "notes": "None of six bounded attempts made NSWorkspace report the long spelling. Disk-only short successes do not pass registered-long subjects."
+  },
+  {
+    "section": "control",
+    "case": "independent 1023-byte Finder selection",
+    "status": "passed",
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/install-fx/control-document/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/",
+      "title": "d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "selected": [
+        {
+          "path": "/Users/admin/install-fx/control-document/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/control.koineinstall",
+          "kind": "Installation fixture document",
+          "name": "control.koineinstall"
+        }
+      ]
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "short reveal finds Finder beside long copies",
+    "status": "passed",
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/install-fx/docs/",
+      "title": "docs",
+      "selected": [
+        {
+          "path": "/Users/admin/install-fx/docs/note-1.koineinstall",
+          "kind": "Installation fixture document",
+          "name": "note-1.koineinstall"
+        }
+      ]
+    }
+  },
+  {
+    "section": "application-locations",
+    "case": "no system dialog after the section",
+    "status": "passed"
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]
