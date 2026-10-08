@@ -180,6 +180,14 @@ complete-resource review k120 remains live.
 
 ## Native-resource design promotion
 
+Pre-open witness k126 is now a live node: boundary k189 and its review expose
+missing bootstrap and policy-target facts; metadata requirements k190 must
+decide the specific call policy before returned contract k191. The full-node
+review remains mandatory before k127, then k123/k120/k30 consume the reconciled
+chain. No speculative open, literal-only alias blocking, recursive witness walk
+or systematic all-home failure is accepted. Public-metadata candidates are
+unapproved; budgets/consent/domain remain unchanged and k93 needs actual loss.
+
 k113 completes the event/subject construction design in
 docs/verification/search-serviceability.md and workspace-search's construction
 contract. The fixed loss-aware sink/site controls, passive actual NIO

@@ -245,6 +245,10 @@ visible. API design must resolve a conditional tool effect before implementation
 the phrase “plus effects” is not a completed trace.
 
 Search's [native allocation scope decision](workspace-search.md#native-allocation-decision)
+remains separate from the [pre-open proof boundary](workspace-search.md#pre-open-proof-boundary):
+bootstrap and policy-link target identity need a metadata-policy decision,
+returned witness design and mandatory reviews. No new call, consent, budget,
+literal-only policy or systematic home/default workflow loss is selected. The allocation decision
 retains the single-process posture after the operator declined helper design,
 questioning its necessity. Selected [resolution/policy/spelling/name design](workspace-search.md#path-design-dependencies) requires review before long-path classification design/review, then the complete-resource review/planning; selected path-based long-path classification is unresolved. The allocation ownership contract separates
 owned/opaque demand, bounds copied native values, serializes two-credit walks,

@@ -1,4 +1,4 @@
-# search-preopen-witnesses-k126
+# search-preopen-witnesses-k126 — brief
 
 
 ## Goal
@@ -60,3 +60,47 @@ required target-alias proof may silently become literal-only blocking.
 
 No new consent, entitlement, usage key, helper, private policy, raised account,
 shorter ceiling/domain, incompatible version or changed k119 call set is approved.
+
+## Decomposition
+
+The initial contract/source read exposed a metadata-policy decision outside the
+current approval, rather than supplying a complete witness algorithm. Preserve
+every original Done when condition above. This node remains live through:
+
+1. `search-preopen-boundary-k189`: finite public-source/contract analysis,
+   concrete approval alternatives, affected summaries and browser presentation.
+   Its load-bearing review precedes the metadata decision; integration, if
+   earned, must precede that consumer too. No native experiment is cut here.
+2. `search-preopen-metadata-k190`: obtain Antony's decision on the specific
+   bootstrap and target-alias metadata policy. Approval to design is distinct
+   from approval to probe, new consent/setup or workflow loss.
+3. `search-preopen-contract-k191`: return to all original k126 completion
+   conditions under that decision; escalate remaining gaps rather than silently
+   changing domain or accounts. This closes k126 only after the full design is
+   coherent. The mandatory node review is placed before k127; its earned
+   integration also precedes k127. K123/k120/k30 still consume that chain.
+
+## Decisions (running log)
+
+- Adopt the mandated design leaf in the authoritative jj workspace; initial
+  working copy was empty on `00e2b9a7`. The graph CLI refused an active
+  pre-coordination/unverified generation, so use direct document/source reads
+  and make no generation, coverage or current implementation claim.
+- A no-follow device mismatch can reject an unadmitted transition before open,
+  but selected descriptor metadata cannot establish an unknown bootstrap mount
+  first. Exact fixed mountpoint spelling is not that missing proof. No safe
+  Data/home/Preboot bootstrap algorithm is claimed by this boundary analysis.
+- No-follow policy-route link metadata identifies the link, not its target.
+  Proved blocked-ancestor confinement can remove a duplicate proof, but a
+  textual prefix or encountered Library cannot prove a suffix will not escape.
+  Relocated target acquisition has an ordering counterexample when Work/Docs
+  redirects back to Work, or another pending policy link targets its parent.
+- Recommend a narrow public-metadata design revision for explicit human
+  consideration. Cached getfsstat/MNT_NOWAIT and fixed-policy target-following
+  fstatat are unapproved concrete candidates, not changed k119 calls. Their
+  stale/length/foreign-lookup/error/resource/prompt semantics still require a
+  complete design under existing accounts and a mandatory review.
+- Decompose at that decision. Complete only the finite boundary child in this
+  session; keep the original node's full witness design and acceptance
+  obligations live. No consent/setup, literal-only policy, wholesale home loss,
+  native evidence chain or in-session reviewer is adopted.

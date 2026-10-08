@@ -367,6 +367,11 @@ nothing".
 **Designed, not served yet.** The selected
 [path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
 checks parent and child policy before opening, and preserves representable names.
+The [pre-open boundary](specs/workspace-search.md#pre-open-proof-boundary)
+identifies missing bootstrap and symlinked-policy-target facts. A metadata-policy
+decision and returned witness design remain required; no cached mount or
+target-following policy call is selected, and no systematically failing home
+workflow is accepted. A refused registration URL cannot prove UNREGISTERED.
 Pre-open mount/symlink witnesses and replay/size-phase repairs need mandatory
 producer reviews before long-path classification design/review, then the
 complete-resource review/planning; long-result action support needs its own

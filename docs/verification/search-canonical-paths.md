@@ -1,5 +1,12 @@
 # Canonical directory call analysis
 
+The [pre-open boundary analysis](search-preopen-boundary.md) identifies missing
+mount-bootstrap and symlinked-policy-target proofs in the selected call policy.
+A metadata-policy decision, returned witness design and mandatory reviews
+precede reliance on these subjects. The cached mount and target-following policy
+metadata candidates are unapproved; no new call, native result or reduced
+home/default workflow is selected here.
+
 This is source/SDK analysis for the
 [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
 not a native search measurement. Implementation, independent provider/GraphQL

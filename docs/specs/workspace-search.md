@@ -21,6 +21,10 @@ keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
 **Path review requires witness and observation-phase repairs before classification.**
+The [pre-open proof boundary](#pre-open-proof-boundary) now identifies the
+missing bootstrap and policy-link facts. A metadata-policy decision and returned
+witness design are required; no cached mount catalogue or target-following
+policy call is selected by that analysis.
 Narrow fixed-region Preboot admission permits its measured read-write layout.
 Per-root FIFO breadth-first work finishes shallower admitted listings before
 deeper ones, preserving later home-root names against an early enormous branch.
@@ -390,6 +394,47 @@ Any measured or proposed workflow loss goes to the existing protected-home
 decision before it becomes a dependency. Fixed source/work/scratch limits and
 spelling costs below can still omit useful work. They must be measured and
 presented to that decision before accepted workflow coverage depends on them.
+
+### Pre-open proof boundary
+
+**Metadata-policy decision required, not a completed witness algorithm.** The
+[boundary analysis](../verification/search-preopen-boundary.md) separates the
+current proofs, dependency scopes, concrete alternatives and acceptance subjects;
+the [focused view](../design/architecture/index.html#diagram-search-preopen)
+shows where acquisition must stop. No-follow child device metadata can reject an
+unestablished foreign transition before open. It cannot establish that device's
+mount generation, startup membership or path-from-ID capability. The selected
+descriptor mount/capability calls need an already opened object. An exact fixed
+startup/data/Preboot pathname alone cannot authorize opening an unknown device
+to obtain that proof. `/` needs a bounded initial namespace-anchor rule, and the
+OS-supplied actual home needs independently proved startup transit and protected
+policy bootstrap; neither is broad traversal permission.
+
+A no-follow policy-route link likewise supplies its own identity, not its
+target's. Proved confinement beneath an established blocked ancestor can remove
+a redundant target witness. Merely encountering blocked Library on a route
+does not prove that its remaining links or native `..` stay confined. Refuse
+that route before Library access and retain any otherwise-required outside-root
+alias proof as unsettled. Relocated Documents into ordinary Work/Docs needs native
+target-alias identity across case/normalization/Data variants. A target walk
+that opens Work before learning Docs redirects back to Work has opened the
+protected target during witness construction. No recursive or policy-exempt
+witness walk, literal-only fallback or systematic home failure is selected.
+
+Returned design must bind proof requirements to each root/target and distinguish
+established absence, observed replacement, uncertainty and job-wide account
+overflow. Initial missing proof uses dependency-scoped INSPECTION_FAILED
+REMAINDER, not fabricated absence/unsupported classification; established
+unadmitted device uses MOUNT_BOUNDARY. Shared current/prefix failure stops one
+root; independent target under a stable parent stays exact, and checked-link
+failure stays ENTRY. A refused registration/preferred target prevents negative
+finalization. These are obligations on the eventual implementation, not approval
+of default/home workflow loss. The metadata-policy recommendation is a narrow
+public-call design revision; cached getfsstat/MNT_NOWAIT and fixed-policy-route
+target-following fstatat are unapproved candidates requiring their own complete
+bounded contract. The existing call set, accounts, Q/S, two temporaries, wait,
+worker cleanup/freeze/recovery, domain, authority and compatibility still bind.
+Prompt/hydration, useful coverage and binary/native acceptance remain pending.
 
 ### Bounded component resolution
 

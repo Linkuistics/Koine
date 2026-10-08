@@ -11,6 +11,12 @@ under those boundaries. Produce findings only; implementation planning waits
 for this review and any earned integration.
 
 ## Context
+
+Pre-open witness node k126 is still live through boundary/review k189,
+metadata decision k190, returned contract k191 and whole-node review. Consume
+that reconciled chain, then k127/k123 and their reviews, before this complete
+resource read. The boundary analysis is neither changed k119 calls nor a native
+proof, default/home pass or accepted workflow loss.
 The producer commit names both search-serviceability-subjects-k113 and
 search-native-resources-k109. Review its final artifact and relevant inherited
 decisions, not merely the last child's diff:

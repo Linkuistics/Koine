@@ -160,6 +160,13 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
+Pre-open witness k126 is now a live node. Boundary k189 identifies missing
+bootstrap/target-alias proofs and recommends a narrow public-metadata design
+revision for explicit decision k190; returned contract k191 and the mandatory
+whole-node review precede k127/k123/k120/k30. No new call policy, consent,
+accounts, domain or accepted home/default workflow loss follows from the
+boundary. K93 still owns actual per-witness omissions.
+
 `launch-and-open-k6` and its final node `long-locations-k172` deliver the
 action-only workspace release/schema 1.0.1: all four operations, the twelve
 launchers, installation selection and grant disclosure, independently retained

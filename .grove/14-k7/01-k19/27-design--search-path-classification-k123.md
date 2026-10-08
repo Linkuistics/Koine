@@ -9,6 +9,11 @@ omission band or claiming queue reachability from capacity arithmetic.
 
 ## Context
 
+K126 remains a live witness node: reviewed boundary k189, metadata decision
+k190, returned contract k191 and mandatory whole-node review precede k127 and
+this consumer. docs/verification/search-preopen-boundary.md approves no cached
+mount or target-following policy route; classification must not fill that gap.
+
 - Findings: `search-canonical-paths-k110` at
   `b9a5d6401257a8b3f66973330edfdc065fbf3440`; triage: `search-canonical-paths-k121`.
 - Consume `search-path-resolution-k122` and its mandatory review/integration

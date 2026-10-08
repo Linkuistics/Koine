@@ -2,33 +2,32 @@
   "title": "Koine provider architecture",
   "intro": "The workflow extension is designed and pending implementation; the baseline views describe the served desktop contract. All providers share one resident Koine process and its native limits. Graphs begin at the node labelled Start here; sequences read from their first message. On narrow screens use native size and pan, the SVG export, or the reflowable spec.",
   "discussion": {
-    "title": "Long locations in v1: resolve truthfully, refuse at the application hand-off",
-    "status": "Mandatory review k166 integrated · Antony deferred long-path application support past v1 (2026-10-07, Koine#1) · unimplemented",
-    "summary": "After the separated local naming collection, Antony stopped the long-path investigation. Koine’s own filesystem work resolves locations component by component from search-only directory handles (decision filesystem-access-is-descriptor-relative), so a missing location is PATH_NOT_FOUND or APPLICATION_NOT_INSTALLED at any length and an extant one is never reported missing. An extant location whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is refused with failed before any application request; 1,023 bytes is the longest handed over, and guidance names the hand-off limit and byte count. The review integration fixed that count, staged the order (target first, then a supplied or discovered application, with each location's limit before any pathname call on it, a discovered application's after the read that found it, and never on an unequal registered candidate), kept skipping established-absent candidates, made cycles a repeated resolver state including the containing directory, allowed 32 expansions, limited impossible-name proof to ASCII and kept reveal’s no-follow root rule. Within the limit the accepted short-path route is unchanged. No workaround, new error kind, input bound or shorter search ceiling; search results stay visible and copyable. Open: first-use prompt behaviour of search-only resolution in protected folders is unmeasured and is an acceptance obligation; a prompt would go to Antony. The retired route-candidates view’s evidence lives in the route evaluation and Koine#1. Planning follows.",
+    "title": "Pre-open witnesses: decide the metadata policy before acquisition",
+    "status": "Boundary analysis complete; alternatives unapproved; returned witness design and reviews pending",
+    "summary": "No-follow child metadata can refuse foreign devices but supplies neither their mount classification nor a policy link target identity. The current bootstrap and alias-proof ordering remain incomplete. The recommendation is a narrow public-metadata design revision; cached mount observations and fixed-policy target-following status are concrete unapproved candidates. No new consent, accounts, smaller domain or accepted home/default loss. Replay/size phases and classification remain subsequent dependencies.",
     "diagramIds": [
-      "workspace-long-locations",
-      "search-handoff",
-      "workspace-open",
-      "workspace-outcomes",
-      "workspace-inspection",
-      "search-canonical"
+      "search-preopen",
+      "search-canonical",
+      "search-inspection",
+      "search-coverage",
+      "workspace-inspection"
     ],
     "updatedDiagrams": [
       {
-        "id": "workspace-long-locations",
-        "summary": "Redrawn for v1 and its review: target and application stages, resolution outcomes, the hand-off limit refusal, and the unchanged short-path route within the limit."
+        "id": "search-preopen",
+        "summary": "Added the pre-open proof gaps, stop scopes and unapproved metadata-policy alternatives."
       },
       {
-        "id": "search-handoff",
-        "summary": "The long-location note and action edge now state the v1 refusal instead of an unresolved route."
+        "id": "search-canonical",
+        "summary": "Points to the metadata-policy decision before unknown-device or policy-target acquisition."
       },
       {
-        "id": "workspace-open",
-        "summary": "The inspection note and uncertain-inspection branch now state v1 resolution and the hand-off limit refusal."
+        "id": "search-inspection",
+        "summary": "Separates the witness metadata-policy decision from the later replay/metadata phase repair."
       },
       {
-        "id": "workspace-outcomes",
-        "summary": "The inspection node now says absence comes only from Koine’s own resolution and names the v1 refusal."
+        "id": "search-coverage",
+        "summary": "Marks pre-open metadata policy as undecided before witness admission."
       }
     ]
   },
@@ -36,7 +35,7 @@
     {
       "id": "search",
       "title": "Application and file search · designed",
-      "description": "Resolver bounds and name-preserving locations remain selected. Review found missing pre-open foreign-mount/symlink witness rules and incomplete replay/metadata phases; current/prefix size scopes need independent-proof repair. Two producer/review chains precede classification and its review, then whole-resource review/planning. The search ceiling is no actionability guarantee: in v1 an action refuses an extant location too long for the application hand-off, pending launch/open review. No call set, account, domain, consent or accepted workflow coverage changes; native/binary/no-dialog/useful outcomes and the operator omissions decision remain pending."
+      "description": "Pre-open bootstrap and policy-link proof gaps require a metadata-policy decision, returned witness design and mandatory reviews. Cached mount observations and target-following policy status are unapproved candidates. Replay/size phases, classification and their reviews then precede complete-resource review/planning. No new consent, accounts, smaller domain or accepted home/default loss; native, binary, prompt and useful-coverage acceptance remain pending."
     },
     {
       "id": "workspace",
@@ -76,6 +75,15 @@
   ],
   "diagrams": [
     {
+      "id": "search-preopen",
+      "group": "search",
+      "title": "Establish pre-open proofs before acquiring a child",
+      "renderer": "svg",
+      "source": "search-preopen.d2",
+      "rendered": "search-preopen.svg",
+      "caption": "Current proof boundary, not an executable acquisition algorithm. The existing no-follow probe identifies a child device or the policy link itself; descriptor mount/capability checks need an open, and a link supplies no target-alias identity. Fixed pathnames and blocked textual prefixes cannot fill missing proofs. Unknown foreign open, recursive or policy-exempt witness walks, literal-only blocking and wholesale home loss are unapproved. A narrow public-metadata design revision is recommended; getfsstat/MNT_NOWAIT and fixed-policy target-following fstatat remain unapproved candidates with stale/size/foreign/prompt concerns. Original witness design, mandatory reviews, observation phases and classification remain live; no native acceptance."
+    },
+    {
       "id": "search-serviceability",
       "group": "search",
       "title": "Observe applicable events and independent serviceability",
@@ -100,7 +108,7 @@
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
-      "caption": "Marks missing replay/bracket/final-membership phases; no third descriptor or uncharged reacquisition is inferred. Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending. Pre-open witness and replay/size-phase producer repairs/reviews precede long-path classification design/review, then complete-resource review/planning. Same-identity byte variants are not independent change; retained app spelling remains first-finalized."
+      "caption": "Pre-open boundary now requires a metadata-policy decision and returned witness design; cached mount observations and fixed-policy target-following status remain unapproved. Marks missing replay/bracket/final-membership phases; no third descriptor or uncharged reacquisition is inferred. Phase flow, not an atomic snapshot or model-checked state machine. Root streams keep separate credits. Capture candidate values and close its temporaries before checking one registration/preferred URL at a time; release native result owners and reacquire the original candidate before committing bounded values and diagnostics together. Observed change follows the spec scope rules. Uncertain metadata may still finalize a reveal/copy candidate as UNKNOWN when path/identity are established; this view focuses on ownership rather than every value branch. Freeze/refusal discards uncommitted data; late acquisitions close only on the worker. Late resource errors latch before membership release, while ambiguous close retains refusal/Q until process restart. The check-to-call/ABA and opaque-allocation limits survive. Native ordering/prompt/serviceability subjects remain pending. Pre-open witness and replay/size-phase producer repairs/reviews precede long-path classification design/review, then complete-resource review/planning. Same-identity byte variants are not independent change; retained app spelling remains first-finalized."
     },
     {
       "id": "search-canonical",
@@ -109,7 +117,7 @@
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "Marks mount/symlink witnesses, replay composition and current/prefix size scopes as producer repairs; preserves resolver bounds and names. Selected design, not native acceptance. One component resolver at every length/source uses 32 link expansions, an 8193-byte readlink buffer, 8192-byte pending text and derived finite work. Native dot/dot-dot/mount/firmlink transitions and absolute restarts never use lexical deletion. Parent and no-follow child identities/known-policy lookups precede open; dialog/hydration acceptance remains required. fsgetpath reports cached spelling with default firmlink presentation, not a unique identity string. Fresh directory reports supply descendant prefixes; queued listed locations and earlier results remain observations. Retained app identities keep first finalized spelling. Same-identity byte differences alone prove no movement/failure; independent association/reopened expected identity can expose change, while first unassociated observations lack a detector. Full-buffer ENOSPC is size, not change. All file entry kinds retain representable 8192-byte locations; queued descent-size refusal uses VALUE_LIMIT SUBTREE without name withdrawal/truncation. Shared proof failure stops one root; target failures stay exact and links stay ENTRY. Witness and observation-phase repairs/reviews precede classification design/review, then complete-resource review/planning; native queue/classification/no-dialog/useful outcomes remain pending."
+      "caption": "Pre-open boundary now requires a metadata-policy decision and returned witness design; cached mount observations and fixed-policy target-following status remain unapproved. Marks mount/symlink witnesses, replay composition and current/prefix size scopes as producer repairs; preserves resolver bounds and names. Selected design, not native acceptance. One component resolver at every length/source uses 32 link expansions, an 8193-byte readlink buffer, 8192-byte pending text and derived finite work. Native dot/dot-dot/mount/firmlink transitions and absolute restarts never use lexical deletion. Parent and no-follow child identities/known-policy lookups precede open; dialog/hydration acceptance remains required. fsgetpath reports cached spelling with default firmlink presentation, not a unique identity string. Fresh directory reports supply descendant prefixes; queued listed locations and earlier results remain observations. Retained app identities keep first finalized spelling. Same-identity byte differences alone prove no movement/failure; independent association/reopened expected identity can expose change, while first unassociated observations lack a detector. Full-buffer ENOSPC is size, not change. All file entry kinds retain representable 8192-byte locations; queued descent-size refusal uses VALUE_LIMIT SUBTREE without name withdrawal/truncation. Shared proof failure stops one root; target failures stay exact and links stay ENTRY. Witness and observation-phase repairs/reviews precede classification design/review, then complete-resource review/planning; native queue/classification/no-dialog/useful outcomes remain pending."
     },
     {
       "id": "search-traversal",
@@ -127,7 +135,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Retains exact name-preserving queued size semantics; distinguishes genuine shared-proof failure from unresolved current/prefix size scope. Selected observation/coverage design, not runtime acceptance. Required witnesses are charged before turns; native witness errors refuse dependent roots while account overflow refuses the job. Protected/policy scopes remain explicit. Invalid/publicly unrepresentable names use actual-parent CHILD_GROUP; ordinary directory anchors stay matchable under depth/frontier/native descent limits. Known queued native descent ENOSPC under unchanged association is VALUE_LIMIT SUBTREE/null count with no name withdrawal or inferred truncation. Other target failures stay exact; shared proof failure stops one root. Outcome/no-progress precedence, lifecycle errors and compatible typed BLOCKED transport remain unchanged. Witness and observation-phase repairs/reviews precede classification design/review, then resource review/planning. No native or reduced workflow acceptance is supplied."
+      "caption": "Pre-open boundary now requires a metadata-policy decision and returned witness design; cached mount observations and fixed-policy target-following status remain unapproved. Retains exact name-preserving queued size semantics; distinguishes genuine shared-proof failure from unresolved current/prefix size scope. Selected observation/coverage design, not runtime acceptance. Required witnesses are charged before turns; native witness errors refuse dependent roots while account overflow refuses the job. Protected/policy scopes remain explicit. Invalid/publicly unrepresentable names use actual-parent CHILD_GROUP; ordinary directory anchors stay matchable under depth/frontier/native descent limits. Known queued native descent ENOSPC under unchanged association is VALUE_LIMIT SUBTREE/null count with no name withdrawal or inferred truncation. Other target failures stay exact; shared proof failure stops one root. Outcome/no-progress precedence, lifecycle errors and compatible typed BLOCKED transport remain unchanged. Witness and observation-phase repairs/reviews precede classification design/review, then resource review/planning. No native or reduced workflow acceptance is supplied."
     },
     {
       "id": "search-handoff",

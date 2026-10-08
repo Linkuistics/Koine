@@ -7,6 +7,12 @@ vertical `impl` leaves that each stay verifiable through the three seams.
 
 ## Context
 
+Witness node search-preopen-witnesses-k126 now contains finite boundary k189,
+its review, explicit metadata-policy requirements k190 and returned design
+k191. The mandatory whole-node review precedes k127, then classification and
+complete-resource review. No implementation may consume the unapproved cached
+mount/target-following metadata candidates from the boundary analysis.
+
 - `app-and-file-search-k19`'s design and evidence.
 - `app-and-file-search-k95`'s triage and the subsequent producer/review repairs.
   Do not cut implementation from the withdrawn minor-2 nil-consent proposal or

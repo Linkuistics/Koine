@@ -9,6 +9,7 @@ exports:
 - [first-use metadata and handler lookup](index.html#diagram-workspace-inspection);
 - [search discovery and protected traversal](index.html#diagram-search-discovery);
 - [canonical path observation and native size refusals](index.html#diagram-search-canonical);
+- [pre-open mount and policy-target proof boundary](index.html#diagram-search-preopen);
 - [serviceability evidence and failure controls](index.html#diagram-search-serviceability);
 - [native allocation ownership and observable handoff](index.html#diagram-search-resources)
   and [two-temporary inspection ownership](index.html#diagram-search-inspection);
@@ -43,7 +44,47 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 
-The current discussion is **long locations in v1**. On 2026-10-07 Antony
+The current discussion is **pre-open witness metadata policy**. Start at
+[Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen).
+The current no-follow device probe and descriptor mount checks do not supply
+the missing bootstrap fact before a foreign-device open; a policy-route link
+supplies no target identity. The [boundary analysis](../../verification/search-preopen-boundary.md)
+documents proof dependencies, the Work/Docs redirect counterexample and concrete
+metadata-policy alternatives. A narrow public-metadata design revision is
+recommended for approval; cached mount observations and fixed-policy
+target-following status remain unapproved. The original witness design, its
+mandatory review, replay/size phases and classification stay live. No new call,
+consent, budget or accepted home/default loss is selected.
+
+Current changes:
+
+- [Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen) — Added the bootstrap and policy-target gaps, pre-open stop scopes and unapproved alternatives.
+- [Observe a checked directory without alternate spelling](index.html#diagram-search-canonical) — Points to the metadata-policy decision before unknown-device or policy-target acquisition.
+- [Inspect serially with two temporary descriptors](index.html#diagram-search-inspection) — Separates witness metadata policy from later replay/metadata phase repairs.
+- [Keep partial coverage and blocking in typed search data](index.html#diagram-search-coverage) — Marks the metadata decision and returned witness design pending before admission.
+- [Pre-open proof boundary](../../specs/workspace-search.md#pre-open-proof-boundary) — States the missing facts and preserved refusal/resource obligations without selecting a replacement algorithm.
+- [Boundary choices and construction](../../verification/search-preopen-boundary.md#concrete-metadata-policy-choices) — Compares candidate design revisions and names the evidence needed to reverse the recommendation.
+
+The unchanged resource, serviceability and protected-metadata views remain
+discussion context. Open the focused discussion at
+<http://127.0.0.1:8943/#discussion> with `task design:serve PORT=8943`.
+Graph reading begins at the dark, labelled Start here node; narrow whole-graph
+fit is an overview, with native-size/export zoom and the reflowable spec for detail.
+
+The pre-open revision was inspected in Firefox 151.0.3 in the isolated Ubuntu
+24.04.4 clone `koine-preopen-k189`. Fresh pre-open and discussion deep links
+reached their intended titles and Current/Updated markers. The focused view
+rendered in light and full-width 1,920-pixel dark appearance; all branches were
+also checked in a complete light SVG raster. A D2 reserved node name and two
+overlapping branch labels were corrected before the final inspection. The
+800-pixel responsive dark discussion reflowed its status, recommendation and
+relevant links; narrow graph fit remains an overview. Canonical, inspection and
+coverage exports were inspected as complete light rasters. Host/guest SHA-256
+values matched item by item for index.html, diagrams.json and the four changed
+D2/SVG pairs. This is presentation evidence only: no Koine search, metadata,
+prompt, hydration, resource or binary acceptance subject ran.
+
+The preceding discussion covered **long locations in v1**. On 2026-10-07 Antony
 deferred making applications accept long locations past v1
 ([Linkuistics/Koine#1](https://github.com/Linkuistics/Koine/issues/1)) after the
 [separated local naming collection](../../verification/separated-local-url-naming-prototype.md).
@@ -62,7 +103,7 @@ planning. The [route evaluation](../../verification/long-action-route.md#v1-deci
 keeps every diagnostic as evidence, so the former route-candidates view, which
 drew the workaround search, is retired.
 
-Current changes:
+Earlier long-location changes:
 
 - [Resolve the location, then check the application hand-off limit](index.html#diagram-workspace-long-locations) — Redrawn for v1 and its review: target and application stages, resolution outcomes, the hand-off limit refusal, and the unchanged short-path route within the limit.
 - [Launch or open, then capture desktop state](index.html#diagram-workspace-open) — The inspection note and uncertain-inspection branch now state v1 resolution and the hand-off limit refusal.
@@ -158,8 +199,8 @@ outcome flow and long-location boundary with the same pinned renderer versions
 (ELK for the long-location view, Dagre for the outcome flow). Start with
 <http://127.0.0.1:8765/#diagram-workspace-open>.
 
-Run `task design:search-render` for the eight search views with D2 0.9.0,
-ELK for the canonical/resource/inspection views and Dagre for the remaining views, light theme 0
+Run `task design:search-render` for the nine search views with D2 0.9.0,
+ELK for the canonical/preopen/resource/inspection/serviceability views and Dagre for the remaining views, light theme 0
 and dark theme 200. Open
 <http://127.0.0.1:8765/#diagram-search-coverage>.
 Run `task design:search-check` for independent/composed SDL and example validation,
