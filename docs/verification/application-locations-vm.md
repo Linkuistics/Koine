@@ -2,9 +2,10 @@
 
 This record owns the finite observations of `application-location-observations-k186`,
 within `application-locations-vm-k181`. It distinguishes supplied long-application
-refusals and short workflows beside long copies **on disk** from the still-pending
-subjects requiring a long copy in native registration. The latter cannot pass
-from disk-only short success or from planner tests.
+refusals and short workflows beside long copies **on disk** from the unproved
+subjects requiring a long copy in native registration. Antony accepted the
+[native coverage limit](#accepted-native-coverage-limit) for those two subjects;
+neither disk-only short success nor planner tests pass them at V.
 
 ## Subjects and procedure
 
@@ -57,15 +58,52 @@ registration could run. The later query immediately before the short workflow
 section still lists only A/B and prefers A. This establishes what these routes
 exposed on this image, not impossibility across macOS or every registration route.
 
-Two original V subjects remain **pending**: a short selected copy beside an
+Two original V subjects could not be measured: a short selected copy beside an
 actually registered unequal long copy, in both observed enumeration orders;
 and a long preferred copy refused cold and with a short copy running. The [bounded prefix-link continuation](prefix-registration-vm.md),
 `long-application-registration-k187`, completed all twelve public registration
 states with independently established short route/long physical identities.
 Every long registration returned scan error -37; every final NSWorkspace query
-still lists only A/B and prefers A. Both native subjects remain pending.
-`long-application-acceptance-k188` carries the exact gap for Antony's explicit
-scope decision. No acceptance exception is made here.
+still lists only A/B and prefers A. Both native subjects remain unproved. Their
+raw verdicts remain pending; the following decision changes the acceptance
+scope without changing those measurements.
+
+## Accepted native coverage limit
+
+Antony accepted this coverage limit on **2026-10-08** in
+`long-application-acceptance-k188` ("accepted"). For workspace release/schema
+**1.0.1** on **macOS 26.5 (25F71), arm64**, these two native subjects are no longer
+prerequisites for closing the application-location increment:
+
+- A registered unequal long copy, at 1,024 or 1,500 bytes, actually enumerated
+  before and after the selected short copy for constrained launch and named open.
+- A physically long preferred copy refused for unconstrained launch and named
+  open, both cold and with a short copy of the same application running.
+
+Both behaviors remain **unproved at the native seams**. The substituted-adapter
+L/G contract checks and the supplied-literal refusals, disk-only short workflows,
+kernel-backed receipts and Finder observations above retain their recorded
+meaning. None is relabelled as registered-long or preferred-long acceptance.
+The [v1 contract](../specs/workspace-launch-and-open.md#long-location-action-boundary)
+still requires refusal of every over-limit literal, expanded or resolved
+application spelling before a request, with no substitution of another or
+running short copy.
+
+This decision accepts the measured fixture unavailability on this OS build,
+rather than commissioning more automatic registration experiments. It does not
+assert that macOS registration is universally impossible. Reopen the affected
+coverage when a concrete native setup exposes either required precondition:
+independently establish the physical long bundle's identity and length, then
+observe its actual native order or preference immediately before the request,
+after any running-copy setup. Measure the corresponding launch/open outcomes at
+V with the existing controlled observers. Other OS builds and actual-search
+handoff retain their own acceptance requirements; no production delivery route,
+consent or signing change is authorized.
+
+The retained raw records, pending verdicts and exit statuses remain unchanged.
+The evidence checkers still report unavailable preconditions with exit **3**;
+that is evidence of this coverage limit, not a native pass or a remaining
+closure prerequisite under the accepted scope.
 
 ## Retained observations and verdict correction
 
@@ -102,7 +140,9 @@ Its [input digests](application-locations-vm/reevaluation-inputs.sha256) are equ
 before/after; the [output digest](application-locations-vm/reevaluation-output.sha256)
 identifies the verdict artifact. Its exit **3** means the native-registration
 subjects remain pending.
-Re-evaluation records **19 passed observations and two pending subjects**.
+Re-evaluation records **19 passed observations and two pending subjects**. The
+two pending raw subjects now have the explicit coverage limit above; the
+re-evaluation artifact is unchanged.
 
 | Measured subject | Cases | Result |
 | --- | --- | --- |
@@ -112,7 +152,7 @@ Re-evaluation records **19 passed observations and two pending subjects**.
 | Short reveal beside long copies | 1 | `AVAILABLE`; Finder selects `note-1.koineinstall` |
 | Independent 1,023-byte delivery and Finder selection | 2 | Controlled at the admitted boundary |
 | Accessibility absent and no system dialog after the section | 2 | Retained live assertions |
-| Registered-long/both-order and preferred-long rows | 2 | **Pending** |
+| Registered-long/both-order and preferred-long rows | 2 | **Unproved; accepted native coverage limit** |
 
 The [predicate controls](../../scripts/check-application-location-observations.sh)
 start with real recorded successful delivery and the
@@ -127,7 +167,8 @@ observer was extracted unchanged from the accepted target-stage recipe.
 `task application-locations:vm` builds the app/client and measures in a fresh
 clone; `application-locations:vm-packaged` uses already built artifacts and
 `application-locations:vm-detached` records its actual exit in
-`.build/application-locations-vm/done`. Exit 3 preserves pending native subjects.
+`.build/application-locations-vm/done`. Exit 3 preserves the unavailable native
+subject verdicts; the accepted coverage limit does not rewrite recipe results.
 `task application-locations:fixtures-check` checks the recipe and mutation
 controls without a GUI. `task application-locations:reevaluate` checks this
 retained evidence without sending requests or starting a VM.
@@ -138,5 +179,6 @@ and replay fixes; another stopped at the previously uncaught optional symlink
 construction refusal. The completed run alone supplies this record. Its clone
 is stopped after Koine quits and [no longer present in Tart](application-locations-vm/cleanup.json).
 This adds V evidence only for the supplied literal
-refusals and disk-only short workflows above. Discovered-long refusal and native
-candidate ordering remain live; planner L/G evidence is not relabelled V.
+refusals and disk-only short workflows above. Native candidate ordering and
+preferred-long refusal remain unproved under the accepted coverage limit;
+planner L/G evidence is not relabelled V.

@@ -58,3 +58,26 @@ No new Finder selection acceptance or whole-run pass is claimed.
 - Do not weaken v1's hand-off refusal, introduce over-limit delivery workarounds,
   substitute another/running short copy, add production consent/signing changes,
   or relabel disk-only/L/G outcomes as native acceptance.
+
+## Decisions (running log)
+
+- Antony accepted the proposed coverage limit on 2026-10-08 ("accepted"). For
+  workspace release/schema 1.0.1 on macOS 26.5 (25F71), arm64, the two native
+  subjects are no longer prerequisites for closing this application-location
+  increment: a registered unequal long copy before and after the selected short
+  copy for constrained launch/named open, and a long preferred copy refused cold
+  and with a short copy running for unconstrained launch/named open. Both native
+  claims remain unproved; this is an explicit coverage limit, not a native pass.
+  Retain the L/G contract checks, accepted supplied literal refusals and disk-only
+  short effects/receipts. V1 still refuses every over-limit literal, expanded or
+  resolved application spelling without substitution. Reopen the affected
+  coverage when a concrete native setup exposes either required precondition,
+  with physical identity and actual native order/preference established at the
+  request. No additional automatic registration experiments, delivery workaround,
+  consent or signing change is authorized.
+- The existing public GraphQL, independently built native binary and isolated
+  TestAnyware macOS VM seams remain agreed; no new seam or production design is
+  introduced. Record this reversible acceptance-scope choice in the existing
+  spec and durable verification record rather than adding an ADR or another
+  spec. No further review leaf is needed for the precise scope change Antony
+  accepted; the measurements and contract remain unchanged.

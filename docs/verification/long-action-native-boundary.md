@@ -195,6 +195,15 @@ identities by the walk, never applying the hand-off limit after an acknowledged
 action. Those rows' independent witnesses survive only as refusals, a 1,023-byte
 positive subject and the short workflows beside a long copy.
 
+For workspace 1.0.1 on macOS 26.5 (25F71), arm64, Antony accepted a
+[native coverage limit](application-locations-vm.md#accepted-native-coverage-limit)
+for registered-long/both-order and preferred-long/cold/running launch/open
+subjects after the bounded registration fixtures exposed neither precondition.
+Both behaviors remain unproved, with L/G contract checks retained; they no
+longer block the application-location increment's closure on that build.
+The record states the evidence that reopens V measurement. This leaves the
+other subjects above and v1's refusal/no-substitution contract unchanged.
+
 The existing seams remain L (private adapter enabling point), G (public GraphQL),
 N (independent provider/host binaries) and V (signed isolated macOS). No new
 public seam is proposed. L does not exercise the errno/Foundation/plist mapping

@@ -6,7 +6,10 @@ resolved component by component after the read that found it, and refused at the
 limit before anything addresses it by path. No caller-influenced or registry-supplied location now reaches
 a whole-path call before the limit.** It is accepted at **L and G**. There is no N row for this stage and
 there cannot be one on a host, for the reason in [What N could not observe](#what-n-could-not-observe); its
-effect is for `application-locations-vm`. Every check was seen to fail against a deliberately broken
+short preferred-copy effects are recorded in [application-location V](application-locations-vm.md).
+Preferred-long refusal remains unproved under its
+[accepted coverage limit](application-locations-vm.md#accepted-native-coverage-limit).
+Every check was seen to fail against a deliberately broken
 provider.
 
 The contract is the [workspace spec](../specs/workspace-launch-and-open.md#order-of-target-and-application-stages)
@@ -79,8 +82,11 @@ A discovered location is the one Launch Services reports, and a host cannot arra
 application that is present and short would be launched, opened or revealed on this host, and no N suite sends
 that. So the over-limit discovered application, a cycle or an impossible name at a default handler, a Finder
 registration with another identifier and a long preferred copy refused without substitution are shown at L and G,
-with the decisions mutation-checked, and their effect on a real registration is left to
-`application-locations-vm`, which already names the long preferred copy.
+with the decisions mutation-checked. The
+[application-location record](application-locations-vm.md#accepted-native-coverage-limit)
+accepts the measured short preferred-copy effects and documents the native
+coverage limit for preferred-long refusal. The other native limitations above
+receive no additional acceptance or coverage exception from that decision.
 
 ## Findings of the fresh-context read
 

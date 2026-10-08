@@ -18,7 +18,11 @@ support is out of scope ([Linkuistics/Koine#1](https://github.com/Linkuistics/Ko
 
 - Every L, N, G and V subject the spec's "Subjects and versions" lists passes at
   its seam, including first-use prompt-free resolution in Desktop, Documents and
-  Downloads. Every row of the spec's two long-location acceptance entries that
+  Downloads, apart from Antony's explicit native coverage limit for workspace
+  1.0.1 on macOS 26.5 (25F71), arm64: registered-long ordering and preferred-long
+  refusal remain unproved, with their L/G contracts retained
+  (`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`).
+  Every row of the spec's two long-location acceptance entries that
   this node owns carries an evidence link, and the spec's "Designed for v1;
   unimplemented" status is brought to what was actually accepted.
 - The packaged workspace is release/schema 1.0.1 under `koine-desktop/1`, with
@@ -101,7 +105,11 @@ Subject ownership (the spec's bullets are the claim; each leaf names its own):
   `docs/verification/application-locations-vm.md`: 1,024/1,500-byte supplied
   refusals cold/running; exact short A/B and preferred A launch/open receipts;
   controlled Finder reveal. Native registered-long/both-order and preferred-long
-  rows remain pending. `application-locations-vm-k181` stays open for k187.
+  behaviors remain unproved under Antony's accepted coverage limit for workspace
+  1.0.1 on macOS 26.5 (25F71), arm64. The raw pending verdicts remain unchanged;
+  `application-locations-vm-k181` closes under its explicitly amended charter.
+  Its durable acceptance record states the reopening evidence. No other subject
+  receives a coverage exception.
 
 - **A prompt stops the work.** If search-only resolution prompts in Desktop,
   Documents or Downloads, the slice stops and the question goes to Antony. There
@@ -141,7 +149,10 @@ Subject ownership (the spec's bullets are the claim; each leaf names its own):
 - K187's bounded prefix-link matrix is complete: twelve native states, no long
   listed/preferred copy exposed, with exact physical identities and unchanged
   inputs. `docs/verification/prefix-registration-vm.md` records the gap and raw
-  recipe-only reveal matcher failure without adding a Finder V pass. The original
-  application V charter stays live in k181; `long-application-acceptance-k188`
-  now owns Antony's acceptance-scope decision. No further automatic registration
-  experiments or L/G-to-V relabelling are authorized by k187.
+  recipe-only reveal matcher failure without adding a Finder V pass. In
+  `long-application-acceptance-k188`, Antony accepted a scoped native coverage
+  limit, allowing k181 to close without passing either unavailable native subject.
+  Reopen the affected V coverage when a concrete native setup exposes the
+  physical long copy in the required actual order or preference at the request.
+  V1's hand-off refusal and no-substitution contract still bind; no further
+  automatic registration experiments or L/G-to-V relabelling are authorized.

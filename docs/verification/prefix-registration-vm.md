@@ -5,15 +5,18 @@ preconditions for registered-long/both-order or preferred-long acceptance on
 macOS **26.5 (25F71), arm64**. All twelve declared registration states completed;
 every long-copy registration returned scan error **-37**, exit **1**. Every final
 NSWorkspace query listed short A then B and preferred A. The original V subjects
-remain **pending**; this is measured unavailability of this fixture route, not a
-claim that every macOS registration route is impossible.
+remain **unproved**, with pending raw verdicts. Antony accepted an explicit
+[coverage limit](application-locations-vm.md#accepted-native-coverage-limit) on
+2026-10-08 for workspace 1.0.1 on this OS build. This is measured unavailability
+of this fixture route, not a claim that every macOS registration route is impossible.
 
 This continues the [application-location observations](application-locations-vm.md).
 Those supplied literal refusals and disk-only short effects/receipts remain the
 accepted slice. The prefix experiment adds native registration evidence and no
 new launch/open or Finder V acceptance. Planner L/G coverage does not pass the
-unavailable native subjects. Their acceptance scope needs Antony's explicit
-requirements decision before the application-location node can close.
+unavailable native subjects. The accepted limit removes only these two native
+subjects from the application-location node's closure prerequisites, while
+preserving their unproved status and the v1 refusal contract.
 
 ## Fixtures and fixed public matrix
 
@@ -125,6 +128,9 @@ reveal assertion has executable recorded-request coverage, but this corrected
 whole recipe has not been claimed as another VM run.
 
 No additional automatic registration experiments are authorized by this leaf.
-The human continuation must decide the acceptance scope for the unavailable
-native subjects, preserving v1's refusal of every long literal, expanded or
-resolved spelling and its prohibition on substituting a running short copy.
+The [accepted coverage limit](application-locations-vm.md#accepted-native-coverage-limit)
+records the exact two unproved subjects and their reopening evidence. It preserves
+v1's refusal of every over-limit literal, expanded or resolved spelling and its
+prohibition on substituting another or running short copy. The checker's exit 3
+continues to record unavailable native preconditions; the scope decision does not
+turn the raw run into a pass.

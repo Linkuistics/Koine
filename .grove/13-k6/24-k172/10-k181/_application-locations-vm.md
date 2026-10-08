@@ -7,6 +7,13 @@ before any delivery, short launch, named open and reveal keep working beside a
 long copy of the same application on disk, and a long copy that is the
 identifier's preferred one is refused, never replaced by another.
 
+Native registered-long ordering and preferred-long refusal remain unproved under
+Antony's accepted coverage limit for workspace 1.0.1 on macOS 26.5 (25F71), arm64.
+The exact scope and reopening evidence are in
+`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`.
+The runtime contract remains required; the two unavailable native subjects no
+longer block this increment's closure on that build.
+
 ## Context
 
 - `docs/specs/workspace-launch-and-open.md#subjects-and-versions` (V) and
@@ -28,19 +35,35 @@ identifier's preferred one is refused, never replaced by another.
   constrained launch and named open (selecting the short copy by `applicationPath`)
   work; unconstrained launch and named open work where the guest makes the short
   copy the identifier's preferred one; reveal still finds Finder. An
-  unconstructible registration leaves that subject pending and L does not pass it.
+  unavailable registered-long/both-order subject is covered only by the accepted
+  native coverage limit on the tested build; it remains unproved and L does not pass it.
 - **Preferred copy long.** Where the guest admits the long copy as the
   identifier's preferred one, an unconstrained launch and named open are `failed`
   with the guidance of the limit, name the long spelling and its byte count, and
   launch and open nothing, even with a short copy of the same application
   running. No other copy is substituted. If the guest will not make the long copy
-  preferred, that subject stays pending and the selected-short cases do not pass
-  it.
+  preferred, that subject remains unproved under the accepted native coverage
+  limit on the tested build; the selected-short cases do not pass it.
 - Receipts for the short workflows above carry a non-null process where the
   accepted short workflows do, observed through the kernel's identity for the
   returned process, so `receipt-executable-identity-k183` is seen to hold at V.
 - Evidence is a verification document linked from the spec's rows; the
   long-location acceptance entries of the spec carry their final status.
+
+## Accepted scope and test seams
+
+Antony accepted the coverage limit on 2026-10-08 ("accepted"). The existing
+public GraphQL, independently built native binary and isolated TestAnyware macOS
+VM seams remain the agreement. Keep the substituted-adapter L/G checks and the
+accepted supplied literal refusals and disk-only short effects/receipts. The
+registered unequal long copy before/after the selected short copy and the long
+preferred copy refused cold/running remain unproved at the native seams; the
+accepted limit removes only those two closure prerequisites for workspace 1.0.1
+on macOS 26.5 (25F71), arm64. The v1 refusal at every over-limit application
+spelling and prohibition on substitution still bind. A concrete setup exposing
+either physical long copy in the required actual native order or preference at
+the request reopens the corresponding V measurement. No further automatic
+registration experiments or production consent/signing changes are commissioned.
 
 ## Notes
 
@@ -105,6 +128,11 @@ identifier's preferred one is refused, never replaced by another.
   explicit canonical-guidance re-evaluation. The raw run's eight matcher failures
   remain preserved. Its inputs were unchanged and its clone is gone. Both native
   registration subjects remain pending; k187 is live, so this node does not close.
+- K188 records Antony's explicit acceptance of the scoped native coverage limit.
+  The raw measurements and pending verdicts remain unchanged. The accepted V
+  slice, the retained L/G checks and the two precisely disclosed unproved native
+  behaviors satisfy this node's amended charter; no additional experiment is
+  required for its closure on the tested build.
 
 ## Decomposition
 
@@ -131,5 +159,8 @@ final NSWorkspace query lists A then B and prefers A. All 55 recorded measuremen
 input entries remained unchanged before the subsequent recipe correction.
 The full matrix and raw later reveal-matcher failure are preserved in
 `docs/verification/prefix-registration-vm.md`; no new Finder selection V pass
-is claimed. Both original native preconditions remain pending. K188 is live,
-so this node stays open and no acceptance exception is adopted.
+is claimed. Both original native preconditions remain unproved under Antony's
+accepted coverage limit, recorded with its reopening evidence in
+`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`.
+The raw pending verdicts are retained; they no longer block this node's amended
+closure criteria on the tested build.

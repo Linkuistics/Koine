@@ -6,8 +6,12 @@ more at the application hand-off before any registration lookup or metadata read
 the chosen copy with the registered candidates by device and inode, so a long copy of the same
 application on disk never stops a workflow whose selected copy is short.** It is accepted at
 **L, G and N**, with one limit on N: Launch Services' registrations cannot be arranged on a
-host, so the candidate comparison is shown at L and G and its effect is left to
-`application-locations-vm`. Every check was seen to fail against a deliberately broken
+host, so the candidate comparison is shown at L and G. The
+[VM record](application-locations-vm.md) accepts the supplied literal refusals
+and disk-only short workflows; registered-long ordering and preferred-long
+refusal remain unproved under the
+[accepted coverage limit](application-locations-vm.md#accepted-native-coverage-limit).
+Every check was seen to fail against a deliberately broken
 provider. What the host cannot show is named in [What N could not observe](#what-n-could-not-observe).
 
 The contract is the [workspace spec](../specs/workspace-launch-and-open.md#order-of-target-and-application-stages)
@@ -90,8 +94,10 @@ claim was removed.
 
 - The candidate comparison against real registrations, a long copy beside a short one, and a
   long preferred copy refused without substitution: Launch Services' registrations cannot be
-  arranged on a host. L and G show the planner's decision; `application-locations-vm-k181` shows
-  the effect.
+  arranged on a host. L and G show the planner's decision. The
+  [VM record](application-locations-vm.md#accepted-native-coverage-limit) records
+  the accepted effects and the explicit native coverage limit for these two
+  unavailable subjects; neither received a native pass.
 - A present application launched or opened by its registered location: nothing is sent from this
   host, so every N row ends at a dependency, a mismatch or a refusal.
 - A handle the walk leaks and a link whose text changes between two reads, first-use prompts
