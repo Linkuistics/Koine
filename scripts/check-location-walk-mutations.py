@@ -122,7 +122,7 @@ MUTATIONS = {
     "slash-runs-are-distinct-states": (
         WALK,
         "suffix: Self.collapsingSlashes(rest))",
-        "suffix: rest)",
+        "suffix: Array(rest))",
         "SN",
     ),
     "a-changed-link-text-is-not-noticed": (

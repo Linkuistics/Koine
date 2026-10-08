@@ -226,6 +226,8 @@ private struct Walk<System: WalkSystem> {
     /// The physical path of `current`, component by component.
     private var stack: [[UInt8]] = []
     private var pending: [UInt8]
+    /// Bytes already consumed from `pending`; only a link expansion replaces the array.
+    private var pendingIndex = 0
     private var expansions: [[UInt8]] = []
     private var visited: Set<LinkState> = []
     private var linkTexts: [ObjectIdentity: [UInt8]] = [:]
@@ -250,10 +252,12 @@ private struct Walk<System: WalkSystem> {
         }
         while true {
             // The kernel's own parse: any run of slashes separates, a leading run is skipped.
-            while pending.first == Self.slash { pending.removeFirst() }
-            guard !pending.isEmpty else { return finishAtCurrentDirectory() }
-            let name = Array(pending.prefix { $0 != Self.slash })
-            let rest = Array(pending.dropFirst(name.count))
+            while pendingIndex < pending.count, pending[pendingIndex] == Self.slash { pendingIndex += 1 }
+            guard pendingIndex < pending.count else { return finishAtCurrentDirectory() }
+            let start = pendingIndex
+            while pendingIndex < pending.count, pending[pendingIndex] != Self.slash { pendingIndex += 1 }
+            let name = Array(pending[start..<pendingIndex])
+            let rest = pending[pendingIndex...]
             // Nothing but slashes (or nothing) follows the name: this is the final component, and a slash
             // after it demands a directory.
             let isFinal = rest.allSatisfy { $0 == Self.slash }
@@ -262,7 +266,6 @@ private struct Walk<System: WalkSystem> {
 
             if name == [Self.dot] {
                 guard !isFinal else { return finishAtCurrentDirectory() }
-                pending = rest
                 continue
             }
             if name == [Self.dot, Self.dot] {
@@ -272,7 +275,6 @@ private struct Walk<System: WalkSystem> {
                     system.close(handle)
                     current = parent
                     if !stack.isEmpty { stack.removeLast() }
-                    pending = rest
                     continue
                 case .failure(let error): return classify(error, component: name, in: handle)
                 }
@@ -295,7 +297,6 @@ private struct Walk<System: WalkSystem> {
                     system.close(handle)
                     current = next
                     stack.append(name)
-                    pending = rest
                 case .failure(let error): return classify(error, component: name, in: handle)
                 }
             default:
@@ -308,7 +309,7 @@ private struct Walk<System: WalkSystem> {
     /// Expands the link `name` in `directory`, or the outcome that ends the walk. Nil means the link was
     /// spliced into `pending` and the walk goes on.
     private mutating func expandLink(
-        _ name: [UInt8], in directory: Int32, status: WalkStatus, rest: [UInt8]
+        _ name: [UInt8], in directory: Int32, status: WalkStatus, rest: ArraySlice<UInt8>
     ) -> LocationResolution? {
         let text: [UInt8]
         switch system.linkText(in: directory, name: name) {
@@ -336,7 +337,7 @@ private struct Walk<System: WalkSystem> {
                 cause: "more than \(LocationWalk.linkBudget) symbolic links had to be followed")
         }
         visited.insert(state)
-        let remainder = text + rest
+        let remainder = text + Array(rest)
         expansions.append(remainder)
         if text.first == Self.slash {
             // Absolute: back to the root, with the handle on the link's own directory closed first.
@@ -349,6 +350,7 @@ private struct Walk<System: WalkSystem> {
             stack = []
         }
         pending = remainder
+        pendingIndex = 0
         return nil
     }
 
@@ -407,7 +409,7 @@ private struct Walk<System: WalkSystem> {
 
     /// The kernel reads a run of slashes as one, so `a/` and `a//` resume the walk identically. A link whose
     /// text ends in a slash gains one on every lap (`a` -> `a/`), which is a cycle and no new state.
-    private static func collapsingSlashes(_ bytes: [UInt8]) -> [UInt8] {
+    private static func collapsingSlashes(_ bytes: ArraySlice<UInt8>) -> [UInt8] {
         var collapsed: [UInt8] = []
         for byte in bytes where !(byte == slash && collapsed.last == slash) { collapsed.append(byte) }
         return collapsed

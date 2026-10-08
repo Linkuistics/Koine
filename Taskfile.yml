@@ -88,6 +88,13 @@ tasks:
       - shellcheck -x scripts/build-descriptor-walk-probe.sh
       - shfmt -d -i 2 -ci scripts/build-descriptor-walk-probe.sh
 
+  check:location-walk:
+    desc: Build the signed providers and verify location resolution, target planners and linear-cost regressions
+    cmds:
+      - swift build --build-tests
+      - task: bundled-providers
+      - swift test --skip-build --filter 'LocationWalkTests|RevealLocationTests|OpenLocationTests|WorkspaceLongLocationTests'
+
   check:location-walk-mutations:
     desc: Show the location-walk, planner and signed-bundle tests go red against one deliberately broken decision of the walk at a time, in a copy of the tree under .build/location-walk-mutations (first run builds the copy; later runs are incremental)
     cmds:

@@ -106,6 +106,43 @@ import WorkspaceTestSupport
 
     // MARK: Absent rows
 
+    @Test(arguments: ["./", "/"], [false, true])
+    func aMegabyteOfRedundantComponentsIsResolvedPromptlyByTheSignedProvider(
+        _ component: String, _ missing: Bool
+    ) async throws {
+        let tree = try WalkTree()
+        defer { tree.remove() }
+        let path = tree.path([]) + "/"
+            + String(repeating: component, count: 990_000 / component.utf8.count)
+            + (missing ? "missing" : "")
+        // A present target is over the hand-off limit, so even reveal never submits an action.
+        let bench = try await Bench(.reveal)
+        // https://developer.apple.com/documentation/foundation/jsonserialization/writingoptions/withoutescapingslashes
+        // Escaping every slash would put the test's request above the 1 MiB transport limit.
+        let body = try JSONSerialization.data(
+            withJSONObject: ["query": WorkspaceProviderTests.revealPath, "variables": ["path": path]],
+            options: [.withoutEscapingSlashes])
+        #expect(body.count < 1 << 20)
+        let clock = ContinuousClock()
+        let start = clock.now
+        let reply = try await bench.harness.raw(bearer: bench.credential, body: body)
+        let elapsed = start.duration(to: clock.now)
+        await bench.stop()
+        if missing {
+            #expect(reply.status == 200)
+            let result = (reply.json["data"] as? [String: Any])?["reveal"] as? [String: Any]
+            #expect(result?["status"] as? String == "DEPENDENCY_UNAVAILABLE")
+            #expect((result?["dependency"] as? [String: Any])?["reason"] as? String == "PATH_NOT_FOUND")
+        } else {
+            let error = try #require(reply.errors.first)
+            #expect((error["extensions"] as? [String: Any])?["kind"] as? String == "failed")
+            let message = try #require(error["message"] as? String)
+            #expect(message.contains("application hand-off") && message.contains("\(path.utf8.count) bytes"))
+            #expect(message.contains("No request was made"))
+        }
+        #expect(elapsed < .seconds(2), "the shipped walk must resolve a roughly 1 MiB path promptly")
+    }
+
     @Test(arguments: Depth.allCases, Operation.allCases)
     func everyAbsentRowIsPathNotFoundAndANonexistentLongPathIsNeverAnErrorOfLength(_ depth: Depth, _ operation: Operation) async throws {
         let tree = try WalkTree()

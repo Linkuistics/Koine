@@ -18,6 +18,22 @@ extension WalkTree {
 /// invokes and consumes the walk (`WorkspaceProviderTests` does, through the signed bundle). Each check is
 /// seen to fail against a mutated walk: `scripts/check-location-walk-mutations.py`.
 @Suite struct LocationWalkTests {
+    @Test(arguments: ["./", "/"])
+    func aMegabyteOfRedundantComponentsResolvesWithinALinearCostBound(_ component: String) throws {
+        let path = "/" + String(repeating: component, count: 1_000_000 / component.utf8.count)
+        let root = try #require(Self.present(LocationWalk.resolve("/")))
+        let clock = ContinuousClock()
+        let start = clock.now
+        let outcome = LocationWalk.resolve(path)
+        let elapsed = start.duration(to: clock.now)
+        let location = try #require(Self.present(outcome))
+        #expect(location.literal.text == path)
+        #expect(location.resolved == root.resolved)
+        #expect(location.identity == root.identity)
+        #expect(location.expansions.isEmpty)
+        #expect(elapsed < .seconds(2), "a roughly 1 MiB path must not shift or copy its remainder per component")
+    }
+
     // MARK: Fixtures
 
     /// How deep a row is built: directly under the fixture root, or under six 245-byte directories.
