@@ -135,7 +135,7 @@ does fail, rather than loosened.
   `target-locations-vm`'s and `application-locations-vm`'s (V).
 - The probes reach no application, so they show the walk's outcomes through two independently built
   hosts, not an effect. A present outcome that only an effect shows is `target-locations-vm`'s.
-- The selection acceptance's V seam (`task selection:vm`, notarized hosts in a Gatekeeper-enforcing
-  VM) was **not re-run** against 1.0.1: it needs notarization and a VM, and its record
-  ([selection-vm.md](selection-vm.md)) is for the 1.0.0 workspace. Its table is the selection driver's, so
-  it takes the re-pinned rows when it is run.
+- This compatibility run did not repeat the selection acceptance's V seam. The subsequent
+  [2026-10-08 selection VM run](selection-vm.md#workspace-101-rerun) establishes it on notarized hosts
+  with workspace 1.0.1 as the bundled baseline and workspace 1.1.0/schema 1.0.1 as its update.
+  The retained-host 1.0.1 per-user compatibility variant above remains N/G evidence.

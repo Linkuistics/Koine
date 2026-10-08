@@ -382,7 +382,9 @@ own runs; no file under `Sources/`, `Tests/` or `Providers/` changed here.
 workspace-row and design controls above); `task selection:decisions` 134 runs and `task selection:failures` 119 runs, 0
 failed; `task selection:mutation`: every mutation seen, every named scenario red in every host run (about thirty minutes in a
 copy of the tree). Before the pins were changed the same driver failed 16 host runs, which is what a pin that still said
-1.0.0 does against 1.0.1. The V seam was not re-run: it notarizes, and is left to its own task.
+1.0.0 does against 1.0.1. That N/G run did not repeat V; the subsequent
+[2026-10-08 selection VM run](selection-vm.md#workspace-101-rerun) establishes the full V seam on
+notarized hosts with the re-pinned workspace 1.0.1 baseline and its 1.1.0/schema 1.0.1 update.
 
 An adversarial read by a fresh context (the leaf's one in-session reviewer) found no outright bug and eleven hollow
 or unbacked points, of which these were repaired: the start order of both shipped slots is now asserted; the control

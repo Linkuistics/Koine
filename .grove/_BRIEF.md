@@ -160,6 +160,24 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
+`launch-and-open-k6` and its final node `long-locations-k172` deliver the
+action-only workspace release/schema 1.0.1: all four operations, the twelve
+launchers, installation selection and grant disclosure, independently retained
+1.0.0 compatibility, descriptor-relative action/receipt resolution and the
+accepted target/application VM slice. Selection V is re-pinned to bundled
+workspace 1.0.1 and its 1.1.0/schema 1.0.1 update on notarized hosts
+(`docs/verification/selection-vm.md#workspace-101-rerun`). Reuse its operation
+and selection/profile contracts for the next providers.
+
+The recorded native coverage limit for workspace 1.0.1 on macOS 26.5 (25F71),
+arm64 remains bounded to registered-long ordering and preferred-long refusal
+(`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`);
+both behaviors remain unproved and their contracts bind. Actual-search G/N/V
+handoff belongs to `app-and-file-search`. The previously externalized
+`protected-default-open-k89`, `reveal-app-bundle-notice-k90`,
+`alternate-team-signing-k80` and account-owned `dia-url-page-load-k88` remain
+live work before baseline acceptance, not outcomes closed by launch-and-open.
+
 - Existing application: `/Users/antony/Development/Modaliser`.
 - Eventual client: `/Users/antony/Development/ModalAnyware`.
 - Locate and read Antony's active Modaliser config; sample configs alone are

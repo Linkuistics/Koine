@@ -722,6 +722,13 @@ tasks:
     cmds:
       - scripts/check-selection-mutations.py .build/selection-acceptance/fixtures .build/selection-acceptance/mutations {{.CLI_ARGS}}
 
+  selection:vm-check:
+    desc: Check that concurrent or completed guest-launch retries keep one selection V result writer and preserve its exit status; lint the VM recipe without starting a guest
+    cmds:
+      - python3 scripts/check-selection-vm-launch.py
+      - bash -n scripts/vm-verify-selection.sh
+      - shellcheck -x scripts/vm-verify-selection.sh
+
   selection:vm-hosts:
     desc: Build, sign and NOTARIZE the purpose-built hosts of the selection acceptance's V seam, from the same catalogues and bundles as N and G - the cases sealed inside a host, and the real desktop and workspace updates, re-sealed with a secure timestamp and the hardened runtime, every host submitted to Apple's notary service and stapled, each update bundle notarized on its own - into .build/selection-vm. `--unnotarized` (CLI_ARGS) signs only, for developing the drivers where no notary credential is stored; the run's record then says it cannot close a row that needs an intact notarized host
     deps: [selection:fixtures]
@@ -733,7 +740,7 @@ tasks:
 
   selection:vm:
     desc: The V seam of the selection acceptance in ONE Gatekeeper-ENFORCING TestAnyware macOS session - the RELEASED notarized Koine downloaded in the guest, quarantined and first-run as a user has it, given newly published updates (normal and renamed principal) and compared with a selection-aware host over the same old desktop baseline; the purpose-built hosts as downloads; real newer desktop and workspace updates and mixed releases; the fixture signing identifier refused; every trust refusal of a genuinely quarantined download with no dialog on screen; a quarantine refusal recovered as its diagnostic says; equal bytes in both roots and a legacy staging entry across restarts, with Gatekeeper's own verdict and the loaded paths recorded. Needs `task selection:vm-hosts`. KOINE_SELECTION_V_ONLY=<text> runs a subset
-    deps: [app]
+    deps: [app, selection:vm-check]
     cmds:
       - scripts/vm-verify-selection.sh
 

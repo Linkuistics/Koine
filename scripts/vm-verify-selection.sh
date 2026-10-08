@@ -150,7 +150,8 @@ step "Run the scenarios in the guest, watching the screen for a system dialog"
 } >"${WORK}/run-selection.sh"
 testanyware file upload "${WORK}/run-selection.sh" /Users/admin/run-selection.sh >/dev/null
 guest "rm -rf \$HOME/selection-run.started \$HOME/selection-run.exit \$HOME/selection-run.log"
-guest "mkdir \$HOME/selection-run.started; nohup bash -c 'bash \$HOME/run-selection.sh > \$HOME/selection-run.log 2>&1; echo \$? > \$HOME/selection-run.exit' >/dev/null 2>&1 &"
+# A false agent timeout can retry this command after the driver is already running.
+guest "mkdir \$HOME/selection-run.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/run-selection.sh > \$HOME/selection-run.log 2>&1; echo \$? > \$HOME/selection-run.exit' >/dev/null 2>&1 &"
 DIALOGS=0
 SEEN=0
 for poll in $(seq 1 360); do

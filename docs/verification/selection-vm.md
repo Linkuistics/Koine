@@ -8,7 +8,8 @@ update and trust rows, in a clean TestAnyware macOS clone whose Gatekeeper is **
 certificate, which stay pending in `alternate-team-signing`.** Machine says a V quarantine case uses an *intact
 notarized host* with genuinely quarantined downloads, and that a purpose-built V host is signed and notarized first:
 every host here is, and the real 1.1.0 desktop and workspace updates are notarized on their own, as a published
-update would be.
+update would be. The [2026-10-08 rerun](#workspace-101-rerun) establishes this seam with workspace
+1.0.1/schema 1.0.1 as the bundled baseline and workspace 1.1.0/schema 1.0.1 as its update.
 
 ## Procedure
 
@@ -48,10 +49,11 @@ verdict: nothing is injected" (`GENUINE_QUARANTINE`, set only by the V driver).
 
 ## What was observed
 
-Run of 2026-10-01 on notarized hosts, transcript `.build/vm-verify/selection-vm-20261001T140407.log`, driver
+The original run of 2026-10-01 used workspace 1.0.0. On notarized hosts, transcript
+`.build/vm-verify/selection-vm-20261001T140407.log`, driver
 transcript and record `.build/selection-vm/results/selection-vm-20261001T142333.{log,json}`: **133 host runs, 2 050
 checks, none failed, every never-ran assertion paired with a control, no system dialog seen on screen** (ten-second
-polls for the whole run, and once more after it). The record says `"notarized": true`. An earlier run on the same
+polls for the whole run, and once more after it). The notarization record says `"notarized": true`. An earlier run on the same
 procedure with signed, un-notarized hosts (`task selection:vm-hosts -- --unnotarized`, which exists only to develop
 the drivers) was green too, and observed the refusal half of both equal-bytes orders where this run observes the
 accepting half.
@@ -110,6 +112,68 @@ by Gatekeeper, and the observable row is `equal-to-bundled`, not `quarantine-ref
 mapped. The refusal half (a quarantined copy Gatekeeper has no ticket for, held across restart) is the recovery
 scenario and the trust refusals. The staged copy of a host's own bundle is quarantined exactly when the host is (it
 arrived as a download), and the driver holds each one to that.
+
+## Workspace 1.0.1 rerun
+
+On **2026-10-08**, `task selection:vm-hosts` and the unfiltered `task selection:vm` both exited 0.
+The fresh TestAnyware clone ran **macOS 26.5 (25F71), arm64**, with Gatekeeper assessments and Developer ID
+both enabled. Every purpose-built host arrived quarantined, validated its stapled ticket and was accepted as
+`source=Notarized Developer ID`. The released Koine 0.1.0 was downloaded and first-run separately as before.
+
+Transcript: `.build/vm-verify/selection-vm-20261008T175332.log`; driver transcript and JSON:
+`.build/selection-vm/results/selection-vm-20261008T180522.{log,json}`. The record contains **133 host runs,
+2 090 checks, 0 failed, 0 uncontrolled never-ran assertions and 0 owned reasons unseen**. All 182 never-ran
+assertions have controls. Each of the 124 scenario/order runs and nine extra runs was reconciled with the full
+driver recipe, not just its total; there are no duplicate run labels. The wrapper observed **0 unexpected
+system dialogs** during its screen polls and none in the final check. Its exported JSON equals the result
+independently downloaded from the guest. The clone was stopped after verification.
+
+The real-provider observations in both discovery orders are:
+
+| Subject | Workspace selection and profile |
+| --- | --- |
+| Production catalogue before any update | Bundled **1.0.1/schema 1.0.1**, `ACTIVE`, `SELECTED`; `core-desktop-workspace-repair-extension-host` |
+| Newer desktop beside the workspace baseline | Workspace **1.0.1/schema 1.0.1** stays bundled and selected; `core-desktop-workspace-desktop-update-extension-host` |
+| Newer workspace beside the desktop baseline | Per-user **1.1.0/schema 1.0.1** is selected; bundled 1.0.1 is `NOT_SELECTED` / `superseded-candidate`; `core-desktop-workspace-workspace-update-extension-host` |
+| Both real updates, normal and renamed principals | Workspace **1.1.0/schema 1.0.1** is selected alongside desktop 1.1.0; `core-desktop-workspace-update-extension-host` |
+| Updates without the selection feature | Updates refused before load; workspace **1.0.1/schema 1.0.1** stays selected with visible refusals; `core-desktop-workspace-update-refused-extension-host` |
+| Fixture signing identifier at release 9.0.0 | Production refuses the fixture; real workspace **1.0.1/schema 1.0.1** remains selected. The distinct test catalogue admits its designated 1.0.1 fixture as the control |
+
+The profiles use the repair SDL, pin release and schema independently, and turn red when workspace rows are
+re-pinned to retained 1.0.0 or the retained composed design is substituted. Native images, operations,
+approval records and unchanged host binaries satisfy the same checks as the N/G driver. Trust refusals,
+quarantine recovery, equal-byte staging, legacy entries, released-host refusals and the desktop-operation
+differential also pass in this run. The separate retained-host **1.0.1 per-user compatibility variant** remains
+N/G evidence in [workspace-compatibility.md](workspace-compatibility.md); this run does not add V to that row.
+
+With Antony's approval, eight submissions were accepted under `koine-notary`; the six hosts were stapled and
+validated. `.build/selection-vm/notarization.json` records `notarized: true`, these IDs and the resealed
+code-directory hashes; `.build/selection-vm-hosts-k185.log` records the build and verdicts.
+
+| Submission | Accepted ID |
+| --- | --- |
+| Host `desktop-old` | `8180a9c3-2ecb-4389-80ac-9426532141b5` |
+| Host `production` | `a4902bbe-739e-4070-8782-53832753a1b4` |
+| Host `impostor-host` | `75b33eab-527d-49c6-8944-2b097b729379` |
+| Host `slot` | `11a70e6c-bd46-4964-af3f-c8070b5ebf2e` |
+| Host `two-slots-sorted` | `c1cbcc72-f98a-4bbd-924b-5e6fe030a740` |
+| Host `slot-caught-up` | `aaeeeabf-9ce9-4cea-83a9-744a06dabec2` |
+| Bundle `desktop-update` | `3b482f68-4084-4c90-9fae-be89f5371c4d` |
+| Bundle `workspace-update` | `d0a26af2-379f-4f16-b739-79e68cf4b5e4` |
+
+SHA-256 digests before and after the accepted run match for all 909 build-tree input files: `scripts/`,
+`Fixtures/`, `App/`, `Providers/`, `Sources/`, `docs/design/`, `Package.swift`, `Package.resolved`,
+`Taskfile.yml`, and the notarized fixture/host trees and record. The 669 staged guest input files also match
+after the driver exits, including its actual conformance tool/framework, metadata, profiles, scripts and bundles.
+The per-file records are `.build/selection-vm-inputs-{before,after}-k185-rerun.json` and
+`.build/selection-vm-inputs-guest-k185-rerun/{before.sha256,after.log,after.exit}`.
+
+The earlier attempt, `.build/vm-verify/selection-vm-20261008T172939.log`, is **discarded evidence**: a false
+agent timeout retried an unguarded launch, and two live drivers wrote the same result files. The launcher now
+uses the atomic directory guard already used by `guest_bg`. `task selection:vm-check` exercises concurrent
+and completed retries of the real launch command: it failed with three writers before the repair, passes with
+one after it, and checks that the driver's log and nonzero exit status survive. Syntax and ShellCheck pass too.
+The accepted rerun observed one live scenario driver and reused the same notarized artifacts.
 
 ## Not closed
 

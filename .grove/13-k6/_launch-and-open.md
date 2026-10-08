@@ -20,6 +20,17 @@ effect. This increment implements the additive framework feature
 `docs/specs/machine.md#additional-capability-requirements`. It also starts the
 concrete operation rows in `docs/specs/workflow-providers.md`.
 
+`long-locations-k172` delivers the action-only workspace release/schema 1.0.1,
+with independently retained 1.0.0 binaries/SDL/profiles, descriptor-relative
+action and receipt resolution, truthful hand-off refusals, compatibility pairs,
+and the target/application V evidence. Its final selection repin passes on
+notarized hosts with bundled workspace 1.0.1 and workspace 1.1.0/schema 1.0.1
+selected updates (`docs/verification/selection-vm.md#workspace-101-rerun`).
+Antony's macOS 26.5 (25F71), arm64 native coverage limit for registered-long
+ordering and preferred-long refusal remains exactly as recorded in
+`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`;
+neither unproved behavior is a pass. Actual-search handoff remains search's.
+
 Consume `first-party-provider-selection-k50` and its settled review chain before
 packaging workspace, including integration `first-party-provider-selection-k52`.
 `docs/specs/machine.md#first-party-provider-selection` and
@@ -240,13 +251,12 @@ descriptions before workspace ships. Schedule the protected-path metadata probe
 before launch's installation selection, path-opening implementation or search
 consumes that contract.
 
-Expected packaged workspace release/schema is `1.0.0`/`1.0.0`, release signing
-identifier `dev.antony.Koine.provider.workspace`. Existing desktop is
-`1.0.0`/`1.0.0`, `dev.antony.Koine.provider.desktop`; catalogue values must be
-checked against actual signed packaged outputs. Local inspection of the installed
-baseline's signature confirmed that desktop identifier (Team ID TA43A4RUP3).
-Workspace does not exist as a built artifact yet; its value is a publication
-decision, not a measured signature. Test catalogues alone admit fixture identities.
+The initial packaged workspace release/schema was `1.0.0`/`1.0.0`; the action-only
+repair now packages `1.0.1`/`1.0.1`, with release signing identifier
+`dev.antony.Koine.provider.workspace`. Desktop remains `1.0.0`/`1.0.0`,
+`dev.antony.Koine.provider.desktop`; catalogue values are checked against actual
+signed packaged outputs. The independently retained workspace 1.0.0 remains its
+own binary, SDL and profile. Test catalogues alone admit fixture identities.
 
 Keep the first implementation slice a real launch path with both framework
 authority and selection support, packaging, exact-candidate conformance and

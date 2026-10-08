@@ -273,6 +273,10 @@ hosts, the approved per-user 1.0.1 variant over the bundled 1.0.0 on the retaine
 every pair (the extant directory of 1,024 bytes or more is the one outcome that differs: `PATH_NOT_FOUND` becomes
 `failed`), the retained revision's own short-path suites repeated against 1.0.1, and every selection fixture
 re-pinned to 1.0.1 ([selection-updates.md](../verification/selection-updates.md#re-pinned-to-workspace-101)).
+The complete selection V seam is also accepted on notarized hosts with workspace 1.0.1 as the bundled
+baseline and workspace 1.1.0/schema 1.0.1 as its update
+([record](../verification/selection-vm.md#workspace-101-rerun)), except the separately owned second-team
+certificate cases. This completes the action-only repair's selection repin; it adds no actual-search handoff evidence.
 Koine resolves every action location
 itself, component by component, so it never reports an extant location
 missing. It then refuses to hand an application any location whose spelling
