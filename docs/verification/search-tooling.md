@@ -1,14 +1,17 @@
 # Tool-backed search mechanism
 
-**Design evidence, not native acceptance.** This finite comparison selects macOS
-system find for candidates, Foundation for literal matching and native application
-services for metadata/OS-reported locations. No backend was executed and no native
-acceptance subject, consent, index, mount, signing or installed application was
-changed by this leaf. A disposable browser VM inspected only the visual documents.
-The [contract](../specs/workspace-search.md) is conditional on focused human
-process/protection, ordering and dataless choices and returned mandatory reviews.
-Source claims below identify
-facilities; actual signed Koine behavior remains unmeasured.
+**Prior raw-search proposal; comparison evidence, not a selected v1 backend or
+native acceptance.** The current [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md)
+puts raw search with clients and retains special locations and named native
+catalogues in Koine. The finite mechanism comparison and invocation below describe
+k195/k198's former system-find proposal. Its process/protection answers do not
+select a catalogue source or approve a new native mechanism.
+
+No backend or native acceptance subject, consent, index, mount, signing or
+installed application was changed by that design. A disposable browser VM
+inspected only visual documents. The [current handoff](../specs/workspace-search.md)
+requires returned native catalogue design and review. Source claims below retain
+their original bounds; actual signed Koine catalogue behavior remains unmeasured.
 
 ## Finite comparison
 

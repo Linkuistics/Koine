@@ -144,3 +144,10 @@ implementation until this leaf, and anything it externalizes, retires.
   load-bearing review before k30. No live review names this integration as its
   producer, so there is no Creator line to settle here. Seal one focused jj
   change containing artifact repairs, new leaves, live context and retirement.
+
+## Current citation
+
+The enumeration-record pathname and source coordinates above describe the
+original producer, retained as historical comparison. Its current ownership
+record is docs/adr/raw-filesystem-search-belongs-to-clients.md; k196 moves raw
+filesystem search to clients and requires returned native discovery design.

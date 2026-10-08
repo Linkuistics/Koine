@@ -1,0 +1,39 @@
+# search-path-observation-phases-k127
+
+## Goal
+
+Finalize actual native discovery call-path authority, resource ownership and
+publication/cleanup after the reviewed native permission contract.
+
+## Context
+
+Consume k196, reviewed root native-discovery-k199 and k191/k193/earned integration.
+The returned root design reconciles this charter to its actual mechanisms first.
+Raw filesystem search belongs to clients; no find child, command-record stream
+or traversal schedule is selected. Existing action-only source/binary guards
+and G/N/V seams bind.
+
+## Done when
+
+- Demonstrate the module/call-path boundary for actual catalogue/location
+  mechanisms while preserving source AND binary action no-spawn/no-listing
+  guarantees with meaningful failing cross-boundary controls. Do not simply
+  remove forbidden imports from the accepted guard.
+- Define bounded job/native-call/copy admission, actual cancellation/revocation/
+  provider-stop publication freeze and late/blocking work ownership. Capacity
+  cannot be released by pretending unreturned native work completed; opaque
+  internal peaks/health remain unproved.
+- Allocate each actual native preparation, fallback and cleanup effect to its
+  authority. Earlier raw-find permission selects no new process route, helper,
+  signing/limit/consent change or process-wide materialization policy.
+- Give finite G/N/V subjects for actual availability/error/limit/lifecycle cases
+  and independent listener/store/action serviceability with failing observer
+  controls. No native experiment or new proof chain in this design leaf.
+- Reconcile affected native API/artifacts/views and run frozen relevant checks.
+  Cut mandatory review-design with Reviews: search-path-observation-phases-k127
+  before k123; earned integration also precedes k123. Native outcomes stay pending.
+
+## Notes
+
+Old command spawning/pipe/reap/FIFO/replay accounts are comparison input. Actual
+native mechanisms need their own bounded ownership contract and signed acceptance.

@@ -319,7 +319,7 @@ tasks:
       - plantuml -tsvg docs/design/architecture/workflow-targets.puml
 
   design:search-render:
-    desc: Render nine current tool-backed search views (D2 0.9.0; permission/canonical/resource/inspection/serviceability ELK, remaining Dagre; no native acceptance)
+    desc: Render the v1 ownership sketch and eight prior raw-search comparison views (D2 0.9.0; existing layouts; no native acceptance)
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
       - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-preopen.d2 docs/design/architecture/search-preopen.svg
@@ -332,7 +332,7 @@ tasks:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-handoff.d2 docs/design/architecture/search-handoff.svg
 
   design:search-check:
-    desc: Validate additive search SDL and examples independently and with desktop/workspace, preserving action examples; design only, not runtime acceptance
+    desc: Validate previous raw-search SDL and examples with desktop/workspace; comparison only, not the v1 native catalogue API or runtime acceptance
     dir: clients/contract-only
     cmds:
       - npm ci --ignore-scripts --no-audit --no-fund

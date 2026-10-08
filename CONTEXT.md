@@ -126,31 +126,27 @@ reference** is still valid or a successful query has any results.
 tool instance and its containing terminal session, not a shared **resource
 reference** or an atomic snapshot across **providers**.
 
-**Search domain**: The names eligible for a search beneath its effective roots,
-after its declared intrinsic exclusions. It is narrower than all filesystem
-contents and does not establish an exhaustive installed-application inventory.
+**Special location**: An OS-known location supplied by the **Machine server** as
+a starting point for a **client**'s own filesystem search. Its value grants no
+filesystem access or OS consent and is not a listing of its contents.
 
-**Search pre-open proof**: An observation required before native target access under search policy, separate from a post-access check. The [tool-backed permission contract](docs/specs/workspace-search.md#permission-boundary-and-required-decision) leaves relocated-target protection and lookup-only target acquisition as human choices. System-tool prune/no-follow/device flags supply no such proof; the earlier custom queued-walk witnesses are not the selected mechanism.
+**Native catalogue**: A named collection of native metadata observations supplied
+by a **provider**, with explicit discovery availability and completeness. In v1
+it supplies category-specific choices rather than a general metadata-query API;
+**clients** own name filtering and ranking.
 
-**Search coverage**: One effective source's completeness within the search domain: COMPLETE is qualified eligible processing, including the command's directory marker and non-withheld listing (or positive optional-root absence), PARTIAL means observations with omissions, UNKNOWN means useful observation/completeness was not established. The OS-reported application source is always UNKNOWN, never an exhaustive installation inventory.
+**Discovery coverage**: The stated availability and completeness of observations
+from a **native catalogue**'s declared sources. A successful response or an empty
+list alone does not establish an exhaustive inventory.
 
-**Search source**: One effective filesystem root or the separate OS-reported application seed source. Coverage-row indices name observed result provenance, not all lexically overlapping roots.
+**Prompt risk**: A known possibility that an inspection would request OS consent,
+causing Koine to decline it under its read policy. It establishes neither missing
+consent nor a healthy empty discovery result.
 
-**Search remainder**: Unfinished or unlocalized work of a source, with or without candidate observations. It describes command/native processing uncertainty without asserting how many names or descendants were omitted.
-
-**Search progress**: A complete candidate record actually considered, or established successful eligible empty filesystem processing. Empty native application-service responses alone are neither progress nor healthy empty.
-
-**Prompt risk**: A known possibility that an inspection would request OS
-consent, causing Koine to skip it under its read policy. It is not an observation
-that Koine lacks consent; search reports a PROMPT_RISK skipped scope even in an
-AVAILABLE result. It contributes to **Search policy blocking** only when no
-root made progress and no failure-class reason exists.
-
-**Search policy blocking**: The search BLOCKED outcome with no observed progress,
-at least one **Prompt risk**, and no inspection/change/work/resource failure. Its consent
-state is UNKNOWN, with no matches list and explicit **Search coverage**.
-
-**Search location**: A lossless absolute filesystem location returned for later client selection. File locations preserve system-command bytes, including final links, without a unique canonical-parent/firmlink spelling promise. Application locations use established resolved target spelling. A later action resolves the location itself and may encounter another occupant; the search value ceiling is no actionability guarantee.
+**Observed location**: A filesystem location supplied as native metadata or found
+by a **client**. It grants no access and pins no occupant; a later Koine action
+resolves the location under its own contract. A representable value is no
+actionability guarantee.
 
 **Location resolution**: Koine's own component-by-component walk of a literal
 absolute path from held, search-only directory handles, following links with
@@ -168,17 +164,21 @@ asking any application
 ([boundary](docs/specs/workspace-launch-and-open.md#long-location-action-boundary)).
 _Avoid_: overlength path, path too long (as an absence or input error)
 
-**Search application identity**: The established native bundle directory identity used to merge direct, checked-link and OS-reported routes while retained. Distinct copies sharing an identifier stay distinct. Its first finalized target name/path supplies matching and selection; source membership records observations only. It is neither a process incarnation nor a query-long pinned identity.
+**Application installation identity**: Established native bundle-directory
+identity distinguishing application copies, including copies with the same bundle
+identifier. It is neither a **process incarnation** nor a query-long pinned
+identity; a later action revalidates its selected installation.
 
-**Search native fact**: A checked result reported by a native metadata or
-registration service. It does not certify internal platform health; undetected
-failure or stale service state can make it incorrect. UNREGISTERED reports no
-registration for the checked present **Search application identity** under the
-documented negative branches. Nil identifier is unknown, never a missing-key
-fact. Malformed/incomplete/conflicting results and observed resource errors do
-not establish negatives; known incorrect witnesses still fail acceptance.
+**Native application fact**: A checked native metadata or registration
+observation. It does not certify internal platform health; failure or stale
+service state can make it incorrect. Nil, malformed, incomplete or conflicting
+observations do not establish negative facts. Known incorrect witnesses still
+fail acceptance.
 
-**Search serviceability evidence**: Applicable owned spawn/pipe/kill/reap/native-call events paired with independent listener, grant-store and authorized-action outcomes for a finite declared subject. It is empirical evidence: opaque native/tool acquisitions, peaks and internal health remain unproved.
+**Native serviceability evidence**: Applicable owned events paired with
+independent listener, grant-store and authorized-action outcomes for a finite
+declared subject. It is empirical evidence; opaque acquisitions, peaks and
+internal health remain unproved.
 
 ## Example dialogue
 
@@ -194,7 +194,7 @@ read it?
 **Domain expert:** From a result the desktop provider returned, as a URI
 string. Pass it back unchanged; what its remainder means is the provider's.
 
-**Developer:** Search returned a 1,500-byte location and opening it came back
+**Developer:** My client found a 1,500-byte location and Koine opening it came back
 `failed`. Has the file gone?
 
 **Domain expert:** No. Location resolution found it; a missing one would be

@@ -154,3 +154,10 @@ sound; do not reopen those without new evidence.
   remains live. No live review names search-tooling-k198, so no Creator line is
   written. Retire this leaf and seal the focused jj change, then send the required
   dispatch exit signal as the session's last action.
+
+## Current citation
+
+The enumeration-record pathname and source coordinates above describe the
+original producer, retained as historical comparison. Its current ownership
+record is docs/adr/raw-filesystem-search-belongs-to-clients.md; k196 moves raw
+filesystem search to clients and requires returned native discovery design.

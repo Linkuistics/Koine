@@ -1,27 +1,23 @@
-# Search coverage describes observations
+# Discovery coverage describes observations
 
-Search publishes per-source observation summaries and explicit exclusions or
-unfinished remainders, rather than a filesystem audit. The
-[coverage contract](../specs/workspace-search.md#coverage-and-aggregate-outcomes)
-allows COMPLETE only for qualified eligible-domain processing and never for the
-OS-reported application source. Healthy empty, unavailable service, policy
-blocking and incomplete empty remain distinct.
-Command exit 0 needs its depth-zero directory marker and qualified non-withheld
-listing, not empty stdout alone. Every retained skip reason has a defined producer,
-extent, coverage effect and no-progress precedence in the contract. Localized
-root/access/change reasons require independent authorized native observations;
-human stderr supplies only an unlocalized inspection remainder.
+Koine's **native catalogues** report the observations their declared sources
+justify, with explicit availability, incompleteness and unknown metadata. A
+successful call or a result count alone proves neither an exhaustive inventory
+nor healthy empty. The [ownership decision](raw-filesystem-search-belongs-to-clients.md)
+puts raw filesystem search and its coverage with clients; the
+[workflow requirements](../requirements/modaliser-workflows.md#test-seams-and-acceptance)
+retain truthful native discovery and useful application/settings witnesses.
 
-The public granularity is costly to reverse once clients consume it. It hides
-unseen child identities and native internal operations while giving clients
-source provenance, observed candidate counts and honest omissions. The selected
-[system-tool route](search-enumeration-reuses-system-find.md) cannot provide
-per-directory EOF, counted frontier groups or exact paths from human stderr;
-those earlier custom-candidate assumptions no longer bind. Unlocalized errors
-use source remainders; count truncation is separate from incomplete discovery.
+A useful client needs to distinguish an empty category from an unavailable,
+blocked or incompletely observed source. Hiding source limits makes missing
+choices look like absence; an exhaustive filesystem audit would reintroduce the
+raw-search feature clients own. Known incorrect native witnesses still fail
+acceptance, and an unavailable subject remains pending.
 
-Detailed traversal logs require a different engine/instrument and exhaust finite
-room without helping the chooser. An exhaustive index needs a separate lifetime,
-consent and availability contract. Reopen for a consumer requiring those details,
-or when measured omitted witnesses require a changed backend/domain decision.
-This choice accepts no lost home/default workflow or native permission outcome.
+The returned native discovery design defines the catalogue payload and exact
+completeness branches. The former per-root find coverage, directory marker,
+stderr remainder and raw-work counters are comparison material in the
+[previous proposal](../specs/workspace-search.md#coverage-and-aggregate-outcomes),
+not an adopted catalogue schema. Reconsider greater detail for a concrete native
+catalogue consumer; no workflow loss or native permission outcome is accepted by
+this decision.

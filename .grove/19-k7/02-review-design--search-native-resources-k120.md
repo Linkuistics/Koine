@@ -1,0 +1,39 @@
+# search-native-resources-k120
+
+**Reviews:** app-and-file-search-k19
+
+## Goal
+
+Adversarially review carried native facts, authority, compatibility and empirical
+serviceability after k19's complete native discovery reconciliation.
+
+## Context
+
+Review the commit closing app-and-file-search-k19 after k196, reviewed root
+native-discovery-k199 and applicable k191/k193/k127/k123 reviews/integrations.
+This leaf remains beside k19 before k30; the session closing k19 names its actual
+Creator run here. Read the complete native API/sources, ADRs, examples,
+guide/glossary/trace/views and source/binary call-path contract. Old raw-search
+analyses retain only historical bounds.
+
+## Done when
+
+- Check actual native source/target authority, prompt-free/no-hydration reads,
+  useful location/application/settings choices and independent action contracts.
+  Earlier find permission supplies no selected catalogue backend.
+- Disprove healthy-empty/unavailable/incomplete confusion, false registration/
+  identity negatives, unsupported location-absence claims or silent useful-
+  category reduction. Raw traversal/ordering/coverage belongs to clients.
+- Review actual bounded native work/copies, publication freeze, cancellation/
+  late-return ownership and finite independent listener/store/action evidence
+  with failing observer controls. No opaque resource/internal-health guarantee
+  follows from observed serviceability.
+- Verify finite G/N/V subjects and exact retained/new binary profiles; distinguish
+  design checks from real native observations and unavailable fixtures. Known
+  incorrect metadata or systematic missing useful choices still fail.
+- Report findings only. Insert earned integration before k30; planning follows.
+  No obsolete command/witness mechanics are revived or credited as native passes.
+
+## Notes
+
+Whole-node independent review; no implementation or native experiment here.

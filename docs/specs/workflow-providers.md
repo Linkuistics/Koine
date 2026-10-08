@@ -19,7 +19,7 @@ These are design views, not runtime acceptance evidence.
 | Identifier / GraphQL prefix | Owned information and state | Public obligation |
 | --- | --- | --- |
 | `desktop` / `Desktop` | Process/window references and observation; window/display geometry; pointer position; system-media access | List and manipulate desktop resources under desktop authority. Retain existing reference withdrawal and public Accessibility limits. |
-| `workspace` / `Workspace` | Installed application and file discovery; native open/launch/reveal adapters | Search without launching; explicitly open/launch/reveal under workspace and focus authority. Do not turn search into installation, shell execution or automatic setup. |
+| `workspace` / `Workspace` | Special locations, named native application/settings catalogues; native open/launch/reveal adapters | Read native knowledge without launching or raw filesystem search; explicitly act under workspace and focus authority. No installation, shell execution or automatic setup in reads. |
 | `input` / `Input` | Captured application targets; synthesized application input; owned modifier holds; bounded Space-switch requests | Address application input to the captured target without reclaiming focus. Space switching is a separate system operation requiring desktop control too. Own input-interaction state and its cleanup. |
 | `menus` / `Menus` | Captured application/context targets; menu snapshots and selections; opened-menu interactions | Inspect without opening; open explicitly; validate selections without substituting titles, positions or paths. Own menu cleanup. |
 | `iterm` / `Iterm` | iTerm instances, windows/tabs/panes, integration readiness and setup | Address the selected native resource, expose list/label state and provide explicit bounded setup. |
@@ -195,9 +195,7 @@ use their owner's read authority, with any additional read requirements.
 | Pointer location / nudge and movement with no held buttons | `desktop:read` / `desktop:control` | Client draws the reveal ring. Refuse a nudge while buttons are held rather than turning movement into an undeclared drag. |
 | Synthesized pointer-button down/up/click/drag, including a context-menu fallback | `input:control`, plus the exposing provider's control and any other selected effects | Application input whatever the public field's name. Capture and revalidate the intended process/context; apply protected-target refusal. Menu-only paths cannot be replaced by right-click synthesis. This allocation does not add a general pointer-button API to the baseline. |
 | System media play/pause, including system-defined media-key events | `desktop:control` | A media event addressed to the system-media route is distinct from an application key chord. Any chord alternative requires input authority and does not satisfy the required system route. |
-| Installed-application search, paths and bundle identifiers | `workspace:read` | Client owns query entry, chooser, secondary-action menu and MRU. |
-| File search under configured roots, currently home | `workspace:read` | Query scope is documented in each operation; do not omit inaccessible roots as healthy empty results. |
-| Fixed search-child spawn, signal to its owned group, and exactly-once reap/cleanup | `workspace:read`, admitted with the search job | Conditional on k196's process choice. Internal read implementation only: no arbitrary process target, shell, client process-control API or desktop/input effect. Revocation/stop ends already admitted owned work. k127 settles the module/call-path guard before implementation. |
+| Native special-location and catalogue inspection | `workspace:read`; exact fields and native effects require returned design | Supplies native knowledge, not client filesystem access or raw traversal. Preserve source AND binary authority evidence and existing action guards. No child backend or arbitrary process control is selected. |
 | Launch/activate; file/folder/default-app/named-app opening; URL opening; reveal in Finder | `workspace:control` AND `desktop:control` | Activation is requested. Optional action process identity is a control receipt; installed paths/identifiers/default-handler metadata remain read data. Handler reactions can execute documents or follow redirects. No search, grant or prerequisite check implicitly launches or opens. |
 | Clipboard writes: path or bundle identifier | Client-owned | Read the value under workspace read; client performs its own pasteboard write. No Koine clipboard mutation is required. |
 | Application keystrokes | `input:control` | Target capture/discovery uses input read; no implicit focus or menu invocation. |
@@ -245,16 +243,19 @@ different grants. Keep client responsibilities and unresolved acceptance
 visible. API design must resolve a conditional tool effect before implementation;
 the phrase “plus effects” is not a completed trace.
 
-Search's [tool-backed design](workspace-search.md) selects system find for
-candidates, Foundation literal matching and native application services for
-metadata/OS-reported locations. [Process/protection choices](workspace-search.md#permission-boundary-and-required-decision)
-remain explicit human work: the earlier helper refusal is not subprocess approval,
-and standard tool flags prove no relocated-target/lookup exemption. Mandatory
-review/integration and returned permission design precede resumed consumers.
-Native facts retain their reported-observation meaning and serviceability remains
-empirical with opaque peaks unproved. The finite G/N/V subjects replace custom
-FIFO/frontier/prefix-witness instrumentation; no workflow omission, native/binary
-outcome, entitlement or new consent is accepted.
+V1 [native discovery](workspace-search.md) supplies special locations and named
+native catalogues for applications and modern System Settings on macOS 26+.
+Clients own raw filesystem search and its permissions, filtering, ordering,
+budgets and coverage. Returning a location grants no filesystem access.
+The [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md)
+replaces the former system-find feature; catalogue sources, public coordinates,
+availability/completeness and native acceptance need returned design and review.
+
+Useful native facts, distinct application-copy identity, independently checked
+selected actions and serviceability remain required. The old raw-search SDL,
+per-root payload, source scheduling and child limits are comparison inputs, not
+native catalogue contracts. No catalogue backend, new consent, global policy or
+accepted native omission follows from the earlier find permission.
 
 The selected-action rows below use the launch/open increment's
 [v1 long-location boundary](workspace-launch-and-open.md#long-location-action-boundary):
@@ -264,21 +265,25 @@ long for macOS's application hand-off. That refusal adds no capability, grant,
 consent or operation; long-path application support is deferred past v1. The
 [route evaluation](../verification/long-action-route.md#v1-decision) records
 the evidence. Action-only and actual-search subjects, and the retained 1.0.0,
-repair 1.0.1 and search 1.1.0 profiles, stay distinct. The signed application packages the
-action-only repair as workspace release/schema 1.0.1 and holds it to its own
+repair 1.0.1 and future native discovery profiles, stay distinct. The signed
+application packages the action-only repair as workspace release/schema 1.0.1 and
+holds it to its own
 [profile](../design/profiles/core-desktop-workspace-repair-extension-host.json)
-([record](../verification/action-repair-release.md)); the retained 1.0.0 profile and the search 1.1.0 profile are
-not affected, and actual-search acceptance stays pending.
+([record](../verification/action-repair-release.md)). The retained 1.0.0 profile is
+independent evidence. Previously designed raw-search profiles must be reconciled
+by returned native discovery design; they are not catalogue acceptance captures.
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |
 | Desktop windows | Desktop read/control for list, select/focus, layouts and restore; input + desktop control for bounded Control-digit Space switching | Window layout; app input. Pending. |
 | Displays | Desktop read/control for list, proportional transfer and display focus; client display labels | Window layout. Pending. |
 | Named application launchers | `Mutation.workspaceLaunchApplication(application:)`; `workspace:control` AND `desktop:control` for all twelve applications, including VS Code. Unconstrained launch allows running-copy reuse; an installation constraint does not. | [Launch/open acceptance](workspace-launch-and-open.md#acceptance), including activation with another app frontmost and bounded acknowledgment. Served by the bundled workspace provider; L, G and N are established for this root, and V (activation, cold and warm, the twelve launchers, and the Gatekeeper timeout) is accepted in [launchers-vm.md](../verification/launchers-vm.md). |
-| Application search — discovery | Query.workspaceSearchApplications(query:, roots:, limit:) and every reachable field: workspace:read only. Client owns query entry, chooser/ranking/MRU/action menu/clipboard. | [Search contract](workspace-search.md), [SDL](../design/workspace-search-schema.graphql), [examples](../design/workspace-search-operations.graphql), [finite subjects](../verification/search-tooling.md#finite-acceptance-subjects). Conventional plus separate OS-reported default sources, honest UNKNOWN inventory, native bundle-identity copies/registration and actual Safari/Finder. Process/protection choices, review and G/N/V acceptance pending. |
-| Application search — selected actions | Mutation.workspaceLaunchApplication(application:) with selected known identifier AND installation path; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. | [Handoff](workspace-search.md#selection-and-action-handoff) and existing [v1 action limit](workspace-launch-and-open.md#long-location-action-boundary). Actual-search G/N/V provenance remains pending, distinct from accepted independent action subjects. Retained 1.0.0/current 1.0.1/search 1.1.0 profiles remain distinct. App-reveal notice decision stays live. |
-| File search — discovery | Query.workspaceSearchFiles(query:, roots:, limit:) and every reachable field: workspace:read only. Client owns query entry, chooser/ranking/MRU/action menu/clipboard. | [Coverage](workspace-search.md#coverage-and-aggregate-outcomes), same SDL/examples and [finite subjects](../verification/search-tooling.md#finite-acceptance-subjects). System name enumeration, Foundation literal matching, explicit partial/unknown protected home; source order and bounded command/native work, no custom FIFO/EOF/frontier/descriptor guarantees. Signed child responsibility/dialog/hydration, useful named witnesses, cleanup and independent listener/store/actions remain pending; k93 owns actual omissions acceptance. |
-| File search — selected actions | Mutation.workspaceOpenPath(path:, application:) for default or explicit Zed; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. No search read is implicit. | [Handoff](workspace-search.md#selection-and-action-handoff), existing [v1 limit](workspace-launch-and-open.md#long-location-action-boundary) and action revalidation/type refusal. Actual-search G/N/V provenance remains pending; independent actions do not prove search provenance. Protected default opening remains a separate decision. |
+| Application native catalogue | Public fields pending returned design; workspace:read. Client owns name filtering, chooser/ranking/MRU/action menu/clipboard. | [Current requirements](../requirements/modaliser-workflows.md#ownership-and-existing-constraints). Native source availability/completeness, bundle-copy identity, truthful registration and useful launchers/Safari/Finder require G/N/V acceptance. |
+| Special locations | Native starting-location values under workspace:read; no listing or client access grant. | Returned design defines the finite OS-known location set, absence/uncertainty and prompt-free inspection on macOS 26+. |
+| System Settings native catalogue | Named modern settings destinations under workspace:read; exact fields and opening target pending returned design. | Native macOS 26+ sources, useful destinations, honest source limits and authorized explicit selection need G/N/V acceptance. No older-OS compatibility programme. |
+| Application catalogue — selected actions | Mutation.workspaceLaunchApplication(application:) with selected known identifier AND installation path; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. | Existing [v1 action limit](workspace-launch-and-open.md#long-location-action-boundary) binds. Actual catalogue-result provenance remains pending; retained action-only binaries/receipts are not native discovery evidence. App-reveal notice stays live. |
+| Raw filesystem search | Client-owned traversal, filename matching, ordering, limits and OS permissions; no Koine search coordinate. | Client work. Koine's special-location/catalogue and explicit-action acceptance remains separate. Former raw home/order/work omissions are not Koine catalogue requirements. |
+| Client-found files — selected actions | Mutation.workspaceOpenPath(path:, application:) for default or explicit Zed; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. | Existing [v1 limit](workspace-launch-and-open.md#long-location-action-boundary), resolution and type refusal bind. No Koine raw-search read is implicit. Protected default opening remains a separate decision. |
 | Web search | Client query/suggestions/typed-query fallback; `Mutation.workspaceOpenURL(url:)`, `workspace:control` AND `desktop:control` | [Launch/open acceptance](workspace-launch-and-open.md#acceptance). Served by the bundled workspace provider; L, G, N and V are established for this root ([evidence](workspace-launch-and-open.md#evidence-so-far), [VM acceptance](../verification/open-url-vm.md)), except Dia's page load, which stays pending an account decision. Client responsibilities, recorded: query entry, the search engine and its template, suggestions and the typed-query fallback (the one open, chosen before the request) are the client's; Koine makes no search request and has no Google proxy (its network calls over the VM run include no `connect`). The [contract-only client](../../clients/contract-only/README.md) does all of it from the documented contract ([findings](../verification/open-url-contract-client-findings.md)). |
 | Media | Desktop control, system route | Pointer and media. Pending. |
 | Pointer | Desktop read/control; client ring | Pointer and media. Pending. |
@@ -328,29 +333,19 @@ no list; it must not be encoded as the same empty list. If submenus need opening
 their explicit population state is neither dependency absence nor an empty
 complete list. Unknown state/geometry is similarly represented explicitly.
 
-Search additionally reports coverage for each requested root: searched scope,
-skipped scope and reason, and whether coverage is complete, partial or unknown.
-Successful matches may coexist with explicit partial coverage; an empty partial
-result is not a complete successful search. Observed missing named consent retains
-the permission/os-permission error with Koine as owner; if such consent blocks
-every requested scope, the shared rule is a permission failure, never healthy
-empty. The current search mechanism does not obtain that observation.
-**Prompt-risk policy is an explicit exception to the all-blocked permission-error
-premise:** UNKNOWN consent means no consent absence was established. Search returns
-typed BLOCKED with null matches and dependency, explicit coverage and no search
-execution error even when matches is selected, under the
-[diagnostic decision](../adr/prompt-risk-is-search-data.md). The coverage object
-keeps PERMISSION/OS_PERMISSION/KOINE classification for the policy reason, with
-null osPermission; it does not change the framework's missing-named-consent case.
-Coverage-only and aliased selections keep the same branch, subject to ordinary
-execution errors, including provider lifecycle and authorization/publication.
-For no-progress search, native/identity inspection failure or work/resource refusal
-precedes prompt risk, which precedes pure
-absence/exclusion; prompt-risk plus a missing/unsupported root is BLOCKED,
-while prompt-risk plus CHANGED_DURING_SEARCH or INSPECTION_FAILED is FAILED.
-The search contract classifies every reason; root admission is unchanged. Missing indexes or
-application-side API enablement are dependency prerequisites, not OS consent.
-Exact coverage types and reasons belong to app-and-file-search's SDL.
+Native discovery must identify its declared sources and distinguish availability
+from completeness. An empty incomplete catalogue is not a complete inventory.
+Observed missing named consent retains the permission/os-permission error with
+Koine as owner. A policy refusal to risk a prompt instead leaves consent unknown,
+as the [diagnostic decision](../adr/prompt-risk-is-search-data.md) explains.
+Authorization, lifecycle and publication errors remain separate.
+
+The returned native design must settle exact catalogue/location payloads,
+reason precedence and compatibility through the existing seams. The previous
+raw-search proposal's per-root coverage, null matches/dependency and BLOCKED/
+FAILED reason rules are comparison material, not an adopted catalogue schema.
+Missing indexes or application-side API enablement are dependency prerequisites,
+not observed missing OS consent.
 
 | Situation | Observable contract |
 | --- | --- |
@@ -384,7 +379,7 @@ consent; any signing-posture change is still raised with Antony first.
 The [protected-path probe](../verification/protected-path-metadata.md#handler-lookup-limit)
 found a concrete limit for workspace: tested first-use metadata and registered-app
 inspection was prompt-free on Desktop, Documents and Downloads, but file-URL
-default-handler lookup for documents prompted. Application/file search must keep
+default-handler lookup for documents prompted. Native discovery must keep
 handler metadata unknown/blocked wherever no prompt-free route has been established,
 and must not call that lookup to discover whether consent is needed. Protected
 default opening remains pending; this result authorizes no new consent or
@@ -394,11 +389,11 @@ directory traversal or content search. Removable/network volumes were unavailabl
 The [earlier search comparison](../verification/search-discovery.md) measured
 ordinary directory and application inspection, prompting protected enumeration,
 and no useful index-health signal. Its observations retain their original bounds.
-The [tool-backed contract](workspace-search.md) replaces custom enumeration with
-system find, not a measured permission equivalence. Typed BLOCKED continues
-through ordinary values/null without a new diagnostic ABI. Child responsibility,
-relocated targets and native useful coverage require the focused human decision,
-returned design and finite signed-VM acceptance; no new consent is approved.
+The [current agreement](workspace-search.md) gives raw filesystem search to
+clients and native locations/catalogues to Koine. Previous tool-backed
+measurements prove no catalogue permission equivalence. The returned design and
+finite signed macOS 26+ acceptance must qualify each actual native source and
+target; no new consent is approved.
 
 ## Compatibility and delivery
 
@@ -461,11 +456,11 @@ outcome or independently built native compatibility.
 | Seam | Required evidence for this architecture |
 | --- | --- |
 | Public GraphQL | Read-only/focus-only cannot send keys or invoke menus. Input-only and menu-only control paths work without desktop control, using their own references and receipts. Workspace-only control cannot launch/open/reveal. Missing any declared additional capability denies the entire selected mutation before all actions; aliases, fragments, input objects, defaults and skipped fields preserve the rule. Revocation before dispatch refuses the next action; read publication rechecks all read requirements. |
-| Public GraphQL | Dependency unavailable, stale target, complete empty result, partial/unknown search coverage and both permission classes remain distinguishable, including a prerequisite that vanishes between readiness and action. Existing desktop classifications are unchanged. Protected readiness does not leak through a denied grant. |
+| Public GraphQL | Dependency unavailable, stale target, complete empty result, incomplete/unknown discovery coverage and both permission classes remain distinguishable, including a prerequisite that vanishes between readiness and action. Existing desktop classifications are unchanged. Protected readiness does not leak through a denied grant. |
 | Public GraphQL and isolated VMs | Input/menu grants cannot drive Koine's approval, creation, revocation or Quit controls, including previously obtained targets and session-directed paths. Recognized consent/security targets are refused. Space switching needs both input and desktop control; disabled/remapped bindings exercise refusal and the stated race limit. A display-focus or menu-only grant never acquires a pointer-button fallback. |
 | Native binary interface | Old compiled registrations retain old behavior on the new framework; a provider requiring additional-capabilities-v1 is refused before loading on an old host. New-host checks enforce its actual extra requirements. Compare independently built binaries and signed supported pairs; test unavailable capability owners and registration/manifest disagreement. **Established for the framework feature**, with a fixture provider: the released host refuses it before load, the new host enforces its set and refuses an undeclared use and a manifest/descriptor disagreement, and an old provider and the released desktop provider run unchanged on the new host, on independently built unsigned hosts. **Pending**: the workspace provider's own extra requirements, and every signed pair. |
 | Native call-path inspection and isolated TestAnyware macOS VMs | Enumerate each primitive, parameter, preparation, fallback and cleanup path against the authority trace. Use targets whose invoked operation does not itself change focus to distinguish Koine's extra activation calls from app reactions, and record both observations and inspected calls. A VM focus change alone proves neither the presence nor absence of a hidden call. Workspace activation requires both grants; real menu-only and application-input-only paths preserve independent grants. Record permissions, app/tool versions, limits and pending account cases. |
-| Search source and native-binary call-path inspection | Preserve independently controlled action no-spawn/no-listing paths while inspecting fixed search spawn/owned signal/reap paths under workspace:read. The current whole-workspace guard forbids these imports; k127 chooses separate guarded binaries or a demonstrated reachable-call-path guard under mandatory review. Action-to-search/process-call mutations must fail. k7/k30 retain this seam before implementation; simply allowing imports is insufficient. |
+| Native discovery source and native-binary call-path inspection | Preserve independently controlled action no-spawn/no-listing paths while inspecting the actual catalogue/location mechanisms under workspace:read. The returned design must allocate effects and cleanup, retain meaningful cross-boundary failing controls and reconcile k127/k7/k30 before implementation. No child is selected and simply allowing forbidden imports is insufficient. |
 | Isolated TestAnyware macOS VMs | Every read remains prompt-free, including first access to protected roots and Automation readiness. Revocation/inactivity cleanup uses only mechanisms admitted at start. Grant UI/descriptions disclose workspace app/document reach, expanded desktop control and broad input/menu reach before each surface ships. |
 
 The module boundary keeps caller obligations to target capture, capability

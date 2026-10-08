@@ -1,34 +1,31 @@
-# Prompt risk is search data
+# Prompt risk remains distinct from missing consent
 
-Workspace search represents a wholly prompt-risk-blocked read as typed BLOCKED
-data, with null matches and dependency and explicit per-root coverage. Its
-permission diagnostic reports UNKNOWN consent: Koine declined an inspection
-known to be capable of prompting; it did not observe missing consent. The
-[search contract](../specs/workspace-search.md#coverage-and-aggregate-outcomes)
-owns the branch invariants and client guidance. Observed missing named consent
-retains the framework's permission-error meaning, as specified by the
-[Machine contract](../specs/machine.md#errors-and-partial-data).
+Koine's native discovery reads must avoid OS consent prompts. Declining an
+inspection because it can prompt reports a policy block with unknown consent;
+it does not establish that named consent is missing. Native catalogue/location
+results must distinguish that block from a healthy empty observation and from
+unavailable or incomplete discovery. The returned
+[native design](../specs/workspace-search.md) must settle exact fields, reason
+precedence and client guidance within the
+[current ownership boundary](raw-filesystem-search-belongs-to-clients.md).
 
-This makes prompt policy inspectable even in a coverage-only query and preserves
-all causes in a mixed-root result. It also makes BLOCKED an enduring schema
-obligation: clients must inspect status, coverage and all field/lifecycle/publication
-errors rather than relying on GraphQL errors alone. Future named-consent output
-enum values require a separately specified compatibility policy before use;
-the present UNKNOWN/PROMPT_RISK values do not settle that evolution.
-Ordinary ProviderValue objects/nulls carry
-it through the [resilient framework](resilient-provider-framework.md), with no
-new symbols, framework minor or host feature. Existing
+Observed missing named consent retains the framework's permission/os-permission
+meaning in the [Machine contract](../specs/machine.md#errors-and-partial-data).
+Reinterpreting an osPermission failure with nil or blank consent is rejected:
+public construction permits those legacy values, and they cannot acquire new
+meaning without changing existing provider behavior. Authorization, lifecycle
+and publication errors remain independently observable.
+
+The previous raw-search proposal represented prompt risk as typed BLOCKED data
+with null matches and per-root coverage through ordinary ProviderValue objects.
+Its exact payload is comparison input, not an adopted native catalogue schema
+or a reason to add diagnostic ABI. A generic structured failure would impose
+permanent validation, malformed-provider diagnostics and pre-load compatibility
+requirements. Reconsider that cost only when the selected native operations
+need a shared failure that their typed results cannot adequately express.
+
+This distinction prevents clients from treating a policy refusal as either
+permission absence or an empty inventory. It adds no consent, entitlement,
+setup operation or automatic retry. Existing
 [authority](provider-authority-follows-effects.md), action errors and
-[first-party selection](first-party-provider-selection.md) requirements remain binding.
-
-A new compatible structured prompt-risk failure would give generic error-only
-clients a notification when they select matches, but would require permanent
-kind/consent/target/reason validation, malformed-provider diagnostics and
-pre-load feature/version refusal. It would still need typed coverage and status
-for unselected matches and partial successful roots. That cost buys no additional
-information for the present search consumers. Reconsider it when independent
-provider operations need a shared prompt-risk execution failure that their typed
-results cannot adequately express. Reusing osPermission with nil or blank
-consent is rejected outright: its fixed meaning is missing named consent, and
-public construction already permits those legacy values. They cannot acquire
-new meaning without changing existing provider behavior.
+[first-party selection](first-party-provider-selection.md) requirements bind.

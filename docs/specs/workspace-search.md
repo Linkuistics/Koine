@@ -1,28 +1,44 @@
-# Application and file search
+# Native discovery and client-owned search
 
-**Tooling review integrated; human choices, returned design and native acceptance pending.**
-Koine reuses macOS system `find` for candidate enumeration, Foundation for literal
-name matching, and native application services for bundle metadata and reported
-locations. Clients own presentation, chooser, ranking and MRU. The
-[reuse requirement](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
-replaces the earlier custom traversal candidate.
+**Ownership revised; native catalogue design and acceptance pending.** V1 puts
+raw filesystem search entirely with clients. Koine supplies **special locations**
+and named **native catalogues**, initially applications and modern System
+Settings destinations, targeting macOS 26+ on the existing Apple Silicon support
+matrix. Clients own raw traversal, name filtering, ranking, budgets and their
+filesystem permissions. A returned location is a starting point, not access or
+consent. No general OS metadata-query API is included in v1.
 
-Start at the [mechanism view](../design/architecture/index.html#diagram-search-discovery).
-The [finite comparison/invocation evidence](../verification/search-tooling.md)
-is source analysis, not a new native measurement. Earlier
+The [workflow requirements](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
+and [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md)
+are the current agreement. Returned design must select existing native facilities
+for each category, define sources/availability/completeness and public metadata,
+and reconcile all mixed search work before implementation. Koine's own reads
+remain prompt-free and must avoid hydration; empty, unavailable, blocked and
+incomplete/unknown observations remain distinct. Existing launch/open/reveal
+actions retain their own authority, resolution and handoff limits.
+
+The already agreed public GraphQL, native binary and isolated signed macOS VM
+seams apply to actual location/catalogue observations and selected actions.
+Useful configured-launcher/Safari/Finder and System Settings witnesses, independent
+dialog/hydration controls, source/binary authority evidence and retained action
+compatibility remain required. Earlier raw-search measurements accept no new
+native catalogue route.
+
+## Previous raw-search proposal
+
+**Everything below is comparison material awaiting returned design, not the
+current v1 API or backend.** The old SDL/examples, command/order/work limits,
+per-root coverage and permission questions describe an unimplemented raw-search
+proposal. Selecting named native catalogues does not adopt those mechanics or
+settle a catalogue backend's permissions. Returned design and mandatory review
+must replace this proposal before its consumers proceed.
+
+The [finite comparison](../verification/search-tooling.md), prior
 [discovery](../verification/search-discovery.md),
 [metadata](../verification/protected-path-metadata.md) and
 [lookup-only transit](../verification/descriptor-walk-prompt.md) observations
-retain their exact subjects; none accepts system find under signed Koine.
-The [SDL](../design/workspace-search-schema.graphql) and
-[examples](../design/workspace-search-operations.graphql) are designed, not served.
-
-The [permission/process decision](#permission-boundary-and-required-decision)
-is open. No subprocess, lookup-only exemption, setup, signing change or weaker
-protected-target policy is authorized by choosing a mechanism. Mandatory tooling
-review and its earned integration precede the search node. The focused human
-choices, returned permission contract and remaining applicable design/reviews
-precede planning. This design runs no backend or native experiment.
+retain their exact subjects. Native identity/fact, action and compatibility
+obligations remain relevant; raw traversal requirements do not.
 
 ## Solution and ownership
 
@@ -40,12 +56,13 @@ witness catalogue. Enumeration is a finite find expression; matching calls
 Foundation rather than copying a matching algorithm. Native metadata remains
 in-process, so a tool child does not isolate those allocations/blocking calls.
 
-The [enumeration](../adr/search-enumeration-reuses-system-find.md),
-[coverage](../adr/search-coverage-describes-observations.md),
+The [current ownership](../adr/raw-filesystem-search-belongs-to-clients.md)
+controls returned native work. The [coverage](../adr/search-coverage-describes-observations.md),
 [application identity](../adr/application-search-uses-bundle-identity.md),
 [native observation](../adr/search-native-facts-are-reported-observations.md) and
-[prompt-risk transport](../adr/prompt-risk-is-search-data.md) decisions govern
-search. Existing [effect authority](../adr/provider-authority-follows-effects.md),
+[prompt-risk](../adr/prompt-risk-is-search-data.md) records retain relevant
+principles and require native design; this previous proposal's exact mechanics
+are not current requirements. Existing [effect authority](../adr/provider-authority-follows-effects.md),
 [provider selection](../adr/first-party-provider-selection.md) and
 [launch/open](workspace-launch-and-open.md) contracts govern integration/actions.
 

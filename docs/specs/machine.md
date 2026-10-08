@@ -12,12 +12,15 @@ identity is a PID plus its kernel start instant; the races public Accessibility
 leaves open are accepted and listed in "Native targeting discussion". Client authors start at the
 [client guide](../client-guide.md).
 
-The [workflow-provider extension](workflow-providers.md) adds the agreed launch,
-search, input, menu and tool workflows. Its architecture is designed and pending
-implementation. Sections explicitly marked **extension** below are obligations
-for that work, not claims about 0.1.0 or its existing acceptance evidence. The
-two specs form the current design set; provider-specific workflow details grow
-in the workflow spec, while shared policy and desktop behavior grow here.
+The [workflow-provider extension](workflow-providers.md) adds agreed launch,
+native location/catalogue discovery, input, menu and tool workflows. Its pending
+native discovery targets macOS 26+ and named application/System Settings categories;
+clients own raw filesystem search. The
+[ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md) governs
+that boundary. Sections explicitly marked **extension** below are obligations for
+that work, not claims about 0.1.0 or its acceptance. Native catalogue design must
+reconcile earlier raw-search examples, payloads and profiles before consumption;
+they supply no native catalogue API or runtime evidence.
 
 ## Purpose and ownership
 
@@ -554,24 +557,16 @@ This does not add enum values to existing management permission types or alter
 what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
 
-**Search extension — typed prompt-risk outcome, pending implementation.**
-The [search contract](workspace-search.md#coverage-and-aggregate-outcomes)
-refuses known prompting roots and prunes agreed scope spellings, with relocated/
-aliased-target and metadata-before-prune limits explicitly pending agreement.
-It preserves per-root
-coverage with no list in BLOCKED. The
-[diagnostic decision](../adr/prompt-risk-is-search-data.md) carries that branch
-as ordinary provider success values: selected matches and dependency are null,
-without a search-generated execution error. Existing field/lifecycle errors
-and normal non-null propagation still apply. Coverage's permission object describes prompt
-risk and UNKNOWN consent, never observed missing consent. Coverage-only queries
-and matches aliases have the same outcome; mixed successful roots retain
-AVAILABLE and their own blocked-scope diagnostics. FAILED retains the existing
-failed error at selected matches. Authorization and live publication checks still
-apply to every field; their errors can suppress coverage through normal null
-propagation. There is no extension to GraphQL error kinds/permission extensions,
-ProviderFailure, framework minor/features or management permission enums. Existing
-named-consent errors remain fixed. No consent, entitlement or setup is approved.
+**Native discovery extension — returned design pending.** Special locations and
+named native catalogues must distinguish healthy empty, blocked, unavailable and
+incompletely observed results without treating a path or native result count as
+consent or an exhaustive inventory. Known prompt risk is not observed missing
+consent. The prior raw-search typed payload in the
+[previous proposal](workspace-search.md#coverage-and-aggregate-outcomes) is
+comparison input, not the v1 catalogue contract. Returned design defines exact
+fields and branch invariants while preserving existing error kinds, live authority/
+publication checks and framework compatibility. No new consent, setup or global
+materialization policy is approved.
 
 All extension reads are prompt-free, including prerequisite and protected-folder
 checks. A probe that would prompt is not a permitted read mechanism; report
@@ -946,13 +941,13 @@ input coercion, with a response path and no domain classification.
 
 ### Provider failure compatibility
 
-Search adds no failure case, target/reason accessor, minor or host feature.
-Its BLOCKED branch uses success object/null values under the existing ABI;
-the [diagnostic contract](workspace-search.md#coverage-and-aggregate-outcomes)
-does not alter the following baseline mapping. Public failure construction
-already permits nil and arbitrary strings; clients/providers must not infer
-that a semantically incomplete value was unconstructible. Search cannot treat
-nil/blank consent as a prompt-risk sentinel or tighten legacy validation.
+Native discovery must preserve the following existing baseline failure mapping.
+The earlier raw-search design's typed result fields and feature/profile choices
+are not a catalogue schema or a new ABI. Returned design specifies its normal
+success values and exact compatibility requirements without inventing failure
+accessors. Public failure construction already permits nil and arbitrary strings;
+clients/providers must not infer that a semantically incomplete value was
+unconstructible. Nil/blank consent is not a prompt-risk sentinel.
 
 | Existing failure kind | permission nil | permission blank (empty or whitespace-only) | permission named/nonblank |
 | --- | --- | --- | --- |
@@ -971,15 +966,12 @@ values. A future unknown kind retains the existing failed fallback; malformed
 success trees retain the existing failed malformed-value handling. The host
 continues supplying original GraphQL paths and permissionOwner koine.
 
-Targets/reasons exist only in search's typed coverage payload in this design;
+Native catalogue diagnostics need their own returned success-payload design;
 they cannot be attached to ProviderFailure through invented accessors. Existing
-feature/version loader checks still apply, independently of this table. An old
-selection-aware framework-1.1 host can carry the new schema/result values and
-supports the search update's declared `additional-capabilities-v1` and
-`first-party-selection-v1`. Both manifest and descriptor require those features;
-the manifest declares framework major 1/minimum minor 1. Selection is an existing host feature
-newly declared by this update. An older host lacking the required minor/features
-refuses it before loading. No diagnostic-specific old-host refusal is needed or promised.
+loader feature/version checks and retained action-only compatibility remain
+binding. The new catalogue composition/profile must declare its actual required
+features and supported old/new host/provider combinations; former raw-search
+profiles supply neither its schema nor a compatibility pass.
 
 ### Resolution and lifecycle
 
@@ -1738,9 +1730,12 @@ input field's default names its owner before any action. The bundled workspace p
 ## Scope
 
 The designed [workflow extension](workflow-providers.md) admits non-running
-applications for launch and installed-application search, file search under
-configured roots, file/URL opening, reveal, and bounded integration-prerequisite
-discovery and explicit setup. The existing desktop process lookup still resolves
+application discovery/launch, special native locations, named application and
+modern System Settings catalogues, file/URL opening, Finder reveal and bounded
+integration-prerequisite discovery and explicit setup. Raw filesystem search
+belongs to clients; a special-location value is no filesystem proxy or consent.
+V1 includes no general OS metadata-query API.
+The existing desktop process lookup still resolves
 only the captured running incarnation; it does not become a name/bundle lookup.
 Other broad installation/configuration discovery remains out of scope, as do
 a public arbitrary-shell-execution operation, LLM skills, remote networking,

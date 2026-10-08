@@ -83,11 +83,12 @@ opacity contracts. A verified need to transfer a particular held native target
 between providers would reopen this choice through a separately specified
 framework seam, not by parsing a URI remainder.
 
-Fixed system-search child creation, owned-group signalling and reap are internal
-workspace:read effects, including cleanup admitted with a job. They are conditional
-on the separate human process decision and confer no arbitrary process control.
-The returned search lifecycle design must preserve source/binary evidence that
-action paths cannot reach those calls; provider ownership alone does not prove it.
+Raw filesystem search belongs to clients under the
+[ownership decision](raw-filesystem-search-belongs-to-clients.md). The former fixed
+find child and its cleanup are not a selected workspace feature. Native discovery
+design must allocate its actual read mechanisms and cleanup explicitly, preserving
+source/binary evidence that actions cannot reach discovery effects. The earlier
+find permission supplies no arbitrary process control or implicit catalogue backend.
 
 Workspace is separate from desktop so existing desktop grants do not acquire
 home-directory search and file-opening authority. Desktop's pointer, media and

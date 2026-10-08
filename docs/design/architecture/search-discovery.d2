@@ -1,17 +1,19 @@
-# Selected mechanism, subject to human choices/review/native acceptance.
+# Agreed requirements boundary; native API and mechanisms await design/review.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Client query\nworkspace:read" {class: start}
-Workspace: "Workspace search component\nSources, bounds, frozen coverage"
-Find: "System find child\nFilesystem names; no custom walker"
-Foundation: "Foundation library\nLiteral Unicode name matching"
-Native: "Native application services in Koine\nBundle facts + OS-reported seeds"
-Client: "Client chooser\nRanking, MRU, explicit action"
-Start -> Workspace: "1 · authorize"
-Workspace -> Find: "2 · only after process/policy decision"
-Workspace -> Native: "2 · only approved target access"
-Find -> Foundation: "3 · bounded NUL records"
-Native -> Foundation: "3 · checked application names"
-Foundation -> Client: "4 · choices + source coverage"
+Start: "Start here · Agreed v1 scope\nmacOS 26+" {class: start}
+Koine: "Koine native discovery\nPrompt-free reads; honest source limits"
+Locations: "Special locations\nOS-known starting points; no listing or access grant"
+Catalogues: "Named native catalogues\nApplications + modern System Settings"
+Client: "Client\nRaw traversal, permissions, filtering and ranking"
+Actions: "Existing explicit actions\nAppropriate authority + action-time checks"
+Design: "Returned design + mandatory review\nDefine native sources, API and G/N/V acceptance"
+Start -> Koine: "1 · requirements"
+Koine -> Locations: "2 · starting values"
+Koine -> Catalogues: "2 · metadata observations"
+Locations -> Client: "3 · client chooses where to search"
+Catalogues -> Client: "3 · client derives choices"
+Client -> Actions: "4 · explicit selection"
+Start -> Design: "prerequisite · before implementation"

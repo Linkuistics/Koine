@@ -48,22 +48,36 @@ suggestion orchestration remain client behavior, with Koine supplying native
 URL opening. The configured workflow is retained without requiring a Google
 network proxy in Koine.
 
-Application and file search remain Koine responsibilities. Their implementation
-must reuse existing OS facilities or established search tools rather than build
-a filesystem search engine from scratch. Koine supplies the API, native
-application discovery and metadata, integration and permission handling; clients
-retain query presentation, choosers and ordering policy. rg and fzf are suggested
-options, not selected dependencies. Tool choice, invocation or library use,
-availability and distribution belong to the revised search design. This
-constraint does not require a new custom traversal or matching algorithm.
+Raw filesystem search belongs entirely to clients. For v1, Koine supplies
+**special locations** from which a client can search, and **native catalogues**
+for named metadata categories such as applications and preference panels. It
+exposes no general OS metadata-query API in v1. A returned location is a starting
+point, not filesystem access, consent or a claim that its contents were inspected.
+Clients own traversal, filename filtering, ordering, budgets and their search
+process's OS permissions, as well as query presentation, choosers and MRU.
+Koine does not supply a raw file-search operation or a recursive-search fallback
+behind metadata discovery.
 
-Permission behavior remains part of that design: using an existing engine does
-not establish prompt-free access. Search reads must not unexpectedly request OS
-consent, and the implementation must report skipped or unavailable work honestly.
-Any explicit consent/setup change still needs its own agreement. The earlier
-custom traversal proposal must be reassessed under this reuse requirement before
-further mechanism-specific design or implementation. Existing native action
-resolution and launch/open/reveal support are separate from search enumeration.
+This work targets macOS 26 or later, consistent with Koine's existing Apple
+Silicon support matrix. The preference catalogue targets modern System Settings;
+there is no older-OS or legacy preference-pane compatibility requirement. The
+returned design establishes which supported native destinations macOS 26+
+actually exposes and reports any incomplete or unavailable category honestly.
+
+The returned design must settle the native catalogue API and each catalogue's
+sources, availability and completeness. "All apps" is an intended useful native
+discovery result, not permission to claim an exhaustive all-disk inventory from
+partial OS-reported seeds. Reuse existing OS facilities or established tools;
+the earlier system-find and custom-traversal designs are comparison inputs,
+not the selected product boundary. Native metadata and existing explicit
+launch/open/reveal actions remain Koine responsibilities.
+
+Koine's own location and metadata reads remain prompt-free. They must report
+blocked, unavailable, unknown and healthy empty outcomes honestly and avoid
+hydration. Any consent/setup change needs its own agreement
+and explicit operation/authority. Earlier find-process, bounded lookup-only and
+qualified protection permissions do not require retaining a raw-search feature
+or approve a new metadata backend, global policy setting or workflow loss.
 
 This work does not edit or restart Modaliser or ModalAnyware. A standalone
 client must be able to demonstrate Koine's contribution. A required app-side
@@ -120,8 +134,9 @@ provider layout.
 | Desktop windows | Switch Spaces through the configured Control-digit workflow; list and select windows; place windows in thirds, half-thirds, two-thirds, halves and quarters; maximise, centre and restore geometry. |
 | Displays | List displays; move a window to a selected display while preserving its position and size as fractions of the displays' visible areas; focus a display for subsequent desktop interaction. |
 | Named application launchers | Launch or activate Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. |
-| Application search | Find installed applications; launch or activate a selection, reveal it in Finder, copy its path or copy its bundle identifier. Supply the metadata needed for these choices. |
-| File search | Find files under the configured roots, currently the home directory; open a selection with its default application, reveal it in Finder, copy its path or open it in Zed. |
+| Application discovery | Koine supplies native application metadata for client filtering and selection; launch or activate a selection, reveal it in Finder, copy its path or copy its bundle identifier. Discovery availability/completeness must be explicit. |
+| File search | The client searches under its configured roots, currently the home directory. Koine supplies special starting locations and the existing explicit default/Zed open and Finder-reveal actions; the client owns path copy. |
+| Native metadata discovery | V1 supplies special locations and named native catalogues for applications and preference panels. Clients filter/rank choices; no general OS metadata-query API is included in v1. The returned design defines sources, completeness and selection metadata. |
 | Web search | Retain typed-query and Google-suggestion selection, opening the resulting search in the default browser. Suggestion failure must not prevent searching for the typed query. |
 | Media | Send system play/pause through the system media route, rather than selecting the foreground application as the player. |
 | Pointer | Locate and reveal the pointer, including the configured nudge, so the client can draw its highlight. |
@@ -304,17 +319,27 @@ automatically replay the interrupted application action.
 
 ## Test seams and acceptance
 
-The tool-backed search design uses the already agreed seams: public results and
-permission diagnostics through GraphQL, the actual provider/host integration
-through the native binary interface, and real backend calls and dialog
-observation under signed Koine in isolated VMs. Backend controls are exercised
-inside those seams; they add no new product seam. Tool reuse alone supplies no
-native permission or useful-coverage acceptance. The [selected design](../specs/workspace-search.md)
-uses system find/Foundation/native application services; subprocess permission,
-relocated-target protection and lookup-only target inspection remain human choices.
-The earlier custom FIFO/witness/account mechanics were candidate-specific, not
-product requirements. Useful default/home coverage and action workflows remain
-required; omissions cannot be silently accepted by choosing a tool.
+Native locations and metadata discovery use the already agreed seams: public
+results and permission diagnostics through GraphQL, actual provider/host
+integration through the native binary interface, and native calls with independent
+dialog/hydration observation under signed Koine in isolated VMs. Controls inside
+those seams add no new product seam. Location values must be usable starting
+points without claiming client access; native catalogue observations, empty/
+unavailable/blocked/unknown outcomes, useful application choices and existing
+explicit selection actions need acceptance. Client-owned raw-search traversal,
+ordering and coverage are client obligations. The [previous search proposal](../specs/workspace-search.md)
+requires returned design and mandatory review under this revised ownership.
+Earlier raw-search/custom-walk measurements accept no native discovery backend.
+
+Acceptance must cover actual OS-known starting locations without directory
+listing or inferred client access; useful native application choices including
+the configured launchers, Safari and Finder, with distinct installations and
+truthful metadata; and actual macOS 26+ System Settings destinations. Unknown or
+unavailable metadata must remain distinct from healthy empty or complete
+discovery. Signed-host reads need independent dialog/hydration controls; existing
+selected actions retain their own authority and native receipt checks. These
+expectations are agreed through the existing three seams; unavailable native
+subjects remain pending.
 
 Antony agreed to reuse the three seams in the
 [desktop contract](../specs/machine.md#test-seams-and-acceptance):

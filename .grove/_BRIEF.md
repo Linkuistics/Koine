@@ -67,24 +67,31 @@ classification, and scope reconciliation. Then, in order:
     `launch-and-open-k29` added it.
 13. `baseline-acceptance`.
 
-Application/file search now consumes search-tooling-k195's selected system-find,
-Foundation matching and native application-service design, its mandatory review/
-earned integration, then search-tool-permissions-k196. Process permission,
-home ordering and materialization are separate human choices; in-process FileManager
-enumeration is the concrete child-refusal alternative, not an adopted backend.
-Search's fixed child lifecycle belongs to workspace:read, with k127 required to
-preserve action source/binary guards before implementation. Protected exclusions
-and measured order/work omissions require separate k93 answers. Known anchor/mount
-metadata contact and case/Unicode/Data-root aliases remain policy obligations.
-Relocated-target/lookup-only policy remains a concrete human decision; k115's custom
-helper refusal is not overridden. Returned permission k126/k191/k193, command
-lifecycle k127, native metadata/long records k123 and whole-k19 resource review k120
-precede planning k30. Custom FIFO/frontier/prefix-witness accounts are obsolete
-candidate mechanics, not native passes. Actual signed identity/dialog/hydration,
-useful home/default/launcher witnesses, independent serviceability and binary
-acceptance remain pending. Protected-home k93 accepts actual per-witness omissions
-or a separately agreed setup/domain/backend contract before baseline; no arbitrary
-bounded sample or new consent/signing/limit change is accepted.
+search-tool-permissions-k196 records Antony's revised v1 boundary: clients own
+raw filesystem search, permissions, filtering/ranking and budgets; Koine supplies
+OS-known special starting locations and named native application/modern System
+Settings catalogues. The support floor is macOS 26+ within the existing Apple
+Silicon matrix. No general OS metadata-query API or older-OS/legacy programme is
+required for v1. Location values grant neither contents listing nor client access.
+
+The returned root native-discovery-k199 design and mandatory review/earned integration
+precede app-and-file-search-k7. They establish actual native sources,
+availability/completeness, API and finite acceptance, reconciling mixed
+k19/k126/k191/k193/k127/k123/k120/k30/k93 charters before consumption. Public
+GraphQL covers locations/catalogues, authorization/revocation and honest
+empty/blocked/unavailable/incomplete/unknown observations; actual provider/host
+binaries cover metadata, loading and action authority; signed supported VMs cover
+starting locations, twelve launchers plus Safari/Finder, modern settings,
+appropriate selected actions and independent dialog/hydration controls. These
+expectations are agreed. Native source/binary/serviceability acceptance remains
+pending; raw home ordering/work loss is client-owned, not a Koine feature.
+
+Prior find/custom-walk contracts and measurements are bounded comparison input.
+Earlier process/lookup/protection permissions do not select a catalogue backend
+or approve a global materialization policy, new consent/helper/signing posture or
+actual useful-category loss. Preserve existing launch/open/reveal and retained
+1.0.0/1.0.1 action compatibility. No live item is pruned or marked native-passed
+because its old raw algorithm is obsolete.
 
 Each increment resolves its bounded native-evidence question, then its API
 design, before a trailing `planning` leaf cuts implementation.
@@ -97,7 +104,7 @@ row's client part is recorded in that increment's trace.
 | Desktop windows | `window-layout`; Space switching in `app-input` | labels, chooser, MRU |
 | Displays | `window-layout` | display labels |
 | Named launchers | `launch-and-open` | key map |
-| Application and file search | `app-and-file-search`, acting through `launch-and-open` | query entry, chooser, action menu, MRU |
+| Native locations and app/settings catalogues; client application/file search | `app-and-file-search`, acting through `launch-and-open` | raw traversal/permissions, filtering/ranking, query UI, chooser/action menu/MRU/clipboard |
 | Web search | `launch-and-open` (URL opening) | query UI, suggestions, typed-query fallback |
 | Media, pointer | `pointer-and-media` | highlight ring |
 | Client settings | `launch-and-open` (open in Zed) | reload and relaunch |
@@ -160,15 +167,15 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
-Application/file search requirements and current design are in
-`docs/requirements/modaliser-workflows.md`, `docs/specs/workspace-search.md` and
-`docs/verification/search-tooling.md`. Search stays in Koine; clients own chooser,
-ranking/MRU and clipboard. The system-tool mechanism is selected for review, not
-implemented or natively accepted. Root-level k195 review/integration and k196 human
-choices precede the reconciled search node. Preserve native metadata, actual action
-contracts and agreed G/N/V seams. Closed prior search producers/measurements remain
-bounded comparison evidence; rewritten live charters discharge retained obligations.
-No live item is pruned or marked passed merely because its old algorithm is obsolete.
+Native discovery requirements and the ownership decision are in
+docs/requirements/modaliser-workflows.md and
+docs/adr/raw-filesystem-search-belongs-to-clients.md. docs/specs/workspace-search.md
+introduces the current boundary and explicitly retains the former raw proposal
+only for comparison; docs/verification/search-tooling.md preserves that proposal's
+finite evidence bounds. Client raw search grants no Koine authority and returned
+locations grant no client filesystem access. The returned native-discovery-k199 design
+and mandatory review precede the reconciled k7 node. Native metadata, current
+action contracts and agreed G/N/V seams remain obligations.
 
 `launch-and-open-k6` and its final node `long-locations-k172` deliver the
 action-only workspace release/schema 1.0.1: all four operations, the twelve
@@ -182,7 +189,7 @@ and selection/profile contracts for the next providers.
 The recorded native coverage limit for workspace 1.0.1 on macOS 26.5 (25F71),
 arm64 remains bounded to registered-long ordering and preferred-long refusal
 (`docs/verification/application-locations-vm.md#accepted-native-coverage-limit`);
-both behaviors remain unproved and their contracts bind. Actual-search G/N/V
+both behaviors remain unproved and their contracts bind. Native catalogue/location G/N/V
 handoff belongs to `app-and-file-search`. The previously externalized
 `protected-default-open-k89`, `reveal-app-bundle-notice-k90`,
 `alternate-team-signing-k80` and account-owned `dia-url-page-load-k88` remain
@@ -225,7 +232,7 @@ Modaliser's mechanisms are evidence of intended results, never a mechanism to
 reproduce or a bug to freeze.
 
 
-The current search roll-up above replaces earlier custom traversal/witness
-prescriptions. Its process/protection decision and returned reviews remain live;
-actual-search acceptance belongs to app-and-file-search, while launch/open/reveal's
-accepted 1.0.1 action contract and long-location handoff limit stay independent.
+The current discovery agreement replaces Koine raw traversal and its pending
+ordering/dataless questions. Native design/review and actual acceptance remain
+live; launch/open/reveal's accepted 1.0.1 action contract and long-location handoff
+limit stay independent.

@@ -399,3 +399,10 @@ integration can apply in place.
 - Glossary entries and the discovery, preopen, traversal and resources view
   sources agree with the prose. The SDL enum reductions match the removed
   custom concepts.
+
+## Current citation
+
+The enumeration-record pathname and source coordinates above describe the
+original producer, retained as historical comparison. Its current ownership
+record is docs/adr/raw-filesystem-search-belongs-to-clients.md; k196 moves raw
+filesystem search to clients and requires returned native discovery design.

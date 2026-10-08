@@ -364,80 +364,45 @@ nothing".
 
 ## Searching for applications and files
 
-**Designed, not served yet.** The [search contract](specs/workspace-search.md)
-selects system find, Foundation literal matching and native application metadata.
-The client owns query entry, chooser, ranking, MRU, clipboard and action choice.
-Its process/protected-target decisions, mandatory reviews and actual G/N/V
-acceptance remain pending. No new consent/setup or signing posture is implied.
+Raw filesystem search belongs to the client. Choose its engine, traversal,
+filename filtering, ordering, budgets and OS-permission handling locally.
+Koine supplies native **special locations** from which to search and, for v1,
+named **native catalogues** for applications and modern System Settings on
+macOS 26+. It exposes no general OS metadata-query API in v1. A location value
+does not grant filesystem access or consent; a remote client needs its own access.
 
-Introspect for workspaceSearchApplications/workspaceSearchFiles, rather than
-inferring availability from the release number. Both roots/every output field
-need workspace:read only. The [SDL](design/workspace-search-schema.graphql) and
-[examples](design/workspace-search-operations.graphql) define inputs and results.
-Query is a literal filename substring, with Foundation NFC/case/diacritic handling;
-whitespace and pattern punctuation are literal. Null roots uses defaults; explicit
-roots replace them. Files default to Koine's home. Application defaults include
-conventional directories plus a separate OS-reported source; explicit application
-roots suppress out-of-root OS discovery expansion.
+**Native discovery is awaiting returned design and is not served yet.** The
+[requirements](requirements/modaliser-workflows.md#ownership-and-existing-constraints)
+define the current boundary. The [previous search proposal](specs/workspace-search.md)
+and its raw-search SDL/examples are comparison inputs, not a current API to
+implement against. Introspect for the actual native catalogue/location fields
+after their design and implementation; the former raw filename/root-query shape
+is not the v1 contract.
 
-Read status, matches, every source's coverage, dependency, resultsTruncated and
-all errors together. COMPLETE is the declared eligible filesystem domain, not
-all files on disk or an atomic snapshot. OS_REPORTED coverage is always UNKNOWN;
-its seed/registration responses may be absent, stale or incomplete. Empty native
-responses are never an exhaustive healthy empty inventory. examinedEntries counts
-candidate observations, not directory EOF or all unseen names. OS-source paths
-are nullable; rootIndices are observed coverage-row indices, not lexical overlap.
-Hidden/package-suffix/link-descendant/same-device rules define the domain;
-protected/cloud/work/native omissions remain explicit. Home stays PARTIAL/UNKNOWN.
-Command warning paths/permission causes are not guessed from stderr.
+Read native source availability, completeness, metadata uncertainty and errors
+together. Empty, blocked, unavailable and incompletely observed categories must
+remain distinguishable. An OS-reported list is not automatically all applications
+on disk, and a path says nothing about client consent or its contents. Koine's own
+native reads remain prompt-free and must avoid hydration. Clients own filtering,
+ranking, chooser, MRU, clipboard and raw-search coverage.
 
-Source order gives no shallow-first or top-N guarantee. A bounded unsorted deep
-home pass can repeatedly omit later shallow siblings; k196 decides its ordering
-premise, and k93 separately accepts actual policy versus order/work omissions.
-Sort bounded choices and
-apply MRU locally. Truncation means an observed matching choice was omitted by
-result/value retention; unfinished coverage can exist without it. Paths preserve
-command bytes, including final links, without a unique canonical-parent promise.
-Application routes merge only by established native bundle identity; different
-copies sharing an identifier remain distinct. An alias supplies no extra app name.
+Application choices still need useful native metadata and distinct installation
+identity. A selected known identifier and installation path feed the existing
+constrained launch; unknown/refused metadata must not be turned into a different
+copy or an invented registration negative. Returned design establishes the
+opening target for System Settings destinations. Existing explicit actions retain
+their complete authority checks and re-resolve selections independently.
 
-With no useful progress, failure reasons precede prompt risk, which precedes
-pure unavailable/absent sources. BLOCKED has null matches/dependency and UNKNOWN
-consent, without a search-generated error. FAILED emits failed at each selected
-matches alias; coverage-only selections do not create that matches error. Other
-lifecycle/publication/core errors retain normal propagation and can suppress
-status/coverage too. Nested selections/aliases reuse one frozen result without
-more native work. The system child may have a different TCC responsible identity:
-permission diagnostics disclose accessProcess, not an inferred signing-identity
-string. Actual responsible identity is OS/build/signing/launch-specific acceptance
-evidence, never a runtime identity copied from an earlier VM.
-Never use a capability or successful native count to infer OS consent.
-
-INSTALLED apps with a known identifier supply BOTH identifier and applicationPath
-to constrained launch. UNREGISTERED is a checked reported native-service negative,
-with stale/undetected-failure limits; nil/empty errorless data remains UNKNOWN.
-UNKNOWN/UNREGISTERED apps stay reveal/copy candidates; copy known identifiers
-locally. File paths feed existing default/Zed open/reveal. Handler state remains
-UNKNOWN with null defaultApplication; search does no prompting handler lookup.
-Controls are separately required and actions revalidate/classify the selection.
-Never retry by dropping the installation constraint or selecting another copy.
-
+Client-found file locations can use existing default/Zed open and Finder reveal.
 The [v1 action boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)
-remains unchanged: missing locations keep their dependency outcomes; an extant
+still applies: missing locations retain their dependency outcomes; an extant
 literal/expanded/resolved spelling of at least 1,024 bytes without NUL fails before
-application handoff. Search's 8,192-byte ceiling promises no actionability. Keep
-longer results visible and copyable, without shortening or rewriting them.
-Protected default opening and app-reveal notice retain their pending decisions.
+application handoff. Keep longer paths copyable without rewriting them. Protected
+default opening and app-reveal notice retain their separate pending work.
 
-Cancel superseded requests in an as-you-type chooser. Reaching limit or limit+1
-does not stop the selected scan; it continues within existing work/time bounds.
-Cancellation freezes publication and cleans owned child/native work. Slots are
-retained until actual reap/native return, so CAPACITY_LIMIT can persist; provider
-restart cannot replenish the shared registry. Uninterruptible work/abrupt-parent
-orphan cleanup has explicit limits in the contract. Backend absence, ordinary
-healthy empty and policy blocking stay distinct. The
-[finite acceptance subjects](verification/search-tooling.md#finite-acceptance-subjects)
-remain unexecuted; earlier directory/lookup probes accept no tool-backed route.
+Native GraphQL/provider-binary/signed-VM acceptance, useful application/settings
+witnesses, no-dialog/hydration controls and compatibility remain pending. Client
+raw-search omissions are not Koine native catalogue acceptance.
 
 ## Launching an application
 

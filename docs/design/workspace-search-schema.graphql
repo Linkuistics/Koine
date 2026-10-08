@@ -1,6 +1,6 @@
-# Designed additive workspace contribution; not served behavior.
+# Previous raw-search proposal only; not Koine's current v1 API.
 # Every root and reachable field requires workspace:read only.
-# System-find/target-inspection permissions, review and G/N/V acceptance pending.
+# Native locations/catalogues require returned design and review; no backend is selected.
 # Compose with current action schema; import no foreign provider type or new ABI.
 
 """With no candidate/healthy-empty progress: failures precede prompt risk, then unavailable sources. Inspect all field/lifecycle/publication errors as well as frozen data."""

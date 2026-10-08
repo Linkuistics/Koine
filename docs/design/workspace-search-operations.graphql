@@ -1,4 +1,4 @@
-# Designed examples; system-tool/target permissions, review and native acceptance pending.
+# Previous raw-search examples only; native locations/catalogues await design/review.
 # Requires workspace:read only. Inspect status, coverage, dependency, truncation AND errors.
 # Coverage rows include source provenance; native-source paths can be null.
 

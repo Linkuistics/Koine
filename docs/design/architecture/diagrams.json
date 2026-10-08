@@ -1,10 +1,10 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Koine provider architecture and current search design. Management, server and native providers share the resident Koine process; the selected system-find search child is conditional on explicit permission. Graphs begin at the dark Start here node; sequences read from their first message. Diagram sources are editable; widen the window or open the SVG for focused reading.",
+  "intro": "Koine provider architecture and the agreed v1 discovery boundary. Koine supplies special locations and named native catalogues; clients own raw filesystem search. The other search views preserve the previous proposal for comparison. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable; open the SVG for focused reading.",
   "discussion": {
-    "title": "Replace custom search with an existing system tool",
-    "status": "Tooling review integrated; process/protection, order and dataless choices pending",
-    "summary": "System find supplies candidates, Foundation supplies literal matching and native services supply metadata/seeds; clients own chooser/ranking/MRU. FileManager is a concrete in-process alternative. Unsorted home DFS can starve later shallow siblings; ordering and materialization remain human choices. Prune/device tests can follow anchor/mount metadata and byte patterns do not cover spelling aliases. Directory markers, exact byte comparisons and defined skip reasons qualify coverage. k127 preserves action source/binary guards; k123 bounds recognition calls. No implementation, native pass or workflow loss is accepted here.",
+    "title": "Client-owned raw search and Koine native discovery",
+    "status": "V1 requirements agreed; native design, review and acceptance pending",
+    "summary": "For macOS 26+, Koine supplies OS-known starting locations and named application/modern System Settings catalogues. Clients own traversal, filesystem permissions, filtering and ranking. Location values confer no access. Koine reads remain prompt-free, with honest empty, blocked, unavailable and incomplete/unknown observations. Public GraphQL, actual provider/host binaries and signed VMs remain the agreed acceptance seams. The returned design must establish native sources and reconcile retained metadata, action, compatibility and serviceability obligations; the eight previous raw-search views do not select an API or backend.",
     "diagramIds": [
       "search-discovery",
       "search-preopen",
@@ -19,47 +19,47 @@
     "updatedDiagrams": [
       {
         "id": "search-discovery",
-        "summary": "Selected design separates candidates, native metadata, library matching and client presentation. Process/protected-target decisions, review and native acceptance remain pending."
+        "summary": "Agreed v1 ownership: Koine returns special locations and named native catalogues; clients own raw search. Native sources, API and acceptance await returned design and mandatory review."
       },
       {
         "id": "search-preopen",
-        "summary": "Four separate choices: find child/FileManager alternative, target/alias/metadata protection, home ordering and dataless policy. Returned root markers/withheld-listing qualification and signed acceptance remain pending."
+        "summary": "Previous raw-search permission interview. The ownership revision supersedes its raw ordering/backend questions; native reads still require prompt-free/no-hydration qualification."
       },
       {
         "id": "search-canonical",
-        "summary": "File merging/source-prefix checks use exact UTF-8 bytes, including overlapping NFC/NFD roots; native application identity and existing action revalidation remain separate."
+        "summary": "Previous raw-result identity proposal. Per-copy application identity and action-time checks remain relevant; the returned native design reconciles exact metadata and location semantics."
       },
       {
         "id": "search-inspection",
-        "summary": "k123 defines recognition candidates and finite native-call admission beyond copied-value/URL limits. Links match target names; empty service data never proves exhaustive empty or merges copies."
+        "summary": "Previous root/seed inspection proposal. Native source availability, useful application discovery and finite resource ownership remain design obligations, without an invented exhaustive inventory."
       },
       {
         "id": "search-resources",
-        "summary": "Only fds 0–2 survive exec, with an empty mask, default signals and owned group. k127 preserves action source/binary guards. Uninterruptible work retains capacity and a blocked orphan has no lifetime bound."
+        "summary": "Previous find-child lifecycle proposal. No child is selected for v1 native discovery; its actual mechanisms need their own source and binary authority checks."
       },
       {
         "id": "search-serviceability",
-        "summary": "Finite current-backend subjects preserve empirical serviceability and meaningful failure controls. Historical custom-walk instruments supply no new backend acceptance."
+        "summary": "Previous raw-backend instruments. Retain independent serviceability and dialog/hydration controls for actual native mechanisms; prior events supply no new acceptance."
       },
       {
         "id": "search-traversal",
-        "summary": "Unsorted DFS can starve later shallow home siblings; k196 chooses that premise or reviewed find-backed source changes. Root markers qualify completion; processing continues after limit+1 within bounds."
+        "summary": "Previous raw DFS/source scheduling proposal. Clients now own traversal, ordering and budgets; these mechanics are not Koine v1 requirements."
       },
       {
         "id": "search-coverage",
-        "summary": "Source provenance and candidate counts replace directory EOF/frontier groups. Warning stderr is unlocalized uncertainty; BLOCKED retains typed nulls and UNKNOWN consent."
+        "summary": "Previous raw-source coverage payload. Honest native availability, empty and incomplete/unknown observations remain required; exact native payload awaits design."
       },
       {
         "id": "search-handoff",
-        "summary": "Preserves action-only 1.0.1 and the accepted v1 application handoff limit. Actual search-result action provenance remains pending, distinct from independent action fixtures."
+        "summary": "Previous raw-result handoff proposal. Existing launch/open/reveal contracts, authority and 1.0.1 action compatibility remain independent; native catalogue provenance awaits acceptance."
       }
     ]
   },
   "groups": [
     {
       "id": "search",
-      "title": "Application and file search · tool-backed design",
-      "description": "System find, Foundation matching and native application services. Process/protection choices, mandatory review and native acceptance pending. No custom traversal/witness engine."
+      "title": "Native discovery and client-owned search · requirements",
+      "description": "Agreed v1 boundary plus eight previous raw-search comparison views. Native catalogue/location design, mandatory review and actual acceptance remain pending."
     },
     {
       "id": "workspace",
@@ -101,83 +101,83 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Decide child use and protected-target access",
+      "title": "Previous proposal · Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
-      "caption": "Four separate choices: find child/FileManager alternative, target/alias/metadata protection, home ordering and dataless policy. Root qualification and signed acceptance remain pending."
+      "caption": "Previous raw-search permission interview. The ownership revision supersedes its raw ordering/backend questions; native reads still require prompt-free/no-hydration qualification."
     },
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Verify finite outcomes with independent controls",
+      "title": "Previous proposal · Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
-      "caption": "Finite current-backend subjects preserve empirical serviceability and meaningful failure controls. Historical custom-walk instruments supply no new backend acceptance."
+      "caption": "Previous raw-backend instruments. Retain independent serviceability and dialog/hydration controls for actual native mechanisms; prior events supply no new acceptance."
     },
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Own pipes and reap before releasing capacity",
+      "title": "Previous proposal · Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
-      "caption": "Only fds 0–2 survive exec, with an empty mask, default signals and owned group. k127 preserves action source/binary guards. Blocked work retains capacity and an orphan has no lifetime bound."
+      "caption": "Previous find-child lifecycle proposal. No child is selected for v1 native discovery; its actual mechanisms need their own source and binary authority checks."
     },
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Keep native facts separate from source inventory",
+      "title": "Previous proposal · Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
-      "caption": "k123 defines recognition candidates and finite native-call admission beyond copied-value/URL limits. Links match target names; empty native data never proves exhaustive empty or merges copies."
+      "caption": "Previous root/seed inspection proposal. Native source availability, useful application discovery and finite resource ownership remain design obligations, without an invented exhaustive inventory."
     },
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Preserve file bytes and checked application targets",
+      "title": "Previous proposal · Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "File merging/source-prefix checks use exact UTF-8 bytes, including overlapping NFC/NFD roots; native application identity and action revalidation remain separate."
+      "caption": "Previous raw-result identity proposal. Per-copy application identity and action-time checks remain relevant; the returned native design reconciles exact metadata and location semantics."
     },
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
-      "caption": "Unsorted DFS can starve later shallow home siblings; k196 chooses that premise or reviewed find-backed source changes. Root markers qualify completion; processing continues after limit+1 within bounds."
+      "caption": "Previous raw DFS/source scheduling proposal. Clients now own traversal, ordering and budgets; these mechanics are not Koine v1 requirements."
     },
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Report source completeness without invented counts",
+      "title": "Previous proposal · Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Source provenance and candidate counts replace directory EOF/frontier groups. Warning stderr is unlocalized uncertainty; BLOCKED retains typed nulls and UNKNOWN consent."
+      "caption": "Previous raw-source coverage payload. Honest native availability, empty and incomplete/unknown observations remain required; exact native payload awaits design."
     },
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Choose a location and use existing actions",
+      "title": "Previous proposal · Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
-      "caption": "Preserves action-only 1.0.1 and the accepted v1 application handoff limit. Actual search-result action provenance remains pending, distinct from independent action fixtures."
+      "caption": "Previous raw-result handoff proposal. Existing launch/open/reveal contracts, authority and 1.0.1 action compatibility remain independent; native catalogue provenance awaits acceptance."
     },
     {
       "id": "search-discovery",
       "group": "search",
-      "title": "Reuse system names and native application services",
+      "title": "Keep raw search in clients; return native starting points and catalogues",
       "renderer": "svg",
       "source": "search-discovery.d2",
       "rendered": "search-discovery.svg",
-      "caption": "Selected design separates candidates, native metadata, library matching and client presentation. Process/protected-target decisions, review and native acceptance remain pending."
+      "caption": "Agreed v1 ownership: Koine returns special locations and named native catalogues; clients own raw search. Native sources, API and acceptance await returned design and mandatory review."
     },
     {
       "id": "workspace-inspection",

@@ -7,11 +7,10 @@ component from held directory handles (`openat`, `fstatat`, `readlinkat`,
 `fpathconf`), never by handing a whole absolute pathname to `realpath`, `stat`,
 `FileManager`, `URL.path` or a joined absolute string. An absolute pathname is a
 value Koine reports to clients and hands to applications; it is not the access
-primitive for that resolution. Search enumeration is separately delegated to the
-system command's OS walker under the
-[enumeration decision](search-enumeration-reuses-system-find.md). Only individually
-authorized search root/policy/application target resolution reuses Koine's walk;
-this record makes no descriptor-relative claim for the child's traversal.
+primitive for that resolution. Raw filesystem search belongs to clients under the
+[ownership decision](raw-filesystem-search-belongs-to-clients.md). Individually
+admitted native location/catalogue/application targets may reuse Koine's walk;
+this record supplies no catalogue enumeration mechanism or client traversal.
 Koine's resolution mirrors the kernel's own semantics: literal
 components, at most 32 symbolic-link expansions, relative link text read from
 the link's own directory, physical `..` and trailing-slash directory demands. It
@@ -36,27 +35,23 @@ whole-path calls, consent prompts and drifting spelling — and the
 answers each as an obligation.
 
 Handles that only resolve a location are opened search-only (`O_SEARCH`): they
-grant lookup, never listing, and resolution opens no file contents. The search
-command lists directories under search's separately agreed policy; its prune
-tests may follow metadata contact. A read-mode walk prompted at the Documents component in
-k134, where the accepted whole-path metadata route did not.
-Search-only first-use behaviour in Desktop, Documents and Downloads was
+grant lookup, never listing, and resolution opens no file contents. Returning a
+**special location** grants no client access to its contents. Search-only
+first-use behaviour in Desktop, Documents and Downloads was
 [measured](../verification/descriptor-walk-prompt.md) on macOS 26.5: the walk's
-`openat(O_SEARCH)`, `fstatat` and `readlinkat` did not prompt, where the
-read-mode control did. It remains an acceptance obligation for the VM rows and
-other OS builds, not an assumption. If it ever prompts, the prompt-free read
-rule and this decision conflict; that goes to Antony rather than reintroducing
-whole-path primitives or shipping a prompt.
+`openat(O_SEARCH)`, `fstatat` and `readlinkat` did not prompt, where the read-mode
+control did. That observation remains bounded evidence, with acceptance required
+for actual Koine/native catalogue uses and other OS builds.
 
-Lookup-only access does not authorize a search-policy exemption. Search's
-[pre-open boundary](../specs/workspace-search.md#permission-boundary-and-required-decision)
-retains the human choice over bounded lookup-only acquisition of individual
-policy/application target identities. The old queued-walk/prefix witnesses are
-not selected. The measured real-folder transit does not establish relocated-target
-listing behavior or Library/cloud/foreign-volume safety. Component resolution
-also cannot guarantee that a mounted-root metadata probe avoids foreign contact
-or blocking before device refusal; search owns its fixed bootstrap premise,
-inspection policy and native-call lifecycle limits.
+Lookup-only access does not authorize listing or native metadata inspection of
+protected scope. The human permits bounded individual target identification and
+accepts stated alias/replacement limits; native catalogue design must qualify its
+own targets and prompt/materialization behavior before use. The earlier queued
+walk and system-find traversal were prior proposals, not selected mechanisms.
+Component resolution cannot guarantee a mounted-root metadata probe avoids
+foreign contact or blocking before refusal. A prompt from an ordinary native read
+goes to Antony rather than shipping a prompting read or substituting whole-path
+primitives.
 
 This decision does not make applications accept long locations. macOS opener,
 registration, type and handler services take whole pathnames and fail at
