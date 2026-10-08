@@ -180,13 +180,17 @@ complete-resource review k120 remains live.
 
 ## Native-resource design promotion
 
-Pre-open witness k126 is now a live node: boundary k189 and its review expose
-missing bootstrap and policy-target facts; metadata requirements k190 must
-decide the specific call policy before returned contract k191. The full-node
+Pre-open witness k126 is live: boundary k189/review k192/integration k194 retain
+fixed-layout bootstrap and evaluate serial lookup-only target acquisition.
+K190 decides its inspection-policy exemption and unmeasured relocated-target
+protection premise before returned contract k191. Library-route escapes retain
+the origin limit; foreign probes can block before device refusal. The full-node
 review remains mandatory before k127, then k123/k120/k30 consume the reconciled
-chain. No speculative open, literal-only alias blocking, recursive witness walk
-or systematic all-home failure is accepted. Public-metadata candidates are
-unapproved; budgets/consent/domain remain unchanged and k93 needs actual loss.
+chain. No arbitrary foreign open, literal-only alias blocking, recursive witness walk
+or systematic all-home failure is accepted. Conditional metadata candidates and
+the witness-mode exemption are unapproved; identity-only target retention must
+fit the full 32-path-occurrence account. Budgets/consent/domain remain unchanged
+and k93 needs actual loss.
 
 k113 completes the event/subject construction design in
 docs/verification/search-serviceability.md and workspace-search's construction

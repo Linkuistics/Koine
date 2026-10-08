@@ -368,10 +368,14 @@ nothing".
 [path design](specs/workspace-search.md#path-design-dependencies) bounds resolution,
 checks parent and child policy before opening, and preserves representable names.
 The [pre-open boundary](specs/workspace-search.md#pre-open-proof-boundary)
-identifies missing bootstrap and symlinked-policy-target facts. A metadata-policy
-decision and returned witness design remain required; no cached mount or
-target-following policy call is selected, and no systematically failing home
-workflow is accepted. A refused registration URL cannot prove UNREGISTERED.
+retains the fixed-layout bootstrap and evaluates lookup-only policy-target
+acquisition. A target-inspection decision and returned witness design remain
+required; no new metadata call or witness-mode exemption is selected. Relocated
+target prompt behavior is unmeasured; Library-route escapes use the inherited
+unrecognized-origin limit rather than failing independent home work. A foreign
+probe can block before device refusal, retaining workers/credits through freeze
+and late cleanup. No systematically failing home workflow is accepted. A refused
+registration URL cannot prove UNREGISTERED.
 Pre-open mount/symlink witnesses and replay/size-phase repairs need mandatory
 producer reviews before long-path classification design/review, then the
 complete-resource review/planning; long-result action support needs its own

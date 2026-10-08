@@ -15,9 +15,11 @@ loss of a shared policy/location proof at current and prefix checks.
 - Read review commit `c0ece7a8`, producer `7ec0af50ea38`, and k125's committed
   triage. First consume search-preopen-witnesses-k126 and its mandatory review/
   integration; those decisions supply this producer's policy prerequisites.
-  K126 is now a live node: boundary k189/review, metadata decision k190 and
+  K126 is live: boundary k189/review k192/integration k194, target-inspection decision k190 and
   returned contract k191 must complete before its whole-artifact review.
-  Boundary analysis alone selects no bootstrap or target-alias route.
+  Boundary integration retains fixed-layout bootstrap but selects no lookup-only
+  witness exemption or new target metadata call; account/lifecycle fit remains
+  returned-design work.
 - `docs/specs/workspace-search.md`: observed spelling, canonical scopes, FIFO
   turn/dequeue checks, k119 call table, metadata bracket, bounded result
   consumption, serial ownership phases and final commit gate.

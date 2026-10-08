@@ -1,150 +1,196 @@
 # Search pre-open proof boundary
 
-**Source and contract analysis; metadata-policy decision required.** This answers
-which proofs the selected search route currently supplies before opening a
-directory. It selects no replacement call, approves no workflow loss, and adds
-no native measurement. The [witness contract](../specs/workspace-search.md#pre-open-proof-boundary)
-and [focused view](../design/architecture/index.html#diagram-search-preopen)
-carry the boundary. The original witness design remains incomplete; observation
-phases, classification, their reviews and complete-resource review still precede
-planning.
+**Reconciled source and contract analysis; target-inspection decision required.**
+The selected fixed-layout premise supplies a bootstrap route. Lookup-only target
+acquisition is an omitted alternative within the descriptor-relative ADR's call
+set; its search-policy authorization and unmeasured target behavior remain open.
+This analysis selects no replacement call or witness-mode exemption, approves no
+workflow loss, and adds no native measurement. The
+[witness contract](../specs/workspace-search.md#pre-open-proof-boundary) and
+[focused view](../design/architecture/index.html#diagram-search-preopen) carry
+this boundary. Returned witness design and mandatory review, observation phases,
+classification and complete-resource review still precede planning.
 
 ## What the current calls establish
 
 Apple's [stat manual](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/stat.2)
-distinguishes a link's own status from its target's status. A relative fstatat
-uses its containing directory; AT_SYMLINK_NOFOLLOW returns the final link's
-status. Search currently selects that no-follow, single-component probe. Thus
-its device/inode can reject an unadmitted device or recognize an established
-blocked directory, but a policy symlink supplies no target identity. Reading
-the link text supplies a route, not an identity or confinement proof.
-
+distinguishes a link's own status from its target's. A relative single-component
+fstatat with AT_SYMLINK_NOFOLLOW supplies the child device/identity or the link's
+own identity. It can reject an unadmitted device; it cannot identify a symlink's
+target. Reading link text supplies a route, not an identity or confinement proof.
 Apple's [statfs manual](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/statfs.2)
-supplies mounted-filesystem information through a pathname or an already opened
-descriptor. Search selects the descriptor form. Its fstatfs/fgetattrlist checks
-cannot establish an unknown child's mount classification or path-from-ID
-capability before the descriptor exists. Equal st_dev is no mount-generation
-token; differing st_dev is no classification of the foreign filesystem.
+explains the selected descriptor mount observations. Capability checks use the
+admitted descriptor; capability and mount generation are not new prerequisites
+before the trusted fixed bootstrap acquisition. Device equality does not provide
+a generation token or remove the existing replacement/ABA limit.
 
-These are public API semantics, read on 2026-10-08 from upstream main, not the
-identity of a supported guest kernel. No SDK compile/link or native call was run
-for this analysis. The graph CLI refused an active pre-coordination/unverified
-generation; documents were read directly, with no code-completeness claim.
+The [descriptor-relative ADR](../adr/filesystem-access-is-descriptor-relative.md)
+selects O_SEARCH for handles used only to resolve a location, separate from
+search's read-mode listing streams. [k174](descriptor-walk-prompt.md) measured
+openat(O_SEARCH), fstatat and readlinkat transit through real Desktop, Documents
+and Downloads on macOS 26.5, without a prompt/TCC row and with prompting read-mode
+controls. That evidence is newer and broader for lookup transit than
+[protected-path metadata](protected-path-metadata.md), but covers neither
+relocated policy targets, Library/cloud/dataless routes, foreign volumes, other
+builds nor the actual search host's responsible identity. It is evidence to
+evaluate a route, not search acceptance.
+
+The public API sources explain semantics, not the supported guest kernel. The
+integration read public manuals and installed SDK headers on 2026-10-08; it ran
+no compile/link probe or native metadata call. The graph CLI refused an active
+pre-coordination/unverified generation, so documents were read directly, with no
+code-completeness claim.
 
 ## Mount bootstrap and ordinary transitions
 
-The following are obligations on the returned design, not an executable
-bootstrap selected by this analysis.
+The accepted [fixed-layout classifier](../specs/workspace-search.md#roots-and-search-domain)
+is a premise, not APFS role attestation or protection against privileged mount
+replacement. It permits these narrow acquisitions before their descriptor
+classification. It does not allow arbitrary sources to nominate trusted mounts.
+The returned design still owes complete bounded ordering, refresh and accounts.
 
-| Context | Required proof before open | Scope if proof is unavailable |
+| Context | Selected boundary | Scope if required observation fails |
 | --- | --- | --- |
-| `/` | An explicitly bounded initial namespace anchor; one owned temporary, no listing. Its first observation has no independent association detector. | All work needing namespace resolution; UNKNOWN/INSPECTION_FAILED, not a broad-root permission. |
-| Startup system/data pair | Bind only the fixed supported OS routes to inspected mount observations, establish device correspondence and needed capabilities, and define refresh/replacement checks before a cross-device open. A pathname alone is insufficient. | Roots/targets depending on that member; no inferred system/data pairing or speculative acquisition. |
-| OS-supplied actual home | Resolve the actual home through proved startup transit, without granting another user's home or a foreign-volume home. Define initial protected-policy bootstrap without assuming already-filled target witnesses. | Home-dependent admission/policy proofs. Whether another root is independent must be demonstrated, not inferred from its spelling. |
-| Fixed Preboot | Establish the fixed mount proof before its first device crossing; allow transit only in fixed Cryptex-anchor mode. Final application-region proof remains separate. | Dependent Cryptex/application work only. No file-search special witness or general Preboot admission. |
-| Ordinary root/link/registration/queued/current/dot-dot/restart | Compare the no-follow child device with established, context-permitted witnesses before open. Recheck association and actual mounted metadata after acquisition; never acquire an unknown foreign child just to classify it. | Initial root REMAINDER; checked-link ENTRY; independent queued target SUBTREE under a proved unchanged parent; shared current/prefix proof one root REMAINDER. Registration uncertainty prevents a negative. |
+| `/` | Initial no-follow lookup-only namespace anchor, one owned temporary, no listing. Its first observation lacks an independent association detector; no device crossing needs prior classification. | All work needing namespace resolution; UNKNOWN/INSPECTION_FAILED, never broad-root admission. |
+| Fixed startup system/Data | Resolve the fixed OS routes through held system-volume parents, probe/open the fixed mountpoints, then check descriptor device/mount classification and capability. The existing fixed-layout/privileged-replacement premise supplies bootstrap authority; no pre-open generation or capability proof is added. | Work depending on that member; unknown layouts refuse, with no inferred general local-APFS admission. |
+| OS-supplied actual home | Resolve through established startup transit with non-fixed device guards. Actual home is no fixed-route exemption for a foreign-volume home or another user's home. Initial protected-policy dependency ordering remains returned-design work. | Home-dependent admission/policy proofs; independence must be established. |
+| Fixed Preboot | Only fixed Cryptex-anchor mode may probe/open the fixed mountpoint before its region witness exists, then apply the retained mount-root/type/flags/mountpoint and capability checks. | Dependent Cryptex/application work; no general Preboot or file-search exception. |
+| Ordinary root/link/registration/queued/current/dot-dot/restart | Compare the no-follow child device with established context-permitted witnesses before open; recheck association and mounted metadata after acquisition. No unknown foreign open merely to classify it. | Initial root REMAINDER; checked-link ENTRY; independent queued target SUBTREE beneath an established unchanged parent; shared current/prefix failure one root REMAINDER. Registration uncertainty prevents a negative. |
 
-An established unadmitted device uses the existing MOUNT_BOUNDARY/domain
-refusal. A missing required witness is INSPECTION_FAILED; an independently
-observed replacement is CHANGED_DURING_SEARCH. Do not turn uncertainty into
-UNSUPPORTED_VOLUME or ROOT_NOT_FOUND. Already established unsupported
-classification retains its domain reason. Initial failure keeps resolvedPath
-null and no searched record; progress and earlier finalized observations retain
-their existing coverage meanings. Public outcome precedence is unchanged.
-
-The fixed startup or Preboot pathname is not itself a safe bootstrap proof:
-using it to authorize an open and only then observing a different filesystem
-recreates the foreign-mount problem. The returned design must name the missing
-information and the accepted means of obtaining it. This is a gap in the current
-specified route, not a claim that every public metadata route is impossible.
+An established unadmitted device uses MOUNT_BOUNDARY. Missing required metadata
+uses INSPECTION_FAILED; independent replacement evidence uses
+CHANGED_DURING_SEARCH. Established unsupported classification retains its domain
+reason. Uncertainty is neither unsupported classification nor ROOT_NOT_FOUND.
+Initial failure leaves resolvedPath null and no searched record; existing
+progress/finalized observations and public outcome precedence remain unchanged.
+The bootstrap new-call question is removed: a cached mount table is unnecessary
+to restore the already selected fixed classifier. Native layout and useful
+Safari/Finder/home acceptance remain pending.
 
 ## Policy-route links and proof dependencies
 
-| Observation | Permitted conclusion | Required continuation |
+The protected-folder policy conservatively treats an otherwise admitted target
+of a relocated Desktop/Documents/Downloads link as protected. Whether listing
+that target can prompt is an **unmeasured premise**, not a reported prompt fact.
+The [prompt-risk ADR](../adr/prompt-risk-is-search-data.md) makes that behavior
+relevant reversal evidence. Keep the inherited policy until the target-inspection
+decision reconciles it; do not infer either permission or workflow reduction.
+
+| Observation | Permitted conclusion | Required continuation and dependencies |
 | --- | --- | --- |
-| Established directory at a protected/cloud route | Block its identity aliases before open; refresh the no-follow association for each dependent decision. | Charge the witness and retain the established reason, including native case/normalization aliases. |
-| Target proved confined beneath an established blocked ancestor | The ancestor already blocks access; no duplicate target identity is needed for that confined subtree. | State the confinement proof and dependent roots/candidates. A textual prefix, or merely encountering Library on a route that could later escape via link or `..`, proves no final confinement. |
-| Cloud/iCloud link whose walk reaches blocked Library | Refuse that route before opening Library or probing its children. | This proves route refusal, not the ultimate target identity. Explain whether further outside-root alias proof is required; do not silently treat an unresolved escape as confined. |
-| Documents/Downloads relocated into ordinary Work/Docs | The policy link is present but its no-follow identity is not Docs. Literal target spelling cannot block case/NFC/NFD/Data aliases. | Establish the target identity without opening the excluded target and without recursively resolving witnesses. Until then its target-alias proof is unsettled. |
-| Checked no-follow absence beneath an established permitted parent | That direct policy-route object is absent; synthetic policy coverage remains. | A dangling followed route has different evidence requirements. ENOENT from an unproved prefix, size refusal or service error establishes no target absence. |
-| Witness replaced/changed or uncertain | Refuse work requiring the old proof with change or inspection failure. | Identify that dependency explicitly; reuse neither the old identity nor literal-only blocking. A common proof can affect several roots only with a stated overlap reason. |
-| Witness value/slot/byte overflow | Existing job-wide pre-turn refusal, every root UNKNOWN/zero counts. | Keep charges and worker cleanup; do not drop aliases or introduce an uncharged target catalogue. |
+| Established directory at a protected/cloud route | Block identity aliases before listing/general acquisition, including native case/normalization aliases. | Refresh the no-follow association for dependent decisions; retain existing reason and charged witness. |
+| Target proved confined beneath a blocked ancestor | The ancestor blocks that subtree; no duplicate target identity is needed. | State actual confinement, not a textual prefix or an encountered Library component whose suffix could escape. |
+| Cloud/iCloud route reaches blocked Library | Refuse before opening Library or probing its children. Its unobserved escaping suffix falls under the inherited unrecognized-provider/origin limit. | No exhaustive outside-root target catalogue or required unknown witness; no all-home/independent-root failure. That candidate/root route is refused; other established identities still block recognized aliases on other routes. |
+| Relocated ordinary target, including Docs redirecting to Work | No-follow link identity is insufficient; native target identity can block case/NFC/NFD/Data aliases. Lookup-only transit is a candidate acquisition route. | k190 decides the witness-mode inspection policy and target-prompt premise; k191 owes serial bounded acquisition/refresh and exact dependent roots/candidates. No listing or bundle inspection while filling witnesses. |
+| Target route reaches an unadmitted foreign device | The device guard already refuses that route on every source. | No acquired target-alias witness is needed for that foreign class. A refused registration route still cannot establish its final identity/absence or UNREGISTERED; foreign links can lead back. |
+| Checked direct no-follow absence under an established permitted parent | The direct policy object is absent; synthetic policy coverage remains. | An unproved prefix, dangling followed route, size refusal or native error establishes no target absence. |
+| Required witness changed or uncertain | Refuse only work requiring that proof, using change/inspection failure. | A shared proof can affect several roots only with a demonstrated overlap; unrecognized provider origins are not newly required proofs. |
+| Witness value/slot/byte overflow | Job-wide pre-turn refusal, every root UNKNOWN/zero counts. | Preserve charges/worker cleanup; never drop policy identities to continue. |
 
-There is an ordering counterexample for a naive target walk. Let Documents link
-to Work/Docs, and let Docs itself redirect to Work. The component walker would
-open Work before discovering that Work is the protected target. With two policy
-links, resolving one target can likewise require a parent that is the other's
-unproved target. A witness-only mode that ignores pending policy proofs hides
-this problem; a recursive resolver introduces both a dependency cycle and
-uncharged work. Native directory ancestry, not source-text nesting, must justify
-any exemption. This does not declare every relocated-home layout unusable; it
-identifies what a proposed route must establish.
+Documents → Work/Docs → Work and two interdependent policy links demonstrate an
+ordering requirement for listing/general resolution, not impossibility of
+lookup-only acquisition. The ADR route could resolve each fixed policy target
+independently, serially with A/B, device guards and refusal before Library,
+without recursion into pending target witnesses. Each walk uses the existing
+resolver bounds and the same wait, multiplied by the fixed witness count. Its
+exemption from the search-specific prohibition on opening a protected directory
+to acquire identity is **unselected**; k190 must settle that policy distinction.
+k191 must prove bounded association/refresh, identity comparison before later
+listing, and no exemption for general roots/links/registration. A witness's
+native identity answers case/normalization/Data variants; text folding does not.
 
-Do not ship all-home failure as the cure. The current design has no authorized
-workflow reduction. Returned design must either establish the required proofs
-and their exact dependencies or bring actual missing witnesses/omissions to the
-existing protected-home decision. Fail-closed diagnostics describe an observed
-failure; they are not acceptance of systematically missing configured work.
+With two known cloud routes the conservative path occurrence shape is exactly
+32: 12 region, 6 mount, 8 protected, 4 cloud and 2 temporary occurrences.
+There is no spare retained target-path occurrence. A target witness must retain
+identity/association metadata in existing charged slots, using and releasing
+scratch for its route rather than retaining another full path. k191 must prove
+simultaneous bytes/wrappers/slots and refresh fit; a route requiring extra retained
+paths cannot rely on systematic job-wide overflow as an accepted implementation.
 
 ## Concrete metadata-policy choices
 
-**Recommendation: permit a narrowly scoped public-metadata design revision,
-then require a returned design and its mandatory review.** Approval would allow
-design work only, preserving accounts, domain, ceilings, wait, Q/S, two
-temporaries, single-process ownership and signing/consent posture. It is not
-approval to ship a prompting route, run a probe, or accept reduced coverage.
+**Recommendation: evaluate the existing lookup-only walk first, with an explicit
+search-policy decision.** k190 should separately settle conservative
+relocated-target protection and permission to design a serial lookup-only witness mode.
+Approval is design only, under existing accounts/domain/ceilings/wait/Q/S/A/B and
+signing/consent posture. No prompt, probe or workflow loss is approved. The
+alternative is to retain the strict no-target-open policy and consider only a
+specific justified metadata revision. The following are conditional alternatives,
+not the former blanket recommendation to add bootstrap metadata:
 
-Two candidate mechanisms make this choice concrete:
+- Cached getfsstat/MNT_NOWAIT is **not a demonstrated solution**. Apple's
+  [manual](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/getfsstat.2)
+  describes bounded kernel-retained, potentially stale records. Without an
+  fsid/dev cast or another disclosed lookup, the proposed record/device binding
+  reduces to fixed-path trust, already available without this call. The installed
+  SDK's 64-bit-inode statfs is 2,168 bytes, including two 1,024-byte path fields;
+  its [public header](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/sys/mount.h)
+  explains the shape. The 32 KiB headroom above the conservative 96 KiB scratch
+  shape holds 15 records; even all 128 KiB holds only 60. This is upper-bound
+  arithmetic, not a buffer allocation or mount count. Requiring a complete table
+  with no resize/retry can deterministically refuse every dependent root on
+  mount-rich hosts. Correspondence, truncation/race/ABA and simultaneous account
+  fit need a concrete design before this candidate earns reconsideration.
+- Descriptor-relative getattrlistat with FSOPT_NOFOLLOW is a possible
+  source-evaluation candidate if an actual residual requires it. Apple's
+  [attribute manual](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/getattrlist.2)
+  describes relative lookup and ATTR_CMN_FSID corresponding to statfs's fsid.
+  Volume-group logical versus physical identifiers need explicit flag/correlation
+  treatment. Useful volume-attribute support at the crossed mountpoint, SDK
+  availability, bounded valid-result decoding and foreign-contact/prompt/wait
+  behavior remain unproved. It adds a call; no symbol or flag is selected here.
+- Fixed-policy target-following fstatat lets the kernel traverse links/devices
+  without Koine's component guards. It cannot serve Library/cloud routes whose
+  prefixes must be refused before Library access. Native PATH_MAX and link-hop
+  semantics differ from the component walk's 8,192-byte pending text and
+  32-expansion contract: ENAMETOOLONG/ELOOP can mean dependent uncertainty where
+  that walk could succeed, never invented absence. Foreign metadata/automount
+  may prompt, hydrate or block indefinitely, with the lifecycle consequence below.
+  Earlier stat fixtures do not accept this variant. Evaluate lookup-only transit
+  first for ordinary relocated targets; this is no general resolver fallback.
 
-- Apple's [getfsstat manual](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/man/man2/getfsstat.2)
-  describes a caller-sized array; MNT_NOWAIT uses kernel-retained information
-  rather than refreshing each filesystem. It may be stale. A design could use
-  bounded cached mount observations before fixed bootstrap crossings, retain
-  only the existing required witnesses and release the array before walking.
-  It must reject incomplete/ambiguous records without resizing/retry, establish
-  correspondence to no-follow devices without assuming an fsid/dev cast, and
-  state replacement/ABA limits. No buffer size, record cap or safe classifier
-  is selected here; all simultaneous state must fit existing scratch/witness
-  accounts. MNT_WAIT/DWAIT and a growing mount catalogue are not substitutes.
-- A target-following fstatat on a fixed known policy component through an
-  established parent could obtain target status without an owned target
-  descriptor. That changes the selected no-follow-only policy semantics even
-  though the symbol already exists. It lets the kernel resolve links and cross
-  devices; absence, link/length bounds, foreign-target metadata and prompt/
-  hydration safety need an explicit contract. Earlier measured stat fixtures
-  do not accept this variant or cloud/Library/foreign targets. It cannot be
-  smuggled in as the existing single-component walk, nor provide an alternate
-  general root/link/registration resolver.
+Relocated-target listing prompt behavior can remove or confirm the conservative
+protection premise; it must be independently observed and reconciled with the
+ADR, not guessed from link spelling. A complete in-policy route with bounded
+accounts can remove a call-policy revision. Remaining workflow omissions/new
+consent/setup go to their existing explicit decisions; protected-home acceptance
+owns actual per-witness loss. Do not ship systematic all-home failure as policy.
 
-The other choice is to retain the selected call policy and demand a complete
-alternative pre-open proof design. Neither source above provides that design.
-Freezing literal-only blocking or accepting fewer home/default workflows is a
-separate operator decision with actual omissions, owned by protected-home
-acceptance. New consent/setup is also a separate decision; neither is recommended
-by this analysis. Evidence that would remove the escalation is a complete route
-within the selected semantics that supplies the missing pre-open facts, handles
-the ordering counterexample and preserves every account and workflow obligation.
+## Foreign metadata contact and lifecycle limit
+
+A no-follow mounted-root probe can already ask a foreign filesystem for attributes
+or trigger automount before st_dev is returned. The guard prevents the subsequent
+unknown-device open, **not that first metadata contact**. This is a disclosed
+residual of the existing in-process native-call boundary, not a hard safety or
+termination proof. An unresponsive network/FUSE/autofs route can retain its worker,
+A/B and reserved credits indefinitely, even for a stale unrelated registration.
+The three-second wait freezes publication; it cannot cancel a blocked syscall.
+No late call, retry, replacement worker or external close is permitted. A finite
+late return is normalized and unwound by its worker; a late resource error latches
+the cohort before credit release. Another resource failure beside an indefinite
+survivor can disable new search until Koine process restart; provider restart
+cannot release that ownership. Observed prompts/hydration still fail acceptance.
 
 ## Acceptance construction required after design
 
-No subjects below have run. Controlled private outcomes establish ordering and
-mapping only. Independently built provider/GraphQL and signed hardened VM runs
-must exercise the selected calls; unavailable subjects remain pending.
+No subjects below have run in this integration. Controlled outcomes establish
+ordering/mapping only; independent provider/GraphQL and signed hardened VM runs
+must exercise actual calls. Unavailable subjects remain pending.
 
 | Subject | Independent witness and required distinction |
 | --- | --- |
-| `.app` links and registration/preferred URLs to removable, network and local image mounts | Record no-follow device, witness decision and every attempted open. No unknown foreign target open, metadata fallback or UNREGISTERED from a refused URL. A local image is not removable/network evidence. |
-| Foreign mount nested beneath home, including queued/current reacquisition | Pair a refused target with ordinary sibling and independent-root markers. Inject missing versus changed proof separately; one shared prefix refusal must not fan out per task. A mounted root's own probe may already service foreign metadata: observers cover probes as well as opens. |
-| Actual startup/data/home and fixed Cryptex/Preboot layout | Record each bootstrap fact, source, acquisition order, fixed-mode transition and post-acquisition comparison. Other Preboot siblings and file-search Cryptex roots remain excluded. Inject absent/unknown/replaced witnesses and account overflow separately. Default Safari/Finder and ordinary home remain useful-coverage witnesses. |
-| Library cloud/iCloud links and escaped suffixes | Library must not be opened/listed to construct target witnesses. Prove confined-target and unresolved-escape branches separately; a real cloud client/route is not replaced by a Unicode fixture. |
-| Relocated Documents into ordinary Work/Docs | Independent helper records target identity and literal/case/NFC/NFD/Data variants; query a direct target root, an app link and registration target plus unrelated markers. Include Docs redirecting to Work and two interdependent policy links. Trace identity acquisition before any dependent open. |
-| Established absence, replacement, uncertainty and bounds | Private controls distinguish no-follow direct absence, unproved/dangling prefix, native errors, witness byte/slot overflow, scratch refusal, wait/freeze and late return. Observe each retained value/owner; no extra descriptor or post-freeze call. |
+| App links and registration/preferred URLs to removable, network and image mounts | Record no-follow device, witness decision and every probe/open. No unknown foreign open, fallback or UNREGISTERED from refused URLs; a local image is no removable/network pass. |
+| Nested foreign home mount, queued/current reacquisition and foreign relocated target | Pair refusal with ordinary sibling/independent-root markers; distinguish missing/changed proof and device refusal without a target witness. Shared failure has one root remainder, not per-task fan-out. |
+| Unresponsive network/FUSE/autofs via explicit root, nested home mount and stale unrelated registration | Independently establish the real unavailable filesystem/automount subject; record first probe envelope, worker/A/B/credit retention, wait/freeze, finite late-return cleanup and resource-failure cohort/restart outcomes. Synthetic barriers are separate ordering controls, not native blocking evidence. Pair listener/store/actions during the wait and retained cohort. |
+| Actual startup/Data/home and fixed Cryptex/Preboot | Record fixed premise, probe/open/classifier order and post-acquisition capability/association checks. Non-fixed attempts and other Preboot siblings remain excluded. Inject absent/unknown/replaced witnesses; useful Safari/Finder/home stay required. |
+| Library cloud/iCloud and escaped suffixes | Refuse Library before access; distinguish genuinely established confinement from an unobserved escape under the inherited origin limit. Independent ordinary roots continue; a real provider route is no Unicode-fixture substitute. |
+| Relocated Documents/Downloads, Docs redirecting to Work and two interdependent links | Independent helper records target identities, literal/case/NFC/NFD/Data variants and actual listing prompt behavior in a disposable subject. Observe lookup-only witness acquisition separately from read-mode controls and subsequent policy refusals, with actual Koine responsible identity. Direct target root/app-link/registration decisions have unrelated markers. |
+| Absence, replacement, uncertainty and accounts | Distinguish direct no-follow absence, unproved/dangling prefix, native errors, full 32-occurrence witness shape, identity-only target retention, scratch/slot/byte overflow, wait/freeze and late return. Inspect actual value occurrences and no extra descriptor or post-freeze inspection. |
 
-Independent dialog and hydration observers start before the first bootstrap or
-policy probe and outlive worker-owned late cleanup. Their positive controls must
-demonstrate detection; a dialog/download fails that route. Pair every native
-call envelope with the existing complete owned/hook events and listener/store/
-authorized-action witnesses. Preserve fixed sink/loss controls and no retry after
-freeze/resource refusal. Record actual versions, paths/identities, per-witness
-outcomes and omissions; no mount-table count, exit code or synthetic success is
-a native prompt/serviceability/useful-coverage pass.
+Dialog/hydration observers start before the first bootstrap/policy probe and
+outlive worker late cleanup, with positive detection controls. A dialog/download
+fails that route. Pair native envelopes with complete owned/hook events and
+listener/store/authorized-action witnesses. Keep sink/loss controls and no retry
+after freeze/resource refusal. Record versions, identities, per-witness results
+and omissions; no table count, exit code or synthetic success passes native
+prompt/serviceability/useful coverage.

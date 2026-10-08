@@ -44,26 +44,28 @@ integration clarifies visible tie fallback, candidate-specific staging and
 old-host refusal; implementation and seam-assigned acceptance remain pending.
 They accompany [workflow providers](../../specs/workflow-providers.md).
 
-The current discussion is **pre-open witness metadata policy**. Start at
+The current discussion is **pre-open target inspection policy**. Start at
 [Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen).
-The current no-follow device probe and descriptor mount checks do not supply
-the missing bootstrap fact before a foreign-device open; a policy-route link
-supplies no target identity. The [boundary analysis](../../verification/search-preopen-boundary.md)
-documents proof dependencies, the Work/Docs redirect counterexample and concrete
-metadata-policy alternatives. A narrow public-metadata design revision is
-recommended for approval; cached mount observations and fixed-policy
-target-following status remain unapproved. The original witness design, its
+The accepted fixed-layout bootstrap and post-open classifier remain selected.
+The [boundary analysis](../../verification/search-preopen-boundary.md) evaluates
+lookup-only target acquisition under the ADR/k174 before conditional new metadata.
+Its witness-mode exemption and relocated-target protection/prompt premise await
+the decision. Library escapes retain the origin limit without independent home
+failure; foreign probes can block before device refusal, retaining worker/credits
+through freeze. The full 32-path-occurrence account permits no extra retained
+target path. Cached-table correlation/truncation and following-status Library/
+length/foreign conflicts prevent a blanket new-call recommendation. The original witness design, its
 mandatory review, replay/size phases and classification stay live. No new call,
 consent, budget or accepted home/default loss is selected.
 
 Current changes:
 
-- [Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen) — Added the bootstrap and policy-target gaps, pre-open stop scopes and unapproved alternatives.
-- [Observe a checked directory without alternate spelling](index.html#diagram-search-canonical) — Points to the metadata-policy decision before unknown-device or policy-target acquisition.
-- [Inspect serially with two temporary descriptors](index.html#diagram-search-inspection) — Separates witness metadata policy from later replay/metadata phase repairs.
-- [Keep partial coverage and blocking in typed search data](index.html#diagram-search-coverage) — Marks the metadata decision and returned witness design pending before admission.
-- [Pre-open proof boundary](../../specs/workspace-search.md#pre-open-proof-boundary) — States the missing facts and preserved refusal/resource obligations without selecting a replacement algorithm.
-- [Boundary choices and construction](../../verification/search-preopen-boundary.md#concrete-metadata-policy-choices) — Compares candidate design revisions and names the evidence needed to reverse the recommendation.
+- [Establish pre-open proofs before acquiring a child](index.html#diagram-search-preopen) — Reconciles fixed bootstrap, lookup-only alternatives, foreign wait limits and witness accounts.
+- [Observe a checked directory without alternate spelling](index.html#diagram-search-canonical) — Retains fixed bootstrap and marks target inspection policy pending.
+- [Inspect serially with two temporary descriptors](index.html#diagram-search-inspection) — Shows foreign-probe retention through freeze and later replay repair.
+- [Keep partial coverage and blocking in typed search data](index.html#diagram-search-coverage) — Keeps Library escape limits from failing independent home work.
+- [Pre-open proof boundary](../../specs/workspace-search.md#pre-open-proof-boundary) — Separates the accepted premise from the remaining target decision and native limits.
+- [Boundary choices and construction](../../verification/search-preopen-boundary.md#concrete-metadata-policy-choices) — Evaluates the existing walk first and discloses conditional alternatives and reversal evidence.
 
 The unchanged resource, serviceability and protected-metadata views remain
 discussion context. Open the focused discussion at

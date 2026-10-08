@@ -8,10 +8,13 @@ vertical `impl` leaves that each stay verifiable through the three seams.
 ## Context
 
 Witness node search-preopen-witnesses-k126 now contains finite boundary k189,
-its review, explicit metadata-policy requirements k190 and returned design
+its review/integration k192/k194, target-inspection requirements k190 and returned design
 k191. The mandatory whole-node review precedes k127, then classification and
 complete-resource review. No implementation may consume the unapproved cached
-mount/target-following metadata candidates from the boundary analysis.
+mount/target-following/relative-attribute candidates or lookup-only witness
+exemption from the boundary analysis. Fixed-layout bootstrap remains selected;
+target protection/inspection, account fit and foreign-probe lifecycle subjects
+must be reconciled by the node before implementation.
 
 - `app-and-file-search-k19`'s design and evidence.
 - `app-and-file-search-k95`'s triage and the subsequent producer/review repairs.

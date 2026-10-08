@@ -21,10 +21,11 @@ keeps policy blocking in typed search data. No released or currently served
 search behavior is claimed.
 
 **Path review requires witness and observation-phase repairs before classification.**
-The [pre-open proof boundary](#pre-open-proof-boundary) now identifies the
-missing bootstrap and policy-link facts. A metadata-policy decision and returned
-witness design are required; no cached mount catalogue or target-following
-policy call is selected by that analysis.
+The [pre-open proof boundary](#pre-open-proof-boundary) retains fixed-layout
+bootstrap and evaluates the existing lookup-only route for policy-link targets.
+A target-inspection decision and returned witness design are required; no new
+metadata call or witness-mode exemption is selected. Foreign probes can still
+contact/block a mount before the device guard refuses its open.
 Narrow fixed-region Preboot admission permits its measured read-write layout.
 Per-root FIFO breadth-first work finishes shallower admitted listings before
 deeper ones, preserving later home-root names against an early enormous branch.
@@ -397,29 +398,47 @@ presented to that decision before accepted workflow coverage depends on them.
 
 ### Pre-open proof boundary
 
-**Metadata-policy decision required, not a completed witness algorithm.** The
+**Target-inspection decision required, not a completed witness algorithm.** The
 [boundary analysis](../verification/search-preopen-boundary.md) separates the
-current proofs, dependency scopes, concrete alternatives and acceptance subjects;
+current proofs, dependency scopes, conditional alternatives and acceptance subjects;
 the [focused view](../design/architecture/index.html#diagram-search-preopen)
-shows where acquisition must stop. No-follow child device metadata can reject an
-unestablished foreign transition before open. It cannot establish that device's
-mount generation, startup membership or path-from-ID capability. The selected
-descriptor mount/capability calls need an already opened object. An exact fixed
-startup/data/Preboot pathname alone cannot authorize opening an unknown device
-to obtain that proof. `/` needs a bounded initial namespace-anchor rule, and the
-OS-supplied actual home needs independently proved startup transit and protected
-policy bootstrap; neither is broad traversal permission.
+shows the fixed-route exception and where general acquisition must stop.
+The retained fixed-layout premise authorizes bounded slash and fixed startup
+system/Data mountpoint acquisition through held system-volume parents, followed
+by descriptor classification/capability checks. Only fixed Cryptex-anchor mode
+may acquire fixed Preboot before its region witness exists. This is neither
+role attestation nor protection against privileged mount replacement. No new
+pre-open generation/capability requirement or bootstrap call is introduced.
+Every non-fixed source, including actual home, still uses established startup
+transit and no-follow child device guards before open. Unknown layouts refuse;
+the exception admits no arbitrary local APFS device, broad root or other home.
+Returned design still owes ordering, refresh and dependency/account fit.
 
 A no-follow policy-route link likewise supplies its own identity, not its
 target's. Proved confinement beneath an established blocked ancestor can remove
 a redundant target witness. Merely encountering blocked Library on a route
 does not prove that its remaining links or native `..` stay confined. Refuse
-that route before Library access and retain any otherwise-required outside-root
-alias proof as unsettled. Relocated Documents into ordinary Work/Docs needs native
-target-alias identity across case/normalization/Data variants. A target walk
-that opens Work before learning Docs redirects back to Work has opened the
-protected target during witness construction. No recursive or policy-exempt
-witness walk, literal-only fallback or systematic home failure is selected.
+that route before Library access. An unobserved escaping provider suffix uses
+the inherited unrecognized-provider/origin limit; it creates no required unknown
+target witness or failure of ordinary home/independent roots. Established
+identities still block recognized aliases on other routes. Otherwise admitted
+relocated protected-folder targets conservatively require native alias identity
+across case/normalization/Data variants, but their listing prompt behavior is an
+unmeasured premise for the decision, not an observed prompt fact. Foreign targets
+already refused by device guards need no acquired alias witness; refused
+registration routes still cannot prove final identity/absence or UNREGISTERED.
+
+The [descriptor-relative ADR](../adr/filesystem-access-is-descriptor-relative.md)
+and [k174 evidence](../verification/descriptor-walk-prompt.md) distinguish
+O_SEARCH lookup-only transit from listing. Work/Docs redirecting to Work and
+interdependent links do not disprove serial independent lookup-only target
+walks. Evaluate that route first, with A/B, existing bounds/wait, device guards
+and refusal before Library. Exemption from search's strict no-target-open
+witness policy remains unselected and requires the target-inspection decision;
+there is no exemption for general root/link/registration or listing work.
+No recursive witness walk, literal-only fallback or systematic home failure
+is selected. k174 covers only its real-folder lookup calls on one OS build;
+relocated/cloud/foreign/other-build and actual-Koine acceptance remain pending.
 
 Returned design must bind proof requirements to each root/target and distinguish
 established absence, observed replacement, uncertainty and job-wide account
@@ -429,10 +448,21 @@ unadmitted device uses MOUNT_BOUNDARY. Shared current/prefix failure stops one
 root; independent target under a stable parent stays exact, and checked-link
 failure stays ENTRY. A refused registration/preferred target prevents negative
 finalization. These are obligations on the eventual implementation, not approval
-of default/home workflow loss. The metadata-policy recommendation is a narrow
-public-call design revision; cached getfsstat/MNT_NOWAIT and fixed-policy-route
-target-following fstatat are unapproved candidates requiring their own complete
-bounded contract. The existing call set, accounts, Q/S, two temporaries, wait,
+of default/home workflow loss. Target identities must use existing charged
+metadata slots without an additional retained full path: the conservative
+32-occurrence witness shape has no spare target-path occurrence. Returned design
+must prove refresh and simultaneous slots/wrappers/bytes fit.
+Cached getfsstat is not a demonstrated bootstrap repair: correspondence is
+missing and complete-table truncation can systematically fail dependent roots.
+Following fstatat cannot serve Library routes, bypasses component/device guards
+and has native length/hop limits; relative no-follow getattrlistat is only a
+conditional source-evaluation candidate. None changes the selected call set.
+A mounted-root no-follow probe can contact foreign metadata/automount or block
+indefinitely before mismatch is known. Wait freezes publication, not the syscall;
+worker/credits survive until late cleanup. An indefinite survivor beside resource
+failure can disable search until process restart, under the existing cohort rule.
+Unresponsive network/FUSE/autofs subjects must observe this retention and
+independent host operations. The existing accounts, Q/S, two temporaries, wait,
 worker cleanup/freeze/recovery, domain, authority and compatibility still bind.
 Prompt/hydration, useful coverage and binary/native acceptance remain pending.
 
@@ -451,7 +481,8 @@ answers supply candidates, never new admission anchors.
 Start at a no-follow directory open of `/`, after process admission checks.
 Opening `/` is metadata transit, never broad root admission or enumeration.
 Bootstrap fixed startup mount and OS-supplied actual-home witnesses first,
-using this same walker and recognized policy spellings before each open. Their
+using this same walker and recognized policy spellings before each non-fixed
+open, with the fixed bootstrap premise above. Their
 first unassociated identities retain the stated initial-observation limitation.
 Acquire protected/cloud child identities through the established home without
 opening those children. Until required proofs are filled, no supplied root,
@@ -559,10 +590,12 @@ the relevant no-follow witness association before a child decision; witness
 replacement/change/uncertainty refuses dependent work. An observed symlink
 at a policy route remains blocked at that route, but supplies no target identity.
 Its literal target is not native target-alias proof. The pre-open witness
-producer must distinguish targets beneath an established blocked ancestor
-from ordinary relocated targets needing additional proof, and specify relevant
-dependencies/refusal scopes. Until that repair is reviewed, this clause supplies
-neither a target-open permission nor a rule failing every home child. A required
+producer must distinguish confined targets, Library routes under the inherited
+origin limit, foreign-device refusals and ordinary relocated targets with an
+unmeasured protection premise, and specify dependencies/refusal scopes. The
+lookup-only ADR alternative must be evaluated under the target-inspection
+decision; this strict witness rule supplies neither that exemption nor a rule
+failing every home child. A required
 unestablished alias proof cannot be dropped. Known absence is
 not a fabricated identity. These metadata calls require their own no-dialog
 acceptance; earlier metadata fixtures do not supply it.
@@ -2292,7 +2325,14 @@ routes. Positively absent optional witnesses retain absence, not fabricated
 identity. Charge up to two retained presentation/canonical path occurrences per
 witness and two temporary witness paths: at most 32 bounded 8,192-byte occurrences,
 forty wrappers and 512 slots, totaling 274 KiB within 320 KiB. Fixed literals need
-no per-job copy; every actual retained copy still counts. Additional known cloud
+no per-job copy; every actual retained copy still counts. With two known cloud
+routes that conservative shape uses all 32 path occurrences. A policy-link
+target witness must retain identity/association metadata in existing charged
+slots, without another retained target path; serial acquisition and refresh
+reuse/release the existing temporary scratch. Returned witness design must
+prove simultaneous wrapper/slot/byte fit, including replacement metadata.
+Systematic overflow from an added target path is not accepted workflow coverage.
+Additional known cloud
 aliases/witnesses must fit the same occurrence/wrapper/slot and byte ceilings or
 refuse the job, never disappear from policy to save room. Scratch holds
 one 16 KiB candidate, at most eight 8,192-byte path/comparison-key occurrences

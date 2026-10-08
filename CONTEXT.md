@@ -132,12 +132,14 @@ contents and does not establish an exhaustive installed-application inventory.
 
 **Search pre-open proof**: An established observation required before acquiring a
 directory, separate from its post-open verification. A no-follow child device
-can reject a foreign transition; it does not establish a mount generation or
-capability. A policy-link identity is not its target's identity. The
-[proof boundary](docs/specs/workspace-search.md#pre-open-proof-boundary) leaves
-bootstrap and target-alias metadata policy pending a decision and returned design;
-missing proof authorizes neither speculative acquisition nor accepted workflow
-loss.
+can reject a foreign transition; its probe can already contact or block that
+filesystem. Fixed startup/Data and fixed-anchor-only Preboot acquisition retain
+the accepted layout premise and post-open classifier, without a new pre-open
+generation/capability requirement. A policy-link identity is not its target's.
+The [proof boundary](docs/specs/workspace-search.md#pre-open-proof-boundary)
+evaluates lookup-only target acquisition; its inspection-policy exemption and
+relocated-target prompt premise await a decision and returned design. Missing
+required proof authorizes neither arbitrary acquisition nor accepted workflow loss.
 
 **Search coverage**: One effective root's completeness within the **search
 domain**: COMPLETE means all eligible names were examined, PARTIAL means some

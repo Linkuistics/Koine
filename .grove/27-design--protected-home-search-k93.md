@@ -17,10 +17,14 @@ approve the other.
 ## Context
 
 Search-preopen-witnesses-k126 remains a live node through reviewed boundary
-k189, metadata-policy decision k190 and returned design k191, then mandatory
+k189/review k192/integration k194, target-inspection decision k190 and returned design k191, then mandatory
 whole-node review. The boundary selects neither literal-only alias blocking nor
 systematic home loss. Consume actual bootstrap/alias witness failures and all
 resulting per-witness omissions; metadata-design approval is no coverage pass.
+Fixed-layout bootstrap remains selected. Relocated-target listing prompts are
+an unmeasured premise; lookup-only acquisition remains an unselected policy
+alternative. Library escapes retain the origin limit without whole-home failure.
+Include foreign-probe blocking/retained-credit omissions beside useful markers.
 - `docs/specs/workspace-search.md`, roots/coverage and test seams.
 - `docs/verification/search-discovery.md`: signed hardened Koine prompted on
   Desktop/Documents/Downloads directory traversal and on scoped Spotlight;

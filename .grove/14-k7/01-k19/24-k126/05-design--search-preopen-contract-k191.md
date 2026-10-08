@@ -18,9 +18,17 @@ by k190. No candidate route in the boundary is selected by implication.
 
 - Satisfy every original k126 Done when, including bounded `/`/startup/data/home/
   fixed-Preboot bootstrap and device guards before any unknown foreign open.
+- Use the retained fixed-layout bootstrap premise and post-acquisition
+  classifier; do not invent pre-open generation/capability requirements for
+  those fixed routes. Actual home/non-fixed sources keep device guards.
+- Evaluate serial independent lookup-only target walks under k190's exact
+  inspection-policy decision. Distinguish transit from listing and k174's
+  measured real-folder calls from unmeasured relocated-target prompt behavior.
+  Library-route escapes retain the inherited origin limit without required
+  unknown identities; foreign targets need no acquired alias witness.
 - Settle each policy-link target class with native alias proof, dependency
   ordering, absence/replacement/uncertainty/account outcomes and exact scopes.
-  Prove exemptions against Work/Docs redirecting to Work and interdependent
+  Prove authorized witness-mode exemptions against Work/Docs redirecting to Work and interdependent
   witnesses. No recursive resolver, uncharged catalogue or hidden home failure.
 - If revised metadata is authorized, specify each actual call/flag/input,
   bounded consumption, resource/error/freeze lifecycle, copied occurrences and
@@ -28,8 +36,16 @@ by k190. No candidate route in the boundary is selected by implication.
   cached record is no generation token, and no fsid/dev cast is inferred.
 - Reconcile all original artifacts and construct the exact native subjects,
   including foreign metadata-only probes, variants and independent observers
-  through late cleanup. Native results remain pending; prompting routes must
+  through late cleanup. Include unresponsive network/FUSE/autofs reached by
+  root/nested-home/stale-registration probes, worker/credit retention, freeze,
+  late-return and resource-failure cohort/process-restart outcomes. Native results remain pending; prompting routes must
   return to Antony and omissions remain k93 inputs.
+- Prove full 32-occurrence witness fit with identity/association-only target
+  retention and released scratch paths; inspect simultaneous wrapper/slot/byte
+  and refresh/replacement charges. No systematic overflow or extra retained
+  target path may stand in for a valid design. Cached-table correlation/cap
+  and following-status Library/length/hop/foreign-contact conflicts must be
+  resolved if either conditional candidate is actually authorized.
 - Run the node's required frozen checks and browser inspection. Close k126 only
   at a complete reviewable contract. Its mandatory review before k127 reads the
   full node artifact, not this child's diff alone; name the completing run on

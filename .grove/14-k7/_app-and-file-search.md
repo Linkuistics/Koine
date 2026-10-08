@@ -32,11 +32,14 @@ default application, reveal, copy path and open in Zed.
 
 ## Notes
 
-Pre-open witness k126 remains live as a node: boundary k189/review, metadata
-decision k190, returned contract k191 and whole-node review precede observation
+Pre-open witness k126 remains live: boundary k189/review k192/integration k194,
+target-inspection decision k190, returned contract k191 and whole-node review precede observation
 phases k127, classification k123, resource review k120 and planning k30. The
-boundary analysis supplies concrete alternatives, not approved new calls or
-accepted home/default loss; k93 owns actual omissions.
+boundary retains fixed-layout bootstrap and evaluates existing lookup-only
+target acquisition; its exemption and relocated-target protection premise remain
+undecided. Library escapes retain the origin limit; foreign probes can block
+before device refusal. No new calls or home/default loss is accepted; k93 owns
+actual omissions.
 
 The search design is `docs/specs/workspace-search.md`, with the separate additive
 `docs/design/workspace-search-schema.graphql` and client examples beside it.

@@ -1,11 +1,13 @@
 # Canonical directory call analysis
 
-The [pre-open boundary analysis](search-preopen-boundary.md) identifies missing
-mount-bootstrap and symlinked-policy-target proofs in the selected call policy.
-A metadata-policy decision, returned witness design and mandatory reviews
-precede reliance on these subjects. The cached mount and target-following policy
-metadata candidates are unapproved; no new call, native result or reduced
-home/default workflow is selected here.
+The [pre-open boundary analysis](search-preopen-boundary.md) retains the accepted
+fixed-layout bootstrap and evaluates lookup-only policy-target acquisition under
+the descriptor-relative ADR and k174 evidence. Its search-policy exemption and
+relocated-target prompt premise await a decision, returned design and mandatory
+review. Library-route escapes retain the inherited origin limit; foreign probes
+can contact/block a mount before device refusal. Cached mount correspondence and
+complete-table account fit are unproved; conditional metadata candidates remain
+unapproved. No new call, native result or reduced home/default workflow is selected.
 
 This is source/SDK analysis for the
 [canonical directory contract](../specs/workspace-search.md#canonical-directory-observation),
@@ -164,13 +166,24 @@ additional subjects are:
 
 - No-follow device refusal before any unknown removable/network/image or nested
   foreign-mount open, across root/link/registration/dequeue/current sources;
-  startup/home/bootstrap and fixed Preboot exceptions need independent proof.
+  fixed startup/Data/Preboot acquisition keeps its accepted layout premise,
+  with independent native order/classifier acceptance; actual home keeps guards.
   Observe dialogs/hydration throughout probes and late cleanup. Refused URLs
   cannot justify a registration negative.
 - Cloud/iCloud policy links beneath established blocked Library and relocated
   Documents into ordinary Work/Docs, with case/NFC/NFD/Data aliases. The witness
   producer must define required target proofs and dependency-scoped outcomes;
-  a literal spelling or unavailable volume is no passing substitute.
+  a literal spelling or unavailable volume is no passing substitute. Library
+  escapes retain the inherited origin limit, foreign targets device refusal.
+  Evaluate serial O_SEARCH target acquisition under the explicit inspection
+  decision; measure relocated-target listing prompts independently. Include
+  Work/Docs redirecting to Work and interdependent policy links, identity-only
+  retention within the full 32-path-occurrence account and actual refresh charges.
+- Unresponsive network/FUSE/autofs mounts reached by an explicit root, nested
+  home route and stale unrelated registration. Trace the first metadata probe,
+  retained worker/A/B/credits, wait/freeze, late return and resource-failure
+  cohort/restart beside independent listener/store/actions. A synthetic barrier
+  proves ordering, not native blocking; observers cover probes before mismatch.
 - Region replay before metadata and at finalization, root-stream conversion,
   and fresh current/prefix reports with cache-lengthened ENOSPC after unchanged
   association. The phase producer must supply coherent A/B/metadata brackets,

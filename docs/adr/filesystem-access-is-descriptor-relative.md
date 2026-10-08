@@ -43,6 +43,16 @@ other OS builds, not an assumption. If it ever prompts, the prompt-free read
 rule and this decision conflict; that goes to Antony rather than reintroducing
 whole-path primitives or shipping a prompt.
 
+Lookup-only access does not authorize a search-policy exemption. Search's
+[pre-open boundary](../specs/workspace-search.md#pre-open-proof-boundary)
+evaluates serial lookup-only acquisition of relocated policy-target identities,
+but its strict no-target-open witness rule awaits an explicit inspection-policy
+decision. The measured real-folder transit does not establish relocated-target
+listing behavior or Library/cloud/foreign-volume safety. Component resolution
+also cannot guarantee that a mounted-root metadata probe avoids foreign contact
+or blocking before device refusal; search owns its fixed bootstrap premise,
+inspection policy and native-call lifecycle limits.
+
 This decision does not make applications accept long locations. macOS opener,
 registration, type and handler services take whole pathnames and fail at
 `PATH_MAX`; v1 refuses that hand-off truthfully instead of working around it

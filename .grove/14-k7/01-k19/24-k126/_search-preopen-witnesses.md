@@ -21,11 +21,19 @@ required target-alias proof may silently become literal-only blocking.
 - All sources use one walker: roots, fixed Cryptex anchor, app links,
   registration targets, queued/current rewalks and native dot-dot/restarts.
 - A child's no-follow device is available before open. It does not by itself
-  prove a mount generation, volume capability or safe unknown bootstrap route.
+  prove a mount generation or volume capability. Fixed slash/system/Data and
+  fixed-anchor-only Preboot acquisition use the retained layout premise and
+  post-acquisition classifier; those stronger pre-open facts are not required.
+  Non-fixed sources keep device guards. A probe can contact/block foreign
+  metadata/automount before mismatch is known, under existing lifecycle limits.
 - A policy-route symlink has no acquired target identity. Library-descendant
   cloud/iCloud links and relocated Documents into ordinary Work/Docs require
   different dependency proofs; neither textual folding nor reading excluded
-  directories is an alias-proof fallback.
+  directories is an alias-proof fallback. Lookup-only transit under the ADR
+  and k174 is distinct from listing; its witness-mode exemption and the
+  relocated-target protection/prompt premise await k190. Library-route escapes
+  use the inherited origin limit, foreign targets device refusal, without new
+  required unknown witnesses or independent home failure.
 
 ## Done when
 
@@ -63,16 +71,17 @@ shorter ceiling/domain, incompatible version or changed k119 call set is approve
 
 ## Decomposition
 
-The initial contract/source read exposed a metadata-policy decision outside the
-current approval, rather than supplying a complete witness algorithm. Preserve
+Review/integration reconciles the fixed bootstrap and narrows the remaining
+decision to relocated-target protection and lookup-only witness inspection,
+with conditional metadata evaluation only for a concrete residual. Preserve
 every original Done when condition above. This node remains live through:
 
 1. `search-preopen-boundary-k189`: finite public-source/contract analysis,
    concrete approval alternatives, affected summaries and browser presentation.
    Its load-bearing review precedes the metadata decision; integration, if
    earned, must precede that consumer too. No native experiment is cut here.
-2. `search-preopen-metadata-k190`: obtain Antony's decision on the specific
-   bootstrap and target-alias metadata policy. Approval to design is distinct
+2. `search-preopen-metadata-k190`: obtain Antony's decision on the remaining
+   target protection and lookup-only inspection policy. Approval to design is distinct
    from approval to probe, new consent/setup or workflow loss.
 3. `search-preopen-contract-k191`: return to all original k126 completion
    conditions under that decision; escalate remaining gaps rather than silently
@@ -104,3 +113,10 @@ every original Done when condition above. This node remains live through:
   session; keep the original node's full witness design and acceptance
   obligations live. No consent/setup, literal-only policy, wholesale home loss,
   native evidence chain or in-session reviewer is adopted.
+- k194 reconciles B1–B8 from review k192: retain fixed-layout bootstrap; evaluate
+  serial O_SEARCH target acquisition before new metadata; disclose the unmeasured
+  relocated-target protection premise, inherited Library-origin limit and
+  foreign-probe blocking lifecycle. Remove bootstrap new-call and exhaustive
+  escaped-cloud-target questions from k190. Full 32-occurrence accounting must
+  retain target identity/association only, without another full path. k190/k191
+  and mandatory k193 remain live; no algorithm, exemption or native pass follows.

@@ -160,10 +160,13 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 
 ## Pointers
 
-Pre-open witness k126 is now a live node. Boundary k189 identifies missing
-bootstrap/target-alias proofs and recommends a narrow public-metadata design
-revision for explicit decision k190; returned contract k191 and the mandatory
-whole-node review precede k127/k123/k120/k30. No new call policy, consent,
+Pre-open witness k126 is live. Boundary k189/review k192/integration k194 retain
+fixed-layout bootstrap and evaluate existing lookup-only target acquisition.
+K190 settles its inspection-policy exemption and unmeasured relocated-target
+protection premise; returned contract k191 and mandatory whole-node review
+precede k127/k123/k120/k30. Library escapes retain the origin limit; foreign
+probes may block before device refusal, with existing retained-credit/cohort
+limits. No new call policy, consent,
 accounts, domain or accepted home/default workflow loss follows from the
 boundary. K93 still owns actual per-witness omissions.
 

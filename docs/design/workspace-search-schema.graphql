@@ -4,7 +4,8 @@
 # Resolution/policy/spelling/name design requires review before classification design/review and whole-resource review/planning; serviceability construction is specified.
 # Their load-bearing review is required before implementation planning.
 # Native-size groups, worker ownership and policy witnesses await native acceptance.
-# Pre-open bootstrap/target-alias metadata needs a decision and returned witness design.
+# Fixed-layout bootstrap is retained; lookup-only target policy needs a decision and returned design.
+# Foreign metadata probes can block before device refusal; wait freezes publication, not native calls.
 # No new calls or systematic home loss are selected; refused registration targets prevent negatives.
 # Typed BLOCKED transport is reviewed; runtime/binary acceptance remains pending.
 # Native/default coverage and the protected-home baseline remain unaccepted.

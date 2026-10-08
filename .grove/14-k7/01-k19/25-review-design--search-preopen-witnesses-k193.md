@@ -10,7 +10,7 @@ including its explicit metadata decision, not only its last child's diff.
 ## Context
 
 - K126 remains live when this review is cut. Boundary k189/review k192 precede
-  requirements k190 and returned contract k191; that decision and complete
+  integration k194, requirements k190 and returned contract k191; that decision and complete
   returned artifact are required inputs, not supplied by this charter.
 - The original node charter preserves k124 P2/P3 and k125 triage. Review the
   spec's path/bootstrap/pre-open/canonical/witness/account/k119 sections,
@@ -26,12 +26,20 @@ including its explicit metadata decision, not only its last child's diff.
   data/home/Preboot bootstrap facts, device correlation/refresh/replacement and
   fixed-anchor-only transit. No guessed safe device, mount generation or new
   admitted region; no catalogue/path spelling silently supplies authority.
+  Keep the accepted fixed-layout/privileged-replacement premise and descriptor
+  classifier distinct from non-fixed device guards; do not add stronger
+  generation/capability requirements to fixed bootstrap.
 - Re-derive policy-route links by target class and dependency: established
   blocked ancestor/confinement, relocated ordinary target, absence, uncertain or
   replaced target, witness and scratch/account overflow. Challenge escaped
   Library routes, Work/Docs redirecting to Work and interdependent aliases with
-  case/NFC/NFD/Data variants. No recursive resolution, target-open identity
-  probe, uncharged catalogue, literal-only policy or hidden all-home failure.
+  case/NFC/NFD/Data variants. Re-derive the exact authorization of any serial
+  lookup-only witness mode; listing/general resolution has no such exemption.
+  Relocated-target listing prompts are unmeasured until acceptance; Library
+  escapes retain the existing origin limit, foreign targets device refusal.
+  No recursive resolution, unauthorized target acquisition, uncharged catalogue,
+  literal-only policy or hidden all-home failure. Verify identity-only retention
+  fits the full 32-path-occurrence shape, wrappers/slots/bytes and refresh.
 - Verify every selected revised call, flag, input, bound/error/lifetime and
   foreign-lookup/prompt premise is actually authorized and fits Q/S, A/B,
   existing scratch/witness accounts, wait and worker/freeze/cohort recovery.
@@ -40,6 +48,9 @@ including its explicit metadata decision, not only its last child's diff.
   construction for removable/network/image routes and nested home mounts,
   cloud/iCloud/relocated links, aliases and late cleanup. Dialog/hydration
   observers cover every actual probe and open, with positive detection controls.
+  Include real unresponsive network/FUSE/autofs subjects reached before device
+  refusal, retained worker/credits through freeze/late return and cohort/restart
+  behavior beside resource failure. Synthetic barriers are not native evidence.
   Native results and k93's actual per-witness omissions remain pending.
 - Reconcile all summary/ADR/SDL/example/guide/glossary/trace/visual/brief layers.
   Separate design defects from disclosed platform races and unexecuted subjects.
