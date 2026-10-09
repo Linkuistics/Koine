@@ -4,8 +4,10 @@
 shows the evidence boundary and next decision. Graphs start at the dark **Start
 here** node; numbered edges express work order. This document and the
 [per-item JSON](../design/application-metadata-subject.json) establish a complete
-bounded file census and disk-only construction. They select no replacement
-reader format, precedence, file bound, owned-budget rule or useful-category loss.
+bounded file census and disk-only construction. That evidence alone selects no
+replacement reader format, precedence, file bound, owned-budget rule or
+useful-category loss. The later human selections are recorded below; their
+complete reader construction remains the final design child's work.
 Application-localized-metadata-k215's consumption hold and mandatory whole-producer
 review remain binding. Every native G/N/V verdict remains **pending**.
 
@@ -42,9 +44,9 @@ bases, direct raw entries, every checked direct `.lproj` directory and rejected
 locale entry. Independently census `Info-macos.plist` and `Info.plist`, plus
 `InfoPlist-macos.strings`, `InfoPlist.strings`, `InfoPlist-macos.loctable` and
 `InfoPlist.loctable` at the global base and every direct locale. This is an
-**evidence superset**, not approval to read all language files or adopt all four
-name families in production. The future closed production plan must select its
-exact families, locale grammar and precedence with Antony.
+**evidence superset**, not approval to read all language files. Antony's later
+fixed-family selection is recorded below. The final closed production plan must
+implement it and make locale grammar and precedence explicit.
 
 The JSON retains present/refused file states, exact regular-file identities,
 bytes and SHA-256, dictionary dimensions and exact loctable dictionary keys.
@@ -144,30 +146,30 @@ the measured maximum file would simultaneously reserve 206,394 bytes, while the
 information-plus-global census contains 5,271,140 bytes of episode input, before
 selected locale files. Reusing those buffers releases lifetime ownership; under
 the existing rule it **does not refund cumulative per-read input/copy charges**.
-The maximum file suggests testing an explicit 131,072-byte bound, but that bound
-has not been adopted and is no universal file-size promise. Any change from
+The maximum file informed the later selected 131,072-byte bound below; that bound
+is no universal file-size promise. Any change from
 gross input charging to a lifetime/throughput split needs its own explicit rule,
 limits, overflow outcome and human selection. Native parsing/object peaks remain
 unproved whichever owned accounting is selected.
 
-## Next coupled decision
+## Human selection and final design handoff
 
-Application-metadata-budget-k217 must first seek a concrete loctable-capable
-construction within the existing gross, call and core response gates. That means
-an enumerated selected file/locale plan and owned representations, including
-loctable keys, repeated inputs and final transcodes; a smaller scratch peak alone
-does not establish a gross fit. If that construction fails, present a fully
-derived larger application-owned envelope and its actual relationship to host
-policy, preserving the independent core response limit and action/Settings
-contracts. An explicit new accounting rule is a separate alternative, never a
-silent reuse refund. Category exclusion requires Antony's selection and is not
-the recommendation. No alternative is adopted by this evidence.
+Application-metadata-budget-k217 sought explicit loctable-capable constructions
+within the unchanged gates, as recorded below. Those concrete trials did not
+establish an 8 MiB gross fit. Antony selected the fixed families, 131,072-byte
+per-file bound and a 20 MiB application-owned cumulative gross allowance with no
+reuse refund. He also selected individual oversized-file metadata refusal and
+confirmed the existing test seams and proposed cases. This increases neither the
+independent core response policy nor authority/signing/consent posture. A new
+lifetime/throughput accounting split or useful-category exclusion is unselected.
 
-The following design child must resolve oversize-file individual versus population
+The following design child must construct the selected file and population
 outcomes, exact fixed families and all supported layouts, locale-key grammar/
 precedence/absence/malformed/denied branches, every explicit call and lifetime,
-gross and wire certificates, then reconcile the complete artifact family and live
-charters. It cuts mandatory whole-producer review-design of k215 before k7.
+gross and wire certificate, then reconcile the complete artifact family and live
+charters. The proposed arithmetic below is input, not that completed certificate.
+The child cuts mandatory whole-producer review-design of k215 before k7. This
+requirements handoff lifts no consumption hold and passes no native case.
 
 ## Reproduction and controls
 
@@ -190,3 +192,184 @@ The saved JSON's input hashes identify the credited capture; later Taskfile edit
 require another capture before crediting a new measurement. Native implementation,
 timing, prompt safety, allocation peaks, binary authority and supported-VM acceptance
 are intentionally unproved by these deterministic evidence checks.
+
+## Concrete selected proposal
+
+The [budget proposal and per-episode selector observations](../design/application-metadata-budget-proposal.json)
+are input to application-metadata-budget-k217. Antony selected the fixed
+loctable-capable families and **131,072-byte file cap** by answering "I agree"
+to that first choice. He then answered "agree" to the recommended **20 MiB
+application-owned cumulative gross allowance**, retaining every per-read/per-copy
+charge. Antony answered "I agree" to **individual oversized-file metadata refusal**:
+retain the choice with diagnostics and unknown affected fields, without bypassing
+a refused name file. His "yes" confirms the test seams and cases below.
+These observations do not replace the reader spec
+or lift k215's consumption hold. The subject digest is
+`dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a`.
+Pure CF selection used arrays built from that saved census with explicit
+`[en-AU, en]` and `[de]` preferences, not a target Bundle or native source query.
+Every one of the 2,043 episodes, including aliases, is present in each run.
+These two language runs are finite witnesses, not a production language subset.
+
+Propose the same four checked layouts:
+
+| Layout | Information base | Resource base |
+| --- | --- | --- |
+| Contents | Contents | Contents/Resources |
+| Support Files | Support Files | Support Files/Resources |
+| Resources | Resources | Resources |
+| Flat | Root | Root |
+
+All descendant access remains through held directories. In each information base
+keep Info-macos.plist then Info.plist.
+In each planned name base propose InfoPlist-macos.strings, InfoPlist.strings,
+InfoPlist-macos.loctable and InfoPlist.loctable. The strings pair precedes the table
+pair; platform/plain fallback within a pair requires checked absence. A present
+malformed, denied, oversized or unsupported earlier candidate does not license a
+convenient later file or unlocalized name. Healthy empty name dictionaries may
+advance to the next family/base. Within a selected dictionary display name precedes
+bundle name; across bases retain the first usable candidate. The final design must
+make every family-versus-base branch and early exit executable and unambiguous.
+
+Direct locale inventory and table-key inventory remain separate. Each table is a
+property-list dictionary whose selected language value must itself be a dictionary.
+Inspect/count all top-level keys before selecting; `LocProvenance` is reserved
+metadata, charged as an inspected key and excluded from language candidates.
+Preserve literal language keys, including English/German-style names and underscore
+regional forms observed in the census. Apply the pure CF preference selector to
+that table's own language keys, development-region first when exactly observed,
+then byte order. Map returned keys exactly, deduplicate, then append observed Base
+and development-region keys as backstops. No table borrows a directory's inventory.
+The directory plan retains global, selected literal directories, observed Base and
+observed development-region order. Only planned bases/files are read; neither all
+languages nor arbitrary resources are scanned. Name/identifier/flags and refusal
+remain per-copy observations under the existing provenance contract.
+
+Antony selected a **131,072-byte regular-file bound** for information and name files.
+The maximum observed file is 103,197 bytes, and the Unarchiver information file is
+83,346. Two such buffers have 262,144-byte simultaneous capacity within the existing
+1 MiB shared scratch reservation. Each performed input read still incurs its full
+cumulative charge; no reuse refund follows. A 262,144-byte file cap is an explicit
+alternative offering more per-file headroom at a 524,288-byte two-buffer capacity;
+it requires the final scratch partition to be checked. Neither cap promises
+universal future-file support. The 65,536-byte cap refuses known useful files.
+Keep the 4,096-key dictionary bound for information, table top-level and selected
+language dictionaries; the measured maxima are 76 and 53. Existing output label
+limits remain; the finite name reserve must cover the observed 129-byte candidate.
+
+### Unchanged-gate construction attempt
+
+Reusing the current 6,816,128-byte source/scratch reserve cannot fit even the
+2,611,131-byte information input. That is a statement about this representation,
+not a lower bound on every reader. A second concrete trial uses packed records:
+128 bytes/spelling, 64/choice, 64/indexed-fact record, 16/raw observation,
+64/identifier, 32/running record, 16 ordering/index bytes per spelling and identifier,
+and 4,096 fixed bytes. At the unchanged source count ceilings this is 921,760 bytes.
+Reserve 524,288 scratch, 131,072 diagnostics and 128 summaries separately; retain
+64 bytes per direct locale/table-key record and two actual UTF-8 component/key
+copies. Reserve two path payload copies, four name/identifier payload copies and
+one distinct-ID key copy, including NULs. The complete subject gives 937,020 bytes
+for that final payload upper bound. Inputs still charge every alias episode.
+
+Even before selector vectors and selection-plan records, that compact trial costs
+10,213,126 bytes for the English run and 10,385,815 for German, above 8,388,608.
+Reducing simultaneous buffer capacity does not erase these cumulative charges.
+This trial therefore does not certify unchanged-gate usefulness. A more radical
+representation might fit; none is established here, and an opaque-native-owned
+relabelling is not an accounting proof. Preserve useful choices as the recommendation.
+
+### Derived larger application envelope
+
+Antony selected **20 MiB (20,971,520 bytes) of application-owned cumulative gross charges**.
+This changes the application job's admission allowance, not the gross accounting
+rule. The conservative input term below covers the complete fixed-family census
+as an upper bound; it does not authorize reading every locale. Every family is read
+at most once per performed episode. Explicit selector/plan charges are added rather
+than hidden inside buffer reuse or the old reservations.
+
+| Derived charge | English | German |
+| --- | ---: | ---: |
+| Enumerated current source records/payloads/summaries/shared scratch | 6,816,128 | 6,816,128 |
+| Four final-name payload reserves: 129 instead of 128 bytes at C=2,048 | 8,192 | 8,192 |
+| Complete fixed-family census input upper bound, including aliases | 7,438,626 | 7,438,626 |
+| 64 bytes × 17,881 direct locale records | 1,144,384 | 1,144,384 |
+| Two actual direct component copies including NULs | 347,666 | 347,666 |
+| 64 bytes × 10,024 raw table keys | 641,536 | 641,536 |
+| Two actual table-key UTF-8 copies including NULs | 79,598 | 79,598 |
+| Two pointer vectors: 16 bytes × direct/table possible and returned slots | 494,592 | 479,648 |
+| 32 bytes × planned directory bases and table language keys | 147,744 | 172,320 |
+| **Conservative logical gross total** | **17,118,466** | **17,128,098** |
+
+The first row is independently reconstructible from the population JSON's
+spelling/choice/indexed/observation/identifier/running record terms, two ordinary
+and two indexed scalar payload copies, two path copies, diagnostics, summaries and
+1 MiB scratch. It is not a measured Swift heap layout. The path term is an aggregate
+pool reservation: the subject's actual path payload including NULs is 222,150 bytes,
+with individual roots through 1,500 bytes, not an assumption that every path is
+at most 256 bytes. Native index projections/current file facts and their actual
+transcodes still require N5/N8 verification. CF parser/native peaks remain opaque.
+
+The selected-file input upper bounds are 5,485,674 and 5,658,363 bytes. CF directory
+selection returns 2,337/1,826 raw slots, with 3,947/5,034 planned directory bases.
+The 247 observed tables return 670/247 raw selector slots, giving 670/351 planned
+table language keys after backstops. English can return three regional/language
+keys; do not assume one selected locale. All 10,024 raw table keys, including
+provenance keys, count separately from the 17,881 direct directory records.
+
+Proposed explicit call arithmetic is
+`40+16U+5R+12D+32C+8E+48F+16T+4K+32H+2C(6V+4)`.
+Here T counts parsed tables, K their raw keys, H their planned language-dictionary
+lookups, and E includes all raw directory/preference/selector/table-key slots.
+16T reserves table count/key-array/selector setup and retirement; the additional
+4K covers table-value/key classification beyond 8E; 32H covers dictionary/type,
+display/name getter, validation and failure/cleanup branches for selected and
+backstop keys. The existing 48F fixed-file recipe and two root walks remain.
+F is conservatively two information probes plus four probes per global/planned
+name base: 28,046/32,394. E is 45,766/44,832; its unchanged 65,536 production gate
+is used in the upper call calculation. With the unchanged source count ceilings
+and finite V=32, the candidate totals are 2,970,288/3,168,784 attempts, below
+4,194,304. Final design must enumerate actual calls, borrowing, allocations and
+all branches; this arithmetic does not qualify an adapter or native serviceability.
+
+The finite full-selection wire reserve becomes 7,942,144 bytes after increasing
+the name dimension to 129. Core's **8 MiB response cap remains independent**, as
+do multi-root/alias/escaping checks, the five-second core deadline, three-second
+read gathering bound, and four shared true-return job slots. RequestPolicy.version1
+has a response policy; it has no application gross-copy parameter. The proposal
+requires no core transport policy version/limit change. Four application jobs
+could each admit 20 MiB cumulative gross, so the process-wide admitted cumulative
+allowance becomes at most 80 MiB for four such jobs; this is not an RSS/opaque
+native peak promise. Native loader/disclosure/image authority, action hand-off,
+Settings/diagnostic contracts and signing/consent posture remain binding.
+
+The larger envelope is recommended over a new lifetime/throughput accounting rule:
+the latter would require separate live-ownership and cumulative read/copy limits,
+explicit retirement/reuse semantics and a new overflow proof. No such split is
+selected or certified. Keeping 8 MiB and excluding tables/helpers/useful categories
+is an explicit human alternative with known usefulness loss, not the recommendation.
+No stronger compaction, split rule, helper, consent or host response increase is
+assumed approved.
+
+### Selected outcomes and agreed test seams
+
+The format/file bound, application accounting/allowance and individual
+oversized-file outcome are selected above. An oversized file refuses that copy's
+affected metadata with diagnostics and honest nullable facts; retain its choice.
+Shared job count/call/copy/deadline exhaustion still publishes FAILED/null for the
+whole population. A refused earlier name candidate does not fall through to a
+convenient later or unlocalized label. Known useful witnesses returning unknown
+remain acceptance failures; individual refusal is not approval to lose them.
+The final design must make the fixed dictionary-key bounds and every related
+refusal branch explicit alongside the selected file outcome.
+
+Antony confirmed public GraphQL, actual provider/host binaries and isolated signed
+supported macOS VM seams by answering "yes". Agreed cases cover oversized file
+versus shared overflow, English Find My/Voice Memos and German loctable witnesses,
+omitted tables, repeated aliases, the 129-byte name, all four layouts/families and
+selector/backstop/absence/malformed/denied branches, together with preserved
+long-path, action-authority, host-disclosure and independent serviceability controls.
+No additional seam or native pass follows that agreement. The two literal-array
+runs are not native G/N/V. The 149 query paths outside the bounded directory census
+remain explicitly recorded; this proposal neither qualifies their contents nor
+authorizes their exclusion from a future native population. The supported-VM full
+baseline and native source/precondition/serviceability observations remain pending.

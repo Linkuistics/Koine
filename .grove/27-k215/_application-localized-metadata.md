@@ -86,6 +86,32 @@ child cuts mandatory root review-design with bare stem
 application-localized-metadata, Reviews naming k215, before k7. The session that
 actually closes this node writes its own Creator run on that review.
 
+## Selected contract and test seams
+
+- Application-metadata-budget-k217 records Antony's completed selection: fixed
+  Info-macos.plist/Info.plist and platform/plain InfoPlist strings/loctable
+  families, 131,072-byte regular files, and 20,971,520 cumulative application-owned
+  gross bytes per job with every performed read/copy charged and no reuse refund.
+  Individual oversized files refuse affected per-copy metadata while retaining
+  the choice, diagnostics and honest unknown fields; a refused name file cannot
+  be bypassed by a later or unlocalized name. Shared population count/call/copy/
+  deadline exhaustion still publishes FAILED/null. Required unknown/missing
+  useful metadata remains an acceptance failure. No category exclusion,
+  lifetime/throughput split, helper or core-policy/posture increase is selected.
+  The saved proposal/report hold the bounded arithmetic and exact answers;
+  their logical charges are not a completed adapter certificate or native peak.
+  The final design must construct and reconcile the full family before the
+  mandatory whole-k215 review. This requirements selection lifts no hold.
+- Agreed test seams from k217 are public GraphQL, actual provider/host binaries
+  and isolated signed supported macOS VMs. Cases include individual oversize
+  refusal versus shared exhaustion, English Find My/Voice Memos and a German
+  loctable witness, omitted tables, repeated aliases, the 129-byte name, all four
+  layouts and selector/backstop/absence/malformed/denied branches, plus preserved
+  long-path, action-authority, host-disclosure and independent serviceability
+  controls. Every native G/N/V stays pending. The macOS 26.6.2 development-host
+  census remains bounded historical evidence, not macOS 27 qualification or
+  approval to change the macOS 26+ support floor.
+
 ## Decisions (running log)
 
 - Bootstrap read k213's findings from c1a0c6e5 and k214's committed triage. The
