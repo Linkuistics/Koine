@@ -440,6 +440,10 @@ must repair that coupled
 design before k7 consumes it. The following file/gate recipe is the refuted
 proposal, retained for explicit counterexamples; it is not a settled implementable
 useful reader. No new format, larger gate or useful loss is selected here.
+The [finite design subject](../verification/application-metadata-subject.md)
+adds a frozen bounded development-host census and disk-only P1024/L1500
+construction for that decision; it is not an exhaustive supported-VM baseline,
+replacement certificate or native acceptance.
 
 **Layout and proposed file set.** Probe these directory layouts in fixed order:
 Contents; Support Files; Resources; flat root. Choose the first present checked

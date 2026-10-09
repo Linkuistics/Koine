@@ -1,4 +1,4 @@
-# application-localized-metadata-k215
+# application-localized-metadata-k215 — brief
 
 
 ## Goal
@@ -71,3 +71,30 @@ read-only evidence is distinct from a Koine/native acceptance probe. The graph
 CLI was blocked by an incompatible active generation in k214; retry for new
 source discovery and explicitly fall back if still unavailable. Substantial
 redesign belongs here, with its mandatory review, rather than k214's integration.
+
+## Decomposition
+
+The finite subject, human selection and complete reader design have a genuine
+dependency boundary. First produce an independently inspectable design-only
+baseline/P1024/L1500 manifest, with exact fixed-file and locale dimensions and
+explicit pending native preconditions. Then a requirements leaf presents the
+coupled format/sizing/accounting alternatives to Antony using that evidence.
+The final design leaf consumes the selection, derives the complete construction
+and reconciles all artifacts/charters. These are design/requirements sessions,
+not implementation leaves. The node remains the whole producer k215; its final
+child cuts mandatory root review-design with bare stem
+application-localized-metadata, Reviews naming k215, before k7. The session that
+actually closes this node writes its own Creator run on that review.
+
+## Decisions (running log)
+
+- Bootstrap read k213's findings from c1a0c6e5 and k214's committed triage. The
+  working copy began empty on afb677c5. The graph CLI again refuses because an
+  incompatible active generation is present; no project/generation/coverage is
+  established. Exact source/document/file fallback is explicit. Taskfile.yml is
+  the reusable verification entry point.
+- Decompose because independent complete subject construction, a required
+  human format/accounting selection and whole-family reconciliation exceed one
+  focused session. Complete only the first design child this session. Preserve
+  all original Done when criteria, the consumption hold and pending native G/N/V.
+  No new reader format, gate, accounting rule or useful loss is adopted.

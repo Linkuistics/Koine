@@ -8,47 +8,29 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The approved explicit application-reader scope has a shipped-file/certificate
-counterexample: its proposed name set omits InfoPlist.loctable and its L/input
-dimensions do not cover the required baseline. K215 and mandatory review/earned
-integration must replace that construction before k7. Start with
-[Application metadata → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision).
-Only root type uses a whole path; held-directory fixed files and direct locale
-inventory replace opaque Bundle lookup. 977/978 localized controls and actual
-long indexed tuples still need native qualification; mandatory review precedes k7.
+Start with [Application metadata evidence → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject).
+The new bounded host census and disk-only P1024/L1500 construction establish exact
+file/inventory dimensions, not a replacement reader or native verdict. The
+[finite subject report](../../verification/application-metadata-subject.md) explains
+the 2,043 episodes, larger fixed files, English/German loctable witnesses and the
+accounting comparisons. Antony's format/budget selection is pending in k217;
+k215's consumption hold and whole-producer review before k7 remain binding.
 
-The complete native contract remains relevant context. Continue with
-[Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract):
-application staging, Settings lazy uncertainty and indexed provenance share static
-authority, frozen publication and true-retirement ownership. The review must
-challenge the complete design; actual G/N/V qualification remains pending.
-
-[Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
-connects the three constructions and their finite P1024, V12 and L1500 useful-choice
-obligations. The population and long-application views now carry the explicit recipe and
-refuted conditional costs and pending replacement. Settings-readiness remains unchanged context. Design consistency is no native source, timing,
-resource-peak or binary acceptance.
-
-[Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
-shows source/snapshot/image responsibility and the preserved action boundary.
-[System Settings → Read, prepare, set up, then reveal](index.html#diagram-native-settings-flow)
-shows separate explicit operations and complete static grants.
-[Native ownership → Retain capacity until native work really returns](index.html#diagram-native-discovery-lifecycle)
-shows freeze and true retirement, including indefinite retained capacity.
-The [native contract](../../specs/workspace-search.md),
-[source provenance](../../verification/native-discovery-sources.md) and
-[finite acceptance](../../verification/native-discovery-acceptance.md) hold the
-full API, exact profiles and runtime qualification duties. Mandatory whole-producer
-review, implementation and every native G/N/V verdict remain pending.
+Unchanged context: [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision),
+[Application population → Finish bounded staging](index.html#diagram-native-application-population)
+and [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications).
+Their old conditional construction is refuted, and all native G/N/V remain
+pending. The complete [native contract](../../specs/workspace-search.md),
+[source report](../../verification/native-discovery-sources.md) and
+[finite acceptance](../../verification/native-discovery-acceptance.md) retain the
+independent Settings/diagnostic repairs, static authority, action limits and
+host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Application metadata → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision) — Replaced the scope proposal with selected admission, fixed-file/localization ownership and 977/978 controls.
-- [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications) — Changed discovery cutover to the 1,024-byte root boundary and explicit ordinary reader.
-- [Application population → Finish bounded staging](index.html#diagram-native-application-population) — Added metadata-plan work and revised finite attempt/gross costs.
-- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Located the private metadata reader inside discovery.
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Updated the caption to the approved reader; graph unchanged.
-- [Localized reader decision](../../specs/workspace-search.md#localized-reader-decision) — Defined fixed files/layouts, localization order, admission, facts, parser/ownership bounds and native qualification.
+- [Application metadata evidence → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Added the independent census, disk-only subject, frozen evidence and explicit next human/design/native boundaries.
+- [Finite subject → Dimensions and accounting comparison](../../verification/application-metadata-subject.md#dimensions-and-accounting-comparison) — Added measured baseline/combined dimensions and separated old gross-reservation comparisons from lifetime buffer storage.
+- [Reader consumption hold](../../specs/workspace-search.md#localized-reader-decision) — Linked the new finite evidence without adopting a format, accounting rule or replacement certificate.
 
 ## Other architecture topics
 
@@ -64,7 +46,7 @@ no native verdict.
 ## Sources and exports
 
 D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
-source/population/long/localized-decision/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
+metadata-subject/source/population/long/localized-decision/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -84,3 +66,10 @@ rejects whole-path/opaque fallback, guessed locale limits, NUL/multibyte errors
 and invented native passes. It implements no reader and supplies no native pass.
 Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.
+
+Run design:application-metadata-subject to recapture declared host fixed files and
+disk-only P1024/L1500, then design:application-metadata-subject-check for saved
+JSON validation and independent defect controls. These are read-only installed-file
+evidence and local construction; no Koine reader, signing, registration, launch,
+consent or VM acceptance. The capture records its complete before/after subject
+and instrument hashes.

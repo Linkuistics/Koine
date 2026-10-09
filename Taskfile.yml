@@ -334,6 +334,7 @@ tasks:
   design:native-discovery-render:
     desc: Render native sources, authority/ownership, settings effects and true-retirement contract (D2 0.9.0; native acceptance pending)
     cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-subject.d2 docs/design/architecture/native-metadata-subject.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-sources.d2 docs/design/architecture/native-discovery-sources.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-application-population.d2 docs/design/architecture/native-application-population.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-long-applications.d2 docs/design/architecture/native-long-applications.svg
@@ -621,6 +622,17 @@ tasks:
         requireRejection(loadedOnPrior, assertDisclosureRefusal, 'native update active on prior disclosure host');
         console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
         JS
+
+  design:application-metadata-subject:
+    desc: Freeze/read declared host fixed files and construct disk-only P1024/L1500; no Koine/native qualification
+    cmds:
+      - python3 scripts/application_metadata_subject.py --capture
+
+  design:application-metadata-subject-check:
+    desc: Check saved per-item metadata census and original-defect controls; no target reads or native pass
+    cmds:
+      - python3 scripts/application_metadata_subject.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_subject.py
 
   design:localized-boundary-check:
     desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass

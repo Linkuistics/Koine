@@ -2,37 +2,19 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The authorized explicit application reader uses root resource type and held-directory fixed-file/direct-localization reads; indexed long roots retain explicit provenance. The application file-set/useful-subject proposal is refuted; k215 and mandatory review precede k7. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Explicit application metadata reader",
-    "status": "Scope approved; file-set/useful-subject design refuted; k215 redesign and mandatory review before k7",
-    "summary": "The shipped-file measurement refutes the 65,536-byte file gate, 4,096-locale/input construction and omitted InfoPlist.loctable names. K214 repairs layout, name/backstop precedence and disclosure; k215 owns the coupled sizing/format/accounting redesign with mandatory review before k7. Existing gates, useful choices, Settings repairs and independent action limits remain obligations.",
+    "title": "Freeze the application metadata subject before the coupled choice",
+    "status": "Design evidence complete; format/accounting selection pending; k215 hold remains",
+    "summary": "The bounded 640-spelling host census plus disk-only P1024/L1500 yields 2,043 episodes and 17,881 direct locale records. Exact shipped loctable names and larger files refute the old proposal. The next human-selection leaf must derive and present a loctable-capable budget before adoption; supported VM/native G/N/V remain pending.",
     "diagramIds": [
+      "native-metadata-subject",
       "native-localized-decision",
-      "native-long-applications",
       "native-application-population",
-      "native-discovery-contract",
-      "native-discovery-sources",
-      "native-settings-readiness"
+      "native-long-applications"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-localized-decision",
-        "summary": "Replaced the scope proposal with selected root admission, fixed-file/localization ownership and indexed fallback; added 977/978 controls and independent action limits."
-      },
-      {
-        "id": "native-long-applications",
-        "summary": "Changed discovery cutover to the 1,024-byte root boundary and showed descriptor-relative ordinary metadata plus the localized 977/978 controls."
-      },
-      {
-        "id": "native-application-population",
-        "summary": "Conditional arithmetic retained as a checked counterexample; measured baseline dimensions refute useful-subject coverage and require k215 redesign."
-      },
-      {
-        "id": "native-discovery-contract",
-        "summary": "Located the private fixed-file/direct-localization reader inside the discovery image."
-      },
-      {
-        "id": "native-discovery-sources",
-        "summary": "Updated the source caption to the selected explicit reader; the source graph remains unchanged."
+        "id": "native-metadata-subject",
+        "summary": "Added the independent bounded file census, disk-only subject, frozen measurement boundary and explicit next human-selection/design/native steps."
       }
     ]
   },
@@ -89,6 +71,15 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "native-metadata-subject",
+      "group": "native-sources",
+      "title": "Freeze the finite metadata subject before selecting the budget",
+      "renderer": "svg",
+      "source": "native-metadata-subject.d2",
+      "rendered": "native-metadata-subject.svg",
+      "caption": "Evidence activity view. Exact per-item bytes, identities, direct locales and loctable keys are measured independently. The 640-spelling bounded host census plus controlled disk additions has 2,043 episodes; source counterparts are declared non-native. No production file family, gross rule or larger gate is selected. K217 presents the coupled decision; complete k215 design and mandatory review must precede k7. Supported-VM/source/binary/G/N/V verdicts remain pending."
+    },
     {
       "id": "native-localized-decision",
       "group": "native-sources",
