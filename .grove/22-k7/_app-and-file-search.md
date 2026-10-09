@@ -90,4 +90,15 @@ not its application slice alone. G10/N5/V11 now require complete bounded populat
 staging, shared ordered registration work, explicit nullable presentation facts,
 null items on global overflow, and actual P1024 useful choices plus independent
 serviceability. No sparse result or honest overflow is a native usefulness pass.
-Cold/warm Settings and long metadata remain live root design children.
+Cold/warm Settings native qualification remains pending; long metadata and
+complete-producer reconciliation/review remain live root design work.
+
+## Settings construction handoff
+
+Consume reviewed complete k205, including G4/N4/N5/V12: two bounded ID-associated
+pALL/anchor sweeps, independent cold-before-visit and warm usefulness, honest
+PARTIAL/UNKNOWN positives and UNKNOWN/null panes/null empty anchors. Preparation
+RUNNING certifies no catalogue readiness. No hidden loading effect, positional
+zip, stable-ID health inference or automatic fallback is admitted. Every exposed
+pane/anchor and ordinary witness remains required; unavailable qualification is
+live work. Global Settings overflow yields FAILED/null, never a prefix.

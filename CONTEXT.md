@@ -158,6 +158,13 @@ by the app's runtime scripting interface and re-resolved for explicit reveal.
 It is neither a filesystem path, arbitrary URL, executable script nor a resource
 reference; query observation does not pin a later target.
 
+**Settings quiescence**: Equality of two complete, ID-associated pane/name/anchor
+response maps separated by a bounded interval. It detects observed changes;
+it is no certificate of lazy extension initialization or catalogue completeness.
+Process RUNNING is separate. Current Settings reads keep observation completeness
+UNKNOWN, positive choices PARTIAL and unestablished empty anchors null. Finite
+cold/warm qualification proves only its declared subject's useful observations.
+
 **Automation setup**: An explicit human action in Koine’s local explaining UI
 through a private local-console seam, never a GraphQL/bearer operation. Its OS
 authorization request is preflighted for a

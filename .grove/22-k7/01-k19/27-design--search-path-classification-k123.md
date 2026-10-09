@@ -59,7 +59,7 @@ registration seeds succeed. Carry the disabled/excluded/rebuilding V9 subject.
 Pin exact G1–G4/G8, N3/N4/N5 and V1–V4/V7/V8 field/branch fixtures and finite useful
 witness inventory. Settings must return all runtime pane/anchor keys, no positional
 array zip or witness-only filter; anchors are null for unestablished observation,
-[] only for checked empty. Per-choice conditional availability stays UNKNOWN
+empty anchor replies remain null under the current lazy source. Per-choice conditional availability stays UNKNOWN
 without runtime evidence. Exact selectors feed the new authorized reveal, never
 HTTP(S) open/custom URL. Profiles use 1.2.0/1.1.0 and 1.3.0/1.1.0, independently
 of retained action-only subjects. Cut its mandatory review before k120; no native
@@ -73,3 +73,14 @@ bounded running activation-policy sets only with checked copy identity. Unknown,
 agent/background/accessory/nested-helper facts cannot suppress choices. Preserve
 shared ordered fail-before-match eligibility and conservative negatives, with
 G10/N5/V11 useful population and malformed/unknown/identity controls.
+
+## Settings lazy-observation duty
+
+Consume reviewed complete k205. Normalize pALL records by their own exact IDs
+and anchor replies by container ID; compare full maps including labels and
+anchor sets, ignoring list order. Equal positive maps remain PARTIAL with
+observations/category UNKNOWN and METADATA_UNKNOWN; equal empty panes are
+UNKNOWN/null. Empty anchors remain null under the current source. Do not
+infer hardware/account availability or lazy health from repeated values.
+Preserve all valid exposed keys and distinguish native failure/block/change/
+global exhaustion; G4/N4/N5/V12 independently qualify cold/warm useful inventory.

@@ -3,8 +3,10 @@
 **Designed; mandatory review, implementation and native acceptance pending.**
 The application population slice now has explicit admission and cost certificates;
 its whole-producer review and actual populous native qualification remain pending.
-Cold/warm Settings readiness and long-application metadata remain unresolved in
-the same producer. The complete design is not approved implementation input until
+The Settings slice now defines bounded full-response comparison and honest lazy
+readiness uncertainty; its cold/warm native qualification remains pending.
+Long-application metadata remains unresolved in the same producer. The complete
+design is not approved implementation input until
 all slices and mandatory review finish. Native acceptance stays pending.
 Koine's local explaining UI alone initiates Automation consent. Native provider
 releases require `workspace-native-disclosures-v1`; prior hosts refuse them
@@ -321,15 +323,76 @@ Apple events do not provide atomic binding across exit/reuse; disclose that race
 and test rejection/late values rather than claim a stronger identity guarantee.
 
 The installed dictionary's pane class is xppb; pane id property is 'ID  ', name
-pnam; anchor class xppa and name pnam. Read with core/getd object specifiers:
-application's all pane IDs, then each pane selected by unique ID, its name and
-all anchor names. Read IDs again before freezing; a changed set invalidates
-completeness and supplies CHANGED_DURING_DISCOVERY. Per-pane results must keep
-pane association; separately enumerated arrays are never zipped by order.
+pnam; anchor class xppa and name pnam. Each of two complete core/getd sweeps
+reads pALL properties of all application panes, then all anchor names within
+each pane selected by its unique ID. The properties reply must be a list of
+records containing an exact valid ID and an optional checked name. Each record
+supplies its own association; the anchor request supplies its containing pane ID.
+No separately enumerated arrays are zipped by order. Properties do not include
+the to-many anchor collection. The [source comparison](../verification/native-discovery-sources.md#settings-event-forms-and-association)
+weighs the existing separate reads and unassociated flattened batch alternatives.
 No NSAppleScript/osascript/ScriptingBridge code compilation is selected. Construct
 AE descriptors from validated values. The exact descriptor forms/codes and
 reply types are pinned qualification subjects; dictionary declarations do not
-prove runtime unique-ID resolution, useful areas or anchors work.
+prove runtime pALL/unique-ID resolution, useful areas or anchors work. Unsupported
+forms are failed/unknown as appropriate; no automatic alternate-form fallback.
+
+### Cold and warm readiness
+
+RUNNING is process readiness only. The admitted dictionary has no catalogue-ready
+or anchor-load-complete signal. A get reply can reflect lazy, not-yet-populated
+objects; a successful preflight, elapsed delay, identical IDs or identical full
+responses cannot establish their health or completeness. Reads perform no reveal,
+current-pane assignment, timedLoad, authorize or other extension-loading effect.
+Preparation only launches a stopped target and reads no panes. Warm means the
+target was already running, not that its extensions were visited or are ready.
+
+The Settings adapter owns descriptor construction, ID association and comparison;
+the existing snapshot owner owns admission, clock, gross charges, freeze and
+true-return retirement. Finish the first full sweep, wait at least 100 ms on
+the owned worker, then start the second. Both sweeps share the unchanged three-
+second/core-remainder deadline. The gap is a finite change-detection interval,
+not a supported initialization delay. Revalidate target incarnation and live
+authority at all existing boundaries, including after the gap. Never wait on
+the listener/UI/grant queue. At most two sweeps, one outstanding event per job;
+no polling, third sweep, automatic retry or readiness cache across queries.
+
+Compare exact ID-keyed maps of names and pane-scoped anchor-name sets; native
+list order is irrelevant, while duplicates, malformed keys and changed
+association are errors. Include anchors and optional-label state in comparison.
+Changed IDs/labels/anchors give CHANGED_DURING_DISCOVERY and PARTIAL with valid
+positive second-sweep choices; if none survives, FAILED/null under change-failure
+precedence. Removed first-sweep choices are withheld with that diagnostic;
+they cannot certify present destinations. A later failed pane read may retain
+individually valid positive observations under the ordinary partial-result rules.
+Never union conflicting maps into a fictitious complete snapshot. Count all
+received entries before deduplication against the per-sweep ceilings.
+
+Even two equal, fully decoded sweeps leave SETTINGS_RUNTIME observations UNKNOWN:
+there is no supported lazy-completeness signal. With positive panes, return PARTIAL
+and METADATA_UNKNOWN guidance explaining catalogue readiness; without positive
+panes, return UNKNOWN/null items, not AVAILABLE/COMPLETE empty. Preserve every
+valid positive pane and anchor, including non-witness destinations. A nonempty
+anchor reply supplies those positive exact keys, not a complete anchor inventory.
+Source availability AVAILABLE means the running target acknowledged positive
+objects, not that its catalogue is ready; without positive objects availability
+is UNKNOWN. examined counts raw pane records inspected across both sweeps, not
+unique destinations or anchor names. Per-pane availability stays UNKNOWN.
+An empty/refused/failed anchor observation remains null with pane-scoped guidance,
+never [] as a claim of no anchors. The current source provides no authoritative
+empty or conditional-availability signal. These uncertainty diagnostics affect
+coverage but do not generate a failed items error. A known native failure, limit,
+block or stopped target still follows the ordinary precedence; uncertainty never
+hides those outcomes. resultsTruncated is false for readiness uncertainty alone.
+
+The [finite cold/warm subjects](../verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification)
+qualify actual useful enumeration without accepting a smaller category. Matching
+independent pre-visit cold and warm observations may pass that exact native
+subject; it does not upgrade production lazy completeness from UNKNOWN. Missing
+ordinary witnesses, newly exposed anchors after a visit, unusable exact forms,
+foreground loss or a shared-deadline miss leave usefulness unmet. Unavailable
+qualification remains pending. A required new posture or useful-category loss
+requires Antony's decision, not a hidden warm-up effect or witness-only filter.
 
 For each core/getd preflight call AEDeterminePermissionToAutomateTarget with
 askUserIfNeeded=false, then send with kAEWaitReply, kAENeverInteract and
@@ -351,8 +414,9 @@ walk, guessed ID/URL or legacy .prefPane catalogue is allowed. Conditional hardw
 account/managed visibility remains UNKNOWN unless the runtime explicitly reports
 it; no inference from a name or absent pane. The supplied dictionary reports no
 such availability property, so each observed pane/anchor has availability UNKNOWN.
-A complete successful read can be COMPLETE over RUNTIME_EXPOSED_PANES while
-category completeness stays UNKNOWN. Network, Sound, Appearance and Displays
+The source domain is RUNTIME_EXPOSED_PANES, with observation and category
+completeness UNKNOWN under the current lazy-object interface. Network, Sound,
+Appearance and Displays
 are required witnesses, not a fixed inventory. Missing any ordinary area or an
 advertised anchor's usable reveal is concrete unmet acceptance, never an accepted
 platform omission or reason to silently reduce the category.
@@ -500,14 +564,14 @@ all-disk/index-health or physical-closure guarantee.
 | Root status, absent independent execution errors | items and meaning |
 | --- | --- |
 | AVAILABLE | Nonempty valid observations with no affecting omission, OR a qualified complete empty declared observation domain; items is a list. Category completeness may still be UNKNOWN. |
-| PARTIAL | Some valid observations (or independently completed empty source) plus a known omission/failure/block/unavailable component; items is a list, possibly empty. |
+| PARTIAL | Some valid observations (or independently completed empty source) plus an affecting omission/failure/block/unavailable component or Settings lazy-readiness uncertainty; items is a list, possibly empty. |
 | UNKNOWN | No useful observation/qualified empty and only unestablished native value/health; items null, diagnostics explain. |
 | BLOCKED | No useful observation/qualified empty, prompt-policy refusal, no failure-class diagnostic; items null, no generated error. |
 | UNAVAILABLE | No useful observation/qualified empty and an established source/target prerequisite unavailable; items null, no generated error. |
 | FAILED | No useful observation/qualified empty and native/malformed/change/limit failure; items null; each selected items alias raises failed. |
 
 With no progress, precedence is failure → block → unavailable → unknown.
-Application population-wide owned-limit/deadline exhaustion is the explicit
+Application or Settings population-wide owned-limit/deadline exhaustion is the explicit
 exception to progress-based PARTIAL: it always withholds staged items and returns
 FAILED as defined above. Source-local failures retain the ordinary table rules.
 Gathering completion and successful parsing do not qualify a healthy empty
@@ -520,8 +584,12 @@ Valid running/registration supplements may make the root PARTIAL, never upgrade
 this indexed source to COMPLETE/AVAILABLE. Disabled, excluded and rebuilding
 subjects must exercise this rule. Empty nil/errorless registration is UNKNOWN. An empty running list is
 only empty RUNNING_APPS; a stopped settings app is UNAVAILABLE, never empty.
-Empty runtime pane/anchor list can describe its declared interface if qualified,
-but missing ordinary witnesses still fails useful-category acceptance.
+For SETTINGS_RUNTIME, even equal empty replies establish no catalogue-ready
+empty: items is null/UNKNOWN; empty anchors are null. Positive panes give PARTIAL
+with observation completeness UNKNOWN and explicit readiness guidance. Missing
+ordinary witnesses still fails useful-category acceptance. This source-specific
+rule overrides the generic AVAILABLE/qualified-empty branch; it changes neither
+application population admission nor location/registration semantics.
 
 Diagnostics name source, reason, nullable established location/pane, guidance,
 and optional permission (AUTOMATION, exact READ/REVEAL; or PROMPT_RISK with unknown
@@ -569,8 +637,8 @@ never replaces a blocked worker or raises descriptor/materialization limits.
 | Per admitted job | Bound and ownership |
 | --- | --- |
 | Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. |
-| Settings | 256 pane IDs, 128 anchors/pane, 4,096 total anchors; return every exposed value within those ceilings. Exceeding them is an explicit incomplete failure/unmet inventory, not a selected smaller category. |
-| Native calls | Application ceiling 1,048,576 admitted explicit source/API/syscall attempts, derived below; Settings/location jobs retain 16,384. All descriptor-relative steps, metadata, registration and explicit cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
+| Settings | Per sweep: 256 pane records, 128 raw anchor names/pane, 4,096 raw anchors total; two sweeps maximum. Return every valid exposed value within those ceilings. Population-wide count/call/copy/deadline exhaustion withholds staged Settings items as FAILED/null, never a prefix; useful inventory acceptance remains unmet. |
+| Native calls | Application ceiling 1,048,576; Settings 131,072 under the two-sweep certificate below; locations 16,384. All explicit descriptor/API/syscall and cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
 | Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read. |
 | Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
 | Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. |
@@ -583,6 +651,48 @@ Neither these limits nor a clean listener prove a hard native memory/FD/Mach-rig
 bound. Inspect count/size before allocating copied values; refuse/cap without
 repairing them. Any required framework API that allocates a whole opaque result
 retains this disclosed limit and finite serviceability obligation.
+
+### Settings cost certificate
+
+The [logical certificate](../design/settings-readiness.json) records these
+allowances and finite qualification declarations for deterministic design checks.
+For N <= 256 pane records and A <= 4,096 raw anchor names per sweep, two
+complete sweeps use E <= 2(N+1) = 514 preflighted get events. The 100 ms gap
+and every send/decode share three seconds; this count is not a latency promise.
+The source's single-ID properties alternative uses up to 1,026 events and is
+not an automatic fallback. Two complete maps detect anchor changes for the same
+event count as the old single-map/ID-only-repeat recipe, without its readiness
+claim. A different native form requires updated qualification and accounting.
+
+| Explicit-attempt reservation in the selected adapter recipe | Maximum |
+| --- | --- |
+| Initial fixed target/job setup and retirement | 64 |
+| Per event: target-incarnation/bundle/signature checks (32), bounded descriptor construction (16), preflight/send/reply handling (8), disposal/cleanup (8) | 64E |
+| Per pane record: count/inspect at most sixteen direct keys, validate/extract ID/name/optional class, dispose temporary scalar descriptors | 48(2N) |
+| Per anchor: indexed extraction, bounded text conversion/copy and disposal | 4(2A) |
+
+At the envelope, 64 + 64E + 48(2N) + 4(2A) = 90,304 explicit attempts;
+round to 131,072. These per-stage allowances are constructible implementation
+obligations, not measured SDK costs. The actual native recipe must enumerate
+every constituent call and prove it fits, or exhaust the owned gate honestly;
+opaque framework/signature/target internals remain outside a caller-visible
+attempt count. The prior 16,384 ceiling did not budget two anchor decodes and
+all descriptor/disposal work. Locations retain it independently. Reserve
+cleanup before acquisition, including descriptor allocations and late replies.
+
+Two compact maps can reuse the second map as the frozen result. Their logical
+gross charge certificate is 2[N(512+1,024+128)+A(512+64)] + 2N(512) + 65,536
+diagnostic bytes + 131,072 scratch bytes = 6,029,312 bytes at the envelope,
+inside the unchanged 8 MiB owned-copy gate. Record/anchor fixed allowances
+include indices and bookkeeping; sent selector copies are counted separately.
+This requires bounded extraction/discard of unused property fields, at most
+sixteen direct record keys, and scalar scratch without recursive copying or
+recopying both maps. Count every actual gross copy; a value/type/key/attempt or
+scratch overflow fails rather than skipping a choice. The certificate is not a
+Swift heap/RSS/native reply peak. Full GraphQL serialization/aliases still charge
+the independent 8 MiB response limit; worst-case escaping at the count/string
+ceilings need not fit. Overflow fails and leaves usefulness unmet, never returns
+a prefix. V12's actual finite subject must fit all gates and the deadline.
 
 ### Application cost certificate
 

@@ -69,3 +69,12 @@ per-ID shared registration and nullable presentation facts. Preserve all useful
 choices in the actual populous native subject; global owned-limit/deadline failure
 publishes no arbitrary source-order prefix. K191 qualifies source contact, k127
 constructs actual accounting and k123 normalizes the facts. No native pass follows.
+
+## Settings readiness duty
+
+Consume reviewed complete k205. Carry its source-specific lazy-readiness
+UNKNOWN contract through permission, owner/image and normalization designs.
+Two full pALL/ID-contained-anchor sweeps detect changes without loading effects;
+G4/N4/N5 and independent V12 require cold-before-visit/warm useful inventory.
+No repeated-ID/time/RUNNING shortcut certifies empty or complete lazy objects.
+Every runtime destination remains required; all native verdicts stay pending.

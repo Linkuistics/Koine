@@ -71,3 +71,12 @@ access, running/registration batch acquisition and admitted Bundle flags under
 the existing source/individual-contact policy. P1024 adds helper/baseline pressure;
 post-result exclusion cannot undo native prompt/hydration contact. No new plist
 reader, ancestor inspection or helper access posture follows from nullable facts.
+
+## Settings exact-read policy duty
+
+After complete k205 review, qualify both full-map pALL/ID-contained-anchor
+sweeps under the exact no-prompt READ event/target rules. No current-pane write,
+reveal/timedLoad/authorize, hidden extension visit, warm-up cache or alternate
+source can make a read look ready. Runtime property access and opaque extension
+work must independently meet read policy. G4/N4/V12 own honest lazy uncertainty
+and cold-before-visit/warm usefulness; unavailable conditions stay pending.

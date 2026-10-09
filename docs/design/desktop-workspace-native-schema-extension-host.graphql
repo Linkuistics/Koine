@@ -45,7 +45,7 @@ type Query {
   workspaceApplications: WorkspaceApplicationsResult
 
   """
-  All runtime-exposed panes/anchors of a validated already-running System Settings target, direct core/getd with exact no-prompt preflight/send. No launch, activation, reveal or setup. Ordinary required areas remain acceptance witnesses. All reachable fields require workspace:read.
+  All positive runtime pane/anchor observations of a validated already-running System Settings target: two ID-associated core/getd pALL/anchor sweeps, 100 ms minimum gap within three seconds, exact no-prompt preflight/send. Lazy completeness stays UNKNOWN even for equal maps; positive choices PARTIAL, empty panes UNKNOWN/null, empty anchors null. Global owned-limit/deadline overflow FAILED/null, never a prefix. No launch/loading/activation/reveal/setup. All exposed choices and ordinary witnesses remain native qualification obligations. All reachable fields require workspace:read.
   """
   workspaceSettings: WorkspaceSettingsResult
 }
@@ -618,7 +618,7 @@ type WorkspaceSettingsPane {
   availability: WorkspaceDiscoveryAvailability!
 
   """
-  Null when anchor observation was refused/failed/unknown; [] only for a checked empty reply.
+  Positive exact keys only; no lazy-completeness promise. Empty/refused/failed/unestablished observations remain null under the current source, never [] from response stability.
   """
   anchors: [WorkspaceSettingsAnchor!]
   sources: [WorkspaceDiscoverySource!]!

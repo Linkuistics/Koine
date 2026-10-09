@@ -29,3 +29,13 @@ completion, not a transcribed finding checklist. No downstream implementation.
   reviews all children/current artifacts. Require earned integration in that root
   sibling chain before k7. Do not prewrite integration. Retire k209, settle node
   cascade/Creator using Grove's procedures, and commit k209 plus k205 together.
+
+## Settings slice reconciliation input
+
+K207 settles two ID-associated pALL/anchor sweeps and process-only preparation;
+full-map equality supplies no lazy health. Positive choices PARTIAL/UNKNOWN,
+empty panes UNKNOWN/null and empty anchors null; exact pALL and finite V12
+cold/warm usefulness remain native pending work. Reconcile Settings 131,072
+attempts, 90,304 logical call/6,029,312-byte gross certificates and all global
+overflow rules with the full producer. Preserve k206 application admission and
+k208 long metadata; cut mandatory whole-k205 review before k7.

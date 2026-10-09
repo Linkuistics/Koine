@@ -61,3 +61,12 @@ after complete native-discovery-k205 and its mandatory review/earned integration
 The population slice's SDL/arithmetic/render/link checks provide no native pass;
 sparse catalogues, owned-limit/deadline failure and unavailable populous subjects
 stay live before baseline. Preserve independent action-only compatibility.
+
+## Settings baseline duty
+
+Actual G4/N4/N5/V12 must qualify cold-before-visit and warm inventories under
+the reviewed complete k205 contract. RUNNING/equal maps never prove lazy health;
+positive observations keep uncertainty and empty anchors remain null. Require
+all exposed pane/anchor and Network/Sound/Appearance/Displays witnesses plus
+independent destination/foreground/dialog/hydration/serviceability controls.
+Missing useful choices or unavailable subjects keep baseline open.

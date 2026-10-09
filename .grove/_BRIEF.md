@@ -292,8 +292,8 @@ viewer hold the concrete handoff; frozen design checks passed without a native p
 
 ## Application population slice from k206
 
-Native-discovery-k205 is now a node with completed population design first,
-then live Settings readiness k207, long metadata k208 and complete reconciliation
+Native-discovery-k205 is now a node with completed population and Settings
+readiness designs, then live long metadata k208 and complete reconciliation
 k209. Consume only after k209 closes k205 and cuts mandatory root review/earned
 integration before k7. Population admission stages all bounded sources, shares
 once-per-ID ordered registration outcomes and fails with null items on global
@@ -301,3 +301,15 @@ owned-limit/deadline exhaustion, never a native-order prefix. Optional native
 presentation facts support client filtering without helper suppression. G10/N5/
 V11 require actual P1024 usefulness and accounting; every native verdict remains
 pending. K209 owns final producer reconciliation and review Creator/cascade.
+
+## Settings readiness slice from k207
+
+Native-discovery-k205 now also defines bounded two-sweep properties/anchor
+comparison without a lazy-health claim. RUNNING is process-only; positive
+choices retain PARTIAL/UNKNOWN coverage, empty panes UNKNOWN/null and empty
+anchors null. All exposed destinations and Network/Sound/Appearance/Displays
+remain required. V12 performs finite independent pre-visit cold and warm
+qualification, including later anchor growth and true foreground witnesses.
+Settings owned-call/copy accounting is explicit; global overflow is no useful
+pass. All native verdicts remain pending. K208/k209 and mandatory whole-producer
+review/earned integration still precede any k7 implementation.

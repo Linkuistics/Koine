@@ -85,7 +85,7 @@ type WorkspaceSettingsPane {
   name: String
   """UNKNOWN when the runtime supplies no explicit hardware/account availability fact."""
   availability: WorkspaceDiscoveryAvailability!
-  """Null when anchor observation was refused/failed/unknown; [] only for a checked empty reply."""
+  """Positive exact keys only; no lazy-completeness promise. Empty/refused/failed/unestablished observations remain null under the current source, never [] from response stability."""
   anchors: [WorkspaceSettingsAnchor!]
   sources: [WorkspaceDiscoverySource!]!
 }
@@ -167,7 +167,7 @@ extend type Query {
   workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
   """Fixed indexed-local app category plus running and per-identifier registration supplements. Complete bounded population staging; shared population count/call/copy/deadline overflow yields FAILED/null items, never a native-order prefix. Clients filter/rank with nullable bundle declarations and observed running policies; no helper/agent suppression. No arbitrary roots/query, raw walk, all-disk completeness, implicit launch/setup or default-handler lookup. Checked same-identity observations merge; equal identifiers never merge copies. All reachable fields require workspace:read."""
   workspaceApplications: WorkspaceApplicationsResult
-  """All runtime-exposed panes/anchors of a validated already-running System Settings target, direct core/getd with exact no-prompt preflight/send. No launch, activation, reveal or setup. Ordinary required areas remain acceptance witnesses. All reachable fields require workspace:read."""
+  """All positive runtime pane/anchor observations of a validated already-running System Settings target: two ID-associated core/getd pALL/anchor sweeps, 100 ms minimum gap within three seconds, exact no-prompt preflight/send. Lazy completeness stays UNKNOWN even for equal maps; positive choices PARTIAL, empty panes UNKNOWN/null, empty anchors null. Global owned-limit/deadline overflow FAILED/null, never a prefix. No launch/loading/activation/reveal/setup. All exposed choices and ordinary witnesses remain native qualification obligations. All reachable fields require workspace:read."""
   workspaceSettings: WorkspaceSettingsResult
 }
 extend type Mutation {

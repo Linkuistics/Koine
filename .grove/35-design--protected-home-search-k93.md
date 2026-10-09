@@ -69,3 +69,11 @@ resolve any ordinary population overflow, shared deadline miss, systematically
 unknown launcher metadata or missing useful non-witness. An honest FAILED/null
 catalogue still leaves usefulness unmet. Do not silently reduce the native category,
 accept a source-order sample, prune unavailable subjects or resume client raw work.
+
+## Settings cold/warm coverage duty
+
+Include V12 alongside V5/V7. Resolve measured missing pre-visit panes/anchors,
+late growth, unusable pALL/ID form, deadline miss or foreground loss once with
+the actual consumer consequence. PARTIAL/UNKNOWN honesty is no permission to
+accept lost useful choices. An unavailable hardware/account/observer stays
+pending; new posture or useful-category loss requires Antony.

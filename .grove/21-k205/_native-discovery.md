@@ -91,3 +91,14 @@ Only the first child executes in the decomposing session. The parent remains liv
 until all children finish; partially repaired artifacts are not implementation
 input. The final child owns review creation and node cascade. All three existing
 G/N/V seams remain agreed, and every native verdict remains pending.
+
+## Settings slice from k207
+
+Two full ID-associated core/getd pALL/anchor sweeps detect changes across a
+100 ms minimum gap inside three seconds. Preparation remains process-only.
+No supported lazy-completeness signal: positive choices PARTIAL/UNKNOWN, empty
+panes UNKNOWN/null and empty anchors null; every exposed destination remains
+required. Settings has its own 131,072-attempt/8 MiB gate with two-map logical
+cost certificates; global overflow withholds items. G4/N4/N5/V12 cold/warm
+qualification remains pending. K208 and k209 remain live; k209 owns complete
+reconciliation and mandatory whole-producer review before k7.

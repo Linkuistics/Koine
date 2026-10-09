@@ -1,24 +1,24 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. The application slice stages complete bounded populations with shared registration work and native presentation facts; whole-producer review, Settings readiness, long metadata and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Application population admission is designed; Settings uses bounded full-map comparison while lazy completeness remains UNKNOWN. Long metadata, whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
-    "title": "Complete application populations without a native-order sample",
-    "status": "Application slice designed; complete producer/review and native qualification pending",
-    "summary": "Stage full bounded sources, share once-per-ID registration and exact-spelling inspections, then freeze choices. Global owned-limit/deadline overflow gives FAILED/null items; helpers remain choices with nullable bundle facts and associated running policies for client filtering. P1024 must actually return every required useful identifier and pass independent controls. Settings readiness and long metadata remain live sibling design work.",
+    "title": "Cold and warm Settings without invented lazy readiness",
+    "status": "Settings slice designed; native qualification and complete producer/review pending",
+    "summary": "RUNNING certifies only the process. Two ID-associated properties/anchor sweeps detect changes, never extension health. Preserve positive choices as PARTIAL with UNKNOWN observations; empty panes UNKNOWN/null and empty anchors null. V12 compares pre-visit cold and warm useful choices with independent inventory and visible destinations. Long metadata remains live sibling work.",
     "diagramIds": [
-      "native-application-population",
-      "native-discovery-sources",
+      "native-settings-readiness",
+      "native-settings-flow",
       "native-discovery-contract",
-      "native-discovery-lifecycle"
+      "native-application-population"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-application-population",
-        "summary": "Added full-population staging, shared registration work and explicit null-item overflow, with populous native acceptance still pending."
+        "id": "native-settings-readiness",
+        "summary": "Added finite two-sweep comparison, honest lazy-readiness outcomes, global overflow and separate cold/warm qualification."
       },
       {
-        "id": "native-discovery-sources",
-        "summary": "Replaced the arbitrary application survivor sample with complete bounded staging and native presentation facts."
+        "id": "native-settings-flow",
+        "summary": "Changed read publication to positive choices with PARTIAL/UNKNOWN lazy completeness; preparation remains process-only."
       }
     ]
   },
@@ -91,7 +91,16 @@
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
-      "caption": "Three explicit public operations and a separate human local-UI consent action, never an automatic pipeline. RUNNING is process readiness only; cold/warm catalogue readiness needs further design. No GraphQL/bearer route initiates consent. The UI explains target-wide OS scope, closed reasons, a separate 30-second wait, retained pending ownership and manual denial guidance. Reveal activation uses fixed-bundle openApplication; exit during submission can relaunch. No read/prepare/reveal requests consent."
+      "caption": "Three explicit public operations and separate human local-UI consent, never an automatic pipeline. RUNNING is process-only. Two full ID-associated properties/anchor sweeps leave lazy completeness UNKNOWN and positive choices PARTIAL; the focused readiness view explains empty/change/overflow outcomes and finite V12 qualification. Local UI-only target-wide consent and true-return ownership remain binding. Reveal uses fixed-bundle openApplication; exit can relaunch. No read/prepare/reveal requests consent."
+    },
+    {
+      "id": "native-settings-readiness",
+      "group": "native-contract",
+      "title": "Separate process readiness, response quiescence and useful cold/warm choices",
+      "renderer": "svg",
+      "source": "native-settings-readiness.d2",
+      "rendered": "native-settings-readiness.svg",
+      "caption": "Activity view of the proposed bounded read. Equality of full maps can detect changes but proves no lazy health. Empty panes are UNKNOWN/null; empty anchors null. Positive keys remain PARTIAL/UNKNOWN. All exposed ordinary/non-witness/nested destinations remain required in independent V12 cold/warm qualification; no hidden loading effect or automatic retry. Source-local native failures keep their existing precedence. Every native verdict remains pending."
     },
     {
       "id": "native-discovery-lifecycle",
@@ -109,7 +118,7 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Applications stage a complete bounded population and preserve helpers for client filtering; global overflow is FAILED/null. The actual populous subject, exact read policy, whole-producer review, Settings readiness and long metadata remain pending. Source declarations prove no native usefulness."
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Applications stage a complete bounded population and preserve helpers for client filtering; global overflow is FAILED/null. The actual populous subject, exact read policy, whole-producer review, cold/warm Settings qualification and long metadata remain pending. Source declarations prove no native usefulness."
     },
     {
       "id": "native-application-population",
@@ -118,7 +127,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. No native enumeration, timing, UI fact, memory peak or P1024 pass follows from this design. Settings readiness and long metadata remain unresolved sibling work."
+      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. No native enumeration, timing, UI fact, memory peak or P1024 pass follows from this design. Settings native qualification and long metadata remain pending sibling work."
     },
     {
       "id": "native-settings-decision",

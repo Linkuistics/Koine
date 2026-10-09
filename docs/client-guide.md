@@ -416,6 +416,18 @@ workspace:control and launches the stopped target in the background; a running
 target is left alone. Its RUNNING receipt certifies process readiness only.
 Query the catalogue separately; control does not imply read.
 
+Neither RUNNING nor repeated replies proves that lazy panes/anchors are ready.
+The read makes two bounded, ID-associated pane-properties/anchor sweeps, with a
+100 ms minimum gap inside its three-second budget. It never loads a pane to
+make discovery look complete. Valid positive choices return PARTIAL with
+UNKNOWN observation/category completeness and readiness guidance; no positive
+panes gives UNKNOWN/null. Empty/unestablished anchors are null, never proof of
+no nested destinations. Changed anchors are detected even if pane IDs stayed
+equal. Global count/call/copy/deadline overflow returns FAILED/null, not a partial
+prefix. Clients can present positive choices and their uncertainty; an explicit
+later read is a fresh observation, not automatic polling or a guaranteed remedy.
+Required cold/warm useful choices still need [independent qualification](verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification).
+
 Exact-event refusal directs the user to Koine's local explaining UI. Only an
 explicit human action there may request Automation consent, if useful events
 need the qualified host's conditional setup. No GraphQL operation or bearer

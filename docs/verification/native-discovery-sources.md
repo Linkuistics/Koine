@@ -264,6 +264,74 @@ An explicit consent operation and any explicit launch/reveal must receive
 their complete effect authority; a read must never launch or activate the app,
 reveal a pane, automatically request consent or replay after denial.
 
+### Settings event forms and association
+
+The additional read-only subjects for this slice are SDK 27
+`NSObjectScripting.h`, `NSScriptKeyValueCoding.h`, `AEObjects.h`,
+`AERegistry.h`, `AEDataModel.h` and `AEPackObject.h`, plus the included shipped
+`CocoaStandard.sdef`. The Settings dictionary declares pane/anchor inheritance
+from item, pane ID/name properties and anchors as an element collection. SDK
+NSObjectScripting defines scriptingProperties over declared properties/contents;
+it does not include to-many elements. Apple's [scriptingProperties documentation](https://developer.apple.com/documentation/objectivec/nsobject-swift.class/scriptingproperties?language=objc)
+agrees. Consequently, pane properties can associate ID and name within one
+record, but are not an anchor snapshot or a catalogue-ready flag. This is an
+inference from those declarations, not a measured Settings reply shape.
+
+[TN2106's standard object/property conventions](https://developer.apple.com/library/archive/technotes/tn2002/tn2106.html)
+and the SDK object-specifier constants provide the descriptor construction.
+Each direct core/getd parameter is a typeObjectSpecifier record with want/from/
+form/seld. Application containment uses typeNull; all panes use want=xppb,
+form=indx, seld=typeAbsoluteOrdinal/all. A property specifier uses want=prop,
+form=prop, seld=typeType/pALL for properties (or 'ID  '/pnam for those scalars).
+An ID-selected pane uses want=xppb, form='ID  ', seld=validated text ID.
+All its anchors use want=xppa, form=indx, seld=all, with that pane as container;
+their pnam property uses the same property form. SDK AEObjects pins want/from/
+form/seld and indx/prop/'ID  '/all; AEDataModel pins list/record ownership.
+Exact text encodings/coercions and actual reply types still require N4; no
+dictionary code is executable qualification.
+
+| Exact core/getd form | Events for two sweeps, N panes | Association and cost | Readiness/qualification limit |
+| --- | --- | --- | --- |
+| Existing all IDs, ID-selected name and ID-selected all anchor names, repeated full sweep | 4N+2 (1,026 at 256) | ID-scoped scalar/anchor ownership; bounded small replies; twice the per-pane event work of the chosen form. The old 2N+2 recipe checked IDs twice but anchors only once. | Supported declared scalar properties, but no lazy-load signal; stable IDs alone miss anchor changes. |
+| All IDs then ID-selected pALL and all anchor names | 4N+2 | The record checks the selected ID/name together; anchors remain separately contained. Does not reduce event count relative to scalar names. | Per-pane properties can be independently qualified; not an automatic fallback. |
+| pALL of all panes, then ID-selected all anchor names; repeat | 2N+2 (514 at 256) | Each returned record carries its ID/name; each anchor event has a single known pane container. One larger opaque pane reply per sweep; no positional zip. Selected design. | Cocoa property support motivates this candidate, not a Settings runtime pass. N4 must verify list-of-records and exact codes; V12 must qualify cold/warm usefulness and latency. |
+| Separate all-pane ID/name arrays; flattened names of anchors of all panes, or a list of property specifiers | No admitted reduced count | Independent arrays/flattening lose reliable per-pane association. A list may return specifiers/nesting rather than evaluated paired values; no documented Settings keyed batch contract was established. | Not selected. Do not invent nested-record semantics, zip reply positions, or compile a script to recover association. |
+
+The selected decoder checks each pane record's exact unique ID, optional bounded
+text name and class when supplied (xppb), at most sixteen direct record entries,
+bounded scalar types and no unexpected nested object graph. Extra property keys
+are inspected for bounded shape and discarded, never interpreted as anchors,
+availability or readiness. Duplicate IDs/keys, malformed descriptors, oversized
+values and changed container associations produce honest diagnostics. The job
+owns and disposes outgoing events, reply descriptors and temporary scalar copies;
+the target owns extension initialization and its opaque allocations. A bulk
+reply can allocate before Koine inspects it: count/copy gates bound owned work,
+not Apple's reply peak, extension work or guaranteed native call duration.
+
+### Settings lazy readiness evidence
+
+In the complete inspected System Settings dictionary, the application extension
+declares panes, current pane, settings window and deprecated show all; pane
+declares id/name/anchors; anchor declares name. There is no readiness/quiescence
+property among those declarations. The included Cocoa Standard window/document
+properties are not Settings extension-ready signals. Both authorize and timedLoad
+are declared deprecated no-ops. NSObjectScripting's property accessor and
+NSScriptKeyValueCoding's name/ID access describe resolution, not asynchronous
+extension-load completion. This bounded source fact says nothing about private
+implementation flags or whether this OS actually populates anchors lazily.
+
+The [cold/warm contract](../specs/workspace-search.md#cold-and-warm-readiness)
+therefore distinguishes process RUNNING, successful response decoding and
+observed two-sweep quiescence from lazy-object completeness. It selects two
+full ID-keyed maps with a 100 ms minimum gap inside three seconds; this detects
+some changes without claiming initialization health. Empty panes remain UNKNOWN,
+empty anchors null, and stable positive choices PARTIAL with UNKNOWN observations.
+No reads perform extension-loading effects. Independent [finite qualification](native-discovery-acceptance.md#settings-cold-and-warm-qualification)
+must demonstrate every exposed useful choice before visits, for cold and warm
+subjects, and detect later lazy additions. It cannot certify every future process
+state. A failed/unconstructible subject stays pending or unmet; it does not permit
+a narrower inventory, new posture or alternate private source silently.
+
 ### OS-shipped sidebar metadata
 
 The inspected `Sidebar.plist` contains grouped `content` entries and a
@@ -353,8 +421,10 @@ aliases, bounded ownership, true native-return retirement and binary guards.
 No runtime API/consent/foreground/source qualification has been performed here.
 The inspected SDK 27/OS 26.6.2 subjects remain distinct from supported VM captures.
 
-Settings source events are direct core/getd object reads (xppb pane IDs/names,
-xppa anchors) and misc/mvis selected reveal, to a validated running OS target.
+Settings source events are two bounded direct core/getd sweeps (all xppb pALL
+ID/name records, ID-contained xppa names) and misc/mvis selected reveal, to a
+validated running OS target. Lazy completeness remains UNKNOWN even after equal
+full maps; finite cold/warm native usefulness is independently qualified.
 No-prompt preflight/send and target revalidation are exact qualification subjects.
 Prepare launches a stopped target with activates=false; it publishes no catalogue
 values and needs workspace:control. Setup is an explicit human action only in

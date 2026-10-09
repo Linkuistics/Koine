@@ -25,7 +25,12 @@ The [shipped dictionary and SDK analysis](../verification/native-discovery-sourc
 provides named objects rather than guessed extension IDs/deep links. This
 accepts runtime-source/target and conditional consent costs, without claiming
 that any event needs consent or exposes all ordinary areas correctly. Missing
-required areas remain unmet work. Private sidebar parsing has unsupported format
+required areas remain unmet work. Two full ID-associated properties/anchor sweeps detect
+observed changes without certifying lazy completeness; positive choices remain
+PARTIAL/UNKNOWN and empty anchors null. Cold preparation is process-only.
+Independent finite cold/warm qualification must preserve all exposed choices;
+missing anchors cannot be excused by stable IDs or hidden extension-loading reads.
+Private sidebar parsing has unsupported format
 and conditional-visibility costs; two documented URLs alone would reduce the
 agreed useful category. Reopen that choice only if actual exact-event qualification
 cannot deliver useful prompt-free reads or a required destination, with a concrete

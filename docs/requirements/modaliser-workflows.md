@@ -89,7 +89,12 @@ Clients must be able to explicitly prepare the settings catalogue by launching
 System Settings in the background when stopped, preserving the foreground
 application. Preparation requests no activation or reveal and does not
 reactivate an already-running target. It requires complete effect authority
-defined by returned design. Ordinary reads remain separate: they never launch,
+defined by returned design. Its RUNNING receipt establishes only the process;
+cold and warm reads must independently qualify every runtime-exposed pane/anchor.
+Repeated replies certify no lazy-object health. Unestablished empties remain
+unknown, positive choices stay usable with uncertainty, and missing useful
+destinations remain unmet work. No hidden pane-loading effect follows.
+Ordinary reads remain separate: they never launch,
 activate, reveal, request consent or change settings. A stopped or refused
 target has an honest unavailable/blocked read outcome; a read-only caller
 cannot acquire preparation or setup authority. Existing launch/open/reveal

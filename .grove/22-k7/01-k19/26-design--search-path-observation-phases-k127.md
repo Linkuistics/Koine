@@ -82,3 +82,15 @@ owned record/container/scratch/copy charges term by term against N5 certificates
 reserve cleanup before acquisition and retire each opaque batch before the next.
 Preserve complete-population FAILED/null overflow, independent core response limits
 and G10/N5/V11 controls. Arithmetic is no three-second/opaque-peak/native pass.
+
+## Settings two-sweep owner/accounting duty
+
+Consume reviewed complete k205. Construct exact pALL record and ID-contained
+anchor descriptors, two full sweeps maximum with a 100 ms minimum gap inside
+three seconds, one outstanding call and post-gap admission revalidation. Charge
+all explicit extraction/disposal work against the Settings 131,072-attempt
+gate and 8 MiB gross-copy gate; validate the 90,304-attempt/6,029,312-byte logical
+certificate against actual calls/copies, not native peaks or duration. Freeze
+on global exhaustion with null items; retain capacity through true return.
+G4/N4/N5/V12 must reject anchor-only growth, positional reassociation, lazy empty
+health upgrades, third sweeps, early retirement and stale cold/warm substitutions.

@@ -22,6 +22,8 @@ query NativeApplications {
     resultsTruncated
   }
 }
+# Positive Settings choices may be PARTIAL with lazy completeness UNKNOWN.
+# Inspect source diagnostics; null anchors are not a known empty destination set.
 query NativeSettings {
   settings: workspaceSettings {
     status

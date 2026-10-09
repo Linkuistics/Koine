@@ -1844,8 +1844,13 @@ Application population overflow yields FAILED/null items; it does not publish an
 arbitrary source-order sample. G10/N5/V11 accept the real populous catalogue and
 call/copy/response accounting. The owned-copy and core response caps remain 8 MiB;
 multiple aliases still charge core materialization separately. This application
-slice awaits complete-producer review alongside unresolved Settings readiness
-and long metadata. No current native conformance pass follows.
+slice awaits complete-producer review alongside long metadata. Settings now
+uses two ID-associated pALL/anchor sweeps with a minimum 100 ms gap within three
+seconds. RUNNING is process-only; stable positive choices remain PARTIAL with
+UNKNOWN lazy completeness, empty panes UNKNOWN/null and empty anchors null.
+G4/N4/N5/V12 qualify exact event construction, cost and independent cold/warm
+usefulness; all exposed choices remain required. No current native conformance
+pass follows, and the incomplete producer is not implementation input.
 
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,

@@ -8,10 +8,12 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-[Application population → Stage every bounded application choice before publication](index.html#diagram-native-application-population)
-is the current construction question. It shows shared registration/inspection work
-and global FAILED/null overflow. P1024 native usefulness is pending; Settings
-readiness and long metadata remain live design slices before whole-producer review.
+[System Settings → Separate process readiness, response quiescence and useful cold/warm choices](index.html#diagram-native-settings-readiness)
+is the current construction question. Two full ID-associated properties/anchor
+sweeps detect observed changes without claiming lazy completeness. Positive
+choices remain PARTIAL/UNKNOWN, empty panes UNKNOWN/null and empty anchors null.
+V12 native usefulness is pending. Application population admission remains
+designed with P1024 pending; long metadata and whole-producer review remain live.
 
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
 shows source/snapshot/image responsibility and the preserved action boundary.
@@ -27,10 +29,10 @@ review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [Application population → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Added full-population staging, shared registration work and explicit null-item overflow.
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Replaced arbitrary survivor admission with complete bounded application staging and native presentation facts.
-- [Application population admission](../../specs/workspace-search.md#application-population-admission) — Derived coherent source/identifier/choice limits and all-or-failure publication on global exhaustion.
-- [Application population subjects](../../verification/native-discovery-acceptance.md#application-population-subjects) — Added P1024 and explicit call/copy/wire certificates; every native verdict remains pending.
+- [System Settings → Separate process readiness, response quiescence and useful cold/warm choices](index.html#diagram-native-settings-readiness) — Added two-sweep comparison, explicit empty/positive/change/global-limit outcomes and finite V12 qualification.
+- [System Settings → Choose read, prepare or reveal; consent stays in Koine’s UI](index.html#diagram-native-settings-flow) — Changed read publication to PARTIAL/UNKNOWN positive choices; preparation remains process-only.
+- [Cold and warm readiness](../../specs/workspace-search.md#cold-and-warm-readiness) — Defined association, uncertainty and a finite comparison interval without claiming lazy health.
+- [Settings cold and warm qualification](../../verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification) — Added pre-visit cold queries, independent post-visit inventory and bounded warm comparisons; every native verdict remains pending.
 
 The [agreed settings source](index.html#diagram-native-settings-decision) is
 unchanged requirements context. The other eight search views and
@@ -51,7 +53,7 @@ no native verdict.
 ## Sources and exports
 
 D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
-source/contract/lifecycle views with Dagre and the settings flow with ELK;
+source/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -59,6 +61,8 @@ design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used
 Run design:search-compose before freezing inputs, then design:search-check for
 native SDL/examples/complete profiles, population certificates and deliberately
 broken budget/filtering controls, and retained action examples. check:docs
-validates relative links/anchors. These are design checks, not native acceptance.
+validates relative links/anchors. design:settings-check verifies the logical
+two-sweep certificates and rejects broken declaration controls; it tests no
+native readiness implementation. These are design checks, not native acceptance.
 Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.

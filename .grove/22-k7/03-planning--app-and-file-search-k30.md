@@ -74,3 +74,13 @@ populous source subject with independently frozen useful-choice/baseline manifes
 helper pressure and serviceability/dialog/hydration observers. New SDL/profile
 metadata fields are additive; prior action-only captures remain independently
 retained. A deadline/overflow/missing useful app does not close acceptance.
+
+## Settings cold/warm acceptance duty
+
+After complete k205 and all required reviews, plan G4/N4/N5/V12 as concrete
+working read/preparation/acceptance slices. V12 needs three immediate pre-visit
+cold queries with independent post-visit scalar inventories and warm comparisons,
+all exposed pane/anchor visible-destination witnesses, bounded growth/visit
+passes and foreground/dialog/hydration/serviceability controls. Preserve unknown
+lazy completeness in served results; unsupported forms/accounts/hardware remain
+pending. No native pass follows from equal maps or this root design.
