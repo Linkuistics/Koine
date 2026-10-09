@@ -337,6 +337,7 @@ tasks:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-sources.d2 docs/design/architecture/native-discovery-sources.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-application-population.d2 docs/design/architecture/native-application-population.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-long-applications.d2 docs/design/architecture/native-long-applications.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-localized-decision.d2 docs/design/architecture/native-localized-decision.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-settings-decision.d2 docs/design/architecture/native-settings-decision.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-contract.d2 docs/design/architecture/native-discovery-contract.svg
       - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/native-settings-flow.d2 docs/design/architecture/native-settings-flow.svg
@@ -382,7 +383,17 @@ tasks:
           }
           if (l.identifierGroups < l.distinctSpellings + 2 || l.retainedChoices < l.distinctSpellings ||
             l.indexedTypeValues !== 8 * l.rawURLObservations || r.attemptsPerURLObservation !== 16 ||
-            r.metadataAttemptsPerSpelling !== 10 || s.indexedFactRecordBytes !== 64 || s.ownedIndexedPayloadCopies !== 2 ||
+            r.fixedAttempts !== 40 || r.attemptsPerRunningObject !== 5 || r.attemptsPerIdentifier !== 12 ||
+            r.attemptsPerWalkVisit !== 6 || r.fixedAttemptsPerWalk !== 4 ||
+            l.nativeAttempts !== 4194304 || r.metadataAttemptsPerSpelling !== 32 || r.attemptsPerMetadataPlanEntry !== 8 ||
+            r.attemptsPerMetadataFileProbe !== 48 || r.metadataFileProbesPerSpelling !== 4 ||
+            r.metadataFileProbesPerSelectedLocalization !== 2 || r.foreignBundleLookup !== false ||
+            r.recursiveResourceTraversal !== false || l.metadataPlanEntries !== 65536 ||
+            l.metadataFileBytes !== 65536 || l.metadataDictionaryKeys !== 4096 ||
+            s.localizationRecordBytes !== 64 || s.ownedLocalizationComponentCopies !== 2 ||
+            s.metadataPlanEntries !== 65536 || s.localizationRecords !== 4096 ||
+            s.localizationComponentBytes !== 32 || s.metadataInputBytes !== 1000000 ||
+            s.preferenceRecords !== 32 || s.preferencePayloadBytes !== 4096 || s.indexedFactRecordBytes !== 64 || s.ownedIndexedPayloadCopies !== 2 ||
             r.walksPerSpelling !== 2 || r.recursiveIdentifierExpansion !== false ||
             r.providerFiltersAgentsOrHelpers !== false || r.overflowPublication !== 'FAILED_NULL_ITEMS') {
             throw new Error('Population admission, identifier coverage or shared-work contract changed');
@@ -393,16 +404,21 @@ tasks:
             l.diagnostics !== 64 || s.coverageSummaryBytes !== 128) {
             throw new Error('Diagnostic saturation must preserve independently classified population outcomes');
           }
+          const fileProbes = r.metadataFileProbesPerSpelling * l.distinctSpellings +
+            r.metadataFileProbesPerSelectedLocalization * s.localizationRecords;
           const calls = r.fixedAttempts + r.attemptsPerURLObservation * l.rawURLObservations +
             r.attemptsPerRunningObject * l.runningObjects + r.attemptsPerIdentifier * l.identifierGroups +
-            r.metadataAttemptsPerSpelling * l.distinctSpellings + r.walksPerSpelling * l.distinctSpellings *
+            r.metadataAttemptsPerSpelling * l.distinctSpellings +
+            r.attemptsPerMetadataPlanEntry * s.metadataPlanEntries + r.attemptsPerMetadataFileProbe * fileProbes + r.walksPerSpelling * l.distinctSpellings *
             (r.attemptsPerWalkVisit * s.componentVisitsPerWalk + r.fixedAttemptsPerWalk);
           const copies = (s.spellingRecordBytes + s.choiceRecordBytes + s.indexedFactRecordBytes) * l.distinctSpellings +
             s.observationRecordBytes * l.rawURLObservations + s.identifierRecordBytes * l.identifierGroups +
             s.runningRecordBytes * l.runningObjects + s.ownedPathCopies * l.distinctSpellings * s.pathBytes +
             s.ownedNameIdentifierCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
             s.ownedIndexedPayloadCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
-            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.coverageSummaryBytes + s.walkScratchBytes;
+            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.coverageSummaryBytes + s.walkScratchBytes +
+            s.metadataInputBytes + s.localizationRecords * (s.localizationRecordBytes +
+            s.ownedLocalizationComponentCopies * s.localizationComponentBytes);
           const wire = l.retainedChoices * (s.wireEscapingMultiplier *
             (s.pathBytes + s.nameBytes + s.identifierBytes) + s.wireChoiceFixedBytes) +
             l.diagnostics * s.wireDiagnosticBytes + s.wireRootAndCoverageBytes;
@@ -414,10 +430,11 @@ tasks:
             p.configuredAndSystemWitnessesIncluded !== p.usefulDistinctIdentifiers ||
             p.usefulDistinctIdentifiers + p.controlledAgentBackgroundHelperCopies + p.controlledAliasSpellings +
             p.baselineDistinctSpellingAllowance > l.distinctSpellings ||
-            !p.requireActualAllUsefulChoices || !p.requireIndependentManifestAndObservers || p.nativeVerdict !== 'PENDING') {
+            !p.requireActualAllUsefulChoices || !p.requireIndependentManifestAndObservers ||
+            !p.requireMeasuredMetadataInputAndLocalizationDimensions || p.nativeVerdict !== 'PENDING') {
             throw new Error('Populous subject lost its useful/baseline/independent pending obligation');
           }
-          return { calls, copies, wire };
+          return { calls, copies, wire, fileProbes };
         };
         const certificate = verifyPopulation(population);
         for (const [label, mutate] of [
@@ -431,6 +448,11 @@ tasks:
           ['omitted fixed coverage summary charge', p => { p.shallowCertificate.coverageSummaryBytes = 0; }],
           ['per-choice registration re-walk', p => { p.recipe.walksPerSpelling = p.limits.retainedChoices; }],
           ['omitted indexed projection calls', p => { p.recipe.attemptsPerURLObservation = 2; }],
+          ['old reader attempt allowance', p => { p.recipe.metadataAttemptsPerSpelling = 10; }],
+          ['opaque Bundle fallback', p => { p.recipe.foreignBundleLookup = true; }],
+          ['omitted metadata input copies', p => { p.shallowCertificate.metadataInputBytes = 0; }],
+          ['omitted localization component copies', p => { p.shallowCertificate.ownedLocalizationComponentCopies = 0; }],
+          ['oversized measured input', p => { p.shallowCertificate.metadataInputBytes = p.limits.ownedCopyBytes; }],
           ['omitted indexed payload charges', p => { p.shallowCertificate.ownedIndexedPayloadCopies = 0; }],
           ['broken owned-copy certificate', p => { p.shallowCertificate.walkScratchBytes = p.limits.ownedCopyBytes; }],
           ['broken response certificate', p => { p.shallowCertificate.pathBytes = 8192; }],
@@ -578,6 +600,105 @@ tasks:
         console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
         JS
 
+  design:localized-boundary-check:
+    desc: Check the closed explicit reader manifest and exact historical suffix controls; no native pass
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { strict as assert } from 'node:assert';
+        import { readFileSync } from 'node:fs';
+        const subject = JSON.parse(readFileSync('docs/design/application-localized-admission.json', 'utf8'));
+        const longSubject = JSON.parse(readFileSync('docs/design/long-application-metadata.json', 'utf8'));
+        const population = JSON.parse(readFileSync('docs/design/application-population.json', 'utf8'));
+        const byteLength = value => Buffer.byteLength(value, 'utf8');
+        const verify = value => {
+          const r = value.reader, q = value.qualification;
+          assert.equal(value.wholePathBytesIncludingNul, 1024);
+          assert.equal(value.completeReaderPathSetEstablished, true);
+          assert.equal(value.ordinaryLocalizedControlEstablished, true);
+          assert.equal(value.historicalBundleClosureEstablished, false);
+          assert.equal(value.nativeVerdict, 'PENDING');
+          assert.deepEqual(r.wholePathCalls, ['URL.resourceValues(isApplicationKey)']);
+          assert.equal(r.wholePathTarget, 'RESOLVED_BUNDLE_ROOT_ONLY');
+          assert.equal(r.lastOrdinaryRootBytes + 1, value.wholePathBytesIncludingNul);
+          assert.equal(r.firstIndexedRootBytes, value.wholePathBytesIncludingNul);
+          assert.equal(r.descendantAddressing, 'HELD_DIRECTORY_LITERAL_COMPONENT');
+          assert.equal(r.foreignBundleLookup, false);
+          assert.deepEqual(r.layoutPriority, ['Contents', 'Support Files', 'Resources', '.']);
+          assert.deepEqual(r.resourceBases, ['Contents/Resources', 'Support Files/Resources', 'Resources', '.']);
+          assert.deepEqual(r.informationFiles, ['Info-macos.plist', 'Info.plist']);
+          assert.deepEqual(r.nameFiles, ['InfoPlist-macos.strings', 'InfoPlist.strings']);
+          assert.equal(r.directoryListing, 'ONE_SELECTED_RESOURCE_DIRECTORY_DIRECT_ENTRIES_ONLY');
+          assert.equal(r.localizationSelection, 'EXPLICIT_PREFERENCES_CF_FUNCTION_THEN_BASE_THEN_DEVELOPMENT');
+          assert.equal(r.variableComponents, 'ACTUAL_PARENT_FPATHCONF_NAME_MAX_AND_LOSSLESS_UTF8');
+          assert.equal(r.descendantSymlinks, 'REFUSE_NOFOLLOW');
+          assert(!r.crossCopyMetadata && !r.recursiveResourceTraversal);
+          assert.equal(r.missingTupleOutcome, 'UNMET_NATIVE_SUPPORT');
+          assert.deepEqual(value.examples.map(example => example.suffix), [
+            '/Contents/Info.plist', '/Contents/Info-macos.plist',
+            '/Contents/Resources/en.lproj/InfoPlist.strings',
+            '/Contents/Resources/Base.lproj/InfoPlist.strings',
+            '/Contents/Resources/English.lproj/InfoPlist.strings',
+          ]);
+          assert.equal(value.examples[1].evidence, 'HISTORICAL_APPLE_SOURCE_ONLY');
+          const fits = (bundleBytes, suffix) => bundleBytes + byteLength(suffix) + 1 <= value.wholePathBytesIncludingNul;
+          for (const example of [...value.examples, value.variableComponentExample]) {
+            assert.equal(example.bytes, byteLength(example.suffix));
+            assert.equal(example.lastFittingBundleBytes, value.wholePathBytesIncludingNul - 1 - example.bytes);
+            assert(fits(example.lastFittingBundleBytes, example.suffix));
+            assert(!fits(example.lastFittingBundleBytes + 1, example.suffix));
+          }
+          assert.equal(value.variableComponentExample.suffix, `/Contents/Resources/${value.variableComponentExample.component}/InfoPlist.strings`);
+          assert.notEqual(value.variableComponentExample.component.length, byteLength(value.variableComponentExample.component));
+          const counterexample = value.knownPlistGuardCounterexample;
+          assert.equal(counterexample.bundleBytes, 1003);
+          assert.equal(counterexample.localizedSuffix, value.examples[2].suffix);
+          assert.equal(counterexample.addressedBytesExcludingNul, 1049);
+          assert(fits(counterexample.bundleBytes, value.examples[0].suffix));
+          assert(!fits(counterexample.bundleBytes, counterexample.localizedSuffix));
+          assert.equal(q.ordinaryControlBundleBytes, 977);
+          assert.equal(q.missedBandBundleBytes, 978);
+          assert.equal(q.fixedResourceSuffix, value.examples[2].suffix);
+          assert.equal(q.localizedComponent, 'en.lproj');
+          assert(q.localizedNameDistinctFromPlainInfo && q.metadataFilesDescriptorRelative);
+          assert.deepEqual(q.ordinaryWholeRootCallBytesIncludingNul, [978, 979]);
+          assert(fits(q.ordinaryControlBundleBytes, q.fixedResourceSuffix));
+          assert(!fits(q.missedBandBundleBytes, q.fixedResourceSuffix));
+          assert(q.missedBandBundleBytes + 1 <= value.wholePathBytesIncludingNul);
+          assert.equal(q.nativeVerdict, 'PENDING');
+          assert.equal(longSubject.source.ordinaryReaderBoundary, 'ROOT_RESOURCE_TYPE_1024_DESCRIPTOR_RELATIVE_FIXED_METADATA');
+          assert.equal(longSubject.qualification.ordinaryReaderControlEstablished, true);
+          assert.equal(population.recipe.foreignBundleLookup, false);
+          assert.equal(population.recipe.metadataFileProbesPerSpelling, 2 * r.informationFiles.length);
+          assert.equal(population.recipe.metadataFileProbesPerSelectedLocalization, r.nameFiles.length);
+          // Construct every declared relative candidate for explicit finite localization names.
+          const paths = r.resourceBases.flatMap(base => [null, 'en.lproj', 'Base.lproj', 'English.lproj', 'français.lproj']
+            .flatMap(locale => r.nameFiles.map(file => [base, locale, file].filter(part => part && part !== '.').join('/'))));
+          for (const path of paths) assert(path.split('/').every(part => part && !part.includes('\0') && part !== '..'));
+          return { lastOrdinaryRootBytes: r.lastOrdinaryRootBytes, firstIndexedRootBytes: r.firstIndexedRootBytes, relativeCandidates: paths.length };
+        };
+        for (const [label, mutate] of [
+          ['Info.plist-only closure', v => { v.reader.nameFiles = []; }],
+          ['whole descendant call', v => { v.reader.wholePathCalls.push('Bundle.localizedInfoDictionary'); }],
+          ['guessed locale bound', v => { v.reader.variableComponents = 'EN_BASE_ENGLISH_ONLY'; }],
+          ['post-call admission', v => { v.reader.descendantAddressing = 'WHOLE_PATH_THEN_CHECK'; }],
+          ['cross-copy rescue', v => { v.reader.crossCopyMetadata = true; }],
+          ['recursive listing', v => { v.reader.recursiveResourceTraversal = true; }],
+          ['missing band control', v => { v.qualification.missedBandBundleBytes = 1004; }],
+          ['unlocalized substitute', v => { v.qualification.localizedNameDistinctFromPlainInfo = false; }],
+          ['incorrect localized suffix', v => { v.examples[2].bytes = 20; }],
+          ['off-by-one NUL admission', v => { v.examples[2].lastFittingBundleBytes++; }],
+          ['character count for UTF-8', v => { v.variableComponentExample.bytes = v.variableComponentExample.suffix.length; }],
+          ['historical source as current proof', v => { v.historicalBundleClosureEstablished = true; }],
+          ['invented native pass', v => { v.nativeVerdict = 'PASSED'; }],
+        ]) {
+          const broken = structuredClone(subject); mutate(broken);
+          assert.throws(() => verify(broken), `Control accepted ${label}`);
+        }
+        console.log(JSON.stringify(verify(subject)));
+        console.log('Explicit closed reader manifest and historical boundary controls checked; native G11/N8/V13 PENDING.');
+        JS
+
   design:long-applications-check:
     desc: Check long indexed metadata declarations and constructive finite fixture lengths with failing controls; no native source/action pass
     cmds:
@@ -602,12 +723,16 @@ tasks:
           assert(!s.wholePathFallback && !s.crossCopyMetadata && !s.extraAccessOrConsent);
           assert.equal(l.handoffBytesIncludingNul, 1024);
           assert.equal(l.knownPlistSuffixBytes, Buffer.byteLength('/Contents/Info.plist'));
-          assert.equal(s.ordinaryReaderBoundary, 'UNRESOLVED_LOCALIZED_RESOURCE_PATHS');
-          assert.equal(q.ordinaryReaderControlEstablished, false);
+          assert.equal(s.ordinaryReaderBoundary, 'ROOT_RESOURCE_TYPE_1024_DESCRIPTOR_RELATIVE_FIXED_METADATA');
+          assert.equal(q.ordinaryReaderControlEstablished, true);
+          assert.equal(q.ordinaryControlBundleBytes, 977);
+          assert.equal(q.missedBandBundleBytes, 978);
+          assert.equal(q.localizedComponent, 'en.lproj');
+          assert(q.requireLocalizedNameDistinctFromPlainInfo && q.requireActualBoundaryIndexedTuples);
           assert.equal(l.rawIndexedTypeValues, 8 * population.limits.rawURLObservations);
           assert.equal(l.rawIndexedTypeValues, population.limits.indexedTypeValues);
           assert.equal(q.name, 'L1500');
-          assert.deepEqual(q.boundaryBundleBytes, [1003, 1004, 1023, 1024, 1500]);
+          assert.deepEqual(q.boundaryBundleBytes, [977, 978, 1003, 1004, 1023, 1024, 1500]);
           assert.equal(q.shortSameIdentifierCompetitors, 2);
           assert.equal(q.explicitShortParentReindexAttempts, 1);
           assert.deepEqual(q.indexObservationCheckpointsSeconds, [10, 30, 60]);
@@ -631,7 +756,8 @@ tasks:
             assert.equal(Buffer.byteLength(path), bytes);
             const visits = path.split('/').filter(Boolean).length;
             assert(visits <= l.maximumFixtureComponentVisits);
-            return { bytes, visits, knownPlistIndexedRequired: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
+            return { bytes, visits, ordinaryReader: bytes < l.handoffBytesIncludingNul,
+              actionPlistUnsupported: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
               handoffRefused: bytes >= l.handoffBytesIncludingNul };
           });
           return fixtures;
@@ -643,7 +769,10 @@ tasks:
           ['source', 'wholePathFallback', true], ['source', 'crossCopyMetadata', true],
           ['source', 'extraAccessOrConsent', true], ['limits', 'knownPlistSuffixBytes', 0],
           ['source', 'ordinaryReaderBoundary', 'KNOWN_PLIST_IS_SUFFICIENT'],
-          ['qualification', 'ordinaryReaderControlEstablished', true],
+          ['qualification', 'ordinaryReaderControlEstablished', false],
+          ['qualification', 'missedBandBundleBytes', 1004],
+          ['qualification', 'requireLocalizedNameDistinctFromPlainInfo', false],
+          ['qualification', 'requireActualBoundaryIndexedTuples', false],
           ['limits', 'rawIndexedTypeValues', 256], ['qualification', 'registeredLongPrecondition', true],
           ['qualification', 'requireActualLongIndexedTuple', false], ['qualification', 'diskOrClientProvenancePasses', true],
           ['qualification', 'missingTupleOutcome', 'PASS'], ['qualification', 'nativeVerdict', 'PASSED']
@@ -653,7 +782,7 @@ tasks:
           assert.throws(() => verify(changed), `Control accepted ${group}.${field}`);
         }
         console.log(JSON.stringify(verify(subject)));
-        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; localized resource boundary UNRESOLVED, native G11/N8/V13 PENDING.');
+        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; ordinary fixed-file root boundary checked, native G11/N8/V13 PENDING.');
         JS
 
   design:settings-check:

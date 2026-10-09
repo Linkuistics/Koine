@@ -104,11 +104,16 @@ pending. No native pass follows from equal maps or this root design.
 
 K212's localized-resource repair and mandatory review/earned integration precede
 implementation; L1500 needs its safe ordinary and longer-resource-band controls
-as well as the retained known-plist/handoff fixtures and real indexed provenance.
+at 977/978 bytes, plus 1,003/1,004/1,023 ordinary and 1,024/1,500 indexed copies
+and same-ID short competitors. Implement only the reviewed root-type/fixed-file/
+direct-localization recipe, never opaque Bundle or descendant whole-path fallback.
+Actual indexed provenance, localized names and unchanged action limits remain required.
 Plan diagnostic saturation without choice loss or hidden reasons (63 detail
 records plus the reserved canonical summary, independently classified sources).
-Revised gross certificates: applications 6,816,128 bytes, Settings 6,094,976 bytes,
-with unchanged gates. Settings count/call/copy overflow and incomplete-first-map
+Revised gross certificates: applications 8,340,416 bytes, Settings 6,094,976 bytes,
+under unchanged 8 MiB; app attempts 2,345,024 under 4,194,304 and wire 7,929,856.
+Actual E/L/file input/component dimensions include native baseline and may not be
+assumed. No parser peak follows; N5/N8 and independent serviceability are live. Settings count/call/copy overflow and incomplete-first-map
 timeout fail closed; confirmation timeout retains uncontradicted first-map
 positives with TIME_LIMIT/UNKNOWN and ordinary late-return ownership. G4/G8/G10/N5
 must reject contrary outcomes. V12 needs a separate fresh unvisited-incarnation

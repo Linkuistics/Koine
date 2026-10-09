@@ -66,11 +66,11 @@ type WorkspaceApplicationChoice {
   applicationPath: String!
   name: String
   bundleIdentifier: String
-  """Source of checked type and optional name/identifier. INDEXED_ITEM is an actual returned fixed-query tuple, not current plist or index-to-inode proof; its installationState stays UNKNOWN."""
+  """Source of checked type and optional name/identifier. BUNDLE_RESOURCE uses root resource type and the explicit descriptor-relative fixed-file/localization plan; INDEXED_ITEM is an actual returned fixed-query tuple, not current plist or index-to-inode proof; its installationState stays UNKNOWN."""
   metadataSource: WorkspaceApplicationMetadataSource!
   """INSTALLED uses the existing constrained action's ordered registered-list plus preferred-only identity procedure. Negative facts need separate checked evidence; later actions revalidate."""
   installationState: WorkspaceApplicationInstallationState!
-  """Explicit Boolean LSUIElement declaration from admitted Bundle metadata; missing/malformed/unavailable or INDEXED_ITEM stays null, never inferred false."""
+  """Explicit Boolean LSUIElement declaration from the selected fixed information file; missing/malformed/unavailable or INDEXED_ITEM stays null, never inferred false."""
   uiElement: Boolean
   """Explicit Boolean LSBackgroundOnly declaration; no universal user-facing-app classification."""
   backgroundOnly: Boolean
@@ -169,7 +169,7 @@ type WorkspaceSettingsRevealResult {
 extend type Query {
   """Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read."""
   workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
-  """Fixed indexed-local app category plus running and per-identifier registration supplements. Complete bounded staging; count/call/copy/deadline overflow FAILED/null, never a native-order prefix. Diagnostic saturation omits guidance with DIAGNOSTIC_LIMIT, never choices; fixed source summaries preserve outcomes. The full localized-resource reader boundary is unresolved and needs design/review before implementation; known-plist arithmetic is insufficient. Clients filter/rank with nullable bundle declarations and observed running policies; no helper suppression. No arbitrary query/raw walk/all-disk completeness/implicit launch/setup/default-handler lookup. Checked identities merge; equal identifiers never merge copies. All reachable fields require workspace:read."""
+  """Fixed indexed-local app category plus running and per-identifier registration supplements. Complete bounded staging; count/call/copy/deadline overflow FAILED/null, never a native-order prefix. Diagnostic saturation omits guidance with DIAGNOSTIC_LIMIT, never choices; fixed source summaries preserve outcomes. Ordinary roots through 1023 UTF-8 bytes use checked resource type plus descriptor-relative fixed information/name files and bounded direct localization names; longer roots use actual INDEXED_ITEM only. No opaque foreign Bundle fallback. The explicit reader requires review/native qualification; known-plist arithmetic is not its admission. Clients filter/rank with nullable bundle declarations and observed running policies; no helper suppression. No arbitrary query/raw walk/all-disk completeness/implicit launch/setup/default-handler lookup. Checked identities merge; equal identifiers never merge copies. All reachable fields require workspace:read."""
   workspaceApplications: WorkspaceApplicationsResult
   """All positive runtime pane/anchor observations of a validated running target: at most two ID-associated pALL/anchor sweeps, 100 ms minimum gap within three seconds, exact no-prompt events. Lazy completeness UNKNOWN; positives PARTIAL, empty panes UNKNOWN/null, empty anchors null. Count/call/copy overflow and incomplete-first-sweep deadline FAILED/null. Confirmation deadline retains uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN. Diagnostic saturation omits guidance, never choices or reason precedence. No launch/loading/activation/reveal/setup. All exposed choices remain qualification obligations. All reachable fields require workspace:read."""
   workspaceSettings: WorkspaceSettingsResult

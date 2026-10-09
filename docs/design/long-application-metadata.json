@@ -3,7 +3,12 @@
   "source": {
     "queryScope": "NSMetadataQueryIndexedLocalComputerScope",
     "predicate": "kMDItemContentTypeTree = com.apple.application-bundle",
-    "attributes": ["kMDItemPath", "kMDItemContentTypeTree", "kMDItemCFBundleIdentifier", "kMDItemDisplayName"],
+    "attributes": [
+      "kMDItemPath",
+      "kMDItemContentTypeTree",
+      "kMDItemCFBundleIdentifier",
+      "kMDItemDisplayName"
+    ],
     "itemOrigin": "ACTUAL_QUERY_RESULT",
     "typeEvidence": "EXACT_NATIVE_APPLICATION_BUNDLE_TREE_MEMBER",
     "identity": "BEFORE_AFTER_DIRECTORY_DEVICE_INODE",
@@ -14,7 +19,7 @@
     "wholePathFallback": false,
     "crossCopyMetadata": false,
     "extraAccessOrConsent": false,
-    "ordinaryReaderBoundary": "UNRESOLVED_LOCALIZED_RESOURCE_PATHS"
+    "ordinaryReaderBoundary": "ROOT_RESOURCE_TYPE_1024_DESCRIPTOR_RELATIVE_FIXED_METADATA"
   },
   "limits": {
     "handoffBytesIncludingNul": 1024,
@@ -27,11 +32,23 @@
     "name": "L1500",
     "fixtureRoot": "/Applications/KoineLongCatalogueFixtures",
     "leaf": "Fixture.app",
-    "boundaryBundleBytes": [1003, 1004, 1023, 1024, 1500],
-    "ordinaryReaderControlEstablished": false,
+    "boundaryBundleBytes": [
+      977,
+      978,
+      1003,
+      1004,
+      1023,
+      1024,
+      1500
+    ],
+    "ordinaryReaderControlEstablished": true,
     "shortSameIdentifierCompetitors": 2,
     "explicitShortParentReindexAttempts": 1,
-    "indexObservationCheckpointsSeconds": [10, 30, 60],
+    "indexObservationCheckpointsSeconds": [
+      10,
+      30,
+      60
+    ],
     "requireActualLongIndexedTuple": true,
     "requireIndependentManifestAndObservers": true,
     "requireNameAndIdentifierForSubject": true,
@@ -39,6 +56,11 @@
     "registeredLongPrecondition": false,
     "diskOrClientProvenancePasses": false,
     "missingTupleOutcome": "UNMET_NATIVE_SUPPORT",
-    "nativeVerdict": "PENDING"
+    "nativeVerdict": "PENDING",
+    "ordinaryControlBundleBytes": 977,
+    "missedBandBundleBytes": 978,
+    "localizedComponent": "en.lproj",
+    "requireLocalizedNameDistinctFromPlainInfo": true,
+    "requireActualBoundaryIndexedTuples": true
   }
 }

@@ -26,12 +26,26 @@ metadataSource distinguishes that observation; INDEXED_ITEM retains UNKNOWN
 installation state and null unsupported bundle flags. The
 [long source subject](../verification/native-discovery-acceptance.md#long-application-source-subject)
 requires real query tuples and independent fixture facts, with known wrong values
-failing qualification. A descriptor-relative plist reader changes the admitted
-mechanics; suffix/client-path substitution supplies no native evidence. Actual
-missing long tuples remain an unmet useful obligation, not an accepted reduction.
-The localized Bundle reader's full pathname boundary remains unresolved after
-k210/R2 and requires a reviewed design repair before implementation; the
-known-plist suffix alone cannot establish its safe ordinary-reader control.
+failing qualification. Actual missing long tuples remain an unmet useful
+obligation, not an accepted reduction. For ordinary roots, the
+[explicit reader](../specs/workspace-search.md#localized-reader-decision) obtains
+native root type, fixed information/name files and a direct .lproj inventory
+through held directories. BUNDLE_RESOURCE denotes that episode; flags are typed
+information-file facts. Only the root type call uses a whole target pathname,
+admitted through 1,023 bytes; larger roots retain INDEXED_ITEM. Ordinary metadata
+at 1,004…1,023 does not qualify unchanged action Bundle support.
+
+This target-local contents/listing exception makes pathname admission and costs
+visible while preserving non-indexed running/registered copy usefulness. Opaque
+Bundle lookup was rejected because public APIs expose no exhaustive pre-call
+resource plan; a guessed longer suffix cannot admit discovery already performed.
+Indexed-only metadata has no established useful-name/flag replacement for those
+non-indexed copies. The fixed layout/file and explicit-preference selection policy
+is deliberately observable rather than a claim of private Bundle equivalence.
+Reopen it if actual localization, file-format, safety or useful-baseline qualification
+fails. No hidden traversal, alternate copy or permission/posture change can rescue
+that failure. The selected reader and revised certificates require mandatory
+review and actual native qualification before baseline.
 
 An undetected failure or stale native state can make a fact incorrect or omit a
 choice. Known incorrect witnesses and systematically unknown metadata for the

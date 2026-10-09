@@ -8,8 +8,14 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The complete native discovery design is ready for mandatory whole-producer review
-before downstream consumption. Start with
+The approved explicit application reader has a closed caller-visible file/call
+manifest. Start with
+[Application metadata → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision).
+Only root type uses a whole path; held-directory fixed files and direct locale
+inventory replace opaque Bundle lookup. 977/978 localized controls and actual
+long indexed tuples still need native qualification; mandatory review precedes k7.
+
+The complete native contract remains relevant context. Continue with
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract):
 application staging, Settings lazy uncertainty and indexed provenance share static
 authority, frozen publication and true-retirement ownership. The review must
@@ -17,8 +23,8 @@ challenge the complete design; actual G/N/V qualification remains pending.
 
 [Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
 connects the three constructions and their finite P1024, V12 and L1500 useful-choice
-obligations. The focused population, Settings-readiness and long-application views
-remain relevant unchanged context. Design consistency is no native source, timing,
+obligations. The population and long-application views now carry the explicit recipe and
+revised admission/costs. Settings-readiness remains unchanged context. Design consistency is no native source, timing,
 resource-peak or binary acceptance.
 
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
@@ -35,15 +41,12 @@ review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Connected the combined uncertainty contract to independent P1024, V12 and L1500 usefulness witnesses.
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Added indexed L1500 and process-only preparation/two-sweep Settings uncertainty to the source overview.
-- [Native discovery and client-owned search](../../specs/workspace-search.md#native-discovery-and-client-owned-search) — Reconciled the complete design handoff while retaining mandatory review and native qualification.
-- [Operation-to-capability trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Added the selected application's named-open route alongside constrained launch and Finder reveal.
-
-The [agreed settings source](index.html#diagram-native-settings-decision) is
-unchanged requirements context. The other eight search views and
-[archived raw proposal](../../verification/raw-workspace-search-comparison.md)
-remain labelled comparison; no current native backend/account is selected by them.
+- [Application metadata → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision) — Replaced the scope proposal with selected admission, fixed-file/localization ownership and 977/978 controls.
+- [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications) — Changed discovery cutover to the 1,024-byte root boundary and explicit ordinary reader.
+- [Application population → Finish bounded staging](index.html#diagram-native-application-population) — Added metadata-plan work and revised finite attempt/gross costs.
+- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Located the private metadata reader inside discovery.
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Updated the caption to the approved reader; graph unchanged.
+- [Localized reader decision](../../specs/workspace-search.md#localized-reader-decision) — Defined fixed files/layouts, localization order, admission, facts, parser/ownership bounds and native qualification.
 
 ## Other architecture topics
 
@@ -59,7 +62,7 @@ no native verdict.
 ## Sources and exports
 
 D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
-source/population/long/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
+source/population/long/localized-decision/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -73,5 +76,9 @@ native readiness implementation. These are design checks, not native acceptance.
 design:long-applications-check verifies the constructive fixture lengths and
 projection/identity/provenance/refusal declarations with broken controls; it runs
 no native query or action.
+design:localized-boundary-check verifies the closed explicit reader call/file
+manifest, exact historical pathname counterexamples and 977/978 controls; it
+rejects whole-path/opaque fallback, guessed locale limits, NUL/multibyte errors
+and invented native passes. It implements no reader and supplies no native pass.
 Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.

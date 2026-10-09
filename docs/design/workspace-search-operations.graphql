@@ -79,7 +79,9 @@ mutation RevealChosenSetting($selection: WorkspaceSettingSelection!) {
 # feed the existing workspaceLaunchApplication, under both controls. UNKNOWN/
 # UNREGISTERED identified apps stay reveal/copy choices. Reads never register apps.
 # Keep locations lossless: the existing 1024-byte handoff refusal still applies.
-# INDEXED_ITEM reports source metadata, not current plist/launch eligibility.
+# BUNDLE_RESOURCE is root type + explicit fixed-file/localization metadata through
+# 1023-byte roots; 1004..1023 installation state stays UNKNOWN under action rules.
+# INDEXED_ITEM at >=1024 reports source metadata, not current plist/launch eligibility.
 # Its state stays UNKNOWN and flags null; keep copy available. Explicit selected
 # actions keep identifier AND path; never retry unconstrained on a long refusal.
 # Settings keys are opaque exact selectors, never custom URLs or script text.

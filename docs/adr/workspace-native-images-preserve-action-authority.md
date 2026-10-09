@@ -10,7 +10,11 @@ GraphQL route can do so. The
 [native contract](../specs/workspace-search.md#source-and-binary-authority-boundary)
 and [workflow authority](provider-authority-follows-effects.md) define the
 permitted routes and complete grants; these images remain in one trusted process,
-sharing OS permissions and the failure domain.
+sharing OS permissions and the failure domain. The discovery image alone owns
+the narrowly approved component-relative fixed-file/direct-localization reader;
+action/principal/shared lookup acquire no new contents code. Guards constrain
+fixed paths and reachability as well as imports, so a generic scan using the same
+syscalls is rejected.
 
 Independent packaging, loader verification and guard instruments cost more than
 one permissive image, but preserve the four accepted action paths while allowing

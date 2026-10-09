@@ -6,10 +6,11 @@ bounded Settings full-response comparison with honest lazy-readiness uncertainty
 and indexed long-application metadata with explicit provenance. Mandatory review
 and any earned reconciliation precede implementation. P1024 populous usefulness,
 V12 cold/warm Settings usefulness and L1500 long-source/action qualification remain
-pending, alongside the other finite native subjects. The localized Bundle resource
-pathname boundary remains unresolved after k210/R2; a new design producer and
-mandatory review/earned integration must repair it before k7 implements discovery.
-The known-plist suffix certificate alone cannot admit the localized reader.
+pending, alongside the other finite native subjects. K212 selects the authorized
+explicit application reader: root resource type through 1,023 bytes and held-
+directory fixed files/direct-localization plan; larger roots retain actual indexed
+tuples. Mandatory review/earned integration precedes k7. The known-plist suffix
+cannot admit opaque Bundle localization and no such fallback is selected.
 Design consistency establishes
 no actual source, timing, resource-peak or binary behavior.
 Koine's local explaining UI alone initiates Automation consent. Native provider
@@ -84,7 +85,8 @@ combination that disagrees. The SDL check also rejects a deliberately shared
 preparation/reveal process object.
 
 Workspace grant disclosure must name these additions: read returns Koine-account
-location values and application/settings metadata, not client filesystem access;
+location values and application/settings metadata, including fixed application
+information/name files and direct localization names, without client filesystem access;
 control permits background System Settings preparation without desktop control;
 launch/open/Finder reveal and selected settings reveal also require desktop
 control and may activate. Only Koine's UI requests Automation consent. Preserve
@@ -130,7 +132,8 @@ Native output strings must be lossless UTF-8, no NUL; IDs/anchor keys also satis
 the selection rules. Absolute local paths are at most 8,192 UTF-8 bytes, labels
 1…1,024, identifiers 1…512; native strings outside these bounds are withheld,
 never truncated/repaired into another identity. A missing label may be null with
-an affecting diagnostic. No icon, thumbnail, content, arbitrary plist, alias-file
+an affecting diagnostic. Beyond the fixed application metadata exception below,
+no icon, thumbnail, content, arbitrary plist, alias-file
 resolution or default document handler lookup is part of a read. The host's
 existing value/type/depth checks still reject malformed provider output.
 
@@ -255,37 +258,28 @@ on-demand snapshot contract. Revisit this choice if actual P1024 or an ordinary
 measured population cannot meet the shared deadline/gates; do not quietly narrow
 the population or raise host policy limits.
 
-Every published app needs a checked positive native application-bundle type
-observation and present directory device/inode from permitted bounded individual
-location resolution. The ordinary short-path resource/Bundle episode supplies
-type and optional localized name/identifier (metadataSource BUNDLE_RESOURCE).
-That episode's complete localized-resource pathname boundary is unresolved:
-the known Info.plist guard below is necessary but insufficient. No implementation
-may treat a shorter bundle as a proved localized-reader route until the new design
-producer and its review derive every admitted addressed pathname and reconcile
-the recipe/certificates and L1500 controls. No arbitrary locale bound or silently
-unlocalized name is selected as a repair.
-An admitted indexed episode supplies those facts when the resolved bundle or
-its known Contents/Info.plist spelling cannot be handed to the whole-path reader
-(metadataSource INDEXED_ITEM), as defined below. No filename suffix, query
-predicate match alone, running identifier or client-found path establishes type.
-Refused/unidentified candidates are omitted with diagnostics and partial/unknown
-coverage. Never call pathname APIs past their applicable limits or convert their
-nil/ENOENT/ENAMETOOLONG to absence.
+Every published app needs positive native application-bundle type and a present
+bundle-directory device/inode from bounded individual resolution. At a resolved
+root of at most 1,023 lossless UTF-8 bytes, the resource-type/fixed-file episode
+below supplies type and optional identifier/localized name/flags (BUNDLE_RESOURCE).
+At 1,024 bytes or more, preselect only the associated actual indexed tuple
+(INDEXED_ITEM); never attempt a root resource value or foreign Bundle lookup there.
+The old 20-byte Info.plist suffix is no ordinary-reader admission proof. Metadata
+descendants now use held-directory literal components, including the previously
+missed 978…1,003 en-resource band. No suffix, query predicate, running identifier
+or client-found path proves type. Refused/untyped candidates have diagnostics and
+honest partial/unknown coverage. No unsupported call becomes absence.
 
 ### Long application indexed metadata
 
 The fixed query returns NSMetadataItems, not pathname-based metadata readers.
 With updates disabled, count the complete batch and inspect its actual returned
-objects on the query owner. For an indexed candidate whose resolved bundle path
-is at least 1,024 UTF-8 bytes, or whose bundle path plus the 20-byte
-Contents/Info.plist suffix is at least 1,024 bytes, use only its associated fixed
-indexed tuple. The suffix check starts at a 1,004-byte bundle, independently of
-the later action handoff limit. It establishes the indexed requirement for the
-known plist only, not the converse permission to read localized resources below
-that threshold. Do not construct NSMetadataItem/MDItem from a
-URL, obtain a new URL resource value, initialize Bundle, read a plist, create a
-short alias or ask a different application copy for substitute facts.
+objects on the query owner. For a resolved bundle root at least 1,024 UTF-8 bytes,
+use only its associated fixed indexed tuple. Below that root boundary the selected
+ordinary episode is descriptor-relative; the 1,004-byte known-plist action guard
+no longer selects discovery's indexed route. Do not construct NSMetadataItem/MDItem
+from a URL, obtain a root resource value beyond its limit, initialize a foreign
+Bundle, create a short alias or ask another copy for substitute facts.
 
 Require a native array content-type tree containing an exact native string
 com.apple.application-bundle. A bounded native membership lookup checks that
@@ -326,17 +320,18 @@ unsupported bundle facts. Associated running policies may still be reported by
 checked identity. Keep the first finalized resolved applicationPath and identifier
 unchanged; >=1,024-byte locations remain copyable. If explicitly submitted to
 launch/named-open/reveal, the existing action contract applies and refuses its
-unsupported spelling before requesting an effect. A 1,004…1,023-byte indexed
-choice is not promised launchable merely because its bundle path fits the handoff.
+unsupported spelling before requesting an effect. An ordinary BUNDLE_RESOURCE choice at 1,004…1,023 bytes also retains UNKNOWN
+installation state: its explicit reader does not qualify the action’s longer
+whole-path Info.plist reader. The 1,024-byte action handoff remains independent.
 
 The finite L1500 subject requires **actual** indexed long path/type/identifier/name
 tuples, independent current fixture identities and selected-action refusal. Disk
 construction, controlled tuples and client discoveries cannot pass that source
 precondition. Missing real tuples or wrong values leave an unmet native obligation
 for the finite coverage decision, not accepted loss, recursive probing or a
-replacement catalogue. A descriptor-relative resource/plist reader would change
-the admitted mechanics; an alias trick adds unqualified pathname support; dropping
-long choices would reduce usefulness. Keep this fixed native projection instead,
+replacement catalogue. The ordinary fixed-file reader does not extend the root resource-type call
+beyond its limit; an alias trick adds unqualified support and dropping long choices
+reduces usefulness. Keep this actual indexed projection for long roots,
 revisiting it with Antony if its actual source/access qualification fails.
 
 Merge direct/linked/indexed/running/registered observations only on established
@@ -374,11 +369,12 @@ must preserve both fields, never silently remove a constraint or pick another co
 ### Native facts for client filtering
 
 Choices also expose nullable uiElement and backgroundOnly declarations, from
-LSUIElement and LSBackgroundOnly in the same permitted individual Bundle metadata
+LSUIElement and LSBackgroundOnly in the same selected fixed information file
 inspection. A missing key, malformed non-Boolean value, unavailable dictionary or
 unsupported metadata yields null, never an inferred false. Retain useful name and
 identity even if these optional facts are unknown; diagnose malformed/refused
-metadata. No extra plist reader, ancestor inspection or contents listing is added.
+metadata. Only the explicit fixed-file/direct-localization exception below is admitted;
+there is no ancestor inspection or unrelated contents search.
 
 runningActivationPolicies is the unique bounded set of REGULAR, ACCESSORY,
 PROHIBITED or UNKNOWN observations from running objects whose bundle URL was
@@ -391,6 +387,160 @@ Koine discards no app because it is an agent, background-only, accessory, nested
 helper or unknown. Neither policy nor absent flags defines a universal
 user-facing-app predicate. Filtering/ranking remains client-owned, and helpers
 consume the declared population just like other source candidates.
+
+### Localized reader decision
+
+The selected reader uses one observed application copy's root resource type and
+explicit fixed metadata files. Antony authorized this target-local contents-read
+and direct-localization-listing exception. It adds no helper, OS consent,
+entitlement, signing change or useful-category restriction. It lives privately
+inside the discovery image; action and shared lookup modules acquire no contents
+or listing code. The [facts decision](../adr/search-native-facts-are-reported-observations.md)
+and [call manifest](../design/application-localized-admission.json) explain the
+trade-off; the [reader view](../design/architecture/index.html#diagram-native-localized-decision)
+shows the admission branches. This is a design, subject to mandatory review and
+G11/N8/V13 qualification, not an executed native reader.
+
+**Admission and identity.** Preselect by the resolved root's actual lossless UTF-8
+byte length. Only URL resourceValues(isApplicationKey) receives the whole target
+pathname: root bytes + NUL must be <=1,024. Require a positive checked Boolean
+isApplication and present directory identity. At larger roots use only INDEXED_ITEM.
+The ordinary episode holds the first resolution's root descriptor until its
+fixed reads end, then closes it and performs the second fresh resolution. Equal
+before/after device/inode is required; no query-long pin is retained. Metadata
+files and layout/localization directories are checked relative to that held root,
+with fstatat(no-follow), openat(O_NOFOLLOW), held fstat and post-read name-to-inode
+checks. Require directories or regular files respectively; reject links, special
+files, denial and known dataless values before reads. Root resolution retains its
+existing link policy, but metadata descendants never follow links outside the
+observed copy. Replacement, size/time change or conflicting checks withhold the
+affected fact (root replacement refuses the choice). The separate native root
+resource call, these checks and the final resolution are not atomic: undetected
+replacement/read/hydration races remain native qualification limits.
+
+Every supplied component must be lossless UTF-8, contain neither slash nor NUL,
+and be neither dot nor dot-dot. Admit its actual bytes against the held
+parent's fpathconf(_PC_NAME_MAX) result (NAME_MAX excludes NUL); reserve a separate
+terminating byte in owned component storage; indeterminate/refused limits withhold the
+metadata, never assume a universal locale length. Descriptor-relative calls
+receive a single component, never a reconstructed descendant absolute path.
+The root's total length is the only ordinary whole-path admission. Thus the en
+file at a 978-byte root is reachable without submitting its 1,024-byte descendant
+pathname to a whole-path API. The [suffix counterexamples](../verification/native-discovery-sources.md#localized-reader-admission-evidence)
+remain evidence against the former opaque Bundle construction, not thresholds
+for this reader.
+
+**Closed layout and file set.** Probe these directory layouts in fixed order:
+Contents; Support Files; Resources; flat root. Choose the first present checked
+layout. Their resource bases are respectively Contents/Resources, Support Files/
+Resources, Resources and the root itself. Only checked absence advances to the
+next layout. Denial, symlink, wrong type or replacement stops that metadata
+episode; it cannot select a convenient alternative. Missing resource directory
+means checked absence of localized resources, not absence of the app. Probe
+Info-macos.plist then Info.plist in the selected information base, and
+InfoPlist-macos.strings then InfoPlist.strings in each selected name-resource base.
+A checked absent platform file permits the plain file; a present malformed,
+refused or oversized preferred file does not. These are the complete macOS file
+families; no product/iOS variants, executable/icon reads, arbitrary filenames or
+foreign Bundle/CFBundle initialization/resource/localization calls are admitted.
+This policy supports the named layouts without claiming equivalence to every
+private Bundle fallback. An actual useful app outside it is an unmet obligation
+for the coverage decision, not accepted loss.
+
+**Localization plan.** Snapshot Locale.preferredLanguages once for the job under
+count/string/copy/attempt gates. Enumerate every raw direct entry of the selected
+resource directory, including duplicate, nonlocalization and rejected slots,
+before selection. Share a 65,536-entry metadata-plan job gate with every preference and selector
+result slot, including rejected/duplicate values; never recurse or list ancestors.
+Only checked directories whose literal names end in .lproj enter the bounded
+inventory. Preserve exact names and byte-sort them; stripping the suffix forms
+the possible-localization array. Optional CFBundleLocalizations is not an inventory
+and is not used. Call CFBundleCopyLocalizationsForPreferences with that array and
+the explicit nonnull preferences snapshot. Unlike a foreign Bundle getter, this
+pure selector has no target pathname or implicit main-bundle context. Count its
+result, map each returned name unambiguously to a supplied literal component and
+reject foreign/ambiguous values; no native directory order chooses a winner.
+
+The name-file search order is global resource base, selector-returned locales,
+Base if present, then the selected information file's CFBundleDevelopmentRegion
+if it maps exactly to an observed locale. Deduplicate literal directories. Read
+only that finite plan, never all remaining locale files. For each base use the
+platform/plain pair above; first usable explicit display name wins, otherwise
+usable bundle name. Checked absent/healthy empty applicable resources allow the
+next planned base and finally the information file's display/name. Any refused,
+malformed, unsupported or incompletely enumerated preceding candidate leaves the
+name unknown with diagnostics; do not disguise it with an unlocalized or filename
+label. The plan is retained only for this episode; later language/file changes
+are not pinned. No hard-coded en/Base/English-only inventory or maximum locale
+component length defines useful support.
+
+**Typed facts and parser.** The selected information dictionary supplies only
+CFBundleIdentifier, CFBundleDisplayName, CFBundleName, CFBundleDevelopmentRegion,
+LSUIElement and LSBackgroundOnly. Name resources supply only display/name; they
+cannot override identifier or flags. Scalars must have their exact native types
+and satisfy existing lossless string gates; missing/malformed flags stay null,
+never false. Do not deep-copy dictionaries or ignored values. Each fixed regular
+file is limited to 65,536 bytes and two pread attempts: one exact declared-size
+read, then one EOF byte check. A short read, extra byte, changed size/time or
+failed check is not a successful prefix and is not retried. Parse immutable
+XML/binary/OpenStep property-list bytes with CFPropertyListCreateWithData; require
+a dictionary of at most 4,096 keys before scalar getters. CFDataCreateWithBytesNoCopy
+uses charged fixed buffers with kCFAllocatorNull. Hold the selected information
+buffer/dictionary through name selection so identifier, plain-name fallback and
+development-region can remain borrowed; hold at most one current name-file buffer/
+dictionary beside it. Retire the latter before reuse and both at episode end.
+Transcode only final retained identifier/name values under the existing copy
+reserves; never allocate every candidate name or copy the development-region
+separately. This also avoids assuming parsed values cannot reference their input. Native parser allocations occur before the owned-copy gate and
+have no proved peak; parser I/O/serviceability and actual .strings support remain
+N8 obligations. No alternate parser/fallback silently changes this construction.
+
+**Ownership, costs and failure.** The snapshot owner gates every explicit native
+attempt and gross allocation/copy, reserves cleanup before acquisition, and freezes
+without releasing held resources until actual native return. At most two fixed-file buffers (selected information plus current name file)
+and one enumerated resource directory are active; staged query/running/
+registration batches keep their existing sequential disposal. Preference, plan,
+file bytes and component copies consume the unchanged 8 MiB gross gate. Raw entry,
+file/key, call, copy or deadline exhaustion is population-wide FAILED/null; no
+per-app locale quota, prefix, hidden retry or helper filtering is admitted. Other
+individual metadata refusal can retain positive type/identity with nullable facts
+and honest source uncertainty. A known localized witness returning null fails
+usefulness even where that API uncertainty is legal.
+
+The [population certificate](../design/application-population.json) covers the
+selected recipe: fixed 40; 16U + 5R + 12D; 32C ordinary/indexed staging; 8E raw
+metadata-plan slots (directory, preference and selector values); 48F fixed-file
+probes; and 2C(6V+4) lookup walks. F <=
+4C + 2L, where L counts every retained localization-inventory record per spelling,
+including unselected directories; the selected plan is a subset of that inventory.
+There is no production L quota: actual calls/copies still share the global gates.
+At U=8,192, R=C=2,048, D=2,050, V=32, E=65,536 and the finite shallow L=4,096,
+the bound is 2,345,024 attempts under 4,194,304. The finite shallow subject also
+requires aggregate fixed-file input <=1,000,000 bytes and localization components
+<=32 bytes, with preferences <=32 records/4,096 payload bytes in shared scratch
+(qualification dimensions, not universal input limits). With 64L
+records, two component copies and existing fixed scratch this derives 8,340,416
+gross bytes under 8 MiB; wire remains 7,929,856 under the unchanged core cap.
+Extra owned parser copies, repeated plan/name copies or an additional walk
+invalidate that construction. [N5/N8](../verification/native-discovery-acceptance.md#n-actual-source-and-provider-binaries)
+must account actual calls/allocations term by term and measure these dimensions
+with native baseline included. If the required finite useful population does not
+fit, k93 records the consumer consequence and seeks the existing coverage decision;
+no silent category reduction or host policy increase is authorized.
+
+L1500 now includes a 977-byte ordinary en-localized control and a 978-byte copy
+inside the old missed band, plus 1,003/1,004/1,023 ordinary and 1,024/1,500 indexed
+copies with actual tuples and distinct same-ID short competitors. Exact localized
+names must differ from plain Info names. Ordinary flags come from the selected
+information file; indexed flags remain null. At 1,004…1,023 ordinary metadata does
+not qualify action Bundle support, so installation state remains UNKNOWN. The
+1,024-byte action handoff and independently accepted action evidence remain intact.
+
+Opaque Bundle plus a guessed suffix is rejected because it exposes no complete
+pre-call resource plan. Indexed-only metadata avoids contents reads but has no
+established useful-name/flag replacement for non-indexed running/registered copies.
+Reconsider the explicit reader if actual safety, file-format, localization or
+baseline usefulness qualification fails; do not credit this design as a native pass.
 
 ## System Settings read and exact target
 
@@ -776,13 +926,13 @@ never replaces a blocked worker or raises descriptor/materialization limits.
 
 | Per admitted job | Bound and ownership |
 | --- | --- |
-| Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. |
+| Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. Separate 65,536 indexed-type entries and 65,536 metadata-plan entries; fixed file 65,536 bytes, dictionary 4,096 keys. |
 | Settings | Per sweep: 256 pane records, 128 raw anchor names/pane, 4,096 raw anchors total; two sweeps maximum. Count/call/copy overflow and deadline before a complete first map withhold items as FAILED/null. Confirmation deadline retains uncontradicted first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN, never an incomplete prefix or completeness proof; useful qualification must still finish both sweeps. |
-| Native calls | Application ceiling 1,048,576; Settings 131,072 under the two-sweep certificate below; locations 16,384. All explicit descriptor/API/syscall and cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
-| Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read. |
+| Native calls | Application ceiling 4,194,304; Settings 131,072 under the two-sweep certificate below; locations 16,384. All explicit descriptor/API/syscall and cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
+| Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read in the resolver. Discovery alone holds its episode root for the explicit fixed-file/direct-localization exception; no third walk. |
 | Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
 | Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. Saturation continues discovery; four fixed 32-byte source summaries preserve outcomes independently of stored details. Reserve 2,048 gross bytes per diagnostic record/payload. |
-| Native objects | One opaque result batch/query plus one temporary reply/descriptor set per pending call, or one pending launch callback per job, plus bounded borrowed-element owner state; dispose/release exactly once on real completion. |
+| Native objects | One opaque result batch/query plus one temporary reply/descriptor set per pending call, or one pending launch callback per job, plus bounded borrowed-element owner state and the explicit reader’s selected-info/current-name parsed inputs and localization selector state; dispose/release exactly once on real completion. No hard parser/native peak follows. |
 
 Metadata query uses resultCount and bounded result-at-index access, not an owned
 copy of its whole results array. CF arrays/AE reply descriptors are opaque native
@@ -837,30 +987,44 @@ a prefix. V12's actual finite subject must fit all gates and the deadline.
 
 ### Application cost certificate
 
-Let U be raw URL observations, R running objects, D distinct identifier groups,
-C distinct spellings and V actual component visits per descriptor walk, including
-expanded links. The finite shallow qualification envelope has U <= 8,192,
-R <= 2,048, D <= 2,050, C <= 2,048 and V <= 32. V is a subject description,
-not a production path/depth restriction or a change to the action resolver.
+Let U be raw URL observations, R running objects, D identifier groups, C distinct
+spellings and V actual component visits per walk including expanded links. Add E
+raw metadata-plan slots (all direct directory, preference and selector values) and
+L retained localization-inventory records per spelling (including unselected
+directories); F fixed-file probes <=4C+2L.
+The finite shallow subject has U<=8,192, R=C<=2,048, D<=2,050, V<=32, E<=65,536 and
+L<=4,096. V/L are qualification dimensions, not production per-path/app quotas.
 
-| Explicit work in the adapter recipe | Maximum admitted attempts |
+| Explicit work in the adapter recipe | Maximum attempts |
 | --- | --- |
-| Fixed query/run-loop/running-source acquisition and cleanup | 32 |
-| Counted source element/path extraction; up to fourteen extra indexed projection/type/scalar checks per raw slot (conservatively charged for every URL domain) | 16U |
+| Fixed source/query/preference acquisition, counts and cleanup | 40 |
+| Source element/path and indexed projection/tree/scalar checks | 16U |
 | Running URL/identifier/name/policy/termination getters | 5R |
-| Once-per-ID CF/AppKit/preferred acquisition, counts and explicit disposal | 12D |
-| Once-per-spelling resource/Bundle episode and short-path denial checks, plus two indexed scalar transcodes | 10C |
-| Before/after descriptor walks, including per-component calls, link handling, errno name-limit and held-handle cleanup | 2C(6V + 4) |
+| Once-per-ID CF/AppKit/preferred acquisitions, counts/disposal | 12D |
+| Per-spelling root type/layout/directory/selector setup and staging | 32C |
+| Raw metadata-plan slot access/check/construction/mapping/disposal | 8E |
+| Fixed-file/component/read/parse/getter/transcode/cleanup probes | 48F |
+| Before/after walks, links, errno limits and held-handle cleanup | 2C(6V+4) |
 
-Thus 32 + 16U + 5R + 12D + 10C + 2C(6V + 4) <= 989,240 at the stated
-envelope. The next power of two is 1,048,576. The source report explains the walk
-bound and why the former 16,384/256 numbers did not cover the choices. This is a
-conservative owned-attempt certificate for that recipe/finite subject, not a
-latency or opaque-internal-work bound. No C-times-D registration walk term is
-permitted. Deeper/longer real candidates charge actual work under the same global
-ceiling; inability to finish invalidates publication, not the path's existence.
-Actual N accounting must enumerate every adapter attempt and reject a recipe
-that exceeds any certificate term before claiming applicability.
+At this envelope F<=16,384 and 40+16U+5R+12D+32C+8E+48F+2C(6V+4)<=2,345,024,
+under the 4,194,304 gate. The
+[source operation table](../verification/native-discovery-sources.md#application-population-construction-evidence)
+enumerates each new allowance. This is a caller-visible construction certificate,
+not latency, private native pathname closure or opaque internal-work proof.
+There is no C×D registration multiplier or third root walk. Deeper/larger inputs
+charge actual global work; exhaustion invalidates publication, not existence.
+N5/N8 must enumerate actual attempts and reject any recipe exceeding a term.
+
+The [explicit reader certificate](#localized-reader-decision) adds <=1,000,000
+gross fixed-file input bytes and 64L records plus two <=32-byte locale components
+to the existing 6,816,128 bytes of records/payload/summaries/shared scratch:
+8,340,416 under unchanged 8 MiB. Input/component bounds describe this finite
+shallow subject; actual baseline dimensions must be measured without filtering
+useful apps. Two 64 KiB fixed buffers and finite preference scratch (<=32 records/4,096 payload bytes) plus fixed plan
+scratch reuse the
+1 MiB allowance. Final-only scalar transcodes preserve existing payload-copy
+reserves. No deep/repeated candidate copies are hidden; native parser allocation
+peak is unproved. Wire remains 7,929,856 under unchanged core 8 MiB.
 
 The fourteen extra indexed attempts reserve three fixed attribute getters,
 five tree type/count/first-match/member checks, and six identifier/name native
@@ -906,8 +1070,8 @@ Preserve the four-action source and whole-image guard in an independently linked
 WorkspaceActions native image containing only the existing action logic/adapter
 and safe individual-target resolution. The workspace principal image routes
 GraphQL and snapshot values; WorkspaceDiscovery owns Foundation/index/running/
-registration reads; WorkspaceSettings owns fixed read/prepare/reveal with disjoint resolver
-seams and a private setup seam accessible only to Koine's local explaining UI.
+registration reads and the private fixed-file/direct-localization reader.
+WorkspaceSettings owns fixed read/prepare/reveal with disjoint resolver seams and a private setup seam accessible only to Koine's local explaining UI.
 Only the read seam is reachable from a catalogue query; no GraphQL route reaches
 ask=true, including a management-authorized route.
 None is a new provider identity or public framework ABI. Source/build dependencies
@@ -922,9 +1086,15 @@ scripting, spawning or prompting code.
 
 Retain original action checks on its real source and resulting Mach-O imports,
 selectors, exports/dependency closure, with updated path ownership only. Apply
-finite source and built-image allowlists to each new module: no subprocess,
-directory listing, generic interpreter, arbitrary AE target/event, shell, AX,
-input/menu synthesis or handler writes anywhere. The settings module's permitted
+finite source and built-image allowlists to each new module. Discovery alone
+admits fdopendir/readdir/closedir on its one selected resource directory, component-
+relative metadata fstatat/openat/fstat/fpathconf/pread/close, no-copy data/property-
+list parsing, scalar access and the pure explicit-preference localization selector.
+Pin exact fixed files/components and call reachability; these imports alone cannot
+prove the scope. Settings/principal/action/shared lookup admit none of that new
+contents/listing code. No subprocess, recursive/general listing, generic interpreter,
+arbitrary AE target/event, shell, AX, input/menu synthesis or handler writes is
+admitted anywhere. The settings module's permitted
 launch/preflight/send calls are confined to their exact resolvers and
 parameters; read resolver can reach only ask=false/no-prompt core/getd.
 Discovery never reaches setup or effects. Factory routing, exported interfaces,
@@ -936,8 +1106,12 @@ into action source/image; inject an action→settings dependency or effect callb
 route a read resolver through prompting/launch/reveal; remove additional desktop
 control from reveal and read authority from catalogue nested fields. Both source
 and actual image/load/runtime checks must reject their appropriate controls,
-while the legitimate bounded discovery/settings images pass. Production guard
-failure blocks acceptance; deleting/widening the original guard is not a remedy.
+while the legitimate bounded discovery/settings images pass. Also compile a
+general/recursive directory scan, arbitrary file read, foreign Bundle localization
+or fixed-reader callback into action/principal/shared lookup and require rejection.
+The Discovery image admits only the closed private file/locale plan; a source
+control with identical imports but widened paths must fail its reachability guard.
+Production guard failure blocks acceptance; deleting/widening the original guard is not a remedy.
 This packaging remains proposed until actual independently built binaries verify
 it. Existing action-only 1.0.0/1.0.1 images remain independent historical subjects.
 

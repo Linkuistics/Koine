@@ -1848,7 +1848,8 @@ slice awaits complete-producer review. Long metadata has a fixed native indexed
 projection, public metadataSource, UNKNOWN installation state and null unsupported
 bundle flags; G11/N8/V13 require real L1500 source tuples, identity and unchanged
 selected-action refusal. Indexed facts do not bind current inode/bundle contents.
-This is no new access/consent/signing or core limit policy. Settings now
+The long indexed projection adds no access/consent/signing or core limit policy;
+the separately approved ordinary metadata exception is described below. Settings now
 uses two ID-associated pALL/anchor sweeps with a minimum 100 ms gap within three
 seconds. RUNNING is process-only; stable positive choices remain PARTIAL with
 UNKNOWN lazy completeness, empty panes UNKNOWN/null and empty anchors null.
@@ -1859,15 +1860,19 @@ any earned reconciliation before becoming implementation input.
 
 Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
 plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
-without item loss. Application gross charges are 6,816,128 and Settings 6,094,976
+without item loss. Application gross charges are 8,340,416 and Settings 6,094,976
 bytes under unchanged 8 MiB gates. Settings confirmation timeout retains only
 uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN;
 incomplete-first-map timeout and count/call/copy overflow still give FAILED/null.
 Lazy no-such-object at reveal re-resolution is failed/unestablished selection,
 never an absence dependency; V12 includes separate unvisited-incarnation reveal.
-The localized Bundle resource pathname boundary remains unresolved after k210/R2;
-its design producer/review must complete before implementation. The known-plist
-certificate alone cannot authorize that reader or its 1,003-byte control.
+The selected explicit application reader closes the ordinary design's call/file
+manifest: root resource type through 1,023 bytes, held-directory fixed metadata
+files and a bounded direct localization plan. Larger roots use actual indexed
+items. The 977 localized control and 978 old-band copy supplement L1500; review
+and G11/N8/V13 remain pending. The application attempt certificate is 2,345,024
+under 4,194,304, with no host copy/response increase or foreign Bundle fallback.
+Ordinary 1,004…1,023 metadata does not qualify the action's whole-path plist reader.
 
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,

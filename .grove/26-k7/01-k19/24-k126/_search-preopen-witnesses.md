@@ -62,3 +62,8 @@ aware hosts refuse before load. Further root population/readiness/long-metadata
 design is complete in k205; its mandatory review/earned integration precedes this
 consumer. K191 qualifies the indexed projection and two full Settings sweeps as
 well as source acquisition; actual native verdicts remain pending.
+
+K212's reviewed application reader is a discovery-only fixed-file/direct-localization
+exception to the lookup-only resolver boundary. K191 qualifies actual no-dialog/
+no-hydration, nofollow/dataless/file-format/localization behavior and remaining
+races; no general listing, helper, consent or signing change is authorized.

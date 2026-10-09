@@ -224,11 +224,17 @@ fail acceptance.
 
 **Indexed application metadata**: The fixed path/type-tree/identifier/name tuple
 from an actual item of the admitted application query. It can supply reported
-facts when whole-path Bundle metadata is unsupported, while lookup-only resolution
+facts at resolved bundle roots of at least 1,024 UTF-8 bytes, while lookup-only resolution
 establishes a present directory's identity. It does not bind a cached index record
 to that inode or prove current bundle contents; public metadataSource INDEXED_ITEM
 retains UNKNOWN installation state and null bundle flags. Native long-source
 qualification remains separate from disk construction and action refusal.
+
+**Explicit application metadata reader**: The ordinary BUNDLE_RESOURCE episode:
+a checked root resource-type observation at <=1,023 UTF-8 bytes followed by a
+closed fixed-file and direct-localization plan through held directories. It has
+no foreign Bundle/resource lookup or reconstructed descendant whole-path call.
+Typed facts, provenance, native races and qualification limits remain explicit.
 
 **Native serviceability evidence**: Applicable owned events paired with
 independent listener, grant-store and authorized-action outcomes for a finite

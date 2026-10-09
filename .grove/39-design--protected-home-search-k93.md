@@ -101,3 +101,13 @@ construction before k7; an underived pathname guard is a design defect, not a
 measured native gap to accept here. Only actual qualified-source/access/usefulness
 consequences reach this bounded human decision. No posture or useful loss is
 selected by k211's repair.
+
+## Approved explicit metadata-reader gap duty
+
+Consume reviewed application-localized-metadata-k212. Its target-local fixed-file/
+direct-localization exception adds no helper, OS consent, entitlement, signing
+change or accepted useful loss. If actual format/locale/safety or measured
+P1024/L1500 input/plan/copy/deadline/usefulness cannot qualify, state the consumer
+consequence and bounded alternatives once with Antony. Never switch silently to
+opaque Bundle, filter baseline/helpers or choose a locale subset. Design closure
+is no actual native pass and known null/wrong localized witnesses fail usefulness.

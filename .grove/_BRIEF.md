@@ -298,8 +298,14 @@ as the complete producer. Its mandatory root review-design and any earned
 integration precede app-and-file-search-k7. K210's review and k211's triage repair
 diagnostic saturation, Settings confirmation deadlines and lazy reveal uncertainty.
 Application-localized-metadata-k212 now precedes k7 with mandatory review/earned
-integration: the full localized resource pathname boundary is unresolved and the
-known-plist certificate cannot authorize that reader. Consume the full current spec/source/
+integration. Antony approved the bounded target-local contents/listing exception
+in the [localized reader decision](../docs/specs/workspace-search.md#localized-reader-decision).
+K212 closes the selected design's call/file manifest: native root type through
+1,023 bytes plus held-directory fixed information/name files and direct locale
+inventory/explicit preference selection. It never calls a foreign Bundle or
+submits a descendant whole path; larger roots retain actual indexed tuples.
+No helper, consent, signing or useful-category reduction is authorized.
+Consume the full current spec/source/
 finite acceptance/SDL/profiles and views after that review, never an isolated
 slice. The review names k205; this closing session names its actual run there.
 Downstream k126/k193, k127's review, k123's review and whole-k19 review k120 retain
@@ -329,14 +335,17 @@ actual adapter under 131,072 attempts/8 MiB; no latency/native peak follows.
 The fixed four-attribute projection from actual indexed items supplies reported
 type/name/identifier plus before/after directory identity, public INDEXED_ITEM
 provenance and honest index-to-inode/current-plist association limits. Indexed
-choices remain UNKNOWN with null bundle flags. The 1,004-byte known-plist and
-1,024-byte action boundaries remain distinct. G11/N8/V13 require actual L1500
-tuples from the declared signed copies plus k212's safe localized ordinary/band
-controls, independent
-type/identity/metadata and unchanged selected launch/named-open/reveal refusal.
-Disk/client/controlled provenance is no source pass. Revised shallow certificates
-are 989,240 attempts/6,816,128 gross-charge bytes, under 1,048,576 attempts/8 MiB;
-N5/N8 must validate actual calls, duplicate copies and cleanup term by term.
+choices remain UNKNOWN with null flags at >=1,024-byte roots. Ordinary roots
+through 1,023 use BUNDLE_RESOURCE; 1,004…1,023 installation state remains UNKNOWN
+because action Info.plist support is independent. G11/N8/V13 require nine signed
+L1500 copies: 977 localized control, 978 old-band copy, 1,003/1,004/1,023 ordinary,
+1,024/1,500 indexed and two short same-ID competitors. Actual indexed tuples,
+independent identities/localized names/flags and unchanged selected-action refusal
+remain required. Disk/client/controlled provenance is no source pass. Revised
+shallow certificates are 2,345,024 attempts/8,340,416 gross bytes under 4,194,304/
+8 MiB, with wire 7,929,856 under unchanged core 8 MiB. E=65,536/L=4,096/input<=
+1,000,000/component<=32-byte finite dimensions include actual baseline; N5/N8
+validate actual calls, copies, cleanup and opaque parser serviceability.
 
 All G1–G11/N1–N8/V1–V13 native verdicts remain pending. K191 owns concrete source/
 getter/contact and exact-event access construction, k127 owner/image/accounting,

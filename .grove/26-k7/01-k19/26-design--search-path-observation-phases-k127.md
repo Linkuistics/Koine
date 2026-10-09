@@ -90,11 +90,16 @@ Consume reviewed k205/G11/N5/N8. Project fixed actual indexed items during their
 query ownership; share at most two descriptor walks per spelling, keep only scalar
 fact records, retire the query before running/registration batches and never borrow
 another copy's fields. Count raw type values (65,536 shared gate) before the native
-membership check; its internals remain opaque. Enumerate 16U/10C projection/check/
+membership check; its internals remain opaque. Enumerate 16U/32C projection/check/
 transcode reserve and 64C/two-copy indexed payload charges against actual allocation
 and duplicate comparison, without new duplicate payload copies or C×D walks.
-Revised certificates 989,240 attempts/6,816,128 bytes fit unchanged gates but prove
-no runtime peak/timing/support. Wrong reader/provenance/copy/early release must fail.
+Reviewed k212 adds 8E metadata-plan and 48F file-probe work (F<=4C+2L),
+<=1,000,000 input bytes plus 64L/two-component copies at shallow L=4,096 and
+components<=32 bytes. The 2,345,024 attempts/8,340,416 gross bytes fit 4,194,304/
+unchanged 8 MiB; wire stays 7,929,856. Enumerate actual baseline dimensions,
+borrowed info/current-name dictionaries and both fixed buffers within existing
+scratch; no deep copies, repeated candidate-name allocations or extra walk.
+These prove no runtime peak/timing/support. Wrong reader/provenance/copy/early release must fail.
 
 ## Settings two-sweep owner/accounting duty
 

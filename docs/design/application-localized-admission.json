@@ -1,0 +1,97 @@
+{
+  "purpose": "Closed design call/filename manifest and historical whole-path counterexamples; no native pass",
+  "wholePathBytesIncludingNul": 1024,
+  "completeReaderPathSetEstablished": true,
+  "ordinaryLocalizedControlEstablished": true,
+  "examples": [
+    {
+      "suffix": "/Contents/Info.plist",
+      "bytes": 20,
+      "lastFittingBundleBytes": 1003
+    },
+    {
+      "suffix": "/Contents/Info-macos.plist",
+      "bytes": 26,
+      "lastFittingBundleBytes": 997,
+      "evidence": "HISTORICAL_APPLE_SOURCE_ONLY"
+    },
+    {
+      "suffix": "/Contents/Resources/en.lproj/InfoPlist.strings",
+      "bytes": 46,
+      "lastFittingBundleBytes": 977
+    },
+    {
+      "suffix": "/Contents/Resources/Base.lproj/InfoPlist.strings",
+      "bytes": 48,
+      "lastFittingBundleBytes": 975
+    },
+    {
+      "suffix": "/Contents/Resources/English.lproj/InfoPlist.strings",
+      "bytes": 51,
+      "lastFittingBundleBytes": 972
+    }
+  ],
+  "knownPlistGuardCounterexample": {
+    "bundleBytes": 1003,
+    "localizedSuffix": "/Contents/Resources/en.lproj/InfoPlist.strings",
+    "addressedBytesExcludingNul": 1049
+  },
+  "variableComponentExample": {
+    "component": "français.lproj",
+    "suffix": "/Contents/Resources/français.lproj/InfoPlist.strings",
+    "bytes": 53,
+    "lastFittingBundleBytes": 970
+  },
+  "historicalBundleClosureEstablished": false,
+  "nativeVerdict": "PENDING",
+  "reader": {
+    "wholePathCalls": [
+      "URL.resourceValues(isApplicationKey)"
+    ],
+    "wholePathTarget": "RESOLVED_BUNDLE_ROOT_ONLY",
+    "lastOrdinaryRootBytes": 1023,
+    "firstIndexedRootBytes": 1024,
+    "descendantAddressing": "HELD_DIRECTORY_LITERAL_COMPONENT",
+    "foreignBundleLookup": false,
+    "layoutPriority": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
+    "resourceBases": [
+      "Contents/Resources",
+      "Support Files/Resources",
+      "Resources",
+      "."
+    ],
+    "informationFiles": [
+      "Info-macos.plist",
+      "Info.plist"
+    ],
+    "nameFiles": [
+      "InfoPlist-macos.strings",
+      "InfoPlist.strings"
+    ],
+    "directoryListing": "ONE_SELECTED_RESOURCE_DIRECTORY_DIRECT_ENTRIES_ONLY",
+    "localizationSelection": "EXPLICIT_PREFERENCES_CF_FUNCTION_THEN_BASE_THEN_DEVELOPMENT",
+    "variableComponents": "ACTUAL_PARENT_FPATHCONF_NAME_MAX_AND_LOSSLESS_UTF8",
+    "descendantSymlinks": "REFUSE_NOFOLLOW",
+    "crossCopyMetadata": false,
+    "recursiveResourceTraversal": false,
+    "missingTupleOutcome": "UNMET_NATIVE_SUPPORT"
+  },
+  "qualification": {
+    "ordinaryControlBundleBytes": 977,
+    "missedBandBundleBytes": 978,
+    "localizedComponent": "en.lproj",
+    "localizedNameDistinctFromPlainInfo": true,
+    "fixedResourceSuffix": "/Contents/Resources/en.lproj/InfoPlist.strings",
+    "ordinaryWholeRootCallBytesIncludingNul": [
+      978,
+      979
+    ],
+    "metadataFilesDescriptorRelative": true,
+    "nativeVerdict": "PENDING"
+  }
+}

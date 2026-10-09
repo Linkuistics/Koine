@@ -83,51 +83,78 @@ composition seams; actual native counterpart rows below remain pending.
 | G9 | Corrected core disclosure catalogue under koine:manage contains workspace:read and control text matching all native grant surfaces: no client filesystem access, background preparation without desktop control, both controls for launch/open/reveal and preserved handler reach. No management or workspace GraphQL route initiates ask=true. Complete new-host and prior-disclosure-host refusal profiles/digests remain distinct. Removing the read entry, retaining “always needs desktop control”, or making the prior-host native update ACTIVE must fail. |
 | G10 | Full bounded population with >256 coherent useful IDs, duplicate slots, same-ID copies, helper pressure, nullable Boolean flags and observed running policies. Each coherent ID expands once; no helper/unknown choice is filtered. Raw-slot/spelling/ID/choice/call/gross-copy/deadline overflow gives FAILED/null after useful staging. Diagnostic edges 63/64/65 and >1,024 INDEXED_ITEM uncertainties retain all otherwise valid choices, at most 64 records and DIAGNOSTIC_LIMIT, resultsTruncated false for saturation alone. Fixed summaries preserve omitted late failure/block/unknown reasons and precedence under reversed/permuted order. Inject a 256-ID quota, per-choice re-walk, earlier-failure skip, false flags, helper suppression, prefix-on-overflow, diagnostic-fatal publication or status derived only from retained details; require rejection. Source-local unsafe metadata retains honest partial/unknown outcomes and aliases retain independent errors. |
 
-G11 exercises controlled indexed tuples: exact positive application-bundle tree
-member, missing/wrong/nonmatching type, null/malformed/conflicting name/identifier,
-directory versus file, identity replacement inside the episode, same-ID copies,
-and INDEXED_ITEM versus BUNDLE_RESOURCE metadataSource. INDEXED_ITEM keeps UNKNOWN
-and null bundle flags; no cross-copy fields, suffix proof or source-origin repair.
-The 1,003/1,004 known-plist boundary alone is insufficient to admit localized
-Bundle reads; the R2 design/review must derive every actual resource pathname and
-add its ordinary/band-edge controls before implementation. The 1,023/1,024 handoff
-boundary remains independent. Only the fully derived admitted reader may be
-reachable. Raw tree values at/beyond 65,536, duplicates, source order
-and global exhaustion after useful staging obey FAILED/null precedence. Missing
-metadataSource, an indexed INSTALLED/false flag, wrong type/member/identity, a
-whole-path fallback or a client path labelled indexed must fail its independent
-controlled counterpart. These controlled subjects do not qualify actual indexing.
+G11 exercises controlled indexed tuples: exact native application-bundle member,
+missing/wrong type and null/malformed/conflicting scalars, file/directory,
+replacement, distinct same-ID copies and source provenance. INDEXED_ITEM stays
+UNKNOWN with null flags, without cross-copy fields, suffix proof or origin repair.
+For the explicit ordinary reader, inject the root type and descriptor-file seams:
+root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;
+1,024/1,500 admit only actual indexed tuples. Require localized names distinct
+from plain Info names at 977 and the old missed band 978. Exercise en/Base/English/
+multibyte locale names, every fixed layout/platform/plain pair, complete direct
+inventory and explicit preferences/global/selected/Base/development order. Reject
+opaque Bundle/resource lookup, whole descendant paths, hard-coded locale inventory,
+ambiguous selector values, CFBundleLocalizations-only inventory, unlocalized rescue,
+symlink/special/dataless descendants, conflicting file/root identity, partial reads,
+malformed dictionaries and per-app quota/prefix behavior. Raw type and metadata-plan
+entry gates at/beyond 65,536, file bytes 65,536 and dictionary keys 4,096 use global
+FAILED/null precedence. Preserve independent action limits and k211 saturation/
+Settings controls. Missing provenance or known wrong type/name/identity must fail
+independent counterparts. Controlled seams establish no actual filesystem/index pass.
 
 ## N: actual source and provider binaries
 
 | ID | Finite subject and independent control |
 | --- | --- |
 | N1 | Exact profiles/old-new combinations above, actual native library images and host loader, GraphQL SDL/digest/metadata/capabilities. Call/load/start markers discriminate rejection from mapped/start failure. Introspection success alone does not pass facts/actions. |
-| N2 | Enumerate actual source call paths and native image imports/selectors/exported seams/dependency closure/link map, including the principal's routing-only allowlist and private production construction inside WorkspaceActions. Original four-action guard still rejects listing/spawn/scripting/extra activation. Compiled action→settings link/callback, principal-injected effect adapter with clean action imports, inserted forbidden action code, read→ask=true or reveal routing, and removed authority mutations must fail appropriate source/binary/runtime controls; legitimate new images pass their finite exact allowlists. Test injection is absent from production exports/linkage. |
+| N2 | Enumerate actual source call paths and native image imports/selectors/exported seams/dependency closure/link map, including the principal's routing-only allowlist and private production construction inside WorkspaceActions. Original four-action guard still rejects listing/spawn/scripting/extra activation. Compiled action→settings link/callback, principal-injected effect adapter with clean action imports, inserted forbidden action code, read→ask=true or reveal routing, and removed authority mutations must fail appropriate source/binary/runtime controls; legitimate new images pass their finite exact allowlists. Only private discovery
+admits the closed component-relative file/locale plan; general/recursive listing,
+arbitrary file paths, foreign Bundle lookup or a fixed-reader callback into the
+principal/action/shared lookup must fail source reachability AND image controls.
+Identical imports with widened paths are a required failing counterpart. Test injection is absent from production exports/linkage. |
 | N3 | Real Foundation location values; NSMetadataQuery fixed predicate and IndexedLocal scope, gathering completion/stop/late notifications; running source; AppKit ordered list-plus-preferred eligibility paired with actual action selection, separate deprecated error-bearing negative evidence, and individual-target bundle identity. Record actual errors, count and copied-value accounting; substitutions pass branch logic only. |
 | N4 | Exact settings address typeKernelProcessID; trusted OS bundle/signature/incarnation revalidation. Two core/getd sweeps of all xppb pALL ID/name records and ID-contained all xppa pnam, minimum 100 ms inter-sweep gap inside three seconds. Inspect actual want/from/form/seld and native list/record/text types, record IDs, <=16 scalar direct keys, optional class and discarded fields; no positional zip. Preflight every event ask=false and pinned no-prompt flags. Unique-ID resolution and pALL are actual qualification subjects. Wrong class/ID/type, duplicate IDs, unchanged IDs with changed anchors, replacement/late reply and repeated lazy-empty replies must be detected honestly. Selected reveal still re-resolves exact pane/anchor with scalar core/getd, misc/mvis then one pinned activates=true fixed-bundle open; callback replacement/exit remains ambiguous. No NSRunningApplication.activate/AX/loading/current-pane assignment/interpreter fallback. |
-| N5 | Enumerate every owned native/syscall attempt and gross allocation/copy. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 1,048,576 attempts and 8 MiB copies. Check 989,240-attempt/6,816,128-byte copy and 7,929,856-byte wire certificates, <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
+| N5 | Enumerate every owned native/syscall attempt and gross allocation/copy. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 attempts and 8 MiB copies. Check 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire certificates (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
 
-N8 owns the actual indexed projection and long-source boundary: inspect fixed
-four-attribute getters on actual query items, native tree count/member/scalar
-checks, duplicate comparison and two scalar transcodes. Never call pathname-based
-item/Bundle/resource readers beyond their admitted boundaries or add a descriptor
-plist reader. Enumerate actual costs against N5's revised 989,240-attempt and
-6,816,128-byte shallow certificates, the unchanged 1,048,576/8 MiB gates and the
-65,536 raw tree-value gate. No additional native array or query survives its
-source episode; no new per-choice registration walk. A projection/copy omission,
-cross-copy metadata, wrong-reader call, identity change or source→action route must
-fail the appropriate actual call-path/accounting/image control. This is separate
-from N6 lifecycle holds and from actual V13 useful-source observation.
-N5 must account canonical diagnostic-summary rendering once at freeze, including
-scratch/transient copies; repeated per-observation strings or missing source/reason
-tokens after saturation fail. The closed-enum three-source encoding is at most
-843 bytes under the 1,024-byte guidance limit; it adds no public type or native call.
-The full localized-resource boundary and safe ordinary control remain unresolved
-until k212's reviewed design; a successful known-plist construction check does
-not qualify those pathname calls or the longer-resource failure band.
+N8 owns both actual indexed projection and the explicit ordinary fixed-file reader.
+Inspect the exact four getters on actual query items and native tree/scalar checks,
+without pathname-created metadata items. For ordinary roots enumerate every root
+resource call, layout/component check, directory slot, selector input/output,
+fixed-file probe/read/parse and scalar extraction/disposal against the
+[closed manifest](../design/application-localized-admission.json) and N5 operation
+table. Whole target paths are root resource type only through 1,023 bytes; descendants
+use literal held-directory components and actual parent NAME_MAX. No foreign Bundle,
+whole descendant path, hidden fallback/traversal or lookup/action module contents
+access is admitted. Verify both 64 KiB input buffers, selected-info/current-name
+native dictionaries, no-copy CFData, borrowed development-region and final-only
+scalar copying against the actual ownership and gross certificate. Actual XML,
+binary and OpenStep .strings formats, layout/platform preference and preferred-
+language/Base/development selection require positive and deliberately broken
+controls. Public parser declarations or historical CF source are not a native pass.
+
+Validate 2,345,024 attempts and 8,340,416 gross bytes under 4,194,304/8 MiB, with
+the separate 65,536 raw indexed-type gate and 65,536 shared metadata-plan gate.
+Count every preference, selector and direct directory slot, including duplicate/
+rejected values. Measure L, file-input bytes, localization components and actual
+baseline facts; the finite shallow assumptions are not production locale quotas.
+No per-choice registration walk or third root walk is admitted. Projection/copy
+omission, extra parse copies, wrong reader, identity change, source→action route,
+hydration/dialog and native parser serviceability failure must fail applicable
+call-path/accounting/image/independent controls. Parser peak is opaque and is not
+bounded by the owned certificate. N6 holds remain separate from actual V13
+useful-source observation; missing required format/layout/usefulness goes once
+to k93 rather than an accepted reduction.
+
+N5 accounts canonical diagnostic-summary rendering once at freeze, including
+scratch/transient copies. Repeated per-observation strings or omitted reason
+tokens fail; the three-source maximum remains 843 bytes within 1,024. The
+localized design:localized-boundary-check rejects Info-only closure, whole
+pathname fallback, guessed locale lengths, missing 977/978 controls, NUL/UTF-8
+mistakes and invented native passes. It checks the design, not these N8 outcomes.
+
+
 
 N4/G8 additionally reject treating lazy no-such-object as an authoritative
 selection dependency. Retained prior-incarnation keys start neither misc/mvis
@@ -160,32 +187,31 @@ hardware/native fixture remains pending. No older-OS/legacy programme is require
 
 ## Long application source subject
 
-L1500 is a finite **pending** qualification subject, declared in the
-[construction certificate](../design/long-application-metadata.json). Install five
-purpose-built signed application bundles at exact resolved absolute path lengths
+L1500 is a finite **pending** subject in the
+[construction certificate](../design/long-application-metadata.json). Install seven
+purpose-built signed bundles at exact resolved absolute root lengths 977, 978,
 1,003, 1,004, 1,023, 1,024 and 1,500 UTF-8 bytes excluding NUL, plus two distinct
-short signed copies sharing respectively the 1,024/1,500 identifiers. Use distinct
-boundary identifiers and copy identities, known localized names, and explicit
-Boolean flag declarations so withheld bundle flags cannot be mistaken for false.
-Use an indexed local /Applications fixture parent, legal ASCII components of at
-most 200 bytes and at most 32 component visits. Construct/copy/sign via held
-component-relative fixture directories outside Koine; no provider path substitute
-or new access policy follows from a test fixture's privileged preparation.
+short signed copies sharing the 1,024/1,500 identifiers. Distinct boundary IDs and
+copy identities have explicit true/false flags and en.lproj localized display names
+that differ from plain Info names. A 977 root is the positive localized control;
+978 is inside the old missed band: its en file's whole spelling is 1,024 bytes,
+yet the explicit reader never submits that descendant whole path. Both roots fit
+the root type call. 1,003/1,004/1,023 also use BUNDLE_RESOURCE; 1,024/1,500 use only
+INDEXED_ITEM. Additional controlled Base/English/multibyte, layout and format
+counterparts remain G11/N8 obligations, not presumed production locale bounds.
 
-Freeze an independent manifest of every exact path/byte length, bundle-directory
-device/inode, identifier/name/flags and signed bundle content digest. The existing
-component-relative disk fixture supplies a construction pattern, not actual
-index exposure. A separate authorized observer must run the **exact** fixed
-indexed-local predicate and inspect real result objects/attributes. It must
-actually observe the expected 1,004/1,023/1,024/1,500 tuples and correct current
-fixture facts. The 1,003-byte bundle is a known-plist boundary witness, not an
-established ordinary localized-reader control. R2's new design producer/review
-must select and derive the full admitted pathname route, add a localized ordinary
-control safely below that boundary and a copy inside the longer-resource failure
-band, and reconcile L1500/certificates/observer expectations before implementation.
-No unlocalized or null name silently replaces this known-name obligation. No artificial
-NSMetadataItem, custom index database, different scope, hidden seed, client list,
-registration-only copy or arbitrary predicate may stand in for those tuples.
+Use an indexed local /Applications fixture parent, legal ASCII components <=200
+bytes and <=32 visits. Construct/copy/sign through held component-relative fixture
+directories outside Koine, without a provider path substitute or new read posture.
+Freeze an independent manifest of root/file byte lengths, device/inode, ID,
+localized/plain names, flags and signed content digest. Existing disk construction
+supplies a pattern, not index exposure. A separate authorized observer must run
+the exact fixed indexed-local predicate and inspect actual result attributes for
+all seven boundary copies, including 977/978 controls and 1,004/1,023/1,024/1,500.
+No artificial item, custom database, different scope, hidden seed, client list or
+registration-only observation substitutes for those tuples. Short ordinary copies
+must additionally pass actual root type/fixed-file localization witnesses; the
+1,003-byte copy alone proves neither localization nor admission.
 
 Native fixture preparation is bounded: normal indexing, at most one explicit
 reindex request on the short fixture parent, and independent captures at 10, 30
@@ -199,9 +225,11 @@ availability stays pending. k93 makes one bounded consequence/alternative decisi
 with Antony if this source or its read policy cannot serve the obligation.
 
 Compare every returned fixture field against the manifest, including distinct
-same-ID short/long identities, unchanged resolved spelling, INDEXED_ITEM metadata
-provenance, UNKNOWN installation state, null unsupported bundle flags and useful
-correct identifier/name. A null name/identifier is legal API uncertainty but fails
+same-ID short/long identities and unchanged spelling. Through 1,023 root bytes
+require BUNDLE_RESOURCE, correct fixed-file localized names and explicit flags;
+at 1,004…1,023 installation state remains UNKNOWN under the action's independent
+Info.plist guard. At >=1,024 require INDEXED_ITEM, UNKNOWN state, null flags and
+correct actual indexed identifier/localized name. A null name/identifier is legal API uncertainty but fails
 this known-value subject. Device/inode bracketing detects observed replacement;
 wrong stale facts predating the bracket fail the independent witness, while the
 source's general index-to-inode association remains unproved. Returned optional
@@ -215,8 +243,8 @@ null receipt/no delivered document/no activation or selected item, with independ
 process/kernel/handler/Finder witnesses over the positive control's observation
 window. Copy retains exact bytes. Never retry an unconstrained short competitor.
 Separately act on an actual short BUNDLE_RESOURCE INSTALLED choice to control the
-observers. The 1,004…1,023 indexed choices qualify metadata only; their longer
-plist spelling prevents promising action Bundle support. This does not reopen or
+observers. The 1,004…1,023 ordinary choices qualify metadata only; the action’s longer
+whole-path plist spelling prevents promising action Bundle support. This does not reopen or
 pass the independently accepted registered-long/preferred-long coverage limit.
 
 Controls must independently reject a missing long tuple, wrong type/identifier/
@@ -322,24 +350,35 @@ serviceability controls, fresh dialog/hydration subjects and new binary profiles
 No read registration, launch, source widening, raw walk or consent fallback is
 permitted. Unavailable native populous conditions stay live before baseline.
 
-At the shallow full envelope the owned-attempt certificate is 989,240, below
-1,048,576. A fixed-record/payload construction reserves 512C spelling records,
-256C choice records, 32U ordinal records, 128D identifier records, 128R running
-records, two copies of each path and name/ID payload, 64×2,048 diagnostic bytes,
-64C indexed fact records, two extra copies of indexed name/identifier scalars,
-128 fixed source-summary bytes and 1 MiB one-walk scratch: 6,816,128 bytes. These are maximum **logical gross
-charges** the actual adapter must satisfy, not a measured Swift/RSS bound. N5
-accounts actual owned copies, record/container allocation and scratch before
-relying on the certificate; unsupported larger allocations invalidate it.
-One full items selection's conservative JSON certificate uses six bytes per
-escaped payload byte, 512 fixed bytes/choice, 8,192/diagnostic and 65,536 for
-root/coverage: 7,929,856 bytes. It fits the unchanged core cap; multiple selections
-still charge the core's response materialization independently. Public maximum
-strings need not fit these shallow certificates or the shared 8 MiB gate.
+At the shallow full envelope the explicit attempt certificate is 2,345,024 under
+4,194,304. The [recipe/table](native-discovery-sources.md#application-population-construction-evidence)
+uses U=8,192/R=C=2,048/D=2,050/V=32/E=65,536/L=4,096/F=16,384. E includes every raw
+directory/preference/selector value; L includes all retained localization records,
+including unselected names. No production per-app locale quota follows.
+The former 6,816,128 record/payload/scratch bytes plus <=1,000,000 gross fixed-file
+input bytes and 4,096×(64 record + two 32-byte components) derive 8,340,416 under
+the unchanged 8 MiB gate. Two 64 KiB buffers, finite preference scratch (<=32
+records/4,096 payload bytes) and fixed plan scratch reuse the existing 1 MiB
+scratch allowance; borrowed native info/name dictionaries
+are disposed at actual return and never deep-copied. Baseline and repeated-spelling
+reads contribute actual bytes, even when buffers are reused. These are finite
+qualification dimensions and logical gross charges, not measured Swift/native
+heap or RSS bounds. N5/N8 must inventory actual calls, allocations, transient
+copies and independent native parser serviceability before crediting them.
 
-The deterministic design check proves these input/certificate inequalities and
-rejects old 256-ID/16,384-call and broken copy/wire ceilings; it supplies no timing,
-native enumeration, action-selection, memory-peak or useful-population verdict.
+P1024/L1500 must measure these dimensions with every required useful copy and native
+baseline retained. Exceeding a finite assumption or production gate fails the
+useful subject; it cannot be fixed by filtering baseline/helpers or a locale
+subset. The coverage decision records a concrete consumer consequence if actual
+qualification cannot meet the contract. Wire is unchanged at 7,929,856: six-byte
+escaping plus the same fixed-choice/diagnostic/root allowances under core 8 MiB.
+Multiple selections still charge core materialization independently; public string
+maxima do not necessarily fit the shallow subject.
+
+Deterministic checks reject old reader allowances, Info-only closure, opaque
+fallback, omitted input/component charges, native-order prefix and broken copy/
+wire bounds. They supply no native enumeration/localization, action-selection,
+three-second duration, parser peak or useful-population verdict.
 
 ## Independent observers and serviceability
 

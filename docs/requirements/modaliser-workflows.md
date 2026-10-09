@@ -131,8 +131,11 @@ uses actual fixed-query tuples with explicit provenance; source facts do not
 prove current plist or launch eligibility. L1500's actual long-source/usefulness
 qualification remains pending. No client-found path can close native provenance,
 and no new access policy or useful-choice loss is approved by that design.
-The localized Bundle resource boundary requires k212's reviewed repair;
-the known-plist suffix alone cannot authorize a localized-name read.
+K212 selects the explicit fixed-file/direct-localization reader for ordinary
+roots through 1,023 bytes, with a 977-byte localized control and 978-byte old-band
+copy. Larger roots require actual indexed tuples. Mandatory review and native
+G11/N8/V13 must preserve useful localized names, flags and unchanged action limits;
+no known-plist-only proof, opacity fallback or narrowed useful category passes.
 
 Koine's own location and metadata reads remain prompt-free. They must report
 blocked, unavailable, unknown and healthy empty outcomes honestly and avoid

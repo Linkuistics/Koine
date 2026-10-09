@@ -7,17 +7,20 @@
     "retainedChoices": 2048,
     "runningObjects": 2048,
     "indexedTypeValues": 65536,
-    "nativeAttempts": 1048576,
+    "nativeAttempts": 4194304,
     "ownedCopyBytes": 8388608,
     "responseBytes": 8388608,
-    "diagnostics": 64
+    "diagnostics": 64,
+    "metadataFileBytes": 65536,
+    "metadataDictionaryKeys": 4096,
+    "metadataPlanEntries": 65536
   },
   "recipe": {
-    "fixedAttempts": 32,
+    "fixedAttempts": 40,
     "attemptsPerURLObservation": 16,
     "attemptsPerRunningObject": 5,
     "attemptsPerIdentifier": 12,
-    "metadataAttemptsPerSpelling": 10,
+    "metadataAttemptsPerSpelling": 32,
     "walksPerSpelling": 2,
     "attemptsPerWalkVisit": 6,
     "fixedAttemptsPerWalk": 4,
@@ -27,7 +30,13 @@
     "publishSaturationReasonSummary": true,
     "saturationSummaryRendering": "ONCE_AT_FREEZE",
     "recursiveIdentifierExpansion": false,
-    "providerFiltersAgentsOrHelpers": false
+    "providerFiltersAgentsOrHelpers": false,
+    "attemptsPerMetadataFileProbe": 48,
+    "metadataFileProbesPerSpelling": 4,
+    "metadataFileProbesPerSelectedLocalization": 2,
+    "foreignBundleLookup": false,
+    "recursiveResourceTraversal": false,
+    "attemptsPerMetadataPlanEntry": 8
   },
   "shallowCertificate": {
     "componentVisitsPerWalk": 32,
@@ -49,7 +58,15 @@
     "wireEscapingMultiplier": 6,
     "wireChoiceFixedBytes": 512,
     "wireDiagnosticBytes": 8192,
-    "wireRootAndCoverageBytes": 65536
+    "wireRootAndCoverageBytes": 65536,
+    "localizationRecords": 4096,
+    "localizationComponentBytes": 32,
+    "localizationRecordBytes": 64,
+    "ownedLocalizationComponentCopies": 2,
+    "metadataInputBytes": 1000000,
+    "metadataPlanEntries": 65536,
+    "preferenceRecords": 32,
+    "preferencePayloadBytes": 4096
   },
   "populousVM": {
     "name": "P1024",
@@ -62,6 +79,7 @@
     "runningObjectSubjectMaximum": 128,
     "requireActualAllUsefulChoices": true,
     "requireIndependentManifestAndObservers": true,
-    "nativeVerdict": "PENDING"
+    "nativeVerdict": "PENDING",
+    "requireMeasuredMetadataInputAndLocalizationDimensions": true
   }
 }

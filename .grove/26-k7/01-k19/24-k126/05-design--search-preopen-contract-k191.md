@@ -48,7 +48,7 @@ consumer consequence; systematic useful discovery loss is not accepted here.
 Consume k202's reviewed spec/source report and finite acceptance first. Pin actual
 call/flag/value qualification tables for Foundation, fixed indexed-local predicate,
 running, action-equivalent AppKit list-plus-preferred positive selection, separate
-deprecated error-bearing registration negatives, identified Bundle/resource inspection and fixed-target core/getd. State what can be refused before contact,
+deprecated error-bearing registration negatives, root resource type, explicit fixed-file/direct-localization inspection and fixed-target core/getd. State what can be refused before contact,
 what already contacted opaque services, known identity-alias protection and unknown
 relocation/replacement limits. No global materialization change or array-count
 health inference; ordinary accepted reads must remain no-dialog/no-hydration.
@@ -68,10 +68,12 @@ Name Creator on k193 only when closing k126, and reconcile all permission artifa
 ## Population access duty
 
 After complete root native-discovery-k205 review, qualify counted stable index
-access, running/registration batch acquisition and admitted Bundle flags under
+access, running/registration batch acquisition and selected fixed-file flags under
 the existing source/individual-contact policy. P1024 adds helper/baseline pressure;
-post-result exclusion cannot undo native prompt/hydration contact. No new plist
-reader, ancestor inspection or helper access posture follows from nullable facts.
+post-result exclusion cannot undo native prompt/hydration contact. Consume reviewed
+k212's narrowly authorized fixed-file/direct-localization exception; qualify
+nofollow/regular/dataless checks and their remaining replacement/read races.
+No ancestor/unrelated-resource inspection or helper access posture follows.
 
 ## Long indexed getter access duty
 
@@ -79,8 +81,9 @@ After complete k205 review, qualify the exact four-attribute projection on actua
 fixed-query items under the existing source/individual-contact policy. Object
 getters may perform opaque I/O: pathname-free signatures prove neither no-dialog
 nor no-hydration. Pair L1500/V13 with protected/cloud/alias and independent positive
-controls at N8/V8; lookup-only identity grants no plist/listing access. No new
-NSMetadataItem(url:), descriptor resource reader, helper, alias workaround, scope,
+controls at N8/V8. Root >=1,024 uses actual indexed tuples only; ordinary roots
+through 1,023 use k212's explicit component-relative metadata exception.
+No NSMetadataItem(url:), foreign Bundle/resource lookup, helper, alias workaround, scope,
 consent or signing posture follows. Real useful/source-policy gaps go once to k93.
 
 ## Settings exact-read policy duty
@@ -95,8 +98,9 @@ and cold-before-visit/warm usefulness; unavailable conditions stay pending.
 ## K211 integration handoff
 
 Consume k212's localized-reader design and mandatory review/earned integration
-before qualifying any ordinary Bundle episode; the known-plist-only boundary is
-insufficient. Keep admitted getter/contact and useful localized-name obligations.
+before qualifying the ordinary root-type/fixed-file/direct-localization episode.
+The 977 localized control and 978 old-band copy need actual no-dialog/no-hydration
+and correct localized-name/format/identity witnesses; no suffix-only proof passes. Keep admitted getter/contact and useful localized-name obligations.
 Diagnostic saturation continues inspection with fixed source summaries and bounded
 visible reason guidance. Settings confirmation timeout retains only uncontradicted
 complete-first-map positives; count/call/copy overflow and earlier incomplete

@@ -1,26 +1,38 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Complete native discovery design for macOS 26+ Apple Silicon. Population admission, Settings lazy uncertainty and indexed long metadata are reconciled; mandatory whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. The authorized explicit application reader uses root resource type and held-directory fixed-file/direct-localization reads; indexed long roots retain explicit provenance. Review and all native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Complete native discovery contract before consumption",
-    "status": "Designed; mandatory review and native qualification pending",
-    "summary": "Application full staging, Settings full-map uncertainty and indexed long metadata form one contract under static authority and true-return ownership. P1024, V12 and L1500 require independent actual useful-choice qualification. Local UI-only consent, disclosure-capable hosts and the retained four-action contract remain binding.",
+    "title": "Explicit application metadata reader",
+    "status": "Scope approved; design complete for mandatory review; native qualification pending",
+    "summary": "Root-only whole-path admission through 1,023 bytes; fixed information/name files and direct localization plan use held directories. No foreign Bundle lookup. L1500 adds 977 localized control and 978 old-band copy. The revised finite attempt/gross certificate preserves 8 MiB gates, k211 repairs and independent actions.",
     "diagramIds": [
+      "native-localized-decision",
+      "native-long-applications",
+      "native-application-population",
       "native-discovery-contract",
       "native-discovery-sources",
-      "native-application-population",
-      "native-settings-readiness",
-      "native-long-applications",
-      "native-discovery-lifecycle"
+      "native-settings-readiness"
     ],
     "updatedDiagrams": [
       {
+        "id": "native-localized-decision",
+        "summary": "Replaced the scope proposal with selected root admission, fixed-file/localization ownership and indexed fallback; added 977/978 controls and independent action limits."
+      },
+      {
+        "id": "native-long-applications",
+        "summary": "Changed discovery cutover to the 1,024-byte root boundary and showed descriptor-relative ordinary metadata plus the localized 977/978 controls."
+      },
+      {
+        "id": "native-application-population",
+        "summary": "Added explicit metadata-plan work and the revised 2,345,024-attempt/8,340,416-byte finite certificate."
+      },
+      {
         "id": "native-discovery-contract",
-        "summary": "Connected the combined uncertainty contract to independent P1024, V12 and L1500 usefulness witnesses."
+        "summary": "Located the private fixed-file/direct-localization reader inside the discovery image."
       },
       {
         "id": "native-discovery-sources",
-        "summary": "Added indexed L1500 and process-only preparation/two-sweep Settings uncertainty to the source overview."
+        "summary": "Updated the source caption to the selected explicit reader; the source graph remains unchanged."
       }
     ]
   },
@@ -78,13 +90,22 @@
   ],
   "diagrams": [
     {
+      "id": "native-localized-decision",
+      "group": "native-sources",
+      "title": "Admit root type and read a closed metadata plan",
+      "renderer": "svg",
+      "source": "native-localized-decision.d2",
+      "rendered": "native-localized-decision.svg",
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN."
+    },
+    {
       "id": "native-long-applications",
       "group": "native-sources",
       "title": "Preserve long indexed choices and the independent action refusal",
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Indexed tuples report type/name/identifier; descriptor resolution establishes a current directory without binding stale index facts to its contents. Optional scalars stay null; indexed choices keep UNKNOWN state/null flags. The localized resource pathname boundary is UNRESOLVED: known-plist arithmetic cannot admit a shorter-path Bundle reader. K212 and mandatory review must derive safe ordinary/band controls before k7. L1500 requires actual indexed tuples and unchanged selected-action refusals; declarations/disk construction are no native pass."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support."
     },
     {
       "id": "native-discovery-contract",
@@ -93,7 +114,7 @@
       "renderer": "svg",
       "source": "native-discovery-contract.d2",
       "rendered": "native-discovery-contract.svg",
-      "caption": "Component view within one resident process. The complete design combines application whole-population staging, Settings PARTIAL/UNKNOWN lazy observations and indexed long metadata with explicit provenance. All routes retain static authority, frozen publication and true native-return ownership. Production action adapters stay private to the action image; the principal has its own guard. Only Koine’s explaining UI reaches conditional target-wide consent. Independent P1024, V12 and L1500 useful-choice witnesses, all other G/N/V outcomes and mandatory whole-producer review remain pending."
+      "caption": "Component view within one resident process. The discovery image privately owns the explicit fixed-file/direct-localization reader; action and shared lookup modules acquire no contents code. Static authority, principal/action image guards, frozen publication and true-return ownership remain binding. Settings k211 deadline/lazy-reveal repairs and diagnostic saturation are preserved. Mandatory review, actual P1024/V12/L1500 and all native verdicts remain pending."
     },
     {
       "id": "native-settings-flow",
@@ -129,7 +150,7 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Application count/call/copy/deadline overflow FAILED/null; diagnostic saturation omits guidance details, never choices. Indexed tuples keep UNKNOWN/null flags without current-plist binding; the localized Bundle boundary awaits k212's reviewed repair. Settings preparation is process-only, lazy completeness UNKNOWN; confirmation timeout can retain uncontradicted complete-first-map positives. P1024/V12/L1500 and all other native verdicts remain pending."
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Ordinary application roots use the explicit fixed-file/direct-localization exception; larger roots use actual indexed tuples without current-plist binding. Global overflow fails the population, detail saturation never loses choices. Settings process-only preparation, lazy UNKNOWN completeness and retained-first-map confirmation timeout rules remain binding. Review and all P1024/V12/L1500 native verdicts remain pending."
     },
     {
       "id": "native-application-population",
@@ -138,7 +159,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Every stage reserves owned budgets; count/call/copy/deadline exhaustion withholds all choices. Detail saturation continues inspection with DIAGNOSTIC_LIMIT, fixed source masks and bounded visible reason guidance, never item loss. Source-local unsafe metadata may yield PARTIAL; source order is not ranking. Source-labelled indexed metadata awaits actual P1024/L1500 qualification, and the localized Bundle boundary awaits k212's mandatory design review. No native enumeration, timing, UI fact or memory-peak pass follows."
+      "caption": "Complete staging with explicit metadata-plan/file work. The finite shallow certificate is 2,345,024 attempts under 4,194,304 and 8,340,416 gross bytes under unchanged 8 MiB; wire remains 7,929,856. Actual baseline input/localization dimensions must fit, with no locale subset or helper filtering. Global overflow withholds items. Diagnostic saturation retains choices and fixed source reasons. Review and P1024/L1500/native serviceability remain pending."
     },
     {
       "id": "native-settings-decision",

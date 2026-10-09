@@ -84,8 +84,11 @@ choices; predicate/suffix/running identifier alone cannot. Normalize optional
 name/identifier null/conflict branches without cross-copy substitution; indexed
 installationState stays UNKNOWN and unsupported bundle flags null. Preserve exact
 resolved spelling and distinct same-ID copies, with no claimed index-to-inode or
-current-plist binding. The 1,004-byte known-plist and 1,024-byte action boundaries
-are independent. Actual L1500 type/identity/name/ID/usefulness remains pending;
+current-plist binding. Consume reviewed k212: BUNDLE_RESOURCE root type/fixed-file/
+direct-localization facts through 1,023 bytes; INDEXED_ITEM at >=1,024.
+1,004…1,023 ordinary installation state remains UNKNOWN under the independent
+action Info.plist guard. Never rescue a refused localized name with plain Info,
+a filename or another copy; normalize typed null flags and honest uncertainty. Actual L1500 type/identity/name/ID/usefulness remains pending;
 known incorrect witnesses fail, not opaque-health acceptance.
 
 ## Settings lazy-observation duty

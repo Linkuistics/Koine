@@ -75,9 +75,11 @@ constructs actual accounting and k123 normalizes the facts. No native pass follo
 
 Reviewed complete k205 supplies fixed actual indexed-item type/name/identifier
 projection and independent directory identity, public provenance, UNKNOWN
-installation state and null unsupported bundle flags. Preserve 1,004-byte plist
-and 1,024-byte action limits without a new reader. K191/N8 qualify the exact getter
-contact policy, k127/N5 constructs revised 989,240-attempt/6,816,128-byte accounting,
+installation state and null flags at >=1,024-root bytes. Consume reviewed k212:
+ordinary roots use explicit type/fixed-file/direct-localization mechanics through
+1,023 bytes; 1,004…1,023 state stays UNKNOWN under independent action plist support.
+K191/N8 qualify contact/format/localization, k127/N5 constructs revised
+2,345,024-attempt/8,340,416-byte accounting under 4,194,304/8 MiB,
 and k123/G11 normalizes identity/conflict/null branches. V13 requires actual L1500
 long indexed tuples and unchanged selected-action refusal, not disk/client/old
 action evidence. Required missing/unavailable qualification stays live before baseline.

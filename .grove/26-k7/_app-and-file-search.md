@@ -98,8 +98,7 @@ mandatory whole-producer review remains the root handoff before consumption.
 ## Long application construction handoff
 
 Consume reviewed complete k205, including G11/N8/V13. Actual fixed-query indexed
-tuples supply reported type/name/identifier when whole-path Bundle metadata is
-unsupported; lookup-only identity is no current-plist/index binding. Expose
+tuples supply reported type/name/identifier at roots of >=1,024 UTF-8 bytes; lookup-only identity is no current-plist/index binding. Expose
 metadataSource, keep INDEXED_ITEM UNKNOWN and bundle flags null, exact first
 resolved path and distinct same-ID copies. K191 qualifies getter contact; k127
 constructs counted query/item/scalar ownership and revised N5 costs; k123 normalizes
@@ -124,7 +123,11 @@ revealing a known prior pane/anchor. Diagnostic saturation never erases choices:
 63 details plus DIAGNOSTIC_LIMIT and fixed summaries retain all outcome reasons.
 
 Before implementation, consume application-localized-metadata-k212 and its
-mandatory review/earned integration. The known-plist arithmetic cannot authorize
-localized Bundle reads; the complete resource pathname route/control is unresolved.
+mandatory review/earned integration. The approved ordinary reader uses root type
+through 1,023 bytes plus held-directory fixed information/name files and a direct
+locale inventory/explicit preference plan. No opaque Bundle or descendant whole
+path is admitted. L1500 adds 977 localized and 978 old-band controls; larger roots
+keep actual indexed tuples. Ordinary 1,004…1,023 state stays UNKNOWN because action
+Info.plist support is independent.
 K191/k127/k123/k30 must use its repaired source/ownership/normalization/qualification
 contract, retaining useful localized names and independent action boundaries.
