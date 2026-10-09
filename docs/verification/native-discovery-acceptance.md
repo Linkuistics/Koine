@@ -12,10 +12,10 @@ permission request, launch or signing change was performed by this design.
 
 Review integration requires a further producer/review before k7 can consume the
 application-population bounds, cold/warm settings readiness or long-application
-metadata/handoff design. Their existing numbers and completeness claims are
-provisional. Add a declared populous application subject, cold-prepare versus
-warm pane/anchor observations and a constructible long-catalogue source subject
-without reducing the agreed category. No affected row passes by inference.
+metadata/handoff design. The application slice now defines a complete staged
+population, explicit cost certificates and P1024 below. Whole-producer review,
+actual populous qualification, cold/warm readiness and constructible long metadata
+remain pending. No affected row passes by inference.
 
 ## Exact identities and posture
 
@@ -81,6 +81,7 @@ composition seams; actual native counterpart rows below remain pending.
 | G7 | Nested first/second items aliases share one native observation; separate root aliases have separate owners. FAILED yields failed on both selected items paths, status-only has no generated items error. BLOCKED/UNAVAILABLE/UNKNOWN yield ordinary null without generated errors; nonnull publication propagation remains standard. |
 | G8 | Exact input IDs/anchor names: whitespace, Unicode spelling distinctions, quotes/script-like text and URI-like strings cannot become expressions/URLs; invalid controls/length/NUL refused. Positive absent object before reveal gives dependency; other failures do not invent absence. No arbitrary target/event/setup/retry input. |
 | G9 | Corrected core disclosure catalogue under koine:manage contains workspace:read and control text matching all native grant surfaces: no client filesystem access, background preparation without desktop control, both controls for launch/open/reveal and preserved handler reach. No management or workspace GraphQL route initiates ask=true. Complete new-host and prior-disclosure-host refusal profiles/digests remain distinct. Removing the read entry, retaining “always needs desktop control”, or making the prior-host native update ACTIVE must fail. |
+| G10 | Full bounded application population with >256 coherent useful identifiers, duplicate URL slots, same-ID copies, helper/agent pressure, nullable explicit Boolean flags and empty/unknown/conflicting running policy sets. All coherent seed IDs expand once, lists retain fail-before-match semantics and no helper/unknown choice is silently filtered. At/exceed raw-slot, distinct-spelling, ID, choice, call, gross-copy, diagnostic and shared deadline edges, global overflow yields FAILED/null items even after useful staging. Root/nested aliases retain independent errors. Reverse/permuted source order cannot turn overflow into a different partial survivor set. Inject a 256-ID quota, per-choice list re-walk, earlier-failure skip, fabricated false flags, helper suppression or prefix-on-overflow and require rejection. Source-local unsafe metadata still produces the declared partial/unknown outcomes. |
 
 ## N: actual source and provider binaries
 
@@ -90,7 +91,7 @@ composition seams; actual native counterpart rows below remain pending.
 | N2 | Enumerate actual source call paths and native image imports/selectors/exported seams/dependency closure/link map, including the principal's routing-only allowlist and private production construction inside WorkspaceActions. Original four-action guard still rejects listing/spawn/scripting/extra activation. Compiled action→settings link/callback, principal-injected effect adapter with clean action imports, inserted forbidden action code, read→ask=true or reveal routing, and removed authority mutations must fail appropriate source/binary/runtime controls; legitimate new images pass their finite exact allowlists. Test injection is absent from production exports/linkage. |
 | N3 | Real Foundation location values; NSMetadataQuery fixed predicate and IndexedLocal scope, gathering completion/stop/late notifications; running source; AppKit ordered list-plus-preferred eligibility paired with actual action selection, separate deprecated error-bearing negative evidence, and individual-target bundle identity. Record actual errors, count and copied-value accounting; substitutions pass branch logic only. |
 | N4 | Exact settings address descriptor typeKernelProcessID; trusted OS bundle/signature/process revalidation; core/getd all xppb IDs, ID-selected pane pnam/all xppa names, repeat IDs; misc/mvis direct pane/anchor; then one fixed-bundle NSWorkspace.openApplication with activates=true and all other pinned flags/empty payload. Revalidate callback incarnation; exit between validation/submission may launch and remains ambiguous on failure. Reply types/codes and no-prompt flags are observable. Wrong target/class/ID/type, ID set change, process replacement and late reply fail; no NSRunningApplication.activate/AX fallback or dictionary authorize/timedLoad/interpreter route. |
-| N5 | Every owned native/syscall attempt reserves call/copy/job/diagnostic budget. At 4 jobs, 2048 URLs, 256 identifiers/panes, 128 anchors/pane, 4096 anchors, 16384 calls, 8MiB, 64 diagnostics and string ceilings, exercise exact/beyond edges with failing off-by-one controls. Opaque native batches/replies are recorded separately, not charged as if their peaks were proved. |
+| N5 | Every explicit owned native/syscall attempt and gross owned allocation/copy reserves budget. Application envelope: 8,192 raw URL slots, 2,048 distinct spellings/choices, 2,050 identifier groups, 2,048 running objects, 1,048,576 explicit attempts and 8 MiB copies. Check the source recipe/call and shallow copy/wire certificates below term by term, actual before/after walks <=2C and no C×D multiplier. Reserve held-resource cleanup before acquisition. Settings/location retain 16,384 attempts; settings retain 256 panes, 128 anchors/pane and 4,096 total anchors. At four jobs, 64 diagnostics and all count/string/copy/response/deadline ceilings, exercise exact/beyond edges with failing off-by-one controls, including useful staging before global overflow. Opaque native batches/replies/ARC internals are recorded separately; their peaks are unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
 
@@ -114,6 +115,77 @@ hardware/native fixture remains pending. No older-OS/legacy programme is require
 | V8 | Fresh first-use protected/known-cloud application targets and redirected Documents/known aliases for the actual metadata mechanisms. Lookup-only identity permission is no listing exemption. Known protected target alias policy must refuse individual unsafe inspection; source/index acquisition contact happens earlier and must itself meet read policy. Record metadata contact/race/unknown alias limits; no global materialization pin, raw home search or foreign mount inventory. |
 | V9 | Declared indexed application scope with indexing disabled, excluded and rebuilding, measured separately from a normally populated control. Independently registered system apps and running supplements cannot hide an empty/contradicted breadth source as COMPLETE/AVAILABLE. Record actual completion, source membership and UNKNOWN/PARTIAL diagnostics without claiming internal index health. Unavailable native state remains pending. |
 | V10 | Corrected disclosure-capable signed host: native grant creation, request approval, existing-grant views and management all show matching workspace read/control reach and serve native profiles. Independently retained prior selection-aware signed host: native bundled/update candidates refused before initializer/factory/start as unsupported-feature, retained action-only 1.0.1 active with selected-with-refusals and complete action SDL. Pair with a positive loading control on the corrected host. Missing read text, stale control text or prior-host native load fails; native acceptance remains pending. |
+| V11 | Actual P1024 populous catalogue below on normally launched signed supported hosts, complete new bundled/update profiles. Independent useful-choice manifest must find all 1,024 useful identifiers with correct copy identity/name/eligibility, including all fourteen configured/system witnesses, while agent/background/nested-helper and baseline pressure consume the same envelope. Native indexed/running breadth must supply non-witness choices; no hidden seeds. Whole-population overflow, deadline miss or any missing useful choice is an unmet obligation, never a passing sparse/sample result. Native metadata/source/UI facts and independent listener/store/action/dialog/hydration controls must detect deliberate wrong/missing outcomes. |
+
+## Application population subjects
+
+The [population certificate](../design/application-population.json) fixes the
+design inputs for G10/N5/V11. All these subjects are **pending native acceptance**.
+The cardinality envelope is not a cap on a product's promised useful category;
+it is the finite subject against which that promise must be demonstrated.
+
+P1024 contains 1,024 distinct useful identifiers, including Dia, ChatGPT, Claude,
+Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian, Zotero,
+Safari and Finder, plus 1,010 distinct signed UI test apps. Use actual app bundles
+with independent native type/identity/metadata and registration witnesses, rather
+than 1,010 names for one copy/identifier. They need not all run. Add 256 signed
+agent/background/helper copies, including a checked nested helper, and 128 alias
+spellings in the controlled source counterpart. Native alias exposure is qualified
+separately rather than assumed from creating links; V3 stays independently pending
+where its actual native precondition cannot be produced. AppKit/CF/preferred
+registration lists each charge every returned slot, including repetitions.
+
+The native VM keeps its existing baseline apps in the same measurement. The
+finite construction leaves 640 distinct-spelling slots after 1,280 controlled
+copies and 128 aliases; actual baseline/registration extras, source repetition,
+identifier/choice counts and bytes must fit **all** gates. Record their full
+independent manifest before capture. Record actual component visits including
+link expansion, path/name/identifier bytes, and each source's native batch count;
+the shallow certificates assume <=32 visits, <=256 path bytes, <=128 name/ID
+bytes and <=128 running objects for P1024. These are qualification-subject facts,
+not new public path/depth/string limits. If the supported VM baseline does not
+fit, revise the declared subject/design explicitly; do not delete native apps,
+omit helpers or lower the useful population to obtain a pass.
+
+Prepare fixture installation, signing, indexing and registration explicitly
+outside Koine's ordinary read. Observe the selected exact native sources from a
+separate authorized observer and distinguish actual source omissions from the
+provider dropping returned candidates. Compare every required identifier/copy
+and fact against the independent manifest, not merely totals. Require several
+non-running, non-witness indexed GUI apps, a running accessory and prohibited app,
+and correct explicit true/false/missing/malformed flags in controlled counterparts.
+All observed helper choices remain available for client-side filtering; optional
+unknown flags neither erase a choice nor invent stopped-app runtime policy.
+
+Finite size controls use small, populous and exact/beyond-envelope controlled
+responses, reversed/permuted raw order, deep paths, long legal strings, repeated
+same-ID copies and global exhaustion after staging useful choices. Deliberately
+remove a useful non-witness, corrupt identity/eligibility, manufacture false flags,
+hide helpers and publish a native-order prefix; each independent applicable
+observer must fail. Native V11's all-useful requirement is separate from G10's
+overflow behavior: an honestly failed catalogue still does **not** pass usefulness.
+Actual unheld P1024 workloads and held late-return jobs use the existing independent
+serviceability controls, fresh dialog/hydration subjects and new binary profiles.
+No read registration, launch, source widening, raw walk or consent fallback is
+permitted. Unavailable native populous conditions stay live before baseline.
+
+At the shallow full envelope the owned-attempt certificate is 870,456, below
+1,048,576. A fixed-record/payload construction reserves 512C spelling records,
+256C choice records, 32U ordinal records, 128D identifier records, 128R running
+records, two copies of each path and name/ID payload, 64×2,048 diagnostic bytes,
+and 1 MiB one-walk scratch: 5,636,352 bytes. These are maximum **logical gross
+charges** the actual adapter must satisfy, not a measured Swift/RSS bound. N5
+accounts actual owned copies, record/container allocation and scratch before
+relying on the certificate; unsupported larger allocations invalidate it.
+One full items selection's conservative JSON certificate uses six bytes per
+escaped payload byte, 512 fixed bytes/choice, 8,192/diagnostic and 65,536 for
+root/coverage: 7,929,856 bytes. It fits the unchanged core cap; multiple selections
+still charge the core's response materialization independently. Public maximum
+strings need not fit these shallow certificates or the shared 8 MiB gate.
+
+The deterministic design check proves these input/certificate inequalities and
+rejects old 256-ID/16,384-call and broken copy/wire ceilings; it supplies no timing,
+native enumeration, action-selection, memory-peak or useful-population verdict.
 
 ## Independent observers and serviceability
 

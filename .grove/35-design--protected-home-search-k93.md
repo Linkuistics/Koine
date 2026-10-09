@@ -61,3 +61,11 @@ index controls remain honest UNKNOWN/PARTIAL. Required disclosure-capable hosts
 serve corrected core native UI/management text; prior selection-aware hosts refuse
 native candidates before load under workspace-native-disclosures-v1. These are
 accepted design boundaries, not fresh permissions or native passes.
+
+## Populous native coverage duty
+
+After complete native-discovery-k205 review and actual P1024 G10/N5/V11 measurement,
+resolve any ordinary population overflow, shared deadline miss, systematically
+unknown launcher metadata or missing useful non-witness. An honest FAILED/null
+catalogue still leaves usefulness unmet. Do not silently reduce the native category,
+accept a source-order sample, prune unavailable subjects or resume client raw work.

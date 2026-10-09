@@ -53,3 +53,11 @@ refusal with action-only fallback. OS Automation initiation is local human UI-on
 not GraphQL/bearer management; late requests retain true-return ownership. Complete
 current native acceptance rows, including V9 index-health uncertainty controls,
 bind without credit from historical action-only captures.
+
+## Populous native baseline duty
+
+Require actual G10/N5/V11 P1024 useful choices/accounting and independent observers,
+after complete native-discovery-k205 and its mandatory review/earned integration.
+The population slice's SDL/arithmetic/render/link checks provide no native pass;
+sparse catalogues, owned-limit/deadline failure and unavailable populous subjects
+stay live before baseline. Preserve independent action-only compatibility.

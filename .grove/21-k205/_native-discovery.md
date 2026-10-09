@@ -1,4 +1,4 @@
-# native-discovery-k205
+# native-discovery-k205 — brief
 
 ## Goal
 
@@ -61,3 +61,33 @@ signing change or VM experiment here. Primary-source/SDK and bounded exact-sourc
 analysis may establish the construction; actual native G/N/V verdicts remain
 pending for the owning implementation/acceptance leaves. A required new posture
 or accepted useful loss needs Antony's explicit decision, with a recommendation.
+
+## Decisions (running log)
+
+- Adopt the mandated design leaf in the stated jj workspace. The working copy
+  starts empty above integration 8624bbdd413d. The graph CLI refuses startup
+  because a pre-coordination/unverified generation is active; use bounded
+  exact-source/SDK fallback, claiming no graph generation or coverage result.
+- The three construction questions and their cross-artifact reconciliation do
+  not fit one focused, low-context session. Decompose into application population,
+  Settings readiness, long-application metadata, then complete reconciliation.
+  This session executes only the first child. Every child is design-only; the
+  last child must cut mandatory whole-producer review naming native-discovery-k205
+  before app-and-file-search-k7, with earned integration there too. No consumer
+  may implement a partially repaired contract. Existing local UI-only consent,
+  disclosure host feature, action compatibility and pending native verdicts bind.
+
+## Decomposition
+
+1. application-population-k206: complete application admission/cost/filtering and
+   populous acceptance slice, with its current artifacts and checks.
+2. settings-readiness-k207: complete cold/warm panes/anchors slice.
+3. long-application-metadata-k208: admitted native source and finite long subject,
+   or explicit human resolution of the concrete access/usefulness trade-off.
+4. native-discovery-k209: whole-artifact reconciliation and checks; cut mandatory
+   root whole-producer review naming this node before app-and-file-search-k7.
+
+Only the first child executes in the decomposing session. The parent remains live
+until all children finish; partially repaired artifacts are not implementation
+input. The final child owns review creation and node cascade. All three existing
+G/N/V seams remain agreed, and every native verdict remains pending.

@@ -235,6 +235,13 @@ Core’s native UI and management catalogue must implement the corrected text be
 advertising workspace-native-disclosures-v1; prior hosts refuse native providers
 before load under the [host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md).
 OS consent is explained and initiated only in Koine’s local UI.
+Application population admission stages all bounded observations and shares
+once-per-ID registration comparisons; global count/call/copy/deadline exhaustion
+publishes FAILED/null items rather than an arbitrary source-order prefix. Native
+agent/background declarations and associated running policies support client
+filtering without provider suppression. G10/N5/V11 in the finite acceptance
+contract own the actual P1024 useful population, budget accounting and independent
+serviceability; review and native qualification remain pending.
 The [native-image decision](../adr/workspace-native-images-preserve-action-authority.md)
 requires a routing-only principal guard and production adapters private to their
 own images, including a principal-injection failing control; a clean action

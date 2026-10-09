@@ -82,3 +82,12 @@ unfinished downstream producer. K30 plans actual G/N/V acceptance using new
 1.2.0/schema 1.1.0 and 1.3.0/schema 1.1.0 profiles, while retaining independent
 action-only 1.0.0/1.0.1/1.1.0. K93 handles measured useful-category gaps, not home
 traversal/order. Required unavailable native subjects remain pending before baseline.
+
+## Population construction handoff
+
+Consume complete native-discovery-k205 and mandatory root review/earned integration,
+not its application slice alone. G10/N5/V11 now require complete bounded population
+staging, shared ordered registration work, explicit nullable presentation facts,
+null items on global overflow, and actual P1024 useful choices plus independent
+serviceability. No sparse result or honest overflow is a native usefulness pass.
+Cold/warm Settings and long metadata remain live root design children.

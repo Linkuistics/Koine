@@ -381,6 +381,14 @@ selected actions retain their own authority and native receipt checks. These
 expectations are agreed through the existing three seams; unavailable native
 subjects remain pending.
 
+The population design adds [P1024](../verification/native-discovery-acceptance.md#application-population-subjects)
+as a finite useful-application witness: >256 distinct useful identifiers,
+configured/system launchers, helper pressure and independently recorded native
+baseline apps. Shared population overflow is an honest failure, never a smaller
+passing native-order sample. Client filtering uses explicit optional native
+presentation facts; Koine does not silently remove helpers or unknown choices.
+Complete-producer review and actual native qualification remain pending.
+
 For the chosen settings route, those same seams cover an effect-free stopped-
 target read and explicit background preparation, denied/revoked preparation
 authority, an already-running target without reactivation, exact-event refusal

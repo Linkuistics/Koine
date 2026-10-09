@@ -136,6 +136,18 @@ it supplies category-specific application and runtime System Settings choices;
 **clients** own name filtering and ranking. Source observation completeness is
 separate from category completeness and internal native health.
 
+**Application population**: The complete bounded source observations staged by
+one application **native catalogue** job, including raw repeated URL slots,
+distinct spellings, identifier groups and per-copy choices. A population-wide
+owned-budget/deadline overflow invalidates publication instead of returning an
+arbitrary source-order sample. Qualification on a finite populous subject remains
+distinct from all-disk completeness.
+
+**Application presentation facts**: Explicit optional bundle agent/background
+declarations and observed running activation policies associated with checked
+copy identity. They support client filtering; they do not define a universal
+user-facing-app predicate or justify discarding unknown/helper choices.
+
 **Catalogue preparation**: An explicit control-authorized operation that launches
 a stopped System Settings target in the background and publishes only process
 readiness. It grants no read authority and never performs catalogue discovery,

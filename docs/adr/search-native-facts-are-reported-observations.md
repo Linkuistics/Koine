@@ -8,6 +8,12 @@ establishes no negative fact. The
 [native catalogue design](../specs/workspace-search.md#application-sources-and-native-facts) defines exact
 positive, negative and unknown branches for error-bearing registration and
 preferred-location contradiction checks; actual runtime qualification remains pending.
+Application choices also carry explicit nullable agent/background declarations
+and associated running-policy observations for client filtering; unknown flags
+are not false. The [population contract](../specs/workspace-search.md#application-population-admission)
+shares bounded observations and invalidates publication on global overflow, so
+native order cannot silently decide which useful copies survive. Its certificates
+and populous acceptance remain design/qualification obligations, not health proof.
 
 An undetected failure or stale native state can make a fact incorrect or omit a
 choice. Known incorrect witnesses and systematically unknown metadata for the

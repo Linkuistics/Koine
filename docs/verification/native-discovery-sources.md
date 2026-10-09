@@ -134,6 +134,91 @@ location may remain representable while bundle metadata and later action
 handoff are unsupported. No incorrect known witness is accepted as an opaque
 platform-health limit.
 
+### Application population construction evidence
+
+The population design changes owned admission/accounting, not the selected source
+or access posture. Its [machine-readable certificate](../design/application-population.json)
+describes finite subjects and the recipe, not a native API guarantee. The previous
+256-ID quota could leave an otherwise retained app UNKNOWN merely because of
+native enumeration order. A 16,384 call ceiling also did not cover 2,048 apps:
+even one eight-component directory walk costs roughly two native operations per
+component before metadata, registration and cleanup. The retained action's
+per-choice registered-candidate loop would multiply that work if repeated for
+every catalogue copy. None of those counts was qualified on a populous VM.
+
+Bounded source fallback reads the actual LocationWalk and ApplicationStage
+sources already cited above. A normal directory visit admits fstatat/openat/close;
+a symbolic-link visit adds readlinkat and held-directory fstat, and an absolute
+link closes/reopens root. Error classification may ask fpathconf. Six explicit
+attempts per consumed component plus four fixed start/end/cleanup attempts is a
+conservative bound for that walk, including a failing final link/errno branch.
+The finite shallow subject counts every visited component, including expanded
+link text, within 32. This does not impose a new action depth cap. Native runtime
+calls hidden inside Foundation/ARC are opaque work, outside that explicit syscall
+certificate, and remain part of serviceability qualification.
+
+The proposal stores job-local resolution **values**, not native object pins,
+once per distinct spelling and before/after individual metadata. All choices
+interpret the same once-per-ID ordered AppKit list plus preferred-only copy;
+the CF list remains separate breadth/negative evidence. A malformed or refused
+earlier comparison is not discarded from the ordered domain. An absent/unequal
+earlier copy still allows a later match. Registration lists are not re-walked for
+each choice, and new identifiers found only in supplements cannot recursively
+grow the catalogue. Native changes between these separate observations are
+possible; actual later actions always revalidate.
+
+The certificate assigns 32 fixed source/cleanup attempts, 2 per raw URL slot,
+5 per running object, 12 per identifier acquisition/count/disposal group, 8 per
+individual native metadata inspection, and at most two descriptor walks per
+spelling. The metadata recipe uses one resource-type read and the admitted Bundle
+identifier/info/localized dictionaries; flags are scalar entries in that same
+dictionary. It leaves room for the existing short-path stat/access denial checks.
+Do not apply this certificate to a different reader or repeated per-choice
+registration walk. Actual N5 must enumerate getter, syscall and explicit cleanup
+attempts, validate each term, and reserve cleanup before resource acquisition.
+
+Apple's [query update contract](https://developer.apple.com/documentation/foundation/nsmetadataquery/disableupdates())
+requires disabling live changes for indexed iteration; SDK 27 NSMetadata.h
+declares resultCount/resultAtIndex and recommends individual access instead of
+the results proxy. Count a stable gathered query on its owner run loop and bound
+indexed access before owned copying. Retire/release the query before acquiring
+the running batch, and dispose each registration batch after scalar staging
+before asking the next API; this preserves the one opaque batch/query ownership
+shape. Opaque acquisition occurs before any owned-copy gate, so a native batch
+can exceed owned limits before its count is observed. No hard native peak follows.
+
+SDK 27 NSRunningApplication.h declares activationPolicy and documents REGULAR,
+ACCESSORY and PROHIBITED behavior, including the correspondence to LSUIElement
+and LSBackgroundOnly. Apple's [running-application contract](https://developer.apple.com/documentation/appkit/nsrunningapplication)
+warns that time-varying properties remain race-prone. Its
+[Launch Services key reference](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html)
+describes the two Boolean declarations. Publish only explicit typed flag values
+and associated observed policies; no universal user-facing classification,
+implicit default, helper suppression or additional ancestor/plist inspection is
+justified by those declarations. Unreadable/unsupported metadata stays unknown.
+
+The owned-copy certificate for the shallow subject reserves spelling/choice/
+ordinal/identifier/running records, two owned copies of path/name/identifier
+payloads, diagnostic records and 1 MiB of one-walk scratch. Its worst-case logical
+charge is 5,636,352 bytes, below the unchanged 8 MiB gate. These record/scratch
+allowances are a required adapter construction contract, not measured Swift
+heap layout. A consumer that cannot keep its actual owned allocations/copies
+inside them must revise the certificate and bounds before claiming applicability.
+The same subject's single-full-selection JSON bound is 7,929,856 bytes, using
+six bytes per escaped UTF-8 byte and explicit fixed-field/diagnostic/coverage
+allowances. Multiple roots or aliases remain subject to the core's own 8 MiB
+response cap. Larger legal strings can overflow either gate; cardinality does
+not imply all combinations of public maxima fit. Overflow publishes no arbitrary
+choice prefix, and three-second completion/RSS/opaque health remain unproved.
+
+P1024 acceptance must discover 1,024 distinct useful identifiers, including the
+fourteen configured/system witnesses, alongside 256 helper/agent/background
+copies, alias pressure and native baseline apps. The baseline is measured rather
+than filtered away. Its independent install/identity/metadata manifest, native
+source observer and listener/store/action controls must detect missing choices,
+incorrect facts and serviceability failure. The exact supported subject must
+actually fit and finish; count arithmetic and SDK declarations are no such pass.
+
 ## Modern System Settings source decision
 
 ### Shipped scripting interface

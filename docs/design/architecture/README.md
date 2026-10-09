@@ -8,6 +8,11 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
+[Application population → Stage every bounded application choice before publication](index.html#diagram-native-application-population)
+is the current construction question. It shows shared registration/inspection work
+and global FAILED/null overflow. P1024 native usefulness is pending; Settings
+readiness and long metadata remain live design slices before whole-producer review.
+
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
 shows source/snapshot/image responsibility and the preserved action boundary.
 [System Settings → Read, prepare, set up, then reveal](index.html#diagram-native-settings-flow)
@@ -22,13 +27,10 @@ review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Added native-image/source ownership and source plus compiled action-boundary controls.
-- [System Settings → Read, prepare, set up, then reveal](index.html#diagram-native-settings-flow) — Added separate effect-free read, background prepare, conditional explicit setup and selected reveal paths with complete authority.
-- [Native ownership → Retain capacity until native work really returns](index.html#diagram-native-discovery-lifecycle) — Added bounded admission, publication freeze and capacity retained through actual return.
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Changed candidates to selected interfaces while retaining pending exact runtime qualification.
-- [Client-owned search and native discovery](index.html#diagram-search-discovery) — Connected the ownership boundary to the designed contract and pending review/acceptance.
-- [Native discovery contract](../../specs/workspace-search.md) — Replaced the raw proposal with native source/status/metadata/authority/ownership contracts.
-- [Finite native acceptance](../../verification/native-discovery-acceptance.md) — Defined new provider/profile identities and actual G/N/V witnesses without relabelling old captures.
+- [Application population → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Added full-population staging, shared registration work and explicit null-item overflow.
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Replaced arbitrary survivor admission with complete bounded application staging and native presentation facts.
+- [Application population admission](../../specs/workspace-search.md#application-population-admission) — Derived coherent source/identifier/choice limits and all-or-failure publication on global exhaustion.
+- [Application population subjects](../../verification/native-discovery-acceptance.md#application-population-subjects) — Added P1024 and explicit call/copy/wire certificates; every native verdict remains pending.
 
 The [agreed settings source](index.html#diagram-native-settings-decision) is
 unchanged requirements context. The other eight search views and
@@ -55,7 +57,8 @@ with their recorded layouts. The other existing tasks are design:workspace-rende
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
 
 Run design:search-compose before freezing inputs, then design:search-check for
-native SDL/examples/complete profiles and retained action examples. check:docs
+native SDL/examples/complete profiles, population certificates and deliberately
+broken budget/filtering controls, and retained action examples. check:docs
 validates relative links/anchors. These are design checks, not native acceptance.
 Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.

@@ -1,38 +1,24 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon: named location/application/settings observations, separate explicit settings effects and true native-return ownership. Review integration requires further population/readiness/long-metadata design and mandatory review before consumption. Implementation and native G/N/V acceptance remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. The application slice stages complete bounded populations with shared registration work and native presentation facts; whole-producer review, Settings readiness, long metadata and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
-    "title": "Native discovery contract, settings authority and retirement",
-    "status": "Review integration; further design/review and native acceptance pending",
-    "summary": "Three workspace:read queries return frozen provenance/uncertainty. Background prepare requires workspace:control; selected reveal requires both controls. Only a human action in Koine’s local explaining UI initiates conditional target-wide OS consent. Native providers require corrected core UI/management disclosures and workspace-native-disclosures-v1; prior hosts refuse before load. Four guarded images preserve existing actions. Population/readiness/long-metadata repairs and all native G/N/V remain pending.",
+    "title": "Complete application populations without a native-order sample",
+    "status": "Application slice designed; complete producer/review and native qualification pending",
+    "summary": "Stage full bounded sources, share once-per-ID registration and exact-spelling inspections, then freeze choices. Global owned-limit/deadline overflow gives FAILED/null items; helpers remain choices with nullable bundle facts and associated running policies for client filtering. P1024 must actually return every required useful identifier and pass independent controls. Settings readiness and long metadata remain live sibling design work.",
     "diagramIds": [
-      "native-discovery-contract",
-      "native-settings-flow",
-      "native-discovery-lifecycle",
+      "native-application-population",
       "native-discovery-sources",
-      "native-settings-decision",
-      "search-discovery"
+      "native-discovery-contract",
+      "native-discovery-lifecycle"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-discovery-contract",
-        "summary": "Require the disclosure-capable host feature, guard principal/action adapter construction and separate the private local UI consent seam."
-      },
-      {
-        "id": "native-settings-flow",
-        "summary": "Separate local UI-only consent with closed/late outcomes from three public operations; pin fixed-bundle activation and its exit/relaunch race."
-      },
-      {
-        "id": "native-discovery-lifecycle",
-        "summary": "Added bounded admission, publication freeze and capacity retained through true native return."
+        "id": "native-application-population",
+        "summary": "Added full-population staging, shared registration work and explicit null-item overflow, with populous native acceptance still pending."
       },
       {
         "id": "native-discovery-sources",
-        "summary": "Changed source candidates to selected interfaces while retaining pending runtime qualification."
-      },
-      {
-        "id": "search-discovery",
-        "summary": "Linked client-owned search to the designed native contract and pending mandatory review/acceptance."
+        "summary": "Replaced the arbitrary application survivor sample with complete bounded staging and native presentation facts."
       }
     ]
   },
@@ -123,7 +109,16 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Selected public interfaces, not runtime acceptance: Foundation values; indexed-local app breadth with running/registration supplements; all runtime settings objects via exact no-prompt events. Source/category completeness and useful witnesses remain separate."
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Applications stage a complete bounded population and preserve helpers for client filtering; global overflow is FAILED/null. The actual populous subject, exact read policy, whole-producer review, Settings readiness and long metadata remain pending. Source declarations prove no native usefulness."
+    },
+    {
+      "id": "native-application-population",
+      "group": "native-sources",
+      "title": "Stage every bounded application choice before publication",
+      "renderer": "svg",
+      "source": "native-application-population.d2",
+      "rendered": "native-application-population.svg",
+      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. No native enumeration, timing, UI fact, memory peak or P1024 pass follows from this design. Settings readiness and long metadata remain unresolved sibling work."
     },
     {
       "id": "native-settings-decision",

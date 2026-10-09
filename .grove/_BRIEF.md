@@ -289,3 +289,15 @@ material useful-source gaps are decided once in k93 before baseline. No raw
 home/order/work repair, implicit pruning or relabelled native acceptance follows.
 The native spec/source report/acceptance, SDL/examples/profiles and architecture
 viewer hold the concrete handoff; frozen design checks passed without a native pass.
+
+## Application population slice from k206
+
+Native-discovery-k205 is now a node with completed population design first,
+then live Settings readiness k207, long metadata k208 and complete reconciliation
+k209. Consume only after k209 closes k205 and cuts mandatory root review/earned
+integration before k7. Population admission stages all bounded sources, shares
+once-per-ID ordered registration outcomes and fails with null items on global
+owned-limit/deadline exhaustion, never a native-order prefix. Optional native
+presentation facts support client filtering without helper suppression. G10/N5/
+V11 require actual P1024 usefulness and accounting; every native verdict remains
+pending. K209 owns final producer reconciliation and review Creator/cascade.

@@ -64,3 +64,12 @@ without runtime evidence. Exact selectors feed the new authorized reveal, never
 HTTP(S) open/custom URL. Profiles use 1.2.0/1.1.0 and 1.3.0/1.1.0, independently
 of retained action-only subjects. Cut its mandatory review before k120; no native
 experiment/pass or inferred pruning belongs here.
+
+## Population metadata duty
+
+Consume reviewed complete native-discovery-k205. Normalize explicit Boolean
+LSUIElement/LSBackgroundOnly to nullable facts, never inferred false; associate
+bounded running activation-policy sets only with checked copy identity. Unknown,
+agent/background/accessory/nested-helper facts cannot suppress choices. Preserve
+shared ordered fail-before-match eligibility and conservative negatives, with
+G10/N5/V11 useful population and malformed/unknown/identity controls.

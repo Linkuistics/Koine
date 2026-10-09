@@ -60,3 +60,12 @@ ownership beyond the separate UI wait. Native providers require corrected core
 UI/management disclosures and workspace-native-disclosures-v1; prior selection-
 aware hosts refuse before load. Further root population/readiness/long-metadata
 design with mandatory review/earned integration precedes this consumer.
+
+## Population construction handoff
+
+Complete root native-discovery-k205 plus mandatory review precedes consumption.
+The application slice supplies G10/N5/V11 population, copy/wire/call certificates,
+per-ID shared registration and nullable presentation facts. Preserve all useful
+choices in the actual populous native subject; global owned-limit/deadline failure
+publishes no arbitrary source-order prefix. K191 qualifies source contact, k127
+constructs actual accounting and k123 normalizes the facts. No native pass follows.

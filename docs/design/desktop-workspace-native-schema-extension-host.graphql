@@ -40,7 +40,7 @@ type Query {
   workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
 
   """
-  Fixed indexed-local app category plus running and per-identifier registration supplements. Clients filter/rank. No arbitrary roots/query, raw walk, all-disk completeness, implicit launch/setup or default-handler lookup. Checked same-identity observations merge; equal identifiers never merge copies. All reachable fields require workspace:read.
+  Fixed indexed-local app category plus running and per-identifier registration supplements. Complete bounded population staging; shared population count/call/copy/deadline overflow yields FAILED/null items, never a native-order prefix. Clients filter/rank with nullable bundle declarations and observed running policies; no helper/agent suppression. No arbitrary roots/query, raw walk, all-disk completeness, implicit launch/setup or default-handler lookup. Checked same-identity observations merge; equal identifiers never merge copies. All reachable fields require workspace:read.
   """
   workspaceApplications: WorkspaceApplicationsResult
 
@@ -563,6 +563,13 @@ enum WorkspaceApplicationInstallationState {
   UNKNOWN
 }
 
+enum WorkspaceApplicationActivationPolicy {
+  REGULAR
+  ACCESSORY
+  PROHIBITED
+  UNKNOWN
+}
+
 type WorkspaceApplicationChoice {
   """
   Checked bundle-directory identity; first finalized resolved spelling. No query-long identity pin or later actionability guarantee.
@@ -575,6 +582,21 @@ type WorkspaceApplicationChoice {
   INSTALLED uses the existing constrained action's ordered registered-list plus preferred-only identity procedure. Negative facts need separate checked evidence; later actions revalidate.
   """
   installationState: WorkspaceApplicationInstallationState!
+
+  """
+  Explicit Boolean LSUIElement declaration from admitted Bundle metadata; missing/malformed/unavailable stays null, never inferred false.
+  """
+  uiElement: Boolean
+
+  """
+  Explicit Boolean LSBackgroundOnly declaration; no universal user-facing-app classification.
+  """
+  backgroundOnly: Boolean
+
+  """
+  Unique observed policies from running objects associated with this copy identity. Empty means none observed; UNKNOWN means unmapped native value. No prediction for a stopped app.
+  """
+  runningActivationPolicies: [WorkspaceApplicationActivationPolicy!]!
   sources: [WorkspaceDiscoverySource!]!
 }
 

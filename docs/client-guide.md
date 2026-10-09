@@ -387,6 +387,20 @@ at each selected items alias. Nested aliases share their frozen result, but
 separate root aliases may differ. A surviving status does not erase publication
 or provider lifecycle errors.
 
+Application discovery stages the complete bounded native population. A shared
+population count/call/copy/deadline overflow returns FAILED with null items and
+limit diagnostics; it never supplies a prefix selected by native enumeration
+order. An honest failure still leaves useful discovery unmet. Source-local
+metadata failures may produce PARTIAL. No all-disk inventory or three-second
+completion is promised. Whole-producer review and actual populous acceptance
+remain pending before this design is implemented.
+
+For presentation, inspect nullable uiElement/backgroundOnly declarations and
+runningActivationPolicies. Null flags mean no explicit usable declaration;
+an empty policy set means no running policy was associated with that copy.
+Runtime policies can change and do not describe stopped apps. Koine suppresses
+no helpers, agents or accessory apps; clients choose their filtering policy.
+
 Preserve distinct copies with one identifier. For an INSTALLED selected app,
 pass both bundleIdentifier and applicationPath into constrained launch; it needs
 workspace:control AND desktop:control. UNKNOWN/UNREGISTERED identified choices

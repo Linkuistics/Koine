@@ -1838,6 +1838,15 @@ first-party-selection-v1 and workspace-native-disclosures-v1. The latter is
 advertised only after the corrected disclosures above are served everywhere.
 Conditional Automation signing posture does not establish that feature.
 
+The complete native SDL also includes explicit nullable application agent/background
+declarations and associated running-policy observations under workspace:read.
+Application population overflow yields FAILED/null items; it does not publish an
+arbitrary source-order sample. G10/N5/V11 accept the real populous catalogue and
+call/copy/response accounting. The owned-copy and core response caps remain 8 MiB;
+multiple aliases still charge core materialization separately. This application
+slice awaits complete-producer review alongside unresolved Settings readiness
+and long metadata. No current native conformance pass follows.
+
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,
 normalization, exact settings event/posture and serviceability checks require

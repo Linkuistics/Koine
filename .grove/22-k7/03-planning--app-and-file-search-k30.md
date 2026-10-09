@@ -65,3 +65,12 @@ with no unused entitlement. Missing ordinary settings areas/non-witness app brea
 foreground failure or unavailable conditions remain concrete live work, and k93
 resolves real material gaps before baseline. No raw home traversal/ordering task
 or automatic useful-category acceptance is authorized.
+
+## Population acceptance planning duty
+
+Consume complete native-discovery-k205 and mandatory review/earned integration
+before planning implementation. Include G10/N5/V11 and an actual signed P1024
+populous source subject with independently frozen useful-choice/baseline manifests,
+helper pressure and serviceability/dialog/hydration observers. New SDL/profile
+metadata fields are additive; prior action-only captures remain independently
+retained. A deadline/overflow/missing useful app does not close acceptance.

@@ -1,11 +1,11 @@
 # Native discovery and client-owned search
 
 **Designed; mandatory review, implementation and native acceptance pending.**
-Review integration has identified unresolved application population/budget,
-cold/warm settings readiness and long-application metadata contracts. Those
-repairs require a separate producer and mandatory review before downstream
-consumption; the affected bounds/readiness/long-catalogue claims below are
-provisional, not approved implementation input. Native acceptance stays pending.
+The application population slice now has explicit admission and cost certificates;
+its whole-producer review and actual populous native qualification remain pending.
+Cold/warm Settings readiness and long-application metadata remain unresolved in
+the same producer. The complete design is not approved implementation input until
+all slices and mandatory review finish. Native acceptance stays pending.
 Koine's local explaining UI alone initiates Automation consent. Native provider
 releases require `workspace-native-disclosures-v1`; prior hosts refuse them
 before code loads rather than serve them under the old grant wording.
@@ -165,13 +165,84 @@ error-bearing LSCopyApplicationURLsForBundleIdentifier expansion
 the fixed system identifiers com.apple.Safari and com.apple.finder. These recover
 known system apps but never define the inventory; the twelve configured launchers
 are acceptance witnesses, not a hard-coded production seed list.
-Expand each distinct identifier once, no recursive identifier cascade. Record
+Expand each distinct coherent seed identifier once, no recursive identifier cascade. Record
 every returned choice's actual source membership; a registration supplement is
 not falsely labelled indexed. Registration and preferred-location lookup are
 per-identifier facts, never an enumeration of all registrations. The deprecated
 but declared error-bearing API is chosen for meaningful checked negatives;
 if unsupported/unusable, diagnose and keep UNKNOWN, preserving unmet useful work.
 The source report cites its SDK/primary documentation.
+
+### Application population admission
+
+An application job stages the complete bounded source response before publishing
+choices. Its envelope is 8,192 raw URL observations, 2,048 distinct lossless URL
+spellings, 2,048 running objects, at most 2,050 identifier groups (one coherent seed identifier per
+spelling plus the two system IDs), and 2,048 distinct identified choices. Raw
+observations count repeated entries across the index, running objects, CF
+registration list, ordered AppKit list and preferred URL; deduplication does not
+refund that work. Distinct spellings share inspection work, but only established
+device/inode merges final choices. A whole native batch's count is checked before
+owned iteration/copying. Disable metadata-query updates on its owner run loop
+before counting/indexed access, then stop/retire that owned query. Gathering
+completion is not index-health or category completeness.
+
+Collect the indexed/running spellings and their coherent checked identifiers,
+then obtain each identifier's CF list, ordered AppKit list and preferred-only
+candidate once. All three domains consume the shared observation/spelling
+envelope; there is no smaller identifier quota or per-source survivor quota.
+Inspect supplement spellings without recursively expanding new identifiers.
+A supplement's missing or conflicting identifier remains unknown with a
+diagnostic, rather than creating a new expansion chain or a false eligible copy.
+Conflicting identifiers for one spelling do not select a convenient winner.
+Only source membership actually observed for a copy is reported.
+
+Within one job, retain bounded immutable resolution outcomes keyed by exact
+spelling, and ordered registration membership keyed by identifier. Each spelling
+is resolved at most twice: before and after its individual native metadata read;
+identity changes refuse that candidate. No native handle/Bundle/process object is
+published or pinned for the query lifetime. Shared outcomes let every choice use
+the existing action's ordered fail-before-match rule without re-walking the same
+registration list for each choice. Earlier unresolved comparisons still prevent
+INSTALLED; a later failure does not undo an earlier match. This describes the
+frozen observations, never a guarantee about a later action's fresh selection.
+Keep resolution and bundle-metadata outcomes separate: the action compares other
+registered copies by lookup identity alone. A refused optional metadata read on
+an unequal registered copy cannot turn its successful lookup into an unresolved
+comparison or block a later match; a real walk failure still does. Metadata
+failure prevents publishing an unchecked app choice, not using a checked unequal
+lookup as an ordered comparison observation.
+
+Population-wide entry, identifier, call, copied-value, diagnostic or deadline
+exhaustion invalidates application publication: status FAILED, items null and
+the applicable closed limit reason. Even previously staged useful choices are
+withheld. An observed-count overflow alone cannot set resultsTruncated: true
+requires an independently checked distinct valid choice actually withheld.
+No source-order prefix, witness-only fallback, hidden retry, cursor or lowered
+useful category is returned. Source-local unavailability and individual refused
+metadata still use the existing honest PARTIAL/UNKNOWN rules when the population
+job itself finishes within bounds. Capacity refusal retains the ordinary FAILED
+rule. Core response/authority/lifecycle failures keep their independent precedence.
+
+The [finite population subjects](../verification/native-discovery-acceptance.md#application-population-subjects)
+include a populous catalogue with over 256 distinct useful identifiers plus
+agent/helper pressure and native baseline apps. Every required useful choice must
+actually be returned with usable metadata there. These ceilings are a bounded
+qualification envelope, not proof that arbitrary machines fit it or finish in
+three seconds. A measured ordinary population that overflows, misses witnesses
+or misses the deadline is an unmet native obligation for the coverage decision;
+it cannot be credited as a passing small catalogue.
+
+Full staging costs temporary bounded state and withholds otherwise useful progress
+on global exhaustion. That trade-off keeps native order from deciding catalogue
+membership. Keeping the former partial prefix would retain some choices but lose
+unexamined useful identifiers arbitrarily. Sorting a capped prefix merely makes
+that same omission look deliberate; a universal native user-facing predicate is
+also unavailable. Cursor/persistent-cache designs could split larger populations
+across reads but introduce a new client/state/identity protocol, outside this
+on-demand snapshot contract. Revisit this choice if actual P1024 or an ordinary
+measured population cannot meet the shared deadline/gates; do not quietly narrow
+the population or raise host policy limits.
 
 Every published app needs a checked native application-bundle type and established
 bundle-directory device/inode from the permitted bounded individual-target
@@ -214,6 +285,27 @@ fail acceptance under [the fact decision](../adr/search-native-facts-are-reporte
 UNKNOWN/UNREGISTERED identified apps remain reveal/copy choices. INSTALLED plus
 identifier and applicationPath may feed the existing constrained launch. A client
 must preserve both fields, never silently remove a constraint or pick another copy.
+
+### Native facts for client filtering
+
+Choices also expose nullable uiElement and backgroundOnly declarations, from
+LSUIElement and LSBackgroundOnly in the same permitted individual Bundle metadata
+inspection. A missing key, malformed non-Boolean value, unavailable dictionary or
+unsupported metadata yields null, never an inferred false. Retain useful name and
+identity even if these optional facts are unknown; diagnose malformed/refused
+metadata. No extra plist reader, ancestor inspection or contents listing is added.
+
+runningActivationPolicies is the unique bounded set of REGULAR, ACCESSORY,
+PROHIBITED or UNKNOWN observations from running objects whose bundle URL was
+associated with this established copy identity. Empty means no associated running
+policy observation; UNKNOWN means a returned native value could not be mapped.
+Conflicting observed policies remain in the set; they do not merge copies or
+override bundle declarations. A running policy is time-varying and cannot predict
+the policy of a stopped app. Clients may use these facts for presentation, but
+Koine discards no app because it is an agent, background-only, accessory, nested
+helper or unknown. Neither policy nor absent flags defines a universal
+user-facing-app predicate. Filtering/ranking remains client-owned, and helpers
+consume the declared population just like other source candidates.
 
 ## System Settings read and exact target
 
@@ -415,6 +507,9 @@ all-disk/index-health or physical-closure guarantee.
 | FAILED | No useful observation/qualified empty and native/malformed/change/limit failure; items null; each selected items alias raises failed. |
 
 With no progress, precedence is failure → block → unavailable → unknown.
+Application population-wide owned-limit/deadline exhaustion is the explicit
+exception to progress-based PARTIAL: it always withholds staged items and returns
+FAILED as defined above. Source-local failures retain the ordinary table rules.
 Gathering completion and successful parsing do not qualify a healthy empty
 INDEXED_APPS source. An empty indexed response has availability/observations
 UNKNOWN with METADATA_UNKNOWN. If an independently checked registered system
@@ -464,17 +559,18 @@ no unbounded queue. Reserve before starting any adapter work. Jobs are separate
 from listener/store/action workers; no blocking call runs on the UI/listener or
 grant-dispatch serialization queue. The metadata query has its own owned run loop;
 read gathering deadline is three seconds/core remainder. Sequential supplements
-share that budget; bounded round-robin candidate admission across returned source
-batches avoids a witness-seed-only implementation but promises no rank/fairness.
+share that budget. Applications use complete-population staging and fail closed
+on a shared owned-budget/deadline overflow; no round-robin survivor sample is
+published. Source order remains an observation, not client ranking.
 Local UI settings setup has its separate wait above and at most one pending prompt job
 process-wide, within the same four slots. Limit exhaustion refuses admission,
 never replaces a blocked worker or raises descriptor/materialization limits.
 
 | Per admitted job | Bound and ownership |
 | --- | --- |
-| Applications | 2,048 candidate URLs across sources, 256 distinct identifier expansions (including two system identifiers), 2,048 retained app choices. More observed values cause ENTRY_LIMIT and partial/failed, no fake completion. |
+| Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. |
 | Settings | 256 pane IDs, 128 anchors/pane, 4,096 total anchors; return every exposed value within those ceilings. Exceeding them is an explicit incomplete failure/unmet inventory, not a selected smaller category. |
-| Native calls | 16,384 admitted source/API/syscall attempts including descriptor-relative lookup steps, metadata, registration/preferred calls and AE preflight/send. Reserve before every owned call, not just a high-level adapter; callback receipt is retirement, not fresh work. |
+| Native calls | Application ceiling 1,048,576 admitted explicit source/API/syscall attempts, derived below; Settings/location jobs retain 16,384. All descriptor-relative steps, metadata, registration and explicit cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
 | Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read. |
 | Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
 | Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. |
@@ -487,6 +583,44 @@ Neither these limits nor a clean listener prove a hard native memory/FD/Mach-rig
 bound. Inspect count/size before allocating copied values; refuse/cap without
 repairing them. Any required framework API that allocates a whole opaque result
 retains this disclosed limit and finite serviceability obligation.
+
+### Application cost certificate
+
+Let U be raw URL observations, R running objects, D distinct identifier groups,
+C distinct spellings and V actual component visits per descriptor walk, including
+expanded links. The finite shallow qualification envelope has U <= 8,192,
+R <= 2,048, D <= 2,050, C <= 2,048 and V <= 32. V is a subject description,
+not a production path/depth restriction or a change to the action resolver.
+
+| Explicit work in the adapter recipe | Maximum admitted attempts |
+| --- | --- |
+| Fixed query/run-loop/running-source acquisition and cleanup | 32 |
+| Counted source element/path extraction across all URL domains | 2U |
+| Running URL/identifier/name/policy/termination getters | 5R |
+| Once-per-ID CF/AppKit/preferred acquisition, counts and explicit disposal | 12D |
+| Once-per-spelling resource type, Bundle dictionaries/identifier/name/flags and existing short-path denial checks | 8C |
+| Before/after descriptor walks, including per-component calls, link handling, errno name-limit and held-handle cleanup | 2C(6V + 4) |
+
+Thus 32 + 2U + 5R + 12D + 8C + 2C(6V + 4) <= 870,456 at the stated
+envelope. The next power of two is 1,048,576. The source report explains the walk
+bound and why the former 16,384/256 numbers did not cover the choices. This is a
+conservative owned-attempt certificate for that recipe/finite subject, not a
+latency or opaque-internal-work bound. No C-times-D registration walk term is
+permitted. Deeper/longer real candidates charge actual work under the same global
+ceiling; inability to finish invalidates publication, not the path's existence.
+Actual N accounting must enumerate every adapter attempt and reject a recipe
+that exceeds any certificate term before claiming applicability.
+
+The 8 MiB owned-copy gate remains shared by staging, results, diagnostics and walk
+scratch, including repeated/transient owned copies. Cardinality and string maxima
+are independent ceilings: 2,048 paths of 8,192 bytes do not fit 8 MiB and cannot
+all be admitted. Check gross byte charges before every owned allocation/copy;
+implementation must expose its record/container and scratch charges at N5, rather
+than pretending UTF-8 string lengths bound Swift allocation overhead. The
+populous subject supplies a conservative copy certificate and a separate
+single-full-selection wire-size certificate. The core's unchanged 8 MiB response
+cap still counts aliases/multiple roots/JSON escaping independently. Owned byte
+accounting establishes no hard RSS or opaque Foundation/CF allocation peak.
 
 Cancellation, client loss, deadline, revocation and provider stop atomically
 close further admission/publication. Freeze a returned valid partial snapshot

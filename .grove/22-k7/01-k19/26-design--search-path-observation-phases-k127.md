@@ -72,3 +72,13 @@ and its exact allowlist in source AND actual image/runtime controls, together
 with private production action-adapter construction. Local UI wait/stop/late reply
 retains the shared native slot and prompt token until true return; no GraphQL
 cutoff or bearer revocation is its consent authority.
+
+## Population owner/accounting duty
+
+Consume reviewed complete native-discovery-k205. Construct its once-per-ID ordered
+observations and exact-spelling before/after resolution table without a C×D walk
+multiplier or native query-long pins. Enumerate actual recipe calls/cleanup and
+owned record/container/scratch/copy charges term by term against N5 certificates;
+reserve cleanup before acquisition and retire each opaque batch before the next.
+Preserve complete-population FAILED/null overflow, independent core response limits
+and G10/N5/V11 controls. Arithmetic is no three-second/opaque-peak/native pass.

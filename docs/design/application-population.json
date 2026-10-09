@@ -1,0 +1,59 @@
+{
+  "purpose": "Design cost certificates and finite qualification subjects; no runtime/native pass",
+  "limits": {
+    "rawURLObservations": 8192,
+    "distinctSpellings": 2048,
+    "identifierGroups": 2050,
+    "retainedChoices": 2048,
+    "runningObjects": 2048,
+    "nativeAttempts": 1048576,
+    "ownedCopyBytes": 8388608,
+    "responseBytes": 8388608,
+    "diagnostics": 64
+  },
+  "recipe": {
+    "fixedAttempts": 32,
+    "attemptsPerURLObservation": 2,
+    "attemptsPerRunningObject": 5,
+    "attemptsPerIdentifier": 12,
+    "metadataAttemptsPerSpelling": 8,
+    "walksPerSpelling": 2,
+    "attemptsPerWalkVisit": 6,
+    "fixedAttemptsPerWalk": 4,
+    "overflowPublication": "FAILED_NULL_ITEMS",
+    "recursiveIdentifierExpansion": false,
+    "providerFiltersAgentsOrHelpers": false
+  },
+  "shallowCertificate": {
+    "componentVisitsPerWalk": 32,
+    "pathBytes": 256,
+    "nameBytes": 128,
+    "identifierBytes": 128,
+    "spellingRecordBytes": 512,
+    "choiceRecordBytes": 256,
+    "observationRecordBytes": 32,
+    "identifierRecordBytes": 128,
+    "runningRecordBytes": 128,
+    "ownedPathCopies": 2,
+    "ownedNameIdentifierCopies": 2,
+    "diagnosticRecordAndPayloadBytes": 2048,
+    "walkScratchBytes": 1048576,
+    "wireEscapingMultiplier": 6,
+    "wireChoiceFixedBytes": 512,
+    "wireDiagnosticBytes": 8192,
+    "wireRootAndCoverageBytes": 65536
+  },
+  "populousVM": {
+    "name": "P1024",
+    "usefulDistinctIdentifiers": 1024,
+    "configuredAndSystemWitnessesIncluded": 14,
+    "controlledAdditionalUsefulApps": 1010,
+    "controlledAgentBackgroundHelperCopies": 256,
+    "controlledAliasSpellings": 128,
+    "baselineDistinctSpellingAllowance": 640,
+    "runningObjectSubjectMaximum": 128,
+    "requireActualAllUsefulChoices": true,
+    "requireIndependentManifestAndObservers": true,
+    "nativeVerdict": "PENDING"
+  }
+}

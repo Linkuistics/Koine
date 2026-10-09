@@ -63,3 +63,11 @@ guidance. Match G4–G9, N3/N4/N7 and V1/V5–V8/V10, with responsible signed ho
 and independent positive observers. Resolve actual-source design gaps once with
 a precise consumer consequence; do not build/probe/sign/request consent here.
 Name Creator on k193 only when closing k126, and reconcile all permission artifacts.
+
+## Population access duty
+
+After complete root native-discovery-k205 review, qualify counted stable index
+access, running/registration batch acquisition and admitted Bundle flags under
+the existing source/individual-contact policy. P1024 adds helper/baseline pressure;
+post-result exclusion cannot undo native prompt/hydration contact. No new plist
+reader, ancestor inspection or helper access posture follows from nullable facts.

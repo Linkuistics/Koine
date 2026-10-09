@@ -335,6 +335,7 @@ tasks:
     desc: Render native sources, authority/ownership, settings effects and true-retirement contract (D2 0.9.0; native acceptance pending)
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-sources.d2 docs/design/architecture/native-discovery-sources.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-application-population.d2 docs/design/architecture/native-application-population.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-settings-decision.d2 docs/design/architecture/native-settings-decision.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-contract.d2 docs/design/architecture/native-discovery-contract.svg
       - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/native-settings-flow.d2 docs/design/architecture/native-settings-flow.svg
@@ -371,10 +372,67 @@ tasks:
         const actions = buildSchema(read('desktop-workspace-repair-schema-extension-host.graphql'));
         const complete = extendSchema(actions, native);
         const examples = parse(read('workspace-search-operations.graphql'));
+        const population = JSON.parse(read('application-population.json'));
+        const verifyPopulation = subject => {
+          const l = subject.limits, r = subject.recipe, s = subject.shallowCertificate, p = subject.populousVM;
+          for (const values of [l, s]) for (const value of Object.values(values)) {
+            if (!Number.isSafeInteger(value) || value <= 0) throw new Error('Invalid population certificate integer');
+          }
+          if (l.identifierGroups < l.distinctSpellings + 2 || l.retainedChoices < l.distinctSpellings ||
+            r.walksPerSpelling !== 2 || r.recursiveIdentifierExpansion !== false ||
+            r.providerFiltersAgentsOrHelpers !== false || r.overflowPublication !== 'FAILED_NULL_ITEMS') {
+            throw new Error('Population admission, identifier coverage or shared-work contract changed');
+          }
+          const calls = r.fixedAttempts + r.attemptsPerURLObservation * l.rawURLObservations +
+            r.attemptsPerRunningObject * l.runningObjects + r.attemptsPerIdentifier * l.identifierGroups +
+            r.metadataAttemptsPerSpelling * l.distinctSpellings + r.walksPerSpelling * l.distinctSpellings *
+            (r.attemptsPerWalkVisit * s.componentVisitsPerWalk + r.fixedAttemptsPerWalk);
+          const copies = (s.spellingRecordBytes + s.choiceRecordBytes) * l.distinctSpellings +
+            s.observationRecordBytes * l.rawURLObservations + s.identifierRecordBytes * l.identifierGroups +
+            s.runningRecordBytes * l.runningObjects + s.ownedPathCopies * l.distinctSpellings * s.pathBytes +
+            s.ownedNameIdentifierCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
+            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.walkScratchBytes;
+          const wire = l.retainedChoices * (s.wireEscapingMultiplier *
+            (s.pathBytes + s.nameBytes + s.identifierBytes) + s.wireChoiceFixedBytes) +
+            l.diagnostics * s.wireDiagnosticBytes + s.wireRootAndCoverageBytes;
+          if (calls > l.nativeAttempts || copies > l.ownedCopyBytes || wire > l.responseBytes ||
+            l.ownedCopyBytes !== 8388608 || l.responseBytes !== 8388608) {
+            throw new Error('Population certificate exceeds its owned/host gates');
+          }
+          if (p.usefulDistinctIdentifiers <= 256 || p.controlledAdditionalUsefulApps +
+            p.configuredAndSystemWitnessesIncluded !== p.usefulDistinctIdentifiers ||
+            p.usefulDistinctIdentifiers + p.controlledAgentBackgroundHelperCopies + p.controlledAliasSpellings +
+            p.baselineDistinctSpellingAllowance > l.distinctSpellings ||
+            !p.requireActualAllUsefulChoices || !p.requireIndependentManifestAndObservers || p.nativeVerdict !== 'PENDING') {
+            throw new Error('Populous subject lost its useful/baseline/independent pending obligation');
+          }
+          return { calls, copies, wire };
+        };
+        const certificate = verifyPopulation(population);
+        for (const [label, mutate] of [
+          ['old 256-ID quota', p => { p.limits.identifierGroups = 256; }],
+          ['old 16384-call ceiling', p => { p.limits.nativeAttempts = 16384; }],
+          ['native-order partial prefix', p => { p.recipe.overflowPublication = 'PARTIAL_PREFIX'; }],
+          ['per-choice registration re-walk', p => { p.recipe.walksPerSpelling = p.limits.retainedChoices; }],
+          ['broken owned-copy certificate', p => { p.shallowCertificate.walkScratchBytes = p.limits.ownedCopyBytes; }],
+          ['broken response certificate', p => { p.shallowCertificate.pathBytes = 8192; }],
+          ['agent/helper suppression', p => { p.recipe.providerFiltersAgentsOrHelpers = true; }],
+          ['sparse native subject', p => { p.populousVM.usefulDistinctIdentifiers = 14; }],
+        ]) {
+          const broken = structuredClone(population); mutate(broken);
+          let rejected = false;
+          try { verifyPopulation(broken); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control did not reject ${label}`);
+        }
+        console.log('Application design certificates and deliberate broken controls:', certificate, '; native qualification PENDING.');
         const errors = [...validateSchema(independent), ...validateSchema(complete),
           ...validate(independent, examples), ...validate(complete, examples),
           ...validate(complete, parse(read('workspace-operations.graphql')))];
         if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const missingFacts = buildSchema(printSchema(complete).replace('uiElement: Boolean', 'removedUIFact: Boolean'));
+        if (!validate(missingFacts, examples).some(error => error.message.includes('uiElement'))) {
+          throw new Error('Control did not reject missing application presentation fact');
+        }
         if (read('desktop-workspace-native-schema-extension-host.graphql') !== printSchema(complete) + '\n') {
           throw new Error('Complete native SDL is stale; run task design:search-compose before freezing checks');
         }
