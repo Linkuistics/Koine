@@ -39,3 +39,21 @@ accepted v1 action handoff refusal remain independent.
 No raw file/folder search, general metadata-query API, custom walker or inferred
 native permission. Prior raw record/frontier/queued-account boundaries are
 comparison input, not the new catalogue contract.
+
+## Selected normalization and identity construction
+
+Finalize exact bounded decoding/type/URL/CF/AE result normalization from the reviewed
+native contract: real native application recognition and bundle-directory identity,
+first resolved spelling/retained merge, distinct same-ID copies, deprecated
+registration errors and preferred contradictions; no empty/nil/capped/refused
+negative. Long representable identified locations stay visible with unknown
+unsupported metadata; existing action handoff/resolution is independent.
+
+Pin exact G1–G4/G8, N3/N4/N5 and V1–V4/V7/V8 field/branch fixtures and finite useful
+witness inventory. Settings must return all runtime pane/anchor keys, no positional
+array zip or witness-only filter; anchors are null for unestablished observation,
+[] only for checked empty. Per-choice conditional availability stays UNKNOWN
+without runtime evidence. Exact selectors feed the new authorized reveal, never
+HTTP(S) open/custom URL. Profiles use 1.2.0/1.1.0 and 1.3.0/1.1.0, independently
+of retained action-only subjects. Cut its mandatory review before k120; no native
+experiment/pass or inferred pruning belongs here.

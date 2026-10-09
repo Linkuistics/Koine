@@ -94,8 +94,10 @@ it. He requires explicit background preparation that launches a stopped target,
 while ordinary reads remain effect-free. Return all runtime-exposed panes, with
 Network/Sound/Appearance/Displays witnesses, exposed anchors and honest
 conditional availability. Private-sidebar and narrower-category alternatives
-were not selected. Exact events, foreground behavior and usefulness remain
-unqualified; k202 completes the contract and finite acceptance design.
+were not selected. K202 defines the complete native API/authority/bounds/profiles and finite
+acceptance design. Exact events, foreground behavior and usefulness remain
+unqualified until actual native acceptance. Mandatory whole-producer review
+and earned integration precede k7.
 The whole producer remains live and finishes all original reconciliation duties
 before its mandatory review/earned integration and k7. Source analysis is no
 native pass and closes no downstream node.
@@ -184,8 +186,8 @@ own their broad input/menu disclosures. Baseline acceptance checks those rows to
 Native discovery requirements and the ownership decision are in
 docs/requirements/modaliser-workflows.md and
 docs/adr/raw-filesystem-search-belongs-to-clients.md. docs/specs/workspace-search.md
-introduces the current boundary and explicitly retains the former raw proposal
-only for comparison; docs/verification/search-tooling.md preserves that proposal's
+defines the native contract; docs/verification/raw-workspace-search-comparison.md
+and archived raw SDL/examples retain the former proposal only for comparison; docs/verification/search-tooling.md preserves that proposal's
 finite evidence bounds. Client raw search grants no Koine authority and returned
 locations grant no client filesystem access. The returned native-discovery-k199 design
 and mandatory review precede the reconciled k7 node. Native metadata, current
@@ -250,3 +252,32 @@ The current discovery agreement replaces Koine raw traversal and its pending
 ordering/dataless questions. Native design/review and actual acceptance remain
 live; launch/open/reveal's accepted 1.0.1 action contract and long-location handoff
 limit stay independent.
+
+## Native discovery design handoff
+
+Native-discovery-k199 returns the native contract and finite acceptance, with a
+mandatory whole-producer review immediately before app-and-file-search-k7;
+any earned integration also goes before k7. Consume the reviewed contract first:
+Foundation's ten value-only location pairs; fixed indexed-local application
+breadth with running/per-observed-identifier registration and per-copy identity;
+all runtime-exposed modern Settings panes/anchors using validated running targets
+and exact no-prompt events. Queries need workspace read. Explicit background
+prepare and conditional exact-event Automation setup need workspace control;
+selected Settings reveal needs both controls. Result object coordinates never
+cross those static authority sets. No read invokes setup/launch/reveal.
+
+Workspace native release 1.2.0/schema 1.1.0 and update 1.3.0 use distinct complete
+bundled/update/refusal profiles, retaining action-only 1.0.0/1.0.1 and 1.1.0/schema
+1.0.1 evidence independently. Preserve the four-action source AND compiled-image
+guard through independent native image boundaries. Freeze admission/publication
+on lifecycle loss; held native work retains shared capacity until true return.
+
+K7/k19, k126/k191/k193, k127/k123, k120, k30 and k93 carry concrete selected-source
+permission/metadata/authority/resource/review/planning/coverage duties. All native
+G/N/V verdicts remain pending; useful non-witness breadth, required settings areas,
+background foreground behavior, exact signed binaries and independent dialog/
+hydration/listener/store/action controls still bind. Unavailable cases stay live;
+material useful-source gaps are decided once in k93 before baseline. No raw
+home/order/work repair, implicit pruning or relabelled native acceptance follows.
+The native spec/source report/acceptance, SDL/examples/profiles and architecture
+viewer hold the concrete handoff; frozen design checks passed without a native pass.

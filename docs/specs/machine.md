@@ -18,9 +18,9 @@ native discovery targets macOS 26+ and named application/System Settings categor
 clients own raw filesystem search. The
 [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md) governs
 that boundary. Sections explicitly marked **extension** below are obligations for
-that work, not claims about 0.1.0 or its acceptance. Native catalogue design must
-reconcile earlier raw-search examples, payloads and profiles before consumption;
-they supply no native catalogue API or runtime evidence.
+that work, not claims about 0.1.0 or its acceptance. The [native discovery design](workspace-search.md) now defines its API, selected
+sources and exact new profiles. Mandatory review and G/N/V acceptance remain
+pending; earlier raw-search and action-only captures supply no catalogue pass.
 
 ## Purpose and ownership
 
@@ -557,16 +557,18 @@ This does not add enum values to existing management permission types or alter
 what existing desktop clients receive. Any incompatible change to those types,
 or a new consent/entitlement, still requires Antony's decision.
 
-**Native discovery extension — returned design pending.** Special locations and
-named native catalogues must distinguish healthy empty, blocked, unavailable and
-incompletely observed results without treating a path or native result count as
-consent or an exhaustive inventory. Known prompt risk is not observed missing
-consent. The prior raw-search typed payload in the
-[previous proposal](workspace-search.md#coverage-and-aggregate-outcomes) is
-comparison input, not the v1 catalogue contract. Returned design defines exact
-fields and branch invariants while preserving existing error kinds, live authority/
-publication checks and framework compatibility. No new consent, setup or global
-materialization policy is approved.
+**Native discovery extension — designed, native acceptance pending.**
+The [native contract](workspace-search.md#coverage-and-frozen-publication) uses
+ordinary ProviderValue objects for status, source provenance, observation/category
+completeness, nullable items and bounded diagnostics. Aliases share a frozen
+parent; all read fields require workspace:read. No new diagnostic ABI/failure
+accessor or reinterpretation of nil/blank consent is introduced. Explicit
+prepare/setup carry workspace:control; selected reveal carries both workspace
+and desktop control. Conditional Automation setup is limited by the recorded
+[settings decision](../adr/settings-discovery-uses-app-supplied-objects.md), not
+implied by a read or an earlier raw-search permission. Existing live-grant,
+lifecycle and publication errors retain their original paths. No global
+materialization policy is selected.
 
 All extension reads are prompt-free, including prerequisite and protected-folder
 checks. A probe that would prompt is not a permitted read mechanism; report
@@ -942,10 +944,9 @@ input coercion, with a response path and no domain classification.
 ### Provider failure compatibility
 
 Native discovery must preserve the following existing baseline failure mapping.
-The earlier raw-search design's typed result fields and feature/profile choices
-are not a catalogue schema or a new ABI. Returned design specifies its normal
-success values and exact compatibility requirements without inventing failure
-accessors. Public failure construction already permits nil and arbitrary strings;
+The [native discovery contract](workspace-search.md) specifies typed success
+values and exact compatibility subjects without inventing failure accessors.
+Historical raw-search fields/profiles are not a catalogue ABI. Public failure construction already permits nil and arbitrary strings;
 clients/providers must not infer that a semantically incomplete value was
 unconstructible. Nil/blank consent is not a prompt-risk sentinel.
 
@@ -966,12 +967,13 @@ values. A future unknown kind retains the existing failed fallback; malformed
 success trees retain the existing failed malformed-value handling. The host
 continues supplying original GraphQL paths and permissionOwner koine.
 
-Native catalogue diagnostics need their own returned success-payload design;
+Native catalogue diagnostics live in their typed frozen success payload;
 they cannot be attached to ProviderFailure through invented accessors. Existing
 loader feature/version checks and retained action-only compatibility remain
-binding. The new catalogue composition/profile must declare its actual required
-features and supported old/new host/provider combinations; former raw-search
-profiles supply neither its schema nor a compatibility pass.
+binding. The [native acceptance contract](../verification/native-discovery-acceptance.md#exact-identities-and-posture)
+pins workspace 1.2.0/schema 1.1.0, update 1.3.0/schema 1.1.0 and required features
+without reusing action-only 1.1.0/schema 1.0.1. Every new native outcome stays
+pending independently of retained 1.0.0/1.0.1 evidence.
 
 ### Resolution and lifecycle
 
@@ -1795,3 +1797,23 @@ close, the race with process or window reuse:
 
 Koine does not fall back to a private AX endpoint or to window-qualified
 activation to narrow these limits.
+
+## Native discovery conformance profiles
+
+**Design only; actual native captures pending.** The additive native API keeps
+koine-desktop/1 and the existing ProviderValue/failure ABI. The
+[exact acceptance identities](../verification/native-discovery-acceptance.md#exact-identities-and-posture)
+separate provider release/schema, complete SDL/digest, selection origin and
+host signing posture; identical schemas do not establish identical binaries.
+
+| Profile | Complete SDL and candidate pins | Evidence |
+| --- | --- | --- |
+| [Bundled native](../design/profiles/core-desktop-workspace-native-extension-host.json) | Extended core management + desktop 1.0.0/1.0.0 + workspace 1.2.0/1.1.0, both BUNDLED/SELECTED/ACTIVE; complete native SDL. | Pending N/G/V. |
+| [Native update](../design/profiles/core-desktop-workspace-native-update-extension-host.json) | Same SDL; PER_USER workspace 1.3.0/1.1.0 selected, BUNDLED 1.2.0/1.1.0 REJECTED/NOT_SELECTED/superseded-candidate; desktop baseline remains active. | Pending N/G/V. |
+| [Native update refused](../design/profiles/core-desktop-workspace-native-update-refused-extension-host.json) | Repair action SDL; 1.3.0/1.1.0 per-user update missing first-party-selection-v1 INCOMPATIBLE/NOT_SELECTED/selection-feature-required; bundled action-only 1.0.1 selected-with-refusals. | Pending N/G/V, no load/start marker. |
+
+Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
+profiles/captures are unchanged subjects. New native multi-image guards/loading,
+normalization, exact settings event/posture and serviceability checks require
+actual new binaries, fresh hosts and declared supported OS subjects. Design
+SDL/example validation proves no native call, useful choice or compatibility pass.

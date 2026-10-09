@@ -37,3 +37,23 @@ and G/N/V seams bind.
 
 Old command spawning/pipe/reap/FIFO/replay accounts are comparison input. Actual
 native mechanisms need their own bounded ownership contract and signed acceptance.
+
+## Selected ownership and native-image construction
+
+Complete the proposed principal/WorkspaceActions/WorkspaceDiscovery/
+WorkspaceSettings image boundary from reviewed k202 and permission review.
+Pin concrete exported value/lookup seams, routing, one-way native link dependencies,
+module/class names and actual source/Mach-O guard instruments. Preserve the old
+four-action whole-image allowlist; compile listing/spawn/script/extra-activation,
+action→settings link/callback and read→prompt/effect controls and specify how both
+source and real-image/runtime checks detect them. No allowed image can launder
+an effect into the action guard by a callback or dynamic lookup.
+
+Refine four process-wide jobs, one pending operation/job, call/copy/diagnostic
+charging, metadata run-loop ownership, CF/AE objects and native launch/setup late
+returns. Reserve before admission, freeze on cancel/revoke/stop/deadline, retain
+capacity through true return/query retirement and exactly-once cleanup across
+provider restart. No target termination or child/orphan account. Use N2/N5–N7 and
+the finite independent listener/store/action serviceability controls; opaque peaks
+remain unproved. Design only, no compiled/native pass here. Its mandatory review
+and earned integration still precede k123.

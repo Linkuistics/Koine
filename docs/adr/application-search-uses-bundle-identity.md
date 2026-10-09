@@ -3,8 +3,8 @@
 Native application choices distinguish installations, including distinct copies
 with the same bundle identifier. Established bundle-directory identity can relate
 direct, linked and OS-reported observations of one installation; an identifier
-alone cannot merge real copies. The returned
-[native catalogue design](../specs/workspace-search.md) must settle its sources,
+alone cannot merge real copies. The
+[native catalogue design](../specs/workspace-search.md#application-sources-and-native-facts) defines its sources,
 merging and selected-location semantics within the
 [current ownership boundary](raw-filesystem-search-belongs-to-clients.md).
 

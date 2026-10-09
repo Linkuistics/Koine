@@ -261,3 +261,12 @@ here, not merely untested.
   kernel does with a foreign-team image "is not exercised, by design". Koine's
   own approval check refuses such a bundle before `dlopen`, which is what the
   cases above show; the kernel's refusal behind it is unobserved.
+
+## Native discovery applicability
+
+Retained action-only and framework captures keep their exact subjects. The
+[native discovery identities and posture](native-discovery-acceptance.md#exact-identities-and-posture)
+define workspace 1.2.0/schema 1.1.0 and update 1.3.0/schema 1.1.0, independent
+of action-only update 1.1.0/schema 1.0.1. New actual multi-image provider/host
+loading, source/binary authority and GraphQL profiles remain pending; no older
+capture or design SDL validation passes those subjects.

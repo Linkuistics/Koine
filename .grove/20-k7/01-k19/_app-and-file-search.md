@@ -36,3 +36,19 @@ remain relevant. Native discovery chooses no child, general metadata-query API,
 consent/setup, global materialization policy, signing/limit change or useful
 workflow loss by inference. Actual location/catalogue observations, independent
 host outcomes and exact retained/new binary subjects remain pending.
+
+## Selected-source duties after k202 review
+
+The root contract now owns the API/source/authority/bounds. This node completes
+concrete source-specific construction/evidence design, not another ownership
+interview: k191 exact prompt/materialization/target/posture rules; k127 native-image
+call routing, finite allowlists and true retirement; k123 exact native result
+normalization, per-copy identity and usefulness. Each consumes the upstream review
+before its own changes and reconciles any earned findings. Use the finite
+native-discovery-acceptance G/N/V inventory and complete profiles; no legacy raw
+72-credit/find/marker/FIFO account is a current requirement. No experiment here.
+
+Close only when those concrete designs and their mandatory reviews/integrations
+fulfil this node; the closing session names its actual Creator on existing k120.
+Root k199's review cannot replace this whole-node resource review. Native binary/
+signed acceptance still belongs to the subsequently planned implementation.

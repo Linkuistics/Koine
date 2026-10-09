@@ -14,7 +14,7 @@ establishes presence and cause at any length, and a location whose spelling is
 application hand-off with `failed`.
 The [route evaluation](long-action-route.md#v1-decision) records how the
 diagnostics that followed this analysis led there. The
-[search handoff](../specs/workspace-search.md#long-location-action-dependency)
+[search handoff](raw-workspace-search-comparison.md#long-location-action-dependency)
 consumes that boundary. The sections below are the source evidence as analysed;
 where they speak of a replacement classification or submission route still to be
 designed, the v1 decision supersedes that obligation.

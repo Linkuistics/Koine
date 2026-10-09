@@ -36,3 +36,22 @@ release/schema 1.0.1 and independently retained 1.0.0 evidence remain separate.
 
 This leaf plans implementation of the reconciled native scope. Record review
 judgment and keep private native controls inside the agreed product seams.
+
+## Concrete implementation input after the required reviews
+
+Use reviewed native SDL/spec, complete bundled/update/refusal profiles and G1–G8,
+N1–N7, V1–V8/serviceability subjects. Cut vertical working slices for the ten
+Foundation location pairs, real indexed/running/registration breadth/per-copy
+metadata, effect-free settings runtime reads, explicit background preparation,
+earned conditional exact-event setup and selected authorized reveal. Each slice
+owns source AND actual native-image guards and meaningful failing controls as
+applicable, real observation/publication/late-return ownership and independent
+serviceability. No implementation is cut by the root design session.
+
+The new identities are workspace 1.2.0/schema 1.1.0 and 1.3.0/schema 1.1.0 update;
+retained 1.0.0/1.0.1 and action-only 1.1.0/schema 1.0.1 stay separate. Do unchanged
+host posture first; conditional setup follows only actual useful exact-event need,
+with no unused entitlement. Missing ordinary settings areas/non-witness app breadth,
+foreground failure or unavailable conditions remain concrete live work, and k93
+resolves real material gaps before baseline. No raw home traversal/ordering task
+or automatic useful-category acceptance is authorized.

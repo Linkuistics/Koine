@@ -1,5 +1,12 @@
 # Application and file discovery
 
+**Applicability:** This report preserves its original raw/custom-search subjects
+and measured limits for comparison. The [native contract](../specs/workspace-search.md)
+and [finite acceptance](native-discovery-acceptance.md) own current sources,
+resource subjects, exact profiles and pending native verdicts. Useful existing
+branch/ownership/independent-observer controls are adapted there; obsolete raw
+mechanics or successful historical captures supply no native catalogue pass.
+
 **Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
 and [finite backend evidence](search-tooling.md) replace custom traversal/witness
 mechanics below. Retain this document as bounded prior evidence/design analysis,

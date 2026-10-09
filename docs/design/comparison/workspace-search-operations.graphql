@@ -1,0 +1,96 @@
+# Previous raw-search examples only; native locations/catalogues await design/review.
+# Requires workspace:read only. Inspect status, coverage, dependency, truncation AND errors.
+# Coverage rows include source provenance; native-source paths can be null.
+
+fragment SearchCoverage on WorkspaceSearchRootCoverage {
+  rootIndex
+  source
+  requestedPath
+  resolvedPath
+  state
+  examinedEntries
+  searched { path extent }
+  skipped {
+    path extent reason affectsCoverage guidance
+    permission {
+      kind permissionClass permissionOwner accessProcess permissionReason permissionTarget
+      osPermission consentState
+    }
+  }
+}
+
+query FindInstalledApplications($query: String!, $roots: [String!], $limit: Int = 50) {
+  apps: workspaceSearchApplications(query: $query, roots: $roots, limit: $limit) {
+    status
+    choices: matches { name applicationPath bundleIdentifier installationState rootIndices }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
+  files: workspaceSearchFiles(query: $query, roots: $roots, limit: $limit) {
+    status
+    choices: matches {
+      name path kind contentType openDisposition rootIndices
+      defaultHandlerState
+      defaultApplication { bundleIdentifier applicationPath }
+      defaultHandlerGuidance
+    }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+# BLOCKED is inspectable without matches and produces no search-generated error.
+# FAILED also has no matches error when that field is not selected.
+# These invariants require no execution errors at or above selected fields.
+query InspectSearchCoverage($roots: [String!]) {
+  apps: workspaceSearchApplications(query: "", roots: $roots) {
+    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
+  }
+  files: workspaceSearchFiles(query: "", roots: $roots) {
+    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
+  }
+}
+
+# Absent execution errors at or above selected fields, BLOCKED gives two null
+# aliases and no search-generated errors. FAILED
+# gives failed at [apps, first]/[apps, second] or [files, first]/[files, second].
+# Root aliases are independent snapshots; nested aliases reuse their frozen result.
+# Publication capability errors can suppress any field, including coverage/status.
+# Provider stop between root/nested resolution can give unavailable at matches,
+# leaving BLOCKED status beside errors; normal non-null propagation still applies.
+# No-progress PROMPT_RISK plus independently observed root/target change or
+# INSPECTION_FAILED is FAILED. Command stderr alone does not establish change.
+query InspectAliasedMatches($roots: [String!]) {
+  apps: workspaceSearchApplications(query: "", roots: $roots) {
+    status
+    first: matches { name applicationPath }
+    second: matches { name applicationPath }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+  files: workspaceSearchFiles(query: "", roots: $roots) {
+    status
+    first: matches { name path }
+    second: matches { name path }
+    coverage { ...SearchCoverage }
+    dependency { reason guidance }
+    resultsTruncated
+  }
+}
+
+# After explicit selection, pass BOTH known identifier and installation path for
+# INSTALLED application launch. UNKNOWN/UNREGISTERED apps stay reveal/copy choices.
+# Pass file paths unchanged to existing default/Zed open/reveal operations.
+# Those actions need workspace:control AND desktop:control and revalidate locations.
+# Extant action spellings >=1024 bytes without NUL fail at v1 handoff, not as absence;
+# keep longer search results visible/copyable. Search results carry no identity pin.
+# Clipboard, ranking and MRU are client-owned. No search nested selection launches
+# another command or native inspection; aliases reuse the frozen root snapshot.
+# Source order is no top-N, FIFO, directory EOF or counted-omission guarantee.
+# Empty native seeds/registration do not prove exhaustive healthy empty.

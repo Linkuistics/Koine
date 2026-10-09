@@ -1,41 +1,61 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Koine native discovery source analysis and the agreed v1 ownership boundary. Locations and application sources remain candidates; the preferred System Settings source, conditional setup and background preparation are agreed. Final API design and native acceptance remain pending. Other search views preserve comparison material. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon: named location/application/settings observations, separate explicit settings effects and true native-return ownership. Mandatory review, implementation and native G/N/V acceptance remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
-    "title": "Native discovery sources and the System Settings decision",
-    "status": "Settings requirements agreed; contract and native acceptance pending",
-    "summary": "Public Foundation location values and indexed/running/registration application sources have bounded capabilities. Antony selected app-supplied settings scripting: try unchanged signing posture first; design explicit Automation setup only if useful discovery needs it. A separate control-authorized operation prepares the catalogue by launching a stopped target in the background; ordinary reads never launch or prompt. Return all runtime-exposed panes, with Network, Sound, Appearance and Displays as witnesses, exposed anchors and honest conditional availability. Private sidebar data and category narrowing were not selected. No exact event, launch or native acceptance has been exercised. Final design and mandatory whole-producer review remain before consumption.",
+    "title": "Native discovery contract, settings authority and retirement",
+    "status": "Designed; mandatory review and native acceptance pending",
+    "summary": "Three workspace:read queries return frozen provenance/uncertainty. Background prepare and conditional exact-event setup require workspace:control and return no catalogue values; selected reveal requires both controls. Separate native images preserve the accepted four-action guard. Cancellation freezes publication while native return retains capacity. Exact new 1.2.0/1.1.0 and 1.3.0/1.1.0 profiles, useful witnesses and independent controls remain unaccepted.",
     "diagramIds": [
+      "native-discovery-contract",
+      "native-settings-flow",
+      "native-discovery-lifecycle",
       "native-discovery-sources",
       "native-settings-decision",
       "search-discovery"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-discovery-sources",
-        "summary": "Distinguishes source candidates from qualified catalogues and carries the agreed settings route and preparation boundary."
+        "id": "native-discovery-contract",
+        "summary": "Added source/native-image ownership and the source plus compiled action-boundary controls."
       },
       {
-        "id": "native-settings-decision",
-        "summary": "Records selected scripting, conditional setup, background preparation and the useful minimum alongside the unselected alternatives."
+        "id": "native-settings-flow",
+        "summary": "Added separate read, background prepare, conditional setup and selected reveal paths with complete authority."
+      },
+      {
+        "id": "native-discovery-lifecycle",
+        "summary": "Added bounded admission, publication freeze and capacity retained through true native return."
+      },
+      {
+        "id": "native-discovery-sources",
+        "summary": "Changed source candidates to selected interfaces while retaining pending runtime qualification."
+      },
+      {
+        "id": "search-discovery",
+        "summary": "Linked client-owned search to the designed native contract and pending mandatory review/acceptance."
       }
     ]
   },
   "groups": [
     {
+      "id": "native-contract",
+      "title": "Native discovery contract",
+      "description": "Composition, complete settings effect authority and bounded native ownership; native source/binary/VM verdicts remain pending."
+    },
+    {
       "id": "native-sources",
       "title": "Native discovery sources \u00b7 analysis and requirements",
-      "description": "Candidate interfaces, public/platform limits and the agreed settings source/preparation direction. Runtime sources remain unqualified; no schema, consent operation, signing change or reduced useful inventory is implemented."
+      "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
       "title": "Native discovery and client-owned search \u00b7 requirements",
-      "description": "Agreed v1 boundary plus eight previous raw-search comparison views. Native catalogue/location design, mandatory review and actual acceptance remain pending."
+      "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open \u00b7 designed, not yet served",
-      "description": "Installed application selection, web/document opening and Finder reveal. Native acknowledgment does not certify rendered contents or foreground state; document handlers can execute content or follow redirects."
+      "title": "Launch and open \u00b7 served action-only contract",
+      "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
@@ -70,13 +90,40 @@
   ],
   "diagrams": [
     {
+      "id": "native-discovery-contract",
+      "group": "native-contract",
+      "title": "Own sources and freeze publication",
+      "renderer": "svg",
+      "source": "native-discovery-contract.d2",
+      "rendered": "native-discovery-contract.svg",
+      "caption": "Native-image components within one Koine process. All catalogue seams require workspace:read; prepare/setup require workspace:control and publish no catalogue data; existing actions and selected settings reveal require both controls. Action image cannot reach discovery/settings effects. Actual source, compiled linkage/routing/authority controls remain pending."
+    },
+    {
+      "id": "native-settings-flow",
+      "group": "native-contract",
+      "title": "Read, prepare, set up, then reveal",
+      "renderer": "svg",
+      "source": "native-settings-flow.d2",
+      "rendered": "native-settings-flow.svg",
+      "caption": "Explicit alternative operations, never an automatic pipeline. RUNNING is process readiness only. Setup may prompt only when explicitly chosen; no read/prepare/reveal can invoke it."
+    },
+    {
+      "id": "native-discovery-lifecycle",
+      "group": "native-contract",
+      "title": "Retain capacity until native work really returns",
+      "renderer": "svg",
+      "source": "native-discovery-lifecycle.d2",
+      "rendered": "native-discovery-lifecycle.svg",
+      "caption": "Freeze closes publication/admission, not a blocking native call. Four shared slots can remain occupied indefinitely; independent serviceability and native-peak limits remain finite acceptance duties."
+    },
+    {
       "id": "native-discovery-sources",
       "group": "native-sources",
       "title": "What each source can establish",
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Source analysis and agreed settings direction, not runtime acceptance. Location values give no client access; indexed application observations and per-identifier registration do not prove all-disk completeness. Settings uses preferred app scripting with conditional explicit setup and background preparation. Exact prompt/hydration qualification, useful witnesses, the full contract and mandatory review remain pending."
+      "caption": "Selected public interfaces, not runtime acceptance: Foundation values; indexed-local app breadth with running/registration supplements; all runtime settings objects via exact no-prompt events. Source/category completeness and useful witnesses remain separate."
     },
     {
       "id": "native-settings-decision",
@@ -85,7 +132,7 @@
       "renderer": "svg",
       "source": "native-settings-decision.d2",
       "rendered": "native-settings-decision.svg",
-      "caption": "Antony selected app scripting, unchanged signing posture first and conditional explicit Automation setup. Explicit preparation launches a stopped target in the background; ordinary reads remain effect-free. The minimum includes all runtime-exposed panes, ordinary-area witnesses, exposed anchors and conditional availability. Private sidebar and narrower-category alternatives were not selected. Final API design, review and finite G/N/V acceptance remain pending."
+      "caption": "Agreed requirements retained as unchanged context: app-supplied scripting, unchanged signing posture first, conditional explicit setup and background preparation. Ordinary reads remain effect-free. The native contract defines exact fields/effects; runtime usefulness/foreground/consent remains pending."
     },
     {
       "id": "search-preopen",
@@ -130,7 +177,7 @@
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
-      "caption": "Previous raw-result identity proposal. Per-copy application identity and action-time checks remain relevant; the returned native design reconciles exact metadata and location semantics."
+      "caption": "Historical raw-result identity proposal. The native contract preserves per-copy application identity and action-time checks, with actual metadata/alias qualification still pending."
     },
     {
       "id": "search-traversal",
@@ -148,7 +195,7 @@
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
-      "caption": "Previous raw-source coverage payload. Honest native availability, empty and incomplete/unknown observations remain required; exact native payload awaits design."
+      "caption": "Historical raw-source coverage payload only. The current native contract now defines its own source availability/completeness and frozen nullable-item semantics; no raw count/marker supplies a native pass."
     },
     {
       "id": "search-handoff",
@@ -166,7 +213,7 @@
       "renderer": "svg",
       "source": "search-discovery.d2",
       "rendered": "search-discovery.svg",
-      "caption": "Agreed v1 ownership: Koine returns special locations and named native catalogues; clients own raw search. Native sources, API and acceptance await returned design and mandatory review."
+      "caption": "Current ownership: clients search raw files; Koine provides named native values/catalogues and separate explicit actions. API/source design exists; review and native acceptance remain pending."
     },
     {
       "id": "workspace-inspection",
@@ -184,7 +231,7 @@
       "renderer": "svg",
       "source": "workspace-open.puml",
       "rendered": "workspace-open.svg",
-      "caption": "Designed sequence. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. The v1 long-location boundary (reviewed and integrated, unimplemented) resolves the target, then the application, component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Existing action contract. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. The v1 long-location boundary (implemented in workspace 1.0.1, with its finite VM coverage limits) resolves the target, then the application, component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "workspace-outcomes",
@@ -193,7 +240,7 @@
       "renderer": "svg",
       "source": "workspace-outcomes.d2",
       "rendered": "workspace-outcomes.svg",
-      "caption": "Designed outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. The v1 long-location boundary (reviewed and integrated, unimplemented) resolves locations component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
+      "caption": "Existing action outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. The v1 long-location boundary (implemented in workspace 1.0.1, with its finite VM coverage limits) resolves locations component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
     },
     {
       "id": "provider-selection",
@@ -310,7 +357,7 @@
       "renderer": "svg",
       "source": "workspace-long-locations.d2",
       "rendered": "workspace-long-locations.svg",
-      "caption": "Contract after review integration; unimplemented, no native acceptance. Koine resolves the target first, then a supplied or discovered application, from search-only handles, so absence (missing or dangling, and for a target a cycle or impossible ASCII component) is established at any length and later platform nil/ENOENT/ENAMETOOLONG is never absence. Each stage applies the limit before any pathname call on its location, a discovered application's after the discovery read that found it: an extant spelling of PATH_MAX (1,024) bytes or more, not counting its NUL, is refused with failed before any request; application support for such locations is deferred past v1 (Koine#1). Registered candidates are resolved only for device/inode comparison and are never gated. Within the limit the accepted short-path metadata, handler, submission and receipt route is unchanged. First-use prompt behaviour of search-only resolution in Desktop, Documents and Downloads is an acceptance obligation; a prompt goes to Antony."
+      "caption": "Implemented action-only workspace 1.0.1 contract; native registered-long/preferred-long outcomes retain their explicitly bounded VM coverage limit. This supplies no catalogue acceptance. Koine resolves the target first, then a supplied or discovered application, from search-only handles, so absence (missing or dangling, and for a target a cycle or impossible ASCII component) is established at any length and later platform nil/ENOENT/ENAMETOOLONG is never absence. Each stage applies the limit before any pathname call on its location, a discovered application's after the discovery read that found it: an extant spelling of PATH_MAX (1,024) bytes or more, not counting its NUL, is refused with failed before any request; application support for such locations is deferred past v1 (Koine#1). Registered candidates are resolved only for device/inode comparison and are never gated. Within the limit the accepted short-path metadata, handler, submission and receipt route is unchanged. First-use prompt behaviour of search-only resolution in Desktop, Documents and Downloads is an acceptance obligation; a prompt goes to Antony."
     }
   ]
 }

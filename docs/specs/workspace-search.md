@@ -1,463 +1,501 @@
 # Native discovery and client-owned search
 
-**Ownership revised; native catalogue design and acceptance pending.** V1 puts
-raw filesystem search entirely with clients. Koine supplies **special locations**
-and named **native catalogues**, initially applications and modern System
-Settings destinations, targeting macOS 26+ on the existing Apple Silicon support
-matrix. Clients own raw traversal, name filtering, ranking, budgets and their
-filesystem permissions. A returned location is a starting point, not access or
-consent. No general OS metadata-query API is included in v1.
+**Designed; mandatory review, implementation and native acceptance pending.**
+Koine supplies OS-known special locations and named application/System Settings
+catalogues on macOS 26+ Apple Silicon. Clients own filesystem traversal,
+permissions, filtering, ranking, order, budgets, chooser, MRU and clipboard.
+Location values grant no access or consent. The [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md)
+and [requirements](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
+govern. The [source report](../verification/native-discovery-sources.md) records
+SDK 27 declarations and macOS 26.6.2 shipped data separately from macOS 26.5
+comparisons. Those declarations qualify interfaces, not runtime read safety.
 
-The [workflow requirements](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
-and [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md)
-are the current agreement. Returned design must select existing native facilities
-for each category, define sources/availability/completeness and public metadata,
-and reconcile all mixed search work before implementation. Koine's own reads
-remain prompt-free and must avoid hydration; empty, unavailable, blocked and
-incomplete/unknown observations remain distinct. Existing launch/open/reveal
-actions retain their own authority, resolution and handoff limits.
+Start with [Composition → Own sources and freeze publication](../design/architecture/index.html#diagram-native-discovery-contract)
+and [System Settings → Read, prepare, set up, then reveal](../design/architecture/index.html#diagram-native-settings-flow).
+The [SDL](../design/workspace-search-schema.graphql) and
+[operations](../design/workspace-search-operations.graphql) encode this contract;
+they are proposals, not the currently served schema. The
+[finite acceptance contract](../verification/native-discovery-acceptance.md)
+names every G/N/V subject. The [former raw proposal](../verification/raw-workspace-search-comparison.md)
+and [system-find measurements](../verification/search-tooling.md) are comparison
+material only. No raw-search roots/query/matching field or fallback remains in
+this design.
 
-The already agreed public GraphQL, native binary and isolated signed macOS VM
-seams apply to actual location/catalogue observations and selected actions.
-Useful configured-launcher/Safari/Finder and System Settings witnesses, independent
-dialog/hydration controls, source/binary authority evidence and retained action
-compatibility remain required. Earlier raw-search measurements accept no new
-native catalogue route.
+## Ownership and alternatives
 
-The [native source analysis](../verification/native-discovery-sources.md)
-establishes candidate location/application interfaces and a concrete modern
-System Settings source/posture decision. The installed scripting dictionary
-offers pane objects and reveal, with unapproved Automation/signing/setup costs;
-sidebar metadata has private-format and conditional-visibility limits. A focused
-requirements step precedes final API design. No catalogue route, reduced useful
-category or new consent is selected here. The complete native-discovery producer
-and its mandatory review remain ahead of the retained search consumers.
-
-## Previous raw-search proposal
-
-**Everything below is comparison material awaiting returned design, not the
-current v1 API or backend.** The old SDL/examples, command/order/work limits,
-per-root coverage and permission questions describe an unimplemented raw-search
-proposal. Selecting named native catalogues does not adopt those mechanics or
-settle a catalogue backend's permissions. Returned design and mandatory review
-must replace this proposal before its consumers proceed.
-
-The [finite comparison](../verification/search-tooling.md), prior
-[discovery](../verification/search-discovery.md),
-[metadata](../verification/protected-path-metadata.md) and
-[lookup-only transit](../verification/descriptor-walk-prompt.md) observations
-retain their exact subjects. Native identity/fact, action and compatibility
-obligations remain relevant; raw traversal requirements do not.
-
-## Solution and ownership
-
-| Module | Owns | Caller contract |
+| Module | Owns and hides | Public obligation / enabling point |
 | --- | --- | --- |
-| Workspace search | Authorization, source selection, copied-value bounds, coverage, frozen publication | Query, roots, limit; inspect status, coverage and errors |
-| Find adapter | Fixed command/arguments, NUL framing, pipes, exit/reap and cancellation | Private enabling point substitutes command outcomes in tests |
-| Native application inspection | Bundle identity/name, identifier, registration, OS-reported locations | Positive, checked negative and unknown observations are distinct |
-| Foundation matching | Existing normalization, folding and substring operations | Literal name query without an expression language |
-| Client | Query entry, chooser, ranking, MRU, clipboard, explicit action selection | Search confers no control authority |
+| Workspace composition | Resolver routing, static authority, bounded job owner | Client selects a named operation; private native adapters are supplied here for contract tests. |
+| Location adapter | Foundation account/domain value lookup | Returns values without existence checks or contents access. |
+| Application adapter | Indexed breadth, running observations, registration and individual bundle inspection | Per-copy choices, provenance and checked native facts; no exhaustive disk promise. |
+| Settings adapter | Fixed trusted target, exact event descriptors, no-prompt reads | Runtime panes/anchors and honest stopped/refused/conditional outcomes. |
+| Snapshot owner | Admission, budgets, copied values, diagnostics, freeze and true retirement | Nested fields/aliases never repeat native work. |
+| Existing action module | Launch/open/reveal resolution and accepted submission rules | Receives explicit selection and its complete controls; catalogue knowledge grants no action authority. |
+| Settings effect module | Background prepare, explicit setup, selected reveal | Separate static authority and finite effect allowlists. |
+| Client | Raw search and presentation, explicit choice to prepare/setup/act | Supplies its own filesystem access and independently requests each effect. |
 
-The adapter hides process and parsing complexity that otherwise spreads across
-resolvers. It owns no directory queue, recursive walker, index, matcher or
-witness catalogue. Enumeration is a finite find expression; matching calls
-Foundation rather than copying a matching algorithm. Native metadata remains
-in-process, so a tool child does not isolate those allocations/blocking calls.
+A named source adapter concentrates service semantics and uncertainty below the
+resolver; callers need not reconstruct three different native protocols.
+Calculation/merging uses bounded immutable observations, separate from query
+lifetime and authority. Keeping discovery and effects in separate native images
+costs packaging and controlled linkage but preserves the accepted action guard.
+A single permissive workspace image would entangle discovery scripting with the
+four accepted action paths. A launcher-only app catalogue lacks breadth; a raw
+walk restores client-owned responsibility. Neither is selected. Settings uses
+app-supplied objects rather than private sidebar files or guessed deep links;
+[the decision](../adr/settings-discovery-uses-app-supplied-objects.md) records its
+conditional setup cost. Revisit a source only for a measured missing required
+choice or failure of the no-prompt/no-hydration policy, once with the concrete
+consumer consequence and alternative.
 
-The [current ownership](../adr/raw-filesystem-search-belongs-to-clients.md)
-controls returned native work. The [coverage](../adr/search-coverage-describes-observations.md),
-[application identity](../adr/application-search-uses-bundle-identity.md),
-[native observation](../adr/search-native-facts-are-reported-observations.md) and
-[prompt-risk](../adr/prompt-risk-is-search-data.md) records retain relevant
-principles and require native design; this previous proposal's exact mechanics
-are not current requirements. Existing [effect authority](../adr/provider-authority-follows-effects.md),
-[provider selection](../adr/first-party-provider-selection.md) and
-[launch/open](workspace-launch-and-open.md) contracts govern integration/actions.
+## Public operations and authority
 
-## Queries and inputs
-
-Both nullable roots and every reachable output field require only workspace:read.
-Control does not imply read. Denial precedes native work/child launch; publication
-checks live authority again. workspaceSearchApplications and workspaceSearchFiles
-both take query, optional roots and limit, returning choices with source coverage.
-
-Query is at most 256 UTF-8 bytes without NUL. Empty matches all eligible names;
-whitespace is literal. Roots are 1…16 nonempty literal absolute local paths, each
-at most 4,096 UTF-8 bytes without NUL. Null/omitted roots uses defaults; an empty
-list is invalid. No URL, shell, tilde, environment, glob or regex expansion occurs.
-Non-null limit is 1…200, default 50. Invalid input fails at its original root
-response path before inspection; variable coercion retains GraphQL HTTP 400.
-
-### Roots and search domain
-
-File default is Koine's actual home. Application conventional defaults are
-/Applications, /System/Applications, home Applications, /System/Library/CoreServices
-and /System/Cryptexes/App/System/Applications. Default application search adds a
-separate OS-reported source. Explicit roots replace conventional defaults and
-suppress discovery expansion outside them; an observed application link may
-still identify its target under the permission contract.
-
-OS-reported seeds are generic running-application bundle URLs and per-identifier
-registration URLs for identifiers obtained from conventional discovery or running
-applications. This can supply relocated Safari and other registered copies.
-Configured launcher identifiers are acceptance witnesses, not an inventory.
-There is no public enumeration of all Launch Services registrations: unseen,
-non-running apps with unseeded identifiers may be missed. OS-reported coverage
-is always UNKNOWN, even after finite seed processing. Empty/stale service answers
-never establish an exhaustive healthy empty inventory. Explicit-root registration
-inspection supplies metadata only, never extra out-of-root discovery choices.
-
-Enumeration does not descend across devices, does not follow symlinks and emits
-regular files, directories and link locations. Hidden-name subtrees and special
-files are intrinsic exclusions. Known package-suffix anchors remain choices but
-contents are pruned: .app, .bundle, .framework, .plugin, .appex, .photoslibrary and
-.rtfd, case-insensitively. This declared suffix policy does not recognize every
-native package. No ignore/config file, content, icon, thumbnail, default handler
-or client configuration is read.
-
-Desktop, Documents, Downloads, home Library descendants, known cloud storage,
-Trash and unsupported/foreign roots remain policy-excluded. Report rules even
-when existence was not checked; they do not prove absent consent. Optional missing
-home Applications/Cryptex defaults are COMPLETE empty domains only with positive
-absence; explicit missing and uncertain roots remain UNKNOWN. No arbitrary
-Preboot scan is selected: an OS-reported application target is individually
-inspected under the permission contract, never recursively searched as a volume.
-
-## Permission boundary and required decision
-
-Koine owns policy. Enumeration runs in an Apple-signed system-command child;
-Foundation, Bundle and registration work run in Koine. TCC's responsible identity
-for the child must be observed under normal signed GUI launch, not inferred from
-executable, parent PID or test-agent permissions. Until established, command-read
-diagnostics carry unknown responsible identity. A capability grants no OS consent.
-
-Ordinary search never requests consent, invokes setup, changes indexing, mounts
-a volume, deliberately hydrates content or probes protected scope to learn consent.
-Explicit setup needs its separate agreement/operation. No Full Disk Access,
-entitlement, usage key, privilege, custom helper signing or host/child descriptor
-limit change is selected.
-
-Four focused choices remain for the human before returned permission design:
-
-1. **Process scope:** recommend permitting one ordinary Apple-signed system-find
-   child per admitted job, with unchanged signing/limits. k115 rejected a custom
-   isolation helper; k190's reuse requirement did not answer this different
-   proposal. The concrete child-refusal alternative is FileManager enumeration with
-   Foundation matching: localized errors/pruning and no child attribution/pipes/reap,
-   at the cost of unkillable blocked Koine calls and unmeasured long-path behavior.
-   libc fts with FTS_NOCHDIR is a lower-level reuse alternative with whole-path
-   PATH_MAX costs. Either requires returned design and mandatory review.
-2. **Protection scope:** prune/no-follow/same-device flags cannot prove protection
-   of relocated sensitive targets, unknown cloud aliases, root-component links
-   or replacement races, nor case/Unicode/Data-root spelling aliases. Prune and
-   device checks may follow protected-anchor or foreign-mount metadata contact.
-   Retain known protected-target identity protection where
-   required. Decide whether bounded lookup-only acquisition of policy/application
-   target identities is allowed in search and whether the residual platform
-   relocation/replacement limit is acceptable. k174 is bounded transit evidence,
-   not an exemption. Refusal requires an explicitly agreed setup/domain contract
-   or another backend; no silent literal-only blocking or all-home refusal.
-3. **Home ordering:** the unsorted preorder deep pass can exhaust the time/record
-   budget in one subtree before later shallow siblings. Decide whether to accept
-   that explicit order limit or return a reviewed find-backed shallow pass before
-   deep search, or immediate-child source scheduling. Those alternatives cost
-   repeated processing or source qualification/accounting. Recommend a returned
-   shallow-pass design before implementation unless named losses are acceptable.
-   No new source structure or workflow loss is selected here. k93 still decides
-   actual omissions separately from protected-scope exclusions.
-4. **Dataless policy:** choose process-wide materialization OFF, affecting all Koine
-   work and future children, versus verifying inherited effective policy and refusing
-   unknown/enabled policy. Recommend verification/refusal first, with any required
-   global pin separately agreed. The documented default is OFF, not a guarantee
-   about opaque services/cloud aliases. k191 must specify child/native settings,
-   failure/withheld-listing coverage and hydration controls. No setting is changed here.
-
-The selected route is concrete; its process permission/protection premise is not
-approved. The original lookup-only witness question therefore still matters for
-policy/native application targets. Custom queue/prefix-replay/mount-generation
-algorithms no longer apply to find. A general filesystem proof engine is not a
-fallback. Even find's device check may contact/block foreign metadata first.
-The returned design must qualify roots and exclusions before any actual query.
-
-## Matching and returned locations
-
-Normalize query/keys to NFC, use Foundation case/diacritic-insensitive folding
-with fixed en_US_POSIX, normalize again, then Foundation literal substring
-comparison. Files use final name including extension; applications use resolved
-target bundle filename and its stem after one terminal .app is removed. User
-input never becomes predicate/regex/glob syntax. Native Unicode controls must
-verify the library behavior; failure does not authorize a custom matcher.
-
-Return source-observation order; there is no stable lexical, breadth-first,
-exact/prefix rank or top-N guarantee. Client ranking/MRU may reorder the bounded
-choices. The former ranking and shallow-name order were candidate mechanics,
-not a released contract. The current depth-first home pass risks repeated later
-shallow-name starvation; k196 decides that premise before implementation.
-Real home/default omissions still need human acceptance.
-
-File paths preserve absolute bytes emitted by find. Normalization affects only
-matching. No unique canonical filesystem spelling or firmlink-alias collapse is
-promised. Exactly equal retained UTF-8 path bytes merge source membership;
-Swift String canonical equality is not that comparison. Distinct byte strings
-may name one file. Final link locations remain links. Native metadata can race;
-paths are observations, not pinned identities or resource references.
-
-Application inspection establishes native bundle directory identity and resolved
-target spelling. Link/direct/OS routes to that identity merge while retained;
-distinct copies sharing an identifier stay separate. Keep first finalized spelling
-and only observed source membership. Refused targets prove neither identity nor
-registration absence. Reuse existing bounded location resolution only for individual
-application/policy targets after its search use is permitted; it does not enumerate
-search trees. Native case/Unicode/firmlink/copy controls remain necessary.
-
-Returned path ceiling remains 8,192 UTF-8 bytes. Overlength/undecodable records
-are omitted with VALUE_LIMIT/UNREPRESENTABLE_NAME root REMAINDER, without fabricated
-child paths or shortened spellings. Representable file names do not require a
-Koine canonical-directory descent. Tool long-name failure is diagnosed, never
-absence. Metadata length limits may withhold fields/application identity, but
-cannot silently withdraw a representable ordinary file name.
-
-## Native application and file metadata
-
-k123 must define the directory/link/OS records admitted to native recognition and
-a finite per-job call budget including component resolution, resourceValues,
-Bundle, registration/preferred lookup and expansion. Suffixes only filter
-candidates; they never establish native identity. Links require target-based
-recognition before matching, so filtering only link names is unsound. Copy/URL
-limits and deadlines do not bound blocking calls. ENTRY_LIMIT REMAINDER records
-admission exhaustion without withdrawing representable ordinary file names.
-The exact candidate set/budget and useful-launch consequence require returned
-design and mandatory review before implementation; no smaller domain is accepted.
-
-Public application/type/alias facts and Bundle identifiers remain native.
-Use error-bearing per-identifier registration results, cross-checked with preferred
-NSWorkspace location. An established present identity with matching registration
-supports INSTALLED. Exact checked native not-found, or complete checked nonmatching
-results without errors/conflicting preferred observation, support UNREGISTERED
-under the [native observation decision](../adr/search-native-facts-are-reported-observations.md).
-The selected public registration function is deprecated; verify availability/error
-behavior on supported macOS. If unusable, keep UNKNOWN and escalate useful-launch
-coverage instead of manufacturing negatives.
-
-Nil identifiers, nil/empty errorless responses, refused/unexamined URLs, malformed/
-truncated results, resource errors and conflicts are UNKNOWN with affecting coverage.
-They prove neither absence nor service health. Established bundle identities with
-unknown metadata stay reveal/copy choices; unestablished target identities are
-omitted. Wrong known witnesses and all-UNKNOWN configured launcher metadata fail
-acceptance. Reads never register, install or launch applications.
-
-File kind/type/open disposition are optional prompt-free native observations.
-Unknown fields never permit inspection of blocked scope. Applications, native
-aliases and typed executables are REFUSED for opening; unacquired type is UNKNOWN.
-No document default-handler lookup occurs: UNKNOWN handler, null application and
-guidance remain uniform. Existing actions reclassify independently.
-
-## Coverage and aggregate outcomes
-
-Coverage rows identify each effective filesystem root and the default OS source.
-rootIndex is the row's index; source is FILESYSTEM_ROOT or OS_REPORTED. OS rows
-have null requested/resolved paths. examinedEntries counts complete decoded
-candidate records/native seed candidates actually considered, not every filesystem
-entry or native operation. No completed-directory/EOF count is published. Choice
-rootIndices contain only sources that actually observed that retained choice.
-
-Except positive optional-root absence, COMPLETE requires a qualified filesystem
-root, the command's exact-root depth-zero directory marker, normal exit 0,
-fully drained pipes,
-no warning/error and no affecting policy/work/value/metadata omission. It describes
-eligible-domain processing on that run, not an atomic snapshot. Such a zero-candidate
-root is healthy empty. The marker is neither a match nor examinedEntries progress.
-Missing marker or potentially withheld dataless listing cannot establish healthy
-empty; k191 supplies link/file/trailing-slash/replacement and effective-policy rules.
-A marker cannot pin identity or certify atomicity. PARTIAL means observations plus
-omissions. UNKNOWN means
-no useful candidate observation or unestablished completeness; OS_REPORTED is
-always UNKNOWN. Home remains PARTIAL/UNKNOWN under the protected-scope policy.
-
-Searched SUBTREE describes COMPLETE processing; OBSERVED_DESCENDANTS asserts only
-candidate observations. Skipped ENTRY is an independently identified candidate;
-SUBTREE is a policy scope; REMAINDER is unfinished/unlocalized source work.
-Stderr is diagnostic text, not a reliable path/errno protocol: unlocalized errors
-are INSPECTION_FAILED REMAINDER, never guessed ACCESS_DENIED or PATH_NOT_FOUND.
-No counted exclusion groups, unseen descendant counts or FRONTIER_LIMIT claims
-are inferred. Non-affecting DOMAIN_EXCLUSION describes declared hidden/package/
-link/special rules. Prompt/cloud/mount/work/native omissions affect coverage.
-The same-device rule declares foreign descendants outside the intrinsic domain;
-report that rule without asserting an observed mount or count. Known unsupported
-root/target refusals remain affecting MOUNT_BOUNDARY/UNSUPPORTED_VOLUME. Exit 0
-alone never proves completeness without the root/policy and full-drain conditions.
-
-### Skip reasons and producers
-
-Each reason supplies guidance and source coverage. Affecting reasons prevent
-COMPLETE; without progress their class determines failure → prompt → absence/
-dependency precedence. Authorized native qualification is governed by k191, not
-an extra lookup permission. Never localize errno from command text.
-
-| Reason | Producer and extent | affectsCoverage; no-progress class |
+| Coordinate and every reachable result field | Static complete authority | Effects |
 | --- | --- | --- |
-| DOMAIN_EXCLUSION | Declared hidden/package/link-descendant/special/same-device rule; SUBTREE or independently identified ENTRY, no guessed observed mount count. | false; domain only |
-| PROMPT_RISK | Known prompting root/anchor listing refusal; SUBTREE or identified target ENTRY, with UNKNOWN-consent permission guidance. | true; prompt |
-| CLOUD_SCOPE | Known cloud/FileProvider policy exclusion; SUBTREE or ENTRY. Add PROMPT_RISK where that risk is known. | true; absence/policy |
-| UNSUPPORTED_SCOPE | Known unsupported root/target scope, including Trash; SUBTREE or ENTRY. | true; absence/policy |
-| UNSUPPORTED_VOLUME | Independently established unsupported root/target volume; SUBTREE or ENTRY. | true; absence/policy |
-| MOUNT_BOUNDARY | Independently established disallowed root/target mount; SUBTREE or ENTRY, never a guessed find device refusal. | true; absence/policy |
-| ROOT_NOT_FOUND | Authorized native qualification positively establishes missing explicit root; SUBTREE. | true; absence |
-| OPTIONAL_ROOT_ABSENT | Positive absence of optional home Applications/Cryptex default; SUBTREE representing empty eligible source. | false; verified optional empty |
-| ROOT_NOT_DIRECTORY | Authorized native qualification establishes file/non-admitted link root; ENTRY. | true; absence/invalid source |
-| ACCESS_DENIED | Localized native qualification/metadata errno; root SUBTREE or target ENTRY. | true; failure |
-| INSPECTION_FAILED | Native/stream/spawn/read/wait error, command warning/nonzero exit, missing marker or unestablished listing; localized ENTRY/SUBTREE only with independent evidence, otherwise REMAINDER. | true; failure |
-| CHANGED_DURING_SEARCH | Independently observed root/target identity/type contradiction; ENTRY or root SUBTREE. Vanished find names/stderr alone do not produce it. | true; failure |
-| UNREPRESENTABLE_NAME | Lossless UTF-8 decoding failure; REMAINDER with no fabricated path. | true; failure |
-| ENTRY_LIMIT | Candidate/URL cap or returned finite native-call admission bound; REMAINDER. | true; failure |
-| DIAGNOSTIC_LIMIT | Diagnostic count, stderr capture or diagnostic storage exhaustion; REMAINDER. | true; failure |
-| VALUE_LIMIT | Path/copy value exceeds owned ceiling; REMAINDER for unretained path, otherwise identified ENTRY. | true; failure |
-| TIME_LIMIT | Source/overall deadline, including later sources blocked by retained work; REMAINDER. | true; failure |
-| CAPACITY_LIMIT | No process-wide job slot before work; each source REMAINDER. | true; failure |
-| BACKEND_UNAVAILABLE | Fixed executable missing/incompatible before traversal; filesystem-source REMAINDER. Spawn resource errors are INSPECTION_FAILED. | true; dependency |
-| NATIVE_SOURCE_UNAVAILABLE | OS seed service observably unavailable/unusable; OS-source REMAINDER. Empty response alone is UNKNOWN, not absence. | true; dependency |
+| Query.workspaceSpecialLocations(requests:) | workspace:read | Value lookup only. |
+| Query.workspaceApplications | workspace:read | Fixed application catalogue; no launch/register/setup. |
+| Query.workspaceSettings | workspace:read | Existing running target only; exact no-prompt read events. |
+| Mutation.workspacePrepareSettings | workspace:control | Validate target; launch stopped target with activation disabled; running target is left alone. No catalogue values. |
+| Mutation.workspaceRequestSettingsAutomation(event:) | workspace:control | Explicit permission preflight with asking enabled for one fixed READ or REVEAL event class/ID. No launch, reveal or data publication. |
+| Mutation.workspaceRevealSetting(selection:) | workspace:control AND desktop:control | Validate/re-resolve fixed pane/anchor; no-prompt reveal, then explicit activation of the validated target. No launch or automatic setup. |
 
-Positive optional-root absence may establish COMPLETE empty eligible processing;
-it does not erase another source's omission. Metadata failure affects coverage
-even if a file name remains selectable. This table binds all retained SDL reasons;
-returned producer changes must reconcile it and the examples.
+Authority is immutable per schema field coordinate, never inferred from the
+root that reached it. Query objects, preparation/setup objects and reveal
+objects are disjoint; in particular diagnostics, permission hints, dependencies
+and process identities cannot cross these three authority sets. Enums/scalars
+may be shared because they have no resolver fields. Register every reachable
+field with its group's complete authority and reject any descriptor/schema
+combination that disagrees. The SDL check also rejects a deliberately shared
+preparation/reveal process object.
 
-| Status | Data, absent unrelated execution errors |
+Workspace grant disclosure must name these additions: read returns Koine-account
+location values and application/settings metadata, not client filesystem access;
+control permits background System Settings preparation and explicit Automation
+permission requests; reveal also requires desktop control and requests activation.
+Existing launch/open/document-handler disclosures remain complete.
+
+Read is never implied by control. Prepare/setup expose only control-authorized
+receipts, readiness or permission outcome, not panes, names or locations; any
+future combined operation publishing catalogue data must additionally require
+workspace:read throughout. Prepare/setup request no activation, so desktop control
+is not allocated from incidental application/OS reactions. Reveal selects an
+activation effect and always needs both controls, including its receipt. No
+input, menu or desktop read authority is selected. The host performs whole
+mutation preflight, live-grant admission at every effect and publication checks
+under the [effect rule](../adr/provider-authority-follows-effects.md). Revocation
+closes further admissions; already admitted effects may finish, with no rollback.
+No operation automatically retries another source, target, installation or effect.
+
+### Input and output validation
+
+Special-location requests are omitted/null for the declared default set, or a
+nonempty list of at most ten distinct (kind, domain) pairs. HOME, DESKTOP,
+DOCUMENTS, DOWNLOADS, MOVIES, MUSIC and PICTURES admit USER only. APPLICATIONS
+admits USER, LOCAL and SYSTEM. Duplicate or unsupported pairs are invalid input
+before any lookup. Defaults contain all ten pairs in the preceding order, with
+APPLICATIONS ordered USER, LOCAL, SYSTEM. There is no arbitrary path, predicate,
+query string, order or caller-supplied native work limit.
+
+Settings selections contain paneId (1…512 UTF-8 bytes) and optional anchorName
+(1…512 bytes); empty, NUL and control characters are invalid. They are exact
+opaque dictionary keys: no trimming, case folding, Unicode normalization,
+substring match, URL construction, script interpolation or expression parsing.
+Null anchor means pane; a nonnull anchor means exactly that pane's anchor.
+Setup's event enum is READ or REVEAL only. Mutation inputs are validated before
+native work. GraphQL variable/type coercion keeps HTTP 400; provider semantic
+validation keeps original aliased response paths and existing invalidInput behavior.
+
+Native output strings must be lossless UTF-8, no NUL; IDs/anchor keys also satisfy
+the selection rules. Absolute local paths are at most 8,192 UTF-8 bytes, labels
+1…1,024, identifiers 1…512; native strings outside these bounds are withheld,
+never truncated/repaired into another identity. A missing label may be null with
+an affecting diagnostic. No icon, thumbnail, content, arbitrary plist, alias-file
+resolution or default document handler lookup is part of a read. The host's
+existing value/type/depth checks still reject malformed provider output.
+
+## Special locations
+
+Use NSHomeDirectory for HOME and FileManager.urls(for:in:) for the other named
+pairs. Never a create-enabled URL lookup. Return all representable values for a
+requested pair with kind/domain, Koine account's UID as accountIdentifier,
+contentsAvailability UNKNOWN and FOUNDATION_LOCATIONS provenance. Domain and
+account describe Koine's user, not a remote client's user. Native value order is
+an observation, not ranking. Do not resolve, stat, list, create, follow links,
+read resources, mount, open bookmarks or inspect account/cloud containers merely
+to return a value. A nonexistent or inaccessible location can still be a valid
+starting value. Absent native values are UNKNOWN with NO_NATIVE_VALUE; they do
+not certify absence or a healthy empty filesystem. COMPLETE means every requested
+value lookup supplied checked values, never that any directory's contents were
+searched. Temporary/container/network/iCloud enumeration is outside this set.
+
+## Application sources and native facts
+
+The breadth source is one NSMetadataQuery with the fixed application-bundle
+content-type-tree equality kMDItemContentTypeTree = com.apple.application-bundle
+and NSMetadataQueryIndexedLocalComputerScope. Read only kMDItemPath from an
+indexed item as its candidate location; indexed name/identifier/suffix never
+establish native bundle identity. This fixed predicate's array/type semantics
+are qualified against real non-witness application bundles.
+No client predicate or explicit directory scope is accepted. Record INDEXED_APPS
+provenance; user exclusions, stale index state, unindexed volumes/system locations
+and even a remote home may affect this scope. Post-result pruning cannot undo
+source contact. The adapter must qualify that exact predicate/scope on signed
+supported subjects before it is accepted; it is not silently widened to
+LocalComputerScope. A finished gathering notification permits freezing returned
+observations, not proof that every application on disk was indexed or healthy.
+
+Supplement with generic NSWorkspace.runningApplications (RUNNING_APPS), and
+error-bearing LSCopyApplicationURLsForBundleIdentifier expansion
+(REGISTRATION) for identifiers from admitted indexed/running observations plus
+the fixed system identifiers com.apple.Safari and com.apple.finder. These recover
+known system apps but never define the inventory; the twelve configured launchers
+are acceptance witnesses, not a hard-coded production seed list.
+Expand each distinct identifier once, no recursive identifier cascade. Record
+every returned choice's actual source membership; a registration supplement is
+not falsely labelled indexed. Registration and preferred-location lookup are
+per-identifier facts, never an enumeration of all registrations. The deprecated
+but declared error-bearing API is chosen for meaningful checked negatives;
+if unsupported/unusable, diagnose and keep UNKNOWN, preserving unmet useful work.
+The source report cites its SDK/primary documentation.
+
+Every published app needs a checked native application-bundle type and established
+bundle-directory device/inode from the permitted bounded individual-target
+location resolution. Native application resource metadata and Bundle supply
+optional localized name and bundle identifier only for that identified target.
+No filename suffix establishes type or identity. A refused/unidentified candidate
+is omitted with diagnostic and partial/unknown coverage. Preserve representable
+long locations after lookup-only identity acquisition, but withhold unsupported
+whole-path bundle metadata and diagnose it; never call pathname APIs past their
+applicable limits or convert their nil/ENOENT/ENAMETOOLONG to absence.
+
+Merge direct/linked/indexed/running/registered observations only on established
+device/inode while the choice is retained. Keep the first finalized resolved
+spelling unchanged and union only observed sources. Distinct native copies with
+one identifier remain distinct. A changed identity during inspection is refused,
+not rescued by a later good field. No unbounded seen-identity set or query-long
+pin exists; bytes differing by case/NFC/NFD/firmlink do not themselves merge.
+A location can name a replacement later; existing actions re-resolve it. This is
+[installation identity](../adr/application-search-uses-bundle-identity.md), not
+a process incarnation or resource reference.
+
+| installationState | Required evidence |
 | --- | --- |
-| AVAILABLE | Some considered candidate or one verified completely processed empty filesystem root. matches is a possibly empty/partial list; dependency is null. |
-| FAILED | No progress/healthy empty and a native/change/stream/resource/capacity/work failure. matches is null and each selected matches alias raises failed. |
-| BLOCKED | No progress/healthy empty, some prompt risk, no failure-class reason. matches/dependency are ordinary null, without search-generated error; consent remains UNKNOWN. |
-| DEPENDENCY_UNAVAILABLE | Otherwise missing backend, no searchable roots or unavailable OS source. matches is null; dependency states cause, never healthy empty inventory. |
+| INSTALLED | Present identified app, valid identifier, completely checked registration result with no error and a matching present registered identity. Contradictory preferred/native metadata prevents this fact. |
+| UNREGISTERED | Present identified app and valid identifier; exact CFError application-not-found result (kCFErrorDomainOSStatus with code kLSApplicationNotFoundErr from the selected API) with no array/contradiction, OR complete error-free checked registration identities all nonmatching. Preferred location must not match or be unexamined/refused/contradictory. |
+| UNKNOWN | Missing/invalid identifier, empty errorless/nil result, array plus error, unknown error, capped/unexamined/refused/changed URL, unavailable API, or conflicting preferred evidence. |
 
-Failure precedes prompt risk, which precedes pure absence/exclusion. Progress
-retains AVAILABLE with affected coverage unless corruption invalidates earlier
-records, which refuses the list. Empty OS answers alone are no progress/healthy
-empty. Unavailable OS service beside conventional progress gives UNKNOWN OS
-coverage and useful results. Lifecycle, grant publication and core deadlines
-retain Machine error paths/null propagation; surviving status never overrides
-errors. Nested fields/aliases use one frozen snapshot without new native work.
-resultsTruncated means an observed distinct match was omitted by result/value
-retention; time/work stops alone prove no additional matching choice.
+Preferred NSWorkspace.urlForApplication is a contradiction check, not a health
+token; nil proves nothing independently. A checked negative is a native reported
+fact, not internal platform-health proof. Undetected stale/incorrect native state
+is possible. Known incorrect witnesses and systematic UNKNOWN launcher metadata
+fail acceptance under [the fact decision](../adr/search-native-facts-are-reported-observations.md).
+UNKNOWN/UNREGISTERED identified apps remain reveal/copy choices. INSTALLED plus
+identifier and applicationPath may feed the existing constrained launch. A client
+must preserve both fields, never silently remove a constraint or pick another copy.
 
-## Backend invocation and worker cleanup
+## System Settings read and exact target
 
-Resolve the fixed system executable, never PATH, a shell or user config. Supply
-one admitted literal root, no-follow/same-device options and a trusted prune/type/
-NUL-output expression. The [invocation contract](../verification/search-tooling.md#invocation-and-parsing)
-defines the byte protocol. No exec/delete/preview/TTY/interactive matcher/write
-is exposed. Missing/incompatible backend is a dependency; no downloaded replacement
-or automatic installation. Record actual system build at acceptance.
-Spawn inherits only explicit stdin/stdout/stderr file actions under
-POSIX_SPAWN_CLOEXEC_DEFAULT, an empty signal mask, default SIGPIPE/SIGTERM and a
-new owned process group. k127 verifies supported SDK construction/failure cleanup,
-including one job's EOF being independent of another blocked job.
+Use only the installed OS System Settings bundle (com.apple.systempreferences),
+with checked Apple platform signing identity, identified canonical system bundle
+and observed process incarnation. Do not pick another registered copy or address
+only a bundle ID that could auto-launch. Obtain the already-running target's PID
+and kernel start, verify its executable/bundle/signature, then build a local
+AE address descriptor of typeKernelProcessID. Revalidate before each preflight,
+send and acceptance of its reply. A mismatch/refused validation is TARGET_CHANGED;
+no side effect or substitute is admitted. Public process check and PID-addressed
+Apple events do not provide atomic binding across exit/reuse; disclose that race
+and test rejection/late values rather than claim a stronger identity guarantee.
 
-Fixed child creation, signalling only that owned group, and exactly-once reap
-are internal workspace:read search effects, including cleanup admitted at start.
-They expose no arbitrary process control and add no desktop/input control effect.
-The current workspace action source/whole-dylib guard forbids these imports. k127
-must settle a separate guarded action/search binary boundary or a demonstrated
-reachable-call-path guard with failing controls, under mandatory review before
-implementation. Preserve the accepted guard until then; do not simply allow these
-imports in its whole-binary check. k7/k30 carry this seam.
+The installed dictionary's pane class is xppb; pane id property is 'ID  ', name
+pnam; anchor class xppa and name pnam. Read with core/getd object specifiers:
+application's all pane IDs, then each pane selected by unique ID, its name and
+all anchor names. Read IDs again before freezing; a changed set invalidates
+completeness and supplies CHANGED_DURING_DISCOVERY. Per-pane results must keep
+pane association; separately enumerated arrays are never zipped by order.
+No NSAppleScript/osascript/ScriptingBridge code compilation is selected. Construct
+AE descriptors from validated values. The exact descriptor forms/codes and
+reply types are pinned qualification subjects; dictionary declarations do not
+prove runtime unique-ID resolution, useful areas or anchors work.
 
-At most four jobs are admitted process-wide, one live or unreaped child/job.
-Process sources in coverage order; within the three-second overall wait each gets
-at most remaining time divided by remaining sources, passing unused time forward.
-An unreaped blocked child/native call can prevent later sources starting; they get
-TIME_LIMIT REMAINDER. This source scheduler is not a resumable walker or fairness
-promise; useful later-root/home coverage needs measurement and human acceptance.
-The single unsorted home pass can starve later shallow siblings; its premise is
-a separate k196 ordering decision, not an implicit k93 acceptance.
+For each core/getd preflight call AEDeterminePermissionToAutomateTarget with
+askUserIfNeeded=false, then send with kAEWaitReply, kAENeverInteract and
+kAEDoNotPromptForUserConsent, using a timeout no greater than the remaining read
+budget. Never wildcard the event class/ID, launch, activate, reveal, authorize a
+pane, run timedLoad or change a setting. noErr only admits that exact send;
+consent/target may change immediately afterward. errAEEventWouldRequireUserConsent
+or errAEEventNotPermitted becomes BLOCKED with exact-event AUTOMATION guidance
+and unknown consent, not invented missing Accessibility or automatic setup.
+procNotFound/stopped target is UNAVAILABLE/TARGET_NOT_RUNNING. Other returned
+errors, malformed reply or timeout are FAILED; useful earlier panes may survive
+as PARTIAL only if still individually valid. Native reply receipt is no health,
+foreground or useful-completeness proof.
 
-Consume at most 100,000 records/filesystem root and 1,000 native seed/registration
-URLs/job. Copied retained values are at most 8 MiB/job (results, diagnostics,
-partial records, native copied values), at most 200 matches and 64 diagnostics/source.
-Concurrent stdout/stderr drains each use fixed 64 KiB buffers. Partial pathname
-storage is at most 8,193 bytes; drain overlength tails to NUL without retaining
-them. Stderr capture is 64 KiB/root; overflow is incomplete inspection and stops
-scheduling while cleanup drains. These bound owned copies/work, not opaque find/
-Foundation/Launch Services memory, FD peaks or process-tree allocation.
+An unestablished anchor response is null, not an empty anchor list, with a pane-scoped diagnostic.
+Return every runtime-exposed pane, its exact ID, optional native label and exposed
+anchor names. No witness-only filter, private sidebar parser, extension-directory
+walk, guessed ID/URL or legacy .prefPane catalogue is allowed. Conditional hardware/
+account/managed visibility remains UNKNOWN unless the runtime explicitly reports
+it; no inference from a name or absent pane. The supplied dictionary reports no
+such availability property, so each observed pane/anchor has availability UNKNOWN.
+A complete successful read can be COMPLETE over RUNTIME_EXPOSED_PANES while
+category completeness stays UNKNOWN. Network, Sound, Appearance and Displays
+are required witnesses, not a fixed inventory. Missing any ordinary area or an
+advertised anchor's usable reveal is concrete unmet acceptance, never an accepted
+platform omission or reason to silently reduce the category.
 
-The requested result limit keeps first matching choices but does not itself stop
-enumeration: observe later distinct matches to set truncation within work/time
-bounds, including after the (limit+1)th distinct match. No result-limit early stop
-is selected: completion or policy/work/time/error stops determine coverage. k127
-must preserve this rule or return a reviewed alternative with its coverage reason.
-Clients should cancel superseded as-you-type requests; cancellation retains capacity
-through actual cleanup and does not promise immediate admission.
-Merge duplicates only against retained choices, without an unbounded
-identity history. Reserve a source REMAINDER at diagnostic/data exhaustion. Final
-root completion requires real exit and both EOFs; launcher return, one EOF or
-signal/timeout never establishes success.
+## Settings preparation, setup and reveal
 
-Cancellation, client/grant loss, provider stop and wait expiry close admission
-and freeze publication atomically. Close unused pipe ends; TERM the still-owned
-child group and KILL after 250 ms if unreaped. Reap exactly once, drain/close I/O
-and release the shared slot only after child and native work finish. Serialize
-reap/signalling so reused PIDs cannot be signalled. Late output/native values
-cannot change the snapshot or start another root. Spawn/pipe/read/wait failures
-close all known owned resources and diagnose affecting uncertainty.
+### Background preparation
 
-Uninterruptible child/native work may retain a slot indefinitely. Provider restart
-cannot reset the process-wide registry; all occupied slots give CAPACITY_LIMIT.
-Orderly shutdown runs cleanup. Abrupt Koine death gives no macOS parent-death
-promise: a blocked orphan can persist until it exits or is terminated. With default
-unblocked SIGPIPE it ends at its first broken-pipe write; a blocked call has no
-such lifetime bound. Koine's record cap is not a child-side orphan bound. No listener
-or other job's pipe survives exec. Disclose/test the limit without a supervising
-service. Host/child limits
-remain unchanged. Former roots-plus-two, 72-credit and 54.282 MiB traversal claims
-are inapplicable. Independent listener/store/action outcomes remain required;
-command isolation is no serviceability proof.
+workspacePrepareSettings validates the fixed installed target under the existing
+location/bundle/handoff rules. If already running and validated, return a control
+receipt with launchRequested=false, readiness RUNNING and optional observed process
+incarnation; issue no launch/activation/event. If stopped, submit exactly one
+NSWorkspace.openApplication at the checked OS bundle URL, with activates=false,
+createsNewApplicationInstance=false, allowsRunningApplicationSubstitution=false,
+hides=false, hidesOthers=false, isForPrinting=false, promptsUserIfNeeded=false,
+empty arguments/environment and no Apple event. Callback and a revalidated
+running target yield RUNNING, launchRequested=true and optional process identity.
+No pane read is performed: RUNNING means process readiness, not useful-catalogue
+or Automation readiness. Client explicitly follows with workspaceSettings.
 
-## Selection and action handoff
+Missing target before any launch is DEPENDENCY_UNAVAILABLE with no receipt;
+validation/native errors are failed. Wait at most three seconds/core remainder.
+A submitted launch with timeout/revocation/cancellation has ambiguous effects;
+freeze the result, ignore late callback and never terminate an OS app or replay.
+Background flags request foreground preservation; independently witness it with
+another app frontmost. Application/OS reaction and timing can still affect focus;
+a repeatable foreground loss fails the agreed preparation acceptance and requires
+a concrete remedy/decision. The existing launcher retains activation=true and
+both controls and cannot acquire this behavior by omission.
 
-INSTALLED apps with known identifiers pass identifier AND selected installation
-path to constrained launch. UNKNOWN/UNREGISTERED apps remain reveal/copy choices;
-known identifiers can be copied. File/folder locations pass unchanged to default/
-Zed open or reveal. Clients own clipboard/MRU; both controls remain necessary for
-actions, and reads never act.
+### Conditional explicit Automation setup
 
-### Long-location action dependency
+Try unchanged empty entitlements/no usage key first for exact READ core/getd and
+REVEAL misc/mvis. Qualify those separately; permission for one proves nothing
+about another. If useful operations require authorization, the k201 agreement
+permits only the needed host com.apple.security.automation.apple-events
+entitlement and NSAppleEventsUsageDescription plus this explicit setup path.
+Do not ship an unused permission. Record a final effective posture and exact
+signature/entitlement/Info.plist digest for each actual host. No policy is changed
+by this design, and it establishes no event needs or obtains consent.
 
-The [v1 action boundary](workspace-launch-and-open.md#long-location-action-boundary)
-stands. Actions resolve locations themselves. Missing paths retain PATH_NOT_FOUND/
-APPLICATION_NOT_INSTALLED; extant literal/expanded/resolved spellings of at least
-1,024 bytes without NUL fail before application handoff. Longer search locations
-stay visible/copyable. Never shorten paths, drop installation constraints or retry
-another copy. Protected default opening and app-reveal notice retain their decisions.
+workspaceRequestSettingsAutomation(READ|REVEAL) validates an already-running
+fixed target then calls only AEDeterminePermissionToAutomateTarget for that exact
+pair with askUserIfNeeded=true on an owned background worker. It never sends a
+catalogue/reveal event, launches/reactivates, changes consent silently, invokes
+the dictionary's deprecated authorize command or resets TCC. If the exact event
+already passes no-prompt preflight, return ALLOWED with requestMade=false and do
+not prompt. An unsupported unchanged posture returns UNAVAILABLE/SETUP_UNSUPPORTED;
+installation of a qualified conditional host is explicit deployment, never done
+inside a read/action. Outcomes are ALLOWED, DENIED or UNAVAILABLE with bounded
+guidance; unknown errors/timeouts are failed, not denied. Permission is a point-in-
+time observation; setup grants no Koine capability or guaranteed future delivery.
 
-## Test seams and acceptance
+A setup request may display OS consent and cannot be recalled once admitted.
+It has a thirty-second provider ceiling bounded by the core deadline. The
+current core freezes a request within five seconds, so the public wait cannot
+reach thirty seconds on that host. A late user's
+answer may change OS consent after Koine freezes or the grant is revoked.
+Retain its owned worker/target until real return; do not retry or dismiss another
+process's dialog. Normal reads, prepare and reveal never call this prompting path.
 
-Use public GraphQL, actual native binary integration and isolated signed-host
-TestAnyware VMs. Command/native-inspector substitutions are private enabling
-points within these agreed seams. [Finite subjects](../verification/search-tooling.md#finite-acceptance-subjects)
-cover healthy empty/unavailable, byte/Unicode records, native copies/OS locations,
-permission, bounds, cleanup and independent service outcomes with positive controls.
-Ordinary accepted reads causing dialog/hydration fail; unavailable fixtures stay pending.
+### Effect result invariants
 
-Retain independently built action-only workspace 1.0.0 and current 1.0.1 binaries/
-profiles. Search adds workspace 1.1.0/schema 1.1.0 with existing additional-capabilities-v1
-and first-party-selection-v1, no diagnostic ABI/feature. Create exact complete
-search-required composition/profile and workspace 1.2.0/schema 1.1.0 update/refusal
-variants with all candidate pins and SDL/digest. Historical profiles are not rebuilt
-as historical evidence. Exercise old selection-aware host/new provider and new
-host/retained provider, 1.0.1 provenance, lifecycle/revocation/aliased BLOCKED/FAILED
-and existing action examples. SDL validation proves no native/runtime/binary outcome.
+Absent independent execution/publication errors, AVAILABLE has a receipt and no
+dependency; DEPENDENCY_UNAVAILABLE has a dependency and no receipt; BLOCKED has
+permission guidance and neither. Prepare never returns catalogue values. Setup
+returns its separate outcome, not an effect receipt. Unexpected errors/timeouts
+raise existing failed at the nullable mutation root. After a domain effect was
+submitted, failure cannot become BLOCKED or dependency unavailable. Every nested
+field keeps the root's complete static authority and frozen receipt; no nested
+field starts another effect.
 
-Before planning, consume tooling review/integration, focused human process/protection,
-ordering and dataless choices, returned permission contract/node review,
-applicable command-lifecycle
-and metadata design/reviews, then whole-resource review. Rewritten live charters
-discharge real obligations; obsolete algorithms are not marked passed/pruned.
-Actual home/default omissions go to protected-home acceptance before baseline closes.
+### Selected reveal
 
-## Out of scope
+workspaceRevealSetting takes only the exact selection. It requires a running
+validated target and no-prompt READ and REVEAL permissions. Re-resolve pane by
+unique ID and anchor by exact name within it with core/getd, without publishing
+read data. Positive no-such-object before submission is
+DEPENDENCY_UNAVAILABLE/SELECTION_UNAVAILABLE, not input error; opaque/malformed/
+refused answers are failed or blocked and certify no absence. Construct misc/mvis
+with that pane/anchor object as direct parameter, preflight that exact event,
+send with no-prompt/no-interaction flags and wait for reply. On a checked
+successful reply request activation of the still-validated process once; do not
+launch a stopped target, substitute another pane/anchor, open an arbitrary URL
+or replay after failure. Both controls are required before either effect.
 
-Persistent indexing, exhaustive all-disk application inventory, content search,
-fuzzy/interactive matching in Koine, arbitrary shell execution, custom traversal/
-witness engines, automatic setup, privileged helpers and long-path app support.
-Spotlight can be reconsidered with an explicitly agreed useful prompt-free indexed
-domain. No broader baseline reduction follows from this design.
+Receipt echoes selection and revealAcknowledged=true, activationRequested=true,
+and optional control-authorized process incarnation. It certifies acknowledged
+reveal plus submitted activation, not final visible destination/foreground. A
+failed activation or target change after reveal returns failed with effects
+ambiguous, never dependency unavailable. No separate catalogue values are in the
+receipt. Independent V witnesses must see the selected destination and anchors.
+Permission blocks detected before any reveal return BLOCKED with diagnostic,
+no receipt; exact named missing-consent facts, if actually established, use the
+existing osPermission mapping. After submission, timeout/error/permission or
+revocation is an execution error with no retry-safe absence claim. Shared
+three-second/core wait bounds publication, not native call duration.
+
+## Coverage and frozen publication
+
+Each result carries status, sources and nullable items. Each source identifies
+its fixed source enum, declaredDomain, availability, observation completeness,
+category completeness, examined count and bounded diagnostics. Observation
+COMPLETE means this finite declared source response was fully checked/copied
+within bounds; PARTIAL means a known omission; UNKNOWN means completion could not
+be established. Availability is AVAILABLE, BLOCKED, UNAVAILABLE or UNKNOWN.
+Category completeness is always UNKNOWN for apps/settings, and for filesystem
+contents of location values. Explicit source completion supplies no atomic,
+all-disk/index-health or physical-closure guarantee.
+
+| Root status, absent independent execution errors | items and meaning |
+| --- | --- |
+| AVAILABLE | Nonempty valid observations with no affecting omission, OR a qualified complete empty declared observation domain; items is a list. Category completeness may still be UNKNOWN. |
+| PARTIAL | Some valid observations (or independently completed empty source) plus a known omission/failure/block/unavailable component; items is a list, possibly empty. |
+| UNKNOWN | No useful observation/qualified empty and only unestablished native value/health; items null, diagnostics explain. |
+| BLOCKED | No useful observation/qualified empty, prompt-policy refusal, no failure-class diagnostic; items null, no generated error. |
+| UNAVAILABLE | No useful observation/qualified empty and an established source/target prerequisite unavailable; items null, no generated error. |
+| FAILED | No useful observation/qualified empty and native/malformed/change/limit failure; items null; each selected items alias raises failed. |
+
+With no progress, precedence is failure → block → unavailable → unknown. A
+gathered empty index is a valid empty INDEXED_APPS observation only when its
+qualified completion signal and parsing conditions hold; it is never all-app
+absence. Empty nil/errorless registration is UNKNOWN. An empty running list is
+only empty RUNNING_APPS; a stopped settings app is UNAVAILABLE, never empty.
+Empty runtime pane/anchor list can describe its declared interface if qualified,
+but missing ordinary witnesses still fails useful-category acceptance.
+
+Diagnostics name source, reason, nullable established location/pane, guidance,
+and optional permission (AUTOMATION, exact READ/REVEAL; or PROMPT_RISK with unknown
+consent). No path is fabricated from text. Reasons: NO_NATIVE_VALUE,
+PROMPT_RISK, TARGET_NOT_RUNNING, TARGET_CHANGED, SOURCE_UNAVAILABLE,
+SETUP_UNSUPPORTED, INSPECTION_FAILED, CHANGED_DURING_DISCOVERY,
+UNREPRESENTABLE_VALUE, METADATA_UNKNOWN, ENTRY_LIMIT, CALL_LIMIT, VALUE_LIMIT,
+DIAGNOSTIC_LIMIT, TIME_LIMIT, CAPACITY_LIMIT. The first/metadata reasons cause
+unknown or partial; source/target stopped/setup unsupported cause unavailable;
+prompt causes blocked; all remaining reasons are failure-class. No diagnostic
+claims actual missing consent without independent evidence. affectsCoverage is
+always true for these discovery reasons. Effect diagnostics have distinct
+object coordinates, describe only the fixed target/effect and set
+affectsCoverage=false; preparation has no permission hint, while reveal may
+identify its exact read/reveal preflight. Reserve a final limit diagnostic before filling
+the sink. Native error text is bounded guidance, never a parsed errno/location.
+
+One root alias owns one snapshot; repeated root aliases make separate admitted
+observations. Every nested alias reads its frozen parent, with no native calls.
+For FAILED, each selected items alias independently reports failed at its original
+path; omitting items allows status/diagnostic inspection without generated failure.
+BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null items and no generated error.
+Publication authority/provider lifecycle checks can suppress any selected field
+and normal null propagation still applies; a surviving status never cancels
+errors. Revocation after snapshot completion may prevent its publication.
+resultsTruncated is true only when an observed distinct valid choice was omitted
+by entry/value retention, not merely because time expired. No cursor/resumption,
+persistent index/cache, stable rank, top-N or cross-query snapshot is promised.
+
+## Native ownership and bounds
+
+One process-wide owner registry admits at most four jobs across reads and settings
+effects, with at most one native call/query/launch callback pending per job and
+no unbounded queue. Reserve before starting any adapter work. Jobs are separate
+from listener/store/action workers; no blocking call runs on the UI/listener or
+grant-dispatch serialization queue. The metadata query has its own owned run loop;
+read gathering deadline is three seconds/core remainder. Sequential supplements
+share that budget; bounded round-robin candidate admission across returned source
+batches avoids a witness-seed-only implementation but promises no rank/fairness.
+Settings setup has its separate wait above and at most one pending prompt job
+process-wide, within the same four slots. Limit exhaustion refuses admission,
+never replaces a blocked worker or raises descriptor/materialization limits.
+
+| Per admitted job | Bound and ownership |
+| --- | --- |
+| Applications | 2,048 candidate URLs across sources, 256 distinct identifier expansions (including two system identifiers), 2,048 retained app choices. More observed values cause ENTRY_LIMIT and partial/failed, no fake completion. |
+| Settings | 256 pane IDs, 128 anchors/pane, 4,096 total anchors; return every exposed value within those ceilings. Exceeding them is an explicit incomplete failure/unmet inventory, not a selected smaller category. |
+| Native calls | 16,384 admitted source/API/syscall attempts including descriptor-relative lookup steps, metadata, registration/preferred calls and AE preflight/send. Reserve before every owned call, not just a high-level adapter; callback receipt is retirement, not fresh work. |
+| Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read. |
+| Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
+| Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. |
+| Native objects | One opaque result batch/query plus one temporary reply/descriptor set per pending call, or one pending launch callback per job, plus bounded borrowed-element owner state; dispose/release exactly once on real completion. |
+
+Metadata query uses resultCount and bounded result-at-index access, not an owned
+copy of its whole results array. CF arrays/AE reply descriptors are opaque native
+allocations: their creation and peaks happen before owned copying can be bounded.
+Neither these limits nor a clean listener prove a hard native memory/FD/Mach-right
+bound. Inspect count/size before allocating copied values; refuse/cap without
+repairing them. Any required framework API that allocates a whole opaque result
+retains this disclosed limit and finite serviceability obligation.
+
+Cancellation, client loss, deadline, revocation and provider stop atomically
+close further admission/publication. Freeze a returned valid partial snapshot
+only when still authorized; cancellation/revocation/lifecycle follows Machine
+errors rather than fabricating a healthy result. Stop the owned metadata query
+and unregister observers on its owner run loop; late callbacks only retire known
+owners. Dispose AE descriptors/CF values after true return; launch callbacks and
+permission calls may arrive indefinitely late. Never kill a target app, signal
+an arbitrary PID, close another owner's reused descriptor, detach unowned work or
+reset the process registry on provider restart. Capacity remains occupied until
+query retirement and every in-flight native call/callback has returned and all
+owned resources are released. Opaque blocked work can consume all four slots
+indefinitely; subsequent requests return CAPACITY_LIMIT promptly. Orderly stop
+requests cleanup but cannot promise native return. Abrupt host death has no
+selected Koine child/orphan protocol; an admitted native launch/setup/reveal may
+outlive it. No parent-death helper or supervision service is introduced.
+
+## Source and binary authority boundary
+
+Preserve the four-action source and whole-image guard in an independently linked
+WorkspaceActions native image containing only the existing action logic/adapter
+and safe individual-target resolution. The workspace principal image routes
+GraphQL and snapshot values; WorkspaceDiscovery owns Foundation/index/running/
+registration reads; WorkspaceSettings owns fixed read/prepare/setup/reveal with disjoint resolver
+seams; only the read seam is reachable from a catalogue query.
+None is a new provider identity or public framework ABI. Source/build dependencies
+are one way: principal → action/discovery/settings images; action image must not
+link, dynamically look up, receive an effect-capable callback from, or call the
+discovery/settings images. A shared value/lookup module may not acquire listing,
+scripting, spawning or prompting code.
+
+Retain original action checks on its real source and resulting Mach-O imports,
+selectors, exports/dependency closure, with updated path ownership only. Apply
+finite source and built-image allowlists to each new module: no subprocess,
+directory listing, generic interpreter, arbitrary AE target/event, shell, AX,
+input/menu synthesis or handler writes anywhere. The settings module's permitted
+launch/preflight/send/activate calls are confined to their exact resolvers and
+parameters; read resolver can reach only ask=false/no-prompt core/getd.
+Discovery never reaches setup or effects. Factory routing, exported interfaces,
+link map, actual native image identity and control-grant call traces are part of
+N evidence; finding no forbidden selector alone is insufficient for reachability.
+
+Meaningful failing controls compile a forbidden listing/spawn/script/activation
+into action source/image; inject an action→settings dependency or effect callback;
+route a read resolver through prompting/launch/reveal; remove additional desktop
+control from reveal and read authority from catalogue nested fields. Both source
+and actual image/load/runtime checks must reject their appropriate controls,
+while the legitimate bounded discovery/settings images pass. Production guard
+failure blocks acceptance; deleting/widening the original guard is not a remedy.
+This packaging remains proposed until actual independently built binaries verify
+it. Existing action-only 1.0.0/1.0.1 images remain independent historical subjects.
+
+## Compatibility and acceptance
+
+Contract version remains koine-desktop/1. This is additive workspace schema
+1.1.0, provider release 1.2.0; update fixture release 1.3.0/schema 1.1.0. The
+already-used action-only update 1.1.0/schema 1.0.1 is not reused or relabelled.
+Both new releases declare framework major 1/minor 1 and required features
+additional-capabilities-v1 plus first-party-selection-v1; no diagnostic ABI or new failure accessor.
+Native images have disjoint module/class symbols, existing workspace reserved
+identity/prefix/approved signing identifier, and the host verifies every packaged
+image under its existing provider loading policy. No library-validation exception
+is selected. Conditional Automation belongs to the host posture, not an inferred
+provider feature; a host lacking it gives honest blocked/setup unsupported results.
+
+The acceptance contract fixes complete bundled/update/retained/refusal compositions,
+SDL and candidate pins, signatures and eventual measured schema digests. Never
+invent a native digest or alter an old capture to match a new design. N exercises
+old compatible host/new provider, new host/retained 1.0.0 and 1.0.1 plus action-only
+1.1.0, authority-dependent refusal, feature/minor/major rejection, and actual
+selected actions. Fresh native host processes prevent mapped-image substitution.
+G/N/V subjects and every native verdict remain pending here. Frozen SDL/example,
+link and browser/render checks supply design verification only; source declaration
+availability and mocked outcomes are no native pass.

@@ -41,3 +41,22 @@ A returned starting location supplies no filesystem access. Prior lookup answers
 allow bounded individual identification, not a new walker, consent operation or
 native pass. Concrete unsupported sources/targets go back to design with their
 consumer consequence; systematic useful discovery loss is not accepted here.
+
+## Concrete unresolved construction duties
+
+Consume k202's reviewed spec/source report and finite acceptance first. Pin actual
+call/flag/value qualification tables for Foundation, fixed indexed-local predicate,
+running, deprecated error-bearing registration/preferred, identified Bundle/resource
+inspection and fixed-target core/getd. State what can be refused before contact,
+what already contacted opaque services, known identity-alias protection and unknown
+relocation/replacement limits. No global materialization change or array-count
+health inference; ordinary accepted reads must remain no-dialog/no-hydration.
+
+Complete exact target validation, process/address/event/reply forms, ask=false and
+send flags; unchanged-signing READ/REVEAL subjects precede any earned conditional
+Automation entitlement/usage-key/setup subject. Preparation's activation=false
+and setup's explicit-only ask=true are independent authority paths, not read
+fallbacks. Match G4–G8, N3/N4/N7 and V1/V5–V8, with responsible signed host identity
+and independent positive observers. Resolve actual-source design gaps once with
+a precise consumer consequence; do not build/probe/sign/request consent here.
+Name Creator on k193 only when closing k126, and reconcile all permission artifacts.

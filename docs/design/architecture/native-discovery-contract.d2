@@ -1,0 +1,26 @@
+# Native-image components in one resident process; details in caption/spec.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Client\nSelect a named operation" {class: start}
+Host: "Machine host\nPreflight + live grant"
+Principal: "Workspace principal\nRoute + own snapshot"
+Reads: "Discovery image\nLocations + applications"
+Actions: "Actions image\nFour existing actions"
+Settings: "Settings image\nSeparate read/effect seams"
+Frozen: "Frozen values\nSources + uncertainty"
+Guard: "Source AND image guards\nReject forbidden routes"
+Acceptance: "Finite G / N / V\nNative verdicts pending"
+Start -> Host: "1 · request"
+Host -> Principal: "2 · admit"
+Principal -> Reads: "3 · read"
+Principal -> Actions: "3 · both controls"
+Principal -> Settings: "3 · exact grants"
+Reads -> Frozen: "4 · observations"
+Settings -> Frozen: "4 · read values"
+Frozen -> Host: "5 · publication"
+Actions -> Guard: "action guard"
+Settings -> Guard: "seam allowlists"
+Reads -> Guard: "no effects"
+Guard -> Acceptance: "6 · failing controls"

@@ -1,7 +1,9 @@
 # Native discovery source boundary
 
-**Source analysis and agreed settings direction; contract design and native
-acceptance remain pending.**
+**Source analysis behind the designed contract; native acceptance remains pending.**
+The [native design](../specs/workspace-search.md) selects the sources below;
+[finite acceptance](native-discovery-acceptance.md) qualifies their actual runtime
+behavior and exact new binaries. Public declarations alone are no such pass.
 The [v1 ownership agreement](../adr/raw-filesystem-search-belongs-to-clients.md)
 requires OS-known starting locations and useful application/modern System
 Settings catalogues, with prompt-free, non-hydrating reads. This analysis
@@ -12,8 +14,8 @@ consent operation, schema or reduced useful inventory.
 
 Start with [Native sources → What each source can establish](../design/architecture/index.html#diagram-native-discovery-sources)
 and [System Settings → Agreed source and permission boundary](../design/architecture/index.html#diagram-native-settings-decision).
-The former raw-search [SDL](../design/workspace-search-schema.graphql),
-[examples](../design/workspace-search-operations.graphql) and
+The archived raw-search [SDL](../design/comparison/workspace-search-schema.graphql),
+[examples](../design/comparison/workspace-search-operations.graphql) and
 [measurements](search-tooling.md) remain comparison material. They are not a
 native catalogue API or acceptance record.
 
@@ -95,7 +97,7 @@ by the older [Spotlight guide](https://developer.apple.com/library/archive/docum
 That guide documents user exclusions and unindexed classes; it promises no
 exhaustive modern all-app inventory.
 
-**Recommendation, pending qualification:** use a fixed indexed application
+**Selected by the native contract, runtime qualification pending:** use a fixed indexed application
 category as the breadth source, supplemented by generic running observations
 and registration expansion for observed identifiers. Keep the two concepts
 separate: breadth discovery and validating each observed installation.
@@ -112,8 +114,9 @@ The existing action adapter's AppKit array-only lookup supplies no error-bearing
 negative fact. The earlier [SDK analysis](search-native-resources.md#call-health-is-separate-from-descriptor-visibility)
 identifies `LSCopyApplicationURLsForBundleIdentifier` with `outError` as a
 deprecated but declared alternative. The current SDK retains its documented
-not-found error. A final source design must choose explicitly between its
-diagnostic/migration cost and leaving registration unknown. Empty AppKit arrays,
+not-found error. The [native source contract](../specs/workspace-search.md#application-sources-and-native-facts)
+selects the declared error-bearing API for checked negatives, accepting its
+deprecation/qualification cost and keeping UNKNOWN when it is unusable. Empty AppKit arrays,
 nil bundle identifiers, malformed values and failed identity acquisition cannot
 establish absence or an unregistered installation.
 
@@ -250,92 +253,39 @@ stronger guarantee.
 
 ## Contract and acceptance handoff
 
-The final producer remains responsible for the complete API, not just this
-source choice. It must replace the raw proposal only after the requirements
-decision and source qualification contract are coherent. In particular:
+The [native discovery spec](../specs/workspace-search.md),
+[SDL/examples](../design/workspace-search-schema.graphql) and
+[finite acceptance contract](native-discovery-acceptance.md) now define selected
+sources, complete static authority, source/status/metadata semantics, frozen
+aliases, bounded ownership, true native-return retirement and binary guards.
+No runtime API/consent/foreground/source qualification has been performed here.
+The inspected SDK 27/OS 26.6.2 subjects remain distinct from supported VM captures.
 
-- Keep source provenance and availability separate from metadata and coverage.
-  An actually observed empty fixed location kind/source may be healthy empty;
-  empty Spotlight/registration or a stopped settings target is no category-wide
-  absence proof. Partial choices remain usable with source diagnostics. Failed
-  normalization, timeout, refused source, unknown health and unsupported version
-  have distinct meanings. Authorization/revocation/publication errors retain
-  their own response paths, including aliased frozen nested values.
-- Assign work/state to a private source adapter and snapshot owner, with the
-  existing provider/host composition as enabling point. Bound admitted jobs,
-  native calls, returned copies/bytes and diagnostics. A deadline closes
-  publication, not a blocking native call. Retain capacity/ownership until
-  actual return or native query retirement, including cancellation, revocation
-  and provider stop. Opaque native allocations/peaks remain unproved; they do
-  not excuse lost required witnesses or listener/store/action failures.
-- Keep read adapters separate from the retained action call paths. Source AND
-  actual provider/host binary guards must still reject directory listing,
-  process launch and scripting leaking into an action-only path. A future
-  permitted discovery/script module gets its own finite allowlist; do not
-  remove the old guard to make it pass. Cross-boundary failing controls must
-  exercise the actual built images as well as source.
-- Define an explicit settings selection action if the chosen destination needs
-  one, including fixed target/command validation, stale selection, complete
-  `workspace:control` AND `desktop:control` effects, preparation/cleanup and
-  ambiguous late acknowledgment. This proposal adds no menu/input authority
-  without selecting those effects, no arbitrary AppleScript, scheme or target,
-  and no automatic replay. Existing launch/open/reveal and long-location
-  resolution/receipt contracts remain independently binding.
-- Define the separately authorized background preparation action for a stopped
-  System Settings target, including refusal under a read-only or revoked grant,
-  already-running behavior, bounded readiness and failed/ambiguous late outcomes.
-  Allocate all actual effects before dispatch; neither preparation nor ordinary
-  reads may implicitly invoke consent setup. Verify the conditional explicit
-  setup path only if the exact events need it, without expanding ordinary reads.
-- Define exact new provider release/schema/profile/update/refusal subjects only
-  after the chosen API/signing posture is known. Independently retained action
-  releases/schemas 1.0.0 and 1.0.1 stay unchanged evidence. Current per-user
-  update release 1.1.0/schema 1.0.1 is also an action-only subject, not a free
-  native-discovery version or capture. Do not pin the discovery design to an
-  already used release without reconciling its binary identity.
+Settings source events are direct core/getd object reads (xppb pane IDs/names,
+xppa anchors) and misc/mvis selected reveal, to a validated running OS target.
+No-prompt preflight/send and target revalidation are exact qualification subjects.
+Prepare launches a stopped target with activates=false; it publishes no catalogue
+values and needs workspace:control. Setup is explicitly selected and conditional
+on actual exact-event need; reveal needs workspace and desktop control. No read
+uses a prompting preflight, launch, activation, private sidebar or guessed URL.
+All exposed panes/anchors, ordinary areas and hardware/account conditions remain
+finite useful-category obligations.
 
-Finite acceptance stays within the agreed G/N/V seams. G covers named starting
-values and account/domain provenance, catalogue source/status/coverage/metadata,
-invalid input, only-read versus only-control grants, revocation and publication.
-N covers actual native providers/host loading, exact compatibility subjects,
-frozen alias behavior, source AND binary authority boundaries and blocking/
-late-return ownership; a substituted source is not native acceptance.
-V covers real starting locations, the twelve configured launchers plus
-Safari/Finder, an independently installed extra application not in that witness
-list, distinct same-identifier copies and aliases, truthful registration facts,
-actual modern settings choices and their explicit selected destinations.
-
-Settings subjects must include ordinary modern areas such as Network, Sound,
-Appearance and Displays, a nested destination if the chosen interface claims
-anchors, and hardware/account-conditional and unavailable subjects. They are
-witnesses, not a hard-coded inventory. Where the chosen source cannot expose a
-required witness, report the concrete gap for the coverage decision. Pair reads
-with independent dialog and hydration positive controls, and catalogue stress/
-blocking events with independent listener, grant-store and authorized-action
-outcomes. Missing native conditions/fixtures remain pending. Prior raw probe
-results and action-only captures supply no pass for these subjects.
-
-Settings preparation additionally needs a stopped-target effect-free read,
-denied/revoked preparation grants, cold background launch with another application
-frontmost, and an already-running target without reactivation. Independently
-observe foreground and readiness, including failure/ambiguous late return;
-pair any setup branch with exact-event authorization evidence and explicit-only
-consent. These are cases within the agreed G/N/V seams, not a new proof chain.
+The new provider identities are workspace 1.2.0/schema 1.1.0 and update 1.3.0/
+schema 1.1.0, independently of retained action-only 1.0.0/1.0.1 and already-used
+1.1.0/schema 1.0.1. Source AND actual action image guards keep forbidden listing,
+spawn and scripting; permitted discovery/settings code has separate ownership,
+allowlists and compiled cross-boundary failing controls. No new diagnostic ABI,
+custom worker, global materialization policy or descriptor-limit change is selected.
 
 ## Reconciled work boundary
 
-The native-discovery producer has completed bounded source analysis and the
-focused human settings direction. Final API/resource/acceptance/artifact
-design remains k202's work. Its mandatory whole-producer review and earned integration precede
-app-and-file-search consumption. Until then the current spec and raw SDL remain
-explicitly pending/comparison rather than a fabricated native contract.
-
-Retained permission work qualifies actual location values, indexed application
-scope, per-target registration/bundle inspection, and the chosen settings route;
-retained resource work qualifies source/action boundaries and true native return;
-retained classification work finalizes source-specific metadata/coverage.
-Whole-node resource review and planning remain live. The existing coverage-gap
-decision addresses measured native omissions, not the client's home traversal.
-The producer's eventual closing session reconciles every mixed charter and
-names its own run on its review. Source analysis finishes neither that producer
-nor the later nodes, and supplies no Creator identity for them.
+The root native producer supplies coherent design and mandatory review before
+app-and-file-search. Retained permission work qualifies exact source/individual
+access rules and conditional setup posture; resource work finalizes real native
+owner retirement and action/discovery image boundaries; classification finalizes
+metadata normalization and useful identity controls. Existing whole-node reviews
+and planning remain live with their actual creators named only on completion.
+The coverage decision resolves measured native gaps, never client home ordering.
+Actual source, binary, signed-VM and independent serviceability/dialog/hydration
+outcomes remain pending. No old raw or action capture becomes native acceptance.

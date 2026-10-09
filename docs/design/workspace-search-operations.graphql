@@ -1,96 +1,83 @@
-# Previous raw-search examples only; native locations/catalogues await design/review.
-# Requires workspace:read only. Inspect status, coverage, dependency, truncation AND errors.
-# Coverage rows include source provenance; native-source paths can be null.
-
-fragment SearchCoverage on WorkspaceSearchRootCoverage {
-  rootIndex
-  source
-  requestedPath
-  resolvedPath
-  state
-  examinedEntries
-  searched { path extent }
-  skipped {
-    path extent reason affectsCoverage guidance
-    permission {
-      kind permissionClass permissionOwner accessProcess permissionReason permissionTarget
-      osPermission consentState
-    }
+# Native discovery proposals: introspect the actually served schema before use.
+fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
+  source declaredDomain availability observations category examined
+  diagnostics {
+    source reason subject affectsCoverage guidance
+    permission { permission target event consent }
   }
 }
-
-query FindInstalledApplications($query: String!, $roots: [String!], $limit: Int = 50) {
-  apps: workspaceSearchApplications(query: $query, roots: $roots, limit: $limit) {
+query NativeStartingLocations($requests: [WorkspaceLocationRequest!]) {
+  locations: workspaceSpecialLocations(requests: $requests) {
     status
-    choices: matches { name applicationPath bundleIdentifier installationState rootIndices }
-    coverage { ...SearchCoverage }
-    dependency { reason guidance }
+    items { kind domain accountIdentifier location contentsAvailability sources }
+    sources { ...DiscoveryCoverage }
     resultsTruncated
   }
 }
-
-query FindFiles($query: String!, $roots: [String!], $limit: Int = 50) {
-  files: workspaceSearchFiles(query: $query, roots: $roots, limit: $limit) {
+query NativeApplications {
+  apps: workspaceApplications {
     status
-    choices: matches {
-      name path kind contentType openDisposition rootIndices
-      defaultHandlerState
-      defaultApplication { bundleIdentifier applicationPath }
-      defaultHandlerGuidance
-    }
-    coverage { ...SearchCoverage }
-    dependency { reason guidance }
+    items { name applicationPath bundleIdentifier installationState sources }
+    sources { ...DiscoveryCoverage }
     resultsTruncated
   }
 }
-
-# BLOCKED is inspectable without matches and produces no search-generated error.
-# FAILED also has no matches error when that field is not selected.
-# These invariants require no execution errors at or above selected fields.
-query InspectSearchCoverage($roots: [String!]) {
-  apps: workspaceSearchApplications(query: "", roots: $roots) {
-    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
-  }
-  files: workspaceSearchFiles(query: "", roots: $roots) {
-    status coverage { ...SearchCoverage } dependency { reason guidance } resultsTruncated
-  }
-}
-
-# Absent execution errors at or above selected fields, BLOCKED gives two null
-# aliases and no search-generated errors. FAILED
-# gives failed at [apps, first]/[apps, second] or [files, first]/[files, second].
-# Root aliases are independent snapshots; nested aliases reuse their frozen result.
-# Publication capability errors can suppress any field, including coverage/status.
-# Provider stop between root/nested resolution can give unavailable at matches,
-# leaving BLOCKED status beside errors; normal non-null propagation still applies.
-# No-progress PROMPT_RISK plus independently observed root/target change or
-# INSPECTION_FAILED is FAILED. Command stderr alone does not establish change.
-query InspectAliasedMatches($roots: [String!]) {
-  apps: workspaceSearchApplications(query: "", roots: $roots) {
+query NativeSettings {
+  settings: workspaceSettings {
     status
-    first: matches { name applicationPath }
-    second: matches { name applicationPath }
-    coverage { ...SearchCoverage }
-    dependency { reason guidance }
-    resultsTruncated
-  }
-  files: workspaceSearchFiles(query: "", roots: $roots) {
-    status
-    first: matches { name path }
-    second: matches { name path }
-    coverage { ...SearchCoverage }
-    dependency { reason guidance }
+    items { paneId name availability anchors { name availability } sources }
+    sources { ...DiscoveryCoverage }
     resultsTruncated
   }
 }
-
-# After explicit selection, pass BOTH known identifier and installation path for
-# INSTALLED application launch. UNKNOWN/UNREGISTERED apps stay reveal/copy choices.
-# Pass file paths unchanged to existing default/Zed open/reveal operations.
-# Those actions need workspace:control AND desktop:control and revalidate locations.
-# Extant action spellings >=1024 bytes without NUL fail at v1 handoff, not as absence;
-# keep longer search results visible/copyable. Search results carry no identity pin.
-# Clipboard, ranking and MRU are client-owned. No search nested selection launches
-# another command or native inspection; aliases reuse the frozen root snapshot.
-# Source order is no top-N, FIFO, directory EOF or counted-omission guarantee.
-# Empty native seeds/registration do not prove exhaustive healthy empty.
+# No items selection: FAILED can be inspected without generated items errors.
+query InspectNativeSources {
+  apps: workspaceApplications { status sources { ...DiscoveryCoverage } resultsTruncated }
+  settings: workspaceSettings { status sources { ...DiscoveryCoverage } resultsTruncated }
+}
+# Nested aliases read ONE frozen root result. Root aliases own separate observations.
+# Absent independent execution errors: FAILED => failed at [apps, first] and
+# [apps, second]; BLOCKED/UNAVAILABLE/UNKNOWN => ordinary null at both, no
+# generated error. Publication/lifecycle errors can suppress any selected field.
+query InspectAliasedNativeItems {
+  apps: workspaceApplications {
+    status
+    first: items { applicationPath installationState }
+    second: items { applicationPath installationState }
+    sources { ...DiscoveryCoverage }
+  }
+  settings: workspaceSettings {
+    status
+    first: items { paneId anchors { name } }
+    second: items { paneId anchors { name } }
+    sources { ...DiscoveryCoverage }
+  }
+}
+# Explicit client choice, workspace:control only; no pane data or read grant.
+mutation PrepareSettingsInBackground {
+  workspacePrepareSettings {
+    status
+    receipt { launchRequested readiness process { pid startedAt } }
+    dependency { reason guidance }
+    diagnostics { source reason guidance }
+  }
+}
+# Use only if the client explicitly chooses setup; no read/action automatically calls it.
+mutation RequestSettingsAutomation($event: WorkspaceSettingsEvent!) {
+  workspaceRequestSettingsAutomation(event: $event) { event outcome requestMade guidance }
+}
+# Explicit selected pane or anchor; both controls, no implicit read grant.
+mutation RevealChosenSetting($selection: WorkspaceSettingSelection!) {
+  workspaceRevealSetting(selection: $selection) {
+    status
+    receipt { paneId anchorName revealAcknowledged activationRequested process { pid startedAt } }
+    dependency { reason guidance }
+    diagnostics { source reason guidance permission { permission target event consent } }
+  }
+}
+# Filter/rank on the client. An INSTALLED app's selected identifier AND location
+# feed the existing workspaceLaunchApplication, under both controls. UNKNOWN/
+# UNREGISTERED identified apps stay reveal/copy choices. Reads never register apps.
+# Keep locations lossless: the existing 1024-byte handoff refusal still applies.
+# Settings keys are opaque exact selectors, never custom URLs or script text.
+# All Query roots and reachable fields require workspace:read, independently of controls.

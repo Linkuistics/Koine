@@ -37,3 +37,14 @@ analyses retain only historical bounds.
 ## Notes
 
 Whole-node independent review; no implementation or native experiment here.
+
+## Whole-producer contract now selected
+
+Review complete k19 against reviewed k202's native spec/SDL/examples/complete profiles,
+source/posture and finite native-discovery-acceptance contract plus earned k191/
+k193/k127/k123 artifacts. Re-derive bounded source/native-image ownership, the
+preserved action guard, exact AE/preparation/setup/reveal authority, alias/status
+normalization and independent host outcomes. Reject any old raw credit/find/
+ordering contract or any historical action/source result relabelled native-passed.
+K19's actual closing session owns Creator naming here; review/earned integration
+still precede k30, independently of root k199's mandatory review.

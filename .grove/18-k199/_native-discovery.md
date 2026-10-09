@@ -148,3 +148,31 @@ prompt-free Koine reads are unchanged by the separate explicit preparation.
   are met. Its closing session cuts whole-producer review before k7 and names
   its own Creator run, with earned integration also before k7. No implementation
   leaves, native probes, signing changes or native passes belong here.
+
+## Returned design and close check
+
+K202 replaces the raw proposal with the native contract, independently composable
+SDL/examples, complete bundled/update/refusal profiles and finite G/N/V acceptance.
+Every original design/source/reconciliation condition is covered: selected public
+interfaces and provenance/limits; inputs/outputs/static authority/frozen errors;
+per-copy metadata and explicit selected actions; exact no-prompt settings and
+conditional explicit effects; bounded ownership and independent source/binary
+guards; actual pending acceptance identities/witnesses/controls; durable artifact
+reconciliation; all mixed live charters; frozen schema/link/render/browser checks.
+The mandatory whole-producer review is cut at root immediately before k7, with
+its earned integration there too. It completes the design handoff; no native
+backend, signing, consent, launch or VM experiment was performed here.
+
+Carry upward: Foundation's ten value-only pairs; indexed-local app breadth plus
+running/per-observed-identifier registration, preserving distinct native identities;
+all exposed modern Settings panes/anchors through a validated running PID and
+exact no-prompt events. Background prepare and explicit conditional setup need
+workspace control; selected reveal needs workspace and desktop controls; queries
+need workspace read. Their object coordinates are disjoint. Native workspace
+1.2.0/schema 1.1.0 and update 1.3.0 keep old action-only subjects separate.
+Cancellation freezes publication while true return retains shared capacity, and
+an independent action image retains its original source AND compiled guards.
+Useful witnesses/foreground/dialog/hydration/serviceability and exact binaries
+remain pending G/N/V in k7's reconciled chain; material useful-source gaps go to
+k93 before baseline. No missing design work requires another child and no parent
+or live downstream task is relabelled native-passed.

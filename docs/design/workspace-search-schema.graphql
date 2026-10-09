@@ -1,145 +1,180 @@
-# Previous raw-search proposal only; not Koine's current v1 API.
-# Every root and reachable field requires workspace:read only.
-# Native locations/catalogues require returned design and review; no backend is selected.
-# Compose with current action schema; import no foreign provider type or new ABI.
+# Native discovery design; not served or native-accepted yet.
+# All Query roots and reachable fields: workspace:read.
+# Prepare/setup: workspace:control; reveal and every result field:
+# workspace:control AND desktop:control. Objects never cross these sets:
+# permissions attach to field coordinates, not their root context.
+# Shared enums have no resolver fields. No control implies read.
 
-"""With no candidate/healthy-empty progress: failures precede prompt risk, then unavailable sources. Inspect all field/lifecycle/publication errors as well as frozen data."""
-enum WorkspaceSearchStatus { AVAILABLE BLOCKED DEPENDENCY_UNAVAILABLE FAILED }
-
-"""Completeness of the declared source domain, not a filesystem snapshot. OS_REPORTED is always UNKNOWN; empty native answers prove no exhaustive inventory."""
-enum WorkspaceSearchCoverageState { COMPLETE PARTIAL UNKNOWN }
-enum WorkspaceSearchSource { FILESYSTEM_ROOT OS_REPORTED }
-
-"""SUBTREE only for complete eligible filesystem-domain processing; OBSERVED_DESCENDANTS asserts candidate observations, not directory EOF/counts."""
-enum WorkspaceSearchScopeExtent { SUBTREE OBSERVED_DESCENDANTS }
-
-"""ENTRY is independently identified; SUBTREE is a policy scope; REMAINDER is unfinished/unlocalized work. No unseen descendant or grouped-anchor count is inferred from command output."""
-enum WorkspaceSearchSkippedExtent { ENTRY SUBTREE REMAINDER }
-
-"""Each value's producer, extent, affectsCoverage and no-progress status is defined in workspace-search's skip-reason table. Command stderr cannot localize errno or establish CHANGED_DURING_SEARCH."""
-enum WorkspaceSearchSkipReason {
-  DOMAIN_EXCLUSION
-  PROMPT_RISK
-  CLOUD_SCOPE
-  UNSUPPORTED_SCOPE
-  UNSUPPORTED_VOLUME
-  MOUNT_BOUNDARY
-  ROOT_NOT_FOUND
-  OPTIONAL_ROOT_ABSENT
-  ROOT_NOT_DIRECTORY
-  ACCESS_DENIED
-  INSPECTION_FAILED
-  CHANGED_DURING_SEARCH
-  UNREPRESENTABLE_NAME
-  ENTRY_LIMIT
-  DIAGNOSTIC_LIMIT
-  VALUE_LIMIT
-  TIME_LIMIT
-  CAPACITY_LIMIT
-  BACKEND_UNAVAILABLE
-  NATIVE_SOURCE_UNAVAILABLE
+"""Inspect sources, uncertainty and independent GraphQL errors together."""
+enum WorkspaceDiscoveryStatus { AVAILABLE PARTIAL UNKNOWN BLOCKED UNAVAILABLE FAILED }
+enum WorkspaceDiscoveryAvailability { AVAILABLE BLOCKED UNAVAILABLE UNKNOWN }
+enum WorkspaceDiscoveryCompleteness { COMPLETE PARTIAL UNKNOWN }
+enum WorkspaceDiscoverySource { FOUNDATION_LOCATIONS INDEXED_APPS RUNNING_APPS REGISTRATION SETTINGS_RUNTIME }
+enum WorkspaceDiscoveryReason {
+  NO_NATIVE_VALUE PROMPT_RISK TARGET_NOT_RUNNING TARGET_CHANGED SOURCE_UNAVAILABLE
+  SETUP_UNSUPPORTED INSPECTION_FAILED CHANGED_DURING_DISCOVERY UNREPRESENTABLE_VALUE
+  METADATA_UNKNOWN ENTRY_LIMIT CALL_LIMIT VALUE_LIMIT DIAGNOSTIC_LIMIT TIME_LIMIT CAPACITY_LIMIT
 }
-enum WorkspaceSearchPermissionKind { PERMISSION }
-enum WorkspaceSearchPermissionClass { OS_PERMISSION }
-enum WorkspaceSearchPermissionOwner { KOINE UNKNOWN }
-enum WorkspaceSearchAccessProcess { KOINE SYSTEM_COMMAND }
-enum WorkspaceSearchPermissionReason { PROMPT_RISK }
-enum WorkspaceSearchConsentState { UNKNOWN }
-
-"""Known prompt risk, not observed absent consent. Child TCC responsibility requires signed normal-launch observation; a parent PID is insufficient. No new public consent identifier/setup is selected."""
-type WorkspaceSearchPermission {
-  kind: WorkspaceSearchPermissionKind!
-  permissionClass: WorkspaceSearchPermissionClass!
-  permissionOwner: WorkspaceSearchPermissionOwner!
-  """Adapter performing access, not an observed TCC responsible identity; that identity remains build/OS/launch-specific acceptance evidence."""
-  accessProcess: WorkspaceSearchAccessProcess!
-  permissionReason: WorkspaceSearchPermissionReason!
-  permissionTarget: String!
-  """Null under this design, never inferred Accessibility or invented Files and Folders consent."""
-  osPermission: String
-  consentState: WorkspaceSearchConsentState!
+enum WorkspaceDiscoveryConsent { UNKNOWN }
+enum WorkspaceDiscoveryPermission { AUTOMATION PROMPT_RISK }
+enum WorkspaceSettingsEvent { READ REVEAL }
+type WorkspaceDiscoveryPermissionHint {
+  permission: WorkspaceDiscoveryPermission!
+  """Fixed target com.apple.systempreferences for Automation; established target or declared source otherwise."""
+  target: String!
+  event: WorkspaceSettingsEvent
+  consent: WorkspaceDiscoveryConsent!
 }
-type WorkspaceSearchScope { path: String! extent: WorkspaceSearchScopeExtent! }
-type WorkspaceSearchSkippedScope {
-  """Null for an OS-reported source without an established location. Synthetic policy scopes do not assert existence."""
-  path: String
-  extent: WorkspaceSearchSkippedExtent!
-  reason: WorkspaceSearchSkipReason!
+type WorkspaceDiscoveryDiagnostic {
+  source: WorkspaceDiscoverySource!
+  reason: WorkspaceDiscoveryReason!
+  """Only an independently identified location/pane; never parsed from error text."""
+  subject: String
   affectsCoverage: Boolean!
   guidance: String!
-  permission: WorkspaceSearchPermission
+  permission: WorkspaceDiscoveryPermissionHint
 }
-type WorkspaceSearchRootCoverage {
-  """Index in the coverage array, including the default OS-reported source."""
-  rootIndex: Int!
-  source: WorkspaceSearchSource!
-  """Null for OS_REPORTED."""
-  requestedPath: String
-  """Only an established observation, not a promised unique canonical spelling; null for OS_REPORTED. Root qualification and the command's directory marker do not pin identity."""
-  resolvedPath: String
-  state: WorkspaceSearchCoverageState!
-  """Complete decoded candidate records/native seeds actually considered; not all filesystem names, directories or service calls."""
-  examinedEntries: Int!
-  searched: [WorkspaceSearchScope!]!
-  skipped: [WorkspaceSearchSkippedScope!]!
+type WorkspaceDiscoveryCoverage {
+  source: WorkspaceDiscoverySource!
+  declaredDomain: String!
+  availability: WorkspaceDiscoveryAvailability!
+  """Completeness of checked finite observations, not atomicity or internal health."""
+  observations: WorkspaceDiscoveryCompleteness!
+  """UNKNOWN for app/settings inventory and filesystem contents of starting values."""
+  category: WorkspaceDiscoveryCompleteness!
+  examined: Int!
+  diagnostics: [WorkspaceDiscoveryDiagnostic!]!
 }
-enum WorkspaceSearchDependencyReason {
-  NO_SEARCHABLE_ROOT
-  BACKEND_UNAVAILABLE
-  NATIVE_SOURCE_UNAVAILABLE
+enum WorkspaceLocationKind { HOME DESKTOP DOCUMENTS DOWNLOADS MOVIES MUSIC PICTURES APPLICATIONS }
+enum WorkspaceLocationDomain { USER LOCAL SYSTEM }
+input WorkspaceLocationRequest { kind: WorkspaceLocationKind! domain: WorkspaceLocationDomain! }
+type WorkspaceSpecialLocation {
+  kind: WorkspaceLocationKind!
+  domain: WorkspaceLocationDomain!
+  """UID of Koine's account, not the client's account."""
+  accountIdentifier: String!
+  """OS-known absolute local value; no existence, access, listing or consent guarantee."""
+  location: String!
+  contentsAvailability: WorkspaceDiscoveryAvailability!
+  sources: [WorkspaceDiscoverySource!]!
 }
-type WorkspaceSearchDependency { reason: WorkspaceSearchDependencyReason! guidance: String! }
-
-"""Checked reported native facts. INSTALLED requires present bundle identity and registration. UNREGISTERED requires exact checked not-found or completely checked nonmatching results without error/conflicting preferred observation. Nil/empty errorless/incomplete/refused results are UNKNOWN. Stale or undetected incorrect native state remains possible; wrong witnesses/all-UNKNOWN launch coverage fail acceptance."""
-enum WorkspaceSearchInstallationState { INSTALLED UNREGISTERED UNKNOWN }
-type WorkspaceApplicationMatch {
-  """Established resolved target spelling; no link alias. Keep both identifier and path for constrained launch. Search value ceiling 8192 bytes is no v1 actionability guarantee."""
+enum WorkspaceApplicationInstallationState { INSTALLED UNREGISTERED UNKNOWN }
+type WorkspaceApplicationChoice {
+  """Checked bundle-directory identity; first finalized resolved spelling. No query-long identity pin or later actionability guarantee."""
   applicationPath: String!
-  name: String!
+  name: String
   bundleIdentifier: String
-  installationState: WorkspaceSearchInstallationState!
-  """Observed source membership only. Same native bundle identity merges while retained; equal identifiers do not merge copies."""
-  rootIndices: [Int!]!
+  installationState: WorkspaceApplicationInstallationState!
+  sources: [WorkspaceDiscoverySource!]!
 }
-enum WorkspaceSearchFileKind {
-  FILE DIRECTORY PACKAGE APPLICATION SYMBOLIC_LINK FINDER_ALIAS OTHER UNKNOWN
-}
-enum WorkspaceSearchOpenDisposition { ELIGIBLE REFUSED UNKNOWN }
-enum WorkspaceSearchDefaultHandlerState { UNKNOWN }
-type WorkspaceSearchApplicationSelector { bundleIdentifier: String! applicationPath: String! }
-type WorkspaceFileMatch {
-  """Lossless absolute command-reported location, including final links. Merge paths by exact UTF-8 bytes, not Swift canonical String equality. No canonical-parent/firmlink collapse. Extant action spellings >=1024 bytes without NUL fail at v1 handoff; keep visible/copyable."""
-  path: String!
+type WorkspaceSettingsAnchor {
+  """Exact native anchor selector within its pane; never normalized or used as script text."""
   name: String!
-  kind: WorkspaceSearchFileKind!
-  """Optional prompt-free native observation; null is unknown, no contents read."""
-  contentType: String
-  openDisposition: WorkspaceSearchOpenDisposition!
-  defaultHandlerState: WorkspaceSearchDefaultHandlerState!
-  """Always null: search performs no document default-handler lookup."""
-  defaultApplication: WorkspaceSearchApplicationSelector
-  defaultHandlerGuidance: String!
-  rootIndices: [Int!]!
+  availability: WorkspaceDiscoveryAvailability!
 }
-type WorkspaceApplicationSearchResult {
-  status: WorkspaceSearchStatus!
-  """AVAILABLE list. BLOCKED/unavailable ordinary null; FAILED raises failed at each selected alias. Nested fields read the frozen result, never more native work. Lifecycle/publication errors retain normal paths and propagation."""
-  matches: [WorkspaceApplicationMatch!]
-  coverage: [WorkspaceSearchRootCoverage!]!
-  dependency: WorkspaceSearchDependency
-  """Observed distinct match omitted by result/value retention; time/work stops alone do not establish another match."""
+type WorkspaceSettingsPane {
+  paneId: String!
+  name: String
+  """UNKNOWN when the runtime supplies no explicit hardware/account availability fact."""
+  availability: WorkspaceDiscoveryAvailability!
+  """Null when anchor observation was refused/failed/unknown; [] only for a checked empty reply."""
+  anchors: [WorkspaceSettingsAnchor!]
+  sources: [WorkspaceDiscoverySource!]!
+}
+type WorkspaceSpecialLocationsResult {
+  status: WorkspaceDiscoveryStatus!
+  """Frozen list for AVAILABLE/PARTIAL; otherwise null. FAILED raises failed at each selected items alias; BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null."""
+  items: [WorkspaceSpecialLocation!]
+  sources: [WorkspaceDiscoveryCoverage!]!
   resultsTruncated: Boolean!
 }
-type WorkspaceFileSearchResult {
-  status: WorkspaceSearchStatus!
-  matches: [WorkspaceFileMatch!]
-  coverage: [WorkspaceSearchRootCoverage!]!
-  dependency: WorkspaceSearchDependency
+type WorkspaceApplicationsResult {
+  status: WorkspaceDiscoveryStatus!
+  items: [WorkspaceApplicationChoice!]
+  sources: [WorkspaceDiscoveryCoverage!]!
   resultsTruncated: Boolean!
+}
+type WorkspaceSettingsResult {
+  status: WorkspaceDiscoveryStatus!
+  items: [WorkspaceSettingsPane!]
+  sources: [WorkspaceDiscoveryCoverage!]!
+  resultsTruncated: Boolean!
+}
+input WorkspaceSettingSelection { paneId: String! anchorName: String }
+enum WorkspaceSettingsActionStatus { AVAILABLE BLOCKED DEPENDENCY_UNAVAILABLE }
+enum WorkspaceSettingsDependencyReason { TARGET_UNAVAILABLE TARGET_NOT_RUNNING SELECTION_UNAVAILABLE }
+type WorkspaceSettingsPreparationDependency { reason: WorkspaceSettingsDependencyReason! guidance: String! }
+type WorkspaceSettingsRevealDependency { reason: WorkspaceSettingsDependencyReason! guidance: String! }
+enum WorkspaceSettingsReadiness { RUNNING }
+type WorkspaceSettingsPreparationProcess { pid: Int! startedAt: String! }
+type WorkspaceSettingsRevealProcess { pid: Int! startedAt: String! }
+type WorkspaceSettingsPreparationDiagnostic {
+  source: WorkspaceDiscoverySource!
+  reason: WorkspaceDiscoveryReason!
+  subject: String
+  affectsCoverage: Boolean!
+  guidance: String!
+}
+type WorkspaceSettingsRevealPermissionHint {
+  permission: WorkspaceDiscoveryPermission!
+  target: String!
+  event: WorkspaceSettingsEvent
+  consent: WorkspaceDiscoveryConsent!
+}
+type WorkspaceSettingsRevealDiagnostic {
+  source: WorkspaceDiscoverySource!
+  reason: WorkspaceDiscoveryReason!
+  subject: String
+  affectsCoverage: Boolean!
+  guidance: String!
+  permission: WorkspaceSettingsRevealPermissionHint
+}
+type WorkspaceSettingsPreparationReceipt {
+  launchRequested: Boolean!
+  """Process is validated and running; this is not catalogue or Automation readiness."""
+  readiness: WorkspaceSettingsReadiness!
+  process: WorkspaceSettingsPreparationProcess
+}
+type WorkspaceSettingsPreparationResult {
+  status: WorkspaceSettingsActionStatus!
+  receipt: WorkspaceSettingsPreparationReceipt
+  dependency: WorkspaceSettingsPreparationDependency
+  diagnostics: [WorkspaceSettingsPreparationDiagnostic!]!
+}
+enum WorkspaceSettingsAutomationOutcome { ALLOWED DENIED UNAVAILABLE }
+type WorkspaceSettingsAutomationResult {
+  event: WorkspaceSettingsEvent!
+  outcome: WorkspaceSettingsAutomationOutcome!
+  """Whether ask=true was called, not proof a dialog appeared or a future send is permitted."""
+  requestMade: Boolean!
+  guidance: String!
+}
+type WorkspaceSettingsRevealReceipt {
+  paneId: String!
+  anchorName: String
+  revealAcknowledged: Boolean!
+  activationRequested: Boolean!
+  process: WorkspaceSettingsRevealProcess
+}
+type WorkspaceSettingsRevealResult {
+  status: WorkspaceSettingsActionStatus!
+  receipt: WorkspaceSettingsRevealReceipt
+  dependency: WorkspaceSettingsRevealDependency
+  diagnostics: [WorkspaceSettingsRevealDiagnostic!]!
 }
 extend type Query {
-  """Requires workspace:read throughout. Native application choices from conventional roots and a separate default OS-reported seed source, never an exhaustive installed-app inventory. Explicit roots replace defaults and suppress out-of-root discovery expansion. Literal target filename/stem matching via Foundation NFC and fixed case/diacritic folding. Source order; client ranking/MRU. Query <=256 UTF8 bytes, roots 1...16 literal absolute paths <=4096 bytes, no NUL/expansion; limit non-null 1...200, default 50. Bounded system-tool invocation and native inspection require unresolved human process/target-protection decisions plus review/acceptance. Reads never launch/register/install, prompt for consent or perform handler lookup. Inspect coverage, dependency, truncation and errors; returned locations revalidate through existing actions."""
-  workspaceSearchApplications(query: String!, roots: [String!], limit: Int = 50): WorkspaceApplicationSearchResult
-  """Requires workspace:read throughout. File/folder/link name discovery under explicit roots or Koine's home via system find, literal Foundation filename matching. Same input rules as application search. No content/ignore config/default-handler lookup or action. Hidden/package-suffix/link-descendant/special rules define the domain; protected/cloud/foreign/work omissions remain explicit. Home is PARTIAL/UNKNOWN; command exit/count alone is no completeness proof. Lossless locations <=8192 UTF8 bytes, no canonical-parent promise. Source order and bounded three-second wait/work/copies do not promise top-N or shallow-name fairness. Child responsibility, relocated-target policy, review and actual G/N/V acceptance remain pending. Clients own chooser, ranking/MRU, clipboard and later actions."""
-  workspaceSearchFiles(query: String!, roots: [String!], limit: Int = 50): WorkspaceFileSearchResult
+  """Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read."""
+  workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
+  """Fixed indexed-local app category plus running and per-identifier registration supplements. Clients filter/rank. No arbitrary roots/query, raw walk, all-disk completeness, implicit launch/setup or default-handler lookup. Checked same-identity observations merge; equal identifiers never merge copies. All reachable fields require workspace:read."""
+  workspaceApplications: WorkspaceApplicationsResult
+  """All runtime-exposed panes/anchors of a validated already-running System Settings target, direct core/getd with exact no-prompt preflight/send. No launch, activation, reveal or setup. Ordinary required areas remain acceptance witnesses. All reachable fields require workspace:read."""
+  workspaceSettings: WorkspaceSettingsResult
+}
+extend type Mutation {
+  """workspace:control throughout; no catalogue data. One background launch if stopped (activates=false); none if already running. Three-second/core wait; ambiguous late effects never replay. Does not request consent or reveal."""
+  workspacePrepareSettings: WorkspaceSettingsPreparationResult
+  """workspace:control throughout. Already-running fixed target only. Explicit exact-event permission request if needed and qualified host posture supports it. No send/launch/reveal, automatic retry or capability grant. Thirty-second provider ceiling; current core freezes within five seconds. Late OS consent can outlive either."""
+  workspaceRequestSettingsAutomation(event: WorkspaceSettingsEvent!): WorkspaceSettingsAutomationResult
+  """workspace:control AND desktop:control throughout. Exact paneId/optional anchorName 1...512 UTF8 bytes, no NUL/control characters/normalization. Re-resolve then no-prompt misc/mvis and explicit activation; no launch/setup/URL construction. Acknowledgment is no visible-destination guarantee. Three-second/core wait; never replay ambiguous effects."""
+  workspaceRevealSetting(selection: WorkspaceSettingSelection!): WorkspaceSettingsRevealResult
 }

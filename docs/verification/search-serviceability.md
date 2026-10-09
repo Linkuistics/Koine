@@ -1,5 +1,12 @@
 # Search serviceability subjects
 
+**Applicability:** This report preserves its original raw/custom-search subjects
+and measured limits for comparison. The [native contract](../specs/workspace-search.md)
+and [finite acceptance](native-discovery-acceptance.md) own current sources,
+resource subjects, exact profiles and pending native verdicts. Useful existing
+branch/ownership/independent-observer controls are adapted there; obsolete raw
+mechanics or successful historical captures supply no native catalogue pass.
+
 **Reuse-design reconciliation:** the [current tool-backed contract](../specs/workspace-search.md)
 and [finite backend evidence](search-tooling.md) replace custom traversal/witness
 mechanics below. Retain this document as bounded prior evidence/design analysis,
@@ -8,11 +15,11 @@ native fact, permission and serviceability obligations remain live.
 
 **Construction design, pending implementation and native acceptance.** This is
 the instrument and subject definition for the finalized
-[in-process allocation](../specs/workspace-search.md#native-application-and-file-metadata).
+[in-process allocation](raw-workspace-search-comparison.md#native-application-and-file-metadata).
 The [serviceability view](../design/architecture/index.html#diagram-search-serviceability)
 shows its evidence paths. No instrument or runtime result is delivered here.
 The [feasibility report](search-native-resources.md) supplies the source/SDK
-provenance; the [selected observation boundaries](../specs/workspace-search.md#permission-boundary-and-required-decision)
+provenance; the [selected observation boundaries](raw-workspace-search-comparison.md#permission-boundary-and-required-decision)
 govern every verdict below. Platform-internal acquisitions, peaks, lifetimes,
 asynchronous work and swallowed errors remain unproved.
 
@@ -143,7 +150,7 @@ controlled-error case; do not exhaust the VM's system-wide table to fabricate it
 Each controlled schedule runs through an independently built real provider and
 client, with the public fields/coverage/aliased error paths asserted together.
 The private ledger additionally asserts charges and ordering. Keep the existing
-[canonical call subjects](../specs/workspace-search.md#test-seams-and-acceptance)
+[canonical call subjects](raw-workspace-search-comparison.md#test-seams-and-acceptance)
 and repeated-walk counters; mocked canonical paths cannot pass native size tests.
 
 | Subject | Stimulus, falsifier and control |
@@ -263,7 +270,7 @@ preferred identities where constructible. Wrong not-found normalization,
 incorrect known witnesses or UNKNOWN for every launcher fails. Fixture
 registration/setup writes occur before measurement; search performs none.
 
-First consume the [path-design dependencies](../specs/workspace-search.md#matching-and-returned-locations)
+First consume the [path-design dependencies](raw-workspace-search-comparison.md#matching-and-returned-locations)
 and their producer/review outcomes. The current selected calls are not reconciled
 with pre-open witness/replay phases or long-path classification; long-result
 actions also need their launch/open design/review chain. Queue/size reachability cannot be inferred from
@@ -279,7 +286,7 @@ entry, depth, value and deadline omissions; no arbitrary sample is accepted.
 Keep independently retained action-only host/framework/workspace 1.0.0 binaries,
 SDL and exact profiles distinct from search 1.1.0/upgraded-host subjects and
 newer update fixtures. Run the
-[compatibility cases](../specs/workspace-search.md#test-seams-and-acceptance)
+[compatibility cases](raw-workspace-search-comparison.md#test-seams-and-acceptance)
 with binary identities, old failure mapping, both authority/selection features
 and exact candidate rows. A rebuilt old fixture, historical capture, subset
 SDL or this design's checks cannot clear runtime compatibility.

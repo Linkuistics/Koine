@@ -296,8 +296,8 @@ contract](specs/machine.md#errors-and-partial-data).
 
 **Designed, not served yet:** new operations can report other consent identifiers
 in `osPermission`, still with `permissionOwner: koine`. There is no generic
-error-extension `permissionTarget` in the existing framework; search reports
-its scope/reason as typed coverage data. Future error target/reason transport
+error-extension `permissionTarget` in the existing framework; native discovery reports
+its source/reason as typed result data. Future error target/reason transport
 needs a separately designed framework/host extension before use. Treat unfamiliar
 identifiers as OS-permission refusals and show Koine's guidance; do not label them
 Accessibility. Nil/blank legacy values are unspecified-consent failures; show
@@ -305,7 +305,7 @@ their guidance without inventing an identifier, as the
 [failure compatibility table](specs/machine.md#provider-failure-compatibility)
 requires. Existing desktop operations keep `accessibility`. Reads
 never request consent. App-side API enablement is instead an integration
-prerequisite, and file search reports partial/unknown coverage separately from a
+prerequisite, and native discovery reports partial/unknown observations separately from a
 complete empty result.
 
 For desktop operations, three rules make these usable; the consent distinction
@@ -364,49 +364,71 @@ nothing".
 
 ## Searching for applications and files
 
-Raw filesystem search belongs to the client. Choose its engine, traversal,
-filename filtering, ordering, budgets and OS-permission handling locally.
-Koine supplies native **special locations** from which to search and, for v1,
-named **native catalogues** for applications and modern System Settings on
-macOS 26+. It exposes no general OS metadata-query API in v1. A location value
-does not grant filesystem access or consent; a remote client needs its own access.
+Raw filesystem search belongs to the client: choose its traversal engine,
+permissions, filtering, ordering and budgets. Koine's [native discovery design](specs/workspace-search.md)
+supplies special starting locations and named applications/System Settings
+catalogues on macOS 26+ Apple Silicon. **Designed, not served or native-accepted
+yet:** introspect the actual schema before using the
+[operations](design/workspace-search-operations.graphql). There is no generic
+predicate/root/query API or Koine raw-search fallback.
 
-**Native discovery is awaiting returned design and is not served yet.** The
-[requirements](requirements/modaliser-workflows.md#ownership-and-existing-constraints)
-define the current boundary. The [previous search proposal](specs/workspace-search.md)
-and its raw-search SDL/examples are comparison inputs, not a current API to
-implement against. Introspect for the actual native catalogue/location fields
-after their design and implementation; the former raw filename/root-query shape
-is not the v1 contract.
+Use workspaceSpecialLocations under workspace:read for HOME, Desktop, Documents,
+Downloads, Movies, Music, Pictures and application domains. Read its account UID
+and domain: these values belong to Koine's account. They grant no client access,
+contents listing or consent, and can name a nonexistent directory.
 
-The [source boundary](verification/native-discovery-sources.md) records the
-candidate public interfaces and the pending System Settings source/permission
-decision. No settings destination shape is yet accepted by an existing action.
+Use workspaceApplications under workspace:read, then filter/rank on the client.
+Indexed metadata supplies breadth; running observations and per-identifier
+registration supplement it. Source completeness is distinct from category
+completeness: this is no exhaustive all-disk inventory. Inspect status, sources,
+diagnostics, metadata uncertainty and GraphQL errors together. AVAILABLE/PARTIAL
+has items; BLOCKED/UNAVAILABLE/UNKNOWN has ordinary null; FAILED raises failed
+at each selected items alias. Nested aliases share their frozen result, but
+separate root aliases may differ. A surviving status does not erase publication
+or provider lifecycle errors.
 
-Read native source availability, completeness, metadata uncertainty and errors
-together. Empty, blocked, unavailable and incompletely observed categories must
-remain distinguishable. An OS-reported list is not automatically all applications
-on disk, and a path says nothing about client consent or its contents. Koine's own
-native reads remain prompt-free and must avoid hydration. Clients own filtering,
-ranking, chooser, MRU, clipboard and raw-search coverage.
+Preserve distinct copies with one identifier. For an INSTALLED selected app,
+pass both bundleIdentifier and applicationPath into constrained launch; it needs
+workspace:control AND desktop:control. UNKNOWN/UNREGISTERED identified choices
+remain reveal/copy choices. A later action re-resolves the selected location;
+a catalogue does not pin an occupant or grant authority. Never remove a failing
+installation constraint or retry another copy automatically.
 
-Application choices still need useful native metadata and distinct installation
-identity. A selected known identifier and installation path feed the existing
-constrained launch; unknown/refused metadata must not be turned into a different
-copy or an invented registration negative. Returned design establishes the
-opening target for System Settings destinations. Existing explicit actions retain
-their complete authority checks and re-resolve selections independently.
+workspaceSettings under workspace:read reads all runtime-exposed panes and anchors
+of an already-running validated System Settings process without prompting,
+launching, activation or reveal. A stopped target is UNAVAILABLE, not empty.
+If the client explicitly chooses preparation, workspacePrepareSettings requires
+workspace:control and launches the stopped target in the background; a running
+target is left alone. Its RUNNING receipt certifies process readiness only.
+Query the catalogue separately; control does not imply read.
 
-Client-found file locations can use existing default/Zed open and Finder reveal.
-The [v1 action boundary](specs/workspace-launch-and-open.md#long-location-action-boundary)
-still applies: missing locations retain their dependency outcomes; an extant
-literal/expanded/resolved spelling of at least 1,024 bytes without NUL fails before
-application handoff. Keep longer paths copyable without rewriting them. Protected
-default opening and app-reveal notice retain their separate pending work.
+Exact-event refusal may offer explicit workspaceRequestSettingsAutomation(READ
+or REVEAL), under workspace:control, only when useful events need the qualified
+host's conditional setup. No read, prepare or reveal invokes it automatically.
+Setup can display OS consent and its late answer can change authorization after
+Koine times out; do not replay it. Permission outcomes grant no Koine capability.
 
-Native GraphQL/provider-binary/signed-VM acceptance, useful application/settings
-witnesses, no-dialog/hydration controls and compatibility remain pending. Client
-raw-search omissions are not Koine native catalogue acceptance.
+After explicit selection, workspaceRevealSetting(paneId, optional anchorName)
+requires workspace:control AND desktop:control. Send those keys unchanged as
+opaque exact strings; never synthesize a custom URL or AppleScript. The operation
+revalidates the running fixed target, re-resolves the pane/anchor, sends no-prompt
+reveal and requests activation. A receipt acknowledges submission, not final
+visible contents; failed/late effects are ambiguous and never retry-safe.
+The existing HTTP(S)-only workspaceOpenURL and filesystem workspaceOpenPath do
+not accept pane IDs, anchor keys or arbitrary custom URLs.
+
+Client-found files can use existing default/Zed open and Finder reveal under
+both controls. The [v1 handoff limit](specs/workspace-launch-and-open.md#long-location-action-boundary)
+remains: missing locations keep dependency outcomes; an extant literal/expanded/
+resolved spelling of at least 1,024 bytes without NUL fails before handoff.
+Keep longer values copyable without rewriting them. Protected default opening
+and app-reveal notice stay separate pending work.
+
+The [finite acceptance contract](verification/native-discovery-acceptance.md)
+requires actual GraphQL/native binaries/signed VMs, useful launchers/Safari/Finder
+and modern settings witnesses, independent dialog/hydration and serviceability
+controls. All native discovery verdicts remain pending. Client raw-search
+omissions and retained action captures supply no catalogue pass.
 
 ## Launching an application
 

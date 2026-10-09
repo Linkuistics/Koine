@@ -6,8 +6,9 @@ budgets and their search process's OS permissions. For v1, Koine supplies
 modern System Settings destinations on macOS 26+. A location value grants no
 filesystem access or consent. The
 [workflow requirements](../requirements/modaliser-workflows.md#ownership-and-existing-constraints)
-define this boundary; native catalogue mechanisms and completeness need returned
-design and review before implementation. V1 exposes no general OS metadata-query
+define this boundary; the [native design](../specs/workspace-search.md) selects
+interfaces and honest completeness. Mandatory review and native acceptance
+precede delivery. V1 exposes no general OS metadata-query
 API or hidden raw-search fallback.
 
 Keeping generic traversal in Koine would make the server own filesystem search

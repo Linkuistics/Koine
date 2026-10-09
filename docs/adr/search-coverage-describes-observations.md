@@ -14,10 +14,10 @@ choices look like absence; an exhaustive filesystem audit would reintroduce the
 raw-search feature clients own. Known incorrect native witnesses still fail
 acceptance, and an unavailable subject remains pending.
 
-The returned native discovery design defines the catalogue payload and exact
-completeness branches. The former per-root find coverage, directory marker,
+The [native discovery design](../specs/workspace-search.md#coverage-and-frozen-publication)
+defines frozen source/status payloads and exact completeness branches. The former per-root find coverage, directory marker,
 stderr remainder and raw-work counters are comparison material in the
-[previous proposal](../specs/workspace-search.md#coverage-and-aggregate-outcomes),
+[previous proposal](../verification/raw-workspace-search-comparison.md#coverage-and-aggregate-outcomes),
 not an adopted catalogue schema. Reconsider greater detail for a concrete native
 catalogue consumer; no workflow loss or native permission outcome is accepted by
 this decision.

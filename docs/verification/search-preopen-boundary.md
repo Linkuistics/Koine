@@ -12,7 +12,7 @@ acquisition is an omitted alternative within the descriptor-relative ADR's call
 set; its search-policy authorization and unmeasured target behavior remain open.
 This analysis selects no replacement call or witness-mode exemption, approves no
 workflow loss, and adds no native measurement. The
-[witness contract](../specs/workspace-search.md#permission-boundary-and-required-decision) and
+[witness contract](raw-workspace-search-comparison.md#permission-boundary-and-required-decision) and
 [focused view](../design/architecture/index.html#diagram-search-preopen) carry
 this boundary. Returned witness design and mandatory review, observation phases,
 classification and complete-resource review still precede planning.
@@ -49,7 +49,7 @@ code-completeness claim.
 
 ## Mount bootstrap and ordinary transitions
 
-The accepted [fixed-layout classifier](../specs/workspace-search.md#roots-and-search-domain)
+The accepted [fixed-layout classifier](raw-workspace-search-comparison.md#roots-and-search-domain)
 is a premise, not APFS role attestation or protection against privileged mount
 replacement. It permits these narrow acquisitions before their descriptor
 classification. It does not allow arbitrary sources to nominate trusted mounts.

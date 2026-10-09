@@ -132,8 +132,24 @@ filesystem access or OS consent and is not a listing of its contents.
 
 **Native catalogue**: A named collection of native metadata observations supplied
 by a **provider**, with explicit discovery availability and completeness. In v1
-it supplies category-specific choices rather than a general metadata-query API;
-**clients** own name filtering and ranking.
+it supplies category-specific application and runtime System Settings choices;
+**clients** own name filtering and ranking. Source observation completeness is
+separate from category completeness and internal native health.
+
+**Catalogue preparation**: An explicit control-authorized operation that launches
+a stopped System Settings target in the background and publishes only process
+readiness. It grants no read authority and never performs catalogue discovery,
+activation, reveal or Automation setup.
+
+**Settings selection**: Exact opaque pane ID and optional anchor name supplied
+by the app's runtime scripting interface and re-resolved for explicit reveal.
+It is neither a filesystem path, arbitrary URL, executable script nor a resource
+reference; query observation does not pin a later target.
+
+**Automation setup**: An explicit request for one fixed System Settings read or
+reveal event's OS permission, only where the qualified host posture needs it.
+It grants no Koine capability; a late OS answer can outlive the caller's wait.
+Ordinary native reads, preparation and reveal never request it implicitly.
 
 **Discovery coverage**: The stated availability and completeness of observations
 from a **native catalogue**'s declared sources. A successful response or an empty

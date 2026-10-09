@@ -32,3 +32,15 @@ previous raw-search mechanics are comparison input.
 ## Notes
 
 Independent node review. No new native evidence chain or runtime pass.
+
+## Selected-source review axes
+
+Review k126's actual closing artifact against reviewed k202's spec and finite
+native-discovery acceptance, particularly fixed IndexedLocal contact before pruning,
+individual known alias protection, no value-only location inspection, exact PID/
+process/signature/event checks and conditional setup only when earned. Challenge
+all no-dialog/no-hydration or readiness claims for actual source/posture subjects;
+source declarations and withheld data prove neither safety nor healthy empty.
+Distinguish read core/getd from prepare/setup/reveal and late OS consent. Existing
+review/earned integration remains before k127; no second review or fabricated
+Creator for an unfinished node.

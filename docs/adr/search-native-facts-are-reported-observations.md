@@ -4,9 +4,10 @@ Native catalogues publish checked service observations rather than proof of
 the platform's internal health. Registration absence requires a checked present
 installation and a supported negative observation; a nil identifier or an
 empty, malformed, incomplete, blocked or conflicting service result alone
-establishes no negative fact. The returned
-[native catalogue design](../specs/workspace-search.md) must define exact
-positive, negative and unknown branches for its actual sources.
+establishes no negative fact. The
+[native catalogue design](../specs/workspace-search.md#application-sources-and-native-facts) defines exact
+positive, negative and unknown branches for error-bearing registration and
+preferred-location contradiction checks; actual runtime qualification remains pending.
 
 An undetected failure or stale native state can make a fact incorrect or omit a
 choice. Known incorrect witnesses and systematically unknown metadata for the
@@ -15,8 +16,9 @@ existing explicit actions and their authority remain requirements under the
 [ownership decision](raw-filesystem-search-belongs-to-clients.md). Native sources
 cannot silently substitute a partial seed list for an exhaustive all-disk claim.
 
-The previous raw-search proposal's UNREGISTERED enum, seed expansion and
-specific call branches are comparison input. Its
+The native contract retains checked negatives without claiming opaque platform
+health. Its indexed breadth and witness supplements never define an exhaustive
+inventory. Historical raw traversal/seed accounts are comparison input. Its
 [source/SDK analysis](../verification/search-native-resources.md#call-health-is-separate-from-descriptor-visibility)
 supplies no token proving every internal acquisition healthy. Suffixes or private
 registration scraping would not preserve required native launch semantics.

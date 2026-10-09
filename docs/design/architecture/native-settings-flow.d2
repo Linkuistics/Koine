@@ -1,0 +1,34 @@
+# Four explicit choices; no operation automatically invokes another.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Client choice\nNever automatic replay" {class: start}
+Read: "Read catalogue\nworkspace:read"
+Prepare: "Prepare background\nworkspace:control"
+Setup: "Request Automation\nworkspace:control"
+Reveal: "Reveal selection\nBoth controls"
+Running: "Validate running target\nStopped = unavailable"
+NoPrompt: "core/getd\nNo-prompt preflight/send"
+Values: "All exposed panes/anchors\nCategory = unknown"
+Launch: "Stopped: activates=false\nRunning: no launch/event"
+Receipt: "RUNNING receipt\nNo catalogue data"
+Ask: "Running fixed target only\nExplicit ask=true if needed"
+Permission: "Allowed / denied / unavailable\nLate consent may outlive wait"
+Select: "Re-resolve exact keys\nNo-prompt misc/mvis"
+Activation: "Request target activation\nNo launch/setup/URL"
+Acknowledgment: "Control receipt\nVisible result unproved"
+Start -> Read: "1 · inspect"
+Read -> Running: "2 · validate"
+Running -> NoPrompt: "3 · allowed"
+NoPrompt -> Values: "4 · freeze"
+Start -> Prepare: "1 · prepare"
+Prepare -> Launch: "2 · admit"
+Launch -> Receipt: "3 · revalidate"
+Start -> Setup: "1 · explicit setup"
+Setup -> Ask: "2 · exact event"
+Ask -> Permission: "3 · bounded wait"
+Start -> Reveal: "1 · select"
+Reveal -> Select: "2 · both controls"
+Select -> Activation: "3 · checked reply"
+Activation -> Acknowledgment: "4 · receipt"

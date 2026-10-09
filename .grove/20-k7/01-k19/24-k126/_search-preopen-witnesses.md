@@ -35,3 +35,20 @@ Do not retain raw root markers, prune expressions, withheld directory-listing or
 home ordering contracts as native requirements. Earlier find permission selects
 no catalogue backend. Native mechanisms require their own qualification; no
 global policy, helper, consent/setup, signing change or coverage loss is inferred.
+
+## Exact native permission scope
+
+After reviewed k199, k191 specifies Foundation value-only calls; the exact fixed
+NSMetadataQuery application predicate/IndexedLocal scope (contact precedes any
+result pruning); running observations; error-bearing registration/preferred and
+individual identified-bundle inspection; PID-addressed core/getd preflight/send.
+Value return does not authorize location inspection. Carry known protected-target
+identity aliases for individual metadata targets and unknown-alias/contact/replacement
+limits, without inventing index-source protection from post-result filtering.
+
+Read policy is unchanged and no global materialization pin is chosen. K201 permits
+conditional explicit Automation posture only if useful exact events need it;
+separate prepare/setup/reveal cannot leak into reads. Define OS/signature/launch-
+identity and fresh-consent subjects from native-discovery-acceptance V1/V2/V6/V8,
+with positive dialog/hydration controls; no native pass is possible in this design.
+Existing k193 still reviews the complete closing k126 artifact before k127.

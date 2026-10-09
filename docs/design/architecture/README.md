@@ -1,47 +1,39 @@
 # Koine architecture views
 
 Open [the viewer](index.html#discussion) for the topic outline, current discussion,
-editable sources and SVG exports. Graph views begin at their dark entry node;
-sequences read from their first message. Source is the editable artifact; never
-hand-edit exports.
+editable sources and SVG exports. Graphs begin at a dark node labelled Start here;
+sequences read from their first message. Native images/source packages are
+components within one resident process, not deployment containers. Source is
+editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-[Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
-records public location/application candidates and the modern settings gap.
-[System Settings → Choose the source and permission boundary](index.html#diagram-native-settings-decision)
-compares app-supplied scripting, OS-shipped private sidebar data and individually
-documented destinations. The recommended scripting route needs an explicit
-Automation/signing/setup decision. Read the
-[source analysis](../../verification/native-discovery-sources.md) for exact OS/SDK
-provenance and consumer consequences. Source analysis selects no backend or API
-and supplies no native pass; full producer design and mandatory review stay live.
+[Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
+shows source/snapshot/image responsibility and the preserved action boundary.
+[System Settings → Read, prepare, set up, then reveal](index.html#diagram-native-settings-flow)
+shows separate explicit operations and complete static grants.
+[Native ownership → Retain capacity until native work really returns](index.html#diagram-native-discovery-lifecycle)
+shows freeze and true retirement, including indefinite retained capacity.
+The [native contract](../../specs/workspace-search.md),
+[source provenance](../../verification/native-discovery-sources.md) and
+[finite acceptance](../../verification/native-discovery-acceptance.md) hold the
+full API, exact profiles and runtime qualification duties. Mandatory whole-producer
+review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Added source capabilities and the distinction between a candidate and a qualified catalogue.
-- [System Settings → Choose the source and permission boundary](index.html#diagram-native-settings-decision) — Added the three concrete source/posture alternatives and the human decision before API design.
-- [Native discovery source boundary](../../verification/native-discovery-sources.md) — Added bounded SDK/OS-source evidence and retained acceptance/authority obligations.
+- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Added native-image/source ownership and source plus compiled action-boundary controls.
+- [System Settings → Read, prepare, set up, then reveal](index.html#diagram-native-settings-flow) — Added separate effect-free read, background prepare, conditional explicit setup and selected reveal paths with complete authority.
+- [Native ownership → Retain capacity until native work really returns](index.html#diagram-native-discovery-lifecycle) — Added bounded admission, publication freeze and capacity retained through actual return.
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Changed candidates to selected interfaces while retaining pending exact runtime qualification.
+- [Client-owned search and native discovery](index.html#diagram-search-discovery) — Connected the ownership boundary to the designed contract and pending review/acceptance.
+- [Native discovery contract](../../specs/workspace-search.md) — Replaced the raw proposal with native source/status/metadata/authority/ownership contracts.
+- [Finite native acceptance](../../verification/native-discovery-acceptance.md) — Defined new provider/profile identities and actual G/N/V witnesses without relabelling old captures.
 
-[Client-owned search and native discovery](index.html#diagram-search-discovery)
-shows the agreed v1 requirements boundary for macOS 26+. Koine returns special
-locations and named application/modern System Settings catalogues. Clients own
-raw filesystem search, their permissions, filtering and ranking. Returning a
-location grants no filesystem access.
-
-The [requirements](../../requirements/modaliser-workflows.md) and
-[ownership decision](../../adr/raw-filesystem-search-belongs-to-clients.md)
-govern this boundary. The returned design and mandatory review must establish
-native sources, API, availability/completeness and acceptance before
-implementation. Public GraphQL, actual provider/host binaries and signed VMs
-remain the agreed seams; this presentation runs no native experiment.
-
-The other eight search views retain the previous raw-search proposal for
-comparison. Their dark entry nodes, titles and captions identify that status.
-They select no current API, child or traversal mechanism. The returned design
-must reconcile useful native metadata, per-copy application identity, explicit
-actions, binary compatibility and independent serviceability/dialog/hydration
-controls; obsolete raw traversal and coverage payloads are not new requirements.
+The [agreed settings source](index.html#diagram-native-settings-decision) is
+unchanged requirements context. The other eight search views and
+[archived raw proposal](../../verification/raw-workspace-search-comparison.md)
+remain labelled comparison; no current native backend/account is selected by them.
 
 ## Other architecture topics
 
@@ -50,22 +42,20 @@ The viewer retains [workspace actions](index.html#diagram-workspace-open),
 [long-location action boundary](index.html#diagram-workspace-long-locations),
 [metadata/handler boundary](index.html#diagram-workspace-inspection),
 [provider selection](index.html#diagram-provider-selection) and
-[workflow authority](index.html#diagram-workflow-authority). Their specs and
-verification documents establish what is served, accepted or pending; the
-presentation adds no runtime verdict.
+[workflow authority](index.html#diagram-workflow-authority). Their specs/verification
+records establish their served/accepted/pending subjects; this presentation adds
+no native verdict.
 
 ## Sources and exports
 
-The manifest owns titles, outline, current discussion and captions. D2 sources
-use D2 0.9.0, theme 0/dark-theme 200; PlantUML sources use 1.2026.8. Run the
-existing Taskfile recipes: design:search-render (the ownership sketch and eight
-comparison views; ELK for permission/canonical/resource/inspection/serviceability,
-Dagre for the rest), design:workspace-render, design:selection-render and
-design:workflow-render. design:native-discovery-render exports the focused
-source/decision views with Dagre; they remain proposals pending requirements
-and contract design.
+D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
+source/contract/lifecycle views with Dagre and the settings flow with ELK;
+design:search-render regenerates the ownership sketch plus eight comparison views
+with their recorded layouts. The other existing tasks are design:workspace-render,
+design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
 
-design:search-check validates the previous raw-search SDL/examples. It is not
-validation of a new native catalogue API. check:docs validates relative links
-and anchors. Run design:serve PORT=8876 and open
-<http://127.0.0.1:8876/#discussion> or the exact stable diagram anchor.
+Run design:search-compose before freezing inputs, then design:search-check for
+native SDL/examples/complete profiles and retained action examples. check:docs
+validates relative links/anchors. These are design checks, not native acceptance.
+Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
+stable diagram anchor. The static presentation serves only this directory.

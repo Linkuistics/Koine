@@ -1,0 +1,40 @@
+{
+  "name": "Native discovery per-user update composition",
+  "design": "../desktop-workspace-native-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Design only; actual native binary, introspected digest and G/N/V acceptance pending.",
+    "Framework major 1/minor 1, additional-capabilities-v1 and selection-aware first-party-selection-v1 host.",
+    "Unchanged host posture first; any earned conditional Automation host has a separate signature/posture record, the same schema.",
+    "Retained 1.0.0/1.0.1 and action-only update 1.1.0/schema 1.0.1 remain independent evidence."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.3.0",
+      "schemaVersion": "1.1.0",
+      "state": "ACTIVE",
+      "origin": "PER_USER",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.2.0",
+      "schemaVersion": "1.1.0",
+      "state": "REJECTED",
+      "origin": "BUNDLED",
+      "selection": "NOT_SELECTED",
+      "reason": "superseded-candidate"
+    }
+  ]
+}

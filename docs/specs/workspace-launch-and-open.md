@@ -22,15 +22,15 @@ The [workspace SDL](../design/workspace-schema.graphql) and
 [client operations](../design/workspace-operations.graphql) fix the public shapes.
 The SDL is a contribution, not the complete composed schema.
 
-The designed [application/file search extension](workspace-search.md) feeds these
-same inputs: a selected installed application supplies both identifier and
-installation path; a file supplies its literal path. Search does not issue a
-reference, resolve a default handler, write the clipboard or weaken action-time
-revalidation. Its standalone SDL remains separate pending design review repair.
-Implementation adds an exact search-required profile for the search-serving
-host. The unchanged action-only SDL and workspace 1.0.0/schema 1.0.0 pins run
-against a separate compatibility host containing that independently retained
-bundle; they do not describe the upgraded bundled search provider.
+The designed [native discovery extension](workspace-search.md) feeds the same
+application selectors: an INSTALLED selected app supplies both identifier and
+installation path; a client-found file supplies its literal path. Catalogue
+observations grant no reference pin, default-handler knowledge, clipboard effect
+or action authority. Its complete native profiles pin 1.2.0/schema 1.1.0 and
+1.3.0/schema 1.1.0 update, with every new G/N/V result pending. Retained independent
+action-only 1.0.0/1.0.1 and update 1.1.0/schema 1.0.1 profiles remain unchanged
+evidence. The new settings pane/anchor reveal has its own authority/target/receipt
+contract and does not widen these four actions' inputs.
 
 The [long-location action boundary](#long-location-action-boundary) is implemented
 in workspace 1.0.1. The target stage, supplied literal long-application refusals
@@ -596,17 +596,19 @@ long copy in the required actual order or preference immediately before the
 request, followed by V measurement. Other native subjects, OS builds and the
 actual-search handoff below retain their own acceptance requirements.
 
-App-and-file-search acceptance owns the actual handoff: actual search returns an
-over-limit file and application, the unchanged selected values receive this
-refusal, and a returned location within the limit acts. Injected results and the
-action subjects cannot close it.
+App-and-file-search acceptance owns actual native application-catalogue handoff:
+an observed long application location stays copyable and its unchanged selected
+identifier/location receives this refusal, while a within-limit native choice
+acts. Client-found file provenance belongs to the client; Koine's existing action
+contract remains independently accepted for file paths. Injected application
+results or action-only subjects cannot close native catalogue provenance.
 
 The action-only correction is workspace release/schema **1.0.1** under
 `koine-desktop/1`, with unchanged input/result shapes, error kinds and enums. Its
 [repair SDL](../design/workspace-action-repair-schema.graphql) appends the exact
 launch/open/reveal description text, which must change the composed digest on
 the same host and printer. Keep the retained 1.0.0 bundle, SDL and profile
-unchanged: [the bundle is built from a pinned revision and verified apart](../verification/retained-workspace-baseline.md). Search release/schema 1.1.0 carries the same descriptions in its own
+unchanged: [the bundle is built from a pinned revision and verified apart](../verification/retained-workspace-baseline.md). Native discovery release 1.2.0/schema 1.1.0 carries the same action descriptions in its own
 composed profile. Planning owns the native, test and contract-client
 [implementation obligations](../verification/long-action-native-boundary.md#compatibility-and-implementation-obligations).
 Earlier short-path evidence stays bounded to its subjects; the 1.0.0 mapping of
@@ -761,7 +763,7 @@ here are bounded questions for those seams, not a claim that implementation exis
 | Consent and prompts | G, N, V | [First-use metadata probe](../verification/protected-path-metadata.md): tested metadata calls were prompt-free; document file-URL default-handler lookup prompted on Desktop, Documents and Downloads. Protected default opening and handler discovery remain pending for a human consent/semantics decision. **At V ([target-locations-vm](../verification/target-locations-vm.md#first-use-in-the-protected-folders)) a named open of an item in these folders and a directory's open were prompted too, at submission (approved in the clone, then completed), and a reveal never was; whether Koine helps with that consent is still the decision `protected-default-open-k89` carries.** Removable/network-volume observations were unavailable. Operation acceptance still checks Accessibility absent/revoked, app onboarding and the separate Gatekeeper timeout case (URL, Accessibility absent: [open-url-vm.md](../verification/open-url-vm.md#accessibility-and-consent); path: [open-path-vm.md](../verification/open-path-vm.md#accessibility-and-consent); reveal: [reveal-path-vm.md](../verification/reveal-path-vm.md#accessibility-and-consent), which also records a system notice naming Koine that revealing a third-party application raised, [pending a decision](../verification/reveal-path-vm.md#the-app-management-notice)). No new consent/signing posture is implied; inspection denial remains failed, not absence or an invented os-permission. |
 | Packaging/selection | N, G, V as assigned | Complete Machine selection matrix, independent additional-capability old/new binaries, exact candidate and absent/rejected conformance. Mocks, SDL equality alone and old baseline evidence do not close these rows. |
 | Long-location actions, independent of search | L, G, N, V; launch-and-open owns | The [v1 subjects](#subjects-and-versions): every resolution outcome and stage at short and roughly 1,500-byte depth, the 1,023/1,024-byte hand-off boundary (NUL not counted) for literal, expanded and resolved spellings, the 31/32/33-link budget, cycle-state, name-limit, reveal-root and registered-candidate subjects, positively controlled observers showing no delivery or selection for refused locations, short-workflow regression with a long copy on disk, prompt-free first-use resolution in protected folders, and separate 1.0.0/1.0.1 binary profiles. Reveal's target stage: L, G and N accepted ([reveal-locations.md](../verification/reveal-locations.md)); open's target stage and payload refusal on the resolved object: L, G and N accepted ([open-path-locations.md](../verification/open-path-locations.md)); the supplied-application stage (`applicationPath` and the registered-candidate comparison by device and inode): L, G and N accepted, the candidates' comparison at L and G only because Launch Services' registrations cannot be arranged on a host ([application-locations.md](../verification/application-locations.md)); the discovered-application stage is accepted at L and G ([discovered-applications.md](../verification/discovered-applications.md)) and the receipt's executable identities at L and N ([receipt-executable-identity.md](../verification/receipt-executable-identity.md)); the 1.0.1 release, catalogue and profile are accepted against the signed host ([action-repair-release.md](../verification/action-repair-release.md)); the retained-host compatibility pairs, the retained subjects repeated against 1.0.1 and the selection fixtures re-pinned to it are accepted at N and G ([workspace-compatibility.md](../verification/workspace-compatibility.md)); the N gaps closed by effect and V for the target stage are accepted ([target-locations-vm.md](../verification/target-locations-vm.md)): 1,023 bytes opened and revealed, 1,024 and about 1,500 refused with nothing delivered or selected, the walk's present outcomes seen by effect, the root and a link to it, a missing long path, and first-use resolution prompt-free in Desktop, Documents and Downloads (the first *open* there is prompted by the platform and was approved in the clone), with a default open of a chain of more than ten links answering `NO_DEFAULT_HANDLER` because the platform's own lookup stops there; application V accepts supplied literal 1,024/1,500-byte refusals cold/running and disk-only short launch/open/reveal with kernel-backed receipts ([application-locations-vm.md](../verification/application-locations-vm.md)); native registered-long/both-order and preferred-long behaviors remain unproved after the [bounded prefix matrix](../verification/prefix-registration-vm.md), under the [accepted coverage limit](../verification/application-locations-vm.md#accepted-native-coverage-limit) for workspace 1.0.1 on macOS 26.5 (25F71), arm64. No search implementation is required. |
-| Actual long search-result handoff | G, N, V; app-and-file-search owns | Actual search returns an over-limit file and application; the unchanged selected path and identifier receive the stated `failed` refusal with no delivery, while a returned location within the limit acts, with independent witnesses. [Search acceptance](workspace-search.md#test-seams-and-acceptance) retains this provenance requirement. Independent fixtures, injected results or action acceptance cannot close it. |
+| Actual native application-choice handoff | G, N, V; app-and-file-search owns | Actual native catalogue supplies application location/identifier; unchanged long selections get the stated `failed` refusal before delivery and within-limit selections act with independent witnesses. [Native acceptance](../verification/native-discovery-acceptance.md#v-useful-native-observations-and-appropriate-selections) retains this provenance; injected results/action-only captures cannot close it. Client-found file provenance is client-owned. |
 
 GraphQL/client evidence must retain client ownership of query UI, suggestions,
 fallback, chooser/MRU, clipboard and settings reload/relaunch. Reusable build,
