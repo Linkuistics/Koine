@@ -51,7 +51,7 @@ disclosures on all native grant and management surfaces, mandatory
 workspace-native-disclosures-v1 and independently retained prior-host/native-update
 refusal with action-only fallback. OS Automation initiation is local human UI-only,
 not GraphQL/bearer management; late requests retain true-return ownership. Complete
-current native acceptance rows, including V9 index-health uncertainty controls,
+current G1–G11/N1–N8/V1–V13 native acceptance rows, including V9 index-health uncertainty controls,
 bind without credit from historical action-only captures.
 
 ## Populous native baseline duty

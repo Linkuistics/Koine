@@ -3,7 +3,7 @@
 ## Goal
 
 Complete prompt-free native location/catalogue target access and protection
-for the actual mechanisms established by the reviewed native-discovery-k199 design,
+for the actual mechanisms established by integrated k199 and reviewed complete k205,
 without a raw traversal or custom witness engine.
 
 ## Done when
@@ -59,4 +59,6 @@ Qualify target-wide scope, closed UI reasons, manual denial guidance and native
 ownership beyond the separate UI wait. Native providers require corrected core
 UI/management disclosures and workspace-native-disclosures-v1; prior selection-
 aware hosts refuse before load. Further root population/readiness/long-metadata
-design with mandatory review/earned integration precedes this consumer.
+design is complete in k205; its mandatory review/earned integration precedes this
+consumer. K191 qualifies the indexed projection and two full Settings sweeps as
+well as source acquisition; actual native verdicts remain pending.

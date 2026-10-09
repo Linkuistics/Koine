@@ -3,8 +3,8 @@
 ## Goal
 
 Complete the retained permission, metadata, resource and compatibility design
-for Koine native locations/catalogues after the root native-discovery-k199 design
-and mandatory review have reconciled this node's charter.
+for Koine native locations/catalogues after native-discovery-k199 integration and
+complete native-discovery-k205 mandatory review have reconciled this node's charter.
 
 ## Done when
 
@@ -59,7 +59,8 @@ Qualify target-wide scope, closed UI reasons, manual denial guidance and native
 ownership beyond the separate UI wait. Native providers require corrected core
 UI/management disclosures and workspace-native-disclosures-v1; prior selection-
 aware hosts refuse before load. Further root population/readiness/long-metadata
-design with mandatory review/earned integration precedes this consumer.
+design is complete in k205; its mandatory review/earned integration precedes this
+consumer. G1–G11/N1–N8/V1–V13 actual qualification remains pending.
 
 ## Population construction handoff
 

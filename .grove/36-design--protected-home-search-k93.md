@@ -39,7 +39,7 @@ useful-catalogue loss.
 
 ## Finite native coverage decision subjects
 
-Use actual native-discovery acceptance V1–V10 plus independent controls: all ten
+Use actual native-discovery acceptance V1–V13 plus independent controls: all ten
 location pairs/account/domain values; twelve named launchers plus Safari/Finder,
 non-witness indexed/running breadth and per-copy identity/registration; all exposed
 settings panes/anchors with Network/Sound/Appearance/Displays, a non-witness pane,
@@ -55,8 +55,8 @@ trade-off. Root source declaration/dictionary data and prior 26.5 action/raw
 captures are no native pass; unavailable conditions remain pending. Removed raw
 home ordering/work omissions need no Koine decision and this leaf remains live.
 
-Consume the further root population/readiness/long-metadata producer and mandatory
-review/earned integration before native subjects. Disabled/excluded/rebuilding
+Consume complete native-discovery-k205 and its mandatory review/earned integration
+before native subjects. Disabled/excluded/rebuilding
 index controls remain honest UNKNOWN/PARTIAL. Required disclosure-capable hosts
 serve corrected core native UI/management text; prior selection-aware hosts refuse
 native candidates before load under workspace-native-disclosures-v1. These are

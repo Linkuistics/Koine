@@ -113,3 +113,20 @@ required. Settings has its own 131,072-attempt/8 MiB gate with two-map logical
 cost certificates; global overflow withholds items. G4/N4/N5/V12 cold/warm
 qualification remains pending. K209 remains live and owns complete
 reconciliation and mandatory whole-producer review before k7.
+
+## Complete producer handoff from k209
+
+K209 reconciles all three completed slices with spec/source/acceptance, complete
+SDL/examples/profiles, ADRs, requirements, Machine, guide/glossary/trace/views
+and live consumer charters. The finished producer remains native-discovery-k205;
+its root review must read the whole subtree and current artifact, independently
+of the earlier k199 review or future downstream reviews. Earned integration
+precedes k7 in the root sibling chain. Design checks supply no native pass.
+
+Construction and qualification still belong to the live downstream duties:
+k191 source/getter/event contact policy, k127 native-image/ownership/accounting,
+k123 normalization, then their reviews and k120 before k30 implementation planning.
+P1024/G10/N5/V11, Settings/G4/N4/N5/V12 and L1500/G11/N8/V13 require actual useful
+subjects and independent controls. K93 resolves concrete measured gaps once with
+Antony; pending subjects keep baseline open. Closing this design changes no
+access/posture/useful category or retained action-only compatibility.

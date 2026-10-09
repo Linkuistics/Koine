@@ -9,7 +9,7 @@ retained lifecycle and metadata consumers.
 
 ## Context
 
-Consume k196's revised agreement, reviewed root native-discovery-k199 and k191's
+Consume k196's revised agreement, integrated k199, reviewed complete k205 and k191's
 complete returned artifact. The session actually closing k126 names its run here.
 Read current native spec, source evidence, ADRs, guide/glossary/trace/views;
 previous raw-search mechanics are comparison input.
@@ -51,4 +51,7 @@ Qualify target-wide scope, closed UI reasons, manual denial guidance and native
 ownership beyond the separate UI wait. Native providers require corrected core
 UI/management disclosures and workspace-native-disclosures-v1; prior selection-
 aware hosts refuse before load. Further root population/readiness/long-metadata
-design with mandatory review/earned integration precedes this consumer.
+design is complete in k205; its mandatory review/earned integration precedes this
+consumer. Challenge exact indexed getter/source contact and both full Settings
+sweeps, while preserving G10/G11/N8/V11–V13 useful-source duties and unknown
+lazy/index association. Design checks establish no actual read safety.

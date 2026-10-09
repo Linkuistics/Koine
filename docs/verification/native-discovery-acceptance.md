@@ -10,16 +10,12 @@ the three agreed seams. Private source/clock/late-return substitutions test
 contracts inside them, never substitute for native acceptance. No experiment,
 permission request, launch or signing change was performed by this design.
 
-Review integration requires a further producer/review before k7 can consume the
-application-population bounds, cold/warm settings readiness or long-application
-metadata/handoff design. The application slice now defines a complete staged
-population, explicit cost certificates and P1024 below. Whole-producer review,
-actual populous qualification remains pending. Long metadata now has the fixed
-indexed-item construction and finite L1500 source-origin subject below; actual
-source safety/usefulness and selected-action qualification remain pending.
-Settings now has a two-sweep readiness-uncertainty contract and finite cold/warm
-qualification below; all actual verdicts remain pending. No affected row passes
-by inference or from response stability.
+The complete producer defines staged application populations and explicit cost
+certificates, Settings two-sweep readiness uncertainty, and indexed long metadata.
+Mandatory whole-producer review and any earned integration precede downstream
+consumption. P1024, V12 and L1500 below require actual populous, cold/warm and
+long-source/action qualification. All G1–G11, N1–N8 and V1–V13 verdicts remain
+pending; no row passes from declarations, design checks or response stability.
 
 ## Exact identities and posture
 

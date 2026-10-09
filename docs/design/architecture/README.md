@@ -8,13 +8,18 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-[Native sources → Preserve long indexed choices and the independent action refusal](index.html#diagram-native-long-applications)
-is the current construction question. A fixed projection on actual query items
-supplies reported type/name/identifier with lookup-only identity and public
-INDEXED_ITEM provenance. It supplies no current-plist/index-to-inode proof; choices
-stay UNKNOWN with null bundle flags. L1500 source/action qualification remains
-pending. Population admission and Settings uncertainty are unchanged context;
-complete reconciliation and whole-producer review remain live.
+The complete native discovery design is ready for mandatory whole-producer review
+before downstream consumption. Start with
+[Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract):
+application staging, Settings lazy uncertainty and indexed provenance share static
+authority, frozen publication and true-retirement ownership. The review must
+challenge the complete design; actual G/N/V qualification remains pending.
+
+[Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
+connects the three constructions and their finite P1024, V12 and L1500 useful-choice
+obligations. The focused population, Settings-readiness and long-application views
+remain relevant unchanged context. Design consistency is no native source, timing,
+resource-peak or binary acceptance.
 
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
 shows source/snapshot/image responsibility and the preserved action boundary.
@@ -30,10 +35,10 @@ review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [Native sources → Preserve long indexed choices and the independent action refusal](index.html#diagram-native-long-applications) — Added actual indexed-item facts, independent identity, two pathname boundaries and L1500 qualification.
-- [Native sources → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Changed seed metadata to source-labelled facts and added long-source qualification alongside P1024.
-- [Long application indexed metadata](../../specs/workspace-search.md#long-application-indexed-metadata) — Defined public provenance, UNKNOWN/null unsupported facts and stale-association limits without a new reader.
-- [Long application source subject](../../verification/native-discovery-acceptance.md#long-application-source-subject) — Added five boundary copies, two short competitors and real indexed tuple/action-refusal witnesses; every native verdict remains pending.
+- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Connected the combined uncertainty contract to independent P1024, V12 and L1500 usefulness witnesses.
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Added indexed L1500 and process-only preparation/two-sweep Settings uncertainty to the source overview.
+- [Native discovery and client-owned search](../../specs/workspace-search.md#native-discovery-and-client-owned-search) — Reconciled the complete design handoff while retaining mandatory review and native qualification.
+- [Operation-to-capability trace](../../specs/workflow-providers.md#operation-to-capability-trace) — Added the selected application's named-open route alongside constrained launch and Finder reveal.
 
 The [agreed settings source](index.html#diagram-native-settings-decision) is
 unchanged requirements context. The other eight search views and

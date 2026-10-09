@@ -7,7 +7,8 @@ publication/cleanup after the reviewed native permission contract.
 
 ## Context
 
-Consume k196, reviewed root native-discovery-k199 and k191/k193/earned integration.
+Consume k196, integrated k199, reviewed complete native-discovery-k205 and
+k191/k193/earned integration.
 The returned root design reconciles this charter to its actual mechanisms first.
 Raw filesystem search belongs to clients; no find child, command-record stream
 or traversal schedule is selected. Existing action-only source/binary guards

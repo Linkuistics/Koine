@@ -1,24 +1,26 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. Population admission, Settings uncertainty and indexed long metadata are designed. Complete reconciliation, whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Complete native discovery design for macOS 26+ Apple Silicon. Population admission, Settings lazy uncertainty and indexed long metadata are reconciled; mandatory whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
-    "title": "Long application choices from actual indexed items",
-    "status": "Long slice designed; complete reconciliation, review and native qualification pending",
-    "summary": "Fixed returned-item type/name/identifier facts plus lookup-only identity avoid an unsupported pathname reader. Public INDEXED_ITEM provenance is no current-plist/index-to-inode proof; choices stay UNKNOWN with null bundle flags. L1500 requires real long indexed tuples and unchanged selected-action refusal. The known-plist threshold is 1,004 bytes; the action threshold stays 1,024.",
+    "title": "Complete native discovery contract before consumption",
+    "status": "Designed; mandatory review and native qualification pending",
+    "summary": "Application full staging, Settings full-map uncertainty and indexed long metadata form one contract under static authority and true-return ownership. P1024, V12 and L1500 require independent actual useful-choice qualification. Local UI-only consent, disclosure-capable hosts and the retained four-action contract remain binding.",
     "diagramIds": [
-      "native-long-applications",
-      "native-application-population",
       "native-discovery-contract",
-      "native-settings-readiness"
+      "native-discovery-sources",
+      "native-application-population",
+      "native-settings-readiness",
+      "native-long-applications",
+      "native-discovery-lifecycle"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-long-applications",
-        "summary": "Added fixed actual-item metadata, separate pathname boundaries, public uncertainty and independent L1500 source/action qualification."
+        "id": "native-discovery-contract",
+        "summary": "Connected the combined uncertainty contract to independent P1024, V12 and L1500 usefulness witnesses."
       },
       {
-        "id": "native-application-population",
-        "summary": "Changed seed metadata to source-labelled facts and added L1500 alongside populous qualification."
+        "id": "native-discovery-sources",
+        "summary": "Added indexed L1500 and process-only preparation/two-sweep Settings uncertainty to the source overview."
       }
     ]
   },
@@ -91,7 +93,7 @@
       "renderer": "svg",
       "source": "native-discovery-contract.d2",
       "rendered": "native-discovery-contract.svg",
-      "caption": "Native-image components in one Koine process. Native providers require workspace-native-disclosures-v1 and corrected core native UI/management disclosures; prior selection-aware hosts refuse before load. Catalogue seams require workspace:read, background preparation workspace:control, existing actions and selected reveal both controls. Only a human action in Koine’s local explaining UI reaches the private consent seam. Principal routing and private action-adapter construction have source and image guards. Actual N/G/V remains pending."
+      "caption": "Component view within one resident process. The complete design combines application whole-population staging, Settings PARTIAL/UNKNOWN lazy observations and indexed long metadata with explicit provenance. All routes retain static authority, frozen publication and true native-return ownership. Production action adapters stay private to the action image; the principal has its own guard. Only Koine’s explaining UI reaches conditional target-wide consent. Independent P1024, V12 and L1500 useful-choice witnesses, all other G/N/V outcomes and mandatory whole-producer review remain pending."
     },
     {
       "id": "native-settings-flow",
@@ -127,7 +129,7 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Applications stage a complete bounded population and preserve helpers for client filtering; global overflow is FAILED/null. The actual populous subject, exact read policy, whole-producer review, cold/warm Settings qualification and long metadata remain pending. Source declarations prove no native usefulness."
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Applications stage the complete bounded population; global overflow is FAILED/null. Indexed long tuples retain UNKNOWN installation state and null bundle flags, without current-plist binding. Settings preparation is process-only; two read sweeps detect changes while lazy completeness remains UNKNOWN. P1024, V12 and L1500 qualify actual usefulness. Whole-producer review and all native verdicts remain pending; source declarations prove no native pass."
     },
     {
       "id": "native-application-population",
@@ -136,7 +138,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. Source-labelled metadata preserves the long indexed branch; P1024 and L1500 need actual independent qualification. No native enumeration, timing, UI fact or memory-peak pass follows from this design. Settings qualification, complete reconciliation and whole-producer review remain pending."
+      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. Source-labelled metadata preserves the long indexed branch; P1024 and L1500 need actual independent qualification. No native enumeration, timing, UI fact or memory-peak pass follows from this design. Settings qualification and whole-producer review remain pending."
     },
     {
       "id": "native-settings-decision",

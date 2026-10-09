@@ -1,14 +1,13 @@
 # Native discovery and client-owned search
 
 **Designed; mandatory review, implementation and native acceptance pending.**
-The application population slice now has explicit admission and cost certificates;
-its whole-producer review and actual populous native qualification remain pending.
-The Settings slice now defines bounded full-response comparison and honest lazy
-readiness uncertainty; its cold/warm native qualification remains pending.
-Long-application metadata now has an indexed-item construction and finite L1500
-qualification subject; its actual native support remains pending. The complete
-design is not approved implementation input until
-all slices and mandatory review finish. Native acceptance stays pending.
+The complete design includes application population admission and cost certificates,
+bounded Settings full-response comparison with honest lazy-readiness uncertainty,
+and indexed long-application metadata with explicit provenance. Mandatory review
+and any earned reconciliation precede implementation. P1024 populous usefulness,
+V12 cold/warm Settings usefulness and L1500 long-source/action qualification remain
+pending, alongside the other finite native subjects. Design consistency establishes
+no actual source, timing, resource-peak or binary behavior.
 Koine's local explaining UI alone initiates Automation consent. Native provider
 releases require `workspace-native-disclosures-v1`; prior hosts refuse them
 before code loads rather than serve them under the old grant wording.

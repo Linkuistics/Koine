@@ -3,12 +3,13 @@
 ## Goal
 
 Complete the applicable prompt-free native target access/protection contract
-of k126 using the reviewed native-discovery-k199 mechanisms.
+of k126 using integrated k199 and reviewed complete native-discovery-k205 mechanisms.
 
 ## Context
 
 Consume search-tool-permissions-k196 and the returned root native-discovery-k199
-design with mandatory review/earned integration before this leaf. The current
+design/integration and complete native-discovery-k205 mandatory review/earned
+integration before this leaf. The current
 requirements and client-owned raw-search ADR govern; former find/root/witness
 proposals are comparison input. Existing actions and G/N/V seams remain.
 The root design must reconcile this charter to actual sources before execution.

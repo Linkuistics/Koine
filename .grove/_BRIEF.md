@@ -270,8 +270,9 @@ Foundation's ten value-only location pairs; fixed indexed-local application
 breadth with running/per-observed-identifier registration and per-copy identity;
 all runtime-exposed modern Settings panes/anchors using validated running targets
 and exact no-prompt events. Queries need workspace read. Explicit background
-prepare and conditional exact-event Automation setup need workspace control;
-selected Settings reveal needs both controls. Result object coordinates never
+prepare needs workspace control; conditional Automation setup is human local
+UI-only, through the private local-console seam with no bearer authority.
+Selected Settings reveal needs both controls. Result object coordinates never
 cross those static authority sets. No read invokes setup/launch/reveal.
 
 Workspace native release 1.2.0/schema 1.1.0 and update 1.3.0 use distinct complete
@@ -290,42 +291,47 @@ home/order/work repair, implicit pruning or relabelled native acceptance follows
 The native spec/source report/acceptance, SDL/examples/profiles and architecture
 viewer hold the concrete handoff; frozen design checks passed without a native pass.
 
-## Application population slice from k206
+## Complete native design handoff from k205
 
-Native-discovery-k205 is now a node with completed population, Settings readiness
-and long-metadata designs, then live complete reconciliation
-k209. Consume only after k209 closes k205 and cuts mandatory root review/earned
-integration before k7. Population admission stages all bounded sources, shares
-once-per-ID ordered registration outcomes and fails with null items on global
-owned-limit/deadline exhaustion, never a native-order prefix. Optional native
-presentation facts support client filtering without helper suppression. G10/N5/
-V11 require actual P1024 usefulness and accounting; every native verdict remains
-pending. K209 owns final producer reconciliation and review Creator/cascade.
+Native-discovery-k209 reconciles k206/k207/k208 and closes native-discovery-k205
+as the complete producer. Its mandatory root review-design and any earned
+integration precede app-and-file-search-k7. Consume the full current spec/source/
+finite acceptance/SDL/profiles and views after that review, never an isolated
+slice. The review names k205; this closing session names its actual run there.
+Downstream k126/k193, k127's review, k123's review and whole-k19 review k120 retain
+their independent duties and Creator ownership on their own future completion.
 
-## Long metadata slice from k208
+Application admission stages all bounded sources, shares once-per-ID ordered
+registration outcomes and publishes FAILED/null on global owned-limit/deadline
+exhaustion, never a native-order prefix. Optional presentation facts support
+client filtering without helper suppression. G10/N5/V11 require actual P1024
+usefulness and accounting, including the native baseline and independent observers.
 
-K208 selects a fixed four-attribute projection from actual indexed items, with
-positive native type plus before/after directory identity, public metadataSource
-INDEXED_ITEM and honest index-to-inode/current-plist association limits. Indexed
+Two full ID-associated Settings properties/anchor sweeps detect changes without
+certifying lazy health. Preparation RUNNING is process-only; positive choices
+remain PARTIAL/UNKNOWN, empty panes UNKNOWN/null and empty anchors null. Every
+exposed destination and Network/Sound/Appearance/Displays remains required.
+G4/N4/N5/V12 need finite pre-visit cold and warm useful inventory, independent
+destination/foreground witnesses and true-return ownership. Global overflow
+withholds items. Its 90,304-attempt/6,029,312-byte logical certificate must fit the
+actual adapter under 131,072 attempts/8 MiB; no latency/native peak follows.
+
+The fixed four-attribute projection from actual indexed items supplies reported
+type/name/identifier plus before/after directory identity, public INDEXED_ITEM
+provenance and honest index-to-inode/current-plist association limits. Indexed
 choices remain UNKNOWN with null bundle flags. The 1,004-byte known-plist and
-1,024-byte action boundaries remain distinct; copy spelling/identifier is retained
-without a new reader, alias trick, consent/signing/access posture or useful loss.
-G11/N8/V13 require actual L1500 tuples from five boundary signed copies plus two
-short competitors, with independent type/identity/metadata and unchanged selected
-launch/named-open/reveal refusal. Disk/client/controlled provenance is no pass.
-Revised shallow certificates are 989,240 calls and 6,816,000 gross-charge bytes
-under unchanged gates, including counted indexed tree values. All native outcomes
-remain pending; k209 closes the complete producer and cuts mandatory review before
-k7, and k93 resolves one concrete actual source/access gap if qualification fails.
+1,024-byte action boundaries remain distinct. G11/N8/V13 require actual L1500
+tuples from five signed boundary copies plus two short competitors, independent
+type/identity/metadata and unchanged selected launch/named-open/reveal refusal.
+Disk/client/controlled provenance is no source pass. Revised shallow certificates
+are 989,240 attempts/6,816,000 gross-charge bytes, under 1,048,576 attempts/8 MiB;
+N5/N8 must validate actual calls, duplicate copies and cleanup term by term.
 
-## Settings readiness slice from k207
-
-Native-discovery-k205 now also defines bounded two-sweep properties/anchor
-comparison without a lazy-health claim. RUNNING is process-only; positive
-choices retain PARTIAL/UNKNOWN coverage, empty panes UNKNOWN/null and empty
-anchors null. All exposed destinations and Network/Sound/Appearance/Displays
-remain required. V12 performs finite independent pre-visit cold and warm
-qualification, including later anchor growth and true foreground witnesses.
-Settings owned-call/copy accounting is explicit; global overflow is no useful
-pass. All native verdicts remain pending. K209 and mandatory whole-producer
-review/earned integration still precede any k7 implementation.
+All G1–G11/N1–N8/V1–V13 native verdicts remain pending. K191 owns concrete source/
+getter/contact and exact-event access construction, k127 owner/image/accounting,
+k123 normalization, and k30 subsequent implementation/actual acceptance planning.
+K93 resolves one concrete actual useful-source/access/deadline gap with Antony;
+required unavailable subjects remain live before baseline. This close authorizes
+no new reader, helper, consent/signing/access posture or useful loss. UI-only
+target-wide Automation, disclosure-capable host refusal, four-action guards and
+independently retained action-only 1.0.0/1.0.1/1.1.0 evidence remain binding.

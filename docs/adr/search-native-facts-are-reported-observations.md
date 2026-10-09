@@ -6,8 +6,9 @@ installation and a supported negative observation; a nil identifier or an
 empty, malformed, incomplete, blocked or conflicting service result alone
 establishes no negative fact. The
 [native catalogue design](../specs/workspace-search.md#application-sources-and-native-facts) defines exact
-positive, negative and unknown branches for error-bearing registration and
-preferred-location contradiction checks; actual runtime qualification remains pending.
+positive, negative and unknown branches: action-equivalent ordered list plus
+preferred-only eligibility, with separate conservative error-bearing negatives.
+Actual runtime qualification remains pending.
 Application choices also carry explicit nullable agent/background declarations
 and associated running-policy observations for client filtering; unknown flags
 are not false. The [population contract](../specs/workspace-search.md#application-population-admission)

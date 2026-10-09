@@ -7,7 +7,8 @@ design into independently useful slices through the agreed three seams.
 
 ## Context
 
-Consume k196, reviewed root native-discovery-k199, applicable k191/k193/k127/k123
+Consume k196, integrated k199, reviewed complete native-discovery-k205,
+applicable k191/k193/k127/k123
 reviews/integrations and k120 whole-node review/integration. Only the reconciled
 native spec/API/source/acceptance contract binds. Existing launch/open/reveal
 release/schema 1.0.1 and independently retained 1.0.0 evidence remain separate.
@@ -39,11 +40,12 @@ judgment and keep private native controls inside the agreed product seams.
 
 ## Concrete implementation input after the required reviews
 
-Use reviewed native SDL/spec, complete bundled/update/selection-refusal/disclosure-refusal profiles and G1–G9,
-N1–N7, V1–V10/serviceability subjects, including disabled/excluded/rebuilding
-indexed breadth. Consume the further root producer/review for population budgets,
-cold/warm settings readiness and long-application metadata before cutting those
-implementation slices. Cut vertical working slices for the ten
+Use reviewed native SDL/spec, complete bundled/update/selection-refusal/disclosure-refusal
+profiles and G1–G11, N1–N8, V1–V13/serviceability subjects, including
+disabled/excluded/rebuilding indexed breadth. Complete k205 and its mandatory
+review settle population admission, cold/warm uncertainty and indexed long
+metadata construction before those implementation slices. Cut vertical working
+slices for the ten
 Foundation location pairs, real indexed/running/registration breadth/per-copy
 metadata, effect-free settings runtime reads, explicit background preparation,
 earned conditional local-UI-only exact-event setup and selected authorized reveal.

@@ -1854,7 +1854,8 @@ seconds. RUNNING is process-only; stable positive choices remain PARTIAL with
 UNKNOWN lazy completeness, empty panes UNKNOWN/null and empty anchors null.
 G4/N4/N5/V12 qualify exact event construction, cost and independent cold/warm
 usefulness; all exposed choices remain required. No current native conformance
-pass follows, and the incomplete producer is not implementation input.
+pass follows. The complete design requires mandatory whole-producer review and
+any earned reconciliation before becoming implementation input.
 
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,

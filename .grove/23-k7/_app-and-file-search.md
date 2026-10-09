@@ -30,7 +30,8 @@ Existing explicit launch/open/reveal actions retain their independent contracts.
 ## Decomposition
 
 Consume search-tool-permissions-k196's revised agreement and the returned root
-native-discovery-k199 design with its mandatory review/earned integration first.
+native-discovery-k199 design/review/integration, then complete native-discovery-k205
+and its mandatory root review/earned integration first.
 That design reconciles k19/k126/k191/k193, k127, k123, k120, k30 and k93 to
 actual native obligations before those consumers execute. Existing reviews remain
 live and read their reconciled producers; nothing is pruned or native-passed
@@ -60,9 +61,10 @@ unproved. Exact retained action contracts and long-location handoff limits bind.
 
 Consume docs/specs/workspace-search.md and docs/verification/native-discovery-acceptance.md
 only after native-discovery-k199's mandatory review/earned integration AND the
-further producer/review resolving population budgets, cold/warm settings readiness
-and long-application metadata (review N4/N7/N8). Its provisional claims do not
-authorize implementation or accepted workflow loss. The design
+complete native-discovery-k205 producer's mandatory review/earned integration.
+K206/k207/k208 and k209 supply population budgets, cold/warm Settings uncertainty
+and long indexed metadata as one reconciled design, with actual qualification
+still pending. No design check authorizes accepted workflow loss. The design
 selects Foundation value-only ten-pair lookup; fixed indexed-local app breadth,
 running observations and error-bearing registration supplements; fixed-target
 core/getd runtime panes/anchors. Public preparation and reveal have separate
@@ -91,7 +93,7 @@ staging, shared ordered registration work, explicit nullable presentation facts,
 null items on global overflow, and actual P1024 useful choices plus independent
 serviceability. No sparse result or honest overflow is a native usefulness pass.
 Cold/warm Settings and long metadata native qualification remain pending;
-complete-producer reconciliation/review remains live root design work.
+mandatory whole-producer review remains the root handoff before consumption.
 
 ## Long application construction handoff
 

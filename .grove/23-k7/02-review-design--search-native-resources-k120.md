@@ -10,7 +10,8 @@ serviceability after k19's complete native discovery reconciliation.
 ## Context
 
 Review the commit closing app-and-file-search-k19 after k196, reviewed root
-native-discovery-k199 and applicable k191/k193/k127/k123 reviews/integrations.
+native-discovery-k199, reviewed complete native-discovery-k205 and applicable
+k191/k193/k127/k123 reviews/integrations.
 This leaf remains beside k19 before k30; the session closing k19 names its actual
 Creator run here. Read the complete native API/sources, ADRs, examples,
 guide/glossary/trace/views and source/binary call-path contract. Old raw-search
@@ -55,4 +56,8 @@ Qualify target-wide scope, closed UI reasons, manual denial guidance and native
 ownership beyond the separate UI wait. Native providers require corrected core
 UI/management disclosures and workspace-native-disclosures-v1; prior selection-
 aware hosts refuse before load. Further root population/readiness/long-metadata
-design with mandatory review/earned integration precedes this consumer.
+design is complete in k205; its mandatory review/earned integration precedes this
+consumer. Review k19's construction against G1–G11/N1–N8/V1–V13, including actual
+recipe/copy accounting, P1024 usefulness, V12 cold/warm inventory and L1500 native
+provenance/selected actions. Design arithmetic and historical action evidence
+supply no native pass; k19's closing session alone owns Creator here.

@@ -466,13 +466,13 @@ required ordinary area leaves a concrete gap to resolve, never permission to
 shrink the category or accept known missing choices. Runtime inventory and
 navigation have not been measured.
 
-K202 must qualify the actual fixed target, exact read events, no-prompt preflight/
-send behavior and unchanged versus consent-dependent host posture. It must also
-design complete preparation/setup/reveal authority from the selected native
-primitives and parameters, target/readiness validation, foreground behavior,
-blocking/late-return ownership and independent serviceability. Existing native
-race/application-reaction limits remain binding; source analysis supplies no
-stronger guarantee.
+The complete design specifies fixed-target validation, exact events, no-prompt
+preflight/send, preparation/setup/reveal authority and parameters, foreground
+expectations, bounded ownership and independent serviceability. Actual adapter
+construction and signed acceptance must qualify those mechanisms and unchanged
+versus consent-dependent host posture through the declared N/V subjects. Source
+analysis and design sessions perform no native qualification. Existing native
+race/application-reaction limits remain binding.
 
 ## Contract and acceptance handoff
 
@@ -509,7 +509,8 @@ custom worker, global materialization policy or descriptor-limit change is selec
 
 ## Reconciled work boundary
 
-The root native producer supplies coherent design and mandatory review before
+The complete root native producer supplies the reconciled population, Settings
+readiness and indexed long-metadata design for mandatory review before
 app-and-file-search. Retained permission work qualifies exact source/individual
 access rules and conditional setup posture; resource work finalizes real native
 owner retirement and action/discovery image boundaries; classification finalizes

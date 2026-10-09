@@ -7,7 +7,8 @@ locations for the mechanisms established by reviewed native-discovery-k199.
 
 ## Context
 
-Consume k196, reviewed root native-discovery-k199, k191/k193 and reviewed k127.
+Consume k196, integrated k199, reviewed complete native-discovery-k205, k191/k193
+and reviewed k127.
 The returned root design reconciles this charter to actual named sources first.
 Existing action-only release/schema 1.0.1, retained 1.0.0 compatibility and the
 accepted v1 action handoff refusal remain independent.
@@ -50,8 +51,9 @@ error-bearing registration negatives; no empty/nil/capped/refused
 negative. Long representable identified locations stay visible with unknown
 unsupported metadata; existing action handoff/resolution is independent.
 
-Consume the further root producer/review resolving N4/N7/N8 before treating
-population limits, cold/warm completeness or long-application metadata as fixed.
+Consume complete k205's mandatory review/earned integration before treating
+population admission, cold/warm uncertainty or long indexed metadata as fixed.
+Their construction is designed; actual G/N/V qualification remains pending.
 Pair same-copy catalogue/action outcomes including the preferred-only case, and
 keep empty/contradicted INDEXED_APPS UNKNOWN/PARTIAL with diagnostics even when
 registration seeds succeed. Carry the disabled/excluded/rebuilding V9 subject.
