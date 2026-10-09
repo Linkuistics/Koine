@@ -11,7 +11,8 @@ after its bounded source analysis and human settings source/posture decision.
 Read the entire parent Done when, k196, native-discovery-sources-k200 and the
 actual native-settings-source-k201 decision. Consume any earned requirements
 review/integration before this leaf. docs/verification/native-discovery-sources.md
-is source/SDK analysis, not a selected backend or native pass. Its SDK is 27.0,
+contains source/SDK analysis and the agreed settings direction, not a qualified
+backend or native pass. Its SDK is 27.0,
 its OS source layout is 26.6.2, and the older VM comparisons are 26.5; do not
 conflate those subjects or infer supported-matrix acceptance.
 
@@ -22,6 +23,22 @@ conflate those subjects or infer supported-matrix acceptance.
   per-identifier breadth/identity distinction, source/health limits and useful
   witnesses. No arbitrary launcher subset, settings witness subset, unsupported
   all-disk completeness or silent raw traversal fallback.
+- Carry k201's app-supplied settings scripting choice, unchanged signing posture
+  first, and permission to design explicit Automation setup only if useful
+  discovery needs it. Specify actual fixed-target/exact-event qualification,
+  no-prompt preflight/send and conditional entitlement/usage-description/setup
+  subjects without claiming an event needs or obtains consent. No private
+  sidebar fallback or category reduction is authorized.
+- Define explicit background catalogue preparation that launches System Settings
+  if stopped, requests no activation/reveal and does not reactivate a running
+  target. Keep ordinary reads effect-free and honest for stopped/refused targets.
+  The existing launcher requests activation and retains its independent contract.
+  Allocate complete launch/read/setup authority from actual effects, including
+  read authority if preparation publishes catalogue data; define readiness,
+  target validation, failure/late outcomes and independent foreground witnesses.
+  Return every runtime-exposed pane with Network/Sound/Appearance/Displays
+  witnesses, exposed anchors and honest hardware/account availability. Missing
+  required ordinary areas remain concrete unmet work, not accepted omissions.
 - Replace workspace-search's retained raw proposal with the complete native
   GraphQL input/output/validation/authority/revocation/publication contract;
   reconcile SDL/examples, guide, Machine/workflow trace, ADRs, glossary,

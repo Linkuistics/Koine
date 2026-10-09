@@ -1,14 +1,17 @@
 # Native discovery source boundary
 
-**Source analysis; contract design and native acceptance remain pending.**
+**Source analysis and agreed settings direction; contract design and native
+acceptance remain pending.**
 The [v1 ownership agreement](../adr/raw-filesystem-search-belongs-to-clients.md)
 requires OS-known starting locations and useful application/modern System
 Settings catalogues, with prompt-free, non-hydrating reads. This analysis
-establishes candidate sources and one concrete settings decision. It selects
-no backend, consent, signing change, schema or reduced useful inventory.
+establishes candidate sources. The focused human requirements decision below
+selects the preferred settings route and permits conditional explicit setup;
+it qualifies no backend or native event and implements no signing change,
+consent operation, schema or reduced useful inventory.
 
 Start with [Native sources → What each source can establish](../design/architecture/index.html#diagram-native-discovery-sources)
-and [System Settings → Choose the source and permission boundary](../design/architecture/index.html#diagram-native-settings-decision).
+and [System Settings → Agreed source and permission boundary](../design/architecture/index.html#diagram-native-settings-decision).
 The former raw-search [SDL](../design/workspace-search-schema.graphql),
 [examples](../design/workspace-search-operations.graphql) and
 [measurements](search-tooling.md) remain comparison material. They are not a
@@ -203,29 +206,47 @@ witness. The existing HTTP(S)-only `workspaceOpenURL` cannot accept this shape;
 `workspaceOpenPath` cannot accept a pane ID. Do not widen their validation or
 relabel a settings action as an already accepted operation.
 
-### Concrete trade-off to settle
+### Agreed settings source and preparation
 
-**Recommend an explicit System Settings Automation path**, retaining prompt-free
-reads against an already-running target allowed for the exact event. Permit
-explicit setup only if the unchanged-posture/no-prompt route needs consent;
-do not request or add unused permission. It is the examined source
-whose app-supplied interface provides both named objects and a reveal command,
-instead of deriving destinations from undocumented implementation filenames.
-If setup is needed, its cost is a new host entitlement/usage key and an explicitly
-authorized consent path. Stopped targets and refused events remain unavailable
-or blocked. This is a proposal requiring Antony's decision, not approved work.
-Actual modern-pane usefulness and no-dialog/no-hydration still need finite V
-acceptance. The dictionary could return too little; that would reopen the
-category decision, not justify accepting known missing required choices.
+Antony agreed to **app-supplied scripting**, trying unchanged signing posture
+and exact-event-allowed, no-prompt reads first. If useful discovery requires
+Automation authorization, final design may introduce the necessary host
+entitlement/usage description and an explicit consent/setup path. Add no unused
+permission. This permits design of that conditional path; it establishes neither
+that any exact event requires consent nor that permission can be obtained.
 
-The alternatives are to explicitly permit a macOS-version-bound sidebar/deep-link
-adapter with private-format/conditional-availability limits, or to explicitly
-narrow/defer the settings category to individually documented destinations.
-The latter changes the agreed useful catalogue and cannot be inferred by an
-AFK design session. If neither alternative is acceptable, the native settings
-obligation remains live; no unsupported all-pane guarantee is manufactured.
-The focused requirements handoff must settle the preferred route, signing and
-consent posture, useful-category minimum and stopped-app behavior together.
+The app-supplied interface supplies named objects and a reveal command rather
+than deriving destinations from undocumented implementation filenames. The
+private, macOS-version-bound sidebar/deep-link alternative and narrowing/deferring
+the useful category to individually documented destinations were not selected.
+Their format, conditional-coverage and useful-category costs explain the choice;
+they are not silent fallbacks or pruned obligations.
+
+Antony requires launching System Settings if stopped, in the background while
+preserving the foreground application. Final design therefore defines a separate
+explicit, control-authorized catalogue-preparation operation. It requests no
+activation or reveal and does not reactivate an already-running target. The
+existing launcher requests activation and cannot silently acquire this different
+contract. Ordinary reads still require an already-running exact-event-allowed
+target; they never launch, activate, reveal, request consent or change settings.
+Stopped/refused read targets remain honestly unavailable/blocked. Preparation
+does not implicitly request Automation consent; any necessary setup is separate.
+
+The agreed useful minimum is every pane exposed by the app's runtime interface,
+with Network, Sound, Appearance and Displays required as acceptance witnesses,
+not a hard-coded inventory. Exposed anchors support nested destinations;
+hardware/account-conditional choices retain honest availability. A missing
+required ordinary area leaves a concrete gap to resolve, never permission to
+shrink the category or accept known missing choices. Runtime inventory and
+navigation have not been measured.
+
+K202 must qualify the actual fixed target, exact read events, no-prompt preflight/
+send behavior and unchanged versus consent-dependent host posture. It must also
+design complete preparation/setup/reveal authority from the selected native
+primitives and parameters, target/readiness validation, foreground behavior,
+blocking/late-return ownership and independent serviceability. Existing native
+race/application-reaction limits remain binding; source analysis supplies no
+stronger guarantee.
 
 ## Contract and acceptance handoff
 
@@ -260,6 +281,12 @@ decision and source qualification contract are coherent. In particular:
   without selecting those effects, no arbitrary AppleScript, scheme or target,
   and no automatic replay. Existing launch/open/reveal and long-location
   resolution/receipt contracts remain independently binding.
+- Define the separately authorized background preparation action for a stopped
+  System Settings target, including refusal under a read-only or revoked grant,
+  already-running behavior, bounded readiness and failed/ambiguous late outcomes.
+  Allocate all actual effects before dispatch; neither preparation nor ordinary
+  reads may implicitly invoke consent setup. Verify the conditional explicit
+  setup path only if the exact events need it, without expanding ordinary reads.
 - Define exact new provider release/schema/profile/update/refusal subjects only
   after the chosen API/signing posture is known. Independently retained action
   releases/schemas 1.0.0 and 1.0.1 stay unchanged evidence. Current per-user
@@ -288,11 +315,18 @@ blocking events with independent listener, grant-store and authorized-action
 outcomes. Missing native conditions/fixtures remain pending. Prior raw probe
 results and action-only captures supply no pass for these subjects.
 
+Settings preparation additionally needs a stopped-target effect-free read,
+denied/revoked preparation grants, cold background launch with another application
+frontmost, and an already-running target without reactivation. Independently
+observe foreground and readiness, including failure/ambiguous late return;
+pair any setup branch with exact-event authorization evidence and explicit-only
+consent. These are cases within the agreed G/N/V seams, not a new proof chain.
+
 ## Reconciled work boundary
 
-The native-discovery producer first completes this source analysis, then the
-focused human settings decision, then the API/resource/acceptance/artifact
-design. Its mandatory whole-producer review and earned integration precede
+The native-discovery producer has completed bounded source analysis and the
+focused human settings direction. Final API/resource/acceptance/artifact
+design remains k202's work. Its mandatory whole-producer review and earned integration precede
 app-and-file-search consumption. Until then the current spec and raw SDL remain
 explicitly pending/comparison rather than a fabricated native contract.
 

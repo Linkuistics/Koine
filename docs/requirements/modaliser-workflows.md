@@ -64,6 +64,35 @@ there is no older-OS or legacy preference-pane compatibility requirement. The
 returned design establishes which supported native destinations macOS 26+
 actually exposes and reports any incomplete or unavailable category honestly.
 
+Modern System Settings discovery uses the app-supplied scripting interface,
+subject to actual-source qualification. Try unchanged signing posture and
+exact-event-allowed, no-prompt reads first. If useful discovery requires
+Automation authorization, the design may introduce the necessary host
+entitlement/usage description and a separate explicit consent/setup operation;
+introduce no unused permission. This agreement proves neither that an event
+requires consent nor that authorization can be obtained. The
+[source boundary](../verification/native-discovery-sources.md#agreed-settings-source-and-preparation)
+records the source/posture trade-off and its remaining qualification work.
+
+Clients must be able to explicitly prepare the settings catalogue by launching
+System Settings in the background when stopped, preserving the foreground
+application. Preparation requests no activation or reveal and does not
+reactivate an already-running target. It requires complete effect authority
+defined by returned design. Ordinary reads remain separate: they never launch,
+activate, reveal, request consent or change settings. A stopped or refused
+target has an honest unavailable/blocked read outcome; a read-only caller
+cannot acquire preparation or setup authority. Existing launch/open/reveal
+actions retain their independent contracts and authority.
+
+The useful settings category returns every pane exposed by the app's runtime
+interface. Network, Sound, Appearance and Displays are required acceptance
+witnesses, not a hard-coded inventory. Exposed anchors must support nested
+destinations, with honest hardware/account-conditional availability. A missing
+required ordinary area remains a concrete unmet obligation; it cannot be
+accepted by silently narrowing the category. Neither a private sidebar adapter
+nor a reduction to individually documented destinations is selected. Actual
+native usefulness and selected destinations remain pending acceptance.
+
 The returned design must settle the native catalogue API and each catalogue's
 sources, availability and completeness. "All apps" is an intended useful native
 discovery result, not permission to claim an exhaustive all-disk inventory from
@@ -340,6 +369,16 @@ discovery. Signed-host reads need independent dialog/hydration controls; existin
 selected actions retain their own authority and native receipt checks. These
 expectations are agreed through the existing three seams; unavailable native
 subjects remain pending.
+
+For the chosen settings route, those same seams cover an effect-free stopped-
+target read and explicit background preparation, denied/revoked preparation
+authority, an already-running target without reactivation, exact-event refusal
+and any conditional explicit Automation setup. Signed-VM witnesses must pair
+the new preparation action with independent foreground observation, reads with
+dialog/hydration controls, and actual pane/anchor selections with visible
+destinations. The required ordinary areas and applicable hardware/account cases
+remain useful-category witnesses, not fabricated native passes. Returned design
+defines the exact authority, readiness, failure and late-outcome contracts.
 
 Antony agreed to reuse the three seams in the
 [desktop contract](../specs/machine.md#test-seams-and-acceptance):

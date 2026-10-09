@@ -86,12 +86,16 @@ appropriate selected actions and independent dialog/hydration controls. These
 expectations are agreed. Native source/binary/serviceability acceptance remains
 pending; raw home ordering/work loss is client-owned, not a Koine feature.
 
-native-discovery-k199 is now a node: source analysis k200 found the modern
-System Settings dictionary and the distinct private sidebar formats, then
-externalized the precise source/posture/useful-category decision before final
-contract design. Exact pane events may be permitted without new consent; that
-has not been tested. Depending on explicit Automation setup, accepting private
-formats or narrowing the useful settings category requires Antony's answer.
+native-discovery-k199 is a node: source analysis k200 found the modern
+System Settings dictionary and the distinct private sidebar formats. In k201,
+Antony selected app-supplied scripting, unchanged signing posture first, and
+permission to design explicit Automation setup only if useful discovery needs
+it. He requires explicit background preparation that launches a stopped target,
+while ordinary reads remain effect-free. Return all runtime-exposed panes, with
+Network/Sound/Appearance/Displays witnesses, exposed anchors and honest
+conditional availability. Private-sidebar and narrower-category alternatives
+were not selected. Exact events, foreground behavior and usefulness remain
+unqualified; k202 completes the contract and finite acceptance design.
 The whole producer remains live and finishes all original reconciliation duties
 before its mandatory review/earned integration and k7. Source analysis is no
 native pass and closes no downstream node.

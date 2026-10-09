@@ -1,10 +1,10 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Koine native discovery source analysis and the agreed v1 ownership boundary. Locations and application sources are candidates; modern System Settings needs an explicit source/posture decision before final API design. Other search views preserve comparison material. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable.",
+  "intro": "Koine native discovery source analysis and the agreed v1 ownership boundary. Locations and application sources remain candidates; the preferred System Settings source, conditional setup and background preparation are agreed. Final API design and native acceptance remain pending. Other search views preserve comparison material. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable.",
   "discussion": {
     "title": "Native discovery sources and the System Settings decision",
-    "status": "Source analysis complete; settings decision, contract and native acceptance pending",
-    "summary": "Public Foundation location values and indexed/running/registration application sources have bounded capabilities. Modern System Settings exposes a shipped scripting dictionary; using it would need an explicit Automation/signing/setup decision. Sidebar data uses undocumented formats and conditional entries; individual SDK destinations cannot silently replace the useful category. Recommend explicitly authorized scripting with prompt-free reads of an already-running target. This is a proposal, not source selection or a native pass. The complete producer and mandatory review remain before consumption.",
+    "status": "Settings requirements agreed; contract and native acceptance pending",
+    "summary": "Public Foundation location values and indexed/running/registration application sources have bounded capabilities. Antony selected app-supplied settings scripting: try unchanged signing posture first; design explicit Automation setup only if useful discovery needs it. A separate control-authorized operation prepares the catalogue by launching a stopped target in the background; ordinary reads never launch or prompt. Return all runtime-exposed panes, with Network, Sound, Appearance and Displays as witnesses, exposed anchors and honest conditional availability. Private sidebar data and category narrowing were not selected. No exact event, launch or native acceptance has been exercised. Final design and mandatory whole-producer review remain before consumption.",
     "diagramIds": [
       "native-discovery-sources",
       "native-settings-decision",
@@ -13,19 +13,19 @@
     "updatedDiagrams": [
       {
         "id": "native-discovery-sources",
-        "summary": "Added source capabilities and the distinction between a candidate and a qualified catalogue."
+        "summary": "Distinguishes source candidates from qualified catalogues and carries the agreed settings route and preparation boundary."
       },
       {
         "id": "native-settings-decision",
-        "summary": "Added the scripting, private-sidebar and category-revision alternatives, with the explicit decision before API design."
+        "summary": "Records selected scripting, conditional setup, background preparation and the useful minimum alongside the unselected alternatives."
       }
     ]
   },
   "groups": [
     {
       "id": "native-sources",
-      "title": "Native discovery sources \u00b7 analysis",
-      "description": "Candidate interfaces, public/platform limits and the concrete settings decision. No backend, schema, consent or reduced useful inventory has been selected."
+      "title": "Native discovery sources \u00b7 analysis and requirements",
+      "description": "Candidate interfaces, public/platform limits and the agreed settings source/preparation direction. Runtime sources remain unqualified; no schema, consent operation, signing change or reduced useful inventory is implemented."
     },
     {
       "id": "search",
@@ -76,16 +76,16 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Source-analysis proposal, not runtime acceptance. Location values give no client access; indexed application observations and per-identifier registration do not prove all-disk completeness. Exact prompt/hydration qualification and useful witnesses remain pending. Settings needs a precise source/posture decision before the full contract and mandatory review."
+      "caption": "Source analysis and agreed settings direction, not runtime acceptance. Location values give no client access; indexed application observations and per-identifier registration do not prove all-disk completeness. Settings uses preferred app scripting with conditional explicit setup and background preparation. Exact prompt/hydration qualification, useful witnesses, the full contract and mandatory review remain pending."
     },
     {
       "id": "native-settings-decision",
       "group": "native-sources",
-      "title": "Choose the source and permission boundary",
+      "title": "Agreed source and permission boundary",
       "renderer": "svg",
       "source": "native-settings-decision.d2",
       "rendered": "native-settings-decision.svg",
-      "caption": "Recommendation remains unapproved. The inspected modern dictionary exposes pane objects and reveal, not a proved useful runtime inventory. Automation needs explicit signing/consent/setup authority; private sidebar data has version/conditional limits; limiting the catalogue to individually documented targets changes the agreed category. The source decision precedes final API design, review and finite G/N/V acceptance."
+      "caption": "Antony selected app scripting, unchanged signing posture first and conditional explicit Automation setup. Explicit preparation launches a stopped target in the background; ordinary reads remain effect-free. The minimum includes all runtime-exposed panes, ordinary-area witnesses, exposed anchors and conditional availability. Private sidebar and narrower-category alternatives were not selected. Final API design, review and finite G/N/V acceptance remain pending."
     },
     {
       "id": "search-preopen",

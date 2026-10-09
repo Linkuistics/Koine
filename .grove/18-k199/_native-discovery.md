@@ -90,10 +90,10 @@ in-session reviewer, new proof programme or unauthorized raw-search implementati
 ## Decomposition
 
 Source analysis (native-discovery-sources-k200) establishes candidate sources
-and the concrete modern-settings gap. native-settings-source-k201 settles
-the source/signing/consent/useful-category decision; native-discovery-k202
+and the concrete modern-settings gap. native-settings-source-k201 records
+the agreed source/signing/consent/useful-category direction; native-discovery-k202
 completes every original Done when, including replacing raw artifacts and
-reconciling all mixed charters. Do only the first child in the current session.
+reconciling all mixed charters.
 No implementation leaves belong in this node.
 
 The final design child cuts mandatory root-level review-design with
@@ -103,10 +103,19 @@ closing, promotes the concrete handoff and names its actual Creator run there.
 This source child closes no parent and names no Creator for an unfinished one.
 
 Read docs/verification/native-discovery-sources.md for the source alternatives,
-recommended explicitly authorized System Settings scripting route, exact
-source/SDK provenance and retained finite acceptance/authority duties. No
-native acceptance, source selection, new consent or useful-category reduction
-has occurred. The existing raw proposal remains comparison until final design.
+agreed app-supplied settings scripting direction, exact source/SDK provenance
+and retained finite acceptance/authority duties. Try unchanged signing posture
+first; design explicit Automation setup only if useful discovery needs it.
+Explicit preparation launches a stopped target in the background without
+activation; ordinary reads stay effect-free. The useful minimum returns every
+runtime-exposed pane, with Network/Sound/Appearance/Displays witnesses, exposed
+anchors and honest hardware/account availability. No private adapter or useful-
+category reduction is selected. K202 must qualify the actual source and design
+complete preparation/setup/reveal authority, readiness and failure/late outcomes.
+No native event, consent operation, launch or signing change has been performed;
+native acceptance remains pending. The raw proposal stays comparison until
+final design. The ownership ADR remains applicable: client raw search and
+prompt-free Koine reads are unchanged by the separate explicit preparation.
 
 ## Decisions (running log)
 
