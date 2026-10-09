@@ -146,8 +146,12 @@ by the app's runtime scripting interface and re-resolved for explicit reveal.
 It is neither a filesystem path, arbitrary URL, executable script nor a resource
 reference; query observation does not pin a later target.
 
-**Automation setup**: An explicit request for one fixed System Settings read or
-reveal event's OS permission, only where the qualified host posture needs it.
+**Automation setup**: An explicit human action in Koine’s local explaining UI
+through a private local-console seam, never a GraphQL/bearer operation. Its OS
+authorization request is preflighted for a
+fixed System Settings read or reveal event only where the qualified host posture
+needs it. OS Automation consent covers the Koine-host/System Settings pair,
+not one event; all trusted providers share that process permission.
 It grants no Koine capability; a late OS answer can outlive the caller's wait.
 Ordinary native reads, preparation and reveal never request it implicitly.
 

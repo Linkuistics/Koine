@@ -402,17 +402,30 @@ workspace:control and launches the stopped target in the background; a running
 target is left alone. Its RUNNING receipt certifies process readiness only.
 Query the catalogue separately; control does not imply read.
 
-Exact-event refusal may offer explicit workspaceRequestSettingsAutomation(READ
-or REVEAL), under workspace:control, only when useful events need the qualified
-host's conditional setup. No read, prepare or reveal invokes it automatically.
-Setup can display OS consent and its late answer can change authorization after
-Koine times out; do not replay it. Permission outcomes grant no Koine capability.
+Exact-event refusal directs the user to Koine's local explaining UI. Only an
+explicit human action there may request Automation consent, if useful events
+need the qualified host's conditional setup. No GraphQL operation or bearer
+grant can initiate it. Consent covers the Koine-host/System Settings target pair,
+not just READ or REVEAL. The UI shows closed reasons and an in-flight state after
+its thirty-second wait; a late answer can still change OS permission. Wait for
+true return and explicitly refresh its non-prompting check, then explicitly read
+or reveal again. Do not replay a pending request. After denial use Koine's guidance
+for manual System Settings → Privacy & Security → Automation adjustment; a denied
+reveal is not a repair route. Permission outcomes grant no Koine capability.
+
+Native providers require a host advertising workspace-native-disclosures-v1
+with corrected workspace read/control disclosures. A prior selection-aware host
+refuses them as unsupported-feature before loading and can retain its action-only
+provider with selected-with-refusals; it does not serve the native catalogue.
 
 After explicit selection, workspaceRevealSetting(paneId, optional anchorName)
 requires workspace:control AND desktop:control. Send those keys unchanged as
 opaque exact strings; never synthesize a custom URL or AppleScript. The operation
 revalidates the running fixed target, re-resolves the pane/anchor, sends no-prompt
-reveal and requests activation. A receipt acknowledges submission, not final
+reveal and requests activation through the fixed bundle's Launch Services open.
+A target that exits between validation and submission can be relaunched; the
+operation performs no implicit preparation and refuses an observed stopped target.
+A receipt acknowledges submission, not final
 visible contents; failed/late effects are ambiguous and never retry-safe.
 The existing HTTP(S)-only workspaceOpenURL and filesystem workspaceOpenPath do
 not accept pane IDs, anchor keys or arbitrary custom URLs.

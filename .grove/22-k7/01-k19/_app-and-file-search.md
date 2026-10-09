@@ -52,3 +52,11 @@ Close only when those concrete designs and their mandatory reviews/integrations
 fulfil this node; the closing session names its actual Creator on existing k120.
 Root k199's review cannot replace this whole-node resource review. Native binary/
 signed acceptance still belongs to the subsequently planned implementation.
+
+K204 fixes Automation consent to an explicit human action in Koine’s local
+explaining UI through a private local-console seam, with no GraphQL/bearer route.
+Qualify target-wide scope, closed UI reasons, manual denial guidance and native
+ownership beyond the separate UI wait. Native providers require corrected core
+UI/management disclosures and workspace-native-disclosures-v1; prior selection-
+aware hosts refuse before load. Further root population/readiness/long-metadata
+design with mandatory review/earned integration precedes this consumer.

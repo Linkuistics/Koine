@@ -44,10 +44,17 @@ comparison input, not the new catalogue contract.
 
 Finalize exact bounded decoding/type/URL/CF/AE result normalization from the reviewed
 native contract: real native application recognition and bundle-directory identity,
-first resolved spelling/retained merge, distinct same-ID copies, deprecated
-registration errors and preferred contradictions; no empty/nil/capped/refused
+first resolved spelling/retained merge, distinct same-ID copies, action-equivalent
+ordered AppKit list-plus-preferred positive eligibility and separate deprecated
+error-bearing registration negatives; no empty/nil/capped/refused
 negative. Long representable identified locations stay visible with unknown
 unsupported metadata; existing action handoff/resolution is independent.
+
+Consume the further root producer/review resolving N4/N7/N8 before treating
+population limits, cold/warm completeness or long-application metadata as fixed.
+Pair same-copy catalogue/action outcomes including the preferred-only case, and
+keep empty/contradicted INDEXED_APPS UNKNOWN/PARTIAL with diagnostics even when
+registration seeds succeed. Carry the disabled/excluded/rebuilding V9 subject.
 
 Pin exact G1–G4/G8, N3/N4/N5 and V1–V4/V7/V8 field/branch fixtures and finite useful
 witness inventory. Settings must return all runtime pane/anchor keys, no positional

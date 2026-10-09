@@ -44,6 +44,13 @@ Complete the proposed principal/WorkspaceActions/WorkspaceDiscovery/
 WorkspaceSettings image boundary from reviewed k202 and permission review.
 Pin concrete exported value/lookup seams, routing, one-way native link dependencies,
 module/class names and actual source/Mach-O guard instruments. Preserve the old
+four-action adapter's production construction inside WorkspaceActions, with no
+production injection seam exported to the principal. Give the principal its own
+routing-only source/image allowlist and compile a principal-injected settings
+effect adapter as a failing control even when action imports remain clean.
+Test substitution must not enter shipped exports/linkage. Read
+docs/adr/workspace-native-images-preserve-action-authority.md.
+Preserve the old
 four-action whole-image allowlist; compile listing/spawn/script/extra-activation,
 action→settings link/callback and read→prompt/effect controls and specify how both
 source and real-image/runtime checks detect them. No allowed image can launder
@@ -57,3 +64,11 @@ provider restart. No target termination or child/orphan account. Use N2/N5–N7 
 the finite independent listener/store/action serviceability controls; opaque peaks
 remain unproved. Design only, no compiled/native pass here. Its mandatory review
 and earned integration still precede k123.
+
+K204 fixes conditional Automation setup to a private local-console seam reachable
+only by explicit human action in Koine’s explaining UI. No workspace or management
+GraphQL route, including bearer koine:manage, may reach ask=true. Guard that route
+and its exact allowlist in source AND actual image/runtime controls, together
+with private production action-adapter construction. Local UI wait/stop/late reply
+retains the shared native slot and prompt token until true return; no GraphQL
+cutoff or bearer revocation is its consent authority.

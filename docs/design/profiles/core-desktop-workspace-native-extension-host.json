@@ -4,9 +4,10 @@
   "management": "extended",
   "comment": [
     "Design only; actual native binary, introspected digest and G/N/V acceptance pending.",
-    "Framework major 1/minor 1, additional-capabilities-v1 and selection-aware first-party-selection-v1 host.",
+    "Framework major 1/minor 1; host and native manifest require additional-capabilities-v1, first-party-selection-v1 and workspace-native-disclosures-v1.",
     "Unchanged host posture first; any earned conditional Automation host has a separate signature/posture record, the same schema.",
-    "Retained 1.0.0/1.0.1 and action-only update 1.1.0/schema 1.0.1 remain independent evidence."
+    "Retained 1.0.0/1.0.1 and action-only update 1.1.0/schema 1.0.1 remain independent evidence.",
+    "Native disclosure feature pins are design metadata; corrected core UI/management and native loader acceptance remain pending."
   ],
   "providers": [
     {
@@ -27,5 +28,15 @@
       "selection": "SELECTED",
       "reason": null
     }
+  ],
+  "hostFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1",
+    "workspace-native-disclosures-v1"
+  ],
+  "nativeRequiredFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1",
+    "workspace-native-disclosures-v1"
   ]
 }

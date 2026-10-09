@@ -1,0 +1,48 @@
+{
+  "name": "Prior selection-aware host refuses native workspace update without disclosure feature",
+  "design": "../desktop-workspace-repair-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Design only; independently retained prior host advertises the first two features, not workspace-native-disclosures-v1.",
+    "Native 1.3.0/schema 1.1.0 per-user manifest requires all three; reject before initializer/factory/start with unsupported-feature.",
+    "Retained bundled action-only workspace 1.0.1/schema 1.0.1 remains selected-with-refusals; complete action SDL and all candidates pinned. Actual N/G/V pending."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.3.0",
+      "schemaVersion": "1.1.0",
+      "state": "INCOMPATIBLE",
+      "origin": "PER_USER",
+      "selection": "NOT_SELECTED",
+      "reason": "unsupported-feature"
+    },
+    {
+      "provider": "workspace",
+      "version": "1.0.1",
+      "schemaVersion": "1.0.1",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": "selected-with-refusals"
+    }
+  ],
+  "hostFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1"
+  ],
+  "nativeRequiredFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1",
+    "workspace-native-disclosures-v1"
+  ]
+}

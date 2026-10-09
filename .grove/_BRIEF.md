@@ -98,9 +98,17 @@ were not selected. K202 defines the complete native API/authority/bounds/profile
 acceptance design. Exact events, foreground behavior and usefulness remain
 unqualified until actual native acceptance. Mandatory whole-producer review
 and earned integration precede k7.
-The whole producer remains live and finishes all original reconciliation duties
-before its mandatory review/earned integration and k7. Source analysis is no
-native pass and closes no downstream node.
+K202 closed that producer; review k203 and integration k204 identify substantive
+population-budget, cold/warm readiness and long-application metadata gaps. A new
+root design producer with mandatory whole-producer review/earned integration
+precedes k7 and resolves them without reducing useful choices. Source analysis
+and deterministic design checks are no native pass and close no downstream node.
+During k204 Antony selected local Koine UI-only Automation initiation and required
+workspace-native-disclosures-v1 for native providers. Core UI/management must
+serve corrected workspace read/control disclosures before advertising it; prior
+selection-aware hosts refuse before load with retained action-only fallback.
+K7/k30 own implementation and independent disclosure/loader acceptance. Consent
+scope is the Koine-host/System Settings pair, not an event.
 
 Prior find/custom-walk contracts and measurements are bounded comparison input.
 Earlier process/lookup/protection permissions do not select a catalogue backend

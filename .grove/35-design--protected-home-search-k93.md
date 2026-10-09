@@ -39,13 +39,13 @@ useful-catalogue loss.
 
 ## Finite native coverage decision subjects
 
-Use actual native-discovery acceptance V1–V8 plus independent controls: all ten
+Use actual native-discovery acceptance V1–V10 plus independent controls: all ten
 location pairs/account/domain values; twelve named launchers plus Safari/Finder,
 non-witness indexed/running breadth and per-copy identity/registration; all exposed
 settings panes/anchors with Network/Sound/Appearance/Displays, a non-witness pane,
 nested anchor and honest hardware/account availability. Include background cold/
 running foreground preservation, unchanged-posture exact READ/REVEAL behavior,
-conditional explicit Automation only if earned, ordinary no-dialog/no-hydration,
+conditional human local-UI-only Automation only if earned, ordinary no-dialog/no-hydration,
 and actual selected app/setting provenance under the independent action contracts.
 
 A missing useful witness, repeatable background foreground loss, inability to meet
@@ -54,3 +54,10 @@ that once with a recommended remedy and explicit alternative/authority/posture
 trade-off. Root source declaration/dictionary data and prior 26.5 action/raw
 captures are no native pass; unavailable conditions remain pending. Removed raw
 home ordering/work omissions need no Koine decision and this leaf remains live.
+
+Consume the further root population/readiness/long-metadata producer and mandatory
+review/earned integration before native subjects. Disabled/excluded/rebuilding
+index controls remain honest UNKNOWN/PARTIAL. Required disclosure-capable hosts
+serve corrected core native UI/management text; prior selection-aware hosts refuse
+native candidates before load under workspace-native-disclosures-v1. These are
+accepted design boundaries, not fresh permissions or native passes.

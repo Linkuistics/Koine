@@ -62,10 +62,8 @@ mutation PrepareSettingsInBackground {
     diagnostics { source reason guidance }
   }
 }
-# Use only if the client explicitly chooses setup; no read/action automatically calls it.
-mutation RequestSettingsAutomation($event: WorkspaceSettingsEvent!) {
-  workspaceRequestSettingsAutomation(event: $event) { event outcome requestMade guidance }
-}
+# Automation setup is an explicit human action in Koine's local explaining UI.
+# No GraphQL operation, including a management operation, can initiate it.
 # Explicit selected pane or anchor; both controls, no implicit read grant.
 mutation RevealChosenSetting($selection: WorkspaceSettingSelection!) {
   workspaceRevealSetting(selection: $selection) {

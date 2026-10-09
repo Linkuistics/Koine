@@ -68,11 +68,22 @@ Modern System Settings discovery uses the app-supplied scripting interface,
 subject to actual-source qualification. Try unchanged signing posture and
 exact-event-allowed, no-prompt reads first. If useful discovery requires
 Automation authorization, the design may introduce the necessary host
-entitlement/usage description and a separate explicit consent/setup operation;
+entitlement/usage description and a separate explicit consent/setup action in
+Koine's local explaining UI;
 introduce no unused permission. This agreement proves neither that an event
 requires consent nor that authorization can be obtained. The
 [source boundary](../verification/native-discovery-sources.md#agreed-settings-source-and-preparation)
 records the source/posture trade-off and its remaining qualification work.
+
+Only an explicit human action in that UI initiates OS Automation consent. No
+client GraphQL operation or bearer management authority can do so. Consent covers
+the Koine-host/System Settings target pair, rather than a single event. Native
+workspace providers require workspace-native-disclosures-v1: corrected core UI
+and management disclosures must ship before the host advertises it; prior
+selection-aware hosts refuse before loading and retain action-only fallback where
+available. Antony selected both boundaries during native-discovery-k204; the
+[host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+records the compatibility cost. Actual implementation and acceptance remain pending.
 
 Clients must be able to explicitly prepare the settings catalogue by launching
 System Settings in the background when stopped, preserving the foreground

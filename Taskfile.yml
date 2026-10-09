@@ -395,7 +395,7 @@ tasks:
         }
         const authorityGroups = [
           [complete.getQueryType(), ['workspaceSpecialLocations', 'workspaceApplications', 'workspaceSettings']],
-          [complete.getMutationType(), ['workspacePrepareSettings', 'workspaceRequestSettingsAutomation']],
+          [complete.getMutationType(), ['workspacePrepareSettings']],
           [complete.getMutationType(), ['workspaceRevealSetting', 'workspaceLaunchApplication', 'workspaceOpenURL', 'workspaceOpenPath', 'workspaceRevealPath']],
         ];
         const objectNames = (schema, root, names) => {
@@ -422,8 +422,24 @@ tasks:
         let authorityRefused = false;
         try { assertAuthorityObjects(sharedProcess); } catch (error) { authorityRefused = error.message.includes('WorkspaceSettingsPreparationProcess'); }
         if (!authorityRefused) throw new Error('Control did not reject shared objects across authority sets');
+        if (complete.getType('WorkspaceSettingsAutomationResult') || complete.getType('WorkspaceSettingsAutomationOutcome')) {
+          throw new Error('Local consent outcomes leaked into the public schema');
+        }
+        const remoteSetup = parse('mutation { workspaceRequestSettingsAutomation(event: READ) { outcome requestMade } }');
+        if (!validate(complete, remoteSetup).some(error => error.message.includes('workspaceRequestSettingsAutomation'))) {
+          throw new Error('Control did not reject remote consent initiation');
+        }
+        const nativeFeatures = ['additional-capabilities-v1', 'first-party-selection-v1', 'workspace-native-disclosures-v1'];
+        const sameFeatures = (actual, expected) => Array.isArray(actual) &&
+          actual.length === expected.length && new Set(actual).size === expected.length &&
+          expected.every(feature => actual.includes(feature));
+        const assertNativeFeatures = profile => {
+          if (!sameFeatures(profile.nativeRequiredFeatures, nativeFeatures) ||
+            !sameFeatures(profile.hostFeatures, nativeFeatures)) throw new Error('Native disclosure feature gate missing');
+        };
         for (const name of ['core-desktop-workspace-native-extension-host.json', 'core-desktop-workspace-native-update-extension-host.json']) {
           const profile = JSON.parse(read(`profiles/${name}`));
+          assertNativeFeatures(profile);
           if (profile.design !== '../desktop-workspace-native-schema-extension-host.graphql') throw new Error('Wrong complete profile SDL');
           const selected = profile.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
           if (selected.schemaVersion !== '1.1.0' || selected.version !== (name.includes('update') ? '1.3.0' : '1.2.0')) {
@@ -434,11 +450,41 @@ tasks:
         const bad = refusal.providers.find(row => row.origin === 'PER_USER');
         const fallback = refusal.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
         if (refusal.design !== '../desktop-workspace-repair-schema-extension-host.graphql' ||
+          !sameFeatures(refusal.hostFeatures, nativeFeatures) ||
+          !sameFeatures(refusal.nativeRequiredFeatures, nativeFeatures.filter(feature => feature !== 'first-party-selection-v1')) ||
           bad.version !== '1.3.0' || bad.schemaVersion !== '1.1.0' || bad.state !== 'INCOMPATIBLE' || bad.reason !== 'selection-feature-required' ||
           fallback.version !== '1.0.1' || fallback.schemaVersion !== '1.0.1' || fallback.reason !== 'selected-with-refusals') {
           throw new Error('Native refusal profile changed action-only fallback or refusal identity');
         }
-        console.log('Native SDL/examples/composition/profiles and retained actions valid; removed-root, wrong-input/output, foreign-type and shared-authority-object controls rejected. Runtime/native G/N/V remains pending.');
+        const priorHost = JSON.parse(read('profiles/core-desktop-workspace-native-disclosure-refused-extension-host.json'));
+        const assertDisclosureRefusal = profile => {
+          const bad = profile.providers.find(row => row.origin === 'PER_USER');
+          const fallback = profile.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
+          if (!sameFeatures(profile.hostFeatures, nativeFeatures.slice(0, 2)) ||
+            !sameFeatures(profile.nativeRequiredFeatures, nativeFeatures) ||
+            profile.design !== '../desktop-workspace-repair-schema-extension-host.graphql' ||
+            profile.management !== 'extended' || profile.providers.length !== 3 ||
+            bad.version !== '1.3.0' || bad.schemaVersion !== '1.1.0' || bad.state !== 'INCOMPATIBLE' ||
+            bad.selection !== 'NOT_SELECTED' || bad.reason !== 'unsupported-feature' ||
+            fallback.version !== '1.0.1' || fallback.schemaVersion !== '1.0.1' || fallback.state !== 'ACTIVE' ||
+            fallback.origin !== 'BUNDLED' || fallback.reason !== 'selected-with-refusals') {
+            throw new Error('Prior-host disclosure refusal or action-only fallback changed');
+          }
+        };
+        assertDisclosureRefusal(priorHost);
+        const requireRejection = (subject, check, label) => {
+          let rejected = false;
+          try { check(subject); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control did not reject ${label}`);
+        };
+        const missingDisclosure = JSON.parse(read('profiles/core-desktop-workspace-native-extension-host.json'));
+        missingDisclosure.nativeRequiredFeatures = nativeFeatures.slice(0, 2);
+        requireRejection(missingDisclosure, assertNativeFeatures, 'missing native disclosure requirement');
+        const loadedOnPrior = structuredClone(priorHost);
+        Object.assign(loadedOnPrior.providers.find(row => row.origin === 'PER_USER'),
+          { state: 'ACTIVE', selection: 'SELECTED', reason: null });
+        requireRejection(loadedOnPrior, assertDisclosureRefusal, 'native update active on prior disclosure host');
+        console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
         JS
 
   design:serve:

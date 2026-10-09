@@ -48,3 +48,11 @@ normalization and independent host outcomes. Reject any old raw credit/find/
 ordering contract or any historical action/source result relabelled native-passed.
 K19's actual closing session owns Creator naming here; review/earned integration
 still precede k30, independently of root k199's mandatory review.
+
+K204 fixes Automation consent to an explicit human action in Koine’s local
+explaining UI through a private local-console seam, with no GraphQL/bearer route.
+Qualify target-wide scope, closed UI reasons, manual denial guidance and native
+ownership beyond the separate UI wait. Native providers require corrected core
+UI/management disclosures and workspace-native-disclosures-v1; prior selection-
+aware hosts refuse before load. Further root population/readiness/long-metadata
+design with mandatory review/earned integration precedes this consumer.

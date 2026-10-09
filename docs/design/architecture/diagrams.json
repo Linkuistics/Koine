@@ -1,10 +1,10 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon: named location/application/settings observations, separate explicit settings effects and true native-return ownership. Mandatory review, implementation and native G/N/V acceptance remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon: named location/application/settings observations, separate explicit settings effects and true native-return ownership. Review integration requires further population/readiness/long-metadata design and mandatory review before consumption. Implementation and native G/N/V acceptance remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
     "title": "Native discovery contract, settings authority and retirement",
-    "status": "Designed; mandatory review and native acceptance pending",
-    "summary": "Three workspace:read queries return frozen provenance/uncertainty. Background prepare and conditional exact-event setup require workspace:control and return no catalogue values; selected reveal requires both controls. Separate native images preserve the accepted four-action guard. Cancellation freezes publication while native return retains capacity. Exact new 1.2.0/1.1.0 and 1.3.0/1.1.0 profiles, useful witnesses and independent controls remain unaccepted.",
+    "status": "Review integration; further design/review and native acceptance pending",
+    "summary": "Three workspace:read queries return frozen provenance/uncertainty. Background prepare requires workspace:control; selected reveal requires both controls. Only a human action in Koine’s local explaining UI initiates conditional target-wide OS consent. Native providers require corrected core UI/management disclosures and workspace-native-disclosures-v1; prior hosts refuse before load. Four guarded images preserve existing actions. Population/readiness/long-metadata repairs and all native G/N/V remain pending.",
     "diagramIds": [
       "native-discovery-contract",
       "native-settings-flow",
@@ -16,11 +16,11 @@
     "updatedDiagrams": [
       {
         "id": "native-discovery-contract",
-        "summary": "Added source/native-image ownership and the source plus compiled action-boundary controls."
+        "summary": "Require the disclosure-capable host feature, guard principal/action adapter construction and separate the private local UI consent seam."
       },
       {
         "id": "native-settings-flow",
-        "summary": "Added separate read, background prepare, conditional setup and selected reveal paths with complete authority."
+        "summary": "Separate local UI-only consent with closed/late outcomes from three public operations; pin fixed-bundle activation and its exit/relaunch race."
       },
       {
         "id": "native-discovery-lifecycle",
@@ -44,27 +44,27 @@
     },
     {
       "id": "native-sources",
-      "title": "Native discovery sources \u00b7 analysis and requirements",
+      "title": "Native discovery sources · analysis and requirements",
       "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
-      "title": "Native discovery and client-owned search \u00b7 requirements",
+      "title": "Native discovery and client-owned search · requirements",
       "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open \u00b7 served action-only contract",
+      "title": "Launch and open · served action-only contract",
       "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection \u00b7 designed, not yet served",
+      "title": "First-party selection · designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension \u00b7 designed, not yet served",
+      "title": "Workflow extension · designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -96,16 +96,16 @@
       "renderer": "svg",
       "source": "native-discovery-contract.d2",
       "rendered": "native-discovery-contract.svg",
-      "caption": "Native-image components within one Koine process. All catalogue seams require workspace:read; prepare/setup require workspace:control and publish no catalogue data; existing actions and selected settings reveal require both controls. Action image cannot reach discovery/settings effects. Actual source, compiled linkage/routing/authority controls remain pending."
+      "caption": "Native-image components in one Koine process. Native providers require workspace-native-disclosures-v1 and corrected core native UI/management disclosures; prior selection-aware hosts refuse before load. Catalogue seams require workspace:read, background preparation workspace:control, existing actions and selected reveal both controls. Only a human action in Koine’s local explaining UI reaches the private consent seam. Principal routing and private action-adapter construction have source and image guards. Actual N/G/V remains pending."
     },
     {
       "id": "native-settings-flow",
       "group": "native-contract",
-      "title": "Read, prepare, set up, then reveal",
+      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
-      "caption": "Explicit alternative operations, never an automatic pipeline. RUNNING is process readiness only. Setup may prompt only when explicitly chosen; no read/prepare/reveal can invoke it."
+      "caption": "Three explicit public operations and a separate human local-UI consent action, never an automatic pipeline. RUNNING is process readiness only; cold/warm catalogue readiness needs further design. No GraphQL/bearer route initiates consent. The UI explains target-wide OS scope, closed reasons, a separate 30-second wait, retained pending ownership and manual denial guidance. Reveal activation uses fixed-bundle openApplication; exit during submission can relaunch. No read/prepare/reveal requests consent."
     },
     {
       "id": "native-discovery-lifecycle",
@@ -114,7 +114,7 @@
       "renderer": "svg",
       "source": "native-discovery-lifecycle.d2",
       "rendered": "native-discovery-lifecycle.svg",
-      "caption": "Freeze closes publication/admission, not a blocking native call. Four shared slots can remain occupied indefinitely; independent serviceability and native-peak limits remain finite acceptance duties."
+      "caption": "Freeze closes publication/admission, not a blocking native call. Four shared slots can remain occupied indefinitely; independent serviceability and native-peak limits remain finite acceptance duties. Local UI setup shares bounded native ownership but has its own 30-second UI wait, without the GraphQL cutoff; the prompt token stays held until true return."
     },
     {
       "id": "native-discovery-sources",
@@ -137,7 +137,7 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
+      "title": "Previous proposal · Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -146,7 +146,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
+      "title": "Previous proposal · Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -155,7 +155,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
+      "title": "Previous proposal · Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -164,7 +164,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
+      "title": "Previous proposal · Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -173,7 +173,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
+      "title": "Previous proposal · Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -182,7 +182,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -191,7 +191,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
+      "title": "Previous proposal · Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -200,7 +200,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
+      "title": "Previous proposal · Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -222,7 +222,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",

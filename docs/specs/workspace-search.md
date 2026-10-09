@@ -1,6 +1,14 @@
 # Native discovery and client-owned search
 
 **Designed; mandatory review, implementation and native acceptance pending.**
+Review integration has identified unresolved application population/budget,
+cold/warm settings readiness and long-application metadata contracts. Those
+repairs require a separate producer and mandatory review before downstream
+consumption; the affected bounds/readiness/long-catalogue claims below are
+provisional, not approved implementation input. Native acceptance stays pending.
+Koine's local explaining UI alone initiates Automation consent. Native provider
+releases require `workspace-native-disclosures-v1`; prior hosts refuse them
+before code loads rather than serve them under the old grant wording.
 Koine supplies OS-known special locations and named application/System Settings
 catalogues on macOS 26+ Apple Silicon. Clients own filesystem traversal,
 permissions, filtering, ranking, order, budgets, chooser, MRU and clipboard.
@@ -11,7 +19,7 @@ SDK 27 declarations and macOS 26.6.2 shipped data separately from macOS 26.5
 comparisons. Those declarations qualify interfaces, not runtime read safety.
 
 Start with [Composition → Own sources and freeze publication](../design/architecture/index.html#diagram-native-discovery-contract)
-and [System Settings → Read, prepare, set up, then reveal](../design/architecture/index.html#diagram-native-settings-flow).
+and [System Settings → Choose read, prepare or reveal; consent stays in Koine’s UI](../design/architecture/index.html#diagram-native-settings-flow).
 The [SDL](../design/workspace-search-schema.graphql) and
 [operations](../design/workspace-search-operations.graphql) encode this contract;
 they are proposals, not the currently served schema. The
@@ -25,20 +33,22 @@ this design.
 
 | Module | Owns and hides | Public obligation / enabling point |
 | --- | --- | --- |
-| Workspace composition | Resolver routing, static authority, bounded job owner | Client selects a named operation; private native adapters are supplied here for contract tests. |
+| Workspace composition | Resolver routing, static authority, bounded job owner | Client selects a named operation; production adapters stay inside their owning image, with test-only substitution excluded from shipped linkage. |
 | Location adapter | Foundation account/domain value lookup | Returns values without existence checks or contents access. |
 | Application adapter | Indexed breadth, running observations, registration and individual bundle inspection | Per-copy choices, provenance and checked native facts; no exhaustive disk promise. |
 | Settings adapter | Fixed trusted target, exact event descriptors, no-prompt reads | Runtime panes/anchors and honest stopped/refused/conditional outcomes. |
 | Snapshot owner | Admission, budgets, copied values, diagnostics, freeze and true retirement | Nested fields/aliases never repeat native work. |
 | Existing action module | Launch/open/reveal resolution and accepted submission rules | Receives explicit selection and its complete controls; catalogue knowledge grants no action authority. |
-| Settings effect module | Background prepare, explicit setup, selected reveal | Separate static authority and finite effect allowlists. |
-| Client | Raw search and presentation, explicit choice to prepare/setup/act | Supplies its own filesystem access and independently requests each effect. |
+| Settings effect module | Background prepare, selected reveal; private local-console setup seam | Separate static authority and finite effect allowlists; no remote resolver reaches ask=true. |
+| Client | Raw search and presentation, explicit choice to prepare/act | Supplies its own filesystem access, requests each public effect and directs consent setup to Koine. |
 
 A named source adapter concentrates service semantics and uncertainty below the
 resolver; callers need not reconstruct three different native protocols.
 Calculation/merging uses bounded immutable observations, separate from query
 lifetime and authority. Keeping discovery and effects in separate native images
-costs packaging and controlled linkage but preserves the accepted action guard.
+costs packaging and controlled linkage but preserves the accepted action guard;
+[the image-boundary decision](../adr/workspace-native-images-preserve-action-authority.md)
+records this trade-off and the principal's routing-only responsibility.
 A single permissive workspace image would entangle discovery scripting with the
 four accepted action paths. A launcher-only app catalogue lacks breadth; a raw
 walk restores client-owned responsibility. Neither is selected. Settings uses
@@ -56,11 +66,10 @@ consumer consequence and alternative.
 | Query.workspaceApplications | workspace:read | Fixed application catalogue; no launch/register/setup. |
 | Query.workspaceSettings | workspace:read | Existing running target only; exact no-prompt read events. |
 | Mutation.workspacePrepareSettings | workspace:control | Validate target; launch stopped target with activation disabled; running target is left alone. No catalogue values. |
-| Mutation.workspaceRequestSettingsAutomation(event:) | workspace:control | Explicit permission preflight with asking enabled for one fixed READ or REVEAL event class/ID. No launch, reveal or data publication. |
-| Mutation.workspaceRevealSetting(selection:) | workspace:control AND desktop:control | Validate/re-resolve fixed pane/anchor; no-prompt reveal, then explicit activation of the validated target. No launch or automatic setup. |
+| Mutation.workspaceRevealSetting(selection:) | workspace:control AND desktop:control | Validate/re-resolve fixed pane/anchor; no-prompt reveal, then fixed-bundle openApplication(activates=true). No preparation or automatic setup; exit during submission can relaunch the target. |
 
 Authority is immutable per schema field coordinate, never inferred from the
-root that reached it. Query objects, preparation/setup objects and reveal
+root that reached it. Query objects, preparation objects and reveal
 objects are disjoint; in particular diagnostics, permission hints, dependencies
 and process identities cannot cross these three authority sets. Enums/scalars
 may be shared because they have no resolver fields. Register every reachable
@@ -70,14 +79,20 @@ preparation/reveal process object.
 
 Workspace grant disclosure must name these additions: read returns Koine-account
 location values and application/settings metadata, not client filesystem access;
-control permits background System Settings preparation and explicit Automation
-permission requests; reveal also requires desktop control and requests activation.
-Existing launch/open/document-handler disclosures remain complete.
+control permits background System Settings preparation without desktop control;
+launch/open/Finder reveal and selected settings reveal also require desktop
+control and may activate. Only Koine's UI requests Automation consent. Preserve
+the existing broad launch/open/document-handler disclosures, replacing the false
+claim that neither control works without the other. Core owns the text: before
+native 1.2.0 ships it must add workspace:read and revise workspace:control in its
+served catalogue and all native grant creation/approval/review views. The
+[host-disclosure decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+binds both new manifests/descriptors and host feature advertisement.
 
-Read is never implied by control. Prepare/setup expose only control-authorized
-receipts, readiness or permission outcome, not panes, names or locations; any
+Read is never implied by control. Prepare exposes only control-authorized
+receipts and readiness, not panes, names or locations; any
 future combined operation publishing catalogue data must additionally require
-workspace:read throughout. Prepare/setup request no activation, so desktop control
+workspace:read throughout. Preparation requests no activation, so desktop control
 is not allocated from incidental application/OS reactions. Reveal selects an
 activation effect and always needs both controls, including its receipt. No
 input, menu or desktop read authority is selected. The host performs whole
@@ -101,8 +116,8 @@ Settings selections contain paneId (1…512 UTF-8 bytes) and optional anchorName
 opaque dictionary keys: no trimming, case folding, Unicode normalization,
 substring match, URL construction, script interpolation or expression parsing.
 Null anchor means pane; a nonnull anchor means exactly that pane's anchor.
-Setup's event enum is READ or REVEAL only. Mutation inputs are validated before
-native work. GraphQL variable/type coercion keeps HTTP 400; provider semantic
+Permission hints identify READ or REVEAL; there is no public setup input. Mutation
+inputs are validated before native work. GraphQL variable/type coercion keeps HTTP 400; provider semantic
 validation keeps original aliased response paths and existing invalidInput behavior.
 
 Native output strings must be lossless UTF-8, no NUL; IDs/anchor keys also satisfy
@@ -180,12 +195,19 @@ a process incarnation or resource reference.
 
 | installationState | Required evidence |
 | --- | --- |
-| INSTALLED | Present identified app, valid identifier, completely checked registration result with no error and a matching present registered identity. Contradictory preferred/native metadata prevents this fact. |
-| UNREGISTERED | Present identified app and valid identifier; exact CFError application-not-found result (kCFErrorDomainOSStatus with code kLSApplicationNotFoundErr from the selected API) with no array/contradiction, OR complete error-free checked registration identities all nonmatching. Preferred location must not match or be unexamined/refused/contradictory. |
-| UNKNOWN | Missing/invalid identifier, empty errorless/nil result, array plus error, unknown error, capped/unexamined/refused/changed URL, unavailable API, or conflicting preferred evidence. |
+| INSTALLED | Present checked app, valid identifier and supported handoff spelling; the existing constrained action-selection procedure would select this identity on these observations. Inspect the ordered AppKit registered list plus its preferred-only candidate, stopping at the first identity match. A failure before that match prevents eligibility; later unexamined candidates do not undo a match. |
+| UNREGISTERED | Present identified app and valid identifier; the action's full list-plus-preferred domain was checked without a match or unresolved comparison, AND the error-bearing lookup supplies either exact CFError application-not-found (kCFErrorDomainOSStatus/kLSApplicationNotFoundErr, no array) or a complete error-free nonmatching list. No positive or unexamined evidence may contradict this negative. |
+| UNKNOWN | Missing/invalid identifier, unsupported handoff spelling, unresolved action-selection comparison, or insufficient/conflicting negative evidence. Empty errorless/nil registration, array plus error, unknown error, capped/unexamined/refused/changed URL or unavailable API cannot establish UNREGISTERED. |
 
-Preferred NSWorkspace.urlForApplication is a contradiction check, not a health
-token; nil proves nothing independently. A checked negative is a native reported
+Use the existing action's NSWorkspace.urlsForApplications plus
+NSWorkspace.urlForApplication candidate procedure for positive eligibility;
+the preferred-only copy is an eligible extra candidate, never a contradiction
+merely because the list omitted it. The
+[accepted Trash finding](../verification/application-installations-vm.md#what-it-found)
+disproves a list-only rule. LSCopyApplicationURLsForBundleIdentifier remains
+a breadth supplement and additional conservative negative witness; do not assume
+the two APIs equivalent or use it to replace the action's candidate order.
+Nil preferred lookup proves nothing independently. A checked negative is a native reported
 fact, not internal platform-health proof. Undetected stale/incorrect native state
 is possible. Known incorrect witnesses and systematic UNKNOWN launcher metadata
 fail acceptance under [the fact decision](../adr/search-native-facts-are-reported-observations.md).
@@ -272,40 +294,59 @@ both controls and cannot acquire this behavior by omission.
 ### Conditional explicit Automation setup
 
 Try unchanged empty entitlements/no usage key first for exact READ core/getd and
-REVEAL misc/mvis. Qualify those separately; permission for one proves nothing
-about another. If useful operations require authorization, the k201 agreement
+REVEAL misc/mvis. Qualify exact-event preflight/send separately; a point-in-time
+allowed check for one is no delivery guarantee for another, despite shared OS consent. If useful operations require authorization, the k201 agreement
 permits only the needed host com.apple.security.automation.apple-events
 entitlement and NSAppleEventsUsageDescription plus this explicit setup path.
 Do not ship an unused permission. Record a final effective posture and exact
 signature/entitlement/Info.plist digest for each actual host. No policy is changed
 by this design, and it establishes no event needs or obtains consent.
 
-workspaceRequestSettingsAutomation(READ|REVEAL) validates an already-running
-fixed target then calls only AEDeterminePermissionToAutomateTarget for that exact
-pair with askUserIfNeeded=true on an owned background worker. It never sends a
-catalogue/reveal event, launches/reactivates, changes consent silently, invokes
-the dictionary's deprecated authorize command or resets TCC. If the exact event
-already passes no-prompt preflight, return ALLOWED with requestMade=false and do
-not prompt. An unsupported unchanged posture returns UNAVAILABLE/SETUP_UNSUPPORTED;
-installation of a qualified conditional host is explicit deployment, never done
-inside a read/action. Outcomes are ALLOWED, DENIED or UNAVAILABLE with bounded
-guidance; unknown errors/timeouts are failed, not denied. Permission is a point-in-
-time observation; setup grants no Koine capability or guaranteed future delivery.
+Only an explicit human action in Koine's native explaining UI may initiate
+setup for READ or REVEAL. This is the local-console principal, not a bearer
+credential or a GraphQL mutation, including a koine:manage mutation. The UI
+validates an already-running fixed target, checks that exact event with ask=false,
+and only if needed and the conditional host posture is qualified calls
+AEDeterminePermissionToAutomateTarget for that exact pair with askUserIfNeeded=true
+on an owned background worker. Its private host-to-settings seam is unavailable
+to provider GraphQL routing. It never sends a catalogue/reveal event, launches,
+reactivates, invokes the deprecated authorize command or resets TCC.
 
-A setup request may display OS consent and cannot be recalled once admitted.
-It has a thirty-second provider ceiling bounded by the core deadline. The
-current core freezes a request within five seconds, so the public wait cannot
-reach thirty seconds on that host. A late user's
-answer may change OS consent after Koine freezes or the grant is revoked.
-Retain its owned worker/target until real return; do not retry or dismiss another
-process's dialog. Normal reads, prepare and reveal never call this prompting path.
+Use closed local UI outcome/reason pairs, never parse guidance:
+ALLOWED/EXACT_EVENT_ALLOWED (requestMade=false if no ask=true call),
+DENIED/EVENT_NOT_PERMITTED, UNAVAILABLE with SETUP_UNSUPPORTED,
+TARGET_NOT_RUNNING, TARGET_REFUSED or CAPACITY_LIMIT, FAILED with TARGET_CHANGED
+or NATIVE_ERROR, and PENDING/WAIT_EXPIRED. Capacity refusal has requestMade=false
+and inFlight=false; WAIT_EXPIRED retains requestMade and inFlight=true until true
+return. Every other terminal outcome has inFlight=false and records whether
+ask=true was called. A failed validation cannot be relabelled denial. Installation of a
+qualified conditional host is explicit deployment, never a read/action effect.
+These are private local UI values, not public GraphQL types or new failure ABI.
+Permission is a point-in-time observation; setup grants no Koine capability or
+guaranteed future delivery.
+
+A setup request preflights one exact event, but the resulting OS Automation
+consent authorizes the Koine-host/System Settings pair, not that event alone.
+Every trusted provider in the host process shares it; per-field Koine grants
+and exact-event adapter restrictions remain separate. Disclose this scope
+before setup. A setup request may display OS consent and cannot be recalled once admitted.
+The UI wait has a thirty-second ceiling; it is not a GraphQL request and does
+not inherit the core's five-second request cutoff. A late user's answer can
+change OS consent after the UI wait freezes. Retain the worker/target and prompt
+token until real return, suppress stale results and keep in-flight status visible;
+do not retry or dismiss another process's dialog. After true return the user may
+explicitly refresh exact-event status with ask=false, and the client may explicitly
+read or reveal again. Denial directs the user to Koine's explanation and manual
+System Settings → Privacy & Security → Automation adjustment, not to a reveal
+that itself needs the denied permission. Nothing opens that page automatically.
+Normal reads, prepare and reveal never call this prompting path.
 
 ### Effect result invariants
 
 Absent independent execution/publication errors, AVAILABLE has a receipt and no
 dependency; DEPENDENCY_UNAVAILABLE has a dependency and no receipt; BLOCKED has
-permission guidance and neither. Prepare never returns catalogue values. Setup
-returns its separate outcome, not an effect receipt. Unexpected errors/timeouts
+permission guidance and neither. Prepare never returns catalogue values. Local UI
+setup has no GraphQL result or effect receipt. Unexpected errors/timeouts
 raise existing failed at the nullable mutation root. After a domain effect was
 submitted, failure cannot become BLOCKED or dependency unavailable. Every nested
 field keeps the root's complete static authority and frozen receipt; no nested
@@ -321,9 +362,24 @@ DEPENDENCY_UNAVAILABLE/SELECTION_UNAVAILABLE, not input error; opaque/malformed/
 refused answers are failed or blocked and certify no absence. Construct misc/mvis
 with that pane/anchor object as direct parameter, preflight that exact event,
 send with no-prompt/no-interaction flags and wait for reply. On a checked
-successful reply request activation of the still-validated process once; do not
-launch a stopped target, substitute another pane/anchor, open an arbitrary URL
-or replay after failure. Both controls are required before either effect.
+successful reply revalidate the process and its fixed OS bundle, then submit one
+NSWorkspace.openApplication at that checked bundle URL with activates=true,
+createsNewApplicationInstance=false, allowsRunningApplicationSubstitution=false,
+hides=false, hidesOthers=false, isForPrinting=false, promptsUserIfNeeded=false,
+empty arguments/environment and no Apple event. This is the existing launcher's
+Launch Services activation primitive, not NSRunningApplication.activate, whose
+[background-service refusal is recorded](../verification/desktop-focus-vm.md#what-the-action-does-and-why).
+Do not use AX, substitute another pane/anchor or replay after failure. Both
+controls are required before either effect.
+
+No launch is submitted for a target already observed stopped. Process validation
+and Launch Services submission are not atomic: a target that exits in between
+can be relaunched by this primitive, despite the no-new-instance flags. This
+primitive limit must be disclosed and tested; it is not an atomic
+activate-only operation. Callback must identify the still-validated incarnation
+before an acknowledged receipt can be published. A changed target or native
+failure after reveal is failed with effects ambiguous, never a substitute reveal
+or a claim that no launch occurred.
 
 Receipt echoes selection and revealAcknowledged=true, activationRequested=true,
 and optional control-authorized process incarnation. It certifies acknowledged
@@ -358,10 +414,16 @@ all-disk/index-health or physical-closure guarantee.
 | UNAVAILABLE | No useful observation/qualified empty and an established source/target prerequisite unavailable; items null, no generated error. |
 | FAILED | No useful observation/qualified empty and native/malformed/change/limit failure; items null; each selected items alias raises failed. |
 
-With no progress, precedence is failure → block → unavailable → unknown. A
-gathered empty index is a valid empty INDEXED_APPS observation only when its
-qualified completion signal and parsing conditions hold; it is never all-app
-absence. Empty nil/errorless registration is UNKNOWN. An empty running list is
+With no progress, precedence is failure → block → unavailable → unknown.
+Gathering completion and successful parsing do not qualify a healthy empty
+INDEXED_APPS source. An empty indexed response has availability/observations
+UNKNOWN with METADATA_UNKNOWN. If an independently checked registered system
+application expected in the declared indexed domain is absent from it, diagnose
+that contradiction and keep indexed observations PARTIAL, with availability
+UNKNOWN; neither observation proves indexing disabled or internally broken.
+Valid running/registration supplements may make the root PARTIAL, never upgrade
+this indexed source to COMPLETE/AVAILABLE. Disabled, excluded and rebuilding
+subjects must exercise this rule. Empty nil/errorless registration is UNKNOWN. An empty running list is
 only empty RUNNING_APPS; a stopped settings app is UNAVAILABLE, never empty.
 Empty runtime pane/anchor list can describe its declared interface if qualified,
 but missing ordinary witnesses still fails useful-category acceptance.
@@ -404,7 +466,7 @@ grant-dispatch serialization queue. The metadata query has its own owned run loo
 read gathering deadline is three seconds/core remainder. Sequential supplements
 share that budget; bounded round-robin candidate admission across returned source
 batches avoids a witness-seed-only implementation but promises no rank/fairness.
-Settings setup has its separate wait above and at most one pending prompt job
+Local UI settings setup has its separate wait above and at most one pending prompt job
 process-wide, within the same four slots. Limit exhaustion refuses admission,
 never replaces a blocked worker or raises descriptor/materialization limits.
 
@@ -448,12 +510,18 @@ Preserve the four-action source and whole-image guard in an independently linked
 WorkspaceActions native image containing only the existing action logic/adapter
 and safe individual-target resolution. The workspace principal image routes
 GraphQL and snapshot values; WorkspaceDiscovery owns Foundation/index/running/
-registration reads; WorkspaceSettings owns fixed read/prepare/setup/reveal with disjoint resolver
-seams; only the read seam is reachable from a catalogue query.
+registration reads; WorkspaceSettings owns fixed read/prepare/reveal with disjoint resolver
+seams and a private setup seam accessible only to Koine's local explaining UI.
+Only the read seam is reachable from a catalogue query; no GraphQL route reaches
+ask=true, including a management-authorized route.
 None is a new provider identity or public framework ABI. Source/build dependencies
 are one way: principal → action/discovery/settings images; action image must not
 link, dynamically look up, receive an effect-capable callback from, or call the
-discovery/settings images. A shared value/lookup module may not acquire listing,
+discovery/settings images, or accept any production effect-capable adapter from
+the principal. Construct the production native action adapter inside
+WorkspaceActions; export only the four typed action entry points and value
+receipts. Private test substitution is test-only and cannot be exported or linked
+into the shipped principal. A shared value/lookup module may not acquire listing,
 scripting, spawning or prompting code.
 
 Retain original action checks on its real source and resulting Mach-O imports,
@@ -461,7 +529,7 @@ selectors, exports/dependency closure, with updated path ownership only. Apply
 finite source and built-image allowlists to each new module: no subprocess,
 directory listing, generic interpreter, arbitrary AE target/event, shell, AX,
 input/menu synthesis or handler writes anywhere. The settings module's permitted
-launch/preflight/send/activate calls are confined to their exact resolvers and
+launch/preflight/send calls are confined to their exact resolvers and
 parameters; read resolver can reach only ask=false/no-prompt core/getd.
 Discovery never reaches setup or effects. Factory routing, exported interfaces,
 link map, actual native image identity and control-grant call traces are part of
@@ -483,7 +551,24 @@ Contract version remains koine-desktop/1. This is additive workspace schema
 1.1.0, provider release 1.2.0; update fixture release 1.3.0/schema 1.1.0. The
 already-used action-only update 1.1.0/schema 1.0.1 is not reused or relabelled.
 Both new releases declare framework major 1/minor 1 and required features
-additional-capabilities-v1 plus first-party-selection-v1; no diagnostic ABI or new failure accessor.
+additional-capabilities-v1, first-party-selection-v1 and
+workspace-native-disclosures-v1; no diagnostic ABI or new failure accessor.
+Only hosts that serve the corrected workspace read/control disclosures and show
+them wherever grants are created/approved/reviewed advertise the new feature.
+It is independent of Automation entitlement/usage-key posture. Prior
+selection-aware hosts lacking it refuse native bundled/per-user candidates as
+INCOMPATIBLE/unsupported-feature before load; a retained eligible action-only
+bundle can remain selected-with-refusals. See the complete refusal profile and
+G9/N1/V10 disclosure subjects in finite acceptance. No older host is accepted
+with incomplete disclosure.
+The principal has its own source AND actual-image allowlist: GraphQL routing,
+static authority/value composition and bounded owner coordination only. It cannot
+construct native action adapters, implement effects, dynamically resolve forbidden
+symbols or manufacture effect callbacks. Link maps, production construction paths
+and an injected principal-owned action adapter that calls settings must fail N2,
+even when the action image's own imports remain clean. Settings activation uses
+only the pinned openApplication parameters above; no AppKit activate fallback.
+
 Native images have disjoint module/class symbols, existing workspace reserved
 identity/prefix/approved signing identifier, and the host verifies every packaged
 image under its existing provider loading policy. No library-validation exception
@@ -493,7 +578,7 @@ provider feature; a host lacking it gives honest blocked/setup unsupported resul
 The acceptance contract fixes complete bundled/update/retained/refusal compositions,
 SDL and candidate pins, signatures and eventual measured schema digests. Never
 invent a native digest or alter an old capture to match a new design. N exercises
-old compatible host/new provider, new host/retained 1.0.0 and 1.0.1 plus action-only
+prior host/new native provider refusal, new host/retained 1.0.0 and 1.0.1 plus action-only
 1.1.0, authority-dependent refusal, feature/minor/major rejection, and actual
 selected actions. Fresh native host processes prevent mapped-image substitution.
 G/N/V subjects and every native verdict remain pending here. Frozen SDL/example,

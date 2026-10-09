@@ -563,8 +563,10 @@ ordinary ProviderValue objects for status, source provenance, observation/catego
 completeness, nullable items and bounded diagnostics. Aliases share a frozen
 parent; all read fields require workspace:read. No new diagnostic ABI/failure
 accessor or reinterpretation of nil/blank consent is introduced. Explicit
-prepare/setup carry workspace:control; selected reveal carries both workspace
-and desktop control. Conditional Automation setup is limited by the recorded
+preparation carries workspace:control; selected reveal carries both workspace
+and desktop control. Conditional Automation setup is an explicit human action
+only in Koine's local explaining UI, through a private local-console seam that
+GraphQL and bearer management authority cannot reach. It is limited by the recorded
 [settings decision](../adr/settings-discovery-uses-app-supplied-objects.md), not
 implied by a read or an earlier raw-search permission. Existing live-grant,
 lifecycle and publication errors retain their original paths. No global
@@ -1445,6 +1447,24 @@ and its acceptance. Each later increment that owes a disclosure
 ([workflow spec](workflow-providers.md#authority-allocation)) adds its capability
 here, so the window and every manager change together.
 
+The native workspace release requires corrected core disclosures before the host
+advertises `workspace-native-disclosures-v1`. All three native grant views and
+management use the same entries:
+
+| Capability | Required native-surface disclosure |
+| --- | --- |
+| `workspace:read` | Read Koine-account special-location values and native application/System Settings metadata. Returned locations grant no access to their contents or to the client's filesystem. |
+| `workspace:control` | Prepare System Settings in the background without desktop control. Launch applications, open URLs/files and reveal files or selected Settings destinations only with desktop control. Any registered installed application may be launched; a handler can execute scripts or follow location documents to other schemes and targets. Metadata refusal is not a content sandbox. |
+
+The action-only shipped wording and its recorded VM acceptance remain historical
+evidence; they do not disclose this native surface. App-and-file-search owns the
+actual core catalogue/UI/management implementation and independent acceptance
+before that release. OS Automation setup is outside bearer capability reach and
+explains consent for the Koine-host/System Settings pair in Koine's UI. The
+[host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+refuses native providers on prior hosts before loading, rather than relying on
+provider text to correct core-owned surfaces.
+
 Non-selected valid copies use `REJECTED` with a precise reason: `older-than-bundled`,
 `equal-to-bundled` or `superseded-candidate`; it means their contribution was refused,
 not that their signature failed. Other required reasons include `reserved-identity`,
@@ -1811,6 +1831,12 @@ host signing posture; identical schemas do not establish identical binaries.
 | [Bundled native](../design/profiles/core-desktop-workspace-native-extension-host.json) | Extended core management + desktop 1.0.0/1.0.0 + workspace 1.2.0/1.1.0, both BUNDLED/SELECTED/ACTIVE; complete native SDL. | Pending N/G/V. |
 | [Native update](../design/profiles/core-desktop-workspace-native-update-extension-host.json) | Same SDL; PER_USER workspace 1.3.0/1.1.0 selected, BUNDLED 1.2.0/1.1.0 REJECTED/NOT_SELECTED/superseded-candidate; desktop baseline remains active. | Pending N/G/V. |
 | [Native update refused](../design/profiles/core-desktop-workspace-native-update-refused-extension-host.json) | Repair action SDL; 1.3.0/1.1.0 per-user update missing first-party-selection-v1 INCOMPATIBLE/NOT_SELECTED/selection-feature-required; bundled action-only 1.0.1 selected-with-refusals. | Pending N/G/V, no load/start marker. |
+| [Prior disclosure host refuses native update](../design/profiles/core-desktop-workspace-native-disclosure-refused-extension-host.json) | Prior selection-aware host lacks workspace-native-disclosures-v1; native 1.3.0/1.1.0 PER_USER INCOMPATIBLE/NOT_SELECTED/unsupported-feature; retained BUNDLED action-only 1.0.1 ACTIVE/SELECTED/selected-with-refusals. Complete repair action SDL. | Pending N/G/V, no native load/start marker. |
+
+Native 1.2.0/1.3.0 manifests require additional-capabilities-v1,
+first-party-selection-v1 and workspace-native-disclosures-v1. The latter is
+advertised only after the corrected disclosures above are served everywhere.
+Conditional Automation signing posture does not establish that feature.
 
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,

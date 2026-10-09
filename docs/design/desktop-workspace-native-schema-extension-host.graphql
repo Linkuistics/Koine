@@ -101,12 +101,7 @@ type Mutation {
   workspacePrepareSettings: WorkspaceSettingsPreparationResult
 
   """
-  workspace:control throughout. Already-running fixed target only. Explicit exact-event permission request if needed and qualified host posture supports it. No send/launch/reveal, automatic retry or capability grant. Thirty-second provider ceiling; current core freezes within five seconds. Late OS consent can outlive either.
-  """
-  workspaceRequestSettingsAutomation(event: WorkspaceSettingsEvent!): WorkspaceSettingsAutomationResult
-
-  """
-  workspace:control AND desktop:control throughout. Exact paneId/optional anchorName 1...512 UTF8 bytes, no NUL/control characters/normalization. Re-resolve then no-prompt misc/mvis and explicit activation; no launch/setup/URL construction. Acknowledgment is no visible-destination guarantee. Three-second/core wait; never replay ambiguous effects.
+  workspace:control AND desktop:control throughout. Exact paneId/optional anchorName 1...512 UTF8 bytes, no NUL/control characters/normalization. Re-resolve then no-prompt misc/mvis and fixed-bundle openApplication(activates=true). No implicit preparation/setup/URL construction; exit during submission can relaunch the target. Callback incarnation is revalidated. Acknowledgment is no visible-destination guarantee. Three-second/core wait; never replay ambiguous effects.
   """
   workspaceRevealSetting(selection: WorkspaceSettingSelection!): WorkspaceSettingsRevealResult
 }
@@ -575,6 +570,10 @@ type WorkspaceApplicationChoice {
   applicationPath: String!
   name: String
   bundleIdentifier: String
+
+  """
+  INSTALLED uses the existing constrained action's ordered registered-list plus preferred-only identity procedure. Negative facts need separate checked evidence; later actions revalidate.
+  """
   installationState: WorkspaceApplicationInstallationState!
   sources: [WorkspaceDiscoverySource!]!
 }
@@ -708,23 +707,6 @@ type WorkspaceSettingsPreparationResult {
   receipt: WorkspaceSettingsPreparationReceipt
   dependency: WorkspaceSettingsPreparationDependency
   diagnostics: [WorkspaceSettingsPreparationDiagnostic!]!
-}
-
-enum WorkspaceSettingsAutomationOutcome {
-  ALLOWED
-  DENIED
-  UNAVAILABLE
-}
-
-type WorkspaceSettingsAutomationResult {
-  event: WorkspaceSettingsEvent!
-  outcome: WorkspaceSettingsAutomationOutcome!
-
-  """
-  Whether ask=true was called, not proof a dialog appeared or a future send is permitted.
-  """
-  requestMade: Boolean!
-  guidance: String!
 }
 
 type WorkspaceSettingsRevealReceipt {

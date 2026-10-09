@@ -59,11 +59,19 @@ unproved. Exact retained action contracts and long-location handoff limits bind.
 ## Native contract handoff from k202
 
 Consume docs/specs/workspace-search.md and docs/verification/native-discovery-acceptance.md
-only after native-discovery-k199's mandatory review/earned integration. The design
+only after native-discovery-k199's mandatory review/earned integration AND the
+further producer/review resolving population budgets, cold/warm settings readiness
+and long-application metadata (review N4/N7/N8). Its provisional claims do not
+authorize implementation or accepted workflow loss. The design
 selects Foundation value-only ten-pair lookup; fixed indexed-local app breadth,
 running observations and error-bearing registration supplements; fixed-target
-core/getd runtime panes/anchors. Prepare/setup/reveal are separately authorized
-under the operation table. Native source qualification and usefulness remain
+core/getd runtime panes/anchors. Public preparation and reveal have separate
+static grants; OS Automation setup is local explaining UI-only, via a private
+local-console seam with no GraphQL/bearer route. Implement corrected core native
+UI and management read/control disclosures before advertising the mandatory
+workspace-native-disclosures-v1 feature. Prior selection-aware hosts refuse native
+providers/updates before load and retain eligible action-only fallback. G9/N1/V10
+independently accept all grant surfaces and the refusal profile. Native source qualification and usefulness remain
 pending; no raw traversal or old action capture supplies a pass.
 
 K191 completes source-specific access/posture rules, k193 reviews that producer,

@@ -110,13 +110,17 @@ Post-result pruning cannot undo a prompt or metadata contact already caused by
 the native source. If the proposed source cannot meet the read policy, return
 that exact gap rather than substitute a launcher-only list.
 
-The existing action adapter's AppKit array-only lookup supplies no error-bearing
+The existing action adapter's AppKit list-plus-preferred lookup supplies no error-bearing
 negative fact. The earlier [SDK analysis](search-native-resources.md#call-health-is-separate-from-descriptor-visibility)
 identifies `LSCopyApplicationURLsForBundleIdentifier` with `outError` as a
 deprecated but declared alternative. The current SDK retains its documented
 not-found error. The [native source contract](../specs/workspace-search.md#application-sources-and-native-facts)
-selects the declared error-bearing API for checked negatives, accepting its
-deprecation/qualification cost and keeping UNKNOWN when it is unusable. Empty AppKit arrays,
+selects the declared error-bearing API for breadth and conservative checked
+negatives, accepting its deprecation/qualification cost and keeping UNKNOWN
+when it is unusable. Positive eligibility follows the accepted action's ordered
+AppKit list plus preferred-only candidate; their disagreement is observed, so
+do not treat a preferred-only copy as a contradiction or presume the two APIs
+equivalent. Empty AppKit arrays,
 nil bundle identifiers, malformed values and failed identity acquisition cannot
 establish absence or an unregistered installation.
 
@@ -150,6 +154,9 @@ allowed, not permitted, would require user consent, and target not running.
 It is not an inventory API, a grant or a guaranteed bounded call. A successful
 preflight also does not bind a later event against consent revocation or target
 replacement. Sending would need no-prompt flags and exact-target validation.
+The SDK's consent is for the sending application and target application,
+not a per-event OS grant. Exact class/ID preflight restricts the selected request;
+all trusted providers in Koine's host process share any target-wide consent.
 
 The same header says certain events are allowed without prompting. No event was
 sent or preflighted here, so **this analysis does not establish that the exact
@@ -265,8 +272,10 @@ Settings source events are direct core/getd object reads (xppb pane IDs/names,
 xppa anchors) and misc/mvis selected reveal, to a validated running OS target.
 No-prompt preflight/send and target revalidation are exact qualification subjects.
 Prepare launches a stopped target with activates=false; it publishes no catalogue
-values and needs workspace:control. Setup is explicitly selected and conditional
-on actual exact-event need; reveal needs workspace and desktop control. No read
+values and needs workspace:control. Setup is an explicit human action only in
+Koine’s local explaining UI via a private local-console seam, conditional on
+actual exact-event need; consent covers the host/target pair. No GraphQL/bearer
+route initiates it. Reveal needs workspace and desktop control. No read
 uses a prompting preflight, launch, activation, private sidebar or guessed URL.
 All exposed panes/anchors, ordinary areas and hardware/account conditions remain
 finite useful-category obligations.
@@ -275,7 +284,9 @@ The new provider identities are workspace 1.2.0/schema 1.1.0 and update 1.3.0/
 schema 1.1.0, independently of retained action-only 1.0.0/1.0.1 and already-used
 1.1.0/schema 1.0.1. Source AND actual action image guards keep forbidden listing,
 spawn and scripting; permitted discovery/settings code has separate ownership,
-allowlists and compiled cross-boundary failing controls. No new diagnostic ABI,
+allowlists and compiled cross-boundary failing controls. Both native releases
+require workspace-native-disclosures-v1, served only by hosts with corrected core
+UI/management disclosures; prior selection-aware hosts refuse before load. No new diagnostic ABI,
 custom worker, global materialization policy or descriptor-limit change is selected.
 
 ## Reconciled work boundary

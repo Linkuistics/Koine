@@ -46,8 +46,8 @@ consumer consequence; systematic useful discovery loss is not accepted here.
 
 Consume k202's reviewed spec/source report and finite acceptance first. Pin actual
 call/flag/value qualification tables for Foundation, fixed indexed-local predicate,
-running, deprecated error-bearing registration/preferred, identified Bundle/resource
-inspection and fixed-target core/getd. State what can be refused before contact,
+running, action-equivalent AppKit list-plus-preferred positive selection, separate
+deprecated error-bearing registration negatives, identified Bundle/resource inspection and fixed-target core/getd. State what can be refused before contact,
 what already contacted opaque services, known identity-alias protection and unknown
 relocation/replacement limits. No global materialization change or array-count
 health inference; ordinary accepted reads must remain no-dialog/no-hydration.
@@ -55,8 +55,11 @@ health inference; ordinary accepted reads must remain no-dialog/no-hydration.
 Complete exact target validation, process/address/event/reply forms, ask=false and
 send flags; unchanged-signing READ/REVEAL subjects precede any earned conditional
 Automation entitlement/usage-key/setup subject. Preparation's activation=false
-and setup's explicit-only ask=true are independent authority paths, not read
-fallbacks. Match G4–G8, N3/N4/N7 and V1/V5–V8, with responsible signed host identity
+and setup’s explicit human local-UI-only ask=true are independent paths, not read
+fallbacks. No GraphQL/bearer management route can initiate consent. Pin target-wide
+OS scope, private closed outcomes, the separate UI thirty-second wait, pending
+ownership until true return, explicit ask=false refresh and manual post-denial
+guidance. Match G4–G9, N3/N4/N7 and V1/V5–V8/V10, with responsible signed host identity
 and independent positive observers. Resolve actual-source design gaps once with
 a precise consumer consequence; do not build/probe/sign/request consent here.
 Name Creator on k193 only when closing k126, and reconcile all permission artifacts.

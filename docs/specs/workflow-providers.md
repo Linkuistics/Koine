@@ -196,8 +196,9 @@ use their owner's read authority, with any additional read requirements.
 | Synthesized pointer-button down/up/click/drag, including a context-menu fallback | `input:control`, plus the exposing provider's control and any other selected effects | Application input whatever the public field's name. Capture and revalidate the intended process/context; apply protected-target refusal. Menu-only paths cannot be replaced by right-click synthesis. This allocation does not add a general pointer-button API to the baseline. |
 | System media play/pause, including system-defined media-key events | `desktop:control` | A media event addressed to the system-media route is distinct from an application key chord. Any chord alternative requires input authority and does not satisfy the required system route. |
 | Native special-location and catalogue inspection | `workspace:read`; the native contract fixes the three query roots and all reachable fields | Supplies native knowledge, not client filesystem access or raw traversal. Preserve source AND binary authority evidence and existing action guards. No child backend or arbitrary process control is selected. |
-| Background System Settings preparation; explicit exact-event Automation setup | `workspace:control` | Prepare uses activates=false and returns only process readiness; setup calls exact-event ask=true only explicitly when qualified useful operation needs it. Neither publishes catalogue data or requests activation. |
-| Selected System Settings pane/anchor reveal | `workspace:control` AND `desktop:control` | No-prompt exact misc/mvis plus explicit target activation; no launch/setup/custom URL. Control receipt carries no catalogue metadata. |
+| Background System Settings preparation | `workspace:control` | Prepare uses activates=false and returns only process readiness, with no catalogue data, activation or consent request. |
+| Conditional Automation consent | Explicit human action in Koine’s local explaining UI; private local-console seam, no GraphQL/bearer route | Exact-event preflight qualifies need; OS consent covers the Koine-host/System Settings pair. Closed UI outcomes retain pending ownership after the wait and offer manual denial guidance. |
+| Selected System Settings pane/anchor reveal | `workspace:control` AND `desktop:control` | No-prompt exact misc/mvis then fixed-bundle openApplication(activates=true), with no implicit preparation/setup/custom URL. Exit between validation and submission can relaunch; callback incarnation mismatch fails ambiguously. Control receipt carries no catalogue metadata. |
 | Launch/activate; file/folder/default-app/named-app opening; URL opening; reveal in Finder | `workspace:control` AND `desktop:control` | Activation is requested. Optional action process identity is a control receipt; installed paths/identifiers/default-handler metadata remain read data. Handler reactions can execute documents or follow redirects. No search, grant or prerequisite check implicitly launches or opens. |
 | Clipboard writes: path or bundle identifier | Client-owned | Read the value under workspace read; client performs its own pasteboard write. No Koine clipboard mutation is required. |
 | Application keystrokes | `input:control` | Target capture/discovery uses input read; no implicit focus or menu invocation. |
@@ -227,9 +228,17 @@ schemes/targets. Refusing executable selectors and some payload metadata is not
 a content sandbox. Both workspace and desktop control remain required.
 App and file search owns the additional native catalogue disclosure before
 version 1.2.0/schema 1.1.0 ships: workspace read publishes Koine-account location
-values and app/settings metadata; workspace control permits background settings
-preparation and explicit Automation setup; settings reveal also needs desktop
+values and app/settings metadata without client filesystem access; workspace control
+permits background settings preparation alone; settings reveal also needs desktop
 control and requests activation. Existing launch/open disclosure stays complete.
+Core’s native UI and management catalogue must implement the corrected text before
+advertising workspace-native-disclosures-v1; prior hosts refuse native providers
+before load under the [host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md).
+OS consent is explained and initiated only in Koine’s local UI.
+The [native-image decision](../adr/workspace-native-images-preserve-action-authority.md)
+requires a routing-only principal guard and production adapters private to their
+own images, including a principal-injection failing control; a clean action
+image alone does not prove the action route safe.
 Window layout owns disclosure of desktop's expanded provider-wide authority in
 the native grant UI and GraphQL descriptions before its first new operation
 ships; pointer and media extends that disclosure before its additions ship.
@@ -259,8 +268,9 @@ MRU and clipboard. Location values grant no client access. The
 govern the selected Foundation, indexed/running/registration and app-supplied
 settings sources. COMPLETE source observations are no exhaustive disk inventory.
 
-Explicit background preparation and exact-event Automation setup require
-workspace:control and publish no catalogue data; selected pane/anchor reveal
+Explicit background preparation requires workspace:control and publishes no
+catalogue data. Conditional Automation consent is only an explicit human action
+in Koine’s local explaining UI, with no GraphQL/bearer route. Selected pane/anchor reveal
 requires workspace:control AND desktop:control. No read implicitly prepares,
 sets up or acts. Source and actual binary boundaries preserve the four-action
 no-listing/no-spawn/no-scripting guard. [Finite G/N/V acceptance](../verification/native-discovery-acceptance.md)
@@ -295,8 +305,8 @@ by a historical raw-search or action-only capture.
 | Special locations | Query.workspaceSpecialLocations(requests:) and all reachable fields; workspace:read; no listing/access grant. | Ten declared account/domain pairs; Foundation values, unknown contents, honest diagnostics and signed native acceptance pending. |
 | System Settings native catalogue | Query.workspaceSettings and all reachable fields; workspace:read; already-running fixed target only. | All exposed panes/anchors; ordinary-area witnesses, exact core/getd no-prompt qualification and G/N/V pending. |
 | Settings background preparation | Mutation.workspacePrepareSettings and all reachable fields; workspace:control only; no catalogue data or requested activation. | Stopped-target background launch, already-running no-reactivation, process readiness/late outcomes and foreground witnesses pending. |
-| Explicit settings Automation setup | Mutation.workspaceRequestSettingsAutomation(event:) and all reachable fields; workspace:control only. | Conditional exact READ/REVEAL permission request, unchanged posture first, explicit-only prompt and late-outcome acceptance pending. |
-| Selected settings reveal | Mutation.workspaceRevealSetting(selection:) and all reachable fields; workspace:control AND desktop:control. | Re-resolve exact pane/anchor; no-prompt misc/mvis plus activation; no launch/setup/arbitrary URL. Native visible-destination and authority acceptance pending. |
+| Explicit settings Automation setup | Koine local explaining UI and private local-console seam only; no GraphQL coordinate or bearer authority. | Conditional exact READ/REVEAL preflight, target-wide OS grant, unchanged posture first, closed outcomes, manual denial remedy and late-answer ownership pending. |
+| Selected settings reveal | Mutation.workspaceRevealSetting(selection:) and all reachable fields; workspace:control AND desktop:control. | Re-resolve exact pane/anchor; no-prompt misc/mvis plus fixed-bundle activation, including exit/relaunch race; no implicit preparation/setup/arbitrary URL. Native visible-destination and authority acceptance pending. |
 | Application catalogue — selected actions | Mutation.workspaceLaunchApplication(application:) with selected known identifier AND installation path; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. | Existing [v1 action limit](workspace-launch-and-open.md#long-location-action-boundary) binds. Actual catalogue-result provenance remains pending; retained action-only binaries/receipts are not native discovery evidence. App-reveal notice stays live. |
 | Raw filesystem search | Client-owned traversal, filename matching, ordering, limits and OS permissions; no Koine search coordinate. | Client work. Koine's special-location/catalogue and explicit-action acceptance remains separate. Former raw home/order/work omissions are not Koine catalogue requirements. |
 | Client-found files — selected actions | Mutation.workspaceOpenPath(path:, application:) for default or explicit Zed; Mutation.workspaceRevealPath(path:); every receipt needs workspace:control AND desktop:control. | Existing [v1 limit](workspace-launch-and-open.md#long-location-action-boundary), resolution and type refusal bind. No Koine raw-search read is implicit. Protected default opening remains a separate decision. |
@@ -326,7 +336,7 @@ by a historical raw-search or action-only capture.
 | Context menus (additional requirement) | Menus read/control; both point and focused-element capture; same lifecycle | Context menus. Pending. |
 | List and label state (cross-cutting requirement) | Desktop, iTerm and herdr reads as applicable; client labeling/rendering/ordering | Window layout; iTerm; herdr. Pending. |
 | Interruption and cleanup (cross-cutting requirement) | Koine input/menu owners; bounded cleanup and explicit crash recovery | Held interactions; context menus. Pending. |
-| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Launch and open for workspace (accepted: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md)); window layout, extended by pointer and media; app input; menu bar. Pending before each of those surfaces ships. |
+| Grant disclosure (cross-cutting requirement) | Native grant creation/approval and existing-grant views plus GraphQL descriptions; disclose provider-wide effects and application reactions | Launch and open for action-only workspace (accepted: [workspace-disclosure-vm.md](../verification/workspace-disclosure-vm.md)); app-and-file-search implements corrected core native read/control disclosures and workspace-native-disclosures-v1 before native release, with prior-host refusal. Native acceptance pending; window layout, extended by pointer and media; app input; menu bar. Pending before each of those surfaces ships. |
 
 The standalone acceptance client demonstrates Koine's part and identifies every
 client step. Account-dependent results require dedicated VM accounts and data;
@@ -409,7 +419,8 @@ The [current agreement](workspace-search.md) gives raw filesystem search to
 clients and native locations/catalogues to Koine. Previous tool-backed
 measurements prove no catalogue permission equivalence. The native contract and finite signed macOS 26+ acceptance qualify each exact
 source/target. K201 permits only conditional explicit Automation setup needed by
-useful exact events; no read requests it and no unrelated consent is selected.
+useful exact events; k204 fixes initiation in Koine’s local explaining UI alone,
+with target-wide consent scope. No read requests it and no unrelated consent is selected.
 
 ## Compatibility and delivery
 

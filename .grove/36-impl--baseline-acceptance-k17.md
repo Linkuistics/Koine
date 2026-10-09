@@ -45,3 +45,11 @@ none remains.
 
 This leaf consolidates evidence rather than creating it. A row that fails here
 gets a leaf in the increment that owns it.
+
+Native discovery baseline includes G9/N1/V10 corrected core workspace read/control
+disclosures on all native grant and management surfaces, mandatory
+workspace-native-disclosures-v1 and independently retained prior-host/native-update
+refusal with action-only fallback. OS Automation initiation is local human UI-only,
+not GraphQL/bearer management; late requests retain true-return ownership. Complete
+current native acceptance rows, including V9 index-health uncertainty controls,
+bind without credit from historical action-only captures.

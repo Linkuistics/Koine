@@ -52,3 +52,11 @@ separate prepare/setup/reveal cannot leak into reads. Define OS/signature/launch
 identity and fresh-consent subjects from native-discovery-acceptance V1/V2/V6/V8,
 with positive dialog/hydration controls; no native pass is possible in this design.
 Existing k193 still reviews the complete closing k126 artifact before k127.
+
+K204 fixes Automation consent to an explicit human action in Koine’s local
+explaining UI through a private local-console seam, with no GraphQL/bearer route.
+Qualify target-wide scope, closed UI reasons, manual denial guidance and native
+ownership beyond the separate UI wait. Native providers require corrected core
+UI/management disclosures and workspace-native-disclosures-v1; prior selection-
+aware hosts refuse before load. Further root population/readiness/long-metadata
+design with mandatory review/earned integration precedes this consumer.

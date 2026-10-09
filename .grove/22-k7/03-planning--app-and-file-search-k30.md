@@ -39,11 +39,21 @@ judgment and keep private native controls inside the agreed product seams.
 
 ## Concrete implementation input after the required reviews
 
-Use reviewed native SDL/spec, complete bundled/update/refusal profiles and G1–G8,
-N1–N7, V1–V8/serviceability subjects. Cut vertical working slices for the ten
+Use reviewed native SDL/spec, complete bundled/update/selection-refusal/disclosure-refusal profiles and G1–G9,
+N1–N7, V1–V10/serviceability subjects, including disabled/excluded/rebuilding
+indexed breadth. Consume the further root producer/review for population budgets,
+cold/warm settings readiness and long-application metadata before cutting those
+implementation slices. Cut vertical working slices for the ten
 Foundation location pairs, real indexed/running/registration breadth/per-copy
 metadata, effect-free settings runtime reads, explicit background preparation,
-earned conditional exact-event setup and selected authorized reveal. Each slice
+earned conditional local-UI-only exact-event setup and selected authorized reveal.
+Cut corrected core workspace read/control disclosures in all three native grant
+views and management, plus mandatory workspace-native-disclosures-v1 manifests
+and host advertisement only after those surfaces work. Include prior selection-
+aware host/native-update unsupported-feature refusal with action-only fallback.
+Local setup uses a private local-console seam unreachable by GraphQL/bearer
+management, target-wide consent, closed reasons, retained pending ownership and
+manual post-denial guidance; G9/N1/V10 accept these boundaries. Each slice
 owns source AND actual native-image guards and meaningful failing controls as
 applicable, real observation/publication/late-return ownership and independent
 serviceability. No implementation is cut by the root design session.
