@@ -602,6 +602,15 @@ identifier/location receives this refusal, while a within-limit native choice
 acts. Client-found file provenance belongs to the client; Koine's existing action
 contract remains independently accepted for file paths. Injected application
 results or action-only subjects cannot close native catalogue provenance.
+The [finite L1500 subject](../verification/native-discovery-acceptance.md#long-application-source-subject)
+requires an actual indexed-item long tuple with reported type/identifier/name and
+independent current directory identity. It remains UNKNOWN, not launch-eligible;
+explicit submitted launch/named-open requests under both controls must retain
+identifier AND installation path and refuse >=1,024 bytes without an effect.
+Copy preserves exact bytes; long Finder reveal is likewise refused. The separate
+1,004-byte known-plist boundary grants no 1,023-byte Bundle-reader promise. Native
+indexing provenance is pending; registered-long/preferred-long action-only coverage
+limits are unchanged and cannot pass or defeat this different source precondition.
 
 The action-only correction is workspace release/schema **1.0.1** under
 `koine-desktop/1`, with unchanged input/result shapes, error kinds and enums. Its

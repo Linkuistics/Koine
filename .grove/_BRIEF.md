@@ -292,8 +292,8 @@ viewer hold the concrete handoff; frozen design checks passed without a native p
 
 ## Application population slice from k206
 
-Native-discovery-k205 is now a node with completed population and Settings
-readiness designs, then live long metadata k208 and complete reconciliation
+Native-discovery-k205 is now a node with completed population, Settings readiness
+and long-metadata designs, then live complete reconciliation
 k209. Consume only after k209 closes k205 and cuts mandatory root review/earned
 integration before k7. Population admission stages all bounded sources, shares
 once-per-ID ordered registration outcomes and fails with null items on global
@@ -301,6 +301,22 @@ owned-limit/deadline exhaustion, never a native-order prefix. Optional native
 presentation facts support client filtering without helper suppression. G10/N5/
 V11 require actual P1024 usefulness and accounting; every native verdict remains
 pending. K209 owns final producer reconciliation and review Creator/cascade.
+
+## Long metadata slice from k208
+
+K208 selects a fixed four-attribute projection from actual indexed items, with
+positive native type plus before/after directory identity, public metadataSource
+INDEXED_ITEM and honest index-to-inode/current-plist association limits. Indexed
+choices remain UNKNOWN with null bundle flags. The 1,004-byte known-plist and
+1,024-byte action boundaries remain distinct; copy spelling/identifier is retained
+without a new reader, alias trick, consent/signing/access posture or useful loss.
+G11/N8/V13 require actual L1500 tuples from five boundary signed copies plus two
+short competitors, with independent type/identity/metadata and unchanged selected
+launch/named-open/reveal refusal. Disk/client/controlled provenance is no pass.
+Revised shallow certificates are 989,240 calls and 6,816,000 gross-charge bytes
+under unchanged gates, including counted indexed tree values. All native outcomes
+remain pending; k209 closes the complete producer and cuts mandatory review before
+k7, and k93 resolves one concrete actual source/access gap if qualification fails.
 
 ## Settings readiness slice from k207
 
@@ -311,5 +327,5 @@ anchors null. All exposed destinations and Network/Sound/Appearance/Displays
 remain required. V12 performs finite independent pre-visit cold and warm
 qualification, including later anchor growth and true foreground witnesses.
 Settings owned-call/copy accounting is explicit; global overflow is no useful
-pass. All native verdicts remain pending. K208/k209 and mandatory whole-producer
+pass. All native verdicts remain pending. K209 and mandatory whole-producer
 review/earned integration still precede any k7 implementation.

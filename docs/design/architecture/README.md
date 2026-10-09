@@ -8,12 +8,13 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-[System Settings → Separate process readiness, response quiescence and useful cold/warm choices](index.html#diagram-native-settings-readiness)
-is the current construction question. Two full ID-associated properties/anchor
-sweeps detect observed changes without claiming lazy completeness. Positive
-choices remain PARTIAL/UNKNOWN, empty panes UNKNOWN/null and empty anchors null.
-V12 native usefulness is pending. Application population admission remains
-designed with P1024 pending; long metadata and whole-producer review remain live.
+[Native sources → Preserve long indexed choices and the independent action refusal](index.html#diagram-native-long-applications)
+is the current construction question. A fixed projection on actual query items
+supplies reported type/name/identifier with lookup-only identity and public
+INDEXED_ITEM provenance. It supplies no current-plist/index-to-inode proof; choices
+stay UNKNOWN with null bundle flags. L1500 source/action qualification remains
+pending. Population admission and Settings uncertainty are unchanged context;
+complete reconciliation and whole-producer review remain live.
 
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)
 shows source/snapshot/image responsibility and the preserved action boundary.
@@ -29,10 +30,10 @@ review, implementation and every native G/N/V verdict remain pending.
 
 Changed in this discussion:
 
-- [System Settings → Separate process readiness, response quiescence and useful cold/warm choices](index.html#diagram-native-settings-readiness) — Added two-sweep comparison, explicit empty/positive/change/global-limit outcomes and finite V12 qualification.
-- [System Settings → Choose read, prepare or reveal; consent stays in Koine’s UI](index.html#diagram-native-settings-flow) — Changed read publication to PARTIAL/UNKNOWN positive choices; preparation remains process-only.
-- [Cold and warm readiness](../../specs/workspace-search.md#cold-and-warm-readiness) — Defined association, uncertainty and a finite comparison interval without claiming lazy health.
-- [Settings cold and warm qualification](../../verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification) — Added pre-visit cold queries, independent post-visit inventory and bounded warm comparisons; every native verdict remains pending.
+- [Native sources → Preserve long indexed choices and the independent action refusal](index.html#diagram-native-long-applications) — Added actual indexed-item facts, independent identity, two pathname boundaries and L1500 qualification.
+- [Native sources → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Changed seed metadata to source-labelled facts and added long-source qualification alongside P1024.
+- [Long application indexed metadata](../../specs/workspace-search.md#long-application-indexed-metadata) — Defined public provenance, UNKNOWN/null unsupported facts and stale-association limits without a new reader.
+- [Long application source subject](../../verification/native-discovery-acceptance.md#long-application-source-subject) — Added five boundary copies, two short competitors and real indexed tuple/action-refusal witnesses; every native verdict remains pending.
 
 The [agreed settings source](index.html#diagram-native-settings-decision) is
 unchanged requirements context. The other eight search views and
@@ -53,7 +54,7 @@ no native verdict.
 ## Sources and exports
 
 D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
-source/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
+source/population/long/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -64,5 +65,8 @@ broken budget/filtering controls, and retained action examples. check:docs
 validates relative links/anchors. design:settings-check verifies the logical
 two-sweep certificates and rejects broken declaration controls; it tests no
 native readiness implementation. These are design checks, not native acceptance.
+design:long-applications-check verifies the constructive fixture lengths and
+projection/identity/provenance/refusal declarations with broken controls; it runs
+no native query or action.
 Run design:serve PORT=8923 and open <http://127.0.0.1:8923/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.

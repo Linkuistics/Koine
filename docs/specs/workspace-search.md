@@ -5,7 +5,8 @@ The application population slice now has explicit admission and cost certificate
 its whole-producer review and actual populous native qualification remain pending.
 The Settings slice now defines bounded full-response comparison and honest lazy
 readiness uncertainty; its cold/warm native qualification remains pending.
-Long-application metadata remains unresolved in the same producer. The complete
+Long-application metadata now has an indexed-item construction and finite L1500
+qualification subject; its actual native support remains pending. The complete
 design is not approved implementation input until
 all slices and mandatory review finish. Native acceptance stays pending.
 Koine's local explaining UI alone initiates Automation consent. Native provider
@@ -149,9 +150,12 @@ searched. Temporary/container/network/iCloud enumeration is outside this set.
 
 The breadth source is one NSMetadataQuery with the fixed application-bundle
 content-type-tree equality kMDItemContentTypeTree = com.apple.application-bundle
-and NSMetadataQueryIndexedLocalComputerScope. Read only kMDItemPath from an
-indexed item as its candidate location; indexed name/identifier/suffix never
-establish native bundle identity. This fixed predicate's array/type semantics
+and NSMetadataQueryIndexedLocalComputerScope. Read the fixed kMDItemPath,
+kMDItemContentTypeTree, kMDItemCFBundleIdentifier and kMDItemDisplayName projection
+from the same returned NSMetadataItem. Indexed type/name/identifier are reported
+source facts; none establishes bundle-directory identity. No other attribute,
+arbitrary item construction or client attribute selection is admitted.
+This fixed predicate's array/type semantics
 are qualified against real non-witness application bundles.
 No client predicate or explicit directory scope is accepted. Record INDEXED_APPS
 provenance; user exclusions, stale index state, unindexed volumes/system locations
@@ -246,15 +250,81 @@ on-demand snapshot contract. Revisit this choice if actual P1024 or an ordinary
 measured population cannot meet the shared deadline/gates; do not quietly narrow
 the population or raise host policy limits.
 
-Every published app needs a checked native application-bundle type and established
-bundle-directory device/inode from the permitted bounded individual-target
-location resolution. Native application resource metadata and Bundle supply
-optional localized name and bundle identifier only for that identified target.
-No filename suffix establishes type or identity. A refused/unidentified candidate
-is omitted with diagnostic and partial/unknown coverage. Preserve representable
-long locations after lookup-only identity acquisition, but withhold unsupported
-whole-path bundle metadata and diagnose it; never call pathname APIs past their
-applicable limits or convert their nil/ENOENT/ENAMETOOLONG to absence.
+Every published app needs a checked positive native application-bundle type
+observation and present directory device/inode from permitted bounded individual
+location resolution. The ordinary short-path resource/Bundle episode supplies
+type and optional localized name/identifier (metadataSource BUNDLE_RESOURCE).
+An admitted indexed episode supplies those facts when the resolved bundle or
+its known Contents/Info.plist spelling cannot be handed to the whole-path reader
+(metadataSource INDEXED_ITEM), as defined below. No filename suffix, query
+predicate match alone, running identifier or client-found path establishes type.
+Refused/unidentified candidates are omitted with diagnostics and partial/unknown
+coverage. Never call pathname APIs past their applicable limits or convert their
+nil/ENOENT/ENAMETOOLONG to absence.
+
+### Long application indexed metadata
+
+The fixed query returns NSMetadataItems, not pathname-based metadata readers.
+With updates disabled, count the complete batch and inspect its actual returned
+objects on the query owner. For an indexed candidate whose resolved bundle path
+is at least 1,024 UTF-8 bytes, or whose bundle path plus the 20-byte
+Contents/Info.plist suffix is at least 1,024 bytes, use only its associated fixed
+indexed tuple. The suffix check starts at a 1,004-byte bundle, independently of
+the later action handoff limit. Do not construct NSMetadataItem/MDItem from a
+URL, obtain a new URL resource value, initialize Bundle, read a plist, create a
+short alias or ask a different application copy for substitute facts.
+
+Require a native array content-type tree containing an exact native string
+com.apple.application-bundle. A bounded native membership lookup checks that
+positive member's type; it certifies no unrelated array member or hierarchy
+health. Missing, wrong-typed or nonmatching trees establish no negative type;
+omit with METADATA_UNKNOWN. Count all raw tree entries, including duplicate
+slots, against a shared 65,536-entry limit before the native membership call.
+Overflow has population-wide ENTRY_LIMIT/FAILED/null semantics. Do not copy or
+enumerate the tree into an owned array; native acquisition/search internals
+remain opaque work and are subject to the shared deadline/freeze rules.
+
+Require the exact source path to resolve to a directory. The shared before/after
+metadata episode must retain equal device/inode; an observed replacement is
+refused. Copy only lossless checked identifier/name scalars under the existing
+string/copy gates. Missing or invalid optional scalars stay null with diagnostics;
+they do not erase a positively typed identified choice. Repeated indexed tuples
+for one spelling must agree on type and nonnull identifier/name; conflicts withhold
+the affected optional fact (or the choice for conflicting type) with diagnostics,
+never select a convenient tuple. There is no cross-copy metadata borrowing.
+Merged aliases retain the metadataSource/state of their first finalized resolved
+spelling; an alternate alias cannot upgrade an unsupported selected pathname.
+Do the indexed episode while its query is owned; retire it before the running
+batch. Retain immutable scalar values only, sharing the existing two-walk allowance.
+
+This associates an index-reported tuple with a presently resolved directory; it
+does **not** bind an index record to that inode or prove the occupant's current
+Info.plist. A replacement predating the first walk or stale importer values can
+escape detection. INDEXED_ITEM makes that source distinction public; actual
+wrong witnesses fail qualification, and known conflicts are not hidden as health
+uncertainty. Native getter I/O/prompt/hydration and useful long tuples need actual
+qualification under the existing access policy. No new permissions or posture
+are selected by the declaration.
+
+An INDEXED_ITEM choice remains installationState UNKNOWN: source identifier/type
+does not qualify the retained action's whole-path Bundle reader or registration
+selection. uiElement/backgroundOnly remain null, with METADATA_UNKNOWN for the
+unsupported bundle facts. Associated running policies may still be reported by
+checked identity. Keep the first finalized resolved applicationPath and identifier
+unchanged; >=1,024-byte locations remain copyable. If explicitly submitted to
+launch/named-open/reveal, the existing action contract applies and refuses its
+unsupported spelling before requesting an effect. A 1,004…1,023-byte indexed
+choice is not promised launchable merely because its bundle path fits the handoff.
+
+The finite L1500 subject requires **actual** indexed long path/type/identifier/name
+tuples, independent current fixture identities and selected-action refusal. Disk
+construction, controlled tuples and client discoveries cannot pass that source
+precondition. Missing real tuples or wrong values leave an unmet native obligation
+for the finite coverage decision, not accepted loss, recursive probing or a
+replacement catalogue. A descriptor-relative resource/plist reader would change
+the admitted mechanics; an alias trick adds unqualified pathname support; dropping
+long choices would reduce usefulness. Keep this fixed native projection instead,
+revisiting it with Antony if its actual source/access qualification fails.
 
 Merge direct/linked/indexed/running/registered observations only on established
 device/inode while the choice is retained. Keep the first finalized resolved
@@ -705,13 +775,13 @@ not a production path/depth restriction or a change to the action resolver.
 | Explicit work in the adapter recipe | Maximum admitted attempts |
 | --- | --- |
 | Fixed query/run-loop/running-source acquisition and cleanup | 32 |
-| Counted source element/path extraction across all URL domains | 2U |
+| Counted source element/path extraction; up to fourteen extra indexed projection/type/scalar checks per raw slot (conservatively charged for every URL domain) | 16U |
 | Running URL/identifier/name/policy/termination getters | 5R |
 | Once-per-ID CF/AppKit/preferred acquisition, counts and explicit disposal | 12D |
-| Once-per-spelling resource type, Bundle dictionaries/identifier/name/flags and existing short-path denial checks | 8C |
+| Once-per-spelling resource/Bundle episode and short-path denial checks, plus two indexed scalar transcodes | 10C |
 | Before/after descriptor walks, including per-component calls, link handling, errno name-limit and held-handle cleanup | 2C(6V + 4) |
 
-Thus 32 + 2U + 5R + 12D + 8C + 2C(6V + 4) <= 870,456 at the stated
+Thus 32 + 16U + 5R + 12D + 10C + 2C(6V + 4) <= 989,240 at the stated
 envelope. The next power of two is 1,048,576. The source report explains the walk
 bound and why the former 16,384/256 numbers did not cover the choices. This is a
 conservative owned-attempt certificate for that recipe/finite subject, not a
@@ -720,6 +790,17 @@ permitted. Deeper/longer real candidates charge actual work under the same globa
 ceiling; inability to finish invalidates publication, not the path's existence.
 Actual N accounting must enumerate every adapter attempt and reject a recipe
 that exceeds any certificate term before claiming applicability.
+
+The fourteen extra indexed attempts reserve three fixed attribute getters,
+five tree type/count/first-match/member checks, and six identifier/name native
+type/length/equality checks. The two transcodes per distinct spelling use reusable
+scratch and create only the admitted owned scalar representations; duplicates
+compare borrowed native values without allocating new payload copies. Native
+membership search/encoding internals are opaque, not a bound on their work. The
+65,536 raw tree-value gate is eight entries per worst-case URL slot in the finite
+certificate, not a promise that every tree has eight entries; actual totals count
+before membership and global overflow withholds all choices. A different adapter
+or extra owned duplicate copying invalidates this recipe until reconciled at N5.
 
 The 8 MiB owned-copy gate remains shared by staging, results, diagnostics and walk
 scratch, including repeated/transient owned copies. Cardinality and string maxima

@@ -90,8 +90,21 @@ not its application slice alone. G10/N5/V11 now require complete bounded populat
 staging, shared ordered registration work, explicit nullable presentation facts,
 null items on global overflow, and actual P1024 useful choices plus independent
 serviceability. No sparse result or honest overflow is a native usefulness pass.
-Cold/warm Settings native qualification remains pending; long metadata and
-complete-producer reconciliation/review remain live root design work.
+Cold/warm Settings and long metadata native qualification remain pending;
+complete-producer reconciliation/review remains live root design work.
+
+## Long application construction handoff
+
+Consume reviewed complete k205, including G11/N8/V13. Actual fixed-query indexed
+tuples supply reported type/name/identifier when whole-path Bundle metadata is
+unsupported; lookup-only identity is no current-plist/index binding. Expose
+metadataSource, keep INDEXED_ITEM UNKNOWN and bundle flags null, exact first
+resolved path and distinct same-ID copies. K191 qualifies getter contact; k127
+constructs counted query/item/scalar ownership and revised N5 costs; k123 normalizes
+the observations; k30 implements actual L1500 source and selected-action acceptance.
+No client/disk/controlled tuple or registered-long condition can replace actual
+indexed provenance. Missing useful tuples/access failure goes once to k93; all
+native outcomes remain pending and no new access/signing/consent or loss follows.
 
 ## Settings construction handoff
 

@@ -30,6 +30,22 @@ completion, not a transcribed finding checklist. No downstream implementation.
   sibling chain before k7. Do not prewrite integration. Retire k209, settle node
   cascade/Creator using Grove's procedures, and commit k209 plus k205 together.
 
+## Long metadata reconciliation input
+
+Read k208's current indexed-item construction across spec/source/acceptance,
+certificate, public metadataSource, SDL/examples/composed profiles and views.
+It supplies reported positive application type and optional name/identifier from
+actual fixed-query items, paired with current before/after directory identity;
+it claims no index-to-inode/current-plist binding. Indexed choices stay UNKNOWN
+with null bundle flags. Keep the 1,004-byte known-plist and 1,024-byte action
+boundaries separate. Revised population certificates are 989,240 attempts and
+6,816,000 gross-charge bytes with unchanged gates. G11/N8/V13 require L1500 actual
+source tuples, independent identities/metadata and unchanged selected-action
+refusal; all native verdicts remain pending. Reconcile consumers and bounded k93
+gap resolution; no access/posture/useful-loss decision has been newly authorized.
+No optional reviewer competed with the required whole-k205 review; create it only
+when closing this full producer, naming native-discovery-k205 and this run's Creator.
+
 ## Settings slice reconciliation input
 
 K207 settles two ID-associated pALL/anchor sweeps and process-only preparation;

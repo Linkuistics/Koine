@@ -1,24 +1,24 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. Application population admission is designed; Settings uses bounded full-map comparison while lazy completeness remains UNKNOWN. Long metadata, whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Population admission, Settings uncertainty and indexed long metadata are designed. Complete reconciliation, whole-producer review and every native G/N/V verdict remain pending. Eight raw-search views are comparison. Graphs begin at their dark Start here node; sequences read from their first message. Source packages/native images are components within one resident process.",
   "discussion": {
-    "title": "Cold and warm Settings without invented lazy readiness",
-    "status": "Settings slice designed; native qualification and complete producer/review pending",
-    "summary": "RUNNING certifies only the process. Two ID-associated properties/anchor sweeps detect changes, never extension health. Preserve positive choices as PARTIAL with UNKNOWN observations; empty panes UNKNOWN/null and empty anchors null. V12 compares pre-visit cold and warm useful choices with independent inventory and visible destinations. Long metadata remains live sibling work.",
+    "title": "Long application choices from actual indexed items",
+    "status": "Long slice designed; complete reconciliation, review and native qualification pending",
+    "summary": "Fixed returned-item type/name/identifier facts plus lookup-only identity avoid an unsupported pathname reader. Public INDEXED_ITEM provenance is no current-plist/index-to-inode proof; choices stay UNKNOWN with null bundle flags. L1500 requires real long indexed tuples and unchanged selected-action refusal. The known-plist threshold is 1,004 bytes; the action threshold stays 1,024.",
     "diagramIds": [
-      "native-settings-readiness",
-      "native-settings-flow",
+      "native-long-applications",
+      "native-application-population",
       "native-discovery-contract",
-      "native-application-population"
+      "native-settings-readiness"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-settings-readiness",
-        "summary": "Added finite two-sweep comparison, honest lazy-readiness outcomes, global overflow and separate cold/warm qualification."
+        "id": "native-long-applications",
+        "summary": "Added fixed actual-item metadata, separate pathname boundaries, public uncertainty and independent L1500 source/action qualification."
       },
       {
-        "id": "native-settings-flow",
-        "summary": "Changed read publication to positive choices with PARTIAL/UNKNOWN lazy completeness; preparation remains process-only."
+        "id": "native-application-population",
+        "summary": "Changed seed metadata to source-labelled facts and added L1500 alongside populous qualification."
       }
     ]
   },
@@ -76,6 +76,15 @@
   ],
   "diagrams": [
     {
+      "id": "native-long-applications",
+      "group": "native-sources",
+      "title": "Preserve long indexed choices and the independent action refusal",
+      "renderer": "svg",
+      "source": "native-long-applications.d2",
+      "rendered": "native-long-applications.svg",
+      "caption": "Designed component/activity view. Native indexed tuples report type/name/identifier; descriptor resolution establishes a current directory, without binding stale index facts to current contents. A missing positive native type or failed/changed identity omits the candidate with diagnostics. Optional missing/conflicting scalars stay null; all indexed choices keep UNKNOWN installation state and null unsupported flags. Shared global gates can withhold all items. L1500 requires actual indexed long tuples and explicit unchanged selected-action refusals; public declarations/disk construction are no native pass."
+    },
+    {
       "id": "native-discovery-contract",
       "group": "native-contract",
       "title": "Own sources and freeze publication",
@@ -127,7 +136,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. No native enumeration, timing, UI fact, memory peak or P1024 pass follows from this design. Settings native qualification and long metadata remain pending sibling work."
+      "caption": "Application adapter activity within one resident process. Every stage reserves owned budgets; the final gate summarizes those checks. Global exhaustion withholds all staged choices. Source-local unsafe metadata may still yield explicit partial coverage. Exact source order is not ranking. Source-labelled metadata preserves the long indexed branch; P1024 and L1500 need actual independent qualification. No native enumeration, timing, UI fact or memory-peak pass follows from this design. Settings qualification, complete reconciliation and whole-producer review remain pending."
     },
     {
       "id": "native-settings-decision",

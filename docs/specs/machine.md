@@ -1844,7 +1844,11 @@ Application population overflow yields FAILED/null items; it does not publish an
 arbitrary source-order sample. G10/N5/V11 accept the real populous catalogue and
 call/copy/response accounting. The owned-copy and core response caps remain 8 MiB;
 multiple aliases still charge core materialization separately. This application
-slice awaits complete-producer review alongside long metadata. Settings now
+slice awaits complete-producer review. Long metadata has a fixed native indexed
+projection, public metadataSource, UNKNOWN installation state and null unsupported
+bundle flags; G11/N8/V13 require real L1500 source tuples, identity and unchanged
+selected-action refusal. Indexed facts do not bind current inode/bundle contents.
+This is no new access/consent/signing or core limit policy. Settings now
 uses two ID-associated pALL/anchor sweeps with a minimum 100 ms gap within three
 seconds. RUNNING is process-only; stable positive choices remain PARTIAL with
 UNKNOWN lazy completeness, empty panes UNKNOWN/null and empty anchors null.

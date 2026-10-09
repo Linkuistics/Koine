@@ -336,6 +336,7 @@ tasks:
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-sources.d2 docs/design/architecture/native-discovery-sources.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-application-population.d2 docs/design/architecture/native-application-population.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-long-applications.d2 docs/design/architecture/native-long-applications.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-settings-decision.d2 docs/design/architecture/native-settings-decision.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-contract.d2 docs/design/architecture/native-discovery-contract.svg
       - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/native-settings-flow.d2 docs/design/architecture/native-settings-flow.svg
@@ -380,6 +381,8 @@ tasks:
             if (!Number.isSafeInteger(value) || value <= 0) throw new Error('Invalid population certificate integer');
           }
           if (l.identifierGroups < l.distinctSpellings + 2 || l.retainedChoices < l.distinctSpellings ||
+            l.indexedTypeValues !== 8 * l.rawURLObservations || r.attemptsPerURLObservation !== 16 ||
+            r.metadataAttemptsPerSpelling !== 10 || s.indexedFactRecordBytes !== 64 || s.ownedIndexedPayloadCopies !== 2 ||
             r.walksPerSpelling !== 2 || r.recursiveIdentifierExpansion !== false ||
             r.providerFiltersAgentsOrHelpers !== false || r.overflowPublication !== 'FAILED_NULL_ITEMS') {
             throw new Error('Population admission, identifier coverage or shared-work contract changed');
@@ -388,10 +391,11 @@ tasks:
             r.attemptsPerRunningObject * l.runningObjects + r.attemptsPerIdentifier * l.identifierGroups +
             r.metadataAttemptsPerSpelling * l.distinctSpellings + r.walksPerSpelling * l.distinctSpellings *
             (r.attemptsPerWalkVisit * s.componentVisitsPerWalk + r.fixedAttemptsPerWalk);
-          const copies = (s.spellingRecordBytes + s.choiceRecordBytes) * l.distinctSpellings +
+          const copies = (s.spellingRecordBytes + s.choiceRecordBytes + s.indexedFactRecordBytes) * l.distinctSpellings +
             s.observationRecordBytes * l.rawURLObservations + s.identifierRecordBytes * l.identifierGroups +
             s.runningRecordBytes * l.runningObjects + s.ownedPathCopies * l.distinctSpellings * s.pathBytes +
             s.ownedNameIdentifierCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
+            s.ownedIndexedPayloadCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
             l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.walkScratchBytes;
           const wire = l.retainedChoices * (s.wireEscapingMultiplier *
             (s.pathBytes + s.nameBytes + s.identifierBytes) + s.wireChoiceFixedBytes) +
@@ -415,6 +419,8 @@ tasks:
           ['old 16384-call ceiling', p => { p.limits.nativeAttempts = 16384; }],
           ['native-order partial prefix', p => { p.recipe.overflowPublication = 'PARTIAL_PREFIX'; }],
           ['per-choice registration re-walk', p => { p.recipe.walksPerSpelling = p.limits.retainedChoices; }],
+          ['omitted indexed projection calls', p => { p.recipe.attemptsPerURLObservation = 2; }],
+          ['omitted indexed payload charges', p => { p.shallowCertificate.ownedIndexedPayloadCopies = 0; }],
           ['broken owned-copy certificate', p => { p.shallowCertificate.walkScratchBytes = p.limits.ownedCopyBytes; }],
           ['broken response certificate', p => { p.shallowCertificate.pathBytes = 8192; }],
           ['agent/helper suppression', p => { p.recipe.providerFiltersAgentsOrHelpers = true; }],
@@ -433,6 +439,10 @@ tasks:
         const missingFacts = buildSchema(printSchema(complete).replace('uiElement: Boolean', 'removedUIFact: Boolean'));
         if (!validate(missingFacts, examples).some(error => error.message.includes('uiElement'))) {
           throw new Error('Control did not reject missing application presentation fact');
+        }
+        const missingProvenance = buildSchema(printSchema(complete).replace('metadataSource: WorkspaceApplicationMetadataSource!', 'removedMetadataSource: WorkspaceApplicationMetadataSource!'));
+        if (!validate(missingProvenance, examples).some(error => error.message.includes('metadataSource'))) {
+          throw new Error('Control did not reject missing indexed metadata provenance');
         }
         if (read('desktop-workspace-native-schema-extension-host.graphql') !== printSchema(complete) + '\n') {
           throw new Error('Complete native SDL is stale; run task design:search-compose before freezing checks');
@@ -544,6 +554,80 @@ tasks:
           { state: 'ACTIVE', selection: 'SELECTED', reason: null });
         requireRejection(loadedOnPrior, assertDisclosureRefusal, 'native update active on prior disclosure host');
         console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
+        JS
+
+  design:long-applications-check:
+    desc: Check long indexed metadata declarations and constructive finite fixture lengths with failing controls; no native source/action pass
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { strict as assert } from 'node:assert';
+        import { readFileSync } from 'node:fs';
+        const subject = JSON.parse(readFileSync('docs/design/long-application-metadata.json', 'utf8'));
+        const population = JSON.parse(readFileSync('docs/design/application-population.json', 'utf8'));
+        const verify = value => {
+          const { source: s, limits: l, qualification: q } = value;
+          assert.equal(s.queryScope, 'NSMetadataQueryIndexedLocalComputerScope');
+          assert.equal(s.predicate, 'kMDItemContentTypeTree = com.apple.application-bundle');
+          assert.deepEqual(s.attributes, ['kMDItemPath', 'kMDItemContentTypeTree', 'kMDItemCFBundleIdentifier', 'kMDItemDisplayName']);
+          assert.equal(s.itemOrigin, 'ACTUAL_QUERY_RESULT');
+          assert.equal(s.typeEvidence, 'EXACT_NATIVE_APPLICATION_BUNDLE_TREE_MEMBER');
+          assert.equal(s.identity, 'BEFORE_AFTER_DIRECTORY_DEVICE_INODE');
+          assert.equal(s.indexToInodeBinding, 'UNESTABLISHED');
+          assert.equal(s.metadataSource, 'INDEXED_ITEM');
+          assert.equal(s.installationState, 'UNKNOWN');
+          assert.equal(s.bundleFlags, 'NULL');
+          assert(!s.wholePathFallback && !s.crossCopyMetadata && !s.extraAccessOrConsent);
+          assert.equal(l.handoffBytesIncludingNul, 1024);
+          assert.equal(l.knownPlistSuffixBytes, Buffer.byteLength('/Contents/Info.plist'));
+          assert.equal(l.rawIndexedTypeValues, 8 * population.limits.rawURLObservations);
+          assert.equal(l.rawIndexedTypeValues, population.limits.indexedTypeValues);
+          assert.equal(q.name, 'L1500');
+          assert.deepEqual(q.boundaryBundleBytes, [1003, 1004, 1023, 1024, 1500]);
+          assert.equal(q.shortSameIdentifierCompetitors, 2);
+          assert.equal(q.explicitShortParentReindexAttempts, 1);
+          assert.deepEqual(q.indexObservationCheckpointsSeconds, [10, 30, 60]);
+          assert(q.requireActualLongIndexedTuple && q.requireIndependentManifestAndObservers &&
+            q.requireNameAndIdentifierForSubject && q.requireUnchangedSelectedLaunchAndNamedOpenRefusal);
+          assert(!q.registeredLongPrecondition && !q.diskOrClientProvenancePasses);
+          assert.equal(q.missingTupleOutcome, 'UNMET_NATIVE_SUPPORT');
+          assert.equal(q.nativeVerdict, 'PENDING');
+          const fixtures = q.boundaryBundleBytes.map(bytes => {
+            const root = `${q.fixtureRoot}/b${bytes}`;
+            let remaining = bytes - Buffer.byteLength(root) - 1 - Buffer.byteLength(q.leaf);
+            const components = [];
+            while (remaining > l.maximumFixtureComponentBytes + 1) {
+              const n = remaining === l.maximumFixtureComponentBytes + 2 ? l.maximumFixtureComponentBytes - 1 : l.maximumFixtureComponentBytes;
+              components.push('a'.repeat(n)); remaining -= n + 1;
+            }
+            assert(remaining >= 2);
+            components.push('a'.repeat(remaining - 1));
+            assert(components.every(part => part.length > 0 && part.length <= 200));
+            const path = `${root}/${components.join('/')}/${q.leaf}`;
+            assert.equal(Buffer.byteLength(path), bytes);
+            const visits = path.split('/').filter(Boolean).length;
+            assert(visits <= l.maximumFixtureComponentVisits);
+            return { bytes, visits, indexedRequired: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
+              handoffRefused: bytes >= l.handoffBytesIncludingNul };
+          });
+          return fixtures;
+        };
+        const controls = [
+          ['source', 'attributes', ['kMDItemPath']], ['source', 'itemOrigin', 'CLIENT_FOUND_FILE'],
+          ['source', 'typeEvidence', 'FILENAME_SUFFIX'], ['source', 'indexToInodeBinding', 'CURRENT_PLIST_PROVED'],
+          ['source', 'installationState', 'INSTALLED'], ['source', 'bundleFlags', 'FALSE'],
+          ['source', 'wholePathFallback', true], ['source', 'crossCopyMetadata', true],
+          ['source', 'extraAccessOrConsent', true], ['limits', 'knownPlistSuffixBytes', 0],
+          ['limits', 'rawIndexedTypeValues', 256], ['qualification', 'registeredLongPrecondition', true],
+          ['qualification', 'requireActualLongIndexedTuple', false], ['qualification', 'diskOrClientProvenancePasses', true],
+          ['qualification', 'missingTupleOutcome', 'PASS'], ['qualification', 'nativeVerdict', 'PASSED']
+        ];
+        for (const [group, field, bad] of controls) {
+          const changed = structuredClone(subject); changed[group][field] = bad;
+          assert.throws(() => verify(changed), `Control accepted ${group}.${field}`);
+        }
+        console.log(JSON.stringify(verify(subject)));
+        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; native G11/N8/V13 PENDING.');
         JS
 
   design:settings-check:

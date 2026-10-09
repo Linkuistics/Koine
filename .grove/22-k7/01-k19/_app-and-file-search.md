@@ -70,6 +70,17 @@ choices in the actual populous native subject; global owned-limit/deadline failu
 publishes no arbitrary source-order prefix. K191 qualifies source contact, k127
 constructs actual accounting and k123 normalizes the facts. No native pass follows.
 
+## Long application source duty
+
+Reviewed complete k205 supplies fixed actual indexed-item type/name/identifier
+projection and independent directory identity, public provenance, UNKNOWN
+installation state and null unsupported bundle flags. Preserve 1,004-byte plist
+and 1,024-byte action limits without a new reader. K191/N8 qualify the exact getter
+contact policy, k127/N5 constructs revised 989,240-attempt/6,816,000-byte accounting,
+and k123/G11 normalizes identity/conflict/null branches. V13 requires actual L1500
+long indexed tuples and unchanged selected-action refusal, not disk/client/old
+action evidence. Required missing/unavailable qualification stays live before baseline.
+
 ## Settings readiness duty
 
 Consume reviewed complete k205. Carry its source-specific lazy-readiness

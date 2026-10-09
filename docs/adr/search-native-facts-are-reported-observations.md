@@ -15,6 +15,17 @@ shares bounded observations and invalidates publication on global overflow, so
 native order cannot silently decide which useful copies survive. Its certificates
 and populous acceptance remain design/qualification obligations, not health proof.
 
+The fixed indexed item projection can supply reported type/name/identifier for
+long choices when whole-path Bundle metadata is unsupported. Current descriptor
+identity does not bind stale index values to current bundle contents. Public
+metadataSource distinguishes that observation; INDEXED_ITEM retains UNKNOWN
+installation state and null unsupported bundle flags. The
+[long source subject](../verification/native-discovery-acceptance.md#long-application-source-subject)
+requires real query tuples and independent fixture facts, with known wrong values
+failing qualification. A descriptor-relative plist reader changes the admitted
+mechanics; suffix/client-path substitution supplies no native evidence. Actual
+missing long tuples remain an unmet useful obligation, not an accepted reduction.
+
 An undetected failure or stale native state can make a fact incorrect or omit a
 choice. Known incorrect witnesses and systematically unknown metadata for the
 configured launchers still fail acceptance. Useful discovery, per-copy identity,

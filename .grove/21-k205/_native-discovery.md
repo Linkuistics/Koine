@@ -92,6 +92,17 @@ until all children finish; partially repaired artifacts are not implementation
 input. The final child owns review creation and node cascade. All three existing
 G/N/V seams remain agreed, and every native verdict remains pending.
 
+## Long metadata slice from k208
+
+K208 supplies actual indexed-item type/name/identifier projection plus lookup-only
+directory identity, public provenance and UNKNOWN/null unsupported bundle facts.
+No index-to-current-plist binding is claimed. L1500 has five exact boundary lengths
+and two short same-ID competitors; actual native tuples and unchanged >=1,024-byte
+selected-action refusal are required, with every native verdict pending. The known
+plist boundary starts at 1,004 bytes. Revised 16U/10C call and indexed-copy reserves
+fit unchanged gates; N5/N8 must verify actual costs/duplicate copies. K209 owns
+complete reconciliation and the whole-node review/cascade before any consumption.
+
 ## Settings slice from k207
 
 Two full ID-associated core/getd pALL/anchor sweeps detect changes across a
@@ -100,5 +111,5 @@ No supported lazy-completeness signal: positive choices PARTIAL/UNKNOWN, empty
 panes UNKNOWN/null and empty anchors null; every exposed destination remains
 required. Settings has its own 131,072-attempt/8 MiB gate with two-map logical
 cost certificates; global overflow withholds items. G4/N4/N5/V12 cold/warm
-qualification remains pending. K208 and k209 remain live; k209 owns complete
+qualification remains pending. K209 remains live and owns complete
 reconciliation and mandatory whole-producer review before k7.

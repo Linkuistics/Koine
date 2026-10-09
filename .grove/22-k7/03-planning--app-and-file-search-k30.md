@@ -75,6 +75,19 @@ helper pressure and serviceability/dialog/hydration observers. New SDL/profile
 metadata fields are additive; prior action-only captures remain independently
 retained. A deadline/overflow/missing useful app does not close acceptance.
 
+## Long native-source acceptance planning duty
+
+After reviewed complete k205 and downstream designs, plan concrete G11/N8/V13
+metadata/read/refusal slices using actual L1500 signed boundary copies and exact
+independent indexed query output. Five lengths and two short competitors qualify
+source association, public provenance, correct known metadata, identity and
+unchanged >=1,024-byte selected launch/named-open/reveal refusal under both controls.
+No registered-long prerequisite or client/disk/injected-source pass is allowed.
+One short-parent reindex preparation and finite captures bound source construction;
+missing real tuples are unmet native support, unavailable observers remain pending.
+Preserve separate old binaries/coverage and independent action/dialog/hydration/
+listener/store/byte-copy controls. Missing usefulness goes once to k93.
+
 ## Settings cold/warm acceptance duty
 
 After complete k205 and all required reviews, plan G4/N4/N5/V12 as concrete

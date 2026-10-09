@@ -83,6 +83,18 @@ reserve cleanup before acquisition and retire each opaque batch before the next.
 Preserve complete-population FAILED/null overflow, independent core response limits
 and G10/N5/V11 controls. Arithmetic is no three-second/opaque-peak/native pass.
 
+## Indexed metadata owner/accounting duty
+
+Consume reviewed k205/G11/N5/N8. Project fixed actual indexed items during their
+query ownership; share at most two descriptor walks per spelling, keep only scalar
+fact records, retire the query before running/registration batches and never borrow
+another copy's fields. Count raw type values (65,536 shared gate) before the native
+membership check; its internals remain opaque. Enumerate 16U/10C projection/check/
+transcode reserve and 64C/two-copy indexed payload charges against actual allocation
+and duplicate comparison, without new duplicate payload copies or C×D walks.
+Revised certificates 989,240 attempts/6,816,000 bytes fit unchanged gates but prove
+no runtime peak/timing/support. Wrong reader/provenance/copy/early release must fail.
+
 ## Settings two-sweep owner/accounting duty
 
 Consume reviewed complete k205. Construct exact pALL record and ID-contained

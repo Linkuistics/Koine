@@ -70,6 +70,17 @@ unknown launcher metadata or missing useful non-witness. An honest FAILED/null
 catalogue still leaves usefulness unmet. Do not silently reduce the native category,
 accept a source-order sample, prune unavailable subjects or resume client raw work.
 
+## Long application coverage duty
+
+After reviewed complete k205 and actual finite L1500 G11/N8/V13 qualification,
+resolve absent real long indexed tuples, wrong type/name/identifier/identity,
+read-time prompts/hydration or selected-action constraint/refusal failure once.
+State the concrete consumer consequence and recommend an alternative to Antony;
+no new reader/access/consent/signing posture or useful loss is silently accepted.
+Disk/client/controlled output cannot pass native provenance. Unavailable required
+observers remain pending; the old accepted registered-long/preferred-long limit
+neither supplies this new source pass nor silently excuses its useful obligation.
+
 ## Settings cold/warm coverage duty
 
 Include V12 alongside V5/V7. Resolve measured missing pre-visit panes/anchors,

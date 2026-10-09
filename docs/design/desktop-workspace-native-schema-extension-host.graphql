@@ -570,6 +570,11 @@ enum WorkspaceApplicationActivationPolicy {
   UNKNOWN
 }
 
+enum WorkspaceApplicationMetadataSource {
+  BUNDLE_RESOURCE
+  INDEXED_ITEM
+}
+
 type WorkspaceApplicationChoice {
   """
   Checked bundle-directory identity; first finalized resolved spelling. No query-long identity pin or later actionability guarantee.
@@ -579,12 +584,17 @@ type WorkspaceApplicationChoice {
   bundleIdentifier: String
 
   """
+  Source of checked type and optional name/identifier. INDEXED_ITEM is an actual returned fixed-query tuple, not current plist or index-to-inode proof; its installationState stays UNKNOWN.
+  """
+  metadataSource: WorkspaceApplicationMetadataSource!
+
+  """
   INSTALLED uses the existing constrained action's ordered registered-list plus preferred-only identity procedure. Negative facts need separate checked evidence; later actions revalidate.
   """
   installationState: WorkspaceApplicationInstallationState!
 
   """
-  Explicit Boolean LSUIElement declaration from admitted Bundle metadata; missing/malformed/unavailable stays null, never inferred false.
+  Explicit Boolean LSUIElement declaration from admitted Bundle metadata; missing/malformed/unavailable or INDEXED_ITEM stays null, never inferred false.
   """
   uiElement: Boolean
 

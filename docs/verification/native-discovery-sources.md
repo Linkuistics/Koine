@@ -130,9 +130,64 @@ Existing selected actions re-resolve the identifier and path independently.
 Bundle metadata inspection is individual-target work with the existing bounded
 lookup/contact limits; this report authorizes no contents-listing exemption,
 arbitrary metadata-file reader or hydrated placeholder access. A long native
-location may remain representable while bundle metadata and later action
-handoff are unsupported. No incorrect known witness is accepted as an opaque
-platform-health limit.
+location may remain representable while whole-path bundle metadata and later
+action handoff are unsupported. Its admitted indexed-item projection below is
+reported native metadata, not a descriptor-relative bundle reader. No incorrect
+known witness is accepted as an opaque platform-health limit.
+
+### Long application source construction
+
+Read-only SDK 27 analysis of Foundation NSMetadata.h and Metadata MDItem.h
+establishes a pathname-free **calling interface** on an already returned item:
+resultAtIndex returns an object; valueForAttribute retrieves its fixed attributes.
+MDItem.h declares kMDItemContentTypeTree as an array of native strings,
+kMDItemCFBundleIdentifier as a bundle identifier, kMDItemDisplayName as a localized
+display name, and kMDItemPath as the item's complete path. Apple's
+[metadata-item interface](https://developer.apple.com/documentation/foundation/nsmetadataitem)
+and [query update contract](https://developer.apple.com/documentation/foundation/nsmetadataquery/disableupdates())
+support this object projection. They promise neither long-location importer
+support nor prompt-free getters nor a binding between a cached tuple and a
+currently resolved inode. No native query/getter was executed in this design.
+
+Select those four attributes only from actual items returned by the existing
+fixed indexed-local application query. The query predicate alone is no type
+check: require an exact native com.apple.application-bundle tree member from that
+same item, and independently resolve the tuple's literal path to a present
+directory before/after its metadata episode. Keep equal device/inode and the
+unchanged first finalized resolved spelling. A running bundle identifier and a
+registration URL cannot supply missing type/identifier/name for a different copy.
+No NSMetadataItem(url:), MDItemCreate, arbitrary attribute/plist, ancestor listing,
+new query/scope, private database or short-alias reader is admitted.
+
+The indexed route applies when the resolved bundle spelling or its known
+20-byte Contents/Info.plist suffix reaches 1,024 bytes; the suffix threshold is
+1,004 bundle bytes. This is separate from the retained action limit. Whole-path
+Bundle/resource calls are withheld there. Positive indexed type plus lookup-only
+identity allows a choice with INDEXED_ITEM metadataSource; name/identifier are
+checked optional scalars, agent/background flags null, installationState UNKNOWN.
+It does not prove current bundle contents or launch eligibility. Native source
+staleness predating the first walk remains an explicit association limit; known
+wrong/replaced fixture witnesses fail actual qualification.
+
+The finite [L1500 subject](native-discovery-acceptance.md#long-application-source-subject)
+uses seven signed copies: five boundary bundles at 1,003/1,004/1,023/1,024/1,500
+UTF-8 bytes and two short competitors for the long identifiers. Component-relative
+fixture construction and independent manifest reading are already demonstrated
+by the [long application fixture](../../scripts/vm-long-application-fixtures.py)
+and [disk-subject record](application-locations-vm.md#subjects-and-procedure);
+that supplies only disk construction, not indexing support. A separate native
+observer must actually receive the expected long tuple from the exact query.
+Normal indexing plus one explicit short-parent reindex attempt is the finite
+preparation programme, not provider behavior. Missing tuples are a native support
+gap; do not substitute disk/client/controlled observations or repeat indefinitely.
+No registered-long URL is required to test an indexed UNKNOWN choice's explicit
+unchanged selected-action refusal. Prior registration coverage remains independent.
+
+Keep source acquisition and these getters under k191's source-specific read policy
+and actual signed dialog/hydration/serviceability controls. Public attribute types
+are no native support pass. If useful long tuples or prompt-free access cannot be
+qualified, k93 records the concrete consumer consequence once and asks Antony;
+no silent permission/posture change or useful-choice loss is authorized.
 
 ### Application population construction evidence
 
@@ -167,12 +222,20 @@ each choice, and new identifiers found only in supplements cannot recursively
 grow the catalogue. Native changes between these separate observations are
 possible; actual later actions always revalidate.
 
-The certificate assigns 32 fixed source/cleanup attempts, 2 per raw URL slot,
-5 per running object, 12 per identifier acquisition/count/disposal group, 8 per
+The certificate assigns 32 fixed source/cleanup attempts, 16 per raw URL slot,
+5 per running object, 12 per identifier acquisition/count/disposal group, 10 per
 individual native metadata inspection, and at most two descriptor walks per
 spelling. The metadata recipe uses one resource-type read and the admitted Bundle
 identifier/info/localized dictionaries; flags are scalar entries in that same
 dictionary. It leaves room for the existing short-path stat/access denial checks.
+The additional raw-slot reserve covers three indexed getters, five native tree
+checks and six scalar checks/comparisons; the per-spelling reserve adds two
+scalar transcodes. Tree count is globally gated at 65,536 before a native
+membership lookup; native array acquisition/search internals remain opaque.
+One 64-byte fact record and two extra indexed name/identifier copies per spelling
+raise the shallow gross certificate to 6,816,000 bytes. Duplicate tuples compare
+borrowed native values without new owned payload copies. Actual adapter copies
+or extra calls outside that construction invalidate the certificate.
 Do not apply this certificate to a different reader or repeated per-choice
 registration walk. Actual N5 must enumerate getter, syscall and explicit cleanup
 attempts, validate each term, and reserve cleanup before resource acquisition.
@@ -200,7 +263,7 @@ justified by those declarations. Unreadable/unsupported metadata stays unknown.
 The owned-copy certificate for the shallow subject reserves spelling/choice/
 ordinal/identifier/running records, two owned copies of path/name/identifier
 payloads, diagnostic records and 1 MiB of one-walk scratch. Its worst-case logical
-charge is 5,636,352 bytes, below the unchanged 8 MiB gate. These record/scratch
+charge is 6,816,000 bytes, below the unchanged 8 MiB gate. These record/scratch
 allowances are a required adapter construction contract, not measured Swift
 heap layout. A consumer that cannot keep its actual owned allocations/copies
 inside them must revise the certificate and bounds before claiming applicability.

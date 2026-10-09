@@ -74,6 +74,18 @@ agent/background/accessory/nested-helper facts cannot suppress choices. Preserve
 shared ordered fail-before-match eligibility and conservative negatives, with
 G10/N5/V11 useful population and malformed/unknown/identity controls.
 
+## Long indexed normalization duty
+
+Consume reviewed k205/G11/N8/V13. A positive exact native application-bundle tree
+member plus present before/after directory identity can supply INDEXED_ITEM
+choices; predicate/suffix/running identifier alone cannot. Normalize optional
+name/identifier null/conflict branches without cross-copy substitution; indexed
+installationState stays UNKNOWN and unsupported bundle flags null. Preserve exact
+resolved spelling and distinct same-ID copies, with no claimed index-to-inode or
+current-plist binding. The 1,004-byte known-plist and 1,024-byte action boundaries
+are independent. Actual L1500 type/identity/name/ID/usefulness remains pending;
+known incorrect witnesses fail, not opaque-health acceptance.
+
 ## Settings lazy-observation duty
 
 Consume reviewed complete k205. Normalize pALL records by their own exact IDs

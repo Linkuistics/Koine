@@ -401,6 +401,15 @@ an empty policy set means no running policy was associated with that copy.
 Runtime policies can change and do not describe stopped apps. Koine suppresses
 no helpers, agents or accessory apps; clients choose their filtering policy.
 
+metadataSource distinguishes BUNDLE_RESOURCE from INDEXED_ITEM type/name/identifier
+observations. The latter comes from an actual fixed-query item where whole-path
+Bundle metadata is unsupported; it does not prove current plist contents or bind
+the index to the observed inode. INDEXED_ITEM choices keep UNKNOWN installation
+state and null bundle flags. Keep their exact path/identifier and copy option.
+The known plist suffix can exceed its limit at a 1,004-byte bundle path; at 1,024
+bytes the existing explicit action handoff also refuses. Neither is absence.
+Real long indexed-source and selected-action qualification remains pending.
+
 Preserve distinct copies with one identifier. For an INSTALLED selected app,
 pass both bundleIdentifier and applicationPath into constrained launch; it needs
 workspace:control AND desktop:control. UNKNOWN/UNREGISTERED identified choices

@@ -62,6 +62,16 @@ The population slice's SDL/arithmetic/render/link checks provide no native pass;
 sparse catalogues, owned-limit/deadline failure and unavailable populous subjects
 stay live before baseline. Preserve independent action-only compatibility.
 
+## Long native application baseline duty
+
+Require actual G11/N8/V13 L1500 source tuples, correct independently known fixture
+type/name/identifier/copy identity, INDEXED_ITEM UNKNOWN/null bundle facts and
+unchanged selected >=1,024-byte launch/named-open/reveal refusal with exact copied
+bytes. Complete producer and required reviews precede implementation. A disk/client
+or controlled tuple, SDK declaration, schema/render arithmetic or old action-only
+capture supplies no native source pass. Useful-source/access/constraint gaps are
+resolved once in k93 with Antony; unavailable qualification keeps baseline live.
+
 ## Settings baseline duty
 
 Actual G4/N4/N5/V12 must qualify cold-before-visit and warm inventories under

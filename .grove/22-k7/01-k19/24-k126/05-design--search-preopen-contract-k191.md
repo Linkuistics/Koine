@@ -72,6 +72,16 @@ the existing source/individual-contact policy. P1024 adds helper/baseline pressu
 post-result exclusion cannot undo native prompt/hydration contact. No new plist
 reader, ancestor inspection or helper access posture follows from nullable facts.
 
+## Long indexed getter access duty
+
+After complete k205 review, qualify the exact four-attribute projection on actual
+fixed-query items under the existing source/individual-contact policy. Object
+getters may perform opaque I/O: pathname-free signatures prove neither no-dialog
+nor no-hydration. Pair L1500/V13 with protected/cloud/alias and independent positive
+controls at N8/V8; lookup-only identity grants no plist/listing access. No new
+NSMetadataItem(url:), descriptor resource reader, helper, alias workaround, scope,
+consent or signing posture follows. Real useful/source-policy gaps go once to k93.
+
 ## Settings exact-read policy duty
 
 After complete k205 review, qualify both full-map pALL/ID-contained-anchor

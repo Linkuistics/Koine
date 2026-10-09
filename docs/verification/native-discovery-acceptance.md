@@ -14,7 +14,9 @@ Review integration requires a further producer/review before k7 can consume the
 application-population bounds, cold/warm settings readiness or long-application
 metadata/handoff design. The application slice now defines a complete staged
 population, explicit cost certificates and P1024 below. Whole-producer review,
-actual populous qualification and constructible long metadata remain pending.
+actual populous qualification remains pending. Long metadata now has the fixed
+indexed-item construction and finite L1500 source-origin subject below; actual
+source safety/usefulness and selected-action qualification remain pending.
 Settings now has a two-sweep readiness-uncertainty contract and finite cold/warm
 qualification below; all actual verdicts remain pending. No affected row passes
 by inference or from response stability.
@@ -85,6 +87,18 @@ composition seams; actual native counterpart rows below remain pending.
 | G9 | Corrected core disclosure catalogue under koine:manage contains workspace:read and control text matching all native grant surfaces: no client filesystem access, background preparation without desktop control, both controls for launch/open/reveal and preserved handler reach. No management or workspace GraphQL route initiates ask=true. Complete new-host and prior-disclosure-host refusal profiles/digests remain distinct. Removing the read entry, retaining “always needs desktop control”, or making the prior-host native update ACTIVE must fail. |
 | G10 | Full bounded application population with >256 coherent useful identifiers, duplicate URL slots, same-ID copies, helper/agent pressure, nullable explicit Boolean flags and empty/unknown/conflicting running policy sets. All coherent seed IDs expand once, lists retain fail-before-match semantics and no helper/unknown choice is silently filtered. At/exceed raw-slot, distinct-spelling, ID, choice, call, gross-copy, diagnostic and shared deadline edges, global overflow yields FAILED/null items even after useful staging. Root/nested aliases retain independent errors. Reverse/permuted source order cannot turn overflow into a different partial survivor set. Inject a 256-ID quota, per-choice list re-walk, earlier-failure skip, fabricated false flags, helper suppression or prefix-on-overflow and require rejection. Source-local unsafe metadata still produces the declared partial/unknown outcomes. |
 
+G11 exercises controlled indexed tuples: exact positive application-bundle tree
+member, missing/wrong/nonmatching type, null/malformed/conflicting name/identifier,
+directory versus file, identity replacement inside the episode, same-ID copies,
+and INDEXED_ITEM versus BUNDLE_RESOURCE metadataSource. INDEXED_ITEM keeps UNKNOWN
+and null bundle flags; no cross-copy fields, suffix proof or source-origin repair.
+At the 1,003/1,004 known-plist and 1,023/1,024 handoff boundaries, only the admitted
+reader is reachable. Raw tree values at/beyond 65,536, duplicates, source order
+and global exhaustion after useful staging obey FAILED/null precedence. Missing
+metadataSource, an indexed INSTALLED/false flag, wrong type/member/identity, a
+whole-path fallback or a client path labelled indexed must fail its independent
+controlled counterpart. These controlled subjects do not qualify actual indexing.
+
 ## N: actual source and provider binaries
 
 | ID | Finite subject and independent control |
@@ -96,6 +110,18 @@ composition seams; actual native counterpart rows below remain pending.
 | N5 | Every explicit owned native/syscall attempt and gross owned allocation/copy reserves budget. Application envelope: 8,192 raw URL slots, 2,048 distinct spellings/choices, 2,050 identifier groups, 2,048 running objects, 1,048,576 explicit attempts and 8 MiB copies. Check its source recipe/call and shallow copy/wire certificates term by term, actual before/after walks <=2C and no C×D multiplier. Settings uses 131,072 attempts; locations retain 16,384. Check the separate Settings 514-event/90,304-attempt/6,029,312-byte logical certificate against actual adapter calls and gross charges, two sweeps maximum, 256 raw pane records, 128 raw anchors/pane and 4,096 total raw anchors per sweep. Reserve cleanup before acquisition. At four jobs, 64 diagnostics and all count/string/copy/response/deadline ceilings, exercise exact/beyond edges with failing off-by-one and prefix controls. Opaque native batches/replies/ARC/extension internals are recorded separately; peaks/duration remain unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
+
+N8 owns the actual indexed projection and long-source boundary: inspect fixed
+four-attribute getters on actual query items, native tree count/member/scalar
+checks, duplicate comparison and two scalar transcodes. Never call pathname-based
+item/Bundle/resource readers beyond their admitted boundaries or add a descriptor
+plist reader. Enumerate actual costs against N5's revised 989,240-attempt and
+6,816,000-byte shallow certificates, the unchanged 1,048,576/8 MiB gates and the
+65,536 raw tree-value gate. No additional native array or query survives its
+source episode; no new per-choice registration walk. A projection/copy omission,
+cross-copy metadata, wrong-reader call, identity change or source→action route must
+fail the appropriate actual call-path/accounting/image control. This is separate
+from N6 lifecycle holds and from actual V13 useful-source observation.
 
 ## V: useful native observations and appropriate selections
 
@@ -119,6 +145,72 @@ hardware/native fixture remains pending. No older-OS/legacy programme is require
 | V10 | Corrected disclosure-capable signed host: native grant creation, request approval, existing-grant views and management all show matching workspace read/control reach and serve native profiles. Independently retained prior selection-aware signed host: native bundled/update candidates refused before initializer/factory/start as unsupported-feature, retained action-only 1.0.1 active with selected-with-refusals and complete action SDL. Pair with a positive loading control on the corrected host. Missing read text, stale control text or prior-host native load fails; native acceptance remains pending. |
 | V11 | Actual P1024 populous catalogue below on normally launched signed supported hosts, complete new bundled/update profiles. Independent useful-choice manifest must find all 1,024 useful identifiers with correct copy identity/name/eligibility, including all fourteen configured/system witnesses, while agent/background/nested-helper and baseline pressure consume the same envelope. Native indexed/running breadth must supply non-witness choices; no hidden seeds. Whole-population overflow, deadline miss or any missing useful choice is an unmet obligation, never a passing sparse/sample result. Native metadata/source/UI facts and independent listener/store/action/dialog/hydration controls must detect deliberate wrong/missing outcomes. |
 | V12 | Three immediate pre-visit cold Settings queries, independent post-visit scalar inventory and warm comparisons under the bounded protocol below. Every exposed pane/anchor must be useful in both states; full-map stability alone leaves lazy completeness UNKNOWN. Independent lazy-growth/association/foreground/destination/gate controls must fail deliberately wrong subjects. Unavailable qualification stays pending. |
+| V13 | Actual L1500 below, complete new bundled/update profiles on signed supported hosts: real long indexed path/type/identifier/name tuple, independent present directory identities, source-labelled UNKNOWN choices and unchanged selected launch/named-open/reveal refusal under both controls. Disk/client/controlled observations or retained action-only subjects do not pass source provenance. Missing useful tuples, wrong metadata or prompting/hydrating reads remain unmet; unavailable required observers remain pending. |
+
+## Long application source subject
+
+L1500 is a finite **pending** qualification subject, declared in the
+[construction certificate](../design/long-application-metadata.json). Install five
+purpose-built signed application bundles at exact resolved absolute path lengths
+1,003, 1,004, 1,023, 1,024 and 1,500 UTF-8 bytes excluding NUL, plus two distinct
+short signed copies sharing respectively the 1,024/1,500 identifiers. Use distinct
+boundary identifiers and copy identities, known localized names, and explicit
+Boolean flag declarations so withheld bundle flags cannot be mistaken for false.
+Use an indexed local /Applications fixture parent, legal ASCII components of at
+most 200 bytes and at most 32 component visits. Construct/copy/sign via held
+component-relative fixture directories outside Koine; no provider path substitute
+or new access policy follows from a test fixture's privileged preparation.
+
+Freeze an independent manifest of every exact path/byte length, bundle-directory
+device/inode, identifier/name/flags and signed bundle content digest. The existing
+component-relative disk fixture supplies a construction pattern, not actual
+index exposure. A separate authorized observer must run the **exact** fixed
+indexed-local predicate and inspect real result objects/attributes. It must
+actually observe the expected 1,004/1,023/1,024/1,500 tuples and correct current
+fixture facts. The 1,003-byte bundle is the ordinary-reader control. No artificial
+NSMetadataItem, custom index database, different scope, hidden seed, client list,
+registration-only copy or arbitrary predicate may stand in for those tuples.
+
+Native fixture preparation is bounded: normal indexing, at most one explicit
+reindex request on the short fixture parent, and independent captures at 10, 30
+and 60 seconds after that preparation. These captures are outside a provider
+job's three-second budget. Run the final Koine read once source preconditions are
+observed, under the same population/copy/deadline gates as normal discovery, with
+the native baseline included. An absent real tuple after this programme is an
+unmet source-support subject; do not credit disk construction as a pass, replace
+provenance, loop deeper or quietly waive usefulness. Missing OS/required observer
+availability stays pending. k93 makes one bounded consequence/alternative decision
+with Antony if this source or its read policy cannot serve the obligation.
+
+Compare every returned fixture field against the manifest, including distinct
+same-ID short/long identities, unchanged resolved spelling, INDEXED_ITEM metadata
+provenance, UNKNOWN installation state, null unsupported bundle flags and useful
+correct identifier/name. A null name/identifier is legal API uncertainty but fails
+this known-value subject. Device/inode bracketing detects observed replacement;
+wrong stale facts predating the bracket fail the independent witness, while the
+source's general index-to-inode association remains unproved. Returned optional
+name/ID conflicts never select another copy's values. No query launches/registers
+an app or invokes the actions to make the source look successful.
+
+Explicitly submit each actual >=1,024-byte choice's unchanged identifier AND path
+to constrained launch and named open under workspace:control AND desktop:control;
+also submit its path to Finder reveal. Require the retained failed handoff outcome,
+null receipt/no delivered document/no activation or selected item, with independent
+process/kernel/handler/Finder witnesses over the positive control's observation
+window. Copy retains exact bytes. Never retry an unconstrained short competitor.
+Separately act on an actual short BUNDLE_RESOURCE INSTALLED choice to control the
+observers. The 1,004…1,023 indexed choices qualify metadata only; their longer
+plist spelling prevents promising action Bundle support. This does not reopen or
+pass the independently accepted registered-long/preferred-long coverage limit.
+
+Controls must independently reject a missing long tuple, wrong type/identifier/
+name/inode, borrowed short-copy metadata, an INDEXED_ITEM falsely INSTALLED or
+false-flagged, altered selected path/identifier, unconstrained retry, a delivered
+effect after claimed refusal, and missed read-time dialog/hydration/serviceability
+failure. Pair G11/N8 controlled replacement branches with the real finite source
+subject; controls that cannot produce their actual precondition remain pending.
+Freeze/digest all manifests, source/observer/call-accounting inputs and retain
+per-item comparisons. Public getters and design checks qualify no native outcome.
 
 ## Settings cold and warm qualification
 
@@ -209,11 +301,12 @@ serviceability controls, fresh dialog/hydration subjects and new binary profiles
 No read registration, launch, source widening, raw walk or consent fallback is
 permitted. Unavailable native populous conditions stay live before baseline.
 
-At the shallow full envelope the owned-attempt certificate is 870,456, below
+At the shallow full envelope the owned-attempt certificate is 989,240, below
 1,048,576. A fixed-record/payload construction reserves 512C spelling records,
 256C choice records, 32U ordinal records, 128D identifier records, 128R running
 records, two copies of each path and name/ID payload, 64×2,048 diagnostic bytes,
-and 1 MiB one-walk scratch: 5,636,352 bytes. These are maximum **logical gross
+64C indexed fact records, two extra copies of indexed name/identifier scalars,
+and 1 MiB one-walk scratch: 6,816,000 bytes. These are maximum **logical gross
 charges** the actual adapter must satisfy, not a measured Swift/RSS bound. N5
 accounts actual owned copies, record/container allocation and scratch before
 relying on the certificate; unsupported larger allocations invalidate it.

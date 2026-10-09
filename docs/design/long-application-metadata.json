@@ -1,0 +1,42 @@
+{
+  "purpose": "Constructive source/fixture declarations; no native query, action or support pass",
+  "source": {
+    "queryScope": "NSMetadataQueryIndexedLocalComputerScope",
+    "predicate": "kMDItemContentTypeTree = com.apple.application-bundle",
+    "attributes": ["kMDItemPath", "kMDItemContentTypeTree", "kMDItemCFBundleIdentifier", "kMDItemDisplayName"],
+    "itemOrigin": "ACTUAL_QUERY_RESULT",
+    "typeEvidence": "EXACT_NATIVE_APPLICATION_BUNDLE_TREE_MEMBER",
+    "identity": "BEFORE_AFTER_DIRECTORY_DEVICE_INODE",
+    "indexToInodeBinding": "UNESTABLISHED",
+    "metadataSource": "INDEXED_ITEM",
+    "installationState": "UNKNOWN",
+    "bundleFlags": "NULL",
+    "wholePathFallback": false,
+    "crossCopyMetadata": false,
+    "extraAccessOrConsent": false
+  },
+  "limits": {
+    "handoffBytesIncludingNul": 1024,
+    "knownPlistSuffixBytes": 20,
+    "rawIndexedTypeValues": 65536,
+    "maximumFixtureComponentBytes": 200,
+    "maximumFixtureComponentVisits": 32
+  },
+  "qualification": {
+    "name": "L1500",
+    "fixtureRoot": "/Applications/KoineLongCatalogueFixtures",
+    "leaf": "Fixture.app",
+    "boundaryBundleBytes": [1003, 1004, 1023, 1024, 1500],
+    "shortSameIdentifierCompetitors": 2,
+    "explicitShortParentReindexAttempts": 1,
+    "indexObservationCheckpointsSeconds": [10, 30, 60],
+    "requireActualLongIndexedTuple": true,
+    "requireIndependentManifestAndObservers": true,
+    "requireNameAndIdentifierForSubject": true,
+    "requireUnchangedSelectedLaunchAndNamedOpenRefusal": true,
+    "registeredLongPrecondition": false,
+    "diskOrClientProvenancePasses": false,
+    "missingTupleOutcome": "UNMET_NATIVE_SUPPORT",
+    "nativeVerdict": "PENDING"
+  }
+}

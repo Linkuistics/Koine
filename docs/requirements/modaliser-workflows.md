@@ -117,6 +117,14 @@ the earlier system-find and custom-traversal designs are comparison inputs,
 not the selected product boundary. Native metadata and existing explicit
 launch/open/reveal actions remain Koine responsibilities.
 
+Long native application choices preserve exact copy spelling/identity, honest
+unsupported metadata and selected-action refusal. The
+[indexed metadata design](../specs/workspace-search.md#long-application-indexed-metadata)
+uses actual fixed-query tuples with explicit provenance; source facts do not
+prove current plist or launch eligibility. L1500's actual long-source/usefulness
+qualification remains pending. No client-found path can close native provenance,
+and no new access policy or useful-choice loss is approved by that design.
+
 Koine's own location and metadata reads remain prompt-free. They must report
 blocked, unavailable, unknown and healthy empty outcomes honestly and avoid
 hydration. Any consent/setup change needs its own agreement

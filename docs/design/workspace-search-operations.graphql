@@ -17,7 +17,7 @@ query NativeStartingLocations($requests: [WorkspaceLocationRequest!]) {
 query NativeApplications {
   apps: workspaceApplications {
     status
-    items { name applicationPath bundleIdentifier installationState uiElement backgroundOnly runningActivationPolicies sources }
+    items { name applicationPath bundleIdentifier metadataSource installationState uiElement backgroundOnly runningActivationPolicies sources }
     sources { ...DiscoveryCoverage }
     resultsTruncated
   }
@@ -79,6 +79,9 @@ mutation RevealChosenSetting($selection: WorkspaceSettingSelection!) {
 # feed the existing workspaceLaunchApplication, under both controls. UNKNOWN/
 # UNREGISTERED identified apps stay reveal/copy choices. Reads never register apps.
 # Keep locations lossless: the existing 1024-byte handoff refusal still applies.
+# INDEXED_ITEM reports source metadata, not current plist/launch eligibility.
+# Its state stays UNKNOWN and flags null; keep copy available. Explicit selected
+# actions keep identifier AND path; never retry unconstrained on a long refusal.
 # Settings keys are opaque exact selectors, never custom URLs or script text.
 # Application population overflow is FAILED/null, never an arbitrary prefix.
 # Filter agent/background/runtime-policy facts on the client; null flags are
