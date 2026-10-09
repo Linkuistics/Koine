@@ -80,25 +80,40 @@ composition seams; actual native counterpart rows below remain pending.
 | G6 | Revoke before admission, between native return/publication, between reveal/activation; provider stop and client cancellation. Local UI setup has its independent stop/late-return subjects in N7/V6, rather than bearer revocation authority. Original capability/lifecycle errors coexist with surviving frozen status; nothing late republishes or starts another effect. Admitted effects are not rolled back. |
 | G7 | Nested first/second items aliases share one native observation; separate root aliases have separate owners. FAILED yields failed on both selected items paths, status-only has no generated items error. BLOCKED/UNAVAILABLE/UNKNOWN yield ordinary null without generated errors; nonnull publication propagation remains standard. |
 | G8 | Exact input IDs/anchor names: whitespace, Unicode spelling distinctions, quotes/script-like text and URI-like strings cannot become expressions/URLs; invalid controls/length/NUL refused. Lazy no-such-object at an exact reveal pre-check is failed/unestablished selection, never SELECTION_UNAVAILABLE: no misc/mvis or activation follows. Exercise a known pane/anchor retained from a prior incarnation in a fresh unvisited target; a controlled positive reply admits only that exact selection. Malformed/refused/blocked answers retain their independent outcomes. No arbitrary target/event/setup/retry input. |
-| G9 | Corrected core disclosure catalogue under koine:manage contains workspace:read and control text matching all native grant surfaces: no client filesystem access, background preparation without desktop control, both controls for launch/open/reveal and preserved handler reach. No management or workspace GraphQL route initiates ask=true. Complete new-host and prior-disclosure-host refusal profiles/digests remain distinct. Removing the read entry, retaining “always needs desktop control”, or making the prior-host native update ACTIVE must fail. |
+| G9 | Corrected core disclosure catalogue under koine:manage contains workspace:read and control text matching all native grant surfaces: including fixed application information/name files and direct localization names, no client filesystem access, background preparation without desktop control, both controls for launch/open/reveal and preserved handler reach. No management or workspace GraphQL route initiates ask=true. Complete new-host and prior-disclosure-host refusal profiles/digests remain distinct. Removing the fixed-file/direct-localization clause, removing the read entry, retaining “always needs desktop control”, or making the prior-host native update ACTIVE must fail. |
 | G10 | Full bounded population with >256 coherent useful IDs, duplicate slots, same-ID copies, helper pressure, nullable Boolean flags and observed running policies. Each coherent ID expands once; no helper/unknown choice is filtered. Raw-slot/spelling/ID/choice/call/gross-copy/deadline overflow gives FAILED/null after useful staging. Diagnostic edges 63/64/65 and >1,024 INDEXED_ITEM uncertainties retain all otherwise valid choices, at most 64 records and DIAGNOSTIC_LIMIT, resultsTruncated false for saturation alone. Fixed summaries preserve omitted late failure/block/unknown reasons and precedence under reversed/permuted order. Inject a 256-ID quota, per-choice re-walk, earlier-failure skip, false flags, helper suppression, prefix-on-overflow, diagnostic-fatal publication or status derived only from retained details; require rejection. Source-local unsafe metadata retains honest partial/unknown outcomes and aliases retain independent errors. |
 
 G11 exercises controlled indexed tuples: exact native application-bundle member,
 missing/wrong type and null/malformed/conflicting scalars, file/directory,
 replacement, distinct same-ID copies and source provenance. INDEXED_ITEM stays
 UNKNOWN with null flags, without cross-copy fields, suffix proof or origin repair.
+K213/k214 refute the current ordinary name-file closure and useful-subject
+dimensions. K215 and its mandatory whole-producer review/earned integration must
+replace those design inputs before G10/G11/N5/N8/V11/V13 can qualify the reader.
+The old numerical/file controls below are counterexamples, not implementable
+useful-subject certification; no native verdict follows them.
+
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;
 1,024/1,500 admit only actual indexed tuples. Require localized names distinct
 from plain Info names at 977 and the old missed band 978. Exercise en/Base/English/
 multibyte locale names, every fixed layout/platform/plain pair, complete direct
-inventory and explicit preferences/global/selected/Base/development order. Reject
-opaque Bundle/resource lookup, whole descendant paths, hard-coded locale inventory,
+inventory and explicit preferences/global/selected/Base/development order. With no
+matching preference and no English/Base resource, an exactly observed development
+region must lead the selector's possible array and beat the byte-first backstop;
+without that region the byte-first backstop is explicit. A real matching preference
+must still win. Verify all information-base/layout pairs, including Resources/Info.plist,
+and that an earlier candidate's usable bundle name beats a later display name.
+Reject opaque Bundle/resource lookup, whole descendant paths, hard-coded locale inventory,
 ambiguous selector values, CFBundleLocalizations-only inventory, unlocalized rescue,
 symlink/special/dataless descendants, conflicting file/root identity, partial reads,
 malformed dictionaries and per-app quota/prefix behavior. Raw type and metadata-plan
-entry gates at/beyond 65,536, file bytes 65,536 and dictionary keys 4,096 use global
-FAILED/null precedence. Preserve independent action limits and k211 saturation/
+entry gates at/beyond 65,536 and dictionary keys 4,096 retain their proposed global
+FAILED/null controls. The 65,536-byte file gate is refuted by an 83,346-byte useful
+Info.plist and ten shipped loctables. Its individual/global failure contradiction
+and replacement size require k215; neither refusal can pass those useful witnesses.
+Include Find My/Voice Memos English differences, a non-English loctable witness
+and baseline L/input failures in the replacement design controls. Preserve independent action limits and k211 saturation/
 Settings controls. Missing provenance or known wrong type/name/identity must fail
 independent counterparts. Controlled seams establish no actual filesystem/index pass.
 
@@ -114,7 +129,7 @@ principal/action/shared lookup must fail source reachability AND image controls.
 Identical imports with widened paths are a required failing counterpart. Test injection is absent from production exports/linkage. |
 | N3 | Real Foundation location values; NSMetadataQuery fixed predicate and IndexedLocal scope, gathering completion/stop/late notifications; running source; AppKit ordered list-plus-preferred eligibility paired with actual action selection, separate deprecated error-bearing negative evidence, and individual-target bundle identity. Record actual errors, count and copied-value accounting; substitutions pass branch logic only. |
 | N4 | Exact settings address typeKernelProcessID; trusted OS bundle/signature/incarnation revalidation. Two core/getd sweeps of all xppb pALL ID/name records and ID-contained all xppa pnam, minimum 100 ms inter-sweep gap inside three seconds. Inspect actual want/from/form/seld and native list/record/text types, record IDs, <=16 scalar direct keys, optional class and discarded fields; no positional zip. Preflight every event ask=false and pinned no-prompt flags. Unique-ID resolution and pALL are actual qualification subjects. Wrong class/ID/type, duplicate IDs, unchanged IDs with changed anchors, replacement/late reply and repeated lazy-empty replies must be detected honestly. Selected reveal still re-resolves exact pane/anchor with scalar core/getd, misc/mvis then one pinned activates=true fixed-bundle open; callback replacement/exit remains ambiguous. No NSRunningApplication.activate/AX/loading/current-pane assignment/interpreter fallback. |
-| N5 | Enumerate every owned native/syscall attempt and gross allocation/copy. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 attempts and 8 MiB copies. Check 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire certificates (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
+| N5 | Enumerate every owned native/syscall attempt and gross allocation/copy. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 attempts and 8 MiB copies. Check old conditional 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire arithmetic, reproduce the baseline refutation, at the old dimensions (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), then qualify the reviewed k215 replacement certificate, <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
 
@@ -127,14 +142,16 @@ fixed-file probe/read/parse and scalar extraction/disposal against the
 table. Whole target paths are root resource type only through 1,023 bytes; descendants
 use literal held-directory components and actual parent NAME_MAX. No foreign Bundle,
 whole descendant path, hidden fallback/traversal or lookup/action module contents
-access is admitted. Verify both 64 KiB input buffers, selected-info/current-name
+access is admitted. The refuted proposal had two 64 KiB inputs; consume k215's reviewed replacement sizes and account both selected-info/current-name
 native dictionaries, no-copy CFData, borrowed development-region and final-only
 scalar copying against the actual ownership and gross certificate. Actual XML,
 binary and OpenStep .strings formats, layout/platform preference and preferred-
 language/Base/development selection require positive and deliberately broken
 controls. Public parser declarations or historical CF source are not a native pass.
 
-Validate 2,345,024 attempts and 8,340,416 gross bytes under 4,194,304/8 MiB, with
+Check the conditional 2,345,024 attempts and 8,340,416 gross-byte arithmetic,
+reproduce the measured baseline counterexample, then consume k215's reviewed
+replacement certificate for actual qualification under the selected gates, with
 the separate 65,536 raw indexed-type gate and 65,536 shared metadata-plan gate.
 Count every preference, selector and direct directory slot, including duplicate/
 rejected values. Measure L, file-input bytes, localization components and actual
@@ -180,7 +197,7 @@ hardware/native fixture remains pending. No older-OS/legacy programme is require
 | V7 | Compare all runtime exposed pane IDs/names/anchors with an independent exact-target observer under V12's pre-visit/post-visit protocol, and show all returned within bounds. Independently witness Network, Sound, Appearance and Displays plus a non-witness exposed pane and an exposed nested anchor; reveal every returned anchor in the finite inventory with visible destination controls. Hardware/account/managed-dependent areas have explicit subject availability; absence of a required ordinary area fails usefulness. Stable replies and UNKNOWN diagnostics cannot excuse missing useful keys. No private-sidebar/guessed-link substitute. |
 | V8 | Fresh first-use protected/known-cloud application targets and redirected Documents/known aliases for the actual metadata mechanisms. Lookup-only identity permission is no listing exemption. Known protected target alias policy must refuse individual unsafe inspection; source/index acquisition contact happens earlier and must itself meet read policy. Record metadata contact/race/unknown alias limits; no global materialization pin, raw home search or foreign mount inventory. |
 | V9 | Declared indexed application scope with indexing disabled, excluded and rebuilding, measured separately from a normally populated control. Independently registered system apps and running supplements cannot hide an empty/contradicted breadth source as COMPLETE/AVAILABLE. Record actual completion, source membership and UNKNOWN/PARTIAL diagnostics without claiming internal index health. Unavailable native state remains pending. |
-| V10 | Corrected disclosure-capable signed host: native grant creation, request approval, existing-grant views and management all show matching workspace read/control reach and serve native profiles. Independently retained prior selection-aware signed host: native bundled/update candidates refused before initializer/factory/start as unsupported-feature, retained action-only 1.0.1 active with selected-with-refusals and complete action SDL. Pair with a positive loading control on the corrected host. Missing read text, stale control text or prior-host native load fails; native acceptance remains pending. |
+| V10 | Corrected disclosure-capable signed host: native grant creation, request approval, existing-grant views and management all show matching workspace read/control reach, including fixed application information/name files and direct localization names, and serve native profiles. Independently retained prior selection-aware signed host: native bundled/update candidates refused before initializer/factory/start as unsupported-feature, retained action-only 1.0.1 active with selected-with-refusals and complete action SDL. Pair with a positive loading control on the corrected host. Missing fixed-file/direct-localization read clause, missing read text, stale control text or prior-host native load fails; native acceptance remains pending. |
 | V11 | Actual P1024 populous catalogue below on normally launched signed supported hosts, complete new bundled/update profiles. Independent useful-choice manifest must find all 1,024 useful identifiers with correct copy identity/name/eligibility, including all fourteen configured/system witnesses, while agent/background/nested-helper and baseline pressure consume the same envelope. Native indexed/running breadth must supply non-witness choices; no hidden seeds. Whole-population overflow, deadline miss or any missing useful choice is an unmet obligation, never a passing sparse/sample result. Native metadata/source/UI facts and independent listener/store/action/dialog/hydration controls must detect deliberate wrong/missing outcomes. |
 | V12 | Three immediate pre-visit cold queries, independent post-visit inventory/warm comparisons, plus a separate fresh unvisited-incarnation reveal of a known earlier pane/anchor below. Every exposed choice must remain useful; full-map stability leaves lazy completeness UNKNOWN and confirmation timeout does not pass useful two-sweep qualification. Lazy-growth/association/foreground/destination/gate controls must reject wrong subjects. Unavailable qualification stays pending. |
 | V13 | Actual L1500 below, complete new bundled/update profiles on signed supported hosts: real long indexed path/type/identifier/name tuple, independent present directory identities, source-labelled UNKNOWN choices and unchanged selected launch/named-open/reveal refusal under both controls. Disk/client/controlled observations or retained action-only subjects do not pass source provenance. Missing useful tuples, wrong metadata or prompting/hydrating reads remain unmet; unavailable required observers remain pending. |
@@ -350,7 +367,7 @@ serviceability controls, fresh dialog/hydration subjects and new binary profiles
 No read registration, launch, source widening, raw walk or consent fallback is
 permitted. Unavailable native populous conditions stay live before baseline.
 
-At the shallow full envelope the explicit attempt certificate is 2,345,024 under
+At the old proposed shallow full envelope the conditional attempt calculation is 2,345,024 under
 4,194,304. The [recipe/table](native-discovery-sources.md#application-population-construction-evidence)
 uses U=8,192/R=C=2,048/D=2,050/V=32/E=65,536/L=4,096/F=16,384. E includes every raw
 directory/preference/selector value; L includes all retained localization records,
@@ -366,7 +383,14 @@ qualification dimensions and logical gross charges, not measured Swift/native
 heap or RSS bounds. N5/N8 must inventory actual calls, allocations, transient
 copies and independent native parser serviceability before crediting them.
 
-P1024/L1500 must measure these dimensions with every required useful copy and native
+The [remeasured shipped directory subject](application-localized-baseline.md)
+already has 10,794 locale records. Its information-only input substituted at the
+old full envelope yields a 9,131,967-byte certificate subtotal at the old 128-byte
+locale reservation, above 8 MiB. This is not measured allocation. It refutes
+the old useful-subject construction, before adding P1024 fixtures/name inputs.
+K215 owns a complete measured-manifest replacement and explicit format/sizing
+choice before implementation, rather than sending a known design defect to k93
+as native uncertainty. P1024/L1500 must measure revised dimensions with every required useful copy and native
 baseline retained. Exceeding a finite assumption or production gate fails the
 useful subject; it cannot be fixed by filtering baseline/helpers or a locale
 subset. The coverage decision records a concrete consumer consequence if actual

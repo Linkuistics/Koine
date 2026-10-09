@@ -136,6 +136,10 @@ roots through 1,023 bytes, with a 977-byte localized control and 978-byte old-ba
 copy. Larger roots require actual indexed tuples. Mandatory review and native
 G11/N8/V13 must preserve useful localized names, flags and unchanged action limits;
 no known-plist-only proof, opacity fallback or narrowed useful category passes.
+K213/k214 reproduce shipped Info.plist sizing, baseline L/input and omitted
+InfoPlist.loctable defects. K215 and mandatory review/earned integration must
+repair them before k7; these are design defects, not native coverage losses
+accepted later by k93.
 
 Koine's own location and metadata reads remain prompt-free. They must report
 blocked, unavailable, unknown and healthy empty outcomes honestly and avoid

@@ -75,11 +75,11 @@ constructs actual accounting and k123 normalizes the facts. No native pass follo
 
 Reviewed complete k205 supplies fixed actual indexed-item type/name/identifier
 projection and independent directory identity, public provenance, UNKNOWN
-installation state and null flags at >=1,024-root bytes. Consume reviewed k212:
+installation state and null flags at >=1,024-root bytes. Consume reviewed k215:
 ordinary roots use explicit type/fixed-file/direct-localization mechanics through
 1,023 bytes; 1,004…1,023 state stays UNKNOWN under independent action plist support.
-K191/N8 qualify contact/format/localization, k127/N5 constructs revised
-2,345,024-attempt/8,340,416-byte accounting under 4,194,304/8 MiB,
+K191/N8 qualify contact/format/localization; k127/N5 constructs k215's reviewed
+replacement accounting (the old 2,345,024/8,340,416 useful certificate is refuted),
 and k123/G11 normalizes identity/conflict/null branches. V13 requires actual L1500
 long indexed tuples and unchanged selected-action refusal, not disk/client/old
 action evidence. Required missing/unavailable qualification stays live before baseline.
@@ -92,3 +92,16 @@ Two full pALL/ID-contained-anchor sweeps detect changes without loading effects;
 G4/N4/N5 and independent V12 require cold-before-visit/warm useful inventory.
 No repeated-ID/time/RUNNING shortcut certifies empty or complete lazy objects.
 Every runtime destination remains required; all native verdicts stay pending.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

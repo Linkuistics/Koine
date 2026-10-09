@@ -4,7 +4,8 @@ Native workspace providers require `workspace-native-disclosures-v1`, alongside
 `additional-capabilities-v1` and `first-party-selection-v1`. A host advertises the
 feature only when its native grant creation, approval and existing-grant views
 and management disclosure catalogue state the native surface's actual reach:
-workspace read supplies location/app/settings metadata without client filesystem
+workspace read supplies location/app/settings metadata, including fixed application
+information/name files and direct localization names, without client filesystem
 access; workspace control permits background Settings preparation alone;
 launch/open/Finder reveal and selected Settings reveal additionally need desktop
 control. Conditional OS consent remains exclusive to Koine's local explaining UI.

@@ -1,7 +1,7 @@
 # Native discovery and client-owned search
 
 **Designed; mandatory review, implementation and native acceptance pending.**
-The complete design includes application population admission and cost certificates,
+The design includes application population admission and conditional cost arithmetic,
 bounded Settings full-response comparison with honest lazy-readiness uncertainty,
 and indexed long-application metadata with explicit provenance. Mandatory review
 and any earned reconciliation precede implementation. P1024 populous usefulness,
@@ -9,7 +9,9 @@ V12 cold/warm Settings usefulness and L1500 long-source/action qualification rem
 pending, alongside the other finite native subjects. K212 selects the authorized
 explicit application reader: root resource type through 1,023 bytes and held-
 directory fixed files/direct-localization plan; larger roots retain actual indexed
-tuples. Mandatory review/earned integration precedes k7. The known-plist suffix
+tuples. K213/k214 refute its shipped-file closure and useful-subject dimensions;
+application-localized-metadata-k215 and mandatory review/earned integration now precede k7. The current application
+reader proposal must not be implemented until that redesign settles. The known-plist suffix
 cannot admit opaque Bundle localization and no such fallback is selected.
 Design consistency establishes
 no actual source, timing, resource-peak or binary behavior.
@@ -430,18 +432,31 @@ pathname to a whole-path API. The [suffix counterexamples](../verification/nativ
 remain evidence against the former opaque Bundle construction, not thresholds
 for this reader.
 
-**Closed layout and file set.** Probe these directory layouts in fixed order:
+**Reader consumption hold.** [Shipped-file remeasurement](../verification/application-localized-baseline.md)
+refutes the proposed 65,536-byte file gate, useful-subject L/input certificate and
+name-file closure: the proposal omits InfoPlist.loctable.
+Application-localized-metadata-k215 and its mandatory review/earned integration
+must repair that coupled
+design before k7 consumes it. The following file/gate recipe is the refuted
+proposal, retained for explicit counterexamples; it is not a settled implementable
+useful reader. No new format, larger gate or useful loss is selected here.
+
+**Layout and proposed file set.** Probe these directory layouts in fixed order:
 Contents; Support Files; Resources; flat root. Choose the first present checked
 layout. Their resource bases are respectively Contents/Resources, Support Files/
-Resources, Resources and the root itself. Only checked absence advances to the
+Resources, Resources and the root itself. Information bases are respectively
+Contents, Support Files, Resources and the root itself. Only checked absence
+advances to the
 next layout. Denial, symlink, wrong type or replacement stops that metadata
 episode; it cannot select a convenient alternative. Missing resource directory
 means checked absence of localized resources, not absence of the app. Probe
 Info-macos.plist then Info.plist in the selected information base, and
 InfoPlist-macos.strings then InfoPlist.strings in each selected name-resource base.
 A checked absent platform file permits the plain file; a present malformed,
-refused or oversized preferred file does not. These are the complete macOS file
-families; no product/iOS variants, executable/icon reads, arbitrary filenames or
+refused or oversized preferred file does not. These are the proposed macOS file
+families in this refuted proposal, not complete shipped-macOS support; the omitted
+InfoPlist.loctable requires an explicit format decision in k215. No product/iOS
+variants, executable/icon reads, arbitrary filenames or
 foreign Bundle/CFBundle initialization/resource/localization calls are admitted.
 This policy supports the named layouts without claiming equivalence to every
 private Bundle fallback. An actual useful app outside it is an unmet obligation
@@ -453,8 +468,13 @@ resource directory, including duplicate, nonlocalization and rejected slots,
 before selection. Share a 65,536-entry metadata-plan job gate with every preference and selector
 result slot, including rejected/duplicate values; never recurse or list ancestors.
 Only checked directories whose literal names end in .lproj enter the bounded
-inventory. Preserve exact names and byte-sort them; stripping the suffix forms
-the possible-localization array. Optional CFBundleLocalizations is not an inventory
+inventory. Preserve exact names. Place the information dictionary's development
+region first only when it maps exactly and unambiguously to an observed locale;
+byte-sort the remaining names. Stripping the suffix forms the possible-localization
+array. With no preference match the CF selector can return its first element:
+the backstop is therefore the observed development region, or the byte-first
+locale when no such region is observed. This is an explicit positional backstop,
+not proof of a language match. Optional CFBundleLocalizations is not an inventory
 and is not used. Call CFBundleCopyLocalizationsForPreferences with that array and
 the explicit nonnull preferences snapshot. Unlike a foreign Bundle getter, this
 pure selector has no target pathname or implicit main-bundle context. Count its
@@ -465,8 +485,11 @@ The name-file search order is global resource base, selector-returned locales,
 Base if present, then the selected information file's CFBundleDevelopmentRegion
 if it maps exactly to an observed locale. Deduplicate literal directories. Read
 only that finite plan, never all remaining locale files. For each base use the
-platform/plain pair above; first usable explicit display name wins, otherwise
-usable bundle name. Checked absent/healthy empty applicable resources allow the
+platform/plain pair above. Within one selected dictionary a usable explicit
+display name precedes its usable bundle name. Across planned bases the first
+candidate with either usable value wins; a later base's display name never
+overrides an earlier base's usable bundle name. Checked absent/healthy empty
+applicable resources allow the
 next planned base and finally the information file's display/name. Any refused,
 malformed, unsupported or incompletely enumerated preceding candidate leaves the
 name unknown with diagnostics; do not disguise it with an unlocalized or filename
@@ -507,8 +530,9 @@ individual metadata refusal can retain positive type/identity with nullable fact
 and honest source uncertainty. A known localized witness returning null fails
 usefulness even where that API uncertainty is legal.
 
-The [population certificate](../design/application-population.json) covers the
-selected recipe: fixed 40; 16U + 5R + 12D; 32C ordinary/indexed staging; 8E raw
+The [population certificate](../design/application-population.json) records only
+conditional arithmetic for the refuted proposal, not useful-subject coverage.
+Its recipe is fixed 40; 16U + 5R + 12D; 32C ordinary/indexed staging; 8E raw
 metadata-plan slots (directory, preference and selector values); 48F fixed-file
 probes; and 2C(6V+4) lookup walks. F <=
 4C + 2L, where L counts every retained localization-inventory record per spelling,
@@ -521,6 +545,12 @@ requires aggregate fixed-file input <=1,000,000 bytes and localization component
 (qualification dimensions, not universal input limits). With 64L
 records, two component copies and existing fixed scratch this derives 8,340,416
 gross bytes under 8 MiB; wire remains 7,929,856 under the unchanged core cap.
+These dimensions are already refuted by the measured shipped directory subject:
+its L is 10,794 and substituting only its information input into the full-envelope
+construction gives a 9,131,967-byte certificate subtotal at its old fixed
+128-byte locale reservation, not measured allocation. The current 8,340,416 arithmetic
+is therefore conditional only, not P1024/L1500 coverage. K215 must replace the
+dimensions/construction after the complete required subject is measured.
 Extra owned parser copies, repeated plan/name copies or an additional walk
 invalidate that construction. [N5/N8](../verification/native-discovery-acceptance.md#n-actual-source-and-provider-binaries)
 must account actual calls/allocations term by term and measure these dimensions
@@ -992,8 +1022,9 @@ spellings and V actual component visits per walk including expanded links. Add E
 raw metadata-plan slots (all direct directory, preference and selector values) and
 L retained localization-inventory records per spelling (including unselected
 directories); F fixed-file probes <=4C+2L.
-The finite shallow subject has U<=8,192, R=C<=2,048, D<=2,050, V<=32, E<=65,536 and
-L<=4,096. V/L are qualification dimensions, not production per-path/app quotas.
+The refuted finite shallow proposal has U<=8,192, R=C<=2,048, D<=2,050, V<=32, E<=65,536 and
+L<=4,096, already disproved by the measured system directory inventory. V/L were
+proposed qualification dimensions, not production per-path/app quotas.
 
 | Explicit work in the adapter recipe | Maximum attempts |
 | --- | --- |
@@ -1015,10 +1046,12 @@ There is no C×D registration multiplier or third root walk. Deeper/larger input
 charge actual global work; exhaustion invalidates publication, not existence.
 N5/N8 must enumerate actual attempts and reject any recipe exceeding a term.
 
-The [explicit reader certificate](#localized-reader-decision) adds <=1,000,000
+The refuted [explicit reader proposal](#localized-reader-decision) adds <=1,000,000
 gross fixed-file input bytes and 64L records plus two <=32-byte locale components
 to the existing 6,816,128 bytes of records/payload/summaries/shared scratch:
-8,340,416 under unchanged 8 MiB. Input/component bounds describe this finite
+8,340,416 under unchanged 8 MiB conditionally. The measured system directory
+subject refutes its L/input useful-subject construction; k215 must re-derive it
+before consumption. Input/component bounds describe this proposed finite
 shallow subject; actual baseline dimensions must be measured without filtering
 useful apps. Two 64 KiB fixed buffers and finite preference scratch (<=32 records/4,096 payload bytes) plus fixed plan
 scratch reuse the

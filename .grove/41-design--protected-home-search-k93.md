@@ -104,10 +104,23 @@ selected by k211's repair.
 
 ## Approved explicit metadata-reader gap duty
 
-Consume reviewed application-localized-metadata-k212. Its target-local fixed-file/
+Consume reviewed application-localized-metadata-k215. Its target-local fixed-file/
 direct-localization exception adds no helper, OS consent, entitlement, signing
 change or accepted useful loss. If actual format/locale/safety or measured
 P1024/L1500 input/plan/copy/deadline/usefulness cannot qualify, state the consumer
 consequence and bounded alternatives once with Antony. Never switch silently to
 opaque Bundle, filter baseline/helpers or choose a locale subset. Design closure
 is no actual native pass and known null/wrong localized witnesses fail usefulness.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

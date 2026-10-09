@@ -97,7 +97,7 @@ and cold-before-visit/warm usefulness; unavailable conditions stay pending.
 
 ## K211 integration handoff
 
-Consume k212's localized-reader design and mandatory review/earned integration
+Consume k215's localized-reader design and mandatory review/earned integration
 before qualifying the ordinary root-type/fixed-file/direct-localization episode.
 The 977 localized control and 978 old-band copy need actual no-dialog/no-hydration
 and correct localized-name/format/identity witnesses; no suffix-only proof passes. Keep admitted getter/contact and useful localized-name obligations.
@@ -107,3 +107,16 @@ complete-first-map positives; count/call/copy overflow and earlier incomplete
 deadline remain FAILED/null. Exact reveal pre-check no-such-object is unestablished
 selection, never absence or implicit warm-up. Qualify a known prior pane/anchor
 in a separate fresh unvisited incarnation, with no observer warming it first.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

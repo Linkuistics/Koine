@@ -42,8 +42,11 @@ resource plan; a guessed longer suffix cannot admit discovery already performed.
 Indexed-only metadata has no established useful-name/flag replacement for those
 non-indexed copies. The fixed layout/file and explicit-preference selection policy
 is deliberately observable rather than a claim of private Bundle equivalence.
-Reopen it if actual localization, file-format, safety or useful-baseline qualification
-fails. No hidden traversal, alternate copy or permission/posture change can rescue
+Shipped-file evidence has already reopened its file-format and useful-baseline
+construction: the proposed name set omits InfoPlist.loctable and its finite L/input
+dimensions fail. [The counterexample](../verification/application-localized-baseline.md)
+and application-localized-metadata-k215 require a reviewed replacement before k7.
+No useful-reader certificate follows the old conditional arithmetic. No hidden traversal, alternate copy or permission/posture change can rescue
 that failure. The selected reader and revised certificates require mandatory
 review and actual native qualification before baseline.
 

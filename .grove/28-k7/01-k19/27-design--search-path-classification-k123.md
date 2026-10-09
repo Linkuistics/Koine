@@ -84,7 +84,7 @@ choices; predicate/suffix/running identifier alone cannot. Normalize optional
 name/identifier null/conflict branches without cross-copy substitution; indexed
 installationState stays UNKNOWN and unsupported bundle flags null. Preserve exact
 resolved spelling and distinct same-ID copies, with no claimed index-to-inode or
-current-plist binding. Consume reviewed k212: BUNDLE_RESOURCE root type/fixed-file/
+current-plist binding. Consume reviewed k215: BUNDLE_RESOURCE root type/fixed-file/
 direct-localization facts through 1,023 bytes; INDEXED_ITEM at >=1,024.
 1,004…1,023 ordinary installation state remains UNKNOWN under the independent
 action Info.plist guard. Never rescue a refused localized name with plain Info,
@@ -114,3 +114,16 @@ not SELECTION_UNAVAILABLE. G4/G8/G10/N4/N5/V12 include saturation, hidden-failur
 checkpoint and separate unvisited-incarnation reveal controls. Consume k212's
 reviewed localized-resource route before assigning BUNDLE_RESOURCE; known-plist
 arithmetic alone cannot establish that reader's support.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

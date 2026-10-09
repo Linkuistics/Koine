@@ -1,5 +1,8 @@
 {
-  "purpose": "Design cost certificates and finite qualification subjects; no runtime/native pass",
+  "purpose": "Refuted useful-subject dimensions with checked conditional arithmetic; redesign before consumption, no runtime/native pass",
+  "usefulSubjectCertificateEstablished": false,
+  "consumptionRequires": "application-localized-metadata-k215",
+  "baselineCounterexample": "application-localized-baseline.json",
   "limits": {
     "rawURLObservations": 8192,
     "distinctSpellings": 2048,

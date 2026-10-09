@@ -300,7 +300,9 @@ diagnostic saturation, Settings confirmation deadlines and lazy reveal uncertain
 Application-localized-metadata-k212 now precedes k7 with mandatory review/earned
 integration. Antony approved the bounded target-local contents/listing exception
 in the [localized reader decision](../docs/specs/workspace-search.md#localized-reader-decision).
-K212 closes the selected design's call/file manifest: native root type through
+K213/k214 refute k212's shipped name-file closure and useful-subject dimensions.
+Application-localized-metadata-k215 and mandatory review/earned integration now
+precede k7. The bounded approved pathname mechanism remains: native root type through
 1,023 bytes plus held-directory fixed information/name files and direct locale
 inventory/explicit preference selection. It never calls a foreign Bundle or
 submits a descendant whole path; larger roots retain actual indexed tuples.
@@ -342,9 +344,12 @@ L1500 copies: 977 localized control, 978 old-band copy, 1,003/1,004/1,023 ordina
 1,024/1,500 indexed and two short same-ID competitors. Actual indexed tuples,
 independent identities/localized names/flags and unchanged selected-action refusal
 remain required. Disk/client/controlled provenance is no source pass. Revised
-shallow certificates are 2,345,024 attempts/8,340,416 gross bytes under 4,194,304/
-8 MiB, with wire 7,929,856 under unchanged core 8 MiB. E=65,536/L=4,096/input<=
-1,000,000/component<=32-byte finite dimensions include actual baseline; N5/N8
+shallow calculations are conditionally 2,345,024 attempts/8,340,416 gross bytes,
+with wire 7,929,856 under unchanged core 8 MiB. Their L=4,096/input<=1,000,000
+useful-subject construction is refuted: the measured system directory subject
+alone has L=10,794 and yields a 9,131,967 certificate subtotal at the old full
+envelope/128-byte locale reservation, not measured allocation. K215
+must replace the coupled file-set/sizing/accounting design before consumption; N5/N8
 validate actual calls, copies, cleanup and opaque parser serviceability.
 
 All G1–G11/N1–N8/V1–V13 native verdicts remain pending. K191 owns concrete source/

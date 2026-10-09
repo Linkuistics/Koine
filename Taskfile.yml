@@ -377,6 +377,11 @@ tasks:
         const examples = parse(read('workspace-search-operations.graphql'));
         const population = JSON.parse(read('application-population.json'));
         const verifyPopulation = subject => {
+          if (subject.usefulSubjectCertificateEstablished !== false ||
+            subject.consumptionRequires !== 'application-localized-metadata-k215' ||
+            subject.baselineCounterexample !== 'application-localized-baseline.json') {
+            throw new Error('Refuted useful-subject certificate cannot become implementation input');
+          }
           const l = subject.limits, r = subject.recipe, s = subject.shallowCertificate, p = subject.populousVM;
           for (const values of [l, s]) for (const value of Object.values(values)) {
             if (!Number.isSafeInteger(value) || value <= 0) throw new Error('Invalid population certificate integer');
@@ -438,6 +443,7 @@ tasks:
         };
         const certificate = verifyPopulation(population);
         for (const [label, mutate] of [
+          ['refuted baseline credited as useful certificate', p => { p.usefulSubjectCertificateEstablished = true; }],
           ['old 256-ID quota', p => { p.limits.identifierGroups = 256; }],
           ['old 16384-call ceiling', p => { p.limits.nativeAttempts = 16384; }],
           ['native-order partial prefix', p => { p.recipe.overflowPublication = 'PARTIAL_PREFIX'; }],
@@ -464,7 +470,7 @@ tasks:
           try { verifyPopulation(broken); } catch { rejected = true; }
           if (!rejected) throw new Error(`Control did not reject ${label}`);
         }
-        console.log('Application design certificates and deliberate broken controls:', certificate, '; native qualification PENDING.');
+        console.log('Conditional application arithmetic and deliberate broken controls:', certificate, '; useful-subject construction REFUTED, k215 redesign required; native qualification PENDING.');
         const reasonNames = complete.getType('WorkspaceDiscoveryReason').getValues().map(value => value.name);
         const saturationGuidance = 'Additional details omitted. ' + ['INDEXED_APPS', 'RUNNING_APPS', 'REGISTRATION']
           .map(source => `${source}:${reasonNames.join(',')}`).join(';');
@@ -585,11 +591,27 @@ tasks:
           }
         };
         assertDisclosureRefusal(priorHost);
+        const disclosureClause = 'including fixed application information/name files and direct localization names';
+        const disclosure = readFileSync('../../docs/specs/workspace-search.md', 'utf8');
+        const verifyReadReach = text => {
+          if (!text.replace(/\s+/g, ' ').includes(disclosureClause)) {
+            throw new Error('Workspace read disclosure omits approved contents/listing reach');
+          }
+        };
+        verifyReadReach(disclosure);
+        verifyReadReach(readFileSync('../../docs/adr/native-workspace-requires-disclosure-capable-host.md', 'utf8'));
+        for (const row of ['G9', 'V10']) {
+          const text = readFileSync('../../docs/verification/native-discovery-acceptance.md', 'utf8')
+            .split('\n').find(line => line.startsWith(`| ${row} |`));
+          verifyReadReach(text ?? '');
+        }
         const requireRejection = (subject, check, label) => {
           let rejected = false;
           try { check(subject); } catch { rejected = true; }
           if (!rejected) throw new Error(`Control did not reject ${label}`);
         };
+        requireRejection(disclosure.replace(/including fixed application\s+information\/name files and direct localization names/, ''),
+          verifyReadReach, 'fixed-file/direct-localization disclosure clause removed');
         const missingDisclosure = JSON.parse(read('profiles/core-desktop-workspace-native-extension-host.json'));
         missingDisclosure.nativeRequiredFeatures = nativeFeatures.slice(0, 2);
         requireRejection(missingDisclosure, assertNativeFeatures, 'missing native disclosure requirement');
@@ -601,7 +623,7 @@ tasks:
         JS
 
   design:localized-boundary-check:
-    desc: Check the closed explicit reader manifest and exact historical suffix controls; no native pass
+    desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
     cmds:
       - |
         node --input-type=module <<'JS'
@@ -610,11 +632,14 @@ tasks:
         const subject = JSON.parse(readFileSync('docs/design/application-localized-admission.json', 'utf8'));
         const longSubject = JSON.parse(readFileSync('docs/design/long-application-metadata.json', 'utf8'));
         const population = JSON.parse(readFileSync('docs/design/application-population.json', 'utf8'));
+        const baseline = JSON.parse(readFileSync('docs/design/application-localized-baseline.json', 'utf8'));
         const byteLength = value => Buffer.byteLength(value, 'utf8');
         const verify = value => {
           const r = value.reader, q = value.qualification;
           assert.equal(value.wholePathBytesIncludingNul, 1024);
-          assert.equal(value.completeReaderPathSetEstablished, true);
+          assert.equal(value.completeReaderPathSetEstablished, false);
+          assert.equal(value.consumptionRequires, 'application-localized-metadata-k215');
+          assert.equal(value.baselineCounterexample, 'application-localized-baseline.json');
           assert.equal(value.ordinaryLocalizedControlEstablished, true);
           assert.equal(value.historicalBundleClosureEstablished, false);
           assert.equal(value.nativeVerdict, 'PENDING');
@@ -626,10 +651,14 @@ tasks:
           assert.equal(r.foreignBundleLookup, false);
           assert.deepEqual(r.layoutPriority, ['Contents', 'Support Files', 'Resources', '.']);
           assert.deepEqual(r.resourceBases, ['Contents/Resources', 'Support Files/Resources', 'Resources', '.']);
+          assert.deepEqual(r.informationBases, ['Contents', 'Support Files', 'Resources', '.']);
           assert.deepEqual(r.informationFiles, ['Info-macos.plist', 'Info.plist']);
           assert.deepEqual(r.nameFiles, ['InfoPlist-macos.strings', 'InfoPlist.strings']);
           assert.equal(r.directoryListing, 'ONE_SELECTED_RESOURCE_DIRECTORY_DIRECT_ENTRIES_ONLY');
-          assert.equal(r.localizationSelection, 'EXPLICIT_PREFERENCES_CF_FUNCTION_THEN_BASE_THEN_DEVELOPMENT');
+          assert.equal(r.localizationSelection, 'EXPLICIT_PREFERENCES_CF_FUNCTION_DEVELOPMENT_FIRST_INPUT_THEN_BASE_THEN_DEVELOPMENT');
+          assert.equal(r.selectorInputOrder, 'EXACT_OBSERVED_DEVELOPMENT_THEN_BYTE_SORTED_REMAINDER');
+          assert.equal(r.unmatchedPreferenceBackstop, 'OBSERVED_DEVELOPMENT_ELSE_BYTE_FIRST');
+          assert.equal(r.namePrecedence, 'FIRST_USABLE_CANDIDATE_DISPLAY_THEN_NAME_WITHIN_DICTIONARY');
           assert.equal(r.variableComponents, 'ACTUAL_PARENT_FPATHCONF_NAME_MAX_AND_LOSSLESS_UTF8');
           assert.equal(r.descendantSymlinks, 'REFUSE_NOFOLLOW');
           assert(!r.crossCopyMetadata && !r.recursiveResourceTraversal);
@@ -671,13 +700,24 @@ tasks:
           assert.equal(population.recipe.foreignBundleLookup, false);
           assert.equal(population.recipe.metadataFileProbesPerSpelling, 2 * r.informationFiles.length);
           assert.equal(population.recipe.metadataFileProbesPerSelectedLocalization, r.nameFiles.length);
+          assert.equal(longSubject.ordinaryReaderConsumptionRequires, value.consumptionRequires);
           // Construct every declared relative candidate for explicit finite localization names.
           const paths = r.resourceBases.flatMap(base => [null, 'en.lproj', 'Base.lproj', 'English.lproj', 'français.lproj']
             .flatMap(locale => r.nameFiles.map(file => [base, locale, file].filter(part => part && part !== '.').join('/'))));
+          const informationPaths = r.informationBases.flatMap(base => r.informationFiles
+            .map(file => [base, file].filter(part => part !== '.').join('/')));
+          assert.deepEqual(informationPaths, ['Contents/Info-macos.plist', 'Contents/Info.plist',
+            'Support Files/Info-macos.plist', 'Support Files/Info.plist',
+            'Resources/Info-macos.plist', 'Resources/Info.plist', 'Info-macos.plist', 'Info.plist']);
+          paths.push(...informationPaths);
           for (const path of paths) assert(path.split('/').every(part => part && !part.includes('\0') && part !== '..'));
           return { lastOrdinaryRootBytes: r.lastOrdinaryRootBytes, firstIndexedRootBytes: r.firstIndexedRootBytes, relativeCandidates: paths.length };
         };
         for (const [label, mutate] of [
+          ['omitted loctable credited as complete closure', v => { v.completeReaderPathSetEstablished = true; }],
+          ['undefined Resources information base', v => { v.reader.informationBases[2] = '.'; }],
+          ['byte-order language before development backstop', v => { v.reader.selectorInputOrder = 'BYTE_SORT_ONLY'; }],
+          ['later display overriding earlier localized name', v => { v.reader.namePrecedence = 'ALL_DISPLAY_NAMES_BEFORE_ALL_BUNDLE_NAMES'; }],
           ['Info.plist-only closure', v => { v.reader.nameFiles = []; }],
           ['whole descendant call', v => { v.reader.wholePathCalls.push('Bundle.localizedInfoDictionary'); }],
           ['guessed locale bound', v => { v.reader.variableComponents = 'EN_BASE_ENGLISH_ONLY'; }],
@@ -695,8 +735,56 @@ tasks:
           const broken = structuredClone(subject); mutate(broken);
           assert.throws(() => verify(broken), `Control accepted ${label}`);
         }
+        const summary = baseline.summary;
+        assert(baseline.unchangedBeforeAfter);
+        assert.equal(summary.systemBundles, baseline.system.length);
+        assert.equal(summary.informationInputBytesLowerBound, baseline.system.reduce((n, row) => n + (row.information?.bytes ?? 0), 0));
+        assert.equal(summary.localizationRecords, baseline.system.reduce((n, row) => n + row.localizationsCount, 0));
+        assert.equal(summary.rawDirectoryEntries, baseline.system.reduce((n, row) => n + row.rawDirectEntriesCount, 0));
+        const tables = baseline.system.filter(row => row.loctable);
+        assert.equal(summary.loctableBundles, tables.length);
+        assert.equal(summary.loctableMaximumBytes, Math.max(...tables.map(row => row.loctable.bytes)));
+        assert.equal(summary.loctableAbove65536, tables.filter(row => row.loctable.bytes > population.limits.metadataFileBytes).length);
+        for (const row of baseline.system) for (const file of [row.information, row.loctable].filter(Boolean)) {
+          assert.match(file.sha256, /^[a-f0-9]{64}$/);
+        }
+        const oldFullEnvelopeBase = 6816128;
+        const substituted = oldFullEnvelopeBase + summary.informationInputBytesLowerBound +
+          summary.localizationRecords * (population.shallowCertificate.localizationRecordBytes +
+          population.shallowCertificate.ownedLocalizationComponentCopies * population.shallowCertificate.localizationComponentBytes);
+        assert.equal(substituted, summary.certificateSubtotalAtOldEnvelopeWithSystemDimensions);
+        assert(substituted > population.limits.ownedCopyBytes);
+        const admitFile = bytes => assert(bytes <= population.limits.metadataFileBytes, 'file exceeds proposed gate');
+        assert.throws(() => admitFile(baseline.unarchiver.information.bytes), /file exceeds proposed gate/);
+        assert.throws(() => admitFile(summary.loctableMaximumBytes), /file exceeds proposed gate/);
+        assert.throws(() => assert(summary.localizationRecords <= population.shallowCertificate.localizationRecords), 'baseline inventory must refute old assumption');
+        const informationWithWitness = summary.informationInputBytesLowerBound + baseline.unarchiver.information.bytes;
+        assert.throws(() => assert(informationWithWitness <= population.shallowCertificate.metadataInputBytes), 'system plus named useful witness must refute old input assumption');
+        const localizedWitnesses = tables.filter(row => !row.stringsFiles.length &&
+          Object.values(row.localizedNames).some(name => name && name !== row.plainName));
+        assert(localizedWitnesses.some(row => row.plainName === 'FindMy' && row.localizedNames.en === 'Find My'));
+        const requireNameFileCoverage = files => assert(files.includes('InfoPlist.loctable') || !localizedWitnesses.length,
+          'required shipped localized names omitted');
+        assert.throws(() => requireNameFileCoverage(subject.reader.nameFiles), /required shipped localized names omitted/);
+        // Positive and seen-to-fail controls for each independent instrument.
+        admitFile(1024);
+        assert(summary.localizationRecords <= 65536);
+        requireNameFileCoverage([...subject.reader.nameFiles, 'InfoPlist.loctable']); // control only, no admitted format
+        const order = (names, development) => {
+          const sorted = [...names].sort((a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b)));
+          return sorted.includes(development) ? [development, ...sorted.filter(name => name !== development)] : sorted;
+        };
+        const [old, backstop, matching] = baseline.selectorControls;
+        assert.deepEqual(order(old.possible, 'it'), backstop.possible);
+        assert.deepEqual(old.selected, ['ar']);
+        assert.deepEqual(backstop.selected, ['it']);
+        assert.deepEqual(matching.selected, ['de']);
+        assert.deepEqual(order(['ja', 'fr'], 'absent'), ['fr', 'ja']);
+        const firstName = dictionaries => dictionaries.map(dictionary => dictionary.CFBundleDisplayName || dictionary.CFBundleName).find(Boolean);
+        assert.equal(firstName([{ CFBundleName: 'earlier localized name' }, { CFBundleDisplayName: 'later display' }]), 'earlier localized name');
+        assert.equal(firstName([{ CFBundleDisplayName: 'display', CFBundleName: 'name' }]), 'display');
         console.log(JSON.stringify(verify(subject)));
-        console.log('Explicit closed reader manifest and historical boundary controls checked; native G11/N8/V13 PENDING.');
+        console.log('Path/layout/precedence repairs checked; oversize, baseline inventory/copy and omitted-loctable counterexamples reproduced. Useful reader closure REFUTED, k215 required; native G11/N8/V13 PENDING.');
         JS
 
   design:long-applications-check:

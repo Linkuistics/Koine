@@ -1,7 +1,9 @@
 {
-  "purpose": "Closed design call/filename manifest and historical whole-path counterexamples; no native pass",
+  "purpose": "Refuted application file-set proposal and checked pathname construction; redesign before consumption, no native pass",
+  "consumptionRequires": "application-localized-metadata-k215",
+  "baselineCounterexample": "application-localized-baseline.json",
   "wholePathBytesIncludingNul": 1024,
-  "completeReaderPathSetEstablished": true,
+  "completeReaderPathSetEstablished": false,
   "ordinaryLocalizedControlEstablished": true,
   "examples": [
     {
@@ -65,6 +67,12 @@
       "Resources",
       "."
     ],
+    "informationBases": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
     "informationFiles": [
       "Info-macos.plist",
       "Info.plist"
@@ -74,7 +82,10 @@
       "InfoPlist.strings"
     ],
     "directoryListing": "ONE_SELECTED_RESOURCE_DIRECTORY_DIRECT_ENTRIES_ONLY",
-    "localizationSelection": "EXPLICIT_PREFERENCES_CF_FUNCTION_THEN_BASE_THEN_DEVELOPMENT",
+    "localizationSelection": "EXPLICIT_PREFERENCES_CF_FUNCTION_DEVELOPMENT_FIRST_INPUT_THEN_BASE_THEN_DEVELOPMENT",
+    "selectorInputOrder": "EXACT_OBSERVED_DEVELOPMENT_THEN_BYTE_SORTED_REMAINDER",
+    "unmatchedPreferenceBackstop": "OBSERVED_DEVELOPMENT_ELSE_BYTE_FIRST",
+    "namePrecedence": "FIRST_USABLE_CANDIDATE_DISPLAY_THEN_NAME_WITHIN_DICTIONARY",
     "variableComponents": "ACTUAL_PARENT_FPATHCONF_NAME_MAX_AND_LOSSLESS_UTF8",
     "descendantSymlinks": "REFUSE_NOFOLLOW",
     "crossCopyMetadata": false,

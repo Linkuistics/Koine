@@ -1860,14 +1860,16 @@ any earned reconciliation before becoming implementation input.
 
 Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
 plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
-without item loss. Application gross charges are 8,340,416 and Settings 6,094,976
-bytes under unchanged 8 MiB gates. Settings confirmation timeout retains only
+without item loss. The application 8,340,416-byte calculation is conditional on refuted baseline
+dimensions; k215 must replace its useful-subject/file-set construction before
+consumption. Settings remains 6,094,976 bytes under its unchanged 8 MiB gate. Settings confirmation timeout retains only
 uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN;
 incomplete-first-map timeout and count/call/copy overflow still give FAILED/null.
 Lazy no-such-object at reveal re-resolution is failed/unestablished selection,
 never an absence dependency; V12 includes separate unvisited-incarnation reveal.
-The selected explicit application reader closes the ordinary design's call/file
-manifest: root resource type through 1,023 bytes, held-directory fixed metadata
+The explicit application reader's shipped-file closure is refuted (omitted
+InfoPlist.loctable); k215 and mandatory review/earned integration precede k7.
+Its retained proposed pathname mechanism is: root resource type through 1,023 bytes, held-directory fixed metadata
 files and a bounded direct localization plan. Larger roots use actual indexed
 items. The 977 localized control and 978 old-band copy supplement L1500; review
 and G11/N8/V13 remain pending. The application attempt certificate is 2,345,024

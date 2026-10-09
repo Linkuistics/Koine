@@ -244,8 +244,12 @@ No unlocalized Info.plist value, filename label or short competing copy replaces
 a required known localized name.
 
 Antony authorized the selected [explicit metadata reader](../specs/workspace-search.md#localized-reader-decision).
-The complete closed layout/file set and exact selection plan are now design
-contracts, rather than an inference about private Bundle internals. Layout probes
+The explicit layout/selection plan describes target-local construction rather
+than private Bundle internals. Its name-file closure and useful-subject dimensions
+are refuted by [shipped-file remeasurement](application-localized-baseline.md):
+InfoPlist.loctable is omitted and the old input/L construction cannot certify the
+required subject. K215 and mandatory review/earned integration must repair the
+coupled design before k7 consumes it. Layout probes
 and file reads receive held-directory literal components; no whole descendant
 pathname, foreign Bundle, resource URL discovery or general recursive search is
 admitted. The pure
@@ -253,7 +257,13 @@ admitted. The pure
 accepts a possible-localization array and explicit preference array independently
 of current-app context. It supplies selection, not a target directory inventory.
 The reader's separately bounded direct .lproj observation supplies that inventory;
-returned locales must map unambiguously to those exact names. Global, selector
+returned locales must map unambiguously to those exact names. An exactly observed
+development region leads the selector's possible array; the remainder is byte-sorted.
+Its no-match positional backstop is thereby the development region, or byte-first
+when that region is absent. Real preference matches still precede the backstop.
+Each layout's information base is explicit in the manifest; within a dictionary
+display precedes bundle name, while the first usable planned candidate wins across
+bases. Global, selector
 results, Base and observed development-region are the complete selected order.
 This policy is explicit and qualifies useful apps; it does not claim private
 Bundle-equivalent fallback semantics for every layout or language spelling.
@@ -264,8 +274,9 @@ permits parsing from a charged fixed buffer without another owned data copy.
 CFPropertyListCreateWithData still creates opaque parsed allocations; the owned
 certificate bounds extracted values and owned input, not that native parser peak.
 Current SDK headers declare openat/O_NOFOLLOW and fpathconf; descriptor admission
-uses NAME_MAX excluding NUL and separately reserved component storage. No syscall,
-parser, getter, query, target launch or consent action was executed for this design.
+uses NAME_MAX excluding NUL and separately reserved component storage. K212 used declarations rather than executing the reader. K214 separately read
+shipped files and measured the pure selector on literal arrays; that bounded
+counterexample is no Koine reader, permission, parser-peak or native acceptance pass.
 N8 must establish actual .strings formats, source/getter access and replacement/
 symlink/dataless behavior. Native G11/N8/V13 and serviceability remain pending;
 the action's 1,024-byte handoff and independent evidence remain intact.
@@ -327,7 +338,8 @@ identify all actual operations; extra calls or owned copies invalidate it.
 No additional root walk or per-choice registration re-walk is hidden in these terms.
 
 For the finite shallow certificate E<=65,536, L<=4,096 and F<=16,384, yielding
-2,345,024 explicit attempts under 4,194,304. L is a qualification dimension, not a
+2,345,024 explicit attempts under 4,194,304 conditionally. The measured baseline
+refutes L/input useful-subject coverage; k215 owns its replacement. L is a proposed qualification dimension, not a
 production per-app language quota; actual larger inputs share the global gates.
 The unchanged 8 MiB owned gate contains the former 6,816,128 bytes of records/
 payload/summaries/scratch plus <=1,000,000 gross input bytes and 64L records plus
@@ -365,7 +377,10 @@ The owned-copy certificate for the shallow subject reserves spelling/choice/
 ordinal/identifier/running records, two owned copies of path/name/identifier
 payloads, diagnostic records, 128 fixed source-summary bytes and 1 MiB of
 shared walk/file/plan scratch plus the explicit input/localization additions above.
-Its worst-case logical charge is 8,340,416 bytes, below the unchanged 8 MiB gate. These record/scratch
+Its conditional logical charge is 8,340,416 bytes, below the unchanged 8 MiB gate
+only at the refuted finite dimensions. Measured system-only substitutions give
+a 9,131,967-byte certificate subtotal at the old 128-byte locale reservation,
+not measured allocation; this is no useful-population certificate. These record/scratch
 allowances are a required adapter construction contract, not measured Swift
 heap layout. Diagnostic detail saturation is non-fatal: 63 records plus the reserved
 DIAGNOSTIC_LIMIT record bound payload storage; four fixed 32-byte source summaries

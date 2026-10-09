@@ -419,8 +419,10 @@ Ordinary discovery metadata uses the explicit reader through 1,023-byte roots;
 descendant total pathname length is not submitted to a whole-path reader. At
 1,004…1,023 bytes the retained action's longer Info.plist path remains unsupported,
 so installation state stays UNKNOWN. At 1,024 bytes the existing explicit action
-handoff refuses. Neither is absence. The explicit reader's review, actual useful
-localized/indexed-source and selected-action qualification remain pending.
+handoff refuses. Neither is absence. The proposed explicit reader's shipped-file closure and finite useful-subject
+dimensions are refuted. A replacement design and mandatory review precede
+implementation; actual localized/indexed-source and selected-action qualification
+remain pending.
 
 Preserve distinct copies with one identifier. For an INSTALLED selected app,
 pass both bundleIdentifier and applicationPath into constrained launch; it needs

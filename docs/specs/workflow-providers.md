@@ -247,9 +247,10 @@ retain omitted failure precedence. Settings confirmation timeout preserves only
 uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN; an
 incomplete first sweep or count/call/copy overflow remains FAILED/null. Lazy reveal
 pre-check absence is unestablished, with no effect; V12 tests a retained selection
-in a fresh unvisited incarnation. K212's explicit resource-type/fixed-file/direct-localization reader closes the
-design's ordinary pathname plan; mandatory review must finish before k7 implements
-discovery. It keeps >=1,024-root INDEXED_ITEM and the independent action limit.
+in a fresh unvisited incarnation. K213/k214 refute k212's name-file closure and useful-subject dimensions.
+Application-localized-metadata-k215 and its mandatory review/earned integration
+must repair that coupled design before k7 implements discovery. The approved
+root-type/fixed-file/direct-localization scope remains the construction boundary. It keeps >=1,024-root INDEXED_ITEM and the independent action limit.
 The [native-image decision](../adr/workspace-native-images-preserve-action-authority.md)
 requires a routing-only principal guard and production adapters private to their
 own images, including a principal-injection failing control; a clean action

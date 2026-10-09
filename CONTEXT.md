@@ -235,6 +235,10 @@ a checked root resource-type observation at <=1,023 UTF-8 bytes followed by a
 closed fixed-file and direct-localization plan through held directories. It has
 no foreign Bundle/resource lookup or reconstructed descendant whole-path call.
 Typed facts, provenance, native races and qualification limits remain explicit.
+Its current name-file set and useful-subject certificate are refuted by shipped
+files; application-localized-metadata-k215 and mandatory review must repair them
+before implementation. A checked pathname construction alone is no useful-reader
+closure.
 
 **Native serviceability evidence**: Applicable owned events paired with
 independent listener, grant-store and authorized-action outcomes for a finite

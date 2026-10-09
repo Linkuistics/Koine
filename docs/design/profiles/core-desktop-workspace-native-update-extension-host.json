@@ -7,7 +7,8 @@
     "Framework major 1/minor 1; host and native manifest require additional-capabilities-v1, first-party-selection-v1 and workspace-native-disclosures-v1.",
     "Unchanged host posture first; any earned conditional Automation host has a separate signature/posture record, the same schema.",
     "Retained 1.0.0/1.0.1 and action-only update 1.1.0/schema 1.0.1 remain independent evidence.",
-    "Native disclosure feature pins are design metadata; corrected core UI/management and native loader acceptance remain pending."
+    "Native disclosure feature pins are design metadata; corrected core UI/management and native loader acceptance remain pending.",
+    "Application reader file-set/useful-subject construction is refuted; application-localized-metadata-k215 and mandatory review precede implementation. No new native verdict."
   ],
   "providers": [
     {

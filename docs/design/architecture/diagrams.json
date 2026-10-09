@@ -1,10 +1,10 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. The authorized explicit application reader uses root resource type and held-directory fixed-file/direct-localization reads; indexed long roots retain explicit provenance. Review and all native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. The authorized explicit application reader uses root resource type and held-directory fixed-file/direct-localization reads; indexed long roots retain explicit provenance. The application file-set/useful-subject proposal is refuted; k215 and mandatory review precede k7. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
     "title": "Explicit application metadata reader",
-    "status": "Scope approved; design complete for mandatory review; native qualification pending",
-    "summary": "Root-only whole-path admission through 1,023 bytes; fixed information/name files and direct localization plan use held directories. No foreign Bundle lookup. L1500 adds 977 localized control and 978 old-band copy. The revised finite attempt/gross certificate preserves 8 MiB gates, k211 repairs and independent actions.",
+    "status": "Scope approved; file-set/useful-subject design refuted; k215 redesign and mandatory review before k7",
+    "summary": "The shipped-file measurement refutes the 65,536-byte file gate, 4,096-locale/input construction and omitted InfoPlist.loctable names. K214 repairs layout, name/backstop precedence and disclosure; k215 owns the coupled sizing/format/accounting redesign with mandatory review before k7. Existing gates, useful choices, Settings repairs and independent action limits remain obligations.",
     "diagramIds": [
       "native-localized-decision",
       "native-long-applications",
@@ -24,7 +24,7 @@
       },
       {
         "id": "native-application-population",
-        "summary": "Added explicit metadata-plan work and the revised 2,345,024-attempt/8,340,416-byte finite certificate."
+        "summary": "Conditional arithmetic retained as a checked counterexample; measured baseline dimensions refute useful-subject coverage and require k215 redesign."
       },
       {
         "id": "native-discovery-contract",
@@ -96,7 +96,7 @@
       "renderer": "svg",
       "source": "native-localized-decision.d2",
       "rendered": "native-localized-decision.svg",
-      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN."
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-long-applications",
@@ -105,7 +105,7 @@
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-discovery-contract",
@@ -114,7 +114,7 @@
       "renderer": "svg",
       "source": "native-discovery-contract.d2",
       "rendered": "native-discovery-contract.svg",
-      "caption": "Component view within one resident process. The discovery image privately owns the explicit fixed-file/direct-localization reader; action and shared lookup modules acquire no contents code. Static authority, principal/action image guards, frozen publication and true-return ownership remain binding. Settings k211 deadline/lazy-reveal repairs and diagnostic saturation are preserved. Mandatory review, actual P1024/V12/L1500 and all native verdicts remain pending."
+      "caption": "Component view within one resident process. The discovery image privately owns the explicit fixed-file/direct-localization reader; action and shared lookup modules acquire no contents code. Static authority, principal/action image guards, frozen publication and true-return ownership remain binding. Settings k211 deadline/lazy-reveal repairs and diagnostic saturation are preserved. Mandatory review, actual P1024/V12/L1500 and all native verdicts remain pending. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-settings-flow",
@@ -150,7 +150,7 @@
       "renderer": "svg",
       "source": "native-discovery-sources.d2",
       "rendered": "native-discovery-sources.svg",
-      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Ordinary application roots use the explicit fixed-file/direct-localization exception; larger roots use actual indexed tuples without current-plist binding. Global overflow fails the population, detail saturation never loses choices. Settings process-only preparation, lazy UNKNOWN completeness and retained-first-map confirmation timeout rules remain binding. Review and all P1024/V12/L1500 native verdicts remain pending."
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Ordinary application roots use the explicit fixed-file/direct-localization exception; larger roots use actual indexed tuples without current-plist binding. Global overflow fails the population, detail saturation never loses choices. Settings process-only preparation, lazy UNKNOWN completeness and retained-first-map confirmation timeout rules remain binding. Review and all P1024/V12/L1500 native verdicts remain pending. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-application-population",
@@ -159,7 +159,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Complete staging with explicit metadata-plan/file work. The finite shallow certificate is 2,345,024 attempts under 4,194,304 and 8,340,416 gross bytes under unchanged 8 MiB; wire remains 7,929,856. Actual baseline input/localization dimensions must fit, with no locale subset or helper filtering. Global overflow withholds items. Diagnostic saturation retains choices and fixed source reasons. Review and P1024/L1500/native serviceability remain pending."
+      "caption": "Complete staging remains the required behavior. Old 2,345,024-attempt/8,340,416-byte arithmetic fits only conditional dimensions refuted by the shipped baseline (L=10,794; 9,131,967 certificate subtotal at the old full envelope/128-byte locale reservation; not measured allocation). K215 and mandatory review must replace the coupled file-set/sizing/accounting design before k7. Existing owned/core gates, useful apps/helpers, diagnostic summaries and independent actions remain obligations; no gate increase or native pass is selected."
     },
     {
       "id": "native-settings-decision",

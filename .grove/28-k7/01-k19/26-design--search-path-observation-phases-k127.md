@@ -95,8 +95,8 @@ transcode reserve and 64C/two-copy indexed payload charges against actual alloca
 and duplicate comparison, without new duplicate payload copies or C×D walks.
 Reviewed k212 adds 8E metadata-plan and 48F file-probe work (F<=4C+2L),
 <=1,000,000 input bytes plus 64L/two-component copies at shallow L=4,096 and
-components<=32 bytes. The 2,345,024 attempts/8,340,416 gross bytes fit 4,194,304/
-unchanged 8 MiB; wire stays 7,929,856. Enumerate actual baseline dimensions,
+components<=32 bytes. The old 2,345,024 attempts/8,340,416 gross bytes fit only conditionally at
+refuted L/input dimensions; replace them through reviewed k215; wire stays 7,929,856. Enumerate actual baseline dimensions,
 borrowed info/current-name dictionaries and both fixed buffers within existing
 scratch; no deep copies, repeated candidate-name allocations or extra walk.
 These prove no runtime peak/timing/support. Wrong reader/provenance/copy/early release must fail.
@@ -118,5 +118,18 @@ from the capped detail records. Saturation omits guidance, not choices.
 G4/N4/N5/V12 must reject anchor-only growth, positional reassociation, lazy empty
 health upgrades, third sweeps, early retirement and stale cold/warm substitutions.
 Also reject discarded confirmation checkpoints, revived contradicted entries and
-diagnostic-fatal publication. Consume k212's reviewed localized-reader recipe
+diagnostic-fatal publication. Consume k215's reviewed localized-reader recipe
 before counting its calls/copies; the 20-byte known-plist boundary is insufficient.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

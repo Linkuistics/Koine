@@ -1,4 +1,5 @@
 {
+  "ordinaryReaderConsumptionRequires": "application-localized-metadata-k215",
   "purpose": "Constructive source/fixture declarations; no native query, action or support pass",
   "source": {
     "queryScope": "NSMetadataQueryIndexedLocalComputerScope",

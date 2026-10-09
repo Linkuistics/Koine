@@ -8,8 +8,10 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The approved explicit application reader has a closed caller-visible file/call
-manifest. Start with
+The approved explicit application-reader scope has a shipped-file/certificate
+counterexample: its proposed name set omits InfoPlist.loctable and its L/input
+dimensions do not cover the required baseline. K215 and mandatory review/earned
+integration must replace that construction before k7. Start with
 [Application metadata → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision).
 Only root type uses a whole path; held-directory fixed files and direct locale
 inventory replace opaque Bundle lookup. 977/978 localized controls and actual
@@ -24,7 +26,7 @@ challenge the complete design; actual G/N/V qualification remains pending.
 [Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
 connects the three constructions and their finite P1024, V12 and L1500 useful-choice
 obligations. The population and long-application views now carry the explicit recipe and
-revised admission/costs. Settings-readiness remains unchanged context. Design consistency is no native source, timing,
+refuted conditional costs and pending replacement. Settings-readiness remains unchanged context. Design consistency is no native source, timing,
 resource-peak or binary acceptance.
 
 [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract)

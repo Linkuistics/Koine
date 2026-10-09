@@ -122,7 +122,7 @@ is unestablished selection, not absence; V12 adds a separate fresh unvisited tar
 revealing a known prior pane/anchor. Diagnostic saturation never erases choices:
 63 details plus DIAGNOSTIC_LIMIT and fixed summaries retain all outcome reasons.
 
-Before implementation, consume application-localized-metadata-k212 and its
+Before implementation, consume application-localized-metadata-k215 and its
 mandatory review/earned integration. The approved ordinary reader uses root type
 through 1,023 bytes plus held-directory fixed information/name files and a direct
 locale inventory/explicit preference plan. No opaque Bundle or descendant whole
@@ -131,3 +131,16 @@ keep actual indexed tuples. Ordinary 1,004…1,023 state stays UNKNOWN because a
 Info.plist support is independent.
 K191/k127/k123/k30 must use its repaired source/ownership/normalization/qualification
 contract, retaining useful localized names and independent action boundaries.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.

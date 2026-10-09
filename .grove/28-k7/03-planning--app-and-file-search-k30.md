@@ -110,8 +110,8 @@ direct-localization recipe, never opaque Bundle or descendant whole-path fallbac
 Actual indexed provenance, localized names and unchanged action limits remain required.
 Plan diagnostic saturation without choice loss or hidden reasons (63 detail
 records plus the reserved canonical summary, independently classified sources).
-Revised gross certificates: applications 8,340,416 bytes, Settings 6,094,976 bytes,
-under unchanged 8 MiB; app attempts 2,345,024 under 4,194,304 and wire 7,929,856.
+Application 8,340,416-byte arithmetic has refuted useful-subject assumptions;
+consume reviewed k215 replacement. Settings remains 6,094,976 under 8 MiB; app attempts 2,345,024 under 4,194,304 and wire 7,929,856.
 Actual E/L/file input/component dimensions include native baseline and may not be
 assumed. No parser peak follows; N5/N8 and independent serviceability are live. Settings count/call/copy overflow and incomplete-first-map
 timeout fail closed; confirmation timeout retains uncontradicted first-map
@@ -119,3 +119,16 @@ positives with TIME_LIMIT/UNKNOWN and ordinary late-return ownership. G4/G8/G10/
 must reject contrary outcomes. V12 needs a separate fresh unvisited-incarnation
 reveal using an earlier known ordinary pane/anchor, without observer warm-up;
 lazy pre-check uncertainty cannot waive useful destination acceptance.
+
+## Application reader redesign before consumption
+
+K213/k214 refute the current ordinary name-file closure and useful-subject
+L/input certificate against shipped files. Consume application-localized-metadata-k215
+and its mandatory whole-producer review/earned integration before implementing
+or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
+and 1,000,000 input bytes are checked counterexamples, not useful-subject
+certification. Do not route these known design defects to k93 as native
+uncertainty. Keep every useful/baseline/helper choice, independent action
+limits, Settings/diagnostic repairs and native pending obligations. No format,
+larger gate, accounting refund or posture is selected by k214. See
+docs/verification/application-localized-baseline.md.
