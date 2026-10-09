@@ -24,6 +24,15 @@ dialog/hydration controls, source/binary authority evidence and retained action
 compatibility remain required. Earlier raw-search measurements accept no new
 native catalogue route.
 
+The [native source analysis](../verification/native-discovery-sources.md)
+establishes candidate location/application interfaces and a concrete modern
+System Settings source/posture decision. The installed scripting dictionary
+offers pane objects and reveal, with unapproved Automation/signing/setup costs;
+sidebar metadata has private-format and conditional-visibility limits. A focused
+requirements step precedes final API design. No catalogue route, reduced useful
+category or new consent is selected here. The complete native-discovery producer
+and its mandatory review remain ahead of the retained search consumers.
+
 ## Previous raw-search proposal
 
 **Everything below is comparison material awaiting returned design, not the

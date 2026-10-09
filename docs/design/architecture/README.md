@@ -7,6 +7,22 @@ hand-edit exports.
 
 ## Current discovery discussion
 
+[Native sources → What each source can establish](index.html#diagram-native-discovery-sources)
+records public location/application candidates and the modern settings gap.
+[System Settings → Choose the source and permission boundary](index.html#diagram-native-settings-decision)
+compares app-supplied scripting, OS-shipped private sidebar data and individually
+documented destinations. The recommended scripting route needs an explicit
+Automation/signing/setup decision. Read the
+[source analysis](../../verification/native-discovery-sources.md) for exact OS/SDK
+provenance and consumer consequences. Source analysis selects no backend or API
+and supplies no native pass; full producer design and mandatory review stay live.
+
+Changed in this discussion:
+
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Added source capabilities and the distinction between a candidate and a qualified catalogue.
+- [System Settings → Choose the source and permission boundary](index.html#diagram-native-settings-decision) — Added the three concrete source/posture alternatives and the human decision before API design.
+- [Native discovery source boundary](../../verification/native-discovery-sources.md) — Added bounded SDK/OS-source evidence and retained acceptance/authority obligations.
+
 [Client-owned search and native discovery](index.html#diagram-search-discovery)
 shows the agreed v1 requirements boundary for macOS 26+. Koine returns special
 locations and named application/modern System Settings catalogues. Clients own
@@ -45,7 +61,9 @@ use D2 0.9.0, theme 0/dark-theme 200; PlantUML sources use 1.2026.8. Run the
 existing Taskfile recipes: design:search-render (the ownership sketch and eight
 comparison views; ELK for permission/canonical/resource/inspection/serviceability,
 Dagre for the rest), design:workspace-render, design:selection-render and
-design:workflow-render.
+design:workflow-render. design:native-discovery-render exports the focused
+source/decision views with Dagre; they remain proposals pending requirements
+and contract design.
 
 design:search-check validates the previous raw-search SDL/examples. It is not
 validation of a new native catalogue API. check:docs validates relative links

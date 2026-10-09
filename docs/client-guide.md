@@ -379,6 +379,10 @@ implement against. Introspect for the actual native catalogue/location fields
 after their design and implementation; the former raw filename/root-query shape
 is not the v1 contract.
 
+The [source boundary](verification/native-discovery-sources.md) records the
+candidate public interfaces and the pending System Settings source/permission
+decision. No settings destination shape is yet accepted by an existing action.
+
 Read native source availability, completeness, metadata uncertainty and errors
 together. Empty, blocked, unavailable and incompletely observed categories must
 remain distinguishable. An OS-reported list is not automatically all applications

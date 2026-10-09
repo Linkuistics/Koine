@@ -1,79 +1,50 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Koine provider architecture and the agreed v1 discovery boundary. Koine supplies special locations and named native catalogues; clients own raw filesystem search. The other search views preserve the previous proposal for comparison. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable; open the SVG for focused reading.",
+  "intro": "Koine native discovery source analysis and the agreed v1 ownership boundary. Locations and application sources are candidates; modern System Settings needs an explicit source/posture decision before final API design. Other search views preserve comparison material. Graphs begin at the dark entry node; sequences read from their first message. Sources are editable.",
   "discussion": {
-    "title": "Client-owned raw search and Koine native discovery",
-    "status": "V1 requirements agreed; native design, review and acceptance pending",
-    "summary": "For macOS 26+, Koine supplies OS-known starting locations and named application/modern System Settings catalogues. Clients own traversal, filesystem permissions, filtering and ranking. Location values confer no access. Koine reads remain prompt-free, with honest empty, blocked, unavailable and incomplete/unknown observations. Public GraphQL, actual provider/host binaries and signed VMs remain the agreed acceptance seams. The returned design must establish native sources and reconcile retained metadata, action, compatibility and serviceability obligations; the eight previous raw-search views do not select an API or backend.",
+    "title": "Native discovery sources and the System Settings decision",
+    "status": "Source analysis complete; settings decision, contract and native acceptance pending",
+    "summary": "Public Foundation location values and indexed/running/registration application sources have bounded capabilities. Modern System Settings exposes a shipped scripting dictionary; using it would need an explicit Automation/signing/setup decision. Sidebar data uses undocumented formats and conditional entries; individual SDK destinations cannot silently replace the useful category. Recommend explicitly authorized scripting with prompt-free reads of an already-running target. This is a proposal, not source selection or a native pass. The complete producer and mandatory review remain before consumption.",
     "diagramIds": [
-      "search-discovery",
-      "search-preopen",
-      "search-traversal",
-      "search-coverage",
-      "search-resources",
-      "search-inspection",
-      "search-canonical",
-      "search-serviceability",
-      "search-handoff"
+      "native-discovery-sources",
+      "native-settings-decision",
+      "search-discovery"
     ],
     "updatedDiagrams": [
       {
-        "id": "search-discovery",
-        "summary": "Agreed v1 ownership: Koine returns special locations and named native catalogues; clients own raw search. Native sources, API and acceptance await returned design and mandatory review."
+        "id": "native-discovery-sources",
+        "summary": "Added source capabilities and the distinction between a candidate and a qualified catalogue."
       },
       {
-        "id": "search-preopen",
-        "summary": "Previous raw-search permission interview. The ownership revision supersedes its raw ordering/backend questions; native reads still require prompt-free/no-hydration qualification."
-      },
-      {
-        "id": "search-canonical",
-        "summary": "Previous raw-result identity proposal. Per-copy application identity and action-time checks remain relevant; the returned native design reconciles exact metadata and location semantics."
-      },
-      {
-        "id": "search-inspection",
-        "summary": "Previous root/seed inspection proposal. Native source availability, useful application discovery and finite resource ownership remain design obligations, without an invented exhaustive inventory."
-      },
-      {
-        "id": "search-resources",
-        "summary": "Previous find-child lifecycle proposal. No child is selected for v1 native discovery; its actual mechanisms need their own source and binary authority checks."
-      },
-      {
-        "id": "search-serviceability",
-        "summary": "Previous raw-backend instruments. Retain independent serviceability and dialog/hydration controls for actual native mechanisms; prior events supply no new acceptance."
-      },
-      {
-        "id": "search-traversal",
-        "summary": "Previous raw DFS/source scheduling proposal. Clients now own traversal, ordering and budgets; these mechanics are not Koine v1 requirements."
-      },
-      {
-        "id": "search-coverage",
-        "summary": "Previous raw-source coverage payload. Honest native availability, empty and incomplete/unknown observations remain required; exact native payload awaits design."
-      },
-      {
-        "id": "search-handoff",
-        "summary": "Previous raw-result handoff proposal. Existing launch/open/reveal contracts, authority and 1.0.1 action compatibility remain independent; native catalogue provenance awaits acceptance."
+        "id": "native-settings-decision",
+        "summary": "Added the scripting, private-sidebar and category-revision alternatives, with the explicit decision before API design."
       }
     ]
   },
   "groups": [
     {
+      "id": "native-sources",
+      "title": "Native discovery sources \u00b7 analysis",
+      "description": "Candidate interfaces, public/platform limits and the concrete settings decision. No backend, schema, consent or reduced useful inventory has been selected."
+    },
+    {
       "id": "search",
-      "title": "Native discovery and client-owned search · requirements",
+      "title": "Native discovery and client-owned search \u00b7 requirements",
       "description": "Agreed v1 boundary plus eight previous raw-search comparison views. Native catalogue/location design, mandatory review and actual acceptance remain pending."
     },
     {
       "id": "workspace",
-      "title": "Launch and open · designed, not yet served",
+      "title": "Launch and open \u00b7 designed, not yet served",
       "description": "Installed application selection, web/document opening and Finder reveal. Native acknowledgment does not certify rendered contents or foreground state; document handlers can execute content or follow redirects."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection · designed, not yet served",
+      "title": "First-party selection \u00b7 designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension · designed, not yet served",
+      "title": "Workflow extension \u00b7 designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -99,9 +70,27 @@
   ],
   "diagrams": [
     {
+      "id": "native-discovery-sources",
+      "group": "native-sources",
+      "title": "What each source can establish",
+      "renderer": "svg",
+      "source": "native-discovery-sources.d2",
+      "rendered": "native-discovery-sources.svg",
+      "caption": "Source-analysis proposal, not runtime acceptance. Location values give no client access; indexed application observations and per-identifier registration do not prove all-disk completeness. Exact prompt/hydration qualification and useful witnesses remain pending. Settings needs a precise source/posture decision before the full contract and mandatory review."
+    },
+    {
+      "id": "native-settings-decision",
+      "group": "native-sources",
+      "title": "Choose the source and permission boundary",
+      "renderer": "svg",
+      "source": "native-settings-decision.d2",
+      "rendered": "native-settings-decision.svg",
+      "caption": "Recommendation remains unapproved. The inspected modern dictionary exposes pane objects and reveal, not a proved useful runtime inventory. Automation needs explicit signing/consent/setup authority; private sidebar data has version/conditional limits; limiting the catalogue to individually documented targets changes the agreed category. The source decision precedes final API design, review and finite G/N/V acceptance."
+    },
+    {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal · Decide child use and protected-target access",
+      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -110,7 +99,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal · Verify finite outcomes with independent controls",
+      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -119,7 +108,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal · Own pipes and reap before releasing capacity",
+      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -128,7 +117,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal · Keep native facts separate from source inventory",
+      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -137,7 +126,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal · Preserve file bytes and checked application targets",
+      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -146,7 +135,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -155,7 +144,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal · Report source completeness without invented counts",
+      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -164,7 +153,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal · Choose a location and use existing actions",
+      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -186,7 +175,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",

@@ -86,6 +86,16 @@ appropriate selected actions and independent dialog/hydration controls. These
 expectations are agreed. Native source/binary/serviceability acceptance remains
 pending; raw home ordering/work loss is client-owned, not a Koine feature.
 
+native-discovery-k199 is now a node: source analysis k200 found the modern
+System Settings dictionary and the distinct private sidebar formats, then
+externalized the precise source/posture/useful-category decision before final
+contract design. Exact pane events may be permitted without new consent; that
+has not been tested. Depending on explicit Automation setup, accepting private
+formats or narrowing the useful settings category requires Antony's answer.
+The whole producer remains live and finishes all original reconciliation duties
+before its mandatory review/earned integration and k7. Source analysis is no
+native pass and closes no downstream node.
+
 Prior find/custom-walk contracts and measurements are bounded comparison input.
 Earlier process/lookup/protection permissions do not select a catalogue backend
 or approve a global materialization policy, new consent/helper/signing posture or

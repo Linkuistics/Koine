@@ -1,4 +1,4 @@
-# native-discovery-k199
+# native-discovery-k199 — brief
 
 ## Goal
 
@@ -86,3 +86,56 @@ consumer consequence rather than growing another evidence chain.
 This design chooses sources and API within the already agreed requirements.
 Native acceptance remains subsequent work through the existing seams. No second
 in-session reviewer, new proof programme or unauthorized raw-search implementation.
+
+## Decomposition
+
+Source analysis (native-discovery-sources-k200) establishes candidate sources
+and the concrete modern-settings gap. native-settings-source-k201 settles
+the source/signing/consent/useful-category decision; native-discovery-k202
+completes every original Done when, including replacing raw artifacts and
+reconciling all mixed charters. Do only the first child in the current session.
+No implementation leaves belong in this node.
+
+The final design child cuts mandatory root-level review-design with
+**Reviews:** native-discovery-k199 immediately before app-and-file-search-k7;
+earned integration also precedes k7. It checks the full parent Done when before
+closing, promotes the concrete handoff and names its actual Creator run there.
+This source child closes no parent and names no Creator for an unfinished one.
+
+Read docs/verification/native-discovery-sources.md for the source alternatives,
+recommended explicitly authorized System Settings scripting route, exact
+source/SDK provenance and retained finite acceptance/authority duties. No
+native acceptance, source selection, new consent or useful-category reduction
+has occurred. The existing raw proposal remains comparison until final design.
+
+## Decisions (running log)
+
+- Adopt the mandated design leaf and authoritative jj workspace. Read the
+  glossary, k196 human decisions, root brief, ownership/native-principle ADRs,
+  current and comparison artifacts and retained live charters. Taskfile.yml is
+  the reusable-check entry point. The graph CLI refused an active
+  pre-coordination/unverified generation, just as in k196; use bounded exact
+  source/SDK/document reads, with no graph freshness/coverage claim.
+- Supported Foundation location lookup supplies starting values without
+  creating or listing directories. Public application registration lookup is
+  by identifier, not an all-application inventory. Indexed Spotlight is a
+  candidate for broader category discovery, not a qualified prompt-free source
+  or an index-health/completeness proof; retain per-copy identity and exact
+  selected actions independently.
+- Read-only source analysis found a modern System Settings scripting dictionary
+  naming pane IDs, names, anchors and reveal commands. Depending on Automation
+  setup would require a signing/consent decision not granted by k196; exact
+  events may be permitted without it and were not tested here. The installed
+  Sidebar/Sidebar124 property lists are a different, undocumented format with
+  conditional and catch-all entries, not a supported complete catalogue.
+  Public SDK destinations (Login Items and Full Disk Access) alone cannot
+  substitute for the required useful modern category.
+- Decompose at this precise requirements seam rather than infer permission,
+  silently reduce the settings category or invent another native proof chain.
+  This session completes only bounded source analysis and its visual handoff.
+  A focused requirements child settles modern-settings source/posture; a design
+  child then completes every original API/resource/acceptance/artifact/charter
+  obligation. The native-discovery-k199 node remains live until those duties
+  are met. Its closing session cuts whole-producer review before k7 and names
+  its own Creator run, with earned integration also before k7. No implementation
+  leaves, native probes, signing changes or native passes belong here.
