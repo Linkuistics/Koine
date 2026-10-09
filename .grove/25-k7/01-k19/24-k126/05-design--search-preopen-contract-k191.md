@@ -91,3 +91,15 @@ reveal/timedLoad/authorize, hidden extension visit, warm-up cache or alternate
 source can make a read look ready. Runtime property access and opaque extension
 work must independently meet read policy. G4/N4/V12 own honest lazy uncertainty
 and cold-before-visit/warm usefulness; unavailable conditions stay pending.
+
+## K211 integration handoff
+
+Consume k212's localized-reader design and mandatory review/earned integration
+before qualifying any ordinary Bundle episode; the known-plist-only boundary is
+insufficient. Keep admitted getter/contact and useful localized-name obligations.
+Diagnostic saturation continues inspection with fixed source summaries and bounded
+visible reason guidance. Settings confirmation timeout retains only uncontradicted
+complete-first-map positives; count/call/copy overflow and earlier incomplete
+deadline remain FAILED/null. Exact reveal pre-check no-such-object is unestablished
+selection, never absence or implicit warm-up. Qualify a known prior pane/anchor
+in a separate fresh unvisited incarnation, with no observer warming it first.

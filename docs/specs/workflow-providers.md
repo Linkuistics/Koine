@@ -242,6 +242,13 @@ agent/background declarations and associated running policies support client
 filtering without provider suppression. G10/N5/V11 in the finite acceptance
 contract own the actual P1024 useful population, budget accounting and independent
 serviceability; review and native qualification remain pending.
+Diagnostic saturation omits bounded guidance, not choices; source summaries still
+retain omitted failure precedence. Settings confirmation timeout preserves only
+uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN; an
+incomplete first sweep or count/call/copy overflow remains FAILED/null. Lazy reveal
+pre-check absence is unestablished, with no effect; V12 tests a retained selection
+in a fresh unvisited incarnation. K210/R2's localized resource boundary repair and
+mandatory review must finish before k7 implements discovery.
 The [native-image decision](../adr/workspace-native-images-preserve-action-authority.md)
 requires a routing-only principal guard and production adapters private to their
 own images, including a principal-injection failing control; a clean action

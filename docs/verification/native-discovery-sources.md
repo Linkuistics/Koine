@@ -159,7 +159,17 @@ registration URL cannot supply missing type/identifier/name for a different copy
 No NSMetadataItem(url:), MDItemCreate, arbitrary attribute/plist, ancestor listing,
 new query/scope, private database or short-alias reader is admitted.
 
-The indexed route applies when the resolved bundle spelling or its known
+The complete localized resource boundary is unresolved after review k210/R2.
+The 20-byte known-plist suffix below is necessary but insufficient for an ordinary
+Bundle episode that also reads localized dictionaries. For example,
+`/Contents/Resources/en.lproj/InfoPlist.strings` adds 46 UTF-8 bytes;
+the 1,003-byte bundle control cannot safely address it under the whole-path limit.
+Other localization names differ in length, so no universal localized suffix is
+derived here. A new design producer/review must derive every admitted reader
+pathname, preserve useful localized names and reconcile finite controls and
+attempt/copy certificates before implementation. No additional reader is selected.
+
+The indexed route is required when the resolved bundle spelling or its known
 20-byte Contents/Info.plist suffix reaches 1,024 bytes; the suffix threshold is
 1,004 bundle bytes. This is separate from the retained action limit. Whole-path
 Bundle/resource calls are withheld there. Positive indexed type plus lookup-only
@@ -170,7 +180,7 @@ staleness predating the first walk remains an explicit association limit; known
 wrong/replaced fixture witnesses fail actual qualification.
 
 The finite [L1500 subject](native-discovery-acceptance.md#long-application-source-subject)
-uses seven signed copies: five boundary bundles at 1,003/1,004/1,023/1,024/1,500
+currently declares seven signed copies: five known-plist/handoff boundary bundles at 1,003/1,004/1,023/1,024/1,500
 UTF-8 bytes and two short competitors for the long identifiers. Component-relative
 fixture construction and independent manifest reading are already demonstrated
 by the [long application fixture](../../scripts/vm-long-application-fixtures.py)
@@ -232,8 +242,9 @@ The additional raw-slot reserve covers three indexed getters, five native tree
 checks and six scalar checks/comparisons; the per-spelling reserve adds two
 scalar transcodes. Tree count is globally gated at 65,536 before a native
 membership lookup; native array acquisition/search internals remain opaque.
-One 64-byte fact record and two extra indexed name/identifier copies per spelling
-raise the shallow gross certificate to 6,816,000 bytes. Duplicate tuples compare
+One 64-byte fact record and two extra indexed name/identifier copies per spelling,
+plus 128 fixed source-summary bytes per job,
+raise the shallow gross certificate to 6,816,128 bytes. Duplicate tuples compare
 borrowed native values without new owned payload copies. Actual adapter copies
 or extra calls outside that construction invalidate the certificate.
 Do not apply this certificate to a different reader or repeated per-choice
@@ -262,10 +273,21 @@ justified by those declarations. Unreadable/unsupported metadata stays unknown.
 
 The owned-copy certificate for the shallow subject reserves spelling/choice/
 ordinal/identifier/running records, two owned copies of path/name/identifier
-payloads, diagnostic records and 1 MiB of one-walk scratch. Its worst-case logical
-charge is 6,816,000 bytes, below the unchanged 8 MiB gate. These record/scratch
+payloads, diagnostic records, 128 fixed source-summary bytes and 1 MiB of
+one-walk scratch. Its worst-case logical
+charge is 6,816,128 bytes, below the unchanged 8 MiB gate. These record/scratch
 allowances are a required adapter construction contract, not measured Swift
-heap layout. A consumer that cannot keep its actual owned allocations/copies
+heap layout. Diagnostic detail saturation is non-fatal: 63 records plus the reserved
+DIAGNOSTIC_LIMIT record bound payload storage; four fixed 32-byte source summaries
+classify all observations independently of details. No new native call or unbounded
+per-item accumulator is admitted. Omitted uncertainty/failure reasons still affect
+coverage and precedence; no valid choice is lost solely to fit diagnostic storage.
+The final reserved record projects all observed source/reason tokens in canonical
+guidance, rendered once from fixed masks at freeze. Its three-source worst case
+is 843 UTF-8 bytes within 1,024; fixed scratch and the gross diagnostic allowance
+must cover actual rendering copies. No repeated per-observation string allocation
+or late rewrite is admitted.
+A consumer that cannot keep its actual owned allocations/copies
 inside them must revise the certificate and bounds before claiming applicability.
 The same subject's single-full-selection JSON bound is 7,929,856 bytes, using
 six bytes per escaped UTF-8 byte and explicit fixed-field/diagnostic/coverage
@@ -389,9 +411,16 @@ observed two-sweep quiescence from lazy-object completeness. It selects two
 full ID-keyed maps with a 100 ms minimum gap inside three seconds; this detects
 some changes without claiming initialization health. Empty panes remain UNKNOWN,
 empty anchors null, and stable positive choices PARTIAL with UNKNOWN observations.
-No reads perform extension-loading effects. Independent [finite qualification](native-discovery-acceptance.md#settings-cold-and-warm-qualification)
+No reads perform extension-loading effects. Confirmation deadline after a complete
+first sweep retains uncontradicted first-map positives as PARTIAL/TIME_LIMIT with
+UNKNOWN readiness; incomplete first-sweep timeout and count/call/copy overflow still
+withhold items. No late reply changes that checkpoint. Selected reveal's exact
+pre-check uses the same lazy objects: no-such-object certifies no absence and is
+failed/unestablished selection, never SELECTION_UNAVAILABLE or an implicit warm-up.
+Independent [finite qualification](native-discovery-acceptance.md#settings-cold-and-warm-qualification)
 must demonstrate every exposed useful choice before visits, for cold and warm
-subjects, and detect later lazy additions. It cannot certify every future process
+subjects, detect later lazy additions and reveal a known earlier pane/anchor in a
+separate fresh unvisited incarnation. It cannot certify every future process
 state. A failed/unconstructible subject stays pending or unmet; it does not permit
 a narrower inventory, new posture or alternate private source silently.
 

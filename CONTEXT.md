@@ -164,6 +164,14 @@ it is no certificate of lazy extension initialization or catalogue completeness.
 Process RUNNING is separate. Current Settings reads keep observation completeness
 UNKNOWN, positive choices PARTIAL and unestablished empty anchors null. Finite
 cold/warm qualification proves only its declared subject's useful observations.
+Confirmation timeout can retain uncontradicted complete-first-map positives with
+TIME_LIMIT/UNKNOWN; no incomplete prefix becomes a complete map. Lazy
+no-such-object also proves no absence at a selected reveal pre-check.
+
+**Diagnostic saturation**: Exhaustion of a native catalogue's bounded detail
+records, reported with DIAGNOSTIC_LIMIT. It omits guidance, never valid choices;
+fixed source summaries retain the underlying coverage/error outcomes. It does
+not by itself set resultsTruncated or certify completeness.
 
 **Automation setup**: An explicit human action in Koine’s local explaining UI
 through a private local-console seam, never a GraphQL/bearer operation. Its OS

@@ -80,3 +80,15 @@ positive observations keep uncertainty and empty anchors remain null. Require
 all exposed pane/anchor and Network/Sound/Appearance/Displays witnesses plus
 independent destination/foreground/dialog/hydration/serviceability controls.
 Missing useful choices or unavailable subjects keep baseline open.
+
+## K211 integration boundary
+
+Require k212's repaired localized-resource boundary and mandatory review/earned
+integration before accepting implemented discovery. Known-plist arithmetic alone
+is insufficient; actual L1500 needs the safe ordinary/band controls. G4/G8/G10/N5
+must qualify saturation without choice loss or hidden observed reasons, complete
+first-map confirmation-timeout retention without contradicted/late revival, and
+incomplete-first-map/count/call/copy FAILED/null outcomes. V12 additionally reveals
+a prior known pane/anchor in a separate fresh unvisited incarnation with no
+observer warming. Lazy no-such-object certifies no absence; failed useful reveal
+or confirmation deadline misses remain unmet, not baseline passes.

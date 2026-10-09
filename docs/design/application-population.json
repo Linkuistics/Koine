@@ -22,6 +22,10 @@
     "attemptsPerWalkVisit": 6,
     "fixedAttemptsPerWalk": 4,
     "overflowPublication": "FAILED_NULL_ITEMS",
+    "diagnosticOverflowPublication": "CONTINUE_WITH_BOUNDED_GUIDANCE",
+    "coverageIndependentOfDiagnosticDetails": true,
+    "publishSaturationReasonSummary": true,
+    "saturationSummaryRendering": "ONCE_AT_FREEZE",
     "recursiveIdentifierExpansion": false,
     "providerFiltersAgentsOrHelpers": false
   },
@@ -40,6 +44,7 @@
     "ownedPathCopies": 2,
     "ownedNameIdentifierCopies": 2,
     "diagnosticRecordAndPayloadBytes": 2048,
+    "coverageSummaryBytes": 128,
     "walkScratchBytes": 1048576,
     "wireEscapingMultiplier": 6,
     "wireChoiceFixedBytes": 512,

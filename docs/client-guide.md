@@ -395,6 +395,14 @@ metadata failures may produce PARTIAL. No all-disk inventory or three-second
 completion is promised. Whole-producer review and actual populous acceptance
 remain pending before this design is implemented.
 
+Diagnostic storage is bounded separately from choices: DIAGNOSTIC_LIMIT means
+additional guidance was omitted after 63 detailed records; it never discards an
+otherwise valid catalogue. Source/root outcomes still include every observed
+reason, including failures whose detailed record did not fit. Inspect coverage
+as well as the retained guidance: the reserved record names every observed
+source/reason, without the omitted item details. Saturation alone does not
+truncate choices.
+
 For presentation, inspect nullable uiElement/backgroundOnly declarations and
 runningActivationPolicies. Null flags mean no explicit usable declaration;
 an empty policy set means no running policy was associated with that copy.
@@ -409,6 +417,9 @@ state and null bundle flags. Keep their exact path/identifier and copy option.
 The known plist suffix can exceed its limit at a 1,004-byte bundle path; at 1,024
 bytes the existing explicit action handoff also refuses. Neither is absence.
 Real long indexed-source and selected-action qualification remains pending.
+The known-plist threshold does not establish the longer localized-resource
+reader boundary. Its repair and mandatory review must precede implementation;
+no shorter-path localized-name guarantee follows from that arithmetic.
 
 Preserve distinct copies with one identifier. For an INSTALLED selected app,
 pass both bundleIdentifier and applicationPath into constrained launch; it needs
@@ -432,8 +443,10 @@ make discovery look complete. Valid positive choices return PARTIAL with
 UNKNOWN observation/category completeness and readiness guidance; no positive
 panes gives UNKNOWN/null. Empty/unestablished anchors are null, never proof of
 no nested destinations. Changed anchors are detected even if pane IDs stayed
-equal. Global count/call/copy/deadline overflow returns FAILED/null, not a partial
-prefix. Clients can present positive choices and their uncertainty; an explicit
+equal. Count/call/copy overflow and deadline before a complete first sweep return
+FAILED/null. A confirmation timeout retains uncontradicted complete-first-map
+choices as PARTIAL/TIME_LIMIT with UNKNOWN readiness, with no late update.
+Clients can present positive choices and their uncertainty; an explicit
 later read is a fresh observation, not automatic polling or a guaranteed remedy.
 Required cold/warm useful choices still need [independent qualification](verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification).
 
@@ -458,6 +471,9 @@ requires workspace:control AND desktop:control. Send those keys unchanged as
 opaque exact strings; never synthesize a custom URL or AppleScript. The operation
 revalidates the running fixed target, re-resolves the pane/anchor, sends no-prompt
 reveal and requests activation through the fixed bundle's Launch Services open.
+Lazy no-such-object in that pre-check is failed/unestablished selection with no
+reveal/activation; it proves no absence, including for an MRU from a prior process.
+Fresh unvisited-incarnation usefulness still needs independent qualification.
 A target that exits between validation and submission can be relaunched; the
 operation performs no implicit preparation and refuses an observed stopped target.
 A receipt acknowledges submission, not final

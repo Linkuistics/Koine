@@ -6,7 +6,11 @@ bounded Settings full-response comparison with honest lazy-readiness uncertainty
 and indexed long-application metadata with explicit provenance. Mandatory review
 and any earned reconciliation precede implementation. P1024 populous usefulness,
 V12 cold/warm Settings usefulness and L1500 long-source/action qualification remain
-pending, alongside the other finite native subjects. Design consistency establishes
+pending, alongside the other finite native subjects. The localized Bundle resource
+pathname boundary remains unresolved after k210/R2; a new design producer and
+mandatory review/earned integration must repair it before k7 implements discovery.
+The known-plist suffix certificate alone cannot admit the localized reader.
+Design consistency establishes
 no actual source, timing, resource-peak or binary behavior.
 Koine's local explaining UI alone initiates Automation consent. Native provider
 releases require `workspace-native-disclosures-v1`; prior hosts refuse them
@@ -218,7 +222,7 @@ comparison or block a later match; a real walk failure still does. Metadata
 failure prevents publishing an unchecked app choice, not using a checked unequal
 lookup as an ordered comparison observation.
 
-Population-wide entry, identifier, call, copied-value, diagnostic or deadline
+Population-wide entry, identifier, call, copied-value or deadline
 exhaustion invalidates application publication: status FAILED, items null and
 the applicable closed limit reason. Even previously staged useful choices are
 withheld. An observed-count overflow alone cannot set resultsTruncated: true
@@ -228,6 +232,8 @@ useful category is returned. Source-local unavailability and individual refused
 metadata still use the existing honest PARTIAL/UNKNOWN rules when the population
 job itself finishes within bounds. Capacity refusal retains the ordinary FAILED
 rule. Core response/authority/lifecycle failures keep their independent precedence.
+Diagnostic detail saturation follows the independent bounded-guidance policy below;
+it never invalidates choices or stops population inspection.
 
 The [finite population subjects](../verification/native-discovery-acceptance.md#application-population-subjects)
 include a populous catalogue with over 256 distinct useful identifiers plus
@@ -253,6 +259,12 @@ Every published app needs a checked positive native application-bundle type
 observation and present directory device/inode from permitted bounded individual
 location resolution. The ordinary short-path resource/Bundle episode supplies
 type and optional localized name/identifier (metadataSource BUNDLE_RESOURCE).
+That episode's complete localized-resource pathname boundary is unresolved:
+the known Info.plist guard below is necessary but insufficient. No implementation
+may treat a shorter bundle as a proved localized-reader route until the new design
+producer and its review derive every admitted addressed pathname and reconcile
+the recipe/certificates and L1500 controls. No arbitrary locale bound or silently
+unlocalized name is selected as a repair.
 An admitted indexed episode supplies those facts when the resolved bundle or
 its known Contents/Info.plist spelling cannot be handed to the whole-path reader
 (metadataSource INDEXED_ITEM), as defined below. No filename suffix, query
@@ -269,7 +281,9 @@ objects on the query owner. For an indexed candidate whose resolved bundle path
 is at least 1,024 UTF-8 bytes, or whose bundle path plus the 20-byte
 Contents/Info.plist suffix is at least 1,024 bytes, use only its associated fixed
 indexed tuple. The suffix check starts at a 1,004-byte bundle, independently of
-the later action handoff limit. Do not construct NSMetadataItem/MDItem from a
+the later action handoff limit. It establishes the indexed requirement for the
+known plist only, not the converse permission to read localized resources below
+that threshold. Do not construct NSMetadataItem/MDItem from a
 URL, obtain a new URL resource value, initialize Bundle, read a plist, create a
 short alias or ask a different application copy for substitute facts.
 
@@ -437,6 +451,19 @@ individually valid positive observations under the ordinary partial-result rules
 Never union conflicting maps into a fictitious complete snapshot. Count all
 received entries before deduplication against the per-sweep ceilings.
 
+If the deadline expires after a complete first sweep, including during the gap,
+retain that immutable map's uncontradicted positive entries as PARTIAL with
+TIME_LIMIT and UNKNOWN observation/category completeness. Accepted second-sweep
+evidence of a removed ID or changed name/anchors withholds the affected first-map
+entry; discard incomplete second-sweep staging, never union it into the first map.
+If no positive entry survives, use FAILED/null for TIME_LIMIT. An incomplete first
+sweep has no complete-map checkpoint and deadline expiry withholds its prefix as
+FAILED/null. Count/call/copy overflow still fails the population even after the
+checkpoint. Target invalidation or authority/lifecycle loss cannot be rescued by
+the checkpoint. A completed unequal second map follows the comparison rule above.
+Freeze at the shared deadline; late native replies cannot alter the retained map
+or start another sweep and ownership survives until true return.
+
 Even two equal, fully decoded sweeps leave SETTINGS_RUNTIME observations UNKNOWN:
 there is no supported lazy-completeness signal. With positive panes, return PARTIAL
 and METADATA_UNKNOWN guidance explaining catalogue readiness; without positive
@@ -451,7 +478,8 @@ An empty/refused/failed anchor observation remains null with pane-scoped guidanc
 never [] as a claim of no anchors. The current source provides no authoritative
 empty or conditional-availability signal. These uncertainty diagnostics affect
 coverage but do not generate a failed items error. A known native failure, limit,
-block or stopped target still follows the ordinary precedence; uncertainty never
+block or stopped target follows the table and explicit checkpoint/global-overflow
+rules; uncertainty never
 hides those outcomes. resultsTruncated is false for readiness uncertainty alone.
 
 The [finite cold/warm subjects](../verification/native-discovery-acceptance.md#settings-cold-and-warm-qualification)
@@ -582,9 +610,14 @@ field starts another effect.
 workspaceRevealSetting takes only the exact selection. It requires a running
 validated target and no-prompt READ and REVEAL permissions. Re-resolve pane by
 unique ID and anchor by exact name within it with core/getd, without publishing
-read data. Positive no-such-object before submission is
-DEPENDENCY_UNAVAILABLE/SELECTION_UNAVAILABLE, not input error; opaque/malformed/
-refused answers are failed or blocked and certify no absence. Construct misc/mvis
+read data. A no-such-object reply under this lazy interface establishes no absence,
+even for an exact pane/anchor selection retained from a prior incarnation. Return
+failed at the nullable mutation root with unestablished-selection guidance and no
+reveal or activation. Do not report SELECTION_UNAVAILABLE from that reply: the
+current source has no authoritative destination-absence signal. Opaque/malformed/
+refused answers remain failed or blocked and certify no absence. No retry or
+implicit warm-up is admitted. Actual fresh unvisited-incarnation reveal remains
+a useful-acceptance obligation, not an accepted loss. Construct misc/mvis
 with that pane/anchor object as direct parameter, preflight that exact event,
 send with no-prompt/no-interaction flags and wait for reply. On a checked
 successful reply revalidate the process and its fixed OS bundle, then submit one
@@ -640,9 +673,12 @@ all-disk/index-health or physical-closure guarantee.
 | FAILED | No useful observation/qualified empty and native/malformed/change/limit failure; items null; each selected items alias raises failed. |
 
 With no progress, precedence is failure → block → unavailable → unknown.
-Application or Settings population-wide owned-limit/deadline exhaustion is the explicit
-exception to progress-based PARTIAL: it always withholds staged items and returns
-FAILED as defined above. Source-local failures retain the ordinary table rules.
+Application population-wide count/call/copy/deadline exhaustion and Settings
+count/call/copy exhaustion are exceptions to progress-based PARTIAL: they withhold
+staged items and return FAILED. A Settings deadline before a complete first sweep
+does the same; after it, the uncontradicted-first-map checkpoint rule above applies.
+Diagnostic detail saturation never discards choices; reason summaries preserve
+the actual source/root precedence. Source-local failures retain the table rules.
 Gathering completion and successful parsing do not qualify a healthy empty
 INDEXED_APPS source. An empty indexed response has availability/observations
 UNKNOWN with METADATA_UNKNOWN. If an independently checked registered system
@@ -668,13 +704,48 @@ SETUP_UNSUPPORTED, INSPECTION_FAILED, CHANGED_DURING_DISCOVERY,
 UNREPRESENTABLE_VALUE, METADATA_UNKNOWN, ENTRY_LIMIT, CALL_LIMIT, VALUE_LIMIT,
 DIAGNOSTIC_LIMIT, TIME_LIMIT, CAPACITY_LIMIT. The first/metadata reasons cause
 unknown or partial; source/target stopped/setup unsupported cause unavailable;
-prompt causes blocked; all remaining reasons are failure-class. No diagnostic
+prompt causes blocked; DIAGNOSTIC_LIMIT marks omitted guidance only, and the
+remaining reasons are failure-class. No diagnostic
 claims actual missing consent without independent evidence. affectsCoverage is
 always true for these discovery reasons. Effect diagnostics have distinct
 object coordinates, describe only the fixed target/effect and set
 affectsCoverage=false; preparation has no permission hint, while reveal may
 identify its exact read/reveal preflight. Reserve a final limit diagnostic before filling
 the sink. Native error text is bounded guidance, never a parsed errno/location.
+
+Keep at most 63 detail records plus one reserved DIAGNOSTIC_LIMIT record per job.
+When another detail is needed, set the reserved record with null location/pane and
+guidance that additional details were omitted, followed by a canonical summary of
+all observed source/reason pairs; continue the complete discovery job
+without allocating more diagnostic payloads. Per-item/per-pane diagnostic duties
+mean a detail while space remains, otherwise this explicit omission. No choice or
+anchor is omitted merely to fit the sink; saturation alone leaves resultsTruncated
+false. Detail order may reflect native observations, but never determines items,
+source availability/completeness or error precedence. Classify every observation
+into fixed per-source reason masks and progress/uncertainty/failure flags before
+attempting a detail write. Reserve four 32-byte summary slots (128 gross bytes;
+at most three source groups in an application job, one in other jobs), including
+DIAGNOSTIC_LIMIT's guidance-omission bit. No unbounded per-item summary/counter or
+extra native call is needed. Omitted failures still affect the source/root outcome;
+a retained uncertainty detail cannot hide a later native failure after saturation.
+Detail saturation with positive choices gives the honest PARTIAL outcome, while
+without useful progress the summarized underlying reasons decide precedence.
+Attach the reserved record to the first source whose detail was omitted. Build its
+guidance from the fixed masks, in schema enum order, as
+`Additional details omitted. SOURCE:REASON,REASON;SOURCE:REASON`
+using exact source/reason tokens, without native
+error text or per-item labels. Include every observed reason, including a failure
+after saturation; no underlying reason disappears behind uncertainty guidance.
+The current closed enums and at most three application source groups fit this
+projection within 1,024 UTF-8 bytes; the design check derives the exact worst case.
+Other jobs have one source group. This payload uses the reserved record's existing
+2,048-byte gross allowance. During discovery record only the saturation flag and
+reason masks; render canonical guidance once when freezing the final snapshot,
+from bounded reusable scratch into one admitted owned string. Never re-encode it
+per observation or allocate a history; actual scratch/transient copies still
+charge the existing reservations. Late replies cannot change its frozen text.
+Each source's availability/completeness still comes from its own summary. Never
+fabricate a global source enum or derive control flow by parsing guidance.
 
 One root alias owns one snapshot; repeated root aliases make separate admitted
 observations. Every nested alias reads its frozen parent, with no native calls.
@@ -706,11 +777,11 @@ never replaces a blocked worker or raises descriptor/materialization limits.
 | Per admitted job | Bound and ownership |
 | --- | --- |
 | Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. |
-| Settings | Per sweep: 256 pane records, 128 raw anchor names/pane, 4,096 raw anchors total; two sweeps maximum. Return every valid exposed value within those ceilings. Population-wide count/call/copy/deadline exhaustion withholds staged Settings items as FAILED/null, never a prefix; useful inventory acceptance remains unmet. |
+| Settings | Per sweep: 256 pane records, 128 raw anchor names/pane, 4,096 raw anchors total; two sweeps maximum. Count/call/copy overflow and deadline before a complete first map withhold items as FAILED/null. Confirmation deadline retains uncontradicted first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN, never an incomplete prefix or completeness proof; useful qualification must still finish both sweeps. |
 | Native calls | Application ceiling 1,048,576; Settings 131,072 under the two-sweep certificate below; locations 16,384. All explicit descriptor/API/syscall and cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
 | Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read. |
 | Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
-| Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. |
+| Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. Saturation continues discovery; four fixed 32-byte source summaries preserve outcomes independently of stored details. Reserve 2,048 gross bytes per diagnostic record/payload. |
 | Native objects | One opaque result batch/query plus one temporary reply/descriptor set per pending call, or one pending launch callback per job, plus bounded borrowed-element owner state; dispose/release exactly once on real completion. |
 
 Metadata query uses resultCount and bounded result-at-index access, not an owned
@@ -750,8 +821,9 @@ all descriptor/disposal work. Locations retain it independently. Reserve
 cleanup before acquisition, including descriptor allocations and late replies.
 
 Two compact maps can reuse the second map as the frozen result. Their logical
-gross charge certificate is 2[N(512+1,024+128)+A(512+64)] + 2N(512) + 65,536
-diagnostic bytes + 131,072 scratch bytes = 6,029,312 bytes at the envelope,
+gross charge certificate is 2[N(512+1,024+128)+A(512+64)] + 2N(512) + 131,072
+diagnostic record/payload bytes + 128 source-summary bytes + 131,072 scratch
+bytes = 6,094,976 bytes at the envelope,
 inside the unchanged 8 MiB owned-copy gate. Record/anchor fixed allowances
 include indices and bookkeeping; sent selector copies are counted separately.
 This requires bounded extraction/discard of unused property fields, at most

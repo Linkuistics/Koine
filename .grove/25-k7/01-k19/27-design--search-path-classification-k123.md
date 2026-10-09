@@ -98,3 +98,16 @@ UNKNOWN/null. Empty anchors remain null under the current source. Do not
 infer hardware/account availability or lazy health from repeated values.
 Preserve all valid exposed keys and distinguish native failure/block/change/
 global exhaustion; G4/N4/N5/V12 independently qualify cold/warm useful inventory.
+
+## K211 integration handoff
+
+Outcome precedence uses every observation's fixed source reason summary, never
+the retained 63 details; DIAGNOSTIC_LIMIT guidance projects all reason tokens
+without item loss. Normalize Settings confirmation deadline separately from an
+incomplete-first-map deadline: uncontradicted complete-first-map positives remain
+PARTIAL/TIME_LIMIT/UNKNOWN. Withhold contradicted entries; target/lifecycle loss
+cannot be rescued. Lazy reveal no-such-object is failed/unestablished selection,
+not SELECTION_UNAVAILABLE. G4/G8/G10/N4/N5/V12 include saturation, hidden-failure,
+checkpoint and separate unvisited-incarnation reveal controls. Consume k212's
+reviewed localized-resource route before assigning BUNDLE_RESOURCE; known-plist
+arithmetic alone cannot establish that reader's support.

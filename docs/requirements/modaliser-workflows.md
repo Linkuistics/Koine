@@ -94,6 +94,13 @@ cold and warm reads must independently qualify every runtime-exposed pane/anchor
 Repeated replies certify no lazy-object health. Unestablished empties remain
 unknown, positive choices stay usable with uncertainty, and missing useful
 destinations remain unmet work. No hidden pane-loading effect follows.
+An exact selected reveal in a fresh unvisited incarnation must independently
+qualify a pane/anchor known from an earlier one. Lazy no-such-object proves no
+absence; an honest failed pre-check does not waive useful destination acceptance.
+Confirmation timeout may retain uncontradicted complete-first-map positives
+with TIME_LIMIT/UNKNOWN, while useful cold/warm qualification still needs both
+sweeps within the shared deadline. Diagnostic storage saturation omits guidance,
+never otherwise valid choices or the source/root failure outcomes.
 Ordinary reads remain separate: they never launch,
 activate, reveal, request consent or change settings. A stopped or refused
 target has an honest unavailable/blocked read outcome; a read-only caller
@@ -124,6 +131,8 @@ uses actual fixed-query tuples with explicit provenance; source facts do not
 prove current plist or launch eligibility. L1500's actual long-source/usefulness
 qualification remains pending. No client-found path can close native provenance,
 and no new access policy or useful-choice loss is approved by that design.
+The localized Bundle resource boundary requires k212's reviewed repair;
+the known-plist suffix alone cannot authorize a localized-name read.
 
 Koine's own location and metadata reads remain prompt-free. They must report
 blocked, unavailable, unknown and healthy empty outcomes honestly and avoid

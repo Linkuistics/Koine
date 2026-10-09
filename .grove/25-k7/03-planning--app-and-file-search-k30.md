@@ -99,3 +99,18 @@ all exposed pane/anchor visible-destination witnesses, bounded growth/visit
 passes and foreground/dialog/hydration/serviceability controls. Preserve unknown
 lazy completeness in served results; unsupported forms/accounts/hardware remain
 pending. No native pass follows from equal maps or this root design.
+
+## K211 integration handoff
+
+K212's localized-resource repair and mandatory review/earned integration precede
+implementation; L1500 needs its safe ordinary and longer-resource-band controls
+as well as the retained known-plist/handoff fixtures and real indexed provenance.
+Plan diagnostic saturation without choice loss or hidden reasons (63 detail
+records plus the reserved canonical summary, independently classified sources).
+Revised gross certificates: applications 6,816,128 bytes, Settings 6,094,976 bytes,
+with unchanged gates. Settings count/call/copy overflow and incomplete-first-map
+timeout fail closed; confirmation timeout retains uncontradicted first-map
+positives with TIME_LIMIT/UNKNOWN and ordinary late-return ownership. G4/G8/G10/N5
+must reject contrary outcomes. V12 needs a separate fresh unvisited-incarnation
+reveal using an earlier known ordinary pane/anchor, without observer warm-up;
+lazy pre-check uncertainty cannot waive useful destination acceptance.

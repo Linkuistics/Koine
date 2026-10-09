@@ -15,6 +15,9 @@ are not false. The [population contract](../specs/workspace-search.md#applicatio
 shares bounded observations and invalidates publication on global overflow, so
 native order cannot silently decide which useful copies survive. Its certificates
 and populous acceptance remain design/qualification obligations, not health proof.
+Diagnostic detail saturation is a bounded guidance omission, never a reason to
+discard valid choices; fixed source summaries keep omitted reasons in coverage
+and error precedence independently of stored records.
 
 The fixed indexed item projection can supply reported type/name/identifier for
 long choices when whole-path Bundle metadata is unsupported. Current descriptor
@@ -26,6 +29,9 @@ requires real query tuples and independent fixture facts, with known wrong value
 failing qualification. A descriptor-relative plist reader changes the admitted
 mechanics; suffix/client-path substitution supplies no native evidence. Actual
 missing long tuples remain an unmet useful obligation, not an accepted reduction.
+The localized Bundle reader's full pathname boundary remains unresolved after
+k210/R2 and requires a reviewed design repair before implementation; the
+known-plist suffix alone cannot establish its safe ordinary-reader control.
 
 An undetected failure or stale native state can make a fact incorrect or omit a
 choice. Known incorrect witnesses and systematically unknown metadata for the

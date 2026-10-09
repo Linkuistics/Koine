@@ -1857,6 +1857,18 @@ usefulness; all exposed choices remain required. No current native conformance
 pass follows. The complete design requires mandatory whole-producer review and
 any earned reconciliation before becoming implementation input.
 
+Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
+plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
+without item loss. Application gross charges are 6,816,128 and Settings 6,094,976
+bytes under unchanged 8 MiB gates. Settings confirmation timeout retains only
+uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN;
+incomplete-first-map timeout and count/call/copy overflow still give FAILED/null.
+Lazy no-such-object at reveal re-resolution is failed/unestablished selection,
+never an absence dependency; V12 includes separate unvisited-incarnation reveal.
+The localized Bundle resource pathname boundary remains unresolved after k210/R2;
+its design producer/review must complete before implementation. The known-plist
+certificate alone cannot authorize that reader or its 1,003-byte control.
+
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
 profiles/captures are unchanged subjects. New native multi-image guards/loading,
 normalization, exact settings event/posture and serviceability checks require

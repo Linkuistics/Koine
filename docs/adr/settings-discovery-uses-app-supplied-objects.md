@@ -30,6 +30,13 @@ observed changes without certifying lazy completeness; positive choices remain
 PARTIAL/UNKNOWN and empty anchors null. Cold preparation is process-only.
 Independent finite cold/warm qualification must preserve all exposed choices;
 missing anchors cannot be excused by stable IDs or hidden extension-loading reads.
+Confirmation timeout retains uncontradicted complete-first-map positives as
+PARTIAL/TIME_LIMIT/UNKNOWN rather than discarding them for redundant change
+detection. Earlier incomplete-sweep timeout and count/call/copy overflow remain
+FAILED/null. Lazy no-such-object also cannot establish selected destination
+absence: failed exact re-resolution starts no reveal/activation. A separate
+unvisited-incarnation reveal must qualify a known earlier pane/anchor; honest
+uncertainty cannot excuse an unusable ordinary destination.
 Private sidebar parsing has unsupported format
 and conditional-visibility costs; two documented URLs alone would reduce the
 agreed useful category. Reopen that choice only if actual exact-event qualification

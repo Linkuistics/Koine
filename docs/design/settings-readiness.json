@@ -21,7 +21,8 @@
     "paneRecordBytes": 128,
     "anchorBytes": 512,
     "anchorRecordBytes": 64,
-    "diagnosticBytes": 65536,
+    "diagnosticBytes": 131072,
+    "coverageSummaryBytes": 128,
     "scratchBytes": 131072
   },
   "contract": {
@@ -33,6 +34,13 @@
     "emptyPanes": "UNKNOWN_NULL_ITEMS",
     "emptyAnchors": "NULL",
     "overflow": "FAILED_NULL_ITEMS",
+    "diagnosticOverflow": "CONTINUE_WITH_BOUNDED_GUIDANCE",
+    "coverageIndependentOfDiagnosticDetails": true,
+    "publishSaturationReasonSummary": true,
+    "saturationSummaryRendering": "ONCE_AT_FREEZE",
+    "incompleteFirstSweepDeadline": "FAILED_NULL_ITEMS",
+    "confirmationDeadline": "PARTIAL_UNCONTRADICTED_FIRST_MAP",
+    "lazyRevealNoSuchObject": "FAILED_UNESTABLISHED_SELECTION",
     "readLoadsPane": false,
     "automaticFallback": false
   },
@@ -40,6 +48,8 @@
     "subject": "V12",
     "coldRepetitions": 3,
     "coldBeforeAnyVisit": true,
+    "coldRevealInSeparateIncarnation": true,
+    "coldRevealSelectionFromPriorIncarnation": true,
     "independentScalarInventory": true,
     "maximumVisitPasses": 2,
     "postVisitCheckpointsSeconds": [1, 3, 10],

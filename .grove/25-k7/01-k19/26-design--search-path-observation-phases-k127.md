@@ -93,7 +93,7 @@ another copy's fields. Count raw type values (65,536 shared gate) before the nat
 membership check; its internals remain opaque. Enumerate 16U/10C projection/check/
 transcode reserve and 64C/two-copy indexed payload charges against actual allocation
 and duplicate comparison, without new duplicate payload copies or C×D walks.
-Revised certificates 989,240 attempts/6,816,000 bytes fit unchanged gates but prove
+Revised certificates 989,240 attempts/6,816,128 bytes fit unchanged gates but prove
 no runtime peak/timing/support. Wrong reader/provenance/copy/early release must fail.
 
 ## Settings two-sweep owner/accounting duty
@@ -102,8 +102,16 @@ Consume reviewed complete k205. Construct exact pALL record and ID-contained
 anchor descriptors, two full sweeps maximum with a 100 ms minimum gap inside
 three seconds, one outstanding call and post-gap admission revalidation. Charge
 all explicit extraction/disposal work against the Settings 131,072-attempt
-gate and 8 MiB gross-copy gate; validate the 90,304-attempt/6,029,312-byte logical
+gate and 8 MiB gross-copy gate; validate the 90,304-attempt/6,094,976-byte logical
 certificate against actual calls/copies, not native peaks or duration. Freeze
-on global exhaustion with null items; retain capacity through true return.
+on count/call/copy overflow or incomplete-first-map deadline with null items;
+confirmation deadline freezes uncontradicted complete-first-map positives as
+PARTIAL/TIME_LIMIT/UNKNOWN. Accepted contradictions and target/lifecycle loss
+cannot be rescued; retain capacity through true return. Account 64×2,048 gross
+diagnostic bytes and four fixed 32-byte reason summaries, never infer outcomes
+from the capped detail records. Saturation omits guidance, not choices.
 G4/N4/N5/V12 must reject anchor-only growth, positional reassociation, lazy empty
 health upgrades, third sweeps, early retirement and stale cold/warm substitutions.
+Also reject discarded confirmation checkpoints, revived contradicted entries and
+diagnostic-fatal publication. Consume k212's reviewed localized-reader recipe
+before counting its calls/copies; the 20-byte known-plist boundary is insufficient.

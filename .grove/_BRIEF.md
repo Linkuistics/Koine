@@ -295,7 +295,11 @@ viewer hold the concrete handoff; frozen design checks passed without a native p
 
 Native-discovery-k209 reconciles k206/k207/k208 and closes native-discovery-k205
 as the complete producer. Its mandatory root review-design and any earned
-integration precede app-and-file-search-k7. Consume the full current spec/source/
+integration precede app-and-file-search-k7. K210's review and k211's triage repair
+diagnostic saturation, Settings confirmation deadlines and lazy reveal uncertainty.
+Application-localized-metadata-k212 now precedes k7 with mandatory review/earned
+integration: the full localized resource pathname boundary is unresolved and the
+known-plist certificate cannot authorize that reader. Consume the full current spec/source/
 finite acceptance/SDL/profiles and views after that review, never an isolated
 slice. The review names k205; this closing session names its actual run there.
 Downstream k126/k193, k127's review, k123's review and whole-k19 review k120 retain
@@ -303,7 +307,9 @@ their independent duties and Creator ownership on their own future completion.
 
 Application admission stages all bounded sources, shares once-per-ID ordered
 registration outcomes and publishes FAILED/null on global owned-limit/deadline
-exhaustion, never a native-order prefix. Optional presentation facts support
+exhaustion, never a native-order prefix. Diagnostic detail saturation continues
+inspection with DIAGNOSTIC_LIMIT and independently classified fixed summaries;
+it never drops choices. Optional presentation facts support
 client filtering without helper suppression. G10/N5/V11 require actual P1024
 usefulness and accounting, including the native baseline and independent observers.
 
@@ -312,8 +318,12 @@ certifying lazy health. Preparation RUNNING is process-only; positive choices
 remain PARTIAL/UNKNOWN, empty panes UNKNOWN/null and empty anchors null. Every
 exposed destination and Network/Sound/Appearance/Displays remains required.
 G4/N4/N5/V12 need finite pre-visit cold and warm useful inventory, independent
-destination/foreground witnesses and true-return ownership. Global overflow
-withholds items. Its 90,304-attempt/6,029,312-byte logical certificate must fit the
+destination/foreground witnesses and true-return ownership, plus a retained
+pane/anchor reveal in a separate fresh unvisited incarnation. Lazy no-such-object
+cannot prove absence or start effects. Count/call/copy overflow and incomplete
+first-sweep timeout withhold items; confirmation timeout retains uncontradicted
+complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN. Its
+90,304-attempt/6,094,976-byte logical certificate must fit the
 actual adapter under 131,072 attempts/8 MiB; no latency/native peak follows.
 
 The fixed four-attribute projection from actual indexed items supplies reported
@@ -321,10 +331,11 @@ type/name/identifier plus before/after directory identity, public INDEXED_ITEM
 provenance and honest index-to-inode/current-plist association limits. Indexed
 choices remain UNKNOWN with null bundle flags. The 1,004-byte known-plist and
 1,024-byte action boundaries remain distinct. G11/N8/V13 require actual L1500
-tuples from five signed boundary copies plus two short competitors, independent
+tuples from the declared signed copies plus k212's safe localized ordinary/band
+controls, independent
 type/identity/metadata and unchanged selected launch/named-open/reveal refusal.
 Disk/client/controlled provenance is no source pass. Revised shallow certificates
-are 989,240 attempts/6,816,000 gross-charge bytes, under 1,048,576 attempts/8 MiB;
+are 989,240 attempts/6,816,128 gross-charge bytes, under 1,048,576 attempts/8 MiB;
 N5/N8 must validate actual calls, duplicate copies and cleanup term by term.
 
 All G1–G11/N1–N8/V1–V13 native verdicts remain pending. K191 owns concrete source/

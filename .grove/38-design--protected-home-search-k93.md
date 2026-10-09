@@ -88,3 +88,16 @@ late growth, unusable pALL/ID form, deadline miss or foreground loss once with
 the actual consumer consequence. PARTIAL/UNKNOWN honesty is no permission to
 accept lost useful choices. An unavailable hardware/account/observer stays
 pending; new posture or useful-category loss requires Antony.
+
+## K211 integration boundary
+
+Diagnostic detail saturation is no population failure: bounded summaries preserve
+choices and publicly show all reason tokens. A Settings confirmation timeout can
+preserve PARTIAL first-map choices but still misses useful two-sweep qualification.
+V12's known selection in a separate fresh unvisited incarnation remains required;
+an honest unestablished-selection failure cannot excuse an unusable ordinary
+destination. K212 and its mandatory review settle the localized-resource reader
+construction before k7; an underived pathname guard is a design defect, not a
+measured native gap to accept here. Only actual qualified-source/access/usefulness
+consequences reach this bounded human decision. No posture or useful loss is
+selected by k211's repair.

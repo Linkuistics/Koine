@@ -116,4 +116,15 @@ PARTIAL/UNKNOWN positives and UNKNOWN/null panes/null empty anchors. Preparation
 RUNNING certifies no catalogue readiness. No hidden loading effect, positional
 zip, stable-ID health inference or automatic fallback is admitted. Every exposed
 pane/anchor and ordinary witness remains required; unavailable qualification is
-live work. Global Settings overflow yields FAILED/null, never a prefix.
+live work. Count/call/copy overflow and incomplete-first-map timeout yield
+FAILED/null; confirmation timeout retains uncontradicted first-map positives as
+PARTIAL/TIME_LIMIT/UNKNOWN with true-return ownership. Lazy reveal no-such-object
+is unestablished selection, not absence; V12 adds a separate fresh unvisited target
+revealing a known prior pane/anchor. Diagnostic saturation never erases choices:
+63 details plus DIAGNOSTIC_LIMIT and fixed summaries retain all outcome reasons.
+
+Before implementation, consume application-localized-metadata-k212 and its
+mandatory review/earned integration. The known-plist arithmetic cannot authorize
+localized Bundle reads; the complete resource pathname route/control is unresolved.
+K191/k127/k123/k30 must use its repaired source/ownership/normalization/qualification
+contract, retaining useful localized names and independent action boundaries.

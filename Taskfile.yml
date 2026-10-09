@@ -387,6 +387,12 @@ tasks:
             r.providerFiltersAgentsOrHelpers !== false || r.overflowPublication !== 'FAILED_NULL_ITEMS') {
             throw new Error('Population admission, identifier coverage or shared-work contract changed');
           }
+          if (r.diagnosticOverflowPublication !== 'CONTINUE_WITH_BOUNDED_GUIDANCE' ||
+            r.coverageIndependentOfDiagnosticDetails !== true || r.publishSaturationReasonSummary !== true ||
+            r.saturationSummaryRendering !== 'ONCE_AT_FREEZE' ||
+            l.diagnostics !== 64 || s.coverageSummaryBytes !== 128) {
+            throw new Error('Diagnostic saturation must preserve independently classified population outcomes');
+          }
           const calls = r.fixedAttempts + r.attemptsPerURLObservation * l.rawURLObservations +
             r.attemptsPerRunningObject * l.runningObjects + r.attemptsPerIdentifier * l.identifierGroups +
             r.metadataAttemptsPerSpelling * l.distinctSpellings + r.walksPerSpelling * l.distinctSpellings *
@@ -396,7 +402,7 @@ tasks:
             s.runningRecordBytes * l.runningObjects + s.ownedPathCopies * l.distinctSpellings * s.pathBytes +
             s.ownedNameIdentifierCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
             s.ownedIndexedPayloadCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
-            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.walkScratchBytes;
+            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.coverageSummaryBytes + s.walkScratchBytes;
           const wire = l.retainedChoices * (s.wireEscapingMultiplier *
             (s.pathBytes + s.nameBytes + s.identifierBytes) + s.wireChoiceFixedBytes) +
             l.diagnostics * s.wireDiagnosticBytes + s.wireRootAndCoverageBytes;
@@ -418,6 +424,11 @@ tasks:
           ['old 256-ID quota', p => { p.limits.identifierGroups = 256; }],
           ['old 16384-call ceiling', p => { p.limits.nativeAttempts = 16384; }],
           ['native-order partial prefix', p => { p.recipe.overflowPublication = 'PARTIAL_PREFIX'; }],
+          ['catalogue discarded on diagnostic saturation', p => { p.recipe.diagnosticOverflowPublication = 'FAILED_NULL_ITEMS'; }],
+          ['status inferred from truncated detail records', p => { p.recipe.coverageIndependentOfDiagnosticDetails = false; }],
+          ['failure reason hidden after saturation', p => { p.recipe.publishSaturationReasonSummary = false; }],
+          ['repeated unbudgeted summary copies', p => { p.recipe.saturationSummaryRendering = 'PER_OBSERVATION'; }],
+          ['omitted fixed coverage summary charge', p => { p.shallowCertificate.coverageSummaryBytes = 0; }],
           ['per-choice registration re-walk', p => { p.recipe.walksPerSpelling = p.limits.retainedChoices; }],
           ['omitted indexed projection calls', p => { p.recipe.attemptsPerURLObservation = 2; }],
           ['omitted indexed payload charges', p => { p.shallowCertificate.ownedIndexedPayloadCopies = 0; }],
@@ -432,6 +443,17 @@ tasks:
           if (!rejected) throw new Error(`Control did not reject ${label}`);
         }
         console.log('Application design certificates and deliberate broken controls:', certificate, '; native qualification PENDING.');
+        const reasonNames = complete.getType('WorkspaceDiscoveryReason').getValues().map(value => value.name);
+        const saturationGuidance = 'Additional details omitted. ' + ['INDEXED_APPS', 'RUNNING_APPS', 'REGISTRATION']
+          .map(source => `${source}:${reasonNames.join(',')}`).join(';');
+        const checkGuidance = capacity => {
+          if (Buffer.byteLength(saturationGuidance) > capacity) throw new Error('Saturation reason projection exceeds guidance capacity');
+        };
+        checkGuidance(1024);
+        let smallGuidanceRefused = false;
+        try { checkGuidance(Buffer.byteLength(saturationGuidance) - 1); } catch { smallGuidanceRefused = true; }
+        if (!smallGuidanceRefused) throw new Error('Control accepted undersized reason-summary guidance');
+        console.log('All source/reason tokens remain visible after saturation; maximum guidance bytes:', Buffer.byteLength(saturationGuidance));
         const errors = [...validateSchema(independent), ...validateSchema(complete),
           ...validate(independent, examples), ...validate(complete, examples),
           ...validate(complete, parse(read('workspace-operations.graphql')))];
@@ -580,6 +602,8 @@ tasks:
           assert(!s.wholePathFallback && !s.crossCopyMetadata && !s.extraAccessOrConsent);
           assert.equal(l.handoffBytesIncludingNul, 1024);
           assert.equal(l.knownPlistSuffixBytes, Buffer.byteLength('/Contents/Info.plist'));
+          assert.equal(s.ordinaryReaderBoundary, 'UNRESOLVED_LOCALIZED_RESOURCE_PATHS');
+          assert.equal(q.ordinaryReaderControlEstablished, false);
           assert.equal(l.rawIndexedTypeValues, 8 * population.limits.rawURLObservations);
           assert.equal(l.rawIndexedTypeValues, population.limits.indexedTypeValues);
           assert.equal(q.name, 'L1500');
@@ -607,7 +631,7 @@ tasks:
             assert.equal(Buffer.byteLength(path), bytes);
             const visits = path.split('/').filter(Boolean).length;
             assert(visits <= l.maximumFixtureComponentVisits);
-            return { bytes, visits, indexedRequired: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
+            return { bytes, visits, knownPlistIndexedRequired: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
               handoffRefused: bytes >= l.handoffBytesIncludingNul };
           });
           return fixtures;
@@ -618,6 +642,8 @@ tasks:
           ['source', 'installationState', 'INSTALLED'], ['source', 'bundleFlags', 'FALSE'],
           ['source', 'wholePathFallback', true], ['source', 'crossCopyMetadata', true],
           ['source', 'extraAccessOrConsent', true], ['limits', 'knownPlistSuffixBytes', 0],
+          ['source', 'ordinaryReaderBoundary', 'KNOWN_PLIST_IS_SUFFICIENT'],
+          ['qualification', 'ordinaryReaderControlEstablished', true],
           ['limits', 'rawIndexedTypeValues', 256], ['qualification', 'registeredLongPrecondition', true],
           ['qualification', 'requireActualLongIndexedTuple', false], ['qualification', 'diskOrClientProvenancePasses', true],
           ['qualification', 'missingTupleOutcome', 'PASS'], ['qualification', 'nativeVerdict', 'PASSED']
@@ -627,7 +653,7 @@ tasks:
           assert.throws(() => verify(changed), `Control accepted ${group}.${field}`);
         }
         console.log(JSON.stringify(verify(subject)));
-        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; native G11/N8/V13 PENDING.');
+        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; localized resource boundary UNRESOLVED, native G11/N8/V13 PENDING.');
         JS
 
   design:settings-check:
@@ -654,28 +680,47 @@ tasks:
           assert.equal(c.emptyPanes, 'UNKNOWN_NULL_ITEMS');
           assert.equal(c.emptyAnchors, 'NULL');
           assert.equal(c.overflow, 'FAILED_NULL_ITEMS');
+          assert.equal(c.diagnosticOverflow, 'CONTINUE_WITH_BOUNDED_GUIDANCE');
+          assert.equal(c.coverageIndependentOfDiagnosticDetails, true);
+          assert.equal(c.publishSaturationReasonSummary, true);
+          assert.equal(c.saturationSummaryRendering, 'ONCE_AT_FREEZE');
+          assert.equal(c.incompleteFirstSweepDeadline, 'FAILED_NULL_ITEMS');
+          assert.equal(c.confirmationDeadline, 'PARTIAL_UNCONTRADICTED_FIRST_MAP');
+          assert.equal(c.lazyRevealNoSuchObject, 'FAILED_UNESTABLISHED_SELECTION');
+          assert.equal(r.diagnosticBytes, 64 * 2048);
+          assert.equal(r.coverageSummaryBytes, 4 * 32);
           assert.equal(c.readLoadsPane, false);
           assert.equal(c.automaticFallback, false);
           assert.equal(q.coldRepetitions, 3);
           assert.equal(q.maximumVisitPasses, 2);
           assert.deepEqual(q.postVisitCheckpointsSeconds, [1, 3, 10]);
           assert(q.coldBeforeAnyVisit && q.independentScalarInventory && q.requireEveryExposedChoiceColdAndWarm);
+          assert(q.coldRevealInSeparateIncarnation && q.coldRevealSelectionFromPriorIncarnation);
           assert.equal(q.nativeVerdict, 'PENDING');
           const events = l.sweeps * (l.panesPerSweep + 1);
           const calls = r.fixedAttempts + r.attemptsPerEvent * events +
             r.attemptsPerPaneRecord * l.sweeps * l.panesPerSweep + r.attemptsPerAnchor * l.sweeps * l.anchorsPerSweep;
           const copies = l.sweeps * (l.panesPerSweep * (r.idBytes + r.labelBytes + r.paneRecordBytes) +
             l.anchorsPerSweep * (r.anchorBytes + r.anchorRecordBytes)) +
-            l.sweeps * l.panesPerSweep * r.idBytes + r.diagnosticBytes + r.scratchBytes;
+            l.sweeps * l.panesPerSweep * r.idBytes + r.diagnosticBytes + r.coverageSummaryBytes + r.scratchBytes;
           assert(calls <= l.nativeAttempts);
           assert(copies <= l.ownedCopyBytes);
           return { events, calls, copies };
         };
         const controls = [
-          ['limits', 'nativeAttempts', 16384], ['limits', 'ownedCopyBytes', 6029311],
+          ['limits', 'nativeAttempts', 16384], ['limits', 'ownedCopyBytes', 6094975],
           ['limits', 'sweeps', 3], ['contract', 'comparison', 'ID_SET_ONLY'],
           ['contract', 'anchorAssociation', 'POSITIONAL_ZIP'], ['contract', 'lazyCompleteness', 'COMPLETE'],
           ['contract', 'emptyAnchors', 'EMPTY_LIST'], ['contract', 'overflow', 'PARTIAL_PREFIX'],
+          ['contract', 'diagnosticOverflow', 'FAILED_NULL_ITEMS'],
+          ['contract', 'coverageIndependentOfDiagnosticDetails', false], ['recipe', 'coverageSummaryBytes', 0],
+          ['contract', 'publishSaturationReasonSummary', false],
+          ['contract', 'saturationSummaryRendering', 'PER_OBSERVATION'],
+          ['contract', 'incompleteFirstSweepDeadline', 'PARTIAL_PREFIX'],
+          ['contract', 'confirmationDeadline', 'FAILED_NULL_ITEMS'],
+          ['contract', 'lazyRevealNoSuchObject', 'SELECTION_UNAVAILABLE'],
+          ['nativeQualification', 'coldRevealInSeparateIncarnation', false],
+          ['nativeQualification', 'coldRevealSelectionFromPriorIncarnation', false],
           ['contract', 'readLoadsPane', true], ['nativeQualification', 'coldBeforeAnyVisit', false],
           ['nativeQualification', 'requireEveryExposedChoiceColdAndWarm', false]
         ];

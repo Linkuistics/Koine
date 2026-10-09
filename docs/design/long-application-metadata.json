@@ -13,7 +13,8 @@
     "bundleFlags": "NULL",
     "wholePathFallback": false,
     "crossCopyMetadata": false,
-    "extraAccessOrConsent": false
+    "extraAccessOrConsent": false,
+    "ordinaryReaderBoundary": "UNRESOLVED_LOCALIZED_RESOURCE_PATHS"
   },
   "limits": {
     "handoffBytesIncludingNul": 1024,
@@ -27,6 +28,7 @@
     "fixtureRoot": "/Applications/KoineLongCatalogueFixtures",
     "leaf": "Fixture.app",
     "boundaryBundleBytes": [1003, 1004, 1023, 1024, 1500],
+    "ordinaryReaderControlEstablished": false,
     "shortSameIdentifierCompetitors": 2,
     "explicitShortParentReindexAttempts": 1,
     "indexObservationCheckpointsSeconds": [10, 30, 60],
