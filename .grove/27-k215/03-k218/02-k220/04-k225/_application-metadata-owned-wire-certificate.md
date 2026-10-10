@@ -1,4 +1,49 @@
-# application-metadata-owned-wire-certificate-k225
+# application-metadata-owned-wire-certificate-k225 — brief
+
+## Decisions (running log)
+
+- Bootstrap adopted the live design mandate on empty jj change 30bd12fe,
+  consuming k224 at 8d9d60f0. Graph Tier 2 project
+  Users-antony-Development-Koine.add-plugins-for-modaliser-requirements is ready;
+  coverage generation 2026-09-29T10:36:20Z excludes docs/scripts, reports changed
+  glossary/Taskfile and untracked LocationWalk. Exact source reads supply those
+  inputs; graph search for LocationWalk returned no symbols. No exhaustive graph
+  or native claim follows. Existing Taskfile workflows remain the entry point.
+- Decompose at the independently verifiable owned-storage receipt boundary.
+  First specify explicit requested capacities, initialized fields, repeated input
+  writes, immutable parser overlap, scalar scratch, vector/arena growth and cleanup
+  in a pure model; derive that bounded subcertificate for every saved episode.
+  The following design child composes actual source/root/bridge/COW/final-output
+  receipts and complete selected wire accounting. Preserve every original Done
+  when condition below. Neither child changes accounting, budgets, categories,
+  posture or pending native inputs. This session completes only the first child;
+  k225 and k220 stay open until the final child performs their complete close check.
+
+## Decomposition
+
+1. application-metadata-owned-storage supplies the explicit owned local receipt
+   model, lifetime/overlap checks and per-episode known subterms, with frozen
+   charge/allocation/cleanup/unknown controls. It proves no whole-job fit.
+2. application-metadata-owned-wire-composition consumes that model and k224/k223,
+   assigns every remaining source/root/reader bridge and local receipt, derives
+   full attempt/gross/storage terms and complete finite GraphQL wire selections,
+   including roots/aliases/fragments/escaping/failure. It performs the full k225
+   and then k220 close checks, adding precisely named design work when needed.
+   It promotes an actual k220 closure into k218; k221 retains family reconciliation
+   and mandatory whole-k215 review. No intermediate fragment review or hold removal.
+
+## Owned-storage handoff
+
+K226 supplies docs/verification/application-metadata-owned-storage.md and the
+compact docs/design/application-metadata-owned-storage.json with complete ordered
+episode associations, plus its pure model, Taskfile checks and editable SVG view.
+Requested raw scratch is 270,368 once per job; known local gross subterms are
+14,181,924/14,356,031 with 401,979/404,815 local attempt subterms. Input reads
+already occur in k223's API bound. These are partial conservative suffix terms,
+neither whole-job uppers nor runtime lower bounds. Every remaining source/root/
+owner/bridge/COW/final/selected-wire term is named in k227; whole-job totals are
+null. K227 remains live, so this node and k220 remain open. The original Done when
+below and the whole-k215 hold/review/native G/N/V remain unchanged.
 
 
 ## Goal

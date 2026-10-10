@@ -1,0 +1,25 @@
+direction: down
+start: "Start here\nExplicit owned operation" {
+  style.fill: "#16324f"
+  style.font-color: white
+  style.bold: true
+}
+admit: "Admit attempt + capacity upper\nReserve all possible cleanup"
+capacity: "Requested aligned block\nHeader and padding counted once"
+writes: "Charge each performed write\nHeader / input / key / copy / NUL"
+overlap: "Retain owners during use\n2 immutable inputs + parser + vectors"
+retire: "Retire borrowers then owners\nNo gross refund; true-return slot"
+saved: "2,043 episodes in each run\nAll keys, aliases + 149 outside paths"
+known: "Known local subterms only\n14.18 / 14.36 MB gross"
+missing: "Composition remains live\nSource / walker / bridge / final / wire" {
+  style.fill: "#fff4d6"
+  style.stroke: "#9b6a18"
+}
+start -> admit: "1. Before optional work"
+admit -> capacity: "2. Actual allocation"
+capacity -> writes: "3. Actual prefix bytes"
+writes -> overlap: "4. Preserve lifetimes"
+overlap -> retire: "5. After actual return"
+retire -> saved: "6. Independent saved derivation"
+saved -> known: "7. Exact known subterms"
+known -> missing: "8. Whole-job sums stay null"

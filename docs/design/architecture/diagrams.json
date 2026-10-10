@@ -2,23 +2,19 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Account every source slot and transfer the first root without a third walk",
-    "status": "Pure operation grammar; numeric source/root and whole-job fit unestablished; k215 hold remains",
-    "summary": "Explicit one-job snapshots and once-per-ID registration produce call, cleanup and payload receipts. Expanded root visits are independent of lexical counts. Unknown capacities/native tuples stay symbolic for k225; whole-k215 review and native G/N/V remain pending.",
+    "title": "Charge explicit owned capacity and every repeated write",
+    "status": "Local subcertificate checked; full source/root/bridge/wire composition live under k225",
+    "summary": "Packed requested capacities and immutable-input lifetimes are explicit. Every saved episode retains raw entries, direct/table keys and aliases. Known local subterms do not establish whole-job fit; native G/N/V and k215 hold remain.",
     "diagramIds": [
+      "native-metadata-owned-storage",
       "native-metadata-source-root",
       "native-metadata-two-walks",
-      "native-metadata-operation-ledger",
       "native-metadata-episode-certificate"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-source-root",
-        "summary": "Added explicit snapshots, raw-slot projection, once-per-ID registration and symbolic payload accounting."
-      },
-      {
-        "id": "native-metadata-two-walks",
-        "summary": "Added first-root descriptor transfer, the 1,023-byte resource boundary and independent second identity check."
+        "id": "native-metadata-owned-storage",
+        "summary": "Added separate allocation/write receipts, immutable overlap, no-refund retirement and the live composition boundary."
       }
     ]
   },
@@ -434,6 +430,15 @@
       "source": "workspace-long-locations.d2",
       "rendered": "workspace-long-locations.svg",
       "caption": "Implemented action-only workspace 1.0.1 contract; native registered-long/preferred-long outcomes retain their explicitly bounded VM coverage limit. This supplies no catalogue acceptance. Koine resolves the target first, then a supplied or discovered application, from search-only handles, so absence (missing or dangling, and for a target a cycle or impossible ASCII component) is established at any length and later platform nil/ENOENT/ENAMETOOLONG is never absence. Each stage applies the limit before any pathname call on its location, a discovered application's after the discovery read that found it: an extant spelling of PATH_MAX (1,024) bytes or more, not counting its NUL, is refused with failed before any request; application support for such locations is deferred past v1 (Koine#1). Registered candidates are resolved only for device/inode comparison and are never gated. Within the limit the accepted short-path metadata, handler, submission and receipt route is unchanged. First-use prompt behaviour of search-only resolution in Desktop, Documents and Downloads is an acceptance obligation; a prompt goes to Antony."
+    },
+    {
+      "id": "native-metadata-owned-storage",
+      "group": "native-contract",
+      "title": "Owned storage \u2192 Separate capacity, writes and overlap",
+      "renderer": "svg",
+      "source": "native-metadata-owned-storage.d2",
+      "rendered": "native-metadata-owned-storage.svg",
+      "caption": "Known local subterms cover two saved runs, not whole-job gross/attempt/response or opaque native peaks. K227 composes remaining source/root/bridge/final/wire terms; all selected gates and native holds bind."
     }
   ]
 }

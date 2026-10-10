@@ -8,7 +8,15 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
+Start with [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage).
+The [owned-storage subcertificate](../../verification/application-metadata-owned-storage.md)
+separates requested aligned capacity, each actual input/projection/growth write and
+immutable owner overlap. It derives known local subterms for every saved episode
+in both runs, preserving raw entries, all direct/table keys and aliases. Whole-job
+source/root/bridge/final/wire composition stays live under k225/k227; native G/N/V,
+the k215 hold and mandatory whole review bind.
+
+Unchanged context: [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
 and [Root ownership → Transfer once and recheck independently](index.html#diagram-native-metadata-two-walks).
 The [source/root contract](../../verification/application-metadata-source-root-certificate.md)
 replaces fixed fees with explicit native/local/cleanup and symbolic payload receipts.
@@ -54,9 +62,9 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root) — Added explicit snapshots, registration, raw-slot projection and unresolved capacity receipts.
-- [Root ownership → Transfer once and recheck independently](index.html#diagram-native-metadata-two-walks) — Added terminal descriptor transfer, ordinary/indexed admission and the second identity check.
-- [Source/root contract → Handoff and failed construction](../../verification/application-metadata-source-root-certificate.md#handoff-and-failed-construction) — Named representation/scratch/wire design gaps separately from already pending native evidence.
+- [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage) — Added allocation/write receipts, immutable overlap, no-refund cleanup and the live composition boundary.
+- [Owned storage → Capacity and event contract](../../verification/application-metadata-owned-storage.md#capacity-and-event-contract) — Specified aligned requested capacities and per-field/event charges separately from Swift/CF layout.
+- [Owned storage → Saved episode derivation and limits](../../verification/application-metadata-owned-storage.md#saved-episode-derivation-and-limits) — Added both per-episode local subterm derivations while retaining unknown whole-job totals.
 
 ## Other architecture topics
 
@@ -81,6 +89,8 @@ design:application-metadata-episode-certificate-render regenerates the exact
 dimension/full-certificate dependency view with Dagre.
 design:application-metadata-source-root-render regenerates the source receipts
 and independent root ownership views with Dagre.
+design:application-metadata-owned-storage-render regenerates the explicit capacity/
+write/overlap and full-composition boundary view with Dagre.
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -128,3 +138,8 @@ design:application-metadata-source-root-check for item-by-item reproduction,
 source/root/constructor/cancellation prefixes, isolated omission controls and
 strict types. Unknown capacities keep gross null; toy traces are no native
 observation, aggregate fit or process peak. The existing selected budgets bind.
+
+Run design:application-metadata-owned-storage after edits settle, then its -check
+task for item-by-item saved local subterms, immutable overlap/growth/cleanup
+controls, isolated omission mutations and strict types. This explicit packed
+capacity contract is no actual Swift/CF layout or source/root/final/wire fit.

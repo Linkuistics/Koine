@@ -69,6 +69,14 @@ metadata refusal follows the selected reader policy without a convenient fallbac
 
 ## Test seams and construction limit
 
+The [owned-storage subcertificate](../verification/application-metadata-owned-storage.md)
+specifies requested raw-buffer capacity separately from performed initialization,
+input, projection and growth writes. Two immutable inputs and bounded conversion
+scratch overlap with explicitly retained parser owners; reuse never refunds gross.
+Its per-episode known local terms preserve all saved aliases/raw keys and outside
+paths. They remain distinct from actual Swift/CF bridge layouts, expanded-walk
+work, final result conversion and the independent complete response certificate.
+
 The human-confirmed seams remain public GraphQL, actual provider/host binaries
 and isolated signed supported macOS VMs. Pure receipt controls exercise duplicate
 slots, empty/refused preferences, native return shapes, expanded walks, ownership,
