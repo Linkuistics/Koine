@@ -1,4 +1,4 @@
-# application-localized-metadata-k218
+# application-localized-metadata-k218 — brief
 
 
 ## Goal
@@ -111,3 +111,34 @@ fallback for excluded/stale paths. The saved development-host census remains
 historical; no macOS 27 qualification or support-floor change follows the host
 upgrade. A genuinely different sizing/accounting/posture or useful-loss choice
 still requires Antony's actual selection before adoption.
+
+## Decisions (running log)
+
+- Bootstrap consumes the brief chain, glossary, k217's actual selected answers,
+  k213 at c1a0c6e5 and k214 at afb677c5. The jj working copy is empty on
+  8fb4fe85. Graph project Users-antony-Development-Koine.add-plugins-for-modaliser-requirements
+  is available at generation 2026-09-29T10:36:20Z (fast); docs/scripts are excluded
+  and Taskfile/glossary metadata changed, so exact source/document reads supply
+  their evidence. No graph-completeness or native qualification claim follows.
+- The executable reader semantics, all-branch owned accounting and whole-family
+  reconciliation are dependent, independently checkable design deliverables.
+  Together they exceed one focused low-context session. Decompose k218, preserving
+  every original Done when condition. This session completes only the reader-plan
+  child; subsequent design children derive certificates and reconcile consumers.
+  Keep k215's hold, mandatory whole-producer review and pending G/N/V. Re-ask none
+  of Antony's selected choices, cut no implementation leaves and prune no work.
+
+## Decomposition
+
+1. application-metadata-reader-plan-k219 closes the fixed-file/layout, independent
+   selector and per-fact refusal semantics with an executable pure-observation
+   design model and frozen saved-subject controls. It establishes no cost fit or
+   native pass and retains the family consumption hold.
+2. application-metadata-certificate-k220 derives all performed calls, storage,
+   gross charges and wire terms from that plan and every saved episode, including
+   failure/cleanup branches, before claiming a useful finite construction.
+3. application-metadata-reconciliation-k221 consumes both, reconciles the entire
+   inherited family and live charters, and removes the construction hold only
+   if earned. It cuts the mandatory root whole-k215 review before k7, names its
+   own Creator run when the close cascade actually finishes k218/k215, and names
+   both closed handles in its commit. No intermediate child cuts that review.

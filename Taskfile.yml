@@ -634,6 +634,19 @@ tasks:
       - python3 scripts/application_metadata_subject.py --check
       - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_subject.py
 
+  design:application-metadata-reader-plan-check:
+    desc: Check pure reader policy and every saved direct/table selector plan; no native or cost-certificate pass
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_reader_plan.py scripts/test_application_metadata_reader_plan.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_reader_plan.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_reader_plan.py scripts/test_application_metadata_reader_plan.py
+
+  design:application-metadata-reader-plan-render:
+    desc: Render the selected reader policy and finite-evidence boundary views
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-reader-plan.d2 docs/design/architecture/native-metadata-reader-plan.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-subject.d2 docs/design/architecture/native-metadata-subject.svg
+
   design:localized-boundary-check:
     desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
     cmds:

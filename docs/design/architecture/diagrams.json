@@ -1,11 +1,12 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. The authorized explicit application reader uses root resource type and held-directory fixed-file/direct-localization reads; indexed long roots retain explicit provenance. The application file-set/useful-subject proposal is refuted; k215 and mandatory review precede k7. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Freeze the application metadata subject before the coupled choice",
-    "status": "Design evidence complete; format/accounting selection pending; k215 hold remains",
-    "summary": "The bounded 640-spelling host census plus disk-only P1024/L1500 yields 2,043 episodes and 17,881 direct locale records. Exact shipped loctable names and larger files refute the old proposal. The next human-selection leaf must derive and present a loctable-capable budget before adoption; supported VM/native G/N/V remain pending.",
+    "title": "Close reader semantics before deriving all costs",
+    "status": "Selected semantic plan; complete certificates and reconciliation pending; k215 hold remains",
+    "summary": "Antony selected 128 KiB files, fixed strings/loctables, 20 MiB cumulative gross without refund and individual oversized-file affected-metadata refusal. The pure reader model checks base/family precedence, independent literal inventories and every saved English/German plan across 2,043 episodes. Complete call/gross/wire derivation and family reconciliation still precede mandatory whole-producer review and native G/N/V.",
     "diagramIds": [
+      "native-metadata-reader-plan",
       "native-metadata-subject",
       "native-localized-decision",
       "native-application-population",
@@ -13,8 +14,12 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "native-metadata-reader-plan",
+        "summary": "Added the selected base/family, independent inventory, refusal and true-return retirement flow with its remaining certificate boundary."
+      },
+      {
         "id": "native-metadata-subject",
-        "summary": "Added the independent bounded file census, disk-only subject, frozen measurement boundary and explicit next human-selection/design/native steps."
+        "summary": "Recorded k217's completed human selection and replaced the pending interview with reader, certificate and reconciliation steps."
       }
     ]
   },
@@ -72,13 +77,22 @@
   ],
   "diagrams": [
     {
+      "id": "native-metadata-reader-plan",
+      "group": "native-sources",
+      "title": "Select independent inventories and stop refused fallback",
+      "renderer": "svg",
+      "source": "native-metadata-reader-plan.d2",
+      "rendered": "native-metadata-reader-plan.svg",
+      "caption": "Selected semantic construction. Base-first global/direct traversal uses all four strings/loctable families; each table owns its non-reserved language inventory. Exact regional returns and observed Base/development backstops are preserved. Individual file refusal withholds affected facts; shared overflow fails the population. The pure model checks saved plans and controlled branches, not native I/O, CF matching or costs. Full certificates, whole-family reconciliation, mandatory whole-k215 review and native G/N/V remain pending."
+    },
+    {
       "id": "native-metadata-subject",
       "group": "native-sources",
       "title": "Freeze the finite metadata subject before selecting the budget",
       "renderer": "svg",
       "source": "native-metadata-subject.d2",
       "rendered": "native-metadata-subject.svg",
-      "caption": "Evidence activity view. Exact per-item bytes, identities, direct locales and loctable keys are measured independently. The 640-spelling bounded host census plus controlled disk additions has 2,043 episodes; source counterparts are declared non-native. No production file family, gross rule or larger gate is selected. K217 presents the coupled decision; complete k215 design and mandatory review must precede k7. Supported-VM/source/binary/G/N/V verdicts remain pending."
+      "caption": "Evidence activity view. Historical macOS 26.6.2 per-item bytes, identities, direct locales and loctable keys supply 2,043 episodes; source counterparts are declared non-native. K217 selected fixed strings/loctable families, 128 KiB files, 20 MiB cumulative gross without refund and individual oversize refusal. Reader semantics then full cost derivation/reconciliation complete k215 before mandatory whole-producer review and k7. Supported-VM/source/binary/G/N/V verdicts remain pending."
     },
     {
       "id": "native-localized-decision",

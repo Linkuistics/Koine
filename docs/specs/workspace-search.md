@@ -439,13 +439,21 @@ Application-localized-metadata-k215 and its mandatory review/earned integration
 must repair that coupled
 design before k7 consumes it. The following file/gate recipe is the refuted
 proposal, retained for explicit counterexamples; it is not a settled implementable
-useful reader. No new format, larger gate or useful loss is selected here.
+useful reader. K217 has since selected fixed platform/plain information, strings
+and loctable families, 131,072-byte files, the 20 MiB cumulative application gross
+gate and individual oversized-file affected-metadata refusal. The
+[selected semantic construction](../verification/application-metadata-reader-plan.md)
+closes exact base/family order, independent table/direct selection and refusal
+semantics. The old file/gate/cost recipe below remains historical counterexample
+input until the complete accounting certificate and whole-family reconciliation
+land; it does not override that selected plan or lift the hold. No useful loss,
+accounting refund, native pass or downstream implementation follows.
 The [finite design subject](../verification/application-metadata-subject.md)
 adds a frozen bounded development-host census and disk-only P1024/L1500
 construction for that decision; it is not an exhaustive supported-VM baseline,
 replacement certificate or native acceptance.
 
-**Layout and proposed file set.** Probe these directory layouts in fixed order:
+**Historical refuted layout/file/cost recipe.** Probe these directory layouts in fixed order:
 Contents; Support Files; Resources; flat root. Choose the first present checked
 layout. Their resource bases are respectively Contents/Resources, Support Files/
 Resources, Resources and the root itself. Information bases are respectively

@@ -8,15 +8,17 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Application metadata evidence → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject).
-The new bounded host census and disk-only P1024/L1500 construction establish exact
-file/inventory dimensions, not a replacement reader or native verdict. The
-[finite subject report](../../verification/application-metadata-subject.md) explains
-the 2,043 episodes, larger fixed files, English/German loctable witnesses and the
-accounting comparisons. Antony's format/budget selection is pending in k217;
-k215's consumption hold and whole-producer review before k7 remain binding.
+Start with [Application reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan).
+The [semantic construction](../../verification/application-metadata-reader-plan.md)
+closes the selected fixed-family order, literal independent inventories and
+affected-metadata refusal policy. Its pure model checks every saved English/German
+plan across the 2,043 historical episodes, plus controlled branch counterexamples.
+The [finite subject report](../../verification/application-metadata-subject.md)
+records Antony's completed 128 KiB file, 20 MiB cumulative gross and individual
+oversize choices. Complete cost certificates and whole-family reconciliation
+remain open; k215's consumption hold and whole-producer review before k7 bind.
 
-Unchanged context: [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision),
+Unchanged historical context: [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision),
 [Application population → Finish bounded staging](index.html#diagram-native-application-population)
 and [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications).
 Their old conditional construction is refuted, and all native G/N/V remain
@@ -28,9 +30,10 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Application metadata evidence → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Added the independent census, disk-only subject, frozen evidence and explicit next human/design/native boundaries.
-- [Finite subject → Dimensions and accounting comparison](../../verification/application-metadata-subject.md#dimensions-and-accounting-comparison) — Added measured baseline/combined dimensions and separated old gross-reservation comparisons from lifetime buffer storage.
-- [Reader consumption hold](../../specs/workspace-search.md#localized-reader-decision) — Linked the new finite evidence without adopting a format, accounting rule or replacement certificate.
+- [Application reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan) — Added base/family order, per-table selection, individual versus shared failure and true-return retirement.
+- [Application metadata evidence → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Recorded k217's selection and the remaining certificate/reconciliation boundary.
+- [Reader construction → Fixed files and exact priority](../../verification/application-metadata-reader-plan.md#fixed-files-and-exact-priority) — Closed healthy-empty/absence/refusal branches and base-first strings/loctable precedence.
+- [Reader consumption hold](../../specs/workspace-search.md#localized-reader-decision) — Linked the selected semantic plan while retaining the old numerical recipe as a held counterexample.
 
 ## Other architecture topics
 
@@ -47,6 +50,8 @@ no native verdict.
 
 D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
 metadata-subject/source/population/long/localized-decision/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
+design:application-metadata-reader-plan-render regenerates the new semantic plan
+and evidence-boundary views with Dagre.
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -73,3 +78,8 @@ JSON validation and independent defect controls. These are read-only installed-f
 evidence and local construction; no Koine reader, signing, registration, launch,
 consent or VM acceptance. The capture records its complete before/after subject
 and instrument hashes.
+
+Run design:application-metadata-reader-plan-check for the pure-observation model
+and every saved direct/table plan, with alias episodes retained. This checks
+policy and exact key mapping, not current CF matching, native reading or a full
+cost certificate. No installed target is read by this task.
