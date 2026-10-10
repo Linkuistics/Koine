@@ -32,6 +32,10 @@ def main() -> None:
          '"outsidePaths": outside[:-1],', "every_saved_association"),
         ("invented fit", '"wholeJobGrossBytes": sum_terms([known_gross, None]),',
          '"wholeJobGrossBytes": known_gross,', "every_saved_association"),
+        ("numeric ABI/minimum/post-call capacity admission",
+         'if evidence != "EXPLICIT_REQUEST":', 'if False:', "numeric_payload"),
+        ("missing owner/growth/initialization receipt disposition",
+         'if set(replacements) != set(unbound):', 'if False:', "receipt_disposition"),
     )
     for label, old, new, selected in mutations:
         if source.count(old) != 1:
@@ -48,8 +52,8 @@ def main() -> None:
                 cwd=scratch, capture_output=True, text=True, check=False,
             )
             detected = any(marker in run.stdout for marker in (
-                "AssertionError", "complete alias episode sequence changed"))
-            if run.returncode != 1 or "1 failed" not in run.stdout or not detected:
+                "AssertionError", "complete alias episode sequence changed", "DID NOT RAISE"))
+            if run.returncode != 1 or "failed" not in run.stdout or not detected:
                 raise RuntimeError(f"undetected mutation: {label}\n{run.stdout}\n{run.stderr}")
             print("Rejected: " + label)
     if hashes(root) != before:

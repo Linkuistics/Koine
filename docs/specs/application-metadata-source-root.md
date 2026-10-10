@@ -81,6 +81,11 @@ String, ARC/COW or final ProviderValue construction. A refused bound starts no
 optional work. Cleanup and true-return ownership continue under their reserved
 credits, without refunding actual charges.
 
+The [runtime admission contract](application-metadata-runtime-admission.md)
+compares real public-value publication with explicit staging and specifies the
+concrete accounting/qualification choice needed to proceed. Its recommendation
+has not been selected; the strict source/root contract remains binding.
+
 The current construction fails at this runtime binding, independently of pending
 native dimensions. The complete selected wire remains the independent response
 contract; a finished-body size check cannot rescue unbounded earlier publication

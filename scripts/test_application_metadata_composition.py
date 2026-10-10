@@ -2,11 +2,14 @@
 # pyright: strict
 from __future__ import annotations
 
+import json
+import shutil
 from pathlib import Path
 from typing import cast
 
 import pytest
 from application_metadata_composition import (
+    INPUTS,
     assess,
     begin_owned,
     compose_episode,
@@ -43,6 +46,18 @@ def test_unknown_capacity_stops_before_acquisition() -> None:
     assert ledger.pending is None
 
 
+@pytest.mark.parametrize("evidence", ["ABI_LAYOUT", "MINIMUM_CAPACITY", "POST_CALL_CAPACITY"])
+def test_numeric_payload_or_layout_is_not_a_runtime_allocation_upper(evidence: str) -> None:
+    # Break: admit a Swift constructor on a number that proves only payload,
+    # value layout, or the result of the already-performed allocation.
+    ledger = Ledger(gross=100)
+    with pytest.raises(ContractViolation, match="capacity evidence"):
+        begin_owned(ledger, "public.swift-value", 64, 16, evidence=evidence)
+    assert ledger.operations == []
+    assert ledger.spent_bytes == ledger.spent_attempts == 0
+    assert ledger.pending is None
+
+
 def test_capacity_and_initialization_share_pre_call_reservation() -> None:
     ledger = Ledger(attempts=3, gross=80)
     begin_owned(ledger, "result", 64, 16)
@@ -68,6 +83,28 @@ def test_failed_return_keeps_its_actual_prefix_and_cleanup_credit() -> None:
     assert ledger.spent_bytes == 7
     assert ledger.spent_attempts == 1
     assert not ledger.resources
+
+
+@pytest.mark.parametrize("label", [
+    "walk.state.field-values", "walk.expansion-vector-append.capacity",
+    "indexed.tuple-record.field-values",
+])
+def test_receipt_disposition_cannot_omit_owner_growth_or_initialization(
+    tmp_path: Path, label: str
+) -> None:
+    # Break: omit real ownership/growth/population work from the proposed
+    # replacement inventory and then present that incomplete contract as whole.
+    root = Path(__file__).resolve().parents[1]
+    for item in INPUTS:
+        target = tmp_path / item
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(root / item, target)
+    path = tmp_path / "docs/design/application-metadata-runtime-admission.json"
+    packet = record(json.loads(path.read_bytes()))
+    del record(packet["receiptDisposition"])[label]
+    path.write_text(json.dumps(packet))
+    with pytest.raises(ContractViolation, match="receipt"):
+        assess(tmp_path)
 
 
 def test_every_saved_association_and_outside_record_survives() -> None:

@@ -103,45 +103,52 @@ and emitted errors remain unknown. The completion example's domain/permission
 dimensions are explicit assumptions, not new product quotas. No budget/selection
 reduction/native pass follows. K229's checked failed construction identifies the
 pre-call runtime capacity/publication gap and composes only known disjoint terms.
-K230 must bind the remaining allocation/bridge/COW/owner/publication operations;
-actual final ordinary/indexed values and errors remain separately conditional
+K230 supplies the explicit staging/publication contract and establishes why
+portable ABI evidence cannot certify the full pre-call upper. Its concrete
+scoped-accounting proposal is unselected. K231 must obtain Antony's actual
+accounting/qualification choice before a design continuation. No repeated
+null/coefficient or native-capture leaf is due.
+Actual final ordinary/indexed values and errors remain separately conditional
 native inputs. K227/k225/k220 have live work and are not closed; their full
 original Done when checks remain binding. K215 hold/k221 whole
 reconciliation/mandatory whole-producer review remain.
 
-## Post-k229 full close check
+## Post-k230 full close check
 
-After retiring k229, check every original condition here, then k225, then k220.
-The reproducible failed construction is in
+After retiring k230, every original condition here, k225 and k220 was checked
+again below. The reproducible failed construction remains in
 docs/verification/application-metadata-composition.md and its per-row JSON.
-It joins all 2,043 associations per run and retains all 149 outside records and
-system reserves. Known attempts compose to 871,255/904,386 after subtracting only
-duplicate payload/EOF read attempts; gross remains 14,181,924/14,356,031 partial
-subterms. Unknown total/peak/final-value/wire operands remain null. Neither a
-subtotal below gate nor a conditional wire upper above cap settles useful fit.
+It preserves all 2,043 associations/run, all 149 outside records and system
+reserves. Known attempts remain 871,255/904,386 and gross remains
+14,181,924/14,356,031 partial subterms. Full strict total/peak/final-value/wire
+operands remain unknown. Neither partial sums nor conditional wire uppers settle
+useful fit. The decision packet inventories all 65 inherited unbound labels.
 
 | Original condition | Result at this boundary |
 | --- | --- |
-| k227: all representations/field/owner/ARC/bridge/COW operations | Not closed: actual pre-call runtime backing capacities and publication operations remain unbound; every saved source/root unresolved receipt label is enumerated |
-| k227: complete episode/job terms and preserved observations | Associations, explicit residual operands and shared-read composition checked; full sums unestablished pending the runtime binding and separately conditional native inputs |
-| k227: final values/publication and complete selected wire | k228's full grammar/aliases/errors/escaping/cap controls retained; final native scalars/errors and owned publication remain unestablished |
-| k227: frozen Taskfile controls | Passed composition plus inherited subject/reader/ledger/episode/source/storage/wire/localized controls; strict types and document links passed; native pending |
-| k227: full ancestor checks and honest promotion | Performed below; no node closes or promotion/review/Creator write is earned |
-| k225: scalar/record/vector/map/plan operations | Raw proposals and known subterms remain distinct from actual Swift runtime backing/owner operations; not closed |
-| k225: complete scratch/overlap/cleanup | Immutable input/EOF/conversion partition and prefix controls retained; expanded walker/source/publication backing and overlaps remain unbound |
-| k225: every episode/aggregate, aliases/129-byte/L1500/outside | Complete saved associations checked; aggregate totals remain null; no regional/native value fabricated |
-| k225: selected response and final scalars | Complete selection and independent counter retained; actual final values/response remain null; no public selection shrunk |
-| k225: selected gates or exact failed-construction work | Gates/authority/action/disclosure/Settings retained; runtime-admission-k230 names the concrete design gap before k221; no V deferral |
-| k225: frozen controls and full k220 check | Controls passed; k220 checked below, not closed because representation work remains live |
-| k220: all actual operations/early exits/cleanup | Existing source/root/reader grammars retained; runtime allocation/bridge/COW/publication operation binding remains incomplete |
-| k220: owned/borrowed/scalar/copy distinctions | Distinctions and non-refund rule retained, including unselected/duplicate/LocProvenance work; actual final runtime representation not certified |
-| k220: complete per-episode and aggregate derivation | Known terms joined independently; full sums null; outside/native preconditions retained, no product subset |
-| k220: unchanged fit or precise failed result | Explicit failed admission witness and precise remaining runtime contract, no new budget/accounting/useful loss |
-| k220: frozen original-defect/call/charge/branch controls | Passed with every G/N/V pending |
+| k227: all representations/field/owner/ARC/bridge/COW operations | Explicit raw source-level replacements and real ProviderValue adapter specified; strict compiled/runtime pre-call upper is unestablished. Portable ABI is insufficient |
+| k227: complete episode/job terms and preserved observations | Every inherited cell compared with parent; complete associations/outside/system inputs preserved. Full strict sums unestablished; native inputs separately conditional |
+| k227: final values/publication and complete selected wire | Mandatory Swift publication and host conversion/completion/encoding distinguished; final native scalars/errors unknown, complete k228 selections/aliases/errors/escaping/cap unchanged |
+| k227: frozen Taskfile controls | Composition 12 tests/nine mutants, inherited subject/reader/ledger/episode/source/storage/wire/localized checks, strict types and docs links passed; comparative source digests checked; native pending |
+| k227: full ancestor checks and honest promotion | All original k225/k220 conditions checked below; k231 remains live, so no closure/promotion/review/Creator is earned |
+| k225: scalar/record/vector/map/plan operations | Raw sizes/field-write/growth/owner contract distinct from compiler/runtime operations. Full strict binding not established by public API |
+| k225: complete scratch/overlap/cleanup | Immutable input/EOF/conversion partition, walker/source/output overlap, nil/failed prefixes and true-return cleanup specified at source level; runtime backing/traffic not certified |
+| k225: every episode/aggregate, aliases/129-byte/L1500/outside | Every saved cell/conditional input retained. No alias/refund/native/regional value fabricated; no full strict aggregate claimed |
+| k225: selected response and final scalars | Complete finite selections preserved, actual final values/response unknown. Host work separate; no selection shrink or earlier-allocation credit from body guard |
+| k225: selected gates or exact failed-construction work | Gates/authority/action/disclosure/Settings bind. Precise incompatibility and reviewable scoped-accounting/strict-qualification alternatives delivered; human choice k231 required before k221 |
+| k225: frozen controls and full k220 check | Controls passed; every original k220 condition checked below. Human-choice/selected-design work live, so k225 does not close |
+| k220: all actual operations/early exits/cleanup | Existing grammars/raw candidate operations retained. Public runtime constructors have no complete portable pre-call certificate; no silent native/host relabelling |
+| k220: owned/borrowed/scalar/copy distinctions | Owner-dependent borrowing, overlays, adoption enabling operations, repeated raw/key/selector/LocProvenance work and no-refund explicit. Runtime exclusions visibly proposed and unselected |
+| k220: complete per-episode and aggregate derivation | Known disjoint terms/every association preserved; full strict totals unestablished. All 149 outside/native inputs conditional, no product subset |
+| k220: unchanged fit or precise failed result | Precise evidence conflict and concrete human choice supplied. No inevitable-overflow/impossible-exact-certificate claim, new budget/accounting/ABI/posture/useful loss adopted |
+| k220: frozen original-defect/call/charge/branch controls | Required controls passed; numeric ABI/minimum/post-call admission and missing owner/growth/initialization dispositions rejected. Every G/N/V pending |
 
-The failure names work: application-metadata-runtime-admission-k230 is added
-here, so this node, k225 and k220 retain a live descendant and stay open. It must
-answer a pre-call representation/publication question, not collect the already
-pending native inputs or repeat a null subtotal. All original Done when criteria
-remain binding. k215's construction hold stays; k221 still owns whole-family
-reconciliation and mandatory root whole-k215 review/Creator at actual closure.
+The failure now names a human decision: application-metadata-runtime-accounting-k231
+is live here. It selects/rejects the exact proposed exclusions or retains strict
+accounting with an attainable implementation-specific certification route; it
+does not repeat sizing or native capture. K230 is retired at its permitted
+precise-incompatibility boundary. This node, k225 and k220 retain that live
+descendant and stay open. Original Done when criteria bind unless Antony
+explicitly changes the accounting guarantee. k215's construction hold stays;
+k221 owns whole-family reconciliation and mandatory root whole-k215 review/Creator
+at actual closure.

@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "selection": "PENDING_HUMAN_CHOICE",
+  "strictConstruction": "NO_PORTABLE_PRE_CALL_CERTIFICATE_FROM_PUBLIC_ABI",
+  "recommendation": "EXPLICIT_RAW_ACCOUNTING_WITH_DISCLOSED_RUNTIME_EXCLUSIONS",
+  "currentPublicInterface": "ProviderValue_STRING_ARRAY_DICTIONARY",
+  "upstreamEvidence": {
+    "tag": "swift-6.2-RELEASE",
+    "revision": "1ff1cc1170617ab23ab74aa8b741c8daca1903f6",
+    "sources": [
+      {
+        "path": "stdlib/public/core/Array.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/Array.swift",
+        "sha256": "18b58e608625930c8f09a53a76c5e1eed9ec05e26dc224060f0de46e414e3823"
+      },
+      {
+        "path": "stdlib/public/core/ContiguousArrayBuffer.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/ContiguousArrayBuffer.swift",
+        "sha256": "dec657f3bf6de607b5b55853f01a3f555cabe58f138b0061e0db88b908d45039"
+      },
+      {
+        "path": "stdlib/public/core/ManagedBuffer.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/ManagedBuffer.swift",
+        "sha256": "9685241144791db565a86134a6d6a64d62ca93898c2b8abf234285b2c0ac3718"
+      },
+      {
+        "path": "stdlib/public/core/StringStorage.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/StringStorage.swift",
+        "sha256": "8662d3943a520d94314680537f89c0454376f3f1532b70914392edf8467e3422"
+      },
+      {
+        "path": "stdlib/public/core/Dictionary.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/Dictionary.swift",
+        "sha256": "68dbbd090e7611d197163a35ee00a3ca1a8b2eb743d694775233505ae11bd58e"
+      },
+      {
+        "path": "stdlib/public/core/NativeDictionary.swift",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/stdlib/public/core/NativeDictionary.swift",
+        "sha256": "6de3e4350eb39fa89aee8b6f63a52d687c6f27ee56a3db06b51991ab6c3a4fb3"
+      },
+      {
+        "path": "docs/ABIStabilityManifesto.md",
+        "url": "https://raw.githubusercontent.com/swiftlang/swift/1ff1cc1170617ab23ab74aa8b741c8daca1903f6/docs/ABIStabilityManifesto.md",
+        "sha256": "df06fe6066182ae839bf83ae2aad2a7502de3e6dce74799d3513862c8c0b3c00"
+      }
+    ],
+    "status": "COMPARATIVE_UPSTREAM_NOT_DEPLOYED_RUNTIME_IDENTITY"
+  },
+  "receiptDisposition": {
+    "indexed-identifier.projection.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed-identifier.utf8-scratch.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed-name.projection.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed-name.utf8-scratch.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed-path.projection.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed-path.utf8-scratch.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed.tuple-record.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "indexed.tuple-record.field-values": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "preference.projection.capacity": {
+      "candidate": "BORROWED_CF_PREFERENCE_ARRAY_WITH_RAW_SPANS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "preference.utf8-scratch.capacity": {
+      "candidate": "BORROWED_CF_PREFERENCE_ARRAY_WITH_RAW_SPANS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "preferences.cf-pointer-vector.capacity": {
+      "candidate": "BORROWED_CF_PREFERENCE_ARRAY_WITH_RAW_SPANS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "preferences.swift-snapshot.capacity": {
+      "candidate": "BORROWED_CF_PREFERENCE_ARRAY_WITH_RAW_SPANS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "query.fixed-predicate.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "query.scope-vector.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration-cf-path.observation-record.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration-cf-path.observation-record.field-values": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration-cf-path.projection.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration-cf-path.utf8-scratch.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration.appkit-swift-vector.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration.ordered-domain.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "registration.seed.capacity": {
+      "candidate": "NATIVE_REGISTRATION_OWNER_WITH_RAW_SEED_DOMAIN_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "root-resource.finalized-path.capacity": {
+      "candidate": "CHECKED_NATIVE_RESOURCE_WITH_RAW_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "root-resource.swift-projection.capacity": {
+      "candidate": "CHECKED_NATIVE_RESOURCE_WITH_RAW_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "root-resource.swift-projection.field-values": {
+      "candidate": "CHECKED_NATIVE_RESOURCE_WITH_RAW_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-identifier.projection.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-identifier.utf8-scratch.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-path.observation-record.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-path.observation-record.field-values": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-path.projection.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running-path.utf8-scratch.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running.policy-record.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running.policy-record.field-values": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "running.swift-vector.capacity": {
+      "candidate": "NATIVE_RUNNING_SNAPSHOT_WITH_RAW_SLOT_POLICY_RECORDS",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "type-tree-member.projection.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "type-tree-member.utf8-scratch.capacity": {
+      "candidate": "FIXED_NATIVE_QUERY_WITH_RAW_TUPLE_PROJECTION",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.collapsed-suffix.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.component-c-string.map-cchar.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.component-c-string.with-nul.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.component.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.cycle-key-record.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.cycle-key-suffix.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.cycle-key-text.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.directory-open-c-string.map-cchar.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.directory-open-c-string.with-nul.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.expansion-vector-append.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.expansion.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.final-component-vector.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.joined-resolved-without-leading-slash.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-read-buffer-zeroing.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-read-c-string.map-cchar.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-read-c-string.with-nul.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-text-map-entry.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-text-map-value.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.link-text-prefix-copy.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.literal.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.resolved.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.spelling-and-expansion-records.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.stack-append.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.state.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.state.field-values": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.suffix-array.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.terminal-open-c-string.map-cchar.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.terminal-open-c-string.with-nul.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.terminal-recheck-c-string.map-cchar.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    },
+    "walk.terminal-recheck-c-string.with-nul.capacity": {
+      "candidate": "RAW_WALKER_BUFFER_OR_RECORD",
+      "status": "UNSELECTED_SOURCE_LEVEL_REPLACEMENT",
+      "compiledRuntimeUpperEstablished": false
+    }
+  },
+  "barriers": [
+    "SOURCE_SWIFT_OVERLAYS_IF_NOT_REPLACED",
+    "COMPILER_EMITTED_OWNERSHIP_AND_VALUE_OPERATIONS",
+    "PUBLIC_PROVIDER_STRING_ARRAY_DICTIONARY_CONSTRUCTION"
+  ],
+  "nativeInputs": "CONDITIONAL_UNCHANGED",
+  "nativeVerdict": "PENDING",
+  "gateChangeAdopted": false,
+  "accountingChangeAdopted": false,
+  "abiChangeAdopted": false,
+  "usefulFitEstablished": false
+}

@@ -22,6 +22,8 @@ INPUTS = (
     "docs/design/application-metadata-wire.json",
     "docs/design/application-metadata-wire.graphql",
     "docs/design/application-metadata-budget-proposal.json",
+    "docs/design/application-metadata-runtime-admission.json",
+    "docs/specs/application-metadata-runtime-admission.md",
     "scripts/application_metadata_composition.py",
     "scripts/test_application_metadata_composition.py",
     "scripts/check_application_metadata_composition_mutations.py",
@@ -38,6 +40,8 @@ INPUTS = (
     "docs/verification/application-metadata-composition.md",
     "docs/design/architecture/native-metadata-composition.d2",
     "docs/design/architecture/native-metadata-composition.svg",
+    "docs/design/architecture/native-metadata-runtime-admission.d2",
+    "docs/design/architecture/native-metadata-runtime-admission.svg",
     "docs/design/architecture/diagrams.json",
     "Taskfile.yml",
 )
@@ -79,8 +83,12 @@ def compose_episode(api: int, files: int, local: int, reads: int,
     }
 
 
-def begin_owned(ledger: Ledger, name: str, capacity: int | None, writes: int) -> None:
+def begin_owned(ledger: Ledger, name: str, capacity: int | None, writes: int,
+                *, evidence: str = "EXPLICIT_REQUEST") -> None:
     """Bind a declared transition before acquisition; all names are trace labels."""
+    if evidence != "EXPLICIT_REQUEST":
+        raise ContractViolation(
+            "capacity evidence does not bound requested allocation: " + evidence)
     if capacity is None:
         raise ContractViolation("unbound owned capacity: " + name)
     if capacity < 0 or writes < 0:
@@ -178,6 +186,14 @@ def assess(root: Path) -> dict[str, object]:
                 opaque.add(str(label))
             elif amount is None:
                 unbound[str(label)].append(name)
+    runtime = record(json.loads((root / INPUTS[7]).read_bytes()))
+    replacements = record(runtime["receiptDisposition"])
+    if set(replacements) != set(unbound):
+        raise ContractViolation("runtime alternative omitted or invented a source/root receipt")
+    if runtime["selection"] != "PENDING_HUMAN_CHOICE":
+        raise ContractViolation("unselected runtime accounting was adopted")
+    if runtime["strictConstruction"] != "NO_PORTABLE_PRE_CALL_CERTIFICATE_FROM_PUBLIC_ABI":
+        raise ContractViolation("public ABI was substituted for a runtime allocation upper")
     result: dict[str, object] = {
         "schemaVersion": 1, "inputHashes": before,
         "purpose": "FAILED_CONSTRUCTION_WITH_KNOWN_DISJOINT_SUBTERMS",
@@ -193,6 +209,7 @@ def assess(root: Path) -> dict[str, object]:
         "hostEncodingPeak": None,
         "blockingDesignContract": "PRE_CALL_RUNTIME_CAPACITY_AND_PUBLICATION_BINDING",
         "pendingNativeInputs": source["actualNativeDimensions"],
+        "runtimeAdmission": runtime,
     }
     if hashes(root) != before:
         raise ContractViolation("composition subjects changed during derivation")

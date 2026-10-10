@@ -2,19 +2,19 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Require runtime bounds before owned acquisition",
-    "status": "Failed construction; runtime capacity/publication design and native verdicts pending",
-    "summary": "Known reader/local terms compose after removing shared read attempts once. Packed capacities do not bind Swift collection/publication operations; unknown operands prevent pre-call admission and useful fit. Complete wire remains independent.",
+    "title": "Select an accounting guarantee at the Swift boundary",
+    "status": "Strict certificate unestablished; proposed human accounting choice",
+    "summary": "Explicit staging can expose requested raw capacity and writes, but ProviderValue still requires Swift runtime constructors. Keep the selected strict contract and route the concrete scoped-accounting proposal to requirements. No budget, ABI or useful loss adopted.",
     "diagramIds": [
+      "native-metadata-runtime-admission",
       "native-metadata-composition",
       "native-metadata-wire",
-      "native-metadata-owned-storage",
-      "native-metadata-source-root"
+      "native-metadata-owned-storage"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-composition",
-        "summary": "Added disjoint per-episode composition and the concrete runtime capacity/publication admission failure; kept the independent wire and family hold."
+        "id": "native-metadata-runtime-admission",
+        "summary": "Added the explicit raw staging/public Swift boundary and two concrete accounting/qualification alternatives; both preserve the existing interface until a human selection."
       }
     ]
   },
@@ -26,27 +26,27 @@
     },
     {
       "id": "native-sources",
-      "title": "Native discovery sources \u00b7 analysis and requirements",
+      "title": "Native discovery sources · analysis and requirements",
       "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
-      "title": "Native discovery and client-owned search \u00b7 requirements",
+      "title": "Native discovery and client-owned search · requirements",
       "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open \u00b7 served action-only contract",
+      "title": "Launch and open · served action-only contract",
       "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection \u00b7 designed, not yet served",
+      "title": "First-party selection · designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension \u00b7 designed, not yet served",
+      "title": "Workflow extension · designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -83,7 +83,7 @@
     {
       "id": "native-metadata-two-walks",
       "group": "native-contract",
-      "title": "Root ownership \u2192 Transfer once and recheck independently",
+      "title": "Root ownership → Transfer once and recheck independently",
       "renderer": "svg",
       "source": "native-metadata-two-walks.d2",
       "rendered": "native-metadata-two-walks.svg",
@@ -92,7 +92,7 @@
     {
       "id": "native-metadata-source-root",
       "group": "native-contract",
-      "title": "Source accounting \u2192 Preserve raw-slot and payload receipts",
+      "title": "Source accounting → Preserve raw-slot and payload receipts",
       "renderer": "svg",
       "source": "native-metadata-source-root.d2",
       "rendered": "native-metadata-source-root.svg",
@@ -141,7 +141,7 @@
       "renderer": "svg",
       "source": "native-localized-decision.d2",
       "rendered": "native-localized-decision.svg",
-      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004\u20261,023 state stays UNKNOWN. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-long-applications",
@@ -150,7 +150,7 @@
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004\u20261,023 metadata does not qualify action plist support. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-discovery-contract",
@@ -164,7 +164,7 @@
     {
       "id": "native-settings-flow",
       "group": "native-contract",
-      "title": "Choose read, prepare or reveal; consent stays in Koine\u2019s UI",
+      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
@@ -218,7 +218,7 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
+      "title": "Previous proposal · Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -227,7 +227,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
+      "title": "Previous proposal · Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -236,7 +236,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
+      "title": "Previous proposal · Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -245,7 +245,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
+      "title": "Previous proposal · Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -254,7 +254,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
+      "title": "Previous proposal · Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -263,7 +263,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -272,7 +272,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
+      "title": "Previous proposal · Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -281,7 +281,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
+      "title": "Previous proposal · Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -303,7 +303,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",
@@ -443,7 +443,7 @@
     {
       "id": "native-metadata-owned-storage",
       "group": "native-contract",
-      "title": "Owned storage \u2192 Separate capacity, writes and overlap",
+      "title": "Owned storage → Separate capacity, writes and overlap",
       "renderer": "svg",
       "source": "native-metadata-owned-storage.d2",
       "rendered": "native-metadata-owned-storage.svg",
@@ -452,11 +452,20 @@
     {
       "id": "native-metadata-wire",
       "group": "native-contract",
-      "title": "Selected wire \u2192 Expand selection before counting bytes",
+      "title": "Selected wire → Expand selection before counting bytes",
       "renderer": "svg",
       "source": "native-metadata-wire.d2",
       "rendered": "native-metadata-wire.svg",
       "caption": "Activity/accounting view of a pure finite GraphQL design subject. Actual final scalars and errors remain unknown; conditional byte uppers are no useful fit. Core replacement occurs only after complete encoding, with no trimming or owned/native peak guarantee. Full owned composition, k215 hold, mandatory whole review and all native G/N/V remain."
+    },
+    {
+      "id": "native-metadata-runtime-admission",
+      "group": "native-contract",
+      "title": "Runtime admission → Separate explicit storage from the public value boundary",
+      "renderer": "svg",
+      "source": "native-metadata-runtime-admission.d2",
+      "rendered": "native-metadata-runtime-admission.svg",
+      "caption": "Strict accounting remains selected. Explicit raw staging does not supply the mandatory Swift publication upper. The scoped accounting alternative needs Antony’s selection; source hashes are comparative, not deployed runtime identity. Whole-family hold and all G/N/V remain."
     }
   ]
 }

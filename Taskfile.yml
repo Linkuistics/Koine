@@ -736,6 +736,7 @@ tasks:
     desc: Render the owned runtime-admission failure and independent response boundary
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-composition.d2 docs/design/architecture/native-metadata-composition.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-runtime-admission.d2 docs/design/architecture/native-metadata-runtime-admission.svg
 
   design:application-metadata-wire:
     desc: Derive conditional complete selected-wire terms for both saved runs; actual/native fit remains unknown

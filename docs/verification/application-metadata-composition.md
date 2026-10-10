@@ -55,6 +55,17 @@ once cannot pay for repeated field writes, growth or value copies.
 
 ## Runtime binding obligations
 
+The [runtime admission contract](../specs/application-metadata-runtime-admission.md)
+now identifies the concrete obstruction: public ABI/value layout, constructor
+minimum capacity and post-call observations cannot establish complete requested
+allocation/write/ownership uppers for the deployed implementation. Explicit raw
+staging can replace the owned source/walker representations, but its real
+ProviderValue adapter still crosses this boundary. The decision packet retains
+all 65 enumerated receipt labels and immutable comparative Swift-source hashes.
+The proposed accounting exclusion is a human choice, not a completed strict
+certificate or adopted relaxation. No new census or identical sizing-gap leaf
+answers this interface question.
+
 For each actual transition, bind requested capacity C, every initialized or copied
 byte upper W, optional operation attempts A, possible output owners and their
 disposal credits **before** invoking it. Admission needs remaining gross >= C+W
@@ -159,15 +170,17 @@ silently change the provider ABI or action walker. Moving a stage to â€œopaque,â
 using logical payload charges, increasing gates or excluding useful categories
 would change the selected accounting/behavior and is not adopted.
 
-The concrete remaining design question is: **which representation and publication
-path supplies numeric pre-call owned capacity/copy/operation bounds while producing
-the existing ProviderValue contract?** An answer must bind the enumerated source/
-root/local/publication receipts, every field and owner update, all growth/ARC/COW
-paths, overlap and prefix cleanup. A compiler-dependent conditional contract must
-state its exact source/toolchain/ABI assumptions and refusal behavior; it cannot
-be an empirical peak measurement or the same null operands with new names.
-Already pending native tuples/preferences/expanded visits/regional values stay
-separate conditional inputs, never another native-capture design increment.
+The runtime design has now compared both paths and found the precise remaining
+choice: **retain strict accounting with implementation-specific certificates, or
+explicitly scope the gate to controlled raw work while disclosing excluded
+runtime backing and ownership traffic?** The
+[reviewable proposal](../specs/application-metadata-runtime-admission.md#concrete-decision-awaiting-antony)
+specifies the exclusions and their weaker guarantee. No alternative is selected.
+The available public ABI and comparative upstream source establish no complete
+pre-call upper for the deployed runtime; this is not evidence that an exact-image
+certificate could never exist. A requirements decision precedes another design
+continuation. Repeating these unknown operands or commissioning the already
+pending native census is not the next work.
 
 Completion requires full per-episode/job expressions and independently supplied
 final values/errors through the complete selections. A conditional useful fit is

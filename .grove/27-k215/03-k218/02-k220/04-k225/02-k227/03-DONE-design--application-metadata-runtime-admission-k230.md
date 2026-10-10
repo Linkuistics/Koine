@@ -67,3 +67,41 @@ leaf, fragment review, changed ABI/accounting/posture or useful loss. Re-ask non
 of k217's settled answers. If an honest construction requires a different human
 choice, prepare one concrete reviewable alternative and route that decision,
 rather than recursively restating these same representation gaps.
+
+## Decisions (running log)
+
+- Bootstrap adopted k230 on empty jj change f2b19f96, parent d591e025. The
+  brief chain, selected k217 answers and k229 failed composition govern. Tier 2
+  graph generation 2026-09-29T10:36:20Z is fast; docs/scripts are excluded,
+  LocationWalk untracked, ProviderContribution changed and Engine changed/partial
+  at line 295. Exact source reads supply those paths; no graph completeness or
+  native claim follows. Taskfile remains the reusable verification entry point.
+- Separate provider-controlled requested capacity from runtime implementation
+  backing and allocator usable size. Swift 6.2 upstream source is comparative
+  evidence, not identity evidence for the system runtime. The installed compiler
+  reports Apple Swift 6.4 targeting macOS 27; neither it nor historical macOS 26.6.2
+  saved observations qualify the supported runtime matrix. No compiler/reader/CF
+  experiment or platform qualification is performed.
+- The available portable ABI and comparative source cannot supply the full
+  requested-capacity/intermediate-write/ownership upper for deployed Swift
+  constructors. This is an evidence incompatibility, not inevitable 20 MiB
+  overflow or impossibility of an exact-image certificate. Explicit staging can
+  expose source-level raw operations, but its real ProviderValue adapter still
+  constructs Swift values. Record this precise failed outcome in the runtime
+  admission spec; no compiler-internal work is silently assigned zero/opaque/host.
+- Recommend an explicit scoped raw-accounting boundary with fully disclosed
+  runtime backing/traffic exclusions, preserving the public ABI and useful
+  breadth. This is a materially different, unselected accounting guarantee;
+  requirements application-metadata-runtime-accounting-k231 routes the concrete
+  decision. Retaining strict accounting needs attainable implementation-specific
+  correspondence and refusal of unqualified combinations. No repeated sizing or
+  native-capture leaf, new quota, budget, ABI, posture or useful loss is adopted.
+- Frozen composition controls passed: 12 tests, nine deliberate assertion-failing
+  mutants, Ruff and strict pyright; inherited subject/reader/ledger/episode/source/
+  storage/wire/localized-original-defect tasks and document links passed. All
+  inherited report cells match parent d591e025 except refreshed digests and the
+  added runtime decision packet. Seven pinned comparative upstream source digests
+  match their downloaded subjects. Browser presentation rendered the exact view.
+  These reproduce failed construction, not useful/native fit. Retire at this
+  coherent decision boundary, then perform every original parent close check;
+  k231 remains live, so no ancestor closure/Creator/whole-review is earned.
