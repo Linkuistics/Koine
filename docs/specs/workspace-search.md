@@ -444,7 +444,11 @@ and loctable families, 131,072-byte files, the 20 MiB cumulative application gro
 gate and individual oversized-file affected-metadata refusal. The
 [selected semantic construction](../verification/application-metadata-reader-plan.md)
 closes exact base/family order, independent table/direct selection and refusal
-semantics. The old file/gate/cost recipe below remains historical counterexample
+semantics. The [operation and ownership ledger](../verification/application-metadata-operation-ledger.md)
+defines cleanup-first call/byte reservation and concrete branch/disposal receipts;
+it establishes no aggregate fit. Applying it to every saved episode and deriving
+the source/storage/wire envelope remains open before whole-family reconciliation.
+The old file/gate/cost recipe below remains historical counterexample
 input until the complete accounting certificate and whole-family reconciliation
 land; it does not override that selected plan or lift the hold. No useful loss,
 accounting refund, native pass or downstream implementation follows.

@@ -1,0 +1,21 @@
+# Ownership/activity view; concrete trace protocol, not a completed cost certificate.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+*.style.font-size: 26
+Start: "Start here\nOne reader job" {class: start}
+Admit: "Reserve call, bytes\nand every disposal"
+Invoke: "Invoke once\nRetain inputs and slot"
+Return: "Actual return\nCharge and classify"
+Unwind: "Retire dependents\nbefore their owners"
+Slot: "True return\nThen release job slot"
+Hold: "k215 hold remains\nAggregate fit pending"
+Start -> Admit: "1 · next work"
+Admit -> Invoke: "2 · admitted"
+Admit -> Unwind: "2 · refused"
+Invoke -> Return: "3 · wait"
+Return -> Admit: "4 · continue"
+Return -> Unwind: "4 · exit / freeze"
+Unwind -> Slot: "5 · reserved cleanup"
+Slot -> Hold: "6 · derive totals next"

@@ -2,24 +2,20 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Close reader semantics before deriving all costs",
-    "status": "Selected semantic plan; complete certificates and reconciliation pending; k215 hold remains",
-    "summary": "Antony selected 128 KiB files, fixed strings/loctables, 20 MiB cumulative gross without refund and individual oversized-file affected-metadata refusal. The pure reader model checks base/family precedence, independent literal inventories and every saved English/German plan across 2,043 episodes. Complete call/gross/wire derivation and family reconciliation still precede mandatory whole-producer review and native G/N/V.",
+    "title": "Reserve cleanup and count actual work before deriving the certificate",
+    "status": "Checked operation protocol; aggregate fit and whole-family reconciliation pending; k215 hold remains",
+    "summary": "The pure operation ledger reserves all possible output cleanup before acquisition, charges every performed read/copy/call and retires borrowed dependencies only on actual return. Complete totals across 2,043 episodes, source assumptions and independent wire remain the next design child. Whole-producer review and native G/N/V stay pending.",
     "diagramIds": [
+      "native-metadata-operation-ledger",
       "native-metadata-reader-plan",
       "native-metadata-subject",
-      "native-localized-decision",
       "native-application-population",
       "native-long-applications"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-reader-plan",
-        "summary": "Added the selected base/family, independent inventory, refusal and true-return retirement flow with its remaining certificate boundary."
-      },
-      {
-        "id": "native-metadata-subject",
-        "summary": "Recorded k217's completed human selection and replaced the pending interview with reader, certificate and reconciliation steps."
+        "id": "native-metadata-operation-ledger",
+        "summary": "Added cleanup-first admission, actual-return receipts, dependency disposal and the explicit remaining aggregate-certificate boundary."
       }
     ]
   },
@@ -31,27 +27,27 @@
     },
     {
       "id": "native-sources",
-      "title": "Native discovery sources · analysis and requirements",
+      "title": "Native discovery sources \u00b7 analysis and requirements",
       "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
-      "title": "Native discovery and client-owned search · requirements",
+      "title": "Native discovery and client-owned search \u00b7 requirements",
       "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open · served action-only contract",
+      "title": "Launch and open \u00b7 served action-only contract",
       "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection · designed, not yet served",
+      "title": "First-party selection \u00b7 designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension · designed, not yet served",
+      "title": "Workflow extension \u00b7 designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -77,6 +73,15 @@
   ],
   "diagrams": [
     {
+      "id": "native-metadata-operation-ledger",
+      "group": "native-sources",
+      "title": "Reserve cleanup before acquisition",
+      "renderer": "svg",
+      "source": "native-metadata-operation-ledger.d2",
+      "rendered": "native-metadata-operation-ledger.svg",
+      "caption": "Ownership/activity view of the selected reader operation grammar. Every invocation admits its potential disposals first; actual reads/copies and repeated raw slots charge before reuse or deduplication. Caller cancellation retains in-use resources and shared capacity until true return. Checked pure traces establish no aggregate fit, native peak or useful G/N/V outcome; saved-episode/source/wire derivation, whole-family reconciliation and k215 review remain pending."
+    },
+    {
       "id": "native-metadata-reader-plan",
       "group": "native-sources",
       "title": "Select independent inventories and stop refused fallback",
@@ -101,7 +106,7 @@
       "renderer": "svg",
       "source": "native-localized-decision.d2",
       "rendered": "native-localized-decision.svg",
-      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004\u20261,023 state stays UNKNOWN. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-long-applications",
@@ -110,7 +115,7 @@
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004\u20261,023 metadata does not qualify action plist support. K213/k214 refute the application file-set/useful-subject construction; k215 and mandatory review must replace it before k7. Old numerical fits are conditional counterexamples, not useful qualification."
     },
     {
       "id": "native-discovery-contract",
@@ -124,7 +129,7 @@
     {
       "id": "native-settings-flow",
       "group": "native-contract",
-      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
+      "title": "Choose read, prepare or reveal; consent stays in Koine\u2019s UI",
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
@@ -178,7 +183,7 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal · Decide child use and protected-target access",
+      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -187,7 +192,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal · Verify finite outcomes with independent controls",
+      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -196,7 +201,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal · Own pipes and reap before releasing capacity",
+      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -205,7 +210,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal · Keep native facts separate from source inventory",
+      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -214,7 +219,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal · Preserve file bytes and checked application targets",
+      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -223,7 +228,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -232,7 +237,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal · Report source completeness without invented counts",
+      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -241,7 +246,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal · Choose a location and use existing actions",
+      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -263,7 +268,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",

@@ -15,6 +15,9 @@ numerical totals remain estimates. The existing k215 consumption hold and its
 mandatory whole-producer review before k7 remain binding. Every native
 G1–G11/N1–N8/V1–V13 verdict stays **pending**. This document does not lift the
 hold or replace the old certificate with a claimed fit.
+The [operation ledger](application-metadata-operation-ledger.md) now defines the
+concrete branch/ownership protocol; applying it to every saved episode and the
+source/storage/wire envelope remains k220's following design child's work.
 
 ## Root and layout admission
 
