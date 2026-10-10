@@ -56,3 +56,37 @@ files, 20 MiB cumulative gross without refund, 4,194,304 attempts, independent
 core 8 MiB, deadlines and four true-return slots remain unchanged. K225 owns
 k220's close check; k221 owns family reconciliation and mandatory whole-k215
 review/Creator at actual k218/k215 closure.
+
+## Decisions (running log)
+
+- Adopted the live mandate in the stated jj workspace, empty on 4f01a7a0.
+  Tier 2 graph generation 2026-09-29T10:36:20Z (fast) is ready, but LocationWalk
+  and its tests are not tracked; docs/scripts are excluded and Taskfile/glossary
+  metadata changed. Exact source reads supply these claims. No graph completeness
+  or native freshness follows. Existing Taskfile tasks remain the check entry point.
+- Replace fixed source coefficients with an executable, receipt-producing pure
+  contract. Enumerate native calls, bridge/property observations, local operations
+  and acquired-owner retirement separately. Unsaved native tuples, expanded walk
+  traces and representation capacities remain symbolic/null rather than zero.
+  This closes the operation grammar without claiming a numeric whole-job fit.
+- The first root walk must open/check/transfer a terminal directory; the second
+  is an independent identity observation after metadata owners retire. Preserve
+  the existing byte/link/dot/error semantics, with no third or per-copy
+  registration walk. Long finalized roots use actual indexed facts and invoke
+  no root-resource or ordinary reader call. Every actual local copy is a receipt;
+  lexical census counts cannot substitute for expanded visits.
+- The pure contract names allocation capacities and record-field writes as null
+  parameters and records exact declared payload writes separately. Its ledger
+  proves attempt/cleanup admission only. K225 must instantiate pre-call byte
+  bounds, bridges/COW, scratch/lifetimes, local seed/domain/error/owner-transfer
+  terms and final/publication/wire receipts before any numeric fit. The conservative
+  independent-copy model adopts no Swift layout, production quota or new accounting
+  rule. Native tuple/event/preference/expanded-walk outcomes remain already pending
+  acceptance observations; no repeated leaf or fragment review is cut for them.
+- Final source/root, episode, ledger, reader-plan and saved-subject Taskfile checks
+  pass: 236 pure cases and 28 isolated omission controls, Ruff and strict Pyright.
+  Retained localized-boundary counterexamples and documentation links also pass.
+  All 1,490 frozen repository evidence/tool/document inputs match item by item
+  before and after the completed checks. Both rendered views were inspected in
+  the served browser, including mobile fit/scroll presentation; desktop restored.
+  K225 stays live, so k220 has no close cascade and this leaf has no fragment review.

@@ -159,6 +159,13 @@ assessment adds arithmetic omission controls rather than another runtime adapter
 
 ## Source and root terms that still prevent closure
 
+The [source/root receipt contract](application-metadata-source-root-certificate.md)
+now provides the parametric source/preference/expanded-walk grammar and exact
+first-root transfer. Its owned capacities and actual native dimensions remain
+unresolved, so none of this assessment's null whole-job totals becomes numeric.
+The [handoff](application-metadata-source-root-certificate.md#handoff-and-failed-construction)
+separates k225's known representation/composition work from pending native inputs.
+
 The explicit controlled source arrays yield **7,862 raw URL slots**, including
 128 running URL slots, with 1,871 observed identifier groups and two reserved
 system-ID groups (1,873). That counterpart fits the declared count ceilings

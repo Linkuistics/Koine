@@ -83,3 +83,23 @@ copy and response terms, then repeats this node's full Done when check. Neither
 may invent native tuples or regional dictionary/value observations. The 149
 outside paths are not exclusions. K220 stays open; no closure promotion or
 whole-producer review is due yet.
+
+## Source/root contract handoff
+
+K224 supplies docs/specs/application-metadata-source-root.md,
+docs/verification/application-metadata-source-root-certificate.md and the per-case
+JSON. Explicit pure receipts replace source coefficients, include one-job
+preferences, raw duplicate/type-tree slots, once-per-ID registration and first
+terminal-directory transfer plus independent second walk. Controlled path counts
+remain 7,862/128/1,873; the 149 outside paths are individually retained.
+
+Numeric source/root and whole-job gross/attempt/storage/wire sums remain null.
+K225 must close capacities/headers/alignment/growth and record-field/bridge/COW
+writes; conversion bounds; walker/file/EOF/selector scratch and lifetimes;
+seed/source/domain/error/owner-transfer local terms; final/publication and complete
+response selection. The toy payload trace is conservative independent-copy
+construction, not actual Swift layout/COW sharing, native tuples or expanded
+visit capture. Preference and type-tree dimensions remain assumptions, not quotas.
+Native pending observations are already chartered and should not repeatedly
+become new design leaves. k215's hold, selected gates, k225's full k220 close
+check and k221's whole review remain.

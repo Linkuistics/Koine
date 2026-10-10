@@ -8,7 +8,16 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate).
+Start with [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
+and [Root ownership → Transfer once and recheck independently](index.html#diagram-native-metadata-two-walks).
+The [source/root contract](../../verification/application-metadata-source-root-certificate.md)
+replaces fixed fees with explicit native/local/cleanup and symbolic payload receipts.
+The first root transfers a checked terminal directory; the second independently
+checks identity. Raw duplicate slots, one-job preferences and once-per-ID
+registration are retained. Capacities, actual native tuples and whole-job fit
+remain unresolved for k225; k215's hold, whole review and native G/N/V bind.
+
+Unchanged context: [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate).
 The [saved-episode assessment](../../verification/application-metadata-episode-certificate.md)
 derives every alias episode, exact dimensions and conditional explicit reader
 calls. Complete source/root/owned-storage/scalar/wire terms remain unestablished;
@@ -45,9 +54,9 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate) — Added exact-dimension derivation and the unresolved source/ownership/wire dependencies.
-- [Episode assessment → Conditional explicit reader calls](../../verification/application-metadata-episode-certificate.md#conditional-explicit-reader-calls) — Derived per-episode stage multiplicities and branch uppers without claiming total attempt fit.
-- [Episode assessment → Owned storage, gross and representations](../../verification/application-metadata-episode-certificate.md#owned-storage-gross-and-representations) — Identified missing allocation/projection receipts and a scratch partition that still needs a walker proof.
+- [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root) — Added explicit snapshots, registration, raw-slot projection and unresolved capacity receipts.
+- [Root ownership → Transfer once and recheck independently](index.html#diagram-native-metadata-two-walks) — Added terminal descriptor transfer, ordinary/indexed admission and the second identity check.
+- [Source/root contract → Handoff and failed construction](../../verification/application-metadata-source-root-certificate.md#handoff-and-failed-construction) — Named representation/scratch/wire design gaps separately from already pending native evidence.
 
 ## Other architecture topics
 
@@ -70,6 +79,8 @@ design:application-metadata-operation-ledger-render regenerates the cleanup-firs
 accounting view with Dagre.
 design:application-metadata-episode-certificate-render regenerates the exact
 dimension/full-certificate dependency view with Dagre.
+design:application-metadata-source-root-render regenerates the source receipts
+and independent root ownership views with Dagre.
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -111,3 +122,9 @@ the compact per-episode assessment. Its -check task compares every item, exercis
 hand-derived arithmetic and all file branches, rejects nine isolated omission
 mutations and checks strict types. It keeps full-certificate terms unknown; the
 original subject/ledger/reader/localized controls and native holds still bind.
+
+Run design:application-metadata-source-root-certificate after edits settle, then
+design:application-metadata-source-root-check for item-by-item reproduction,
+source/root/constructor/cancellation prefixes, isolated omission controls and
+strict types. Unknown capacities keep gross null; toy traces are no native
+observation, aggregate fit or process peak. The existing selected budgets bind.

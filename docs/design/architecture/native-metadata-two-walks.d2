@@ -1,0 +1,24 @@
+# Activity view with explicit descriptor ownership; omitted reader uses its ledger.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+*.style.font-size: 25
+Start: "Start here\nFirst byte/link/dot walk" {class: start}
+Transfer: "Open terminal directory\nfstat + named identity check\nTransfer one close credit"
+Length: "First finalized root\n≤1,023 UTF-8 bytes?" {shape: diamond}
+Ordinary: "Root isApplication observation\nTRUE admits fixed reader"
+Indexed: "Actual indexed tuple required\nNo root-resource / reader call"
+Retire: "Retire metadata owners\nClose held first root"
+Second: "Fresh second walk\nDirectory and equal device/inode?" {shape: diamond}
+Choice: "Keep first finalized spelling\nStage honest ordinary/indexed facts"
+Refuse: "Refuse replaced/failed copy\nCleanup remains reserved"
+Start -> Transfer: "1 · expanded visits and copies"
+Transfer -> Length: "2 · current / named / parent endings"
+Length -> Ordinary: "3a · short"
+Length -> Indexed: "3b · long"
+Ordinary -> Retire: "4 · TRUE or metadata refusal"
+Indexed -> Retire: "4 · source facts only"
+Retire -> Second: "5 · no third or registration re-walk"
+Second -> Choice: "6a · equal"
+Second -> Refuse: "6b · missing / failed / changed"

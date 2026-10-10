@@ -679,6 +679,26 @@ tasks:
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-episode-certificate.d2 docs/design/architecture/native-metadata-episode-certificate.svg
 
+  design:application-metadata-source-root-certificate:
+    desc: Derive symbolic source/root receipts and saved path counts; no native query or numeric fit
+    cmds:
+      - python3 scripts/application_metadata_source_root_certificate.py --write
+
+  design:application-metadata-source-root-check:
+    desc: Verify source/root branches, cleanup and omission controls; whole-job and native hold remains
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_source_root.py scripts/application_metadata_source_root_certificate.py scripts/test_application_metadata_source_root.py scripts/check_application_metadata_source_root_mutations.py
+      - python3 scripts/application_metadata_source_root_certificate.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_source_root.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_source_root_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_source_root.py scripts/application_metadata_source_root_certificate.py scripts/test_application_metadata_source_root.py scripts/check_application_metadata_source_root_mutations.py
+
+  design:application-metadata-source-root-render:
+    desc: Render the source/root receipt and independent two-walk ownership contract
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-source-root.d2 docs/design/architecture/native-metadata-source-root.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-two-walks.d2 docs/design/architecture/native-metadata-two-walks.svg
+
   design:localized-boundary-check:
     desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
     cmds:

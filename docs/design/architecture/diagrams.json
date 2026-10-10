@@ -2,19 +2,23 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Keep unknown source, owned and wire terms out of the certificate sum",
-    "status": "Saved dimensions and conditional reader calls checked; full certificate unestablished; k215 hold remains",
-    "summary": "All 2,043 episodes retain aliases, unselected keys and refusal observations. Reader-stage API uppers are derived, while source/root/owned-projection/response terms remain unresolved. Missing design work precedes k221; whole-k215 review and all native G/N/V remain pending.",
+    "title": "Account every source slot and transfer the first root without a third walk",
+    "status": "Pure operation grammar; numeric source/root and whole-job fit unestablished; k215 hold remains",
+    "summary": "Explicit one-job snapshots and once-per-ID registration produce call, cleanup and payload receipts. Expanded root visits are independent of lexical counts. Unknown capacities/native tuples stay symbolic for k225; whole-k215 review and native G/N/V remain pending.",
     "diagramIds": [
-      "native-metadata-episode-certificate",
+      "native-metadata-source-root",
+      "native-metadata-two-walks",
       "native-metadata-operation-ledger",
-      "native-metadata-reader-plan",
-      "native-metadata-subject"
+      "native-metadata-episode-certificate"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-episode-certificate",
-        "summary": "Added the exact-dimension derivation, partial API-call boundary and explicit missing source/ownership/wire dependencies."
+        "id": "native-metadata-source-root",
+        "summary": "Added explicit snapshots, raw-slot projection, once-per-ID registration and symbolic payload accounting."
+      },
+      {
+        "id": "native-metadata-two-walks",
+        "summary": "Added first-root descriptor transfer, the 1,023-byte resource boundary and independent second identity check."
       }
     ]
   },
@@ -71,6 +75,24 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "native-metadata-two-walks",
+      "group": "native-contract",
+      "title": "Root ownership \u2192 Transfer once and recheck independently",
+      "renderer": "svg",
+      "source": "native-metadata-two-walks.d2",
+      "rendered": "native-metadata-two-walks.svg",
+      "caption": "Activity view: metadata is omitted here and uses the existing reader ledger. Current/parent terminal endings share the first-root transfer contract. Failed transfer performs no metadata; ordinary refusal still reaches the second identity check."
+    },
+    {
+      "id": "native-metadata-source-root",
+      "group": "native-contract",
+      "title": "Source accounting \u2192 Preserve raw-slot and payload receipts",
+      "renderer": "svg",
+      "source": "native-metadata-source-root.d2",
+      "rendered": "native-metadata-source-root.svg",
+      "caption": "Pure source/root grammar, not a native capture or numeric whole-job certificate. Model examples use explicitly declared toy payloads; allocation capacities remain unresolved."
+    },
     {
       "id": "native-metadata-operation-ledger",
       "group": "native-sources",

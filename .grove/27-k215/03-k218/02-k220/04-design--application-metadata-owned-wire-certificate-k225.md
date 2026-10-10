@@ -60,3 +60,21 @@ implementation leaves. The old proposal is not a certificate. Preserve actual
 native preconditions and development-host/supported-VM distinctions. Deliver
 receipts/bounds or a precise failed-closure finding; restating an already pending
 native capture is not a new design increment.
+
+## Source/root receipt input
+
+Read k224's docs/specs/application-metadata-source-root.md and
+docs/verification/application-metadata-source-root-certificate.md with its
+docs/design/application-metadata-source-root-certificate.json. Run the
+design:application-metadata-source-root-check Taskfile task after edits settle.
+The executable contract emits named source/root branches and conservative
+payload writes, with unknown allocation/record-field terms kept null. It proves
+attempt/cleanup admission only, not pre-call numeric byte admission or native peak.
+Instantiate capacities and actual bridge/COW/record/error/owner-transfer operations
+before summing; partition conservative retained-local lifetimes rather than
+assuming the old 1 MiB scratch covers them. Root semantics include the original
+expanded byte/link/dot visits and the added first-terminal open/fstat/named check/
+transfer; no third or per-copy registration walk. Actual native tuples/events/
+preferences/expanded visits/resource outcomes remain pending, while known design
+representation/composition gaps remain your work. Retain the exact 149 outside
+paths and the system reserves; none is a source/category exclusion.
