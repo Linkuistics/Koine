@@ -8,7 +8,14 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+Start with [Owned composition → Require runtime bounds before acquisition](index.html#diagram-native-metadata-composition).
+The [composition result](../../verification/application-metadata-composition.md)
+joins every saved episode, removes duplicate read attempts and exposes the
+missing pre-call runtime capacity/publication contract. Packed requested capacities
+do not bind the current Swift collections. Unknown operands preserve a failed
+construction and the family hold; no useful-fit or native verdict follows.
+
+Unchanged context: [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
 The [selected-wire derivation](../../verification/application-metadata-wire.md)
 counts complete finite application selections, merged response keys, distinct
 aliases, JSON escaping and error envelopes. Its content-independent conditional
@@ -154,3 +161,9 @@ Run design:application-metadata-owned-storage after edits settle, then its -chec
 task for item-by-item saved local subterms, immutable overlap/growth/cleanup
 controls, isolated omission mutations and strict types. This explicit packed
 capacity contract is no actual Swift/CF layout or source/root/final/wire fit.
+
+Run design:application-metadata-composition-render for the new editable D2/SVG
+view (D2 0.9.0, Dagre). Run design:application-metadata-composition and its -check
+task to reproduce full per-item associations and the explicit failed admission
+result, including disposable overlap/unknown/capacity/alias/outside mutations.
+These checks invoke no Koine/native reader and keep all G/N/V pending.

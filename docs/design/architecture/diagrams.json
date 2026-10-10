@@ -2,18 +2,19 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Count the full selected response independently",
-    "status": "Selected-wire design; full owned composition and native verdicts pending",
-    "summary": "Equal response keys merge; distinct aliases repeat encoded values. Complete finite selections include diagnostics and errors. Conditional uppers establish no useful fit and the post-encoding guard proves no peak.",
+    "title": "Require runtime bounds before owned acquisition",
+    "status": "Failed construction; runtime capacity/publication design and native verdicts pending",
+    "summary": "Known reader/local terms compose after removing shared read attempts once. Packed capacities do not bind Swift collection/publication operations; unknown operands prevent pre-call admission and useful fit. Complete wire remains independent.",
     "diagramIds": [
+      "native-metadata-composition",
       "native-metadata-wire",
       "native-metadata-owned-storage",
       "native-metadata-source-root"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-wire",
-        "summary": "Added full selection expansion, explicit JSON/error accounting and the existing whole-body cap replacement boundary."
+        "id": "native-metadata-composition",
+        "summary": "Added disjoint per-episode composition and the concrete runtime capacity/publication admission failure; kept the independent wire and family hold."
       }
     ]
   },
@@ -70,6 +71,15 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "native-metadata-composition",
+      "group": "native-contract",
+      "title": "Owned composition → Require runtime bounds before acquisition",
+      "renderer": "svg",
+      "source": "native-metadata-composition.d2",
+      "rendered": "native-metadata-composition.svg",
+      "caption": "Accounting/admission flow, not a native capture. Known reader/local terms exclude duplicate read attempts but preserve every performed gross write. Current Swift source/root/publication capacities remain unbound, so no full fit is established. The possible completion path needs a numeric runtime contract; the post-encoding body guard does not supply it. Whole-family hold and native G/N/V remain pending."
+    },
     {
       "id": "native-metadata-two-walks",
       "group": "native-contract",

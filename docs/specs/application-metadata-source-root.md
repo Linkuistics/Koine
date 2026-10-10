@@ -69,6 +69,26 @@ metadata refusal follows the selected reader policy without a convenient fallbac
 
 ## Test seams and construction limit
 
+### Require runtime bounds at composition
+
+Each source/root/reader/publication transition must bind actual owned backing
+capacity, every initialized/copied byte upper, operations, retained owners and
+possible cleanup before invocation. The
+[owned composition](../verification/application-metadata-composition.md) joins
+all saved rows and removes only duplicate input-read attempts. Unknown capacity
+cannot fund admission; packed record widths cannot substitute for Swift collection,
+String, ARC/COW or final ProviderValue construction. A refused bound starts no
+optional work. Cleanup and true-return ownership continue under their reserved
+credits, without refunding actual charges.
+
+The current construction fails at this runtime binding, independently of pending
+native dimensions. The complete selected wire remains the independent response
+contract; a finished-body size check cannot rescue unbounded earlier publication
+work. Application-job and host materialization/encoding receipts remain separately
+explicit. No ABI, accounting boundary, gate, selection or useful category changes
+follow. A complete runtime representation/publication contract is required before
+the family consumption hold can be removed.
+
 The [owned-storage subcertificate](../verification/application-metadata-owned-storage.md)
 specifies requested raw-buffer capacity separately from performed initialization,
 input, projection and growth writes. Two immutable inputs and bounded conversion
