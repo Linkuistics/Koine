@@ -84,6 +84,13 @@ replacement, long-root refusal and every cancellation prefix. They establish
 neither actual source payloads nor native usefulness, serviceability or peak memory.
 
 The owned representation/scratch/final-response construction remains incomplete.
+The [selected-wire contract](../verification/application-metadata-wire.md) derives
+complete finite full-field selections, response-key merging, independent root
+aliases, JSON escapes and failure/error envelopes. Unknown final values keep
+actual wire unknown. The core checks the complete encoded body against its
+independent response cap; replacement with null data establishes no pre-encoding
+owned allocation or peak bound. Final scalar/bridge/publication receipts remain
+part of the owned composition, separately from wire bytes.
 The [certificate handoff](../verification/application-metadata-source-root-certificate.md#handoff-and-failed-construction)
 names its unresolved design terms separately from already pending native evidence.
 The application 20 MiB cumulative gross, 4,194,304 attempts, independent core

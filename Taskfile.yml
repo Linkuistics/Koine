@@ -718,6 +718,26 @@ tasks:
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-owned-storage.d2 docs/design/architecture/native-metadata-owned-storage.svg
 
+  design:application-metadata-wire:
+    desc: Derive conditional complete selected-wire terms for both saved runs; actual/native fit remains unknown
+    cmds:
+      - node scripts/application_metadata_wire.mjs --write
+
+  design:application-metadata-wire-check:
+    desc: Check full fields, aliases, JSON escapes, failure/cap behavior and frozen per-item wire controls
+    cmds:
+      - node --check scripts/application_metadata_wire.mjs
+      - node --check scripts/test_application_metadata_wire.mjs
+      - node --check scripts/check_application_metadata_wire_mutations.mjs
+      - node scripts/application_metadata_wire.mjs --check
+      - node --test scripts/test_application_metadata_wire.mjs
+      - node scripts/check_application_metadata_wire_mutations.mjs
+
+  design:application-metadata-wire-render:
+    desc: Render the independent selected-wire and post-encoding guard boundary
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-wire.d2 docs/design/architecture/native-metadata-wire.svg
+
   design:localized-boundary-check:
     desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
     cmds:

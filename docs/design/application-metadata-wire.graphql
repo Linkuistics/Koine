@@ -1,0 +1,73 @@
+# Pure selected-wire design subject; not served/native-qualified output.
+query CompleteApplicationWire($includeSecond: Boolean! = true) {
+  alpha: workspaceApplications {
+    ...ApplicationResultWire
+    ...ApplicationResultWire
+    first: items { ...ApplicationChoiceWire }
+  }
+  beta: workspaceApplications @include(if: $includeSecond) {
+    ...ApplicationResultWire
+  }
+}
+query SingleApplicationWire {
+  apps: workspaceApplications {
+    __typename
+    status
+    items { ...ApplicationChoiceWire }
+    sources { ...ApplicationCoverageWire }
+    resultsTruncated
+  }
+}
+query ApplicationSourcesWire {
+  apps: workspaceApplications {
+    status
+    sources { ...ApplicationCoverageWire }
+    resultsTruncated
+  }
+}
+fragment ApplicationResultWire on WorkspaceApplicationsResult {
+  __typename
+  status
+  first: items { ...ApplicationChoiceWire }
+  second: items { ...ApplicationChoiceWire }
+  sources { ...ApplicationCoverageWire }
+  resultsTruncated
+}
+fragment ApplicationChoiceWire on WorkspaceApplicationChoice {
+  __typename
+  applicationPath
+  name
+  label: name
+  bundleIdentifier
+  metadataSource
+  installationState
+  uiElement
+  backgroundOnly
+  runningActivationPolicies
+  sources
+}
+fragment ApplicationCoverageWire on WorkspaceDiscoveryCoverage {
+  __typename
+  source
+  declaredDomain
+  availability
+  observations
+  category
+  examined
+  diagnostics { ...ApplicationDiagnosticWire }
+}
+fragment ApplicationDiagnosticWire on WorkspaceDiscoveryDiagnostic {
+  __typename
+  source
+  reason
+  subject
+  affectsCoverage
+  guidance
+  permission {
+    __typename
+    permission
+    target
+    event
+    consent
+  }
+}

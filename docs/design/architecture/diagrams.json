@@ -2,19 +2,18 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Charge explicit owned capacity and every repeated write",
-    "status": "Local subcertificate checked; full source/root/bridge/wire composition live under k225",
-    "summary": "Packed requested capacities and immutable-input lifetimes are explicit. Every saved episode retains raw entries, direct/table keys and aliases. Known local subterms do not establish whole-job fit; native G/N/V and k215 hold remain.",
+    "title": "Count the full selected response independently",
+    "status": "Selected-wire design; full owned composition and native verdicts pending",
+    "summary": "Equal response keys merge; distinct aliases repeat encoded values. Complete finite selections include diagnostics and errors. Conditional uppers establish no useful fit and the post-encoding guard proves no peak.",
     "diagramIds": [
+      "native-metadata-wire",
       "native-metadata-owned-storage",
-      "native-metadata-source-root",
-      "native-metadata-two-walks",
-      "native-metadata-episode-certificate"
+      "native-metadata-source-root"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-owned-storage",
-        "summary": "Added separate allocation/write receipts, immutable overlap, no-refund retirement and the live composition boundary."
+        "id": "native-metadata-wire",
+        "summary": "Added full selection expansion, explicit JSON/error accounting and the existing whole-body cap replacement boundary."
       }
     ]
   },
@@ -439,6 +438,15 @@
       "source": "native-metadata-owned-storage.d2",
       "rendered": "native-metadata-owned-storage.svg",
       "caption": "Known local subterms cover two saved runs, not whole-job gross/attempt/response or opaque native peaks. K227 composes remaining source/root/bridge/final/wire terms; all selected gates and native holds bind."
+    },
+    {
+      "id": "native-metadata-wire",
+      "group": "native-contract",
+      "title": "Selected wire \u2192 Expand selection before counting bytes",
+      "renderer": "svg",
+      "source": "native-metadata-wire.d2",
+      "rendered": "native-metadata-wire.svg",
+      "caption": "Activity/accounting view of a pure finite GraphQL design subject. Actual final scalars and errors remain unknown; conditional byte uppers are no useful fit. Core replacement occurs only after complete encoding, with no trimming or owned/native peak guarantee. Full owned composition, k215 hold, mandatory whole review and all native G/N/V remain."
     }
   ]
 }

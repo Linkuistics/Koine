@@ -1,4 +1,4 @@
-# application-metadata-owned-wire-composition-k227
+# application-metadata-owned-wire-composition-k227 — brief
 
 ## Goal
 
@@ -58,12 +58,51 @@ A precise new *design* gap may become live work; no guessed certificate or V
 deferral of known representation/composition defects.
 
 
-## Goal
+## Decisions (running log)
 
+- Bootstrap adopted the mandated design leaf on empty jj change 3818980a,
+  parent f95b9dd8. Tier 2 graph project
+  Users-antony-Development-Koine.add-plugins-for-modaliser-requirements is ready
+  at generation 2026-09-29T10:36:20Z (fast). Docs/scripts are excluded and
+  Engine/Taskfile/glossary metadata is changed. Engine snippets returned stale
+  line contents; exact source reads, including missed line 295, supply the
+  response-encoding evidence. No exhaustive or native claim follows.
+- Split at the independent selected-wire boundary. A finite full-field GraphQL
+  response model can be checked without resolving native source dimensions or
+  choosing Swift/CF ownership representations. Complete that first design child
+  here; the second closes actual owned-source/root/reader/output composition and
+  performs all original k227/k225/k220 close checks. Preserve the entire original
+  Done when, k215 hold, native G/N/V, selected budgets and mandatory whole review.
+  No implementation, fragment review, new native-capture leaf or human choice.
 
+## Decomposition
 
-## Context
+1. Application metadata selected wire specifies a complete finite public
+   selection, independently derives JSON/alias/fragment/error byte terms and
+   conditional final scalar bounds for every saved episode, and exercises
+   over-cap failure. It proves no whole-job owned or native fit.
+2. Application metadata owned composition consumes that contract and k226/k224/
+   k223, binds every actual owned source/root/reader/final publication receipt,
+   composes all full job terms and evaluates every original parent close
+   condition. Unavailable native observations remain conditional inputs; known
+   representation defects remain design work before k221.
 
-## Done when
+## Selected-wire handoff
 
-## Notes
+K228 supplies docs/verification/application-metadata-wire.md, complete finite
+docs/design/application-metadata-wire.graphql and the per-item wire JSON/pure
+counter/Taskfile controls. Both runs preserve all 2,043 associations and all 149
+outside records. Exact default JSON counting includes slash escapes, response-key
+merging, independent roots, nested aliases, coverage/diagnostic/permission/error
+fields and Swift's always-encoded error path. The post-encoding cap replacement
+is 174 bytes in the read source shape, not a pre-encoding peak certificate.
+
+Content-independent conditional successful-data uppers cannot prove useful
+8 MiB fit; actual final scalars, source/domain/permission fields, outside outcomes
+and emitted errors remain unknown. The completion example's domain/permission
+dimensions are explicit assumptions, not new product quotas. No budget/selection
+reduction/native pass follows. K229 must bind actual final ordinary/indexed values
+and errors plus every allocation/bridge/COW/owner/encoder operation and compose
+full receipt totals. K227/k225/k220 have live work and are not closed; their full
+original Done when checks remain K229's responsibility. K215 hold/k221 whole
+reconciliation/mandatory whole-producer review remain.

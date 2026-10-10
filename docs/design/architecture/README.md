@@ -8,7 +8,15 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage).
+Start with [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+The [selected-wire derivation](../../verification/application-metadata-wire.md)
+counts complete finite application selections, merged response keys, distinct
+aliases, JSON escaping and error envelopes. Its content-independent conditional
+uppers establish no useful 8 MiB fit; actual final scalars/errors stay unknown.
+The whole encoded body is checked before publication and replaced above cap,
+with no trimming or owned/native peak proof. Full owned composition remains live.
+
+Unchanged context: [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage).
 The [owned-storage subcertificate](../../verification/application-metadata-owned-storage.md)
 separates requested aligned capacity, each actual input/projection/growth write and
 immutable owner overlap. It derives known local subterms for every saved episode
@@ -62,9 +70,9 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage) — Added allocation/write receipts, immutable overlap, no-refund cleanup and the live composition boundary.
-- [Owned storage → Capacity and event contract](../../verification/application-metadata-owned-storage.md#capacity-and-event-contract) — Specified aligned requested capacities and per-field/event charges separately from Swift/CF layout.
-- [Owned storage → Saved episode derivation and limits](../../verification/application-metadata-owned-storage.md#saved-episode-derivation-and-limits) — Added both per-episode local subterm derivations while retaining unknown whole-job totals.
+- [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire) — Added complete selection expansion, JSON/error accounting and the existing post-encoding cap boundary.
+- [Selected wire → Saved episode association and conditional bounds](../../verification/application-metadata-wire.md#saved-episode-association-and-conditional-bounds) — Derived each row in both runs, retaining outside records and unknown actual values.
+- [Selected wire → Core response guard and owned-output handoff](../../verification/application-metadata-wire.md#core-response-guard-and-owned-output-handoff) — Specified whole-body replacement, the Swift empty error path and outstanding real output receipts.
 
 ## Other architecture topics
 
@@ -79,8 +87,11 @@ no native verdict.
 
 ## Sources and exports
 
-D2 0.9.0 uses theme 0/dark-theme 200. Run design:native-discovery-render for
-metadata-subject/source/population/long/localized-decision/contract/lifecycle/readiness views with Dagre and the settings flow with ELK;
+D2 0.9.0 uses theme 0/dark-theme 200.
+design:application-metadata-wire-render regenerates the independent full-selection/
+response-guard view with Dagre. Run design:native-discovery-render for
+metadata-subject/source/population/long/localized-decision/contract/lifecycle/readiness
+views with Dagre and the settings flow with ELK;
 design:application-metadata-reader-plan-render regenerates the new semantic plan
 and evidence-boundary views with Dagre.
 design:application-metadata-operation-ledger-render regenerates the cleanup-first
