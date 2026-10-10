@@ -15,6 +15,11 @@ reconciliation; k215's consumption hold, mandatory whole-producer review and
 pending G1–G11/N1–N8/V1–V13 remain binding. No accepted budget, file family,
 authority, deadline or accounting rule changes here.
 
+The [saved-episode assessment](application-metadata-episode-certificate.md)
+now supplies all alias-preserving dimensions and conditional reader API-call
+uppers. Its source/root/owned-storage/scalar/wire terms remain unknown, with
+precise design work before k221; k220 and the family hold remain open.
+
 ## Reservation, charge and true return
 
 Before an invocation, admit one call, **all possible owned-output disposals**,

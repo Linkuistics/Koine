@@ -2,20 +2,19 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Reserve cleanup and count actual work before deriving the certificate",
-    "status": "Checked operation protocol; aggregate fit and whole-family reconciliation pending; k215 hold remains",
-    "summary": "The pure operation ledger reserves all possible output cleanup before acquisition, charges every performed read/copy/call and retires borrowed dependencies only on actual return. Complete totals across 2,043 episodes, source assumptions and independent wire remain the next design child. Whole-producer review and native G/N/V stay pending.",
+    "title": "Keep unknown source, owned and wire terms out of the certificate sum",
+    "status": "Saved dimensions and conditional reader calls checked; full certificate unestablished; k215 hold remains",
+    "summary": "All 2,043 episodes retain aliases, unselected keys and refusal observations. Reader-stage API uppers are derived, while source/root/owned-projection/response terms remain unresolved. Missing design work precedes k221; whole-k215 review and all native G/N/V remain pending.",
     "diagramIds": [
+      "native-metadata-episode-certificate",
       "native-metadata-operation-ledger",
       "native-metadata-reader-plan",
-      "native-metadata-subject",
-      "native-application-population",
-      "native-long-applications"
+      "native-metadata-subject"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-operation-ledger",
-        "summary": "Added cleanup-first admission, actual-return receipts, dependency disposal and the explicit remaining aggregate-certificate boundary."
+        "id": "native-metadata-episode-certificate",
+        "summary": "Added the exact-dimension derivation, partial API-call boundary and explicit missing source/ownership/wire dependencies."
       }
     ]
   },
@@ -80,6 +79,15 @@
       "source": "native-metadata-operation-ledger.d2",
       "rendered": "native-metadata-operation-ledger.svg",
       "caption": "Ownership/activity view of the selected reader operation grammar. Every invocation admits its potential disposals first; actual reads/copies and repeated raw slots charge before reuse or deduplication. Caller cancellation retains in-use resources and shared capacity until true return. Checked pure traces establish no aggregate fit, native peak or useful G/N/V outcome; saved-episode/source/wire derivation, whole-family reconciliation and k215 review remain pending."
+    },
+    {
+      "id": "native-metadata-episode-certificate",
+      "group": "native-sources",
+      "title": "Keep unknown terms out of the sum",
+      "renderer": "svg",
+      "source": "native-metadata-episode-certificate.d2",
+      "rendered": "native-metadata-episode-certificate.svg",
+      "caption": "Evidence dependency view. All distinct saved alias episodes count; measured dimensions and conditional reader API calls cannot replace missing source, expanded root-walk, owned storage/projection or selected wire terms. Unknown costs remain null. No useful fit or native peak/G/N/V pass follows; k215 hold and whole-producer review bind."
     },
     {
       "id": "native-metadata-reader-plan",

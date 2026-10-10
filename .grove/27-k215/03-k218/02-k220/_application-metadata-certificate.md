@@ -65,3 +65,21 @@ cuts mandatory whole-k215 review; do not certify the whole producer here.
    a conditional useful construction only when earned. It closes k220 without
    removing k215's family hold; k221 still owns whole-family reconciliation and
    the mandatory root review when k218/k215 actually close.
+
+## Saved-episode assessment and missing closure work
+
+K223's docs/verification/application-metadata-episode-certificate.md and per-row
+JSON derive all 2,043 episodes, alias-preserving dimensions and conditional
+reader API-call uppers (476,826/509,957). These exclude root/source/owned-local/
+final-conversion/publication work and establish no total attempt/gross/wire fit.
+The full sums remain null; k215's hold and pending G/N/V bind.
+
+The node-close check fails complete source/ownership/wire derivation, so
+application-metadata-source-root-certificate-k224 and
+application-metadata-owned-wire-certificate-k225 are live children here, before
+k221 in the ancestor walk. K224 closes source/preferences/root receipts and
+payload assumptions; k225 closes owned storage/scratch/scalars/vectors/final
+copy and response terms, then repeats this node's full Done when check. Neither
+may invent native tuples or regional dictionary/value observations. The 149
+outside paths are not exclusions. K220 stays open; no closure promotion or
+whole-producer review is due yet.

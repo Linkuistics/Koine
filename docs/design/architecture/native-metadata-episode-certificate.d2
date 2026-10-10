@@ -1,0 +1,17 @@
+# Evidence dependency view; known dimensions never stand in for missing costs.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+*.style.font-size: 26
+Start: "Start here\n2,043 saved episodes" {class: start}
+Dimensions: "Exact dimensions\nKeep 128 aliases"
+Calls: "Reader API uppers\nFull attempts unknown"
+Missing: "Source / walks / ownership\nWire terms unresolved"
+Hold: "Certificate unestablished\nk215 hold remains"
+Next: "Close missing design\nThen reconcile and review"
+Start -> Dimensions: "1 · derive and cross-check"
+Dimensions -> Calls: "2 · apply ledger branches"
+Calls -> Missing: "3 · audit remaining terms"
+Missing -> Hold: "4 · never add unknown as zero"
+Hold -> Next: "5 · before k221 / k7"

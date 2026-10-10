@@ -660,6 +660,25 @@ tasks:
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-operation-ledger.d2 docs/design/architecture/native-metadata-operation-ledger.svg
 
+  design:application-metadata-episode-certificate:
+    desc: Derive saved per-episode dimensions and conditional explicit calls; no target reads or full fit
+    cmds:
+      - python3 scripts/application_metadata_episode_certificate.py --write
+
+  design:application-metadata-episode-certificate-check:
+    desc: Reproduce every episode and reject charge/call/branch omissions; full source/storage/wire hold remains
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_episode_certificate.py scripts/test_application_metadata_episode_certificate.py scripts/check_application_metadata_episode_mutations.py
+      - python3 scripts/application_metadata_episode_certificate.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_episode_certificate.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_episode_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_episode_certificate.py scripts/test_application_metadata_episode_certificate.py scripts/check_application_metadata_episode_mutations.py
+
+  design:application-metadata-episode-certificate-render:
+    desc: Render exact saved dimensions and unresolved full-certificate dependencies
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-episode-certificate.d2 docs/design/architecture/native-metadata-episode-certificate.svg
+
   design:localized-boundary-check:
     desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
     cmds:

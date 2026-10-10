@@ -8,7 +8,14 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger).
+Start with [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate).
+The [saved-episode assessment](../../verification/application-metadata-episode-certificate.md)
+derives every alias episode, exact dimensions and conditional explicit reader
+calls. Complete source/root/owned-storage/scalar/wire terms remain unestablished;
+unknown costs stay null and missing design work precedes k221. No useful fit or
+native verdict follows. The k215 hold and whole-producer review remain binding.
+
+Unchanged context: [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger).
 The [operation ledger](../../verification/application-metadata-operation-ledger.md)
 defines cleanup-first admission, concrete file/parse/selector receipts, borrowing
 and true-return disposal. Its pure trace controls detect omitted charges and
@@ -38,9 +45,9 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger) — Added reservation, actual-return charging, dependency retirement and the remaining certificate boundary.
-- [Operation ledger → Fixed file and parse operations](../../verification/application-metadata-operation-ledger.md#fixed-file-and-parse-operations) — Enumerated successful/refused/failing syscall and parser-output branches, including both potential parser owners.
-- [Operation ledger → Saved dimensions and remaining certificate work](../../verification/application-metadata-operation-ledger.md#saved-dimensions-and-remaining-certificate-work) — Named source/wire gaps and kept rejected locale entries and regional values distinct from successful observations.
+- [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate) — Added exact-dimension derivation and the unresolved source/ownership/wire dependencies.
+- [Episode assessment → Conditional explicit reader calls](../../verification/application-metadata-episode-certificate.md#conditional-explicit-reader-calls) — Derived per-episode stage multiplicities and branch uppers without claiming total attempt fit.
+- [Episode assessment → Owned storage, gross and representations](../../verification/application-metadata-episode-certificate.md#owned-storage-gross-and-representations) — Identified missing allocation/projection receipts and a scratch partition that still needs a walker proof.
 
 ## Other architecture topics
 
@@ -61,6 +68,8 @@ design:application-metadata-reader-plan-render regenerates the new semantic plan
 and evidence-boundary views with Dagre.
 design:application-metadata-operation-ledger-render regenerates the cleanup-first
 accounting view with Dagre.
+design:application-metadata-episode-certificate-render regenerates the exact
+dimension/full-certificate dependency view with Dagre.
 design:search-render regenerates the ownership sketch plus eight comparison views
 with their recorded layouts. The other existing tasks are design:workspace-render,
 design:selection-render and design:workflow-render (PlantUML 1.2026.8 where used).
@@ -78,7 +87,7 @@ design:localized-boundary-check verifies the closed explicit reader call/file
 manifest, exact historical pathname counterexamples and 977/978 controls; it
 rejects whole-path/opaque fallback, guessed locale limits, NUL/multibyte errors
 and invented native passes. It implements no reader and supplies no native pass.
-Run design:serve PORT=8924 and open <http://127.0.0.1:8924/#discussion> or an exact
+Run design:serve PORT=8925 and open <http://127.0.0.1:8925/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.
 
 Run design:application-metadata-subject to recapture declared host fixed files and
@@ -96,3 +105,9 @@ cost certificate. No installed target is read by this task.
 Run design:application-metadata-operation-ledger-check for the pure ownership/
 accounting trace, every modeled file/parser exit and isolated assertion-failing
 mutations. This checks the protocol, not a native adapter or aggregate cost fit.
+
+Run design:application-metadata-episode-certificate after edits settle to write
+the compact per-episode assessment. Its -check task compares every item, exercises
+hand-derived arithmetic and all file branches, rejects nine isolated omission
+mutations and checks strict types. It keeps full-certificate terms unknown; the
+original subject/ledger/reader/localized controls and native holds still bind.
