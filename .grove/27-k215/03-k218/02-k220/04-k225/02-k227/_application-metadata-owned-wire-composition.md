@@ -105,9 +105,9 @@ reduction/native pass follows. K229's checked failed construction identifies the
 pre-call runtime capacity/publication gap and composes only known disjoint terms.
 K230 supplies the explicit staging/publication contract and establishes why
 portable ABI evidence cannot certify the full pre-call upper. Its concrete
-scoped-accounting proposal is unselected. K231 must obtain Antony's actual
-accounting/qualification choice before a design continuation. No repeated
-null/coefficient or native-capture leaf is due.
+scoped-accounting proposal was unselected at that boundary. K231 records Antony's
+actual scoped selection; k232 reconciles that boundary before claiming fit.
+No repeated null/coefficient or native-capture leaf is due.
 Actual final ordinary/indexed values and errors remain separately conditional
 native inputs. K227/k225/k220 have live work and are not closed; their full
 original Done when checks remain binding. K215 hold/k221 whole
@@ -116,7 +116,9 @@ reconciliation/mandatory whole-producer review remain.
 ## Post-k230 full close check
 
 After retiring k230, every original condition here, k225 and k220 was checked
-again below. The reproducible failed construction remains in
+again below. This table records that pre-selection boundary; the current
+accounting amendment and live continuation are recorded after it. The
+reproducible failed construction remains in
 docs/verification/application-metadata-composition.md and its per-row JSON.
 It preserves all 2,043 associations/run, all 149 outside records and system
 reserves. Known attempts remain 871,255/904,386 and gross remains
@@ -124,7 +126,7 @@ reserves. Known attempts remain 871,255/904,386 and gross remains
 operands remain unknown. Neither partial sums nor conditional wire uppers settle
 useful fit. The decision packet inventories all 65 inherited unbound labels.
 
-| Original condition | Result at this boundary |
+| Original condition | Result at the pre-selection k230 boundary |
 | --- | --- |
 | k227: all representations/field/owner/ARC/bridge/COW operations | Explicit raw source-level replacements and real ProviderValue adapter specified; strict compiled/runtime pre-call upper is unestablished. Portable ABI is insufficient |
 | k227: complete episode/job terms and preserved observations | Every inherited cell compared with parent; complete associations/outside/system inputs preserved. Full strict sums unestablished; native inputs separately conditional |
@@ -143,12 +145,34 @@ useful fit. The decision packet inventories all 65 inherited unbound labels.
 | k220: unchanged fit or precise failed result | Precise evidence conflict and concrete human choice supplied. No inevitable-overflow/impossible-exact-certificate claim, new budget/accounting/ABI/posture/useful loss adopted |
 | k220: frozen original-defect/call/charge/branch controls | Required controls passed; numeric ABI/minimum/post-call admission and missing owner/growth/initialization dispositions rejected. Every G/N/V pending |
 
-The failure now names a human decision: application-metadata-runtime-accounting-k231
-is live here. It selects/rejects the exact proposed exclusions or retains strict
-accounting with an attainable implementation-specific certification route; it
-does not repeat sizing or native capture. K230 is retired at its permitted
-precise-incompatibility boundary. This node, k225 and k220 retain that live
-descendant and stay open. Original Done when criteria bind unless Antony
-explicitly changes the accounting guarantee. k215's construction hold stays;
-k221 owns whole-family reconciliation and mandatory root whole-k215 review/Creator
-at actual closure.
+At the k230 boundary the failure named the human decision carried by
+application-metadata-runtime-accounting-k231. K230 is retired at its permitted
+precise-incompatibility boundary. K231 now records the actual scoped selection
+below; this node, k225 and k220 retain the live design descendant k232 and stay
+open. K215's construction hold stays; k221 owns whole-family reconciliation and
+mandatory root whole-k215 review/Creator at actual closure.
+
+## Selected accounting amendment and continuation
+
+Antony answered "scoped" in application-metadata-runtime-accounting-k231. The
+current decision is docs/adr/application-metadata-accounting-covers-explicit-work.md.
+The inherited complete numeric upper/accounting requirements now range over
+controlled raw requested allocations and performed raw writes, and explicit
+adapter/local/native attempts including explicit ownership/cleanup/comparisons.
+Compiler-generated ownership traffic and internal platform/Swift constructor,
+bridge/COW, metadata and allocator work are excluded. ProviderValue publication
+remains provider-owned with its backing excluded; no total heap/hidden-copy/
+runtime-attempt/RSS/peak guarantee or useful fit follows. Every other original
+Done when remains binding, including ownership/lifetime descriptions and cleanup.
+
+Application-metadata-scoped-accounting-k232 is the single authorized design
+continuation. It reconciles every remaining receipt and the pre-selection
+spec/packet/composition/view/control set, derives the full scoped expressions,
+and applies every original k227/k225/k220 criterion under exactly this amendment
+before k221. Frozen k230 pending-choice markers describe its unselected proposal;
+they do not override k231's actual answer. Existing gates/no-refund semantics,
+all 2,043 associations/run, 149 outside records/system reserves, useful breadth,
+agreed public/binary/isolated signed-VM seams, authority/action/Settings/disclosure/
+compatibility and pending native G/N/V remain. This live continuation prevents
+node closure or promotion; no Creator, fragment review, implementation, native
+experiment or early consumption-hold removal is earned.

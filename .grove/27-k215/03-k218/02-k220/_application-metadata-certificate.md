@@ -107,18 +107,21 @@ check and k221's whole review remain.
 ## Runtime admission handoff and close check
 
 After k230 retirement, k227 repeated every original condition here and k220's
-original conditions; its full current table records the result. The strict
+original conditions; its post-k230 table records that pre-selection result. The strict
 whole-job certificate remains unestablished. K230 supplies an explicit raw
 staging/real ProviderValue adapter contract and the precise incompatibility of
-portable ABI evidence with a complete runtime upper. Its scoped-accounting
-recommendation is a new, unselected guarantee, not a larger gate or proven fit.
-Application-metadata-runtime-accounting-k231 is live under k227 to obtain the
-actual human accounting/qualification choice before one concrete design
-continuation. No repeated sizing/null model or native-capture leaf is due.
+portable ABI evidence with a complete runtime upper. K231 records Antony's actual
+"scoped" selection in docs/adr/application-metadata-accounting-covers-explicit-work.md.
+Only the inherited numeric accounting/qualification scope changes; the gates,
+no-refund semantics, explicit ownership/cleanup and every other original Done
+when remain binding. Application-metadata-scoped-accounting-k232 is live under
+k227 to reconcile the chosen exclusions, every remaining receipt and all
+k227/k225/k220 criteria before k221. No fit, larger gate, repeated sizing/null
+model or native-capture leaf follows.
 
 All inherited per-item cells, 149 outside records/system reserves, selected gates
 and non-refund semantics remain. All required pure frozen controls passed;
 actual native inputs/final values/errors stay conditional and G/N/V pending.
-This node retains k231 as a live descendant and does not close. No promotion,
+This node retains k232 as a live descendant and does not close. No promotion,
 Creator write or fragment review is earned. k215's hold and k221's whole-family
 reconciliation/mandatory whole-k215 review at actual closure remain binding.

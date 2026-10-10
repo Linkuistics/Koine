@@ -67,3 +67,61 @@ The design continuation is created only after an actual human selection makes
 its contract concrete. Pure evidence checks use Taskfile; they invoke no source,
 reader/CF/target/launch/VM/signing/consent experiment. Existing finite native inputs
 and final values/errors remain conditional, not another capture leaf.
+
+## Decisions (running log)
+
+- Adopted the mandated live requirements leaf in the stated jj workspace, with
+  an empty working copy at cba89bf1 and parent 9ce9ea7e (k230). Read the glossary,
+  root-to-leaf briefs, cited ADRs, exact decision packet and composition report.
+  Tier 2 graph project
+  Users-antony-Development-Koine.add-plugins-for-modaliser-requirements is ready
+  at generation 2026-09-29T10:36:20Z (fast). Coverage excludes docs and reports
+  changed/untracked brief, Taskfile and ProviderContribution metadata; direct
+  reads supply those inputs. ProviderValue's indexed public enum still matches
+  its String/Array/Dictionary interface. No exhaustive or native claim follows.
+- There is one new human decision: select the scoped numeric accounting
+  boundary or retain strict accounting with concrete runtime qualification.
+  The full-grilling threshold is not met. Formats, file cap, 20 MiB amount,
+  no-refund semantics, per-copy oversize outcome and test seams are already
+  selected. Presented the precise scoped-accounting recommendation and its
+  provider-publication/ownership/attempt exclusions, weaker guarantee and strict
+  alternative. The actual answer is pending; no accounting change, fit,
+  continuation, implementation or native verdict is adopted from the prompt.
+- Antony's actual answer was "scoped" to the presented concrete recommendation.
+  This selects 20,971,520 cumulative gross bytes for application-controlled raw
+  requested allocations and every performed source-level raw initialization,
+  input read, copy and field/owner write, with no refund. The 4,194,304 attempt
+  gate covers explicit adapter/local/native operations, including explicit
+  cleanup, retains, releases and comparisons. Compiler-generated ownership
+  traffic and internal platform/Swift constructor, bridge/COW, metadata and
+  allocator work are excluded from these numeric guards. ProviderValue
+  publication remains provider-owned; its runtime backing is explicitly
+  excluded, never charged to the host or certified by the response-size guard.
+  This replaces the inherited strict all-owned pre-call accounting guarantee
+  with the scoped explicit-work guarantee. It establishes no total provider
+  heap, hidden-copy gross, runtime-attempt, RSS or peak bound and no useful fit.
+  One design continuation is authorized to reconcile this exact choice and the
+  remaining receipt contracts with all original k227/k225/k220 criteria before
+  k221. All previously agreed formats, file caps, useful breadth, oversize
+  behavior and public/binary/isolated signed-VM seams remain selected; three/
+  five-second deadlines, four true-return slots, independent 8 MiB response
+  cap, authority/action/Settings/disclosure/compatibility, all 149 outside
+  records/system reserves, pending native G/N/V and the k215 hold/whole-family
+  review obligations remain binding. No ABI, gate, support, posture or useful-
+  category change, implementation leaf or fragment review is authorized.
+- Recorded the durable boundary in
+  docs/adr/application-metadata-accounting-covers-explicit-work.md and created
+  application-metadata-scoped-accounting-k232 as the one authorized design
+  continuation under k227. Its contract covers all original k227/k225/k220
+  criteria under precisely the selected accounting amendment and retains k221's
+  whole-family duties. K230's frozen proposal and pending-choice controls are
+  inputs to reconcile, not the current human decision. K227/k225/k220 retain
+  the live design descendant, so no node closure, promotion or Creator is earned.
+- Verified the requirements boundary: the concrete scoped recommendation and
+  strict qualification alternative were presented, Antony's actual selection
+  and exact guarantee amendment are recorded, and only k232 is commissioned.
+  Taskfile documentation links passed. The frozen composition check reproduced
+  the earlier failed strict construction, passed 12 tests, rejected all nine
+  mutations and passed lint/strict types; it does not certify scoped fit or
+  native acceptance. Every non-accounting obligation and the k215 consumption
+  hold remain, with full receipt/family reconciliation assigned as above.

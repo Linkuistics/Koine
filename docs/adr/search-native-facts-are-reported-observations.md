@@ -66,6 +66,8 @@ registration scraping would not preserve required native launch semantics.
 Reconsider stronger fact claims only if a supported health-bearing native route
 exists or measured incorrect facts defeat useful discovery.
 
+Application metadata admission follows the
+[explicit-work accounting boundary](application-metadata-accounting-covers-explicit-work.md).
 This decision provides no opaque-allocation bound or runtime pass. Actual
 provider/host binaries and finite signed macOS 26+ subjects must qualify the
 selected sources, independent serviceability and dialog/hydration controls.
