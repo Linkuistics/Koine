@@ -10,6 +10,14 @@ qualify through the existing public GraphQL, actual provider/host binary and iso
 signed supported-macOS VM seams. The [workspace contract](../specs/workspace-search.md#private-application-qualification-order)
 defines this boundary.
 
+The [guarded construction](../specs/application-metadata-private-qualification.md)
+supplies the transition/failure/cleanup protocol and existing qualification order.
+Prerequisite designs and qualification planning may consume the reviewed design;
+production consumption requires useful native qualification. Requiring that
+qualification before constructing its own prerequisites would make the selected
+route circular. A complete design is only one eligibility term; whole-producer
+and applicable downstream review/integration/placement still precede private builds.
+
 The [grouped refinement](../verification/application-metadata-grouped-storage.md#failed-controlled-enclosure)
 improves known work but its partial conservative enclosure still exceeds the
 selected 20 MiB gate. It supplies neither useful fit nor proof that actual native

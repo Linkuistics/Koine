@@ -468,9 +468,17 @@ not an exhaustive supported-VM baseline or macOS 27 qualification.
 The [acceptance-order decision](../adr/application-metadata-qualification-precedes-analytic-fit.md)
 permits private guarded implementation solely for the already chartered
 N5/N8/V11/V13 application qualification before a complete analytic useful-fit
-certificate exists. The complete private qualification design remains unfinished;
-the ordering choice alone establishes neither implementation eligibility nor fit.
-Whole-producer review and any earned integration must precede those builds.
+certificate exists. The [complete guarded construction](application-metadata-private-qualification.md)
+now maps all nine tapes, pre-call work/failure/cleanup reservations, performed
+prefixes, real publication and true-return ownership to the selected recipes.
+Its design boundary is established for whole-producer review; private implementation
+eligibility remains false until that review, earned integration and applicable
+downstream source/image/normalization reviews and qualification planning finish.
+Prerequisite designs and existing k30 planning may use the reviewed design before
+useful qualification; ordinary downstream consumption remains held. The
+[existing sequence](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
+places private N5/N8/V11/V13 implementation/acceptance before ordinary k7 consumers,
+without a second capture programme or a dependency on their completed consumption.
 Private test builds exercise the existing public GraphQL, actual provider/host
 binary and isolated signed supported-macOS VM seams. They do not establish a
 production native-provider baseline or authorize downstream consumption.
@@ -1214,8 +1222,8 @@ partitions with independent linked-slab owners, while preserving the selected
 reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
-numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
 permits a private guarded implementation for existing N5/N8/V11/V13 qualification
 before analytic fit, after complete design, whole-producer review and earned
 integration. Advertisement/downstream consumption remain held until full useful

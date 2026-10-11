@@ -67,7 +67,7 @@ The selected k215 application reader is a discovery-only fixed-file/direct-local
 exception to the lookup-only resolver boundary. K235 selects guarded private
 qualification before analytic fit, after complete design and mandatory whole-producer
 review/integration. Advertisement/downstream consumption remain held until full
-useful native qualification. K236 owns the remaining design/sequence; K191 qualifies actual no-dialog/
+useful native qualification. K236 supplies the complete guarded design/sequence; K191 qualifies actual no-dialog/
 no-hydration, nofollow/dataless/file-format/localization behavior and remaining
 races; no general listing, helper, consent or signing change is authorized.
 
@@ -89,3 +89,11 @@ authority, action limits and retained action-only evidence remain independent.
 No design check qualifies macOS 27 or an actual native outcome. The session
 actually closing this review's producer alone writes Creator; this handoff closes
 no downstream node.
+
+Prerequisite design/review may use the whole reviewed k215 construction before
+useful qualification. The release hold applies to production advertisement
+and ordinary consumption, not the design needed to qualify them. Preserve
+the existing k191/k193 → reviewed k127 → reviewed k123 → whole-k19 k120
+→ existing k30 qualification placement sequence. Private implementation
+eligibility remains false until these prerequisites complete; k30 places
+existing N5/N8/V11/V13 acceptance ahead of held ordinary k7 consumers.

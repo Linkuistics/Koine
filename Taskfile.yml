@@ -762,14 +762,21 @@ tasks:
       - task design:application-metadata-operation-ledger-render
       - task design:application-metadata-source-root-render
       - task design:application-metadata-owned-storage-render
+      - task design:application-metadata-composition-render
+      - task design:application-metadata-grouped-render
+      - task design:application-metadata-qualification-render
       - task design:application-metadata-episode-certificate
       - task design:application-metadata-source-root-certificate
       - task design:application-metadata-owned-storage
       - task design:application-metadata-wire
       - task design:application-metadata-composition
-      - task design:application-metadata-composition-render
-      - task design:application-metadata-grouped-render
       - task design:application-metadata-grouped-storage
+
+  design:application-metadata-qualification-render:
+    desc: Render the private eligibility sequence and cleanup-reserved admission protocol
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-qualification.d2 docs/design/architecture/native-metadata-qualification.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-qualification-admission.d2 docs/design/architecture/native-metadata-qualification-admission.svg
 
   design:application-metadata-grouped-render:
     desc: Render grouped ownership and the precise failed controlled enclosure
@@ -796,6 +803,14 @@ tasks:
       - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py
       - uv run --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py
       - python3 scripts/check_application_metadata_reconciliation.py --suite
+
+  design:application-metadata-qualification-check:
+    desc: Exercise private admission, cleanup, eligibility and release holds without native credit
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py scripts/test_application_metadata_qualification.py scripts/check_application_metadata_qualification_mutations.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_qualification.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_qualification_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py scripts/test_application_metadata_qualification.py scripts/check_application_metadata_qualification_mutations.py
 
   design:application-metadata-wire-render:
     desc: Render the independent selected-wire and post-encoding guard boundary

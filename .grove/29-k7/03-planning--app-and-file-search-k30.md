@@ -2,8 +2,9 @@
 
 ## Goal
 
-Cut implementation of the reviewed special-location and named-native-catalogue
-design into independently useful slices through the agreed three seams.
+Place confined private application qualification first, then cut ordinary
+implementation of the reviewed special-location and named-native-catalogue design
+into independently useful slices through the agreed three seams.
 
 ## Context
 
@@ -39,6 +40,34 @@ This leaf plans implementation of the reconciled native scope. Record review
 judgment and keep private native controls inside the agreed product seams.
 
 ## Concrete implementation input after the required reviews
+
+### Private qualification first under existing duties
+
+Consume complete k215 only after root k234/earned integration and the applicable
+k191/k193, reviewed k127, reviewed k123 and whole-k19 k120/earned integration.
+Planning those prerequisites and the qualification does not require prior useful
+native qualification. Ordinary production advertisement/consumption does.
+Use docs/specs/application-metadata-private-qualification.md's exact eligibility,
+nine tapes, work/failure/cleanup reservations, true return and finite evidence.
+
+Place the minimum private build and actual acceptance slices for the already
+chartered N5/N8/V11/V13 before ordinary k7 consumer implementation. They own the
+guarded source/reader/grouped raw staging and real provider publication, actual
+provider/host images, necessary native disclosures/source AND image controls,
+contract-only GraphQL client and independent supported-VM subjects/observers.
+Keep existing versions/ABI/signing/posture and action-only profiles. Private test
+hosts may exercise the selected native contract for qualification; no production
+feature advertisement follows. Do not add a duplicate capture programme or require
+an already released k7 consumer as the test driver. Cut these implementation/
+acceptance leaves here when this planning task executes, not in k236's design.
+
+Actual complete baseline/P1024/L1500 inputs, all nine event tapes/failed prefixes,
+full selected responses and useful/serviceability/read-policy witnesses must pass
+every selected gate. G10/G11 and every other G/N/V duty remain assigned. Controlled
+holds/refusals can qualify only their own negative branch, never usefulness. A
+missing/refused/unknown required useful case keeps the holds and affected live
+acceptance work. Repair known design defects before another capture; an actual
+material useful gap goes once to existing k93. Native verdicts are pending.
 
 Use reviewed native SDL/spec, complete bundled/update/selection-refusal/disclosure-refusal
 profiles and G1–G11, N1–N8, V1–V13/serviceability subjects, including
@@ -125,9 +154,10 @@ lazy pre-check uncertainty cannot waive useful destination acceptance.
 
 ## Selected application reader and retained consumption hold
 
-Consume the whole application-localized-metadata-k215 family only after full
-useful native qualification, mandatory root whole-producer review and earned
-integration. The semantic construction is specified: four layouts; platform/plain
+Prerequisite design/review and existing k30 qualification planning may use the
+whole application-localized-metadata-k215 design after mandatory root whole-producer
+review and earned integration. Ordinary downstream consumption and production
+advertisement remain held until complete useful native qualification. The semantic construction is specified: four layouts; platform/plain
 information plus strings/loctable families; base-first name priority; independent
 literal direct/table inventories; LocProvenance reserved metadata; development-first
 selector input, every regional/duplicate return and exact observed backstops.
@@ -172,10 +202,19 @@ Grouped-storage k233 supplies the current failed refinement in
 `docs/verification/application-metadata-grouped-storage.md`: controlled grouped
 local/source/two-walk subterms still exceed 20 MiB before other terms. Keep the
 whole-k215 consumption hold. K235 selected guarded private qualification before
-analytic fit under Antony's explicit "you choose" delegation. K236 completes
-the private qualification design and sequencing; root whole-k215 review and any
+analytic fit under Antony's explicit "you choose" delegation. K236 supplies
+the complete guarded construction and existing qualification sequence; root whole-k215 review and any
 earned integration precede private implementation for existing N5/N8/V11/V13.
 Advertisement/consumption wait for complete useful native operands, actual full
 selected responses, required witnesses and independent serviceability. Required
 useful failure/refusal/unknown or missing subjects keep the holds and affected
 acceptance work live. No native pass, duplicate capture leaf or useful loss follows.
+
+The complete design is docs/specs/application-metadata-private-qualification.md.
+Its eligibility conjunction is currently false: design completion alone does
+not complete root k234/earned integration or applicable k191/k193, reviewed
+k127, reviewed k123, whole-k19 k120/earned integration and k30 placement.
+Reuse that chain. K30 places existing N5/N8/V11/V13 private implementation/
+acceptance before ordinary k7 consumer implementation; no completed consumer
+or prior analytic useful fit is its prerequisite. All G10/G11 and remaining
+G/N/V/source/image/disclosure/action/Settings/location/core duties stay live.

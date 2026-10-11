@@ -5,6 +5,7 @@
   "accountingDecision": "../adr/application-metadata-accounting-covers-explicit-work.md",
   "acceptanceDecision": "../adr/application-metadata-qualification-precedes-analytic-fit.md",
   "runtimeAdmission": "../specs/application-metadata-runtime-admission.md",
+  "privateQualification": "../specs/application-metadata-private-qualification.md",
   "composition": "application-metadata-composition.json",
   "wire": "application-metadata-wire.json",
   "reader": {
@@ -97,7 +98,8 @@
     "acceptanceOrder": "GUARDED_PRIVATE_QUALIFICATION_BEFORE_ANALYTIC_FIT",
     "analyticFitRequiredBeforePrivateImplementation": false,
     "privateImplementationScope": "EXISTING_N5_N8_V11_V13_QUALIFICATION",
-    "privateQualificationDesignEstablished": false,
+    "privateQualificationDesignEstablished": true,
+    "privateImplementationEligibleNow": false,
     "privateImplementationRequiresWholeReviewAndIntegration": true,
     "advertisementHold": true,
     "releaseRequiresFullUsefulQualification": true,
@@ -125,5 +127,50 @@
     ],
     "sourceLocaleOrUsefulCategoryLoss": false
   },
-  "groupedCandidate": "application-metadata-grouped-storage.json"
+  "groupedCandidate": "application-metadata-grouped-storage.json",
+  "privateGuard": {
+    "reserveFailureEnvelope": true,
+    "reserveRawCleanupWrites": true,
+    "guardBookkeepingCharged": true,
+    "unknownExplicitOperand": "REFUSE_BEFORE_OPTIONAL_INVOCATION",
+    "snapshotCountsBeforeDedup": true,
+    "pendingSlotEnds": "TRUE_RETURN_AFTER_BORROWERS_AND_CLEANUP",
+    "prerequisiteDesignRequiresUsefulQualification": false,
+    "planningOwner": "EXISTING_K30",
+    "ordinaryConsumptionBeforeQualification": false,
+    "prerequisites": [
+      "DESIGN",
+      "WHOLE_REVIEW_INTEGRATION",
+      "SOURCE_ACCESS_REVIEW",
+      "OWNERSHIP_IMAGE_REVIEW",
+      "NORMALIZATION_REVIEW",
+      "WHOLE_K19_REVIEW",
+      "K30_QUALIFICATION_PLACEMENT"
+    ],
+    "completedPrerequisites": ["DESIGN"],
+    "episodeTapes": [
+      "expanded_first_walk_and_transfer",
+      "root_resource_or_indexed_projection",
+      "reader_records_owners_and_selector_returns",
+      "expanded_second_walk",
+      "identity_merge_and_final_scalar_publication"
+    ],
+    "jobTapes": [
+      "preferences_source_snapshots_type_trees_and_raw_slots",
+      "once_per_identifier_registration_and_two_system_seeds",
+      "seed_ordered_domain_map_growth_comparisons_and_field_updates",
+      "outside_path_outcomes_diagnostics_coverage_permissions_and_errors"
+    ],
+    "releaseEvidence": [
+      "subjects",
+      "nine_tapes",
+      "full_response",
+      "useful_witnesses",
+      "serviceability",
+      "read_policy",
+      "authority_images_disclosures_compatibility",
+      "gates_deadlines_slots"
+    ],
+    "nativeEvidenceComplete": false
+  }
 }

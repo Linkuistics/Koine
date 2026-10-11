@@ -329,6 +329,15 @@ subjects and observer implementation, digest before/after and keep per-item reco
 
 ## Application population subjects
 
+The [private guarded qualification](../specs/application-metadata-private-qualification.md)
+composes the exact pre-call work/cleanup/failure-publication protocol and reuses
+N5/N8/V11/V13 through existing k30 placement ahead of held ordinary consumption.
+Complete design does not supply private eligibility: required whole-producer and
+downstream prerequisite reviews/integrations still precede builds. No native
+verdict changes here. Baseline/P1024/L1500 evidence must include actual complete
+event operands, all failed prefixes, real publication and full selected bodies;
+unknown/missing required useful subjects or observers remain live acceptance work.
+
 The [population certificate](../design/application-population.json) fixes the
 design inputs for G10/N5/V11. All these subjects are **pending native acceptance**.
 The cardinality envelope is not a cap on a product's promised useful category;
@@ -468,8 +477,8 @@ partitions with independent linked-slab owners, while preserving the selected
 reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
-numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
 permits a private guarded implementation for existing N5/N8/V11/V13 qualification
 before analytic fit, after complete design, whole-producer review and earned
 integration. Advertisement/downstream consumption remain held until full useful

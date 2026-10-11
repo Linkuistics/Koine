@@ -74,3 +74,11 @@ authority, action limits and retained action-only evidence remain independent.
 No design check qualifies macOS 27 or an actual native outcome. The session
 actually closing this review's producer alone writes Creator; this handoff closes
 no downstream node.
+
+Prerequisite design/review may use the whole reviewed k215 construction before
+useful qualification. The release hold applies to production advertisement
+and ordinary consumption, not the design needed to qualify them. Preserve
+the existing k191/k193 → reviewed k127 → reviewed k123 → whole-k19 k120
+→ existing k30 qualification placement sequence. Private implementation
+eligibility remains false until these prerequisites complete; k30 places
+existing N5/N8/V11/V13 acceptance ahead of held ordinary k7 consumers.

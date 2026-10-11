@@ -3,7 +3,7 @@
   "purpose": "Pure parametric source/root operation grammar; examples are toy observations",
   "inputHashes": {
     "docs/design/application-metadata-subject.json": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
-    "docs/design/application-metadata-episode-certificate.json": "5914c25068419d203591f2accbb2176ed7640e60441f927ae607661ef6961867",
+    "docs/design/application-metadata-episode-certificate.json": "78f5c3f6db6633be222aadcdd79b022c96429f5bde77d4b3be54303e40b1d2c5",
     "scripts/application_metadata_source_root.py": "10060b1a5a7c88158d900e8d5255cd4094062390036c6091c4c7b6f5085f85c9",
     "scripts/application_metadata_source_root_certificate.py": "5e9ddb1e133c7682683c8cc581b84d3d6c7ff24b9a3c5b937ee1076ac4742d5a",
     "scripts/test_application_metadata_source_root.py": "475b333596452a8599e3d6b1e9406ef7a53b1e4a7f4ddb20300e131fbcb01792",
@@ -12,7 +12,7 @@
     "scripts/application_metadata_operation_ledger.py": "369f2c29edc469d908175dba7748cfcb7df563b038ef7fb4285a8caf9bba8989",
     "scripts/application_metadata_reader_plan.py": "571e6100db3f16a9a67d462eadc02a2ff53ebae49fb6b93e2c77f3e1aa113f4a",
     "Providers/WorkspaceProvider/Logic/LocationWalk.swift": "70a99016f24ca5c33f9b8f241f4609515d6fe7754c1681aa87f390c721d9a633",
-    "Taskfile.yml": "253d0ddb32c528cc047cbad9772953ceea777421517f8ef291a8e70de3900344"
+    "Taskfile.yml": "93d2fcce35de6ea14164ea76f77189b8a549fac5d6e27aeb72c3b19f067f64fd"
   },
   "nativeVerdict": "PENDING",
   "usefulSubjectCertificateEstablished": false,

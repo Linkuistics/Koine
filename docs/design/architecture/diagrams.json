@@ -1,33 +1,39 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected application reader semantics include platform/plain information, strings/loctables, independent direct/table inventories, 128 KiB regular files and individual affected-fact refusal. Scoped explicit-work admission is 20 MiB without refund; runtime internals are excluded with no heap/RSS/peak bound. Guarded private qualification before analytic fit is selected after complete design and whole review. The grouped enclosure supplies no useful fit; advertisement and consumption wait for full useful native qualification. Every native G/N/V is pending. Eight raw-search views are comparison. Graphs begin at the dark Start here node; sequences read from their first message. Images are components in one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected application reader semantics include platform/plain information, strings/loctables, independent direct/table inventories, 128 KiB regular files and individual affected-fact refusal. Scoped explicit-work admission is 20 MiB without refund; runtime internals are excluded with no heap/RSS/peak bound. Guarded private qualification before analytic fit is selected under the complete guarded construction, after whole review and applicable prerequisite review/placement. Private eligibility remains false. The grouped enclosure supplies no useful fit; advertisement and consumption wait for full useful native qualification. Every native G/N/V is pending. Eight raw-search views are comparison. Graphs begin at the dark Start here node; sequences read from their first message. Images are components in one resident process.",
   "discussion": {
-    "title": "Guarded private qualification before analytic fit",
-    "status": "Selected ordering; complete private design and native qualification pending",
-    "summary": "The grouped conservative enclosure still fails and proves no inevitable native overflow. The selected route permits guarded private N5/N8/V11/V13 qualification before analytic fit, after complete design, whole-producer review and earned integration. All gates remain. Advertisement and downstream consumption wait for full useful native operands, actual complete selected responses, required witnesses and independent serviceability. Failed/refused/unknown or missing required useful cases keep those holds. K236 owns the remaining design; every native G/N/V stays pending.",
+    "title": "Complete guarded private qualification construction",
+    "status": "Design complete for whole review; private eligibility false; native pending",
+    "summary": "All five episode/four job tapes now compose pre-call work, raw cleanup, failure-envelope and terminal bookkeeping reservations with real provider publication and true-return ownership. Existing source/image/normalization reviews and k30 place N5/N8/V11/V13 before ordinary k7 consumption, avoiding a circular prerequisite or duplicate capture programme. Useful fit remains unestablished; every native G/N/V and both release holds remain pending.",
     "diagramIds": [
+      "native-metadata-qualification",
+      "native-metadata-qualification-admission",
       "native-metadata-grouped-storage",
-      "native-metadata-composition",
       "native-metadata-runtime-admission",
+      "native-metadata-composition",
       "native-metadata-reader-plan",
       "native-metadata-wire"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-metadata-grouped-storage",
-        "summary": "Preserved the failed enclosure and added the selected design → whole review → private guarded qualification → useful acceptance order."
+        "id": "native-metadata-qualification",
+        "summary": "Added existing prerequisite reviews and k30 qualification placement before held ordinary consumption; a design bit supplies only one eligibility term."
       },
       {
-        "id": "native-metadata-composition",
-        "summary": "Retained every conditional tape/full wire and clarified review before private implementation with consumption held."
+        "id": "native-metadata-qualification-admission",
+        "summary": "Added pre-call work/failure/cleanup reservations, actual-prefix settlement, sticky freeze and true-return slot lifetime."
+      },
+      {
+        "id": "native-metadata-grouped-storage",
+        "summary": "Replaced unfinished-design wording with the complete construction and still-pending eligibility."
       },
       {
         "id": "native-metadata-runtime-admission",
-        "summary": "Kept all selected gates and explicit-work accounting; showed guarded private qualification before analytic fit with advertisement/consumption held."
+        "summary": "Included failure-publication and guard bookkeeping reservations, preserving release holds."
       },
       {
-        "id": "native-application-population",
-        "summary": "Retained all population semantics and pending useful qualification; the ordering selection drops no source or locale."
+        "id": "native-metadata-composition",
+        "summary": "Included live/possible cleanup, failure-envelope and guard bookkeeping reservations while retaining all conditional native/full-wire terms."
       }
     ]
   },
@@ -39,27 +45,27 @@
     },
     {
       "id": "native-sources",
-      "title": "Native discovery sources · analysis and requirements",
+      "title": "Native discovery sources \u00b7 analysis and requirements",
       "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
-      "title": "Native discovery and client-owned search · requirements",
+      "title": "Native discovery and client-owned search \u00b7 requirements",
       "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open · served action-only contract",
+      "title": "Launch and open \u00b7 served action-only contract",
       "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection · designed, not yet served",
+      "title": "First-party selection \u00b7 designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension · designed, not yet served",
+      "title": "Workflow extension \u00b7 designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -87,16 +93,16 @@
     {
       "id": "native-metadata-composition",
       "group": "native-contract",
-      "title": "Owned composition → Preserve explicit work across every episode",
+      "title": "Owned composition \u2192 Preserve explicit work across every episode",
       "renderer": "svg",
       "source": "native-metadata-composition.d2",
       "rendered": "native-metadata-composition.svg",
-      "caption": "Original independent-block receipts remain comparison. All five episode/four job tapes, provider-owned publication and the full independent wire remain; native operands/final values are conditional. Guarded private qualification before analytic fit is selected after complete design/whole review. Advertisement and consumption remain held until full useful qualification."
+      "caption": "Original independent-block receipts remain comparison. All five episode/four job tapes, provider-owned publication and the full independent wire remain; native operands/final values are conditional. Guarded private qualification before analytic fit is selected after complete design/whole review. Advertisement and consumption remain held until full useful qualification. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
     },
     {
       "id": "native-metadata-two-walks",
       "group": "native-contract",
-      "title": "Root ownership → Transfer once and recheck independently",
+      "title": "Root ownership \u2192 Transfer once and recheck independently",
       "renderer": "svg",
       "source": "native-metadata-two-walks.d2",
       "rendered": "native-metadata-two-walks.svg",
@@ -105,7 +111,7 @@
     {
       "id": "native-metadata-source-root",
       "group": "native-contract",
-      "title": "Source accounting → Preserve raw-slot and payload receipts",
+      "title": "Source accounting \u2192 Preserve raw-slot and payload receipts",
       "renderer": "svg",
       "source": "native-metadata-source-root.d2",
       "rendered": "native-metadata-source-root.svg",
@@ -154,7 +160,7 @@
       "renderer": "svg",
       "source": "native-localized-decision.d2",
       "rendered": "native-localized-decision.svg",
-      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004\u20261,023 state stays UNKNOWN. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
     },
     {
       "id": "native-long-applications",
@@ -163,7 +169,7 @@
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004\u20261,023 metadata does not qualify action plist support. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
     },
     {
       "id": "native-discovery-contract",
@@ -177,7 +183,7 @@
     {
       "id": "native-settings-flow",
       "group": "native-contract",
-      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
+      "title": "Choose read, prepare or reveal; consent stays in Koine\u2019s UI",
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
@@ -231,7 +237,7 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal · Decide child use and protected-target access",
+      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -240,7 +246,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal · Verify finite outcomes with independent controls",
+      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -249,7 +255,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal · Own pipes and reap before releasing capacity",
+      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -258,7 +264,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal · Keep native facts separate from source inventory",
+      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -267,7 +273,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal · Preserve file bytes and checked application targets",
+      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -276,7 +282,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -285,7 +291,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal · Report source completeness without invented counts",
+      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -294,7 +300,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal · Choose a location and use existing actions",
+      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -316,7 +322,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",
@@ -456,7 +462,7 @@
     {
       "id": "native-metadata-owned-storage",
       "group": "native-contract",
-      "title": "Owned storage → Separate capacity, writes and overlap",
+      "title": "Owned storage \u2192 Separate capacity, writes and overlap",
       "renderer": "svg",
       "source": "native-metadata-owned-storage.d2",
       "rendered": "native-metadata-owned-storage.svg",
@@ -465,7 +471,7 @@
     {
       "id": "native-metadata-wire",
       "group": "native-contract",
-      "title": "Selected wire → Expand selection before counting bytes",
+      "title": "Selected wire \u2192 Expand selection before counting bytes",
       "renderer": "svg",
       "source": "native-metadata-wire.d2",
       "rendered": "native-metadata-wire.svg",
@@ -474,20 +480,40 @@
     {
       "id": "native-metadata-runtime-admission",
       "group": "native-contract",
-      "title": "Runtime admission → Account explicit work through real publication",
+      "title": "Runtime admission \u2192 Account explicit work through real publication",
       "renderer": "svg",
       "source": "native-metadata-runtime-admission.d2",
       "rendered": "native-metadata-runtime-admission.svg",
-      "caption": "Selected scoped accounting retains provider-owned real publication and charged explicit work; runtime backing/compiler traffic remain excluded with no heap/RSS/peak guarantee. Guarded private qualification before analytic fit is selected after complete design/whole review, with every gate unchanged and advertisement/consumption held. Native operands and final response remain pending."
+      "caption": "Selected scoped accounting retains provider-owned real publication and charged explicit work; runtime backing/compiler traffic remain excluded with no heap/RSS/peak guarantee. Guarded private qualification before analytic fit is selected after complete design/whole review, with every gate unchanged and advertisement/consumption held. Native operands and final response remain pending. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
     },
     {
       "id": "native-metadata-grouped-storage",
       "group": "native-contract",
-      "title": "Grouped ownership → Preserve literal keys through slab growth",
+      "title": "Grouped ownership \u2192 Preserve literal keys through slab growth",
       "renderer": "svg",
       "source": "native-metadata-grouped-storage.d2",
       "rendered": "native-metadata-grouped-storage.svg",
-      "caption": "The grouped controlled enclosure exceeds 20 MiB before other terms, without proving actual native overflow. Selected guarded private qualification follows complete design and whole review before implementation. Full useful native operands, actual complete responses, required witnesses and independent serviceability must pass before advertisement/consumption. All observations/gates remain; native work stays pending."
+      "caption": "The grouped controlled enclosure exceeds 20 MiB before other terms, without proving actual native overflow. Selected guarded private qualification follows complete design and whole review before implementation. Full useful native operands, actual complete responses, required witnesses and independent serviceability must pass before advertisement/consumption. All observations/gates remain; native work stays pending. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
+    },
+    {
+      "id": "native-metadata-qualification",
+      "group": "native-contract",
+      "topic": "Private qualification",
+      "title": "Review, qualify, then release",
+      "renderer": "svg",
+      "source": "native-metadata-qualification.d2",
+      "rendered": "native-metadata-qualification.svg",
+      "caption": "Complete private design is one eligibility term. Root whole review/earned integration, source/access, ownership/images, normalization, whole-k19 review and existing k30 placement precede confined N5/N8/V11/V13. Production advertisement/ordinary consumption require full useful evidence and every independent obligation. No native verdict follows this flow."
+    },
+    {
+      "id": "native-metadata-qualification-admission",
+      "group": "native-contract",
+      "topic": "Private qualification",
+      "title": "Reserve each transition through true return",
+      "renderer": "svg",
+      "source": "native-metadata-qualification-admission.d2",
+      "rendered": "native-metadata-qualification-admission.svg",
+      "caption": "Each transition includes controlled requests, every performed write/explicit operation and guard bookkeeping. Live/possible raw cleanup and full failure-publication credits cannot fund useful work. Unknown explicit operands refuse before invocation; cancellation retains inflight backing and slot until actual return. The host response cap is separate."
     }
   ]
 }

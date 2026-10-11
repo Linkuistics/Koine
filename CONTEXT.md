@@ -247,6 +247,17 @@ witnesses and independent serviceability qualify; required failed/refused/unknow
 or missing subjects keep the affected work live. A checked
 pathname/file plan alone is no useful-reader closure.
 
+**Private application qualification**: The
+[guarded construction](docs/specs/application-metadata-private-qualification.md)
+composes source/reader/real-publication work with pre-call work, failure-envelope
+and raw-cleanup reservations and true-return ownership. The design is complete
+for whole review; implementation eligibility also requires whole-producer and
+applicable downstream reviews/integrations and existing qualification placement.
+Prerequisite design and qualification planning may use the reviewed design before
+useful qualification; production advertisement and ordinary consumption remain
+held until that qualification and independent obligations pass. A design bit or
+pure control is no native evidence.
+
 **Application explicit-work admission**: The application job's cumulative
 20 MiB controlled raw requested/write gross and explicit-operation ledger under
 the [accounting decision](docs/adr/application-metadata-accounting-covers-explicit-work.md).

@@ -1,0 +1,29 @@
+direction: down
+start: "Start here\nOne serial job / one pending call\nProvider owns staging and real publication" {
+ style.fill: "#16324f"
+ style.font-color: white
+ style.bold: true
+}
+next: "Known next explicit operands?\nCounts / requests / all writes / operations\nNo unknown-to-zero" { shape: diamond }
+reserve: "Pre-call reservation\nSpent + live cleanup + failure envelope\n+ next work + possible output cleanup"
+admit: "Both gates / counts / authority / deadlines fit?\n20 MiB gross / 4,194,304 attempts\nEquality admits" { shape: diamond }
+pending: "Invoke only admitted transition\nInputs and possible outputs stay owned\nCancellation cannot end the slot"
+actual: "Actual return\nCharge requests and every performed prefix\nTransfer acquired cleanup; no refund"
+freeze: "Sticky freeze\nNo optional work or successful prefix\nLate call keeps backing until actual return"
+cleanup: "Spend reserved cleanup\nBorrower before backing; every raw state write\nComplete FAILED/null tree if delivery still authorized"
+final: "Complete real ProviderValue tree\nFinal live-grant / lifecycle / deadline check\nSeparate host full encoding and 8 MiB body gate"
+returned: "True return\nNo pending calls or borrowers\nAll explicit cleanup attempted; then release slot"
+start -> next: "1. Reserve terminal/failure work at bootstrap"
+next -> freeze: "2a. Unknown explicit work"
+next -> reserve: "2b. Establish next bounded transition"
+reserve -> admit: "3. Include guard / owner / counter writes"
+admit -> freeze: "4a. Refuse before contact"
+admit -> pending: "4b. Keep cleanup credits"
+pending -> actual: "5. Actual native return only"
+pending -> freeze: "5a. Cancel / revoke / stop / deadline"
+actual -> next: "6a. More optional work while live"
+actual -> final: "6b. Complete population and publication"
+actual -> cleanup: "6c. Failed prefix or prior freeze"
+freeze -> cleanup: "7. Wait for pending return first"
+final -> cleanup: "8. Retire raw owners; suppress late tree"
+cleanup -> returned: "9. No early slot return"

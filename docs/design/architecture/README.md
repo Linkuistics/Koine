@@ -8,48 +8,42 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The [whole-family reconciliation](../../verification/application-metadata-reconciliation.md)
-and [current selected contract](../application-metadata-contract.json) carry the
-selected file plan, per-object refusal, scoped explicit-work admission and precise
-failed useful-fit boundary. The [selected qualification order](../../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits guarded private qualification before analytic fit, after a complete private
-design, whole-k215 review and earned integration. Advertisement/downstream consumption
-remain held until full useful native qualification passes; every native G/N/V is
-pending. Historical census is macOS 26.6.2 evidence,
-not macOS 27 qualification or a changed macOS 26+ support floor.
+The [complete guarded construction](../../specs/application-metadata-private-qualification.md)
+now composes every episode/job tape with pre-call work, raw cleanup, complete
+failure-publication and terminal bookkeeping reservations. The current design is
+ready for whole-producer review; private implementation eligibility remains false
+pending whole review/integration and the existing source/image/normalization
+reviews and k30 placement. Useful fit is unestablished. Advertisement/consumption
+remain held; every native G/N/V stays pending. The historical macOS 26.6.2 subject
+is no exhaustive supported-VM baseline or macOS 27 qualification.
 
-- [Grouped storage → Qualify privately after design and whole review](index.html#diagram-native-metadata-grouped-storage) — Preserves the failed controlled enclosure and presents the selected qualification sequence with advertisement/consumption held.
-- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Carries the selected guarded qualification boundary and retained release holds.
-- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Carries the same selected ordering without a useful fit or native pass.
-- [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan) — Updated the completion boundary to current scoped expressions with useful fit unestablished.
-- [Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Replaced historical fit with the failed scoped partial conservative enclosure.
-- [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision) — Added selected strings/loctable families, 128 KiB files and individual affected-fact refusal alongside shared failure.
-- [Finite subject → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Updated the handoff to the current scoped candidate with the hold retained.
-- [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger) — Linked the completion boundary to current scoped composition without claiming useful fit.
-- [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root) — Replaced intermediate follow-up wording with supplied raw recipes and conditional native operands.
-- [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage) — Distinguished historical local receipts from the current complete scoped expression.
-- [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications) — Reconciled the caption to selected ordinary semantics while retaining indexed provenance/action limits.
-- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Reconciled the caption to scoped admission and failed useful fit while retaining independent images and Settings repairs.
-- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Reconciled the caption to selected semantics with source breadth and all native duties retained.
+Current changes:
 
-Unchanged context: [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
-The [scoped ADR](../../adr/application-metadata-accounting-covers-explicit-work.md)
-excludes runtime/compiler internals while counting every explicit caller/raw write
-and retaining provider-owned real publication. Strict failure is comparative,
-not a pending selection. Known local-plus-controlled-path conservative enclosures
-23,502,420/23,676,527 exceed 20,971,520 before remaining terms. They supply no useful
-fit, inevitable native overflow or impossibility of a tighter construction.
-Actual native operands/final values/errors/wire stay conditional. No total heap,
-hidden-copy gross, runtime-attempt, RSS or peak guarantee follows.
+- [Private qualification → Review, qualify, then release](index.html#diagram-native-metadata-qualification) — Added existing prerequisite reviews and k30 placement before ordinary k7 consumption, avoiding a circular dependency or duplicate capture programme.
+- [Private qualification → Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission) — Added work/failure/cleanup reservations, actual-prefix settlement, sticky freeze and pending-call ownership.
+- [Grouped storage → Qualify privately after design and whole review](index.html#diagram-native-metadata-grouped-storage) — Replaced unfinished-design wording with complete construction and still-pending private eligibility.
+- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Added failure-publication and guard/counter write reservations without releasing either hold.
+- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Linked the complete guard while retaining all conditional native/full-wire terms.
 
-The [producer close check](../../verification/application-metadata-reconciliation.md#original-producer-close-conditions)
-leaves k215 live for k236's complete private guarded design, eligibility and
-qualification sequence under the selected gates. Analytic useful fit is no longer
-required before that private design boundary. The root review stays before private
-implementation and k7; k215's actual closing session owns Creator.
-Existing native N5/N8/V11/V13 already own actual tapes/values; no repeated capture
-leaf or strict/scoped accounting model is due. Settings/diagnostic repairs,
-authority/images/disclosure, action limits and retained compatibility remain.
+Unchanged context: [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan),
+[Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population),
+[Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
+and [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+
+The [whole-family reconciliation](../../verification/application-metadata-reconciliation.md#original-producer-close-conditions)
+and [current contract](../application-metadata-contract.json) separate the amended
+private design boundary from the native useful-release gate. All original fixed
+formats, 131,072-byte files, 20 MiB scoped gross/4,194,304 attempts without refund,
+independent 8 MiB body cap, deadlines/true-return slots, source/locale breadth,
+authority/actions/images/disclosures and Settings/location/compatibility duties
+remain. Runtime/compiler internals are excluded with no total heap/RSS/peak promise.
+The grouped 23,238,610/23,412,717 controlled enclosure is a failed conservative
+candidate, not inevitable native overflow or proof of impossibility.
+
+Open <http://127.0.0.1:8936/#discussion> or the exact qualification diagram links.
+Source is editable; D2 positions the nodes. The complete source/binary/VM evidence
+is still future work in the existing acceptance duties, never a native pass from
+these pure controls or browser views.
 
 ## Other architecture topics
 
@@ -146,5 +140,12 @@ Run design:application-metadata-reconciliation-regenerate after all family edits
 then design:application-metadata-reconciliation-check for the frozen complete
 Taskfile suite and deliberate cross-family stale-gate/missing-table/hold/false-fit/
 exclusion/publication/native-pass controls. It establishes no useful or native pass.
-The current live presentation uses <http://127.0.0.1:8863/#discussion>; the grouped
-deep link is <http://127.0.0.1:8863/#diagram-native-metadata-grouped-storage>.
+The current live presentation uses <http://127.0.0.1:8936/#discussion>; the grouped
+deep link is <http://127.0.0.1:8936/#diagram-native-metadata-grouped-storage>.
+
+Run design:application-metadata-qualification-render for both private-order and
+admission diagrams (D2 0.9.0, Dagre, theme 0/dark-theme 200). The -qualification-check
+task exercises exact/one-short reservations, unknown explicit work, frozen/late
+return, failure prefixes and private/useful-release eligibility. Deliberately
+broken cleanup/failure/unknown/review/partial-evidence counterparts must fail the
+same instrument. These are synthetic design controls, never native qualification.

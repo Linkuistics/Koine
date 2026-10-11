@@ -17,6 +17,15 @@ Graphs enter at the dark Start here node; numbered edges show work order.
 
 ## Current construction and failed useful fit
 
+The [complete private construction](../specs/application-metadata-private-qualification.md)
+composes every episode/job tape with pre-call controlled work, live/possible raw
+cleanup, full FAILED/null publication and terminal bookkeeping reservations.
+Actual prefixes stay charged, native borrowers retain backing through true return,
+and unknown explicit work refuses before invocation. The design-established flag
+is true; private implementation eligibility is false pending whole-producer and
+applicable downstream review/integration/qualification placement. Advertisement,
+consumption, useful fit and every native verdict retain their independent holds.
+
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no
 alternative layout rescue. At each planned name base, platform/plain strings
@@ -99,7 +108,7 @@ separate from actual binaries and signed supported VMs.
 | k215 independent subject and selected choice | Frozen bounded baseline/P1024/L1500, all outside observations, dimensions and actual k217/k231 answers retained; no re-interview or current-OS/exhaustive claim. |
 | k215 exact file/selector/oversize branches | Complete selected reader semantics and accounting/publication boundary specified; no foreign Bundle/resource scan or useful loss. |
 | k215 useful finite certificate / k235 amendment | Useful fit remains unestablished. K235 selected guarded private qualification before analytic fit under Antony's explicit delegation. The amended private design close condition requires the complete guarded construction and existing qualification sequence, not pre-implementation analytic fit. Actual full useful native operands/responses/witnesses/serviceability must still pass before advertisement/downstream consumption. |
-| k215 whole-producer closure | **Not earned.** K236 owns the missing private qualification design/eligibility/sequence; keep k215 live and advertisement/consumption held. Its eventual closing session checks every amended original condition, completes reconciliation and writes its own Creator on root k234. This interview supplies no Creator for k215 and no native pass. |
+| k215 whole-producer closure | K236 supplies the complete guarded private design, current family and existing qualification order under k235's amendment. The closing session checks all original conditions, retires k236 and names its own run on existing whole-producer review k234. Useful fit remains unestablished; native acceptance, advertisement and consumption stay held. Review/integration and applicable downstream prerequisites still precede private implementation. |
 
 The completed bounded refinement evaluated grouping existing raw inventory/key blocks under
 shared episode owners, retaining actual payload/header/growth/field/cleanup writes,
@@ -107,7 +116,7 @@ failure prefixes and borrower lifetimes. It cannot change accounting scope, amou
 file/locale/source breadth, ABI or posture. Native tuples/visits/preferences/returns/
 final observations already belong to N5/N8/V11/V13, not another capture leaf.
 No second strict/scoped model is due. The refinement did not establish sound fit.
-K235 selected guarded private qualification before analytic fit; k236 must complete
+K235 selected guarded private qualification before analytic fit; k236 supplies
 the guarded construction and qualification sequence. Mandatory whole-k215 review
 and any earned integration precede private implementation. The failed candidate
 alone establishes no implementation eligibility. Advertisement/consumption remain
@@ -126,8 +135,8 @@ native-pass mutations, and runs all inherited Taskfile controls/lint/strict type
 Hash equality is item-by-item; changing subjects during a run invalidates it.
 Checks establish consistency/reproduction, never useful fit or a native verdict.
 
-Use the existing loopback presentation's reader deep link and current-discussion
-panel. Verify rendered reader/population/source/ownership views, changed captions
+Use the existing loopback presentation's qualification/admission deep links and
+current-discussion panel. Verify rendered reader/population/source/ownership views, changed captions
 and outline against the actual revision, including desktop/mobile and dark
 appearance. Reset any browser viewport override after inspection. HTTP success
 alone supplies no diagram-delivery evidence.
@@ -138,7 +147,9 @@ Changes in this reconciliation:
 - [Population → Stage every bounded application choice before publication](../design/architecture/index.html#diagram-native-application-population) — Replaced old conditional fit with the failed scoped conservative enclosure and conditional native operands.
 - [Workspace → Localized reader decision](../specs/workspace-search.md#localized-reader-decision) — Replaced the historical recipe with selected file/inventory/refusal semantics and honest accounting/failure boundaries.
 - [Native acceptance](native-discovery-acceptance.md#g-public-contract-and-independent-authority) — Preserved every native case while updating selected sizes, per-object outcomes and current scoped qualification.
-- [Original producer close conditions](#original-producer-close-conditions) — Distinguished k218's complete failed-boundary handoff from k215's still-missing useful certificate.
+- [Original producer close conditions](#original-producer-close-conditions) — Checks the amended private design close separately from the still-unestablished useful certificate.
+- [Private qualification → Nine disjoint tapes](../specs/application-metadata-private-qualification.md#nine-disjoint-tapes-and-controlled-requests) — Composes controlled requests, raw writes, owners, cleanup and actual provider publication without unknown-to-zero or response-cap funding.
+- [Private qualification → Existing sequence](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence) — Reuses prerequisite reviews and k30 placement ahead of held ordinary k7 consumption.
 
 ## Grouped refinement and retained hold
 
@@ -147,8 +158,8 @@ partitions with independent linked-slab owners, while preserving the selected
 reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
-numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
 permits a private guarded implementation for existing N5/N8/V11/V13 qualification
 before analytic fit, after complete design, whole-producer review and earned
 integration. Advertisement/downstream consumption remain held until full useful

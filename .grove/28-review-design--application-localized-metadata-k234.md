@@ -1,6 +1,7 @@
 # application-localized-metadata-k234
 
 **Reviews:** application-localized-metadata-k215
+**Creator:** run c977b039-5451-4cf5-8aad-c279637d1ef2
 
 
 ## Goal
@@ -16,10 +17,11 @@ only k221's reconciliation or one local certificate. Read actual k213 findings a
 c1a0c6e5 and k214 triage; k217/k231 hold Antony's settled selections. K218 closed
 at the permitted precise failed-boundary handoff. K233 completed its failed grouped
 refinement. K235 records Antony's "you choose" delegation and selects guarded
-private qualification before analytic fit; k236 owns the remaining complete
-guarded design/eligibility/sequence. K215 remains live, so no Creator is earned
-yet. The session actually finishing k215 writes its own Creator here;
-do not copy another run ID or infer closure from a terminal child.
+private qualification before analytic fit; k236 supplies the complete guarded
+design/eligibility/sequence and closes k215 after checking every amended original
+condition. This review reads that closing commit and its actual cascade; the
+closing session writes its own Creator here. Do not infer fit or a native pass
+from a terminal subtree.
 
 Start with docs/verification/application-metadata-reconciliation.md and
 docs/design/application-metadata-contract.json, then the reader/ledger/subject/
@@ -27,9 +29,9 @@ episode/source-root/storage/runtime-admission/composition/wire specs, reports,
 per-item packets and reusable Taskfile controls. Re-derive evidence from the
 actual closing artifact and current source/dependency hashes. Known conservative
 partial enclosures 23,502,420/23,676,527 exceed 20,971,520 before other terms;
-they establish neither useful fit nor inevitable native overflow. The eventual
-producer must supply the complete guarded private qualification design under
-docs/adr/application-metadata-qualification-precedes-analytic-fit.md. Analytic
+they establish neither useful fit nor inevitable native overflow. Read the
+complete guarded construction in docs/specs/application-metadata-private-qualification.md
+under docs/adr/application-metadata-qualification-precedes-analytic-fit.md. Analytic
 useful fit is no longer a prerequisite for this private design boundary.
 Advertisement/downstream consumption require actual full useful native operands,
 complete selected responses, useful witnesses and independent serviceability.
@@ -102,4 +104,5 @@ Mandatory whole-producer review. Read the actual final producer commit in fresh
 context. An intermediate failed certificate and a coherent family reconciliation
 are distinct from the complete private qualification design required by k215's
 selected amendment. Native acceptance
-stays pending; missing current design work must not be relabelled native uncertainty.
+stays pending. Challenge the claimed completeness of the design itself; missing
+explicit work is a design defect, not native uncertainty.

@@ -64,7 +64,8 @@ and producing a complete reviewable design before app-and-file-search-k7.
   consumption remain held until the full declared native operands, actual complete
   selected responses, required useful witnesses and independent serviceability
   qualify under every selected gate; failed/refused/unknown or missing required
-  useful cases cannot pass or reduce scope. K236 supplies the remaining design.
+  useful cases cannot pass or reduce scope. K236 supplies the complete guarded
+  construction in docs/specs/application-metadata-private-qualification.md.
   Add deliberate controls catching the original oversize, baseline-dimension and
   omitted-loctable defects; freeze/hash all inputs before measuring checks.
 - Cut mandatory whole-producer review-design with bare stem
@@ -135,7 +136,7 @@ actually closes this node writes its own Creator run on that review.
   all original Done when criteria, the consumption hold and pending native G/N/V.
   No new reader format, gate, accounting rule or useful loss is adopted.
 
-## Whole-family reconciliation and remaining original condition
+## Whole-family reconciliation and amended design boundary
 
 Application-metadata-reconciliation-k221 closes application-localized-metadata-k218
 at its explicit failed-boundary handoff. Current reader semantics, scoped admission
@@ -160,14 +161,14 @@ ownership refinement with full owner/field/growth/cleanup/lifetime composition u
 unchanged selections, or a precise failed result and concrete actual human choice.
 No repeated strict/scoped model or native-capture leaf is due.
 
-Mandatory whole-producer review application-localized-metadata-k234 now sits at
-the root immediately before the k7 node, Reviews naming k215. K215 stays live;
-k233 is a completed failed-candidate refinement. K235 selected guarded private
-qualification before analytic fit under Antony's explicit delegation; k236
-completes the remaining private qualification design. K221 earned no Creator
-for k215. Its actual closing session checks all amended original conditions,
-completes any resulting reconciliation, names its own Creator
-on k234 and k215 in the commit. Earned integration remains before k7. All native
+Mandatory whole-producer review application-localized-metadata-k234 sits at
+the root immediately before the k7 node, Reviews naming k215. K233 is a completed
+failed-candidate refinement. K235 selected guarded private qualification before
+analytic fit under Antony's explicit delegation; k236 supplies the complete
+guarded design and checks all amended original conditions. K221 earned no Creator
+for k215. The k236 closing cascade promotes the complete construction and existing
+qualification sequence to the root brief, names its own Creator on k234 and
+reports k215 in its commit. Earned integration remains before k7. All native
 G1–G11/N1–N8/V1–V13, useful breadth, Settings/location/core gates, authority/action/
 image/disclosure/compatibility contracts remain binding and pending as applicable.
 
@@ -180,9 +181,10 @@ conditional. Useful finite fit remains unestablished. K235 records Antony's
 "you choose" delegation and selects guarded private qualification before
 analytic fit. The amended k215 condition requires a complete private guarded
 design before whole-producer review/earned integration and private implementation,
-rather than analytic useful fit before any implementation. K236 owns the exact
-guard, eligibility and existing qualification sequence; it is the live missing
-design work under k215. This interview closes neither that design nor k215.
+rather than analytic useful fit before any implementation. K236 supplies the exact
+guard, eligibility and existing qualification sequence. Its design completion is
+one eligibility term; whole review and the applicable downstream prerequisite
+reviews and k30 placement remain required before private implementation.
 
 Advertisement/downstream consumption remain held until full declared native
 operands, actual complete selected responses, useful witnesses and independent
@@ -190,4 +192,54 @@ serviceability qualify. Required useful failure/refusal/unknown or missing
 subjects keep affected acceptance work live. All gates/seams/semantics/breadth
 remain selected. No repeated accounting/format interview or duplicate capture
 leaf follows. Existing root whole review k234 remains before private implementation
-and k7; only the actual k215 closing session writes Creator there.
+and k7; the k236 closing session writes its own Creator there.
+
+## Original-condition check and complete producer handoff
+
+- The independent finite subject records the bounded baseline plus P1024/L1500,
+  full direct inventories, repeated episodes, information/name-file dimensions,
+  outside observations and both system seed groups. Its per-item associations
+  remain unchanged. Actual complete supported-VM inputs and all native verdicts
+  remain pending under the original design-only allowance.
+- K217/K231 carry the actual settled format, file size, gross accounting and
+  refusal choices. K235 records Antony's delegation and the private qualification
+  ordering amendment. No further format, amount, accounting, posture or useful
+  exclusion is adopted by this close.
+- The complete reader resolves all four layouts, platform/plain information and
+  strings/loctable families, checked absence/healthy-empty/refusal branches,
+  independent literal direct/table inventories, exact regional/duplicate
+  selector returns, LocProvenance and observed backstops. Required English and
+  German witnesses, aliases and 129-byte name remain actual acceptance duties.
+- Complete conditional attempts/gross/wire expressions now compose with the
+  guarded construction: spent plus live cleanup, failure envelope, next work
+  and possible output cleanup before invocation; every raw request/write and
+  explicit operation, all nine tapes, real provider publication, growth/borrower
+  overlap, performed failure prefixes, sticky freeze and true-return slots.
+  Useful analytic fit is unestablished and is no longer the amended private
+  design close condition. Full useful native evidence still gates release.
+- Whole-family/live-charter reconciliation and pure deliberate-broken controls
+  preserve original oversize, baseline-dimension and omitted-table detectors,
+  all independent authority/image/disclosure/compatibility and Settings/location/
+  core duties. Verification freezes all per-item inputs before/after; passing
+  it never supplies native credit.
+- Existing root k234 reviews the complete closing producer, with any earned
+  integration before k7. Then reuse k191/k193, reviewed k127, reviewed k123,
+  whole-k19 k120 and existing k30 qualification placement. These prerequisite
+  designs/planning may use the reviewed producer before native usefulness;
+  ordinary consumers stay held. K30 cuts the minimum private implementation
+  and existing N5/N8/V11/V13 ahead of ordinary k7 implementation. No circular
+  qualified-consumer prerequisite or duplicate capture programme is introduced.
+
+The final k236 suite passed all fifteen targets with 2,456 unchanged per-item
+input hashes. Its 25 new pure tests and seven broken-instrument controls passed
+alongside the inherited defect controls; all six evidence packets retain every
+non-hash field and ordered association. The browser's current discussion, exact
+deep links, rendered views, mobile containment and dark exports were inspected;
+temporary overrides and exports were removed. These checks supply no native pass.
+
+These satisfy the amended original design conditions. The terminal subtree and
+closing commit record the close; no brief filename is marked, moved or pruned.
+Private eligibility remains false, native G/N/V remains pending, and production
+advertisement/ordinary consumption remain held. Missing or unavailable required
+useful cases keep acceptance live; actual material gaps use existing k93, while
+known design defects require repair and review before qualification.

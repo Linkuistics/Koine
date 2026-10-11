@@ -205,9 +205,9 @@ for the reviewed private qualification route. Grouping saves known work but the
 retained conservative composition fails; actual native work/final wire cannot be
 inferred from disk dimensions. The analytic-first ordering was not selected.
 Larger numbers alone cannot settle unknown explicit work or the independent
-response. K236 owns the remaining exact guard, eligibility and qualification
-sequence; the choice itself closes neither that design nor k215 and runs no reader
-or native experiment. The packet's unchanged `changesAdopted` fields describe the
+response. The complete private qualification contract now supplies the exact guard,
+eligibility and existing sequence. The ordering choice alone supplied none of
+these; implementation and every native verdict still await the required reviews. The packet's unchanged `changesAdopted` fields describe the
 k233 candidate alone; current ordering is owned by the selected current contract.
 
 ## Original close checks and verification
@@ -217,8 +217,9 @@ macOS 26.6.2 data establish no macOS 27/support-floor qualification. Fixed forma
 131,072-byte regular files, exact selector/backstop/absence/healthy-empty/refused
 branches and individual versus population outcomes are retained. Complete family
 and live consumers cite this failed grouped refinement and the unchanged hold.
-The sound useful finite certificate remains missing. K215 stays live because its
-selected private qualification design/sequence still needs k236. Existing root
+The sound useful finite certificate remains missing. The amended k215 private
+design boundary is complete; private eligibility still awaits whole review and
+applicable downstream prerequisite reviews/placement. Existing root
 whole-producer review/earned integration precede private implementation and k7;
 advertisement/consumption require actual full useful qualification. No duplicate
 fragment review or Creator attribution follows this requirements interview.

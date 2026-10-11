@@ -16,11 +16,13 @@ from tempfile import TemporaryDirectory
 from typing import cast
 
 from application_metadata_episode_certificate import record
+from application_metadata_operation_ledger import ContractViolation
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = "docs/design/application-metadata-contract.json"
 CASES = "docs/verification/native-discovery-acceptance.md"
 SUITE = (
+    "design:application-metadata-qualification-check",
     "design:application-metadata-subject-check",
     "design:application-metadata-reader-plan-check",
     "design:application-metadata-operation-ledger-check",
@@ -38,6 +40,61 @@ SUITE = (
 )
 SKIP = {".git", ".jj", ".build", "node_modules", "__pycache__", ".pytest_cache",
         ".ruff_cache", ".venv"}
+PRIVATE_PREREQUISITES = (
+    "DESIGN", "WHOLE_REVIEW_INTEGRATION", "SOURCE_ACCESS_REVIEW",
+    "OWNERSHIP_IMAGE_REVIEW", "NORMALIZATION_REVIEW", "WHOLE_K19_REVIEW",
+    "K30_QUALIFICATION_PLACEMENT",
+)
+RELEASE_EVIDENCE = (
+    "subjects", "nine_tapes", "full_response", "useful_witnesses", "serviceability",
+    "read_policy", "authority_images_disclosures_compatibility", "gates_deadlines_slots",
+)
+EPISODE_TAPES = (
+    "expanded_first_walk_and_transfer", "root_resource_or_indexed_projection",
+    "reader_records_owners_and_selector_returns", "expanded_second_walk",
+    "identity_merge_and_final_scalar_publication",
+)
+JOB_TAPES = (
+    "preferences_source_snapshots_type_trees_and_raw_slots",
+    "once_per_identifier_registration_and_two_system_seeds",
+    "seed_ordered_domain_map_growth_comparisons_and_field_updates",
+    "outside_path_outcomes_diagnostics_coverage_permissions_and_errors",
+)
+
+
+def transition_admitted(
+    spent: tuple[int, int], cleanup: tuple[int, int], failure: tuple[int, int],
+    work: tuple[int | None, int | None], possible_cleanup: tuple[int, int], *,
+    limits: tuple[int, int] = (20971520, 4194304), frozen: bool = False,
+) -> bool:
+    """Pure admission arithmetic, not a native guard or receipt-completeness proof."""
+    if frozen or any(value is None for value in work):
+        return False
+    terms = (spent, cleanup, failure, cast(tuple[int, int], work), possible_cleanup)
+    if any(value < 0 for term in terms for value in term):
+        return False
+    return all(sum(term[index] for term in terms) <= limits[index] for index in (0, 1))
+
+
+def settle_prefix(
+    spent: tuple[int, int], actual: tuple[int, int], upper: tuple[int, int],
+) -> tuple[int, int]:
+    """Only unused reservation ends; all performed failure prefixes remain spent."""
+    if any(value < 0 for value in (*spent, *actual, *upper)) or any(
+        actual[index] > upper[index] for index in (0, 1)
+    ):
+        raise ContractViolation("actual prefix outside admitted upper")
+    return spent[0] + actual[0], spent[1] + actual[1]
+
+
+def private_eligible(completed: set[str]) -> bool:
+    """Eligibility never depends on the held ordinary consumer or analytic fit."""
+    return set(PRIVATE_PREREQUISITES).issubset(completed)
+
+
+def useful_release(private_ready: bool, evidence: dict[str, bool | None]) -> bool:
+    """Synthetic gate exercise; repository native evidence remains PENDING."""
+    return private_ready and all(evidence.get(key) is True for key in RELEASE_EVIDENCE)
 
 
 def load(path: str) -> dict[str, object]:
@@ -45,7 +102,7 @@ def load(path: str) -> dict[str, object]:
 
 
 def contract_errors(subject: dict[str, object]) -> list[str]:
-    """Check selected decisions against independent k217/k231/k235 requirements."""
+    """Check selected decisions and the complete k236 private construction."""
     errors: list[str] = []
     reader = record(subject["reader"])
     admission = record(subject["admission"])
@@ -97,7 +154,8 @@ def contract_errors(subject: dict[str, object]) -> list[str]:
         "acceptanceOrder": "GUARDED_PRIVATE_QUALIFICATION_BEFORE_ANALYTIC_FIT",
         "analyticFitRequiredBeforePrivateImplementation": False,
         "privateImplementationScope": "EXISTING_N5_N8_V11_V13_QUALIFICATION",
-        "privateQualificationDesignEstablished": False,
+        "privateQualificationDesignEstablished": True,
+        "privateImplementationEligibleNow": False,
         "privateImplementationRequiresWholeReviewAndIntegration": True,
         "advertisementHold": True, "releaseRequiresFullUsefulQualification": True,
         "failedRefusedOrMissingRequiredUsefulCasePasses": False,
@@ -117,6 +175,26 @@ def contract_errors(subject: dict[str, object]) -> list[str]:
         for key, value in expected.items():
             if actual.get(key) != value:
                 errors.append(f"{label}.{key} differs from the selected contract")
+    guard = record(subject.get("privateGuard", {}))
+    expected_guard: dict[str, object] = {
+        "reserveFailureEnvelope": True, "reserveRawCleanupWrites": True,
+        "guardBookkeepingCharged": True,
+        "unknownExplicitOperand": "REFUSE_BEFORE_OPTIONAL_INVOCATION",
+        "snapshotCountsBeforeDedup": True,
+        "pendingSlotEnds": "TRUE_RETURN_AFTER_BORROWERS_AND_CLEANUP",
+        "prerequisiteDesignRequiresUsefulQualification": False,
+        "planningOwner": "EXISTING_K30", "ordinaryConsumptionBeforeQualification": False,
+        "prerequisites": list(PRIVATE_PREREQUISITES), "completedPrerequisites": ["DESIGN"],
+        "episodeTapes": list(EPISODE_TAPES), "jobTapes": list(JOB_TAPES),
+        "releaseEvidence": list(RELEASE_EVIDENCE), "nativeEvidenceComplete": False,
+    }
+    for key, value in expected_guard.items():
+        if guard.get(key) != value:
+            errors.append(f"privateGuard.{key} differs from guarded qualification")
+    if subject.get("privateQualification") != (
+        "../specs/application-metadata-private-qualification.md"
+    ):
+        errors.append("private qualification construction pointer missing")
     return errors
 
 
@@ -133,6 +211,9 @@ def case_errors(text: str) -> list[str]:
 
 def check_family() -> None:
     errors = contract_errors(load(CONTRACT)) + case_errors((ROOT / CASES).read_text())
+    runtime = load("docs/design/application-metadata-runtime-admission.json")
+    if set(record(runtime["requiredOperandRecipes"])) != set(EPISODE_TAPES + JOB_TAPES):
+        errors.append("private construction and runtime packet disagree on the nine tapes")
     for name in ("application-localized-admission", "application-population"):
         historical = load(f"docs/design/{name}.json")
         if (historical.get("currentContract") != "application-metadata-contract.json"
@@ -224,7 +305,8 @@ def broken_controls() -> None:
         ("qualification", "acceptanceOrder", "ANALYTIC_FIT_BEFORE_IMPLEMENTATION"),
         ("qualification", "analyticFitRequiredBeforePrivateImplementation", True),
         ("qualification", "privateImplementationScope", "GENERAL_PROVIDER_RELEASE"),
-        ("qualification", "privateQualificationDesignEstablished", True),
+        ("qualification", "privateQualificationDesignEstablished", False),
+        ("qualification", "privateImplementationEligibleNow", True),
         ("qualification", "privateImplementationRequiresWholeReviewAndIntegration", False),
         ("qualification", "advertisementHold", False),
         ("qualification", "releaseRequiresFullUsefulQualification", False),
@@ -232,6 +314,16 @@ def broken_controls() -> None:
         ("admission", "unknownExplicitOperandsExcluded", True),
         ("admission", "publicationOwner", "HOST"), ("admission", "refund", True),
         ("admission", "totalHeapOrPeakGuarantee", True),
+        ("privateGuard", "reserveFailureEnvelope", False),
+        ("privateGuard", "reserveRawCleanupWrites", False),
+        ("privateGuard", "guardBookkeepingCharged", False),
+        ("privateGuard", "unknownExplicitOperand", "EXCLUDE"),
+        ("privateGuard", "pendingSlotEnds", "CALLER_TIMEOUT"),
+        ("privateGuard", "episodeTapes", list(EPISODE_TAPES[:-1])),
+        ("privateGuard", "jobTapes", list(JOB_TAPES[:-1])),
+        ("privateGuard", "prerequisiteDesignRequiresUsefulQualification", True),
+        ("privateGuard", "ordinaryConsumptionBeforeQualification", True),
+        ("privateGuard", "nativeEvidenceComplete", True),
     )
     for section, key, value in mutations:
         subject = copy.deepcopy(original)

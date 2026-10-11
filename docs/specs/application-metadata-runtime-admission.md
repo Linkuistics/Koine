@@ -196,6 +196,15 @@ it bounds neither earlier controlled work nor excluded runtime backing/peak.
 
 ## Admission, failure and conditional fit
 
+The [private qualification protocol](application-metadata-private-qualification.md#pre-call-admission-and-actual-return-settlement)
+composes these recipes into complete transitions. Retain separate reservations
+for live/possible raw cleanup, complete FAILED/null publication and terminal
+bookkeeping; include guard/counter/owner field writes themselves. Native dimensions
+may become known before their next controlled use; a missing pre-call explicit
+operand refuses that use. Whole-producer and downstream prerequisite review still
+precede private eligibility; the design-established bit is no authorization by
+itself. The existing qualification sequence precedes held ordinary consumption.
+
 For a transition, sum all controlled requested capacities and performed-write
 uppers, plus retained and possible cleanup writes. Sum every explicit operation
 and cleanup attempt. Compare both sums with the remaining counters before
@@ -284,8 +293,8 @@ partitions with independent linked-slab owners, while preserving the selected
 reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
-numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
 permits a private guarded implementation for existing N5/N8/V11/V13 qualification
 before analytic fit, after complete design, whole-producer review and earned
 integration. Advertisement/downstream consumption remain held until full useful
