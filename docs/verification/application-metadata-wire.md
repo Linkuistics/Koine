@@ -221,8 +221,13 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The proposed private guarded qualification before analytic fit needs
-Antony's actual acceptance-ordering choice in k235; no amendment is adopted.
+live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits a private guarded implementation for existing N5/N8/V11/V13 qualification
+before analytic fit, after complete design, whole-producer review and earned
+integration. Advertisement/downstream consumption remain held until full useful
+native operands, actual complete selected responses, required witnesses and
+independent serviceability qualify. Failed/refused/unknown required useful cases
+and unavailable subjects keep those holds and affected acceptance work live.
 Existing whole-producer review, all native G/N/V, actual full operands/response,
 useful breadth and independent authority/action/Settings/disclosure/compatibility
 duties remain. No repeated strict/scoped selection or new capture leaf follows.

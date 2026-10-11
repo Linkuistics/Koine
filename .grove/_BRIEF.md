@@ -375,10 +375,11 @@ reach/old-host refusal and retained action-only evidence remain intact.
 
 The current candidate establishes no useful finite fit. Partial conservative
 local-plus-controlled-path enclosures exceed the gate before other terms; native
-operands/final wire remain conditional. Keep k215's consumption hold. Its original
-useful-certificate condition is still unsatisfied, so k215 stays live. The bounded grouped design k233 evaluated a tighter
+operands/final wire remain conditional. Keep k215's consumption hold. Its private
+qualification design remains incomplete after k235's ordering amendment, so k215
+stays live. The bounded grouped design k233 evaluated a tighter
 linked-slab construction within the settled selections and still failed its
-controlled enclosure; k235 now owns the actual acceptance-ordering choice. A failed
+controlled enclosure; k235 selected the ordering and k236 owns its remaining design. A failed
 refinement must supply a concrete evidence-backed trade-off before any unselected
 choice; repeat neither strict/scoped selection nor already chartered native capture.
 
@@ -389,15 +390,23 @@ writes Creator there; k221 finishes only k218. Every native G/N/V remains pendin
 original close checks and reproducible frozen controls; design/browser consistency
 supplies no native qualification or authorization to reduce useful choices.
 
-## Grouped refinement result and actual remaining choice
+## Grouped refinement and selected qualification order
 
 K233 delivered a complete grouped raw ownership/receipt design and pure controls,
 not useful fit: grouped local/source/two-walk enclosures are 23,238,610/23,412,717
 before other terms against 20,971,520. All native/full-response operands remain
-conditional. The original useful finite certificate condition still fails; keep
-k215 and its no-reader-implementation/consumption hold live. Missing work is
-application-metadata-acceptance-ordering-k235: Antony must choose the concrete
-guarded-qualification-before-analytic-fit proposal or retain the analytic-first
-condition with a specific further design route. No amendment is adopted.
-This is not another scoped model or native capture leaf. The existing root whole
-review k234 remains before k7; only the actual k215 closing session writes Creator.
+conditional. Useful finite fit remains unestablished. K235 records Antony's
+"you choose" delegation and selects guarded private qualification before
+analytic fit. The amended k215 condition requires a complete private guarded
+design before whole-producer review/earned integration and private implementation,
+rather than analytic useful fit before any implementation. K236 owns the exact
+guard, eligibility and existing qualification sequence; it is the live missing
+design work under k215. This interview closes neither that design nor k215.
+
+Advertisement/downstream consumption remain held until full declared native
+operands, actual complete selected responses, useful witnesses and independent
+serviceability qualify. Required useful failure/refusal/unknown or missing
+subjects keep affected acceptance work live. All gates/seams/semantics/breadth
+remain selected. No repeated accounting/format interview or duplicate capture
+leaf follows. Existing root whole review k234 remains before private implementation
+and k7; only the actual k215 closing session writes Creator there.

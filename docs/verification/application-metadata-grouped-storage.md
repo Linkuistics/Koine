@@ -184,30 +184,31 @@ this recipe still supplies no sound complete useful finite certificate under the
 selected gate. This is a failed candidate, not proof of inevitable native overflow
 or impossibility of a different construction. Even below-gate partial sums would
 not supply missing native operands or certify the independent selected response.
-K215's original useful-certificate close condition fails and its hold remains.
+Useful finite fit remains unestablished. K235's selected ordering below amends
+the private design close condition; advertisement/consumption remain held.
 
-## Concrete decision requiring Antony's choice
+## Selected acceptance ordering
 
-**Proposal, unselected:** retain all amounts, accounting scope, useful breadth,
-ABI/posture and independent gates, but permit a private guarded implementation
-solely to exercise the already chartered N5/N8/V11/V13 qualification before a
-complete analytic useful-fit certificate exists. Whole-producer review/earned
-integration would precede that implementation; advertisement and downstream
-consumption would remain held until the declared full native operands, actual
-selected responses, useful witnesses and independent serviceability pass.
+K235 records Antony's explicit "you choose" delegation and selects the
+[guarded private qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md).
+All amounts, accounting scope, useful breadth, ABI/posture and independent gates
+remain. A private guarded implementation may exercise the already chartered
+N5/N8/V11/V13 qualification before a complete analytic useful-fit certificate
+exists, after complete private design, whole-producer review and earned integration.
+Advertisement/downstream consumption stay held until full declared native operands,
+actual complete selected responses, required useful witnesses and independent
+serviceability qualify. Refused/unknown required useful metadata, exhaustion,
+response/deadline failure or unavailable subjects cannot pass or reduce scope.
 
-This changes acceptance ordering and the current no-reader-implementation hold;
-it does not claim the failed enclosure fits or commission another capture leaf.
-The recommendation is this finite qualification route, because grouping saves
-known work but the retained conservative composition still fails, while native
-work/final wire cannot be inferred from disk dimensions. The alternative is to
-retain the present pre-implementation certificate requirement and hold, with
-Antony choosing a specific further representation or fully derived envelope
-proposal before more design proceeds. Larger numbers alone cannot settle unknown
-explicit work or the independent response. No useful loss is recommended.
-Only Antony can select this amendment; a requirements leaf owns that actual
-choice. A choice against it retains the original close condition. No amendment,
-new reader, budget, permission or consumption is adopted in this design session.
+This amends the analytic-fit prerequisite and blanket implementation hold solely
+for the reviewed private qualification route. Grouping saves known work but the
+retained conservative composition fails; actual native work/final wire cannot be
+inferred from disk dimensions. The analytic-first ordering was not selected.
+Larger numbers alone cannot settle unknown explicit work or the independent
+response. K236 owns the remaining exact guard, eligibility and qualification
+sequence; the choice itself closes neither that design nor k215 and runs no reader
+or native experiment. The packet's unchanged `changesAdopted` fields describe the
+k233 candidate alone; current ordering is owned by the selected current contract.
 
 ## Original close checks and verification
 
@@ -216,9 +217,11 @@ macOS 26.6.2 data establish no macOS 27/support-floor qualification. Fixed forma
 131,072-byte regular files, exact selector/backstop/absence/healthy-empty/refused
 branches and individual versus population outcomes are retained. Complete family
 and live consumers cite this failed grouped refinement and the unchanged hold.
-The sound useful finite certificate remains missing. Therefore k215 stays live;
-its existing whole-producer review remains before k7, with no duplicate fragment
-review and no Creator attribution from this nonclosing session.
+The sound useful finite certificate remains missing. K215 stays live because its
+selected private qualification design/sequence still needs k236. Existing root
+whole-producer review/earned integration precede private implementation and k7;
+advertisement/consumption require actual full useful qualification. No duplicate
+fragment review or Creator attribution follows this requirements interview.
 
 After edits settle, use task design:application-metadata-reconciliation-regenerate
 then task design:application-metadata-reconciliation-check. The grouped check

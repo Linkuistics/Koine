@@ -47,8 +47,10 @@ Shipped-file evidence refuted the earlier strings-only/64 KiB/L/input constructi
 historical; current semantics include strings/loctables, 128 KiB files and
 individual affected-fact refusal. The [complete scoped composition](../verification/application-metadata-composition.md)
 preserves conditional native operands and a failed partial conservative enclosure,
-not useful fit or inevitable native overflow. The k215 consumption hold and
-mandatory whole review remain before k7. No useful-reader certificate follows
+not useful fit or inevitable native overflow. The [selected qualification order](application-metadata-qualification-precedes-analytic-fit.md)
+permits reviewed guarded private qualification before analytic fit; advertisement
+and consumption remain held until full useful native qualification. Mandatory
+whole review remains before private implementation and k7. No useful-reader certificate follows
 the old arithmetic or the new partial sums. No hidden traversal, alternate copy or permission/posture change can rescue
 that failure. The selected reader and revised certificates require mandatory
 review and actual native qualification before baseline.

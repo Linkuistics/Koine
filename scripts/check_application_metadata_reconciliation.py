@@ -45,7 +45,7 @@ def load(path: str) -> dict[str, object]:
 
 
 def contract_errors(subject: dict[str, object]) -> list[str]:
-    """Check selected decisions against their independent k217/k231 requirements."""
+    """Check selected decisions against independent k217/k231/k235 requirements."""
     errors: list[str] = []
     reader = record(subject["reader"])
     admission = record(subject["admission"])
@@ -94,6 +94,13 @@ def contract_errors(subject: dict[str, object]) -> list[str]:
     }
     expected_qualification: dict[str, object] = {
         "readerSemanticsEstablished": True, "usefulFiniteCertificateEstablished": False,
+        "acceptanceOrder": "GUARDED_PRIVATE_QUALIFICATION_BEFORE_ANALYTIC_FIT",
+        "analyticFitRequiredBeforePrivateImplementation": False,
+        "privateImplementationScope": "EXISTING_N5_N8_V11_V13_QUALIFICATION",
+        "privateQualificationDesignEstablished": False,
+        "privateImplementationRequiresWholeReviewAndIntegration": True,
+        "advertisementHold": True, "releaseRequiresFullUsefulQualification": True,
+        "failedRefusedOrMissingRequiredUsefulCasePasses": False,
         "consumptionHold": True, "producer": "application-localized-metadata-k215",
         "mandatoryWholeProducerReview": True, "nativeVerdict": "PENDING",
         "outsideQueryObservations": 149, "systemSeedGroups": 2, "nameByteWitness": 129,
@@ -214,6 +221,14 @@ def broken_controls() -> None:
         ("qualification", "usefulFiniteCertificateEstablished", True),
         ("qualification", "consumptionHold", False),
         ("qualification", "nativeVerdict", "PASSED"),
+        ("qualification", "acceptanceOrder", "ANALYTIC_FIT_BEFORE_IMPLEMENTATION"),
+        ("qualification", "analyticFitRequiredBeforePrivateImplementation", True),
+        ("qualification", "privateImplementationScope", "GENERAL_PROVIDER_RELEASE"),
+        ("qualification", "privateQualificationDesignEstablished", True),
+        ("qualification", "privateImplementationRequiresWholeReviewAndIntegration", False),
+        ("qualification", "advertisementHold", False),
+        ("qualification", "releaseRequiresFullUsefulQualification", False),
+        ("qualification", "failedRefusedOrMissingRequiredUsefulCasePasses", True),
         ("admission", "unknownExplicitOperandsExcluded", True),
         ("admission", "publicationOwner", "HOST"), ("admission", "refund", True),
         ("admission", "totalHeapOrPeakGuarantee", True),

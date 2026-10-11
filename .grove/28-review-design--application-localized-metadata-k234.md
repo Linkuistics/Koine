@@ -5,17 +5,20 @@
 
 ## Goal
 Adversarially review the complete application-localized-metadata-k215 producer
-against every original close condition and actual selected reader/accounting
-contract before app-and-file-search-k7 consumes it.
+against every original close condition with k235's explicit ordering amendment
+and actual selected reader/accounting contract, before private implementation
+and app-and-file-search-k7 consumption.
 
 ## Context
 
 Read the commit that actually closes k215 and its complete artifact family, not
 only k221's reconciliation or one local certificate. Read actual k213 findings at
 c1a0c6e5 and k214 triage; k217/k231 hold Antony's settled selections. K218 closed
-at the permitted precise failed-boundary handoff. K221 cut this root review while
-k215 remains live with application-metadata-grouped-storage-k233, so no Creator
-is earned yet. The session actually finishing k215 writes its own Creator here;
+at the permitted precise failed-boundary handoff. K233 completed its failed grouped
+refinement. K235 records Antony's "you choose" delegation and selects guarded
+private qualification before analytic fit; k236 owns the remaining complete
+guarded design/eligibility/sequence. K215 remains live, so no Creator is earned
+yet. The session actually finishing k215 writes its own Creator here;
 do not copy another run ID or infer closure from a terminal child.
 
 Start with docs/verification/application-metadata-reconciliation.md and
@@ -25,12 +28,15 @@ per-item packets and reusable Taskfile controls. Re-derive evidence from the
 actual closing artifact and current source/dependency hashes. Known conservative
 partial enclosures 23,502,420/23,676,527 exceed 20,971,520 before other terms;
 they establish neither useful fit nor inevitable native overflow. The eventual
-producer must supply the still-missing useful finite certificate before k215's
-original hold-removal condition can be earned.
+producer must supply the complete guarded private qualification design under
+docs/adr/application-metadata-qualification-precedes-analytic-fit.md. Analytic
+useful fit is no longer a prerequisite for this private design boundary.
+Advertisement/downstream consumption require actual full useful native operands,
+complete selected responses, useful witnesses and independent serviceability.
 
 ## Done when
 
-- Challenge all original k215 Done when conditions and the actual closing
+- Challenge all original k215 Done when conditions with k235's amendment and the actual closing
   session's cascade. Reconstruct the complete independent finite subject,
   assumptions and selected answers. Historical macOS 26.6.2 evidence is bounded,
   not exhaustive supported-VM evidence or macOS 27 qualification. Reject a
@@ -47,7 +53,8 @@ original hold-removal condition can be earned.
   cannot fall through. Shared count/call/raw-gross/deadline exhaustion invalidates
   the whole population as FAILED/null. Required useful wrong/unknown/missing
   witnesses still fail; diagnostic saturation preserves choices and summaries.
-- Recompute the full useful finite attempt/gross/selected-wire construction,
+- Recompute the complete conditional attempt/gross/selected-wire construction
+  and guarded pre-call admission, reserved cleanup and true-return ownership,
   including all episode/job/native-conditional terms, actual raw requests,
   initialization/read/copy/owner/field/growth/cleanup writes and explicit operations.
   If grouped ownership is adopted, challenge offsets/borrower lifetimes, overlap,
@@ -62,6 +69,12 @@ original hold-removal condition can be earned.
   ABI/helper/posture/consent/signing/amount/quota/useful loss is inferred. Distinguish
   the full wire's fields/roots/nested aliases/response merging/escaping/errors and
   post-encoding cap from any earlier materialization bound.
+- Challenge the selected acceptance order and confined private qualification
+  boundary. Complete design/whole review/earned integration must precede private
+  implementation for existing N5/N8/V11/V13, without a duplicate capture programme
+  or circular dependency on held k7 consumption. No ordering choice, partial tape,
+  refusal-only control, failed/deadline-replaced response or unavailable required
+  useful case may pass native usefulness or lift advertisement/consumption holds.
 - Review the whole family: workspace spec/sources/acceptance, historical/current
   localized/population/long packets, Taskfile, SDL/composed SDL/four native profiles,
   guide/glossary/requirements/Machine/workflow trace, facts/image/disclosure ADRs,
@@ -87,5 +100,6 @@ original hold-removal condition can be earned.
 
 Mandatory whole-producer review. Read the actual final producer commit in fresh
 context. An intermediate failed certificate and a coherent family reconciliation
-are distinct from the complete useful producer promised by k215. Native acceptance
+are distinct from the complete private qualification design required by k215's
+selected amendment. Native acceptance
 stays pending; missing current design work must not be relabelled native uncertainty.

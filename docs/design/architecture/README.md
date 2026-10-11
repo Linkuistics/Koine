@@ -11,10 +11,16 @@ editable; regenerate exports rather than hand-editing them.
 The [whole-family reconciliation](../../verification/application-metadata-reconciliation.md)
 and [current selected contract](../application-metadata-contract.json) carry the
 selected file plan, per-object refusal, scoped explicit-work admission and precise
-failed useful-fit boundary. The k215 consumption hold and mandatory whole review
-remain; every native G/N/V is pending. Historical census is macOS 26.6.2 evidence,
+failed useful-fit boundary. The [selected qualification order](../../adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits guarded private qualification before analytic fit, after a complete private
+design, whole-k215 review and earned integration. Advertisement/downstream consumption
+remain held until full useful native qualification passes; every native G/N/V is
+pending. Historical census is macOS 26.6.2 evidence,
 not macOS 27 qualification or a changed macOS 26+ support floor.
 
+- [Grouped storage → Qualify privately after design and whole review](index.html#diagram-native-metadata-grouped-storage) — Preserves the failed controlled enclosure and presents the selected qualification sequence with advertisement/consumption held.
+- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Carries the selected guarded qualification boundary and retained release holds.
+- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Carries the same selected ordering without a useful fit or native pass.
 - [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan) — Updated the completion boundary to current scoped expressions with useful fit unestablished.
 - [Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Replaced historical fit with the failed scoped partial conservative enclosure.
 - [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision) — Added selected strings/loctable families, 128 KiB files and individual affected-fact refusal alongside shared failure.
@@ -26,9 +32,7 @@ not macOS 27 qualification or a changed macOS 26+ support floor.
 - [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Reconciled the caption to scoped admission and failed useful fit while retaining independent images and Settings repairs.
 - [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Reconciled the caption to selected semantics with source breadth and all native duties retained.
 
-Unchanged context: [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission),
-[Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition)
-and [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+Unchanged context: [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
 The [scoped ADR](../../adr/application-metadata-accounting-covers-explicit-work.md)
 excludes runtime/compiler internals while counting every explicit caller/raw write
 and retaining provider-owned real publication. Strict failure is comparative,
@@ -39,8 +43,10 @@ Actual native operands/final values/errors/wire stay conditional. No total heap,
 hidden-copy gross, runtime-attempt, RSS or peak guarantee follows.
 
 The [producer close check](../../verification/application-metadata-reconciliation.md#original-producer-close-conditions)
-leaves k215 live for a bounded tighter construction under the selected gates.
-The root review stays before k7 and its actual closing session owns Creator.
+leaves k215 live for k236's complete private guarded design, eligibility and
+qualification sequence under the selected gates. Analytic useful fit is no longer
+required before that private design boundary. The root review stays before private
+implementation and k7; k215's actual closing session owns Creator.
 Existing native N5/N8/V11/V13 already own actual tapes/values; no repeated capture
 leaf or strict/scoped accounting model is due. Settings/diagnostic repairs,
 authority/images/disclosure, action limits and retained compatibility remain.
@@ -127,14 +133,18 @@ controls, isolated omission mutations and strict types. This explicit packed
 capacity contract is no actual Swift/CF layout or source/root/final/wire fit.
 
 Run design:application-metadata-composition-render for the new editable D2/SVG
-composition and runtime-choice views (D2 0.9.0, Dagre). Run design:application-metadata-composition and its -check
+composition and runtime-admission views (D2 0.9.0, Dagre). Run design:application-metadata-composition and its -check
 task to reproduce full per-item associations and the explicit failed admission
 result, including disposable overlap/unknown/capacity/alias/outside mutations.
 These checks invoke no Koine/native reader and keep all G/N/V pending.
+Run design:application-metadata-grouped-render for the grouped ownership and
+selected qualification-order view. design:application-metadata-grouped-storage
+and design:application-metadata-grouped-check reproduce the saved grouped
+enclosures and independent associations without native credit.
 
 Run design:application-metadata-reconciliation-regenerate after all family edits,
 then design:application-metadata-reconciliation-check for the frozen complete
 Taskfile suite and deliberate cross-family stale-gate/missing-table/hold/false-fit/
 exclusion/publication/native-pass controls. It establishes no useful or native pass.
-The current live presentation uses <http://127.0.0.1:8872/#discussion>; the reader
-deep link is <http://127.0.0.1:8872/#diagram-native-metadata-reader-plan>.
+The current live presentation uses <http://127.0.0.1:8863/#discussion>; the grouped
+deep link is <http://127.0.0.1:8863/#diagram-native-metadata-grouped-storage>.

@@ -117,8 +117,8 @@ arithmetic alone cannot establish that reader's support.
 
 ## Selected application reader and retained consumption hold
 
-Consume the whole application-localized-metadata-k215 family only after complete
-useful finite certification, mandatory root whole-producer review and earned
+Consume the whole application-localized-metadata-k215 family only after full
+useful native qualification, mandatory root whole-producer review and earned
 integration. The semantic construction is specified: four layouts; platform/plain
 information plus strings/loctable families; base-first name priority; independent
 literal direct/table inventories; LocProvenance reserved metadata; development-first
@@ -145,7 +145,7 @@ provides no useful fit, inevitable native overflow or impossibility of a tighter
 construction. All five episode/four job tapes and full selected wire remain
 conditional on actual native tuples/expanded visits/preferences/regional returns/
 final values/errors, including all 149 outside observations and both system seeds.
-The refuted-construction hold remains. Do not repeat the resolved strict/scoped
+The consumption hold remains. Do not repeat the resolved strict/scoped
 choice or cut already-chartered native capture as a new design gap. Known failed
 construction is not a native coverage loss accepted later by k93.
 
@@ -157,12 +157,17 @@ Find My/Voice Memos, German loctable, omitted-table/alias/129-byte/layout/select
 absence/malformed/denied/individual-versus-shared controls and independent dialog/
 hydration/listener/store/action witnesses. Every native verdict stays pending.
 Historical macOS 26.6.2 census qualifies no macOS 27 subject and changes no macOS
-26+ support floor. No implementation, new amount/ABI/posture/quota/useful loss or
-pruning is authorized by this handoff.
+26+ support floor. This design handoff runs no implementation or native experiment.
+No new amount/ABI/posture/quota/useful loss or pruning is authorized.
 
 Grouped-storage k233 supplies the current failed refinement in
 `docs/verification/application-metadata-grouped-storage.md`: controlled grouped
 local/source/two-walk subterms still exceed 20 MiB before other terms. Keep the
-whole-k215 consumption hold. K235 seeks an actual acceptance-ordering choice;
-its guarded-qualification proposal is unselected. Do not turn this into a
-native pass, duplicate capture leaf, implementation permission or useful loss.
+whole-k215 consumption hold. K235 selected guarded private qualification before
+analytic fit under Antony's explicit "you choose" delegation. K236 completes
+the private qualification design and sequencing; root whole-k215 review and any
+earned integration precede private implementation for existing N5/N8/V11/V13.
+Advertisement/consumption wait for complete useful native operands, actual full
+selected responses, required witnesses and independent serviceability. Required
+useful failure/refusal/unknown or missing subjects keep the holds and affected
+acceptance work live. No native pass, duplicate capture leaf or useful loss follows.

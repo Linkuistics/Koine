@@ -98,17 +98,20 @@ separate from actual binaries and signed supported VMs.
 | k218 family/test handoff and review | Complete family reconciled; pure controls remain separate from pending G/N/V. Missing useful-construction work is externalized under k215; root whole-k215 review precedes k7. |
 | k215 independent subject and selected choice | Frozen bounded baseline/P1024/L1500, all outside observations, dimensions and actual k217/k231 answers retained; no re-interview or current-OS/exhaustive claim. |
 | k215 exact file/selector/oversize branches | Complete selected reader semantics and accounting/publication boundary specified; no foreign Bundle/resource scan or useful loss. |
-| k215 useful finite certificate | **Not satisfied.** The grouped linked-slab refinement also supplies no useful fit. Its controlled local/source/two-walk enclosure exceeds the selected gate; actual acceptance-ordering choice k235 remains before any amendment. |
-| k215 whole-producer closure | **Not earned.** Keep k215 live and its consumption hold. Its eventual closing session checks every original condition, completes reconciliation and writes its own Creator on the root review; this reconciliation closes only k218's allowed failed-boundary handoff. |
+| k215 useful finite certificate / k235 amendment | Useful fit remains unestablished. K235 selected guarded private qualification before analytic fit under Antony's explicit delegation. The amended private design close condition requires the complete guarded construction and existing qualification sequence, not pre-implementation analytic fit. Actual full useful native operands/responses/witnesses/serviceability must still pass before advertisement/downstream consumption. |
+| k215 whole-producer closure | **Not earned.** K236 owns the missing private qualification design/eligibility/sequence; keep k215 live and advertisement/consumption held. Its eventual closing session checks every amended original condition, completes reconciliation and writes its own Creator on root k234. This interview supplies no Creator for k215 and no native pass. |
 
 The completed bounded refinement evaluated grouping existing raw inventory/key blocks under
 shared episode owners, retaining actual payload/header/growth/field/cleanup writes,
 failure prefixes and borrower lifetimes. It cannot change accounting scope, amounts,
 file/locale/source breadth, ABI or posture. Native tuples/visits/preferences/returns/
 final observations already belong to N5/N8/V11/V13, not another capture leaf.
-No second strict/scoped model is due. The refinement did not establish sound fit. Retain the hold; k235 seeks the
-concrete proposed acceptance-ordering choice with its evidence before any amendment. The mandatory whole-k215 review reads the complete eventual
-producer, rather than declaring this failed candidate implementable.
+No second strict/scoped model is due. The refinement did not establish sound fit.
+K235 selected guarded private qualification before analytic fit; k236 must complete
+the guarded construction and qualification sequence. Mandatory whole-k215 review
+and any earned integration precede private implementation. The failed candidate
+alone establishes no implementation eligibility. Advertisement/consumption remain
+held until full useful native qualification; all pending cases remain live.
 
 ## Reproduction and presentation
 
@@ -145,8 +148,13 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The proposed private guarded qualification before analytic fit needs
-Antony's actual acceptance-ordering choice in k235; no amendment is adopted.
+live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits a private guarded implementation for existing N5/N8/V11/V13 qualification
+before analytic fit, after complete design, whole-producer review and earned
+integration. Advertisement/downstream consumption remain held until full useful
+native operands, actual complete selected responses, required witnesses and
+independent serviceability qualify. Failed/refused/unknown required useful cases
+and unavailable subjects keep those holds and affected acceptance work live.
 Existing whole-producer review, all native G/N/V, actual full operands/response,
 useful breadth and independent authority/action/Settings/disclosure/compatibility
 duties remain. No repeated strict/scoped selection or new capture leaf follows.

@@ -239,9 +239,12 @@ Its selected platform/plain information, strings and loctable semantics use
 131,072-byte regular files with individual affected-fact refusal. The useful finite
 certificate remains unestablished: the scoped conservative candidate exceeds its
 gate and full native operands/final wire stay conditional. The grouped linked-slab refinement still fails its controlled enclosure.
-A private guarded qualification-before-analytic-fit proposal requires an actual
-acceptance-ordering choice; the consumption hold and mandatory whole-producer
-review remain before implementation. A checked
+The [selected qualification order](docs/adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits guarded private qualification before analytic useful fit, after complete
+design, whole-producer review and earned integration. Advertisement/consumption
+remain held until full useful native operands, actual complete responses, required
+witnesses and independent serviceability qualify; required failed/refused/unknown
+or missing subjects keep the affected work live. A checked
 pathname/file plan alone is no useful-reader closure.
 
 **Application explicit-work admission**: The application job's cumulative

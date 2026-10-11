@@ -452,15 +452,56 @@ native overflow nor impossibility of a tighter construction. Native tuples,
 expanded visits, preferences, regional returns, final values/errors and actual
 selected wire remain conditional, including all 149 outside observations and
 both system seed groups. Missing explicit operands are never zero or excluded
-runtime work. **The refuted-construction consumption hold remains** until a
-complete file plan and useful finite certificate are established; mandatory
-whole-producer review and earned integration also precede consumption by k7.
+runtime work. **The consumption hold remains** until complete useful native
+qualification passes under the selected ordering below. A complete private
+qualification design, mandatory whole-producer review and earned integration
+precede private implementation; analytic useful fit is no longer its prerequisite.
 The [historical baseline counterexample](../verification/application-localized-baseline.md)
 retains the refuted strings-only/64 KiB/L/input arithmetic as comparison evidence,
 not current gates or useful-reader qualification. The
 [finite design subject](../verification/application-metadata-subject.md) is a
 bounded macOS 26.6.2 census and controlled baseline/P1024/L1500 construction,
 not an exhaustive supported-VM baseline or macOS 27 qualification.
+
+### Private application qualification order
+
+The [acceptance-order decision](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits private guarded implementation solely for the already chartered
+N5/N8/V11/V13 application qualification before a complete analytic useful-fit
+certificate exists. The complete private qualification design remains unfinished;
+the ordering choice alone establishes neither implementation eligibility nor fit.
+Whole-producer review and any earned integration must precede those builds.
+Private test builds exercise the existing public GraphQL, actual provider/host
+binary and isolated signed supported-macOS VM seams. They do not establish a
+production native-provider baseline or authorize downstream consumption.
+
+The selected 20,971,520 cumulative controlled gross bytes and 4,194,304 explicit
+attempts remain enforced before work, including reserved cleanup and performed
+failure prefixes without refund. The separate 8,388,608 response-body gate,
+three/five-second deadlines and four true-return slots remain. Provider-owned
+real publication, all file/locale/source breadth, individual affected-fact refusal
+versus shared FAILED/null, authority, action limits, source AND image/four-action
+guards, disclosures/old-host refusal and retained action-only evidence stay binding.
+Unknown explicit operands cannot be excluded or charged as zero. Runtime/compiler
+internals remain disclosed outside the numeric guarantee; empirical serviceability
+does not create a total heap/RSS/peak promise.
+
+Advertisement and downstream consumption require the full declared finite native
+subjects, every episode/job operand and actual complete selected response to
+qualify under those gates. Keep baseline/P1024/L1500, all outside observations and
+system groups, English Find My/Voice Memos and German loctable witnesses, identities/
+flags/long-source/action outcomes and independent dialog/hydration/listener/store/
+authorized-action serviceability. No omitted selection, partial tape, response
+replacement, successful controlled hold or refusal-only test establishes useful fit.
+All existing G1–G11/N1–N8/V1–V13 remain pending until their actual evidence passes.
+
+Oversized/refused objects retain the selected individual outcomes; shared
+exhaustion or deadline failure retains FAILED/null. A refused/unknown required
+useful witness, missing operand, failed response or unavailable required subject
+keeps advertisement/consumption held and the affected acceptance work live.
+Qualifying a negative/refusal control is separate from qualifying usefulness.
+No automatic budget increase or useful-category reduction follows a failed run;
+an actual material useful gap retains the existing human coverage-decision route.
 
 **Layouts and fixed files.** Probe Contents, Support Files, Resources, then flat
 root. The first present checked layout selects its information/resource bases:
@@ -1174,8 +1215,13 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. K215 and its consumption hold remain
-live. The proposed private guarded qualification before analytic fit needs
-Antony's actual acceptance-ordering choice in k235; no amendment is adopted.
+live. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
+permits a private guarded implementation for existing N5/N8/V11/V13 qualification
+before analytic fit, after complete design, whole-producer review and earned
+integration. Advertisement/downstream consumption remain held until full useful
+native operands, actual complete selected responses, required witnesses and
+independent serviceability qualify. Failed/refused/unknown required useful cases
+and unavailable subjects keep those holds and affected acceptance work live.
 Existing whole-producer review, all native G/N/V, actual full operands/response,
 useful breadth and independent authority/action/Settings/disclosure/compatibility
 duties remain. No repeated strict/scoped selection or new capture leaf follows.

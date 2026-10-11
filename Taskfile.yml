@@ -767,6 +767,7 @@ tasks:
       - task design:application-metadata-owned-storage
       - task design:application-metadata-wire
       - task design:application-metadata-composition
+      - task design:application-metadata-composition-render
       - task design:application-metadata-grouped-render
       - task design:application-metadata-grouped-storage
 
@@ -790,7 +791,7 @@ tasks:
       - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_grouped_storage.py scripts/test_application_metadata_grouped_storage.py scripts/check_application_metadata_grouped_mutations.py
 
   design:application-metadata-reconciliation-check:
-    desc: Reject current/historical drift and run all inherited checks on frozen inputs; native pending
+    desc: Reject contract/qualification-order drift and run inherited frozen checks; native pending
     cmds:
       - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py
       - uv run --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py
