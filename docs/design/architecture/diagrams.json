@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. The selected application reader uses root resource type, held-directory fixed strings/loctables and independent direct/table localization plans. Full cost certificates and family reconciliation remain open under the k215 consumption hold; mandatory whole-producer review precedes k7. Indexed long roots retain their independent provenance. All native G/N/V verdicts remain pending. Eight raw-search views are comparison. Graphs start at their dark Start here node; sequences read from their first message. Native images are components in one resident process.",
   "discussion": {
-    "title": "Select an accounting guarantee at the Swift boundary",
-    "status": "Strict certificate unestablished; proposed human accounting choice",
-    "summary": "Explicit staging can expose requested raw capacity and writes, but ProviderValue still requires Swift runtime constructors. Keep the selected strict contract and route the concrete scoped-accounting proposal to requirements. No budget, ABI or useful loss adopted.",
+    "title": "Compose the selected explicit-work guarantee",
+    "status": "Selected scoped contract; native fit conditional",
+    "summary": "Account controlled raw capacities, writes, owners and every explicit call/cleanup through real provider publication. Strict failure remains comparative; unknown native operands/final values keep useful fit and G/N/V unestablished.",
     "diagramIds": [
       "native-metadata-runtime-admission",
       "native-metadata-composition",
@@ -14,7 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "native-metadata-runtime-admission",
-        "summary": "Added the explicit raw staging/public Swift boundary and two concrete accounting/qualification alternatives; both preserve the existing interface until a human selection."
+        "summary": "Applied Antony’s scoped selection, charged explicit caller work and disclosed excluded runtime internals without a heap/peak claim."
+      },
+      {
+        "id": "native-metadata-composition",
+        "summary": "Added scoped owner/cleanup charges and complete episode/job tapes; identified native operands and final wire as the remaining conditional closure."
       }
     ]
   },
@@ -74,11 +78,11 @@
     {
       "id": "native-metadata-composition",
       "group": "native-contract",
-      "title": "Owned composition → Require runtime bounds before acquisition",
+      "title": "Owned composition → Preserve explicit work across every episode",
       "renderer": "svg",
       "source": "native-metadata-composition.d2",
       "rendered": "native-metadata-composition.svg",
-      "caption": "Accounting/admission flow, not a native capture. Known reader/local terms exclude duplicate read attempts but preserve every performed gross write. Current Swift source/root/publication capacities remain unbound, so no full fit is established. The possible completion path needs a numeric runtime contract; the post-encoding body guard does not supply it. Whole-family hold and native G/N/V remain pending."
+      "caption": "Complete scoped expressions preserve all saved associations, outside records and system groups. Known local terms gain explicit owner and cleanup writes; shared read attempts/scratch count once. Actual native event operands and final values/errors remain unknown, so no useful fit or native pass follows."
     },
     {
       "id": "native-metadata-two-walks",
@@ -461,11 +465,11 @@
     {
       "id": "native-metadata-runtime-admission",
       "group": "native-contract",
-      "title": "Runtime admission → Separate explicit storage from the public value boundary",
+      "title": "Runtime admission → Account explicit work through real publication",
       "renderer": "svg",
       "source": "native-metadata-runtime-admission.d2",
       "rendered": "native-metadata-runtime-admission.svg",
-      "caption": "Strict accounting remains selected. Explicit raw staging does not supply the mandatory Swift publication upper. The scoped accounting alternative needs Antony’s selection; source hashes are comparative, not deployed runtime identity. Whole-family hold and all G/N/V remain."
+      "caption": "Selected scoped accounting. Provider-owned real Swift publication charges explicit invocations; runtime backing/compiler traffic are excluded, with no total heap/RSS/peak guarantee. Native operands and final response remain conditional. The strict comparison is not a pending human choice."
     }
   ]
 }

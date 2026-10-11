@@ -142,3 +142,37 @@ still requires Antony's actual selection before adoption.
    if earned. It cuts the mandatory root whole-k215 review before k7, names its
    own Creator run when the close cascade actually finishes k218/k215, and names
    both closed handles in its commit. No intermediate child cuts that review.
+
+
+## Scoped certificate handoff
+
+K232 closes application-metadata-owned-wire-composition-k227,
+application-metadata-owned-wire-certificate-k225 and
+application-metadata-certificate-k220 at their permitted precise failed-closure
+boundary. docs/specs/application-metadata-runtime-admission.md,
+docs/design/application-metadata-runtime-admission.json
+supply current explicit raw/event/publication recipes under the selected ADR;
+docs/verification/application-metadata-composition.md and its per-item JSON
+carry complete conditional expressions and every original parent close check.
+All 65 labels and every inherited ordered cell/association remain; regenerated
+inherited reports change hashes only. Pure controls/lint/strict types/docs links
+pass; served runtime/composition views and discussion markers were inspected.
+
+Known scoped partial local gross is 19,869,316/20,043,423 and attempts
+950,247/983,378. Including all saved 7,862 controlled path projections gives
+23,502,420/23,676,527 partial conservative enclosures, above 20,971,520 before
+other terms. This candidate is not a useful fit certificate; it establishes no
+actual native overflow or impossibility of a tighter construction. Full native
+tapes/final values/errors and independent actual wire remain conditional,
+including all 149 outside observations and both system seed groups. Unknown
+explicit work is never excluded or zero. ProviderValue publication stays real
+provider-owned work with disclosed runtime internals and no heap/RSS/peak bound.
+
+K221 remains live and must reconcile this precise failed candidate into the
+whole family/live charters. Keep the refuted-construction consumption hold;
+no complete useful certificate or root whole-k215 closure/review/Creator is
+claimed here. Native tuples/visits/preferences/returns/final observations already
+have acceptance charters and are not another capture leaf. The scoped-versus-
+strict choice is resolved, so no repeated accounting model or human interview is
+due. All gates/no-refund/deadlines/slots, authority/action/Settings/disclosure/
+compatibility, useful breadth and every native G/N/V remain binding.

@@ -122,6 +122,13 @@ model or native-capture leaf follows.
 All inherited per-item cells, 149 outside records/system reserves, selected gates
 and non-refund semantics remain. All required pure frozen controls passed;
 actual native inputs/final values/errors stay conditional and G/N/V pending.
-This node retains k232 as a live descendant and does not close. No promotion,
-Creator write or fragment review is earned. k215's hold and k221's whole-family
-reconciliation/mandatory whole-k215 review at actual closure remain binding.
+K232 has now completed the selected scoped construction and precise failed
+conservative enclosure. The original Done when is checked in full under the
+accounting amendment in docs/verification/application-metadata-composition.md.
+Every inherited ordered cell/association, outside/system input and explicit
+receipt survives; full native operands/final values/wire remain conditional.
+The runtime strict-certification failure is comparison, not a remaining choice.
+This node closes at its allowed unestablished boundary after k232 retirement;
+promote its result to k218. No fit or native acceptance follows. k215's hold,
+k221's whole-family/live-charter reconciliation and mandatory whole-k215
+review/Creator at actual closure remain binding; no fragment review is earned.

@@ -1,209 +1,217 @@
 # Application metadata owned composition
 
-[Owned composition → Require runtime bounds before acquisition](../design/architecture/index.html#diagram-native-metadata-composition)
-shows the admission question. Graphs enter at the dark **Start here** node;
-numbered edges give accounting order. The [source/root contract](../specs/application-metadata-source-root.md),
-[owned-storage subcertificate](application-metadata-owned-storage.md) and
-[complete selected-wire contract](application-metadata-wire.md) supply the inputs.
+[Owned composition → Preserve explicit work across every episode](../design/architecture/index.html#diagram-native-metadata-composition)
+now separates the selected explicit-work expression from its strict comparison.
+Graphs enter at the dark **Start here** node; numbered edges give work order.
+The [runtime contract](../specs/application-metadata-runtime-admission.md) and
+[selected accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+define current scope. The [source/root grammar](../specs/application-metadata-source-root.md),
+[historical storage subcertificate](application-metadata-owned-storage.md) and
+[complete independent wire](application-metadata-wire.md) retain their evidence.
 
-**The full construction fails to establish admission.** This is a reproducible
-failed construction, not proof that useful metadata cannot fit the selected gates.
-The proposed packed records do not bind the current Swift collections or the
-public provider value conversion. Unknown owned capacities prevent numeric
-pre-call admission even when a known subtotal is below the application gate.
-Required native inputs remain conditional and all G/N/V verdicts remain pending.
+**Explicit-work construction is specified; useful finite fit is unestablished.**
+Antony's scoped selection resolves the runtime accounting choice. It does not
+supply native dimensions, expanded visits, final values or errors. The known
+local subterms below cannot fund unknown explicit work. All native G/N/V remain
+pending and the k215 consumption hold remains. The strict portable-runtime
+certificate failure is comparative evidence, not a current human-choice blocker.
 
-## Compose disjoint contributions
+## Ordered per-episode construction
 
-For saved episode i, let A_i be its explicit reader API upper, L_i its local
-attempt upper, F_i its selected regular-file count, and G_i its local gross
-subterms. Both ledgers count the payload and EOF read attempts, including empty
-files. The disjoint known attempt term is `A_i + L_i - 2F_i`. Every repeated read
-still contributes its input bytes to G_i; removing the duplicate attempt term
-removes no performed write or gross charge. The inputs must agree on selected
-payload bytes and exact ordered spellings before composition.
+For each episode i, A_i is k223's conservative reader API upper, L_i the
+historical local event upper, F_i selected regular files and G_i historical local
+gross. Both count payload/EOF read attempts, including empty files. Their known
+disjoint attempt expression is A_i+L_i-2F_i. Input writes stay in G_i; subtracting
+shared attempts refunds no performed byte. Long/refused reader suffixes remain
+conservative comparison work, not permission to run the ordinary reader there.
 
-The allocation-only shared scratch contributes 270,368 gross bytes and eight
-local allocation/free attempts once per serial job. It is already included in
-the saved local aggregate; do not add it again. Exact EOF is a zero-byte write
-but remains an attempt; the saved extra-EOF charge is a conservative refusal
-branch upper. The conservative reader suffix remains a comparison superset for
-long/refused episodes, never permission to run ordinary metadata above 1,023.
+B_i counts every independent retained raw-entry, direct inventory, derived direct
+selector key and table-key block plus both pointer extraction vectors per table.
+It includes unselected keys and LocProvenance. Each existing headed block gains
+32 requested owner-header bytes, 32 initialized owner bytes and an eight-byte
+retired-state write: 72 gross bytes and one attempt. The once-per-job scratch
+partition remains 270,368. A 224-byte supervisor/scratch-owner frame costs
+align16(64+224)+64+224+8=584; four scratch state writes add 32, so its additional
+shared contribution is 616 gross bytes and nine attempts. No repeated allocation
+or reuse refund is inferred.
 
-| Saved run | Disjoint known attempt upper | Known gross subterms |
-| --- | ---: | ---: |
-| en-AU,en | 871,255 | 14,181,924 |
-| de | 904,386 | 14,356,031 |
+Known scoped local terms are g_i=G_i+72B_i and a_i=A_i+L_i-2F_i+B_i.
+The [compact per-item report](../design/application-metadata-composition.json)
+contains these exact columns alongside every inherited column, all 2,043 ordered
+spelling associations per run, all 149 outside records, controlled path-only
+source assumptions and both system seed groups. These are partial conservative
+uppers, not full-job bounds or runtime lower bounds. Native regional returns,
+129-byte names, aliases and roots through 1,500 remain represented by their
+original saved dimensions and conditional native inputs.
 
-These are partial terms, neither complete job uppers nor runtime lower bounds.
-The [complete row report](../design/application-metadata-composition.json) retains
-all 2,043 associations in each run and every one of the 149 outside records.
-It preserves the controlled raw-source dimensions and two system seed reserves;
-the latter carry no invented returned tuples. Raw/regional/duplicate locale
-returns, LocProvenance, aliases, the 129-byte name and L1500 dimensions remain
-in the hashed input ledgers. No raw slot, name or outside outcome becomes a
-product exclusion through this composition.
+### Saved controlled-path enclosure
 
-Full episode attempts/gross additionally require the first expanded walk and
-transfer, ordinary-resource or indexed projection, reader owners/records/raw
-selector returns, independent second walk, identity merge and final publication.
-Full job terms additionally require preferences and all source snapshots/type
-trees/raw slots, once-per-ID registration including both system seeds, seed/domain
-maps and comparisons, outside outcomes, diagnostics, coverage, permissions and
-errors. Any unknown summand keeps the whole total null. Counting a nominal record
-once cannot pay for repeated field writes, growth or value copies.
+| Run | Scoped known local gross | Scoped known attempt upper | Local plus controlled path projection enclosure |
+| --- | ---: | ---: | ---: |
+| en-AU,en | 19,869,316 | 950,247 | 23,502,420 |
+| de | 20,043,423 | 983,378 | 23,676,527 |
 
-## Runtime binding obligations
+Both runs preserve 78,983 headed local blocks. The controlled source counterpart
+contains all 7,862 repeated path slots and 843,109 path bytes before terminators.
+Applying the declared scratch-prefix plus independent terminated raw-block recipe
+to each spelling adds 3,633,104 gross and 47,172 raw local attempts. This is a
+saved-input comparison assuming those literal spellings are projected; it is
+not a native tuple observation or a new product quota. Both system seed groups
+remain required conditional inputs; their unknown returns are not invented in
+this path counterpart.
 
-The [runtime admission contract](../specs/application-metadata-runtime-admission.md)
-now identifies the concrete obstruction: public ABI/value layout, constructor
-minimum capacity and post-call observations cannot establish complete requested
-allocation/write/ownership uppers for the deployed implementation. Explicit raw
-staging can replace the owned source/walker representations, but its real
-ProviderValue adapter still crosses this boundary. The decision packet retains
-all 65 enumerated receipt labels and immutable comparative Swift-source hashes.
-The proposed accounting exclusion is a human choice, not a completed strict
-certificate or adopted relaxation. No new census or identical sizing-gap leaf
-answers this interface question.
+This conservative partial enclosure already exceeds 20,971,520 before the other
+source/root/reader/final contributions. It fails to provide a useful fit
+certificate for this candidate. It proves neither inevitable native overflow
+nor impossibility of a tighter construction: the reader suffix is conservative
+and native projection/visit/refusal/final-value branches are unknown. None of
+those unknowns is reduced to zero or removed from the complete expression.
+The hold remains; no new gate, useful loss or repeat accounting-choice leaf is due.
 
-For each actual transition, bind requested capacity C, every initialized or copied
-byte upper W, optional operation attempts A, possible output owners and their
-disposal credits **before** invoking it. Admission needs remaining gross >= C+W
-and remaining attempts sufficient for A plus all retained and possible disposals.
-Record actual performed capacity/write prefixes on return; unspent reservation
-may end, but spent gross never falls on reuse, sharing, disposal or cancellation.
-Each allocate, field write, retain, release, compare, growth-copy and free has its
-own receipt unless a declared bulk operation really performs them together.
+### Complete expressions
 
-The pure `begin_owned` control represents one declared acquisition transition;
-it does not infer the runtime's operations. It rejects an unknown C before any
-invocation. It exercises equality, overflow, nil-output/prefix writes, cancellation
-and previously reserved cleanup. The existing ledger keeps inputs/outputs and
-the slot until true return; a bound refusal cannot trigger a convenient fallback.
+Let G(T) sum controlled raw requests and all performed raw writes in T; A(T)
+counts every explicit event, including cleanup. For a native call or real
+ProviderValue constructor, the explicit invocation contributes one attempt;
+its excluded internal bytes/operations remain disclosed unknowns outside the
+numeric guarantee. An unknown raw write/request or explicit event count keeps
+the corresponding expression unknown. It is never an excluded cost or zero.
 
-| Transition | Required capacity/write/operation binding | Lifetime and failure |
-| --- | --- | --- |
-| Raw input/conversion blocks | Existing exact aligned raw capacities; every read, conversion prefix and explicit terminator; owner-record population and updates separately | Two immutable inputs overlap with their CFData/dictionaries; no overwrite before borrowers and parser owners retire |
-| Fixed typed records | Existing proposed 64-bit field widths, aligned block header, initialized fields and each later changed field; actual runtime representation still must be selected | A span retains its owner; descriptor transfer moves one disposal credit and separately writes state |
-| Native source/preference/URL overlays | Actual getter result ownership, overlay/bridge backing capacity, pointer/record population, each retain/autorelease/release and pool drain | Snapshot only once; raw slots before dedup; native object footprint stays opaque, but an owned overlay cannot disappear into that category |
-| Dynamic vectors/arenas/maps/plans | New backing capacity/header, initialized new cells, used-prefix or insertion-shift bytes, owner/pointer/capacity updates and comparisons | Old/new blocks overlap through copy; nil growth retains old owner; every raw key and selector return remains charged |
-| Walker bytes/state/cycle/maps/errors | Literal/component/C-name buffers; zeroed readlink input plus actual returned prefix; text/suffix/expansion/stack/cycle records; final join and error transcode | All expanded visits, dot/link/33rd-link and error branches; independently retire first metadata/root before second walk |
-| Final application scalars | Each checked path/name/identifier, typed nullable flags/provenance/state/policy/source; String construction capacity, transcode prefix and owner updates | Ordinary refusal withholds affected facts; indexed facts do not invent current flags; no copy is credited as adoption without an actual ownership move |
-| ProviderValue publication | ProviderValue element stride, Array/Dictionary backing headers/capacity/growth, String keys/values, populated enum payloads and field updates; ARC/COW/share/destroy operations | A frozen snapshot owns its returned tree; nested aliases borrow that snapshot while separate roots own separate jobs |
-| Host conversion/completion/encoding | Native list conversion, retained ProviderObject values, completed Map arrays/dictionaries/errors, encoder scratch/final Data/growth/copies/retirement | Host receipts remain separate; finished-body bytes do not establish requested capacity, pre-encoding overlap or application admission |
+Each episode's full gross is g_i plus G of these five disjoint tapes; full
+attempts are a_i plus A of the same tapes:
 
-Known packed widths are proposals for explicitly allocated storage, not
-`MemoryLayout<ProviderValue>`, Swift Array capacity, Dictionary bucket count or
-String backing allocation. A new count/locale/field quota, a fixed fee or a
-post-call capacity observation does not supply the required pre-call bound.
-The report enumerates **every** unresolved non-opaque receipt in every saved
-source/root branch, with repeated fixture associations; it does not sweep a
-hand-written list of labels or substitute fixture frequency for actual visits.
+| Tape | Construction and actual operands |
+| --- | --- |
+| First expanded walk and transfer | Literal/state/component/C-name/link/suffix/stack/cycle/map/resolved blocks, actual expanded visits, all descriptor/status/identity operations, raw updates, comparisons and cleanup |
+| Root resource or indexed projection | Only the branch selected by first resolved root length; actual resource outcome or actual indexed tuple, native descriptor and raw typed fact writes |
+| Reader records/owners/selector returns | Additional owner/dependency/plan/fact records, rejected conversion prefixes, every raw regional/duplicate return, getter value and explicit comparison/update/cleanup; exclude already counted saved key blocks/input/API attempts |
+| Independent second walk | Complete independent visits after metadata/first root retirement; directory/device/inode comparison; retain the first spelling |
+| Identity merge and final publication | All final ordinary/indexed raw scalars/discriminants/associations, explicit real ProviderValue constructors/inserts/appends/freeze and failed-prefix cleanup; provider owns publication |
 
-## Concrete failed construction
+Full job gross is 270,368+616+sum_i fullEpisodeGross_i plus G of four job tapes;
+full attempts are 8+9+sum_i fullEpisodeAttempts_i plus A of those tapes:
 
-Exact [walker source](../../Providers/WorkspaceProvider/Logic/LocationWalk.swift)
-constructs components, maps CChars then concatenates NUL for each named call,
-zero-initializes the link buffer, copies its returned prefix, inserts into Set
-and Dictionary, appends expansions and constructs a final joined spelling.
-The source/root grammar names those operations, but supplies no numeric owned
-capacities for their Swift backing storage or additional COW/ARC operations.
-The raw packed block formula cannot be substituted while claiming this code path.
+| Job tape | Construction and actual operands |
+| --- | --- |
+| Preferences/source snapshots/type trees/raw slots | Fixed type IDs/query predicate/scope, once-per-job preferences/index/running snapshots, every raw getter/type-tree/slot/prefix/owner and cleanup |
+| Once-per-ID registration and two system seeds | Every admitted coherent ID once, CF seed/list AND error, AppKit list/preferred URL, raw duplicate observations and all cleanup; no recursive seeds |
+| Seed/domain/grouping/growth/comparisons | Typed source/copy/seed/domain records, separate heap-sorted indices, exact byte comparisons/binary search, source-order/rank preservation, complete vector-growth and field writes |
+| Outside outcomes/diagnostics/coverage/permissions/errors | All 149 outside observations and actual outcomes, bounded diagnostics and fixed saturation summaries, complete domain/permission/error data and failure publication/cleanup |
 
-Exact [ProviderValue source](../../ProviderAPI/Sources/KoineProviderAPI/Resolution.swift)
-requires public String, Array and Dictionary values. Exact
-[provider conversion source](../../Sources/KoineCore/ProviderContribution.swift)
-wraps object values in ProviderObject; list conversion appends converted elements
-to another Swift array. It does not encode a raw arena directly. A valid bounded
-UTF-8 span therefore does not by itself pay for publishing its String, value tree,
-host list or resulting completed output. Sharing may avoid a payload copy but
-needs an explicit enabling operation, owners and reference/field writes; assigning
-zero to all such terms would be a different, unselected accounting rule.
+The [decision packet](../design/application-metadata-runtime-admission.json)
+contains each tape's named event families, actual inputs, exclusion partition and
+exact raw-block/projection/vector-growth/native-owner/sort/publication recipes.
+It enumerates all 65 inherited unbound labels with a current scope and recipe.
+The derived report also classifies every saved source/root receipt, including
+known writes and opaque acquisitions. Toy branch frequency remains fixture
+provenance, never an actual event-count coefficient. Runtime overlay capacities
+are excluded; their explicit caller is charged. Actual raw staging is separate.
 
-For example, a declared transition with 64 capacity bytes and at most 16 initialized
-bytes needs an 80-byte pre-call reservation. A 79-byte remainder refuses before
-invocation; an unknown capacity refuses even with a 100-byte remainder. This
-counterexample does not claim an actual Swift allocation is 64 bytes. It proves
-that a known payload and a post-encoding cap cannot admit an unspecified runtime
-allocation. The same missing contract affects source overlays and walker state,
-not only the last response buffer. No native observation is needed to identify it.
+A numeric full evaluation requires each tape's complete finite operands. Empty
+observed tapes can evaluate to zero; absent observations cannot. This is the
+precise remaining failed closure, not a new strict/scoped model or a native
+capture leaf. Native acceptance already owns those observations. No known raw
+representation/capacity operation is deferred as an opaque V cost.
+
+<a id="runtime-binding-obligations"></a>
+
+## Admission and lifetime
+
+The pure cost/reservation controls admit complete work plus retained and possible
+cleanup before any optional invocation. Cleanup includes raw state writes as well
+as free/close/release calls. Boundary equality admits; one missing byte or attempt
+refuses before invocation. Actual failure prefixes remain charged; unspent
+reservations end only on actual return. Reuse/disposal/cancellation never refund.
+Existing owner/borrower/pending-call controls retain the shared slot until true
+return. A failed growth keeps the old owner; old/new allocations overlap through
+copy and raw state transfer. Exact owner/header recipes are source-level designs,
+not a claim about compiled Swift value layout.
+
+Raw spans are not public values. Provider publication constructs real String,
+Array and Dictionary values and counts every explicit constructor/access/insertion/
+append/destruction. Controlled scratch/fields/owners remain charged. Compiler
+traffic and runtime backing are excluded by the ADR and promise no total heap,
+hidden-copy gross, runtime-attempt, RSS or peak bound. Host conversion/alias
+completion/encoding are separate host operations and cannot pay for publication.
+
+## Strict comparative evidence
+
+The former disjoint partial subtotals remain 871,255/904,386 attempts and
+14,181,924/14,356,031 gross for en-AU,en/de. Public ABI/layout/minimum/post-call
+capacity supplied no complete strict pre-call runtime upper. The immutable
+upstream hashes and counterexample remain in the runtime packet/spec; they do
+not certify a deployed system image or prove certification impossible. The new
+scope does not require certificates for excluded internals. Its explicit caller
+and controlled requests/writes must still be accounted. This resolves k230's
+human-choice blocker without increasing any gate or changing the ABI.
 
 Graph Tier 2 generation 2026-09-29T10:36:20Z is stale for Engine and
-ProviderContribution; graph snippets were unsuitable for current source evidence.
-Exact reads include Engine's missed line 295. LocationWalk is untracked in that
-generation; docs/scripts are excluded. The derivation hashes the exact relied-on
-sources instead. This establishes no negative or exhaustive graph claim.
+ProviderContribution; exact source reads supply current host conversion and
+post-encoding guard evidence, including Engine's missed line 295. Docs/scripts
+are excluded. Source hashes identify the exact comparison subjects. This yields
+no negative/exhaustive graph or native claim.
 
-## Final values and the independent wire gate
+## Independent wire and useful fit
 
-The full finite k228 selections remain intact. Actual ordinary/indexed final
-paths/names/identifiers, source summaries, declared domains, permission targets
-and emitted error messages/extensions/locations/paths remain unknown. No saved
-literal spelling is silently used as a final resolved path, and saved English/
-German file names establish no missing regional or long indexed native value.
-Domain/permission widths in the completion example remain explicit assumptions,
-not new product quotas. Actual selected sizes and actual complete response stay null.
+The full finite k228 GraphQL document is unchanged. Independent roots own
+independent application jobs; nested aliases multiply host completion/encoding,
+not native observations. Response-key merging, all fields, JSON escapes,
+coverage/diagnostics/permissions and errors remain counted. Actual final scalars,
+domains/permissions/outside outcomes and emitted errors are still unknown.
+Conditional successful-data uppers (40,141,782 single root and 147,120,535 full
+example) establish neither inevitable overflow nor useful fit under 8,388,608.
+No field/alias/choice reduction or new quota follows.
 
-Conditional successful-data uppers of 40,141,782 bytes for one complete root and
-147,120,535 for two roots/four items aliases are above the unchanged 8,388,608 cap.
-They establish neither useful fit nor inevitable overflow. Selecting fewer fields
-or dropping choices is not this design's remedy. Distinct roots have independent
-application-job budgets; nested aliases multiply host completion/encoding work,
-not source observations. The example imposes no public root/alias restriction.
+Engine encodes the whole response before applying the body cap. Over-cap output
+is replaced with null data and a failed error (174 bytes in the read default
+shape). That is a sent-body outcome, never earlier application/host allocation
+or peak evidence. Full explicit-work fit requires all finite operands and full
+selected response within their independent gates. The 20,971,520 gross,
+4,194,304 explicit attempts, 3/5-second deadlines, four true-return slots,
+source/layout/locale/useful breadth, per-copy oversize versus population failure,
+authority/action/Settings/disclosure and retained action-only compatibility bind.
 
-[Engine](../../Sources/KoineCore/Engine.swift) materializes and encodes the full
-result before the body-size check. Above cap it replaces data with null and a
-failed error (174 bytes in the read default shape). This protects the sent body;
-it pays no earlier application allocation or host encoder capacity and supplies
-no peak certificate. Application and host totals are separate accounting owners;
-neither host conversion nor encoding is declared free or charged to a newly
-invented application policy. Their unresolved terms are reported explicitly.
+## Original parent close checks under the scoped amendment
 
-## Alternatives and completion criterion
+| Original condition | Current result |
+| --- | --- |
+| k227 representations/fields/ownership | All inherited receipt labels classified; raw header/owner/capacity/growth/field recipes, actual native/Swift access and cleanup described; excluded internals need no strict certificate |
+| k227 episode/job composition and preserved observations | Complete five episode/four job tape expressions, all ordered inherited cells and additional scoped owner cells retained; full native operands conditional |
+| k227 final scalars/publication/selected wire | Actual provider-owned value adapter specified; complete unchanged wire; unknown final values/errors keep useful fit unestablished |
+| k227 frozen controls | Cell/digest, explicit call/write/cleanup/unknown/host-move controls plus inherited controls; no native pass |
+| k227 full ancestor checks | Every k225/k220 condition checked below; precise conditional failed closure delivered, no repeated known design gap |
+| k225 scalar/record/vector/map/plan representation | Raw widths plus full owner header, exact block/projection/growth and grouping recipes; real value access/publication boundary explicit |
+| k225 scratch/overlap/cleanup | Two immutable inputs/EOF/conversion once; supervisor/owner augmentation; native borrowers/first root retire before second walk; all cleanup writes/calls reserve first |
+| k225 every episode/aggregate/aliases/129/L1500/outside | Every association and outside record preserved; no native/regional/final value fabricated or useful category lost |
+| k225 independent response | Complete roots/aliases/fields/escaping/errors/cap retained; no wire-as-memory claim |
+| k225 selected gates or exact failed outcome | Current scoped gates applied; full expression/actual selected response still unknown from named native inputs; hold retained rather than guessed fit |
+| k225 frozen controls/full k220 check | Original controls retained and scoped failures added; full k220 check below |
+| k220 actual operations/branches/cleanup | Original reader/source/root branch grammars retained; scoped recipes count explicit operations/prefixes/raw updates and possible cleanup before calls |
+| k220 borrowed/owned/scalar/copy distinctions | Borrowed children bound to real owner; raw copies/header/owner writes distinct; ProviderValue owns real values; no refund or host reclassification |
+| k220 complete per-episode/aggregate derivation | Full expressions and row associations preserved; native dimensions/final values remain conditional, including all outside/system inputs |
+| k220 fit or precise failed result | Useful fit unestablished for exactly missing native event operands/final response; no remaining strict-runtime choice or invented certificate |
+| k220 original-defect/call/charge/branch controls | Pure inherited and scoped controls required; every G/N/V remains pending |
 
-Keeping the current collections requires a supported conditional capacity and
-operation contract for their exact construction paths, including failed prefixes.
-An explicitly allocated raw representation can hide capacity/growth policy inside
-the discovery adapter and make its receipt seam deep, but must account the real
-source overlays and final public value boundary. It adds migration work and cannot
-silently change the provider ABI or action walker. Moving a stage to “opaque,”
-using logical payload charges, increasing gates or excluding useful categories
-would change the selected accounting/behavior and is not adopted.
-
-The runtime design has now compared both paths and found the precise remaining
-choice: **retain strict accounting with implementation-specific certificates, or
-explicitly scope the gate to controlled raw work while disclosing excluded
-runtime backing and ownership traffic?** The
-[reviewable proposal](../specs/application-metadata-runtime-admission.md#concrete-decision-awaiting-antony)
-specifies the exclusions and their weaker guarantee. No alternative is selected.
-The available public ABI and comparative upstream source establish no complete
-pre-call upper for the deployed runtime; this is not evidence that an exact-image
-certificate could never exist. A requirements decision precedes another design
-continuation. Repeating these unknown operands or commissioning the already
-pending native census is not the next work.
-
-Completion requires full per-episode/job expressions and independently supplied
-final values/errors through the complete selections. A conditional useful fit is
-earned only when those bounds and finite input assumptions fit. Otherwise keep
-the family consumption hold and state the precise failed construction. The selected
-20,971,520 gross/4,194,304 attempts, independent 8 MiB wire, three/five-second
-deadlines, four true-return slots, source/category/layout/locale policy and all
-authority/action/disclosure/Settings/compatibility contracts remain binding.
+This closes the bounded certificate design at its allowed precise failed-closure
+boundary; it does not close k218/k215, earn native acceptance or remove their
+consumption hold. K221 still reconciles the whole family/live charters and owns
+mandatory root whole-k215 review/Creator at actual closure. A new design gap,
+if whole-family reconciliation finds one, must be stated concretely rather than
+repeating the resolved strict-versus-scoped question.
 
 ## Reproduction
 
-Run `task design:application-metadata-composition`, then
-`task design:application-metadata-composition-check` after edits settle. The
-instrument freezes all declared ledgers, selected document, exact sources,
-models/tests/mutation tools, this contract, diagram/manifest and Taskfile before
-reading and compares hashes after derivation. It compares complete per-item cells
-and ordered associations, not just aggregate totals. Its exit 0 means the declared
-failed construction reproduced, never that useful metadata fits or native passed.
+After all edits settle, run task design:application-metadata-composition and
+then task design:application-metadata-composition-check. Every declared input,
+model/test/mutation tool, exact source, ADR, spec/report, view/manifest and
+Taskfile is hashed before/after. The check compares every ordered cell and
+association rather than totals. Exit zero reproduces the conditional scoped
+construction; it establishes no useful fit or native pass. Strict failed
+construction is retained as comparison in the same report/packet.
 
-Disposable mutants remove shared-read subtraction, drop input gross/aliases/outside
-records, erase an unknown operand or omit initialization from pre-call admission;
-each must fail a behavioral assertion. Inherited source/root/storage/wire controls
-retain call/branch/cleanup, alias/escaping/error and original oversize/baseline/
-omitted-loctable controls. Pure passing checks do not remove the consumption hold
-or complete the mandatory whole-producer review. No target/source/CF/reader/launch/
-VM/signing/consent experiment or native implementation runs here.
+Disposable mutations remove shared-read subtraction, input charges, aliases,
+outside records, raw owner/cleanup, explicit constructor attempts, provider
+ownership or recipe dispositions, and turn unknowns into zero. Inherited source/
+reader/ledger/storage/wire checks retain their original branch/charge/cleanup/
+alias/escaping/error/oversize/baseline/omitted-table controls. No source/reader/CF/
+target/launch/VM/signing/consent experiment or implementation runs here.

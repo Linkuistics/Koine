@@ -43,3 +43,18 @@ No implementation leaves or pruning. Earned integration follows the review and
 also precedes k7. Preserve the signed supported-macOS seams; historical census
 does not qualify macOS 27 or change the macOS 26+ floor. Any unselected accounting,
 posture, envelope or useful-loss choice requires Antony's actual selection.
+
+
+## Scoped certificate input
+
+K232 completed the authorized scoped design and closed k227/k225/k220 at their
+permitted precise failed-closure boundary. Consume k218's scoped handoff, the
+current runtime spec/packet, complete composition report/per-item JSON and
+selected ADR, not k230's former pending-choice markers. Strict runtime failure
+is comparative evidence. The saved local-plus-controlled-path conservative
+enclosures already exceed the gross gate; native event operands/final response
+remain conditional. No useful fit, native pass or consumption-hold removal is
+earned. Reconcile this actual failed candidate throughout the full family and
+live charters; preserve the rule that the hold cannot lift without a complete
+useful certificate. Do not repeat the resolved strict/scoped decision or cut
+already chartered native capture as a new design gap.

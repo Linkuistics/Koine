@@ -1,29 +1,27 @@
 direction: down
-start: "Start here\nSelected strict pre-call accounting" {
-  style.fill: "#16324f"
-  style.font-color: white
-  style.bold: true
+start: "Start here\nAntony selected scoped explicit work" {
+ style.fill: "#16324f"
+ style.font-color: white
+ style.bold: true
 }
-stage: "Explicit raw staging candidate\nRequested aligned capacity + every write\nOwners / growth / cleanup / two walks"
-publish: "Mandatory public ProviderValue adapter\nSwift String / Array / Dictionary\nCompiler and runtime ownership operations"
-evidence: "Complete pre-call uppers for\nactual compiled/runtime paths?" { shape: diamond }
-failed: "Current strict construction unestablished\nABI / payload / minimum / post-call size\ndo not supply the full upper" {
-  style.fill: "#fff4d6"
-  style.stroke: "#9b6a18"
-}
-choice: "Human accounting decision\nBoth alternatives are unselected" { shape: diamond }
-scoped: "Recommended proposal\n20 MiB explicit raw requests + writes\nDisclose excluded runtime backing / traffic"
-strict: "Alternative\nRetain strict accounting\nRequire exact implementation certificates\nUnqualified combinations refuse"
-host: "Separate actual host work\nConversion / aliases / completion / encoding\n8 MiB guard after complete encoding"
-hold: "Keep consumption hold\nNo useful fit / no native pass\nPreserve all choices, gates and authority"
-start -> stage: "1. All saved rows / aliases / outside records"
-stage -> publish: "2. Raw spans cannot replace public Swift values"
-publish -> evidence: "3. Includes intermediate and failed prefixes"
-evidence -> failed: "4. Available evidence does not establish it"
-failed -> choice: "5. New choice, not another sizing coefficient"
-choice -> scoped: "6a. Explicitly weaker accounting guarantee"
-choice -> strict: "6b. Additional qualification condition"
-publish -> host: "Public values still materialize here"
-host -> hold: "Sent body bound pays no earlier allocation"
-scoped -> hold: "7a. Needs actual selection and full reconciliation"
-strict -> hold: "7b. Needs attainable source/image correspondence"
+raw: "Controlled raw staging\nRequested capacity + every performed write\n64-byte header / owners / growth / cleanup"
+calls: "Real source access and ProviderValue adapter\nExplicit calls / comparisons / retain / release charged\nProvider owns real Swift values"
+reserve: "Reserve work + retained / possible cleanup\nRaw cleanup writes and all attempts\nFailure prefixes stay charged; no refund"
+exclude: "Disclosed excluded internals\nSwift / platform backing and compiler traffic\nNo total heap / RSS / peak guarantee"
+inputs: "All native event operands supplied?\nVisits / tuples / returns / final values / errors" { shape: diamond }
+conditional: "Complete scoped expressions\nActual whole-job totals remain unknown\nKeep all rows / outside records / system seeds"
+fit: "Conditional fit only with full finite inputs\n20 MiB gross / 4,194,304 attempts\nDeadlines and true-return slots remain"
+host: "Separate host conversion / aliases / encoding\nComplete selection and independent 8 MiB guard\nSent-body bytes fund no earlier memory"
+hold: "Keep family consumption hold\nWhole-family reconciliation / review remain\nAll native G/N/V pending"
+comparison: "Strict certificate failure retained as comparison\nNo longer a pending human choice"
+start -> raw: "1. Apply selected ADR"
+raw -> calls: "2. Raw spans are not public values"
+calls -> reserve: "3. Charge the explicit caller"
+calls -> exclude: "Disclose internals outside guarantee"
+reserve -> inputs: "4. Unknown explicit work never becomes zero"
+inputs -> conditional: "5a. Saved native operands remain conditional"
+inputs -> fit: "5b. Evaluate only a complete declared subject"
+conditional -> hold: "6a. No guessed useful fit"
+fit -> host: "6b. Independent complete wire still required"
+host -> hold: "7. Full-family acceptance remains"
+comparison -> start: "Context: k231 resolved the trade-off"

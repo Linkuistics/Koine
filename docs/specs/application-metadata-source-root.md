@@ -69,30 +69,31 @@ metadata refusal follows the selected reader policy without a convenient fallbac
 
 ## Test seams and construction limit
 
-### Require runtime bounds at composition
+### Apply the selected explicit-work boundary at composition
 
-Each source/root/reader/publication transition must bind actual owned backing
-capacity, every initialized/copied byte upper, operations, retained owners and
-possible cleanup before invocation. The
-[owned composition](../verification/application-metadata-composition.md) joins
-all saved rows and removes only duplicate input-read attempts. Unknown capacity
-cannot fund admission; packed record widths cannot substitute for Swift collection,
-String, ARC/COW or final ProviderValue construction. A refused bound starts no
-optional work. Cleanup and true-return ownership continue under their reserved
-credits, without refunding actual charges.
+The [accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+selects controlled raw requested capacities and performed raw writes, plus every
+explicit adapter/local/native operation and cleanup. Internal platform/Swift
+constructors, bridges/COW, metadata, allocator and compiler ownership traffic are
+excluded, with no total heap/RSS/peak promise. Explicit caller work is still
+charged. ProviderValue publication remains provider-owned. These exclusions are
+not measured zero costs or unknown explicit operands.
 
-The [runtime admission contract](application-metadata-runtime-admission.md)
-compares real public-value publication with explicit staging and specifies the
-concrete accounting/qualification choice needed to proceed. Its recommendation
-has not been selected; the strict source/root contract remains binding.
+The [runtime contract](application-metadata-runtime-admission.md) specifies
+real native/Swift access, raw staging/owner/growth/field recipes and the real
+public-value adapter. The [owned composition](../verification/application-metadata-composition.md)
+retains the strict failure as comparison and derives complete scoped expressions.
+Actual source tuples, expanded visits, preferences, final values and errors remain
+conditional; useful fit is not established. Unknown explicit operands prevent
+optional calls; excluded internals require no strict runtime certificate. Reserve
+all charged work and retained/possible cleanup, including raw state writes, before
+calls. Keep all performed failure prefixes and the slot until true return.
 
-The current construction fails at this runtime binding, independently of pending
-native dimensions. The complete selected wire remains the independent response
-contract; a finished-body size check cannot rescue unbounded earlier publication
-work. Application-job and host materialization/encoding receipts remain separately
-explicit. No ABI, accounting boundary, gate, selection or useful category changes
-follow. A complete runtime representation/publication contract is required before
-the family consumption hold can be removed.
+The complete selected wire is independent; its post-encoding cap funds no earlier
+allocation. All gates, source/category/locale breadth, authority/action/Settings/
+disclosure/compatibility and native acceptance obligations remain. The family
+consumption hold and whole-family reconciliation/review remain; no new quota,
+ABI, support/posture change or useful loss follows.
 
 The [owned-storage subcertificate](../verification/application-metadata-owned-storage.md)
 specifies requested raw-buffer capacity separately from performed initialization,
@@ -108,14 +109,15 @@ slots, empty/refused preferences, native return shapes, expanded walks, ownershi
 replacement, long-root refusal and every cancellation prefix. They establish
 neither actual source payloads nor native usefulness, serviceability or peak memory.
 
-The owned representation/scratch/final-response construction remains incomplete.
+The scoped representation/scratch/publication design is specified; numeric
+whole-job fit and the actual final response remain conditional.
 The [selected-wire contract](../verification/application-metadata-wire.md) derives
 complete finite full-field selections, response-key merging, independent root
 aliases, JSON escapes and failure/error envelopes. Unknown final values keep
 actual wire unknown. The core checks the complete encoded body against its
 independent response cap; replacement with null data establishes no pre-encoding
-owned allocation or peak bound. Final scalar/bridge/publication receipts remain
-part of the owned composition, separately from wire bytes.
+owned allocation or peak bound. Final scalar/publication receipts use the selected explicit-work scope,
+separately from wire bytes; excluded runtime backing is disclosed.
 The [certificate handoff](../verification/application-metadata-source-root-certificate.md#handoff-and-failed-construction)
 names its unresolved design terms separately from already pending native evidence.
 The application 20 MiB cumulative gross, 4,194,304 attempts, independent core

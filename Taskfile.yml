@@ -719,12 +719,12 @@ tasks:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-owned-storage.d2 docs/design/architecture/native-metadata-owned-storage.svg
 
   design:application-metadata-composition:
-    desc: Compose all saved known subterms and expose failed runtime admission; no useful or native fit
+    desc: Derive scoped explicit-work expressions and preserve strict comparison; no useful or native fit
     cmds:
       - python3 scripts/application_metadata_composition.py --write
 
   design:application-metadata-composition-check:
-    desc: Check per-item composition, unknown admission and isolated mutations; failed construction is preserved
+    desc: Check every scoped row, explicit calls/writes/cleanup and mutations; native operands stay conditional
     cmds:
       - ruff check --select E,F,I --line-length 100 scripts/application_metadata_composition.py scripts/test_application_metadata_composition.py scripts/check_application_metadata_composition_mutations.py
       - python3 scripts/application_metadata_composition.py --check
@@ -733,7 +733,7 @@ tasks:
       - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_composition.py scripts/test_application_metadata_composition.py scripts/check_application_metadata_composition_mutations.py
 
   design:application-metadata-composition-render:
-    desc: Render the owned runtime-admission failure and independent response boundary
+    desc: Render the selected scoped accounting and conditional composition with independent wire
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-composition.d2 docs/design/architecture/native-metadata-composition.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-runtime-admission.d2 docs/design/architecture/native-metadata-runtime-admission.svg

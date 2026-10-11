@@ -84,3 +84,53 @@ public GraphQL, actual provider/host binary and isolated signed supported macOS
 VM seams are already human-confirmed and must not be re-interviewed. Use pure
 saved-input Taskfile checks. Any genuinely new trade-off requires a concrete
 proposal and Antony's actual answer; do not recursively repeat the same gap.
+
+## Decisions (running log)
+
+- Adopted the mandated design leaf on empty jj change e051872f, parent b665888e.
+  Read the glossary, complete ancestor briefs and k231's actual scoped answer.
+  Tier 2 graph generation 2026-09-29T10:36:20Z is ready; docs/scripts are excluded,
+  ProviderContribution/Engine metadata changed and Engine has missed line 295.
+  Exact source reads supply the public-value/host/response evidence. No native
+  or exhaustive graph claim follows. Taskfile remains the verification entry.
+- Apply the selected ADR directly. Keep strict runtime-certification failure as
+  comparative evidence, rather than a live human-choice blocker. Use a raw
+  staging contract with explicit owner fields and source-level event receipts;
+  actual Foundation/Swift access and ProviderValue constructors remain real
+  provider operations with excluded internals and charged explicit invocations.
+  A missing explicit operand cannot become an exclusion or zero. Native tuples,
+  visits, preferences, final values and errors stay conditional; no fit is selected.
+  Whole-family review is already assigned to k221, so no fragment reviewer is due.
+- Selected source-level staging uses 64-byte control/owner headers, separately
+  charged initialization/population/changed fields and retired-state/free work.
+  The embedded owner avoids recursive owner allocation. Source access uses real
+  native/Swift values; excluded backing never erases explicit invocation work.
+  A real provider-owned ProviderValue adapter and complete failure/true-return
+  lifetimes remain. The grouping recipe preserves raw ordinal order through
+  separate sorted indices. No ABI, gate, quota, useful loss or native experiment.
+- Derived all five episode and four job tape expressions, classified all 65
+  inherited unbound labels and every saved source receipt, and preserved every
+  original ordered cell in both runs. Explicit header/cleanup augmentation of
+  78,983 local blocks and one-job scratch owners yields 19,869,316/20,043,423
+  partial gross and 950,247/983,378 attempts. The 7,862-slot controlled path
+  counterpart adds 3,633,104 gross: its conservative partial enclosures are
+  23,502,420/23,676,527, above the unchanged gross gate before other terms.
+  This rejects that enclosure as a fit certificate, not actual native overflow
+  or impossibility of tighter construction. Full native tapes/final wire stay
+  unknown; no useful fit or hold removal is earned. The strict runtime failure
+  remains comparative evidence; it is no longer a human-choice blocker.
+- Verification passed: composition 18 tests and all 17 mutants; inherited
+  subject/reader/ledger/episode/source/storage/wire/localized Taskfile controls,
+  lint/strict types and documentation links. All inherited ordered cells,
+  associations, 149 outside records and system inputs were compared directly
+  with the pre-regeneration artifacts. Instruments hash all subjects before/
+  after; pure checks changed no native verdict. Browser inspection verified both
+  served deep links, rendered layouts and matching discussion/change markers.
+- Rechecked every original k227/k225/k220 Done when against the scoped amendment
+  in the composition report's full table. The explicit construction and precise
+  failed conservative enclosure satisfy their allowed unestablished boundary;
+  no remaining strict-runtime design gap or new native-capture leaf is due.
+  Retire this leaf and close only k227/k225/k220, promoting the derived handoff
+  to k218. K221 remains live with the complete-family/refuted-construction
+  reconciliation obligation; k218/k215 remain open and keep their hold and
+  mandatory whole-k215 review/Creator duties. No fragment review or Creator write.

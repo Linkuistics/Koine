@@ -165,14 +165,20 @@ remains provider-owned with its backing excluded; no total heap/hidden-copy/
 runtime-attempt/RSS/peak guarantee or useful fit follows. Every other original
 Done when remains binding, including ownership/lifetime descriptions and cleanup.
 
-Application-metadata-scoped-accounting-k232 is the single authorized design
-continuation. It reconciles every remaining receipt and the pre-selection
-spec/packet/composition/view/control set, derives the full scoped expressions,
-and applies every original k227/k225/k220 criterion under exactly this amendment
-before k221. Frozen k230 pending-choice markers describe its unselected proposal;
-they do not override k231's actual answer. Existing gates/no-refund semantics,
-all 2,043 associations/run, 149 outside records/system reserves, useful breadth,
-agreed public/binary/isolated signed-VM seams, authority/action/Settings/disclosure/
-compatibility and pending native G/N/V remain. This live continuation prevents
-node closure or promotion; no Creator, fragment review, implementation, native
-experiment or early consumption-hold removal is earned.
+Application-metadata-scoped-accounting-k232 completes the authorized continuation.
+Its current runtime spec/packet and composition report/per-item JSON specify
+explicit owner/header/growth/field/cleanup recipes and real provider-owned
+publication. Every inherited ordered cell/association and all 65 receipt labels
+are preserved; strict failure is comparative, not a live choice. Full expressions
+remain conditional on actual native event tapes/final values/errors. The saved
+controlled-path partial conservative enclosures already exceed the gross gate;
+this candidate establishes neither useful fit nor actual native overflow. No
+new amount, quota, useful loss or native-capture/strict-choice model is adopted.
+
+The original Done when was checked in full under the selected accounting
+amendment in docs/verification/application-metadata-composition.md. The explicit
+design and precise failed enclosure satisfy the permitted unestablished boundary;
+this node closes after k232 retirement. Frozen controls and ordered comparisons
+pass. Promote the result through k225/k220 to k218, with hold and native G/N/V
+intact. K221 must reconcile the complete family/live charters with this actual
+failed candidate before any consumption. No fragment review or Creator is earned.

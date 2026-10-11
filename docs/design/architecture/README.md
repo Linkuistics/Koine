@@ -8,20 +8,17 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Start with [Runtime admission → Separate explicit storage from the public value boundary](index.html#diagram-native-metadata-runtime-admission).
-The [runtime admission contract](../../specs/application-metadata-runtime-admission.md)
-compares current collections with explicit staging and a real ProviderValue
-adapter. Portable public ABI evidence cannot establish the full pre-call upper.
-The scoped accounting recommendation requires Antony's selection; it is not
-adopted. The existing strict contract, useful-population hold and native G/N/V
-remain. Graphs use the dark Start here entry convention above.
+- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Applied Antony's scoped selection, explicit owner/cleanup receipts and real provider-owned publication; disclosed excluded runtime internals without a heap/peak guarantee.
+- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Added owner-header/cleanup augmentation and complete episode/job expressions, preserving all saved associations/outside records/system groups.
 
-Unchanged context: [Owned composition → Require runtime bounds before acquisition](index.html#diagram-native-metadata-composition).
-The [composition result](../../verification/application-metadata-composition.md)
-joins every saved episode, removes duplicate read attempts and exposes the
-missing pre-call runtime capacity/publication contract. Packed requested capacities
-do not bind the current Swift collections. Unknown operands preserve a failed
-construction and the family hold; no useful-fit or native verdict follows.
+The [runtime contract](../../specs/application-metadata-runtime-admission.md)
+and [scoped accounting ADR](../../adr/application-metadata-accounting-covers-explicit-work.md)
+bind. Strict portable-runtime certification failure is comparative evidence,
+not a pending human choice. Native operands, final values and errors keep full
+useful fit unestablished; the family hold and native G/N/V remain. The
+[composition result](../../verification/application-metadata-composition.md)
+classifies every inherited source/root receipt and supplies explicit recipes.
+Unknown explicit work never becomes an excluded cost or zero.
 
 Unchanged context: [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
 The [selected-wire derivation](../../verification/application-metadata-wire.md)
@@ -85,9 +82,9 @@ host-disclosure/refusal contracts.
 
 Changed in this discussion:
 
-- [Runtime admission → Separate explicit storage from the public value boundary](index.html#diagram-native-metadata-runtime-admission) — Added explicit staging, mandatory Swift publication and the human accounting/qualification choice.
-- [Runtime admission → Concrete decision awaiting Antony](../../specs/application-metadata-runtime-admission.md#concrete-decision-awaiting-antony) — Defined the proposed exclusion of runtime backing and generated traffic from numeric accounting without moving provider work to the host.
-- [Composition → Runtime binding obligations](../../verification/application-metadata-composition.md#runtime-binding-obligations) — Linked the precise public-interface obstruction and retained every inherited receipt and saved association.
+- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Applied the selected scope and retained the strict failure as comparison.
+- [Runtime admission → Selected boundary](../../specs/application-metadata-runtime-admission.md#concrete-decision-awaiting-antony) — Reconciled Antony's selected exclusions while retaining charged provider work and the weaker guarantee.
+- [Composition → Admission and lifetime](../../verification/application-metadata-composition.md#runtime-binding-obligations) — Included explicit owner/cleanup writes and complete conditional episode/job expressions without inventing native operands.
 
 ## Other architecture topics
 
