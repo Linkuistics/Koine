@@ -156,3 +156,10 @@ hydration/listener/store/action witnesses. Every native verdict stays pending.
 Historical macOS 26.6.2 census qualifies no macOS 27 subject and changes no macOS
 26+ support floor. No implementation, new amount/ABI/posture/quota/useful loss or
 pruning is authorized by this handoff.
+
+Grouped-storage k233 supplies the current failed refinement in
+`docs/verification/application-metadata-grouped-storage.md`: controlled grouped
+local/source/two-walk subterms still exceed 20 MiB before other terms. Keep the
+whole-k215 consumption hold. K235 seeks an actual acceptance-ordering choice;
+its guarded-qualification proposal is unselected. Do not turn this into a
+native pass, duplicate capture leaf, implementation permission or useful loss.

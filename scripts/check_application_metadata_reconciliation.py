@@ -29,6 +29,7 @@ SUITE = (
     "design:application-metadata-owned-storage-check",
     "design:application-metadata-wire-check",
     "design:application-metadata-composition-check",
+    "design:application-metadata-grouped-check",
     "design:search-check",
     "design:localized-boundary-check",
     "design:long-applications-check",
@@ -158,6 +159,14 @@ def check_family() -> None:
         }
         if any(run.get(key) != value for key, value in expected.items()):
             errors.append(f"{name}: failed conservative enclosure or conditional operands changed")
+    grouped = load("docs/design/application-metadata-grouped-storage.json")
+    if (grouped.get("usefulFitEstablished") is not False
+            or grouped.get("nativeVerdict") != "PENDING"
+            or grouped.get("episodeSpellings") != composition["episodeSpellings"]
+            or grouped.get("outsidePaths") != composition["outsidePaths"]
+            or load(CONTRACT).get("groupedCandidate")
+            != "application-metadata-grouped-storage.json"):
+        errors.append("grouped candidate lost its complete association/hold handoff")
     for path in ("docs/design/workspace-search-schema.graphql",
                  "docs/design/desktop-workspace-native-schema-extension-host.graphql"):
         sdl = (ROOT / path).read_text()

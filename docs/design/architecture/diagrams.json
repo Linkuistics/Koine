@@ -1,65 +1,33 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected application reader semantics include platform/plain information, strings/loctables, independent direct/table inventories, 128 KiB regular files and individual affected-fact refusal. Scoped explicit-work admission is 20 MiB without refund; runtime internals are excluded with no heap/RSS/peak bound. The conservative candidate supplies no useful finite fit, so the k215 consumption hold and mandatory whole-producer review remain before k7. Every native G/N/V is pending. Eight raw-search views are comparison. Graphs begin at the dark Start here node; sequences read from their first message. Images are components in one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected application reader semantics include platform/plain information, strings/loctables, independent direct/table inventories, 128 KiB regular files and individual affected-fact refusal. Scoped explicit-work admission is 20 MiB without refund; runtime internals are excluded with no heap/RSS/peak bound. The grouped controlled enclosure also supplies no useful finite fit, so the k215 consumption hold and mandatory whole-producer review remain before k7. Every native G/N/V is pending. Eight raw-search views are comparison. Graphs begin at the dark Start here node; sequences read from their first message. Images are components in one resident process.",
   "discussion": {
-    "title": "Reconcile the selected reader and retain the failed-fit hold",
-    "status": "Selected contract; useful finite fit unestablished",
-    "summary": "The full family uses selected strings/loctable semantics, 128 KiB files, individual affected-fact refusal and scoped 20 MiB raw/explicit-operation accounting. The partial conservative enclosure fails useful fit; actual native operands/final response remain conditional. Preserve the consumption hold, mandatory whole-k215 review and every pending G/N/V.",
+    "title": "Grouped inventory refinement fails its controlled enclosure",
+    "status": "Failed candidate; acceptance-ordering proposal unselected",
+    "summary": "Linked slabs retain all keys and save 3,057,614 local gross bytes. Controlled source paths plus both walk literal/state blocks still exceed 20 MiB before other terms. Keep k215 live, its consumption hold and every pending native case. A requirements leaf will seek Antony’s actual acceptance-ordering choice; no amendment is adopted.",
     "diagramIds": [
-      "native-localized-decision",
-      "native-application-population",
-      "native-metadata-reader-plan",
-      "native-metadata-subject",
-      "native-metadata-operation-ledger",
-      "native-metadata-source-root",
-      "native-metadata-owned-storage",
-      "native-long-applications",
-      "native-discovery-contract",
-      "native-discovery-sources",
+      "native-metadata-grouped-storage",
       "native-metadata-composition",
       "native-metadata-runtime-admission",
+      "native-metadata-reader-plan",
       "native-metadata-wire"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-localized-decision",
-        "summary": "Replaced the omitted-table proposal with selected strings/loctable semantics, 128 KiB files and individual refusal; kept failed useful fit and the hold visible."
+        "id": "native-metadata-grouped-storage",
+        "summary": "Added complete grouped ownership, linked growth, receipt replacement and failed controlled enclosure with the unselected human choice."
+      },
+      {
+        "id": "native-metadata-composition",
+        "summary": "Marked original local receipts as comparison and linked the tighter grouped failed-candidate boundary."
+      },
+      {
+        "id": "native-metadata-runtime-admission",
+        "summary": "Kept the selected scope and hold while exposing the failed grouped refinement and unselected ordering choice."
       },
       {
         "id": "native-application-population",
-        "summary": "Replaced old conditional fit with the failed scoped partial conservative enclosure and conditional native operands."
-      },
-      {
-        "id": "native-metadata-reader-plan",
-        "summary": "Updated the completion boundary to specified scoped expressions with useful fit unestablished and the consumption hold retained."
-      },
-      {
-        "id": "native-metadata-subject",
-        "summary": "Updated the evidence handoff to the current scoped candidate and retained hold, preserving historical census limits."
-      },
-      {
-        "id": "native-metadata-operation-ledger",
-        "summary": "Linked the ledger boundary to current scoped composition while retaining pending useful and native qualification."
-      },
-      {
-        "id": "native-metadata-source-root",
-        "summary": "Clarified in the caption that current raw recipes are supplied while actual native operands and final wire remain conditional."
-      },
-      {
-        "id": "native-metadata-owned-storage",
-        "summary": "Clarified in the caption that local pre-amendment receipts are comparison inputs to current scoped composition, not a whole-job certificate."
-      },
-      {
-        "id": "native-long-applications",
-        "summary": "Reconciled the ordinary-reader caption to selected file semantics without changing indexed provenance or the independent action boundary."
-      },
-      {
-        "id": "native-discovery-contract",
-        "summary": "Reconciled the composition caption to selected scoped admission and the failed useful-fit boundary, preserving independent images and Settings repairs."
-      },
-      {
-        "id": "native-discovery-sources",
-        "summary": "Reconciled the source caption to selected semantics and conditional fit, preserving source breadth and all native obligations."
+        "summary": "Updated the caption to the tighter grouped failed enclosure while retaining all population semantics and the hold."
       }
     ]
   },
@@ -123,7 +91,7 @@
       "renderer": "svg",
       "source": "native-metadata-composition.d2",
       "rendered": "native-metadata-composition.svg",
-      "caption": "Complete scoped expressions preserve all saved associations, outside records and system groups. Known local terms gain explicit owner and cleanup writes; shared read attempts/scratch count once. Actual native event operands and final values/errors remain unknown, so no useful fit or native pass follows."
+      "caption": "Original independent-block receipts remain reproducible comparison. The grouped refinement replaces complete key partitions and still fails its controlled enclosure. All five episode/four job tapes, provider-owned publication and the full independent wire remain; native operands/final values remain conditional. The k215 hold and whole review bind; the k235 ordering choice is unselected."
     },
     {
       "id": "native-metadata-two-walks",
@@ -249,7 +217,7 @@
       "renderer": "svg",
       "source": "native-application-population.d2",
       "rendered": "native-application-population.svg",
-      "caption": "Complete staging remains required. Current scoped local-plus-controlled-path partial conservative enclosures 23,502,420/23,676,527 exceed 20,971,520 before other terms; this supplies no useful fit, inevitable native overflow or impossibility of tighter construction. Selected 128 KiB files/individual refusal and whole-population shared failure remain distinct. Every native G/N/V, useful baseline/P1024/L1500, independent actions and the k215 hold/whole review remain."
+      "caption": "Complete staging and selected semantics remain binding. The original independent-block arithmetic is comparison; the grouped local/source/two-walk enclosure is 23,238,610/23,412,717, above 20,971,520 before other terms. No useful fit, runtime lower bound or native pass follows. The k215 hold, whole review and pending useful/native obligations remain."
     },
     {
       "id": "native-settings-decision",
@@ -510,7 +478,16 @@
       "renderer": "svg",
       "source": "native-metadata-runtime-admission.d2",
       "rendered": "native-metadata-runtime-admission.svg",
-      "caption": "Selected scoped accounting. Provider-owned real Swift publication charges explicit invocations; runtime backing/compiler traffic are excluded, with no total heap/RSS/peak guarantee. Native operands and final response remain conditional. The strict comparison is not a pending human choice."
+      "caption": "Selected scoped accounting. Provider-owned real Swift publication charges explicit invocations; runtime backing/compiler traffic are excluded, with no total heap/RSS/peak guarantee. Native operands and final response remain conditional. The strict comparison is not a pending human choice. The grouped refinement fails its controlled enclosure; k235 seeks an actual ordering choice without changing current gates or lifting the hold."
+    },
+    {
+      "id": "native-metadata-grouped-storage",
+      "group": "native-contract",
+      "title": "Grouped ownership → Preserve literal keys through slab growth",
+      "renderer": "svg",
+      "source": "native-metadata-grouped-storage.d2",
+      "rendered": "native-metadata-grouped-storage.svg",
+      "caption": "Design-only linked-slab refinement: all literal/direct/table observations remain. The controlled enclosure exceeds 20 MiB before other terms. Native work/final wire remain conditional; k215 hold and whole review remain. Acceptance-ordering proposal is unselected."
     }
   ]
 }

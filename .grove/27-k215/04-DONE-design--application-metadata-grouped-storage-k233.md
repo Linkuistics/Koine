@@ -83,3 +83,65 @@ Design only. No reader implementation, native probe/capture, launch, consent,
 indexing/registration, signing or VM experiment. Use the saved subject and exact
 source/pure design instruments. Nothing authorizes useful loss, another envelope,
 accounting scope or compatibility/posture choice without Antony's actual answer.
+
+## Decisions (running log)
+
+- Bootstrap resolved the mandated k233 leaf and read the root/k215 brief chain,
+  glossary, selected accounting and facts/image/disclosure decisions. The jj
+  working copy started empty at 280f1706 on 4ee77115. Taskfile.yml remains the
+  reusable verification entry point. No reader or native experiment is authorized.
+- Tier 2 graph generation 2026-09-29T10:36:20Z is stale for Engine; its respond
+  snippet resolves to shifted source. Exact current Engine source, including the
+  missed line 295, supplies encode-before-response-cap evidence. Docs/scripts are
+  excluded and are read directly. No graph completeness claim or reindex follows.
+- Evaluate one linked-slab grouped candidate: independent direct/table inventory
+  owners, immutable raw key bytes and 40-byte offset/length/class/ordinal spans.
+  Direct selector keys borrow suffix-free ranges rather than owning a third copy.
+  New slabs overlap old slabs without relocating prior bytes; all links, cursors,
+  classifications, requests, writes, retirement and explicit operations remain
+  charged. Movable geometric buffers were rejected as the comparison because
+  growth recopies populated prefixes. This is a design candidate, not fit or
+  permission to implement, change budgets, omit sources or lift the hold.
+- The complete candidate charges the 128-byte descriptor, 64-byte backing
+  headers, pending acquisition transfers, final raw count, exact span/classification/
+  selector/count/cursor writes, linked growth and retirement. Source/API/input
+  overlaps are partitioned explicitly. Both original ordered 2,043-row runs retain
+  every composition/storage/local/wire cell; report interning shares only saved
+  shapes, never production ownership or repeated charges.
+- Failed candidate result: local 16,811,702/16,985,809; adding controlled paths
+  gives 20,444,806/20,618,913; adding both walk literal/state subterms gives
+  23,238,610/23,412,717 against 20,971,520 before other terms. Complete actual
+  native work/final wire remains conditional, not zero or excluded. No inevitable
+  overflow/impossibility proof follows. All independent gates/semantics stay.
+- The specific unresolved trade-off is acceptance ordering: recommend private
+  guarded implementation for existing qualification before analytic useful fit,
+  retaining advertisement/consumption and whole-review/native acceptance gates,
+  versus keeping the current analytic-first hold with a specific further design
+  route. Neither amendment is adopted. Cut requirements k235 for Antony's actual
+  answer; repeat neither k217/k231 nor N5/N8/V11/V13 capture. K215 stays live.
+- Whole family/live consumers and current contract point to the failed grouped
+  refinement; old independent-block receipts remain reproducible comparison.
+  Agreed GraphQL/binary/signed-VM seams, native G1–G11/N1–N8/V1–V13, useful
+  witnesses/breadth, retained actions, disclosures and Settings repairs remain.
+  No ABI, quota, posture, signing, permission or reader implementation changed.
+- Pure controls passed: 61 grouped cases, eight discarded omission controls with
+  the unchanged instrument passing, lint and strict types. Browser current panel,
+  fresh deep link, responsive mobile and rendered dark export were inspected.
+  Browser color-scheme emulation is unavailable; dark inspection used the D2
+  theme-200 export without altering OS/browser settings. Viewport reset; only the
+  current discussion remains open.
+- Final `task design:application-metadata-reconciliation-check` passed all 14
+  inherited/grouped suites and strict checks. Before/after hashes match for all
+  2,447 per-item inputs. Native verdict remains PENDING. This terminal failed
+  candidate retires k233 only; k235 remains live and no parent close is earned.
+
+## Original k215 close checks
+
+| Original condition | Result |
+| --- | --- |
+| Independent finite subject, useful breadth and dimensions | Saved complete bounded baseline/P1024/L1500 associations, outside observations and witnesses retained. Native supported-VM/source qualification stays pending. |
+| Actual sizing/format/accounting selection | K217/K231 answers unchanged. Acceptance-ordering proposal unselected; k235 owns the actual new choice. |
+| Every fixed file/layout/key/selector/refusal branch | Existing complete semantics preserved, including independent inventories and no refused-name rescue. Grouped storage changes only candidate raw representation. |
+| Full useful attempts/gross/wire and family reconciliation | Complete replacement/conditional composition supplied at precise failed-candidate boundary; useful finite certificate not earned. Family/live consumers reconciled, hold retained. |
+| Original-defect and new owner/growth/cleanup controls | Inherited controls retained; grouped controls added. No pure check yields a native pass. Final whole-suite hashes are compared item by item. |
+| Mandatory whole-producer review and actual closure | Existing root k234 reviews all k215 before k7. No fragment/duplicate review. K215 remains live with k235; this session writes no Creator on k234 and closes only k233. |

@@ -532,3 +532,17 @@ application exposes every required menu through one mechanism.
 These questions belong to design and planning. The agreed behavioral scope,
 client/server boundary and test seams are their inputs and must not be
 re-interviewed merely to choose an implementation.
+
+## Grouped refinement and retained hold
+
+The [grouped inventory/key refinement](../verification/application-metadata-grouped-storage.md) replaces complete retained key
+partitions with independent linked-slab owners, while preserving the selected
+reader semantics, scoped gates, every saved association and the full wire. Its
+controlled local/source/two-walk enclosure still exceeds 20 MiB before other
+terms; it establishes no useful fit or native pass. Earlier independent-block
+numbers remain reproducible comparison. K215 and its consumption hold remain
+live. The proposed private guarded qualification before analytic fit needs
+Antony's actual acceptance-ordering choice in k235; no amendment is adopted.
+Existing whole-producer review, all native G/N/V, actual full operands/response,
+useful breadth and independent authority/action/Settings/disclosure/compatibility
+duties remain. No repeated strict/scoped selection or new capture leaf follows.

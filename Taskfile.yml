@@ -767,6 +767,27 @@ tasks:
       - task design:application-metadata-owned-storage
       - task design:application-metadata-wire
       - task design:application-metadata-composition
+      - task design:application-metadata-grouped-render
+      - task design:application-metadata-grouped-storage
+
+  design:application-metadata-grouped-render:
+    desc: Render grouped ownership and the precise failed controlled enclosure
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-grouped-storage.d2 docs/design/architecture/native-metadata-grouped-storage.svg
+
+  design:application-metadata-grouped-storage:
+    desc: Compose saved grouped key receipts without native observations or fit claims
+    cmds:
+      - python3 scripts/application_metadata_grouped_storage.py --write
+
+  design:application-metadata-grouped-check:
+    desc: Check grouped growth, every failure prefix, borrowers, receipts and associations
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_grouped_storage.py scripts/test_application_metadata_grouped_storage.py scripts/check_application_metadata_grouped_mutations.py
+      - python3 scripts/application_metadata_grouped_storage.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_grouped_storage.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_grouped_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_grouped_storage.py scripts/test_application_metadata_grouped_storage.py scripts/check_application_metadata_grouped_mutations.py
 
   design:application-metadata-reconciliation-check:
     desc: Reject current/historical drift and run all inherited checks on frozen inputs; native pending

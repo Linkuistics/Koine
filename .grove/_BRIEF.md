@@ -376,9 +376,9 @@ reach/old-host refusal and retained action-only evidence remain intact.
 The current candidate establishes no useful finite fit. Partial conservative
 local-plus-controlled-path enclosures exceed the gate before other terms; native
 operands/final wire remain conditional. Keep k215's consumption hold. Its original
-useful-certificate condition is still unsatisfied, so k215 stays live with bounded
-design application-metadata-grouped-storage-k233, seeking one tighter grouped raw
-inventory/key ownership construction within the settled selections. A failed
+useful-certificate condition is still unsatisfied, so k215 stays live. The bounded grouped design k233 evaluated a tighter
+linked-slab construction within the settled selections and still failed its
+controlled enclosure; k235 now owns the actual acceptance-ordering choice. A failed
 refinement must supply a concrete evidence-backed trade-off before any unselected
 choice; repeat neither strict/scoped selection nor already chartered native capture.
 
@@ -388,3 +388,16 @@ writes Creator there; k221 finishes only k218. Every native G/N/V remains pendin
 `docs/verification/application-metadata-reconciliation.md` carries the family map,
 original close checks and reproducible frozen controls; design/browser consistency
 supplies no native qualification or authorization to reduce useful choices.
+
+## Grouped refinement result and actual remaining choice
+
+K233 delivered a complete grouped raw ownership/receipt design and pure controls,
+not useful fit: grouped local/source/two-walk enclosures are 23,238,610/23,412,717
+before other terms against 20,971,520. All native/full-response operands remain
+conditional. The original useful finite certificate condition still fails; keep
+k215 and its no-reader-implementation/consumption hold live. Missing work is
+application-metadata-acceptance-ordering-k235: Antony must choose the concrete
+guarded-qualification-before-analytic-fit proposal or retain the analytic-first
+condition with a specific further design route. No amendment is adopted.
+This is not another scoped model or native capture leaf. The existing root whole
+review k234 remains before k7; only the actual k215 closing session writes Creator.

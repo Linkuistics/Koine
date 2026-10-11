@@ -7,22 +7,53 @@
   "composition": "application-metadata-composition.json",
   "wire": "application-metadata-wire.json",
   "reader": {
-    "layoutPriority": ["Contents", "Support Files", "Resources", "."],
-    "informationBases": ["Contents", "Support Files", "Resources", "."],
-    "resourceBases": ["Contents/Resources", "Support Files/Resources", "Resources", "."],
-    "informationFiles": ["Info-macos.plist", "Info.plist"],
-    "nameFiles": ["InfoPlist-macos.strings", "InfoPlist.strings", "InfoPlist-macos.loctable", "InfoPlist.loctable"],
+    "layoutPriority": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
+    "informationBases": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
+    "resourceBases": [
+      "Contents/Resources",
+      "Support Files/Resources",
+      "Resources",
+      "."
+    ],
+    "informationFiles": [
+      "Info-macos.plist",
+      "Info.plist"
+    ],
+    "nameFiles": [
+      "InfoPlist-macos.strings",
+      "InfoPlist.strings",
+      "InfoPlist-macos.loctable",
+      "InfoPlist.loctable"
+    ],
     "priority": "BASE_FIRST_GLOBAL_THEN_EXACT_DIRECT_PLAN",
     "advanceLayoutOrInformation": "CHECKED_ABSENCE_ONLY",
     "advanceName": "CHECKED_ABSENCE_OR_HEALTHY_NO_NAME_ONLY",
-    "nameKeyPriority": ["CFBundleDisplayName", "CFBundleName"],
+    "nameKeyPriority": [
+      "CFBundleDisplayName",
+      "CFBundleName"
+    ],
     "inventories": "INDEPENDENT_COMPLETE_DIRECT_AND_EACH_TABLE",
     "reservedTableKey": "LocProvenance",
     "reservedTableKeyIsLanguage": false,
     "selector": "EXPLICIT_PREFERENCES_EXACT_DEVELOPMENT_FIRST_THEN_BYTE_SORTED",
     "selectorReturns": "ALL_RAW_SLOTS_EXACT_MAP_THEN_ORDERED_DEDUPLICATION",
-    "backstops": ["EXACT_OBSERVED_BASE", "EXACT_OBSERVED_DEVELOPMENT"],
-    "wholePathCalls": ["URL.resourceValues(isApplicationKey)"],
+    "backstops": [
+      "EXACT_OBSERVED_BASE",
+      "EXACT_OBSERVED_DEVELOPMENT"
+    ],
+    "wholePathCalls": [
+      "URL.resourceValues(isApplicationKey)"
+    ],
     "lastOrdinaryRootBytes": 1023,
     "firstIndexedRootBytes": 1024,
     "descendants": "HELD_DIRECTORY_LITERAL_COMPONENT_NOFOLLOW_PARENT_NAME_MAX",
@@ -62,7 +93,7 @@
   "qualification": {
     "readerSemanticsEstablished": true,
     "usefulFiniteCertificateEstablished": false,
-    "constructionOutcome": "PARTIAL_CONSERVATIVE_ENCLOSURE_EXCEEDS_GATE_FULL_NATIVE_OPERANDS_CONDITIONAL",
+    "constructionOutcome": "GROUPED_CONTROLLED_SUBENCLOSURE_EXCEEDS_GATE_FULL_NATIVE_AND_WIRE_CONDITIONAL",
     "consumptionHold": true,
     "producer": "application-localized-metadata-k215",
     "mandatoryWholeProducerReview": true,
@@ -73,8 +104,17 @@
     "outsideQueryObservations": 149,
     "systemSeedGroups": 2,
     "nameByteWitness": 129,
-    "usefulWitnesses": ["Find My English", "Voice Memos English", "German loctable"],
-    "requiredSeams": ["PUBLIC_GRAPHQL", "ACTUAL_PROVIDER_HOST_BINARIES", "ISOLATED_SIGNED_SUPPORTED_MACOS_VMS"],
+    "usefulWitnesses": [
+      "Find My English",
+      "Voice Memos English",
+      "German loctable"
+    ],
+    "requiredSeams": [
+      "PUBLIC_GRAPHQL",
+      "ACTUAL_PROVIDER_HOST_BINARIES",
+      "ISOLATED_SIGNED_SUPPORTED_MACOS_VMS"
+    ],
     "sourceLocaleOrUsefulCategoryLoss": false
-  }
+  },
+  "groupedCandidate": "application-metadata-grouped-storage.json"
 }

@@ -98,17 +98,16 @@ separate from actual binaries and signed supported VMs.
 | k218 family/test handoff and review | Complete family reconciled; pure controls remain separate from pending G/N/V. Missing useful-construction work is externalized under k215; root whole-k215 review precedes k7. |
 | k215 independent subject and selected choice | Frozen bounded baseline/P1024/L1500, all outside observations, dimensions and actual k217/k231 answers retained; no re-interview or current-OS/exhaustive claim. |
 | k215 exact file/selector/oversize branches | Complete selected reader semantics and accounting/publication boundary specified; no foreign Bundle/resource scan or useful loss. |
-| k215 useful finite certificate | **Not satisfied.** Current conservative candidate supplies no useful fit. A bounded tighter raw inventory/key ownership construction must replace or tighten that enclosure, with complete current expressions and actual finite operands. |
+| k215 useful finite certificate | **Not satisfied.** The grouped linked-slab refinement also supplies no useful fit. Its controlled local/source/two-walk enclosure exceeds the selected gate; actual acceptance-ordering choice k235 remains before any amendment. |
 | k215 whole-producer closure | **Not earned.** Keep k215 live and its consumption hold. Its eventual closing session checks every original condition, completes reconciliation and writes its own Creator on the root review; this reconciliation closes only k218's allowed failed-boundary handoff. |
 
-The bounded follow-up evaluates grouping existing raw inventory/key blocks under
+The completed bounded refinement evaluated grouping existing raw inventory/key blocks under
 shared episode owners, retaining actual payload/header/growth/field/cleanup writes,
 failure prefixes and borrower lifetimes. It cannot change accounting scope, amounts,
 file/locale/source breadth, ABI or posture. Native tuples/visits/preferences/returns/
 final observations already belong to N5/N8/V11/V13, not another capture leaf.
-No second strict/scoped model is due. If the refinement cannot establish sound fit,
-retain the hold and state one concrete trade-off with evidence before adopting
-any unselected change. The mandatory whole-k215 review reads the complete eventual
+No second strict/scoped model is due. The refinement did not establish sound fit. Retain the hold; k235 seeks the
+concrete proposed acceptance-ordering choice with its evidence before any amendment. The mandatory whole-k215 review reads the complete eventual
 producer, rather than declaring this failed candidate implementable.
 
 ## Reproduction and presentation
@@ -137,3 +136,17 @@ Changes in this reconciliation:
 - [Workspace → Localized reader decision](../specs/workspace-search.md#localized-reader-decision) — Replaced the historical recipe with selected file/inventory/refusal semantics and honest accounting/failure boundaries.
 - [Native acceptance](native-discovery-acceptance.md#g-public-contract-and-independent-authority) — Preserved every native case while updating selected sizes, per-object outcomes and current scoped qualification.
 - [Original producer close conditions](#original-producer-close-conditions) — Distinguished k218's complete failed-boundary handoff from k215's still-missing useful certificate.
+
+## Grouped refinement and retained hold
+
+The [grouped inventory/key refinement](application-metadata-grouped-storage.md) replaces complete retained key
+partitions with independent linked-slab owners, while preserving the selected
+reader semantics, scoped gates, every saved association and the full wire. Its
+controlled local/source/two-walk enclosure still exceeds 20 MiB before other
+terms; it establishes no useful fit or native pass. Earlier independent-block
+numbers remain reproducible comparison. K215 and its consumption hold remain
+live. The proposed private guarded qualification before analytic fit needs
+Antony's actual acceptance-ordering choice in k235; no amendment is adopted.
+Existing whole-producer review, all native G/N/V, actual full operands/response,
+useful breadth and independent authority/action/Settings/disclosure/compatibility
+duties remain. No repeated strict/scoped selection or new capture leaf follows.

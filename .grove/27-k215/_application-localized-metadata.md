@@ -144,16 +144,29 @@ The original k215 close check still fails its useful finite certificate conditio
 Local-plus-controlled-path conservative enclosures 23,502,420/23,676,527 exceed
 20,971,520 before other terms; complete actual native event operands/final values/
 wire remain conditional. This is no inevitable overflow/impossibility proof.
-The consumption hold remains. Missing design work is the live
-application-metadata-grouped-storage-k233 sibling: one grouped raw inventory/key
+The consumption hold remains. The evaluated grouped candidate was commissioned as
+application-metadata-grouped-storage-k233: one grouped raw inventory/key
 ownership refinement with full owner/field/growth/cleanup/lifetime composition under
 unchanged selections, or a precise failed result and concrete actual human choice.
 No repeated strict/scoped model or native-capture leaf is due.
 
 Mandatory whole-producer review application-localized-metadata-k234 now sits at
-the root immediately before the k7 node, Reviews naming k215. K215 stays live with
-k233; this session earns no Creator for it. Its actual closing session checks all
+the root immediately before the k7 node, Reviews naming k215. K215 stays live; k233 is a completed failed-candidate refinement
+with the unresolved actual acceptance-ordering choice externalized as k235; this session earns no Creator for it. Its actual closing session checks all
 original conditions, completes any resulting reconciliation, names its own Creator
 on k234 and k215 in the commit. Earned integration remains before k7. All native
 G1–G11/N1–N8/V1–V13, useful breadth, Settings/location/core gates, authority/action/
 image/disclosure/compatibility contracts remain binding and pending as applicable.
+
+## Grouped refinement result and actual remaining choice
+
+K233 delivered a complete grouped raw ownership/receipt design and pure controls,
+not useful fit: grouped local/source/two-walk enclosures are 23,238,610/23,412,717
+before other terms against 20,971,520. All native/full-response operands remain
+conditional. The original useful finite certificate condition still fails; keep
+k215 and its no-reader-implementation/consumption hold live. Missing work is
+application-metadata-acceptance-ordering-k235: Antony must choose the concrete
+guarded-qualification-before-analytic-fit proposal or retain the analytic-first
+condition with a specific further design route. No amendment is adopted.
+This is not another scoped model or native capture leaf. The existing root whole
+review k234 remains before k7; only the actual k215 closing session writes Creator.
