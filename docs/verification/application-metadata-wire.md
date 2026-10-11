@@ -1,5 +1,17 @@
 # Application metadata selected-wire derivation
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Selected wire → Expand selection before counting bytes](../design/architecture/index.html#diagram-native-metadata-wire)
 shows the independent response boundary. Graphs begin at their dark **Start here**
 node; numbered edges give accounting order. This is a pure design instrument,
@@ -198,4 +210,5 @@ outside records, cap equality and the Swift replacement path shape. The inherite
 subject/reader/ledger/episode/source/root/storage and localized-boundary checks
 retain charge/call/branch and original oversize/baseline/omitted-table controls.
 Passing pure checks closes no native G/N/V case, useful whole-job fit, family hold
-or whole-producer review. Owned composition and all parent close checks stay live.
+or whole-producer review. Current complete scoped composition supplies the recipes/parent checks; useful
+fit and actual final selected-wire operands remain conditional.

@@ -124,3 +124,36 @@ actually closes this node writes its own Creator run on that review.
   focused session. Complete only the first design child this session. Preserve
   all original Done when criteria, the consumption hold and pending native G/N/V.
   No new reader format, gate, accounting rule or useful loss is adopted.
+
+## Whole-family reconciliation and remaining original condition
+
+Application-metadata-reconciliation-k221 closes application-localized-metadata-k218
+at its explicit failed-boundary handoff. Current reader semantics, scoped admission
+and the complete family/live consumers agree in
+`docs/design/application-metadata-contract.json` and
+`docs/verification/application-metadata-reconciliation.md`. Editable/rendered views,
+SDL/four profiles and required fixed information/name-file/direct-localization host
+read disclosures are current. Thirteen inherited Taskfile check targets plus new
+cross-family mutation controls/lint/strict types passed with 2,437 unchanged
+before/after input hashes. The reader/population/source/ownership presentation,
+discussion/outline markers, mobile and dark delivery were inspected; overrides
+were reset. Regenerated episode/source-root/storage/wire/composition packets retain
+every non-hash field and association. No reader implementation or native pass.
+
+The original k215 close check still fails its useful finite certificate condition.
+Local-plus-controlled-path conservative enclosures 23,502,420/23,676,527 exceed
+20,971,520 before other terms; complete actual native event operands/final values/
+wire remain conditional. This is no inevitable overflow/impossibility proof.
+The consumption hold remains. Missing design work is the live
+application-metadata-grouped-storage-k233 sibling: one grouped raw inventory/key
+ownership refinement with full owner/field/growth/cleanup/lifetime composition under
+unchanged selections, or a precise failed result and concrete actual human choice.
+No repeated strict/scoped model or native-capture leaf is due.
+
+Mandatory whole-producer review application-localized-metadata-k234 now sits at
+the root immediately before the k7 node, Reviews naming k215. K215 stays live with
+k233; this session earns no Creator for it. Its actual closing session checks all
+original conditions, completes any resulting reconciliation, names its own Creator
+on k234 and k215 in the commit. Earned integration remains before k7. All native
+G1–G11/N1–N8/V1–V13, useful breadth, Settings/location/core gates, authority/action/
+image/disclosure/compatibility contracts remain binding and pending as applicable.

@@ -1,5 +1,17 @@
 # Application metadata operation and ownership ledger
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Reader accounting → Reserve cleanup before acquisition](../design/architecture/index.html#diagram-native-metadata-operation-ledger)
 shows the accounting boundary. Graphs start at the dark **Start here** node;
 numbered edges express work order. This is the operation grammar for the
@@ -10,15 +22,15 @@ operation. Platform names in traces are labels, not calls.
 **Construction boundary.** This ledger replaces no population certificate and
 claims no aggregate fit. Application-metadata-episode-certificate-k223 must
 apply it to all 2,043 saved episodes, derive source/storage/gross/wire terms,
-and expose missing dimensions. K220 remains open. K221 owns whole-family
-reconciliation; k215's consumption hold, mandatory whole-producer review and
+and expose missing dimensions. The scoped composition supplies the complete conditional expressions. Whole-family
+reconciliation preserves k215's consumption hold, mandatory whole-producer review and
 pending G1–G11/N1–N8/V1–V13 remain binding. No accepted budget, file family,
 authority, deadline or accounting rule changes here.
 
 The [saved-episode assessment](application-metadata-episode-certificate.md)
 now supplies all alias-preserving dimensions and conditional reader API-call
 uppers. Its source/root/owned-storage/scalar/wire terms remain unknown, with
-precise design work before k221; k220 and the family hold remain open.
+native operands/final wire conditional; the useful-fit consumption hold remains.
 
 ## Reservation, charge and true return
 

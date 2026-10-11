@@ -228,7 +228,8 @@ schemes/targets. Refusing executable selectors and some payload metadata is not
 a content sandbox. Both workspace and desktop control remain required.
 App and file search owns the additional native catalogue disclosure before
 version 1.2.0/schema 1.1.0 ships: workspace read publishes Koine-account location
-values and app/settings metadata without client filesystem access; workspace control
+values and app/settings metadata, including fixed application information/name files
+and direct localization names, without client filesystem access; workspace control
 permits background settings preparation alone; settings reveal also needs desktop
 control and requests activation. Existing launch/open disclosure stays complete.
 Core’s native UI and management catalogue must implement the corrected text before
@@ -247,9 +248,13 @@ retain omitted failure precedence. Settings confirmation timeout preserves only
 uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN; an
 incomplete first sweep or count/call/copy overflow remains FAILED/null. Lazy reveal
 pre-check absence is unestablished, with no effect; V12 tests a retained selection
-in a fresh unvisited incarnation. K213/k214 refute k212's name-file closure and useful-subject dimensions.
-Application-localized-metadata-k215 and its mandatory review/earned integration
-must repair that coupled design before k7 implements discovery. The approved
+in a fresh unvisited incarnation. K213/k214 refuted the old strings-only/64 KiB/L/input construction. Selected
+reader semantics now include platform/plain strings/loctables, 128 KiB files,
+independent inventories and individual affected-fact refusal. Scoped 20 MiB
+controlled raw gross and explicit-operation admission preserve no refund and
+provider-owned real publication, with runtime internals excluded and no peak
+guarantee. The candidate supplies no useful finite fit; the k215 consumption
+hold and mandatory whole review/earned integration remain before k7. The approved
 root-type/fixed-file/direct-localization scope remains the construction boundary. It keeps >=1,024-root INDEXED_ITEM and the independent action limit.
 The [native-image decision](../adr/workspace-native-images-preserve-action-authority.md)
 requires a routing-only principal guard and production adapters private to their

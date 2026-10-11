@@ -8,83 +8,42 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Applied Antony's scoped selection, explicit owner/cleanup receipts and real provider-owned publication; disclosed excluded runtime internals without a heap/peak guarantee.
-- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Added owner-header/cleanup augmentation and complete episode/job expressions, preserving all saved associations/outside records/system groups.
+The [whole-family reconciliation](../../verification/application-metadata-reconciliation.md)
+and [current selected contract](../application-metadata-contract.json) carry the
+selected file plan, per-object refusal, scoped explicit-work admission and precise
+failed useful-fit boundary. The k215 consumption hold and mandatory whole review
+remain; every native G/N/V is pending. Historical census is macOS 26.6.2 evidence,
+not macOS 27 qualification or a changed macOS 26+ support floor.
 
-The [runtime contract](../../specs/application-metadata-runtime-admission.md)
-and [scoped accounting ADR](../../adr/application-metadata-accounting-covers-explicit-work.md)
-bind. Strict portable-runtime certification failure is comparative evidence,
-not a pending human choice. Native operands, final values and errors keep full
-useful fit unestablished; the family hold and native G/N/V remain. The
-[composition result](../../verification/application-metadata-composition.md)
-classifies every inherited source/root receipt and supplies explicit recipes.
-Unknown explicit work never becomes an excluded cost or zero.
+- [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan) — Updated the completion boundary to current scoped expressions with useful fit unestablished.
+- [Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population) — Replaced historical fit with the failed scoped partial conservative enclosure.
+- [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision) — Added selected strings/loctable families, 128 KiB files and individual affected-fact refusal alongside shared failure.
+- [Finite subject → Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Updated the handoff to the current scoped candidate with the hold retained.
+- [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger) — Linked the completion boundary to current scoped composition without claiming useful fit.
+- [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root) — Replaced intermediate follow-up wording with supplied raw recipes and conditional native operands.
+- [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage) — Distinguished historical local receipts from the current complete scoped expression.
+- [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications) — Reconciled the caption to selected ordinary semantics while retaining indexed provenance/action limits.
+- [Composition → Own sources and freeze publication](index.html#diagram-native-discovery-contract) — Reconciled the caption to scoped admission and failed useful fit while retaining independent images and Settings repairs.
+- [Native sources → What each source can establish](index.html#diagram-native-discovery-sources) — Reconciled the caption to selected semantics with source breadth and all native duties retained.
 
-Unchanged context: [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
-The [selected-wire derivation](../../verification/application-metadata-wire.md)
-counts complete finite application selections, merged response keys, distinct
-aliases, JSON escaping and error envelopes. Its content-independent conditional
-uppers establish no useful 8 MiB fit; actual final scalars/errors stay unknown.
-The whole encoded body is checked before publication and replaced above cap,
-with no trimming or owned/native peak proof. Full owned composition remains live.
+Unchanged context: [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission),
+[Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition)
+and [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+The [scoped ADR](../../adr/application-metadata-accounting-covers-explicit-work.md)
+excludes runtime/compiler internals while counting every explicit caller/raw write
+and retaining provider-owned real publication. Strict failure is comparative,
+not a pending selection. Known local-plus-controlled-path conservative enclosures
+23,502,420/23,676,527 exceed 20,971,520 before remaining terms. They supply no useful
+fit, inevitable native overflow or impossibility of a tighter construction.
+Actual native operands/final values/errors/wire stay conditional. No total heap,
+hidden-copy gross, runtime-attempt, RSS or peak guarantee follows.
 
-Unchanged context: [Owned storage → Separate capacity, writes and overlap](index.html#diagram-native-metadata-owned-storage).
-The [owned-storage subcertificate](../../verification/application-metadata-owned-storage.md)
-separates requested aligned capacity, each actual input/projection/growth write and
-immutable owner overlap. It derives known local subterms for every saved episode
-in both runs, preserving raw entries, all direct/table keys and aliases. Whole-job
-source/root/bridge/final/wire composition stays live under k225/k227; native G/N/V,
-the k215 hold and mandatory whole review bind.
-
-Unchanged context: [Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
-and [Root ownership → Transfer once and recheck independently](index.html#diagram-native-metadata-two-walks).
-The [source/root contract](../../verification/application-metadata-source-root-certificate.md)
-replaces fixed fees with explicit native/local/cleanup and symbolic payload receipts.
-The first root transfers a checked terminal directory; the second independently
-checks identity. Raw duplicate slots, one-job preferences and once-per-ID
-registration are retained. Capacities, actual native tuples and whole-job fit
-remain unresolved for k225; k215's hold, whole review and native G/N/V bind.
-
-Unchanged context: [Certificate evidence → Keep unknown terms out of the sum](index.html#diagram-native-metadata-episode-certificate).
-The [saved-episode assessment](../../verification/application-metadata-episode-certificate.md)
-derives every alias episode, exact dimensions and conditional explicit reader
-calls. Complete source/root/owned-storage/scalar/wire terms remain unestablished;
-unknown costs stay null and missing design work precedes k221. No useful fit or
-native verdict follows. The k215 hold and whole-producer review remain binding.
-
-Unchanged context: [Reader accounting → Reserve cleanup before acquisition](index.html#diagram-native-metadata-operation-ledger).
-The [operation ledger](../../verification/application-metadata-operation-ledger.md)
-defines cleanup-first admission, concrete file/parse/selector receipts, borrowing
-and true-return disposal. Its pure trace controls detect omitted charges and
-unsafe ownership. Complete saved-episode/source/storage/wire derivation remains
-open under k220, followed by k221's whole-family reconciliation. No aggregate fit,
-native peak or G/N/V verdict follows this ledger; k215's hold and review bind.
-
-Unchanged selected context: [Application reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan).
-The [semantic construction](../../verification/application-metadata-reader-plan.md)
-closes the selected fixed-family order, literal independent inventories and
-affected-metadata refusal policy. Its pure model checks every saved English/German
-plan across the 2,043 historical episodes, plus controlled branch counterexamples.
-The [finite subject report](../../verification/application-metadata-subject.md)
-records Antony's completed 128 KiB file, 20 MiB cumulative gross and individual
-oversize choices. Complete cost certificates and whole-family reconciliation
-remain open; k215's consumption hold and whole-producer review before k7 bind.
-
-Unchanged historical context: [Application reader → Admit root type and read a closed metadata plan](index.html#diagram-native-localized-decision),
-[Application population → Finish bounded staging](index.html#diagram-native-application-population)
-and [Long applications → Preserve choices and independent action refusal](index.html#diagram-native-long-applications).
-Their old conditional construction is refuted, and all native G/N/V remain
-pending. The complete [native contract](../../specs/workspace-search.md),
-[source report](../../verification/native-discovery-sources.md) and
-[finite acceptance](../../verification/native-discovery-acceptance.md) retain the
-independent Settings/diagnostic repairs, static authority, action limits and
-host-disclosure/refusal contracts.
-
-Changed in this discussion:
-
-- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Applied the selected scope and retained the strict failure as comparison.
-- [Runtime admission → Selected boundary](../../specs/application-metadata-runtime-admission.md#concrete-decision-awaiting-antony) — Reconciled Antony's selected exclusions while retaining charged provider work and the weaker guarantee.
-- [Composition → Admission and lifetime](../../verification/application-metadata-composition.md#runtime-binding-obligations) — Included explicit owner/cleanup writes and complete conditional episode/job expressions without inventing native operands.
+The [producer close check](../../verification/application-metadata-reconciliation.md#original-producer-close-conditions)
+leaves k215 live for a bounded tighter construction under the selected gates.
+The root review stays before k7 and its actual closing session owns Creator.
+Existing native N5/N8/V11/V13 already own actual tapes/values; no repeated capture
+leaf or strict/scoped accounting model is due. Settings/diagnostic repairs,
+authority/images/disclosure, action limits and retained compatibility remain.
 
 ## Other architecture topics
 
@@ -172,3 +131,10 @@ composition and runtime-choice views (D2 0.9.0, Dagre). Run design:application-m
 task to reproduce full per-item associations and the explicit failed admission
 result, including disposable overlap/unknown/capacity/alias/outside mutations.
 These checks invoke no Koine/native reader and keep all G/N/V pending.
+
+Run design:application-metadata-reconciliation-regenerate after all family edits,
+then design:application-metadata-reconciliation-check for the frozen complete
+Taskfile suite and deliberate cross-family stale-gate/missing-table/hold/false-fit/
+exclusion/publication/native-pass controls. It establishes no useful or native pass.
+The current live presentation uses <http://127.0.0.1:8872/#discussion>; the reader
+deep link is <http://127.0.0.1:8872/#diagram-native-metadata-reader-plan>.

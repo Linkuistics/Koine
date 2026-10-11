@@ -1,5 +1,5 @@
 {
-  "purpose": "Refuted application file-set proposal and checked pathname construction; redesign before consumption, no native pass",
+  "purpose": "Historical refuted certificate and original-defect controls; currentContract owns selected semantics/gates; no native pass",
   "consumptionRequires": "application-localized-metadata-k215",
   "baselineCounterexample": "application-localized-baseline.json",
   "wholePathBytesIncludingNul": 1024,
@@ -104,5 +104,7 @@
     ],
     "metadataFilesDescriptorRelative": true,
     "nativeVerdict": "PENDING"
-  }
+  },
+  "currentContract": "application-metadata-contract.json",
+  "artifactScope": "HISTORICAL_REFUTED_COUNTEREXAMPLE_ONLY"
 }

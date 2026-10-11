@@ -1,5 +1,17 @@
 # Application metadata owned-storage subcertificate
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Owned storage → Separate capacity, writes and overlap](../design/architecture/index.html#diagram-native-metadata-owned-storage)
 shows this independently checkable design slice. Graphs enter at their dark
 **Start here** node; numbered edges give accounting order. The source/root
@@ -10,8 +22,8 @@ shows this independently checkable design slice. Graphs enter at their dark
 storage representation and known saved input/key/vector subterms, not a completed
 source/root/bridge/publication/wire composition. Packed buffer sizes are proposed
 requested capacities, not Swift Array/String/Dictionary layouts or native peaks.
-Every original gate, the k215 family hold and pending native G/N/V bind. K225/k220
-remain open; k227 owns full composition and their complete close checks.
+Every original gate, the k215 family hold and pending native G/N/V bind. The complete scoped composition now supplies their close checks at a precise
+failed-fit boundary; useful finite fit and the family hold remain unestablished.
 
 ## Capacity and event contract
 
@@ -211,14 +223,16 @@ mutations in disposable copies. Existing source/root, reader, episode and origin
 oversize/baseline/omitted-table controls remain required. Pure passing controls
 prove this local contract's reproduction, no native or useful whole-job verdict.
 
-The composition child must instantiate record fields/owners/arena or exact-block
-choice, actual Swift bridge/COW obligations and conversion boundaries; bind each
-source/root/reader receipt including walker allocations, suffix/expanded copies,
-seed/domains/errors and scalar returns; then compose final scalars and a complete
-finite selected GraphQL response with roots/aliases/fragments, keys/punctuation,
-escaping, coverage/diagnostic saturation/null/error paths and body-guard failure.
-Already pending native tuples/preferences/expanded visits and regional scalar
-observations remain separately conditional inputs, never zero. Keep the 20 MiB/
-4,194,304 gates, independent 8 MiB response and three/five-second/four-true-return
-contracts. K227 performs full k225/k220 closure checks; k221 owns reconciliation
-and mandatory whole-k215 review. No new implementation or fragment review is cut.
+The current [scoped composition](application-metadata-composition.md) now
+supplies record/owner/raw-block, growth, conversion, source/root and final
+ProviderValue publication recipes. Runtime bridge/COW/backing/compiler internals
+are explicitly excluded rather than zero; explicit caller work remains charged.
+The independent full selection covers roots/aliases/fragments, punctuation,
+escaping, diagnostics/null/error paths and post-encoding body replacement.
+Native tuples/preferences/expanded visits/regional returns and actual final values
+remain conditional inputs. The local receipts above are pre-amendment comparison
+terms, not the complete current certificate. Its partial conservative enclosure
+exceeds the unchanged 20 MiB gate and establishes no useful fit or native lower
+bound. The 4,194,304 attempts, separate 8 MiB response, three/five-second deadlines
+and four true-return slots remain. The whole-k215 consumption hold and mandatory
+review precede k7; a tighter construction is still required before k215 can close.

@@ -235,10 +235,20 @@ a checked root resource-type observation at <=1,023 UTF-8 bytes followed by a
 closed fixed-file and direct-localization plan through held directories. It has
 no foreign Bundle/resource lookup or reconstructed descendant whole-path call.
 Typed facts, provenance, native races and qualification limits remain explicit.
-Its current name-file set and useful-subject certificate are refuted by shipped
-files; application-localized-metadata-k215 and mandatory review must repair them
-before implementation. A checked pathname construction alone is no useful-reader
-closure.
+Its selected platform/plain information, strings and loctable semantics use
+131,072-byte regular files with individual affected-fact refusal. The useful finite
+certificate remains unestablished: the scoped conservative candidate exceeds its
+gate and full native operands/final wire stay conditional. The consumption hold
+and mandatory whole-producer review remain before implementation. A checked
+pathname/file plan alone is no useful-reader closure.
+
+**Application explicit-work admission**: The application job's cumulative
+20 MiB controlled raw requested/write gross and explicit-operation ledger under
+the [accounting decision](docs/adr/application-metadata-accounting-covers-explicit-work.md).
+Reuse/disposal refund nothing. Internal platform/Swift/compiler costs are excluded,
+not known zero; unknown explicit operands are never excluded. Real public-value
+publication remains provider-owned. This promises no total heap, hidden-copy gross,
+runtime-attempt, RSS or peak bound and no useful finite fit by itself.
 
 **Native serviceability evidence**: Applicable owned events paired with
 independent listener, grant-store and authorized-action outcomes for a finite

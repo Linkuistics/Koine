@@ -1,5 +1,17 @@
 # Application metadata source and root certificate contract
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Source accounting → Preserve raw-slot and payload receipts](../design/architecture/index.html#diagram-native-metadata-source-root)
 shows source composition;
 [Root ownership → Transfer once and recheck independently](../design/architecture/index.html#diagram-native-metadata-two-walks)
@@ -66,9 +78,9 @@ alias merge, empty output or buffer reuse decrements a performed charge.
 Storage is the maximum simultaneous owned capacity with dependency lifetimes;
 unknown capacities keep it unknown. A native peak is a different unproved quantity.
 
-The current model enforces **attempt/cleanup admission only** through the existing
-ledger. Its byte reservations are symbolic until k225 supplies capacities and
-pre-call conversion bounds; it is not an adapter allowed to invoke an unbounded
+This local pre-amendment model enforces **attempt/cleanup admission only** through
+the existing ledger. Its symbolic byte receipts now compose through the current
+scoped raw-block/conversion recipes in the composition report; it is not an adapter allowed to invoke an unbounded
 copy and measure afterward. The numeric admission contract still requires the
 maximum possible owned byte charge before invocation/allocation. An unavailable
 bound is a failed construction, not permission to use the known-write subtotal.
@@ -191,7 +203,8 @@ not INSTALLED/UNREGISTERED. The installation calculation remains the selected
 workspace contract. Array/seed construction nil, native outputs, malformed/error/
 incomplete slots and any cancellation use actual prefix cleanup, with no native
 fallback or broadened query. Representation-specific seed/domain map/copy receipts
-are named parameters for k225, not a hidden twelve-attempt multiplier.
+remain explicit conditional parameters in current scoped composition, not a hidden
+twelve-attempt multiplier.
 
 ## Preferences are one explicit job snapshot
 
@@ -346,7 +359,8 @@ remain in the inherited subject. Toy walk inputs do not prove useful native clos
 K225 receives the source/root receipt grammar, source branch manifests, first-root
 transfer and second observation, exact controlled raw path counts, null aggregate
 terms and frozen omission controls. **Sound whole-job construction is unestablished.**
-It must resolve these known design obligations before k221/implementation:
+The following historical checklist is resolved at the scoped composition
+level; it records the derivation rather than commissioning another model:
 
 1. Specify scalar/record/arena/vector/map/set capacities, alignment/header/growth,
    per-field population and all bridge/COW/UTF-8/final-conversion operations. Bind
@@ -362,7 +376,8 @@ It must resolve these known design obligations before k221/implementation:
    aliases/fragments/roots, escaping, keys/punctuation, diagnostics and fixed
    summaries/errors. Preserve the independent core response guard and alias controls.
 
-These are representation/composition design gaps already owned by k225. Distinct
+Current raw representations/recipes and complete scoped expressions are supplied
+by runtime admission/composition; the historical list above adds no live gap. Distinct
 native inputs remain pending: actual query tuples/type trees/events, running/
 registration output shapes, preferences, expanded walks/resource results, the 149
 outside paths' outcomes, long indexed tuples and signed supported-VM G/N/V.
@@ -370,7 +385,8 @@ Do not repeatedly cut new leaves for those already explicit acceptance obligatio
 Unknown native dimensions may keep a finite useful certificate conditional; they
 cannot excuse an unclosed owned representation or change the selected category.
 
-K225 performs k220's full close check. K221 owns whole-family reconciliation and
+The composition report includes every original k225/k220 close check at its
+permitted precise failed-closure boundary. Whole-family reconciliation and
 mandatory whole-k215 review/Creator at actual k218/k215 closure. No fragment review,
 hold removal, implementation leaf or new budget/posture/useful-loss decision
 occurs here. No native peak, all-disk completeness, deadline guarantee or native

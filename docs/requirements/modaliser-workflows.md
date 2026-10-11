@@ -136,10 +136,15 @@ roots through 1,023 bytes, with a 977-byte localized control and 978-byte old-ba
 copy. Larger roots require actual indexed tuples. Mandatory review and native
 G11/N8/V13 must preserve useful localized names, flags and unchanged action limits;
 no known-plist-only proof, opacity fallback or narrowed useful category passes.
-K213/k214 reproduce shipped Info.plist sizing, baseline L/input and omitted
-InfoPlist.loctable defects. K215 and mandatory review/earned integration must
-repair them before k7; these are design defects, not native coverage losses
-accepted later by k93.
+K213/k214 refuted the old Info.plist sizing, L/input dimensions and strings-only
+file plan. The selected complete reader semantics now include platform/plain
+information, strings/loctables, 128 KiB files and individual affected-fact refusal.
+The scoped accounting ADR preserves 20 MiB raw requested/write gross, explicit
+operations and no refund; runtime internals are excluded without heap/RSS/peak
+guarantees and real publication remains provider-owned. The candidate supplies
+no useful finite fit; the k215 consumption hold and mandatory whole review/earned
+integration remain before k7. Known construction failure is not native coverage
+loss accepted by k93; all native G/N/V remain pending.
 
 Koine's own location and metadata reads remain prompt-free. They must report
 blocked, unavailable, unknown and healthy empty outcomes honestly and avoid

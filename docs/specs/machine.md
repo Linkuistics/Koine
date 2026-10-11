@@ -1453,7 +1453,7 @@ management use the same entries:
 
 | Capability | Required native-surface disclosure |
 | --- | --- |
-| `workspace:read` | Read Koine-account special-location values and native application/System Settings metadata. Returned locations grant no access to their contents or to the client's filesystem. |
+| `workspace:read` | Read Koine-account special-location values and native application/System Settings metadata, including fixed application information/name files and direct localization names. Returned locations grant no access to their contents or to the client's filesystem. |
 | `workspace:control` | Prepare System Settings in the background without desktop control. Launch applications, open URLs/files and reveal files or selected Settings destinations only with desktop control. Any registered installed application may be launched; a handler can execute scripts or follow location documents to other schemes and targets. Metadata refusal is not a content sandbox. |
 
 The action-only shipped wording and its recorded VM acceptance remain historical
@@ -1842,8 +1842,10 @@ The complete native SDL also includes explicit nullable application agent/backgr
 declarations and associated running-policy observations under workspace:read.
 Application population overflow yields FAILED/null items; it does not publish an
 arbitrary source-order sample. G10/N5/V11 accept the real populous catalogue and
-call/copy/response accounting. The owned-copy and core response caps remain 8 MiB;
-multiple aliases still charge core materialization separately. This application
+call/copy/response accounting. Application admission uses 20 MiB scoped cumulative controlled raw gross and
+4,194,304 explicit operations under the [accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md), without refund.
+Settings/location owned-copy gates and the independent core response cap remain
+8 MiB; nested aliases charge host completion/encoding, independent roots own jobs. This application
 slice awaits complete-producer review. Long metadata has a fixed native indexed
 projection, public metadataSource, UNKNOWN installation state and null unsupported
 bundle flags; G11/N8/V13 require real L1500 source tuples, identity and unchanged
@@ -1860,20 +1862,25 @@ any earned reconciliation before becoming implementation input.
 
 Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
 plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
-without item loss. The application 8,340,416-byte calculation is conditional on refuted baseline
-dimensions; k215 must replace its useful-subject/file-set construction before
-consumption. Settings remains 6,094,976 bytes under its unchanged 8 MiB gate. Settings confirmation timeout retains only
+without item loss. The old application arithmetic is historical counterexample evidence. Current
+scoped local-plus-controlled-path conservative enclosures 23,502,420/23,676,527
+exceed 20,971,520 before other terms; they prove no useful fit, inevitable native
+overflow or impossibility of tighter construction. Full native operands/final
+wire stay conditional, so the consumption hold remains. Settings remains 6,094,976 bytes under its unchanged 8 MiB gate. Settings confirmation timeout retains only
 uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN;
 incomplete-first-map timeout and count/call/copy overflow still give FAILED/null.
 Lazy no-such-object at reveal re-resolution is failed/unestablished selection,
 never an absence dependency; V12 includes separate unvisited-incarnation reveal.
-The explicit application reader's shipped-file closure is refuted (omitted
-InfoPlist.loctable); k215 and mandatory review/earned integration precede k7.
-Its retained proposed pathname mechanism is: root resource type through 1,023 bytes, held-directory fixed metadata
+The selected complete strings/loctable reader uses 131,072-byte regular files and
+per-object affected-fact refusal; shared exhaustion remains FAILED/null. The
+[complete scoped composition](../verification/application-metadata-composition.md)
+supplies conditional expressions, without a useful finite fit. The k215 hold and
+mandatory review/earned integration precede k7. Its pathname mechanism is: root resource type through 1,023 bytes, held-directory fixed metadata
 files and a bounded direct localization plan. Larger roots use actual indexed
 items. The 977 localized control and 978 old-band copy supplement L1500; review
-and G11/N8/V13 remain pending. The application attempt certificate is 2,345,024
-under 4,194,304, with no host copy/response increase or foreign Bundle fallback.
+and G11/N8/V13 remain pending. Every explicit operation and controlled raw write/cleanup requires admission;
+runtime internals are excluded and real ProviderValue publication stays provider-owned.
+No total heap/RSS/peak, host response increase or foreign Bundle fallback follows.
 Ordinary 1,004…1,023 metadata does not qualify the action's whole-path plist reader.
 
 Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1

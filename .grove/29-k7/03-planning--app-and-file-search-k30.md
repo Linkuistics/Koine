@@ -81,7 +81,7 @@ retained. A deadline/overflow/missing useful app does not close acceptance.
 
 After reviewed complete k205 and downstream designs, plan concrete G11/N8/V13
 metadata/read/refusal slices using actual L1500 signed boundary copies and exact
-independent indexed query output. Five lengths and two short competitors qualify
+independent indexed query output. Seven lengths and two short competitors qualify
 source association, public provenance, correct known metadata, identity and
 unchanged >=1,024-byte selected launch/named-open/reveal refusal under both controls.
 No registered-long prerequisite or client/disk/injected-source pass is allowed.
@@ -110,8 +110,11 @@ direct-localization recipe, never opaque Bundle or descendant whole-path fallbac
 Actual indexed provenance, localized names and unchanged action limits remain required.
 Plan diagnostic saturation without choice loss or hidden reasons (63 detail
 records plus the reserved canonical summary, independently classified sources).
-Application 8,340,416-byte arithmetic has refuted useful-subject assumptions;
-consume reviewed k215 replacement. Settings remains 6,094,976 under 8 MiB; app attempts 2,345,024 under 4,194,304 and wire 7,929,856.
+Application historical arithmetic is refuted; the selected scoped candidate
+still supplies no useful finite fit. Consume the whole reviewed k215 family with
+its hold retained until complete useful certification. Settings remains 6,094,976
+under its independent 8 MiB gate; actual application gross/attempts and full selected
+wire are conditional and require their complete independent expressions.
 Actual E/L/file input/component dimensions include native baseline and may not be
 assumed. No parser peak follows; N5/N8 and independent serviceability are live. Settings count/call/copy overflow and incomplete-first-map
 timeout fail closed; confirmation timeout retains uncontradicted first-map
@@ -120,15 +123,47 @@ must reject contrary outcomes. V12 needs a separate fresh unvisited-incarnation
 reveal using an earlier known ordinary pane/anchor, without observer warm-up;
 lazy pre-check uncertainty cannot waive useful destination acceptance.
 
-## Application reader redesign before consumption
+## Selected application reader and retained consumption hold
 
-K213/k214 refute the current ordinary name-file closure and useful-subject
-L/input certificate against shipped files. Consume application-localized-metadata-k215
-and its mandatory whole-producer review/earned integration before implementing
-or qualifying this reader. The old 65,536-byte file gate, 4,096 locale records
-and 1,000,000 input bytes are checked counterexamples, not useful-subject
-certification. Do not route these known design defects to k93 as native
-uncertainty. Keep every useful/baseline/helper choice, independent action
-limits, Settings/diagnostic repairs and native pending obligations. No format,
-larger gate, accounting refund or posture is selected by k214. See
-docs/verification/application-localized-baseline.md.
+Consume the whole application-localized-metadata-k215 family only after complete
+useful finite certification, mandatory root whole-producer review and earned
+integration. The semantic construction is specified: four layouts; platform/plain
+information plus strings/loctable families; base-first name priority; independent
+literal direct/table inventories; LocProvenance reserved metadata; development-first
+selector input, every regional/duplicate return and exact observed backstops.
+Regular files admit 131,072 bytes. Individual oversize/malformed/input/key refusal
+retains the admitted choice/identity/location and unknown affected facts; a refused
+preceding name file cannot fall through to later or unlocalized rescue. Shared
+count/call/cumulative gross/deadline exhaustion still gives FAILED/null population.
+
+Antony's scoped accounting selection binds 20,971,520 cumulative controlled raw
+requested/initialization/read/copy/field/owner/cleanup bytes and 4,194,304 explicit
+operations without refund. Platform/Swift/compiler internals are excluded; explicit
+caller work is charged, unknown explicit operands are never excluded/zero and real
+ProviderValue publication stays provider-owned. No total heap/hidden-copy gross/
+runtime-attempt/RSS/peak follows. Core response stays 8,388,608, read/core deadlines
+three/five seconds and four shared slots remain held until true return. Settings/
+locations, grants, action limits/images, host disclosures/old-host refusal and
+independently retained action-only compatibility remain independent obligations.
+
+Current scoped known local gross is 19,869,316/20,043,423; including all 7,862
+controlled path projections gives 23,502,420/23,676,527 partial conservative
+enclosures, already above the gross gate before other terms. This candidate
+provides no useful fit, inevitable native overflow or impossibility of a tighter
+construction. All five episode/four job tapes and full selected wire remain
+conditional on actual native tuples/expanded visits/preferences/regional returns/
+final values/errors, including all 149 outside observations and both system seeds.
+The refuted-construction hold remains. Do not repeat the resolved strict/scoped
+choice or cut already-chartered native capture as a new design gap. Known failed
+construction is not a native coverage loss accepted later by k93.
+
+Read docs/design/application-metadata-contract.json, the current runtime contract,
+reader plan and complete composition report/per-item JSON. Original strings-only/
+64 KiB/L/input arithmetic remains historical counterexample evidence. Carry every
+G1–G11/N1–N8/V1–V13 and native precondition, useful baseline/P1024/L1500, English
+Find My/Voice Memos, German loctable, omitted-table/alias/129-byte/layout/selector/
+absence/malformed/denied/individual-versus-shared controls and independent dialog/
+hydration/listener/store/action witnesses. Every native verdict stays pending.
+Historical macOS 26.6.2 census qualifies no macOS 27 subject and changes no macOS
+26+ support floor. No implementation, new amount/ABI/posture/quota/useful loss or
+pruning is authorized by this handoff.

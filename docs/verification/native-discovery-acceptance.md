@@ -87,18 +87,20 @@ G11 exercises controlled indexed tuples: exact native application-bundle member,
 missing/wrong type and null/malformed/conflicting scalars, file/directory,
 replacement, distinct same-ID copies and source provenance. INDEXED_ITEM stays
 UNKNOWN with null flags, without cross-copy fields, suffix proof or origin repair.
-K213/k214 refute the current ordinary name-file closure and useful-subject
-dimensions. K215 and its mandatory whole-producer review/earned integration must
-replace those design inputs before G10/G11/N5/N8/V11/V13 can qualify the reader.
-The old numerical/file controls below are counterexamples, not implementable
-useful-subject certification; no native verdict follows them.
+The selected [current reader/admission contract](../design/application-metadata-contract.json)
+replaces the refuted strings-only/64 KiB proposal. Reader semantics are established;
+useful finite fit is not. The [complete scoped composition](application-metadata-composition.md)
+retains the failed partial conservative enclosure and conditional native operands.
+The k215 consumption hold and mandatory whole-producer review/earned integration
+remain before qualification/implementation. Historical arithmetic is counterexample
+evidence only, and every native G/N/V stays pending.
 
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;
 1,024/1,500 admit only actual indexed tuples. Require localized names distinct
 from plain Info names at 977 and the old missed band 978. Exercise en/Base/English/
-multibyte locale names, every fixed layout/platform/plain pair, complete direct
-inventory and explicit preferences/global/selected/Base/development order. With no
+multibyte locale names, all four layouts and platform/plain information plus strings/loctable families,
+independent complete direct/table inventories and explicit preferences/global/selected/Base/development order. With no
 matching preference and no English/Base resource, an exactly observed development
 region must lead the selector's possible array and beat the byte-first backstop;
 without that region the byte-first backstop is explicit. A real matching preference
@@ -107,15 +109,21 @@ and that an earlier candidate's usable bundle name beats a later display name.
 Reject opaque Bundle/resource lookup, whole descendant paths, hard-coded locale inventory,
 ambiguous selector values, CFBundleLocalizations-only inventory, unlocalized rescue,
 symlink/special/dataless descendants, conflicting file/root identity, partial reads,
-malformed dictionaries and per-app quota/prefix behavior. Raw type and metadata-plan
-entry gates at/beyond 65,536 and dictionary keys 4,096 retain their proposed global
-FAILED/null controls. The 65,536-byte file gate is refuted by an 83,346-byte useful
-Info.plist and ten shipped loctables. Its individual/global failure contradiction
-and replacement size require k215; neither refusal can pass those useful witnesses.
-Include Find My/Voice Memos English differences, a non-English loctable witness
-and baseline L/input failures in the replacement design controls. Preserve independent action limits and k211 saturation/
-Settings controls. Missing provenance or known wrong type/name/identity must fail
-independent counterparts. Controlled seams establish no actual filesystem/index pass.
+malformed dictionaries and per-app quota/prefix behavior. Shared raw type/plan
+slots at/beyond 65,536 retain population FAILED/null controls; a per-object
+4,096-key/type/input refusal retains the admitted copy and unknown affected facts.
+The selected regular-file gate is 131,072 bytes: test exact/beyond sizes and
+information versus preceding-name oversize refusal independently. A refused name
+cannot be rescued by a later dictionary or plain information. Global count/call/
+20 MiB scoped gross/deadline exhaustion withholds the whole staged population.
+Exercise each table's own literal keys, LocProvenance direct type/count inspection,
+unselected dictionary overflow, all regional returns/duplicates and empty/nil/
+foreign selectors. Include English Find My/Voice Memos, a German loctable witness,
+omitted tables, aliases and the valid 129-byte name. Original oversize/baseline/
+omitted-table mutations remain deliberately failing counterexamples. Preserve
+independent action limits and k211 saturation/Settings controls. Missing provenance
+or known wrong type/name/identity fails independent counterparts; null does not
+waive useful acceptance. Controlled seams establish no native filesystem/index pass.
 
 ## N: actual source and provider binaries
 
@@ -129,7 +137,7 @@ principal/action/shared lookup must fail source reachability AND image controls.
 Identical imports with widened paths are a required failing counterpart. Test injection is absent from production exports/linkage. |
 | N3 | Real Foundation location values; NSMetadataQuery fixed predicate and IndexedLocal scope, gathering completion/stop/late notifications; running source; AppKit ordered list-plus-preferred eligibility paired with actual action selection, separate deprecated error-bearing negative evidence, and individual-target bundle identity. Record actual errors, count and copied-value accounting; substitutions pass branch logic only. |
 | N4 | Exact settings address typeKernelProcessID; trusted OS bundle/signature/incarnation revalidation. Two core/getd sweeps of all xppb pALL ID/name records and ID-contained all xppa pnam, minimum 100 ms inter-sweep gap inside three seconds. Inspect actual want/from/form/seld and native list/record/text types, record IDs, <=16 scalar direct keys, optional class and discarded fields; no positional zip. Preflight every event ask=false and pinned no-prompt flags. Unique-ID resolution and pALL are actual qualification subjects. Wrong class/ID/type, duplicate IDs, unchanged IDs with changed anchors, replacement/late reply and repeated lazy-empty replies must be detected honestly. Selected reveal still re-resolves exact pane/anchor with scalar core/getd, misc/mvis then one pinned activates=true fixed-bundle open; callback replacement/exit remains ambiguous. No NSRunningApplication.activate/AX/loading/current-pane assignment/interpreter fallback. |
-| N5 | Enumerate every owned native/syscall attempt and gross allocation/copy. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 attempts and 8 MiB copies. Check old conditional 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire arithmetic, reproduce the baseline refutation, at the old dimensions (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), then qualify the reviewed k215 replacement certificate, <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
+| N5 | Enumerate every charged explicit operation and controlled raw request/initialization/read/copy/field/owner/cleanup write under the scoped accounting ADR; separately disclose excluded runtime/compiler internals, with no total heap/RSS/peak bound. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 explicit attempts and 20,971,520 cumulative raw gross bytes without refund; fixed regular files 131,072 bytes, individual affected-fact refusal versus shared FAILED/null exhaustion. Check old conditional 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire arithmetic, reproduce the baseline refutation, at the old dimensions (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), then qualify the reviewed current complete scoped expressions and actual useful finite certificate; the failed 23,502,420/23,676,527 partial conservative enclosure supplies no fit or actual-overflow proof. Complete all five episode/four job tapes, provider-owned real publication and independent actual selected wire, including 149 outside observations/both system groups; missing explicit operands stay conditional. Preserve <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
 
@@ -138,23 +146,25 @@ Inspect the exact four getters on actual query items and native tree/scalar chec
 without pathname-created metadata items. For ordinary roots enumerate every root
 resource call, layout/component check, directory slot, selector input/output,
 fixed-file probe/read/parse and scalar extraction/disposal against the
-[closed manifest](../design/application-localized-admission.json) and N5 operation
+[current contract](../design/application-metadata-contract.json) and N5 operation
 table. Whole target paths are root resource type only through 1,023 bytes; descendants
 use literal held-directory components and actual parent NAME_MAX. No foreign Bundle,
 whole descendant path, hidden fallback/traversal or lookup/action module contents
-access is admitted. The refuted proposal had two 64 KiB inputs; consume k215's reviewed replacement sizes and account both selected-info/current-name
+access is admitted. Two immutable 128 KiB inputs plus EOF/conversion scratch retain their charged once-per-job partition. Account both selected-info/current-name
 native dictionaries, no-copy CFData, borrowed development-region and final-only
 scalar copying against the actual ownership and gross certificate. Actual XML,
 binary and OpenStep .strings formats, layout/platform preference and preferred-
-language/Base/development selection require positive and deliberately broken
+language/Base/development selection, independent loctable inventories and LocProvenance inspection require positive and deliberately broken
 controls. Public parser declarations or historical CF source are not a native pass.
 
 Check the conditional 2,345,024 attempts and 8,340,416 gross-byte arithmetic,
 reproduce the measured baseline counterexample, then consume k215's reviewed
-replacement certificate for actual qualification under the selected gates, with
+complete scoped expressions and useful finite certificate for actual qualification under the selected gates, with
 the separate 65,536 raw indexed-type gate and 65,536 shared metadata-plan gate.
-Count every preference, selector and direct directory slot, including duplicate/
-rejected values. Measure L, file-input bytes, localization components and actual
+Count every preference, selector, direct directory and table-key slot, including duplicate/
+rejected/regional values and unselected table keys. Reserve every explicit call, raw
+capacity/write and possible cleanup before work. Real ProviderValue publication stays
+provider-owned; runtime backing/compiler traffic are excluded, not explicit unknowns. Measure L, file-input bytes, localization components and actual
 baseline facts; the finite shallow assumptions are not production locale quotas.
 No per-choice registration walk or third root walk is admitted. Projection/copy
 omission, extra parse copies, wrong reader, identity change, source→action route,
@@ -339,8 +349,11 @@ copies and 128 aliases; actual baseline/registration extras, source repetition,
 identifier/choice counts and bytes must fit **all** gates. Record their full
 independent manifest before capture. Record actual component visits including
 link expansion, path/name/identifier bytes, and each source's native batch count;
-the shallow certificates assume <=32 visits, <=256 path bytes, <=128 name/ID
-bytes and <=128 running objects for P1024. These are qualification-subject facts,
+the historical shallow certificates assumed <=32 visits, <=256 path bytes and
+<=128 name/ID bytes; those assumptions are refuted useful-certificate input. The
+current saved subject includes the 129-byte name and roots through 1,500, with
+native expanded visits/final values explicitly conditional. Record <=128 running
+objects only when the actual finite P1024 subject establishes it. These are subject facts,
 not new public path/depth/string limits. If the supported VM baseline does not
 fit, revise the declared subject/design explicitly; do not delete native apps,
 omit helpers or lower the useful population to obtain a pass.
@@ -367,42 +380,33 @@ serviceability controls, fresh dialog/hydration subjects and new binary profiles
 No read registration, launch, source widening, raw walk or consent fallback is
 permitted. Unavailable native populous conditions stay live before baseline.
 
-At the old proposed shallow full envelope the conditional attempt calculation is 2,345,024 under
-4,194,304. The [recipe/table](native-discovery-sources.md#application-population-construction-evidence)
-uses U=8,192/R=C=2,048/D=2,050/V=32/E=65,536/L=4,096/F=16,384. E includes every raw
-directory/preference/selector value; L includes all retained localization records,
-including unselected names. No production per-app locale quota follows.
-The former 6,816,128 record/payload/scratch bytes plus <=1,000,000 gross fixed-file
-input bytes and 4,096×(64 record + two 32-byte components) derive 8,340,416 under
-the unchanged 8 MiB gate. Two 64 KiB buffers, finite preference scratch (<=32
-records/4,096 payload bytes) and fixed plan scratch reuse the existing 1 MiB
-scratch allowance; borrowed native info/name dictionaries
-are disposed at actual return and never deep-copied. Baseline and repeated-spelling
-reads contribute actual bytes, even when buffers are reused. These are finite
-qualification dimensions and logical gross charges, not measured Swift/native
-heap or RSS bounds. N5/N8 must inventory actual calls, allocations, transient
-copies and independent native parser serviceability before crediting them.
+The [historical baseline counterexample](application-localized-baseline.md)
+reproduces the refuted shallow L/input, strings-only and 64 KiB assumptions.
+Current selected information/strings/loctable semantics, 128 KiB regular files,
+individual affected-fact refusal and 20 MiB scoped explicit-work admission bind.
+The [composition](application-metadata-composition.md) preserves every 2,043-row
+association per language run, all 149 outside observations and both system groups.
+Its local-plus-controlled-path conservative enclosures already exceed the gate;
+full actual tapes and selected response remain conditional. No fit, inevitable
+native overflow or useful loss follows those partial sums. Whole-k215 review
+and the consumption hold stay before k7; known construction failure does not
+become a native gap accepted by k93.
 
-The [remeasured shipped directory subject](application-localized-baseline.md)
-already has 10,794 locale records. Its information-only input substituted at the
-old full envelope yields a 9,131,967-byte certificate subtotal at the old 128-byte
-locale reservation, above 8 MiB. This is not measured allocation. It refutes
-the old useful-subject construction, before adding P1024 fixtures/name inputs.
-K215 owns a complete measured-manifest replacement and explicit format/sizing
-choice before implementation, rather than sending a known design defect to k93
-as native uncertainty. P1024/L1500 must measure revised dimensions with every required useful copy and native
-baseline retained. Exceeding a finite assumption or production gate fails the
-useful subject; it cannot be fixed by filtering baseline/helpers or a locale
-subset. The coverage decision records a concrete consumer consequence if actual
-qualification cannot meet the contract. Wire is unchanged at 7,929,856: six-byte
-escaping plus the same fixed-choice/diagnostic/root allowances under core 8 MiB.
-Multiple selections still charge core materialization independently; public string
-maxima do not necessarily fit the shallow subject.
+P1024/L1500 must measure complete revised dimensions with every required useful
+copy, baseline/helper pressure, direct/table inventory, actual preference/regional
+returns, repeated input and final publication retained. N5/N8 cover every explicit
+operation, controlled capacity/write, failed prefix and cleanup; excluded runtime
+internals remain disclosed outside the numeric guarantee. Buffer reuse refunds
+nothing. No baseline/helper/locale/field/alias pruning or increased gate is selected.
+Every required useful choice/name must be returned within all gates/deadlines.
+Full response keys, roots/aliases, escaping and errors must independently fit
+8,388,608; post-encoding failure is no earlier-memory certificate. Four jobs admit
+four scoped 20 MiB cumulative counters, not an 80 MiB process heap/RSS/peak bound.
 
-Deterministic checks reject old reader allowances, Info-only closure, opaque
-fallback, omitted input/component charges, native-order prefix and broken copy/
-wire bounds. They supply no native enumeration/localization, action-selection,
-three-second duration, parser peak or useful-population verdict.
+Pure original oversize/baseline/omitted-table controls and current reader/receipt/
+raw-owner/write/cleanup/unknown-to-zero/provider-to-host/wire controls must reject
+their broken subjects before a clean check is credited. These establish no native
+source, reader, matching, action, duration, serviceability or useful-population pass.
 
 ## Independent observers and serviceability
 

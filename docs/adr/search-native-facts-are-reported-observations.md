@@ -42,11 +42,14 @@ resource plan; a guessed longer suffix cannot admit discovery already performed.
 Indexed-only metadata has no established useful-name/flag replacement for those
 non-indexed copies. The fixed layout/file and explicit-preference selection policy
 is deliberately observable rather than a claim of private Bundle equivalence.
-Shipped-file evidence has already reopened its file-format and useful-baseline
-construction: the proposed name set omits InfoPlist.loctable and its finite L/input
-dimensions fail. [The counterexample](../verification/application-localized-baseline.md)
-and application-localized-metadata-k215 require a reviewed replacement before k7.
-No useful-reader certificate follows the old conditional arithmetic. No hidden traversal, alternate copy or permission/posture change can rescue
+Shipped-file evidence refuted the earlier strings-only/64 KiB/L/input construction.
+[The counterexample](../verification/application-localized-baseline.md) remains
+historical; current semantics include strings/loctables, 128 KiB files and
+individual affected-fact refusal. The [complete scoped composition](../verification/application-metadata-composition.md)
+preserves conditional native operands and a failed partial conservative enclosure,
+not useful fit or inevitable native overflow. The k215 consumption hold and
+mandatory whole review remain before k7. No useful-reader certificate follows
+the old arithmetic or the new partial sums. No hidden traversal, alternate copy or permission/posture change can rescue
 that failure. The selected reader and revised certificates require mandatory
 review and actual native qualification before baseline.
 

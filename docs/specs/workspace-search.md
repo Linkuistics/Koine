@@ -10,8 +10,9 @@ pending, alongside the other finite native subjects. K212 selects the authorized
 explicit application reader: root resource type through 1,023 bytes and held-
 directory fixed files/direct-localization plan; larger roots retain actual indexed
 tuples. K213/k214 refute its shipped-file closure and useful-subject dimensions;
-application-localized-metadata-k215 and mandatory review/earned integration now precede k7. The current application
-reader proposal must not be implemented until that redesign settles. The known-plist suffix
+application-localized-metadata-k215 and mandatory review/earned integration precede k7.
+The selected strings/loctable reader semantics are complete; its scoped construction
+still supplies no useful finite fit. The consumption hold remains. The known-plist suffix
 cannot admit opaque Bundle localization and no such fallback is selected.
 Design consistency establishes
 no actual source, timing, resource-peak or binary behavior.
@@ -432,147 +433,128 @@ pathname to a whole-path API. The [suffix counterexamples](../verification/nativ
 remain evidence against the former opaque Bundle construction, not thresholds
 for this reader.
 
-**Reader consumption hold.** [Shipped-file remeasurement](../verification/application-localized-baseline.md)
-refutes the proposed 65,536-byte file gate, useful-subject L/input certificate and
-name-file closure: the proposal omits InfoPlist.loctable.
-Application-localized-metadata-k215 and its mandatory review/earned integration
-must repair that coupled
-design before k7 consumes it. The following file/gate recipe is the refuted
-proposal, retained for explicit counterexamples; it is not a settled implementable
-useful reader. K217 has since selected fixed platform/plain information, strings
-and loctable families, 131,072-byte files, the 20 MiB cumulative application gross
-gate and individual oversized-file affected-metadata refusal. The
-[selected semantic construction](../verification/application-metadata-reader-plan.md)
-closes exact base/family order, independent table/direct selection and refusal
-semantics. The [operation and ownership ledger](../verification/application-metadata-operation-ledger.md)
-defines cleanup-first call/byte reservation and concrete branch/disposal receipts;
-it establishes no aggregate fit. Applying it to every saved episode and deriving
-the source/storage/wire envelope remains open before whole-family reconciliation.
-The old file/gate/cost recipe below remains historical counterexample
-input until the complete accounting certificate and whole-family reconciliation
-land; it does not override that selected plan or lift the hold. No useful loss,
-accounting refund, native pass or downstream implementation follows.
-The [finite design subject](../verification/application-metadata-subject.md)
-adds a frozen bounded development-host census and disk-only P1024/L1500
-construction for that decision; it is not an exhaustive supported-VM baseline,
-replacement certificate or native acceptance.
+**Selected construction and consumption hold.** The selected
+[reader semantics](../verification/application-metadata-reader-plan.md) include
+platform/plain information, strings and loctable families, 131,072-byte regular
+files and per-object affected-fact refusal. The [operation ledger](../verification/application-metadata-operation-ledger.md)
+and [runtime admission contract](application-metadata-runtime-admission.md)
+define concrete acquisition, controlled storage, explicit work and true-return
+cleanup. The [scoped accounting decision](../adr/application-metadata-accounting-covers-explicit-work.md)
+governs numerical admission; the [complete composition](../verification/application-metadata-composition.md)
+contains conditional expressions for every episode/job contribution.
 
-**Historical refuted layout/file/cost recipe.** Probe these directory layouts in fixed order:
-Contents; Support Files; Resources; flat root. Choose the first present checked
-layout. Their resource bases are respectively Contents/Resources, Support Files/
-Resources, Resources and the root itself. Information bases are respectively
-Contents, Support Files, Resources and the root itself. Only checked absence
-advances to the
-next layout. Denial, symlink, wrong type or replacement stops that metadata
-episode; it cannot select a convenient alternative. Missing resource directory
-means checked absence of localized resources, not absence of the app. Probe
-Info-macos.plist then Info.plist in the selected information base, and
-InfoPlist-macos.strings then InfoPlist.strings in each selected name-resource base.
-A checked absent platform file permits the plain file; a present malformed,
-refused or oversized preferred file does not. These are the proposed macOS file
-families in this refuted proposal, not complete shipped-macOS support; the omitted
-InfoPlist.loctable requires an explicit format decision in k215. No product/iOS
-variants, executable/icon reads, arbitrary filenames or
-foreign Bundle/CFBundle initialization/resource/localization calls are admitted.
-This policy supports the named layouts without claiming equivalence to every
-private Bundle fallback. An actual useful app outside it is an unmet obligation
-for the coverage decision, not accepted loss.
+The semantic file set is established as a design; useful finite fit is not.
+Known scoped local gross is 19,869,316/20,043,423 bytes for the saved English/German
+runs. Including all 7,862 controlled path projections gives partial conservative
+enclosures 23,502,420/23,676,527, above 20,971,520 before remaining contributions.
+This candidate supplies no useful certificate. It proves neither inevitable
+native overflow nor impossibility of a tighter construction. Native tuples,
+expanded visits, preferences, regional returns, final values/errors and actual
+selected wire remain conditional, including all 149 outside observations and
+both system seed groups. Missing explicit operands are never zero or excluded
+runtime work. **The refuted-construction consumption hold remains** until a
+complete file plan and useful finite certificate are established; mandatory
+whole-producer review and earned integration also precede consumption by k7.
+The [historical baseline counterexample](../verification/application-localized-baseline.md)
+retains the refuted strings-only/64 KiB/L/input arithmetic as comparison evidence,
+not current gates or useful-reader qualification. The
+[finite design subject](../verification/application-metadata-subject.md) is a
+bounded macOS 26.6.2 census and controlled baseline/P1024/L1500 construction,
+not an exhaustive supported-VM baseline or macOS 27 qualification.
 
-**Localization plan.** Snapshot Locale.preferredLanguages once for the job under
-count/string/copy/attempt gates. Enumerate every raw direct entry of the selected
-resource directory, including duplicate, nonlocalization and rejected slots,
-before selection. Share a 65,536-entry metadata-plan job gate with every preference and selector
-result slot, including rejected/duplicate values; never recurse or list ancestors.
-Only checked directories whose literal names end in .lproj enter the bounded
-inventory. Preserve exact names. Place the information dictionary's development
-region first only when it maps exactly and unambiguously to an observed locale;
-byte-sort the remaining names. Stripping the suffix forms the possible-localization
-array. With no preference match the CF selector can return its first element:
-the backstop is therefore the observed development region, or the byte-first
-locale when no such region is observed. This is an explicit positional backstop,
-not proof of a language match. Optional CFBundleLocalizations is not an inventory
-and is not used. Call CFBundleCopyLocalizationsForPreferences with that array and
-the explicit nonnull preferences snapshot. Unlike a foreign Bundle getter, this
-pure selector has no target pathname or implicit main-bundle context. Count its
-result, map each returned name unambiguously to a supplied literal component and
-reject foreign/ambiguous values; no native directory order chooses a winner.
+**Layouts and fixed files.** Probe Contents, Support Files, Resources, then flat
+root. The first present checked layout selects its information/resource bases:
+Contents and Contents/Resources; Support Files and Support Files/Resources;
+Resources and Resources; root and root. Only checked absence advances layouts.
+Denial, link, wrong type, dataless/unsupported check or replacement refuses
+layout-dependent facts. Missing files in a present layout never select another
+layout. Resource-base absence permits an empty resource plan and information-name
+fallback; resource-base refusal freezes the name while healthy information facts
+can survive.
 
-The name-file search order is global resource base, selector-returned locales,
-Base if present, then the selected information file's CFBundleDevelopmentRegion
-if it maps exactly to an observed locale. Deduplicate literal directories. Read
-only that finite plan, never all remaining locale files. For each base use the
-platform/plain pair above. Within one selected dictionary a usable explicit
-display name precedes its usable bundle name. Across planned bases the first
-candidate with either usable value wins; a later base's display name never
-overrides an earlier base's usable bundle name. Checked absent/healthy empty
-applicable resources allow the
-next planned base and finally the information file's display/name. Any refused,
-malformed, unsupported or incompletely enumerated preceding candidate leaves the
-name unknown with diagnostics; do not disguise it with an unlocalized or filename
-label. The plan is retained only for this episode; later language/file changes
-are not pinned. No hard-coded en/Base/English-only inventory or maximum locale
-component length defines useful support.
+Information probes are Info-macos.plist then Info.plist. Only checked absence
+advances; the first healthy dictionary is authoritative, including empty or
+missing-key dictionaries. It cannot borrow a fact from the plain information file.
+Name search is **base-first**: global resources, then the direct directory plan.
+At each base probe InfoPlist-macos.strings, InfoPlist.strings,
+InfoPlist-macos.loctable, then InfoPlist.loctable. Each table performs independent
+selection at that position; a global table can precede later localized strings.
+Within each selected dictionary display name precedes bundle name. Healthy
+missing/empty keys allow the next key/candidate; the first usable name wins.
+A later display name cannot override an earlier bundle name. Wrong type, invalid
+UTF-8/NUL, key/input overflow or refusal stops affected-name fallback. A refused
+name file cannot be bypassed with later resources, plain information, a filename
+or another copy. Only when all earlier candidates are healthy without a name or
+checked absent can healthy information supply display/name. No arbitrary files,
+recursive resources, executable/icons or foreign Bundle lookup are admitted.
 
-**Typed facts and parser.** The selected information dictionary supplies only
-CFBundleIdentifier, CFBundleDisplayName, CFBundleName, CFBundleDevelopmentRegion,
-LSUIElement and LSBackgroundOnly. Name resources supply only display/name; they
-cannot override identifier or flags. Scalars must have their exact native types
-and satisfy existing lossless string gates; missing/malformed flags stay null,
-never false. Do not deep-copy dictionaries or ignored values. Each fixed regular
-file is limited to 65,536 bytes and two pread attempts: one exact declared-size
-read, then one EOF byte check. A short read, extra byte, changed size/time or
-failed check is not a successful prefix and is not retried. Parse immutable
-XML/binary/OpenStep property-list bytes with CFPropertyListCreateWithData; require
-a dictionary of at most 4,096 keys before scalar getters. CFDataCreateWithBytesNoCopy
-uses charged fixed buffers with kCFAllocatorNull. Hold the selected information
-buffer/dictionary through name selection so identifier, plain-name fallback and
-development-region can remain borrowed; hold at most one current name-file buffer/
-dictionary beside it. Retire the latter before reuse and both at episode end.
-Transcode only final retained identifier/name values under the existing copy
-reserves; never allocate every candidate name or copy the development-region
-separately. This also avoids assuming parsed values cannot reference their input. Native parser allocations occur before the owned-copy gate and
-have no proved peak; parser I/O/serviceability and actual .strings support remain
-N8 obligations. No alternate parser/fallback silently changes this construction.
+**Independent inventories and exact selection.** Snapshot explicit
+Locale.preferredLanguages once per job. Each raw slot is counted, including
+invalid/duplicate values; valid preferences are lossless, nonempty, NUL-free
+strings within the existing 1,024-byte key bound. Empty healthy preferences are
+explicit, never null/main-bundle context. Enumerate the selected resource
+directory's direct entries once, charging every raw slot. Only exact checked
+`.lproj` directories form the direct inventory; refused/vanished entries make
+it incomplete and freeze the name. No normalization, hard-coded locale subset
+or CFBundleLocalizations-only inventory substitutes for it.
 
-**Ownership, costs and failure.** The snapshot owner gates every explicit native
-attempt and gross allocation/copy, reserves cleanup before acquisition, and freezes
-without releasing held resources until actual native return. At most two fixed-file buffers (selected information plus current name file)
-and one enumerated resource directory are active; staged query/running/
-registration batches keep their existing sequential disposal. Preference, plan,
-file bytes and component copies consume the unchanged 8 MiB gross gate. Raw entry,
-file/key, call, copy or deadline exhaustion is population-wide FAILED/null; no
-per-app locale quota, prefix, hidden retry or helper filtering is admitted. Other
-individual metadata refusal can retain positive type/identity with nullable facts
-and honest source uncertainty. A known localized witness returning null fails
-usefulness even where that API uncertainty is legal.
+Each loctable owns its independent literal top-level key inventory. Count all
+keys, including LocProvenance, against the 4,096-key object bound. LocProvenance
+is reserved metadata: inspect its type and direct dictionary count where present,
+without selecting it as a language or recursively enumerating its contents.
+Every other key is a bounded string with a bounded dictionary value, including
+unselected languages. Invalid shape/overflow refuses the table/name. Table keys
+never become filesystem components; neither direct nor another table's inventory
+can supply its keys.
 
-The [population certificate](../design/application-population.json) records only
-conditional arithmetic for the refuted proposal, not useful-subject coverage.
-Its recipe is fixed 40; 16U + 5R + 12D; 32C ordinary/indexed staging; 8E raw
-metadata-plan slots (directory, preference and selector values); 48F fixed-file
-probes; and 2C(6V+4) lookup walks. F <=
-4C + 2L, where L counts every retained localization-inventory record per spelling,
-including unselected directories; the selected plan is a subset of that inventory.
-There is no production L quota: actual calls/copies still share the global gates.
-At U=8,192, R=C=2,048, D=2,050, V=32, E=65,536 and the finite shallow L=4,096,
-the bound is 2,345,024 attempts under 4,194,304. The finite shallow subject also
-requires aggregate fixed-file input <=1,000,000 bytes and localization components
-<=32 bytes, with preferences <=32 records/4,096 payload bytes in shared scratch
-(qualification dimensions, not universal input limits). With 64L
-records, two component copies and existing fixed scratch this derives 8,340,416
-gross bytes under 8 MiB; wire remains 7,929,856 under the unchanged core cap.
-These dimensions are already refuted by the measured shipped directory subject:
-its L is 10,794 and substituting only its information input into the full-envelope
-construction gives a 9,131,967-byte certificate subtotal at its old fixed
-128-byte locale reservation, not measured allocation. The current 8,340,416 arithmetic
-is therefore conditional only, not P1024/L1500 coverage. K215 must replace the
-dimensions/construction after the complete required subject is measured.
-Extra owned parser copies, repeated plan/name copies or an additional walk
-invalidate that construction. [N5/N8](../verification/native-discovery-acceptance.md#n-actual-source-and-provider-binaries)
-must account actual calls/allocations term by term and measure these dimensions
-with native baseline included. If the required finite useful population does not
-fit, k93 records the consumer consequence and seeks the existing coverage decision;
-no silent category reduction or host policy increase is authorized.
+For each nonempty direct/table inventory independently, put exactly observed
+healthy development region first, then byte-sort the remainder. Call pure
+CFBundleCopyLocalizationsForPreferences with that array and explicit preferences.
+Inspect every returned slot; require exact unambiguous membership, retain all
+distinct returned keys in order and charge duplicates before deduplication.
+Nil, foreign, wrong-type or unavailable results refuse the name. Append exactly
+observed Base then development region, deduplicating literal keys; empty
+inventory skips the selector. Actual matching preferences precede the explicit
+positional development/byte-first backstop. Direct plans map to observed
+components, table plans to their borrowed dictionaries. No English/German product
+subset follows the saved selectors. The saved Find My English return includes
+en_AU, en_GB and en; useful acceptance also requires Voice Memos and a German
+loctable witness.
+
+**Input, typed facts and refusal.** Each checked regular nonlink file admits
+0…131,072 declared bytes before input work. One exact-size pread and one EOF-byte
+pread, pre/post held/named checks and immutable XML/binary/OpenStep parsing admit
+no retry or successful-prefix parse. Dictionaries have at most 4,096 keys before
+getters. Information supplies identifier, display/name, development region and
+optional exact Boolean LSUIElement/LSBackgroundOnly; name files supply display/name
+only. Missing/invalid flags stay null. Identifier is 1…512 lossless UTF-8 bytes;
+name is 1…1,024, including the 129-byte witness. Invalid development region
+supplies no selection/backstop authority. Healthy independent facts survive.
+
+An oversized/refused information file withholds ID/declarations/development/plain
+fallback; an independent healthy localized name may survive. An oversized/refused
+preceding name file freezes the name. Other per-object malformed/input/key/type
+refusals withhold affected facts while retaining an admitted copy's checked
+identity/location/choice and diagnostics. **Shared** source/plan/count, explicit
+attempt, cumulative gross or deadline exhaustion instead invalidates the complete
+population as FAILED/null items, even after useful staging. Diagnostic saturation
+alone keeps choices and fixed source/reason summaries. A legal unknown does not
+pass a known required useful witness.
+
+**Ownership and scope.** Selected information and current name each use one
+immutable 128 KiB input, with EOF/conversion scratch counted once per serial job.
+Borrowed dictionaries/selector children stay tied to their real owners; dispose
+name borrowers/dictionary/CFData before input reuse, and metadata/first root before
+the independent second identity walk. Controlled raw capacities, initialization,
+read/copy/field/owner/cleanup writes and every explicit operation reserve before
+work, including possible cleanup. Reuse/disposal/cancellation refund nothing.
+Compiler-generated traffic and internal platform/Swift constructor/bridge/COW/
+metadata/allocator work are excluded under the cited ADR; explicit caller work
+remains charged. Real ProviderValue publication remains provider-owned and its
+controlled work cannot move to host accounting. No total heap/hidden-copy gross,
+runtime-attempt, RSS or peak guarantee follows. Three/five-second deadlines and
+four slots until true return remain. Four jobs have four 20 MiB cumulative counters;
+Settings/locations and the independent core 8 MiB response cap retain their gates.
 
 L1500 now includes a 977-byte ordinary en-localized control and a 978-byte copy
 inside the old missed band, plus 1,003/1,004/1,023 ordinary and 1,024/1,500 indexed
@@ -972,11 +954,12 @@ never replaces a blocked worker or raises descriptor/materialization limits.
 
 | Per admitted job | Bound and ownership |
 | --- | --- |
-| Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. Separate 65,536 indexed-type entries and 65,536 metadata-plan entries; fixed file 65,536 bytes, dictionary 4,096 keys. |
+| Applications | 8,192 raw URL observations, 2,048 running objects, 2,048 distinct spellings, 2,050 identifier groups including the two system IDs, 2,048 retained choices. Shared staging/overflow semantics above apply; no smaller expansion quota. Separate 65,536 indexed-type entries and 65,536 metadata-plan entries; fixed regular file 131,072 bytes, dictionary 4,096 keys; individual affected-fact refusal is distinct from shared exhaustion. |
 | Settings | Per sweep: 256 pane records, 128 raw anchor names/pane, 4,096 raw anchors total; two sweeps maximum. Count/call/copy overflow and deadline before a complete first map withhold items as FAILED/null. Confirmation deadline retains uncontradicted first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN, never an incomplete prefix or completeness proof; useful qualification must still finish both sweeps. |
 | Native calls | Application ceiling 4,194,304; Settings 131,072 under the two-sweep certificate below; locations 16,384. All explicit descriptor/API/syscall and cleanup attempts count. Reserve cleanup for held resources before acquisition; exhaustion cannot prevent release. Callback receipt/opaque ARC internals are retirement, not a new source call. |
 | Location resolution | Existing individual-target lookup caps remain; all constituent calls additionally charge this job. No directory enumeration/contents read in the resolver. Discovery alone holds its episode root for the explicit fixed-file/direct-localization exception; no third walk. |
-| Owned copied values | 8 MiB total including results, in-progress scalar copies, diagnostics, keys and native copied elements; test gross charges before copying. Labels/keys/paths use the bounds above. |
+| Application explicit work | 20,971,520 cumulative controlled raw requested/write bytes and 4,194,304 explicit operations under the scoped accounting ADR; provider-owned real publication, no refund or total heap/RSS/peak bound. Reserve work and cleanup before invocation. |
+| Settings/location owned copies | Their unchanged 8 MiB per-job gate; independent core response bytes remain 8 MiB for every operation. |
 | Diagnostics | 64/job, each guidance at most 1,024 bytes plus bounded native code; reserve the last record for DIAGNOSTIC_LIMIT. Saturation continues discovery; four fixed 32-byte source summaries preserve outcomes independently of stored details. Reserve 2,048 gross bytes per diagnostic record/payload. |
 | Native objects | One opaque result batch/query plus one temporary reply/descriptor set per pending call, or one pending launch callback per job, plus bounded borrowed-element owner state and the explicit reader’s selected-info/current-name parsed inputs and localization selector state; dispose/release exactly once on real completion. No hard parser/native peak follows. |
 
@@ -1033,69 +1016,48 @@ a prefix. V12's actual finite subject must fit all gates and the deadline.
 
 ### Application cost certificate
 
-Let U be raw URL observations, R running objects, D identifier groups, C distinct
-spellings and V actual component visits per walk including expanded links. Add E
-raw metadata-plan slots (all direct directory, preference and selector values) and
-L retained localization-inventory records per spelling (including unselected
-directories); F fixed-file probes <=4C+2L.
-The refuted finite shallow proposal has U<=8,192, R=C<=2,048, D<=2,050, V<=32, E<=65,536 and
-L<=4,096, already disproved by the measured system directory inventory. V/L were
-proposed qualification dimensions, not production per-path/app quotas.
+The [complete scoped composition](../verification/application-metadata-composition.md)
+replaces the historical 40+16U+5R+12D+32C+8E+48F+2C(6V+4) recipe as current
+construction evidence. That older 2,345,024-attempt/8,340,416-gross/7,929,856-wire
+arithmetic remains only at refuted shallow dimensions in the
+[historical counterexample](../verification/application-localized-baseline.md).
+It cannot certify the selected file plan, regional/table inventories or baseline.
 
-| Explicit work in the adapter recipe | Maximum attempts |
-| --- | --- |
-| Fixed source/query/preference acquisition, counts and cleanup | 40 |
-| Source element/path and indexed projection/tree/scalar checks | 16U |
-| Running URL/identifier/name/policy/termination getters | 5R |
-| Once-per-ID CF/AppKit/preferred acquisitions, counts/disposal | 12D |
-| Per-spelling root type/layout/directory/selector setup and staging | 32C |
-| Raw metadata-plan slot access/check/construction/mapping/disposal | 8E |
-| Fixed-file/component/read/parse/getter/transcode/cleanup probes | 48F |
-| Before/after walks, links, errno limits and held-handle cleanup | 2C(6V+4) |
+Current accounting uses every performed source/root/reader/publication operation,
+controlled raw request and write under the scoped ADR. Five episode tapes cover
+first walk, selected root-resource/indexed branch, additional reader/owner/return
+work, independent second walk, then merge/final publication. Four job tapes cover
+preferences/source/type-tree/raw slots, once-per-ID registration and both system
+seeds, grouping/growth/comparisons, and outside outcomes/diagnostics/coverage/
+permissions/errors. Shared read attempts and scratch count once; repeated inputs,
+alias episodes, rejected/duplicate slots and unselected table keys remain charged.
+No third walk, per-choice registration multiplier, borrowed/raw-as-Swift value,
+unknown-to-zero or provider-to-host publication move is admitted.
 
-At this envelope F<=16,384 and 40+16U+5R+12D+32C+8E+48F+2C(6V+4)<=2,345,024,
-under the 4,194,304 gate. The
-[source operation table](../verification/native-discovery-sources.md#application-population-construction-evidence)
-enumerates each new allowance. This is a caller-visible construction certificate,
-not latency, private native pathname closure or opaque internal-work proof.
-There is no C×D registration multiplier or third root walk. Deeper/larger inputs
-charge actual global work; exhaustion invalidates publication, not existence.
-N5/N8 must enumerate actual attempts and reject any recipe exceeding a term.
+For both saved 2,043-episode runs, known local gross is 19,869,316/20,043,423 and
+explicit attempt uppers 950,247/983,378. All 7,862 controlled source path projections
+add 3,633,104 gross and 47,172 attempts. Their partial conservative enclosures
+23,502,420/23,676,527 already exceed the selected 20,971,520-byte gate before the
+other terms. This is a failed useful fit certificate, not an actual native lower
+bound, inevitable overflow or proof that a tighter construction cannot fit.
+Full native tuples/expanded visits/preferences/regional returns/final values/errors
+remain conditional, including all 149 outside records and both system groups.
 
-The refuted [explicit reader proposal](#localized-reader-decision) adds <=1,000,000
-gross fixed-file input bytes and 64L records plus two <=32-byte locale components
-to the existing 6,816,128 bytes of records/payload/summaries/shared scratch:
-8,340,416 under unchanged 8 MiB conditionally. The measured system directory
-subject refutes its L/input useful-subject construction; k215 must re-derive it
-before consumption. Input/component bounds describe this proposed finite
-shallow subject; actual baseline dimensions must be measured without filtering
-useful apps. Two 64 KiB fixed buffers and finite preference scratch (<=32 records/4,096 payload bytes) plus fixed plan
-scratch reuse the
-1 MiB allowance. Final-only scalar transcodes preserve existing payload-copy
-reserves. No deep/repeated candidate copies are hidden; native parser allocation
-peak is unproved. Wire remains 7,929,856 under unchanged core 8 MiB.
+The complete [selected wire](../verification/application-metadata-wire.md) includes
+all fields, roots, nested aliases, response-key merging, JSON escaping and errors.
+Independent roots own independent jobs; nested aliases add host completion/encoding.
+Its conditional uppers establish no useful fit or inevitable overflow. Actual full
+selected response must independently fit 8,388,608 bytes. The host encodes before
+applying that guard; replacing an over-cap sent body bounds no earlier controlled
+or excluded memory. No field/category/locale reduction or new quota follows.
 
-The fourteen extra indexed attempts reserve three fixed attribute getters,
-five tree type/count/first-match/member checks, and six identifier/name native
-type/length/equality checks. The two transcodes per distinct spelling use reusable
-scratch and create only the admitted owned scalar representations; duplicates
-compare borrowed native values without allocating new payload copies. Native
-membership search/encoding internals are opaque, not a bound on their work. The
-65,536 raw tree-value gate is eight entries per worst-case URL slot in the finite
-certificate, not a promise that every tree has eight entries; actual totals count
-before membership and global overflow withholds all choices. A different adapter
-or extra owned duplicate copying invalidates this recipe until reconciled at N5.
-
-The 8 MiB owned-copy gate remains shared by staging, results, diagnostics and walk
-scratch, including repeated/transient owned copies. Cardinality and string maxima
-are independent ceilings: 2,048 paths of 8,192 bytes do not fit 8 MiB and cannot
-all be admitted. Check gross byte charges before every owned allocation/copy;
-implementation must expose its record/container and scratch charges at N5, rather
-than pretending UTF-8 string lengths bound Swift allocation overhead. The
-populous subject supplies a conservative copy certificate and a separate
-single-full-selection wire-size certificate. The core's unchanged 8 MiB response
-cap still counts aliases/multiple roots/JSON escaping independently. Owned byte
-accounting establishes no hard RSS or opaque Foundation/CF allocation peak.
+A complete useful finite certificate requires all explicit-work operands within
+20,971,520 gross and 4,194,304 attempts and the actual full selected response within
+its independent cap. The failed candidate and conditional native operands leave
+that certificate unestablished. Preserve the consumption hold, mandatory whole
+review and useful baseline/P1024/L1500 obligations. N5/N8 record actual tapes and
+serviceability through their existing seams; missing observations do not create
+another capture/design model or re-open the selected strict/scoped decision.
 
 Cancellation, client loss, deadline, revocation and provider stop atomically
 close further admission/publication. Freeze a returned valid partial snapshot

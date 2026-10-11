@@ -55,3 +55,22 @@ design is complete in k205; its mandatory review/earned integration precedes thi
 consumer. Challenge exact indexed getter/source contact and both full Settings
 sweeps, while preserving G10/G11/N8/V11–V13 useful-source duties and unknown
 lazy/index association. Design checks establish no actual read safety.
+
+## Selected application family and consumption barrier
+
+Consume the eventual reviewed whole application-localized-metadata-k215 family,
+not the refuted k212 certificate. Current selected semantics use platform/plain
+information, strings/loctables, independent direct/table inventories, exact
+regional returns/backstops, 131,072-byte files and affected-fact refusal retaining
+an admitted choice; refused preceding names cannot fall through. Shared exhaustion
+still FAILED/null. Scoped 20,971,520 cumulative raw gross and 4,194,304 explicit
+operations include owner/cleanup writes and provider-owned real publication,
+without reuse refunds. Runtime/compiler internals are excluded with no total
+heap/RSS/peak guarantee. Current partial conservative enclosures exceed the gate;
+useful finite fit remains unestablished and the k215 hold/review barrier remains.
+All G1–G11/N1–N8/V1–V13, baseline/P1024/L1500, read disclosures and independent
+source AND image/four-action guards remain pending duties. Settings k211 repairs,
+authority, action limits and retained action-only evidence remain independent.
+No design check qualifies macOS 27 or an actual native outcome. The session
+actually closing this review's producer alone writes Creator; this handoff closes
+no downstream node.

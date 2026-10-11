@@ -7,17 +7,19 @@ numbered edges show work order. The plan consumes Antony's recorded
 It is a pure-observation design, with an executable policy model; it performs no
 native discovery, file parsing, selector call, launch or consent operation.
 
-**Construction boundary.** The file/layout, inventory, precedence and refusal
-semantics below are selected. The complete owned-storage, gross, call and wire
-certificate is still work under application-metadata-certificate-k220; whole-family
-reconciliation is application-metadata-reconciliation-k221. The proposal's
-numerical totals remain estimates. The existing k215 consumption hold and its
-mandatory whole-producer review before k7 remain binding. Every native
-G1–G11/N1–N8/V1–V13 verdict stays **pending**. This document does not lift the
-hold or replace the old certificate with a claimed fit.
-The [operation ledger](application-metadata-operation-ledger.md) now defines the
-concrete branch/ownership protocol; applying it to every saved episode and the
-source/storage/wire envelope remains k220's following design child's work.
+**Construction boundary.** The selected file/layout, inventory, precedence and
+refusal semantics below are established as a design. The
+[complete scoped composition](application-metadata-composition.md) and
+[accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+now supply current source/root/storage/publication recipes and conditional whole-job
+expressions. The candidate's partial conservative enclosure fails useful fit;
+full native operands/final selected wire stay conditional. The old proposal totals
+are estimates, not a useful certificate. The k215 consumption hold and mandatory
+whole-producer review before k7 remain; every G1–G11/N1–N8/V1–V13 is pending.
+The [operation ledger](application-metadata-operation-ledger.md) supplies the
+acquisition/branch protocol; the current runtime contract adds explicit raw
+owner/field/cleanup writes and real provider-owned publication. No total heap/RSS/
+peak follows the scoped guarantee or the independent core response guard.
 
 ## Root and layout admission
 
@@ -187,8 +189,7 @@ every performed read/copy and no reuse refund; attempts remain **4,194,304**.
 Shared metadata-plan slots include raw directory/preference/selector/table-key
 inspection and rejected/duplicate slots. Before every actual work/projection the
 owner checks shared count/call/copy/deadline admission. Per-object 4,096-key
-overflow is distinct from shared count exhaustion. Complete definitions and all
-performed terms must be derived in k220; neither this model nor the earlier
+overflow is distinct from shared count exhaustion. Current complete expressions and conditional operands are in the composition; neither this model nor the earlier
 40/32C/8E/48F estimates is that certificate.
 
 The core response cap remains 8 MiB, read/core deadlines three/five seconds, and
@@ -218,18 +219,17 @@ returns; caller cancellation cannot transfer/free an in-use buffer or descriptor
 | Episode completion | Retire names/information/plans/descriptors, close first root, then second fresh root resolution under the existing two-walk allowance. Require equal before/after device/inode; mismatch refuses choice. Close that second walk on every exit. No third walk or query-long pin. |
 | Shared failure / lifecycle freeze | Publish no arbitrary prefix; discard staged values and retire all actual acquisitions on true return. Do not release the shared slot on caller timeout. |
 
-This is the normative cleanup protocol, not a measured disposal count. k220 must
-enumerate concrete reserve slots, buffer/vector representations, CF error-object
-ownership, dup/fdopendir failure, scalar failure and every native boundary. Opaque
+This is the cleanup protocol, not a measured disposal count. The composition
+and runtime contract bind concrete reserve slots, raw buffer/vector/owner writes,
+CF error ownership, dup/fdopendir failure, scalar prefixes and native boundaries. Opaque
 parser/selector/root-resource acquisitions and undetected races remain N5/N8 and
 serviceability obligations. No finite design check proves prompt safety or native peak.
 
 ## Reproduction and acceptance boundary
 
-The source/export is served at the stable architecture-viewer URL. This session's
-browser inventory is empty, so local SVG rasterization establishes readable
-diagram delivery only. Browser deep-link, mobile and dark-appearance verification
-remain explicit reconciliation work; HTTP success supplies no such check.
+The source/export is served at the stable architecture-viewer URL. Browser
+deep-link/current markers and readable desktop/mobile/dark appearance are part
+of whole-family delivery verification; HTTP success alone proves no rendering.
 
 Run `task design:application-metadata-reader-plan-check` for the pure policy model,
 controlled counterexamples and every saved selector mapping. It reads only checked

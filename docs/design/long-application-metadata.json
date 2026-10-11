@@ -63,5 +63,6 @@
     "localizedComponent": "en.lproj",
     "requireLocalizedNameDistinctFromPlainInfo": true,
     "requireActualBoundaryIndexedTuples": true
-  }
+  },
+  "currentContract": "application-metadata-contract.json"
 }

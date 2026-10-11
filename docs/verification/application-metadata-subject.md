@@ -1,5 +1,17 @@
 # Application metadata finite design subject
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Freeze the finite subject](../design/architecture/index.html#diagram-native-metadata-subject)
 shows the evidence boundary and next decision. Graphs start at the dark **Start
 here** node; numbered edges express work order. This document and the

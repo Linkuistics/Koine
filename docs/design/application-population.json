@@ -1,5 +1,5 @@
 {
-  "purpose": "Refuted useful-subject dimensions with checked conditional arithmetic; redesign before consumption, no runtime/native pass",
+  "purpose": "Historical refuted certificate and original-defect controls; currentContract owns selected semantics/gates; no native pass",
   "usefulSubjectCertificateEstablished": false,
   "consumptionRequires": "application-localized-metadata-k215",
   "baselineCounterexample": "application-localized-baseline.json",
@@ -84,5 +84,7 @@
     "requireIndependentManifestAndObservers": true,
     "nativeVerdict": "PENDING",
     "requireMeasuredMetadataInputAndLocalizationDimensions": true
-  }
+  },
+  "currentContract": "application-metadata-contract.json",
+  "artifactScope": "HISTORICAL_REFUTED_COUNTEREXAMPLE_ONLY"
 }

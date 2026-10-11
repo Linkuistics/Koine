@@ -176,3 +176,29 @@ have acceptance charters and are not another capture leaf. The scoped-versus-
 strict choice is resolved, so no repeated accounting model or human interview is
 due. All gates/no-refund/deadlines/slots, authority/action/Settings/disclosure/
 compatibility, useful breadth and every native G/N/V remain binding.
+
+## Reconciled failed-boundary close
+
+Application-metadata-reconciliation-k221 now completes the whole-family handoff.
+The original Done when check is satisfied at this node's explicitly permitted
+failed-construction boundary: k219 supplies the exact file/layout/inventory/
+selector/refusal plan; k220 and its descendants supply complete scoped expressions,
+all saved associations and the precise failed conservative candidate; k221
+reconciles every consumer, independent image/action/disclosure/Settings obligation,
+Taskfile controls and actual desktop/mobile/dark presentation. Frozen input checks
+and every original/new defect control pass; native G/N/V remains pending.
+
+The original condition allowing a failed construction requires its hold retained
+and missing work named under k215. That work is now the live sibling
+application-metadata-grouped-storage-k233. It evaluates one tighter grouped raw
+inventory/key ownership construction under unchanged selected semantics/gates,
+not another accounting interview/model or already chartered native capture.
+The mandatory root application-localized-metadata-k234 review is cut before k7,
+Reviews naming the whole k215 producer. No complete useful finite fit is claimed.
+
+K218 has no live descendant and closes at this allowed handoff. Promote the exact
+selected semantics/scoped failure/reproduction/browser boundary and missing-work
+handle to k215 and the root. K215 remains live: its original useful finite
+certificate condition is unsatisfied and k233 owns the concrete gap. This session
+therefore writes no Creator for k215 and names only k218 as a closed node in the
+focused commit; the actual future k215 closing session owns Creator on k234.

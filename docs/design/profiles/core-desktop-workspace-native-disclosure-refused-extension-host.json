@@ -6,7 +6,7 @@
     "Design only; independently retained prior host advertises the first two features, not workspace-native-disclosures-v1.",
     "Native 1.3.0/schema 1.1.0 per-user manifest requires all three; reject before initializer/factory/start with unsupported-feature.",
     "Retained bundled action-only workspace 1.0.1/schema 1.0.1 remains selected-with-refusals; complete action SDL and all candidates pinned. Actual N/G/V pending.",
-    "Application reader file-set/useful-subject construction is refuted; application-localized-metadata-k215 and mandatory review precede implementation. No new native verdict."
+    "Selected strings/loctable reader semantics, 128 KiB regular files and scoped 20 MiB explicit-work admission are specified; useful finite fit is unestablished. The k215 consumption hold and mandatory whole-producer review remain; every native G/N/V is pending."
   ],
   "providers": [
     {
@@ -45,5 +45,6 @@
     "additional-capabilities-v1",
     "first-party-selection-v1",
     "workspace-native-disclosures-v1"
-  ]
+  ],
+  "applicationMetadataContract": "../application-metadata-contract.json"
 }

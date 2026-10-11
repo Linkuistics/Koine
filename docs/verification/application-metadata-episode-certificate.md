@@ -1,5 +1,17 @@
 # Application metadata saved-episode certificate assessment
 
+**Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
+and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
+govern current admission. This retained subcertificate supplies historical/local
+receipts and counterexamples; its original numeric/ownership recipes are not a
+whole-job fit. The [complete composition](application-metadata-composition.md)
+adds current owner/cleanup/raw recipes, real provider-owned publication and the
+explicit/internal exclusion partition. Known partial conservative enclosures fail
+to certify useful fit; full native operands/final selected wire stay conditional.
+The consumption hold, mandatory whole-producer review and pending native G/N/V
+remain. Historical follow-up lists below describe the evidence's derivation;
+they commission no repeated accounting model or already-chartered native capture.
+
 [Certificate evidence → Keep unknown terms out of the sum](../design/architecture/index.html#diagram-native-metadata-episode-certificate)
 shows the result and its dependencies. The dark **Start here** node is the
 reading entry; numbered edges give assessment order. This consumes the
@@ -16,7 +28,8 @@ They are never added as zero. The old 17,118,466/17,128,098 gross,
 2,970,288/3,168,784 attempts and 7,942,144 response estimates remain proposals.
 Passing the assessment check certifies its reproduction, not a useful budget fit.
 
-K220 remains open until its missing design work closes those terms. K221 then
+The complete scoped composition now closes the bounded certificate design at
+its precise failed-fit boundary. Whole-family reconciliation
 reconciles the complete family and arranges whole-k215 review. The k215
 consumption hold and all native G1–G11/N1–N8/V1–V13 remain pending. This assessment
 changes no selected gate, useful category, public interface or native posture.
@@ -161,10 +174,12 @@ assessment adds arithmetic omission controls rather than another runtime adapter
 
 The [source/root receipt contract](application-metadata-source-root-certificate.md)
 now provides the parametric source/preference/expanded-walk grammar and exact
-first-root transfer. Its owned capacities and actual native dimensions remain
-unresolved, so none of this assessment's null whole-job totals becomes numeric.
+first-root transfer. Current scoped composition supplies controlled raw representation recipes, while
+actual native dimensions and final values remain unresolved. This historical/local
+assessment's null whole-job totals therefore stay null.
 The [handoff](application-metadata-source-root-certificate.md#handoff-and-failed-construction)
-separates k225's known representation/composition work from pending native inputs.
+separates supplied scoped recipes from still-pending native inputs and the missing
+useful-fit construction.
 
 The explicit controlled source arrays yield **7,862 raw URL slots**, including
 128 running URL slots, with 1,871 observed identifier groups and two reserved
@@ -280,7 +295,9 @@ peak or serviceability. Settings/location gates, independent native images,
 four-action guards, host read disclosures/refusal, long action hand-off limits,
 retained action-only compatibility and local-only Automation initiation bind.
 
-The failed closure check names two design deliverables before k221:
+The historical failed check named these two deliverables; current source/root,
+runtime admission, selected wire and scoped composition now supply their recipes
+and precise failed useful-fit result:
 
 1. Close the source/root operation and owned-payload contract, including exact
    raw-slot/tuple/preferences shapes, every branch/cleanup and two-walk transfer.

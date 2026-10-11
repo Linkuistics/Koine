@@ -360,3 +360,31 @@ required unavailable subjects remain live before baseline. This close authorizes
 no new reader, helper, consent/signing/access posture or useful loss. UI-only
 target-wide Automation, disclosure-capable host refusal, four-action guards and
 independently retained action-only 1.0.0/1.0.1/1.1.0 evidence remain binding.
+
+## Selected application family: hold and bounded useful-fit work
+
+Application-metadata-reconciliation-k221 closes application-localized-metadata-k218
+at its allowed failed-boundary handoff. The complete family/current contract and
+live consumer charters now agree on selected strings/loctable semantics, 128 KiB
+files, individual affected-fact refusal versus whole-population shared exhaustion,
+and scoped 20 MiB controlled raw/explicit-operation admission without refund.
+Real publication remains provider-owned; runtime/compiler internals are excluded,
+with no total heap/RSS/peak guarantee. Independent Settings/location/core gates,
+action limits/authority, source AND image/four-action guards, actual host read
+reach/old-host refusal and retained action-only evidence remain intact.
+
+The current candidate establishes no useful finite fit. Partial conservative
+local-plus-controlled-path enclosures exceed the gate before other terms; native
+operands/final wire remain conditional. Keep k215's consumption hold. Its original
+useful-certificate condition is still unsatisfied, so k215 stays live with bounded
+design application-metadata-grouped-storage-k233, seeking one tighter grouped raw
+inventory/key ownership construction within the settled selections. A failed
+refinement must supply a concrete evidence-backed trade-off before any unselected
+choice; repeat neither strict/scoped selection nor already chartered native capture.
+
+Root mandatory review application-localized-metadata-k234 precedes k7 and reviews
+whole application-localized-metadata-k215. Only its actual future closing session
+writes Creator there; k221 finishes only k218. Every native G/N/V remains pending.
+`docs/verification/application-metadata-reconciliation.md` carries the family map,
+original close checks and reproducible frozen controls; design/browser consistency
+supplies no native qualification or authorization to reduce useful choices.

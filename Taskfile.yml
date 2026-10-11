@@ -753,6 +753,28 @@ tasks:
       - node --test scripts/test_application_metadata_wire.mjs
       - node scripts/check_application_metadata_wire_mutations.mjs
 
+  design:application-metadata-reconciliation-regenerate:
+    desc: Reconcile SDL/views and refresh saved certificate hashes in dependency order; no native capture
+    cmds:
+      - task design:search-compose
+      - task design:native-discovery-render
+      - task design:application-metadata-reader-plan-render
+      - task design:application-metadata-operation-ledger-render
+      - task design:application-metadata-source-root-render
+      - task design:application-metadata-owned-storage-render
+      - task design:application-metadata-episode-certificate
+      - task design:application-metadata-source-root-certificate
+      - task design:application-metadata-owned-storage
+      - task design:application-metadata-wire
+      - task design:application-metadata-composition
+
+  design:application-metadata-reconciliation-check:
+    desc: Reject current/historical drift and run all inherited checks on frozen inputs; native pending
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py
+      - uv run --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py
+      - python3 scripts/check_application_metadata_reconciliation.py --suite
+
   design:application-metadata-wire-render:
     desc: Render the independent selected-wire and post-encoding guard boundary
     cmds:
