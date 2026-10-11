@@ -7,6 +7,9 @@ boundary**, not a selected P1024 distribution or a useful qualification pass.
 The [per-copy audit](../design/application-population-metadata-shape.json) preserves
 all saved associations without inventing missing data. Private eligibility remains
 false under the [canonical predicate](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
+The [selected reference and evidence requirements](#selected-reference-and-evidence-requirements)
+now use the current macOS 27 installation. The historical audit remains unchanged;
+it is not a completed current-reference package or a reviewed qualification subject.
 
 ## What the saved corpus establishes
 
@@ -15,10 +18,13 @@ The historical macOS 26.6.2 (25G83) census contains 640 directory spellings:
 nested helpers and installation copies; location alone does not classify a
 useful GUI app or an independent application identity. The saved census is neither
 an exhaustive host population nor the actual supported VM baseline.
-No reference population has been selected for the 1,010 generated useful apps.
-Historical host templates, current-host templates, supported-VM templates and a
-justified finite envelope answer different questions; recovering historical bytes
-alone cannot select among them or establish representativeness.
+The [selected requirements](#selected-reference-and-evidence-requirements) name the
+current macOS 27 installation as the template reference for the 1,010 generated
+useful apps. Historical host templates, current-host templates, supported-VM
+templates and a justified finite envelope answer different questions. Recovering
+historical bytes alone would neither establish the selected current reference nor
+establish representativeness. The saved audit's null selection fields describe its
+historical projection boundary; they do not override the subsequent human choices.
 
 Every audit row pins a baseline ordinal, spelling, canonical digest of the entire
 saved row, associated grouped episode ordinal and inventory-profile reference.
@@ -102,44 +108,164 @@ other dictionary contents. Repeating that row, independently assigning a
 33-byte string, or padding generated XML to its 95,891-byte size would fabricate
 precisely the associations this subject must qualify.
 
-## Recommendation and alternatives
+## Evidence alternatives and historical recovery limits
 
-**Recommend retaining all holds and deciding the finite reference and its purpose
-before authorizing cohort-specific recovery or a justified envelope.** K240 asks
-which real population the generated apps should reflect, why, and which historical
-cohorts would feed their templates. The actual supported-VM baseline is additive
-in every case; historical System templates are needed only if the selected mapping
-uses them. The historical census is a concrete available comparison corpus, not
-an already selected useful-app reference. A current-host or VM reference would
-need its own bounded evidence authorization; no such evidence is acquired here.
+Antony selected a new current-installation reference and one bounded packaging
+pass under the [requirements below](#selected-reference-and-evidence-requirements).
+The historical census remains a concrete available comparison corpus. Its System
+and non-System payload gaps have distinct recovery candidates, but those historical
+cohorts no longer supply the selected template bytes. Their recovery is not needed
+or authorized by the current-reference choice. The actual supported-VM baseline
+remains additive, distinct from both historical and current-host templates.
 
 | Cohort | Missing evidence | Candidate recovery source and verification limit |
 | --- | --- | --- |
-| Historical System | 538 payloads/formats, all 247 complete loctables, full candidates and ambiguous flags | An existing archive or matching 25G83 system image is a candidate. The common saved file timestamp supports inspecting that candidate, but does not prove image availability or identical bytes. Every relative file/copy must match its saved SHA-256 before credited recovery. Obtaining image bytes is acquisition requiring K240's decision. |
+| Historical System | 538 payloads/formats, all 247 complete loctables, full candidates and ambiguous flags | An existing archive or matching 25G83 system image is a candidate. The common saved file timestamp supports inspecting that candidate, but does not prove image availability or identical bytes. Every relative file/copy must match its saved SHA-256 before credited recovery. No historical image acquisition is authorized or required for the selected current reference. |
 | Historical non-System | 1,508 payloads/formats, complete per-locale/information candidates and ambiguous flags | Existing archives or exact vendor/version artifacts are candidates, including nested helpers/copies. Matching app names or a newer vendor version is insufficient; each saved file digest and copy association must match. Availability remains unverified. |
-| Selected current-host/VM reference, if chosen | Complete evidence for that specific inventory and its classification | This is new reference evidence, not recovery of the historical capture; source/build/scope and authorization must be explicit. The VM's actual baseline cannot be replaced with historical rows. |
+| Selected current host, macOS 27.0.1 (26A434) | Complete current copy/file inventory, payloads/formats, typed candidates and independent classification | One bounded reference-packaging pass is authorized below and remains unexecuted. It produces new per-file/copy evidence, not equality with the historical capture. The actual supported VM still supplies its own full baseline and qualification. |
 
-Reading repository packets is not acquisition. No OS image, installed application
-or VM is read here. A build label, timestamp or archive hash alone supplies no
-complete per-copy replay or independent useful classification. This session
-authorizes neither bounded packaging nor a change to the evidence requirement.
+Reading repository packets is not acquisition. A bounded check of 27 existing
+workspace zip/tar archives found one historical payload equality candidate:
+Koine's 904-byte Contents/Info.plist, SHA-256
+431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157,
+associated in the saved census with ordinal 76, /Applications/Koine.app. This is
+no verified source-copy association or complete cohort replay. The check covered
+docs and .build, excluding generated subject, mutation, compatibility and
+node_modules trees; external backups, installed apps and OS images were not read.
+Census, audit, Python executable and the listed archives had equal before/after
+digests. The observation claims nothing about archives outside that bounded set.
+No target payload or VM capture has been obtained in this requirements session;
+sw_vers alone pins the current OS label/build. A build label, timestamp or archive
+hash alone supplies no complete replay or independent useful classification.
 The existing N5/N8/V11/V13 programme still owns actual supported-VM qualification.
 
 | Approach | Formats/candidates and joint facts | Useful classification | Multiplicity/assignment and justification gap |
 | --- | --- | --- | --- |
 | Recover needed cohort bytes with per-file digest/copy verification | Restores actual formats, typed candidates, flags and joint tails for recovered files | Still requires a separately named independent classification source | At most 640 historical tuples cannot supply 1,010 distinct useful apps without a declared rewrite/assignment. Recovery alone selects no reference or rule. Preferred where needed matching bytes are available; availability is unknown. |
+| Package the selected current installation completely | Supplies new original bytes, formats, typed candidates, flags and per-copy joint facts if the authorized pass succeeds; no historical digest equality is implied | Apple/vendor documentation and Antony-confirmed app purposes, frozen in an independent per-copy role manifest | Selected route. Whole-template repetition is declared below; exact assignment, resulting rewrites and useful shape remain to be designed and reviewed. Permission alone supplies none of those artifacts. |
 | Repeat/resample projected rows | Retains only the saved projection; cannot restore unsaved facts | Same independent classification obligation; reader flags/location are partial inputs | Repetition is shared with other routes, not this route's unique defect. Unstated facts and independently sampled marginals fail the current contract. |
 | Declare a per-copy joint envelope preserving every saved dimension | Declares only unsaved format/value/flag/candidate choices, with each original association retained | Same independent classification obligation | Requires an explicit 1,010-app assignment and proof that declared choices are a suitable finite envelope. No argument currently shows domination of opaque native parse cost or usefulness across those choices. A synthetic pass qualifies only that declared shape. |
 | Declare a global maximum-size/keys/languages envelope | Artificial correlated stress, with no established per-copy association mapping | Same independent classification obligation | Per-file caps do not bound the correlated job. Maxima alone cannot establish the useful finite subject or replace the joint evidence. |
 
-No route, reference, classification source or assignment is selected. No probability, confidence,
-representativeness or universal 1,024-app-machine claim follows these observations.
-A subsequent design must state an explicit finite joint shape and reproduction
-mapping; missing evidence cannot become a language subset, smaller population,
-helper deletion, weaker gate or new amount/posture. The failure here is a known
+The requirements below select the current-reference route, classification source
+and assignment policy. They establish no complete package, per-copy role
+classification, assignment or qualification recipe. No probability, confidence,
+representativeness or universal 1,024-app-machine claim follows. A subsequent
+design must freeze the explicit finite joint shape and reproduction mapping;
+missing evidence cannot become a language subset, smaller population, helper
+deletion, weaker gate or new amount/posture. The failure here remains a known
 subject-design gap, not actual native gross/attempt exhaustion. Valid exhaustion
 later goes once to the existing human coverage decision; it is not a route around
 this missing prerequisite.
+
+## Selected reference and evidence requirements
+
+The finite stress reference is the current installation, macOS 27.0.1 (26A434),
+with both System and installed non-System template cohorts. Its purpose is to
+exercise that installation's actual joint metadata shapes in a declared finite
+constructed workload. It is neither a statistical population model nor the
+supported VM's baseline. The historical 25G83 packets remain frozen comparison
+evidence; their identities, file digests, 640-copy associations and 2,043 combined
+episodes are not rewritten or relabelled as current evidence. Selecting this
+reference changes no product support floor or acceptance gate.
+
+### One bounded reference-packaging pass
+
+Antony authorized one byte-complete pass for the subsequent complete subject-design
+producer. Verify the exact installed build before using the authorization. The
+reference source is the fixed indexed application-bundle path query
+`kMDItemContentTypeTree == 'com.apple.application-bundle'`; retain its complete raw
+returned slots and explicit out-of-scope/refused observations. Contents are limited
+to checked .app directories under /System, /Applications and /Library whose
+resolved roots remain within those same locations. Retain root spellings,
+identities and alias/copy associations separately. These are evidence-instrument
+permissions, not a change to Koine's production source or reader policy.
+
+For the fixed Contents, Support Files, Resources and flat layouts, retain the
+layout observations and the complete selected information/resource bases. Package
+Info-macos.plist and Info.plist, and InfoPlist-macos.strings, InfoPlist.strings,
+InfoPlist-macos.loctable and InfoPlist.loctable globally and in every direct locale
+directory. Preserve original bytes and serialization, exact per-file digests,
+complete typed contents and present/absent/empty/non-string/malformed distinctions,
+both name candidates and rejected values, all raw direct entries/component bytes,
+all table keys/dictionaries/types/LocProvenance and joint tail associations.
+Unparsed/refused values retain their original evidence and explicit limits;
+inventing a typed tree is not recovery. No language subset is selected.
+
+Freeze the exact current inventory, source/build, instrument/tool inputs and
+per-file/copy associations before and after the pass. Record output payload and
+manifest digests and exact replay/association limits. Missing, refused, changed or
+unavailable copies/files remain explicit; a failed or incomplete pass is no
+complete package and permits no silent repeat. Stop at that boundary rather than
+substituting newer bytes, a historical row or a padded projection. No installed
+payload is packaged in this requirements session. No executable acquisition,
+arbitrary recursive contents, OS-image download, app launch, registration/index
+modification, new consent/signing/helper posture or native/VM acceptance capture
+is authorized by this packaging choice. The legacy lossy capture/fixture task
+cannot stand in for byte-complete packaging or overwrite the historical packets.
+
+### Independent classification and whole-template assignment
+
+Freeze a separate per-copy role manifest based on named Apple/vendor documentation
+and Antony-confirmed knowledge of application purpose, associated with the exact
+copy/version. Confirmed GUI copies supply useful templates; documented helpers
+supply helper templates. Uncertain copies retain declared stress roles and cannot
+count as confirmed useful apps. The reader's flags, paths and outputs are not the
+independent classification source. No universal user-facing-app predicate follows.
+The resulting signed GUI test apps still need independent useful type/identity/
+metadata and behavior witnesses through the existing acceptance seams.
+
+Use deterministic whole-template repetition: first cover required joint shapes,
+tails and branches within each role, then balance repetition to exactly 1,010
+distinct useful test apps and 256 helpers. The design must freeze its exact
+per-copy ordering, coverage and multiplicity, preserving every source association
+and explaining any shape it cannot include. It must not silently omit a copy,
+helper, branch, table, unselected key/language or tail to fit. An unresolved
+coverage/capacity conflict is a precise subject-design gap, not permission to
+trim the reference or count uncertain copies as useful.
+
+Every generated copy needs a distinct identity and a complete source-to-generated
+identifier/executable/signing rewrite manifest. Independently recalculate resulting
+byte sizes, formats, typed candidates/flags/branches, locale components and digests;
+an edited copy inherits neither its source digest nor its source identity. All 128
+aliases have explicit target and joint recipe associations. Retain all fourteen
+configured/system witnesses and the full actual supported-VM baseline and
+registration pressure in the same native workload. Balanced repetition creates a
+declared finite construction, not 1,010 independent real-app measurements. No
+independent marginal sampling, means-only model or thin cardinality padding is
+selected. Exact recipes and useful fit remain unestablished.
+
+### Test seams and required handoff
+
+Pure reference/recipe checks must compare independently frozen source evidence
+with generated copies and distinguish permitted rewrites from joint-shape loss.
+Observe controls fail for omitted tables/languages/keys/LocProvenance, unapproved
+type/serialization changes, clipped or reassigned tails, lost copy/file/alias
+associations and thin same-cardinality replacements. A declared permitted rewrite
+must pass when its resulting dimensions and branches satisfy the contract; a
+whole-row hash comparator is insufficient. Check complete inputs before/after
+every measurement. These are construction/evidence controls, not a fourth public
+product interface and not native usefulness evidence.
+
+Actual qualification retains the agreed public GraphQL, actual provider/host
+binary and isolated signed supported-macOS VM seams. Reuse existing N5/N8/V11/V13
+and their independent source, listener, grant-store, action, dialog and hydration
+obligations after the complete canonical prerequisite chain. This requirements
+handoff creates no duplicate native capture or implementation programme.
+
+On success, unavailable evidence or a failed packaging/design boundary, the next
+work remains a complete independent subject-design producer with mandatory whole
+producer review and every earned integration before private construction and
+app-and-file-search. Its artifact must reconcile the current contract, acceptance,
+source/subject/family, eligibility, consumer charters and editable/rendered views.
+Permission, an archive hash, cardinality, a policy or a projection cannot satisfy
+the missing finite-subject predicate. Private eligibility remains false, both
+advertisement and ordinary-consumption holds remain, and all native G/N/V verdicts
+stay PENDING. All file/count/quota/scoped gross/attempt/wire/deadline/true-return,
+Settings/location/core/action/authority/disclosure/source-and-image/compatibility
+obligations remain selected. Actual valid useful exhaustion goes once to the
+existing bounded coverage decision; a known design defect is repaired/reviewed
+first. No amount, accounting, ABI, posture or useful-category change follows.
 
 ## Required reproduction contract after the decision
 

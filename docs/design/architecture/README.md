@@ -16,10 +16,11 @@ remain live.
 
 Current changes:
 
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Separated cohort recovery candidates, enumerated flag loss, labelled packet-integrity checks and routed every decision outcome to subject design/review.
-- [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Named the unselected reference/classification/assignment and future subject discrimination requirement.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Links the historical projection boundary to the selected macOS 27 reference and bounded packaging, with complete subject design/review still required.
+- [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Distinguishes the selected reference, role source and assignment policy from the unbuilt byte-complete package, exact subject and discrimination controls.
 - [Exact information loss](../../verification/application-population-metadata-shape.md#exact-information-loss) — Distinguished the saved projection from a byte-complete, typed reproduction source.
-- [Recommendation and alternatives](../../verification/application-population-metadata-shape.md#recommendation-and-alternatives) — Separated formats, independent usefulness and multiplicity; compared cohort recovery and per-copy/global envelopes without selecting a route.
+- [Evidence alternatives and historical recovery limits](../../verification/application-population-metadata-shape.md#evidence-alternatives-and-historical-recovery-limits) — Separates formats, independent usefulness and multiplicity; retains cohort recovery and per-copy/global envelope limits.
+- [Selected reference and evidence requirements](../../verification/application-population-metadata-shape.md#selected-reference-and-evidence-requirements) — Records the current installation, exact one-pass packaging scope, independent roles, whole-template policy and agreed test seams. Permission and policy supply no finite-subject or native pass.
 
 Unchanged context: [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
 [Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),

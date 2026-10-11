@@ -470,9 +470,14 @@ reconciliation report own the complete repaired handoff.
 
 Consume docs/verification/application-population-metadata-shape.md as the canonical
 cohort inventory, reference/evidence trade-off and packet-integrity boundary.
-K239 and earned integration k241 precede k240. K240 settles the finite reference
-and bounded cohort-specific evidence question with Antony, and on every outcome
-externalizes complete subject design with mandatory whole review/earned integration
-before private construction and k7. Native verdicts and both holds remain governed
-by the canonical eligibility predicate; no downstream node closes here. No new
-acquisition, reader, amount, quota, ABI, posture or useful loss is selected.
+K239 and earned integration k241 precede k240. K240 settles the requirements in
+that report's selected-reference section: the current macOS 27.0.1 (26A434)
+installation, both template cohorts, one bounded byte-complete reference-packaging
+pass, independent documented/human-confirmed roles and whole-template assignment.
+Application-population-metadata-subject-k242 owns the complete independent subject
+design and mandatory whole-producer review/earned integration before private
+construction and k7. No current payload or native capture has occurred; permission
+and policy alone establish no finite subject. Historical packets remain comparison,
+the full actual supported-VM baseline is additive, and native verdicts and both
+holds remain governed by the canonical eligibility predicate. No downstream node
+closes here and no reader, amount, quota, ABI, posture or useful loss is selected.

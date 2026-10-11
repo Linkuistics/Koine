@@ -199,12 +199,15 @@ on lifecycle/core loss, never a successful useful prefix.
 ## Reviewed population subject prerequisite
 
 Consume [the canonical joint evidence boundary](../../../../docs/verification/application-population-metadata-shape.md) for the cohort inventory,
-reference/evidence decision and packet-integrity limits. K240 settles that bounded
-human decision and externalizes complete subject design plus mandatory whole
-review/earned integration on every outcome, before private construction and k7.
+selected reference/evidence requirements and packet-integrity limits. K240's
+agreed choices feed application-population-metadata-subject-k242, which owns
+complete independent subject design and mandatory whole review/earned integration
+before private construction and k7. The byte-complete current-reference package
+and exact subject remain unbuilt; the one authorized local packaging pass is
+distinct from existing actual native qualification.
 The canonical private eligibility predicate remains binding. Preserve existing
 N5/N8/V11/V13 placement, all native G/N/V pending outcomes and both holds, and
 independent source/image/action/authority/disclosure/compatibility/core/Settings/
 location duties. Actual valid useful exhaustion belongs to k93; missing subject
-design is repaired and reviewed first. No new reader, capture programme, amount,
+design is repaired and reviewed first. No new reader, native capture programme, amount,
 quota, ABI, signing/helper/consent/posture or useful loss is selected here.
