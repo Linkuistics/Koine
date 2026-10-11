@@ -22,8 +22,9 @@ composes every episode/job tape with pre-call controlled work, live/possible raw
 cleanup, full FAILED/null publication and terminal bookkeeping reservations.
 Actual prefixes stay charged, native borrowers retain backing through true return,
 and unknown explicit work refuses before invocation. The design-established flag
-is true; private implementation eligibility is false pending whole-producer and
-applicable downstream review/integration/qualification placement. Advertisement,
+is true; private implementation eligibility is false under the complete
+[eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence),
+including the missing reviewed finite metadata-shape subject. Advertisement,
 consumption, useful fit and every native verdict retain their independent holds.
 
 Four layouts select explicit information/resource bases; only checked absence
@@ -52,10 +53,21 @@ hidden-copy gross, runtime-attempt, RSS or peak bound. Settings/location gates,
 core 8,388,608 response bytes, 4,194,304 application attempts, three/five-second
 deadlines and four true-return slots remain independent.
 
-| Saved run | Scoped local gross | Scoped local attempt upper | Local plus controlled-path partial conservative enclosure |
-| --- | ---: | ---: | ---: |
-| en-AU,en | 19,869,316 | 950,247 | 23,502,420 |
-| de | 20,043,423 | 983,378 | 23,676,527 |
+| Adopted grouped run | Local gross | Local attempt upper | Plus controlled paths | Plus both walk literals/states |
+| --- | ---: | ---: | ---: | ---: |
+| en-AU,en | 16,811,702 | 914,288 | 20,444,806 | 23,238,610 |
+| de | 16,985,809 | 947,419 | 20,618,913 | 23,412,717 |
+
+The adopted grouped construction is current. Earlier independent-block recipes
+remain reproducible comparison on the same saved associations:
+
+| Comparison run | Local gross | Local attempt upper | Plus controlled paths | Plus both walk literals/states |
+| --- | ---: | ---: | ---: | ---: |
+| en-AU,en | 19,869,316 | 950,247 | 23,502,420 | 26,296,224 |
+| de | 20,043,423 | 983,378 | 23,676,527 | 26,470,331 |
+
+Both representations include 2,793,804 gross for the two walk literals/states in
+the last column. Their remaining actual native terms stay conditional.
 
 All 7,862 path projections contribute 3,633,104 gross and 47,172 attempts under
 that saved-input assumption. These conservative partial enclosures exceed
@@ -105,10 +117,10 @@ separate from actual binaries and signed supported VMs.
 | k218 full owned/call/wire derivation | Complete scoped receipts/expressions and every association delivered at the precise failed-fit boundary; actual native operands/final response conditional. |
 | k218 selected gates and other contracts | Only application scope/amount selected by k217/k231 applies. All independent Settings/location/core/authority/action/disclosure/compatibility obligations remain. |
 | k218 family/test handoff and review | Complete family reconciled; pure controls remain separate from pending G/N/V. Missing useful-construction work is externalized under k215; root whole-k215 review precedes k7. |
-| k215 independent subject and selected choice | Frozen bounded baseline/P1024/L1500, all outside observations, dimensions and actual k217/k231 answers retained; no re-interview or current-OS/exhaustive claim. |
+| k215 independent subject and selected choice | Frozen baseline/P1024/L1500, outside observations, dimensions and selected answers remain comparison evidence. Whole-producer review identified that P1024 cardinality does not constrain metadata shape; independent distribution/envelope redesign and its mandatory review/earned integration remain live before private builds. No current-OS/exhaustive claim. |
 | k215 exact file/selector/oversize branches | Complete selected reader semantics and accounting/publication boundary specified; no foreign Bundle/resource scan or useful loss. |
 | k215 useful finite certificate / k235 amendment | Useful fit remains unestablished. K235 selected guarded private qualification before analytic fit under Antony's explicit delegation. The amended private design close condition requires the complete guarded construction and existing qualification sequence, not pre-implementation analytic fit. Actual full useful native operands/responses/witnesses/serviceability must still pass before advertisement/downstream consumption. |
-| k215 whole-producer closure | K236 supplies the complete guarded private design, current family and existing qualification order under k235's amendment. The closing session checks all original conditions, retires k236 and names its own run on existing whole-producer review k234. Useful fit remains unestablished; native acceptance, advertisement and consumption stay held. Review/integration and applicable downstream prerequisites still precede private implementation. |
+| k215 whole-producer closure | The closing producer supplied the guarded design and existing order. Whole-producer review integration repairs admission, publication, image correspondence and the durable eligibility contract, and externalizes the substantial finite-subject redesign. Closure never established private eligibility, useful fit or a native verdict. Advertisement/consumption stay held; the complete eligibility conjunction governs private implementation. |
 
 The completed bounded refinement evaluated grouping existing raw inventory/key blocks under
 shared episode owners, retaining actual payload/header/growth/field/cleanup writes,
@@ -122,6 +134,29 @@ and any earned integration precede private implementation. The failed candidate
 alone establishes no implementation eligibility. Advertisement/consumption remain
 held until full useful native qualification; all pending cases remain live.
 
+## Whole-producer review integration
+
+The reviewed private route remains selected under the
+[qualification decision](../adr/application-metadata-qualification-precedes-analytic-fit.md).
+Its repaired contract and remaining subject dependency are:
+
+| Finding | Classification and resulting boundary |
+| --- | --- |
+| P1024 metadata shape | Real subject-design defect. Cardinality and the thin disk fixtures do not establish representative useful metadata. Independent distribution/envelope design, mandatory whole review and earned integration remain live before private implementation; all existing baseline, helper, alias and witness pressure remains required. |
+| Repeated eligibility summaries and planning hold | Unclearly stated contract repaired by canonical eligibility citations. Prerequisite design/planning may consume the reviewed design; ordinary useful consumption remains held. |
+| Instrumented-to-release correspondence | Real missing evidence rule repaired with matched ordinary, hooks-disabled and hooks-enabled images, reviewed removal-only recorder correspondence and independently passing ordinary outcomes. The existing three product seams suffice; private receipts create no public seam. |
+| Application protocol ownership | Unclearly stated contract repaired: the private qualification spec owns application admission/freeze/late-return behavior; shared source/image integration adopts it. Material changes require producer/review repair. |
+| Refused guard evaluation | Real accounting defect repaired by bootstrap reservation of the complete terminal evaluation. Admitted checks retain that credit; the first refused evaluation spends its actual prefix and freezes optional work. Exact-gate, missing-credit, reuse and overshoot controls exercise the boundary. |
+| Valid useful exhaustion | Unclearly stated escalation repaired: valid required-useful shared gross/attempt exhaustion goes once to the bounded human coverage decision. Known guard defects are repaired before capture; valid exhaustion selects no automatic refinement loop or changed gate. |
+| Current construction figures | Real drift repaired with grouped local/source/two-walk values. Independent-block values are comparison on the same basis. Neither conservative enclosure establishes fit or inevitable actual overflow. |
+| Ephemeral prerequisite identifiers | Real durability defect repaired: normative eligibility uses reviewed artifacts and acceptance requirements. Live charters retain concrete work ordering. |
+| Failed explicit cleanup | Real missing branch repaired: attempt remaining dependency-safe cleanup once, reject staged success, then deliver existing FAILED/null and INSPECTION_FAILED only while authorized and before the core deadline. Otherwise suppress delivery. Binary receipts and independent GraphQL/VM outcomes must detect it; physical cleanup is never inferred. |
+
+The [private qualification spec](../specs/application-metadata-private-qualification.md)
+is authoritative for these branches. Pure controls check the design; actual image
+correspondence, cleanup outcomes and every native G/N/V remain pending. No amount,
+quota, useful-category, helper, signing, consent or ABI change follows integration.
+
 ## Reproduction and presentation
 
 Run `task design:application-metadata-reconciliation-regenerate` after every edit,
@@ -131,7 +166,8 @@ order. It captures no installed target or native source. The check hashes all
 declared documentation/scripts/config/source/dependency inputs before/after, checks
 every current contract pointer, pending native case and saved failed enclosure,
 rejects deliberate stale-gate/missing-table/false-fit/hold/exclusion/publication/
-native-pass mutations, and runs all inherited Taskfile controls/lint/strict types.
+native-pass, missing-terminal-credit, free/refunded refusal, reused credit and
+weaker-eligibility prose mutations, and runs all inherited Taskfile controls/lint/strict types.
 Hash equality is item-by-item; changing subjects during a run invalidates it.
 Checks establish consistency/reproduction, never useful fit or a native verdict.
 
@@ -159,10 +195,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

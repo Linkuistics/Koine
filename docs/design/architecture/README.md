@@ -9,21 +9,22 @@ editable; regenerate exports rather than hand-editing them.
 ## Current discovery discussion
 
 The [complete guarded construction](../../specs/application-metadata-private-qualification.md)
-now composes every episode/job tape with pre-call work, raw cleanup, complete
-failure-publication and terminal bookkeeping reservations. The current design is
-ready for whole-producer review; private implementation eligibility remains false
-pending whole review/integration and the existing source/image/normalization
-reviews and k30 placement. Useful fit is unestablished. Advertisement/consumption
-remain held; every native G/N/V stays pending. The historical macOS 26.6.2 subject
-is no exhaustive supported-VM baseline or macOS 27 qualification.
+reserves one complete terminal guard evaluation, prevents useful publication after
+failed cleanup and owns the application protocol. Private implementation is held
+by the [durable eligibility predicate](../../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence):
+the independent finite metadata-shape subject remains incomplete. Cardinality-only
+P1024 fixtures do not qualify usefulness. Release requires matched ordinary/
+hooks-disabled/hooks-enabled images, reviewed recipe correspondence and independent
+ordinary-image outcomes. Actual required-useful gross/attempt exhaustion goes once
+to the bounded human coverage decision. All native G/N/V remain pending and both
+advertisement/consumption holds remain.
 
 Current changes:
 
-- [Private qualification → Review, qualify, then release](index.html#diagram-native-metadata-qualification) — Added existing prerequisite reviews and k30 placement before ordinary k7 consumption, avoiding a circular dependency or duplicate capture programme.
-- [Private qualification → Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission) — Added work/failure/cleanup reservations, actual-prefix settlement, sticky freeze and pending-call ownership.
-- [Grouped storage → Qualify privately after design and whole review](index.html#diagram-native-metadata-grouped-storage) — Replaced unfinished-design wording with complete construction and still-pending private eligibility.
-- [Runtime admission → Account explicit work through real publication](index.html#diagram-native-metadata-runtime-admission) — Added failure-publication and guard/counter write reservations without releasing either hold.
-- [Owned composition → Preserve explicit work across every episode](index.html#diagram-native-metadata-composition) — Linked the complete guard while retaining all conditional native/full-wire terms.
+- [Private qualification → Review, qualify, then release](index.html#diagram-native-metadata-qualification) — Replaced task-key predicates with reviewed durable artifacts and the missing metadata-shape subject; added matched release-image evidence.
+- [Private qualification → Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission) — Reserved first refusal/final-return evaluation and defined FAILED/null cleanup failure while keeping slots through true return.
+- [Population → Stage every bounded application choice](index.html#diagram-native-application-population) — Shows adopted grouped figures with both walk subterms; original independent-block figures remain labelled comparison.
+- [Finite subject → Qualify an explicit metadata shape](index.html#diagram-native-metadata-subject) — Cardinality-only thin fixtures remain comparison; the distribution/envelope producer and mandatory review precede private construction.
 
 Unchanged context: [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan),
 [Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population),

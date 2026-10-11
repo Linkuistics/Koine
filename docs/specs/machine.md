@@ -1863,7 +1863,7 @@ any earned reconciliation before becoming implementation input.
 Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
 plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
 without item loss. The old application arithmetic is historical counterexample evidence. Current
-scoped local-plus-controlled-path conservative enclosures 23,502,420/23,676,527
+grouped local/source/two-walk conservative enclosures 23,238,610/23,412,717
 exceed 20,971,520 before other terms; they prove no useful fit, inevitable native
 overflow or impossibility of tighter construction. Full native operands/final
 wire stay conditional, so the consumption hold remains. Settings remains 6,094,976 bytes under its unchanged 8 MiB gate. Settings confirmation timeout retains only
@@ -1897,10 +1897,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

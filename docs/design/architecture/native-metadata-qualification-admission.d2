@@ -5,12 +5,12 @@ start: "Start here\nOne serial job / one pending call\nProvider owns staging and
  style.bold: true
 }
 next: "Known next explicit operands?\nCounts / requests / all writes / operations\nNo unknown-to-zero" { shape: diamond }
-reserve: "Pre-call reservation\nSpent + live cleanup + failure envelope\n+ next work + possible output cleanup"
+reserve: "Pre-call reservation\nSpent + live cleanup + failure envelope\n+ next work + possible output cleanup\nRetain one complete terminal guard credit"
 admit: "Both gates / counts / authority / deadlines fit?\n20 MiB gross / 4,194,304 attempts\nEquality admits" { shape: diamond }
 pending: "Invoke only admitted transition\nInputs and possible outputs stay owned\nCancellation cannot end the slot"
 actual: "Actual return\nCharge requests and every performed prefix\nTransfer acquired cleanup; no refund"
-freeze: "Sticky freeze\nNo optional work or successful prefix\nLate call keeps backing until actual return"
-cleanup: "Spend reserved cleanup\nBorrower before backing; every raw state write\nComplete FAILED/null tree if delivery still authorized"
+freeze: "Sticky freeze\nSpend first refusal from terminal guard credit\nNo further optional evaluation or useful prefix\nLate call keeps backing until actual return"
+cleanup: "Spend reserved cleanup\nBorrower before backing; every raw state write\nCleanup failure: FAILED/null + INSPECTION_FAILED\nDelivery only while authorized / before core deadline"
 final: "Complete real ProviderValue tree\nFinal live-grant / lifecycle / deadline check\nSeparate host full encoding and 8 MiB body gate"
 returned: "True return\nNo pending calls or borrowers\nAll explicit cleanup attempted; then release slot"
 start -> next: "1. Reserve terminal/failure work at bootstrap"

@@ -256,7 +256,12 @@ applicable downstream reviews/integrations and existing qualification placement.
 Prerequisite design and qualification planning may use the reviewed design before
 useful qualification; production advertisement and ordinary consumption remain
 held until that qualification and independent obligations pass. A design bit or
-pure control is no native evidence.
+pure control is no native evidence. Private eligibility also requires the reviewed
+independent metadata-shape subject; cardinality alone cannot qualify usefulness.
+The application spec owns its transition protocol. Terminal guard evaluation is
+pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
+qualify their image, with reviewed matched ordinary/disabled/enabled correspondence
+and independent ordinary-image outcomes required for release.
 
 **Application explicit-work admission**: The application job's cumulative
 20 MiB controlled raw requested/write gross and explicit-operation ledger under

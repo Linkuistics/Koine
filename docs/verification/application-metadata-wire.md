@@ -221,10 +221,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

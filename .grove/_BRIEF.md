@@ -449,3 +449,18 @@ selected gate before production advertisement/ordinary consumption. Required
 failed/refused/unknown or missing cases stay live. Actual material gaps use
 existing k93; known design defects must be repaired and reviewed first. The
 current spec, ADR and reconciliation report carry the durable handoff.
+
+## K237 integration and next subject design
+
+Application-localized-metadata-k237 triages all nine k234 findings. R1's real
+cardinality-only metadata-shape defect is externalized as root
+application-population-metadata-shape-k238, with mandatory whole review/earned
+integration before private construction and k7. All private/advertisement/consumption
+holds and native G/N/V pending outcomes remain. Other repairs make eligibility
+durable and canonical, reserve terminal guard evaluation, define cleanup failure,
+adopt one application protocol owner, require matched release-image correspondence
+and show grouped figures on a comparable walk basis. Actual required-useful shared
+gross/attempt exhaustion goes once to k93; a guard defect is repaired before
+capture, not accepted as native uncertainty. No amount/quota/breadth/posture change
+or new capture programme is selected. The current private qualification spec and
+reconciliation report own the complete repaired handoff.

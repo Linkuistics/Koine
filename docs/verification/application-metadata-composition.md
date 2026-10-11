@@ -16,7 +16,12 @@ local subterms below cannot fund unknown explicit work. All native G/N/V remain
 pending and the k215 consumption hold remains. The strict portable-runtime
 certificate failure is comparative evidence, not a current human-choice blocker.
 
-## Ordered per-episode construction
+## Independent-block comparison construction
+
+This section preserves the earlier independent-block recipe. The adopted candidate
+uses the [grouped construction](application-metadata-grouped-storage.md#failed-controlled-enclosure);
+the [current reconciliation](application-metadata-reconciliation.md#current-construction-and-failed-useful-fit)
+compares both representations with the same source and two-walk contributions.
 
 For each episode i, A_i is k223's conservative reader API upper, L_i the
 historical local event upper, F_i selected regular files and G_i historical local
@@ -46,7 +51,7 @@ original saved dimensions and conditional native inputs.
 
 ### Saved controlled-path enclosure
 
-| Run | Scoped known local gross | Scoped known attempt upper | Local plus controlled path projection enclosure |
+| Comparison run | Scoped known local gross | Scoped known attempt upper | Local plus controlled path projection enclosure |
 | --- | ---: | ---: | ---: |
 | en-AU,en | 19,869,316 | 950,247 | 23,502,420 |
 | de | 20,043,423 | 983,378 | 23,676,527 |
@@ -224,10 +229,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

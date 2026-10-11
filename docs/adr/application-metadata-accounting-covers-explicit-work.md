@@ -6,6 +6,12 @@ requested allocations and every performed source-level raw initialization,
 input read, copy and field/owner write. Reuse, disposal and cancellation refund
 nothing. Its 4,194,304-attempt gate charges explicit adapter, local and native
 operations, including explicit cleanup, retains, releases and comparisons.
+Pre-call reservation includes one complete terminal guard evaluation, including
+refusal arithmetic, clocks, liveness and bookkeeping. Admitted checks charge their
+work while retaining that credit; the first refusal or final return consumes it.
+Sticky freeze permits no further optional evaluation. Unknown guard operands refuse
+bootstrap, never become free work. The [guarded construction](../specs/application-metadata-private-qualification.md#pre-call-admission-and-actual-return-settlement)
+owns the exact protocol and failure/cleanup reserves.
 
 Compiler-generated ownership traffic and internal platform/Swift constructor,
 bridge, copy-on-write, metadata and allocator work are excluded from these

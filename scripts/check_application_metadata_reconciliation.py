@@ -42,12 +42,13 @@ SKIP = {".git", ".jj", ".build", "node_modules", "__pycache__", ".pytest_cache",
         ".ruff_cache", ".venv"}
 PRIVATE_PREREQUISITES = (
     "DESIGN", "WHOLE_REVIEW_INTEGRATION", "SOURCE_ACCESS_REVIEW",
-    "OWNERSHIP_IMAGE_REVIEW", "NORMALIZATION_REVIEW", "WHOLE_K19_REVIEW",
-    "K30_QUALIFICATION_PLACEMENT",
+    "REVIEWED_FINITE_SUBJECT", "OWNERSHIP_IMAGE_REVIEW", "NORMALIZATION_REVIEW",
+    "WHOLE_DISCOVERY_DESIGN_REVIEW", "QUALIFICATION_PLAN",
 )
 RELEASE_EVIDENCE = (
     "subjects", "nine_tapes", "full_response", "useful_witnesses", "serviceability",
     "read_policy", "authority_images_disclosures_compatibility", "gates_deadlines_slots",
+    "population_shape", "release_image_correspondence", "cleanup_outcomes",
 )
 EPISODE_TAPES = (
     "expanded_first_walk_and_transfer", "root_resource_or_indexed_projection",
@@ -66,11 +67,15 @@ def transition_admitted(
     spent: tuple[int, int], cleanup: tuple[int, int], failure: tuple[int, int],
     work: tuple[int | None, int | None], possible_cleanup: tuple[int, int], *,
     limits: tuple[int, int] = (20971520, 4194304), frozen: bool = False,
+    terminal_guard: tuple[int, int] = (0, 0),
 ) -> bool:
-    """Pure admission arithmetic, not a native guard or receipt-completeness proof."""
+    """Pure arithmetic: spec C = cleanup + terminal_guard; W includes admitted checks."""
     if frozen or any(value is None for value in work):
         return False
+    if terminal_guard[1] <= 0:
+        return False
     terms = (spent, cleanup, failure, cast(tuple[int, int], work), possible_cleanup)
+    terms += (terminal_guard,)
     if any(value < 0 for term in terms for value in term):
         return False
     return all(sum(term[index] for term in terms) <= limits[index] for index in (0, 1))
@@ -85,6 +90,37 @@ def settle_prefix(
     ):
         raise ContractViolation("actual prefix outside admitted upper")
     return spent[0] + actual[0], spent[1] + actual[1]
+
+
+def settle_guard(
+    spent: tuple[int, int], credit: tuple[int, int], actual: tuple[int, int], *,
+    admitted: bool, frozen: bool = False,
+) -> tuple[tuple[int, int], tuple[int, int], bool]:
+    """Admitted checks spend W and retain H; the first terminal check consumes H."""
+    if frozen or credit[1] <= 0:
+        raise ContractViolation("no guard evaluation after terminal freeze or without credit")
+    charged = settle_prefix(spent, actual, credit)
+    return charged, credit if admitted else (0, 0), not admitted
+
+
+def prose_errors(path: str, text: str) -> list[str]:
+    """Enumerate each repeated eligibility section; reject its original weaker rule."""
+    errors: list[str] = []
+    flat = " ".join(text.split())
+    weak = ("before analytic fit, after complete design, whole-producer review "
+            "and earned integration")
+    if weak in flat:
+        errors.append(f"{path}: abbreviated private eligibility")
+    sections = re.split(r"(?m)^## ", text)
+    for section in sections:
+        if section.startswith("Grouped refinement and retained hold\n") and (
+            "application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence"
+            not in section
+        ):
+            errors.append(f"{path}: grouped summary lacks the canonical eligibility predicate")
+    if "until complete useful certification" in flat:
+        errors.append(f"{path}: obsolete analytic hold wording")
+    return errors
 
 
 def private_eligible(completed: set[str]) -> bool:
@@ -183,7 +219,15 @@ def contract_errors(subject: dict[str, object]) -> list[str]:
         "snapshotCountsBeforeDedup": True,
         "pendingSlotEnds": "TRUE_RETURN_AFTER_BORROWERS_AND_CLEANUP",
         "prerequisiteDesignRequiresUsefulQualification": False,
-        "planningOwner": "EXISTING_K30", "ordinaryConsumptionBeforeQualification": False,
+        "planningOwner": "REVIEWED_QUALIFICATION_PLAN",
+        "ordinaryConsumptionBeforeQualification": False,
+        "reserveTerminalGuardEvaluation": True,
+        "terminalGuard": "RETAIN_ON_ADMIT_SPEND_ON_FIRST_REFUSAL_OR_FINAL_RETURN",
+        "cleanupFailure": "FAILED_NULL_INSPECTION_FAILED_OR_SUPPRESSED",
+        "applicationProtocolOwner": "PRIVATE_QUALIFICATION_SPEC",
+        "usefulExhaustionRoute": "ONCE_TO_HUMAN_COVERAGE_DECISION",
+        "populationShapeDesignEstablished": False,
+        "releaseImageRule": "MATCHED_ORDINARY_DISABLED_ENABLED_AND_REVIEWED_RECIPE_CORRESPONDENCE",
         "prerequisites": list(PRIVATE_PREREQUISITES), "completedPrerequisites": ["DESIGN"],
         "episodeTapes": list(EPISODE_TAPES), "jobTapes": list(JOB_TAPES),
         "releaseEvidence": list(RELEASE_EVIDENCE), "nativeEvidenceComplete": False,
@@ -211,6 +255,13 @@ def case_errors(text: str) -> list[str]:
 
 def check_family() -> None:
     errors = contract_errors(load(CONTRACT)) + case_errors((ROOT / CASES).read_text())
+    # Non-code docs/scripts are excluded from the graph: enumerate this entire
+    # prose surface directly, including every repeated section and live charter.
+    prose_paths = list((ROOT / "docs").rglob("*.md")) + [ROOT / "CONTEXT.md"]
+    prose_paths += [path for path in (ROOT / ".grove").rglob("*.md")
+                    if "-DONE-" not in path.name and "-ABANDONED-" not in path.name]
+    for path in prose_paths:
+        errors += prose_errors(str(path.relative_to(ROOT)), path.read_text())
     runtime = load("docs/design/application-metadata-runtime-admission.json")
     if set(record(runtime["requiredOperandRecipes"])) != set(EPISODE_TAPES + JOB_TAPES):
         errors.append("private construction and runtime packet disagree on the nine tapes")
@@ -324,6 +375,12 @@ def broken_controls() -> None:
         ("privateGuard", "prerequisiteDesignRequiresUsefulQualification", True),
         ("privateGuard", "ordinaryConsumptionBeforeQualification", True),
         ("privateGuard", "nativeEvidenceComplete", True),
+        ("privateGuard", "reserveTerminalGuardEvaluation", False),
+        ("privateGuard", "cleanupFailure", "PUBLISH_USEFUL_TREE"),
+        ("privateGuard", "applicationProtocolOwner", "TWO_DESIGN_OWNERS"),
+        ("privateGuard", "populationShapeDesignEstablished", True),
+        ("privateGuard", "releaseImageRule", "VERSION_EQUALITY"),
+        ("privateGuard", "usefulExhaustionRoute", "AUTOMATIC_REFINEMENT_LOOP"),
     )
     for section, key, value in mutations:
         subject = copy.deepcopy(original)

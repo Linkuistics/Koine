@@ -65,8 +65,9 @@ well as source acquisition; actual native verdicts remain pending.
 
 The selected k215 application reader is a discovery-only fixed-file/direct-localization
 exception to the lookup-only resolver boundary. K235 selects guarded private
-qualification before analytic fit, after complete design and mandatory whole-producer
-review/integration. Advertisement/downstream consumption remain held until full
+qualification before analytic fit. Private construction requires the complete
+eligibility conjunction in docs/specs/application-metadata-private-qualification.md;
+ordering alone supplies no eligibility. Advertisement/downstream consumption remain held until full
 useful native qualification. K236 supplies the complete guarded design/sequence; K191 qualifies actual no-dialog/
 no-hydration, nofollow/dataless/file-format/localization behavior and remaining
 races; no general listing, helper, consent or signing change is authorized.

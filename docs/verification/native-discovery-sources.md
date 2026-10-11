@@ -310,9 +310,10 @@ raw storage, and no provider publication charge moves to host encoding.
 
 The selected gate is 20,971,520 scoped cumulative gross bytes and 4,194,304 explicit
 operations per application job, without refund. Settings/locations and core response
-keep independent gates. Known local gross 19,869,316/20,043,423 and attempt uppers
-950,247/983,378 are partial. Adding all 7,862 controlled source-path projections
-yields 23,502,420/23,676,527 partial conservative enclosures, above the gross gate
+keep independent gates. Known grouped local gross 16,811,702/16,985,809 and attempt uppers
+914,288/947,419 are partial. Adding all 7,862 controlled source-path projections
+and 2,793,804 gross for both walk literals/states
+yields 23,238,610/23,412,717 partial conservative enclosures, above the gross gate
 before other terms. This candidate establishes no useful fit, inevitable native
 overflow or impossibility of tighter construction. Complete native tuples, actual
 expanded visits/preferences/regional returns/final values/errors and selected wire
@@ -622,10 +623,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

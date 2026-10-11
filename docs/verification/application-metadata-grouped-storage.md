@@ -194,7 +194,10 @@ K235 records Antony's explicit "you choose" delegation and selects the
 All amounts, accounting scope, useful breadth, ABI/posture and independent gates
 remain. A private guarded implementation may exercise the already chartered
 N5/N8/V11/V13 qualification before a complete analytic useful-fit certificate
-exists, after complete private design, whole-producer review and earned integration.
+exists only under the complete [durable eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
+The independent metadata-shape subject is still incomplete; cardinality-only
+P1024 fixtures cannot qualify it. The application protocol includes terminal guard
+credit and cleanup-failure publication; shared image/ownership design adopts it.
 Advertisement/downstream consumption stay held until full declared native operands,
 actual complete selected responses, required useful witnesses and independent
 serviceability qualify. Refused/unknown required useful metadata, exhaustion,

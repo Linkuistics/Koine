@@ -32,6 +32,19 @@ MUTATIONS = {
         "private_ready and all(evidence.get(key) is True for key in RELEASE_EVIDENCE)",
         "private_ready and any(evidence.get(key) is True for key in RELEASE_EVIDENCE)",
     ),
+    "unreserved terminal evaluation": (
+        "terms += (terminal_guard,)", "terms += ()",
+    ),
+    "free refused evaluation": (
+        "charged = settle_prefix(spent, actual, credit)", "charged = spent",
+    ),
+    "terminal credit reused": (
+        "return charged, credit if admitted else (0, 0), not admitted",
+        "return charged, credit, False",
+    ),
+    "weaker eligibility prose accepted": (
+        'errors.append(f"{path}: abbreviated private eligibility")', "pass",
+    ),
 }
 
 

@@ -20,8 +20,10 @@ and G/N/V seams bind.
   mechanisms while preserving source AND binary action no-spawn/no-listing
   guarantees with meaningful failing cross-boundary controls. Do not simply
   remove forbidden imports from the accepted guard.
-- Define bounded job/native-call/copy admission, actual cancellation/revocation/
-  provider-stop publication freeze and late/blocking work ownership. Capacity
+- Adopt the application admission/freeze/cleanup/late-return protocol owned by
+  docs/specs/application-metadata-private-qualification.md. Define its shared
+  supervisor/image integration and Settings/location job/native-call/copy admission,
+  actual cancellation/revocation/provider-stop publication freeze and ownership. Capacity
   cannot be released by pretending unreturned native work completed; opaque
   internal peaks/health remain unproved.
 - Allocate each actual native preparation, fallback and cleanup effect to its
@@ -57,7 +59,9 @@ action→settings link/callback and read→prompt/effect controls and specify ho
 source and real-image/runtime checks detect them. No allowed image can launder
 an effect into the action guard by a callback or dynamic lookup.
 
-Refine four process-wide jobs, one pending operation/job, call/copy/diagnostic
+Adopt the specified application protocol, including terminal guard credit,
+cleanup-failure envelope and image correspondence. Refine shared integration for
+four process-wide jobs, one pending operation/job, call/copy/diagnostic
 charging, metadata run-loop ownership, CF/AE objects and native launch/setup late
 returns. Reserve before admission, freeze on cancel/revoke/stop/deadline, retain
 capacity through true return/query retirement and exactly-once cleanup across
@@ -145,9 +149,11 @@ three/five seconds and four shared slots remain held until true return. Settings
 locations, grants, action limits/images, host disclosures/old-host refusal and
 independently retained action-only compatibility remain independent obligations.
 
-Current scoped known local gross is 19,869,316/20,043,423; including all 7,862
-controlled path projections gives 23,502,420/23,676,527 partial conservative
-enclosures, already above the gross gate before other terms. This candidate
+The adopted grouped known local gross is 16,811,702/16,985,809; adding all 7,862
+controlled path projections (3,633,104) and both walk literals/states (2,793,804)
+gives 23,238,610/23,412,717 partial conservative enclosures, above the gross gate
+before other terms. Independent-block figures remain labelled comparison in the
+reconciliation report. This candidate
 provides no useful fit, inevitable native overflow or impossibility of a tighter
 construction. All five episode/four job tapes and full selected wire remain
 conditional on actual native tuples/expanded visits/preferences/regional returns/
@@ -187,3 +193,27 @@ Reuse that chain. K30 places existing N5/N8/V11/V13 private implementation/
 acceptance before ordinary k7 consumer implementation; no completed consumer
 or prior analytic useful fit is its prerequisite. All G10/G11 and remaining
 G/N/V/source/image/disclosure/action/Settings/location/core duties stay live.
+
+## K237 review integration and subject dependency
+
+Consume application-localized-metadata-k237's repaired family and the reviewed
+application-population-metadata-shape-k238 producer/earned integration before
+private construction. The complete durable eligibility predicate is in
+docs/specs/application-metadata-private-qualification.md; cardinality-only P1024
+fixtures cannot qualify it. Existing k191/k193, reviewed k127, reviewed k123,
+whole-k19 k120/earned integration and k30 placement still bind. No native pass or
+ordinary consumption follows prerequisite design/planning access.
+
+Actual useful gross/attempt exhaustion goes once to k93 with valid receipts,
+consequence, recommendation and bounded alternatives. Missing/mischarged operands
+are guard defects repaired/reviewed before capture; valid exhausted runs trigger
+no automatic refinement loop or new quota. Keep native acceptance and both holds
+live. Three matched ordinary/hooks-disabled/hooks-enabled images, reviewed recipe
+correspondence and independent ordinary-image outcomes bind release evidence.
+Failed cleanup yields FAILED/null with INSPECTION_FAILED, or suppressed delivery
+on lifecycle/core loss, never a successful useful prefix.
+
+The application spec is authoritative for its protocol, not provisional for
+k127 to redesign. This leaf pins concrete shared ownership/enabling/source-image
+construction and pairs existing recipes with actual future receipts. Any material
+application protocol change is a precise producer/review repair before consumers.

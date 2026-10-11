@@ -139,7 +139,7 @@ principal/action/shared lookup must fail source reachability AND image controls.
 Identical imports with widened paths are a required failing counterpart. Test injection is absent from production exports/linkage. |
 | N3 | Real Foundation location values; NSMetadataQuery fixed predicate and IndexedLocal scope, gathering completion/stop/late notifications; running source; AppKit ordered list-plus-preferred eligibility paired with actual action selection, separate deprecated error-bearing negative evidence, and individual-target bundle identity. Record actual errors, count and copied-value accounting; substitutions pass branch logic only. |
 | N4 | Exact settings address typeKernelProcessID; trusted OS bundle/signature/incarnation revalidation. Two core/getd sweeps of all xppb pALL ID/name records and ID-contained all xppa pnam, minimum 100 ms inter-sweep gap inside three seconds. Inspect actual want/from/form/seld and native list/record/text types, record IDs, <=16 scalar direct keys, optional class and discarded fields; no positional zip. Preflight every event ask=false and pinned no-prompt flags. Unique-ID resolution and pALL are actual qualification subjects. Wrong class/ID/type, duplicate IDs, unchanged IDs with changed anchors, replacement/late reply and repeated lazy-empty replies must be detected honestly. Selected reveal still re-resolves exact pane/anchor with scalar core/getd, misc/mvis then one pinned activates=true fixed-bundle open; callback replacement/exit remains ambiguous. No NSRunningApplication.activate/AX/loading/current-pane assignment/interpreter fallback. |
-| N5 | Enumerate every charged explicit operation and controlled raw request/initialization/read/copy/field/owner/cleanup write under the scoped accounting ADR; separately disclose excluded runtime/compiler internals, with no total heap/RSS/peak bound. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 explicit attempts and 20,971,520 cumulative raw gross bytes without refund; fixed regular files 131,072 bytes, individual affected-fact refusal versus shared FAILED/null exhaustion. Check old conditional 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire arithmetic, reproduce the baseline refutation, at the old dimensions (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), then exercise the reviewed current complete scoped expressions through guarded private qualification before analytic fit; actual full useful native operands, complete selected responses and independent serviceability must pass before advertisement/consumption; the failed 23,502,420/23,676,527 partial conservative enclosure supplies no fit or actual-overflow proof. Complete all five episode/four job tapes, provider-owned real publication and independent actual selected wire, including 149 outside observations/both system groups; missing explicit operands stay conditional. Preserve <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
+| N5 | Enumerate every charged explicit operation and controlled raw request/initialization/read/copy/field/owner/cleanup write under the scoped accounting ADR; separately disclose excluded runtime/compiler internals, with no total heap/RSS/peak bound. Application envelope: 8,192 raw slots, 2,048 spellings/choices, 2,050 IDs, 2,048 running objects, 65,536 metadata-plan slots, 4,194,304 explicit attempts and 20,971,520 cumulative raw gross bytes without refund; fixed regular files 131,072 bytes, individual affected-fact refusal versus shared FAILED/null exhaustion. Check old conditional 2,345,024-attempt/8,340,416-byte gross and 7,929,856-byte wire arithmetic, reproduce the baseline refutation, at the old dimensions (E=65,536/L=4,096/F=16,384/input=1,000,000/component=32 bytes), then exercise the reviewed current complete scoped expressions through guarded private qualification before analytic fit; actual full useful native operands, complete selected responses and independent serviceability must pass before advertisement/consumption; the failed 23,238,610/23,412,717 partial conservative enclosure supplies no fit or actual-overflow proof. Complete all five episode/four job tapes, provider-owned real publication and independent actual selected wire, including 149 outside observations/both system groups; missing explicit operands stay conditional. Preserve <=2C walks and no C×D multiplier. Settings: 514 events/90,304 attempts/6,094,976 gross bytes under 131,072 attempts/8 MiB, at most two sweeps, 256 panes/128 anchors per pane/4,096 total per sweep. Include 64×2,048 diagnostic gross bytes and four fixed 32-byte source summaries; details cannot grow after saturation. Inject diagnostic-fatal publication or omitted-reason masking. Exercise count/call/copy overflow separately from Settings first-sweep/gap/confirmation deadlines, contradiction/target loss and retained-first-map freeze/late-return rules. Cleanup is reserved before acquisition. Exact/beyond count/string/response/admission edges need off-by-one/prefix controls. Locations retain 16,384 attempts. Opaque peaks/duration remain unproved. |
 | N6 | Hold one actual adapter boundary before return; cancel/revoke/stop/deadline, then release late success/failure/callback. Exactly-once CF/AE/query ownership disposal and no publications/new calls after freeze. Four held jobs cause prompt CAPACITY_LIMIT and survive provider restart; actual return frees slots once. Inject an owner-ID mismatch/early release/double disposal and require rejection. Native uninterruptible behavior itself is not claimed from controlled holds. |
 | N7 | A private local-UI setup job retains its slot/target/prompt token after its separate thirty-second wait; no GraphQL five-second cutoff governs it. Closed outcomes/reasons distinguish EXACT_EVENT_ALLOWED, EVENT_NOT_PERMITTED, SETUP_UNSUPPORTED, TARGET_NOT_RUNNING, TARGET_REFUSED, TARGET_CHANGED, NATIVE_ERROR, CAPACITY_LIMIT and WAIT_EXPIRED. No admitted request is forgotten on timeout/UI close/provider stop; late replies retire ownership and never replace stale UI state even if OS consent changes. Explicit ask=false refresh after true return permits a new status observation. Remote routing to this seam and early prompt-token release must fail controls. Background prepare late launch callback and reveal late AE reply never retry, kill a target or activate after freeze. |
 
@@ -343,6 +343,35 @@ design inputs for G10/N5/V11. All these subjects are **pending native acceptance
 The cardinality envelope is not a cap on a product's promised useful category;
 it is the finite subject against which that promise must be demonstrated.
 
+Private qualification and release require the complete
+[durable eligibility and finite evidence contract](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
+P1024's metadata-shape design is incomplete and remains a reviewed design
+prerequisite. Cardinality-only test apps and the historical thin disk fixtures do
+not qualify usefulness. The replacement must freeze independent per-copy
+information/name-file byte sizes, complete direct locale/component and loctable
+key/dictionary dimensions, formats/layouts, selected/rejected strings, joint
+associations and tails from a measured real distribution or justified envelope.
+Its derivation and discrimination controls are separate subject design, not a
+new native capture programme or a selected fixture distribution here. A pass
+qualifies only that declared shape and its exact supported VM/profile.
+
+N5/N8 require [matched release-image correspondence](../specs/application-metadata-private-qualification.md#evidence-correspondence-to-release-images):
+ordinary signed, hooks-disabled and hooks-enabled images, frozen source/recipe/
+config/image/signature digests, charged instrumentation and item-by-item independent
+ordinary-image outcomes. A missing correspondence, altered branch, only-instrumented
+pass or changed image/recipe requires affected requalification and retains holds.
+The private recorder is observation at the actual-binary seam, with no fourth
+public interface or test injection in shipped exports/linkage. G10/V11 controls
+must fail if failed cleanup publishes useful items: the authorized result is
+FAILED/null, INSPECTION_FAILED and selected-items errors, or suppressed delivery
+on lifecycle/core loss. Saturated details cannot hide the failed source summary.
+
+Actual shared gross/attempt exhaustion on any required useful baseline/P1024/L1500
+subject goes once to the bounded human coverage decision with valid receipts and
+concrete alternatives; missing/mischarged operands are guard defects repaired and
+reviewed before capture. No automatic repeated refinement, useful loss or increased
+gate follows. All existing native cases stay pending.
+
 P1024 contains 1,024 distinct useful identifiers, including Dia, ChatGPT, Claude,
 Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian, Zotero,
 Safari and Finder, plus 1,010 distinct signed UI test apps. Use actual app bundles
@@ -478,10 +507,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

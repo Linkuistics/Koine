@@ -29,6 +29,14 @@ native invocation per job and four process-wide slots remain. Every independent
 application root in a GraphQL document owns a separate job; nested aliases
 complete the same returned tree in the host.
 
+This spec owns the application transition, reservation, freeze and true-return
+protocol. The shared ownership/image design adopts it when connecting the supervisor
+and independent native images; it defines shared Settings/location integration,
+allowlists and concrete enabling points. It cannot silently replace this application
+protocol. A material change needs a precise design repair and its review/integration
+before affected construction or qualification. Missing actual operands remain
+qualification work, not a second owner of the protocol.
+
 Use the existing supervisor's fixed state and scratch-owner records, with
 declared raw counter/reservation/state cells; use embedded owner headers and
 separately admitted native-owner descriptors. No recursively allocated owner
@@ -52,7 +60,8 @@ The actual compiled adapter's guard arithmetic, checks and raw bookkeeping also
 count. Aggregate counter updates are charged as one declared bulk field write,
 with their extent included in that transition, rather than recursively invoking
 the guard to account for its own counter writes. Reserve the terminal
-freeze/cleanup/return bookkeeping before starting optional work. A native
+freeze/cleanup/return bookkeeping and one complete guard evaluation before starting
+optional work. A native
 return scalar stored in a raw record is a field write; allocation, initialization,
 payload population and retirement never collapse into one free assignment.
 
@@ -69,6 +78,22 @@ addition/multiplication/alignment precede native contact and allocation; arithme
 overflow or an unknown explicit operand refuses that transition as shared failure.
 Count raw slots before classifying/deduplicating them. Existing C is counted once;
 moving a close credit transfers it rather than adding or losing it.
+
+C includes a distinct terminal guard credit H: a compiled-recipe upper for one
+complete evaluation, including checked arithmetic/comparisons, unknown/count tests,
+clock and authority/lifecycle reads, receipt/counter/freeze raw writes and their
+explicit operations. Establish and fund H with fixed bootstrap work before source
+contact; an unknown H refuses bootstrap. An admitted evaluation spends its actual
+guard cost as part of W and keeps H reserved for the next evaluation. The first
+refused evaluation spends its actual guard prefix from H, transfers that prefix
+to S and freezes; it does not charge unperformed optional W or possible D. Unknown
+operands, arithmetic overflow and deadline/lifecycle refusal consume H too. Sticky
+freeze performs no further optional admission evaluation. The final successful
+return evaluation consumes H rather than charging it again as W; after it no
+optional work remains. Fixed failure-delivery/lifecycle checks and cleanup are
+separately reserved terminal work in C. Ending unused credit refunds no spent work,
+and no guard recursively admits its own bookkeeping. Exact equality includes H;
+without it even an otherwise exact transition is inadmissible.
 
 W includes guard and receipt bookkeeping, all known branches of the single
 transition and any possible caller-buffer writes. D includes raw retired/pending/
@@ -117,7 +142,17 @@ After actual return, unwind borrower first, then selector/plan, dictionary/error
 CFData, raw input/slabs, descriptors and root/query owners as applicable. Query
 stop/observer removal and pool drainage are cleanup, not optional retries. Each
 close is attempted once, even if it fails. A cleanup failure is recorded and
-prevents acceptance; it never refunds a charge or invents successful disposal.
+prevents successful publication and useful acceptance; it never refunds a charge
+or invents successful disposal. Attempt all remaining dependency-safe cleanup once,
+destroy any staged success tree under its held credits and, when delivery remains
+authorized and within the core deadline, return the complete application
+FAILED/null-items envelope with existing INSPECTION_FAILED. Fixed source summaries
+retain the failed source(s); bounded diagnostics identify the cleanup stage without
+native arbitrary error text. Each selected items alias raises the existing failed
+error. Lifecycle/core loss suppresses delivery instead. Both outcomes fail useful
+qualification. N5/N8 controlled binary receipts identify the failed close/release,
+and G10/V11 independent public outcomes must reject a surviving useful prefix or
+success even when detail diagnostics saturate. No new enum, ABI or retry follows.
 The slot ends only after actual pending return, all explicit cleanup attempts,
 borrower retirement and final publication/failure unwind. Physical native health
 after failed disposal remains unproved. Provider restart cannot reset live slots.
@@ -206,6 +241,45 @@ replace a missing provider operand. No raw tree ABI, helper or public test hook.
 Production exports/linkage contain no test injection; controlled branch builds
 qualify their branch only, never actual source provenance.
 
+### Evidence correspondence to release images
+
+Receipt recording is private observation at the existing actual provider/host
+binary seam, paired with public GraphQL and isolated signed supported-VM witnesses;
+it supplies no fourth public interface. The release image contains no test-injection
+exports/linkage. Receipt recorder code may be present only in the private test
+image, and all its controlled requests/writes/calls are charged and identified.
+
+For each frozen finite subject/profile, compare the ordinary signed release
+candidate, hooks-disabled private build and hooks-enabled private build under the
+same manifest, toolchain, posture and selected document, following the
+[existing three-build rule](../verification/search-serviceability.md#normally-launched-independent-serviceability).
+Retain all three source/config/image/signature digests, reviewed source-to-image
+correspondence for every adapter branch and explicit recipe, recorder-only deltas
+and fixed observer overhead. Compare item-by-item public schema/authority, native
+selected sources and metadata, actual complete response, cleanup/failure/lifecycle
+outcomes and independent listener/store/action/dialog/hydration results. Timing is
+recorded independently; no identical scheduling claim follows. Hooks-disabled must
+execute the ordinary recipe, and every required useful case must pass on the
+ordinary image too. Hooks-enabled receipts establish the scoped admission evidence
+only for that instrumented image, with its charged perturbation; they do not by
+themselves prove the ordinary image's event counts or resource cost.
+
+Establish ordinary-image charges at the actual-binary seam by direct observation
+or reviewed corresponding receipts with independently matching native operands,
+branches and performed prefixes, subtracting only the identified recorder-only
+explicit work. An unknown ordinary event, operand, branch or write prefix retains
+the holds. Ordinary useful success or matching final public values alone is no
+numeric certificate; changed hidden runtime costs remain outside the scoped claim.
+
+Carry evidence to release only with that reviewed branch/recipe correspondence
+and the ordinary image's independent outcomes under all applicable gates. A
+missing correspondence, altered selected behavior or instrumentation-caused pass
+keeps both holds: repair the instrument/recipe then requalify the affected matrix.
+A changed adapter, compiler/toolchain, build configuration, linkage, recorder or
+release image requires renewed correspondence and affected matched qualification;
+no evidence transfers merely because version, schema or totals match. Test branch
+injections continue to qualify negative branches only.
+
 The host converts the already real tree, validates depth/types, expands the full
 selected fields/response-key merges/nested aliases/errors and encodes the complete
 response. The separate 8,388,608-byte cap is applied afterwards. Retain the actual
@@ -215,31 +289,34 @@ Neither body size nor host work funds earlier provider charges or proves peak.
 
 ## Eligibility and existing qualification sequence
 
-Private eligibility is a conjunction of completed construction, whole-k215 review
-and all earned integration, applicable reviewed source/access, image/ownership and
-normalization designs, and explicit qualification placement by the existing planner.
+Private eligibility is a conjunction of completed construction, whole-design review
+and all earned integration, a reviewed independent finite metadata-shape subject,
+applicable reviewed source/access, image/ownership and normalization designs,
+whole discovery-design review/integration and an explicit qualification plan.
 A design-established bit supplies only its first term. Eligibility is currently
-false: the whole review and later prerequisites have not run. Production feature
-advertisement and ordinary downstream implementation/use remain held independently.
+false: the metadata-shape subject and later prerequisite artifacts are not complete.
+Production feature advertisement and ordinary downstream implementation/use remain
+held independently.
 
-| Step | Existing owner and completion | Next allowed work |
+| Step | Durable completion predicate | Next allowed work |
 | --- | --- | --- |
-| Whole design | k236 closes amended whole producer k215; root k234 reads that complete closing commit; any earned integration immediately precedes k7 | Prerequisite designs may use the reviewed design. No native pass or private implementation yet. |
-| Source/access | k191 closes k126; existing k193 whole review and earned integration | Pin actual getters/flags/contact/ordinary read policy and no-dialog/no-hydration controls. Native verdicts stay pending. |
-| Ownership/images | k127 and mandatory review/earned integration | Pin actual source AND compiled image allowlists, private reader/enabling points, owner/cleanup/growth/late-return protocol and independent action guard. |
-| Normalization | k123 and mandatory review/earned integration | Pin ordinary/indexed fields, exact copy merging/ordered eligibility and honest null/refusal outcomes. |
-| Whole downstream design | k19 closes; existing k120 whole review and earned integration | Existing k30 plans implementation. It need not consume an already qualified catalogue to plan its qualification. |
-| Confined construction and qualification | k30 places the necessary private implementation and actual N5/N8/V11/V13 acceptance ahead of ordinary k7 consumer implementation | Build actual private provider/host and closed observer/fixture controls in isolated signed supported VMs, using existing versions/ABI/posture. Do not advertise the native feature on a production host. |
+| Whole design | Reviewed complete guarded construction and every accepted repair in this spec and its family | Prerequisite designs may use the reviewed design. No native pass or private implementation yet. |
+| Finite subject | Reviewed independent metadata-shape distribution/envelope in the [acceptance subject](../verification/native-discovery-acceptance.md#application-population-subjects), with reproducible per-copy manifest and discrimination controls | Cardinality-only fixtures cannot satisfy this term. No native sampling is authorized by this design prerequisite. |
+| Source/access | Reviewed [source/access contract](workspace-search.md#application-sources-and-native-facts) and [actual native sources](../verification/native-discovery-sources.md), including earned repairs | Pin actual getters/flags/contact/ordinary read policy and no-dialog/no-hydration controls. Native verdicts stay pending. |
+| Ownership/images | Reviewed shared owner/enabling design and [source/image boundaries](../adr/workspace-native-images-preserve-action-authority.md), including earned repairs | Adopt this application's protocol; pin actual allowlists, integration and independent action guard. |
+| Normalization | Reviewed [copy/field and ordered-eligibility rules](workspace-search.md#application-sources-and-native-facts), including earned repairs | Pin ordinary/indexed fields, exact copy merging and honest null/refusal outcomes. |
+| Whole discovery design | Whole reviewed [workspace native contract](workspace-search.md) and its cumulative source/owner/normalization family with every earned repair | Qualification planning needs no already qualified catalogue. |
+| Confined construction and qualification | Reviewed implementation/qualification plan placing the necessary private implementation and actual N5/N8/V11/V13 before ordinary consumer implementation | Build actual private provider/host and closed observer/fixture controls in isolated signed supported VMs, using existing versions/ABI/posture. Do not advertise the native feature on a production host. |
 | Release evidence | Complete useful qualification and all applicable G/N/V, authority/disclosure/compatibility obligations | Release only the qualified scope through the usual consumer acceptance; unfulfilled independent Settings/location/core obligations stay live. |
 
-This is placement within the existing tree, not a second source-capture programme.
-K7 remains the enclosing increment and must still satisfy all its original Done
-when. Its prerequisite designs/reviews and private qualification do not depend on
-ordinary k7 consumption being complete. K30 cuts only the necessary implementation/
-acceptance ordering when it executes; this design session cuts no implementation
-leaves. If a qualification result requires design repair, externalize that precise
-producer/review work before its affected consumer rather than repeatedly capturing
-under a known defect. No new amount, quota, ABI, helper, posture, signing, consent,
+The concrete producer/review/planner sequence lives in the increment's briefs;
+the predicates above survive removal of task notes. This is placement within the
+existing acceptance programme, not a second source capture. Prerequisite designs/
+reviews and private qualification do not depend on ordinary consumption being
+complete. This session cuts no implementation leaves. If a qualification result
+requires design repair, externalize that precise producer/review work before its
+affected consumer rather than repeatedly capturing under a known defect.
+No new amount, quota, ABI, helper, posture, signing, consent,
 support floor or source/locale/useful-category reduction is authorized.
 
 ## Complete finite evidence and release decision
@@ -249,7 +326,9 @@ owns every G1–G11/N1–N8/V1–V13. Its
 [P1024](../verification/native-discovery-acceptance.md#application-population-subjects),
 [L1500](../verification/native-discovery-acceptance.md#long-application-source-subject)
 and [independent observers](../verification/native-discovery-acceptance.md#independent-observers-and-serviceability)
-are unchanged. Every native verdict here is PENDING.
+retain their independent duties. P1024's metadata-shape design is incomplete;
+its reviewed distribution/envelope must land before private eligibility. Every
+native verdict here is PENDING.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,
@@ -262,7 +341,16 @@ an exhaustive disk inventory or macOS 27 qualification.
 Record the complete native baseline in the same P1024 workload: 1,024 useful
 identifiers (fourteen configured/system witnesses and 1,010 distinct signed UI
 apps), 256 signed helper/agent/background copies, 128 controlled aliases and all
-actual baseline/registration pressure. Do not assume native alias exposure from
+actual baseline/registration pressure. Cardinality alone does not define useful
+population shape. The subject must pin per-copy information/name-file sizes,
+direct locale records/component bytes, each loctable's raw keys/dictionaries,
+selected/rejected strings and branch/format/layout associations against the
+independent measured real distribution or an explicit justified envelope. Retain
+the tails and correlations, not only means or independently sampled marginals.
+Thin metadata-only disk fixtures cannot stand in for that shape. Designing the
+distribution/envelope and its controls is externalized; no choice is made here.
+A pass qualifies only the stated finite shape on its actual supported VM/profile,
+never every 1,024-app machine. Do not assume native alias exposure from
 disk creation. Keep every direct/table key, raw repeated source slot, unselected
 language, preference, regional/duplicate return, rejected observation and repeated
 input. Preserve all historical 2,043-row associations per run, 149 outside paths
@@ -303,18 +391,24 @@ Correct individual refusal and shared FAILED/null controls pass those negative
 branches only. A required useful refusal/unknown/missing copy, missing operand,
 response replacement, deadline failure, failed cleanup or unavailable required
 observer/subject keeps both holds and its affected acceptance work live. Partial
-success never releases a required case. An actual material useful-source/access/
-deadline gap goes once to existing k93 with consequence, recommendation and
-alternatives; a known construction defect is repaired first. No scope reduction
+success never releases a required case. Actual shared gross/attempt exhaustion on
+a required useful baseline/P1024/L1500 subject, like source/access/deadline gaps,
+goes once to the bounded human coverage decision. Retain the valid receipts and
+consumer consequence; recommend retaining the holds and current scope pending
+that decision. Alternatives are an evidence-backed bounded representation repair,
+an explicitly approved amount/posture change, or explicitly accepted useful-scope
+loss. No automated repeated refinement/capture loop follows valid exhaustion.
+A missing/mischarged operand or broken guard is a known construction defect to
+repair/review before capture, not a valid exhausted run. No scope reduction
 or budget/posture increase follows automatically.
 
 ## Verification boundary
 
 Use the existing frozen reconciliation Taskfile suite, including the added
-qualification controls. These exercise cleanup reservation, exact/one-short
+qualification controls. These exercise cleanup and terminal-guard reservation, exact/one-short
 admission, unknown operands, performed failure prefixes, sticky freeze/late
 return and prerequisite/release eligibility using pure synthetic receipts.
 They check consistency of this construction and reject missing tapes/circular
 ordering/premature eligibility. They never execute a reader or supply native
-operands. Whole-producer review remains an independent future task; no passing
+operands. Review/integration and remaining prerequisites are independent; no passing
 pure check releases advertisement/consumption or establishes useful fit.

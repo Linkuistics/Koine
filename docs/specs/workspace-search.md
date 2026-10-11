@@ -238,6 +238,13 @@ useful category is returned. Source-local unavailability and individual refused
 metadata still use the existing honest PARTIAL/UNKNOWN rules when the population
 job itself finishes within bounds. Capacity refusal retains the ordinary FAILED
 rule. Core response/authority/lifecycle failures keep their independent precedence.
+Failed explicit application cleanup prevents successful publication: when delivery
+remains authorized, return FAILED/null with INSPECTION_FAILED, fixed failed-source
+summaries and existing selected-items errors; lifecycle/core loss suppresses delivery.
+Complete the remaining dependency-safe cleanup once. The
+[application protocol](application-metadata-private-qualification.md#freeze-failure-prefixes-and-true-return)
+owns that branch and its reserved terminal guard evaluation. Shared ownership/image
+design adopts that protocol; it cannot silently replace it.
 Diagnostic detail saturation follows the independent bounded-guidance policy below;
 it never invalidates choices or stops population inspection.
 
@@ -246,8 +253,10 @@ include a populous catalogue with over 256 distinct useful identifiers plus
 agent/helper pressure and native baseline apps. Every required useful choice must
 actually be returned with usable metadata there. These ceilings are a bounded
 qualification envelope, not proof that arbitrary machines fit it or finish in
-three seconds. A measured ordinary population that overflows, misses witnesses
-or misses the deadline is an unmet native obligation for the coverage decision;
+three seconds. Cardinality alone does not qualify the useful metadata shape;
+its reviewed independent distribution/envelope is still missing. A measured
+required useful population that exhausts gross/attempt gates, misses witnesses
+or misses the deadline is an unmet native obligation for the bounded human coverage decision;
 it cannot be credited as a passing small catalogue.
 
 Full staging costs temporary bounded state and withholds otherwise useful progress
@@ -444,18 +453,19 @@ governs numerical admission; the [complete composition](../verification/applicat
 contains conditional expressions for every episode/job contribution.
 
 The semantic file set is established as a design; useful finite fit is not.
-Known scoped local gross is 19,869,316/20,043,423 bytes for the saved English/German
-runs. Including all 7,862 controlled path projections gives partial conservative
-enclosures 23,502,420/23,676,527, above 20,971,520 before remaining contributions.
+Known grouped scoped local gross is 16,811,702/16,985,809 bytes for the saved English/German
+runs. Adding all 7,862 controlled path projections and both walk subterms gives partial conservative
+enclosures 23,238,610/23,412,717, above 20,971,520 before remaining contributions.
 This candidate supplies no useful certificate. It proves neither inevitable
 native overflow nor impossibility of a tighter construction. Native tuples,
 expanded visits, preferences, regional returns, final values/errors and actual
 selected wire remain conditional, including all 149 outside observations and
 both system seed groups. Missing explicit operands are never zero or excluded
 runtime work. **The consumption hold remains** until complete useful native
-qualification passes under the selected ordering below. A complete private
-qualification design, mandatory whole-producer review and earned integration
-precede private implementation; analytic useful fit is no longer its prerequisite.
+qualification passes under the selected ordering below. Private construction
+requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence),
+including a reviewed finite metadata-shape subject; analytic useful fit is no
+longer its prerequisite.
 The [historical baseline counterexample](../verification/application-localized-baseline.md)
 retains the refuted strings-only/64 KiB/L/input arithmetic as comparison evidence,
 not current gates or useful-reader qualification. The
@@ -471,9 +481,10 @@ N5/N8/V11/V13 application qualification before a complete analytic useful-fit
 certificate exists. The [complete guarded construction](application-metadata-private-qualification.md)
 now maps all nine tapes, pre-call work/failure/cleanup reservations, performed
 prefixes, real publication and true-return ownership to the selected recipes.
-Its design boundary is established for whole-producer review; private implementation
-eligibility remains false until that review, earned integration and applicable
-downstream source/image/normalization reviews and qualification planning finish.
+Its repaired guarded construction is established; private implementation remains
+held under the complete [durable eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
+The independent finite metadata-shape subject and later prerequisite artifacts
+are still incomplete.
 Prerequisite designs and existing k30 planning may use the reviewed design before
 useful qualification; ordinary downstream consumption remains held. The
 [existing sequence](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
@@ -1083,10 +1094,10 @@ alias episodes, rejected/duplicate slots and unselected table keys remain charge
 No third walk, per-choice registration multiplier, borrowed/raw-as-Swift value,
 unknown-to-zero or provider-to-host publication move is admitted.
 
-For both saved 2,043-episode runs, known local gross is 19,869,316/20,043,423 and
-explicit attempt uppers 950,247/983,378. All 7,862 controlled source path projections
-add 3,633,104 gross and 47,172 attempts. Their partial conservative enclosures
-23,502,420/23,676,527 already exceed the selected 20,971,520-byte gate before the
+For both saved 2,043-episode runs, known grouped local gross is 16,811,702/16,985,809 and
+explicit attempt uppers 914,288/947,419. All 7,862 controlled source path projections
+add 3,633,104 gross and 47,172 attempts. Adding 2,793,804 gross for both walk literals/states gives partial conservative enclosures
+23,238,610/23,412,717, which already exceed the selected 20,971,520-byte gate before the
 other terms. This is a failed useful fit certificate, not an actual native lower
 bound, inevitable overflow or proof that a tighter construction cannot fit.
 Full native tuples/expanded visits/preferences/regional returns/final values/errors
@@ -1223,10 +1234,9 @@ reader semantics, scoped gates, every saved association and the full wire. Its
 controlled local/source/two-walk enclosure still exceeds 20 MiB before other
 terms; it establishes no useful fit or native pass. Earlier independent-block
 numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits a private guarded implementation for existing N5/N8/V11/V13 qualification
-before analytic fit, after complete design, whole-producer review and earned
-integration. Advertisement/downstream consumption remain held until full useful
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
 native operands, actual complete selected responses, required witnesses and
 independent serviceability qualify. Failed/refused/unknown required useful cases
 and unavailable subjects keep those holds and affected acceptance work live.

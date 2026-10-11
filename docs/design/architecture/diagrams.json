@@ -1,39 +1,39 @@
 {
   "title": "Koine provider architecture",
-  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected application reader semantics include platform/plain information, strings/loctables, independent direct/table inventories, 128 KiB regular files and individual affected-fact refusal. Scoped explicit-work admission is 20 MiB without refund; runtime internals are excluded with no heap/RSS/peak bound. Guarded private qualification before analytic fit is selected under the complete guarded construction, after whole review and applicable prerequisite review/placement. Private eligibility remains false. The grouped enclosure supplies no useful fit; advertisement and consumption wait for full useful native qualification. Every native G/N/V is pending. Eight raw-search views are comparison. Graphs begin at the dark Start here node; sequences read from their first message. Images are components in one resident process.",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Complete guarded private qualification construction",
-    "status": "Design complete for whole review; private eligibility false; native pending",
-    "summary": "All five episode/four job tapes now compose pre-call work, raw cleanup, failure-envelope and terminal bookkeeping reservations with real provider publication and true-return ownership. Existing source/image/normalization reviews and k30 place N5/N8/V11/V13 before ordinary k7 consumption, avoiding a circular prerequisite or duplicate capture programme. Useful fit remains unestablished; every native G/N/V and both release holds remain pending.",
+    "title": "Review integration and missing population shape",
+    "status": "Private eligibility held; metadata-shape redesign live; native pending",
+    "summary": "The guarded application protocol now reserves terminal refusal/final-return evaluation and defines failed cleanup. Eligibility refers to durable reviewed artifacts; the metadata-shape subject remains incomplete. Grouped figures include the same two-walk basis. Instrumented receipts qualify their image; release requires reviewed matched ordinary/disabled/enabled correspondence and ordinary-image evidence. Valid required-useful gross/attempt exhaustion goes once to the human coverage decision. All native outcomes and release holds remain pending.",
     "diagramIds": [
       "native-metadata-qualification",
       "native-metadata-qualification-admission",
+      "native-application-population",
+      "native-metadata-subject",
       "native-metadata-grouped-storage",
       "native-metadata-runtime-admission",
-      "native-metadata-composition",
-      "native-metadata-reader-plan",
-      "native-metadata-wire"
+      "native-metadata-composition"
     ],
     "updatedDiagrams": [
       {
         "id": "native-metadata-qualification",
-        "summary": "Added existing prerequisite reviews and k30 qualification placement before held ordinary consumption; a design bit supplies only one eligibility term."
+        "summary": "Use durable eligibility artifacts, including the missing reviewed metadata-shape subject and release-image correspondence."
       },
       {
         "id": "native-metadata-qualification-admission",
-        "summary": "Added pre-call work/failure/cleanup reservations, actual-prefix settlement, sticky freeze and true-return slot lifetime."
+        "summary": "Reserve first refusal/final-return guard evaluation and publish cleanup failure as FAILED/null only while delivery is authorized."
+      },
+      {
+        "id": "native-application-population",
+        "summary": "Show adopted grouped figures with explicit source and two-walk subterms."
+      },
+      {
+        "id": "native-metadata-subject",
+        "summary": "Keep thin disk fixtures as comparison; cardinality alone cannot qualify useful metadata shape."
       },
       {
         "id": "native-metadata-grouped-storage",
-        "summary": "Replaced unfinished-design wording with the complete construction and still-pending eligibility."
-      },
-      {
-        "id": "native-metadata-runtime-admission",
-        "summary": "Included failure-publication and guard bookkeeping reservations, preserving release holds."
-      },
-      {
-        "id": "native-metadata-composition",
-        "summary": "Included live/possible cleanup, failure-envelope and guard bookkeeping reservations while retaining all conditional native/full-wire terms."
+        "summary": "Cite the complete eligibility predicate rather than abbreviating it."
       }
     ]
   },
@@ -97,7 +97,7 @@
       "renderer": "svg",
       "source": "native-metadata-composition.d2",
       "rendered": "native-metadata-composition.svg",
-      "caption": "Original independent-block receipts remain comparison. All five episode/four job tapes, provider-owned publication and the full independent wire remain; native operands/final values are conditional. Guarded private qualification before analytic fit is selected after complete design/whole review. Advertisement and consumption remain held until full useful qualification. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
     },
     {
       "id": "native-metadata-two-walks",
@@ -151,7 +151,7 @@
       "renderer": "svg",
       "source": "native-metadata-subject.d2",
       "rendered": "native-metadata-subject.svg",
-      "caption": "Updated the evidence handoff to the current scoped candidate and retained hold, preserving historical census limits. Current runtime admission and complete composition bind explicit controlled raw requests/writes/calls/cleanup and real provider-owned publication. Native tuples, expanded visits, preferences, regional returns, final values and selected wire remain conditional. No useful fit, heap/RSS/peak or native G/N/V pass; the k215 hold and mandatory whole review remain."
+      "caption": "Historical bounded census and thin disk fixtures are comparison only. Cardinality alone cannot qualify useful metadata shape. A reviewed independent distribution/envelope with per-copy sizes, direct/table dimensions, associations and tails remains required before private eligibility. No native or supported-VM pass follows."
     },
     {
       "id": "native-localized-decision",
@@ -484,7 +484,7 @@
       "renderer": "svg",
       "source": "native-metadata-runtime-admission.d2",
       "rendered": "native-metadata-runtime-admission.svg",
-      "caption": "Selected scoped accounting retains provider-owned real publication and charged explicit work; runtime backing/compiler traffic remain excluded with no heap/RSS/peak guarantee. Guarded private qualification before analytic fit is selected after complete design/whole review, with every gate unchanged and advertisement/consumption held. Native operands and final response remain pending. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
     },
     {
       "id": "native-metadata-grouped-storage",
@@ -493,7 +493,7 @@
       "renderer": "svg",
       "source": "native-metadata-grouped-storage.d2",
       "rendered": "native-metadata-grouped-storage.svg",
-      "caption": "The grouped controlled enclosure exceeds 20 MiB before other terms, without proving actual native overflow. Selected guarded private qualification follows complete design and whole review before implementation. Full useful native operands, actual complete responses, required witnesses and independent serviceability must pass before advertisement/consumption. All observations/gates remain; native work stays pending. The guarded private design is complete for whole review; actual private eligibility also requires the existing downstream prerequisite reviews and k30 placement. Advertisement/consumption stay held."
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
     },
     {
       "id": "native-metadata-qualification",
@@ -503,7 +503,7 @@
       "renderer": "svg",
       "source": "native-metadata-qualification.d2",
       "rendered": "native-metadata-qualification.svg",
-      "caption": "Complete private design is one eligibility term. Root whole review/earned integration, source/access, ownership/images, normalization, whole-k19 review and existing k30 placement precede confined N5/N8/V11/V13. Production advertisement/ordinary consumption require full useful evidence and every independent obligation. No native verdict follows this flow."
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
     },
     {
       "id": "native-metadata-qualification-admission",
@@ -513,7 +513,7 @@
       "renderer": "svg",
       "source": "native-metadata-qualification-admission.d2",
       "rendered": "native-metadata-qualification-admission.svg",
-      "caption": "Each transition includes controlled requests, every performed write/explicit operation and guard bookkeeping. Live/possible raw cleanup and full failure-publication credits cannot fund useful work. Unknown explicit operands refuse before invocation; cancellation retains inflight backing and slot until actual return. The host response cap is separate."
+      "caption": "Application admission is owned by the private qualification spec. Reserve spent work, live/possible cleanup, full failure publication and one complete terminal guard evaluation. Admitted checks retain that credit; first refusal or final return consumes it. Sticky freeze keeps borrowers/slots until true return. Failed cleanup publishes FAILED/null with INSPECTION_FAILED only while authorized; lifecycle/core loss suppresses delivery. Core encoding remains independent."
     }
   ]
 }
