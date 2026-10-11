@@ -1,5 +1,13 @@
 # Application metadata finite design subject
 
+The [joint population evidence boundary](application-population-metadata-shape.md)
+preserves all saved per-copy associations but finds the corpus insufficient for
+an exact useful metadata shape: payloads/formats and complete typed candidates
+are absent. No distribution/qualification recipe is selected; private eligibility
+remains false and all native/advertisement/consumption holds remain. Whole review
+and a bounded human evidence decision precede further subject design.
+
+
 **Current composition scope.** The [selected reader/admission contract](../design/application-metadata-contract.json)
 and [scoped accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md)
 govern current admission. This retained subcertificate supplies historical/local

@@ -1,5 +1,13 @@
 # Application metadata grouped storage
 
+The [joint population evidence boundary](application-population-metadata-shape.md)
+preserves all saved per-copy associations but finds the corpus insufficient for
+an exact useful metadata shape: payloads/formats and complete typed candidates
+are absent. No distribution/qualification recipe is selected; private eligibility
+remains false and all native/advertisement/consumption holds remain. Whole review
+and a bounded human evidence decision precede further subject design.
+
+
 [Grouped ownership → Preserve literal keys through slab growth](../design/architecture/index.html#diagram-native-metadata-grouped-storage)
 is the current bounded refinement. Graphs enter at the dark **Start here** node;
 numbered edges show work order. The [selected accounting decision](../adr/application-metadata-accounting-covers-explicit-work.md)

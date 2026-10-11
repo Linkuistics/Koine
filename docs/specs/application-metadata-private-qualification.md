@@ -326,7 +326,8 @@ owns every G1–G11/N1–N8/V1–V13. Its
 [P1024](../verification/native-discovery-acceptance.md#application-population-subjects),
 [L1500](../verification/native-discovery-acceptance.md#long-application-source-subject)
 and [independent observers](../verification/native-discovery-acceptance.md#independent-observers-and-serviceability)
-retain their independent duties. P1024's metadata-shape design is incomplete;
+retain their independent duties. P1024's [saved-corpus boundary](../verification/application-population-metadata-shape.md#exact-information-loss)
+shows why its metadata-shape design remains incomplete;
 its reviewed distribution/envelope must land before private eligibility. Every
 native verdict here is PENDING.
 
@@ -347,8 +348,11 @@ direct locale records/component bytes, each loctable's raw keys/dictionaries,
 selected/rejected strings and branch/format/layout associations against the
 independent measured real distribution or an explicit justified envelope. Retain
 the tails and correlations, not only means or independently sampled marginals.
-Thin metadata-only disk fixtures cannot stand in for that shape. Designing the
-distribution/envelope and its controls is externalized; no choice is made here.
+Thin metadata-only disk fixtures cannot stand in for that shape. The [joint evidence audit](../verification/application-population-metadata-shape.md)
+rejects cardinality-only construction and records missing file formats/typed values.
+No distribution or reproducible qualification recipe is established. A bounded
+human evidence decision and subsequent complete reviewed subject still precede
+private eligibility; no capture or useful loss is authorized by that boundary.
 A pass qualifies only the stated finite shape on its actual supported VM/profile,
 never every 1,024-app machine. Do not assume native alias exposure from
 disk creation. Keep every direct/table key, raw repeated source slot, unselected

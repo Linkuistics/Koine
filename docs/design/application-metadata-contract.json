@@ -185,5 +185,13 @@
     "usefulExhaustionRoute": "ONCE_TO_HUMAN_COVERAGE_DECISION",
     "populationShapeDesignEstablished": false,
     "releaseImageRule": "MATCHED_ORDINARY_DISABLED_ENABLED_AND_REVIEWED_RECIPE_CORRESPONDENCE"
+  },
+  "metadataShapeEvidenceBoundary": {
+    "report": "../verification/application-population-metadata-shape.md",
+    "packet": "application-population-metadata-shape.json",
+    "outcome": "CORPUS_INSUFFICIENT",
+    "selectedDistribution": null,
+    "qualificationShapeEstablished": false,
+    "privateEligibilitySupplied": false
   }
 }

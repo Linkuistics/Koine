@@ -345,8 +345,13 @@ it is the finite subject against which that promise must be demonstrated.
 
 Private qualification and release require the complete
 [durable eligibility and finite evidence contract](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
-P1024's metadata-shape design is incomplete and remains a reviewed design
-prerequisite. Cardinality-only test apps and the historical thin disk fixtures do
+The [saved joint evidence boundary](application-population-metadata-shape.md)
+confirms that P1024's metadata-shape design is incomplete and remains a reviewed
+design prerequisite. The census lacks 2,046 fixed-file payloads/format tags and
+complete typed values for its 247 loctables; no distribution or qualification
+recipe is selected. Whole boundary review and a bounded human evidence decision
+precede further subject design, not a fresh native programme. Cardinality-only
+test apps and the historical thin disk fixtures do
 not qualify usefulness. The replacement must freeze independent per-copy
 information/name-file byte sizes, complete direct locale/component and loctable
 key/dictionary dimensions, formats/layouts, selected/rejected strings, joint

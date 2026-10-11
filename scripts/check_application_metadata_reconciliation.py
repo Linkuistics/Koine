@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = "docs/design/application-metadata-contract.json"
 CASES = "docs/verification/native-discovery-acceptance.md"
 SUITE = (
+    "design:application-population-metadata-shape-check",
     "design:application-metadata-qualification-check",
     "design:application-metadata-subject-check",
     "design:application-metadata-reader-plan-check",

@@ -1,5 +1,11 @@
 # Native discovery and client-owned search
 
+The [P1024 joint evidence boundary](../verification/application-population-metadata-shape.md)
+records why the saved census cannot reproduce the required useful metadata shape.
+No distribution, private eligibility or native qualification follows; reviewed
+subject completion remains a prerequisite under the canonical private contract.
+
+
 **Designed; mandatory review, implementation and native acceptance pending.**
 The design includes application population admission and conditional cost arithmetic,
 bounded Settings full-response comparison with honest lazy-readiness uncertainty,

@@ -86,5 +86,13 @@
     "requireMeasuredMetadataInputAndLocalizationDimensions": true
   },
   "currentContract": "application-metadata-contract.json",
-  "artifactScope": "HISTORICAL_REFUTED_COUNTEREXAMPLE_ONLY"
+  "artifactScope": "HISTORICAL_REFUTED_COUNTEREXAMPLE_ONLY",
+  "metadataShapeEvidenceBoundary": {
+    "report": "../verification/application-population-metadata-shape.md",
+    "packet": "application-population-metadata-shape.json",
+    "outcome": "CORPUS_INSUFFICIENT",
+    "selectedDistribution": null,
+    "qualificationShapeEstablished": false,
+    "privateEligibilitySupplied": false
+  }
 }

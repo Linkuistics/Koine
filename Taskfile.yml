@@ -623,6 +623,24 @@ tasks:
         console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
         JS
 
+  design:application-population-metadata-shape:
+    desc: Write a saved per-copy projection audit; no targets, fixtures or native qualification
+    cmds:
+      - python3 scripts/application_population_metadata_shape.py --write
+
+  design:application-population-metadata-shape-check:
+    desc: Detect thin shapes, omitted tails/keys/tables and association loss; native pending
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
+      - python3 scripts/application_population_metadata_shape.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_population_metadata_shape.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
+
+  design:application-population-metadata-shape-render:
+    desc: Render the exact corpus-insufficiency boundary and unchanged qualification hold
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-population-metadata-shape.d2 docs/design/architecture/native-population-metadata-shape.svg
+
   design:application-metadata-subject:
     desc: Freeze/read declared host fixed files and construct disk-only P1024/L1500; no Koine/native qualification
     cmds:
@@ -765,12 +783,14 @@ tasks:
       - task design:application-metadata-composition-render
       - task design:application-metadata-grouped-render
       - task design:application-metadata-qualification-render
+      - task design:application-population-metadata-shape-render
       - task design:application-metadata-episode-certificate
       - task design:application-metadata-source-root-certificate
       - task design:application-metadata-owned-storage
       - task design:application-metadata-wire
       - task design:application-metadata-composition
       - task design:application-metadata-grouped-storage
+      - task design:application-population-metadata-shape
 
   design:application-metadata-qualification-render:
     desc: Render the private eligibility sequence and cleanup-reserved admission protocol

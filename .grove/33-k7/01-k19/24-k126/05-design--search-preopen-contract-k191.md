@@ -195,3 +195,21 @@ live. Three matched ordinary/hooks-disabled/hooks-enabled images, reviewed recip
 correspondence and independent ordinary-image outcomes bind release evidence.
 Failed cleanup yields FAILED/null with INSPECTION_FAILED, or suppressed delivery
 on lifecycle/core loss, never a successful useful prefix.
+
+## K238 exact saved-corpus boundary
+
+The whole application-population-metadata-shape-k238 boundary is in
+[the joint evidence report](../../../../docs/verification/application-population-metadata-shape.md).
+All 640 saved copy associations and historical 2,043 episodes remain; missing
+payloads/formats/complete typed candidates prevent a reproducible useful shape.
+The per-copy audit and controls qualify projection preservation only. No
+qualification distribution/recipe is selected and private eligibility remains
+false even after boundary review. Whole boundary review/earned integration and
+the bounded human evidence decision precede complete replacement subject design;
+that subject's own mandatory whole review/earned integration still precede private
+construction/k7. Do not implement from cardinality or treat this boundary close
+as subject completion. No new capture, amount, quota, ABI, reader, signing/helper/
+consent/posture or useful loss is selected. Reuse existing N5/N8/V11/V13 only after
+the canonical prerequisites; k93 handles actual valid useful exhaustion, not
+missing subject-design evidence. All independent native G/N/V, image/action/
+authority/disclosure/compatibility/core/Settings/location duties and both holds stay.

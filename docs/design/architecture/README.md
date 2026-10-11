@@ -8,43 +8,36 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The [complete guarded construction](../../specs/application-metadata-private-qualification.md)
-reserves one complete terminal guard evaluation, prevents useful publication after
-failed cleanup and owns the application protocol. Private implementation is held
-by the [durable eligibility predicate](../../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence):
-the independent finite metadata-shape subject remains incomplete. Cardinality-only
-P1024 fixtures do not qualify usefulness. Release requires matched ordinary/
-hooks-disabled/hooks-enabled images, reviewed recipe correspondence and independent
-ordinary-image outcomes. Actual required-useful gross/attempt exhaustion goes once
-to the bounded human coverage decision. All native G/N/V remain pending and both
-advertisement/consumption holds remain.
+The [joint population boundary](../../verification/application-population-metadata-shape.md)
+preserves every available saved copy association but cannot reconstruct file
+payloads/formats or complete typed candidate strings. No P1024 distribution or
+qualification recipe is selected. Whole boundary review and a bounded human
+evidence decision precede a complete replacement subject and its review.
+The [durable eligibility predicate](../../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
+remains false. All native G/N/V, advertisement/consumption holds and independent
+image/action/authority/disclosure/compatibility/core/Settings/location duties remain.
 
 Current changes:
 
-- [Private qualification → Review, qualify, then release](index.html#diagram-native-metadata-qualification) — Replaced task-key predicates with reviewed durable artifacts and the missing metadata-shape subject; added matched release-image evidence.
-- [Private qualification → Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission) — Reserved first refusal/final-return evaluation and defined FAILED/null cleanup failure while keeping slots through true return.
-- [Population → Stage every bounded application choice](index.html#diagram-native-application-population) — Shows adopted grouped figures with both walk subterms; original independent-block figures remain labelled comparison.
-- [Finite subject → Qualify an explicit metadata shape](index.html#diagram-native-metadata-subject) — Cardinality-only thin fixtures remain comparison; the distribution/envelope producer and mandatory review precede private construction.
+- [Subject evidence → Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Added preserved facts, exact missing data, discrimination controls and the bounded evidence decision.
+- [Finite subject → Freeze the finite metadata subject](index.html#diagram-native-metadata-subject) — Identified missing saved payloads, formats and typed candidates before metadata-shape eligibility.
+- [Exact information loss](../../verification/application-population-metadata-shape.md#exact-information-loss) — Distinguished the saved projection from a byte-complete, typed reproduction source.
+- [Recommendation and alternatives](../../verification/application-population-metadata-shape.md#recommendation-and-alternatives) — Recommended recovering digest-matching evidence; projected resampling and artificial maximum envelopes remain unselected.
 
-Unchanged context: [Reader → Select independent inventories and stop refused fallback](index.html#diagram-native-metadata-reader-plan),
-[Population → Stage every bounded application choice before publication](index.html#diagram-native-application-population),
-[Source accounting → Preserve raw-slot and payload receipts](index.html#diagram-native-metadata-source-root)
-and [Selected wire → Expand selection before counting bytes](index.html#diagram-native-metadata-wire).
+Unchanged context: [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
+[Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),
+[Grouped ownership](index.html#diagram-native-metadata-grouped-storage) and
+[Selected wire](index.html#diagram-native-metadata-wire).
+The application spec still owns the protocol and terminal guard/cleanup rules;
+release still requires matched ordinary/disabled/enabled image correspondence.
+All selected amounts, semantics, breadth, three seams and gates remain.
+The failed grouped conservative enclosure is no actual native overflow or fit.
 
-The [whole-family reconciliation](../../verification/application-metadata-reconciliation.md#original-producer-close-conditions)
-and [current contract](../application-metadata-contract.json) separate the amended
-private design boundary from the native useful-release gate. All original fixed
-formats, 131,072-byte files, 20 MiB scoped gross/4,194,304 attempts without refund,
-independent 8 MiB body cap, deadlines/true-return slots, source/locale breadth,
-authority/actions/images/disclosures and Settings/location/compatibility duties
-remain. Runtime/compiler internals are excluded with no total heap/RSS/peak promise.
-The grouped 23,238,610/23,412,717 controlled enclosure is a failed conservative
-candidate, not inevitable native overflow or proof of impossibility.
-
-Open <http://127.0.0.1:8936/#discussion> or the exact qualification diagram links.
-Source is editable; D2 positions the nodes. The complete source/binary/VM evidence
-is still future work in the existing acceptance duties, never a native pass from
-these pure controls or browser views.
+Open <http://127.0.0.1:8875/#diagram-native-population-metadata-shape> for the current
+boundary. Desktop rendering and the fresh deep link were checked. At 390px the
+fit view is a compact overview; use the full-size SVG or native-size panning to
+read its labels. Dark export uses the same D2 theme 200 semantics.
+Pure controls and browser delivery supply no native qualification.
 
 ## Other architecture topics
 
@@ -150,3 +143,6 @@ task exercises exact/one-short reservations, unknown explicit work, frozen/late
 return, failure prefixes and private/useful-release eligibility. Deliberately
 broken cleanup/failure/unknown/review/partial-evidence counterparts must fail the
 same instrument. These are synthetic design controls, never native qualification.
+
+Run design:application-population-metadata-shape-render for the joint evidence
+boundary view with D2 0.9.0/Dagre/theme 0/dark-theme 200.

@@ -1,5 +1,13 @@
 # Native discovery source boundary
 
+The [joint population evidence boundary](application-population-metadata-shape.md)
+preserves all saved per-copy associations but finds the corpus insufficient for
+an exact useful metadata shape: payloads/formats and complete typed candidates
+are absent. No distribution/qualification recipe is selected; private eligibility
+remains false and all native/advertisement/consumption holds remain. Whole review
+and a bounded human evidence decision precede further subject design.
+
+
 **Source analysis behind the designed contract; native acceptance remains pending.**
 The [native design](../specs/workspace-search.md) selects the sources below;
 [finite acceptance](native-discovery-acceptance.md) qualifies their actual runtime

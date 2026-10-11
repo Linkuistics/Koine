@@ -464,3 +464,24 @@ gross/attempt exhaustion goes once to k93; a guard defect is repaired before
 capture, not accepted as native uncertainty. No amount/quota/breadth/posture change
 or new capture programme is selected. The current private qualification spec and
 reconciliation report own the complete repaired handoff.
+
+
+## P1024 joint evidence boundary from k238
+
+K238 preserves the full saved per-copy projection and demonstrates that its
+2,046 file payloads/formats and complete typed values for 247 loctables are missing.
+The complete boundary is docs/verification/application-population-metadata-shape.md
+and its per-copy audit. No distribution or qualification recipe is selected;
+private eligibility stays false. This is the mandate's exact corpus-insufficiency
+handoff, not a completed useful shape or native overflow. Mandatory whole boundary
+review/earned integration precedes a bounded human evidence decision; subsequent
+complete subject design/review still precedes private construction and k7. Recover
+byte-complete digest-matching evidence if available; no fresh target capture,
+VM programme or useful loss is authorized here. Existing N5/N8/V11/V13 and all
+applicable reviewed prerequisites/holds/independent duties remain unchanged.
+
+K239 is the mandatory whole k238 boundary review; earned integration is inserted
+before the next live root sibling k240. K240 then settles the missing-evidence
+trade-off with Antony and externalizes the precise complete subject design/review
+work selected by that answer. Both precede k7; no boundary close supplies private
+eligibility. The root retains live work and no downstream node closes here.
