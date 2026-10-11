@@ -93,6 +93,12 @@
     "outcome": "CORPUS_INSUFFICIENT",
     "selectedDistribution": null,
     "qualificationShapeEstablished": false,
-    "privateEligibilitySupplied": false
+    "privateEligibilitySupplied": false,
+    "referencePopulation": null,
+    "templateCohorts": null,
+    "usefulClassificationSource": null,
+    "multiplicityAssignment": null,
+    "controlScope": "PACKET_INTEGRITY_NOT_GENERATED_SUBJECT_SHAPE",
+    "subjectDiscriminationControls": "UNBUILT"
   }
 }

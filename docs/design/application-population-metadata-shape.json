@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "outcome": "CORPUS_INSUFFICIENT",
   "qualificationShapeEstablished": false,
   "privateImplementationEligibleNow": false,
@@ -9,7 +9,7 @@
   "scope": "SAVED_MACOS_26_6_2_PROJECTION_ONLY",
   "inputHashes": {
     "docs/design/application-metadata-subject.json": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
-    "docs/design/application-metadata-grouped-storage.json": "10c3e5ba5a728d14cee4d2cd3156a837d9d038140b7050f8eff3a61db45c4e66",
+    "docs/design/application-metadata-grouped-storage.json": "44d3ce3c803eea4e3c4adef5b289809021954af18870c4a11759c884accd6ff6",
     "scripts/application_metadata_subject.py": "589d6508d6a457fd2d2cd48df13eb0e0bacada009b5ba7b1f163683457e5ab52",
     "scripts/application_metadata_grouped_storage.py": "1bad18b3bf9ddde18b853f07239f39e9d6fe2c23efc313b4b55e902f016bda98"
   },
@@ -19,6 +19,21 @@
   "cohortDimensions": {
     "system": {
       "copies": 290,
+      "partialClassificationEvidence": {
+        "anyTrueInformationFlag": 134,
+        "nestedAppSpellings": 5,
+        "independentUsefulCohortEstablished": false
+      },
+      "distinctSavedFileTimePairs": 1,
+      "sharedSavedFileTimePair": [
+        1786589515000000000,
+        1786589515000000000
+      ],
+      "regularFileRoles": {
+        "INFORMATION": 289,
+        "GLOBAL_NAME": 249,
+        "LOCALE_NAME": 0
+      },
       "informationBytes": 934207,
       "allFixedFileBytes": 3594216,
       "directLocales": 10794,
@@ -29,10 +44,132 @@
         "Support Files": 0,
         "Resources": 0,
         ".": 1
+      },
+      "fileProjectionInventory": {
+        "fields": [
+          {
+            "field": "bytes",
+            "observations": 538,
+            "retainedFactAndLimitation": "Serialized byte count; no payload or encoding"
+          },
+          {
+            "field": "developmentRegion",
+            "observations": 291,
+            "retainedFactAndLimitation": "String value or null; no original non-string value"
+          },
+          {
+            "field": "developmentRegionNativeType",
+            "observations": 291,
+            "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+          },
+          {
+            "field": "dictionaryKeys",
+            "observations": 538,
+            "retainedFactAndLimitation": "Top-level count; no complete keys/types/values"
+          },
+          {
+            "field": "flags",
+            "observations": 291,
+            "retainedFactAndLimitation": "Boolean or null; null conflates absent/non-Boolean key"
+          },
+          {
+            "field": "identifier",
+            "observations": 291,
+            "retainedFactAndLimitation": "String value or null; null loses absent/non-string value"
+          },
+          {
+            "field": "identifierNativeType",
+            "observations": 291,
+            "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+          },
+          {
+            "field": "identity",
+            "observations": 538,
+            "retainedFactAndLimitation": "Captured identity/size/times; no current occupant guarantee"
+          },
+          {
+            "field": "localeDictionaryKeys",
+            "observations": 247,
+            "retainedFactAndLimitation": "Per-dictionary counts; no member keys/types/values"
+          },
+          {
+            "field": "localeKeys",
+            "observations": 247,
+            "retainedFactAndLimitation": "Dictionary-valued raw keys; no member keys/types/values"
+          },
+          {
+            "field": "maximumNameBytes",
+            "observations": 247,
+            "retainedFactAndLimitation": "Chosen-name maximum; no language/key/value tail association"
+          },
+          {
+            "field": "name",
+            "observations": 291,
+            "retainedFactAndLimitation": "One chosen name; no display/bundle/rejected candidate distinction"
+          },
+          {
+            "field": "names",
+            "observations": 247,
+            "retainedFactAndLimitation": "Chosen en/de names; no rejected or other-language candidates"
+          },
+          {
+            "field": "otherKeys",
+            "observations": 247,
+            "retainedFactAndLimitation": "Non-dictionary raw keys; no exact value types/values"
+          },
+          {
+            "field": "parsed",
+            "observations": 538,
+            "retainedFactAndLimitation": "Top-level parse category; no serialization or complete typed tree"
+          },
+          {
+            "field": "relative",
+            "observations": 538,
+            "retainedFactAndLimitation": "Fixed-file/copy association; no payload"
+          },
+          {
+            "field": "role",
+            "observations": 538,
+            "retainedFactAndLimitation": "Information/global/locale role; no serialization"
+          },
+          {
+            "field": "sha256",
+            "observations": 538,
+            "retainedFactAndLimitation": "Equality check for supplied bytes; no reconstruction"
+          },
+          {
+            "field": "state",
+            "observations": 538,
+            "retainedFactAndLimitation": "Observed filesystem category; no file bytes"
+          }
+        ],
+        "missingEvidence": {
+          "fixedFilePayloads": 538,
+          "formatTags": 538,
+          "completeTableTypedValues": 247,
+          "individualNameKeyCandidates": 538,
+          "ambiguousInformationFlags": {
+            "LSUIElement": 170,
+            "LSBackgroundOnly": 272
+          }
+        },
+        "scope": "PROJECTED_FACT_PRESENCE_ONLY_NOT_VERIFIED_REPLAY"
       }
     },
     "installedNonSystem": {
       "copies": 350,
+      "partialClassificationEvidence": {
+        "anyTrueInformationFlag": 45,
+        "nestedAppSpellings": 8,
+        "independentUsefulCohortEstablished": false
+      },
+      "distinctSavedFileTimePairs": 1467,
+      "sharedSavedFileTimePair": null,
+      "regularFileRoles": {
+        "INFORMATION": 348,
+        "GLOBAL_NAME": 0,
+        "LOCALE_NAME": 1160
+      },
       "informationBytes": 1404355,
       "allFixedFileBytes": 3296899,
       "directLocales": 2878,
@@ -43,14 +180,213 @@
         "Support Files": 0,
         "Resources": 0,
         ".": 2
+      },
+      "fileProjectionInventory": {
+        "fields": [
+          {
+            "field": "bytes",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Serialized byte count; no payload or encoding"
+          },
+          {
+            "field": "developmentRegion",
+            "observations": 1508,
+            "retainedFactAndLimitation": "String value or null; no original non-string value"
+          },
+          {
+            "field": "developmentRegionNativeType",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+          },
+          {
+            "field": "dictionaryKeys",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Top-level count; no complete keys/types/values"
+          },
+          {
+            "field": "flags",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Boolean or null; null conflates absent/non-Boolean key"
+          },
+          {
+            "field": "identifier",
+            "observations": 1508,
+            "retainedFactAndLimitation": "String value or null; null loses absent/non-string value"
+          },
+          {
+            "field": "identifierNativeType",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+          },
+          {
+            "field": "identity",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Captured identity/size/times; no current occupant guarantee"
+          },
+          {
+            "field": "name",
+            "observations": 1508,
+            "retainedFactAndLimitation": "One chosen name; no display/bundle/rejected candidate distinction"
+          },
+          {
+            "field": "parsed",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Top-level parse category; no serialization or complete typed tree"
+          },
+          {
+            "field": "relative",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Fixed-file/copy association; no payload"
+          },
+          {
+            "field": "role",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Information/global/locale role; no serialization"
+          },
+          {
+            "field": "sha256",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Equality check for supplied bytes; no reconstruction"
+          },
+          {
+            "field": "state",
+            "observations": 1508,
+            "retainedFactAndLimitation": "Observed filesystem category; no file bytes"
+          }
+        ],
+        "missingEvidence": {
+          "fixedFilePayloads": 1508,
+          "formatTags": 1508,
+          "completeTableTypedValues": 0,
+          "individualNameKeyCandidates": 1508,
+          "ambiguousInformationFlags": {
+            "LSUIElement": 304,
+            "LSBackgroundOnly": 342
+          }
+        },
+        "scope": "PROJECTED_FACT_PRESENCE_ONLY_NOT_VERIFIED_REPLAY"
       }
     }
+  },
+  "fileProjectionInventory": {
+    "fields": [
+      {
+        "field": "bytes",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Serialized byte count; no payload or encoding"
+      },
+      {
+        "field": "developmentRegion",
+        "observations": 1799,
+        "retainedFactAndLimitation": "String value or null; no original non-string value"
+      },
+      {
+        "field": "developmentRegionNativeType",
+        "observations": 1799,
+        "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+      },
+      {
+        "field": "dictionaryKeys",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Top-level count; no complete keys/types/values"
+      },
+      {
+        "field": "flags",
+        "observations": 1799,
+        "retainedFactAndLimitation": "Boolean or null; null conflates absent/non-Boolean key"
+      },
+      {
+        "field": "identifier",
+        "observations": 1799,
+        "retainedFactAndLimitation": "String value or null; null loses absent/non-string value"
+      },
+      {
+        "field": "identifierNativeType",
+        "observations": 1799,
+        "retainedFactAndLimitation": "Python projected type; no complete original typed value"
+      },
+      {
+        "field": "identity",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Captured identity/size/times; no current occupant guarantee"
+      },
+      {
+        "field": "localeDictionaryKeys",
+        "observations": 247,
+        "retainedFactAndLimitation": "Per-dictionary counts; no member keys/types/values"
+      },
+      {
+        "field": "localeKeys",
+        "observations": 247,
+        "retainedFactAndLimitation": "Dictionary-valued raw keys; no member keys/types/values"
+      },
+      {
+        "field": "maximumNameBytes",
+        "observations": 247,
+        "retainedFactAndLimitation": "Chosen-name maximum; no language/key/value tail association"
+      },
+      {
+        "field": "name",
+        "observations": 1799,
+        "retainedFactAndLimitation": "One chosen name; no display/bundle/rejected candidate distinction"
+      },
+      {
+        "field": "names",
+        "observations": 247,
+        "retainedFactAndLimitation": "Chosen en/de names; no rejected or other-language candidates"
+      },
+      {
+        "field": "otherKeys",
+        "observations": 247,
+        "retainedFactAndLimitation": "Non-dictionary raw keys; no exact value types/values"
+      },
+      {
+        "field": "parsed",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Top-level parse category; no serialization or complete typed tree"
+      },
+      {
+        "field": "relative",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Fixed-file/copy association; no payload"
+      },
+      {
+        "field": "role",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Information/global/locale role; no serialization"
+      },
+      {
+        "field": "sha256",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Equality check for supplied bytes; no reconstruction"
+      },
+      {
+        "field": "state",
+        "observations": 2046,
+        "retainedFactAndLimitation": "Observed filesystem category; no file bytes"
+      }
+    ],
+    "missingEvidence": {
+      "fixedFilePayloads": 2046,
+      "formatTags": 2046,
+      "completeTableTypedValues": 247,
+      "individualNameKeyCandidates": 2046,
+      "ambiguousInformationFlags": {
+        "LSUIElement": 474,
+        "LSBackgroundOnly": 614
+      }
+    },
+    "scope": "PROJECTED_FACT_PRESENCE_ONLY_NOT_VERIFIED_REPLAY"
   },
   "missingEvidence": {
     "fixedFilePayloads": 2046,
     "formatTags": 2046,
     "completeTableTypedValues": 247,
-    "individualNameKeyCandidates": 2046
+    "individualNameKeyCandidates": 2046,
+    "ambiguousInformationFlags": {
+      "LSUIElement": 474,
+      "LSBackgroundOnly": 614
+    }
   },
   "perCopyEvidence": [
     {
@@ -7104,13 +7440,16 @@
   "selectedDistribution": null,
   "reproducibleQualificationRecipes": null,
   "qualificationScope": null,
-  "missingJointFacts": [
-    "exact fixed-file bytes and encoding/format",
-    "all dictionary member keys/value types/values",
-    "individual display-name/bundle-name and rejected candidates",
-    "non-en/de table strings associated to exact language and copy",
-    "LocProvenance member types/values",
-    "independent useful-app cohort classification"
-  ],
-  "recommendation": "RETAIN_HOLDS_AND_SEEK_BOUNDED_EVIDENCE_PACKAGING_DECISION"
+  "referencePopulation": null,
+  "templateCohorts": null,
+  "usefulClassificationSource": null,
+  "multiplicityAssignment": null,
+  "subjectDiscriminationControls": "UNBUILT",
+  "controlScope": "PACKET_INTEGRITY_NOT_GENERATED_SUBJECT_SHAPE",
+  "missingJointFacts": {
+    "enumeratedFileFieldLimits": "fileProjectionInventory.fields",
+    "independentUsefulClassificationSource": null,
+    "referenceAndAssignment": "UNSELECTED"
+  },
+  "recommendation": "RETAIN_HOLDS_AND_DECIDE_REFERENCE_AND_COHORT_SPECIFIC_EVIDENCE"
 }

@@ -1,6 +1,6 @@
 # Application population metadata shape
 
-[Subject evidence → Preserve joint facts before choosing a population](../design/architecture/index.html#diagram-native-population-metadata-shape)
+[Preserve joint facts before choosing a population](../design/architecture/index.html#diagram-native-population-metadata-shape)
 shows the current boundary. Graphs enter at the dark Start here node; numbered
 edges express dependency order. This is the permitted **corpus-insufficiency
 boundary**, not a selected P1024 distribution or a useful qualification pass.
@@ -15,6 +15,10 @@ The historical macOS 26.6.2 (25G83) census contains 640 directory spellings:
 nested helpers and installation copies; location alone does not classify a
 useful GUI app or an independent application identity. The saved census is neither
 an exhaustive host population nor the actual supported VM baseline.
+No reference population has been selected for the 1,010 generated useful apps.
+Historical host templates, current-host templates, supported-VM templates and a
+justified finite envelope answer different questions; recovering historical bytes
+alone cannot select among them or establish representativeness.
 
 Every audit row pins a baseline ordinal, spelling, canonical digest of the entire
 saved row, associated grouped episode ordinal and inventory-profile reference.
@@ -28,6 +32,15 @@ record, long-root row, source repeat or outside observation is deleted.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | System | 290 | 934,207 | 3,594,216 | 10,794 | 14,721 | 247 |
 | Installed non-system, including helpers/copies | 350 | 1,404,355 | 3,296,899 | 2,878 | 13,773 | 0 |
+
+The file families are disjoint: System has 289 regular information files and 249
+global name files, including all 247 loctables and two other name files, with no
+per-locale strings. Non-System has 348 information files and 1,160 per-locale
+strings, with no global name file or loctable. The source information projection
+records at least one true agent/background flag for 179 copies (134 System,
+45 non-System), and 13 spellings are nested under another app (five System,
+eight non-System). These are partial, reader-derived classification inputs.
+They establish no independent useful cohort and justify no choice suppression.
 
 These summaries describe that exact joint evidence, not marginal sampling inputs.
 637 saved copies use Contents and three use flat layout; Support Files and
@@ -46,6 +59,29 @@ tags. A digest verifies supplied bytes; it cannot reconstruct them. The evidence
 instrument's measure_file function passes bytes through plistlib or plutil and
 retains a projection of the result. A parsed DICTIONARY tag does not distinguish
 binary/XML/OpenStep strings, encoding, serialized order or layout of that payload.
+
+The audit enumerates every actual file-row field before classifying it against
+reader facts; an unclassified field refuses the audit rather than disappearing
+from a hand-written list. The packet's `fileProjectionInventory` and each cohort's
+inventory carry per-field occurrence counts and limitations:
+
+| Projected fields | Retained fact | Lost reader fact |
+| --- | --- | --- |
+| relative, role, state | File/copy association, family and filesystem category | Payload and serialization |
+| bytes, sha256, identity | Length, supplied-byte equality token and captured stamps | Bytes, format, current occupant or reconstructable contents |
+| parsed, dictionaryKeys | Top-level parse category and count | Serialization, all member keys/types/values |
+| localeKeys, otherKeys, localeDictionaryKeys | Raw dictionary/non-dictionary key categories and per-dictionary counts | Exact non-dictionary types/values and all dictionary members |
+| names, maximumNameBytes | Chosen en/de strings and chosen-name maximum | Other-language and rejected candidates; maximum's language/key/value association |
+| name | One selected non-table name | Individual display/bundle candidates and absent/empty/non-string/rejected branches |
+| identifier, identifierNativeType | String/null and Python projected type | Original non-string contents and absent-versus-null key distinction |
+| developmentRegion, developmentRegionNativeType | String/null and Python projected type | Complete original non-string value and absent-key distinction |
+| flags | Boolean/null for each flag | Null conflates absent and malformed/non-Boolean values |
+
+For regular information files that last loss affects 474 LSUIElement observations
+(170 System/304 non-System) and 614 LSBackgroundOnly observations (272/342).
+Their original missing-versus-malformed branch and typed values remain unknown.
+No null becomes a false flag or a usefulness classification. Original payloads
+or an explicitly justified declaration must resolve every required reader branch.
 
 For its 247 loctables the projection retains dictionary-valued raw keys, other
 raw keys, per-dictionary key counts, en/de chosen names and a maximum chosen-name
@@ -68,21 +104,35 @@ precisely the associations this subject must qualify.
 
 ## Recommendation and alternatives
 
-**Recommend retaining all holds and obtaining one bounded human decision about
-recovering the missing evidence before selecting the distribution.** First assess
-whether a byte-complete, digest-matching archive of the credited capture can be
-supplied. If none exists, the human must explicitly authorize bounded evidence
-packaging or change the design-evidence requirement. This session performs neither
-fresh target inspection nor a VM run and authorizes no new capture programme.
+**Recommend retaining all holds and deciding the finite reference and its purpose
+before authorizing cohort-specific recovery or a justified envelope.** K240 asks
+which real population the generated apps should reflect, why, and which historical
+cohorts would feed their templates. The actual supported-VM baseline is additive
+in every case; historical System templates are needed only if the selected mapping
+uses them. The historical census is a concrete available comparison corpus, not
+an already selected useful-app reference. A current-host or VM reference would
+need its own bounded evidence authorization; no such evidence is acquired here.
+
+| Cohort | Missing evidence | Candidate recovery source and verification limit |
+| --- | --- | --- |
+| Historical System | 538 payloads/formats, all 247 complete loctables, full candidates and ambiguous flags | An existing archive or matching 25G83 system image is a candidate. The common saved file timestamp supports inspecting that candidate, but does not prove image availability or identical bytes. Every relative file/copy must match its saved SHA-256 before credited recovery. Obtaining image bytes is acquisition requiring K240's decision. |
+| Historical non-System | 1,508 payloads/formats, complete per-locale/information candidates and ambiguous flags | Existing archives or exact vendor/version artifacts are candidates, including nested helpers/copies. Matching app names or a newer vendor version is insufficient; each saved file digest and copy association must match. Availability remains unverified. |
+| Selected current-host/VM reference, if chosen | Complete evidence for that specific inventory and its classification | This is new reference evidence, not recovery of the historical capture; source/build/scope and authorization must be explicit. The VM's actual baseline cannot be replaced with historical rows. |
+
+Reading repository packets is not acquisition. No OS image, installed application
+or VM is read here. A build label, timestamp or archive hash alone supplies no
+complete per-copy replay or independent useful classification. This session
+authorizes neither bounded packaging nor a change to the evidence requirement.
 The existing N5/N8/V11/V13 programme still owns actual supported-VM qualification.
 
-| Approach | What it supplies | Why it cannot presently establish the requested shape |
-| --- | --- | --- |
-| Recover byte-complete evidence matching each saved file digest, with independently verified useful-copy classification | Actual formats, complete typed candidates and joint tails; retains the historical source limit | The named saved packets do not contain it. Availability and permission to acquire missing evidence need the bounded decision. This is the recommended route. |
-| Resample or repeat the 350 installed non-system projections to fill 1,010 app identities | A concrete projected dimension distribution | Helpers/copies are not a measured useful-app cohort; every repeated projection still lacks formats and full candidate associations. It fails the specified evidence contract. |
-| Construct a synthetic maximum-size/keys/languages envelope | Declared artificial stress | The joint branch/string/format facts and language/component extent lack a measured justification. Per-file caps do not bound the entire correlated population. A failing or passing artificial case cannot silently replace the requested useful shape. |
+| Approach | Formats/candidates and joint facts | Useful classification | Multiplicity/assignment and justification gap |
+| --- | --- | --- | --- |
+| Recover needed cohort bytes with per-file digest/copy verification | Restores actual formats, typed candidates, flags and joint tails for recovered files | Still requires a separately named independent classification source | At most 640 historical tuples cannot supply 1,010 distinct useful apps without a declared rewrite/assignment. Recovery alone selects no reference or rule. Preferred where needed matching bytes are available; availability is unknown. |
+| Repeat/resample projected rows | Retains only the saved projection; cannot restore unsaved facts | Same independent classification obligation; reader flags/location are partial inputs | Repetition is shared with other routes, not this route's unique defect. Unstated facts and independently sampled marginals fail the current contract. |
+| Declare a per-copy joint envelope preserving every saved dimension | Declares only unsaved format/value/flag/candidate choices, with each original association retained | Same independent classification obligation | Requires an explicit 1,010-app assignment and proof that declared choices are a suitable finite envelope. No argument currently shows domination of opaque native parse cost or usefulness across those choices. A synthetic pass qualifies only that declared shape. |
+| Declare a global maximum-size/keys/languages envelope | Artificial correlated stress, with no established per-copy association mapping | Same independent classification obligation | Per-file caps do not bound the correlated job. Maxima alone cannot establish the useful finite subject or replace the joint evidence. |
 
-No one of the last two approaches is selected. No probability, confidence,
+No route, reference, classification source or assignment is selected. No probability, confidence,
 representativeness or universal 1,024-app-machine claim follows these observations.
 A subsequent design must state an explicit finite joint shape and reproduction
 mapping; missing evidence cannot become a language subset, smaller population,
@@ -94,13 +144,18 @@ this missing prerequisite.
 ## Required reproduction contract after the decision
 
 A qualifying design must freeze the complete source evidence, independently
-classify its useful cohort, and select whole per-copy tuples with an explicit
+name its reference population and reason, classify its useful cohort from a named
+independent source, and select whole per-copy tuples with an explicit
 multiplicity/assignment rule for 1,010 distinct useful test apps. Keep the fourteen
 configured/system witnesses, 256 helpers, 128 aliases and **all actual VM baseline
 and registration pressure** in that same workload. Identifiers/executable/signing
 rewrites need explicit manifests and independently checked resulting byte sizes,
 formats, typed candidates, locale components and selected/refused branch effects.
 They cannot silently preserve a source digest or source identity after editing it.
+Replication and rewriting create a declared finite constructed subject, not
+1,010 independently measured applications. If a measured distribution informs
+the assignment, state its actual scope and justify the resulting finite shape
+or envelope without inferring population-wide representativeness.
 Every helper/alias also needs its exact joint recipe/target association; the old
 thin helpers are not exempt from shape design.
 
@@ -132,6 +187,14 @@ remove a loctable, drop an unselected raw key or LocProvenance, and swap file se
 between copies while leaving global marginals unchanged. Each must fail exact
 independent saved-row comparison; reorder alone must pass. False qualification,
 private eligibility, native pass and removed-hold claims also fail.
+
+These are **packet-integrity checks**: any row edit fails, including a declared
+identifier rewrite, even if that rewrite would preserve the later shape contract.
+The complete subject's rewrite-aware discrimination controls remain **unbuilt**
+and cannot be satisfied by these hashes. Supplied-fact controls demonstrate that
+the loss inventory counts illustrated payload/format/typed facts as present and
+rejects an unclassified field. Their annotations select no recovery schema and
+verify neither supplied bytes nor completeness of a typed tree.
 
 These controls verify preservation of the **available projection**. They do not
 validate the missing file bytes/typed strings, qualify a distribution or establish

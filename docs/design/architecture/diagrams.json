@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Preserve joint evidence before choosing P1024 metadata shape",
+    "title": "Choose the finite reference before cohort-specific evidence",
     "status": "Corpus insufficient; private eligibility held; native pending",
-    "summary": "The 640 saved copies preserve sizes, keys and available associations but omit exact file payloads/formats and complete typed name candidates. Pure controls reject thin replacements, tails/tables/key omission and swapped copy associations. No distribution or qualification recipe is selected. Whole boundary review and a bounded human evidence decision precede subject completion; all native and release holds remain.",
+    "summary": "The canonical joint evidence report owns the enumerated cohort losses and recovery limits. Reference population, useful classification and generated-app assignment remain unselected. Packet-integrity checks reject any edit, including a declared rewrite; subject discrimination controls remain unbuilt. The bounded human decision must create complete subject design and review on every outcome. Private eligibility and release holds remain; every native verdict is pending.",
     "diagramIds": [
       "native-population-metadata-shape",
       "native-metadata-subject",
@@ -14,11 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "native-population-metadata-shape",
-        "summary": "Show preserved joint projection, exact missing facts, discrimination controls and the required bounded decision."
+        "summary": "Separate System/non-System recovery, enumerate flag loss, label packet integrity and route every decision outcome to subject design/review."
       },
       {
         "id": "native-metadata-subject",
-        "summary": "Identify missing saved payloads, formats and typed candidates before subject eligibility."
+        "summary": "Name the unselected reference/classification/assignment and distinguish packet integrity from future subject discrimination."
       }
     ]
   },
@@ -82,7 +82,7 @@
       "renderer": "svg",
       "source": "native-population-metadata-shape.d2",
       "rendered": "native-population-metadata-shape.svg",
-      "caption": "The saved joint projection is preserved, but the required exact reproduction evidence is missing. Controls qualify projection preservation only. No distribution, private eligibility or native pass follows."
+      "caption": "The canonical joint evidence report owns the cohort inventory, reference/evidence trade-off and candidate recovery limits. Matching-build images and vendor artifacts are unverified candidates. Packet integrity accepts reorder and rejects any row edit; generated-subject discrimination remains unbuilt. No reference, distribution, eligibility or native pass is selected."
     },
     {
       "id": "native-metadata-composition",
@@ -145,7 +145,7 @@
       "renderer": "svg",
       "source": "native-metadata-subject.d2",
       "rendered": "native-metadata-subject.svg",
-      "caption": "Historical bounded census and thin disk fixtures are comparison only. Cardinality alone cannot qualify useful metadata shape. A reviewed independent distribution/envelope with per-copy sizes, direct/table dimensions, associations and tails remains required before private eligibility. No native or supported-VM pass follows."
+      "caption": "Historical bounded census and thin disk fixtures are comparison only. The canonical joint evidence report owns their limitations. Finite reference/purpose, independent useful classification, generated-app assignment and subject discrimination remain prerequisites. Actual supported-VM baseline pressure is additive. Private eligibility remains held; no native pass follows."
     },
     {
       "id": "native-localized-decision",

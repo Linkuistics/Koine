@@ -301,7 +301,7 @@ held independently.
 | Step | Durable completion predicate | Next allowed work |
 | --- | --- | --- |
 | Whole design | Reviewed complete guarded construction and every accepted repair in this spec and its family | Prerequisite designs may use the reviewed design. No native pass or private implementation yet. |
-| Finite subject | Reviewed independent metadata-shape distribution/envelope in the [acceptance subject](../verification/native-discovery-acceptance.md#application-population-subjects), with reproducible per-copy manifest and discrimination controls | Cardinality-only fixtures cannot satisfy this term. No native sampling is authorized by this design prerequisite. |
+| Finite subject | Reviewed independent metadata-shape distribution/envelope in the [acceptance subject](../verification/native-discovery-acceptance.md#application-population-subjects), with a named reference population/purpose, independent useful-classification source, reproducible per-copy assignment/rewrite manifest and subject discrimination controls | Cardinality-only fixtures and packet-integrity hashes cannot satisfy this term. Subject discrimination controls remain unbuilt. No native sampling is authorized by this design prerequisite. |
 | Source/access | Reviewed [source/access contract](workspace-search.md#application-sources-and-native-facts) and [actual native sources](../verification/native-discovery-sources.md), including earned repairs | Pin actual getters/flags/contact/ordinary read policy and no-dialog/no-hydration controls. Native verdicts stay pending. |
 | Ownership/images | Reviewed shared owner/enabling design and [source/image boundaries](../adr/workspace-native-images-preserve-action-authority.md), including earned repairs | Adopt this application's protocol; pin actual allowlists, integration and independent action guard. |
 | Normalization | Reviewed [copy/field and ordered-eligibility rules](workspace-search.md#application-sources-and-native-facts), including earned repairs | Pin ordinary/indexed fields, exact copy merging and honest null/refusal outcomes. |
@@ -326,9 +326,9 @@ owns every G1–G11/N1–N8/V1–V13. Its
 [P1024](../verification/native-discovery-acceptance.md#application-population-subjects),
 [L1500](../verification/native-discovery-acceptance.md#long-application-source-subject)
 and [independent observers](../verification/native-discovery-acceptance.md#independent-observers-and-serviceability)
-retain their independent duties. P1024's [saved-corpus boundary](../verification/application-population-metadata-shape.md#exact-information-loss)
-shows why its metadata-shape design remains incomplete;
-its reviewed distribution/envelope must land before private eligibility. Every
+retain their independent duties. P1024's evidence decision is described in the
+[canonical saved-corpus boundary](../verification/application-population-metadata-shape.md).
+Its reviewed distribution/envelope must land before private eligibility. Every
 native verdict here is PENDING.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
@@ -346,13 +346,16 @@ actual baseline/registration pressure. Cardinality alone does not define useful
 population shape. The subject must pin per-copy information/name-file sizes,
 direct locale records/component bytes, each loctable's raw keys/dictionaries,
 selected/rejected strings and branch/format/layout associations against the
-independent measured real distribution or an explicit justified envelope. Retain
+independent measured real distribution or an explicit justified envelope. Name
+the reference population and purpose, distinguish historical template cohorts
+from the additive actual supported-VM baseline, and identify the independent
+usefulness classification source. Declare multiplicity and all generated-app
+rewrites; constructed identities do not become independent measurements. Retain
 the tails and correlations, not only means or independently sampled marginals.
-Thin metadata-only disk fixtures cannot stand in for that shape. The [joint evidence audit](../verification/application-population-metadata-shape.md)
-rejects cardinality-only construction and records missing file formats/typed values.
-No distribution or reproducible qualification recipe is established. A bounded
-human evidence decision and subsequent complete reviewed subject still precede
-private eligibility; no capture or useful loss is authorized by that boundary.
+Thin metadata-only disk fixtures cannot stand in for that shape. The
+[canonical boundary](../verification/application-population-metadata-shape.md#reproducible-boundary-checks)
+owns the saved audit's packet-integrity scope. Generated-subject discrimination
+controls must independently distinguish permitted rewrites from shape loss.
 A pass qualifies only the stated finite shape on its actual supported VM/profile,
 never every 1,024-app machine. Do not assume native alias exposure from
 disk creation. Keep every direct/table key, raw repeated source slot, unselected

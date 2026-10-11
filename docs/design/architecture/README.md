@@ -8,21 +8,18 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The [joint population boundary](../../verification/application-population-metadata-shape.md)
-preserves every available saved copy association but cannot reconstruct file
-payloads/formats or complete typed candidate strings. No P1024 distribution or
-qualification recipe is selected. Whole boundary review and a bounded human
-evidence decision precede a complete replacement subject and its review.
+The [canonical joint evidence boundary](../../verification/application-population-metadata-shape.md)
+owns the cohort inventory, reference/evidence trade-off and packet-integrity limits.
 The [durable eligibility predicate](../../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
-remains false. All native G/N/V, advertisement/consumption holds and independent
-image/action/authority/disclosure/compatibility/core/Settings/location duties remain.
+governs private construction. Native acceptance, both holds and independent duties
+remain live.
 
 Current changes:
 
-- [Subject evidence → Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Added preserved facts, exact missing data, discrimination controls and the bounded evidence decision.
-- [Finite subject → Freeze the finite metadata subject](index.html#diagram-native-metadata-subject) — Identified missing saved payloads, formats and typed candidates before metadata-shape eligibility.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Separated cohort recovery candidates, enumerated flag loss, labelled packet-integrity checks and routed every decision outcome to subject design/review.
+- [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Named the unselected reference/classification/assignment and future subject discrimination requirement.
 - [Exact information loss](../../verification/application-population-metadata-shape.md#exact-information-loss) — Distinguished the saved projection from a byte-complete, typed reproduction source.
-- [Recommendation and alternatives](../../verification/application-population-metadata-shape.md#recommendation-and-alternatives) — Recommended recovering digest-matching evidence; projected resampling and artificial maximum envelopes remain unselected.
+- [Recommendation and alternatives](../../verification/application-population-metadata-shape.md#recommendation-and-alternatives) — Separated formats, independent usefulness and multiplicity; compared cohort recovery and per-copy/global envelopes without selecting a route.
 
 Unchanged context: [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
 [Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),
@@ -33,11 +30,10 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open <http://127.0.0.1:8875/#diagram-native-population-metadata-shape> for the current
-boundary. Desktop rendering and the fresh deep link were checked. At 390px the
-fit view is a compact overview; use the full-size SVG or native-size panning to
-read its labels. Dark export uses the same D2 theme 200 semantics.
-Pure controls and browser delivery supply no native qualification.
+Open [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape)
+for the boundary. At 390px that diagram's fit mode is a compact overview; use its
+full-size SVG or native-size panning to read labels. Dark exports use D2 theme 200.
+Packet-integrity controls and browser delivery supply no native qualification.
 
 ## Other architecture topics
 
@@ -134,8 +130,8 @@ Run design:application-metadata-reconciliation-regenerate after all family edits
 then design:application-metadata-reconciliation-check for the frozen complete
 Taskfile suite and deliberate cross-family stale-gate/missing-table/hold/false-fit/
 exclusion/publication/native-pass controls. It establishes no useful or native pass.
-The current live presentation uses <http://127.0.0.1:8936/#discussion>; the grouped
-deep link is <http://127.0.0.1:8936/#diagram-native-metadata-grouped-storage>.
+Open the [current discussion](index.html#discussion) or
+[Grouped ownership → Preserve literal keys through slab growth](index.html#diagram-native-metadata-grouped-storage).
 
 Run design:application-metadata-qualification-render for both private-order and
 admission diagrams (D2 0.9.0, Dagre, theme 0/dark-theme 200). The -qualification-check

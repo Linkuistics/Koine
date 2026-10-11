@@ -345,19 +345,20 @@ it is the finite subject against which that promise must be demonstrated.
 
 Private qualification and release require the complete
 [durable eligibility and finite evidence contract](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
-The [saved joint evidence boundary](application-population-metadata-shape.md)
-confirms that P1024's metadata-shape design is incomplete and remains a reviewed
-design prerequisite. The census lacks 2,046 fixed-file payloads/format tags and
-complete typed values for its 247 loctables; no distribution or qualification
-recipe is selected. Whole boundary review and a bounded human evidence decision
-precede further subject design, not a fresh native programme. Cardinality-only
-test apps and the historical thin disk fixtures do
+The [canonical joint evidence boundary](application-population-metadata-shape.md)
+owns the saved evidence inventory, reference/evidence decision and packet-integrity
+limits. Cardinality-only test apps and the historical thin disk fixtures do
 not qualify usefulness. The replacement must freeze independent per-copy
 information/name-file byte sizes, complete direct locale/component and loctable
 key/dictionary dimensions, formats/layouts, selected/rejected strings, joint
 associations and tails from a measured real distribution or justified envelope.
-Its derivation and discrimination controls are separate subject design, not a
-new native capture programme or a selected fixture distribution here. A pass
+Name that reference population and its purpose, independently classify useful
+copies from a named source, and declare multiplicity and all generated-app
+rewrites. Historical template cohorts do not replace the additive actual supported
+VM baseline. Recovery does not select those roles or turn repeated tuples into
+independent measurements. The complete subject's derivation and discrimination
+controls remain unbuilt. The saved audit verifies packet integrity only. This
+charter selects no new native capture programme or fixture distribution. A pass
 qualifies only that declared shape and its exact supported VM/profile.
 
 N5/N8 require [matched release-image correspondence](../specs/application-metadata-private-qualification.md#evidence-correspondence-to-release-images):

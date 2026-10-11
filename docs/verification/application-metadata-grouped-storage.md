@@ -1,13 +1,5 @@
 # Application metadata grouped storage
 
-The [joint population evidence boundary](application-population-metadata-shape.md)
-preserves all saved per-copy associations but finds the corpus insufficient for
-an exact useful metadata shape: payloads/formats and complete typed candidates
-are absent. No distribution/qualification recipe is selected; private eligibility
-remains false and all native/advertisement/consumption holds remain. Whole review
-and a bounded human evidence decision precede further subject design.
-
-
 [Grouped ownership → Preserve literal keys through slab growth](../design/architecture/index.html#diagram-native-metadata-grouped-storage)
 is the current bounded refinement. Graphs enter at the dark **Start here** node;
 numbered edges show work order. The [selected accounting decision](../adr/application-metadata-accounting-covers-explicit-work.md)
@@ -245,3 +237,10 @@ The whole suite freezes every documentation/script/config/source/dependency/tool
 subject before/after and compares each hash. These checks establish a reproducible
 failed design result, never native qualification. No target reads/probes, launches,
 registration, signing, consent or VM experiment run.
+
+## Population evidence boundary
+
+See the [canonical joint evidence boundary](application-population-metadata-shape.md)
+for the cohort inventory, reference/evidence decision and packet-integrity limits.
+The [canonical eligibility predicate](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
+governs private construction and retains the independent native acceptance duties.

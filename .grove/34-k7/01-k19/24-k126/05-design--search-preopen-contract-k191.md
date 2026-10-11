@@ -196,20 +196,15 @@ correspondence and independent ordinary-image outcomes bind release evidence.
 Failed cleanup yields FAILED/null with INSPECTION_FAILED, or suppressed delivery
 on lifecycle/core loss, never a successful useful prefix.
 
-## K238 exact saved-corpus boundary
+## Reviewed population subject prerequisite
 
-The whole application-population-metadata-shape-k238 boundary is in
-[the joint evidence report](../../../../docs/verification/application-population-metadata-shape.md).
-All 640 saved copy associations and historical 2,043 episodes remain; missing
-payloads/formats/complete typed candidates prevent a reproducible useful shape.
-The per-copy audit and controls qualify projection preservation only. No
-qualification distribution/recipe is selected and private eligibility remains
-false even after boundary review. Whole boundary review/earned integration and
-the bounded human evidence decision precede complete replacement subject design;
-that subject's own mandatory whole review/earned integration still precede private
-construction/k7. Do not implement from cardinality or treat this boundary close
-as subject completion. No new capture, amount, quota, ABI, reader, signing/helper/
-consent/posture or useful loss is selected. Reuse existing N5/N8/V11/V13 only after
-the canonical prerequisites; k93 handles actual valid useful exhaustion, not
-missing subject-design evidence. All independent native G/N/V, image/action/
-authority/disclosure/compatibility/core/Settings/location duties and both holds stay.
+Consume [the canonical joint evidence boundary](../../../../docs/verification/application-population-metadata-shape.md) for the cohort inventory,
+reference/evidence decision and packet-integrity limits. K240 settles that bounded
+human decision and externalizes complete subject design plus mandatory whole
+review/earned integration on every outcome, before private construction and k7.
+The canonical private eligibility predicate remains binding. Preserve existing
+N5/N8/V11/V13 placement, all native G/N/V pending outcomes and both holds, and
+independent source/image/action/authority/disclosure/compatibility/core/Settings/
+location duties. Actual valid useful exhaustion belongs to k93; missing subject
+design is repaired and reviewed first. No new reader, capture programme, amount,
+quota, ABI, signing/helper/consent/posture or useful loss is selected here.

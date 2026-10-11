@@ -258,9 +258,8 @@ useful qualification; production advertisement and ordinary consumption remain
 held until that qualification and independent obligations pass. A design bit or
 pure control is no native evidence. Private eligibility also requires the reviewed
 independent metadata-shape subject; cardinality alone cannot qualify usefulness. The
-[saved joint evidence boundary](docs/verification/application-population-metadata-shape.md)
-retains exact available associations but cannot supply missing payloads/formats
-and complete typed candidates; it establishes no qualification recipe.
+[canonical joint evidence boundary](docs/verification/application-population-metadata-shape.md)
+owns the saved evidence inventory, reference/evidence decision and packet-integrity limits.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

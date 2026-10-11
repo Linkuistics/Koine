@@ -629,7 +629,7 @@ tasks:
       - python3 scripts/application_population_metadata_shape.py --write
 
   design:application-population-metadata-shape-check:
-    desc: Detect thin shapes, omitted tails/keys/tables and association loss; native pending
+    desc: Check packet integrity and enumerated projection losses; subject discrimination unbuilt, native pending
     cmds:
       - ruff check --select E,F,I --line-length 100 scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
       - python3 scripts/application_population_metadata_shape.py --check
