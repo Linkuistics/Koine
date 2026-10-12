@@ -53,7 +53,12 @@ The [enduring-input partition](application-reference-evidence.md#enduring-inputs
 keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
 [changing reports](application-reference-input-partition.md). Actual input changes
 still disarm and requalify; report updates supply no authority, qualification or private/
-native outcome. The complete k282 boundary is reconciled for mandatory whole-producer review and every earned integration before k269; design closure supplies no instrument qualification, authority or finite subject.
+native outcome. Whole review k288 found coupled session/appointment, blocker/export/scope,
+current-identity, partition and invalidation defects in the k282 proposal. The
+[integration boundary](application-reference-input-partition.md#k288-review-integration-and-live-repair)
+places k290's actual decisions and k291's complete repaired design/mandatory whole review
+and every earned integration before k269. Design closure supplies no instrument
+qualification, authority or finite subject; the original duties and every hold remain.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no

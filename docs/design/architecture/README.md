@@ -14,18 +14,18 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current changes:
+Current changes (the diagrams retain the reviewed proposal with unresolved repairs):
 
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Reconciled the complete review boundary with Q/P/A, disarmed validation and independent one-use release.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Kept P/A pending at Q and made the complete acceptance, input and release chain the review subject.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Replaced the partial-child handoff with the complete credit, release and enduring-input conjunction.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Connected required proof blockers and accepted unknown limits to the whole reviewed conjunction.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced stale child/authority status with the complete staged-credit, acceptance/release and input contracts.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Made complete k282 review the gate before construction, actual qualification and the unused target pass.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Applied actual k281 choices and complete k282 review while retaining package, recipe and whole-subject duties.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Marks session appointment, A3 binding and persistent invalidation repair.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Marks operator/compatibility and the historical all-E partition defects.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Marks current-build/process-image and role-selection work.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Marks exact C/B blockers and target grammars while retaining accepted unknown limits.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Marks unresolved appointment and policy grammar duties before construction.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Places k290 decisions and k291 whole design/review before k269.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Retains package, recipe, useful-breadth and whole-subject duties under that repair order.
 
 - [Whole-producer obligation comparison](../../verification/application-reference-evidence.md#whole-producer-obligation-comparison) — Compared every k282 repair and R7–R10 preservation with the original k273/k244/k242 duties.
-- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Fixed acceptance, commissioning, pre-lookup refusal, qualification, audit, reporting, distinct close and release placements before consumers.
+- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Records the proposed responsibilities; appointment, compatibility and sequencing require k291's reviewed repair before consumers.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -54,7 +54,11 @@ The failed grouped conservative enclosure is no actual native overflow or fit.
 
 Open [the complete replacement discussion](index.html#discussion) for all seven reference/
 corpus views. K279/k280 reviewed the earlier whole-k273 boundary; the complete k282 repair
-now requires its own mandatory whole review and every earned integration before k269.
+was reviewed by k288 and integrated by k289. Its coupled defects require k290's actual
+operator/independence/status choices and k291's complete repaired design/mandatory whole
+review and every earned integration before k269. The
+[integration report](../../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
+records each finding's disposition; no displayed proposal is the repaired construction handoff.
 Required Q/P native/identity/control evidence, actual approval/receipt and complete tool
 proofs remain absent; accepted contact unknowns supply no full no-contact credit. K244/k242 cannot close on this
 design. Late provisioning/corrections require disarmed affected requalification, own

@@ -231,6 +231,14 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
+Whole admission review k288 and integration k289 find the k282 proposal unrealizable
+at its appointment/release seams and incomplete in blockers, exact scope/current identity
+and statement partition. One requirements leaf, reference-evidence-session-authority-k290,
+precedes one coupled design producer, reference-evidence-session-admission-k291, before
+k269. That producer must earn mandatory whole review/every integration before replanning.
+No role-per-leaf tree or repeated impossible contact survey is selected. The complete
+original obligations, k281 amendments, unused k245 pass and every hold remain.
+
 The preceding Koine grove was torn down at commit `fc3b22d3`. This workspace
 starts from that commit. Homebrew was updated and Koine 0.1.0 was installed
 locally at `/Applications/Koine.app` at the human's request.

@@ -15,10 +15,14 @@ gaps. Requirements reference-evidence-authority-k270 settle the
 [delegated authority choices](application-population-metadata-shape.md#authority-and-admission-choices)
 before the instrument node;
 the earlier replacement design k273 was reviewed in k279 and integrated in k280.
-Requirements k281 and the complete repair producer k282 now supply the reconciled
+Requirements k281 and repair producer k282 supplied the proposed reconciled
 lifecycle, approval, bounded contact, retained-entry and input conjunction. K287 closes
-that design boundary; mandatory whole-k282 review and every earned integration precede
-construction replanning k269. The [whole handoff comparison](#whole-producer-obligation-comparison)
+that design boundary. Whole review k288 finds unresolved session/appointment, blocker,
+scope/export, current-identity, input-partition and invalidation defects. Integration k289
+places requirements k290 and replacement design k291 before construction replanning k269,
+with mandatory whole-k291 review/every earned integration. The
+[current repair report](application-reference-input-partition.md#k288-review-integration-and-live-repair)
+records exact remaining work. The [whole handoff comparison](#whole-producer-obligation-comparison)
 compares k282's repairs and every original k273/k244/k242 duty. No retired child, review
 sentence or diagram supplies executable qualification, authority or target evidence.
 
@@ -39,9 +43,10 @@ role selection with chartered independent own acceptance and disarmed independen
 release. Its operation map separates earlier Q evidence, fresh P facts and first-attempt
 A outcomes; its input partition separates enduring rules from unconsumed reports.
 K287 reconciles all four seams across this contract, both whole-byte companions/five
-tables/bases, seven views, summary layers and consumer charters. This is an implementable
-design for review, not permission to construct before that review and every earned
-integration settle. No repeated unavailable mechanism survey or reporting-only close
+tables/bases, seven views, summary layers and consumer charters. K288's whole review and
+k289's integration establish that this proposal is not yet an implementable construction
+handoff. K290 owns the concrete human decisions; k291 owns the complete coupled repair
+and its mandatory whole review/integration before k269. No repeated unavailable mechanism survey or reporting-only close
 discharges required qualification.
 
 K280 directly clarifies immutable issuance/current profile comparison and pre-intent

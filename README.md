@@ -98,25 +98,32 @@ approval register. Independent commissioning/control acceptance precedes candida
 one-use invocation channels and external receipt/correction bindings cannot restore a spent
 permit. The immutable issuance receipt stays separate from the highest current accepted
 revision and independently approved correction bridge. No register or accepted revision exists. The
-repaired [acceptance route](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
+proposed [acceptance route](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
 gives inspection-only review a separate independent acceptance owner on clean and findings
 paths. [LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through provisioning/requalification, accepted audit and distinct k244 close;
 only the independent supervisor originates a k245 LIVE channel. A receipt, proof, release
-record or copied review/run/commit supplies no role authority. The complete conjunction requires whole-k282
-review and every earned integration before construction. The
+record or copied review/run/commit supplies no role authority. Whole-k282 review k288
+found unresolved appointment/lifetime, release, scope and input-partition defects; the
+[integration boundary](docs/verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
+places k290's actual decisions and k291's complete design/whole review before k269. The
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
 pins whole independent published BSD/Mach/RPC/API inventories and named B1–B8 evidence/
 controls, with U1–U6 required-versus-accepted-unknown limits.
 No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
 k281 accepts the missing complete current-service/proxy/initial-right/map coverage as an
 explicit risk, never a full no-contact result. K284 maps those claims and T1–T7/A1–A3 pre-lookup entries;
-the complete reconciled k282 design requires whole review before k269; no impossible full-mechanism repeat is required.
+the exact C/B blocker set and T-class grammars need the reviewed repair before k269;
+no impossible full-mechanism repeat is required.
 Useful authored pure work retains its limited scope. The
 [packaging/runtime proposal](docs/verification/application-reference-packaging-runtime.md)
 defines one retained Task/script/CLI chain, mandatory SCRATCH/LIVE launch channels,
-per-operation executed/mapped/unexercised credit and required known task/runtime input/
-image identities, with incomplete opaque read/startup/proxy discovery explicitly unknown. Named historical format bases are separate from required current CF
+per-operation **E** actual-call evidence, **M** logical-to-scratch mapping and **U** unavailable
+credit, separately staged as **Q** earlier qualification, **P** fresh facts before intent
+and **A** first-attempt outcomes. Missing required Q/P facts block at their stage; target A
+success is first observed in the one attempt. Required known task/runtime input/image
+identities remain distinct from explicitly unknown opaque read/startup/proxy discovery.
+Named historical format bases are separate from required current CF
 observations. The [complete replacement handoff](docs/verification/application-reference-evidence.md#whole-producer-obligation-comparison)
 compares every original obligation and specifies separate construction, commissioning,
 provisioning/validation, review/repair, final affected requalification, independent audit
@@ -129,17 +136,20 @@ discrimination/whole-subject review. Process-death checks establish no OS-crash 
 The [whole review integration](docs/verification/application-reference-evidence.md#review-integration-and-required-decisions)
 records k281's accepted bounded contact evidence, closed pre-lookup rule, explicit
 incomplete-evidence outcome and exact status relocation. Its [obligation comparison](docs/verification/application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
-names the changed clauses. K282's repaired credit, LIVE activation, independent registration
-and normative/reporting partition must earn mandatory whole review and every earned
-integration before k269. The reconciled k282 protocol is the whole review subject; earlier proposals and
-partial children cannot be implemented as alternative handoffs. A refused required copy leaves the finite subject incomplete;
+names the changed clauses. K288 reviewed the complete k282 proposal; k289 triages its
+findings and preserves independent own acceptance and disarmed release as unrepaired
+design obligations. K290 decisions and k291's repaired whole design, mandatory review
+and every earned integration precede k269. Earlier proposals and partial children cannot
+be implemented as alternative handoffs. A refused required copy leaves the finite subject incomplete;
 useful breadth, the unused pass and all holds remain.
 
 The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
-keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
+requires exact sections and whole companions/tables/bases/task/runtime bytes separate from
 [changing reports](docs/verification/application-reference-input-partition.md). Actual input changes
 still disarm and requalify; report updates supply no authority, qualification or private/
-native outcome. The complete k282 boundary is reconciled for mandatory whole-producer review and every earned integration before k269; design closure supplies no instrument qualification, authority or finite subject.
+native outcome. K288 found changing handoffs and stale owners inside the proposed enduring
+inputs; the historical all-E inventory is under repair. Design closure supplies no
+instrument qualification, authority or finite subject.
 
 ## Client-requested grants
 

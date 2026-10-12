@@ -437,16 +437,19 @@ Those controls are currently specified, not executed.
 
 The instrument, independent admission mechanism and actual qualification remain unbuilt.
 The one target pass is unused. K287 reconciles the complete k282 credit/LIVE activation/
-independent acceptance/input partition under the actual decisions. Mandatory whole-design
-review and every earned integration precede k269 replanning. Whole companions and inventory/basis tables remain
+independent acceptance/input partition under the actual decisions. Whole review k288
+found the coupled defects recorded in the [integration report](application-reference-input-partition.md#k288-review-integration-and-live-repair).
+K290's actual operator/independence/status decisions and k291's complete repaired design,
+mandatory whole review and every earned integration precede k269 replanning. Whole companions and inventory/basis tables remain
 full-byte inputs until that reviewed partition is implemented; this relocation selects no
 reporting slice. A requirements answer qualifies no tool, initializes no authority and
 supplies no current package, finite subject or native verdict.
 
 The separate [input-partition and evidence report](application-reference-input-partition.md)
 records changing construction/commissioning/qualification/audit/close observations.
-The complete reconciliation preserves this document's entire selected section byte for byte; the historical
-requirements-session facts and conditional holds retain their original scope. Whole-byte
+K289 preserves this document's entire selected section byte for byte. F6 identifies the
+remaining pass-status clause within it; only Antony's actual k290 answer may amend or
+explicitly establish its historical boundary. Conditional holds retain their original scope. Whole-byte
 companions/tables/bases remain inputs, with no reporting slice or inferred qualification.
 
 ### Line-by-line original-obligation comparison

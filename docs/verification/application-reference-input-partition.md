@@ -3,7 +3,7 @@
 This is an unconsumed reporting output. The binding rules are the evidence contract's
 [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 and [mutation controls](application-reference-evidence.md#extraction-and-whole-object-mutation-controls).
-This report records the complete k282 reconciliation and its current evidence boundary;
+This report records k282's k287 proposal and k288/k289's review/integration boundary;
 it supplies no approval, receipt, qualification, close record or LIVE role.
 
 ## Current construction and evidence report
@@ -39,34 +39,62 @@ The complete reconciliation changes no byte of its selected requirements or the 
 non-execution statements remain fixed historical facts; downstream outcomes are reported
 here without relabelling that interview or weakening conditional qualification holds.
 
+## K288 review integration and live repair
+
+Review k288 (7062319a61eb) inspected the complete k282 producer at 04bd81cfb299.
+Integration k289 classifies F1–F8 as real design issues and F9/F10 as unclear contracts.
+F9 is clarified in the whole contact companion: the five unchanged inventories use
+quote-aware tab-delimited CSV, preserving the six cited BSD conditional tabs. README and
+CONTEXT now distinguish Q/P/A stages from E/M/U evidence credit. Neither clarification
+qualifies an instrument or accepts any evidence.
+
+| Finding | Verified remaining work and owner |
+| --- | --- |
+| F1 session lifetime/appointment; F7 proportionate independence | Requirements reference-evidence-session-authority-k290 puts the concrete operator, foreground lifetime and owner-compatibility choice to Antony. Design reference-evidence-session-admission-k291 must apply his actual answer with a realizable sequential schedule and own independent appointment; running an image is no authority. |
+| F2 bounded blocker set | K291 must fix each C bypass/dimension's required-versus-accepted-unknown disposition under k281, with the closed B/Q/P blocker set before construction. No revived full U2 gate or waived named control. |
+| F3 fresh export/profile binding; F8 durable invalidation | K291 must bind exact per-invocation A3 entries separately from unchanged issuance authority and persist authorized invalidation before mutable work, with crashed/partial-successor refusal and no old-ELIGIBLE fallback. R7/R10 and one-attempt consumption remain. |
+| F4 exact target classes and bases | K291 must supply actual T1–T7 grammars, authoring bases and A1/A2/A3 operation/refusal rules, preserving breadth and the selected incomplete-copy outcome. Category names alone do not close this duty. |
+| F5 current build/process-image facts | K291 must name permitted independent comparison operations/evidence or put the exact further human trade-off before consumption. These remain Q/P blockers; no available API or current identity is established by review. |
+| F6 statement partition | K290 must settle the additional canonical pass-status clause; k291 must repair every individual E/H/R statement and stable owner rule, refresh the TSV/byte comparisons and preserve whole companion/table/basis bindings. The old all-E classification does not establish the partition. |
+
+Tree order is k289 → k290 actual decisions → k291 whole repaired design → its mandatory
+whole review/every earned integration → k269 replanning. K291's closing session cuts that
+review lazily after its artifact exists. The k244/k242 and k245/k246/k247 charters retain
+this order and every original duty. The current k282 mechanisms/views are reviewed
+proposals with the above unresolved work, not an implementable construction handoff.
+No authority, instrument qualification, target pass or complete finite subject follows.
+
 ## Complete statement inventory
 
-[Statement units](reference-input-partition.tsv) enumerate the complete final selected
+[Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected
 canonical section, the full descriptor ADR, every selected evidence-contract section,
 both whole companions and every row of all five inventory tables. Each text-bearing
 paragraph, list item, heading or individual table row is a unit: its classification
 applies to **every statement and subordinate clause** in that unit, not just its first
 sentence. Source-relative line intervals and exact UTF-8 byte digests locate the inspected
-version. Blank lines/table delimiters carry no statements but remain bound input bytes.
-The inventory is a frozen documentary report for this revision, not a parser, acceptance
+version at 04bd81cfb299. Blank lines/table delimiters carry no statements but remain bound input bytes.
+The inventory is a frozen documentary report for that revision, not a parser, acceptance
 payload, basis object or mutable live progress feed. Later source revisions need their
 own review; this report never overrides them.
 
 Source aliases in the TSV are S (canonical population report), D (descriptor ADR),
 C (evidence contract), K (contact companion), P (packaging/runtime companion), PINS
 (source-pins.tsv), BSD (bsd-declarations.tsv), MACH (mach-traps.tsv), MIG (mig-routines.tsv)
-and API (api-basis.tsv). Every retained unit is E; H below describes the fixed historical
-subclauses included within E, while R entries have been removed from the measured objects.
+and API (api-basis.tsv). K287 labels every retained unit E and describes H subclauses
+without separate records. F6 identifies changing handoffs, stale owner assertions and the
+remaining canonical pass-status clause within those E units. The classification and
+claimed relocation table below are historical claims under repair, not current accepted
+partition evidence. K291 must refresh the complete per-statement inventory, including the
+F9 dialect clarification and every changed source byte, before its whole review.
 
 `E` means enduring input: rule, conditional duty, immutable decision or pinned basis fact
 with its limitation. `H` means an immutable historical requirements/ADR observation within
 an enduring input; it is not a current-run claim. `R` means a relocated changing
-observation/handoff, enumerated below outside measured inputs. No selected unit is an
-unqualified present-tense assertion that commissioning, qualification or closure has
-not happened forever. Conditional “missing/unavailable until evidence” rules and accepted
+observation/handoff. These intended meanings do not validate the old labels or prove
+that every changing clause was relocated. Conditional “missing/unavailable until evidence” rules and accepted
 unknown contact limits stay `E`; converting them to a successful report cannot satisfy them.
 
-| Selected input | Disposition of every unit |
+| Selected input | K287's claimed disposition, challenged by F6 |
 | --- | --- |
 | Canonical Selected reference and evidence requirements, all nested subsections | Preserve every byte. Source/cohort/permission/classification/handoff clauses are E; statements explicitly about the requirements interview are H; fit/private/native holds are E prerequisite gates. The approved control-status sentence remains outside this selection. |
 | Descriptor-relative ADR, heading through EOF | Entire object E, with fixed prototype/search-only observations H and their original bounded interpretation retained. No live application/kernel outcome is inferred. |
@@ -84,7 +112,8 @@ unknown contact limits stay `E`; converting them to a successful report cannot s
 
 ## Relocated observation and handoff register
 
-These R units are consolidated in the current report above. Their original location
+K287 reported the following R relocations; F6 demonstrates that the register is incomplete.
+It does not discharge the live k291 statement-by-statement comparison. Their original location
 remains available in the preceding version; enduring obligations remain in that source.
 No required future rule has its sole home in this register.
 
@@ -131,11 +160,16 @@ The statement inventory and exact original/final comparisons are documentary che
 Frozen link/manifest/render/browser checks validate presentation. They execute no
 instrument mutation control or native qualification. Construction must independently
 author and observe the contract's extraction/whole-object/actual-read/dependency controls
-before crediting them. Whole-k282 review/integration remains mandatory before k269.
+before crediting them. The k290/k291 repair and mandatory whole review/integration remain
+before k269; the historical inventory supplies no accepted classification or Q proof.
 
 ## Inspected source identities
 
-These full-document/table digests locate the inspected version. For the three section
+These full-document/table digests locate the inspected k287 version at 04bd81cfb299,
+not current source bytes after integration. F9 changes the contact companion's normative
+bytes; changing reporting changes raw document snapshots too. No prior qualification is
+inherited. The TSV remains the historical artifact, with its F6 defects stated above.
+For the three section
 sources they are raw snapshot provenance, not a replacement for exact accepted extracts.
 They bind no digest of this report or of a future proof.
 

@@ -45,7 +45,16 @@ configuration, syscall table, provider set or service implementation.
 | [Published API basis](reference-contact-inventory/api-basis.tsv) | Named Apple API documents, retrieval URLs/date and exact retrieved JSON digests. Documentation identities support the route/privilege facts below, not current ABI, service names, image identity or a frozen runtime expectation. The upstream JSON is mutable; re-acquisition must match its digest or become an independently reviewed change. |
 
 Enumeration preserves documentary facts, not a semantic exclusion list or a current
-kernel/service completeness gate. The independent inventory retains every row and branch,
+kernel/service completeness gate. All five inventory tables use UTF-8 tab-delimited CSV:
+LF separates records, a tab separates fields outside double quotes, and a double-quoted
+field retains literal tabs or newlines; doubled double quotes encode a literal quote.
+Decode quoting before checking the header's exact column order and row width. Preserve
+field bytes without trimming or normalization. The BSD conditional fields retain the
+original tab in `#if NFSSERVER` followed by `/* XXX */`; it is field content, not an
+extra column. A plain tab split is not this dialect. Whole-byte binding still covers the
+original serialized table; semantic comparisons also compare every decoded field.
+
+The independent inventory retains every row and branch,
 then associates relevant rows with named operations/controls or the accepted unknown
 current-correspondence class. Every claimed actual route needs its own independently
 supported correspondence; no source name, placeholder, skip or producer call graph

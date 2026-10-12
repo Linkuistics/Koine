@@ -278,12 +278,27 @@ keeps provisioning/requalification disarmed through accepted audit and distinct 
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
 release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 keeps changing observations in a separate unconsumed report; actual input changes still
-disarm and requalify. The reconciled complete design requires mandatory whole review and every earned
-integration before construction replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
+disarm and requalify. Whole review k288 found admission/appointment, scope and enduring-input
+defects in the k282 proposal. The [integration boundary](docs/verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
+places k290's actual decisions and k291's complete repaired design/mandatory whole review
+and every earned integration before construction replanning. The existing all-E statement
+inventory is historical and under repair. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence
 and independent ordinary-image outcomes required for release.
+
+**Reference operation stage**: Q is earlier instrument qualification; P is fresh
+invocation-specific validation before intent/consumption; A is evidence first obtained
+inside the single authorized attempt. A successful target sample is no Q prerequisite.
+Missing, failed or stale required Q/P evidence blocks its own stage.
+
+**Reference evidence credit**: E credits the actual performed call with original
+operands/results and image identity; M credits an independently checked logical-to-scratch
+mapping; U records unavailable evidence. Credit is separate from Q/P/A stage and grants
+no authority. M cannot replace a required actual-call fact, and accepted contact unknowns
+cannot excuse a failed required control. These E/M/U values differ from the historical
+statement inventory's enduring/historical/reporting classifications.
 
 **Application explicit-work admission**: The application job's cumulative
 20 MiB controlled raw requested/write gross and explicit-operation ledger under

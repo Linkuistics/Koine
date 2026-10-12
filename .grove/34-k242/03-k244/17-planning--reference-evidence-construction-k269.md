@@ -1,5 +1,15 @@
 # reference-evidence-construction-k269
 
+## K288 integration dependency
+
+Whole review k288 and integration k289 identify coupled defects in the k282 proposal.
+Requirements reference-evidence-session-authority-k290 and design
+reference-evidence-session-admission-k291 precede k269; k291's closing session cuts
+mandatory whole review and every earned integration before that planner. Earlier owner,
+appointment, blocker/export and partition descriptions remain repair inputs, not a
+construction handoff. All original Done when, k281's exact amendments, k245's unused
+pass, k246/k247 duties and every useful-breadth/product/private/native hold remain.
+
 ## Goal
 
 Repair the production-tool construction decomposition against the reviewed admission
