@@ -16,19 +16,23 @@ remain live.
 
 Current changes:
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Separated independent commissioning, direct revision approval, original verifier controls, receipt bindings and fresh invocation channels.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the retained external checker and pinned verifier with directly accepted inventory and domain-bound nonce channels.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Bound explicit initialization/final receipt validation to independently accepted external anchors.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Placed independent commissioning and verifier-control acceptance before candidate proof admission.
-- [Independent approval root](../../verification/application-reference-evidence.md#independent-approval-root) — Selected a fixed sibling register and acyclic external receipt/correction bindings that never restore spent authority.
-- [Normative extraction and field concordance](../../verification/application-reference-evidence.md#normative-extraction-and-field-concordance) — Named exact canonical/ADR/contract boundaries and clause-to-field/control coverage with reporting limits.
-- [Invocation channel and verifier-self qualification](../../verification/application-reference-evidence.md#invocation-channel-and-verifier-self-qualification) — Required separately adjudicated original verifier controls and one-use nonce/process/domain/held-input checks.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Added the independent source inventory, C1–C8 coverage, per-class bypass/loss controls and exact unavailable U1–U6 handoff.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Named U1–U6 as missing actual contact prerequisites to scratch qualification.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced generic observer uncertainty with the pinned full boundary and missing proxy/mapped-read evidence.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Kept U1–U6 unavailable through the final qualification boundary.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Linked real source/acquisition credit to C1–C8 coverage and U1–U6 completion.
+- [Population → Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Carried the unavailable contact design and k269 ownership into the whole-subject overview.
+- [Contact observation outside the producer](../../verification/application-reference-evidence.md#contact-observation-outside-the-producer) — Bound whole-byte inventory/basis inputs and independent observation or pre-effect prevention to each applicable class.
+- [Independent source baseline](../../verification/application-reference-contact-boundary.md#independent-source-baseline) — Pinned every public BSD/Mach declaration variant and selected RPC/API basis without identifying it with the reference runtime.
+- [Exact unavailable identities](../../verification/application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities) — Assigned U1–U6 design, construction, calibration and final qualification placement under k269.
+- [Protected Data and out-and-back specimens](../../verification/application-reference-contact-boundary.md#protected-data-and-out-and-back-specimens) — Preserved Data prefix positives and selected protected/outside refusal without new topology or ancestry claims.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
-corrections. Qualification remains unprivileged, with no root/sudo collector. Complete
-independent IPC/proxy/descriptor contact coverage and actual approval/provisioning proofs
-are still absent; requirements alone cannot admit.
+corrections. Qualification remains unprivileged, with no root/sudo collector. Complete independent IPC/proxy/descriptor/mapping contact coverage and actual
+approval/provisioning proofs are still absent. The published DTrace basis includes BSD
+and Mach providers but supplies no selected complete unprivileged mechanism. Authored
+pure work remains useful; a partial clean trace cannot admit.
 
 Unchanged context: [Persistence operations](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits),
 [Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative),
@@ -44,8 +48,8 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof)
-for the current proposal, and the admission/component views for its lifecycle and composition.
+Open [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact)
+for the current boundary, and the admission/component views for its lifecycle and composition.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size
 panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.
@@ -157,5 +161,5 @@ broken cleanup/failure/unknown/review/partial-evidence counterparts must fail th
 same instrument. These are synthetic design controls, never native qualification.
 
 Run design:application-population-metadata-shape-render for the joint evidence
-boundary, byte-complete evidence order, admission/proof and instrument component views
+boundary, byte-complete evidence order, admission/proof, full contact and instrument component views
 with D2 0.9.0/Dagre/theme 0/dark-theme 200. It reads no target.

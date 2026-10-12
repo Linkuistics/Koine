@@ -19,7 +19,10 @@ cut mandatory whole review/earned integration before construction replanning k26
 K273 is decomposed into authority lifecycle k274, independent anchors k275, full contact
 boundary k276, exact packaging/runtime closure k277 and whole reconciliation k278.
 The authority lifecycle and independent approval protocol below are concrete design
-proposals; complete admission and no-contact coverage remain unavailable until the whole repair is reviewed. None of
+proposals. The [full contact boundary](application-reference-contact-boundary.md) now pins
+an independent public-source inventory and exact unavailable classes/identities; it supplies
+no collector or actual no-contact evidence. Complete admission remains unavailable through
+whole review and every required construction/qualification obligation. None of
 these leaves grants authority by existing.
 
 The [canonical joint evidence boundary](application-population-metadata-shape.md)
@@ -382,8 +385,9 @@ requires a new explicit human decision.
 **Requirements are settled; actual admission remains unavailable.** K274/k275 specify the
 lifecycle and approval protocol for whole-k273 review. No authority directory, receipt,
 approval register, approved binding, executable protocol or scratch qualification exists.
-K276 must complete the full unprivileged contact boundary and k277 the exact shared
-entry/read closure; k278 reconciles them and schedules whole review before k269. The
+K276 supplies the [full contact design and exact unavailable work](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities);
+k277 must complete the exact shared entry/read closure. K278 reconciles them and schedules
+whole review before k269; retirement of k276 qualifies no contact mechanism. The
 qualified initializer and independently implemented validator are k269 construction owners
 before k245, with live affected requalification after the last measured change.
 
@@ -845,7 +849,8 @@ After final contract/task/runtime edits, place affected requalification, indepen
 and closing audit before k245; keep live repair/requalification ownership for later input
 changes. Actual receipt binding follows qualified initialization mechanics/control evidence.
 K278 reconciles the whole protocol before mandatory review. K275 cuts no construction leaves.
-K276 owns realizable full unprivileged contact observation or precise unavailable work;
+K276's [precise unavailable contact boundary](application-reference-contact-boundary.md)
+requires accepted whole-byte inventory/basis inputs and U1–U6 work under k269;
 k277 owns exact entry/observed runtime reads. Until every required identity/control qualifies,
 admission remains unavailable, k244/k242 live and k245's pass unused.
 
@@ -910,44 +915,68 @@ terminal commissioning/control acceptance, and candidate success output cannot m
 
 ## Contact observation outside the producer
 
-External Darwin DTrace syscall-entry/return and process-lifecycle collection remains an
-**unqualified partial candidate**, not a complete no-contact proof. The installed manual
-and [Apple's SIP description](https://support.apple.com/guide/security/system-integrity-protection-secb7ea06b49/web)
-establish no current access/coverage. No collector command, probe discovery or privilege
-change is authorized in this design integration.
+[Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
+shows the [complete source-based design and exact unavailable boundary](application-reference-contact-boundary.md).
+That companion and all five linked inventory tables are required whole-byte
+inventory/basis inputs to the independent approval payload, not reporting slices or
+producer-approved exclusions. Changed membership, basis or applicability requires
+independent review/acceptance and affected qualification. The documentary enumeration
+supplies no executed contact evidence or admission-eligible inventory acceptance.
 
-The required contact boundary includes source/index requests and installed filesystem
-access through IPC/Mach/XPC or daemon proxies, not only mdfind exec and pathname syscalls
-in the scratch child tree. A gate sees only submitted intents; a bypassed in-process
-framework request cannot be cleared by an empty syscall/path trace. K273 must select a
-realizable independent observation/containment arrangement for the whole boundary or
-retain admission unavailable. Wrapper logs, interposition, mocks and static inspection
-cannot replace independently observed bypass controls.
+Pin Apple's public xnu-12377.121.6 at commit
+`ac9718fb1af618d5ce8678d0dc6e8a58f252216f`: every BSD declaration/conditional variant,
+Mach trap/variant and selected Mach VM/port/task RPC routine/skip, with exact source
+digests and named Apple API bases. This public baseline is not identified with 26A434.
+Every active entry needs independent semantic/current correspondence; public placeholders,
+unknown current entries, opaque command payloads and service/framework extensions cannot
+be excluded by producer reachability. Installed provider/probe names, privilege, readable
+operands and runtime/service identities remain unestablished.
 
-Define required contact classes independently from a pinned kernel/probe/API inventory,
-not from primitives the producer happens to reach. Include pathname/identity lookup and
-open, listings/attributes, alternate/noncancel syscall routes, inherited-descriptor reads
-and mapping, and source/filesystem IPC or proxy effects. Enumerate applicability and
-per-class scratch bypass/loss controls before comparing the producer. One sentinel does
-not establish coverage of the class it did not exercise.
+| Required family | Minimum boundary |
+| --- | --- |
+| C1 pathname acquisition/lookup | Relative/absolute paths, cwd/dirfd, alternate/noncancel/protected/guarded opens, readlink and executable/image requests |
+| C2 identity/attributes/listings | Identity/filehandle opens, fsgetpath, all stat/attribute/bulk/directory/xattr variants and command-specific operands |
+| C3 descriptors/data | Preopened, duplicated, inherited, transferred and reused descriptors; scalar/vector/positioned/async/noncancel reads, copy/sendfile and completion |
+| C4 VM/shared data | Mapping/rights/backing provenance, inherited mappings, remap/shared memory and plain loads that make no new syscall |
+| C5 source/index/mediated APIs | mdfind and in-process metadata query/getters, resource/bundle/registration/coordination and delegated I/O |
+| C6 IPC/proxies | Mach/MIG/XPC/socket/pipe/shared-channel requests, endpoint/right/fd transfer and causal recipients outside the child tree |
+| C7 effects/opaque commands | Mutations, mount/topology, device/MAC/IOKit/sysctl/ioctl/fcntl commands and all unclassified entries pending independent disposition |
+| C8 lifecycle/images | Actual launch/exec/thread/descendant/proxy/image closure, initial fd/right/VM state, collector readiness through drain/true termination |
 
-The candidate must independently demonstrate readiness before child release, process-
-incarnation/descendant/thread coverage through spawn/exec/reap, entry/return/error and raw
-operands, descriptor creation/dup/inheritance/close and directory associations. Pin all
-collector/script/kernel/probe/image inputs and retain original events. Unknown associations,
-truncation, loss, attach gaps or missing termination make the coordinate unavailable.
-Direct scratch bypass outside all wrappers, child/pipe bypass, inherited-descriptor contact,
-wrong filters, disabled collection and induced loss must fail at their intended contact
-coordinate, with allowed scratch positives too. No installed-query/root positive is pure.
+Forbidden contact includes request issuance even on error, cancellation or empty response.
+One independent boundary returns per-coordinate allowed observation, forbidden attempt,
+independently established pre-effect prevention, or unavailable, with original evidence.
+It covers the full pure invocation before startup reads through actual child/proxy/async
+return. K277 owns the exact allowed runtime/read and entry partition; allowed image loading
+cannot authorize that image's source/resource/proxy operations. No aggregate clean bit,
+pathname/PID-only filter, gate log, wrapper, mock or static call graph supplies independence.
 
-K270 selects unprivileged pure scope at the user's UID: no root/sudo collector is
-authorized and no privileged supplier is appointed. Complete observation remains
-unavailable until a realizable unprivileged full boundary independently qualifies.
-K273 owns that design or its exact live unavailable work before the first consumer;
-any stronger privilege/posture alternative needs a concrete new human decision.
-K269 assigns actual authorized capability/calibration before any
-real-adapter credit. Replacement needs reviewed design and independently qualified full
-contact coverage. No target experiment, new consent or posture change follows from a gap.
+Each applicable operation/variant in C1–C8 requires allowed scratch positives and direct,
+child, inherited-descriptor/right/map and detached-proxy bypass cells, as specified in the
+companion. Independently perturb readiness, association, event/operand loss, filters,
+attach/startup gaps and termination/drain/reap for each applicable family. Missing events,
+initial state, payloads, loss evidence, associations or applicable controls are unavailable,
+never clean. Freeze collector/provider/launcher/kernel/API/probe/image/configuration and
+all original input/event objects before/after. No installed-query/root/protected positive
+or actual topology mutation is pure.
+
+The published DTrace source constructs **syscall and mach_trap** entry/return providers;
+it is not merely a BSD list. Its published privilege glue checks superuser credentials.
+No authorized current unprivileged collector or full proxy/initial-map coverage is supplied.
+Apple documents Endpoint Security's root and entitlement prerequisites; neither is selected.
+An unqualified sandbox/broker/debugger or privileged collector is not a full substitute.
+No complete realizable arrangement is established under the selected authority; this is a
+bounded unavailable conclusion, not a theorem that no unprivileged arrangement can exist.
+
+U1 current kernel/probe/API universe, U2 full mechanism, U3 launch/capability state,
+U4 mediated/mapped effects, U5 per-class calibration and U6 topology/final stability remain
+precise required work under k269, ahead of their first execution or qualification-credit
+consumer. Useful unaffected authored pure work may proceed with its limited claim; real
+adapter/composition/read-closure/no-contact credit, k244 closure and k245 admission remain
+unavailable. K278 reconciles this complete boundary before whole-k273 review/integration.
+Any pursued root/sudo/SIP/helper/entitlement/signing/consent/VM alternative requires a
+concrete separate human decision and reviewed mechanism before its consumer; none is
+selected, probed or implied here. Required copies remain missing work, never useful loss.
 
 ## Fixed composition without target contact
 
@@ -1130,7 +1159,10 @@ not a complete admission handoff. Human requirements k270 now precede the instru
 replacement design node k273 and its mandatory whole review/earned integration precede k269.
 Its children independently own authority lifecycle k274, admission roots k275, complete
 contact boundary k276, exact entry/runtime closure k277 and whole reconciliation k278.
-The lifecycle/anchor proposals do not close contact/entry obligations or admit construction.
+The lifecycle/anchor proposals and k276's pinned-source/unavailable contact design do not
+close actual contact/entry obligations or admit instrument qualification. K269 must assign
+U1–U6's exact live owners before affected execution/credit consumers; k277/k278 and whole
+review remain due before that plan is consumed.
 The authority requirements are selected in k270; actual receipt/provisioning, independent
 approval anchors and full unprivileged external contact capability remain unavailable
 prerequisites;

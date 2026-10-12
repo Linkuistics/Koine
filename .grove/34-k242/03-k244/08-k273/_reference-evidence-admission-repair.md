@@ -144,3 +144,15 @@ unspent name. K269 assigns actual independent artifact review, bootstrap/provisi
 validation and final affected requalification before k245. No approval record is supplied;
 k276/k277 retain actual full contact/process/read-closure obligations, and whole review
 remains due after k278. This handoff changes none of the original closing conditions.
+
+K276 supplies docs/verification/application-reference-contact-boundary.md and the pinned
+documentary BSD/Mach/RPC/API inventories. C1–C8 include every unclassified public entry
+pending independent semantic/current correspondence. No complete unprivileged mechanism
+or actual contact evidence is established; U1–U6 name current-universe, mechanism,
+launch/capability, mediated/mapped, calibration and final-stability missing work with
+placement under k269 before execution/credit consumers. Useful authored pure work retains
+its limited claim; actual adapter/composition/admission credit and k244 closure remain
+unavailable. K277 owns entry/read closure; k278 must include the new contact view, bind
+the whole-byte companion/inventory bases through accepted revisions and reconcile every
+summary before whole-k273 review. Data positives and protected/out-and-back refusals
+remain authored pure specimens, not current topology or hidden-ancestry evidence.

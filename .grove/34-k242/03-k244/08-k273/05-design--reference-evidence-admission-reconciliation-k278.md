@@ -50,3 +50,12 @@ root/receipt or a qualified channel; exact unavailable work still prevents admis
 Design only; no executable proof, receipt, contact probe, current bytes or qualification
 is supplied. Cut no implementation leaves. No partial/in-session reviewer competes
 with the scheduled mandatory whole review.
+
+K276 adds a sixth reference view, native-reference-contact, and the full-byte contact
+companion plus five source-inventory tables. Review all six views and their summary layers.
+C1–C8 are independent minimum classes, with every public active row still requiring
+semantic/current correspondence. U1–U6 are exact required unavailable work under k269;
+source-based design closure is no current mechanism, observer availability or contact proof.
+Reconcile acceptance of these whole-byte basis inputs with k275's revision/extraction/read
+rules without silently relaxing them, and compare per-family bypass/loss and protected/
+out-and-back specimens against the original obligations. No new partial review is cut.

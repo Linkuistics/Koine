@@ -29,3 +29,12 @@ Reconcile contract, summaries/views, k269 owners and required unavailable segmen
 ## Notes
 Design only; no packaging task scaffolding, executable/schema/tool, observation
 programme/control execution or installed probe. Whole review belongs to k278/k273.
+
+Consume k276's full contact contract and exact unavailable U1–U6 boundary at
+application-reference-contact-boundary.md. Define the read/entry partition and initial
+fd/port/VM state needed by C1–C8, including allowed runtime-image reads versus forbidden
+source/resource/proxy operations. The whole-byte companion and five inventory tables are
+required approved basis inputs, not reporting slices. Unknown current universe, capability
+or proxy/map association prevents actual read-closure/no-contact credit. Preserve useful
+value/intent design without declaring an unexercised native segment qualified. No collector,
+protected-path or installed-build probe is authorized here.

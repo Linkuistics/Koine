@@ -126,3 +126,31 @@ Planning only: no executable instrument/schema, control execution or target cont
 Do not add placeholder packaging tasks. Use existing document/render checks for the
 plan and preserve the canonical permission. No in-session reviewer beside the
 scheduled whole-design or planning review.
+
+## Exact contact work from k276
+
+Consume the reviewed application-reference-contact-boundary.md and all five documentary
+inventory tables. Give U1 current kernel/probe/API universe, U2 full unprivileged mechanism,
+U3 launch/capability state, U4 mediated/mapped effects, U5 independent per-class calibration,
+and U6 topology/final stability actual live owners before each first execution/credit
+consumer. An unavailable required mechanism cannot become an implementation assumption.
+Do not repeat the same published survey as a calibration or credit a gate/mock/static
+call graph as no-contact evidence. Independent disposition covers every public row and
+all current/opaque extensions; retain exact original source and full basis/input bindings.
+
+Place concrete design/capability/association/calibration work before actual source/held
+adapter, checker-image correspondence and packaging rehearsal credit, then separate final
+requalification/independent audit after the last changed inputs and before k244 closure/k245.
+Per applicable C1–C8 operation/variant, assign direct/child/inherited-fd-right-map/proxy
+bypass and readiness/association/drop/filter/attach/termination controls with scratch-only
+positives. Current framework/service correspondence and initial mappings remain missing,
+not inferred from synthetic routes. Useful authored pure work may progress with limited
+claims while these exact unavailable duties stay live. Any pursued stronger arrangement
+gets its precise human requirements decision, mechanism review and scope before its
+consumer; no root/sudo/SIP/helper/entitlement/signing/consent/VM authority is implied.
+
+Preserve Data-volume prefix positives and protected-user/unsettled-consent contents
+refusal; absolute/relative out-and-back specimens refuse before the first outside
+lookup/open, retaining observed text and raw occurrences. Simulated mounts/firmlinks
+supply policy evidence only, never current topology or hidden physical ancestry. No
+required copy/useful class is removed to obtain a clean proof.

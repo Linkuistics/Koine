@@ -95,7 +95,12 @@ name. The [independent approval proposal](docs/verification/application-referenc
 places exact reviewed requirements, inventory and verifier identities in a separate fixed
 approval register. Independent commissioning/control acceptance precedes candidate proofs;
 one-use invocation channels and external receipt/correction bindings cannot restore a spent
-permit. No register or accepted revision exists. K273's contact/entry designs, whole review
+permit. No register or accepted revision exists. The
+[contact boundary](docs/verification/application-reference-contact-boundary.md)
+pins independent published BSD/Mach/RPC/API inventories and per-class bypass/loss controls.
+No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
+U1–U6 remain exact live work under k269 before actual adapter/admission credit. Useful
+authored pure work retains its limited scope. K273's remaining entry design, whole review
 and actual qualification remain required; process-death checks establish no OS-crash persistence.
 
 ## Client-requested grants
