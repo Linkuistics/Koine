@@ -1,0 +1,25 @@
+# Proposed cooperative admission; receipt/first-use authority unresolved, no pass spent.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Fixed permission identity\nOne local authority subject · export cannot select it" {class: start}
+Receipt: "Explicit authorization receipt\nFixed location / UID / identity / permission\nUncertain first use needs human authority"
+Reject: "Refuse before target contact\nMissing / moved / unreadable / replaced / uncertain\nNo scan, recreate, reset or implicit new grant"
+Lock: "Hold receipt descriptor + exclusive nonblocking lock\nNamed / held authority comparison\nConcurrent different exports share this subject"
+Prior: "Existing fixed attempt entry\nEven empty / partial / unreadable\nPreserve actual evidence; refuse another start"
+Reserve: "Exclusive attempt + durable header / start reservation\nQualified file / directory persistence before spawn\nConservative consumption even if death precedes query"
+Contact: "Only then · Fixed target attempt\nInitial source → held acquisition → closure source\nRereads → final freeze → closure"
+Failure: "Failure / interruption\nRetain prefixes and unperformed work\nNo refund, retry, resume or substituted bytes"
+Limit: "Cooperative local boundary only\nUndetectable same-user rollback / bypass not prevented\nAuthority receipt and executable proof still absent"
+Start -> Receipt: "1 · independent permission / proof verification"
+Receipt -> Reject: "2a · authority unestablished"
+Receipt -> Lock: "2b · valid explicit receipt only"
+Lock -> Prior: "3a · already reserved"
+Lock -> Reserve: "3b · exclusive first reservation"
+Reserve -> Reject: "4a · durability unknown; retain entry"
+Reserve -> Contact: "4b · persistence acknowledged"
+Contact -> Failure: "5a · incomplete"
+Contact -> Limit: "5b · complete bounded observations"
+Prior -> Limit: "no export name restores permission"
+Failure -> Limit: "new attempt requires new authority"

@@ -134,3 +134,11 @@ planning review/integration, all before k250. The original final-leaf ownership 
 a proposal awaiting that repair; k269 assigns distinct final qualification and close
 owners. K244 stays live until every original Done when has actual stable proof;
 k245's pass remains unused and k246/k247 retain their separate full obligations.
+
+K268's durable admission design and new admission/proof views retain exact permission
+and original k244 scope. A fixed authority subject and independently required proofs
+replace export-only/self-listed admission; external syscall observation and exact-image
+scratch rehearsal remain unqualified. Whole-design review/integration precede k269.
+Requirements k270 are inserted before k245 to settle uncertain-first-use initialization
+authority and the actual receipt. Neither authority nor target contact follows from the
+design; no control matrix, tool or native/finite-subject verdict is supplied.

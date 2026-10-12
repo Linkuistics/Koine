@@ -68,6 +68,8 @@ provider dependency, installed-app execution, registration or VM seam.
 | Held acquisition adapter | One admitted source occurrence → root/layout/inventory/file observations and bytes | Component lookup, containment, no-follow descendants, absence/refusal distinction and item closure |
 | Native decoder | One immutable byte object → complete tagged native tree or explicit typed failure | Native type dispatch, format/error evidence and lossless export; no target pathname or conversion fallback |
 | Independent verifier | Frozen specimen expectation and envelope → per-coordinate verdicts | Recomputes bytes, required occurrences, trees, branches, tails and associations; rejects producer-only totals |
+| Admission verifier | Required inventory, complete proofs and actual retained artifacts → invocation-bound admission or refusal | Independent completeness, permission equality and image continuity; a producer success bit grants nothing |
+| External contact observer | Calibrated kernel events for the pure process tree → contact evidence or unavailable coverage | Wrapper bypass, process/descriptor association and event loss; a missing event cannot establish no contact |
 
 Compared with embedding parsing, traversal and mutation expectations in the legacy
 Python capture, this arrangement gives the acquisition tool one deep external
@@ -270,18 +272,324 @@ supplies it. Binary/XML/OpenStep positives include hand-authored known values an
 explicit unsupported/malformed/duplicate limits. Counts are diagnostics only.
 Every mismatch reports a stable record/tree coordinate and expected failure class.
 
+## Permission inputs and reporting outputs
+
+These are **design contracts**: no executable schema, authority receipt or passing
+proof exists yet. The canonical [bounded permission](application-population-metadata-shape.md#one-bounded-reference-packaging-pass)
+remains authoritative. Construction creates a closed permission profile, its strict
+independent reader and a frozen requirements extract together, before measurement.
+The tool cannot derive its own permission from defaults or a changing report.
+
+| Permission group | Required exact value or rule |
+| --- | --- |
+| Reference/source | macOS 27.0.1, build 26A434; /usr/bin/mdfind; exactly -0 and the application-bundle predicate stated above; no shell or extra options |
+| Attempt/phases | One target attempt; initial and closure only; closure compares, never retries, repairs or fills missing initial evidence |
+| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit |
+| Layout/files | Four ordered layouts, absence-only advance, both information and all four name basenames, all six in every checked direct locale; no language subset or descendant-link following |
+| Evidence | Complete raw slots/inventories/original regular-file bytes, complete typed observations or explicit limits, every copy/file/alias/tail association and before/closure check; no clipping to the reader limit |
+| Failure/effects | No silent repeat/resume, overwrite, arbitrary recursion, executable acquisition, launch, index/registration change, download, helper, new consent/signing/posture or native/VM capture |
+
+The independent reader rejects unknown/missing fields, duplicate JSON members and
+any changed value. Compare the full profile against an independently authored expected
+value and a field-to-clause concordance with the canonical requirements, including
+prohibitions. Review and freeze the concordance first: a hash alone establishes no
+semantic equality, and copying the tool's constants is not independence. Compare actual
+compiled intents with that expected value during [rehearsal](#fixed-composition-without-target-contact).
+
+Freeze the canonical selected-reference/evidence requirements as original UTF-8 text
+with explicit section boundaries, source identity and digest. The delimited normative
+extract is a measured input; the whole document digest is snapshot provenance. At
+admission independently extract the same sections from the current canonical document
+and require exact equality. Changed text or ambiguous boundaries refuse. Reporting
+edits outside those sections may change the document digest without changing permission.
+Changing a normative section/profile/concordance requires fresh affected qualification.
+The profile contains no proof identity and supplies no new authority.
+
+| Partition | Freeze/mutation rule |
+| --- | --- |
+| Qualified inputs | Retained executable; source/build/compiler/SDK/configuration; permission profile/extract/concordance; schemas, verifier/runner/native observer/contact collector; complete fixtures/expectations/runtime observations; independently required inventory; Taskfile and every reachable recipe/script actually read |
+| Execution context | Actual OS/build, loaded runtime/tool/image identities, composition/gate selection, argv/environment, working directory and descriptor/fixture bindings; obtain these rather than infer them from source hashes |
+| Live authority inputs | Independently authorized receipt/location/UID and actual directory identities, checked before reservation; scratch receipts qualify validation behavior, never authorize or require byte equality with a later live receipt. The live receipt must bind the same qualified permission profile; any changed permission requires fresh qualification |
+| Qualification outputs | Original logs, per-coordinate proofs and aggregate verdict, bound to the complete input identities; never hash the aggregate proof into its own inputs |
+| Reporting outputs | Prose outside normative extracts, diagrams and promotion references; cannot supply admission facts or change a measured input while inheriting its proof |
+| Target outputs | Authoritative attempt header, actual segments/objects and closure; not qualification inputs or authority to acquire again |
+
+Check the declared read set against observed dependencies and reviewed composition.
+If a recipe/verifier reads a reporting document, it becomes an input. Finish all
+reconciliation and executable/schema/fixture/task edits before measurement. Afterwards
+write proof references only in reporting outputs. Review repairs require requalification;
+neither reconciliation nor writing a proof into a pinned document inherits the old run.
+
+## Authoritative attempt evidence
+
+[Admission → Bind one permission to one durable start](../design/architecture/index.html#diagram-native-reference-admission)
+shows the proposed boundary. One fixed local evidence directory is bound to one stable
+permission identity by a separately recorded authorization receipt. The stable name
+`koine.reference-evidence.macos-27.0.1-26A434.1` identifies this grant; a changed document
+digest or export name creates no successor. The proposed subject is the user's
+Library/Application Support/Koine/ReferenceEvidence/permissions directory plus that
+name, with its actual absolute location/UID bound in the receipt. It is outside the
+caller-selected export and a restorable checkout. The receipt binds its absolute location,
+checked directory/ancestor identities, permission-profile identity and one-attempt grant.
+Packaging accepts only an export destination; it cannot select another authority subject
+or mint a new permission identity. All original attempt evidence lives at the fixed subject;
+the export is a derivative, never the sole start record.
+
+**Authority remains unresolved.** The existing permission supplies neither this receipt
+nor proof that an absent subject means first use rather than deletion. Recommended to
+Antony: fail closed and require separate explicit authority for uncertain first-use
+initialization. No receipt, initialization, replenished pass or target call is authorized
+by this document. Until a decision and actual receipt exist, target admission is
+unavailable. The construction plan must retain a concrete authority-decision/receipt
+prerequisite before the target consumer, never synthesize an empty receipt by default.
+
+Given explicit authority, the cooperative protocol is:
+
+1. Independently validate the receipt/profile and open its exact evidence subject
+   without following replacement links. Missing, moved, replaced, unreadable or
+   uncheckable subject/ancestry refuses. Never scan elsewhere, recreate it or reset.
+2. Hold an exclusive nonblocking flock on the fixed authorization receipt's held file
+   descriptor across admission/publication and recheck named/held identity. This is
+   ephemeral synchronization, not a lock-file
+   status artifact. Concurrent callers with different exports share the same subject.
+3. Exclusively create the single fixed attempt directory. Its immutable header binds receipt,
+   permission, invocation and qualified proof/input/image identities. Persist the header,
+   acquisition-start reservation and directory entry using qualified file flush/full-flush
+   and directory synchronization operations **before** target spawn. No error path
+   removes/recreates the attempt.
+4. Any existing entry, including an empty/partial/unreadable header, is prior-start or
+   uncertainty. Failed durability acknowledgement permits no contact and retains that
+   entry. A persisted reservation conservatively consumes the attempt even if death
+   precedes the query. Recovery of that possibly unused pass needs explicit new authority.
+5. Preserve actual segments and unfinished prefixes at that attempt. Export deletion,
+   movement or unreadability cannot reopen admission. Lock release on death does not
+   refund permission or authorize resume; closure finalizes evidence only.
+
+Actual scratch qualification must establish locking, exclusive-create and persistence
+on the selected filesystem, with two processes, crash points, short writes, directory
+replacement and lost/unreadable exports. Unsupported or unknown durability/identity
+refuses before contact. This is a cooperative local boundary, not tamper resistance:
+the same user/admin can forge/restore the receipt and whole subject, bypass the tool or
+run mdfind. Detected loss fails closed; indistinguishable rollback and unobserved
+delete/restore remain adversarial limits. No secure monotonic/cross-machine store is
+claimed. A stronger service or OS authority needs a new human decision.
+
+Scanning caller-selected exports was rejected: moved/deleted outputs and a second
+fresh name defeat the check. A fixed subject concentrates concurrency and durability
+at one owner, at the cost of conservative refusal and explicit initialization authority.
+A secure monotonic service would strengthen rollback resistance but introduces unselected
+authority/helper dependencies; it is not silently substituted. If those limits are
+unacceptable, retain unavailable admission until Antony selects the stronger alternative.
+
+## Closed qualification proof and required inventory
+
+Proposed proof version is `koine.application-reference-qualification/1`, separate from
+the evidence envelope. Before any coordinator consumes it, construction delivers the
+closed executable schema, independently authored required inventory, usable admission
+verifier and omission controls. These tables are its design, not its implementation.
+Every nesting rejects unknown/missing fields and duplicate members; outcome-specific
+fields are required, references unique/resolved and byte/number encodings exact. Empty
+lists/null cannot represent unperformed work as passed.
+
+| Proof record | Required payload |
+| --- | --- |
+| subject | Proof/schema/inventory versions/digest; full permission/extract/concordance/read-set identities; actual retained executable and OS/runtime/image identities; pure composition |
+| run | Unique coordinate, task/command/edge, actual before/after input identities, interval, process tree, terminal/reap result, immutable original result/contact objects and performed/unperformed work |
+| case | Required coordinate/applicability rule, fixture/expectation identities and provenance, role/format/layout/phase, intended positive/failure, actual coordinate/reason, gate and external-contact links |
+| pair | Positive and isolating mutation coordinates, changed operand, evidence it reached the intended check, unaffected checks and matched input context; incidental schema rejection is insufficient |
+| observation | Independent runtime/collector tool/input/image identities, original narrow result, coverage/calibration and limitations; producer trace has a different provenance tag |
+| verdict | Each required coordinate satisfied/failed/unavailable with reason; exact missing/extra/duplicate/stale coordinates and completeness; counts are diagnostic only |
+
+Author and freeze the inventory from the **whole** contract before the first construction
+stage, independently of produced case lists. Enumerate then classify the cross product:
+obligation/control; XML/binary/OpenStep/unsupported/malformed; all four/coincident layouts;
+ordinary/helper/alias-target/repeated role; initial/closure/failure phase; file/outcome/typed
+variants; producer/real-adapter/fixed-composition boundary. Each cell has a stable coordinate,
+expectation source, intended mutation, required observer and construction owner. Inapplicable
+cells need independent reasons (a source pipe has no layout; parse failure has no successful
+tree). No runner derives applicability from tests it happened to find. Every normative
+obligation maps to applicable positives and isolating negatives, and each case maps back to
+the concrete branch reached. Do not demand meaningless combinations or hide meaningful
+ones behind sparse fixtures. Helpers/aliases need their actual file/tree/tail coordinates.
+
+An inventory correction is a reviewed input change, never post-run removal of a failure.
+Schema extensions update validator/oracle/fixtures/inventory and rerun/freeze all affected
+earlier stages. Old proofs retain their old scope; they cannot admit the extension.
+
+The independent offline verifier has a strict admission entry. The qualification runner
+invokes it after stage results; the fixed packaging launcher invokes it again on retained
+artifacts before the coordinator may persist a start. It derives required coordinates from
+the independent inventory, recomputes objects/results/pair outcomes, checks sets in both
+directions, provenance/contact coverage and actual input/image/permission equality. One
+schema-valid omitted case, ambiguous duplicate, stale runtime result, regression-only
+independent expectation, unavailable observer or changed input refuses before contact.
+
+Bind admission to an invocation nonce and proof/inventory/permission/read-set digests,
+retained executable identity and held inputs. Send the result directly over a private
+one-use process channel, never a reusable on-disk qualified=true token. The coordinator
+checks the binding and identities at use; substitution/channel failure/unavailable identity
+refuses. Hold inputs where possible and require final image/input checks too; this does
+not prove hostile-user immutability. Verifier/runner/gate are themselves qualified inputs
+with independent omission, forged-result, swapped-executable and cross-invocation controls.
+
+## Contact observation outside the producer
+
+Select an **external Darwin DTrace syscall-entry/return and process-lifecycle collector**
+as the candidate for real scratch pipe/filesystem contact. Producer wrappers/fault traces
+remain diagnostics, not evidence that a bypass made no syscall. The installed DTrace
+manual describes a separate collector and published probes; it establishes no current
+access/coverage. [Apple's SIP description](https://support.apple.com/guide/security/system-integrity-protection-secb7ea06b49/web)
+also prevents assuming administrator rights remove OS restrictions. No collector command,
+probe discovery or privilege change is executed in this design session.
+
+First qualify the collector on separately authored scratch emitters/descriptor subjects.
+Require readiness before child release; process-incarnation/descendant/thread coverage
+through spawn/exec/reap; entry/return/error operands and raw path/component bytes;
+descriptor creation/dup/inheritance/close and directory associations; and every actual
+lookup/listing/open/read primitive reachable in the compiled adapter, including alternate
+syscall routes. Pin collector binary/script, OS/kernel/probe inventory and all inputs.
+Unknown descriptor/path association, truncation, event loss, attach gaps or missing
+termination make a trace unavailable. Keep original events, not just filtered summaries.
+Observe only the scratch process tree; installed-query observation is not a pure control.
+
+A deliberate bypass issues a real scratch sentinel lookup/open/read outside **all** producer
+wrappers, including a direct syscall route. Its producer trace is intentionally empty;
+the external collector must identify the actual forbidden operation. Also control child
+and concurrent-pipe bypasses, disabled collectors, wrong process filters, truncated paths
+and induced event loss. Positives show actual allowed contact; negatives fail at that
+contact coordinate, not on parser errors/nonzero exit. The sentinel is always scratch,
+never mdfind or an installed root. This qualifies contact detection, not prompt/hydration
+safety or opaque kernel internals.
+
+**Collector capability is unestablished; required contact coverage is unavailable until
+these controls pass.** Existing privileges/probes/coverage are not presumed. If qualification
+needs new privilege, disabled SIP, entitlement, helper or VM/native work, retain that precise
+unavailable boundary and seek a concrete human decision; none is authorized here. Never
+substitute interposition, wrapper traces, static inspection, mocks or target experimentation.
+The planner places collector capability/calibration before real-adapter qualification and
+a concrete decision owner if it cannot qualify in pure scope. Replacement requires reviewed
+design with equivalent independent direct-bypass evidence.
+
+## Fixed composition without target contact
+
+[Proofs → Observe completeness and contact before admission](../design/architecture/index.html#diagram-native-reference-proof)
+shows the enabling point. Internally rehearse the **same retained executable**, fixed
+packaging parser/constants, admission call, coordinator and real adapter implementations.
+Packaging still accepts only a fresh export; no query/root/file/language/adapter overrides.
+A separate internal qualification entry selects a sealed scratch context at the composition
+point, not another packaging implementation or compiled image.
+
+Every native adapter operation presents its exact intent to an always-present contact
+gate immediately before execution. Rehearsal compares the requested fixed constants
+against independent expectations, then maps only declared fixture identities to held
+scratch descriptors or a pure emitter; unmapped intents refuse. /System/Applications/A.app
+is a logical test value, never a /System probe. Scratch mappings are supplied by the sealed
+fixture context, never discovered from installed paths. Real pipe draining, descriptor,
+durability and decoder operations execute on scratch subjects and are externally observed.
+Intercepted production requests are **intent evidence**; mapped calls are **actual scratch
+evidence**. Neither establishes installed topology or mdfind output. The authority subject
+and receipt used in rehearsal are isolated fixtures too.
+
+The live gate requires the invocation-bound admission result and actual receipt/durable
+start. A pure context cannot issue live contact permission, even when a higher layer is
+miswired. The gate refuses before execution; the external collector detects actual bypass.
+Mocked rehearsal alone cannot qualify real adapters, and gate logs cannot prove no contact.
+The seam reduces caller knowledge: one context selects behavior at native contact, while
+the same coordinator owns phase order, constants and failure recording.
+
+Exercise the actual Taskfile entry and reachable script/task edges under the sealed pure
+context. Deliberately rewire a scratch copy of a pure dependency to packaging, select a live
+intent from pure mode, change a predicate/root/basename, omit preflight and reuse/forge
+admission. Each reaches its intended gate/admission check and refuses before real mdfind
+exec or installed-root syscalls. Preserve gate intents and independent collector evidence;
+do not perform target contact as a positive control. Direct **scratch** bypass is the
+collector detection control. Gate/verifier death or channel loss still refuses contact.
+Changed scripts/tasks/binaries or unqualified observation invalidate the proof; static
+reachability inspection is supplementary. Mutations are separate subjects, not qualified
+replacement executables; freeze each before/after, then measure the unchanged candidate.
+
+This unbuilt seam is empirical rehearsal, not an OS sandbox for hostile code. Review
+must establish that the exact packaging path reaches it and scratch mapping cannot mint
+live authority. Inability to exercise that composition with independent no-contact evidence
+leaves the coordinate unavailable. The one target pass is never the wiring experiment.
+
+## Independent decoder expectation classes
+
+| Class | Establishment | Admissible claim |
+| --- | --- | --- |
+| Format-derived | Separately authored original bytes, serialized type/position/duplicate facts and independently derivable values | Original serialization/associations and only the validity/type facts established by the format |
+| Runtime-corroborated | Separately authored narrow CF observation programme acquires facts directly from pure bytes on pinned OS/loaded images before producer comparison | That image's acceptance/error/format, stored number type, duplicate survivor, coercion, date/real bits and enumeration |
+| Regression-only | Expectation first learned from producer output and later frozen | Change detection; cannot close a required independent coordinate |
+
+Author XML/OpenStep encodings and binary object tables/trailers/offsets independently,
+not exclusively through CF or normalizing serializers. Inspect serialized duplicate
+positions even when CF returns one member. Format inspection cannot predict undocumented
+CF rejection or certify preservation of lexical order, stored width or NaN payloads.
+
+The separate native observation programme shares no producer traversal/exporter/numeric
+formatting/expectation code. For fixed small specimens it calls CF directly and records
+narrow raw results: parse/error/format, known-key duplicate survivor, CF type ID and number
+storage/size, conversion return/value, string units, data and date/real bits. Its known-value,
+acceptance/rejection controls and acquisition identities qualify before its observations
+become expectations. Run independently and freeze original observations/tools, then compare
+producer output through a different export path; never feed it a producer tree or copy one.
+
+Both paths may use the same CF runtime: agreement corroborates the tool's extraction of
+that runtime's behavior, not an independent CF implementation or a standard's guarantee.
+Separate serialized numeric/date/NaN values from native conversion results. Check exact
+values where independently derivable and corroborate storage/coercion/bits separately.
+Missing runtime identity/disagreement fails or leaves a coordinate unavailable, rather
+than revising its expectation from producer output. Changed images require fresh independent
+observations and affected qualification. All programmes/specimens/controls remain unbuilt.
+
+## Topology and the inherited component rule
+
+The [descriptor-relative ADR](../adr/filesystem-access-is-descriptor-relative.md) owns
+kernel resolution. Literal, link-expanded and walk-resolved spellings are held-walk
+observations; the last is not a universal physical-volume pathname. Scope is exactly the
+three prefixes on **both** literal and walk-resolved components. It is not a sealed-System
+rule or device allowlist. /System/Volumes/Data is under the inherited /System prefix.
+Excluding it, rewriting its spelling, or allowing an outside cryptex path because it is
+Apple-owned changes permission and needs Antony's decision. None is selected.
+
+| Independently authored pure specimen | Required result |
+| --- | --- |
+| /Applications-extra/A.app; relative/uncheckable bytes | Reject literal scope before contents; preserve raw reason |
+| /Applications/A.app expanding to /Users/u/A.app | Reject resolved scope, with no root listing/contents |
+| /Applications/A.app expanding to /System/Volumes/Data/Applications/A.app | Both prefixes pass; preserve spellings/checked identity, with no sealed-volume claim |
+| /System/Volumes/Data/private/Specimen.app | Syntactic scope passes; checked app-directory/layout requirements still bind; no invented Data exclusion |
+| Mount below an admitted prefix changing device identity | Record observable transition/identities; device change alone neither widens nor narrows syntactic scope |
+| Firmlink redirect without observable link text | Preserve walk spelling/returned identity; no fabricated readlink step or hidden target spelling |
+| System/cryptex link within a prefix versus outside all three | Admit former only with all root checks; refuse latter regardless of vendor; no historical-mount whitelist |
+| Relative/absolute links, physical .., trailing slash, 32/33 expansions, named/held replacement | Exact ADR semantics and refusal; no lexical cleanup hiding resolved scope/identity changes |
+
+Use controlled topology/identity inputs; run actual scratch symlink/descriptor cases
+where possible without mounting or changing the OS. Simulated mount/firmlink cases are
+labelled simulation, not evidence of platform implementation. The saved [25F71 mount
+record](protected-path-metadata/environment.json) is historical comparison only.
+[Apple's volume description](https://support.apple.com/en-euro/guide/security/secd698747c9/web)
+distinguishes system/data storage, not current reference paths. No current topology probe.
+
+A held walk observes returned device/inode/type/stamps, explicit links, spellings and
+named/held changes. It cannot generally discover hidden redirect targets, prove unchanged
+mount topology between checks, atomically certify physical ancestry or prevent opaque
+mounted-root contact before refusal. Unobserved move/restore and alias limits remain.
+Pure tests qualify honest records/refusal, never historical topology as native completeness.
+
 ## Attempt durability and per-control proof
 
 Before target spawn, persist an exclusive attempt header and acquisition-start
-observation in the new destination. Finalized objects/observation segments are
-write-once; retain unfinished temporary segments and actual prefix extents after
+reservation at the fixed authoritative subject, independently of the export. Finalized
+objects/observation segments are write-once; retain unfinished temporary segments
+and actual prefix extents after
 interruption. Record segments belong to the evidence envelope, not a separate
 session-status file. The final closure commits only after input freeze and all
 item comparisons; the offline verifier never manufactures missing observations.
 Unexpected death without a complete closure is interrupted/incomplete even if
 some objects are intact. Failure to preserve a record is itself missing evidence.
-Output existence or a prior start refuses reacquisition; offline inspection may
-describe that attempt but may not read a newer target or resume it. Only k245 owns
+Existing output, a prior reservation or an uncertain authority subject refuses
+reacquisition; offline inspection may describe that attempt but may not read a newer
+target or resume it. Only k245 owns
 the selected pass; invoking a fresh attempt after target start needs new authority.
 
 Pure qualification never invokes mdfind or opens an installed reference root.
@@ -327,8 +635,10 @@ with planning review and earned integration, precede the first construction incr
 They must resolve authoritative prior-start evidence, frozen permission/input versus
 reporting identity, complete proof/inventory ownership, independently observed real
 contact, exercised no-target composition, runtime observation provenance and topology
-specimens. These are open design/construction obligations, not repaired executable
-behavior or a selected new permission/observer mechanism.
+specimens. The sections above now specify their design. Whole-design review/integration
+still precede construction replanning. The authority receipt/uncertain-first-use decision
+and actual external collector capability remain precise unavailable prerequisites;
+selected design mechanisms are neither new permission nor qualified executable behavior.
 Their intended handoffs are independently usable offline replay, native byte decoding, lossless
 source observations, held-directory evidence acquisition, and durable attempt
 coordination with complete pure qualification. The schema and a usable validator
@@ -341,11 +651,11 @@ and earned integration remain due at k247 before private construction and k7.
 
 | Working increment | Independently demonstrable handoff | Required completion evidence |
 | --- | --- | --- |
-| Offline replay | Closed version-1 schema and usable independent package verifier | Authored complete/failure envelopes, exact object replay and full original association/mutation controls |
+| Offline replay/admission | Closed envelope/proof schemas, independently required inventory and usable independent verifier | Authored complete/failure envelopes, schema-valid missing-proof rejection, exact object replay and full original association/mutation controls |
 | Native decoding | Immutable bytes to native tagged tree, complete branches and joint tails | Actual CF formats/types/duplicates/coercion and loaded-image identity, checked by the independent byte/type oracle |
 | Source observations | Real concurrent emitter pipes to raw slots and initial/closure comparison | Actual EOF/termination/reap/fault traces, multiplicity and association-preserving permutation proofs |
 | Held acquisition | Scratch scope/layout inspector, complete fixed-file/direct-locale evidence and full item closure | Actual descriptor and injected race/no-contact proofs; all six locale files, complete/partial objects and every logical occurrence |
-| Qualified attempt | Durable exclusive coordinator and matched complete qualification handoff | Exact build/permission/tool/input admission, separated tasks, complete per-item matrix and full original-obligation closure |
+| Qualified attempt | Fixed-authority coordinator, gated exact composition and matched complete qualification | Independent admission, external bypass/contact proof, actual task-edge rehearsal, complete matrix and full original-obligation closure after review/repair/requalification |
 
 Construction uses a standalone Swift evidence-tool package and a separately
 implemented Python verifier with independently authored fixtures. Neither depends
@@ -359,6 +669,17 @@ early independently required proof inventory, review/repair/requalification and 
 reconciliation to explicit owners. The original final-stage assignment remains a
 proposal until that repair. An aggregate passing count supplies none of those duties.
 
+The replanning producer assigns distinct owners for: early inventory/proof/admission
+construction; byte-specimen authoring and independent native observations; collector
+capability and calibration; actual scratch adapters; fixed-composition/gate/task-edge
+rehearsal; whole-instrument implementation review and earned integration; final unchanged
+candidate measurement; and audit/reconciliation/promotion/closure. Review repairs happen
+before final measurement; a distinct live requalification/closing owner survives them.
+Unavailable observer, identity or required coordinate cannot be relegated to closing prose.
+The separate authority requirements work precedes target packaging; it authorizes no tool
+or target by existing. K269 owns the construction slices, rather than this design cutting
+implementation leaves.
+
 Source-only closure compares complete spelling/occurrence multiplicities and raw
 permutations. Held acquisition closure later associates both source phases with actual
 held root identities and checked physical aliases; a stream emitter cannot establish
@@ -369,12 +690,14 @@ extension requires the independent validator/oracle/fixtures/inventory to change
 all affected earlier checks to be rerun with complete before/after input freeze.
 
 Construction must add and verify two distinct Taskfile entry points: pure
-qualification with no target adapters, and bounded packaging with only a new
-output destination. Packaging checks the exact installed macOS 27.0.1 (26A434)
+qualification with no live target-contact authority, and bounded packaging with only a new
+export destination. Pure rehearsal can enter the fixed dispatcher under a sealed scratch
+context; ordinary tests have no live packaging dependency. Packaging checks the exact installed macOS 27.0.1 (26A434)
 build, complete matched qualified tool/input identities and frozen permission,
 rejects arbitrary scope and existing output before contact, persists the start,
 and preserves any interrupted attempt. Build changes or unavailable checks admit
-no target call. Tests never invoke packaging as a dependency. Packaging executes
+no target call. Unmodified pure recipes have no live packaging dependency; deliberate
+task-edge mutations run only within the sealed scratch rehearsal. Packaging executes
 the retained qualified executable without rebuilding it. A rebuilt candidate must
 match the actual qualified binary and all other required identities, or receive
 complete fresh qualification; matching source alone is insufficient. Runtime-image
@@ -408,10 +731,10 @@ byte rereads and comparison; final input/image freeze; final closure publication
 Failure leaves all later unperformed work explicit. Closure never substitutes for
 initial source or acquisition, and final publication cannot precede comparison/freeze.
 
-Give the attempt a unique immutable evidence destination before source acquisition.
+Reserve the fixed authoritative attempt and a unique immutable export before source acquisition.
 Never overwrite the historical packets or a prior attempt. The attempt envelope
 contains actual acquisition observations and interruption/error evidence; it is
-not a separate session-status file. Once target acquisition begins, an interrupted,
+not a separate session-status file. Once the durable start reservation exists, an interrupted,
 refused, changed or incomplete attempt consumes this pass. There is no automatic
 retry, resume with newer bytes or second inventory-only acquisition. Preserve the
 partial evidence and name the exact missing work; another pass needs a new explicit
@@ -589,6 +912,26 @@ evidence; it cannot demand unchanged whole-row hashes after a permitted rewrite.
 Exercise every applicable loss and permitted rewrite on useful and helper templates,
 and on alias targets/relations, rather than checking useful templates alone. Alias
 records do not invent new payloads or supply independent useful measurements.
+
+### Admission-repair controls
+
+The independent required inventory includes these controls in addition to every original
+row above. They are specified, unexecuted, and never qualify from a design bit.
+
+| Required positive / deliberate counterexample | Intended independent result |
+| --- | --- |
+| Two concurrent scratch callers, different exports | At most one fixed attempt reservation; loser refuses before emitter contact |
+| Prior reservation, moved/deleted/unreadable export | Same fixed subject still refuses; no second contact or reset |
+| Absent/moved/replaced/unreadable authority; partial header; death before/after persistence | Uncertainty refuses; prefix/start retained; no automatic first-use initialization or refund |
+| Complete proof versus schema-valid omitted case/role/negative pair | Required-inventory coordinate identifies omission; proof's own count/list cannot admit |
+| Permission profile matches frozen clauses versus one changed scope/effect/file group | Independent concordance/value comparison refuses before start |
+| Reporting-only promotion versus changed measured extract/task/tool or proof inserted into an input | First preserves qualification; latter invalidates it and requires a new run |
+| Real scratch pipe/descriptor calls versus direct syscall/child bypass with empty wrapper trace | External original trace detects exact contact, even with a clean producer trace |
+| Ready complete observer versus drop/filter/attach/operand/identity loss | Relevant contact coordinate unavailable; no clean no-contact verdict |
+| Exact retained composition versus miswired pure→packaging/live intent or omitted admission | Gate/admission rejects at intended coordinate before mdfind/installed-root contact; actual reachable task edges observed |
+| Independent native observation versus copied producer tree/regression-only expectation | Corroborated pinned CF fact passes; provenance failure cannot close independent runtime coverage |
+| Data-volume/mount/firmlink/cryptex/link specimens | Inherited literal/resolved component results and honest simulation/identity limits; no topology-derived scope change |
+| Retained image versus rebuilt/swapped image, reused admission channel or changed runtime | Exact identity/invocation rejection; matching source or old proof alone cannot admit |
 
 ## Remaining boundary
 

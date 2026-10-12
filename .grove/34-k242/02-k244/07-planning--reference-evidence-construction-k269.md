@@ -12,6 +12,14 @@ whole review and every earned integration. Read k266's findings from c5186473933
 k267's triage, current complete k244 obligations and every construction leaf. Re-derive
 paths by handle; this leaf may move when review/integration is inserted before it.
 
+The durable design defines fixed authoritative attempt evidence, closed permission/
+proof/inventory/admission, exact-image sealed scratch rehearsal, external Darwin DTrace
+candidate, independent native expectation provenance and inherited topology specimens.
+The collector is unqualified; authority requirements k270 precede k245 and neither
+receipt nor uncertain-first-use approval exists. Assign collector capability/calibration
+and all actual proof owners before consumers; unavailable privilege/coverage/identities
+need precise live decision/repair work, never target experimentation.
+
 ## Work and verification
 
 1. Apply the reviewed F1–F5/F9/F11 design to each affected brief/leaf and the

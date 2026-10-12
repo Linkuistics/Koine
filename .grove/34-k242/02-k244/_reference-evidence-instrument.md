@@ -141,3 +141,13 @@ Coordinator order is admission/start → complete initial source → initial hel
 acquisitions → complete closure source and held-root links → item rereads/comparison
 → final input/image freeze → closure publication, with explicit unperformed work
 and no retry on every failure.
+
+K268 specifies fixed permission-evidence independent of exports, frozen permission
+clauses/profile separate from reports, a closed proof checked against an independently
+required inventory, exact retained packaging/task-edge rehearsal behind a sealed scratch
+gate, external Darwin DTrace bypass observation, independent CF expectation classes and
+inherited topology specimens. None is implemented or qualified. Whole-design review/
+integration precede k269; it assigns early proof/observer and final review/repair/
+requalification/close owners. Uncertain-first-use authority and receipt are owned by
+requirements k270 before k245. Observer capability/identities/proofs remain unestablished;
+no target/first-use inference, new privilege or current topology probe is authorized.

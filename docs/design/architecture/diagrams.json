@@ -2,12 +2,14 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Construct and qualify the closed instrument before the one target pass",
-    "status": "Five construction increments planned; planning review next; tool qualification live; target pass unused",
-    "summary": "Five working increments now order independent offline replay, native byte decoding, lossless source observations, held-directory acquisition and durable attempt coordination with complete pure qualification. Eleven focused construction leaves retain actual pipe/syscall and fault proofs, full schema/types/associations, exact admission and item-by-item closure under k244. A planning review and earned integration precede construction. The executable schema, tool and complete pure-control proofs are unbuilt. K245 may not acquire targets until the full original tool obligation qualifies; later roles/generated rewrites/whole-family review and every native/product duty remain live. Private eligibility is false and both holds remain.",
+    "title": "Define independent admission before constructing the one-pass instrument",
+    "status": "Admission repair designed; whole review then replanning; authority and external observation unestablished",
+    "summary": "A fixed permission-evidence subject replaces export-based prior-start checks; uncertain first use requires a separate explicit authority decision. Frozen permission/executable inputs are separate from proof and reporting outputs. A closed proof is checked against an independently required inventory, with format-derived, native-corroborated and regression-only expectations distinguished. Exact retained packaging composition and task edges must rehearse on scratch behind a contact gate; an external DTrace candidate must detect direct syscall bypass. Its availability and all executable proofs remain unestablished. Whole design review/integration and construction replanning precede implementation. No target pass, current topology probe or native verdict; both holds remain.",
     "diagramIds": [
       "native-reference-evidence",
       "native-reference-instrument",
+      "native-reference-admission",
+      "native-reference-proof",
       "native-population-metadata-shape",
       "native-metadata-subject",
       "native-metadata-qualification",
@@ -16,11 +18,19 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-evidence",
-        "summary": "Expanded the plan into five independently usable construction increments with planning review first and full qualification before target contact; k244 stays live."
+        "summary": "Placed early independent inventory/proof construction, external observation, exact-composition rehearsal and final qualification before fixed-authority target admission."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Added the proposed source/held-acquisition/byte-object/native-decoder/envelope components and a separately frozen independent verifier oracle."
+        "summary": "Added independent admission, the fixed authority subject, native contact gate and external observer candidate to the existing source/acquisition/decoder ownership."
+      },
+      {
+        "id": "native-reference-admission",
+        "summary": "Added fixed-subject reservation, concurrent/export-loss refusal and explicit uncertain-first-use authority with cooperative tamper limits."
+      },
+      {
+        "id": "native-reference-proof",
+        "summary": "Added independent required-inventory completeness, exact retained composition, scratch gate and external syscall/provenance proof flow."
       }
     ]
   },
@@ -84,7 +94,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Construction planned, with review first: five working increments provide offline replay, native decoding, source observations, held acquisition and durable whole qualification. K244 retains every original instrument obligation and eleven focused construction leaves; schema/tool/verifier and every applicable pure control must actually qualify before k245 spends the one target pass. No installed query/payload, qualified instrument or finite subject follows this plan. Complete current bytes/roles/rewritten recipes and whole-family review remain required. Both holds and every native verdict remain pending."
+      "caption": "Admission repair is designed, with mandatory whole review/integration then construction replanning before implementation. Independently required proofs, runtime provenance, external scratch observation and fixed-composition rehearsal precede final unchanged-candidate qualification. Fixed authority and uncertain-first-use approval are separate target prerequisites. The receipt, collector capability, schema/tool and controls are unestablished. K244 retains every original obligation; k245's pass is unused; k246/k247 and all product/native holds remain."
     },
     {
       "id": "native-reference-instrument",
@@ -93,7 +103,25 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Proposed evidence-tool components, not runtime deployment containers. The fixed source preserves raw bytes and terminal facts; held acquisition preserves every logical occurrence and object; a Core Foundation type-ID walk exports native observations with explicit fidelity limits. The offline verifier compares separately authored expectations, not producer totals. Real pipe/descriptor adapters need pure scratch qualification alongside injected no-contact/failure controls. The executable schema/tool/proofs remain unbuilt and the pass unused; k246 owns generated rewrite discrimination."
+      "caption": "Proposed evidence-tool components, not deployment containers. Independent admission and a fixed durable authority subject precede the native contact gate, source/acquisition/decoder and original evidence. The separate verifier checks independently required coordinates and expectations; an external DTrace candidate must corroborate actual scratch contact and direct bypass. Gate intents and wrapper traces do not substitute for that evidence. All executable proofs and observer/authority prerequisites remain unestablished."
+    },
+    {
+      "id": "native-reference-admission",
+      "group": "native-sources",
+      "title": "Admission → Bind one permission to one durable start",
+      "renderer": "svg",
+      "source": "native-reference-admission.d2",
+      "rendered": "native-reference-admission.svg",
+      "caption": "Proposed cooperative local admission, not tamper resistance. A separately authorized fixed receipt/evidence location owns a single durable start independently of any export. Missing or uncertain authority fails closed, as do concurrency and prior/partial reservation. Initialization authority remains unresolved; no receipt or target contact is supplied by this diagram. Same-user undetectable rollback/bypass remains a limit."
+    },
+    {
+      "id": "native-reference-proof",
+      "group": "native-sources",
+      "title": "Proofs → Observe completeness and contact before admission",
+      "renderer": "svg",
+      "source": "native-reference-proof.d2",
+      "rendered": "native-reference-proof.svg",
+      "caption": "Unbuilt qualification flow. The required inventory is frozen independently before construction, and the actual retained packaging path/task edges rehearse under a sealed scratch gate. External kernel contact must expose direct wrapper bypass; collector capability is unestablished. Format-derived facts, independently acquired pinned CF observations and regression-only expectations have distinct provenance. The verifier recomputes all required cases and identities; reports stay outside measured inputs. No control execution, target contact or native qualification follows."
     },
     {
       "id": "native-population-metadata-shape",

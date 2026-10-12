@@ -286,6 +286,15 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 
 ## Required reproduction contract after the decision
 
+The [admission repair design](application-reference-evidence.md#authoritative-attempt-evidence)
+requires a fixed permission-evidence subject independent of caller-selected exports,
+independently complete qualification proofs and external scratch-contact observation.
+The existing grant does not establish uncertain first use or initialize an authority
+receipt. That concrete authority decision remains live before packaging; absent/uncertain
+authority refuses contact. The proposed DTrace collector's capability and all tool proofs
+are also unestablished. This reporting handoff changes no selected source/build/content
+permission and authorizes no initialization, target pass or topology/VM experiment.
+
 A qualifying design must freeze the complete source evidence, independently
 name its reference population and reason, classify its useful cohort from a named
 independent source, and select whole per-copy tuples with an explicit

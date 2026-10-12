@@ -16,10 +16,13 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Admission-design repair and reviewed construction replanning precede the proposed working increments and full qualification before the unused target pass.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the proposed source/acquisition/decoder/envelope/verifier owners and independent oracle.
-- [Selected instrument architecture](../../verification/application-reference-evidence.md#selected-instrument-architecture) — Selected fixed raw NUL framing, held closed acquisition and native type-ID decoding with explicit terminal/race/duplicate/coercion limits.
-- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Proposed working handoffs retain admission-design and construction-plan repairs before implementation; executable schema/tool/control/task obligations remain unbuilt under k244.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Added early required inventory/proofs, external observation, exact-composition rehearsal and fixed-authority admission before target contact.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added independent admission, the authority subject, native contact gate and external observer candidate.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Added concurrency, export-loss and partial-reservation refusal with explicit uncertain-first-use authority and cooperative tamper limits.
+- [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof) — Added required-inventory completeness, scratch intent/contact separation and independent decoder provenance.
+- [Permission inputs and reporting outputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs) — Defined the closed profile/canonical-clause comparison and measured read-set partition, so promotion cannot invalidate its own proof unnoticed.
+- [Topology and the inherited component rule](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule) — Specified data-volume/mount/firmlink/cryptex specimens without changing the inherited prefixes or claiming current topology.
+- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Required distinct early proof/observer owners and review/repair/final requalification before closure; authority and collector capability remain unestablished.
 
 Unchanged context: [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
 [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
@@ -32,8 +35,8 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument)
-for the concrete design, and the evidence-order view for its unbuilt boundary.
+Open [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission)
+for the current decision, and the proof/component views for its unbuilt mechanisms.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size
 panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.
@@ -145,5 +148,5 @@ broken cleanup/failure/unknown/review/partial-evidence counterparts must fail th
 same instrument. These are synthetic design controls, never native qualification.
 
 Run design:application-population-metadata-shape-render for the joint evidence
-boundary, byte-complete evidence order and proposed instrument component views
+boundary, byte-complete evidence order, admission/proof and instrument component views
 with D2 0.9.0/Dagre/theme 0/dark-theme 200. It reads no target.
