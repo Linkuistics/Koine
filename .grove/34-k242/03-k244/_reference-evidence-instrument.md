@@ -243,3 +243,12 @@ status relocation. A refused required copy has an accepted truthful incomplete d
 boundary; byte-complete evidence/useful breadth/private/native duties are not waived.
 This node remains live; actual required qualification and distinct final closing promotion
 are still due. No authority, control execution or target pass occurs here.
+
+K282 is now a five-seam design node. K283's operation-credit repair separates earlier Q
+mechanics/identity/control evidence, fresh P authority/build/UID/channel/export/input
+facts before intent, and A first-target source/root/closure outcomes. Its pure actual-call,
+qualified separate provisioning/validation and explicit fresh-export routes do not add
+a LIVE calibration role or waive failed prerequisites. K284 retains full contact/pre-lookup
+reconciliation, k285 coupled independent LIVE release/acceptance, k286 enduring-input
+partition and k287 complete reconciliation/mandatory whole-k282 review before k269.
+No partial child is a revised construction handoff and this node cannot close on it.

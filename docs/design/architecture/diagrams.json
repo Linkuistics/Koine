@@ -2,46 +2,26 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Settle concrete contact decisions before completing admission repair",
-    "status": "K279/k280: admission incomplete; k281 decisions → k282 repair and whole review → k269; pass unused",
-    "summary": "Ten findings are triaged. Direct repairs clarify full issuance/current profile comparison and pre-intent export handling, retain logical RPC names and conditional variants, and put checker supervision before Task startup. K281 puts the complete-contact and protected-lookup impasses to Antony with options, recommendation and evidence; no new limit or posture is selected here. K282 repairs prerequisite versus first-attempt credit, disarmed LIVE activation, chartered independent registration and normative/status partition with mandatory whole review and earned integration before k269. Full companion/table/read bindings and every original obligation remain; actual authority, qualification, finite subject and native verdicts are absent, and all holds survive.",
+    "title": "Separate qualification credit from fresh facts and first target outcomes",
+    "status": "K283 credit design; remaining k282 repairs and mandatory whole review precede k269",
+    "summary": "K281 selected bounded contact evidence, closed pre-lookup refusal/incomplete disposition and exact status relocation. The Q/P/A operation map now separates earlier mechanics/identity/control qualification, fresh authority/build/UID/channel/export/input checks before intent, and source/root/closure outcomes first observed during the one consumed attempt. Required failed or unavailable Q/P claims still block; the target cannot calibrate wiring. K284 contact/pre-lookup, k285 independent LIVE release/acceptance, k286 normative inputs and k287 whole reconciliation remain live. No partial handoff, authority, executed instrument control, finite subject or native verdict follows; the pass is unused.",
     "diagramIds": [
       "native-reference-packaging",
-      "native-reference-instrument",
+      "native-reference-admission",
       "native-reference-proof",
       "native-reference-contact",
-      "native-reference-admission",
+      "native-reference-instrument",
       "native-reference-evidence",
       "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
         "id": "native-reference-packaging",
-        "summary": "Marked prerequisite credit, LIVE activation and input partition as required k282 repairs after k281's actual decisions, before whole review and k269."
-      },
-      {
-        "id": "native-reference-instrument",
-        "summary": "Moved Start to the commissioned checker and boundary, before Task startup, with checker supervision of verifier and coordinator."
-      },
-      {
-        "id": "native-reference-proof",
-        "summary": "Exposed unresolved registration, armed-role and status-partition work; issuance/current profile bridges keep full binding and unchanged authority."
+        "summary": "Separated scoped Q proof, fresh P preflight and A target outcomes; independent LIVE release remains required and failed P refuses before intent."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Clarified complete issuance/current profile comparison and the pre-intent reservation distinction; provisioning alone does not settle LIVE eligibility."
-      },
-      {
-        "id": "native-reference-contact",
-        "summary": "Added the required concrete full-guarantee/stated-limit/stronger-route and lookup decision before its design/construction consumer."
-      },
-      {
-        "id": "native-reference-evidence",
-        "summary": "Placed k281 decisions and k282 complete reviewed repair before k269; qualification and the target pass remain separate future obligations."
-      },
-      {
-        "id": "native-population-metadata-shape",
-        "summary": "Retained incomplete-corpus, exact evidence/role/rewrite and native holds through the newly required admission decision/repair chain."
+        "summary": "Added earlier Q mechanics, fresh P authority/export checks and A first-target outcomes without changing consumption/start ordering."
       }
     ]
   },
@@ -105,7 +85,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "The commissioned checker supervises the retained export-request/Task/script/CLI entry before startup. K281 must settle contact/lookup choices; k282 repairs native prerequisite versus first-attempt credit, LIVE activation, independent registration and input/reporting partition with mandatory whole review before k269. Domain channels have no LIVE default. Actual U1–U6 and all qualification remain unavailable; no pass is spent."
+      "caption": "The independently commissioned checker precedes retained Task/script/CLI startup. Q qualifies exact required mechanics, native identities and controls on pure/scratch inputs; P checks actual current UID/build/authority/channel/export/inputs before intent; A observes target source/root/closure behavior only after synchronized consumption/start. E/M/U is scoped evidence, not a stage or permit. K285 still owns non-circular LIVE release/acceptance; complete k282 reconciliation and whole review/integration precede k269. No proof, authority or pass is supplied."
     },
     {
       "id": "native-reference-contact",
@@ -141,7 +121,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Immutable receipt identity binds the full issuance profile; current inputs bind the accepted current profile, with an independently accepted bridge preserving all authority values. Existing requested exports refuse; failed pre-intent reservations do not consume unspent authority and need no export scan. Intent/spending and later cleanup never refund. K281 decisions and k282 complete reviewed admission repair precede k269; no authority or pass exists."
+      "caption": "Earlier Q mechanics/control evidence precedes separate qualified one-time provisioning and independent validation. Fresh P actual build/UID/channel/authority/export/input facts precede intent. Only then do consumption, synchronized original start and A first target source/root/closure outcomes occur. Required Q/P U claims block at their stage; target outcomes are never earlier calibration. LIVE release/acceptance and the complete k282 conjunction remain pending whole repair/review before k269. Pre-intent export failure never replenishes consumed authority."
     },
     {
       "id": "native-reference-proof",

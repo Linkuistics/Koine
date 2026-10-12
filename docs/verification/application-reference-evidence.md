@@ -62,6 +62,16 @@ the selected bounded claims or justify another impossible-mechanism construction
 The exact status relocation does not waive full-byte companion/table binding or complete
 partition/extractor controls; no admission mechanism or actual proof is established here.
 
+K282 is decomposed at five repair seams. Operation-credit child k283 specifies the
+[stage-specific operation map](application-reference-packaging-runtime.md#operation-and-credit-map)
+and [non-consuming qualification routes](application-reference-packaging-runtime.md#non-consuming-qualification-routes):
+earlier Q mechanics/identity/control evidence, fresh P facts before intent, and A outcomes
+first observed in the authorized attempt. This resolves the circular demand for earlier
+successful target behavior without crediting it as native qualification. K284 still owns
+full bounded-contact/pre-lookup reconciliation; k285 owns coupled independent LIVE release/
+acceptance; k286 owns enduring inputs/reporting; k287 owns complete reconciliation and the
+mandatory whole-k282 review before k269. No child is a consumable construction handoff.
+
 The [canonical joint evidence boundary](application-population-metadata-shape.md)
 owns the selected reference, cohort requirements, permission and packet-integrity
 limits. Its [selected requirements](application-population-metadata-shape.md#selected-reference-and-evidence-requirements)
@@ -943,10 +953,10 @@ lists/null cannot represent unperformed work as passed.
 | --- | --- |
 | subject | Proof/schema/inventory versions/digest; external bootstrap/current accepted revision/verifier-control identities; full permission/extract/concordance/read-set identities; actual retained executable and OS/runtime/image identities; pure composition |
 | run | Unique coordinate, task/command/edge, actual before/after input identities, interval, process tree, channel nonce/domain/process/frame/EOF/reap observations, immutable original result/contact objects and performed/unperformed work |
-| case | Required coordinate/applicability rule, fixture/expectation identities and provenance, role/format/layout/phase, intended positive/failure, actual coordinate/reason, gate and external-contact links |
+| case | Required coordinate/applicability rule and Q/P/A stage/claim scope, fixture/expectation identities and provenance, role/format/layout/phase, intended positive/failure, actual coordinate/reason, gate and bounded-evidence/limitation links |
 | pair | Positive and isolating mutation coordinates, changed operand, evidence it reached the intended check, unaffected checks and matched input context; incidental schema rejection is insufficient |
 | observation | Independent runtime/collector tool/input/image identities, original narrow result, coverage/calibration and limitations; producer trace has a different provenance tag |
-| verdict | Each required coordinate satisfied/failed/unavailable with reason; exact missing/extra/duplicate/stale coordinates and completeness; counts are diagnostic only |
+| verdict | Each stage's required coordinate satisfied/failed/unavailable with reason; P facts/A outcomes not yet performed are explicitly pending their stage, never passed by Q. Exact missing/extra/duplicate/stale coordinates and stage completeness; counts are diagnostic only |
 
 Author and freeze the inventory from the **whole** contract before the first construction
 stage, independently of produced case lists. Enumerate then classify the cross product:
@@ -957,7 +967,13 @@ expectation source, intended mutation, required observer and construction owner.
 cells need independent reasons (a source pipe has no layout; parse failure has no successful
 tree). No runner derives applicability from tests it happened to find. Every normative
 obligation maps to applicable positives and isolating negatives, and each case maps back to
-the concrete branch reached. Do not demand meaningless combinations or hide meaningful
+the concrete branch reached. Fix each claim's Q/P/A stage independently using the
+[operation and credit map](application-reference-packaging-runtime.md#operation-and-credit-map).
+Q requires the applicable mechanics/refusal/expectation controls for P/A operations;
+their fresh live values and first-target outcomes cannot be represented as earlier
+executed successes. An accepted contact-limit coordinate names the canonical amendment
+and its exact unknown coverage, separately from required failed/unavailable Q/P facts.
+Do not demand meaningless combinations or hide meaningful
 ones behind sparse fixtures. Helpers/aliases need their actual file/tree/tail coordinates.
 
 An inventory correction is a reviewed input change, never post-run removal of a failure.
@@ -1065,13 +1081,25 @@ selectors/maps/fixture authority; SCRATCH rejects live intents/results. Actual e
 preservation through Task/interpreter and startup capability correspondence are unqualified.
 
 The companion's [operation map](application-reference-packaging-runtime.md#operation-and-credit-map)
-specifies every proposed UID/build/fixed-location/register/receipt/export/consumption/start/
-source/acquisition/decoder/closure operation as executed, mapped or unexercised. Fixed
-location derivation uses canonical literal bytes, not HOME/cwd; every authority traversal
-maps to held scratch objects. Exact native build checks select explicit sysctl operations,
-not an installed SystemVersion.plist probe. Shared values do not qualify unexercised native
-calls. Logical intents and actual mapped scratch observations have distinct provenance;
-unknown mappings refuse. No required unexercised segment can receive native/admission credit.
+specifies the designed entry/UID/build/location/register/receipt/export/consumption/start/
+source/acquisition/decoder/closure/initialization operations. E credits actual scoped
+observations, M only checked logical-to-scratch mapping, and U missing claims. Its independent
+Q/P/A stage partition fixes when each fact is required: all Q mechanics/identities/controls
+before qualification, fresh P authority/build/UID/channel/export/input facts before intent,
+and A source/root/byte/closure outcomes only within the authorized attempt. No missing Q/P
+fact becomes an A outcome or an accepted contact unknown. Actual target behavior need not
+be sampled before the very pass that observes it, and cannot calibrate the tool.
+
+Fixed location derivation uses canonical literal bytes, not HOME/cwd; actual scratch
+traversal qualifies its mechanics, while separately qualified provisioning/validation
+obtains real fixed-subject facts for fresh P rechecks. Exact native build/UID/channel/CF
+calls have the companion's permitted pure routes, independently pinned observations and
+refusal controls; the requested fresh export has its already-qualified pre-intent route.
+No LIVE preflight-only qualification role, installed query/root positive or new permit is
+introduced. Shared values/source pins cannot qualify an unexercised required native call.
+Original logical intents, mapped scratch calls, fresh live facts and first-attempt outcomes
+have distinct provenance. Unknown mappings refuse; only the canonically amended contact
+classes can remain explicitly unknown without blocking, never clean/inapplicable.
 
 The [read/capability partition](application-reference-packaging-runtime.md#read-partition-and-initial-capability-state)
 separates approved runtime-image/control/scratch reads from forbidden source/resource/proxy
@@ -1340,7 +1368,7 @@ The normative sections above and the complete companions supply the contracts ci
 | k273 R2/R7/R8/R13: independent authority/originals, concurrency, partial transitions, persistence and export order | [Lifecycle](#authoritative-attempt-evidence): separate fixed subject, immutable issuance receipt, retained intent, destructive permit rename, explicit initialization/final validation, exact flush APIs/limits and verified derivatives | Qualify initializer/validator mechanics, filesystem/API assumptions, two-caller/old-fd/death/short-write/replacement/flush/deletion and scratch derivative controls before k244 close/k245. K245 verifies its actual original/derivative after the declared attempt. No receipt or OS-crash evidence exists. |
 | k273 R4/R12: independent anchors, correction authority, concordance and closed verifier/invocation proof | [Approval](#independent-approval-root): fixed sibling register, direct review/integration acceptance, terminal commissioning, acyclic issuance/current correction bindings, strict inventory and fresh channels | Independently construct/review/commission actual artifacts, accept full normative/basis/inventory/control bytes and verify own-verifier/omission/substitution/channel controls. No root, accepted revision or qualified correspondence exists. |
 | k273 R3/R6/R9/R11: all contact classes and protected/intermediate policy | [Contact companion](application-reference-contact-boundary.md): independent documentary inventory, C1–C8, per-family bypass/loss controls, protected Data and out-and-back specimens | U1–U6 are exact unavailable work: current correspondence, full unprivileged mechanism, initial capabilities, proxy/map effects, calibration and final stability. They precede actual adapter/entry/read/no-contact credit; no stronger route is selected. |
-| k273 R5/R10/R14: exact retained packaging entry, complete actual reads and independent expectation bases | [Packaging companion](application-reference-packaging-runtime.md): parent challenge, identical export-request/Task/script/CLI chain, mandatory domain channel, E/M/U operation map, complete read/initial-state closure and named bounded bases | Qualify exact request/intermediary endpoints, native UID/build/current compatibility, all actual task/runtime/backing/proxy reads, full source objects and independent current CF results. Every required U segment remains unavailable before admission. |
+| k273 R5/R10/R14: exact retained packaging entry, actual reads and independent expectation bases | [Packaging companion](application-reference-packaging-runtime.md): parent challenge, identical export-request/Task/script/CLI chain, domain channel, scoped E/M/U and independent Q/P/A operation map, read/initial-state claims and named bounded bases | Required Q mechanics/actual identities/native UID/build/CF expectations and controls precede qualification; fresh P actual authority/channel/export/build/input facts precede intent. A first target query/root/closure outcomes remain unobserved until the one attempt, never calibration. Canonically accepted contact unknowns stay separate; k284/k285/k286/k287 reconciliation and whole review remain required. |
 | k273 whole reconciliation, placement and complete review | Contract, summaries, seven editable/rendered views and consumer charters share this conjunction | Mandatory whole-k273 review and every earned integration precede k269; substantive earlier-child repairs receive live repair and whole reconciliation. Design retirement qualifies no tool and closes neither k244 nor k242. |
 | k244 fixed source framing, terminal/failure, held scope/layout/locale, immutable bytes and associations | [Architecture](#selected-instrument-architecture), [record model](#evidence-records-and-association-keys) and [one-pass order](#one-pass-acquisition-and-closure) retain every occurrence and all six direct-locale files | Implement and qualify actual pipe/descriptor adapters and item rereads under the complete contact boundary. Source spelling closure alone cannot establish physical root/alias association. |
 | k244 complete native decoder/format/type/serialization/duplicate limits and identities | [Typed decoder](#native-typed-decoder-and-fidelity-limits) and [expectation classes](#independent-decoder-expectation-classes) preserve original bytes separately from full native witnesses | Independently authored format bytes/bases and separately acquired current-runtime observations must qualify every admitted branch, helper/alias relation and loaded image. Unsupported/missing evidence stays explicit. |
@@ -1368,7 +1396,7 @@ Independent roles cannot be discharged by the producer whose facts they adjudica
 | Proof/oracle/checker/registrar/extractor construction owner | Early usable strict schemas/inventory comparison, acyclic approval/correction/receipt and parent/inner channels; every earlier working check remains usable. |
 | Independent bootstrap/control adjudicator and commissioning owner | Review actual retained checker/registrar/verifier/launcher/runtime artifacts, acquire original known-answer/omission/substitution results and directly register acceptance before any candidate admits itself. |
 | Independent byte-specimen/current-runtime expectation owner | Named bounded formats and separately acquired original pinned CF results before producer comparison, with separate adjudication/acceptance and no shared producer exporter. |
-| Actual source/held/decoder/coordinator/entry owners | Qualify each adapter, native-call E/M/U segment and exact export-request/Task/script/CLI rehearsal only after its contact/launch prerequisites; no target calibration. |
+| Actual source/held/decoder/coordinator/entry owners | Qualify required Q adapter/native-call/entry mechanics and scoped E/M/U claims through the companion's non-consuming routes; obtain/check fresh P facts before intent. Observe only declared A target outcomes in the one attempt; no target calibration, blanket U waiver or partial-design consumption. |
 | Independent family/variant calibration owner | U5: every applicable direct/child/inherited/proxy bypass and readiness/association/drop/filter/attach/termination cell before retained-candidate measurement. |
 | Qualified initializer and separate actual receipt validator | After mechanics/artifact/control qualification: actual UID/ancestors/filesystem support, staged issuance binding, one publication and final validation before k245. Neither packaging nor a scratch receipt initializes authority. |
 | Offline derivative constructor and independent association verifier | After original freeze: exact complete or explicitly incomplete original-to-export sets/bytes/coordinates, without new source work; failures retain consumed authority. |

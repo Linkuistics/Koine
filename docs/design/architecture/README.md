@@ -16,23 +16,22 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Reconciled whole review, late-input qualification and failed-evidence handoff without a finite-subject claim.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separated immutable issuance from current correction validation while preserving export/intent/spent/start ordering.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Bound whole companions/tables and added requalification/audit after receipt provisioning or correction.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Carried issuance/current and parent/inner channel distinctions plus full startup/inherited/proxy evidence through the verifier handoff.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Placed whole review before k269's live U1–U6 and separate qualification/audit/close owners.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Kept late provisioning/correction changes under last-edit requalification and surviving repair ownership.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Linked complete design/unavailable closure to construction owners and exact original/verified-derivative prerequisites.
-- [Whole producer obligation comparison](../../verification/application-reference-evidence.md#whole-producer-obligation-comparison) — Compared every original k273/k244/k242 duty with delivered design and precise remaining evidence.
-- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Named separate independent/construction/provisioning/review/final-qualification/audit/close roles before consumers.
-- [Normative extraction and concordance](../../verification/application-reference-evidence.md#normative-extraction-and-field-concordance) — Confined section extraction to three named sources; companions/tables stay whole-byte and actual read closure remains complete.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Separated earlier Q mechanics from fresh P checks and A target outcomes, with independent release still required.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Placed Q before qualified provisioning, P before intent, and first target outcomes after synchronized consumption/start.
+- [Operation and credit map](../../verification/application-reference-packaging-runtime.md#operation-and-credit-map) — Assigned scoped E/M/U evidence and exact blocking stages to every designed operation.
+- [Non-consuming qualification routes](../../verification/application-reference-packaging-runtime.md#non-consuming-qualification-routes) — Specified actual pure native calls, separate qualified authority validation and fresh-export preflight without a LIVE calibration role.
+- [First-attempt outcomes and required counterexamples](../../verification/application-reference-packaging-runtime.md#first-attempt-outcomes-and-required-counterexamples) — Preserved first-source/root failure, raw/race/closure limits and incomplete-evidence disposition without waiving required controls.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
-corrections. Qualification remains unprivileged, with no root/sudo collector. Complete independent IPC/proxy/descriptor/mapping contact coverage and actual
-approval/provisioning proofs are still absent. The published DTrace basis includes BSD
-and Mach providers but supplies no selected complete unprivileged mechanism. Authored
-pure work remains useful; a partial clean trace cannot admit.
+corrections. K281's actual choices accept named bounded contact claims and unknown
+current-service/proxy/initial-right/mapping coverage with residual accidental-contact
+risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
+with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
+absent. K282 is a five-seam producer: k283 repairs credit; k284 contact/pre-lookup claims;
+k285 LIVE activation/acceptance; k286 input partition; k287 the complete reconciliation
+and mandatory whole review. Every earned integration precedes k269; no partial child
+is an implementable admission handoff or spends k245's pass.
 
 Unchanged context: [Persistence operations](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits),
 [Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative),
@@ -49,9 +48,10 @@ All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
 Open [the complete replacement discussion](index.html#discussion) for all seven reference/
-corpus views. The complete design/exact-unavailable boundary awaits mandatory whole-k273
-review and every earned integration before k269. U1–U6, required native segments, actual
-approval/receipt and complete tool proofs remain absent; k244/k242 cannot close on this
+corpus views. K279/k280 reviewed the earlier whole-k273 boundary; the complete k282 repair
+now requires its own mandatory whole review and every earned integration before k269.
+Required Q/P native/identity/control evidence, actual approval/receipt and complete tool
+proofs remain absent; accepted contact unknowns supply no full no-contact credit. K244/k242 cannot close on this
 design. Late provisioning/corrections require affected requalification, independent audit
 and distinct final close. K245's pass is unused; k246/k247 retain separate full duties.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size

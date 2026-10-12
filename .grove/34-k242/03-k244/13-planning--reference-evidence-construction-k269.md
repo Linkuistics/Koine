@@ -43,6 +43,14 @@ controls/identities and known defects remain blockers under the reviewed bounded
 The original Done when texts remain the inventory except those explicitly compared
 contact/lookup amendments. No new execution, authority, probe or target pass is authorized.
 
+K282 is decomposed into k283 operation credit, k284 contact/pre-lookup claims, k285
+LIVE release/independent acceptance, k286 enduring-input partition and k287 whole
+reconciliation. K283's Q/P/A map specifies earlier required actual-call/control evidence,
+fresh invocation facts before intent and target outcomes only during the one authorized
+attempt, with scoped E/M/U evidence. It introduces no LIVE qualification mode. Consume
+that map only within the final whole-k282 reviewed conjunction; the other live children
+and mandatory whole review/integration cannot be skipped because a credit child retires.
+
 ## Work and verification
 
 K279/k280 find the k273 conjunction incomplete. First consume actual requirements

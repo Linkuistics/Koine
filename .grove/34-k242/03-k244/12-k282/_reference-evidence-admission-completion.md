@@ -1,4 +1,4 @@
-# reference-evidence-admission-completion-k282
+# reference-evidence-admission-completion-k282 — brief
 
 
 ## Goal
@@ -105,3 +105,42 @@ collector/protected/topology/runtime probe, installed query/contents, privilege/
 helper/consent/posture change or native/VM work. Use frozen presentation checks. Existing
 native acceptance placement and useful breadth remain; substantial new human choices
 must precede their consumers, not be inferred inside this producer.
+
+## Decisions (running log)
+
+The complete repair is larger than one focused session. Decompose at independently
+checkable protocol seams: operation-credit/admission partition (R2), bounded-contact/
+closed pre-lookup claims (R1/R5), coupled LIVE release and independent acceptance ownership
+(R3/R4), enduring-input/reporting partition (R6), then whole reconciliation. Only the
+first child runs in this session. Every Required complete repairs and Done when above
+remains this node's closing contract. No partial child is a construction handoff, and
+no child supplies authority, executed controls or target evidence. The closing child
+compares the complete original obligations, reconciles all seven views and every consumer,
+then inserts the mandated whole-node review before k269 as its last work act. There is
+no competing partial review; all earned integration precedes k269.
+
+## Decomposition
+
+1. Reference-evidence-operation-credit-k283 owns the complete per-operation Q/P/A and
+   E/M/U distinction, non-consuming qualification routes and first-attempt failure limits.
+2. Reference-evidence-prelookup-claims-k284 applies actual k281 choices to every C1–C8/
+   U1–U6/read/topology claim and exact target/common-ancestor/authority/export operation.
+3. Reference-evidence-live-acceptance-k285 owns coupled disarmed LIVE release and chartered
+   independent clean/findings-path acceptance, correction and commissioning authority.
+4. Reference-evidence-normative-inputs-k286 owns exhaustive enduring-rule/status partition,
+   whole-byte bindings and exact mutation/extraction controls.
+5. Reference-evidence-admission-completion-k287 reconciles every original obligation and
+   durable/charter/view surface, then cuts mandatory whole-node review before k269.
+
+All earlier repairs remain independently checkable but non-consumable until the closing
+child delivers the whole conjunction and its required review/integration settles. The
+node retains every original Required complete repairs/Done when above, with no target
+permission, useful breadth, authority or product/private/native duty lost at a child close.
+
+Antony requires efficient verification and a small task tree: no testing rabbit holes
+or pursuit of perfect evidence. Use the existing document/render checks plus the exact
+obligation comparison needed by each repair. Once they pass, repeat only for an actual
+changed input, failure or unresolved material concern. Keep the mandated whole review;
+add no duplicate partial-review or speculative testing leaves. Construction should verify
+meaningful required behavior at the agreed seams without multiplying equivalent controls
+or expanding accepted contact limits into an exhaustive-observation programme.

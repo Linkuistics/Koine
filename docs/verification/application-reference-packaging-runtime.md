@@ -17,13 +17,15 @@ and [obligation comparison](application-population-metadata-shape.md#line-by-lin
 control their scope. K282 repairs prerequisite versus first-attempt credit,
 disarmed LIVE activation, independent clean/findings-path registration and enduring inputs
 versus changing reports. Its mandatory whole review and every earned integration precede
-k269. The operation/owner tables below remain proposals requiring that repair, not an
-implementable rule that every unexercised target operation blocks the very first pass.
-No U cell is waived here. The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
+k269. Operation-credit child k283 now repairs the operation map into earlier Q qualification,
+fresh P validation and first-attempt A outcomes. Bounded-contact/read reconciliation k284,
+LIVE release/acceptance k285, input partition k286 and closing reconciliation k287 remain
+required before the whole review. No partial child is a construction handoff and no U
+prerequisite is waived. The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
 owns this exact construction hold. Canonical contact/lookup clauses are amended only
 as explicitly compared; all other permission and qualification duties remain. Full
 current-service/proxy/initial-right/map coverage is an accepted unknown, not a blanket
-prerequisite or full no-contact proof. The older operation/read/U tables below require
+prerequisite or full no-contact proof. The older read/U tables below require
 k282's exhaustive bounded-claim reconciliation before construction. Whole-byte inputs
 are retained; the narrow status relocation grants no companion/table reporting slice.
 
@@ -98,31 +100,139 @@ closure cannot qualify; retain the unavailable boundary rather than credit a sho
 
 ## Operation and credit map
 
-Credit is per operation: **E** means a future actual pure operation must be independently
-observed, **M** means exact logical intent/decision is mapped to scratch operands, and
-**U** means a live/native segment is unexercised. No row currently has executed evidence.
-Shared arithmetic/constants qualify their calculations only. Every new native call found
-in implementation needs an independently reviewed row and affected controls; this table
-is a proposed closed operation plan, not a claim about an unbuilt executable's reach.
+Evidence credit and execution stage are separate dimensions. **E** credits an actually
+performed operation, with its retained image, raw operands/results and independently
+checked claim. **M** credits only an independently checked logical-to-scratch mapping;
+it does not credit the native destination or its behavior. **U** records a claim that
+has no qualifying evidence. None is a blanket permission or an aggregate pass.
 
-| Operation | SCRATCH treatment and required evidence | LIVE segment / current missing credit |
+Every required claim additionally has exactly one stage fixed in the independently
+accepted inventory **before** measurement:
+
+| Stage | Requirement and blocker |
+| --- | --- |
+| Q — earlier qualification | Required tool mechanics, independent expectations, identities, entry/domain/refusal controls and accepted anchors must pass before instrument qualification/release. A failed, missing or stale required Q claim blocks; M cannot replace required actual-call E evidence. |
+| P — fresh pre-consumption validation | Actual invocation facts are obtained and checked using already qualified mechanics. Missing, changed, uncertain or refused P facts stop before `consume.intent`, permit rename, original start or target contact. An earlier sample never supplies a fresh P fact. |
+| A — authorized-attempt outcome | Behavior that can first be observed only in the selected initial/closure acquisition remains unobserved until that attempt. It blocks successful evidence publication when missing/failed, rather than blocking the attempt on its own prior success. All Q/P/release obligations must already hold. |
+
+Applicability is claim-specific: both domains require actual UID/channel/parser/runtime
+mechanics; only LIVE requires the fixed receipt's current state; only target acquisition
+has actual installed-query/root outcomes. A scratch source pipe has no installed app
+ancestry claim. These are semantic reasons fixed independently, not post-run excuses.
+One operation can have separate Q mechanics, P operands and A results; each gets its own
+coordinate. Accepted contact unknowns retain their distinct limitation coordinates under
+the canonical bounded-contact amendment; they are neither passed E nor inapplicable.
+
+The following closed plan accounts for the designed operations, including all operations
+in the previous map. Construction expands each compound row into actual API/syscall/
+command variants, operands and controls before executing it. A newly discovered call,
+read, startup dependency or branch has no inherited credit: extend and independently
+accept its row/applicability, then requalify affected inputs. A call graph or table of
+planned operations cannot establish an unbuilt executable's complete reach.
+
+| Coordinate / operation | Q route and bounded E/M credit | P fact or A outcome; exact refusal/failure |
 | --- | --- | --- |
-| Checker export-request entry | E: exact public argv/parser/packaging dispatcher, with independently bound SCRATCH parent channel; the private launcher cannot skip this entry. Separate known-answer controls qualify the commissioned parent launcher and channel. | LIVE delivery/parent-image correspondence and real commissioning remain U until independently qualified; shared launch-routine tests cannot credit the request entry. |
-| Task lookup, global configuration and recipe dispatch | E: launch the exact absolute retained runner/Taskfile/cwd/argv through the observed full chain; pair extra-edge and wrong-config subjects. | Actual retained Task behavior and read discovery are unqualified (U3/U5/U6); a recipe digest credits nothing. |
-| Script and CLI parse | E: same script/interpreter/parser; spaces, quoting, extra/duplicate flags and changed task/script edges have isolating controls. | Exact process/image/channel continuity is missing; bypass must be caught outside the producer. |
-| Actual user identity | E: retained `getuid`/`geteuid` calls with raw results, checked against independent launch UID; M wrong-UID results at the declared seam. No `getpwuid`, HOME or inferred login identity. | Actual approved UID and provisioned ancestor ownership remain absent; mock UID is no native-call evidence. |
-| Exact product version/build | Select `sysctlbyname` for `kern.osproductversion` and `kern.osversion`, with checked size/result/NUL and exact bytes. E only after independent current API/command and compatibility-mode correspondence plus authorized runtime observation; M for authored success/error/change cases. No `sw_vers`, SystemVersion.plist, subprocess or fallback. | Both actual native calls/current value correspondence are U until qualified; a constant comparison or synthetic 26A434 cannot establish the installed build. |
-| Fixed authority/register location | E value logic starts from the canonical literal absolute namespace and stable permission, with exact component bytes. No cwd/HOME/argv-derived subject. M every authority traversal operation through a separate held scratch tree. | Real live subject/ancestor traversal, named/held identities, modes, consent risk and current filesystem support are U; a fixture location proves only its mapping. |
-| Register/bootstrap/current revision | Outer checker uses only its commissioned accepted root/artifacts; inner scratch approval objects are separately bound specimens. E actual scratch locking/reads; M substitution/pending/correction cases. | Real commissioning/register/receipt bindings need independent review/provisioning/validation. Scratch bootstrap cannot commission the live checker. |
-| Export validation/reservation | E held no-follow traversal, `mkdirat`, exclusive reservation file, complete writes and actual scratch flushes; M logical protected/overlap/replaced-parent cases. Same order/argument checks as LIVE. | Actual live parent/device identity is a live input, checked before consumption; scratch writeability cannot promise its future capacity or flush support. |
-| Receipt discovery and validation | M fixed single-component `unspent.receipt`/`spent.receipt`/intent/attempt probes on held scratch subject; E actual scratch open/stat/read/lock and name-versus-held rechecks. | Actual unchanged issuance receipt, external correction/final validation and ancestors must be independently acquired; missing/uncertain live facts refuse. |
-| Destructive consumption | E scratch `consume.intent`, checked short writes, `renameatx_np(..., RENAME_EXCL)`, names/inode rechecks, directory fsync and same-device F_FULLFSYNC. M each return/error and process-death point. | Only observed scratch acknowledgements/order are credited. Actual filesystem support and documented namespace/full-flush assumption need validation; no OS-crash proof or permit initialization follows. |
-| Original start/header and release | E scratch exclusive creation, writes, flushes, binding rechecks and emitter release only after complete acknowledgements. | Live release also requires actual validated build/UID/authority/export/inputs. Any U prerequisite prevents release; start creation never repairs it. |
-| Source spawn/initial and closure phases | M exact `/usr/bin/mdfind`/argv intent to the held scratch emitter; E actual pipes/drain/framing/reap/phase ordering. | Native mdfind/index/API/service behavior is U. Hashing or mapping its intent cannot authorize an exec/getter/query during qualification. |
-| Root/layout/file/inventory acquisition | M literal/resolved prefixes, protected/out-and-back and every closed basename intent to approved held scratch objects; E actual declared relative syscalls and rereads. | Current installed root/mount/proxy behavior is U; no real root lookup/listing/content positive, hidden-ancestry claim or new consent. |
-| CF parse/type export and images | E pure bytes through actual pinned parser and separately observed narrow runtime facts; original format/source expectations remain distinct. | No current CF image observations exist; an SDK/header/source pin supplies no native format verdict. |
-| Final freeze/original closure/derivation | E full item comparisons, actual input/image before/after checks, checked writes and independent exact original-to-export association on scratch evidence. | Live outputs bind the original spent attempt; no derivative can certify its own origin or supply acquisition permission. |
-| Explicit initialization | Never reachable through package task/channel/composition; independently owned initializer has its own scratch controls. | Actual provisioning/final validation stays separately owned before k245. No packaging rehearsal credits an unexercised initializer. |
+| O01 checker export-request parser/dispatch | E same retained export-only entry under independently bound SCRATCH launch; known-answer/quoting/extra-argument/omitted-entry controls. No shared-routine shortcut. | P exact request/export bytes, approved entry/image and fresh independent launch binding; absent/incorrect binding refuses before preflight. |
+| O02 launcher/checker supervision | E real unprivileged SCRATCH spawn/identity/death/refusal controls on retained launcher/checker; independent commissioning/adjudication is Q, never candidate output. | P actual supervisor/parent incarnation, accepted role and release state. Missing/partial/stale release refuses. Separate release ownership must be resolved before construction; a receipt never supplies it. |
+| O03 Task configuration/recipe dispatch | E full retained absolute runner/Taskfile/argv/cwd; independently authored wrong-config/extra-edge controls and actual declared read checks. | P equality of accepted full configuration/entry closure and actual invocation; extra/unclassified declared input or changed required identity refuses. |
+| O04 script/interpreter/CLI/channel transfer | E retained script/interpreter/parser through Task, exact quoted destination and actual descriptor transfer; dropped/replaced/miswired-edge controls. | P exact images, parsed bytes and exclusive intended endpoints along this invocation. Channel loss, duplicate/unknown flags or different destination refuses. |
+| O05 `getuid` and `geteuid` | E actual unprivileged calls in the pure native-operation programme; compare raw results with independently accepted launch UID. M only injected wrong-result/privilege cases. No `getpwuid`, HOME or login inference. | P actual UID/effective UID equal independently validated authority/launch identities. Mismatched/unknown identity refuses; scratch UID is never a receipt identity. |
+| O06 build/version API | E actual `sysctlbyname` size/value calls for only `kern.osproductversion` and `kern.osversion`, in the pure native-operation programme; preserve size/result/NUL/raw bytes and independently establish API/compatibility correspondence. M errors/change/wrong-build controls. | P fresh raw values exactly 27.0.1/26A434, same qualified API/configuration and current correspondence; unknown/mismatch refuses. No `sw_vers`, plist, subprocess or fallback. |
+| O07 random challenge and unnamed channel | E actual `SecRandomCopyBytes` and `socketpair`, explicit descriptor actions, framing/sequence/nonce/EOF/reap and supervisor-lifetime controls on scratch process peers. | P new successful nonce/channel, actual parent/child/image/endpoint ownership and all request/revision/domain bindings. Missing entropy, leaked/replayed channel or unavailable required peer identity refuses. |
+| O08 accepted register/bootstrap/revision/control/bridge reads | E actual held scratch reads/locks, strict schema/set/value checks and independently adjudicated substitution/correction controls. Actual commissioning/registration is separately owned Q; scratch cannot commission it. | P actual accepted highest revision/control/issuance-current profile bridge and frozen original acceptance objects through commissioned read route. Pending/old/copied/self-approved or changed binding refuses. |
+| O09 fixed authority literal/components | E exact canonical location/permission value logic; M separately mapped scratch ancestor walk, `openat(O_SEARCH)`, `fstatat`, `readlinkat`, physical dot/link limits and protected/unlisted refusals. | P real fixed subject/ancestor named-versus-held identity, type/ownership/mode and reviewed operation/ancestry entries; obtain original facts in separately authorized provisioning/validation, then recheck. Unknown/replaced/protected/unlisted ancestry refuses. No scan or alternate subject. |
+| O10 fresh export ancestry/overlap/reservation | E actual scratch held no-follow operations, overlap/quoting/race checks, `mkdirat`, exclusive reservation file, writes and flushes; M isolated protected/overlap errors. | P only the requested fresh export's separately reviewed ancestor/operation entries, actual held parent/device, absent destination, exclusive reservation and successful write/flush acknowledgements. Failure precedes intent; retain prefix and require another explicit fresh destination, with unchanged unspent authority. |
+| O11 receipt/name/intent/attempt discovery and validation | E actual scratch probes/open/stat/read/lock, immutable bytes, hard-link/type/mode checks, both/neither names, intent/prefix and name-versus-held race controls. | P actual unchanged issuance receipt and independent final validation/correction; valid single unspent name, no prior intent/attempt/uncertainty and actual held/name equality. Missing/replaced/consumed/partial facts refuse without initialization or refund. |
+| O12 initialization/staged receipt/final validation | E separate initializer/validator mechanics on scratch: exclusive creation, staged binding, same-directory publication, writes/flushes/rechecks and death/failure controls. Package/pure entry cannot invoke real initialization. | Separately authorized one-time provisioning obtains actual UID/ancestors/filesystem acknowledgements and independent receipt validation before P can pass. Unknown support or partial initialization refuses and needs explicit human recovery authority, never an implicit retry. |
+| O13 consumption intent/exclusive rename/locks/synchronization | E actual scratch exclusive `consume.intent`, short-write/death/concurrent controls, `renameatx_np(..., RENAME_EXCL)`, names/inode rechecks, directory fsync and same-device F_FULLFSYNC; M return/error injections. | A authority transition begins only after all P checks. Each actual acknowledgement and identity recheck is required before source release. Failed/partial transition retains intent/spent/uncertainty and forbids contact/retry. Real namespace/device support is separately validated under the selected documented persistence assumption; no OS-crash certificate. |
+| O14 original start/header and release | E scratch exclusive start, complete writes/flushes/binding rechecks and emission order, including missing-ack negatives. | A actual original start and required acknowledgements, with final Q/P/release equality checks before target emission. Failure prevents emission, retains consumed authority and exact unperformed work. No start can repair failed prerequisites. |
+| O15 fixed source image/argv/spawn decision | Q exact retained `/usr/bin/mdfind` image identity and independently reviewed fixed argv/environment/descriptor plan; M exact exec intent to a separately held scratch emitter. E real scratch spawn/pipe setup and omitted/extra/bypass controls. | P required image/argv/authority/input equality before emission. A first actual fixed mdfind exec/query/termination results after consumption; spawn/getter/query failure is recorded, never qualification or permission for another run. |
+| O16 concurrent stdout/stderr drains, framing and reap | E scratch actual pipes/reads/close/wait, authored NUL/empty/repeated/raw/error/interruption/overflow cases and phase controls. | A complete actual raw streams, framing, terminal status and reap for initial and closure phases. Incomplete initial response forbids root acquisition; preserve prefix/unperformed work, no retry. |
+| O17 raw slots/prefix/pre-lookup/link/dot/alias decisions | E independently authored raw byte/value/association controls; M exact source spelling and every requested walk component/flag to held scratch objects. | A each real raw slot and permitted component operation, only after closed pre-lookup classification. Reject raw/outside/protected/unlisted/unknown steps before lookup, retain raw occurrence/link text and exact missing work. No hidden physical-ancestry/TCC claim. |
+| O18 held root identities/races/source associations | E actual scratch search-only open/stat/readlink/held-name checks, replacement/race and alias/repeated-slot controls; M target identities/spellings to exact scratch objects. | A first actual admitted root identity and before/closure alias/source-to-root association. Missing/changed/refused identity prevents that evidence's completion; initial success cannot stand in for closure. |
+| O19 layouts/base selection/direct inventories | E scratch four/coincident layouts, absence-only advance, no-follow bases, direct enumeration/raw component order and all failure variants. M exact target fixed layout intents. | A actual selected information/resource bases and complete direct locale inventory, with each failed candidate/outcome. Refusal/unknown is not absence or fallback; no arbitrary recursion/language subset. |
+| O20 fixed-file/type/probe/byte acquisition | E actual scratch no-follow probe/open/fstat/read/short-read/size/stamp/link/type/error controls, all six basenames globally/direct-locale; M fixed file/locale coordinates. | A actual original regular-file bytes/extents and named/held/after identity/type/stamps. Preserve absent/empty/refused/malformed/prefix distinctions; never clip to reader limit, acquire executable bytes or follow descendant links. |
+| O21 CF format/parse/typed tree/export | E actual retained parser on immutable authored bytes, separately acquired/adjudicated current-runtime expectations and loaded-image identities. M only declared fault injection, never native type evidence. | A parse original attempt objects through already qualified decoder; record complete tagged trees/candidates/flags/all tables/LocProvenance/tails or exact unsupported/malformed/unavailable coordinates. First target parse is not decoder calibration. |
+| O22 initial/closure phase and item reread comparisons | E scratch actual source closure/rereads, ordering/association/freeze/interruption/no-retry controls. | A exactly initial and closure sources and required item/root/inventory/file comparisons. Closure compares only; changed/missing evidence never repairs initial acquisition or supplies a third phase. |
+| O23 tool/input/runtime freeze and final publication | E actual scratch digest/object/set/image comparisons and changed-input/publication failures, under accepted bounded observation scope. | P accepted required input/image/closure equality before intent; A rechecks and final before/after equality before complete publication. Changed required inputs/images block completion; unavailable required identity is not accepted contact risk. |
+| O24 offline original-to-export derivation | E actual scratch complete/incomplete object/association verification with missing/swapped/truncated controls and checked output writes. | A frozen original and exact independently verified derivative sets/bytes/coordinates. Derivation reads only original evidence; failures retain consumed authority, never reacquire target data. |
+| O25 declared runtime/input/image/startup operations | Q independently reviewed actual config/import/loader/image lookup, open/stat/read/map and known fd/endpoint transfers, digest/image association and bounded startup/read controls on retained pure entry. A source hash or image name cannot supply an actual required identity. | P equality of required known consumed objects/images/operations and launch context before intent; A stability rechecks after returns. Missing known required identity/undeclared operation blocks its stage. Complete initial-right/map/proxy correspondence remains the canonical accepted unknown, separately recorded; it cannot be described as observed read closure or excuse a failed named control. |
+
+### Non-consuming qualification routes
+
+Q uses the existing independently authored pure-byte/value/association and actual
+unprivileged scratch seams. The native-operation programme calls only O05–O07's exact
+UID/build/random/channel APIs and O21's parser on constructed bytes, with separately
+reviewed runtime reads. These operations inspect process/build or constructed values,
+not installed source/index/application contents. Earlier bootstrap/adjudication exercises
+the actual retained launcher/channel/checker at its private SCRATCH enabling point;
+no valid LIVE launch is a qualification positive. Independent narrow observations record
+actual API operands/results/images; mock results or source pins cannot supply E credit.
+The commissioned launch identity and separately accepted current API/build correspondence
+provide external comparisons; unknown correspondence keeps Q/P unavailable. No collector
+probe, real service request or new privilege is introduced by this specification.
+
+O09/O11/O12's **actual** fixed-namespace facts come from the already selected separately
+owned one-time initializer and independent validator, after their scratch mechanics
+qualify. They inspect only independently reviewed exact authority/ancestor operations,
+publish staged/final bindings and required real synchronization acknowledgements. They
+never select packaging LIVE or touch target applications/indexes. Final validation is a
+P input, not qualification of target behavior or LIVE activation. Provisioning cannot
+be repeated to calibrate or recover; later changes require independently accepted
+correction/affected requalification without restoring consumed authority.
+
+O10's actual requested export is checked once in that explicit packaging invocation's
+pre-intent preflight. Its primitive mechanics must already have Q evidence. A fresh
+destination's identity/capacity/acknowledgements are P facts, not a reason for an earlier
+trial LIVE invocation. Unreviewed export/authority ancestors, protected/unsettled risk,
+unavailable required identities or unknown synchronization semantics refuse. If a
+required fact cannot be obtained by these selected routes, name the exact operation,
+missing evidence and concrete scope/authority trade-off for Antony before the consumer;
+do not invent a live-validation mode, target permit or unstated inapplicability.
+
+The alternative of a LIVE invocation guaranteed to stop before intent is rejected for
+qualification: it would introduce another role-selection/entry promise and could consume
+authority if miswired. SCRATCH actual-call tests plus separate qualified provisioning
+and fresh P checks answer the required facts without that role. Consequential release/
+registration ordering remains the separate k282 repair; no operation-credit result,
+receipt publication or final validation may arm a qualification invocation.
+
+### First-attempt outcomes and required counterexamples
+
+Only O15–O22's actual selected target source/root/file/parse/closure outcomes, plus the
+post-intent authority/output transitions O13–O14/O23–O24, first occur in A. They are not
+required as earlier successful target samples. Required Q mechanics/independent type
+expectations, exact retained images, entry/domain/refusal controls and every P authority/
+build/UID/channel/export/input fact remain prerequisites. An installed operation not in
+the reviewed fixed plan is forbidden, not another A cell. Target results can qualify
+the package's stated evidence only; they cannot repair a tool defect, calibrate wiring,
+prove no-contact or replenish the one attempt.
+
+An unsuccessful A call retains raw response/extent/error, phase, object/association and
+unperformed work. The first irreversible intent/rename boundary fixes consumption even
+when no source call succeeds. Required refused copies carry the canonical explicitly
+accepted failed/incomplete boundary through k245/k246/k247; they supply no complete finite
+subject, private eligibility or useful loss. Two observations are not an atomic snapshot;
+opaque source/index/proxy, hidden-ancestry, TCC and native-race limits remain explicit.
+
+The independent required inventory pairs: complete Q plus valid P with first-source
+failure (consumed/incomplete, no retry); missing Q/native image/control with otherwise
+valid P (pre-intent refusal); stale/mismatched UID/build/ancestor/receipt/channel/export
+with valid Q (pre-intent refusal); mapped sysctl/UID/parser success without actual required
+E evidence (Q refusal); actual scratch E with target behavior still U (no target-success
+prerequisite); first-root/race/closure failure (exact incomplete evidence); and an
+undeclared native call relabelled A or an accepted contact unknown relabelled failed Q
+(inventory/value refusal at the intended coordinate). Positives run on constructed
+scratch subjects and independent known answers; they cannot consume the target pass.
+
+Acceptance is stage-specific, with the inventory checking all sets in both directions.
+At Q close, no required Q claim is failed/unavailable/stale; P facts are expressly pending,
+not fake passes. Before intent all required P facts and the separate independent release
+must hold; A observations are expressly unperformed. Complete evidence publication needs
+all required A outcomes/comparisons or the truthful failed/incomplete disposition. Only
+the specifically selected bounded-contact classes may remain unknown without blocking
+Q/P. Their full C1–C8/U1–U6 claim reconciliation is separate required work; the canonical
+amendment cannot waive unrelated U operations, identities, native expectations or controls.
 
 Each SCRATCH mapping binds operation kind, raw logical operands/flags, role and generation
 to exact held scratch descriptors or emitter image/argv; both directions are checked.
@@ -296,11 +406,11 @@ and placements, without converting this design into implementation leaves:
 
 | Required responsibility | Placement and closure condition |
 | --- | --- |
-| Retained entry/channel/task/script/parser and operation-map construction | After whole-design review and before actual packaging rehearsal; independent request/domain/preflight controls and complete E/M/U disposition. Any U native segment stays an explicit unmet prerequisite. |
+| Retained entry/channel/task/script/parser and operation-map construction | After whole-design review, implement all independently assigned Q mechanics/identity/control coordinates and scoped E/M/U evidence. Separate fresh P facts before intent from A target outcomes; a required Q/P U claim blocks at its stage, while target-success U is not an earlier prerequisite. |
 | Independent launch/read discovery and capability correspondence | Preserve U1–U4 before the first actual adapter/checker/task credit; establish complete initial fd/port/map and causal/runtime closure. No selected realizable mechanism exists yet. |
 | Complete independent format specimens and current-runtime observations | Before decoder comparison or required typed-proof credit; separate author/acquirer/adjudicator, exact basis and original results, externally accepted inventory. |
 | Independent per-class/channel/preflight calibration | U5 and the paired controls above before unchanged-candidate measurement; no target positive, copied producer facts or clean partial trace. |
-| Actual provisioning/receipt/export/derivative validation | Existing lifecycle/approval owners before k245, after the mechanics qualify; no scratch receipt or export creates live authority. Unqualified actual build/UID/ancestor/synchronization remains missing work. |
+| Actual provisioning/receipt/export/derivative validation | Qualified separate one-time initialization and independent validation establish real fixed-authority facts; already qualified native UID/build/channel mechanics and fresh P rechecks/refusal precede intent. The explicit requested export has P ancestry/reservation checks; original/derivative outcomes are A. No scratch receipt, final validation or proof arms LIVE. |
 | Last-edit requalification and independent audit | U6 after all relevant input/task/runtime/contract/review repairs, including later corrections/provisioning changes; complete original k244 closing check only on stable accepted proof. |
 
 An explicit owner survives any earlier leaf's retirement through k245 admission. A measured
@@ -314,8 +424,10 @@ live repair/requalification ahead of its consumer; no proof reference or task-su
 can waive it. Provisioning adds live validation evidence without self-hashing a final proof.
 
 Nothing here closes U1–U6 or makes k244/k242 complete. Useful byte/value/intent design may
-progress with limited claims. Actual packaging rehearsal, complete read closure, no-contact,
-native segment and admission credit stay unavailable until their exact evidence exists.
+progress with limited claims. Required Q mechanics/native-call/image/control evidence and
+P actual authority/build/UID/channel/export facts stay unavailable until their own evidence
+exists. A target outcomes are unperformed before the selected attempt, never its qualification
+or wiring calibration. Complete read/no-contact claims cannot follow from bounded observations.
 K245's one pass cannot discover wiring or calibrate native calls; k246/k247 retain full
 generated discrimination/whole-subject duties. Stronger privilege/containment/VM/signing/
 consent or another pass requires a concrete human decision before its consumer. Required
