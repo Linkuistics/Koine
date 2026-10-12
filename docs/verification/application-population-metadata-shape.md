@@ -15,7 +15,8 @@ The [byte-complete evidence contract](application-reference-evidence.md) now def
 the exact record/association model, one-pass failure and replay semantics, separate
 decoder observations and required independent controls. Its [concrete instrument
 route and proposed construction increments](application-reference-evidence.md#construction-and-qualification-boundary)
-now require admission-design repair, whole review/earned integration and reviewed
+now carry a complete replacement admission-design/exact-unavailable boundary for whole
+review/earned integration and reviewed
 construction replanning before construction. K244 retains its original obligations
 as a node; the earlier design/plan qualifies no tool. Instrument construction/control execution,
 the authorized package, independent copy roles, generated recipes/discrimination and
@@ -380,9 +381,14 @@ lifecycle, independent approval/corrections, bounded persistence, unprivileged o
 and protected/intermediate contact under Antony's delegation. Actual reviewed protocol,
 qualified provisioning, receipt, independently approved anchors and complete tool/contact
 proofs remain absent; unknown authority refuses contact. No requirements answer performs
-initialization or spends the target pass. K273 owns replacement design and whole review/
-earned integration; k269 must place provisioning/validation and requalification after the
-last measured input change before k245. Source/build/file/cohort choices remain intact.
+initialization or spends the target pass. The [whole original-obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
+and [construction responsibility handoff](application-reference-evidence.md#construction-responsibility-and-stability-handoff)
+carry the complete replacement through mandatory whole-k273 review/earned integration
+before k269. U1–U6 and required unexercised native segments stay live before actual credit;
+k269 assigns qualified provisioning/independent validation, last-edit requalification,
+independent audit and distinct final k244 close with repair ownership through k245.
+Immutable issuance and current correction bindings stay separate, and whole companions/
+tables cannot inherit a reporting slice. Source/build/file/cohort choices remain intact.
 No topology, privilege or native/VM experiment follows.
 
 A qualifying design must freeze the complete source evidence, independently

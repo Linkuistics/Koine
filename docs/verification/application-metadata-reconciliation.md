@@ -27,6 +27,15 @@ is true; private implementation eligibility is false under the complete
 including the missing reviewed finite metadata-shape subject. Advertisement,
 consumption, useful fit and every native verdict retain their independent holds.
 
+The [complete reference-admission handoff](application-reference-evidence.md#whole-producer-obligation-comparison)
+supplies a whole-design/exact-unavailable boundary for review, not the missing finite
+subject. Actual unprivileged C1–C8/U1–U6, retained-entry/read/native-call qualification,
+independent approval and one-time provisioning/validation remain required before its
+unused pass. Original/verified-derivative evidence, independent roles, complete generated
+rewrite controls and whole-subject review still precede private eligibility. Later input/
+provisioning/correction changes require affected requalification and independent audit;
+no design retirement closes instrument qualification or weakens this family's gates.
+
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no
 alternative layout rescue. At each planned name base, platform/plain strings

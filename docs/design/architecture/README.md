@@ -16,13 +16,16 @@ remain live.
 
 Current changes:
 
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Added one retained Task/script/CLI chain, a mandatory domain channel and complete read/last-edit qualification boundary.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced unresolved entry selection with the proposed retained channel while keeping actual contact evidence unavailable.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Added whole task/runtime closure and the domain channel to the unqualified rehearsal.
-- [Retained entry and domain channel](../../verification/application-reference-packaging-runtime.md#retained-entry-and-domain-channel) — Defined the exact proposed invocation and LIVE/SCRATCH miswire refusal without an absent-channel default.
-- [Operation and credit map](../../verification/application-reference-packaging-runtime.md#operation-and-credit-map) — Distinguished each executed, mapped and unexercised UID/build/location/receipt/export operation.
-- [Task and runtime inputs](../../verification/application-reference-packaging-runtime.md#independently-discovered-task-and-runtime-inputs) — Required independent discovery, whole-file/runtime identities and explicit incomplete-discovery outcomes.
-- [Named expectation bases](../../verification/application-reference-packaging-runtime.md#named-expectation-bases-and-bounded-runtime-claims) — Named XML, historical CF and contract-loctable bases separately from required current-runtime observations.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Reconciled whole review, late-input qualification and failed-evidence handoff without a finite-subject claim.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separated immutable issuance from current correction validation while preserving export/intent/spent/start ordering.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Bound whole companions/tables and added requalification/audit after receipt provisioning or correction.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Carried issuance/current and parent/inner channel distinctions plus full startup/inherited/proxy evidence through the verifier handoff.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Placed whole review before k269's live U1–U6 and separate qualification/audit/close owners.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Kept late provisioning/correction changes under last-edit requalification and surviving repair ownership.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Linked complete design/unavailable closure to construction owners and exact original/verified-derivative prerequisites.
+- [Whole producer obligation comparison](../../verification/application-reference-evidence.md#whole-producer-obligation-comparison) — Compared every original k273/k244/k242 duty with delivered design and precise remaining evidence.
+- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Named separate independent/construction/provisioning/review/final-qualification/audit/close roles before consumers.
+- [Normative extraction and concordance](../../verification/application-reference-evidence.md#normative-extraction-and-field-concordance) — Confined section extraction to three named sources; companions/tables stay whole-byte and actual read closure remains complete.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -45,11 +48,12 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging)
-for the current proposal. Unchanged [contact](index.html#diagram-native-reference-contact),
-[admission](index.html#diagram-native-reference-admission),
-[evidence order](index.html#diagram-native-reference-evidence) and
-[population](index.html#diagram-native-population-metadata-shape) views retain the required boundary.
+Open [the complete replacement discussion](index.html#discussion) for all seven reference/
+corpus views. The complete design/exact-unavailable boundary awaits mandatory whole-k273
+review and every earned integration before k269. U1–U6, required native segments, actual
+approval/receipt and complete tool proofs remain absent; k244/k242 cannot close on this
+design. Late provisioning/corrections require affected requalification, independent audit
+and distinct final close. K245's pass is unused; k246/k247 retain separate full duties.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size
 panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.

@@ -260,6 +260,10 @@ pure control is no native evidence. Private eligibility also requires the review
 independent metadata-shape subject; cardinality alone cannot qualify usefulness. The
 [canonical joint evidence boundary](docs/verification/application-population-metadata-shape.md)
 owns the saved evidence inventory, reference/evidence decision and packet-integrity limits.
+Its [complete reference-admission design](docs/verification/application-reference-evidence.md#whole-producer-obligation-comparison)
+separates immutable issuance authority, independently accepted current corrections,
+original evidence and verified derivatives. Actual contact/read/native-call proofs and
+one-time provisioning remain unavailable; design closure supplies no finite subject.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

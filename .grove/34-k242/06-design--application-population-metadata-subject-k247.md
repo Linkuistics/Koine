@@ -18,6 +18,14 @@ and native acceptance. Read complete k7/k19/k191/k127/k123/k120/k30/k93 charters
 Parent application-population-metadata-subject-k242 carries the complete Done when;
 no child success alone closes it or private eligibility.
 
+K273's full design/exact-unavailable handoff has its own mandatory whole review before
+k269. It supplies no instrument qualification, approval/receipt, current package or
+finite subject. Consume actual k244 stable qualification/close and k245 original/verified-
+derivative/roles followed by k246 complete generated controls, or the precise retained
+missing work. U1–U6 and unavailable required instrument identities prevent k244 close;
+this whole-subject closing session cannot waive them or grant another pass. Compare the
+complete original-obligation table, not retired leaf counts, before whole-family review.
+
 ## Done when
 
 - Reconcile the full current workspace/private/source/runtime specs, acceptance,

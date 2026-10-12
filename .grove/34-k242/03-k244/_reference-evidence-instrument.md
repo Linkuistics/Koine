@@ -171,3 +171,36 @@ format/source expectations; R15 repairs numbering. K269 assigns qualified provis
 validation and export derivation before k245, plus requalification after the last input
 change. Product zap, export cleanup and self-certified proof supply no authority. Every
 original Done when above remains unchanged.
+
+## Complete replacement design promotion
+
+Reference-evidence-admission-reconciliation-k278 closes reference-evidence-admission-repair-k273
+at the complete replacement-design/exact-unavailable boundary. Its original Required coherent
+design/Done when and all original k244/k242 conditions are compared in the durable evidence
+contract's Whole-producer obligation comparison; the Construction responsibility and
+stability handoff gives k269 precise roles and placements. Mandatory whole-producer
+review reference-evidence-admission-repair-k279 is immediately before k269, Reviews naming
+k273 and Creator naming k278's actual closing run. Every earned integration also precedes
+k269. Review covers the entire contract, both companions, five tables and all seven views,
+not only this final child or diagram changes.
+
+The current conjunction uses immutable issuance receipt plus separately accepted current
+corrections, sibling independent approval/terminal commissioning, full C1–C8, exact retained
+outer request/parent challenge and inner Task/script/CLI/domain channels, complete actual
+task/runtime/read/initial-fd-port-VM/proxy closure, independently bounded source/runtime
+expectations and fixed original/verified-derivative handoff. Earlier k268 DTrace/receipt
+paragraphs describe its insufficient proposal, not the accepted replacement mechanism.
+Whole companions/tables stay normative full-byte inputs; the exact three-source extractor
+exception cannot waive actual reads. No actual approval/receipt/image/channel proof exists.
+
+K269 assigns live early inventory/profile/bases/proof/bootstrap/mechanism/current-universe/
+launch/proxy/read/calibration owners, actual adapters/entry/runtime expectations, qualified
+one-time initializer and separate actual validator/derivative verification, earned whole-
+implementation review/repair, last-edit requalification, independent audit/reporting and
+distinct k244 close/promotion. Later provisioning/corrections/dependencies retain precise
+live repair/requalification before k245. U1–U6 and required native U segments remain exact
+unavailable work before credit; they cannot become inapplicable or closing prose. Actual
+target original/export verification follows k245's declared attempt; scratch controls
+qualify its mechanics first. This node and k242 still have live obligations; the close
+cascade stops here. The one pass is unused, k246/k247 duties and every product/native hold
+remain. Design closure qualifies no instrument and supplies no completed finite subject.

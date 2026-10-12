@@ -3,8 +3,10 @@
 The [contact contract](application-reference-evidence.md#contact-observation-outside-the-producer)
 requires independent coverage of the whole pure invocation. This source-based design
 delivers an **exact unavailable boundary**, proposed for the complete admission-design
-review. It supplies neither a collector nor an observed no-contact result. Source research,
-table extraction and presentation checks acquired no installed query, contents, topology,
+review. It supplies neither a collector nor an observed no-contact result. This companion
+is part of the [complete original-obligation handoff](application-reference-evidence.md#whole-producer-obligation-comparison),
+with whole-producer review before construction planning and actual qualification still due.
+Source research, table extraction and presentation checks acquired no installed query, contents, topology,
 collector availability or runtime identity. The selected target pass remains unused.
 
 [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)

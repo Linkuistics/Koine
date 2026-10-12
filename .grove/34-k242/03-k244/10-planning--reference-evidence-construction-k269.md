@@ -13,9 +13,9 @@ integration. K268/k271/k272 explain the incomplete handoff, not implementation e
 k267's triage, current complete k244 obligations and every construction leaf. Re-derive
 paths by handle; this leaf may move when review/integration is inserted before it.
 
-K272 classifies all fifteen k271 findings. The contract retains unresolved authority
-consumption, independent admission anchors, IPC/proxy contact, exact-entry and actual
-task/runtime-read closure for k273. K270 now precedes the instrument node; no receipt,
+K272 classifies all fifteen k271 findings. The complete k273 replacement specifies
+authority/anchor/entry/read designs and exact unavailable contact/capability/mechanism
+identities for whole review. K270 now precedes the instrument node; no receipt,
 initialization or observer privilege is implied. Assign actual authorized capability/
 calibration and every proof owner before consumers, plus qualified receipt provisioning/
 independent validation before k245. Unavailable boundaries are precise live work.
@@ -189,3 +189,43 @@ reads. Determine affected cells independently; unknown impact requires the whole
 Any U segment, incomplete read discovery or unavailable U1–U6 prerequisite prevents
 actual packaging/admission credit and node close. No packaging scaffolding or observation
 programme is supplied here; the pass remains unused.
+
+## Whole replacement ownership and final close
+
+Use application-reference-evidence.md#whole-producer-obligation-comparison and
+#construction-responsibility-and-stability-handoff to check every original k273/k244/k242
+obligation against actual artifacts. The design closes k273 only at its complete
+design/exact-unavailable boundary; mandatory whole review/earned integration still precede
+this planner. It closes neither k244 nor k242. Replace the old proposed construction-owner
+table only when the actual revised tree supplies a concrete live handle for every role.
+
+Assign independent inventory/profile/concordance/documentary-basis authoring, early usable
+proof/oracle/checker/registrar/extractor, independent bootstrap/control adjudication and
+direct artifact/revision acceptance before their first consumers. Bind complete contact/
+packaging companions and five tables as whole-byte normative inputs. Only the commissioned
+extractor's exact canonical/ADR/evidence-contract sections have the reporting exception;
+full snapshots do not waive actual whole task/runtime/read/initial-capability closure.
+
+Assign U1/U2 mechanism/current-correspondence design and review, U3/U4 launch/image/endpoint/
+initial-fd-port-VM/proxy/read construction, U5 independent family/variant calibration and
+U6 final stability at their exact placements. Each missing mechanism/U segment remains
+live before affected execution or credit. Give actual adapters, exact outer request and
+inner Task/script/CLI/channel rehearsal, current native sysctl/UID and independent CF
+expectations separately demonstrable owners. Pure values or retired design leaves supply
+no actual correspondence; no target positive or stronger privilege is inferred.
+
+Place earned whole-implementation review/integration and every substantive repair before
+final measurement. Separately own qualified one-time initialization and independent actual
+issuance/final receipt validation, current-revision correction bridges and verified offline
+derivation. Their changed live/input bindings cannot slip past a previously closed proof.
+Keep immutable issuance receipt bytes separate from the highest current accepted revision;
+corrections never remove intent, restore unspent or grant another initialization.
+
+Give final affected requalification, independent per-coordinate audit, reporting reconciliation
+and final k244 close/promotion distinct live owners. The last close is a dedicated original-
+obligation check after the last measured edit and all provisioning/validation/acceptance,
+not k265's retired-leaf count. Ownership survives through k245 admission: a later task/
+runtime/permission/approval/receipt/dependency/review change gets precise live repair and
+requalification before k245, with whole-matrix coverage when impact is unknown. K246 retains
+all generated rewrite/helper/alias discrimination; k247 retains whole-subject review.
+Cut no implementation here: this section is the closing design's binding planning handoff.

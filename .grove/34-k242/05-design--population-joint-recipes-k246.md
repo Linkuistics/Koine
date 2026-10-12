@@ -17,6 +17,13 @@ population-metadata-shape report own the evidence/control contract. Read the ful
 current application-metadata-subject/family and acceptance P1024/L1500/N5/N8/V11/V13.
 All original parent Done when and current budgets/breadth/reader/guards remain binding.
 
+Consume the exact fixed original attempt identity or its independently verified immutable
+derivative, with complete original-to-export coordinates and all missing/prefix/unperformed
+outcomes. K273's design or retired children supply no package. An incomplete/unavailable
+k245 boundary remains missing subject work; never fabricate bytes/roles or reuse an export
+as independent origin evidence. Generated permitted-rewrite checks are separate from
+original-byte hashes and cover useful/helper/alias tuples in full.
+
 ## Done when
 
 - Freeze exact deterministic per-role ordering, whole-template coverage priority and

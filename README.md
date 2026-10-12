@@ -95,7 +95,8 @@ name. The [independent approval proposal](docs/verification/application-referenc
 places exact reviewed requirements, inventory and verifier identities in a separate fixed
 approval register. Independent commissioning/control acceptance precedes candidate proofs;
 one-use invocation channels and external receipt/correction bindings cannot restore a spent
-permit. No register or accepted revision exists. The
+permit. The immutable issuance receipt stays separate from the highest current accepted
+revision and independently approved correction bridge. No register or accepted revision exists. The
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
 pins independent published BSD/Mach/RPC/API inventories and per-class bypass/loss controls.
 No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
@@ -105,8 +106,14 @@ authored pure work retains its limited scope. The
 defines one retained Task/script/CLI chain, mandatory SCRATCH/LIVE launch channels,
 per-operation executed/mapped/unexercised credit and full independently discovered task/
 runtime inputs. Named historical format bases are separate from required current CF
-observations. No task/channel/read closure is qualified; k278 reconciliation, whole review
-and actual U1–U6 qualification remain required. Process-death checks establish no OS-crash persistence.
+observations. The [complete replacement handoff](docs/verification/application-reference-evidence.md#whole-producer-obligation-comparison)
+compares every original obligation and specifies separate construction, commissioning,
+provisioning/validation, review/repair, final affected requalification, independent audit
+and distinct instrument-close responsibilities. Whole-design review/earned integration
+precede k269; actual U1–U6, task/channel/native/read qualification remains unavailable.
+Later provisioning/corrections cannot inherit stale proof or restore authority. K244/k242
+remain live, k245 alone owns the unused pass, and k246/k247 retain complete generated
+discrimination/whole-subject review. Process-death checks establish no OS-crash persistence.
 
 ## Client-requested grants
 

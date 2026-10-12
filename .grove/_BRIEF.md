@@ -502,3 +502,15 @@ limits; independent anchor approval/corrections; unprivileged collection; protec
 and outside-intermediate refusal. Actual reviewed protocol, independently accepted anchors,
 qualified provisioning and input-stable requalification remain required. K244/k242 are live,
 k245's pass is unused and all product/private/native holds remain.
+
+K278 reconciles the complete k273 replacement at its whole-design/exact-unavailable
+boundary. The durable contract compares every original k273/k244/k242 obligation and
+names precise early inventory/proof/mechanism/launch/calibration, artifact/bootstrap,
+actual adapters/entry, provisioning/validation/derivation, review/repair, final affected
+requalification, independent audit/reporting and distinct instrument-close responsibilities
+for k269. Whole-k273 review and every earned integration precede that planner. Immutable
+issuance receipt and current approved corrections remain separate; section extraction
+never slices whole companions/tables or waives complete actual task/runtime/read/initial-
+capability closure. U1–U6 and every required unexercised native segment stay live before
+credit. K244/k242 remain live; no authority/tool/package/finite subject is supplied, k245's
+pass remains unused and k246/k247 retain complete generated/whole-subject obligations.

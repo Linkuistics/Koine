@@ -162,3 +162,16 @@ full contact/tool qualification remain absent. K273's whole reviewed replacement
 these settled requirements; k269 owns qualified provisioning/validation and requalification
 after the last measured change before k245. The pass is unused; no parent node closes and
 every original duty/hold/native PENDING outcome remains.
+
+K278 supplies the complete k273 replacement-design/exact-unavailable handoff and schedules
+mandatory whole-producer review before k269. The durable original-obligation comparison
+covers k273/k244 and this node in full. Immutable issuance/current correction, fixed original/
+verified derivative, whole companion/table bindings and exact retained entry/read closure
+agree through summaries/views/charters. Actual U1–U6 and required native segments remain
+unavailable. K269 assigns concrete early independent/proof/mechanism/bootstrap/adapter/
+calibration owners, qualified provisioning/validation, whole-implementation review/repair,
+last-edit requalification, independent audit/reporting and a distinct final k244 close.
+Late provisioning/corrections/new reads require live affected requalification before k245.
+This design closes no instrument or finite-subject obligation: k245 freezes actual evidence/
+roles, k246 full generated controls and k247 the complete whole-subject review or exact
+missing work. Every original Done when above remains unchanged and selected.

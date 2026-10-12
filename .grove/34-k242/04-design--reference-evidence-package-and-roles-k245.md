@@ -39,6 +39,15 @@ channels. This leaf cannot commission the root, approve its own evidence or corr
 spent/missing permit into new authority. Actual full contact/runtime correspondence and
 unchanged qualified inputs remain prerequisites; k275's design alone grants none.
 
+The complete k273 handoff and whole-producer obligation comparison leave U1–U6 and every
+required unexercised native segment unavailable. Require k269's distinct final requalification,
+independent audit and actual k244 close after the last relevant edit, including provisioning/
+correction/new-read changes. The exact checker export-request/parent challenge and inner
+retained Task/script/CLI/domain channel must qualify; no coordinator-only shortcut, missing-
+channel LIVE default or per-recipe/runtime-version identity admits this pass. Whole contact/
+packaging companions/tables remain accepted whole-byte inputs. This consumer cannot turn
+design completion, a failed envelope or unassociated export into completed evidence.
+
 ## Done when
 
 - Pin every instrument/verifier/decoder/configuration/Taskfile/tool input and verify
