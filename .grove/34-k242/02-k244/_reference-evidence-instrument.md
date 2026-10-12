@@ -1,4 +1,4 @@
-# reference-evidence-instrument-k244
+# reference-evidence-instrument-k244 — brief
 
 
 ## Goal
@@ -51,3 +51,25 @@ Do not infer exhaustive native completeness or prompt/hydration safety from a CL
 exit code. A known instrument/association defect is repaired before target acquisition.
 No current-reference payload, index modification, executable read, launch or new
 consent/posture is authorized for this child. Whole-producer review remains due at k247.
+
+## Decisions (running log)
+
+The complete source runner, descriptor-relative acquisition/closure, native typed
+decoder, strict versioned envelope and separately authored fault/mutation verifier
+are production-tool implementation-sized. Use the charter's planning exception:
+decompose this item into a concrete instrument-design child completed in this
+session and a planning child that owns construction/qualification decomposition.
+Retain every original Done when on this node; a design handoff qualifies no tool,
+executes no control matrix and leaves the single target pass unused. No implementation
+leaf is cut by this design session. Whole-producer review remains owned by k247.
+
+## Decomposition
+
+Reference-evidence-instrument-design-k248 selects the concrete source/acquisition/
+decoder/envelope/verifier architecture and records the precise unbuilt boundary.
+Reference-evidence-instrument-k249 is the planning handoff for independently
+verifiable production-tool increments and complete pure qualification. The
+durable contract is docs/verification/application-reference-evidence.md. No
+executable schema, tool or control proof is implied by k248. Every original
+Done when above remains the node's closing condition; add missing work rather
+than allowing a plan-only close. The one pass stays unused until full k244 closure.

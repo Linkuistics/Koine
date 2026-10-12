@@ -14,7 +14,10 @@ it is not a completed current-reference package or a reviewed qualification subj
 The [byte-complete evidence contract](application-reference-evidence.md) now defines
 the exact record/association model, one-pass failure and replay semantics, separate
 decoder observations and required independent controls. This is a completed contract
-design, not a built or qualified instrument. Instrument construction/control execution,
+design with a [concrete instrument route and construction boundary](application-reference-evidence.md#construction-and-qualification-boundary),
+not a built or qualified instrument. K244 retains its original obligations as a
+node: its design child selects the route and its planning child owns construction
+decomposition. Instrument construction/control execution,
 the authorized package, independent copy roles, generated recipes/discrimination and
 whole-family reconciliation remain live under the complete subject producer.
 

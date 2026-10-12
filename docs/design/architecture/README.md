@@ -16,12 +16,13 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Added the evidence-contract dependency view, independent control requirement and explicit failed-pass boundary.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Inserted the designed evidence contract before the still-unbuilt complete subject.
-- [Evidence records and association keys](../../verification/application-reference-evidence.md#evidence-records-and-association-keys) — Defined original byte/typed/inventory/tail records and exact source/copy/file coordinates.
-- [Independent controls required before target acquisition](../../verification/application-reference-evidence.md#independent-controls-required-before-target-acquisition) — Specified independent scope, decoder, shape, failure and later rewrite controls; execution remains due.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Inserted production-tool construction and planning before complete pure qualification, retaining the unused target pass.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the proposed source/acquisition/decoder/envelope/verifier owners and independent oracle.
+- [Selected instrument architecture](../../verification/application-reference-evidence.md#selected-instrument-architecture) — Selected fixed raw NUL framing, held closed acquisition and native type-ID decoding with explicit terminal/race/duplicate/coercion limits.
+- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Kept the complete executable schema/tool/control/task obligations live under k244's planning handoff; a design is no verified instrument.
 
-Unchanged context: [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
+Unchanged context: [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
+[Review, qualify, then release](index.html#diagram-native-metadata-qualification),
 [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject),
 [Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),
 [Grouped ownership](index.html#diagram-native-metadata-grouped-storage) and
@@ -31,9 +32,10 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence)
-for the current contract boundary. At 390px its fit mode is a compact overview; use its
-full-size SVG or native-size panning to read labels. Dark exports use D2 theme 200.
+Open [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument)
+for the concrete design, and the evidence-order view for its unbuilt boundary.
+At 390px fit mode is a compact overview; use its full-size SVG or native-size
+panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.
 
 ## Other architecture topics
@@ -143,5 +145,5 @@ broken cleanup/failure/unknown/review/partial-evidence counterparts must fail th
 same instrument. These are synthetic design controls, never native qualification.
 
 Run design:application-population-metadata-shape-render for the joint evidence
-boundary and byte-complete evidence contract views with D2 0.9.0/Dagre/theme
-0/dark-theme 200. The same task renders both editable sources; it reads no target.
+boundary, byte-complete evidence order and proposed instrument component views
+with D2 0.9.0/Dagre/theme 0/dark-theme 200. It reads no target.

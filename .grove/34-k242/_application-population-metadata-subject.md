@@ -114,3 +114,9 @@ rewrite-aware recipes or its exact missing work; k247 reconciles and closes the 
 producer before cutting its mandatory root review. The intended end is a coherent
 whole-subject boundary, including explicit failed/unavailable obligations, never a
 contract-only finite-subject claim. Every original Done when remains binding.
+
+K244 uses its explicit production-tool exception and is now a node: k248 delivers
+the concrete instrument design and k249 plans complete construction/qualification.
+Its original Done when is retained in full. No current payload, compiled tool,
+executable schema or executed pure-control matrix follows the design handoff;
+k245 cannot spend the one pass until that complete node actually qualifies.

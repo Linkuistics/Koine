@@ -2,11 +2,12 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Qualify byte-complete reference evidence before target acquisition",
-    "status": "Evidence contract designed; instrument and target pass unexecuted; native pending",
-    "summary": "The evidence contract pins original bytes, complete typed decoder observations and exact source/copy/file/tail associations under the selected macOS 27.0.1 permission. Independent pure controls and forbidden-contact checks must qualify the instrument before the one target pass. Failed target attempts preserve explicit missing work and permit no silent retry. Roles and generated rewrites have separate owners. Instrument construction, actual packaging, role assignment, complete recipes and whole-family review remain live; private eligibility is false and both holds remain.",
+    "title": "Construct and qualify the closed instrument before the one target pass",
+    "status": "Concrete instrument design selected; construction/qualification live; target pass unused",
+    "summary": "The fixed NUL-delimited source runner, held acquisition plan, in-process Core Foundation typed decoder and proposed version-1 envelope now have explicit owners and failure/closure contracts. An independent verifier uses authored byte/type/inventory/association expectations and actual scratch-adapter plus fault controls. The production-sized tool is decomposed into design and planning under k244, retaining every original obligation. The executable schema, tool and complete pure-control proofs are unbuilt. K245 may not acquire targets until the full tool qualifies; later roles/generated rewrites/whole-family review and every native/product duty remain live. Private eligibility is false and both holds remain.",
     "diagramIds": [
       "native-reference-evidence",
+      "native-reference-instrument",
       "native-population-metadata-shape",
       "native-metadata-subject",
       "native-metadata-qualification",
@@ -15,11 +16,11 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-evidence",
-        "summary": "Added the complete evidence contract, qualification-before-contact order, explicit failed-pass boundary and separate later role/recipe/review obligations."
+        "summary": "Inserted the production-tool construction/planning boundary before complete pure qualification; k244 stays live and the target pass remains unused."
       },
       {
-        "id": "native-population-metadata-shape",
-        "summary": "Inserted the completed evidence-contract design between the selected reference and the still-unbuilt whole subject, preserving every hold."
+        "id": "native-reference-instrument",
+        "summary": "Added the proposed source/held-acquisition/byte-object/native-decoder/envelope components and a separately frozen independent verifier oracle."
       }
     ]
   },
@@ -83,7 +84,16 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Contract design only: application-reference-evidence.md specifies original bytes, complete typed witnesses, exact associations, failure/replay semantics and the independent pure control matrix. The instrument and controls have not been built/executed; no installed app payload has been read. A complete current-reference package, independent roles, rewritten recipes/discrimination and whole subject/family review remain required before private eligibility. Packet-integrity tests and browser rendering supply no native pass."
+      "caption": "Concrete design only: k244 retains its original complete instrument obligations as a node, with a design child and planning handoff. Construction must materialize and qualify the executable schema/tool/verifier and every applicable pure control before k245 spends the one target pass. No installed query/payload, qualified instrument or finite subject follows this design. Complete current bytes/roles/rewritten recipes and whole-family review remain required. Both holds and every native verdict remain pending."
+    },
+    {
+      "id": "native-reference-instrument",
+      "group": "native-sources",
+      "title": "Components → Preserve original evidence and independent witnesses",
+      "renderer": "svg",
+      "source": "native-reference-instrument.d2",
+      "rendered": "native-reference-instrument.svg",
+      "caption": "Proposed evidence-tool components, not runtime deployment containers. The fixed source preserves raw bytes and terminal facts; held acquisition preserves every logical occurrence and object; a Core Foundation type-ID walk exports native observations with explicit fidelity limits. The offline verifier compares separately authored expectations, not producer totals. Real pipe/descriptor adapters need pure scratch qualification alongside injected no-contact/failure controls. The executable schema/tool/proofs remain unbuilt and the pass unused; k246 owns generated rewrite discrimination."
     },
     {
       "id": "native-population-metadata-shape",

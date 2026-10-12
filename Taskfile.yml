@@ -637,10 +637,11 @@ tasks:
       - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
 
   design:application-population-metadata-shape-render:
-    desc: Render the corpus-insufficiency boundary and byte-complete evidence contract; no target reads
+    desc: Render the corpus boundary, evidence order and proposed instrument components; no target reads
     cmds:
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-population-metadata-shape.d2 docs/design/architecture/native-population-metadata-shape.svg
       - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-evidence.d2 docs/design/architecture/native-reference-evidence.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-instrument.d2 docs/design/architecture/native-reference-instrument.svg
 
   design:application-metadata-subject:
     desc: Legacy lossy capture/thin fixtures; not authorized by current-reference permission; no Koine/native qualification
