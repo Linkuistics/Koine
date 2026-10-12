@@ -2,33 +2,28 @@
 
 [Packaging → Rehearse the retained entry in a bound domain](../design/architecture/index.html#diagram-native-reference-packaging)
 shows the proposed entry and read boundary. Graphs enter at the dark Start here node.
-This is k277's **design proposal** within the [complete replacement handoff](application-reference-evidence.md#whole-producer-obligation-comparison),
-under the k282 whole repair/review hold. It implements no task,
-script, channel, schema, collector or observation programme. Required named entry/read qualification remains unperformed; complete no-contact
-coverage remains accepted unknown under the [contact boundary's U1–U6](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities).
-The single reference pass is unused; no receipt, current runtime expectation or qualified
-image follows from these notes. All original k244 obligations and product/native holds bind.
+This companion specifies the retained entry and read boundary within the
+[whole-producer handoff](application-reference-evidence.md#whole-producer-obligation-comparison).
+Design text supplies no task, script, channel, schema, collector, qualified runtime image,
+receipt or original operation result. Named entry/read qualification requires actual Q/P
+evidence; complete no-contact coverage retains the selected accepted-unknown limit under
+[U1–U6](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities).
+All original instrument obligations and product/native holds bind until their own evidence
+qualifies; whole design review/integration precedes construction planning.
 
-Whole review k279/integration k280 find the credit map, post-provisioning role-selection
-order and measured status/read partition incomplete. Antony accepted k281's bounded contact
-claims, closed pre-lookup rule/incomplete outcome and exact canonical status relocation;
-the [selected requirements](application-population-metadata-shape.md#authority-and-admission-choices)
-and [obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
-control their scope. K282 repairs prerequisite versus first-attempt credit,
-disarmed LIVE activation, independent clean/findings-path registration and enduring inputs
-versus changing reports. Its mandatory whole review and every earned integration precede
-k269. Operation-credit child k283 now repairs the operation map into earlier Q qualification,
-fresh P validation and first-attempt A outcomes. K284 applies bounded-contact/read claims;
-k285 specifies independent disarmed release and chartered clean/findings-path acceptance.
-Input partition k286 and closing reconciliation k287 remain required before whole review.
-No partial child is a construction handoff and no U
-prerequisite is waived. The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
-owns this exact construction hold. Canonical contact/lookup clauses are amended only
-as explicitly compared; all other permission and qualification duties remain. Full
-current-service/proxy/initial-right/map coverage is an accepted unknown, not a blanket
-prerequisite or full no-contact proof. K284 reconciles the read/U tables below to named required claims and accepted unknowns.
-K285/k286/k287 and whole review still precede construction. Whole-byte inputs
-are retained; the narrow status relocation grants no companion/table reporting slice.
+The [selected requirements](application-population-metadata-shape.md#authority-and-admission-choices)
+and [original-obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+control the bounded-contact, closed pre-lookup, incomplete-outcome and exact canonical
+status relocation amendments. Qualification credit separates earlier Q mechanics,
+fresh P facts before intent and first-attempt A outcomes. Independent disarmed release,
+chartered clean/findings-path acceptance, enduring inputs and complete reconciliation
+must form one whole reviewed conjunction; no partial child is a construction handoff.
+Full current-service/proxy/initial-right/map coverage is accepted unknown, not a blanket
+prerequisite or full no-contact proof. No other required Q/P identity/control is waived.
+Both companions/tables/bases remain whole-byte inputs; changing construction/evidence
+observations belong in the separate
+[current report](application-reference-input-partition.md#current-construction-and-evidence-report),
+never a reporting slice in this companion. The measured chain must not consume that report.
 
 ## Retained entry and domain channel
 
@@ -60,14 +55,14 @@ channel for the following exact retained chain; no parent endpoint is reused as 
 | Domain enabling point | Independent supervisor selects LIVE before Task; pure launcher can select only SCRATCH. Mandatory unnamed channel at inherited fd 3 follows the exact task/script chain by explicit descriptor actions and carries the fresh checker challenge, original role appointment and (LIVE only) current release/close basis. No file, environment secret or reusable success token selects a role. |
 | Composition | After channel/identity validation, one composition routine selects LIVE fixed adapters or the closed SCRATCH operation mapping. Parser, fixed constants, preflight decisions, coordinator, native decoder and publication/derivation logic remain the retained candidate. |
 
-These names specify future construction, not currently runnable commands. The root
-Taskfile currently supplies presentation and legacy lossy-capture recipes; it is not this
+These fixed entries require construction and qualification; design text is no runnable
+command. Presentation or legacy lossy-capture recipes cannot substitute for the retained
 packaging Taskfile. A project-root convenience wrapper may request the checker but is not
 an alternate admission entry. If used, its entire actual task/script/configuration reads
 join qualification and live equality checks. The selected retained direct route does not
 inherit a root-wrapper proof. Construction also supplies a distinct pure qualification task
 that asks the independent launcher to run this package chain in SCRATCH; ordinary tests
-have no LIVE dependency. No packaging scaffolding is added in this design session.
+have no LIVE dependency. A design supplies no packaging implementation.
 
 **No missing-channel default exists.** Before preflight, the CLI must receive one complete
 challenge from the still-live commissioned checker, verify its independently observed
@@ -79,7 +74,7 @@ available for acknowledgements. Task/script intermediaries may pass this endpoin
 along the accepted chain and cannot write a verdict. Accidental fd closure, inheritance
 to another child, replacement, unexpected writer, missing correspondence or supervisor
 death refuses. fd 3 is an explicit internal interface; its preservation by the actual
-Task runner and interpreter is a required unestablished C3/C6/C8 qualification cell.
+Task runner and interpreter is a required C3/C6/C8 qualification cell before entry credit.
 
 The independently accepted launch record fixes SCRATCH or LIVE **before** starting Task.
 Neither task arguments, environment nor coordinator messages can change it. A LIVE launch
@@ -143,7 +138,7 @@ operation/edge evidence, before/after full input digests, intended check reached
 context and scope/accepted-unknown limitations. Run final measurement only after the last
 edit, with separate original-result acceptance and audit. Do not multiply equivalent tests
 or pursue full opaque contact observation: B1–B8's named Q/P blockers and accepted unknown
-limits remain. This table specifies required future controls, not executed successes.
+limits remain. This table requires controls; design text supplies no executed successes.
 
 ## Operation and credit map
 
@@ -396,8 +391,8 @@ Current official [Task configuration](https://taskfile.dev/docs/reference/config
 environment, includes and dotenv. They motivate explicit freezing; the retained runner's
 actual version/configuration/reads need their required independently pinned named
 read/configuration evidence. A standalone
-Taskfile does not prove it reads nothing else. The existing project recipes use dynamic
-`uv run --with` dependencies; their checks are not this retained packaging environment.
+Taskfile does not prove it reads nothing else. Recipes using dynamic
+`uv run --with` dependencies cannot supply the retained packaging-environment identity.
 
 The proof names earlier accepted input closure/revision identities and stores original
 observations as outputs. It cannot list or hash itself as an input. Current authority and
@@ -406,7 +401,7 @@ for the qualified normative extractor are invocation evidence; exact accepted se
 extractor identity are semantic inputs under k275. Any other reporting read binds whole
 bytes. Pure logs/verdicts, diagrams and promotion references remain outputs only when the
 measured chain never consumes them. This companion's whole bytes are normative input;
-proof references and this session's validation results belong in task/reporting notes.
+proof references and changing validation results belong only in separate unconsumed reports.
 
 ## Named expectation bases and bounded runtime claims
 

@@ -16,14 +16,11 @@ remain live.
 
 Current changes:
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Added inspection-only review, chartered own acceptance and disarmed audit/close before independent LIVE supervision.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Moved independent role selection before Task startup and kept armed-state pure controls in SCRATCH.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separated receipt validation, disarmed requalification/close and independently supervised release.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added independent role authority before the retained chain and required release bindings.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Added chartered acceptance and independent release after disarmed qualification/audit/close.
-- [Chartered independent acceptance](../../verification/application-reference-evidence.md#chartered-independent-acceptance) — Specified clean/findings paths, original bytes/dispositions and the owner's own commissioning/registration act.
-- [Independent LIVE release and role selection](../../verification/application-reference-evidence.md#independent-live-release-and-role-selection) — Separated unspent, eligible and supervised invocation authority, including later changes and release loss.
-- [Release and acceptance controls](../../verification/application-reference-packaging-runtime.md#release-and-acceptance-controls) — Paired actual retained selector/task-edge/armed-state and acceptance refusals with scratch-only positives.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Separated enduring section/whole-object inputs from unconsumed reports and showed changed-input requalification.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Made full task/basis input binding explicit and kept changing reports outside the retained chain.
+- [Enduring inputs and phase-specific reports](../../verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports) — Kept successor evidence acyclic and report edits separate from actual receipt/revision/runtime changes.
+- [Extraction and whole-object mutation controls](../../verification/application-reference-evidence.md#extraction-and-whole-object-mutation-controls) — Specified report-event positives, boundary/object/task/basis negatives and within-invocation snapshot stability.
+- [Input partition and evidence report](../../verification/application-reference-input-partition.md) — Recorded every statement unit and the honest current construction/evidence boundary outside measured inputs.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -32,7 +29,7 @@ current-service/proxy/initial-right/mapping coverage with residual accidental-co
 risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
 with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
 absent. K282 is a five-seam producer: k283 repairs credit; k284 applies contact/pre-lookup claims;
-k285 now specifies chartered independent acceptance and disarmed LIVE release; k286 input partition; k287 the complete reconciliation
+k285 specifies chartered independent acceptance and disarmed LIVE release; k286 separates enduring inputs from changing reports; k287 owns the complete reconciliation
 and mandatory whole review. Every earned integration precedes k269; no partial child
 is an implementable admission handoff or spends k245's pass.
 

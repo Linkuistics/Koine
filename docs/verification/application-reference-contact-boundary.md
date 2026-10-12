@@ -4,27 +4,24 @@ The [contact contract](application-reference-evidence.md#contact-observation-out
 requires named bounded evidence for the retained pure invocation under Antony's
 [selected contact limits](application-population-metadata-shape.md#authority-and-admission-choices).
 C1–C8 retain the contact classification; they are not a promise to observe or prevent
-every effect. This companion supplies neither a collector nor an observed no-contact result. It
-is part of the [complete original-obligation handoff](application-reference-evidence.md#whole-producer-obligation-comparison),
-with whole-producer review before construction planning and actual qualification still due.
-Source research, table extraction and presentation checks acquired no installed query, contents, topology,
-collector availability or runtime identity. The selected target pass remains unused.
+every effect. Documentary sources, table extraction and presentation checks cannot supply
+collector availability, runtime identity, installed-query/contents evidence or no-contact credit.
+The [whole-producer handoff](application-reference-evidence.md#whole-producer-obligation-comparison)
+requires complete review/integration before construction planning and actual qualification
+before admission; no partial repair is a construction handoff.
 
-After whole review k279/integration k280, Antony accepted k281's bounded contact evidence,
-closed pre-lookup rule and explicit incomplete-evidence outcome. The [selected clauses](application-population-metadata-shape.md#authority-and-admission-choices)
-and [obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
-supersede the earlier blanket full-coverage prerequisites. Missing current-service, proxy,
-initial-right and mapping correspondence stays unknown; no full no-contact claim follows.
-K284 applies those choices to the C1–C8/U1–U6, read and pre-lookup contracts below.
-K285/k286/k287 and mandatory whole-k282 review/integration still precede k269; this seam
-is not a partial construction handoff.
-K285's [chartered independent acceptance](application-reference-evidence.md#chartered-independent-acceptance)
-follows inspection-only review/earned integration; its [independent release supervisor](application-reference-evidence.md#independent-live-release-and-role-selection)
+The canonical selected clauses and original-obligation comparison own the bounded-contact,
+closed pre-lookup and incomplete-evidence amendments. Missing current-service, proxy,
+initial-right and mapping correspondence stays unknown, never full no-contact proof.
+[Chartered independent acceptance](application-reference-evidence.md#chartered-independent-acceptance)
+follows inspection-only review/earned integration; the
+[independent release supervisor](application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps qualification disarmed, including after receipt publication. Actual retained role/
 entry/armed-state refusals qualify only through SCRATCH controls; no test selects LIVE.
-These role obligations waive none of B1–B8's required claims or accepted-unknown limits.
-The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
-preserves all other selected clauses; this report supplies no qualification or operation.
+These obligations waive none of B1–B8's required claims or accepted-unknown limits and
+preserve every other selected clause. Changing construction/evidence observations belong
+in the separate [current report](application-reference-input-partition.md#current-construction-and-evidence-report),
+which the measured chain must not consume. This companion binds its whole bytes.
 
 [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
 shows the reading order. Graphs enter at the dark Start here node. The independent
@@ -72,8 +69,8 @@ The probe basis is the pinned [systrace source](https://github.com/apple-oss-dis
 it constructs entry/return probes from BSD `syscallnames` and separately from Mach
 `mach_syscall_name_table`, registering **syscall** and **mach_trap** providers. Published
 declaration names are not guessed installed probe names. Required provider/probe mappings,
-enabled configuration, readable operands and current restrictions are unavailable until
-independently established. Adding the Mach provider is no proxy-causality certificate.
+enabled configuration, readable operands and current restrictions require independent
+establishment before a named claim can credit them. Adding the Mach provider is no proxy-causality certificate.
 
 `declared_name` is the logical inner routine name; `declaration_expression` retains the
 source's complete wrapper expression. The pinned mach_vm.defs/task.defs macro definitions
@@ -236,7 +233,7 @@ consumer, retain a distinct final requalification/closing owner, and preserve ev
 k244 obligation. An owner or a source pin is not a qualified identity. No unavailable cell
 can be rewritten as inapplicable solely to close k244/k242.
 
-Requirements k281 selected the stated bounded contact limit with independent authored
+The canonical requirements select the stated bounded contact limit with independent authored
 expectations, source review, exact task/parser/domain and actual scratch controls, and
 any actually available bounded observations. Unobserved proxy/initial-capability/mapping
 and current-service risks are accepted explicitly; they remain unknown, never clean.
@@ -245,8 +242,8 @@ refuses known/unsettled or unlisted risk before lookup, with explicit Data/prote
 out-and-back and separate authority/export expectations. A refused required copy has
 an accepted truthful incomplete boundary, not useful loss or finite-subject credit.
 The B/U tables and pre-lookup plan apply that selection without a blanket completeness gate.
-K285/k286/k287 retain the remaining release/acceptance/input/whole reconciliation work;
-this child cannot be consumed partially.
+Complete release/acceptance/input/whole reconciliation and required whole review
+precede construction; no partial child can be consumed.
 Any stronger candidate must name operator, full and missing coverage, consent/signing/SIP/
 helper/VM and host/service effects and calibrated scope. Root tracing alone is insufficient.
 Antony retains the decision; no deeper repeated unavailable survey substitutes for it.
@@ -293,8 +290,8 @@ no complete subject, useful loss, private eligibility, omission or second attemp
 
 ## Verification and limits
 
-The source tables were extracted without compiling/preprocessing the source. BSD and Mach
-row/variant/slot sequences are compared item by item with the pinned complete files; RPC
+Compare the source tables without compiling/preprocessing or silently selecting a branch.
+BSD and Mach row/variant/slot sequences require item-by-item comparison with pinned complete files; RPC
 routine/skip membership, logical names, exact expressions and conditional/name coordinates
 are checked against the complete pinned sources and separately authored wrapped/branched
 name expectations. The original wrapper-token/omitted-branch table and deliberate name,
@@ -306,5 +303,6 @@ Diagram rendering, browser inspection and repository link checks validate presen
 No collector, syscall bypass, target, topology, protected-folder, initialization, native or
 VM experiment is part of those checks. Complete whole-design review/earned integration and
 all required B/Q/P evidence and U5/U6 controls remain required before actual instrument
-admission; U1–U4 accepted unknowns stay explicitly scoped, never passed. The target pass is unused;
-private eligibility is false, both product holds and every native pending duty remain.
+admission; U1–U4 accepted unknowns stay explicitly scoped, never passed. Instrument closure
+supplies no finite-subject/private/product/native qualification: retain each existing hold
+until its own required evidence qualifies it. Reporting cannot spend the target pass.

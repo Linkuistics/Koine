@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Separate independent acceptance and LIVE release from qualification",
-    "status": "K285 design seam; complete k282 reconciliation and whole review still due",
-    "summary": "Inspection-only clean/findings reviews feed a chartered independent own trust act. Receipt publication and proofs leave qualification DISARMED; accepted final proof/audit/distinct k244 close precede independent eligibility and one explicitly supervised k245 LIVE channel. Pure entries remain SCRATCH, including armed-state controls. K286 input partition and k287 whole reconciliation/review still precede k269; no authority or target pass is supplied.",
+    "title": "Keep changing reports outside enduring inputs",
+    "status": "K286 design seam; k287 whole reconciliation and mandatory review remain",
+    "summary": "Exact canonical/ADR/contract extracts and whole companions, five tables, bases and actual task/runtime objects remain inputs. Commissioning, qualification, audit and close observations move to an unconsumed report. Actual evidence/authority records have acyclic phase-specific consumers; changed rules or consumed objects still disarm and requalify. K287 and whole-k282 review/integration precede k269; the target pass remains unused.",
     "diagramIds": [
       "native-reference-proof",
       "native-reference-packaging",
@@ -17,23 +17,11 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-proof",
-        "summary": "Added inspection-only review, chartered own acceptance and disarmed audit/close before independent LIVE supervision."
+        "summary": "Separated enduring section/whole-object inputs from unconsumed reports and showed changed-input requalification."
       },
       {
         "id": "native-reference-packaging",
-        "summary": "Moved independent role selection before Task startup and kept armed-state pure controls in SCRATCH."
-      },
-      {
-        "id": "native-reference-admission",
-        "summary": "Separated receipt validation, disarmed requalification/close and independently supervised release."
-      },
-      {
-        "id": "native-reference-instrument",
-        "summary": "Added independent role authority before the retained chain and required release bindings."
-      },
-      {
-        "id": "native-reference-evidence",
-        "summary": "Added chartered acceptance and independent release after disarmed final qualification/audit/close."
+        "summary": "Made full task/basis input binding explicit and kept changing reports outside the retained chain."
       }
     ]
   },
@@ -97,7 +85,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "Moved independent role selection before Task startup and kept armed-state pure controls in SCRATCH. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "K286 separates enduring exact extracts and whole companions/tables/bases/task/runtime inputs from changing unconsumed reports. Finalized acceptance/audit/close/release objects are phase-specific evidence, never a Q self-hash; actual input changes still disarm and require affected qualification. K287 whole reconciliation and mandatory whole-k282 review/integration precede k269. This documentary design supplies no actual qualification, authority or target pass."
     },
     {
       "id": "native-reference-contact",
@@ -142,7 +130,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Added inspection-only review, chartered own acceptance and disarmed audit/close before independent LIVE supervision. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "K286 separates enduring exact extracts and whole companions/tables/bases/task/runtime inputs from changing unconsumed reports. Finalized acceptance/audit/close/release objects are phase-specific evidence, never a Q self-hash; actual input changes still disarm and require affected qualification. K287 whole reconciliation and mandatory whole-k282 review/integration precede k269. This documentary design supplies no actual qualification, authority or target pass."
     },
     {
       "id": "native-population-metadata-shape",

@@ -135,6 +135,12 @@ integration before k269. The earlier admission proposals cannot
 be implemented as settled. A refused required copy leaves the finite subject incomplete;
 useful breadth, the unused pass and all holds remain.
 
+The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
+keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
+[changing reports](docs/verification/application-reference-input-partition.md). Actual input changes
+still disarm and requalify; report updates supply no authority, qualification or private/
+native outcome. K287 and mandatory whole-k282 review/integration still precede k269.
+
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and the user

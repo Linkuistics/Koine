@@ -276,9 +276,10 @@ separates inspection-only review from an independent owner's own registration ac
 [Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps provisioning/requalification disarmed through accepted audit and distinct instrument
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
-release possession and copied review/run/commit supply no role authority. Remaining input-
-partition repair, whole reconciliation and mandatory whole review still precede construction
-replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
+release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
+keeps changing observations in a separate unconsumed report; actual input changes still
+disarm and requalify. Whole reconciliation and mandatory whole review still precede
+construction replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

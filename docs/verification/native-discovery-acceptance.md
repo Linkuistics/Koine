@@ -109,6 +109,12 @@ accepted audit/distinct close and a separate supervisor-originated k245 channel.
 proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
 whole-k282 review/integration remains before k269; every native duty below stays pending.
 
+The [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
+keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
+[changing reports](application-reference-input-partition.md). Actual input changes
+still disarm and requalify; report updates supply no authority, qualification or private/
+native outcome. K287 and mandatory whole-k282 review/integration still precede k269.
+
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;
 1,024/1,500 admit only actual indexed tuples. Require localized names distinct

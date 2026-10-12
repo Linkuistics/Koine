@@ -46,8 +46,14 @@ gives inspection-only clean/findings review a separate independent own trust act
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
 independent commissioned supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority; k286/k287 and whole review
+possession and copied review/run/commit supply no authority; k287 and whole review
 still precede k269. This design supplies no finite subject or native/private eligibility.
+
+The [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
+keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
+[changing reports](application-reference-input-partition.md). Actual input changes
+still disarm and requalify; report updates supply no authority, qualification or private/
+native outcome. K287 and mandatory whole-k282 review/integration still precede k269.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no

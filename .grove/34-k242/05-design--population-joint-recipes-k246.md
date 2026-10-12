@@ -66,3 +66,15 @@ claiming their behavior or signing is qualified. Missing bytes/roles or unresolv
 coverage remains a precise design gap; no invented envelope or projected padding.
 Known subject defects require repair/review before native capture; valid actual useful
 source/access/deadline/gross/attempt gaps go once to k93 in the existing programme.
+
+K286's enduring-input partition binds exact canonical/ADR/contract sections and whole
+companions/five tables/bases plus every actual task/runtime input. Changing commissioning,
+provisioning, qualification, audit and close/promotion observations live in the separate
+unconsumed application-reference-input-partition.md report. Finalized successor acceptance/
+audit/close/release records are phase-specific evidence, not earlier Q self-hashes or
+prose authority. Actual consumed receipt/revision/image/closure changes still disarm and
+require affected requalification; reporting alone changes no accepted input. Required
+charter/closing bases freeze as complete immutable objects before measurement; a consumed
+live task/report instead binds its full bytes with no section exception. K287 and mandatory
+whole-k282 review/integration still precede k269; no partial child is a construction handoff,
+actual qualification, authority, finite subject or use of k245's pass.

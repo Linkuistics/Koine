@@ -136,3 +136,15 @@ new signing/helper/consent/posture, Koine reader or native/VM capture. The speci
 instrument's build label or a pure pass cannot stand in for this actual byte package.
 If pass/build/roles are unavailable, retain exact missing work and carry a coherent
 failed boundary to k246/k247; never credit a completed finite subject or abandon work.
+
+K286's enduring-input partition binds exact canonical/ADR/contract sections and whole
+companions/five tables/bases plus every actual task/runtime input. Changing commissioning,
+provisioning, qualification, audit and close/promotion observations live in the separate
+unconsumed application-reference-input-partition.md report. Finalized successor acceptance/
+audit/close/release records are phase-specific evidence, not earlier Q self-hashes or
+prose authority. Actual consumed receipt/revision/image/closure changes still disarm and
+require affected requalification; reporting alone changes no accepted input. Required
+charter/closing bases freeze as complete immutable objects before measurement; a consumed
+live task/report instead binds its full bytes with no section exception. K287 and mandatory
+whole-k282 review/integration still precede k269; no partial child is a construction handoff,
+actual qualification, authority, finite subject or use of k245's pass.

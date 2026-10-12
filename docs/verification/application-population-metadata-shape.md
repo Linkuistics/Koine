@@ -443,6 +443,12 @@ full-byte inputs until that reviewed partition is implemented; this relocation s
 reporting slice. A requirements answer qualifies no tool, initializes no authority and
 supplies no current package, finite subject or native verdict.
 
+The separate [input-partition and evidence report](application-reference-input-partition.md)
+records changing construction/commissioning/qualification/audit/close observations.
+K286 preserves this document's entire selected section byte for byte; the historical
+requirements-session facts and conditional holds retain their original scope. Whole-byte
+companions/tables/bases remain inputs, with no reporting slice or inferred qualification.
+
 ### Line-by-line original-obligation comparison
 
 | Original clause or condition | Selected disposition |

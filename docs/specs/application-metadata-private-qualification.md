@@ -342,6 +342,12 @@ disarmed final requalification, accepted audit/distinct instrument close and sep
 supervised k245 LIVE invocation. Receipt, proof, release-record or copied-review possession
 supplies no authority or finite subject. Whole-k282 review/integration still precedes k269.
 
+The [enduring-input partition](../verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
+keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
+[changing reports](../verification/application-reference-input-partition.md). Actual input changes
+still disarm and requalify; report updates supply no authority, qualification or private/
+native outcome. K287 and mandatory whole-k282 review/integration still precede k269.
+
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,
 source/observer/client instruments, input GraphQL document and all independent
