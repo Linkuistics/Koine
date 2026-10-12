@@ -198,8 +198,10 @@ launch/proxy/read/calibration owners, actual adapters/entry/runtime expectations
 one-time initializer and separate actual validator/derivative verification, earned whole-
 implementation review/repair, last-edit requalification, independent audit/reporting and
 distinct k244 close/promotion. Later provisioning/corrections/dependencies retain precise
-live repair/requalification before k245. U1–U6 and required native U segments remain exact
-unavailable work before credit; they cannot become inapplicable or closing prose. Actual
+live repair/requalification before k245. Required named Q/P identities and U5/U6 controls
+remain exact unavailable work before credit; they cannot become inapplicable or closing
+prose. K281 accepts U1–U4's complete contact gaps as unknown limits, not required
+full-mechanism repetition. Actual
 target original/export verification follows k245's declared attempt; scratch controls
 qualify its mechanics first. This node and k242 still have live obligations; the close
 cascade stops here. The one pass is unused, k246/k247 duties and every product/native hold
@@ -281,14 +283,35 @@ adjudication/qualification/audit/close/release owners before their consumers. K2
 mandatory whole-k282 review/integration remain before k269; this seam supplies no partial
 construction handoff, actual authority, executed control or target evidence.
 
-K286's enduring-input partition binds exact canonical/ADR/contract sections and whole
-companions/five tables/bases plus every actual task/runtime input. Changing commissioning,
-provisioning, qualification, audit and close/promotion observations live in the separate
-unconsumed application-reference-input-partition.md report. Finalized successor acceptance/
-audit/close/release records are phase-specific evidence, not earlier Q self-hashes or
-prose authority. Actual consumed receipt/revision/image/closure changes still disarm and
-require affected requalification; reporting alone changes no accepted input. Required
-charter/closing bases freeze as complete immutable objects before measurement; a consumed
-live task/report instead binds its full bytes with no section exception. K287 and mandatory
-whole-k282 review/integration still precede k269; no partial child is a construction handoff,
-actual qualification, authority, finite subject or use of k245's pass.
+K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
+release and enduring-input conjunction. Mandatory whole-k282 review and every earned
+integration precede k269; neither an earlier k273 proposal nor a partial child is a
+construction handoff. The durable original-obligation comparison preserves k273/k244/k242,
+all k282 repairs and R7–R10 under only k281's exact amendments. K269 assigns concrete live
+handles to each responsibility before its consumer, including clean/findings acceptance,
+terminal commissioning/adjudication, qualified provisioning/validation, refusal controls,
+disarmed last-edit qualification/repair, independent audit/reporting, distinct k244 close
+and separate release supervision. Freeze complete charter/closing bases before measurement;
+actual task/report reads bind full bytes. Successor records stay acyclic and reports
+unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pass unused,
+k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
+retirement supplies actual authority, qualification or a completed finite subject.
+
+## Complete k282 design promotion
+
+K287 closes reference-evidence-admission-completion-k282 at the complete reconciled
+design boundary. Mandatory whole-producer review reference-evidence-admission-completion-k288
+is immediately before k269, Reviews naming k282 and Creator naming this closing run;
+every earned integration also precedes replanning. Consume that whole conjunction and
+its original-obligation/role-placement comparisons, never an earlier k273 proposal or
+retired repair child alone. The canonical selected inputs, full companions/tables and
+original completion conditions are preserved; only k281's explicitly compared amendments
+control contact/lookup interpretation. Documentary/presentation checks pass without
+authority, executed instrument controls, target evidence or native acceptance.
+
+This instrument node stays live: k288, k269 and construction/qualification remain.
+Its original Done when requires actual stable proof, qualified provisioning/validation,
+independent acceptance/audit and distinct closing promotion, followed by separate release
+supervision for k245. The close cascade stops here. K242's package/roles/recipes/whole-
+subject review and all useful-breadth/product/private/native obligations remain; k245's
+one pass is unused. No design close supplies actual identities, authority or finite subject.

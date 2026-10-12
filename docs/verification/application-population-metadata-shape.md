@@ -436,16 +436,16 @@ It does not supply permission beyond those clauses or an implemented admission g
 Those controls are currently specified, not executed.
 
 The instrument, independent admission mechanism and actual qualification remain unbuilt.
-The one target pass is unused. K282 must apply the decisions, repair credit/LIVE activation/
-independent registration/input partition, and earn mandatory whole-design review and every
-earned integration before k269 replans. Whole companions and inventory/basis tables remain
+The one target pass is unused. K287 reconciles the complete k282 credit/LIVE activation/
+independent acceptance/input partition under the actual decisions. Mandatory whole-design
+review and every earned integration precede k269 replanning. Whole companions and inventory/basis tables remain
 full-byte inputs until that reviewed partition is implemented; this relocation selects no
 reporting slice. A requirements answer qualifies no tool, initializes no authority and
 supplies no current package, finite subject or native verdict.
 
 The separate [input-partition and evidence report](application-reference-input-partition.md)
 records changing construction/commissioning/qualification/audit/close observations.
-K286 preserves this document's entire selected section byte for byte; the historical
+The complete reconciliation preserves this document's entire selected section byte for byte; the historical
 requirements-session facts and conditional holds retain their original scope. Whole-byte
 companions/tables/bases remain inputs, with no reporting slice or inferred qualification.
 
@@ -485,7 +485,8 @@ complete amended conjunction before construction planning uses it.
 
 The [admission repair design](application-reference-evidence.md#authoritative-attempt-evidence)
 requires a fixed permission-evidence subject independent of caller-selected exports,
-independently complete qualification proofs and external scratch-contact observation.
+independently complete stage-specific qualification proofs and required named bounded
+scratch-contact evidence.
 The [selected authority requirements](#authority-and-admission-choices) settle initialization,
 lifecycle, independent approval/corrections, bounded persistence, unprivileged observation
 and protected/intermediate contact under Antony's delegation. Actual reviewed protocol,
@@ -493,9 +494,9 @@ qualified provisioning, receipt, independently approved anchors and actual proof
 selected bounded claims remain absent; unknown authority refuses contact. No requirements answer performs
 initialization or spends the target pass. The [whole original-obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
 and [construction responsibility handoff](application-reference-evidence.md#construction-responsibility-and-stability-handoff)
-carry the complete replacement through mandatory whole-k273 review/earned integration
-before k269. K279/k280 subsequently require k281's actual decisions and k282's complete
-reviewed repair before that planner; no owner may guess which U cells block admission.
+carry the complete replacement through mandatory whole-k282 review/earned integration
+before k269. K279/k280's findings and k281's actual decisions are reconciled by k287 into
+that complete conjunction; no owner may guess which U cells block admission.
 K281's accepted unknown contact coverage is an explicit limit, not a mandatory repeat of
 the complete-mechanism impasse. K282 must separate those limits from actual required
 prerequisites and first-attempt observations; no unrelated native proof is waived.

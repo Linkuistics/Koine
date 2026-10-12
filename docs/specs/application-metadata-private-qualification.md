@@ -346,7 +346,7 @@ The [enduring-input partition](../verification/application-reference-evidence.md
 keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
 [changing reports](../verification/application-reference-input-partition.md). Actual input changes
 still disarm and requalify; report updates supply no authority, qualification or private/
-native outcome. K287 and mandatory whole-k282 review/integration still precede k269.
+native outcome. The complete k282 boundary is reconciled for mandatory whole-producer review and every earned integration before k269; design closure supplies no instrument qualification, authority or finite subject.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

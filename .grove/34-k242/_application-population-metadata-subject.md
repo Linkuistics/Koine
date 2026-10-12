@@ -211,14 +211,16 @@ adjudication/qualification/audit/close/release owners before their consumers. K2
 mandatory whole-k282 review/integration remain before k269; this seam supplies no partial
 construction handoff, actual authority, executed control or target evidence.
 
-K286's enduring-input partition binds exact canonical/ADR/contract sections and whole
-companions/five tables/bases plus every actual task/runtime input. Changing commissioning,
-provisioning, qualification, audit and close/promotion observations live in the separate
-unconsumed application-reference-input-partition.md report. Finalized successor acceptance/
-audit/close/release records are phase-specific evidence, not earlier Q self-hashes or
-prose authority. Actual consumed receipt/revision/image/closure changes still disarm and
-require affected requalification; reporting alone changes no accepted input. Required
-charter/closing bases freeze as complete immutable objects before measurement; a consumed
-live task/report instead binds its full bytes with no section exception. K287 and mandatory
-whole-k282 review/integration still precede k269; no partial child is a construction handoff,
-actual qualification, authority, finite subject or use of k245's pass.
+K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
+release and enduring-input conjunction. Mandatory whole-k282 review and every earned
+integration precede k269; neither an earlier k273 proposal nor a partial child is a
+construction handoff. The durable original-obligation comparison preserves k273/k244/k242,
+all k282 repairs and R7–R10 under only k281's exact amendments. K269 assigns concrete live
+handles to each responsibility before its consumer, including clean/findings acceptance,
+terminal commissioning/adjudication, qualified provisioning/validation, refusal controls,
+disarmed last-edit qualification/repair, independent audit/reporting, distinct k244 close
+and separate release supervision. Freeze complete charter/closing bases before measurement;
+actual task/report reads bind full bytes. Successor records stay acyclic and reports
+unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pass unused,
+k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
+retirement supplies actual authority, qualification or a completed finite subject.

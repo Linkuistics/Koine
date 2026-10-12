@@ -7,9 +7,10 @@ design and all k267 classifications before reference-evidence-replay-k250 starts
 
 ## Context
 
-Consume actual authority decisions from k270, replacement producer
-reference-evidence-admission-repair-k273, its mandatory whole review and every earned
-integration. K268/k271/k272 explain the incomplete handoff, not implementation eligibility. Read k266's findings from c5186473933d,
+Consume k270/k281's actual choices and the complete reference-evidence-admission-completion-k282
+boundary closed by k287, after its mandatory whole review and every earned integration.
+K273/k279/k280 and K268/k271/k272 explain the repaired earlier proposals, not alternate
+implementation eligibility. Read k266's findings from c5186473933d,
 k267's triage, current complete k244 obligations and every construction leaf. Re-derive
 paths by handle; this leaf may move when review/integration is inserted before it.
 
@@ -48,8 +49,8 @@ LIVE release/independent acceptance, k286 enduring-input partition and k287 whol
 reconciliation. K283's Q/P/A map specifies earlier required actual-call/control evidence,
 fresh invocation facts before intent and target outcomes only during the one authorized
 attempt, with scoped E/M/U evidence. It introduces no LIVE qualification mode. Consume
-that map only within the final whole-k282 reviewed conjunction; the other live children
-and mandatory whole review/integration cannot be skipped because a credit child retires.
+that map only within the final whole-k282 reviewed conjunction; mandatory whole
+review/integration cannot be skipped because the producer or a credit child retires.
 
 ## Work and verification
 
@@ -137,12 +138,13 @@ independent acceptance follow the last input edit; retain live repair/requalific
 owners before k245. Required process-image/channel/contact/read correspondence consumes
 k276/k277, never a pathname hash or a producer message. No root/record/tool exists yet.
 
-Carry all k271/k272 R1–R15 classifications and actual k270 choices through every owner.
-Do not consume k273 before whole review/integration. In particular, assign authority
-consumption/deletion controls, independent inventory/verifier anchors, the full IPC/proxy/
-descriptor contact universe, exact packaging entry/UID/build/location checks, and immutable
-actual task/interpreter/stdlib/package read closure before their consumers. A DTrace-only
-clean syscall trace cannot supply the complete required no-contact boundary.
+Carry all k271/k272 R1–R15 classifications and actual k270/k281 choices through every owner.
+Consume only the whole reviewed k282 conjunction. Assign authority consumption/deletion
+controls, independent inventory/verifier anchors, complete documentary IPC/proxy/descriptor
+classification and the required bounded claims, exact packaging entry/UID/build/location
+checks, and immutable known actual task/interpreter/stdlib/package inputs before their
+consumers. A DTrace-only clean trace supplies no full no-contact credit; complete opaque
+proxy/right/map coverage remains the accepted unknown, not an implementation prerequisite.
 
 Give actual qualified receipt provisioning and independent validation a live owner before
 k245. Preserve requalification after the last changed measured input, including human
@@ -209,7 +211,8 @@ required copy/useful class is removed to obtain a clean proof.
 
 ## Exact entry, read closure and expectations from k277
 
-Consume the complete application-reference-packaging-runtime.md after whole-k273 review.
+Consume the complete application-reference-packaging-runtime.md after whole-k282 review
+and every earned integration.
 Assign the checker-owned launch, standalone retained Taskfile/script/export-only CLI,
 mandatory fresh domain fd, reviewed bounded initial-state record and operation mapping
 before actual composition credit. No missing-channel LIVE default or coordinator-only
@@ -251,9 +254,9 @@ programme is supplied here; the pass remains unused.
 
 Use application-reference-evidence.md#whole-producer-obligation-comparison and
 #construction-responsibility-and-stability-handoff to check every original k273/k244/k242
-obligation against actual artifacts. The design closes k273 only at its complete
-design/exact-unavailable boundary; mandatory whole review/earned integration still precede
-this planner. It closes neither k244 nor k242. Replace the old proposed construction-owner
+obligation against actual artifacts. K287 closes k282 at its complete reconciled design
+boundary; its mandatory whole review/earned integration still precede this planner.
+It closes neither k244 nor k242. Replace the old proposed construction-owner
 table only when the actual revised tree supplies a concrete live handle for every role.
 
 Assign independent inventory/profile/concordance/documentary-basis authoring, early usable
@@ -359,14 +362,16 @@ the affected stable suffix (whole matrix if unknown impact), never initializatio
 prior dispatch has no automatic re-arm. Preserve whole-byte companion/table/basis bindings,
 k286 partition work, k287 whole reconciliation/review, k245's unused pass and k246/k247 duties.
 
-K286's enduring-input partition binds exact canonical/ADR/contract sections and whole
-companions/five tables/bases plus every actual task/runtime input. Changing commissioning,
-provisioning, qualification, audit and close/promotion observations live in the separate
-unconsumed application-reference-input-partition.md report. Finalized successor acceptance/
-audit/close/release records are phase-specific evidence, not earlier Q self-hashes or
-prose authority. Actual consumed receipt/revision/image/closure changes still disarm and
-require affected requalification; reporting alone changes no accepted input. Required
-charter/closing bases freeze as complete immutable objects before measurement; a consumed
-live task/report instead binds its full bytes with no section exception. K287 and mandatory
-whole-k282 review/integration still precede k269; no partial child is a construction handoff,
-actual qualification, authority, finite subject or use of k245's pass.
+K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
+release and enduring-input conjunction. Mandatory whole-k282 review and every earned
+integration precede k269; neither an earlier k273 proposal nor a partial child is a
+construction handoff. The durable original-obligation comparison preserves k273/k244/k242,
+all k282 repairs and R7–R10 under only k281's exact amendments. K269 assigns concrete live
+handles to each responsibility before its consumer, including clean/findings acceptance,
+terminal commissioning/adjudication, qualified provisioning/validation, refusal controls,
+disarmed last-edit qualification/repair, independent audit/reporting, distinct k244 close
+and separate release supervision. Freeze complete charter/closing bases before measurement;
+actual task/report reads bind full bytes. Successor records stay acyclic and reports
+unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pass unused,
+k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
+retirement supplies actual authority, qualification or a completed finite subject.

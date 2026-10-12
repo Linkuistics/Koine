@@ -16,11 +16,16 @@ remain live.
 
 Current changes:
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Separated enduring section/whole-object inputs from unconsumed reports and showed changed-input requalification.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Made full task/basis input binding explicit and kept changing reports outside the retained chain.
-- [Enduring inputs and phase-specific reports](../../verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports) — Kept successor evidence acyclic and report edits separate from actual receipt/revision/runtime changes.
-- [Extraction and whole-object mutation controls](../../verification/application-reference-evidence.md#extraction-and-whole-object-mutation-controls) — Specified report-event positives, boundary/object/task/basis negatives and within-invocation snapshot stability.
-- [Input partition and evidence report](../../verification/application-reference-input-partition.md) — Recorded every statement unit and the honest current construction/evidence boundary outside measured inputs.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Reconciled the complete review boundary with Q/P/A, disarmed validation and independent one-use release.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Kept P/A pending at Q and made the complete acceptance, input and release chain the review subject.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Replaced the partial-child handoff with the complete credit, release and enduring-input conjunction.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Connected required proof blockers and accepted unknown limits to the whole reviewed conjunction.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced stale child/authority status with the complete staged-credit, acceptance/release and input contracts.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Made complete k282 review the gate before construction, actual qualification and the unused target pass.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Applied actual k281 choices and complete k282 review while retaining package, recipe and whole-subject duties.
+
+- [Whole-producer obligation comparison](../../verification/application-reference-evidence.md#whole-producer-obligation-comparison) — Compared every k282 repair and R7–R10 preservation with the original k273/k244/k242 duties.
+- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Fixed acceptance, commissioning, pre-lookup refusal, qualification, audit, reporting, distinct close and release placements before consumers.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -29,8 +34,8 @@ current-service/proxy/initial-right/mapping coverage with residual accidental-co
 risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
 with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
 absent. K282 is a five-seam producer: k283 repairs credit; k284 applies contact/pre-lookup claims;
-k285 specifies chartered independent acceptance and disarmed LIVE release; k286 separates enduring inputs from changing reports; k287 owns the complete reconciliation
-and mandatory whole review. Every earned integration precedes k269; no partial child
+k285 specifies chartered independent acceptance and disarmed LIVE release; k286 separates enduring inputs from changing reports; k287 delivers the complete reconciliation for mandatory
+whole-producer review. Every earned integration precedes k269; no partial child
 is an implementable admission handoff or spends k245's pass.
 
 Unchanged context: [Persistence operations](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits),

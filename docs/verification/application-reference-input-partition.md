@@ -3,12 +3,12 @@
 This is an unconsumed reporting output. The binding rules are the evidence contract's
 [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 and [mutation controls](application-reference-evidence.md#extraction-and-whole-object-mutation-controls).
-This report records the k286 documentary repair and its current evidence boundary;
+This report records the complete k282 reconciliation and its current evidence boundary;
 it supplies no approval, receipt, qualification, close record or LIVE role.
 
 ## Current construction and evidence report
 
-At the k286 design boundary, the target-reading instrument, executable schemas,
+At the k287 whole-design boundary, the target-reading instrument, executable schemas,
 independent verifier/runner and required pure-control matrix are not built or qualified.
 No commissioned approval root, accepted revision, live authority directory/receipt,
 final receipt validation, original qualified Q results, accepted audit/distinct k244 close
@@ -19,9 +19,9 @@ qualification was performed. K245's single authorized pass remains unused.
 
 K283 specifies Q mechanics, fresh P facts and first-attempt A outcomes; k284 applies
 the accepted bounded contact/pre-lookup limits; k285 specifies independent own acceptance
-and disarmed release. K286 separates enduring inputs from changing observations. K287's
-whole conjunction reconciliation and mandatory whole-k282 review/every earned integration
-still precede k269 construction replanning. No partial child is a construction handoff.
+and disarmed release. K286 separates enduring inputs from changing observations. K287 reconciles their whole conjunction, with original k273/k244/k242 and complete k282
+repair comparisons, seven views and all consumer handoffs. Mandatory whole-k282 review and
+every earned integration precede k269 construction replanning. No partial child is a handoff.
 K244/k242 remain live, k246/k247 retain their complete duties, private eligibility remains
 false, both product holds remain, and every native pending obligation stays live.
 
@@ -35,7 +35,7 @@ distinct from failed/missing required controls and identities.
 The exact approved sentence, “Those controls are currently specified, not executed.”,
 remains verbatim in the canonical report's
 [status subsection](application-population-metadata-shape.md#status-outside-the-measured-permission).
-K286 changes no byte of its selected requirements or the descriptor ADR. Requirements-leaf
+The complete reconciliation changes no byte of its selected requirements or the descriptor ADR. Requirements-leaf
 non-execution statements remain fixed historical facts; downstream outcomes are reported
 here without relabelling that interview or weakening conditional qualification holds.
 
@@ -141,9 +141,9 @@ They bind no digest of this report or of a future proof.
 
 | Alias | Inspected full-byte SHA-256 |
 | --- | --- |
-| S | `eaa154c514006e2fa46e96f630fe5ebcd60c2cea935a9f59a39558d4a759e2c7` |
+| S | `fcfedf988f2c8bee14f9e17b8be225c0d262a490345a656a552b3190ad32216d` |
 | D | `0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962` |
-| C | `3efaa55030075bd19289a6ceedc2babe4b4224d75f104ccb82ef699030daa9b9` |
+| C | `eddddbc9b7b16ee337aa4c8f863ec375f172b9a8c2f535d36dbb406e3ac5eec3` |
 | K | `03c8d65cb57a4888acfeecc6ec3afa43bb0654e1d1a1dd64eec2ba390aa1a22b` |
 | P | `5f4ad1899a4f5c33e7c9641c68d251416a36582db3e3531667c8d91e66229f61` |
 | PINS | `4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33` |

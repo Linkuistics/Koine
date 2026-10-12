@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Keep changing reports outside enduring inputs",
-    "status": "K286 design seam; k287 whole reconciliation and mandatory review remain",
-    "summary": "Exact canonical/ADR/contract extracts and whole companions, five tables, bases and actual task/runtime objects remain inputs. Commissioning, qualification, audit and close observations move to an unconsumed report. Actual evidence/authority records have acyclic phase-specific consumers; changed rules or consumed objects still disarm and requalify. K287 and whole-k282 review/integration precede k269; the target pass remains unused.",
+    "title": "Review the complete reference admission conjunction",
+    "status": "Complete k282 design boundary; mandatory whole review before k269",
+    "summary": "Q mechanics and controls, fresh P authority/build/channel/export facts, and first-attempt A evidence have separate gates. Accepted bounded-contact unknowns waive no required proof. Independent own acceptance, disarmed requalification/audit/distinct close, and supervisor-originated LIVE release agree with exact extracts, whole inputs and unconsumed reports. Mandatory whole-k282 review and every earned integration precede k269. The target pass is unused; no authority, qualification or finite subject is supplied.",
     "diagramIds": [
       "native-reference-proof",
       "native-reference-packaging",
@@ -16,12 +16,32 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "native-reference-admission",
+        "summary": "Reconciled the complete review boundary with Q/P/A, disarmed validation and independent one-use release."
+      },
+      {
         "id": "native-reference-proof",
-        "summary": "Separated enduring section/whole-object inputs from unconsumed reports and showed changed-input requalification."
+        "summary": "Kept P/A pending at Q and made the complete acceptance, input and release chain the review subject."
       },
       {
         "id": "native-reference-packaging",
-        "summary": "Made full task/basis input binding explicit and kept changing reports outside the retained chain."
+        "summary": "Replaced the partial-child handoff with the complete credit, release and enduring-input conjunction."
+      },
+      {
+        "id": "native-reference-contact",
+        "summary": "Connected required proof blockers and accepted unknown limits to the whole reviewed conjunction."
+      },
+      {
+        "id": "native-reference-instrument",
+        "summary": "Replaced stale child/authority status with the complete staged-credit, acceptance/release and input contracts."
+      },
+      {
+        "id": "native-reference-evidence",
+        "summary": "Made complete k282 review the gate before construction, actual qualification and the unused target pass."
+      },
+      {
+        "id": "native-population-metadata-shape",
+        "summary": "Applied actual k281 choices and complete k282 review while retaining package, recipe and whole-subject duties."
       }
     ]
   },
@@ -85,7 +105,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "K286 separates enduring exact extracts and whole companions/tables/bases/task/runtime inputs from changing unconsumed reports. Finalized acceptance/audit/close/release objects are phase-specific evidence, never a Q self-hash; actual input changes still disarm and require affected qualification. K287 whole reconciliation and mandatory whole-k282 review/integration precede k269. This documentary design supplies no actual qualification, authority or target pass."
+      "caption": "The same retained export-only checker/Task/script/CLI chain separates SCRATCH Q mechanics, fresh LIVE P checks and first-attempt A outcomes. Only the independent appointed supervisor selects LIVE after accepted audit/distinct close; receipts, proofs and saved releases grant no role. Whole task/runtime/basis inputs remain bound and reports unconsumed. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-reference-contact",
@@ -94,7 +114,7 @@
       "renderer": "svg",
       "source": "native-reference-contact.d2",
       "rendered": "native-reference-contact.svg",
-      "caption": "Antony accepted k281 bounded evidence and closed pre-lookup refusal. Complete C1–C8 documentary inputs bind named B1–B8 claims and U1–U6 required-versus-accepted-unknown limits. Full current-service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains unknown, never no-contact. Required named controls and UID/build/authority/image/channel/input/freeze facts block. T1–T7 ordinary/direct/link Data entries and A1–A3 separate target/authority/export operations precede lookup; refused required copies yield truthful incomplete evidence. Whole k282 repair/review remains before k269; no pass is spent."
+      "caption": "C1–C8 documentary inputs map to required B1–B8 evidence and the U1–U6 required/accepted-unknown partition. T1–T7/A1–A3 classify raw slots and observed expansions before lookup. Required proofs still block; unobserved service/proxy/right/map/ancestry/TCC contact remains accepted risk, never a no-contact certificate. Refused required copies retain incomplete subject work. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-reference-evidence",
@@ -103,7 +123,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Added chartered acceptance and independent release after disarmed final qualification/audit/close. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "Complete k282 review precedes k269 replanning, actual tool qualification, independent acceptance/provisioning/audit/distinct close and separate one-use k245 release. K245 freezes original/verified-derivative evidence and independent roles; k246 generated discrimination and k247 whole-subject review remain separate. Actual VM baseline is additive and all holds/native pending duties remain. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-reference-instrument",
@@ -112,7 +132,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Added independent role authority before the retained chain and required release bindings. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "Checker supervision and independent role selection precede Task startup. The retained entry, issuance/current bridge, bounded evidence, original bytes/native decoder witnesses and independent verifier remain distinct owners. Q/P/A, acceptance/release and enduring-input contracts compose as the complete k282 review subject; no component is qualified by this diagram. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-reference-admission",
@@ -121,7 +141,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Separated receipt validation, disarmed requalification/close and independently supervised release. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "Qualified mechanics precede separate DISARMED initialization/validation and last-edit requalification, independent acceptance/audit/distinct close and independent release. Fresh P checks and export reservation precede irreversible intent/spent permit/original start. A evidence is first observed in the one attempt; failed pre-intent export reserves no target authority and cleanup never refunds consumption. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-reference-proof",
@@ -130,7 +150,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "K286 separates enduring exact extracts and whole companions/tables/bases/task/runtime inputs from changing unconsumed reports. Finalized acceptance/audit/close/release objects are phase-specific evidence, never a Q self-hash; actual input changes still disarm and require affected qualification. K287 whole reconciliation and mandatory whole-k282 review/integration precede k269. This documentary design supplies no actual qualification, authority or target pass."
+      "caption": "Inspection-only review feeds a separately chartered independent owner on clean and findings paths. Terminal commissioning and original control adjudication precede Q. Exact extracts and whole companions/tables/bases/tasks stay enduring inputs; changing reports are unconsumed and successors acyclic. Disarmed qualification/provisioning/audit/distinct close precede independently supervised one-use release. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-population-metadata-shape",
@@ -139,7 +159,7 @@
       "renderer": "svg",
       "source": "native-population-metadata-shape.d2",
       "rendered": "native-population-metadata-shape.svg",
-      "caption": "Historical projection/integrity supplies no current payload or useful classification. K279/k280 require k281 actual contact/lookup decisions and k282 complete reviewed admission repair before k269. K245 original/verified derivative and independent roles, k246 full useful/helper/alias rewrite recipes and k247 whole-subject review remain live. The pass is unused, actual VM baseline is additive, private eligibility is false and all native duties remain pending."
+      "caption": "Historical projection and packet integrity supply no current bytes or useful classification. Actual k281 amendments and the complete k282 conjunction require mandatory whole review before k269. K245 original/verified derivative and independent roles, k246 whole useful/helper/alias recipes and k247 whole-subject review retain every original duty; the pass is unused and private/native holds remain. Mandatory whole-k282 review/every earned integration precede k269. Design supplies no authority, actual qualification or finite subject."
     },
     {
       "id": "native-metadata-composition",

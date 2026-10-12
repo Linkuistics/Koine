@@ -184,3 +184,25 @@ charter/closing bases freeze as complete immutable objects before measurement; a
 live task/report instead binds its full bytes with no section exception. K287 and mandatory
 whole-k282 review/integration still precede k269; no partial child is a construction handoff,
 actual qualification, authority, finite subject or use of k245's pass.
+
+## Complete design closing comparison
+
+Reference-evidence-admission-completion-k287 delivers this node's complete Required
+complete repairs and Done when at one reconciled design boundary. The durable comparison
+covers every original k273/k244/k242 condition, every k282 repair and R7–R10 preservation
+under only k281's actual amendments. Exact selected inputs, both whole companions/five
+tables/bases, seven editable/rendered views, manifest, all summary layers and consumer
+charters agree. K269 has precise clean/findings acceptance, commissioning/adjudication,
+policy/refusal, qualified provisioning/validation, disarmed qualification/repair,
+independent audit/reporting, distinct close and release responsibilities before consumers;
+it assigns actual live handles after review. Frozen documentary/render/served-byte checks
+pass; no actual instrument/authority/native qualification follows.
+
+The closing child inserted mandatory reference-evidence-admission-completion-k288 at
+the first later live sibling k269, Reviews naming this node and Creator naming k287's
+actual dispatch run. Its complete-conjunction/amendment review and every earned integration
+precede k269. All five children are terminal and this design node closes; the boundary
+is promoted to k244. No competing partial review or implementation leaf is cut.
+K244 retains live review/planning/construction and actual qualification work, so the
+ancestor close cascade stops there. K242, the unused k245 pass, complete k246/k247 duties,
+useful breadth and every product/private/native hold remain. No new ADR is earned.
