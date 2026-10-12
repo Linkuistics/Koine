@@ -16,10 +16,10 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Inserted production-tool construction and planning before complete pure qualification, retaining the unused target pass.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Planned five working increments and a preceding planning review, retaining full qualification before the unused target pass.
 - [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the proposed source/acquisition/decoder/envelope/verifier owners and independent oracle.
 - [Selected instrument architecture](../../verification/application-reference-evidence.md#selected-instrument-architecture) — Selected fixed raw NUL framing, held closed acquisition and native type-ID decoding with explicit terminal/race/duplicate/coercion limits.
-- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Kept the complete executable schema/tool/control/task obligations live under k244's planning handoff; a design is no verified instrument.
+- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Mapped offline replay, native decoding, source observations, held acquisition and durable whole qualification to independently demonstrable handoffs; the executable schema/tool/control/task obligations remain unbuilt under k244.
 
 Unchanged context: [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
 [Review, qualify, then release](index.html#diagram-native-metadata-qualification),

@@ -73,3 +73,34 @@ durable contract is docs/verification/application-reference-evidence.md. No
 executable schema, tool or control proof is implied by k248. Every original
 Done when above remains the node's closing condition; add missing work rather
 than allowing a plan-only close. The one pass stays unused until full k244 closure.
+
+K249 orders five independently usable construction increments beneath this node:
+reference-evidence-replay-k250 (closed schema and independent offline oracle),
+reference-evidence-decoder-k253 (native bytes/types and complete witnesses),
+reference-evidence-source-k256 (actual pipe observations and source closure),
+reference-evidence-held-acquisition-k259 (held scope/layout inspection, complete
+fixed-file/direct-locale acquisition and full item closure), then
+reference-evidence-qualified-attempt-k263 (durable coordinator and complete pure
+qualification). Each increment needs more than one focused construction session;
+its children are independently testable behaviors, not dormant module layers.
+The preceding lazy planning review and every earned integration must run before
+construction. No target query or installed payload is part of any construction check.
+
+## Original-obligation ownership and closing check
+
+| Original obligation | Construction owner | Closure evidence |
+| --- | --- | --- |
+| Full schema, immutable objects and logical associations | k251/k252, extended by k255/k261/k262 | Exhaustive fields/variants plus independently checked occurrence/byte/tree/alias coordinates |
+| Exact NUL framing, concurrent drains and actual terminal/reap | k257/k258 | Actual scratch emitter and fault proofs; preserved raw phases/multiplicity/permutations |
+| Literal/resolved component scope, ancestry, layouts and all six direct-locale files | k260/k261/k262 | Actual scratch descriptor tests plus intended refusal/no-contact and exact item reread proofs |
+| Native parser/complete typed export, format/encoding/duplicates/coercion and image identity | k254/k255 | Frozen authored byte/type expectations, actual loaded-image/tool identities and full candidate/table/LocProvenance/tail proof |
+| Complete independent matrix, helper/alias/race/error/freeze/interruption/no-retry | k252 and all adapter leaves; audited by k265 | Every applicable positive/intended negative at its coordinate, contact trace and before/after input/tool digest |
+| Verified reusable pure and output-only packaging recipes | Each stage's pure task; k264/k265 composition | Separated Taskfile dependencies, fixed exact-build/permission/proof admission and exclusive interrupted output |
+| Contract/schema/version/proofs/views, unused target pass | k265 | Full original Done when comparison, reconciliation and qualified-tool promotion to k242/k245 |
+
+The last row is a check of actual completed artifacts, not leaf counts. Any
+missing/failed control, unavailable required identity or earned review/integration
+is precise live work under k244; add or insert it before the affected consumer.
+K265 cannot promote a plan or partial tool as a verified instrument. K246 retains
+generated thin/rewrite discrimination after k245 source evidence, and k247 retains
+mandatory whole-subject/family review. Product/private/native holds remain binding.

@@ -75,3 +75,56 @@ before private construction and k7. Existing N5/N8/V11/V13, full actual VM basel
 all nine tapes, gates, source/image/authority/disclosure/actions/compatibility and
 both holds remain untouched. The one target pass belongs only to k245 after k244
 is actually qualified; it does not follow a design/plan completion bit.
+
+## Decisions (running log)
+
+Order five working increments inside k244: independent offline envelope replay;
+native byte decoding and complete witnesses; lossless source observations;
+held-directory evidence acquisition and item closure; durable attempt coordination
+and complete pure qualification. Each increment is independently demonstrable on
+authored envelopes, bytes, emitters or scratch roots. Schema and its usable
+validator land together; every later increment keeps those earlier demonstrations
+working. No increment advertises an incomplete tool as ready for target contact.
+
+Use a standalone Swift evidence-tool package at Tools/ReferenceEvidence and a
+separate offline Python verifier with independent Fixtures/ReferenceEvidence
+expectations. Do not add a Koine/provider dependency or use the legacy capture as
+the implementation foundation. The contract remains the single durable design;
+the Grove tree carries construction instructions rather than a duplicate plan.
+Construction owns executable schema, interfaces and tests; this planning session
+adds no tool, packaging command or placeholder Taskfile recipe.
+
+The decomposition is load-bearing for the single-pass acquisition. Cut a lazy
+review-planning of this completed plan before its first construction increment;
+earned integration must run there before construction. Do not spend an in-session
+reviewer beside that scheduled review. This review covers the plan, not the later
+implementation or k247's mandatory whole-subject/family review. K244 retains its
+entire original Done when and cannot close on a plan or partial control matrix.
+
+The fixed one-pass authority must remain associated with its durable attempt even
+when another fresh output name is supplied. Coordinator construction and final
+qualification both own that refusal and prior-start evidence; output exclusivity
+alone is insufficient. No separate session-status artifact or automatic repeat is
+selected. The scheduled planning review must contest this association along with
+the complete qualification and closing boundaries.
+
+## Evidence
+
+The existing render task regenerated both changed D2/SVG views; XML inspection
+confirmed the planned review and all five working stages in their actual exported
+labels. Task check:docs exited zero. Independent scratch controls observed the
+link check accept a known target and reject a removed anchor and missing target.
+Every unskipped repository Markdown/JSON/D2/SVG, Taskfile, checker source and
+task/python executable input was digested before and after that check, unchanged.
+The exact subjects, outputs and closure are retained in
+.build/reference-evidence-planning-check/1791771459201895000. No browser visual
+inspection, instrument construction, pure matrix execution or target query/read
+is claimed by these documentation checks.
+
+Graph coverage was refreshed at generation 2026-09-29T10:36:20Z: docs/scripts
+remain deliberately excluded and new task paths have unavailable freshness.
+The plan relies on direct current Markdown/config/source reads and the k248
+committed diff, not graph completeness. The full original k244 Done when is
+retained; new ownership/closing notes add no reduction. The scheduled planning
+review is the adversarial pass for this decomposition, leaving the Grove
+in-session reviewer allowance unspent.

@@ -313,12 +313,34 @@ coordinate mappings. Original SHA-256 equality is deliberately not that oracle.
 
 The concrete instrument is production-tool implementation-sized. K244 is now a
 node retaining its full original Done when: this design child selects the route;
-its planning child must cut independently verifiable construction increments,
-including schema/decoder, held acquisition/closure and independent whole-matrix
-qualification. This design cuts no implementation leaves. The original node
+its planning child has cut five dependency-ordered construction increments.
+They are independently usable offline replay, native byte decoding, lossless
+source observations, held-directory evidence acquisition, and durable attempt
+coordination with complete pure qualification. The schema and a usable validator
+land together. An earned planning review precedes construction; each later stage
+retains working earlier checks. No construction stage contacts the selected target.
+The original node
 cannot close on the design or a plan; the first target query remains after the
 completed tool qualification, under k245. Mandatory whole-subject/family review
 and earned integration remain due at k247 before private construction and k7.
+
+| Working increment | Independently demonstrable handoff | Required completion evidence |
+| --- | --- | --- |
+| Offline replay | Closed version-1 schema and usable independent package verifier | Authored complete/failure envelopes, exact object replay and full original association/mutation controls |
+| Native decoding | Immutable bytes to native tagged tree, complete branches and joint tails | Actual CF formats/types/duplicates/coercion and loaded-image identity, checked by the independent byte/type oracle |
+| Source observations | Real concurrent emitter pipes to raw slots and initial/closure comparison | Actual EOF/termination/reap/fault traces, multiplicity and association-preserving permutation proofs |
+| Held acquisition | Scratch scope/layout inspector, complete fixed-file/direct-locale evidence and full item closure | Actual descriptor and injected race/no-contact proofs; all six locale files, complete/partial objects and every logical occurrence |
+| Qualified attempt | Durable exclusive coordinator and matched complete qualification handoff | Exact build/permission/tool/input admission, separated tasks, complete per-item matrix and full original-obligation closure |
+
+Construction uses a standalone Swift evidence-tool package and a separately
+implemented Python verifier with independently authored fixtures. Neither depends
+on a Koine provider or the legacy lossy capture. Per-stage reusable pure checks
+and their actual tests land with the behavior they verify; no dormant schema or
+placeholder target recipe is a completed working increment. A pre-closure envelope,
+scratch demonstration or schema-valid failure is never a stable qualified package.
+Missing/failed controls and unavailable required identities remain live work before
+target admission. The final stage owns the complete original-obligation check,
+proof inventory and reconciliation, not merely an aggregate passing count.
 
 Construction must add and verify two distinct Taskfile entry points: pure
 qualification with no target adapters, and bounded packaging with only a new
