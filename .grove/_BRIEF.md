@@ -495,6 +495,10 @@ Reference-evidence-admission-k272 integrates k271's review of the k268 admission
 Requirements k270 now precede the k244 instrument node; replacement design
 reference-evidence-admission-repair-k273 and mandatory whole review/earned integration
 precede k269 replanning. No reusable receipt, syscall-only no-contact trace or regenerated
-self-certified inventory admits the pass. Actual authority/privilege/protected-scope choices,
+self-certified inventory admits the pass. K270 settles the authority choices under Antony's
+"you decide" delegation in the canonical authority-and-admission-choices section: separate
+fixed evidence namespace and one qualified initialization; cooperative/documented durability
+limits; independent anchor approval/corrections; unprivileged collection; protected-content
+and outside-intermediate refusal. Actual reviewed protocol, independently accepted anchors,
 qualified provisioning and input-stable requalification remain required. K244/k242 are live,
 k245's pass is unused and all product/private/native holds remain.

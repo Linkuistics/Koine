@@ -18,6 +18,13 @@ cannot promote stale proofs after changed measured permission/task/runtime/ancho
 and the canonical selected permission in application-population-metadata-shape.md.
 K240 selected macOS 27.0.1 (26A434), both template cohorts, primary documentation plus
 Antony-confirmed purposes and whole-template repetition. Historical 25G83 data is comparison.
+The canonical authority-and-admission-choices section records k270's delegated selections:
+exact separate fixed namespace, one qualified initialization, independent approved anchors/
+corrections, bounded cooperative/full-synchronization limits and unprivileged qualification.
+Protected contents and outside intermediate contact refuse; retain their raw occurrences and
+required missing work. Do not ask again or provision from this charter. Actual qualified
+receipt/UID/ancestor identities and complete independently anchored contact/tool proofs
+must exist and remain stable before this leaf can spend the pass.
 
 ## Done when
 

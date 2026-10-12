@@ -14,6 +14,14 @@ classifications, producer 198a024f3a64, the current full application-reference-e
 canonical population requirements, descriptor-relative ADR, product-directory README,
 all five evidence D2/views and original complete k244 obligations. K270 is now before the
 instrument node: consume its actual decisions, never treat its proposal as an answer.
+Consume the settled delegated choices in
+docs/verification/application-population-metadata-shape.md#authority-and-admission-choices:
+one explicit initialization in the exact separate KoineReferenceEvidence namespace;
+cooperative local and bounded documented full-synchronization limits; independent
+whole-review/integration approval of scope-preserving anchors and corrections; no root/sudo
+collector; protected contents and outside intermediate contact unavailable. Actual UID/
+ancestor identities, receipt, approval mechanism and full contact proof remain absent.
+Do not repeat the settled interview or turn its delegation into unspecified privilege.
 K268's design is insufficient for implementation/admission; do not preserve a known
 reusable receipt or syscall-only no-contact claim as an accepted trade-off.
 

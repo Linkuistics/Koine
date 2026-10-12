@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Resolve authority and admission gaps before construction",
-    "status": "Review integrated; human requirements then replacement design and whole review before replanning",
-    "summary": "All fifteen admission-review findings are classified. Human authority requirements now precede the instrument node; a replacement design with mandatory whole review/integration precedes replanning. Ordinary attempt deletion must not reuse authority; original evidence needs a separate product-independent lifecycle and reviewed admission anchors. Full contact coverage includes IPC/proxies and inherited descriptors; a DTrace-only clean syscall trace is insufficient. Exact packaging entry, live-channel refusal and actual task/interpreter/runtime read closure remain unresolved. Process kills cannot prove OS-crash persistence. No authority, target pass, executable proof or native verdict; both holds remain.",
+    "title": "Carry settled authority choices into the admission repair",
+    "status": "Delegated requirements settled; replacement design and whole review precede replanning",
+    "summary": "Antony delegated k270's choices. Select separate KoineReferenceEvidence, one qualified initialization, cooperative/documented durability limits and independent whole-review/integration approval of scope-preserving anchors/corrections. Qualification remains unprivileged: no root/sudo collector. Protected contents and outside intermediate operations refuse, with Data prefixes and raw slots retained. Authority consumption, actual approval/provisioning, full IPC/proxy/descriptor observation, exact entry and task/runtime closure still require reviewed design and qualification. Process kills prove no OS-crash persistence. No receipt, target pass, executable proof or native verdict; both holds remain.",
     "diagramIds": [
       "native-reference-evidence",
       "native-reference-instrument",
@@ -18,19 +18,19 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-evidence",
-        "summary": "Human decisions precede replacement design and whole review, then replanning and actual qualification; qualified provisioning and requalification remain required before the unused pass."
+        "summary": "Settled delegated requirements precede replacement design and whole review, then replanning and actual qualification; qualified provisioning and requalification remain required before the unused pass."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Marked authority consumption, independent anchors, exact entry and complete IPC/proxy coverage as unresolved; corrected numbered flow edges."
+        "summary": "Carried selected separate authority, protected/intermediate refusal and unprivileged-only scope; consumption, actual anchors, exact entry and complete IPC/proxy coverage still require repair."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Replaced the defective reusable-receipt protocol with the required repair/dependency boundary; product lifecycle and OS-crash assumptions need explicit decisions."
+        "summary": "Selected one qualified initialization outside product lifecycle and bounded cooperative/documented persistence limits; actual consumption/provisioning and full proof remain unbuilt."
       },
       {
         "id": "native-reference-proof",
-        "summary": "Required independent reviewed anchors, all normative sources, actual task/runtime read closure and complete contact classes; syscall-only clean traces cannot admit."
+        "summary": "Selected independent approval/correction rules and unprivileged qualification; actual reviewed anchors, task/runtime read closure and complete contact proof remain absent."
       }
     ]
   },
@@ -94,7 +94,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Review integrated; actual k270 human authority/permission decisions precede the instrument node. Replacement design k273 and mandatory whole review/integration precede k269 replanning. Complete actual proofs, qualified provisioning and requalification after changed inputs are required before k245. The pass is unused; k244/k242 remain live; k246/k247 and all product/native holds remain."
+      "caption": "Delegated k270 authority requirements are settled in the canonical report. Replacement design k273 and mandatory whole review/integration precede k269 replanning. Complete unprivileged contact/tool proofs, independent approved anchors, qualified one-time provisioning and requalification after changed inputs precede k245. The pass is unused; k244/k242 remain live; k246/k247 and all product/native holds remain."
     },
     {
       "id": "native-reference-instrument",
@@ -103,7 +103,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Proposed components with required replacement admission design. Authority consumption must survive ordinary attempt deletion, and independently reviewed inventory/verifier anchors must resist self-certification. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only a partial unqualified candidate. Numbered flow edges are reconciled. No tool, receipt or proof is supplied."
+      "caption": "Proposed components consume selected separate one-time authority, protected/intermediate refusal and unprivileged-only qualification. Authority consumption must survive ordinary deletion, and independent approved inventory/verifier anchors must resist self-certification. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only partial and no root/sudo collector is authorized. No tool, receipt or proof is supplied."
     },
     {
       "id": "native-reference-admission",
@@ -112,7 +112,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Required repair boundary, not an implementable receipt protocol. Human first-use, separately owned evidence lifecycle, persistence, privilege and protected-scope choices precede replacement design and whole review. Process-kill controls cannot prove OS-crash persistence. Qualified provisioning and stable independently anchored proofs precede the unused target pass; unavailable authority never resets."
+      "caption": "Selected requirements: separate KoineReferenceEvidence, one qualified initialization, cooperative/documented synchronization limits, independent anchor approval/corrections and no root/sudo collector. Protected contents/outside intermediate contact refuse. Actual receipt/consumption protocol still needs replacement design and whole review; process kills cannot prove OS-crash persistence. Qualified provisioning and stable independently anchored proofs precede the unused pass; unavailable authority never resets."
     },
     {
       "id": "native-reference-proof",
@@ -121,7 +121,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Unbuilt qualification requirements. Independent reviewed admission anchors bind inventory, verifier and canonical/ADR/contract normative inputs. Actual task/interpreter/stdlib/package read closure and exact entry/live-channel refusal remain design work. Full contact coverage includes IPC/proxies, inherited descriptors and independent syscall classes; a clean DTrace-only trace is insufficient. No control or target/native verdict follows."
+      "caption": "Unbuilt qualification under the settled delegated approval/correction and unprivileged-only rules. Actual independent reviewed anchors bind inventory, verifier and canonical/ADR/contract normative inputs. Task/runtime read closure and exact entry/live-channel refusal remain design work. Full contact coverage includes IPC/proxies, inherited descriptors and independent syscall classes; a clean DTrace-only trace is insufficient. No control or target/native verdict follows."
     },
     {
       "id": "native-population-metadata-shape",

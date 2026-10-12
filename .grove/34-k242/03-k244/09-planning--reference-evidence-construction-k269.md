@@ -19,6 +19,15 @@ task/runtime-read closure for k273. K270 now precedes the instrument node; no re
 initialization or observer privilege is implied. Assign actual authorized capability/
 calibration and every proof owner before consumers, plus qualified receipt provisioning/
 independent validation before k245. Unavailable boundaries are precise live work.
+The selected choices are canonical at
+docs/verification/application-population-metadata-shape.md#authority-and-admission-choices.
+Assign the one-time initializer/independent validator and concrete independently approved
+anchor revision; corrections need independent review/integration and affected requalification.
+Qualification retains the user's UID and authorizes no root/sudo collector. Protected
+contents and outside intermediate operations refuse under the selected evidence permission.
+No construction leaf may reopen settled questions or treat current unavailable proofs as
+qualified behavior. Place any concrete stronger alternative's new human decision before
+its first consumer; never grant unspecified administrator access.
 
 ## Work and verification
 

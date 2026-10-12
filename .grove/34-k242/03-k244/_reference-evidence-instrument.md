@@ -121,6 +121,12 @@ k273 and its mandatory whole review/earned integration run before k269; k269's
 finished plan and earned planning review/integration run before k250. Until then,
 the original construction leaves are queued consumers of an incomplete plan. This
 ordering represents live repair work, not a new status or a qualification claim.
+K270's delegated choices are settled in the canonical authority-and-admission-choices
+section: exact separate evidence namespace and one qualified initialization, cooperative/
+documented durability limits, independent anchor approval/corrections, unprivileged-only
+qualification and protected-content/outside-intermediate refusal. The actual receipt,
+approval mechanism and complete unprivileged contact proofs remain absent. Consume those
+requirements without repeating the interview or weakening any original Done when.
 
 K258 compares source spellings/occurrences only. K262, after held-roots-k260, owns
 actual before/closure source-to-root and physical alias associations. Helper is an
@@ -149,8 +155,9 @@ required inventory, exact retained packaging/task-edge rehearsal behind a sealed
 gate, external Darwin DTrace bypass observation, independent CF expectation classes and
 inherited topology specimens. None is implemented or qualified. Whole-design review/
 integration precede k269; it assigns early proof/observer and final review/repair/
-requalification/close owners. Uncertain-first-use authority and receipt are owned by
-requirements k270 before k245. Observer capability/identities/proofs remain unestablished;
+requalification/close owners. K270 settles initialization authority; qualified receipt
+provisioning/independent validation remains k269's explicit ownership duty before k245.
+Observer capability/identities/proofs remain unestablished;
 no target/first-use inference, new privilege or current topology probe is authorized.
 
 Review k271 and integration k272 find k268's admission design incomplete. K270 now

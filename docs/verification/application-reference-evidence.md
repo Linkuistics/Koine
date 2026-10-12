@@ -11,7 +11,9 @@ supplies no current payload, role assignment, finite population or native verdic
 
 Review reference-evidence-admission-k271 and integration k272 identified substantive
 authority-consumption, trust-anchor, IPC observation, exact-entry and measured-input
-gaps. Requirements reference-evidence-authority-k270 now precede the instrument node;
+gaps. Requirements reference-evidence-authority-k270 settle the
+[delegated authority choices](application-population-metadata-shape.md#authority-and-admission-choices)
+before the instrument node;
 replacement design reference-evidence-admission-repair-k273 must close those gaps and
 cut mandatory whole review/earned integration before construction replanning k269.
 The proposals below supply no implementable admission or complete no-contact proof
@@ -77,7 +79,7 @@ provider dependency, installed-app execution, registration or VM seam.
 | Native decoder | One immutable byte object → complete tagged native tree or explicit typed failure | Native type dispatch, format/error evidence and lossless export; no target pathname or conversion fallback |
 | Independent verifier | Frozen specimen expectation and envelope → per-coordinate verdicts | Recomputes bytes, required occurrences, trees, branches, tails and associations; rejects producer-only totals |
 | Admission verifier | Required inventory, complete proofs and actual retained artifacts → invocation-bound admission or refusal | Independent completeness, permission equality and image continuity; a producer success bit grants nothing |
-| External contact observer | Calibrated kernel events for the pure process tree → contact evidence or unavailable coverage | Wrapper bypass, process/descriptor association and event loss; a missing event cannot establish no contact |
+| External contact observer/containment | Independently qualified unprivileged full source/filesystem/IPC boundary → contact evidence or unavailable coverage | Direct/child/proxy bypass, process/descriptor association and event loss; a missing event cannot establish no contact |
 
 Compared with embedding parsing, traversal and mutation expectations in the legacy
 Python capture, this arrangement gives the acquisition tool one deep external
@@ -126,8 +128,10 @@ Validate the literal absolute spelling's components against /System, /Applicatio
 or /Library; `Applications-extra`, embedded NUL, relative paths and uncheckable
 components do not authorize acquisition. Root resolution follows the existing
 descriptor-relative kernel-semantics decision through search-only held directories,
-with observed link expansions and directory identities. Check the resolved
-component-bounded scope and checked .app directory before any listing/content
+with observed link expansions and directory identities, enforcing the canonical refusal
+of outside intermediate operations with held common-ancestor entry. Check the resolved
+component-bounded scope, protected/consent-risk handling and checked .app directory
+before any listing/content
 handle is opened. File aliases/non-directories remain raw source observations;
 the tool never asks Finder or another application to resolve them.
 
@@ -292,10 +296,10 @@ The tool cannot derive its own permission from defaults or a changing report.
 | --- | --- |
 | Reference/source | macOS 27.0.1, build 26A434; /usr/bin/mdfind; exactly -0 and the application-bundle predicate stated above; no shell or extra options |
 | Attempt/phases | One target attempt; initial and closure only; closure compares, never retries, repairs or fills missing initial evidence |
-| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit |
+| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit; selected protected-content refusal and outside-intermediate refusal with held common-ancestor entry |
 | Layout/files | Four ordered layouts, absence-only advance, both information and all four name basenames, all six in every checked direct locale; no language subset or descendant-link following |
 | Evidence | Complete raw slots/inventories/original regular-file bytes, complete typed observations or explicit limits, every copy/file/alias/tail association and before/closure check; no clipping to the reader limit |
-| Failure/effects | No silent repeat/resume, overwrite, arbitrary recursion, executable acquisition, launch, index/registration change, download, helper, new consent/signing/posture or native/VM capture |
+| Failure/effects | No silent repeat/resume, overwrite, arbitrary recursion, executable acquisition, launch, index/registration change, download, helper, root/sudo collector, new consent/signing/posture or native/VM capture |
 
 The independent reader rejects unknown/missing fields, duplicate JSON members and
 any changed value. Compare the full profile against an independently authored expected
@@ -304,8 +308,9 @@ prohibitions. Review and freeze the concordance first: a hash alone establishes 
 semantic equality, and copying the tool's constants is not independence. Compare actual
 compiled intents with that expected value during [rehearsal](#fixed-composition-without-target-contact).
 
-The canonical requirements own reference/source/cohort/attempt permission and prohibited
-effects. The descriptor-relative ADR owns search-only/kernel resolution and the 32-link
+The canonical requirements own reference/source/cohort/attempt permission, selected
+authority/approval/persistence/privilege/protected-contact clauses and prohibited effects.
+The descriptor-relative ADR owns search-only/kernel resolution and the 32-link
 rule. This contract owns closed acquisition/layout/association rules derived from that
 permission. Each concordance field names its actual source section; absence from the
 canonical paragraph cannot become an invented quotation. Freeze delimited normative
@@ -326,7 +331,7 @@ The profile contains no proof identity and supplies no new authority.
 | --- | --- |
 | Qualified inputs | Retained executable; source/build/compiler/SDK/configuration; permission profile/all normative extracts/concordance; schemas, verifier/runner/native observer/contact collector; complete fixtures/expectations/runtime observations; independently required inventory; complete task/configuration files actually read; verifier interpreter, stdlib and resolved package closure |
 | Execution context | Actual OS/build, loaded runtime/tool/image identities, composition/gate selection, argv/environment, working directory and descriptor/fixture bindings; obtain these rather than infer them from source hashes |
-| Live authority inputs | Independently authorized receipt/location/UID and actual directory identities, checked before reservation; scratch receipts qualify validation behavior, never authorize or require byte equality with a later live receipt. The live receipt must bind the same qualified permission profile; any changed permission requires fresh qualification |
+| Live authority inputs | Selected fixed location, independently approved anchor revision and actual provisioned receipt/UID/directory identities, checked before reservation; scratch receipts qualify validation behavior, never authorize or require byte equality with a later live receipt. The live receipt must bind the same qualified permission profile and accepted anchors; changes need independent approval and fresh affected qualification |
 | Qualification outputs | Original logs, per-coordinate proofs and aggregate verdict, bound to the complete input identities; never hash the aggregate proof into its own inputs |
 | Reporting outputs | Prose outside normative extracts, diagrams and promotion references; cannot supply admission facts or change a measured input while inheriting its proof |
 | Target outputs | Authoritative attempt header, actual segments/objects and closure; not qualification inputs or authority to acquire again |
@@ -350,24 +355,32 @@ neither reconciliation nor writing a proof into a pinned document inherits the o
 shows the required boundary and its unresolved repair. One fixed independently owned
 local subject must bind the stable identity
 `koine.reference-evidence.macos-27.0.1-26A434.1` to an explicit authorization receipt.
-A document digest or export name creates no successor. The actual absolute location,
-UID and lifecycle are not selected. The proposed Koine product-data location fails the
-lifecycle requirement: README documents product zap removing it. Recommend a separate
-fixed evidence namespace outside product, checkout and export lifecycles in k270;
-no new location or receipt is provisioned here.
+A document digest or export name creates no successor. K270's
+[canonical delegated choices](application-population-metadata-shape.md#authority-and-admission-choices)
+select the exact absolute location in the independent KoineReferenceEvidence namespace,
+one explicit initialization, cooperative limits and the approval/correction authority.
+Koine's product-data directory is excluded because its documented zap owns that lifecycle.
+Actual UID, held directory/ancestor identities and receipt remain unprovisioned; a selected
+pathname is neither an identity observation nor an admissible receipt.
 
 Packaging accepts only an export destination; it cannot select an authority subject
 or mint permission. All original attempt evidence belongs to the fixed subject; an
 export is an independently verified immutable derivative. The receipt must bind actual
 location/UID, checked directory/ancestor identities, permission and one-attempt authority.
-The exact independently reviewed proof/inventory/verifier anchors also remain k273 work.
+The concrete independent approval record, proof/inventory/verifier anchors and
+anti-substitution mechanism remain k273 work. The existing independent whole-design
+review/earned integration may approve scope-preserving revisions under the delegation;
+the producer cannot approve itself. Qualified provisioning and independent validation
+must bind those actual accepted revisions outside regenerated proofs/restorable checkout.
+Corrections require independent review/integration and fresh affected qualification;
+they never replenish consumed authority. Broader scope, new privilege or a new attempt
+requires a new explicit human decision.
 
-**Authority remains unresolved.** Existing permission supplies neither a receipt nor
-proof that absence means first use rather than deletion. K270 precedes the instrument
-node and must settle uncertain initialization, lifecycle, persistence assumptions,
-observer privilege and protected-scope interpretation before design freezes them. Recommend
-fail-closed admission with separate explicit authority for uncertainty. No initialization,
-replenished pass or target call is authorized here. K269 must assign actual qualified
+**Requirements are settled; actual admission remains unavailable.** The delegation selects
+one separately owned reviewed/qualified initialization. Packaging cannot infer first use
+from absence or recreate authority after loss. No store/receipt, strengthened protection,
+privileged observer or target call is supplied by this requirements handoff. K269 must
+assign actual qualified
 provisioning and independent validation before k245, with requalification after any changed
 measured input. The interview alone produces no receipt.
 
@@ -390,17 +403,19 @@ K273 must deliver a coherent protocol meeting every required boundary:
 
 Scratch controls establish locking/exclusion, transition ordering, actual flush-operation
 acknowledgements and process-death retention on their filesystem. They do **not** establish
-OS-crash/power-loss persistence. K270 chooses whether a named documented-API assumption and
-its limits are acceptable, admission stays unavailable, or a stronger separately authorized
-programme is required. K273 names operations and their documented basis after that decision;
-unknown required identities/acknowledgements refuse. No VM/power-loss experiment is authorized.
+OS-crash/power-loss persistence. The canonical choices accept a bounded documented full-
+synchronization/namespace-ordering assumption and unobserved storage/hardware failure limit.
+Fsync alone is not that basis. K273 must name and justify every actual operation, current
+filesystem assumption and required acknowledgement; unknown/unsupported required semantics,
+identities or failed acknowledgements refuse. Archived API documentation is not a current
+APFS namespace crash certificate. No VM/power-loss experiment is authorized.
 
 The intended enforcement is cooperative local, not tamper resistance. The same user/admin
 can forge/restore whole authority, bypass the tool or run the query independently. Detected
-loss refuses; deliberate undetectable whole-authority rollback remains a limit for k270 to
-accept or reject. Ordinary attempt-entry cleanup is a required refusal control, not that
-exception. No secure monotonic/cross-machine store is claimed. Such a store would introduce
-new authority dependencies and requires an explicit decision and reviewed design.
+loss refuses; deliberate undetectable whole-authority rollback is an accepted cooperative
+limit. Ordinary attempt-entry cleanup is a required refusal control, not that exception.
+K270 selects no secure monotonic/cross-machine store. Stronger protection introduces new
+authority dependencies and needs a concrete separate human decision and reviewed design.
 
 Scanning exports was rejected because moved/deleted output and a new name defeat it.
 A fixed subject centralizes authority at the cost of conservative refusal and explicit
@@ -441,7 +456,8 @@ ones behind sparse fixtures. Helpers/aliases need their actual file/tree/tail co
 An inventory correction is a reviewed input change, never post-run removal of a failure.
 K273 must define an admission anchor independent of regenerated proofs for the reviewed
 inventory, normative extracts, expected profile/concordance and verifier/launcher identities.
-Exact authority/receipt binding and update rules remain unresolved. A digest agreeing only
+Concrete receipt binding/update protocol remains k273 work under the settled canonical
+approval/correction authority. A digest agreeing only
 with its own regenerated proof is insufficient; weakening a failed required cell or
 substituting a self-certifying verifier must refuse under independently reviewed anchors.
 Schema extensions update validator/oracle/fixtures/inventory and rerun/freeze all affected
@@ -495,10 +511,12 @@ Direct scratch bypass outside all wrappers, child/pipe bypass, inherited-descrip
 wrong filters, disabled collection and induced loss must fail at their intended contact
 coordinate, with allowed scratch positives too. No installed-query/root positive is pure.
 
-K270 owns the precise root/sudo/SIP/helper/VM privilege question **before** design/construction.
-No administrator access is presumed existing authority. Recommend retaining unavailable
-observation under current unprivileged pure scope unless Antony explicitly selects a
-specified alternative. K269 assigns actual authorized capability/calibration before any
+K270 selects unprivileged pure scope at the user's UID: no root/sudo collector is
+authorized and no privileged supplier is appointed. Complete observation remains
+unavailable until a realizable unprivileged full boundary independently qualifies.
+K273 owns that design or its exact live unavailable work before the first consumer;
+any stronger privilege/posture alternative needs a concrete new human decision.
+K269 assigns actual authorized capability/calibration before any
 real-adapter credit. Replacement needs reviewed design and independently qualified full
 contact coverage. No target experiment, new consent or posture change follows from a gap.
 
@@ -577,19 +595,23 @@ observations and affected qualification. All programmes/specimens/controls remai
 The [descriptor-relative ADR](../adr/filesystem-access-is-descriptor-relative.md) owns
 kernel resolution. Literal, link-expanded and walk-resolved spellings are held-walk
 observations; the last is not a universal physical-volume pathname. Scope is exactly the
-three prefixes on **both** literal and walk-resolved components. It is not a sealed-System
-rule or device allowlist. /System/Volumes/Data is under the inherited /System prefix.
-Excluding it, rewriting its spelling, or allowing an outside cryptex path because it is
-Apple-owned changes permission and needs Antony's decision. None is selected.
+three prefixes on **both** literal and walk-resolved components, with the canonical
+[protected/intermediate-contact clauses](application-population-metadata-shape.md#authority-and-admission-choices).
+It is not a sealed-System rule or device allowlist. /System/Volumes/Data remains under
+/System; no blanket Data exclusion, spelling rewrite or vendor-based outside exception
+is selected. Protected-user listing/contents and unsettled consent-risk contact are
+unavailable. Tool-controlled out-and-back expansion must refuse before outside lookup/
+open; held common ancestors may be used only to enter an admitted prefix. This evidence
+permission does not change the production ADR's kernel-semantics decision.
 
 | Independently authored pure specimen | Required result |
 | --- | --- |
 | /Applications-extra/A.app; relative/uncheckable bytes | Reject literal scope before contents; preserve raw reason |
 | /Applications/A.app expanding to /Users/u/A.app | Reject resolved scope, with no root listing/contents |
 | /Applications/A.app expanding to /System/Volumes/Data/Applications/A.app | Both prefixes pass; preserve spellings/checked identity, with no sealed-volume claim |
-| /System/Volumes/Data/private/Specimen.app | Syntactic scope passes; no invented Data exclusion or consent authority; unsettled contents handling goes to k270 |
-| /System/Volumes/Data/Users/u/{Desktop,Documents,Downloads}/X.app, directly or via an admitted link | Preserve prefix calculation and protected-content/no-new-consent obligations separately; no target probe resolves ambiguity |
-| An admitted link expands outside all prefixes then returns inside | Preserve every expansion and returned identity; k270 settles intermediate-contact interpretation, never lexical cleanup or an invented decision |
+| /System/Volumes/Data/private/Specimen.app | Syntactic scope passes; no invented Data exclusion or consent authority; known/unsettled consent-risk contents refuse before listing/content handles |
+| /System/Volumes/Data/Users/u/{Desktop,Documents,Downloads}/X.app, directly or via an admitted link | Preserve prefix calculation/raw slot; protected-user listing/contents refuse before contact, without a prompt or missing-copy omission |
+| An admitted link expands outside all prefixes then returns inside | Retain observed link text; refuse before the first tool-controlled outside lookup/open, even if the proposed final spelling is inside; no lexical cleanup hides it |
 | Mount below an admitted prefix changing device identity | Record observable transition/identities; device change alone neither widens nor narrows syntactic scope |
 | Firmlink redirect without observable link text | Preserve walk spelling/returned identity; no fabricated readlink step or hidden target spelling |
 | System/cryptex link within a prefix versus outside all three | Admit former only with all root checks; refuse latter regardless of vendor; no historical-mount whitelist |
@@ -607,11 +629,10 @@ named/held changes. It cannot generally discover hidden redirect targets, prove 
 mount topology between checks, atomically certify physical ancestry or prevent opaque
 mounted-root contact before refusal. Unobserved move/restore and alias limits remain.
 Pure tests qualify honest records/refusal, never historical topology as native completeness.
-The inherited prefix spelling is not authority to request new consent. K270 must resolve
-protected contents and intermediate out-and-back traversal before construction freezes
-permission. Recommend unavailable acquisition for unsettled cases, with any selected scope
-amendment recorded by Antony in the canonical requirements. This integration neither
-narrows /System nor expands contents authority.
+The inherited prefix spelling is not authority to request new consent. K270's delegated
+canonical amendment selects protected-content and outside-intermediate refusal, preserving
+all raw observations and precise required missing work. Unknown no-consent handling remains
+unavailable; no target probe, hidden-contact guarantee or useful-category loss follows.
 
 ## Attempt durability and per-control proof
 
@@ -675,8 +696,9 @@ contact, exercised no-target composition, runtime observation provenance and top
 specimens. Review k271 found substantive gaps; the sections above expose required repair,
 not a complete admission handoff. Human requirements k270 now precede the instrument node;
 replacement design k273 and its mandatory whole review/earned integration precede k269.
-The authority receipt/uncertain-first-use decision
-and actual external collector capability remain precise unavailable prerequisites;
+The authority requirements are selected in k270; actual receipt/provisioning, independent
+approval anchors and full unprivileged external contact capability remain unavailable
+prerequisites;
 selected design mechanisms are neither new permission nor qualified executable behavior.
 Their intended handoffs are independently usable offline replay, native byte decoding, lossless
 source observations, held-directory evidence acquisition, and durable attempt
@@ -717,9 +739,8 @@ before final measurement; a distinct live requalification/closing owner survives
 Unavailable observer, identity or required coordinate cannot be relegated to closing prose.
 K269 must also assign qualified receipt provisioning/independent validation before k245,
 export derivation/verification, and live requalification after any changed admission input.
-K270 precedes construction design/qualification, not only target packaging; the interview
-produces no receipt. K269 owns the construction slices, rather than this integration cutting
-implementation leaves.
+K270's canonical delegated choices precede construction design/qualification, not only
+target packaging; the interview produces no receipt. K269 owns the construction slices.
 
 Source-only closure compares complete spelling/occurrence multiplicities and raw
 permutations. Held acquisition closure later associates both source phases with actual
@@ -800,6 +821,8 @@ are original observations, not grounds to drop rows.
 Read contents only for checked .app directories whose original spelling is under
 /System, /Applications or /Library **and** whose resolved root remains within
 those same locations, using component boundaries rather than string prefixes.
+The selected protected-content refusal and outside-intermediate refusal additionally
+apply, with only search-only held common-ancestor entry into the three prefixes.
 Outside, malformed, unavailable and non-directory slots stay in the raw sequence
 with a reason, without contents acquisition. Scope checks and held-directory
 containment must precede descendants; a symlink/race cannot turn an in-scope
@@ -942,7 +965,7 @@ target reads never occur. These controls are **specified here, not yet executed*
 
 | Control | Required discrimination |
 | --- | --- |
-| Scope/build positives and faults | Admit the exact build and permitted component-bounded checked roots; reject wrong build, /Applications-extra, outside resolved roots, raced descendants and arbitrary query/file/language settings before contents contact |
+| Scope/build positives and faults | Admit the exact build and permitted component-bounded checked roots; reject wrong build, /Applications-extra, outside resolved roots/intermediate operations, protected or unsettled consent-risk contents, raced descendants and arbitrary query/file/language settings before forbidden contact |
 | Raw-source framing and failures | Preserve empty/repeated/newline/non-UTF-8 slots losslessly where emitted; retain outside slots and source failure; truncated framing, incomplete terminal response and duplicate deletion cannot pass |
 | Layouts and file states | Cover all four layouts, coincident bases, checked absence versus denial/unknown, empty/absent/non-regular/link/malformed/refused files and all six fixed locale probes; refusal cannot turn into flat fallback |
 | Bytes and decoder formats | Exercise complete binary/XML/OpenStep and unsupported/malformed specimens; payload clipping, conversion substituted for original, wrong digest/length, absent/empty collapse and unavailable decoder reported as success fail |
@@ -980,7 +1003,7 @@ row above. They are specified, unexecuted, and never qualify from a design bit.
 | Ready complete observer versus drop/filter/attach/operand/identity loss | Relevant contact coordinate unavailable; no clean no-contact verdict |
 | Exact retained entry versus pure→packaging/live intent, omitted admission or IPC/proxy bypass | Full independent contact boundary required; syscall-only clean trace is insufficient; exact entry/task/UID/build/location and channel refusal must be credited |
 | Independent native observation versus copied producer tree/regression-only expectation | Corroborated pinned CF fact passes; provenance failure cannot close independent runtime coverage |
-| Data-volume/mount/firmlink/cryptex/link specimens | Inherited literal/resolved component results and honest simulation/identity limits; no topology-derived scope change |
+| Data-volume/mount/firmlink/cryptex/link specimens | Canonical literal/resolved and protected/intermediate refusal results, held common-ancestor entry and honest simulation/identity limits; no topology-derived scope change or hidden-contact certificate |
 | Retained image versus rebuilt/swapped image, reused admission channel or changed runtime | Exact identity/invocation rejection; matching source or old proof alone cannot admit |
 
 ## Remaining boundary

@@ -151,3 +151,14 @@ closure remain substantive design work. Product-owned storage is withdrawn; pers
 privilege and protected-scope choices require actual human decisions. K269 assigns qualified
 provisioning, original/verified-derivative handoff and requalification after the last
 measured edit. No node closes; every original k244/k242 duty and k245/k246/k247 remains.
+
+K270 records Antony's "you decide" delegation and the selected authority/admission clauses
+in the canonical population requirements: one explicit initialization in the separate fixed
+KoineReferenceEvidence namespace; cooperative local and bounded documented synchronization
+limits; independent whole-review/integration approval and correction authority; no root/sudo
+collector; protected contents and outside intermediate contact unavailable. The agreed pure
+and product seams remain. Actual UID/ancestor identities, approval mechanism, receipt and
+full contact/tool qualification remain absent. K273's whole reviewed replacement consumes
+these settled requirements; k269 owns qualified provisioning/validation and requalification
+after the last measured change before k245. The pass is unused; no parent node closes and
+every original duty/hold/native PENDING outcome remains.

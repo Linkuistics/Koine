@@ -197,6 +197,8 @@ to checked .app directories under /System, /Applications and /Library whose
 resolved roots remain within those same locations. Retain root spellings,
 identities and alias/copy associations separately. These are evidence-instrument
 permissions, not a change to Koine's production source or reader policy.
+The [authority and protected-contact choices](#authority-and-admission-choices)
+additionally bind this pass; prefix membership alone does not authorize contents.
 
 For the fixed Contents, Support Files, Resources and flat layouts, retain the
 layout observations and the complete selected information/resource bases. Package
@@ -220,6 +222,90 @@ arbitrary recursive contents, OS-image download, app launch, registration/index
 modification, new consent/signing/helper posture or native/VM acceptance capture
 is authorized by this packaging choice. The legacy lossy capture/fixture task
 cannot stand in for byte-complete packaging or overwrite the historical packets.
+
+### Authority and admission choices
+
+Antony delegated reference-evidence-authority-k270's choices with "you decide".
+The following conservative selections use that delegation within the existing unused
+one-pass permission. They are the selected requirements, not an initialized authority,
+passing qualification or permission for another pass.
+
+**One-time authority and lifecycle.** Select one explicit initialization of
+`koine.reference-evidence.macos-27.0.1-26A434.1` at
+`/Users/antony/Library/Application Support/KoineReferenceEvidence/permissions/koine.reference-evidence.macos-27.0.1-26A434.1`.
+This is the independent evidence tool's namespace, outside Koine product, checkout and
+export lifecycles. A separately owned, reviewed and qualified provisioning operation
+must bind the actual UID and held subject/ancestor identities and independently validate
+the resulting receipt. This interview creates none of them. Packaging never initializes
+authority from its absence. After the explicit initialization, absent, moved, replaced,
+unreadable or uncertain authority refuses without scan/reset/recreation. Authority must
+be consumed before target contact; ordinary attempt/export deletion or movement, cleanup
+and lock release never replenish it. Recovery or a further attempt requires new explicit
+human authority. Accept cooperative local enforcement: deliberate whole-authority forgery
+or undetectable rollback by the user/admin is outside its protection. No secure monotonic
+or cross-machine store is selected.
+
+**Independent approval and corrections.** Antony retains authority over scope, privilege
+and new attempts. Within these requirements, the existing independent whole-design
+review and earned integration are delegated approval of concrete admission-anchor
+revisions. Separately owned qualified provisioning and independent validation must bind
+the actual accepted required inventory, expected profile, all canonical/ADR/contract
+normative extracts, concordance and verifier/launcher identities to an approval record
+outside regenerated proofs and the restorable checkout. The producer cannot approve its
+own weakened required set or substituted verifier. Corrections require independent
+review/integration and affected requalification before contact, with an exact live owner;
+they cannot refund or reinitialize consumed authority. Broader scope, new privilege or a
+new attempt still needs an explicit human decision. The replacement design owns the
+concrete independently anchored approval mechanism; a review sentence or regenerated
+matching hashes alone cannot satisfy admission.
+
+**Persistence assumption.** Accept the bounded assumption that the reviewed local
+filesystem/device honors the selected full-synchronization and namespace-ordering
+operations once all required acknowledgements succeed. Apple's archived
+[fsync manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fsync.2.html)
+describes the OS-crash/power-loss gap of fsync alone; its
+[fcntl manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fcntl.2.html)
+describes the F_FULLFSYNC device-cache flush request and hardware limits. These sources
+name the basis for this assumption, not current APFS directory/namespace crash evidence.
+K273 must name and justify every actual file/namespace operation, filesystem assumption
+and required acknowledgement before construction. Unsupported or unknown required
+semantics and failed acknowledgements keep admission unavailable. Scratch controls cover
+observable acknowledgements, ordering and process-death retention only. Accept unobserved
+storage/hardware failure as an explicit limit; no unconditional at-most-one-across-power-
+loss guarantee, secure store or native/VM crash experiment is selected.
+
+**Observer privilege.** Retain unprivileged pure qualification at the user's UID.
+No root/sudo collector is authorized and no privileged supplier is appointed. A realizable
+independent full contact observer/containment boundary remains required, including
+source/index, filesystem, IPC/proxy and inherited-descriptor effects; a syscall-only
+trace cannot admit. Until it is independently qualified, admission remains unavailable.
+K273 must deliver that reviewed unprivileged boundary or exact live unavailable work
+before its first consumer. A stronger alternative needs its concrete separate human
+decision; this delegation grants no unspecified administrator, SIP, helper, entitlement,
+signing, consent or VM change.
+
+**Protected contents and intermediate contact.** Retain the three literal and walk-
+resolved prefixes, without a blanket Data-volume exclusion. Explicitly forbid listing
+or reading protected-user contents through any spelling, including
+`/System/Volumes/Data/Users/<user>/{Desktop,Documents,Downloads}` and admitted links.
+Other known or unsettled consent-risk contact refuses as unavailable before contents
+handles/listing; no prompt is answered to complete evidence. Search-only root resolution
+may use the ADR's held common ancestors to enter /System, /Applications or /Library, but
+must refuse before any tool-controlled lookup/open beyond those prefixes on an out-and-
+back expansion. Preserve observed link text, all raw slots and exact unperformed work.
+No final in-scope spelling rescues an outside intermediate operation. Hidden redirects,
+mounted-root contact and proxy effects retain their stated limits and full independent
+qualification obligation; this is no physical-ancestry or prompt-free certificate.
+Required unavailable copies remain live missing evidence, never accepted useful loss.
+These clauses amend this evidence permission, not the production filesystem ADR.
+
+**Agreed seams.** Under the same delegation, retain controlled source/filesystem/byte-
+decoder inputs, independent offline/admission verification and actual unprivileged scratch
+adapters with independently qualified complete contact observation/containment. Existing
+public GraphQL, actual provider/host binary and isolated signed supported-VM product seams
+remain. No installed-target positive, authority provisioning, collector probe or native
+capture occurs in this requirements leaf. The single pass is unused; both product holds,
+private ineligibility and every native PENDING outcome remain.
 
 ### Independent classification and whole-template assignment
 
@@ -289,11 +375,15 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 The [admission repair design](application-reference-evidence.md#authoritative-attempt-evidence)
 requires a fixed permission-evidence subject independent of caller-selected exports,
 independently complete qualification proofs and external scratch-contact observation.
-The existing grant does not establish uncertain first use or initialize an authority
-receipt. That concrete authority decision remains live before packaging; absent/uncertain
-authority refuses contact. The proposed DTrace collector's capability and all tool proofs
-are also unestablished. This reporting handoff changes no selected source/build/content
-permission and authorizes no initialization, target pass or topology/VM experiment.
+The [selected authority requirements](#authority-and-admission-choices) settle initialization,
+lifecycle, independent approval/corrections, bounded persistence, unprivileged observation
+and protected/intermediate contact under Antony's delegation. Actual reviewed protocol,
+qualified provisioning, receipt, independently approved anchors and complete tool/contact
+proofs remain absent; unknown authority refuses contact. No requirements answer performs
+initialization or spends the target pass. K273 owns replacement design and whole review/
+earned integration; k269 must place provisioning/validation and requalification after the
+last measured input change before k245. Source/build/file/cohort choices remain intact.
+No topology, privilege or native/VM experiment follows.
 
 A qualifying design must freeze the complete source evidence, independently
 name its reference population and reason, classify its useful cohort from a named

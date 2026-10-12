@@ -82,9 +82,12 @@ uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
 [`docs/verification/homebrew-install-vm.md`](docs/verification/homebrew-install-vm.md).
 
 The independent [reference evidence instrument](docs/verification/application-reference-evidence.md#authoritative-attempt-evidence)
-is unbuilt. Its proposed authority/original-evidence location inside Koine's product
-data directory was rejected as a lifecycle conflict; a separate fixed namespace
-requires a human decision and reviewed design before provisioning or target contact.
+is unbuilt. The [delegated requirements](docs/verification/application-population-metadata-shape.md#authority-and-admission-choices)
+select a separate KoineReferenceEvidence namespace, one explicit qualified initialization,
+cooperative/full-synchronization limits, unprivileged observation and refusal of protected
+contents/outside intermediate contact. Reviewed replacement design, independently approved
+anchors, qualified provisioning and complete actual proofs still precede target contact;
+no receipt exists and the single pass is unused.
 
 ## Client-requested grants
 
