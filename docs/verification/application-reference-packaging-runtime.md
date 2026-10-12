@@ -9,6 +9,16 @@ qualification remains unavailable through the [contact boundary's U1–U6](appli
 The single reference pass is unused; no receipt, current runtime expectation or qualified
 image follows from these notes. All original k244 obligations and product/native holds bind.
 
+Whole review k279/integration k280 find the credit map, post-provisioning role-selection
+order and measured status/read partition incomplete. Requirements k281 settle concrete
+contact/lookup limits with Antony; k282 repairs prerequisite versus first-attempt credit,
+disarmed LIVE activation, independent clean/findings-path registration and enduring inputs
+versus changing reports. Its mandatory whole review and every earned integration precede
+k269. The operation/owner tables below remain proposals requiring that repair, not an
+implementable rule that every unexercised target operation blocks the very first pass.
+No U cell is waived here. The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
+owns this exact construction hold; canonical permission remains unchanged.
+
 ## Retained entry and domain channel
 
 The commissioned checker owns launch policy and the live register lock, as specified in

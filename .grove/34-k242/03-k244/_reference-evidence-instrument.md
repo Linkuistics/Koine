@@ -204,3 +204,18 @@ target original/export verification follows k245's declared attempt; scratch con
 qualify its mechanics first. This node and k242 still have live obligations; the close
 cascade stops here. The one pass is unused, k246/k247 duties and every product/native hold
 remain. Design closure qualifies no instrument and supplies no completed finite subject.
+
+## K279 review integration and required decision boundary
+
+K280 verifies R1–R10, directly repairs issuance/current profile comparison, RPC logical
+names and missing conditional name variants, checker-before-Task supervision and
+pre-intent export-reservation wording. R1/R5 require concrete contact/lookup decisions
+with Antony in reference-evidence-contact-limits-k281, also owning the narrow canonical
+status-relocation decision. Reference-evidence-admission-completion-k282 then repairs
+R2/R3/R4/R6's credit/armed-role/registration/input-partition protocol and applies actual
+answers, with mandatory whole-design review/earned integration before k269. The earlier
+complete-design promotion is not a settled construction handoff after this review.
+K269 must not cut an impossible U2 repeat or resolve missing credit/authority by guessing.
+No original Done when or canonical selected clause changes here; k245's pass is unused,
+k246/k247 retain full duties and every product/private/native hold remains. This node
+still has live work, so no close/promotion cascade proceeds beyond the integrated leaf.

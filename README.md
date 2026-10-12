@@ -115,6 +115,12 @@ Later provisioning/corrections cannot inherit stale proof or restore authority. 
 remain live, k245 alone owns the unused pass, and k246/k247 retain complete generated
 discrimination/whole-subject review. Process-death checks establish no OS-crash persistence.
 
+The [whole review integration](docs/verification/application-reference-evidence.md#review-integration-and-required-decisions)
+requires k281's concrete human contact-limit/protected-lookup decisions and k282's repaired
+credit, LIVE activation, independent registration and normative/reporting partition before
+mandatory whole review/earned integration and k269. The earlier admission proposals cannot
+be implemented as settled. Permission, useful breadth, the unused pass and all holds remain.
+
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and the user

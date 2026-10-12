@@ -264,6 +264,10 @@ Its [complete reference-admission design](docs/verification/application-referenc
 separates immutable issuance authority, independently accepted current corrections,
 original evidence and verified derivatives. Actual contact/read/native-call proofs and
 one-time provisioning remain unavailable; design closure supplies no finite subject.
+The [review integration](docs/verification/application-reference-evidence.md#review-integration-and-required-decisions)
+requires actual contact/lookup decisions and complete credit/activation/registration/input
+partition repair with mandatory whole review before construction replanning. The original
+requirements remain selected until Antony explicitly changes them.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

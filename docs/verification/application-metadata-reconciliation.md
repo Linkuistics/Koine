@@ -35,6 +35,10 @@ unused pass. Original/verified-derivative evidence, independent roles, complete 
 rewrite controls and whole-subject review still precede private eligibility. Later input/
 provisioning/correction changes require affected requalification and independent audit;
 no design retirement closes instrument qualification or weakens this family's gates.
+The [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
+requires k281's concrete human contact/lookup decisions and k282's complete reviewed
+credit/activation/registration/input-partition repair before k269; the prior proposal
+supplies no settled construction admission. No selected product or native duty changes.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no

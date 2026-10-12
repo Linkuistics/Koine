@@ -175,3 +175,10 @@ Late provisioning/corrections/new reads require live affected requalification be
 This design closes no instrument or finite-subject obligation: k245 freezes actual evidence/
 roles, k246 full generated controls and k247 the complete whole-subject review or exact
 missing work. Every original Done when above remains unchanged and selected.
+
+K279/k280 find the admission conjunction incomplete. K281 puts concrete contact-limit
+and protected-lookup decisions, plus narrow canonical status relocation, to Antony;
+k282 owns complete credit/activation/registration/input-partition repair and mandatory
+whole review/earned integration before k269. Direct profile/RPC/supervision/reservation
+repairs qualify no tool. Every original Done when and canonical selected clause is
+unchanged here, the target pass is unused, and k246/k247 and every hold remain live.

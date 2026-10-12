@@ -514,3 +514,11 @@ never slices whole companions/tables or waives complete actual task/runtime/read
 capability closure. U1–U6 and every required unexercised native segment stay live before
 credit. K244/k242 remain live; no authority/tool/package/finite subject is supplied, k245's
 pass remains unused and k246/k247 retain complete generated/whole-subject obligations.
+
+K279/k280 verify admission defects and place concrete human contact-limit/protected-
+lookup decisions in k281, then complete admission-credit/LIVE-activation/independent-
+registration/input-partition repair in k282 with mandatory whole review/earned integration
+before k269. This implements Evidence stays bounded: no repeated unavailable-mechanism
+survey or deeper impasse replaces Antony's decision. Direct profile/RPC/supervision/
+reservation repairs supply no qualification. Canonical permission and original conditions
+are unchanged; all useful breadth, product/private/native holds and unused-pass duties remain.

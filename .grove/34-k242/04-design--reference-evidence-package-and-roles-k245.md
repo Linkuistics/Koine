@@ -48,6 +48,14 @@ channel LIVE default or per-recipe/runtime-version identity admits this pass. Wh
 packaging companions/tables remain accepted whole-byte inputs. This consumer cannot turn
 design completion, a failed envelope or unassociated export into completed evidence.
 
+K279/k280 require actual k281 contact/lookup/status-partition decisions, then k282's
+complete credit/activation/registration/input-partition repair and mandatory whole review/
+earned integration before k269. Require that actual repaired protocol and qualification,
+including disarmed-to-eligible LIVE release and exact prerequisite/first-attempt credit;
+this leaf cannot decide which U segments to waive or use the one pass for wiring controls.
+The full issuance/current-profile bridge and pre-intent export distinction remain explicit.
+All original Done when and the canonical permission are unchanged here.
+
 ## Done when
 
 - Pin every instrument/verifier/decoder/configuration/Taskfile/tool input and verify

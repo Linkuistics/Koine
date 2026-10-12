@@ -24,6 +24,11 @@ k245 boundary remains missing subject work; never fabricate bytes/roles or reuse
 as independent origin evidence. Generated permitted-rewrite checks are separate from
 original-byte hashes and cover useful/helper/alias tuples in full.
 
+K279/k280's admission repairs now require k281 actual decisions and k282 complete
+reviewed repair before k269/k244/k245. That chain supplies no original bytes, copy roles
+or generated qualification; consume actual k245 evidence or exact missing work only.
+No original Done when, useful breadth or selected permission changes here.
+
 ## Done when
 
 - Freeze exact deterministic per-role ordering, whole-template coverage priority and

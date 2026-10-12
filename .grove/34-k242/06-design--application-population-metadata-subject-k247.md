@@ -26,6 +26,12 @@ missing work. U1–U6 and unavailable required instrument identities prevent k24
 this whole-subject closing session cannot waive them or grant another pass. Compare the
 complete original-obligation table, not retired leaf counts, before whole-family review.
 
+K279/k280 add k281 concrete contact/lookup decisions and k282 complete admission repair
+with mandatory whole review/earned integration before k269. Compare the actual repaired
+credit/activation/registration/input partition and every explicitly selected amendment,
+not an earlier unavailable proposal promoted as settled. The original Done when and
+canonical requirements are unchanged by k280, and the unused pass/holds remain.
+
 ## Done when
 
 - Reconcile the full current workspace/private/source/runtime specs, acceptance,

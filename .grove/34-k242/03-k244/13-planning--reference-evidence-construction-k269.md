@@ -31,6 +31,25 @@ its first consumer; never grant unspecified administrator access.
 
 ## Work and verification
 
+K279/k280 find the k273 conjunction incomplete. First consume actual requirements
+reference-evidence-contact-limits-k281, complete design reference-evidence-admission-completion-k282,
+its mandatory whole review and every earned integration, all before this planner. K281
+owns contact-guarantee/protected-lookup and canonical status-relocation decisions; k282
+owns prerequisite versus first-attempt E/M/U credit, disarmed LIVE activation after
+provisioning, independently chartered clean/findings-path registration and enduring
+normative versus changing reporting inputs. The older owner/operation proposals below
+cannot settle those questions in an implementation leaf. An unavailable U2 owner that
+merely repeats the same conclusion is not a reachable construction plan.
+
+Preserve k280's direct full issuance/current-profile bridge, complete macro/conditional
+RPC documentary inventory, checker readiness/supervision before Task startup and
+pre-intent export-reservation distinction. Assign actual acceptance/release/refusal and
+input-stable reporting owners from the newly reviewed protocol. Do not blanket-forbid
+all target-only U operations before their first authorized attempt or silently tolerate
+pre-consumption U prerequisites. The completed operation map must name each evidence
+route and boundary. Original Done when, the canonical selected permission, unused pass,
+k246/k247 duties and all holds remain unchanged unless Antony explicitly amends them.
+
 1. Apply the reviewed F1–F5/F9/F11 design to each affected brief/leaf and the
 original-obligation ownership table. No design uncertainty is resolved by guessing
 inside an implementation task. Preserve the existing standalone tool/separate oracle.

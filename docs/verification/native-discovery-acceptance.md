@@ -96,6 +96,10 @@ allows guarded private implementation before analytic useful fit, after complete
 design, whole-producer review and earned integration. Advertisement/downstream
 consumption remain held until full useful native qualification passes. Historical
 arithmetic is counterexample evidence only, and every native G/N/V stays pending.
+The reference instrument's [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
+requires k281's actual contact/lookup choices and k282's complete reviewed admission
+repair before k269. Neither an unavailable mechanism nor an unrepaired credit/activation/
+registration/input partition supplies the finite subject or private eligibility.
 
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;

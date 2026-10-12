@@ -330,6 +330,9 @@ retain their independent duties. P1024's evidence decision is described in the
 [canonical saved-corpus boundary](../verification/application-population-metadata-shape.md).
 Its reviewed distribution/envelope must land before private eligibility. Every
 native verdict here is PENDING.
+The reference instrument's [review integration](../verification/application-reference-evidence.md#review-integration-and-required-decisions)
+requires actual contact/lookup decisions and complete admission repair with mandatory
+whole review before construction replanning; its earlier proposals supply no eligibility.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

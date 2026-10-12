@@ -3,7 +3,7 @@
 [Evidence → Qualify the instrument before the one target pass](../design/architecture/index.html#diagram-native-reference-evidence)
 shows the dependency boundary. Graphs enter at the dark Start here node;
 numbered edges describe order. This is the **evidence contract and concrete
-instrument design with a complete replacement admission-design boundary awaiting whole review**. The target-reading instrument and its independent controls
+instrument design with admission repairs required after whole review**. The target-reading instrument and its independent controls
 are not built or qualified, and the one authorized packaging pass has not run.
 The [construction boundary](#construction-and-qualification-boundary) keeps the
 complete implementation/qualification obligations live under k244. This document
@@ -27,6 +27,30 @@ no collector or actual no-contact evidence. The [whole handoff comparison](#whol
 retains every original obligation and its missing evidence. Complete admission remains unavailable through
 whole review and every required construction/qualification obligation. None of
 these leaves grants authority by existing.
+
+## Review integration and required decisions
+
+Whole review k279 and integration k280 find the k273 admission conjunction incomplete.
+Requirements reference-evidence-contact-limits-k281 now precede design
+reference-evidence-admission-completion-k282 and construction replanning k269. K281 puts
+the unestablished complete contact mechanism and indeterminate protected-lookup rule to
+Antony with concrete alternatives and a bounded-limit recommendation; it also requests
+the narrow canonical status relocation. The selected permission remains unchanged until
+an actual decision. K282 owns the exhaustive prerequisite/first-attempt credit distinction,
+disarmed LIVE-role activation, chartered independent registration on clean/findings paths,
+and normative/status partition, plus application of actual contact/lookup decisions.
+Its mandatory whole review and every earned integration precede k269. Existing protocol
+sections are proposals to repair, not an implementable admission handoff. In particular,
+the current U table, direct reviewer-registration rule and post-provisioning qualification
+order cannot be consumed by a construction owner as settled. No repeated unavailable
+mechanism survey or reporting-only close discharges the decision.
+
+K280 directly clarifies immutable issuance/current profile comparison and pre-intent
+export failures, repairs the complete documentary RPC names/conditional variants and
+shows checker supervision before Task startup. These repairs qualify no instrument.
+All original k273/k244/k242 obligations, k245's unused pass, k246/k247 duties, private
+ineligibility, both product holds and pending native acceptance remain. This section is
+reporting outside the normative extract set; it grants no approval or operation.
 
 The [canonical joint evidence boundary](application-population-metadata-shape.md)
 owns the selected reference, cohort requirements, permission and packet-integrity
@@ -424,6 +448,14 @@ anchored validation record must bind their exact bytes and actual file identity;
 producer-generated hashes cannot supply that record. K275 owns its independent trust root,
 correction channel and non-circular approval/provisioning bindings.
 
+The receipt's permission-profile identity names the complete frozen **issuance profile**,
+not a mutable alias for the current profile. Admission compares it exactly with the
+externally accepted issuance payload. It separately compares actual current extracts,
+concordance and full profile with the highest accepted current payload. Without a
+correction, the two profile identities must be equal. With a correction, the external
+bridge must bind both complete profile identities and their independently reviewed
+field/clause correspondence, as specified below; no receipt field is silently superseded.
+
 Provisioning is a separate explicit one-initialization operation under that approved
 channel. It cannot be invoked by packaging or a pure selector. It exclusively creates the
 selected subject and staged receipt, records actual identities, and requests independent
@@ -691,7 +723,7 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 | Verifier-control acceptance | Earlier accepted revision and exact checker/verifier/launcher/runtime identities; separately authored bootstrap-control inventory and original results; independent adjudication, actual frozen inputs/process/channel/contact evidence and unavailable coordinates |
 | Receipt binding | Earlier accepted revision/control acceptance; exact earlier staged receipt bytes/digest/file identity; actual initialization nonce, UID, subject/ancestor identities, proposed unspent role and synchronization basis |
 | Final receipt validation | Earlier receipt binding; independent final named/held unspent receipt/subject identity and byte comparison; complete initializer acknowledgements and terminal result |
-| Correction binding | Earlier receipt/final-validation identity; newly accepted revision and fresh affected verifier-control acceptance; unchanged authority facts, observed permit/intent/attempt state, exact approved changes and affected qualification requirements |
+| Correction binding | Earlier receipt/final-validation identity and complete issuance profile/concordance; newly accepted revision, complete current profile/concordance and fresh affected verifier-control acceptance; independent field/clause authority-equivalence comparison, observed permit/intent/attempt state, exact approved changes and affected qualification requirements |
 
 Required unavailable observer/runtime identities cannot become successful entries. A proposal
 with exact unavailable work may be retained for review but has no admission-eligible role.
@@ -710,6 +742,19 @@ and persistence limits. New ancestry/replaced receipts cannot be corrections. Ch
 technical extracts/inventory/tools need independent semantic review and affected qualification
 before eligibility; broader authority goes to Antony. This distinction is the required
 k274 external-validation refinement carried throughout the complete replacement handoff.
+
+A correction binds the exact issuance and current profile bytes/identities, their complete
+field-to-clause concordances, and an independently reviewed comparison of every
+authority-bearing value. Reference/build/source/argv/phases/cohorts/scope/resolution/
+protected rules, layouts/basenames/locales/evidence breadth, prohibited effects,
+attempt/location/UID/initialization and persistence limits cannot change as a technical
+correction. A changed encoding, schema, implementation or qualification rule may change
+the full current-profile identity only with an accepted semantic-equivalence comparison
+of those authority facts and fresh affected qualification. Unknown equivalence refuses;
+new authority requires Antony. Admission checks the receipt against issuance, the current
+inputs against current acceptance, and the bridge against both. It never compares the
+receipt's profile identity directly to a different current identity or ignores that field.
+Post-consumption correction still has only its earlier specified offline domain.
 
 Under a cooperative register lock, exclusively reserve each next ordinal and retain update
 intent before publication. Require a contiguous complete successor chain and its highest
@@ -1130,8 +1175,13 @@ session-status file. The final closure commits only after input freeze and all
 item comparisons; the offline verifier never manufactures missing observations.
 Unexpected death without a complete closure is interrupted/incomplete even if
 some objects are intact. Failure to preserve a record is itself missing evidence.
-Existing output, prior consumption intent/spent permit/reservation or an uncertain authority subject refuses
-reacquisition; offline inspection may describe that attempt but may not read a newer
+Existing requested output, prior consumption intent/spent permit or an uncertain authority
+subject refuses acquisition. A retained export reservation from a failed pre-intent
+invocation is not evidence that authority was consumed: a later explicit invocation may
+request a different fresh destination only if the fixed authority independently remains
+validated unspent with no intent/attempt/uncertainty. It never scans exports, overwrites
+the old reservation or retries within the failed invocation. Offline inspection may
+describe a consumed attempt but may not read a newer
 target or resume it. Only k245 owns
 the selected pass; invoking a fresh attempt after target start needs new authority.
 
@@ -1543,7 +1593,8 @@ row above. They are specified, unexecuted, and never qualify from a design bit.
 | Required positive / deliberate counterexample | Intended independent result |
 | --- | --- |
 | Two concurrent scratch callers, different exports | At most one fixed attempt reservation; loser refuses before emitter contact |
-| Prior reservation, moved/deleted/unreadable export | Same fixed subject still refuses; no second contact or reset |
+| Moved/deleted/unreadable export after intent or permit consumption | Fixed authority still refuses acquisition; export loss never permits second contact or reset |
+| Failed pre-intent export reservation versus later explicit fresh destination | First ends without contact; later admits only independently validated unspent fixed authority with no intent/attempt/uncertainty. No export scan, overwrite or within-invocation retry |
 | Deleted/moved attempt entry with otherwise unchanged authority | Authority remains consumed/unavailable; cleanup cannot admit another pass |
 | Partial consumption intent, failed exclusive permit rename or death before query | Retain authority event/spent name; unchanged receipt bytes never authorize reset or another emitter |
 | Existing/unusable export versus reserved export, complete/incomplete original and offline derivation | Invalid preflight ends before intent; later failures retain consumed authority/originals; every derivative requires independent exact object/association verification |
@@ -1551,7 +1602,7 @@ row above. They are specified, unexecuted, and never qualify from a design bit.
 | Complete proof versus schema-valid omitted case/role/negative pair | Required-inventory coordinate identifies omission; proof's own count/list cannot admit |
 | Weakened regenerated inventory/concordance or self-certifying substituted verifier | Fixed externally accepted payload and original independent verifier-control acceptance refuse; matching regenerated hashes cannot admit |
 | Direct registered review versus copied/skipped review or unresolved final-payload integration | Only the independently opened registrar channel and exact reviewed bytes can publish acceptance; producer text/run IDs supply none |
-| Issuance receipt versus scope-preserving current correction, pending/old revision or correction after spending | Accepted external bridge and affected requalification preserve original receipt; partial/old history refuses and no correction restores unspent authority |
+| Issuance receipt versus scope-preserving current correction, pending/old revision or correction after spending | Receipt profile equals full issuance profile; current inputs equal accepted full current profile; a changed identity requires an accepted bridge binding both complete profiles/concordances and independently reviewed authority equivalence. Missing comparison or changed scope/file/effect/attempt refuses; affected requalification preserves original bytes and no correction restores unspent authority |
 | Fresh framed channel versus leaked endpoint, second frame, missing EOF/reap, wrong domain or process binding | Independent external checker/coordinator reject at the intended channel coordinate; required contact evidence cannot come from the candidate |
 | Permission profile matches frozen clauses versus one changed scope/effect/file group | Independent concordance/value comparison refuses before start |
 | Reporting-only promotion versus changed measured extract/task/tool or proof inserted into an input | First preserves qualification; latter invalidates it and requires a new run |

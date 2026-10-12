@@ -9,6 +9,12 @@ with whole-producer review before construction planning and actual qualification
 Source research, table extraction and presentation checks acquired no installed query, contents, topology,
 collector availability or runtime identity. The selected target pass remains unused.
 
+Whole review k279/integration k280 require a concrete contact-limit/protected-lookup
+decision in k281, followed by k282's complete admission repair and mandatory whole review
+before k269. The current mechanism and lookup proposals below are not construction-ready.
+The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
+preserves the exact selected clauses until Antony decides; this report supplies no waiver.
+
 [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
 shows the reading order. Graphs enter at the dark Start here node. The independent
 approval register must accept the required inventory before construction can credit it;
@@ -27,7 +33,7 @@ configuration, syscall table, provider set or service implementation.
 | --- | --- |
 | [BSD declarations](reference-contact-inventory/bsd-declarations.tsv) | Every numbered declaration line, including conditional alternatives and published placeholders; number, source line, name and branch context. All source numbers from zero through the last declared slot are represented. No configuration branch is silently selected. |
 | [Mach traps](reference-contact-inventory/mach-traps.tsv) | Every numbered trap-table declaration and conditional alternative, including invalid slots; separate from BSD syscall numbering. |
-| [Mach RPC declarations](reference-contact-inventory/mig-routines.tsv) | Every routine/simpleroutine/skip declaration outside comments in mach_vm.defs, mach_port.defs and task.defs, with exact source/line. These selected interfaces expose VM and capability-transfer obligations; they are not all kernel RPCs or user-space services. Compiled message IDs/conditional applicability remain unestablished. |
+| [Mach RPC declarations](reference-contact-inventory/mig-routines.tsv) | Every routine/simpleroutine/skip declaration outside comments in mach_vm.defs, mach_port.defs and task.defs, including names selected after a multiline declaration by conditional branches. Each row retains declaration/name source lines, logical name, exact name expression and branch context. These selected interfaces are not all kernel RPCs or user-space services. Compiled message IDs/configuration applicability remain unestablished. |
 | [Published API basis](reference-contact-inventory/api-basis.tsv) | Named Apple API documents, retrieval URLs/date and exact retrieved JSON digests. Documentation identities support the route/privilege facts below, not current ABI, service names, image identity or a frozen runtime expectation. The upstream JSON is mutable; re-acquisition must match its digest or become an independently reviewed change. |
 
 Enumeration preserves facts, not a semantic exclusion list. Each non-placeholder BSD/trap
@@ -46,6 +52,13 @@ it constructs entry/return probes from BSD `syscallnames` and separately from Ma
 declaration names are not guessed installed probe names. Required provider/probe mappings,
 enabled configuration, readable operands and current restrictions are unavailable until
 independently established. Adding the Mach provider is no proxy-causality certificate.
+
+`declared_name` is the logical inner routine name; `declaration_expression` retains the
+source's complete wrapper expression. The pinned mach_vm.defs/task.defs macro definitions
+can add `_kernelrpc_`, `_external` or `_mig` according to build configuration, with a
+separate sandbox suffix rule. Branch context and the two source coordinates preserve
+alternatives without selecting a configuration. Neither the logical name nor a wrapper
+token alone identifies a compiled routine, message ID or installed probe.
 
 ## Required contact families
 
@@ -156,7 +169,7 @@ boundary is satisfied. An apparently clean partial trace cannot admit the target
 | Unavailable coordinate | Exact missing identities/evidence | Owner and placement |
 | --- | --- | --- |
 | U1 current independent universe | Actual kernel/build/configuration and BSD/Mach/RPC/provider correspondence; complete current service/framework/opaque-command inventory and independent per-entry disposition, including public-source gaps | K269 assigns independent inventory/source-correspondence design and review before any real-adapter or observer credit. No target/probe acquisition is authorized by this report. |
-| U2 full mechanism | Actual unprivileged enforcement/collector/launcher artifacts, API basis and class coverage for all C1–C8; an identified pre-effect enforcement rule or independent observation for each | K269 retains a live contact-boundary design owner before capability/calibration or shared packaging rehearsal. If no realizable candidate can be named, retain this exact unavailable boundary; do not repeat the same source survey as qualification. |
+| U2 full mechanism | Actual unprivileged enforcement/collector/launcher artifacts, API basis and class coverage for all C1–C8; an identified pre-effect enforcement rule or independent observation for each | K281 first settles the concrete guarantee/posture impasse with Antony; k282 applies the answer and earns whole review before k269 assigns mechanism construction/calibration. No leaf merely re-concludes unavailable and no lesser claim is selected by this table. |
 | U3 launch and capability state | Actual runner/interpreter/loader/image/process/thread identity; initial fd/port/right/VM closure, transfers, cwd and object generation through true return | K277 supplies the entry/read contract; k269 assigns independent launch/association construction and qualification before checker/verifier correspondence or adapter credit. |
 | U4 mediated and memory effects | Actual endpoint/protocol/receiver/proxy/request/effect associations, async lifetime and inherited-map/backing provenance or containment | K269 assigns explicitly separate required C3–C6 cells before source/acquisition or no-contact credit; a detached recipient is not excluded. |
 | U5 independent calibration | Actual per-family/variant direct/child/proxy/descriptor controls, ready/association/drop/filter/attach/termination controls and original frozen results | K269 assigns authoring, capability assessment and calibrated actual pure execution only after the reviewed mechanism and authorized scope; missing cells stay live before final measurement. |
@@ -168,15 +181,16 @@ consumer, retain a distinct final requalification/closing owner, and preserve ev
 k244 obligation. An owner or a source pin is not a qualified identity. No unavailable cell
 can be rewritten as inapplicable solely to close k244/k242.
 
-The recommendation is to preserve the unprivileged selection and progress the unaffected
-pure work. If a stronger arrangement is pursued, **first** create concrete requirements
-work before its consumer: choose retaining this unavailable boundary versus the precisely
-specified root/entitlement/helper/VM arrangement; name its operator, complete coverage,
-consent/signing/SIP and host/service effects, proposed calibration scope and trade-off.
-Prefer a contained scratch-only candidate over blanket administrator tracing only if its
-full inherited/proxy/read closure can be specified; neither is authorized now. Antony
-retains that decision. A useful target/required copy is never dropped as the price of a
-clean proof, and the existing product/native VM programme grants this tool no VM authority.
+Requirements k281 now owns the concrete choice before k282/k269: retain the full
+requirement with a realizable mechanism or explicit human disposition, accept a named
+bounded contact limit, or commission a specified stronger arrangement. Recommend the
+stated limit with independent authored expectations and exact scratch controls, while
+disclosing unobserved proxy/initial-capability/mapping risks; it is not selected here.
+Any stronger candidate must name operator, full and missing coverage, consent/signing/SIP/
+helper/VM and host/service effects and calibrated scope. Root tracing alone is insufficient.
+Antony retains the decision; no deeper repeated unavailable survey substitutes for it.
+Required useful copies and all original obligations remain, and the existing product/native
+VM programme grants this tool no VM authority.
 
 ## Protected Data and out-and-back specimens
 
@@ -212,8 +226,11 @@ unknown handling stays unavailable without a current topology probe or changed p
 
 The source tables were extracted without compiling/preprocessing the source. BSD and Mach
 row/variant/slot sequences are compared item by item with the pinned complete files; RPC
-routine/skip membership is checked independently of the first extraction. Changed or omitted
-rows must fail that comparison. This establishes documentary enumeration only. API-document
+routine/skip membership, logical names, exact expressions and conditional/name coordinates
+are checked against the complete pinned sources and separately authored wrapped/branched
+name expectations. The original wrapper-token/omitted-branch table and deliberate name,
+expression, context and branch-omission mutations must fail the comparison. This establishes
+documentary enumeration only. API-document
 digests record retrieved bytes; they cannot identify current frameworks or daemons.
 
 Diagram rendering, browser inspection and repository link checks validate presentation.

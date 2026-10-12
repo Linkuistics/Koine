@@ -22,6 +22,12 @@ as a node; the earlier design/plan qualifies no tool. Instrument construction/co
 the authorized package, independent copy roles, generated recipes/discrimination and
 whole-family reconciliation remain live under the complete subject producer.
 
+The [whole review integration](application-reference-evidence.md#review-integration-and-required-decisions)
+now places concrete contact-limit/protected-lookup decisions in k281, then complete
+admission-credit/activation/registration/input-partition repair in k282 with mandatory
+whole review/earned integration, before k269. The canonical selected section below is
+unchanged; the incomplete admission proposals qualify neither construction nor the pass.
+
 ## What the saved corpus establishes
 
 The historical macOS 26.6.2 (25G83) census contains 640 directory spellings:
@@ -384,7 +390,9 @@ proofs remain absent; unknown authority refuses contact. No requirements answer 
 initialization or spends the target pass. The [whole original-obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
 and [construction responsibility handoff](application-reference-evidence.md#construction-responsibility-and-stability-handoff)
 carry the complete replacement through mandatory whole-k273 review/earned integration
-before k269. U1–U6 and required unexercised native segments stay live before actual credit;
+before k269. K279/k280 subsequently require k281's actual decisions and k282's complete
+reviewed repair before that planner; no owner may guess which U cells block admission.
+U1–U6 and required unexercised native segments stay live before actual credit;
 k269 assigns qualified provisioning/independent validation, last-edit requalification,
 independent audit and distinct final k244 close with repair ownership through k245.
 Immutable issuance and current correction bindings stay separate, and whole companions/
