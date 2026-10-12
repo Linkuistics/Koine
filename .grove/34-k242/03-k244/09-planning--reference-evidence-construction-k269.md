@@ -66,6 +66,20 @@ Creator; any earned integration must also run before construction.
 
 ## Additional repair obligations from k272
 
+K273 is a design node: k274 delivers the authority/original/derivative lifecycle;
+k275 independent roots; k276 full contact coverage or exact unavailable work; k277
+exact entry/read closure; k278 whole reconciliation and mandatory whole review before
+this leaf. Consume their complete reviewed conjunction, never a retired first child.
+The lifecycle proposal requires separately owned initializer/independent validator,
+actual filesystem/API support validation, receipt/ancestor/UID binding and stable
+independent anchors, exclusive export preflight, retained consume.intent, exclusive
+unspent-to-spent receipt rename, required namespace/full-flush acknowledgements and
+only then original start/contact. Place actual scratch two-caller/old-descriptor,
+short-write/death/replacement/failed-flush/attempt-deletion/export-loss controls and
+independent original-to-derivative association verification before k245. An unavailable
+required synchronization basis stays live, not a weakened fsync-only substitute.
+No actual receipt/proof is supplied by k274; final design ownership remains k278.
+
 Carry all k271/k272 R1–R15 classifications and actual k270 choices through every owner.
 Do not consume k273 before whole review/integration. In particular, assign authority
 consumption/deletion controls, independent inventory/verifier anchors, the full IPC/proxy/

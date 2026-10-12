@@ -1,4 +1,4 @@
-# reference-evidence-admission-repair-k273
+# reference-evidence-admission-repair-k273 — brief
 
 ## Goal
 
@@ -88,3 +88,48 @@ probe, installed query/contents, topology probe, new privilege/signing/consent/h
 launch/registration/index or native/VM work. No new quota/amount/ABI/support floor/useful
 loss/target attempt is selected. K269 may consume this producer only after whole review
 and earned integration; k244 cannot close around an unavailable required boundary.
+
+## Decisions (running log)
+
+The authority/evidence lifecycle, independent admission roots, full unprivileged contact
+boundary, retained packaging/runtime closure and final whole-contract reconciliation
+each require an independently checkable design. Decompose this producer into those five
+design children and complete only the first in this session. This is not construction
+planning and cuts no implementation leaves. All original Required coherent design and
+Done when above remain this node's closing conditions. A partial child cannot admit k269
+or consume k245's permission.
+
+## Decomposition and whole-producer ownership
+
+1. reference-evidence-authority-consumption-k274 owns R2/R7/R8/R13 end to end: fixed
+   separate subject, receipt provisioning/validation interface, destructive permit
+   consumption, concurrency and persistence limits, original evidence and verified
+   derivative ordering, independent failure/control requirements and matching views.
+2. reference-evidence-independent-anchors-k275 owns R4/R12: the external approval root,
+   actual independent approval/provisioning channel, non-circular receipt bindings,
+   normative extracts/concordance, inventory/verifier/launcher anchors, correction
+   authority and strict invocation-channel/verifier-self qualification. It consumes
+   k274's lifecycle without minting or restoring a permit.
+3. reference-evidence-full-contact-boundary-k276 owns R3/R6/R9/R11: independently pinned
+   complete syscall/descriptor/source/IPC/proxy classes, realizable unprivileged
+   observation/containment or exact unavailable work, all per-class bypass/loss controls
+   and selected protected/out-and-back pure specimens. No target or collector probe.
+4. reference-evidence-packaging-runtime-closure-k277 owns R5/R10/R14: exact shared
+   Taskfile/script/CLI qualification channel and live refusal; every executed/mapped/
+   unexercised UID/build/location/receipt/export segment; observed complete task/runtime
+   reads and freeze; named bounded format sources and independent runtime expectations.
+5. reference-evidence-admission-reconciliation-k278 checks every original obligation,
+   reconciles the whole contract, README/summary/view/charter layers and k269's precise
+   construction/provisioning/repair/requalification/close ownership and placement. Any
+   required unavailable boundary remains exact live work before its consumer, never a
+   permission waiver or node close around missing qualification. As its last work act,
+   insert mandatory review-design with bare stem reference-evidence-admission-repair
+   at sibling reference-evidence-construction-k269, Reviews naming this node k273 and
+   Creator naming that closing session's actual run. Every earned integration precedes
+   k269. The review reads the entire replacement, including all five children.
+
+All children use the existing pure and presentation seams and k270's settled canonical
+choices; none implements/provisions/probes/acquires. Whole review belongs to k273's
+closing boundary, so no child schedules a competing partial review or in-session reviewer.
+Any substantive change to an earlier child's design receives explicit live repair and
+whole-boundary reconciliation; no retired child is silently reopened.

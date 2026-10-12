@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Carry settled authority choices into the admission repair",
-    "status": "Delegated requirements settled; replacement design and whole review precede replanning",
-    "summary": "Antony delegated k270's choices. Select separate KoineReferenceEvidence, one qualified initialization, cooperative/documented durability limits and independent whole-review/integration approval of scope-preserving anchors/corrections. Qualification remains unprivileged: no root/sudo collector. Protected contents and outside intermediate operations refuse, with Data prefixes and raw slots retained. Authority consumption, actual approval/provisioning, full IPC/proxy/descriptor observation, exact entry and task/runtime closure still require reviewed design and qualification. Process kills prove no OS-crash persistence. No receipt, target pass, executable proof or native verdict; both holds remain.",
+    "title": "Consume the permit independently of attempt and export cleanup",
+    "status": "K274 lifecycle proposal; remaining k273 designs and whole review precede replanning",
+    "summary": "K273 now has five design children. K274 proposes exclusive fresh-export preflight, retained consumption intent, immutable unspent-to-spent permit rename, acknowledged original start and independently verified exact-byte derivatives. Ordinary attempt/export cleanup never restores authority; partial transitions refuse. Current synchronization support and independent approval/provisioning are unqualified, and process kills prove no OS-crash persistence. K275 anchors, k276 complete unprivileged contact, k277 exact entry/runtime closure and k278 whole reconciliation/review remain live before k269. No receipt, target pass, executable proof or native verdict; both holds remain.",
     "diagramIds": [
       "native-reference-evidence",
       "native-reference-instrument",
@@ -18,19 +18,15 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-evidence",
-        "summary": "Settled delegated requirements precede replacement design and whole review, then replanning and actual qualification; qualified provisioning and requalification remain required before the unused pass."
+        "summary": "Named all five replacement-design owners and placed fresh export, consumption intent, spent permit and original start before the unused pass; whole review and qualification remain due."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Carried selected separate authority, protected/intermediate refusal and unprivileged-only scope; consumption, actual anchors, exact entry and complete IPC/proxy coverage still require repair."
+        "summary": "Replaced the unspecified authority step with the lifecycle proposal and kept actual independent anchors, full contact coverage and exact entry unqualified."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Selected one qualified initialization outside product lifecycle and bounded cooperative/documented persistence limits; actual consumption/provisioning and full proof remain unbuilt."
-      },
-      {
-        "id": "native-reference-proof",
-        "summary": "Selected independent approval/correction rules and unprivileged qualification; actual reviewed anchors, task/runtime read closure and complete contact proof remain absent."
+        "summary": "Added fresh-export refusal, retained consumption intent, exclusive permit rename, synchronized original start, verified derivative and irreversible failure branches."
       }
     ]
   },
@@ -103,7 +99,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Proposed components consume selected separate one-time authority, protected/intermediate refusal and unprivileged-only qualification. Authority consumption must survive ordinary deletion, and independent approved inventory/verifier anchors must resist self-certification. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only partial and no root/sudo collector is authorized. No tool, receipt or proof is supplied."
+      "caption": "Proposed components now consume the k274 lifecycle: fresh export, consumption intent, spent permit and synchronized original start. Actual provisioning and k275 independent inventory/verifier anchors remain absent. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only partial and no root/sudo collector is authorized. No tool, receipt or proof is supplied."
     },
     {
       "id": "native-reference-admission",
@@ -112,7 +108,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Selected requirements: separate KoineReferenceEvidence, one qualified initialization, cooperative/documented synchronization limits, independent anchor approval/corrections and no root/sudo collector. Protected contents/outside intermediate contact refuse. Actual receipt/consumption protocol still needs replacement design and whole review; process kills cannot prove OS-crash persistence. Qualified provisioning and stable independently anchored proofs precede the unused pass; unavailable authority never resets."
+      "caption": "K274 proposes one explicitly provisioned/independently validated permit, fresh-export preflight before consumption intent, exclusive same-directory unspent-to-spent rename, synchronized original start and independently verified complete or explicitly incomplete derivative. Attempt/export deletion and partial transitions never reset authority. Filesystem support and the bounded namespace/full-flush assumption need actual qualified inputs; process kills prove no OS-crash persistence. K273's remaining anchors/contact/entry/reconciliation and whole review remain due; no receipt or target pass is supplied."
     },
     {
       "id": "native-reference-proof",

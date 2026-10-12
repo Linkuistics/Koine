@@ -88,6 +88,11 @@ cooperative/full-synchronization limits, unprivileged observation and refusal of
 contents/outside intermediate contact. Reviewed replacement design, independently approved
 anchors, qualified provisioning and complete actual proofs still precede target contact;
 no receipt exists and the single pass is unused.
+The [authority lifecycle proposal](docs/verification/application-reference-evidence.md#permit-receipt-and-explicit-initialization)
+reserves a fresh export, retains irreversible consumption intent and moves the permit to
+its spent name before original acquisition. Attempt/export cleanup cannot restore that
+name. K273's remaining anchor/contact/entry designs, whole review and actual qualification
+are still required; process-death checks cannot establish OS-crash persistence.
 
 ## Client-requested grants
 

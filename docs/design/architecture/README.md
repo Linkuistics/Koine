@@ -16,13 +16,12 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — K270's delegated requirements are settled; replacement design/whole review then replanning remain. Qualified provisioning and requalification precede the unused pass.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Authority consumption, independent admission anchors and exact entry/full contact coverage require repair; flow numbers are reconciled.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separate KoineReferenceEvidence and one qualified initialization are selected, with cooperative/documented durability limits. Actual receipt/consumption protocol remains unbuilt; process kills cannot qualify OS-crash persistence.
-- [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof) — A clean DTrace syscall trace cannot clear IPC/proxy contact. Independent contact classes, reviewed anchors and actual task/runtime read closure remain unresolved.
-- [Permission inputs and reporting outputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs) — Concordance includes canonical, ADR and contract normative sources; changes require owned requalification after the last measured edit.
-- [Topology and the inherited component rule](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule) — The canonical amendment refuses protected contents and outside intermediate operations, retains the three prefixes/Data and raw slots, and supplies no current topology/contact evidence.
-- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Settled delegated choices precede k244; k273 replacement and whole review/integration precede k269. Every original obligation remains live.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Named k273's five design owners and the export/intent/spent-permit/original-start order; whole review precedes k269.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the lifecycle proposal while retaining the absent anchor/contact/entry proofs.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Added preflight refusal, irreversible intent/permit transitions, original evidence and verified derivative failure paths.
+- [Permit receipt and explicit initialization](../../verification/application-reference-evidence.md#permit-receipt-and-explicit-initialization) — Defined fixed permit names and independently validated one-time provisioning; actual trust bindings remain k275 work.
+- [Persistence operations and their evidence limits](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits) — Named full-flush/namespace acknowledgements and their bounded assumption; scratch death is no OS-crash proof.
+- [Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative) — Reserved fresh output before consumption and required complete independent original/object/association comparison.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -30,7 +29,10 @@ corrections. Qualification remains unprivileged, with no root/sudo collector. Co
 independent IPC/proxy/descriptor contact coverage and actual approval/provisioning proofs
 are still absent; requirements alone cannot admit.
 
-Unchanged context: [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
+Unchanged context: [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof),
+[Permission inputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs),
+[Topology](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule),
+[Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
 [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
 [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject),
 [Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),

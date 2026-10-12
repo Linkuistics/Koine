@@ -16,8 +16,11 @@ gaps. Requirements reference-evidence-authority-k270 settle the
 before the instrument node;
 replacement design reference-evidence-admission-repair-k273 must close those gaps and
 cut mandatory whole review/earned integration before construction replanning k269.
-The proposals below supply no implementable admission or complete no-contact proof
-until that reviewed repair. None of these leaves grants authority by existing.
+K273 is decomposed into authority lifecycle k274, independent anchors k275, full contact
+boundary k276, exact packaging/runtime closure k277 and whole reconciliation k278.
+The authority lifecycle below is a concrete design proposal; complete admission and
+no-contact coverage remain unavailable until the whole repair is reviewed. None of
+these leaves grants authority by existing.
 
 The [canonical joint evidence boundary](application-population-metadata-shape.md)
 owns the selected reference, cohort requirements, permission and packet-integrity
@@ -352,7 +355,7 @@ neither reconciliation nor writing a proof into a pinned document inherits the o
 ## Authoritative attempt evidence
 
 [Admission → Bind one permission to one durable start](../design/architecture/index.html#diagram-native-reference-admission)
-shows the required boundary and its unresolved repair. One fixed independently owned
+shows the proposed permit-consumption and original/derivative lifecycle. One fixed independently owned
 local subject must bind the stable identity
 `koine.reference-evidence.macos-27.0.1-26A434.1` to an explicit authorization receipt.
 A document digest or export name creates no successor. K270's
@@ -367,8 +370,8 @@ Packaging accepts only an export destination; it cannot select an authority subj
 or mint permission. All original attempt evidence belongs to the fixed subject; an
 export is an independently verified immutable derivative. The receipt must bind actual
 location/UID, checked directory/ancestor identities, permission and one-attempt authority.
-The concrete independent approval record, proof/inventory/verifier anchors and
-anti-substitution mechanism remain k273 work. The existing independent whole-design
+The concrete independent approval root, proof/inventory/verifier anchors and
+anti-substitution mechanism remain k275 work. The existing independent whole-design
 review/earned integration may approve scope-preserving revisions under the delegation;
 the producer cannot approve itself. Qualified provisioning and independent validation
 must bind those actual accepted revisions outside regenerated proofs/restorable checkout.
@@ -376,51 +379,215 @@ Corrections require independent review/integration and fresh affected qualificat
 they never replenish consumed authority. Broader scope, new privilege or a new attempt
 requires a new explicit human decision.
 
-**Requirements are settled; actual admission remains unavailable.** The delegation selects
-one separately owned reviewed/qualified initialization. Packaging cannot infer first use
-from absence or recreate authority after loss. No store/receipt, strengthened protection,
-privileged observer or target call is supplied by this requirements handoff. K269 must
-assign actual qualified
-provisioning and independent validation before k245, with requalification after any changed
-measured input. The interview alone produces no receipt.
+**Requirements are settled; actual admission remains unavailable.** K274 specifies this
+lifecycle for whole-k273 review. No authority directory, receipt, approved binding,
+executable protocol or scratch qualification exists. K275 must complete the independent
+approval mechanism, k276 the full unprivileged contact boundary and k277 the exact shared
+entry/read closure; k278 reconciles them and schedules whole review before k269. The
+qualified initializer and independently implemented validator are k269 construction owners
+before k245, with live affected requalification after the last measured change.
 
-K273 must deliver a coherent protocol meeting every required boundary:
+### Permit receipt and explicit initialization
 
-- Validate actual receipt/profile/reviewed anchors and the exact fixed subject. Missing,
-  moved, replaced, unreadable or uncheckable authority refuses without scan/reset/recreation.
-- Serialize concurrent different-export callers at one fixed authority, with named/held
-  identity checks and ephemeral synchronization, never a session-status artifact.
-- Consume authority before contact so ordinary deletion or movement of the attempt entry
-  cannot readmit. Exclusive directory creation with a still reusable receipt fails this
-  requirement. Moving/consuming authority itself is a repair option to review, not a
-  protocol selected by this integration.
-- Bind immutable start to permission, receipt, invocation and reviewed proof/input/images.
-  Partial transitions and failed persistence acknowledgements refuse before contact;
-  conservative consumption survives death before the query. Lock release/cleanup never
-  refund permission. Recovery needs explicit new authority.
-- Preserve original segments, prefixes and unperformed work, with an exact export preflight,
-  derivation and verification order. Export deletion/movement/unreadability cannot reset.
+The fixed subject has two reserved permit names, `unspent.receipt` and `spent.receipt`,
+an immutable authority event `consume.intent`, and one original evidence child, `attempt`.
+They are siblings: deleting `attempt` never deletes a permit name or the authority event.
+An export is outside this subject and cannot select it.
+Only the exact independently validated **unspent** name authorizes consumption. A spent
+receipt has the same bytes and held-file identity, but its name grants no permission.
+Both names present, neither present, an unreadable name, any `consume.intent` from an earlier
+invocation or any unexpected initialization prefix refuses. Packaging never copies a spent receipt back, creates a missing receipt,
+scans for a relocated subject or interprets a partial initialization as first use.
 
-Scratch controls establish locking/exclusion, transition ordering, actual flush-operation
-acknowledgements and process-death retention on their filesystem. They do **not** establish
-OS-crash/power-loss persistence. The canonical choices accept a bounded documented full-
-synchronization/namespace-ordering assumption and unobserved storage/hardware failure limit.
-Fsync alone is not that basis. K273 must name and justify every actual operation, current
-filesystem assumption and required acknowledgement; unknown/unsupported required semantics,
-identities or failed acknowledgements refuse. Archived API documentation is not a current
-APFS namespace crash certificate. No VM/power-loss experiment is authorized.
+The closed receipt contains version, stable one-pass permission identity, initialization
+nonce, exact absolute subject and actual UID, held subject/ancestor and receipt-file
+identities, permission-profile identity, approved anchor revision, and synchronization
+contract identity. File identities include device/inode/type and available creation stamps;
+controlled authority directories are UID-owned mode 0700 and regular receipt files 0600,
+with no symlink or extra hard link. Ancestor ownership/modes are independently validated
+against their actual approved observations, not assumed to equal the user's UID. Receipt
+bytes never contain their own digest or a qualification-output digest. The separately
+anchored validation record must bind their exact bytes and actual file identity; matching
+producer-generated hashes cannot supply that record. K275 owns its independent trust root,
+correction channel and non-circular approval/provisioning bindings.
 
-The intended enforcement is cooperative local, not tamper resistance. The same user/admin
-can forge/restore whole authority, bypass the tool or run the query independently. Detected
-loss refuses; deliberate undetectable whole-authority rollback is an accepted cooperative
-limit. Ordinary attempt-entry cleanup is a required refusal control, not that exception.
-K270 selects no secure monotonic/cross-machine store. Stronger protection introduces new
-authority dependencies and needs a concrete separate human decision and reviewed design.
+Provisioning is a separate explicit one-initialization operation under that approved
+channel. It cannot be invoked by packaging or a pure selector. It exclusively creates the
+selected subject and staged receipt, records actual identities, and requests independent
+validation of the complete closed receipt and selected approval revision. Existing subject,
+staged prefix, missing approval or uncertain prior initialization refuses; there is no
+automatic recovery/recreation. The validator must establish the proposed final unspent
+role and publish its externally anchored binding before the initializer exposes that name.
+Exclusive same-directory publication preserves the staged receipt's checked inode. Then
+the initializer performs the synchronization sequence below and the validator independently
+reopens/rechecks the final named-versus-held subject/receipt and records acknowledgements.
+Packaging requires that final validation record, so death between publication and validation
+does not admit. No initialization record supplies target evidence. A failed/uncertain
+initialization needs explicit new human authority, even if no target was contacted.
 
-Scanning exports was rejected because moved/deleted output and a new name defeat it.
-A fixed subject centralizes authority at the cost of conservative refusal and explicit
-initialization. That requirement alone does not repair the reusable-receipt defect; the
-replacement producer and mandatory whole review must resolve the protocol before k269.
+### Admission, consumption and original start
+
+The lifecycle owns these transitions; k277 must map them to the actual retained packaging
+entry and k276 must independently establish the required contact boundary. They cannot be
+credited merely from this specification.
+
+1. Parse the fixed packaging interface and validate the invocation-bound independent
+   qualification result, approved bindings, exact build/UID and all required identities.
+   Perform only approved preflight reads; never start source/index/content work here.
+   No proof or receipt supplied by the export can replace a required binding.
+2. Resolve and reserve the **fresh export** before consumption as described below. Any
+   preflight failure leaves authority unspent and this invocation ends without acquisition.
+3. Open the fixed subject and `unspent.receipt` through held no-follow components, validate
+   the independent final binding and closed bytes, and take `flock(LOCK_EX | LOCK_NB)` on
+   that receipt's held descriptor. Busy/error refuses rather than waits or retries. Recheck
+   every named/held authority identity, the entire receipt, absence of `spent.receipt`,
+   `consume.intent` and `attempt` after obtaining the lock. A caller which opened the old name before
+   a rival's rename cannot use its still-live descriptor to evade that recheck.
+4. Begin the irreversible transition by exclusively creating `consume.intent`, an authority
+   event binding receipt/approval, invocation, export and proof/input/image identities.
+   Check complete writes and synchronize it and its parent. Even an empty/partial event
+   prevents a later caller from treating the original unspent name as fresh authority.
+   It is retained permission-consumption evidence, never disposable attempt/export state.
+   Then consume with `renameatx_np(subjectFD, "unspent.receipt", subjectFD, "spent.receipt",
+   RENAME_EXCL)`. Both arguments are fixed single components in the same held directory;
+   destination replacement, copy/unlink fallback, cross-device move and swapping are
+   forbidden. Success completes the permit-name transition. Recheck that the unspent
+   name is absent and the spent name is the same held receipt with unchanged bytes and
+   approved ancestry. Perform the required namespace/full-synchronization acknowledgements.
+   Any ambiguous return, failed check or acknowledgement ends without contact; never
+   remove the intent or rename back. A successful rename consumes even if all later work is unperformed.
+5. Exclusively create `attempt` and its immutable start header using held relative
+   operations. The header binds the stable permit/initialization/approval identities,
+   spent-receipt and consume-intent identities/digests, invocation nonce, export reservation, exact qualification
+   proof/input/image identities, declared source phases and synchronization observations.
+   Preserve a short header/prefix on failure; only a complete independently checked and
+   synchronized header is a start eligible for contact. Recheck authority/export named
+   identities and invocation inputs before release. This does not refund a consumed permit.
+6. Release only the declared initial source, acquisitions and closure protocol. Hold the
+   receipt lock/authority handles through final original closure and export disposition;
+   do not pass their descriptors to source children. Close-on-exec plus explicit spawn
+   descriptor actions prevent inherited lock ownership. Record every actual source child
+   termination/reap and later unperformed phase. Lock release after death changes no
+   namespace fact and cannot permit another attempt.
+
+Once intent creation begins, any failure/death is conservatively consumed or uncertain
+authority, even with an unchanged unspent receipt and no query. A failed rename cannot
+erase the intent and return to preflight; ambiguous intent creation also refuses without
+automatic retry. A later fresh invocation may use only independently validated unspent
+authority with no consumption event or attempted transition; it cannot repair uncertainty
+by deleting evidence. An already spent or partial attempt is permanently non-acquiring,
+including death before the first query. Offline inspection and derivative recovery may
+read retained originals only. Lost intent before permit rename is detected where its
+retained event/validation evidence exists; deliberate deletion of that authority event
+and undetectable restoration is the cooperative authority-tamper limit, never ordinary
+attempt/export cleanup. No target contact was eligible before the completed permit rename.
+
+### Persistence operations and their evidence limits
+
+Use exclusive `mkdirat` and `openat(O_CREAT | O_EXCL | O_NOFOLLOW | O_CLOEXEC)` for new
+evidence, complete checked write loops, exact EOF/length/digest validation and held-file
+identity checks. Positive short writes advance only by the actual count; zero/error stops
+and preserves the extent. No failed flush, rename or acquisition is retried by default.
+
+For each published regular receipt/intent/header/object/segment: finish writes, check its bytes,
+call `fcntl(fd, F_FULLFSYNC)` and require success. For each namespace mutation: require
+`fsync` on every affected held parent directory, then `F_FULLFSYNC` on a held regular file
+on that same device, and recheck the changed names/held identities. For permit consumption
+that regular file is the spent receipt. For subject/attempt/export creation and later
+publication it is their checked receipt/header/object. Initializer also synchronizes each
+created ancestor's parent in creation order; it never treats a directory close as flush.
+Keep raw return/errno, descriptor/device association and operation order in evidence.
+
+The selected assumption is explicit: the local filesystem supports these operations,
+directory synchronization covers the specified namespace mutation, and the following
+same-device full flush orders it before release. Pin the actual filesystem/device
+description and independently reviewed API/source basis; scratch successes alone cannot
+establish that assumption. Unknown support/basis, a failed acknowledgement, changed device
+or unavailable identity keeps admission unavailable. No network/cloud/removable substitute
+or fallback to plain fsync is selected. Current APFS support and namespace semantics
+remain an actual provisioning/qualification obligation, not a fact established here.
+
+Apple's archived [fsync manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fsync.2.html)
+describes host flushing and the power-loss/reordering gap; its
+[fcntl manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fcntl.2.html)
+describes a device-cache flush request and hardware limits. Neither supplies a current
+APFS directory-crash certificate. Apple's pinned
+[rename manual source](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/man/man2/rename.2)
+states descriptor-relative rename and exclusive-destination semantics on supporting
+filesystems; it is an API/source basis, not evidence of the reference kernel. The archived
+[flock manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/flock.2.html)
+supports cooperative nonblocking exclusion and warns about inherited lock references.
+
+Scratch controls demonstrate actual API acknowledgements, ordering, exclusions and
+**process-death retention** on their frozen filesystem. They never demonstrate OS-crash,
+kernel-panic or power-loss persistence. The k270-accepted bounded namespace/full-flush
+assumption and unobserved storage/hardware failure remain limits, not a universal at-most-
+one-across-power-loss claim. Unsupported required semantics receive precise live work
+before k245; no VM, root collector or strengthened store is authorized by that gap.
+
+### Export preflight and verified derivative
+
+Require a literal fresh destination under an existing checked, UID-owned local directory;
+reject symlink/replaced parents, protected or unsettled-consent locations, and any overlap
+with the authority subject, Koine product data or an installed acquisition root. Validation
+walks only the proposed output ancestry, not source roots. No arbitrary scope argument is
+accepted. `mkdirat` reserves the final component exclusively before permit consumption;
+existing output of any kind refuses. Create an exclusive export reservation record binding
+the held export/parent identities, invocation and proposed fixed authority, check exact
+writes and the required synchronization acknowledgements. Failure to establish a usable
+reservation ends before consumption and retains any created prefix; packaging neither
+overwrites nor silently deletes it. This tests present writeability, not future capacity.
+Two callers requesting the same export cannot both reserve it; different exports still
+share the single permit. A losing caller may leave its unconsumed reservation evidence.
+
+Original source streams, segments, objects, prefixes and final closure belong only to the
+fixed `attempt` child. After final original freeze, a separately owned offline derivation
+operation copies the exact enumerated originals into the reserved export through held
+no-follow descriptors. It performs no source query, target reread, native conversion or
+role inference. Use new regular files and exact bytes, not hard links; retain every
+original record coordinate and original-to-export object/record mapping. The independent
+verifier checks the closed schema, the complete sets in both directions, exact lengths/
+digests/bytes, all logical associations and before/after original/tool identities. A
+schema-valid export with reassigned equal-size objects fails association verification.
+Publish its immutable derivative closure only after those checks and synchronization.
+
+A failed/interrupted original can yield only an explicitly incomplete derivative, with
+the same missing/prefix/unperformed outcomes. Derivation failure retains original and
+export prefixes and gives no verified-export claim; no failure removes or reconstructs
+the permit. A later explicit offline derivation may use a different fresh destination
+only against frozen retained originals, without an acquisition/resume channel. If the
+original has been deleted/moved/unreadable, report the precise lost evidence; an export
+cannot certify its own association or admit reacquisition. K245 names the original attempt
+identity and independently verified derivative, and k246 consumes those exact coordinates
+and explicit missing work. Original-to-generated rewrites remain k246's separate oracle.
+
+### Refusal states and required pure controls
+
+| Observed boundary | Allowed disposition / control |
+| --- | --- |
+| Invalid/existing export; failed preflight writes | No consumption/contact; retain prefix and require a different fresh destination for any later explicit invocation |
+| Partial initialization, lost approval, replaced subject/receipt/ancestor or both permit names | Refuse without initialization/reset; pure replacement and short-write controls identify the exact check |
+| Concurrent callers, including a held old unspent descriptor | One successful rename at most; others fail lock/name checks before emitter release |
+| Death before intent, during intent/rename, after each flush and during start-header write | Pre-intent preflight leaves unspent authority; retained partial intent or successful rename prevents admission; emitter release needs all acknowledgements; no OS-crash evidence |
+| Deleted/moved/partial original attempt or deleted/moved/unreadable export after consumption | Unspent name still absent; no second emitter contact with the unchanged permit bytes |
+| Failed/unsupported directory/full flush, unknown device or ambiguous rename | No contact or fallback; preserve actual returns/extent and exact unavailable work; no refund |
+| Child inherits/unlocks receipt descriptor; named-versus-held replacement during release | Qualification rejects the enabling point/identity failure; no claim that advisory locking prevents a hostile user |
+| Complete or explicitly incomplete original → derivative | Exact per-object/record/association comparison passes; missing/swapped/extra/reordered-coordinate or forged complete outcome fails independently |
+
+These controls join the whole required independent inventory and are unexecuted. They
+require actual scratch syscall acknowledgements and independent contact evidence, rather
+than a wrapper success flag. Receipt/approval/channel substitution controls additionally
+consume k275; complete no-contact credit additionally consumes k276/k277. None of this
+partial lifecycle supplies complete instrument admission.
+
+Cooperative enforcement accepts deliberate permit restoration, forged approval/identities,
+undetectable whole-authority rollback or tool bypass by the same user/admin as limits.
+Detected changes refuse. Ordinary deletion of `attempt` or exports is explicitly covered
+and never treated as that exception. Export scans and attempt-only exclusive creation
+were rejected because cleanup readmits; a mutable receipt-state overwrite adds torn-state
+recovery complexity. Immutable bytes plus destructive name consumption gives one simple
+transition at the cost of conservatively losing unused authority after pre-query death.
+A stronger monotonic/tamper-resistant store or another attempt needs new human authority.
 
 ## Closed qualification proof and required inventory
 
@@ -636,8 +803,10 @@ unavailable; no target probe, hidden-contact guarantee or useful-category loss f
 
 ## Attempt durability and per-control proof
 
-Before target spawn, persist an exclusive attempt header and acquisition-start
-reservation at the fixed authoritative subject, independently of the export. Finalized
+Before target spawn, follow the [authority lifecycle](#admission-consumption-and-original-start):
+validate/reserve the export, retain consumption intent, rename the fixed permit to its
+spent name, then persist the exclusive original attempt header and all required
+acknowledgements. Attempt creation alone cannot consume a reusable receipt. Finalized
 objects/observation segments are write-once; retain unfinished temporary segments
 and actual prefix extents after
 interruption. Record segments belong to the evidence envelope, not a separate
@@ -645,7 +814,7 @@ session-status file. The final closure commits only after input freeze and all
 item comparisons; the offline verifier never manufactures missing observations.
 Unexpected death without a complete closure is interrupted/incomplete even if
 some objects are intact. Failure to preserve a record is itself missing evidence.
-Existing output, a prior reservation or an uncertain authority subject refuses
+Existing output, prior consumption intent/spent permit/reservation or an uncertain authority subject refuses
 reacquisition; offline inspection may describe that attempt but may not read a newer
 target or resume it. Only k245 owns
 the selected pass; invoking a fresh attempt after target start needs new authority.
@@ -695,7 +864,10 @@ reporting identity, complete proof/inventory ownership, independently observed r
 contact, exercised no-target composition, runtime observation provenance and topology
 specimens. Review k271 found substantive gaps; the sections above expose required repair,
 not a complete admission handoff. Human requirements k270 now precede the instrument node;
-replacement design k273 and its mandatory whole review/earned integration precede k269.
+replacement design node k273 and its mandatory whole review/earned integration precede k269.
+Its children independently own authority lifecycle k274, admission roots k275, complete
+contact boundary k276, exact entry/runtime closure k277 and whole reconciliation k278.
+The lifecycle proposal does not close the other obligations or admit construction.
 The authority requirements are selected in k270; actual receipt/provisioning, independent
 approval anchors and full unprivileged external contact capability remain unavailable
 prerequisites;
@@ -786,24 +958,26 @@ outputs. Check the installed version and build exactly against macOS 27.0.1
 The build check alone does not consume a contents pass or qualify a reference.
 Current permission is fixed; tests cannot broaden it.
 
-Export preflight/reservation and authoritative-to-derivative publication order remain
-k273 design obligations. Define invalid-export refusal before authority consumption,
-concurrent exclusive export handling, interrupted empty-export disposition and exact
-derivative object/association verification. No export can select or reset authority.
+The [export lifecycle](#export-preflight-and-verified-derivative) now specifies invalid-export
+refusal before consumption, concurrent exclusive reservation, retained interrupted prefixes
+and complete original/derivative verification. It remains a proposal for whole-k273 review
+and actual construction/qualification; no export can select or reset authority.
 K245/k246 consume the original attempt or its independently verified immutable derivative,
 with explicit incomplete work; an unassociated export path supplies no package.
 
-After those defined preflights, the required acquisition order is admission and durable start; complete initial
+After those preflights, the required acquisition order is independent admission, export
+reservation, consumption intent and spent-permit transition, synchronized original start; complete initial
 source terminal/reap/framing; initial held-root/layout/inventory/file acquisition;
 complete closure source and its held-root associations; full item inventory/identity/
 byte rereads and comparison; final input/image freeze; final closure publication.
 Failure leaves all later unperformed work explicit. Closure never substitutes for
 initial source or acquisition, and final publication cannot precede comparison/freeze.
 
-Reserve the fixed authoritative attempt and a unique immutable export before source acquisition.
+Reserve the unique export before the irreversible authority transition; create the fixed
+original attempt only after that transition and synchronize both before source acquisition.
 Never overwrite the historical packets or a prior attempt. The attempt envelope
 contains actual acquisition observations and interruption/error evidence; it is
-not a separate session-status file. Once the durable start reservation exists, an interrupted,
+not a separate session-status file. Once consumption intent creation begins, an interrupted,
 refused, changed or incomplete attempt consumes this pass. There is no automatic
 retry, resume with newer bytes or second inventory-only acquisition. Preserve the
 partial evidence and name the exact missing work; another pass needs a new explicit
@@ -994,6 +1168,8 @@ row above. They are specified, unexecuted, and never qualify from a design bit.
 | Two concurrent scratch callers, different exports | At most one fixed attempt reservation; loser refuses before emitter contact |
 | Prior reservation, moved/deleted/unreadable export | Same fixed subject still refuses; no second contact or reset |
 | Deleted/moved attempt entry with otherwise unchanged authority | Authority remains consumed/unavailable; cleanup cannot admit another pass |
+| Partial consumption intent, failed exclusive permit rename or death before query | Retain authority event/spent name; unchanged receipt bytes never authorize reset or another emitter |
+| Existing/unusable export versus reserved export, complete/incomplete original and offline derivation | Invalid preflight ends before intent; later failures retain consumed authority/originals; every derivative requires independent exact object/association verification |
 | Absent/moved/replaced/unreadable authority; partial header; process death before/after flush acknowledgements | Uncertainty refuses; prefixes retained; no initialization/refund; kills cannot qualify OS-crash persistence |
 | Complete proof versus schema-valid omitted case/role/negative pair | Required-inventory coordinate identifies omission; proof's own count/list cannot admit |
 | Weakened regenerated inventory/concordance or self-certifying substituted verifier | Independently reviewed admission anchor refuses; matching self-reported digests cannot admit |

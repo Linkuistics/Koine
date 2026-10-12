@@ -25,6 +25,12 @@ Protected contents and outside intermediate contact refuse; retain their raw occ
 required missing work. Do not ask again or provision from this charter. Actual qualified
 receipt/UID/ancestor identities and complete independently anchored contact/tool proofs
 must exist and remain stable before this leaf can spend the pass.
+Consume whole-k273 review/integration after all design children, not k274 alone.
+Its lifecycle proposal reserves the export before consume.intent/spent-permit transition,
+then creates/synchronizes the original start. Packaging may never initialize authority,
+remove consumption intent, rename a spent permit back or replace lost originals from
+an export. Offline derivation/inspection acquires no newer target bytes. Actual qualified
+implementations and full independent admission/contact/entry proofs are still required.
 
 ## Done when
 

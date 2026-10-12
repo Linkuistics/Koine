@@ -1,21 +1,30 @@
-# Required repair boundary; no selected receipt protocol, authority or target pass.
+# Proposed lifecycle; complete contract is normative and qualification remains due.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · One fixed permission identity\nExport / document digest cannot create another grant" {class: start}
-Human: "Selected · k270 delegated authority requirements\nSeparate KoineReferenceEvidence / one qualified initialization\nCooperative + documented durability limits / unprivileged only"
-Repair: "Then · Replacement design k273 + whole review\nConsume authority before contact, even after attempt deletion\nIndependent proof / inventory / verifier anchors"
-Unavailable: "Refuse unqualified admission / protected contents\nOutside intermediate lookup refused; no root / sudo collector\nNo receipt or reset; syscall trace cannot clear IPC / proxies"
-Qualify: "Reviewed replanning k269 → construction / qualification\nExact entry / live-channel refusal / complete contact classes\nFrozen actual task / interpreter / runtime read closure"
-Provision: "Qualified receipt provisioning + independent validation\nFixed location / UID / identity / reviewed anchors\nChanged input requires live requalification before k245"
-Attempt: "Only then · Defined export preflight + consumed authority\nOriginal attempt at independently owned fixed subject\nVerified immutable export is a derivative"
-Limit: "Selected cooperative / documented persistence assumptions\nProcess kills qualify acknowledgements / ordering only\nTool / receipts / controls absent · target pass unused"
-Start -> Human: "1 · delegation settles requirements only"
-Human -> Repair: "2 · actual choices before design freeze"
-Repair -> Unavailable: "3a · required boundary unresolved"
-Repair -> Qualify: "3b · whole review / integration before plan"
-Qualify -> Provision: "4 · actual stable proofs only"
-Provision -> Unavailable: "5a · missing / changed / uncertain"
-Provision -> Attempt: "5b · complete admission prerequisites"
-Attempt -> Limit: "6 · retain originals / prefixes; no refund / retry"
+Start: "Start here · Fixed one-pass authority\nK274 proposal; remaining k273 work live" {class: start}
+Provision: "Explicit one-time initialization\nIndependent final receipt validation"
+Ready: "Fixed unspent.receipt\nNo prior consumption or attempt"
+Export: "Admission / build / UID / fresh export\nExclusive checked reservation first"
+Intent: "Lock receipt; recheck identities\nRetain consume.intent, even partial"
+Spent: "Exclusive same-directory rename\nunspent.receipt → spent.receipt"
+Original: "Synchronized original start header\nAll required acknowledgements first"
+Capture: "Declared initial / closure acquisition\nRetain original bytes and prefixes"
+Derivative: "Offline exact-byte derivative\nIndependent association verification"
+Refuse: "Consumed / uncertain: refuse\nCleanup never restores authority"
+Limit: "Whole review and qualification due\nNo receipt, proof or target pass"
+Start -> Provision: "1 · no initialization performed"
+Provision -> Ready: "2 · external validation"
+Ready -> Export: "3 · complete prerequisites"
+Export -> Intent: "4 · valid export first"
+Intent -> Spent: "5 · irreversible transition"
+Spent -> Original: "6 · sync and name checks"
+Original -> Capture: "7 · only then contact"
+Capture -> Derivative: "8 · frozen originals"
+Derivative -> Limit: "9 · no new permission"
+Intent -> Refuse: "4a · partial / death"
+Spent -> Refuse: "5a · rename / sync failure"
+Original -> Refuse: "6a · incomplete start"
+Capture -> Refuse: "7a · failed / lost original"
+Derivative -> Refuse: "8a · failed / lost export"
