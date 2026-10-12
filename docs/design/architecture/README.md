@@ -16,13 +16,13 @@ remain live.
 
 Current changes:
 
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Links the historical projection boundary to the selected macOS 27 reference and bounded packaging, with complete subject design/review still required.
-- [Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject) — Distinguishes the selected reference, role source and assignment policy from the unbuilt byte-complete package, exact subject and discrimination controls.
-- [Exact information loss](../../verification/application-population-metadata-shape.md#exact-information-loss) — Distinguished the saved projection from a byte-complete, typed reproduction source.
-- [Evidence alternatives and historical recovery limits](../../verification/application-population-metadata-shape.md#evidence-alternatives-and-historical-recovery-limits) — Separates formats, independent usefulness and multiplicity; retains cohort recovery and per-copy/global envelope limits.
-- [Selected reference and evidence requirements](../../verification/application-population-metadata-shape.md#selected-reference-and-evidence-requirements) — Records the current installation, exact one-pass packaging scope, independent roles, whole-template policy and agreed test seams. Permission and policy supply no finite-subject or native pass.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Added the evidence-contract dependency view, independent control requirement and explicit failed-pass boundary.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Inserted the designed evidence contract before the still-unbuilt complete subject.
+- [Evidence records and association keys](../../verification/application-reference-evidence.md#evidence-records-and-association-keys) — Defined original byte/typed/inventory/tail records and exact source/copy/file coordinates.
+- [Independent controls required before target acquisition](../../verification/application-reference-evidence.md#independent-controls-required-before-target-acquisition) — Specified independent scope, decoder, shape, failure and later rewrite controls; execution remains due.
 
 Unchanged context: [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
+[Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject),
 [Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),
 [Grouped ownership](index.html#diagram-native-metadata-grouped-storage) and
 [Selected wire](index.html#diagram-native-metadata-wire).
@@ -31,8 +31,8 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape)
-for the boundary. At 390px that diagram's fit mode is a compact overview; use its
+Open [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence)
+for the current contract boundary. At 390px its fit mode is a compact overview; use its
 full-size SVG or native-size panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.
 
@@ -81,15 +81,16 @@ design:localized-boundary-check verifies the closed explicit reader call/file
 manifest, exact historical pathname counterexamples and 977/978 controls; it
 rejects whole-path/opaque fallback, guessed locale limits, NUL/multibyte errors
 and invented native passes. It implements no reader and supplies no native pass.
-Run design:serve PORT=8925 and open <http://127.0.0.1:8925/#discussion> or an exact
+Run design:serve PORT=8937 and open <http://127.0.0.1:8937/#discussion> or an exact
 stable diagram anchor. The static presentation serves only this directory.
 
-Run design:application-metadata-subject to recapture declared host fixed files and
-disk-only P1024/L1500, then design:application-metadata-subject-check for saved
-JSON validation and independent defect controls. These are read-only installed-file
-evidence and local construction; no Koine reader, signing, registration, launch,
-consent or VM acceptance. The capture records its complete before/after subject
-and instrument hashes.
+Run design:application-metadata-subject-check for the frozen historical census and
+independent original-defect controls. design:application-metadata-subject is the
+legacy lossy capture/thin-fixture recipe; the current-reference packaging permission
+does not authorize it or an overwrite of historical outputs. The selected
+[byte-complete contract](../../verification/application-reference-evidence.md) requires
+a new qualified instrument and immutable destination. Its target-reading recipe
+and independent controls remain to be built. No Koine/native/VM pass follows.
 
 Run design:application-metadata-reader-plan-check for the pure-observation model
 and every saved direct/table plan, with alias episodes retained. This checks
@@ -142,4 +143,5 @@ broken cleanup/failure/unknown/review/partial-evidence counterparts must fail th
 same instrument. These are synthetic design controls, never native qualification.
 
 Run design:application-population-metadata-shape-render for the joint evidence
-boundary view with D2 0.9.0/Dagre/theme 0/dark-theme 200.
+boundary and byte-complete evidence contract views with D2 0.9.0/Dagre/theme
+0/dark-theme 200. The same task renders both editable sources; it reads no target.

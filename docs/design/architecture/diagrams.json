@@ -2,10 +2,11 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Design the complete subject from the selected macOS 27 reference",
-    "status": "Reference agreed; complete subject unbuilt; native pending",
-    "summary": "The canonical joint evidence report owns the historical losses and selected current macOS 27.0.1 reference. One bounded byte-complete packaging pass, an independent documented/human-confirmed role source and whole-template assignment policy are agreed. The actual package, per-copy roles, exact assignment and rewrite-aware subject controls remain unbuilt. Packet-integrity checks reject every row edit and supply no subject discrimination. Complete subject design and mandatory whole review precede private construction; both holds and every native pending verdict remain.",
+    "title": "Qualify byte-complete reference evidence before target acquisition",
+    "status": "Evidence contract designed; instrument and target pass unexecuted; native pending",
+    "summary": "The evidence contract pins original bytes, complete typed decoder observations and exact source/copy/file/tail associations under the selected macOS 27.0.1 permission. Independent pure controls and forbidden-contact checks must qualify the instrument before the one target pass. Failed target attempts preserve explicit missing work and permit no silent retry. Roles and generated rewrites have separate owners. Instrument construction, actual packaging, role assignment, complete recipes and whole-family review remain live; private eligibility is false and both holds remain.",
     "diagramIds": [
+      "native-reference-evidence",
       "native-population-metadata-shape",
       "native-metadata-subject",
       "native-metadata-qualification",
@@ -13,12 +14,12 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "native-population-metadata-shape",
-        "summary": "Preserve the historical joint evidence and show the selected macOS 27 reference, bounded packaging and independent role source before complete subject design/review."
+        "id": "native-reference-evidence",
+        "summary": "Added the complete evidence contract, qualification-before-contact order, explicit failed-pass boundary and separate later role/recipe/review obligations."
       },
       {
-        "id": "native-metadata-subject",
-        "summary": "Distinguish the selected reference/role source/assignment policy from the unbuilt byte-complete package, exact subject and rewrite-aware discrimination controls."
+        "id": "native-population-metadata-shape",
+        "summary": "Inserted the completed evidence-contract design between the selected reference and the still-unbuilt whole subject, preserving every hold."
       }
     ]
   },
@@ -76,13 +77,22 @@
   ],
   "diagrams": [
     {
+      "id": "native-reference-evidence",
+      "group": "native-sources",
+      "title": "Evidence → Qualify the instrument before the one target pass",
+      "renderer": "svg",
+      "source": "native-reference-evidence.d2",
+      "rendered": "native-reference-evidence.svg",
+      "caption": "Contract design only: application-reference-evidence.md specifies original bytes, complete typed witnesses, exact associations, failure/replay semantics and the independent pure control matrix. The instrument and controls have not been built/executed; no installed app payload has been read. A complete current-reference package, independent roles, rewritten recipes/discrimination and whole subject/family review remain required before private eligibility. Packet-integrity tests and browser rendering supply no native pass."
+    },
+    {
       "id": "native-population-metadata-shape",
       "group": "native-sources",
       "title": "Preserve joint facts before choosing a population",
       "renderer": "svg",
       "source": "native-population-metadata-shape.d2",
       "rendered": "native-population-metadata-shape.svg",
-      "caption": "The canonical joint evidence report preserves the historical cohort inventory and selects the current macOS 27.0.1 (26A434) installation, both template cohorts, one bounded byte-complete packaging pass and independent documented/human-confirmed roles. Whole-template coverage/repetition and declared rewrites remain to be frozen as the complete reviewed subject. Historical recovery is not the selected route; packet integrity supplies no generated-subject discrimination. No useful shape, private eligibility or native pass is established."
+      "caption": "The canonical joint evidence report preserves the historical inventory and selected macOS 27.0.1 (26A434) permission. The linked evidence contract now defines original byte/typed/association records and qualification-before-contact controls; the instrument and pass remain unexecuted. Whole-template coverage/repetition, independent copy roles, declared rewrites and complete whole review remain required. Historical recovery and packet integrity supply no current package or generated-subject discrimination. Private eligibility is false and every native verdict remains pending."
     },
     {
       "id": "native-metadata-composition",

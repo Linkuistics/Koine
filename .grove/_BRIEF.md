@@ -481,3 +481,12 @@ and policy alone establish no finite subject. Historical packets remain comparis
 the full actual supported-VM baseline is additive, and native verdicts and both
 holds remain governed by the canonical eligibility predicate. No downstream node
 closes here and no reader, amount, quota, ABI, posture or useful loss is selected.
+
+K242 is now a node. Reference-evidence-contract-k243 specifies the durable
+docs/verification/application-reference-evidence.md record/association model,
+one-pass failure/replay limits and independent pure control matrix. It acquires no
+installed payload and qualifies no instrument. K244 builds/qualifies the instrument
+before k245 uses the single pass and freezes independent copy roles; k246 owns complete
+rewritten recipes/discrimination; k247 reconciles the whole producer and cuts the
+mandatory root whole-subject review before k7. The complete producer remains live;
+private eligibility is false, both holds and every native PENDING outcome remain.

@@ -1,4 +1,4 @@
-# application-population-metadata-subject-k242
+# application-population-metadata-subject-k242 — brief
 
 ## Goal
 
@@ -90,3 +90,27 @@ Private eligibility is false and both advertisement/consumption holds remain.
 Actual valid useful source/access/deadline/gross/attempt gaps go once to k93;
 known subject/instrument/guard defects must be repaired and reviewed before capture.
 No new amount, quota, accounting, ABI, support floor or useful loss is selected.
+
+## Decisions (running log)
+
+The byte-complete evidence contract, target-reading instrument, single current-reference
+package with independent copy roles, rewrite-aware joint recipes and whole-family
+reconciliation are separate independently checkable design obligations. This producer
+is decomposed rather than absorbing them into one long session. The first child owns
+the evidence contract and complete independent pure-control specification; it reads no installed app
+payload and spends no packaging authorization. Subsequent children retain the complete
+original Done when. The closing child cuts the mandatory root whole-producer review of
+application-population-metadata-subject-k242 before app-and-file-search-k7. The node
+stays live until that complete boundary, including precise unavailable/failed evidence
+where applicable, is delivered. No partial child satisfies private eligibility.
+
+The child order is reference-evidence-contract-k243 → reference-evidence-instrument-k244
+→ reference-evidence-package-and-roles-k245 → population-joint-recipes-k246 →
+application-population-metadata-subject-k247. The first child's durable contract is
+docs/verification/application-reference-evidence.md. K244 must build and observe the
+specified pure controls before k245 spends the pass. K245 freezes actual bytes and
+independent copy roles or the precise failed/unavailable boundary; k246 freezes complete
+rewrite-aware recipes or its exact missing work; k247 reconciles and closes the whole
+producer before cutting its mandatory root review. The intended end is a coherent
+whole-subject boundary, including explicit failed/unavailable obligations, never a
+contract-only finite-subject claim. Every original Done when remains binding.

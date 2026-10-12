@@ -9,7 +9,7 @@
   "scope": "SAVED_MACOS_26_6_2_PROJECTION_ONLY",
   "inputHashes": {
     "docs/design/application-metadata-subject.json": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
-    "docs/design/application-metadata-grouped-storage.json": "44d3ce3c803eea4e3c4adef5b289809021954af18870c4a11759c884accd6ff6",
+    "docs/design/application-metadata-grouped-storage.json": "df137e3da03bf69c37f13266306826bcec51a12fffa27e860b0750290ca7aac7",
     "scripts/application_metadata_subject.py": "589d6508d6a457fd2d2cd48df13eb0e0bacada009b5ba7b1f163683457e5ab52",
     "scripts/application_metadata_grouped_storage.py": "1bad18b3bf9ddde18b853f07239f39e9d6fe2c23efc313b4b55e902f016bda98"
   },

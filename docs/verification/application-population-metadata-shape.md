@@ -8,8 +8,15 @@ The [per-copy audit](../design/application-population-metadata-shape.json) prese
 all saved associations without inventing missing data. Private eligibility remains
 false under the [canonical predicate](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
 The [selected reference and evidence requirements](#selected-reference-and-evidence-requirements)
-now use the current macOS 27 installation. The historical audit remains unchanged;
+now use the current macOS 27 installation. The historical audit's cohort facts remain unchanged;
 it is not a completed current-reference package or a reviewed qualification subject.
+
+The [byte-complete evidence contract](application-reference-evidence.md) now defines
+the exact record/association model, one-pass failure and replay semantics, separate
+decoder observations and required independent controls. This is a completed contract
+design, not a built or qualified instrument. Instrument construction/control execution,
+the authorized package, independent copy roles, generated recipes/discrimination and
+whole-family reconciliation remain live under the complete subject producer.
 
 ## What the saved corpus establishes
 
@@ -170,6 +177,13 @@ episodes are not rewritten or relabelled as current evidence. Selecting this
 reference changes no product support floor or acceptance gate.
 
 ### One bounded reference-packaging pass
+
+The [evidence contract](application-reference-evidence.md#one-pass-acquisition-and-closure)
+and [complete record model](application-reference-evidence.md#evidence-records-and-association-keys)
+make this permission reproducible. Its [pure control matrix](application-reference-evidence.md#independent-controls-required-before-target-acquisition)
+must be built and observed before the authorized target query/contents pass. Those
+controls are currently specified, not executed. No contract check consumes permission
+or establishes a package.
 
 Antony authorized one byte-complete pass for the subsequent complete subject-design
 producer. Verify the exact installed build before using the authorization. The

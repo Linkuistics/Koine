@@ -1,0 +1,48 @@
+# reference-evidence-package-and-roles-k245
+
+
+## Goal
+
+Use the one authorized bounded current-reference pass with the qualified instrument;
+freeze exact byte-complete per-copy evidence and independent roles, or the precise
+failed/unavailable boundary. Establish no recipe or native fit from acquisition alone.
+
+
+
+## Context
+
+Require k244's verified installed instrument, full independent pure control evidence
+and Taskfile recipes first. Consume docs/verification/application-reference-evidence.md
+and the canonical selected permission in application-population-metadata-shape.md.
+K240 selected macOS 27.0.1 (26A434), both template cohorts, primary documentation plus
+Antony-confirmed purposes and whole-template repetition. Historical 25G83 data is comparison.
+
+## Done when
+
+- Pin every instrument/verifier/decoder/configuration/Taskfile/tool input and verify
+  the exact installed build before first target query/contents acquisition. Use a new
+  immutable destination, exact fixed indexed predicate, checked permitted roots and
+  complete closed layout/file/direct-locale scope. Preserve all original bytes,
+  formats, typed candidates/flags/branches/tables/LocProvenance, raw components,
+  repeats, tails, copy/version/alias associations and per-file/input/output digests.
+- Freeze and compare every subject/input before/after item by item. Preserve missing,
+  refused, changed, unavailable and unparsed evidence and exact replay/association
+  limits. No silent repeat, interrupted resume with new bytes, language subset,
+  projection substitution or historical overwrite. A failed pass remains incomplete.
+- Freeze a separate exact-copy/version role manifest with named Apple/vendor primary
+  documentation and Antony-confirmed app purposes. Do not infer roles from paths,
+  flags, reader output or bundle naming. Uncertain copies stay explicit stress inputs
+  and cannot count as confirmed useful apps. Freeze primary-source citations/versions
+  and any independent human evidence; ask only for missing copy-purpose information.
+- Reconcile the canonical package inventory/limits, per-copy role evidence and browser
+  views. Hand k246 precise available coverage and every missing/conflicting obligation;
+  both holds, native pending verdicts and mandatory whole review remain.
+
+## Notes
+
+Permission covers local reference metadata only. It authorizes no executable
+acquisition, arbitrary recursion, OS-image download, launch, registration/reindex,
+new signing/helper/consent/posture, Koine reader or native/VM capture. The specimen
+instrument's build label or a pure pass cannot stand in for this actual byte package.
+If pass/build/roles are unavailable, retain exact missing work and carry a coherent
+failed boundary to k246/k247; never credit a completed finite subject or abandon work.
