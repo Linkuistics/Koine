@@ -99,16 +99,17 @@ one-use invocation channels and external receipt/correction bindings cannot rest
 permit. The immutable issuance receipt stays separate from the highest current accepted
 revision and independently approved correction bridge. No register or accepted revision exists. The
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
-pins independent published BSD/Mach/RPC/API inventories and per-class bypass/loss controls.
+pins whole independent published BSD/Mach/RPC/API inventories and named B1–B8 evidence/
+controls, with U1–U6 required-versus-accepted-unknown limits.
 No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
 k281 accepts the missing complete current-service/proxy/initial-right/map coverage as an
-explicit risk, never a full no-contact result. K282 must map actual bounded claims and
-remaining prerequisites before k269; no impossible full-mechanism repeat is required.
+explicit risk, never a full no-contact result. K284 maps those claims and T1–T7/A1–A3 pre-lookup entries;
+remaining k282 repair/whole review still precedes k269; no impossible full-mechanism repeat is required.
 Useful authored pure work retains its limited scope. The
 [packaging/runtime proposal](docs/verification/application-reference-packaging-runtime.md)
 defines one retained Task/script/CLI chain, mandatory SCRATCH/LIVE launch channels,
-per-operation executed/mapped/unexercised credit and full independently discovered task/
-runtime inputs. Named historical format bases are separate from required current CF
+per-operation executed/mapped/unexercised credit and required known task/runtime input/
+image identities, with incomplete opaque read/startup/proxy discovery explicitly unknown. Named historical format bases are separate from required current CF
 observations. The [complete replacement handoff](docs/verification/application-reference-evidence.md#whole-producer-obligation-comparison)
 compares every original obligation and specifies separate construction, commissioning,
 provisioning/validation, review/repair, final affected requalification, independent audit

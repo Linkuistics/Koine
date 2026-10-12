@@ -269,9 +269,10 @@ records Antony's accepted bounded contact evidence, closed pre-lookup rule and e
 incomplete-evidence outcome, plus exact canonical status relocation. The
 [obligation comparison](docs/verification/application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 names those amendments; all other requirements remain. Full service/proxy/initial-right/
-mapping coverage stays unknown, never no-contact proof. Complete credit/activation/
-registration/input-partition repair and mandatory whole review still precede construction
-replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
+mapping coverage stays unknown, never no-contact proof. The bounded B1–B8 evidence and T1–T7/A1–A3 pre-lookup contracts separate
+accepted unknown contact gaps from required native/identity/entry/control/freeze blockers.
+Remaining activation/registration/input-partition repair, whole reconciliation and mandatory
+whole review still precede construction replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

@@ -259,7 +259,8 @@ proof/oracle/checker/registrar/extractor, independent bootstrap/control adjudica
 direct artifact/revision acceptance before their first consumers. Bind complete contact/
 packaging companions and five tables as whole-byte normative inputs. Only the commissioned
 extractor's exact canonical/ADR/evidence-contract sections have the reporting exception;
-full snapshots do not waive actual whole task/runtime/read/initial-capability closure.
+full snapshots do not waive required whole known task/runtime/input/image/entry bindings.
+Complete unobserved initial-right/map/proxy discovery remains an accepted contact limit.
 
 Assign the reviewed bounded inventory/claim/control, actual launch/image/endpoint/read,
 available observation/calibration and final-stability roles at their exact placements.
@@ -286,3 +287,16 @@ runtime/permission/approval/receipt/dependency/review change gets precise live r
 requalification before k245, with whole-matrix coverage when impact is unknown. K246 retains
 all generated rewrite/helper/alias discrimination; k247 retains whole-subject review.
 Cut no implementation here: this section is the closing design's binding planning handoff.
+
+K284 applies the selected limits in the durable C1–C8/B1–B8/U1–U6 map and closed
+T1–T7/A1–A3 pre-lookup plan. Required named scratch/native/retained-entry/read/control and
+actual UID/build/authority/image/channel/input/freeze evidence remains blocking Q/P work;
+complete current-service/opaque-startup/initial-right/map/proxy/hidden-ancestry/TCC coverage
+stays accepted unknown, never clean/inapplicable or a full no-contact prerequisite.
+Direct/link Data Applications and Library need separate reviewed entries, target common
+ancestors stay search-only, and authority/fresh-export entries grant no target access.
+Raw rejected slots perform no target operation; observed out-and-back/protected/unlisted
+expansions refuse before the next lookup. Required refused copies carry raw evidence and
+exact missing work through k245/k246/k247 and whole review as failed/incomplete evidence,
+never a complete subject, useful loss, private eligibility or another pass. This seam
+has no partial handoff: k285/k286/k287 and whole-k282 review/integration still precede k269.

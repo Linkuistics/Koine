@@ -1,120 +1,120 @@
 number	source_line	declared_name	conditional_branch	disposition
 0	45	nosys	unconditional	published-placeholder
-1	46	exit	unconditional	required-semantic-and-current-correspondence-review
-2	47	fork	unconditional	required-semantic-and-current-correspondence-review
-3	48	read	unconditional	required-semantic-and-current-correspondence-review
-4	49	write	unconditional	required-semantic-and-current-correspondence-review
-5	50	open	unconditional	required-semantic-and-current-correspondence-review
-6	51	sys_close	unconditional	required-semantic-and-current-correspondence-review
-7	52	wait4	unconditional	required-semantic-and-current-correspondence-review
+1	46	exit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+2	47	fork	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+3	48	read	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+4	49	write	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+5	50	open	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+6	51	sys_close	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+7	52	wait4	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 8	53	enosys	unconditional	published-placeholder
-9	54	link	unconditional	required-semantic-and-current-correspondence-review
-10	55	unlink	unconditional	required-semantic-and-current-correspondence-review
+9	54	link	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+10	55	unlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 11	56	enosys	unconditional	published-placeholder
-12	57	sys_chdir	unconditional	required-semantic-and-current-correspondence-review
-13	58	sys_fchdir	unconditional	required-semantic-and-current-correspondence-review
-14	59	mknod	unconditional	required-semantic-and-current-correspondence-review
-15	60	chmod	unconditional	required-semantic-and-current-correspondence-review
-16	61	chown	unconditional	required-semantic-and-current-correspondence-review
+12	57	sys_chdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+13	58	sys_fchdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+14	59	mknod	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+15	60	chmod	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+16	61	chown	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 17	62	enosys	unconditional	published-placeholder
-18	63	getfsstat	unconditional	required-semantic-and-current-correspondence-review
+18	63	getfsstat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 19	64	enosys	unconditional	published-placeholder
-20	65	getpid	unconditional	required-semantic-and-current-correspondence-review
+20	65	getpid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 21	66	enosys	unconditional	published-placeholder
 22	67	enosys	unconditional	published-placeholder
-23	68	setuid	unconditional	required-semantic-and-current-correspondence-review
-24	69	getuid	unconditional	required-semantic-and-current-correspondence-review
-25	70	geteuid	unconditional	required-semantic-and-current-correspondence-review
-26	71	ptrace	unconditional	required-semantic-and-current-correspondence-review
-27	73	recvmsg	#if SOCKETS	required-semantic-and-current-correspondence-review
-28	74	sendmsg	#if SOCKETS	required-semantic-and-current-correspondence-review
-29	75	recvfrom	#if SOCKETS	required-semantic-and-current-correspondence-review
-30	76	accept	#if SOCKETS	required-semantic-and-current-correspondence-review
-31	77	getpeername	#if SOCKETS	required-semantic-and-current-correspondence-review
-32	78	getsockname	#if SOCKETS	required-semantic-and-current-correspondence-review
+23	68	setuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+24	69	getuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+25	70	geteuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+26	71	ptrace	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+27	73	recvmsg	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+28	74	sendmsg	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+29	75	recvfrom	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+30	76	accept	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+31	77	getpeername	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+32	78	getsockname	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 27	80	nosys	#if SOCKETS -> #else	published-placeholder
 28	81	nosys	#if SOCKETS -> #else	published-placeholder
 29	82	nosys	#if SOCKETS -> #else	published-placeholder
 30	83	nosys	#if SOCKETS -> #else	published-placeholder
 31	84	nosys	#if SOCKETS -> #else	published-placeholder
 32	85	nosys	#if SOCKETS -> #else	published-placeholder
-33	87	access	unconditional	required-semantic-and-current-correspondence-review
-34	88	chflags	unconditional	required-semantic-and-current-correspondence-review
-35	89	fchflags	unconditional	required-semantic-and-current-correspondence-review
-36	90	sync	unconditional	required-semantic-and-current-correspondence-review
-37	91	kill	unconditional	required-semantic-and-current-correspondence-review
-38	92	sys_crossarch_trap	unconditional	required-semantic-and-current-correspondence-review
-39	93	getppid	unconditional	required-semantic-and-current-correspondence-review
+33	87	access	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+34	88	chflags	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+35	89	fchflags	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+36	90	sync	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+37	91	kill	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+38	92	sys_crossarch_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+39	93	getppid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 40	94	nosys	unconditional	published-placeholder
-41	95	sys_dup	unconditional	required-semantic-and-current-correspondence-review
-42	96	pipe	unconditional	required-semantic-and-current-correspondence-review
-43	97	getegid	unconditional	required-semantic-and-current-correspondence-review
+41	95	sys_dup	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+42	96	pipe	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+43	97	getegid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 44	98	nosys	unconditional	published-placeholder
 45	99	nosys	unconditional	published-placeholder
-46	100	sigaction	unconditional	required-semantic-and-current-correspondence-review
-47	101	getgid	unconditional	required-semantic-and-current-correspondence-review
-48	102	sigprocmask	unconditional	required-semantic-and-current-correspondence-review
-49	103	getlogin	unconditional	required-semantic-and-current-correspondence-review
-50	104	setlogin	unconditional	required-semantic-and-current-correspondence-review
-51	105	acct	unconditional	required-semantic-and-current-correspondence-review
-52	106	sigpending	unconditional	required-semantic-and-current-correspondence-review
-53	107	sigaltstack	unconditional	required-semantic-and-current-correspondence-review
-54	108	ioctl	unconditional	required-semantic-and-current-correspondence-review
-55	109	reboot	unconditional	required-semantic-and-current-correspondence-review
-56	110	revoke	unconditional	required-semantic-and-current-correspondence-review
-57	111	symlink	unconditional	required-semantic-and-current-correspondence-review
-58	112	readlink	unconditional	required-semantic-and-current-correspondence-review
-59	113	execve	unconditional	required-semantic-and-current-correspondence-review
-60	114	umask	unconditional	required-semantic-and-current-correspondence-review
-61	115	chroot	unconditional	required-semantic-and-current-correspondence-review
+46	100	sigaction	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+47	101	getgid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+48	102	sigprocmask	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+49	103	getlogin	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+50	104	setlogin	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+51	105	acct	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+52	106	sigpending	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+53	107	sigaltstack	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+54	108	ioctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+55	109	reboot	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+56	110	revoke	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+57	111	symlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+58	112	readlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+59	113	execve	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+60	114	umask	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+61	115	chroot	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 62	116	nosys	unconditional	published-placeholder
 63	117	nosys	unconditional	published-placeholder
 64	118	nosys	unconditional	published-placeholder
-65	119	msync	unconditional	required-semantic-and-current-correspondence-review
-66	121	vfork	#if CONFIG_VFORK	required-semantic-and-current-correspondence-review
+65	119	msync	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+66	121	vfork	#if CONFIG_VFORK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 66	123	nosys	#if CONFIG_VFORK -> #else	published-placeholder
-67	125	oslog_coproc_reg	unconditional	required-semantic-and-current-correspondence-review
-68	126	oslog_coproc	unconditional	required-semantic-and-current-correspondence-review
+67	125	oslog_coproc_reg	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+68	126	oslog_coproc	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 69	127	nosys	unconditional	published-placeholder
 70	128	nosys	unconditional	published-placeholder
 71	129	nosys	unconditional	published-placeholder
 72	130	nosys	unconditional	published-placeholder
-73	131	munmap	unconditional	required-semantic-and-current-correspondence-review
-74	132	mprotect	unconditional	required-semantic-and-current-correspondence-review
-75	133	madvise	unconditional	required-semantic-and-current-correspondence-review
+73	131	munmap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+74	132	mprotect	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+75	133	madvise	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 76	134	nosys	unconditional	published-placeholder
 77	135	nosys	unconditional	published-placeholder
-78	136	mincore	unconditional	required-semantic-and-current-correspondence-review
-79	137	getgroups	unconditional	required-semantic-and-current-correspondence-review
-80	138	setgroups	unconditional	required-semantic-and-current-correspondence-review
-81	139	getpgrp	unconditional	required-semantic-and-current-correspondence-review
-82	140	setpgid	unconditional	required-semantic-and-current-correspondence-review
-83	141	setitimer	unconditional	required-semantic-and-current-correspondence-review
+78	136	mincore	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+79	137	getgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+80	138	setgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+81	139	getpgrp	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+82	140	setpgid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+83	141	setitimer	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 84	142	nosys	unconditional	published-placeholder
-85	143	swapon	unconditional	required-semantic-and-current-correspondence-review
-86	144	getitimer	unconditional	required-semantic-and-current-correspondence-review
+85	143	swapon	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+86	144	getitimer	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 87	145	nosys	unconditional	published-placeholder
 88	146	nosys	unconditional	published-placeholder
-89	147	sys_getdtablesize	unconditional	required-semantic-and-current-correspondence-review
-90	148	sys_dup2	unconditional	required-semantic-and-current-correspondence-review
+89	147	sys_getdtablesize	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+90	148	sys_dup2	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 91	149	nosys	unconditional	published-placeholder
-92	150	sys_fcntl	unconditional	required-semantic-and-current-correspondence-review
-93	151	select	unconditional	required-semantic-and-current-correspondence-review
+92	150	sys_fcntl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+93	151	select	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 94	152	nosys	unconditional	published-placeholder
-95	153	fsync	unconditional	required-semantic-and-current-correspondence-review
-96	154	setpriority	unconditional	required-semantic-and-current-correspondence-review
-97	156	socket	#if SOCKETS	required-semantic-and-current-correspondence-review
-98	157	connect	#if SOCKETS	required-semantic-and-current-correspondence-review
+95	153	fsync	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+96	154	setpriority	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+97	156	socket	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+98	157	connect	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 97	159	nosys	#if SOCKETS -> #else	published-placeholder
 98	160	nosys	#if SOCKETS -> #else	published-placeholder
 99	162	nosys	unconditional	published-placeholder
-100	163	getpriority	unconditional	required-semantic-and-current-correspondence-review
+100	163	getpriority	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 101	164	nosys	unconditional	published-placeholder
 102	165	nosys	unconditional	published-placeholder
 103	166	nosys	unconditional	published-placeholder
-104	168	bind	#if SOCKETS	required-semantic-and-current-correspondence-review
-105	169	setsockopt	#if SOCKETS	required-semantic-and-current-correspondence-review
-106	170	listen	#if SOCKETS	required-semantic-and-current-correspondence-review
+104	168	bind	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+105	169	setsockopt	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+106	170	listen	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 104	172	nosys	#if SOCKETS -> #else	published-placeholder
 105	173	nosys	#if SOCKETS -> #else	published-placeholder
 106	174	nosys	#if SOCKETS -> #else	published-placeholder
@@ -122,109 +122,109 @@ number	source_line	declared_name	conditional_branch	disposition
 108	177	nosys	unconditional	published-placeholder
 109	178	nosys	unconditional	published-placeholder
 110	179	nosys	unconditional	published-placeholder
-111	180	sigsuspend	unconditional	required-semantic-and-current-correspondence-review
+111	180	sigsuspend	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 112	181	nosys	unconditional	published-placeholder
 113	183	nosys	#if SOCKETS	published-placeholder
 114	184	nosys	#if SOCKETS	published-placeholder
 113	186	nosys	#if SOCKETS -> #else	published-placeholder
 114	187	nosys	#if SOCKETS -> #else	published-placeholder
 115	189	nosys	unconditional	published-placeholder
-116	190	gettimeofday	unconditional	required-semantic-and-current-correspondence-review
-117	191	getrusage	unconditional	required-semantic-and-current-correspondence-review
-118	193	getsockopt	#if SOCKETS	required-semantic-and-current-correspondence-review
+116	190	gettimeofday	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+117	191	getrusage	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+118	193	getsockopt	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 118	195	nosys	#if SOCKETS -> #else	published-placeholder
 119	197	nosys	unconditional	published-placeholder
-120	198	readv	unconditional	required-semantic-and-current-correspondence-review
-121	199	writev	unconditional	required-semantic-and-current-correspondence-review
-122	200	settimeofday	unconditional	required-semantic-and-current-correspondence-review
-123	201	fchown	unconditional	required-semantic-and-current-correspondence-review
-124	202	fchmod	unconditional	required-semantic-and-current-correspondence-review
+120	198	readv	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+121	199	writev	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+122	200	settimeofday	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+123	201	fchown	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+124	202	fchmod	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 125	203	nosys	unconditional	published-placeholder
-126	204	setreuid	unconditional	required-semantic-and-current-correspondence-review
-127	205	setregid	unconditional	required-semantic-and-current-correspondence-review
-128	206	rename	unconditional	required-semantic-and-current-correspondence-review
+126	204	setreuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+127	205	setregid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+128	206	rename	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 129	207	nosys	unconditional	published-placeholder
 130	208	nosys	unconditional	published-placeholder
-131	209	sys_flock	unconditional	required-semantic-and-current-correspondence-review
-132	210	mkfifo	unconditional	required-semantic-and-current-correspondence-review
-133	212	sendto	#if SOCKETS	required-semantic-and-current-correspondence-review
-134	213	shutdown	#if SOCKETS	required-semantic-and-current-correspondence-review
-135	214	socketpair	#if SOCKETS	required-semantic-and-current-correspondence-review
+131	209	sys_flock	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+132	210	mkfifo	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+133	212	sendto	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+134	213	shutdown	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+135	214	socketpair	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 133	216	nosys	#if SOCKETS -> #else	published-placeholder
 134	217	nosys	#if SOCKETS -> #else	published-placeholder
 135	218	nosys	#if SOCKETS -> #else	published-placeholder
-136	220	mkdir	unconditional	required-semantic-and-current-correspondence-review
-137	221	rmdir	unconditional	required-semantic-and-current-correspondence-review
-138	222	utimes	unconditional	required-semantic-and-current-correspondence-review
-139	223	futimes	unconditional	required-semantic-and-current-correspondence-review
-140	224	adjtime	unconditional	required-semantic-and-current-correspondence-review
+136	220	mkdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+137	221	rmdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+138	222	utimes	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+139	223	futimes	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+140	224	adjtime	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 141	225	nosys	unconditional	published-placeholder
-142	226	gethostuuid	unconditional	required-semantic-and-current-correspondence-review
+142	226	gethostuuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 143	227	nosys	unconditional	published-placeholder
 144	228	nosys	unconditional	published-placeholder
 145	229	nosys	unconditional	published-placeholder
 146	230	nosys	unconditional	published-placeholder
-147	231	setsid	unconditional	required-semantic-and-current-correspondence-review
+147	231	setsid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 148	232	nosys	unconditional	published-placeholder
 149	233	nosys	unconditional	published-placeholder
 150	234	nosys	unconditional	published-placeholder
-151	235	getpgid	unconditional	required-semantic-and-current-correspondence-review
-152	236	setprivexec	unconditional	required-semantic-and-current-correspondence-review
-153	237	pread	unconditional	required-semantic-and-current-correspondence-review
-154	238	pwrite	unconditional	required-semantic-and-current-correspondence-review
-155	241	nfssvc	"#if NFSSERVER	/* XXX */"	required-semantic-and-current-correspondence-review
+151	235	getpgid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+152	236	setprivexec	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+153	237	pread	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+154	238	pwrite	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+155	241	nfssvc	"#if NFSSERVER	/* XXX */"	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 155	243	nosys	"#if NFSSERVER	/* XXX */ -> #else"	published-placeholder
 156	246	nosys	unconditional	published-placeholder
-157	247	statfs	unconditional	required-semantic-and-current-correspondence-review
-158	248	fstatfs	unconditional	required-semantic-and-current-correspondence-review
-159	249	unmount	unconditional	required-semantic-and-current-correspondence-review
+157	247	statfs	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+158	248	fstatfs	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+159	249	unmount	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 160	250	nosys	unconditional	published-placeholder
-161	253	getfh	"#if NFSSERVER	/* XXX */"	required-semantic-and-current-correspondence-review
+161	253	getfh	"#if NFSSERVER	/* XXX */"	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 161	255	nosys	"#if NFSSERVER	/* XXX */ -> #else"	published-placeholder
 162	258	nosys	unconditional	published-placeholder
 163	259	nosys	unconditional	published-placeholder
-164	260	funmount	unconditional	required-semantic-and-current-correspondence-review
-165	261	quotactl	unconditional	required-semantic-and-current-correspondence-review
+164	260	funmount	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+165	261	quotactl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 166	262	nosys	unconditional	published-placeholder
-167	263	mount	unconditional	required-semantic-and-current-correspondence-review
+167	263	mount	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 168	264	nosys	unconditional	published-placeholder
-169	265	csops	unconditional	required-semantic-and-current-correspondence-review
-170	266	csops_audittoken	unconditional	required-semantic-and-current-correspondence-review
+169	265	csops	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+170	266	csops_audittoken	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 171	267	nosys	unconditional	published-placeholder
 172	268	nosys	unconditional	published-placeholder
-173	269	waitid	unconditional	required-semantic-and-current-correspondence-review
+173	269	waitid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 174	270	nosys	unconditional	published-placeholder
 175	271	nosys	unconditional	published-placeholder
 176	272	nosys	unconditional	published-placeholder
-177	273	kdebug_typefilter	unconditional	required-semantic-and-current-correspondence-review
-178	274	kdebug_trace_string	unconditional	required-semantic-and-current-correspondence-review
-179	275	kdebug_trace64	unconditional	required-semantic-and-current-correspondence-review
-180	276	kdebug_trace	unconditional	required-semantic-and-current-correspondence-review
-181	277	setgid	unconditional	required-semantic-and-current-correspondence-review
-182	278	setegid	unconditional	required-semantic-and-current-correspondence-review
-183	279	seteuid	unconditional	required-semantic-and-current-correspondence-review
-184	280	sigreturn	unconditional	required-semantic-and-current-correspondence-review
-185	281	sys_panic_with_data	unconditional	required-semantic-and-current-correspondence-review
-186	282	thread_selfcounts	unconditional	required-semantic-and-current-correspondence-review
-187	283	fdatasync	unconditional	required-semantic-and-current-correspondence-review
-188	284	stat	unconditional	required-semantic-and-current-correspondence-review
-189	285	sys_fstat	unconditional	required-semantic-and-current-correspondence-review
-190	286	lstat	unconditional	required-semantic-and-current-correspondence-review
-191	287	pathconf	unconditional	required-semantic-and-current-correspondence-review
-192	288	sys_fpathconf	unconditional	required-semantic-and-current-correspondence-review
+177	273	kdebug_typefilter	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+178	274	kdebug_trace_string	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+179	275	kdebug_trace64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+180	276	kdebug_trace	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+181	277	setgid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+182	278	setegid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+183	279	seteuid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+184	280	sigreturn	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+185	281	sys_panic_with_data	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+186	282	thread_selfcounts	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+187	283	fdatasync	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+188	284	stat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+189	285	sys_fstat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+190	286	lstat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+191	287	pathconf	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+192	288	sys_fpathconf	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 193	289	nosys	unconditional	published-placeholder
-194	290	getrlimit	unconditional	required-semantic-and-current-correspondence-review
-195	291	setrlimit	unconditional	required-semantic-and-current-correspondence-review
-196	292	getdirentries	unconditional	required-semantic-and-current-correspondence-review
-197	293	mmap	unconditional	required-semantic-and-current-correspondence-review
+194	290	getrlimit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+195	291	setrlimit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+196	292	getdirentries	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+197	293	mmap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 198	294	nosys	unconditional	published-placeholder
-199	295	lseek	unconditional	required-semantic-and-current-correspondence-review
-200	296	truncate	unconditional	required-semantic-and-current-correspondence-review
-201	297	ftruncate	unconditional	required-semantic-and-current-correspondence-review
-202	298	sysctl	unconditional	required-semantic-and-current-correspondence-review
-203	299	mlock	unconditional	required-semantic-and-current-correspondence-review
-204	300	munlock	unconditional	required-semantic-and-current-correspondence-review
-205	301	undelete	unconditional	required-semantic-and-current-correspondence-review
+199	295	lseek	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+200	296	truncate	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+201	297	ftruncate	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+202	298	sysctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+203	299	mlock	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+204	300	munlock	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+205	301	undelete	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 206	303	nosys	unconditional	published-placeholder
 207	304	nosys	unconditional	published-placeholder
 208	305	nosys	unconditional	published-placeholder
@@ -235,117 +235,117 @@ number	source_line	declared_name	conditional_branch	disposition
 213	310	nosys	unconditional	published-placeholder
 214	312	nosys	unconditional	published-placeholder
 215	313	nosys	unconditional	published-placeholder
-216	324	open_dprotected_np	unconditional	required-semantic-and-current-correspondence-review
-217	325	fsgetpath_ext	unconditional	required-semantic-and-current-correspondence-review
-218	326	openat_dprotected_np	unconditional	required-semantic-and-current-correspondence-review
+216	324	open_dprotected_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+217	325	fsgetpath_ext	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+218	326	openat_dprotected_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 219	327	nosys	unconditional	published-placeholder
-220	328	getattrlist	unconditional	required-semantic-and-current-correspondence-review
-221	329	setattrlist	unconditional	required-semantic-and-current-correspondence-review
-222	330	getdirentriesattr	unconditional	required-semantic-and-current-correspondence-review
-223	331	exchangedata	unconditional	required-semantic-and-current-correspondence-review
+220	328	getattrlist	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+221	329	setattrlist	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+222	330	getdirentriesattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+223	331	exchangedata	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 224	332	nosys	unconditional	published-placeholder
-225	333	searchfs	unconditional	required-semantic-and-current-correspondence-review
-226	334	delete	unconditional	required-semantic-and-current-correspondence-review
-227	335	copyfile	unconditional	required-semantic-and-current-correspondence-review
-228	336	fgetattrlist	unconditional	required-semantic-and-current-correspondence-review
-229	337	fsetattrlist	unconditional	required-semantic-and-current-correspondence-review
-230	338	poll	unconditional	required-semantic-and-current-correspondence-review
+225	333	searchfs	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+226	334	delete	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+227	335	copyfile	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+228	336	fgetattrlist	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+229	337	fsetattrlist	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+230	338	poll	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 231	339	nosys	unconditional	published-placeholder
 232	340	nosys	unconditional	published-placeholder
 233	341	nosys	unconditional	published-placeholder
-234	342	getxattr	unconditional	required-semantic-and-current-correspondence-review
-235	343	fgetxattr	unconditional	required-semantic-and-current-correspondence-review
-236	344	setxattr	unconditional	required-semantic-and-current-correspondence-review
-237	345	fsetxattr	unconditional	required-semantic-and-current-correspondence-review
-238	346	removexattr	unconditional	required-semantic-and-current-correspondence-review
-239	347	fremovexattr	unconditional	required-semantic-and-current-correspondence-review
-240	348	listxattr	unconditional	required-semantic-and-current-correspondence-review
-241	349	flistxattr	unconditional	required-semantic-and-current-correspondence-review
-242	350	fsctl	unconditional	required-semantic-and-current-correspondence-review
-243	351	initgroups	unconditional	required-semantic-and-current-correspondence-review
-244	352	posix_spawn	unconditional	required-semantic-and-current-correspondence-review
-245	353	ffsctl	unconditional	required-semantic-and-current-correspondence-review
+234	342	getxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+235	343	fgetxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+236	344	setxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+237	345	fsetxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+238	346	removexattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+239	347	fremovexattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+240	348	listxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+241	349	flistxattr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+242	350	fsctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+243	351	initgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+244	352	posix_spawn	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+245	353	ffsctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 246	354	nosys	unconditional	published-placeholder
 247	355	nosys	unconditional	published-placeholder
-248	358	fhopen	"#if NFSSERVER	/* XXX */"	required-semantic-and-current-correspondence-review
+248	358	fhopen	"#if NFSSERVER	/* XXX */"	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 248	360	nosys	"#if NFSSERVER	/* XXX */ -> #else"	published-placeholder
 249	363	nosys	unconditional	published-placeholder
-250	364	minherit	unconditional	required-semantic-and-current-correspondence-review
-251	366	semsys	#if SYSV_SEM	required-semantic-and-current-correspondence-review
+250	364	minherit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+251	366	semsys	#if SYSV_SEM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 251	368	nosys	#if SYSV_SEM -> #else	published-placeholder
-252	371	msgsys	#if SYSV_MSG	required-semantic-and-current-correspondence-review
+252	371	msgsys	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 252	373	nosys	#if SYSV_MSG -> #else	published-placeholder
-253	376	shmsys	#if SYSV_SHM	required-semantic-and-current-correspondence-review
+253	376	shmsys	#if SYSV_SHM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 253	378	nosys	#if SYSV_SHM -> #else	published-placeholder
-254	381	semctl	#if SYSV_SEM	required-semantic-and-current-correspondence-review
-255	382	semget	#if SYSV_SEM	required-semantic-and-current-correspondence-review
-256	383	semop	#if SYSV_SEM	required-semantic-and-current-correspondence-review
+254	381	semctl	#if SYSV_SEM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+255	382	semget	#if SYSV_SEM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+256	383	semop	#if SYSV_SEM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 257	384	nosys	#if SYSV_SEM	published-placeholder
 254	386	nosys	#if SYSV_SEM -> #else	published-placeholder
 255	387	nosys	#if SYSV_SEM -> #else	published-placeholder
 256	388	nosys	#if SYSV_SEM -> #else	published-placeholder
 257	389	nosys	#if SYSV_SEM -> #else	published-placeholder
-258	392	msgctl	#if SYSV_MSG	required-semantic-and-current-correspondence-review
-259	393	msgget	#if SYSV_MSG	required-semantic-and-current-correspondence-review
-260	394	msgsnd	#if SYSV_MSG	required-semantic-and-current-correspondence-review
-261	395	msgrcv	#if SYSV_MSG	required-semantic-and-current-correspondence-review
+258	392	msgctl	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+259	393	msgget	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+260	394	msgsnd	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+261	395	msgrcv	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 258	397	nosys	#if SYSV_MSG -> #else	published-placeholder
 259	398	nosys	#if SYSV_MSG -> #else	published-placeholder
 260	399	nosys	#if SYSV_MSG -> #else	published-placeholder
 261	400	nosys	#if SYSV_MSG -> #else	published-placeholder
-262	403	shmat	#if SYSV_SHM	required-semantic-and-current-correspondence-review
-263	404	shmctl	#if SYSV_SHM	required-semantic-and-current-correspondence-review
-264	405	shmdt	#if SYSV_SHM	required-semantic-and-current-correspondence-review
-265	406	shmget	#if SYSV_SHM	required-semantic-and-current-correspondence-review
+262	403	shmat	#if SYSV_SHM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+263	404	shmctl	#if SYSV_SHM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+264	405	shmdt	#if SYSV_SHM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+265	406	shmget	#if SYSV_SHM	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 262	408	nosys	#if SYSV_SHM -> #else	published-placeholder
 263	409	nosys	#if SYSV_SHM -> #else	published-placeholder
 264	410	nosys	#if SYSV_SHM -> #else	published-placeholder
 265	411	nosys	#if SYSV_SHM -> #else	published-placeholder
-266	413	shm_open	unconditional	required-semantic-and-current-correspondence-review
-267	414	shm_unlink	unconditional	required-semantic-and-current-correspondence-review
-268	415	sem_open	unconditional	required-semantic-and-current-correspondence-review
-269	416	sem_close	unconditional	required-semantic-and-current-correspondence-review
-270	417	sem_unlink	unconditional	required-semantic-and-current-correspondence-review
-271	418	sem_wait	unconditional	required-semantic-and-current-correspondence-review
-272	419	sem_trywait	unconditional	required-semantic-and-current-correspondence-review
-273	420	sem_post	unconditional	required-semantic-and-current-correspondence-review
-274	421	sys_sysctlbyname	unconditional	required-semantic-and-current-correspondence-review
+266	413	shm_open	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+267	414	shm_unlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+268	415	sem_open	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+269	416	sem_close	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+270	417	sem_unlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+271	418	sem_wait	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+272	419	sem_trywait	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+273	420	sem_post	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+274	421	sys_sysctlbyname	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 275	422	enosys	unconditional	published-placeholder
 276	423	enosys	unconditional	published-placeholder
-277	424	open_extended	unconditional	required-semantic-and-current-correspondence-review
-278	425	umask_extended	unconditional	required-semantic-and-current-correspondence-review
-279	426	stat_extended	unconditional	required-semantic-and-current-correspondence-review
-280	427	lstat_extended	unconditional	required-semantic-and-current-correspondence-review
-281	428	sys_fstat_extended	unconditional	required-semantic-and-current-correspondence-review
-282	429	chmod_extended	unconditional	required-semantic-and-current-correspondence-review
-283	430	fchmod_extended	unconditional	required-semantic-and-current-correspondence-review
-284	431	access_extended	unconditional	required-semantic-and-current-correspondence-review
-285	432	sys_settid	unconditional	required-semantic-and-current-correspondence-review
-286	433	gettid	unconditional	required-semantic-and-current-correspondence-review
-287	434	setsgroups	unconditional	required-semantic-and-current-correspondence-review
-288	435	getsgroups	unconditional	required-semantic-and-current-correspondence-review
-289	436	setwgroups	unconditional	required-semantic-and-current-correspondence-review
-290	437	getwgroups	unconditional	required-semantic-and-current-correspondence-review
-291	438	mkfifo_extended	unconditional	required-semantic-and-current-correspondence-review
-292	439	mkdir_extended	unconditional	required-semantic-and-current-correspondence-review
-293	441	identitysvc	#if CONFIG_EXT_RESOLVER	required-semantic-and-current-correspondence-review
+277	424	open_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+278	425	umask_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+279	426	stat_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+280	427	lstat_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+281	428	sys_fstat_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+282	429	chmod_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+283	430	fchmod_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+284	431	access_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+285	432	sys_settid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+286	433	gettid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+287	434	setsgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+288	435	getsgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+289	436	setwgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+290	437	getwgroups	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+291	438	mkfifo_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+292	439	mkdir_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+293	441	identitysvc	#if CONFIG_EXT_RESOLVER	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 293	443	nosys	#if CONFIG_EXT_RESOLVER -> #else	published-placeholder
-294	445	shared_region_check_np	unconditional	required-semantic-and-current-correspondence-review
+294	445	shared_region_check_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 295	446	nosys	unconditional	published-placeholder
-296	447	vm_pressure_monitor	unconditional	required-semantic-and-current-correspondence-review
-297	449	psynch_rw_longrdlock	#if PSYNCH	required-semantic-and-current-correspondence-review
-298	450	psynch_rw_yieldwrlock	#if PSYNCH	required-semantic-and-current-correspondence-review
-299	451	psynch_rw_downgrade	#if PSYNCH	required-semantic-and-current-correspondence-review
-300	452	psynch_rw_upgrade	#if PSYNCH	required-semantic-and-current-correspondence-review
-301	453	psynch_mutexwait	#if PSYNCH	required-semantic-and-current-correspondence-review
-302	454	psynch_mutexdrop	#if PSYNCH	required-semantic-and-current-correspondence-review
-303	455	psynch_cvbroad	#if PSYNCH	required-semantic-and-current-correspondence-review
-304	456	psynch_cvsignal	#if PSYNCH	required-semantic-and-current-correspondence-review
-305	457	psynch_cvwait	#if PSYNCH	required-semantic-and-current-correspondence-review
-306	458	psynch_rw_rdlock	#if PSYNCH	required-semantic-and-current-correspondence-review
-307	459	psynch_rw_wrlock	#if PSYNCH	required-semantic-and-current-correspondence-review
-308	460	psynch_rw_unlock	#if PSYNCH	required-semantic-and-current-correspondence-review
-309	461	psynch_rw_unlock2	#if PSYNCH	required-semantic-and-current-correspondence-review
+296	447	vm_pressure_monitor	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+297	449	psynch_rw_longrdlock	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+298	450	psynch_rw_yieldwrlock	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+299	451	psynch_rw_downgrade	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+300	452	psynch_rw_upgrade	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+301	453	psynch_mutexwait	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+302	454	psynch_mutexdrop	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+303	455	psynch_cvbroad	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+304	456	psynch_cvsignal	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+305	457	psynch_cvwait	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+306	458	psynch_rw_rdlock	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+307	459	psynch_rw_wrlock	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+308	460	psynch_rw_unlock	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+309	461	psynch_rw_unlock2	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 297	463	nosys	#if PSYNCH -> #else	published-placeholder
 298	464	nosys	#if PSYNCH -> #else	published-placeholder
 299	465	enosys	#if PSYNCH -> #else	published-placeholder
@@ -359,89 +359,89 @@ number	source_line	declared_name	conditional_branch	disposition
 307	473	nosys	#if PSYNCH -> #else	published-placeholder
 308	474	nosys	#if PSYNCH -> #else	published-placeholder
 309	475	nosys	#if PSYNCH -> #else	published-placeholder
-310	477	getsid	unconditional	required-semantic-and-current-correspondence-review
-311	478	sys_settid_with_pid	unconditional	required-semantic-and-current-correspondence-review
-312	480	psynch_cvclrprepost	#if PSYNCH	required-semantic-and-current-correspondence-review
+310	477	getsid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+311	478	sys_settid_with_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+312	480	psynch_cvclrprepost	#if PSYNCH	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 312	482	nosys	#if PSYNCH -> #else	published-placeholder
-313	484	aio_fsync	unconditional	required-semantic-and-current-correspondence-review
-314	485	aio_return	unconditional	required-semantic-and-current-correspondence-review
-315	486	aio_suspend	unconditional	required-semantic-and-current-correspondence-review
-316	487	aio_cancel	unconditional	required-semantic-and-current-correspondence-review
-317	488	aio_error	unconditional	required-semantic-and-current-correspondence-review
-318	489	aio_read	unconditional	required-semantic-and-current-correspondence-review
-319	490	aio_write	unconditional	required-semantic-and-current-correspondence-review
-320	491	lio_listio	unconditional	required-semantic-and-current-correspondence-review
+313	484	aio_fsync	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+314	485	aio_return	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+315	486	aio_suspend	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+316	487	aio_cancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+317	488	aio_error	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+318	489	aio_read	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+319	490	aio_write	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+320	491	lio_listio	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 321	492	nosys	unconditional	published-placeholder
-322	493	iopolicysys	unconditional	required-semantic-and-current-correspondence-review
-323	494	process_policy	unconditional	required-semantic-and-current-correspondence-review
-324	495	mlockall	unconditional	required-semantic-and-current-correspondence-review
-325	496	munlockall	unconditional	required-semantic-and-current-correspondence-review
+322	493	iopolicysys	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+323	494	process_policy	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+324	495	mlockall	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+325	496	munlockall	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 326	497	nosys	unconditional	published-placeholder
-327	498	issetugid	unconditional	required-semantic-and-current-correspondence-review
-328	499	__pthread_kill	unconditional	required-semantic-and-current-correspondence-review
-329	500	__pthread_sigmask	unconditional	required-semantic-and-current-correspondence-review
-330	501	__sigwait	unconditional	required-semantic-and-current-correspondence-review
-331	502	__disable_threadsignal	unconditional	required-semantic-and-current-correspondence-review
-332	503	__pthread_markcancel	unconditional	required-semantic-and-current-correspondence-review
-333	504	__pthread_canceled	unconditional	required-semantic-and-current-correspondence-review
-334	509	__semwait_signal	unconditional	required-semantic-and-current-correspondence-review
+327	498	issetugid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+328	499	__pthread_kill	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+329	500	__pthread_sigmask	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+330	501	__sigwait	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+331	502	__disable_threadsignal	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+332	503	__pthread_markcancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+333	504	__pthread_canceled	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+334	509	__semwait_signal	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 335	512	nosys	unconditional	published-placeholder
-336	513	proc_info	unconditional	required-semantic-and-current-correspondence-review
-337	515	sendfile	#if SENDFILE	required-semantic-and-current-correspondence-review
+336	513	proc_info	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+337	515	sendfile	#if SENDFILE	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 337	517	nosys	#if SENDFILE -> #else /* !SENDFILE */	published-placeholder
-338	519	stat64	unconditional	required-semantic-and-current-correspondence-review
-339	520	sys_fstat64	unconditional	required-semantic-and-current-correspondence-review
-340	521	lstat64	unconditional	required-semantic-and-current-correspondence-review
-341	522	stat64_extended	unconditional	required-semantic-and-current-correspondence-review
-342	523	lstat64_extended	unconditional	required-semantic-and-current-correspondence-review
-343	524	sys_fstat64_extended	unconditional	required-semantic-and-current-correspondence-review
-344	525	getdirentries64	unconditional	required-semantic-and-current-correspondence-review
-345	526	statfs64	unconditional	required-semantic-and-current-correspondence-review
-346	527	fstatfs64	unconditional	required-semantic-and-current-correspondence-review
-347	528	getfsstat64	unconditional	required-semantic-and-current-correspondence-review
-348	529	__pthread_chdir	unconditional	required-semantic-and-current-correspondence-review
-349	530	__pthread_fchdir	unconditional	required-semantic-and-current-correspondence-review
-350	531	audit	unconditional	required-semantic-and-current-correspondence-review
-351	532	auditon	unconditional	required-semantic-and-current-correspondence-review
+338	519	stat64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+339	520	sys_fstat64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+340	521	lstat64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+341	522	stat64_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+342	523	lstat64_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+343	524	sys_fstat64_extended	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+344	525	getdirentries64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+345	526	statfs64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+346	527	fstatfs64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+347	528	getfsstat64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+348	529	__pthread_chdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+349	530	__pthread_fchdir	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+350	531	audit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+351	532	auditon	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 352	533	nosys	unconditional	published-placeholder
-353	534	getauid	unconditional	required-semantic-and-current-correspondence-review
-354	535	setauid	unconditional	required-semantic-and-current-correspondence-review
+353	534	getauid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+354	535	setauid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 355	536	nosys	unconditional	published-placeholder
 356	537	nosys	unconditional	published-placeholder
-357	538	getaudit_addr	unconditional	required-semantic-and-current-correspondence-review
-358	539	setaudit_addr	unconditional	required-semantic-and-current-correspondence-review
-359	540	auditctl	unconditional	required-semantic-and-current-correspondence-review
-360	541	bsdthread_create	unconditional	required-semantic-and-current-correspondence-review
-361	542	bsdthread_terminate	unconditional	required-semantic-and-current-correspondence-review
-362	543	kqueue	unconditional	required-semantic-and-current-correspondence-review
-363	544	kevent	unconditional	required-semantic-and-current-correspondence-review
-364	545	lchown	unconditional	required-semantic-and-current-correspondence-review
+357	538	getaudit_addr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+358	539	setaudit_addr	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+359	540	auditctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+360	541	bsdthread_create	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+361	542	bsdthread_terminate	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+362	543	kqueue	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+363	544	kevent	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+364	545	lchown	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 365	546	nosys	unconditional	published-placeholder
-366	547	bsdthread_register	unconditional	required-semantic-and-current-correspondence-review
-367	548	workq_open	unconditional	required-semantic-and-current-correspondence-review
-368	549	workq_kernreturn	unconditional	required-semantic-and-current-correspondence-review
-369	550	kevent64	unconditional	required-semantic-and-current-correspondence-review
+366	547	bsdthread_register	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+367	548	workq_open	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+368	549	workq_kernreturn	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+369	550	kevent64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 370	551	nosys	unconditional	published-placeholder
 371	552	nosys	unconditional	published-placeholder
-372	553	thread_selfid	unconditional	required-semantic-and-current-correspondence-review
-373	554	ledger	unconditional	required-semantic-and-current-correspondence-review
-374	555	kevent_qos	unconditional	required-semantic-and-current-correspondence-review
-375	556	kevent_id	unconditional	required-semantic-and-current-correspondence-review
+372	553	thread_selfid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+373	554	ledger	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+374	555	kevent_qos	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+375	556	kevent_id	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 376	557	nosys	unconditional	published-placeholder
 377	558	nosys	unconditional	published-placeholder
 378	559	nosys	unconditional	published-placeholder
 379	560	nosys	unconditional	published-placeholder
-380	561	__mac_execve	unconditional	required-semantic-and-current-correspondence-review
-381	563	__mac_syscall	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-382	564	__mac_get_file	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-383	565	__mac_set_file	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-384	566	__mac_get_link	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-385	567	__mac_set_link	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-386	568	__mac_get_proc	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-387	569	__mac_set_proc	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-388	570	__mac_get_fd	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-389	571	__mac_set_fd	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
-390	572	__mac_get_pid	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
+380	561	__mac_execve	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+381	563	__mac_syscall	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+382	564	__mac_get_file	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+383	565	__mac_set_file	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+384	566	__mac_get_link	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+385	567	__mac_set_link	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+386	568	__mac_get_proc	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+387	569	__mac_set_proc	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+388	570	__mac_get_fd	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+389	571	__mac_set_fd	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+390	572	__mac_get_pid	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 381	574	enosys	#if CONFIG_MACF -> #else	published-placeholder
 382	575	nosys	#if CONFIG_MACF -> #else	published-placeholder
 383	576	nosys	#if CONFIG_MACF -> #else	published-placeholder
@@ -455,158 +455,158 @@ number	source_line	declared_name	conditional_branch	disposition
 391	585	enosys	unconditional	published-placeholder
 392	586	enosys	unconditional	published-placeholder
 393	587	enosys	unconditional	published-placeholder
-394	588	pselect	unconditional	required-semantic-and-current-correspondence-review
-395	589	pselect_nocancel	unconditional	required-semantic-and-current-correspondence-review
-396	590	read_nocancel	unconditional	required-semantic-and-current-correspondence-review
-397	591	write_nocancel	unconditional	required-semantic-and-current-correspondence-review
-398	592	open_nocancel	unconditional	required-semantic-and-current-correspondence-review
-399	593	sys_close_nocancel	unconditional	required-semantic-and-current-correspondence-review
-400	594	wait4_nocancel	unconditional	required-semantic-and-current-correspondence-review
-401	596	recvmsg_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
-402	597	sendmsg_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
-403	598	recvfrom_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
-404	599	accept_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
+394	588	pselect	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+395	589	pselect_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+396	590	read_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+397	591	write_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+398	592	open_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+399	593	sys_close_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+400	594	wait4_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+401	596	recvmsg_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+402	597	sendmsg_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+403	598	recvfrom_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+404	599	accept_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 401	601	nosys	#if SOCKETS -> #else	published-placeholder
 402	602	nosys	#if SOCKETS -> #else	published-placeholder
 403	603	nosys	#if SOCKETS -> #else	published-placeholder
 404	604	nosys	#if SOCKETS -> #else	published-placeholder
-405	606	msync_nocancel	unconditional	required-semantic-and-current-correspondence-review
-406	607	sys_fcntl_nocancel	unconditional	required-semantic-and-current-correspondence-review
-407	608	select_nocancel	unconditional	required-semantic-and-current-correspondence-review
-408	609	fsync_nocancel	unconditional	required-semantic-and-current-correspondence-review
-409	611	connect_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
+405	606	msync_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+406	607	sys_fcntl_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+407	608	select_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+408	609	fsync_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+409	611	connect_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 409	613	nosys	#if SOCKETS -> #else	published-placeholder
-410	615	sigsuspend_nocancel	unconditional	required-semantic-and-current-correspondence-review
-411	616	readv_nocancel	unconditional	required-semantic-and-current-correspondence-review
-412	617	writev_nocancel	unconditional	required-semantic-and-current-correspondence-review
-413	619	sendto_nocancel	#if SOCKETS	required-semantic-and-current-correspondence-review
+410	615	sigsuspend_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+411	616	readv_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+412	617	writev_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+413	619	sendto_nocancel	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 413	621	nosys	#if SOCKETS -> #else	published-placeholder
-414	623	pread_nocancel	unconditional	required-semantic-and-current-correspondence-review
-415	624	pwrite_nocancel	unconditional	required-semantic-and-current-correspondence-review
-416	625	waitid_nocancel	unconditional	required-semantic-and-current-correspondence-review
-417	626	poll_nocancel	unconditional	required-semantic-and-current-correspondence-review
-418	628	msgsnd_nocancel	#if SYSV_MSG	required-semantic-and-current-correspondence-review
-419	629	msgrcv_nocancel	#if SYSV_MSG	required-semantic-and-current-correspondence-review
+414	623	pread_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+415	624	pwrite_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+416	625	waitid_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+417	626	poll_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+418	628	msgsnd_nocancel	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+419	629	msgrcv_nocancel	#if SYSV_MSG	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 418	631	nosys	#if SYSV_MSG -> #else	published-placeholder
 419	632	nosys	#if SYSV_MSG -> #else	published-placeholder
-420	634	sem_wait_nocancel	unconditional	required-semantic-and-current-correspondence-review
-421	635	aio_suspend_nocancel	unconditional	required-semantic-and-current-correspondence-review
-422	636	__sigwait_nocancel	unconditional	required-semantic-and-current-correspondence-review
-423	637	__semwait_signal_nocancel	unconditional	required-semantic-and-current-correspondence-review
-424	638	__mac_mount	unconditional	required-semantic-and-current-correspondence-review
-425	640	__mac_get_mount	#if CONFIG_MACF	required-semantic-and-current-correspondence-review
+420	634	sem_wait_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+421	635	aio_suspend_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+422	636	__sigwait_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+423	637	__semwait_signal_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+424	638	__mac_mount	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+425	640	__mac_get_mount	#if CONFIG_MACF	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 425	642	nosys	#if CONFIG_MACF -> #else	published-placeholder
-426	644	__mac_getfsstat	unconditional	required-semantic-and-current-correspondence-review
-427	645	fsgetpath	unconditional	required-semantic-and-current-correspondence-review
-428	646	audit_session_self	unconditional	required-semantic-and-current-correspondence-review
-429	647	audit_session_join	unconditional	required-semantic-and-current-correspondence-review
-430	648	sys_fileport_makeport	unconditional	required-semantic-and-current-correspondence-review
-431	649	sys_fileport_makefd	unconditional	required-semantic-and-current-correspondence-review
-432	650	audit_session_port	unconditional	required-semantic-and-current-correspondence-review
-433	651	pid_suspend	unconditional	required-semantic-and-current-correspondence-review
-434	652	pid_resume	unconditional	required-semantic-and-current-correspondence-review
-435	654	pid_hibernate	#if CONFIG_EMBEDDED	required-semantic-and-current-correspondence-review
+426	644	__mac_getfsstat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+427	645	fsgetpath	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+428	646	audit_session_self	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+429	647	audit_session_join	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+430	648	sys_fileport_makeport	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+431	649	sys_fileport_makefd	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+432	650	audit_session_port	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+433	651	pid_suspend	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+434	652	pid_resume	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+435	654	pid_hibernate	#if CONFIG_EMBEDDED	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 435	656	nosys	#if CONFIG_EMBEDDED -> #else	published-placeholder
-436	659	pid_shutdown_sockets	#if SOCKETS	required-semantic-and-current-correspondence-review
+436	659	pid_shutdown_sockets	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 436	661	nosys	#if SOCKETS -> #else	published-placeholder
 437	663	nosys	unconditional	published-placeholder
 438	664	nosys	unconditional	published-placeholder
-439	665	kas_info	unconditional	required-semantic-and-current-correspondence-review
-440	667	memorystatus_control	#if CONFIG_MEMORYSTATUS	required-semantic-and-current-correspondence-review
+439	665	kas_info	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+440	667	memorystatus_control	#if CONFIG_MEMORYSTATUS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 440	669	nosys	#if CONFIG_MEMORYSTATUS -> #else	published-placeholder
-441	671	guarded_open_np	unconditional	required-semantic-and-current-correspondence-review
-442	672	guarded_close_np	unconditional	required-semantic-and-current-correspondence-review
-443	673	guarded_kqueue_np	unconditional	required-semantic-and-current-correspondence-review
-444	674	change_fdguard_np	unconditional	required-semantic-and-current-correspondence-review
-445	675	usrctl	unconditional	required-semantic-and-current-correspondence-review
-446	676	proc_rlimit_control	unconditional	required-semantic-and-current-correspondence-review
-447	678	connectx	#if SOCKETS	required-semantic-and-current-correspondence-review
-448	679	disconnectx	#if SOCKETS	required-semantic-and-current-correspondence-review
-449	680	peeloff	#if SOCKETS	required-semantic-and-current-correspondence-review
-450	681	socket_delegate	#if SOCKETS	required-semantic-and-current-correspondence-review
+441	671	guarded_open_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+442	672	guarded_close_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+443	673	guarded_kqueue_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+444	674	change_fdguard_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+445	675	usrctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+446	676	proc_rlimit_control	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+447	678	connectx	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+448	679	disconnectx	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+449	680	peeloff	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+450	681	socket_delegate	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 447	683	nosys	#if SOCKETS -> #else	published-placeholder
 448	684	nosys	#if SOCKETS -> #else	published-placeholder
 449	685	nosys	#if SOCKETS -> #else	published-placeholder
 450	686	nosys	#if SOCKETS -> #else	published-placeholder
-451	688	telemetry	unconditional	required-semantic-and-current-correspondence-review
-452	690	proc_uuid_policy	#if CONFIG_PROC_UUID_POLICY	required-semantic-and-current-correspondence-review
+451	688	telemetry	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+452	690	proc_uuid_policy	#if CONFIG_PROC_UUID_POLICY	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 452	692	nosys	#if CONFIG_PROC_UUID_POLICY -> #else	published-placeholder
-453	695	memorystatus_get_level	#if CONFIG_MEMORYSTATUS	required-semantic-and-current-correspondence-review
+453	695	memorystatus_get_level	#if CONFIG_MEMORYSTATUS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 453	697	nosys	#if CONFIG_MEMORYSTATUS -> #else	published-placeholder
-454	699	system_override	unconditional	required-semantic-and-current-correspondence-review
-455	700	vfs_purge	unconditional	required-semantic-and-current-correspondence-review
-456	701	sfi_ctl	unconditional	required-semantic-and-current-correspondence-review
-457	702	sfi_pidctl	unconditional	required-semantic-and-current-correspondence-review
-458	704	coalition	#if CONFIG_COALITIONS	required-semantic-and-current-correspondence-review
-459	705	coalition_info	#if CONFIG_COALITIONS	required-semantic-and-current-correspondence-review
+454	699	system_override	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+455	700	vfs_purge	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+456	701	sfi_ctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+457	702	sfi_pidctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+458	704	coalition	#if CONFIG_COALITIONS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+459	705	coalition_info	#if CONFIG_COALITIONS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 458	707	enosys	#if CONFIG_COALITIONS -> #else	published-placeholder
 459	708	enosys	#if CONFIG_COALITIONS -> #else	published-placeholder
-460	711	necp_match_policy	#if NECP	required-semantic-and-current-correspondence-review
+460	711	necp_match_policy	#if NECP	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 460	713	nosys	#if NECP -> #else	published-placeholder
-461	715	getattrlistbulk	unconditional	required-semantic-and-current-correspondence-review
-462	716	clonefileat	unconditional	required-semantic-and-current-correspondence-review
-463	717	openat	unconditional	required-semantic-and-current-correspondence-review
-464	718	openat_nocancel	unconditional	required-semantic-and-current-correspondence-review
-465	719	renameat	unconditional	required-semantic-and-current-correspondence-review
-466	720	faccessat	unconditional	required-semantic-and-current-correspondence-review
-467	721	fchmodat	unconditional	required-semantic-and-current-correspondence-review
-468	722	fchownat	unconditional	required-semantic-and-current-correspondence-review
-469	723	fstatat	unconditional	required-semantic-and-current-correspondence-review
-470	724	fstatat64	unconditional	required-semantic-and-current-correspondence-review
-471	725	linkat	unconditional	required-semantic-and-current-correspondence-review
-472	726	unlinkat	unconditional	required-semantic-and-current-correspondence-review
-473	727	readlinkat	unconditional	required-semantic-and-current-correspondence-review
-474	728	symlinkat	unconditional	required-semantic-and-current-correspondence-review
-475	729	mkdirat	unconditional	required-semantic-and-current-correspondence-review
-476	730	getattrlistat	unconditional	required-semantic-and-current-correspondence-review
-477	731	proc_trace_log	unconditional	required-semantic-and-current-correspondence-review
-478	732	bsdthread_ctl	unconditional	required-semantic-and-current-correspondence-review
-479	733	openbyid_np	unconditional	required-semantic-and-current-correspondence-review
-480	735	recvmsg_x	#if SOCKETS	required-semantic-and-current-correspondence-review
-481	736	sendmsg_x	#if SOCKETS	required-semantic-and-current-correspondence-review
+461	715	getattrlistbulk	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+462	716	clonefileat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+463	717	openat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+464	718	openat_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+465	719	renameat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+466	720	faccessat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+467	721	fchmodat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+468	722	fchownat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+469	723	fstatat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+470	724	fstatat64	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+471	725	linkat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+472	726	unlinkat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+473	727	readlinkat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+474	728	symlinkat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+475	729	mkdirat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+476	730	getattrlistat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+477	731	proc_trace_log	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+478	732	bsdthread_ctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+479	733	openbyid_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+480	735	recvmsg_x	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+481	736	sendmsg_x	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 480	738	nosys	#if SOCKETS -> #else	published-placeholder
 481	739	nosys	#if SOCKETS -> #else	published-placeholder
-482	741	thread_selfusage	unconditional	required-semantic-and-current-correspondence-review
-483	743	csrctl	#if CONFIG_CSR	required-semantic-and-current-correspondence-review
+482	741	thread_selfusage	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+483	743	csrctl	#if CONFIG_CSR	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 483	745	enosys	#if CONFIG_CSR -> #else	published-placeholder
-484	747	guarded_open_dprotected_np	unconditional	required-semantic-and-current-correspondence-review
-485	748	guarded_write_np	unconditional	required-semantic-and-current-correspondence-review
-486	749	guarded_pwrite_np	unconditional	required-semantic-and-current-correspondence-review
-487	750	guarded_writev_np	unconditional	required-semantic-and-current-correspondence-review
-488	751	renameatx_np	unconditional	required-semantic-and-current-correspondence-review
-489	753	mremap_encrypted	#if CONFIG_CODE_DECRYPTION	required-semantic-and-current-correspondence-review
+484	747	guarded_open_dprotected_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+485	748	guarded_write_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+486	749	guarded_pwrite_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+487	750	guarded_writev_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+488	751	renameatx_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+489	753	mremap_encrypted	#if CONFIG_CODE_DECRYPTION	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 489	755	enosys	#if CONFIG_CODE_DECRYPTION -> #else	published-placeholder
-490	758	netagent_trigger	#if NETWORKING	required-semantic-and-current-correspondence-review
+490	758	netagent_trigger	#if NETWORKING	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 490	760	nosys	#if NETWORKING -> #else	published-placeholder
-491	762	stack_snapshot_with_config	unconditional	required-semantic-and-current-correspondence-review
-492	764	microstackshot	#if CONFIG_TELEMETRY	required-semantic-and-current-correspondence-review
+491	762	stack_snapshot_with_config	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+492	764	microstackshot	#if CONFIG_TELEMETRY	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 492	766	enosys	#if CONFIG_TELEMETRY -> #else	published-placeholder
-493	769	grab_pgo_data	#if PGO	required-semantic-and-current-correspondence-review
+493	769	grab_pgo_data	#if PGO	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 493	771	enosys	#if PGO -> #else	published-placeholder
-494	774	persona	#if CONFIG_PERSONAS	required-semantic-and-current-correspondence-review
+494	774	persona	#if CONFIG_PERSONAS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 494	776	enosys	#if CONFIG_PERSONAS -> #else	published-placeholder
 495	778	enosys	unconditional	published-placeholder
-496	779	mach_eventlink_signal	unconditional	required-semantic-and-current-correspondence-review
-497	780	mach_eventlink_wait_until	unconditional	required-semantic-and-current-correspondence-review
-498	781	mach_eventlink_signal_wait_until	unconditional	required-semantic-and-current-correspondence-review
-499	782	work_interval_ctl	unconditional	required-semantic-and-current-correspondence-review
-500	783	getentropy	unconditional	required-semantic-and-current-correspondence-review
-501	785	necp_open	#if NECP	required-semantic-and-current-correspondence-review
-502	786	necp_client_action	#if NECP	required-semantic-and-current-correspondence-review
+496	779	mach_eventlink_signal	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+497	780	mach_eventlink_wait_until	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+498	781	mach_eventlink_signal_wait_until	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+499	782	work_interval_ctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+500	783	getentropy	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+501	785	necp_open	#if NECP	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+502	786	necp_client_action	#if NECP	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 501	788	enosys	#if NECP -> #else	published-placeholder
 502	789	enosys	#if NECP -> #else	published-placeholder
-503	792	__nexus_open	#if SKYWALK	required-semantic-and-current-correspondence-review
-504	793	__nexus_register	#if SKYWALK	required-semantic-and-current-correspondence-review
-505	794	__nexus_deregister	#if SKYWALK	required-semantic-and-current-correspondence-review
-506	795	__nexus_create	#if SKYWALK	required-semantic-and-current-correspondence-review
-507	796	__nexus_destroy	#if SKYWALK	required-semantic-and-current-correspondence-review
-508	797	__nexus_get_opt	#if SKYWALK	required-semantic-and-current-correspondence-review
-509	798	__nexus_set_opt	#if SKYWALK	required-semantic-and-current-correspondence-review
-510	799	__channel_open	#if SKYWALK	required-semantic-and-current-correspondence-review
-511	800	__channel_get_info	#if SKYWALK	required-semantic-and-current-correspondence-review
-512	801	__channel_sync	#if SKYWALK	required-semantic-and-current-correspondence-review
-513	802	__channel_get_opt	#if SKYWALK	required-semantic-and-current-correspondence-review
-514	803	__channel_set_opt	#if SKYWALK	required-semantic-and-current-correspondence-review
+503	792	__nexus_open	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+504	793	__nexus_register	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+505	794	__nexus_deregister	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+506	795	__nexus_create	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+507	796	__nexus_destroy	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+508	797	__nexus_get_opt	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+509	798	__nexus_set_opt	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+510	799	__channel_open	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+511	800	__channel_get_info	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+512	801	__channel_sync	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+513	802	__channel_get_opt	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+514	803	__channel_set_opt	#if SKYWALK	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 503	805	enosys	#if SKYWALK -> #else	published-placeholder
 504	806	enosys	#if SKYWALK -> #else	published-placeholder
 505	807	enosys	#if SKYWALK -> #else	published-placeholder
@@ -619,52 +619,52 @@ number	source_line	declared_name	conditional_branch	disposition
 512	814	enosys	#if SKYWALK -> #else	published-placeholder
 513	815	enosys	#if SKYWALK -> #else	published-placeholder
 514	816	enosys	#if SKYWALK -> #else	published-placeholder
-515	818	sys_ulock_wait	unconditional	required-semantic-and-current-correspondence-review
-516	819	sys_ulock_wake	unconditional	required-semantic-and-current-correspondence-review
-517	820	fclonefileat	unconditional	required-semantic-and-current-correspondence-review
-518	821	fs_snapshot	unconditional	required-semantic-and-current-correspondence-review
+515	818	sys_ulock_wait	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+516	819	sys_ulock_wake	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+517	820	fclonefileat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+518	821	fs_snapshot	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 519	822	enosys	unconditional	published-placeholder
-520	823	terminate_with_payload	unconditional	required-semantic-and-current-correspondence-review
-521	824	abort_with_payload	unconditional	required-semantic-and-current-correspondence-review
-522	826	necp_session_open	#if NECP	required-semantic-and-current-correspondence-review
-523	827	necp_session_action	#if NECP	required-semantic-and-current-correspondence-review
+520	823	terminate_with_payload	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+521	824	abort_with_payload	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+522	826	necp_session_open	#if NECP	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+523	827	necp_session_action	#if NECP	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 522	829	enosys	#if NECP -> #else /* NECP */	published-placeholder
 523	830	enosys	#if NECP -> #else /* NECP */	published-placeholder
-524	832	setattrlistat	unconditional	required-semantic-and-current-correspondence-review
-525	833	net_qos_guideline	unconditional	required-semantic-and-current-correspondence-review
-526	834	fmount	unconditional	required-semantic-and-current-correspondence-review
-527	835	ntp_adjtime	unconditional	required-semantic-and-current-correspondence-review
-528	836	ntp_gettime	unconditional	required-semantic-and-current-correspondence-review
-529	837	os_fault_with_payload	unconditional	required-semantic-and-current-correspondence-review
-530	838	kqueue_workloop_ctl	unconditional	required-semantic-and-current-correspondence-review
-531	839	__mach_bridge_remote_time	unconditional	required-semantic-and-current-correspondence-review
-532	841	coalition_ledger	#if CONFIG_COALITIONS	required-semantic-and-current-correspondence-review
+524	832	setattrlistat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+525	833	net_qos_guideline	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+526	834	fmount	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+527	835	ntp_adjtime	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+528	836	ntp_gettime	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+529	837	os_fault_with_payload	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+530	838	kqueue_workloop_ctl	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+531	839	__mach_bridge_remote_time	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+532	841	coalition_ledger	#if CONFIG_COALITIONS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 532	843	enosys	#if CONFIG_COALITIONS -> #else	published-placeholder
-533	845	log_data	unconditional	required-semantic-and-current-correspondence-review
-534	846	memorystatus_available_memory	unconditional	required-semantic-and-current-correspondence-review
-535	847	objc_bp_assist_cfg_np	unconditional	required-semantic-and-current-correspondence-review
-536	848	shared_region_map_and_slide_2_np	unconditional	required-semantic-and-current-correspondence-review
-537	849	pivot_root	unconditional	required-semantic-and-current-correspondence-review
-538	850	task_inspect_for_pid	unconditional	required-semantic-and-current-correspondence-review
-539	851	task_read_for_pid	unconditional	required-semantic-and-current-correspondence-review
-540	852	sys_preadv	unconditional	required-semantic-and-current-correspondence-review
-541	853	sys_pwritev	unconditional	required-semantic-and-current-correspondence-review
-542	854	sys_preadv_nocancel	unconditional	required-semantic-and-current-correspondence-review
-543	855	sys_pwritev_nocancel	unconditional	required-semantic-and-current-correspondence-review
-544	856	sys_ulock_wait2	unconditional	required-semantic-and-current-correspondence-review
-545	857	proc_info_extended_id	unconditional	required-semantic-and-current-correspondence-review
-546	859	tracker_action	#if SOCKETS	required-semantic-and-current-correspondence-review
+533	845	log_data	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+534	846	memorystatus_available_memory	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+535	847	objc_bp_assist_cfg_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+536	848	shared_region_map_and_slide_2_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+537	849	pivot_root	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+538	850	task_inspect_for_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+539	851	task_read_for_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+540	852	sys_preadv	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+541	853	sys_pwritev	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+542	854	sys_preadv_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+543	855	sys_pwritev_nocancel	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+544	856	sys_ulock_wait2	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+545	857	proc_info_extended_id	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+546	859	tracker_action	#if SOCKETS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 546	861	nosys	#if SOCKETS -> #else	published-placeholder
-547	863	debug_syscall_reject	unconditional	required-semantic-and-current-correspondence-review
-548	864	sys_debug_syscall_reject_config	unconditional	required-semantic-and-current-correspondence-review
-549	865	graftdmg	unconditional	required-semantic-and-current-correspondence-review
-550	866	map_with_linking_np	unconditional	required-semantic-and-current-correspondence-review
-551	867	freadlink	unconditional	required-semantic-and-current-correspondence-review
-552	868	sys_record_system_event	unconditional	required-semantic-and-current-correspondence-review
-553	869	mkfifoat	unconditional	required-semantic-and-current-correspondence-review
-554	870	mknodat	unconditional	required-semantic-and-current-correspondence-review
-555	871	ungraftdmg	unconditional	required-semantic-and-current-correspondence-review
-556	873	sys_coalition_policy_set	#if CONFIG_COALITIONS	required-semantic-and-current-correspondence-review
-557	874	sys_coalition_policy_get	#if CONFIG_COALITIONS	required-semantic-and-current-correspondence-review
+547	863	debug_syscall_reject	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+548	864	sys_debug_syscall_reject_config	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+549	865	graftdmg	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+550	866	map_with_linking_np	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+551	867	freadlink	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+552	868	sys_record_system_event	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+553	869	mkfifoat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+554	870	mknodat	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+555	871	ungraftdmg	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+556	873	sys_coalition_policy_set	#if CONFIG_COALITIONS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+557	874	sys_coalition_policy_get	#if CONFIG_COALITIONS	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
 556	876	enosys	#if CONFIG_COALITIONS -> #else	published-placeholder
 557	877	enosys	#if CONFIG_COALITIONS -> #else	published-placeholder

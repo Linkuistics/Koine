@@ -21,7 +21,7 @@ K273 is decomposed into authority lifecycle k274, independent anchors k275, full
 boundary k276, exact packaging/runtime closure k277 and whole reconciliation k278.
 The authority lifecycle, independent approval protocol and
 [retained entry/runtime closure](application-reference-packaging-runtime.md) are concrete
-design proposals. The [full contact boundary](application-reference-contact-boundary.md) now pins
+design proposals. The [bounded contact boundary](application-reference-contact-boundary.md) now pins
 an independent public-source inventory and exact unavailable classes/identities; it supplies
 no collector or actual no-contact evidence. The [whole handoff comparison](#whole-producer-obligation-comparison)
 retains every original obligation and its missing evidence. Complete admission remains unavailable through
@@ -56,8 +56,8 @@ All original k273/k244/k242 obligations except the explicitly compared contact/l
 amendments, k245's unused pass, k246/k247 duties, private
 ineligibility, both product holds and pending native acceptance remain. This section is
 reporting outside the normative extract set; it grants no approval or operation.
-The older full-coverage gates, risk-before-contents table and U1–U6 owner proposals below
-are pre-k281 design material pending k282's complete reconciliation. They cannot override
+K284 reconciles the C1–C8/B1–B8/U1–U6 gates, read claims and closed pre-lookup plan below.
+K285/k286/k287 retain release/acceptance/input partition and whole reconciliation. They cannot override
 the selected bounded claims or justify another impossible-mechanism construction leaf.
 The exact status relocation does not waive full-byte companion/table binding or complete
 partition/extractor controls; no admission mechanism or actual proof is established here.
@@ -67,8 +67,8 @@ K282 is decomposed at five repair seams. Operation-credit child k283 specifies t
 and [non-consuming qualification routes](application-reference-packaging-runtime.md#non-consuming-qualification-routes):
 earlier Q mechanics/identity/control evidence, fresh P facts before intent, and A outcomes
 first observed in the authorized attempt. This resolves the circular demand for earlier
-successful target behavior without crediting it as native qualification. K284 still owns
-full bounded-contact/pre-lookup reconciliation; k285 owns coupled independent LIVE release/
+successful target behavior without crediting it as native qualification. K284 applies
+the bounded-contact/pre-lookup reconciliation; k285 owns coupled independent LIVE release/
 acceptance; k286 owns enduring inputs/reporting; k287 owns complete reconciliation and the
 mandatory whole-k282 review before k269. No child is a consumable construction handoff.
 
@@ -135,7 +135,7 @@ provider dependency, installed-app execution, registration or VM seam.
 | Native decoder | One immutable byte object → complete tagged native tree or explicit typed failure | Native type dispatch, format/error evidence and lossless export; no target pathname or conversion fallback |
 | Independent verifier | Frozen specimen expectation and envelope → per-coordinate verdicts | Recomputes bytes, required occurrences, trees, branches, tails and associations; rejects producer-only totals |
 | Admission verifier | Required inventory, complete proofs and actual retained artifacts → invocation-bound admission or refusal | Independent completeness, permission equality and image continuity; a producer success bit grants nothing |
-| External contact observer/containment | Independently qualified unprivileged full source/filesystem/IPC boundary → contact evidence or unavailable coverage | Direct/child/proxy bypass, process/descriptor association and event loss; a missing event cannot establish no contact |
+| Independent bounded-evidence owner | Accepted B1–B8 inventory and independent expectations → scoped scratch/native/entry/read evidence plus named unknowns | Exact operation/object/interval/provenance and required controls; unobserved startup/service/proxy/right/map contact remains accepted risk, never full no-contact |
 
 Compared with embedding parsing, traversal and mutation expectations in the legacy
 Python capture, this arrangement gives the acquisition tool one deep external
@@ -185,10 +185,10 @@ or /Library; `Applications-extra`, embedded NUL, relative paths and uncheckable
 components do not authorize acquisition. Root resolution follows the existing
 descriptor-relative kernel-semantics decision through search-only held directories,
 with observed link expansions and directory identities, enforcing the canonical refusal
-of outside intermediate operations with held common-ancestor entry. Check the resolved
-component-bounded scope, protected/consent-risk handling and checked .app directory
-before any listing/content
-handle is opened. File aliases/non-directories remain raw source observations;
+of outside intermediate operations with held common-ancestor entry. Classify the complete raw slot before any target lookup, then each component/observed
+link expansion before its next operation under the [closed pre-lookup plan](#closed-pre-lookup-entries-and-operation-order).
+Check both component-bounded scopes, exact reviewed class/operation entries, protected/
+unsettled refusals and .app directory identity before listing/content handles. File aliases/non-directories remain raw source observations;
 the tool never asks Finder or another application to resolve them.
 
 Retain the ancestry/root handles and compare named-versus-held identities before
@@ -352,7 +352,8 @@ The tool cannot derive its own permission from defaults or a changing report.
 | --- | --- |
 | Reference/source | macOS 27.0.1, build 26A434; /usr/bin/mdfind; exactly -0 and the application-bundle predicate stated above; no shell or extra options |
 | Attempt/phases | One target attempt; initial and closure only; closure compares, never retries, repairs or fills missing initial evidence |
-| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit; selected protected-content refusal and outside-intermediate refusal with held common-ancestor entry |
+| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit; closed pre-lookup T1–T7 entries/protected/unsettled refusal and outside-intermediate refusal with exact A1 search-only ancestor operations; distinct A2 fixed-authority/A3 fresh-export entries |
+| Bounded contact evidence | Independent B1–B8 named claims/evidence/operation-object scope; accepted unknown current-service/proxy/initial-right/map/hidden-ancestry/TCC coverage, never full no-contact or waiver of required Q/P identities/controls |
 | Layout/files | Four ordered layouts, absence-only advance, both information and all four name basenames, all six in every checked direct locale; no language subset or descendant-link following |
 | Evidence | Complete raw slots/inventories/original regular-file bytes, complete typed observations or explicit limits, every copy/file/alias/tail association and before/closure check; no clipping to the reader limit |
 | Failure/effects | No silent repeat/resume, overwrite, arbitrary recursion, executable acquisition, launch, index/registration change, download, helper, root/sudo collector, new consent/signing/posture or native/VM capture |
@@ -398,8 +399,9 @@ Select a frozen standalone packaging Taskfile; no executable task is added by th
 Its whole bytes and every actual global/user configuration, runtime/stdlib/package/image
 read remain inputs. Reading the shared project Taskfile also binds its whole bytes;
 a per-recipe digest cannot replace that read, and unrelated changes invalidate its proof.
-The full boundary, initial capabilities and actual backing/proxy associations remain
-unavailable U1–U6. No dynamically resolved dependency inherits a source-only identity.
+Known required task/configuration/input/image identities and declared fd/channel operations
+remain Q/P blockers; complete opaque startup/initial-right/map/proxy correspondence is
+the accepted unknown portion of U1–U4, not a blanket U1–U6 gate. No dynamically resolved dependency inherits a source-only identity.
 K269 retains an explicit last-edit requalification/audit/close owner through later
 permission/review/provisioning changes, before k245.
 If a recipe/verifier reads a reporting document, it becomes an input. Finish all
@@ -437,7 +439,7 @@ requires a new explicit human decision.
 **Requirements are settled; actual admission remains unavailable.** K274/k275 specify the
 lifecycle and approval protocol for whole-k273 review. No authority directory, receipt,
 approval register, approved binding, executable protocol or scratch qualification exists.
-K276 supplies the [full contact design and exact unavailable work](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities);
+K276 supplies the [bounded contact claims and required-versus-accepted-unknown work](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities);
 k277 supplies the [shared entry/read design and exact unexercised segments](application-reference-packaging-runtime.md).
 The whole replacement includes their original/derivative handoff and accepted-input rules;
 mandatory whole review precedes k269. Retirement of the design qualifies no contact mechanism. The
@@ -745,7 +747,9 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 | Final receipt validation | Earlier receipt binding; independent final named/held unspent receipt/subject identity and byte comparison; complete initializer acknowledgements and terminal result |
 | Correction binding | Earlier receipt/final-validation identity and complete issuance profile/concordance; newly accepted revision, complete current profile/concordance and fresh affected verifier-control acceptance; independent field/clause authority-equivalence comparison, observed permit/intent/attempt state, exact approved changes and affected qualification requirements |
 
-Required unavailable observer/runtime identities cannot become successful entries. A proposal
+Required unavailable named observer/runtime identities cannot become successful entries.
+The payload separately binds accepted contact unknowns and their canonical amendment;
+they are neither successful identities nor admission-ineligible by that limit alone. A proposal
 with exact unavailable work may be retained for review but has no admission-eligible role.
 Order is bootstrap → payload → revision acceptance → independent verifier-control acceptance
 → staged receipt → external receipt binding → unspent publication → final receipt validation.
@@ -827,7 +831,7 @@ obligation/control/owner. Unmapped clauses, invented values or test-learned appl
 | Reference/cohorts/role/assignment | Canonical selected-reference introduction, Independent classification and whole-template assignment, Test seams and required handoff; exact build/cohorts and downstream independence |
 | Source executable/argv/predicate/framing/terminal/phases | Canonical One bounded reference-packaging pass plus contract Fixed source and terminal protocol; exact vector/raw slots/reap/two phases, no closure repair |
 | Permit/location/UID/initialization/attempts/approval/correction/persistence/privilege | Canonical Authority and admission choices plus contract authority/approval sections; exact delegated limits and irreversible consumption |
-| Scope/root/link/dot/search-only/protected/intermediate | Canonical permission/protected clauses, full ADR and contract Held roots/Topology; exact inherited rules, no invented Data exclusion |
+| Scope/root/link/dot/search-only/protected/intermediate | Canonical permission/protected clauses, full ADR and contract Held roots/Topology; exact T1–T7 class entries/A1 search-only operation order, separate A2/A3 authority/export entries, raw-before-lookup and observed-expansion refusals; no invented Data exclusion |
 | Layout/advance/base/file/locale/link states | Canonical file permission plus contract Held roots and the closed acquisition plan/One-pass acquisition and closure; exact four layouts, six basenames and full direct inventory |
 | Bytes/types/formats/duplicates/candidates/flags/tables/LocProvenance/tails/associations | Canonical evidence clauses plus contract envelope/record/typed/decoder/freeze sections; full preservation or precise unavailable work |
 | Effects/failure/no-retry/export/original/freeze/proof/channel | Canonical prohibitions/handoff plus contract lifecycle/approval/qualification/controls; every prohibited effect and applicable control |
@@ -992,8 +996,10 @@ invokes it after stage results; the fixed external checker launches its pinned i
 artifacts before the coordinator may persist a start. It derives required coordinates from
 the independent inventory, recomputes objects/results/pair outcomes, checks sets in both
 directions, provenance/contact coverage and actual input/image/permission equality. One
-schema-valid omitted case, ambiguous duplicate, stale runtime result, regression-only
-independent expectation, unavailable observer or changed input refuses before contact.
+schema-valid omitted required case, ambiguous duplicate, stale required runtime result,
+regression-only independent expectation, unavailable required named observer/identity or
+changed input refuses before contact. A separately accepted contact unknown supplies no
+pass, but does not create that blanket refusal.
 
 Follow the [invocation-channel contract](#invocation-channel-and-verifier-self-qualification):
 external accepted verifier-control evidence precedes candidate admission, and the pinned
@@ -1018,10 +1024,12 @@ Pin Apple's public xnu-12377.121.6 at commit
 `ac9718fb1af618d5ce8678d0dc6e8a58f252216f`: every BSD declaration/conditional variant,
 Mach trap/variant and selected Mach VM/port/task RPC routine/skip, with exact source
 digests and named Apple API bases. This public baseline is not identified with 26A434.
-Every active entry needs independent semantic/current correspondence; public placeholders,
-unknown current entries, opaque command payloads and service/framework extensions cannot
-be excluded by producer reachability. Installed provider/probe names, privilege, readable
-operands and runtime/service identities remain unestablished.
+Every row/branch remains a documentary candidate subject to independent named-claim
+disposition; source placeholders, call graphs and table names cannot prove current
+inapplicability. Actual correspondence required by a named native/control/image claim
+needs its own evidence. Complete current service/probe/opaque-command correspondence
+remains accepted unknown rather than a blanket admission prerequisite. All five table
+identities, macro expressions/conditional alternatives and original basis bytes bind.
 
 | Required family | Minimum boundary |
 | --- | --- |
@@ -1035,21 +1043,25 @@ operands and runtime/service identities remain unestablished.
 | C8 lifecycle/images | Actual launch/exec/thread/descendant/proxy/image closure, initial fd/right/VM state, collector readiness through drain/true termination |
 
 Forbidden contact includes request issuance even on error, cancellation or empty response.
-One independent boundary returns per-coordinate allowed observation, forbidden attempt,
+Independent bounded evidence returns per-coordinate allowed observation, forbidden attempt,
 independently established pre-effect prevention, or unavailable, with original evidence.
-It covers the full pure invocation before startup reads through actual child/proxy/async
-return. K277 owns the exact allowed runtime/read and entry partition; allowed image loading
+Each claim names its actual interval/objects/routes and missing coverage. The checker
+and required named startup controls precede Task; opaque startup/initial-right/map/proxy
+closure remains accepted unknown. The packaging companion owns known runtime/read and
+entry checks; allowed image loading
 cannot authorize that image's source/resource/proxy operations. No aggregate clean bit,
 pathname/PID-only filter, gate log, wrapper, mock or static call graph supplies independence.
 
-Each applicable operation/variant in C1–C8 requires allowed scratch positives and direct,
-child, inherited-descriptor/right/map and detached-proxy bypass cells, as specified in the
-companion. Independently perturb readiness, association, event/operand loss, filters,
-attach/startup gaps and termination/drain/reap for each applicable family. Missing events,
-initial state, payloads, loss evidence, associations or applicable controls are unavailable,
-never clean. Freeze collector/provider/launcher/kernel/API/probe/image/configuration and
-all original input/event objects before/after. No installed-query/root/protected positive
-or actual topology mutation is pure.
+The companion's [B1–B8 claims](application-reference-contact-boundary.md#observation-or-containment-interface)
+bind independently authored byte/value/association expectations, source review, exact
+retained task/parser/domain controls, actual unprivileged scratch adapters and any
+available bounded observations. Required named variants have positive/intended-negative
+cells and applicable readiness/association/loss/filter/startup/termination checks.
+Missing/failed required cells block their Q/P stage; no clean bit, mock, source review
+or accepted unknown can substitute. Unobserved routes remain explicitly unknown, not
+failed required tests or inapplicable. Freeze every claimed tool/image/configuration and
+original input/result object. No installed-query/root/protected positive or topology
+mutation is pure, and no exhaustive observation programme is commissioned.
 
 The published DTrace source constructs **syscall and mach_trap** entry/return providers;
 it is not merely a BSD list. Its published privilege glue checks superuser credentials.
@@ -1059,12 +1071,15 @@ An unqualified sandbox/broker/debugger or privileged collector is not a full sub
 No complete realizable arrangement is established under the selected authority; this is a
 bounded unavailable conclusion, not a theorem that no unprivileged arrangement can exist.
 
-U1 current kernel/probe/API universe, U2 full mechanism, U3 launch/capability state,
-U4 mediated/mapped effects, U5 per-class calibration and U6 topology/final stability remain
-precise required work under k269, ahead of their first execution or qualification-credit
-consumer. Useful unaffected authored pure work may proceed with its limited claim; real
-adapter/composition/read-closure/no-contact credit, k244 closure and k245 admission remain
-unavailable. K278 reconciles this complete boundary before whole-k273 review/integration.
+The companion's [U1–U6 partition](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities)
+separates accepted complete-universe/mechanism/opaque-startup/proxy/map gaps from required
+known UID/build/authority/image/channel/entry/read identities, named controls and final
+freeze. Named actual adapter/composition/read claims need their exact evidence; they do
+not require a full mechanism for accepted unknown classes and cannot be described as
+full no-contact. Forbidden native/startup/inherited/proxy contact could remain undetected
+under the accepted risk. Failed controls or known defects remain repair work. K287 owns
+whole-k282 reconciliation/review/integration before k269 assigns the required named
+owners; no partial child handoff or impossible U2 repeat is permitted.
 Any pursued root/sudo/SIP/helper/entitlement/signing/consent/VM alternative requires a
 concrete separate human decision and reviewed mechanism before its consumer; none is
 selected, probed or implied here. Required copies remain missing work, never useful loss.
@@ -1103,10 +1118,11 @@ classes can remain explicitly unknown without blocking, never clean/inapplicable
 
 The [read/capability partition](application-reference-packaging-runtime.md#read-partition-and-initial-capability-state)
 separates approved runtime-image/control/scratch reads from forbidden source/resource/proxy
-operations. Full independent C1–C8 coverage begins before Task/loader startup, includes
-initial fd/port/VM and detached effects, and consumes all U1–U6. Channel/edge/preflight/
-domain/bypass/loss negatives must reach the intended boundary without a live positive.
-An image allowlist or a clean producer/syscall-only log cannot establish this boundary.
+operations. Required known image/input/fd/channel/entry identities and bounded startup
+controls must pass; complete opaque initial-right/map/current-service/proxy correspondence
+stays accepted unknown under B1–B8/U1–U6, never full read/no-contact closure. Required
+channel/edge/preflight/domain/bypass/loss negatives reach their intended boundary without
+a live positive. An image allowlist or clean producer log supplies no universal boundary.
 
 Final qualification freezes the unchanged retained candidate and complete independently
 discovered task/global-config/interpreter/stdlib/resolved-package/image closure. Independent
@@ -1165,23 +1181,87 @@ three prefixes on **both** literal and walk-resolved components, with the canoni
 [protected/intermediate-contact clauses](application-population-metadata-shape.md#authority-and-admission-choices).
 It is not a sealed-System rule or device allowlist. /System/Volumes/Data remains under
 /System; no blanket Data exclusion, spelling rewrite or vendor-based outside exception
-is selected. Protected-user listing/contents and unsettled consent-risk contact are
-unavailable. Tool-controlled out-and-back expansion must refuse before outside lookup/
+is selected. Protected/unsettled/unlisted target components refuse before lookup, not
+only before listing/contents. Tool-controlled out-and-back expansion must refuse before outside lookup/
 open; held common ancestors may be used only to enter an admitted prefix. This evidence
 permission does not change the production ADR's kernel-semantics decision.
 
+### Closed pre-lookup entries and operation order
+
+The independently authored profile fixes an exhaustive allowlist before the pass. Each
+entry binds role, literal raw bytes or an exact component-class grammar, allowed parent/
+component sequence, link-expansion rule, operation/flags, expected policy outcome and
+independent positive/refusal coordinates. Preserve raw component bytes without Unicode
+normalization or lexical path cleanup. A class grammar names component boundaries,
+constraints and prohibited components; `/System/**`, `/Applications/**`, `/Library/**`,
+a filename suffix or a vendor name alone is insufficient. No entry is inferred from a
+target lookup/result or regenerated from producer successes. Review/freeze actual entries
+before use; the class inventory below specifies their design, not installed-path evidence.
+
+| Target class | Required separate entry |
+| --- | --- |
+| T1 ordinary System | Exact reviewed candidate/component classes under /System, including any admitted System/cryptex link operation, excluding the Data cases below; no sealed-volume claim |
+| T2 ordinary Applications | Exact reviewed candidate/component classes under /Applications and any separately admitted observed link sequence |
+| T3 ordinary Library | Exact reviewed candidate/component classes under /Library and any separately admitted observed link sequence; protected/unsettled components remain refused |
+| T4 direct Data Applications | Own literal /System/Volumes/Data/Applications candidate/component-class and operation entry; T1/T2 cannot stand in for it |
+| T5 direct Data Library | Own literal /System/Volumes/Data/Library candidate/component-class and operation entry; T1/T3 cannot stand in for it |
+| T6 link to Data Applications | Own admitted link parent/name/readlink operation plus expansion to the T4 sequence; retain source/link/expanded/walk spellings and checked identity |
+| T7 link to Data Library | Own admitted link parent/name/readlink operation plus expansion to the T5 sequence; retain the same separate records |
+
+| Ancestor role | Exact reviewed sequence and operation limit |
+| --- | --- |
+| A1 target common ancestors | Bootstrap one held `/` search-only directory; from it enter System, Applications or Library. Data entries additionally name /System → Volumes → Data → Applications or Library. Only needed prefixes in the selected entry are visited. Each step permits `fstatat(..., AT_SYMLINK_NOFOLLOW)`, `openat(..., O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` on a checked directory, `fstat` of held handles and named/held equality; `readlinkat` only for a separately admitted link at its held parent. No read-mode ancestor handle, listing, arbitrary sibling lookup, contents or real service request. |
+| A2 fixed authority | Separate exact `/` → Users → antony → Library → Application Support → KoineReferenceEvidence → permissions → koine.reference-evidence.macos-27.0.1-26A434.1 entries, using canonical bytes, never HOME/cwd. Search-only checked no-follow ancestor probes/handles precede the separately reviewed subject/receipt/intent/lock/create/read/write/rename/synchronization plan. Register/bootstrap siblings need their own exact entries under the approval contract. No target/user-home evidence access is granted. |
+| A3 explicit fresh export | Before its first lookup, independently reviewed exact raw destination, every ancestor/component and permitted no-follow search-only probe/handle/identity operation; only the final requested absent destination may use the qualified exclusive reservation/create/write/flush plan. No default location, arbitrary export parent, authority substitution or scan. Protected/unsettled/unlisted or known linked ancestry refuses before lookup; an unexpected link found by an admitted no-follow probe refuses before follow. Preserve failed pre-intent reservation evidence. |
+
+A2's selected home ancestry is an explicit authority-only exception to target /Users
+refusal, not an assertion that every home/Library operation is safe. A3 needs its own
+approved role-specific entry even when it shares an A2 ancestor. Protected named or
+unsettled descendants refuse in both roles before lookup; no alias to a target changes
+its role. Actual UID/held ancestry/ownership/type/filesystem acknowledgements remain Q/P
+requirements under O09–O12; a policy entry or synthetic identity cannot supply them.
+Known raw protected/unsettled/linked ancestry refuses before any role-specific lookup.
+If an unexpected link is revealed by an already admitted no-follow type probe, preserve
+that observation and refuse before open/follow or any expansion operation. No prior
+knowledge of an unobserved link is claimed. A held `fpathconf(..., _PC_NAME_MAX)` is allowed
+only as its own reviewed search-only operation when the ADR's name-limit cause branch
+needs it; an unknown result cannot certify absence or widen the admitted sequence.
+
+The policy owns the byte decision; the held adapter owns only an already admitted next
+operation. First classify the complete raw slot: reject relative/uncheckable/NUL/outside,
+unlisted or any named protected component before **any target filesystem operation**,
+including common-ancestor entry. Retain source ordinal/raw bytes/reason and all unperformed
+work. For an admitted slot, check each next component/operation against its entry before
+`fstatat`, `openat` or `readlinkat`. After an admitted link read, classify its whole observed
+expansion and physical step order before the next operation. Absolute link reset may use
+only the reviewed held A1 root; physical `..` may use only the reviewed in-prefix ancestor
+sequence. Reject an outside step even if a later step returns inside; no normalization
+erases it. Root/common-ancestor entry is not permission to traverse outside and return.
+
+After a checked .app root, the closed four-layout/fixed-file/direct-locale plan remains
+required: every descendant component/operation also needs its reviewed entry, no-follow
+type checks and refusal-before-operation. A rejected direct inventory component remains
+in its raw sequence without lookup/open. An unavailable policy/type/identity is not absence
+and cannot advance a layout, fill a missing source slot or justify a fallback. The allowlist
+permits policy decisions, not current-TCC/physical-ancestry certification or another pass.
+
 | Independently authored pure specimen | Required result |
 | --- | --- |
-| /Applications-extra/A.app; relative/uncheckable bytes | Reject literal scope before contents; preserve raw reason |
-| /Applications/A.app expanding to /Users/u/A.app | Reject resolved scope, with no root listing/contents |
-| /Applications/A.app expanding to /System/Volumes/Data/Applications/A.app | Both prefixes pass; preserve spellings/checked identity, with no sealed-volume claim |
-| /System/Volumes/Data/private/Specimen.app | Syntactic scope passes; no invented Data exclusion or consent authority; known/unsettled consent-risk contents refuse before listing/content handles |
-| /System/Volumes/Data/Users/u/{Desktop,Documents,Downloads}/X.app, directly or via an admitted link | Preserve prefix calculation/raw slot; protected-user listing/contents refuse before contact, without a prompt or missing-copy omission |
-| An admitted link expands outside all prefixes then returns inside | Retain observed link text; refuse before the first tool-controlled outside lookup/open, even if the proposed final spelling is inside; no lexical cleanup hides it |
+| /Applications-extra/A.app; relative/uncheckable/NUL bytes; unlisted class | Reject before any target lookup/ancestor operation; preserve raw ordinal/bytes/reason |
+| Ordinary /System, /Applications and /Library checked .app candidates | Own T1/T2/T3 entries plus A1 operation order and all root/layout/type/closure checks; missing entry refuses before lookup |
+| Direct Data/Applications/A.app and Data/Library/A.app | Separate T4/T5 positives; preserve checked identity/spellings without sealed/hidden-volume claims; missing entry refuses before lookup |
+| /Applications/A.app or /Library/A.app expanding to the corresponding Data candidate | Separate T6/T7 link-read and expansion positives plus T4/T5 operations; a direct-positive entry alone cannot admit a link |
+| /private or /Users/u/A.app, directly or through an admitted link | Direct slot: refuse before any target lookup. Link: retain already admitted link observation, refuse before the first expansion lookup, with no outside ancestor entry |
+| /System/Volumes/Data/private/Specimen.app | Syntax passes /System; unconditional selected risk refusal before lookup, directly or on observed link expansion, with raw evidence retained |
+| Any /System/Volumes/Data/Users home, not only Desktop/Documents/Downloads | Same pre-lookup refusal even if otherwise ordinary-looking or syntactically in scope; no home wildcard |
+| Desktop, Documents, Downloads, Containers, Group Containers, Mail, Messages, Mobile Documents at any target component | Refuse before lookup through direct or observed-link spellings; named rejection is never delayed until listing/contents. Invisible rename/redirect remains unproved |
+| Relative or absolute link expands outside then returns inside | Retain exact observed link text/physical order; refuse before the first outside lookup/open, even if final spelling is admitted. Include absolute /Users and /private expansion, and relative physical `..` beyond an admitted prefix; no lexical cleanup |
 | Mount below an admitted prefix changing device identity | Record observable transition/identities; device change alone neither widens nor narrows syntactic scope |
 | Firmlink redirect without observable link text | Preserve walk spelling/returned identity; no fabricated readlink step or hidden target spelling |
-| System/cryptex link within a prefix versus outside all three | Admit former only with all root checks; refuse latter regardless of vendor; no historical-mount whitelist |
-| Relative/absolute links, physical .., trailing slash, 32/33 expansions, named/held replacement | Exact ADR semantics and refusal; no lexical cleanup hiding resolved scope/identity changes |
+| System/cryptex link within a prefix versus outside all three | Former needs its own T1 link/expansion entry and all checks; latter refuses before first outside lookup regardless of vendor; no historical-mount whitelist |
+| Relative/absolute links, physical .., trailing slash, 32/33 expansions, named/held replacement | Exact ADR semantics and pre-operation policy checks; 33rd expansion/unknown/replaced identity refuses, preserving performed prefix and missing work |
+| A1 search-only entry versus listing/read/sibling/identity/descriptor/proxy bypass | Independent policy values and actual named scratch controls permit only A1's steps; forbidden requests refuse at their enabling point. No universal native-bypass claim |
+| Fixed A2 authority versus arbitrary subject/user-home target; reviewed A3 fresh export versus unlisted/protected/linked/overlapping ancestor | Separate role/bytes/operation positives and pre-lookup negatives; target T entries grant neither authority nor export access and the reverse grants no target access |
 
 Use controlled topology/identity inputs; run actual scratch symlink/descriptor cases
 where possible without mounting or changing the OS. Simulated mount/firmlink cases are
@@ -1195,10 +1275,14 @@ named/held changes. It cannot generally discover hidden redirect targets, prove 
 mount topology between checks, atomically certify physical ancestry or prevent opaque
 mounted-root contact before refusal. Unobserved move/restore and alias limits remain.
 Pure tests qualify honest records/refusal, never historical topology as native completeness.
-The inherited prefix spelling is not authority to request new consent. K270's delegated
-canonical amendment selects protected-content and outside-intermediate refusal, preserving
-all raw observations and precise required missing work. Unknown no-consent handling remains
-unavailable; no target probe, hidden-contact guarantee or useful-category loss follows.
+The inherited prefix spelling is not authority to request new consent. K281's actual
+canonical amendment selects closed pre-lookup/known-risk/outside refusal. Hidden ancestry,
+opaque mounted contact and current TCC retain the accepted undetected-contact risk; the
+26.5 search-only measurement is no 27.0.1 certificate. Required refused copies preserve
+raw slots/bytes/associations and exact missing work through k245/k246/k247 and whole review:
+truthful failed/incomplete package/subject boundary, never complete finite subject,
+private eligibility, useful-category loss, omission or repeat. No target/protected/topology
+probe follows. A later required scope change goes once to Antony before its consumer.
 
 ## Attempt durability and per-control proof
 
@@ -1232,7 +1316,9 @@ supplies fixture handles, never broadens the packaging interface. Mock-only test
 cannot qualify the actual syscall adapter. The fault seam records every lookup,
 listing, byte-open and read. Independent allowed
 contact expectations identify the first forbidden operation; a refusal verdict
-without a matching no-contact trace fails qualification. Include faults between
+without matching independently checked named-operation/refusal evidence fails that
+coordinate. It establishes only the controlled request sequence, never absence of
+unobserved C1–C8 native/startup/proxy/inherited contact. Include faults between
 name/held checks and acquisition, root/descendant replacement, wrong build/scope,
 pipe termination, partial reads, tool changes, cleanup and interruption. Exercise
 ordinary copies, helpers, repeated roots and alias targets, not useful copies alone.
@@ -1264,21 +1350,21 @@ cross-cutting admission and qualification gaps. A new admission-design producer 
 mandatory whole review and earned integration, then a construction-replanning producer
 with planning review and earned integration, precede the first construction increment.
 They must resolve authoritative prior-start evidence, frozen permission/input versus
-reporting identity, complete proof/inventory ownership, independently observed real
-contact, exercised no-target composition, runtime observation provenance and topology
+reporting identity, complete proof/inventory ownership, independently supported named bounded
+contact claims, exercised no-target composition, runtime observation provenance and topology
 specimens. Review k271 found substantive gaps; the replacement sections above now form
 one complete design/exact-unavailable handoff for whole-producer review, not executable
 admission. Human requirements k270 precede the instrument node;
 replacement design node k273 and its mandatory whole review/earned integration precede k269.
 Its children independently own authority lifecycle k274, admission roots k275, complete
 contact boundary k276, exact entry/runtime closure k277 and whole reconciliation k278.
-The lifecycle/anchor proposals and k276's pinned-source/unavailable contact design do not
-close actual contact/entry obligations or admit instrument qualification. K269 must assign
-U1–U6's exact live owners before affected execution/credit consumers; mandatory whole
+The lifecycle/anchor proposals and bounded contact design do not close required actual
+contact/entry claims or admit instrument qualification. K269 must assign B1–B8 required
+evidence and U1–U6 limitation/control owners before affected execution/credit consumers; mandatory whole
 k273 review and every earned integration precede consumption of this design by k269.
 The authority requirements are selected in k270; actual receipt/provisioning, independent
-approval anchors and full unprivileged external contact capability remain unavailable
-prerequisites;
+approval anchors and required named bounded-contact controls remain unavailable prerequisites; complete
+unprivileged contact coverage is the accepted unknown, not another mechanism prerequisite;
 selected design mechanisms are neither new permission nor qualified executable behavior.
 Their intended handoffs are independently usable offline replay, native byte decoding, lossless
 source observations, held-directory evidence acquisition, and durable attempt
@@ -1295,8 +1381,8 @@ and earned integration remain due at k247 before private construction and k7.
 | Offline replay/admission | Closed envelope/proof schemas, independently required inventory and usable independent verifier | Authored complete/failure envelopes, schema-valid missing-proof rejection, exact object replay and full original association/mutation controls |
 | Native decoding | Immutable bytes to native tagged tree, complete branches and joint tails | Actual CF formats/types/duplicates/coercion and loaded-image identity, checked by the independent byte/type oracle |
 | Source observations | Real concurrent emitter pipes to raw slots and initial/closure comparison | Actual EOF/termination/reap/fault traces, multiplicity and association-preserving permutation proofs |
-| Held acquisition | Scratch scope/layout inspector, complete fixed-file/direct-locale evidence and full item closure | Actual descriptor and injected race/no-contact proofs; all six locale files, complete/partial objects and every logical occurrence |
-| Qualified attempt | Fixed-authority coordinator, gated exact composition and matched complete qualification | Independent admission, external bypass/contact proof, actual task-edge rehearsal, complete matrix and full original-obligation closure after review/repair/requalification |
+| Held acquisition | Scratch scope/layout inspector, complete fixed-file/direct-locale evidence and full item closure | Actual descriptor and injected race/pre-lookup/refusal evidence at named seams; all six locale files, complete/partial objects and every logical occurrence |
+| Qualified attempt | Fixed-authority coordinator, gated exact composition and matched complete qualification | Independent admission, required named bypass/contact evidence, actual task-edge rehearsal, complete matrix and full original-obligation closure after review/repair/requalification |
 
 Construction uses a standalone Swift evidence-tool package and a separately
 implemented Python verifier with independently authored fixtures. Neither depends
@@ -1311,8 +1397,8 @@ reconciliation to explicit owners. The original final-stage assignment remains a
 proposal until that repair. An aggregate passing count supplies none of those duties.
 
 The replanning producer assigns distinct owners for: early inventory/proof/admission
-construction; byte-specimen authoring and independent native observations; collector
-capability and calibration; actual scratch adapters; fixed-composition/gate/task-edge
+construction; byte-specimen authoring and independent native observations; named bounded-observation
+capability/control qualification where claimed; actual scratch adapters; fixed-composition/gate/task-edge
 rehearsal; whole-instrument implementation review and earned integration; final unchanged
 candidate measurement; and audit/reconciliation/promotion/closure. Review repairs happen
 before final measurement; a distinct live requalification/closing owner survives them.
@@ -1367,10 +1453,10 @@ The normative sections above and the complete companions supply the contracts ci
 | --- | --- | --- |
 | k273 R2/R7/R8/R13: independent authority/originals, concurrency, partial transitions, persistence and export order | [Lifecycle](#authoritative-attempt-evidence): separate fixed subject, immutable issuance receipt, retained intent, destructive permit rename, explicit initialization/final validation, exact flush APIs/limits and verified derivatives | Qualify initializer/validator mechanics, filesystem/API assumptions, two-caller/old-fd/death/short-write/replacement/flush/deletion and scratch derivative controls before k244 close/k245. K245 verifies its actual original/derivative after the declared attempt. No receipt or OS-crash evidence exists. |
 | k273 R4/R12: independent anchors, correction authority, concordance and closed verifier/invocation proof | [Approval](#independent-approval-root): fixed sibling register, direct review/integration acceptance, terminal commissioning, acyclic issuance/current correction bindings, strict inventory and fresh channels | Independently construct/review/commission actual artifacts, accept full normative/basis/inventory/control bytes and verify own-verifier/omission/substitution/channel controls. No root, accepted revision or qualified correspondence exists. |
-| k273 R3/R6/R9/R11: all contact classes and protected/intermediate policy | [Contact companion](application-reference-contact-boundary.md): independent documentary inventory, C1–C8, per-family bypass/loss controls, protected Data and out-and-back specimens | U1–U6 are exact unavailable work: current correspondence, full unprivileged mechanism, initial capabilities, proxy/map effects, calibration and final stability. They precede actual adapter/entry/read/no-contact credit; no stronger route is selected. |
+| k273 R3/R6/R9/R11: all contact classes and protected/intermediate policy, as explicitly amended by k281 | [Contact companion](application-reference-contact-boundary.md): complete documentary C1–C8 inventory, required named B1–B8 claims and U1–U6 blocker/accepted-unknown partition; [pre-lookup entries](#closed-pre-lookup-entries-and-operation-order) T1–T7/A1–A3 | Qualify required named scratch/native/entry/read/refusal/freeze controls; actual UID/build/authority/image/channel identities remain Q/P blockers. Complete service/proxy/initial-right/map/hidden-ancestry/TCC coverage stays accepted unknown, no blanket mechanism gate or full no-contact proof. Required refused copies retain raw evidence and failed/incomplete subject duties through k245/k246/k247. |
 | k273 R5/R10/R14: exact retained packaging entry, actual reads and independent expectation bases | [Packaging companion](application-reference-packaging-runtime.md): parent challenge, identical export-request/Task/script/CLI chain, domain channel, scoped E/M/U and independent Q/P/A operation map, read/initial-state claims and named bounded bases | Required Q mechanics/actual identities/native UID/build/CF expectations and controls precede qualification; fresh P actual authority/channel/export/build/input facts precede intent. A first target query/root/closure outcomes remain unobserved until the one attempt, never calibration. Canonically accepted contact unknowns stay separate; k284/k285/k286/k287 reconciliation and whole review remain required. |
 | k273 whole reconciliation, placement and complete review | Contract, summaries, seven editable/rendered views and consumer charters share this conjunction | Mandatory whole-k273 review and every earned integration precede k269; substantive earlier-child repairs receive live repair and whole reconciliation. Design retirement qualifies no tool and closes neither k244 nor k242. |
-| k244 fixed source framing, terminal/failure, held scope/layout/locale, immutable bytes and associations | [Architecture](#selected-instrument-architecture), [record model](#evidence-records-and-association-keys) and [one-pass order](#one-pass-acquisition-and-closure) retain every occurrence and all six direct-locale files | Implement and qualify actual pipe/descriptor adapters and item rereads under the complete contact boundary. Source spelling closure alone cannot establish physical root/alias association. |
+| k244 fixed source framing, terminal/failure, held scope/layout/locale, immutable bytes and associations | [Architecture](#selected-instrument-architecture), [record model](#evidence-records-and-association-keys) and [one-pass order](#one-pass-acquisition-and-closure) retain every occurrence and all six direct-locale files | Implement and qualify actual pipe/descriptor adapters and item rereads under the required B1–B8 bounded evidence and closed T/A pre-lookup plan. Source spelling closure alone cannot establish physical root/alias association. |
 | k244 complete native decoder/format/type/serialization/duplicate limits and identities | [Typed decoder](#native-typed-decoder-and-fidelity-limits) and [expectation classes](#independent-decoder-expectation-classes) preserve original bytes separately from full native witnesses | Independently authored format bytes/bases and separately acquired current-runtime observations must qualify every admitted branch, helper/alias relation and loaded image. Unsupported/missing evidence stays explicit. |
 | k244 independent full positive/intended-negative matrix, faults, race/error/freeze/interruption/no retry | [Required proof inventory](#closed-qualification-proof-and-required-inventory) and both [control tables](#independent-controls-required-before-target-acquisition) enumerate obligations independently of producer case lists | Materialize closed schemas/oracles; observe each applicable intended counterexample, positive, input freeze and contact result before credit. K246 separately owns generated rewrite/shape discrimination. |
 | k244 reusable pure qualification and output-only packaging recipes | Retained standalone task/entry design has no live dependency from ordinary tests; exact candidate is retained without rebuilding | Implement and verify actual tasks/chain/preflight/full read closure under SCRATCH, including edge/domain/bypass controls; no placeholder command or root per-recipe identity admits LIVE. |
@@ -1391,13 +1477,13 @@ Independent roles cannot be discharged by the producer whose facts they adjudica
 | Required owner role | Placement and evidence consumed |
 | --- | --- |
 | Independent inventory/profile/concordance/basis author | Before any producer case set or decoder comparison: all normative fields/clauses, whole companions/five tables, complete pinned source objects, applicability and isolating pairs. |
-| Contact mechanism/current-universe design and independent review | U1/U2 before any actual adapter/checker/task credit; name a realizable selected mechanism or exact unavailable classes. A pursued stronger route first gets concrete human decision work. |
-| Independent launch/capability/proxy/read-closure owner | U3/U4 before actual checker/verifier image/channel, Task/interpreter, adapter or read credit; full initial fd/port/VM, backing and causal recipient correspondence. |
+| Independent bounded-contact/inventory owner | Bind every documentary row/basis and B1–B8 named claim before credit; separate U1/U2 accepted complete-universe/mechanism gaps from required current native/API/image/control evidence. No impossible-mechanism repeat or exhaustive survey; stronger authority first needs Antony's concrete decision. |
+| Independent retained launch/read/channel owner | Required known image/input/process/peer/fd/domain/startup controls precede Q credit and fresh P use; U3/U4 full opaque initial-right/map/proxy correspondence stays explicitly accepted unknown, never full closure. |
 | Proof/oracle/checker/registrar/extractor construction owner | Early usable strict schemas/inventory comparison, acyclic approval/correction/receipt and parent/inner channels; every earlier working check remains usable. |
 | Independent bootstrap/control adjudicator and commissioning owner | Review actual retained checker/registrar/verifier/launcher/runtime artifacts, acquire original known-answer/omission/substitution results and directly register acceptance before any candidate admits itself. |
 | Independent byte-specimen/current-runtime expectation owner | Named bounded formats and separately acquired original pinned CF results before producer comparison, with separate adjudication/acceptance and no shared producer exporter. |
 | Actual source/held/decoder/coordinator/entry owners | Qualify required Q adapter/native-call/entry mechanics and scoped E/M/U claims through the companion's non-consuming routes; obtain/check fresh P facts before intent. Observe only declared A target outcomes in the one attempt; no target calibration, blanket U waiver or partial-design consumption. |
-| Independent family/variant calibration owner | U5: every applicable direct/child/inherited/proxy bypass and readiness/association/drop/filter/attach/termination cell before retained-candidate measurement. |
+| Independent named-control owner | U5: every required named B/Q variant/direct/child/inherited/synthetic-proxy positive/negative and applicable readiness/association/loss/filter/startup/termination check before measurement; missing/failed required cells block, no universal observation programme. |
 | Qualified initializer and separate actual receipt validator | After mechanics/artifact/control qualification: actual UID/ancestors/filesystem support, staged issuance binding, one publication and final validation before k245. Neither packaging nor a scratch receipt initializes authority. |
 | Offline derivative constructor and independent association verifier | After original freeze: exact complete or explicitly incomplete original-to-export sets/bytes/coordinates, without new source work; failures retain consumed authority. |
 | Whole implementation producer/reviewer/integration and repair owners | Review actual complete instrument/bootstrap/entry/observer/oracle artifact conjunction before final measurement. Earned review is cut lazily before its consumer; substantive repairs get precise live ownership and affected requalification. |
@@ -1405,12 +1491,12 @@ Independent roles cannot be discharged by the producer whose facts they adjudica
 | Independent final audit and separate reporting owner | After stable actual requalification/acceptance: item-by-item original proof/required-set/input/image/authority comparison. Reporting outside extracts cannot amend a consumed input or certify an unavailable cell. |
 | Distinct k244 close/promotion owner | Only after every original k244 condition and prior review/integration/provisioning/validation/audit passes; carry exact original/derivative/limits to k245. Retain or insert live repair/requalification ownership through k245 admission if any input changes. |
 
-No closing role absorbs an unavailable mechanism into prose. Full design completion is
-the boundary delivered now; U1–U6, every unexercised native segment, actual approval and
-receipt identities and all executable controls remain absent. Preserve the selected
-unprivileged route and progress unaffected pure work with its limited claim. If its full
-mechanism cannot be named, the affected work stays live; a specified stronger alternative
-needs its own human trade-off/decision and review before the consumer, not target exploration.
+No closing role absorbs missing required evidence into prose. K285/k286/k287 and whole
+k282 review/integration still precede k269; partial repair is not a construction handoff.
+Every required unexercised native/image/entry/control/authority/freeze claim remains live;
+complete contact gaps remain accepted unknown with explicit undetected-contact risk.
+No full mechanism is demanded to repeat its unavailable conclusion. A specified stronger
+alternative needs its own human decision/review before the consumer, not target exploration.
 No new authority, quota, support floor, ABI, useful loss or duplicate native programme follows.
 
 ## One-pass acquisition and closure
@@ -1460,8 +1546,9 @@ are original observations, not grounds to drop rows.
 Read contents only for checked .app directories whose original spelling is under
 /System, /Applications or /Library **and** whose resolved root remains within
 those same locations, using component boundaries rather than string prefixes.
-The selected protected-content refusal and outside-intermediate refusal additionally
-apply, with only search-only held common-ancestor entry into the three prefixes.
+The closed pre-lookup T1–T7/known-risk entries and A1 search-only common-ancestor
+operations additionally apply. Reject raw slots before any target lookup and observed
+link expansions before their next operation. Separate A2/A3 ancestry grants no target access.
 Outside, malformed, unavailable and non-directory slots stay in the raw sequence
 with a reason, without contents acquisition. Scope checks and held-directory
 containment must precede descendants; a symlink/race cannot turn an in-scope
@@ -1604,7 +1691,7 @@ target reads never occur. These controls are **specified here, not yet executed*
 
 | Control | Required discrimination |
 | --- | --- |
-| Scope/build positives and faults | Admit the exact build and permitted component-bounded checked roots; reject wrong build, /Applications-extra, outside resolved roots/intermediate operations, protected or unsettled consent-risk contents, raced descendants and arbitrary query/file/language settings before forbidden contact |
+| Scope/build positives and faults | Admit the exact build and permitted component-bounded checked roots; reject wrong build, /Applications-extra, outside resolved roots/intermediate operations, protected/unsettled/unlisted components before lookup, raced descendants and arbitrary query/file/language settings before forbidden contact |
 | Raw-source framing and failures | Preserve empty/repeated/newline/non-UTF-8 slots losslessly where emitted; retain outside slots and source failure; truncated framing, incomplete terminal response and duplicate deletion cannot pass |
 | Layouts and file states | Cover all four layouts, coincident bases, checked absence versus denial/unknown, empty/absent/non-regular/link/malformed/refused files and all six fixed locale probes; refusal cannot turn into flat fallback |
 | Bytes and decoder formats | Exercise complete binary/XML/OpenStep and unsupported/malformed specimens; payload clipping, conversion substituted for original, wrong digest/length, absent/empty collapse and unavailable decoder reported as success fail |
@@ -1644,9 +1731,9 @@ row above. They are specified, unexecuted, and never qualify from a design bit.
 | Fresh framed channel versus leaked endpoint, second frame, missing EOF/reap, wrong domain or process binding | Independent external checker/coordinator reject at the intended channel coordinate; required contact evidence cannot come from the candidate |
 | Permission profile matches frozen clauses versus one changed scope/effect/file group | Independent concordance/value comparison refuses before start |
 | Reporting-only promotion versus changed measured extract/task/tool or proof inserted into an input | First preserves qualification; latter invalidates it and requires a new run |
-| Real scratch pipe/descriptor calls versus direct syscall/child bypass with empty wrapper trace | External original trace detects exact contact, even with a clean producer trace |
-| Ready complete observer versus drop/filter/attach/operand/identity loss | Relevant contact coordinate unavailable; no clean no-contact verdict |
-| Exact retained entry versus pure→packaging/live intent, omitted admission or IPC/proxy bypass | Full independent contact boundary required; syscall-only clean trace is insufficient; exact entry/task/UID/build/location and channel refusal must be credited |
+| Real scratch pipe/descriptor calls versus named direct/child bypass with empty wrapper trace | Independent original bounded evidence identifies the intended operation/refusal within its named scope; unavailable required observation blocks that claim, while unobserved native routes remain explicit accepted unknown |
+| Required named observation versus drop/filter/attach/operand/identity loss | Relevant required coordinate fails/unavailable at Q/P; accepted unobserved coverage stays separate, never a clean no-contact verdict |
+| Exact retained entry versus pure→packaging/live intent, omitted admission or named scratch IPC/proxy bypass | Actual retained task/parser/domain/entry controls, native UID/build/image and known peer/channel facts are required; source review or a clean partial trace cannot replace them. Full unobserved proxy/right/map coverage stays accepted unknown |
 | Independent native observation versus copied producer tree/regression-only expectation | Corroborated pinned CF fact passes; provenance failure cannot close independent runtime coverage |
 | Data-volume/mount/firmlink/cryptex/link specimens | Canonical literal/resolved and protected/intermediate refusal results, held common-ancestor entry and honest simulation/identity limits; no topology-derived scope change or hidden-contact certificate |
 | Retained image versus rebuilt/swapped image, reused admission channel or changed runtime | Exact identity/invocation rejection; matching source or old proof alone cannot admit |

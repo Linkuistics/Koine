@@ -97,8 +97,10 @@ design, whole-producer review and earned integration. Advertisement/downstream
 consumption remain held until full useful native qualification passes. Historical
 arithmetic is counterexample evidence only, and every native G/N/V stays pending.
 The reference instrument's [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
-requires k281's actual contact/lookup choices and k282's complete reviewed admission
-repair before k269. Neither an unavailable mechanism nor an unrepaired credit/activation/
+requires k281's accepted bounded contact/pre-lookup choices and the complete reviewed
+k282 repair before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
+full service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains explicitly unknown,
+while required known identities/controls stay blockers. Neither an unavailable mechanism nor an unrepaired credit/activation/
 registration/input partition supplies the finite subject or private eligibility.
 
 For the explicit ordinary reader, inject the root type and descriptor-file seams:

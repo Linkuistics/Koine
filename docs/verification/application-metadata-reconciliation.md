@@ -29,7 +29,7 @@ consumption, useful fit and every native verdict retain their independent holds.
 
 The [complete reference-admission handoff](application-reference-evidence.md#whole-producer-obligation-comparison)
 supplies a whole-design/exact-unavailable boundary for review, not the missing finite
-subject. Actual unprivileged C1–C8/U1–U6, retained-entry/read/native-call qualification,
+subject. Required named B1–B8 controls, retained-entry/read/native-call qualification,
 independent approval and one-time provisioning/validation remain required before its
 unused pass. Original/verified-derivative evidence, independent roles, complete generated
 rewrite controls and whole-subject review still precede private eligibility. Later input/
@@ -38,7 +38,9 @@ no design retirement closes instrument qualification or weakens this family's ga
 The [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
 requires k281's concrete human contact/lookup decisions and k282's complete reviewed
 credit/activation/registration/input-partition repair before k269; the prior proposal
-supplies no settled construction admission. No selected product or native duty changes.
+supplies no settled construction admission. K284 scopes C1–C8/U1–U6 accepted contact gaps separately from required known identities/
+controls and fixes T1–T7/A1–A3 refusal-before-lookup entries. Full no-contact/hidden-ancestry/
+current-TCC coverage remains unknown. No selected product or native duty changes.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no

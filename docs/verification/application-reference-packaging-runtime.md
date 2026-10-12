@@ -3,9 +3,9 @@
 [Packaging → Rehearse the retained entry in a bound domain](../design/architecture/index.html#diagram-native-reference-packaging)
 shows the proposed entry and read boundary. Graphs enter at the dark Start here node.
 This is k277's **design proposal** within the [complete replacement handoff](application-reference-evidence.md#whole-producer-obligation-comparison),
-awaiting whole-k273 review. It implements no task,
-script, channel, schema, collector or observation programme. Actual entry/read/no-contact
-qualification remains unavailable through the [contact boundary's U1–U6](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities).
+under the k282 whole repair/review hold. It implements no task,
+script, channel, schema, collector or observation programme. Required named entry/read qualification remains unperformed; complete no-contact
+coverage remains accepted unknown under the [contact boundary's U1–U6](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities).
 The single reference pass is unused; no receipt, current runtime expectation or qualified
 image follows from these notes. All original k244 obligations and product/native holds bind.
 
@@ -25,8 +25,8 @@ prerequisite is waived. The [review handoff](application-reference-evidence.md#r
 owns this exact construction hold. Canonical contact/lookup clauses are amended only
 as explicitly compared; all other permission and qualification duties remain. Full
 current-service/proxy/initial-right/map coverage is an accepted unknown, not a blanket
-prerequisite or full no-contact proof. The older read/U tables below require
-k282's exhaustive bounded-claim reconciliation before construction. Whole-byte inputs
+prerequisite or full no-contact proof. K284 reconciles the read/U tables below to named required claims and accepted unknowns.
+K285/k286/k287 and whole review still precede construction. Whole-byte inputs
 are retained; the narrow status relocation grants no companion/table reporting slice.
 
 ## Retained entry and domain channel
@@ -80,23 +80,25 @@ rejects every scratch map, fixture authority, scratch revision/result, selector 
 extra inherited capability. A SCRATCH launch rejects LIVE verdicts/intents and never opens
 the fixed live permit subject. The checker has separate domain validation paths, both
 using the same request/parser logic; each tests the other domain's valid-looking messages.
-Possession of a socket number is no authentication. Endpoint/process correspondence and
-pre-start capability closure consume U2–U5; deliberate same-UID trust-root forgery retains
+Possession of a socket number is no authentication. Required known endpoint/process/image/descriptor correspondence consumes named B3/B6/B8
+Q/P controls; complete opaque pre-start rights/maps/proxy closure stays accepted unknown; deliberate same-UID trust-root forgery retains
 the selected cooperative limit. This design promises no OS sandbox by naming a channel.
 
 The outer commissioned checker and independent boundary must be ready before the first
 Task/interpreter/loader operation. The coordinator's gate begins too late to cover startup
 constructors. If a task edge bypasses the script, invokes mdfind, loads a substituted image
-or drops the channel, independent prevention/observation must still catch it before a
-forbidden effect. An invalid channel cannot be tested by actually attempting LIVE contact.
-Until that mechanism qualifies, these are authored intent/refusal requirements only.
+or drops the channel, required independent retained-edge/parser/domain and named scratch-operation controls
+must detect/refuse that deliberate counterexample at its intended boundary. They cannot
+prove every unobserved native/startup/proxy bypass absent. An invalid channel cannot be tested by actually attempting LIVE contact.
+Until those required named controls/identities qualify, this entry has no Q credit.
+Their scoped success supplies no complete startup/pre-effect contact certificate.
 
 Keeping the shared project Taskfile would simplify invocation but bind unrelated changes
 and its dynamic dependency environment. A separate internal coordinator entry would miss
 Task/script/parser preflight. The selected standalone chain localizes those reads and
 rehearses the actual packaging entry, at the cost of explicit launch/channel commissioning.
-Revisit it if the retained runner cannot preserve the channel or its complete startup
-closure cannot qualify; retain the unavailable boundary rather than credit a shorter path.
+Revisit it if the retained runner cannot preserve the channel or its required known startup/entry/image
+claims cannot qualify; retain the unavailable boundary rather than credit a shorter path.
 
 ## Operation and credit map
 
@@ -264,62 +266,68 @@ identities. Final qualification uses the unchanged retained candidate, not a mut
 
 ## Read partition and initial capability state
 
-The [whole-byte contact companion and all five inventory tables](application-reference-contact-boundary.md#independent-source-baseline)
-are mandatory basis inputs. They are not reporting slices. Unknown current universe,
-capability, proxy or mapping association prevents read-closure/no-contact credit.
+The [whole-byte contact companion and all five tables](application-reference-contact-boundary.md#independent-source-baseline)
+bind required named B1–B8 claims and U1–U6 limitations. Full current-universe/initial-right/
+map/proxy correspondence remains accepted unknown; known required reads/images/channels/
+operations still need their own exact Q/P evidence. No complete read-closure/no-contact
+credit follows from source review, a manifest, an image allowlist or a partial trace.
 
-| Partition | Allowed pure use and required association |
+| Partition | Allowed pure use and required bounded association |
 | --- | --- |
-| Commissioned trust base | Independently accepted checker/launcher/boundary and their complete earlier accepted runtime/read roots. Their commissioning is the terminal trust act; their own claims cannot bootstrap it. Unknown initial state refuses downstream admission. |
-| Runtime-image reads | Exact approved Task/interpreter/CLI/verifier/CF/Security/libSystem/dyld and other actual images, including shared-cache backing/subcaches, loader metadata and startup dependencies; object/range/operation and actual loaded-image association required. `/System` spelling or a signed image alone is not an allow rule. |
-| Control/input reads | Complete retained Taskfile/script/configuration/runtime trees, normative extracts via the qualified extractor, schemas, independent inventories/bases/expectations and immutable proofs. Outer checker may read its commissioned approval records; the pure coordinator accesses only mapped scratch permit subjects. |
-| Scratch I/O | Exact constructed input/output directories/files, emitter pipes, unnamed control channels and independently created synthetic proxy endpoints, with operation/role/generation and transfer provenance. Input objects and output objects have different permissions. |
-| Forbidden contact | Real source/index request issuance, mdfind exec, application-root/resource/registration/coordination inspection, protected/outside-intermediate operations, real proxy/service requests and every prohibited effect. A runtime image may be loaded yet its query/resource/proxy operation remains forbidden. |
-| Unknown | Unclassified syscall/command, configuration lookup, image/backing object, descriptor/right/map, service/proxy or read result is unavailable, never an implicit runtime exemption. |
+| Commissioned trust base | Independently accepted checker/launcher and required named observation/adjudication artifacts, with required known runtime/input/image identities and controls. Commissioning is a separate terminal trust act; the producer cannot self-certify it. Unknown required identity blocks; unobserved opaque capability completeness is the separately accepted limit. |
+| Runtime-image reads | Exact required approved Task/interpreter/CLI/verifier/CF/Security/libSystem/dyld/other actual image and declared loader/cache/configuration objects/operations with independent current identity/evidence. Known required shared-cache/subcache or consumed-object identity cannot be waived as contact risk. Complete unobserved backing/mapping/startup correspondence stays unknown. /System or signing alone grants no permission. |
+| Control/input reads | Whole retained Taskfile/script/configuration/runtime/package inputs, exact qualified normative extracts, schemas, whole companions/tables/bases/expectations and immutable proofs. Checker reads only its approved actual register route; pure coordinator uses only mapped scratch permit subjects. Unknown/changed required bytes or undeclared observed dependency blocks. |
+| Scratch I/O | Exact constructed input/output objects, emitter pipes, unnamed control channels and independently created synthetic endpoints, with operation/role/generation/known transfer provenance. Mutable outputs do not grant read authority over arbitrary inputs. |
+| Forbidden contact | Actual source/index request issuance, mdfind exec, application-root/resource/registration/coordination inspection, protected/outside-intermediate operations, real service/proxy requests and prohibited effects in pure qualification. Allowed loaded images cannot authorize their query/resource/proxy facilities. |
+| Unknown contact coverage | Unobserved complete current-service/native/startup/initial-right/map/proxy effects are explicitly accepted unknown. Known unlisted requests/operations refuse at their enabling point; observed undeclared input/operation or a failed required control remains blocking repair, never implicit runtime permission. |
 
-Before any subject startup, independently establish the actual launcher and descendant
-incarnations, cwd/root identities, thread/async ownership and initial fd/port/VM map. fd
-0 is a declared empty input; fd 1/2 are held isolated log outputs; fd 3 is the unique
-checker endpoint. Every additional fd has an enumerated object/flags/role/generation
-or is closed by explicit spawn actions. Approval/permit locks never reach source children.
-New endpoints/fds, dup/reuse, SCM_RIGHTS/fileport and fork/exec inheritance retain ancestry
-through true return. No inherited directory fd or mapped application bytes is allowed
-merely because no pathname is opened during the run.
+Before subject startup, the accepted launcher owns known parent/child/image/cwd and
+explicit descriptor actions: fd 0 declared empty input, fd 1/2 held isolated logs, fd 3
+unique checker endpoint. Enumerate each known additional fd's object/flags/role/generation
+or close it by explicit spawn actions. Qualify actual preserved/dropped/reused/leaked/
+miswired fd/channel and known-peer checks on the retained chain. Approval/permit locks
+never intentionally reach source children. Required known transfer/EOF/drain/reap/true-
+return evidence is mandatory, not replaced by U3/U4 risk acceptance.
 
-Mach bootstrap/task/thread/special/exception ports and inherited rights need actual
-independent enumeration, disposition and transfer/proxy coverage or independently proven
-pre-effect restriction. Do not pretend closing fds removes them. VM ranges require backing
-object, sharing, protections and inheritance/provenance, including dyld shared-cache/image
-mappings, anonymous/shared/remapped memory and plain loads without new syscalls. Anonymous
-does not mean proven harmless. Unknown rights or backing objects keep U3/U4 live. A normal
-process launch supplies no certificate of empty capabilities; no sandbox/VM/helper or new
-signing posture is selected by this initial-state requirement.
+Mach bootstrap/task/thread/special/exception ports, unobserved inherited rights and full
+VM/backing/sharing/protection ancestry may remain unknown under the selected limit.
+Closing fds establishes no port/map absence; ordinary launch is no empty-capability
+certificate. Source review and any available narrow observations name only their actual
+scope. No new sandbox/VM/helper/signing posture or full-state enumeration is commissioned.
+Opaque inherited memory, startup calls or detached proxies could contact forbidden
+resources undetected: record that accepted risk, never no-contact or known harmlessness.
 
-Observation begins before Task, not after the Swift gate or Python imports, and ends after
-all child/proxy/async returns, drains and reap. Independent readiness, association, loss,
-filter, attach and termination controls apply per C1–C8 variant. A detached recipient,
-inherited map or opaque startup request stays inside the closure. Unknown current service
-correspondence cannot be repaired by a synthetic socket test. No mechanism satisfying this
-boundary is established; U1–U6 retain exactly their original missing work and placements.
+The commissioned checker and required named startup controls precede Task. Each bounded
+observation identifies its ready interval and terminal coverage; post-import/gate evidence
+cannot describe earlier reads. Actual declared child/channel/async operations retain their
+required lifetime checks. Unobserved constructor/thread/daemon/proxy/map effects remain
+inside the stated limitation, rather than silently outside the claim or a blanket gate.
+U5 required controls and U6 required freeze/refusal checks still block when failed/missing.
 
 ## Independently discovered task and runtime inputs
 
-The independently owned full boundary must return actual input-read/mapping/request
-records in addition to forbidden-contact records. Each record associates process/thread
+The independent bounded-evidence owner retains actual named input-read/mapping/request
+records available within B1–B8 alongside required source/configuration review and scratch
+entry/native controls. Each record associates process/thread
 incarnation and interval, attempted and resolved object/identity, operation/range/result,
 fd/right/map generation and causal parent/proxy. The declared dependency manifest is an
 independently reviewed proposal checked against those observations, never a producer's
-import list, module cache, syscall wrapper or aggregate "no extra reads" bit. This extends
-the required U3/U4 interface; it names no already available collector.
+import list, module cache, syscall wrapper or aggregate "no extra reads" bit. Complete
+unobserved U3/U4 startup/map/proxy discovery remains accepted unknown; this
+interface commissions no collector or exhaustive observation programme.
 
 Discover on frozen scratch subjects before accepting the final closure. Enumerate every
-actual read, lookup attempt, mapping and configuration/IPC dependency, then classify it.
+reviewed declared and independently observed named read/lookup/mapping/
+configuration/IPC dependency, then classify it. State the discovery sources and missing
+coverage explicitly; this is not every possible opaque runtime effect.
 Compare the complete observed set in both directions with the declared closure; approved
-unused retained runtime files may be an explicit conservative superset, but every actual
+unused retained runtime files may be an explicit conservative superset, but every reviewed declared/observed
 dependency must have a bound object/operation and reason. Failed/missing lookups also bind
-parent/name/outcome: a file appearing later can change behavior. Direct reads of inherited
-maps require backing provenance even without events. Readiness gaps, opaque recipients,
-unreadable backing, loss or an unclassified member makes discovery incomplete.
+parent/name/outcome: a file appearing later can change behavior. A required claimed
+mapping needs its named backing evidence. Unobserved inherited-map/
+opaque-recipient coverage remains accepted unknown, never complete discovery. A gap/loss/
+unclassified member in a required named observation or known required backing identity
+blocks its claim; it cannot be excused by that wider limit.
 
 Freeze entire bytes/length/digest plus named/held device/inode/type/stamps where available
 before/after; capture the actually consumed object, not just a pathname hashed earlier.
@@ -330,18 +338,19 @@ correspondence with what actually launches; a copy under the same name is not th
 
 | Input family | Complete freeze obligation |
 | --- | --- |
-| Task and launch configuration | Whole standalone Taskfile and every actually read include/global/user config/dotenv/template/script/interpreter; fixed argv, cwd, task version/image/build, all effective variables/environment. Disable optional search/remote/cache behavior in the reviewed launch, then independently verify it is absent. If a root Taskfile or user config is actually read, bind all bytes and requalify its edits. |
+| Task and launch configuration | Whole standalone Taskfile and every actually read include/global/user config/dotenv/template/script/interpreter; fixed argv, cwd, task version/image/build, all effective variables/environment. Disable optional search/remote/cache behavior in the reviewed launch, then verify the named controls refuse those behaviors, stating unobserved startup/proxy limits. If a root Taskfile or user config is actually read, bind all bytes and requalify its edits. |
 | Swift/native build | Exact retained executable and every source/build manifest, lock/resolution, compiler/SDK/linker/flags/config used to produce it; executable slice/load commands/signature identities as applicable. Packaging never rebuilds. Source equality does not replace image equality. |
 | Python verifier and adjudicator | Absolute retained interpreter/launcher, exact version/build/config, executable/libpython and extension images, complete retained stdlib (including import/encoding/zip machinery), all scripts, resolved distribution/module/metadata/package-data bytes and lock/wheel/sdist identities. Pin the actual transitive installation, not package names/version strings alone. |
 | Python startup policy | Fixed isolated startup with no user site, PYTHONPATH or opportunistic current-directory imports; explicitly chosen import roots and environment. No new .pyc/cache writes during qualification/live admission; any consumed bytecode/cache/config still joins the closure. Qualify the retained interpreter's actual flag behavior; flags alone establish no absence. |
-| Dependency resolver/build tools | Resolve/build before measurement. No `uv run --with`, network resolution, package installation or compiler invocation in final package/admission recipes. If any resolver/tool/cache is actually read, bind its full actual closure; removing it from the declared list cannot erase that dependency. |
+| Dependency resolver/build tools | Resolve/build before measurement. No `uv run --with`, network resolution, package installation or compiler invocation in final package/admission recipes. If any resolver/tool/cache is actually read, bind its complete known consumed objects and required named read evidence; removing it from the declared list cannot erase that dependency. |
 | OS/runtime/loader | Actual OS/product/build/architecture, kernel/API/probe configuration and runtime-image set, exact shared-cache/subcache metadata/backing identity and UUIDs, loaded slice/build IDs and obtainable full-byte identities. Distinguish SDK/historical source from loaded images. Unobtainable required backing/image identity remains U1/U3, not source-hash equivalence. |
 | Independent contact/basis/expectation | Entire contact companion, five tables and exact original documentary basis objects; mechanism/provider/config/launcher images; full independent format/runtime programmes, controls, original results and reviewed applicability. Mutable documentary retrieval needs exact accepted bytes/digest. |
 
 Current official [Task configuration](https://taskfile.dev/docs/reference/config) and
 [schema](https://taskfile.dev/docs/reference/schema) describe configuration discovery,
 environment, includes and dotenv. They motivate explicit freezing; the retained runner's
-actual version/configuration/reads must be separately pinned and observed. A standalone
+actual version/configuration/reads need their required independently pinned named
+read/configuration evidence. A standalone
 Taskfile does not prove it reads nothing else. The existing project recipes use dynamic
 `uv run --with` dependencies; their checks are not this retained packaging environment.
 
@@ -397,8 +406,8 @@ Producer-learned frozen outputs remain regression-only and close no independent 
 
 ## Owners, stability and exact unavailable handoff
 
-K278 reconciles the complete contract/extract set, README/summary/view layers, earlier
-authority/anchor terminology and these obligations before mandatory whole-k273 review.
+K287 reconciles the complete contract/extract set, README/summary/view layers, authority/
+anchor terminology and these obligations before mandatory whole-k282 review/integration.
 This companion's full bytes become an accepted normative basis alongside the complete
 contact companion/tables; the independent profile/concordance/inventory must bind both.
 K269 consumes only the whole reviewed conjunction and assigns the following live owners
@@ -407,9 +416,9 @@ and placements, without converting this design into implementation leaves:
 | Required responsibility | Placement and closure condition |
 | --- | --- |
 | Retained entry/channel/task/script/parser and operation-map construction | After whole-design review, implement all independently assigned Q mechanics/identity/control coordinates and scoped E/M/U evidence. Separate fresh P facts before intent from A target outcomes; a required Q/P U claim blocks at its stage, while target-success U is not an earlier prerequisite. |
-| Independent launch/read discovery and capability correspondence | Preserve U1–U4 before the first actual adapter/checker/task credit; establish complete initial fd/port/map and causal/runtime closure. No selected realizable mechanism exists yet. |
+| Independent bounded launch/read/channel correspondence | Required known Task/interpreter/CLI/checker/verifier/image/input/fd/peer and named startup controls precede Q credit/P use. U1–U4 complete current-service/opaque-startup/initial-right/map/proxy coverage stays accepted unknown; no full-mechanism repeat. |
 | Complete independent format specimens and current-runtime observations | Before decoder comparison or required typed-proof credit; separate author/acquirer/adjudicator, exact basis and original results, externally accepted inventory. |
-| Independent per-class/channel/preflight calibration | U5 and the paired controls above before unchanged-candidate measurement; no target positive, copied producer facts or clean partial trace. |
+| Independent named operation/channel/preflight controls | U5/B1–B8 required positives and intended negatives before unchanged-candidate measurement; no target positive, copied producer fact, missing required cell or universal clean-trace credit. |
 | Actual provisioning/receipt/export/derivative validation | Qualified separate one-time initialization and independent validation establish real fixed-authority facts; already qualified native UID/build/channel mechanics and fresh P rechecks/refusal precede intent. The explicit requested export has P ancestry/reservation checks; original/derivative outcomes are A. No scratch receipt, final validation or proof arms LIVE. |
 | Last-edit requalification and independent audit | U6 after all relevant input/task/runtime/contract/review repairs, including later corrections/provisioning changes; complete original k244 closing check only on stable accepted proof. |
 
@@ -423,7 +432,8 @@ and audit per coordinate after the **last** edit. If work was closed too early, 
 live repair/requalification ahead of its consumer; no proof reference or task-summary edit
 can waive it. Provisioning adds live validation evidence without self-hashing a final proof.
 
-Nothing here closes U1–U6 or makes k244/k242 complete. Useful byte/value/intent design may
+Nothing here supplies required actual B/Q/P evidence or makes k244/k242 complete.
+Accepted U1–U4 contact gaps are limitations, not perpetual full-mechanism obligations. Useful byte/value/intent design may
 progress with limited claims. Required Q mechanics/native-call/image/control evidence and
 P actual authority/build/UID/channel/export facts stay unavailable until their own evidence
 exists. A target outcomes are unperformed before the selected attempt, never its qualification

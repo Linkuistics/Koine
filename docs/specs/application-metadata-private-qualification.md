@@ -331,8 +331,11 @@ retain their independent duties. P1024's evidence decision is described in the
 Its reviewed distribution/envelope must land before private eligibility. Every
 native verdict here is PENDING.
 The reference instrument's [review integration](../verification/application-reference-evidence.md#review-integration-and-required-decisions)
-requires actual contact/lookup decisions and complete admission repair with mandatory
-whole review before construction replanning; its earlier proposals supply no eligibility.
+requires the accepted contact/lookup decisions and complete admission repair with mandatory
+whole review before construction replanning. K284 scopes B1–B8 evidence and T1–T7/A1–A3
+pre-lookup entries; accepted full contact gaps supply no no-contact proof or finite subject.
+Required known identities/controls and all product/native duties remain; this repair
+supplies no private eligibility.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

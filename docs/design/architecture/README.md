@@ -16,11 +16,15 @@ remain live.
 
 Current changes:
 
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Separated earlier Q mechanics from fresh P checks and A target outcomes, with independent release still required.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Placed Q before qualified provisioning, P before intent, and first target outcomes after synchronized consumption/start.
-- [Operation and credit map](../../verification/application-reference-packaging-runtime.md#operation-and-credit-map) — Assigned scoped E/M/U evidence and exact blocking stages to every designed operation.
-- [Non-consuming qualification routes](../../verification/application-reference-packaging-runtime.md#non-consuming-qualification-routes) — Specified actual pure native calls, separate qualified authority validation and fresh-export preflight without a LIVE calibration role.
-- [First-attempt outcomes and required counterexamples](../../verification/application-reference-packaging-runtime.md#first-attempt-outcomes-and-required-counterexamples) — Preserved first-source/root failure, raw/race/closure limits and incomplete-evidence disposition without waiving required controls.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Replaced the pending human/full-mechanism gate with accepted B/U evidence and T/A pre-lookup branches.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Scoped startup claims and added separate authority/export and raw-before-lookup entries.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Retained Q/P blockers while naming accepted contact gaps and distinct ancestry entries.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Required named retained-entry/read evidence without full contact coverage.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced universal observer credit with bounded claims and pre-lookup acquisition entries.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Scoped the contact prerequisite while preserving required actual facts.
+- [Observation or containment interface](../../verification/application-reference-contact-boundary.md#observation-or-containment-interface) — Bound B1–B8 evidence and explicit accepted unknowns to every C family.
+- [Closed pre-lookup entries and operation order](../../verification/application-reference-evidence.md#closed-pre-lookup-entries-and-operation-order) — Enumerated T1–T7 and A1–A3 role/operation entries and exact raw/link refusal order.
+- [Read partition and initial capability state](../../verification/application-reference-packaging-runtime.md#read-partition-and-initial-capability-state) — Separated required known identities/controls from opaque initial-right/map/proxy limits.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -28,7 +32,7 @@ corrections. K281's actual choices accept named bounded contact claims and unkno
 current-service/proxy/initial-right/mapping coverage with residual accidental-contact
 risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
 with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
-absent. K282 is a five-seam producer: k283 repairs credit; k284 contact/pre-lookup claims;
+absent. K282 is a five-seam producer: k283 repairs credit; k284 applies contact/pre-lookup claims;
 k285 LIVE activation/acceptance; k286 input partition; k287 the complete reconciliation
 and mandatory whole review. Every earned integration precedes k269; no partial child
 is an implementable admission handoff or spends k245's pass.

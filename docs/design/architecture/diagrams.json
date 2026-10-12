@@ -2,26 +2,42 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Separate qualification credit from fresh facts and first target outcomes",
-    "status": "K283 credit design; remaining k282 repairs and mandatory whole review precede k269",
-    "summary": "K281 selected bounded contact evidence, closed pre-lookup refusal/incomplete disposition and exact status relocation. The Q/P/A operation map now separates earlier mechanics/identity/control qualification, fresh authority/build/UID/channel/export/input checks before intent, and source/root/closure outcomes first observed during the one consumed attempt. Required failed or unavailable Q/P claims still block; the target cannot calibrate wiring. K284 contact/pre-lookup, k285 independent LIVE release/acceptance, k286 normative inputs and k287 whole reconciliation remain live. No partial handoff, authority, executed instrument control, finite subject or native verdict follows; the pass is unused.",
+    "title": "Apply bounded contact claims and refusals before lookup",
+    "status": "Selected k281 limits applied; whole k282 repair/review still required",
+    "summary": "B1–B8 bind named evidence while full service/proxy/initial-right/map and hidden-ancestry/TCC gaps stay accepted unknown. T1–T7 and A1–A3 require distinct reviewed entries before raw/component/link operations. Required UID/build/authority/image/channel/entry/freeze facts still block. No target operation or partial construction handoff.",
     "diagramIds": [
+      "native-reference-contact",
       "native-reference-packaging",
       "native-reference-admission",
       "native-reference-proof",
-      "native-reference-contact",
       "native-reference-instrument",
       "native-reference-evidence",
       "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
+        "id": "native-reference-contact",
+        "summary": "Replaced the pending human/full-mechanism gate with selected B/U evidence and T/A pre-lookup branches."
+      },
+      {
         "id": "native-reference-packaging",
-        "summary": "Separated scoped Q proof, fresh P preflight and A target outcomes; independent LIVE release remains required and failed P refuses before intent."
+        "summary": "Scoped startup evidence and added separate authority/export plus raw-before-lookup entries."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Added earlier Q mechanics, fresh P authority/export checks and A first-target outcomes without changing consumption/start ordering."
+        "summary": "Kept required Q/P blockers while naming accepted contact gaps and separate ancestry entries."
+      },
+      {
+        "id": "native-reference-proof",
+        "summary": "Bound named retained-entry/read evidence without requiring full contact coverage."
+      },
+      {
+        "id": "native-reference-instrument",
+        "summary": "Replaced universal observer credit with bounded evidence and pre-lookup acquisition entries."
+      },
+      {
+        "id": "native-reference-evidence",
+        "summary": "Changed the contact prerequisite to named bounded evidence while preserving required facts."
       }
     ]
   },
@@ -85,7 +101,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "The independently commissioned checker precedes retained Task/script/CLI startup. Q qualifies exact required mechanics, native identities and controls on pure/scratch inputs; P checks actual current UID/build/authority/channel/export/inputs before intent; A observes target source/root/closure behavior only after synchronized consumption/start. E/M/U is scoped evidence, not a stage or permit. K285 still owns non-circular LIVE release/acceptance; complete k282 reconciliation and whole review/integration precede k269. No proof, authority or pass is supplied."
+      "caption": "The independently commissioned checker precedes retained Task/script/CLI startup. Q qualifies exact required mechanics, native identities and controls on pure/scratch inputs; P checks actual current UID/build/authority/channel/export/inputs before intent; A observes target source/root/closure behavior only after synchronized consumption/start. E/M/U is scoped evidence, not a stage or permit. K285 still owns non-circular LIVE release/acceptance; complete k282 reconciliation and whole review/integration precede k269. No proof, authority or pass is supplied. K284 applies B1–B8 named evidence with accepted opaque contact gaps and T1–T7/A1–A3 pre-lookup entries; required actual identities/controls remain blockers. K285–k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-contact",
@@ -94,7 +110,7 @@
       "renderer": "svg",
       "source": "native-reference-contact.d2",
       "rendered": "native-reference-contact.svg",
-      "caption": "Independent documentary BSD/Mach/RPC/API inputs retain logical RPC names, exact macro expressions and every conditional name variant. No complete unprivileged mechanism is established. K281 now puts full coverage versus a stated contact limit or concrete stronger route, plus protected lookup, to Antony. K282 applies actual answers and earns whole review before k269. No limit, privilege, target probe or native verdict is selected here."
+      "caption": "Antony accepted k281 bounded evidence and closed pre-lookup refusal. Complete C1–C8 documentary inputs bind named B1–B8 claims and U1–U6 required-versus-accepted-unknown limits. Full current-service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains unknown, never no-contact. Required named controls and UID/build/authority/image/channel/input/freeze facts block. T1–T7 ordinary/direct/link Data entries and A1–A3 separate target/authority/export operations precede lookup; refused required copies yield truthful incomplete evidence. Whole k282 repair/review remains before k269; no pass is spent."
     },
     {
       "id": "native-reference-evidence",
@@ -103,7 +119,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "K279/k280 find the admission design incomplete. K281 human contact/lookup decisions precede k282 complete credit/activation/registration/input-partition repair, mandatory whole review and earned integration, then k269 construction planning. Original obligations, exact evidence, useful breadth and all holds remain; k245 alone owns the unused pass, with k246/k247 generated and whole-subject duties still live."
+      "caption": "K281 accepted bounded contact evidence and closed pre-lookup refusal. K283 separates Q qualification, fresh P facts and first-attempt A outcomes; k284 binds required B1–B8 evidence and T1–T7/A1–A3 operation entries. Complete service/proxy/initial-right/map/hidden-ancestry/TCC gaps stay accepted unknown, never full no-contact. K285–k287 and mandatory whole-k282 review/integration precede k269. Original evidence/useful breadth/holds remain; k245 owns the unused pass and k246/k247 retain generated/whole-subject duties."
     },
     {
       "id": "native-reference-instrument",
@@ -112,7 +128,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "The commissioned checker and independent boundary are ready before retained Task/script/CLI startup. The checker supervises the pinned verifier and coordinator; Task never owns checker launch. Issuance/current full-profile comparison and exact pre-intent export handling are explicit. K281 decisions and k282 complete admission repair with mandatory whole review precede k269. Actual startup/contact/runtime proofs, authority and native verdicts remain absent."
+      "caption": "The commissioned checker precedes retained Task/script/CLI startup and supervises verifier/coordinator. Required known input/image/channel/entry and B1–B8 scratch/native controls qualify only named claims; complete opaque startup/service/proxy/initial-right/map coverage stays accepted unknown. Held acquisition applies T1–T7/A1 before lookup; A2 authority/A3 export entries are separate. Immutable issuance/current-profile bridges and pre-intent export handling remain. Whole k282 repair/review precedes k269; no actual proof, authority or target evidence follows."
     },
     {
       "id": "native-reference-admission",
@@ -121,7 +137,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Earlier Q mechanics/control evidence precedes separate qualified one-time provisioning and independent validation. Fresh P actual build/UID/channel/authority/export/input facts precede intent. Only then do consumption, synchronized original start and A first target source/root/closure outcomes occur. Required Q/P U claims block at their stage; target outcomes are never earlier calibration. LIVE release/acceptance and the complete k282 conjunction remain pending whole repair/review before k269. Pre-intent export failure never replenishes consumed authority."
+      "caption": "Earlier Q mechanics/control evidence precedes separate qualified one-time provisioning and independent validation. Fresh P actual build/UID/channel/authority/export/input facts precede intent. Only then do consumption, synchronized original start and A first target source/root/closure outcomes occur. Required Q/P U claims block at their stage; target outcomes are never earlier calibration. LIVE release/acceptance and the complete k282 conjunction remain pending whole repair/review before k269. Pre-intent export failure never replenishes consumed authority. K284 applies B1–B8 named evidence with accepted opaque contact gaps and T1–T7/A1–A3 pre-lookup entries; required actual identities/controls remain blockers. K285–k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-proof",
@@ -130,7 +146,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "The proposed register requires k282 repair of chartered independent acceptance on clean/findings review paths, disarmed LIVE eligibility after provisioning and stable normative versus reporting inputs. K281 concrete human decisions precede that repair and mandatory whole review before k269. Issuance/current full-profile bridges preserve authority; full companion/table/read binding stays required. No accepted root, channel proof or native verdict exists."
+      "caption": "Whole companions/five tables/original bases and exact normative extracts bind the independent inventory. B1–B8 require named retained-entry/read/native evidence; accepted unobserved contact gaps do not waive known required identities/controls or create no-contact credit. K285 still owns chartered independent acceptance and disarmed LIVE release, k286 enduring inputs, k287 whole reconciliation/review before k269. Issuance/current full-profile bridges preserve authority. No accepted register, receipt or channel proof is supplied."
     },
     {
       "id": "native-population-metadata-shape",

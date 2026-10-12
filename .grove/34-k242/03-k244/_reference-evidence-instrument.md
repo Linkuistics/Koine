@@ -252,3 +252,16 @@ a LIVE calibration role or waive failed prerequisites. K284 retains full contact
 reconciliation, k285 coupled independent LIVE release/acceptance, k286 enduring-input
 partition and k287 complete reconciliation/mandatory whole-k282 review before k269.
 No partial child is a revised construction handoff and this node cannot close on it.
+
+K284 applies the selected limits in the durable C1–C8/B1–B8/U1–U6 map and closed
+T1–T7/A1–A3 pre-lookup plan. Required named scratch/native/retained-entry/read/control and
+actual UID/build/authority/image/channel/input/freeze evidence remains blocking Q/P work;
+complete current-service/opaque-startup/initial-right/map/proxy/hidden-ancestry/TCC coverage
+stays accepted unknown, never clean/inapplicable or a full no-contact prerequisite.
+Direct/link Data Applications and Library need separate reviewed entries, target common
+ancestors stay search-only, and authority/fresh-export entries grant no target access.
+Raw rejected slots perform no target operation; observed out-and-back/protected/unlisted
+expansions refuse before the next lookup. Required refused copies carry raw evidence and
+exact missing work through k245/k246/k247 and whole review as failed/incomplete evidence,
+never a complete subject, useful loss, private eligibility or another pass. This seam
+has no partial handoff: k285/k286/k287 and whole-k282 review/integration still precede k269.
