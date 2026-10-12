@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Define independent admission before constructing the one-pass instrument",
-    "status": "Admission repair designed; whole review then replanning; authority and external observation unestablished",
-    "summary": "A fixed permission-evidence subject replaces export-based prior-start checks; uncertain first use requires a separate explicit authority decision. Frozen permission/executable inputs are separate from proof and reporting outputs. A closed proof is checked against an independently required inventory, with format-derived, native-corroborated and regression-only expectations distinguished. Exact retained packaging composition and task edges must rehearse on scratch behind a contact gate; an external DTrace candidate must detect direct syscall bypass. Its availability and all executable proofs remain unestablished. Whole design review/integration and construction replanning precede implementation. No target pass, current topology probe or native verdict; both holds remain.",
+    "title": "Resolve authority and admission gaps before construction",
+    "status": "Review integrated; human requirements then replacement design and whole review before replanning",
+    "summary": "All fifteen admission-review findings are classified. Human authority requirements now precede the instrument node; a replacement design with mandatory whole review/integration precedes replanning. Ordinary attempt deletion must not reuse authority; original evidence needs a separate product-independent lifecycle and reviewed admission anchors. Full contact coverage includes IPC/proxies and inherited descriptors; a DTrace-only clean syscall trace is insufficient. Exact packaging entry, live-channel refusal and actual task/interpreter/runtime read closure remain unresolved. Process kills cannot prove OS-crash persistence. No authority, target pass, executable proof or native verdict; both holds remain.",
     "diagramIds": [
       "native-reference-evidence",
       "native-reference-instrument",
@@ -18,19 +18,19 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-evidence",
-        "summary": "Placed early independent inventory/proof construction, external observation, exact-composition rehearsal and final qualification before fixed-authority target admission."
+        "summary": "Human decisions precede replacement design and whole review, then replanning and actual qualification; qualified provisioning and requalification remain required before the unused pass."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Added independent admission, the fixed authority subject, native contact gate and external observer candidate to the existing source/acquisition/decoder ownership."
+        "summary": "Marked authority consumption, independent anchors, exact entry and complete IPC/proxy coverage as unresolved; corrected numbered flow edges."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Added fixed-subject reservation, concurrent/export-loss refusal and explicit uncertain-first-use authority with cooperative tamper limits."
+        "summary": "Replaced the defective reusable-receipt protocol with the required repair/dependency boundary; product lifecycle and OS-crash assumptions need explicit decisions."
       },
       {
         "id": "native-reference-proof",
-        "summary": "Added independent required-inventory completeness, exact retained composition, scratch gate and external syscall/provenance proof flow."
+        "summary": "Required independent reviewed anchors, all normative sources, actual task/runtime read closure and complete contact classes; syscall-only clean traces cannot admit."
       }
     ]
   },
@@ -94,7 +94,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Admission repair is designed, with mandatory whole review/integration then construction replanning before implementation. Independently required proofs, runtime provenance, external scratch observation and fixed-composition rehearsal precede final unchanged-candidate qualification. Fixed authority and uncertain-first-use approval are separate target prerequisites. The receipt, collector capability, schema/tool and controls are unestablished. K244 retains every original obligation; k245's pass is unused; k246/k247 and all product/native holds remain."
+      "caption": "Review integrated; actual k270 human authority/permission decisions precede the instrument node. Replacement design k273 and mandatory whole review/integration precede k269 replanning. Complete actual proofs, qualified provisioning and requalification after changed inputs are required before k245. The pass is unused; k244/k242 remain live; k246/k247 and all product/native holds remain."
     },
     {
       "id": "native-reference-instrument",
@@ -103,7 +103,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Proposed evidence-tool components, not deployment containers. Independent admission and a fixed durable authority subject precede the native contact gate, source/acquisition/decoder and original evidence. The separate verifier checks independently required coordinates and expectations; an external DTrace candidate must corroborate actual scratch contact and direct bypass. Gate intents and wrapper traces do not substitute for that evidence. All executable proofs and observer/authority prerequisites remain unestablished."
+      "caption": "Proposed components with required replacement admission design. Authority consumption must survive ordinary attempt deletion, and independently reviewed inventory/verifier anchors must resist self-certification. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only a partial unqualified candidate. Numbered flow edges are reconciled. No tool, receipt or proof is supplied."
     },
     {
       "id": "native-reference-admission",
@@ -112,7 +112,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Proposed cooperative local admission, not tamper resistance. A separately authorized fixed receipt/evidence location owns a single durable start independently of any export. Missing or uncertain authority fails closed, as do concurrency and prior/partial reservation. Initialization authority remains unresolved; no receipt or target contact is supplied by this diagram. Same-user undetectable rollback/bypass remains a limit."
+      "caption": "Required repair boundary, not an implementable receipt protocol. Human first-use, separately owned evidence lifecycle, persistence, privilege and protected-scope choices precede replacement design and whole review. Process-kill controls cannot prove OS-crash persistence. Qualified provisioning and stable independently anchored proofs precede the unused target pass; unavailable authority never resets."
     },
     {
       "id": "native-reference-proof",
@@ -121,7 +121,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Unbuilt qualification flow. The required inventory is frozen independently before construction, and the actual retained packaging path/task edges rehearse under a sealed scratch gate. External kernel contact must expose direct wrapper bypass; collector capability is unestablished. Format-derived facts, independently acquired pinned CF observations and regression-only expectations have distinct provenance. The verifier recomputes all required cases and identities; reports stay outside measured inputs. No control execution, target contact or native qualification follows."
+      "caption": "Unbuilt qualification requirements. Independent reviewed admission anchors bind inventory, verifier and canonical/ADR/contract normative inputs. Actual task/interpreter/stdlib/package read closure and exact entry/live-channel refusal remain design work. Full contact coverage includes IPC/proxies, inherited descriptors and independent syscall classes; a clean DTrace-only trace is insufficient. No control or target/native verdict follows."
     },
     {
       "id": "native-population-metadata-shape",

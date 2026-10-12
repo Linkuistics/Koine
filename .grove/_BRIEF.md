@@ -490,3 +490,11 @@ before k245 uses the single pass and freezes independent copy roles; k246 owns c
 rewritten recipes/discrimination; k247 reconciles the whole producer and cuts the
 mandatory root whole-subject review before k7. The complete producer remains live;
 private eligibility is false, both holds and every native PENDING outcome remain.
+
+Reference-evidence-admission-k272 integrates k271's review of the k268 admission design.
+Requirements k270 now precede the k244 instrument node; replacement design
+reference-evidence-admission-repair-k273 and mandatory whole review/earned integration
+precede k269 replanning. No reusable receipt, syscall-only no-contact trace or regenerated
+self-certified inventory admits the pass. Actual authority/privilege/protected-scope choices,
+qualified provisioning and input-stable requalification remain required. K244/k242 are live,
+k245's pass is unused and all product/private/native holds remain.

@@ -12,7 +12,9 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 ## Context
 
 Require k244's verified installed instrument, full independent pure control evidence
-and Taskfile recipes first. Consume docs/verification/application-reference-evidence.md
+and Taskfile recipes first. Require actual k270 choices, reviewed k273 replacement design,
+qualified provisioning and independently validated live receipt/admission anchors. K244
+cannot promote stale proofs after changed measured permission/task/runtime/anchor inputs. Consume docs/verification/application-reference-evidence.md
 and the canonical selected permission in application-population-metadata-shape.md.
 K240 selected macOS 27.0.1 (26A434), both template cohorts, primary documentation plus
 Antony-confirmed purposes and whole-template repetition. Historical 25G83 data is comparison.
@@ -21,10 +23,16 @@ Antony-confirmed purposes and whole-template repetition. Historical 25G83 data i
 
 - Pin every instrument/verifier/decoder/configuration/Taskfile/tool input and verify
   the exact installed build before first target query/contents acquisition. Use a new
-  immutable destination, exact fixed indexed predicate, checked permitted roots and
+  immutable derivative destination under the reviewed export preflight/reservation order.
+  Require the fixed independently owned authoritative subject and actual one-time authority
+  consumption before contact. Use the exact fixed indexed predicate, checked permitted roots and
   complete closed layout/file/direct-locale scope. Preserve all original bytes,
   formats, typed candidates/flags/branches/tables/LocProvenance, raw components,
   repeats, tails, copy/version/alias associations and per-file/input/output digests.
+  Original start/segments/objects remain at the authoritative subject. Independently verify
+  every export object and logical association against that original; an export path cannot
+  choose/reset authority or supply proof. Existing/unusable export handling must follow the
+  reviewed pre-consumption order, never be improvised at capture.
 - Freeze and compare every subject/input before/after item by item. Preserve missing,
   refused, changed, unavailable and unparsed evidence and exact replay/association
   limits. No silent repeat, interrupted resume with new bytes, language subset,
@@ -36,7 +44,9 @@ Antony-confirmed purposes and whole-template repetition. Historical 25G83 data i
   and any independent human evidence; ask only for missing copy-purpose information.
 - Reconcile the canonical package inventory/limits, per-copy role evidence and browser
   views. Hand k246 precise available coverage and every missing/conflicting obligation;
-  both holds, native pending verdicts and mandatory whole review remain.
+  name the original attempt identity and any independently verified derivative consumed by
+  k246, with exact incomplete work and original-to-export associations. Both holds, native
+  pending verdicts and mandatory whole review remain.
 
 ## Notes
 

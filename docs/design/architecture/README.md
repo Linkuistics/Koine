@@ -16,13 +16,13 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Added early required inventory/proofs, external observation, exact-composition rehearsal and fixed-authority admission before target contact.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added independent admission, the authority subject, native contact gate and external observer candidate.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Added concurrency, export-loss and partial-reservation refusal with explicit uncertain-first-use authority and cooperative tamper limits.
-- [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof) — Added required-inventory completeness, scratch intent/contact separation and independent decoder provenance.
-- [Permission inputs and reporting outputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs) — Defined the closed profile/canonical-clause comparison and measured read-set partition, so promotion cannot invalidate its own proof unnoticed.
-- [Topology and the inherited component rule](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule) — Specified data-volume/mount/firmlink/cryptex specimens without changing the inherited prefixes or claiming current topology.
-- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — Required distinct early proof/observer owners and review/repair/final requalification before closure; authority and collector capability remain unestablished.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Human decisions precede replacement design/whole review, then replanning. Qualified provisioning and requalification remain before the unused pass.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Authority consumption, independent admission anchors and exact entry/full contact coverage require repair; flow numbers are reconciled.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Required repair boundary replaces the reusable-receipt protocol. Original evidence needs a product-independent lifecycle; process kills cannot qualify OS-crash persistence.
+- [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof) — A clean DTrace syscall trace cannot clear IPC/proxy contact. Independent contact classes, reviewed anchors and actual task/runtime read closure remain unresolved.
+- [Permission inputs and reporting outputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs) — Concordance includes canonical, ADR and contract normative sources; changes require owned requalification after the last measured edit.
+- [Topology and the inherited component rule](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule) — Protected Data and out-and-back specimens expose a human permission question without changing prefixes or acquiring current evidence.
+- [Construction and qualification boundary](../../verification/application-reference-evidence.md#construction-and-qualification-boundary) — K270 actual choices precede k244; k273 replacement and whole review/integration precede k269. Every original obligation remains live.
 
 Unchanged context: [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
 [Review, qualify, then release](index.html#diagram-native-metadata-qualification),

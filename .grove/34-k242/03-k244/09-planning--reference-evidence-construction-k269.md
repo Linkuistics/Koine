@@ -7,18 +7,18 @@ design and all k267 classifications before reference-evidence-replay-k250 starts
 
 ## Context
 
-Consume reference-evidence-admission-k268's complete committed design, mandatory
-whole review and every earned integration. Read k266's findings from c5186473933d,
+Consume actual authority decisions from k270, replacement producer
+reference-evidence-admission-repair-k273, its mandatory whole review and every earned
+integration. K268/k271/k272 explain the incomplete handoff, not implementation eligibility. Read k266's findings from c5186473933d,
 k267's triage, current complete k244 obligations and every construction leaf. Re-derive
 paths by handle; this leaf may move when review/integration is inserted before it.
 
-The durable design defines fixed authoritative attempt evidence, closed permission/
-proof/inventory/admission, exact-image sealed scratch rehearsal, external Darwin DTrace
-candidate, independent native expectation provenance and inherited topology specimens.
-The collector is unqualified; authority requirements k270 precede k245 and neither
-receipt nor uncertain-first-use approval exists. Assign collector capability/calibration
-and all actual proof owners before consumers; unavailable privilege/coverage/identities
-need precise live decision/repair work, never target experimentation.
+K272 classifies all fifteen k271 findings. The contract retains unresolved authority
+consumption, independent admission anchors, IPC/proxy contact, exact-entry and actual
+task/runtime-read closure for k273. K270 now precedes the instrument node; no receipt,
+initialization or observer privilege is implied. Assign actual authorized capability/
+calibration and every proof owner before consumers, plus qualified receipt provisioning/
+independent validation before k245. Unavailable boundaries are precise live work.
 
 ## Work and verification
 
@@ -54,6 +54,25 @@ views. Verify original k244 Done when unchanged, exact control/owner coverage an
 dependency order. Cut a load-bearing review-planning of this finished decomposition
 before the first later live construction entry k250, naming k269 and this session's
 Creator; any earned integration must also run before construction.
+
+## Additional repair obligations from k272
+
+Carry all k271/k272 R1–R15 classifications and actual k270 choices through every owner.
+Do not consume k273 before whole review/integration. In particular, assign authority
+consumption/deletion controls, independent inventory/verifier anchors, the full IPC/proxy/
+descriptor contact universe, exact packaging entry/UID/build/location checks, and immutable
+actual task/interpreter/stdlib/package read closure before their consumers. A DTrace-only
+clean syscall trace cannot supply the complete required no-contact boundary.
+
+Give actual qualified receipt provisioning and independent validation a live owner before
+k245. Preserve requalification after the last changed measured input, including human
+requirements, task/global configuration, runtime, admission anchors or review repairs.
+Qualification cannot close k244 before these prerequisites settle. Use whole task bytes
+when actually read or the reviewed frozen task closure, never an invented per-recipe hash.
+
+Assign export preflight before authority consumption and verified original-to-derivative
+handoff explicitly. Scratch process death proves only observed ordering/acknowledgements,
+not OS-crash durability. No privileged observer or protected-scope consent is inferred.
 
 ## Done when
 

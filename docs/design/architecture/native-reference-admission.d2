@@ -1,25 +1,21 @@
-# Proposed cooperative admission; receipt/first-use authority unresolved, no pass spent.
+# Required repair boundary; no selected receipt protocol, authority or target pass.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Fixed permission identity\nOne local authority subject · export cannot select it" {class: start}
-Receipt: "Explicit authorization receipt\nFixed location / UID / identity / permission\nUncertain first use needs human authority"
-Reject: "Refuse before target contact\nMissing / moved / unreadable / replaced / uncertain\nNo scan, recreate, reset or implicit new grant"
-Lock: "Hold receipt descriptor + exclusive nonblocking lock\nNamed / held authority comparison\nConcurrent different exports share this subject"
-Prior: "Existing fixed attempt entry\nEven empty / partial / unreadable\nPreserve actual evidence; refuse another start"
-Reserve: "Exclusive attempt + durable header / start reservation\nQualified file / directory persistence before spawn\nConservative consumption even if death precedes query"
-Contact: "Only then · Fixed target attempt\nInitial source → held acquisition → closure source\nRereads → final freeze → closure"
-Failure: "Failure / interruption\nRetain prefixes and unperformed work\nNo refund, retry, resume or substituted bytes"
-Limit: "Cooperative local boundary only\nUndetectable same-user rollback / bypass not prevented\nAuthority receipt and executable proof still absent"
-Start -> Receipt: "1 · independent permission / proof verification"
-Receipt -> Reject: "2a · authority unestablished"
-Receipt -> Lock: "2b · valid explicit receipt only"
-Lock -> Prior: "3a · already reserved"
-Lock -> Reserve: "3b · exclusive first reservation"
-Reserve -> Reject: "4a · durability unknown; retain entry"
-Reserve -> Contact: "4b · persistence acknowledged"
-Contact -> Failure: "5a · incomplete"
-Contact -> Limit: "5b · complete bounded observations"
-Prior -> Limit: "no export name restores permission"
-Failure -> Limit: "new attempt requires new authority"
+Start: "Start here · One fixed permission identity\nExport / document digest cannot create another grant" {class: start}
+Human: "First · Actual authority requirements k270\nSeparate evidence lifecycle / uncertain first use\nPersistence assumption / privilege / protected scope"
+Repair: "Then · Replacement design k273 + whole review\nConsume authority before contact, even after attempt deletion\nIndependent proof / inventory / verifier anchors"
+Unavailable: "Refuse unsettled admission\nNo receipt, automatic recreation, reset or target experiment\nSyscall-only trace cannot prove no IPC / proxy contact"
+Qualify: "Reviewed replanning k269 → construction / qualification\nExact entry / live-channel refusal / complete contact classes\nFrozen actual task / interpreter / runtime read closure"
+Provision: "Qualified receipt provisioning + independent validation\nFixed location / UID / identity / reviewed anchors\nChanged input requires live requalification before k245"
+Attempt: "Only then · Defined export preflight + consumed authority\nOriginal attempt at independently owned fixed subject\nVerified immutable export is a derivative"
+Limit: "Cooperative / documented persistence limits need human choice\nProcess kills qualify acknowledgements / ordering only\nTool / receipts / controls absent · target pass unused"
+Start -> Human: "1 · proposal is not permission"
+Human -> Repair: "2 · actual choices before design freeze"
+Repair -> Unavailable: "3a · required boundary unresolved"
+Repair -> Qualify: "3b · whole review / integration before plan"
+Qualify -> Provision: "4 · actual stable proofs only"
+Provision -> Unavailable: "5a · missing / changed / uncertain"
+Provision -> Attempt: "5b · complete admission prerequisites"
+Attempt -> Limit: "6 · retain originals / prefixes; no refund / retry"

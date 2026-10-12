@@ -81,6 +81,11 @@ which stays enabled and still names `/Applications/Koine.app`. The install,
 uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
 [`docs/verification/homebrew-install-vm.md`](docs/verification/homebrew-install-vm.md).
 
+The independent [reference evidence instrument](docs/verification/application-reference-evidence.md#authoritative-attempt-evidence)
+is unbuilt. Its proposed authority/original-evidence location inside Koine's product
+data directory was rejected as a lifecycle conflict; a separate fixed namespace
+requires a human decision and reviewed design before provisioning or target contact.
+
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and the user

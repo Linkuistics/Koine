@@ -116,7 +116,8 @@ mandatory whole-subject/family review. Product/private/native holds remain bindi
 
 ## Required repair and handoff rules
 
-The k268 whole-design review and all earned integration run before k269; k269's
+K270's actual human decisions now run before this node. Replacement admission design
+k273 and its mandatory whole review/earned integration run before k269; k269's
 finished plan and earned planning review/integration run before k250. Until then,
 the original construction leaves are queued consumers of an incomplete plan. This
 ordering represents live repair work, not a new status or a qualification claim.
@@ -151,3 +152,15 @@ integration precede k269; it assigns early proof/observer and final review/repai
 requalification/close owners. Uncertain-first-use authority and receipt are owned by
 requirements k270 before k245. Observer capability/identities/proofs remain unestablished;
 no target/first-use inference, new privilege or current topology probe is authorized.
+
+Review k271 and integration k272 find k268's admission design incomplete. K270 now
+precedes k244 so authority cannot change after qualification without a live repair owner.
+Replacement producer reference-evidence-admission-repair-k273 owns consumption resilient
+to ordinary attempt deletion, separately owned evidence, independent admission anchors,
+full IPC/proxy contact, exact scratch/live entry and actual task/runtime dependency closure.
+Its closing session cuts mandatory whole review/integration before k269. R7/R12/R14 clarify
+process-death versus OS-crash evidence, normative-source concordance and named bounded
+format/source expectations; R15 repairs numbering. K269 assigns qualified provisioning/
+validation and export derivation before k245, plus requalification after the last input
+change. Product zap, export cleanup and self-certified proof supply no authority. Every
+original Done when above remains unchanged.

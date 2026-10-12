@@ -142,3 +142,12 @@ scratch rehearsal remain unqualified. Whole-design review/integration precede k2
 Requirements k270 are inserted before k245 to settle uncertain-first-use initialization
 authority and the actual receipt. Neither authority nor target contact follows from the
 design; no control matrix, tool or native/finite-subject verdict is supplied.
+
+K272 triages all fifteen k271 findings. K270 now precedes the instrument node, rather
+than following final qualification. Replacement design reference-evidence-admission-repair-k273
+and mandatory whole review/earned integration precede k269. Authority consumption,
+independent anchors, full IPC/proxy contact, exact packaging entry and actual task/runtime
+closure remain substantive design work. Product-owned storage is withdrawn; persistence,
+privilege and protected-scope choices require actual human decisions. K269 assigns qualified
+provisioning, original/verified-derivative handoff and requalification after the last
+measured edit. No node closes; every original k244/k242 duty and k245/k246/k247 remains.
