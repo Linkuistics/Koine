@@ -14,7 +14,9 @@ producer code and cannot learn expected values from a producer output or parser 
 
 1. Freeze a hand-authored package expectation containing exact original file bytes,
 raw source/inventory sequences, full typed trees, candidate/flag/version branches,
-all table keys/languages/LocProvenance, every tail and copy/file/helper/alias link.
+all table keys/languages/LocProvenance, every tail and copy/file/source/alias link.
+Helper is an independently authored specimen role, not an inferred native purpose
+or containment edge; its expected complete coordinates use the same record model.
 Use distinct equal-length values and duplicate payloads with different logical roles
 so marginal counts/hashes cannot determine the correct association.
 2. Extend scripts/reference_evidence_verify.py and its tests to independently compare
@@ -23,7 +25,8 @@ malformed/unavailable states. Keep observed dictionary enumeration separate from
 exact-key member matching. Keep raw arrays ordered and save permitted permutations.
 3. Mutate one coordinate at a time: omit an unselected key/language/LocProvenance
 member/raw rejected entry; coerce Boolean to integer; clip payload or component bytes;
-swap equal-length tails/files; remove a repeated source or helper/alias-target link.
+swap equal-length tails/files; remove a repeated source link, a helper specimen's
+file/tree/tail link or a checked alias-target occurrence/identity link.
 Keep schema and global marginals valid so the intended semantic check is reached.
 4. Require actual rejection coordinate/class and a check-reached witness matching the
 independent expectation. A schema error cannot pass an association control. Observe

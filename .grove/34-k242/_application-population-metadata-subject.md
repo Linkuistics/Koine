@@ -126,3 +126,11 @@ under k244, preceded by an earned planning review before construction. The final
 pure-qualification leaf owns complete original-obligation closure and promotion;
 missing controls or required identities remain live work there. This adds no
 current-reference bytes, executable schema/tool/proof, subject or native verdict.
+
+Planning integration k267 applies bounded source-association/helper/handoff repairs
+and externalizes the substantive admission/qualification gaps as design k268 with
+whole review/earned integration, then construction replanning k269 with earned
+planning review/integration, all before k250. The original final-leaf ownership is
+a proposal awaiting that repair; k269 assigns distinct final qualification and close
+owners. K244 stays live until every original Done when has actual stable proof;
+k245's pass remains unused and k246/k247 retain their separate full obligations.

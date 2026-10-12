@@ -10,13 +10,14 @@ using the actual concurrent pipe runner on pure emitters.
 Every emitted byte and repeated/empty/outside/malformed slot, independent stderr
 stream and actual launch/EOF/termination/reap fact is retained. Failure never enables
 acquisition. Complete source permutation positives preserve both sequences and
-associations; changed membership/multiplicity/root links fail at the intended coordinate.
+occurrence correspondence; changed membership/multiplicity fails at the intended
+coordinate. Actual held root/physical alias association is completed by k262 after k260.
 Actual pipe tests and injected failures agree with independent expected contact traces.
 
 ## Decomposition
 
 Pipe-runner-k257 implements framing and real concurrent process observation together.
-Source-closure-k258 compares complete before/after occurrences and root associations.
+Source-closure-k258 compares complete before/after source occurrences and permutations.
 The first can be demonstrated against a pure emitter without the comparison feature.
 
 ## Pointers

@@ -7,7 +7,7 @@ identities and exact file reads and comparing every associated occurrence.
 
 ## Context
 
-Consume fixed-files-k261, source-k256's before/after association checks and the
+Consume fixed-files-k261, source-k256's before/after source-occurrence checks and the
 independent oracle. Closure compares actual item evidence, not sizes or totals.
 
 ## Work and verification
@@ -19,7 +19,12 @@ base/locale/file link races, helper/alias target reassignment and restored spell
 held/named identities and complete fixed-file reads at closure; preserve each phase's
 objects and per-coordinate differences. Never refresh an earlier observation with
 newer bytes or fill a refused read using the closure phase.
-3. Compare logical multisets/roles/root/copy/file/tree/tail relations independently;
+3. Associate both complete source phases with actual held root observations from
+k260 and compare root identities and checked physical alias relations at every source
+occurrence. Exercise new/replaced roots and same-cardinality root/file/alias swaps
+against actual scratch identities, not labels on an emitter. Preserve ambiguous or
+unestablished correspondence explicitly; it cannot pass stable association closure.
+Compare logical multisets/roles/root/copy/file/tree/tail relations independently;
 a raw inventory/source reorder preserves both sequences and valid permutation.
 Require changed association to fail even if global sizes/counts/digests agree.
 4. Inject read/closure/cleanup/interruption/tool/input failure; preserve earlier

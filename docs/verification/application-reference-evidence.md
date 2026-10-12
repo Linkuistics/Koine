@@ -254,6 +254,13 @@ same digest or equal-length tail never merges copies. Physical aliases require
 checked root identity and observed relationship; every repeated source occurrence
 and helper/alias-target fixture still has complete logical file/branch/tail links.
 
+Helper is an independently authored pure specimen role at this boundary, not a
+native helper-purpose or inferred nested-containment field. Current per-copy purpose
+is independently established after capture. Helper controls mutate its actual
+source/file/tree/tail coordinates; physical alias controls use checked root identity
+and occurrence links. Nested bundles are separate emitted slots, without traversal
+or an invented containment edge.
+
 The verifier takes two inputs: an immutable package and a separately frozen
 expectation. It validates the schema and recomputes byte lengths/hashes/format
 evidence, complete required occurrences, tagged trees, reader branches and tail
@@ -312,9 +319,17 @@ coordinate mappings. Original SHA-256 equality is deliberately not that oracle.
 ## Construction and qualification boundary
 
 The concrete instrument is production-tool implementation-sized. K244 is now a
-node retaining its full original Done when: this design child selects the route;
-its planning child has cut five dependency-ordered construction increments.
-They are independently usable offline replay, native byte decoding, lossless
+node retaining its full original Done when. The initial design and planning handoff
+proposed five dependency-ordered construction increments. Planning review exposed
+cross-cutting admission and qualification gaps. A new admission-design producer with
+mandatory whole review and earned integration, then a construction-replanning producer
+with planning review and earned integration, precede the first construction increment.
+They must resolve authoritative prior-start evidence, frozen permission/input versus
+reporting identity, complete proof/inventory ownership, independently observed real
+contact, exercised no-target composition, runtime observation provenance and topology
+specimens. These are open design/construction obligations, not repaired executable
+behavior or a selected new permission/observer mechanism.
+Their intended handoffs are independently usable offline replay, native byte decoding, lossless
 source observations, held-directory evidence acquisition, and durable attempt
 coordination with complete pure qualification. The schema and a usable validator
 land together. An earned planning review precedes construction; each later stage
@@ -339,8 +354,19 @@ and their actual tests land with the behavior they verify; no dormant schema or
 placeholder target recipe is a completed working increment. A pre-closure envelope,
 scratch demonstration or schema-valid failure is never a stable qualified package.
 Missing/failed controls and unavailable required identities remain live work before
-target admission. The final stage owns the complete original-obligation check,
-proof inventory and reconciliation, not merely an aggregate passing count.
+target admission. The revised plan must assign the complete original-obligation check,
+early independently required proof inventory, review/repair/requalification and final
+reconciliation to explicit owners. The original final-stage assignment remains a
+proposal until that repair. An aggregate passing count supplies none of those duties.
+
+Source-only closure compares complete spelling/occurrence multiplicities and raw
+permutations. Held acquisition closure later associates both source phases with actual
+held root identities and checked physical aliases; a stream emitter cannot establish
+those facts. Required unqualified branches or controls become precise live repair and
+qualification work before affected consumers. An unobtainable required identity calls
+for an explicit trade-off, not an unrecorded omission or a passing closure. A schema
+extension requires the independent validator/oracle/fixtures/inventory to change and
+all affected earlier checks to be rerun with complete before/after input freeze.
 
 Construction must add and verify two distinct Taskfile entry points: pure
 qualification with no target adapters, and bounded packaging with only a new
@@ -348,7 +374,12 @@ output destination. Packaging checks the exact installed macOS 27.0.1 (26A434)
 build, complete matched qualified tool/input identities and frozen permission,
 rejects arbitrary scope and existing output before contact, persists the start,
 and preserves any interrupted attempt. Build changes or unavailable checks admit
-no target call. Tests never invoke packaging as a dependency. No placeholder
+no target call. Tests never invoke packaging as a dependency. Packaging executes
+the retained qualified executable without rebuilding it. A rebuilt candidate must
+match the actual qualified binary and all other required identities, or receive
+complete fresh qualification; matching source alone is insufficient. Runtime-image
+continuity remains an actual checked prerequisite, not a binary-digest inference.
+No reproducible binary build is claimed by this design. No placeholder
 target command is installed by this design; those executable recipes and their
 actual proofs remain k244 construction obligations. The existing render and
 documentation checks verify presentation only.
@@ -369,6 +400,13 @@ outputs. Check the installed version and build exactly against macOS 27.0.1
 (26A434). A mismatch or unavailable build check authorizes no target acquisition.
 The build check alone does not consume a contents pass or qualify a reference.
 Current permission is fixed; tests cannot broaden it.
+
+The coordinator's required order is admission and durable start; complete initial
+source terminal/reap/framing; initial held-root/layout/inventory/file acquisition;
+complete closure source and its held-root associations; full item inventory/identity/
+byte rereads and comparison; final input/image freeze; final closure publication.
+Failure leaves all later unperformed work explicit. Closure never substitutes for
+initial source or acquisition, and final publication cannot precede comparison/freeze.
 
 Give the attempt a unique immutable evidence destination before source acquisition.
 Never overwrite the historical packets or a prior attempt. The attempt envelope

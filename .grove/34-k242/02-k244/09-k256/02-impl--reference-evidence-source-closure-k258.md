@@ -3,7 +3,7 @@
 ## Goal
 
 Implement initial-versus-closure source comparison retaining every occurrence and
-root association, with exact permutation and changed-source outcomes.
+source-slot coordinate, with exact permutation and changed-source outcomes.
 
 ## Context
 
@@ -14,13 +14,14 @@ closure is an integrity observation, never a second source or retry.
 ## Work and verification
 
 1. Freeze before/after sequences with repeated spellings, empty/outside/malformed
-slots, ordinary/helper/alias-target associations and deliberate pure reorderings.
+slots and deliberate pure reorderings. Fixture roles do not supply held root identity.
 2. Implement SourceClosure.swift and package tests. Compare all spelling bytes,
-multiplicities and associated root observations item by item. Identical duplicates
+multiplicities and occurrence correspondence item by item. Identical duplicates
 retain separate phase/ordinal coordinates; any ambiguous correspondence is explicit.
 Save both raw sequences and any justified permutation rather than raw-equality claims.
-3. Test new/missing slots, duplicate deletion, changed root identity/alias relation
-and a same-cardinality association swap. Independently authored expected differences
+3. Test new/missing slots, duplicate deletion and same-cardinality spelling replacement.
+Held root identity/physical alias comparison belongs to k262 after k260, not an emitter.
+Independently authored expected differences
 must identify the intended coordinate; counts/digest totals cannot rescue a loss.
 4. Initial failure prevents acquisition and any closure replacement/retry; aborted
 closure is recorded unavailable. Closure failure never fills missing initial rows.
@@ -31,7 +32,7 @@ proofs, before/after tool/expectation hashes and independent permutation positiv
 ## Done when
 
 Source closure can be demonstrated using two pure emitter observations. Every
-association-preserving reorder passes while preserving raw order; every applicable
+source-occurrence-preserving reorder passes while preserving raw order; every applicable
 change/failure prevents stable package success without retry. Prior checks pass.
 
 ## Notes

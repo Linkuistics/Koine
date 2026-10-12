@@ -74,7 +74,7 @@ executable schema, tool or control proof is implied by k248. Every original
 Done when above remains the node's closing condition; add missing work rather
 than allowing a plan-only close. The one pass stays unused until full k244 closure.
 
-K249 orders five independently usable construction increments beneath this node:
+K249 proposed five independently usable construction increments beneath this node:
 reference-evidence-replay-k250 (closed schema and independent offline oracle),
 reference-evidence-decoder-k253 (native bytes/types and complete witnesses),
 reference-evidence-source-k256 (actual pipe observations and source closure),
@@ -98,9 +98,46 @@ construction. No target query or installed payload is part of any construction c
 | Verified reusable pure and output-only packaging recipes | Each stage's pure task; k264/k265 composition | Separated Taskfile dependencies, fixed exact-build/permission/proof admission and exclusive interrupted output |
 | Contract/schema/version/proofs/views, unused target pass | k265 | Full original Done when comparison, reconciliation and qualified-tool promotion to k242/k245 |
 
+This is the original construction ownership proposal. Review k266 and integration
+k267 identified admission/qualification design and decomposition gaps. Before any
+of these consumers runs, reference-evidence-admission-k268 repairs the design with
+mandatory whole review/earned integration, then reference-evidence-construction-k269
+repairs and reviews the construction plan. K269 must replace this table with the
+actual revised owners, including early proof/inventory construction, independent
+contact observation, review/integration, requalification and distinct final closure.
+The table is not evidence of a resolved admission design or executable proof.
+
 The last row is a check of actual completed artifacts, not leaf counts. Any
 missing/failed control, unavailable required identity or earned review/integration
 is precise live work under k244; add or insert it before the affected consumer.
 K265 cannot promote a plan or partial tool as a verified instrument. K246 retains
 generated thin/rewrite discrimination after k245 source evidence, and k247 retains
 mandatory whole-subject/family review. Product/private/native holds remain binding.
+
+## Required repair and handoff rules
+
+The k268 whole-design review and all earned integration run before k269; k269's
+finished plan and earned planning review/integration run before k250. Until then,
+the original construction leaves are queued consumers of an incomplete plan. This
+ordering represents live repair work, not a new status or a qualification claim.
+
+K258 compares source spellings/occurrences only. K262, after held-roots-k260, owns
+actual before/closure source-to-root and physical alias associations. Helper is an
+independent pure specimen role; useful/helper purpose for current copies remains
+k245's obligation. No native purpose or nested-containment edge is inferred.
+
+Every required unqualified branch/control/identity becomes a precise live repair
+and qualification leaf before its affected consumer. An unobtainable required
+identity calls for a concrete trade-off and recommendation to Antony, not a prose
+waiver, perpetual repeat or silent prune. Any recognized schema extension updates
+the independent validator/oracle/fixtures/inventory and reruns/freezes all affected
+earlier stage checks before qualification; no stage's exhaustive claim survives an
+unmeasured extension. K269 assigns those correction owners in the revised tree.
+
+Qualification retains the exact executable artifact. Packaging runs it without
+rebuilding and checks actual binary/runtime/tool/input identities; a rebuilt
+candidate needs exact equality of the qualified identities or fresh qualification.
+Coordinator order is admission/start → complete initial source → initial held
+acquisitions → complete closure source and held-root links → item rereads/comparison
+→ final input/image freeze → closure publication, with explicit unperformed work
+and no retry on every failure.

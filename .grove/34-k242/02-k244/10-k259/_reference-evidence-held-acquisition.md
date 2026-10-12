@@ -17,7 +17,8 @@ item reads and identity/inventory associations detect changes without retry/fall
 
 Held-roots-k260 is a usable scratch-root/layout inspector with complete no-contact checks.
 Fixed-files-k261 adds the complete fixed-file/direct-locale package and decoder witnesses.
-Item-closure-k262 adds independent full rereads and item-by-item association closure.
+Item-closure-k262 adds independent full rereads, actual held-root associations for
+both source phases, physical alias checks and item-by-item association closure.
 An inspector or pre-closure package never reports successful stable complete acquisition.
 
 ## Pointers

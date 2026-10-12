@@ -8,7 +8,9 @@ metadata witness export, independently checked on authored original payloads.
 ## Done when
 
 XML/binary/OpenStep and encoding/serialization/duplicate/coercion boundaries are
-qualified on independent pure specimens or remain exact live qualification gaps.
+qualified on pure specimens with the reviewed expectation/observation distinction.
+Before this node can close, required unqualified branches have exact live repair
+and qualification leaves before their consumer; recorded prose alone closes no gap.
 Every complete returned tree uses exact native type-ID export and full tree-coordinate
 branches/tails. Source/build/compiler/SDK/runtime/image identities accompany the
 actual proof. No conversion or unsupported value becomes complete typed evidence.
