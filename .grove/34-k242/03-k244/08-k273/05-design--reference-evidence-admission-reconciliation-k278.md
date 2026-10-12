@@ -37,6 +37,16 @@ child or changed views. Every earned integration precedes k269. Then retire this
 perform the node close/promotions/Creator cascade, commit both handles and seal jj.
 
 ## Notes
+Reconcile k275's fixed sibling approval register and independently commissioned terminal
+checker through the full contract/summaries/views/charters. Distinguish immutable receipt
+issuance revision from current external correction/admission revision without changing
+k274's permit bytes or consumption order. Check literal canonical/ADR/contract boundaries,
+field concordance, direct review/integration acceptance, independently adjudicated verifier
+controls and invocation channels against k276/k277's actual contact/process/read mechanisms.
+Section-extractor snapshot inputs cannot silently relax whole task/runtime closure.
+K269 must assign actual artifact/bootstrap review, provisioning/validation and final affected
+requalification after the last changed input. None of these design interfaces is an accepted
+root/receipt or a qualified channel; exact unavailable work still prevents admission.
 Design only; no executable proof, receipt, contact probe, current bytes or qualification
 is supplied. Cut no implementation leaves. No partial/in-session reviewer competes
 with the scheduled mandatory whole review.

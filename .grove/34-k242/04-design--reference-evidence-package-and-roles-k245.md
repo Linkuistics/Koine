@@ -31,6 +31,13 @@ then creates/synchronizes the original start. Packaging may never initialize aut
 remove consumption intent, rename a spent permit back or replace lost originals from
 an export. Offline derivation/inspection acquires no newer target bytes. Actual qualified
 implementations and full independent admission/contact/entry proofs are still required.
+Require the fixed external bootstrap checker, directly registered highest accepted anchor
+revision and independent verifier-control acceptance, plus the actual receipt's issuance
+binding/final validation and any approved current-revision correction. Refuse regenerated
+self-certification, pending/old revisions, substituted images and replayed/cross-domain
+channels. This leaf cannot commission the root, approve its own evidence or correct a
+spent/missing permit into new authority. Actual full contact/runtime correspondence and
+unchanged qualified inputs remain prerequisites; k275's design alone grants none.
 
 ## Done when
 

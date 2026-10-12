@@ -80,6 +80,19 @@ independent original-to-derivative association verification before k245. An unav
 required synchronization basis stays live, not a weakened fsync-only substitute.
 No actual receipt/proof is supplied by k274; final design ownership remains k278.
 
+K275 supplies the independent-register protocol at application-reference-evidence.md's
+Independent approval root. After whole-k273 review/integration, assign separate actual
+checker/registrar/extractor construction, independent inventory/profile/concordance/schema
+authoring, bootstrap known-answer adjudication and direct reviewed-revision registration.
+Independent review of retained checker/verifier/launcher/runtime artifacts must precede
+their external acceptance; candidate verifier proofs cannot certify their own bootstrap.
+Assign actual UID/held-root/staged-receipt/final-validation acquisition after qualified
+initialization mechanics, and correction bindings from immutable issuance receipts to
+current accepted revisions without permit restoration. Final affected qualification and
+independent acceptance follow the last input edit; retain live repair/requalification/close
+owners before k245. Required process-image/channel/contact/read correspondence consumes
+k276/k277, never a pathname hash or a producer message. No root/record/tool exists yet.
+
 Carry all k271/k272 R1–R15 classifications and actual k270 choices through every owner.
 Do not consume k273 before whole review/integration. In particular, assign authority
 consumption/deletion controls, independent inventory/verifier anchors, the full IPC/proxy/

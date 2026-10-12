@@ -16,12 +16,13 @@ remain live.
 
 Current changes:
 
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Named k273's five design owners and the export/intent/spent-permit/original-start order; whole review precedes k269.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the lifecycle proposal while retaining the absent anchor/contact/entry proofs.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Added preflight refusal, irreversible intent/permit transitions, original evidence and verified derivative failure paths.
-- [Permit receipt and explicit initialization](../../verification/application-reference-evidence.md#permit-receipt-and-explicit-initialization) — Defined fixed permit names and independently validated one-time provisioning; actual trust bindings remain k275 work.
-- [Persistence operations and their evidence limits](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits) — Named full-flush/namespace acknowledgements and their bounded assumption; scratch death is no OS-crash proof.
-- [Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative) — Reserved fresh output before consumption and required complete independent original/object/association comparison.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Separated independent commissioning, direct revision approval, original verifier controls, receipt bindings and fresh invocation channels.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Added the retained external checker and pinned verifier with directly accepted inventory and domain-bound nonce channels.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Bound explicit initialization/final receipt validation to independently accepted external anchors.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Placed independent commissioning and verifier-control acceptance before candidate proof admission.
+- [Independent approval root](../../verification/application-reference-evidence.md#independent-approval-root) — Selected a fixed sibling register and acyclic external receipt/correction bindings that never restore spent authority.
+- [Normative extraction and field concordance](../../verification/application-reference-evidence.md#normative-extraction-and-field-concordance) — Named exact canonical/ADR/contract boundaries and clause-to-field/control coverage with reporting limits.
+- [Invocation channel and verifier-self qualification](../../verification/application-reference-evidence.md#invocation-channel-and-verifier-self-qualification) — Required separately adjudicated original verifier controls and one-use nonce/process/domain/held-input checks.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -29,8 +30,8 @@ corrections. Qualification remains unprivileged, with no root/sudo collector. Co
 independent IPC/proxy/descriptor contact coverage and actual approval/provisioning proofs
 are still absent; requirements alone cannot admit.
 
-Unchanged context: [Proofs → Observe completeness and contact before admission](index.html#diagram-native-reference-proof),
-[Permission inputs](../../verification/application-reference-evidence.md#permission-inputs-and-reporting-outputs),
+Unchanged context: [Persistence operations](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits),
+[Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative),
 [Topology](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule),
 [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
 [Review, qualify, then release](index.html#diagram-native-metadata-qualification),
@@ -43,8 +44,8 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission)
-for the current decision, and the proof/component views for its unbuilt mechanisms.
+Open [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof)
+for the current proposal, and the admission/component views for its lifecycle and composition.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size
 panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.

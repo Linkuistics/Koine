@@ -133,3 +133,14 @@ choices; none implements/provisions/probes/acquires. Whole review belongs to k27
 closing boundary, so no child schedules a competing partial review or in-session reviewer.
 Any substantive change to an earlier child's design receives explicit live repair and
 whole-boundary reconciliation; no retired child is silently reopened.
+
+K275 fills the external binding interface reserved by k274: a fixed sibling approval
+register, explicit independent bootstrap commissioning, direct review-owned acceptance,
+acyclic inventory/extract/verifier/control/receipt bindings and fresh invocation channels.
+The immutable receipt binds its issuance revision; reviewed current revisions need a
+separate correction binding with unchanged authority. K278 reconciles that terminology
+through every summary/lifecycle/proof/handoff layer. This is no permit rewrite or restored
+unspent name. K269 assigns actual independent artifact review, bootstrap/provisioning/
+validation and final affected requalification before k245. No approval record is supplied;
+k276/k277 retain actual full contact/process/read-closure obligations, and whole review
+remains due after k278. This handoff changes none of the original closing conditions.

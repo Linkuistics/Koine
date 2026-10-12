@@ -2,31 +2,32 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Consume the permit independently of attempt and export cleanup",
-    "status": "K274 lifecycle proposal; remaining k273 designs and whole review precede replanning",
-    "summary": "K273 now has five design children. K274 proposes exclusive fresh-export preflight, retained consumption intent, immutable unspent-to-spent permit rename, acknowledged original start and independently verified exact-byte derivatives. Ordinary attempt/export cleanup never restores authority; partial transitions refuse. Current synchronization support and independent approval/provisioning are unqualified, and process kills prove no OS-crash persistence. K275 anchors, k276 complete unprivileged contact, k277 exact entry/runtime closure and k278 whole reconciliation/review remain live before k269. No receipt, target pass, executable proof or native verdict; both holds remain.",
+    "title": "Anchor reviewed requirements outside regenerated proofs",
+    "status": "K275 approval proposal; whole k273 review and actual qualification remain due",
+    "summary": "A fixed external approval register retains independently commissioned checker identities, directly accepted normative extracts/inventory/concordance and original verifier-control evidence. Acyclic receipt/correction bindings preserve the immutable issuance receipt; corrections never restore authority. Fresh invocation channels bind nonce, process, domain and held inputs. No register, receipt, accepted revision or executable proof exists. K276 full unprivileged contact, k277 exact entry/runtime closure and k278 whole reconciliation/review still precede k269; the target pass remains unused.",
     "diagramIds": [
-      "native-reference-evidence",
+      "native-reference-proof",
       "native-reference-instrument",
       "native-reference-admission",
-      "native-reference-proof",
-      "native-population-metadata-shape",
-      "native-metadata-subject",
-      "native-metadata-qualification",
-      "native-metadata-grouped-storage"
+      "native-reference-evidence",
+      "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-reference-evidence",
-        "summary": "Named all five replacement-design owners and placed fresh export, consumption intent, spent permit and original start before the unused pass; whole review and qualification remain due."
+        "id": "native-reference-proof",
+        "summary": "Separated independent commissioning, direct revision approval, external verifier-control acceptance, receipt binding and one-use admission channels."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Replaced the unspecified authority step with the lifecycle proposal and kept actual independent anchors, full contact coverage and exact entry unqualified."
+        "summary": "Added the retained external checker and pinned verifier, with direct approved anchors and domain-bound nonce channels."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Added fresh-export refusal, retained consumption intent, exclusive permit rename, synchronized original start, verified derivative and irreversible failure branches."
+        "summary": "Bound explicit initialization and final receipt validation to independently accepted external anchors."
+      },
+      {
+        "id": "native-reference-evidence",
+        "summary": "Placed independent commissioning and original verifier controls before proof-based instrument admission."
       }
     ]
   },
@@ -90,7 +91,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "Delegated k270 authority requirements are settled in the canonical report. Replacement design k273 and mandatory whole review/integration precede k269 replanning. Complete unprivileged contact/tool proofs, independent approved anchors, qualified one-time provisioning and requalification after changed inputs precede k245. The pass is unused; k244/k242 remain live; k246/k247 and all product/native holds remain."
+      "caption": "Delegated k270 authority requirements are settled in the canonical report. Replacement design k273 and mandatory whole review/integration precede k269 replanning. Complete unprivileged contact/tool proofs, independent approved anchors, qualified one-time provisioning and requalification after changed inputs precede k245. The pass is unused; k244/k242 remain live; k246/k247 and all product/native holds remain. K275 now specifies the independent commissioning/register and verifier-control acceptance protocol; this design is not a provisioned approval root."
     },
     {
       "id": "native-reference-instrument",
@@ -99,7 +100,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "Proposed components now consume the k274 lifecycle: fresh export, consumption intent, spent permit and synchronized original start. Actual provisioning and k275 independent inventory/verifier anchors remain absent. Exact entry and full IPC/proxy contact coverage remain unresolved; DTrace is only partial and no root/sudo collector is authorized. No tool, receipt or proof is supplied."
+      "caption": "Proposed composition now uses a retained external checker to select the directly accepted anchor revision and launch the pinned verifier; independent original verifier controls precede candidate proofs. The k274 lifecycle remains fresh export, consumption intent, spent permit and synchronized original start. Register/receipt provisioning is absent. Exact entry and full IPC/proxy contact coverage remain unresolved; no root/sudo collector is authorized. No tool or proof is supplied."
     },
     {
       "id": "native-reference-admission",
@@ -108,16 +109,16 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "K274 proposes one explicitly provisioned/independently validated permit, fresh-export preflight before consumption intent, exclusive same-directory unspent-to-spent rename, synchronized original start and independently verified complete or explicitly incomplete derivative. Attempt/export deletion and partial transitions never reset authority. Filesystem support and the bounded namespace/full-flush assumption need actual qualified inputs; process kills prove no OS-crash persistence. K273's remaining anchors/contact/entry/reconciliation and whole review remain due; no receipt or target pass is supplied."
+      "caption": "K274 proposes one explicitly provisioned/independently validated permit, fresh-export preflight before consumption intent, exclusive same-directory unspent-to-spent rename, synchronized original start and independently verified complete or explicitly incomplete derivative. Attempt/export deletion and partial transitions never reset authority. Filesystem support and the bounded namespace/full-flush assumption need actual qualified inputs; process kills prove no OS-crash persistence. K273's remaining anchors/contact/entry/reconciliation and whole review remain due; no receipt or target pass is supplied. K275 fills its external validation interface with independent approved revision/receipt bindings. The immutable issuance receipt may have a reviewed external current-revision correction, never restored unspent authority; no actual approval record exists."
     },
     {
       "id": "native-reference-proof",
       "group": "native-sources",
-      "title": "Proofs → Observe completeness and contact before admission",
+      "title": "Approval → Anchor requirements before accepting proofs",
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Unbuilt qualification under the settled delegated approval/correction and unprivileged-only rules. Actual independent reviewed anchors bind inventory, verifier and canonical/ADR/contract normative inputs. Task/runtime read closure and exact entry/live-channel refusal remain design work. Full contact coverage includes IPC/proxies, inherited descriptors and independent syscall classes; a clean DTrace-only trace is insufficient. No control or target/native verdict follows."
+      "caption": "K275 proposes a fixed sibling approval register, independent terminal commissioning and direct review/integration-owned revision acceptance outside the checkout/proofs. The inventory, literal canonical/ADR/contract extracts, concordance and exact verifier/launcher/runtime identities precede qualification. Separately adjudicated original verifier controls prevent self-certification; external receipt/correction bindings and fresh nonce/process/domain channels cannot restore a spent permit. Actual root/records/tools remain absent. K276 full contact and k277 exact entry/read closure remain due; whole k273 review precedes k269. No target or native verdict follows."
     },
     {
       "id": "native-population-metadata-shape",

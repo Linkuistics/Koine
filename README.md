@@ -91,8 +91,12 @@ no receipt exists and the single pass is unused.
 The [authority lifecycle proposal](docs/verification/application-reference-evidence.md#permit-receipt-and-explicit-initialization)
 reserves a fresh export, retains irreversible consumption intent and moves the permit to
 its spent name before original acquisition. Attempt/export cleanup cannot restore that
-name. K273's remaining anchor/contact/entry designs, whole review and actual qualification
-are still required; process-death checks cannot establish OS-crash persistence.
+name. The [independent approval proposal](docs/verification/application-reference-evidence.md#independent-approval-root)
+places exact reviewed requirements, inventory and verifier identities in a separate fixed
+approval register. Independent commissioning/control acceptance precedes candidate proofs;
+one-use invocation channels and external receipt/correction bindings cannot restore a spent
+permit. No register or accepted revision exists. K273's contact/entry designs, whole review
+and actual qualification remain required; process-death checks establish no OS-crash persistence.
 
 ## Client-requested grants
 
