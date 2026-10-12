@@ -12,7 +12,7 @@ whole review before reference-evidence-construction-k269.
 Read the entire parent/ancestor charters, k271's committed review and all k272
 classifications, all four preceding children's delivered contracts, canonical k270
 choices, full durable evidence/subject/family, root/product/architecture READMEs,
-all five editable/rendered views and k269/k245/k246/k247 consumers. Do not infer
+all current reference/corpus editable/rendered views and k269/k245/k246/k247 consumers. Do not infer
 closure from retired leaf counts or a complete-looking diagram.
 
 ## Done when
@@ -52,10 +52,29 @@ is supplied. Cut no implementation leaves. No partial/in-session reviewer compet
 with the scheduled mandatory whole review.
 
 K276 adds a sixth reference view, native-reference-contact, and the full-byte contact
-companion plus five source-inventory tables. Review all six views and their summary layers.
+companion plus five source-inventory tables. Include that view and all current summary layers.
 C1–C8 are independent minimum classes, with every public active row still requiring
 semantic/current correspondence. U1–U6 are exact required unavailable work under k269;
 source-based design closure is no current mechanism, observer availability or contact proof.
 Reconcile acceptance of these whole-byte basis inputs with k275's revision/extraction/read
 rules without silently relaxing them, and compare per-family bypass/loss and protected/
 out-and-back specimens against the original obligations. No new partial review is cut.
+
+K277 adds native-reference-packaging as a seventh reference/corpus view and the whole-byte
+application-reference-packaging-runtime.md companion. Reconcile its exact checker-owned
+Task/script/CLI/domain-channel path with k275's launch/peer rules, k274's lifecycle and
+k276's pre-start C1–C8/U1–U6 obligations. Live rejects scratch maps/results; absent channels
+never default. Every UID/build/fixed-location/receipt/export operation has proposed
+executed/mapped/unexercised credit; actual native segments/endpoint preservation remain
+unqualified. Bind this whole companion and contact/tables through independently accepted
+revisions and complete concordance/inventory, without reporting slicing or a self-hash cycle.
+Review all seven views and their summary layers, including unchanged context.
+
+Carry complete independently discovered task/global-config/interpreter/stdlib/resolved-
+package/loader/shared-cache/read/initial-capability closure and discovery-failure semantics
+into k269's live owners. Preserve named bounded XML/historical-CF/strings/contract-loctable
+bases versus independently acquired current-runtime observations. Check exact sysctl
+API/current compatibility correspondence, unchanged retained artifacts, required U segments,
+late provisioning/corrections and explicit last-edit affected requalification/independent
+audit/close ownership before k245. No actual observation or permission is added by k277;
+U1–U6 and original k244/k242 duties remain live after its design retirement.

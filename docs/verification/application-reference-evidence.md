@@ -18,8 +18,9 @@ replacement design reference-evidence-admission-repair-k273 must close those gap
 cut mandatory whole review/earned integration before construction replanning k269.
 K273 is decomposed into authority lifecycle k274, independent anchors k275, full contact
 boundary k276, exact packaging/runtime closure k277 and whole reconciliation k278.
-The authority lifecycle and independent approval protocol below are concrete design
-proposals. The [full contact boundary](application-reference-contact-boundary.md) now pins
+The authority lifecycle, independent approval protocol and
+[retained entry/runtime closure](application-reference-packaging-runtime.md) are concrete
+design proposals. The [full contact boundary](application-reference-contact-boundary.md) now pins
 an independent public-source inventory and exact unavailable classes/identities; it supplies
 no collector or actual no-contact evidence. Complete admission remains unavailable through
 whole review and every required construction/qualification obligation. None of
@@ -71,9 +72,12 @@ ownership and observation flow, not deployment containers or a qualified executa
 The selected implementation is one macOS command-line acquisition executable with
 an in-process Core Foundation decoder, plus a separately implemented offline
 verifier. Qualification supplies fake source and descriptor-operation adapters at
-the instrument's composition point. Packaging uses the fixed real adapters; a
-test adapter, arbitrary predicate, roots, basenames or language list cannot be
-selected through its packaging interface. Native decoder qualification reads
+the instrument's composition point. The public packaging request supplies only an export;
+the same retained Task/script/CLI chain receives a mandatory independently bound
+SCRATCH/LIVE descriptor channel under the [entry contract](application-reference-packaging-runtime.md#retained-entry-and-domain-channel).
+LIVE rejects scratch mappings and fixture authority. Arbitrary predicates, roots,
+basenames, languages or adapter overrides cannot be selected by packaging callers.
+Native decoder qualification reads
 only independently authored pure bytes. This is an evidence tool, with no Koine
 provider dependency, installed-app execution, registration or VM seam.
 
@@ -342,14 +346,16 @@ The profile contains no proof identity and supplies no new authority.
 | Reporting outputs | Prose outside normative extracts, diagrams and promotion references; cannot supply admission facts or change a measured input while inheriting its proof |
 | Target outputs | Authoritative attempt header, actual segments/objects and closure; not qualification inputs or authority to acquire again |
 
-Check the declared read set against observed dependencies and reviewed composition.
-The observation mechanism and pinned runtime/task closure remain k273 design obligations.
-Reading the shared Taskfile makes its whole bytes an input, including global variables,
-environment and includes; a recipe-only digest cannot stand in for that read. Unrelated
-changes still invalidate such a proof. A frozen separate packaging task is a possible
-repair, not selected here. No dynamically resolved Python dependency inherits a source-only
-identity. K269 places requalification after the last measured input edit and retains a
-live owner through later permission/review/provisioning changes.
+Check the declared read set against independently observed dependencies and reviewed
+composition under the [complete task/runtime closure](application-reference-packaging-runtime.md#independently-discovered-task-and-runtime-inputs).
+Select a frozen standalone packaging Taskfile; no executable task is added by this design.
+Its whole bytes and every actual global/user configuration, runtime/stdlib/package/image
+read remain inputs. Reading the shared project Taskfile also binds its whole bytes;
+a per-recipe digest cannot replace that read, and unrelated changes invalidate its proof.
+The full boundary, initial capabilities and actual backing/proxy associations remain
+unavailable U1–U6. No dynamically resolved dependency inherits a source-only identity.
+K269 retains an explicit last-edit requalification/audit/close owner through later
+permission/review/provisioning changes, before k245.
 If a recipe/verifier reads a reporting document, it becomes an input. Finish all
 reconciliation and executable/schema/fixture/task edits before measurement. Afterwards
 write proof references only in reporting outputs. Review repairs require requalification;
@@ -386,7 +392,8 @@ requires a new explicit human decision.
 lifecycle and approval protocol for whole-k273 review. No authority directory, receipt,
 approval register, approved binding, executable protocol or scratch qualification exists.
 K276 supplies the [full contact design and exact unavailable work](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities);
-k277 must complete the exact shared entry/read closure. K278 reconciles them and schedules
+k277 supplies the [shared entry/read design and exact unexercised segments](application-reference-packaging-runtime.md).
+K278 reconciles them and schedules
 whole review before k269; retirement of k276 qualifies no contact mechanism. The
 qualified initializer and independently implemented validator are k269 construction owners
 before k245, with live affected requalification after the last measured change.
@@ -431,8 +438,8 @@ initialization needs explicit new human authority, even if no target was contact
 
 ### Admission, consumption and original start
 
-The lifecycle owns these transitions; k277 must map them to the actual retained packaging
-entry and k276 must independently establish the required contact boundary. They cannot be
+The lifecycle owns these transitions; k277's companion maps them to the proposed retained
+packaging entry and k276 requires independent contact evidence. They cannot be
 credited merely from this specification.
 
 1. Parse the fixed packaging interface and validate the invocation-bound independent
@@ -724,6 +731,7 @@ every full source before/after extraction; changed bytes invalidate that invocat
 | Canonical population report | `## Selected reference and evidence requirements` through the next level-two heading; includes permission, delegated choices, classification/assignment and test/handoff subsections |
 | Descriptor-relative ADR | `# Filesystem access is descriptor-relative` through EOF; owns search-only held kernel resolution, physical dot rules, 32-link budget and its platform/prompt limits |
 | This evidence contract | Complete level-two sections listed below, including all nested subsections; owns derived acquisition, representation, qualification and approval guarantees |
+| Contact and packaging companions | Whole bytes of application-reference-contact-boundary.md, all five linked inventory tables and application-reference-packaging-runtime.md; required independent basis/entry/read/expectation contracts, without reporting slices |
 
 Contract sections: Ownership and alternatives; Selected instrument architecture; Proposed
 envelope version and verification interface; Permission inputs and reporting outputs;
@@ -816,8 +824,9 @@ SCRATCH cannot become LIVE; fixture authority never admits the live subject. Lat
 retain the binding without retrying acquisition. Leaked/reused endpoints, fork/exec inheritance,
 substituted verifier, changed inputs, copied verdict, cross-invocation nonce or cross-domain
 result refuses. Full independent no-contact evidence remains k276/k277 work, not socketpair's
-guarantee. The exact packaging entry/domain selector belongs to k277; these channels cannot
-secretly add a second packaging interface.
+guarantee. The [retained entry contract](application-reference-packaging-runtime.md#retained-entry-and-domain-channel)
+uses the same checker-owned domain challenge through Task/script/CLI, without a second
+coordinator-only packaging interface. Intermediary endpoint preservation remains unqualified.
 
 The candidate verifier cannot adjudicate its own bootstrap controls. A separately owned
 adjudicator runs exact retained checker/verifier/launcher artifacts against separately authored
@@ -851,7 +860,8 @@ changes. Actual receipt binding follows qualified initialization mechanics/contr
 K278 reconciles the whole protocol before mandatory review. K275 cuts no construction leaves.
 K276's [precise unavailable contact boundary](application-reference-contact-boundary.md)
 requires accepted whole-byte inventory/basis inputs and U1–U6 work under k269;
-k277 owns exact entry/observed runtime reads. Until every required identity/control qualifies,
+k277 supplies the exact entry/read/expectation design; actual observations remain absent.
+Until every required identity/control qualifies,
 admission remains unavailable, k244/k242 live and k245's pass unused.
 
 ## Closed qualification proof and required inventory
@@ -980,39 +990,38 @@ selected, probed or implied here. Required copies remain missing work, never use
 
 ## Fixed composition without target contact
 
-[Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof)
-shows external acceptance before required rehearsal and admission. The rehearsal's exact
-enabling point remains k277 work. The same retained executable,
-fixed packaging parser/constants, admission, coordinator and real adapters must be credited.
-Packaging accepts only a fresh export; it cannot accept arbitrary source/scope/file/language
-or adapter choices. K273 must name exactly how sealed scratch qualification reaches the
-actual Taskfile/script/parser/composition entry and how live execution rejects that channel.
-A separate internal entry cannot credit segments it never reaches; an ambient selector is
-an interface that needs explicit live refusal, identity and miswiring controls.
+[Packaging → Rehearse the retained entry in a bound domain](../design/architecture/index.html#diagram-native-reference-packaging)
+shows the [whole-byte entry/runtime companion](application-reference-packaging-runtime.md).
+The commissioned checker launches the same absolute retained Taskfile, fixed script and
+export-only acquisition CLI in both domains. A mandatory fresh unnamed fd-3 channel
+binds independently established SCRATCH/LIVE domain, process/image/read closure, export
+and invocation; missing/changed channels have no LIVE fallback. LIVE rejects scratch
+selectors/maps/fixture authority; SCRATCH rejects live intents/results. Actual endpoint
+preservation through Task/interpreter and startup capability correspondence are unqualified.
 
-Required rehearsal compares exact fixed intents with independent expectations and maps only
-declared fixture identities to scratch descriptors/emitter. Unmapped intents refuse.
-Logical /System paths are values, never installed probes. Intent evidence and actual mapped
-scratch pipe/descriptor/decoder observations remain separate. Fixture authority/receipt
-cannot authorize live contact. The exact fixed-location derivation, UID/receipt discovery,
-export preflight and installed-build-check path also need credited shared logic and an
-explicit operation/mapping contract. K273 names executed, mapped and unexercised segments;
-a fixture location cannot qualify live derivation by itself, nor an installed /System read
-serve as a pure positive. Any required unexercised segment leaves admission unavailable.
+The companion's [operation map](application-reference-packaging-runtime.md#operation-and-credit-map)
+specifies every proposed UID/build/fixed-location/register/receipt/export/consumption/start/
+source/acquisition/decoder/closure operation as executed, mapped or unexercised. Fixed
+location derivation uses canonical literal bytes, not HOME/cwd; every authority traversal
+maps to held scratch objects. Exact native build checks select explicit sysctl operations,
+not an installed SystemVersion.plist probe. Shared values do not qualify unexercised native
+calls. Logical intents and actual mapped scratch observations have distinct provenance;
+unknown mappings refuse. No required unexercised segment can receive native/admission credit.
 
-Every intended native operation must reach the contact gate; the complete independent
-boundary above must expose bypass, including IPC/proxy routes. Actual Taskfile/script edges,
-pure-to-packaging miswiring, live intents, changed constants, omitted preflight, reused/forged
-admission and channel/gate/verifier death need isolating scratch controls. They refuse before
-source/index/installed-contents contact, with complete independent evidence rather than a
-clean producer log or syscall-only trace. Direct scratch bypass is the observer control,
-never a target positive. Mutated copies are separate frozen subjects; final qualification
-measures the unchanged retained candidate. Changed actual read inputs invalidate proofs.
+The [read/capability partition](application-reference-packaging-runtime.md#read-partition-and-initial-capability-state)
+separates approved runtime-image/control/scratch reads from forbidden source/resource/proxy
+operations. Full independent C1–C8 coverage begins before Task/loader startup, includes
+initial fd/port/VM and detached effects, and consumes all U1–U6. Channel/edge/preflight/
+domain/bypass/loss negatives must reach the intended boundary without a live positive.
+An image allowlist or a clean producer/syscall-only log cannot establish this boundary.
 
-These are required design/qualification obligations, not an OS sandbox or an implemented
-selector. K273's whole review must establish that the exact packaging path is exercised and
-scratch context cannot mint live authority. K269 supplies owners only after that review and
-integration. The one target pass cannot be the first wiring/privilege/location experiment.
+Final qualification freezes the unchanged retained candidate and complete independently
+discovered task/global-config/interpreter/stdlib/resolved-package/image closure. Independent
+expectations and all affected cells are re-acquired/requalified after the last measured
+edit, with a live owner before k244 closes/k245 acts. Mutation copies are separate subjects.
+These are design requirements, not an implemented selector, approved root or actual proof.
+Whole-k273 review/integration and k269's exact owners remain due; actual rehearsal/read/
+no-contact credit is unavailable. The target pass cannot discover wiring or native-call behavior.
 
 ## Independent decoder expectation classes
 
@@ -1028,6 +1037,11 @@ positions even when CF returns one member. Format inspection cannot predict undo
 CF rejection or certify preservation of lexical order, stored width or NaN payloads.
 Every expectation cites its primary basis and scope. An XML specification supports its
 defined grammar; authored binary/OpenStep/.strings/.loctable bytes alone establish none.
+The [named basis table](application-reference-packaging-runtime.md#named-expectation-bases-and-bounded-runtime-claims)
+pins XML 1.0/Apple DTD and debugging guide, historical CF-1153.18 binary/old-style/dispatch
+sources, archived OpenStep/strings examples and contract-only loctable association rules.
+Complete basis objects/locators and original independently acquired current-runtime
+results require external acceptance before producer comparison. Source pins are not results.
 Historical implementation-derived facts keep that label and cannot certify the loaded CF
 runtime. Without a supported basis, validity/type remains unavailable while bytes/positions
 are preserved. Current acceptance/storage/duplicate/coercion requires the separate pinned
@@ -1161,7 +1175,7 @@ Its children independently own authority lifecycle k274, admission roots k275, c
 contact boundary k276, exact entry/runtime closure k277 and whole reconciliation k278.
 The lifecycle/anchor proposals and k276's pinned-source/unavailable contact design do not
 close actual contact/entry obligations or admit instrument qualification. K269 must assign
-U1–U6's exact live owners before affected execution/credit consumers; k277/k278 and whole
+U1–U6's exact live owners before affected execution/credit consumers; k278 and whole
 review remain due before that plan is consumed.
 The authority requirements are selected in k270; actual receipt/provisioning, independent
 approval anchors and full unprivileged external contact capability remain unavailable
@@ -1218,9 +1232,9 @@ for an explicit trade-off, not an unrecorded omission or a passing closure. A sc
 extension requires the independent validator/oracle/fixtures/inventory to change and
 all affected earlier checks to be rerun with complete before/after input freeze.
 
-Construction must add and verify two distinct Taskfile entry points: pure
+Construction must add and verify two distinct retained Taskfile entry points: pure
 qualification with no live target-contact authority, and bounded packaging with only a new
-export destination. K273 must resolve the exact scratch-entry/live-channel refusal design;
+export destination under the companion's mandatory checker-owned domain channel;
 ordinary tests have no live packaging dependency. Packaging checks the exact installed macOS 27.0.1 (26A434)
 build, complete matched qualified tool/input identities and frozen permission,
 rejects arbitrary scope and existing output before contact, persists the start,

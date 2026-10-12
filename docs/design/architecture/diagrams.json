@@ -2,41 +2,30 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Define full contact coverage and preserve exact unavailable work",
-    "status": "K276 source-based unavailable design; whole k273 review and actual qualification remain due",
-    "summary": "Pinned independent published BSD/Mach/RPC/API inventories define C1–C8 and every unclassified entry. Direct, child, inherited-descriptor/map and proxy bypass controls include per-class readiness, association, loss, filter, attach and termination failures. No complete unprivileged mechanism or current kernel/service correspondence is established. U1–U6 remain required live work under k269 before actual adapter/admission credit; k277 entry/read closure and k278 whole reconciliation/review remain due. Protected Data and out-and-back decisions are preserved. Useful authored pure work retains its limited claim; no target pass or stronger authority is selected.",
+    "title": "Define the retained packaging entry and complete runtime inputs",
+    "status": "K277 design proposal; k278 whole reconciliation/review and actual qualification remain due",
+    "summary": "One checker-owned launch reaches the same retained standalone Taskfile, script and export-only CLI in SCRATCH and LIVE. A mandatory fresh domain channel has no LIVE fallback. Every preflight operation has separate executed, mapped or unexercised credit; full independently discovered task/configuration/runtime/stdlib/package/image and initial fd/port/VM/proxy closure remains required. Named historical format bases are separate from independent current-runtime observations. U1–U6 remain unavailable: no actual task, channel, read closure, native segment or admission proof is qualified. The pass is unused.",
     "diagramIds": [
-      "native-reference-contact",
-      "native-reference-proof",
+      "native-reference-packaging",
       "native-reference-instrument",
+      "native-reference-proof",
+      "native-reference-contact",
       "native-reference-admission",
       "native-reference-evidence",
       "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-reference-contact",
-        "summary": "Added the independently pinned C1–C8 inventory, per-family bypass/loss controls and exact unavailable U1–U6 work."
-      },
-      {
-        "id": "native-reference-proof",
-        "summary": "Named U1–U6 as missing actual contact prerequisites to scratch qualification."
+        "id": "native-reference-packaging",
+        "summary": "Added the exact retained chain, mandatory domain channel, operation-credit split and complete read/last-edit qualification boundary."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Replaced generic observer uncertainty with the pinned full boundary and missing proxy/mapped-read evidence."
+        "summary": "Replaced unresolved entry selection with the proposed retained Task/script/CLI channel while preserving actual contact evidence as unavailable."
       },
       {
-        "id": "native-reference-admission",
-        "summary": "Kept U1–U6 unavailable through the final qualification boundary."
-      },
-      {
-        "id": "native-reference-evidence",
-        "summary": "Linked real source/acquisition credit to C1–C8 coverage and U1–U6 completion."
-      },
-      {
-        "id": "native-population-metadata-shape",
-        "summary": "Carried the unavailable contact design and k269 ownership into the whole-subject overview."
+        "id": "native-reference-proof",
+        "summary": "Added whole task/runtime closure and the mandatory domain channel to the unqualified scratch rehearsal."
       }
     ]
   },
@@ -94,6 +83,15 @@
   ],
   "diagrams": [
     {
+      "id": "native-reference-packaging",
+      "group": "native-sources",
+      "title": "Packaging → Rehearse the retained entry in a bound domain",
+      "renderer": "svg",
+      "source": "native-reference-packaging.d2",
+      "rendered": "native-reference-packaging.svg",
+      "caption": "K277 proposes one checker-launched standalone retained Taskfile/script/export-only CLI chain. A mandatory fresh fd-3 channel binds the independently selected SCRATCH/LIVE domain; no absent channel defaults to LIVE. Actual startup/capability, native preflight and complete independently discovered task/configuration/interpreter/stdlib/package/image/read/proxy evidence remain unqualified U1–U6. Historical format bases do not supply current CF observations. Whole k273 review and k269 live last-edit requalification/audit/close owners precede credit or k245; no executable selector or target pass exists."
+    },
+    {
       "id": "native-reference-contact",
       "group": "native-sources",
       "title": "Contact → Establish coverage before releasing a pure subject",
@@ -118,7 +116,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "One proposed coordinator composes fixed source/held acquisition, immutable originals and a separate qualified decoder/verifier. External accepted anchors and one-use channels cannot supply their own contact evidence. K276 defines C1–C8/U1–U6, including initial capabilities, mapped reads and detached proxies; no complete unprivileged mechanism is established. Actual entry/read closure, tools, register, receipt and proofs remain absent; whole review precedes k269."
+      "caption": "One proposed coordinator composes the retained Task/script/CLI domain channel, fixed source/held acquisition, immutable originals and separate decoder/verifier. K277 maps each preflight operation and complete task/runtime reads; actual channel/native/read credit still consumes the unavailable C1–C8/U1–U6 boundary. External accepted anchors cannot supply their own contact evidence. Whole review precedes k269; no tool, register, receipt or proof exists."
     },
     {
       "id": "native-reference-admission",
@@ -136,7 +134,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "A fixed sibling approval register separates independent terminal commissioning, directly accepted requirements/inventory/tool revisions and original verifier-control acceptance. Acyclic receipt/correction bindings and fresh nonce/process/domain channels preserve spent authority. The contact companion and source tables require accepted whole-byte bindings; C1–C8/U1–U6 actual evidence and k277 entry/read closure remain missing. Whole k273 review precedes k269; no root, approval record or native verdict exists."
+      "caption": "The fixed sibling register separates terminal commissioning, directly accepted requirements/tool revisions and independent verifier-control acceptance. Acyclic receipt/correction bindings preserve spent authority. Whole-byte contact/tables and packaging/runtime companion bind the accepted basis. Mandatory domain channels, complete read closure and C1–C8/U1–U6 actual evidence remain unqualified. Whole k273 review precedes k269; no accepted root or native verdict exists."
     },
     {
       "id": "native-population-metadata-shape",

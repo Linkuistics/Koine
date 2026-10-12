@@ -154,3 +154,38 @@ refusal; absolute/relative out-and-back specimens refuse before the first outsid
 lookup/open, retaining observed text and raw occurrences. Simulated mounts/firmlinks
 supply policy evidence only, never current topology or hidden physical ancestry. No
 required copy/useful class is removed to obtain a clean proof.
+
+## Exact entry, read closure and expectations from k277
+
+Consume the complete application-reference-packaging-runtime.md after whole-k273 review.
+Assign the checker-owned launch, standalone retained Taskfile/script/export-only CLI,
+mandatory fresh domain fd, exact initial fd/port/VM disposition and operation mapping
+before actual composition credit. No missing-channel LIVE default or coordinator-only
+rehearsal is admissible. Give each UID/native-build/fixed-location/register/receipt/export/
+consumption/start operation its executed/mapped/unexercised evidence and independent
+miswire/cross-domain/loss control. Shared values or fixture ancestry cannot qualify an
+unexercised native call. Actual build sysctl API/current compatibility correspondence,
+Task/interpreter endpoint preservation and actual authority identities remain missing work.
+
+Assign independently discovered complete task/global-config/read/mapping/proxy closure
+under U1–U6, with whole-file identities for every actual read and complete retained
+Python interpreter/stdlib/resolved-package and native/dyld/shared-cache/image backing.
+No per-recipe digest, import list, runtime version string or dynamic uv resolution supplies
+it. Discovery completeness/failure and initial inherited capabilities require their own
+independent qualification before checker/adapter/rehearsal credit. The whole-byte packaging
+companion joins the whole contact companion/five inventories as independently accepted
+normative basis, not reporting. Unknown coverage remains required live work.
+
+Assign independent byte-specimen/basis authoring, separate pinned-current-runtime
+observation acquisition and independent adjudication before producer comparison. XML,
+historical CF binary/OpenStep/strings and contract-defined loctable expectations each have
+named bounded bases; historical source or producer-learned regression facts supply no
+current CF acceptance/storage/duplicate/coercion verdict. Retain complete documentary
+objects, original runtime results and loaded-image correspondence.
+
+Keep distinct last-edit requalification, independent audit and k244-close owners alive
+through k245 admission, including later provisioning/corrections and newly discovered
+reads. Determine affected cells independently; unknown impact requires the whole matrix.
+Any U segment, incomplete read discovery or unavailable U1–U6 prerequisite prevents
+actual packaging/admission credit and node close. No packaging scaffolding or observation
+programme is supplied here; the pass remains unused.

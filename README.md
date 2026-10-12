@@ -100,8 +100,13 @@ permit. No register or accepted revision exists. The
 pins independent published BSD/Mach/RPC/API inventories and per-class bypass/loss controls.
 No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
 U1–U6 remain exact live work under k269 before actual adapter/admission credit. Useful
-authored pure work retains its limited scope. K273's remaining entry design, whole review
-and actual qualification remain required; process-death checks establish no OS-crash persistence.
+authored pure work retains its limited scope. The
+[packaging/runtime proposal](docs/verification/application-reference-packaging-runtime.md)
+defines one retained Task/script/CLI chain, mandatory SCRATCH/LIVE launch channels,
+per-operation executed/mapped/unexercised credit and full independently discovered task/
+runtime inputs. Named historical format bases are separate from required current CF
+observations. No task/channel/read closure is qualified; k278 reconciliation, whole review
+and actual U1–U6 qualification remain required. Process-death checks establish no OS-crash persistence.
 
 ## Client-requested grants
 

@@ -16,16 +16,13 @@ remain live.
 
 Current changes:
 
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Added the independent source inventory, C1–C8 coverage, per-class bypass/loss controls and exact unavailable U1–U6 handoff.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Named U1–U6 as missing actual contact prerequisites to scratch qualification.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced generic observer uncertainty with the pinned full boundary and missing proxy/mapped-read evidence.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Kept U1–U6 unavailable through the final qualification boundary.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Linked real source/acquisition credit to C1–C8 coverage and U1–U6 completion.
-- [Population → Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Carried the unavailable contact design and k269 ownership into the whole-subject overview.
-- [Contact observation outside the producer](../../verification/application-reference-evidence.md#contact-observation-outside-the-producer) — Bound whole-byte inventory/basis inputs and independent observation or pre-effect prevention to each applicable class.
-- [Independent source baseline](../../verification/application-reference-contact-boundary.md#independent-source-baseline) — Pinned every public BSD/Mach declaration variant and selected RPC/API basis without identifying it with the reference runtime.
-- [Exact unavailable identities](../../verification/application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities) — Assigned U1–U6 design, construction, calibration and final qualification placement under k269.
-- [Protected Data and out-and-back specimens](../../verification/application-reference-contact-boundary.md#protected-data-and-out-and-back-specimens) — Preserved Data prefix positives and selected protected/outside refusal without new topology or ancestry claims.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Added one retained Task/script/CLI chain, a mandatory domain channel and complete read/last-edit qualification boundary.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaced unresolved entry selection with the proposed retained channel while keeping actual contact evidence unavailable.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Added whole task/runtime closure and the domain channel to the unqualified rehearsal.
+- [Retained entry and domain channel](../../verification/application-reference-packaging-runtime.md#retained-entry-and-domain-channel) — Defined the exact proposed invocation and LIVE/SCRATCH miswire refusal without an absent-channel default.
+- [Operation and credit map](../../verification/application-reference-packaging-runtime.md#operation-and-credit-map) — Distinguished each executed, mapped and unexercised UID/build/location/receipt/export operation.
+- [Task and runtime inputs](../../verification/application-reference-packaging-runtime.md#independently-discovered-task-and-runtime-inputs) — Required independent discovery, whole-file/runtime identities and explicit incomplete-discovery outcomes.
+- [Named expectation bases](../../verification/application-reference-packaging-runtime.md#named-expectation-bases-and-bounded-runtime-claims) — Named XML, historical CF and contract-loctable bases separately from required current-runtime observations.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -48,8 +45,11 @@ release still requires matched ordinary/disabled/enabled image correspondence.
 All selected amounts, semantics, breadth, three seams and gates remain.
 The failed grouped conservative enclosure is no actual native overflow or fit.
 
-Open [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact)
-for the current boundary, and the admission/component views for its lifecycle and composition.
+Open [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging)
+for the current proposal. Unchanged [contact](index.html#diagram-native-reference-contact),
+[admission](index.html#diagram-native-reference-admission),
+[evidence order](index.html#diagram-native-reference-evidence) and
+[population](index.html#diagram-native-population-metadata-shape) views retain the required boundary.
 At 390px fit mode is a compact overview; use its full-size SVG or native-size
 panning to read labels. Dark exports use D2 theme 200.
 Packet-integrity controls and browser delivery supply no native qualification.
@@ -162,4 +162,5 @@ same instrument. These are synthetic design controls, never native qualification
 
 Run design:application-population-metadata-shape-render for the joint evidence
 boundary, byte-complete evidence order, admission/proof, full contact and instrument component views
+and retained packaging/runtime proposal
 with D2 0.9.0/Dagre/theme 0/dark-theme 200. It reads no target.

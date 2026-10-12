@@ -156,3 +156,13 @@ unavailable. K277 owns entry/read closure; k278 must include the new contact vie
 the whole-byte companion/inventory bases through accepted revisions and reconcile every
 summary before whole-k273 review. Data positives and protected/out-and-back refusals
 remain authored pure specimens, not current topology or hidden-ancestry evidence.
+
+K277 supplies the whole-byte packaging/runtime companion and retained-entry view: one
+checker-launched Task/script/CLI chain, mandatory domain channel without LIVE fallback,
+closed operation/object mapping with separate executed/mapped/unexercised native credit,
+complete task/runtime/read and initial fd/port/VM/proxy closure, and named bounded format
+bases versus independently acquired current-runtime expectations. No actual chain/channel/
+read closure qualifies; U1–U6 remain required. K278 reconciles all seven reference/corpus
+views, full-byte companion bindings and exact k269 owners through whole review. Last-edit
+requalification/audit/close ownership must survive later provisioning/corrections before
+k245; neither a retired design child nor a shared constant qualifies a native segment.
