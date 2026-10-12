@@ -29,6 +29,20 @@ No construction leaf may reopen settled questions or treat current unavailable p
 qualified behavior. Place any concrete stronger alternative's new human decision before
 its first consumer; never grant unspecified administrator access.
 
+## K281 selected amendments
+
+Antony accepted bounded named contact claims and their evidence seams, the closed
+pre-lookup rule with an explicit failed/incomplete-evidence outcome, and exact canonical
+status relocation. Consume the selected clauses and line-by-line original-obligation
+comparison in application-population-metadata-shape.md, then the complete k282 repair
+and its mandatory whole review/integration. The original full C1–C8/U1–U6 owner/closure
+proposals below are comparison inputs, superseded only as universal no-contact gates.
+No repeated full-mechanism U2 leaf is required. Missing current-service/proxy/initial-right/
+map coverage is an accepted unknown risk, never clean or inapplicable; actual required
+controls/identities and known defects remain blockers under the reviewed bounded map.
+The original Done when texts remain the inventory except those explicitly compared
+contact/lookup amendments. No new execution, authority, probe or target pass is authorized.
+
 ## Work and verification
 
 K279/k280 find the k273 conjunction incomplete. First consume actual requirements
@@ -48,7 +62,8 @@ input-stable reporting owners from the newly reviewed protocol. Do not blanket-f
 all target-only U operations before their first authorized attempt or silently tolerate
 pre-consumption U prerequisites. The completed operation map must name each evidence
 route and boundary. Original Done when, the canonical selected permission, unused pass,
-k246/k247 duties and all holds remain unchanged unless Antony explicitly amends them.
+k246/k247 duties and all holds remain except k281's explicit compared contact/lookup
+amendments. Do not re-interview settled limits or weaken other conditions.
 
 1. Apply the reviewed F1–F5/F9/F11 design to each affected brief/leaf and the
 original-obligation ownership table. No design uncertainty is resolved by guessing
@@ -148,11 +163,13 @@ scheduled whole-design or planning review.
 
 ## Exact contact work from k276
 
-Consume the reviewed application-reference-contact-boundary.md and all five documentary
-inventory tables. Give U1 current kernel/probe/API universe, U2 full unprivileged mechanism,
-U3 launch/capability state, U4 mediated/mapped effects, U5 independent per-class calibration,
-and U6 topology/final stability actual live owners before each first execution/credit
-consumer. An unavailable required mechanism cannot become an implementation assumption.
+Consume the contact companion and all five documentary inventory tables after k282's
+complete repair/whole review. Map every C1–C8/U1–U6 coordinate to the selected bounded
+claim, its actually required evidence or the explicitly accepted unknown limit. Assign
+actual retained-entry/domain/scratch-adapter and available bounded-observation construction/
+calibration before their named credit consumers. Do not assign an impossible complete-
+mechanism repeat or waive unrelated native/authority/decoder/control evidence. An
+unavailable required mechanism for a named retained claim remains a concrete blocker.
 Do not repeat the same published survey as a calibration or credit a gate/mock/static
 call graph as no-contact evidence. Independent disposition covers every public row and
 all current/opaque extensions; retain exact original source and full basis/input bindings.
@@ -160,16 +177,22 @@ all current/opaque extensions; retain exact original source and full basis/input
 Place concrete design/capability/association/calibration work before actual source/held
 adapter, checker-image correspondence and packaging rehearsal credit, then separate final
 requalification/independent audit after the last changed inputs and before k244 closure/k245.
-Per applicable C1–C8 operation/variant, assign direct/child/inherited-fd-right-map/proxy
+For each required bounded C1–C8 operation/variant, assign direct/child/inherited-fd-right-map/proxy
 bypass and readiness/association/drop/filter/attach/termination controls with scratch-only
 positives. Current framework/service correspondence and initial mappings remain missing,
 not inferred from synthetic routes. Useful authored pure work may progress with limited
-claims while these exact unavailable duties stay live. Any pursued stronger arrangement
+claims; unestablished current-service/proxy/initial-right/map correspondence remains
+explicitly unknown under the accepted limit, not a universal closure gate. Any pursued
+stronger arrangement
 gets its precise human requirements decision, mechanism review and scope before its
 consumer; no root/sudo/SIP/helper/entitlement/signing/consent/VM authority is implied.
 
-Preserve Data-volume prefix positives and protected-user/unsettled-consent contents
-refusal; absolute/relative out-and-back specimens refuse before the first outside
+Preserve reviewed Data/Applications and Data/Library positives without a blanket Data
+exclusion. Apply the closed exact-entry risk rule before lookup, including direct/link
+Data/private, Data/Users and every named protected/unsettled component. Separately own
+reviewed held common-ancestor and authority/export operations; no target access follows
+from their ancestry exceptions. Absolute/relative out-and-back specimens refuse before
+the first outside
 lookup/open, retaining observed text and raw occurrences. Simulated mounts/firmlinks
 supply policy evidence only, never current topology or hidden physical ancestry. No
 required copy/useful class is removed to obtain a clean proof.
@@ -178,7 +201,7 @@ required copy/useful class is removed to obtain a clean proof.
 
 Consume the complete application-reference-packaging-runtime.md after whole-k273 review.
 Assign the checker-owned launch, standalone retained Taskfile/script/export-only CLI,
-mandatory fresh domain fd, exact initial fd/port/VM disposition and operation mapping
+mandatory fresh domain fd, reviewed bounded initial-state record and operation mapping
 before actual composition credit. No missing-channel LIVE default or coordinator-only
 rehearsal is admissible. Give each UID/native-build/fixed-location/register/receipt/export/
 consumption/start operation its executed/mapped/unexercised evidence and independent
@@ -186,14 +209,17 @@ miswire/cross-domain/loss control. Shared values or fixture ancestry cannot qual
 unexercised native call. Actual build sysctl API/current compatibility correspondence,
 Task/interpreter endpoint preservation and actual authority identities remain missing work.
 
-Assign independently discovered complete task/global-config/read/mapping/proxy closure
-under U1–U6, with whole-file identities for every actual read and complete retained
+Assign the reviewed independently discovered task/global-config/read closure, with
+whole-file identities for every actual required read and complete retained
 Python interpreter/stdlib/resolved-package and native/dyld/shared-cache/image backing.
 No per-recipe digest, import list, runtime version string or dynamic uv resolution supplies
-it. Discovery completeness/failure and initial inherited capabilities require their own
-independent qualification before checker/adapter/rehearsal credit. The whole-byte packaging
+it. Known input/image/read correspondence and every actually required initial-state
+control need independent qualification before checker/adapter/rehearsal credit; missing
+complete rights/map/proxy visibility remains an accepted stated limit. The whole-byte packaging
 companion joins the whole contact companion/five inventories as independently accepted
-normative basis, not reporting. Unknown coverage remains required live work.
+normative basis, not reporting. Apply k282's exact bounded read/capability claims: missing
+complete initial-right/map/proxy coverage stays an accepted unknown, without relaxing
+actual known read/image/input identities required by a named claim.
 
 Assign independent byte-specimen/basis authoring, separate pinned-current-runtime
 observation acquisition and independent adjudication before producer comparison. XML,
@@ -205,8 +231,10 @@ objects, original runtime results and loaded-image correspondence.
 Keep distinct last-edit requalification, independent audit and k244-close owners alive
 through k245 admission, including later provisioning/corrections and newly discovered
 reads. Determine affected cells independently; unknown impact requires the whole matrix.
-Any U segment, incomplete read discovery or unavailable U1–U6 prerequisite prevents
-actual packaging/admission credit and node close. No packaging scaffolding or observation
+Use k282's exact prerequisite/first-attempt/bounded-limit map rather than blanket rejection
+of every U segment. A failed or unavailable actual required prerequisite prevents its
+credit/admission; accepted unknown contact coverage receives no full no-contact credit.
+No packaging scaffolding or observation
 programme is supplied here; the pass remains unused.
 
 ## Whole replacement ownership and final close
@@ -225,10 +253,12 @@ packaging companions and five tables as whole-byte normative inputs. Only the co
 extractor's exact canonical/ADR/evidence-contract sections have the reporting exception;
 full snapshots do not waive actual whole task/runtime/read/initial-capability closure.
 
-Assign U1/U2 mechanism/current-correspondence design and review, U3/U4 launch/image/endpoint/
-initial-fd-port-VM/proxy/read construction, U5 independent family/variant calibration and
-U6 final stability at their exact placements. Each missing mechanism/U segment remains
-live before affected execution or credit. Give actual adapters, exact outer request and
+Assign the reviewed bounded inventory/claim/control, actual launch/image/endpoint/read,
+available observation/calibration and final-stability roles at their exact placements.
+Preserve missing complete universe/mechanism/initial-right/map/proxy correspondence as
+accepted unknown limits; no universal U1/U2/U3/U4 repeat is a closure condition. Required
+actual controls and independent proofs remain live before their named execution or credit.
+Give actual adapters, exact outer request and
 inner Task/script/CLI/channel rehearsal, current native sysctl/UID and independent CF
 expectations separately demonstrable owners. Pure values or retired design leaves supply
 no actual correspondence; no target positive or stronger privilege is inferred.

@@ -520,5 +520,14 @@ lookup decisions in k281, then complete admission-credit/LIVE-activation/indepen
 registration/input-partition repair in k282 with mandatory whole review/earned integration
 before k269. This implements Evidence stays bounded: no repeated unavailable-mechanism
 survey or deeper impasse replaces Antony's decision. Direct profile/RPC/supervision/
-reservation repairs supply no qualification. Canonical permission and original conditions
-are unchanged; all useful breadth, product/private/native holds and unused-pass duties remain.
+reservation repairs supply no qualification. K281 subsequently records Antony's three
+affirmative answers: bounded named contact claims with accepted unobserved service/proxy/
+initial-right/map risk; an independently reviewed exact pre-lookup allowlist and protected/
+out-and-back refusals with distinct authority/export ancestry; and verbatim relocation
+of the control-status sentence outside the measured canonical section. The canonical
+line-by-line obligation comparison identifies the contact/lookup amendments and retains
+all other original conditions. Refused required copies have an explicitly accepted
+failed/incomplete design boundary, never complete-subject credit or useful loss. K282
+must reconcile the entire amended admission protocol and earn whole review/integration
+before k269; no repeated impossible U2 leaf, actual authority or qualification follows.
+All useful breadth, product/private/native holds and unused-pass duties remain.

@@ -181,4 +181,17 @@ and protected-lookup decisions, plus narrow canonical status relocation, to Anto
 k282 owns complete credit/activation/registration/input-partition repair and mandatory
 whole review/earned integration before k269. Direct profile/RPC/supervision/reservation
 repairs qualify no tool. Every original Done when and canonical selected clause is
-unchanged here, the target pass is unused, and k246/k247 and every hold remain live.
+unchanged by k280, the target pass is unused, and k246/k247 and every hold remain live.
+
+K281 records actual affirmative answers to bounded named contact evidence and seams,
+closed pre-lookup refusal with independently reviewed exact entries, explicit failed/
+incomplete-evidence disposition, and the narrow verbatim control-status relocation.
+The canonical selected clauses and line-by-line obligation comparison amend only the
+complete-contact sufficiency and protected-lookup conditions; every remaining original
+Done when above stays binding. Missing current-service/proxy/initial-right/map coverage
+is an accepted unknown risk, not a universal prerequisite or no-contact certificate.
+Required refused copies retain raw slots and exact missing work through k245/k246/k247
+and mandatory whole review; they never supply a complete finite subject or accepted
+useful loss. K282 applies the whole amended conjunction with mandatory whole review/
+earned integration before k269. No ancestor closes, permission is not spent, and no
+new native/authority/probe/privilege operation follows these requirements answers.

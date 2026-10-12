@@ -84,9 +84,10 @@ uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
 The independent [reference evidence instrument](docs/verification/application-reference-evidence.md#authoritative-attempt-evidence)
 is unbuilt. The [delegated requirements](docs/verification/application-population-metadata-shape.md#authority-and-admission-choices)
 select a separate KoineReferenceEvidence namespace, one explicit qualified initialization,
-cooperative/full-synchronization limits, unprivileged observation and refusal of protected
-contents/outside intermediate contact. Reviewed replacement design, independently approved
-anchors, qualified provisioning and complete actual proofs still precede target contact;
+cooperative/full-synchronization limits, unprivileged bounded contact evidence and the
+closed pre-lookup refusal rule with exact reviewed target/authority/export entries.
+Reviewed replacement design, independently approved anchors, qualified provisioning
+and actual proofs for every selected required claim still precede target contact;
 no receipt exists and the single pass is unused.
 The [authority lifecycle proposal](docs/verification/application-reference-evidence.md#permit-receipt-and-explicit-initialization)
 reserves a fresh export, retains irreversible consumption intent and moves the permit to
@@ -100,8 +101,10 @@ revision and independently approved correction bridge. No register or accepted r
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
 pins independent published BSD/Mach/RPC/API inventories and per-class bypass/loss controls.
 No complete unprivileged mechanism or current runtime/proxy/mapping coverage is established;
-U1–U6 remain exact live work under k269 before actual adapter/admission credit. Useful
-authored pure work retains its limited scope. The
+k281 accepts the missing complete current-service/proxy/initial-right/map coverage as an
+explicit risk, never a full no-contact result. K282 must map actual bounded claims and
+remaining prerequisites before k269; no impossible full-mechanism repeat is required.
+Useful authored pure work retains its limited scope. The
 [packaging/runtime proposal](docs/verification/application-reference-packaging-runtime.md)
 defines one retained Task/script/CLI chain, mandatory SCRATCH/LIVE launch channels,
 per-operation executed/mapped/unexercised credit and full independently discovered task/
@@ -110,16 +113,19 @@ observations. The [complete replacement handoff](docs/verification/application-r
 compares every original obligation and specifies separate construction, commissioning,
 provisioning/validation, review/repair, final affected requalification, independent audit
 and distinct instrument-close responsibilities. Whole-design review/earned integration
-precede k269; actual U1–U6, task/channel/native/read qualification remains unavailable.
+precede k269; actual required task/channel/native/read qualification remains unavailable.
 Later provisioning/corrections cannot inherit stale proof or restore authority. K244/k242
 remain live, k245 alone owns the unused pass, and k246/k247 retain complete generated
 discrimination/whole-subject review. Process-death checks establish no OS-crash persistence.
 
 The [whole review integration](docs/verification/application-reference-evidence.md#review-integration-and-required-decisions)
-requires k281's concrete human contact-limit/protected-lookup decisions and k282's repaired
-credit, LIVE activation, independent registration and normative/reporting partition before
-mandatory whole review/earned integration and k269. The earlier admission proposals cannot
-be implemented as settled. Permission, useful breadth, the unused pass and all holds remain.
+records k281's accepted bounded contact evidence, closed pre-lookup rule, explicit
+incomplete-evidence outcome and exact status relocation. Its [obligation comparison](docs/verification/application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+names the changed clauses. K282's repaired credit, LIVE activation, independent registration
+and normative/reporting partition must earn mandatory whole review and every earned
+integration before k269. The earlier admission proposals cannot
+be implemented as settled. A refused required copy leaves the finite subject incomplete;
+useful breadth, the unused pass and all holds remain.
 
 ## Client-requested grants
 

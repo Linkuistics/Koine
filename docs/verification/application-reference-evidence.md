@@ -31,14 +31,18 @@ these leaves grants authority by existing.
 ## Review integration and required decisions
 
 Whole review k279 and integration k280 find the k273 admission conjunction incomplete.
-Requirements reference-evidence-contact-limits-k281 now precede design
-reference-evidence-admission-completion-k282 and construction replanning k269. K281 puts
-the unestablished complete contact mechanism and indeterminate protected-lookup rule to
-Antony with concrete alternatives and a bounded-limit recommendation; it also requests
-the narrow canonical status relocation. The selected permission remains unchanged until
-an actual decision. K282 owns the exhaustive prerequisite/first-attempt credit distinction,
+Requirements reference-evidence-contact-limits-k281 precede design
+reference-evidence-admission-completion-k282 and construction replanning k269. Antony
+accepted bounded contact evidence and its seams, the closed pre-lookup rule with an
+explicit failed/incomplete-evidence disposition, and relocation of the exact control-
+status sentence outside the canonical measured section. The [selected clauses](application-population-metadata-shape.md#authority-and-admission-choices)
+and [line-by-line comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+own those amendments. Complete C1–C8/current-service/proxy/initial-right/map correspondence
+is no longer a blanket k244/k245 prerequisite; missing coverage remains explicitly unknown
+and can never be reported as full no-contact evidence. Forbidden contact stays forbidden.
+K282 owns the exhaustive prerequisite/first-attempt credit distinction,
 disarmed LIVE-role activation, chartered independent registration on clean/findings paths,
-and normative/status partition, plus application of actual contact/lookup decisions.
+and normative/status partition, plus exhaustive application of those actual decisions.
 Its mandatory whole review and every earned integration precede k269. Existing protocol
 sections are proposals to repair, not an implementable admission handoff. In particular,
 the current U table, direct reviewer-registration rule and post-provisioning qualification
@@ -48,9 +52,15 @@ mechanism survey or reporting-only close discharges the decision.
 K280 directly clarifies immutable issuance/current profile comparison and pre-intent
 export failures, repairs the complete documentary RPC names/conditional variants and
 shows checker supervision before Task startup. These repairs qualify no instrument.
-All original k273/k244/k242 obligations, k245's unused pass, k246/k247 duties, private
+All original k273/k244/k242 obligations except the explicitly compared contact/lookup
+amendments, k245's unused pass, k246/k247 duties, private
 ineligibility, both product holds and pending native acceptance remain. This section is
 reporting outside the normative extract set; it grants no approval or operation.
+The older full-coverage gates, risk-before-contents table and U1–U6 owner proposals below
+are pre-k281 design material pending k282's complete reconciliation. They cannot override
+the selected bounded claims or justify another impossible-mechanism construction leaf.
+The exact status relocation does not waive full-byte companion/table binding or complete
+partition/extractor controls; no admission mechanism or actual proof is established here.
 
 The [canonical joint evidence boundary](application-population-metadata-shape.md)
 owns the selected reference, cohort requirements, permission and packet-integrity

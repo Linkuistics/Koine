@@ -265,9 +265,13 @@ separates immutable issuance authority, independently accepted current correctio
 original evidence and verified derivatives. Actual contact/read/native-call proofs and
 one-time provisioning remain unavailable; design closure supplies no finite subject.
 The [review integration](docs/verification/application-reference-evidence.md#review-integration-and-required-decisions)
-requires actual contact/lookup decisions and complete credit/activation/registration/input
-partition repair with mandatory whole review before construction replanning. The original
-requirements remain selected until Antony explicitly changes them.
+records Antony's accepted bounded contact evidence, closed pre-lookup rule and explicit
+incomplete-evidence outcome, plus exact canonical status relocation. The
+[obligation comparison](docs/verification/application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+names those amendments; all other requirements remain. Full service/proxy/initial-right/
+mapping coverage stays unknown, never no-contact proof. Complete credit/activation/
+registration/input-partition repair and mandatory whole review still precede construction
+replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

@@ -23,10 +23,12 @@ the authorized package, independent copy roles, generated recipes/discrimination
 whole-family reconciliation remain live under the complete subject producer.
 
 The [whole review integration](application-reference-evidence.md#review-integration-and-required-decisions)
-now places concrete contact-limit/protected-lookup decisions in k281, then complete
-admission-credit/activation/registration/input-partition repair in k282 with mandatory
-whole review/earned integration, before k269. The canonical selected section below is
-unchanged; the incomplete admission proposals qualify neither construction nor the pass.
+is followed by k281's accepted bounded contact evidence, closed pre-lookup rule, explicit
+incomplete-evidence outcome and narrow status relocation. The [obligation comparison](#line-by-line-original-obligation-comparison)
+identifies each amendment; all other duties remain. K282 must apply these actual choices
+and repair admission credit/activation/registration/input partition with mandatory whole
+review/earned integration before k269. The earlier incomplete admission proposals qualify
+neither construction nor the pass.
 
 ## What the saved corpus establishes
 
@@ -191,9 +193,8 @@ reference changes no product support floor or acceptance gate.
 The [evidence contract](application-reference-evidence.md#one-pass-acquisition-and-closure)
 and [complete record model](application-reference-evidence.md#evidence-records-and-association-keys)
 make this permission reproducible. Its [pure control matrix](application-reference-evidence.md#independent-controls-required-before-target-acquisition)
-must be built and observed before the authorized target query/contents pass. Those
-controls are currently specified, not executed. No contract check consumes permission
-or establishes a package.
+must be built and observed before the authorized target query/contents pass. No contract
+check consumes permission or establishes a package.
 
 Antony authorized one byte-complete pass for the subsequent complete subject-design
 producer. Verify the exact installed build before using the authorization. The
@@ -281,34 +282,79 @@ observable acknowledgements, ordering and process-death retention only. Accept u
 storage/hardware failure as an explicit limit; no unconditional at-most-one-across-power-
 loss guarantee, secure store or native/VM crash experiment is selected.
 
-**Observer privilege.** Retain unprivileged pure qualification at the user's UID.
-No root/sudo collector is authorized and no privileged supplier is appointed. A realizable
-independent full contact observer/containment boundary remains required, including
-source/index, filesystem, IPC/proxy and inherited-descriptor effects; a syscall-only
-trace cannot admit. Until it is independently qualified, admission remains unavailable.
-K273 must deliver that reviewed unprivileged boundary or exact live unavailable work
-before its first consumer. A stronger alternative needs its concrete separate human
-decision; this delegation grants no unspecified administrator, SIP, helper, entitlement,
-signing, consent or VM change.
+**Observer privilege and bounded contact evidence.** Retain unprivileged pure qualification
+at the user's UID. No root/sudo collector is authorized and no privileged supplier is
+appointed. Antony accepted k281's stated bounded contact limit: independently authored
+byte/value/association expectations, source review, exact retained task/parser/domain
+controls, actual unprivileged scratch-adapter tests and any actually available bounded
+observations qualify only their named claims. Each claim must identify its evidence,
+operation/object scope and missing coverage. Missing current-service, proxy, initial-right
+and mapping correspondence remains explicitly unknown, not clean or inapplicable. These
+checks supply no complete C1–C8 observation/prevention or full no-contact certificate.
 
-**Protected contents and intermediate contact.** Retain the three literal and walk-
-resolved prefixes, without a blanket Data-volume exclusion. Explicitly forbid listing
-or reading protected-user contents through any spelling, including
-`/System/Volumes/Data/Users/<user>/{Desktop,Documents,Downloads}` and admitted links.
-Other known or unsettled consent-risk contact refuses as unavailable before contents
-handles/listing; no prompt is answered to complete evidence. Search-only root resolution
-may use the ADR's held common ancestors to enter /System, /Applications or /Library, but
-must refuse before any tool-controlled lookup/open beyond those prefixes on an out-and-
-back expansion. Preserve observed link text, all raw slots and exact unperformed work.
-No final in-scope spelling rescues an outside intermediate operation. Hidden redirects,
-mounted-root contact and proxy effects retain their stated limits and full independent
-qualification obligation; this is no physical-ancestry or prompt-free certificate.
-Required unavailable copies remain live missing evidence, never accepted useful loss.
-These clauses amend this evidence permission, not the production filesystem ADR.
+Accept the residual risk that native/framework/startup code, inherited capabilities or
+detached proxies could accidentally inspect forbidden resources without detection.
+Accepting that risk grants no permission for forbidden contact. Complete independent
+contact coverage is no longer a blanket prerequisite for instrument closure or target
+admission; all other required controls, actual identities and authority checks remain
+binding. K282 must define and reconcile the exact bounded claims and admission blockers,
+with mandatory whole-design review and earned integration before k269 constructs or
+qualifies them. Failed required controls and known instrument defects cannot become
+accepted unknowns. No test may select LIVE or use the target pass as calibration. A stronger
+arrangement needs its concrete separate human decision; this choice grants no unspecified
+administrator, SIP, helper, entitlement, signing, consent or VM change.
 
-**Agreed seams.** Under the same delegation, retain controlled source/filesystem/byte-
-decoder inputs, independent offline/admission verification and actual unprivileged scratch
-adapters with independently qualified complete contact observation/containment. Existing
+**Protected lookup, contents and intermediate contact.** Antony accepted k281's closed
+pre-lookup rule. Check raw component bytes before any lookup; admit only exact paths or
+component classes in an independently reviewed allowlist fixed before the pass. The
+three literal and walk-resolved prefixes remain necessary, including during link
+expansion, but prefix membership alone grants no lookup or contents authority. Unlisted
+paths and known or unsettled consent risk refuse as unavailable before lookup/open,
+not merely before listing or contents handles. No prompt is answered to complete evidence.
+No blanket Data-volume exclusion is selected.
+
+| Target spelling or operation | Selected pre-lookup expectation |
+| --- | --- |
+| Ordinary application candidates under /System, /Applications or /Library | May pass only with their own independently reviewed exact path/component-class entries and all held-root/layout checks; a whole-prefix wildcard is insufficient |
+| /System/Volumes/Data/Applications or /System/Volumes/Data/Library candidates, directly or through an observed link | May pass with their own reviewed entries; preserve both spellings and checked identity, with no sealed-volume or hidden-ancestry claim |
+| /private or /Users target paths | Refuse target scope before lookup; preserve the raw rejected slot |
+| /System/Volumes/Data/private or any /System/Volumes/Data/Users home | Syntax can pass /System, but refuse risk before lookup, directly or through observed link expansion |
+| Desktop, Documents, Downloads, Containers, Group Containers, Mail, Messages or Mobile Documents target components | Refuse before lookup, through every direct or observed-link spelling; a component renamed or redirected invisibly is not proved absent by this rule |
+| Relative or absolute link expansion outside the three prefixes and back inside | Preserve observed link text and physical component order; refuse before the first outside lookup/open, without lexical simplification that erases the step |
+| Common ancestors used to enter an admitted target prefix | Only independently reviewed held search-only ancestor/operation entries may be used; no listing or arbitrary sibling access |
+| Fixed authority namespace and separately reviewed fresh export ancestry | Distinct exact ancestor/operation entries are required; no target access follows, no authority-path substitution is allowed, and protected/unsettled ancestry refuses before lookup |
+| Unlisted path/class, unresolved risk or unknown expansion | Refuse as unavailable before the corresponding lookup/open; retain raw occurrences and precise unperformed work |
+
+An observed link may be read at its already admitted parent under the exact reviewed
+operation entry; classify its expansion before taking the next component operation.
+The authority/export ancestor exception does not admit application evidence in a user
+home. Root/common-ancestor operations retain the ADR's held search-only semantics.
+K282 must enumerate the exact admitted classes and common-ancestor operations, their
+independently authored expectations and refusal points before construction; neither
+this rule nor a synthetic positive supplies current installed-path qualification.
+
+A lexical predicate cannot prove hidden physical ancestry or current TCC behavior.
+Hidden redirects, opaque mounted-root contact, unobserved replacement and proxy effects
+retain the accepted bounded-contact risk; no physical-ancestry or prompt-free certificate
+follows. The macOS 26.5 search-only measurement is no macOS 27.0.1 certificate. No installed,
+protected or topology probe is authorized by this interview. These clauses amend the
+evidence permission, not the production filesystem ADR.
+
+**Disposition of refused required evidence.** Antony accepted a truthful failed/incomplete
+package and subject-design boundary when this rule refuses a required copy. Preserve each
+raw slot and exact missing bytes/associations, and carry that boundary through k245/k246/
+k247 and mandatory whole review. It cannot count as a complete finite subject, accepted
+useful-category loss or private eligibility; required unavailable copies remain explicit
+missing evidence. Do not omit them, repeat the pass or trim breadth to manufacture success.
+A later need to change scope returns as one concrete human decision before its consumer,
+rather than another identical unavailable survey. No complete subject is promised by
+choosing the rule.
+
+**Agreed seams.** Antony accepted controlled source/filesystem/byte-decoder inputs,
+independent offline/admission verification, exact retained task/parser/domain controls
+and actual unprivileged scratch adapters under the bounded contact-evidence rule above.
+Independently authored expectations and any actually available bounded observations must
+support each named claim; none supplies complete contact observation/containment. Existing
 public GraphQL, actual provider/host binary and isolated signed supported-VM product seams
 remain. No installed-target positive, authority provisioning, collector probe or native
 capture occurs in this requirements leaf. The single pass is unused; both product holds,
@@ -377,6 +423,58 @@ obligations remain selected. Actual valid useful exhaustion goes once to the
 existing bounded coverage decision; a known design defect is repaired/reviewed
 first. No amount, accounting, ABI, posture or useful-category change follows.
 
+## Reference-evidence decision comparison and reporting
+
+K281 put three concrete questions to Antony. He answered "yes" to the bounded contact
+claim and evidence seams, "yes." to the closed pre-lookup rule and explicit incomplete
+outcome, and "yes" to the narrow status relocation. The selected clauses above are the
+requirements; this comparison explains exactly which earlier obligations they amend.
+It does not supply permission beyond those clauses or an implemented admission gate.
+
+### Status outside the measured permission
+
+Those controls are currently specified, not executed.
+
+The instrument, independent admission mechanism and actual qualification remain unbuilt.
+The one target pass is unused. K282 must apply the decisions, repair credit/LIVE activation/
+independent registration/input partition, and earn mandatory whole-design review and every
+earned integration before k269 replans. Whole companions and inventory/basis tables remain
+full-byte inputs until that reviewed partition is implemented; this relocation selects no
+reporting slice. A requirements answer qualifies no tool, initializes no authority and
+supplies no current package, finite subject or native verdict.
+
+### Line-by-line original-obligation comparison
+
+| Original clause or condition | Selected disposition |
+| --- | --- |
+| Observer privilege: "A realizable independent full contact observer/containment boundary remains required" and "Until it is independently qualified, admission remains unavailable" | Replaced by **Observer privilege and bounded contact evidence**: qualify only named evidenced claims, report current-service/proxy/initial-right/mapping coverage unknown, accept the stated accidental-contact risk, and retain all other controls and authority checks. No blanket full-coverage gate for k244 closure/k245 admission remains. |
+| Agreed seams: "actual unprivileged scratch adapters with independently qualified complete contact observation/containment" | Replaced by the accepted controlled-input, independent offline/admission, exact task/parser/domain and actual scratch-adapter seams under the bounded contact rule. Any bounded observation supports only its named scope. |
+| Protected clause: known/unsettled consent risk refuses "before contents handles/listing" | Strengthened to refusal **before lookup/open**. Independently reviewed exact path/component-class entries fixed before the pass are required in addition to the three literal/walk-resolved prefixes. |
+| Protected clause: held search-only common ancestors may enter a permitted prefix; out-and-back expansion refuses before outside lookup/open | Retained, restricted to reviewed ancestor/operation entries. Relative/absolute expansions and physical `..` cannot erase an outside step. Exact authority/export ancestry has separate entries and grants no target access. |
+| Protected clause: no blanket Data-volume exclusion | Retained. Data/Applications and Data/Library candidates can pass only with their own reviewed entries. Data/private, Data/Users and the named protected/unsettled components refuse before lookup through direct/observed-link spellings. |
+| Protected clause: hidden redirects/mounted-root/proxy effects retain a "full independent qualification obligation" | The universal coverage prerequisite is replaced by the accepted bounded-contact risk. Observable identities, link text, replacement/refusal controls and precise limits remain required; no hidden-ancestry or current prompt-free claim follows. |
+| Required unavailable copies remain live missing evidence, never accepted useful loss | Retained with Antony's explicit disposition: carry a truthful failed/incomplete package and subject-design boundary through k245/k246/k247 and whole review. No copy omission, repeat, useful-category reduction, complete finite-subject credit or private eligibility follows. A later scope change needs a concrete decision. |
+| Canonical control status: "Those controls are currently specified, not executed." | Moved verbatim to the reporting subsection above. The prerequisite to build and observe controls before the target pass remains in the selected section. |
+| K244 Done when 1: lossless fixed-query framing/terminal failure, component scope/held roots, closed layouts/files/direct locales, immutable bytes and complete associations | Retained in full. The additional pre-lookup allowlist/refusals apply; contact evidence has the accepted bounded scope. |
+| K244 Done when 2: complete typed decoder route, pinned identities, XML/binary/OpenStep/unsupported/malformed/type/serialization/duplicate limits and original six-basename evidence | Retained in full. No value/type/image proof is supplied by this decision. |
+| K244 Done when 3: independently authored pure byte/type/inventory/association expectations, fault seams, applicable intended negatives/positives, helper/alias/race/scope/error/freeze/interruption/no retry, and k246 generated controls | Retained. Only the blanket independent complete-contact/no-contact sufficiency claim is amended: actual scratch/task/domain tests and available observations qualify named claims, with accepted missing coverage stated unknown. Failed required controls and known defects still block. Every input/tool freeze and k246 duty remains. |
+| K244 Done when 4: verified reusable pure/packaging recipes, exact build/fixed scope/fresh output, interrupted evidence and no target acquisition during qualification | Retained in full. Tests cannot obtain LIVE authority; the one pass cannot calibrate wiring or native calls. |
+| K244 Done when 5: exact schema/version, reproducible actual proofs and editable/rendered views, distinct verified instrument versus payload/role/subject/native claims, unused pass for k245 | Retained with bounded contact claims explicitly labelled. No requirements/design closure substitutes for actual qualification or stable proof. |
+| K242 Done when 1: verify the byte-complete instrument before the single exact-build/cohort/layout/file pass; preserve complete raw/typed/LocProvenance/tail/digest/copy/version/alias evidence and explicit failures/limits | Retained in full under the amended contact/lookup requirements. A refused required copy has the explicit incomplete disposition above; no complete package is invented. |
+| K242 Done when 2: independent exact-copy Apple/vendor/human role manifest; uncertain copies are stress inputs, not confirmed useful apps | Retained in full. No classification predicate or copy purpose is selected by this interview. |
+| K242 Done when 3: whole-template coverage/balanced repetition for 1,010 useful apps, fourteen witnesses, 256 helpers, 128 aliases and additive full actual VM baseline/registration pressure; exact rewrites and independently recalculated facts | Retained in full. No amount, shape, useful breadth, rewrite or baseline substitution follows. |
+| K242 Done when 4: independent thin/omission/type/serialization/tail/association negatives and permitted-rewrite positive, including helpers/aliases and complete freezes | Retained in full; these generated controls remain k246's separate obligation. |
+| K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
+| K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
+| K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an installed/protected/topology probe, consume another pass or qualify a product/native outcome. |
+
+The original k244/k242 Done when texts remain as the historical obligation inventory;
+the explicitly identified contact sufficiency and pre-lookup amendments above control
+their interpretation. No other original condition is waived. K282 owns the exhaustive
+contract/companion/operation-map reconciliation, and its whole review must challenge the
+complete amended conjunction before construction planning uses it.
+
 ## Required reproduction contract after the decision
 
 The [admission repair design](application-reference-evidence.md#authoritative-attempt-evidence)
@@ -385,15 +483,17 @@ independently complete qualification proofs and external scratch-contact observa
 The [selected authority requirements](#authority-and-admission-choices) settle initialization,
 lifecycle, independent approval/corrections, bounded persistence, unprivileged observation
 and protected/intermediate contact under Antony's delegation. Actual reviewed protocol,
-qualified provisioning, receipt, independently approved anchors and complete tool/contact
-proofs remain absent; unknown authority refuses contact. No requirements answer performs
+qualified provisioning, receipt, independently approved anchors and actual proofs for the
+selected bounded claims remain absent; unknown authority refuses contact. No requirements answer performs
 initialization or spends the target pass. The [whole original-obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
 and [construction responsibility handoff](application-reference-evidence.md#construction-responsibility-and-stability-handoff)
 carry the complete replacement through mandatory whole-k273 review/earned integration
 before k269. K279/k280 subsequently require k281's actual decisions and k282's complete
 reviewed repair before that planner; no owner may guess which U cells block admission.
-U1–U6 and required unexercised native segments stay live before actual credit;
-k269 assigns qualified provisioning/independent validation, last-edit requalification,
+K281's accepted unknown contact coverage is an explicit limit, not a mandatory repeat of
+the complete-mechanism impasse. K282 must separate those limits from actual required
+prerequisites and first-attempt observations; no unrelated native proof is waived.
+K269 assigns qualified provisioning/independent validation, last-edit requalification,
 independent audit and distinct final k244 close with repair ownership through k245.
 Immutable issuance and current correction bindings stay separate, and whole companions/
 tables cannot inherit a reporting slice. Source/build/file/cohort choices remain intact.

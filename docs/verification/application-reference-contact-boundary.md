@@ -1,7 +1,7 @@
 # Application reference contact boundary
 
 The [contact contract](application-reference-evidence.md#contact-observation-outside-the-producer)
-requires independent coverage of the whole pure invocation. This source-based design
+describes the earlier complete-coverage proposal for the whole pure invocation. This source-based design
 delivers an **exact unavailable boundary**, proposed for the complete admission-design
 review. It supplies neither a collector nor an observed no-contact result. This companion
 is part of the [complete original-obligation handoff](application-reference-evidence.md#whole-producer-obligation-comparison),
@@ -9,11 +9,15 @@ with whole-producer review before construction planning and actual qualification
 Source research, table extraction and presentation checks acquired no installed query, contents, topology,
 collector availability or runtime identity. The selected target pass remains unused.
 
-Whole review k279/integration k280 require a concrete contact-limit/protected-lookup
-decision in k281, followed by k282's complete admission repair and mandatory whole review
-before k269. The current mechanism and lookup proposals below are not construction-ready.
+After whole review k279/integration k280, Antony accepted k281's bounded contact evidence,
+closed pre-lookup rule and explicit incomplete-evidence outcome. The [selected clauses](application-population-metadata-shape.md#authority-and-admission-choices)
+and [obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+supersede the blanket full-coverage prerequisites below. Missing current-service, proxy,
+initial-right and mapping correspondence stays unknown; no full no-contact claim follows.
+K282 must reconcile every C1–C8/U1–U6 claim, control and owner with these limits and earn
+mandatory whole review before k269. The mechanism and lookup proposals below are not construction-ready.
 The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
-preserves the exact selected clauses until Antony decides; this report supplies no waiver.
+preserves all other selected clauses; this report supplies no qualification or operation.
 
 [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
 shows the reading order. Graphs enter at the dark Start here node. The independent
@@ -169,7 +173,7 @@ boundary is satisfied. An apparently clean partial trace cannot admit the target
 | Unavailable coordinate | Exact missing identities/evidence | Owner and placement |
 | --- | --- | --- |
 | U1 current independent universe | Actual kernel/build/configuration and BSD/Mach/RPC/provider correspondence; complete current service/framework/opaque-command inventory and independent per-entry disposition, including public-source gaps | K269 assigns independent inventory/source-correspondence design and review before any real-adapter or observer credit. No target/probe acquisition is authorized by this report. |
-| U2 full mechanism | Actual unprivileged enforcement/collector/launcher artifacts, API basis and class coverage for all C1–C8; an identified pre-effect enforcement rule or independent observation for each | K281 first settles the concrete guarantee/posture impasse with Antony; k282 applies the answer and earns whole review before k269 assigns mechanism construction/calibration. No leaf merely re-concludes unavailable and no lesser claim is selected by this table. |
+| U2 full mechanism | Actual complete unprivileged class coverage for all C1–C8 is unestablished; k281 accepts that missing coverage as an explicit limit, not full no-contact proof | K282 defines actual bounded-control/observation claims and remaining required evidence, with whole review before k269 assigns their construction/calibration. Do not cut a leaf whose only result is the same complete-mechanism unavailability. No stronger posture is selected. |
 | U3 launch and capability state | Actual runner/interpreter/loader/image/process/thread identity; initial fd/port/right/VM closure, transfers, cwd and object generation through true return | K277 supplies the entry/read contract; k269 assigns independent launch/association construction and qualification before checker/verifier correspondence or adapter credit. |
 | U4 mediated and memory effects | Actual endpoint/protocol/receiver/proxy/request/effect associations, async lifetime and inherited-map/backing provenance or containment | K269 assigns explicitly separate required C3–C6 cells before source/acquisition or no-contact credit; a detached recipient is not excluded. |
 | U5 independent calibration | Actual per-family/variant direct/child/proxy/descriptor controls, ready/association/drop/filter/attach/termination controls and original frozen results | K269 assigns authoring, capability assessment and calibrated actual pure execution only after the reviewed mechanism and authorized scope; missing cells stay live before final measurement. |
@@ -181,11 +185,16 @@ consumer, retain a distinct final requalification/closing owner, and preserve ev
 k244 obligation. An owner or a source pin is not a qualified identity. No unavailable cell
 can be rewritten as inapplicable solely to close k244/k242.
 
-Requirements k281 now owns the concrete choice before k282/k269: retain the full
-requirement with a realizable mechanism or explicit human disposition, accept a named
-bounded contact limit, or commission a specified stronger arrangement. Recommend the
-stated limit with independent authored expectations and exact scratch controls, while
-disclosing unobserved proxy/initial-capability/mapping risks; it is not selected here.
+Requirements k281 selected the stated bounded contact limit with independent authored
+expectations, source review, exact task/parser/domain and actual scratch controls, and
+any actually available bounded observations. Unobserved proxy/initial-capability/mapping
+and current-service risks are accepted explicitly; they remain unknown, never clean.
+The [canonical pre-lookup rule](application-population-metadata-shape.md#authority-and-admission-choices)
+refuses known/unsettled or unlisted risk before lookup, with explicit Data/protected/
+out-and-back and separate authority/export expectations. A refused required copy has
+an accepted truthful incomplete boundary, not useful loss or finite-subject credit.
+K282 owns the full table/specimen/owner reconciliation; the original entries outside
+this summary remain its historical comparison inventory, not current blanket gates.
 Any stronger candidate must name operator, full and missing coverage, consent/signing/SIP/
 helper/VM and host/service effects and calibrated scope. Root tracing alone is insufficient.
 Antony retains the decision; no deeper repeated unavailable survey substitutes for it.

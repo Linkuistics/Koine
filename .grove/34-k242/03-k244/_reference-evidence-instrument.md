@@ -219,3 +219,27 @@ K269 must not cut an impossible U2 repeat or resolve missing credit/authority by
 No original Done when or canonical selected clause changes here; k245's pass is unused,
 k246/k247 retain full duties and every product/private/native hold remains. This node
 still has live work, so no close/promotion cascade proceeds beyond the integrated leaf.
+
+## K281 selected amendments and construction hold
+
+Antony accepted bounded contact evidence and its seams, the closed pre-lookup rule with
+an explicit incomplete-evidence outcome, and exact canonical control-status relocation.
+The selected clauses and line-by-line original-obligation comparison in
+docs/verification/application-population-metadata-shape.md amend the Observer privilege,
+Agreed seams, protected/intermediate and corresponding blanket C1–C8/U1–U6 gates.
+The Done when texts and ownership table above are retained as the original inventory;
+only their universal complete-contact/no-contact sufficiency interpretation is superseded.
+Actual independently authored byte/type/association expectations, retained entry/domain
+and scratch-adapter tests, every other required control/identity/freeze and k246 generated
+discrimination remain required. Missing service/proxy/initial-right/map coverage is stated
+unknown with accepted accidental-contact risk, never clean or inapplicable. Known defects
+and failed required controls cannot be relabelled as accepted limits.
+
+K282 must exhaustively reconcile the bounded claims, exact pre-lookup classes/ancestors/
+refusal points, admission blockers, LIVE release, registration and full normative/reporting
+partition, then earn whole review/integration before k269. No old full-mechanism U2 repeat
+is a construction obligation. Whole companion/table binding is not sliced by the narrow
+status relocation. A refused required copy has an accepted truthful incomplete design
+boundary; byte-complete evidence/useful breadth/private/native duties are not waived.
+This node remains live; actual required qualification and distinct final closing promotion
+are still due. No authority, control execution or target pass occurs here.

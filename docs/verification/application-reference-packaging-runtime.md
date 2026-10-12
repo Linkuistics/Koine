@@ -10,14 +10,22 @@ The single reference pass is unused; no receipt, current runtime expectation or 
 image follows from these notes. All original k244 obligations and product/native holds bind.
 
 Whole review k279/integration k280 find the credit map, post-provisioning role-selection
-order and measured status/read partition incomplete. Requirements k281 settle concrete
-contact/lookup limits with Antony; k282 repairs prerequisite versus first-attempt credit,
+order and measured status/read partition incomplete. Antony accepted k281's bounded contact
+claims, closed pre-lookup rule/incomplete outcome and exact canonical status relocation;
+the [selected requirements](application-population-metadata-shape.md#authority-and-admission-choices)
+and [obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+control their scope. K282 repairs prerequisite versus first-attempt credit,
 disarmed LIVE activation, independent clean/findings-path registration and enduring inputs
 versus changing reports. Its mandatory whole review and every earned integration precede
 k269. The operation/owner tables below remain proposals requiring that repair, not an
 implementable rule that every unexercised target operation blocks the very first pass.
 No U cell is waived here. The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
-owns this exact construction hold; canonical permission remains unchanged.
+owns this exact construction hold. Canonical contact/lookup clauses are amended only
+as explicitly compared; all other permission and qualification duties remain. Full
+current-service/proxy/initial-right/map coverage is an accepted unknown, not a blanket
+prerequisite or full no-contact proof. The older operation/read/U tables below require
+k282's exhaustive bounded-claim reconciliation before construction. Whole-byte inputs
+are retained; the narrow status relocation grants no companion/table reporting slice.
 
 ## Retained entry and domain channel
 

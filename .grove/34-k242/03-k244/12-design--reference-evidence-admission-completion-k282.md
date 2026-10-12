@@ -14,9 +14,15 @@ complete producer k273 at 1b2f74f52e0b, k270's actual delegation and k281's actu
 The durable inputs are application-reference-evidence.md, both whole-byte companions,
 all five contact inventory tables, canonical population requirements, descriptor ADR,
 seven D2/SVG views and manifest, root/product/glossary/family/private/acceptance summaries
-and k244/k242/k245/k246/k247/k269 charters. K280 did not authorize a reduced contact
-promise or protected lookup. If k281 has no answer, do not invent one or reproduce U2's
-unavailable conclusion as a new completed design. No consumer may use this repair partially.
+and k244/k242/k245/k246/k247/k269 charters. K280 authorized no reduced contact promise;
+k281 now records Antony's actual affirmative answers and exact canonical amendments.
+Consume the selected bounded contact claims/seams, closed pre-lookup rule and explicit
+incomplete-evidence disposition, and verbatim control-status relocation. The canonical
+line-by-line original-obligation comparison owns their scope. Missing current-service/
+proxy/initial-right/map coverage stays unknown with accepted accidental-contact risk;
+it is no longer a blanket complete-mechanism prerequisite or full no-contact evidence.
+Do not reopen these settled choices or reproduce U2's unavailable conclusion as new
+completed design. No consumer may use this repair partially.
 
 ## Required complete repairs
 
@@ -50,7 +56,9 @@ unavailable conclusion as a new completed design. No consumer may use this repai
   content; classify every statement as enduring rule or changing observation/handoff.
   Relocate changing status outside measured inputs, retaining normative future/conditional
   rules and an honest current-state report. Consume k281's explicit canonical relocation
-  decision; otherwise preserve its bytes. Keep companions/tables/bases full-byte inputs;
+  decision: the exact control-status sentence is now outside the selected section. Preserve
+  every remaining clause except the separately approved contact/lookup amendments. Keep
+  companions/tables/bases full-byte inputs;
   no unchecked reporting slice or new rule solely in reports. Observe truthful commissioning,
   provisioning, qualification, audit and close/promotion reporting mutations preserve every
   accepted input, while changed rules/tasks/bases invalidate it. Avoid both stale false
@@ -59,7 +67,15 @@ unavailable conclusion as a new completed design. No consumer may use this repai
   rule through C1–C8/U1–U6, permission profile/concordance, actual read/startup/initial-
   capability/proxy obligations, all topology specimens and every summary/charter/view.
   Show any narrowed claim explicitly and compare every original obligation. Missing
-  evidence is not an inapplicability decision or completed useful subject. No identical
+  evidence is not an inapplicability decision or completed useful subject. Enumerate the
+  exact reviewed target classes and held search-only common-ancestor operations before
+  first lookup, plus separate fixed-authority/fresh-export entries. Cover direct/link
+  Data/Applications and Data/Library positives only with their own entries; pre-lookup
+  refusal for Data/private, all Data/Users homes and the named protected/unsettled
+  components; relative/absolute out-and-back and raw rejected slots. Preserve the accepted
+  hidden-ancestry/current-TCC limit and explicit failed/incomplete subject disposition.
+  Distinguish accepted unknown contact classes from failed required controls and unrelated
+  actual UID/build/authority/image/decoder/entry/freeze proofs. No identical
   source survey or impossible-mechanism implementation leaf is an answer to the decision.
 - Preserve k280's R7 issuance/current full-profile bridge, R8 logical RPC names plus exact
   macro expressions/configuration limits, R9 checker-before-Task supervision and R10

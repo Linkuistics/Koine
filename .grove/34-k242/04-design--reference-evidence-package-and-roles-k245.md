@@ -11,7 +11,8 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 
 ## Context
 
-Require k244's verified installed instrument, full independent pure control evidence
+Require k244's verified installed instrument, complete independent evidence for the
+selected required bounded claims and pure controls
 and Taskfile recipes first. Require actual k270 choices, reviewed k273 replacement design,
 qualified provisioning and independently validated live receipt/admission anchors. K244
 cannot promote stale proofs after changed measured permission/task/runtime/anchor inputs. Consume docs/verification/application-reference-evidence.md
@@ -23,24 +24,27 @@ exact separate fixed namespace, one qualified initialization, independent approv
 corrections, bounded cooperative/full-synchronization limits and unprivileged qualification.
 Protected contents and outside intermediate contact refuse; retain their raw occurrences and
 required missing work. Do not ask again or provision from this charter. Actual qualified
-receipt/UID/ancestor identities and complete independently anchored contact/tool proofs
+receipt/UID/ancestor identities and independently anchored required bounded contact/tool proofs
 must exist and remain stable before this leaf can spend the pass.
 Consume whole-k273 review/integration after all design children, not k274 alone.
 Its lifecycle proposal reserves the export before consume.intent/spent-permit transition,
 then creates/synchronizes the original start. Packaging may never initialize authority,
 remove consumption intent, rename a spent permit back or replace lost originals from
 an export. Offline derivation/inspection acquires no newer target bytes. Actual qualified
-implementations and full independent admission/contact/entry proofs are still required.
+implementations and complete required independent admission/bounded-contact/entry proofs are still required.
 Require the fixed external bootstrap checker, directly registered highest accepted anchor
 revision and independent verifier-control acceptance, plus the actual receipt's issuance
 binding/final validation and any approved current-revision correction. Refuse regenerated
 self-certification, pending/old revisions, substituted images and replayed/cross-domain
 channels. This leaf cannot commission the root, approve its own evidence or correct a
-spent/missing permit into new authority. Actual full contact/runtime correspondence and
-unchanged qualified inputs remain prerequisites; k275's design alone grants none.
+spent/missing permit into new authority. Actual required bounded contact/runtime claims
+and unchanged qualified inputs remain prerequisites; k275's design alone grants none.
 
-The complete k273 handoff and whole-producer obligation comparison leave U1–U6 and every
-required unexercised native segment unavailable. Require k269's distinct final requalification,
+The pre-k281 k273 handoff's blanket U1–U6/full-contact gates are superseded only by the
+canonical compared bounded-contact amendments. Missing current-service/proxy/initial-right/
+map coverage stays explicitly unknown with accepted accidental-contact risk; it grants
+no permission for forbidden contact and no full no-contact credit. Every unrelated
+required unexercised native/control/identity proof remains due. Require k269's distinct final requalification,
 independent audit and actual k244 close after the last relevant edit, including provisioning/
 correction/new-read changes. The exact checker export-request/parent challenge and inner
 retained Task/script/CLI/domain channel must qualify; no coordinator-only shortcut, missing-
@@ -54,7 +58,17 @@ earned integration before k269. Require that actual repaired protocol and qualif
 including disarmed-to-eligible LIVE release and exact prerequisite/first-attempt credit;
 this leaf cannot decide which U segments to waive or use the one pass for wiring controls.
 The full issuance/current-profile bridge and pre-intent export distinction remain explicit.
-All original Done when and the canonical permission are unchanged here.
+Antony's actual affirmative k281 answers select the exact pre-lookup rule, bounded claims
+and seams, explicit incomplete-evidence outcome and narrow status relocation. Require the
+selected canonical clauses and line-by-line original-obligation comparison, then the whole
+reviewed k282 conjunction; this consumer cannot implement an old full-mechanism repeat.
+Refuse unlisted or protected/unsettled paths before lookup, including the named Data/user/
+container/Mail/Messages/Mobile Documents and out-and-back cases. Authority/export ancestry
+has distinct exact reviewed entries and grants no target access. If a required copy is
+refused, preserve its raw slot and exact missing work and carry the accepted truthful
+failed/incomplete boundary through k246/k247 and whole review; no complete finite subject,
+useful-category loss, private eligibility or another pass follows. Every other original
+Done when and permission clause remains binding.
 
 ## Done when
 
