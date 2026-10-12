@@ -195,3 +195,19 @@ and mandatory whole review; they never supply a complete finite subject or accep
 useful loss. K282 applies the whole amended conjunction with mandatory whole review/
 earned integration before k269. No ancestor closes, permission is not spent, and no
 new native/authority/probe/privilege operation follows these requirements answers.
+
+
+K285 specifies the chartered independent acceptance and LIVE release seam in the durable
+evidence contract. Inspection-only review/earned integration supplies original findings/
+dispositions and frozen reviewed/final bytes to a separate independent owner's own trust
+act on clean and findings paths; no copied review/run/commit or producer/repairer approves
+itself. Qualification remains disarmed through provisioning/corrections, final affected
+SCRATCH requalification, independent acceptance/audit and distinct k244 close. A separate
+release owner then accepts eligibility, and only its still-live commissioned supervisor
+originates one explicitly appointed k245 LIVE channel. Receipt/proof/release possession
+supplies no role selection; lost/partial/stale release, active qualification or supervisor
+loss refuses without refund/extra permit. K269 must place the exact acceptance/commissioning/
+adjudication/qualification/audit/close/release owners before their consumers. K286/k287 and
+mandatory whole-k282 review/integration remain before k269; this seam supplies no partial
+construction handoff, actual authority, executed control or target evidence.
+

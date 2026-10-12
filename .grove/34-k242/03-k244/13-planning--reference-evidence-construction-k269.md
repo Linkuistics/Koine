@@ -122,10 +122,12 @@ independent original-to-derivative association verification before k245. An unav
 required synchronization basis stays live, not a weakened fsync-only substitute.
 No actual receipt/proof is supplied by k274; final design ownership remains k278.
 
-K275 supplies the independent-register protocol at application-reference-evidence.md's
-Independent approval root. After whole-k273 review/integration, assign separate actual
+K275's independent-register proposal is repaired by k285's chartered acceptance and
+independent LIVE release in application-reference-evidence.md's Independent approval root.
+After whole-k282 review/integration, assign separate actual
 checker/registrar/extractor construction, independent inventory/profile/concordance/schema
-authoring, bootstrap known-answer adjudication and direct reviewed-revision registration.
+authoring, bootstrap known-answer adjudication and chartered independent reviewed-revision
+acceptance/registration after inspection review and earned integration, on clean and findings paths.
 Independent review of retained checker/verifier/launcher/runtime artifacts must precede
 their external acceptance; candidate verifier proofs cannot certify their own bootstrap.
 Assign actual UID/held-root/staged-receipt/final-validation acquisition after qualified
@@ -300,3 +302,59 @@ expansions refuse before the next lookup. Required refused copies carry raw evid
 exact missing work through k245/k246/k247 and whole review as failed/incomplete evidence,
 never a complete subject, useful loss, private eligibility or another pass. This seam
 has no partial handoff: k285/k286/k287 and whole-k282 review/integration still precede k269.
+
+## K285 acceptance and release placements
+
+Consume the whole reviewed k282 conjunction before replanning; k285 alone is not a
+construction handoff. Assign actual handles with these ordering edges, reusing independently
+useful construction work and combining compatible responsibilities to keep the tree small:
+
+1. Independent required inventory/profile/closure and original expectation authoring;
+   retained checker/registrar/role-selector/channel construction and scratch controls.
+2. Required inspection-only artifact review and every earned integration/repair, then
+   a separately chartered independent acceptance owner before any accepted artifact/result
+   consumer. On the clean path, charter acceptance without invented integration. On the
+   findings path, acceptance follows all original findings/dispositions and final-byte
+   verification; substantive redesign first needs its own whole review/integration.
+3. Independent original bootstrap/verifier-self adjudication and terminal commissioning.
+   The commissioning owner is independent of the producer/repairer whose bytes it accepts;
+   it explicitly admits subsequent owners and fresh channels. No candidate PASS, copied
+   review/run/commit, arbitrary charter or registrar self-digest supplies appointment.
+4. Reviewed retained instrument/entry/adapter/decoder construction and Q mechanics; separately
+   qualified one-time initializer and actual independent staged/final receipt validation.
+   Each scope-preserving revision/correction has its own reviewed original/final payload
+   acceptance and full issuance/current authority-equivalence bridge before consumption.
+5. Earned whole-instrument inspection review/integration, every substantive repair, final
+   provisioning/correction/input reconciliation, then DISARMED affected SCRATCH requalification.
+   Pure tasks can never select LIVE, including with existing receipts or release records.
+6. Independent acceptance of original final Q proof/results → independent per-coordinate
+   audit → distinct k244 original-obligation close/promotion. A outcomes remain pending
+   target acquisition, not required prior successes. No earlier proof predicts its later
+   acceptance/audit/close/release and no reporting edit creates a qualification input cycle.
+7. A separate independent release owner recomputes that complete closing basis and accepts
+   ELIGIBLE release. At the k245 boundary its still-live commissioned supervisor explicitly
+   appoints the single k245 invocation and originates its one-use LIVE endpoint before Task
+   startup. The acquisition/qualification producer cannot select it. A release record is
+   P evidence, never a bearer, automatic arming flag or second target permit.
+
+The acceptance charter binds producer/review/integration scope, original reviewed/final
+payloads and findings/dispositions, allowed record kinds, adjudicator and fixed registrar;
+producer/repairer separation is independently checked. Review sessions remain findings-only.
+Bootstrap and verifier-self results have original independent controls and the commissioning
+owner's own terminal judgment, not registration "for" a reviewer. This implements k270's
+delegated scope-preserving route; broader scope/privilege/new-attempt authority goes to Antony.
+
+Implement actual retained pure→package/LIVE-request, ambient selector, task-edge and armed-
+state refusal pairs under SCRATCH with scratch release/receipt subjects. Independently
+observe the intended role/entry check and non-consuming positive; no test selects LIVE or
+uses a target positive. Actual LIVE appointment/receipt/export/release values remain fresh
+P checks, with A source/root behavior first observed only after authorized consumption.
+
+Keep disarmed repair/requalification, independent acceptance/audit, distinct close and
+release owners live through k245. Changes invalidate release before their consumer; active
+qualification/correction cannot overlap a LIVE supervisor's held lease. Lost/partial/stale
+release, pending successor or supervisor/channel loss refuses before intent and freezes
+before source release without refund. Later provisioning/corrections/new reads repeat only
+the affected stable suffix (whole matrix if unknown impact), never initialization. Uncertain
+prior dispatch has no automatic re-arm. Preserve whole-byte companion/table/basis bindings,
+k286 partition work, k287 whole reconciliation/review, k245's unused pass and k246/k247 duties.

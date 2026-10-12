@@ -84,6 +84,21 @@ exact missing work through k245/k246/k247 and whole review as failed/incomplete 
 never a complete subject, useful loss, private eligibility or another pass. This seam
 has no partial handoff: k285/k286/k287 and whole-k282 review/integration still precede k269.
 
+K285's repaired protocol requires separately chartered independent acceptance after
+inspection-only review/earned integration, original reviewed/final payload and finding/
+disposition bindings, terminal commissioning and original verifier-self adjudication.
+Require final disarmed affected qualification, original-result acceptance, independent
+audit and distinct actual k244 close, then the independent release owner's exact eligible
+basis. Only its still-live commissioned supervisor explicitly appoints this k245 invocation
+and originates the LIVE parent channel before Task startup; this acquisition owner supplies
+only a fresh export request. Receipts, earlier proofs, copied review/run/commit, release
+record possession or a task selector supply no LIVE authority. Missing/partial/stale release,
+active qualification/change or supervisor loss refuses before intent/freezes source release;
+post-intent failure never refunds. Corrections disarm and retain independent requalification/
+acceptance/audit/close/release ownership, never another permit. This leaf neither commissions
+nor accepts its own inputs and cannot conduct a LIVE calibration. K286/k287 and mandatory
+whole-k282 review/integration still precede actual construction/qualification.
+
 ## Done when
 
 - Pin every instrument/verifier/decoder/configuration/Taskfile/tool input and verify

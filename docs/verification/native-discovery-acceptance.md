@@ -102,6 +102,12 @@ k282 repair before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–
 full service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains explicitly unknown,
 while required known identities/controls stay blockers. Neither an unavailable mechanism nor an unrepaired credit/activation/
 registration/input partition supplies the finite subject or private eligibility.
+K285's [chartered acceptance](application-reference-evidence.md#chartered-independent-acceptance)
+and [independent LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
+require original reviewed/final bytes/findings/dispositions, disarmed requalification,
+accepted audit/distinct close and a separate supervisor-originated k245 channel. Receipt/
+proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
+whole-k282 review/integration remains before k269; every native duty below stays pending.
 
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;

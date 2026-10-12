@@ -336,6 +336,11 @@ whole review before construction replanning. K284 scopes B1–B8 evidence and T1
 pre-lookup entries; accepted full contact gaps supply no no-contact proof or finite subject.
 Required known identities/controls and all product/native duties remain; this repair
 supplies no private eligibility.
+The [acceptance/release protocol](../verification/application-reference-evidence.md#chartered-independent-acceptance)
+requires a chartered independent own trust act after inspection-only review/integration,
+disarmed final requalification, accepted audit/distinct instrument close and separately
+supervised k245 LIVE invocation. Receipt, proof, release-record or copied-review possession
+supplies no authority or finite subject. Whole-k282 review/integration still precedes k269.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

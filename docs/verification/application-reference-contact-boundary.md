@@ -18,6 +18,11 @@ initial-right and mapping correspondence stays unknown; no full no-contact claim
 K284 applies those choices to the C1–C8/U1–U6, read and pre-lookup contracts below.
 K285/k286/k287 and mandatory whole-k282 review/integration still precede k269; this seam
 is not a partial construction handoff.
+K285's [chartered independent acceptance](application-reference-evidence.md#chartered-independent-acceptance)
+follows inspection-only review/earned integration; its [independent release supervisor](application-reference-evidence.md#independent-live-release-and-role-selection)
+keeps qualification disarmed, including after receipt publication. Actual retained role/
+entry/armed-state refusals qualify only through SCRATCH controls; no test selects LIVE.
+These role obligations waive none of B1–B8's required claims or accepted-unknown limits.
 The [review handoff](application-reference-evidence.md#review-integration-and-required-decisions)
 preserves all other selected clauses; this report supplies no qualification or operation.
 

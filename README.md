@@ -98,6 +98,13 @@ approval register. Independent commissioning/control acceptance precedes candida
 one-use invocation channels and external receipt/correction bindings cannot restore a spent
 permit. The immutable issuance receipt stays separate from the highest current accepted
 revision and independently approved correction bridge. No register or accepted revision exists. The
+repaired [acceptance route](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
+gives inspection-only review a separate independent acceptance owner on clean and findings
+paths. [LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
+stays disarmed through provisioning/requalification, accepted audit and distinct k244 close;
+only the independent supervisor originates a k245 LIVE channel. A receipt, proof, release
+record or copied review/run/commit supplies no role authority. K286/k287 and whole-k282
+review/integration still precede construction. The
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
 pins whole independent published BSD/Mach/RPC/API inventories and named B1–B8 evidence/
 controls, with U1–U6 required-versus-accepted-unknown limits.

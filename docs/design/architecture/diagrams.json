@@ -2,42 +2,38 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Apply bounded contact claims and refusals before lookup",
-    "status": "Selected k281 limits applied; whole k282 repair/review still required",
-    "summary": "B1–B8 bind named evidence while full service/proxy/initial-right/map and hidden-ancestry/TCC gaps stay accepted unknown. T1–T7 and A1–A3 require distinct reviewed entries before raw/component/link operations. Required UID/build/authority/image/channel/entry/freeze facts still block. No target operation or partial construction handoff.",
+    "title": "Separate independent acceptance and LIVE release from qualification",
+    "status": "K285 design seam; complete k282 reconciliation and whole review still due",
+    "summary": "Inspection-only clean/findings reviews feed a chartered independent own trust act. Receipt publication and proofs leave qualification DISARMED; accepted final proof/audit/distinct k244 close precede independent eligibility and one explicitly supervised k245 LIVE channel. Pure entries remain SCRATCH, including armed-state controls. K286 input partition and k287 whole reconciliation/review still precede k269; no authority or target pass is supplied.",
     "diagramIds": [
-      "native-reference-contact",
+      "native-reference-proof",
       "native-reference-packaging",
       "native-reference-admission",
-      "native-reference-proof",
       "native-reference-instrument",
       "native-reference-evidence",
+      "native-reference-contact",
       "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-reference-contact",
-        "summary": "Replaced the pending human/full-mechanism gate with selected B/U evidence and T/A pre-lookup branches."
+        "id": "native-reference-proof",
+        "summary": "Added inspection-only review, chartered own acceptance and disarmed audit/close before independent LIVE supervision."
       },
       {
         "id": "native-reference-packaging",
-        "summary": "Scoped startup evidence and added separate authority/export plus raw-before-lookup entries."
+        "summary": "Moved independent role selection before Task startup and kept armed-state pure controls in SCRATCH."
       },
       {
         "id": "native-reference-admission",
-        "summary": "Kept required Q/P blockers while naming accepted contact gaps and separate ancestry entries."
-      },
-      {
-        "id": "native-reference-proof",
-        "summary": "Bound named retained-entry/read evidence without requiring full contact coverage."
+        "summary": "Separated receipt validation, disarmed requalification/close and independently supervised release."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Replaced universal observer credit with bounded evidence and pre-lookup acquisition entries."
+        "summary": "Added independent role authority before the retained chain and required release bindings."
       },
       {
         "id": "native-reference-evidence",
-        "summary": "Changed the contact prerequisite to named bounded evidence while preserving required facts."
+        "summary": "Added chartered acceptance and independent release after disarmed final qualification/audit/close."
       }
     ]
   },
@@ -101,7 +97,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "The independently commissioned checker precedes retained Task/script/CLI startup. Q qualifies exact required mechanics, native identities and controls on pure/scratch inputs; P checks actual current UID/build/authority/channel/export/inputs before intent; A observes target source/root/closure behavior only after synchronized consumption/start. E/M/U is scoped evidence, not a stage or permit. K285 still owns non-circular LIVE release/acceptance; complete k282 reconciliation and whole review/integration precede k269. No proof, authority or pass is supplied. K284 applies B1–B8 named evidence with accepted opaque contact gaps and T1–T7/A1–A3 pre-lookup entries; required actual identities/controls remain blockers. K285–k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "Moved independent role selection before Task startup and kept armed-state pure controls in SCRATCH. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-contact",
@@ -119,7 +115,7 @@
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
-      "caption": "K281 accepted bounded contact evidence and closed pre-lookup refusal. K283 separates Q qualification, fresh P facts and first-attempt A outcomes; k284 binds required B1–B8 evidence and T1–T7/A1–A3 operation entries. Complete service/proxy/initial-right/map/hidden-ancestry/TCC gaps stay accepted unknown, never full no-contact. K285–k287 and mandatory whole-k282 review/integration precede k269. Original evidence/useful breadth/holds remain; k245 owns the unused pass and k246/k247 retain generated/whole-subject duties."
+      "caption": "Added chartered acceptance and independent release after disarmed final qualification/audit/close. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-instrument",
@@ -128,7 +124,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "The commissioned checker precedes retained Task/script/CLI startup and supervises verifier/coordinator. Required known input/image/channel/entry and B1–B8 scratch/native controls qualify only named claims; complete opaque startup/service/proxy/initial-right/map coverage stays accepted unknown. Held acquisition applies T1–T7/A1 before lookup; A2 authority/A3 export entries are separate. Immutable issuance/current-profile bridges and pre-intent export handling remain. Whole k282 repair/review precedes k269; no actual proof, authority or target evidence follows."
+      "caption": "Added independent role authority before the retained chain and required release bindings. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-admission",
@@ -137,7 +133,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Earlier Q mechanics/control evidence precedes separate qualified one-time provisioning and independent validation. Fresh P actual build/UID/channel/authority/export/input facts precede intent. Only then do consumption, synchronized original start and A first target source/root/closure outcomes occur. Required Q/P U claims block at their stage; target outcomes are never earlier calibration. LIVE release/acceptance and the complete k282 conjunction remain pending whole repair/review before k269. Pre-intent export failure never replenishes consumed authority. K284 applies B1–B8 named evidence with accepted opaque contact gaps and T1–T7/A1–A3 pre-lookup entries; required actual identities/controls remain blockers. K285–k287 and mandatory whole-k282 review/integration still precede k269."
+      "caption": "Separated receipt validation, disarmed requalification/close and independently supervised release. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-reference-proof",
@@ -146,7 +142,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Whole companions/five tables/original bases and exact normative extracts bind the independent inventory. B1–B8 require named retained-entry/read/native evidence; accepted unobserved contact gaps do not waive known required identities/controls or create no-contact credit. K285 still owns chartered independent acceptance and disarmed LIVE release, k286 enduring inputs, k287 whole reconciliation/review before k269. Issuance/current full-profile bridges preserve authority. No accepted register, receipt or channel proof is supplied."
+      "caption": "Added inspection-only review, chartered own acceptance and disarmed audit/close before independent LIVE supervision. The acceptance owner binds original reviewed/final bytes and every finding/disposition; copied review/run/commit supplies no authority. A receipt/proof/release record cannot select LIVE. Only the independent appointed supervisor originates the one-use k245 parent channel after accepted audit and distinct close; lost/partial/stale release or active qualification refuses. B1–B8/Q/P blockers, accepted unknown contact limits, T1–T7/A1–A3 entries and immutable issuance/current-profile bridges remain. These are proposed contracts, not implemented/qualified authority. K286/k287 and mandatory whole-k282 review/integration still precede k269."
     },
     {
       "id": "native-population-metadata-shape",

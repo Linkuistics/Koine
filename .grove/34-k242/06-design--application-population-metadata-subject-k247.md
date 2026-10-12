@@ -32,6 +32,16 @@ credit/activation/registration/input partition and every explicitly selected ame
 not an earlier unavailable proposal promoted as settled. The original Done when and
 canonical requirements are unchanged by k280, and the unused pass/holds remain.
 
+K285's chartered acceptance owner follows original inspection-only whole review and every
+earned integration on clean and findings paths. Required original payloads/findings/
+dispositions, commissioning/self-verifier adjudication, disarmed final requalification,
+independent audit/distinct k244 close and separately supervised k245 LIVE release must
+have actual stable evidence before subject promotion. Receipt/proof/release possession
+or copied review/run/commit supplies none. Preserve exact failed/unavailable work and
+unchanged k246 controls; k286/k287 and mandatory whole-k282 review/integration still
+precede k269 and construction. This closing producer cannot appoint itself as approver,
+turn root whole review into registration, restore consumed authority or grant another pass.
+
 ## Done when
 
 - Reconcile the full current workspace/private/source/runtime specs, acceptance,

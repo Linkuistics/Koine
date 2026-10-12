@@ -271,8 +271,14 @@ incomplete-evidence outcome, plus exact canonical status relocation. The
 names those amendments; all other requirements remain. Full service/proxy/initial-right/
 mapping coverage stays unknown, never no-contact proof. The bounded B1–B8 evidence and T1–T7/A1–A3 pre-lookup contracts separate
 accepted unknown contact gaps from required native/identity/entry/control/freeze blockers.
-Remaining activation/registration/input-partition repair, whole reconciliation and mandatory
-whole review still precede construction replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
+The [chartered acceptance route](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
+separates inspection-only review from an independent owner's own registration act.
+[Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
+keeps provisioning/requalification disarmed through accepted audit and distinct instrument
+close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
+release possession and copied review/run/commit supply no role authority. Remaining input-
+partition repair, whole reconciliation and mandatory whole review still precede construction
+replanning. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

@@ -29,6 +29,13 @@ reviewed repair before k269/k244/k245. That chain supplies no original bytes, co
 or generated qualification; consume actual k245 evidence or exact missing work only.
 No original Done when, useful breadth or selected permission changes here.
 
+K285 separates inspection review from chartered independent acceptance and receipt
+validation from independent LIVE release. Consume only actual k244 accepted final proof/
+audit/distinct close and independently supervised k245 original evidence, or exact missing
+work. Copied review/run/commit or a release record supplies no original bytes, new attempt
+or authority to repair missing evidence by reacquisition. Whole-k282 review/integration
+still precedes k269; generated discrimination duties below remain unchanged.
+
 ## Done when
 
 - Freeze exact deterministic per-role ordering, whole-template coverage priority and

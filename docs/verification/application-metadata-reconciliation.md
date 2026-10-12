@@ -41,6 +41,13 @@ credit/activation/registration/input-partition repair before k269; the prior pro
 supplies no settled construction admission. K284 scopes C1–C8/U1–U6 accepted contact gaps separately from required known identities/
 controls and fixes T1–T7/A1–A3 refusal-before-lookup entries. Full no-contact/hidden-ancestry/
 current-TCC coverage remains unknown. No selected product or native duty changes.
+The repaired [acceptance route](application-reference-evidence.md#chartered-independent-acceptance)
+gives inspection-only clean/findings review a separate independent own trust act.
+[LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
+stays disarmed through accepted final requalification/audit/distinct k244 close; only its
+independent commissioned supervisor originates one k245 invocation. Receipt/proof/release
+possession and copied review/run/commit supply no authority; k286/k287 and whole review
+still precede k269. This design supplies no finite subject or native/private eligibility.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no
