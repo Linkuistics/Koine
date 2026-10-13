@@ -69,6 +69,40 @@ this order and every original duty. The current k282 mechanisms/views are review
 proposals with the above unresolved work, not an implementable construction handoff.
 No authority, instrument qualification, target pass or complete finite subject follows.
 
+## Foreground admission repair slice
+
+Reference-evidence-foreground-admission-k292 delivers the first design slice of k291,
+covering F1/F3/F7/F8. The [acceptance contract](application-reference-evidence.md#chartered-independent-acceptance)
+now appoints Antony directly in short foreground ceremonies over ready original reviewed/
+final payloads/results, before their first consumer. The [compatibility and schedule](application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule)
+allows compatible human trust duties to batch, excludes producers/repairers/runners from
+their own judgment and retains a distinct instrument close. The [foreground LIVE contract](application-reference-evidence.md#independent-live-release-and-role-selection)
+requires fresh human appointment with coexisting supervisor/checker/acquirer through true
+return; a pure same-image caller with ELIGIBLE evidence still lacks that appointment.
+
+The [export rule](application-reference-evidence.md#permission-inputs-and-reporting-outputs)
+separates immutable issuance/current A3 permission from exact independently authored/
+human-accepted P entries before lookup. Q qualifies mechanics; P binds actual entry and
+ancestry. Pre-intent proven-unspent refusal ends the invocation; any later explicit fresh
+entry needs a new acceptance/appointment, no within-call retry or profile/receipt rewrite.
+The [disarm events](application-reference-evidence.md#durable-disarm-and-release-events)
+give approved maintenance supervisors disarm-only authority and require retained successor
+slot/intent before changes/Q. Partial events, crash/lock release and successful Q cannot
+restore old eligibility; complete new acceptance/audit/distinct-close/release follows.
+The [companion pairs](application-reference-packaging-runtime.md#release-and-acceptance-controls)
+specify the non-consuming positive and same-image/partial/crash/entry counterexamples.
+
+This is an unreviewed design slice, no qualified interface or actual human appointment.
+Reference-evidence-closed-admission-evidence-k293 still repairs F2/F4/F5. Closing child
+reference-evidence-session-admission-k294 owns F6's exhaustive E/H/R TSV/whole-basis
+partition and all F1–F8/original-obligation/seven-view/summary/charter reconciliation,
+then cuts mandatory whole-k291 review before k269. No partial slice is a construction
+handoff. The historical all-E inventory remains defective; this report is unconsumed.
+Canonical k290-selected bytes, descriptor ADR and all five documentary table bytes stay
+unchanged by this slice. The pass remains unused; k244/k242 and k245/k246/k247, useful
+breadth and every hold retain full obligations. No control, receipt, approval, identity,
+current build, instrument/native qualification or target evidence was acquired.
+
 ## Selected k290 decisions and design handoff
 
 Antony answered "agree" to the human-owned ceremony and "ayes" affirmatively to the

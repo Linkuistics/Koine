@@ -14,18 +14,21 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current changes (the diagrams retain the reviewed proposal with unresolved repairs):
+Current discussion is the foreground admission design slice; the complete k291
+conjunction and mandatory whole review remain before construction.
 
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Marks session appointment, A3 binding and persistent invalidation repair.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Marks operator/compatibility and the historical all-E partition defects.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Marks current-build/process-image and role-selection work.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Marks exact C/B blockers and target grammars while retaining accepted unknown limits.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Marks unresolved appointment and policy grammar duties before construction.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Places k290 decisions and k291 whole design/review before k269.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Retains package, recipe, useful-breadth and whole-subject duties under that repair order.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separates immutable A3 permission from exact accepted P entries and adds durable maintenance intent before changed work/Q.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Adds short foreground human acceptance, explicit compatible duties/exclusions and fresh appointment with coexisting supervisor/child.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Shows the foreground invocation and exact P entry; current-build/process-image repair remains.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Requires fresh human appointment before Task and rejects pure same-image/ELIGIBLE authority.
+- [Acceptance contract](../../verification/application-reference-evidence.md#chartered-independent-acceptance) — Defines direct ready-object trust acts before first consumption, including clean/findings/correction/bootstrap paths.
+- [Compatibility and sequential schedule](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule) — Batches compatible human judgments with producer/repairer exclusions and a distinct instrument closing owner/step.
+- [Durable disarm events](../../verification/application-reference-evidence.md#durable-disarm-and-release-events) — Gives approved maintenance writers disarm-only authority; partial/crashed/successful Q cannot restore old eligibility.
 
-- [Whole-producer obligation comparison](../../verification/application-reference-evidence.md#whole-producer-obligation-comparison) — Compared every k282 repair and R7–R10 preservation with the original k273/k244/k242 duties.
-- [Construction responsibility and stability handoff](../../verification/application-reference-evidence.md#construction-responsibility-and-stability-handoff) — Records the proposed responsibilities; appointment, compatibility and sequencing require k291's reviewed repair before consumers.
+Unchanged contact/evidence/population views remain context. Exact blocker/grammar/current
+correspondence and exhaustive input partition/whole-surface reconciliation still need
+the remaining k291 slices. No partial construction handoff, qualified control or target
+evidence follows. The historical all-E statement inventory remains defective.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and

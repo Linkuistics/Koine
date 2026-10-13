@@ -330,13 +330,14 @@ useful construction work and combining compatible responsibilities to keep the t
 1. Independent required inventory/profile/closure and original expectation authoring;
    retained checker/registrar/role-selector/channel construction and scratch controls.
 2. Required inspection-only artifact review and every earned integration/repair, then
-   a separately chartered independent acceptance owner before any accepted artifact/result
+   Antony's fresh foreground independent acceptance before any accepted artifact/result
    consumer. On the clean path, charter acceptance without invented integration. On the
    findings path, acceptance follows all original findings/dispositions and final-byte
    verification; substantive redesign first needs its own whole review/integration.
 3. Independent original bootstrap/verifier-self adjudication and terminal commissioning.
    The commissioning owner is independent of the producer/repairer whose bytes it accepts;
-   it explicitly admits subsequent owners and fresh channels. No candidate PASS, copied
+   each ready acceptance uses its own direct foreground ceremony/channel, not a supervisor
+   surviving sequential Grove sessions. No candidate PASS, copied
    review/run/commit, arbitrary charter or registrar self-digest supplies appointment.
 4. Reviewed retained instrument/entry/adapter/decoder construction and Q mechanics; separately
    qualified one-time initializer and actual independent staged/final receipt validation.
@@ -349,11 +350,22 @@ useful construction work and combining compatible responsibilities to keep the t
    audit → distinct k244 original-obligation close/promotion. A outcomes remain pending
    target acquisition, not required prior successes. No earlier proof predicts its later
    acceptance/audit/close/release and no reporting edit creates a qualification input cycle.
-7. A separate independent release owner recomputes that complete closing basis and accepts
-   ELIGIBLE release. At the k245 boundary its still-live commissioned supervisor explicitly
-   appoints the single k245 invocation and originates its one-use LIVE endpoint before Task
-   startup. The acquisition/qualification producer cannot select it. A release record is
-   P evidence, never a bearer, automatic arming flag or second target permit.
+7. Antony independently recomputes/accepts the eligible basis after distinct close, then
+   separately accepts the independently authored exact A3 P entry under unchanged issuance
+   permission. At k245 he freshly appoints one foreground supervisor/checker/acquirer
+   invocation through true return; its one-use LIVE endpoint precedes Task. Pure same-image
+   callers with valid ELIGIBLE evidence lack that act. A release/entry record is P evidence,
+   never a bearer/automatic role or second permit.
+
+Use the first k291 slice's explicit compatibility/exclusion relation and sequential schedule:
+compatible ready human acceptance/adjudication/audit/release duties may batch, original
+authors remain independent and the instrument closing owner/step remains distinct.
+Approved disarm-only maintenance supervisors persist an exact successor slot/intent
+before changed work or Q; partial/crashed/failed/successful-unaccepted successors cannot
+revive old eligibility after lock release. No intent deletion, fallback, scan or pass reset.
+K293/K294 still repair exact blockers/grammars/correspondence and exhaustive F6/whole
+reconciliation; only mandatory whole-k291 review/every integration establishes this planning
+handoff. These updated constraints are no implementation or actual appointment.
 
 The acceptance charter binds producer/review/integration scope, original reviewed/final
 payloads and findings/dispositions, allowed record kinds, adjudicator and fixed registrar;

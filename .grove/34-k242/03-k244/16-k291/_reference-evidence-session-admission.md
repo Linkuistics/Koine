@@ -1,4 +1,4 @@
-# reference-evidence-session-admission-k291
+# reference-evidence-session-admission-k291 — brief
 
 
 ## Goal
@@ -120,3 +120,33 @@ privilege/signing/helper/consent/posture or native/VM work. No duplicate capture
 programme, scope/breadth loss or extra attempt. Rework any earned ADR in place and reconcile
 citations; do not add a chronological successor record. This live work follows k290 and
 precedes k269; it does not reopen retired k282 or claim a repair it has not performed.
+
+## Decomposition
+
+Three separately checkable contract seams exceed one focused session. Keep one producer
+and one final whole review, not one leaf per role. Every original Required coherent repairs
+and Done when above remains binding on this node.
+
+1. Reference-evidence-foreground-admission-k292 repairs F1/F3/F7/F8 together: human
+   appointment/acceptance, compatibility and schedule, invocation-specific export entries,
+   durable invalidation and crash/refusal paths. Its contract/controls/views are checkable
+   without target evidence.
+2. Reference-evidence-closed-admission-evidence-k293 repairs F2/F4/F5 together: closed named
+   blocker/dimension set, exact T/A grammars and independently justified bases, and permitted
+   actual build/process-image correspondence routes under the first slice's authority boundary.
+3. Reference-evidence-session-admission-k294 repairs F6 and reconciles the entire F1–F8/
+   original-obligation conjunction, full statement/basis inventory, summaries, seven views
+   and consumer charters. Its last work act inserts mandatory whole-node review before k269,
+   Reviews naming k291 and Creator naming its actual closing run. Earned integrations precede k269.
+
+No partial child is a construction handoff. K291/k244/k242 stay live until their respective
+completion conditions hold. No controls/provisioning/target pass occur in these design
+slices; k245/k246/k247 and all holds retain full duties.
+
+## Decisions (running log)
+
+Decompose at three genuine contract seams and do only k292 in this session, as Grove's
+decomposition procedure requires. Exhaustive input partition and seven-view whole
+reconciliation would make the coupled repair a long, high-context session if absorbed
+inline. Three slices retain one whole-producer review and avoid a role-per-leaf tree.
+The closing child owns review and parent promotion; the original charter above is preserved.

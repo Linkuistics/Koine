@@ -285,7 +285,12 @@ relocation. Compatible acceptance/audit/release duties may share Antony's owners
 producer/repairer exclusions and a distinct k244 closing owner/step remain. K291's complete
 repaired design/mandatory whole review and every earned integration precede construction
 replanning. The existing all-E statement
-inventory is historical and under repair. A refused required copy cannot supply a complete finite subject or private eligibility.
+inventory is historical and under repair. The [foreground design slice](docs/verification/application-reference-input-partition.md#foreground-admission-repair-slice)
+defines short human acceptance ceremonies, one fresh appointment with coexisting supervisor/
+acquirer, immutable A3 rules with exact accepted P entries, and durable disarm-only maintenance
+intent. Remaining exact blocker/grammar/correspondence/partition repair and whole-k291 review
+still precede construction; this is no authority or qualified control. A refused required
+copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

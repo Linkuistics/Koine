@@ -36,9 +36,13 @@ there is no public mode, authority, query, runtime, root or adapter override. Re
 enters the actual checker's export-request parser and packaging dispatcher with the same
 export-only argv as LIVE, never by calling its shared launch routine directly. The
 private pure seam supplies a fresh out-of-band parent-launch challenge fixing SCRATCH.
-Only the independent release owner's still-live supervisor, after independent acceptance,
-audit and distinct k244 close, explicitly opens one k245 invocation and originates LIVE's
-parent endpoint. Pure/task callers receive no LIVE entry capability, even after a validated
+Only Antony's fresh direct appointment after accepted audit/distinct close/eligible basis
+opens one foreground supervisor/checker/acquirer invocation and originates LIVE's parent
+endpoint. All coexist through true return; no supervisor survives between Grove leaves.
+Pure same-image execution with valid ELIGIBLE/receipt/Q objects refuses without that
+fresh terminal act. Earlier acceptance uses short foreground registrar ceremonies over
+ready objects, never copied charter/run/commit authority.
+Pure/task callers receive no LIVE entry capability, even after a validated
 receipt or ELIGIBLE release exists. A saved release is P evidence, not a bearer or role
 selector. Both roles require earlier
 independent commissioning and actual parent/image/endpoint correspondence, not an
@@ -52,7 +56,7 @@ channel for the following exact retained chain; no parent endpoint is reused as 
 | Packaging Taskfile | Standalone retained `Taskfile.yml`, schema version 3; one package recipe, no dependencies, includes, dotenv, remote files, dynamic shell variables, build/install/resolution or implicit checkout entry. Its full bytes are measured. |
 | Launch script | Fixed retained script and interpreter; exactly one quoted destination argument, no eval, shell expansion of destination, PATH resolution, startup files or adapter choice. Task's `shellQuote` must round-trip the accepted destination. A non-round-tripping spelling refuses before reservation. |
 | Acquisition CLI | Same retained executable and `package --export <destination>` parser in both domains. Unknown/duplicate/missing arguments, arbitrary source/scope/file/language parameters and extra task arguments refuse. It independently compares parsed export bytes with the launch request. |
-| Domain enabling point | Independent supervisor selects LIVE before Task; pure launcher can select only SCRATCH. Mandatory unnamed channel at inherited fd 3 follows the exact task/script chain by explicit descriptor actions and carries the fresh checker challenge, original role appointment and (LIVE only) current release/close basis. No file, environment secret or reusable success token selects a role. |
+| Domain enabling point | Fresh direct human APPOINT confirmation over accepted basis/entry/request/nonce selects LIVE before Task; retained foreground supervisor creates/retains one-use parent endpoint. Pure same-image/ELIGIBLE origins remain SCRATCH. Inner fd 3 follows only the exact chain and binds fresh challenge/appointment/current release/close; no saved file, task/env flag or success token selects a role. |
 | Composition | After channel/identity validation, one composition routine selects LIVE fixed adapters or the closed SCRATCH operation mapping. Parser, fixed constants, preflight decisions, coordinator, native decoder and publication/derivation logic remain the retained candidate. |
 
 These fixed entries require construction and qualification; design text is no runnable
@@ -69,7 +73,7 @@ challenge from the still-live commissioned checker, verify its independently obs
 process/image and exclusive endpoint ownership, and bind export, invocation nonce, expected
 domain, original role appointment, LIVE release/close basis where applicable, accepted
 revision, exact task/script/CLI/read closure and allowed initial state.
-Use k275's length framing, sequence, EOF and true-return rules; the reverse endpoint stays
+Use the approval contract's length framing, sequence, EOF and true-return rules; the reverse endpoint stays
 available for acknowledgements. Task/script intermediaries may pass this endpoint only
 along the accepted chain and cannot write a verdict. Accidental fd closure, inheritance
 to another child, replacement, unexpected writer, missing correspondence or supervisor
@@ -83,8 +87,11 @@ extra inherited capability. A SCRATCH launch rejects LIVE verdicts/intents and n
 the fixed live permit subject. The checker has separate domain validation paths, both
 using the same request/parser logic; SCRATCH controls submit the other domain's
 valid-looking messages for refusal without selecting LIVE. Receipt publication and final
-validation leave qualification disarmed. Provisioning/corrections disarm before changed
-inputs are used; last-edit requalification, independent acceptance/audit, distinct close
+validation leave qualification disarmed. Approved maintenance supervisors retain a durable
+disarm-only successor slot/intent before provisioning/corrections/qualification or newly
+consumed dependencies, under release-before-register lock order. Partial slots, failed/
+interrupted/successful Q remain disarmed after lock release; only a complete later human-
+accepted close/release can be eligible. Last-edit qualification, acceptance/audit, distinct close
 and independent release must settle before a new supervised k245 invocation. Missing,
 partial/stale release or supervisor loss refuses before intent and freezes source release.
 Possession of a socket number is no authentication. Required known endpoint/process/image/descriptor correspondence consumes named B3/B6/B8
@@ -126,7 +133,11 @@ credit. This is the agreed scratch seam, not a new live-preflight/calibration ro
 | Actual pure task enters retained export parser/Task/script/CLI with its fresh SCRATCH endpoint and scratch source/held calls | Redirect that same pure task to the package entry or add a dependency to the LIVE request path. No original independent LIVE-origin appointment/endpoint exists: refuse at role/entry before intent, including when fixture receipt/proof/release predicates otherwise pass. |
 | Fixed SCRATCH role survives accepted export bytes and exact retained startup/chain | Add argv/environment mode/authority flags, task variables, adapter selector or forged coordinator/parent LIVE message. The closed surface/channel comparison refuses; no default/ambient LIVE choice. |
 | Scratch release specimen exercises the commissioned selector's ELIGIBLE/armed-state validation and accepts only its authorized SCRATCH origin | Deliver every otherwise valid armed-looking release/receipt/old-Q binding to a pure origin, or call the LIVE entry without its original independent supervisor endpoint. Actual retained role validation refuses before Task/intent. Fixture arming cannot turn the test into LIVE. |
+| Controlled confirmation bytes exercise the same retained supervisor image and selector, while the qualified origin stays SCRATCH | Pure/qualification task executes that supervisor image with otherwise valid ELIGIBLE/receipt/Q specimens; absent direct fresh operator appointment, refuse before Task/intent. Replayed nonce, wrong role/entry/request, automated argv/env/pipe/file answer or future-object approval also refuses. No actual LIVE channel or live permit in the positive. |
+| Earlier short foreground acceptance and acquisition-boundary coexisting processes are separately bound by scratch ceremony/channel tests | Require a supervisor from a retired Grove session, let acceptance infer role from charter/image/receipt, omit current supervisor/child readiness or lose the endpoint before true return: refusal/freeze. No cross-session lifetime or automatic selection. |
 | Disarmed later provisioning/correction specimens permit affected SCRATCH requalification with unchanged issuance bytes | Try old qualified proof/final receipt validation during active requalification, changed revision or missing audit/distinct close. It cannot originate LIVE or reuse an older eligible release; refuse exact stale/active coordinate. |
+| Disarm-only writer reserves/flushed intent before mutation/Q; finalized successful results stay disarmed until a new accepted audit/distinct-close/release suffix | Kill before/after slot reservation, intent write/each acknowledgement, changed work/result/eligible publication; release locks. Partial/pending/failed/interrupted or successful-unaccepted successor rejects old ELIGIBLE, including unchanged-input Q. Lost intent/slot identity, gap or predecessor conflict refuses without scan/fallback; no writer can publish eligibility/appointment or refund permit. |
+| Immutable A3 permission rule and issuance receipt stay byte-identical while two independently accepted exact invocation-entry specimens pass in separate scratch invocations | Put destination into issuance profile, omit entry acceptance/basis or mismatch request/nonce, allow unlisted/protected/linked ancestry or within-call retry: refuse. Failed pre-intent reservation retains scratch unspent/no-intent/no-attempt; different explicit fresh entry/appointment can proceed only in a later invocation. Partial intent never permits it. |
 | Current release/appointment value checks pass on complete authored scratch operands; scratch channels require live supervisor/nonce/EOF/process correspondence | Remove/truncate/replay a release or parent frame, use old epoch/revision, wrong appointed role/image/peer, lost supervisor or pending successor. Refuse before intent; post-intent scratch loss freezes contact without refund. No record or run ID authenticates its presenter. |
 | Original clean review, byte-identical final payload and independently appointed acceptance owner register through the scratch registrar | Copy a producer review/run/commit, skip required review, use a reviewer-only channel or have producer/repairer accept itself. No acceptance; the reached owner/scope/original-evidence check must refuse. Clean findings alone are insufficient. |
 | Findings path retains reviewed and final bytes plus every original finding/disposition and independent own judgment | Omit/reassign a finding/disposition, mutate final bytes outside reviewed repair, copy "registration for reviewer", or bypass earned integration/new whole review for substantive redesign. Refuse exact evidence/scope coordinate. |

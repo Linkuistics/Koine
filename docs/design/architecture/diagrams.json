@@ -2,46 +2,34 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Repair the reviewed reference admission proposal",
-    "status": "K290 choices selected; reviewed k291 repair before k269",
-    "summary": "Q/P/A stages and E/M/U credit remain separate. K288 finds unresolved session/appointment, blocker, export/scope, current-identity, input-partition and durable-invalidation work. K289 clarifies the unchanged quote-aware inventories and credit summaries. K290 selects human-owned acceptance and one foreground supervisor/acquisition ceremony, compatible acceptance/audit/release batching with producer/repairer exclusions and a distinct instrument closing owner/step, plus the exact additional pass-status relocation. K291 must repair the complete design and earn mandatory whole review/every integration before k269. The diagram labels record that selection while the protocol remains the reviewed proposal under repair. The one pass is unused and all original duties/holds remain under only the explicitly compared amendments.",
+    "title": "Foreground acceptance, fresh appointment and durable disarm",
+    "status": "K292 design slice; complete k291 review still required",
+    "summary": "Antony's short foreground ceremonies accept ready original reviewed/final objects before each consumer. Compatible human trust duties may batch; producers/repairers/runners are excluded and the instrument close remains distinct. One fresh foreground appointment retains supervisor/checker/acquirer through true return; pure same-image execution with ELIGIBLE evidence supplies no authority. Immutable A3 permission is separate from exact accepted P entries; disarm-only maintenance persists successor intent before changes/Q. F2/F4/F5 and exhaustive F6/whole reconciliation remain in k293/k294 before mandatory whole-k291 review/every earned integration and k269. No control or target pass ran; all holds remain.",
     "diagramIds": [
       "native-reference-proof",
-      "native-reference-packaging",
       "native-reference-admission",
+      "native-reference-packaging",
       "native-reference-instrument",
-      "native-reference-evidence",
       "native-reference-contact",
+      "native-reference-evidence",
       "native-population-metadata-shape"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-reference-admission",
-        "summary": "Marked unresolved appointment/lifetime, A3 profile binding and durable invalidation in the reviewed lifecycle."
+        "id": "native-reference-proof",
+        "summary": "Added short foreground human acceptance, compatible ready-object judgments, fresh appointment and durable maintenance disarm."
       },
       {
-        "id": "native-reference-proof",
-        "summary": "Records the selected human acceptance/foreground ceremony; exact appointment/compatibility and the defective all-E partition still need whole reviewed k291 repair before k269."
+        "id": "native-reference-admission",
+        "summary": "Separated immutable export permission from exact accepted P entries and added pre-work durable intent/crash refusal with foreground appointment."
       },
       {
         "id": "native-reference-packaging",
-        "summary": "Marked current-build/process-image correspondence and role appointment as unresolved Q/P design work."
-      },
-      {
-        "id": "native-reference-contact",
-        "summary": "Marked the exact C/B blocker set and T1–T7 grammars as live repair, while preserving accepted unknown contact limits."
+        "summary": "Replaced cross-session supervision with one foreground invocation and exact P export-entry acceptance; current-identity repair remains."
       },
       {
         "id": "native-reference-instrument",
-        "summary": "Marked the retained supervisor appointment and policy grammar repair before construction."
-      },
-      {
-        "id": "native-reference-evidence",
-        "summary": "Placed k290 decisions and k291 whole design/review before construction and the unused target pass."
-      },
-      {
-        "id": "native-population-metadata-shape",
-        "summary": "Preserved package/roles/recipes and useful breadth while marking the reviewed admission proposal under repair."
+        "summary": "Placed fresh human appointment before Task and preserved the pure same-image/ELIGIBLE refusal."
       }
     ]
   },
@@ -105,7 +93,7 @@
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "The proposed retained export-only checker/Task/script/CLI chain separates Q earlier qualification, P fresh pre-intent facts and A first-attempt outcomes. Independent appointment/lifetime and current build/process-image correspondence remain unresolved. E actual-call and M logical-to-scratch evidence cannot substitute for required Q/P facts. Whole task/runtime/basis inputs stay bound. K288/k289 identify unresolved design work; k290 actual decisions and k291's complete repair/mandatory whole review/every integration precede k269. This is the reviewed proposal, not a repaired construction handoff. The pass is unused; all original duties and holds remain."
+      "caption": "Design slice: pure origins remain SCRATCH, including same-image callers with ELIGIBLE evidence but no fresh direct human appointment. One foreground supervisor/checker/acquirer invocation retains the endpoint through true return. P exact export entries are accepted separately from immutable issuance permission. Current-build/process-image routes and exact blocker/grammar/input partition still need repair; no partial construction handoff or control execution."
     },
     {
       "id": "native-reference-contact",
@@ -132,7 +120,7 @@
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
-      "caption": "The reviewed component flow retains checker-before-Task ordering, issuance/current profile comparison, original bytes and native typed witnesses. Its independent supervisor appointment/lifetime and exact pre-lookup classes are not realized by labels or retired owners. K288/k289 identify unresolved design work; k290 actual decisions and k291's complete repair/mandatory whole review/every integration precede k269. This is the reviewed proposal, not a repaired construction handoff. The pass is unused; all original duties and holds remain."
+      "caption": "Design slice: fresh direct human appointment precedes Task; supervisor/checker/acquirer coexist through true return. Pure same-image/ELIGIBLE evidence cannot appoint LIVE. Retained checker/parser/chain, issuance/current comparison, original bytes and native typed witnesses remain. Exact blockers/target grammars/current correspondence and full input partition remain for complete k291 review before k269; all actual qualifications and holds remain."
     },
     {
       "id": "native-reference-admission",
@@ -141,7 +129,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "The proposed lifecycle separates disarmed provisioning, final qualification/acceptance/audit/distinct close and LIVE selection before irreversible intent/spent receipt/original start. Exact A3 issuance-versus-invocation binding and durable invalidation after interrupted qualification remain unresolved. Pre-intent export failure supplies no new attempt and consumption never refunds. K288/k289 identify unresolved design work; k290 actual decisions and k291's complete repair/mandatory whole review/every integration precede k269. This is the reviewed proposal, not a repaired construction handoff. The pass is unused; all original duties and holds remain."
+      "caption": "Design slice: immutable issuance/current A3 permission is separate from exact human-accepted P invocation entries before output lookup. Fresh direct appointment precedes Task and reservation/intent/consumption. Approved maintenance writers persist successor disarm intent before changes or Q; partial/crashed/successful-unaccepted successors cannot revive old eligibility. The pass remains unused. Exact blocker/grammar/correspondence/partition repair and mandatory whole-k291 review still precede k269."
     },
     {
       "id": "native-reference-proof",
@@ -150,7 +138,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Inspection-only review and independent own acceptance remain separate duties. Antony selected human-owned acceptance and one foreground supervisor/acquisition ceremony, batching compatible acceptance/audit/release work with producer/repairer exclusions and a distinct instrument closing owner/step. Exact appointment, compatibility and invalidation still need k291's complete reviewed design. The historical all-E statement inventory remains defective; whole companions/tables/bases still bind full bytes and consumed changes require affected qualification. K291's mandatory whole review/every integration precedes k269. The protocol remains the reviewed proposal under repair; the pass is unused and all original duties/holds remain under only the explicitly compared amendments."
+      "caption": "Design slice: Antony accepts ready reviewed/final payloads and original results in short foreground ceremonies before each consumer. Compatible trust duties may batch; producer/repairer/runner exclusions and a distinct closing owner/step remain. Fresh appointment retains coexisting supervisor/checker/acquirer through true return. Disarm-only maintenance intent persists before changes/Q. Exhaustive input partition and complete k291 reconciliation/review remain; no actual authority, controls or target evidence."
     },
     {
       "id": "native-population-metadata-shape",

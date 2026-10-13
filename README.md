@@ -130,6 +130,11 @@ compares every original obligation and specifies separate construction, commissi
 provisioning/validation, review/repair, final affected requalification, independent audit
 and distinct instrument-close responsibilities. Whole-design review/earned integration
 precede k269; actual required task/channel/native/read qualification remains unavailable.
+The [foreground design slice](docs/verification/application-reference-input-partition.md#foreground-admission-repair-slice)
+defines direct human ready-object acceptance and one fresh coexisting supervisor/acquirer
+appointment, exact P export entries under immutable issuance permission and durable
+disarm-only maintenance intent. Remaining k291 slices and whole review still precede
+construction; no partial slice qualifies controls or spends the pass.
 Later provisioning/corrections cannot inherit stale proof or restore authority. K244/k242
 remain live, k245 alone owns the unused pass, and k246/k247 retain complete generated
 discrimination/whole-subject review. Process-death checks establish no OS-crash persistence.
