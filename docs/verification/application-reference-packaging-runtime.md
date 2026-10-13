@@ -25,6 +25,14 @@ observations belong in the separate
 [current report](application-reference-input-partition.md#current-construction-and-evidence-report),
 never a reporting slice in this companion. The measured chain must not consume that report.
 
+Historical documentary observations below are fixed to the design snapshot
+`ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa`: each source declaration, edition, branch,
+retrieval digest and tag/revision association records that snapshot's documentary claim.
+It establishes no current retrieval, SDK/kernel/runtime correspondence or acquired original
+basis object. Every claimed documentary correspondence still requires the complete original
+object and independent acceptance before its consumer; a locator or historical pin is
+insufficient. These fixed facts remain whole-byte inputs alongside the enduring rules.
+
 ## Retained entry and domain channel
 
 The commissioned checker owns launch policy and the live register lock, as specified in
@@ -92,7 +100,7 @@ disarm-only successor slot/intent before provisioning/corrections/qualification 
 consumed dependencies, under release-before-register lock order. Partial slots, failed/
 interrupted/successful Q remain disarmed after lock release; only a complete later human-
 accepted close/release can be eligible. Last-edit qualification, acceptance/audit, distinct close
-and independent release must settle before a new supervised k245 invocation. Missing,
+and independent release must settle before a new supervised acquisition invocation. Missing,
 partial/stale release or supervisor loss refuses before intent and freezes source release.
 Possession of a socket number is no authentication. Required known endpoint/process/image/descriptor correspondence consumes named B3/B6/B8
 Q/P controls; complete opaque pre-start rights/maps/proxy closure stays accepted unknown; deliberate same-UID trust-root forgery retains
@@ -246,8 +254,10 @@ do not invent a live-validation mode, target permit or unstated inapplicability.
 The alternative of a LIVE invocation guaranteed to stop before intent is rejected for
 qualification: it would introduce another role-selection/entry promise and could consume
 authority if miswired. SCRATCH actual-call tests plus separate qualified provisioning
-and fresh P checks answer the required facts without that role. K285's separate independent
-release and chartered acceptance order governs the repaired k282 conjunction; no operation-credit result,
+and fresh P checks answer the required facts without that role. The contract's
+[independent release](application-reference-evidence.md#independent-live-release-and-role-selection)
+and [chartered acceptance order](application-reference-evidence.md#chartered-independent-acceptance)
+govern the whole admission conjunction; no operation-credit result,
 receipt publication or final validation may arm a qualification invocation.
 
 ### Independent correspondence and precise authority boundary
@@ -262,12 +272,12 @@ not a current observation. Permitted mechanics must qualify before fresh P use.
 | Fact / coordinate | Already permitted operation, origin and exact retained evidence | Limit / remaining work before consumer |
 | --- | --- | --- |
 | UID / O05 | Independent pure native programme calls `getuid`/`geteuid`; raw returns/OS/image/configuration are compared with separately validated launch/authority UID. Wrong/injected result is M; actual same-UID call is E. Fresh P repeats actual calls. | No HOME/login/name inference; authority UID/ancestry comes from one qualified separate initialization/validation, not the scratch result. Unknown equality blocks P01/P04. |
-| Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls remain R. |
+| Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls are required. |
 | Installed 27.0.1/26A434 correspondence / O06 | Canonical expected bytes are an independent **requirement**, not evidence the current host runs it. Matching candidate and independent observer sysctls corroborates a shared API, not an independently acquired installed-build label. The selected bounded route adds Antony's original manual local OS About product/build observation with host/session/time provenance. | Actual independently accepted correspondence remains required before Q06 credit/P01; authority supplies no current label or qualified mechanic. No `sw_vers`, SystemVersion plist, scripted UI, subprocess or alternative sysctl fallback. |
 | Spawn/request/channel mechanics / O02–O04/O07 | Independently retained launcher exercises unprivileged `posix_spawn`/explicit fd actions, `socketpair`, `SecRandomCopyBytes`, framed nonce/request/domain/EOF and actual `waitpid` terminal returns on constructed peers. Original launched PID/request/known fd actions, raw channel frames and start/death/true-return intervals have separate provenance from child claims. The selected finite same-UID metadata route below requires separate authoring/qualification and original results. | Spawn PID/parent PID, endpoint possession, child self-report or pre-exec held-file hash alone establishes no executing image/incarnation. Actual independent peer/image correspondence remains required before Q07/P01/P02; policy supplies none, and no target child or LIVE positive calibrates it. |
-| Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities remain unavailable where not independently obtainable. Complete unknown maps stay AU, but a named required image cannot. |
-| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. The selected inherited-fd/foreground-group metadata route below requires original independently accepted results. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance still needs qualification; the answer text is no terminal authentication. Required actual terminal/process/image facts remain unavailable until that work precedes P03. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |
-| A2/A3 storage and disarm / O08–O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs remain R. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |
+| Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities need independently obtained original evidence before their Q/P credit; missing evidence blocks its named claim. Complete unknown maps stay AU, but a named required image cannot. |
+| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. The selected inherited-fd/foreground-group metadata route below requires original independently accepted results. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance and required terminal/process/image originals must qualify before their Q08 credit and P03 use; missing evidence blocks that stage. The answer text is no terminal authentication. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |
+| A2/A3 storage and disarm / O08–O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs are required. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |
 
 **Selected bounded correspondence authority.** The canonical
 [authority clause and exact comparison](application-population-metadata-shape.md#authority-and-admission-choices)
@@ -281,7 +291,7 @@ consumers; authority alone establishes none of the required facts:
    already permitted fresh sysctl buffers and qualified compatibility configuration.
    This is the expressly selected human UI exception to the pass permission's no-launch
    rule. No scripted UI, file/plist/subprocess,
-   app inventory, network or installation activity is part of the recommendation.
+   app inventory, network or installation activity is part of the selected authority.
 2. Independently authored unprivileged observer obtains kernel metadata **only for the
    finite same-UID commissioned foreground supervisor/checker and their declared retained
    Task/interpreter/verifier/CLI/control children**: `proc_pidinfo(PROC_PIDTBSDINFO)` for
@@ -495,7 +505,7 @@ correspondence with what actually launches; a copy under the same name is not th
 | OS/runtime/loader | Actual OS/product/build/architecture, kernel/API/probe configuration and runtime-image set, exact shared-cache/subcache metadata/backing identity and UUIDs, loaded slice/build IDs and obtainable full-byte identities. Distinguish SDK/historical source from loaded images. Unobtainable required backing/image identity remains U1/U3, not source-hash equivalence. |
 | Independent contact/basis/expectation | Entire contact companion, five tables and exact original documentary basis objects; mechanism/provider/config/launcher images; full independent format/runtime programmes, controls, original results and reviewed applicability. Mutable documentary retrieval needs exact accepted bytes/digest. |
 
-Current official [Task configuration](https://taskfile.dev/docs/reference/config) and
+The selected documentary [Task configuration](https://taskfile.dev/docs/reference/config) and
 [schema](https://taskfile.dev/docs/reference/schema) describe configuration discovery,
 environment, includes and dotenv. They motivate explicit freezing; the retained runner's
 actual version/configuration/reads need their required independently pinned named
@@ -507,7 +517,9 @@ The proof names earlier accepted input closure/revision identities and stores or
 observations as outputs. It cannot list or hash itself as an input. Current authority and
 receipt validation are live inputs, not fixture identities. Raw full-document snapshots
 for the qualified normative extractor are invocation evidence; exact accepted sections and
-extractor identity are semantic inputs under k275. Any other reporting read binds whole
+extractor identity are semantic inputs under the
+[normative extraction contract](application-reference-evidence.md#normative-extraction-and-field-concordance).
+Any other reporting read binds whole
 bytes. Pure logs/verdicts, diagrams and promotion references remain outputs only when the
 measured chain never consumes them. This companion's whole bytes are normative input;
 proof references and changing validation results belong only in separate unconsumed reports.
@@ -525,7 +537,7 @@ unknown. Do not infer grammar from file extensions. Use these documentary bases:
 | Binary `bplist00` | Apple's historical CF-1153.18 [CFBinaryPList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFBinaryPList.c), object-format/offset/trailer description and parser checks | Historical implementation-derived marker/reference/offset structure and separately calculated small object-table values. It is not a normative complete binary grammar or current CF behavior. Odd widths, malformed lengths/references, duplicate keys, wider integers, real/date/NaN storage require current pinned observations. |
 | OpenStep | Apple's archived [old-style ASCII guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html), historical [CFOldStylePList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFOldStylePList.c) | Documented string/data/array/dictionary examples and historical implementation-derived comment/escape/parse rules; no complete normative grammar, numeric type or current acceptance follows. Independently observe encoding/error/duplicate/empty/trailing-data branches. |
 | `.strings` | Apple's archived [String Resources](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html), plus the same historical old-style parser and [CFPropertyList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFPropertyList.c) dispatch | Documented quoted key/value assignment/encoding examples, historical dictionary-without-braces dispatch and separately authored byte/code-unit positions. These are distinct from current CF parser acceptance or Bundle string lookup. Duplicate survivor, shortcut, whitespace-only, BOM/escape and non-string cases require observations. No Bundle/localization lookup is run. |
-| `.loctable` | Canonical evidence requirements plus the [evidence contract's complete table/LocProvenance record obligations](application-reference-evidence.md#original-bytes-and-complete-typed-witnesses); underlying bytes use the applicable XML/binary/OpenStep basis above | Contract-defined authored tree/association expectations, not an Apple loctable grammar or claim about installed language-selection semantics. No independent public normative loctable grammar is established here. Actual parser acceptance/types of each pure representation must be observed; current installed tables/purposes remain k245 evidence. |
+| `.loctable` | Canonical evidence requirements plus the [evidence contract's complete table/LocProvenance record obligations](application-reference-evidence.md#original-bytes-and-complete-typed-witnesses); underlying bytes use the applicable XML/binary/OpenStep basis above | Contract-defined authored tree/association expectations, not an Apple loctable grammar or claim about installed language-selection semantics. This contract selects no independent public normative loctable grammar. Actual parser acceptance/types of each pure representation require independent originals; per-copy installed tables/purposes require acquisition-stage evidence and independent role classification. |
 | Unknown/unsupported/malformed | Exact authored bytes and a specifically violated named rule, where one exists | Preserve raw evidence and the bounded defect; a current parser rejection alone is not proof of universal invalidity. Unsupported native variants remain explicit, never coerced into a successful tree. |
 
 The CF tag resolves to commit `dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3`.
@@ -555,12 +567,14 @@ Producer-learned frozen outputs remain regression-only and close no independent 
 
 ## Owners, stability and exact unavailable handoff
 
-K287 reconciles the complete contract/extract set, README/summary/view layers, authority/
-anchor terminology and these obligations before mandatory whole-k282 review/integration.
+Complete admission-design reconciliation covers the complete contract/extract set,
+README/summary/view layers, authority/anchor terminology and these obligations before
+mandatory whole-producer review and every earned integration.
 This companion's full bytes become an accepted normative basis alongside the complete
 contact companion/tables; the independent profile/concordance/inventory must bind both.
-K269 consumes only the whole reviewed conjunction and assigns the following live owners
-and placements, without converting this design into implementation leaves:
+Construction planning consumes only the whole reviewed conjunction and assigns the
+following live responsibilities and placements, without converting this design into
+implementation leaves:
 
 | Required responsibility | Placement and closure condition |
 | --- | --- |
@@ -573,8 +587,12 @@ and placements, without converting this design into implementation leaves:
 | Last-edit requalification, independent audit and distinct close | U6 disarmed after all relevant input/task/runtime/contract/review repairs, including later corrections/provisioning; independently accepted original proof, per-coordinate audit and complete distinct k244 close before eligible release. |
 | Independent release owner and still-live supervisor | After accepted audit/distinct close, independently accept the exact release basis; only explicitly appointed k245 invocation receives a LIVE parent channel. Keep pure entries SCRATCH; refuse lost/partial/stale release, active qualification or supervisor loss. |
 
-An explicit owner survives any earlier leaf's retirement through k245 admission. A measured
-edit, newly observed dependency, changed accepted revision/runtime/receipt binding or
+Construction planning retains explicit live responsibility for affected requalification,
+independent acceptance/audit, distinct instrument close and release through acquisition
+admission, even after an earlier producer's retirement. Each actual trust act has its own
+direct foreground appointment; only the acquisition ceremony requires the supervisor,
+checker and child to coexist through true return. No process must survive between Grove
+sessions. A measured edit, newly observed dependency, changed accepted revision/runtime/receipt binding or
 substantive review repair invalidates affected claims immediately. Determine affected cells
 independently from the accepted dependency/control graph; unknown impact requires the whole
 matrix, never cherry-picked green cells. Re-acquire changed runtime expectations, repair
@@ -586,9 +604,10 @@ can waive it. Provisioning adds live validation evidence without self-hashing a 
 Nothing here supplies required actual B/Q/P evidence or makes k244/k242 complete.
 Accepted U1–U4 contact gaps are limitations, not perpetual full-mechanism obligations. Useful byte/value/intent design may
 progress with limited claims. Required Q mechanics/native-call/image/control evidence and
-P actual authority/build/UID/channel/export facts stay unavailable until their own evidence
-exists. A target outcomes are unperformed before the selected attempt, never its qualification
-or wiring calibration. Complete read/no-contact claims cannot follow from bounded observations.
+P actual authority/build/UID/channel/export facts require their own original qualified
+evidence before credit. A target outcomes are unperformed before the selected attempt,
+never its qualification or wiring calibration. Complete read/no-contact claims cannot
+follow from bounded observations.
 K245's one pass cannot discover wiring or calibrate native calls; k246/k247 retain full
 generated discrimination/whole-subject duties. Stronger privilege/containment/VM/signing/
 consent or another pass requires a concrete human decision before its consumer. Required

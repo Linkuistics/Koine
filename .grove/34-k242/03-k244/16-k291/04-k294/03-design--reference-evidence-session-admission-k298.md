@@ -35,6 +35,17 @@ Design only. No implementation/control/provisioning/commissioning/native/protect
 kernel/process/terminal/privilege/posture/capture programme or competing reviewer.
 No new reporting exception or authority beyond the actual compared answers.
 
+K297 decomposed at the actual input-binding boundary. K299 supplies the whole packaging/
+runtime clause inventory and exact source/change manifest in reference-packaging-partition
+TSV/JSON; k300 retains all selected S/D/C clauses and closes k297's original documentary
+conjunction. Recheck final companion bytes/coordinates after every later edit. Individual
+H source observations are fixed reports at ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa,
+never original-object possession or current SDK/kernel/runtime evidence. This whole-object
+slice changes no canonical permission/ADR/contact/table/contract bytes and grants no
+new extraction exception. Merge its scope only after the selected-input and all whole-
+basis/actual-read membership duties hold; the original whole-k291 review/Creator duty
+remains here, with no partial reviewer cut.
+
 Presentation carry-forward from k296: Safari verifies the contact layout/caption/markers
 and reaches the intended view via the topic link, but initial fresh #diagram fragment
 navigation leaves the document at its top until that click. Resolve or explicitly retain

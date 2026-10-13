@@ -14,17 +14,17 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion is the contact/table input partition slice. K295 approved the bounded
-correspondence observation authority; actual facts/qualification, the remaining whole
-inputs/reconciliation and mandatory whole review remain.
+Current discussion is the whole packaging/runtime input partition slice. K295 approved
+the bounded correspondence observation authority; actual facts/qualification, selected
+S/D/C inputs, remaining whole bases/actual reads and mandatory whole review remain.
 
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Records selected observation authority and the contact/table partition before remaining whole reconciliation.
-- [Contact input partition](../../verification/application-reference-input-partition.md#contact-input-partition-slice) — Individually locates E/H clauses/cells and original R assertions, preserving full-byte bindings and remaining work.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Shows selected bounded observation authority and the whole companion's stable rules/fixed history before remaining input reconciliation.
+- [Packaging input partition](../../verification/application-reference-input-partition.md#packaging-input-partition-slice) — Individually locates E/H clauses/cells and original R assertions, retaining whole bytes, exact duties and missing evidence.
 
 Unchanged foreground acceptance/admission/component/evidence/population views remain
-context, along with the unchanged packaging/proof views and exact T/A grammars. K295's
-actual decision supplies no current correspondence facts. K294's remaining normative/
-basis partition and whole reconciliation precede mandatory whole-k291 review. No partial construction handoff,
+context, along with the unchanged contact/proof views and exact T/A grammars. K295's
+actual decision supplies no current correspondence facts. K300's selected-input partition
+and k298's whole-basis/actual-read reconciliation precede mandatory whole-k291 review. No partial construction handoff,
 qualified control or target evidence follows. The historical all-E inventory remains defective.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)

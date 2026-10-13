@@ -280,6 +280,102 @@ Initial fragment navigation needs a topic-link click to focus the diagram; mobil
 appearance was not checked. The closing child retains those delivery limits in its full
 browser verification. No HTTP success or unavailable inspection is called a render pass.
 
+## Packaging input partition slice
+
+Reference-evidence-packaging-inputs-k299 completes the **whole packaging/runtime
+companion only**. Its [individual clause inventory](reference-packaging-partition.tsv)
+and [source/change manifest](reference-packaging-partition.json) use the contact slice's
+quote-aware tab-delimited CSV dialect and zero-based UTF-8 start-inclusive/end-exclusive
+offsets, exact fragment/context/source digests and source-relative lines. Each heading,
+prose/list clause and Markdown-table cell is enumerated; connector fragments may be finer
+than grammatical clauses. Their whole context preserves the conditions and exceptions.
+Whitespace/table separators carry no propositions but remain in whole-source identity.
+Exact coverage locates the authored classification; it does not prove semantic completeness
+or execute an instrument control. This inventory is an unconsumed documentary output.
+
+`E` records each stable responsibility, permission value, conditional prerequisite,
+schema or claim limit. `H` records each fixed historical documentary declaration,
+edition/content description, branch, retrieved digest and tag/revision association at
+`ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa`. The companion itself now states that immutable
+historical coordinate. Each H clause has its own range; mixed paragraphs/cells retain
+separate E obligations. H establishes only what that design snapshot recorded, never
+current retrieval/SDK/kernel/API/image correspondence or possession of an original basis.
+All complete original objects and their independently accepted correspondence remain
+required before their consumers. The historical CF/sysctl/XNU/bundle/Task descriptions
+are not substitutes for those objects or the missing actual Q/P/A facts.
+
+`R` locates each original changing assertion individually at the same immutable source
+revision. The manifest's exact old/new line spans cover every companion edit, including
+stable owner wording and the clarification that the correspondence table's former R
+abbreviation means required controls. These statement E/H/R labels are distinct from
+operation E/M/U credit and Q/P/A stage.
+
+| Original assertion (individual R coordinates in the inventory) | Retained rule in the whole companion |
+| --- | --- |
+| K285's release/acceptance order “governs the repaired k282 conjunction” | The linked enduring independent release and chartered acceptance contracts govern the whole admission conjunction. |
+| Required executing slice/cache/subcache/backing/image identities “remain unavailable” | Original independent evidence precedes each named Q/P credit; missing evidence blocks that claim. |
+| Actual terminal/foreground/session/peer provenance “still needs qualification” | Original terminal/foreground/session/peer and process/image facts qualify before Q08 credit and P03 use. |
+| Actual terminal/process/image facts “remain unavailable until” the P03 work | Missing required originals block their stage; answer text is no authentication and pure same-image refusal is no actual LIVE confirmation. |
+| No independent public normative loctable grammar “is established here” | No such grammar is selected; independent original parser observations and acquisition-stage purpose/role evidence remain required. |
+| K287 “reconciles” the whole set before whole-k282 review/integration | Complete admission reconciliation and mandatory whole-producer review/every earned integration precede construction planning. |
+| P authority/build/UID/channel/export facts “stay unavailable until” evidence exists | Their own original qualified evidence is required before credit; first-target outcomes remain A. |
+| “Current official” Task documents describe configuration discovery | Their fixed documentary content report has the immutable historical coordinate; actual retained runner/configuration/read evidence and whole-object freezing remain required. |
+
+Construction planning now owns the stable responsibility/consumer-placement contract,
+with explicit affected requalification, independent acceptance/audit, distinct instrument
+close and release duties through acquisition admission. Retired producers supply historical
+design sources. Actual trust acts receive their own short direct foreground appointments;
+only the acquisition ceremony retains coexisting supervisor/checker/acquirer through true
+return. No process lifetime across Grove sessions is implied by retaining a responsibility.
+
+The entire companion remains a full-byte input, including its introduction, conclusion,
+historical clauses and every table cell. No reporting subsection or fourth extraction
+exception is introduced. O01–O25 and all release/acceptance/entry/disarm/current-correspondence
+controls retain their Q/P/A and E/M/U rules. The canonical selected permission and complete
+original-obligation comparison, full descriptor ADR, evidence contract, whole contact
+companion, five quoted tables and prior contact/historical inventories are unchanged by
+this slice. Only k281/k290's exact approved reporting amendments and k295's compared
+bounded observation authority apply; this work selects no further amendment.
+
+Actual current-build/peer-image/terminal original results, independently qualified routes,
+accepted authority/commissioning/provisioning, required controls and retained executable
+entry remain unavailable. The same fixed mdfind child's correspondence first belongs to
+A after consumption; no early target sample is required or performed. All missing required
+Q/P evidence must be placed before its consumer. No acceptance, appointment, native/process/
+terminal observation, authority operation, control execution or target pass occurred here.
+The single pass is unused; k244/k242, k245/k246/k247 and every useful-breadth/private/native
+duty and hold remain.
+
+K297 decomposed at the whole-companion versus approved section-input boundary. K299
+supplies this independently checkable whole-companion partition; k300 retains every
+selected canonical/descriptor/evidence-contract S/D/C clause and exact comparison. K298
+must merge both slices and k296, inventory every whole historical/primary/authored/actual
+task/runtime/charter basis, reconcile the complete original F1–F8/F9/F10 conjunction,
+summaries/seven views/consumer charters, and cut mandatory whole-k291 review before k269.
+Later companion edits invalidate these exact coordinates and require regeneration;
+actual consumed changes still disarm/requalify, regardless of report edits. No partial
+inventory closes k297/k294/k291 or supplies a construction/qualification handoff. The old
+all-E TSV remains frozen and defective pending the complete merged repair.
+
+Scoped documentary checks verify each fragment/context/source digest, UTF-8 byte/line
+range, authored E/H classification and original-R context; every exact old/new edit
+reconstructs the final whole companion. Omitted clauses, wrong digest/context, H-to-E
+and E-to-H relabelling, lost R records and a whole-companion mutation outside earlier
+coordinates each fail. Unchanged comparison objects are byte-identical. Nineteen
+inventory/checker/original/Python subjects are unchanged before/after. The existing render
+task regenerates all seven SVGs with its twelve D2/Taskfile/Task/D2/Python/measurement
+subjects unchanged item by item. These are documentary checks, no executed Q control,
+original-object retrieval or current correspondence claim.
+
+Safari verifies the revised packaging graph, caption, outline/current discussion and
+sole changed marker at the presentation's port 8938. Fresh fragment navigation again
+opens at the document top; clicking the matching packaging link focuses the intended
+view. Desktop light readability was checked; mobile/dark appearance was not. The older
+8937 listener returns an empty response, so this slice uses the existing serving task
+on 8938 without disturbing that listener. K298 retains the fragment/mobile/dark delivery
+limits for its complete check; neither HTTP status nor unavailable browser capability
+is treated as rendered evidence.
+
 ## Complete statement inventory
 
 [Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected
