@@ -14,18 +14,17 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion is the closed evidence/path design slice; the correspondence-authority
-decision, complete input partition/reconciliation and mandatory whole review remain.
+Current discussion is the contact/table input partition slice. K295 approved the bounded
+correspondence observation authority; actual facts/qualification, the remaining whole
+inputs/reconciliation and mandatory whole review remain.
 
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Fixes Q/P blockers, C bypass/D1–D6 dispositions and exact T/A grammar/basis limits before construction.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Includes actual foreground/entry/disarm facts and one precise missing build/peer-image/terminal authority checkpoint.
-- [Closed required evidence](../../verification/application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns) — Separates failed required Q/P controls from the canonically accepted unknown remainder.
-- [Byte productions and independent bases](../../verification/application-reference-evidence.md#byte-productions-and-independent-bases) — Defines ordinary/nested/helper/cryptex/direct/link Data productions with exact historical parent alternatives and current-risk limits.
-- [Independent correspondence boundary](../../verification/application-reference-packaging-runtime.md#independent-correspondence-and-precise-authority-boundary) — Names permitted native/storage routes and exact additional human choice/work before required current facts can be consumed.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Records selected observation authority and the contact/table partition before remaining whole reconciliation.
+- [Contact input partition](../../verification/application-reference-input-partition.md#contact-input-partition-slice) — Individually locates E/H clauses/cells and original R assertions, preserving full-byte bindings and remaining work.
 
 Unchanged foreground acceptance/admission/component/evidence/population views remain
-context. K295's actual correspondence decision precedes k294's exhaustive partition/
-whole reconciliation and mandatory whole-k291 review. No partial construction handoff,
+context, along with the unchanged packaging/proof views and exact T/A grammars. K295's
+actual decision supplies no current correspondence facts. K294's remaining normative/
+basis partition and whole reconciliation precede mandatory whole-k291 review. No partial construction handoff,
 qualified control or target evidence follows. The historical all-E inventory remains defective.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)

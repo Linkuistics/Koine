@@ -205,6 +205,81 @@ The historical inventory stays frozen and defective until k291 refreshes its com
 statement/byte comparisons, including these new selected bytes. No implemented admission
 protocol, current authority, instrument qualification or finite subject is supplied.
 
+## Contact input partition slice
+
+Reference-evidence-contact-inputs-k296 completes the F6 partition for the **whole contact
+companion and all five quoted documentary tables only**. The [clause/cell inventory](reference-contact-partition.tsv)
+and [source/change manifest](reference-contact-partition.json) locate every retained
+clause/list member and serialized table cell with zero-based UTF-8 start-inclusive,
+end-exclusive offsets, line coordinates, exact text/digest, whole-context range/digest
+and whole-source digest. Table row zero is the header; decoded cells use the declared
+quote-aware dialect. Punctuation/connector fragments can be finer than grammatical
+clauses; their parent context carries scope, conditions and exceptions. A fragment is
+never an independent permission. Whitespace/separators have no propositions but remain
+in whole-source hashes. Byte coverage supports locating the authored classification;
+it does not prove its semantics or qualify an instrument.
+
+`E` records a stable rule, conditional obligation, schema, selected documentary basis
+or bounded claim limit. `H` records each fixed historical selection/non-execution and
+each individual pinned-table observation/retrieval coordinate, including dates and
+conditional branches. Their historical claim is only about the selected documentary
+object: actual original-object correspondence remains separately required, and no
+current kernel/API/peer/service/TCC fact follows. `R` records each relocated original
+changing assertion at source revision `0cbb519e`, with its exact original context.
+The manifest records every wording replacement and retained duty. Headers are structural
+E records, not historical observations; placeholder/skip dispositions are historical
+documentary facts. Candidate/review/accepted-unknown dispositions remain enduring rules.
+
+The contact companion now states construction-planning and retained-read responsibilities
+without treating retired designers as execution owners. Its only retained design-session
+observations are anchored to k276's immutable `11664f1e1f14dd1792c84dfa61591e72e26903b0`:
+the independent baseline selection and no initialization in that design. Whole-byte inputs
+include the complete companion and unchanged five tables; this inventory introduces no
+internal reporting section or new extraction exception.
+
+| Original changing assertion (each has individual R records) | Stable obligation retained in the contact companion |
+| --- | --- |
+| RPC compiled IDs/configuration “remain unestablished” | Published declarations establish no current compiled/configuration correspondence. |
+| C5 current framework/service/protocol inventories “are missing” | API candidates cannot supply current inventories or real-endpoint facts. |
+| Current transport/protocol/endpoint/delegated-effect coverage “remains unavailable” | Any claimed actual correspondence needs independent evidence; accepted unknown classes remain explicit. |
+| Q06's correspondence boundary “remains work before credit” | Required correspondence evidence precedes Q credit/P use. |
+| Sandbox/runtime/proxy mechanism “none is specified/qualified here” | Any claimed stronger enforcement first needs selected authority and qualified scope. |
+| Stronger alternatives “none is adopted or commissioned” | Adoption/commissioning requires the concrete authority decision before use. |
+| Complete arrangement “is established” negated in the current conclusion | B1–B8 evidence and U1–U4 accepted limits define the selected boundary; they select no complete C1–C8 mechanism. |
+| U2 complete prevention/observation “is unestablished” | Complete-mechanism coverage is accepted unknown; named evidence supplies no full no-contact proof. |
+| K287 “reconciles … schedules … before k269 consumes it” | Complete admission-design reconciliation and whole review/every earned integration precede planning; live responsibilities precede credit. |
+
+At this documentary slice, the corresponding actual inventories, mechanism, Q06–Q08/P01–P03
+original facts and qualified construction are still unavailable. K295's approved bounded
+About/same-UID commissioned-peer/inherited-fd/foreground-group observations (including the
+fixed source child only in A after consumption) add authority only; this session performs
+none. No acceptance/appointment/control/provisioning/target/native operation occurs.
+The single pass is unused and every independent close/release/useful-breadth/private/native
+obligation remains. These changing observations belong here and are unconsumed.
+
+K294 decomposed at three genuine input/closure seams. K296 supplies this independently
+checkable contact/table partition; k297 must partition every remaining selected S/D/C
+clause and the whole packaging companion. K298 must include the historical parent/packet,
+every primary/authored/actual task/runtime/charter basis, merge a complete current TSV,
+and reconcile the full F1–F8/original-obligation/seven-view/summary/consumer conjunction.
+It retains the last-act mandatory whole-k291 review before k269 and its actual Creator
+on closing that producer. No partial inventory, missing original object or documentary
+check supplies the full boundary or a qualification pass. K294/k291/k244/k242 remain live.
+The historical all-E TSV below remains unchanged and defective; this scoped inventory
+does not silently replace it with a complete-current claim.
+
+Scoped documentary checks verify exact ranges/digests and all current cell membership,
+reject omitted clauses, wrong fragment/context identity, historical-cell relabelling,
+lost R entries and changed whole-source bytes. The five table bytes/decoded cells,
+canonical requirements, descriptor ADR and historical TSV equal the frozen original
+basis. The six named BSD quoted-tab/else fields survive; plain splitting fails. Inventory
+and rendering subjects are unchanged item by item before/after. The existing documentation
+link task passes. These are document checks, not executed Q controls or source retrieval.
+Safari verifies the rendered contact view, caption, discussion/outline and changed marker.
+Initial fragment navigation needs a topic-link click to focus the diagram; mobile/dark
+appearance was not checked. The closing child retains those delivery limits in its full
+browser verification. No HTTP success or unavailable inspection is called a render pass.
+
 ## Complete statement inventory
 
 [Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected

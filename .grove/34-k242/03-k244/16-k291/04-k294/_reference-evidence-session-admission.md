@@ -1,4 +1,4 @@
-# reference-evidence-session-admission-k294
+# reference-evidence-session-admission-k294 — brief
 
 
 ## Goal
@@ -55,3 +55,35 @@ remain live; unused k245 pass/k246/k247/useful breadth and all holds remain.
 Design only. No implementation/control/provisioning/target/privilege/native programme or
 competing reviewer. Required unavailable routes have precise live decision/work before
 consumers and confer no implemented admission conjunction.
+
+## Decomposition
+
+F6's actual surface exceeds one focused session: two whole companions, selected S/D/C
+extracts, five quoted inventories, historical parent/packet and primary bases, then actual-
+read bindings and complete original-obligation/seven-view/consumer reconciliation.
+Preserve every original Goal/Context/Done when above.
+
+1. Reference-evidence-contact-inputs-k296 completes the whole contact companion and five
+   tables' individual statement/cell partition, stable responsibilities, exact comparisons
+   and a scoped documentary report, independently checkable without runtime/target evidence.
+2. Reference-evidence-normative-inputs-k297 completes the remaining selected S/D/C extracts
+   and whole packaging companion's individual E/H/R partition, stable rules and exact
+   ranges/digests. Consume k295's actual answer and preserve its comparison and k281/k290's
+   only reporting amendments. Decompose minimally if a genuine source seam exceeds its session.
+3. Reference-evidence-session-admission-k298 inventories every whole historical/primary/
+   authored/actual task/runtime/charter basis and precise absent-object work; merges the
+   complete inventory; and performs all original F1–F8/F9/F10/obligation/summary/seven-view/
+   consumer reconciliation. Its last work act inserts the original mandatory whole-k291
+   review before k269, with its own Creator on closing k291.
+
+No role-per-leaf programme or partial reviewer is cut. K294/k291 remain live until their
+whole conditions hold; k244/k242 and k245/k246/k247/k269 retain every duty/hold. Only the
+first child is performed this session.
+
+## Decisions (running log)
+
+The all-E paragraph inventory cannot evidence F6: mixed historical clauses, mutable
+coverage assertions and retired design owners need individual records. Decompose at
+the three independently verifiable input/closure boundaries above under Grove's fits-one-
+focused-session test. This is original closing work, not new research/capture or an
+operator decision. The closing child retains mandatory whole review and promotions.
