@@ -95,7 +95,7 @@ is later cancelled or is refused by the recipient. A source/index query is conta
 submission, not only when a file is opened. Distinguish allowed task/runtime-image
 reads from application/source inspection using independently approved object/operation
 associations; a blanket ban on every /System read would also misclassify the runtime.
-K277 owns that actual read closure. An allowlisted loaded image grants no permission
+The independent retained-read owner qualifies that named closure. An allowlisted loaded image grants no permission
 to call its query, resource, coordination or proxy facilities.
 
 The C table enumerates contact candidates and the association needed **if that route is
@@ -170,43 +170,95 @@ native/startup/inherited/proxy contact could occur undetected. Forbidden contact
 forbidden. Pre-effect prevention credit requires independent evidence for that exact
 route; a denied live request remains an issued request. No full no-contact result follows.
 
+## Closed required blockers and accepted unknowns
+
+The following set fixes admission policy **before construction** under k281's exact
+amendment. `R` means required: missing, failed, stale or unavailable evidence blocks its
+Q/P stage. `AU` means the named accepted unknown remainder under U1–U4/U6, never passed,
+harmless, inapplicable or permission for contact. This replaces the earlier universal
+per-C-route requirement; it preserves all original byte/type/association, selected
+actual-call, entry, identity, independent-acceptance and freeze duties. Construction
+materializes coordinates and originals; it cannot select which of these duties to keep.
+
+| Required Q blocker | Exact obligation and independent applicability basis |
+| --- | --- |
+| Q01 / B1–B2 / O09/O16–O20 | Entire raw T/A grammar, per-operation authorization and actual scratch held `openat`/`fstatat`/`fstat`/`readlinkat`/named inventory/fixed-file/read/closure controls, with protected/unlisted/out-and-back/link/type/name-versus-held failures. Canonical pre-lookup rule and descriptor ADR independently require them. |
+| Q02 / B3 / O15/O17/O22 | Actual emitter spawn, both pipe drains, NUL framing/empty/repeated/raw slots, descriptor transfer/duplication/reuse/short reads/EOF/normal reap/true return and complete source-to-root/alias comparisons. Source/envelope contract defines the expected bytes and terminal order independently. |
+| Q03 / B4 / O21/O24 | Independently authored byte/tree/type/format/duplicate/candidate/flag/table/LocProvenance/tail/helper/alias and offline derivative positives/intended negatives, plus source review of every declared image/mapping operation. Original and generated oracles retain their distinct duties; no memory-load event is claimed. |
+| Q04 / B5–B6 / O01/O03/O04/O07/O15 | Actual retained export parser→Task→script→CLI path, fixed query intent→scratch emitter mapping, exact channel framing/nonce/domain/known-peer/fd-3 and constructed service/transfer/proxy refusal pairs. Extra edge, argument, selector, known endpoint or unmapped request must reach its intended refusal. The closed entry/operation map requires these independently of any real service inventory. |
+| Q05 / B7 / O08–O14/O23/O24 | Actual scratch no-follow authority/register/export reads, create/short-write/flush/lock/exclusive-rename/identity/overlap/concurrency/death/cleanup/derivation controls, immutable issuance/full-current bridge and pre-intent-versus-consumed outcomes. Canonical lifecycle/persistence limits determine these; no actual permit initialization is a positive. |
+| Q06 / B7–B8 / O05/O06/O07/O21/O25 | Actual permitted UID, two named build sysctls, entropy/socketpair and CF-on-authored-bytes results, retained image/input/configuration correspondence and independent original expectations. Mapped values/source pins cannot replace actual-call facts. The required correspondence boundary below remains work before credit. |
+| Q07 / B8 / O01–O04/O08/O25 | Actual known launch/checker/verifier/interpreter/CLI image/incarnation/cwd/descriptor/channel and checker-before-Task startup controls, wrong image/edge/peer/death/missing drain/reap tests. These are the selected finite peers/reads, not all descendants, rights or maps. |
+| Q08 / B6–B8 / O02/O08 | Every release/acceptance pair in the packaging companion: original clean/findings/bootstrap/correction judgments, exact ready membership/exclusions, foreground confirmation grammar/nonce/terminal refusal and coexisting supervisor/checker/child rendezvous. Pure same-image+ELIGIBLE remains a required actual SCRATCH selector negative; it never supplies an actual LIVE/terminal positive. |
+| Q09 / B7–B8 / O08/O12/O23 | Every durable-disarm pair: fixed release-before-register lock order, exact next-slot/intent acknowledgements before work, kill at each publication boundary, lock release, failed/interrupted/successful-unaccepted Q, partial successor/gap/conflict and stale prior ELIGIBLE refusal. K292's enduring event contract requires them even for unchanged-input Q. |
+| Q10 / B1–B8 / O23/O25 | Complete declared/independently observed named input membership, full-byte companions/five tables/original bases/tasks/runtime/charter bindings, strict extraction/omission/cycle/substitution controls and final unchanged-candidate before/after freeze, original-result acceptance/audit and distinct close. Unknown impact requires all affected cells, not a reduced passing set. |
+
+Q01–Q10 also include every applicable original evidence-contract control and all packaging
+release/acceptance, first-attempt and extraction pairs; this grouping deletes no pair.
+The later generated-rewrite controls remain the generated subject's duty, not Q credit
+from original hashes. A separately claimed narrow observation becomes required for that
+claim only after independent acceptance of its explicit operation/object/interval/controls;
+no optional collector is needed to satisfy the set above. Extend a discovered actual
+operation/read through accepted correction and affected qualification, never inherited credit.
+
+| Required fresh P blocker | Actual fact before its consumer; Q is no substitute |
+| --- | --- |
+| P01 / O05–O07/O25 | Current raw UID/build/API/configuration, all required executing peer/image/input identities and actual endpoint/descriptor/terminal correspondence; compare with independently accepted originals. Required correspondence decision/work precedes this use. |
+| P02 / O01–O04/O08 | Highest complete accepted bootstrap/revision/control/current–issuance bridge, final Q acceptance/audit/distinct close, complete current eligible chain with no pending successor/active Q, exact retained request/argv/cwd/images and fresh coexisting supervisor/channel. |
+| P03 / O02/O07/O10 | Independently authored and human-accepted exact A3 entry under immutable rule, fresh direct APPOINT/request/role/nonce and terminal/peer rendezvous; then actual no-follow export ancestry/absence/exclusive reservation/overlap/device/write/flush facts before intent. Neither acceptance nor an armed-looking specimen appoints LIVE. |
+| P04 / O09/O11/O12 | Actual canonical fixed A2 ancestry/subject/register/lock/receipt identities, ownership/modes/single-link bytes, independent final validation and exact unspent/no-intent/no-attempt/no-uncertainty state. Obtain them only through selected qualified separate provisioning/validation and fresh approved rechecks. |
+| P05 / O13/O14/O23 | Recheck P01–P04 and frozen inputs immediately before intent and source release; successful post-intent authority/start acknowledgements are A outcomes required for release, not earlier LIVE calibration. Loss freezes/refuses without refund. |
+
+O15–O22 target success, installed roots/contents/closure and O13–O14/O23–O24 post-intent
+outcomes remain A. No prior successful target sample is a Q/P blocker. Actual P ceremony,
+storage and identity facts still need their own originals; policy/source/SCRATCH success
+does not establish them. Required unavailable correspondence is distinct from accepted
+complete-service/right/map/ancestry/TCC unknowns.
+
 ## Per-family independent controls
 
-Every required named B1–B8 operation/variant has its own positive and isolating cells;
-one open sentinel cannot stand for a different claimed noncancel, identity, async,
-mapping or Mach route. The following C-family bypass inventory is retained in full.
-The independent required inventory identifies which exact scratch/entry/native controls
-are mandatory and which rows only delimit accepted unobserved contact classes; it cannot
-delete a previously required control or claim an unavailable variant was tested.
+Every required selected operation/variant has its own positive and isolating cells;
+one open sentinel cannot stand for another actually claimed route. The following table
+classifies **each clause** of the former C bypass inventory. The original candidates
+remain in the whole documentary tables. R covers the finite selected seam; AU covers
+the remaining native route and its actual current correspondence. It does not require
+an impossible control to demonstrate that unknown remainder again.
 Author specimens before producer comparison. Only synthetic values, constructed scratch
 objects and newly constructed scratch endpoints may be calibration subjects. Never use
 an installed root, real index request, protected folder or actual system daemon as a
 positive. A fixture's simulated service name is not permission to connect to its real name.
 
-| Family | Direct, child, inherited and proxy counterexamples |
-| --- | --- |
-| C1 | Direct alternate/noncancel/guarded open outside wrappers; child exec or cwd/dirfd-relative lookup bypass; scratch server asked to perform the same lookup. |
-| C2 | Scratch open-by-identity/filehandle and bulk attribute/listing request; inherited directory enumeration; detached scratch proxy performing identity/attribute access. |
-| C3 | Preopened/duplicated/reused descriptor read; child and SCM_RIGHTS/fileport transfer; async submission/completion/cancellation; proxy reads while the sender exits. |
-| C4 | Scratch mapping established before release, inherited/rights-transferred/remapped backing and a plain memory load with no new syscall; child/shared-memory/proxy delivery. Coverage must establish provenance or prevention, not invent a read event. |
-| C5 | In-process source-service request bypassing exec/gate; child request; independent scratch protocol/proxy performs index-like work. This proves its synthetic route only; untested actual framework/service correspondence remains unavailable. |
-| C6 | Direct Mach and socket transport, transferred rights/fds, inherited endpoint and detached scratch recipient; wrong/reused endpoint and encrypted/opaque or truncated payload leave the exact operation association unavailable. |
-| C7 | Direct/child/proxy mutation and opaque command attempt on scratch objects; authored mount/firmlink inputs exercise policy only. No actual mount, registration or native topology change is a calibration. |
-| C8 | Immediate spawn/exec/exit, double-fork or reparenting, thread/PID reuse, fd/right reuse, supervisor/collector death, late proxy/async completion and missing reap. Unknown descendants cannot simply be omitted. |
+| Family | R: required named counterexamples / basis | AU: exact unobserved remainder / independent reason |
+| --- | --- | --- |
+| C1 | Q01/Q04/Q07 wrong direct component/flags/held dirfd/cwd or child/task edge; constructed server request rejected by the closed map | Alternate/noncancel/guarded/protected direct syscalls outside selected calls and opaque child/proxy lookup: B1 does not claim a syscall collector or universal prevention. |
+| C2 | Q01/Q03 no-follow held identity/type/direct inventory, known inherited-directory or synthetic identity/bulk/proxy request refused at the enabling point | Actual open-by-id/filehandle/bulk/alternate attribute and detached recipient access outside that interface: B2 establishes named identity/inventory facts only. |
+| C3 | Q02/Q04/Q07 known preopened/duplicated/reused fd, declared child/endpoint transfer, short read/drain/EOF and sender/peer death; declared async completion if present joins Q07 before use | Unenumerated inherited fds, SCM_RIGHTS/fileport routes not used by the retained chain, native async/proxy reads after sender exit: B3 grants no full lifetime/transfer discovery. A newly used transfer cannot stay AU. |
+| C4 | Q03 exact immutable-byte/tree expectations and reviewed declared map/backing/input identities; any explicitly claimed narrow backing/range observation has its own R associations | Pre-release/inherited/remapped/right-transferred maps, plain loads without a syscall, shared memory and child/proxy delivery beyond named reads: B4 selects no complete map/provenance/prevention mechanism. No fictional read event. |
+| C5 | Q04 in-process logical service request bypass, child edge and constructed index-like protocol/proxy refused unless exactly mapped to the emitter | Actual metadata/framework/getter/coordination/index service transport and delegated work: synthetic B5 protocols supply no current real-service correspondence. |
+| C6 | Q04/Q07 socketpair/fd-3 known transfers/endpoint inheritance, wrong/reused peer, extra/opaque/truncated frame and constructed proxy request refusals | Direct Mach/XPC/real sockets, unenumerated rights and detached recipients/encrypted protocols outside named channels: B6 has no complete capability/service inventory. |
+| C7 | Q05/Q06/Q09 declared direct/child writes/rename/flush, wrong opaque logical command/synthetic proxy request, authored mount/firmlink policy values and required native UID/build/random controls | Actual mount/firmlink/registration/index/device/IOKit/unknown multiplexed effects: prohibited or unobserved, never a native positive; B7 selects scratch effects and exact native calls only. |
+| C8 | Q02/Q07/Q08/Q09 known spawn/exec/immediate death, wrong incarnation/reused fd/peer, supervisor death/EOF/missing drain/reap, declared late completion, retained rendezvous/entry/disarm pairs | Double-fork/reparented unknown descendants, arbitrary threads/PID/right reuse, collector death or detached proxy/async completion outside named peers: B8 claims finite supervised lifetimes, no collector or exhaustive descendant/initial-state closure. |
 
-For **each required named observation/control**, independently perturb the applicable
-six dimensions: (1) not-ready
-or disabled release; (2) wrong process/object/descriptor/map/right/endpoint association;
-(3) induced event/operand/output loss or overflow; (4) wrong filter/provider/variant;
-(5) late attach or an uncovered startup/exec interval; (6) early collector/child/proxy
-termination, missing drain or reap. Required evidence must identify the intended cell as
-forbidden/prevented or unavailable. No events under a disabled/wrong filter is not a pass.
-Readiness includes the providers/endpoints/declared initial state the claim actually uses,
-not just a live PID. Full unobserved initial-right/map/proxy coverage remains accepted
-unknown; it cannot stand in for a required known fd/channel/image identity. Unknown
-applicability or an unavailable way to induce/observe a required named control stays a
-blocking missing cell. Original control traces and full inputs are separately owned/frozen;
-producer wrapper traces remain useful intent evidence with their limited provenance.
+### Fixed perturbation dimensions
+
+For each R coordinate apply the following closed applicability map. Each mutation
+retains otherwise valid inputs so it reaches its intended check. The source of
+applicability is the claim's information and owner, not the test list or its result.
+
+| Dimension | R cells and independently determined reason | AU remainder and reason |
+| --- | --- | --- |
+| D1 not-ready/disabled | Q04/Q07/Q08/Q09: absent channel/confirmation/ready peer/checker-before-Task, disarmed/stale eligibility or unacknowledged intent must refuse before release. Q01–Q03/Q05/Q06/Q10 also require complete earlier accepted expectations/inputs before their own consumer. | Readiness of unselected collector/providers/real services/maps is AU under U1–U4; no such apparatus is needed for these named seams. |
+| D2 association | Q01–Q10/P01–P05: wrong byte/tree/copy/object/dirfd/process/image/endpoint/entry/event predecessor/ordinal/role/nonce/receipt/input association must fail at its specific comparison. These are explicit contract inputs. | Unenumerated rights/maps/recipients have no complete association claim; their absence cannot be inferred from known-fd success. |
+| D3 loss/overflow | Q01–Q10: truncated original bytes/stream/frame/record/member/result, omitted raw occurrence/control, short native result and rejected length/ordinal increment/EOF/freeze mismatch must fail. Loss of one required input is material even without a collector. | Opaque collector/provider/event loss beyond named observations stays AU. An empty partial trace is no positive. |
+| D4 wrong filter/provider/variant | Q01/Q02/Q04–Q10: wrong declared adapter/query/argv/config/API name/format/schema/extractor/reader/image/channel/domain/operation variant or missing applicability cell fails. Q03's independently authored formats/types are checked per variant, never with another format's success. | Current DTrace/probe/provider/filter/ABI or unknown native variant correspondence is AU unless expressly claimed; no probe attach is selected. |
+| D5 late attach/uncovered startup | Q04/Q07/Q08: deliberately start the known Task/interpreter/CLI or release the known peer before checker/endpoint/appointment readiness; reject the ordering and missing interval. Q10 checks every named observation's required interval. Offline Q03 byte arithmetic and Q01 policy values have no native-startup claim; their recorded prerequisites still apply. | Complete constructors/loader/thread/proxy/initial-map startup coverage and collector late attach are AU under U3/U4. No collector interval is invented for a byte-value assertion. |
+| D6 early termination/drain/reap | Q02/Q04/Q05/Q07–Q10: kill the named writer/supervisor/checker/child at each applicable write/frame/intent/result boundary; incomplete EOF/drain/reap/true return/result or partial successor refuses. Q01/Q03/Q06 originals cannot pass when required return/extent/freeze evidence is lost. | Unselected collector/unknown detached recipient/async completion lifetimes are AU; only declared participants/completions are R. |
+
+An AU column never excuses failure of its R column. Actual required observations that
+cannot be induced/acquired stay precise missing Q/P work; unsupported methods cannot be
+labelled passed or retrospectively removed. A method change requires independent
+acceptance and affected qualification. Original traces/inputs/results are frozen and
+separately adjudicated; producer intent traces keep their limited provenance.
 
 ## Candidate assessment and exact unavailable identities
 
@@ -232,7 +284,7 @@ on its own. Do not schedule another U2 leaf to reproduce this unavailable conclu
 | U2 full mechanism | Full unprivileged C1–C8 prevention/observation is unestablished and explicitly accepted unknown; no complete no-contact proof. B1–B8 required evidence remains mandatory. | After whole-k282 review/integration, k269 assigns named scratch/native/entry/read controls and any claimed bounded observation, not impossible-mechanism repetition. A stronger arrangement first requires Antony's concrete decision. |
 | U3 launch and capability state | Complete hidden startup/thread/initial-right/map closure is accepted unknown. Known launcher/Task/interpreter/CLI/verifier/checker images, process/peer/channel/cwd and declared fd identities/actions are required Q/P facts. | K269 assigns exact retained-entry/startup/known-descriptor controls before their Q credit and fresh P channel/image checks before intent; no opaque-state completeness prerequisite. |
 | U4 mediated and memory effects | Complete service/proxy/async/inherited-map/backing provenance stays accepted unknown. Required named scratch endpoints, transfers, refusal controls and any claimed narrow mapping must have exact associations. | K269 assigns B3/B4/B5/B6 named cells and their limits before credit; no synthetic endpoint is credited as a real daemon or universal detached-proxy result. |
-| U5 independent controls | Every required named B/Q control, intended negative, positive, readiness/association/loss/filter/startup/termination check and original frozen result remains a blocker when missing/failed. Universal per-route calibration outside those claims is not selected. | K269 assigns independent authoring/adjudication and actual permitted scratch/native execution before unchanged-candidate measurement. Missing required evidence is live work, never accepted unknown. |
+| U5 independent controls | Q01–Q10/P01–P05, every original applicable control, packaging ceremony/entry/disarm pair and the fixed C/D applicability tables define required named positives/intended negatives and original frozen results before construction. Failed/missing/stale evidence blocks; universal per-route calibration outside them is not selected. | Independently author/adjudicate and perform only permitted scratch/native operations before unchanged-candidate credit. Required correspondence authority/work precedes its consumer; missing evidence stays live, never accepted unknown. |
 | U6 topology and final stability | Exact pre-lookup policy/raw/link/out-and-back controls and required final input/tool/image equality remain blockers. Hidden physical ancestry, current TCC and opaque contact remain accepted unknown. | K269 assigns the reviewed policy and final affected requalification/independent audit after last edits; named failures block k244 close/k245. No protected/topology probe or historical certificate. |
 
 K287 reconciles this whole boundary with every original obligation and schedules the
@@ -268,8 +320,8 @@ is retained. These are authored operation/value expectations, not current topolo
 
 The contract's [pre-lookup plan](application-reference-evidence.md#topology-and-the-inherited-component-rule)
 enumerates target classes T1–T7, search-only ancestor A1 and distinct authority/export
-A2/A3 entries. Each actual entry/operation must be independently reviewed/fixed before
-lookup. Ordinary direct and observed-link Data/Applications and Data/Library positives
+A2/A3 entries. Exact byte productions/finite historical-parent alternatives and each role's
+operations are independently reviewed/fixed before construction and lookup. Ordinary direct and observed-link Data/Applications and Data/Library positives
 need distinct entries, complete operation sequences and controlled identity/layout checks.
 Data/private and every Data/Users home refuse before their first lookup, as do /private,
 /Users and the named Desktop/Documents/Downloads/Containers/Group Containers/Mail/Messages/

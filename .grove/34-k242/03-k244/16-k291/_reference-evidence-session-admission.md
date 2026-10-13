@@ -150,3 +150,13 @@ decomposition procedure requires. Exhaustive input partition and seven-view whol
 reconciliation would make the coupled repair a long, high-context session if absorbed
 inline. Three slices retain one whole-producer review and avoid a role-per-leaf tree.
 The closing child owns review and parent promotion; the original charter above is preserved.
+
+K293 fixes closed Q/P/C/D requirements and exact T/A operations/bases without executing
+them. Its independent build/known-peer-image/terminal correspondence analysis exposes one
+precise missing authority choice, not an available route inferred from source. Insert
+reference-evidence-correspondence-authority-k295 before closing design k294; it obtains
+the exact human answer to local-OS-display and finite read-only peer/terminal metadata
+authority, or retains truthful non-acquiring missing work. K294 consumes that actual
+answer/any earned repair and includes the whole historical parent table/packet and new
+primary bases in F6/full reconciliation before the original mandatory whole review.
+No control/authority/qualification/target programme or partial handoff is added.

@@ -52,8 +52,10 @@ approved relocating only the additional pass-status clause, retaining permission
 adjacent holds/private/native duties. The selected canonical clauses and comparison bind
 these choices. K291 is a three-slice producer: foreground admission, exact bounded evidence
 surface, then exhaustive partition/whole reconciliation. The operator protocol below
-applies the actual human choice; blockers/target grammars/correspondence and the complete
-statement inventory still need the remaining coupled repair. No partial slice is a
+applies the actual human choice. K293 fixes the closed blocker/applicability set and exact
+target/ancestor/descendant grammars. Its correspondence boundary places one precise
+requirements choice before k294's complete statement/whole reconciliation; required
+actual correspondence remains unavailable. No partial slice is a
 construction handoff. K291 owns the complete repair
 and its mandatory whole review/integration before k269. No repeated unavailable mechanism survey or reporting-only close
 discharges required qualification.
@@ -1247,7 +1249,9 @@ cannot select that role. It validates the terminal root, highest accepted revisi
 independently adjudicated verifier controls and actual held artifacts. It launches the exact
 pinned admission verifier, not an image selected by supplied proofs. Compare interpreter/
 runtime/read inputs and require actual launched-process/image correspondence through the
-independent mechanism k276/k277 must qualify. A pathname digest before exec supplies no such
+[independent route or precise authority/work boundary](application-reference-packaging-runtime.md#independent-correspondence-and-precise-authority-boundary).
+Q06–Q08/P01–P03 keep unavailable build/peer/image/terminal facts blocking before their consumer;
+retired design children are historical sources, not execution owners. A pathname digest before exec supplies no such
 proof. Unavailable correspondence refuses; no target launch is a calibration.
 
 Select a new unnamed `socketpair(AF_UNIX, SOCK_STREAM, 0)` for each checker/verifier and
@@ -1447,6 +1451,12 @@ entry checks; allowed image loading
 cannot authorize that image's source/resource/proxy operations. No aggregate clean bit,
 pathname/PID-only filter, gate log, wrapper, mock or static call graph supplies independence.
 
+The companion's [closed Q01–Q10/P01–P05 blockers and C/D applicability](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
+fix the required selected seams before construction; each C bypass clause and all six
+dimensions distinguish required finite controls from the canonically accepted unknown
+remainder. Actual foreground/entry/disarm/storage/correspondence facts remain due; the
+same-image SCRATCH negative is no actual LIVE positive. No construction author may
+restore the former complete-mechanism gate or remove a failed named control.
 The companion's [B1–B8 claims](application-reference-contact-boundary.md#observation-or-containment-interface)
 bind independently authored byte/value/association expectations, source review, exact
 retained task/parser/domain controls, actual unprivileged scratch adapters and any
@@ -1595,22 +1605,140 @@ independent positive/refusal coordinates. Preserve raw component bytes without U
 normalization or lexical path cleanup. A class grammar names component boundaries,
 constraints and prohibited components; `/System/**`, `/Applications/**`, `/Library/**`,
 a filename suffix or a vendor name alone is insufficient. No entry is inferred from a
-target lookup/result or regenerated from producer successes. Review/freeze actual entries
-before use; the class inventory below specifies their design, not installed-path evidence.
+current-attempt target lookup/result or regenerated from producer successes. Frozen
+historical spellings below are explicitly limited authoring bases, not current observations.
+Review/freeze actual entries before use; these grammars are policy, not installed-path evidence.
+
+#### Byte productions and independent bases
+
+The separator is the single byte `2f`; leading `/` is required. Fixed words below
+are their exact case-sensitive UTF-8 bytes. A variable `c` is one nonempty raw
+component containing neither `00` nor `2f`, unequal to `.` or `..`, and not a protected
+word below; preserve non-UTF-8/combining/space/punctuation bytes unchanged. `app` is
+`c` with a nonempty stem and the exact suffix `.app`; `fw` likewise ends `.framework`.
+Neither suffix authorizes an operation by itself. Empty interior components, an empty
+app stem, unknown grammar and embedded NUL refuse before target lookup. A trailing `/`
+is retained as a directory demand. Raw `.`/`..` spellings are refused by these candidate
+productions unless a separately frozen exact operation entry names them; the held walk
+still implements their physical semantics when an admitted link supplies them.
+
+Protected target words at **any** component are Desktop, Documents, Downloads,
+Containers, Group Containers, Mail, Messages and Mobile Documents. `/private`, `/Users`,
+`/System/Volumes/Data/private` and `/System/Volumes/Data/Users` are rejected before any
+target operation, irrespective of a later `.app`. Independently known or unsettled
+consent risk overrides a grammar match. No case-folding or normalization expands permission;
+an observed expansion must itself pass these exact rules before its next operation.
+Unknown alternate spellings/hidden redirects stay the canonical risk, not proven absent.
+The globally accepted unknown current TCC/hidden ancestry is not itself a new per-path
+unsettled-risk finding or a completeness gate. The independent policy records each
+specific known/unsettled refusal predicate and basis before use; a missing policy entry
+still refuses. It cannot claim a historical row clears such a specific risk.
+
+Define the following finite alternatives; juxtaposition with `/` means separate
+components, `|` means exactly one alternative, and `[]` denotes an explicitly optional
+sequence. `H1/H2/H3` are the exact decoded parents in the
+[frozen parent alternatives](reference-target-parents.tsv), with their indicated T class.
+Each row is independently checked against **all** listed zero-based baseline ordinals of the
+complete historical [25G83 packet](../design/application-metadata-subject.json), SHA-256
+`dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a`.
+The complete packet/table bytes become basis inputs, not a pass-time extracted discovery.
+H provides finite exact structural alternatives, never historical current-presence,
+consent, purpose, identity or permission evidence. Risk refusal still overrides every row.
+
+`nested` is zero or more **complete** suffixes `/Contents/(Applications|Helpers|XPCServices)/app`
+or `/Contents/Frameworks/fw[/Versions/c]/(Helpers|Resources)/app`, beginning at an
+already grammar-matched app. Each sequence consumes at least three raw components and
+must terminate at an emitted app; there is no nested-directory enumeration. A framework
+version component is one `c`, not a path or a `Versions/Current` link exemption.
+For intermediate app/framework containers permit only search-only identity resolution,
+never their metadata/files unless they separately occur as source candidates.
+
+| Structural alternative | Exact component production |
+| --- | --- |
+| S: System application/service | `/System/Applications[/Utilities]/app`, `/System/Library/(CoreServices[/(Applications|RemoteManagement|TimeMachine)]|Services|Input Methods|Classroom|ColorSync/Calibrators|Image Capture/(Devices|Automatic Tasks))/app`, or `H1/app`, each followed by `nested` |
+| I: ordinary Applications | `/Applications[/(Utilities|c)[/c]]/app` or `H2/app`, followed by `nested`; variable containers are at most the explicitly shown two levels, checked as directories/search-only, not arbitrary recursive descendants |
+| L: ordinary Library | `/Library/app`, `/Library/Application Support/c[/c]/app`, `/Library/(Frameworks|PrivateFrameworks)/fw[/Versions/c][/(Helpers|Resources|Support)]/app`, `/Library/Image Capture/Devices/app`, or `H3/app`, each followed by `nested` |
+| K: cryptex candidate | `/System/Cryptexes/(App|OS)/(Applications[/Utilities]|System/Applications[/Utilities]|System/Library/CoreServices[/Applications])/app`, followed by `nested`; no alternative under `/private/preboot` or a volume UUID is admitted |
+
+The finite H alternatives cover the recorded deeper Library support/printer/framework
+and nested System/helper structures without a `/Library/**` or vendor wildcard.
+Current extra depth, another parent or another cryptex subtree is unlisted and retains
+raw refused evidence/missing work. Do not truncate its workload, silently add an entry
+from a successful lookup or call the whole current population covered. A required scope
+extension goes once to Antony before consumption; the accepted incomplete outcome still
+binds. An exact independently reviewed path alternative may be added only through that
+same pre-use authority/qualification comparison, never during the one attempt.
+
+| Independent basis | What it establishes; what it cannot establish |
+| --- | --- |
+| Canonical selected permission/k281 comparison | Three literal/resolved prefixes, risk override, Data/direct/link/ancestor exceptions and truthful incomplete disposition; no current path or consent fact. |
+| Whole descriptor ADR | Search-only held kernel semantics, physical `..`, link-budget and cause limits; its 25F71 search-only observations certify no 26A434 TCC/ancestry. |
+| Complete historical packet + exact parent table | Original saved parent bytes/ordinals and independently reproducible finite spelling alternatives only; reader flags/outputs supply no useful/helper purpose or current qualification. |
+| Apple's archived [Bundle Structures](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html) and [Accessing Contents](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/AccessingaBundlesContents/AccessingaBundlesContents.html) | Documentary Contents/resource/localization/framework organization, not an exhaustive installed-path grammar, current parser or link permission. The Support Files/flat/six-file rules are the canonical contract's choices, not fabricated Apple quotations. Retain exact retrieved whole objects/locators before qualification. |
+| Separately authored raw positive/refusal specimens | Expected grammar membership, next operation, exact file/layout/locale/association bytes and refusal boundary, calculated before producer execution; no installed or native presence claim. |
+
+These policy alternatives choose a conservative finite interface rather than arbitrary
+prefix recursion or an exact future installed census learned during the pass. The cost
+is explicit incomplete evidence for unlisted new structures. Historical parents and public
+bundle organization cannot resolve unsettled risk; no grammar match overrides that refusal.
 
 | Target class | Required separate entry |
 | --- | --- |
-| T1 ordinary System | Exact reviewed candidate/component classes under /System, including any admitted System/cryptex link operation, excluding the Data cases below; no sealed-volume claim |
-| T2 ordinary Applications | Exact reviewed candidate/component classes under /Applications and any separately admitted observed link sequence |
-| T3 ordinary Library | Exact reviewed candidate/component classes under /Library and any separately admitted observed link sequence; protected/unsettled components remain refused |
-| T4 direct Data Applications | Own literal /System/Volumes/Data/Applications candidate/component-class and operation entry; T1/T2 cannot stand in for it |
-| T5 direct Data Library | Own literal /System/Volumes/Data/Library candidate/component-class and operation entry; T1/T3 cannot stand in for it |
-| T6 link to Data Applications | Own admitted link parent/name/readlink operation plus expansion to the T4 sequence; retain source/link/expanded/walk spellings and checked identity |
-| T7 link to Data Library | Own admitted link parent/name/readlink operation plus expansion to the T5 sequence; retain the same separate records |
+| T1 ordinary System | S or K, excluding Data. Any link at an S/K component needs its separate parent/component/readlink/expansion rule below; no sealed-volume claim. |
+| T2 ordinary Applications | I; links require their separately frozen operation/expansion entry, never implied by a direct-directory positive. |
+| T3 ordinary Library | L; risk override remains before lookup, including H alternatives. |
+| T4 direct Data Applications | Substitute the exact prefix `/System/Volumes/Data/Applications` for `/Applications` in I/H2, keeping every remaining component/operation; distinct role/expectation. |
+| T5 direct Data Library | Substitute `/System/Volumes/Data/Library` for `/Library` in L/H3, keeping every remaining component/operation; distinct role/expectation. |
+| T6 link to Data Applications | Separately frozen T2 (or T4) parent/component `readlinkat` entry; expansion must exactly match T4 plus its A1 operations. Retain raw/link/expanded/walk spellings and checked identity; no prefix rewriting as evidence. |
+| T7 link to Data Library | Separately frozen T3 (or T5) parent/component `readlinkat` entry; expansion must exactly match T5 plus its A1 operations; same separate records. |
+
+A target link entry may permit `readlinkat` at a component position in those productions
+after a no-follow link-type result, but its **accepted expansions** are only the finite
+T1–T5 productions and in-prefix physical dot rules above. It records exact parent role,
+component position and allowed operation; it cannot allow all links below a prefix.
+For K, an observed `/System/Cryptexes/App` or `OS` link may reset only to a matching
+in-prefix K/S path, never an unlisted UUID path or `/private/preboot`. Such an actual
+reference link may therefore refuse; no native cryptex positive is invented.
+Process all link text in physical order without lexical cancellation: a leading relative
+`..` uses only an already admitted in-prefix ancestor, and leaving its selected prefix
+refuses **before** any outside lookup even if later components return. Absolute reset uses
+only A1's held root and a permitted production. At most 32 expansions; the next refuses.
+The raw full expansion/risk check precedes its first step, so a protected component later
+in the text can refuse the whole expansion before any expansion lookup.
+
+#### Exact descendant operations
+
+After each emitted checked app root, probe the ordered layout directory sequences
+`Contents`, `Support Files`, `Resources`, then the root. Probe type with
+`fstatat(..., AT_SYMLINK_NOFOLLOW)`; a present directory opens with
+`O_SEARCH|O_DIRECTORY|O_NOFOLLOW|O_CLOEXEC`, followed by `fstat`/named-versus-held equality.
+Only established missing layout directories advance. The chosen information/resource
+pairs are exactly `(Contents, Contents/Resources)`, `(Support Files, Support Files/Resources)`,
+`(Resources, Resources)` and `(root, root)`. Absent resource base is recorded, not flat fallback.
+No ancestor link is followed as a descendant-layout exception.
+
+Information base permits only `Info-macos.plist` and `Info.plist`; resource base only
+`InfoPlist-macos.strings`, `InfoPlist.strings`, `InfoPlist-macos.loctable`, `InfoPlist.loctable`.
+At the checked resource base only, obtain a held no-follow `O_RDONLY|O_DIRECTORY|O_CLOEXEC`
+handle for the direct inventory and independently record every raw `readdir` entry/ordinal
+and terminal/error result. `locale` is one nonempty `c` with nonempty stem and exact suffix
+`.lproj`, including `Base.lproj`; no language/ASCII/normalization subset is selected.
+Dot/non-locale/protected/unknown-risk entries remain raw without extra lookup. For locale
+candidates use no-follow type/search-only hold/equality, then all **six** fixed basenames;
+no recursive inventory or indirect locale. A link/non-directory refuses that occurrence.
+
+Every permitted file probe is no-follow `fstatat`. A checked regular file alone may use
+`openat(..., O_RDONLY|O_NOFOLLOW|O_CLOEXEC)`, `fstat`, complete `read` through EOF and held/
+named type/identity/size/stamp rechecks. Nonregular/link/unknown/refused/denied states
+open no bytes and do not become absence. All operations are relative to the held role
+base; no reconstructed whole path, executable/other basename or foreign bundle lookup.
+Coincident bases keep distinct roles. Closure repeats the exact declared inventories,
+file reads and identity comparisons, retaining partial extents/error/unperformed work.
+`fpathconf(_PC_NAME_MAX)` remains a separately reviewed cause operation, no early name cap.
 
 | Ancestor role | Exact reviewed sequence and operation limit |
 | --- | --- |
-| A1 target common ancestors | Bootstrap one held `/` search-only directory; from it enter System, Applications or Library. Data entries additionally name /System → Volumes → Data → Applications or Library. Only needed prefixes in the selected entry are visited. Each step permits `fstatat(..., AT_SYMLINK_NOFOLLOW)`, `openat(..., O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` on a checked directory, `fstat` of held handles and named/held equality; `readlinkat` only for a separately admitted link at its held parent. No read-mode ancestor handle, listing, arbitrary sibling lookup, contents or real service request. |
+| A1 target common ancestors | Bootstrap only `open("/", O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` plus held `fstat`; from it enter System, Applications or Library. Data entries additionally name /System → Volumes → Data → Applications or Library. Only needed prefixes in the selected entry are visited. Each step permits `fstatat(..., AT_SYMLINK_NOFOLLOW)`, `openat(..., O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` on a checked directory, `fstat` of held handles and named/held equality; `readlinkat` only for a separately admitted link at its held parent. No read-mode ancestor handle, listing, arbitrary sibling lookup, contents or real service request. |
 | A2 fixed authority | Separate exact `/` → Users → antony → Library → Application Support → KoineReferenceEvidence → permissions → koine.reference-evidence.macos-27.0.1-26A434.1 entries, using canonical bytes, never HOME/cwd. Search-only checked no-follow ancestor probes/handles precede the separately reviewed subject/receipt/intent/lock/create/read/write/rename/synchronization plan. Register/bootstrap siblings need their own exact entries under the approval contract. No target/user-home evidence access is granted. |
 | A3 explicit fresh export | Immutable issuance/current rule admits only a separately authored/human-accepted exact P invocation entry before its first lookup. Entry binds raw destination, each ancestor/component, independent basis/refusal expectations and no-follow search-only probe/handle/identity operations; only the final absent destination may use qualified exclusive reservation/create/write/flush mechanics. No default/arbitrary parent, authority substitution/scan/target access. Protected/unsettled/unlisted/known linked ancestry refuses before lookup; unexpected link before follow. New compliant entry needs fresh acceptance/appointment, not changed issuance authority or silent retry. |
 
@@ -1626,6 +1754,56 @@ that observation and refuse before open/follow or any expansion operation. No pr
 knowledge of an unobserved link is claimed. A held `fpathconf(..., _PC_NAME_MAX)` is allowed
 only as its own reviewed search-only operation when the ADR's name-limit cause branch
 needs it; an unknown result cannot certify absence or widen the admitted sequence.
+
+#### Separate authority and invocation entries
+
+A2 has two exact branches after the held `/Users/antony/Library/Application Support/KoineReferenceEvidence`:
+`permissions/koine.reference-evidence.macos-27.0.1-26A434.1` and
+`approvals/koine.reference-evidence.macos-27.0.1-26A434.1`. No other home descendant
+inherits that exception. Each ancestor component has only the A1 no-follow type/search-only
+open/held equality operations; no `readlinkat` or ancestor listing is admitted. Already
+known linked/protected/unsettled ancestry refuses before its next operation; an unexpected
+link observed by an admitted no-follow type check refuses before follow. Actual validation
+must obtain current UID/ownership/mode/device/inode/available stamps and acknowledgements;
+the historical search-only result supplies none of them.
+
+At the permission subject, exact `unspent.receipt`, `spent.receipt`, `consume.intent` and
+`attempt` and fixed `staged.receipt` roles allow only the separately qualified lifecycle's no-follow type/open/read,
+single-link/mode/equality, `flock`, exclusive staged publication/intent/create/write,
+`renameatx_np(..., RENAME_EXCL)` and file/parent synchronization operations. The initializer
+alone creates `staged.receipt`; after independent staged validation it publishes that same
+held inode as `unspent.receipt` without replacement, then obtains final validation. No
+other staged name, recovery copy or package-created receipt is admitted. Complete output
+record membership must be frozen in the independent schema/inventory before Q; names
+grant no discretionary filesystem scope.
+Original object child names are exact content-digest encodings under the held attempt,
+never raw target components interpreted as output paths. Package entry cannot initialize.
+
+At the approval subject, the fixed `bootstrap.accepted`, `release.lock`, `release-events`
+and numbered revision records permit only the approval contract's held read/compare/lock
+and accepted publisher's exclusive write/synchronization operations. Ordinal components
+use the same checked unsigned-64, no-leading-zero ASCII decimal grammar as release events;
+only the deterministic immediate successor is addressed, never listing/scan/fallback.
+Other original approval record kinds require their independently accepted exact locator,
+kind/phase/member bytes and permitted publisher/consumer operation before access. No
+unbound sibling is admitted. Later outputs never mutate the finalized revision payload
+or earlier Q basis; they retain the existing separate acyclic phase-record contract.
+At each `release-events/n`, exactly `disarm.intent` **or** `eligible.intent`, `event.result`
+and a conditional `failure.disposition` have their k292 kind/immutability/acknowledgement
+rules. Maintenance can reserve/write the disarm branch only; it cannot create eligible
+authority or clear any permit/intent. Actual object support/identity is separate P evidence.
+This operation policy plus Q09's fixed event pairs is no persistent-storage qualification.
+
+A3 remains an exact finite component/operation list for one raw request and nonce, accepted
+under the unchanged rule. It has no variable parent grammar and no permission derived from
+A2's home exception. Every component is independently authored before the first lookup;
+held no-follow search-only ancestor operations precede the final absence/reservation facts.
+The reserved final destination alone permits `mkdirat` and the qualified exclusive
+reservation/object write/flush plan, with named/held/device/overlap checks. Existing output,
+authority/register overlap, target inspection masquerading as output, linked/protected/unsettled/unlisted
+ancestry or lost acknowledgement refuses before intent. Known risk cannot be cleared by
+trial lookup. A later compliant explicit entry is a new P object/acceptance/appointment,
+not a profile/receipt edit or within-call retry. Unknown prior dispatch/intent never permits it.
 
 The policy owns the byte decision; the held adapter owns only an already admitted next
 operation. First classify the complete raw slot: reject relative/uncheckable/NUL/outside,

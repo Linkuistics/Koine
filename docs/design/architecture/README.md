@@ -14,21 +14,19 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion is the foreground admission design slice; the complete k291
-conjunction and mandatory whole review remain before construction.
+Current discussion is the closed evidence/path design slice; the correspondence-authority
+decision, complete input partition/reconciliation and mandatory whole review remain.
 
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Separates immutable A3 permission from exact accepted P entries and adds durable maintenance intent before changed work/Q.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Adds short foreground human acceptance, explicit compatible duties/exclusions and fresh appointment with coexisting supervisor/child.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Shows the foreground invocation and exact P entry; current-build/process-image repair remains.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Requires fresh human appointment before Task and rejects pure same-image/ELIGIBLE authority.
-- [Acceptance contract](../../verification/application-reference-evidence.md#chartered-independent-acceptance) — Defines direct ready-object trust acts before first consumption, including clean/findings/correction/bootstrap paths.
-- [Compatibility and sequential schedule](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule) — Batches compatible human judgments with producer/repairer exclusions and a distinct instrument closing owner/step.
-- [Durable disarm events](../../verification/application-reference-evidence.md#durable-disarm-and-release-events) — Gives approved maintenance writers disarm-only authority; partial/crashed/successful Q cannot restore old eligibility.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Fixes Q/P blockers, C bypass/D1–D6 dispositions and exact T/A grammar/basis limits before construction.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Includes actual foreground/entry/disarm facts and one precise missing build/peer-image/terminal authority checkpoint.
+- [Closed required evidence](../../verification/application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns) — Separates failed required Q/P controls from the canonically accepted unknown remainder.
+- [Byte productions and independent bases](../../verification/application-reference-evidence.md#byte-productions-and-independent-bases) — Defines ordinary/nested/helper/cryptex/direct/link Data productions with exact historical parent alternatives and current-risk limits.
+- [Independent correspondence boundary](../../verification/application-reference-packaging-runtime.md#independent-correspondence-and-precise-authority-boundary) — Names permitted native/storage routes and exact additional human choice/work before required current facts can be consumed.
 
-Unchanged contact/evidence/population views remain context. Exact blocker/grammar/current
-correspondence and exhaustive input partition/whole-surface reconciliation still need
-the remaining k291 slices. No partial construction handoff, qualified control or target
-evidence follows. The historical all-E statement inventory remains defective.
+Unchanged foreground acceptance/admission/component/evidence/population views remain
+context. K295's actual correspondence decision precedes k294's exhaustive partition/
+whole reconciliation and mandatory whole-k291 review. No partial construction handoff,
+qualified control or target evidence follows. The historical all-E inventory remains defective.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and

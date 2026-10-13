@@ -186,13 +186,13 @@ planned operations cannot establish an unbuilt executable's complete reach.
 | Coordinate / operation | Q route and bounded E/M credit | P fact or A outcome; exact refusal/failure |
 | --- | --- | --- |
 | O01 checker export-request parser/dispatch | E same retained export-only entry under independently bound SCRATCH launch; known-answer/quoting/extra-argument/omitted-entry controls. No shared-routine shortcut. | P exact request/export bytes, approved entry/image and fresh independent launch binding; absent/incorrect binding refuses before preflight. |
-| O02 launcher/checker supervision | E real unprivileged SCRATCH spawn/identity/death/refusal controls on retained launcher/checker, including actual selector/task-edge/armed-state counterexamples above; independent commissioning/adjudication is Q, never candidate output. | P actual independently appointed release supervisor/parent incarnation, selected role and current release/close state. Missing/partial/stale release, pure origin or active requalification refuses. Only that supervisor can originate one k245 LIVE channel; a receipt/proof never supplies it. |
+| O02 launcher/checker supervision | E real unprivileged SCRATCH spawn/identity/death/refusal controls on retained launcher/checker, including actual confirmation/selector/task-edge/armed-state/rendezvous pairs; independent commissioning/adjudication is Q, never candidate output. Required actual peer/image/terminal routes follow the precise authority boundary below. | P fresh direct human appointment with actual foreground/terminal and coexisting supervisor/checker/child/parent incarnations, selected role and current release/close state. Missing/partial/stale release, pure same-image origin or active Q refuses. Only that supervisor originates one LIVE channel; a receipt/proof never does. |
 | O03 Task configuration/recipe dispatch | E full retained absolute runner/Taskfile/argv/cwd; independently authored wrong-config/extra-edge controls and actual declared read checks. | P equality of accepted full configuration/entry closure and actual invocation; extra/unclassified declared input or changed required identity refuses. |
 | O04 script/interpreter/CLI/channel transfer | E retained script/interpreter/parser through Task, exact quoted destination and actual descriptor transfer; dropped/replaced/miswired-edge controls. | P exact images, parsed bytes and exclusive intended endpoints along this invocation. Channel loss, duplicate/unknown flags or different destination refuses. |
 | O05 `getuid` and `geteuid` | E actual unprivileged calls in the pure native-operation programme; compare raw results with independently accepted launch UID. M only injected wrong-result/privilege cases. No `getpwuid`, HOME or login inference. | P actual UID/effective UID equal independently validated authority/launch identities. Mismatched/unknown identity refuses; scratch UID is never a receipt identity. |
 | O06 build/version API | E actual `sysctlbyname` size/value calls for only `kern.osproductversion` and `kern.osversion`, in the pure native-operation programme; preserve size/result/NUL/raw bytes and independently establish API/compatibility correspondence. M errors/change/wrong-build controls. | P fresh raw values exactly 27.0.1/26A434, same qualified API/configuration and current correspondence; unknown/mismatch refuses. No `sw_vers`, plist, subprocess or fallback. |
 | O07 random challenge and unnamed channel | E actual `SecRandomCopyBytes` and `socketpair`, explicit descriptor actions, framing/sequence/nonce/EOF/reap and supervisor-lifetime controls on scratch process peers. | P new successful nonce/channel, actual parent/child/image/endpoint ownership and all request/revision/domain bindings. Missing entropy, leaked/replayed channel or unavailable required peer identity refuses. |
-| O08 accepted register/bootstrap/revision/control/bridge reads | E actual held scratch reads/locks, strict schema/set/value checks and independently adjudicated substitution/correction controls. Actual commissioning/registration is separately owned Q; scratch cannot commission it. | P actual accepted highest revision/control/issuance-current profile bridge and frozen original acceptance objects through commissioned read route. Pending/old/copied/self-approved or changed binding refuses. |
+| O08 accepted register/bootstrap/revision/control/bridge reads | E actual held scratch reads/locks, strict schema/set/value checks and independently adjudicated substitution/correction/foreground-acceptance controls, plus Q09's exact disarm-slot/intent/crash/partial/result/stale-release pairs. Actual commissioning/registration is separately owned Q; scratch cannot commission it. | P actual highest revision/control/full issuance-current bridge and original human-accepted objects; exact current fixed release-event chain/next slot, known writer/lock/storage identities and acknowledgements. Pending/old/copied/self-approved/changed or stale eligible basis refuses; policy supplies no actual storage/terminal fact. |
 | O09 fixed authority literal/components | E exact canonical location/permission value logic; M separately mapped scratch ancestor walk, `openat(O_SEARCH)`, `fstatat`, `readlinkat`, physical dot/link limits and protected/unlisted refusals. | P real fixed subject/ancestor named-versus-held identity, type/ownership/mode and reviewed operation/ancestry entries; obtain original facts in separately authorized provisioning/validation, then recheck. Unknown/replaced/protected/unlisted ancestry refuses. No scan or alternate subject. |
 | O10 fresh export ancestry/overlap/reservation | E actual scratch held no-follow operations, overlap/quoting/race checks, `mkdirat`, exclusive reservation file, writes and flushes; M isolated protected/overlap errors. | P only the requested fresh export's separately reviewed ancestor/operation entries, actual held parent/device, absent destination, exclusive reservation and successful write/flush acknowledgements. Failure precedes intent; retain prefix and require another explicit fresh destination, with unchanged unspent authority. |
 | O11 receipt/name/intent/attempt discovery and validation | E actual scratch probes/open/stat/read/lock, immutable bytes, hard-link/type/mode checks, both/neither names, intent/prefix and name-versus-held race controls. | P actual unchanged issuance receipt and independent final validation/correction; valid single unspent name, no prior intent/attempt/uncertainty and actual held/name equality. Missing/replaced/consumed/partial facts refuse without initialization or refund. |
@@ -249,6 +249,102 @@ authority if miswired. SCRATCH actual-call tests plus separate qualified provisi
 and fresh P checks answer the required facts without that role. K285's separate independent
 release and chartered acceptance order governs the repaired k282 conjunction; no operation-credit result,
 receipt publication or final validation may arm a qualification invocation.
+
+### Independent correspondence and precise authority boundary
+
+The [closed Q/P set](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
+fixes required facts before construction. This table specifies the actual routes already
+selected and the precise missing authority/evidence for facts they cannot establish.
+An independently authored programme and independently accepted originals are required;
+producer output, a task/run/commit, source pin, human policy choice or filename hash is
+not a current observation. Permitted mechanics must qualify before fresh P use.
+
+| Fact / coordinate | Already permitted operation, origin and exact retained evidence | Limit / remaining work before consumer |
+| --- | --- | --- |
+| UID / O05 | Independent pure native programme calls `getuid`/`geteuid`; raw returns/OS/image/configuration are compared with separately validated launch/authority UID. Wrong/injected result is M; actual same-UID call is E. Fresh P repeats actual calls. | No HOME/login/name inference; authority UID/ancestry comes from one qualified separate initialization/validation, not the scratch result. Unknown equality blocks P01/P04. |
+| Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls remain R. |
+| Installed 27.0.1/26A434 correspondence / O06 | Canonical expected bytes are an independent **requirement**, not evidence the current host runs it. Matching candidate and independent observer sysctls corroborates a shared API, not an independently acquired installed-build label. | **Required unavailable** before Q06 credit/P01. No currently selected independent installed-OS display/artifact read supplies that label. One explicit human choice must authorize the exact independent route below, or this fact remains missing/non-acquiring. No `sw_vers`, SystemVersion plist, subprocess or alternative sysctl fallback. |
+| Spawn/request/channel mechanics / O02–O04/O07 | Independently retained launcher exercises unprivileged `posix_spawn`/explicit fd actions, `socketpair`, `SecRandomCopyBytes`, framed nonce/request/domain/EOF and actual `waitpid` terminal returns on constructed peers. Original launched PID/request/known fd actions, raw channel frames and start/death/true-return intervals have separate provenance from child claims. | Spawn PID/parent PID, endpoint possession, child self-report or pre-exec held-file hash alone establishes no executing image/incarnation. Actual independent peer/image correspondence remains required unavailable before Q07/P01/P02; no target child or LIVE positive calibrates it. |
+| Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities remain unavailable where not independently obtainable. Complete unknown maps stay AU, but a named required image cannot. |
+| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance needs a specific qualified read-only route; the answer text is no terminal authentication. Required actual terminal/process/image facts remain unavailable until that work precedes P03. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |
+| A2/A3 storage and disarm / O08–O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs remain R. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |
+
+**One concrete decision precedes correspondence consumers.** The requirements checkpoint
+`reference-evidence-correspondence-authority-k295` runs before the closing design consumer.
+It asks Antony to select or refuse one narrowly described read-only arrangement:
+
+1. Antony independently opens the local OS About display and exposes its product version
+   and build identifier for an original human observation bound to this host/session/time.
+   Preserve the visible values and his own provenance/acceptance; compare with the two
+   already permitted fresh sysctl buffers and qualified compatibility configuration.
+   This deliberately adds a human UI observation; the current pass permission's no-launch
+   rule does **not** authorize it by implication. No scripted UI, file/plist/subprocess,
+   app inventory, network or installation activity is part of the recommendation.
+2. Independently authored unprivileged observer obtains kernel metadata **only for the
+   finite same-UID commissioned foreground supervisor/checker and their declared retained
+   Task/interpreter/verifier/CLI/control children**: `proc_pidinfo(PROC_PIDTBSDINFO)` for
+   pid/uid/parent/start seconds+microseconds; `proc_pidpath` for reported exec pathname;
+   read-only `csops` `CS_OPS_STATUS`, `CS_OPS_CDHASH`, `CS_OPS_PIDOFFSET` for main-image
+   status/code-directory hash/active slice; `proc_pidinfo(PROC_PIDREGIONPATHINFO)` at each
+   explicitly declared loader image address for region/backing metadata. Compare original
+   returned lengths/bytes/errors, actual SDK/API/image identities, independently calculated
+   retained Mach-O slice/signature/UUID and held backing identity. Query no unrelated PID,
+   daemon, protected app, task memory bytes or all-system process/mapping inventory.
+3. For that direct ceremony's already inherited operator fd only, `fstat`, `isatty`,
+   `tcgetpgrp` and `getpgrp` acquire terminal type/identity and foreground-group facts,
+   compared with the independently observed declared process/session/channel. No `/dev`
+   scan, terminal injection, extra tty open, saved answer or automated confirmation.
+   These calls supply bounded direct-context evidence, not hostile-user authentication.
+
+The fixed `/usr/bin/mdfind` child is different: its actual spawned image/exit/source
+results first exist **inside A** after authorized consumption/source release. If the
+proposed read-only route is authorized for that declared source child too, use its already
+qualified mechanics there and retain actual results/limits with that phase. Never spawn
+mdfind early to obtain a P image sample. A required unknown source-child correspondence
+prevents complete A evidence; it is neither earlier target-success qualification nor
+permission to repair wiring during the pass. Every existing P retained-source artifact/
+argv/input check still precedes intent. This distinction also applies to an actual first
+target file/parser outcome versus its earlier controlled mechanic.
+
+The primary [proc metadata declarations](https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/sys/proc_info.h),
+[kernel implementation/access checks](https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/proc_info.c)
+and [read-only code-signing operation declarations](https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/sys/codesign.h)
+are candidate documentary bases only. **Inference:** their published metadata could
+corroborate the declared peer/main-image/backing association, subject to current SDK/API
+availability, MAC/permission refusal, missing signatures/cache metadata, short buffers,
+exec races and image/address reuse. No current availability or complete loaded-image
+correspondence is asserted. A code-directory hash is not a whole-file digest or every
+loaded-library identity; region metadata is not immutable memory. The independent route
+must establish each required fact or retain its exact missing coordinate. A controlled
+exec substitution, wrong start/UID/PID/address/slice/backing, short/error/replayed result,
+unknown cache object, early death and channel loss must fail at the intended comparison.
+No root, task-for-pid/debugger, memory read, signing/entitlement/helper/SIP change or new
+collector is an authorized fallback. Freeze/retain complete primary basis objects before
+implementation qualification, independently of the producer.
+
+The newly named whole documentary objects have the following exact SHA-256 pins.
+The URLs above identify XNU's immutable revision; the archived bundle URLs are mutable
+retrieval locations whose complete retrieved bytes must match these pins or undergo
+independent correction/acceptance. They are no current SDK/kernel/runtime evidence.
+
+| Whole basis object | SHA-256 |
+| --- | --- |
+| bsd/kern/proc_info.c at ac9718fb1af618d5ce8678d0dc6e8a58f252216f | dc99b9a8105fc1376ba0b7d14de1aa6e065c7b13899ac9ede2fb1dccab649178 |
+| bsd/sys/proc_info.h at that same revision | a4eb26cdfd3721b111f9979455d80a854625b0ef96ba4de1a4e7705f462e0f84 |
+| bsd/sys/codesign.h at that same revision | 2f416bff50c43b88e5d964316c0eee050f095d582c998b4c8c7c3d6278c51cd3 |
+| Whole archived Bundle Structures HTML at the topology contract's exact URL | 2d7a34a6b1cb40842fa74ba68f696d5e9c990c72d779516f91014ed448f4cbc6 |
+| Whole archived Accessing Contents HTML at that exact URL | 8cb1d5892bd82a1b0cb9e68ebff3ff5f58a4fb851e8b64aa82836d0d0d89d298 |
+
+The checkpoint chooses **authority**, not feasibility or success. On acceptance the
+closing design incorporates its exact answer and names actual independently owned
+construction/qualification work before Q06/Q07/Q08 and fresh P01–P03. It earns any
+necessary design/review repair before consumption. On refusal or unavailable required
+results retain one exact failed/unavailable boundary and the required missing work;
+do not weaken image/build/terminal duties, prune useful copies or start another U2 survey.
+The preferred trade-off is bounded human corroboration plus finite read-only peer
+metadata over privileged inspection or trusting producer/self-reported images. It costs
+an explicit authority decision and may still refuse. Nothing here commissions those
+new reads or runs them; all actual Q/P originals and independent acceptance remain due.
 
 ### First-attempt outcomes and required counterexamples
 

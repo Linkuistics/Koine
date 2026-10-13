@@ -162,3 +162,23 @@ actual task/report reads bind full bytes. Successor records stay acyclic and rep
 unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pass unused,
 k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
 retirement supplies actual authority, qualification or a completed finite subject.
+
+
+## Closed evidence/path prerequisite
+
+The closed Q01–Q10/P01–P05/C1–C8/D1–D6 requirements and exact T1–T7/A1–A3 grammars
+in the full evidence/contact/packaging contracts bind before construction. Keep whole
+reference-target-parents.tsv and its complete historical application-metadata-subject.json
+basis; historical spellings certify no current presence, purpose, ancestry or TCC.
+Foreground confirmation/rendezvous, exact accepted P export entry and every fixed durable
+disarm pair retain actual identity/storage obligations. Required failed/missing Q/P
+evidence blocks; only the precisely classified contact remainder is accepted unknown.
+
+Correspondence authority checkpoint reference-evidence-correspondence-authority-k295
+precedes closing design k294. Consume the actual answer/any earned design repair and
+whole-k291 review/every integration before replanning; the proposed local OS display and
+finite read-only peer/terminal metadata route is unselected and unqualified. No task/
+image/receipt/proof/SCRATCH same-image negative establishes current build/process/image/
+terminal correspondence or authorizes LIVE calibration. Missing required facts remain
+precise live work before their consumer. R7–R10, raw refused slots/incomplete copy work,
+original completion duties, useful breadth, unused pass and all holds remain.

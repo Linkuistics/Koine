@@ -12,6 +12,16 @@ five quoted tables/whole bases, actual task/runtime/charter-read contracts, hist
 defective TSV/report, seven D2/SVG/manifest and all summaries/consumer charters.
 Original k273/k244/k242/k282 and R7–R10 remain under only exact k281/k290 amendments.
 
+K293 supplies the closed Q01–Q10/P01–P05/C/D set, exact T/A grammar and whole historical
+reference-target-parents.tsv/application-metadata-subject.json basis. Include their whole
+bytes and every new primary correspondence/bundle/terminal basis in the complete statement/
+basis partition; no section exception for these objects. K295 precedes this leaf with the
+exact independent current-build/known-peer-image/terminal authority choice. Consume its
+actual answer and compare any explicit amendment before whole review. Source candidates,
+human policy and same-image SCRATCH negatives establish none of those current facts. If
+the answer earns a substantive repair, keep that precise live design before this closing
+consumer; missing/refused actual Q/P work remains before construction/qualification.
+
 ## Done when
 Enumerate every individual enduring/historical/changing statement and subordinate clause;
 record H individually; refresh complete TSV/report with exact ranges/digests. Replace

@@ -56,10 +56,10 @@ qualifies an instrument or accepts any evidence.
 | Finding | Verified remaining work and owner |
 | --- | --- |
 | F1 session lifetime/appointment; F7 proportionate independence | K290 records Antony's agreement to human-owned independent acceptance and one foreground supervisor/acquisition ceremony. Compatible acceptance/audit/release work may be batched, with producer/repairer exclusions and a distinct k244 closing owner/step. K291 must state the exact compatibility/exclusion relation, earlier acceptance order and actual human-origin appointment/channel schedule; running an image is no authority. |
-| F2 bounded blocker set | K291 must fix each C bypass/dimension's required-versus-accepted-unknown disposition under k281, with the closed B/Q/P blocker set before construction. No revived full U2 gate or waived named control. |
+| F2 bounded blocker set | K293 fixes Q01–Q10/P01–P05 and each C bypass/D1–D6 disposition under k281 before construction, including foreground/entry/disarm pairs. Actual required originals/controls remain absent; no full U2 gate or waived named control. K294 reconciles the whole conjunction. |
 | F3 fresh export/profile binding; F8 durable invalidation | K291 must bind exact per-invocation A3 entries separately from unchanged issuance authority and persist authorized invalidation before mutable work, with crashed/partial-successor refusal and no old-ELIGIBLE fallback. R7/R10 and one-attempt consumption remain. |
-| F4 exact target classes and bases | K291 must supply actual T1–T7 grammars, authoring bases and A1/A2/A3 operation/refusal rules, preserving breadth and the selected incomplete-copy outcome. Category names alone do not close this duty. |
-| F5 current build/process-image facts | K291 must name permitted independent comparison operations/evidence or put the exact further human trade-off before consumption. These remain Q/P blockers; no available API or current identity is established by review. |
+| F4 exact target classes and bases | K293 supplies byte/component/finite-parent/nested/cryptex/direct/link Data grammars and A1/A2/A3/layout/file/locale operations with independent bases. Historical syntax certifies no current presence/TCC/ancestry; required raw refused copies retain missing work. Whole reconciliation/review remains k294. |
+| F5 current build/process-image facts | K293 names permitted UID/sysctl/channel/CF/provisioning/export/disarm operations and the exact missing independent build/peer-image/terminal route. K295's concrete authority choice precedes k294; actual Q/P facts/qualification stay missing. No available API/current identity is established by source or policy. |
 | F6 statement partition | K290 records separate exact approval to relocate only "The single pass is unused;" and capitalize the retained "Both"; the following private/native line is unchanged. K291 must repair every individual E/H/R statement and stable owner rule, refresh the TSV/byte comparisons and preserve whole companion/table/basis bindings. The old all-E classification does not establish the partition. |
 
 Tree order is k289 → k290 actual decisions → k291 whole repaired design → its mandatory
@@ -93,7 +93,8 @@ The [companion pairs](application-reference-packaging-runtime.md#release-and-acc
 specify the non-consuming positive and same-image/partial/crash/entry counterexamples.
 
 This is an unreviewed design slice, no qualified interface or actual human appointment.
-Reference-evidence-closed-admission-evidence-k293 still repairs F2/F4/F5. Closing child
+The subsequent closed-evidence/path slice below records k293's F2/F4 design and F5's
+precise authority/work boundary; actual required evidence remains absent. Closing child
 reference-evidence-session-admission-k294 owns F6's exhaustive E/H/R TSV/whole-basis
 partition and all F1–F8/original-obligation/seven-view/summary/charter reconciliation,
 then cuts mandatory whole-k291 review before k269. No partial slice is a construction
@@ -102,6 +103,37 @@ Canonical k290-selected bytes, descriptor ADR and all five documentary table byt
 unchanged by this slice. The pass remains unused; k244/k242 and k245/k246/k247, useful
 breadth and every hold retain full obligations. No control, receipt, approval, identity,
 current build, instrument/native qualification or target evidence was acquired.
+
+## Closed evidence and path repair slice
+
+Reference-evidence-closed-admission-evidence-k293 fixes the
+[closed Q01–Q10/P01–P05 blockers](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns),
+each [C bypass clause and D1–D6 applicability](application-reference-contact-boundary.md#per-family-independent-controls),
+and the [exact T1–T7/A1–A3 grammar/operations](application-reference-evidence.md#closed-pre-lookup-entries-and-operation-order).
+The finite [historical parent alternatives](reference-target-parents.tsv) bind every
+source ordinal against the whole historical packet, preserving raw UTF-8 byte spelling.
+Their role is independent finite syntax/basis selection; they prove no current installed
+presence, identity, purpose, physical ancestry or TCC. Protected/unlisted/out-and-back
+and refused required copies retain raw evidence and missing work. Whole basis objects
+must join the later complete input partition; no additional section-slicing exception.
+
+The [correspondence table](application-reference-packaging-runtime.md#independent-correspondence-and-precise-authority-boundary)
+accounts for permitted UID/build/random/channel/CF, separate authority/validator and fresh
+export/storage operations, plus the retained foreground/entry/disarm obligations. Actual
+independent installed-build/peer-image/terminal facts remain required unavailable. One
+precise requirements checkpoint, reference-evidence-correspondence-authority-k295, now
+precedes k294: choose/refuse human current-OS display corroboration and narrowly enumerated
+read-only same-UID peer/terminal metadata, with exact retained-image/backing limits. This
+is an unselected recommendation, not permission, observed availability or qualification.
+No LIVE preflight calibration or repeat U2 programme is introduced.
+
+K294 consumes the actual answer, refreshes every individual E/H/R statement/basis and
+reconciles the complete F1–F8/original-obligation/summaries/seven-view/charter conjunction
+before mandatory whole-k291 review/every earned integration and k269. Its original full
+closing duty remains. K293 supplies no partial construction handoff, executed controls,
+actual authority/terminal/process/image/storage/build correspondence, finite subject or
+native outcome. K244/k242 remain live; k245's pass unused, k246/k247 and every hold remain.
+The historical all-E TSV remains defective pending that whole reconciliation.
 
 ## Selected k290 decisions and design handoff
 
