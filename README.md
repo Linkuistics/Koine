@@ -106,7 +106,8 @@ only the independent supervisor originates a k245 LIVE channel. A receipt, proof
 record or copied review/run/commit supplies no role authority. Whole-k282 review k288
 found unresolved appointment/lifetime, release, scope and input-partition defects; the
 [integration boundary](docs/verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-places k290's actual decisions and k291's complete design/whole review before k269. The
+records k290's selected human-owned acceptance/foreground ceremony and narrow pass-status
+move; k291's complete repaired design/whole review remains before k269. The
 [contact boundary](docs/verification/application-reference-contact-boundary.md)
 pins whole independent published BSD/Mach/RPC/API inventories and named B1–B8 evidence/
 controls, with U1–U6 required-versus-accepted-unknown limits.
@@ -138,7 +139,11 @@ records k281's accepted bounded contact evidence, closed pre-lookup rule, explic
 incomplete-evidence outcome and exact status relocation. Its [obligation comparison](docs/verification/application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 names the changed clauses. K288 reviewed the complete k282 proposal; k289 triages its
 findings and preserves independent own acceptance and disarmed release as unrepaired
-design obligations. K290 decisions and k291's repaired whole design, mandatory review
+design obligations. K290 selects Antony's independent trust decisions and one foreground
+supervisor/acquisition ceremony, batching compatible acceptance/audit/release work while
+retaining producer/repairer exclusions and a distinct instrument closing owner/step.
+Its separately approved sentence move retains permission, holds and private/native duties.
+K291's repaired whole design, mandatory review
 and every earned integration precede k269. Earlier proposals and partial children cannot
 be implemented as alternative handoffs. A refused required copy leaves the finite subject incomplete;
 useful breadth, the unused pass and all holds remain.

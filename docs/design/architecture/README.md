@@ -54,8 +54,11 @@ The failed grouped conservative enclosure is no actual native overflow or fit.
 
 Open [the complete replacement discussion](index.html#discussion) for all seven reference/
 corpus views. K279/k280 reviewed the earlier whole-k273 boundary; the complete k282 repair
-was reviewed by k288 and integrated by k289. Its coupled defects require k290's actual
-operator/independence/status choices and k291's complete repaired design/mandatory whole
+was reviewed by k288 and integrated by k289. K290 selects human-owned independent
+acceptance and one foreground supervisor/acquisition ceremony, compatible human duty
+batching with producer/repairer exclusions and a distinct instrument closing owner/step,
+plus the exact additional pass-status relocation. Its coupled defects still need k291's
+complete repaired design/mandatory whole
 review and every earned integration before k269. The
 [integration report](../../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
 records each finding's disposition; no displayed proposal is the repaired construction handoff.

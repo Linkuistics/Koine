@@ -3,7 +3,8 @@
 This is an unconsumed reporting output. The binding rules are the evidence contract's
 [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 and [mutation controls](application-reference-evidence.md#extraction-and-whole-object-mutation-controls).
-This report records k282's k287 proposal and k288/k289's review/integration boundary;
+This report records k282's k287 proposal, k288/k289's review/integration boundary and
+k290's actual human decisions;
 it supplies no approval, receipt, qualification, close record or LIVE role.
 
 ## Current construction and evidence report
@@ -15,7 +16,9 @@ final receipt validation, original qualified Q results, accepted audit/distinct 
 or independent eligible release is supplied. Actual UID/ancestry/image/endpoint evidence
 and independently acquired current CF expectations remain unavailable. No current
 installed query, contents package, protected/topology probe, collector or native/VM
-qualification was performed. K245's single authorized pass remains unused.
+qualification was performed.
+
+The single pass is unused.
 
 K283 specifies Q mechanics, fresh P facts and first-attempt A outcomes; k284 applies
 the accepted bounded contact/pre-lookup limits; k285 specifies independent own acceptance
@@ -35,8 +38,10 @@ distinct from failed/missing required controls and identities.
 The exact approved sentence, “Those controls are currently specified, not executed.”,
 remains verbatim in the canonical report's
 [status subsection](application-population-metadata-shape.md#status-outside-the-measured-permission).
-The complete reconciliation changes no byte of its selected requirements or the descriptor ADR. Requirements-leaf
-non-execution statements remain fixed historical facts; downstream outcomes are reported
+K289 preserved the selected requirements and descriptor ADR. K290 adds the selected
+human-operator clause and relocates only the separately approved pass-status observation;
+its comparison preserves the adjacent holds/private/native duties and original permission.
+Requirements-leaf non-execution statements remain fixed historical facts; downstream outcomes are reported
 here without relabelling that interview or weakening conditional qualification holds.
 
 ## K288 review integration and live repair
@@ -50,12 +55,12 @@ qualifies an instrument or accepts any evidence.
 
 | Finding | Verified remaining work and owner |
 | --- | --- |
-| F1 session lifetime/appointment; F7 proportionate independence | Requirements reference-evidence-session-authority-k290 puts the concrete operator, foreground lifetime and owner-compatibility choice to Antony. Design reference-evidence-session-admission-k291 must apply his actual answer with a realizable sequential schedule and own independent appointment; running an image is no authority. |
+| F1 session lifetime/appointment; F7 proportionate independence | K290 records Antony's agreement to human-owned independent acceptance and one foreground supervisor/acquisition ceremony. Compatible acceptance/audit/release work may be batched, with producer/repairer exclusions and a distinct k244 closing owner/step. K291 must state the exact compatibility/exclusion relation, earlier acceptance order and actual human-origin appointment/channel schedule; running an image is no authority. |
 | F2 bounded blocker set | K291 must fix each C bypass/dimension's required-versus-accepted-unknown disposition under k281, with the closed B/Q/P blocker set before construction. No revived full U2 gate or waived named control. |
 | F3 fresh export/profile binding; F8 durable invalidation | K291 must bind exact per-invocation A3 entries separately from unchanged issuance authority and persist authorized invalidation before mutable work, with crashed/partial-successor refusal and no old-ELIGIBLE fallback. R7/R10 and one-attempt consumption remain. |
 | F4 exact target classes and bases | K291 must supply actual T1–T7 grammars, authoring bases and A1/A2/A3 operation/refusal rules, preserving breadth and the selected incomplete-copy outcome. Category names alone do not close this duty. |
 | F5 current build/process-image facts | K291 must name permitted independent comparison operations/evidence or put the exact further human trade-off before consumption. These remain Q/P blockers; no available API or current identity is established by review. |
-| F6 statement partition | K290 must settle the additional canonical pass-status clause; k291 must repair every individual E/H/R statement and stable owner rule, refresh the TSV/byte comparisons and preserve whole companion/table/basis bindings. The old all-E classification does not establish the partition. |
+| F6 statement partition | K290 records separate exact approval to relocate only "The single pass is unused;" and capitalize the retained "Both"; the following private/native line is unchanged. K291 must repair every individual E/H/R statement and stable owner rule, refresh the TSV/byte comparisons and preserve whole companion/table/basis bindings. The old all-E classification does not establish the partition. |
 
 Tree order is k289 → k290 actual decisions → k291 whole repaired design → its mandatory
 whole review/every earned integration → k269 replanning. K291's closing session cuts that
@@ -63,6 +68,42 @@ review lazily after its artifact exists. The k244/k242 and k245/k246/k247 charte
 this order and every original duty. The current k282 mechanisms/views are reviewed
 proposals with the above unresolved work, not an implementable construction handoff.
 No authority, instrument qualification, target pass or complete finite subject follows.
+
+## Selected k290 decisions and design handoff
+
+Antony answered "agree" to the human-owned ceremony and "ayes" affirmatively to the
+exact additional pass-status relocation. The [selected requirements](application-population-metadata-shape.md#authority-and-admission-choices)
+and [obligation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+are binding. Acceptance of ready reviewed/final payloads and original verification
+results remains required before their first consumer; compatible human acceptance,
+audit and release duties may be batched only when those inputs exist. Producer/repairer
+exclusions, original independent controls and the distinct instrument closing owner/step
+remain. At the acquisition boundary Antony explicitly starts the retained supervisor
+and appointed child together in one foreground invocation through true return. This
+interview performs none of those trust/appointment acts.
+
+The approved Agreed seams edit is exactly:
+
+```diff
+-capture occurs in this requirements leaf. The single pass is unused; both product holds,
++capture occurs in this requirements leaf. Both product holds,
+ private ineligibility and every native PENDING outcome remain.
+```
+
+The relocated current observation appears in Current construction and evidence report
+above. Only the status clause is removed; capitalization starts the retained sentence.
+The one-attempt permission and consumption rules, both product holds, private eligibility
+gate and native qualification duties remain. K281's earlier exact control-status move
+also remains; no wider reporting slice is selected.
+
+K291 must apply both actual decisions in one complete F1–F8 repair, preserve every
+original k273/k244/k242/k282 obligation except the explicitly compared amendments, and
+earn mandatory whole review/every integration before k269. The existing controlled-input,
+independent offline/admission, exact retained task/parser/domain and unprivileged scratch
+seams remain selected, alongside the agreed GraphQL/binary/supported-VM product seams.
+The historical inventory stays frozen and defective until k291 refreshes its complete
+statement/byte comparisons, including these new selected bytes. No implemented admission
+protocol, current authority, instrument qualification or finite subject is supplied.
 
 ## Complete statement inventory
 
@@ -85,7 +126,8 @@ without separate records. F6 identifies changing handoffs, stale owner assertion
 remaining canonical pass-status clause within those E units. The classification and
 claimed relocation table below are historical claims under repair, not current accepted
 partition evidence. K291 must refresh the complete per-statement inventory, including the
-F9 dialect clarification and every changed source byte, before its whole review.
+F9 dialect clarification, k290's selected amendments and every changed source byte,
+before its whole review.
 
 `E` means enduring input: rule, conditional duty, immutable decision or pinned basis fact
 with its limitation. `H` means an immutable historical requirements/ADR observation within
@@ -160,7 +202,8 @@ The statement inventory and exact original/final comparisons are documentary che
 Frozen link/manifest/render/browser checks validate presentation. They execute no
 instrument mutation control or native qualification. Construction must independently
 author and observe the contract's extraction/whole-object/actual-read/dependency controls
-before crediting them. The k290/k291 repair and mandatory whole review/integration remain
+before crediting them. K290 has settled the actual choices; k291's complete repair and
+mandatory whole review/integration remain
 before k269; the historical inventory supplies no accepted classification or Q proof.
 
 ## Inspected source identities

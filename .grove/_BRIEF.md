@@ -239,6 +239,15 @@ k269. That producer must earn mandatory whole review/every integration before re
 No role-per-leaf tree or repeated impossible contact survey is selected. The complete
 original obligations, k281 amendments, unused k245 pass and every hold remain.
 
+Reference-evidence-session-authority-k290 records Antony's agreement to human-owned
+independent acceptance and a single foreground supervisor/acquisition ceremony, batching
+compatible acceptance/audit/release work with producer/repairer exclusions and a distinct
+instrument closing owner/step. He separately approved the exact additional pass-status
+move to the unconsumed report; permission, adjacent holds/private/native duties and all
+other original obligations remain. The canonical selected requirements and obligation
+comparison bind k291's complete repair, mandatory whole review/every earned integration
+and k269's later replanning. This closes the decisions only; k244/k242 stay live.
+
 The preceding Koine grove was torn down at commit `fc3b22d3`. This workspace
 starts from that commit. Homebrew was updated and Koine 0.1.0 was installed
 locally at `/Applications/Koine.app` at the human's request.

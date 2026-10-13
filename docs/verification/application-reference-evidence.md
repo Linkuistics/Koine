@@ -45,7 +45,13 @@ A outcomes; its input partition separates enduring rules from unconsumed reports
 K287 reconciles all four seams across this contract, both whole-byte companions/five
 tables/bases, seven views, summary layers and consumer charters. K288's whole review and
 k289's integration establish that this proposal is not yet an implementable construction
-handoff. K290 owns the concrete human decisions; k291 owns the complete coupled repair
+handoff. K290 records Antony's agreement to the human-owned independent acceptance and
+single foreground supervisor/acquisition ceremony, with compatible acceptance/audit/release
+batching, producer/repairer exclusions and a distinct k244 closing owner/step. He separately
+approved relocating only the additional pass-status clause, retaining permission and the
+adjacent holds/private/native duties. The selected canonical clauses and comparison bind
+these choices. The operator protocol below remains the reviewed proposal under repair;
+k291 owns the complete coupled repair
 and its mandatory whole review/integration before k269. No repeated unavailable mechanism survey or reporting-only close
 discharges required qualification.
 

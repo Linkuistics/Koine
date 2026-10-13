@@ -267,6 +267,31 @@ new attempt still needs an explicit human decision. The replacement design owns 
 concrete independently anchored approval mechanism; a review sentence or regenerated
 matching hashes alone cannot satisfy admission.
 
+**Human-owned acceptance and foreground lifetime.** Antony selected the explicit
+human-owned ceremony. He makes the independent trust decisions over the ready exact
+reviewed/final payloads, original review findings and dispositions, and original
+verification results, accepting or refusing each before its first consumer. Compatible
+acceptance, audit and release responsibilities may share his ownership and be batched
+when their required inputs already exist. This relaxes the earlier mutually separate
+owner proposal for those compatible human responsibilities; producer/repairer exclusions,
+independently authored original controls and required inspection-only review/earned
+integration remain. The qualification runner and acquisition child do not acquire the
+independent trust role. Retain a distinct instrument original-obligation closing owner
+and step after final affected qualification, independent acceptance and audit. Earlier
+acceptance still occurs after its actual inputs exist and before their first consumer; this is no blanket
+approval of future objects.
+
+At the one acquisition boundary Antony explicitly starts the retained supervisor and
+its appointed acquisition child together in one foreground invocation and retains that
+invocation through true terminal return. The supervisor and child coexist there; no
+supervisor lifetime across sequential Grove sessions is selected. Starting an image,
+possessing a receipt/proof/eligible-release record or naming a task cannot supply that
+human appointment. The complete reviewed design must state the exact compatibility and
+exclusion relation, the bounded sequential acceptance/close/release schedule, and the
+fresh invocation/channel binding. Cooperative same-UID enforcement and its tamper limit
+remain selected. This requirements decision appoints no process, initializes no authority,
+qualifies no instrument and spends no pass.
+
 **Persistence assumption.** Accept the bounded assumption that the reviewed local
 filesystem/device honors the selected full-synchronization and namespace-ordering
 operations once all required acknowledgements succeed. Apple's archived
@@ -357,7 +382,7 @@ Independently authored expectations and any actually available bounded observati
 support each named claim; none supplies complete contact observation/containment. Existing
 public GraphQL, actual provider/host binary and isolated signed supported-VM product seams
 remain. No installed-target positive, authority provisioning, collector probe or native
-capture occurs in this requirements leaf. The single pass is unused; both product holds,
+capture occurs in this requirements leaf. Both product holds,
 private ineligibility and every native PENDING outcome remain.
 
 ### Independent classification and whole-template assignment
@@ -431,6 +456,13 @@ outcome, and "yes" to the narrow status relocation. The selected clauses above a
 requirements; this comparison explains exactly which earlier obligations they amend.
 It does not supply permission beyond those clauses or an implemented admission gate.
 
+K290 put two further decisions to Antony after k288/k289. He answered "agree" to the
+human-owned independent acceptance and foreground acquisition ceremony, with compatible
+acceptance/audit/release batching, producer/repairer exclusions and a distinct instrument
+closing owner/step. He answered "ayes" affirmatively to the exact additional pass-status
+move below. The selected human-operator clause and comparisons identify the precise
+changes to k282's owner/lifetime proposal; every other original duty remains binding.
+
 ### Status outside the measured permission
 
 Those controls are currently specified, not executed.
@@ -439,18 +471,22 @@ The instrument, independent admission mechanism and actual qualification remain 
 The one target pass is unused. K287 reconciles the complete k282 credit/LIVE activation/
 independent acceptance/input partition under the actual decisions. Whole review k288
 found the coupled defects recorded in the [integration report](application-reference-input-partition.md#k288-review-integration-and-live-repair).
-K290's actual operator/independence/status decisions and k291's complete repaired design,
-mandatory whole review and every earned integration precede k269 replanning. Whole companions and inventory/basis tables remain
+K290 records the actual human-operator/batching and narrow pass-status decisions. K291's
+complete repaired design, mandatory whole review and every earned integration precede
+k269 replanning. Whole companions and inventory/basis tables remain
 full-byte inputs until that reviewed partition is implemented; this relocation selects no
 reporting slice. A requirements answer qualifies no tool, initializes no authority and
 supplies no current package, finite subject or native verdict.
 
 The separate [input-partition and evidence report](application-reference-input-partition.md)
 records changing construction/commissioning/qualification/audit/close observations.
-K289 preserves this document's entire selected section byte for byte. F6 identifies the
-remaining pass-status clause within it; only Antony's actual k290 answer may amend or
-explicitly establish its historical boundary. Conditional holds retain their original scope. Whole-byte
-companions/tables/bases remain inputs, with no reporting slice or inferred qualification.
+K289 preserved this document's entire selected section byte for byte. K290 adds the
+selected human-operator clause and, under Antony's separate exact approval, removes
+only "The single pass is unused;" from Agreed seams and capitalizes the retained "Both".
+The exact observation is now in that unconsumed report. The adjacent private-ineligibility/
+native-PENDING line is byte-identical; conditional holds retain their original scope.
+Whole-byte companions/tables/bases remain inputs, with no reporting slice or inferred
+qualification. The historical all-E inventory still needs k291's complete repair.
 
 ### Line-by-line original-obligation comparison
 
@@ -464,6 +500,11 @@ companions/tables/bases remain inputs, with no reporting slice or inferred quali
 | Protected clause: hidden redirects/mounted-root/proxy effects retain a "full independent qualification obligation" | The universal coverage prerequisite is replaced by the accepted bounded-contact risk. Observable identities, link text, replacement/refusal controls and precise limits remain required; no hidden-ancestry or current prompt-free claim follows. |
 | Required unavailable copies remain live missing evidence, never accepted useful loss | Retained with Antony's explicit disposition: carry a truthful failed/incomplete package and subject-design boundary through k245/k246/k247 and whole review. No copy omission, repeat, useful-category reduction, complete finite-subject credit or private eligibility follows. A later scope change needs a concrete decision. |
 | Canonical control status: "Those controls are currently specified, not executed." | Moved verbatim to the reporting subsection above. The prerequisite to build and observe controls before the target pass remains in the selected section. |
+| Canonical pass status: "The single pass is unused; both product holds," followed by "private ineligibility and every native PENDING outcome remain." | Antony approved moving only the pass observation to the separate unconsumed report as "The single pass is unused." The retained first line is "Both product holds," and the second line is byte-identical. The one-attempt permission/consumption rules, both holds and every private/native qualification duty remain binding. |
+| K270 independent approval: whole-design review/earned integration selects concrete admission-anchor revisions; the producer cannot approve its own weakened required set or substituted verifier | Retained. Antony supplies the selected independent own trust/acceptance act over actual ready reviewed/final payloads, original findings/dispositions and verification results before their first consumer. Inspection-only review and earned integration remain prerequisites, not operator appointment or approval of future objects. |
+| K282 mutually separate acceptance, audit and release ownership | Amended only for compatible independent human responsibilities: these may share Antony's ownership and be batched when their required inputs already exist. Producer/repairer exclusions, independently authored original controls, phase ordering and distinct instrument close remain; the repaired design must enumerate exact compatibility/exclusions rather than cut one session per role. |
+| K282 independent release supervisor still live at k245 and separate acceptance-side commissioning supervisor | Replaced by the selected human-owned foreground lifetime: Antony explicitly performs the required trust acts and starts the retained supervisor plus appointed acquisition child together at the acquisition boundary through true return. No cross-session supervisor, task/image/receipt/proof-driven appointment or automated independent operator is selected. |
+| K282 independent judgment, qualification-runner/acquirer separation, original-result acceptance before consumption, and distinct k244 original-obligation close | Retained. The human owns trust judgments; the qualification runner and acquisition child cannot appoint or approve themselves. Required earlier acceptance precedes its own first consumer. Instrument closure retains its distinct owner and step after final affected qualification/acceptance/audit; this requirements answer spends no pass and approves no future payload. |
 | K244 Done when 1: lossless fixed-query framing/terminal failure, component scope/held roots, closed layouts/files/direct locales, immutable bytes and complete associations | Retained in full. The additional pre-lookup allowlist/refusals apply; contact evidence has the accepted bounded scope. |
 | K244 Done when 2: complete typed decoder route, pinned identities, XML/binary/OpenStep/unsupported/malformed/type/serialization/duplicate limits and original six-basename evidence | Retained in full. No value/type/image proof is supplied by this decision. |
 | K244 Done when 3: independently authored pure byte/type/inventory/association expectations, fault seams, applicable intended negatives/positives, helper/alias/race/scope/error/freeze/interruption/no retry, and k246 generated controls | Retained. Only the blanket independent complete-contact/no-contact sufficiency claim is amended: actual scratch/task/domain tests and available observations qualify named claims, with accepted missing coverage stated unknown. Failed required controls and known defects still block. Every input/tool freeze and k246 duty remains. |
@@ -479,9 +520,9 @@ companions/tables/bases remain inputs, with no reporting slice or inferred quali
 | Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an installed/protected/topology probe, consume another pass or qualify a product/native outcome. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
-the explicitly identified contact sufficiency and pre-lookup amendments above control
-their interpretation. No other original condition is waived. K282 owns the exhaustive
-contract/companion/operation-map reconciliation, and its whole review must challenge the
+the explicitly identified k281 contact/pre-lookup and k290 operator/owner/status amendments
+above control their interpretation. No other original condition is waived. K291 owns the
+exhaustive contract/companion/operation-map reconciliation, and its whole review must challenge the
 complete amended conjunction before construction planning uses it.
 
 ## Required reproduction contract after the decision

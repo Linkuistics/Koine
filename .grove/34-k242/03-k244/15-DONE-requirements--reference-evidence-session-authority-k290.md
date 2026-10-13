@@ -65,3 +65,35 @@ helper/posture or native/VM work. Preserve k245's unused pass, complete k246/k24
 useful breadth and every product/private/native hold. Any later genuinely required scope
 or identity-route change goes once to Antony as a precise question before its consumer,
 not a speculative extra interview or a repeated unavailable-mechanism leaf.
+
+## Decisions (running log)
+
+Antony answered "agree" to the human-owned foreground ceremony recommended for
+decision 1. Antony owns the independent trust decisions: inspect the ready exact
+reviewed/final artifacts and original verification results, accept or refuse them,
+then explicitly start the retained supervisor and appointed acquisition child
+together at k245's boundary and retain that foreground invocation through true
+return. Compatible acceptance, audit and release responsibilities may be batched
+under that human ownership; producers and repairers cannot approve their own work.
+Retain a distinct k244 original-obligation close, and perform each required earlier
+acceptance after its inputs exist and before their first consumer. This changes
+k282's mutually separate owner proposal only for those compatible independent
+human responsibilities; it selects no supervisor surviving across Grove sessions,
+automated independent operator or blanket approval of future objects. K291 must
+specify the exact compatibility/exclusion relation and bounded sequential schedule.
+The cooperative same-UID limit, original review/integration duties and one-attempt
+authority remain. This requirements answer appoints no process, provisions no
+authority, qualifies no instrument and spends no pass. At this first decision,
+the separate canonical pass-status choice remained unanswered.
+
+Antony answered "ayes" affirmatively to decision 2's exact before/after comparison.
+Move only "The single pass is unused;" out of the measured Agreed seams paragraph
+and report it as "The single pass is unused." in the separate unconsumed report.
+Capitalize the retained "both" to "Both"; preserve the following private-ineligibility
+and native-PENDING line byte for byte. The one-attempt permission, consumption rules,
+both product holds and every qualification duty remain binding. This is the narrow
+additional status amendment beyond k281's earlier control-status relocation, not a
+historical reinterpretation or broader reporting slice. Whole companions, inventory
+tables, bases and actually consumed task/runtime objects retain their full bindings.
+K291 must apply both actual decisions and earn mandatory whole review/every integration
+before k269; this answer supplies no repaired admission design or actual authority.

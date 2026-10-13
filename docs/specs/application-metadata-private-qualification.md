@@ -349,9 +349,12 @@ still disarm and requalify; report updates supply no authority, qualification or
 native outcome. Whole review k288 found coupled session/appointment, blocker/export/scope,
 current-identity, partition and invalidation defects in the k282 proposal. The
 [integration boundary](../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-places k290's actual decisions and k291's complete repaired design/mandatory whole review
-and every earned integration before k269. Design closure supplies no instrument
-qualification, authority or finite subject; the original duties and every hold remain.
+records k290's selected human-owned acceptance/foreground ceremony and exact pass-status
+relocation. Compatible acceptance/audit/release work may be batched with producer/repairer
+exclusions and a distinct k244 closing owner/step. K291 must supply the complete repaired
+design and mandatory whole review/every earned integration before k269. Requirements
+closure supplies no instrument qualification, authority or finite subject; the original
+duties and every hold remain under only the explicitly compared amendments.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

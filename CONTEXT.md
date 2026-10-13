@@ -280,8 +280,11 @@ release possession and copied review/run/commit supply no role authority. The [e
 keeps changing observations in a separate unconsumed report; actual input changes still
 disarm and requalify. Whole review k288 found admission/appointment, scope and enduring-input
 defects in the k282 proposal. The [integration boundary](docs/verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-places k290's actual decisions and k291's complete repaired design/mandatory whole review
-and every earned integration before construction replanning. The existing all-E statement
+records k290's selected human-owned acceptance/foreground ceremony and exact pass-status
+relocation. Compatible acceptance/audit/release duties may share Antony's ownership;
+producer/repairer exclusions and a distinct k244 closing owner/step remain. K291's complete
+repaired design/mandatory whole review and every earned integration precede construction
+replanning. The existing all-E statement
 inventory is historical and under repair. A refused required copy cannot supply a complete finite subject or private eligibility.
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts

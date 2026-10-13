@@ -20,6 +20,34 @@ TSV dialect and repairs credit/stage summaries; all documentary table bytes are 
 The prior all-E inventory is a historical defective classification, not accepted current
 partition evidence. No partial k282 proposal is a construction handoff.
 
+## Actual k290 decisions
+
+Antony answered "agree" to the human-owned foreground ceremony and "ayes" affirmatively
+to the exact pass-status relocation. Consume the canonical Authority and admission
+choices and Line-by-line original-obligation comparison in
+docs/verification/application-population-metadata-shape.md, plus the separate unconsumed
+application-reference-input-partition.md report. These actual answers settle the operator
+choice, not the repaired protocol.
+
+Antony owns independent trust judgments over ready reviewed/final payloads, original
+findings/dispositions and verification results before their first consumer. Compatible
+acceptance/audit/release duties may share his ownership and be batched when the inputs
+exist; producer/repairer exclusions and the distinct k244 closing owner/step remain.
+At k245's boundary he explicitly starts the retained supervisor and appointed acquisition
+child together in one foreground invocation through true return. Specify earlier
+acceptance appointment and the exact compatibility/exclusion and sequential schedule;
+no cross-session supervisor or image/task/receipt/proof-derived appointment is selected.
+
+The only approved Agreed seams status change removes "The single pass is unused;" and
+capitalizes retained "Both". The next private/native line is byte-identical, with the
+exact observation moved to the unconsumed report. Permission, consumption rules, both
+holds and qualification duties remain. Do not silently expand that amendment. Retain
+the existing agreed controlled-input/offline/admission/task-domain/scratch seams and
+GraphQL/binary/supported-VM product seams; no new public interface or native programme.
+Both choices require this leaf's complete F1–F8 repair and mandatory whole review/every
+earned integration before k269, with no operator appointment or actual qualification
+inferred from the requirements retirement.
+
 ## Required coherent repairs
 
 - F1/F7: implement the selected operator/lifetime in the design, with supervisor and

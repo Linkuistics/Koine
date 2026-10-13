@@ -4,12 +4,17 @@
 ## K288 integration dependency
 
 Whole review k288 and integration k289 identify coupled defects in the k282 proposal.
-Requirements reference-evidence-session-authority-k290 and design
-reference-evidence-session-admission-k291 precede k269; k291's closing session cuts
-mandatory whole review and every earned integration before that planner. Earlier owner,
-appointment, blocker/export and partition descriptions remain repair inputs, not a
-construction handoff. All original Done when, k281's exact amendments, k245's unused
-pass, k246/k247 duties and every useful-breadth/product/private/native hold remain.
+Reference-evidence-session-authority-k290 records Antony's agreement to human-owned
+independent acceptance and one foreground supervisor/acquisition ceremony. Compatible
+acceptance/audit/release duties may be batched, with producer/repairer exclusions and a
+distinct k244 closing owner/step. It also records separate exact approval for the additional
+pass-status relocation, retaining permission, holds and private/native duties. Consume
+the canonical selected requirements and line-by-line original-obligation comparison.
+Reference-evidence-session-admission-k291 must apply both actual answers and cut mandatory
+whole review/every earned integration before k269 replanning. Earlier owner/appointment/
+blocker/export/partition proposals remain repair inputs, not a construction handoff.
+Every original Done when remains binding under only k281/k290's explicitly compared
+amendments; k245's unused pass, k246/k247 duties and every hold remain.
 
 ## Goal
 
