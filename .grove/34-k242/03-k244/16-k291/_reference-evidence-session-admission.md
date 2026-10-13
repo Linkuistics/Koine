@@ -160,3 +160,17 @@ authority, or retains truthful non-acquiring missing work. K294 consumes that ac
 answer/any earned repair and includes the whole historical parent table/packet and new
 primary bases in F6/full reconciliation before the original mandatory whole review.
 No control/authority/qualification/target programme or partial handoff is added.
+
+Antony answered "approve" in reference-evidence-correspondence-authority-k295 to the
+exact bounded arrangement: manual local OS About build/product observation, separately
+authored unprivileged finite same-UID commissioned-peer metadata, inherited operator-fd/
+foreground-group metadata, and the same fixed mdfind child's metadata only inside A
+after consumption. The canonical Authority and admission choices and operation-by-operation
+comparison add only that observation authority. K294 consumes the actual answer alongside
+k292/k293, includes the new selected bytes and primary bases in F6's exhaustive partition,
+and reconciles the complete original conjunction before mandatory whole-k291 review/every
+integration and k269. Existing design already specifies this arrangement; no new design
+programme or role leaves are needed for the authority answer. Required Q06–Q08/P01–P03
+and source-child A facts remain unqualified, with exact missing work before their consumers.
+No process/tty/kernel/installed probe, commissioning, provisioning, control or target pass
+occurred in the requirements session. K291/k244/k242 remain live and every hold/duty remains.

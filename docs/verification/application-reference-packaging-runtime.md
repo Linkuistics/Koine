@@ -263,22 +263,24 @@ not a current observation. Permitted mechanics must qualify before fresh P use.
 | --- | --- | --- |
 | UID / O05 | Independent pure native programme calls `getuid`/`geteuid`; raw returns/OS/image/configuration are compared with separately validated launch/authority UID. Wrong/injected result is M; actual same-UID call is E. Fresh P repeats actual calls. | No HOME/login/name inference; authority UID/ancestry comes from one qualified separate initialization/validation, not the scratch result. Unknown equality blocks P01/P04. |
 | Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls remain R. |
-| Installed 27.0.1/26A434 correspondence / O06 | Canonical expected bytes are an independent **requirement**, not evidence the current host runs it. Matching candidate and independent observer sysctls corroborates a shared API, not an independently acquired installed-build label. | **Required unavailable** before Q06 credit/P01. No currently selected independent installed-OS display/artifact read supplies that label. One explicit human choice must authorize the exact independent route below, or this fact remains missing/non-acquiring. No `sw_vers`, SystemVersion plist, subprocess or alternative sysctl fallback. |
-| Spawn/request/channel mechanics / O02–O04/O07 | Independently retained launcher exercises unprivileged `posix_spawn`/explicit fd actions, `socketpair`, `SecRandomCopyBytes`, framed nonce/request/domain/EOF and actual `waitpid` terminal returns on constructed peers. Original launched PID/request/known fd actions, raw channel frames and start/death/true-return intervals have separate provenance from child claims. | Spawn PID/parent PID, endpoint possession, child self-report or pre-exec held-file hash alone establishes no executing image/incarnation. Actual independent peer/image correspondence remains required unavailable before Q07/P01/P02; no target child or LIVE positive calibrates it. |
+| Installed 27.0.1/26A434 correspondence / O06 | Canonical expected bytes are an independent **requirement**, not evidence the current host runs it. Matching candidate and independent observer sysctls corroborates a shared API, not an independently acquired installed-build label. The selected bounded route adds Antony's original manual local OS About product/build observation with host/session/time provenance. | Actual independently accepted correspondence remains required before Q06 credit/P01; authority supplies no current label or qualified mechanic. No `sw_vers`, SystemVersion plist, scripted UI, subprocess or alternative sysctl fallback. |
+| Spawn/request/channel mechanics / O02–O04/O07 | Independently retained launcher exercises unprivileged `posix_spawn`/explicit fd actions, `socketpair`, `SecRandomCopyBytes`, framed nonce/request/domain/EOF and actual `waitpid` terminal returns on constructed peers. Original launched PID/request/known fd actions, raw channel frames and start/death/true-return intervals have separate provenance from child claims. The selected finite same-UID metadata route below requires separate authoring/qualification and original results. | Spawn PID/parent PID, endpoint possession, child self-report or pre-exec held-file hash alone establishes no executing image/incarnation. Actual independent peer/image correspondence remains required before Q07/P01/P02; policy supplies none, and no target child or LIVE positive calibrates it. |
 | Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities remain unavailable where not independently obtainable. Complete unknown maps stay AU, but a named required image cannot. |
-| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance needs a specific qualified read-only route; the answer text is no terminal authentication. Required actual terminal/process/image facts remain unavailable until that work precedes P03. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |
+| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. The selected inherited-fd/foreground-group metadata route below requires original independently accepted results. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance still needs qualification; the answer text is no terminal authentication. Required actual terminal/process/image facts remain unavailable until that work precedes P03. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |
 | A2/A3 storage and disarm / O08–O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs remain R. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |
 
-**One concrete decision precedes correspondence consumers.** The requirements checkpoint
-`reference-evidence-correspondence-authority-k295` runs before the closing design consumer.
-It asks Antony to select or refuse one narrowly described read-only arrangement:
+**Selected bounded correspondence authority.** The canonical
+[authority clause and exact comparison](application-population-metadata-shape.md#authority-and-admission-choices)
+authorize the following narrowly described read-only arrangement. Independent authoring,
+original observations, acceptance and actual qualification precede its correspondence
+consumers; authority alone establishes none of the required facts:
 
 1. Antony independently opens the local OS About display and exposes its product version
    and build identifier for an original human observation bound to this host/session/time.
    Preserve the visible values and his own provenance/acceptance; compare with the two
    already permitted fresh sysctl buffers and qualified compatibility configuration.
-   This deliberately adds a human UI observation; the current pass permission's no-launch
-   rule does **not** authorize it by implication. No scripted UI, file/plist/subprocess,
+   This is the expressly selected human UI exception to the pass permission's no-launch
+   rule. No scripted UI, file/plist/subprocess,
    app inventory, network or installation activity is part of the recommendation.
 2. Independently authored unprivileged observer obtains kernel metadata **only for the
    finite same-UID commissioned foreground supervisor/checker and their declared retained
@@ -297,8 +299,8 @@ It asks Antony to select or refuse one narrowly described read-only arrangement:
    These calls supply bounded direct-context evidence, not hostile-user authentication.
 
 The fixed `/usr/bin/mdfind` child is different: its actual spawned image/exit/source
-results first exist **inside A** after authorized consumption/source release. If the
-proposed read-only route is authorized for that declared source child too, use its already
+results first exist **inside A** after authorized consumption/source release. The selected
+authority includes this declared source child's bounded metadata observations; use already
 qualified mechanics there and retain actual results/limits with that phase. Never spawn
 mdfind early to obtain a P image sample. A required unknown source-child correspondence
 prevents complete A evidence; it is neither earlier target-success qualification nor
@@ -335,16 +337,16 @@ independent correction/acceptance. They are no current SDK/kernel/runtime eviden
 | Whole archived Bundle Structures HTML at the topology contract's exact URL | 2d7a34a6b1cb40842fa74ba68f696d5e9c990c72d779516f91014ed448f4cbc6 |
 | Whole archived Accessing Contents HTML at that exact URL | 8cb1d5892bd82a1b0cb9e68ebff3ff5f58a4fb851e8b64aa82836d0d0d89d298 |
 
-The checkpoint chooses **authority**, not feasibility or success. On acceptance the
-closing design incorporates its exact answer and names actual independently owned
-construction/qualification work before Q06/Q07/Q08 and fresh P01–P03. It earns any
-necessary design/review repair before consumption. On refusal or unavailable required
-results retain one exact failed/unavailable boundary and the required missing work;
-do not weaken image/build/terminal duties, prune useful copies or start another U2 survey.
-The preferred trade-off is bounded human corroboration plus finite read-only peer
-metadata over privileged inspection or trusting producer/self-reported images. It costs
-an explicit authority decision and may still refuse. Nothing here commissions those
-new reads or runs them; all actual Q/P originals and independent acceptance remain due.
+The selected clause chooses **authority**, not feasibility or success. Complete design
+reconciliation incorporates its exact bounded amendment and comparison, names actual
+independently owned construction/qualification work before Q06/Q07/Q08 and fresh P01–P03,
+and earns whole-producer review/every applicable integration before construction planning.
+Unavailable required results retain their exact failed/unavailable boundary and missing
+work; image/build/terminal duties cannot weaken, useful copies cannot be pruned and no
+repeat U2 survey follows. Bounded human corroboration plus finite read-only peer metadata
+retains shared-OS/cooperative/race/signature/cache/backing limits and may still refuse.
+No policy clause commissions or runs those observations; actual Q/P originals and
+independent acceptance remain due, with fixed-source correspondence first observed in A.
 
 ### First-attempt outcomes and required counterexamples
 

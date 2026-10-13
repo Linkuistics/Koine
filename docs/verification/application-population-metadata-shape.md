@@ -292,6 +292,52 @@ fresh invocation/channel binding. Cooperative same-UID enforcement and its tampe
 remain selected. This requirements decision appoints no process, initializes no authority,
 qualifies no instrument and spends no pass.
 
+**Independent build, process-image and terminal correspondence.** Permit the following
+bounded read-only arrangement for independently authored and accepted correspondence
+evidence. Antony manually opens the local OS About display and records its product/build
+values, host, session, time and his own observation. Compare those originals with the
+already permitted fresh `kern.osproductversion`/`kern.osversion` buffers and qualified
+SDK/API/compatibility configuration. This is an explicit exception for that human UI
+observation to the evidence permission's no-launch rule. It admits no scripted UI,
+`sw_vers`, plist, subprocess or alternative-sysctl fallback, app inventory, network or
+installation operation.
+
+A separately authored unprivileged observer may inspect only the finite same-UID
+commissioned foreground supervisor/checker and declared retained Task/interpreter/
+verifier/CLI/control peers: `proc_pidinfo(PROC_PIDTBSDINFO)`, `proc_pidpath`, read-only
+`csops` `CS_OPS_STATUS`/`CS_OPS_CDHASH`/`CS_OPS_PIDOFFSET`, and
+`proc_pidinfo(PROC_PIDREGIONPATHINFO)` at each explicitly declared image address.
+Preserve original returned bytes, lengths, results and errors, actual process incarnation,
+SDK/API/image/configuration and independently calculated retained Mach-O slice/signature/
+UUID and held backing comparisons. The already selected fixed `/usr/bin/mdfind` source
+child may receive the same bounded metadata observations only within A after consumption;
+this permission adds no source invocation or pre-intent sample. Missing required source-child
+correspondence prevents complete A evidence rather than requiring earlier target success.
+Retained-source artifact/argv/input checks remain P prerequisites.
+Reported executable/backing paths grant no additional lookup or contents access; comparisons
+use the separately approved retained runtime/tool object plan and held identities. This
+metadata permission adds no executable-content acquisition from application targets.
+
+For only the direct ceremony's already inherited operator fd and foreground group,
+`fstat`, `isatty`, `tcgetpgrp` and `getpgrp` may obtain terminal identity/type/group
+facts alongside original process/session/channel provenance. No tty scan, extra tty open,
+injection, saved/automated answer or hostile-user authentication claim is admitted.
+The peer route grants no unrelated PID/daemon/application-target observation, all-system
+process/mapping inventory, task-memory bytes, debugger/root/helper/signing/SIP/entitlement
+change or fallback privilege. It changes no target root, cohort, layout, file, protected
+lookup, prohibited effect, consumption rule or attempt count.
+
+Shared OS mechanisms, cooperative same-UID enforcement, exec/PID/address/replacement
+races and short/error/refused observations limit the evidence. A code-directory hash is
+not a whole-file digest or every library identity; region/backing metadata is not immutable
+memory. Availability or sufficient signatures/cache/backing metadata is not promised.
+Independently qualify each named route and original expectation before Q06–Q08 credit
+and fresh P01–P03 use; unknown, stale, mismatched or unavailable required facts still block
+their stage. No required fact becomes an accepted contact unknown. This authority clause
+supplies no observation, commissioning, provisioning, instrument close or eligible release.
+Existing controlled-input/offline/admission/retained-task-domain/unprivileged-scratch and
+GraphQL/binary/supported-VM seams, R7–R10 and every product/private/native duty remain.
+
 **Persistence assumption.** Accept the bounded assumption that the reviewed local
 filesystem/device honors the selected full-synchronization and namespace-ordering
 operations once all required acknowledgements succeed. Apple's archived
@@ -463,6 +509,12 @@ closing owner/step. He answered "ayes" affirmatively to the exact additional pas
 move below. The selected human-operator clause and comparisons identify the precise
 changes to k282's owner/lifetime proposal; every other original duty remains binding.
 
+K295 put the single bounded correspondence arrangement to Antony; he answered "approve",
+including the fixed source child's metadata only inside A after consumption. The selected
+**Independent build, process-image and terminal correspondence** clause adds only the
+explicit observation authority compared below. It supplies no current build/image/terminal
+fact or qualified route, and leaves required Q/P/A evidence at its original stage.
+
 ### Status outside the measured permission
 
 Those controls are currently specified, not executed.
@@ -505,6 +557,11 @@ qualification. The historical all-E inventory still needs k291's complete repair
 | K282 mutually separate acceptance, audit and release ownership | Amended only for compatible independent human responsibilities: these may share Antony's ownership and be batched when their required inputs already exist. Producer/repairer exclusions, independently authored original controls, phase ordering and distinct instrument close remain; the repaired design must enumerate exact compatibility/exclusions rather than cut one session per role. |
 | K282 independent release supervisor still live at k245 and separate acceptance-side commissioning supervisor | Replaced by the selected human-owned foreground lifetime: Antony explicitly performs the required trust acts and starts the retained supervisor plus appointed acquisition child together at the acquisition boundary through true return. No cross-session supervisor, task/image/receipt/proof-driven appointment or automated independent operator is selected. |
 | K282 independent judgment, qualification-runner/acquirer separation, original-result acceptance before consumption, and distinct k244 original-obligation close | Retained. The human owns trust judgments; the qualification runner and acquisition child cannot appoint or approve themselves. Required earlier acceptance precedes its own first consumer. Instrument closure retains its distinct owner and step after final affected qualification/acceptance/audit; this requirements answer spends no pass and approves no future payload. |
+| Evidence permission's no-launch rule and no independent installed-build display route | Amended only for Antony's manual local OS About product/build observation with original host/session/time provenance. Compare with the two already permitted fresh sysctl buffers and qualified configuration; scripted UI, sw_vers, plist, subprocess/alternative-sysctl fallback and every other launch/inventory/network/installation effect remain excluded. This changes observation authority, not the expected 27.0.1/26A434 bytes or actual current-build evidence. |
+| Permitted O05–O07 mechanics lack an independently observed executing-peer/image route | Add only the separately authored unprivileged finite same-UID commissioned supervisor/checker and declared retained Task/interpreter/verifier/CLI/control metadata operations named in the selected clause. Retain original results/errors/lengths and independently checked incarnation/slice/signature/UUID/held-backing associations; no unrelated PID/daemon/target, all-system inventory, task-memory bytes or new privilege/posture. Spawn, child/loader self-report and pre-exec hashes remain insufficient by themselves. |
+| O15's fixed source artifact/argv checks precede intent; actual spawned-source facts first occur in A | Retained. Approve the same bounded metadata route for the already selected fixed mdfind child only after consumption inside A. It adds no spawn, earlier source sample, LIVE calibration, extra attempt or success prerequisite. Missing required A image/source facts prevent complete evidence; source P checks remain. |
+| Foreground appointment policy does not establish original terminal provenance | Add only fstat/isatty/tcgetpgrp/getpgrp for the ceremony's already inherited operator fd/foreground group with original process/session/channel records. No tty scan/open/injection, automated/saved answer or hostile-user authentication claim. K290/K292's actual human appointment, compatibility/exclusions, inherited-channel and true-return duties remain. |
+| Q06–Q08/P01–P03 known native/build/image/terminal expectations, identities and required controls; R7–R10 and bounded-contact limits | Retained in full. New authority supplies no actual observation or qualification; missing/refused/stale required facts still block, and required A failures retain incomplete evidence. Shared-OS/cooperative/race/signature/cache/backing limitations grant no contact permission or waiver. Existing Q/P/A and E/M/U definitions, protected lookup, exact A3/disarm rules and agreed seams remain. |
 | K244 Done when 1: lossless fixed-query framing/terminal failure, component scope/held roots, closed layouts/files/direct locales, immutable bytes and complete associations | Retained in full. The additional pre-lookup allowlist/refusals apply; contact evidence has the accepted bounded scope. |
 | K244 Done when 2: complete typed decoder route, pinned identities, XML/binary/OpenStep/unsupported/malformed/type/serialization/duplicate limits and original six-basename evidence | Retained in full. No value/type/image proof is supplied by this decision. |
 | K244 Done when 3: independently authored pure byte/type/inventory/association expectations, fault seams, applicable intended negatives/positives, helper/alias/race/scope/error/freeze/interruption/no retry, and k246 generated controls | Retained. Only the blanket independent complete-contact/no-contact sufficiency claim is amended: actual scratch/task/domain tests and available observations qualify named claims, with accepted missing coverage stated unknown. Failed required controls and known defects still block. Every input/tool freeze and k246 duty remains. |
@@ -517,10 +574,11 @@ qualification. The historical all-E inventory still needs k291's complete repair
 | K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
 | K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
 | K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
-| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an installed/protected/topology probe, consume another pass or qualify a product/native outcome. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared correspondence-observation addition. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
-the explicitly identified k281 contact/pre-lookup and k290 operator/owner/status amendments
+the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status and k295
+bounded correspondence-authority amendments
 above control their interpretation. No other original condition is waived. K291 owns the
 exhaustive contract/companion/operation-map reconciliation, and its whole review must challenge the
 complete amended conjunction before construction planning uses it.

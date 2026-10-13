@@ -121,10 +121,10 @@ The [correspondence table](application-reference-packaging-runtime.md#independen
 accounts for permitted UID/build/random/channel/CF, separate authority/validator and fresh
 export/storage operations, plus the retained foreground/entry/disarm obligations. Actual
 independent installed-build/peer-image/terminal facts remain required unavailable. One
-precise requirements checkpoint, reference-evidence-correspondence-authority-k295, now
-precedes k294: choose/refuse human current-OS display corroboration and narrowly enumerated
-read-only same-UID peer/terminal metadata, with exact retained-image/backing limits. This
-is an unselected recommendation, not permission, observed availability or qualification.
+precise requirements checkpoint, reference-evidence-correspondence-authority-k295, was
+placed before k294 to choose/refuse human current-OS display corroboration and narrowly
+enumerated read-only same-UID peer/terminal metadata, with exact retained-image/backing
+limits. At k293 this was an unselected recommendation; k295's actual decision is below.
 No LIVE preflight calibration or repeat U2 programme is introduced.
 
 K294 consumes the actual answer, refreshes every individual E/H/R statement/basis and
@@ -134,6 +134,40 @@ closing duty remains. K293 supplies no partial construction handoff, executed co
 actual authority/terminal/process/image/storage/build correspondence, finite subject or
 native outcome. K244/k242 remain live; k245's pass unused, k246/k247 and every hold remain.
 The historical all-E TSV remains defective pending that whole reconciliation.
+
+## Selected k295 correspondence authority and remaining work
+
+Antony answered "approve" to the single exact bounded arrangement, including the fixed
+mdfind child's metadata only inside A after consumption. The canonical
+[authority choices](application-population-metadata-shape.md#authority-and-admission-choices)
+and [operation-by-operation comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+own the binding permission: manual local OS About observation, finite separately authored
+unprivileged same-UID commissioned-peer metadata and the inherited operator-fd/group route.
+This report supplies no independent permission or role appointment.
+
+The explicit human UI exception and named metadata operations add observation authority
+only. Original source/cohort/layout/file/protected/one-attempt/prohibited-effect conditions,
+R7–R10, exact A3/disarm, producer/repairer exclusions, distinct k244 close and the existing
+seams remain. Shared OS mechanisms, cooperative enforcement and exec/PID/address/replacement
+races limit observations; insufficient signature/cache/backing facts and short/error/refused
+results still block required identities. Reported peer paths grant no extra target access.
+
+Actual independent current-build/peer-image/terminal originals and route qualification
+remain unavailable. Required Q06–Q08 evidence precedes credit and fresh P01–P03; source-child
+correspondence first occurs in A and a required failure prevents complete evidence. No
+process/kernel/tty/installed probe, authority provisioning, commissioning, control, collector,
+native/VM work or target acquisition occurred in k295. Its decision supplies no eligible
+release, instrument close or finite subject. The single pass is unused; both holds and
+every private/native/generated/whole-subject duty remain.
+
+K294 consumes the actual approved clause and exact comparison in exhaustive statement/basis
+partition and complete F1–F8/original-obligation/summaries/seven-view/charter reconciliation.
+The candidate whole-primary-source bytes and all actual runtime/charter inputs remain bound;
+no extra section exception or reporting relocation was approved. K291's mandatory whole
+review/every earned integration still precedes k269's construction/qualification placement.
+The existing specified arrangement needs no separate design programme merely to record
+this approval; any substantive gap found in whole reconciliation keeps its precise work
+before its consumer. K291/k244/k242 remain live.
 
 ## Selected k290 decisions and design handoff
 

@@ -70,3 +70,39 @@ Requirements only. No process/kernel/tty probe, installed query/contents, native
 authority provisioning, collector or new posture occurs here. Ask the single concrete
 authority trade-off using the source/design evidence already available. K244/k242 remain
 live; k245's pass unused, k246/k247/useful breadth and every hold retain full obligations.
+
+## Decisions (running log)
+
+Antony answered "approve" to the exact recommended bounded correspondence arrangement,
+including the fixed mdfind child's metadata only inside A after consumption. This leaf
+has one authority choice, below the full-grilling threshold; k270/k281/k290/k292's settled
+choices and the existing agreed seams are carried forward without another interview.
+
+The approved addition is Antony's manual local OS About product/build observation bound
+to host/session/time; separately authored unprivileged metadata for only finite same-UID
+commissioned supervisor/checker and declared retained Task/interpreter/verifier/CLI/control
+peers through proc_pidinfo(PROC_PIDTBSDINFO), proc_pidpath, read-only csops STATUS/CDHASH/
+PIDOFFSET and PROC_PIDREGIONPATHINFO at declared image addresses; and fstat/isatty/
+tcgetpgrp/getpgrp on only the direct ceremony's inherited operator fd/foreground group.
+Preserve original results/errors/lengths, process/session/channel provenance and independent
+retained-slice/signature/UUID/held-backing comparisons. Fixed-source metadata uses these
+already qualified mechanics only after consumption; no earlier mdfind sample is admitted.
+
+The approval selects authority for later independently owned construction/qualification,
+not observed availability, fact sufficiency, commissioning, instrument closure or release.
+Shared-OS/cooperative-enforcement/exec-race/address-reuse and unavailable signature/cache/
+backing limits remain explicit. Required missing Q06–Q08/P01–P03 facts block their stage;
+required missing source-child A facts prevent complete evidence. Retain all original
+source/cohort/layout/file/one-attempt/prohibited-effect duties and R7–R10, protected lookup,
+product/private/native holds and k245/k246/k247 duties. K294 incorporates this exact
+canonical amendment and comparison in complete reconciliation/mandatory whole-k291 review
+before k269; this requirements session performs no added observation or target operation.
+
+The existing k293 arrangement already specifies the selected APIs, finite objects,
+phase boundaries, originals, intended refusal controls and documentary limits. Recording
+its approval needs no separate substantial design repair or additional role/programme
+leaf. K294 remains the live owner of complete reconciliation, exhaustive input partition,
+qualification placement and mandatory whole-k291 review/every integration before k269.
+The pre-provisioning observation choice is reversible, so it does not clear the ADR
+hard-to-reverse AND surprising AND real-trade-off test; the canonical requirement and
+comparison record it, and the production descriptor ADR remains unchanged.
