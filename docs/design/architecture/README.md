@@ -14,19 +14,19 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion completes k302's whole-basis/read membership design and precise
-missing-original boundary. K295 approved bounded correspondence observation authority;
-actual facts/qualification, complete k303 reconciliation and mandatory whole-k291 review
-remain. Requirement rows and saved historical source pins supply no original runtime result.
+Current discussion presents k308's original-obligation concordance against the repaired
+admission protocol. The comparison preserves all selected and whole-source bytes and
+names actual missing originals before their consumers. The seven diagrams are unchanged
+context; their current labels and full delivery still require k309's final reconciliation.
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Shows merged required documentary/specimen/task/runtime/image/charter originals and earlier authority succession before Q, without crediting unavailable facts.
-- [Whole-basis and actual-read membership design](../../verification/application-reference-input-partition.md#whole-basis-and-actual-read-membership-design) — Composes exact preceding member namespaces with individual requirement contexts, missing work and an acyclic phase-object inventory.
+- [Whole-k291 obligation concordance](../../verification/application-reference-input-partition.md#whole-k291-obligation-concordance) — Adds individual original-duty, actual-answer and F1–F10 correspondence, with precise original/qualification and closing work before consumers.
 
-Unchanged foreground acceptance/admission/component/evidence/population views remain
-context, along with the unchanged contact view and exact T/A grammars. K295's
-actual decision supplies no current correspondence facts. The completed selected-input
-partition and membership design still require k303's complete merged reconciliation before mandatory whole-k291 review. No partial construction handoff,
-qualified control or target evidence follows. The historical all-E inventory remains defective.
+Unchanged context: [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof),
+[Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging)
+and the other five reference/corpus views. No diagram is marked changed in this update.
+K309 retains every original k307/k303/k298/k294/k291 closing condition, mandatory whole-k291
+review and its own closing Creator before k269. This comparison supplies no partial
+construction handoff, current runtime original, qualified control or authority.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
