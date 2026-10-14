@@ -15,6 +15,8 @@ K321 reviewed k320's proposal at 5fb818ab8125 and found eight actionable defects
 in retirement commit 4304ad5f46d7. K322 repairs amendment/H-default concordance, reporting
 pointers and stale owner wording; the [integration and required replacement](#k321-integration-and-required-replacement)
 place five remaining design obligations in reference-evidence-practical-admission-k323.
+K326 supplies the [coupled lifecycle contract slice](#coupled-lifecycle-contract-slice)
+under k325; k327 retains whole correspondence/final membership and closing review placement.
 That complete producer's mandatory whole review/every earned integration precedes k269
 planning. The [historical k320 boundary](#coherent-k320-replacement) compares k317's findings
 and retained duties at its snapshot; its membership manifest is preserved unchanged and
@@ -42,13 +44,13 @@ table locates the dispositions; normative choices remain in S/C/K/P, never this 
 
 | K321 finding | Classification and handling before its consumer |
 | --- | --- |
-| R1 ROOT → CP02 execution/publication | Valid and actionable. K323 owns a concrete execution lifetime/order, bootstrap and validator publisher capabilities/kinds/acknowledgements, removal of self/future binding and disarm-before-provisioning. The existing abstract schedule remains a defective proposal until the complete reviewed repair; k269 cannot supply the route. |
-| R2 repeatable records and immutable revisions | Valid and actionable. K323 owns predecessor-bound bootstrap/anchor and close successor locators, accepted current-anchor selection and partial-publication disposition, with unchanged-input requalification/trust-tool-change/stale-slot controls. No overwrite, restored authority or second initialization is selected. |
+| R1 ROOT → CP02 execution/publication | Valid and actionable. K326's coupled slice specifies same-CP01 synchronous publication, separately accepted publisher/validator capabilities, earlier-output validation and one co-running initializer/validator; the initial disarm seed precedes payload/permit work without an assumed register. K327 whole correspondence and whole-k323 review/integration still precede k269; no actual route/control is qualified. |
+| R2 repeatable records and immutable revisions | Valid and actionable. K326 specifies predecessor-bound anchors/validation-events/closes outside sealed revisions, deterministic current selection, retained failed-tail disposition and fresh unchanged-input/trust-tool/close successors. K327 retains complete membership/phase/duty correspondence; no overwrite, restored authority or second initialization. |
 | R3 nested Safari walk | Contract stated unclearly; actionable missing control. K323's first child k324 supplies the [complete composed policy/control slice](#composed-safari-policy-slice), including both held-A1 checks/immediate re-entries, saved-suffix resumption, two-expansion accounting and exact non-entry/second-step/OS-position negatives. Whole-k323 correspondence, final membership, mandatory review and every earned integration remain before k269; this child is no construction handoff. Historical syntax supplies no current native fact. |
 | R4 amendment and H/E-default omissions | Contract stated unclearly; repaired in C's Enduring inputs and Historical and reporting exceptions. Explicit k314/k319 amendments and k319 answer/k320 retired assignment now agree with S's actual comparison. K246/k247 and the evidence view name k319. Every other E duty remains. |
-| R5 manual About placement | Valid and actionable. K323 owns original human observation/provenance and independent comparison/acceptance before Q06/P01 in the five-checkpoint schedule, including fresh-P/correction rules. No sixth ceremony or scripted observation is authorised by this integration. |
+| R5 manual About placement | Valid and actionable. K326 places the permitted original in CP01 preparation, independently compares/accepts ready correspondence at ARTIFACTS before Q06 credit, and refreshes/accepts the original within CP05 before APPOINT and later qualified P comparison. Changed required basis disarms/repeats affected suffix; no sixth ceremony/scripted observation/new authority. K327 verifies full original-duty correspondence. |
 | R6 current handoff pointers | Valid and actionable; repaired in C/S. Links now land on the coherent-k320 boundary, k317 comparison, original-duty handoff and snapshot verification section, with this later-review boundary visible. Historical k315 targets remain locally historical. |
-| R7 no-follow stream holder | Valid and actionable. K323 owns the independently inspected pre-entry holder/invocation, no-follow/type/single-link/held descriptor operations and original artifact/runtime/read/control anchoring before cmp or any candidate runs. Shell redirection or a new candidate's self-check cannot supply it. |
+| R7 no-follow stream holder | Valid and actionable. K326 names Reference Stream Holder, SOURCE's independently supplied original/source/OS/image/read/control trust, exact paired no-follow/type/single-link/named-held checks and retained descriptor lifetime before cmp/entry. Link/race/unknown-image/lost-descriptor controls are at that first step. Actual originals/required images remain missing; shell redirection/candidate self-check supplies none. K327 retains whole membership/correspondence. |
 | R8 stale owner commands | Valid and actionable; repaired. Root's k287 roll-up has the same historical label as k242/k244. C's current control names CP05's fresh appointed release. All current handoffs expose the k323 replacement/review/integration prerequisite. |
 
 K323 is a live design node immediately before k269, not a completed repair or
@@ -102,6 +104,44 @@ dispositions, final replacement membership and whole-node review still belong to
 closing work in reference-evidence-practical-admission-lifecycle-k325. No original,
 control result, authority, initialization or finite subject
 is supplied; no target/native programme runs and the single pass remains unused.
+
+## Coupled lifecycle contract slice
+
+Reference-evidence-lifecycle-contract-k326 is the first child of the decomposed
+reference-evidence-practical-admission-lifecycle-k325. It keeps R1/R2/R5/R7 together
+in the normative C/K/P contract. It does not close k325/k323 or freeze an accepted
+current membership. Reference-evidence-practical-admission-correspondence-k327 is
+live before k269 and owns complete original-duty/charter/table/seven-view reconciliation,
+new complete documentary replacement membership after final edits and mandatory
+whole-k323 review/every earned integration. Old manifests remain immutable historical
+subjects. K324's complete composed Safari witness and k322's R4/R6/R8 repairs remain.
+
+- [Synchronous bootstrap publication and validation](application-reference-evidence.md#synchronous-bootstrap-publication-and-validation) — Defines one CP01 foreground continuation, initial fail-closed disarm seed, explicit bootstrap/validator capabilities, earlier-output validation and co-running one-time initializer through actual reap.
+- [Independent stream holder and continuity anchor](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor) — Names the original source/OS trust, exact paired no-follow opens/type/single-link/held checks and descriptor lifetime before cmp or candidate tools, with first-step refusal controls.
+- [Append-only anchor and close generations](application-reference-evidence.md#append-only-anchor-and-close-generations) — Separates records from sealed revisions, binds immediate successors to disarm/correction predecessors, preserves failed extents and requires fresh reaccepted anchors/closes without fallback/reinitialization.
+- [Manual About originals and fresh-P correspondence](application-reference-evidence.md#manual-about-originals-and-fresh-p-correspondence) — Places original production/independent comparison/ready acceptance before Q06 credit and fresh CP05 original acceptance before later P comparison; changed required basis uses the affected disarmed suffix.
+- [Packaging release and acceptance controls](application-reference-packaging-runtime.md#release-and-acceptance-controls) — Adds isolating same-invocation/seed/publication/holder/generation/About/death controls without executing them.
+- [Closed required Q/P blockers](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns) — Carries those required controls/current-anchor/fresh-close/About facts into their existing Q/P coordinates, preserving the accepted opaque-contact-unknown boundary.
+
+Compared ownership alternatives are a later invocation consuming saved ROOT authority
+and a supervisor waiting across Grove sessions. Both conflict with the selected
+foreground/direct-act lifetime and add an unselected bearer or persistent mechanism;
+the synchronous route instead needs two accepted co-running factual peers with exact
+private channel/terminal order. An overwriteable current-anchor/close file would simplify
+lookup but lose failed extents and require torn-state recovery; separate append-only
+chains add storage/validation work while leaving accepted revisions sealed. The original
+stream-holder/source/OS base reduces candidate self-certification at the cost of another
+independently acquired and inspected artifact/closure. None is currently available.
+The original trust/permission choice remains bounded cooperative enforcement, never a
+full native no-contact or OS-crash/hostile-user certificate. New source/image/runtime/
+control originals must qualify before consumers, not be inferred from these descriptions.
+
+This slice's two updated approval/admission views show those relationships. The other
+five views retain context until k327's complete correspondence. Native/identity/read/
+terminal/authority/receipt/control values remain missing, not empty or accepted unknowns.
+K245's pass remains unused; k244/k242/finite subject stay live, and all k246/k247/full
+useful breadth/additive supported-VM/native/private/product duties and both holds remain.
+No implementation, native control/target query, provisioning or authority act occurred.
 
 ## Coherent k320 replacement
 

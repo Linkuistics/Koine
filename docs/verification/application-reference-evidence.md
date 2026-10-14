@@ -665,8 +665,12 @@ partial publication refuses. No argument, environment variable, proof or reposit
 selects the register. Its fixed retained bootstrap checker is the admission entry; tasks
 can request admission but cannot select another checker or issue approval.
 
-The register retains `bootstrap.accepted`, immutable numbered revision directories,
-independent verifier-control acceptance and receipt-validation records. These are authority
+The register retains separate append-only `anchors` and `closes` generation chains,
+immutable numbered revision payloads, independent verifier-control acceptance and
+receipt-validation phase records. `bootstrap.accepted` and `trust-originals` belong
+to one exact anchor generation; no close is written inside a sealed revision.
+The [generation contract](#append-only-anchor-and-close-generations) fixes selection,
+successors and failed extents. These are authority
 evidence, never a reusable qualification flag. Missing root/checker refuses without scan,
 initialization or recovery. The checker/registrar's exact artifacts, source/build inputs,
 interpreter/stdlib/packages, loader images and observed read closure are bootstrap inputs.
@@ -730,7 +734,7 @@ interaction, with ready control originals and no Grove-session wait:
    appoints no LIVE process and accepts no future result. The entry is read/executed
    from its independently retained original, never selected by a checkout candidate.
 2. **CP01-ARTIFACTS:** that entry compares the complete actual ready entry/engine/display,
-   registrar/checker/launcher/initializer/validator/close-publisher artifacts and their
+   registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher artifacts and their
    runtime/read members with independently supplied frozen originals. Antony accepts or
    refuses this now-ready set and the complete original bootstrap and initializer/validator
    mechanics outcomes. Only after ACCEPT may the engine/display/registrar or accepted
@@ -758,10 +762,174 @@ predecessors. Actual bootstrap/initialization outputs and staged/final validatio
 ready for CP02 afterward. The already selected qualified-publication rule binds records
 created by the direct act without recursive approval of their own future bytes. Before
 CP02 neither an unaccepted future receipt nor final Q result is used as a trust input.
+The invocation continues synchronously after ROOT under the following exact route;
+it does not return and later replay ROOT as authority.
+
+#### Synchronous bootstrap publication and validation
+
+CP01-ARTIFACTS accepts the **Reference Bootstrap Publisher**, its separate factual
+**Reference Publication Validator**, the one-time initializer, their original controls
+and complete artifact/source/build/runtime/read/owner closure. The bootstrap publisher
+may share the initializer or disarm-maintenance operator when the compatibility-table
+exclusions hold. It is separate from its publication validator and Antony's adjudication.
+Its accepted capability publishes exact earlier human trust acts and supplied originals;
+it makes no semantic decision, accepts no result, creates no LIVE endpoint and has no
+permit-consumption/reset power. Antony's trust registrar does not acquire this capability
+by implication. The validator may also supply the earlier factual ancestry peer and
+staged/final receipt validation, but is separate from every producer/repairer of the
+fact it validates, the initializer, and the human acceptance owner.
+
+The independently accepted launcher remains the foreground supervisor of **this CP01
+invocation**, outside agent harnesses, through every peer's actual terminal return.
+ROOT's direct confirmation/context is consumed once in memory by that launcher. The
+launcher does not return at ROOT, wait for another Grove session, lend a human pty to
+an agent or launch a later process from a saved ROOT record. Published records are
+earlier evidence for CP02; they are not transferable initialization authority.
+
+**First disarm has no assumed register.** Before first commissioning, absent required
+authority is unavailable, never ELIGIBLE. ROOT's accepted exact A2 plan can reserve only
+the missing approved approval ancestry/subject and the fixed lock/event containers.
+Each exclusive reservation is fail-closed: a partial/uncertain prefix cannot be used as
+a ready register or permit, and no packaging route constructs it. Its first event is
+`release-events/0/disarm.intent`, with no predecessor and basis equal to the earlier
+direct SOURCE/ARTIFACTS/ROOT manifests, original facts, initialization nonce and approved
+bootstrap-only capability. Its separately published `event.result` finalizes only
+the completed disarm-seed reservation/acknowledgments as DISARMED, before later
+work; it predicts no bootstrap/initialization success. Those later acts retain
+their own anchor/validation records and failed extents under this seed's scope.
+Finish its checked writes, held/namespace/full-flush
+acknowledgements **before** trust-original/payload publication or any permission-subject
+provisioning. Initial approval-store reservation is the disarm enabling point, not work
+authorized by a nonexistent older register event. It grants no qualification/release.
+Failure to reserve or acknowledge that seed retains exact extents and starts no such
+work. Existing/unknown ancestry or uncertain prior initialization remains a blocker,
+not permission to recreate the namespace. Subsequent work uses the already specified
+release-before-register lock order and a new durable disarm successor. No failed seed
+can be repaired by deleting, overwriting or silently repeating permit initialization.
+
+The ordered continuation after ROOT is:
+
+1. The bootstrap publisher reserves anchor generation 0 under the acknowledged initial
+   disarm (or the exact reacceptance successor for a later CP01), writes supplied
+   `trust-originals` and the earlier SOURCE/ARTIFACTS/ROOT acts, then publishes
+   `bootstrap.accepted` and `anchor.result` with the required checked acknowledgements.
+   Bootstrap acceptance names the earlier original acts and accepted mechanics only.
+   It contains neither its own publication acknowledgment nor a later validation result.
+2. The separate validator compares these **completed earlier outputs**, exact membership,
+   held identities and publisher acknowledgements under its accepted factual capability.
+   It publishes `bootstrap.publication-validation` in the next exact validation phase
+   slot. Only that completed independently checked record and true-returned publisher
+   permit initialization. A missing/partial/failed record stops before the initializer.
+3. The launcher starts the initializer **once**, together with the separately owned
+   staged/final validator. The initializer creates/retains the exact staged receipt and
+   sends its complete original bytes/identity/acknowledgements. It stays alive while the
+   validator publishes `receipt.binding` for the proposed unspent role and replies with
+   that actual checked record. The initializer verifies that response once, then exposes
+   the same held inode at `unspent.receipt` and performs all required synchronization.
+4. The initializer sends its final original named/held receipt and synchronization
+   results, closes its write direction and returns. The launcher drains/reaps it and
+   supplies the original terminal result to the validator over the launcher's separate
+   endpoint. The validator does not require initializer death before staged binding,
+   and the initializer does not wait for its own final-validation record before exit.
+   After normal zero initializer reap, the validator independently rechecks the final
+   named/held receipt and publishes `receipt.final-validation`. The launcher receives
+   its exact original result/acknowledgements, EOF and normal zero validator reap before
+   this foreground invocation returns. CP02 later accepts these now-existing originals.
+
+For bootstrap reacceptance, step 3 is absent: a `REANCHOR_ONLY` ROOT purpose authorizes
+the next anchor and affected validation/qualification suffix, not a new initialization
+nonce. `INITIALIZE_ONCE` is valid only for the independently established never-initialized
+state and original ROOT nonce. Existing, partial or uncertain permission state cannot
+be reclassified by a later anchor. Post-consumption operation remains offline-only.
+
+| Accepted capability | Exact writes and prohibited substitutions |
+| --- | --- |
+| Bootstrap-only publisher | Initial disarm seed, exact `anchors/n/anchor.intent`, supplied `trust-originals` members, `bootstrap.accepted` and `anchor.result`; exact accepted initial revision/control/trust records in their separate phase slots. Full member/locator/owner plan precedes ROOT. No receipt production, factual validation, close, ELIGIBLE or APPOINT under this capability. |
+| Publication/receipt validator | At `validation-events/n`, exactly `validation.intent` and `validation.result`, whose closed kind is `bootstrap.publication-validation`, `receipt.binding` or `receipt.final-validation`. Each binds only completed earlier outputs and independently acquired comparisons. No trust acceptance, input rewrite, permit exposure, close, eligibility or appointment. |
+| One-time initializer | Only the fixed permission ancestry/subject, staged receipt and exclusive same-inode unspent publication plus their original acknowledgment/terminal reports. Its live authority is this in-memory ROOT continuation; no record bearer or second invocation. |
+
+The seed writer's accepted bootstrap capability also covers that exact initial
+disarmed event.result; later disarm-only maintenance cannot publish trust/eligible acts.
+All three use distinct newly created unnamed socketpair endpoints, explicitly passed
+only to the intended accepted peer, with all unrelated endpoints/authority descriptors
+closed. Initializer↔validator has its own duplex endpoint; launcher↔each peer remains
+separate. Independently observed owner/incarnation/image/endpoint and held/read facts,
+complete closure and accepted finite frame/time limits are ready mechanics before CP01.
+Closed versioned length-framed messages contain exact kind, monotone sequence, fresh
+256-bit invocation nonce, ROOT purpose/binding, current anchor/revision/disarm,
+exact locator/member/owner and earlier record bytes/identity/length bindings. The kinds
+are `bootstrap.publish`, `bootstrap.published`, `bootstrap.validate`,
+`bootstrap.validated`, `receipt.staged`, `receipt.bound`, `receipt.published`,
+`initializer.terminal` and `receipt.validated`. Each has exactly one sender and expected
+phase; no extra/trailing/duplicate/future frame, environment role or pathname socket.
+Only the launcher sends initializer.terminal after actual reap. A publication response
+includes original checked-write counts/extents, held/named identity checks, every flush
+return/errno/order and the complete published bytes. A peer closes its write direction
+after its final expected frame; readers require EOF and the launcher's normal zero reap
+of each completed child. The staged reply precedes initializer exit; final validation
+follows it. No wait is smuggled across a checkpoint/session. Timeouts freeze further
+publication/release and retain prefixes; true return/reap remains required, with no
+claim that timing out a wait cancels a native call or certifies storage success.
+
+Independent SCRATCH originals for this exact constructor/peer/channel/read/operation
+closure precede CP01. Positives execute the actual one-invocation order. Negatives isolate
+missing initial disarm, future/self bootstrap acknowledgment, publication-check omission,
+wrong writer/kind/locator/nonce/phase, inherited/leaked endpoint, malformed/extra frame,
+staged validation after attempted exposure, final validation before initializer reap,
+initializer waiting for its own final record, publisher/validator substitution and death
+before/after every write/flush/reply/EOF/reap. Each retains the actual reached refusal
+and acknowledged/failed extent. Missing required native/runtime/read facts still block;
+this authored route supplies no implementation, actual original, authority or qualification.
+
+#### Independent stream holder and continuity anchor
+
+**Reference Stream Holder** is a separately authored/reviewed retained original, named
+in CP01-SOURCE's one-page source/OS trust method. The inspected source, exact original
+executable/build correspondence, declared OS primitive and complete required runtime/read/
+image facts and independent original controls precede its first execution. SOURCE trusts
+that finite independently supplied original on those explicit grounds; it does not ask
+a candidate holder/entry/engine to certify its own original or executing image. Unknown
+required holder/cmp image, source-to-artifact correspondence or negative-lookup evidence
+refuses before this method starts. No compilation, dependency resolution, PATH lookup
+or candidate-selected holder runs inside the ceremony. The holder joins the accepted
+artifact set at ARTIFACTS and every later anchor; source/OS trust remains explicit, not
+a claimed recursively verified OS or hostile-user authentication mechanism.
+
+The original holder accepts only the complete CP01-inspected fixed member-pair plan:
+each member names an independently supplied original and executable copy by exact
+approved retained parent identity and literal component sequence. For each pair it
+walks only the named search-only no-follow ancestors, performs no listing/link follow,
+opens original then copy using `openat(O_RDONLY | O_NOFOLLOW | O_CLOEXEC)` and checks
+`fstat` regular-file type, one link, exact approved UID/mode/device/inode/available stamps
+and length, plus named `fstatat(..., AT_SYMLINK_NOFOLLOW)` equality. OS-object ownership/
+modes come from their separate approved observations, never a blanket user/0600 rule.
+Every required member has a held descriptor before cmp or candidate entry execution.
+Missing, linked, substituted, unknown, changed or lost descriptors refuse at this first
+step; a matching string/digest or shell pathname redirection cannot substitute for it.
+
+The holder passes duplicates of only the two checked streams to the retained `/usr/bin/cmp`
+child as fd 3/4, with exactly `-s /dev/fd/3 /dev/fd/4`. It invokes the reverse pair as well,
+checks complete results/EOF/normal zero reap, restores/checks regular-stream offsets
+before the next consumer and compares the complete member set in both directions.
+Other capabilities stay close-on-exec/uninherited. It rechecks named/held identities and
+full before/after bytes/lengths around comparison. Only then does the inspected original
+short entry compare the remaining ready artifact/runtime/read members. Checked streams
+remain held by the original holder through the entire foreground trust invocation's
+actual return, including entry comparison and each consumer's freeze; the entry does
+not reopen a pathname after cmp. Loss/identity change freezes that consumer. This
+observes cooperative races; it cannot certify absence of an unobserved mutate/restore
+interval or eliminate shared-OS/undetectable whole-anchor-forgery limits.
+
+Independent controls place original-link substitution, copy-link substitution, ancestor
+link, wrong type/extra hard link, pre-open replacement, between-open/compare replacement,
+named-versus-held mismatch, unknown holder/cmp image, omitted required negative lookup,
+descriptor closure/reuse and changed byte/length at **this holder step**, with otherwise
+valid later specimens. Refusal precedes cmp/entry/engine; later tool refusal is no credit
+for the missing first check. No required identity becomes an accepted contact unknown.
 
 **Independent continuity anchor.** CP01 retains an exclusive no-follow frozen original
 set outside checkout/proofs/exports, under the fixed approvals branch's exact
-`trust-originals` operation plan. It contains the accepted short entry, engine, display,
+`anchors/n/trust-originals` operation plan. It contains the accepted holder, short entry, engine, display,
 anchor invocation/runtime objects and complete declared/observed read/member closure,
 original source/build/review/control provenance and CP01 binding. The register binds
 that set's actual held identities and full ordered bytes/length/member inventory.
@@ -770,7 +938,8 @@ possibly changed candidate at a later checkpoint. Missing, substituted or change
 originals refuse; no scan, resolver, checkout restore or automatic re-baseline exists.
 
 At **every CP02–CP05**, before executing/importing engine/display/registrar, Antony starts
-from that same inspectable original entry and the CP01 source/OS trust method. The fixed
+from the deterministic current accepted anchor's original holder/entry and CP01 source/OS
+trust method. The fixed
 independent OS primitive is retained `/usr/bin/cmp`, invoked with exactly `-s` and
 `/dev/fd/3`, `/dev/fd/4` for the two already held no-follow original/copy streams, no
 PATH or arbitrary pathname. Its exact executable, runtime/read closure and source/OS
@@ -790,6 +959,90 @@ The published bootstrap/receipt/close records bind this accepted tool set and it
 control provenance explicitly. This retains the cooperative same-UID/OS trust assumption;
 whole-anchor forgery/undetectable rollback remains outside protection. It is not human
 or hostile-user authentication and does not claim complete opaque runtime coverage.
+
+#### Append-only anchor and close generations
+
+The fixed approval subject separates `anchors`, `validation-events`, `closes`, sealed
+revision payloads and the existing `release-events`. Each new container and its held
+identity is in the accepted exact A2/bootstrap plan. Anchor/validation/close slots use
+the release chain's checked unsigned-64 decimal grammar, start at 0 and are reserved
+exclusively under release-before-register locking. No argument chooses an ordinal.
+Only the exact immediate successor of the retained predecessor may be addressed.
+
+| Chain / exact slot members | Closed predecessor and completed-result meaning |
+| --- | --- |
+| `anchors/n`: `anchor.intent`, `trust-originals`, `bootstrap.accepted`, `anchor.result`, conditional `failure.disposition` | Intent binds preceding finalized result/disposition (none at 0), current durable disarm, reviewed correction/unchanged-input basis, direct CP01 purpose/nonce and complete proposed original/member/owner plan. Completed result binds earlier published trust-originals/bootstrap acceptance and their original acknowledgment transcripts. Separate bootstrap.publication-validation checks those completed outputs before use. Later reacceptance uses REANCHOR_ONLY; immutable issuance receipt/nonce stay unchanged. |
+| `validation-events/n`: `validation.intent`, `validation.result`, conditional `failure.disposition` | Intent binds preceding finalized result/disposition, exact anchor/revision/disarm and one permitted factual validation kind. Result binds only earlier completed publisher/initializer outputs, exact comparison/held facts and original earlier acknowledgments. Staged binding precedes unspent exposure; final validation follows initializer EOF/normal zero reap. Subsequent revalidation names the same issuance receipt; it neither replaces issuance nor recreates permission. |
+| `closes/n`: `close.intent`, `instrument.close`, `close.result`, conditional `failure.disposition` | Intent binds preceding finalized close/disposition, current durable disarm/correction basis, exact accepted current anchor/revision, fresh CP03 results/audit and distinct owner's accepted capability. Close.result binds earlier complete instrument.close bytes/identity and original publication acknowledgments. CP04 checks exact completed record/channel/EOF/reap/freeze closure, never an older close or intent alone. |
+
+Every intent/result/disposition includes chain/ordinal/kind, exact held slot identity,
+predecessor full bytes/identity, basis/phase/nonce/owner/member bindings and earlier
+original provenance under the strict encoding. Records never include their own digest
+or future acknowledgment. The separate invocation transcript and later validation/trust
+act bind a record's actual writes/flush/EOF/reap after they happen. Neither merely
+reserved namespace nor an authored result supplies an acknowledged successful act.
+Complete trust-original member names are the accepted fixed manifest's closed opaque
+component encodings; duplicate/unlisted/path-like names refuse before opening.
+
+**Selection is deterministic, not search.** From the actual fixed held chain root,
+check slot 0 and then each exact next ordinal/predecessor until the immediate next
+slot is absent. Traverse only this explicitly bound chain. Any present unfinalized,
+partial, wrong-kind/identity/predecessor or conflicting slot makes the chain unavailable
+and disarms current eligibility; do not use an earlier successful anchor/close.
+An orphan beyond an absent immediate next slot is not discovered by a forbidden scan
+and cannot be presented as reachable authority. Qualified writes never skip ordinals;
+a supplied reference to a skipped slot refuses. No completeness claim about unseen
+directory contents is implied by this algorithm or by cooperative rollback limits.
+The current anchor is the last reachable completed, independently validated and
+CP01-accepted anchor, only when the entire reachable chain is finalized and its exact
+disarm/correction basis is applicable. Finalized failed tail leaves no usable current
+anchor until a successful successor; a successful but unaccepted/unchecked tail also
+refuses. A close is current only as the last complete acknowledged close for this exact
+current anchor/revision/disarm/CP03 basis, with no pending/failed successor. Nothing
+updates a mutable current-pointer file or silently re-baselines trust-originals.
+
+**Partial disposition never completes failed bytes.** Mere slot reservation, including
+an empty intent, invalidates old eligibility. Preserve all acknowledged and unacknowledged
+bytes/extents, held identities, raw returns, EOF/reap/death observations and unperformed
+work at their exact original coordinates. Under independently reviewed disposition
+mechanics, Antony's ready-object trust act accepts an exact `failure.disposition` at
+that reserved slot, naming those extents/unknowns and leaving DISARMED. His accepted
+registrar publishes that act only; it cannot claim a damaged publisher/validator/close
+record succeeded. The publisher's owner cannot adjudicate its own failed results.
+The disposition is exclusive and immutable; if its own publication is partial/unknown,
+the slot remains unavailable, with precise live work/authority decision before use.
+No recursive automatic disposition, cleanup, deletion, overwrite, scan or fallback is
+selected. Only a finalized disposition can precede a new ordinal and fresh disarm basis.
+
+For a first bootstrap failure before a valid anchor exists, source/OS trust and newly
+ready independent originals must again precede any proposed disposition. The same
+source/holder/short-entry method compares retained earlier failed extents; no absent
+register is inferred valid and no changed tool accepts itself. Exact ancestor/seed
+identities and never-initialized state must be independently established. Unknown
+authority/initialization cannot be disposed into permission and needs Antony's separate
+decision. The disposition route writes only its accepted exact locator and no permit.
+
+Changed trust-tool/source/build/runtime/read closure requires durable disarm, independent
+review/every earned integration and new original controls, followed by CP01 SOURCE/
+ARTIFACTS/ROOT REANCHOR_ONLY and a new validated anchor. Continuity checks at CP02–CP05
+select that exact successor; they cannot copy a possibly changed candidate into an
+old original set. Sealed revision payloads/earlier accepted original sets never change.
+Unchanged-input Q still reserves a new disarm event and yields fresh Q → CP03 → new
+close → CP04. A repaired/partial close uses the retained failure disposition and a new
+close slot; an unchanged revision does not justify reusing an older close. CP04 refusal
+cannot be answered by replaying the old close: any affected repeat has its explicit
+disarm/correction basis, and unknown impact repeats the whole affected suffix.
+Post-consumption corrections only support offline re-derivation/independent verification;
+they never publish acquisition eligibility/appointment or initialize another permit.
+
+Independent controls pair partial-close → accepted retained-failure disposition → fresh
+repaired-close and changed-tool → independently reaccepted successor anchor with
+stale-anchor/old-close/old-disarm/old-CP03, skipped ordinal, forged predecessor, unaccepted
+tail, mutable-pointer/scan, overwrite/delete/reinitialize, disposition self-acceptance and
+unchanged-input-Q reuse negatives. Kill at reservation, every short write/flush/result,
+validator reply, EOF/reap, failure-disposition and CP04 publication boundaries. Actual
+SCRATCH extents/frames/returns must show the refusal before its consumer; specified
+expectations alone qualify no chain, persistent storage, native mechanism or authority.
 
 The engine performs full-byte comparison (not digest equality alone), complete membership
 in both directions, all required Q/P/control/applicability and original-obligation checks,
@@ -932,6 +1185,8 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Bootstrap-control executor / original-result acquirer | Independently run actual retained entry/engine/display/checker/launcher controls; original native/format observation acquisition | Separate from the producer/repairer and original expected-result author for those facts. Execution acquires evidence, it never accepts itself. It may also be the separate bootstrap validator if those exclusions hold. |
 | Bootstrap-control adjudicator and trust acceptor | Antony's original-control adjudication, commissioning, ready payload/correction/entry acceptance, final original-result acceptance/audit, eligible-basis acceptance and fresh appointment | Antony did not produce/repair the candidate, run the qualification/control programme or author its expected answers that he adjudicates. His explicitly selected manual About source observation remains permitted; it is separately compared with independently acquired programme results, not self-audit of a candidate/control programme. He uses the independently bootstrapped tool and original dispositions for his own semantic decision. Reviewer writes no authority; runner/acquirer gets no trust role. |
 | Qualified one-time initializer | Candidate provisioning mechanics, authorized disarm-only maintenance, qualification running if independently authored expectations remain separate | Separate from both staged and final receipt validator and from trust acceptor/distinct closer for its outputs. Packaging/pure selector cannot initialize the live permit. Prior qualified/accepted mechanics precede real initialization. |
+| Qualified bootstrap/trust-originals publisher | May share initializer/disarm-maintenance operator under their exclusions; exact original/trust publication from this CP01's direct ready acts | Accepted bootstrap-only capability and artifact/runtime/read/control originals precede ROOT. Separate from its factual validator and semantic acceptance. No implicit human-registrar extension, permit production under this capability, close, eligibility or appointment. |
+| Independent pre-entry stream holder | Supplies only the inspected original method's exact no-follow paired streams and retained descriptor lifetime | Independently authored/reviewed original source/build/runtime/read/image/control closure precedes SOURCE/first opens. Candidate holder/entry cannot certify it; no independent acceptance of its own manufactured original/results. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
 | Distinct instrument closing owner and step | Complete original-obligation comparison/promotion after final accepted Q results/audit; own accepted close-only publisher | Separate from producers/repairers, original expected-result author or executor whose fact it closes, control/qualification runner, initializer/validator whose facts it closes and Antony's trust/audit/release group. It cannot accept its own capability/controls or publish human trust/eligibility/appointment. Missing evidence cannot close in prose. |
 | Foreground acquisition / offline derivation | Appointed child and offline derivative constructor after original freeze | No trust/appointment/reset power. Independent association verifier is separate from the producer/deriver for the checked facts. Antony appoints the retained supervisor/checker/child together; only that invocation carries LIVE. |
@@ -944,22 +1199,25 @@ it for him. This design appoints nobody and creates no implementation/HITL leaf.
 
 | Order / named human step | Ready work, exact act and first consumers |
 | --- | --- |
-| Preparation before CP01 | Independent authors freeze complete obligations, inventory/bases/entries/read/phase/exclusions. Producers build retained candidate and independent trust tool; whole artifact reviews/every earned integration finish. Independent executor runs all bootstrap/entry/engine/display/registrar/peer/close-publisher and initializer/validator mechanics under the reviewed SCRATCH-only origin. Separate validator checks original outcomes and scratch acknowledgements. Complete originals, actual permitted peer/read/image results and independent validation are ready before the ceremony. No live commission is needed to qualify it; missing originals stop here. |
-| CP01 — Bootstrap and artifact acceptance | CP01-SOURCE: original source/OS trust. CP01-ARTIFACTS: short entry's full-byte/member comparison, Antony's acceptance of actual ready artifacts, original controls/mechanics and validation results. Then the accepted factual validator synchronously returns current exact bootstrap ancestor/UID facts; CP01-ROOT accepts that ready computed plan and authorizes exclusive disarmed bootstrap publication plus exactly one named initialization. No control acquisition or Grove-session wait occurs inside this checkpoint. The accepted trust-originals and close-only/maintenance capabilities are in that plan. |
-| Between CP01 and CP02 | Independent qualified bootstrap publisher/validator complete exclusive publication and actual held/acknowledgement checks. Only a successful CP01-ROOT binding and checked publication permit the named initializer's single invocation. Separate validator checks actual staged receipt before unspent publication and final named/held receipt/acknowledgements afterward. Preserve every actual outcome/partial extent. No qualification of mechanics, new authorization, LIVE selection or target sample is hidden here. |
+| Preparation before CP01 | Antony performs the permitted original manual About observation/provenance as CP01 preparation, before the independent executor's build-buffer comparison. Independent authors freeze complete obligations, inventory/bases/entries/read/phase/exclusions. Producers build retained candidate and trust tool; whole artifact reviews/every earned integration finish. Independent executor runs bootstrap/holder/entry/engine/display/registrar/publisher/peer/close-publisher and initializer/validator mechanics under SCRATCH. Separate validator checks original outcomes, About/build correspondence and scratch acknowledgements. Complete originals/peer/read/image/comparison results are ready before the own-terminal ceremony; missing originals stop here. |
+| CP01 — Bootstrap and artifact acceptance | SOURCE inspects original holder/entry/OS trust. ARTIFACTS accepts the complete ready artifacts, control/mechanics originals and About/build comparison/provenance before Q06 credit. The factual peer returns current exact A2 ancestry/UID facts; ROOT accepts that ready plan and authorizes the disarmed same-invocation continuation and exactly one named initialization. No control acquisition or Grove-session wait occurs inside this checkpoint. Explicit bootstrap-publisher/validator/holder/close-only/maintenance capabilities are in its ready plan. |
+| CP01 continuation after ROOT, before CP02 | The same own-terminal launcher first retains/acknowledges the initial disarm seed, publishes the anchor/trust originals, reaps the publisher and obtains separate bootstrap.publication-validation of those earlier outputs. It then runs the initializer once with its separately owned co-running staged/final validator; staged binding precedes unspent exposure, final validation follows actual initializer EOF/zero reap, then validator EOF/zero reap. Return only with retained original outputs or precise failed extents. No saved ROOT bearer, cross-session wait, new judgment, target sample or second initialization. |
 | CP02 — Qualified receipt acceptance | Independent entry/runtime continuity first. Antony accepts actual original bootstrap-publication, initialization, staged/final-validation, immutable issuance receipt and required bridge facts after they exist. Mechanics were already accepted at CP01; CP02 is not their first trust act. Ready actual objects first feed final Q/P. Failed/uncertain publication/initialization stops and cannot repeat initialization. |
 | Between CP02 and CP03 | After last edits/review repair/provisioning, accepted maintenance reserves/flushed durable disarm intent before final affected Q. Q01–Q10 consume only earlier accepted rules/originals/receipt facts and emit original results; scratch acceptance/audit/close mechanics require no future final-Q acceptance/audit/close. |
 | CP03 — Final original Q results and audit | Independent entry/runtime continuity first. Tool compares every original Q result and required input/authority/obligation coordinate; Antony accepts/refuses ready original results and complete audit with original dispositions/reasons. Those finalized records first feed the distinct closer. |
 | Distinct close between CP03 and CP04 | Independent closing owner checks every original k244 duty, CP03 acceptance/audit and stable input/receipt/current basis. Its previously accepted close-only publisher emits the exact independently acknowledged close record, or retains precise live repair. It is a separate owner/step, not a sixth human checkpoint; Antony's registrar cannot supply its capability. |
 | CP04 — Eligible basis after distinct close | Independent entry/runtime continuity first. Tool computes the complete finalized issuance/current/receipt/Q/acceptance/audit/acknowledged-close/event basis. Antony accepts that ready basis and registrar publishes acknowledged eligible successor. No future A3/appointment/A result is its input; first consumer is CP05. |
-| CP05 — Exact entry acceptance and fresh appointment | Independent entry/runtime continuity first. Independent author supplies exact fresh A3 request/ancestor/operation/basis/refusal entry. Antony ACCEPTs the ready entry/current eligible basis, then APPOINTs this request/nonce and starts the retained foreground supervisor/checker/acquirer together. P01–P05's actual UID/build/images/terminal/channel/authority/export/input facts precede intent/start/A; all coexist through true return. |
+| CP05 — Exact entry acceptance and fresh appointment | Independent holder/entry/runtime continuity first. Antony refreshes the permitted original manual About observation/provenance, ACCEPTs that ready original and the independently authored exact A3 entry/current eligible basis, then APPOINTs this request/nonce and starts the foreground supervisor/checker/acquirer together. Independently qualified P01 compares fresh sysctl buffers with that accepted original before credit/intent. P01–P05's actual UID/build/images/terminal/channel/authority/export/input facts precede intent/start/A; all coexist through true return. |
 
 The first-consumer graph begins with independent authored expectations → SCRATCH original
-control execution/validation → CP01 actual mechanics/artifact acceptance → current bootstrap
-factual validation → CP01-ROOT authorization → actual bootstrap publication/checked
-acknowledgements → single initialization/staged-final validation → CP02 actual receipt
+control execution/validation (with earlier original About observation) → CP01 actual
+mechanics/artifact/About-comparison acceptance → current bootstrap factual validation →
+CP01-ROOT authorization → initial durable disarm → anchor publication/publisher reap →
+separate earlier-output publication validation → one initializer/co-running staged-final
+validator invocation → initializer reap/final validation/validator reap → CP02 actual receipt
 acceptance → disarmed final Q → CP03 original results/audit → distinct acknowledged close
-→ CP04 eligible basis → CP05 entry acceptance/appointment → fresh P → intent/start/A.
+→ CP04 eligible basis → CP05 fresh original About/entry acceptance/appointment →
+fresh P correspondence → intent/start/A.
 No future result can authorize an earlier Q, bootstrap publication or initialization.
 The controls test this order with otherwise valid scratch operands: unaccepted mechanics,
 future CP02 substituted as initialization authority, missing CP01-ROOT, failed bootstrap
@@ -986,6 +1244,41 @@ ceremony or approve a future object. No such conflict is known from the specifie
 conjunction; actual required evidence remains unacquired, so realizability is a design
 placement claim for whole review, not a qualification result.
 
+#### Manual About originals and fresh-P correspondence
+
+Antony's selected original UI observation is CP01 **preparation**, before independent
+build-buffer/control-result comparison; its original product/build/host/session/time and
+human provenance are then ready with independently acquired programme results and the
+separate validator's comparison at CP01-ARTIFACTS. No control programme runs in that
+human acceptance ceremony. Q06 credit is withheld until this ready correspondence is
+accepted, even when the earlier raw API calls succeeded. This permitted human original
+is distinct from authored expectations and from executing/adjudicating a candidate or
+qualification programme; all own-result exclusions remain. Preparation's UI operation
+is not an extra trust checkpoint and uses only k295's already approved manual exception.
+
+At each CP05, after continuity and before ready acceptance/APPOINT, Antony supplies a
+fresh manual About original with the current host/session/time provenance. He accepts
+the now-existing original; the already qualified independent P observer compares fresh
+raw named sysctl buffers afterward, before P01 credit or intent. CP05 does not approve
+that future comparison result: it authorizes only the appointed invocation under the
+already accepted comparison/refusal contract. Wrong selected build, stale/unknown
+provenance, host/session change or unordered observation/API intervals refuses. No
+scripted UI, plist, sw_vers, alternate sysctl or trial LIVE calibration is admitted.
+
+A changed observation time is a fresh phase-specific P fact, not a change to the
+qualified rule/tool/runtime or permission. Changed host/session/build/configuration or
+actual consumed dependency invalidates the affected correspondence basis: disarm before
+dependent work, acquire independent originals and repeat affected Q/acceptance/close/
+eligibility suffix (CP01/CP02 also when their bound trust/receipt facts change), without
+reinitializing or substituting a current reference. Fresh About alone cannot repair that
+change or arm LIVE. If Q prepared on one host/session cannot be independently matched
+to the direct CP01 or later CP05 context, it remains unavailable with exact work before
+use; no sixth ceremony or newly authorized observation is inferred. Changed time with
+otherwise independently unchanged required basis uses CP05's fresh original and fresh
+P comparisons only. Missing/changed required facts block, rather than becoming accepted
+opaque contact unknowns. The authored observation/compare/acceptance order supplies no
+current OS label, peer fact, qualification or authority.
+
 #### Durable disarm and release events
 
 Use the fixed approvals namespace and stable held release-lock object. Acquire the
@@ -1003,11 +1296,13 @@ with unchanged input bytes, must reserve a durable successor disarm event **befo
 mutation or qualification/read of the changed subject. Bypassing this enabling point is
 a required control failure. Pre-existing proofs cannot authorize the work early.
 
-Release events form one fixed, append-only, contiguous ordinal chain from the accepted
-bootstrap anchor. Each exact next slot is exclusively reserved; its mere existence,
+Release events form one fixed, append-only, contiguous ordinal chain. The initial seed
+precedes the first anchor under the direct ROOT plan as specified in the synchronous
+bootstrap contract; later events bind the accepted current anchor. Each exact next slot
+is exclusively reserved; its mere existence,
 including an empty/partial directory/intent, disarms the preceding eligible event.
 The register has fixed children release.lock and release-events, with actual held
-identities bound in bootstrap.accepted. Event slots are single ASCII decimal components,
+identities bound in the earlier ROOT plan and later bootstrap.accepted. Event slots are single ASCII decimal components,
 starting at 0, without sign/leading zeros, checked unsigned-64 increment; overflow refuses.
 No caller supplies a root, ordinal or event filename. Maintenance slots retain exclusive
 disarm.intent; human release slots retain exclusive eligible.intent; both publish a
@@ -1095,16 +1390,19 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 
 | Record | Closed binding and independent origin |
 | --- | --- |
-| Bootstrap acceptance | Stable permission/register identity; actual UID/ancestors/register; complete independent trust-originals with short-entry/engine/display/anchor-runtime/read/member identities, full bytes and original controls; checker/registrar/initializer/validator/close-publisher identities; CP01-SOURCE/ARTIFACTS/ROOT ready acts, exact one-init authorization nonce and actual publication/validation acknowledgements. Output of the accepted act, no self/future approval. |
+| Bootstrap acceptance | At anchors/n/bootstrap.accepted: stable permission/register/anchor/disarm identity; actual earlier held UID/ancestors/register; complete supplied original holder/short-entry/engine/display/runtime/read/member bytes and controls; publisher/checker/registrar/initializer/validator/close-publisher identities; earlier SOURCE/ARTIFACTS/ROOT ready acts and exact INITIALIZE_ONCE or REANCHOR_ONLY purpose/nonce. No self-publication acknowledgment or future validation. |
+| Anchor intent/result and failure disposition | Separate anchors/n chain; exact predecessor/disarm/correction basis and accepted complete original plan. Result binds earlier trust-originals/bootstrap acceptance and original earlier publication acknowledgments. Separate bootstrap.publication-validation checks it; a failed-tail disposition preserves all extents and cannot create a successful anchor or initialization. |
+| Bootstrap publication validation | In validation-events/n/validation.result, kind bootstrap.publication-validation: completed earlier anchor/trust/bootstrap outputs, their exact byte/member/held/publication comparisons, publisher EOF/zero reap and independent validator origin/capability. Precedes initialization; acceptance at CP02 follows actual output. |
 | Revision payload | Ordinal and predecessor acceptance digest (none for first); stable permission; all normative extracts/locators, expected profile/concordance, complete applicability inventory/reasons, envelope/proof/approval/channel schemas, independent fixtures/expectations/bases, verifier/launcher/coordinator/gate/observer identities, actual task/runtime/read closure and scratch/live domain rules |
 | Revision acceptance | Exact earlier reviewed/final payload bytes/digest/held identity; predecessor; original inspection review and every earned integration finding/disposition; chartered independent owner's own judgment, producer/repairer separation, original appointment/channel context and acknowledgements |
 | Verifier-control acceptance | Earlier accepted revision and exact checker/verifier/launcher/runtime identities; separately authored bootstrap-control inventory and original results; independent adjudication, actual frozen inputs/process/channel/contact evidence and unavailable coordinates |
-| Receipt binding | Earlier accepted revision/control acceptance; exact earlier staged receipt bytes/digest/file identity; actual initialization nonce, UID, subject/ancestor identities, proposed unspent role and synchronization basis |
-| Final receipt validation | Earlier receipt binding; independent final named/held unspent receipt/subject identity and byte comparison; complete initializer acknowledgements and terminal result |
+| Receipt binding | In validation-events/n/validation.result, kind receipt.binding: earlier checked anchor/publication validation/revision/control acceptance; exact earlier staged receipt bytes/digest/file identity; actual original initialization nonce, UID/subject/ancestors, proposed unspent role and synchronization basis. Co-running separate validator publishes before unspent exposure. |
+| Final receipt validation | In next validation-events/n/validation.result, kind receipt.final-validation: earlier receipt binding; independent final named/held receipt/subject byte/identity comparison; complete initializer acknowledgments and actual EOF/normal zero reap. No initializer self-wait or second invocation. |
 | Correction binding | Earlier receipt/final-validation identity and complete issuance profile/concordance; newly accepted revision, complete current profile/concordance and fresh affected verifier-control acceptance; independent field/clause authority-equivalence comparison, observed permit/intent/attempt state, exact approved changes and affected qualification requirements |
 | Final proof acceptance and audit | Earlier complete original Q results/proof, frozen inputs and independent acceptance; per-coordinate audit of all original k244 duties, required identities and exact pending A outcomes; no release predicted into Q inputs |
-| Distinct instrument close/promotion | kind instrument.close, earlier CP03 final proof acceptance/audit and complete reviewed original-obligation dispositions; final stable input/receipt/current-revision/event bindings, accepted close-only capability and actual owner/publisher/channel/nonce/EOF/reap/publication acknowledgements; accepted tool identity/continuity when consumed. Missing work retains live repair; no leaf-count or self-acceptance authority. |
-| Disarm intent/result | Exact predecessor event, accepted disarm-only writer, action/scope, nonce and known input/revision/receipt basis; reserved/partial slot disarms before changed work, complete result leaves disarmed |
+| Distinct instrument close/promotion | At closes/n/instrument.close with predecessor-bound close.intent/close.result: earlier CP03 final proof acceptance/audit and complete original-obligation dispositions; stable input/receipt/current-anchor/revision/disarm basis, accepted close-only capability and actual owner/publisher/channel/nonce. Later close.result/transcript bind earlier publication and actual EOF/reap acknowledgments; no self/future binding. No close inside a sealed revision, old-close reuse, leaf-count or self-acceptance. |
+| Disarm intent/result | Exact predecessor event, accepted disarm-only writer, action/scope, nonce and known anchor/input/revision/receipt basis; initial event instead binds the earlier direct ROOT plan before any register anchor exists. Reserved/partial slot disarms before dependent work; complete result leaves disarmed. |
+| Original About observation/acceptance | Exact manual product/build/host/session/time and Antony's own provenance, distinct from independently acquired programme result/comparison. Earlier original CP01 preparation/ARTIFACTS acceptance precedes Q06 credit; fresh CP05 original/acceptance precedes APPOINT and later actual P comparison. No scripted UI or acceptance of a future comparison. |
 | Independent eligible release | Earlier complete accepted close/proof/audit/receipt/current/issuance basis, preceding disarm/results, Antony's independent judgment and retained supervisor artifact; predecessor/epoch/acknowledgements; P evidence, never a reusable LIVE bearer or Q input |
 | Invocation entry/acceptance | Earlier issuance/current A3 rule, independent exact raw request/ancestor/operation/basis/refusal plan and Antony's ready-entry acceptance/context/nonce; no future reservation/self-digest or extra target scope |
 | Foreground appointment | Earlier eligible basis/accepted entry, fresh direct APPOINT confirmation over request/nonce/role, observed coexisting supervisor/checker/child and one-use endpoint; output of this ceremony, never future authority |
@@ -1114,8 +1412,10 @@ The payload separately binds accepted contact unknowns and their canonical amend
 they are neither successful identities nor admission-ineligible by that limit alone. A proposal
 with exact unavailable work may be retained for review but has no admission-eligible role.
 Order is independent SCRATCH bootstrap/mechanics originals → CP01 source/artifact/result
-acceptance → factual bootstrap validation → CP01-ROOT single-init authorization → checked
-disarmed bootstrap/payload/revision/control publication → staged receipt → external receipt binding → unspent publication → final receipt
+acceptance → factual bootstrap validation → CP01-ROOT single-init authorization → initial
+durable disarm → anchor/payload/revision/control publication → separate earlier-output
+bootstrap validation → one initializer/co-running validator → staged receipt → external
+receipt binding → unspent publication → initializer EOF/reap → final receipt
 validation → last-edit disarmed requalification → independent proof acceptance → audit →
 distinct k244 close/promotion → independent eligible release → one explicitly supervised
 k245 LIVE invocation with earlier accepted A3 entry and fresh human appointment. Every
@@ -1441,21 +1741,23 @@ continuity comparison and affected qualification.
 
 CP01 accepts the separately authored/reviewed/independently controlled **close-only
 publisher capability**, with exact publisher artifact/runtime/read closure, distinct
-closing owner's identity/exclusions and fixed locator `instrument.close` at the current
-accepted revision directory. It accepts capability mechanics and scope, not a future
+closing owner's identity/exclusions and exact next `closes/n/instrument.close` locator,
+with predecessor-bound close.intent/close.result under the generation contract, outside
+every sealed revision directory. It accepts capability mechanics and scope, not a future
 close result. The publisher and its original controls cannot be produced, executed,
 adjudicated or accepted by the closing owner for its own capability fact. K269 places
 those independent owners before CP01. Antony's registrar remains limited to his trust
 acts and cannot publish a closer's record under an assumed extension of that capability.
 
-After CP03, the distinct closer's own retained entry checks its accepted capability,
+After CP03 and the current durable disarm/correction basis, the distinct closer's own retained entry checks its accepted capability,
 complete original-obligation/input/receipt/revision/event evidence and finalized human
 acceptance/audit. It creates a fresh private unnamed socketpair endpoint to the accepted
 close-only publisher, with independently checked owner/process/image/incarnation and
 exclusive endpoint ownership. Closed length-framed request binds version, kind
-`instrument.close`, exact current locator, earlier complete members/records, owner/exclusion
+`instrument.close`, exact next close-generation locator/predecessor/disarm/anchor, earlier complete members/records, owner/exclusion
 facts and fresh nonce; duplicate/unknown fields, extra/trailing frames or a future/self
-binding refuse. Publisher can exclusively write only this closed record at that locator,
+binding refuse. Publisher exclusively reserves that close slot, writes close.intent and
+this closed record, then close.result binding the earlier close and its acknowledgments,
 under the qualified register-lock/no-follow/single-link/0600/write/namespace/full-flush
 rules. It returns original exact bytes, held identity and every acknowledgement over the
 same invocation's private reverse channel; require complete frame/EOF and normal zero
@@ -1464,7 +1766,10 @@ can supply a new invocation. CP04 checks those originals, complete closure and t
 accepted capability binding before computing eligibility. The capability can neither
 accept a payload/result, publish ELIGIBLE/APPOINT, initialize/reset a permit nor close
 missing work. A failed/partial/unacknowledged close stays unavailable, with exact live
-repair before CP04; no fallback older close or prose promotion.
+repair before CP04; no fallback older close or prose promotion. The independently
+accepted failure-disposition and fresh successor route preserves partial files and
+permits a new close without overwriting them. Requalification on unchanged inputs still
+needs a fresh close bound to its new disarm/CP03 basis, never a close in an old revision.
 
 Required scratch controls pair a complete acknowledged distinct close with wrong owner,
 producer/runner/initializer/validator/Antony self-close, unaccepted/substituted publisher,
@@ -2090,11 +2395,17 @@ grant no discretionary filesystem scope.
 Original object child names are exact content-digest encodings under the held attempt,
 never raw target components interpreted as output paths. Package entry cannot initialize.
 
-At the approval subject, fixed `bootstrap.accepted`, `trust-originals`, `release.lock`,
-`release-events`, numbered revision records and their exact `instrument.close` locator permit only the approval contract's held read/compare/lock
+At the approval subject, fixed `anchors`, `validation-events`, `closes`, `release.lock`,
+`release-events` and numbered revision records permit only the approval contract's held read/compare/lock
 and accepted publisher's exclusive write/synchronization operations. Ordinal components
 use the same checked unsigned-64, no-leading-zero ASCII decimal grammar as release events;
 only the deterministic immediate successor is addressed, never listing/scan/fallback.
+At `anchors/n`, `validation-events/n` and `closes/n`, only the generation table's
+exact intent/result/trust-original/bootstrap/close and conditional failure-disposition
+members are admitted under their separate publisher/validator/registrar capabilities.
+Trust-original children require the earlier accepted exact closed member plan, not
+arbitrary directory contents. First seed reservation and later ordinal creation also
+require those capabilities and acknowledgment order. No write enters a sealed revision.
 Other original approval record kinds require their independently accepted exact locator,
 kind/phase/member bytes and permitted publisher/consumer operation before access. No
 unbound sibling is admitted. Later outputs never mutate the finalized revision payload

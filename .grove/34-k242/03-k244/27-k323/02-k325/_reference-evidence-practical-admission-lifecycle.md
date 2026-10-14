@@ -1,4 +1,4 @@
-# reference-evidence-practical-admission-lifecycle-k325
+# reference-evidence-practical-admission-lifecycle-k325 — brief
 
 
 ## Goal
@@ -98,3 +98,15 @@ unconsumed report edits do not refresh fragments or confer authority. Post-consu
 corrections remain offline re-derivation/independent verification only, never reset,
 re-eligibility, appointment, acquisition or another pass. The closing whole-node review
 is mandatory; no competing partial/in-session reviewer.
+
+## Decisions (running log)
+
+The coupled R1/R2/R5/R7 contract and the final whole-producer correspondence/freeze
+are two independently checkable outputs. Decompose at that boundary rather than
+absorbing the complete original registers, seven views and all charter identities
+into this focused contract session. The first child keeps all four lifecycle repairs
+together in C/K/P and their focused presentation; it freezes no current replacement
+membership and closes no whole producer. The closing child reconciles every original
+duty/charter/table/view, freezes the complete replacement after its final edits and
+cuts mandatory whole-k323 review before k269. Every original Goal/Done when above
+remains binding on this node. No partial child permits construction or spends the pass.

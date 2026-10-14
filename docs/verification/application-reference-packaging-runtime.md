@@ -104,6 +104,10 @@ interrupted/successful Q remain disarmed after lock release; only a complete lat
 accepted close/release can be eligible. Last-edit qualification, acceptance/audit, distinct close
 and independent release must settle before a new supervised acquisition invocation. Missing,
 partial/stale release or supervisor loss refuses before intent and freezes source release.
+First provisioning has no assumed older register: C's [synchronous bootstrap route](application-reference-evidence.md#synchronous-bootstrap-publication-and-validation)
+reserves only the exact disarmed approval-store seed under the direct ROOT plan and
+acknowledges it before trust/payload or permit work. Later maintenance uses the existing
+durable successor protocol; seed reservation alone is no acceptance or release.
 Possession of a socket number is no authentication. Required known endpoint/process/image/descriptor correspondence consumes named B3/B6/B8
 Q/P controls; complete opaque pre-start rights/maps/proxy closure stays accepted unknown; deliberate same-UID trust-root forgery retains
 the selected cooperative limit. This design promises no OS sandbox by naming a channel.
@@ -153,6 +157,10 @@ credit. This is the agreed scratch seam, not a new live-preflight/calibration ro
 | Findings path retains reviewed and final bytes plus every original finding/disposition and independent own judgment | Omit/reassign a finding/disposition, mutate final bytes outside reviewed repair, copy "registration for reviewer", or bypass earned integration/new whole review for substantive redesign. Refuse exact evidence/scope coordinate. |
 | Independently authored bootstrap/verifier-self controls acquire original results and commissioning accepts earlier finalized bytes | Candidate PASS or copied control results attempt to commission the candidate; self-digest/cyclic future binding or substituted registrar/verifier/runtime refuses. Antony adjudicates actual independently acquired originals; no candidate/author/producer/repairer/runner accepts its own fact and missing originals remain unavailable. |
 | CP01 accepts independent SCRATCH initializer/validator mechanics before CP01-ROOT authorizes one initialization; CP02 accepts actual receipt facts afterward | Use future CP02 or unaccepted mechanics as authority, omit/replay CP01-ROOT, ignore bootstrap acknowledgement failure or attempt second initialization: refuse before publication/initialization. No future-output acceptance. |
+| Same CP01 foreground launcher completes durable initial disarm, anchor publication/publisher reap and separate earlier-output bootstrap validation, then co-runs the one initializer with staged/final validator through all actual returns | Return at ROOT and replay a saved record; omit seed acknowledgment/publication check, make bootstrap bind its own/future acknowledgment, use wrong capability/kind/locator/frame/nonce, expose before staged binding, require initializer death before staged reply or final validation before zero reap, leak channel or kill at each write/flush/EOF/reap. Refuse the intended first enabling point, retain extents; no cross-Grove wait or second initialization. |
+| Independently inspected original Reference Stream Holder opens the exact original/copy pairs no-follow, checks type/single-link/named-held identities before cmp/entry and retains descriptors through return | Substitute an original or copy link, wrong parent/type/link count/identity, replace between opens/comparison, omit negative lookup or required holder/cmp image, close/reuse a descriptor. Refuse at the holder step before candidate execution; matching later hashes cannot pass. |
+| Predecessor-bound anchors/validation-events/closes outside sealed revisions permit changed-tool reacceptance and retained partial-close disposition followed by a fresh acknowledged successor | Overwrite/delete old originals or partial close, write close inside sealed revision, skip/reassign ordinal/predecessor/disarm/CP03, use unaccepted/stale anchor or earlier close, self-accept disposition, repeat initialization, or reuse close after unchanged-input Q. Refuse current chain/basis before trust/eligibility. Kill at every reservation/intent/result/disposition acknowledgment and preserve all failed extents. |
+| Manual About original in CP01 preparation is independently compared and accepted at ARTIFACTS before Q06 credit; fresh CP05 original is accepted before APPOINT and compared by qualified P01 afterward | Missing/changed host/session/build/time provenance, absent independent comparison or earlier acceptance, accept future P comparison, scripted UI/alternate API, or treat Antony's observation as an adjudicated programme he executes. Withhold the affected Q/P credit; repeat the defined disarm/affected suffix when its required basis changes. No sixth checkpoint or extra authority. |
 | Every CP02–CP05 starts with the independently retained CP01 source/OS anchor and full-byte/member short-entry/engine/display/runtime/read comparison, recorded in each output | Independently remove/substitute/change entry, engine, display, registrar, original or required runtime/read member; rebuild between checkpoints with identical labels; omit/replay trust.continuity. Refuse before tool execution at that checkpoint, then durable disarm/review/original-controls/CP01 and affected suffix. |
 | Distinct closer uses its accepted close-only endpoint/kind/locator and complete CP03 originals; publisher returns original exact bytes/identity/flush/EOF/reap acknowledgements | Borrow Antony's registrar channel, use unaccepted capability, self-close as producer/runner/initializer/validator/Antony, change kind/owner/revision/nonce, omit duty or lose publication acknowledgement: refuse before CP04 eligibility. Q tests mechanics with SCRATCH predecessors only. |
 | Scope-preserving correction binds full issuance/current profiles and stays disarmed through affected requalification/acceptance/audit/close | Change authority/file/cohort/effect/attempt fields, restore spent/unspent state, or let correction/provisioning auto-arm. Refuse and return broader authority to Antony; no second permit. |
@@ -242,7 +250,12 @@ O09/O11/O12's **actual** fixed-namespace facts come from the selected separately
 owned one-time initializer and independent validator only after the independent executor
 has acquired their SCRATCH mechanics originals, Antony has accepted those actual results
 at CP01-ARTIFACTS, and CP01-ROOT has authorized one exact initialization. The separately
-validated disarmed bootstrap publication must succeed first; CP02 accepts actual staged/
+validated disarmed bootstrap publication must succeed first within the same CP01
+own-terminal ROOT continuation. Its publisher-only and validator-only capabilities,
+exact phase locators/frames/nonce/held/write/flush/EOF/reap closure are earlier accepted
+mechanics. The initializer stays alive for its separate validator's staged binding;
+final validation follows actual initializer zero reap, with no final-record self-wait
+or second invocation. CP02 accepts actual staged/
 final receipt and namespace/publication facts afterward, never retroactively mechanics. They inspect only independently reviewed exact authority/ancestor operations,
 publish staged/final bindings and required real synchronization acknowledgements. They
 never select packaging LIVE or touch target applications/indexes. Final validation is a
@@ -295,6 +308,11 @@ consumers; authority alone establishes none of the required facts:
 
 1. Antony independently opens the local OS About display and exposes its product version
    and build identifier for an original human observation bound to this host/session/time.
+   Place its production in CP01 preparation and independent original comparison/ready
+   acceptance at ARTIFACTS before Q06 credit. At CP05 refresh and accept the original
+   before APPOINT; qualified independent P01 compares fresh buffers afterward before
+   intent. C's [manual observation contract](application-reference-evidence.md#manual-about-originals-and-fresh-p-correspondence)
+   defines changed-host/session/build/time refusal and the affected correction suffix.
    Preserve the visible values and his own provenance/acceptance; compare with the two
    already permitted fresh sysctl buffers and qualified compatibility configuration.
    This is the expressly selected human UI exception to the pass permission's no-launch

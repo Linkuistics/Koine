@@ -197,6 +197,18 @@ materializes coordinates and originals; it cannot select which of these duties t
 | Q10 / B1–B8 / O23/O25 | Complete CP01 accepted trust-originals and subsequent recorded full-byte/member trust.continuity; complete earlier accepted declared/independently observed named input membership, full-byte companions/five tables/original bases/tasks/runtime/charter bindings, strict extraction/omission/cycle/substitution and comparison/display controls, completed original Q results and final unchanged-candidate before/after freeze. It qualifies acceptance/audit/close mechanics on scratch, never consumes this Q's later original-result acceptance/audit/distinct-close records. Those finalized records follow Q at CP03 and the distinct close, and block P02. Unknown impact requires all affected cells, not a reduced passing set. |
 
 Q01–Q10 also include every applicable original evidence-contract control and all packaging
+bootstrap-publication/one-invocation, generation/disposition, manual About and pre-entry
+stream-holder pairs. Q08 requires the separately accepted bootstrap-publisher/validator
+capabilities and exact frames/phase/EOF/reap order; Q05/Q09 require the initial disarm
+seed before permit work and append-only partial/death/successor/unchanged-input controls.
+Q06 includes earlier independently compared/accepted About provenance before credit.
+Q07/Q08/Q10 include holder-first original/copy link/type/single-link/identity/descriptor/
+image/negative-lookup refusal and complete current validated anchor continuity. P01 uses
+CP05's freshly accepted About original with actual fresh buffer comparison; P02 selects
+the exact current anchor and acknowledged fresh close for its disarm/CP03 basis, outside
+sealed revisions, never an older record under a partial/failed successor. These expand
+the named obligations in the rows above; none is an optional contact-unknown remainder.
+Q01–Q10 also include all remaining packaging
 release/acceptance, first-attempt and extraction pairs; this grouping deletes no pair.
 The later generated-rewrite controls remain the generated subject's duty, not Q credit
 from original hashes. A separately claimed narrow observation becomes required for that

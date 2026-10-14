@@ -8,8 +8,30 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the Safari composition discussion](index.html#discussion). K323 now has a focused
-first child, k324, for k321 R3's traversal slice. The [composed policy slice](../../verification/application-reference-input-partition.md#composed-safari-policy-slice)
+Open [the coupled lifecycle discussion](index.html#discussion). K326 keeps R1/R2/R5/R7
+together: the original no-follow holder precedes cmp/candidate entry, the same CP01
+invocation completes ROOT publication and one co-running initializer/validator,
+initial disarm precedes permit work, and append-only anchor/close generations preserve
+sealed revisions and failed extents. Manual About originals are placed before their
+Q/P correspondence consumers. The [contract slice](../../verification/application-reference-input-partition.md#coupled-lifecycle-contract-slice)
+locates the exact records, capabilities and independently authored controls.
+
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Adds holder-first trust, same-invocation publication/validation, generation correction and manual About/P order.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Connects the initial disarm and fresh anchor/close basis to the existing permit lifecycle.
+
+The unchanged [Safari contact](index.html#diagram-native-reference-contact),
+[instrument](index.html#diagram-native-reference-instrument),
+[packaging](index.html#diagram-native-reference-packaging),
+[evidence](index.html#diagram-native-reference-evidence) and
+[population](index.html#diagram-native-population-metadata-shape) views remain context.
+K327 must reconcile all original duties/charters/tables and seven views, freeze the new
+complete documentary membership, then cut mandatory whole-k323 review before k269;
+every earned integration precedes it. K325/k323 stay open and this slice permits no
+construction. Other views' historical publication details need that final correspondence.
+
+## Retained Safari composition context
+
+K323's first child, k324, supplies k321 R3's traversal slice. The [composed policy slice](../../verification/application-reference-input-partition.md#composed-safari-policy-slice)
 locates its contract and authored specimens. The app link's root check immediately
 re-enters System/Cryptexes; its nested App link uses its own cryptex entry and root check,
 immediately enters System/Volumes/Preboot/Cryptexes/App, then resumes the saved
@@ -17,18 +39,6 @@ System/Applications/Safari.app suffix. Two expansions charge one unchanged 32 bu
 The exact non-entry nested-link, second-app-root-step and OS-position cryptex negatives
 and both independent wrong-root checks are authored expectations, not executed controls.
 
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds the composed physical order, both root checks/re-entries, suffix resumption, shared budget and isolating refusals.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Makes the held adapter's nested-entry/saved-suffix and two-expansion obligation explicit.
-
-The unchanged [approval](index.html#diagram-native-reference-proof),
-[admission](index.html#diagram-native-reference-admission),
-[packaging](index.html#diagram-native-reference-packaging),
-[evidence](index.html#diagram-native-reference-evidence) and
-[population](index.html#diagram-native-population-metadata-shape) views remain discussion
-context. Their historical k320 checkpoint/publication proposal remains under k323's
-complete replacement hold. Coupled R1/R2/R5/R7 trust/publication/maintenance/observation,
-whole correspondence and final membership remain live; the closing child must cut
-mandatory whole-k323 review before k269, with every earned integration also before it.
 The [integration boundary](../../verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
 retains every original finding and k322 repair. No partial child is a construction handoff.
 
