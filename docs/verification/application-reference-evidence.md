@@ -11,7 +11,7 @@ and product/native qualification remain separate evidence obligations.
 ## Review integration and required decisions
 
 Original reviews, actual answers, their dispositions and current construction/delivery
-observations are in the separate [practical admission report](application-reference-input-partition.md#coherent-k320-replacement),
+observations are in the separate [practical admission report](application-reference-input-partition.md#complete-k323-replacement),
 including the [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement).
 The canonical [exact amendment comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 and selected sections below own the rules; this reporting locator is never a measured input.
@@ -2546,20 +2546,20 @@ coordinate mappings. Original SHA-256 equality is deliberately not that oracle.
 
 Construction consumes the complete practical admission design only after its mandatory
 whole review/every earned integration. The current work and evidence report is
-[separate](application-reference-input-partition.md#coherent-k320-replacement).
+[separate](application-reference-input-partition.md#complete-k323-replacement).
 The [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement)
-locates precise live design work before construction planning.
+retains the historical triage; the complete replacement above locates current actual work.
 The normative [compatibility/five checkpoints](#compatible-ownership-and-bounded-sequential-schedule),
 [Q/P/C/D map](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
 and [original R retained duties](#historical-and-reporting-exceptions) govern placement.
 
 ### Whole-producer obligation comparison
 
-The [k320 comparison](application-reference-input-partition.md#every-k317-finding-against-the-replacement)
-compares k317's R1–R7; the [original-obligation handoff](application-reference-input-partition.md#original-obligations-and-actual-handoffs)
+The [whole k323 comparison](application-reference-input-partition.md#every-k321-finding-against-the-whole-replacement)
+compares all eight k321 findings; the [original-obligation handoff](application-reference-input-partition.md#whole-original-duties-and-first-consumers)
 retains all original k273/k244/k242/k282/k291 duties under actual amendments.
 The [subsequent review integration](application-reference-input-partition.md#k321-integration-and-required-replacement)
-records k321's findings and precise replacement work. Historical comparisons are locally
+records k321's original dispositions; the complete boundary above records their replacement. Historical comparisons are locally
 labelled in that unconsumed report; none supplies current construction eligibility.
 
 ### Construction responsibility and stability handoff

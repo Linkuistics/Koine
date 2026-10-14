@@ -135,3 +135,18 @@ owns complete final correspondence/membership plus whole-k323 review before k269
 The original closing conditions above bind this whole node; no child-only design,
 membership, review or unavailable-proof statement satisfies them. No implementation
 leaves are cut here and k244/k242/finite-subject closure remains separate actual work.
+
+## Closing design handoff
+
+The complete producer combines k324's composed Safari contract and k326's coupled
+R1/R2/R5/R7 lifetimes with k327's full original-duty/charter/table/phase/seven-view
+correspondence. Consume the complete-k323-replacement report and new unconsumed
+reference-practical-admission-replacement-membership.json after mandatory whole-k323
+review/every earned integration before k269. The earlier decomposition paragraphs
+describe intermediate boundaries; no partial child is a construction handoff.
+Root/k242/k244/k269/k245/k246/k247 and durable glossary/private/family/native summaries
+carry that same whole boundary. Historical manifests retain their original bytes.
+Required actual originals/tools/controls/read/images/UID/build/terminal/receipt/
+authority remain null with precise live work before their consumers. K244/k242/finite
+subject remain live, one pass unused, and every useful/generated/additive-VM/native/
+private/product duty remains. No actual qualification or authority follows this close.

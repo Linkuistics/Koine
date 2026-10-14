@@ -1,5 +1,33 @@
 # Koine.add-plugins-for-modaliser-requirements — brief
 
+## Complete k323 design boundary
+
+Reference-evidence-practical-admission-k323 combines k324's composed Safari walk,
+k326's coupled R1/R2/R5/R7 contract and k327's complete original-duty correspondence.
+The current handoff is application-reference-input-partition.md#complete-k323-replacement
+and reference-practical-admission-replacement-membership.json, a new unconsumed
+whole documentary candidate. Mandatory whole-k323 review and every earned integration
+precede reference-evidence-construction-k269. K320 and all earlier manifests remain
+immutable historical subjects, never current construction identities.
+
+CP01's own-terminal SOURCE/ARTIFACTS/ROOT continues synchronously through initial
+disarm/anchor publication, separate earlier-output validation and one initializer
+with a separately owned co-running staged/final validator through actual returns.
+Original no-follow holder trust precedes cmp/candidate entry; append-only anchors,
+validation-events and closes retain failed extents outside sealed revisions. Manual
+About preparation/independent comparison/ARTIFACTS acceptance precedes Q06; CP05
+refreshes/accepts the original before APPOINT and fresh P comparison. Every later
+checkpoint first checks original-holder/current-anchor continuity. Full C/K/P records,
+locators, controls, first-consumer/correction order and original duties bind.
+
+Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority are
+still missing. K244/k242/finite subject remain live, k245's single pass unused, full
+k246/k247/useful breadth/additive VM/native duties/private ineligibility/both holds
+remain. After consumption correction is offline-only, never reset/re-eligibility/
+appointment/acquisition. The older promotion/slice accounts below are historical
+boundaries; their future-work wording does not reopen this documentary producer.
+
+
 ## Goal
 
 Add one or more Koine plugins supporting the existing Modaliser requirements
@@ -231,7 +259,7 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
-## K321 integration and required replacement
+## Historical k322 integration and child decomposition
 
 K322 integrates k321's findings at 4304ad5f46d7 against k320 at 5fb818ab8125.
 Amendment/H-default concordance, current report pointers and stale owner wording are

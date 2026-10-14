@@ -8,26 +8,32 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the coupled lifecycle discussion](index.html#discussion). K326 keeps R1/R2/R5/R7
-together: the original no-follow holder precedes cmp/candidate entry, the same CP01
-invocation completes ROOT publication and one co-running initializer/validator,
-initial disarm precedes permit work, and append-only anchor/close generations preserve
-sealed revisions and failed extents. Manual About originals are placed before their
-Q/P correspondence consumers. The [contract slice](../../verification/application-reference-input-partition.md#coupled-lifecycle-contract-slice)
-locates the exact records, capabilities and independently authored controls.
+Open [the complete admission discussion](index.html#discussion). The
+[whole k323 replacement](../../verification/application-reference-input-partition.md#complete-k323-replacement)
+and [new documentary membership](../../verification/reference-practical-admission-replacement-membership.json)
+combine the composed Safari witness, coupled lifecycle and complete original-duty/
+charter/table/phase/view correspondence. Mandatory whole review and every earned
+integration precede k269. This documentary boundary supplies no actual tool, original,
+control result, receipt, authority, instrument/native qualification or finite subject.
+K244/k242 remain live, the pass unused and every useful/generated/VM/private/product
+obligation remains. Historical memberships keep their original bytes and claim limits.
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Adds holder-first trust, same-invocation publication/validation, generation correction and manual About/P order.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Connects the initial disarm and fresh anchor/close basis to the existing permit lifecycle.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Carries the complete k323 documentary boundary and mandatory review before the unchanged generated/useful/VM duties.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Places original holder/publisher/validator mechanics and the synchronous disarm/anchor/validation/one-init order in the whole evidence route.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Binds independent holder/publisher/validator components to CP01 and current-anchor continuity; retains the complete composed Safari adapter duty.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Marks whole lifecycle correspondence complete and retains initial disarm, append-only anchors/closes and the unchanged intent/start/A boundary.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Replaces the partial-slice handoff with complete k323 membership; retains holder-first trust, exact peer returns, About/P and correction order.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Connects whole k323 membership/review to the unchanged two-link Safari positive and exact required-versus-unknown boundary.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Carries original-holder/current-anchor continuity, ROOT continuation and fresh close requirements into the Q/P/A packaging view.
 
-The unchanged [Safari contact](index.html#diagram-native-reference-contact),
-[instrument](index.html#diagram-native-reference-instrument),
-[packaging](index.html#diagram-native-reference-packaging),
-[evidence](index.html#diagram-native-reference-evidence) and
-[population](index.html#diagram-native-population-metadata-shape) views remain context.
-K327 must reconcile all original duties/charters/tables and seven views, freeze the new
-complete documentary membership, then cut mandatory whole-k323 review before k269;
-every earned integration precedes it. K325/k323 stay open and this slice permits no
-construction. Other views' historical publication details need that final correspondence.
+All seven sources, exports, captions and changed markers describe this update. Original
+holder trust precedes cmp/entry; ROOT continues synchronously through disarm/publication/
+validation/one co-running initializer-validator. Append-only current anchors/closes retain
+failed extents outside sealed revisions. Manual About preparation/ARTIFACTS acceptance
+precedes Q06; fresh CP05 original acceptance precedes APPOINT and fresh P comparison.
+These are contracts and unexecuted controls, not qualified native results. K326's
+390×844 narrow-layout failure and unverified dark/Safari delivery remain limits; k316's
+fresh-fragment viewer defect stays live. Source/export checks alone establish no browser pass.
 
 ## Retained Safari composition context
 

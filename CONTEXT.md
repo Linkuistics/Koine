@@ -305,14 +305,23 @@ separate link/ancestor entries and the two exact checked held-root/immediate-pre
 The [composed Safari rule](docs/verification/application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
 scopes each exception to its own operand, evaluates the admitted nested cryptex link,
 then resumes the saved app suffix with two expansions against the shared 32 budget.
-Every other outside step refuses. Whole-k323 lifecycle/correspondence/membership/review
-remains due before construction. Historical syntax proves no current link/TCC/presence
+Every other outside step refuses. Whole-k323 design correspondence/membership is complete; mandatory whole review/every
+earned integration remains before k269. Historical syntax proves no current link/TCC/presence
 fact. Complete H/R exceptions with E default replace
 individual fragments/report-driven refresh. Whole actual consumed-byte/original/basis/
 read/phase/absence and retained original R duties remain; required missing actual identities
 stay null with exact work before consumers. K295's required build/peer/terminal originals
 remain Q/P work; source-child facts first belong to A. A required refusal stays incomplete,
 never useful loss, finite-subject credit or private eligibility; both holds remain.
+
+The [complete k323 replacement](docs/verification/application-reference-input-partition.md#complete-k323-replacement)
+reconciles all eight original findings and original duties, with a new complete unconsumed
+[documentary membership](docs/verification/reference-practical-admission-replacement-membership.json).
+K324's composed Safari walk and k326's same-invocation bootstrap, original holder,
+append-only anchors/closes and manual About/fresh-P order now have whole correspondence.
+Mandatory whole-k323 review/every earned integration precedes k269; no actual original,
+control, authority, instrument/native qualification or finite subject is supplied.
+K244/k242 stay live, pass unused and all useful/generated/VM/private/product duties remain.
 
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts

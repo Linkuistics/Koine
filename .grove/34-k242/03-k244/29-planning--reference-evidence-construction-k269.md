@@ -7,28 +7,18 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
-K323 is a node. Its first child reference-evidence-safari-composition-k324 specifies
-R3's composed physical walk and Q01 positive/negatives, not a construction handoff.
-Each operand keeps its own root-step limit; the nested admitted cryptex entry resumes
-the saved app suffix, with both held-A1 checks/immediate re-entries and two shared-budget
-expansions. Require the complete later coupled lifecycle/correspondence/membership and
-whole-k323 review/every earned integration before this planner.
-
-Consume the complete reference-evidence-practical-admission-k323 replacement after its
-mandatory whole-producer review and every earned integration. K321's original review at
-4304ad5f46d7 finds k320 at 5fb818ab8125 defective; k322 records three direct concordance/
-reporting repairs and places the remaining publication, successor, composed-Safari, About
-and no-follow holder work in k323 before this planner. No planning invention substitutes
-for that complete reviewed repair. The schedule below is the intended original obligation
-inventory pending reconciliation with the final replacement. Actual k270/k281/k290/k295/
-k314 and k319's exact Safari amendment bind. Read original k317 at 772bec7144a4/k318
-classifications, k312 at 4392295c/k313 at 47875236 and k266 at c5186473933d/k267 triage;
-k315 at ad181f1fbfd8 and k291 at a05e643f8352 are defective historical comparisons.
-Original k244/k242 Done when and construction leaves by stable handle remain the work.
-Reference-practical-admission-membership.json is the immutable historical k320 review
-candidate; it does not match partially edited current sources. Require k323's final whole
-replacement documentary membership, with required actual identities/results still null
-until their independent acquisition/qualification. Historical manifests grant nothing.
+Consume the complete reference-evidence-practical-admission-k323 replacement only after
+mandatory whole-producer review and every earned integration. The current report is
+application-reference-input-partition.md#complete-k323-replacement and the new complete
+documentary candidate is reference-practical-admission-replacement-membership.json.
+K324's composed two-link Safari witness and k326's coupled R1/R2/R5/R7 lifetimes are
+reconciled by k327 with every original duty/charter/view. K321 at 4304ad5f46d7 reviewed
+k320 at 5fb818ab8125; k322 at 04a761d5 records the original classifications/direct
+R4/R6/R8 repairs. K317/k318 and all older designs/memberships remain historical.
+Actual k270/k281/k290/k295/k314/k319 answers and all original k244/k242 Goal/Done when
+bind. Required actual originals/results/authority remain null, never accepted unknown
+contact coverage. This planner places already specified mechanisms and independently
+useful owners before consumers; no partial slice or historical manifest is its input.
 
 Normative inputs are canonical Selected reference and evidence requirements and the exact
 line-by-line amendment comparison, selected C sections/full descriptor ADR, both whole
@@ -42,8 +32,8 @@ closing-obligation bases before measurement; any actual live-task/report read bi
 ## Work and verification
 
 Give every duty an independently useful concrete live owner before its first consumer.
-Include the independent continuity anchor/originals and distinct close-only publisher
-controls/channel before CP01, and full historical Library version/copy and Safari
+Include independent Reference Stream Holder/source-OS originals, current-anchor continuity,
+bootstrap publisher/validator and distinct close-only publisher controls/channels before CP01, and full historical Library version/copy and Safari
 physical-root/immediate-prefix comparisons before Q01.
 Reuse the existing five working increments/eleven leaves where coherent; redraw oversized
 k254/k265 and assess k261/k264 using k267's original findings. Do not multiply one leaf per
@@ -73,7 +63,8 @@ first construction increment. This planning leaf implements no tool or controls.
 4. Use the **normative compatibility table** for all roles: independent original author,
    trust-tool producer, candidate producer/repairer/runner/disarm writer, independent
    bootstrap-control executor/acquirer, Antony adjudicator/acceptor, one qualified
-   initializer and separate staged/final receipt validator, distinct closing owner and
+   bootstrap-only publisher and separate publication validator, one-time initializer and
+   separate co-running staged/final receipt validator, independent original stream holder, distinct closing owner and
    acquisition/derivation/independent association verifier. Initializer cannot validate
    its receipt; producer/repairer/runner/author cannot adjudicate or accept its own fact.
    Acquisition gets no trust/appointment/reset power. Roles are not image/task labels.
@@ -98,19 +89,22 @@ first construction increment. This planning leaf implements no tool or controls.
 Use C's complete clean/correction schedule. All five are **Antony's own-terminal work
 outside agent harnesses**, never agent-driven pty acts. Name actual preparation handles and
 these human step identifiers in the plan. CP01's SOURCE/ARTIFACTS/ROOT acts are one named checkpoint with ready independent
-SCRATCH control/mechanics originals before it, followed only by synchronous accepted
-factual bootstrap validation. Record each ready binding; no Grove-session wait. Every
+SCRATCH control/mechanics originals and manual About comparison before it. Its accepted
+launcher continues in the same own-terminal invocation after ROOT through initial disarm,
+anchor publication, independent earlier-output validation and the single initializer with
+co-running staged/final validator, through actual EOF/zero reap. No saved ROOT bearer. Record each ready binding; no Grove-session wait. Every
 CP02–CP05 starts at the independent retained-original tool/runtime continuity check. Do not invent a
 sixth ceremony or approve future objects. If actual required duties cannot fit, state the
 exact first-consumer conflict and concrete bounded trade-off before use.
 
 | Human step | Preparation / first consumers |
 | --- | --- |
-| CP01 bootstrap/artifacts | Independent author/executor/validator make complete retained bootstrap/tool/peer/initializer-validator/close-publisher SCRATCH originals ready before the ceremony, without LIVE commissioning. SOURCE trusts original entry/OS; ARTIFACTS accepts actual tools/controls/mechanics; accepted factual validator synchronously returns bootstrap ancestry facts; ROOT accepts the ready plan and authorizes disarmed publication plus one exact initialization. Actual publication checks precede initialization; no control programme or Grove wait inside CP01. |
-| CP02 qualified receipt | Independent tool/runtime continuity first. After CP01-ROOT and successful separately checked bootstrap publication: one initializer invocation, separate staged validation before publication and final validation afterward. Antony accepts ready actual namespace/publication/receipt/bridge outputs; mechanics were accepted before initialization at CP01. Final Q/P then consume them. No second initialization. |
-| CP03 final original Q results/audit | After last edits/provisioning/review repairs and durable disarm, affected final Q emits originals. Tool computes the complete required-result/input/authority/original-duty audit; Antony accepts/refuses results and audit together. Q10 cannot require those future acceptance/audit/close outputs. |
-| CP04 eligible basis | **Distinct original-obligation closing owner/step** and CP01-accepted close-only publisher/channel/kind/locator/acknowledgements follow CP03, separate from producers/repairers/runner/initializer-validator and Antony's audit/release group. Tool computes eligible basis from finalized close/predecessors; Antony accepts it before eligibility's first CP05 consumer. Distinct close is not another human ceremony. |
-| CP05 k245 acquisition boundary | Independent author freezes exact fresh A3 entry/bases/refusals under unchanged issuance/current rule. Antony accepts ready entry then separately APPOINTs the coexisting foreground supervisor/checker/acquirer over current basis/request/nonce. All fresh P facts, exclusive export and unspent checks precede intent; only then declared A runs through true return. K245 remains an AFK design leaf with this explicit human step inside its boundary. |
+| CP01 bootstrap/artifacts | Manual About original/provenance in preparation; independent author/executor/validator complete all holder/entry/tool/publisher/validator/initializer/close-publisher SCRATCH originals before ceremony. SOURCE inspects original holder/entry/OS trust; holder checks no-follow original/copy streams before cmp/candidate execution. ARTIFACTS accepts ready artifacts/mechanics/About comparison. Factual peer returns A2 facts; ROOT accepts exact ready capabilities/purpose/nonce. The same invocation acknowledges initial disarm before payload/permit work, publishes anchor/reaps publisher, obtains separate earlier-output validation, then runs one initializer with co-running staged/final validator. Staged binding precedes exposure; final validation follows initializer EOF/zero reap, then validator EOF/zero reap. No new judgment, future/self acknowledgment, cross-Grove wait or second initialization. |
+| CP02 qualified receipt | Current original-holder/anchor/tool/runtime continuity first. Accept actual completed bootstrap-publication/initialization/staged-final/receipt/bridge outputs. Their accepted mechanics precede initialization; these outputs precede final Q/P. Missing/uncertain output blocks without retry. |
+| CP03 final original Q results/audit | After last edits/review/provisioning and new durable disarm, affected Q emits originals. Current-holder/anchor continuity precedes tool-computed complete original-result/input/authority/duty audit; Antony accepts ready results/audit. No future acceptance/close is a Q input. |
+| CP04 eligible basis | Distinct excluded closing owner/accepted close-only publisher appends acknowledged closes/n intent/close/result after CP03, outside sealed revisions, bound to current anchor/revision/disarm/CP03. After continuity Antony accepts computed finalized eligible basis; no appointment. Partial tail needs retained independently accepted disposition then fresh successor, never old-close fallback. |
+| CP05 k245 acquisition boundary | Current-holder/anchor/tool continuity first. Refresh/accept manual About original and independently authored ready exact A3 entry/current eligible basis, then freshly APPOINT coexisting foreground supervisor/checker/acquirer through true return. Qualified P01 compares fresh build buffers afterward; all fresh P/ancestry/reservation/authority facts precede intent. Changed host/session/build/consumed basis uses disarm/affected Q/acceptance/close suffix, not fresh-About-only repair. |
+
 
 Place independently acquired/validated SCRATCH mechanics originals before CP01 and accept
 them before CP01-ROOT's exact one-init authority. Place actual initializer and separate
@@ -118,7 +112,11 @@ staged/final validator outputs before CP02; last-edit
 Q before CP03; no distinct human audit owner; actual k244 close after CP03 and before CP04.
 Maintain precise live repair/requalification ownership through CP05. Corrections repeat
 only affected review/acceptance/receipt/Q/CP03/close/CP04/CP05 suffix under C's schedule;
-unknown impact means whole relevant matrix. Scope/privilege/new-attempt/uncertain-init
+unknown impact means whole relevant matrix. Changed trust-tool closure requires reviewed new
+originals and CP01 REANCHOR_ONLY with a new validated append-only anchor; unchanged-input Q
+still uses fresh disarm/Q/CP03/close/CP04. Accepted revisions/original sets are sealed; exact
+anchors/validation-events/closes successor chains preserve failed extents with no scan,
+overwrite, stale reuse or reinitialization. Scope/privilege/new-attempt/uncertain-init
 conflicts need their concrete decision, never inferred recovery. A compliant fresh output
 following independently proven unspent refusal repeats CP05 only; no within-call retry.
 

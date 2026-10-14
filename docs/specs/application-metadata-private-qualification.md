@@ -343,6 +343,15 @@ acceptance/audit, a distinct instrument closing owner/step and freshly appointed
 supervisor/checker/acquirer for k245. Receipt, proof, release-record or copied-review
 possession supplies no authority or finite subject. K323's complete replacement for k321's grounded findings needs whole review/every earned integration before k269.
 
+The [complete k323 replacement](../verification/application-reference-input-partition.md#complete-k323-replacement)
+reconciles all eight original findings and original duties, with a new complete unconsumed
+[documentary membership](../verification/reference-practical-admission-replacement-membership.json).
+K324's composed Safari walk and k326's same-invocation bootstrap, original holder,
+append-only anchors/closes and manual About/fresh-P order now have whole correspondence.
+Mandatory whole-k323 review/every earned integration precedes k269; no actual original,
+control, authority, instrument/native qualification or finite subject is supplied.
+K244/k242 stay live, pass unused and all useful/generated/VM/private/product duties remain.
+
 The [practical admission design](../verification/application-reference-input-partition.md#coherent-k320-replacement)
 is k320's proposal under actual k319, reviewed as defective by k321. K322's
 integration places the complete bootstrap/publication/successor/composed-Safari/About/
@@ -368,7 +377,7 @@ search-only ancestors. Only the two exact Safari positions may take the checked 
 search-only transition in its own link operand. The [composed Q01 slice](../verification/application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
 evaluates the separately admitted nested link, resumes the saved app suffix, checks both
 held roots and charges two expansions to one 32 budget; all other outside steps refuse.
-Whole-k323 lifecycle/correspondence/membership/review remains due. Finite LV version alternatives
+Whole-k323 design correspondence/membership is complete; mandatory whole review/every earned integration remains before k269. Finite LV version alternatives
 retain exact vendor/structural prefixes and explicit residual refused-copy duties. Complete H/R
 exceptions with E default replace fragments/report-driven refresh; full actual consumed
 bytes/original/basis/read/phase/absence and original R retained duties remain. Historical

@@ -1,5 +1,33 @@
 # application-population-metadata-subject-k247
 
+## Complete k323 design boundary
+
+Reference-evidence-practical-admission-k323 combines k324's composed Safari walk,
+k326's coupled R1/R2/R5/R7 contract and k327's complete original-duty correspondence.
+The current handoff is application-reference-input-partition.md#complete-k323-replacement
+and reference-practical-admission-replacement-membership.json, a new unconsumed
+whole documentary candidate. Mandatory whole-k323 review and every earned integration
+precede reference-evidence-construction-k269. K320 and all earlier manifests remain
+immutable historical subjects, never current construction identities.
+
+CP01's own-terminal SOURCE/ARTIFACTS/ROOT continues synchronously through initial
+disarm/anchor publication, separate earlier-output validation and one initializer
+with a separately owned co-running staged/final validator through actual returns.
+Original no-follow holder trust precedes cmp/candidate entry; append-only anchors,
+validation-events and closes retain failed extents outside sealed revisions. Manual
+About preparation/independent comparison/ARTIFACTS acceptance precedes Q06; CP05
+refreshes/accepts the original before APPOINT and fresh P comparison. Every later
+checkpoint first checks original-holder/current-anchor continuity. Full C/K/P records,
+locators, controls, first-consumer/correction order and original duties bind.
+
+Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority are
+still missing. K244/k242/finite subject remain live, k245's single pass unused, full
+k246/k247/useful breadth/additive VM/native duties/private ineligibility/both holds
+remain. After consumption correction is offline-only, never reset/re-eligibility/
+appointment/acquisition. The older promotion/slice accounts below are historical
+boundaries; their future-work wording does not reopen this documentary producer.
+
+
 ## Goal
 
 Close the complete independent subject producer at a coherent whole-family boundary,
@@ -13,10 +41,10 @@ unavailable evidence boundary. This child is the producer's closing session.
 
 Require the complete k323 replacement after mandatory whole review/every earned integration,
 then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319. K321 at 4304ad5f46d7
-reviewed k320 at 5fb818ab8125 as defective; k322 records direct repairs and precise remaining
-publication/successor/composed-Safari/About/stream-holder work in k323 before planning.
+reviewed k320 at 5fb818ab8125 as defective; k322 records the direct repairs and k323 now supplies the complete
+publication/successor/composed-Safari/About/stream-holder design before planning.
 K320's manifest retains historical snapshot bytes, not current construction identities.
-The schedule below records the intended obligations pending that whole repair. K315/k291 are defective historical
+The schedule below retains the original obligations under that whole replacement. K315/k291 are defective historical
 comparison subjects, never current qualified handoffs. CP01 accepts actual independent
 mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
 Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
@@ -26,8 +54,8 @@ The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root ex
 no historical syntax supplies current identity, topology, TCC or version facts.
 K323's first child k324 specifies their complete nested composition, both root checks
 and immediate re-entries, saved app suffix and two expansions against one 32 budget.
-Its remaining coupled lifecycle/final membership/whole review stays required; the
-traversal slice alone is no construction or acquisition handoff.
+K326/k327 complete the coupled lifecycle and whole membership; mandatory whole-k323
+review/every earned integration stays required before construction or acquisition.
 
 Consume the complete reviewed practical admission producer k323 and all actual k244
 qualification/CP01–CP04/original-duty close, k245 CP05/P/A frozen originals/independently

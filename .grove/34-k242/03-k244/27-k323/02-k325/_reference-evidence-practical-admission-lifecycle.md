@@ -110,3 +110,16 @@ membership and closes no whole producer. The closing child reconciles every orig
 duty/charter/table/view, freezes the complete replacement after its final edits and
 cuts mandatory whole-k323 review before k269. Every original Goal/Done when above
 remains binding on this node. No partial child permits construction or spends the pass.
+
+## Closing design handoff
+
+K326 supplies the whole coupled lifecycle contract and k327 reconciles that contract
+with k324, all eight original findings/actual answers, every original duty and the full
+charter/table/view conjunction. The complete-k323-replacement report and new complete
+reference-practical-admission-replacement-membership.json carry the whole producer,
+stable charter handles, composed witness and acyclic clean/correction first consumers.
+Mandatory whole-k323 review/every earned integration precedes k269; no child-only review
+or historical manifest can satisfy it. Current authority/qualification/originals remain
+unavailable, k244/k242/finite subject live, one pass unused, every useful/generated/VM/
+private/product/native obligation retained. Promotion belongs in the k323 and k244/root
+brief chain; no actual instrument/finite-subject closure follows documentary retirement.
