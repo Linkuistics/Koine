@@ -10,8 +10,12 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 
 ## Context
 
-Require the complete reviewed k320 replacement/every earned integration and reviewed
-k269 plan, under actual k270/k281/k290/k295/k314/k319. K315/k291 are defective historical
+Require the complete k323 replacement after mandatory whole review/every earned integration,
+then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319. K321 at 4304ad5f46d7
+reviewed k320 at 5fb818ab8125 as defective; k322 records direct repairs and precise remaining
+publication/successor/composed-Safari/About/stream-holder work in k323 before planning.
+K320's manifest retains historical snapshot bytes, not current construction identities.
+The schedule below records the intended obligations pending that whole repair. K315/k291 are defective historical
 comparison subjects, never current qualified handoffs. CP01 accepts actual independent
 mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
 Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
@@ -22,7 +26,7 @@ no historical syntax supplies current identity, topology, TCC or version facts.
 
 Require actual k244 stable instrument qualification and distinct close, CP04 eligible basis,
 complete reviewed practical admission design and all earned integrations/planning first.
-Consume actual canonical k270/k281/k290/k295/k314 choices, C/K/P full conjunction and original
+Consume actual canonical k270/k281/k290/k295/k314/k319 choices, C/K/P full conjunction and original
 k244/k242 duties. No historical k273/k282/k291 closure or fragment identity is current proof.
 
 **CP05 — human acquisition-boundary step:** Antony performs exact fresh independently

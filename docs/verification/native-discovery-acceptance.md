@@ -98,7 +98,7 @@ consumption remain held until full useful native qualification passes. Historica
 arithmetic is counterexample evidence only, and every native G/N/V stays pending.
 The reference instrument's [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
 requires k281's accepted bounded contact/pre-lookup choices, k319's actual-answer canonical
-amendment, then the complete k320 replacement with whole review/every earned integration
+amendment, then the complete k323 replacement with whole review/every earned integration
 before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
 full service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains explicitly unknown,
 while required known identities/controls stay blockers. The complete repaired design supplies no actual instrument qualification, finite
@@ -110,13 +110,15 @@ Antony's accepted original-result audit, a distinct original-obligation closing 
 and his freshly appointed coexisting supervisor/checker/acquirer for one k245 channel.
 Independent authors/executors acquire evidence; they do not accept their own results.
 The earlier K285 separately owned acceptance/release model is historical, not a current
-role assignment. K320's role/close-publication replacement still requires whole review before consumption.
+role assignment. K323's complete repair of k321's findings requires whole review/every integration before consumption.
 Receipt/proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
-whole-k320 review/every earned integration remains before k269; every native duty below stays pending.
+whole-k323 review/every earned integration remains before k269; every native duty below stays pending.
 
 The [practical admission design](application-reference-input-partition.md#coherent-k320-replacement)
-is k320's coherent replacement under actual k319, awaiting mandatory whole-k320
-review/every integration before k269. The [current replacement boundary](application-reference-input-partition.md#coherent-k320-replacement)
+is k320's proposal under actual k319, reviewed as defective by k321. K322's
+integration places the complete bootstrap/publication/successor/composed-Safari/About/
+stream-holder repair in k323; mandatory whole-k323 review/every earned integration precedes
+k269. The linked k320 schedule is historical proposal evidence, not a construction identity. The [historical k320 boundary](application-reference-input-partition.md#coherent-k320-replacement)
 compares original duties and precise missing work. Independent SCRATCH bootstrap/tool/
 initializer-validator/close-publisher originals are ready before CP01; ARTIFACTS accepts
 actual mechanics, ROOT authorizes one initialization and CP02 accepts actual outputs.

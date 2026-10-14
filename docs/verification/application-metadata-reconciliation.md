@@ -47,11 +47,13 @@ with independent original authors/executors and producer/repairer/runner exclusi
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
 freshly human-appointed foreground supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority. K320's role/close-publication replacement requires whole review/every integration before k269. This design supplies no finite subject or native/private eligibility.
+possession and copied review/run/commit supply no authority. K323's complete replacement for k321's findings requires whole review/every integration before k269. This design supplies no finite subject or native/private eligibility.
 
 The [practical admission design](application-reference-input-partition.md#coherent-k320-replacement)
-is k320's coherent replacement under actual k319, awaiting mandatory whole-k320
-review/every integration before k269. The [current replacement boundary](application-reference-input-partition.md#coherent-k320-replacement)
+is k320's proposal under actual k319, reviewed as defective by k321. K322's
+integration places the complete bootstrap/publication/successor/composed-Safari/About/
+stream-holder repair in k323; mandatory whole-k323 review/every earned integration precedes
+k269. The linked k320 schedule is historical proposal evidence, not a construction identity. The [historical k320 boundary](application-reference-input-partition.md#coherent-k320-replacement)
 compares original duties and precise missing work. Independent SCRATCH bootstrap/tool/
 initializer-validator/close-publisher originals are ready before CP01; ARTIFACTS accepts
 actual mechanics, ROOT authorizes one initialization and CP02 accepts actual outputs.

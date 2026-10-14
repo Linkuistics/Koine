@@ -627,8 +627,9 @@ Use the selected [complete evidence contract](application-reference-evidence.md)
 both whole-byte companions and all five whole tables. Complete actual consumed-byte,
 original/basis/read/phase/absence and original R retained duties remain. Actual acquired
 objects need their complete members; missing originals keep null actual identities.
-The [practical report](application-reference-input-partition.md#practical-original-obligation-comparison)
-locates the whole original-obligation comparison and exact missing work before consumers.
+The [practical report](application-reference-input-partition.md#original-obligations-and-actual-handoffs)
+locates the whole original-obligation comparison; its [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement)
+name the exact missing work before consumers.
 
 ## Reproducible boundary checks
 
@@ -643,6 +644,6 @@ instructions there are not a current handoff. The Taskfile recipe remains curren
 
 Document/link/render checks validate only the saved design. Exact replacement documentary
 identity and historical-parent/Safari comparisons are reported with their bounded scope
-[separately](application-reference-input-partition.md#practical-documentary-verification).
+[separately](application-reference-input-partition.md#verification-and-presentation-boundary).
 No check supplies authority, instrument/control qualification, current target bytes or
 private/product/native eligibility. Actual consumed changes still disarm/requalify.

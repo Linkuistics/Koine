@@ -11,7 +11,8 @@ and product/native qualification remain separate evidence obligations.
 ## Review integration and required decisions
 
 Original reviews, actual answers, their dispositions and current construction/delivery
-observations are in the separate [practical admission report](application-reference-input-partition.md#practical-admission-design).
+observations are in the separate [practical admission report](application-reference-input-partition.md#coherent-k320-replacement),
+including the [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement).
 The canonical [exact amendment comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 and selected sections below own the rules; this reporting locator is never a measured input.
 
@@ -1238,8 +1239,9 @@ Requirements-session statements in the canonical selected section describe that 
 interview's non-execution, not later acquisition. Its unestablished-fit/private/native
 hold clauses remain prerequisite gates until the existing qualifying evidence satisfies
 them. Preserve their bytes and all other canonical clauses except the exact compared
-k281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status and
-k295 bounded correspondence-observation amendments actually approved by Antony. Publish later
+k281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status,
+k295 bounded correspondence-observation, k314 acceptance/documentary and k319 narrow
+Safari root-step amendments actually approved by Antony. Publish later
 outcomes separately without editing the historical fact into a current success. The
 descriptor ADR's historical measurements and pinned source/API facts likewise keep their
 original reference and bounded interpretation. Changed bases/dispositions are input changes.
@@ -1284,7 +1286,7 @@ review of its full context and complete H/R exceptions before acceptance.
 | Exception / exact whole-object or section context | H/R meaning and enduring remainder |
 | --- | --- |
 | S, Selected reference and evidence requirements: introduction and One bounded reference-packaging pass | H: original 25G83 packet counts/identity, Antony's permission and this requirements session's non-acquisition statements. E: exact selected build/cohorts/source/layout/files/one-pass evidence duties; no current package is inferred. |
-| S, Authority and admission choices | H: the recorded k270 delegation, k281/k290/k295/k314 answers, original assignments to k273/k282/k315, requirements-session non-execution and cited archived persistence descriptions. E: all selected choices, exclusions, five checkpoints, amendment limits, risks and before-consumer duties. A retired assignment names the historical requirement, not a live owner. |
+| S, Authority and admission choices | H: the recorded k270 delegation, k281/k290/k295/k314/k319 answers, original assignments to k273/k282/k315/k320, requirements-session non-execution and cited archived persistence descriptions. E: all selected choices, exclusions, five checkpoints, amendment limits, risks and before-consumer duties. A retired assignment names the historical requirement, not a live owner. |
 | S, Independent classification and whole-template assignment; Test seams and required handoff | H: requirements-session unestablished recipes/useful fit, false private eligibility, holds and pending native verdicts. E: all purpose/whole-template/rewrite/helper/alias/VM/native/eligibility requirements; later satisfaction needs its original qualifying evidence and is reported only in R. |
 | D, whole Filesystem access is descriptor-relative | H: the earlier whole-path error, k134 measurement, survey's failure reports, 25F71 search-only measurement, prior queued/system-find proposals and reported service PATH_MAX limitation, in their complete surrounding paragraphs. E: held/search-only/kernel/32-link/prompt/action rules, platform limits and qualification/revisit duties. No 26A434 certificate follows. |
 | C, Ownership and alternatives; Permission inputs and reporting outputs; Authoritative attempt evidence | H: named earlier design snapshots, this design's no-task act and product zap lifecycle description. E: selected independent representations, exact profile/concordance, full source/read/authority and lifecycle obligations; no design publication is an actual qualified tool. |
@@ -2180,16 +2182,21 @@ coordinate mappings. Original SHA-256 equality is deliberately not that oracle.
 
 Construction consumes the complete practical admission design only after its mandatory
 whole review/every earned integration. The current work and evidence report is
-[separate](application-reference-input-partition.md#practical-admission-design).
+[separate](application-reference-input-partition.md#coherent-k320-replacement).
+The [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement)
+locates precise live design work before construction planning.
 The normative [compatibility/five checkpoints](#compatible-ownership-and-bounded-sequential-schedule),
 [Q/P/C/D map](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
 and [original R retained duties](#historical-and-reporting-exceptions) govern placement.
 
 ### Whole-producer obligation comparison
 
-The [current comparison](application-reference-input-partition.md#practical-original-obligation-comparison)
-compares R1–R7 and all original k273/k244/k242/k282/k291 duties under actual amendments.
-Historical k282/k291 comparisons are locally labelled in that unconsumed report.
+The [k320 comparison](application-reference-input-partition.md#every-k317-finding-against-the-replacement)
+compares k317's R1–R7; the [original-obligation handoff](application-reference-input-partition.md#original-obligations-and-actual-handoffs)
+retains all original k273/k244/k242/k282/k291 duties under actual amendments.
+The [subsequent review integration](application-reference-input-partition.md#k321-integration-and-required-replacement)
+records k321's findings and precise replacement work. Historical comparisons are locally
+labelled in that unconsumed report; none supplies current construction eligibility.
 
 ### Construction responsibility and stability handoff
 
@@ -2430,7 +2437,7 @@ row above. They never qualify from a design bit.
 | Chartered own acceptance after clean review versus copied/skipped review or reviewer-only authority write | Inspection-only review publishes findings only. Antony reads original review and identical reviewed/final bytes, adjudicates the independently acquired ready results, then his trust-only registrar publishes his direct act; producer/run/commit text supplies none |
 | Findings/integration acceptance versus omitted/reassigned dispositions or unreviewed final payload | Original reviewed/final bytes and every finding/disposition bind scope/verification and producer/repairer separation; missing or substantive unreviewed changes refuse before acceptance |
 | Disarmed qualification versus pure→LIVE/selector/task-edge/armed-state escalation | Exact retained selector/parser/Task chain refuses pure origins even with otherwise valid fixture receipt/proof/eligible-release predicates. Positive and every attempted LIVE claim run only under SCRATCH with scratch authority; no test selects LIVE |
-| Current independently supervised release versus stale/partial/lost release, active requalification or supervisor death | Only original appointed LIVE-origin endpoint plus accepted proof/audit/distinct-close basis can select k245 LIVE. Missing/copy/replay/old-state bindings refuse before intent; loss after intent freezes without refund or extra permit |
+| CP05 fresh appointed release versus stale/partial/lost release, active requalification or supervisor death | Only original appointed LIVE-origin endpoint plus accepted proof/audit/distinct-close basis can select k245 LIVE. Missing/copy/replay/old-state bindings refuse before intent; loss after intent freezes without refund or extra permit |
 | Independent bootstrap/verifier-self adjudication versus candidate PASS or self-hashed commissioning | Independent original author/executor provenance and inspection review/integration precede Antony's CP01 ready-result judgment; independent continuity starts every later checkpoint. Candidate output cannot commission its verifier/registrar; missing required original results retain live repair |
 | Issuance receipt versus scope-preserving current correction, pending/old revision or correction after spending | Receipt profile equals full issuance profile; current inputs equal accepted full current profile; a changed identity requires an accepted bridge binding both complete profiles/concordances and independently reviewed authority equivalence. Missing comparison or changed scope/file/effect/attempt refuses; affected requalification preserves original bytes and no correction restores unspent authority |
 | Fresh framed channel versus leaked endpoint, second frame, missing EOF/reap, wrong domain or process binding | Independent external checker/coordinator reject at the intended channel coordinate; required contact evidence cannot come from the candidate |

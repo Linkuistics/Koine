@@ -1,7 +1,20 @@
 # reference-evidence-instrument-k244 — brief
 
 
-## K320 coherent replacement before construction
+## K321 integration and required replacement
+
+K322 integrates k321's findings at 4304ad5f46d7 against k320 at 5fb818ab8125.
+Amendment/H-default concordance, current report pointers and stale owner wording are
+repaired. Reference-evidence-practical-admission-k323 owns the coupled publication route,
+repeatable anchor/close records, composed two-link Safari control, manual About placement
+and independently trusted no-follow stream holder. Its complete replacement, mandatory
+whole review and every earned integration precede k269; the planner invents none of these
+mechanisms. K320's proposal/membership remain historical reviewed snapshots, not current
+construction identities. Required actual originals/tools/controls/read/images/UID/build/
+terminal/receipt/authority remain missing. K244/k242 stay live, one pass unused, full
+k246/k247/useful breadth/additive VM/native placement/private ineligibility/both holds remain.
+
+## Historical k320 proposal reviewed as defective by k321
 
 Reference-evidence-practical-admission-k320 replaces the defective k315 proposal at
 ad181f1fbfd8 under actual k270/k281/k290/k295/k314 and k319's narrow Safari amendment.

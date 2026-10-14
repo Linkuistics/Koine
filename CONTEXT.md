@@ -275,16 +275,19 @@ The [chartered acceptance route](docs/verification/application-reference-evidenc
 separates inspection-only review from Antony's own semantic acceptance/registration act,
 using independently authored controls and an independent original-result executor. The
 runner/producer/repairer cannot judge their own programme results; the distinct instrument
-closer remains separate. K320's complete role/publication repair requires whole review/every integration before construction.
+closer remains separate. K323's complete replacement for k321's publication/successor/
+continuity findings requires whole review/every earned integration before construction.
 [Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps provisioning/requalification disarmed through accepted audit and distinct instrument
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
 release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 keeps changing observations in a separate unconsumed report; actual input changes still
 disarm and requalify. The [practical admission design](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
-is k320's coherent replacement under the actual k319 amendment, awaiting mandatory
-whole-k320 review/every earned integration before k269 construction planning. The
-[current replacement boundary](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
+is k320's historical proposal under actual k319, reviewed as defective by k321. The
+[review integration](docs/verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
+places publication/successor/composed-Safari/About/stream-holder repair in k323, with
+mandatory whole review/every earned integration before k269 construction planning. The
+[historical k320 boundary](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
 records the complete original-duty comparison and precise missing work. Independent
 SCRATCH bootstrap/initializer-validator/close-publisher originals precede CP01 acceptance;
 CP01-ROOT authorizes one initialization and CP02 accepts actual outputs. Every CP02–CP05

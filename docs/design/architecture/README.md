@@ -8,10 +8,14 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the k320 replacement discussion](index.html#discussion) for the complete coherent
-proposal under actual k319. Mandatory whole-k320 review/every earned integration precedes
-k269 planning. The [replacement boundary](../../verification/application-reference-input-partition.md#coherent-k320-replacement)
-compares every k317 finding and original obligation. Independent SCRATCH bootstrap/tool/
+Open [the admission review discussion](index.html#discussion). K321 found eight defects
+in the k320 proposal under actual k319. K322 repairs amendment/H-default concordance,
+current pointers and stale owner wording; k323 owns the complete publication/successor/
+composed-Safari/About/stream-holder replacement, mandatory whole review and every earned
+integration before k269 planning. The [integration boundary](../../verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
+locates every disposition and exact work. The [historical k320 boundary](../../verification/application-reference-input-partition.md#coherent-k320-replacement)
+retains its original comparison and unchanged membership snapshot. The diagrams show that
+proposal's intended dependencies pending the whole repair. Independent SCRATCH bootstrap/tool/
 initializer-validator originals are ready before CP01; ROOT authorizes one initialization
 and CP02 accepts actual outputs. Every CP02–CP05 starts with independent retained-original
 full-byte/member entry/engine/display/runtime/read continuity. Distinct close uses its
@@ -24,7 +28,7 @@ entry then freshly appoints coexisting supervisor/checker/acquirer through true 
 - [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Adds independent checkpoint continuity and close-only publication to the retained Q/P/A route.
 - [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Names independent retained-original continuity and separates Safari root/LV policy from actual native evidence.
 - [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows ready bootstrap/initializer-validator originals before CP01 and actual single-init outputs before final Q.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Points the complete subject handoff to k320 while retaining every generated/useful/VM duty.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Keeps the k323 replacement/review prerequisite visible while retaining every generated/useful/VM duty.
 
 Finite Library versions keep exact vendor/structural prefixes. Only two exact Safari
 positions may take a search-only physical parent equal to held A1 root followed immediately

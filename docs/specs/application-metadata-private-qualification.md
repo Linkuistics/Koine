@@ -341,11 +341,13 @@ requires Antony's own ready-object trust act after inspection-only review/integr
 independently authored/executed controls, disarmed final requalification, his result
 acceptance/audit, a distinct instrument closing owner/step and freshly appointed coexisting
 supervisor/checker/acquirer for k245. Receipt, proof, release-record or copied-review
-possession supplies no authority or finite subject. K320's complete current role/publication design needs whole review/every earned integration before k269.
+possession supplies no authority or finite subject. K323's complete replacement for k321's grounded findings needs whole review/every earned integration before k269.
 
 The [practical admission design](../verification/application-reference-input-partition.md#coherent-k320-replacement)
-is k320's coherent replacement under actual k319, awaiting mandatory whole-k320
-review/every integration before k269. The [current replacement boundary](../verification/application-reference-input-partition.md#coherent-k320-replacement)
+is k320's proposal under actual k319, reviewed as defective by k321. K322's
+integration places the complete bootstrap/publication/successor/composed-Safari/About/
+stream-holder repair in k323; mandatory whole-k323 review/every earned integration precedes
+k269. The linked k320 schedule is historical proposal evidence, not a construction identity. The [historical k320 boundary](../verification/application-reference-input-partition.md#coherent-k320-replacement)
 compares original duties and precise missing work. Independent SCRATCH bootstrap/tool/
 initializer-validator/close-publisher originals are ready before CP01; ARTIFACTS accepts
 actual mechanics, ROOT authorizes one initialization and CP02 accepts actual outputs.

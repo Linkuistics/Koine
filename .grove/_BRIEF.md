@@ -231,7 +231,20 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
-## K320 coherent replacement before construction
+## K321 integration and required replacement
+
+K322 integrates k321's findings at 4304ad5f46d7 against k320 at 5fb818ab8125.
+Amendment/H-default concordance, current report pointers and stale owner wording are
+repaired. Reference-evidence-practical-admission-k323 owns the coupled publication route,
+repeatable anchor/close records, composed two-link Safari control, manual About placement
+and independently trusted no-follow stream holder. Its complete replacement, mandatory
+whole review and every earned integration precede k269; the planner invents none of these
+mechanisms. K320's proposal/membership remain historical reviewed snapshots, not current
+construction identities. Required actual originals/tools/controls/read/images/UID/build/
+terminal/receipt/authority remain missing. K244/k242 stay live, one pass unused, full
+k246/k247/useful breadth/additive VM/native placement/private ineligibility/both holds remain.
+
+## Historical k320 proposal reviewed as defective by k321
 
 Reference-evidence-practical-admission-k320 replaces the defective k315 proposal at
 ad181f1fbfd8 under actual k270/k281/k290/k295/k314 and k319's narrow Safari amendment.
@@ -602,6 +615,8 @@ CP02 accepts actual outputs, CP03 final Q/audit, distinct close precedes CP04, a
 CP02–CP05 begins with independent tool/runtime continuity. Historical separate-owner or
 cross-session-supervisor commands confer no current duty/authority. K269 must place these
 actual compatible owners before first consumers and retain every original obligation.
+
+Historical k287 promotion (reviewed by k288 and repaired by k291):
 
 K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
 release and enduring-input conjunction. Mandatory whole-k282 review and every earned

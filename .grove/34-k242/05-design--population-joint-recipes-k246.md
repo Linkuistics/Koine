@@ -10,8 +10,12 @@ coverage/capacity/missing-evidence boundary. No cardinality-only qualification.
 
 ## Context
 
-Require the complete reviewed k320 replacement/every earned integration and reviewed
-k269 plan, under actual k270/k281/k290/k295/k314/k319. K315/k291 are defective historical
+Require the complete k323 replacement after mandatory whole review/every earned integration,
+then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319. K321 at 4304ad5f46d7
+reviewed k320 at 5fb818ab8125 as defective; k322 records direct repairs and precise remaining
+publication/successor/composed-Safari/About/stream-holder work in k323 before planning.
+K320's manifest retains historical snapshot bytes, not current construction identities.
+The schedule below records the intended obligations pending that whole repair. K315/k291 are defective historical
 comparison subjects, never current qualified handoffs. CP01 accepts actual independent
 mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
 Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
@@ -20,11 +24,11 @@ Only CP05's fresh own-terminal ACCEPT/APPOINT and complete Q/P can precede the s
 The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root exceptions;
 no historical syntax supplies current identity, topology, TCC or version facts.
 
-Consume the whole reviewed k320 practical design and actual k244/CP01–CP04 qualifications,
+Consume the whole reviewed k323 practical replacement and actual k244/CP01–CP04 qualifications,
 CP05/P/A frozen original and independently verified k245 derivatives/roles, or their precise
 failed/incomplete work. Historical k273/k282/k291 proposals and fragment identities supply
 no current acceptance, byte evidence or useful role. The selected canonical comparison
-retains every original obligation under only actual k270/k281/k290/k295/k314 amendments.
+retains every original obligation under only actual k270/k281/k290/k295/k314/k319 amendments.
 
 Freeze complete whole-template recipes with exact source/copy/file/version/helper/alias/
 typed/table/LocProvenance/tail associations, independent purposes, source-to-generated

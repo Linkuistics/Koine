@@ -7,14 +7,21 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
-Consume the complete reference-evidence-practical-admission-k320 replacement after its
-mandatory whole-producer review and every earned integration. Actual k270/k281/k290/k295/
+Consume the complete reference-evidence-practical-admission-k323 replacement after its
+mandatory whole-producer review and every earned integration. K321's original review at
+4304ad5f46d7 finds k320 at 5fb818ab8125 defective; k322 records three direct concordance/
+reporting repairs and places the remaining publication, successor, composed-Safari, About
+and no-follow holder work in k323 before this planner. No planning invention substitutes
+for that complete reviewed repair. The schedule below is the intended original obligation
+inventory pending reconciliation with the final replacement. Actual k270/k281/k290/k295/
 k314 and k319's exact Safari amendment bind. Read original k317 at 772bec7144a4/k318
 classifications, k312 at 4392295c/k313 at 47875236 and k266 at c5186473933d/k267 triage;
 k315 at ad181f1fbfd8 and k291 at a05e643f8352 are defective historical comparisons.
 Original k244/k242 Done when and construction leaves by stable handle remain the work.
-The new reference-practical-admission-membership.json is documentary correspondence only;
-old manifests remain historical and required actual identities/results remain null.
+Reference-practical-admission-membership.json is the immutable historical k320 review
+candidate; it does not match partially edited current sources. Require k323's final whole
+replacement documentary membership, with required actual identities/results still null
+until their independent acquisition/qualification. Historical manifests grant nothing.
 
 Normative inputs are canonical Selected reference and evidence requirements and the exact
 line-by-line amendment comparison, selected C sections/full descriptor ADR, both whole

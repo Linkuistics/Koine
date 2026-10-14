@@ -11,11 +11,14 @@ Those controls are currently specified, not executed.
 
 The single pass is unused.
 
-K320 supplies one coherent replacement under actual k319 after k317's findings at
-772bec7144a4/k318 classifications. Mandatory whole-k320 review/every earned integration
-still precedes k269 planning. The [current replacement boundary](#coherent-k320-replacement)
-compares every finding and retained original duty; old k315/k291 proposals and manifests
-remain historical comparison subjects. No target-reading instrument,
+K321 reviewed k320's proposal at 5fb818ab8125 and found eight actionable defects, recorded
+in retirement commit 4304ad5f46d7. K322 repairs amendment/H-default concordance, reporting
+pointers and stale owner wording; the [integration and required replacement](#k321-integration-and-required-replacement)
+place five remaining design obligations in reference-evidence-practical-admission-k323.
+That complete producer's mandatory whole review/every earned integration precedes k269
+planning. The [historical k320 boundary](#coherent-k320-replacement) compares k317's findings
+and retained duties at its snapshot; its membership manifest is preserved unchanged and
+does not identify the partially edited current sources. No target-reading instrument,
 trusted comparison/display/bootstrap entry, retained
 runtime/entry chain, executable schema/control programme, qualified provisioning/receipt,
 original Q results, accepted audit/distinct close, eligible basis or actual appointment is
@@ -31,9 +34,48 @@ process/terminal probe, authority act or native programme is performed in this d
 K316 separately owns Safari's historical fresh-fragment viewer defect; rendering or HTTP
 identity alone is no browser delivery pass.
 
+## K321 integration and required replacement
+
+K322 grades the original k321 findings from 4304ad5f46d7 against their cited k320 source,
+not an integration-body restatement. Its running log records the full derivation. This
+table locates the dispositions; normative choices remain in S/C/K/P, never this report.
+
+| K321 finding | Classification and handling before its consumer |
+| --- | --- |
+| R1 ROOT → CP02 execution/publication | Valid and actionable. K323 owns a concrete execution lifetime/order, bootstrap and validator publisher capabilities/kinds/acknowledgements, removal of self/future binding and disarm-before-provisioning. The existing abstract schedule remains a defective proposal until the complete reviewed repair; k269 cannot supply the route. |
+| R2 repeatable records and immutable revisions | Valid and actionable. K323 owns predecessor-bound bootstrap/anchor and close successor locators, accepted current-anchor selection and partial-publication disposition, with unchanged-input requalification/trust-tool-change/stale-slot controls. No overwrite, restored authority or second initialization is selected. |
+| R3 nested Safari walk | Contract stated unclearly; actionable missing control. K323 owns the composed k94/k110 two-link Q01 positive, both held-A1 checks/immediate re-entries, saved-suffix resumption and two-expansion accounting, plus non-entry/second-step negatives. K319 already covers the two exact entries; historical syntax supplies no current native fact. |
+| R4 amendment and H/E-default omissions | Contract stated unclearly; repaired in C's Enduring inputs and Historical and reporting exceptions. Explicit k314/k319 amendments and k319 answer/k320 retired assignment now agree with S's actual comparison. K246/k247 and the evidence view name k319. Every other E duty remains. |
+| R5 manual About placement | Valid and actionable. K323 owns original human observation/provenance and independent comparison/acceptance before Q06/P01 in the five-checkpoint schedule, including fresh-P/correction rules. No sixth ceremony or scripted observation is authorised by this integration. |
+| R6 current handoff pointers | Valid and actionable; repaired in C/S. Links now land on the coherent-k320 boundary, k317 comparison, original-duty handoff and snapshot verification section, with this later-review boundary visible. Historical k315 targets remain locally historical. |
+| R7 no-follow stream holder | Valid and actionable. K323 owns the independently inspected pre-entry holder/invocation, no-follow/type/single-link/held descriptor operations and original artifact/runtime/read/control anchoring before cmp or any candidate runs. Shell redirection or a new candidate's self-check cannot supply it. |
+| R8 stale owner commands | Valid and actionable; repaired. Root's k287 roll-up has the same historical label as k242/k244. C's current control names CP05's fresh appointed release. All current handoffs expose the k323 replacement/review/integration prerequisite. |
+
+K323 is a live design producer immediately before k269, not a completed repair or
+qualified tool. It must compare all eight findings and every original duty, reconcile
+the complete companions/tables/summaries/views, and freeze a new complete documentary
+membership only after its final design edits. It then cuts mandatory whole review with
+its own bare stem before k269; every earned integration also precedes planning. The
+reviewed k320 membership and all older manifests retain their immutable original bytes.
+Their snapshot identities are intentionally not current-source identities after K322.
+No report-only fragment refresh or invented original/control/result follows.
+
+R4 and the R8 control wording change consumed normative bytes: durable disarm and affected
+qualification are required before their actual consumption. Unconsumed pointers/reports
+alone do not require requalification. The canonical selected section, descriptor ADR,
+five tables, historical packet/parents/manifests and Taskfile are preserved. K244/k242
+stay live; the single pass is unused, full k246/k247/useful breadth/additive supported-VM/
+native placement/private ineligibility and both holds remain. This integration performs
+no implementation, instrument controls, authority act, target/native or topology/process/
+terminal probe. K316 retains its separate viewer defect.
+
 ## Coherent k320 replacement
 
-**Design proposal awaiting whole review; no tool or qualification.** The complete selected
+**Historical review subject at 5fb818ab8125, reviewed as defective by k321.** The tables and
+verification below describe that immutable snapshot's proposed repairs, not the current
+construction handoff. The [k321 integration](#k321-integration-and-required-replacement)
+owns the disposition and exact replacement work. No tool or qualification follows.
+The complete selected
 C sections, whole descriptor ADR, whole K/P, all five quote-aware tables and canonical
 selected S/comparison form the replacement. The new
 [documentary membership candidate](reference-practical-admission-membership.json)
