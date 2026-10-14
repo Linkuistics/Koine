@@ -4,8 +4,9 @@ This is an unconsumed reporting output. The binding rules are the evidence contr
 [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 and [mutation controls](application-reference-evidence.md#extraction-and-whole-object-mutation-controls).
 This report records k282's k287 proposal, k288/k289's review/integration boundary and
-k290's actual human decisions;
-it supplies no approval, receipt, qualification, close record or LIVE role.
+k290's actual human decisions and k306's merged documentary inventory.
+K307 retains complete design reconciliation and mandatory whole-k291 review;
+this report supplies no approval, receipt, qualification, close record or LIVE role.
 
 ## Current construction and evidence report
 
@@ -922,124 +923,177 @@ holds and every native/useful-breadth/original duty remain. No partial reviewer 
 
 ## Complete statement inventory
 
-[Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected
-canonical section, the full descriptor ADR, every selected evidence-contract section,
-both whole companions and every row of all five inventory tables. Each text-bearing
-paragraph, list item, heading or individual table row is a unit: its classification
-applies to **every statement and subordinate clause** in that unit, not just its first
-sentence. Source-relative line intervals and exact UTF-8 byte digests locate the inspected
-version at 04bd81cfb299. Blank lines/table delimiters carry no statements but remain bound input bytes.
-The inventory is a frozen documentary report for that revision, not a parser, acceptance
-payload, basis object or mutable live progress feed. Later source revisions need their
-own review; this report never overrides them.
+The [current routing index](reference-input-partition.tsv) and
+[complete composition manifest](reference-input-partition.json) replace the defective
+k287 all-E index at its current path. They compose **every record of all six exact
+constituent inventories**. A routing row identifies an entire constituent file; it does
+not classify that file or its contents as one statement. An individual member is named
+by the namespace plus the constituent's complete member-identity tuple. No member is
+deduplicated by text, source range or hash: different statement, property-key, scalar,
+reference and required-original roles remain distinct even when they share source bytes.
 
-Source aliases in the TSV are S (canonical population report), D (descriptor ADR),
-C (evidence contract), K (contact companion), P (packaging/runtime companion), PINS
-(source-pins.tsv), BSD (bsd-declarations.tsv), MACH (mach-traps.tsv), MIG (mig-routines.tsv)
-and API (api-basis.tsv). K287 labels every retained unit E and describes H subclauses
-without separate records. F6 identifies changing handoffs, stale owner assertions and the
-remaining canonical pass-status clause within those E units. The classification and
-claimed relocation table below are historical claims under repair, not current accepted
-partition evidence. K291 must refresh the complete per-statement inventory, including the
-F9 dialect clarification, k290's selected amendments and every changed source byte,
-before its whole review.
+- [Complete statement inventory](#complete-statement-inventory) — Replaced the defective current all-E index with exact six-namespace composition and complete member keys.
+- [Relocated observation and handoff register](#relocated-observation-and-handoff-register) — Bound all original R registers and retained duties instead of the incomplete historical summary.
+- [Complete basis-object inventory](#complete-basis-object-inventory) — Carried every whole-object, phase and missing-original obligation through the current composition.
+- [Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof) — Shows the merged documentary boundary and keeps final whole-design reconciliation/review with k307.
 
-`E` means enduring input: rule, conditional duty, immutable decision or pinned basis fact
-with its limitation. `H` means an immutable historical requirements/ADR observation within
-an enduring input; it is not a current-run claim. `R` means a relocated changing
-observation/handoff. These intended meanings do not validate the old labels or prove
-that every changing clause was relocated. Conditional “missing/unavailable until evidence” rules and accepted
-unknown contact limits stay `E`; converting them to a successful report cannot satisfy them.
+| Namespace | Individually retained scope | Classification/identity meaning |
+| --- | --- | --- |
+| [Contact partition](reference-contact-partition.tsv) | Whole contact companion and all five whole quote-aware documentary tables | Every original source/version/coordinate retains its E/H/R label, fragment/cell, context, lines and digests |
+| [Packaging partition](reference-packaging-partition.tsv) | Whole packaging/runtime companion | Every source/version/coordinate retains its individual E/H/R label and original R retained-duty comparison |
+| [Selected partition](reference-selected-partition.tsv) | Exactly selected S, whole D and seventeen complete selected C sections | Every source/version/coordinate retains full extract/fragment/context identity and its E/H/R label |
+| [Historical partition](reference-historical-partition.tsv.gz) | Whole saved packet and parent table | Every source/coordinate/kind remains individually H or E with whole-source/raw-context/fragment identity; no current result is inherited |
+| [Documentary basis references](reference-documentary-basis-membership.tsv) | Every primary reference and its distinct required whole object | Each reference_id remains an association to its existing classified clause and whole-object duty; it is no replacement object's internal partition |
+| [Actual-read and authored requirements](reference-actual-read-membership.tsv) | Every named specimen/control/result/task/runtime/charter/earlier-authority requirement | Each id remains a duty with independent origin, phase, absence and work before consumer; an absent original has no invented E/H/R data members |
 
-| Selected input | K287's claimed disposition, challenged by F6 |
-| --- | --- |
-| Canonical Selected reference and evidence requirements, all nested subsections | Preserve every byte. Source/cohort/permission/classification/handoff clauses are E; statements explicitly about the requirements interview are H; fit/private/native holds are E prerequisite gates. The approved control-status sentence remains outside this selection. |
-| Descriptor-relative ADR, heading through EOF | Entire object E, with fixed prototype/search-only observations H and their original bounded interpretation retained. No live application/kernel outcome is inferred. |
-| Evidence contract: Ownership; instrument architecture; envelope; permission partition | All selected units E: ownership, record types, concrete source/held/decoder protocol, immutable input and phase rules. Changing missing-tool/identity assertions moved to R. |
-| Evidence contract: Authoritative attempt; Independent approval; qualification proof | All selected units E: one-use lifecycle, original/derivative/receipt bindings, commissioned ownership, acceptance/release, exact extraction and full inventory. Changing unprovisioned/unqualified and design-task handoffs moved to R; original duties remain E. |
-| Evidence contract: Contact; fixed composition; decoder expectations; topology | All selected units E: B/U limits, retained chain, independent expectations and exact pre-lookup/refusal/race scope. Current “unqualified/unbuilt” outcomes moved to R; required original evidence stays E. |
-| Evidence contract: durability; one-pass; records; original witnesses; freeze; controls | All selected units E: complete original/raw/typed/association/LocProvenance/tail duties and intended positive/negative discrimination. Changing unexecuted-control/review status moved to R. |
-| Whole contact companion, including introduction and closing verification/limits | Every unit E: accepted requirements, source/basis scope, C/B/U tables, retained controls, owners and topology. Changing producer-child/design/execution outcomes moved to R; no internal reporting slice. |
-| Whole packaging/runtime companion, including introduction and closing ownership | Every unit E: retained entry, acceptance/release controls, O01–O25/Q/P/A, whole read/runtime/task/basis closure, independent expectations and owners. Changing producer-child/recipe/entry/control outcomes moved to R; no internal reporting slice. |
-| source-pins.tsv | Every header/cell/row E: complete source/revision/hash/URL tuples for all pinned XNU objects. |
-| bsd-declarations.tsv | Every header/cell/row E: slot/name/source-line/conditional alternatives and fixed documentary disposition, including placeholders. |
-| mach-traps.tsv | Every header/cell/row E: every trap/variant/invalid slot and fixed documentary disposition. |
-| mig-routines.tsv | Every header/cell/row E: declarations/skips, both source coordinates, logical names, full macro expressions and branch context. |
-| api-basis.tsv | Every header/cell/row E: API/title/URL/retrieval date/digest and bounded accepted-unknown disposition. A retrieved date is historical provenance; no mutable “now passed” cell. |
+The manifest pins the whole bytes of each inventory and its complete original manifest,
+exact header, member-key fields, decoded member count and applicable individual
+classification totals. Counts describe the pinned records; they do not establish semantic
+coverage. All individual clauses, historical data and original R records remain in those
+bound constituents. This composition preserves F9's quote-aware UTF-8 tab-delimited CSV
+dialect: double-quoted fields, doubled quotes, no escape character and LF record endings.
+Decompress the historical constituent before CSV decoding; its compressed original bytes
+are separately bound. Plain splitting on tabs is insufficient for quoted conditional,
+context and multiline fields. Byte positions retain each constituent's zero-based
+start-inclusive/end-exclusive convention, source-relative one-based lines and whole
+contexts. Fragment text or classification never grants standalone permission.
+
+`E` is an enduring rule, selected value, conditional duty, schema or bounded claim limit.
+`H` is an individually located immutable historical assertion or act, with its original
+provenance and limit. `R` locates an original changing observation or retired-owner handoff
+and its retained rule; it is not a current consumed reporting subregion. These statement
+labels differ from E/M/U operation credit and Q/P/A stages. The merge changes none of
+those meanings and supplies no operation result, authority, qualification or acceptance.
+
+The former index remains available at immutable commit
+`04bd81cfb299bc83422e7a61e4d1d0b1c8d76e0b`; its exact path, whole digest, length and
+historical unit count are recorded in the new manifest. Its all-E paragraph/row labels
+and unrecorded H/R claims remain defective. Earlier slice guards describing an unchanged
+historical TSV compare that immutable object, rather than requiring the deliberately
+refreshed current routing index to keep those old bytes. VCS preserves the old object;
+no duplicate mutable historical copy is introduced into the repository.
+
+Composition was selected over flattening almost half a million historical records and
+repeating every source/context field. The extra indirection retains the existing member
+semantics and avoids a second copy drifting against each scoped inventory. The cost is
+that verification must follow all six files and complete manifests, not inspect the
+routing TSV alone. An omitted or changed constituent cannot be accepted from unchanged
+totals or matching names. No acquired original, actual read or finite subject follows.
 
 ## Relocated observation and handoff register
 
-K287 reported the following R relocations; F6 demonstrates that the register is incomplete.
-It does not discharge the live k291 statement-by-statement comparison. Their original location
-remains available in the preceding version; enduring obligations remain in that source.
-No required future rule has its sole home in this register.
+The current manifest binds the complete original R registers in the contact, packaging
+and selected manifests. Their individual records preserve immutable original text/ranges,
+source/context identities and the retained conditional responsibility or duty. The
+[contact slice](#contact-input-partition-slice),
+[packaging slice](#packaging-input-partition-slice) and
+[selected slice](#selected-normative-input-partition-slice) explain those exact comparisons.
+The complete registers and constituent member coordinates, rather than k287's incomplete
+summary list, are the documentary evidence. Fixed historical assignment names cannot
+appoint a current execution or acceptance owner.
 
-| Original source and changing assertion | Enduring obligation retained there |
-| --- | --- |
-| Contract decoder: identities/observations “not yet supplied” | Actual image/format/native observation evidence before claim credit |
-| Contract permission: no executable schema/receipt/passing proof “exists yet” | Closed independent profile/extract/concordance and immutable qualification inputs |
-| Contract attempt introduction: UID/ancestry/receipt “unprovisioned”; no authority directory/register/protocol/scratch qualification “exists” | Actual qualified provisioning/validation and admission conjunction; design retirement grants no evidence |
-| Contract lifecycle controls: “unexecuted” | Actual scratch acknowledgements, independent bounded contact/entry evidence and all original controls |
-| Contract approval introduction: root/revision/receipt/channel not provisioned/qualified | Whole review, independent commissioning/acceptance and actual required evidence |
-| Contract channel/anchor handoff: endpoint preservation “unqualified”; controls “unexecuted”; k278/k275/k276/k277 current work and observations absent | Required channel/control identities and complete review/qualification ownership before consumers |
-| Contract proof section: actual registration/validation/review “remain due” | Required acceptance/validation/review before consumption |
-| Contract fixed composition: endpoint/startup correspondence “unqualified”; rehearsal unavailable/review due | Named required Q/P correspondence and exact retained entry; accepted opaque gaps stay unknown |
-| Contract decoder expectations: programmes/specimens/controls “remain unbuilt” | Independent original specimen/runtime/control evidence, never producer-learned expectations |
-| Contract one-pass: lifecycle “remains a proposal” for current review/construction | Required whole review and qualified lifecycle before use |
-| Contract control introductions: “not yet executed”/“specified, unexecuted” | Every original required positive/intended-negative/freeze/control obligation |
-| Contact companion introduction: source checks acquired no native evidence/pass unused; k284 applies/k285–k287 still due | Full source/basis limits, B1–B8/C1–C8/U1–U6 and whole review before construction; no partial handoff |
-| Contact companion ending: current table extraction/check outcome; pass unused/private false/native pending | Complete documentary comparison/control method and separate native/private qualification gates |
-| Packaging companion introduction: current design/entry/no receipt/pass status; k283–k287 work due | Whole reviewed Q/P/A, acceptance/release/input conjunction and all original duties |
-| Packaging retained entry: root Taskfile “currently supplies” recipes; no scaffolding “added in this session”; fd preservation “unestablished” | Qualified exact standalone chain and actual C3/C6/C8 controls; lossy recipes cannot substitute |
-| Packaging control/read sections: “future controls, not executed”; existing dynamic recipes; “this session's validation results” | Required scratch evidence and full actual task/runtime inputs; changed results belong outside inputs |
+Only the actual compared k281 contact/lookup/control-status, k290 ownership/foreground/
+exact-pass-status and k295 bounded correspondence-observation amendments apply. The
+canonical selected bytes, adjacent holds/private/native line and whole descriptor ADR
+are retained exactly; neither whole companion nor any table/basis/task/runtime/charter
+is sliced. Six unconsumed event reports can change without changing an actual input.
+Changing a consumed object still disarms and requires affected qualification under the
+binding contract; a report label or this merge creates no exception. Rules remain in
+their normative sources, never solely in this unconsumed register.
 
 ## Complete basis-object inventory
 
-Whole-object binding extends beyond Markdown and table rows. The following complete
-families remain required; this documentary repair fetched, commissioned and qualified
-none of their actual construction/runtime objects. Missing objects are explicit remaining
-work, never a reporting exception or a source-locator-only hash.
+The composition binds the entire [whole-basis/actual-read manifest](reference-basis-read-membership.json),
+including documentary objects/references, every required-original row, all earlier-authority
+and conditional edges, charter candidates, identity/absence rules and remaining work.
+The [complete basis handoff](#whole-basis-and-actual-read-membership-design) gives its
+original k302 comparison. Every available source snapshot/extract is separately located
+by whole digest, length and exact accepted ranges. Whole contact/packaging/table/historical
+objects retain complete-byte binding. Source snapshots are documentary originals of those
+saved objects, never originals of the external primary/runtime objects they reference.
 
-| Complete required basis | Every retained statement/object's classification |
-| --- | --- |
-| All XNU objects named by source-pins.tsv | E: each whole original object at its exact tuple; source observations/branches are immutable documentary data, not current-kernel identity. |
-| Every retrieved API JSON object named by api-basis.tsv | E: complete retrieval at the exact digest; its dates/locators are fixed provenance. Changed retrieval is an input change. |
-| Entire pinned kern_sysctl.c, at the packaging companion's exact SHA-256 | E: immutable API/compatibility documentary basis, not fresh O06 results. |
-| Entire historical CF binary/old-style/dispatch source objects at all three recorded digests | E: bounded implementation-derived basis, not loaded-image or independent runtime outcomes. |
-| Entire XML 1.0 edition, Apple DTD/XML tag/OpenStep/strings guides, Task configuration/schema and persistence/socket/random/API documents required by the contracts | E: complete accepted retrieved editions/objects plus exact independent locators; absent retrieval identity remains missing work. No claim that a live URL's current bytes were frozen here. |
-| All independently authored format/type/association specimens, expectation programmes, controls and original accepted runtime results | E as finalized inputs to their consumers, with original evidence and claim limits; absent actual results stay unavailable in the report. No future result is hashed into its producer. |
-| All accepted task/global/user configuration, scripts, build/compiler/SDK, interpreter/stdlib/package/data and loaded-image objects | E whole consumed objects; no task/recipe/report slice. Required unknown current identities still block their Q/P stage. |
-| Earlier immutable charter/revision/commissioning/receipt/control/acceptance/audit/close/release objects, at each consumer phase | E finalized evidence/authority inputs with exact bytes and independent owner provenance; successors are outputs until a later consumer reads them. Creation is no predecessor self-hash. |
+Missing external primary originals, authored specimens/programmes, accepted runtime
+results, retained task/configuration/import/loader/image/initial-state closure and frozen
+charter/authority records keep null actual digest/length/member inventories and precise
+retrieval/construction/correspondence/independent-acceptance/individual-partition work before
+their named consumers. No locator, declared family, historical data, source pin, human
+policy answer or current routing row substitutes for those bytes or facts. The named
+requirements do not enumerate the unbuilt retained environment's actual transitive reads.
+Actual whole reads, including a live report or task, still bind their complete bytes.
+
+Earlier finalized Q inputs and later original result/acceptance/audit/distinct-close/
+release/appointment/P/A outputs retain the original acyclic predecessor design. Future
+outputs cannot be inputs to their producer. Qualified separate initialization/current
+correction/disarm and human acceptance/exclusion duties remain. Required named native,
+identity, entry and control evidence remains blocking at its own stage; only the
+canonically accepted opaque contact remainder stays unknown. This inventory accepts
+none of those originals, observations or roles.
 
 ## Documentary checks and remaining qualification
 
-The statement inventory and exact original/final comparisons are documentary checks.
-Frozen link/manifest/render/browser checks validate presentation. They execute no
-instrument mutation control or native qualification. Construction must independently
-author and observe the contract's extraction/whole-object/actual-read/dependency controls
-before crediting them. K290 has settled the actual choices; k291's complete repair and
-mandatory whole review/integration remain
-before k269; the historical inventory supplies no accepted classification or Q proof.
+K306's verification compares the final six exact namespace sets, complete member keys,
+headers/digests, source/extract/context coordinates, individual classifications, original
+R retained-duty records and whole-basis/phase/absence design. It replays the preceding
+scoped documentary comparisons against their own immutable originals, comparing the old
+TSV guards to the archived object. A fresh bounded whole-file scan records its exact
+saved-document subjects and tests required pinned-original correspondence only there;
+it does not search embedded objects, external caches or installed/runtime objects.
+Historical scan manifests remain historical provenance rather than being silently rewritten.
+
+The final documentary comparison passes over all 492,230 constituent records. It rejects
+omitted/duplicate namespaces, altered constituent identity/member keys/classification,
+lost source scope/extract digest/R register/phase duty, changed historical identity and
+omitted scan subjects. False possessed-empty originals, self-authority inputs and an
+injected exact original also reject at their intended comparisons. The prior individual
+clause/cell/original-R/edit reconstruction, exact selected boundaries/adjacent canonical
+holds and complete historical datum/ordinal/parent comparisons pass at their own scopes.
+These are documentary mutations, no executed instrument Q programme or semantic approval.
+Temporary comparison evidence is `/tmp/koine-k306-documentary-check.json`; it names every
+saved document, constituent, historical snapshot, checker and interpreter/library subject
+and compares their before/after digests item by item. The new manifest records the final
+bounded saved-file scan, excluding only itself to avoid a self-hash. That exclusion gives
+no omission permission to an actual acquisition consumer.
+
+The existing seven-view render task regenerates the exports with its twelve named inputs
+unchanged item by item. Only the approval source/export changes; the whole-seven-view
+semantic/browser reconciliation remains k307. The final `check:docs` measurement uses the
+enumerated documentation/Markdown/view/manifest/Taskfile/checker/Task/Python subjects and
+retains their before/after equality. Temporary named task evidence is
+`/tmp/koine-k306-render-inputs.json` and `/tmp/koine-k306-docs-inputs.json`. These named
+subjects are documentary provenance, not the unbuilt retained environment's actual reads.
+
+Safari on presentation port 8946 renders the updated composition node, lower
+release/appointment/true-return flow and explanatory caption in desktop light appearance.
+This fresh approval fragment reaches the intended view directly; the current-discussion
+fragment reaches its panel, topic outline and exactly one changed-view marker. These
+scoped observations retain earlier fragment limitations as historical observations and
+establish no complete seven-view/mobile/dark delivery. K307 owns those final checks.
+Served-byte equality supplies delivery identity only, never rendering evidence by itself.
+Tier 2 graph generation `2026-09-29T10:36:20Z` excludes docs/scripts; changed/untracked
+root/task metadata is no completeness evidence. Whole direct-source byte reads and exact
+comparisons supply this documentary slice; no structural/current-runtime claim follows.
+
+K306 closes only this complete documentary composition. K307 retains every original
+k303/k298/k294/k291 whole-design condition: F1–F8/F9/F10, k273/k244/k242/k282/R7–R10,
+exact amendments, all summaries/roll-ups, seven views/manifest and k244/k242/k245/k246/
+k247/k269 consumer charters, final fragment/mobile/dark checks and mandatory whole-k291
+review before k269. Its closing session supplies its own Creator and promotes the ancestor
+chain only after their complete Done when holds. No partial reviewer or construction
+handoff is cut here; every earned integration precedes k269.
+
+The single k245 pass remains unused. K244/k242 retain actual qualification/package/subject
+duties; k246/k247, useful breadth, native placement, private ineligibility and both product
+holds remain. No target/process/terminal/kernel/privilege/native programme, authority
+provisioning, original control result, actual appointment or instrument acceptance occurred
+in this documentary slice. Required refused copies keep their accepted incomplete outcome
+and precise missing work, never a completed finite subject or accepted useful loss.
 
 ## Inspected source identities
 
-These full-document/table digests locate the inspected k287 version at 04bd81cfb299,
-not current source bytes after integration. F9 changes the contact companion's normative
-bytes; changing reporting changes raw document snapshots too. No prior qualification is
-inherited. The TSV remains the historical artifact, with its F6 defects stated above.
-For the three section
-sources they are raw snapshot provenance, not a replacement for exact accepted extracts.
-They bind no digest of this report or of a future proof.
-
-| Alias | Inspected full-byte SHA-256 |
-| --- | --- |
-| S | `fcfedf988f2c8bee14f9e17b8be225c0d262a490345a656a552b3190ad32216d` |
-| D | `0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962` |
-| C | `eddddbc9b7b16ee337aa4c8f863ec375f172b9a8c2f535d36dbb406e3ac5eec3` |
-| K | `03c8d65cb57a4888acfeecc6ec3afa43bb0654e1d1a1dd64eec2ba390aa1a22b` |
-| P | `5f4ad1899a4f5c33e7c9641c68d251416a36582db3e3531667c8d91e66229f61` |
-| PINS | `4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33` |
-| BSD | `2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5` |
-| MACH | `42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3` |
-| MIG | `1156336abe2a02c7e297f75bff65dc624a701fbb72d5b8b7568d6ea1111424d0` |
-| API | `e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e` |
+The [current manifest](reference-input-partition.json) locates every available final source
+snapshot/extract and each complete constituent manifest/inventory by exact digest. Its
+replaced_legacy_index identifies the old k287 inventory separately. Historical revisions
+and original R bytes retain their own identities; a current snapshot does not overwrite
+them. This report and the merged inventories are unconsumed outputs, not permission,
+accepted authority objects, required original runtime facts or Q proof. Reading them in
+the measured chain would invoke the existing whole-read/change/disarm rules.
