@@ -3,11 +3,11 @@ direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Foreground admission protocol\nComplete design → whole-k291 review → k269" {class: start}
-Qualify: "Q earlier required mechanics / controls\nActual native UID / build / channel / decoder on pure inputs\nNamed B1–B8 evidence; full contact gaps accepted"
-Provision: "Explicit one-time initialization\nIssuance profile + current profile / bridge\nReceipt / final validation stay DISARMED"
-Final: "Last edit → disarmed requalification\nIndependent acceptance + audit\nDistinct k244 close / promotion"
-Release: "Antony accepts exact eligible basis\nFresh human APPOINT over entry / request / nonce\nForeground supervisor + checker + child through true return"
+Start: "Start here · Foreground admission protocol\nComplete design → whole-k315 review → k269" {class: start}
+Qualify: "CP01 bootstrap / artifacts; Q mechanics / controls\nActual native UID / build / channel / decoder on pure inputs\nNamed B1–B8 evidence; full contact gaps accepted"
+Provision: "CP02 · One qualified initialization + separate validation\nIssuance profile + current profile / bridge\nReceipt / final validation stay DISARMED"
+Final: "Last edit → disarmed final Q\nCP03 · original results / complete audit"
+Release: "CP04 · tool-computed eligible basis after close\nCP05 · exact entry acceptance then fresh APPOINT\nForeground supervisor + checker + child through true return"
 Ready: "Fixed validated unspent.receipt\nHighest revision / correction; no intent"
 Export: "P actual facts + accepted exact A3 entry\nImmutable issuance rule; entry accepted before lookup\nFresh export reservation precedes intent"
 Intent: "Lock receipt; recheck identities\nRetain consume.intent, even partial"
@@ -21,7 +21,9 @@ Maintenance: "Approved disarm-only maintenance\nRetain next slot / synchronized 
 Start -> Qualify: "1 · no operation evidence supplied"
 Qualify -> Provision: "1a · qualified separate initializer / validator"
 Provision -> Final: "2a · external validation never arms"
-Final -> Release: "2b · accepted stable closing basis"
+Close: "Distinct k244 closing owner / step\nAfter CP03; before CP04; not a human ceremony"
+Final -> Close: "2b · finalized Q acceptance / audit"
+Close -> Release: "2c · finalized close before eligibility"
 Final -> Maintenance: "change or any requalification"
 Maintenance -> Final: "new Q → acceptance / audit → distinct close"
 Maintenance -> Refuse: "partial / failed / interrupted successor"

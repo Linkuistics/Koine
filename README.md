@@ -83,61 +83,40 @@ uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
 
 ## Reference evidence design
 
-The independent [reference evidence instrument](docs/verification/application-reference-evidence.md)
-has a complete admission design for mandatory whole-k291 review. Construction replanning
-k269 follows that review and every earned integration. K288/k289 identified defects in
-the historical k282 proposal; the [final design comparison](docs/verification/application-reference-input-partition.md#final-whole-design-boundary)
-locates their repairs, the actual k281/k290/k295 answers and each original obligation.
-No instrument, independent approval root, receipt or qualified control exists; the
-single current-reference packaging pass remains unused.
+The [practical admission design](docs/verification/application-reference-input-partition.md#practical-admission-design)
+is ready for mandatory whole-k315 review and every earned integration before k269
+construction replanning. It repairs k312 R1–R7 under Antony's actual k314 choice; design
+and documentary identities supply no qualified tool, authority or target evidence.
 
-The [selected authority](docs/verification/application-population-metadata-shape.md#authority-and-admission-choices)
-retains one qualified initialization in the separate KoineReferenceEvidence namespace,
-cooperative enforcement and bounded documented durability. Immutable issuance authority
-stays separate from accepted current corrections and fresh human-accepted P export
-entries. Export reservation precedes irreversible intent/consumption and original
-acquisition. Attempt/export cleanup cannot restore authority; process-death controls
-do not establish OS-crash persistence.
+An independently authored/reviewed [comparison and display tool with short bootstrap entry](docs/verification/application-reference-evidence.md#independent-computation-and-short-bootstrap-entry)
+computes full byte/member equality, complete required-result audit and eligible basis.
+Antony makes semantic accept/refuse judgments in [five named checkpoints](docs/verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule)
+in his own terminal outside agent harnesses. The separate initializer/receipt validator,
+original author/executor/adjudicator exclusions and distinct instrument closing owner
+remain. CP03 follows final Q; distinct close then CP04 precedes CP05's exact-entry acceptance
+and fresh coexisting supervisor/checker/acquirer appointment through true return.
+No image/task/receipt/proof/eligible record supplies appointment. Disarm-only maintenance
+retains durable intent before changes or Q; crash/lock release/successful Q cannot re-arm.
 
-Antony performs [independent ready-object acceptance](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
-before each first consumer. Compatible human trust/audit/release duties may batch;
-producer/repairer exclusions and a distinct instrument closing owner/step remain.
-Approved maintenance persists disarm intent before changed work or qualification.
-Crash, partial successor, lock release and successful unaccepted Q cannot restore
-old eligibility. After final qualification, acceptance/audit and distinct k244 close,
-Antony freshly appoints one coexisting foreground supervisor/checker/acquirer through
-true return. Image/task/receipt/proof/release possession cannot select LIVE.
+The [closed contact/blocker map](docs/verification/application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
+and [exact grammar](docs/verification/application-reference-evidence.md#closed-pre-lookup-entries-and-operation-order)
+retain required Q/P evidence and scope/refusal limits. Preboot cryptex and finite System
+framework/version/helper/nested shapes have separate link/ancestor entries; physical
+outside-then-back expansion still refuses. Historical spellings prove no current presence,
+link text, topology or TCC. Only named opaque contact gaps stay accepted unknown.
 
-The [bounded contact contract](docs/verification/application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
-defines Q01–Q10/P01–P05 and every C/D applicability disposition before construction.
-The [T1–T7/A1–A3 grammars](docs/verification/application-reference-evidence.md#closed-pre-lookup-entries-and-operation-order)
-include separate direct/link Data and authority/export entries and refusal before
-protected, unlisted or out-and-back lookup. Complete opaque service/proxy/initial-right/
-mapping/hidden-ancestry/TCC coverage remains accepted unknown with residual accidental-
-contact risk. Failed required identities, calls, controls or freeze remain blockers;
-there is no full no-contact certificate or repeated impossible-coverage programme.
+[H/R exceptions with E default](docs/verification/application-reference-evidence.md#historical-and-reporting-exceptions)
+replace historical fragments and reporting-driven reconstruction. Full consumed bytes,
+independent original/basis/read membership, phase/absence and original R duties remain.
+Actual consumed changes disarm/requalify; unconsumed reports supply no qualification.
+[Q/P/A stages](docs/verification/application-reference-packaging-runtime.md#operation-and-credit-map)
+remain separate from E/M/U operation credit and documentary E/H/R interpretation.
+Missing required identities/controls block their stage; source-child facts first belong to A.
 
-The [operation map](docs/verification/application-reference-packaging-runtime.md#operation-and-credit-map)
-separates **Q** earlier qualification, **P** fresh facts before intent and **A** first-attempt
-outcomes from **E** actual-call evidence, **M** independent logical-to-scratch mapping and
-**U** unavailable credit. K295 authorizes only manual About corroboration, finite same-UID
-peer/image metadata and inherited operator-fd/group observations; source-child metadata
-first belongs to A. Their required original results and qualification remain absent.
-Missing required Q/P facts block their stages; a successful target sample is no Q control.
-
-The [complete six-namespace partition](docs/verification/application-reference-input-partition.md#complete-statement-inventory)
-replaces the historical defective all-E index. Each E/H/R clause or datum, original R
-comparison, whole-basis/actual-read duty and absent-original obligation retains its own
-coordinate. These statement classes differ from operation credit. Only the exact
-selected extraction exception applies; companions/tables/bases and actual task/runtime/
-charter reads bind whole bytes. Unconsumed reports grant no qualification; actual input
-changes disarm and requalify. Locators, source pins and policy cannot supply absent originals.
-
-K244 retains actual construction/qualification and distinct closure. K245 alone owns the
-unused pass and independent copy roles; k246 retains complete generated rewrite/helper/
-alias discrimination; k247 retains whole-subject/family review. Required refused copies
-keep raw slots and exact failed/incomplete work. The finite subject is absent, private
-eligibility is false, both product holds and all useful-breadth/native duties remain.
+K244/k242 retain actual instrument/subject duties. K245's single pass is unused; k246
+keeps full generated useful/helper/alias discrimination and k247 whole-subject/family
+review or exact incomplete work. Full useful breadth/additive supported-VM baseline/native
+placement, private ineligibility and both product holds remain.
 
 ## Client-requested grants
 

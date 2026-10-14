@@ -1,34 +1,9 @@
 # Application population metadata shape
 
-[Preserve joint facts before choosing a population](../design/architecture/index.html#diagram-native-population-metadata-shape)
-shows the current boundary. Graphs enter at the dark Start here node; numbered
-edges express dependency order. This is the permitted **corpus-insufficiency
-boundary**, not a selected P1024 distribution or a useful qualification pass.
-The [per-copy audit](../design/application-population-metadata-shape.json) preserves
-all saved associations without inventing missing data. Private eligibility remains
-false under the [canonical predicate](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence).
-The [selected reference and evidence requirements](#selected-reference-and-evidence-requirements)
-now use the current macOS 27 installation. The historical audit's cohort facts remain unchanged;
-it is not a completed current-reference package or a reviewed qualification subject.
-
-The [byte-complete evidence contract](application-reference-evidence.md) now defines
-the exact record/association model, one-pass failure and replay semantics, separate
-decoder observations and required independent controls. Its [concrete instrument
-route and proposed construction increments](application-reference-evidence.md#construction-and-qualification-boundary)
-now carry a complete replacement admission-design/exact-unavailable boundary for whole
-review/earned integration and reviewed
-construction replanning before construction. K244 retains its original obligations
-as a node; the earlier design/plan qualifies no tool. Instrument construction/control execution,
-the authorized package, independent copy roles, generated recipes/discrimination and
-whole-family reconciliation remain live under the complete subject producer.
-
-The [whole review integration](application-reference-evidence.md#review-integration-and-required-decisions)
-is followed by k281's accepted bounded contact evidence, closed pre-lookup rule, explicit
-incomplete-evidence outcome and narrow status relocation. The [obligation comparison](#line-by-line-original-obligation-comparison)
-identifies each amendment; all other duties remain. K282 must apply these actual choices
-and repair admission credit/activation/registration/input partition with mandatory whole
-review/earned integration before k269. The earlier incomplete admission proposals qualify
-neither construction nor the pass.
+This is the canonical selected reference/evidence requirement and exact amendment comparison.
+Saved census facts below retain their original reference and claim limits. Changing design,
+construction, qualification and delivery outcomes are kept in the separate
+[unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
 
 ## What the saved corpus establishes
 
@@ -549,71 +524,19 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 
 ## Reference-evidence decision comparison and reporting
 
-K281 put three concrete questions to Antony. He answered "yes" to the bounded contact
-claim and evidence seams, "yes." to the closed pre-lookup rule and explicit incomplete
-outcome, and "yes" to the narrow status relocation. The selected clauses above are the
-requirements; this comparison explains exactly which earlier obligations they amend.
-It does not supply permission beyond those clauses or an implemented admission gate.
-
-K290 put two further decisions to Antony after k288/k289. He answered "agree" to the
-human-owned independent acceptance and foreground acquisition ceremony, with compatible
-acceptance/audit/release batching, producer/repairer exclusions and a distinct instrument
-closing owner/step. He answered "ayes" affirmatively to the exact additional pass-status
-move below. The selected human-operator clause and comparisons identify the precise
-changes to k282's owner/lifetime proposal; every other original duty remains binding.
-
-K295 put the single bounded correspondence arrangement to Antony; he answered "approve",
-including the fixed source child's metadata only inside A after consumption. The selected
-**Independent build, process-image and terminal correspondence** clause adds only the
-explicit observation authority compared below. It supplies no current build/image/terminal
-fact or qualified route, and leaves required Q/P/A evidence at its original stage.
-
-K314 applies Antony's received k313 answer, "Use the smaller reviewed workflow
-(Recommended)", to k312 R2/R3. The selected **Reviewed computation and five checkpoints**
-and **Documentary proportionality** clauses separate trusted computation from human
-judgment and explicitly amend k291 F6. They retain k290's ready-object/first-consumer
-ordering, compatible batching and distinct close, with the five-checkpoint constraint
-and exact-conflict rule above. K315 owns the complete replacement design and mandatory
-whole review/every earned integration before k269; the answer supplies no authority,
-appointment, acquisition or qualified artifact.
-
-The exact canonical before state is this document's selected section at k313's
-retirement commit 47875236. The after state retains every earlier selected clause byte
-for byte and inserts the two named clauses immediately before **Independent build,
-process-image and terminal correspondence**. Their complete added text is above;
-the quoted original requirements and selected dispositions are compared below. The
-reporting amendment below identifies the old apparatus as historical instead of
-regenerating it as accepted replacement evidence.
+The selected clauses above and exact comparison below record only the actual k270/k281/
+k290/k295/k314 amendments. Changing design/construction/qualification/pass observations
+live in the [unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
+The k314 before state is 47875236: its two selected clauses were inserted before Independent
+build, process-image and terminal correspondence; all earlier selected clause bytes were
+retained. The practical design changes no selected clause, permission or accepted limit.
 
 ### Status outside the measured permission
 
-Those controls are currently specified, not executed.
-
-The instrument, independent admission mechanism and actual qualification remain unbuilt.
-The one target pass is unused. The [reviewed k291 design](application-reference-input-partition.md#final-whole-design-boundary)
-is the historical starting point with unresolved k312 R1–R7, as classified in k313.
-K314 applies the received acceptance/documentary amendment above; k315 must repair the
-complete conjunction and earn mandatory whole review/every integration before k269.
-Required actual originals, controls, provisioning/validation and qualification remain
-missing; no current package, complete finite subject, authority or native verdict follows.
-
-The separate [input-partition and evidence report](application-reference-input-partition.md)
-records changing construction/commissioning/qualification/audit/close observations.
-K289 preserved this document's selected section. K290 added the selected human-operator
-clause and, under separate exact approval, removed only "The single pass is unused;"
-from Agreed seams and capitalized retained "Both". Its adjacent private-ineligibility/
-native-PENDING line remains byte-identical. K295 added only the compared bounded
-correspondence-observation authority. K314 adds only the two compared acceptance/
-documentary clauses; every earlier selected clause remains byte-identical.
-
-The [k291 six-namespace composition](application-reference-input-partition.md#complete-statement-inventory)
-and its constituent source/member/charter identities remain historical defective review
-subjects. They are not refreshed or accepted replacement inputs by this amendment.
-K314 replaces their individual-fragment and reporting-driven reconstruction duties only
-as selected above. Original R retained duties, complete consumed bytes, original/basis/
-actual-read membership and phase/absence obligations remain. K315 owns the complete
-reviewed exception/default representation and relocation of changing S/C observations.
-Unconsumed reports supply no qualification; actual consumed changes disarm and requalify.
+The exact relocated status sentences and all changing outcomes are
+[reported separately](application-reference-input-partition.md#current-construction-and-evidence-report).
+Old fragment/composite identities remain historical defective review subjects; they are
+never replacement proof. The selected Documentary proportionality clause owns that change.
 
 ### Line-by-line original-obligation comparison
 
@@ -666,86 +589,18 @@ and its mandatory whole review/every earned integration must precede k269 consum
 
 ## Required reproduction contract after the decision
 
-The [admission repair design](application-reference-evidence.md#authoritative-attempt-evidence)
-requires a fixed permission-evidence subject independent of caller-selected exports,
-independently complete stage-specific qualification proofs and required named bounded
-scratch-contact evidence.
-The [selected authority requirements](#authority-and-admission-choices) settle initialization,
-lifecycle, independent approval/corrections, bounded persistence, unprivileged observation
-and protected/intermediate contact under Antony's delegation. Actual reviewed protocol,
-qualified provisioning, receipt, independently approved anchors and actual proofs for the
-selected bounded claims remain absent; unknown authority refuses contact. No requirements answer performs
-initialization or spends the target pass. The [whole original-obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
-and [construction responsibility handoff](application-reference-evidence.md#construction-responsibility-and-stability-handoff)
-carry the complete replacement through mandatory whole-k282 review/earned integration
-before k269. K279/k280's findings and k281's actual decisions are reconciled by k287 into
-that complete conjunction; no owner may guess which U cells block admission.
-K281's accepted unknown contact coverage is an explicit limit, not a mandatory repeat of
-the complete-mechanism impasse. K282 must separate those limits from actual required
-prerequisites and first-attempt observations; no unrelated native proof is waived.
-K269 assigns qualified provisioning/independent validation, last-edit requalification,
-independent audit and distinct final k244 close with repair ownership through k245.
-Immutable issuance and current correction bindings stay separate, and whole companions/
-tables cannot inherit a reporting slice. Source/build/file/cohort choices remain intact.
-No topology, privilege or native/VM experiment follows.
-
-A qualifying design must freeze the complete source evidence, independently
-name its reference population and reason, classify its useful cohort from a named
-independent source, and select whole per-copy tuples with an explicit
-multiplicity/assignment rule for 1,010 distinct useful test apps. Keep the fourteen
-configured/system witnesses, 256 helpers, 128 aliases and **all actual VM baseline
-and registration pressure** in that same workload. Identifiers/executable/signing
-rewrites need explicit manifests and independently checked resulting byte sizes,
-formats, typed candidates, locale components and selected/refused branch effects.
-They cannot silently preserve a source digest or source identity after editing it.
-Replication and rewriting create a declared finite constructed subject, not
-1,010 independently measured applications. If a measured distribution informs
-the assignment, state its actual scope and justify the resulting finite shape
-or envelope without inferring population-wide representativeness.
-Every helper/alias also needs its exact joint recipe/target association; the old
-thin helpers are not exempt from shape design.
-
-The mapping must retain each information/name-file family, layout, format,
-raw direct component, table key/dictionary/type/LocProvenance fact, selected and
-rejected string, and all tail associations. Independent original evidence must
-check generated per-copy artifacts, not merely totals produced by the generator.
-A recipe covering only en/de fails full key/value preservation. The actual
-supported VM baseline is additive, never replaced by these historical 640 rows.
-Fit under every selected count, scoped gross/attempt, deadline/slot and full-wire
-gate remains an actual acceptance obligation; baseline that does not fit stays
-live rather than being removed. No recipe or distribution is frozen here.
-
-A future pass qualifies only the explicitly selected joint finite shape plus
-that run's actual full baseline, source batches, preferences, image/profile and
-supported OS. It does not establish an arbitrary population of the same size,
-all-disk completeness, total heap/RSS/peak, opaque-native health or another OS.
-All independent location/Settings/core/action/authority/disclosure/source-and-image/
-compatibility duties stay live. Real publication and all nine tapes remain required.
+Use the selected [complete evidence contract](application-reference-evidence.md), its
+[historical/reporting exceptions and E default](application-reference-evidence.md#historical-and-reporting-exceptions),
+both whole-byte companions and all five whole tables. Complete actual consumed-byte,
+original/basis/read/phase/absence and original R retained duties remain. Actual acquired
+objects need their complete members; missing originals keep null actual identities.
+The [practical report](application-reference-input-partition.md#practical-original-obligation-comparison)
+locates the whole original-obligation comparison and exact missing work before consumers.
 
 ## Reproducible boundary checks
 
-Run task design:application-population-metadata-shape to write the saved projection
-audit; it reads only named repository inputs and constructs no app. Run task
-design:application-population-metadata-shape-check to compare it and observe every
-broken control before crediting the clean comparison. The controls replace all
-metadata with thin fixtures while retaining cardinality, clip real size tails,
-remove a loctable, drop an unselected raw key or LocProvenance, and swap file sets
-between copies while leaving global marginals unchanged. Each must fail exact
-independent saved-row comparison; reorder alone must pass. False qualification,
-private eligibility, native pass and removed-hold claims also fail.
-
-These are **packet-integrity checks**: any row edit fails, including a declared
-identifier rewrite, even if that rewrite would preserve the later shape contract.
-The complete subject's rewrite-aware discrimination controls remain **unbuilt**
-and cannot be satisfied by these hashes. Supplied-fact controls demonstrate that
-the loss inventory counts illustrated payload/format/typed facts as present and
-rejects an unclassified field. Their annotations select no recovery schema and
-verify neither supplied bytes nor completeness of a typed tree.
-
-These controls verify preservation of the **available projection**. They do not
-validate the missing file bytes/typed strings, qualify a distribution or establish
-native usefulness. The manifest explicitly records no selected distribution,
-no qualification recipe and no qualification scope. Hash every input packet,
-evidence instrument, audit/test source, Taskfile and Python executable before and
-after; check mode also freezes the saved output. The whole reconciliation suite
-freezes the full family and tools separately. A changed input invalidates a run.
+Document/link/render checks validate only the saved design. Exact replacement documentary
+identity and historical-parent/Safari comparisons are reported with their bounded scope
+[separately](application-reference-input-partition.md#practical-documentary-verification).
+No check supplies authority, instrument/control qualification, current target bytes or
+private/product/native eligibility. Actual consumed changes still disarm/requalify.

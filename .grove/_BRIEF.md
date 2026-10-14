@@ -231,18 +231,26 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
-Review reference-evidence-session-admission-k312 and integration k313 find the k291
-admission handoff incomplete. Reference-evidence-practical-admission-choice-k314 applies
-the received smaller-workflow answer to the canonical clauses and original comparison:
-five bounded human checkpoints and the complete reviewed H/R-exception list with an
-explicit enduring-rule default. Replacement producer
-reference-evidence-practical-admission-k315 repairs R1–R7 and earns mandatory whole review/
-every integration before k269 replanning. The k291 closure paragraphs below are historical
-producer claims, not current implementation eligibility. No reviewed replacement design or
-qualified tool exists yet. Architecture-fragment-navigation-k316 owns Safari's reported
-fresh-fragment delivery defect before k7; it supplies no browser or native pass by existing.
-K244/k242 remain live, the single k245 pass is unused and every original useful-breadth,
-k246/k247/private/product/native duty remains under only actual recorded amendments.
+## Practical design handoff awaiting whole review
+
+Reference-evidence-practical-admission-k315 supplies the complete replacement design under
+actual k314: independent comparison/display and short bootstrap trust, five named own-
+terminal human checkpoints, full compatibility/exclusions and distinct close, exact Preboot/
+framework/link/ancestor grammar, closed Q/P/C/D and proportionate H/R exceptions with E
+default. Mandatory whole-k315 review/every earned integration precedes k269 replanning;
+unreviewed design and historical k291 manifests are not current construction proof.
+The practical report locates R1–R7/original obligations and exact missing work. Required
+actual originals/controls/tools/read/image/UID/build/terminal/authority/receipt facts and
+qualified CP01–CP04 remain absent before k245's human CP05/P/A boundary. Documentary
+identities are candidates only. K244/k242 stay live, single pass unused, k246/k247/full
+useful breadth/additive VM/native placement/private ineligibility/both holds unchanged.
+Old design promotion/owner/fragment paragraphs below are historical proposals only;
+current placement is selected C/K/P compatibility/checkpoints/R-versus-AU, with all
+original Goal/Done when retained under only actual canonical amendments. K316 separately
+owns Safari's historical fresh-fragment defect and supplies no delivery pass by existing.
+
+
+Historical k291 promotion claims (reviewed as defective by k312):
 
 The complete reference-evidence-session-admission-k291 producer repairs the historical
 k282 defects under actual k281/k290/k295 answers. It defines human ready-object acceptance,

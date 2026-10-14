@@ -8,75 +8,45 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-The [canonical joint evidence boundary](../../verification/application-population-metadata-shape.md)
-owns the cohort inventory, reference/evidence trade-off and packet-integrity limits.
-The [durable eligibility predicate](../../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
-governs private construction. Native acceptance, both holds and independent duties
-remain live.
+Open [the practical admission discussion](index.html#discussion) for the complete proposed
+k315 conjunction and its seven updated views. The [canonical permission/comparison](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
+and [practical original-obligation report](../../verification/application-reference-input-partition.md#practical-original-obligation-comparison)
+retain all actual amendments and original duties. Mandatory whole-k315 review/every earned
+integration precedes construction replanning; neither diagram nor source identity qualifies
+an actual tool, original result, authority or finite subject.
 
-Current discussion presents the complete repaired k291 design for mandatory whole
-review before k269. The [final boundary](../../verification/application-reference-input-partition.md#final-whole-design-boundary)
-closes current summaries/consumer contexts and reconstructs every affected current-source/
-member identity while preserving historical originals. Actual originals, controls,
-authority/tool qualification and the finite subject remain missing. All seven graph
-sources/exports are unchanged in this closing update; the changed-diagram list is empty.
+An independent tool computes full byte/member comparison, required-result audit and eligible
+basis after a short non-candidate bootstrap trust step. Antony judges meaning in CP01–CP05
+in his own terminal outside agent harnesses. Original author/executor/producer/repairer/
+runner exclusions, initializer/staged-final validator separation and distinct close remain.
+Final Q precedes CP03; distinct close precedes CP04; CP05 accepts exact fresh entry then
+appoints coexisting supervisor/checker/acquirer through true return. Terminal metadata is
+cooperative context, not human authentication; approved maintenance is disarm-only.
 
-- [Presentation discussion](index.html#discussion) — Advances the discussion to complete design/mandatory review and removes historical changed-diagram markers.
-- [Approval caption](index.html#diagram-native-reference-proof) — Records completed current membership/summary reconciliation while retaining missing original-object work.
-- [Packaging caption](index.html#diagram-native-reference-packaging) — Keeps Q/P/A facts unqualified after final consumer reconciliation.
-- [Contact caption](index.html#diagram-native-reference-contact) — Separates the complete blocker/grammar design from required controls and accepted unknowns.
-- [Admission caption](index.html#diagram-native-reference-admission) — Advances final review placement without changing issuance, P-entry or disarm transitions.
-- [Components caption](index.html#diagram-native-reference-instrument) — Records the whole-design boundary while retaining actual entry/image/decoder obligations.
-- [Evidence caption](index.html#diagram-native-reference-evidence) — Keeps actual qualification, distinct close and fresh appointment ahead of the unused pass.
-- [Population caption](index.html#diagram-native-population-metadata-shape) — Retains package/roles/generated/whole-subject and private/native holds after design closure.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Places CP01–CP04 before CP05, keeping fresh P and first-attempt A distinct from Q.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds System framework and Preboot cryptex grammar, distinct link entries and exception/default membership.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Connects CP01 bootstrap, qualified CP02 receipt and final Q/CP03/close/CP04/CP05 to the single pass.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Adds independently authored comparison/display/bootstrap ownership before candidate admission consumers.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Places CP03 after final Q and distinct close before CP04/CP05 without a future-output cycle.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Shows CP01–CP05, independent bootstrap computation, ready-input order and distinct close after final Q.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Replaces the defective k291 handoff with practical k315 while preserving complete subject/generated/VM duties.
 
-The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
-also select independent whole-review/integration approval of scope-preserving anchors and
-corrections. K281's actual choices accept named bounded contact claims and unknown
-current-service/proxy/initial-right/mapping coverage with residual accidental-contact
-risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
-with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
-absent. The historical k282 producer had five seams: k283 repairs credit; k284 applies contact/pre-lookup claims;
-k285 specifies chartered independent acceptance and disarmed LIVE release; k286 separates enduring inputs from changing reports; k287 delivers the complete reconciliation for mandatory
-whole-producer review. Every earned integration precedes k269; no partial child
-is an implementable admission handoff or spends k245's pass.
+Current System framework/version/helper/nested and Preboot cryptex policy preserves
+separate app-position/cryptex links and search-only A1 ancestors. Physical outside-prefix
+expansions still refuse; historical syntax proves no current link/topology/TCC/presence.
+H/R exceptions with E default replace fragments/report-driven refresh, while full actual
+consumed bytes, originals/bases/reads, phase/absence and original R duties remain.
+Unchanged context: selected acquisition/decoder/original-byte obligations, bounded Q/P/C/D
+contact map, immutable issuance/current bridge, destructive consumption and private/native
+gates. Required failed facts still block; opaque AU is no full no-contact result.
 
-Unchanged context: [Persistence operations](../../verification/application-reference-evidence.md#persistence-operations-and-their-evidence-limits),
-[Export preflight and verified derivative](../../verification/application-reference-evidence.md#export-preflight-and-verified-derivative),
-[Topology](../../verification/application-reference-evidence.md#topology-and-the-inherited-component-rule),
-[Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape),
-[Review, qualify, then release](index.html#diagram-native-metadata-qualification),
-[Freeze the finite metadata subject before selecting the budget](index.html#diagram-native-metadata-subject),
-[Reserve each transition through true return](index.html#diagram-native-metadata-qualification-admission),
-[Grouped ownership](index.html#diagram-native-metadata-grouped-storage) and
-[Selected wire](index.html#diagram-native-metadata-wire).
-The application spec still owns the protocol and terminal guard/cleanup rules;
-release still requires matched ordinary/disabled/enabled image correspondence.
-All selected amounts, semantics, breadth, three seams and gates remain.
-The failed grouped conservative enclosure is no actual native overflow or fit.
-
-Open [the complete replacement discussion](index.html#discussion) for all seven reference/
-corpus views. K279/k280 reviewed the earlier whole-k273 boundary; the complete k282 repair
-was reviewed by k288 and integrated by k289. K290 selects human-owned independent
-acceptance and one foreground supervisor/acquisition ceremony, compatible human duty
-batching with producer/repairer exclusions and a distinct instrument closing owner/step,
-plus the exact additional pass-status relocation. The repaired protocol now defines
-compatibility, exact invocation entries, durable disarm, closed evidence/path rules and
-complete input membership. Current summaries/consumer identities are reconciled; mandatory whole-k291
-review/every earned integration remain before k269. The
-[integration report](../../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records the historical findings; the current concordance compares each repaired rule
-and its precise remaining original/qualification work. The displayed design has not
-received whole-k291 review and is no construction handoff.
-Required Q/P native/identity/control evidence, actual approval/receipt and complete tool
-proofs remain absent; accepted contact unknowns supply no full no-contact credit. K244/k242 cannot close on this
-design. Late provisioning/corrections require disarmed affected requalification, own
-independent acceptance/audit and distinct final close, then separate release ownership.
-Only the independent supervisor originates k245 LIVE; receipt/proof/release or copied-review
-possession supplies no role authority. K245's pass is unused; k246/k247 retain separate full duties.
-At 390px fit mode is a compact overview; use its full-size SVG or native-size
-panning to read labels. Dark exports use D2 theme 200.
-Packet-integrity controls and browser delivery supply no native qualification.
+Exports use D2 0.9.0, Dagre, theme 0/dark-theme 200 and the existing seven-view render task.
+Prior browser/mobile/dark observations are historical for their prior artifacts. Rendering,
+served-byte equality and these changed views establish no new browser delivery pass. K316
+owns the reported Safari fresh-fragment defect; use the outline if that fragment fails.
+Private eligibility remains false, both holds/native PENDING and k244/k242/k245/k246/k247
+full useful-breadth/additive VM/original duties remain. No process survives Grove sessions
+as an appointment bridge and no saved record/image/task selects LIVE.
 
 ## Other architecture topics
 

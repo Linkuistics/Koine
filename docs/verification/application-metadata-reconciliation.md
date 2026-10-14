@@ -36,7 +36,7 @@ rewrite controls and whole-subject review still precede private eligibility. Lat
 provisioning/correction changes require affected requalification and independent audit;
 no design retirement closes instrument qualification or weakens this family's gates.
 The [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
-consumes the actual k281/k290/k295 decisions and complete k291 design after
+consumes the actual k281/k290/k295 decisions and complete practical admission design after
 mandatory whole review/every earned integration before k269; the prior proposal
 supplies no settled construction admission. K284 scopes C1–C8/U1–U6 accepted contact gaps separately from required known identities/
 controls and fixes T1–T7/A1–A3 refusal-before-lookup entries. Full no-contact/hidden-ancestry/
@@ -45,26 +45,30 @@ The repaired [acceptance route](application-reference-evidence.md#chartered-inde
 gives inspection-only clean/findings review a separate independent own trust act.
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
-independent commissioned supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority; whole-k291 review
+freshly human-appointed foreground supervisor originates one k245 invocation. Receipt/proof/release
+possession and copied review/run/commit supply no authority; whole-k315 review
 and every earned integration still precede k269. This design supplies no finite subject or native/private eligibility.
 
-The [complete admission design](application-reference-input-partition.md#final-whole-design-boundary)
-repairs the historical k282 session/appointment, blocker/export/scope, correspondence,
-partition and invalidation defects under actual k281/k290/k295 answers. Mandatory
-whole-k291 review and every earned integration precede k269. Antony owns ready-object
-independent trust judgments; compatible duties may batch with producer/repairer exclusions
-and a distinct instrument closing owner/step. One fresh foreground appointment keeps
-supervisor/checker/acquirer together through true return. Exact P export entries remain
-separate from issuance authority; durable maintenance intent prevents stale eligibility.
-Closed Q/P/C/D and T/A rules and complete six-namespace E/H/R/basis/read membership are
-specified. Actual required originals, controls, entry/read/image/current-build/terminal
-facts and provisioning/validation remain unqualified; source-child facts first belong to A.
-Historical all-E/source/charter/scan records supply no current qualification. Only
-unconsumed reports can change without changing inputs; consumed changes disarm/requalify.
-Whole companions/tables/bases and actual task/runtime/charter reads stay whole. K244/k242
-and k245/k246/k247 retain their actual separate duties; required refused copies remain
-incomplete, with all useful breadth, native placement, private ineligibility and both holds.
+The [practical admission design](application-reference-input-partition.md#practical-admission-design)
+replaces the defective historical k291 conjunction under actual k314. Mandatory whole-k315
+review/every earned integration precedes k269. Independently authored/reviewed comparison,
+audit and display with a short non-candidate bootstrap entry support Antony's semantic
+judgment in five named own-terminal checkpoints outside agent harnesses. Full author/
+producer/repairer/runner/own-result and initializer/staged-final validator exclusions and a
+distinct instrument close remain. Q10 ends at original Q results; CP03 acceptance/audit and
+distinct close follow Q, CP04 accepts eligible basis, CP05 accepts exact entry and freshly
+appoints coexisting supervisor/checker/acquirer through true return. Terminal metadata is
+cooperative context, not human authentication. Durable disarm precedes changes/Q.
+
+Closed Q/P/C/D and exact T/A rules include finite System framework/version/helper/nested
+and Preboot cryptex productions with separate app-position/cryptex-component links and
+search-only ancestors. Outside-prefix physical expansions still refuse. Complete H/R
+exceptions with E default replace fragments/report-driven refresh; full actual consumed
+bytes/original/basis/read/phase/absence and original R retained duties remain. Historical
+manifests supply no current proof; absent actual originals/controls/identity/read/receipt
+facts remain before their consumers. Required refused copies retain exact incomplete
+work through k245/k246/k247; full useful breadth/additive VM/native placement/private
+ineligibility and both holds remain.
 
 Four layouts select explicit information/resource bases; only checked absence
 advances layouts or information families. Platform/plain information precedes no

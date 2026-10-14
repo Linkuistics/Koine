@@ -1,20 +1,22 @@
 # application-population-metadata-subject-k242 — brief
 
-## Review integration and pending replacement
+## Practical design handoff awaiting whole review
 
-K312's original review at 4392295c and k313's verified classifications identify unresolved
-R1–R7 in k291. K314 applies the received smaller-workflow answer in the canonical selected
-clauses/original-obligation comparison: five bounded human checkpoints and the complete
-reviewed H/R-exception list with an explicit enduring-rule default. Before k269, k315
-repairs the complete design and earns mandatory whole review/every integration. The k291
-closure claims below describe the reviewed historical proposal;
-they are not a repaired current construction handoff. Retained k291 design/partition
-bytes/manifests remain defective review subjects; k314's canonical requirements amendment
-supplies no reviewed replacement conjunction. Do not use historical documentary identities
-as refreshed charter/runtime proof.
-All original Done when duties, k245's unused single pass, k246/k247/useful breadth/additive
-VM/native placement/private ineligibility and both holds remain. K316 separately owns
-Safari fresh-fragment navigation; no presentation pass follows its task creation.
+Reference-evidence-practical-admission-k315 supplies the complete replacement design under
+actual k314: independent comparison/display and short bootstrap trust, five named own-
+terminal human checkpoints, full compatibility/exclusions and distinct close, exact Preboot/
+framework/link/ancestor grammar, closed Q/P/C/D and proportionate H/R exceptions with E
+default. Mandatory whole-k315 review/every earned integration precedes k269 replanning;
+unreviewed design and historical k291 manifests are not current construction proof.
+The practical report locates R1–R7/original obligations and exact missing work. Required
+actual originals/controls/tools/read/image/UID/build/terminal/authority/receipt facts and
+qualified CP01–CP04 remain absent before k245's human CP05/P/A boundary. Documentary
+identities are candidates only. K244/k242 stay live, single pass unused, k246/k247/full
+useful breadth/additive VM/native placement/private ineligibility/both holds unchanged.
+Old design promotion/owner/fragment paragraphs below are historical proposals only;
+current placement is selected C/K/P compatibility/checkpoints/R-versus-AU, with all
+original Goal/Done when retained under only actual canonical amendments. K316 separately
+owns Safari's historical fresh-fragment defect and supplies no delivery pass by existing.
 
 ## Historical k291 design handoff
 
@@ -274,6 +276,8 @@ k246/k247 and all useful-breadth/product/private/native duties unchanged. No des
 retirement supplies actual authority, qualification or a completed finite subject.
 
 ## Complete k291 design promotion and actual remaining duties
+
+Historical k291 claim at a05e643f8352, reviewed as defective by k312. Current handoff is Practical design handoff awaiting whole review above; this paragraph is no current construction eligibility or owner command.
 
 K311 closes the complete reference-evidence-session-admission-k291 design and all its
 closing ancestors at the exact-missing-original boundary. Its mandatory whole-k291

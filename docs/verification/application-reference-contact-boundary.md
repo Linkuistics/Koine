@@ -15,8 +15,10 @@ closed pre-lookup and incomplete-evidence amendments. Missing current-service, p
 initial-right and mapping correspondence stays unknown, never full no-contact proof.
 [Chartered independent acceptance](application-reference-evidence.md#chartered-independent-acceptance)
 follows inspection-only review/earned integration; the
-[independent release supervisor](application-reference-evidence.md#independent-live-release-and-role-selection)
-keeps qualification disarmed, including after receipt publication. Actual retained role/
+[human foreground appointment](application-reference-evidence.md#independent-live-release-and-role-selection)
+selects the coexisting supervisor/checker/acquirer only at checkpoint 5. The accepted
+disarm-only maintenance writer keeps qualification disarmed, including after receipt
+publication; Antony accepts the eligible basis after the distinct close. Actual retained role/
 entry/armed-state refusals qualify only through SCRATCH controls; no test selects LIVE.
 These obligations waive none of B1–B8's required claims or accepted-unknown limits and
 preserve every other selected clause. Changing construction/evidence observations belong
@@ -192,7 +194,7 @@ materializes coordinates and originals; it cannot select which of these duties t
 | Q07 / B8 / O01–O04/O08/O25 | Actual known launch/checker/verifier/interpreter/CLI image/incarnation/cwd/descriptor/channel and checker-before-Task startup controls, wrong image/edge/peer/death/missing drain/reap tests. These are the selected finite peers/reads, not all descendants, rights or maps. |
 | Q08 / B6–B8 / O02/O08 | Every release/acceptance pair in the packaging companion: original clean/findings/bootstrap/correction judgments, exact ready membership/exclusions, foreground confirmation grammar/nonce/terminal refusal and coexisting supervisor/checker/child rendezvous. Pure same-image+ELIGIBLE remains a required actual SCRATCH selector negative; it never supplies an actual LIVE/terminal positive. |
 | Q09 / B7–B8 / O08/O12/O23 | Every durable-disarm pair: fixed release-before-register lock order, exact next-slot/intent acknowledgements before work, kill at each publication boundary, lock release, failed/interrupted/successful-unaccepted Q, partial successor/gap/conflict and stale prior ELIGIBLE refusal. The [durable event contract](application-reference-evidence.md#durable-disarm-and-release-events) requires them even for unchanged-input Q. |
-| Q10 / B1–B8 / O23/O25 | Complete declared/independently observed named input membership, full-byte companions/five tables/original bases/tasks/runtime/charter bindings, strict extraction/omission/cycle/substitution controls and final unchanged-candidate before/after freeze, original-result acceptance/audit and distinct close. Unknown impact requires all affected cells, not a reduced passing set. |
+| Q10 / B1–B8 / O23/O25 | Complete earlier accepted declared/independently observed named input membership, full-byte companions/five tables/original bases/tasks/runtime/charter bindings, strict extraction/omission/cycle/substitution and comparison/display controls, completed original Q results and final unchanged-candidate before/after freeze. It qualifies acceptance/audit/close mechanics on scratch, never consumes this Q's later original-result acceptance/audit/distinct-close records. Those finalized records follow Q at CP03 and the distinct close, and block P02. Unknown impact requires all affected cells, not a reduced passing set. |
 
 Q01–Q10 also include every applicable original evidence-contract control and all packaging
 release/acceptance, first-attempt and extraction pairs; this grouping deletes no pair.

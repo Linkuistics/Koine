@@ -39,7 +39,7 @@ The commissioned checker owns launch policy and the live register lock, as speci
 the [approval protocol](application-reference-evidence.md#invocation-channel-and-verifier-self-qualification).
 Its public packaging request accepts only one fresh export destination. Its independently
 commissioned launcher has fixed LIVE and private qualification SCRATCH launch roles under
-the [independent release supervisor](application-reference-evidence.md#independent-live-release-and-role-selection);
+[Antony's fresh foreground appointment](application-reference-evidence.md#independent-live-release-and-role-selection);
 there is no public mode, authority, query, runtime, root or adapter override. Rehearsal
 enters the actual checker's export-request parser and packaging dispatcher with the same
 export-only argv as LIVE, never by calling its shared launch routine directly. The
@@ -585,12 +585,14 @@ implementation leaves:
 | Actual provisioning/receipt/export/derivative validation | Qualified separate one-time initialization and independent validation establish real fixed-authority facts; already qualified native UID/build/channel mechanics and fresh P rechecks/refusal precede intent. The explicit requested export has P ancestry/reservation checks; original/derivative outcomes are A. No scratch receipt, final validation or proof arms LIVE. |
 | Chartered independent acceptance and commissioning | After original inspection-only review and every earned integration on clean and findings paths; independently judge original reviewed/final bytes, all findings/dispositions and bootstrap/verifier-self results, then own registrar trust act. Before each accepted artifact/result is consumed; no producer/repairer self-approval or copied-review authority. |
 | Last-edit requalification, independent audit and distinct close | U6 disarmed after all relevant input/task/runtime/contract/review repairs, including later corrections/provisioning; independently accepted original proof, per-coordinate audit and complete distinct k244 close before eligible release. |
-| Independent release owner and still-live supervisor | After accepted audit/distinct close, independently accept the exact release basis; only explicitly appointed k245 invocation receives a LIVE parent channel. Keep pure entries SCRATCH; refuse lost/partial/stale release, active qualification or supervisor loss. |
+| Antony's compatible trust group and freshly appointed foreground supervisor | CP01 bootstrap/artifacts; CP02 qualified receipt; CP03 final original Q results/audit; distinct closing owner/step; CP04 eligible basis; CP05 exact entry acceptance then fresh appointment. Only that coexisting foreground k245 invocation receives LIVE, through true return. Accepted disarm-only maintenance precedes changes/Q. Pure origins remain SCRATCH; stale/partial release, active Q or supervisor loss refuses. |
 
 Construction planning retains explicit live responsibility for affected requalification,
 independent acceptance/audit, distinct instrument close and release through acquisition
-admission, even after an earlier producer's retirement. Each actual trust act has its own
-direct foreground appointment; only the acquisition ceremony requires the supervisor,
+admission, even after an earlier producer's retirement. Use the normative compatibility
+and five checkpoints, including separate initializer/staged-final validator and original-
+control author/executor/adjudicator exclusions. Earlier compatible ready trust acts batch
+in their named own-terminal checkpoint; only the acquisition ceremony requires the supervisor,
 checker and child to coexist through true return. No process must survive between Grove
 sessions. A measured edit, newly observed dependency, changed accepted revision/runtime/receipt binding or
 substantive review repair invalidates affected claims immediately. Determine affected cells

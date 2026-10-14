@@ -1,45 +1,5 @@
 # population-joint-recipes-k246
 
-
-## Review integration and pending replacement
-
-K312/k313 leave the k291 admission handoff incomplete. K314's actual proportionality
-choice and complete replacement producer k315 with mandatory whole review/every integration
-precede k269. The k291 closure claims below are historical reviewed proposals, not current
-construction eligibility. This leaf retains every whole-template/rewrite/helper/alias/
-independent-discrimination duty and exact required refused-copy work; no complete subject,
-additional pass, useful loss or private/product/native hold release follows integration.
-
-## Historical k291 design handoff
-
-Reference-evidence-session-admission-k291 supplies the complete repaired design and
-exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory
-whole-producer review and every earned integration precede k269 replanning. Consume the
-final whole-design boundary and original-obligation/actual-answer concordance in
-application-reference-input-partition.md together with the normative evidence/contact/
-packaging contracts and canonical amendment comparison. Earlier k273/k282 promotion and
-owner tables below are historical proposals, never alternative current handoffs.
-
-The design fixes human ready-object acceptance, compatibility/exclusions and a distinct
-k244 close; one fresh foreground supervisor/checker/acquirer appointment through true
-return; exact separately accepted A3 P entries under immutable issuance/current rules;
-durable disarm intent before changes/Q; closed Q01–Q10/P01–P05/C/D blockers; exact T/A
-grammars; bounded k295 correspondence authority; and complete individual E/H/R/whole-
-basis/actual-read membership. Required actual originals, native/identity/control results,
-retained entry/read/image closure, provisioning/validation and final qualification remain
-missing before their consumers. Q06–Q08/P01–P03 require original build/peer-image/terminal
-facts; fixed source-child metadata first belongs to A. Accepted opaque contact gaps
-excuse no failed required fact and support no full no-contact claim.
-
-K269 assigns live owners before each consumer, using compatible useful increments,
-independent authors/acceptance and distinct instrument closure. All original Goal/Done
-when conditions remain under only the explicitly compared amendments. Historical source/
-charter/scan provenance is retained; fresh current charter identities are separate
-documentary candidates, not accepted runtime/authority objects. Actual consumed changes
-disarm/requalify; reports grant nothing. K244/k242 remain live, k245's pass is unused,
-k246/k247 retain complete generated/whole-subject duties, and useful breadth/additive VM
-dimensions/native placement/private ineligibility/both product holds remain.
-
 ## Goal
 
 Freeze the complete deterministic whole-template finite subject and independently
@@ -50,30 +10,23 @@ coverage/capacity/missing-evidence boundary. No cardinality-only qualification.
 
 ## Context
 
-Consume the immutable current-reference package, independent copy roles and explicit
-limits from k245; docs/verification/application-reference-evidence.md and the canonical
-population-metadata-shape report own the evidence/control contract. Read the full
-current application-metadata-subject/family and acceptance P1024/L1500/N5/N8/V11/V13.
-All original parent Done when and current budgets/breadth/reader/guards remain binding.
+Consume the whole reviewed k315 practical design and actual k244/CP01–CP04 qualifications,
+CP05/P/A frozen original and independently verified k245 derivatives/roles, or their precise
+failed/incomplete work. Historical k273/k282/k291 proposals and fragment identities supply
+no current acceptance, byte evidence or useful role. The selected canonical comparison
+retains every original obligation under only actual k270/k281/k290/k295/k314 amendments.
 
-Consume the exact fixed original attempt identity or its independently verified immutable
-derivative, with complete original-to-export coordinates and all missing/prefix/unperformed
-outcomes. K273's design or retired children supply no package. An incomplete/unavailable
-k245 boundary remains missing subject work; never fabricate bytes/roles or reuse an export
-as independent origin evidence. Generated permitted-rewrite checks are separate from
-original-byte hashes and cover useful/helper/alias tuples in full.
+Freeze complete whole-template recipes with exact source/copy/file/version/helper/alias/
+typed/table/LocProvenance/tail associations, independent purposes, source-to-generated
+identifier/executable/signing rewrites and independently recalculated facts. Original-byte
+hashes cannot qualify permitted rewrites or shape discrimination. Keep all fourteen witnesses,
+1,010 useful apps, 256 helpers, 128 aliases and additive full actual supported-VM baseline
+and registration pressure; no omitted/refused copy becomes useful loss or another pass.
 
-K279/k280's admission repairs now require k281 actual decisions and k282 complete
-reviewed repair before k269/k244/k245. That chain supplies no original bytes, copy roles
-or generated qualification; consume actual k245 evidence or exact missing work only.
-No original Done when, useful breadth or selected permission changes here.
-
-K285 separates inspection review from chartered independent acceptance and receipt
-validation from independent LIVE release. Consume only actual k244 accepted final proof/
-audit/distinct close and independently supervised k245 original evidence, or exact missing
-work. Copied review/run/commit or a release record supplies no original bytes, new attempt
-or authority to repair missing evidence by reacquisition. Whole-k282 review/integration
-still precedes k269; generated discrimination duties below remain unchanged.
+Actual changed consumed inputs use durable disarm and the affected checkpoint/qualification/
+acceptance/audit/distinct-close/eligible/appointment suffix. Reports stay unconsumed;
+whole actual original/basis/read bytes and phase/absence duties remain. This consumer gets
+no appointment/reset power. Every generated control and private/product/native hold remains.
 
 ## Done when
 
@@ -105,40 +58,3 @@ claiming their behavior or signing is qualified. Missing bytes/roles or unresolv
 coverage remains a precise design gap; no invented envelope or projected padding.
 Known subject defects require repair/review before native capture; valid actual useful
 source/access/deadline/gross/attempt gaps go once to k93 in the existing programme.
-
-Historical k287 promotion (reviewed by k288 and repaired by k291):
-
-K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
-release and enduring-input conjunction. Mandatory whole-k282 review and every earned
-integration precede k269; neither an earlier k273 proposal nor a partial child is a
-construction handoff. The durable original-obligation comparison preserves k273/k244/k242,
-all k282 repairs and R7–R10 under only k281's exact amendments. K269 assigns concrete live
-handles to each responsibility before its consumer, including clean/findings acceptance,
-terminal commissioning/adjudication, qualified provisioning/validation, refusal controls,
-disarmed last-edit qualification/repair, independent audit/reporting, distinct k244 close
-and separate release supervision. Freeze complete charter/closing bases before measurement;
-actual task/report reads bind full bytes. Successor records stay acyclic and reports
-unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pass unused,
-k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
-retirement supplies actual authority, qualification or a completed finite subject.
-
-
-## Closed evidence/path prerequisite
-
-The closed Q01–Q10/P01–P05/C1–C8/D1–D6 requirements and exact T1–T7/A1–A3 grammars
-in the full evidence/contact/packaging contracts bind before construction. Keep whole
-reference-target-parents.tsv and its complete historical application-metadata-subject.json
-basis; historical spellings certify no current presence, purpose, ancestry or TCC.
-Foreground confirmation/rendezvous, exact accepted P export entry and every fixed durable
-disarm pair retain actual identity/storage obligations. Required failed/missing Q/P
-evidence blocks; only the precisely classified contact remainder is accepted unknown.
-
-Antony approved reference-evidence-correspondence-authority-k295's exact bounded
-local OS About, finite same-UID peer/image and inherited-fd/group metadata route, with
-fixed source-child metadata only inside A after consumption. Its authority is selected;
-actual original results and route qualification remain absent. Consume the complete
-k291 design after whole review/every earned integration before replanning. No task/
-image/receipt/proof/SCRATCH same-image negative establishes current build/process/image/
-terminal correspondence or authorizes LIVE calibration. Missing required facts remain
-precise live work before their consumer. R7–R10, raw refused slots/incomplete copy work,
-original completion duties, useful breadth, unused pass and all holds remain.
