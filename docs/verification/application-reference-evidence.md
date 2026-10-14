@@ -295,7 +295,7 @@ The tool cannot derive its own permission from defaults or a changing report.
 | --- | --- |
 | Reference/source | macOS 27.0.1, build 26A434; /usr/bin/mdfind; exactly -0 and the application-bundle predicate stated above; no shell or extra options |
 | Attempt/phases | One target attempt; initial and closure only; closure compares, never retries, repairs or fills missing initial evidence |
-| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit; closed pre-lookup T1–T7 entries/protected/unsettled refusal and outside-intermediate refusal with exact A1 search-only ancestor operations; A2 fixed-authority rules and immutable A3 export-admission rules, with exact fresh entries accepted separately for each invocation |
+| Scope/resolution | /System, /Applications and /Library on BOTH literal and walk-resolved component prefixes; checked .app directories; the descriptor ADR's kernel semantics/search-only walk/32-link limit; closed S/I/L/LV/K/T1–T7 entries/protected/unsettled refusal and outside-intermediate refusal except only the two exact Safari held-A1-root/immediate-prefix search-only steps; exact A1 ancestor operations; A2 fixed-authority rules and immutable A3 export-admission rules, with exact fresh entries accepted separately for each invocation |
 | Bounded contact evidence | Independent B1–B8 named claims/evidence/operation-object scope; accepted unknown current-service/proxy/initial-right/map/hidden-ancestry/TCC coverage, never full no-contact or waiver of required Q/P identities/controls |
 | Layout/files | Four ordered layouts, absence-only advance, both information and all four name basenames, all six in every checked direct locale; no language subset or descendant-link following |
 | Evidence | Complete raw slots/inventories/original regular-file bytes, complete typed observations or explicit limits, every copy/file/alias/tail association and before/closure check; no clipping to the reader limit |
@@ -390,8 +390,8 @@ export is an independently verified immutable derivative. The receipt must bind 
 location/UID, checked directory/ancestor identities, permission and one-attempt authority.
 The [independent approval root](#independent-approval-root) specifies the external
 proof/inventory/verifier bindings and anti-substitution protocol. The existing independent whole-design
-review/earned-integration route supplies the basis for a separately chartered independent
-acceptance owner's scope-preserving trust act under the delegation; an inspection-only
+review/earned-integration route supplies the basis for Antony's scope-preserving own ready-object trust act under the
+selected human ceremony; an inspection-only
 review never writes the register and the producer cannot approve itself. Qualified provisioning and independent validation
 must bind those actual accepted revisions outside regenerated proofs/restorable checkout.
 Corrections require independent review/integration and fresh affected qualification;
@@ -704,21 +704,91 @@ before using it. This explicit initial source/OS trust is the bootstrap root; no
 candidate PASS or later registrar record proves it. Missing independent original control
 outcomes, an uninspectable entry or an unknown required runtime identity refuses commissioning.
 
-An independent executor acquires the entry's known-answer byte/set/length checks and
-isolating missing-member, same-name substituted-byte, duplicate, truncated-result and
-misdisplayed-summary outcomes before checkpoint 1's artifact/root acceptance substeps.
-The initial source-inspection trust act can appoint only the named scratch-control peers;
-it accepts no future result or permit and cannot appoint LIVE. Expectations come from the original
-control author, not either candidate. The short entry compares the reviewed engine/display
-and candidate artifact bytes with their independently frozen originals. It also binds
-the engine's independently acquired complete audit/display controls. Antony then accepts
-or refuses that ready set; only after that trust substep may the accepted engine compute
-the register's staged bootstrap/revision/control/maintenance-authority manifest. A separate
-bootstrap validator obtains actual held UID/ancestor/register identities and publication
-acknowledgements. Antony's final checkpoint-1 confirmation accepts that ready bootstrap
-binding. No candidate decides its own acceptance and no future output is approved early.
-These ordered substeps are one named checkpoint in one own-terminal interaction, with
-separate explicit bindings, not another ceremony hidden between Grove sessions.
+**Ready bootstrap originals precede CP01.** The independent original author freezes
+known-answer byte/set/length and engine/audit/display expectations, including missing,
+extra, duplicate, substituted, truncated, misdisplayed and future/self-input specimens.
+The independent executor (separate from author and checked producer/repairer) executes
+the retained entry/engine/display/checker/registrar/launcher and initializer/validator
+mechanics against those originals under an independently reviewed **SCRATCH-only bootstrap
+launcher**. Its authority is the closed scratch operation plan, not a live commission,
+accepted receipt or scratch-to-LIVE appointment. It has no route to the real permit or
+LIVE endpoint. Its fixed constructor/peer/input closure and refusal controls are reviewed
+before execution. It emits original operands/results, actual permitted peer/runtime/read
+facts and frozen outcomes; a separate bootstrap validator independently checks those
+originals and SCRATCH publication/receipt acknowledgements. Neither executor nor validator
+accepts them. All of that work finishes in its owners' preparation sessions **before**
+Antony's terminal interaction; no commissioning-dependent control is deferred into CP01.
+A missing original leaves CP01 unready. Full final Q is later and is not an earlier input.
+
+CP01 has three explicitly ordered human bindings in one foreground own-terminal
+interaction, with ready control originals and no Grove-session wait:
+
+1. **CP01-SOURCE:** Antony inspects the independently retained one-page entry, fixed
+   invocation, original review/dispositions, OS primitive/runtime assumptions and ready
+   original controls. His source/OS judgment is the finite initial trust anchor. It
+   appoints no LIVE process and accepts no future result. The entry is read/executed
+   from its independently retained original, never selected by a checkout candidate.
+2. **CP01-ARTIFACTS:** that entry compares the complete actual ready entry/engine/display,
+   registrar/checker/launcher/initializer/validator/close-publisher artifacts and their
+   runtime/read members with independently supplied frozen originals. Antony accepts or
+   refuses this now-ready set and the complete original bootstrap and initializer/validator
+   mechanics outcomes. Only after ACCEPT may the engine/display/registrar or accepted
+   factual validator execute for the live bootstrap. Control execution is already over;
+   Antony is not running a control programme that he adjudicates.
+3. **CP01-ROOT:** the accepted launcher synchronously invokes the separately owned retained
+   bootstrap validator as a bounded **factual** peer, outside any agent harness. It performs
+   only the accepted exact A2 bootstrap ancestry/UID/type/held checks, returns its original
+   facts and refuses unknown/replaced/linked/risky ancestry. No record/permit is created
+   yet. The engine computes the ready root/revision/control/maintenance/close-only capability
+   plan from those returned facts and the earlier accepted originals. Antony ACCEPTs that
+   exact current binding. This act authorizes exclusive disarmed bootstrap publication
+   under the accepted mechanics and **exactly one** named initialization by the accepted
+   initializer, at the fixed permission subject, UID, revision and initialization nonce.
+   It accepts the ready facts and authorizes those operations; it does not accept their
+   future records or receipt. Bootstrap publication's held identities/acknowledgements
+   are independently checked under the earlier accepted validator mechanics before the
+   one initialization may start. Unknown/partial publication stops the sequence.
+
+The factual peer's artifact, independent owner, closed request/channel, finite permitted
+operations and synchronous true-return order are CP01-ARTIFACTS inputs. It is not an
+interactive agent in Antony's pty, another human ceremony or a process waiting across
+Grove sessions. Each human binding retains its own original reasons, ready manifest and
+predecessors. Actual bootstrap/initialization outputs and staged/final validation are
+ready for CP02 afterward. The already selected qualified-publication rule binds records
+created by the direct act without recursive approval of their own future bytes. Before
+CP02 neither an unaccepted future receipt nor final Q result is used as a trust input.
+
+**Independent continuity anchor.** CP01 retains an exclusive no-follow frozen original
+set outside checkout/proofs/exports, under the fixed approvals branch's exact
+`trust-originals` operation plan. It contains the accepted short entry, engine, display,
+anchor invocation/runtime objects and complete declared/observed read/member closure,
+original source/build/review/control provenance and CP01 binding. The register binds
+that set's actual held identities and full ordered bytes/length/member inventory.
+These are independent originals supplied before comparison, not originals copied from a
+possibly changed candidate at a later checkpoint. Missing, substituted or changed anchor
+originals refuse; no scan, resolver, checkout restore or automatic re-baseline exists.
+
+At **every CP02–CP05**, before executing/importing engine/display/registrar, Antony starts
+from that same inspectable original entry and the CP01 source/OS trust method. The fixed
+independent OS primitive is retained `/usr/bin/cmp`, invoked with exactly `-s` and
+`/dev/fd/3`, `/dev/fd/4` for the two already held no-follow original/copy streams, no
+PATH or arbitrary pathname. Its exact executable, runtime/read closure and source/OS
+assumptions are CP01 anchor inputs; original required image facts precede credit. This
+OS primitive and original source inspection are the explicit trust base, not output
+from a candidate engine/display/entry or a claim to verify the OS from itself. It first compares
+any executable copy of the entry and its anchor runtime/member closure against those
+retained originals in both directions; source inspection identifies that primitive and
+its fixed invocation, rather than asking the candidate entry to attest to itself. Only
+then the original short entry compares all engine/display/registrar/runtime/read members
+and actual held byte streams with the accepted CP01 originals. No changed tool runs to
+certify that check. Required image/peer/negative-lookup identities join their separately
+qualified comparisons; an unavailable required identity blocks. Preserve the comparison
+as `trust.continuity` in the ready manifest, every trust output and later consumed record,
+with CP01 anchor, checkpoint, exact members, actual reached result and before/after freeze.
+The published bootstrap/receipt/close records bind this accepted tool set and its original
+control provenance explicitly. This retains the cooperative same-UID/OS trust assumption;
+whole-anchor forgery/undetectable rollback remains outside protection. It is not human
+or hostile-user authentication and does not claim complete opaque runtime coverage.
 
 The engine performs full-byte comparison (not digest equality alone), complete membership
 in both directions, all required Q/P/control/applicability and original-obligation checks,
@@ -742,18 +812,29 @@ valid digest over a weakened set are required independently authored refusal con
 | Comparison result | For every expected and observed member/coordinate: exact equality or missing/extra/duplicate/changed/unavailable/refused outcome, independent original provenance, reached comparison and reason. Retain both directions and full original results; no aggregate-only audit. |
 | Full ready manifest | One immutable UTF-8 record in the already accepted strict record encoding, with version, checkpoint/substep, permitted next consumer/effects, nonce, exact ordered object/kind/owner/length/digest/held-identity members and earlier evidence/phase bindings. Reject unknown/duplicate fields and noncanonical encoding/order. Retain actual complete bytes separately; digest is an equality binding, never a substitute for stream comparison. |
 | Short display binding | Checkpoint/substep, fresh nonce and full 64-hex SHA-256 over the complete finalized ready-manifest bytes. This displayed binding is a separate value; the full manifest contains no digest of itself or later confirmation. Screen omissions/reassignment must fail independent display controls. |
-| Trust output | Antony's direct ACCEPT/REFUSE reasons and exact earlier full-manifest/result bindings, published by the accepted registrar with actual acknowledgement/context originals. A read-only comparison supplies no trust/appointment; confirmation accepts no future object. Eligible calculation cites only finalized predecessors and emits its separate proposed basis. |
+| Trust output | Antony's direct ACCEPT/REFUSE reasons and exact earlier full-manifest/result bindings, explicit CP01 accepted entry/engine/display/runtime/read original set and this checkpoint's complete trust.continuity comparison, published by the accepted registrar with actual acknowledgement/context originals. A read-only comparison supplies no trust/appointment; confirmation accepts no future object. Eligible calculation cites only finalized predecessors and emits its separate proposed basis. |
 
 The confirmation grammar is the exact uppercase act (ACCEPT or REFUSE), checkpoint
-identifier, fresh nonce and complete manifest binding, without extra/duplicate fields.
-Every object/kind/full-byte binding is in the engine's manifest; the confirmation binds
-that set without reciting each byte. The nonce is fresh under the qualified entropy
+identifier (CP01-SOURCE, CP01-ARTIFACTS, CP01-ROOT or CP02 through CP05), fresh nonce and complete manifest binding, without extra/duplicate fields.
+CP01-SOURCE names an independently authored, reviewed **static ready manifest** and
+Antony's original source/OS judgment; it executes no unaccepted engine/display/registrar.
+CP01-ARTIFACTS uses the trusted original short entry's full ready manifest and original
+byte/member/control comparison results, not a result computed by the still-unaccepted
+engine. The original direct confirmation bytes/reasons are retained in this foreground
+invocation's declared output/context stream; they give no authority to an unaccepted
+publisher. After ARTIFACTS accepts the registrar mechanics, its accepted publication
+procedure may bind those earlier exact direct acts, and ROOT authorizes their exclusive
+bootstrap publication. It cannot substitute an act or approve a future result. ROOT
+and CP02–CP05 use the now-accepted engine's full ready manifests. Each confirmation
+binds its complete earlier manifest without reciting every byte; no first-use engine
+result or future registrar record supplies either earlier trust act. The nonce is fresh under the qualified entropy
 contract. EOF, stale/replayed nonce, wrong checkpoint/set/act, changed objects, automatic
 answer or failed exclusion refuses. REFUSE records the reason and writes no acceptance.
-An ACCEPT records Antony's own semantic reasons and the engine's complete original result
-binding. An eligible basis is computed from finalized predecessors only, never itself,
-a future export reservation or an appointment output. Engine/display/entry changes require
-independent review, bootstrap reacceptance and the affected correction suffix. This is a
+An ACCEPT records Antony's own semantic reasons and the corresponding complete earlier
+static/short-entry or accepted-engine original result binding. An eligible basis is computed from finalized predecessors only, never itself,
+a future export reservation or an appointment output. Engine/display/entry/runtime/read changes are detected before tool execution by the
+independent continuity anchor. They require durable disarm, independent review/original
+control acquisition, CP01 reacceptance and the affected correction suffix. This is a
 proposed internal trust tool, not an implemented executable or a new public product seam.
 
 ### Chartered independent acceptance
@@ -851,7 +932,7 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Bootstrap-control adjudicator and trust acceptor | Antony's original-control adjudication, commissioning, ready payload/correction/entry acceptance, final original-result acceptance/audit, eligible-basis acceptance and fresh appointment | Antony did not produce/repair the candidate, run the qualification/control programme or author its expected answers that he adjudicates. His explicitly selected manual About source observation remains permitted; it is separately compared with independently acquired programme results, not self-audit of a candidate/control programme. He uses the independently bootstrapped tool and original dispositions for his own semantic decision. Reviewer writes no authority; runner/acquirer gets no trust role. |
 | Qualified one-time initializer | Candidate provisioning mechanics, authorized disarm-only maintenance, qualification running if independently authored expectations remain separate | Separate from both staged and final receipt validator and from trust acceptor/distinct closer for its outputs. Packaging/pure selector cannot initialize the live permit. Prior qualified/accepted mechanics precede real initialization. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
-| Distinct instrument closing owner and step | Complete original-obligation comparison/promotion after final accepted Q results/audit | Separate from producers/repairers, control/qualification runner, initializer/validator whose facts it closes and Antony's trust/audit/release group. Missing evidence cannot close in prose. |
+| Distinct instrument closing owner and step | Complete original-obligation comparison/promotion after final accepted Q results/audit; own accepted close-only publisher | Separate from producers/repairers, original expected-result author or executor whose fact it closes, control/qualification runner, initializer/validator whose facts it closes and Antony's trust/audit/release group. It cannot accept its own capability/controls or publish human trust/eligibility/appointment. Missing evidence cannot close in prose. |
 | Foreground acquisition / offline derivation | Appointed child and offline derivative constructor after original freeze | No trust/appointment/reset power. Independent association verifier is separate from the producer/deriver for the checked facts. Antony appoints the retained supervisor/checker/child together; only that invocation carries LIVE. |
 
 **Five-checkpoint clean path.** K269 must name a human step for each CP01–CP05 in its
@@ -862,24 +943,31 @@ it for him. This design appoints nobody and creates no implementation/HITL leaf.
 
 | Order / named human step | Ready work, exact act and first consumers |
 | --- | --- |
-| Preparation before CP01 | Independent authors freeze complete original obligations, required inventory, bases, specimens, phase/read membership and exact policy. Producers build actual retained candidate and trust-tool artifacts; whole artifact review/every earned integration completes. Independent original controls/outcomes requiring no commissioned candidate are ready. Commissioning-dependent bootstrap peer/control originals are acquired within CP01 after the short-entry trust/explicit scratch-control appointment and before its final root acceptance. The tool is not trusted because it passed itself. |
-| CP01 — Bootstrap and artifact acceptance | Three bounded ordered substeps in one own-terminal checkpoint: (1) inspect/accept the reviewed short entry and independent static originals, appoint only the declared scratch bootstrap-control peers; (2) independent executor acquires the required original comparator/display/verifier/peer controls, the entry compares actual engine/display/artifact bytes and Antony accepts that now-ready set; (3) accepted tool computes the staged bootstrap/revision/control/disarm-only set, separate bootstrap validator acquires actual identities/acknowledgements and Antony accepts its ready binding. Manual About/independent build/peer/terminal/CF expectations batch before their comparison consumer. Each confirmation binds only its present objects; no future result is accepted by an earlier substep. Final accepted artifacts/controls first feed subsequent SCRATCH qualification and qualified initialization/validation. |
-| Between CP01 and CP02 | Run disarmed SCRATCH mechanics with prior accepted originals, including initializer/validator and receipt-binding positives/refusals. An independent executor/validator checks the complete original mechanics outcomes against CP01's accepted expectations; this is delegated factual validation, not Antony's final Q trust act. Only qualified mechanics permit one separately authorized initialization. Separate validator binds staged receipt before publication, then final named/held receipt and actual acknowledgements. No LIVE selection or target sample. |
-| CP02 — Qualified receipt acceptance | Antony accepts the ready original provisioning/mechanics and separate staged/final-validation results, exact immutable issuance receipt and bridge if required. All are computed/displayed together after real results exist. Those accepted actual objects become inputs to final Q and later P; receipt publication alone is no eligibility. No second initialization in a correction suffix. |
-| Between CP02 and CP03 | After the last edit/review repair/provisioning, accepted maintenance retains durable successor disarm intent before final affected Q. Q01–Q10 consume only earlier accepted rules/originals/receipt facts and emit complete original results. They test acceptance/audit/close mechanics with SCRATCH objects, never require finalized acceptance of this same Q. |
-| CP03 — Final original Q results and audit | The tool compares all original Q results and full required-result/input/authority/original-duty sets. Antony accepts/refuses that ready complete result set and audit with original findings/dispositions and semantic reasons. Final audit is compatible with acceptance; no separate human audit owner. These finalized records first feed the distinct closing owner. |
-| Distinct close between CP03 and CP04 | The separate owner checks every original k244 condition, finalized acceptance/audit and stable inputs, then closes/promotes the instrument or retains exact live repair. This is a separate owner/step, not a sixth human ceremony. Its original close record is ready before eligible-basis computation. |
-| CP04 — Eligible basis after distinct close | The tool computes exact complete issuance/current/receipt/Q/acceptance/audit/close/event basis. Antony judges and accepts that ready basis; the registrar publishes its acknowledged eligible successor. No future A3 entry, appointment or A outcome is predicted into it. Eligibility is evidence only; first use is CP05's fresh checker. |
-| CP05 — Exact entry acceptance and fresh appointment | Independent author supplies the exact fresh A3 request/ancestor/operation/basis/refusal entry before output lookup. In Antony's own terminal the accepted tool computes/display-checks it and the complete current eligible basis. Antony first ACCEPTs the ready entry, then explicitly APPOINTs this request/nonce and starts the retained coexisting foreground supervisor/checker/acquirer. These distinct acts share one checkpoint. P01–P05 check fresh UID/build/images/terminal/channel/authority/export/input facts; only then intent/start and the two declared A phases may occur, with supervision through true return. |
+| Preparation before CP01 | Independent authors freeze complete obligations, inventory/bases/entries/read/phase/exclusions. Producers build retained candidate and independent trust tool; whole artifact reviews/every earned integration finish. Independent executor runs all bootstrap/entry/engine/display/registrar/peer/close-publisher and initializer/validator mechanics under the reviewed SCRATCH-only origin. Separate validator checks original outcomes and scratch acknowledgements. Complete originals, actual permitted peer/read/image results and independent validation are ready before the ceremony. No live commission is needed to qualify it; missing originals stop here. |
+| CP01 — Bootstrap and artifact acceptance | CP01-SOURCE: original source/OS trust. CP01-ARTIFACTS: short entry's full-byte/member comparison, Antony's acceptance of actual ready artifacts, original controls/mechanics and validation results. Then the accepted factual validator synchronously returns current exact bootstrap ancestor/UID facts; CP01-ROOT accepts that ready computed plan and authorizes exclusive disarmed bootstrap publication plus exactly one named initialization. No control acquisition or Grove-session wait occurs inside this checkpoint. The accepted trust-originals and close-only/maintenance capabilities are in that plan. |
+| Between CP01 and CP02 | Independent qualified bootstrap publisher/validator complete exclusive publication and actual held/acknowledgement checks. Only a successful CP01-ROOT binding and checked publication permit the named initializer's single invocation. Separate validator checks actual staged receipt before unspent publication and final named/held receipt/acknowledgements afterward. Preserve every actual outcome/partial extent. No qualification of mechanics, new authorization, LIVE selection or target sample is hidden here. |
+| CP02 — Qualified receipt acceptance | Independent entry/runtime continuity first. Antony accepts actual original bootstrap-publication, initialization, staged/final-validation, immutable issuance receipt and required bridge facts after they exist. Mechanics were already accepted at CP01; CP02 is not their first trust act. Ready actual objects first feed final Q/P. Failed/uncertain publication/initialization stops and cannot repeat initialization. |
+| Between CP02 and CP03 | After last edits/review repair/provisioning, accepted maintenance reserves/flushed durable disarm intent before final affected Q. Q01–Q10 consume only earlier accepted rules/originals/receipt facts and emit original results; scratch acceptance/audit/close mechanics require no future final-Q acceptance/audit/close. |
+| CP03 — Final original Q results and audit | Independent entry/runtime continuity first. Tool compares every original Q result and required input/authority/obligation coordinate; Antony accepts/refuses ready original results and complete audit with original dispositions/reasons. Those finalized records first feed the distinct closer. |
+| Distinct close between CP03 and CP04 | Independent closing owner checks every original k244 duty, CP03 acceptance/audit and stable input/receipt/current basis. Its previously accepted close-only publisher emits the exact independently acknowledged close record, or retains precise live repair. It is a separate owner/step, not a sixth human checkpoint; Antony's registrar cannot supply its capability. |
+| CP04 — Eligible basis after distinct close | Independent entry/runtime continuity first. Tool computes the complete finalized issuance/current/receipt/Q/acceptance/audit/acknowledged-close/event basis. Antony accepts that ready basis and registrar publishes acknowledged eligible successor. No future A3/appointment/A result is its input; first consumer is CP05. |
+| CP05 — Exact entry acceptance and fresh appointment | Independent entry/runtime continuity first. Independent author supplies exact fresh A3 request/ancestor/operation/basis/refusal entry. Antony ACCEPTs the ready entry/current eligible basis, then APPOINTs this request/nonce and starts the retained foreground supervisor/checker/acquirer together. P01–P05's actual UID/build/images/terminal/channel/authority/export/input facts precede intent/start/A; all coexist through true return. |
 
-No first consumer precedes acceptance of a required ready input: expectations/artifacts/
-bootstrap controls are CP01; actual staged/final receipt facts CP02; final Q originals/audit
-CP03; distinct close is between CP03/CP04; eligible evidence CP04; exact entry/appointment
-CP05. Actual Q output acquisition/independent factual checking between checkpoints creates
-no hidden human trust ceremony and does not accept the runner's own result. The human Q
-acceptance is required before instrument close/release, not before each Q call can return.
-Scratch receipt, audit, close and appointment specimens qualify mechanics without approving
-future real records. Actual fresh peer/source-child and target outcomes remain P/A as defined.
+The first-consumer graph begins with independent authored expectations → SCRATCH original
+control execution/validation → CP01 actual mechanics/artifact acceptance → current bootstrap
+factual validation → CP01-ROOT authorization → actual bootstrap publication/checked
+acknowledgements → single initialization/staged-final validation → CP02 actual receipt
+acceptance → disarmed final Q → CP03 original results/audit → distinct acknowledged close
+→ CP04 eligible basis → CP05 entry acceptance/appointment → fresh P → intent/start/A.
+No future result can authorize an earlier Q, bootstrap publication or initialization.
+The controls test this order with otherwise valid scratch operands: unaccepted mechanics,
+future CP02 substituted as initialization authority, missing CP01-ROOT, failed bootstrap
+acknowledgement and attempted second initialization must refuse before the respective act.
+CP01 contains several direct ready-object judgments, as CP05 contains ACCEPT/APPOINT;
+five checkpoints does not mean five confirmations. No hidden sixth ceremony, cross-session
+appointment or unspecified concurrent owner execution is required by this placement.
+Actual required originals/feasibility still need independent qualification; a missing
+boundary names its exact work and trade-off before use, never a claimed passing schedule.
 
 **Correction suffix.** A changed artifact/rule/control/read/exclusion or trust-tool closure
 starts with durable disarm and review/independent original controls, then repeats CP01 for
@@ -1006,7 +1094,7 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 
 | Record | Closed binding and independent origin |
 | --- | --- |
-| Bootstrap acceptance | Stable permission/register identity; actual UID/ancestors/register; checker/registrar/runtime/input identities; independent review, control inventory, original results and acknowledgements |
+| Bootstrap acceptance | Stable permission/register identity; actual UID/ancestors/register; complete independent trust-originals with short-entry/engine/display/anchor-runtime/read/member identities, full bytes and original controls; checker/registrar/initializer/validator/close-publisher identities; CP01-SOURCE/ARTIFACTS/ROOT ready acts, exact one-init authorization nonce and actual publication/validation acknowledgements. Output of the accepted act, no self/future approval. |
 | Revision payload | Ordinal and predecessor acceptance digest (none for first); stable permission; all normative extracts/locators, expected profile/concordance, complete applicability inventory/reasons, envelope/proof/approval/channel schemas, independent fixtures/expectations/bases, verifier/launcher/coordinator/gate/observer identities, actual task/runtime/read closure and scratch/live domain rules |
 | Revision acceptance | Exact earlier reviewed/final payload bytes/digest/held identity; predecessor; original inspection review and every earned integration finding/disposition; chartered independent owner's own judgment, producer/repairer separation, original appointment/channel context and acknowledgements |
 | Verifier-control acceptance | Earlier accepted revision and exact checker/verifier/launcher/runtime identities; separately authored bootstrap-control inventory and original results; independent adjudication, actual frozen inputs/process/channel/contact evidence and unavailable coordinates |
@@ -1014,7 +1102,7 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 | Final receipt validation | Earlier receipt binding; independent final named/held unspent receipt/subject identity and byte comparison; complete initializer acknowledgements and terminal result |
 | Correction binding | Earlier receipt/final-validation identity and complete issuance profile/concordance; newly accepted revision, complete current profile/concordance and fresh affected verifier-control acceptance; independent field/clause authority-equivalence comparison, observed permit/intent/attempt state, exact approved changes and affected qualification requirements |
 | Final proof acceptance and audit | Earlier complete original Q results/proof, frozen inputs and independent acceptance; per-coordinate audit of all original k244 duties, required identities and exact pending A outcomes; no release predicted into Q inputs |
-| Distinct instrument close/promotion | Earlier final proof acceptance/audit and complete reviewed original-obligation dispositions; final stable input/receipt/current-revision bindings; missing work retains live repair, no leaf-count authority |
+| Distinct instrument close/promotion | kind instrument.close, earlier CP03 final proof acceptance/audit and complete reviewed original-obligation dispositions; final stable input/receipt/current-revision/event bindings, accepted close-only capability and actual owner/publisher/channel/nonce/EOF/reap/publication acknowledgements; accepted tool identity/continuity when consumed. Missing work retains live repair; no leaf-count or self-acceptance authority. |
 | Disarm intent/result | Exact predecessor event, accepted disarm-only writer, action/scope, nonce and known input/revision/receipt basis; reserved/partial slot disarms before changed work, complete result leaves disarmed |
 | Independent eligible release | Earlier complete accepted close/proof/audit/receipt/current/issuance basis, preceding disarm/results, Antony's independent judgment and retained supervisor artifact; predecessor/epoch/acknowledgements; P evidence, never a reusable LIVE bearer or Q input |
 | Invocation entry/acceptance | Earlier issuance/current A3 rule, independent exact raw request/ancestor/operation/basis/refusal plan and Antony's ready-entry acceptance/context/nonce; no future reservation/self-digest or extra target scope |
@@ -1024,8 +1112,9 @@ Required unavailable named observer/runtime identities cannot become successful 
 The payload separately binds accepted contact unknowns and their canonical amendment;
 they are neither successful identities nor admission-ineligible by that limit alone. A proposal
 with exact unavailable work may be retained for review but has no admission-eligible role.
-Order is bootstrap → payload → chartered revision acceptance → independent verifier-control
-acceptance → staged receipt → external receipt binding → unspent publication → final receipt
+Order is independent SCRATCH bootstrap/mechanics originals → CP01 source/artifact/result
+acceptance → factual bootstrap validation → CP01-ROOT single-init authorization → checked
+disarmed bootstrap/payload/revision/control publication → staged receipt → external receipt binding → unspent publication → final receipt
 validation → last-edit disarmed requalification → independent proof acceptance → audit →
 distinct k244 close/promotion → independent eligible release → one explicitly supervised
 k245 LIVE invocation with earlier accepted A3 entry and fresh human appointment. Every
@@ -1202,7 +1291,7 @@ review of its full context and complete H/R exceptions before acceptance.
 | C, Selected instrument architecture: Fixed source and terminal protocol; Native typed decoder and fidelity limits | H: reported installed mdfind-manual meaning and cited Apple/installed-SDK format/number descriptions at 93463d0a. E: fixed framing/terminal and complete original/native format/type/identity/control requirements. Required current SDK/image facts still block their stage. |
 | C, Authoritative attempt evidence: Persistence operations and their evidence limits | H: archived fsync/fcntl/flock and pinned rename-source descriptions at 93463d0a. E: selected bounded synchronization assumption, actual acknowledgements, races, no refund and separate provisioning/validation controls. |
 | C, Independent approval root: Invocation channel and verifier-self qualification | H: archived socketpair/random API descriptions at 93463d0a. E: actual nonce/channel/peer/image/root mechanics, independent original controls and trust adjudication. Shared OS/runtime assumptions do not certify the candidate. |
-| C, Contact observation outside the producer; Topology and the inherited component rule | H: pinned DTrace/provider/privilege, Endpoint Security and bundle/volume documentary descriptions; packet/parent spellings and Safari baseline[137] at 25G83. E: B/Q/P/C/D limits, exact S/I/L/K/sf/nested/T/A grammar and operations, risk/refusal/retained-evidence and original-basis duties. Syntax grants no current presence/link/TCC or full no-contact fact. |
+| C, Contact observation outside the producer; Topology and the inherited component rule | H: pinned DTrace/provider/privilege, Endpoint Security and bundle/volume documentary descriptions; packet/parent spellings and Safari baseline[137] at 25G83. E: B/Q/P/C/D limits, exact S/I/L/LV/K/sf/nested/T/A grammar and operations, risk/refusal/retained-evidence and original-basis duties. Syntax grants no current presence/link/TCC or full no-contact fact. |
 | K, Independent source baseline; Required contact families; Candidate assessment and exact unavailable identities | H: xnu tag/revision/hash/source declaration/provider/API/privilege descriptions and historical candidate assessments at k276/ab4b7e38; only documentary claims, with exact whole context. E: complete table/branch retention, current correspondence limits, C/B/Q/P/U obligations and required controls/consumer placement. AU remains a selected limitation, not a historical successful result. |
 | Five whole reference-contact-inventory tables | H: every recorded source/revision/URL/retrieval digest/declaration/slot/name/expression/branch/edition/locator datum. E: serialized schema/dialect and complete whole-byte/decoded-member equality, independent bases and required correspondence/row disposition. Source pins are not possessed originals. |
 | P, Independent correspondence and precise authority boundary; First-attempt outcomes and required counterexamples; Independently discovered task and runtime inputs; Named expectation bases and bounded runtime claims | H: all fixed xnu/CF/guide/XML/Task edition/revision/retrieval pins and descriptions at ab4b7e38, including the whole basis table and cited kern_sysctl declarations. E: their full original-object acquisition/acceptance, independently authored expectations, every required actual Q/P/A/native/read/image/control duty and explicit parser/loctable/shared-runtime claim limits. |
@@ -1331,18 +1420,58 @@ companion contracts; socketpair supplies no full no-contact guarantee. The [reta
 uses the same checker-owned domain challenge through Task/script/CLI, without a second
 coordinator-only packaging interface. Intermediary endpoint preservation requires original qualified evidence.
 
-The candidate verifier cannot adjudicate its own bootstrap controls. A separately owned
-adjudicator runs exact retained checker/verifier/launcher artifacts against separately authored
-complete proofs and schema-valid omissions, weakened applicability, swapped images/runtime,
-false passes and replay/channel/death specimens. It records actual response bytes and
-process/contact outcomes, including the intended reached check. Inspection review produces
-findings; the separately chartered independent acceptance owner judges and registers those
-original results through its own channel after every required review/integration. The terminal
-checker requires their accepted exact inventory/identities.
-Candidate-produced proof or copied output cannot replace that acceptance. Shared OS/runtime
-dependencies are pinned assumptions, not an independent OS implementation. Unavailable controls
-or disagreement has no accepted live role. Changed checker/verifier/channel/closure needs fresh
-independent review/control acquisition and all affected qualification.
+The candidate verifier cannot adjudicate its own bootstrap controls. The independent
+original author freezes complete proofs and schema-valid omissions/weakened applicability,
+swapped images/runtime, false passes and replay/channel/death specimens. The independent
+executor, separate from that author and checked producer/repairer, runs the exact retained
+checker/verifier/launcher under the SCRATCH-only bootstrap origin and acquires original
+response bytes, intended reached checks and actual named process/contact results. Antony
+adjudicates and accepts/refuses those ready originals at CP01 using the independent entry;
+his accepted registrar publishes only his direct trust act. Inspection-only review and
+every earned integration precede it. The compatibility table governs all owners, not a
+second adjudicator/executor or delegated acceptance model. Terminal checker requires the
+accepted exact inventory/artifacts/original results. Candidate PASS/copied output supplies
+none. Shared OS/runtime assumptions remain bounded; missing/disagreeing required facts
+block. Changed checker/verifier/channel/closure needs independent review/control originals,
+continuity comparison and affected qualification.
+
+#### Distinct close-only publication
+
+CP01 accepts the separately authored/reviewed/independently controlled **close-only
+publisher capability**, with exact publisher artifact/runtime/read closure, distinct
+closing owner's identity/exclusions and fixed locator `instrument.close` at the current
+accepted revision directory. It accepts capability mechanics and scope, not a future
+close result. The publisher and its original controls cannot be produced, executed,
+adjudicated or accepted by the closing owner for its own capability fact. K269 places
+those independent owners before CP01. Antony's registrar remains limited to his trust
+acts and cannot publish a closer's record under an assumed extension of that capability.
+
+After CP03, the distinct closer's own retained entry checks its accepted capability,
+complete original-obligation/input/receipt/revision/event evidence and finalized human
+acceptance/audit. It creates a fresh private unnamed socketpair endpoint to the accepted
+close-only publisher, with independently checked owner/process/image/incarnation and
+exclusive endpoint ownership. Closed length-framed request binds version, kind
+`instrument.close`, exact current locator, earlier complete members/records, owner/exclusion
+facts and fresh nonce; duplicate/unknown fields, extra/trailing frames or a future/self
+binding refuse. Publisher can exclusively write only this closed record at that locator,
+under the qualified register-lock/no-follow/single-link/0600/write/namespace/full-flush
+rules. It returns original exact bytes, held identity and every acknowledgement over the
+same invocation's private reverse channel; require complete frame/EOF and normal zero
+publisher-child reap. No public socket, reusable bearer, environment flag or saved close
+can supply a new invocation. CP04 checks those originals, complete closure and their
+accepted capability binding before computing eligibility. The capability can neither
+accept a payload/result, publish ELIGIBLE/APPOINT, initialize/reset a permit nor close
+missing work. A failed/partial/unacknowledged close stays unavailable, with exact live
+repair before CP04; no fallback older close or prose promotion.
+
+Required scratch controls pair a complete acknowledged distinct close with wrong owner,
+producer/runner/initializer/validator/Antony self-close, unaccepted/substituted publisher,
+registrar-channel substitution, wrong kind/locator/revision/nonce, future CP03, omitted
+original duty, leaked/replayed channel, extra frame, partial write/flush/identity/EOF/reap
+and death/lock-release at each publication boundary. Each refuses its intended enabling
+point with otherwise valid operands. Close capability results are ready for CP01; final
+close result follows CP03. Q10 qualifies this mechanics with earlier scratch records,
+never the future actual close; P02 consumes the final independently acknowledged record.
 
 ### Required anchor controls and handoff
 
@@ -1355,12 +1484,16 @@ intent/spending. Reporting-only edits and valid scope-preserving corrections are
 with unchanged receipt bytes and no restored authority. Retain exact refusal coordinates
 and independent contact evidence; none of these specified controls is an approval record.
 
-Construction planning assigns separate responsibilities for checker/registrar/strict extractor, independent
-inventory/profile/concordance/schema authoring, bootstrap-control adjudication, inspection
-review/earned integration and separately chartered clean/findings-path acceptance,
-qualified initializer, separate staged/final receipt validator, independent original-control
-author, bootstrap-control executor/acquirer, Antony's control adjudication and the freshly
-appointed foreground supervisor under the compatibility relation.
+Construction planning assigns the compatibility-table responsibilities: independent
+inventory/profile/concordance/schema/control author; trust-tool producer; checked candidate
+producers/repairers; independent original-control executor/acquirer; inspection reviewer/
+earned integration; Antony adjudicator/acceptor/auditor; qualified initializer; separate
+bootstrap and staged/final receipt validator; independently qualified close-only publisher
+and distinct instrument closer; maintenance writer; fresh foreground supervisor and
+acquisition/derivation/independent association verifier. Preparation SCRATCH originals
+precede CP01; CP01-ROOT alone authorizes one initialization. Every later trust computation
+begins with the independent tool/runtime continuity check. No duplicate acceptance-owner
+or adjudicator-executes-controls command survives this relation.
 Exact artifacts receive independent implementation review/integration before acceptance.
 After final contract/task/runtime edits, place disarmed affected requalification, independent
 Antony's result acceptance/audit, distinct k244 close and his eligible-basis acceptance before
@@ -1618,14 +1751,17 @@ specimen result or control evidence.
 
 The [descriptor-relative ADR](../adr/filesystem-access-is-descriptor-relative.md) owns
 kernel resolution. Literal, link-expanded and walk-resolved spellings are held-walk
-observations; the last is not a universal physical-volume pathname. Scope is exactly the
-three prefixes on **both** literal and walk-resolved components, with the canonical
+observations; the last is not a universal physical-volume pathname. Scope requires the
+three prefixes on **both** literal and walk-resolved components, subject only to the
+two checked search-only Safari root transitions in the canonical
 [protected/intermediate-contact clauses](application-population-metadata-shape.md#authority-and-admission-choices).
 It is not a sealed-System rule or device allowlist. /System/Volumes/Data remains under
 /System; no blanket Data exclusion, spelling rewrite or vendor-based outside exception
 is selected. Protected/unsettled/unlisted target components refuse before lookup, not
-only before listing/contents. Tool-controlled out-and-back expansion must refuse before outside lookup/
-open; held common ancestors may be used only to enter an admitted prefix. This evidence
+only before listing/contents. Tool-controlled out-and-back expansion refuses before outside lookup/open except the
+canonical narrow Safari root step: only the two exact named link positions may obtain
+a search-only physical parent equal to the already held A1 root and immediately re-enter
+an admitted prefix. All other common-ancestor and protected/unlisted/risk limits remain. This evidence
 permission does not change the production ADR's kernel-semantics decision.
 
 ### Closed pre-lookup entries and operation order
@@ -1688,6 +1824,27 @@ These finite alternatives generalize those shapes across framework names; they d
 enumerate directories or certify a future installed framework set. Another nesting level
 requires an independently reviewed pre-use entry, never pass-time discovery.
 
+The finite Library version alternatives `LV` generalize **only** recorded version-position
+components under the following exact vendor/structural prefixes. They are additional
+alternatives to L/H3, not variables for every H3 component:
+
+| LV production (append emitted `app`, then `nested`) | Independently saved parent / zero-based copy basis |
+| --- | --- |
+| `/Library/Application Support/Google/GoogleUpdater/nv/app` | `156.0.8067.0`, baseline[240]; `nv` is exactly four nonempty ASCII decimal groups separated by single dots. No sign, slash/NUL, empty group, suffix or other level. |
+| `/Library/Application Support/WaveDNA/LiquidRhythm/wv/runtime/cache/app` | `1.7.0.PJBS0012` [257] and `1.7.0.SMOKE017` [258]; `wv` is exactly three nonempty ASCII decimal groups plus `.(PJBS|SMOKE)` and a nonempty decimal build group. Vendor/structural words stay exact. |
+| `/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/c/Resources/app` | `3.9`, [322]; only the version-position `c` varies. |
+| `/Library/Apple/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/c[/Resources]/app` | `A`, [222,223] and [224]; exact framework/prefix, independent version link operation required. |
+| `/Library/Image Capture/Support/EPSON/Epson Scan 2/Core/EpsonScan2.framework/Versions/c/Resources/app` | `A`, [328]; exact vendor/structure/framework, independent version link operation required. |
+
+Every `c`, `nv` and `wv` still obeys the raw component/protected/risk rules. A `Versions/Current`
+spelling is only grammar membership, not link permission; its no-follow result must use
+the independently frozen version-position readlink/expansion entry. Direct Data Library
+T5 substitutes its exact prefix in LV as in L/H3. No current version change is inferred.
+These shapes come from decoding **every** H3 parent and associated copy, comparing all
+S/I/L/K/H/nested alternatives in both directions. Numbered product names (Kontakt 7,
+MAU2.0, BFD3, Iris 2 and similar) remain exact H3 words outside an already selected c
+position; digits in a word alone do not identify a version-directory slot.
+
 `nested` is zero or more **complete** suffixes `/Contents/(Applications|Helpers|XPCServices)/app`
 or `/Contents/Frameworks/fw[/Versions/c]/(Helpers|Resources)/app`, beginning at an
 already grammar-matched app. Each sequence consumes at least three raw components and
@@ -1700,13 +1857,20 @@ never their metadata/files unless they separately occur as source candidates.
 | --- | --- |
 | S: System application/service | `/System/Applications[/Utilities]/app`, `/System/Library/(CoreServices[/(Applications|RemoteManagement|TimeMachine)]|Services|Input Methods|Classroom|ColorSync/Calibrators|Image Capture/(Devices|Automatic Tasks))/app`, `/System/Library/(Frameworks|PrivateFrameworks)/sf[/support]/app`, or `H1/app`, each followed by `nested` |
 | I: ordinary Applications | `/Applications[/(Utilities|c)[/c]]/app` or `H2/app`, followed by `nested`; variable containers are at most the explicitly shown two levels, checked as directories/search-only, not arbitrary recursive descendants |
-| L: ordinary Library | `/Library/app`, `/Library/Application Support/c[/c]/app`, `/Library/(Frameworks|PrivateFrameworks)/sf[/support]/app`, `/Library/Image Capture/Devices/app`, or `H3/app`, each followed by `nested` |
+| L: ordinary Library | `/Library/app`, `/Library/Application Support/c[/c]/app`, `/Library/(Frameworks|PrivateFrameworks)/sf[/support]/app`, `/Library/Image Capture/Devices/app`, LV, or `H3/app`, each followed by `nested` |
 | K: cryptex candidate | `/System/(Cryptexes|Volumes/Preboot/Cryptexes)/(App|OS)/(Applications[/Utilities]|System/Applications[/Utilities]|System/Library/CoreServices[/Applications]|System/Library/(Frameworks|PrivateFrameworks)/sf[/support])/app`, followed by `nested`; no alternative under `/private/preboot`, a volume UUID or an arbitrary Preboot child is admitted |
 
 The finite H alternatives cover the recorded deeper Library support/printer/framework
 and nested System/helper structures without a `/Library/**` or vendor wildcard.
-Current extra depth, another parent or another cryptex subtree is unlisted and retains
-raw refused evidence/missing work. Do not truncate its workload, silently add an entry
+The deliberate residual cost is refusal of newly structured required copies: for example
+an unrecorded GoogleUpdater suffix/fifth version group, another WaveDNA build tag,
+changed exact vendor/framework prefix, deeper printer/helper container or second nested
+framework level. Generalizing all H3 words would trade this finite pre-lookup policy for
+unselected recursive scope. Retain the finite policy and truthful missing-copy duty;
+independent pre-use scope approval/qualification is the reversal condition. An unforeseen
+required refusal during the single attempt remains incomplete through k245/k246/k247,
+never repaired by another pass. Current extra depth, another parent or another cryptex
+subtree is unlisted and retains raw refused evidence/missing work. Do not truncate its workload, silently add an entry
 from a successful lookup or call the whole current population covered. A required scope
 extension goes once to Antony before consumption; the accepted incomplete outcome still
 binds. An exact independently reviewed path alternative may be added only through that
@@ -1743,28 +1907,39 @@ App-position and cryptex-component links have **distinct** entries:
 
 | Link entry | Parent/component and permitted expansion; A1 operation |
 | --- | --- |
-| I/S/L app-position link, including `/Applications/Safari.app` | At an emitted `app` position, no-follow type then `readlinkat` at its held admitted parent. An absolute expansion must match a complete S/I/L/K/T4/T5 production; absolute reset uses A1's held root. A relative expansion must match that same resulting production while every physical ancestor/component stays within the three prefixes. A directory-positive does not authorize this link operation. |
-| K App/OS cryptex-component link | At exact `/System/Cryptexes/(App|OS)` or `/System/Volumes/Preboot/Cryptexes/(App|OS)`, no-follow type then separate `readlinkat`. Expansion plus the remaining suffix must match complete K/S; absolute reset or physical in-/System relative steps only. UUID, `/private/preboot`, unknown/protected and outside-then-back expansions refuse. No generic /System link authority. |
+| I/S/L app-position link | At an emitted app position, no-follow type then separately admitted readlinkat at its held parent; absolute expansion matches complete S/I/L/K/T4/T5 and uses held A1 root. Relative steps stay in prefixes except the separate exact Safari entry below. Directory-positive grants no link operation. |
+| Exact `/Applications/Safari.app` app-position root-step entry | Historical text `../System/Cryptexes/App/System/Applications/Safari.app` from k94 (26.6.2 syntax only). From held `/Applications`, admit exactly one search-only physical parent operation; its returned held identity must equal already held A1 `/`. The immediately next component is `System` under its admitted complete K production; no other outside step/lookup/listing. Wrong held root or entry/position refuses before re-entry. |
+| K App/OS cryptex-component link | At exact `/System/Cryptexes/(App|OS)` or `/System/Volumes/Preboot/Cryptexes/(App|OS)`, no-follow type then separate readlinkat. Expansion/suffix matches K/S; absolute reset or physical in-/System relative steps, except the separate exact App entry below. UUID/private/preboot/protected/unlisted/outside-then-back still refuse. |
+| Exact `/System/Cryptexes/App` cryptex-component root-step entry | Historical text `../../System/Volumes/Preboot/Cryptexes/App` from k110 (26.6.2 syntax only). First physical parent from held Cryptexes stays in System; second is the one reviewed search-only root step, whose held result must equal A1 root. Immediately enter `System/Volumes/Preboot/Cryptexes/App` with the remaining suffix matching K-Preboot. No analogous OS/other-position exception. |
 
-The complete historical packet's `baseline[137]` records literal `/Applications/Safari.app`
+The complete historical packet baseline[137] records literal `/Applications/Safari.app`
 and resolved `/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app`.
-This gives an I app-position and K-Preboot structural witness, **not** saved current link
-text or a complete topology. The two link entries must be independently authored/frozen
-with separate positive/refusal specimens before Q01; actual link text is first obtained
-in A. Other previously permitted link positions retain separately frozen entries: for
-example an sf Versions/c component (including Current) may expand only to an sf-matching
-version path with physical steps inside the prefixes. A selected container position may
-expand only to a complete admitted production. Neither is implied by app/cryptex approval;
-unlisted/protected/outside expansion still refuses before its next operation. A necessary relative expansion leaving all three prefixes remains refused; the
-saved final spelling cannot authorize its outside step. If that actual refusal prevents
-required Safari evidence, retain its exact incomplete duty and seek one concrete outside-
-prefix trade-off before any later consumer, without another pass or inferred exception.
-Process all link text in physical order without lexical cancellation: a leading relative
-`..` uses only an already admitted in-prefix ancestor, and leaving its selected prefix
-refuses **before** any outside lookup even if later components return. Absolute reset uses
-only A1's held root and a permitted production. At most 32 expansions; the next refuses.
-The raw full expansion/risk check precedes its first step, so a protected component later
-in the text can refuse the whole expansion before any expansion lookup.
+Its final spelling and the two separately recorded k94/k110 link texts are three distinct
+syntax bases, not current 26A434 link/topology/TCC/presence evidence. Before Q01 the
+independent author freezes both complete relative-link operands, their separate accepted
+positions, physical intermediate identities/operations and immediate re-entry checks.
+Actual link text and actual held-root equality first occur in A; historical syntax cannot
+supply either. A different current expansion must pass its own already frozen finite
+entry or retain truthful refused/incomplete evidence. No target probe is added.
+
+The root-step operation is a physical `..` from the held directory, using the ADR's
+search-only parent hold and fstat identity comparison, never lexical cancellation or a
+new `open("/")`. Classify the entire raw expansion and known risk first. Only the two
+exact entries above may issue that one otherwise outside-prefix parent hold; its result
+must equal the **already held** A1 root before any next lookup. The next operation is
+only the admitted-prefix re-entry, with no root listing/read/sibling/extra dot or outside
+component. A different result refuses while preserving the performed parent operation;
+no subsequent outside lookup is allowed. All other relative/absolute outside-then-back
+steps refuse before the first unadmitted operation. Absolute reset retains its existing
+A1 role, and all link processing retains physical order and the 32-expansion budget.
+
+Other independently frozen version/container link positions remain separate, including
+sf/LV Versions/c (Current): expand only to the complete admitted version/structural
+production with permitted physical in-prefix steps. Neither app nor cryptex entry
+implicitly authorizes a version/container/descendant link. Protected/unlisted/unknown
+risk overrides every production before its next operation. Required refused copies
+retain raw slots/associations and missing work through k245/k246/k247; no useful loss,
+new exception learned during the attempt or extra pass follows.
 
 The independent author freezes the following complete added grammar/control families
 alongside every existing T1–T7/A1–A3 pair. Each needs original operand bytes, expected
@@ -1778,8 +1953,9 @@ separate result/adjudication binding. They are authored expectations, not execut
 | Unversioned framework root and each exact Contents/Helpers/Resources/Support/SharedSupport/Agents suffix; top and one nested framework with independent optional versions | Version containing slash/NUL/dot, extra arbitrary support descendants or a third framework level; refusal before its lookup. |
 | Saved ApplicationServices/ATS and SpeechSynthesis parent shapes; nested app `Contents/(Applications|Helpers|XPCServices)` and framework resource/helper suffixes | Lost nested-app association, directory-positive used as link permission, unlisted XPC/support form or descendant-file/localization link. |
 | Direct K-short and K-Preboot App/OS paths, including Safari baseline[137]'s complete resolved spelling; independent A1 search-only ancestor sequences | UUID/arbitrary Preboot child, `/private/preboot`, Data/private, Data/Users or protected component; no ancestor listing/read-mode handle. |
-| I app-position Safari link with authored absolute K-Preboot expansion and separate K-component link with authored in-/System expansion | Swap either link entry/parent/position, allow readlink from a direct-directory entry or use an unlisted/protected expansion. |
-| Relative link with every physical step inside the three prefixes, plus absolute reset through A1's held root | Relative `../System/…` from /Applications or any absolute outside-then-back expansion: refuse before the first outside operation, even if lexical normalization yields an admitted final spelling. |
+| Two separately authored historical relative Safari texts: exact app-position and exact cryptex-component entries; controlled held physical root equality then immediate K/Preboot re-entry | Wrong-root returned identity; extra outside component/dot or root sibling; swapped/wrong entry/position (including OS); missing A1; protected/unlisted/extra-depth expansion. Refuse before the affected re-entry/lookup; retain original raw text/physical prefix. |
+| Relative steps inside prefixes; absolute reset through held A1; only the two exact accepted Safari root-step positives | Every other relative root escape or absolute outside-then-back, extra step/sibling, nonmatching prefix and lexical cancellation refuses before its first unadmitted operation. |
+| Each LV recorded version plus changed-version positives (Google 157.1.9000.2; WaveDNA 2.0.1.PJBS0020 and 2.0.1.SMOKE018; framework B and Python 3.10) under its unchanged exact prefix | Empty/dot/slash/NUL/protected c; malformed nv/wv, wrong vendor/framework/build tag, extra depth, version link without its entry or outside/protected link expansion. Unchanged totals/reassigned ordinals do not pass whole correspondence. |
 
 Future current framework names matching these finite shapes are permitted syntax, not
 presence/consent facts. Current extra structure/refused essential links retain exact
@@ -1818,8 +1994,8 @@ file reads and identity comparisons, retaining partial extents/error/unperformed
 
 | Ancestor role | Exact reviewed sequence and operation limit |
 | --- | --- |
-| A1 target common ancestors | Bootstrap only `open("/", O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` plus held `fstat`; from it enter System, Applications or Library. Data entries additionally name /System → Volumes → Data → Applications or Library. K-Preboot additionally names /System → Volumes → Preboot → Cryptexes → App or OS, and K-short /System → Cryptexes → App or OS. S/L framework entries name the exact sf/version/support sequence, with intermediate frameworks search-only. Only needed prefixes in the selected entry are visited. Each step permits `fstatat(..., AT_SYMLINK_NOFOLLOW)`, `openat(..., O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` on a checked directory, `fstat` of held handles and named/held equality; `readlinkat` only for its separately frozen production-position entry at the held parent, including distinct app-position/cryptex-component entries and explicitly admitted version/container positions. No read-mode ancestor handle, listing, arbitrary sibling lookup, contents or real service request. |
-| A2 fixed authority | Separate exact `/` → Users → antony → Library → Application Support → KoineReferenceEvidence → permissions → koine.reference-evidence.macos-27.0.1-26A434.1 entries, using canonical bytes, never HOME/cwd. Search-only checked no-follow ancestor probes/handles precede the separately reviewed subject/receipt/intent/lock/create/read/write/rename/synchronization plan. Register/bootstrap siblings need their own exact entries under the approval contract. No target/user-home evidence access is granted. |
+| A1 target common ancestors | Bootstrap only `open("/", O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` plus held `fstat`; from it enter System, Applications or Library. Data entries additionally name /System → Volumes → Data → Applications or Library. K-Preboot additionally names /System → Volumes → Preboot → Cryptexes → App or OS, and K-short /System → Cryptexes → App or OS. S/L framework entries name the exact sf/version/support sequence, with intermediate frameworks search-only. Only needed prefixes in the selected entry are visited. Each step permits `fstatat(..., AT_SYMLINK_NOFOLLOW)`, `openat(..., O_SEARCH \| O_DIRECTORY \| O_NOFOLLOW \| O_CLOEXEC)` on a checked directory, `fstat` of held handles and named/held equality; `readlinkat` only for its separately frozen production-position entry at the held parent, including distinct app-position/cryptex-component entries and explicitly admitted version/container positions. Only the two exact Safari root entries additionally permit one physical search-only parent hold, held-fstat equality with the already held A1 root and immediate admitted-prefix re-entry; no sibling or other outside step. No read-mode ancestor handle, listing, arbitrary sibling lookup, contents or real service request. |
+| A2 fixed authority | Separate exact `/` → Users → antony → Library → Application Support → KoineReferenceEvidence → permissions → koine.reference-evidence.macos-27.0.1-26A434.1 entries, using canonical bytes, never HOME/cwd. Search-only checked no-follow ancestor probes/handles precede the separately reviewed subject/receipt/intent/lock/create/read/write/rename/synchronization plan. Register/bootstrap siblings, trust-originals and instrument.close use the approval contract's exact independently accepted entries. No target/user-home evidence access is granted. |
 | A3 explicit fresh export | Immutable issuance/current rule admits only a separately authored/human-accepted exact P invocation entry before its first lookup. Entry binds raw destination, each ancestor/component, independent basis/refusal expectations and no-follow search-only probe/handle/identity operations; only the final absent destination may use qualified exclusive reservation/create/write/flush mechanics. No default/arbitrary parent, authority substitution/scan/target access. Protected/unsettled/unlisted/known linked ancestry refuses before lookup; unexpected link before follow. New compliant entry needs fresh acceptance/appointment, not changed issuance authority or silent retry. |
 
 A2's selected home ancestry is an explicit authority-only exception to target /Users
@@ -1859,8 +2035,8 @@ grant no discretionary filesystem scope.
 Original object child names are exact content-digest encodings under the held attempt,
 never raw target components interpreted as output paths. Package entry cannot initialize.
 
-At the approval subject, the fixed `bootstrap.accepted`, `release.lock`, `release-events`
-and numbered revision records permit only the approval contract's held read/compare/lock
+At the approval subject, fixed `bootstrap.accepted`, `trust-originals`, `release.lock`,
+`release-events`, numbered revision records and their exact `instrument.close` locator permit only the approval contract's held read/compare/lock
 and accepted publisher's exclusive write/synchronization operations. Ordinal components
 use the same checked unsigned-64, no-leading-zero ASCII decimal grammar as release events;
 only the deterministic immediate successor is addressed, never listing/scan/fallback.
@@ -1892,8 +2068,9 @@ including common-ancestor entry. Retain source ordinal/raw bytes/reason and all 
 work. For an admitted slot, check each next component/operation against its entry before
 `fstatat`, `openat` or `readlinkat`. After an admitted link read, classify its whole observed
 expansion and physical step order before the next operation. Absolute link reset may use
-only the reviewed held A1 root; physical `..` may use only the reviewed in-prefix ancestor
-sequence. Reject an outside step even if a later step returns inside; no normalization
+only the reviewed held A1 root; physical `..` uses only the reviewed in-prefix ancestor sequence or the two exact
+Safari held-root/immediate-re-entry entries. Reject every other outside step even if
+a later step returns inside; no normalization
 erases it. Root/common-ancestor entry is not permission to traverse outside and return.
 
 After a checked .app root, the closed four-layout/fixed-file/direct-locale plan remains
@@ -1913,10 +2090,10 @@ permits policy decisions, not current-TCC/physical-ancestry certification or ano
 | /System/Volumes/Data/private/Specimen.app | Syntax passes /System; unconditional selected risk refusal before lookup, directly or on observed link expansion, with raw evidence retained |
 | Any /System/Volumes/Data/Users home, not only Desktop/Documents/Downloads | Same pre-lookup refusal even if otherwise ordinary-looking or syntactically in scope; no home wildcard |
 | Desktop, Documents, Downloads, Containers, Group Containers, Mail, Messages, Mobile Documents at any target component | Refuse before lookup through direct or observed-link spellings; named rejection is never delayed until listing/contents. Invisible rename/redirect remains unproved |
-| Relative or absolute link expands outside then returns inside | Retain exact observed link text/physical order; refuse before the first outside lookup/open, even if final spelling is admitted. Include absolute /Users and /private expansion, and relative physical `..` beyond an admitted prefix; no lexical cleanup |
+| Relative or absolute link expands outside then returns inside | Retain exact text/physical order; refuse before first unadmitted lookup/open except only the two exact checked Safari root-step entries. Absolute Users/private and every extra outside/root-sibling or other-position step refuse; no lexical cleanup. |
 | Mount below an admitted prefix changing device identity | Record observable transition/identities; device change alone neither widens nor narrows syntactic scope |
 | Firmlink redirect without observable link text | Preserve walk spelling/returned identity; no fabricated readlink step or hidden target spelling |
-| System/cryptex link within a prefix versus outside all three | Former needs its own T1 link/expansion entry and all checks; latter refuses before first outside lookup regardless of vendor; no historical-mount whitelist |
+| System/cryptex link within a prefix versus outside all three | Own T1 link/expansion entries and checks; only the two exact Safari held-A1-root/immediate-prefix steps are exceptions. Every other outside operation refuses regardless of vendor; no historical-mount whitelist. |
 | Relative/absolute links, physical .., trailing slash, 32/33 expansions, named/held replacement | Exact ADR semantics and pre-operation policy checks; 33rd expansion/unknown/replaced identity refuses, preserving performed prefix and missing work |
 | A1 search-only entry versus listing/read/sibling/identity/descriptor/proxy bypass | Independent policy values and actual named scratch controls permit only A1's steps; forbidden requests refuse at their enabling point. No universal native-bypass claim |
 | Fixed A2 authority versus arbitrary subject/user-home target; reviewed A3 fresh export versus unlisted/protected/linked/overlapping ancestor | Separate role/bytes/operation positives and pre-lookup negatives; target T entries grant neither authority nor export access and the reverse grants no target access |
@@ -2250,11 +2427,11 @@ row above. They never qualify from a design bit.
 | Absent/moved/replaced/unreadable authority; partial header; process death before/after flush acknowledgements | Uncertainty refuses; prefixes retained; no initialization/refund; kills cannot qualify OS-crash persistence |
 | Complete proof versus schema-valid omitted case/role/negative pair | Required-inventory coordinate identifies omission; proof's own count/list cannot admit |
 | Weakened regenerated inventory/concordance or self-certifying substituted verifier | Fixed externally accepted payload and original independent verifier-control acceptance refuse; matching regenerated hashes cannot admit |
-| Chartered own acceptance after clean review versus copied/skipped review or reviewer-only authority write | Inspection-only review publishes findings only. Independent appointed acceptance owner reads original review and identical reviewed/final bytes, then own registrar channel publishes its own trust act; producer/run/commit text supplies none |
+| Chartered own acceptance after clean review versus copied/skipped review or reviewer-only authority write | Inspection-only review publishes findings only. Antony reads original review and identical reviewed/final bytes, adjudicates the independently acquired ready results, then his trust-only registrar publishes his direct act; producer/run/commit text supplies none |
 | Findings/integration acceptance versus omitted/reassigned dispositions or unreviewed final payload | Original reviewed/final bytes and every finding/disposition bind scope/verification and producer/repairer separation; missing or substantive unreviewed changes refuse before acceptance |
 | Disarmed qualification versus pure→LIVE/selector/task-edge/armed-state escalation | Exact retained selector/parser/Task chain refuses pure origins even with otherwise valid fixture receipt/proof/eligible-release predicates. Positive and every attempted LIVE claim run only under SCRATCH with scratch authority; no test selects LIVE |
 | Current independently supervised release versus stale/partial/lost release, active requalification or supervisor death | Only original appointed LIVE-origin endpoint plus accepted proof/audit/distinct-close basis can select k245 LIVE. Missing/copy/replay/old-state bindings refuse before intent; loss after intent freezes without refund or extra permit |
-| Independent bootstrap/verifier-self adjudication versus candidate PASS or self-hashed commissioning | Separately authored original controls, inspection review/integration and chartered terminal owner supply acceptance. Candidate output cannot commission its verifier/registrar; missing required original results retain live repair |
+| Independent bootstrap/verifier-self adjudication versus candidate PASS or self-hashed commissioning | Independent original author/executor provenance and inspection review/integration precede Antony's CP01 ready-result judgment; independent continuity starts every later checkpoint. Candidate output cannot commission its verifier/registrar; missing required original results retain live repair |
 | Issuance receipt versus scope-preserving current correction, pending/old revision or correction after spending | Receipt profile equals full issuance profile; current inputs equal accepted full current profile; a changed identity requires an accepted bridge binding both complete profiles/concordances and independently reviewed authority equivalence. Missing comparison or changed scope/file/effect/attempt refuses; affected requalification preserves original bytes and no correction restores unspent authority |
 | Fresh framed channel versus leaked endpoint, second frame, missing EOF/reap, wrong domain or process binding | Independent external checker/coordinator reject at the intended channel coordinate; required contact evidence cannot come from the candidate |
 | Permission profile matches frozen clauses versus one changed scope/effect/file group | Independent concordance/value comparison refuses before start |

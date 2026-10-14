@@ -1,19 +1,22 @@
 # application-population-metadata-subject-k242 — brief
 
-## K317 integration and replacement before construction
+## K320 coherent replacement before construction
 
-K317 reviews k315 as defective; k318 classifies every finding and repairs the current
-packet-integrity pointer and k246's offline-only correction context. Antony approved the
-narrow checked root-step exception for the two Safari shortcut positions, with immediate
-admitted-prefix re-entry and no browsing or other outside step. K319 applies that received
-answer without another interview; k320 repairs the full coupled bootstrap/first-consumer/
-continuity/closer-publication and finite Library/link grammar. Mandatory whole-k320 review/
-every earned integration precedes k269. C/K/P/manifest and seven views remain defective
-k315 comparison subjects until the coherent replacement; no intermediate regeneration or
-claimed normative repair. K244/k242 stay live, single pass unused, full k246/k247/useful
-breadth/additive VM/native placement/private ineligibility/both holds remain. K316 retains
-the separate viewer defect. Historical promotion/owner/fragment proposals below are not
-current construction directions.
+Reference-evidence-practical-admission-k320 replaces the defective k315 proposal at
+ad181f1fbfd8 under actual k270/k281/k290/k295/k314 and k319's narrow Safari amendment.
+Mandatory whole-k320 review and every earned integration precede k269 replanning. The
+complete C/K/P contract fixes ready independent SCRATCH bootstrap/initializer-validator
+originals before CP01; CP01-ROOT authorizes exactly one initialization; CP02 accepts actual
+namespace/receipt outputs. Independently anchored entry/engine/display/runtime/read
+continuity begins every later checkpoint. The distinct closer uses its accepted close-only
+publisher/channel after CP03 and before CP04. Separate Safari app/cryptex root entries
+require held-A1-root equality/immediate-prefix re-entry; finite Library versions preserve
+exact vendor/structure and truthful residual refusals. The new replacement membership
+candidate is reference-practical-admission-membership.json; old manifests are immutable
+historical originals. Required actual originals/tools/controls/read/images/UID/build/
+terminal/receipt/authority remain missing before consumers. K244/k242 stay live, pass
+unused, full k246/k247/useful breadth/additive VM/native placement/private ineligibility/
+both holds remain. K316 retains the separate viewer defect; no browser/native pass follows.
 
 ## Historical k315 proposal before k317 findings
 
@@ -260,19 +263,15 @@ earned integration before k269. No ancestor closes, permission is not spent, and
 new native/authority/probe/privilege operation follows these requirements answers.
 
 
-K285 specifies the chartered independent acceptance and LIVE release seam in the durable
-evidence contract. Inspection-only review/earned integration supplies original findings/
-dispositions and frozen reviewed/final bytes to a separate independent owner's own trust
-act on clean and findings paths; no copied review/run/commit or producer/repairer approves
-itself. Qualification remains disarmed through provisioning/corrections, final affected
-SCRATCH requalification, independent acceptance/audit and distinct k244 close. A separate
-release owner then accepts eligibility, and only its still-live commissioned supervisor
-originates one explicitly appointed k245 LIVE channel. Receipt/proof/release possession
-supplies no role selection; lost/partial/stale release, active qualification or supervisor
-loss refuses without refund/extra permit. K269 must place the exact acceptance/commissioning/
-adjudication/qualification/audit/close/release owners before their consumers. K286/k287 and
-mandatory whole-k282 review/integration remain before k269; this seam supplies no partial
-construction handoff, actual authority, executed control or target evidence.
+K285's historical acceptance/release design is compared under actual k290/k314.
+The current compatibility table makes Antony adjudicator/acceptor/auditor over independent
+original author/executor results; a distinct instrument closer publishes through its
+accepted close-only capability. Only CP05's fresh direct foreground appointment originates
+one LIVE invocation through true return. CP01 ready mechanics precede one initialization;
+CP02 accepts actual outputs, CP03 final Q/audit, distinct close precedes CP04, and every
+CP02–CP05 begins with independent tool/runtime continuity. Historical separate-owner or
+cross-session-supervisor commands confer no current duty/authority. K269 must place these
+actual compatible owners before first consumers and retain every original obligation.
 
 Historical k287 promotion (reviewed by k288 and repaired by k291):
 

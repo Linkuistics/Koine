@@ -47,16 +47,17 @@ with independent original authors/executors and producer/repairer/runner exclusi
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
 freshly human-appointed foreground supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority. K320 must repair the remaining
-current C role/close-publication conflicts and earn whole review/every integration before
-k269. This design supplies no finite subject or native/private eligibility.
+possession and copied review/run/commit supply no authority. K320's role/close-publication replacement requires whole review/every integration before k269. This design supplies no finite subject or native/private eligibility.
 
-The [practical admission design](application-reference-input-partition.md#practical-admission-design)
-is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
-[current integration boundary](application-reference-input-partition.md#k317-integration-and-remaining-design)
-requires k319's application of the actual narrow Safari root-step approval, complete k320
-replacement and mandatory whole review/every earned integration before k269. The following
-is the reviewed proposal, not a repaired current construction handoff. Independently authored/reviewed comparison,
+The [practical admission design](application-reference-input-partition.md#coherent-k320-replacement)
+is k320's coherent replacement under actual k319, awaiting mandatory whole-k320
+review/every integration before k269. The [current replacement boundary](application-reference-input-partition.md#coherent-k320-replacement)
+compares original duties and precise missing work. Independent SCRATCH bootstrap/tool/
+initializer-validator/close-publisher originals are ready before CP01; ARTIFACTS accepts
+actual mechanics, ROOT authorizes one initialization and CP02 accepts actual outputs.
+Every CP02–CP05 begins with independent retained-original entry/engine/display/runtime/read
+continuity recorded in its output. The distinct closer uses its accepted close-only
+publisher/channel after CP03 and before CP04. Independently authored/reviewed comparison,
 audit and display with a short non-candidate bootstrap entry support Antony's semantic
 judgment in five named own-terminal checkpoints outside agent harnesses. Full author/
 producer/repairer/runner/own-result and initializer/staged-final validator exclusions and a
@@ -67,7 +68,9 @@ cooperative context, not human authentication. Durable disarm precedes changes/Q
 
 Closed Q/P/C/D and exact T/A rules include finite System framework/version/helper/nested
 and Preboot cryptex productions with separate app-position/cryptex-component links and
-search-only ancestors. Outside-prefix physical expansions still refuse. Complete H/R
+search-only ancestors. Only the two exact Safari positions may take the checked held-A1-root/immediate-prefix
+search-only transition; all other outside steps refuse. Finite LV version alternatives
+retain exact vendor/structural prefixes and explicit residual refused-copy duties. Complete H/R
 exceptions with E default replace fragments/report-driven refresh; full actual consumed
 bytes/original/basis/read/phase/absence and original R retained duties remain. Historical
 manifests supply no current proof; absent actual originals/controls/identity/read/receipt

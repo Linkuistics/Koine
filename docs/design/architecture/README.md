@@ -8,57 +8,38 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-K317 found the saved k315 proposal defective. The
-[integration boundary](../../verification/application-reference-input-partition.md#k317-integration-and-remaining-design)
-records every disposition and Antony's approved narrow Safari root step. K319 applies that
-received answer without another interview; k320 repairs bootstrap/initialization ordering,
-tool continuity, current roles/close publication and finite Library/link grammar, then earns
-mandatory whole review/every integration before k269. The seven D2/SVG exports below remain
-historical k315 snapshots at ad181f1fbfd8; captions/discussion identify them as comparison
-subjects. They are not a repaired construction handoff or current documentary identity proof.
-K318 changes no graph/export bytes and claims no new rendering/browser/native qualification.
+Open [the k320 replacement discussion](index.html#discussion) for the complete coherent
+proposal under actual k319. Mandatory whole-k320 review/every earned integration precedes
+k269 planning. The [replacement boundary](../../verification/application-reference-input-partition.md#coherent-k320-replacement)
+compares every k317 finding and original obligation. Independent SCRATCH bootstrap/tool/
+initializer-validator originals are ready before CP01; ROOT authorizes one initialization
+and CP02 accepts actual outputs. Every CP02–CP05 starts with independent retained-original
+full-byte/member entry/engine/display/runtime/read continuity. Distinct close uses its
+accepted close-only publisher/channel after CP03 and before CP04. CP05 accepts exact
+entry then freshly appoints coexisting supervisor/checker/acquirer through true return.
 
-### Historical k315 proposal and saved views
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Moves independent SCRATCH mechanics before CP01, names ROOT one-init authority, shows continuity at CP02–CP05 and the close-only publisher before CP04.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Places accepted mechanics before initialization, actual outputs at CP02 and independently acknowledged close before eligibility.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds finite Library version alternatives and the two exact checked Safari root/immediate-prefix entries while retaining every other refusal.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Adds independent checkpoint continuity and close-only publication to the retained Q/P/A route.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Names independent retained-original continuity and separates Safari root/LV policy from actual native evidence.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows ready bootstrap/initializer-validator originals before CP01 and actual single-init outputs before final Q.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Points the complete subject handoff to k320 while retaining every generated/useful/VM duty.
 
-Open [the practical admission discussion](index.html#discussion) for the complete proposed
-k315 conjunction and its seven updated views. The [canonical permission/comparison](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
-and [practical original-obligation report](../../verification/application-reference-input-partition.md#practical-original-obligation-comparison)
-retain all actual amendments and original duties. Mandatory whole-k315 review/every earned
-integration precedes construction replanning; neither diagram nor source identity qualifies
-an actual tool, original result, authority or finite subject.
+Finite Library versions keep exact vendor/structural prefixes. Only two exact Safari
+positions may take a search-only physical parent equal to held A1 root followed immediately
+by an admitted prefix. No listing/sibling/other outside operation, lexical cancellation or
+historical current-topology fact follows. H/R exceptions with E default, all full actual
+consumed bytes/originals/bases/reads/phase/absence and original R duties remain.
 
-An independent tool computes full byte/member comparison, required-result audit and eligible
-basis after a short non-candidate bootstrap trust step. Antony judges meaning in CP01–CP05
-in his own terminal outside agent harnesses. Original author/executor/producer/repairer/
-runner exclusions, initializer/staged-final validator separation and distinct close remain.
-Final Q precedes CP03; distinct close precedes CP04; CP05 accepts exact fresh entry then
-appoints coexisting supervisor/checker/acquirer through true return. Terminal metadata is
-cooperative context, not human authentication; approved maintenance is disarm-only.
-
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Places CP01–CP04 before CP05, keeping fresh P and first-attempt A distinct from Q.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds System framework and Preboot cryptex grammar, distinct link entries and exception/default membership.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Connects CP01 bootstrap, qualified CP02 receipt and final Q/CP03/close/CP04/CP05 to the single pass.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Adds independently authored comparison/display/bootstrap ownership before candidate admission consumers.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Places CP03 after final Q and distinct close before CP04/CP05 without a future-output cycle.
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Shows CP01–CP05, independent bootstrap computation, ready-input order and distinct close after final Q.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Replaces the defective k291 handoff with practical k315 while preserving complete subject/generated/VM duties.
-
-Current System framework/version/helper/nested and Preboot cryptex policy preserves
-separate app-position/cryptex links and search-only A1 ancestors. Physical outside-prefix
-expansions still refuse; historical syntax proves no current link/topology/TCC/presence.
-H/R exceptions with E default replace fragments/report-driven refresh, while full actual
-consumed bytes, originals/bases/reads, phase/absence and original R duties remain.
-Unchanged context: selected acquisition/decoder/original-byte obligations, bounded Q/P/C/D
-contact map, immutable issuance/current bridge, destructive consumption and private/native
-gates. Required failed facts still block; opaque AU is no full no-contact result.
-
-Exports use D2 0.9.0, Dagre, theme 0/dark-theme 200 and the existing seven-view render task.
-Prior browser/mobile/dark observations are historical for their prior artifacts. Rendering,
-served-byte equality and these changed views establish no new browser delivery pass. K316
-owns the reported Safari fresh-fragment defect; use the outline if that fragment fails.
-Private eligibility remains false, both holds/native PENDING and k244/k242/k245/k246/k247
-full useful-breadth/additive VM/original duties remain. No process survives Grove sessions
-as an appointment bridge and no saved record/image/task selects LIVE.
+Editable source and self-contained exports use D2 0.9.0, Dagre, theme 0/dark-theme 200.
+Regenerate with `task design:application-population-metadata-shape-render`. Graphs begin at
+the dark Start here node; order labels describe dependency, not a model-checking result.
+Prior browser observations and old k315 exports at ad181f1fbfd8 are historical. K316
+retains the Safari fresh-fragment viewer defect; use the topic outline if needed. Rendered
+correspondence is no new browser/instrument/native qualification. Actual required tools/
+originals/controls/UID/build/images/terminal/read/receipt facts remain missing, pass unused,
+k244/k242 live and all useful/generated/VM/private/product/native obligations remain.
 
 ## Other architecture topics
 

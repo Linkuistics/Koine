@@ -275,19 +275,21 @@ The [chartered acceptance route](docs/verification/application-reference-evidenc
 separates inspection-only review from Antony's own semantic acceptance/registration act,
 using independently authored controls and an independent original-result executor. The
 runner/producer/repairer cannot judge their own programme results; the distinct instrument
-closer remains separate. K317's stale current role/publication commands still need k320's
-complete repair before construction.
+closer remains separate. K320's complete role/publication repair requires whole review/every integration before construction.
 [Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps provisioning/requalification disarmed through accepted audit and distinct instrument
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
 release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 keeps changing observations in a separate unconsumed report; actual input changes still
-disarm and requalify. The [practical admission design](docs/verification/application-reference-input-partition.md#practical-admission-design)
-is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
-[current integration boundary](docs/verification/application-reference-input-partition.md#k317-integration-and-remaining-design)
-places k319's application of Antony's approved narrow Safari root step and complete k320
-replacement/whole review/every earned integration before replanning. The following
-description is that proposal, not a repaired current bootstrap route. An independent comparison/display tool with a short
+disarm and requalify. The [practical admission design](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
+is k320's coherent replacement under the actual k319 amendment, awaiting mandatory
+whole-k320 review/every earned integration before k269 construction planning. The
+[current replacement boundary](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
+records the complete original-duty comparison and precise missing work. Independent
+SCRATCH bootstrap/initializer-validator/close-publisher originals precede CP01 acceptance;
+CP01-ROOT authorizes one initialization and CP02 accepts actual outputs. Every CP02–CP05
+starts with independently anchored entry/engine/display/runtime/read continuity. Distinct
+close uses its accepted close-only channel after CP03 and before CP04. An independent comparison/display tool with a short
 inspectable bootstrap entry computes equality/audit/basis; Antony judges meaning in five
 named own-terminal checkpoints outside agent harnesses. Original author/executor/producer/
 repairer/runner exclusions, separate initializer/staged-final validator and distinct
@@ -296,7 +298,7 @@ CP04 eligible basis, and CP05 accepts exact entry then freshly appoints coexisti
 supervisor/checker/acquirer through true return. Terminal metadata is cooperative context,
 not human authentication. Durable disarm precedes changes/Q; records/images appoint nobody.
 Finite System framework/version/helper/nested and Preboot cryptex productions retain
-separate link/ancestor entries and physical outside-prefix refusal. Historical syntax
+separate link/ancestor entries and the two exact checked held-root/immediate-prefix exceptions; every other outside step refuses. Historical syntax
 proves no current link/TCC/presence fact. Complete H/R exceptions with E default replace
 individual fragments/report-driven refresh. Whole actual consumed-byte/original/basis/
 read/phase/absence and retained original R duties remain; required missing actual identities

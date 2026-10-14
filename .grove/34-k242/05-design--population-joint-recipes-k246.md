@@ -10,13 +10,17 @@ coverage/capacity/missing-evidence boundary. No cardinality-only qualification.
 
 ## Context
 
-K317 found k315 defective. Consume k319's actual narrow root-step amendment and complete
-reviewed k320 replacement/every integration before any k244/k245 handoff is treated as
-qualified. The earlier k315 proposal below remains a comparison basis; its manifest and
-bootstrap claims supply no current proof. K318 repairs this leaf's offline correction
-context without changing its original Goal/Done when or generated discrimination duties.
+Require the complete reviewed k320 replacement/every earned integration and reviewed
+k269 plan, under actual k270/k281/k290/k295/k314/k319. K315/k291 are defective historical
+comparison subjects, never current qualified handoffs. CP01 accepts actual independent
+mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
+Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
+Distinct close publishes through its accepted close-only channel after CP03/before CP04.
+Only CP05's fresh own-terminal ACCEPT/APPOINT and complete Q/P can precede the single A.
+The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root exceptions;
+no historical syntax supplies current identity, topology, TCC or version facts.
 
-Consume the whole reviewed k315 practical design and actual k244/CP01–CP04 qualifications,
+Consume the whole reviewed k320 practical design and actual k244/CP01–CP04 qualifications,
 CP05/P/A frozen original and independently verified k245 derivatives/roles, or their precise
 failed/incomplete work. Historical k273/k282/k291 proposals and fragment identities supply
 no current acceptance, byte evidence or useful role. The selected canonical comparison

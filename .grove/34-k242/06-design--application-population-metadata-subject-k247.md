@@ -11,12 +11,17 @@ unavailable evidence boundary. This child is the producer's closing session.
 
 ## Context
 
-K317 found k315 defective. Require k319's application of the actual narrow root-step answer,
-complete k320 replacement and mandatory whole review/every integration before treating the
-retained k315 proposal below as a qualified upstream handoff. All actual instrument/pass/
-generated-subject/original-duty closure remains due; k318's repair placement supplies none.
+Require the complete reviewed k320 replacement/every earned integration and reviewed
+k269 plan, under actual k270/k281/k290/k295/k314/k319. K315/k291 are defective historical
+comparison subjects, never current qualified handoffs. CP01 accepts actual independent
+mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
+Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
+Distinct close publishes through its accepted close-only channel after CP03/before CP04.
+Only CP05's fresh own-terminal ACCEPT/APPOINT and complete Q/P can precede the single A.
+The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root exceptions;
+no historical syntax supplies current identity, topology, TCC or version facts.
 
-Consume the complete reviewed practical admission producer k315 and all actual k244
+Consume the complete reviewed practical admission producer k320 and all actual k244
 qualification/CP01–CP04/original-duty close, k245 CP05/P/A frozen originals/independently
 verified derivatives/purposes, k246 recipes/generated discriminator, or exact retained
 failed/incomplete work. Compare all canonical actual k270/k281/k290/k295/k314 amendments

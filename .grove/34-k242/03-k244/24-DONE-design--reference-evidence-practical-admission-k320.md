@@ -112,3 +112,77 @@ Design only. No tool/schema/task/control implementation, provisioning/authority 
 installed query/contents, target/protected/topology/process/terminal probe, new privilege/
 signing/helper/consent/posture or native programme. K316 retains the independent Safari
 viewer defect; unchanged views/rendering supply no new browser delivery/qualification.
+
+## Decisions (running log)
+
+Adopt the selected design mandate and k317's original findings at 772bec7144a4 with
+k318's classifications. The working jj change starts empty. Tier 2 graph status is ready
+for Users-antony-Development-Koine.add-plugins-for-modaliser-requirements; docs are excluded,
+so direct whole-document and historical-source reads supply the design evidence. Taskfile.yml
+already owns document checking and seven-view rendering. This session builds no tool,
+executes no admission controls, probes no target and supplies no authority or native facts.
+
+Choose the ready-input schedule for R2/R4: independent authors/executors/validator complete
+the bootstrap, peer and initializer/validator mechanics originals under a SCRATCH-only
+origin before CP01, without commissioning LIVE or waiting inside Antony's terminal for
+Grove sessions. CP01 retains ordered source/OS trust and ready artifact/result/root acts;
+its final accepted root act authorizes one exact initialization. Actual namespace/receipt
+publication and separate staged/final validation follow it and are accepted at CP02.
+No future result is accepted and no second initialization is admitted.
+
+For R3/R5, place a separate accepted close-only publisher/channel under the compatibility
+exclusions, and bind short entry, engine, display and their complete runtime/read closure.
+Every CP02–CP05 must use independently retained CP01 originals and the inspectable anchor
+before executing those tools. Missing or changed originals/tools/closure refuse at that
+entry and repeat the affected correction suffix; the changed tool cannot certify itself.
+
+
+The complete Library decode selects finite LV alternatives only for recorded version
+positions: exact GoogleUpdater and WaveDNA prefixes, CommandLineTools/Python3, MobileDevice
+and Epson framework structures. All remaining H3 words and risk/link/depth refusals remain.
+Unknown future structure retains explicit incomplete-copy work; no current version fact
+is inferred. K319's two separately based Safari root entries use physical held-A1 equality
+and immediate admitted-prefix re-entry with no sibling/listing/other outside step. These
+are proposal decisions within the actual answer, subject to the mandatory whole review.
+
+CP01's final ROOT act accepts returned current factual bootstrap ancestry and authorizes
+exclusive publication plus the single initialization; actual acknowledgement/receipt outputs
+are not accepted before they exist. Required independent SCRATCH control acquisition is
+complete before the own-terminal ceremony. The accepted factual validator returns
+synchronously between ARTIFACTS and ROOT; no agent drives that terminal or owner waits
+across Grove sessions. Every subsequent trust output binds continuity to independently
+retained CP01 originals before engine/display/registrar execution. The close-only publisher
+has its own exact record/channel/acknowledgement controls, accepted before the closer uses it.
+
+
+The early SOURCE/ARTIFACTS confirmations use independent static and original short-entry
+manifests/results, never a still-unaccepted engine's result. Only ROOT and later checkpoints
+use the accepted engine. Direct original confirmations are retained in the declared own-
+terminal output/context stream and published under accepted mechanics afterward; no
+future registrar record certifies either earlier trust act. This closes the initial
+manifest/computation cycle while retaining the finite explicit source/OS trust assumption.
+
+Final documentary verification: seven-view Taskfile rendering returned 0; check:docs
+returned 0. /tmp/koine-k320-documentary-check.json names every measured subject with equal
+per-item before/after digests, exact selected-S/whole-ADR/old-manifest/five-table/packet/
+parent/Taskfile and original Goal/Done when comparisons, complete individual original
+basis/read/R duties, null missing identities, quote-aware decoded members, acyclic first-
+consumer order and intended in-memory documentary mutation rejections. Temporary generator
+failures were path-list shape and moved historical k269 path; no failed run is counted as
+measurement. These checks qualify no instrument, original possession, semantic approval,
+authority or native outcome. Chrome visibly previews the fresh proof link and its lower
+CP04/CP05/P/A tail; no Safari/mobile/dark/native-size or k316 completion is inferred.
+
+The complete C/K/P replacement, report, documentary membership candidate, current
+root/k242/k244/k269/k245/k246/k247 and glossary/product/private/family/native summaries,
+and all seven source/export/caption/discussion/README views are coherent review subjects.
+Every k317 finding and original k242/k244/k273/k282/k291 duty is compared in the current
+replacement report under only actual canonical amendments. Required actual tools/originals/
+controls/read/images/UID/build/terminal/receipt/authority remain precise work before their
+consumers. No implementation, target/process/terminal/topology probe, authority act, pass
+or native programme occurred. No production ADR earns a change: the descriptor decision
+and all selected product/native contracts remain; this reversible evidence design stays
+in the existing contract/companions. Mandatory whole-k320 review/every earned integration
+precedes k269; no competing in-session reviewer is used. K244 still has live construction
+and qualification work, so its close cascade stops; k242/root remain live. The current
+Ravel launch has no GROVE_PROVIDER_EVIDENCE, so omit Creator rather than copy/invent one.

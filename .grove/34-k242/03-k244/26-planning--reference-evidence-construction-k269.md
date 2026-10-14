@@ -7,27 +7,19 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
-K317 found k315 defective; k318's integration does not make it a construction handoff.
-First consume reference-evidence-root-step-k319's application of Antony's actual narrow
-root-step approval, then the complete reference-evidence-practical-admission-k320 repair
-and its mandatory whole review/every earned integration. That work owns the coupled
-CP01 execution/initialization-before-consumer/accepted-tool continuity/closer-publication
-and finite Library/link rules. Do not plan from the contradictory k315 schedule, current
-manifest fields or old summary commands. The detailed proposal below is the k315 planning
-comparison basis; k320 must reconcile it to its final complete contract before this leaf.
-
-Consume actual k270/k281/k290/k295 answers and k314's smaller-workflow choice, the complete
-reference-evidence-practical-admission-k315 producer, its mandatory whole review and every
-earned integration before replanning. Original k312 findings at 4392295c and k313's
-classifications identify the historical k291 defects; that a05e643f8352 proposal and old
-fragment/source/member/charter identities are historical review subjects, not current
-construction proof. Read k266's original findings at c5186473933d, k267 triage, k244's
-complete original Done when and every construction leaf by stable handle.
+Consume the complete reference-evidence-practical-admission-k320 replacement after its
+mandatory whole-producer review and every earned integration. Actual k270/k281/k290/k295/
+k314 and k319's exact Safari amendment bind. Read original k317 at 772bec7144a4/k318
+classifications, k312 at 4392295c/k313 at 47875236 and k266 at c5186473933d/k267 triage;
+k315 at ad181f1fbfd8 and k291 at a05e643f8352 are defective historical comparisons.
+Original k244/k242 Done when and construction leaves by stable handle remain the work.
+The new reference-practical-admission-membership.json is documentary correspondence only;
+old manifests remain historical and required actual identities/results remain null.
 
 Normative inputs are canonical Selected reference and evidence requirements and the exact
 line-by-line amendment comparison, selected C sections/full descriptor ADR, both whole
 K/P companions and all five quote-aware tables. The complete exception/E-default contract,
-independent tool/bootstrap, compatibility/five checkpoints, exact S/I/L/K/sf/nested/T/A
+independent tool/bootstrap, compatibility/five checkpoints, exact S/I/L/LV/K/sf/nested/T/A
 productions, closed Q01–Q10/P01–P05/C/D applicability and O01–O25 map form one conjunction.
 The unconsumed practical report locates all original duties/current documentary candidates;
 it supplies no runtime identity/approval/receipt/result. Freeze complete actual charter/
@@ -36,6 +28,9 @@ closing-obligation bases before measurement; any actual live-task/report read bi
 ## Work and verification
 
 Give every duty an independently useful concrete live owner before its first consumer.
+Include the independent continuity anchor/originals and distinct close-only publisher
+controls/channel before CP01, and full historical Library version/copy and Safari
+physical-root/immediate-prefix comparisons before Q01.
 Reuse the existing five working increments/eleven leaves where coherent; redraw oversized
 k254/k265 and assess k261/k264 using k267's original findings. Do not multiply one leaf per
 role or equivalent test. The schema and usable validator land together; every later stage
@@ -88,20 +83,24 @@ first construction increment. This planning leaf implements no tool or controls.
 
 Use C's complete clean/correction schedule. All five are **Antony's own-terminal work
 outside agent harnesses**, never agent-driven pty acts. Name actual preparation handles and
-these human step identifiers in the plan. CP01's ordered bootstrap substeps are one named
-checkpoint, accepting ready objects only; record each distinct binding. Do not invent a
+these human step identifiers in the plan. CP01's SOURCE/ARTIFACTS/ROOT acts are one named checkpoint with ready independent
+SCRATCH control/mechanics originals before it, followed only by synchronous accepted
+factual bootstrap validation. Record each ready binding; no Grove-session wait. Every
+CP02–CP05 starts at the independent retained-original tool/runtime continuity check. Do not invent a
 sixth ceremony or approve future objects. If actual required duties cannot fit, state the
 exact first-consumer conflict and concrete bounded trade-off before use.
 
 | Human step | Preparation / first consumers |
 | --- | --- |
-| CP01 bootstrap/artifacts | Independently authored originals, independently executed bootstrap/comparison/display/verifier-self/observer/initializer-validator controls, actual artifact review/every integration, short-entry inspection and separate ready bootstrap validation. Antony judges/accepts exact ready artifacts, expectation/result and bootstrap/control/disarm bindings. Their first consumers are subsequent disarmed Q and qualified initialization/validation. |
-| CP02 qualified receipt | Actual scratch-qualified initializer/validator mechanics, independent factual validation against CP01 accepted originals, one separately authorized initialization, staged binding before unspent publication and separate final validation. Antony accepts the ready original mechanics/provisioning/validation/receipt/bridge set; final Q/P then consume it. No repeat initialization. |
+| CP01 bootstrap/artifacts | Independent author/executor/validator make complete retained bootstrap/tool/peer/initializer-validator/close-publisher SCRATCH originals ready before the ceremony, without LIVE commissioning. SOURCE trusts original entry/OS; ARTIFACTS accepts actual tools/controls/mechanics; accepted factual validator synchronously returns bootstrap ancestry facts; ROOT accepts the ready plan and authorizes disarmed publication plus one exact initialization. Actual publication checks precede initialization; no control programme or Grove wait inside CP01. |
+| CP02 qualified receipt | Independent tool/runtime continuity first. After CP01-ROOT and successful separately checked bootstrap publication: one initializer invocation, separate staged validation before publication and final validation afterward. Antony accepts ready actual namespace/publication/receipt/bridge outputs; mechanics were accepted before initialization at CP01. Final Q/P then consume them. No second initialization. |
 | CP03 final original Q results/audit | After last edits/provisioning/review repairs and durable disarm, affected final Q emits originals. Tool computes the complete required-result/input/authority/original-duty audit; Antony accepts/refuses results and audit together. Q10 cannot require those future acceptance/audit/close outputs. |
-| CP04 eligible basis | **Distinct original-obligation closing owner/step** follows CP03, separate from producers/repairers/runner/initializer-validator and Antony's audit/release group. Tool computes eligible basis from finalized close/predecessors; Antony accepts it before eligibility's first CP05 consumer. Distinct close is not another human ceremony. |
+| CP04 eligible basis | **Distinct original-obligation closing owner/step** and CP01-accepted close-only publisher/channel/kind/locator/acknowledgements follow CP03, separate from producers/repairers/runner/initializer-validator and Antony's audit/release group. Tool computes eligible basis from finalized close/predecessors; Antony accepts it before eligibility's first CP05 consumer. Distinct close is not another human ceremony. |
 | CP05 k245 acquisition boundary | Independent author freezes exact fresh A3 entry/bases/refusals under unchanged issuance/current rule. Antony accepts ready entry then separately APPOINTs the coexisting foreground supervisor/checker/acquirer over current basis/request/nonce. All fresh P facts, exclusive export and unspent checks precede intent; only then declared A runs through true return. K245 remains an AFK design leaf with this explicit human step inside its boundary. |
 
-Place qualified one-time initializer and separate actual validator before CP02; last-edit
+Place independently acquired/validated SCRATCH mechanics originals before CP01 and accept
+them before CP01-ROOT's exact one-init authority. Place actual initializer and separate
+staged/final validator outputs before CP02; last-edit
 Q before CP03; no distinct human audit owner; actual k244 close after CP03 and before CP04.
 Maintain precise live repair/requalification ownership through CP05. Corrections repeat
 only affected review/acceptance/receipt/Q/CP03/close/CP04/CP05 suffix under C's schedule;

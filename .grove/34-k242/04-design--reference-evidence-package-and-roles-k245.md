@@ -10,11 +10,15 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 
 ## Context
 
-K317 found k315 defective. Require k319's actual narrow root-step amendment, complete
-k320 replacement and mandatory whole review/every earned integration plus reviewed k269
-replanning before this consumer. The retained CP01–CP05 description below is the k315
-comparison proposal, not a currently repaired bootstrap/authority/continuity/grammar route.
-K318's decision/charters supply no qualified instrument, receipt, appointment or pass.
+Require the complete reviewed k320 replacement/every earned integration and reviewed
+k269 plan, under actual k270/k281/k290/k295/k314/k319. K315/k291 are defective historical
+comparison subjects, never current qualified handoffs. CP01 accepts actual independent
+mechanics before ROOT authorizes one initialization; CP02 accepts actual outputs.
+Every later checkpoint starts with independent full-byte/member tool/runtime continuity.
+Distinct close publishes through its accepted close-only channel after CP03/before CP04.
+Only CP05's fresh own-terminal ACCEPT/APPOINT and complete Q/P can precede the single A.
+The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root exceptions;
+no historical syntax supplies current identity, topology, TCC or version facts.
 
 Require actual k244 stable instrument qualification and distinct close, CP04 eligible basis,
 complete reviewed practical admission design and all earned integrations/planning first.
@@ -24,7 +28,8 @@ k244/k242 duties. No historical k273/k282/k291 closure or fragment identity is c
 **CP05 — human acquisition-boundary step:** Antony performs exact fresh independently
 authored A3 entry acceptance then a separate fresh APPOINT confirmation in his own terminal
 outside agent harnesses. The AFK agent prepares the ready handoff and pauses for that
-actual step; it never drives a pty or treats fd/group metadata as human authentication.
+actual step, beginning with the independent short-entry/engine/display/runtime/read
+continuity comparison recorded in its trust output; it never drives a pty or treats fd/group metadata as human authentication.
 Supervisor/checker/acquirer coexist through true return in that fresh invocation; no process
 lifetime crosses Grove sessions. Receipt/proof/eligible-record/image/task possession appoints
 nobody. Actual P01–P05 precede export reservation/intent/source release; source-child and
@@ -36,7 +41,9 @@ acceptance/audit and distinct close/CP04 remain earlier dependencies. Accepted d
 maintenance precedes changes/Q; affected correction suffix repeats before this consumer.
 No missing/uncertain authority reset, intent deletion, within-call retry or extra pass.
 
-Raw rejected/protected/unlisted/out-and-back slots perform no target lookup; exact S/I/L/K/
+Raw rejected/protected/unlisted/out-and-back slots perform no target lookup, except
+only the two exact reviewed search-only Safari root transitions with held A1 identity
+equality and immediate-prefix re-entry; exact S/I/L/LV/K/
 sf/nested/T1–T7/A1 entries and separate A2/A3 ancestry govern every operation. Preboot and
 System framework policy supplies syntax only, not current link/topology/TCC fact. Required
 refused copies retain raw slots and missing bytes/associations through k246/k247 and whole

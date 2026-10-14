@@ -11,10 +11,11 @@ Those controls are currently specified, not executed.
 
 The single pass is unused.
 
-K317's whole review at `772bec7144a4` found the k315 proposal defective. K318 classifies
-all findings, repairs the two R7 handoffs and places k319 → k320 → mandatory whole review/
-every earned integration before k269. The [integration boundary](#k317-integration-and-remaining-design)
-records the actual answer and precise replacement work. No target-reading instrument,
+K320 supplies one coherent replacement under actual k319 after k317's findings at
+772bec7144a4/k318 classifications. Mandatory whole-k320 review/every earned integration
+still precedes k269 planning. The [current replacement boundary](#coherent-k320-replacement)
+compares every finding and retained original duty; old k315/k291 proposals and manifests
+remain historical comparison subjects. No target-reading instrument,
 trusted comparison/display/bootstrap entry, retained
 runtime/entry chain, executable schema/control programme, qualified provisioning/receipt,
 original Q results, accepted audit/distinct close, eligible basis or actual appointment is
@@ -30,7 +31,95 @@ process/terminal probe, authority act or native programme is performed in this d
 K316 separately owns Safari's historical fresh-fragment viewer defect; rendering or HTTP
 identity alone is no browser delivery pass.
 
+## Coherent k320 replacement
+
+**Design proposal awaiting whole review; no tool or qualification.** The complete selected
+C sections, whole descriptor ADR, whole K/P, all five quote-aware tables and canonical
+selected S/comparison form the replacement. The new
+[documentary membership candidate](reference-practical-admission-membership.json)
+binds final source/extract/full-object/charter snapshots, original R/basis/read/absence
+obligations, both historical Safari syntax bases, all decoded parents/copies and acyclic
+first-consumer order. Old reference-practical-partition.json at ad181f1fbfd8 and the k291
+fragment/basis/read/historical manifests retain their complete immutable original bytes;
+they are not refreshed or accepted current inputs. Missing actual originals/tool/control/
+read/image/UID/build/terminal/receipt/authority identities remain null. No digest supplies
+original possession, semantic acceptance, process appointment or a finite subject.
+
+### Every k317 finding against the replacement
+
+| Finding / actual classification | Complete current repair and exact work before first consumer |
+| --- | --- |
+| R1 valid/actionable | Actual k319's narrow amendment appears in separate exact Safari app-position and Cryptexes/App link entries, A1 physical search-only held-root equality/immediate-prefix operations and K/P controls. Both k94/k110 26.6.2 texts are separately frozen syntax bases. Wrong root, extra outside/sibling/dot, wrong position, protected/unlisted/deeper expansion refuse. Independently authored operands and actual SCRATCH Q01 outcomes remain due before CP01/qualification; actual text/held identity first belongs to A. |
+| R2 valid/actionable | Independent executor/validator acquire actual initializer/validator mechanics originals under reviewed SCRATCH-only bootstrap before CP01. ARTIFACTS accepts them; ROOT's exact ready UID/revision/location/nonce binding authorizes one initialization after independently checked disarmed bootstrap publication. CP02 accepts actual namespace/staged-final receipt outputs afterward. Actual tool/control/original/authorization/publication facts remain due; a future CP02 or factual validator cannot replace Antony's earlier act. |
+| R3 valid/actionable | Current verifier-self/handoff/control/companion/summary commands use independent author and executor, Antony adjudicator/acceptor/auditor, every producer/repairer/runner/own-result exclusion and separate initializer/validator. Distinct closer's CP01-accepted close-only publisher has exact instrument.close locator/kind/private channel/owner/exclusion/nonce/EOF/reap/write/flush/held acknowledgements and independent refusal controls. No registrar-capability borrowing/self-acceptance. Actual publisher/capability controls precede CP01; acknowledged close follows CP03 before CP04/P02. Manual About observation remains selected. |
+| R4 unclear contract/actionable schedule gap | Complete controls and independent validation are ready in their owners' preparation sessions before CP01; SCRATCH launch needs no LIVE commission. CP01 SOURCE then ready ARTIFACTS acceptance, synchronously returned accepted factual-peer ancestry, then ROOT are explicitly distinct ready bindings inside one own-terminal interaction. No control execution/Grove wait or assumed concurrency inside it. Actual acknowledgements/initialization follow before CP02. Five checkpoints permit several confirmations as CP05 already requires ACCEPT/APPOINT. Missing readiness/feasibility is exact live work before the affected act, never a future acceptance or silent sixth ceremony. |
+| R5 valid/actionable | CP01 binds independently retained original entry/engine/display/anchor-runtime/registrar/read closure and full membership/bytes. Every CP02–CP05 begins with source/OS-anchored entry/runtime comparison before the original short entry compares tool members; changed engine/display never executes to certify itself. Each manifest/trust output records trust.continuity and actual originals/freeze. Missing/substituted/changed tool/runtime/read/original and between-checkpoint rebuild controls refuse at that entry; durable disarm/review/original controls/CP01 and affected suffix precede reuse. Required actual originals/current image facts remain due. |
+| R6 valid/actionable | Every decoded Library parent/copy is compared with S/I/L/LV/K/H/nested alternatives. Only recorded GoogleUpdater/WaveDNA and exact CommandLineTools/Python3, MobileDevice and Epson framework version positions generalize; exact vendor/structure remains. Changed-version positives and malformed/depth/protected/link negatives are independent Q01 originals still due. Other H3 words remain exact, with explicit residual unforeseen-copy refusal/trade-off rather than a current-version assumption. |
+| R7 valid/actionable, repaired in k318 | S's current Reproducible boundary checks retains the saved projection audit's packet-integrity scope, separately from generated rewrite discrimination. K246/k247 post-consumption corrections remain frozen offline re-derivation/independent association/recipe/discrimination verification only, never re-eligibility/appointment/reset/acquisition. Original Goal/Done when remains. |
+
+### Original obligations and actual handoffs
+
+| Original complete conjunction | Retained rule and remaining actual work |
+| --- | --- |
+| k242 all original Goal/Done when | Qualified byte-complete instrument before one exact 27.0.1/26A434 System/non-System pass; complete original/typed/table/LocProvenance/tail/raw/copy/version/alias evidence; independent exact-copy purposes; whole-template coverage/balanced repetition for 1,010 useful apps, fourteen witnesses, 256 helpers, 128 aliases and additive full actual VM baseline/registration pressure; generated discrimination and whole-family/nine-tape/real-publication/resource/authority/action/compatibility/private/native review. Missing copies remain precise incomplete work, no finite-subject credit. |
+| k244 all five original Done when | Actual lossless fixed source/framing/terminal, held closed layouts/all-six direct-locale files/complete associations; full native format/type/duplicate/candidate/flag/table/LocProvenance/tail identities; independent positive/intended-negative control cross-product, helper/alias/race/scope/error/freeze/no-retry; verified retained pure/packaging tasks; exact schema/version/reproducible proof/views. Actual stable qualification, CP03 audit and distinct close remain live, no design close. |
+| k273 whole authority/anchor/contact/entry/read/topology/format/durability duties | Immutable issuance/current bridge, fixed exclusive one-time namespace/receipt/staged-final validation; destructive intent/rename/start; bounded persistence/cooperative limits; full originals and independently verified derivative. Exact author/executor/trust/initializer-validator/closer separation, required Q/P/B/U/C/D/operation/read/native facts and every control remain. Only canonical actual contact/lookup/owner/correspondence/documentary/root-step amendments apply. |
+| k282 whole credit/release/acceptance/input partition and R7–R10 | E/M/U credit stays separate from Q/P/A; final Q precedes its CP03 acceptance/audit/close successors. Only CP05's fresh own-terminal foreground appointment selects LIVE through true return; durable disarm before changes/Q, partial/death/lock-release/stale refusal and independent controls remain. Required facts cannot become accepted-unknown or predicted future proof inputs. |
+| k291 whole F1–F10 under actual k314 | Complete human ready trust/first-consumer/lifetime, immutable A3 rule/exact P entry, closed blockers/T/A grammar, selected k295 manual About/finite peer/inherited-terminal evidence, exact compatibility/exclusions and durable disarm remain. Only per-fragment enumeration/report-driven composite refresh is replaced by complete H/R exceptions/E default; full-byte/member/original/basis/read/phase/absence obligations stay. |
+| Original R registers K 0–8 / P 0–7 / selected 0–42 | Every original record's enduring duty is consumed at C's Historical and reporting exceptions table and whole K/P/S. Complete independent original inventory/basis/read/authority duty IDs and missing actual identities persist in the replacement manifest; totals/hashes/references establish no possession. Actual reads always bind full finalized bytes and phase, including report/live charter reads if they occur. |
+| k269 construction | After whole-k320 review/every integration, assign concrete compatible live owners to independent author/executor/validator, trust tool/continuity originals, candidates, SCRATCH bootstrap mechanics, separate one-init/staged-final validation, Antony's five own-terminal steps, close-only publisher/distinct closer, disarm/requalification, acquisition/derivation/association. Earn planning review/integration before existing construction increments; no planner invents a mechanism or hidden ceremony. |
+| k245 first consumer | Actual k244 stable Q/CP03/acknowledged close/CP04 first; independent CP05 tool continuity/ready exact A3 acceptance then fresh coexisting APPOINT; every fresh P before intent/start/two-phase A. Original freeze/independent derivative/copy roles or precise incomplete evidence remain. No target calibration, source-child image sample before A or extra pass. |
+| k246/k247 | Complete generated helper/alias/type/serialization/table/language/key/LocProvenance/tail/association discrimination and permitted-rewrite positive; all complete family/current charter/source/subject/private/native/VM duties and mandatory whole-subject review. After consumption only offline correction; no useful loss, native fit or reset. |
+
+The exact S selected section is retained from actual k319 at 58d16eb3; no new canonical
+choice is made. Whole descriptor ADR, five tables, historical packet/decoded-parent,
+old manifests and all original Goal/Done when remain immutable comparison bases.
+Exception/E-default and original R duties are current normative contracts, not historical
+commands or rules that survive solely in this report. Required versus AU remains the
+closed conjunction: required native/image/entry/control/freeze facts block their stage;
+complete unobserved service/proxy/initial-right/map/TCC coverage stays explicitly unknown.
+K244/k242 stay live, pass unused, private ineligibility and both holds unchanged.
+
+### Verification and presentation boundary
+
+Final saved-document comparison is recorded in `/tmp/koine-k320-documentary-check.json`.
+Every named source/extract/full-byte/charter candidate matches its current complete bytes;
+old manifests, whole historical packet/parent, whole descriptor ADR, five tables, Taskfile
+and selected canonical S remain byte-identical to actual k319's parent. Every original
+Goal/Done when and individual original basis/read/R duty matches its original object;
+required missing actual identities remain null. The explicit phase graph is acyclic,
+with mechanics acceptance before initialization and checkpoint continuity before tool
+computation. In-memory documentary mutations of source identity, omitted duty, falsely
+possessed empty original, future Q acceptance, early initialization and early basis
+computation fail their intended predicates. Those are document checks, not instrument
+control results or semantic acceptance. All listed subjects had equal per-item before/
+after digests during the completed check; the temporary JSON names each subject and result.
+
+The existing seven-view Taskfile render completed with D2 0.9.0/Dagre/theme 0/dark-theme
+200; each SVG parses and matches the edited source/caption/discussion representation.
+`task check:docs` returned 0 after the complete replacement manifest existed. Earlier
+failures in the temporary generator exposed string path-list fields and k269's historical
+moved path, then the missing-target link; the corrected final run is the measurement.
+Chrome's fresh approval deep link at http://127.0.0.1:8952/#diagram-native-reference-proof
+was visibly inspected through CP01/control/initialization and the CP04/CP05/P/A tail.
+This is a bounded light desktop preview only. No Safari, mobile/dark/native-size, instrument
+or native qualification is claimed; k316 retains its independent viewer repair. The in-app
+browser was unavailable and Chrome supplied the preview. No viewer source was edited.
+
+The seven editable/rendered views and discussion/README describe this whole replacement.
+[Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof)
+shows the complete first-consumer order; [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
+shows exact root/LV policy. Source/render/member/link checks are documentary only. Required
+actual tool/schema/control/read/image/UID/build/terminal/receipt facts remain unacquired;
+no claimed browser/instrument/native qualification follows. K316 retains its independent
+Safari fresh-fragment viewer defect. The replacement is a whole review subject before
+k269, not an approved construction identity. Historical checks below belong to their
+named original snapshots and must not be read as measurements of k320.
+
 ## K317 integration and remaining design
+
+Historical k318 integration record at cafb8e88; its then-current defects/placement are
+compared with the coherent k320 replacement above, not current owner commands.
 
 K318 reads the findings from k317's retirement commit `772bec7144a4`, against k315's
 closing state `ad181f1fbfd8`. R1/R2/R3/R5/R6/R7 are valid and actionable; R4 is a contract
