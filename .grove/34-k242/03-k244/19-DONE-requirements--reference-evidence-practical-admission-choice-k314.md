@@ -84,3 +84,52 @@ k291 F6's exhaustive per-clause inventory requirement. It grants no acquisition,
 appointment, authority operation or qualified artifact today. This leaf's remaining work
 is the exact canonical amendment/original-obligation comparison and k315 handoff, not
 another request for the decision or implementation of the new tool.
+
+Verified the decision against k312's original R2/R3 at 4392295c, k313's classifications
+and received answer at 47875236, k290's actual "agree" and k291's original F1/F7/F6
+requirements. All questions in this leaf are pre-decided; the remaining documentary
+amendment fits this session and needs no interview or decomposition. Preserve k290's
+independent semantic judgment and ready-input/first-consumer ordering, while assigning
+mechanical comparison/audit/basis computation to the separately authored/reviewed tool.
+The five checkpoints are a design constraint: k315 must demonstrate the compatible
+dependency placement or name an exact original-duty conflict and bounded trade-off.
+It must not silently add human ceremonies or approve future objects.
+
+Apply the complete reviewed H/R-exception list with an explicit enduring-rule default
+in place of F6's individual-fragment inventory and reporting-driven composite refresh.
+Complete consumed-byte, original-source/basis/actual-read membership, phase/absence and
+original R retained duties remain. K315 owns the complete replacement representation,
+independent bootstrap/tool design, R1–R7 reconciliation and mandatory whole review/
+earned integrations before k269; this leaf only amends the canonical requirements and
+their original-obligation comparison. Existing defective design/partition identities
+remain historical, without reconstructed-current or qualification credit.
+
+Tier 2 graph project Users-antony-Development-Koine.add-plugins-for-modaliser-requirements
+is ready at generation 2026-09-29T10:36:20Z. Coverage excludes docs and marks the current
+root/task metadata changed or untracked; exact direct document/charter and committed
+original reads supply this leaf's evidence, with no graph-completeness claim. The initial
+jj working change is empty. Taskfile.yml already supplies task check:docs for link/anchor
+verification; no task, code, tool, control or native implementation is part of this leaf.
+
+Added Reviewed computation and five checkpoints and Documentary proportionality to the
+canonical Authority and admission choices, immediately before Independent build,
+process-image and terminal correspondence. The exact before state is 47875236; all earlier
+selected clause bytes are retained. The canonical comparison explicitly records the
+k290 semantic-judgment/first-consumer requirements, original k291 F6 enumeration/refresh
+sentences, historical reporting-driven reconstruction and the preserved whole-byte/
+original/basis/read/phase/absence/R duties. Its reporting subsection identifies the old
+apparatus as historical rather than accepted replacement proof. K315 and the root/k242/
+k244 brief chain now carry the actual bounded answer, five-checkpoint conflict rule and
+complete replacement/whole-review ownership. No design/tool/control, authority, appointment,
+target evidence or pass is supplied by this requirements amendment.
+
+Verification: task check:docs completed with exit 0. A direct byte comparison of the
+selected canonical section at 47875236 against the current section with only the two
+added clauses removed returned equality; the full focused diff confirms the additions,
+amendment comparison and bounded historical-reporting/handoff edits. No fragment data,
+composite, script, Taskfile, schema, tool or rendered view changed. Every Done when duty
+for this requirements leaf is met; k315 remains live and owns the complete replacement
+and mandatory whole review/every earned integration before k269. K244 therefore has
+live work and the close cascade stops there; k242/root and all original qualification/
+subject/product/private/native duties stay open. No review names this leaf, so retirement
+has no Creator record to write. This evidence-workflow amendment earns no production ADR.

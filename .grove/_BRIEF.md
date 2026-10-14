@@ -232,11 +232,13 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 ## Notes
 
 Review reference-evidence-session-admission-k312 and integration k313 find the k291
-admission handoff incomplete. Reference-evidence-practical-admission-choice-k314 settles
-one bounded acceptance/documentary-proportionality choice; replacement producer
+admission handoff incomplete. Reference-evidence-practical-admission-choice-k314 applies
+the received smaller-workflow answer to the canonical clauses and original comparison:
+five bounded human checkpoints and the complete reviewed H/R-exception list with an
+explicit enduring-rule default. Replacement producer
 reference-evidence-practical-admission-k315 repairs R1–R7 and earns mandatory whole review/
 every integration before k269 replanning. The k291 closure paragraphs below are historical
-producer claims, not current implementation eligibility. No normative replacement or
+producer claims, not current implementation eligibility. No reviewed replacement design or
 qualified tool exists yet. Architecture-fragment-navigation-k316 owns Safari's reported
 fresh-fragment delivery defect before k7; it supplies no browser or native pass by existing.
 K244/k242 remain live, the single k245 pass is unused and every original useful-breadth,

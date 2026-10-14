@@ -17,9 +17,36 @@ when, C/K/P/S/R documents, whole five tables/bases and historical packet/parent 
 K313 changes no normative input or accepted partition; current historical source/member/
 charter manifests must not be passed off as the replacement's current identities.
 
-Antony has already selected the smaller reviewed workflow in k313, with the exact answer
-recorded in k313/k314. K314 applies its canonical/original-obligation comparison; it is
-not another decision gate. Use that answer, not an inferred E default or new interview.
+Antony selected "Use the smaller reviewed workflow (Recommended)" in k313; k314 applies
+that answer in application-population-metadata-shape.md's Authority and admission choices
+and Line-by-line original-obligation comparison. The exact canonical before state is
+47875236; k314 retains every earlier selected clause byte for byte and adds Reviewed
+computation and five checkpoints plus Documentary proportionality. Consume those actual
+requirements without repeating the choice. Existing k291 source/member/charter identities
+remain historical defective review subjects, not refreshed replacement proof.
+
+The tool computes exact byte/member equality, the complete required-result audit and
+eligible basis; Antony owns the bounded semantic accept/refuse judgment and short-manifest
+confirmation in his own terminal outside agent harnesses. Specify independent bootstrap
+trust with a short inspectable entry; no candidate self-certification or agent-driven pty.
+That origin rule is cooperative, not authentication inferred from fd/group observations.
+
+Show the five-checkpoint clean path: bootstrap/artifact acceptance → qualified receipt
+acceptance → final original Q results/audit → eligible basis after distinct instrument
+close → acquisition-boundary exact-entry acceptance/fresh appointment. Name each human
+step, including k245's currently AFK boundary, and fit every clean first-consumer dependency
+by compatible ready-object batching. Repeat only the affected correction suffix. If an
+exact original duty cannot fit, state the conflict and bounded trade-off; no silent extra
+ceremony, future-object approval or asserted five-step realizability. Keep all exclusions
+and initializer/validator separation while repairing R6's compatibility relation.
+
+The complete reviewed H/R-exception list with exact whole-object/section context and an
+explicit E default is selected. It replaces F6's per-fragment inventory and reporting-driven
+composite refresh, while complete actual consumed bytes, independent originals/bases/reads,
+phase/absence and original R retained duties remain. Move changing S/C observations into
+the separate unconsumed report; reporting cannot amend consumed rules or exempt actual
+whole-object reads. Deliver one repaired representation and refresh its required current
+identities after the final edits; no intermediate regeneration of the old apparatus.
 
 ## Required repair
 
@@ -35,8 +62,9 @@ not another decision gate. Use that answer, not an inferred E default or new int
   origin outside agent harnesses, named human checkpoints and first-consumer/correction
   placement. Rework documentary classification/reporting only to the extent actually
   selected. Preserve whole consumed-byte/original/basis/read/phase/absence/R-retained duties.
-  Do not regenerate the old fragment apparatus as intermediate progress or silently adopt
-  the E default if k314 retains enumeration. Show one complete repaired representation.
+  Apply the selected explicit E default only with the complete reviewed H/R-exception list;
+  it cannot accept stale commands or defective old classifications. Do not regenerate the
+  old fragment apparatus as intermediate progress. Show one complete repaired representation.
 - R4: rewrite every current independent-release-owner command in the whole companions,
   lifecycle/channel/control handoff and k269 to Antony's compatible trust acts, fresh
   coexisting foreground appointment and authorized disarm-only maintenance. Locally label

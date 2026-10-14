@@ -4,12 +4,15 @@
 ## Review integration and pending replacement
 
 K312's original review at 4392295c and k313's verified classifications identify unresolved
-R1–R7 in k291. Before k269, k314 must record the actual acceptance/documentary-proportionality
-choice, then k315 repairs the complete design and earns mandatory whole review/every
-integration. The k291 closure claims below describe the reviewed historical proposal;
-they are not a repaired current construction handoff. Current normative bytes/manifests
-remain the defective review subjects, not newly accepted replacement inputs. Do not use
-their documentary identities as refreshed charter/runtime proof after this insertion.
+R1–R7 in k291. K314 applies the received smaller-workflow answer in the canonical selected
+clauses/original-obligation comparison: five bounded human checkpoints and the complete
+reviewed H/R-exception list with an explicit enduring-rule default. Before k269, k315
+repairs the complete design and earns mandatory whole review/every integration. The k291
+closure claims below describe the reviewed historical proposal;
+they are not a repaired current construction handoff. Retained k291 design/partition
+bytes/manifests remain defective review subjects; k314's canonical requirements amendment
+supplies no reviewed replacement conjunction. Do not use historical documentary identities
+as refreshed charter/runtime proof.
 All original Done when duties, k245's unused single pass, k246/k247/useful breadth/additive
 VM/native placement/private ineligibility and both holds remain. K316 separately owns
 Safari fresh-fragment navigation; no presentation pass follows its task creation.

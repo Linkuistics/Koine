@@ -292,6 +292,59 @@ fresh invocation/channel binding. Cooperative same-UID enforcement and its tampe
 remain selected. This requirements decision appoints no process, initializes no authority,
 qualifies no instrument and spends no pass.
 
+**Reviewed computation and five checkpoints.** Antony selected "Use the smaller
+reviewed workflow (Recommended)" in k313; k314 applies that received answer. A separately
+authored and reviewed comparison/display tool computes exact byte/member equality,
+the complete required-result audit and the eligible basis. It retains original results
+and gives a bounded readable summary with explicit refusal reasons. Antony makes the
+semantic accept/refuse judgment and explicitly confirms the displayed short manifest
+binding. That confirmation names the exact ready objects checked by the tool; the short
+binding does not replace full-byte/member comparison or authorize future objects.
+
+Before first use, the replacement design must specify the tool's independent bootstrap
+trust, including a short inspectable entry. The candidate cannot certify itself or its
+own comparison/control acceptance. Every human ceremony runs in Antony's own terminal
+outside agent harnesses; agents never drive it through a pty. This is a cooperative
+workflow rule. Inherited fd/foreground-group facts do not authenticate a human origin.
+
+The clean path has these five baseline human checkpoints:
+
+| Checkpoint | Required ready input and human act |
+| --- | --- |
+| Bootstrap/artifact acceptance | Accept the independently established bootstrap trust and actual reviewed/final artifacts and original findings/dispositions before their first consumer. |
+| Qualified receipt acceptance | Accept the original qualified provisioning and separate actual receipt-validation results and their exact ready receipt binding. |
+| Final original Q results/audit | Accept the final affected qualification originals and complete required-result audit after those results exist. |
+| Eligible basis after distinct instrument close | Accept the eligible basis only after final qualification/acceptance/audit and the distinct instrument original-obligation closing owner and step. |
+| Acquisition-boundary exact-entry acceptance/fresh appointment | Accept the exact fresh invocation entries and explicitly appoint/start the coexisting foreground supervisor/checker/acquirer at k245's boundary, through true return. |
+
+K315 must fit the clean first-consumer dependencies into these five checkpoints by
+batching compatible ready objects and must give each checkpoint a named human step,
+including k245's currently AFK acquisition boundary. Earlier required acceptance remains
+after its inputs exist and before its own first consumer. Repeat only the affected
+correction suffix. If an exact original duty cannot fit, identify that conflict and
+the bounded trade-off; do not silently add ceremonies, approve future records or claim
+a realizable five-step path. Producer/repairer/runner/acquirer exclusions, independently
+authored originals and the distinct closing owner/step remain binding.
+
+**Documentary proportionality.** Replace k291 F6's per-fragment enumeration with a
+reviewed complete list of historical/reporting exceptions and an explicit enduring-rule
+default for everything else. Each exception identifies its whole object or exact section
+in original context, its historical/reporting meaning and any original R retained duty.
+Retain those enduring duties in the consumed rule set; neither an exception nor the
+default can hide a superseded command or make a defective proposal accepted input.
+
+Move changing observations out of normative S/C into the separate unconsumed report.
+An unconsumed reporting edit alone requires no regeneration of the whole-source
+composite or individual-fragment apparatus. Preserve complete actual consumed-byte
+binding, original-source/basis/actual-read membership, phase/absence duties and original
+R retained obligations. Whole companions/tables/bases and actual task/runtime/charter
+reads remain bound to their complete bytes. A reporting label cannot exempt an object
+actually consumed; actual consumed changes still disarm and require affected
+requalification. Missing required originals retain null actual identities and exact work
+before their consumers. K315 must deliver and earn whole review of the complete repaired
+representation; this amendment supplies no replacement inventory, qualified tool or
+accepted current input.
+
 **Independent build, process-image and terminal correspondence.** Permit the following
 bounded read-only arrangement for independently authored and accepted correspondence
 evidence. Antony manually opens the local OS About display and records its product/build
@@ -515,16 +568,32 @@ including the fixed source child's metadata only inside A after consumption. The
 explicit observation authority compared below. It supplies no current build/image/terminal
 fact or qualified route, and leaves required Q/P/A evidence at its original stage.
 
+K314 applies Antony's received k313 answer, "Use the smaller reviewed workflow
+(Recommended)", to k312 R2/R3. The selected **Reviewed computation and five checkpoints**
+and **Documentary proportionality** clauses separate trusted computation from human
+judgment and explicitly amend k291 F6. They retain k290's ready-object/first-consumer
+ordering, compatible batching and distinct close, with the five-checkpoint constraint
+and exact-conflict rule above. K315 owns the complete replacement design and mandatory
+whole review/every earned integration before k269; the answer supplies no authority,
+appointment, acquisition or qualified artifact.
+
+The exact canonical before state is this document's selected section at k313's
+retirement commit 47875236. The after state retains every earlier selected clause byte
+for byte and inserts the two named clauses immediately before **Independent build,
+process-image and terminal correspondence**. Their complete added text is above;
+the quoted original requirements and selected dispositions are compared below. The
+reporting amendment below identifies the old apparatus as historical instead of
+regenerating it as accepted replacement evidence.
+
 ### Status outside the measured permission
 
 Those controls are currently specified, not executed.
 
 The instrument, independent admission mechanism and actual qualification remain unbuilt.
-The one target pass is unused. The [complete k291 design](application-reference-input-partition.md#final-whole-design-boundary)
-repairs the historical k282 proposal under actual k281/k290/k295 answers. Foreground
-acceptance/appointment, compatible duties/exclusions, exact P export entries, durable
-disarm, closed blockers/path grammars and individual input membership are specified.
-Mandatory whole-k291 review and every earned integration precede k269 replanning.
+The one target pass is unused. The [reviewed k291 design](application-reference-input-partition.md#final-whole-design-boundary)
+is the historical starting point with unresolved k312 R1–R7, as classified in k313.
+K314 applies the received acceptance/documentary amendment above; k315 must repair the
+complete conjunction and earn mandatory whole review/every integration before k269.
 Required actual originals, controls, provisioning/validation and qualification remain
 missing; no current package, complete finite subject, authority or native verdict follows.
 
@@ -534,16 +603,17 @@ K289 preserved this document's selected section. K290 added the selected human-o
 clause and, under separate exact approval, removed only "The single pass is unused;"
 from Agreed seams and capitalized retained "Both". Its adjacent private-ineligibility/
 native-PENDING line remains byte-identical. K295 added only the compared bounded
-correspondence-observation authority. Every other selected clause remains binding.
+correspondence-observation authority. K314 adds only the two compared acceptance/
+documentary clauses; every earlier selected clause remains byte-identical.
 
-The [current six-namespace composition](application-reference-input-partition.md#complete-statement-inventory)
-replaces the historical defective all-E index and binds every individual clause/datum,
-original R retained duty, whole-basis/actual-read and phase/absence obligation. Whole
-companions/tables/bases and actual task/runtime/charter reads retain full-byte binding;
-no new reporting slice is selected. This reporting edit leaves selected S unchanged but
-changes the full source identity: all affected current members/associations are reconstructed
-against the preserved extracts and historical originals. Unconsumed reports supply no
-qualification; actual consumed changes disarm and requalify.
+The [k291 six-namespace composition](application-reference-input-partition.md#complete-statement-inventory)
+and its constituent source/member/charter identities remain historical defective review
+subjects. They are not refreshed or accepted replacement inputs by this amendment.
+K314 replaces their individual-fragment and reporting-driven reconstruction duties only
+as selected above. Original R retained duties, complete consumed bytes, original/basis/
+actual-read membership and phase/absence obligations remain. K315 owns the complete
+reviewed exception/default representation and relocation of changing S/C observations.
+Unconsumed reports supply no qualification; actual consumed changes disarm and requalify.
 
 ### Line-by-line original-obligation comparison
 
@@ -562,6 +632,11 @@ qualification; actual consumed changes disarm and requalify.
 | K282 mutually separate acceptance, audit and release ownership | Amended only for compatible independent human responsibilities: these may share Antony's ownership and be batched when their required inputs already exist. Producer/repairer exclusions, independently authored original controls, phase ordering and distinct instrument close remain; the repaired design must enumerate exact compatibility/exclusions rather than cut one session per role. |
 | K282 independent release supervisor still live at k245 and separate acceptance-side commissioning supervisor | Replaced by the selected human-owned foreground lifetime: Antony explicitly performs the required trust acts and starts the retained supervisor plus appointed acquisition child together at the acquisition boundary through true return. No cross-session supervisor, task/image/receipt/proof-driven appointment or automated independent operator is selected. |
 | K282 independent judgment, qualification-runner/acquirer separation, original-result acceptance before consumption, and distinct k244 original-obligation close | Retained. The human owns trust judgments; the qualification runner and acquisition child cannot appoint or approve themselves. Required earlier acceptance precedes its own first consumer. Instrument closure retains its distinct owner and step after final affected qualification/acceptance/audit; this requirements answer spends no pass and approves no future payload. |
+| K290 decision 1: "Antony accepts the ready reviewed/final payloads and original results on the required independent judgment"; k312 R2 identifies undefined mechanical full-byte comparison, required-result audit and eligible-basis computation | Independent semantic judgment is retained. The separately authored/reviewed tool performs exact byte/member equality, the complete audit and basis computation with original results and readable refusal reasons. Antony accepts/refuses its bounded summary and explicitly confirms the short manifest binding in his own terminal outside agent harnesses. Independent bootstrap trust with a short inspectable entry precedes first use; candidate self-certification and an agent-driven pty ceremony are excluded. Terminal metadata is not human authentication. |
+| Canonical Human-owned acceptance: "accepting or refusing each before its first consumer" and "be batched when their required inputs already exist" | Retained under five baseline checkpoints: bootstrap/artifacts; qualified receipt; final original Q results/audit; eligible basis after distinct close; acquisition-boundary exact entries/fresh appointment. K315 must place every clean first-consumer dependency and name each human step, including k245, by compatible ready-object batching. Corrections repeat only the affected suffix. An exact original-duty conflict requires its bounded trade-off, never a silently added ceremony or approval of future records. |
+| K291 F6: "enumerate every individual enduring/historical/changing statement and subordinate clause across all selected extracts, whole companions/tables/bases and actual task/runtime reads" | Replaced by the reviewed complete historical/reporting exception list with exact whole-object/section context and an explicit enduring-rule default. This is the selected amendment to exhaustive individual-fragment classification, not a claim that old generic E labels discriminate or that the defective k291 representation is accepted. Original R retained duties remain in the consumed rule set. |
+| K291 F6: "Refresh the complete TSV/report and bind exact byte ranges/digests; record H statements individually"; canonical reporting: "all affected current members/associations are reconstructed against the preserved extracts and historical originals" after a reporting edit | Replaced only for unconsumed reporting changes: move changing observations out of normative S/C; do not regenerate the per-fragment apparatus or whole-source composite solely for that report edit. The complete reviewed exception/default representation replaces those mechanics. Actual consumed sources/whole objects still bind complete current bytes and members, and their changes disarm and require affected requalification. Historical original identities remain historical. |
+| K291 F6 and k282 R6: whole consumed-byte equality, independent original-source/basis/actual-read membership, phase/absence duties and original R retained obligations | Retained in full. No exception slices a whole companion/table/basis or actual task/runtime/charter read, no reporting label waives a consumed object, and no reference row/hash supplies missing original possession. Required missing originals/identities remain null with exact work before their consumers. Only the compared fragment classification and reporting-driven reconstruction mechanics change. |
 | Evidence permission's no-launch rule and no independent installed-build display route | Amended only for Antony's manual local OS About product/build observation with original host/session/time provenance. Compare with the two already permitted fresh sysctl buffers and qualified configuration; scripted UI, sw_vers, plist, subprocess/alternative-sysctl fallback and every other launch/inventory/network/installation effect remain excluded. This changes observation authority, not the expected 27.0.1/26A434 bytes or actual current-build evidence. |
 | Permitted O05–O07 mechanics lack an independently observed executing-peer/image route | Add only the separately authored unprivileged finite same-UID commissioned supervisor/checker and declared retained Task/interpreter/verifier/CLI/control metadata operations named in the selected clause. Retain original results/errors/lengths and independently checked incarnation/slice/signature/UUID/held-backing associations; no unrelated PID/daemon/target, all-system inventory, task-memory bytes or new privilege/posture. Spawn, child/loader self-report and pre-exec hashes remain insufficient by themselves. |
 | O15's fixed source artifact/argv checks precede intent; actual spawned-source facts first occur in A | Retained. Approve the same bounded metadata route for the already selected fixed mdfind child only after consumption inside A. It adds no spawn, earlier source sample, LIVE calibration, extra attempt or success prerequisite. Missing required A image/source facts prevent complete evidence; source P checks remain. |
@@ -579,14 +654,15 @@ qualification; actual consumed changes disarm and requalify.
 | K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
 | K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
 | K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
-| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared correspondence-observation addition. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
-the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status and k295
-bounded correspondence-authority amendments
-above control their interpretation. No other original condition is waived. K291 owns the
-exhaustive contract/companion/operation-map reconciliation, and its whole review must challenge the
-complete amended conjunction before construction planning uses it.
+the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status, k295
+bounded correspondence-authority and k314 acceptance/documentary amendments above control
+their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
+composite reconstruction only as compared; every other original obligation remains.
+K315 owns the complete contract/companion/operation-map/representation reconciliation,
+and its mandatory whole review/every earned integration must precede k269 consumption.
 
 ## Required reproduction contract after the decision
 
