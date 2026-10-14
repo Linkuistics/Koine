@@ -14,19 +14,23 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion presents k308's original-obligation concordance against the repaired
-admission protocol. The comparison preserves all selected and whole-source bytes and
-names actual missing originals before their consumers. The seven diagrams are unchanged
-context; their current labels and full delivery still require k309's final reconciliation.
+Current discussion presents the repaired admission protocol across all seven reference/
+corpus views. The [whole-k291 obligation concordance](../../verification/application-reference-input-partition.md#whole-k291-obligation-concordance)
+remains the unchanged original-duty/actual-answer comparison. This presentation slice
+changes the views and their explanatory captions; final current summary/consumer/source-
+identity reconciliation remains with k311 before mandatory whole-k291 review and k269.
 
-- [Whole-k291 obligation concordance](../../verification/application-reference-input-partition.md#whole-k291-obligation-concordance) — Adds individual original-duty, actual-answer and F1–F10 correspondence, with precise original/qualification and closing work before consumers.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Replaces pending partition work with complete six-namespace membership and required original-object duties.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Replaces pending whole-basis work with complete membership, keeping actual Q/P/A evidence unqualified.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Connects closed Q/P/C/D and T/A rules to complete whole-source membership.
+- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Replaces pending blocker/grammar repair with the closed rules and their missing actual evidence.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaces the F4 placeholder with exact T grammars and whole review before construction.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows repaired foreground appointment and durable maintenance before qualification.
+- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Replaces the historical under-repair handoff with review and actual qualification before the pass.
 
-Unchanged context: [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof),
-[Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging)
-and the other five reference/corpus views. No diagram is marked changed in this update.
-K309 retains every original k307/k303/k298/k294/k291 closing condition, mandatory whole-k291
-review and its own closing Creator before k269. This comparison supplies no partial
-construction handoff, current runtime original, qualified control or authority.
+These are unqualified design rules. K309 and its ancestors retain their entire original
+closing conjunction; the presentation supplies no partial construction handoff, current
+runtime original, qualified control, independent approval or authority.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -34,7 +38,7 @@ corrections. K281's actual choices accept named bounded contact claims and unkno
 current-service/proxy/initial-right/mapping coverage with residual accidental-contact
 risk; this supplies no full no-contact certificate. Qualification remains unprivileged,
 with no root/sudo collector. Actual approval/provisioning/qualification proofs remain
-absent. K282 is a five-seam producer: k283 repairs credit; k284 applies contact/pre-lookup claims;
+absent. The historical k282 producer had five seams: k283 repairs credit; k284 applies contact/pre-lookup claims;
 k285 specifies chartered independent acceptance and disarmed LIVE release; k286 separates enduring inputs from changing reports; k287 delivers the complete reconciliation for mandatory
 whole-producer review. Every earned integration precedes k269; no partial child
 is an implementable admission handoff or spends k245's pass.
@@ -58,11 +62,14 @@ corpus views. K279/k280 reviewed the earlier whole-k273 boundary; the complete k
 was reviewed by k288 and integrated by k289. K290 selects human-owned independent
 acceptance and one foreground supervisor/acquisition ceremony, compatible human duty
 batching with producer/repairer exclusions and a distinct instrument closing owner/step,
-plus the exact additional pass-status relocation. Its coupled defects still need k291's
-complete repaired design/mandatory whole
-review and every earned integration before k269. The
+plus the exact additional pass-status relocation. The repaired protocol now defines
+compatibility, exact invocation entries, durable disarm, closed evidence/path rules and
+complete input membership. Final summaries/consumer identities and mandatory whole
+review/every earned integration remain before k269. The
 [integration report](../../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records each finding's disposition; no displayed proposal is the repaired construction handoff.
+records the historical findings; the current concordance compares each repaired rule
+and its precise remaining original/qualification work. The displayed design has not
+received whole-k291 review and is no construction handoff.
 Required Q/P native/identity/control evidence, actual approval/receipt and complete tool
 proofs remain absent; accepted contact unknowns supply no full no-contact credit. K244/k242 cannot close on this
 design. Late provisioning/corrections require disarmed affected requalification, own

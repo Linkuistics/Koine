@@ -1230,3 +1230,82 @@ and this reversible comparison introduces no admission rule. K308 retires only i
 comparison. K309 remains live, so k307/k303/k298/k294/k291 cannot close or receive a closing
 Creator/promotion here. Whole review stays uncut until their complete final conjunction
 exists. K244/k242, unused k245 pass, k246/k247, all useful/native duties and both holds remain.
+
+## Seven-view admission presentation
+
+K310 reconciles the seven reference/corpus views with the repaired protocol already
+compared by k308. This is a presentation consumer of the normative sources, not completion
+of the whole k291 producer. K309 decomposes at presentation and final source/summary
+reconciliation; k311 retains every original closing condition and the last-act mandatory
+whole-k291 review before k269. No partial reviewer or construction handoff is cut here.
+
+The selected S/D/C extracts, both whole companions, all five quoted tables, historical
+packet/parent and every constituent inventory/manifest remain unchanged. The old all-E
+index stays a located historical defect; current complete individual membership is the
+six-namespace composition. Original R contexts and all earlier scans/charter snapshots
+retain their historical provenance. The refreshed composite separately locates this
+report and the final presentation bytes. A report/view is excluded only while unconsumed;
+an actual whole-object read makes it an input and disarms/requalifies affected claims.
+
+### Changed views
+
+- [Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof) — Replaces pending partition work with complete six-namespace membership and required original-object duties.
+- [Packaging → Rehearse the retained entry in a bound domain](../design/architecture/index.html#diagram-native-reference-packaging) — Replaces pending whole-basis work with complete membership, keeping actual Q/P/A evidence unqualified.
+- [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact) — Connects closed Q/P/C/D and T/A rules to complete whole-source membership.
+- [Admission → Bind one permission to one durable start](../design/architecture/index.html#diagram-native-reference-admission) — Replaces pending blocker/grammar repair with the closed rules and their missing actual evidence.
+- [Components → Preserve original evidence and independent witnesses](../design/architecture/index.html#diagram-native-reference-instrument) — Replaces the F4 placeholder with exact T grammars and whole review before construction.
+- [Evidence → Qualify the instrument before the one target pass](../design/architecture/index.html#diagram-native-reference-evidence) — Shows repaired foreground appointment and durable maintenance before qualification.
+- [Preserve joint facts before choosing a population](../design/architecture/index.html#diagram-native-population-metadata-shape) — Replaces the historical under-repair handoff with review and actual qualification before the pass.
+
+Each caption keeps exact requirements separate from unavailable actual originals and
+controls. Q/P/A operation stages remain distinct from E/M/U evidence credit and from
+E/H/R statement classes. Immutable issuance/current A3 rules remain separate from fresh
+human-accepted P entries; pure same-image/ELIGIBLE execution cannot appoint LIVE; partial
+maintenance, process death, lock release and successful unaccepted Q cannot restore
+eligibility. Required refused copies remain failed/incomplete work, preserving useful
+breadth and every k245/k246/k247 obligation.
+
+### Scoped delivery observations
+
+The seven exports were regenerated with D2 0.9.0/Dagre/theme 0/dark-theme 200 by
+`task design:application-population-metadata-shape-render`. Its seven sources, Taskfile,
+resolved Task/D2/Python executables and measurement wrapper had identical per-file
+before/after identities. The viewer is served only from the architecture directory via
+`task design:serve PORT=8948`; the earlier 8947 listener dropped connections and occupied
+that port, so this session used a separate listener without altering it.
+
+| Surface | Observed result and precise limit |
+| --- | --- |
+| Discussion and navigation | Current title/status, seven relevant links, seven changed links with actual delta sentences, outline and Current/Updated badges agree with the edit. In-page links identify their intended rendered views. |
+| Desktop light | Chrome displays each of the seven views after fresh document navigation with its exact fragment. Approval used a fresh tab; the other six used distinct query URLs to force document navigation. Rendered titles, changed labels and captions are present. This is browser-specific delivery evidence, not a universal browser claim. |
+| Desktop dark | Chrome page-level prefers-color-scheme dark emulation displays all seven views with contrasting text/edges and the existing adaptive SVG theme. The taller Approval/Evidence views were also scrolled through their closing boundaries. No system appearance setting was changed; this is a scoped visual observation, not a runtime-input closure certificate. |
+| Mobile light | Safari responsive mode at 390 × 844 displays all seven views, wrapping titles/actions/captions and retaining native-size/full-SVG options. Fit mode is an overview with small graph text; it is no detailed-reading pass at that scale. Mobile dark and every native-size panning interaction are not claimed. |
+| Safari fresh fragment | A fresh Packaging-fragment tab remains at the document top after rendering, reproducing the earlier initial-fragment limitation. In-page navigation reaches the view. Chrome's fresh-fragment success does not erase the Safari defect or historical k287/k308 delivery limits. |
+
+These observations inspect actual layout and navigation. Exact served-byte equality is
+a separate delivery-identity check; neither HTTP success nor a successful render command
+alone supplies those visual observations. The unchanged viewer has not been repaired.
+The optional favicon request is unavailable; no diagram failure was observed in the
+named views. The attempted first Chrome fresh-tab batch was interrupted by a browser
+state change and supplies no result; the explicit final navigations above are the evidence.
+
+### Remaining final source reconciliation
+
+K311 still owns stale current root/product/glossary/family/private/acceptance reporting
+and all k244/k242/k245/k246/k247/k269 consumer charters. In particular, the canonical
+document's reporting outside selected S still calls the all-E repair pending. Editing
+that reporting leaves the selected extract intact but changes the whole source identity
+in current selected/documentary/actual-read/basis/composite records: reconstruct every
+affected coordinate/context/extract/member and compare originals, rather than replacing
+only a digest. Historical scans, original R records and historical charter identities
+remain historical. Recheck final presentation and the scoped limits after final edits.
+
+The complete original k273/k244/k242/k282/R7–R10/F1–F10 conjunction and actual amendments
+remain k311's closing contract. Only its last work act inserts whole-k291 review, with
+its own closing Creator and settled parent cascade. No ancestor producer closes here.
+Actual independently authored/accepted originals, commissioned runtime/entry/image facts,
+controls, provisioning/validation, final affected qualification/acceptance/audit/distinct
+instrument close and fresh appointment remain precise work before their Q/P/A consumers.
+The pass is unused, the finite subject is absent, private eligibility is false, both
+holds and all useful-breadth/native placement duties remain. This presentation grants
+no authority, qualified control, instrument/native pass or semantic whole-design approval.
