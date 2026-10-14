@@ -123,3 +123,30 @@ view/consumer reconciliation, original last-act whole-k291 review/closing Creato
 parent-chain promotion. K298/k294/k291/k244/k242 remain live. No partial reviewer,
 construction/qualification/target pass or new authority follows this historical slice;
 k245/k246/k247, useful breadth and every hold retain all original duties.
+
+## Whole-basis membership handoff from k302
+
+K305 completes k302's original documentary/authored/actual-read/charter/earlier-authority
+membership conjunction at the complete design and exact-missing-original boundary.
+Consume reference-basis-read-membership.json and reference-actual-read-membership.tsv
+alongside the exact existing contact/packaging/selected/historical/documentary namespaces.
+The durable Whole-basis and actual-read membership design section compares every original
+k302 condition and gives the phase/consumer/provenance/absence and acyclic predecessor
+placement. Its final bounded scan rechecks k304 without rewriting historical provenance;
+missing originals have null byte/member identities and precise retrieval/construction/
+independent correspondence/acceptance/individual-partition work before their consumers.
+
+The catalogue supplies required-object membership, not the unbuilt retained environment's
+actual transitive/observed file set or an accepted charter/runtime/result/authority object.
+Required named facts and failed controls remain blockers; only canonically accepted opaque
+coverage stays unknown. Neither requirement rows, historical data, source pins nor policy
+approval give inherited Q/P/A credit. Existing exact extraction/whole-object rules and all
+original permission/amendments/holds remain unchanged. Documentary/render/link and the scoped
+Safari view checks qualify no instrument or native fact.
+
+K303 retains this node's complete original Goal/Done when: merge and reconcile all F6/
+original-obligation/F1–F8/F9/F10/summary/seven-view/consumer surfaces, recheck final bytes
+after each edit, then cut mandatory whole-k291 review as its last work act with its own
+closing Creator before k269. This handoff is no partial construction/reviewer boundary.
+K298/k294/k291/k244/k242 remain live; k245's unused pass, full k246/k247 duties and every
+useful-breadth/private/product/native hold remain.

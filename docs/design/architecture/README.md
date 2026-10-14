@@ -14,19 +14,18 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion completes the selected S/D/C documentary input partition alongside
-the whole packaging slice. K295 approved bounded correspondence observation authority;
-actual facts/qualification, whole bases/actual reads, merged reconciliation and mandatory
-whole-k291 review remain.
+Current discussion completes k302's whole-basis/read membership design and precise
+missing-original boundary. K295 approved bounded correspondence observation authority;
+actual facts/qualification, complete k303 reconciliation and mandatory whole-k291 review
+remain. Requirement rows and saved historical source pins supply no original runtime result.
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Shows the selected-section and whole-companion/table clause inventories separately from k298's whole-basis/actual-read/merged obligations.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Carries completed documentary input scope forward while retaining disarm, foreground and required current-fact limits.
-- [Selected normative input partition](../../verification/application-reference-input-partition.md#selected-normative-input-partition-slice) — Locates individual E/H and original R fragments in exact extracts/full snapshots and compares the complete k297 conjunction.
+- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Shows merged required documentary/specimen/task/runtime/image/charter originals and earlier authority succession before Q, without crediting unavailable facts.
+- [Whole-basis and actual-read membership design](../../verification/application-reference-input-partition.md#whole-basis-and-actual-read-membership-design) — Composes exact preceding member namespaces with individual requirement contexts, missing work and an acyclic phase-object inventory.
 
 Unchanged foreground acceptance/admission/component/evidence/population views remain
 context, along with the unchanged contact view and exact T/A grammars. K295's
 actual decision supplies no current correspondence facts. The completed selected-input
-partition still requires k298's whole-basis/actual-read and merged reconciliation before mandatory whole-k291 review. No partial construction handoff,
+partition and membership design still require k303's complete merged reconciliation before mandatory whole-k291 review. No partial construction handoff,
 qualified control or target evidence follows. The historical all-E inventory remains defective.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)

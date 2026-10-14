@@ -768,6 +768,158 @@ before k269; no partial review or construction handoff is supplied. K302/k298/k2
 k244/k242 remain live. The unused k245 pass, full k246/k247 useful-breadth/recipe/whole-subject
 duties, private ineligibility, both product holds and every native obligation remain.
 
+## Whole-basis and actual-read membership design
+
+The [merged membership manifest](reference-basis-read-membership.json) composes the
+unchanged documentary-original inventory with the five preceding individual member
+namespaces. The [authored/read/authority requirement catalogue](reference-actual-read-membership.tsv)
+locates each remaining requirement at its exact full-source context, byte range and digest.
+These are unconsumed documentary outputs of k305, completing k302's design and precise
+missing-original boundary. They are no accepted specimen, actual read trace, original
+runtime result, appointed role, commissioned artifact or current authority record. K303
+retains the complete merged F6/original-obligation/F1–F8/F9/F10/summary/seven-view/consumer
+reconciliation and mandatory whole-k291 review before k269.
+
+- [Authored and actual-read originals](#authored-and-actual-read-originals) — Locates individual specimen/control/result duties and the complete named task, configuration, import, loader, image and initial-state requirements without fabricating their originals.
+- [Earlier authority and later consumers](#earlier-authority-and-later-consumers) — Separates finalized predecessor objects from each act's outputs, including independent result acceptance, audit, distinct close and fresh appointment.
+- [Original k302 completion comparison](#original-k302-completion-comparison) — Compares every original membership obligation with the merged design or its precise missing work.
+- [Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof) — Shows whole required originals and acyclic earlier authority before Q, with the remaining whole reconciliation and review at k303.
+
+### Authored and actual-read originals
+
+Each catalogue row identifies one required original or named duty, its independent origin,
+phase/consumer and work before credit. Format specimens are individually located for XML,
+binary, OpenStep, strings, loctable and unknown/unsupported/malformed evidence, alongside
+native typed values, candidate alternatives, flags, layouts, all six fixed file roles,
+file states and copy/helper/alias/tail associations. Every original control-table row has
+separate positive and isolating-negative operand/expectation, observed-result and independent
+adjudication duties. A table row's exact whole context retains its applicability and
+limitations; it is not a materialized executable control coordinate or an actual successful
+result. The complete original cross-product inventory still must be independently authored
+and accepted before the first construction-stage consumer, with independently justified
+inapplicability. No observed-case list or source hash supplies that inventory.
+
+Required originals are unbuilt or unacquired in this design handoff: their actual digest,
+length and internal member inventory are null. An empty list would incorrectly imply an
+examined empty object. Independently authored specimens/programmes, original narrow CF
+and permitted UID/build/entropy/channel/finite-peer/terminal/loader results, retained tools,
+actual environment/read closure and accepted authority records have precise construction,
+acquisition, independent correspondence/acceptance and full individual-partition work
+before their named consumers. This is an evidence-availability statement within the saved
+design sources, not global filesystem absence. The catalogue neither invents exact bytes
+for a future specimen nor converts the documentary inventory's unavailable originals into
+possessed objects. Separately accepted current observations must precede producer comparison;
+producer-learned regressions cannot replace them.
+
+The read catalogue retains the whole standalone Taskfile, consulted includes/global/user
+configuration/dotenv/templates, script/interpreter, argv, variables/environment/cwd and
+negative lookup outcomes. It separately names source/build/lock/compiler/SDK/linker/flags,
+Python interpreter/libpython/extensions/complete stdlib/import/encoding/zip machinery,
+resolved transitive modules/distributions/metadata/data/wheel/sdist/cache/bytecode, and
+actual native loader/images/active slices/shared-cache/subcache/backing identities.
+Actual declared and independently observed members require full-byte and held/consumed-object
+correspondence before credit. These named families cannot establish the final transitive
+file set without the retained artifacts and original observations; that exact missing
+membership remains before Q10 and fresh P equality. A standalone recipe or isolated flag
+alone establishes no absence of another read. The current project's presentation/checking
+Taskfile is not the unbuilt retained packaging Taskfile or its qualified input closure.
+
+Known fd 0/1/2/3, every declared extra fd/transfer/peer/async completion and named mapping
+need their own object, flags, generation, ownership and original lifetime/EOF/true-return
+evidence. The full opaque port/right/map/startup/service/proxy remainder retains only the
+canonical accepted unknown coverage. A declared port, backing, consumed image, observed
+dependency or failed required control cannot be moved into that remainder. Current build,
+finite same-UID image and inherited-terminal observations use only k295's actually approved
+route; fixed mdfind-child correspondence first occurs in A after consumption. No such
+observation is acquired here.
+
+Saved whole k242/k244/k245/k246/k247/k269 and root charters are separately identified as
+documentary candidates. Their live summaries and historical proposed owners are not accepted
+immutable qualification/closing inputs. Before measurement, an independent frozen whole
+charter/closing-obligation basis must preserve every original duty, exact amendments and
+provenance, with individual statement/data membership. If the actual chain instead reads a
+live task, its complete actual bytes join that phase's closure; retirement, a renamed leaf
+or a report section creates no exception. K303 retains the whole consumer reconciliation,
+including the historical proposal language in these saved candidates. Missing frozen
+charter originals are explicit work before bootstrap/Q/audit/close, not waived by this report.
+
+### Earlier authority and later consumers
+
+The manifest's phase-object nodes and directed edges describe required predecessor inputs
+for one finalized epoch. They are a dependency design, with no current record bytes or
+eligibility. The independent original artifact/control and review/final/disposition objects
+precede terminal bootstrap; accepted payload and verifier-control records precede separately
+qualified receipt initialization/binding/final validation. Disarm-only intent precedes
+changed work and qualification. Conditional corrections bind the immutable issuance and
+separately accepted current revision without repeating initialization; no-correction paths
+retain the original final validation. The original control programme must qualify those
+conditional paths and every missing/partial/stale refusal.
+
+| Act | Earlier whole inputs and independent provenance | Separate output and later consumer |
+| --- | --- | --- |
+| Terminal commissioning and ready revision/control acceptance | Original independently authored controls/results, required artifact review, exact reviewed/final bytes and all finding/disposition records; Antony's own judgment with producer/repairer exclusions | Bootstrap, revision and verifier-control acceptances become later registrar/checker/Q inputs; candidate success cannot commission itself |
+| Qualified separate provisioning and validation | Earlier accepted artifacts/revision/control/authority plan, staged receipt and original synchronization outcomes | Receipt binding/final validation and any independently accepted scope-preserving bridge become later Q/P inputs; no initializer hashes its future validation |
+| Final disarmed Q | Earlier finalized accepted revision/charter/bases/expectations/read/image/receipt objects and disarm intent; independent actual controlled results | Original Q results/proof precede independent result acceptance, then per-coordinate audit; P and A values remain pending |
+| Independent acceptance/audit and distinct instrument close | Earlier original Q results, accepted evidence and complete original-duty dispositions | Each emits its separate finalized record; the distinct nonproducer/nonrunner/nonhuman-auditor close precedes human eligible-release acceptance |
+| Release, exact entry acceptance and fresh appointment | Earlier complete accepted close/audit/proof/receipt/current/issuance basis, exact independently authored A3 entry and direct fresh human confirmation | Release is P evidence; one appointment originates the coexisting supervisor/checker/acquirer endpoint. No saved record, image, task or proof appoints its presenter |
+| Fresh P and declared A | Earlier accepted entry/release/appointment and qualified mechanics; actual fresh P identities/state/export/input equality before intent | A intent/start/source/root/file/closure outcomes occur only after consumption; immutable originals then support offline derivation and separate independent correspondence verification |
+
+Outputs are not self-hashed inputs, and a later acceptance/audit/close/release cannot appear
+inside Q's earlier input set. Changed consumed objects invalidate their actual consumers;
+affected disarmed correction/requalification repeats only the required suffix, never permit
+initialization or target acquisition. Unknown impact retains the whole affected matrix.
+Compatible already-ready human duties may batch; the original author/producer/repairer
+exclusions and distinct instrument closing owner/step remain. Complete original bytes,
+member sets, predecessor/phase, review/control/operator provenance and available held
+identities still require independent acceptance before each actual consumer.
+
+### Original k302 completion comparison
+
+| Original obligation | Complete design/absence handoff |
+| --- | --- |
+| Whole primary/contact/bundle/process/terminal/format/Task/persistence/socket/random documentary originals | All k304 objects and individual references retain exact source/pin/range/provenance/phase/absence; the final bounded saved-file comparison retains required retrieval/correspondence/acceptance/full-member work before consumers |
+| Whole historical originals and individual E/H/R statement/data members | Exact preceding contact/packaging/selected/historical namespaces retain every original member, context and classification; no current result or referenced-original possession is inherited. Missing original bytes have no invented internal partition |
+| Independently authored specimens/programmes/controls and accepted runtime originals | Individual format/type/association/control/native-result duties locate their whole normative contexts; unbuilt/unacquired originals retain construction/acquisition/independent acceptance and exact original-member partition before Q/P/A credit |
+| Complete actual task/configuration/runtime/import/loader/image/initial-state/charter reads | The catalogue separates every named family and known state from the accepted opaque remainder; exact retained transitive/observed member identities and frozen charter originals remain precise work before the named consumer |
+| Immutable earlier authority/commissioning/qualification/acceptance/audit/close/release/appointment | Phase nodes and acyclic predecessor edges retain independent origin, earlier-input/future-output placement, conditional correction and distinct close; unavailable actual records stay unavailable |
+| Stable duties, original permission/amendments/holds and exact extraction exception | Selected normative/companion/table/ADR/historical and prior partition bytes remain unchanged. No extra slicing, authority, full-contact gate, mutable execution-owner assertion or target/native credit is introduced |
+| Frozen final range/digest/membership and intended-negative correspondence | The final documentary check compares every composed namespace and requirement context, exact documentary object/reference association, graph membership/ordering and bounded absence; omissions, false possession, altered scopes/digests and future/self/cyclic input mutations must reject |
+| Whole handoff to k303 | k302 ends only at this complete design/exact-missing-work boundary. K303 retains all merged F6/original-duty/F1–F8/F9/F10/summaries/seven-view/consumer and mandatory whole-k291 review/closing Creator work; k244/k242 and k245/k246/k247 retain their separate full duties |
+
+### Membership verification and delivery limits
+
+Verification is documentary: exact source/extract/whole-object and individual-range
+correspondence, independently enumerated control-row membership, phase/absence and acyclic
+predecessor checks under final frozen subjects. The prior k304 saved-document scan is
+historical provenance; final added report/presentation files require a fresh bounded scan.
+The merged scan enumerates whole serialized files under `docs`, excluding only its own
+manifest to avoid a self-hash. It checks pinned-original absence only in that scope, never
+embedded bytes, external caches, installed images or unpinned global absence. Its subjects
+are documentary measurement inputs, not discovery of the retained acquisition's actual reads.
+
+The existing render/link tasks and scoped browser view validate presentation only.
+Temporary processors/results stay outside the repository; no retained checker, collector,
+tool/task implementation or independent instrument-control programme is supplied.
+The prior individual source/range/classification and historical correspondence comparisons
+pass at their final exact bytes. K299's old unchanged-contract guard describes its own
+earlier snapshot; the final replay compares that original/current pair through k300's exact
+edit reconstruction, rather than requiring the deliberately repaired contract to equal
+its predecessor. No earlier result is credited beyond its original scope. Temporary final
+measurement records are `/tmp/koine-k305-documentary-check.json`,
+`/tmp/koine-k305-prior-inputs.json` and `/tmp/koine-k305-{render,docs}-inputs.json`;
+each names its subjects and before/after item comparison. Their named interpreter/library
+subjects do not establish an exhaustive actual retained-runtime closure.
+
+Safari at presentation port 8944 renders the changed membership/original nodes, complete
+flow and caption in desktop light appearance. The current discussion/outline exposes one
+changed view. This fresh proof fragment directly reaches the updated view; that observation
+is specific to this invocation and does not erase earlier reported fragment failures.
+Complete seven-view/mobile/dark delivery and the final whole reconciliation remain k303;
+the preceding fragment-navigation limitation is not erased by HTTP success. Required
+retrieval/acceptance/construction/qualification/repair stays before its consumer in k269's
+later reviewed plan. K245's pass is unused, private eligibility remains false, both product
+holds and every native/useful-breadth/original duty remain. No partial reviewer is cut.
+
 ## Complete statement inventory
 
 [Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected
