@@ -651,6 +651,123 @@ does not track these artifact bytes; Taskfile metadata is changed. Direct saved-
 reading, byte-range parsing and original/current comparisons supply this slice's evidence,
 with no graph-completeness or current runtime claim.
 
+## Documentary original membership and absence slice
+
+Reference-evidence-documentary-basis-membership-k304 supplies the
+[individual reference inventory](reference-documentary-basis-membership.tsv) and
+[whole-object membership and absence manifest](reference-documentary-basis-membership.json).
+These are unconsumed documentary outputs. The canonical whole-object/actual-read rules
+remain the authority; this slice introduces no extraction exception, permission or
+qualified instrument. The mandated k302 decomposes at documentary-original versus
+authored/actual-read/authority membership. K305 retains the complete original k302
+conjunction; k303 retains complete merged F6/original-obligation/F1–F8/F9/F10/summary/
+seven-view/consumer reconciliation and its last-work-act mandatory whole-k291 review.
+
+- [Documentary original identities and missing work](#documentary-original-identities-and-missing-work) — Enumerates each external primary object and distinguishes saved locator/pin facts from unavailable original bytes.
+- [Reference coordinates and exact saved scope](#reference-coordinates-and-exact-saved-scope) — Preserves prior individual statement classifications and gives every documentary reference a complete source/context coordinate.
+- [Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof) — Shows documentary original gaps before Q credit and keeps actual-read closure and whole review with their remaining consumers.
+
+### Documentary original identities and missing work
+
+The selected S section, whole D, seventeen complete selected C sections, both whole
+companions and all five quote-aware tables name 41 external primary documentary objects
+through 60 individual references. The manifest enumerates each object, all its reference
+coordinates, independent published/retrieval provenance, original pin where supplied,
+required Q/P/A consumer coordinates and exact missing work. The product issue in the ADR
+is explicitly classified as an action-limitation reference, not a primary basis. Repeated
+documentary page and retrieval URLs for the six API JSON bases associate with their named
+whole JSON original; a documentation-page URL supplies no replacement JSON bytes.
+
+| Required original family | Documentary scope and missing work before use |
+| --- | --- |
+| Nine contact XNU sources and six API JSON objects | Each complete source/revision/digest/URL tuple or API retrieval identity is saved in the original table. No serialized file in the bounded saved-document scan matches those original digests. Retain the matching whole originals, independently accept correspondence and individually partition their contents before Q10/full-basis acceptance or affected named B/Q credit. No complete current-service/probe/ABI claim follows. |
+| Build and finite-peer candidates | The complete kern_sysctl.c, proc_info.c, proc_info.h and codesign.h pins remain distinct from actual Q06–Q08/P01–P03 originals. The pinned bytes were not found in the saved scope. Original retrieval/acceptance/individual partition precedes their documentary use; current SDK/compatibility/peer/slice/backing/terminal facts still need the independently qualified k295 route. Source-child facts first occur in A after consumption. |
+| Bundle/volume candidates | Both archived bundle HTML objects have saved pins without matching originals in the scanned scope. The separate volume-description locator has no established retrieved-object identity. Retain complete original editions/bytes and independent correspondence/partition before topology expectation acceptance. No path grammar, current presence, physical ancestry or TCC fact is acquired from a locator. |
+| XML/binary/OpenStep/strings/number/parser bases | The three whole CF source pins have no matching saved originals. XML Fifth Edition, PropertyList.dtd, XML tag/old-style/strings/number guides and parser/format API descriptions still lack an established complete retrieved identity. Freeze and independently accept each named original before authored Q03/Q06 expectations/comparison; historical implementation structure cannot supply current parser outcomes. Contract-defined loctable obligations remain in the already bound S/C inputs, with no invented public loctable grammar. |
+| Task configuration/schema | Both complete documentary objects require original retrieval/identity/independent acceptance/partition before retained-entry Q04/Q07/Q10 credit. Their locator cannot establish the actual Task version, configuration, includes, environment or reads; those actual whole objects remain k305's inventory duty. |
+| Persistence/locking/channel/entropy | The individual fsync, fcntl, flock, socketpair, pinned-revision rename-manual source and random-byte API bases require complete original identity/acceptance/partition before their Q04–Q07/Q09/Q10 consumers. No filesystem/device acknowledgement, crash certificate, endpoint, entropy result or loaded-image identity follows from the source reference. |
+
+In total, 24 required objects have saved expected whole-original digests but no exact
+serialized-file match in the enumerated documentary scope. For the other 17, the complete
+retrieved-object identity is unestablished; the scan does **not** establish their global
+absence. The available saved originals in this slice are the scoped normative documents,
+tables and historical packet/parent objects, whose exact final identities agree with the
+preceding manifests. They are originals of those saved objects, never of the external
+sources they reference. The historical packet's input/tool/file/hash/origin labels remain
+k301's individual fixed H observations; k305 must account for any actual reliance on the
+referenced objects without inheriting their bytes, facts or qualification.
+
+Missing whole-original bytes have null actual size/member-inventory fields, never a
+fabricated internal E/H classification or an empty successful inventory. Independently
+owned retrieval, exact original/correction acceptance and complete individual statement/
+data partition remain precise work before the affected consumer. Construction planning
+must assign concrete live handles for that work before basis authoring/acceptance or
+qualification; k305/k303 carry its exact absence boundary into the whole design review.
+A newly acquired mutable edition must match its earlier pin or undergo independent
+correction and affected requalification. Known missing required bytes cannot be relabelled
+as the accepted opaque contact unknowns, harmlessness or an inapplicable control.
+
+### Reference coordinates and exact saved scope
+
+The TSV uses UTF-8 LF/tab CSV with double-quote escaping. Byte positions are zero-based,
+start-inclusive/end-exclusive in the complete saved source. Each reference records exact
+URL bytes/digest, line positions, whole-source identity, complete original clause/cell
+context and context digest, object association and the overlapping coordinates and
+E/H classifications in the unchanged preceding individual inventories. These coordinates
+retain the normative clause's original context and limitations; a URL membership row is
+neither a new statement classification nor a complete source object's internal partition.
+The JSON retains the original pin's exact saved range/digest and independently named
+published/retrieval provenance. Whole-source binding is preserved outside every locator.
+
+The bounded absence scan enumerates every serialized file under `docs` using
+`rg --files --hidden --no-ignore docs`, excluding only these two new inventory outputs.
+The manifest records every named file and digest. Exact pinned-original comparison
+covers those whole files; it searches neither hidden embedded byte objects nor external
+repositories, ephemeral caches, user storage or installed runtime objects. No global
+original-absence or unpinned-original-identity conclusion is supported. Its named subject
+list is documentary measurement provenance, not an actual instrument read manifest.
+All final subjects must remain byte-identical during the comparison. Later report/render
+changes require a fresh scan record but change no normative object when unconsumed.
+
+### Scoped verification and remaining consumers
+
+Frozen documentary checks independently enumerate source references, compare original
+pin/object/phase/absence associations, verify every source/context/range/digest and retain
+the preceding exact source/extract/whole-object inventory bytes. Omitted references/objects,
+changed pin/range/context, false saved-original possession, target-before-Q credit and a
+changed/omitted scan member must reject at their intended documentary comparison. A known
+saved subject and an injected exact original are positive controls for the digest scan;
+neither creates an original in the actual repository or qualifies an instrument control.
+
+The final documentary comparison passes and rejects each intended omitted-reference/
+object, changed-pin/range/context/classification, false-possession/invented-member,
+target-before-Q and changed/omitted scan-subject mutation. An injected exact-original
+digest also prevents the unchanged absence claim from passing. Its 1,409 named document/
+inventory/checker/Python/library subjects stay unchanged item by item. The existing
+seven-view render task passes with twelve named source/Taskfile/Task/D2/Python/measurement
+inputs unchanged; `check:docs` passes with 1,413 named document/Taskfile/checker/Task/Python/
+measurement subjects unchanged. These are saved documentary checks, no executed instrument
+Q matrix or original-source retrieval. Graph generation 2026-09-29T10:36:20Z excludes
+`docs`; changed CONTEXT/Taskfile metadata supplies no structural evidence. Exact saved
+source/byte/partition reads and the bounded whole-file digest scan supply this evidence.
+
+Safari on presentation port 8942 renders the revised approval flow, missing-original node,
+caption, outline/current discussion and single changed marker in desktop light appearance.
+Fresh navigation/reload at the proof fragment stays at the document's top; clicking the
+discussion link reaches and highlights the intended view. This delivery limitation is
+explicitly retained for k303, alongside its complete seven-view/mobile/dark verification.
+HTTP delivery or scoped desktop layout establishes none of those remaining checks.
+
+Actual independently authored specimens/programmes/control/results, every task/configuration/
+import/loader/image/charter read and the acyclic earlier authority/commissioning/acceptance/
+audit/distinct-close/release objects remain k305's original whole-k302 duties. Required
+unknown original/current facts retain work before their Q/P/A consumer, distinct from the
+specifically accepted unobserved contact remainder. K303 still owns the final whole merged
+inventory/reconciliation/seven-view/consumer conjunction and mandatory whole-k291 review
+before k269; no partial review or construction handoff is supplied. K302/k298/k294/k291/
+k244/k242 remain live. The unused k245 pass, full k246/k247 useful-breadth/recipe/whole-subject
+duties, private ineligibility, both product holds and every native obligation remain.
+
 ## Complete statement inventory
 
 [Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected
