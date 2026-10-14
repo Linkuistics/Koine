@@ -54,3 +54,29 @@ inventory closes k297/k294/k291 or qualifies an instrument.
 No new scope, reporting exception, operator choice, review or capture programme is cut.
 The original complete Done when remains the node's closing test. K298 owns the merged
 whole-object/actual-read inventory and whole-k291 reconciliation/review, unchanged.
+
+## Complete documentary input handoff
+
+K299 and k300 satisfy every original k297 condition at its documentary boundary.
+The complete comparison is in application-reference-input-partition.md under Selected
+normative input partition slice → Original k297 conjunction comparison. K299's whole
+packaging TSV/JSON and k300's reference-selected-partition TSV/JSON locate every current
+E/H clause and original R context, with exact retained rules, full source/extract identities
+and reconstructible source edits. The canonical selected section, entire comparison,
+descriptor ADR, contact companion/five tables and prior inventories remain exact.
+Only already actual k281/k290/k295 amendments apply; no whole object is sliced.
+
+Selected contract handoffs use stable construction/acceptance/qualification responsibilities
+and conditional evidence rules. Historical API/measurement/interview/retired-assignment
+clauses have individual immutable coordinates, never current SDK/kernel/image facts or
+execution authority. Complete original bases and actual Q/P/A/control/entry/identity work
+remain unavailable before their consumers. Both slices preserve foreground appointment,
+exact A3, persistent disarm, R7–R10, Q/P/A/E/M/U and all k245/k246/k247 duties/holds.
+
+K298 retains complete whole-basis/actual task/runtime/configuration/image/charter-read
+membership, merged current full inventory, every original F1–F8/F9/F10/obligation and
+summary/seven-view/consumer reconciliation, then mandatory whole-k291 review before k269
+with its own closing Creator. No partial reviewer is earned. Later source changes need
+coordinate regeneration; consumed changes still disarm/requalify. This closes only k297,
+not k294/k291/k244/k242, and supplies no construction eligibility, authority, qualified
+instrument, native evidence or finite subject. K245's pass remains unused.

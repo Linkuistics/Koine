@@ -1,0 +1,2139 @@
+{
+  "scope": "Exactly selected S plus whole D and seventeen complete selected C sections. Whole companions/tables remain independently partitioned k296/k299 inputs; whole bases/actual reads/merged whole-k291 review remain k298 work.",
+  "original_revision": "93463d0a354570404028e92570c7079014c01bcd",
+  "coordinate_convention": "Zero-based UTF-8 start-inclusive/end-exclusive; whole-source and extract-relative positions; context is complete paragraph/list item or individual table cell. Fine connector fragments are not independent permissions.",
+  "sources": [
+    {
+      "alias": "S",
+      "path": "docs/verification/application-population-metadata-shape.md",
+      "original_sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+      "current_sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+      "extracts": [
+        {
+          "id": "S1",
+          "heading": "Selected reference and evidence requirements",
+          "level": 2,
+          "start_byte": 15511,
+          "end_byte": 39735,
+          "sha256": "2d9e2a3a5848828ab5abad2fd11e46e84681edb1c115e76c3c7ae7f6c9f5b8bf",
+          "first_line": 180,
+          "last_line": 496
+        }
+      ]
+    },
+    {
+      "alias": "D",
+      "path": "docs/adr/filesystem-access-is-descriptor-relative.md",
+      "original_sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+      "current_sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+      "extracts": [
+        {
+          "id": "D1",
+          "heading": "Filesystem access is descriptor-relative",
+          "level": 1,
+          "start_byte": 0,
+          "end_byte": 4172,
+          "sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+          "first_line": 1,
+          "last_line": 62
+        }
+      ]
+    },
+    {
+      "alias": "C",
+      "path": "docs/verification/application-reference-evidence.md",
+      "original_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "current_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+      "extracts": [
+        {
+          "id": "C1",
+          "heading": "Ownership and alternatives",
+          "level": 2,
+          "start_byte": 7677,
+          "end_byte": 10297,
+          "sha256": "9f39d667ce14cc73cd681f060c118c0bb16b0e8ac8b536c60b2777a3b04df424",
+          "first_line": 97,
+          "last_line": 132
+        },
+        {
+          "id": "C2",
+          "heading": "Selected instrument architecture",
+          "level": 2,
+          "start_byte": 10297,
+          "end_byte": 23306,
+          "sha256": "5caf0d14511eba883117c7710b20e87e57ad393a7b1cd25c53825e9745e60911",
+          "first_line": 133,
+          "last_line": 301
+        },
+        {
+          "id": "C3",
+          "heading": "Proposed envelope version and verification interface",
+          "level": 2,
+          "start_byte": 23306,
+          "end_byte": 28040,
+          "sha256": "51044d139fcc998e5c1c0c0cb7d9fb9417526dc2cccdeb7407e09955f6f2b2db",
+          "first_line": 302,
+          "last_line": 363
+        },
+        {
+          "id": "C4",
+          "heading": "Permission inputs and reporting outputs",
+          "level": 2,
+          "start_byte": 28040,
+          "end_byte": 36911,
+          "sha256": "e54ac3c8ab4cfc42d8c64c8a0928f494bee939a30a90ef22191f1e995c7b0f09",
+          "first_line": 364,
+          "last_line": 451
+        },
+        {
+          "id": "C5",
+          "heading": "Authoritative attempt evidence",
+          "level": 2,
+          "start_byte": 36911,
+          "end_byte": 59046,
+          "sha256": "3268a2180fcb5716272a4f799bee6fee3d9aa0a3bd4c17d4127b237f8297842c",
+          "first_line": 452,
+          "last_line": 725
+        },
+        {
+          "id": "C6",
+          "heading": "Independent approval root",
+          "level": 2,
+          "start_byte": 59046,
+          "end_byte": 117330,
+          "sha256": "49f1061595d1ffe201881653d4c20748a3deddf3c75a8933cb59ff12e112bcf8",
+          "first_line": 726,
+          "last_line": 1352
+        },
+        {
+          "id": "C7",
+          "heading": "Closed qualification proof and required inventory",
+          "level": 2,
+          "start_byte": 117330,
+          "end_byte": 123361,
+          "sha256": "98698eebefec31514db5fc279fdd904015d2ef019cba8f70255e7209afc157ed",
+          "first_line": 1353,
+          "last_line": 1421
+        },
+        {
+          "id": "C8",
+          "heading": "Contact observation outside the producer",
+          "level": 2,
+          "start_byte": 123361,
+          "end_byte": 130244,
+          "sha256": "fca1fcf842d142731c32447c32e9f781fc8723577f09a0a08fa5e95ccb38f28a",
+          "first_line": 1422,
+          "last_line": 1503
+        },
+        {
+          "id": "C9",
+          "heading": "Fixed composition without target contact",
+          "level": 2,
+          "start_byte": 130244,
+          "end_byte": 134161,
+          "sha256": "26b0876405005c5623f61cff7dc8e10d96b310c4665869751319bf34d43fccc1",
+          "first_line": 1504,
+          "last_line": 1553
+        },
+        {
+          "id": "C10",
+          "heading": "Independent decoder expectation classes",
+          "level": 2,
+          "start_byte": 134161,
+          "end_byte": 137656,
+          "sha256": "5577701efdb4655fdb212d1584f97c83ddf9a1f329716435c988dafb3255da58",
+          "first_line": 1554,
+          "last_line": 1594
+        },
+        {
+          "id": "C11",
+          "heading": "Topology and the inherited component rule",
+          "level": 2,
+          "start_byte": 137656,
+          "end_byte": 164926,
+          "sha256": "58336b17d747a36fd835114e71371b3d0f1290ab15233e18a228d65a595ad888",
+          "first_line": 1595,
+          "last_line": 1876
+        },
+        {
+          "id": "C12",
+          "heading": "Attempt durability and per-control proof",
+          "level": 2,
+          "start_byte": 164926,
+          "end_byte": 169034,
+          "sha256": "b1db0580cf31283c8f5d07f2b8f132ec64e11f855eb784f60ac261eee1ce6b0b",
+          "first_line": 1877,
+          "last_line": 1933
+        },
+        {
+          "id": "C13",
+          "heading": "One-pass acquisition and closure",
+          "level": 2,
+          "start_byte": 197145,
+          "end_byte": 202521,
+          "sha256": "cce14852aa566c06fea9d3905ddb0a92d5ac697113cc5478efb4bbef20bef58d",
+          "first_line": 2100,
+          "last_line": 2175
+        },
+        {
+          "id": "C14",
+          "heading": "Evidence records and association keys",
+          "level": 2,
+          "start_byte": 202521,
+          "end_byte": 206110,
+          "sha256": "0d9c6c97b8af5eac717ed656f59f5b004caf88b0b2d54d67e09768de3b0b1f80",
+          "first_line": 2176,
+          "last_line": 2208
+        },
+        {
+          "id": "C15",
+          "heading": "Original bytes and complete typed witnesses",
+          "level": 2,
+          "start_byte": 206110,
+          "end_byte": 209467,
+          "sha256": "a3bca5931a7c9c547cc2bc87a8bba3ccffe839813b3073ca74341bafe158dd43",
+          "first_line": 2209,
+          "last_line": 2256
+        },
+        {
+          "id": "C16",
+          "heading": "Freeze and replay limits",
+          "level": 2,
+          "start_byte": 209467,
+          "end_byte": 211140,
+          "sha256": "746d4797f6c3aa04d81cef66122ff05a3fda29fdf8a257e440088be064f00c1f",
+          "first_line": 2257,
+          "last_line": 2281
+        },
+        {
+          "id": "C17",
+          "heading": "Independent controls required before target acquisition",
+          "level": 2,
+          "start_byte": 211140,
+          "end_byte": 221194,
+          "sha256": "65b9a74f33a6293445516cf88460999c99d6d3e771904ce36edfab0383bce091",
+          "first_line": 2282,
+          "last_line": 2344
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "path": "docs/verification/reference-selected-partition.tsv",
+    "sha256": "34c3dd4d1f63c7f98b60979e7a4efaad1d43ffb8c75d2fc3122613f82bb55966"
+  },
+  "historical_ranges": [
+    {
+      "source_alias": "S",
+      "text": "The historical 25G83 packets",
+      "start_byte": 15897,
+      "end_byte": 15925,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "their identities, file digests, 640-copy associations and 2,043 combined\nepisodes",
+      "start_byte": 15961,
+      "end_byte": 16042,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony authorized",
+      "start_byte": 16704,
+      "end_byte": 16721,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "No installed\npayload is packaged in this requirements session.",
+      "start_byte": 18829,
+      "end_byte": 18891,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony delegated reference-evidence-authority-k270's choices with \"you decide\".",
+      "start_byte": 19277,
+      "end_byte": 19356,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "existing unused\none-pass permission",
+      "start_byte": 19426,
+      "end_byte": 19461,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed k270 interview-time permission context; later pass observations remain outside the extract. No additional status reinterpretation or relocation."
+    },
+    {
+      "source_alias": "S",
+      "text": "This interview creates none of them.",
+      "start_byte": 20123,
+      "end_byte": 20159,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony selected",
+      "start_byte": 21893,
+      "end_byte": 21908,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "This requirements decision appoints no process, initializes no authority,\nqualifies no instrument and spends no pass.",
+      "start_byte": 23620,
+      "end_byte": 23737,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Apple's archived\n[fsync manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fsync.2.html)\ndescribes the OS-crash/power-loss gap of fsync alone; its\n[fcntl manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fcntl.2.html)\ndescribes the F_FULLFSYNC device-cache flush request and hardware limits.",
+      "start_byte": 27515,
+      "end_byte": 27919,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony accepted k281's stated bounded contact limit:",
+      "start_byte": 28724,
+      "end_byte": 28776,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony accepted k281's closed\npre-lookup rule.",
+      "start_byte": 30324,
+      "end_byte": 30370,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony accepted a truthful failed/incomplete\npackage and subject-design boundary",
+      "start_byte": 34034,
+      "end_byte": 34114,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "Antony accepted controlled source/filesystem/byte-decoder inputs,\nindependent offline/admission verification, exact retained task/parser/domain controls\nand actual unprivileged scratch adapters",
+      "start_byte": 34740,
+      "end_byte": 34933,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "No installed-target positive, authority provisioning, collector probe or native\ncapture occurs in this requirements leaf.",
+      "start_byte": 35260,
+      "end_byte": 35381,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "Whole-path calls stop at the SDK's `PATH_MAX` of 1,024\nbytes including NUL, and the shipped action inspection mapped their\n`ENAMETOOLONG`/`ELOOP` to \"path not found\".",
+      "start_byte": 1383,
+      "end_byte": 1549,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "The\n[k134 prototype](../verification/long-action-route-prototype.md#what-was-measured)\nshowed component-relative calls reaching about 1,500-byte items and\ndistinguishing missing, below-file, cycle, link-budget and impossible-component\ncauses that whole-path calls cannot.",
+      "start_byte": 1550,
+      "end_byte": 1821,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "The [application survey](../research/long-pathname-applications.md#51-component-relative-resolution-for-presence-and-cause)\nrecords how mature walks failed \u2014 descriptor exhaustion, broken recovery\nbranches, depth-evading security checks, reconstructed strings re-entering\nwhole-path calls, consent prompts and drifting spelling",
+      "start_byte": 1985,
+      "end_byte": 2314,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "Search-only\nfirst-use behaviour in Desktop, Documents and Downloads was\n[measured](../verification/descriptor-walk-prompt.md) on macOS 26.5: the walk's\n`openat(O_SEARCH)`, `fstatat` and `readlinkat` did not prompt, where the read-mode\ncontrol did.",
+      "start_byte": 2667,
+      "end_byte": 2914,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "The earlier queued\nwalk and system-find traversal were prior proposals, not selected mechanisms.",
+      "start_byte": 3345,
+      "end_byte": 3441,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "D",
+      "text": "macOS opener,\nregistration, type and handler services take whole pathnames and fail at\n`PATH_MAX`;",
+      "start_byte": 3756,
+      "end_byte": 3854,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed platform-service description in the ADR; v1 truthful refusal stays a separate E rule. No new/current qualification follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "no executable task is added by this design.",
+      "start_byte": 35709,
+      "end_byte": 35752,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "its documented zap owns that lifecycle.",
+      "start_byte": 37696,
+      "end_byte": 37735,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "The installed mdfind manual defines\n`-0` as a NUL terminator after each returned path.",
+      "start_byte": 14139,
+      "end_byte": 14225,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple documents the\n[data parser](https://developer.apple.com/documentation/corefoundation/cfpropertylistcreatewithdata(_:_:_:_:_:))\nand [format cases](https://developer.apple.com/documentation/corefoundation/cfpropertylistformat);\nthe installed SDK declares OpenStep, XML v1 and binary v1 formats.",
+      "start_byte": 20025,
+      "end_byte": 20323,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple's\n[number documentation](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html)\ndistinguishes stored numeric type from input representation.",
+      "start_byte": 22052,
+      "end_byte": 22266,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple's archived [fsync manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fsync.2.html)\ndescribes host flushing and the power-loss/reordering gap; its\n[fcntl manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fcntl.2.html)\ndescribes a device-cache flush request and hardware limits.",
+      "start_byte": 50922,
+      "end_byte": 51317,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple's pinned\n[rename manual source](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/man/man2/rename.2)\nstates descriptor-relative rename and exclusive-destination semantics on supporting\nfilesystems;",
+      "start_byte": 51379,
+      "end_byte": 51629,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "The archived\n[flock manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/flock.2.html)\nsupports cooperative nonblocking exclusion and warns about inherited lock references.",
+      "start_byte": 51695,
+      "end_byte": 51921,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple's archived [socketpair manual](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/socketpair.2.html)\ndocuments connected unnamed descriptors,",
+      "start_byte": 110299,
+      "end_byte": 110494,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "The published DTrace source constructs **syscall and mach_trap** entry/return providers;",
+      "start_byte": 128385,
+      "end_byte": 128473,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Its published privilege glue checks superuser credentials.",
+      "start_byte": 128503,
+      "end_byte": 128561,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Apple documents Endpoint Security's root and entitlement prerequisites;",
+      "start_byte": 128685,
+      "end_byte": 128756,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "C",
+      "text": "Documentary Contents/resource/localization/framework organization,",
+      "start_byte": 145875,
+      "end_byte": 145941,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed archived bundle-guide content description only; normative fixed-layout/six-file choices and complete original retrieval duties stay E."
+    },
+    {
+      "source_alias": "C",
+      "text": "[Apple's volume description](https://support.apple.com/en-euro/guide/security/secd698747c9/web)\ndistinguishes system/data storage,",
+      "start_byte": 163589,
+      "end_byte": 163719,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Fixed documentary observation at the source snapshot; no current fact or original-object possession follows."
+    },
+    {
+      "source_alias": "S",
+      "text": "K273",
+      "start_byte": 28023,
+      "end_byte": 28027,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Immutable k270 assignment of the original design obligation; the following E duty remains. This retired source is not a present execution owner."
+    },
+    {
+      "source_alias": "S",
+      "text": "K282",
+      "start_byte": 29763,
+      "end_byte": 29767,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Immutable k281 assignment of original bounded-evidence design work; the following E duty remains in the whole repaired producer."
+    },
+    {
+      "source_alias": "S",
+      "text": "K282",
+      "start_byte": 33239,
+      "end_byte": 33243,
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "claim_limit": "Immutable k281 assignment of original pre-lookup design work; the following E obligation and independent authoring/refusal duties remain."
+    }
+  ],
+  "original_relocations": [
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "K269 retains an explicit last-edit requalification/audit/close owner through later\npermission/review/provisioning changes, before k245.",
+      "start_byte": 35711,
+      "end_byte": 35846,
+      "retained_rule": "Construction planning assigns explicit live last-edit requalification, independent\nacceptance/audit and distinct instrument-close responsibilities through later permission,\nreview/provisioning changes, before acquisition admission.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 34808,
+      "context_end_byte": 36193,
+      "context_sha256": "e54636b85a7d9bb7e7fb095713d4d47dc2fafbb7e9c10a47aa7b8febddedc6d9",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C4",
+      "extract_sha256": "9cf91b910795af6cdf5edb737c2f128b207e6fa5d38ae33b2e13b2a0224f24a9",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C4",
+          "extract_heading": "Permission inputs and reporting outputs",
+          "start_byte": 36332,
+          "end_byte": 36402,
+          "first_line": 444,
+          "last_line": 444,
+          "text": "Construction planning assigns explicit live last-edit requalification,",
+          "sha256": "ed64b088fbf317f348398c1f19d3578fe879e5524d54a0e21a7604943da3ac67",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 35429,
+          "context_end_byte": 36909,
+          "context_sha256": "ca6dc885fa74223ad0556e3211a7f3c9c323d7f9f1a33b0ef67566320441435a"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "This fills k274's reserved validation interface",
+      "start_byte": 91630,
+      "end_byte": 91677,
+      "retained_rule": "input. The external validation interface preserves exclusive initialization and consumption.\nScratch receipts qualify the interface, never authorize live initialization.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 90403,
+      "context_end_byte": 91813,
+      "context_sha256": "2a7f1cf8a7440fa1d1f9424954297137ee1087941223d8b17a24ffc53e28360c",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C6",
+      "extract_sha256": "da44371e4352f64efafcbf1f9a2ec649d2197022c769a3bc453f6009def27b9c",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 92368,
+          "end_byte": 92453,
+          "first_line": 1081,
+          "last_line": 1081,
+          "text": "The external validation interface preserves exclusive initialization and consumption.",
+          "sha256": "73f0d0df2af8b9da45a71419ab2e75f9460fbc4c0e270383a13ce5944045ee8b",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 91141,
+          "context_end_byte": 92530,
+          "context_sha256": "f35a790ed1f8b41bedf18602b2b2096df306092fe79a3a288572dbf7b9c30a03"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "under k277.",
+      "start_byte": 100553,
+      "end_byte": 100564,
+      "retained_rule": "under the complete task/runtime closure contract. Reading reporting for another purpose makes those actual bytes a qualified input.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 99847,
+      "context_end_byte": 100898,
+      "context_sha256": "ef23b3bd2724545fa87622d7f666b989536632d61457470d6006a4fc3cca1f29",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C6",
+      "extract_sha256": "da44371e4352f64efafcbf1f9a2ec649d2197022c769a3bc453f6009def27b9c",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 101266,
+          "end_byte": 101315,
+          "first_line": 1176,
+          "last_line": 1176,
+          "text": "under the complete task/runtime closure contract.",
+          "sha256": "89f31eb3cf66f77c3654e1c0b504211bc98dd01b09191126d87476a169dcdaaf",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 100560,
+          "context_end_byte": 101648,
+          "context_sha256": "5bd035825fa6144d2d5a3e0f98c1472355d89a2375e96de5620c5de105cdd1f6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "K269 assigns separate construction owners for checker/registrar/strict extractor, independent",
+      "start_byte": 115026,
+      "end_byte": 115119,
+      "retained_rule": "Construction planning assigns separate responsibilities for checker/registrar/strict extractor, independent",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 115026,
+      "context_end_byte": 116257,
+      "context_sha256": "d9feacd9f104eadd09417256bfe1a22c42925b868d49e65da2accb6069abd600",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C6",
+      "extract_sha256": "da44371e4352f64efafcbf1f9a2ec649d2197022c769a3bc453f6009def27b9c",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 116084,
+          "end_byte": 116179,
+          "first_line": 1339,
+          "last_line": 1339,
+          "text": "Construction planning assigns separate responsibilities for checker/registrar/strict extractor,",
+          "sha256": "ac6242ec9f26e094a6004769139a3e6531c86a64f3f28caec7a24fa9f1d2b64c",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "No authorized current unprivileged collector or full proxy/initial-map coverage is supplied.",
+      "start_byte": 127490,
+      "end_byte": 127582,
+      "retained_rule": "The bounded evidence selection commissions no full current unprivileged collector or complete proxy/initial-map mechanism.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 127313,
+      "context_end_byte": 127945,
+      "context_sha256": "dbb439bc0f2cc242c15824e15c7f9d06993406c2a2a34b5cd352e46f0662bc5c",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C8",
+      "extract_sha256": "b42497b3c04d2273f8fb8ff7d8a4d493aba25e642f17f44da3c5747365d53a88",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C8",
+          "extract_heading": "Contact observation outside the producer",
+          "start_byte": 128562,
+          "end_byte": 128643,
+          "first_line": 1483,
+          "last_line": 1483,
+          "text": "The bounded evidence selection commissions no full current unprivileged collector",
+          "sha256": "9d840fc0e6769a618a1931ca7a7c659e2f8f6386164a1d17a67b764443a9a284",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 128385,
+          "context_end_byte": 129038,
+          "context_sha256": "ab6bafee72cf4c458d62b9b0435ef56405b50c0ba17d42b5488a153fe64e4ed6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "No complete realizable arrangement is established under the selected authority; this is a\nbounded unavailable conclusion, not a theorem that no unprivileged arrangement can exist.",
+      "start_byte": 127765,
+      "end_byte": 127944,
+      "retained_rule": "The selected bounded evidence contract requires no complete C1\u2013C8 arrangement; its accepted\nunknown coverage is not a theorem that no unprivileged arrangement can exist.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 127313,
+      "context_end_byte": 127945,
+      "context_sha256": "dbb439bc0f2cc242c15824e15c7f9d06993406c2a2a34b5cd352e46f0662bc5c",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C8",
+      "extract_sha256": "b42497b3c04d2273f8fb8ff7d8a4d493aba25e642f17f44da3c5747365d53a88",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C8",
+          "extract_heading": "Contact observation outside the producer",
+          "start_byte": 128867,
+          "end_byte": 128947,
+          "first_line": 1486,
+          "last_line": 1486,
+          "text": "The selected bounded evidence contract requires no complete C1\u2013C8 arrangement;",
+          "sha256": "9297d86d32d02f38e4f92064b59e5b634aff62829ed6d36026dcc37aaa486d6e",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 128385,
+          "context_end_byte": 129038,
+          "context_sha256": "ab6bafee72cf4c458d62b9b0435ef56405b50c0ba17d42b5488a153fe64e4ed6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "K287 owns\nwhole-k282 reconciliation/review/integration before k269 assigns the required named\nowners;",
+      "start_byte": 128599,
+      "end_byte": 128700,
+      "retained_rule": "under the accepted risk. Failed controls or known defects remain repair work. Complete\nadmission-design reconciliation, mandatory whole-producer review and every earned integration\nprecede construction planning, which assigns the required live named responsibilities;\nno partial child handoff or impossible U2 repeat is permitted.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 127946,
+      "context_end_byte": 129026,
+      "context_sha256": "07bdbd6f0c9bd9345b91daa22df1b1940ef5c3c875061f24dbe542de6f5d4ee7",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C8",
+      "extract_sha256": "b42497b3c04d2273f8fb8ff7d8a4d493aba25e642f17f44da3c5747365d53a88",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C8",
+          "extract_heading": "Contact observation outside the producer",
+          "start_byte": 129693,
+          "end_byte": 129766,
+          "first_line": 1495,
+          "last_line": 1496,
+          "text": "Complete\nadmission-design reconciliation, mandatory whole-producer review",
+          "sha256": "a8218dbf098774eb3cba955f01536e35dc0d6a5c2a2e4de867432eb200efd04a",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 129040,
+          "context_end_byte": 130242,
+          "context_sha256": "a6891b431ff9f5e3f7b7a1c972fbb12bff5fc9f58fefaccc98b69f2ca00caad8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "none is\nselected, probed or implied here.",
+      "start_byte": 128928,
+      "end_byte": 128969,
+      "retained_rule": "concrete separate human decision and reviewed mechanism before its consumer; the selected\nbounded contract grants none of those alternatives. Required unavailable copies remain\nmissing work, never useful loss.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 127946,
+      "context_end_byte": 129026,
+      "context_sha256": "07bdbd6f0c9bd9345b91daa22df1b1940ef5c3c875061f24dbe542de6f5d4ee7",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C8",
+      "extract_sha256": "b42497b3c04d2273f8fb8ff7d8a4d493aba25e642f17f44da3c5747365d53a88",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C8",
+          "extract_heading": "Contact observation outside the producer",
+          "start_byte": 130110,
+          "end_byte": 130174,
+          "first_line": 1500,
+          "last_line": 1501,
+          "text": "the selected\nbounded contract grants none of those alternatives.",
+          "sha256": "60adb0b3bbc32f65eaa2fc542ff2a327d3108c0b160c2aaf412e27df16dc2430",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 129040,
+          "context_end_byte": 130242,
+          "context_sha256": "a6891b431ff9f5e3f7b7a1c972fbb12bff5fc9f58fefaccc98b69f2ca00caad8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "text": "The instrument child must select and qualify its concrete complete decoder route.",
+      "start_byte": 206852,
+      "end_byte": 206933,
+      "retained_rule": "Instrument construction must qualify the selected concrete complete decoder route and\nevery admitted branch before that branch receives evidence credit.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 206041,
+      "context_end_byte": 206934,
+      "context_sha256": "fe1c6d86b72413f5227d9640129f08471baff5642c5f662b711c7581a8493c13",
+      "source_sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4",
+      "extract_id": "C15",
+      "extract_sha256": "b2df29b659bebb46698e08af3b7ef49aa731052577d9a5bcf4de4928b6c39571",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C15",
+          "extract_heading": "Original bytes and complete typed witnesses",
+          "start_byte": 208096,
+          "end_byte": 208177,
+          "first_line": 2237,
+          "last_line": 2237,
+          "text": "Instrument construction must qualify the selected concrete complete decoder route",
+          "sha256": "48068335ce25832c868f51869b9c00887025ded597b75def581365f8b12887d3",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 207285,
+          "context_end_byte": 208248,
+          "context_sha256": "b9254b8f13b73aba942ebde57a3c1d7ac7420cac654528e9aac413075cdab544"
+        }
+      ]
+    },
+    {
+      "source_alias": "S",
+      "snapshot": "84189606274d",
+      "text": "Those\ncontrols are currently specified, not executed.",
+      "start_byte": 16460,
+      "end_byte": 16513,
+      "retained_rule": "Build and observe the complete required controls before the target pass; exact sentence lives verbatim outside the selection.",
+      "amendment": "Only k281 actual third yes approves verbatim relocation; no adjacent permission/hold/duty moves.",
+      "context_start_byte": 16038,
+      "context_end_byte": 16578,
+      "context_sha256": "d6d1c6b3cf8061b0f00515af126376aca8e283823f77faf10c97d55b061098ed",
+      "source_sha256": "78aa94a6a8e2602c1004c1bc19cf12585d11f44d52dbcffba8ea25cf72e0ed31",
+      "extract_id": "S1",
+      "extract_sha256": "daaf10e1b26a73517f0771d38401a3cc89038ec551290f4fb3aa05db86e86896",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-population-metadata-shape.md",
+          "extract_id": "S1",
+          "extract_heading": "Selected reference and evidence requirements",
+          "start_byte": 16562,
+          "end_byte": 16638,
+          "first_line": 196,
+          "last_line": 196,
+          "text": "must be built and observed before the authorized target query/contents pass.",
+          "sha256": "ffa7883b357309191f24ffb0a35f19fbc017f431508f70bc7a96d5250ed6ba2f",
+          "source_sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+          "context_start_byte": 16217,
+          "context_end_byte": 16702,
+          "context_sha256": "e49e8cbb212f09b3a99f75633775916263b87e1dca4970fafb72953a502b606e"
+        }
+      ]
+    },
+    {
+      "source_alias": "S",
+      "snapshot": "86b111365a9b",
+      "text": "The single pass is unused;",
+      "start_byte": 29927,
+      "end_byte": 29953,
+      "retained_rule": "One-attempt consumption permission and all adjacent product/private/native duties stay binding; separate unconsumed report records pass observation.",
+      "amendment": "Only k290 actual ayes approves removing this clause and capitalizing retained Both; following private/native line is byte-identical.",
+      "context_start_byte": 29267,
+      "context_end_byte": 30037,
+      "context_sha256": "61f1de4a977c549cc7dc51975c47ebcbcd137f2a5728c850af85f0a9a0d2a27f",
+      "source_sha256": "a40e738db9fe651a93852a4c4b17b4d62ab3b7035dd87b632ff00cf9aaf0053c",
+      "extract_id": "S1",
+      "extract_sha256": "288acf4cc72b6b90ee8208fb13339afbb9684181c05a748d8d9abe919542da5b",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-population-metadata-shape.md",
+          "extract_id": "S1",
+          "extract_heading": "Selected reference and evidence requirements",
+          "start_byte": 35382,
+          "end_byte": 35464,
+          "first_line": 431,
+          "last_line": 432,
+          "text": "Both product holds,\nprivate ineligibility and every native PENDING outcome remain.",
+          "sha256": "736f3ceb20244ff0f33198b5c0c9375cd84cef9f192dce9af941b1cdefdc8a11",
+          "source_sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+          "context_start_byte": 34722,
+          "context_end_byte": 35464,
+          "context_sha256": "7b024703669514b48075f2d9504eed6b543c59e39560e5d7e9e68c80edb39d08"
+        },
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 40137,
+          "end_byte": 40216,
+          "first_line": 495,
+          "last_line": 495,
+          "text": "Only the exact independently validated **unspent** name authorizes consumption.",
+          "sha256": "5d50d0738c38775ea83fad48280161ef55c52bffc5839dbd2dfca407151eae5d",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39812,
+          "context_end_byte": 40619,
+          "context_sha256": "a43a5c63825e63225def7d62756ef44efbee63cdb3572fff8f2ac1db7f79397f"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "04bd81cfb299",
+      "text": "K275 owns its independent trust root,\ncorrection channel and non-circular approval/provisioning bindings.",
+      "start_byte": 37898,
+      "end_byte": 38003,
+      "retained_rule": "Independent human acceptance owns the trust root/correction channel; qualified separate provisioning/validation supplies non-circular bindings, never a retired designer.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 37036,
+      "context_end_byte": 38004,
+      "context_sha256": "a6c101536e54340c79b436876594aa2e9c27246decf6e95e8a915c0f9190e01a",
+      "source_sha256": "eddddbc9b7b16ee337aa4c8f863ec375f172b9a8c2f535d36dbb406e3ac5eec3",
+      "extract_id": "C5",
+      "extract_sha256": "29b5224634b16d3c7635c7588399d2e5686f92839529298c1a6d398e7bd4bc71",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 41483,
+          "end_byte": 41565,
+          "first_line": 510,
+          "last_line": 511,
+          "text": "The independent human acceptance\nowner owns the trust root and correction channel;",
+          "sha256": "8646d9697eed3f71f507714a4bade8c2dd5d1ba52e06b939692e4902b6dcd087",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 40621,
+          "context_end_byte": 41646,
+          "context_sha256": "1627690290d5cbd4368e57afd26ad1d8045f378360535d45f9d0115fd01874bb"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "04bd81cfb299",
+      "text": "independent mechanism k276/k277 must qualify.",
+      "start_byte": 93517,
+      "end_byte": 93562,
+      "retained_rule": "The whole packaging correspondence route requires actual independently qualified build/peer-image/terminal originals at Q06\u2013Q08/P01\u2013P03; k295 adds only bounded observation authority.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92969,
+      "context_end_byte": 93688,
+      "context_sha256": "d942cd3ed0cbd4022fba622058b5d14561fdce3448fb92c5184dd0e00e713b6d",
+      "source_sha256": "eddddbc9b7b16ee337aa4c8f863ec375f172b9a8c2f535d36dbb406e3ac5eec3",
+      "extract_id": "C6",
+      "extract_sha256": "cc019f193e01b3ef2abd0061e8bd6fe2f6c3b0899770fb3d83e4ad9d67520c58",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 109881,
+          "end_byte": 109981,
+          "first_line": 1263,
+          "last_line": 1263,
+          "text": "Q06\u2013Q08/P01\u2013P03 keep unavailable build/peer/image/terminal facts blocking before their consumer;",
+          "sha256": "9e9f91961a4d91fba838c1d0330f019d7542d9c0d372508771b2a8b2275a7d65",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 109175,
+          "context_end_byte": 110176,
+          "context_sha256": "840af1122773096fb8c86bb1707940933feb25ecf276e118827019a612308b96"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "These identities and observations are not yet supplied by this design.",
+      "start_byte": 21632,
+      "end_byte": 21702,
+      "retained_rule": "Original qualified image/format/native observations are required before corresponding credit.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 20901,
+      "context_end_byte": 21703,
+      "context_sha256": "92aef155ef488e29c43f6fab6554732bd36da85d598327e7223c2dbccbd469e2",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C2",
+      "extract_sha256": "2eb4de6254987d883ec0be50829ed377c3e8b1c63fc39b4788109dc55f7ea139",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C2",
+          "extract_heading": "Selected instrument architecture",
+          "start_byte": 23158,
+          "end_byte": 23262,
+          "first_line": 300,
+          "last_line": 300,
+          "text": "Design text supplies none of those identities or observations; require their original qualified evidence",
+          "sha256": "902130511d214d6c4b256de6e816ce24ee2a0ffaff2f9084a497a2b9efb0e92d",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 22427,
+          "context_end_byte": 23304,
+          "context_sha256": "6bafaec1442529c74aee5b7cb4a9806dd10a936716ae3e5ce8b7727ab2b5d977"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "no executable schema, authority receipt or passing\nproof exists yet.",
+      "start_byte": 26514,
+      "end_byte": 26582,
+      "retained_rule": "Closed independent profile/extract/concordance/schema/receipt/proof inputs must qualify; design text supplies none.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 26482,
+      "context_end_byte": 26942,
+      "context_sha256": "44a3985cb03531e982d37050d15a3294014de318ebcb4584e08bc5ff2cf6d2a4",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C4",
+      "extract_sha256": "8bc0ff727b34d60861b6220ef0b807da84e5cd18059ea0be2e2b7d3b330561fb",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C4",
+          "extract_heading": "Permission inputs and reporting outputs",
+          "start_byte": 28478,
+          "end_byte": 28621,
+          "first_line": 369,
+          "last_line": 370,
+          "text": "Construction creates a closed permission profile, its strict\nindependent reader and a frozen requirements extract together, before measurement.",
+          "sha256": "4520a0d7b41eb9a6dd23dc014b323139b2c4c76de4ff3f7ca817a2d4882507c6",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 28084,
+          "context_end_byte": 28699,
+          "context_sha256": "b58d84ba49919e1538b5c7cf40c3746e807a4c3bf45c8295f1145251c01f8464"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "Actual UID, held directory/ancestor identities and receipt remain unprovisioned;",
+      "start_byte": 34402,
+      "end_byte": 34482,
+      "retained_rule": "Actual separate provisioning and independent validation precede admission; pathname is no identity or receipt.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 33609,
+      "context_end_byte": 34565,
+      "context_sha256": "04366dac180390023fab7862fbfe348293d7c47a262c4156c092c5fec4b2d32e",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 37818,
+          "end_byte": 37917,
+          "first_line": 464,
+          "last_line": 464,
+          "text": "actual UID, held directory/ancestor identities and receipt require separately provisioned evidence.",
+          "sha256": "f3601eb27e3d9925f6d17d82b5045cd3b4eabdf43c5396a99143b5dcc04076bd",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 36946,
+          "context_end_byte": 37917,
+          "context_sha256": "3f069c0da5c8bab961b1b40f293768207118adce64c708fd3d9d758f77f3391a"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "**Requirements are settled; actual admission remains unavailable.**",
+      "start_byte": 35701,
+      "end_byte": 35768,
+      "retained_rule": "Actual authority/approval/identity/protocol and required scratch evidence form the admission conjunction.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39054,
+          "end_byte": 39207,
+          "first_line": 480,
+          "last_line": 481,
+          "text": "Admission requires the actual authority directory, receipt, approval register, accepted\nbindings, executable protocol and required scratch qualification.",
+          "sha256": "46f61e0adf4bd7c77cf10f12b03dfee8010235879610a4c020cc83f680751079",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "K274/k275 specify the\nlifecycle and approval protocol for whole-k273 review.",
+      "start_byte": 35769,
+      "end_byte": 35845,
+      "retained_rule": "Whole lifecycle/approval contract needs whole-producer review before construction; retired designers supply historical sources.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39508,
+          "end_byte": 39562,
+          "first_line": 484,
+          "last_line": 485,
+          "text": "Mandatory whole review precedes\nconstruction planning.",
+          "sha256": "8265bd745a1e3768e24aa39c702e87fd85bcbdc02b4c29ef6a8ce4ba51cd92ae",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "No authority directory, receipt,\napproval register, approved binding, executable protocol or scratch qualification exists.",
+      "start_byte": 35846,
+      "end_byte": 35968,
+      "retained_rule": "Each actual qualified authority/register/binding/protocol/control is required before its consumer.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39054,
+          "end_byte": 39207,
+          "first_line": 480,
+          "last_line": 481,
+          "text": "Admission requires the actual authority directory, receipt, approval register, accepted\nbindings, executable protocol and required scratch qualification.",
+          "sha256": "46f61e0adf4bd7c77cf10f12b03dfee8010235879610a4c020cc83f680751079",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "K276 supplies the [bounded contact claims and required-versus-accepted-unknown work](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities);",
+      "start_byte": 35969,
+      "end_byte": 36151,
+      "retained_rule": "Whole contact companion owns selected B/C/U requirements and accepted unknown limits.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39232,
+          "end_byte": 39266,
+          "first_line": 482,
+          "last_line": 482,
+          "text": "approval, [bounded contact claims]",
+          "sha256": "b6852f087f4ac08033fecb24b328302dddea23ffe9a39bb53e79c570715669a6",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "k277 supplies the [shared entry/read design and exact unexercised segments](application-reference-packaging-runtime.md).",
+      "start_byte": 36152,
+      "end_byte": 36272,
+      "retained_rule": "Whole packaging companion owns exact retained entry/read/expectation contract; required actual evidence precedes credit.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39364,
+          "end_byte": 39396,
+          "first_line": 483,
+          "last_line": 483,
+          "text": "and [shared entry/read contract]",
+          "sha256": "daeb989ffcf2798be4fe04d5cadeb4e1ce624107ca175ecb455740c7b7c26784",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "qualified initializer and independently implemented validator are k269 construction owners\nbefore k245, with live affected requalification after the last measured change.",
+      "start_byte": 36463,
+      "end_byte": 36633,
+      "retained_rule": "Construction planning assigns separately qualified initializer/validator and live last-edit affected requalification before acquisition admission.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 35701,
+      "context_end_byte": 36634,
+      "context_sha256": "66d185e1ef7ac9868f2380a5ec925208ffd8393c16c8bb622fb346fdb0b47a35",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 39618,
+          "end_byte": 39695,
+          "first_line": 485,
+          "last_line": 486,
+          "text": "Qualified\ninitialization and independent validation precede target admission,",
+          "sha256": "ece1d52bc617489b2301db5ed860bee5a2a8f2a9912de5e5fbe2433656d8923d",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 39054,
+          "context_end_byte": 39762,
+          "context_sha256": "18631d538a069306d38591745824e95f84185a925412d3e400b6402991fa8ca6"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "are unexecuted.",
+      "start_byte": 53786,
+      "end_byte": 53801,
+      "retained_rule": "All controls join the required inventory and require actual scratch acknowledgements plus named bounded contact/entry evidence.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 53721,
+      "context_end_byte": 54130,
+      "context_sha256": "f1ba20e16de68de964e8463b91bf09bc94fc437167bd0522461b3c1145f170db",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 57961,
+          "end_byte": 58022,
+          "first_line": 711,
+          "last_line": 711,
+          "text": "These controls join the whole required independent inventory.",
+          "sha256": "c2b446da2716da796b40ef323b2c5c2a7fb4cb78b3a3efae6e9b20f66d45dd71",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 57961,
+          "context_end_byte": 58334,
+          "context_sha256": "2ce3823f8977c374989a189a720b0cf4d6a07fbc66cab7c47faf5e72f58aae87"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "consume k275; complete no-contact credit additionally consumes k276/k277.",
+      "start_byte": 53985,
+      "end_byte": 54058,
+      "retained_rule": "Approval and whole bounded contact/entry requirements apply; only k281 compared amendment supersedes universal complete no-contact sufficiency.",
+      "amendment": "k281 actual bounded-contact amendment supersedes only universal full no-contact sufficiency. Every named required identity/control/read/entry/freeze duty remains; no new amendment in k300.",
+      "context_start_byte": 53721,
+      "context_end_byte": 54130,
+      "context_sha256": "f1ba20e16de68de964e8463b91bf09bc94fc437167bd0522461b3c1145f170db",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C5",
+      "extract_sha256": "eaebc2a42e0715c944b98f7176d901aaeae8e0523750d03a8e5febe61aae6871",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C5",
+          "extract_heading": "Authoritative attempt evidence",
+          "start_byte": 58206,
+          "end_byte": 58263,
+          "first_line": 714,
+          "last_line": 714,
+          "text": "consume the approval and bounded contact/entry contracts.",
+          "sha256": "2a35e05b83cc3b954aa08632a2c06c15f311d8168d5a2c02dd53f077c1a14766",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 57961,
+          "context_end_byte": 58334,
+          "context_sha256": "2ce3823f8977c374989a189a720b0cf4d6a07fbc66cab7c47faf5e72f58aae87"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "This is k275's design proposal, subject to whole-k273 review.",
+      "start_byte": 55018,
+      "end_byte": 55079,
+      "retained_rule": "Whole-producer review and actual implementation qualification precede consumers.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 54871,
+      "context_end_byte": 55166,
+      "context_sha256": "8575efae728bfa6f078beabca3443e2f968dbe990dd6efac4ca15159aa68c91a",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 59223,
+          "end_byte": 59307,
+          "first_line": 729,
+          "last_line": 730,
+          "text": "Whole-producer review and required implementation qualification\nprecede consumption;",
+          "sha256": "e6c9e97a0c9c1ebd97aabd55cf4fa812775b18a73d06059ff4f00e31e1bfe766",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 59076,
+          "context_end_byte": 59395,
+          "context_sha256": "40da592069a70615ff782c3ad08e3338fadb8dd51923fb984353977f1e3f1522"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "No root, accepted revision, receipt or admission channel is provisioned or qualified.",
+      "start_byte": 55080,
+      "end_byte": 55165,
+      "retained_rule": "Each actual provisioned/accepted/qualified root/revision/receipt/channel is required, never supplied by design.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 54871,
+      "context_end_byte": 55166,
+      "context_sha256": "8575efae728bfa6f078beabca3443e2f968dbe990dd6efac4ca15159aa68c91a",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 59308,
+          "end_byte": 59395,
+          "first_line": 730,
+          "last_line": 731,
+          "text": "a design supplies no provisioned root, accepted revision, receipt\nor admission channel.",
+          "sha256": "a5f68a8978c17798f84f0d7f06baaa574fa38f6d03deec3b1e4338ac03357a95",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 59076,
+          "context_end_byte": 59395,
+          "context_sha256": "40da592069a70615ff782c3ad08e3338fadb8dd51923fb984353977f1e3f1522"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "Full independent no-contact evidence remains k276/k277 work,",
+      "start_byte": 90631,
+      "end_byte": 90691,
+      "retained_rule": "Named bounded contact/entry evidence qualifies its stated scope; socketpair supplies no full no-contact guarantee, under only k281 amendment.",
+      "amendment": "k281 actual bounded-contact amendment supersedes only universal full no-contact sufficiency. Every named required identity/control/read/entry/freeze duty remains; no new amendment in k300.",
+      "context_start_byte": 89733,
+      "context_end_byte": 91009,
+      "context_sha256": "a5938c14a8ac74f577bfee842e2003beb0f7278cbcc5c9905daf7ad73197efed",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 113816,
+          "end_byte": 113909,
+          "first_line": 1310,
+          "last_line": 1311,
+          "text": "Required bounded contact/entry evidence and accepted unknowns retain the\ncompanion contracts;",
+          "sha256": "1cae76da3e8b4a0d5aae39dc419ddeb9d4c17f4fbf47438cd16847e999179879",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 112918,
+          "context_end_byte": 114265,
+          "context_sha256": "fad7730760984fa361cf89bf867bcb73c1626b6574030c2d4636bf6ee0710bfb"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "Intermediary endpoint preservation remains unqualified.",
+      "start_byte": 90953,
+      "end_byte": 91008,
+      "retained_rule": "Original qualified retained Task/interpreter endpoint-preservation evidence precedes credit.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 89733,
+      "context_end_byte": 91009,
+      "context_sha256": "a5938c14a8ac74f577bfee842e2003beb0f7278cbcc5c9905daf7ad73197efed",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 114193,
+          "end_byte": 114265,
+          "first_line": 1313,
+          "last_line": 1313,
+          "text": "Intermediary endpoint preservation requires original qualified evidence.",
+          "sha256": "2141640f694fbafab28521f7e158ad7e536e87d5149c64a9f6c24544f60e9e37",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 112918,
+          "context_end_byte": 114265,
+          "context_sha256": "fad7730760984fa361cf89bf867bcb73c1626b6574030c2d4636bf6ee0710bfb"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "Required unexecuted controls",
+      "start_byte": 92107,
+      "end_byte": 92135,
+      "retained_rule": "Every specified anchor control remains required with exact independent refusal/positive evidence.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92107,
+      "context_end_byte": 92837,
+      "context_sha256": "93deeca8e437a363f48a2fe36b22e06672424215826d1c9bbe3e142a9bfbcaac",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 115364,
+          "end_byte": 115442,
+          "first_line": 1330,
+          "last_line": 1330,
+          "text": "Required controls pair complete acceptance with each isolating counterexample:",
+          "sha256": "419fd41d1403d5623ab9bbda4f95699c64f804521e4f6302438b1835999b89b0",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 115364,
+          "context_end_byte": 116082,
+          "context_sha256": "13620cd8713da42160f92cd45a0b6f989fc5e1ed8d0b8d5d1998d725f0663d53"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "K278 reconciles the whole protocol before mandatory review.",
+      "start_byte": 93620,
+      "end_byte": 93679,
+      "retained_rule": "Complete whole-protocol reconciliation and mandatory whole-producer review precede construction planning.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 116880,
+          "end_byte": 116967,
+          "first_line": 1347,
+          "last_line": 1347,
+          "text": "Whole-protocol reconciliation and mandatory whole review precede construction planning.",
+          "sha256": "5855b7cef46c3f79678c1e9b54a5e310470da21ce8954a6b495f3b1cc59c44ca",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "K275 cuts no construction leaves.",
+      "start_byte": 93680,
+      "end_byte": 93713,
+      "retained_rule": "Design supplies no construction handoff; construction planning assigns live responsibilities after whole review.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 116084,
+          "end_byte": 116179,
+          "first_line": 1339,
+          "last_line": 1339,
+          "text": "Construction planning assigns separate responsibilities for checker/registrar/strict extractor,",
+          "sha256": "ac6242ec9f26e094a6004769139a3e6531c86a64f3f28caec7a24fa9f1d2b64c",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "K276's [precise unavailable contact boundary](application-reference-contact-boundary.md)\nrequires accepted whole-byte inventory/basis inputs and U1\u2013U6 work under k269;",
+      "start_byte": 93714,
+      "end_byte": 93883,
+      "retained_rule": "Whole contact/inventory/basis inputs remain accepted complete objects; exact required/accepted-unknown U partition applies.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 117052,
+          "end_byte": 117144,
+          "first_line": 1349,
+          "last_line": 1349,
+          "text": "whole-byte inventory/basis inputs and its exact U1\u2013U6 required/accepted-unknown partition;",
+          "sha256": "3093c1a8ee9bf2b268ca21af71c6960b88cf35f90b8e06aae6ed6c7fbf49f0c6",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "k277 supplies the exact entry/read/expectation design;",
+      "start_byte": 93884,
+      "end_byte": 93938,
+      "retained_rule": "Whole packaging companion owns exact entry/read/expectation contract.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 117145,
+          "end_byte": 117214,
+          "first_line": 1350,
+          "last_line": 1350,
+          "text": "the packaging companion supplies the entry/read/expectation contract.",
+          "sha256": "43c4ac14961c5d8753bc227b669f3ebac2574f3489f78c98565c8a9a59c2c4dd",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "actual observations remain absent.",
+      "start_byte": 93939,
+      "end_byte": 93973,
+      "retained_rule": "Actual required named identities/controls qualify before credit; missing evidence stays live.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 117215,
+          "end_byte": 117328,
+          "first_line": 1350,
+          "last_line": 1351,
+          "text": "Until every required\nidentity/control qualifies, retain live instrument/subject work and refuse target admission.",
+          "sha256": "6806a325b56cfcf6d7c065ae3fde155e73ad7942bad3b54e40ba468158d3d7d8",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "k244/k242 live and k245's pass unused.",
+      "start_byte": 94054,
+      "end_byte": 94092,
+      "retained_rule": "Instrument/subject work stays live until required evidence qualifies; only acquisition owner spends the single pass.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 92838,
+      "context_end_byte": 94093,
+      "context_sha256": "8600ebdab6cad16e6619fb1d034367b78e38a1061e92978e42cb8ab9a965eaae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C6",
+      "extract_sha256": "55db6e6736a928ca7b8f050381d5cb0ec6f6302b861126deda432aabe18ef333",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C6",
+          "extract_heading": "Independent approval root",
+          "start_byte": 117215,
+          "end_byte": 117328,
+          "first_line": 1350,
+          "last_line": 1351,
+          "text": "Until every required\nidentity/control qualifies, retain live instrument/subject work and refuse target admission.",
+          "sha256": "6806a325b56cfcf6d7c065ae3fde155e73ad7942bad3b54e40ba468158d3d7d8",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 116084,
+          "context_end_byte": 117328,
+          "context_sha256": "90cc36390958f8d0c50bd4e9cabf04a485864a6aa677a1131edf802ccbe18cc8"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "actual registration/validation and complete k273 review remain due.",
+      "start_byte": 98068,
+      "end_byte": 98135,
+      "retained_rule": "Actual registration/validation and mandatory whole-producer review precede consumers.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 97685,
+      "context_end_byte": 98508,
+      "context_sha256": "43df08f1471aae4aa600e97728703a94d9471c21327f189b07d7505aba3d28ae",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C7",
+      "extract_sha256": "960a72123000394130121dc1ac3773e606787d81da2c4b1d139178b0d4da9206",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C7",
+          "extract_heading": "Closed qualification proof and required inventory",
+          "start_byte": 121304,
+          "end_byte": 121406,
+          "first_line": 1394,
+          "last_line": 1395,
+          "text": "actual registration/validation and complete whole-producer review\nare required before their consumers.",
+          "sha256": "9b639a3807e3fb4ad5e6d664251d0d609ef82a77e0c864b80803d974fbeaa8cb",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 120921,
+          "context_end_byte": 121778,
+          "context_sha256": "acafe5669fdd86eb30046f20822a6910f3a97937594edbf9dac4b4064226c307"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "preservation through Task/interpreter and startup capability correspondence are unqualified.",
+      "start_byte": 106945,
+      "end_byte": 107037,
+      "retained_rule": "Required known endpoint/startup correspondence needs original qualification; complete opaque coverage stays accepted unknown.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 106288,
+      "context_end_byte": 107038,
+      "context_sha256": "8e61ca47ffa4addf87f3d9116135708804cc6a160fde8bea5051d1cd23723538",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C9",
+      "extract_sha256": "88f803043ab1f71ce5a1dab8144d22444b4f56b8fae59ca827b428c76720c62e",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C9",
+          "extract_heading": "Fixed composition without target contact",
+          "start_byte": 130946,
+          "end_byte": 131074,
+          "first_line": 1513,
+          "last_line": 1514,
+          "text": "preservation through Task/interpreter and required known startup capability correspondence\nneed original qualification evidence;",
+          "sha256": "5d5f9b3b2cf3b5a05d2c33eeef059463da4fa8a476b60b4c03e35f835a6d1296",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 130289,
+          "context_end_byte": 131138,
+          "context_sha256": "e2b2b193cf19f90bedca37843be7f33c82a1339e1cd41fe987624808b742e681"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "Whole-k273 review/integration and k269's exact owners remain due;",
+      "start_byte": 109854,
+      "end_byte": 109919,
+      "retained_rule": "Whole-producer review/every earned integration and exact live construction responsibilities precede consumers.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 109401,
+      "context_end_byte": 110041,
+      "context_sha256": "60984e2beb479e9b63c64420b924bd44d36aaaab30244ed2dd65a0e3b09233b0",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C9",
+      "extract_sha256": "88f803043ab1f71ce5a1dab8144d22444b4f56b8fae59ca827b428c76720c62e",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C9",
+          "extract_heading": "Fixed composition without target contact",
+          "start_byte": 133947,
+          "end_byte": 134031,
+          "first_line": 1550,
+          "last_line": 1550,
+          "text": "Whole-producer review/integration and exact construction owners precede consumption;",
+          "sha256": "32f5d1b22e70bd4fda11287d09103cdb67bd784909174af4bed7df6eee396825",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 133502,
+          "context_end_byte": 134159,
+          "context_sha256": "5b399d25981e47a222a271427a576bfae8539b242a3508f09520acb553e17b58"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "actual rehearsal/read/\nno-contact credit is unavailable.",
+      "start_byte": 109920,
+      "end_byte": 109976,
+      "retained_rule": "Required rehearsal/read named evidence qualifies under bounded contact limits; no target wiring/native calibration.",
+      "amendment": "k281 actual bounded-contact amendment supersedes only universal full no-contact sufficiency. Every named required identity/control/read/entry/freeze duty remains; no new amendment in k300.",
+      "context_start_byte": 109401,
+      "context_end_byte": 110041,
+      "context_sha256": "60984e2beb479e9b63c64420b924bd44d36aaaab30244ed2dd65a0e3b09233b0",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C9",
+      "extract_sha256": "88f803043ab1f71ce5a1dab8144d22444b4f56b8fae59ca827b428c76720c62e",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C9",
+          "extract_heading": "Fixed composition without target contact",
+          "start_byte": 134032,
+          "end_byte": 134095,
+          "first_line": 1551,
+          "last_line": 1551,
+          "text": "required rehearsal/read evidence must qualify its named claims.",
+          "sha256": "c5106948b6632db9cf0d2e90c9c54c7b5844d8fc02568cac96c94fb7de9e8f39",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 133502,
+          "context_end_byte": 134159,
+          "context_sha256": "5b399d25981e47a222a271427a576bfae8539b242a3508f09520acb553e17b58"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "All programmes/specimens/controls remain unbuilt.",
+      "start_byte": 113455,
+      "end_byte": 113504,
+      "retained_rule": "Original independently authored/acquired specimen/runtime/control evidence precedes producer comparison.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 112882,
+      "context_end_byte": 113505,
+      "context_sha256": "18ca8b0ba03dcb5501df96608043d803e9ba0b97ccf73fec358fc593df25d3d6",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C10",
+      "extract_sha256": "a4fa31de0f3da87a0c95953822ab2f69854a022a4862357ec59b64fa8e374af5",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C10",
+          "extract_heading": "Independent decoder expectation classes",
+          "start_byte": 137574,
+          "end_byte": 137654,
+          "first_line": 1592,
+          "last_line": 1593,
+          "text": "Design text supplies no executed programme,\nspecimen result or control evidence.",
+          "sha256": "de7fe359ab4b3f720a4630d261eaca3909e622779a5064d096c9e04dd2f6c791",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 137001,
+          "context_end_byte": 137654,
+          "context_sha256": "bcbf827477747d51fc43a3adb3628d34821027ef2f331c6bf969e15f944209dc"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "It remains a proposal for whole-k273 review\nand actual construction/qualification;",
+      "start_byte": 155192,
+      "end_byte": 155274,
+      "retained_rule": "Whole-producer review and actual construction/qualification precede lifecycle consumption.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 154958,
+      "context_end_byte": 155487,
+      "context_sha256": "9686ce88979bde4d192ee51476c71ad23ee03371e6eb96030b4b13a4cd4c684e",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C13",
+      "extract_sha256": "9047e3b38c7df2d8d820bb9f30ca9f1971dc283d8fc5daea4b63627c79c34ba1",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C13",
+          "extract_heading": "One-pass acquisition and closure",
+          "start_byte": 197957,
+          "end_byte": 198037,
+          "first_line": 2112,
+          "last_line": 2113,
+          "text": "Whole-producer review and actual\nconstruction/qualification precede consumption;",
+          "sha256": "1ccb89751ac683a909b8a3fddac29d75778a8a9d558083fae7956115764c225d",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 197723,
+          "context_end_byte": 198249,
+          "context_sha256": "33b803c3994826c5b16116dfab86f90655b7976b2d10f35fe8ce1958aa407e6c"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "These controls are **specified here, not yet executed**.",
+      "start_byte": 168801,
+      "end_byte": 168857,
+      "retained_rule": "Observe all intended positives/negatives within the named controlled seam; no design bit or universal no-contact credit.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 168366,
+      "context_end_byte": 168858,
+      "context_sha256": "11955d743c6e149456a229a2eb3345574896c0fc34e4c0aaa2c0458bd6ecdf8c",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C17",
+      "extract_sha256": "546c616d2f985b0ead73a6fb8c740000a355c5bef66437457883b60d7395cf73",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C17",
+          "extract_heading": "Independent controls required before target acquisition",
+          "start_byte": 211668,
+          "end_byte": 211749,
+          "first_line": 2289,
+          "last_line": 2290,
+          "text": "Design text supplies no\nexecuted control evidence or universal no-contact credit.",
+          "sha256": "fba741939145c4bf0e1b9c681547906d6b49b0c396eca65b9dd00095a9f871c3",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 211200,
+          "context_end_byte": 211749,
+          "context_sha256": "9578f9745dbf264d06c2721df28e3acf3e28d3b68c4f3d24f672c2461fdf9b69"
+        }
+      ]
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "text": "They are specified, unexecuted, and never qualify from a design bit.",
+      "start_byte": 172098,
+      "end_byte": 172166,
+      "retained_rule": "Every original/admission control remains in the independent required inventory; no design-bit qualification.",
+      "amendment": "Reporting/retired-owner wording repair; no authority or obligation reduction.",
+      "context_start_byte": 171998,
+      "context_end_byte": 172167,
+      "context_sha256": "75f16d0e451a9bff022ce5a76712ec25944d6375e8c273cb247dc60a6055a714",
+      "source_sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e",
+      "extract_id": "C17",
+      "extract_sha256": "546c616d2f985b0ead73a6fb8c740000a355c5bef66437457883b60d7395cf73",
+      "retained_evidence": [
+        {
+          "source": "docs/verification/application-reference-evidence.md",
+          "extract_id": "C17",
+          "extract_heading": "Independent controls required before target acquisition",
+          "start_byte": 214990,
+          "end_byte": 215027,
+          "first_line": 2316,
+          "last_line": 2316,
+          "text": "They never qualify from a design bit.",
+          "sha256": "39f6b194d950cd1320312bafcde3a97aefb2b71720b3ee8ee1eec51a3c85c048",
+          "source_sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
+          "context_start_byte": 214890,
+          "context_end_byte": 215027,
+          "context_sha256": "b56b21475d08c249ae16807d3e78d3b2d62762a4e598d27cf6e68f200ef9a0e3"
+        }
+      ]
+    }
+  ],
+  "snapshot_revisions": {
+    "93463d0a354570404028e92570c7079014c01bcd": "93463d0a354570404028e92570c7079014c01bcd",
+    "9045693aa957": "9045693aa957ea54acce3ae7d5ac58d412c23d6c",
+    "04bd81cfb299": "04bd81cfb299bc83422e7a61e4d1d0b1c8d76e0b",
+    "84189606274d": "84189606274d2343ce44d056c514ad50b758a1e3",
+    "86b111365a9b": "86b111365a9b4d73e40bdbf042f23a320424df71"
+  },
+  "historical_originals": [
+    {
+      "source_alias": "S",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8"
+    },
+    {
+      "source_alias": "D",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962"
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "93463d0a354570404028e92570c7079014c01bcd",
+      "sha256": "b2f178cb2640c860abe70dc5aa86734b82668604c53a8954b97af51621674dc4"
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "9045693aa957",
+      "sha256": "866b154420e2bfce2b05118681add6c95cf326db9420fcee99075d15ee84b23e"
+    },
+    {
+      "source_alias": "C",
+      "snapshot": "04bd81cfb299",
+      "sha256": "eddddbc9b7b16ee337aa4c8f863ec375f172b9a8c2f535d36dbb406e3ac5eec3"
+    },
+    {
+      "source_alias": "S",
+      "snapshot": "84189606274d",
+      "sha256": "78aa94a6a8e2602c1004c1bc19cf12585d11f44d52dbcffba8ea25cf72e0ed31"
+    },
+    {
+      "source_alias": "S",
+      "snapshot": "86b111365a9b",
+      "sha256": "a40e738db9fe651a93852a4c4b17b4d62ab3b7035dd87b632ff00cf9aaf0053c"
+    }
+  ],
+  "changes": [
+    {
+      "original_first_line": 98,
+      "original_end_line_exclusive": 98,
+      "current_first_line": 98,
+      "current_end_line_exclusive": 106,
+      "old": "",
+      "new": "\nDocumentary API/source descriptions and earlier design references in the selected sections\nare fixed historical statements of snapshot `93463d0a354570404028e92570c7079014c01bcd`.\nThey establish only what that document recorded, not possession of its complete original\nbases or current SDK/kernel/runtime/image correspondence. Independent authors must retain\nand accept each whole original basis and separately qualify actual required Q/P/A facts\nbefore its consumer. Stable responsibilities below govern execution; retired designers\nare historical sources and cannot appoint, accept, qualify or close a later operation.\n"
+    },
+    {
+      "original_first_line": 436,
+      "original_end_line_exclusive": 438,
+      "current_first_line": 444,
+      "current_end_line_exclusive": 447,
+      "old": "K269 retains an explicit last-edit requalification/audit/close owner through later\npermission/review/provisioning changes, before k245.\n",
+      "new": "Construction planning assigns explicit live last-edit requalification, independent\nacceptance/audit and distinct instrument-close responsibilities through later permission,\nreview/provisioning changes, before acquisition admission.\n"
+    },
+    {
+      "original_first_line": 449,
+      "original_end_line_exclusive": 450,
+      "current_first_line": 458,
+      "current_end_line_exclusive": 459,
+      "old": "A document digest or export name creates no successor. K270's\n",
+      "new": "A document digest or export name creates no successor. The\n"
+    },
+    {
+      "original_first_line": 747,
+      "original_end_line_exclusive": 749,
+      "current_first_line": 756,
+      "current_end_line_exclusive": 758,
+      "old": "is independent of capture, inventory, checker/registrar, verifier and launcher producers\nand the repairer whose final bytes it accepts. It examines actual retained artifacts and\n",
+      "new": "independent of capture, inventory, checker/registrar, verifier and launcher producers\nand the repairer whose final bytes he accepts. He examines actual retained artifacts and\n"
+    },
+    {
+      "original_first_line": 750,
+      "original_end_line_exclusive": 752,
+      "current_first_line": 759,
+      "current_end_line_exclusive": 761,
+      "old": "original separately authored known-answer/omission/substitution/channel controls itself\nor from the independently appointed adjudicator. It explicitly commissions exact artifacts\n",
+      "new": "original separately authored known-answer/omission/substitution/channel controls himself\nor from the independently appointed adjudicator. He explicitly commissions exact artifacts\n"
+    },
+    {
+      "original_first_line": 772,
+      "original_end_line_exclusive": 773,
+      "current_first_line": 781,
+      "current_end_line_exclusive": 782,
+      "old": "or undetectable whole-register rollback by the user/admin retains k270's tamper limit.\n",
+      "new": "or undetectable whole-register rollback by the user/admin retains the canonical cooperative tamper limit.\n"
+    },
+    {
+      "original_first_line": 796,
+      "original_end_line_exclusive": 797,
+      "current_first_line": 805,
+      "current_end_line_exclusive": 806,
+      "old": "selected human-owned route within k270's delegated scope-preserving authority. Required\n",
+      "new": "selected human-owned route within the canonical delegated scope-preserving authority. Required\n"
+    },
+    {
+      "original_first_line": 1072,
+      "original_end_line_exclusive": 1074,
+      "current_first_line": 1081,
+      "current_end_line_exclusive": 1083,
+      "old": "input. This fills k274's reserved validation interface without altering exclusive initialization\nor consumption. Scratch receipts qualify the interface, never authorize live initialization.\n",
+      "new": "input. The external validation interface preserves exclusive initialization and consumption.\nScratch receipts qualify the interface, never authorize live initialization.\n"
+    },
+    {
+      "original_first_line": 1082,
+      "original_end_line_exclusive": 1083,
+      "current_first_line": 1091,
+      "current_end_line_exclusive": 1092,
+      "old": "k274 external-validation refinement carried throughout the complete replacement handoff.\n",
+      "new": "external-validation refinement carried throughout the complete replacement handoff.\n"
+    },
+    {
+      "original_first_line": 1167,
+      "original_end_line_exclusive": 1168,
+      "current_first_line": 1176,
+      "current_end_line_exclusive": 1177,
+      "old": "under k277. Reading reporting for another purpose makes those actual bytes a qualified input.\n",
+      "new": "under the complete task/runtime closure contract. Reading reporting for another purpose makes those actual bytes a qualified input.\n"
+    },
+    {
+      "original_first_line": 1187,
+      "original_end_line_exclusive": 1189,
+      "current_first_line": 1196,
+      "current_end_line_exclusive": 1199,
+      "old": "them. Preserve their bytes and all other canonical clauses except Antony's separately\napproved contact/lookup amendments and exact control-status relocation. Publish later\n",
+      "new": "them. Preserve their bytes and all other canonical clauses except the exact compared\nk281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status and\nk295 bounded correspondence-observation amendments actually approved by Antony. Publish later\n"
+    },
+    {
+      "original_first_line": 1230,
+      "original_end_line_exclusive": 1231,
+      "current_first_line": 1240,
+      "current_end_line_exclusive": 1241,
+      "old": "| The approved canonical sentence stays verbatim outside `## Selected reference and evidence requirements`; all selected bytes otherwise match | Move the sentence back into the selection, move a boundary, duplicate/miss a heading, change its level or overlap locators: refuse the intended membership/boundary check. A heading-looking fenced line is not a boundary; an ambiguous fence refuses. |\n",
+      "new": "| The approved control-status sentence stays verbatim outside `## Selected reference and evidence requirements`; the approved pass observation stays in the separate unconsumed report, with only the approved retained Both capitalization and unchanged following private/native line; all selected bytes otherwise match | Move either observation back into the selection, alter an adjoining hold/duty, move a boundary, duplicate/miss a heading, change its level or overlap locators: refuse the intended membership/boundary/clause check. A heading-looking fenced line is not a boundary; an ambiguous fence refuses. |\n"
+    },
+    {
+      "original_first_line": 1329,
+      "original_end_line_exclusive": 1330,
+      "current_first_line": 1339,
+      "current_end_line_exclusive": 1340,
+      "old": "K269 assigns separate construction owners for checker/registrar/strict extractor, independent\n",
+      "new": "Construction planning assigns separate responsibilities for checker/registrar/strict extractor, independent\n"
+    },
+    {
+      "original_first_line": 1473,
+      "original_end_line_exclusive": 1474,
+      "current_first_line": 1483,
+      "current_end_line_exclusive": 1484,
+      "old": "No authorized current unprivileged collector or full proxy/initial-map coverage is supplied.\n",
+      "new": "The bounded evidence selection commissions no full current unprivileged collector or complete proxy/initial-map mechanism.\n"
+    },
+    {
+      "original_first_line": 1476,
+      "original_end_line_exclusive": 1478,
+      "current_first_line": 1486,
+      "current_end_line_exclusive": 1488,
+      "old": "No complete realizable arrangement is established under the selected authority; this is a\nbounded unavailable conclusion, not a theorem that no unprivileged arrangement can exist.\n",
+      "new": "The selected bounded evidence contract requires no complete C1\u2013C8 arrangement; its accepted\nunknown coverage is not a theorem that no unprivileged arrangement can exist.\n"
+    },
+    {
+      "original_first_line": 1485,
+      "original_end_line_exclusive": 1488,
+      "current_first_line": 1495,
+      "current_end_line_exclusive": 1499,
+      "old": "under the accepted risk. Failed controls or known defects remain repair work. K287 owns\nwhole-k282 reconciliation/review/integration before k269 assigns the required named\nowners; no partial child handoff or impossible U2 repeat is permitted.\n",
+      "new": "under the accepted risk. Failed controls or known defects remain repair work. Complete\nadmission-design reconciliation, mandatory whole-producer review and every earned integration\nprecede construction planning, which assigns the required live named responsibilities;\nno partial child handoff or impossible U2 repeat is permitted.\n"
+    },
+    {
+      "original_first_line": 1489,
+      "original_end_line_exclusive": 1491,
+      "current_first_line": 1500,
+      "current_end_line_exclusive": 1503,
+      "old": "concrete separate human decision and reviewed mechanism before its consumer; none is\nselected, probed or implied here. Required copies remain missing work, never useful loss.\n",
+      "new": "concrete separate human decision and reviewed mechanism before its consumer; the selected\nbounded contract grants none of those alternatives. Required unavailable copies remain\nmissing work, never useful loss.\n"
+    },
+    {
+      "original_first_line": 1792,
+      "original_end_line_exclusive": 1794,
+      "current_first_line": 1804,
+      "current_end_line_exclusive": 1806,
+      "old": "and a conditional `failure.disposition` have their k292 kind/immutability/acknowledgement\nrules. Maintenance can reserve/write the disarm branch only; it cannot create eligible\n",
+      "new": "and a conditional `failure.disposition` have the durable disarm/release contract's\nkind/immutability/acknowledgement rules. Maintenance can reserve/write the disarm branch only; it cannot create eligible\n"
+    },
+    {
+      "original_first_line": 2225,
+      "original_end_line_exclusive": 2226,
+      "current_first_line": 2237,
+      "current_end_line_exclusive": 2239,
+      "old": "The instrument child must select and qualify its concrete complete decoder route.\n",
+      "new": "Instrument construction must qualify the selected concrete complete decoder route and\nevery admitted branch before that branch receives evidence credit.\n"
+    }
+  ],
+  "unchanged_comparisons": {
+    "docs/adr/filesystem-access-is-descriptor-relative.md": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+    "docs/verification/application-population-metadata-shape.md": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+    "docs/verification/application-reference-contact-boundary.md": "3481971460ad7f67e8665c98ecd70d7b90283f2a1ab93b86cff4014998177357",
+    "docs/verification/application-reference-packaging-runtime.md": "7e8e76a35a991b4325d7537adb9cada603550b7803961a5b4f7dd67189dc1ea1",
+    "docs/verification/reference-contact-inventory/api-basis.tsv": "e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e",
+    "docs/verification/reference-contact-inventory/bsd-declarations.tsv": "2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5",
+    "docs/verification/reference-contact-inventory/mach-traps.tsv": "42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3",
+    "docs/verification/reference-contact-inventory/mig-routines.tsv": "1156336abe2a02c7e297f75bff65dc624a701fbb72d5b8b7568d6ea1111424d0",
+    "docs/verification/reference-contact-inventory/source-pins.tsv": "4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33",
+    "docs/verification/reference-contact-partition.json": "ffc326a664600575f4048de2d50391b08c2c7e1b1905fa3085569c21793870de",
+    "docs/verification/reference-contact-partition.tsv": "408547f785327c407a7b02c881cea19345cdd08c1b802a79fd7926d429ccab49",
+    "docs/verification/reference-input-partition.tsv": "fe0a94ea3bfdd8bf1278fae7e04aed2cfd6922d858a0b63e37cea4f242c10e9e",
+    "docs/verification/reference-packaging-partition.json": "ce24c6e15afdf31b6c7b2619e41445b3cfbde854fbcf46156427f0497cd39e8e",
+    "docs/verification/reference-packaging-partition.tsv": "faed12fd7614bbbc6e99435900dc3c9ae45a3ceff99442853736bf951e805d2a"
+  },
+  "amendment_limits": "No new amendment: only actual k281 contact/lookup/control-status, k290 human-ownership/foreground/exact-pass-status and k295 bounded observation authority. Canonical selected extract, whole D and original-obligation comparison unchanged in this slice."
+}

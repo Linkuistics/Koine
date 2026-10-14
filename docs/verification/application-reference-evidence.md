@@ -96,6 +96,14 @@ test seam. Both advertisement and ordinary-consumption holds remain.
 
 ## Ownership and alternatives
 
+Documentary API/source descriptions and earlier design references in the selected sections
+are fixed historical statements of snapshot `93463d0a354570404028e92570c7079014c01bcd`.
+They establish only what that document recorded, not possession of its complete original
+bases or current SDK/kernel/runtime/image correspondence. Independent authors must retain
+and accept each whole original basis and separately qualify actual required Q/P/A facts
+before its consumer. Stable responsibilities below govern execution; retired designers
+are historical sources and cannot appoint, accept, qualify or close a later operation.
+
 One instrument owns bounded source acquisition, root/scope checks, file and
 inventory observations, immutable byte packaging and the final evidence envelope.
 It accepts the fixed permission contract and a new output destination; it does
@@ -433,8 +441,9 @@ a per-recipe digest cannot replace that read, and unrelated changes invalidate i
 Known required task/configuration/input/image identities and declared fd/channel operations
 remain Q/P blockers; complete opaque startup/initial-right/map/proxy correspondence is
 the accepted unknown portion of U1–U4, not a blanket U1–U6 gate. No dynamically resolved dependency inherits a source-only identity.
-K269 retains an explicit last-edit requalification/audit/close owner through later
-permission/review/provisioning changes, before k245.
+Construction planning assigns explicit live last-edit requalification, independent
+acceptance/audit and distinct instrument-close responsibilities through later permission,
+review/provisioning changes, before acquisition admission.
 If a recipe/verifier reads a reporting document, it becomes an input. Finish all
 reconciliation and executable/schema/fixture/task edits before measurement. Afterwards
 write proof references only in reporting outputs. Review repairs require requalification;
@@ -446,7 +455,7 @@ neither reconciliation nor writing a proof into a pinned document inherits the o
 shows the proposed permit-consumption and original/derivative lifecycle. One fixed independently owned
 local subject must bind the stable identity
 `koine.reference-evidence.macos-27.0.1-26A434.1` to an explicit authorization receipt.
-A document digest or export name creates no successor. K270's
+A document digest or export name creates no successor. The
 [canonical delegated choices](application-population-metadata-shape.md#authority-and-admission-choices)
 select the exact absolute location in the independent KoineReferenceEvidence namespace,
 one explicit initialization, cooperative limits and the approval/correction authority.
@@ -744,11 +753,11 @@ interpreter/stdlib/packages, loader images and observed read closure are bootstr
 inspection-only review and every earned integration selects the protocol, construction planning
 assigns actual artifacts, whole-implementation review/integration and independent original
 bootstrap/control evidence. Antony is the commissioning/acceptance owner. He is
-is independent of capture, inventory, checker/registrar, verifier and launcher producers
-and the repairer whose final bytes it accepts. It examines actual retained artifacts and
+independent of capture, inventory, checker/registrar, verifier and launcher producers
+and the repairer whose final bytes he accepts. He examines actual retained artifacts and
 their source/runtime closure, reads the original review and all dispositions, and obtains
-original separately authored known-answer/omission/substitution/channel controls itself
-or from the independently appointed adjudicator. It explicitly commissions exact artifacts
+original separately authored known-answer/omission/substitution/channel controls himself
+or from the independently appointed adjudicator. He explicitly commissions exact artifacts
 and the fixed root. Candidate-verifier self-evidence cannot supply this terminal act;
 unavailable required original results or unresolved findings prevent commissioning.
 
@@ -769,7 +778,7 @@ Each approval channel is opened explicitly by its chartered acceptance owner, ne
 or qualification command, with no reusable bearer file or public socket. Role separation
 is cooperative workflow ownership evidenced by those direct records, not OS isolation
 between same-UID processes. Deliberate external-register forgery, terminal-checker bypass
-or undetectable whole-register rollback by the user/admin retains k270's tamper limit.
+or undetectable whole-register rollback by the user/admin retains the canonical cooperative tamper limit.
 Producer-only regenerated files, checkout restoration and ordinary proof/export cleanup
 remain covered refusals. No key, privileged service, administrator, new consent or secure
 monotonic store is selected; stronger hostile-user protection needs a new human decision.
@@ -793,7 +802,7 @@ initialization is uncertain. It grants no second permit initialization or target
 ### Chartered independent acceptance
 
 **Antony is the independent acceptance/commissioning operator.** This implements the
-selected human-owned route within k270's delegated scope-preserving authority. Required
+selected human-owned route within the canonical delegated scope-preserving authority. Required
 inspection-only review and every earned integration still precede acceptance; they supply
 original evidence, not appointment or register writes. Construction planning assigns live
 preparation/verification handles and a human acceptance checkpoint before each first
@@ -1069,8 +1078,8 @@ mutable/qualification entry first retains its disarm event; affected changes rep
 qualification/acceptance/audit/close/release suffix; it never repeats permit initialization.
 Qualification results bind earlier payloads; external acceptance binds results afterwards.
 No record contains its own digest, a later acceptance digest, or the final proof as a qualified
-input. This fills k274's reserved validation interface without altering exclusive initialization
-or consumption. Scratch receipts qualify the interface, never authorize live initialization.
+input. The external validation interface preserves exclusive initialization and consumption.
+Scratch receipts qualify the interface, never authorize live initialization.
 
 The receipt binds its immutable **issuance revision**. Later scope-preserving corrections
 require an independently approved external binding from that issuance receipt to the
@@ -1079,7 +1088,7 @@ authority facts stay equal: one attempt, location, UID, selected scope, prohibit
 and persistence limits. New ancestry/replaced receipts cannot be corrections. Changed
 technical extracts/inventory/tools need independent semantic review and affected qualification
 before eligibility; broader authority goes to Antony. This distinction is the required
-k274 external-validation refinement carried throughout the complete replacement handoff.
+external-validation refinement carried throughout the complete replacement handoff.
 
 A correction binds the exact issuance and current profile bytes/identities, their complete
 field-to-clause concordances, and an independently reviewed comparison of every
@@ -1164,7 +1173,7 @@ full raw snapshots are invocation evidence; qualified semantic inputs are exact 
 locators and extractor identity. Reporting edits outside them pass only through independently
 qualified reporting-mutation controls preserving every extract/boundary. Other actual reads,
 including tasks/global configuration and Python runtime/packages, require full-byte identity
-under k277. Reading reporting for another purpose makes those actual bytes a qualified input.
+under the complete task/runtime closure contract. Reading reporting for another purpose makes those actual bytes a qualified input.
 No arbitrary semantic slicing, unobserved dependency or per-recipe hash inherits this exception.
 Proof references belong outside the selected extracts, avoiding a proof inserted into its
 own input; snapshot provenance still records reporting changes.
@@ -1184,8 +1193,9 @@ review/accept it and requalify affected claims.
 Requirements-session statements in the canonical selected section describe that fixed
 interview's non-execution, not later acquisition. Its unestablished-fit/private/native
 hold clauses remain prerequisite gates until the existing qualifying evidence satisfies
-them. Preserve their bytes and all other canonical clauses except Antony's separately
-approved contact/lookup amendments and exact control-status relocation. Publish later
+them. Preserve their bytes and all other canonical clauses except the exact compared
+k281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status and
+k295 bounded correspondence-observation amendments actually approved by Antony. Publish later
 outcomes separately without editing the historical fact into a current success. The
 descriptor ADR's historical measurements and pinned source/API facts likewise keep their
 original reference and bounded interpretation. Changed bases/dispositions are input changes.
@@ -1227,7 +1237,7 @@ Presentation checks of document copies supply no executed instrument-control cre
 | Required positive | Isolating change and required result |
 | --- | --- |
 | Commissioning/provisioning/qualification/audit/close/promotion observations change only the separate unconsumed report or existing unselected reporting sections, one event at a time | Each comparison preserves every accepted extract/locator and full companion/table/basis/task/runtime object. Raw document snapshot provenance may change. Add one clause inside a selected section: exact extract equality refuses and affected qualification becomes stale. No prior pass is inferred from the report. |
-| The approved canonical sentence stays verbatim outside `## Selected reference and evidence requirements`; all selected bytes otherwise match | Move the sentence back into the selection, move a boundary, duplicate/miss a heading, change its level or overlap locators: refuse the intended membership/boundary check. A heading-looking fenced line is not a boundary; an ambiguous fence refuses. |
+| The approved control-status sentence stays verbatim outside `## Selected reference and evidence requirements`; the approved pass observation stays in the separate unconsumed report, with only the approved retained Both capitalization and unchanged following private/native line; all selected bytes otherwise match | Move either observation back into the selection, alter an adjoining hold/duty, move a boundary, duplicate/miss a heading, change its level or overlap locators: refuse the intended membership/boundary/clause check. A heading-looking fenced line is not a boundary; an ambiguous fence refuses. |
 | Both companions, every row of all five tables and each accepted complete documentary/runtime basis object match their full bytes | Change introduction/closing prose, any non-claim table row/branch/macro expression/API disposition, byte/length/encoding/line ending or basis object outside a cited locator: whole-object equality refuses. A report label, unchanged totals or equal selected snippets cannot exempt it. |
 | Earlier Q inputs are stable while independent acceptance/audit/close/release emits separate finalized successor records | Insert the Q proof or later record into Q's input set, omit a consumed object, create a dependency cycle or mutate an earlier accepted charter/revision/record: set/dependency/byte checks refuse. Changed previously consumed provisioning facts require disarmed affected requalification. |
 | Qualified standalone task/script/configuration and runtime/image set remain unchanged while reports are edited | Change any actual task/configuration/basis/expectation/image input, or add a report read/include/link traversal: the actual-read/full-byte/set check refuses. A changed unrelated part of a consumed root Taskfile still invalidates its claim. |
@@ -1326,7 +1336,7 @@ intent/spending. Reporting-only edits and valid scope-preserving corrections are
 with unchanged receipt bytes and no restored authority. Retain exact refusal coordinates
 and independent contact evidence; none of these specified controls is an approval record.
 
-K269 assigns separate construction owners for checker/registrar/strict extractor, independent
+Construction planning assigns separate responsibilities for checker/registrar/strict extractor, independent
 inventory/profile/concordance/schema authoring, bootstrap-control adjudication, inspection
 review/earned integration and separately chartered clean/findings-path acceptance,
 qualified initializer, actual receipt validation/corrections and independent release supervision.
@@ -1470,11 +1480,11 @@ mutation is pure, and no exhaustive observation programme is commissioned.
 
 The published DTrace source constructs **syscall and mach_trap** entry/return providers;
 it is not merely a BSD list. Its published privilege glue checks superuser credentials.
-No authorized current unprivileged collector or full proxy/initial-map coverage is supplied.
+The bounded evidence selection commissions no full current unprivileged collector or complete proxy/initial-map mechanism.
 Apple documents Endpoint Security's root and entitlement prerequisites; neither is selected.
 An unqualified sandbox/broker/debugger or privileged collector is not a full substitute.
-No complete realizable arrangement is established under the selected authority; this is a
-bounded unavailable conclusion, not a theorem that no unprivileged arrangement can exist.
+The selected bounded evidence contract requires no complete C1–C8 arrangement; its accepted
+unknown coverage is not a theorem that no unprivileged arrangement can exist.
 
 The companion's [U1–U6 partition](application-reference-contact-boundary.md#candidate-assessment-and-exact-unavailable-identities)
 separates accepted complete-universe/mechanism/opaque-startup/proxy/map gaps from required
@@ -1482,12 +1492,14 @@ known UID/build/authority/image/channel/entry/read identities, named controls an
 freeze. Named actual adapter/composition/read claims need their exact evidence; they do
 not require a full mechanism for accepted unknown classes and cannot be described as
 full no-contact. Forbidden native/startup/inherited/proxy contact could remain undetected
-under the accepted risk. Failed controls or known defects remain repair work. K287 owns
-whole-k282 reconciliation/review/integration before k269 assigns the required named
-owners; no partial child handoff or impossible U2 repeat is permitted.
+under the accepted risk. Failed controls or known defects remain repair work. Complete
+admission-design reconciliation, mandatory whole-producer review and every earned integration
+precede construction planning, which assigns the required live named responsibilities;
+no partial child handoff or impossible U2 repeat is permitted.
 Any pursued root/sudo/SIP/helper/entitlement/signing/consent/VM alternative requires a
-concrete separate human decision and reviewed mechanism before its consumer; none is
-selected, probed or implied here. Required copies remain missing work, never useful loss.
+concrete separate human decision and reviewed mechanism before its consumer; the selected
+bounded contract grants none of those alternatives. Required unavailable copies remain
+missing work, never useful loss.
 
 ## Fixed composition without target contact
 
@@ -1789,8 +1801,8 @@ kind/phase/member bytes and permitted publisher/consumer operation before access
 unbound sibling is admitted. Later outputs never mutate the finalized revision payload
 or earlier Q basis; they retain the existing separate acyclic phase-record contract.
 At each `release-events/n`, exactly `disarm.intent` **or** `eligible.intent`, `event.result`
-and a conditional `failure.disposition` have their k292 kind/immutability/acknowledgement
-rules. Maintenance can reserve/write the disarm branch only; it cannot create eligible
+and a conditional `failure.disposition` have the durable disarm/release contract's
+kind/immutability/acknowledgement rules. Maintenance can reserve/write the disarm branch only; it cannot create eligible
 authority or clear any permit/intent. Actual object support/identity is separate P evidence.
 This operation policy plus Q09's fixed event pairs is no persistent-storage qualification.
 
@@ -2222,7 +2234,8 @@ order, encoding and duplicate serialized-key evidence; a semantic dictionary can
 claim to reconstruct them. Decoder coercion, duplicate-key resolution or an
 unsupported native type must be disclosed and independently qualified; an invented
 tree or Python type-name projection cannot stand in for native typed observations.
-The instrument child must select and qualify its concrete complete decoder route.
+Instrument construction must qualify the selected concrete complete decoder route and
+every admitted branch before that branch receives evidence credit.
 
 Every information and name file retains both CFBundleDisplayName and CFBundleName
 candidates: key absent, present empty string, usable string, non-string with its

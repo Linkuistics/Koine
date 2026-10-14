@@ -87,3 +87,20 @@ coverage assertions and retired design owners need individual records. Decompose
 the three independently verifiable input/closure boundaries above under Grove's fits-one-
 focused-session test. This is original closing work, not new research/capture or an
 operator decision. The closing child retains mandatory whole review and promotions.
+
+## Completed documentary slices and closing consumer
+
+K296 completes the whole contact companion/five quoted tables; k299/k300 now close
+reference-evidence-normative-inputs-k297's original complete selected S/D/C plus whole
+packaging documentary boundary. Consume the scoped reference-contact-, reference-packaging-
+and reference-selected-partition TSV/JSON artifacts and the exact original k297 conjunction
+comparison in application-reference-input-partition.md. Current source/extract identities,
+individual E/H clauses, original R contexts/retained obligations and all source edits are
+located; historical source/assignment facts grant no current qualification or authority.
+
+This node remains live at k298. Its original complete Done when is unchanged: all whole
+bases and actual task/runtime/charter reads, merged full membership/statement inventory,
+complete original obligations/F1–F8/F9/F10, summaries/seven views/consumer charters and
+mandatory whole-k291 review/closing Creator still belong to that child. Scope-only
+documentary/browser checks and an unused pass cannot discharge them. Every missing actual
+Q/P/A/authority/control fact, useful-breadth/native duty and product/private hold remains.

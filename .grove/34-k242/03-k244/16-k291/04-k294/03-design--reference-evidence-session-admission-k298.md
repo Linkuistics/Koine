@@ -51,3 +51,22 @@ and reaches the intended view via the topic link, but initial fresh #diagram fra
 navigation leaves the document at its top until that click. Resolve or explicitly retain
 this delivery limitation in the complete browser check; desktop light appearance alone
 does not establish mobile/dark readability. This is presentation work, no target probe.
+
+K300 now supplies reference-selected-partition.tsv/json for the complete selected S,
+whole D and seventeen complete C sections. The Selected normative input partition slice
+and Original k297 conjunction comparison in application-reference-input-partition.md
+close k297's documentary conditions across k299/k300. Merge these exact scoped artifacts
+with k296, rechecking current source/extract/whole-object bytes after each later edit.
+Their historical source coordinates, original R assertions and retained-rule contexts
+supply no original-basis possession, current fact, qualification, authority or construction
+eligibility. The historical all-E TSV remains defective until your complete merged repair.
+Every original Goal/Context/Done when above remains, including whole bases/actual reads,
+F1–F8/F9/F10/original obligations, all summaries/seven views/charters and the last-act
+mandatory whole-k291 review with your own closing Creator before k269.
+
+K300's Safari invocation on presentation port 8940 renders proof/packaging captions,
+outline/current discussion and exactly two changed markers. Its fresh proof fragment
+reaches the intended view directly and the packaging outline link also focuses its view;
+these scoped observations do not erase k296/k299's earlier recorded fragment limitations.
+Complete seven-view, mobile/dark and final delivery verification stays here. No native
+or process-correspondence programme is added by inspecting the document presentation.

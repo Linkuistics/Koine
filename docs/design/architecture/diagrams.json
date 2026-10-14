@@ -2,13 +2,13 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Whole packaging and runtime input partition",
-    "status": "K299 scoped design; selected inputs and whole-k291 reconciliation/review stay live",
-    "summary": "Every whole packaging/runtime clause and cell has individual E/H records and exact original R coordinates. Stable responsibilities and conditional evidence rules replace retired handoffs and changing status; fixed documentary observations have immutable historical coordinates. K295 selected bounded observation authority, not current facts. K300 retains selected S/D/C inputs; k298 retains whole bases/actual reads, merged reconciliation and mandatory whole-k291 review before k269. No qualification or target/native pass follows.",
+    "title": "Selected normative inputs and whole packaging partition",
+    "status": "K300/K297 documentary boundary; k298 whole bases, merged reconciliation and whole-k291 review remain",
+    "summary": "Selected S, whole D and all seventeen complete C sections have individual E/H fragments and exact original R/retained-rule coordinates. Canonical requirements and ADR bytes stay unchanged. Together with k299 whole packaging and k296 contact/tables, the scoped inventories preserve whole-byte bindings. K298 retains every basis/actual-read object, merged full inventory, original F1–F8/F9/F10/summaries/seven-view/charter reconciliation and mandatory whole-k291 review. Documentary closure grants no authority, qualification, construction eligibility or finite subject.",
     "diagramIds": [
-      "native-reference-contact",
-      "native-reference-packaging",
       "native-reference-proof",
+      "native-reference-packaging",
+      "native-reference-contact",
       "native-reference-admission",
       "native-reference-instrument",
       "native-reference-evidence",
@@ -16,8 +16,12 @@
     ],
     "updatedDiagrams": [
       {
+        "id": "native-reference-proof",
+        "summary": "Shows completed selected/companion/table clause partitions separately from the remaining whole-basis/actual-read/merged inventory."
+      },
+      {
         "id": "native-reference-packaging",
-        "summary": "Replaces the unselected-authority label with the actual bounded observation choice and shows whole-companion stable rules/fixed history before remaining input reconciliation."
+        "summary": "Carries both completed documentary input scopes to k298 while preserving durable disarm and required current correspondence."
       }
     ]
   },
@@ -29,27 +33,27 @@
     },
     {
       "id": "native-sources",
-      "title": "Native discovery sources \u00b7 analysis and requirements",
+      "title": "Native discovery sources · analysis and requirements",
       "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
     },
     {
       "id": "search",
-      "title": "Native discovery and client-owned search \u00b7 requirements",
+      "title": "Native discovery and client-owned search · requirements",
       "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
     },
     {
       "id": "workspace",
-      "title": "Launch and open \u00b7 served action-only contract",
+      "title": "Launch and open · served action-only contract",
       "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
     },
     {
       "id": "provider-selection",
-      "title": "First-party selection \u00b7 designed, not yet served",
+      "title": "First-party selection · designed, not yet served",
       "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
     },
     {
       "id": "workflow-extension",
-      "title": "Workflow extension \u00b7 designed, not yet served",
+      "title": "Workflow extension · designed, not yet served",
       "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
     },
     {
@@ -77,25 +81,25 @@
     {
       "id": "native-reference-packaging",
       "group": "native-sources",
-      "title": "Packaging \u2192 Rehearse the retained entry in a bound domain",
+      "title": "Packaging → Rehearse the retained entry in a bound domain",
       "renderer": "svg",
       "source": "native-reference-packaging.d2",
       "rendered": "native-reference-packaging.svg",
-      "caption": "Same retained SCRATCH entry qualifies finite mechanics only. Fresh foreground appointment, exact A3 P entry, A2/disarm state and actual build/peer-image/terminal originals remain required. Selected bounded About/same-UID peer/inherited-fd observation authority supplies no current facts; fixed mdfind correspondence first belongs to A after consumption. The whole companion has individual stable rules/fixed history and exact original reporting assertions. Selected S/D/C inputs and whole-basis/actual-read reconciliation/review remain; no LIVE calibration, authority, executed controls or qualified handoff follows."
+      "caption": "Same retained SCRATCH entry qualifies finite mechanics only. Fresh foreground appointment, exact A3 P entry, A2/disarm state and actual build/peer-image/terminal originals remain required. Selected bounded About/same-UID peer/inherited-fd observation authority supplies no current facts; fixed mdfind correspondence first belongs to A after consumption. The whole companion has individual stable rules/fixed history and exact original reporting assertions. Selected S/D/C and whole packaging clauses are partitioned; whole-basis/actual-read and merged reconciliation/review remain; no LIVE calibration, authority, executed controls or qualified handoff follows."
     },
     {
       "id": "native-reference-contact",
       "group": "native-sources",
-      "title": "Contact \u2192 Establish coverage before releasing a pure subject",
+      "title": "Contact → Establish coverage before releasing a pure subject",
       "renderer": "svg",
       "source": "native-reference-contact.d2",
       "rendered": "native-reference-contact.svg",
-      "caption": "Closed Q01\u2013Q10/P01\u2013P05, C bypass/D1\u2013D6 applicability and exact T/A grammars remain design obligations. K295 selected bounded correspondence observation authority; original facts/qualification remain required. This view records the scoped contact/table partition; remaining whole inputs/reconciliation and whole-k291 review precede construction. Historical syntax, raw refusals and accepted unknowns keep their claim limits."
+      "caption": "Closed Q01–Q10/P01–P05, C bypass/D1–D6 applicability and exact T/A grammars remain design obligations. K295 selected bounded correspondence observation authority; original facts/qualification remain required. This view records the scoped contact/table partition; remaining whole inputs/reconciliation and whole-k291 review precede construction. Historical syntax, raw refusals and accepted unknowns keep their claim limits."
     },
     {
       "id": "native-reference-evidence",
       "group": "native-sources",
-      "title": "Evidence \u2192 Qualify the instrument before the one target pass",
+      "title": "Evidence → Qualify the instrument before the one target pass",
       "renderer": "svg",
       "source": "native-reference-evidence.d2",
       "rendered": "native-reference-evidence.svg",
@@ -104,7 +108,7 @@
     {
       "id": "native-reference-instrument",
       "group": "native-sources",
-      "title": "Components \u2192 Preserve original evidence and independent witnesses",
+      "title": "Components → Preserve original evidence and independent witnesses",
       "renderer": "svg",
       "source": "native-reference-instrument.d2",
       "rendered": "native-reference-instrument.svg",
@@ -113,7 +117,7 @@
     {
       "id": "native-reference-admission",
       "group": "native-sources",
-      "title": "Admission \u2192 Bind one permission to one durable start",
+      "title": "Admission → Bind one permission to one durable start",
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
@@ -122,11 +126,11 @@
     {
       "id": "native-reference-proof",
       "group": "native-sources",
-      "title": "Approval \u2192 Anchor requirements before accepting proofs",
+      "title": "Approval → Anchor requirements before accepting proofs",
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Design slice: Antony accepts ready reviewed/final payloads and original results in short foreground ceremonies before each consumer. Compatible trust duties may batch; producer/repairer/runner exclusions and a distinct closing owner/step remain. Fresh appointment retains coexisting supervisor/checker/acquirer through true return. Disarm-only maintenance intent persists before changes/Q. Exhaustive input partition and complete k291 reconciliation/review remain; no actual authority, controls or target evidence."
+      "caption": "Documentary partition: selected S, whole D, all seventeen complete C sections and whole companion/table inventories retain individual E/H/original-R coordinates. Whole bases/actual reads, merged inventory and full original-conjunction/seven-view/charter review stay k298 work. Short independent human acceptance, producer/repairer exclusions, distinct close, fresh coexisting foreground appointment and durable disarm remain design duties. No actual authority, controls, qualification or target evidence follows."
     },
     {
       "id": "native-population-metadata-shape",
@@ -140,7 +144,7 @@
     {
       "id": "native-metadata-composition",
       "group": "native-contract",
-      "title": "Owned composition \u2192 Preserve explicit work across every episode",
+      "title": "Owned composition → Preserve explicit work across every episode",
       "renderer": "svg",
       "source": "native-metadata-composition.d2",
       "rendered": "native-metadata-composition.svg",
@@ -149,7 +153,7 @@
     {
       "id": "native-metadata-two-walks",
       "group": "native-contract",
-      "title": "Root ownership \u2192 Transfer once and recheck independently",
+      "title": "Root ownership → Transfer once and recheck independently",
       "renderer": "svg",
       "source": "native-metadata-two-walks.d2",
       "rendered": "native-metadata-two-walks.svg",
@@ -158,7 +162,7 @@
     {
       "id": "native-metadata-source-root",
       "group": "native-contract",
-      "title": "Source accounting \u2192 Preserve raw-slot and payload receipts",
+      "title": "Source accounting → Preserve raw-slot and payload receipts",
       "renderer": "svg",
       "source": "native-metadata-source-root.d2",
       "rendered": "native-metadata-source-root.svg",
@@ -207,7 +211,7 @@
       "renderer": "svg",
       "source": "native-localized-decision.d2",
       "rendered": "native-localized-decision.svg",
-      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004\u20261,023 state stays UNKNOWN. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
     },
     {
       "id": "native-long-applications",
@@ -216,7 +220,7 @@
       "renderer": "svg",
       "source": "native-long-applications.d2",
       "rendered": "native-long-applications.svg",
-      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004\u20261,023 metadata does not qualify action plist support. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
     },
     {
       "id": "native-discovery-contract",
@@ -230,7 +234,7 @@
     {
       "id": "native-settings-flow",
       "group": "native-contract",
-      "title": "Choose read, prepare or reveal; consent stays in Koine\u2019s UI",
+      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
       "renderer": "svg",
       "source": "native-settings-flow.d2",
       "rendered": "native-settings-flow.svg",
@@ -284,7 +288,7 @@
     {
       "id": "search-preopen",
       "group": "search",
-      "title": "Previous proposal \u00b7 Decide child use and protected-target access",
+      "title": "Previous proposal · Decide child use and protected-target access",
       "renderer": "svg",
       "source": "search-preopen.d2",
       "rendered": "search-preopen.svg",
@@ -293,7 +297,7 @@
     {
       "id": "search-serviceability",
       "group": "search",
-      "title": "Previous proposal \u00b7 Verify finite outcomes with independent controls",
+      "title": "Previous proposal · Verify finite outcomes with independent controls",
       "renderer": "svg",
       "source": "search-serviceability.d2",
       "rendered": "search-serviceability.svg",
@@ -302,7 +306,7 @@
     {
       "id": "search-resources",
       "group": "search",
-      "title": "Previous proposal \u00b7 Own pipes and reap before releasing capacity",
+      "title": "Previous proposal · Own pipes and reap before releasing capacity",
       "renderer": "svg",
       "source": "search-resources.d2",
       "rendered": "search-resources.svg",
@@ -311,7 +315,7 @@
     {
       "id": "search-inspection",
       "group": "search",
-      "title": "Previous proposal \u00b7 Keep native facts separate from source inventory",
+      "title": "Previous proposal · Keep native facts separate from source inventory",
       "renderer": "svg",
       "source": "search-inspection.d2",
       "rendered": "search-inspection.svg",
@@ -320,7 +324,7 @@
     {
       "id": "search-canonical",
       "group": "search",
-      "title": "Previous proposal \u00b7 Preserve file bytes and checked application targets",
+      "title": "Previous proposal · Preserve file bytes and checked application targets",
       "renderer": "svg",
       "source": "search-canonical.d2",
       "rendered": "search-canonical.svg",
@@ -329,7 +333,7 @@
     {
       "id": "search-traversal",
       "group": "search",
-      "title": "Previous proposal \u00b7 Delegate traversal and schedule bounded sources",
+      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
       "renderer": "svg",
       "source": "search-traversal.d2",
       "rendered": "search-traversal.svg",
@@ -338,7 +342,7 @@
     {
       "id": "search-coverage",
       "group": "search",
-      "title": "Previous proposal \u00b7 Report source completeness without invented counts",
+      "title": "Previous proposal · Report source completeness without invented counts",
       "renderer": "svg",
       "source": "search-coverage.d2",
       "rendered": "search-coverage.svg",
@@ -347,7 +351,7 @@
     {
       "id": "search-handoff",
       "group": "search",
-      "title": "Previous proposal \u00b7 Choose a location and use existing actions",
+      "title": "Previous proposal · Choose a location and use existing actions",
       "renderer": "svg",
       "source": "search-handoff.d2",
       "rendered": "search-handoff.svg",
@@ -369,7 +373,7 @@
       "renderer": "svg",
       "source": "workspace-inspection.puml",
       "rendered": "workspace-inspection.svg",
-      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine\u2019s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
     },
     {
       "id": "workspace-open",
@@ -509,7 +513,7 @@
     {
       "id": "native-metadata-owned-storage",
       "group": "native-contract",
-      "title": "Owned storage \u2192 Separate capacity, writes and overlap",
+      "title": "Owned storage → Separate capacity, writes and overlap",
       "renderer": "svg",
       "source": "native-metadata-owned-storage.d2",
       "rendered": "native-metadata-owned-storage.svg",
@@ -518,7 +522,7 @@
     {
       "id": "native-metadata-wire",
       "group": "native-contract",
-      "title": "Selected wire \u2192 Expand selection before counting bytes",
+      "title": "Selected wire → Expand selection before counting bytes",
       "renderer": "svg",
       "source": "native-metadata-wire.d2",
       "rendered": "native-metadata-wire.svg",
@@ -527,7 +531,7 @@
     {
       "id": "native-metadata-runtime-admission",
       "group": "native-contract",
-      "title": "Runtime admission \u2192 Account explicit work through real publication",
+      "title": "Runtime admission → Account explicit work through real publication",
       "renderer": "svg",
       "source": "native-metadata-runtime-admission.d2",
       "rendered": "native-metadata-runtime-admission.svg",
@@ -536,7 +540,7 @@
     {
       "id": "native-metadata-grouped-storage",
       "group": "native-contract",
-      "title": "Grouped ownership \u2192 Preserve literal keys through slab growth",
+      "title": "Grouped ownership → Preserve literal keys through slab growth",
       "renderer": "svg",
       "source": "native-metadata-grouped-storage.d2",
       "rendered": "native-metadata-grouped-storage.svg",
