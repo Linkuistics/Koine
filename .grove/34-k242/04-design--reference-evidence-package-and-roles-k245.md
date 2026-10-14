@@ -1,7 +1,18 @@
 # reference-evidence-package-and-roles-k245
 
 
-## Current complete design and review dependency
+## Review integration and pending replacement
+
+K312's original review at 4392295c and k313's verified classifications identify unresolved
+R1–R7 in k291. K314's actual acceptance/documentary-proportionality choice and k315's
+complete replacement design with mandatory whole review/every integration precede k269.
+K269 must place the actual named human checkpoints, including this acquisition boundary,
+under that reviewed arrangement; this AFK design leaf cannot substitute an agent-driven
+pty ceremony or infer human appointment. K291's closure claims below are historical
+reviewed proposals, not a repaired current handoff or qualified tool. Required evidence/
+roles, the single unused pass, k246/k247/useful breadth and every hold remain unchanged.
+
+## Historical k291 design handoff
 
 Reference-evidence-session-admission-k291 supplies the complete repaired design and
 exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory

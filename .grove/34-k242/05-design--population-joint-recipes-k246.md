@@ -1,7 +1,16 @@
 # population-joint-recipes-k246
 
 
-## Current complete design and review dependency
+## Review integration and pending replacement
+
+K312/k313 leave the k291 admission handoff incomplete. K314's actual proportionality
+choice and complete replacement producer k315 with mandatory whole review/every integration
+precede k269. The k291 closure claims below are historical reviewed proposals, not current
+construction eligibility. This leaf retains every whole-template/rewrite/helper/alias/
+independent-discrimination duty and exact required refused-copy work; no complete subject,
+additional pass, useful loss or private/product/native hold release follows integration.
+
+## Historical k291 design handoff
 
 Reference-evidence-session-admission-k291 supplies the complete repaired design and
 exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory

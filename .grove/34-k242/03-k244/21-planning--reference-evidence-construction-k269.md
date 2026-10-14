@@ -1,6 +1,19 @@
 # reference-evidence-construction-k269
 
-## Current complete design and review dependency
+## Review integration and pending replacement
+
+K312's original review at 4392295c and k313's verified classifications identify unresolved
+R1–R7 in k291. Before this planner, k314 must record the actual acceptance/documentary-
+proportionality choice, then k315 repairs the complete design and earns mandatory whole
+review/every integration. K291's closure is the reviewed historical proposal, not a
+repaired current construction handoff. Read k315's final compatibility/Q/P/C/D and
+checkpoint schedule after that review; do not invent their missing rules here.
+Current normative bytes/manifests remain defective review subjects and do not bind this
+changed charter as refreshed current evidence. Original Done when duties, k245's unused
+single pass, full k246/k247/useful breadth/additive VM/native placement/private ineligibility
+and both holds remain. K316 owns the independent Safari viewer defect before k7.
+
+## Historical k291 design handoff
 
 Reference-evidence-session-admission-k291 supplies the complete repaired design and
 exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory
@@ -204,7 +217,11 @@ Do not add placeholder packaging tasks. Use existing document/render checks for 
 plan and preserve the canonical permission. No in-session reviewer beside the
 scheduled whole-design or planning review.
 
-## Exact contact work from k276
+## Historical contact-work proposal from k276
+
+This retained proposal contains the R4 collector-dimension directive identified by k312.
+It is comparison context, not a current construction instruction. K315 must reconcile
+it to the exact required Q/P/C/D cells and accepted unknown remainder before this planner.
 
 Consume the contact companion and all five documentary inventory tables after k282's
 complete repair/whole review. Map every C1–C8/U1–U6 coordinate to the selected bounded
@@ -281,7 +298,12 @@ credit/admission; accepted unknown contact coverage receives no full no-contact 
 No packaging scaffolding or observation
 programme is supplied here; the pass remains unused.
 
-## Whole replacement ownership and final close
+## Historical replacement ownership and final-close proposal
+
+This retained proposal includes the superseded distinct-human-audit-owner directive.
+K290 permits Antony to batch compatible acceptance and audit; the distinct instrument
+close remains separate. K315 must reconcile every instruction below to its normative
+compatibility table before this planner assigns actual live handles.
 
 Use application-reference-evidence.md#whole-producer-obligation-comparison and
 #construction-responsibility-and-stability-handoff to check every original k273/k244/k242

@@ -1,7 +1,17 @@
 # application-population-metadata-subject-k247
 
 
-## Current complete design and review dependency
+## Review integration and pending replacement
+
+K312/k313 leave the k291 admission handoff incomplete. K314's actual proportionality
+choice and complete replacement producer k315 with mandatory whole review/every integration
+precede k269. The k291 closure claims below are historical reviewed proposals, not current
+construction eligibility. Retain the complete original subject/family reconciliation and
+mandatory whole-k242 review/every integration, exact unavailable/refused evidence and all
+useful-breadth/additive VM/private/product/native duties. This integration closes no
+instrument or subject and supplies no changed normative inputs or finite-subject credit.
+
+## Historical k291 design handoff
 
 Reference-evidence-session-admission-k291 supplies the complete repaired design and
 exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory

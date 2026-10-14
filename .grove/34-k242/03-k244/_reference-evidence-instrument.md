@@ -1,7 +1,20 @@
 # reference-evidence-instrument-k244 — brief
 
 
-## Current complete design and review dependency
+## Review integration and pending replacement
+
+K312's original review at 4392295c and k313's verified classifications identify unresolved
+R1–R7 in k291. Before k269, k314 must record the actual acceptance/documentary-proportionality
+choice, then k315 repairs the complete design and earns mandatory whole review/every
+integration. The k291 closure claims below describe the reviewed historical proposal;
+they are not a repaired current construction handoff. Current normative bytes/manifests
+remain the defective review subjects, not newly accepted replacement inputs. Do not use
+their documentary identities as refreshed charter/runtime proof after this insertion.
+All original Done when duties, k245's unused single pass, k246/k247/useful breadth/additive
+VM/native placement/private ineligibility and both holds remain. K316 separately owns
+Safari fresh-fragment navigation; no presentation pass follows its task creation.
+
+## Historical k291 design handoff
 
 Reference-evidence-session-admission-k291 supplies the complete repaired design and
 exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory
