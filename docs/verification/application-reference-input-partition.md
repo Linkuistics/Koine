@@ -518,6 +518,139 @@ alone supplies no render evidence. Graph Tier 2 generation `2026-09-29T10:36:20Z
 docs/scripts and root/task metadata is changed/not tracked; exact direct source reading
 and byte comparisons supply this slice's evidence, with no graph-completeness claim.
 
+## Historical packet and parent input partition slice
+
+Reference-evidence-historical-inputs-k301 supplies the **whole saved historical packet
+and historical parent table only**. The [individual datum inventory](reference-historical-partition.tsv.gz)
+and [whole-object manifest](reference-historical-partition.json) are unconsumed documentary
+outputs. They neither replace the still-defective historical all-E inventory below nor
+complete F6. Other whole primary/authored/actual task/runtime/configuration/image/charter
+membership and precise absent work belong to k302; k303 merges every final scope and
+owns the complete original-obligation/F1–F8/F9/F10/seven-view/consumer reconciliation and
+last-act mandatory whole-k291 review before k269, with its own closing Creator.
+
+- [Historical identities and classifications](#whole-historical-identities-and-individual-classifications) — Added individual historical packet data and parent-table claim-limit records with whole original identities.
+- [Approval → Anchor requirements before accepting proofs](../design/architecture/index.html#diagram-native-reference-proof) — Added the historical packet/parent scope and retained the remaining basis/read and whole-review boundaries.
+
+### Whole historical identities and individual classifications
+
+| Whole basis | Immutable repository coordinate | Whole-byte SHA-256 |
+| --- | --- | --- |
+| [Historical packet](../design/application-metadata-subject.json), 7,990,160 bytes | `c87194529af7fdf6bb6c1b1f769f7016dca7b8bf` | `dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a` |
+| [Finite parent table](reference-target-parents.tsv), 43,306 bytes | `6329cc0c352f7ea0998305b8dd380c1000ecc660` | `5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad` |
+
+Current saved bytes equal each indicated repository original byte for byte. The complete
+objects remain inputs to documentary basis authoring/acceptance, without any section or
+field extraction exception. This establishes possession of those saved objects, rather
+than just their locators. It does not reproduce the old capture or independently certify
+the packet's measurement, completeness, freeze, useful-role or native assertions.
+
+Every serialized packet property key, scalar value and empty-container datum has its own
+`H` record at its exact raw coordinate: 177,016 keys, 293,579 scalars and 2,394 explicit
+empty containers. Scalars include false and null; `jq paths(scalars)` alone omits those
+values and is insufficient for membership. Historical `nativeVerdict`, supported-baseline,
+freeze, input-hash, purpose, worksheet, pending, fixture/helper/alias and source-association
+assertions record what this immutable packet said. They are neither current reports nor
+enduring certification of their correctness. No in-object status relocation or rewriting
+occurs. Each raw scalar datum is a historical assertion in its containing record; decoded
+strings retain all their subordinate content under that same historical coordinate.
+
+The parent table individually records its five structural headers as `E`; every exact
+base64-parent, target-class, ordered-ordinal-list and basis-digest cell is `H`. Each listed
+baseline ordinal also has an individual `H` fragment preserving its list position and
+containing row; the composite list cell is no substitute for its members. For each row,
+separate `E` fragments locate the historical-spelling-only limit, shared `no-current`
+scope and its presence, ancestry, TCC and purpose dimensions. Their complete row context
+preserves that negative scope: a fragment such as `presence` has no standalone positive
+meaning. The table's fixed syntax selection can support finite authoring alternatives;
+it supplies no current consent, installed-path, identity or useful/helper classification.
+There are no `R` relocations in these unchanged whole objects.
+
+### Coordinates, decoding and exact correspondence
+
+The 475,514-record TSV is gzip-compressed to avoid a large repeated plain-text object.
+Decompress `reference-historical-partition.tsv.gz` before reading it as quote-aware UTF-8
+tab-delimited CSV: double-quote quoting, doubled embedded quotes, no escape character,
+LF record endings and one header. This preserves F9's dialect; plain tab splitting is
+not the general reader. The manifest states every column. `J` names the packet and `T`
+the table. `coordinate` is an escaped JSON Pointer plus `kind` for J; T uses row/cell/part
+coordinates with row zero as header. Property-key and scalar records can share a pointer
+and remain distinct by kind. Byte ranges are zero-based, start-inclusive/end-exclusive;
+line numbers are one-based. Fragment SHA-256 and containing raw-object/row ranges locate
+each record against its separately bound whole source. Recover the fragment bytes from
+that source, not from a normalized reserialization. Container punctuation and separators
+carry no independent assertions but remain bound by the whole-object digest.
+
+Independent whole-object decoding and a separate lexical scan reproduce every individual
+key/value/empty-container membership and raw range, including all nine historical input-
+hash labels and their values. The associated underlying source/runtime blobs remain
+distinct bases whenever a consumer actually relies on their claimed correspondence;
+reading a recorded hash acquires none of those bytes or current identities. K302 must
+classify those references and their actual consumption/absence duties, without turning
+the old lossy capture into a selected qualification route.
+
+Every one of the table's 188 rows agrees with all its indicated zero-based baseline
+ordinals in the whole packet. Recalculation preserves raw UTF-8 lexical parents, exact
+T1/T2/T3 class, ordered lists and packet digest. Separate per-ordinal comparison covers
+all 640 baseline entries: 61 System parent alternatives, 43 Applications alternatives and
+84 Library alternatives. These are finite spelling correspondences, with no filesystem
+lookup, current presence/TCC/ancestry conclusion, recursive wildcard or new permission.
+The canonical T4–T7/link/Data/refusal requirements remain independently binding; this
+historical T1–T3 table certifies none of their actual operations. Unlisted or refused
+required copies retain raw evidence, precise missing work and the selected incomplete
+outcome; they never supply a complete finite subject or accepted useful loss.
+
+### Scoped documentary verification and remaining work
+
+The final frozen checker compares every fragment range/digest, exact immediately containing
+raw context range and whole-source identity, every
+independently decoded datum and separately scanned lexical span, all table cells/claim
+limits and every original ordinal/parent/class pair. Deliberate omitted-datum, H-to-E,
+E-limit-to-H, shifted-range, wrong-digest, lost/broadened-context, wrong-class, lost-ordinal,
+wrong-parent and changed-whole-packet specimens reject at the corresponding checks.
+These are document comparison mutations, not executed instrument Q controls or independent
+semantic acceptance. Generator/checker measurements retain every named saved source,
+original snapshot, inventory/manifest, checker/interpreter and selected stdlib subject
+unchanged before/after, item by item. The manifest pins the generator's named subjects;
+the final comparison's technical evidence is `/tmp/koine-k301-documentary-check.json`.
+Those explicit subjects establish no opaque task/runtime/read/image closure. The report
+does not become an acquisition input merely by carrying documentary results; any actual
+consumer read of it still invokes the canonical whole-read/change/disarm rules.
+
+This slice changes no canonical permission, descriptor ADR, evidence-contract/companion,
+five quoted-table or prior partition bytes. Current primary originals/build/SDK/peer-image/
+terminal facts, authored/runtime controls, retained executable/schema/entry, actual accepted
+authority/receipt/provisioning/validation/Q results/audit/distinct close/eligible release
+and current target package remain separate missing work before their consumers. No
+acceptance, appointment, instrument control, provisioning, process/tty/kernel/installed/
+target/native qualification occurs here. K298/k294/k291/k244/k242 remain live; k245's
+single pass is unused, k246/k247 retain full duties and useful breadth and all product/
+private/native holds remain. Mandatory whole review is kept on k303, with no partial or
+competing reviewer cut.
+
+The existing seven-view render task passes with twelve named D2/Taskfile/Task/D2/Python/
+measurement inputs unchanged item by item; only the proof source/export is changed.
+The existing `check:docs` task passes with 1,408 enumerated documentation/Taskfile/checker/
+Task/Python/measurement subjects unchanged before/after. The corresponding documentary
+measurement inventories are `/tmp/koine-k301-render-inputs.json` and
+`/tmp/koine-k301-docs-inputs.json`. Final source and prior scoped-manifest comparisons
+retain the unchanged selected/companion/table/partition identities. These named subjects
+are scoped provenance, not discovery of the retained acquisition's complete actual reads.
+
+Safari renders the revised proof view at presentation port 8941. A fresh
+`#diagram-native-reference-proof` tab reaches the intended view directly in this invocation;
+the added historical-input node, lower foreground/true-return flow and caption are readable
+in desktop light appearance. The current-discussion panel and topic outline show exactly
+one changed view, matching the manifest. The former port 8940 returned an empty response,
+so this session used 8941 for delivery. These observations do not erase k296/k299's earlier
+fragment limitations or establish complete seven-view/mobile/dark readability. Those final
+delivery duties remain k303 work. HTTP success alone is not credited as rendering.
+
+Tier 2 graph generation `2026-09-29T10:36:20Z` excludes the documentation/scripts and
+does not track these artifact bytes; Taskfile metadata is changed. Direct saved-source
+reading, byte-range parsing and original/current comparisons supply this slice's evidence,
+with no graph-completeness or current runtime claim.
+
 ## Complete statement inventory
 
 [Statement units](reference-input-partition.tsv) retain the historical k287 inventory of the selected

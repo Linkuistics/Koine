@@ -1,4 +1,4 @@
-# reference-evidence-session-admission-k298
+# reference-evidence-session-admission-k298 — brief
 
 
 ## Goal
@@ -70,3 +70,56 @@ reaches the intended view directly and the packaging outline link also focuses i
 these scoped observations do not erase k296/k299's earlier recorded fragment limitations.
 Complete seven-view, mobile/dark and final delivery verification stays here. No native
 or process-correspondence programme is added by inspecting the document presentation.
+
+## Decomposition
+
+The whole historical packet is 7,990,160 bytes and contains 293,579 scalar values,
+alongside the separately bound parent table. Completing its individual historical
+partition and ordinal/parent correspondence is a separately verifiable basis boundary.
+The remaining primary/authored/actual-read inventory and whole-design reconciliation
+are distinct obligations that exceed this focused session. Preserve every original
+Goal/Context/Done when above; perform only the first child in this session.
+
+1. Reference-evidence-historical-inputs partitions every historical packet datum and
+   parent-table cell, binds both whole objects and checks all historical parent/ordinal
+   associations. Historical pending/fit/native claims remain immutable observations,
+   never current status. A compact compressed TSV may preserve individual coordinates
+   without repeating the 8 MB packet; disclose its dialect and whole-object binding.
+2. Reference-evidence-basis-read-membership inventories every other whole primary,
+   authored, actual task/runtime/configuration/image/charter basis and precise absent
+   work before consumers. It includes original-object correspondence, not locator-only
+   possession, and consumes the historical slice without treating it as qualification.
+3. Reference-evidence-session-admission merges every scoped inventory against final
+   bytes and closes the complete original F1–F8/F9/F10/obligation/summary/seven-view/
+   consumer conjunction. Its last work act inserts mandatory whole-k291 review before
+   k269; its closing session supplies its own Creator and promotes k298/k294/k291 only
+   after their full Done when holds. Every earned integration precedes k269.
+
+No partial review or construction handoff is cut. K244/k242, k245's single unused pass,
+k246/k247, useful breadth and every hold retain all original duties.
+
+## Decisions (running log)
+
+Decompose at the whole historical-basis, remaining basis/actual-read membership and
+final reconciliation seams under Grove's fits-one-focused-session rule. Individual
+historical values and whole-object correspondence cannot be discharged by the previous
+all-E paragraph inventory or by a packet hash alone. The first child owns a documentary
+partition and exact correspondence only; complete merged F6 and whole review remain
+with the closing child. No target, native, authority or runtime qualification is added.
+
+## Historical-basis slice and remaining consumers
+
+K301 supplies reference-historical-partition.tsv.gz/json and the Historical packet and
+parent input partition slice in application-reference-input-partition.md. The whole
+saved 25G83 packet and parent table retain exact original bytes; every serialized datum
+and table cell/claim limit has an individual H/E coordinate and all historical parent/
+ordinal associations are checked. Consume only that documentary scope. Recorded pending/
+freeze/hash/role/native assertions and underlying origin labels supply no current facts
+or original runtime/source possession; k302 must classify any such actual reliance.
+
+K302 retains every other primary/authored/actual-read/charter whole-basis and absent-work
+duty. K303 retains the complete merged F6/original-obligation/F1–F8/F9/F10/summaries/seven-
+view/consumer reconciliation, original last-act whole-k291 review/closing Creator and
+parent-chain promotion. K298/k294/k291/k244/k242 remain live. No partial reviewer,
+construction/qualification/target pass or new authority follows this historical slice;
+k245/k246/k247, useful breadth and every hold retain all original duties.
