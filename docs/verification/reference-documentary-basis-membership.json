@@ -29,8 +29,8 @@
     },
     {
       "path": "docs/verification/application-population-metadata-shape.md",
-      "sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
-      "bytes": 62415,
+      "sha256": "f79c3925eaf73110a304c0aca236b17536ce42877194e15e8f6047f44c4c81e3",
+      "bytes": 62778,
       "accepted_ranges": [
         [
           15511,
@@ -53,92 +53,92 @@
     },
     {
       "path": "docs/verification/application-reference-evidence.md",
-      "sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
-      "bytes": 222042,
+      "sha256": "a2397d57be37d74397faffe4f98c337097b0868bc3e4ee4d4eec5ce542accc33",
+      "bytes": 218464,
       "accepted_ranges": [
         [
-          7677,
-          10297,
+          4099,
+          6719,
           "9f39d667ce14cc73cd681f060c118c0bb16b0e8ac8b536c60b2777a3b04df424"
         ],
         [
-          10297,
-          23306,
+          6719,
+          19728,
           "5caf0d14511eba883117c7710b20e87e57ad393a7b1cd25c53825e9745e60911"
         ],
         [
-          23306,
-          28040,
+          19728,
+          24462,
           "51044d139fcc998e5c1c0c0cb7d9fb9417526dc2cccdeb7407e09955f6f2b2db"
         ],
         [
-          28040,
-          36911,
+          24462,
+          33333,
           "e54ac3c8ab4cfc42d8c64c8a0928f494bee939a30a90ef22191f1e995c7b0f09"
         ],
         [
-          36911,
-          59046,
+          33333,
+          55468,
           "3268a2180fcb5716272a4f799bee6fee3d9aa0a3bd4c17d4127b237f8297842c"
         ],
         [
-          59046,
-          117330,
+          55468,
+          113752,
           "49f1061595d1ffe201881653d4c20748a3deddf3c75a8933cb59ff12e112bcf8"
         ],
         [
-          117330,
-          123361,
+          113752,
+          119783,
           "98698eebefec31514db5fc279fdd904015d2ef019cba8f70255e7209afc157ed"
         ],
         [
-          123361,
-          130244,
+          119783,
+          126666,
           "fca1fcf842d142731c32447c32e9f781fc8723577f09a0a08fa5e95ccb38f28a"
         ],
         [
-          130244,
-          134161,
+          126666,
+          130583,
           "26b0876405005c5623f61cff7dc8e10d96b310c4665869751319bf34d43fccc1"
         ],
         [
-          134161,
-          137656,
+          130583,
+          134078,
           "5577701efdb4655fdb212d1584f97c83ddf9a1f329716435c988dafb3255da58"
         ],
         [
-          137656,
-          164926,
+          134078,
+          161348,
           "58336b17d747a36fd835114e71371b3d0f1290ab15233e18a228d65a595ad888"
         ],
         [
-          164926,
-          169034,
+          161348,
+          165456,
           "b1db0580cf31283c8f5d07f2b8f132ec64e11f855eb784f60ac261eee1ce6b0b"
         ],
         [
-          197145,
-          202521,
+          193567,
+          198943,
           "cce14852aa566c06fea9d3905ddb0a92d5ac697113cc5478efb4bbef20bef58d"
         ],
         [
-          202521,
-          206110,
+          198943,
+          202532,
           "0d9c6c97b8af5eac717ed656f59f5b004caf88b0b2d54d67e09768de3b0b1f80"
         ],
         [
-          206110,
-          209467,
+          202532,
+          205889,
           "a3bca5931a7c9c547cc2bc87a8bba3ccffe839813b3073ca74341bafe158dd43"
         ],
         [
-          209467,
-          211140,
+          205889,
+          207562,
           "746d4797f6c3aa04d81cef66122ff05a3fda29fdf8a257e440088be064f00c1f"
         ],
         [
-          211140,
-          221194,
+          207562,
+          217616,
           "65b9a74f33a6293445516cf88460999c99d6d3e771904ce36edfab0383bce091"
         ]
       ]
@@ -229,8 +229,8 @@
     }
   ],
   "prior_partitions": {
-    "docs/verification/reference-selected-partition.json": "d4ad84504b8f11b0c2f2b627e07134f6bb24b6c2babbbe1513433ec96e9608ea",
-    "docs/verification/reference-selected-partition.tsv": "34c3dd4d1f63c7f98b60979e7a4efaad1d43ffb8c75d2fc3122613f82bb55966",
+    "docs/verification/reference-selected-partition.json": "701fddb56a9f5f3034a9c7fe1493337c0a7d3373a943338cc1dc34ab0cbb1217",
+    "docs/verification/reference-selected-partition.tsv": "4db1bd353b4d065025bee88d91a8d7107b06fccd05cc8268b00fe94149a34576",
     "docs/verification/reference-contact-partition.json": "ffc326a664600575f4048de2d50391b08c2c7e1b1905fa3085569c21793870de",
     "docs/verification/reference-contact-partition.tsv": "408547f785327c407a7b02c881cea19345cdd08c1b802a79fd7926d429ccab49",
     "docs/verification/reference-packaging-partition.json": "ce24c6e15afdf31b6c7b2619e41445b3cfbde854fbcf46156427f0497cd39e8e",
@@ -2672,7 +2672,16 @@
   "remaining": "Every original k302 completion condition remains with k305, including independently authored originals/controls and actual-read/acyclic authority records. k303 owns complete merged F6/original duties/seven views/whole-k291 review. No new extraction/report exception, contact gate, source/native acquisition or pass follows.",
   "reference_inventory": {
     "path": "docs/verification/reference-documentary-basis-membership.tsv",
-    "sha256": "b23756fdc66769bb9b0c53786d23d46733196a085618a1ef177acae135f6e051",
+    "sha256": "efc65d52802ff6b207b37d91e84bed6eaf4d0f01ed0b258a310afef4e60a5b60",
     "references": 60
+  },
+  "current_reconstruction": {
+    "predecessor": {
+      "revision": "910c1665695428ce15d6ca14221def9282f18d4b",
+      "path": "docs/verification/reference-documentary-basis-membership.json",
+      "sha256": "2bcee3b59cb7adc1ed91b625f38df26ebc9d92097675e912406f53fd58378e55",
+      "scope": "Immutable preceding manifest, including every original source/R/scan/charter coordinate; no current qualification."
+    },
+    "scope": "Current whole-source/accepted-range, URL/context/member/pin correspondence reconstructed; original object absence/null identity and historical scan untouched."
   }
 }

@@ -1,8 +1,8 @@
 {
-  "scope": "Complete six-namespace documentary composition and original-obligation concordance, plus k310 presentation. Final current-source/member/summary/consumer reconciliation and mandatory whole-k291 review remain k311 under k309/k307/k303.",
+  "scope": "Complete whole-k291 design/exact-missing-original boundary for mandatory whole-producer review before k269; six-namespace current-source reconstruction, final summaries/consumer contexts and presentation.",
   "index": {
     "path": "docs/verification/reference-input-partition.tsv",
-    "sha256": "800a75d31128c9f7f66e64fae842aad17b193ad04093cbb42ca0f2b20b2a3a99",
+    "sha256": "08cadc9c23fc7ddc95cc4b31acf0ce28c4b4e4207131efa4699c36bb1e1c719f",
     "fields": [
       "namespace",
       "manifest",
@@ -105,9 +105,9 @@
     {
       "namespace": "reference-selected-partition",
       "manifest": "docs/verification/reference-selected-partition.json",
-      "manifest_sha256": "d4ad84504b8f11b0c2f2b627e07134f6bb24b6c2babbbe1513433ec96e9608ea",
+      "manifest_sha256": "701fddb56a9f5f3034a9c7fe1493337c0a7d3373a943338cc1dc34ab0cbb1217",
       "inventory": "docs/verification/reference-selected-partition.tsv",
-      "inventory_sha256": "34c3dd4d1f63c7f98b60979e7a4efaad1d43ffb8c75d2fc3122613f82bb55966",
+      "inventory_sha256": "4db1bd353b4d065025bee88d91a8d7107b06fccd05cc8268b00fe94149a34576",
       "fields": [
         "source",
         "version",
@@ -182,9 +182,9 @@
     {
       "namespace": "reference-documentary-basis-membership",
       "manifest": "docs/verification/reference-documentary-basis-membership.json",
-      "manifest_sha256": "2bcee3b59cb7adc1ed91b625f38df26ebc9d92097675e912406f53fd58378e55",
+      "manifest_sha256": "effadcdac736fed69ba1eefa877155379d2e2d79634f1c9cf24dd14d6618973f",
       "inventory": "docs/verification/reference-documentary-basis-membership.tsv",
-      "inventory_sha256": "b23756fdc66769bb9b0c53786d23d46733196a085618a1ef177acae135f6e051",
+      "inventory_sha256": "efc65d52802ff6b207b37d91e84bed6eaf4d0f01ed0b258a310afef4e60a5b60",
       "fields": [
         "reference_id",
         "object_id",
@@ -213,9 +213,9 @@
     {
       "namespace": "reference-actual-read-membership",
       "manifest": "docs/verification/reference-basis-read-membership.json",
-      "manifest_sha256": "0740215abbbabe70d9261a795e468f9960a967542084f0b51c899c84bf3a5fa8",
+      "manifest_sha256": "f0d5384a65ec17c4c93174213afe9a5dc5debe75df8c160cd47a79abb3455206",
       "inventory": "docs/verification/reference-actual-read-membership.tsv",
-      "inventory_sha256": "f62922f5742b24370f619fb90a775a71183b26957e4d00084ad9632dbbccf9e9",
+      "inventory_sha256": "62254b32db42353665368de6da7e63ca966e7854870da92655fd2c4b053dff7e",
       "fields": [
         "id",
         "family",
@@ -273,8 +273,8 @@
     },
     {
       "path": "docs/verification/application-population-metadata-shape.md",
-      "sha256": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
-      "bytes": 62415,
+      "sha256": "f79c3925eaf73110a304c0aca236b17536ce42877194e15e8f6047f44c4c81e3",
+      "bytes": 62778,
       "accepted_ranges": [
         [
           15511,
@@ -297,92 +297,92 @@
     },
     {
       "path": "docs/verification/application-reference-evidence.md",
-      "sha256": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
-      "bytes": 222042,
+      "sha256": "a2397d57be37d74397faffe4f98c337097b0868bc3e4ee4d4eec5ce542accc33",
+      "bytes": 218464,
       "accepted_ranges": [
         [
-          7677,
-          10297,
+          4099,
+          6719,
           "9f39d667ce14cc73cd681f060c118c0bb16b0e8ac8b536c60b2777a3b04df424"
         ],
         [
-          10297,
-          23306,
+          6719,
+          19728,
           "5caf0d14511eba883117c7710b20e87e57ad393a7b1cd25c53825e9745e60911"
         ],
         [
-          23306,
-          28040,
+          19728,
+          24462,
           "51044d139fcc998e5c1c0c0cb7d9fb9417526dc2cccdeb7407e09955f6f2b2db"
         ],
         [
-          28040,
-          36911,
+          24462,
+          33333,
           "e54ac3c8ab4cfc42d8c64c8a0928f494bee939a30a90ef22191f1e995c7b0f09"
         ],
         [
-          36911,
-          59046,
+          33333,
+          55468,
           "3268a2180fcb5716272a4f799bee6fee3d9aa0a3bd4c17d4127b237f8297842c"
         ],
         [
-          59046,
-          117330,
+          55468,
+          113752,
           "49f1061595d1ffe201881653d4c20748a3deddf3c75a8933cb59ff12e112bcf8"
         ],
         [
-          117330,
-          123361,
+          113752,
+          119783,
           "98698eebefec31514db5fc279fdd904015d2ef019cba8f70255e7209afc157ed"
         ],
         [
-          123361,
-          130244,
+          119783,
+          126666,
           "fca1fcf842d142731c32447c32e9f781fc8723577f09a0a08fa5e95ccb38f28a"
         ],
         [
-          130244,
-          134161,
+          126666,
+          130583,
           "26b0876405005c5623f61cff7dc8e10d96b310c4665869751319bf34d43fccc1"
         ],
         [
-          134161,
-          137656,
+          130583,
+          134078,
           "5577701efdb4655fdb212d1584f97c83ddf9a1f329716435c988dafb3255da58"
         ],
         [
-          137656,
-          164926,
+          134078,
+          161348,
           "58336b17d747a36fd835114e71371b3d0f1290ab15233e18a228d65a595ad888"
         ],
         [
-          164926,
-          169034,
+          161348,
+          165456,
           "b1db0580cf31283c8f5d07f2b8f132ec64e11f855eb784f60ac261eee1ce6b0b"
         ],
         [
-          197145,
-          202521,
+          193567,
+          198943,
           "cce14852aa566c06fea9d3905ddb0a92d5ac697113cc5478efb4bbef20bef58d"
         ],
         [
-          202521,
-          206110,
+          198943,
+          202532,
           "0d9c6c97b8af5eac717ed656f59f5b004caf88b0b2d54d67e09768de3b0b1f80"
         ],
         [
-          206110,
-          209467,
+          202532,
+          205889,
           "a3bca5931a7c9c547cc2bc87a8bba3ccffe839813b3073ca74341bafe158dd43"
         ],
         [
-          209467,
-          211140,
+          205889,
+          207562,
           "746d4797f6c3aa04d81cef66122ff05a3fda29fdf8a257e440088be064f00c1f"
         ],
         [
-          211140,
-          221194,
+          207562,
+          217616,
           "65b9a74f33a6293445516cf88460999c99d6d3e771904ce36edfab0383bce091"
         ]
       ]
@@ -489,7 +489,7 @@
     },
     {
       "manifest": "docs/verification/reference-selected-partition.json",
-      "manifest_sha256": "d4ad84504b8f11b0c2f2b627e07134f6bb24b6c2babbbe1513433ec96e9608ea",
+      "manifest_sha256": "701fddb56a9f5f3034a9c7fe1493337c0a7d3373a943338cc1dc34ab0cbb1217",
       "field": "original_relocations",
       "entries": 43,
       "binding": "Complete original R records, immutable original context and retained-duty comparisons; no new label or reporting exception."
@@ -497,7 +497,7 @@
   ],
   "whole_basis_phase_absence_design": {
     "manifest": "docs/verification/reference-basis-read-membership.json",
-    "sha256": "0740215abbbabe70d9261a795e468f9960a967542084f0b51c899c84bf3a5fa8",
+    "sha256": "f0d5384a65ec17c4c93174213afe9a5dc5debe75df8c160cd47a79abb3455206",
     "fields": [
       "documentary_objects",
       "documentary_references",
@@ -511,7 +511,8 @@
       "extraction_exception",
       "remaining"
     ],
-    "interpretation": "Every object/requirement/phase/edge/absence is retained at its original complete member coordinate. Missing originals have null actual digest/length/members, not fabricated empty objects. Saved charters are documentary candidates, not accepted immutable runtime originals. Historical scan records retain their original scope; final verification records a fresh bounded scan separately."
+    "interpretation": "Every object/requirement/phase/edge/absence is retained at its original complete member coordinate. Missing originals have null actual digest/length/members, not fabricated empty objects. Saved charters are documentary candidates, not accepted immutable runtime originals. Historical scan records retain their original scope; final verification records a fresh bounded scan separately.",
+    "current_charter_field": "current_charter_documentary_candidates"
   },
   "replaced_legacy_index": {
     "revision": "04bd81cfb299bc83422e7a61e4d1d0b1c8d76e0b",
@@ -523,7 +524,7 @@
   },
   "classification_limits": "Exact documentary coordinate/membership comparison and authored classification only. Independent semantic whole-design review remains required. E/H/R statement labels differ from E/M/U operation credit and Q/P/A stages. No original/current authority/native/control fact is created by this composition.",
   "unchanged_rule_boundary": "Only exact accepted S/whole D/17 C extraction by commissioned extractor. Whole companions/five tables/original bases/actual tasks/config/runtime/charters never sliced. Reports/diagrams/inventories excluded only if unconsumed; actual read invalidates affected claims.",
-  "remaining": "k311 retains every original k309/k307/k303/k298/k294/k291 closing condition, current root/product/glossary/family/private/acceptance and consumer-charter reconciliation, affected current-source/member reconstruction with original R/historical provenance preserved, final delivery recheck and last-act whole-k291 review before k269 with its own closing Creator/parent cascade. k244/k242 actual duties, unused k245 pass, full k246/k247/useful breadth/native placement and every hold remain.",
+  "remaining": "Mandatory whole-k291 review and every earned integration precede k269. Actual required original retrieval/authoring/independent acceptance/partition, construction/controls/qualified provisioning/validation/final affected Q/audit/distinct k244 close precede their consumers. K244/k242, unused k245 pass, full k246/k247/useful breadth/native placement/private ineligibility/both holds remain.",
   "final_saved_documentary_scan": {
     "scope": "Current bounded saved docs scan after k310 presentation/report edits. Earlier constituent scans and charter snapshots preserve their original provenance. No actual runtime/read closure or original qualification.",
     "excluded_outputs": [
@@ -567,12 +568,12 @@
       "docs/design/application-metadata-wire.json": "1187e057ce3368bb64e3153e5cac436de5407ba4ea271ab7f4c25e8a64b25194",
       "docs/design/application-population-metadata-shape.json": "115d5cd05b39d1903d8f23b75ef335fa928424a4f88762e0de35b124dbee010f",
       "docs/design/application-population.json": "66c9450fa23ef4c23cae6e7157aa5d0fe237d9fa081ba3c8cd50f0af6568e37b",
-      "docs/design/architecture/README.md": "fb331772e7591c0ba4080bad241286677a79679f1e2e286e004b5e6115754b9a",
+      "docs/design/architecture/README.md": "33c7473442762be639ea0fa35cc8be7cdab17e18a1890b1a1dd3e4d807dffa53",
       "docs/design/architecture/addressing.puml": "983fc4ff67adef00cebf4748c341174386ea70ca97ba4efc916246b6d942f2af",
       "docs/design/architecture/addressing.svg": "6e76bfbc1265e455decbfb9f894639f959834a05ec63d83ec9a153da9c76a306",
       "docs/design/architecture/desktop-composition.d2": "91113831d14e848073c890686db9e036aa6389cf01db2626767518bd412dc88f",
       "docs/design/architecture/desktop-composition.svg": "80fa4ef384823b519f94f083761f41b4ed96043138cc8ae302363930a3a5035d",
-      "docs/design/architecture/diagrams.json": "feaed61bdc78b43c8d802123f8ec1df1948c8d3da211750d2067992839759f87",
+      "docs/design/architecture/diagrams.json": "d3a0f78d284934dd7e626231419d369270fe0fe752f3456ae30d7d743ebdeb4a",
       "docs/design/architecture/grants.puml": "89b745aef1c3b7fff9c69290d7964349a9612710de7b8f2120a6e130064fc0a7",
       "docs/design/architecture/grants.svg": "bbf21e012a388b5e4595c626886c34f054f3a7a40a04dcde2165689002c54ac4",
       "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
@@ -715,7 +716,7 @@
       "docs/research/long-pathname-applications-b.md": "281e03ac2dffe5725d7b0ce42ba3f955e431648a2f21c4de64562325cdcb0d35",
       "docs/research/long-pathname-applications.md": "9ef9e69824babc37ae1b0275e42b3b1398d2d5a58cf483d1f88f741d47f64f7d",
       "docs/research/prior-art-long-paths-a.md": "1971849dc2950560917e854d7942bc244ff22744a30978eddf11c56790f322cf",
-      "docs/specs/application-metadata-private-qualification.md": "dd53b9dff085a459205952f4af015229cbabbb64e910ff2f5dd14d2e630805c2",
+      "docs/specs/application-metadata-private-qualification.md": "1a10613c960c06c1933c9f08bafc06b17c9018bd1936b540042c69e10e683cd2",
       "docs/specs/application-metadata-runtime-admission.md": "87e983239c0a09e9855dc0fccfbae88d8025e721b9e45116b8e5f39cffb160ec",
       "docs/specs/application-metadata-source-root.md": "3cfc1cecaa24a62ac7764650ed6043a8fe883159541d0158e87adfef67131ca3",
       "docs/specs/machine.md": "aa47465ef2797378b308131641ae3984f9fc890327b194129b30896b1418b122",
@@ -748,14 +749,14 @@
       "docs/verification/application-metadata-operation-ledger.md": "8682ab54d63ea64f7eaf07f25a20e1f0999c0b25d667bcfb336ff18988beff74",
       "docs/verification/application-metadata-owned-storage.md": "9271fab90a06884e1c06ba40692a1668eb4868654543b33fc348272c1d615360",
       "docs/verification/application-metadata-reader-plan.md": "4e3f639bc8909588d538070fbebcb4decd613a0cdef416e2569290609e9432ce",
-      "docs/verification/application-metadata-reconciliation.md": "cd0e6dbe4e75cd48fbb790c07aab0d46a3bef078bc40751cca0f1ae53d0c38d7",
+      "docs/verification/application-metadata-reconciliation.md": "19ccdf0aa1656de8f3ee7ae8978a7aa0f29f36de27c698af9657e551779f761e",
       "docs/verification/application-metadata-source-root-certificate.md": "179adeced09446c2d12aecdab4627df55c413a9461d19868578d91da88a57021",
       "docs/verification/application-metadata-subject.md": "dcd1555988c3fe68392ccbedce50baa0fd1b0a95b8e4eb3a8bd90e4a9d12e9d4",
       "docs/verification/application-metadata-wire.md": "504fd9a0cde8a6cd7695d6bd478c3fc32d91bfd32face8d2f434ed385b20d7fd",
-      "docs/verification/application-population-metadata-shape.md": "a351e09191d94f67a86b16297aaf9b2cf807bae0dec76fb946cdbb8a86af23d8",
+      "docs/verification/application-population-metadata-shape.md": "f79c3925eaf73110a304c0aca236b17536ce42877194e15e8f6047f44c4c81e3",
       "docs/verification/application-reference-contact-boundary.md": "3481971460ad7f67e8665c98ecd70d7b90283f2a1ab93b86cff4014998177357",
-      "docs/verification/application-reference-evidence.md": "ac5b9b9a89de2fd613d450aea39e4ea1a51791a6063151fde516e47374d7d92a",
-      "docs/verification/application-reference-input-partition.md": "0234f0de5256b28d122018ef4fda401ec95a6cc1ab09c82c74032a2bc21f821d",
+      "docs/verification/application-reference-evidence.md": "a2397d57be37d74397faffe4f98c337097b0868bc3e4ee4d4eec5ce542accc33",
+      "docs/verification/application-reference-input-partition.md": "62c1492083b23698e7c18bf67ae02d39846b70f2d452d408c35f4008e6ef7cdb",
       "docs/verification/application-reference-packaging-runtime.md": "7e8e76a35a991b4325d7537adb9cada603550b7803961a5b4f7dd67189dc1ea1",
       "docs/verification/binary-compatibility.md": "2f5e29651fb37bffc76f05d61f7a942f3be8c9835a59e648fa1ec5e45f7564dc",
       "docs/verification/bookmark-name-resolution-prototype.md": "44086b9d5dbd660cffea06e432b574fd53ccab8b088f1ad918fbb429fed5b06f",
@@ -1297,7 +1298,7 @@
       "docs/verification/long-action-route/results/submit-thr-open-1100.json": "164de655d5348a3a22950c64b75996beac02cb843f58d4b9a1b9f539e61f3d81",
       "docs/verification/long-action-route/results/submit-thr-open-1500.json": "bd2792a24a6a48b5b992f5595efad72e6883ceb970d6423f00bfaa3a98a229bd",
       "docs/verification/long-action-route/results/submit-thr-open-900.json": "743163190b58c8560eaa3a8d61fc3381f76e74e9fcd4c5b6661c2b3aa80b02f8",
-      "docs/verification/native-discovery-acceptance.md": "11037f8d4f76a9eca68b89d41ecc5008741d464fd8d4bb3db9e4c4549e0240c0",
+      "docs/verification/native-discovery-acceptance.md": "3c8f546fca58398f5412aee64dfa0b481a9851bde538a478bddf9b0e8830c60f",
       "docs/verification/native-discovery-sources.md": "99497109c02ac9aadfc7674f4e0c6f19bc64403abe4612f942282fbe4c362308",
       "docs/verification/native-observation-receive.md": "0b4f43832c953022eb372fa8a2a7fcd179e45cb6f6e8b6641c94b9ca518360ce",
       "docs/verification/native-observation/admission-primary.sha256": "53201a92d5c5aee610f075b6648173d445216a4ef05c2f3d28aa304fb84680b4",
@@ -1429,8 +1430,8 @@
       "docs/verification/provider-quarantine-precheck/run.log": "440d037cb307ffb2095d37538ab6b070a57354f6bf723567318350a2eba1b376",
       "docs/verification/raw-workspace-search-comparison.md": "d9ed8335356b3f3f487bcf9dfda54026020d0e5efc2b024e7515f0a8a677da7a",
       "docs/verification/receipt-executable-identity.md": "b25e5d1f6e30baf938f3487939b87745cbd33fd33f97fbddf91ae5a074b47ed5",
-      "docs/verification/reference-actual-read-membership.tsv": "f62922f5742b24370f619fb90a775a71183b26957e4d00084ad9632dbbccf9e9",
-      "docs/verification/reference-basis-read-membership.json": "0740215abbbabe70d9261a795e468f9960a967542084f0b51c899c84bf3a5fa8",
+      "docs/verification/reference-actual-read-membership.tsv": "62254b32db42353665368de6da7e63ca966e7854870da92655fd2c4b053dff7e",
+      "docs/verification/reference-basis-read-membership.json": "f0d5384a65ec17c4c93174213afe9a5dc5debe75df8c160cd47a79abb3455206",
       "docs/verification/reference-contact-inventory/api-basis.tsv": "e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e",
       "docs/verification/reference-contact-inventory/bsd-declarations.tsv": "2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5",
       "docs/verification/reference-contact-inventory/mach-traps.tsv": "42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3",
@@ -1438,15 +1439,15 @@
       "docs/verification/reference-contact-inventory/source-pins.tsv": "4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33",
       "docs/verification/reference-contact-partition.json": "ffc326a664600575f4048de2d50391b08c2c7e1b1905fa3085569c21793870de",
       "docs/verification/reference-contact-partition.tsv": "408547f785327c407a7b02c881cea19345cdd08c1b802a79fd7926d429ccab49",
-      "docs/verification/reference-documentary-basis-membership.json": "2bcee3b59cb7adc1ed91b625f38df26ebc9d92097675e912406f53fd58378e55",
-      "docs/verification/reference-documentary-basis-membership.tsv": "b23756fdc66769bb9b0c53786d23d46733196a085618a1ef177acae135f6e051",
+      "docs/verification/reference-documentary-basis-membership.json": "effadcdac736fed69ba1eefa877155379d2e2d79634f1c9cf24dd14d6618973f",
+      "docs/verification/reference-documentary-basis-membership.tsv": "efc65d52802ff6b207b37d91e84bed6eaf4d0f01ed0b258a310afef4e60a5b60",
       "docs/verification/reference-historical-partition.json": "dd336ad43eb70995a40d0c8a6a8960ed0bda2aa47317d1d2a47d4703d24f673b",
       "docs/verification/reference-historical-partition.tsv.gz": "b6dc5c9feca006990d184799a163b11b0557cbffdba29a1f3fef55cb963b12cf",
-      "docs/verification/reference-input-partition.tsv": "800a75d31128c9f7f66e64fae842aad17b193ad04093cbb42ca0f2b20b2a3a99",
+      "docs/verification/reference-input-partition.tsv": "08cadc9c23fc7ddc95cc4b31acf0ce28c4b4e4207131efa4699c36bb1e1c719f",
       "docs/verification/reference-packaging-partition.json": "ce24c6e15afdf31b6c7b2619e41445b3cfbde854fbcf46156427f0497cd39e8e",
       "docs/verification/reference-packaging-partition.tsv": "faed12fd7614bbbc6e99435900dc3c9ae45a3ceff99442853736bf951e805d2a",
-      "docs/verification/reference-selected-partition.json": "d4ad84504b8f11b0c2f2b627e07134f6bb24b6c2babbbe1513433ec96e9608ea",
-      "docs/verification/reference-selected-partition.tsv": "34c3dd4d1f63c7f98b60979e7a4efaad1d43ffb8c75d2fc3122613f82bb55966",
+      "docs/verification/reference-selected-partition.json": "701fddb56a9f5f3034a9c7fe1493337c0a7d3373a943338cc1dc34ab0cbb1217",
+      "docs/verification/reference-selected-partition.tsv": "4db1bd353b4d065025bee88d91a8d7107b06fccd05cc8268b00fe94149a34576",
       "docs/verification/reference-target-parents.tsv": "5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad",
       "docs/verification/release-acceptance-vm.md": "8fd99d2ee790cd3b5b5c6458a941345f755adc0b75b8f12f1b970ab7e9ec732f",
       "docs/verification/resident-app-vm.md": "0d663d7b33830f78e8d1473a0f5b2bb557f856c8213e2d0603d7f20c321b62f2",
@@ -1943,22 +1944,123 @@
   "current_obligation_concordance": {
     "path": "docs/verification/application-reference-input-partition.md",
     "heading": "Whole-k291 obligation concordance",
-    "start_byte": 96836,
-    "end_byte": 122631,
-    "first_line": 1107,
-    "source_sha256": "0234f0de5256b28d122018ef4fda401ec95a6cc1ab09c82c74032a2bc21f821d",
-    "utf8_sha256": "daf54184bcd83cddf6ba4c1cb2e2e464bb06e25f264ae130ffef994bb0efa583",
-    "scope": "Unconsumed original-duty/actual-answer/F1-F10 correspondence only; no whole-producer approval, original possession or actual qualification. Current-surface/delivery closure remains k309.",
+    "start_byte": 94378,
+    "end_byte": 120345,
+    "first_line": 1096,
+    "source_sha256": "62c1492083b23698e7c18bf67ae02d39846b70f2d452d408c35f4008e6ef7cdb",
+    "utf8_sha256": "fbb76abfe93cf430d3872bc46cec8d0469e0be86835b6d5b2316285a59cc48fe",
+    "scope": "Original k308 obligation/actual-answer comparison at historical scope, with final current-surface closure recorded separately. No semantic approval or actual qualification.",
     "preserved_historical_provenance": "All constituent original revisions, R contexts, charter candidates and prior scans remain unchanged. This current scan is separate documentary provenance, not runtime read closure."
   },
   "current_presentation_delivery": {
     "path": "docs/verification/application-reference-input-partition.md",
     "heading": "Seven-view admission presentation",
-    "start_byte": 122632,
-    "end_byte": 130156,
-    "first_line": 1234,
-    "source_sha256": "0234f0de5256b28d122018ef4fda401ec95a6cc1ab09c82c74032a2bc21f821d",
-    "utf8_sha256": "a3f41744750b6542983830cf061ddd61f1b01e3440700b9c58cf8b790a130e86",
-    "scope": "k310 seven-view presentation and bounded browser observations only; final original-source/summary/charter reconciliation and whole-k291 review remain k311."
+    "start_byte": 120345,
+    "end_byte": 127986,
+    "first_line": 1226,
+    "source_sha256": "62c1492083b23698e7c18bf67ae02d39846b70f2d452d408c35f4008e6ef7cdb",
+    "utf8_sha256": "66fae4bc1bd873ca8b1ac877c6be2e9aa921afb2534c4e5928e0fa4c7637c83c",
+    "scope": "Historical k310 seven-view observations and then-remaining source reconciliation; actual final recheck is in current_final_design_boundary. No viewer/native qualification."
+  },
+  "historical_predecessor": {
+    "revision": "910c1665695428ce15d6ca14221def9282f18d4b",
+    "path": "docs/verification/reference-input-partition.json",
+    "sha256": "feba4c971d56a2236e5793b896ed95f8d7572208f1c159c8f5da728c2329f54b",
+    "scope": "Immutable preceding manifest, including every original source/R/scan/charter coordinate; no current qualification."
+  },
+  "current_charter_documentary_candidates": [
+    {
+      "handle": "reference-evidence-construction-k269",
+      "path_at_measurement": ".grove/34-k242/03-k244/17-planning--reference-evidence-construction-k269.md",
+      "bytes": 32544,
+      "sha256": "62e8e47c408e678018d8073bfa84b49ba0465b2e168b280168760b7696667ddb",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "reference-evidence-instrument-k244",
+      "path_at_measurement": ".grove/34-k242/03-k244/_reference-evidence-instrument.md",
+      "bytes": 26209,
+      "sha256": "c3d8d537b4be029b1d37f02db59dda7dcaf7d6d71bdb9d6143ff424c149f4b10",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "reference-evidence-package-and-roles-k245",
+      "path_at_measurement": ".grove/34-k242/04-design--reference-evidence-package-and-roles-k245.md",
+      "bytes": 14952,
+      "sha256": "c5d2d5641c0da4394504b780099356f4f43c1ad7a8793ce6cd693e8770d3532b",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "population-joint-recipes-k246",
+      "path_at_measurement": ".grove/34-k242/05-design--population-joint-recipes-k246.md",
+      "bytes": 9068,
+      "sha256": "8cc70926c0555cb5010f244bcf9632b5357928f7959ce711d18fdfc14a74b6c8",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "application-population-metadata-subject-k247",
+      "path_at_measurement": ".grove/34-k242/06-design--application-population-metadata-subject-k247.md",
+      "bytes": 9632,
+      "sha256": "008ae8592af7179135901d1da1926f532837043a17b1966676d42d53dc93efe3",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "application-population-metadata-subject-k242",
+      "path_at_measurement": ".grove/34-k242/_application-population-metadata-subject.md",
+      "bytes": 19453,
+      "sha256": "aebbb29a1e990ed180071eeab40d1564be1f8e82bc5a1b68ca1052b4b26f85af",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    },
+    {
+      "handle": "grove-root",
+      "path_at_measurement": ".grove/_BRIEF.md",
+      "bytes": 39269,
+      "sha256": "7115183f3c2986ba8f5d3d68aba4efb99d2d4d55a94483c3d32ca3286accd103",
+      "resolution": "grove-llm resolve <handle>; root is .grove/_BRIEF.md. Insertion/retirement may change physical coordinates without changing these bytes.",
+      "scope": "Current whole documentary candidate only; no independent accepted runtime/authority/closing original or role appointment."
+    }
+  ],
+  "current_reconstruction": {
+    "selected": {
+      "revision": "910c1665695428ce15d6ca14221def9282f18d4b",
+      "path": "docs/verification/reference-selected-partition.json",
+      "sha256": "d4ad84504b8f11b0c2f2b627e07134f6bb24b6c2babbbe1513433ec96e9608ea",
+      "scope": "Immutable preceding manifest, including every original source/R/scan/charter coordinate; no current qualification."
+    },
+    "documentary": {
+      "revision": "910c1665695428ce15d6ca14221def9282f18d4b",
+      "path": "docs/verification/reference-documentary-basis-membership.json",
+      "sha256": "2bcee3b59cb7adc1ed91b625f38df26ebc9d92097675e912406f53fd58378e55",
+      "scope": "Immutable preceding manifest, including every original source/R/scan/charter coordinate; no current qualification."
+    },
+    "actual_read": {
+      "revision": "910c1665695428ce15d6ca14221def9282f18d4b",
+      "path": "docs/verification/reference-basis-read-membership.json",
+      "sha256": "0740215abbbabe70d9261a795e468f9960a967542084f0b51c899c84bf3a5fa8",
+      "scope": "Immutable preceding manifest, including every original source/R/scan/charter coordinate; no current qualification."
+    },
+    "limit": "Current documentary membership/source correspondence only; historical original R/scan/charter provenance is never requalified or replaced with current bytes."
+  },
+  "current_final_design_boundary": {
+    "path": "docs/verification/application-reference-input-partition.md",
+    "heading": "Final whole-design boundary",
+    "start_byte": 127986,
+    "end_byte": 141583,
+    "first_line": 1307,
+    "source_sha256": "62c1492083b23698e7c18bf67ae02d39846b70f2d452d408c35f4008e6ef7cdb",
+    "utf8_sha256": "ea34d12b0f7e2d1049713b19c0ad4012b19f216b628835acac303c445e2c9da6",
+    "scope": "Complete whole-k291 design/exact-missing-original boundary, current-summary/member/charter/presentation reconciliation and scoped checks for mandatory whole review before k269; no execution authority or qualification."
+  },
+  "namespace_scope_provenance": "Each namespace scope retains the original constituent slice description, including historical remaining-work names. It is not a current execution assignment. The final whole-design boundary and current remaining field own current responsibilities; original clauses/member meanings and missing-original work remain unchanged.",
+  "closing_provider_provenance": {
+    "current_receipt_inherited": false,
+    "creator_line": "omitted",
+    "basis": "Installed Grove retire procedure: a current non-legacy launch without GROVE_PROVIDER_EVIDENCE writes no Creator; never copy prior or legacy evidence."
   }
 }

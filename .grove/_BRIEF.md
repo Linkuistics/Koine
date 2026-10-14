@@ -231,22 +231,26 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
-Whole admission review k288 and integration k289 find the k282 proposal unrealizable
-at its appointment/release seams and incomplete in blockers, exact scope/current identity
-and statement partition. One requirements leaf, reference-evidence-session-authority-k290,
-precedes one coupled design producer, reference-evidence-session-admission-k291, before
-k269. That producer must earn mandatory whole review/every integration before replanning.
-No role-per-leaf tree or repeated impossible contact survey is selected. The complete
-original obligations, k281 amendments, unused k245 pass and every hold remain.
+The complete reference-evidence-session-admission-k291 producer repairs the historical
+k282 defects under actual k281/k290/k295 answers. It defines human ready-object acceptance,
+compatible duties/exclusions and distinct instrument close, one fresh foreground
+supervisor/checker/acquirer invocation through true return, exact accepted P export
+entries under immutable issuance/current rules, durable disarm, closed Q/P/C/D blockers,
+exact T/A grammars and complete individual E/H/R/basis/read membership. Its mandatory
+whole review and every earned integration precede reference-evidence-construction-k269.
+The final whole-design boundary and original-obligation concordance in
+docs/verification/application-reference-input-partition.md retain every original duty
+under only the exact actual amendments. Earlier promotion paragraphs below are historical
+proposals, not alternate current construction handoffs.
 
-Reference-evidence-session-authority-k290 records Antony's agreement to human-owned
-independent acceptance and a single foreground supervisor/acquisition ceremony, batching
-compatible acceptance/audit/release work with producer/repairer exclusions and a distinct
-instrument closing owner/step. He separately approved the exact additional pass-status
-move to the unconsumed report; permission, adjacent holds/private/native duties and all
-other original obligations remain. The canonical selected requirements and obligation
-comparison bind k291's complete repair, mandatory whole review/every earned integration
-and k269's later replanning. This closes the decisions only; k244/k242 stay live.
+Required actual originals/controls, entry/read/image/build/terminal facts, qualified
+provisioning/validation, final affected Q/independent acceptance/audit and distinct k244
+close remain due before their consumers. K295 adds bounded observation authority only;
+source-child metadata first belongs to A. Accepted opaque contact gaps remain unknown,
+never no-contact or an excuse for failed required evidence. K244/k242 stay live, k245's
+pass is unused, k246/k247 and useful breadth/additive VM/native placement retain every
+original duty, private eligibility stays false and both holds remain. Actual consumed
+changes disarm/requalify; fresh current documentary identities grant no authority.
 
 The preceding Koine grove was torn down at commit `fc3b22d3`. This workspace
 starts from that commit. Homebrew was updated and Koine 0.1.0 was installed

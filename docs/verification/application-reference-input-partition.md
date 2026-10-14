@@ -3,80 +3,69 @@
 This is an unconsumed reporting output. The binding rules are the evidence contract's
 [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 and [mutation controls](application-reference-evidence.md#extraction-and-whole-object-mutation-controls).
-This report records k282's k287 proposal, k288/k289's review/integration boundary and
-k290's actual human decisions and k306's merged documentary inventory.
-K307 retains complete design reconciliation and mandatory whole-k291 review;
-this report supplies no approval, receipt, qualification, close record or LIVE role.
-
-The [whole-k291 obligation concordance](#whole-k291-obligation-concordance) now compares
-the original requirements with the repaired protocol and exact remaining originals.
-K307 decomposes at that comparison and final current-surface/delivery reconciliation:
-k308 supplies the comparison; k309 retains the entire original closing conjunction.
-Earlier scoped handoff paragraphs below remain historical reports of their named slices.
+The [final whole-design boundary](#final-whole-design-boundary) records the complete
+k291 design and exact missing originals for its mandatory whole review before k269.
+The [whole-k291 obligation concordance](#whole-k291-obligation-concordance) compares each
+original duty, actual answer and F1–F10 repair. Earlier named slice sections are historical
+reports at their own completion boundaries; their pending-work/owner statements do not
+describe the current design. Their original source/scan/charter provenance remains intact.
+No report, inventory or design retirement is an approval, receipt, qualification, instrument
+close, eligible release or LIVE appointment.
 
 ## Current construction and evidence report
 
-At the k287 whole-design boundary, the target-reading instrument, executable schemas,
-independent verifier/runner and required pure-control matrix are not built or qualified.
-No commissioned approval root, accepted revision, live authority directory/receipt,
-final receipt validation, original qualified Q results, accepted audit/distinct k244 close
-or independent eligible release is supplied. Actual UID/ancestry/image/endpoint evidence
-and independently acquired current CF expectations remain unavailable. No current
-installed query, contents package, protected/topology probe, collector or native/VM
-qualification was performed.
+The admission design defines foreground acceptance/appointment and compatibility/exclusions,
+exact separately accepted P export entries, durable disarm, closed Q/P/C/D blockers, exact
+T/A grammars, the selected bounded correspondence route and complete individual input
+membership. Mandatory whole-k291 review and every earned integration precede k269.
+
+The target-reading instrument, executable schemas, independent verifier/runner and required
+pure-control matrix remain unbuilt/unqualified. No accepted approval root/revision,
+commissioned runtime/entry/image chain, qualified one-time authority/receipt validation,
+original Q results, accepted audit/distinct k244 close or eligible release exists.
+Required documentary/authored/runtime originals and actual UID/build/peer-image/terminal/
+ancestry/endpoint facts retain precise missing work before their Q/P/A consumers.
 
 The single pass is unused.
 
-K283 specifies Q mechanics, fresh P facts and first-attempt A outcomes; k284 applies
-the accepted bounded contact/pre-lookup limits; k285 specifies independent own acceptance
-and disarmed release. K286 separates enduring inputs from changing observations. K287 reconciles their whole conjunction, with original k273/k244/k242 and complete k282
-repair comparisons, seven views and all consumer handoffs. Mandatory whole-k282 review and
-every earned integration precede k269 construction replanning. No partial child is a handoff.
-K244/k242 remain live, k246/k247 retain their complete duties, private eligibility remains
-false, both product holds remain, and every native pending obligation stays live.
+K244/k242 retain actual construction/qualification/package/subject duties. K245 retains
+the single exact current-reference attempt and independent copy roles; k246 complete
+generated rewrite/helper/alias discrimination; k247 the full subject/family comparison
+and mandatory review. Required refused copies preserve raw slots and failed/incomplete
+work. The finite subject remains absent, private eligibility false, both holds and all
+useful breadth/additive VM/native placement duties remain. No installed query, target
+contents, protected/topology probe, collector, process/terminal/kernel qualification or
+authority operation was performed by this documentary closure.
 
-The shared project Taskfile supplies presentation and legacy lossy-capture recipes;
-it supplies no retained packaging environment. The fixed retained entry/channel remains
-unimplemented and its required C3/C6/C8 preservation cells remain unqualified. The contact
-tables preserve documentary source enumeration only. No full current service/proxy/
-initial-right/map coverage follows; those canonically accepted gaps remain unknown,
-distinct from failed/missing required controls and identities.
+The shared Taskfile supplies presentation/document checks and legacy lossy-capture recipes,
+not the retained packaging environment. The actual retained Task/script/CLI/channel,
+known reads/images and independently authored controls still require construction and
+qualification. Complete opaque service/proxy/initial-right/map/hidden-ancestry/TCC coverage
+stays accepted unknown; it is never full no-contact evidence or a waiver of a required
+native/identity/control/freeze fact.
 
-The exact approved sentence, “Those controls are currently specified, not executed.”,
-remains verbatim in the canonical report's
-[status subsection](application-population-metadata-shape.md#status-outside-the-measured-permission).
-K289 preserved the selected requirements and descriptor ADR. K290 adds the selected
-human-operator clause and relocates only the separately approved pass-status observation;
-its comparison preserves the adjacent holds/private/native duties and original permission.
-Requirements-leaf non-execution statements remain fixed historical facts; downstream outcomes are reported
-here without relabelling that interview or weakening conditional qualification holds.
+The exact sentence, “Those controls are currently specified, not executed.”, stays in
+the canonical [reporting subsection](application-population-metadata-shape.md#status-outside-the-measured-permission).
+Only the actual k281/k290 status relocations apply. Selected S/D/C extracts and whole
+companions/tables/historical packet/parent are preserved. Current source/member identities
+are reconstructed separately from all historical originals and scans. Unconsumed reporting
+grants no qualification; an actual consumed change disarms and requires affected requalification.
 
 ## K288 review integration and live repair
 
-Review k288 (7062319a61eb) inspected the complete k282 producer at 04bd81cfb299.
-Integration k289 classifies F1–F8 as real design issues and F9/F10 as unclear contracts.
-F9 is clarified in the whole contact companion: the five unchanged inventories use
-quote-aware tab-delimited CSV, preserving the six cited BSD conditional tabs. README and
-CONTEXT now distinguish Q/P/A stages from E/M/U evidence credit. Neither clarification
-qualifies an instrument or accepts any evidence.
-
-| Finding | Verified remaining work and owner |
-| --- | --- |
-| F1 session lifetime/appointment; F7 proportionate independence | K290 records Antony's agreement to human-owned independent acceptance and one foreground supervisor/acquisition ceremony. Compatible acceptance/audit/release work may be batched, with producer/repairer exclusions and a distinct k244 closing owner/step. K291 must state the exact compatibility/exclusion relation, earlier acceptance order and actual human-origin appointment/channel schedule; running an image is no authority. |
-| F2 bounded blocker set | K293 fixes Q01–Q10/P01–P05 and each C bypass/D1–D6 disposition under k281 before construction, including foreground/entry/disarm pairs. Actual required originals/controls remain absent; no full U2 gate or waived named control. K294 reconciles the whole conjunction. |
-| F3 fresh export/profile binding; F8 durable invalidation | K291 must bind exact per-invocation A3 entries separately from unchanged issuance authority and persist authorized invalidation before mutable work, with crashed/partial-successor refusal and no old-ELIGIBLE fallback. R7/R10 and one-attempt consumption remain. |
-| F4 exact target classes and bases | K293 supplies byte/component/finite-parent/nested/cryptex/direct/link Data grammars and A1/A2/A3/layout/file/locale operations with independent bases. Historical syntax certifies no current presence/TCC/ancestry; required raw refused copies retain missing work. Whole reconciliation/review remains k294. |
-| F5 current build/process-image facts | K293 names permitted UID/sysctl/channel/CF/provisioning/export/disarm operations and the exact missing independent build/peer-image/terminal route. K295's concrete authority choice precedes k294; actual Q/P facts/qualification stay missing. No available API/current identity is established by source or policy. |
-| F6 statement partition | K290 records separate exact approval to relocate only "The single pass is unused;" and capitalize the retained "Both"; the following private/native line is unchanged. K291 must repair every individual E/H/R statement and stable owner rule, refresh the TSV/byte comparisons and preserve whole companion/table/basis bindings. The old all-E classification does not establish the partition. |
-
-Tree order is k289 → k290 actual decisions → k291 whole repaired design → its mandatory
-whole review/every earned integration → k269 replanning. K291's closing session cuts that
-review lazily after its artifact exists. The k244/k242 and k245/k246/k247 charters retain
-this order and every original duty. The current k282 mechanisms/views are reviewed
-proposals with the above unresolved work, not an implementable construction handoff.
-No authority, instrument qualification, target pass or complete finite subject follows.
+K288's original review at `7062319a61eb` and k289's classifications remain the complete
+findings basis. Their F1–F8 design issues are repaired by the whole k291 producer, under
+actual k281/k290/k295 answers. F9 declares the existing quote-aware table dialect without
+changing table bytes; F10 keeps Q/P/A stages separate from E/M/U operation credit and
+E/H/R statement classes. The [complete finding comparison](#k288-findings-against-the-repaired-conjunction)
+locates each normative repair and its missing actual evidence. No partial child or
+historical k273/k282 promotion is a current construction handoff. The whole-k291 review
+and every earned integration precede k269; review remains inspection-only and confers no
+independent acceptance or process appointment.
 
 ## Foreground admission repair slice
+
+Historical k292 slice report; current closure is [below](#final-whole-design-boundary).
 
 Reference-evidence-foreground-admission-k292 delivers the first design slice of k291,
 covering F1/F3/F7/F8. The [acceptance contract](application-reference-evidence.md#chartered-independent-acceptance)
@@ -1106,6 +1095,9 @@ the measured chain would invoke the existing whole-read/change/disarm rules.
 
 ## Whole-k291 obligation concordance
 
+Historical k308 concordance and then-remaining work, retained for exact comparison.
+The [final boundary](#final-whole-design-boundary) closes its current-surface duties.
+
 This is k308's **design comparison**, not an independent approval or a claim that k291
 is closed. It compares original k288 findings at `7062319a61eb`, k289 classifications,
 the original k273/k244/k242/k282/k291 charters, actual k281/k290/k295 answers and the
@@ -1233,6 +1225,8 @@ exists. K244/k242, unused k245 pass, k246/k247, all useful/native duties and bot
 
 ## Seven-view admission presentation
 
+Historical k310 delivery report; the final recheck and preserved limits are [below](#final-whole-design-boundary).
+
 K310 reconciles the seven reference/corpus views with the repaired protocol already
 compared by k308. This is a presentation consumer of the normative sources, not completion
 of the whole k291 producer. K309 decomposes at presentation and final source/summary
@@ -1309,3 +1303,136 @@ instrument close and fresh appointment remain precise work before their Q/P/A co
 The pass is unused, the finite subject is absent, private eligibility is false, both
 holds and all useful-breadth/native placement duties remain. This presentation grants
 no authority, qualified control, instrument/native pass or semantic whole-design approval.
+
+## Final whole-design boundary
+
+K311 closes the complete k309/k307/k303/k298/k294/k291 **design and exact-missing-work
+boundary for mandatory whole review**. The complete producer is k291, including every
+child and original charter condition; the review is never of k311, the presentation or
+the closing diff alone. Every earned integration precedes k269 construction replanning.
+This is no semantic review verdict, accepted instrument, original possession or qualified
+control. K244/k242 retain their actual duties and remain live.
+
+### Current-surface reconciliation
+
+- [Current construction and evidence report](#current-construction-and-evidence-report) — Distinguishes the complete repaired design from missing actual originals, controls and qualification.
+- [Canonical reporting](application-population-metadata-shape.md#status-outside-the-measured-permission) — Replaces pending all-E/design repair with complete six-namespace membership; selected permission and adjacent holds are unchanged.
+- [Evidence contract reporting](application-reference-evidence.md#review-integration-and-required-decisions) — Identifies historical k273/k282 promotions and the complete k291 review boundary; all seventeen selected sections retain their bytes.
+- [Product summary](../../README.md#reference-evidence-design) — States the selected ownership, closed blockers/grammars, complete partition and exact missing Q/P/A work.
+- [Private evidence and release](../specs/application-metadata-private-qualification.md#complete-finite-evidence-and-release-decision) — Keeps the repaired admission design separate from independent finite-subject eligibility and native acceptance.
+- [Family reconciliation](application-metadata-reconciliation.md#current-construction-and-failed-useful-fit) — Corrects the historical repair handoff while retaining failed useful fit, all gates and actual qualification duties.
+- [Native acceptance](native-discovery-acceptance.md) — Keeps every G/N/V duty pending under the completed admission design and unchanged existing placement.
+- [Presentation discussion](../design/architecture/index.html#discussion) — Advances captions and discussion to whole-design review, keeping seven unchanged graph/source/export transition sets and the scoped delivery limits.
+
+README, CONTEXT and the root brief use the same boundary. K244/k242/k245/k246/k247/k269
+current charter contexts retain their original Goal/Done when and exact actual amendments.
+Historical promotion/owner proposals are explicitly marked; fresh current charter snapshots
+are recorded separately from historical candidates and never become accepted runtime or
+closing records. No old current-owner sentence can appoint an execution role.
+
+### Original conjunction and exact missing work
+
+The [original-duty and actual-answer concordance](#whole-k291-obligation-concordance),
+[canonical line-by-line amendments](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+and [whole-producer comparison](application-reference-evidence.md#whole-producer-obligation-comparison)
+remain the complete comparison, with k273/k282 review placements understood at their
+historical scope. Actual k281 “yes”/“yes.”/“yes”, k290 “agree”/“ayes” and k295 “approve”
+are read from their original decision logs; no summary or hash replaces an answer.
+Only those exact contact/lookup/status/ownership/observation amendments apply.
+
+| Original closing condition | Complete design correspondence and remaining consumer |
+| --- | --- |
+| K291 F1/F3/F7/F8, earlier k282 R3/R4 and R7/R10 | Direct ready-object human acceptance before each first consumer; explicit compatible/excluded duties and distinct close; exact A3 P entry under immutable issuance/current rules; coexisting foreground appointment through true return; authorized durable disarm/partial/crash/lock/successful-unaccepted-Q refusal. Actual channels, originals, identities and persistence controls must qualify before credit/release. |
+| K291 F2/F4/F5, earlier k273 contact/topology/runtime and k282 R1/R2/R5 | Closed Q01–Q10/P01–P05 and each C/D applicability, exact T1–T7/A1–A3 byte/component/link/layout/file/locale rules and independently authored bases; selected bounded k295 route. Q/P identities and failed required controls block; first source-child A outcomes are never prior calibration. Accepted opaque contact gaps cannot waive required evidence or recreate a universal U2 gate. |
+| K291 F6 and k282 R6 | Complete six-namespace individual clause/datum/R/basis/read/phase/absence composition, stable responsibilities and exact current-source reconstruction. Whole companions/tables/bases/actual reads remain whole. Missing originals have null actual bytes/members and work before consumer; historical scans/charters and source pins cannot provide possession. |
+| K291 F9/F10 and original R8/R9 | Existing quoted UTF-8 tab CSV preserves every table byte and logical RPC/macro/conditional field. Q/P/A, E/M/U and E/H/R meanings stay separate; checker readiness and independently appointed role precede Task. |
+| K273/k244 actual authority/tool/control conjunction | K269 must place live independent basis/specimen/inventory/proof/bootstrap/entry/adapter/decoder construction, original review/integration/acceptance, qualified one-time provisioning/independent receipt validation, repair and final affected Q. Required actual source/native/identity/entry/read/image/control/freeze results precede their credit; independently accepted original Q results/audit and distinct k244 close precede release. Missing proof cannot close k244. |
+| K242/k245 complete evidence, roles and one attempt | K245 still requires actual k244 closure, fresh accepted release/appointment and P facts before the one A attempt. Preserve exact 27.0.1/26A434 source/cohort/layout/all-six-file/raw/typed/flag/table/LocProvenance/tail/digest/copy/version/alias evidence and original-to-derivative correspondence. Required refused copies keep raw slots and precise incomplete work, never another pass or a complete subject. |
+| K242/k246 generated subject and independent discriminator | Full whole-template/balanced/ordered 1,010 useful/fourteen witness/256 helper/128 alias recipes, complete resulting shape/bytes/types/serialization/branches/tails/associations, permitted-rewrite positive and intended negatives; full actual supported-VM baseline/registration pressure remains additive. Source hashes alone qualify none of this. |
+| K242/k247 whole family/private/native conjunction | Whole subject/family review and every earned integration remain before private construction/k7, including honest failed/incomplete work. Nine tapes/real publication, every selected resource/deadline/true-return gate, independent Settings/location/core, authority/disclosure/source-and-image/action/compatibility duty and existing N5/N8/V11/V13/k30 placement remain. No useful loss, actual fit/overflow or native pass follows. |
+| K309/k307/k303/k298/k294/k291 final delivery/review | Current summaries/consumer charters, seven captions/manifest and final source/member/charter coordinates are reconciled; historical originals retained and exact comparisons replayed. One mandatory review names whole k291; its provider provenance follows the retirement rule described below. No competing partial/in-session reviewer or implementation leaf is cut. |
+
+The later reviewed k269 plan assigns concrete live handles at those consumer positions.
+It must preserve independent original authors and trust acts while combining compatible
+useful work; a role table is no instruction to create one leaf per role. A genuine new
+required authority/scope trade-off needs one concrete decision before its consumer.
+This close creates no new authority, reporting exception, contact/native programme or
+control. Private eligibility remains false, both holds and every useful-breadth/native
+obligation remain; the pass is unused and the finite subject absent.
+
+### Reconstruction and verification scope
+
+Current S/C whole-source identities change only because reporting outside the selected
+extracts changes. Reconstruct each affected current clause/context/extract/retained-R
+evidence coordinate, documentary URL/pin association, actual-read requirement and basis
+scope from the frozen prior objects, verifying exact unchanged selected payloads. Original
+R contexts, historical source revisions, all original tables/packet/parent and prior scans
+retain their own identities. The composite binds current constituent bytes, report sections,
+presentation and current charter candidates separately; its final bounded docs scan excludes
+only itself. No missing original receives an invented digest, zero-length object or member.
+
+Documentary replay checks membership, every clause/datum/source/context/R correspondence,
+phase/absence and original amendment comparisons. Deliberate omission, substitution,
+reclassification, false possession, cycle, changed scope/source and injected-original
+counterparts must reject at their intended comparison. Existing document/render checks
+and named before/after subjects establish only that bounded documentary/presentation scope,
+never actual transitive runtime reads, semantic approval or qualified Q/P/A evidence.
+
+### Final presentation delivery limits
+
+The seven D2 sources/exports and graph transitions are retained from k310; captions,
+discussion and presentation README now identify this complete design/review boundary.
+The prior k310 desktop-light/dark Chrome and Safari 390 × 844 light-fit observations
+remain their own evidence. Safari's fresh Packaging-fragment defect, small-text mobile
+overview, unclaimed mobile dark/native-size panning and earlier k287/k308 unavailable/
+limited browser evidence are preserved. The viewer is unchanged. New rechecks below
+report only their actually observed surface; HTTP/served equality alone proves no rendering.
+
+K311's final browser recheck uses the same unchanged viewer on loopback port 8949:
+8948 returned an empty HTTP response, so a fresh existing `design:serve` invocation
+serves only the presentation directory. Chrome fresh document/query-fragment navigation
+reaches every one of the seven final views in desktop light and page-emulated dark
+appearance, with loaded diagrams, current captions and readable contrasting text/edges.
+The discussion has the final title/status, all seven context links and an empty changed-
+diagram list: graph sources/exports did not change. Chrome at 390 × 844 light also
+renders all seven views and wraps headings/actions/captions. Fit mode remains an overview
+with small graph labels; this is no detailed-reading/native-size-panning or mobile-dark
+pass. The temporary viewport override is reset. Safari was not requalified in this
+session: retain its observed fresh-fragment defect and prior scoped mobile-light results.
+Initial rapid screenshot attempts caught loading placeholders and supply no render
+evidence; the subsequent loaded-image observations supply the results above.
+
+### Final documentary evidence and retirement provenance
+
+The six-namespace replay checks the complete 492,230 constituent records, original
+clause/context/extract/R and historical datum/ordinal/parent correspondence, whole-basis/
+actual-read/phase/absence obligations and retained deliberate failure counterparts.
+The separate original-binding comparison preserves selected S/whole D/seventeen C
+payloads, every reconstructed member's meaning, all original R contexts and historical
+scans/charters; reconstructs the complete S/C reporting edit; compares every saved
+original charter Goal/Done when and actual answer, including k288's own `7062319a61eb`
+bytes; and compares sixteen served objects before/received/after. Historical S/all-E
+guards read their immutable originals; current full sources are independently checked
+against their reconstructed current records, never an old hash accepted as current.
+Intentional stale source, permission mutation, member reclassification and invented
+graph bypass fail at their exact original comparison. The render task and `check:docs`
+retain named itemwise before/after subjects. Temporary evidence is
+`/tmp/koine-k311-documentary-check.json`, `/tmp/koine-k311-binding-check.json` and
+`/tmp/koine-k311-{render,docs}-inputs.json`. These are documentary/presentation outcomes,
+never instrument controls, semantic whole review or actual transitive runtime closure.
+
+Tier 2 coverage confirms project
+`Users-antony-Development-Koine.add-plugins-for-modaliser-requirements`, generation
+`2026-09-29T10:36:20Z`. Documentation/scripts are excluded; root/task metadata is changed
+or not tracked. Direct whole-source reads, exact reconstruction and bounded documentary
+comparisons supply this evidence, not graph completeness or current native facts.
+No new ADR meets the hard-to-reverse test: no selected production decision changes.
+
+The producing session inherited `RAVEL_EXIT_FILE` but no `GROVE_PROVIDER_EVIDENCE`.
+The installed Grove retirement procedure requires omitting Creator when no current
+receipt exists in a non-legacy launch. The whole-k291 review therefore receives no
+invented, copied or legacy Creator line; this absence is explicit provenance, not a
+claim that the owner's subsequent review policy has accepted an unidentified producer.
+The last work act creates that mandatory review before k269; ordinary retirement and
+the settled k309/k307/k303/k298/k294/k291 cascade follow. K244/k242 stay live for actual
+duties; the single pass is unused and every product/private/native hold remains.

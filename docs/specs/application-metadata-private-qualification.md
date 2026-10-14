@@ -340,21 +340,24 @@ The [acceptance/release protocol](../verification/application-reference-evidence
 requires a chartered independent own trust act after inspection-only review/integration,
 disarmed final requalification, accepted audit/distinct instrument close and separately
 supervised k245 LIVE invocation. Receipt, proof, release-record or copied-review possession
-supplies no authority or finite subject. Whole-k282 review/integration still precedes k269.
+supplies no authority or finite subject. Whole-k291 review/integration still precedes k269.
 
-The [enduring-input partition](../verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
-keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
-[changing reports](../verification/application-reference-input-partition.md). Actual input changes
-still disarm and requalify; report updates supply no authority, qualification or private/
-native outcome. Whole review k288 found coupled session/appointment, blocker/export/scope,
-current-identity, partition and invalidation defects in the k282 proposal. The
-[integration boundary](../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records k290's selected human-owned acceptance/foreground ceremony and exact pass-status
-relocation. Compatible acceptance/audit/release work may be batched with producer/repairer
-exclusions and a distinct k244 closing owner/step. K291 must supply the complete repaired
-design and mandatory whole review/every earned integration before k269. Requirements
-closure supplies no instrument qualification, authority or finite subject; the original
-duties and every hold remain under only the explicitly compared amendments.
+The [complete admission design](../verification/application-reference-input-partition.md#final-whole-design-boundary)
+repairs the historical k282 session/appointment, blocker/export/scope, correspondence,
+partition and invalidation defects under actual k281/k290/k295 answers. Mandatory
+whole-k291 review and every earned integration precede k269. Antony owns ready-object
+independent trust judgments; compatible duties may batch with producer/repairer exclusions
+and a distinct instrument closing owner/step. One fresh foreground appointment keeps
+supervisor/checker/acquirer together through true return. Exact P export entries remain
+separate from issuance authority; durable maintenance intent prevents stale eligibility.
+Closed Q/P/C/D and T/A rules and complete six-namespace E/H/R/basis/read membership are
+specified. Actual required originals, controls, entry/read/image/current-build/terminal
+facts and provisioning/validation remain unqualified; source-child facts first belong to A.
+Historical all-E/source/charter/scan records supply no current qualification. Only
+unconsumed reports can change without changing inputs; consumed changes disarm/requalify.
+Whole companions/tables/bases and actual task/runtime/charter reads stay whole. K244/k242
+and k245/k246/k247 retain their actual separate duties; required refused copies remain
+incomplete, with all useful breadth, native placement, private ineligibility and both holds.
 
 Freeze per supported VM/architecture/OS and exact bundled/update/refusal profile:
 host/provider images, signatures/team/IDs, SDK/toolchain, approved posture,

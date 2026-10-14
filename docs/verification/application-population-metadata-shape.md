@@ -520,25 +520,30 @@ fact or qualified route, and leaves required Q/P/A evidence at its original stag
 Those controls are currently specified, not executed.
 
 The instrument, independent admission mechanism and actual qualification remain unbuilt.
-The one target pass is unused. K287 reconciles the complete k282 credit/LIVE activation/
-independent acceptance/input partition under the actual decisions. Whole review k288
-found the coupled defects recorded in the [integration report](application-reference-input-partition.md#k288-review-integration-and-live-repair).
-K290 records the actual human-operator/batching and narrow pass-status decisions. K291's
-complete repaired design, mandatory whole review and every earned integration precede
-k269 replanning. Whole companions and inventory/basis tables remain
-full-byte inputs until that reviewed partition is implemented; this relocation selects no
-reporting slice. A requirements answer qualifies no tool, initializes no authority and
-supplies no current package, finite subject or native verdict.
+The one target pass is unused. The [complete k291 design](application-reference-input-partition.md#final-whole-design-boundary)
+repairs the historical k282 proposal under actual k281/k290/k295 answers. Foreground
+acceptance/appointment, compatible duties/exclusions, exact P export entries, durable
+disarm, closed blockers/path grammars and individual input membership are specified.
+Mandatory whole-k291 review and every earned integration precede k269 replanning.
+Required actual originals, controls, provisioning/validation and qualification remain
+missing; no current package, complete finite subject, authority or native verdict follows.
 
 The separate [input-partition and evidence report](application-reference-input-partition.md)
 records changing construction/commissioning/qualification/audit/close observations.
-K289 preserved this document's entire selected section byte for byte. K290 adds the
-selected human-operator clause and, under Antony's separate exact approval, removes
-only "The single pass is unused;" from Agreed seams and capitalizes the retained "Both".
-The exact observation is now in that unconsumed report. The adjacent private-ineligibility/
-native-PENDING line is byte-identical; conditional holds retain their original scope.
-Whole-byte companions/tables/bases remain inputs, with no reporting slice or inferred
-qualification. The historical all-E inventory still needs k291's complete repair.
+K289 preserved this document's selected section. K290 added the selected human-operator
+clause and, under separate exact approval, removed only "The single pass is unused;"
+from Agreed seams and capitalized retained "Both". Its adjacent private-ineligibility/
+native-PENDING line remains byte-identical. K295 added only the compared bounded
+correspondence-observation authority. Every other selected clause remains binding.
+
+The [current six-namespace composition](application-reference-input-partition.md#complete-statement-inventory)
+replaces the historical defective all-E index and binds every individual clause/datum,
+original R retained duty, whole-basis/actual-read and phase/absence obligation. Whole
+companions/tables/bases and actual task/runtime/charter reads retain full-byte binding;
+no new reporting slice is selected. This reporting edit leaves selected S unchanged but
+changes the full source identity: all affected current members/associations are reconstructed
+against the preserved extracts and historical originals. Unconsumed reports supply no
+qualification; actual consumed changes disarm and requalify.
 
 ### Line-by-line original-obligation comparison
 

@@ -98,30 +98,33 @@ consumption remain held until full useful native qualification passes. Historica
 arithmetic is counterexample evidence only, and every native G/N/V stays pending.
 The reference instrument's [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
 requires k281's accepted bounded contact/pre-lookup choices and the complete reviewed
-k282 repair before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
+k291 design review before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
 full service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains explicitly unknown,
-while required known identities/controls stay blockers. Neither an unavailable mechanism nor an unrepaired credit/activation/
-registration/input partition supplies the finite subject or private eligibility.
+while required known identities/controls stay blockers. The complete repaired design supplies no actual instrument qualification, finite
+subject or private eligibility.
 K285's [chartered acceptance](application-reference-evidence.md#chartered-independent-acceptance)
 and [independent LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 require original reviewed/final bytes/findings/dispositions, disarmed requalification,
 accepted audit/distinct close and a separate supervisor-originated k245 channel. Receipt/
 proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
-whole-k282 review/integration remains before k269; every native duty below stays pending.
+whole-k291 review/integration remains before k269; every native duty below stays pending.
 
-The [enduring-input partition](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
-keeps exact sections and whole companions/tables/bases/task/runtime bytes separate from
-[changing reports](application-reference-input-partition.md). Actual input changes
-still disarm and requalify; report updates supply no authority, qualification or private/
-native outcome. Whole review k288 found coupled session/appointment, blocker/export/scope,
-current-identity, partition and invalidation defects in the k282 proposal. The
-[integration boundary](application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records k290's selected human-owned acceptance/foreground ceremony and exact pass-status
-relocation. Compatible acceptance/audit/release work may be batched with producer/repairer
-exclusions and a distinct k244 closing owner/step. K291 must supply the complete repaired
-design and mandatory whole review/every earned integration before k269. Requirements
-closure supplies no instrument qualification, authority or finite subject; the original
-duties and every hold remain under only the explicitly compared amendments.
+The [complete admission design](application-reference-input-partition.md#final-whole-design-boundary)
+repairs the historical k282 session/appointment, blocker/export/scope, correspondence,
+partition and invalidation defects under actual k281/k290/k295 answers. Mandatory
+whole-k291 review and every earned integration precede k269. Antony owns ready-object
+independent trust judgments; compatible duties may batch with producer/repairer exclusions
+and a distinct instrument closing owner/step. One fresh foreground appointment keeps
+supervisor/checker/acquirer together through true return. Exact P export entries remain
+separate from issuance authority; durable maintenance intent prevents stale eligibility.
+Closed Q/P/C/D and T/A rules and complete six-namespace E/H/R/basis/read membership are
+specified. Actual required originals, controls, entry/read/image/current-build/terminal
+facts and provisioning/validation remain unqualified; source-child facts first belong to A.
+Historical all-E/source/charter/scan records supply no current qualification. Only
+unconsumed reports can change without changing inputs; consumed changes disarm/requalify.
+Whole companions/tables/bases and actual task/runtime/charter reads stay whole. K244/k242
+and k245/k246/k247 retain their actual separate duties; required refused copies remain
+incomplete, with all useful breadth, native placement, private ineligibility and both holds.
 
 For the explicit ordinary reader, inject the root type and descriptor-file seams:
 root bytes 977/978/1,003/1,004/1,023 admit only the root whole-path type call;

@@ -9,90 +9,49 @@ The [construction boundary](#construction-and-qualification-boundary) keeps the
 complete implementation/qualification obligations live under k244. This document
 supplies no current payload, role assignment, finite population or native verdict.
 
-Review reference-evidence-admission-k271 and integration k272 identified substantive
-authority-consumption, trust-anchor, IPC observation, exact-entry and measured-input
-gaps. Requirements reference-evidence-authority-k270 settle the
-[delegated authority choices](application-population-metadata-shape.md#authority-and-admission-choices)
-before the instrument node;
-the earlier replacement design k273 was reviewed in k279 and integrated in k280.
-Requirements k281 and repair producer k282 supplied the proposed reconciled
-lifecycle, approval, bounded contact, retained-entry and input conjunction. K287 closes
-that design boundary. Whole review k288 finds unresolved session/appointment, blocker,
-scope/export, current-identity, input-partition and invalidation defects. Integration k289
-places requirements k290 and replacement design k291 before construction replanning k269,
-with mandatory whole-k291 review/every earned integration. The
-[current repair report](application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records exact remaining work. The [whole handoff comparison](#whole-producer-obligation-comparison)
-compares k282's repairs and every original k273/k244/k242 duty. No retired child, review
-sentence or diagram supplies executable qualification, authority or target evidence.
+The [final whole-design comparison](application-reference-input-partition.md#final-whole-design-boundary)
+reconciles the entire k291 producer, original k273/k244/k242/k282 duties and k288/k289
+findings under only actual k281/k290/k295 amendments. Mandatory whole-k291 review and
+every earned integration precede k269 construction replanning. Earlier k273/k282
+promotions and their original-obligation tables below retain their historical scope;
+they are comparison sources, not alternative current handoffs. No retired child,
+inspection finding, diagram or source identity supplies execution authority or qualification.
 
 ## Review integration and required decisions
 
-Whole review k279 and integration k280 find the k273 admission conjunction incomplete.
-Requirements reference-evidence-contact-limits-k281 precede design
-reference-evidence-admission-completion-k282 and construction replanning k269. Antony
-accepted bounded contact evidence and its seams, the closed pre-lookup rule with an
-explicit failed/incomplete-evidence disposition, and relocation of the exact control-
-status sentence outside the canonical measured section. The [selected clauses](application-population-metadata-shape.md#authority-and-admission-choices)
-and [line-by-line comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
-own those amendments. Complete C1–C8/current-service/proxy/initial-right/map correspondence
-is no longer a blanket k244/k245 prerequisite; missing coverage remains explicitly unknown
-and can never be reported as full no-contact evidence. Forbidden contact stays forbidden.
-The complete k282 design replaces direct reviewer-registration and receipt-driven
-role selection with chartered independent own acceptance and disarmed independent
-release. Its operation map separates earlier Q evidence, fresh P facts and first-attempt
-A outcomes; its input partition separates enduring rules from unconsumed reports.
-K287 reconciles all four seams across this contract, both whole-byte companions/five
-tables/bases, seven views, summary layers and consumer charters. K288's whole review and
-k289's integration establish that this proposal is not yet an implementable construction
-handoff. K290 records Antony's agreement to the human-owned independent acceptance and
-single foreground supervisor/acquisition ceremony, with compatible acceptance/audit/release
-batching, producer/repairer exclusions and a distinct k244 closing owner/step. He separately
-approved relocating only the additional pass-status clause, retaining permission and the
-adjacent holds/private/native duties. The selected canonical clauses and comparison bind
-these choices. K291 is a three-slice producer: foreground admission, exact bounded evidence
-surface, then exhaustive partition/whole reconciliation. The operator protocol below
-applies the actual human choice. K293 fixes the closed blocker/applicability set and exact
-target/ancestor/descendant grammars. Its correspondence boundary places one precise
-requirements choice before k294's complete statement/whole reconciliation; required
-actual correspondence remains unavailable. No partial slice is a
-construction handoff. K291 owns the complete repair
-and its mandatory whole review/integration before k269. No repeated unavailable mechanism survey or reporting-only close
-discharges required qualification.
+K279/k280 reviewed the earlier k273 design; k281 accepted bounded contact evidence,
+closed pre-lookup refusal/incomplete-evidence disposition and exact control-status
+relocation. K288/k289 found coupled defects in the k282 proposal. K290 selected direct
+human ready-object trust decisions and one foreground supervisor/checker/acquirer
+invocation, compatible human duty batching with producer/repairer exclusions and a
+distinct k244 close, plus the exact pass-status relocation. K295 approved only the
+bounded manual About, finite same-UID peer/image and inherited-fd/group observation
+route, with fixed source-child metadata first in A. The [canonical clauses and comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
+own those exact changes; all other original duties remain.
 
-K280 directly clarifies immutable issuance/current profile comparison and pre-intent
-export failures, repairs the complete documentary RPC names/conditional variants and
-shows checker supervision before Task startup. These repairs qualify no instrument.
-All original k273/k244/k242 obligations except the explicitly compared contact/lookup
-amendments, k245's unused pass, k246/k247 duties, private
-ineligibility, both product holds and pending native acceptance remain. This section is
-reporting outside the normative extract set; it grants no approval or operation.
-The C1–C8/B1–B8/U1–U6 gates, read claims and closed pre-lookup plan below agree with the
-release/acceptance and input/reporting contracts. They cannot override
-the selected bounded claims or justify another impossible-mechanism construction leaf.
-The exact status relocation does not waive full-byte companion/table binding or complete
-partition/extractor controls; no admission mechanism or actual proof is established here.
+The complete design below specifies independent acceptance before each first consumer,
+fresh foreground appointment through true return, exact separately accepted P export
+entries under immutable issuance/current permission, durable disarm before mutation/Q,
+closed Q01–Q10/P01–P05/C/D applicability, exact T/A grammars and complete individual
+E/H/R/whole-basis/actual-read membership. These repair the historical design defects;
+actual required original payloads, native/identity/control results, entry/read/image
+closure, provisioning/validation and instrument qualification remain unavailable.
+Accepted opaque contact gaps cannot excuse a failed required fact or imply no-contact.
+Original R records, historical charter/source/scan provenance and the historical all-E
+index remain distinct from current documentary reconstruction and future accepted originals.
 
-K282 is decomposed at five repair seams. Operation-credit child k283 specifies the
-[stage-specific operation map](application-reference-packaging-runtime.md#operation-and-credit-map)
-and [non-consuming qualification routes](application-reference-packaging-runtime.md#non-consuming-qualification-routes):
-earlier Q mechanics/identity/control evidence, fresh P facts before intent, and A outcomes
-first observed in the authorized attempt. This resolves the circular demand for earlier
-successful target behavior without crediting it as native qualification. K284 applies
-the bounded-contact/pre-lookup reconciliation; k285 specifies [independent LIVE release](#independent-live-release-and-role-selection)
-and [chartered own acceptance](#chartered-independent-acceptance); k286 specifies the
-[enduring-input partition](#enduring-inputs-and-phase-specific-reports) and separate
-[current report](application-reference-input-partition.md). The complete conjunction,
-rather than any partial child, is the mandatory whole-k282 review subject before k269.
+This section is reporting outside the normative extract set. It creates no reporting
+slice in whole companions/tables/bases or actual tasks/runtime/charters. Only unconsumed
+reports can change without affecting inputs; consumed changes still disarm/requalify.
+Required refused copies retain raw slots and precise failed/incomplete work through
+k245/k246/k247 and whole-subject review. The single pass remains unused. K244/k242 retain
+actual duties, the finite subject is absent and private eligibility is false; both
+product holds, all useful breadth and every native obligation remain.
 
-The [canonical joint evidence boundary](application-population-metadata-shape.md)
-owns the selected reference, cohort requirements, permission and packet-integrity
-limits. Its [selected requirements](application-population-metadata-shape.md#selected-reference-and-evidence-requirements)
-bind this contract. The [private eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
-remains false. The application job protocol, selected reader, nine tapes, amounts,
-deadlines, image/source guards and release conditions remain owned by that spec
-and its cited family. An evidence instrument is not a Koine reader or a new public
-test seam. Both advertisement and ordinary-consumption holds remain.
+The [private eligibility conjunction](../specs/application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence)
+continues to govern the application job protocol, reader, nine tapes, selected amounts,
+deadlines, source/image guards and release. Evidence construction changes none of those
+rules and adds no public seam or native programme.
 
 ## Ownership and alternatives
 

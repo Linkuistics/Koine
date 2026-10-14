@@ -278,19 +278,23 @@ keeps provisioning/requalification disarmed through accepted audit and distinct 
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
 release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 keeps changing observations in a separate unconsumed report; actual input changes still
-disarm and requalify. Whole review k288 found admission/appointment, scope and enduring-input
-defects in the k282 proposal. The [integration boundary](docs/verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
-records k290's selected human-owned acceptance/foreground ceremony and exact pass-status
-relocation. Compatible acceptance/audit/release duties may share Antony's ownership;
-producer/repairer exclusions and a distinct k244 closing owner/step remain. K291's complete
-repaired design/mandatory whole review and every earned integration precede construction
-replanning. The existing all-E statement
-inventory is historical and under repair. The [foreground design slice](docs/verification/application-reference-input-partition.md#foreground-admission-repair-slice)
-defines short human acceptance ceremonies, one fresh appointment with coexisting supervisor/
-acquirer, immutable A3 rules with exact accepted P entries, and durable disarm-only maintenance
-intent. Remaining exact blocker/grammar/correspondence/partition repair and whole-k291 review
-still precede construction; this is no authority or qualified control. A refused required
-copy cannot supply a complete finite subject or private eligibility.
+disarm and requalify. Whole review k288 found defects in the historical k282 proposal. The
+[complete repaired design](docs/verification/application-reference-input-partition.md#final-whole-design-boundary)
+applies the actual human-owned foreground choice, exact P export entries under immutable
+issuance permission, durable disarm, closed Q/P/C/D blockers, exact T/A grammars and
+complete individual E/H/R/whole-basis/actual-read partition. The historical all-E index
+remains located as defective evidence. Compatible human trust/audit/release duties may
+batch with producer/repairer exclusions and a distinct instrument closing owner/step.
+Fresh appointment keeps supervisor/checker/acquirer together through true return;
+image/task/receipt/proof/release possession appoints nobody. Whole-k291 review and every
+earned integration precede k269 construction replanning. K295 authorizes only the bounded
+manual build, finite same-UID peer/image and inherited-fd/group observations; their
+actual originals/controls remain missing before Q06–Q08/P01–P03, with source-child facts
+first in A. Missing required originals retain null identities and exact work before
+their consumers. Unconsumed reporting changes grant no qualification; actual consumed
+changes disarm/requalify. A refused required copy retains raw slots and failed/incomplete
+work, never a complete finite subject or private eligibility.
+
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence

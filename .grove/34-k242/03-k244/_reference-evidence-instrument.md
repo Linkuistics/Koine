@@ -1,20 +1,35 @@
 # reference-evidence-instrument-k244 — brief
 
 
-## K288 integration dependency
+## Current complete design and review dependency
 
-Whole review k288 and integration k289 identify coupled defects in the k282 proposal.
-Reference-evidence-session-authority-k290 records Antony's agreement to human-owned
-independent acceptance and one foreground supervisor/acquisition ceremony. Compatible
-acceptance/audit/release duties may be batched, with producer/repairer exclusions and a
-distinct k244 closing owner/step. It also records separate exact approval for the additional
-pass-status relocation, retaining permission, holds and private/native duties. Consume
-the canonical selected requirements and line-by-line original-obligation comparison.
-Reference-evidence-session-admission-k291 must apply both actual answers and cut mandatory
-whole review/every earned integration before k269 replanning. Earlier owner/appointment/
-blocker/export/partition proposals remain repair inputs, not a construction handoff.
-Every original Done when remains binding under only k281/k290's explicitly compared
-amendments; k245's unused pass, k246/k247 duties and every hold remain.
+Reference-evidence-session-admission-k291 supplies the complete repaired design and
+exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory
+whole-producer review and every earned integration precede k269 replanning. Consume the
+final whole-design boundary and original-obligation/actual-answer concordance in
+application-reference-input-partition.md together with the normative evidence/contact/
+packaging contracts and canonical amendment comparison. Earlier k273/k282 promotion and
+owner tables below are historical proposals, never alternative current handoffs.
+
+The design fixes human ready-object acceptance, compatibility/exclusions and a distinct
+k244 close; one fresh foreground supervisor/checker/acquirer appointment through true
+return; exact separately accepted A3 P entries under immutable issuance/current rules;
+durable disarm intent before changes/Q; closed Q01–Q10/P01–P05/C/D blockers; exact T/A
+grammars; bounded k295 correspondence authority; and complete individual E/H/R/whole-
+basis/actual-read membership. Required actual originals, native/identity/control results,
+retained entry/read/image closure, provisioning/validation and final qualification remain
+missing before their consumers. Q06–Q08/P01–P03 require original build/peer-image/terminal
+facts; fixed source-child metadata first belongs to A. Accepted opaque contact gaps
+excuse no failed required fact and support no full no-contact claim.
+
+K269 assigns live owners before each consumer, using compatible useful increments,
+independent authors/acceptance and distinct instrument closure. All original Goal/Done
+when conditions remain under only the explicitly compared amendments. Historical source/
+charter/scan provenance is retained; fresh current charter identities are separate
+documentary candidates, not accepted runtime/authority objects. Actual consumed changes
+disarm/requalify; reports grant nothing. K244/k242 remain live, k245's pass is unused,
+k246/k247 retain complete generated/whole-subject duties, and useful breadth/additive VM
+dimensions/native placement/private ineligibility/both product holds remain.
 
 ## Goal
 
@@ -187,7 +202,7 @@ validation and export derivation before k245, plus requalification after the las
 change. Product zap, export cleanup and self-certified proof supply no authority. Every
 original Done when above remains unchanged.
 
-## Complete replacement design promotion
+## Historical k273 replacement design promotion
 
 Reference-evidence-admission-reconciliation-k278 closes reference-evidence-admission-repair-k273
 at the complete replacement-design/exact-unavailable boundary. Its original Required coherent
@@ -298,6 +313,8 @@ adjudication/qualification/audit/close/release owners before their consumers. K2
 mandatory whole-k282 review/integration remain before k269; this seam supplies no partial
 construction handoff, actual authority, executed control or target evidence.
 
+Historical k287 promotion (reviewed by k288 and repaired by k291):
+
 K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
 release and enduring-input conjunction. Mandatory whole-k282 review and every earned
 integration precede k269; neither an earlier k273 proposal nor a partial child is a
@@ -312,7 +329,7 @@ unconsumed; consumed changes disarm/requalify. K244/k242 remain live, k245's pas
 k246/k247 and all useful-breadth/product/private/native duties unchanged. No design
 retirement supplies actual authority, qualification or a completed finite subject.
 
-## Complete k282 design promotion
+## Historical k282 design promotion
 
 K287 closes reference-evidence-admission-completion-k282 at the complete reconciled
 design boundary. Mandatory whole-producer review reference-evidence-admission-completion-k288
@@ -330,3 +347,14 @@ independent acceptance/audit and distinct closing promotion, followed by separat
 supervision for k245. The close cascade stops here. K242's package/roles/recipes/whole-
 subject review and all useful-breadth/product/private/native obligations remain; k245's
 one pass is unused. No design close supplies actual identities, authority or finite subject.
+
+## Complete k291 design promotion and actual remaining duties
+
+K311 closes the complete reference-evidence-session-admission-k291 design and all its
+closing ancestors at the exact-missing-original boundary. Its mandatory whole-k291
+review and every earned integration precede k269. The final whole-design boundary in
+application-reference-input-partition.md and current consumer contexts above replace
+historical k273/k282 promotion as the current design handoff. This node stays live:
+every original actual construction/qualification/package/roles/recipes/whole-subject duty
+remains, with no instrument or finite-subject close on design or unavailable proof.
+The one pass is unused; all useful breadth, existing native placement and holds remain.

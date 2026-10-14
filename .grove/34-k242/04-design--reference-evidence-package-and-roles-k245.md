@@ -1,20 +1,35 @@
 # reference-evidence-package-and-roles-k245
 
 
-## K288 integration dependency
+## Current complete design and review dependency
 
-Whole review k288 and integration k289 identify coupled defects in the k282 proposal.
-Reference-evidence-session-authority-k290 records Antony's agreement to human-owned
-independent acceptance and one foreground supervisor/acquisition ceremony. Compatible
-acceptance/audit/release duties may be batched, with producer/repairer exclusions and a
-distinct k244 closing owner/step. It also records separate exact approval for the additional
-pass-status relocation, retaining permission, holds and private/native duties. Consume
-the canonical selected requirements and line-by-line original-obligation comparison.
-Reference-evidence-session-admission-k291 must apply both actual answers and cut mandatory
-whole review/every earned integration before k269 replanning. Earlier owner/appointment/
-blocker/export/partition proposals remain repair inputs, not a construction handoff.
-Every original Done when remains binding under only k281/k290's explicitly compared
-amendments; k245's unused pass, k246/k247 duties and every hold remain.
+Reference-evidence-session-admission-k291 supplies the complete repaired design and
+exact-missing-original boundary under actual k281/k290/k295 answers. Its mandatory
+whole-producer review and every earned integration precede k269 replanning. Consume the
+final whole-design boundary and original-obligation/actual-answer concordance in
+application-reference-input-partition.md together with the normative evidence/contact/
+packaging contracts and canonical amendment comparison. Earlier k273/k282 promotion and
+owner tables below are historical proposals, never alternative current handoffs.
+
+The design fixes human ready-object acceptance, compatibility/exclusions and a distinct
+k244 close; one fresh foreground supervisor/checker/acquirer appointment through true
+return; exact separately accepted A3 P entries under immutable issuance/current rules;
+durable disarm intent before changes/Q; closed Q01–Q10/P01–P05/C/D blockers; exact T/A
+grammars; bounded k295 correspondence authority; and complete individual E/H/R/whole-
+basis/actual-read membership. Required actual originals, native/identity/control results,
+retained entry/read/image closure, provisioning/validation and final qualification remain
+missing before their consumers. Q06–Q08/P01–P03 require original build/peer-image/terminal
+facts; fixed source-child metadata first belongs to A. Accepted opaque contact gaps
+excuse no failed required fact and support no full no-contact claim.
+
+K269 assigns live owners before each consumer, using compatible useful increments,
+independent authors/acceptance and distinct instrument closure. All original Goal/Done
+when conditions remain under only the explicitly compared amendments. Historical source/
+charter/scan provenance is retained; fresh current charter identities are separate
+documentary candidates, not accepted runtime/authority objects. Actual consumed changes
+disarm/requalify; reports grant nothing. K244/k242 remain live, k245's pass is unused,
+k246/k247 retain complete generated/whole-subject duties, and useful breadth/additive VM
+dimensions/native placement/private ineligibility/both product holds remain.
 
 ## Goal
 
@@ -106,9 +121,9 @@ issuance permission, and one foreground supervisor/checker/acquirer appointment 
 true return. A pure same-image caller with ELIGIBLE/receipt/proof evidence cannot appoint
 itself. Approved disarm-only maintenance persists intent before changed work/Q; crash/
 partial successor/lock release or successful Q cannot reuse old eligibility. No within-call
-retry or permit refund. The remaining exact blockers/grammars/correspondence and exhaustive
-input partition/whole reconciliation still precede mandatory whole-k291 review and every
-earned integration before k269. This is no partial construction handoff or actual
+retry or permit refund. The complete design now includes the closed blockers/grammars, selected bounded
+correspondence route and exhaustive input partition/whole reconciliation. Mandatory
+whole-k291 review and every earned integration still precede k269. This is no partial construction handoff or actual
 appointment, acceptance, qualified control, receipt or target evidence.
 
 ## Done when
@@ -149,6 +164,8 @@ instrument's build label or a pure pass cannot stand in for this actual byte pac
 If pass/build/roles are unavailable, retain exact missing work and carry a coherent
 failed boundary to k246/k247; never credit a completed finite subject or abandon work.
 
+Historical k287 promotion (reviewed by k288 and repaired by k291):
+
 K287 reconciles k282's complete Q/P/A, bounded-contact/pre-lookup, independent acceptance/
 release and enduring-input conjunction. Mandatory whole-k282 review and every earned
 integration precede k269; neither an earlier k273 proposal nor a partial child is a
@@ -174,10 +191,11 @@ Foreground confirmation/rendezvous, exact accepted P export entry and every fixe
 disarm pair retain actual identity/storage obligations. Required failed/missing Q/P
 evidence blocks; only the precisely classified contact remainder is accepted unknown.
 
-Correspondence authority checkpoint reference-evidence-correspondence-authority-k295
-precedes closing design k294. Consume the actual answer/any earned design repair and
-whole-k291 review/every integration before replanning; the proposed local OS display and
-finite read-only peer/terminal metadata route is unselected and unqualified. No task/
+Antony approved reference-evidence-correspondence-authority-k295's exact bounded
+local OS About, finite same-UID peer/image and inherited-fd/group metadata route, with
+fixed source-child metadata only inside A after consumption. Its authority is selected;
+actual original results and route qualification remain absent. Consume the complete
+k291 design after whole review/every earned integration before replanning. No task/
 image/receipt/proof/SCRATCH same-image negative establishes current build/process/image/
 terminal correspondence or authorizes LIVE calibration. Missing required facts remain
 precise live work before their consumer. R7–R10, raw refused slots/incomplete copy work,

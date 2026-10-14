@@ -14,23 +14,21 @@ The [durable eligibility predicate](../../specs/application-metadata-private-qua
 governs private construction. Native acceptance, both holds and independent duties
 remain live.
 
-Current discussion presents the repaired admission protocol across all seven reference/
-corpus views. The [whole-k291 obligation concordance](../../verification/application-reference-input-partition.md#whole-k291-obligation-concordance)
-remains the unchanged original-duty/actual-answer comparison. This presentation slice
-changes the views and their explanatory captions; final current summary/consumer/source-
-identity reconciliation remains with k311 before mandatory whole-k291 review and k269.
+Current discussion presents the complete repaired k291 design for mandatory whole
+review before k269. The [final boundary](../../verification/application-reference-input-partition.md#final-whole-design-boundary)
+closes current summaries/consumer contexts and reconstructs every affected current-source/
+member identity while preserving historical originals. Actual originals, controls,
+authority/tool qualification and the finite subject remain missing. All seven graph
+sources/exports are unchanged in this closing update; the changed-diagram list is empty.
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Replaces pending partition work with complete six-namespace membership and required original-object duties.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Replaces pending whole-basis work with complete membership, keeping actual Q/P/A evidence unqualified.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Connects closed Q/P/C/D and T/A rules to complete whole-source membership.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Replaces pending blocker/grammar repair with the closed rules and their missing actual evidence.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Replaces the F4 placeholder with exact T grammars and whole review before construction.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows repaired foreground appointment and durable maintenance before qualification.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Replaces the historical under-repair handoff with review and actual qualification before the pass.
-
-These are unqualified design rules. K309 and its ancestors retain their entire original
-closing conjunction; the presentation supplies no partial construction handoff, current
-runtime original, qualified control, independent approval or authority.
+- [Presentation discussion](index.html#discussion) — Advances the discussion to complete design/mandatory review and removes historical changed-diagram markers.
+- [Approval caption](index.html#diagram-native-reference-proof) — Records completed current membership/summary reconciliation while retaining missing original-object work.
+- [Packaging caption](index.html#diagram-native-reference-packaging) — Keeps Q/P/A facts unqualified after final consumer reconciliation.
+- [Contact caption](index.html#diagram-native-reference-contact) — Separates the complete blocker/grammar design from required controls and accepted unknowns.
+- [Admission caption](index.html#diagram-native-reference-admission) — Advances final review placement without changing issuance, P-entry or disarm transitions.
+- [Components caption](index.html#diagram-native-reference-instrument) — Records the whole-design boundary while retaining actual entry/image/decoder obligations.
+- [Evidence caption](index.html#diagram-native-reference-evidence) — Keeps actual qualification, distinct close and fresh appointment ahead of the unused pass.
+- [Population caption](index.html#diagram-native-population-metadata-shape) — Retains package/roles/generated/whole-subject and private/native holds after design closure.
 
 The [canonical authority choices](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 also select independent whole-review/integration approval of scope-preserving anchors and
@@ -64,7 +62,7 @@ acceptance and one foreground supervisor/acquisition ceremony, compatible human 
 batching with producer/repairer exclusions and a distinct instrument closing owner/step,
 plus the exact additional pass-status relocation. The repaired protocol now defines
 compatibility, exact invocation entries, durable disarm, closed evidence/path rules and
-complete input membership. Final summaries/consumer identities and mandatory whole
+complete input membership. Current summaries/consumer identities are reconciled; mandatory whole-k291
 review/every earned integration remain before k269. The
 [integration report](../../verification/application-reference-input-partition.md#k288-review-integration-and-live-repair)
 records the historical findings; the current concordance compares each repaired rule

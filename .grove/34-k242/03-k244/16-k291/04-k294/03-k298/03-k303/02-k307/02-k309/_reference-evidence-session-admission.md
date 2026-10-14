@@ -93,3 +93,24 @@ S, final presentation recheck and exact original comparisons. Only its last work
 mandatory whole-k291 review before k269 and its own closing Creator/parent cascade. No
 partial reviewer is cut here; all ancestor nodes remain live and all actual duties/holds
 and the unused pass remain.
+
+## Complete design closure from k311
+
+K311 supplies k309's original complete design/exact-missing-work conjunction. The final
+whole-design boundary and original-obligation/actual-answer concordance in
+application-reference-input-partition.md compare every original ancestor condition,
+k273/k244/k242/k282/R7–R10/F1–F10 and only the exact k281/k290/k295 amendments.
+Current root/product/glossary/family/private/acceptance and all six consumer charters,
+seven views/captions/discussion and complete current clause/source/member/basis/read
+identities agree; historical originals/R contexts/charters/scans remain separate.
+Scoped delivery preserves Safari fresh-fragment/mobile-overview and earlier evidence
+limits. No unavailable original receives fabricated bytes, members or qualification.
+
+This is complete design for mandatory whole-k291 review before k269, with every earned
+integration also before that planner. The review reads the entire final producer and
+actual answers/original comparisons, never this child or diff. Provider provenance follows the retirement rule: this launch inherited no
+current provider receipt, so the review receives no Creator line. No partial/in-session reviewer is used.
+K244/k242 remain live for actual construction/qualification/package/subject work; the
+single k245 pass is unused, full k246/k247/useful breadth/additive VM/native placement
+and every product/private/native hold remain. Changed consumed inputs disarm/requalify;
+unconsumed reports and current documentary charter candidates grant no authority.

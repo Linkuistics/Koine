@@ -44,6 +44,23 @@ Design only. No implementation/control/provisioning/commissioning/target/native/
 programme or new authority/reporting exception. Required absent originals retain exact
 live work before consumer; no admission pass or complete finite subject follows.
 
+## Decisions (running log)
+
+Close the existing design without changing its selected rules. Reconcile current
+summaries and consumer contexts in place; identify earlier k273/k282 promotions as
+historical proposals. Preserve every original Goal/Done when, selected S/D/C extract,
+whole companion/table and historical packet/parent. Only the actual k281/k290/k295
+amendments apply. The complete k291 producer receives one mandatory whole review before
+k269; no partial or in-session reviewer is used.
+
+Reporting edits to the canonical/evidence documents change their whole source identity.
+Reconstruct all current selected clauses, retained-R evidence, documentary associations,
+actual-read requirements, basis scopes and composite bindings from the frozen preceding
+objects. Preserve historical original R records, scans, source revisions and charter
+snapshots separately; current charter candidates grant no accepted execution authority.
+Actual consumed changes still disarm and require affected qualification. Required absent
+originals retain null identities/members and exact work before their Q/P/A consumers.
+
 ## Presentation handoff and precise final work
 
 Read application-reference-input-partition.md#seven-view-admission-presentation and
@@ -64,3 +81,23 @@ Reconstruct all affected records and replay original comparison/absence/phase co
 Keep every prior historical source/scan/R/charter provenance; fresh current charter
 identities are separately recorded, not backdated into old acceptance. The current
 composite scan excludes only itself; refresh after final report/presentation edits.
+
+
+## Verification and closing boundary
+
+Fresh six-namespace and exact original-binding comparisons pass at documentary scope:
+all selected/whole/historical payloads, original R contexts, member meanings, phase/absence
+rules and every original Goal/Done when remain; deliberate failure counterparts reject.
+Existing render and document tasks pass with named itemwise-stable inputs. Final browser
+checks cover seven Chrome desktop light/dark fresh-fragment and 390 × 844 light views;
+retain Safari's earlier fragment defect, mobile overview and unclaimed mobile-dark limits.
+The final report records exact temporary evidence and the final composite is refreshed
+again after these reporting edits. No actual authority/control/native fact is acquired.
+
+No current GROVE_PROVIDER_EVIDENCE was inherited. Apply retirement's explicit absence rule:
+omit Creator on the whole-k291 review rather than borrow a prior run or invent a receipt.
+All six ancestor design closes are limited to complete design/exact-missing-work; k244/
+k242 still have actual live duties and every pass/useful-breadth/product/private/native
+obligation remains. The sole remaining work act is mandatory whole-k291 review insertion
+before k269, followed by retirement, settled parent cascade, one focused jj commit and
+the launch prompt's exact Ravel ending command.
