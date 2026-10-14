@@ -406,8 +406,9 @@ administrator, SIP, helper, entitlement, signing, consent or VM change.
 **Protected lookup, contents and intermediate contact.** Antony accepted k281's closed
 pre-lookup rule. Check raw component bytes before any lookup; admit only exact paths or
 component classes in an independently reviewed allowlist fixed before the pass. The
-three literal and walk-resolved prefixes remain necessary, including during link
-expansion, but prefix membership alone grants no lookup or contents authority. Unlisted
+three literal and walk-resolved target prefixes remain necessary, including during link
+expansion, subject only to the checked root-ancestor step below; prefix membership alone
+grants no lookup or contents authority. Unlisted
 paths and known or unsettled consent risk refuse as unavailable before lookup/open,
 not merely before listing or contents handles. No prompt is answered to complete evidence.
 No blanket Data-volume exclusion is selected.
@@ -419,7 +420,7 @@ No blanket Data-volume exclusion is selected.
 | /private or /Users target paths | Refuse target scope before lookup; preserve the raw rejected slot |
 | /System/Volumes/Data/private or any /System/Volumes/Data/Users home | Syntax can pass /System, but refuse risk before lookup, directly or through observed link expansion |
 | Desktop, Documents, Downloads, Containers, Group Containers, Mail, Messages or Mobile Documents target components | Refuse before lookup, through every direct or observed-link spelling; a component renamed or redirected invisibly is not proved absent by this rule |
-| Relative or absolute link expansion outside the three prefixes and back inside | Preserve observed link text and physical component order; refuse before the first outside lookup/open, without lexical simplification that erases the step |
+| Relative or absolute link expansion outside the three prefixes and back inside | Preserve observed link text and physical component order; refuse before the first outside lookup/open except for the narrow checked Safari root step below, without lexical simplification that erases the step |
 | Common ancestors used to enter an admitted target prefix | Only independently reviewed held search-only ancestor/operation entries may be used; no listing or arbitrary sibling access |
 | Fixed authority namespace and separately reviewed fresh export ancestry | Distinct exact ancestor/operation entries are required; no target access follows, no authority-path substitution is allowed, and protected/unsettled ancestry refuses before lookup |
 | Unlisted path/class, unresolved risk or unknown expansion | Refuse as unavailable before the corresponding lookup/open; retain raw occurrences and precise unperformed work |
@@ -431,6 +432,32 @@ home. Root/common-ancestor operations retain the ADR's held search-only semantic
 K282 must enumerate the exact admitted classes and common-ancestor operations, their
 independently authored expectations and refusal points before construction; neither
 this rule nor a synthetic positive supplies current installed-path qualification.
+
+**Narrow Safari root step.** Antony answered "Allow the narrow shortcut step
+(Recommended)" in k318; k319 applies that received answer. This is the sole exception
+to continuous prefix membership during link expansion, only at the Safari app-position
+link entry `/Applications/Safari.app` and cryptex-component link entry
+`/System/Cryptexes/App`. At either position, a separately reviewed search-only physical
+`..` operation may reach the root only when its held result is identity-equal to the
+already held A1 root. The next component operation must immediately enter an independently
+reviewed admitted-prefix production. No listing, browsing, arbitrary sibling access or
+other outside component is admitted. A wrong held-root identity, wrong link position,
+non-immediate re-entry or other outside step refuses before the next lookup/open.
+All protected, unlisted and known/unsettled-risk refusals remain binding.
+
+The separate historical syntax bases are k94's macOS 26.6.2 app-position link text
+`../System/Cryptexes/App/System/Applications/Safari.app` and k110's same-build-family
+cryptex-component link text `../../System/Volumes/Preboot/Cryptexes/App`. Preserve their
+physical component order: lexical cancellation or the final spelling supplies neither
+permission nor physical identity. These records establish no current 26A434 link text,
+presence, identity, topology or consent fact. No arbitrary ancestor-link exception follows.
+K320 must reconcile the separate link/A1 entries and independently authored positive and
+refusal specimens with the full companions/views, then earn mandatory whole review and
+every integration before k269. This requirements answer qualifies no instrument, appoints
+no process, initializes no authority and authorizes no additional pass. Every other
+earlier selected clause, original Goal/Done when duty, k246/k247 obligation, useful breadth
+and product/private/native hold remains; k245 retains exactly one authorized pass under
+its existing admission and consumption requirements.
 
 A lexical predicate cannot prove hidden physical ancestry or current TCC behavior.
 Hidden redirects, opaque mounted-root contact, unobserved replacement and proxy effects
@@ -525,11 +552,15 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 ## Reference-evidence decision comparison and reporting
 
 The selected clauses above and exact comparison below record only the actual k270/k281/
-k290/k295/k314 amendments. Changing design/construction/qualification/pass observations
+k290/k295/k314/k319 amendments. Changing design/construction/qualification/pass observations
 live in the [unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
 The k314 before state is 47875236: its two selected clauses were inserted before Independent
 build, process-image and terminal correspondence; all earlier selected clause bytes were
 retained. The practical design changes no selected clause, permission or accepted limit.
+The k319 before state is k318's retirement commit cafb8e88: only the protected
+prefix-continuity sentence and out-and-back table expectation are amended, and the
+**Narrow Safari root step** clause is added. All other earlier selected clause bytes
+are retained. K320 owns the complete design reconciliation under that actual answer.
 
 ### Status outside the measured permission
 
@@ -545,7 +576,8 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | Observer privilege: "A realizable independent full contact observer/containment boundary remains required" and "Until it is independently qualified, admission remains unavailable" | Replaced by **Observer privilege and bounded contact evidence**: qualify only named evidenced claims, report current-service/proxy/initial-right/mapping coverage unknown, accept the stated accidental-contact risk, and retain all other controls and authority checks. No blanket full-coverage gate for k244 closure/k245 admission remains. |
 | Agreed seams: "actual unprivileged scratch adapters with independently qualified complete contact observation/containment" | Replaced by the accepted controlled-input, independent offline/admission, exact task/parser/domain and actual scratch-adapter seams under the bounded contact rule. Any bounded observation supports only its named scope. |
 | Protected clause: known/unsettled consent risk refuses "before contents handles/listing" | Strengthened to refusal **before lookup/open**. Independently reviewed exact path/component-class entries fixed before the pass are required in addition to the three literal/walk-resolved prefixes. |
-| Protected clause: held search-only common ancestors may enter a permitted prefix; out-and-back expansion refuses before outside lookup/open | Retained, restricted to reviewed ancestor/operation entries. Relative/absolute expansions and physical `..` cannot erase an outside step. Exact authority/export ancestry has separate entries and grants no target access. |
+| Protected clause: held search-only common ancestors may enter a permitted prefix; out-and-back expansion refuses before outside lookup/open | Retained except for the explicitly compared **Narrow Safari root step** below, restricted to reviewed ancestor/operation entries. Relative/absolute expansions and physical `..` cannot erase an outside step. Exact authority/export ancestry has separate entries and grants no target access. |
+| K281 selected prefix sentence at cafb8e88: "three literal and walk-resolved prefixes remain necessary, including during link expansion, but prefix membership alone grants no lookup or contents authority"; selected out-and-back expectation: "Preserve observed link text and physical component order; refuse before the first outside lookup/open, without lexical simplification that erases the step"; k314 reserves any Safari outside-prefix exception for a separately specified need and human decision | K318's actual "Allow the narrow shortcut step (Recommended)" answer, applied by k319, amends only continuous prefix membership at `/Applications/Safari.app`'s app-position and `/System/Cryptexes/App`'s cryptex-component link entries. A reviewed search-only physical `..` must yield a held identity equal to the already held A1 root, immediately followed by an admitted-prefix production. No listing/browsing, sibling or other outside component; all other protected/unlisted/risk refusals and kernel order remain. The new prefix sentence retains target-prefix necessity subject only to that checked root step; the out-and-back expectation names only this exception, and the added selected clause supplies its exact conditions and separate historical syntax bases. No lexical cancellation, current native identity or general ancestor permission follows. K320 owns full grammar/A1/specimen/companion/view reconciliation and mandatory whole review/every integration before k269; no instrument, appointment, authority or additional pass is supplied. |
 | Protected clause: no blanket Data-volume exclusion | Retained. Data/Applications and Data/Library candidates can pass only with their own reviewed entries. Data/private, Data/Users and the named protected/unsettled components refuse before lookup through direct/observed-link spellings. |
 | Protected clause: hidden redirects/mounted-root/proxy effects retain a "full independent qualification obligation" | The universal coverage prerequisite is replaced by the accepted bounded-contact risk. Observable identities, link text, replacement/refusal controls and precise limits remain required; no hidden-ancestry or current prompt-free claim follows. |
 | Required unavailable copies remain live missing evidence, never accepted useful loss | Retained with Antony's explicit disposition: carry a truthful failed/incomplete package and subject-design boundary through k245/k246/k247 and whole review. No copy omission, repeat, useful-category reduction, complete finite-subject credit or private eligibility follows. A later scope change needs a concrete decision. |
@@ -577,14 +609,15 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
 | K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
 | K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
-| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. K319 changes only the two checked search-only Safari root transitions above. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
 the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status, k295
-bounded correspondence-authority and k314 acceptance/documentary amendments above control
+bounded correspondence-authority, k314 acceptance/documentary and k319 narrow root-step
+amendments above control
 their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
 composite reconstruction only as compared; every other original obligation remains.
-K315 owns the complete contract/companion/operation-map/representation reconciliation,
+K320 owns the complete contract/companion/operation-map/representation reconciliation,
 and its mandatory whole review/every earned integration must precede k269 consumption.
 
 ## Required reproduction contract after the decision

@@ -25,6 +25,19 @@ duties and whole-object/original/basis/read/phase/absence membership. Original k
 k245/k246/k247 Done when and useful breadth remain. No partial child, fresh digest or
 historical role assignment is the replacement handoff.
 
+K319 applies the received k318 answer in
+docs/verification/application-population-metadata-shape.md's **Narrow Safari root step**
+and **Line-by-line original-obligation comparison**, against exact before state cafb8e88.
+Only `/Applications/Safari.app`'s app-position and `/System/Cryptexes/App`'s cryptex-component
+link entries receive the reviewed search-only physical `..` exception: held result identity-equal
+to the already held A1 root, then immediate admitted-prefix re-entry, with no listing,
+browsing, sibling or other outside component. Every other protected/unlisted/risk refusal
+and kernel order remains. Consume k94/k110's two historical relative spellings only as
+separate syntax bases, never current 26A434 facts. This amendment changes no C/K/P,
+manifest or view and is not their repair, qualification, process appointment, authority
+initialization or another pass. The complete R1–R6 replacement and mandatory whole review/
+every earned integration below remain this producer's work before k269.
+
 ## Required coherent repair
 
 - R2: acquire and have Antony accept actual independent initializer/validator mechanics
