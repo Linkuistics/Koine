@@ -337,14 +337,19 @@ pre-lookup entries; accepted full contact gaps supply no no-contact proof or fin
 Required known identities/controls and all product/native duties remain; this repair
 supplies no private eligibility.
 The [acceptance/release protocol](../verification/application-reference-evidence.md#chartered-independent-acceptance)
-requires a chartered independent own trust act after inspection-only review/integration,
-disarmed final requalification, accepted audit/distinct instrument close and separately
-supervised k245 LIVE invocation. Receipt, proof, release-record or copied-review possession
-supplies no authority or finite subject. Whole-k315 review/every earned integration precedes k269.
+requires Antony's own ready-object trust act after inspection-only review/integration,
+independently authored/executed controls, disarmed final requalification, his result
+acceptance/audit, a distinct instrument closing owner/step and freshly appointed coexisting
+supervisor/checker/acquirer for k245. Receipt, proof, release-record or copied-review
+possession supplies no authority or finite subject. The remaining current C role/publication
+conflicts need k320's complete repair and whole review/every earned integration before k269.
 
 The [practical admission design](../verification/application-reference-input-partition.md#practical-admission-design)
-replaces the defective historical k291 conjunction under actual k314. Mandatory whole-k315
-review/every earned integration precedes k269. Independently authored/reviewed comparison,
+is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
+[current integration boundary](../verification/application-reference-input-partition.md#k317-integration-and-remaining-design)
+requires k319's application of the actual narrow Safari root-step approval, complete k320
+replacement and mandatory whole review/every earned integration before k269. The following
+is the reviewed proposal, not a repaired current construction handoff. Independently authored/reviewed comparison,
 audit and display with a short non-candidate bootstrap entry support Antony's semantic
 judgment in five named own-terminal checkpoints outside agent harnesses. Full author/
 producer/repairer/runner/own-result and initializer/staged-final validator exclusions and a

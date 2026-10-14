@@ -10,6 +10,12 @@ coverage/capacity/missing-evidence boundary. No cardinality-only qualification.
 
 ## Context
 
+K317 found k315 defective. Consume k319's actual narrow root-step amendment and complete
+reviewed k320 replacement/every integration before any k244/k245 handoff is treated as
+qualified. The earlier k315 proposal below remains a comparison basis; its manifest and
+bootstrap claims supply no current proof. K318 repairs this leaf's offline correction
+context without changing its original Goal/Done when or generated discrimination duties.
+
 Consume the whole reviewed k315 practical design and actual k244/CP01–CP04 qualifications,
 CP05/P/A frozen original and independently verified k245 derivatives/roles, or their precise
 failed/incomplete work. Historical k273/k282/k291 proposals and fragment identities supply
@@ -23,10 +29,13 @@ hashes cannot qualify permitted rewrites or shape discrimination. Keep all fourt
 1,010 useful apps, 256 helpers, 128 aliases and additive full actual supported-VM baseline
 and registration pressure; no omitted/refused copy becomes useful loss or another pass.
 
-Actual changed consumed inputs use durable disarm and the affected checkpoint/qualification/
-acceptance/audit/distinct-close/eligible/appointment suffix. Reports stay unconsumed;
-whole actual original/basis/read bytes and phase/absence duties remain. This consumer gets
-no appointment/reset power. Every generated control and private/product/native hold remains.
+After the pass is consumed, changed consumed inputs or derivation tools require frozen
+offline re-derivation and independent association/recipe/discrimination verification of
+every affected output. Preserve immutable originals, exact missing work and complete actual
+original/basis/read bytes and phase/absence duties; reports stay unconsumed. No correction
+reopens eligibility, appointment or target acquisition, deletes intent, restores unspent
+authority or supplies another pass. This consumer gets no appointment/reset power. Every
+generated control and private/product/native hold remains.
 
 ## Done when
 

@@ -1,8 +1,23 @@
 # application-population-metadata-subject-k242 — brief
 
-## Practical design handoff awaiting whole review
+## K317 integration and replacement before construction
 
-Reference-evidence-practical-admission-k315 supplies the complete replacement design under
+K317 reviews k315 as defective; k318 classifies every finding and repairs the current
+packet-integrity pointer and k246's offline-only correction context. Antony approved the
+narrow checked root-step exception for the two Safari shortcut positions, with immediate
+admitted-prefix re-entry and no browsing or other outside step. K319 applies that received
+answer without another interview; k320 repairs the full coupled bootstrap/first-consumer/
+continuity/closer-publication and finite Library/link grammar. Mandatory whole-k320 review/
+every earned integration precedes k269. C/K/P/manifest and seven views remain defective
+k315 comparison subjects until the coherent replacement; no intermediate regeneration or
+claimed normative repair. K244/k242 stay live, single pass unused, full k246/k247/useful
+breadth/additive VM/native placement/private ineligibility/both holds remain. K316 retains
+the separate viewer defect. Historical promotion/owner/fragment proposals below are not
+current construction directions.
+
+## Historical k315 proposal before k317 findings
+
+At ad181f1fbfd8, reference-evidence-practical-admission-k315 proposed the replacement under
 actual k314: independent comparison/display and short bootstrap trust, five named own-
 terminal human checkpoints, full compatibility/exclusions and distinct close, exact Preboot/
 framework/link/ancestor grammar, closed Q/P/C/D and proportionate H/R exceptions with E
@@ -277,7 +292,7 @@ retirement supplies actual authority, qualification or a completed finite subjec
 
 ## Complete k291 design promotion and actual remaining duties
 
-Historical k291 claim at a05e643f8352, reviewed as defective by k312. Current handoff is Practical design handoff awaiting whole review above; this paragraph is no current construction eligibility or owner command.
+Historical k291 claim at a05e643f8352, reviewed as defective by k312. Current repair placement is K317 integration and replacement before construction above; this paragraph is no current construction eligibility or owner command.
 
 K311 closes the complete reference-evidence-session-admission-k291 design and all its
 closing ancestors at the exact-missing-original boundary. Its mandatory whole-k291

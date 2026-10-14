@@ -7,6 +7,15 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
+K317 found k315 defective; k318's integration does not make it a construction handoff.
+First consume reference-evidence-root-step-k319's application of Antony's actual narrow
+root-step approval, then the complete reference-evidence-practical-admission-k320 repair
+and its mandatory whole review/every earned integration. That work owns the coupled
+CP01 execution/initialization-before-consumer/accepted-tool continuity/closer-publication
+and finite Library/link rules. Do not plan from the contradictory k315 schedule, current
+manifest fields or old summary commands. The detailed proposal below is the k315 planning
+comparison basis; k320 must reconcile it to its final complete contract before this leaf.
+
 Consume actual k270/k281/k290/k295 answers and k314's smaller-workflow choice, the complete
 reference-evidence-practical-admission-k315 producer, its mandatory whole review and every
 earned integration before replanning. Original k312 findings at 4392295c and k313's

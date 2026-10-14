@@ -41,17 +41,22 @@ mandatory whole review/every earned integration before k269; the prior proposal
 supplies no settled construction admission. K284 scopes C1–C8/U1–U6 accepted contact gaps separately from required known identities/
 controls and fixes T1–T7/A1–A3 refusal-before-lookup entries. Full no-contact/hidden-ancestry/
 current-TCC coverage remains unknown. No selected product or native duty changes.
-The repaired [acceptance route](application-reference-evidence.md#chartered-independent-acceptance)
-gives inspection-only clean/findings review a separate independent own trust act.
+The selected [acceptance route](application-reference-evidence.md#chartered-independent-acceptance)
+requires Antony's own ready-object trust act after inspection-only clean/findings review,
+with independent original authors/executors and producer/repairer/runner exclusions.
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
 freshly human-appointed foreground supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority; whole-k315 review
-and every earned integration still precede k269. This design supplies no finite subject or native/private eligibility.
+possession and copied review/run/commit supply no authority. K320 must repair the remaining
+current C role/close-publication conflicts and earn whole review/every integration before
+k269. This design supplies no finite subject or native/private eligibility.
 
 The [practical admission design](application-reference-input-partition.md#practical-admission-design)
-replaces the defective historical k291 conjunction under actual k314. Mandatory whole-k315
-review/every earned integration precedes k269. Independently authored/reviewed comparison,
+is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
+[current integration boundary](application-reference-input-partition.md#k317-integration-and-remaining-design)
+requires k319's application of the actual narrow Safari root-step approval, complete k320
+replacement and mandatory whole review/every earned integration before k269. The following
+is the reviewed proposal, not a repaired current construction handoff. Independently authored/reviewed comparison,
 audit and display with a short non-candidate bootstrap entry support Antony's semantic
 judgment in five named own-terminal checkpoints outside agent harnesses. Full author/
 producer/repairer/runner/own-result and initializer/staged-final validator exclusions and a

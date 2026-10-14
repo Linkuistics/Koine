@@ -599,6 +599,15 @@ locates the whole original-obligation comparison and exact missing work before c
 
 ## Reproducible boundary checks
 
+The saved projection audit is checked by `task design:application-population-metadata-shape-check`.
+Its scope is packet integrity and the enumerated projection losses: row/association edits
+must fail, including a permitted identifier rewrite that the later generated-subject shape
+contract might accept. These checks cannot recover missing original bytes or typed trees,
+qualify a current reference population, or replace k246's independent rewrite-aware useful/
+helper/alias discriminator. The detailed [saved check report](application-reference-input-partition.md#reproducible-boundary-checks)
+records its historical controls and evidence limits; old fragment/composite regeneration
+instructions there are not a current handoff. The Taskfile recipe remains current.
+
 Document/link/render checks validate only the saved design. Exact replacement documentary
 identity and historical-parent/Safari comparisons are reported with their bounded scope
 [separately](application-reference-input-partition.md#practical-documentary-verification).

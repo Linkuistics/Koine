@@ -272,15 +272,22 @@ names those amendments; all other requirements remain. Full service/proxy/initia
 mapping coverage stays unknown, never no-contact proof. The bounded B1–B8 evidence and T1–T7/A1–A3 pre-lookup contracts separate
 accepted unknown contact gaps from required native/identity/entry/control/freeze blockers.
 The [chartered acceptance route](docs/verification/application-reference-evidence.md#chartered-independent-acceptance)
-separates inspection-only review from an independent owner's own registration act.
+separates inspection-only review from Antony's own semantic acceptance/registration act,
+using independently authored controls and an independent original-result executor. The
+runner/producer/repairer cannot judge their own programme results; the distinct instrument
+closer remains separate. K317's stale current role/publication commands still need k320's
+complete repair before construction.
 [Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps provisioning/requalification disarmed through accepted audit and distinct instrument
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
 release possession and copied review/run/commit supply no role authority. The [enduring-input partition](docs/verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports)
 keeps changing observations in a separate unconsumed report; actual input changes still
 disarm and requalify. The [practical admission design](docs/verification/application-reference-input-partition.md#practical-admission-design)
-repairs the historical k291 conjunction under actual k314, for mandatory whole review
-before construction replanning. An independent comparison/display tool with a short
+is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
+[current integration boundary](docs/verification/application-reference-input-partition.md#k317-integration-and-remaining-design)
+places k319's application of Antony's approved narrow Safari root step and complete k320
+replacement/whole review/every earned integration before replanning. The following
+description is that proposal, not a repaired current bootstrap route. An independent comparison/display tool with a short
 inspectable bootstrap entry computes equality/audit/basis; Antony judges meaning in five
 named own-terminal checkpoints outside agent harnesses. Original author/executor/producer/
 repairer/runner exclusions, separate initializer/staged-final validator and distinct

@@ -231,9 +231,24 @@ live work before baseline acceptance, not outcomes closed by launch-and-open.
 
 ## Notes
 
-## Practical design handoff awaiting whole review
+## K317 integration and replacement before construction
 
-Reference-evidence-practical-admission-k315 supplies the complete replacement design under
+Reference-evidence-practical-admission-k317 reviews k315 as defective; k318 classifies
+every finding and repairs the current packet-integrity pointer and k246's offline-only
+correction context. Antony approved the narrow checked root-step exception for the two
+Safari shortcut positions, with immediate admitted-prefix re-entry and no browsing or
+other outside step. Reference-evidence-root-step-k319 applies that actual answer without
+another interview, then reference-evidence-practical-admission-k320 repairs the coupled
+bootstrap/first-consumer/continuity/closer-publication and finite Library/link grammar.
+Its mandatory whole review/every earned integration precedes k269. K315's C/K/P/manifest
+and seven view snapshots remain defective comparison subjects, not construction proof;
+no intermediate identity regeneration or claimed normative repair occurs in k318.
+K244/k242 remain live, one pass unused, k246/k247/useful breadth/additive VM/native
+placement/private ineligibility/both holds unchanged. K316 still owns the viewer defect.
+
+## Historical k315 proposal before k317 findings
+
+At ad181f1fbfd8, reference-evidence-practical-admission-k315 proposed the replacement under
 actual k314: independent comparison/display and short bootstrap trust, five named own-
 terminal human checkpoints, full compatibility/exclusions and distinct close, exact Preboot/
 framework/link/ancestor grammar, closed Q/P/C/D and proportionate H/R exceptions with E

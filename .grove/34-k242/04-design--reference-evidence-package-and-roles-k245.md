@@ -10,6 +10,12 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 
 ## Context
 
+K317 found k315 defective. Require k319's actual narrow root-step amendment, complete
+k320 replacement and mandatory whole review/every earned integration plus reviewed k269
+replanning before this consumer. The retained CP01–CP05 description below is the k315
+comparison proposal, not a currently repaired bootstrap/authority/continuity/grammar route.
+K318's decision/charters supply no qualified instrument, receipt, appointment or pass.
+
 Require actual k244 stable instrument qualification and distinct close, CP04 eligible basis,
 complete reviewed practical admission design and all earned integrations/planning first.
 Consume actual canonical k270/k281/k290/k295/k314 choices, C/K/P full conjunction and original

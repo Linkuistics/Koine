@@ -11,8 +11,11 @@ Those controls are currently specified, not executed.
 
 The single pass is unused.
 
-The practical admission design is a producer proposal for mandatory whole review before
-k269. No target-reading instrument, trusted comparison/display/bootstrap entry, retained
+K317's whole review at `772bec7144a4` found the k315 proposal defective. K318 classifies
+all findings, repairs the two R7 handoffs and places k319 → k320 → mandatory whole review/
+every earned integration before k269. The [integration boundary](#k317-integration-and-remaining-design)
+records the actual answer and precise replacement work. No target-reading instrument,
+trusted comparison/display/bootstrap entry, retained
 runtime/entry chain, executable schema/control programme, qualified provisioning/receipt,
 original Q results, accepted audit/distinct close, eligible basis or actual appointment is
 supplied by this design. Required originals and actual UID/build/peer-image/terminal/read/
@@ -27,7 +30,46 @@ process/terminal probe, authority act or native programme is performed in this d
 K316 separately owns Safari's historical fresh-fragment viewer defect; rendering or HTTP
 identity alone is no browser delivery pass.
 
+## K317 integration and remaining design
+
+K318 reads the findings from k317's retirement commit `772bec7144a4`, against k315's
+closing state `ad181f1fbfd8`. R1/R2/R3/R5/R6/R7 are valid and actionable; R4 is a contract
+stated unclearly with an actionable execution-placement gap. The review's inferred seven
+acts is not itself the selected contract: k314 names five checkpoints, and CP05 already
+contains distinct ACCEPT/APPOINT acts. It remains necessary to place CP01's independent
+execution/validation between its human acts honestly, rather than assume concurrency or
+assert one interaction. This integration supplies no repaired complete normative design.
+
+| Finding | Disposition and work before its consumer |
+| --- | --- |
+| R1 Safari links | Both historical 26.6.2 link texts are confirmed in k94/k110 as syntax bases only. Antony approved “Allow the narrow shortcut step (Recommended)” after a plain-language explanation: at the two specified link positions only, physical parent identity must equal the already held A1 root and immediately re-enter an admitted prefix, with no listing/browsing or other outside component. K319 applies that actual answer to the canonical clauses/comparison without another interview; k320 reconciles grammar/A1/specimens and actual-A checks before k269. No current link/topology/TCC fact follows. |
+| R2 initialization | Mechanics acceptance currently follows its first initialization consumer, and k269 contradicts C. K320 must place actual independent mechanics originals/human acceptance and exactly one authorization before initialization, with actual staged/final receipt facts at CP02 afterward. No validator delegation or future-output approval. |
+| R3 current owner commands and close publication | C's verifier-self/handoff text still conflicts with the selected executor/Antony relation and lacks a distinct closer's accepted publication capability. K320 repairs every current command, closed kind/channel/acknowledgement/controls and summary under all exclusions. The current roll-ups identify this incomplete work rather than confer an old acceptance role. |
+| R4 CP01 placement | K320 must specify the independent acquisition/validation execution route and every ready human act. Either ready inputs fit the selected checkpoints or the exact remaining conflict/trade-off is named before use; no hidden Grove-session wait, assumed concurrency, future acceptance or agent-driven human pty. |
+| R5 tool continuity | K320 binds accepted entry/engine/display/runtime closure in closed bootstrap/output records and re-establishes it through an independently anchored short entry before every later trust computation, with actual substituted/missing/changed-tool refusal controls. A change consequence alone is no detector. |
+| R6 Library versions | Decoded saved parents confirm GoogleUpdater/156.0.8067.0 and CommandLineTools/Python3.framework/Versions/3.9/Resources rely on exact H3. K320 derives finite version-position alternatives with exact vendor prefixes, complete historical associations and isolating negatives or an explicit residual trade-off. No current version change is observed or inferred. |
+| R7 packet scope and offline correction | Repaired directly: S's Reproducible boundary checks again owns the saved projection audit's packet-integrity scope, separately from k246's generated rewrite-aware discriminator. K246's post-consumption corrections explicitly require offline re-derivation/independent association and discrimination verification, never eligibility/appointment/acquisition/reset or another pass. Original Goal/Done when remain. |
+
+The bootstrap/first-consumer/continuity/close-publication repair is substantial coupled
+design. Under the integration family's rule, k320 must deliver one coherent complete
+replacement and cut a whole-producer review before k269; every earned integration also
+precedes that consumer. K319 and k320 are live siblings before the planner. No extra
+in-session reviewer or intermediate identity apparatus is added. C/K/P and the old manifest
+remain the defective review subjects; S's current R7 scope paragraph and current charters
+have changed, so the old manifest's `current_sources`/charter fields describe the k315
+snapshot only. They are not refreshed-current inputs, authority or qualification.
+
+Original k242/k244/k245/k246/k247 Done when, actual canonical selected clauses pending only
+k319's exact authorized amendment, full useful breadth/additive VM/native placement, one
+unused pass, private ineligibility and both holds remain. K316 owns the separate viewer
+defect. K244/k242 retain actual construction/qualification/subject work and cannot close
+on this integration, a requirements answer, a planned replacement or a digest.
+
 ## Practical admission design
+
+Historical k315 proposal at `ad181f1fbfd8`, reviewed as defective by k317. The current
+repair/actual answer is [above](#k317-integration-and-remaining-design). The following
+schedule/manifest claims describe that snapshot, not current construction eligibility.
 
 K315 repairs the reviewed historical k291 starting point under actual k270/k281/k290/k295
 answers and k314's smaller-workflow choice. Consume the complete C/K/P conjunction,
@@ -46,6 +88,9 @@ is historical at a05e643f8352, with earlier all-E index at 04bd81cf; it is not r
 Report-only edits reconstruct neither old fragments nor the replacement identity manifest.
 
 ## Practical original-obligation comparison
+
+Historical k315 comparison at `ad181f1fbfd8`. K317's remaining defects and their live
+owners are [above](#k317-integration-and-remaining-design); these rows do not repair them.
 
 | k312 finding | Normative repair and exact remaining work |
 | --- | --- |
@@ -74,6 +119,10 @@ the current placement is the normative compatibility/CP/Q/P map, not that histor
 | k269 / k245 / k246 / k247 first consumers | Reviewed k315 conjunction → reviewed replanning → independent authoring/artifacts/whole review/CP01 → qualified separate receipt/CP02 → final Q/CP03 → distinct close/CP04 → human CP05/P/A at k245. Late affected changes repeat the specified suffix. K246/k247 consume only frozen actual originals/verified derivatives/roles or exact incomplete work, with every generated/whole-subject/VM/native duty and hold retained. |
 
 ## Practical documentary verification
+
+Historical k315 measurement at `ad181f1fbfd8`, not verification of k318's changed documents
+or the future k320 replacement. Saved manifest fields and seven D2/SVG views retain that
+snapshot; they are defective comparison subjects and supply no current identity proof.
 
 The final saved-document comparison checks every replacement source/payload/exception/
 charter candidate identity against its complete current bytes, every original basis-object
@@ -1844,7 +1893,7 @@ Unconsumed reports supply no qualification; actual consumed changes disarm and r
 
 ## Historical S reproduction and checks
 
-Historical ebd56b9a reproduction/check instructions; the fragment-refresh apparatus is replaced under k314. Retained original duties are in the canonical comparison and selected C/K/P. No old regeneration is a current handoff.
+Historical ebd56b9a reproduction/check instructions; the fragment-refresh apparatus is replaced under k314. Retained original duties are in the canonical comparison and selected C/K/P. No old regeneration is a current handoff. The saved projection-audit tasks below remain live with the current packet-integrity scope stated in S's Reproducible boundary checks; this historical report supplies no current run or generated-subject qualification.
 
 ## Required reproduction contract after the decision
 

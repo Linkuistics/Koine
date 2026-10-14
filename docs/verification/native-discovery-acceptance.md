@@ -97,21 +97,29 @@ design, whole-producer review and earned integration. Advertisement/downstream
 consumption remain held until full useful native qualification passes. Historical
 arithmetic is counterexample evidence only, and every native G/N/V stays pending.
 The reference instrument's [review integration](application-reference-evidence.md#review-integration-and-required-decisions)
-requires k281's accepted bounded contact/pre-lookup choices and the complete reviewed
-whole-k315 review/every earned integration before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
+requires k281's accepted bounded contact/pre-lookup choices, k319's actual-answer canonical
+amendment, then the complete k320 replacement with whole review/every earned integration
+before k269. K284 specifies B1–B8 named evidence and T1–T7/A1–A3 entries;
 full service/proxy/initial-right/map/hidden-ancestry/TCC coverage remains explicitly unknown,
 while required known identities/controls stay blockers. The complete repaired design supplies no actual instrument qualification, finite
 subject or private eligibility.
-K285's [chartered acceptance](application-reference-evidence.md#chartered-independent-acceptance)
+The selected [chartered acceptance](application-reference-evidence.md#chartered-independent-acceptance)
 and [independent LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 require original reviewed/final bytes/findings/dispositions, disarmed requalification,
-accepted audit/distinct close and a separate supervisor-originated k245 channel. Receipt/
-proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
-whole-k315 review/integration remains before k269; every native duty below stays pending.
+Antony's accepted original-result audit, a distinct original-obligation closing owner/step
+and his freshly appointed coexisting supervisor/checker/acquirer for one k245 channel.
+Independent authors/executors acquire evidence; they do not accept their own results.
+The earlier K285 separately owned acceptance/release model is historical, not a current
+role assignment. K320 must repair the remaining current C commands and close publication.
+Receipt/proof/release or copied-review possession grants no role/finite-subject credit. Mandatory
+whole-k320 review/every earned integration remains before k269; every native duty below stays pending.
 
 The [practical admission design](application-reference-input-partition.md#practical-admission-design)
-replaces the defective historical k291 conjunction under actual k314. Mandatory whole-k315
-review/every earned integration precedes k269. Independently authored/reviewed comparison,
+is the k315 proposal at ad181f1fbfd8, reviewed as defective by k317. The
+[current integration boundary](application-reference-input-partition.md#k317-integration-and-remaining-design)
+requires k319's application of the actual narrow Safari root-step approval, complete k320
+replacement and mandatory whole review/every earned integration before k269. The following
+is the reviewed proposal, not a repaired current construction handoff. Independently authored/reviewed comparison,
 audit and display with a short non-candidate bootstrap entry support Antony's semantic
 judgment in five named own-terminal checkpoints outside agent harnesses. Full author/
 producer/repairer/runner/own-result and initializer/staged-final validator exclusions and a

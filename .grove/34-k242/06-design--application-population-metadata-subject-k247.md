@@ -11,6 +11,11 @@ unavailable evidence boundary. This child is the producer's closing session.
 
 ## Context
 
+K317 found k315 defective. Require k319's application of the actual narrow root-step answer,
+complete k320 replacement and mandatory whole review/every integration before treating the
+retained k315 proposal below as a qualified upstream handoff. All actual instrument/pass/
+generated-subject/original-duty closure remains due; k318's repair placement supplies none.
+
 Consume the complete reviewed practical admission producer k315 and all actual k244
 qualification/CP01–CP04/original-duty close, k245 CP05/P/A frozen originals/independently
 verified derivatives/purposes, k246 recipes/generated discriminator, or exact retained
@@ -29,7 +34,9 @@ reports supply no facts or permission. Required Q/P controls/identities block th
 only exact AU remains unknown. Distinct instrument close cannot be absorbed into producer/
 runner/human audit; fresh coexisting human appointment supplies k245 authority, not an image,
 receipt/proof/eligible record or copied review. Later changes retain precise live affected
-repair/requalification/checkpoint work before consumers. Parent k242 keeps complete Done when.
+repair/verification work before consumers. After consumption this is offline re-derivation
+and independent association/recipe/discrimination verification only, never renewed
+eligibility/appointment/acquisition or another pass. Parent k242 keeps complete Done when.
 
 ## Done when
 

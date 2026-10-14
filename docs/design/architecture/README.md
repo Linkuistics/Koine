@@ -8,6 +8,18 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
+K317 found the saved k315 proposal defective. The
+[integration boundary](../../verification/application-reference-input-partition.md#k317-integration-and-remaining-design)
+records every disposition and Antony's approved narrow Safari root step. K319 applies that
+received answer without another interview; k320 repairs bootstrap/initialization ordering,
+tool continuity, current roles/close publication and finite Library/link grammar, then earns
+mandatory whole review/every integration before k269. The seven D2/SVG exports below remain
+historical k315 snapshots at ad181f1fbfd8; captions/discussion identify them as comparison
+subjects. They are not a repaired construction handoff or current documentary identity proof.
+K318 changes no graph/export bytes and claims no new rendering/browser/native qualification.
+
+### Historical k315 proposal and saved views
+
 Open [the practical admission discussion](index.html#discussion) for the complete proposed
 k315 conjunction and its seven updated views. The [canonical permission/comparison](../../verification/application-population-metadata-shape.md#authority-and-admission-choices)
 and [practical original-obligation report](../../verification/application-reference-input-partition.md#practical-original-obligation-comparison)
